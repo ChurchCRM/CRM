@@ -3,6 +3,7 @@
 namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\Service\ImpersonationService;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
@@ -29,10 +30,10 @@ class NoActiveMasqueradeMiddleware implements MiddlewareInterface
             ]);
 
             $response = new Response();
-            $response->getBody()->write(json_encode([
-                'error' => gettext('A masquerade is already in progress. Exit it before starting another.'),
-                'code'  => 409,
-            ]));
+            $response->getBody()->write(json_encode(SlimUtils::buildErrorPayload(
+                gettext('A masquerade is already in progress. Exit it before starting another.'),
+                409
+            )));
 
             return $response->withStatus(409)->withHeader('Content-Type', 'application/json');
         }

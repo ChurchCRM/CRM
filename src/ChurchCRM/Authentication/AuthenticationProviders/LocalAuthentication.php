@@ -196,6 +196,10 @@ class LocalAuthentication implements IAuthenticationProvider
         $logCtx = ['username' => $AuthenticationRequest->username];
         if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
             LoggerUtils::getAuthLogger()->debug('Processing local login', $logCtx);
+            // A real login starts a new identity in this session: drop any masquerade
+            // record left behind by an earlier session (e.g. one that timed out),
+            // otherwise exiting it would restore the stored administrator (#9843).
+            ImpersonationService::clear();
             // Only a completed login may leave a user on the provider. A failed or
             // pending attempt must not, or validateUserSessionIsActive() could treat
             // the half-authenticated session as a logged-in one.
@@ -363,6 +367,8 @@ class LocalAuthentication implements IAuthenticationProvider
         if (SystemConfig::getIntValue('iSessionTimeout') > 0) {
             if ((time() - $this->tLastOperationTimestamp) > SystemConfig::getIntValue('iSessionTimeout')) {
                 LoggerUtils::getAuthLogger()->debug('User session timed out', $logCtx);
+                // A timed-out masquerade must not be resumable as the administrator.
+                ImpersonationService::clear();
                 $authenticationResult->isAuthenticated = false;
 
                 return $authenticationResult;
@@ -387,10 +393,11 @@ class LocalAuthentication implements IAuthenticationProvider
         $IsUserOnPasswordChangePageNow = str_contains($_SERVER['REQUEST_URI'] ?? '', '/v2/user/current/changepassword');
         // A masquerading administrator (#9843) is not the account's owner: the
         // account's own obligations — a forced password change, 2FA enrolment —
-        // are theirs to meet on their next real login, not the administrator's to
-        // meet on their behalf. Enforcing them here trapped the administrator on
-        // the change-password page, and the banner's Exit request was redirected
-        // there too (review, 2026-09-18).
+        // are theirs to meet on their next real login, not the administrator's
+        // to meet on their behalf. Enforcing them here trapped the administrator
+        // on the change-password page, and the banner's Exit request was
+        // redirected there too, so the masquerade could not be ended at all.
+        // The flags themselves are left untouched.
         $impersonating = ImpersonationService::isActive();
         if ($user->getNeedPasswordChange() && !$IsUserOnPasswordChangePageNow && !$impersonating) {
             LoggerUtils::getAuthLogger()->info('User needs password change; redirecting to password change', $logCtx);

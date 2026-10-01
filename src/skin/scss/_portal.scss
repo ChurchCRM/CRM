@@ -219,6 +219,16 @@
     text-decoration: none;
 }
 
+// The masquerade exit is a form button; make it read as a plain menu item.
+.portal-account-button {
+    inline-size: 100%;
+    border: 0;
+    background: none;
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+}
+
 .portal-account-item:hover,
 .portal-account-item:focus-visible {
     background-color: var(--portal-surface-alt);

@@ -91,20 +91,12 @@ function startImpersonation(Request $request, Response $response, array $args): 
     $targetId = (int) $args['id'];
 
     if ($targetId === $admin->getId()) {
-        return SlimUtils::renderJSON(
-            $response,
-            ['error' => gettext('You cannot log in as yourself.')],
-            400
-        );
+        return SlimUtils::renderErrorJSON($response, gettext('You cannot log in as yourself.'), [], 400);
     }
 
     $target = UserQuery::create()->findPk($targetId);
     if (!$target instanceof User) {
-        return SlimUtils::renderJSON(
-            $response,
-            ['error' => gettext('No such user.')],
-            404
-        );
+        return SlimUtils::renderErrorJSON($response, gettext('No such user.'), [], 404);
     }
 
     // Never another administrator: every consequential action during a masquerade is
@@ -112,11 +104,7 @@ function startImpersonation(Request $request, Response $response, array $args): 
     // could act under a colleague's identity. An administrator has nothing to learn
     // from another administrator's view anyway (pr-reviewer finding on #9844).
     if ($target->isAdmin()) {
-        return SlimUtils::renderJSON(
-            $response,
-            ['error' => gettext('You cannot log in as another administrator.')],
-            403
-        );
+        return SlimUtils::renderErrorJSON($response, gettext('You cannot log in as another administrator.'), [], 403);
     }
 
     ImpersonationService::start($target);
@@ -136,11 +124,7 @@ function startImpersonation(Request $request, Response $response, array $args): 
 function exitImpersonation(Request $request, Response $response, array $args): Response
 {
     if (!ImpersonationService::isActive()) {
-        return SlimUtils::renderJSON(
-            $response,
-            ['error' => gettext('No masquerade is in progress.')],
-            400
-        );
+        return SlimUtils::renderErrorJSON($response, gettext('No masquerade is in progress.'), [], 400);
     }
 
     $targetId = ImpersonationService::end();

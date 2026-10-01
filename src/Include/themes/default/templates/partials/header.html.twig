@@ -60,10 +60,23 @@
                         <span>{{ gettext('Admin Console') }}</span>
                     </a>
                     {% endif %}
-                    <a class="portal-account-item" role="menuitem" href="{{ url('/session/end') }}">
+                    {# Signing out mid-masquerade returns the administrator to their
+                       own account, as the admin shell's user menu does (#9843);
+                       GET /session/end stays a plain logout. #}
+                    {% if portal.impersonating %}
+                    <form method="post" action="{{ url('/v2/user/impersonate/exit') }}">
+                        {{ csrf_field() }}
+                        <button type="submit" class="portal-account-item portal-account-button" role="menuitem" id="portalAccountSignOut">
+                            <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+                            <span>{{ gettext('Exit to your account') }}</span>
+                        </button>
+                    </form>
+                    {% else %}
+                    <a class="portal-account-item" role="menuitem" href="{{ url('/session/end') }}" id="portalAccountSignOut">
                         <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
                         <span>{{ gettext('Sign out') }}</span>
                     </a>
+                    {% endif %}
                 </div>
             </div>
         </div>

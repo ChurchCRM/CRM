@@ -21,6 +21,12 @@ const SELF_SERVICE_USER_ID = 99;
 const PEER_ADMIN_USER_ID = 906; // locale-admin@churchcrm.test, usr_Admin = 1
 const SELF_SERVICE_USER_NAME = "Amanda Black";
 
+// usr_ID 8 — mustchange.user (Herminia Hart), seeded with usr_NeedPasswordChange = 1
+// and Add/Edit Records, so a masquerade lands on the dashboard, not limited-access.
+const MUST_CHANGE_USER_ID = 8;
+const MUST_CHANGE_USER_NAME = "Herminia Hart";
+const MUST_CHANGE_USER_LOGIN = "mustchange.user";
+
 /** Today's date in the rotating log filename format ({Y-m-d}-auth.log). */
 function authLogFileName() {
     const now = new Date();
@@ -198,6 +204,77 @@ describe("Admin Login as User (masquerade)", () => {
         cy.dbQuery("UPDATE user_usr SET usr_NeedPasswordChange = 0 WHERE usr_per_ID = ?", [SELF_SERVICE_USER_ID]);
     });
 
+    [
+        [910, "deceased"],
+        [911, "inactive"],
+    ].forEach(([userId, status]) => {
+        it(`masquerades as a ${status} account and exits back to the admin`, () => {
+            cy.visit(`/v2/user/${userId}`);
+            cy.get("#loginAsUser").click();
+            cy.get(".bootbox.modal .btn-warning").click();
+            cy.get("#impersonationBanner").should("be.visible");
+
+            cy.visit("/v2/dashboard");
+            cy.url().should("not.include", "/session/begin");
+            cy.get("#impersonationExit").click();
+            cy.url().should("include", `/v2/user/${userId}`);
+            cy.get("#impersonationBanner").should("not.exist");
+            cy.get(".navbar").should("contain.text", "Church Admin");
+        });
+    });
+
+    // The portal is the self-service landing that replaced the limited-access
+    // page (#9863). Its account menu's sign-out must hand the administrator back,
+    // as the admin shell's does; GET /session/end stays a plain logout.
+    it("the portal's sign-out returns the admin", () => {
+        cy.visit(`/v2/user/${SELF_SERVICE_USER_ID}`);
+        cy.get("#loginAsUser").click();
+        cy.get(".bootbox.modal .btn-warning").click();
+        cy.url().should("include", "/portal");
+
+        cy.get("#portal-account-toggle").click();
+        cy.get("#portalAccountSignOut").should("contain.text", "Exit to your account").click();
+        cy.url().should("include", `/v2/user/${SELF_SERVICE_USER_ID}`);
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.get(".navbar").should("contain.text", "Church Admin");
+    });
+
+    // A user created by an administrator must change their password on first
+    // login. That obligation is the account owner's, not the masquerading
+    // administrator's: before the guard in LocalAuthentication it bounced every
+    // request — the banner's Exit included — to the change-password page, and the
+    // administrator had no way back to their own account.
+    it("is not trapped by the target's forced password change, and Exit still works", () => {
+        cy.visit(`/v2/user/${MUST_CHANGE_USER_ID}`);
+        cy.get("#loginAsUser").click();
+        cy.get(".bootbox.modal").should("contain.text", `Log in as ${MUST_CHANGE_USER_NAME}?`);
+        cy.get(".bootbox.modal .btn-warning").click();
+
+        cy.url().should("include", "/v2/dashboard").and("not.include", "changepassword");
+        cy.get("#impersonationBanner")
+            .should("be.visible")
+            .and("contain.text", `You are logged in as ${MUST_CHANGE_USER_NAME}.`);
+
+        // Another page of theirs, and still no password screen.
+        cy.visit("/people/cart");
+        cy.url().should("include", "/people/cart").and("not.include", "changepassword");
+        cy.get("#impersonationBanner").should("be.visible");
+
+        cy.get("#impersonationExit").should("be.visible").click();
+        cy.url().should("include", `/v2/user/${MUST_CHANGE_USER_ID}`).and("not.include", "changepassword");
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.get(".navbar").should("contain.text", "Church Admin");
+
+        // The flag itself is untouched: the owner is still made to change it on
+        // their own next login.
+        cy.clearCookies();
+        cy.visit("/session/begin");
+        cy.get("input[name=User]").type(MUST_CHANGE_USER_LOGIN);
+        cy.get("input[name=Password]").type("changeme{enter}");
+        cy.url({ timeout: 10000 }).should("include", "/v2/user/current/changepassword");
+        cy.get("#OldPassword").should("exist");
+    });
+
     it("does not render the banner or the offset on the anonymous login page", () => {
         cy.visit("/session/begin");
         cy.get("#impersonationBanner").should("not.exist");
@@ -269,7 +346,7 @@ describe("Admin Login as User (masquerade)", () => {
                     failOnStatusCode: false,
                 }).then((response) => {
                     expect(response.status).to.equal(403);
-                    expect(response.body.error).to.equal("You cannot log in as another administrator.");
+                    expect(response.body.message).to.equal("You cannot log in as another administrator.");
                 });
             });
         });
@@ -354,6 +431,93 @@ describe("Admin Login as User (masquerade)", () => {
                     expect(response.status).to.equal(403);
                 });
             });
+        });
+    });
+});
+
+// CodeRabbit finding on #9844: the masquerade record must not outlive the session
+// it was started in. Each test logs in afresh (forceLogin) because a real login
+// rotates the session id, which would strand the shared cached admin session.
+describe("Masquerade record does not survive its session", () => {
+    /** Start a masquerade as the target through the UI and wait for the dashboard. */
+    function startMasquerade() {
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get("#loginAsUser").click();
+        cy.get(".bootbox.modal .btn-warning").click();
+        cy.url().should("include", "/v2/dashboard");
+        cy.get("#impersonationBanner").should("be.visible");
+    }
+
+    it("GET /session/end during a live masquerade ends the whole session", () => {
+        cy.setupAdminSession({ forceLogin: true });
+        startMasquerade();
+
+        cy.visit("/session/end");
+        cy.url().should("include", "/session/begin");
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.visit("/v2/dashboard");
+        cy.url().should("include", "/session/begin");
+    });
+
+    it("a real login in the same browser discards the record", () => {
+        cy.setupAdminSession({ forceLogin: true });
+        startMasquerade();
+
+        // Sign in as the impersonated user without signing out first
+        cy.request({
+            method: "POST",
+            url: "/session/begin",
+            form: true,
+            body: {
+                User: Cypress.env("standard.username"),
+                Password: Cypress.env("standard.password"),
+            },
+        });
+
+        cy.visit("/v2/dashboard");
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.get("body").should("not.have.class", "impersonating");
+
+        // Signing out now ends the session; it must not restore the administrator
+        cy.visit("/session/end");
+        cy.url().should("include", "/session/begin");
+        cy.visit("/v2/dashboard");
+        cy.url().should("include", "/session/begin");
+    });
+
+    describe("after a session timeout", () => {
+        let savedTimeout;
+
+        // Config calls authenticate by API key; clear cookies first so they do
+        // not touch a browser session.
+        before(() => {
+            cy.clearCookies();
+            cy.getSystemConfig("iSessionTimeout").then((value) => {
+                savedTimeout = value;
+            });
+            cy.makePrivateAdminAPICall("POST", "admin/api/system/config/iSessionTimeout", { value: "3" }, 200);
+        });
+
+        after(() => {
+            cy.clearCookies();
+            cy.restoreSystemConfig("iSessionTimeout", savedTimeout);
+        });
+
+        it("signing out does not restore the administrator", () => {
+            cy.setupAdminSession({ forceLogin: true });
+            startMasquerade();
+
+            // Leave the dashboard (its polling requests keep the session alive)
+            // for the login page, which makes none, then let the 3-second
+            // session timeout lapse.
+            cy.visit("/session/begin");
+            cy.wait(5000);
+
+            cy.visit("/session/end");
+            cy.url().should("include", "/session/begin");
+            cy.get("#impersonationBanner").should("not.exist");
+            cy.visit("/v2/dashboard");
+            cy.url().should("include", "/session/begin");
         });
     });
 });

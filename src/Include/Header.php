@@ -493,8 +493,8 @@ $_isImpersonating = ImpersonationService::isActive();
               Masquerade (#9843): signing out mid-masquerade must not drop the
               administrator at the login page — it returns them to their own
               account, exactly like the banner's exit control. The item is
-              relabelled so it says what it actually does. /session/end performs
-              the same substitution for anyone who reaches it directly.
+              relabelled so it says what it actually does. It posts with a CSRF
+              token; GET /session/end stays a plain logout.
             -->
             <form method="post"
                   action="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/user/impersonate/exit') ?>">
@@ -632,7 +632,7 @@ if (TelemetryService::isEnabled()):
 //   - alert-warning (yellow) while > 1 day remains
 //   - alert-danger  (red)    when <= 1 day remains
 $_twoFAGraceUser = AuthenticationManager::getCurrentUser();
-if ($_twoFAGraceUser !== null):
+if ($_twoFAGraceUser !== null && !$_isImpersonating):
     $_twoFAGraceStatus = $_twoFAGraceUser->getTwoFactorGraceStatus();
     if ($_twoFAGraceStatus === 'within-grace'):
         $_twoFADaysLeft   = $_twoFAGraceUser->getTwoFactorGraceDaysRemaining();
