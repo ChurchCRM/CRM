@@ -243,14 +243,20 @@ class DonationFundService
      */
     public function getCategories(): array
     {
-        $categories = DonationFundQuery::create()
-            ->select('Category')
-            ->distinct()
+        $funds = DonationFundQuery::create()
             ->orderByCategory()
-            ->find()
-            ->toArray();
+            ->orderByName()
+            ->find();
 
-        return array_values(array_filter($categories, static fn ($c) => $c !== null && $c !== ''));
+        $categories = [];
+        foreach ($funds as $fund) {
+            $category = $fund->getCategory();
+            if ($category !== null && $category !== '' && !isset($categories[$category])) {
+                $categories[$category] = true;
+            }
+        }
+
+        return array_keys($categories);
     }
 
     /**
