@@ -53,7 +53,7 @@ $homeHandler = function (Request $request, Response $response): Response {
  * so a church theme gets a string it can print, not a date it has to reason
  * about (design §3.6).
  *
- * @return array<int, array{title: string, when: string, calendarName: string}>
+ * @return array<int, array{title: string, when: string, start: string, allDay: bool, calendarName: string}>
  */
 function portalHomeUpcomingEvents(): array
 {
@@ -66,6 +66,8 @@ function portalHomeUpcomingEvents(): array
         $events[] = [
             'title' => (string) $event['title'],
             'when' => DateTimeUtils::formatDate((string) $event['start'], !$event['allDay']),
+            'start' => (string) $event['start'],
+            'allDay' => (bool) $event['allDay'],
             'calendarName' => (string) ($event['extendedProps']['calendarName'] ?? ''),
         ];
     }

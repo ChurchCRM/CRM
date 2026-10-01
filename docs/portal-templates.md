@@ -374,9 +374,12 @@ failed.
 
 ### The home page's calendar card
 
-`upcomingEvents` is the next three events from the calendars the church shares,
-already formatted for printing — `{title, when, calendarName}`, where `when` is
-a date string in the installation's own format. It is empty when nothing is
+`upcomingEvents` is the next three events from the calendars the church shares —
+`{title, when, start, allDay, calendarName}`, where `when` is a date string in the
+installation's own format and `start` the raw local start. The system theme prints
+`when` inside `<time datetime="{{ event.start }}" data-format="daytime">` (`day` for
+an all-day event), which the portal's script rewrites in the church's locale
+("Sunday, October 4 at 9:30 AM"), matching the volunteering cards. It is empty when nothing is
 coming up, and `hasVisibleCalendars` is `false` when the church has shared no
 calendar at all; the two cases read differently to a member, so the system
 theme says "Nothing is on the calendar just now." for the first and "No calendar

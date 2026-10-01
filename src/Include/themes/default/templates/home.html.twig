@@ -17,8 +17,9 @@
   card, `showVolunteering` for the volunteering one. A theme drawing its own
   home page filters the same way.
 
-  Variables: `pageTitle`; `upcomingEvents` ({title, when, calendarName} for each
-  of the next three events, already formatted) and `hasVisibleCalendars`;
+  Variables: `pageTitle`; `upcomingEvents` ({title, when, start, allDay,
+  calendarName} for each of the next three events; `when` is the server's text,
+  which portal.ts replaces from `start`) and `hasVisibleCalendars`;
   `showVolunteering` (whether the volunteering card is rendered at all);
   `familySummary` (`{name, memberCount}`, or null when the member has no family
   record); `profile` (the same view-model the Profile page renders, or null for
@@ -54,7 +55,7 @@
                 {% for event in upcomingEvents %}
                 <li class="portal-upcoming-item">
                     <span class="portal-upcoming-title">{{ event.title }}</span>
-                    <span class="portal-upcoming-when">{{ event.when }}</span>
+                    <span class="portal-upcoming-when"><time datetime="{{ event.start }}" data-format="{{ event.allDay ? 'day' : 'daytime' }}">{{ event.when }}</time></span>
                     {% if event.calendarName %}
                     <span class="portal-upcoming-calendar">{{ event.calendarName }}</span>
                     {% endif %}

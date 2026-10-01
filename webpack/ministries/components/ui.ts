@@ -449,14 +449,18 @@ export function shortDateTimeRange(start: string, end: string): string {
   return `${shortDateTime(start)} – ${start.slice(0, 10) === end.slice(0, 10) ? shortTime(end) : shortDateTime(end)}`;
 }
 
+const LONG_DAY: Intl.DateTimeFormatOptions = { weekday: "long", day: "numeric", month: "long" };
+
 const TIME_FORMATS = new Map<string, (value: string) => string>([
   ["date", shortDate],
   ["datetime", shortDateTime],
   ["time", shortTime],
+  ["day", (value) => formatWallClock(value, LONG_DAY)],
+  ["daytime", (value) => formatWallClock(value, { ...LONG_DAY, hour: "numeric", minute: "2-digit" })],
 ]);
 
 /**
- * Server-rendered dates: `<time datetime="…" data-format="date|datetime|time">` with the raw
+ * Server-rendered dates: `<time datetime="…" data-format="date|datetime|time|day|daytime">` with the raw
  * value as its text. The server has no `intl`, so the page's bundle formats them here, with
  * the same helpers as everything the bundle draws itself.
  */
