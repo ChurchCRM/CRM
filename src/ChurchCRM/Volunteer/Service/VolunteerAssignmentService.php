@@ -1153,7 +1153,7 @@ class VolunteerAssignmentService
      * Take one person out of a ministry entirely — the Volunteers tab's "Remove
      * Volunteer" (design §5.4 as amended).
      *
-     * Three things, in ONE transaction, in this order:
+     * Four things, in ONE transaction, in this order:
      *
      *   1. every ACTIVE qualification they hold for a position of this ministry is
      *      revoked through `VolunteerQualificationService::revokeQualification()`, so §2.7's
@@ -1164,12 +1164,14 @@ class VolunteerAssignmentService
      *      rather than rewritten. Nothing is hard-deleted here that the cancel path
      *      would not have deleted itself;
      *   3. they are removed from the ministry's pool Group through the managed-write
-     *      context, which is what lets a coordinator without `ManageGroups` do it.
+     *      context, which is what lets a coordinator without `ManageGroups` do it;
+     *   4. every schedule default of this ministry naming them is cleared (D32); revoking
+     *      a single qualification keeps the default, left open while they are not qualified.
      *
      * A past assignment is left exactly as it is: it is service history, and this action
      * is about the future.
      *
-     * @return array{qualifications: int, assignments: int, removedFromPool: bool}
+     * @return array{qualifications: int, assignments: int, removedFromPool: bool, defaults: int}
      *
      * @throws VolunteerException 403 outside scope, 404 for an unknown person
      */
@@ -1187,7 +1189,8 @@ class VolunteerAssignmentService
             throw VolunteerException::notFound(gettext('Person not found'));
         }
 
-        $occurrenceIds = $this->upcomingOccurrenceIds($this->visibleScheduleIds($ministryId, $actor));
+        $scheduleIds = $this->visibleScheduleIds($ministryId, $actor);
+        $occurrenceIds = $this->upcomingOccurrenceIds($scheduleIds);
         $assignments = $occurrenceIds === []
             ? []
             : iterator_to_array(
@@ -1203,6 +1206,16 @@ class VolunteerAssignmentService
             $this->qualifications->listQualificationsForPerson($personId, [$ministryId]),
             static fn ($qualification): bool => (bool) $qualification->getActive()
         );
+
+        $defaults = $scheduleIds === []
+            ? []
+            : iterator_to_array(
+                VolunteerRequirementQuery::create()
+                    ->filterByScheduleId($scheduleIds, Criteria::IN)
+                    ->filterByDefaultPersonId($personId)
+                    ->find(),
+                false
+            );
 
         $connection = Propel::getWriteConnection(VolunteerAssignmentTableMap::DATABASE_NAME);
         $connection->beginTransaction();
@@ -1221,6 +1234,13 @@ class VolunteerAssignmentService
                 $this->ministries->removePoolMember($ministryId, $personId, $actor);
             }
 
+            foreach ($defaults as $default) {
+                $default->setDefaultPersonId(null);
+                $default->setDefaultAccepted(false);
+                $default->setDefaultSetByPersonId(null);
+                $default->save();
+            }
+
             $connection->commit();
         } catch (\Throwable $e) {
             $connection->rollBack();
@@ -1233,6 +1253,7 @@ class VolunteerAssignmentService
             'qualifications' => count($qualifications),
             'assignments' => count($assignments),
             'removedFromPool' => $removedFromPool,
+            'defaults' => count($defaults),
             'actor' => $actor->getId(),
         ]);
 
@@ -1240,6 +1261,7 @@ class VolunteerAssignmentService
             'qualifications' => count($qualifications),
             'assignments' => count($assignments),
             'removedFromPool' => $removedFromPool,
+            'defaults' => count($defaults),
         ];
     }
 

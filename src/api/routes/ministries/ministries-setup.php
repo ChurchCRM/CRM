@@ -198,10 +198,10 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
             ->add(new VolunteerMinistryMiddleware());
 
         // "Remove Volunteer" on the ministry page's Volunteers tab: qualifications,
-        // upcoming assignments and pool membership in one call. Ministry-level, so
-        // `VolunteerMinistryMiddleware` answers 403 for a team leader — the page hides
-        // the menu item from them, but hiding is not security (D5) and this is the
-        // decision. No sanitizer: both ids come from the PATH, already digits-only.
+        // upcoming assignments, pool membership and schedule defaults in one call.
+        // Ministry-level, so `VolunteerMinistryMiddleware` answers 403 for a team
+        // leader — the page hides the menu item from them, but hiding is not security
+        // (D5) and this is the decision. No sanitizer: both ids come from the PATH, already digits-only.
         $setup->delete('/ministries/{ministryId:[0-9]+}/volunteers/{personId:[0-9]+}', 'removeVolunteerFromMinistry')
             ->add(new VolunteerMinistryMiddleware());
 
@@ -1890,7 +1890,7 @@ function removeVolunteerPoolMember(Request $request, Response $response): Respon
  *     path="/ministries/ministries/{ministryId}/volunteers/{personId}",
  *     operationId="removeVolunteerFromMinistry",
  *     summary="Take one person out of a ministry entirely",
- *     description="In one transaction: revokes every active qualification they hold for a position of this ministry (revocation is deactivation, design section 2.7), cancels every live assignment of theirs on a still-to-come occurrence of the ministry through the ordinary cancel path so the outbox rows are cancelled and the response trail is appended, and removes them from the ministry's pool Group through the managed-write context. Past assignments are service history and are left alone. Ministry-level authority: a team leader gets 403.",
+ *     description="In one transaction: revokes every active qualification they hold for a position of this ministry (revocation is deactivation, design section 2.7), cancels every live assignment of theirs on a still-to-come occurrence of the ministry through the ordinary cancel path so the outbox rows are cancelled and the response trail is appended, removes them from the ministry's pool Group through the managed-write context, and clears every schedule default of this ministry that names them (D32; revoking one qualification keeps the default). Past assignments are service history and are left alone. Ministry-level authority: a team leader gets 403.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
@@ -1903,7 +1903,8 @@ function removeVolunteerPoolMember(Request $request, Response $response): Respon
  *             @OA\Property(property="personId", type="integer"),
  *             @OA\Property(property="qualifications", type="integer", description="Qualifications revoked"),
  *             @OA\Property(property="assignments", type="integer", description="Upcoming assignments cancelled"),
- *             @OA\Property(property="removedFromPool", type="boolean")
+ *             @OA\Property(property="removedFromPool", type="boolean"),
+ *             @OA\Property(property="defaults", type="integer", description="Schedule default volunteer entries cleared")
  *         )
  *     )
  * )

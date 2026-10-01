@@ -73,7 +73,7 @@ export interface QualificationMatrixOptions {
   /** Ministry-level pool writes; omitted by a caller whose markup has no such buttons. */
   addPoolMember?(personId: number): Promise<{ added: boolean }>;
   addPoolFromCart?(): Promise<{ added: number; alreadyMembers: number }>;
-  removeVolunteer?(personId: number): Promise<{ qualifications: number; assignments: number }>;
+  removeVolunteer?(personId: number): Promise<{ qualifications: number; assignments: number; defaults: number }>;
   /** What the "Remove {name} from …?" confirm names — the ministry. */
   removeScopeName?(): string;
   /**
@@ -333,10 +333,11 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
   /**
    * "Remove Volunteer" on a row of the grid.
    *
-   * One call, three effects, spelled out in the confirm because none of them is
+   * One call, four effects, spelled out in the confirm because none of them is
    * guessable from the words "remove": the qualifications go, the upcoming
-   * assignments are cancelled, and they leave the pool. The toast reports the
-   * server's own counts rather than assuming what happened.
+   * assignments are cancelled, they stop being a schedule's default volunteer, and
+   * they leave the pool. The toast reports the server's own counts rather than
+   * assuming what happened.
    */
   function wireRemoveVolunteer(): void {
     const remove = options.removeVolunteer;
@@ -356,17 +357,21 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
       confirmDelete(
         i18next.t("Remove Volunteer"),
         i18next.t(
-          "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, and removes them from the volunteer pool.",
+          "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool.",
           { name: personName, ministry: options.removeScopeName?.() ?? "" },
         ),
         () => {
           remove(personId)
             .then((result) => {
               notifySuccess(
-                i18next.t("Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments.", {
-                  qualifications: result.qualifications,
-                  assignments: result.assignments,
-                }),
+                i18next.t(
+                  "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults.",
+                  {
+                    qualifications: result.qualifications,
+                    assignments: result.assignments,
+                    defaults: result.defaults,
+                  },
+                ),
               );
               matrix = null;
 

@@ -438,7 +438,8 @@ describe("Volunteer v2 ministry page (#9701)", () => {
 
             cy.get(".bootbox")
                 .should("be.visible")
-                .and("contain", "removes them from the volunteer pool");
+                .and("contain", "removes them from the volunteer pool")
+                .and("contain", "clears them as a default volunteer");
             cy.get(".bootbox .btn-danger").click();
 
             cy.get("#volunteerQualificationsTable tbody tr").should(
