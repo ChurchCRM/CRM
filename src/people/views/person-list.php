@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PersonDeleteGuard;
 
 /**
  * This will avoid to call the db twice one to check if empty the other one to return the value
@@ -531,7 +532,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             <button type="button"
                                 class="dropdown-item text-danger delete-person"
                                 data-person_id="<?= $person->getId() ?>"
-                                data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>">
+                                data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>"<?= PersonDeleteGuard::attributes((int) $person->getId()) ?>>
                                 <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                             </button>
                             <?php endif; ?>
