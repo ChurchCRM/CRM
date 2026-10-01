@@ -248,8 +248,14 @@ class FamilyPledgeSummaryService
             }
         }
         
+        $categoryByFund = [];
+        foreach (DonationFundQuery::create()->find() as $fund) {
+            $categoryByFund[(int) $fund->getId()] = (string) $fund->getCategory();
+        }
+
         // Attach per-fund record counts from the pledge/payment loops and clean up
         foreach ($fundTotals as $fId => &$fundTotal) {
+            $fundTotal['category'] = $categoryByFund[$fId] ?? '';
             $fundTotal['pledge_count'] = $fundPledgeCounts[$fId] ?? 0;
             $fundTotal['payment_count'] = $fundPaymentCounts[$fId] ?? 0;
             unset($fundTotal['families']);
@@ -282,6 +288,7 @@ class FamilyPledgeSummaryService
         return [
             'families' => array_values($familiesPledges),
             'fund_totals' => array_values($fundTotals),
+            'category_totals' => $this->rollupByCategory($fundTotals),
             'total_pledges' => $totalPledgesAmount,
             'total_payments' => $totalPaymentsAmount,
             'overall_totals' => $overallTotals,
@@ -317,5 +324,40 @@ class FamilyPledgeSummaryService
     public function getCurrentFiscalYearId(): int
     {
         return FiscalYearUtils::getCurrentFiscalYearId();
+    }
+
+    /**
+     * Sum fund totals per category (named categories sorted, uncategorized last).
+     * Empty when no fund has a category, so callers can hide the rollup.
+     *
+     * @param array<int, array<string, mixed>> $fundTotals
+     * @return array<int, array<string, mixed>>
+     */
+    private function rollupByCategory(array $fundTotals): array
+    {
+        $rollup = [];
+        foreach ($fundTotals as $fundTotal) {
+            $category = (string) $fundTotal['category'];
+            $rollup[$category] ??= [
+                'category' => $category,
+                'fund_count' => 0,
+                'total_pledged' => 0.0,
+                'total_paid' => 0.0,
+                'overpaid' => 0.0,
+                'underpaid' => 0.0,
+            ];
+            $rollup[$category]['fund_count']++;
+            foreach (['total_pledged', 'total_paid', 'overpaid', 'underpaid'] as $key) {
+                $rollup[$category][$key] += $fundTotal[$key];
+            }
+        }
+
+        if (array_keys($rollup) === [''] || $rollup === []) {
+            return [];
+        }
+
+        uksort($rollup, static fn (string $a, string $b): int => $a === '' ? 1 : ($b === '' ? -1 : strcasecmp($a, $b)));
+
+        return array_values($rollup);
     }
 }

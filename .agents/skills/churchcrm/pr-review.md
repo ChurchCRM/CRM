@@ -170,6 +170,17 @@ gh pr review <NUMBER> --comment --body "..."
 
 ---
 
+## Phase 6.5 — Resolve addressed review comments
+
+**After posting a review or reviewing an author's fixes:**
+
+- If the author has pushed fixes addressing your comments, **resolve the threads** (GitHub UI or `gh pr` API)
+- Include a comment citing the commit SHA (e.g. "Fixed in abc123d")
+- Only leave threads open if the fix is incomplete or the concern still exists
+- This keeps PR conversations clean and shows progress through the review cycle
+
+---
+
 ## Phase 7 — Addressing review comments (author-side)
 
 When implementing review feedback on a branch you were asked to fix:

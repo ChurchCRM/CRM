@@ -42,78 +42,93 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     <!-- Overview Stats -->
     <?php if (!empty($fundTotals) || !empty($totalPledges)): ?>
-    <div class="row mb-3">
-        <!-- Total Pledges -->
+    <?php
+        $paidPercent = static fn (float $paid, float $pledged): string => $pledged > 0
+            ? ($paid / $pledged > 1 ? '>100%' : number_format(($paid / $pledged) * 100, 0) . '%')
+            : '—';
+        $stats = [
+            ['label' => gettext('Total Pledged'), 'value' => $totalPledges, 'icon' => 'fa-file-signature', 'color' => 'primary',
+             'note' => FiscalYearUtils::formatFiscalYearLabel($selectedFyid)],
+            ['label' => gettext('Total Paid'), 'value' => $totalPayments, 'icon' => 'fa-hand-holding-dollar', 'color' => 'success',
+             'note' => $paidPercent((float) $totalPayments, (float) $totalPledges) . ' ' . gettext('of pledges')],
+            ['label' => gettext('Still Owed'), 'value' => $overallTotals['underpaid'] ?? 0, 'icon' => 'fa-hourglass-half', 'color' => 'warning',
+             'note' => gettext('Pledged but not yet paid')],
+            ['label' => gettext('Overpaid'), 'value' => $overallTotals['overpaid'] ?? 0, 'icon' => 'fa-circle-plus', 'color' => 'info',
+             'note' => gettext('Paid beyond the pledge')],
+        ];
+    ?>
+    <div class="row row-cards mb-3">
+        <?php foreach ($stats as $stat): ?>
         <div class="col-6 col-lg-3">
-            <div class="card card-sm">
+            <div class="card card-sm h-100">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto">
-                            <span class="bg-primary text-white avatar rounded-circle">
-                                <i class="fa-solid fa-file-signature icon"></i>
+                            <span class="bg-<?= $stat['color'] ?> text-white avatar rounded-circle">
+                                <i class="fa-solid <?= $stat['icon'] ?> icon"></i>
                             </span>
                         </div>
                         <div class="col">
-                            <div class="fw-medium"><?= CurrencyFormatter::formatHtml($totalPledges) ?></div>
-                            <div class="text-body-secondary"><?= gettext('Total Pledges') ?> — <?= FiscalYearUtils::formatFiscalYearLabel($selectedFyid) ?></div>
+                            <div class="fw-medium"><?= CurrencyFormatter::formatHtml($stat['value']) ?></div>
+                            <div class="text-body-secondary"><?= InputUtils::escapeHTML($stat['label']) ?></div>
+                            <div class="text-body-secondary small"><?= InputUtils::escapeHTML($stat['note']) ?></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
 
-        <!-- Total Payments -->
-        <div class="col-6 col-lg-3">
-            <?php $overallPercent = $totalPledges > 0 ? ($totalPayments / $totalPledges) * 100 : 0; ?>
-            <div class="card card-sm">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <span class="bg-success text-white avatar rounded-circle">
-                                <i class="fa-solid fa-hand-holding-dollar icon"></i>
-                            </span>
-                        </div>
-                        <div class="col">
-                            <div class="fw-medium"><?= CurrencyFormatter::formatHtml($totalPayments) ?></div>
-                            <div class="text-body-secondary"><?= number_format($overallPercent, 1) ?>% <?= gettext('of pledges') ?></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Category Summary (only when at least one fund has a category) -->
+    <?php if (!empty($categoryTotals)): ?>
+    <div class="card mb-3">
+        <div class="card-status-top bg-info"></div>
+        <div class="card-header py-2">
+            <h3 class="card-title">
+                <i class="fa-solid fa-tags me-1"></i>
+                <?= gettext('Summary by Category') ?>
+            </h3>
         </div>
-
-        <!-- Fund Summary Cards -->
-        <?php if (!empty($fundTotals)): ?>
-            <?php foreach ($fundTotals as $fundTotal): ?>
-                <?php $fundPercent = $fundTotal['total_pledged'] > 0 ? ($fundTotal['total_paid'] / $fundTotal['total_pledged']) * 100 : 0; ?>
-                <div class="col-xl-3 col-md-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-status-top bg-info"></div>
-                        <div class="card-header py-2">
-                            <h3 class="card-title">
-                                <i class="fa-solid fa-donate me-1"></i>
-                                <?= InputUtils::escapeHTML($fundTotal['fund_name']) ?>
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="h3 mb-1">
-                                <?= CurrencyFormatter::formatHtml($fundTotal['total_paid']) ?>
-                            </div>
-                            <div class="text-body-secondary small mb-2">
-                                <?= gettext('of') ?> <?= CurrencyFormatter::formatHtml($fundTotal['total_pledged']) ?>
-                                (<?= number_format($fundPercent, 0) ?>%)
-                            </div>
-                            <div class="text-body-secondary small mb-2">
-                                <?= $fundTotal['family_count'] ?> <?= $fundTotal['family_count'] == 1 ? gettext('Family') : gettext('Families') ?>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: <?= min($fundPercent, 100) ?>%" aria-valuenow="<?= number_format($fundPercent, 0) ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <div class="table-responsive">
+            <table class="table table-hover table-vcenter mb-0 w-100">
+                <thead>
+                    <tr>
+                        <th><?= gettext('Category') ?></th>
+                        <th class="text-end"><?= gettext('Funds') ?></th>
+                        <th class="text-end"><?= gettext('Pledges') ?></th>
+                        <th class="text-end"><?= gettext('Payments') ?></th>
+                        <th class="text-end"><?= gettext('Overpaid') ?></th>
+                        <th class="text-end"><?= gettext('Underpaid') ?></th>
+                        <th style="min-width: 8rem;"><?= gettext('Paid') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($categoryTotals as $categoryTotal): ?>
+                        <?php $categoryPercent = $categoryTotal['total_pledged'] > 0 ? ($categoryTotal['total_paid'] / $categoryTotal['total_pledged']) * 100 : 0; ?>
+                        <tr>
+                            <td>
+                                <?= $categoryTotal['category'] !== ''
+                                    ? InputUtils::escapeHTML($categoryTotal['category'])
+                                    : '<span class="text-body-secondary">' . gettext('Uncategorized') . '</span>' ?>
+                            </td>
+                            <td class="text-end"><?= (int) $categoryTotal['fund_count'] ?></td>
+                            <td class="text-end"><?= CurrencyFormatter::formatHtml($categoryTotal['total_pledged']) ?></td>
+                            <td class="text-end"><?= CurrencyFormatter::formatHtml($categoryTotal['total_paid']) ?></td>
+                            <td class="text-end"><?= CurrencyFormatter::formatHtml($categoryTotal['overpaid']) ?></td>
+                            <td class="text-end"><?= CurrencyFormatter::formatHtml($categoryTotal['underpaid']) ?></td>
+                            <td>
+                                <div class="small text-body-secondary mb-1"><?= $paidPercent((float) $categoryTotal['total_paid'], (float) $categoryTotal['total_pledged']) ?></div>
+                                <div class="progress" title="<?= number_format($categoryPercent, 0) ?>%">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: <?= min($categoryPercent, 100) ?>%" aria-valuenow="<?= number_format($categoryPercent, 0) ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
     <?php endif; ?>
 
@@ -152,6 +167,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     </a>
                                 <?php else: ?>
                                     <?= InputUtils::escapeHTML($fundTotal['fund_name']) ?>
+                                <?php endif; ?>
+                                <?php if (($fundTotal['category'] ?? '') !== ''): ?>
+                                    <div class="small text-body-secondary"><?= InputUtils::escapeHTML($fundTotal['category']) ?></div>
                                 <?php endif; ?>
                             </td>
                             <td class="text-end" data-order="<?= InputUtils::escapeAttribute($fundTotal['total_pledged']) ?>">

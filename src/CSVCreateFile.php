@@ -365,7 +365,7 @@ if ($sFormat === 'addtocart') {
         }
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
             extract($aFamRow);
-            if (($aSecurityType[$fam_custom_FieldSec] === 'bAll') || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
+            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
                     $headers[] = $fam_custom_Name;
@@ -377,7 +377,7 @@ if ($sFormat === 'addtocart') {
     if ($sFormat === 'rollup') {
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
             extract($aFamRow);
-            if (($aSecurityType[$fam_custom_FieldSec] === 'bAll') || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
+            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
                     $headers[] = $fam_custom_Name;
@@ -604,7 +604,7 @@ if ($sFormat === 'addtocart') {
                             $type_ID = '';
 
                             extract($aCustomField);
-                            if ($aSecurityType[$custom_FieldSec] === 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
                                 if (isset($_POST["$custom_Field"])) {
                                     if ((int)$type_ID === 11) {
                                         $custom_Special = $sCountry;

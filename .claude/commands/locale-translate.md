@@ -15,6 +15,8 @@ Translate missing ChurchCRM UI terms for one or all locales.
 3. **The push uploads to POEditor** — `locale-upload-missing.yml` runs on every push to `locale/translate/**`
 4. **If any step fails, STOP and report** — do not continue without saving work
 
+**Desktop sessions** (local Claude Code, you can see the checkout) carry little loss risk: commit after every family, but push once at the end, or every few families, after the maintainer says push. Each push runs the full CI matrix and the POEditor upload. Rules 2 and 3 apply per locale only on cloud/remote agents.
+
 **Why:** Cloud/remote agent sessions can timeout at any moment. Uncommitted translations are LOST FOREVER. We have lost hours of work from agents that translated 20+ locales without committing. Reusing old branches also causes review-thread churn and can silently overwrite reviewer edits from the prior run.
 
 ---
@@ -60,7 +62,11 @@ Review the `--prefill` matches it prints, then translate only what `--export` st
 
 **For < 10 locales:** Process inline with direct git, or dispatch sub-agents per locale.
 
-**Critical:** Each sub-agent MUST apply translations before returning (see template below). If an agent only produces translations without applying, the work is lost.
+**Desktop pattern:** every locale is usually missing the same strings, so `--export` lists each English string once. Give each family agent the export file and have it write `group-X.json` (`{"fr": {"<English>": "<translation>"}}`) to the scratchpad. It must not run git or locale scripts. The parent runs `--apply-bulk`, `git add` by path (include `locale/terms/english-ok.json`), commits, then pushes. Parallel agents all writing `english-ok.json` race; one applier does not.
+
+**Shared checkout:** another session can switch the branch under you. Run `git branch --show-current` immediately before every commit and push. If other sessions use the checkout, work in a `git worktree` on the `locale/translate/*` branch and symlink `node_modules` into it so the pre-commit hooks run (never `--no-verify`).
+
+**Critical (cloud):** Each sub-agent MUST apply translations before returning (see template below). If an agent only produces translations without applying, the work is lost.
 
 ---
 
@@ -254,6 +260,15 @@ d = json.load(open('locale/terms/english-ok.json'))
 print(f\"fil: {len(d.get('fil', []))} terms\")
 "
 ```
+
+---
+
+## Lessons from review <!-- learned: 2026-09-30 -->
+
+- `--apply` rejects entries containing another script (Haiku leaked Hindi, Bengali and Japanese into ta, te, th). Rewrite the rejected entries by hand and apply again.
+- `--apply` only fills empty terms. To fix a translation already applied, edit the batch JSON directly (keep indentation and the trailing newline), then verify with `git diff -U0`.
+- Review bots caught what the script cannot: words from another language (Italian in uk, Russian in uk), "mail" rendered as e-mail, "unauthenticated" rendered as authenticated, a lost "cannot" (am), "groups" rendered as "matters" (vi). Re-read the negations, the "Mail"/"Mailing Address" strings and the access/auth strings before the first push.
+- Haiku is weakest on am, ta, te, ml. Use a stronger model or flag those files for native review.
 
 ---
 

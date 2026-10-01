@@ -14889,10 +14889,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Valittu tiedosto ylittää palvelimen suurimman sallitun latauskoon"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Tänään ei ole aikataulutettuja tapahtumia"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Pyydetyn kohteen haussa tapahtui virhe"
 
@@ -18767,4 +18763,236 @@ msgstr "etsiäksesi virheitä tämän tapahtuman aikaan ja lataa relevantit loki
 #: 
 msgid "system logs"
 msgstr "järjestelmälokit"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Pääsynvalvonta ja turvallisuus"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Salli ei-verovähennyskelpoiset maksut (esim. tavaramyynti)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Salli todentamattoman pääsyn julkisiin tapahtumiin (kalentereiden upottamista varten)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Salli vierailijat luoda omia perheeseään julkisen rekisteröintisivun kautta"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Lähetä syntymäpäivä-sähköpostit automaattisesti (vaatii taustaprosessiajoittelija)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Syntymäpäivä-tervehdysviestit"
+
+#: 
+msgid "Communication & Email"
+msgstr "Viestintä ja sähköposti"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Content Security Policy"
+
+#: 
+msgid "Email System"
+msgstr "Sähköpostijärjestelmä"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Ota käyttöön tai poista käytöstä organisaation ominaisuudet"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Ota käyttöön tai poista käytöstä Tapahtumat-osio päänavigaatiossa"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Ota käyttöön tai poista käytöstä Rahoitus-valikko ja kaikki rahoitusominaisuudet (talletukset, maksut, raportit)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Ota käyttöön tai poista käytöstä Varainkeruu-valikko"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Pakota tiukat CSP-otsikot suojautua XSS-hyökkäyksiltä vastaan"
+
+#: 
+msgid "Events Module"
+msgstr "Tapahtumamoduuli"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Ominaisuuksien kytkimet"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Ominaisuuksien kytkimet hallitsevat, mitkä moduulit ja ominaisuudet ovat saatavilla ChurchCRM:ssä. Muutokset tulevat voimaan välittömästi."
+
+#: 
+msgid "Finance Features"
+msgstr "Rahoitusominaisuudet"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Sisällytä osoitteet nopeaan globaaliin hakuun"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Sisällytä kalenteritapahtumat nopeaan globaaliin hakuun"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Sisällytä mukautetut perheominaisuudet nopeaan globaaliin hakuun"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Sisällytä talletukset nopeaan globaaliin hakuun"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Sisällytä perheet nopeaan globaaliin hakuun"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Sisällytä ministério nopeaan globaaliin hakuun"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Sisällytä maksut nopeaan globaaliin hakuun"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Sisällytä henkilöt nopeaan globaaliin hakuun"
+
+#: 
+msgid "Invalid setting"
+msgstr "Virheellinen asetus"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Salasanan palautus linkki"
+
+#: 
+msgid "Manage All Features"
+msgstr "Hallitse kaikkia ominaisuuksia"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Pääkytkin sähköpostinlähettämiseen. VAADITAAN salasanan palautukselle ja ilmoituksille"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Ei-verovähennyskelpoisia maksuja"
+
+#: 
+msgid "Primary Modules"
+msgstr "Ensisijaisia moduuleja"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Julkinen kalenterin API"
+
+#: 
+msgid "Saved"
+msgstr "Tallennettu"
+
+#: 
+msgid "Search Families"
+msgstr "Etsi perheistä"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Etsi mukautettuja perheominaisuuksia"
+
+#: 
+msgid "Search Settings"
+msgstr "Etsi asetuksia"
+
+#: 
+msgid "Self-Registration"
+msgstr "Omalta rekisteröinti"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Näytä \"Unohdettu salasana\" -vaihtoehto kirjautumisruudussa (sallii käyttäjän nollata itse)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Näytä/piilota Sunnuntaikoulu-moduuli sivupalkissa"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Ei voi poistaa käytöstä ainoaa järjestelmänvalvojaa, joka voi kirjautua"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Ei voi merkitä ainoaa järjestelmänvalvojaa, joka voi kirjautua, kuolleeksi"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Kuollut — ei voi kirjautua"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Kirjoita toinen osoite ennen kuin merkitset sen postiosoitteeksi"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Passiivinen — ei voi kirjautua"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Posti lähetetään toiseen osoitteeseen; ensisijainen osoite pysyy fyysisenä sijainti, jota käytetään karttoihin ja reittiohjeihin."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Posti lähetetään tähän osoitteeseen ensisijaisen osoitteen sijaan"
+
+#: 
+msgid "Mailing Address"
+msgstr "Postiosoite"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Postiosoite jos eri"
+
+#: 
+msgid "Primary Address"
+msgstr "Ensisijainen osoite"
+
+#: 
+msgid "Receives Mail"
+msgstr "Vastaanottaa postia"
+
+#: 
+msgid "Second Address"
+msgstr "Toinen osoite"
+
+#: 
+msgid "Second Home"
+msgstr "Toinen koti"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Linkitetty henkilö on kuollut tai passiivinen. Kirjautuminen, istunnot ja API-avain estetään, kunnes henkilö on jälleen aktiivinen."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Tämä on postiosoite"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Tämä henkilö on kuollut tai passiivinen, joten tämä tili ei voi kirjautua"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Vain järjestelmänvalvoja voi poistaa henkilön, jolla on kirjautuminen."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Viimeistä järjestelmänvalvojaa ei voi poistaa."
 

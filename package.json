@@ -58,6 +58,7 @@
         "lint:icons:tabler": "node scripts/validate-no-tabler-icons.js",
         "lint:icons:fa": "node scripts/validate-fa-icons-exist.js",
         "lint:fix": "node scripts/ensure-biome.js && biome check --write webpack/",
+        "postinstall": "node scripts/patch-cypress-split.js 2>/dev/null || true",
         "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
         "locale:lint": "node scripts/locale-check.js",
         "validate:seed-charsets": "node scripts/validate-seed-charsets.js",

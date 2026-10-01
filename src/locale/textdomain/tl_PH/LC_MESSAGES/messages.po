@@ -14887,10 +14887,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Ang napiling file ay lumagpas sa pinakamataas na sukat ng upload ng server na"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Walang mga kaganapang nakatakda para ngayon"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Nagkaroon ng problema sa pagkuha ng hiniling na object"
 
@@ -18761,4 +18757,236 @@ msgstr "para sa mga error sa paligid ng oras na ito nangyari, at i-download at i
 #: 
 msgid "system logs"
 msgstr "mga log ng sistema"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Kontrol ng Access at Seguridad"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Payagan ang pagtatala ng mga pagbabayad na hindi maaaring ibawas sa buwis (halimbawa, benta ng merchandise)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Payagan ang hindi na-authenticate na access sa mga pampublikong kaganapan (para sa pag-embed ng mga kalendaryo)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Payagan ang mga bisita na lumikha ng kanilang sariling mga talaan ng pamilya sa pamamagitan ng pampublikong pahina ng pagpaparehistro"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Awtomatikong magpadala ng mga email ng kaarawan (kailangan ng background job scheduler)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Mga Email ng Pagbati sa Kaarawan"
+
+#: 
+msgid "Communication & Email"
+msgstr "Komunikasyon at Email"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Patakaran sa Seguridad ng Nilalaman"
+
+#: 
+msgid "Email System"
+msgstr "Sistema ng Email"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Paganahin o huwaran ng pahintulot ang mga feature para sa inyong organisasyon"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Paganahin/huwaran ng pahintulot ang seksyon ng Mga Kaganapan sa pangunahing navigation"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Paganahin/huwaran ng pahintulot ang menu ng Finance at lahat ng finance features (mga deposito, mga pagbabayad, mga ulat)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Paganahin/huwaran ng pahintulot ang menu ng Fundraiser"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Ipatupad ang mahigpit na CSP headers upang protektahan laban sa mga XSS attack"
+
+#: 
+msgid "Events Module"
+msgstr "Modyul ng Mga Kaganapan"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Mga Toggle ng Feature"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Ang mga toggle ng feature ay kumokontrol kung aling mga modyul at feature ang available sa ChurchCRM. Ang mga pagbabago ay nakakaapekto kaagad."
+
+#: 
+msgid "Finance Features"
+msgstr "Mga Feature ng Finance"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Isama ang mga address sa mabilis na pandaigdigang paghahanap"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Isama ang mga kaganapan ng kalendaryo sa mabilis na pandaigdigang paghahanap"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Isama ang mga custom na property ng pamilya sa mabilis na pandaigdigang paghahanap"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Isama ang mga deposito sa mabilis na pandaigdigang paghahanap"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Isama ang mga pamilya sa mabilis na pandaigdigang paghahanap"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Isama ang mga serbisyo sa mabilis na pandaigdigang paghahanap"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Isama ang mga pagbabayad sa mabilis na pandaigdigang paghahanap"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Isama ang mga tao sa mabilis na pandaigdigang paghahanap"
+
+#: 
+msgid "Invalid setting"
+msgstr "Hindi valid na setting"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Link ng Pagtalakay ng Lihim na Numero"
+
+#: 
+msgid "Manage All Features"
+msgstr "Pamahalaan ang Lahat ng Mga Feature"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Master toggle para sa pagpadala ng email. KINAKAILANGAN para sa pagtalakay ng lihim na numero at mga notification"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Mga Pagbabayad na Hindi Maaaring Ibawas"
+
+#: 
+msgid "Primary Modules"
+msgstr "Pangunahing Mga Modyul"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Pampublikong API ng Kalendaryo"
+
+#: 
+msgid "Saved"
+msgstr "Nakatipid"
+
+#: 
+msgid "Search Families"
+msgstr "Maghanap ng Mga Pamilya"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Maghanap ng Custom Properties ng Pamilya"
+
+#: 
+msgid "Search Settings"
+msgstr "Mga Setting ng Paghahanap"
+
+#: 
+msgid "Self-Registration"
+msgstr "Sariling Pagpaparehistro"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Ipakita ang \"Nakalimutang Lihim na Numero\" na opsyon sa login screen (pinapayagan ang user na mag-reset)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Ipakita/itago ang modyul ng Sunday School sa sidebar"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Hindi maaaring i-deactivate ang tanging administrator na maaaring mag-sign in"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Hindi maaaring i-mark bilang namatay ang tanging administrator na maaaring mag-sign in"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Namatay — hindi makakasign in"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Magpasok ng pangalawang address bago i-mark ito bilang mailing address"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Inactive — hindi makakasign in"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Ang mail ay napupunta sa pangalawang address; ang pangunahing address ay nananatiling ang pisikal na lokasyon na ginagamit para sa mga mapa at direksyon."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Ang mail ay ipinapadala sa address na ito sa halip na sa pangunahing address"
+
+#: 
+msgid "Mailing Address"
+msgstr "Mailing Address"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Mailing Address kung Iba"
+
+#: 
+msgid "Primary Address"
+msgstr "Pangunahing Address"
+
+#: 
+msgid "Receives Mail"
+msgstr "Tumatanggap ng Mail"
+
+#: 
+msgid "Second Address"
+msgstr "Pangalawang Address"
+
+#: 
+msgid "Second Home"
+msgstr "Pangalawang Tahanan"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Ang naka-link na tao ay namatay o inactive. Ang sign-in, mga session, at API key ay na-block hanggang sa ang tao ay maging active muli."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Ito ang mailing address"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Ang taong ito ay namatay o inactive, kaya ang account na ito ay hindi makakasign in"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Ang tanging administrator lamang ang maaaring magbura ng isang tao na may login."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Ang huling administrator ay hindi maaaring mabura."
 

@@ -14922,10 +14922,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Το επιλεγμένο αρχείο υπερβαίνει το μέγιστο μέγεθος μεταφόρτωσης αυτού του διακομιστή"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Δεν υπάρχουν προγραμματισμένες εκδηλώσεις για σήμερα"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Παρουσιάστηκε πρόβλημα κατά την ανάκτηση του ζητούμενου αντικειμένου"
 
