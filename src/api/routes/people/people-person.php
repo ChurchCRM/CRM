@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
@@ -269,7 +270,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     ),
      *     @OA\Response(response=400, description="Invalid status value"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Cannot deactivate yourself or EditRecords role required"),
+     *     @OA\Response(response=403, description="Cannot deactivate yourself, the only administrator who can sign in, or EditRecords role required"),
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
@@ -290,6 +291,10 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
 
         $currentStatus = $person->isActive();
+
+        if ($currentStatus && $newStatus === false && (new UserService())->isLastSignInCapableAdmin((int) $person->getId())) {
+            return SlimUtils::renderErrorJSON($response, gettext("Can't deactivate the only administrator who can sign in"), [], 403);
+        }
 
         // Update only if the value is different
         if ($currentStatus !== $newStatus) {

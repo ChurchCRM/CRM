@@ -24,6 +24,9 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class User extends BaseUser
 {
+    public const SIGN_IN_BLOCKED_DECEASED = 'deceased';
+    public const SIGN_IN_BLOCKED_INACTIVE = 'inactive';
+
     private $provisional2FAKey;
 
     public function getId()
@@ -456,6 +459,45 @@ class User extends BaseUser
     public function isAddEvent(): bool
     {
         return $this->isAddEventEnabled();
+    }
+
+    /**
+     * Why this account may not sign in, based only on the user's own person
+     * record (never the family): 'deceased', 'inactive', or null when allowed.
+     * Reads the status columns fresh so a long-lived session sees later changes.
+     */
+    public function getSignInBlockedReason(): ?string
+    {
+        $status = PersonQuery::create()
+            ->filterById($this->getPersonId())
+            ->select(['DateDeceased', 'DateDeactivated'])
+            ->findOne();
+
+        if (!is_array($status)) {
+            return null;
+        }
+        if (!empty($status['DateDeceased'])) {
+            return self::SIGN_IN_BLOCKED_DECEASED;
+        }
+        if (!empty($status['DateDeactivated'])) {
+            return self::SIGN_IN_BLOCKED_INACTIVE;
+        }
+
+        return null;
+    }
+
+    public function getSignInBlockedLabel(): ?string
+    {
+        return match ($this->getSignInBlockedReason()) {
+            self::SIGN_IN_BLOCKED_DECEASED => gettext('Deceased — cannot sign in'),
+            self::SIGN_IN_BLOCKED_INACTIVE => gettext('Inactive — cannot sign in'),
+            default => null,
+        };
+    }
+
+    public function canSignIn(): bool
+    {
+        return $this->getSignInBlockedReason() === null;
     }
 
     public function isLocked(): bool
