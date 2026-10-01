@@ -213,18 +213,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: Root (${{ matrix.test-type.name }})'
         path: cypress/reports/junit-php8.5-root-${{ matrix.test-type.name }}-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -333,18 +326,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: Subdirectory (${{ matrix.test-type.name }})'
         path: cypress/reports/junit-php8.5-subdir-${{ matrix.test-type.name }}-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -427,18 +413,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: New System Setup (Root)'
         path: cypress/reports/junit-php8.5-new-system-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -523,18 +502,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: New System Setup (Subdirectory)'
         path: cypress/reports/junit-php8.5-new-system-subdir-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -625,18 +597,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: Root (locale)'
         path: cypress/reports/junit-php8.5-root-locale-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -729,18 +694,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: Subdirectory (locale)'
         path: cypress/reports/junit-php8.5-subdir-locale-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -875,18 +833,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP ${{ matrix.php-version }} / ${{ matrix.group.name }}: Upgrade from ${{ matrix.group.label }}'
         path: cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.group.name }}-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()

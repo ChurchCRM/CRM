@@ -102,15 +102,8 @@ runs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP ${{ inputs.php-version }}: ${{ inputs.deployment }} (${{ inputs.test-name }})'
         path: cypress/reports/junit-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
