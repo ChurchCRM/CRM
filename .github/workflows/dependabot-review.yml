@@ -45,12 +45,12 @@ jobs:
       pull-requests: write
     steps:
       # Base branch only — never the PR head (see header).
-      - uses: actions/checkout@v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.repository.default_branch }}
           persist-credentials: false
 
-      - uses: actions/setup-node@v7
+      - uses: ./.github/actions/setup-node
         with:
           node-version: '22'
 
