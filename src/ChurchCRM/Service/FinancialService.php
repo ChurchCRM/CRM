@@ -336,9 +336,13 @@ class FinancialService
     {
         AuthService::requireUserGroupMembership('bFinance');
         //validate that the payment options are valid
-        //If the payment method is a check, then the check number must be present, and it must not already have been used for this family
+        //If the payment method is a check and the bRequireCheckNumber setting is enabled,
+        //then the check number must be present, and it must not already have been used for this family
         //if the payment method is cash, there must not be a check number
-        if (!empty($payment->type) && $payment->type === 'Payment' && !empty($payment->iMethod) && $payment->iMethod === 'CHECK' && !isset($payment->iCheckNo)) {
+        if (SystemConfig::getBooleanValue('bRequireCheckNumber')
+            && !empty($payment->type) && $payment->type === 'Payment'
+            && !empty($payment->iMethod) && $payment->iMethod === 'CHECK'
+            && empty($payment->iCheckNo)) {
             throw new \Exception(gettext('Must specify non-zero check number'));
         }
         // detect check inconsistencies
@@ -394,7 +398,7 @@ class FinancialService
                     // (typed string) doesn't receive null and trigger a PHP 8 deprecation.
                     $famIdStr = (string) ($payment->FamilyID ?? '');
                     if ($payment->iMethod === 'CHECK') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo, $famIdStr, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo ?? 'check', $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'BANKDRAFT') {
                         $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'CREDITCARD') {
