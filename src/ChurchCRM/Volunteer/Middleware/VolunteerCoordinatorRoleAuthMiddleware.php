@@ -7,7 +7,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\BaseAuthRoleMiddleware;
 /**
  * Volunteer Management v2 (#9706): the coordinator-area gate.
  *
- * Guards the `/volunteer` coordinator MVC routes and the coordinator half of
+ * Guards the `/ministries` coordinator MVC routes and the coordinator half of
  * `/api/ministries` (design §3.2). It answers only "does this user have volunteer
  * coordination authority at all" — an administrator, a global volunteer manager, a
  * **Manage My Ministries** login that coordinates a ministry or leads a team
@@ -28,11 +28,9 @@ use ChurchCRM\Slim\Middleware\Request\Auth\BaseAuthRoleMiddleware;
  * clause restores what this class's own first paragraph always claimed: a team leader
  * has volunteer coordination authority, whatever kind of login they hold.
  *
- * Nothing about a STAFF login changes: a staff team leader holds a scope, so
- * `hasAnyScope()` already made `isVolunteerCoordinatorEnabled()` true for them.
- * And a self-service team leader still cannot open the `/volunteer` MVC area:
+ * A self-service team leader still cannot open the `/ministries` MVC area:
  * `AuthMiddleware` confines an EditSelf-exclusive browser session to `/portal`
- * and the paths `isLimitedAccessAllowedPath()` names, and `/volunteer` is not one
+ * and the paths `isLimitedAccessAllowedPath()` names, and `/ministries` is not one
  * of them. This widens the API, not the admin shell.
  */
 class VolunteerCoordinatorRoleAuthMiddleware extends BaseAuthRoleMiddleware

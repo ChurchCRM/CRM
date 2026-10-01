@@ -7,10 +7,7 @@ use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\MvcAppFactory;
 use Slim\Routing\RouteCollectorProxy;
 
-// The coordinator area of Volunteer Management v2 (epic #9701), mounted at
-// /ministries since the product-owner review of 2026-09-17: the sidebar heading,
-// the dashboard and the ministry pages all say "Ministries", so the URLs do too.
-// /volunteer/* keeps only redirects (src/volunteer/index.php). NO module-level
+// The coordinator area of Volunteer Management v2 (epic #9701). NO module-level
 // roleMiddleware: every gate is applied per route group instead (design §3.2).
 $app = MvcAppFactory::create('/ministries', [
     'dashboardUrl'  => '/ministries/dashboard',

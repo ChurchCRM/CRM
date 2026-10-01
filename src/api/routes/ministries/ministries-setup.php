@@ -42,7 +42,7 @@ use Slim\Routing\RouteCollectorProxy;
  * Gating, from the outside in (Slim `->add()` is LIFO — the last one chained
  * runs first):
  *
- *   VolunteerV2EnabledMiddleware        on the /volunteer group. Chained HERE and
+ *   VolunteerV2EnabledMiddleware        on the /ministries group. Chained HERE and
  *                                       not inherited: Slim scopes ->add() to the
  *                                       single RouteCollectorProxy it is chained
  *                                       on, so nothing propagates from the group

@@ -170,7 +170,7 @@ interface CRMVolunteerMinistryConfig {
 
 /**
  * Per-page config for S1, handed to the bundle by
- * `src/volunteer/views/dashboard.php` (issue #9711).
+ * `src/ministries/views/dashboard.php` (issue #9711).
  *
  * `isAdmin` is advisory: it says whether the settings strip was rendered at all, and
  * the server decided that. It is never used to authorize anything — every read is
@@ -185,7 +185,7 @@ interface CRMVolunteerDashboardConfig {
 
 /**
  * Per-page config for S4, handed to the bundle by
- * `src/volunteer/views/occurrence-view.php` (issue #9709).
+ * `src/ministries/views/occurrence-view.php` (issue #9709).
  *
  * `eventId` is 0 once the anchored event was deleted. It is advisory only — the page asks
  * the API whether attendance is available (`attendanceAvailable`) rather than
@@ -271,11 +271,11 @@ interface CRMNamespace {
   timeZone?: string;
   plugins?: CRMPlugins;
   plugin?: CRMPluginDefaults;
-  /** Set by src/volunteer/views/ministry-view.php (issue #9715). */
+  /** Set by src/ministries/views/ministry-view.php (issue #9715). */
   volunteerMinistry?: CRMVolunteerMinistryConfig;
-  /** Set by src/volunteer/views/dashboard.php (issue #9711). */
+  /** Set by src/ministries/views/dashboard.php (issue #9711). */
   volunteerDashboard?: CRMVolunteerDashboardConfig;
-  /** Set by src/volunteer/views/occurrence-view.php, and by the Member Portal's
+  /** Set by src/ministries/views/occurrence-view.php, and by the Member Portal's
    * teams/occurrence.html.twig, which reuses the same bundle (issues #9709, #9868). */
   volunteerOccurrence?: CRMVolunteerOccurrenceConfig;
   /** Set by the Member Portal's teams/team.html.twig (issue #9868). */

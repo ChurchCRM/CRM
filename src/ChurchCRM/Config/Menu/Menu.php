@@ -359,7 +359,7 @@ class Menu
     {
         $ministriesMenu = new MenuItem(gettext('Ministries'), '', $isCoordinator, 'fa-sitemap');
         if (!$isCoordinator) {
-            // Every /volunteer coordinator route is behind
+            // Every /ministries route is behind
             // VolunteerCoordinatorRoleAuthMiddleware; skip the lookup entirely.
             return $ministriesMenu;
         }

@@ -905,7 +905,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                      * The Volunteer v2 pane (#9711, design §3.5 / §3.8 surface 2).
                      *
                      * Read-only by design: what this person is qualified for and what
-                     * they are committed to next, each linking into /volunteer where
+                     * they are committed to next, each linking into /ministries where
                      * the change is actually made. Nothing here writes, and the V1
                      * pane above — including every one of its ids — is untouched.
                      *

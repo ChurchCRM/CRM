@@ -10,12 +10,8 @@ use Slim\Exception\HttpNotFoundException;
  * The volunteer's own two pages, inside the portal (MP6, #9867; Member Portal
  * design §5.4 / P15, Volunteer v2 design §5.6).
  *
- * They used to be `/volunteer/my-schedule` and `/volunteer/opportunities`,
- * rendered by `src/volunteer/routes/member.php` into the ADMIN shell — which is
- * exactly the thing the portal exists to stop a member ever seeing. Only the
- * chrome moved: the templates reproduce the container ids the two existing
- * bundles look for, and `webpack/ministries/{my-schedule,opportunities,member-ui}.ts`
- * and `/api/ministries/me/*` are untouched.
+ * The templates reproduce the container ids that
+ * `webpack/portal/volunteer-{schedule,opportunities}.ts` look for.
  *
  * **No role gate here either, and for the same reason as before** (volunteer
  * design §3.2): every authenticated person is potentially a volunteer, so a gate

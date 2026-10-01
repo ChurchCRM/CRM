@@ -213,15 +213,8 @@ class AuthMiddleware implements MiddlewareInterface
      *    route behind it derives the acting person from the session and accepts
      *    no personId.
      *
-     * The two Volunteer v2 MVC pages that used to be listed beside that API —
-     * `/volunteer/my-schedule` and `/volunteer/opportunities` — moved into the
-     * portal with MP6 (#9867), so the `/portal` prefix above covers them and
-     * they are no longer exempt. `/api/ministries/me/` stays: the portal's
-     * volunteering templates load the same two bundles, and those bundles call
-     * exactly that API. An old link to either retired URL therefore lands a
-     * self-service member on `/portal/` rather than on the page itself — one
-     * click from their schedule, and the price of the member surface having
-     * exactly one home (design §0.2).
+     * The Volunteer v2 member pages are portal pages (MP6, #9867), covered by the
+     * `/portal` prefix above; their bundles call `/api/ministries/me/`.
      *
      * **The team-leader exemption (#9868).** A self-service login that holds a
      * volunteer `team` scope may reach the whole of `/api/ministries/`, not just
@@ -229,7 +222,7 @@ class AuthMiddleware implements MiddlewareInterface
      * reachable: My Teams (MP7) is a portal page, and everything on it — the
      * qualification grid, the schedules, the occurrences, the assignments — is
      * served by the coordinator half of that API. It widens the API surface and
-     * nothing else: `/volunteer` (the admin MVC area) is still not on this list,
+     * nothing else: `/ministries` (the admin MVC area) is still not on this list,
      * so such a login is still bounced to `/portal/` if it asks for one of those
      * pages. What the API then LETS them do is decided exactly where it was
      * before — `VolunteerTeam/Position/Schedule/Occurrence/AssignmentMiddleware`

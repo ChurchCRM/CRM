@@ -7,8 +7,7 @@
 //     design's §5.9 mobile rule: 44px is the minimum touch target on the
 //     accept / decline / sign-up controls, and below `sm` those buttons are a
 //     full-width stack rather than a row. The markup they style is rendered by
-//     `webpack/volunteer/{my-schedule,opportunities}.ts`, which did not change
-//     when the pages moved, so neither may these class names.
+//     `webpack/portal/volunteer-{schedule,opportunities}.ts`.
 //   * `.portal-subnav` — the "My schedule" / "Find something to do" tabs the
 //     portal puts in place of the two sidebar entries the admin shell carried.
 //
