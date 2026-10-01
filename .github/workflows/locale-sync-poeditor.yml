@@ -93,7 +93,7 @@ jobs:
         exit 1
 
     - name: Checkout repository
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
       with:
         ref: master
 
@@ -146,7 +146,7 @@ jobs:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
       with:
         # the newest master once this job holds the work lock, not the commit that started the run
         ref: master
@@ -324,7 +324,7 @@ jobs:
       pull-requests: write
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
       with:
         # the master commit the download was based on
         ref: ${{ needs.download.outputs.ref_sha }}
