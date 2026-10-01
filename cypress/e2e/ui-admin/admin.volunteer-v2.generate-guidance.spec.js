@@ -1,9 +1,10 @@
 /// <reference types="cypress" />
 
 /**
- * Volunteer v2 D30 — telling the coordinator why nothing was generated, and never duplicating a
- * schedule. The Generate dialog's amber warning and its New recurring event button, the schedule
- * dialog's class and title warnings, and the Staff these events hint. Design §0.8 D30, §5.4.
+ * Volunteer v2 D30 — telling the coordinator why nothing was generated. The Generate dialog's amber
+ * warning and its New recurring event button, and the schedule dialog's class and title warnings.
+ * Design §0.8 D30, §5.4. New events going to the schedule that already follows them is "Staff them"
+ * since D33, in `admin.volunteer-v2.ministry-events.spec.js`.
  *
  * Fixtures go in through the admin API. Order in every hook is fixture → login → visit, because
  * cy.request() rotates the PHP session cookie. Since D31 a schedule is only created while an event
@@ -100,7 +101,7 @@ function openGenerateDialog(id) {
     cy.get("#generate-form-warning").should("not.be.visible");
 }
 
-describe("Volunteer v2 D30 — why nothing was generated, and one schedule per class", () => {
+describe("Volunteer v2 D30 — why nothing was generated", () => {
     before(() => {
         admin("POST", SETTING_URL, { value: "v2" });
         cleanupFixtures();
@@ -282,7 +283,6 @@ describe("Volunteer v2 D30 — why nothing was generated, and one schedule per c
         cy.get("#ministry-event-form-series").should("be.checked");
         cy.get("#ministry-event-form-class").should("have.value", String(classId));
         cy.get("#ministry-event-form-title").should("have.value", CLASS_NAME);
-        cy.get("#ministry-event-form-staff-toggle").should("not.be.checked");
 
         cy.get("#ministry-event-form-type").select("Church Service");
         cy.get("#ministry-event-form-dow").select(WEEKDAYS[localDate(3).getDay()]);
@@ -295,7 +295,10 @@ describe("Volunteer v2 D30 — why nothing was generated, and one schedule per c
             expect(request.body).not.to.have.property("staff");
             expect(response.statusCode).to.eq(201);
         });
-        cy.get(".notyf__toast--success").should("contain", `Generate occurrences on "${SCHEDULE_NAME}" to staff them`);
+        // D33: asked whether to staff them; left to Generate here.
+        cy.get(".ministry-event-staff-prompt").should("be.visible").and("contain", `${CLASS_NAME} events created. Staff them now?`);
+        cy.contains(".ministry-event-staff-prompt button", "Not now").click();
+        cy.get(".ministry-event-staff-prompt").should("not.exist");
     });
 
     it("reports new occurrences as a success and a run that finds them all there as neutral", () => {
@@ -313,50 +316,6 @@ describe("Volunteer v2 D30 — why nothing was generated, and one schedule per c
         cy.get("#generateOccurrencesModal").should("not.be.visible");
         // An info toast carries no type class of its own; its icon says what it is.
         cy.contains(".notyf__toast", "No new occurrences").should("not.have.class", "notyf__toast--success").find(".fa-circle-info");
-    });
-
-    it("says new class events go to the team's schedule and keeps only Fill by default with", () => {
-        cy.visit(`/ministries/${ministryId}`);
-        cy.get("#nav-item-calendar").click();
-        cy.get("#ministry-events-loading").should("not.be.visible");
-        cy.get("#ministry-event-add-series-btn").click();
-        cy.get("#ministryEventModal").should("be.visible");
-        cy.get("#ministry-event-form-title").should("have.focus").type(`${PREFIX} Faith City Summer`);
-        cy.get("#ministry-event-form-type").select("Church Service");
-        cy.get("#ministry-event-form-dow").select(WEEKDAYS[localDate(3).getDay()]);
-        cy.get("#ministry-event-form-range-start").clear().type(isoDate(31));
-        cy.get("#ministry-event-form-range-end").clear().type(isoDate(60));
-        cy.get("#ministry-event-form-staff-toggle").check({ force: true });
-        cy.get("#ministry-event-form-staff").scrollIntoView().should("be.visible");
-        cy.get("#ministry-event-form-class").should("have.value", String(classId));
-
-        cy.get("#ministry-event-form-reuse")
-            .should("be.visible")
-            .and("have.text", `These events will be added to "${SCHEDULE_NAME}" and staffed with its needs.`);
-        cy.get("#ministry-event-form-plan").should("not.be.visible");
-        cy.get("#ministry-event-form-offsets").should("not.be.visible");
-        cy.get(`#ministry-event-form-defaults .generate-default-row[data-position-id="${positionId}"]`).should("exist");
-
-        cy.get("#ministry-event-form-class").select("");
-        cy.get("#ministry-event-form-reuse").should("not.be.visible");
-        cy.get("#ministry-event-form-plan").scrollIntoView().should("be.visible");
-        cy.get("#ministry-event-form-class").select(String(classId));
-        cy.get("#ministry-event-form-reuse").scrollIntoView().should("be.visible");
-
-        cy.intercept("POST", `**/api/ministries/ministries/${ministryId}/events`).as("create");
-        cy.get("#ministry-event-form-save").click();
-        cy.wait("@create").then(({ request, response }) => {
-            expect(request.body.staff.teamId).to.eq(teamId);
-            expect(request.body.staff).not.to.have.property("requirements");
-            expect(response.statusCode).to.eq(201);
-            expect(response.body.reusedSchedule).to.eq(true);
-            expect(response.body.schedule.id).to.eq(scheduleId);
-        });
-        cy.get(".notyf__toast--success").should("contain", `Added to "${SCHEDULE_NAME}"`);
-        cy.dbQuery("SELECT COUNT(*) AS n FROM volunteer_schedule_vsch WHERE vsch_vtem_ID = ? AND vsch_grp_ID = ?", [
-            teamId,
-            classId,
-        ]).then((result) => expect(Number(result.rows[0].n)).to.eq(1));
     });
 
     it("shows the portal's team leader the warning without the button", () => {

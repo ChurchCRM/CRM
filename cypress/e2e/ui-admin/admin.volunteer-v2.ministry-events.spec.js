@@ -2,7 +2,9 @@
 
 /**
  * Volunteer v2 — the ministry page's Calendar tab (D24), the headcount card on an occurrence
- * page (D26) and the class defaults of a class-linked team (D23 d). Design §5.4, §5.5.
+ * page (D26) and the class defaults of a class-linked team (D23 d). Since D33 the New event dialog
+ * only creates events, then asks whether to staff them: one event opens Staff an event, a series
+ * goes to the schedules that follow it, or opens Add schedule for it. Design §5.4, §5.5.
  *
  * Fixtures go in through the admin API, counts straight into `eventcounts_evtcnt`. Order in
  * every hook is fixture → login → visit, because cy.request() rotates the PHP session cookie.
@@ -17,6 +19,8 @@ const MINISTRY_NAME = `${PREFIX} Grounds`;
 const CLASS_NAME = `${PREFIX} Faith City`;
 const ONE_OFF = `${PREFIX} Workday`;
 const SERIES = `${PREFIX} Breakfast`;
+const LATE_SERIES = `${PREFIX} Late Breakfast`;
+const PICNIC = `${PREFIX} Picnic`;
 const PAST = `${PREFIX} Spring Cleanup`;
 const POOL_MEMBER = 8;
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -50,6 +54,52 @@ function isoDate(offsetDays) {
     const d = localDate(offsetDays);
     const pad = (n) => String(n).padStart(2, "0");
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+/** `YYYY-MM-DD` as the page's shortDate() writes it. */
+function shortDate(iso) {
+    const date = new Date(`${iso}T12:00:00`);
+    return date.toLocaleDateString(undefined, {
+        month: "short",
+        day: "numeric",
+        year: date.getFullYear() === new Date().getFullYear() ? undefined : "numeric",
+    });
+}
+
+function oneYearAfter(iso) {
+    const date = new Date(`${iso}T12:00:00`);
+    date.setFullYear(date.getFullYear() + 1);
+    const pad = (n) => String(n).padStart(2, "0");
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
+/** How many days in [from, to] fall on the weekday of day `of`. */
+function weekdaysBetween(of, from, to) {
+    let count = 0;
+    for (let offset = from; offset <= to; offset++) {
+        if (localDate(offset).getDay() === localDate(of).getDay()) {
+            count++;
+        }
+    }
+    return count;
+}
+
+/** Fill New recurring event for a weekly series on the weekday of day `from`. */
+function fillWeekly(title, from, to) {
+    cy.get("#ministry-event-add-series-btn").click();
+    // The dialog opens once its choices have loaded.
+    cy.get("#ministryEventModal", { timeout: 15000 }).should("be.visible");
+    cy.get("#ministry-event-form-title").should("have.focus").type(title);
+    cy.get("#ministry-event-form-type").select("Church Service");
+    cy.get("#ministry-event-form-recur-type").select("weekly");
+    cy.get("#ministry-event-form-dow").select(WEEKDAYS[localDate(from).getDay()]);
+    cy.get("#ministry-event-form-range-start").clear().type(isoDate(from));
+    cy.get("#ministry-event-form-range-end").clear().type(isoDate(to));
+}
+
+/** The question asked after Create (D33). */
+function staffPrompt() {
+    return cy.get(".ministry-event-staff-prompt", { timeout: 15000 }).should("be.visible");
 }
 
 function eventIdTitled(title) {
@@ -167,7 +217,8 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         cy.get("#ministry-event-form-end-time").clear().type("12:00");
         cy.get(`#ministry-event-form-calendars .ministry-event-calendar[value="${calendarId}"]`).should("be.checked");
         cy.get("#ministry-event-form-series-fields").should("not.be.visible");
-        cy.get("#ministry-event-form-staff").should("not.be.visible");
+        cy.get("#ministryEventModal").should("not.contain", "Staff these events");
+        cy.get("#ministry-event-form-staff-toggle, #ministry-event-form-team, #ministry-event-form-needs").should("not.exist");
 
         cy.intercept("POST", `**/api/ministries/ministries/${ministryId}/events`).as("create");
         cy.get("#ministry-event-form-save").click();
@@ -179,6 +230,11 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         });
         cy.get("#ministryEventModal").should("not.be.visible");
 
+        staffPrompt().should("contain", `${ONE_OFF} on ${shortDate(isoDate(4))} created. Staff it now?`);
+        cy.contains(".ministry-event-staff-prompt button", "Not now").click();
+        cy.get(".ministry-event-staff-prompt").should("not.exist");
+        cy.get("#staffEventModal").should("not.be.visible");
+
         cy.contains("#volunteerMinistryEventsTable tbody tr", ONE_OFF).within(() => {
             cy.contains(`${isoDate(4)} 09:00 – 12:00`);
             cy.contains(".badge", MINISTRY_NAME);
@@ -186,62 +242,117 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         });
     });
 
-    it("creates a staffed weekly series, previewing its dates and defaulting to the team's class (D23 d)", () => {
-        const dow = WEEKDAYS[localDate(3).getDay()];
-        let expected = 0;
-        for (let offset = 1; offset <= 29; offset++) {
-            if (localDate(offset).getDay() === localDate(3).getDay()) {
-                expected++;
-            }
-        }
-
+    it("starts a series' Last date a year after its first date, follows the first date until it is chosen, and refuses a blank", () => {
         openCalendarTab();
         cy.get("#ministry-event-add-series-btn").click();
         cy.get("#ministryEventModal").should("be.visible");
-        cy.get("#ministryEventModalTitle").should("have.text", "New recurring event");
-        cy.get("#ministry-event-form-title").should("have.focus").type(SERIES);
-        cy.get("#ministry-event-form-type").select("Church Service");
-        cy.get("#ministry-event-form-recur-type").select("weekly");
-        cy.get("#ministry-event-form-dow").select(dow);
-        cy.get("#ministry-event-form-range-start").clear().type(isoDate(1));
-        cy.get("#ministry-event-form-range-end").clear().type(isoDate(29));
-        cy.get("#ministry-event-form-preview").should("be.visible").and("contain", `Creates ${expected} events`);
+        cy.get("#ministry-event-form-title").should("have.focus");
+        cy.get("#ministry-event-form-range-start").should("have.value", isoDate(1));
+        cy.get("#ministry-event-form-range-end").should("have.value", oneYearAfter(isoDate(1)));
+        cy.get("#ministry-event-form-range-end").should("have.attr", "required");
 
-        cy.get("#ministry-event-form-class").should("have.value", "");
-        cy.get("#ministry-event-form-staff-toggle").check({ force: true });
-        // The dialog body scrolls, and Cypress counts what is scrolled out of it as hidden.
-        cy.get("#ministry-event-form-staff").scrollIntoView().should("be.visible");
-        cy.get("#ministry-event-form-class").should("have.value", String(classId));
-        cy.get(`#ministry-event-form-needs .volunteer-need-row[data-position-id="${positionId}"] .volunteer-need-check`).should(
-            "be.checked",
-        );
-        cy.get(`#ministry-event-form-defaults .generate-default-row[data-position-id="${positionId}"] select.generate-default-select`)
-            .should("exist")
-            .select(String(POOL_MEMBER), { force: true });
-        cy.get(`#ministry-event-form-defaults .generate-default-row[data-position-id="${positionId}"] .generate-default-accepted`).check({
-            force: true,
-        });
+        cy.get("#ministry-event-form-range-start").clear().type(isoDate(10));
+        cy.get("#ministry-event-form-range-end").should("have.value", oneYearAfter(isoDate(10)));
+
+        cy.get("#ministry-event-form-range-end").clear().blur();
+        cy.get("#ministry-event-form-range-end").should("have.value", oneYearAfter(isoDate(10)));
+        cy.get("#ministry-event-form-range-end-note")
+            .should("be.visible")
+            .and("contain", `A recurring event needs a last date, so it is back to ${shortDate(oneYearAfter(isoDate(10)))}.`);
+
+        cy.get("#ministry-event-form-range-end").clear().type(isoDate(40)).blur();
+        cy.get("#ministry-event-form-range-end-note").should("not.be.visible");
+        cy.get("#ministry-event-form-range-start").clear().type(isoDate(12));
+        cy.get("#ministry-event-form-range-end").should("have.value", isoDate(40));
+        cy.get("#ministryEventModal .btn-outline-secondary[data-bs-dismiss='modal']").click();
+        cy.get("#ministryEventModal").should("not.be.visible");
+    });
+
+    it("creates a weekly series and, with no schedule following it, opens Add schedule for its class; Save lands on Occurrences (D33)", () => {
+        const expected = weekdaysBetween(3, 1, 29);
+
+        openCalendarTab();
+        fillWeekly(SERIES, 3, 29);
+        cy.get("#ministry-event-form-preview").should("be.visible").and("contain", `Creates ${expected} events`);
+        cy.get("#ministry-event-form-class").should("have.value", "").select(String(classId));
 
         cy.intercept("POST", `**/api/ministries/ministries/${ministryId}/events`).as("create");
+        cy.intercept("POST", `**/api/ministries/ministries/${ministryId}/events/staff`).as("staff");
         cy.get("#ministry-event-form-save").click();
         cy.wait("@create").then(({ request, response }) => {
-            expect(request.body.recurrence).to.deep.eq({ type: "weekly", dow });
+            expect(request.body.recurrence).to.deep.eq({ type: "weekly", dow: WEEKDAYS[localDate(3).getDay()] });
             expect(request.body.linkedGroupId).to.eq(classId);
-            expect(request.body.staff.teamId).to.eq(teamId);
-            expect(request.body.staff.defaults).to.deep.eq([{ positionId, personId: POOL_MEMBER, accepted: true }]);
-            expect(response.statusCode).to.eq(201);
             expect(response.body.events).to.have.length(expected);
-            expect(response.body.schedule.linkMode).to.eq("class");
         });
         cy.get("#ministryEventModal").should("not.be.visible");
 
-        cy.get("#volunteerMinistryEventsTable tbody tr")
-            .filter(`:contains("${SERIES}")`)
-            .should("have.length", expected)
-            .each(($row) => {
-                cy.wrap($row).find(".ministry-event-staffing").should("have.attr", "data-status", "filled");
-                cy.wrap($row).contains(".badge", CLASS_NAME);
-            });
+        staffPrompt().should("contain", `${expected} ${SERIES} events created. Staff them now?`);
+        cy.contains(".ministry-event-staff-prompt button", "Staff them").click();
+        cy.wait("@staff").its("response.body.schedules").should("deep.eq", []);
+
+        cy.get("#nav-item-schedules").should("have.class", "active");
+        cy.get("#scheduleModal").should("be.visible");
+        cy.get("#scheduleModalTitle").should("have.text", "Add schedule");
+        cy.get("#schedule-form-name").should("have.value", SERIES);
+        cy.get("#schedule-form-team").should("have.value", String(teamId));
+        cy.get("#schedule-form-link-mode").should("have.value", "class");
+        cy.get("#schedule-form-group").should("have.value", String(classId));
+        cy.get(`#schedule-form-needs .volunteer-need-row[data-position-id="${positionId}"] .volunteer-need-check`).should("be.checked");
+
+        cy.intercept("POST", `**/api/ministries/ministries/${ministryId}/schedules`).as("schedule");
+        cy.get("#schedule-form-save").click();
+        cy.wait("@schedule").its("response.body.generated").should("include", { created: expected, noEvents: false });
+        cy.get("#scheduleModal").should("not.be.visible");
+        cy.get(".notyf__toast--success").should("contain", `Schedule "${SERIES}" created: ${expected} occurrences`);
+
+        cy.get("#nav-item-occurrences").should("have.class", "active");
+        cy.get("#occurrence-event-filter").should("have.value", SERIES);
+        cy.get("#occurrence-team-filter").should("have.value", String(teamId));
+        cy.get("#volunteerOccurrencesTable tbody tr").should("have.length", expected);
+    });
+
+    it("sends a later series to the schedule that follows its class and shows what that made (D33)", () => {
+        const expected = weekdaysBetween(31, 31, 50);
+
+        openCalendarTab();
+        fillWeekly(LATE_SERIES, 31, 50);
+        cy.get("#ministry-event-form-class").select(String(classId));
+        cy.intercept("POST", `**/api/ministries/ministries/${ministryId}/events/staff`).as("staff");
+        cy.get("#ministry-event-form-save").click();
+        cy.get("#ministryEventModal").should("not.be.visible");
+
+        staffPrompt().should("contain", `${expected} ${LATE_SERIES} events created. Staff them now?`);
+        cy.contains(".ministry-event-staff-prompt button", "Staff them").click();
+        cy.wait("@staff").then(({ response }) => {
+            expect(response.body.schedules.map((run) => [run.schedule.name, run.created])).to.deep.eq([[SERIES, expected]]);
+        });
+        cy.get(".notyf__toast--success").should("contain", `"${SERIES}": ${expected} occurrences created`);
+        cy.get("#nav-item-occurrences").should("have.class", "active");
+        cy.get("#occurrence-event-filter").should("have.value", LATE_SERIES);
+        cy.get("#volunteerOccurrencesTable tbody tr").should("have.length", expected);
+        cy.get("#scheduleModal").should("not.be.visible");
+    });
+
+    it("opens Staff an event with a new one-time event chosen when asked to staff it", () => {
+        openCalendarTab();
+        cy.get("#ministry-event-add-btn").click();
+        cy.get("#ministryEventModal").should("be.visible");
+        cy.get("#ministry-event-form-title").should("have.focus").type(PICNIC);
+        cy.get("#ministry-event-form-date").clear().type(isoDate(6));
+        cy.get("#ministry-event-form-save").click();
+        cy.get("#ministryEventModal").should("not.be.visible");
+
+        staffPrompt().should("contain", `${PICNIC} on ${shortDate(isoDate(6))} created. Staff it now?`);
+        cy.contains(".ministry-event-staff-prompt button", "Staff them").click();
+        eventIdTitled(PICNIC).then(([eventId]) => {
+            cy.get("#staffEventModal").should("be.visible");
+            cy.get("#staff-event-form-event").should("have.value", String(eventId));
+        });
+        cy.get("#staff-event-form-save").click();
+        cy.get("#staffEventModal").should("not.be.visible");
+        cy.contains("#volunteerMinistryEventsTable tbody tr", PICNIC)
+            .find(".ministry-event-staffing")
+            .should("have.attr", "data-status", "gap");
     });
 
     it("staffs an event from its row through the Staff an event dialog", () => {

@@ -163,7 +163,6 @@ function openSchedulesTab() {
 function fillScheduleBasics(name) {
     cy.get("#schedule-form-name").clear().type(name);
     cy.get("#schedule-form-team").select(TEAM_NAME);
-    cy.get("#schedule-form-window-start").clear().type(isoDate(0));
     // "Church events of a type" lists the church's event types from the core
     // endpoint, which answers `{ EventTypes: [...] }` (fixed 2026-09-18); the seed
     // carries Church Service and Sunday School.
@@ -177,6 +176,8 @@ function fillScheduleBasics(name) {
     cy.get("#schedule-form-title-filter option").first().should("have.value", "").and("be.disabled").and("contain", "Choose an event");
     cy.get(`#schedule-form-title-filter option[value="${WEDNESDAY_EVENTS}"]`).should("exist");
     cy.get("#schedule-form-title-filter").select(WEDNESDAY_EVENTS);
+    // The dates and needs show once the event is chosen.
+    cy.get("#schedule-form-window-start").clear().type(isoDate(0));
 }
 
 /** Generate this schedule's occurrences through the API and return the first id. */
@@ -361,7 +362,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
 
         it("re-renders the rows when the team changes", () => {
             cy.get("#schedule-add-btn").click();
-            cy.get("#schedule-form-team").select(TEAM_NAME);
+            fillScheduleBasics(`${PREFIX} Team Change`);
             cy.get("#schedule-form-needs .volunteer-need-row").should("have.length", 2);
 
             // The ministry's OTHER team — the one it was created with — owns no
@@ -617,6 +618,8 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                 `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
                 followBody(`${PREFIX} Generate Dialog`, THURSDAY_EVENTS, {
                     windowEnd: isoDate(21),
+                    // Saved paused, so its Save makes no occurrences (D33): this dialog's run makes them.
+                    active: false,
                     requirements: [
                         { positionId: posLead, minCount: 1, maxCount: 1 },
                         { positionId: posHelper, minCount: 1, maxCount: 2 },
@@ -625,6 +628,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                 201,
             ).then((created) => {
                 scheduleId = created.body.schedule.id;
+                cy.makePrivateAdminAPICall("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}`, { active: true }, 200);
             });
             cy.then(freshAdminLogin);
             openSchedulesTab();

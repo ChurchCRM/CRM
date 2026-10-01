@@ -400,7 +400,7 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
             });
         });
 
-        it("creates a schedule, generates its dates, and staffs one of them", () => {
+        it("creates a schedule, whose Save generates its dates, and staffs one of them", () => {
             leaderLogin();
             cy.visit(`${TEAMS_URL}/${teamLed}`);
 
@@ -410,12 +410,13 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
             cy.get("#scheduleModal", { timeout: 10000 }).should("be.visible");
 
             cy.get("#schedule-form-name").clear().type(SCHEDULE_NAME);
-            cy.get("#schedule-form-window-start").clear().type(isoDate(0));
-            cy.get("#schedule-form-window-end").clear().type(isoDate(28));
             cy.get("#schedule-form-link-mode").select("event_type");
             cy.get("#schedule-form-event-type").select("Church Service");
             cy.get(`#schedule-form-title-filter option[value="${SUNDAY_EVENTS}"]`, { timeout: 10000 }).should("exist");
             cy.get("#schedule-form-title-filter").select(SUNDAY_EVENTS);
+            // The dates show once the event is chosen.
+            cy.get("#schedule-form-window-start").clear().type(isoDate(0));
+            cy.get("#schedule-form-window-end").clear().type(isoDate(28));
             cy.get("#schedule-form-save").click();
 
             cy.get("#volunteerSchedulesTable tbody tr", { timeout: 15000 }).should(
@@ -423,21 +424,10 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
                 SCHEDULE_NAME,
             );
 
-            // ── its dates ───────────────────────────────────────────────────────
-            // The generate action lives behind the row's dropdown menu.
-            cy.get("#volunteerSchedulesTable tbody tr")
-                .contains(SCHEDULE_NAME)
-                .closest("tr")
-                .find("[data-bs-toggle='dropdown']")
-                .click();
-            cy.get(".volunteer-schedule-generate").first().click();
-            // The Generate occurrences dialog (2026-09-18): no defaults, just generate.
-            cy.get("#generateOccurrencesModal", { timeout: 10000 }).should("be.visible");
-            cy.get("#generate-form-loading").should("not.be.visible");
-            cy.get("#generate-form-save").should("be.enabled").click();
-            cy.get("#generateOccurrencesModal").should("not.be.visible");
-
-            cy.get("#nav-item-occurrences").click();
+            // ── its dates: Save generated them and lands on them (D33) ──────────
+            cy.get("#nav-item-occurrences", { timeout: 15000 }).should("have.class", "active");
+            cy.get(".notyf__toast--success").should("contain", `Schedule "${SCHEDULE_NAME}" created`);
+            cy.get("#occurrence-event-filter").should("have.value", SCHEDULE_NAME);
             cy.get("#volunteerOccurrencesTable tbody tr", { timeout: 15000 }).should(
                 "have.length.at.least",
                 1,

@@ -137,6 +137,8 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
                     linkMode: "ministry",
                     titleFilter: SERVICE,
                     windowStart: isoDate(0),
+                    // Saved paused, so its Save makes no occurrences (D33) and Generate is what staffs them here.
+                    active: false,
                     requirements: [
                         { positionId: position.lead, minCount: 1, maxCount: 1 },
                         { positionId: position.reader, minCount: 1, maxCount: 1 },
@@ -145,6 +147,7 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
                 201,
             ).then((resp) => {
                 scheduleId = resp.body.schedule.id;
+                admin("POST", `/api/ministries/schedules/${scheduleId}`, { active: true });
             });
         });
     });

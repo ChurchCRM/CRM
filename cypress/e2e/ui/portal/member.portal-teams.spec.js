@@ -369,7 +369,7 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                 });
             });
 
-            it("Creates a schedule for the team, generates its dates and staffs one", () => {
+            it("Creates a schedule for the team, whose Save generates its dates, and staffs one", () => {
                 login(LEADER_USERNAME, LEADER_PASSWORD);
                 cy.visit(`${TEAMS_URL}/${teamLed}`);
 
@@ -379,30 +379,23 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                 cy.get("#scheduleModal", { timeout: 10000 }).should("be.visible");
 
                 cy.get("#schedule-form-name").clear().type(`${PREFIX} Greeters — Sunday`);
-                cy.get("#schedule-form-window-start").clear().type(isoDate(0));
-                cy.get("#schedule-form-window-end").clear().type(isoDate(28));
                 cy.get("#schedule-form-link-mode").select("ministry");
                 cy.get("#schedule-form-event-type-row").should("not.be.visible");
                 cy.get(`#schedule-form-title-filter option[value="${PREFIX} Greeters Sunday"]`, { timeout: 10000 }).should(
                     "exist",
                 );
                 cy.get("#schedule-form-title-filter").select(`${PREFIX} Greeters Sunday`);
+                // The dates show once the event is chosen.
+                cy.get("#schedule-form-window-start").clear().type(isoDate(0));
+                cy.get("#schedule-form-window-end").clear().type(isoDate(28));
                 cy.get("#schedule-form-save").click();
 
                 cy.get("#volunteerSchedulesTable tbody tr", { timeout: 15000 })
                     .should("contain.text", `${PREFIX} Greeters — Sunday`);
 
-                // ── generate ──
-                cy.get("#volunteerSchedulesTable tbody tr")
-                    .first()
-                    .find("[data-bs-toggle='dropdown']")
-                    .click();
-                cy.get(".volunteer-schedule-generate").first().click();
-                // The Generate occurrences dialog (2026-09-18): no defaults, just generate.
-                cy.get("#generateOccurrencesModal", { timeout: 10000 }).should("be.visible");
-                cy.get("#generate-form-loading").should("not.be.visible");
-                cy.get("#generate-form-save").should("be.enabled").click();
-                cy.get("#generateOccurrencesModal").should("not.be.visible");
+                // ── Save generated its dates and lands on them (D33) ──
+                cy.get("#nav-item-occurrences", { timeout: 15000 }).should("have.class", "active");
+                cy.get("#occurrence-event-filter").should("have.value", `${PREFIX} Greeters — Sunday`);
 
                 cy.then(() => {
                     dbOk(
@@ -416,7 +409,6 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
                 });
 
                 // ── staff one ──
-                cy.get("#nav-item-occurrences").click();
                 cy.get("#volunteerOccurrencesTable tbody tr td a", { timeout: 15000 })
                     .first()
                     .click();
