@@ -357,7 +357,7 @@ export function tText(key: string, vars?: Record<string, unknown>): string {
 }
 
 /** ChurchCRM's configured locale (`en_US`) as a BCP 47 tag (`en-US`); the browser's when unset or unknown. */
-function appLocale(): string | undefined {
+export function appLocale(): string | undefined {
   const tag = window.CRM?.locale?.replace("_", "-");
   if (!tag) {
     return undefined;
@@ -369,16 +369,81 @@ function appLocale(): string | undefined {
   }
 }
 
-/** A `YYYY-MM-DD` date as a short month and day in ChurchCRM's locale, with the year when it is not this year. */
+const WALL_CLOCK = /^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2}))?/;
+const CLOCK_TIME = /(?:^|[T ])(\d{2}):(\d{2})/;
+
+/**
+ * A stored `Y-m-d[ H:i[:s]]` value, formatted in ChurchCRM's locale, with the year when it
+ * is not this year; anything unparseable comes back as it was.
+ *
+ * Stored values are already church wall-clock time (F24). The parts are put into a UTC
+ * Date and formatted in UTC, so the browser's own time zone can never shift them.
+ */
+export function formatWallClock(value: string, options: Intl.DateTimeFormatOptions): string {
+  const match = WALL_CLOCK.exec(value);
+  if (!match) {
+    return value;
+  }
+  const [year, month, day, hour, minute] = match.slice(1).map((part) => Number(part ?? 0));
+  if (month < 1 || month > 12 || day < 1 || day > 31) {
+    return value;
+  }
+  const date = new Date(Date.UTC(year, month - 1, day, hour, minute));
+
+  return new Intl.DateTimeFormat(appLocale(), {
+    year: year === new Date().getFullYear() ? undefined : "numeric",
+    ...options,
+    timeZone: "UTC",
+  }).format(date);
+}
+
+/** A `YYYY-MM-DD` date as a short month and day in ChurchCRM's locale ("Oct 1", "Oct 1, 2025"). */
 export function shortDate(iso: string): string {
-  const date = new Date(`${iso.slice(0, 10)}T12:00:00`);
-  if (Number.isNaN(date.getTime())) {
-    return iso;
+  return formatWallClock(iso, { month: "short", day: "numeric" });
+}
+
+/** A `Y-m-d H:i:s` date-time as "Oct 1, 2:12 PM" ("Oct 1, 2025, 2:12 PM"); a bare date as `shortDate()`. */
+export function shortDateTime(iso: string): string {
+  if (!CLOCK_TIME.test(iso.slice(10))) {
+    return shortDate(iso);
   }
 
-  return date.toLocaleDateString(appLocale(), {
-    month: "short",
-    day: "numeric",
-    year: date.getFullYear() === new Date().getFullYear() ? undefined : "numeric",
+  return formatWallClock(iso, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+}
+
+/** The time of a `Y-m-d H:i:s` value, or of a bare `H:i[:s]`, as "2:12 PM". */
+export function shortTime(value: string): string {
+  const match = CLOCK_TIME.exec(value);
+  if (!match) {
+    return value;
+  }
+
+  return new Intl.DateTimeFormat(appLocale(), { hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(
+    new Date(Date.UTC(2000, 0, 1, Number(match[1]), Number(match[2]))),
+  );
+}
+
+/** "Oct 1, 9:00 AM – 12:00 PM", or both dates in full when the end is on another day. */
+export function shortDateTimeRange(start: string, end: string): string {
+  return `${shortDateTime(start)} – ${start.slice(0, 10) === end.slice(0, 10) ? shortTime(end) : shortDateTime(end)}`;
+}
+
+const TIME_FORMATS: Record<string, (value: string) => string> = {
+  date: shortDate,
+  datetime: shortDateTime,
+  time: shortTime,
+};
+
+/**
+ * Server-rendered dates: `<time datetime="…" data-format="date|datetime|time">` with the raw
+ * value as its text. The server has no `intl`, so the page's bundle formats them here, with
+ * the same helpers as everything the bundle draws itself.
+ */
+export function formatTimeElements(root: ParentNode = document): void {
+  root.querySelectorAll<HTMLTimeElement>("time[data-format]").forEach((element) => {
+    const format = TIME_FORMATS[element.dataset.format ?? ""];
+    if (format && element.dateTime !== "") {
+      element.textContent = format(element.dateTime);
+    }
   });
 }
