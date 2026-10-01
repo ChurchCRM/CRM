@@ -47,6 +47,11 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group): void {
                 return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
             }
             
+            if ($user->getSignInBlockedReason() !== null) {
+                $logger->warning('Password reset token used for an account that cannot sign in: ' . $user->getUserName());
+                return $renderer->render($response, 'error.php', ['sRootPath' => SystemURLs::getRootPath()]);
+            }
+
             $password = $user->resetPasswordToRandom();
             $user->save();
             $logger->info('Password reset for user ' . $user->getUserName());
@@ -92,7 +97,7 @@ function userPasswordReset(Request $request, Response $response, array $args)
     }
 
     $user = UserQuery::create()->findOneByUserName($userName);
-    if (empty($user) || empty($user->getEmail())) {
+    if (empty($user) || empty($user->getEmail()) || $user->getSignInBlockedReason() !== null) {
         throw new HttpNotFoundException($request, gettext('User') . ' [' . $userName . '] ' . gettext('not found or user without an email'));
     }
 

@@ -477,7 +477,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Parameter(name="deleteMembers", in="query", required=false, @OA\Schema(type="boolean", default=false),
      *         description="If true, also delete all family members. If false, members are unlinked from the family."),
      *     @OA\Response(response=200, description="Family deleted"),
-     *     @OA\Response(response=403, description="DeleteRecord role required or family has donations"),
+     *     @OA\Response(response=403, description="DeleteRecord role required, family has donations, or a member has a login the current user may not delete"),
      *     @OA\Response(response=404, description="Family not found")
      * )
      */
@@ -494,6 +494,18 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             ->count();
         if ($pledgeCount > 0 && !AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             return SlimUtils::renderErrorJSON($response, gettext('Cannot delete a family with donation records. Contact a finance administrator.'), [], 403);
+        }
+
+        if ($deleteMembers) {
+            $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                ->filterByFamId($familyId)
+                ->find();
+            foreach ($members as $member) {
+                $blockedReason = $member->getLoginDeletionBlockedReason();
+                if ($blockedReason !== null) {
+                    return SlimUtils::renderErrorJSON($response, $blockedReason, [], 403);
+                }
+            }
         }
 
         // Delete associated notes

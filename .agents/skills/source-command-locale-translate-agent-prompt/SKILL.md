@@ -54,7 +54,7 @@ node locale/scripts/locale-branch-manager.js --init
 
 If that fails:
 ```bash
-git checkout -b "locale/$(node -p "require('./package.json').version")-$(date -u +%Y-%m-%d-%H%M%S)"
+git checkout -b "locale/translate/$(node -p "require('./package.json').version")-$(date -u +%Y-%m-%d-%H%M%S)"
 git push -u origin HEAD
 ```
 
@@ -193,7 +193,7 @@ For speed, run up to 4 sub-agents in parallel within a group. Each sub-agent tra
 node locale/scripts/locale-translate.js --list
 ```
 
-Report which locales were completed. Each push already uploaded its locale ([`locale-upload-missing.yml`](../../.github/workflows/locale-upload-missing.yml)). If a push could not start workflows (Actions `GITHUB_TOKEN`), list those locales so the maintainer can run **Locale: upload missing terms** from the Actions tab with them.
+Report which locales were completed. Each push already uploaded its locale ([`locale-upload-missing.yml`](../../.github/workflows/locale-upload-missing.yml)). If a push could not start workflows (Actions `GITHUB_TOKEN`), list those locales so the maintainer can run **Locale: upload translations** from the Actions tab with them.
 
 ---
 

@@ -603,6 +603,7 @@ window.CRM.dashboard = {
    * @property {string} [labelClass] - Wraps the label in a `<span>` carrying this class.
    * @property {Object} [data] - `data-*` attributes, keyed without the `data-` prefix.
    * @property {boolean} [classBeforeType] - `button` only; emit `class=` before `type=`.
+   * @property {string} [disabledReason] - Greys the item out (`aria-disabled`) with this text as its title.
    */
 
   /**
@@ -645,6 +646,9 @@ window.CRM.dashboard = {
       return 'class="dropdown-item' + (extra ? " " + escapeAttribute(extra) : "") + '"';
     };
 
+    const disabledAttributes = (item) =>
+      item.disabledReason ? ' aria-disabled="true" title="' + escapeAttribute(item.disabledReason) + '"' : "";
+
     const itemBody = (item) => {
       const icon = item.icon ? '<i class="' + escapeAttribute(item.icon) + ' me-2"></i>' : "";
       const label = escapeHtml(item.label || "");
@@ -668,6 +672,7 @@ window.CRM.dashboard = {
           escapeAttribute(item.href || "") +
           '"' +
           dataAttributes(item.data) +
+          disabledAttributes(item) +
           ">" +
           itemBody(item) +
           "</a>"
@@ -678,7 +683,9 @@ window.CRM.dashboard = {
       const leading = item.classBeforeType
         ? classAttribute(item) + ' type="button"'
         : 'type="button" ' + classAttribute(item);
-      return "<button " + leading + dataAttributes(item.data) + ">" + itemBody(item) + "</button>";
+      return (
+        "<button " + leading + dataAttributes(item.data) + disabledAttributes(item) + ">" + itemBody(item) + "</button>"
+      );
     };
 
     return (
@@ -765,6 +772,7 @@ window.CRM.dashboard = {
         icon: "fa-solid fa-trash",
         label: i18next.t("Delete"),
         data: { person_id: personId, person_name: personName || "" },
+        disabledReason: window.CRM.personDeleteBlocked?.[personId],
       },
     ]);
   };
@@ -945,6 +953,10 @@ window.CRM.dashboard = {
       e.preventDefault();
       e.stopPropagation();
       const $btn = window.jQuery(this);
+      if ($btn.attr("aria-disabled") === "true") {
+        bootbox.alert(window.CRM.escapeHtml(String($btn.attr("title") || "")));
+        return;
+      }
       const personId = $btn.data("person_id");
       const personName = $btn.data("person_name");
       bootbox.confirm({

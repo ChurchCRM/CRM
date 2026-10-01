@@ -142,8 +142,9 @@ class ChurchInfoReport extends FPDF
      * Converts a UTF-8 string to ISO-8859-1 for FPDF compatibility.
      * Uses iconv() if available, falls back to mb_convert_encoding().
      */
-    public static function convertToLatin1(string $str): string
+    public static function convertToLatin1(?string $str): string
     {
+        $str ??= '';
         if (function_exists('iconv')) {
             $result = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $str);
             if ($result !== false) {
@@ -154,7 +155,7 @@ class ChurchInfoReport extends FPDF
         return is_string($result) ? $result : $str;
     }
 
-    public function printRightJustified($x, $y, $str): void
+    public function printRightJustified($x, $y, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $iLen = strlen($strconv);
@@ -163,28 +164,28 @@ class ChurchInfoReport extends FPDF
         $this->Write(SystemConfig::getValue('incrementY'), $strconv);
     }
 
-    public function printRightJustifiedCell($x, $y, $wid, $str): void
+    public function printRightJustifiedCell($x, $y, $wid, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->Cell($wid, SystemConfig::getValue('incrementY'), $strconv, 1, 0, 'R');
     }
 
-    public function printCenteredCell($x, $y, $wid, $str): void
+    public function printCenteredCell($x, $y, $wid, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->Cell($wid, SystemConfig::getValue('incrementY'), $strconv, 1, 0, 'C');
     }
 
-    public function writeAt($x, $y, $str): void
+    public function writeAt($x, $y, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->Write(SystemConfig::getValue('incrementY'), $strconv);
     }
 
-    public function writeAtCell($x, $y, $wid, $str): void
+    public function writeAtCell($x, $y, $wid, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);

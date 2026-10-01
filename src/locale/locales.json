@@ -11,7 +11,8 @@
     "fullCalendarLocale": "af",
     "datePicker": false,
     "momentLocale": "af",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Albanian": {
     "poEditor": "sq",
@@ -25,7 +26,8 @@
     "fullCalendarLocale": "sq",
     "datePicker": true,
     "momentLocale": "sq",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Amharic - Ethiopia": {
     "poEditor": "am",
@@ -37,7 +39,8 @@
     "dataTables": "am",
     "fullCalendar": false,
     "datePicker": false,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Ethiopic"]
   },
   "Arabic - Egypt": {
     "poEditor": "ar",
@@ -50,7 +53,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "ar",
-    "isRTL": true
+    "isRTL": true,
+    "scripts": ["Arabic"]
   },
   "Chinese - China": {
     "poEditor": "zh-CN",
@@ -63,7 +67,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "zh-cn",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Han"]
   },
   "Chinese - Taiwan": {
     "poEditor": "zh-TW",
@@ -76,7 +81,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "zh-tw",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Han"]
   },
   "Croatian": {
     "poEditor": "hr",
@@ -90,7 +96,8 @@
     "isRTL": false,
     "nativeName": "Hrvatski",
     "region": "Europe",
-    "momentLocale": "hr"
+    "momentLocale": "hr",
+    "scripts": ["Latin"]
   },
   "Czech": {
     "poEditor": "cs",
@@ -103,7 +110,8 @@
     "fullCalendar": true,
     "datePicker": false,
     "momentLocale": "cs",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Dutch - Netherlands": {
     "poEditor": "nl",
@@ -116,7 +124,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "nl",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "English - Australia": {
     "poEditor": "en-au",
@@ -131,7 +140,8 @@
     "datePicker": false,
     "momentLocale": "en-au",
     "skip_audit": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "English - Canada": {
     "poEditor": "en-ca",
@@ -145,7 +155,8 @@
     "datePicker": false,
     "momentLocale": "en-ca",
     "skip_audit": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "English - Great Britain": {
     "poEditor": "en",
@@ -160,7 +171,8 @@
     "datePicker": false,
     "momentLocale": "en-gb",
     "skip_audit": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "English - Jamaica": {
     "poEditor": "en-jm",
@@ -174,7 +186,8 @@
     "datePicker": false,
     "momentLocale": "en",
     "skip_audit": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "English - South Africa": {
     "poEditor": "en-za",
@@ -188,7 +201,8 @@
     "datePicker": false,
     "momentLocale": "en",
     "skip_audit": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "English - United States": {
     "poEditor": "en-US",
@@ -203,7 +217,8 @@
     "momentLocale": "en",
     "skip_audit": true,
     "super_base": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Estonian": {
     "poEditor": "et",
@@ -217,7 +232,8 @@
     "fullCalendarLocale": "et",
     "datePicker": true,
     "momentLocale": "et",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Filipino - Philippines": {
     "poEditor": "fil",
@@ -231,7 +247,8 @@
     "fullCalendarLocale": "fil",
     "datePicker": true,
     "momentLocale": "tl-ph",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Finnish": {
     "poEditor": "fi",
@@ -244,7 +261,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "fi",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "French - France": {
     "poEditor": "fr",
@@ -257,7 +275,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "fr",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "German - Germany": {
     "poEditor": "de",
@@ -270,7 +289,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "de",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Greek": {
     "poEditor": "el",
@@ -283,7 +303,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "el",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Greek"]
   },
   "Hebrew": {
     "poEditor": "he",
@@ -296,7 +317,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "he",
-    "isRTL": true
+    "isRTL": true,
+    "scripts": ["Hebrew"]
   },
   "Hindi - India": {
     "poEditor": "hi",
@@ -309,7 +331,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "hi",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Devanagari"]
   },
   "Hungarian": {
     "poEditor": "hu",
@@ -322,7 +345,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "hu",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Indonesian - Indonesia": {
     "poEditor": "id",
@@ -335,7 +359,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "id",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Italian - Italy": {
     "poEditor": "it",
@@ -348,7 +373,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "it",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Japanese": {
     "poEditor": "ja",
@@ -361,7 +387,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "ja",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Han", "Hiragana", "Katakana"]
   },
   "Korean": {
     "poEditor": "ko",
@@ -375,7 +402,8 @@
     "fullCalendarLocale": "ko",
     "datePicker": true,
     "momentLocale": "ko",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Hangul", "Han"]
   },
   "Malayalam - India": {
     "poEditor": "ml",
@@ -387,7 +415,8 @@
     "fullCalendar": true,
     "fullCalendarLocale": "ml",
     "datePicker": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Malayalam"]
   },
   "Norwegian": {
     "poEditor": "nb",
@@ -400,7 +429,8 @@
     "fullCalendar": true,
     "datePicker": false,
     "momentLocale": "nb",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Polish": {
     "poEditor": "pl",
@@ -413,7 +443,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "pl",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Portuguese - Brazil": {
     "poEditor": "pt-br",
@@ -426,7 +457,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "pt-br",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Portuguese - Portugal": {
     "poEditor": "pt",
@@ -441,7 +473,8 @@
     "datePicker": true,
     "momentLocale": "pt",
     "base": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Romanian - Romania": {
     "poEditor": "ro",
@@ -454,7 +487,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "ro",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Russian": {
     "poEditor": "ru",
@@ -467,7 +501,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "ru",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Cyrillic"]
   },
   "Slovak": {
     "poEditor": "sk",
@@ -478,7 +513,8 @@
     "fullCalendar": true,
     "fullCalendarLocale": "sk",
     "datePicker": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Spanish - Argentina": {
     "poEditor": "es-AR",
@@ -491,7 +527,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "es",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Spanish - Colombia": {
     "poEditor": "es-CO",
@@ -504,7 +541,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "es",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Spanish - El Salvador": {
     "poEditor": "es-SV",
@@ -517,7 +555,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "es",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Spanish - Mexico": {
     "poEditor": "es-MX",
@@ -530,7 +569,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "es",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Spanish - Spain": {
     "poEditor": "es",
@@ -544,7 +584,8 @@
     "datePicker": true,
     "momentLocale": "es",
     "base": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Swahili": {
     "poEditor": "sw",
@@ -556,7 +597,8 @@
     "dataTables": "sw",
     "fullCalendar": false,
     "datePicker": true,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Swedish": {
     "poEditor": "sv",
@@ -569,7 +611,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "sv",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Tamil - India": {
     "poEditor": "ta",
@@ -583,7 +626,8 @@
     "fullCalendarLocale": "ta-in",
     "datePicker": true,
     "momentLocale": "ta",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Tamil"]
   },
   "Telugu - India": {
     "poEditor": "te",
@@ -595,7 +639,8 @@
     "dataTables": "te",
     "fullCalendar": false,
     "datePicker": false,
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Telugu"]
   },
   "Thai": {
     "poEditor": "th",
@@ -608,7 +653,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "th",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Thai"]
   },
   "Turkish": {
     "poEditor": "tr",
@@ -621,7 +667,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "tr",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   },
   "Ukrainian": {
     "poEditor": "uk",
@@ -634,7 +681,8 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "uk",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Cyrillic"]
   },
   "Vietnamese": {
     "poEditor": "vi",
@@ -647,6 +695,7 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "vi",
-    "isRTL": false
+    "isRTL": false,
+    "scripts": ["Latin"]
   }
 }

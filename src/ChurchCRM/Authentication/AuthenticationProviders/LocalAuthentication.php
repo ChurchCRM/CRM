@@ -146,6 +146,11 @@ class LocalAuthentication implements IAuthenticationProvider
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
                 LoggerUtils::getAuthLogger()->warning('Invalid login attempt', $logCtx);
+            } elseif (($blockedReason = $this->currentUser->getSignInBlockedReason()) !== null) {
+                LoggerUtils::getAuthLogger()->warning('Login refused: account cannot sign in', $logCtx + ['reason' => $blockedReason]);
+                $this->currentUser = null;
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->message = gettext('Invalid login or password');
             } elseif ($this->currentUser->is2FactorAuthEnabled()) {
                 // User has enrolled in 2FA — redirect to verification step
                 $authenticationResult->isAuthenticated = false;
@@ -177,6 +182,15 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->bPendingTwoFactorAuth = false;
                 $this->currentUser = null;
                 $authenticationResult->isAuthenticated = false;
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                return $authenticationResult;
+            }
+            if (($blockedReason = $this->currentUser->getSignInBlockedReason()) !== null) {
+                LoggerUtils::getAuthLogger()->warning('2FA login refused: account cannot sign in', $logCtx + ['reason' => $blockedReason]);
+                $this->bPendingTwoFactorAuth = false;
+                $this->currentUser = null;
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->message = gettext('Invalid login or password');
                 $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
                 return $authenticationResult;
             }
