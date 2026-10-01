@@ -929,7 +929,7 @@ class PluginManager
      * Collects menu items from all active plugins that have getMenuItems() defined.
      * Returns items grouped by their parent menu key.
      *
-     * @return array<string, array<int, array{label: string, url: string, icon?: string}>>
+     * @return array<string, array<int, array{label: string, url: string, icon?: string, permission?: string}>>
      *               Menu items grouped by parent menu key (e.g., 'email', 'admin')
      */
     public static function getPluginMenuItems(): array
