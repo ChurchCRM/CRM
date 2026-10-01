@@ -413,6 +413,16 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     const from = byId<HTMLInputElement>("schedule-form-window-start")?.value || undefined;
     const wanted = keep ?? select.value;
     const request = ++seriesRequest;
+    // The old list belongs to the previous source; a pick from it before the new one
+    // arrives would follow the wrong events.
+    select.innerHTML =
+      wanted === ""
+        ? `<option value="" disabled>${escapeHtml(i18next.t("Loading..."))}</option>`
+        : `<option value="${escapeAttribute(wanted)}">${escapeHtml(wanted)}</option>`;
+    select.value = wanted;
+    select.disabled = true;
+    show(byId("schedule-form-title-warning"), false);
+    syncDetails();
     let series: Array<{ title: string; count: number }> = [];
     if (byMinistry || typeId > 0) {
       try {
@@ -430,6 +440,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       series = [{ title: wanted, count: 0 }, ...series];
     }
     seriesCounts = new Map(series.map((row) => [row.title, row.count]));
+    select.disabled = false;
     select.innerHTML = [
       `<option value="" disabled>${escapeHtml(
         series.length === 0 ? i18next.t("No upcoming events to choose from") : i18next.t("Choose an event"),
