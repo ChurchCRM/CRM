@@ -3,7 +3,7 @@
   "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "పన్ను తగ్గించదగిన కాని చెల్లుళ్లను రికార్డ్ చేయడానికి అనుమతించండి (ఉదా., సరుకుల విక్రయం)",
   "Allow unauthenticated access to public events (for embedding calendars)": "ప్రజా ఈవెంట్‌లకు ఆధీకరణ లేని ప్రాప్యతను అనుమతించండి (క్యాలెండర్‌లను పొందుపరచడానికి)",
   "Allow visitors to create their own family records via public registration page": "సందర్శకులను ప్రజా నిబంధన పేజీ ద్వారా వారి సొంత కుటుంబ రికార్డులను సృష్టించుకోవడానికి అనుమతించండి",
-  "Automatically send birthday emails (requires background job scheduler)": "",
+  "Automatically send birthday emails (requires background job scheduler)": "పుట్టినరోజు ఇమెయిల్‌లను స్వయంచాలకంగా పంపండి (నేపథ్య ఉద్యోగ షెడ్యూలర్ అవసరం)",
   "Birthday Greeting Emails": "పుట్టినరోజు గ్రీటింగ్ ఇమెయిల్‌లు",
   "Communication & Email": "సమ్మతి మరియు ఇమెయిల్",
   "Content Security Policy": "విషయ సంరక్షణ విధానం",
