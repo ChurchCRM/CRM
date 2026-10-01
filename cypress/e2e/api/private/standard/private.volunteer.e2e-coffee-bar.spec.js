@@ -276,284 +276,261 @@ function cleanupFixtures() {
 
 // ── the fixture, built the way a coordinator would build it ────────────────
 
-before(() => {
-    cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-        originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-    });
-    setVersion("v2");
-    cleanupFixtures();
-
-    // Ministry creation is manager-only (§3.3.1), so the administrator makes
-    // the ministry and then hands person 3 the scope that makes them the
-    // coordinator. Everything after this point is done with the coordinator key.
-    cy.then(() => {
-        api(
-            ADMIN_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/ministries`,
-            { name: MINISTRY_NAME, description: "#9714 scenario 1 — UC1" },
-            201,
-        ).then((resp) => {
-            ministryId = resp.body.ministry.id;
+describe("Volunteer v2 — #9714 scenario 1, \"Coffee Bar\", as ONE end-to-end run", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
+            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
         });
-    });
+        setVersion("v2");
+        cleanupFixtures();
 
-    cy.then(() => {
-        api(
-            ADMIN_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/scopes`,
-            {
-                personId: PERSON_COORDINATOR,
-                scopeType: "ministry",
-                scopeId: ministryId,
-            },
-            [200, 201],
-        ).then((resp) => {
-            scopeId = resp.body.scope.id;
-        });
-    });
-
-    // UC1 is one ministry with one team, and a ministry is now created with exactly
-    // that: "<name> Team". So the coordinator's first act is to adopt the team they
-    // were given rather than to make a second one — asking for a team of the same
-    // name is a 409, and asking for a differently named one would leave the ministry
-    // with two teams that UC1 does not have.
-    cy.then(() => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/ministries/${ministryId}`,
-            null,
-            200,
-        ).then((resp) => {
-            expect(resp.body.teams, "the ministry came with one team").to.have.length(1);
-            expect(resp.body.teams[0].name).to.eq(TEAM_NAME);
-            teamId = resp.body.teams[0].id;
-        });
-    });
-
-    // Five positions (§0.4 UC1).
-    cy.then(() => {
-        POSITION_NAMES.forEach((name, index) => {
+        // Ministry creation is manager-only (§3.3.1), so the administrator makes
+        // the ministry and then hands person 3 the scope that makes them the
+        // coordinator. Everything after this point is done with the coordinator key.
+        cy.then(() => {
             api(
-                COORDINATOR_KEY,
+                ADMIN_KEY,
                 "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
-                { name: `${PREFIX} ${name}`, teamId, order: index + 1 },
+                `${VOLUNTEER_URL}/ministries`,
+                { name: MINISTRY_NAME, description: "#9714 scenario 1 — UC1" },
                 201,
             ).then((resp) => {
-                positions[name] = resp.body.position.id;
+                ministryId = resp.body.ministry.id;
             });
-        });
-    });
-
-    // The pool of fifteen (§0.4 UC1: "15 volunteers"). D19: the ministry came with
-    // its own Group, empty, so the coordinator fills it — no group to make first and
-    // nothing to link. The Group is still the roster and V2 still copies nobody (D1);
-    // what changed is that the coordinator can write it without the global Manage
-    // Groups flag, which is exactly what this scenario's persona has.
-    cy.then(() => {
-        POOL_ALL.forEach((personId) => {
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
-                null,
-                [200, 201],
-            );
-        });
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
-            null,
-            200,
-        ).then((resp) => {
-            groupId = resp.body.groupId;
-        });
-    });
-
-    // Qualifications: D16 — several per person is the normal case, not an edge
-    // case. Every pool member is qualified for Setup and Cleanup; the two
-    // personas hold three and two respectively.
-    cy.then(() => {
-        const qualify = (positionName, personId) =>
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/positions/${positions[positionName]}/qualifications`,
-                { personId, notes: "" },
-                // Idempotent by the unique key: 201 when new, 200 on a re-grant.
-                [200, 201],
-            );
-
-        POOL_ALL.forEach((personId) => {
-            qualify("Setup", personId);
-            qualify("Cleanup", personId);
-        });
-        // Espresso — the position the whole scenario turns on.
-        [8, 9, PERSON_DECLINES, PERSON_SIGNS_UP].forEach((p) =>
-            qualify("Espresso", p),
-        );
-        // Milk Station — deliberately a different set, so a decline on
-        // Espresso cannot be quietly covered by the Milk Station people.
-        [10, 11, PERSON_DECLINES].forEach((p) => qualify("Milk Station", p));
-        // Expeditor — the optional position.
-        [12, 13, PERSON_SIGNS_UP].forEach((p) => qualify("Expeditor", p));
-    });
-
-    // A real, future weekly event series. V2 must never create events itself.
-    cy.then(() => {
-        seriesStart = isoDate(daysToNext(0));
-        seriesEnd = isoDate(daysToNext(0) + 14);
-
-        api(
-            ADMIN_KEY,
-            "POST",
-            "/api/events/repeat",
-            {
-                Title: EVENT_TITLE,
-                Type: CHURCH_SERVICE_TYPE,
-                StartTime: "10:30:00",
-                EndTime: "11:45:00",
-                RecurType: "weekly",
-                RecurDOW: "Sunday",
-                RangeStart: seriesStart,
-                RangeEnd: seriesEnd,
-            },
-            200,
-        ).then((resp) => {
-            seriesEventIds = resp.body.eventIds;
-        });
-    });
-
-    // The schedule hangs off the event TYPE, not off any single event (§2.8).
-    cy.then(() => {
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-            {
-                name: `${PREFIX} Coffee Bar — Sunday`,
-                linkMode: "event_type",
-                eventTypeId: CHURCH_SERVICE_TYPE,
-                titleFilter: EVENT_TITLE,
-                windowStart: seriesStart,
-                teamId,
-            },
-            201,
-        ).then((resp) => {
-            scheduleId = resp.body.schedule.id;
-        });
-    });
-
-    // Min 1 / Max 1 twice, plus one optional Min 0 / Max 1 third (§6.5 row 1).
-    // Setup and Cleanup exist as positions but carry no requirement at all —
-    // five positions, three requirements.
-    cy.then(() => {
-        const requirement = (positionName, minCount, maxCount) =>
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
-                { positionId: positions[positionName], minCount, maxCount },
-                [200, 201],
-            );
-
-        requirement("Espresso", 1, 1);
-        requirement("Milk Station", 1, 1);
-        requirement("Expeditor", 0, 1);
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    setVersion(originalVersion);
-});
-
-// ── the run ────────────────────────────────────────────────────────────────
-
-describe("Volunteer v2 e2e — #9714 scenario 1, Coffee Bar", () => {
-    it("built the UC1 fixture: a 15-person pool, five positions, three requirements", () => {
-        // The pool reports the Group's real size, with no sync step (D1).
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
-        ).then((resp) => {
-            // The fifteen volunteers plus the coordinator, who joined the pool
-            // Group with their scope grant (review, 2026-09-18).
-            expect(resp.body.members).to.have.length(POOL_ALL.length + 1);
-            expect(POOL_ALL.length).to.eq(15);
-        });
-
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
-        ).then((resp) => {
-            expect(resp.body.positions).to.have.length(5);
-        });
-
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
-        ).then((resp) => {
-            expect(resp.body.requirements).to.have.length(3);
-            const espresso = resp.body.requirements.find(
-                (r) => r.positionId === positions.Espresso,
-            );
-            expect(espresso.minCount).to.eq(1);
-            expect(espresso.maxCount).to.eq(1);
-            const expeditor = resp.body.requirements.find(
-                (r) => r.positionId === positions.Expeditor,
-            );
-            expect(expeditor.minCount).to.eq(0);
-            expect(expeditor.maxCount).to.eq(1);
-        });
-    });
-
-    it("carries several qualifications per person (D16)", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/people/${PERSON_DECLINES}/qualifications`,
-        ).then((resp) => {
-            const ids = resp.body.qualifications.map((q) => q.positionId);
-            expect(ids).to.include(positions.Setup);
-            expect(ids).to.include(positions.Espresso);
-            expect(ids).to.include(positions["Milk Station"]);
-            expect(ids.length).to.be.at.least(4);
-        });
-    });
-
-    it("generates occurrences over the event type, and generating again creates nothing", () => {
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`,
-            { through: seriesEnd },
-            200,
-        ).then((resp) => {
-            expect(resp.body.created).to.eq(seriesEventIds.length);
-            expect(resp.body.existing).to.eq(0);
-        });
-
-        // §6.6 — the second run reports `created: 0` AND the list is unchanged.
-        let firstCount = 0;
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
-        ).then((resp) => {
-            firstCount = resp.body.occurrences.length;
-            expect(firstCount).to.eq(seriesEventIds.length);
-            occurrenceId = resp.body.occurrences[0].id;
         });
 
         cy.then(() => {
+            api(
+                ADMIN_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/scopes`,
+                {
+                    personId: PERSON_COORDINATOR,
+                    scopeType: "ministry",
+                    scopeId: ministryId,
+                },
+                [200, 201],
+            ).then((resp) => {
+                scopeId = resp.body.scope.id;
+            });
+        });
+
+        // UC1 is one ministry with one team, and a ministry is now created with exactly
+        // that: "<name> Team". So the coordinator's first act is to adopt the team they
+        // were given rather than to make a second one — asking for a team of the same
+        // name is a 409, and asking for a differently named one would leave the ministry
+        // with two teams that UC1 does not have.
+        cy.then(() => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/ministries/${ministryId}`,
+                null,
+                200,
+            ).then((resp) => {
+                expect(resp.body.teams, "the ministry came with one team").to.have.length(1);
+                expect(resp.body.teams[0].name).to.eq(TEAM_NAME);
+                teamId = resp.body.teams[0].id;
+            });
+        });
+
+        // Five positions (§0.4 UC1).
+        cy.then(() => {
+            POSITION_NAMES.forEach((name, index) => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
+                    { name: `${PREFIX} ${name}`, teamId, order: index + 1 },
+                    201,
+                ).then((resp) => {
+                    positions[name] = resp.body.position.id;
+                });
+            });
+        });
+
+        // The pool of fifteen (§0.4 UC1: "15 volunteers"). D19: the ministry came with
+        // its own Group, empty, so the coordinator fills it — no group to make first and
+        // nothing to link. The Group is still the roster and V2 still copies nobody (D1);
+        // what changed is that the coordinator can write it without the global Manage
+        // Groups flag, which is exactly what this scenario's persona has.
+        cy.then(() => {
+            POOL_ALL.forEach((personId) => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                    null,
+                    [200, 201],
+                );
+            });
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
+                null,
+                200,
+            ).then((resp) => {
+                groupId = resp.body.groupId;
+            });
+        });
+
+        // Qualifications: D16 — several per person is the normal case, not an edge
+        // case. Every pool member is qualified for Setup and Cleanup; the two
+        // personas hold three and two respectively.
+        cy.then(() => {
+            const qualify = (positionName, personId) =>
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/positions/${positions[positionName]}/qualifications`,
+                    { personId, notes: "" },
+                    // Idempotent by the unique key: 201 when new, 200 on a re-grant.
+                    [200, 201],
+                );
+
+            POOL_ALL.forEach((personId) => {
+                qualify("Setup", personId);
+                qualify("Cleanup", personId);
+            });
+            // Espresso — the position the whole scenario turns on.
+            [8, 9, PERSON_DECLINES, PERSON_SIGNS_UP].forEach((p) =>
+                qualify("Espresso", p),
+            );
+            // Milk Station — deliberately a different set, so a decline on
+            // Espresso cannot be quietly covered by the Milk Station people.
+            [10, 11, PERSON_DECLINES].forEach((p) => qualify("Milk Station", p));
+            // Expeditor — the optional position.
+            [12, 13, PERSON_SIGNS_UP].forEach((p) => qualify("Expeditor", p));
+        });
+
+        // A real, future weekly event series. V2 must never create events itself.
+        cy.then(() => {
+            seriesStart = isoDate(daysToNext(0));
+            seriesEnd = isoDate(daysToNext(0) + 14);
+
+            api(
+                ADMIN_KEY,
+                "POST",
+                "/api/events/repeat",
+                {
+                    Title: EVENT_TITLE,
+                    Type: CHURCH_SERVICE_TYPE,
+                    StartTime: "10:30:00",
+                    EndTime: "11:45:00",
+                    RecurType: "weekly",
+                    RecurDOW: "Sunday",
+                    RangeStart: seriesStart,
+                    RangeEnd: seriesEnd,
+                },
+                200,
+            ).then((resp) => {
+                seriesEventIds = resp.body.eventIds;
+            });
+        });
+
+        // The schedule hangs off the event TYPE, not off any single event (§2.8).
+        cy.then(() => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
+                {
+                    name: `${PREFIX} Coffee Bar — Sunday`,
+                    linkMode: "event_type",
+                    eventTypeId: CHURCH_SERVICE_TYPE,
+                    titleFilter: EVENT_TITLE,
+                    windowStart: seriesStart,
+                    teamId,
+                },
+                201,
+            ).then((resp) => {
+                scheduleId = resp.body.schedule.id;
+            });
+        });
+
+        // Min 1 / Max 1 twice, plus one optional Min 0 / Max 1 third (§6.5 row 1).
+        // Setup and Cleanup exist as positions but carry no requirement at all —
+        // five positions, three requirements.
+        cy.then(() => {
+            const requirement = (positionName, minCount, maxCount) =>
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
+                    { positionId: positions[positionName], minCount, maxCount },
+                    [200, 201],
+                );
+
+            requirement("Espresso", 1, 1);
+            requirement("Milk Station", 1, 1);
+            requirement("Expeditor", 0, 1);
+        });
+    });
+
+    after(() => {
+        cleanupFixtures();
+        setVersion(originalVersion);
+    });
+
+    // ── the run ────────────────────────────────────────────────────────────────
+
+    describe("Volunteer v2 e2e — #9714 scenario 1, Coffee Bar", () => {
+        it("built the UC1 fixture: a 15-person pool, five positions, three requirements", () => {
+            // The pool reports the Group's real size, with no sync step (D1).
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
+            ).then((resp) => {
+                // The fifteen volunteers plus the coordinator, who joined the pool
+                // Group with their scope grant (review, 2026-09-18).
+                expect(resp.body.members).to.have.length(POOL_ALL.length + 1);
+                expect(POOL_ALL.length).to.eq(15);
+            });
+
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
+            ).then((resp) => {
+                expect(resp.body.positions).to.have.length(5);
+            });
+
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
+            ).then((resp) => {
+                expect(resp.body.requirements).to.have.length(3);
+                const espresso = resp.body.requirements.find(
+                    (r) => r.positionId === positions.Espresso,
+                );
+                expect(espresso.minCount).to.eq(1);
+                expect(espresso.maxCount).to.eq(1);
+                const expeditor = resp.body.requirements.find(
+                    (r) => r.positionId === positions.Expeditor,
+                );
+                expect(expeditor.minCount).to.eq(0);
+                expect(expeditor.maxCount).to.eq(1);
+            });
+        });
+
+        it("carries several qualifications per person (D16)", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/people/${PERSON_DECLINES}/qualifications`,
+            ).then((resp) => {
+                const ids = resp.body.qualifications.map((q) => q.positionId);
+                expect(ids).to.include(positions.Setup);
+                expect(ids).to.include(positions.Espresso);
+                expect(ids).to.include(positions["Milk Station"]);
+                expect(ids.length).to.be.at.least(4);
+            });
+        });
+
+        it("generates occurrences over the event type, and generating again creates nothing", () => {
             api(
                 COORDINATOR_KEY,
                 "POST",
@@ -561,223 +538,248 @@ describe("Volunteer v2 e2e — #9714 scenario 1, Coffee Bar", () => {
                 { through: seriesEnd },
                 200,
             ).then((resp) => {
-                expect(resp.body.created).to.eq(0);
-                expect(resp.body.existing).to.eq(firstCount);
+                expect(resp.body.created).to.eq(seriesEventIds.length);
+                expect(resp.body.existing).to.eq(0);
             });
-        });
 
-        cy.then(() => {
+            // §6.6 — the second run reports `created: 0` AND the list is unchanged.
+            let firstCount = 0;
             api(
                 COORDINATOR_KEY,
                 "GET",
                 `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
             ).then((resp) => {
-                expect(resp.body.occurrences).to.have.length(firstCount);
+                firstCount = resp.body.occurrences.length;
+                expect(firstCount).to.eq(seriesEventIds.length);
+                occurrenceId = resp.body.occurrences[0].id;
+            });
+
+            cy.then(() => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`,
+                    { through: seriesEnd },
+                    200,
+                ).then((resp) => {
+                    expect(resp.body.created).to.eq(0);
+                    expect(resp.body.existing).to.eq(firstCount);
+                });
+            });
+
+            cy.then(() => {
+                api(
+                    COORDINATOR_KEY,
+                    "GET",
+                    `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
+                ).then((resp) => {
+                    expect(resp.body.occurrences).to.have.length(firstCount);
+                });
             });
         });
-    });
 
-    it("reports the occurrence's times from the calendar event, and wrote nothing to do it", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceId}`,
-        ).then((resp) => {
-            const occurrence = resp.body.occurrence;
-            expect(occurrence.eventId).to.be.a("number");
-            expect(occurrence).to.not.have.property("startDateTime");
-            expect(occurrence.start).to.include("10:30:00");
-            expect(occurrence.end).to.include("11:45:00");
-        });
+        it("reports the occurrence's times from the calendar event, and wrote nothing to do it", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceId}`,
+            ).then((resp) => {
+                const occurrence = resp.body.occurrence;
+                expect(occurrence.eventId).to.be.a("number");
+                expect(occurrence).to.not.have.property("startDateTime");
+                expect(occurrence.start).to.include("10:30:00");
+                expect(occurrence.end).to.include("11:45:00");
+            });
 
-        // The occurrence row has nowhere to keep a time of its own (D20).
-        dbOk(
-            `SELECT COUNT(*) AS c FROM information_schema.COLUMNS
+            // The occurrence row has nowhere to keep a time of its own (D20).
+            dbOk(
+                `SELECT COUNT(*) AS c FROM information_schema.COLUMNS
               WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'volunteer_occurrence_vocc'
                 AND COLUMN_NAME IN ('vocc_StartDateTime', 'vocc_EndDateTime')`,
-        ).then((rows) => {
-            expect(Number(rows[0].c)).to.eq(0);
-        });
-    });
-
-    it("starts short: two gaps from the two Min 1 requirements, none from the optional one", () => {
-        staffingFor(positions.Espresso).then((row) => {
-            expect(row.liveCount).to.eq(0);
-            expect(row.gapCount).to.eq(1);
-        });
-        staffingFor(positions["Milk Station"]).then((row) => {
-            expect(row.gapCount).to.eq(1);
-        });
-        // Min 0: never a gap, but a slot is open for self-signup.
-        staffingFor(positions.Expeditor).then((row) => {
-            expect(row.gapCount).to.eq(0);
-            expect(row.openCount).to.eq(1);
-        });
-    });
-
-    it("offers only qualified pool members in the eligible picker", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceId}/eligible?positionId=${positions.Espresso}`,
-        ).then((resp) => {
-            const ids = resp.body.people.map((p) => p.personId);
-            expect(ids).to.include(PERSON_DECLINES);
-            expect(ids).to.include(PERSON_SIGNS_UP);
-            // Qualified for Milk Station only — must not be offered for Espresso.
-            expect(ids).to.not.include(10);
-        });
-    });
-
-    it("assigns from the pool and enqueues exactly one assignment notification", () => {
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
-            { positionId: positions.Espresso, personId: PERSON_DECLINES },
-            201,
-        ).then((resp) => {
-            expect(resp.body.assignment.status).to.eq("pending");
-            expect(resp.body.assignment.personId).to.eq(PERSON_DECLINES);
-        });
-
-        // A pending row counts as live — the gap closes before anyone replies.
-        staffingFor(positions.Espresso).then((row) => {
-            expect(row.liveCount).to.eq(1);
-            expect(row.gapCount).to.eq(0);
-        });
-
-        // The outbox row is written inside the same transaction (§2.14/§3.6).
-        outboxRows("assignment", PERSON_DECLINES).then((rows) => {
-            expect(rows).to.have.length(1);
-            expect(rows[0].vntf_Status).to.eq("pending");
-        });
-    });
-
-    it("re-opens the gap when the volunteer declines from the member surface", () => {
-        api(
-            SELFEDIT_NOTES_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/me/assignments`,
-        ).then((resp) => {
-            const mine = resp.body.assignments.filter(
-                (a) => a.occurrenceId === occurrenceId,
-            );
-            expect(mine).to.have.length(1);
-
-            api(
-                SELFEDIT_NOTES_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/me/assignments/${mine[0].id}/respond`,
-                { response: "declined", comment: "Out of town" },
-                200,
-            ).then((declined) => {
-                expect(declined.body.assignment.status).to.eq("declined");
+            ).then((rows) => {
+                expect(Number(rows[0].c)).to.eq(0);
             });
         });
 
-        // The gap is derived — nothing recalculates or caches it (§2.11.3).
-        cy.then(() => {
+        it("starts short: two gaps from the two Min 1 requirements, none from the optional one", () => {
             staffingFor(positions.Espresso).then((row) => {
                 expect(row.liveCount).to.eq(0);
                 expect(row.gapCount).to.eq(1);
             });
-        });
-    });
-
-    it("offers the now-open Espresso slot to the other qualified volunteer", () => {
-        api(
-            SELFEDIT_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/me/opportunities`,
-        ).then((resp) => {
-            const espresso = resp.body.opportunities.filter(
-                (o) =>
-                    o.occurrenceId === occurrenceId &&
-                    o.positionId === positions.Espresso,
-            );
-            expect(espresso).to.have.length(1);
-        });
-    });
-
-    it("closes the gap when a DIFFERENT qualified volunteer signs themselves up", () => {
-        api(
-            SELFEDIT_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/me/signup`,
-            { occurrenceId, positionId: positions.Espresso },
-            201,
-        ).then((resp) => {
-            const assignment = resp.body.assignment;
-            // The actor is the session, never a body parameter (§3.3.3).
-            expect(assignment.personId).to.eq(PERSON_SIGNS_UP);
-            expect(assignment.personId).to.not.eq(PERSON_DECLINES);
-            expect(assignment.status).to.eq("accepted");
-            expect(assignment.source).to.eq("self_signup");
+            staffingFor(positions["Milk Station"]).then((row) => {
+                expect(row.gapCount).to.eq(1);
+            });
+            // Min 0: never a gap, but a slot is open for self-signup.
+            staffingFor(positions.Expeditor).then((row) => {
+                expect(row.gapCount).to.eq(0);
+                expect(row.openCount).to.eq(1);
+            });
         });
 
-        // The loop closes: gapCount is back to 0, and the declined row is still
-        // there as history rather than being deleted (§2.11.2 I8).
-        cy.then(() => {
+        it("offers only qualified pool members in the eligible picker", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceId}/eligible?positionId=${positions.Espresso}`,
+            ).then((resp) => {
+                const ids = resp.body.people.map((p) => p.personId);
+                expect(ids).to.include(PERSON_DECLINES);
+                expect(ids).to.include(PERSON_SIGNS_UP);
+                // Qualified for Milk Station only — must not be offered for Espresso.
+                expect(ids).to.not.include(10);
+            });
+        });
+
+        it("assigns from the pool and enqueues exactly one assignment notification", () => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
+                { positionId: positions.Espresso, personId: PERSON_DECLINES },
+                201,
+            ).then((resp) => {
+                expect(resp.body.assignment.status).to.eq("pending");
+                expect(resp.body.assignment.personId).to.eq(PERSON_DECLINES);
+            });
+
+            // A pending row counts as live — the gap closes before anyone replies.
             staffingFor(positions.Espresso).then((row) => {
                 expect(row.liveCount).to.eq(1);
                 expect(row.gapCount).to.eq(0);
-                const people = row.assignments.map((a) => a.personId);
-                expect(people).to.include(PERSON_SIGNS_UP);
+            });
+
+            // The outbox row is written inside the same transaction (§2.14/§3.6).
+            outboxRows("assignment", PERSON_DECLINES).then((rows) => {
+                expect(rows).to.have.length(1);
+                expect(rows[0].vntf_Status).to.eq("pending");
             });
         });
 
-        cy.then(() => {
-            dbOk(
-                `SELECT vasg_per_ID, vasg_Status FROM volunteer_assignment_vasg
+        it("re-opens the gap when the volunteer declines from the member surface", () => {
+            api(
+                SELFEDIT_NOTES_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/me/assignments`,
+            ).then((resp) => {
+                const mine = resp.body.assignments.filter(
+                    (a) => a.occurrenceId === occurrenceId,
+                );
+                expect(mine).to.have.length(1);
+
+                api(
+                    SELFEDIT_NOTES_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/me/assignments/${mine[0].id}/respond`,
+                    { response: "declined", comment: "Out of town" },
+                    200,
+                ).then((declined) => {
+                    expect(declined.body.assignment.status).to.eq("declined");
+                });
+            });
+
+            // The gap is derived — nothing recalculates or caches it (§2.11.3).
+            cy.then(() => {
+                staffingFor(positions.Espresso).then((row) => {
+                    expect(row.liveCount).to.eq(0);
+                    expect(row.gapCount).to.eq(1);
+                });
+            });
+        });
+
+        it("offers the now-open Espresso slot to the other qualified volunteer", () => {
+            api(
+                SELFEDIT_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/me/opportunities`,
+            ).then((resp) => {
+                const espresso = resp.body.opportunities.filter(
+                    (o) =>
+                        o.occurrenceId === occurrenceId &&
+                        o.positionId === positions.Espresso,
+                );
+                expect(espresso).to.have.length(1);
+            });
+        });
+
+        it("closes the gap when a DIFFERENT qualified volunteer signs themselves up", () => {
+            api(
+                SELFEDIT_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/me/signup`,
+                { occurrenceId, positionId: positions.Espresso },
+                201,
+            ).then((resp) => {
+                const assignment = resp.body.assignment;
+                // The actor is the session, never a body parameter (§3.3.3).
+                expect(assignment.personId).to.eq(PERSON_SIGNS_UP);
+                expect(assignment.personId).to.not.eq(PERSON_DECLINES);
+                expect(assignment.status).to.eq("accepted");
+                expect(assignment.source).to.eq("self_signup");
+            });
+
+            // The loop closes: gapCount is back to 0, and the declined row is still
+            // there as history rather than being deleted (§2.11.2 I8).
+            cy.then(() => {
+                staffingFor(positions.Espresso).then((row) => {
+                    expect(row.liveCount).to.eq(1);
+                    expect(row.gapCount).to.eq(0);
+                    const people = row.assignments.map((a) => a.personId);
+                    expect(people).to.include(PERSON_SIGNS_UP);
+                });
+            });
+
+            cy.then(() => {
+                dbOk(
+                    `SELECT vasg_per_ID, vasg_Status FROM volunteer_assignment_vasg
                   WHERE vasg_vocc_ID = ? AND vasg_vpos_ID = ? ORDER BY vasg_ID`,
-                [occurrenceId, positions.Espresso],
-            ).then((rows) => {
-                const declined = rows.find(
-                    (r) => Number(r.vasg_per_ID) === PERSON_DECLINES,
-                );
-                expect(declined, "the decline survives as history").to.not.eq(
-                    undefined,
-                );
-                expect(declined.vasg_Status).to.eq("declined");
+                    [occurrenceId, positions.Espresso],
+                ).then((rows) => {
+                    const declined = rows.find(
+                        (r) => Number(r.vasg_per_ID) === PERSON_DECLINES,
+                    );
+                    expect(declined, "the decline survives as history").to.not.eq(
+                        undefined,
+                    );
+                    expect(declined.vasg_Status).to.eq("declined");
+                });
             });
         });
-    });
 
-    it("leaves the Milk Station gap open — filling one position never fills another", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/gaps?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
-        ).then((resp) => {
-            const here = resp.body.gaps.filter(
-                (g) => g.occurrenceId === occurrenceId,
-            );
-            const positionIds = here.map((g) => g.positionId);
-            expect(positionIds).to.include(positions["Milk Station"]);
-            expect(positionIds).to.not.include(positions.Espresso);
-            expect(positionIds).to.not.include(positions.Expeditor);
+        it("leaves the Milk Station gap open — filling one position never fills another", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/gaps?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
+            ).then((resp) => {
+                const here = resp.body.gaps.filter(
+                    (g) => g.occurrenceId === occurrenceId,
+                );
+                const positionIds = here.map((g) => g.positionId);
+                expect(positionIds).to.include(positions["Milk Station"]);
+                expect(positionIds).to.not.include(positions.Espresso);
+                expect(positionIds).to.not.include(positions.Expeditor);
+            });
         });
-    });
 
-    it("refuses the same person on the same position twice (I1)", () => {
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
-            { positionId: positions.Espresso, personId: PERSON_SIGNS_UP },
-            409,
-        );
-    });
+        it("refuses the same person on the same position twice (I1)", () => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
+                { positionId: positions.Espresso, personId: PERSON_SIGNS_UP },
+                409,
+            );
+        });
 
-    it("refuses a pool member who is not qualified for the position (I2)", () => {
-        // Person 2 is in the pool and qualified for Setup/Cleanup only.
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
-            { positionId: positions.Espresso, personId: 2 },
-            403,
-        );
+        it("refuses a pool member who is not qualified for the position (I2)", () => {
+            // Person 2 is in the pool and qualified for Setup/Cleanup only.
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
+                { positionId: positions.Espresso, personId: 2 },
+                403,
+            );
+        });
     });
 });

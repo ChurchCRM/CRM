@@ -184,308 +184,310 @@ function cleanupFixtures() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    setVersion("v2");
-    cleanupFixtures();
+describe("Member Portal (MP7, #9868) — My Teams", () => {
+    before(() => {
+        setVersion("v2");
+        cleanupFixtures();
 
-    adminApi("POST", `${VOLUNTEER_URL}/ministries`, {
-        name: `${PREFIX} Hospitality`,
-        description: "My Teams fixture",
-    }, 201).then((resp) => {
-        ministryId = resp.body.ministry.id;
-    });
-
-    cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
-            name: `${PREFIX} Greeters`,
-            description: "the team Lena leads",
+        adminApi("POST", `${VOLUNTEER_URL}/ministries`, {
+            name: `${PREFIX} Hospitality`,
+            description: "My Teams fixture",
         }, 201).then((resp) => {
-            teamLed = resp.body.team.id;
+            ministryId = resp.body.ministry.id;
         });
-        adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
-            name: `${PREFIX} Ushers`,
-            description: "somebody else's team",
-        }, 201).then((resp) => {
-            teamOther = resp.body.team.id;
+
+        cy.then(() => {
+            adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
+                name: `${PREFIX} Greeters`,
+                description: "the team Lena leads",
+            }, 201).then((resp) => {
+                teamLed = resp.body.team.id;
+            });
+            adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
+                name: `${PREFIX} Ushers`,
+                description: "somebody else's team",
+            }, 201).then((resp) => {
+                teamOther = resp.body.team.id;
+            });
         });
-    });
 
-    cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
-            name: `${PREFIX} Door`,
-            description: "",
-            teamId: teamLed,
-            order: 1,
-        }, 201).then((resp) => {
-            posDoor = resp.body.position.id;
+        cy.then(() => {
+            adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
+                name: `${PREFIX} Door`,
+                description: "",
+                teamId: teamLed,
+                order: 1,
+            }, 201).then((resp) => {
+                posDoor = resp.body.position.id;
+            });
         });
-    });
 
-    // The grant that makes person 100 a team leader, made by an administrator
-    // through the real scope API — the whole of the D14 revision (P17).
-    cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/scopes`, {
-            personId: PERSON_LEADER,
-            scopeType: "team",
-            scopeId: teamLed,
-        }, [200, 201]);
-    });
+        // The grant that makes person 100 a team leader, made by an administrator
+        // through the real scope API — the whole of the D14 revision (P17).
+        cy.then(() => {
+            adminApi("POST", `${VOLUNTEER_URL}/scopes`, {
+                personId: PERSON_LEADER,
+                scopeType: "team",
+                scopeId: teamLed,
+            }, [200, 201]);
+        });
 
-    // Somebody for the grid to have a row for.
-    cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${POOL_MEMBER}`, null, [200, 201]);
-    });
+        // Somebody for the grid to have a row for.
+        cy.then(() => {
+            adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${POOL_MEMBER}`, null, [200, 201]);
+        });
 
-    // Four Sunday mornings the ministry owns, for the team's "This ministry's
-    // events" schedule to follow (D22).
-    cy.then(() => {
-        const first = (7 - new Date().getDay()) % 7 || 7;
-        [0, 7, 14, 21].forEach((week) => {
-            const day = isoDate(first + week);
-            dbOk(
-                `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive, event_ministry_id)
+        // Four Sunday mornings the ministry owns, for the team's "This ministry's
+        // events" schedule to follow (D22).
+        cy.then(() => {
+            const first = (7 - new Date().getDay()) % 7 || 7;
+            [0, 7, 14, 21].forEach((week) => {
+                const day = isoDate(first + week);
+                dbOk(
+                    `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive, event_ministry_id)
                  VALUES (1, ?, '', '', ?, ?, 0, ?)`,
-                [`${PREFIX} Greeters Sunday`, `${day} 09:00:00`, `${day} 10:00:00`, ministryId],
-            );
+                    [`${PREFIX} Greeters Sunday`, `${day} 09:00:00`, `${day} 10:00:00`, ministryId],
+                );
+            });
         });
     });
-});
 
-after(() => {
-    cleanupFixtures();
-});
+    after(() => {
+        cleanupFixtures();
+    });
 
-// ── the spec ───────────────────────────────────────────────────────────────
+    // ── the spec ───────────────────────────────────────────────────────────────
 
-describe("Member Portal — My Teams", () => {
-    describe("A member who leads a team", () => {
-        it("Finds My Teams in the portal navigation, between Volunteering and My Family", () => {
-            login(LEADER_USERNAME, LEADER_PASSWORD);
-            cy.url({ timeout: 10000 }).should("include", "/portal");
+    describe("Member Portal — My Teams", () => {
+        describe("A member who leads a team", () => {
+            it("Finds My Teams in the portal navigation, between Volunteering and My Family", () => {
+                login(LEADER_USERNAME, LEADER_PASSWORD);
+                cy.url({ timeout: 10000 }).should("include", "/portal");
 
-            cy.get("#portal-nav .portal-nav-link").then(($links) => {
-                const labels = [...$links].map((el) => el.textContent.trim());
-                const teams = labels.indexOf("My Teams");
-                expect(teams, "My Teams is in the navigation").to.be.greaterThan(-1);
-                expect(labels.indexOf("Volunteering")).to.be.lessThan(teams);
-                expect(labels.indexOf("My Family")).to.be.greaterThan(teams);
+                cy.get("#portal-nav .portal-nav-link").then(($links) => {
+                    const labels = [...$links].map((el) => el.textContent.trim());
+                    const teams = labels.indexOf("My Teams");
+                    expect(teams, "My Teams is in the navigation").to.be.greaterThan(-1);
+                    expect(labels.indexOf("Volunteering")).to.be.lessThan(teams);
+                    expect(labels.indexOf("My Family")).to.be.greaterThan(teams);
+                });
+
+                // And no admin shell anywhere on the way.
+                cy.get("#sidebar").should("not.exist");
+                cy.get(".navbar-vertical").should("not.exist");
             });
 
-            // And no admin shell anywhere on the way.
-            cy.get("#sidebar").should("not.exist");
-            cy.get(".navbar-vertical").should("not.exist");
-        });
+            it("Lists the team, its ministry and its position count", () => {
+                login(LEADER_USERNAME, LEADER_PASSWORD);
+                cy.visit(TEAMS_URL);
 
-        it("Lists the team, its ministry and its position count", () => {
-            login(LEADER_USERNAME, LEADER_PASSWORD);
-            cy.visit(TEAMS_URL);
+                cy.get(".portal-team-card").should("have.length", 1);
+                cy.get(".portal-team-card").should("contain.text", `${PREFIX} Greeters`);
+                cy.get(".portal-team-card").should("contain.text", `${PREFIX} Hospitality`);
+                cy.get(".portal-team-card").should("not.contain.text", `${PREFIX} Ushers`);
+            });
 
-            cy.get(".portal-team-card").should("have.length", 1);
-            cy.get(".portal-team-card").should("contain.text", `${PREFIX} Greeters`);
-            cy.get(".portal-team-card").should("contain.text", `${PREFIX} Hospitality`);
-            cy.get(".portal-team-card").should("not.contain.text", `${PREFIX} Ushers`);
-        });
+            it("Opens the team on its Positions tab, and hides what a team leader may not do", () => {
+                login(LEADER_USERNAME, LEADER_PASSWORD);
+                cy.visit(`${TEAMS_URL}/${teamLed}`);
 
-        it("Opens the team on its Positions tab, and hides what a team leader may not do", () => {
-            login(LEADER_USERNAME, LEADER_PASSWORD);
-            cy.visit(`${TEAMS_URL}/${teamLed}`);
+                cy.get("#portal-team").should("exist");
+                cy.get("#volunteerPositionsTable tbody tr", { timeout: 15000 })
+                    .should("contain.text", `${PREFIX} Door`);
 
-            cy.get("#portal-team").should("exist");
-            cy.get("#volunteerPositionsTable tbody tr", { timeout: 15000 })
-                .should("contain.text", `${PREFIX} Door`);
+                // The four tabs and no more.
+                cy.get("#portal-team-tabs .nav-link").should("have.length", 4);
 
-            // The four tabs and no more.
-            cy.get("#portal-team-tabs .nav-link").should("have.length", 4);
+                // Hidden on the portal (design §5.5).
+                cy.get("#volunteer-teams-card").should("not.exist");
+                cy.get("#volunteer-scope-panel").should("not.exist");
+                cy.get("#volunteer-help-wanted").should("not.exist");
+                cy.get("#qualification-add-person").should("not.exist");
+                cy.get("#qualification-cart-btn").should("not.exist");
+                cy.get("#qualification-team-filter").should("not.exist");
+                cy.get("#occurrence-team-filter").should("not.exist");
+                cy.get("#team-add-btn").should("not.exist");
+                cy.get("#teamModal").should("not.exist");
 
-            // Hidden on the portal (design §5.5).
-            cy.get("#volunteer-teams-card").should("not.exist");
-            cy.get("#volunteer-scope-panel").should("not.exist");
-            cy.get("#volunteer-help-wanted").should("not.exist");
-            cy.get("#qualification-add-person").should("not.exist");
-            cy.get("#qualification-cart-btn").should("not.exist");
-            cy.get("#qualification-team-filter").should("not.exist");
-            cy.get("#occurrence-team-filter").should("not.exist");
-            cy.get("#team-add-btn").should("not.exist");
-            cy.get("#teamModal").should("not.exist");
+                // And still no admin shell.
+                cy.get("#sidebar").should("not.exist");
+            });
 
-            // And still no admin shell.
-            cy.get("#sidebar").should("not.exist");
-        });
+            it("Shows a position's row menu in full on a phone, not clipped by the scrolling table (2026-09-18)", () => {
+                cy.viewport(375, 812);
+                login(LEADER_USERNAME, LEADER_PASSWORD);
+                cy.visit(`${TEAMS_URL}/${teamLed}`);
+                cy.get("#volunteerPositionsTable tbody tr", { timeout: 15000 }).should("contain.text", `${PREFIX} Door`);
 
-        it("Shows a position's row menu in full on a phone, not clipped by the scrolling table (2026-09-18)", () => {
-            cy.viewport(375, 812);
-            login(LEADER_USERNAME, LEADER_PASSWORD);
-            cy.visit(`${TEAMS_URL}/${teamLed}`);
-            cy.get("#volunteerPositionsTable tbody tr", { timeout: 15000 }).should("contain.text", `${PREFIX} Door`);
+                cy.get("#volunteerPositionsTable tbody tr")
+                    .contains(`${PREFIX} Door`)
+                    .closest("tr")
+                    .find("[data-bs-toggle='dropdown']")
+                    .click();
 
-            cy.get("#volunteerPositionsTable tbody tr")
-                .contains(`${PREFIX} Door`)
-                .closest("tr")
-                .find("[data-bs-toggle='dropdown']")
-                .click();
+                // The open menu is lifted out of the wrapper's overflow box and sits
+                // entirely inside the viewport, every item reachable.
+                cy.get("#positions-table-wrapper .dropdown-menu.show")
+                    .should("have.class", "volunteer-menu-fixed")
+                    .then(($menu) => {
+                        const rect = $menu[0].getBoundingClientRect();
+                        expect(rect.left, "menu left edge").to.be.at.least(0);
+                        expect(rect.right, "menu right edge").to.be.at.most(375);
+                        expect(rect.bottom, "menu bottom edge").to.be.at.most(812);
+                        expect(rect.height, "menu is open").to.be.greaterThan(0);
+                    });
+                cy.get("#positions-table-wrapper .dropdown-menu.show .volunteer-position-edit").should("be.visible");
+            });
 
-            // The open menu is lifted out of the wrapper's overflow box and sits
-            // entirely inside the viewport, every item reachable.
-            cy.get("#positions-table-wrapper .dropdown-menu.show")
-                .should("have.class", "volunteer-menu-fixed")
-                .then(($menu) => {
-                    const rect = $menu[0].getBoundingClientRect();
-                    expect(rect.left, "menu left edge").to.be.at.least(0);
-                    expect(rect.right, "menu right edge").to.be.at.most(375);
-                    expect(rect.bottom, "menu bottom edge").to.be.at.most(812);
-                    expect(rect.height, "menu is open").to.be.greaterThan(0);
-                });
-            cy.get("#positions-table-wrapper .dropdown-menu.show .volunteer-position-edit").should("be.visible");
-        });
+            it("Ticks a qualification on the Volunteers tab and it saves", () => {
+                login(LEADER_USERNAME, LEADER_PASSWORD);
+                cy.visit(`${TEAMS_URL}/${teamLed}`);
 
-        it("Ticks a qualification on the Volunteers tab and it saves", () => {
-            login(LEADER_USERNAME, LEADER_PASSWORD);
-            cy.visit(`${TEAMS_URL}/${teamLed}`);
+                cy.get("#nav-item-volunteers").click();
+                cy.get("#volunteerQualificationsTable tbody .volunteer-qual-toggle", { timeout: 15000 })
+                    .should("exist");
 
-            cy.get("#nav-item-volunteers").click();
-            cy.get("#volunteerQualificationsTable tbody .volunteer-qual-toggle", { timeout: 15000 })
-                .should("exist");
+                cy.get(`.volunteer-qual-toggle[data-person-id="${POOL_MEMBER}"][data-position-id="${posDoor}"]`)
+                    .check();
 
-            cy.get(`.volunteer-qual-toggle[data-person-id="${POOL_MEMBER}"][data-position-id="${posDoor}"]`)
-                .check();
+                // The box is disabled for the duration of its own write, so waiting for
+                // it to come back is waiting for the request to have finished.
+                cy.get(`.volunteer-qual-toggle[data-person-id="${POOL_MEMBER}"][data-position-id="${posDoor}"]`, {
+                    timeout: 15000,
+                }).should("not.be.disabled").and("be.checked");
 
-            // The box is disabled for the duration of its own write, so waiting for
-            // it to come back is waiting for the request to have finished.
-            cy.get(`.volunteer-qual-toggle[data-person-id="${POOL_MEMBER}"][data-position-id="${posDoor}"]`, {
-                timeout: 15000,
-            }).should("not.be.disabled").and("be.checked");
-
-            // The write is the assertion, not the toast: the row must be in the
-            // database and active (§2.7 — revocation is deactivation).
-            cy.then(() => {
-                dbOk(
-                    `SELECT vqal_ID FROM volunteer_qualification_vqal
+                // The write is the assertion, not the toast: the row must be in the
+                // database and active (§2.7 — revocation is deactivation).
+                cy.then(() => {
+                    dbOk(
+                        `SELECT vqal_ID FROM volunteer_qualification_vqal
                       WHERE vqal_vpos_ID = ? AND vqal_per_ID = ? AND vqal_Active = 1`,
-                    [posDoor, POOL_MEMBER],
-                ).then((rows) => {
-                    expect(rows.length, "the qualification was written").to.eq(1);
+                        [posDoor, POOL_MEMBER],
+                    ).then((rows) => {
+                        expect(rows.length, "the qualification was written").to.eq(1);
+                    });
                 });
             });
-        });
 
-        it("Creates a schedule for the team, generates its dates and staffs one", () => {
-            login(LEADER_USERNAME, LEADER_PASSWORD);
-            cy.visit(`${TEAMS_URL}/${teamLed}`);
+            it("Creates a schedule for the team, generates its dates and staffs one", () => {
+                login(LEADER_USERNAME, LEADER_PASSWORD);
+                cy.visit(`${TEAMS_URL}/${teamLed}`);
 
-            // ── create ──
-            cy.get("#nav-item-schedules").click();
-            cy.get("#schedule-add-btn", { timeout: 15000 }).click();
-            cy.get("#scheduleModal", { timeout: 10000 }).should("be.visible");
+                // ── create ──
+                cy.get("#nav-item-schedules").click();
+                cy.get("#schedule-add-btn", { timeout: 15000 }).click();
+                cy.get("#scheduleModal", { timeout: 10000 }).should("be.visible");
 
-            cy.get("#schedule-form-name").clear().type(`${PREFIX} Greeters — Sunday`);
-            cy.get("#schedule-form-window-start").clear().type(isoDate(0));
-            cy.get("#schedule-form-window-end").clear().type(isoDate(28));
-            cy.get("#schedule-form-link-mode").select("ministry");
-            cy.get("#schedule-form-event-type-row").should("not.be.visible");
-            cy.get(`#schedule-form-title-filter option[value="${PREFIX} Greeters Sunday"]`, { timeout: 10000 }).should(
-                "exist",
-            );
-            cy.get("#schedule-form-title-filter").select(`${PREFIX} Greeters Sunday`);
-            cy.get("#schedule-form-save").click();
+                cy.get("#schedule-form-name").clear().type(`${PREFIX} Greeters — Sunday`);
+                cy.get("#schedule-form-window-start").clear().type(isoDate(0));
+                cy.get("#schedule-form-window-end").clear().type(isoDate(28));
+                cy.get("#schedule-form-link-mode").select("ministry");
+                cy.get("#schedule-form-event-type-row").should("not.be.visible");
+                cy.get(`#schedule-form-title-filter option[value="${PREFIX} Greeters Sunday"]`, { timeout: 10000 }).should(
+                    "exist",
+                );
+                cy.get("#schedule-form-title-filter").select(`${PREFIX} Greeters Sunday`);
+                cy.get("#schedule-form-save").click();
 
-            cy.get("#volunteerSchedulesTable tbody tr", { timeout: 15000 })
-                .should("contain.text", `${PREFIX} Greeters — Sunday`);
+                cy.get("#volunteerSchedulesTable tbody tr", { timeout: 15000 })
+                    .should("contain.text", `${PREFIX} Greeters — Sunday`);
 
-            // ── generate ──
-            cy.get("#volunteerSchedulesTable tbody tr")
-                .first()
-                .find("[data-bs-toggle='dropdown']")
-                .click();
-            cy.get(".volunteer-schedule-generate").first().click();
-            // The Generate occurrences dialog (2026-09-18): no defaults, just generate.
-            cy.get("#generateOccurrencesModal", { timeout: 10000 }).should("be.visible");
-            cy.get("#generate-form-loading").should("not.be.visible");
-            cy.get("#generate-form-save").should("be.enabled").click();
-            cy.get("#generateOccurrencesModal").should("not.be.visible");
+                // ── generate ──
+                cy.get("#volunteerSchedulesTable tbody tr")
+                    .first()
+                    .find("[data-bs-toggle='dropdown']")
+                    .click();
+                cy.get(".volunteer-schedule-generate").first().click();
+                // The Generate occurrences dialog (2026-09-18): no defaults, just generate.
+                cy.get("#generateOccurrencesModal", { timeout: 10000 }).should("be.visible");
+                cy.get("#generate-form-loading").should("not.be.visible");
+                cy.get("#generate-form-save").should("be.enabled").click();
+                cy.get("#generateOccurrencesModal").should("not.be.visible");
 
-            cy.then(() => {
-                dbOk(
-                    `SELECT vocc.vocc_ID FROM volunteer_occurrence_vocc vocc
+                cy.then(() => {
+                    dbOk(
+                        `SELECT vocc.vocc_ID FROM volunteer_occurrence_vocc vocc
                        JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vocc.vocc_vsch_ID
                       WHERE vsch.vsch_vtem_ID = ?`,
-                    [teamLed],
-                ).then((rows) => {
-                    expect(rows.length, "dates were generated").to.be.greaterThan(0);
+                        [teamLed],
+                    ).then((rows) => {
+                        expect(rows.length, "dates were generated").to.be.greaterThan(0);
+                    });
                 });
-            });
 
-            // ── staff one ──
-            cy.get("#nav-item-occurrences").click();
-            cy.get("#volunteerOccurrencesTable tbody tr td a", { timeout: 15000 })
-                .first()
-                .click();
+                // ── staff one ──
+                cy.get("#nav-item-occurrences").click();
+                cy.get("#volunteerOccurrencesTable tbody tr td a", { timeout: 15000 })
+                    .first()
+                    .click();
 
-            cy.url({ timeout: 10000 }).should("include", `${TEAMS_URL}/${teamLed}/occurrences/`);
-            cy.get("#volunteer-occurrence").should("exist");
-            cy.get(".portal-breadcrumb").should("contain.text", `${PREFIX} Greeters`);
-            cy.get("#sidebar").should("not.exist");
+                cy.url({ timeout: 10000 }).should("include", `${TEAMS_URL}/${teamLed}/occurrences/`);
+                cy.get("#volunteer-occurrence").should("exist");
+                cy.get(".portal-breadcrumb").should("contain.text", `${PREFIX} Greeters`);
+                cy.get("#sidebar").should("not.exist");
 
-            // A new schedule starts with every position needed once, so this date
-            // has a Door card with an Assign control on it.
-            cy.get("#requirements-content .volunteer-assign-btn", { timeout: 15000 })
-                .first()
-                .click();
+                // A new schedule starts with every position needed once, so this date
+                // has a Door card with an Assign control on it.
+                cy.get("#requirements-content .volunteer-assign-btn", { timeout: 15000 })
+                    .first()
+                    .click();
 
-            cy.get("#volunteer-assign-modal", { timeout: 10000 }).should("be.visible");
-            // The picker is a TomSelect over a hidden `<select>`; the bundle reads the
-            // underlying control's value, so setting it is what the coordinator's click
-            // ends up doing.
-            cy.get("#assign-person-select option", { timeout: 10000 }).should("have.length.greaterThan", 1);
-            cy.get("#assign-person-select").select(String(POOL_MEMBER), { force: true });
-            cy.get("#assign-save").click();
+                cy.get("#volunteer-assign-modal", { timeout: 10000 }).should("be.visible");
+                // The picker is a TomSelect over a hidden `<select>`; the bundle reads the
+                // underlying control's value, so setting it is what the coordinator's click
+                // ends up doing.
+                cy.get("#assign-person-select option", { timeout: 10000 }).should("have.length.greaterThan", 1);
+                cy.get("#assign-person-select").select(String(POOL_MEMBER), { force: true });
+                cy.get("#assign-save").click();
 
-            cy.get("#requirements-content", { timeout: 15000 }).should("contain.text", "Herminia");
+                cy.get("#requirements-content", { timeout: 15000 }).should("contain.text", "Herminia");
 
-            cy.then(() => {
-                dbOk(
-                    `SELECT vasg.vasg_ID FROM volunteer_assignment_vasg vasg
+                cy.then(() => {
+                    dbOk(
+                        `SELECT vasg.vasg_ID FROM volunteer_assignment_vasg vasg
                        JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
                        JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vocc.vocc_vsch_ID
                       WHERE vsch.vsch_vtem_ID = ? AND vasg.vasg_per_ID = ?`,
-                    [teamLed, POOL_MEMBER],
-                ).then((rows) => {
-                    expect(rows.length, "the assignment was written").to.eq(1);
+                        [teamLed, POOL_MEMBER],
+                    ).then((rows) => {
+                        expect(rows.length, "the assignment was written").to.eq(1);
+                    });
                 });
             });
         });
-    });
 
-    describe("Refusals", () => {
-        it("Another team's page is the portal's own 403, not the admin access-denied page", () => {
-            login(LEADER_USERNAME, LEADER_PASSWORD);
-            cy.visit(`${TEAMS_URL}/${teamOther}`, { failOnStatusCode: false });
+        describe("Refusals", () => {
+            it("Another team's page is the portal's own 403, not the admin access-denied page", () => {
+                login(LEADER_USERNAME, LEADER_PASSWORD);
+                cy.visit(`${TEAMS_URL}/${teamOther}`, { failOnStatusCode: false });
 
-            cy.get(".portal-error-403").should("exist");
-            cy.contains("You cannot open this page").should("exist");
-            cy.url().should("not.include", "/v2/access-denied");
-            cy.get("#sidebar").should("not.exist");
-        });
+                cy.get(".portal-error-403").should("exist");
+                cy.contains("You cannot open this page").should("exist");
+                cy.url().should("not.include", "/v2/access-denied");
+                cy.get("#sidebar").should("not.exist");
+            });
 
-        it("The admin ministry page never renders for a member login", () => {
-            login(LEADER_USERNAME, LEADER_PASSWORD);
-            cy.visit(`/ministries/${ministryId}`, { failOnStatusCode: false });
+            it("The admin ministry page never renders for a member login", () => {
+                login(LEADER_USERNAME, LEADER_PASSWORD);
+                cy.visit(`/ministries/${ministryId}`, { failOnStatusCode: false });
 
-            cy.get("#volunteer-ministry").should("not.exist");
-            cy.get("#sidebar").should("not.exist");
-            cy.url().should("not.include", `/ministries/${ministryId}`);
-        });
+                cy.get("#volunteer-ministry").should("not.exist");
+                cy.get("#sidebar").should("not.exist");
+                cy.url().should("not.include", `/ministries/${ministryId}`);
+            });
 
-        it("A member who leads nothing has no My Teams entry and cannot open the pages", () => {
-            login(PLAIN_USERNAME, PLAIN_PASSWORD);
-            cy.url({ timeout: 10000 }).should("include", "/portal");
+            it("A member who leads nothing has no My Teams entry and cannot open the pages", () => {
+                login(PLAIN_USERNAME, PLAIN_PASSWORD);
+                cy.url({ timeout: 10000 }).should("include", "/portal");
 
-            cy.get("#portal-nav").should("not.contain.text", "My Teams");
+                cy.get("#portal-nav").should("not.contain.text", "My Teams");
 
-            cy.visit(TEAMS_URL, { failOnStatusCode: false });
-            cy.get(".portal-error-403").should("exist");
+                cy.visit(TEAMS_URL, { failOnStatusCode: false });
+                cy.get(".portal-error-403").should("exist");
 
-            cy.visit(`${TEAMS_URL}/${teamLed}`, { failOnStatusCode: false });
-            cy.get(".portal-error-403").should("exist");
+                cy.visit(`${TEAMS_URL}/${teamLed}`, { failOnStatusCode: false });
+                cy.get(".portal-error-403").should("exist");
+            });
         });
     });
 });

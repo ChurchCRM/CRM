@@ -167,301 +167,303 @@ function cleanupFixtures() {
 
 const CLASS_KEYS = ["keep", "remove", "move", "moveTo", "delKeep", "delRemove", "delDelete", "delCore"];
 
-before(() => {
-    admin("GET", SETTING_URL, null).then((resp) => {
-        originalVersion = resp.body.value ?? "v1";
-    });
-    admin("POST", SETTING_URL, { value: "v2" });
-    cleanupFixtures();
-
-    admin("POST", `${URL}/ministries`, { name: `${PREFIX} Children`, sundaySchool: true }, 201).then((resp) => {
-        ministryId = resp.body.ministry.id;
-        admin("GET", `${URL}/ministries/${ministryId}`).then((detail) => {
-            firstTeamId = detail.body.teams[0].id;
+describe("Volunteer v2 D28 — a class's events when its team's class changes or the team is deleted, and the Calendar tab's Delete events (design §0.8, §2.4, §3.3, §4.6)", () => {
+    before(() => {
+        admin("GET", SETTING_URL, null).then((resp) => {
+            originalVersion = resp.body.value ?? "v1";
         });
-    });
-    admin("POST", `${URL}/ministries`, { name: `${PREFIX} Coffee Bar` }, 201).then((resp) => {
-        otherMinistryId = resp.body.ministry.id;
-        admin("GET", `${URL}/ministries/${otherMinistryId}`).then((detail) => {
-            otherTeamId = detail.body.teams[0].id;
-            admin(
-                "POST",
-                `${URL}/ministries/${otherMinistryId}/positions`,
-                { name: `${PREFIX} Barista`, teamId: otherTeamId },
-                201,
-            ).then((position) => {
-                otherPositionId = position.body.position.id;
+        admin("POST", SETTING_URL, { value: "v2" });
+        cleanupFixtures();
+
+        admin("POST", `${URL}/ministries`, { name: `${PREFIX} Children`, sundaySchool: true }, 201).then((resp) => {
+            ministryId = resp.body.ministry.id;
+            admin("GET", `${URL}/ministries/${ministryId}`).then((detail) => {
+                firstTeamId = detail.body.teams[0].id;
             });
         });
-    });
-    for (const key of CLASS_KEYS) {
-        admin("POST", "/api/groups/", { groupName: `${PREFIX} Class ${key}`, isSundaySchool: true }).then((resp) => {
-            classes[key] = resp.body.Id;
-        });
-    }
-
-    cy.then(() => {
-        for (const key of CLASS_KEYS.filter((k) => k !== "moveTo")) {
-            admin(
-                "POST",
-                `${URL}/ministries/${ministryId}/teams`,
-                { name: `${PREFIX} Team ${key}`, classGroupId: classes[key] },
-                201,
-            ).then((resp) => {
-                teams[key] = resp.body.team.id;
+        admin("POST", `${URL}/ministries`, { name: `${PREFIX} Coffee Bar` }, 201).then((resp) => {
+            otherMinistryId = resp.body.ministry.id;
+            admin("GET", `${URL}/ministries/${otherMinistryId}`).then((detail) => {
+                otherTeamId = detail.body.teams[0].id;
+                admin(
+                    "POST",
+                    `${URL}/ministries/${otherMinistryId}/positions`,
+                    { name: `${PREFIX} Barista`, teamId: otherTeamId },
+                    201,
+                ).then((position) => {
+                    otherPositionId = position.body.position.id;
+                });
             });
-            owned[key] = [];
-            for (const offset of [-7, 3, 10]) {
-                ownedEvent(`${key} ${offset}`, offset, classes[key]).then((id) => {
-                    owned[key].push(id);
+        });
+        for (const key of CLASS_KEYS) {
+            admin("POST", "/api/groups/", { groupName: `${PREFIX} Class ${key}`, isSundaySchool: true }).then((resp) => {
+                classes[key] = resp.body.Id;
+            });
+        }
+
+        cy.then(() => {
+            for (const key of CLASS_KEYS.filter((k) => k !== "moveTo")) {
+                admin(
+                    "POST",
+                    `${URL}/ministries/${ministryId}/teams`,
+                    { name: `${PREFIX} Team ${key}`, classGroupId: classes[key] },
+                    201,
+                ).then((resp) => {
+                    teams[key] = resp.body.team.id;
+                });
+                owned[key] = [];
+                for (const offset of [-7, 3, 10]) {
+                    ownedEvent(`${key} ${offset}`, offset, classes[key]).then((id) => {
+                        owned[key].push(id);
+                    });
+                }
+                unownedEvent(`${key} by an administrator`, classes[key]).then((id) => {
+                    adminEvent[key] = id;
                 });
             }
-            unownedEvent(`${key} by an administrator`, classes[key]).then((id) => {
-                adminEvent[key] = id;
-            });
-        }
-        admin("POST", `${URL}/scopes`, { personId: PERSON_COORDINATOR, scopeType: "ministry", scopeId: ministryId }, [
-            200, 201,
-        ]);
-        admin("POST", `${URL}/scopes`, { personId: PERSON_LEADER, scopeType: "team", scopeId: firstTeamId }, [200, 201]);
+            admin("POST", `${URL}/scopes`, { personId: PERSON_COORDINATOR, scopeType: "ministry", scopeId: ministryId }, [
+                200, 201,
+            ]);
+            admin("POST", `${URL}/scopes`, { personId: PERSON_LEADER, scopeType: "team", scopeId: firstTeamId }, [200, 201]);
+        });
     });
-});
 
-after(() => {
-    cleanupFixtures();
-    admin("POST", SETTING_URL, { value: originalVersion });
-});
+    after(() => {
+        cleanupFixtures();
+        admin("POST", SETTING_URL, { value: originalVersion });
+    });
 
-describe("Volunteer v2 D28 — what the team dialog is told", () => {
-    it("counts the class's events the ministry owns, upcoming apart, and never an administrator's", () => {
-        coordinator("GET", `${URL}/teams/${teams.keep}/class-events`).then((resp) => {
-            expect(resp.body).to.deep.eq({
-                teamId: teams.keep,
-                ministryId,
-                ministryName: `${PREFIX} Children`,
-                classGroupId: classes.keep,
-                classGroupName: `${PREFIX} Class keep`,
-                total: 3,
-                upcoming: 2,
-                otherStaffing: [],
+    describe("Volunteer v2 D28 — what the team dialog is told", () => {
+        it("counts the class's events the ministry owns, upcoming apart, and never an administrator's", () => {
+            coordinator("GET", `${URL}/teams/${teams.keep}/class-events`).then((resp) => {
+                expect(resp.body).to.deep.eq({
+                    teamId: teams.keep,
+                    ministryId,
+                    ministryName: `${PREFIX} Children`,
+                    classGroupId: classes.keep,
+                    classGroupName: `${PREFIX} Class keep`,
+                    total: 3,
+                    upcoming: 2,
+                    otherStaffing: [],
+                });
             });
         });
-    });
 
-    it("answers zero for a team with no class, and 403 outside the caller's teams", () => {
-        coordinator("GET", `${URL}/teams/${firstTeamId}/class-events`).then((resp) => {
-            expect(resp.body).to.include({ classGroupId: null, classGroupName: null, total: 0, upcoming: 0 });
-        });
-        api(LEADER_KEY, "GET", `${URL}/teams/${firstTeamId}/class-events`);
-        api(LEADER_KEY, "GET", `${URL}/teams/${teams.keep}/class-events`, null, 403);
-    });
-});
-
-describe("Volunteer v2 D28 — the team's class changes", () => {
-    it("keeps the events on the old class when nothing is chosen", () => {
-        coordinator("POST", `${URL}/teams/${teams.keep}`, { classGroupId: null });
-        classOfTeam(teams.keep).should("eq", null);
-        for (const eventId of owned.keep) {
-            audienceOf(eventId).should("deep.eq", [classes.keep]);
-        }
-    });
-
-    it("refuses an unknown choice and a delete on update, changing nothing", () => {
-        coordinator("POST", `${URL}/teams/${teams.remove}`, { classGroupId: null, classEvents: "delete" }, 400).then(
-            (resp) => expect(resp.body.message).to.contain("keep, remove, move"),
-        );
-        coordinator("POST", `${URL}/teams/${teams.remove}`, { classGroupId: null, classEvents: "drop" }, 400);
-        classOfTeam(teams.remove).should("eq", classes.remove);
-    });
-
-    it("removes the class from the ministry's events and leaves an administrator's alone", () => {
-        coordinator("POST", `${URL}/teams/${teams.remove}`, { classGroupId: null, classEvents: "remove" });
-        classOfTeam(teams.remove).should("eq", null);
-        for (const eventId of owned.remove) {
-            audienceOf(eventId).should("deep.eq", []);
-        }
-        audienceOf(adminEvent.remove).should("deep.eq", [classes.remove]);
-    });
-
-    it("moves only to a new class, and then moves exactly the ministry's events", () => {
-        coordinator("POST", `${URL}/teams/${teams.move}`, { classGroupId: null, classEvents: "move" }, 400);
-        classOfTeam(teams.move).should("eq", classes.move);
-        audienceOf(owned.move[0]).should("deep.eq", [classes.move]);
-
-        coordinator("POST", `${URL}/teams/${teams.move}`, { classGroupId: classes.moveTo, classEvents: "move" }).then(
-            (resp) => expect(resp.body.team.classGroupId).to.eq(classes.moveTo),
-        );
-        for (const eventId of owned.move) {
-            audienceOf(eventId).should("deep.eq", [classes.moveTo]);
-        }
-        audienceOf(adminEvent.move).should("deep.eq", [classes.move]);
-        coordinator("GET", `${URL}/teams/${teams.move}/class-events`).then((resp) => {
-            expect(resp.body).to.include({ classGroupId: classes.moveTo, total: 3, upcoming: 2 });
+        it("answers zero for a team with no class, and 403 outside the caller's teams", () => {
+            coordinator("GET", `${URL}/teams/${firstTeamId}/class-events`).then((resp) => {
+                expect(resp.body).to.include({ classGroupId: null, classGroupName: null, total: 0, upcoming: 0 });
+            });
+            api(LEADER_KEY, "GET", `${URL}/teams/${firstTeamId}/class-events`);
+            api(LEADER_KEY, "GET", `${URL}/teams/${teams.keep}/class-events`, null, 403);
         });
     });
-});
 
-describe("Volunteer v2 D28 — the team is deleted", () => {
-    it("keeps the events by default", () => {
-        coordinator("DELETE", `${URL}/teams/${teams.delKeep}`, null);
-        classOfTeam(teams.delKeep).should("eq", "gone");
-        for (const eventId of owned.delKeep) {
-            audienceOf(eventId).should("deep.eq", [classes.delKeep]);
-        }
+    describe("Volunteer v2 D28 — the team's class changes", () => {
+        it("keeps the events on the old class when nothing is chosen", () => {
+            coordinator("POST", `${URL}/teams/${teams.keep}`, { classGroupId: null });
+            classOfTeam(teams.keep).should("eq", null);
+            for (const eventId of owned.keep) {
+                audienceOf(eventId).should("deep.eq", [classes.keep]);
+            }
+        });
+
+        it("refuses an unknown choice and a delete on update, changing nothing", () => {
+            coordinator("POST", `${URL}/teams/${teams.remove}`, { classGroupId: null, classEvents: "delete" }, 400).then(
+                (resp) => expect(resp.body.message).to.contain("keep, remove, move"),
+            );
+            coordinator("POST", `${URL}/teams/${teams.remove}`, { classGroupId: null, classEvents: "drop" }, 400);
+            classOfTeam(teams.remove).should("eq", classes.remove);
+        });
+
+        it("removes the class from the ministry's events and leaves an administrator's alone", () => {
+            coordinator("POST", `${URL}/teams/${teams.remove}`, { classGroupId: null, classEvents: "remove" });
+            classOfTeam(teams.remove).should("eq", null);
+            for (const eventId of owned.remove) {
+                audienceOf(eventId).should("deep.eq", []);
+            }
+            audienceOf(adminEvent.remove).should("deep.eq", [classes.remove]);
+        });
+
+        it("moves only to a new class, and then moves exactly the ministry's events", () => {
+            coordinator("POST", `${URL}/teams/${teams.move}`, { classGroupId: null, classEvents: "move" }, 400);
+            classOfTeam(teams.move).should("eq", classes.move);
+            audienceOf(owned.move[0]).should("deep.eq", [classes.move]);
+
+            coordinator("POST", `${URL}/teams/${teams.move}`, { classGroupId: classes.moveTo, classEvents: "move" }).then(
+                (resp) => expect(resp.body.team.classGroupId).to.eq(classes.moveTo),
+            );
+            for (const eventId of owned.move) {
+                audienceOf(eventId).should("deep.eq", [classes.moveTo]);
+            }
+            audienceOf(adminEvent.move).should("deep.eq", [classes.move]);
+            coordinator("GET", `${URL}/teams/${teams.move}/class-events`).then((resp) => {
+                expect(resp.body).to.include({ classGroupId: classes.moveTo, total: 3, upcoming: 2 });
+            });
+        });
     });
 
-    it("refuses an unknown choice and a move", () => {
-        coordinator("DELETE", `${URL}/teams/${teams.delRemove}`, { classEvents: "move" }, 400);
-        classOfTeam(teams.delRemove).should("eq", classes.delRemove);
+    describe("Volunteer v2 D28 — the team is deleted", () => {
+        it("keeps the events by default", () => {
+            coordinator("DELETE", `${URL}/teams/${teams.delKeep}`, null);
+            classOfTeam(teams.delKeep).should("eq", "gone");
+            for (const eventId of owned.delKeep) {
+                audienceOf(eventId).should("deep.eq", [classes.delKeep]);
+            }
+        });
+
+        it("refuses an unknown choice and a move", () => {
+            coordinator("DELETE", `${URL}/teams/${teams.delRemove}`, { classEvents: "move" }, 400);
+            classOfTeam(teams.delRemove).should("eq", classes.delRemove);
+        });
+
+        it("removes the class from the ministry's events", () => {
+            coordinator("DELETE", `${URL}/teams/${teams.delRemove}`, { classEvents: "remove" });
+            classOfTeam(teams.delRemove).should("eq", "gone");
+            for (const eventId of owned.delRemove) {
+                audienceOf(eventId).should("deep.eq", []);
+            }
+            audienceOf(adminEvent.delRemove).should("deep.eq", [classes.delRemove]);
+        });
+
+        it("will not delete events another ministry staffs unless the caller has Add Events", () => {
+            staffByOtherMinistry(owned.delDelete[1]).then((occurrenceId) => {
+                coordinator("GET", `${URL}/teams/${teams.delDelete}/class-events`).then((resp) => {
+                    expect(resp.body.otherStaffing).to.deep.eq([
+                        { ministryId: otherMinistryId, ministryName: `${PREFIX} Coffee Bar`, assigned: 1, eventCount: 1 },
+                    ]);
+                });
+
+                coordinator("DELETE", `${URL}/teams/${teams.delDelete}`, { classEvents: "delete" }, 409).then((resp) => {
+                    expect(resp.body.message).to.contain(`${PREFIX} Coffee Bar`);
+                    expect(resp.body.ministries).to.deep.eq([
+                        { ministryId: otherMinistryId, ministryName: `${PREFIX} Coffee Bar` },
+                    ]);
+                });
+                classOfTeam(teams.delDelete).should("eq", classes.delDelete);
+                existing(owned.delDelete).should("deep.eq", [...owned.delDelete].sort((a, b) => a - b));
+
+                admin("DELETE", `${URL}/teams/${teams.delDelete}`, { classEvents: "delete" });
+                classOfTeam(teams.delDelete).should("eq", "gone");
+                existing(owned.delDelete).should("deep.eq", []);
+                existing([adminEvent.delDelete]).should("deep.eq", [adminEvent.delDelete]);
+                audienceOf(adminEvent.delDelete).should("deep.eq", [classes.delDelete]);
+                dbOk("SELECT vocc_event_id AS e FROM volunteer_occurrence_vocc WHERE vocc_ID = ?", [occurrenceId]).then(
+                    (rows) => expect(rows[0].e, "the other ministry keeps its history").to.eq(null),
+                );
+            });
+        });
+
+        it("deletes nothing when core refuses one of the events", () => {
+            dbOk("INSERT INTO event_attend (event_id, person_id, checkin_date) VALUES (?, ?, NOW())", [
+                owned.delCore[1],
+                PERSON_CHECKED_IN,
+            ]);
+            admin("DELETE", `${URL}/teams/${teams.delCore}`, { classEvents: "delete" }, 409).then((resp) => {
+                expect(resp.body.message).to.contain("currently checked in");
+                expect(resp.body.eventId).to.eq(owned.delCore[1]);
+            });
+            classOfTeam(teams.delCore).should("eq", classes.delCore);
+            existing(owned.delCore).should("deep.eq", [...owned.delCore].sort((a, b) => a - b));
+        });
     });
 
-    it("removes the class from the ministry's events", () => {
-        coordinator("DELETE", `${URL}/teams/${teams.delRemove}`, { classEvents: "remove" });
-        classOfTeam(teams.delRemove).should("eq", "gone");
-        for (const eventId of owned.delRemove) {
-            audienceOf(eventId).should("deep.eq", []);
-        }
-        audienceOf(adminEvent.delRemove).should("deep.eq", [classes.delRemove]);
-    });
+    describe("Volunteer v2 D28 — the Calendar tab's Delete events", () => {
+        const plain = [];
+        let staffed = 0;
+        let kiosked = 0;
+        let otherOwned = 0;
+        let occurrenceId = 0;
 
-    it("will not delete events another ministry staffs unless the caller has Add Events", () => {
-        staffByOtherMinistry(owned.delDelete[1]).then((occurrenceId) => {
-            coordinator("GET", `${URL}/teams/${teams.delDelete}/class-events`).then((resp) => {
-                expect(resp.body.otherStaffing).to.deep.eq([
-                    { ministryId: otherMinistryId, ministryName: `${PREFIX} Coffee Bar`, assigned: 1, eventCount: 1 },
+        before(() => {
+            for (const offset of [4, 5, 6]) {
+                ownedEvent(`Workday ${offset}`, offset).then((id) => {
+                    plain.push(id);
+                });
+            }
+            ownedEvent("Staffed", 7).then((id) => {
+                staffed = id;
+                staffByOtherMinistry(id).then((occurrence) => {
+                    occurrenceId = occurrence;
+                });
+            });
+            ownedEvent("At the kiosk", 8).then((id) => {
+                kiosked = id;
+                dbOk("INSERT INTO kioskassginment_kasm (kasm_AssignmentType, kasm_EventId) VALUES (1, ?)", [id]);
+            });
+            unownedEvent("Coffee Bar's own", classes.keep, null).then((id) => {
+                dbOk("UPDATE events_event SET event_ministry_id = ? WHERE event_id = ?", [otherMinistryId, id]);
+                otherOwned = id;
+            });
+        });
+
+        it("lists other ministries' staffing on each event", () => {
+            coordinator("GET", `${URL}/ministries/${ministryId}/events`).then((resp) => {
+                const byId = Object.fromEntries(resp.body.events.map((event) => [event.id, event]));
+                expect(byId[staffed].otherStaffing).to.deep.eq([
+                    { ministryId: otherMinistryId, ministryName: `${PREFIX} Coffee Bar`, assigned: 1 },
                 ]);
+                expect(byId[plain[0]].otherStaffing).to.deep.eq([]);
             });
+        });
 
-            coordinator("DELETE", `${URL}/teams/${teams.delDelete}`, { classEvents: "delete" }, 409).then((resp) => {
-                expect(resp.body.message).to.contain(`${PREFIX} Coffee Bar`);
-                expect(resp.body.ministries).to.deep.eq([
-                    { ministryId: otherMinistryId, ministryName: `${PREFIX} Coffee Bar` },
-                ]);
+        it("refuses a malformed list, an unknown event and an event the ministry does not own", () => {
+            const url = `${URL}/ministries/${ministryId}/events`;
+            coordinator("DELETE", url, {}, 400);
+            coordinator("DELETE", url, { eventIds: [] }, 400);
+            coordinator("DELETE", url, { eventIds: ["x"] }, 400);
+            coordinator("DELETE", url, { eventIds: [plain[0], 99999999] }, 404);
+            coordinator("DELETE", url, { eventIds: [plain[0], adminEvent.keep] }, 403);
+            coordinator("DELETE", url, { eventIds: [plain[0], otherOwned] }, 403).then((resp) => {
+                expect(resp.body.message).to.contain(`is not an event of ${PREFIX} Children`);
             });
-            classOfTeam(teams.delDelete).should("eq", classes.delDelete);
-            existing(owned.delDelete).should("deep.eq", [...owned.delDelete].sort((a, b) => a - b));
-
-            admin("DELETE", `${URL}/teams/${teams.delDelete}`, { classEvents: "delete" });
-            classOfTeam(teams.delDelete).should("eq", "gone");
-            existing(owned.delDelete).should("deep.eq", []);
-            existing([adminEvent.delDelete]).should("deep.eq", [adminEvent.delDelete]);
-            audienceOf(adminEvent.delDelete).should("deep.eq", [classes.delDelete]);
-            dbOk("SELECT vocc_event_id AS e FROM volunteer_occurrence_vocc WHERE vocc_ID = ?", [occurrenceId]).then(
-                (rows) => expect(rows[0].e, "the other ministry keeps its history").to.eq(null),
+            existing([plain[0], adminEvent.keep, otherOwned]).should(
+                "deep.eq",
+                [plain[0], adminEvent.keep, otherOwned].sort((a, b) => a - b),
             );
         });
-    });
 
-    it("deletes nothing when core refuses one of the events", () => {
-        dbOk("INSERT INTO event_attend (event_id, person_id, checkin_date) VALUES (?, ?, NOW())", [
-            owned.delCore[1],
-            PERSON_CHECKED_IN,
-        ]);
-        admin("DELETE", `${URL}/teams/${teams.delCore}`, { classEvents: "delete" }, 409).then((resp) => {
-            expect(resp.body.message).to.contain("currently checked in");
-            expect(resp.body.eventId).to.eq(owned.delCore[1]);
+        it("is a coordinator's: a team leader gets 403", () => {
+            api(LEADER_KEY, "DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [plain[0]] }, 403);
+            existing([plain[0]]).should("deep.eq", [plain[0]]);
         });
-        classOfTeam(teams.delCore).should("eq", classes.delCore);
-        existing(owned.delCore).should("deep.eq", [...owned.delCore].sort((a, b) => a - b));
-    });
-});
 
-describe("Volunteer v2 D28 — the Calendar tab's Delete events", () => {
-    const plain = [];
-    let staffed = 0;
-    let kiosked = 0;
-    let otherOwned = 0;
-    let occurrenceId = 0;
+        it("refuses, deleting nothing, while another ministry has volunteers there", () => {
+            coordinator("DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [plain[0], staffed] }, 409).then(
+                (resp) => expect(resp.body.message).to.contain(`${PREFIX} Coffee Bar`),
+            );
+            existing([plain[0], staffed]).should("deep.eq", [plain[0], staffed].sort((a, b) => a - b));
+        });
 
-    before(() => {
-        for (const offset of [4, 5, 6]) {
-            ownedEvent(`Workday ${offset}`, offset).then((id) => {
-                plain.push(id);
+        it("comes back with core's refusal, deleting nothing", () => {
+            coordinator("DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [plain[0], kiosked] }, 409).then(
+                (resp) => expect(resp.body.message).to.contain("assigned to a kiosk"),
+            );
+            existing([plain[0], kiosked]).should("deep.eq", [plain[0], kiosked].sort((a, b) => a - b));
+        });
+
+        it("leaves core's own delete refusing the same event with the same reason", () => {
+            admin("DELETE", `/api/events/${kiosked}`, null, 409).then((resp) => {
+                expect(resp.body.message).to.eq("Cannot delete event: event is currently assigned to a kiosk.");
             });
-        }
-        ownedEvent("Staffed", 7).then((id) => {
-            staffed = id;
-            staffByOtherMinistry(id).then((occurrence) => {
-                occurrenceId = occurrence;
+            existing([kiosked]).should("deep.eq", [kiosked]);
+        });
+
+        it("deletes the ministry's own events through core", () => {
+            coordinator("DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [plain[0], plain[1]] }).then((resp) => {
+                expect(resp.body).to.deep.eq({ deleted: 2 });
             });
+            existing(plain).should("deep.eq", [plain[2]]);
+            dbOk("SELECT COUNT(*) AS n FROM calendar_events WHERE event_id IN (?, ?)", [plain[0], plain[1]]).then((rows) =>
+                expect(Number(rows[0].n)).to.eq(0),
+            );
         });
-        ownedEvent("At the kiosk", 8).then((id) => {
-            kiosked = id;
-            dbOk("INSERT INTO kioskassginment_kasm (kasm_AssignmentType, kasm_EventId) VALUES (1, ?)", [id]);
+
+        it("lets someone with Add Events delete an event another ministry staffs, keeping its history", () => {
+            admin("DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [staffed] });
+            existing([staffed]).should("deep.eq", []);
+            dbOk("SELECT vocc_event_id AS e FROM volunteer_occurrence_vocc WHERE vocc_ID = ?", [occurrenceId]).then((rows) =>
+                expect(rows[0].e).to.eq(null),
+            );
         });
-        unownedEvent("Coffee Bar's own", classes.keep, null).then((id) => {
-            dbOk("UPDATE events_event SET event_ministry_id = ? WHERE event_id = ?", [otherMinistryId, id]);
-            otherOwned = id;
-        });
-    });
-
-    it("lists other ministries' staffing on each event", () => {
-        coordinator("GET", `${URL}/ministries/${ministryId}/events`).then((resp) => {
-            const byId = Object.fromEntries(resp.body.events.map((event) => [event.id, event]));
-            expect(byId[staffed].otherStaffing).to.deep.eq([
-                { ministryId: otherMinistryId, ministryName: `${PREFIX} Coffee Bar`, assigned: 1 },
-            ]);
-            expect(byId[plain[0]].otherStaffing).to.deep.eq([]);
-        });
-    });
-
-    it("refuses a malformed list, an unknown event and an event the ministry does not own", () => {
-        const url = `${URL}/ministries/${ministryId}/events`;
-        coordinator("DELETE", url, {}, 400);
-        coordinator("DELETE", url, { eventIds: [] }, 400);
-        coordinator("DELETE", url, { eventIds: ["x"] }, 400);
-        coordinator("DELETE", url, { eventIds: [plain[0], 99999999] }, 404);
-        coordinator("DELETE", url, { eventIds: [plain[0], adminEvent.keep] }, 403);
-        coordinator("DELETE", url, { eventIds: [plain[0], otherOwned] }, 403).then((resp) => {
-            expect(resp.body.message).to.contain(`is not an event of ${PREFIX} Children`);
-        });
-        existing([plain[0], adminEvent.keep, otherOwned]).should(
-            "deep.eq",
-            [plain[0], adminEvent.keep, otherOwned].sort((a, b) => a - b),
-        );
-    });
-
-    it("is a coordinator's: a team leader gets 403", () => {
-        api(LEADER_KEY, "DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [plain[0]] }, 403);
-        existing([plain[0]]).should("deep.eq", [plain[0]]);
-    });
-
-    it("refuses, deleting nothing, while another ministry has volunteers there", () => {
-        coordinator("DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [plain[0], staffed] }, 409).then(
-            (resp) => expect(resp.body.message).to.contain(`${PREFIX} Coffee Bar`),
-        );
-        existing([plain[0], staffed]).should("deep.eq", [plain[0], staffed].sort((a, b) => a - b));
-    });
-
-    it("comes back with core's refusal, deleting nothing", () => {
-        coordinator("DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [plain[0], kiosked] }, 409).then(
-            (resp) => expect(resp.body.message).to.contain("assigned to a kiosk"),
-        );
-        existing([plain[0], kiosked]).should("deep.eq", [plain[0], kiosked].sort((a, b) => a - b));
-    });
-
-    it("leaves core's own delete refusing the same event with the same reason", () => {
-        admin("DELETE", `/api/events/${kiosked}`, null, 409).then((resp) => {
-            expect(resp.body.message).to.eq("Cannot delete event: event is currently assigned to a kiosk.");
-        });
-        existing([kiosked]).should("deep.eq", [kiosked]);
-    });
-
-    it("deletes the ministry's own events through core", () => {
-        coordinator("DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [plain[0], plain[1]] }).then((resp) => {
-            expect(resp.body).to.deep.eq({ deleted: 2 });
-        });
-        existing(plain).should("deep.eq", [plain[2]]);
-        dbOk("SELECT COUNT(*) AS n FROM calendar_events WHERE event_id IN (?, ?)", [plain[0], plain[1]]).then((rows) =>
-            expect(Number(rows[0].n)).to.eq(0),
-        );
-    });
-
-    it("lets someone with Add Events delete an event another ministry staffs, keeping its history", () => {
-        admin("DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [staffed] });
-        existing([staffed]).should("deep.eq", []);
-        dbOk("SELECT vocc_event_id AS e FROM volunteer_occurrence_vocc WHERE vocc_ID = ?", [occurrenceId]).then((rows) =>
-            expect(rows[0].e).to.eq(null),
-        );
     });
 });

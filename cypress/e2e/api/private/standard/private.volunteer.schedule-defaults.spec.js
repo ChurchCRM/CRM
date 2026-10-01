@@ -229,612 +229,614 @@ function cleanupFixtures() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    for (const name of [VERSION, HORIZON, LEAD, DEFAULT_TYPE, RATE_LIMIT]) {
-        getConfig(name).then((value) => {
-            original[name] = value;
-        });
-    }
-    getConfig("sTimeZone").then((value) => {
-        timezone = value || "UTC";
-    });
-    setConfig(VERSION, "v2");
-    setConfig(HORIZON, "8");
-    cleanupFixtures();
-
-    api("POST", `${URL}/ministries`, { name: `${PREFIX} Worship`, description: "D32 fixture" }, 201).then((resp) => {
-        ministryId = resp.body.ministry.id;
-        api("GET", `${URL}/ministries/${ministryId}`).then((detail) => {
-            teamId = detail.body.teams[0].id;
-        });
-    });
-    cy.then(() => {
-        for (const [key, name] of [
-            ["lead", "Song Leader"],
-            ["reader", "Reader"],
-            ["usher", "Usher"],
-        ]) {
-            api("POST", `${URL}/ministries/${ministryId}/positions`, { name: `${PREFIX} ${name}`, teamId }, 201).then((resp) => {
-                position[key] = resp.body.position.id;
+describe("Volunteer v2 D32 — default volunteers belong to the schedule", () => {
+    before(() => {
+        for (const name of [VERSION, HORIZON, LEAD, DEFAULT_TYPE, RATE_LIMIT]) {
+            getConfig(name).then((value) => {
+                original[name] = value;
             });
         }
-    });
-    cy.then(() => {
-        qualify("lead", LEADER_A);
-        qualify("lead", LEADER_B);
-        qualify("reader", READER);
-        qualify("usher", USHER);
-        createEvents(weekly("Service", 1, 90));
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    for (const name of [HORIZON, LEAD, DEFAULT_TYPE, RATE_LIMIT, VERSION]) {
-        setConfig(name, original[name], [200, 400]);
-    }
-});
-
-// ── the schedule dialog ────────────────────────────────────────────────────
-
-describe("Volunteer v2 D32 — a schedule keeps a default volunteer per position", () => {
-    let scheduleId = 0;
-
-    const needs = (overrides = {}) => [
-        { positionId: position.lead, minCount: 1, maxCount: 1, ...(overrides.lead ?? {}) },
-        { positionId: position.reader, minCount: 1, maxCount: 1, ...(overrides.reader ?? {}) },
-        { positionId: position.usher, minCount: 0, maxCount: 1, ...(overrides.usher ?? {}) },
-    ];
-
-    before(() => {
-        createSchedule("Dialog", "Service", {
-            requirements: needs({
-                lead: { defaultPersonId: LEADER_A, defaultAccepted: true },
-                reader: { defaultPersonId: READER },
-            }),
-        }).then((resp) => {
-            scheduleId = resp.body.schedule.id;
+        getConfig("sTimeZone").then((value) => {
+            timezone = value || "UTC";
         });
-    });
+        setConfig(VERSION, "v2");
+        setConfig(HORIZON, "8");
+        cleanupFixtures();
 
-    it("saves a default per position with the staffing needs, and lists it back", () => {
-        requirementsOf(scheduleId).then((rows) => {
-            expect(rows[position.lead]).to.include({
-                defaultPersonId: LEADER_A,
-                defaultAccepted: true,
-                defaultQualified: true,
+        api("POST", `${URL}/ministries`, { name: `${PREFIX} Worship`, description: "D32 fixture" }, 201).then((resp) => {
+            ministryId = resp.body.ministry.id;
+            api("GET", `${URL}/ministries/${ministryId}`).then((detail) => {
+                teamId = detail.body.teams[0].id;
             });
-            expect(rows[position.lead].defaultPersonName).to.be.a("string").and.not.be.empty;
-            expect(rows[position.reader]).to.include({ defaultPersonId: READER, defaultAccepted: false, defaultQualified: true });
-            expect(rows[position.usher]).to.include({ defaultPersonId: null, defaultAccepted: false, defaultQualified: null });
-        });
-        dbOk(
-            `SELECT vreq_Default_per_ID AS person, vreq_DefaultAccepted AS accepted, vreq_DefaultSetBy_per_ID AS setBy
-               FROM volunteer_requirement_vreq WHERE vreq_vsch_ID = ? AND vreq_vpos_ID = ?`,
-            [scheduleId, position.lead],
-        ).then((rows) => {
-            expect(Number(rows[0].person)).to.eq(LEADER_A);
-            expect(Number(rows[0].accepted)).to.eq(1);
-            expect(Number(rows[0].setBy), "who set it answers for an accepted default").to.eq(ADMIN_PERSON);
-        });
-    });
-
-    it("keeps a default an edit leaves out, changes one it names and clears one it blanks", () => {
-        api("POST", `${URL}/schedules/${scheduleId}`, { requirements: needs() });
-        requirementsOf(scheduleId).then((rows) => {
-            expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_A, defaultAccepted: true });
-            expect(rows[position.reader]).to.include({ defaultPersonId: READER });
-        });
-
-        api("POST", `${URL}/schedules/${scheduleId}`, {
-            requirements: needs({ lead: { defaultPersonId: LEADER_B, defaultAccepted: false }, reader: { defaultPersonId: null } }),
-        });
-        requirementsOf(scheduleId).then((rows) => {
-            expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_B, defaultAccepted: false });
-            expect(rows[position.reader]).to.include({ defaultPersonId: null, defaultAccepted: false });
-        });
-
-        // An unchecked position takes its default with it.
-        api("POST", `${URL}/schedules/${scheduleId}`, { requirements: needs().slice(1) });
-        requirementsOf(scheduleId).then((rows) => {
-            expect(rows[position.lead]).to.eq(undefined);
-        });
-    });
-
-    it("refuses a default who is not qualified or does not exist, and changes nothing", () => {
-        api("POST", `${URL}/schedules/${scheduleId}`, { requirements: needs({ lead: { defaultPersonId: LEADER_A } }) });
-        api(
-            "POST",
-            `${URL}/schedules/${scheduleId}`,
-            { name: `${PREFIX} Renamed`, requirements: needs({ lead: { defaultPersonId: NOT_QUALIFIED } }) },
-            403,
-        );
-        api("POST", `${URL}/schedules/${scheduleId}`, { requirements: needs({ lead: { defaultPersonId: 999999 } }) }, 404);
-        requirementsOf(scheduleId).then((rows) => {
-            expect(rows[position.lead].defaultPersonId).to.eq(LEADER_A);
-        });
-        api("GET", `${URL}/schedules/${scheduleId}`).its("body.schedule.name").should("eq", `${PREFIX} Dialog`);
-
-        createSchedule("Refused", "Service", { requirements: needs({ reader: { defaultPersonId: LEADER_A } }) }, 403);
-        dbOk("SELECT COUNT(*) AS n FROM volunteer_schedule_vsch WHERE vsch_Name = ?", [`${PREFIX} Refused`]).then((rows) => {
-            expect(Number(rows[0].n), "no half-made schedule").to.eq(0);
-        });
-    });
-
-    it("keeps a stored default whose qualification was revoked, and says it no longer qualifies", () => {
-        dbOk("UPDATE volunteer_qualification_vqal SET vqal_Active = 0 WHERE vqal_per_ID = ? AND vqal_vpos_ID = ?", [
-            LEADER_A,
-            position.lead,
-        ]);
-        // Saving the unchanged default again is not a new choice, so it is not re-checked.
-        api("POST", `${URL}/schedules/${scheduleId}`, {
-            requirements: needs({ lead: { defaultPersonId: LEADER_A, defaultAccepted: true } }),
-        });
-        requirementsOf(scheduleId).then((rows) => {
-            expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_A, defaultAccepted: true, defaultQualified: false });
-        });
-        dbOk("UPDATE volunteer_qualification_vqal SET vqal_Active = 1 WHERE vqal_per_ID = ? AND vqal_vpos_ID = ?", [
-            LEADER_A,
-            position.lead,
-        ]);
-    });
-
-    it("refuses a default on one occurrence's own needs: defaults belong to the schedule", () => {
-        generate(scheduleId, { through: isoDate(10) }).then((result) => {
-            expect(result.created).to.be.greaterThan(0);
-        });
-        dbOk("SELECT vocc_ID AS id FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ? LIMIT 1", [scheduleId]).then((rows) => {
-            api(
-                "POST",
-                `${URL}/occurrences/${rows[0].id}/requirements/replace`,
-                { requirements: [{ positionId: position.lead, minCount: 2, maxCount: 2, defaultPersonId: LEADER_A }] },
-                400,
-            );
-        });
-    });
-});
-
-// ── the Generate dialog ────────────────────────────────────────────────────
-
-describe("Volunteer v2 D32 — Generate saves the dialog's defaults and assigns the saved ones", () => {
-    let scheduleId = 0;
-    let plainId = 0;
-
-    before(() => {
-        createSchedule("Generate", "Service", {
-            windowStart: isoDate(1),
-            windowEnd: isoDate(20),
-            requirements: [
-                { positionId: position.lead, minCount: 1, maxCount: 1 },
-                { positionId: position.reader, minCount: 1, maxCount: 1, defaultPersonId: READER },
-            ],
-        }).then((resp) => {
-            scheduleId = resp.body.schedule.id;
-        });
-        createSchedule("Saved Only", "Service", {
-            windowStart: isoDate(1),
-            windowEnd: isoDate(20),
-            requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B }],
-        }).then((resp) => {
-            plainId = resp.body.schedule.id;
-        });
-    });
-
-    it("refuses a default for a position the schedule does not ask for, before generating anything", () => {
-        generate(scheduleId, { defaults: [{ positionId: position.usher, personId: USHER }] }, 400);
-        dbOk("SELECT COUNT(*) AS n FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?", [scheduleId]).then((rows) => {
-            expect(Number(rows[0].n)).to.eq(0);
-        });
-        requirementsOf(scheduleId).then((rows) => {
-            expect(rows[position.reader].defaultPersonId, "the saved defaults are untouched").to.eq(READER);
-        });
-    });
-
-    it("saves the dialog's choices on the schedule — a blank one as none — and staffs the new occurrences with them", () => {
-        generate(scheduleId, {
-            defaults: [
-                { positionId: position.lead, personId: LEADER_A, accepted: true },
-                { positionId: position.reader, personId: null },
-            ],
-        }).then((result) => {
-            expect(result.created).to.be.greaterThan(0);
-            expect(result.assigned).to.eq(result.created);
-            expect(result.skipped).to.eq(0);
-            expect(result.unqualified).to.eq(0);
-        });
-        requirementsOf(scheduleId).then((rows) => {
-            expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_A, defaultAccepted: true });
-            expect(rows[position.reader]).to.include({ defaultPersonId: null });
-        });
-        dbOk("SELECT vreq_DefaultSetBy_per_ID AS setBy FROM volunteer_requirement_vreq WHERE vreq_vsch_ID = ? AND vreq_vpos_ID = ?", [
-            scheduleId,
-            position.lead,
-        ]).then((rows) => expect(Number(rows[0].setBy)).to.eq(ADMIN_PERSON));
-        staffingOf(scheduleId).then((occurrences) => {
-            for (const occurrence of occurrences) {
-                expect(occurrence.assignments, occurrence.day).to.have.length(1);
-                expect(occurrence.assignments[0]).to.include({
-                    positionId: position.lead,
-                    personId: LEADER_A,
-                    status: "accepted",
-                    coordinatorAccepts: 1,
-                    asks: 0,
-                });
-            }
-        });
-    });
-
-    it("assigns the schedule's saved defaults on a run that names none, asking a pending one to respond", () => {
-        generate(plainId).then((result) => {
-            expect(result.created).to.be.greaterThan(0);
-            expect(result.assigned).to.eq(result.created);
-        });
-        staffingOf(plainId).then((occurrences) => {
-            for (const occurrence of occurrences) {
-                expect(occurrence.assignments, occurrence.day).to.have.length(1);
-                expect(occurrence.assignments[0]).to.include({
-                    personId: LEADER_B,
-                    status: "pending",
-                    source: "coordinator",
-                    assignedBy: ADMIN_PERSON,
-                    coordinatorAccepts: 0,
-                    asks: 1,
-                });
-            }
-        });
-    });
-});
-
-// ── the daily top-up ───────────────────────────────────────────────────────
-
-describe("Volunteer v2 D32 — the daily top-up assigns each position's saved default", () => {
-    let scheduleId = 0;
-    let rehearsals = [];
-    let pastEventId = 0;
-
-    before(() => {
-        setConfig(RATE_LIMIT, "0");
-        createEvents(weekly("Rehearsal", 1, 90)).then((resp) => {
-            rehearsals = resp.body.events;
         });
         cy.then(() => {
-            // Over already, today: generation makes its occurrence, the default is refused.
-            dbOk(
-                `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive, event_ministry_id)
-                 VALUES (?, ?, '', '', ?, ?, 0, ?)`,
-                [CHURCH_SERVICE_TYPE, `${PREFIX} Rehearsal`, `${serverToday()} 00:00:00`, `${serverToday()} 00:01:00`, ministryId],
-            ).then((rows) => {
-                pastEventId = rows.insertId;
-            });
-            createSchedule("Rehearsal Crew", "Rehearsal", {
-                requirements: [
-                    { positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_A, defaultAccepted: true },
-                    { positionId: position.reader, minCount: 1, maxCount: 1, defaultPersonId: READER, defaultAccepted: false },
-                    // A position this schedule never takes anyone in: its default has no room.
-                    { positionId: position.usher, minCount: 0, maxCount: 0, defaultPersonId: USHER },
-                ],
+            for (const [key, name] of [
+                ["lead", "Song Leader"],
+                ["reader", "Reader"],
+                ["usher", "Usher"],
+            ]) {
+                api("POST", `${URL}/ministries/${ministryId}/positions`, { name: `${PREFIX} ${name}`, teamId }, 201).then((resp) => {
+                    position[key] = resp.body.position.id;
+                });
+            }
+        });
+        cy.then(() => {
+            qualify("lead", LEADER_A);
+            qualify("lead", LEADER_B);
+            qualify("reader", READER);
+            qualify("usher", USHER);
+            createEvents(weekly("Service", 1, 90));
+        });
+    });
+
+    after(() => {
+        cleanupFixtures();
+        for (const name of [HORIZON, LEAD, DEFAULT_TYPE, RATE_LIMIT, VERSION]) {
+            setConfig(name, original[name], [200, 400]);
+        }
+    });
+
+    // ── the schedule dialog ────────────────────────────────────────────────────
+
+    describe("Volunteer v2 D32 — a schedule keeps a default volunteer per position", () => {
+        let scheduleId = 0;
+
+        const needs = (overrides = {}) => [
+            { positionId: position.lead, minCount: 1, maxCount: 1, ...(overrides.lead ?? {}) },
+            { positionId: position.reader, minCount: 1, maxCount: 1, ...(overrides.reader ?? {}) },
+            { positionId: position.usher, minCount: 0, maxCount: 1, ...(overrides.usher ?? {}) },
+        ];
+
+        before(() => {
+            createSchedule("Dialog", "Service", {
+                requirements: needs({
+                    lead: { defaultPersonId: LEADER_A, defaultAccepted: true },
+                    reader: { defaultPersonId: READER },
+                }),
             }).then((resp) => {
                 scheduleId = resp.body.schedule.id;
             });
         });
-        cy.then(() => {
-            dbOk("DELETE FROM config_cfg WHERE cfg_name IN (?, ?)", [TOP_UP_DATE, TOP_UP_RESULT]);
-        });
-    });
 
-    it("assigns a still-qualified default on every occurrence it creates: accepted without asking, pending with the please-respond email", () => {
-        runTimerJobs(false);
-        staffingOf(scheduleId).then((occurrences) => {
-            const upcoming = rehearsals.filter((event) => event.start.slice(0, 10) <= isoDate(HORIZON_DAYS));
-            expect(occurrences.map((o) => o.eventId)).to.have.members([pastEventId, ...upcoming.map((e) => e.id)]);
-
-            const past = occurrences.find((o) => o.eventId === pastEventId);
-            expect(past.assignments, "an occurrence that is over takes nobody").to.have.length(0);
-
-            for (const occurrence of occurrences.filter((o) => o.eventId !== pastEventId)) {
-                const byPosition = Object.fromEntries(occurrence.assignments.map((a) => [a.positionId, a]));
-                expect(byPosition[position.lead], occurrence.day).to.include({
-                    personId: LEADER_A,
-                    status: "accepted",
-                    source: "coordinator",
-                    assignedBy: ADMIN_PERSON,
-                    coordinatorAccepts: 1,
-                    asks: 0,
+        it("saves a default per position with the staffing needs, and lists it back", () => {
+            requirementsOf(scheduleId).then((rows) => {
+                expect(rows[position.lead]).to.include({
+                    defaultPersonId: LEADER_A,
+                    defaultAccepted: true,
+                    defaultQualified: true,
                 });
-                expect(byPosition[position.reader], occurrence.day).to.include({
-                    personId: READER,
-                    status: "pending",
-                    assignedBy: ADMIN_PERSON,
-                    coordinatorAccepts: 0,
-                    asks: 1,
-                });
-                expect(byPosition[position.usher], "no room for the Usher default").to.eq(undefined);
-            }
+                expect(rows[position.lead].defaultPersonName).to.be.a("string").and.not.be.empty;
+                expect(rows[position.reader]).to.include({ defaultPersonId: READER, defaultAccepted: false, defaultQualified: true });
+                expect(rows[position.usher]).to.include({ defaultPersonId: null, defaultAccepted: false, defaultQualified: null });
+            });
+            dbOk(
+                `SELECT vreq_Default_per_ID AS person, vreq_DefaultAccepted AS accepted, vreq_DefaultSetBy_per_ID AS setBy
+               FROM volunteer_requirement_vreq WHERE vreq_vsch_ID = ? AND vreq_vpos_ID = ?`,
+                [scheduleId, position.lead],
+            ).then((rows) => {
+                expect(Number(rows[0].person)).to.eq(LEADER_A);
+                expect(Number(rows[0].accepted)).to.eq(1);
+                expect(Number(rows[0].setBy), "who set it answers for an accepted default").to.eq(ADMIN_PERSON);
+            });
         });
-        lastTopUp().then((result) => {
-            const upcoming = rehearsals.filter((event) => event.start.slice(0, 10) <= isoDate(HORIZON_DAYS)).length;
-            expect(result.assigned).to.be.at.least(upcoming * 2);
-            // Today's (over) occurrence refuses all three; every other one has no room for the Usher.
-            expect(result.skipped).to.be.at.least(upcoming + 3);
-            expect(result.unqualified).to.be.a("number");
-        });
-    });
 
-    it("skips a default whose qualification was revoked, leaves the gap, counts it and keeps the default", () => {
-        let newEventId = 0;
-        dbOk("SELECT vqal_ID AS id FROM volunteer_qualification_vqal WHERE vqal_per_ID = ? AND vqal_vpos_ID = ?", [
-            READER,
-            position.reader,
-        ]).then((rows) => {
-            api("DELETE", `${URL}/qualifications/${rows[0].id}`);
-        });
-        createEvents(oneEvent("Rehearsal", 2)).then((resp) => {
-            newEventId = resp.body.events[0].id;
-        });
-        cy.then(() => {
-            runTimerJobs(true);
-        });
-        staffingOf(scheduleId).then((occurrences) => {
-            const added = occurrences.find((o) => o.eventId === newEventId);
-            expect(added, "the new event got its occurrence").to.not.eq(undefined);
-            expect(added.assignments.map((a) => a.positionId), "the Reader is left open").to.deep.eq([position.lead]);
-            expect(added.assignments[0]).to.include({ personId: LEADER_A, status: "accepted" });
-            // Existing assignments of the revoked reader stay as they were (§2.7).
-            const earlier = occurrences.filter((o) => o.eventId !== newEventId && o.eventId !== pastEventId);
-            expect(earlier.every((o) => o.assignments.some((a) => a.personId === READER))).to.eq(true);
-        });
-        lastTopUp().then((result) => {
-            expect(result.unqualified).to.be.at.least(1);
-        });
-        requirementsOf(scheduleId).then((rows) => {
-            expect(rows[position.reader]).to.include({ defaultPersonId: READER, defaultQualified: false });
-        });
-    });
-
-    it("never reassigns existing occurrences when a default changes: only occurrences made from then on get the new one", () => {
-        let laterEventId = 0;
-        api("POST", `${URL}/schedules/${scheduleId}`, {
-            requirements: [
-                { positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B, defaultAccepted: false },
-                { positionId: position.reader, minCount: 1, maxCount: 1 },
-                { positionId: position.usher, minCount: 0, maxCount: 0 },
-            ],
-        });
-        createEvents(oneEvent("Rehearsal", 3)).then((resp) => {
-            laterEventId = resp.body.events[0].id;
-        });
-        cy.then(() => {
-            runTimerJobs(true);
-        });
-        staffingOf(scheduleId).then((occurrences) => {
-            const later = occurrences.find((o) => o.eventId === laterEventId);
-            const leads = later.assignments.filter((a) => a.positionId === position.lead);
-            expect(leads).to.have.length(1);
-            expect(leads[0]).to.include({ personId: LEADER_B, status: "pending", asks: 1 });
-
-            for (const occurrence of occurrences.filter((o) => o.eventId !== laterEventId && o.eventId !== pastEventId)) {
-                const lead = occurrence.assignments.filter((a) => a.positionId === position.lead);
-                expect(lead.map((a) => a.personId), occurrence.day).to.deep.eq([LEADER_A]);
-            }
-        });
-    });
-});
-
-// ── Staff these events ─────────────────────────────────────────────────────
-
-describe("Volunteer v2 D32 — Staff these events saves its defaults on the schedule", () => {
-    let scheduleId = 0;
-
-    it("saves them on the new schedule and assigns them on the occurrences up to the horizon", () => {
-        createEvents(
-            weekly("Workday", 1, 90, {
-                staff: {
-                    teamId,
-                    requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1 }],
-                    defaults: [{ positionId: position.lead, personId: LEADER_A, accepted: true }],
-                },
-            }),
-        ).then((resp) => {
-            scheduleId = resp.body.schedule.id;
-            expect(resp.body.reusedSchedule).to.eq(false);
-            const within = resp.body.events.filter((event) => event.start.slice(0, 10) <= isoDate(HORIZON_DAYS));
-            expect(resp.body.occurrences).to.have.length(within.length);
-            expect(resp.body.assigned).to.eq(within.length);
-        });
-        cy.then(() => {
+        it("keeps a default an edit leaves out, changes one it names and clears one it blanks", () => {
+            api("POST", `${URL}/schedules/${scheduleId}`, { requirements: needs() });
             requirementsOf(scheduleId).then((rows) => {
                 expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_A, defaultAccepted: true });
+                expect(rows[position.reader]).to.include({ defaultPersonId: READER });
             });
-        });
-    });
 
-    it("saves them on the schedule the events are added to (D30)", () => {
-        createEvents(
-            oneEvent("Workday", 4, {
-                staff: { teamId, defaults: [{ positionId: position.lead, personId: LEADER_B, accepted: false }] },
-            }),
-        ).then((resp) => {
-            expect(resp.body.reusedSchedule).to.eq(true);
-            expect(resp.body.schedule.id).to.eq(scheduleId);
-            expect(resp.body.assigned).to.eq(1);
-        });
-        cy.then(() => {
+            api("POST", `${URL}/schedules/${scheduleId}`, {
+                requirements: needs({ lead: { defaultPersonId: LEADER_B, defaultAccepted: false }, reader: { defaultPersonId: null } }),
+            });
             requirementsOf(scheduleId).then((rows) => {
                 expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_B, defaultAccepted: false });
+                expect(rows[position.reader]).to.include({ defaultPersonId: null, defaultAccepted: false });
+            });
+
+            // An unchecked position takes its default with it.
+            api("POST", `${URL}/schedules/${scheduleId}`, { requirements: needs().slice(1) });
+            requirementsOf(scheduleId).then((rows) => {
+                expect(rows[position.lead]).to.eq(undefined);
             });
         });
-    });
 
-    it("refuses a default for a position the new schedule does not ask for, and leaves nothing behind", () => {
-        createEvents(
-            weekly("Refused Workday", 1, 20, {
-                staff: {
-                    teamId,
-                    requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1 }],
-                    defaults: [{ positionId: position.usher, personId: USHER, accepted: false }],
-                },
-            }),
-            400,
-        );
-        dbOk("SELECT COUNT(*) AS n FROM events_event WHERE event_title = ?", [`${PREFIX} Refused Workday`]).then((rows) => {
-            expect(Number(rows[0].n)).to.eq(0);
-        });
-    });
-});
-
-// ── Remove Volunteer ───────────────────────────────────────────────────────
-
-describe("Volunteer v2 D32 — Remove Volunteer clears the person's defaults on the ministry's schedules", () => {
-    let removalId = 0;
-    let pausedId = 0;
-    const other = {};
-
-    function defaultCount(id, personId) {
-        return dbOk(
-            `SELECT COUNT(*) AS n FROM volunteer_requirement_vreq vreq
-               JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vreq.vreq_vsch_ID
-              WHERE vsch.vsch_vmin_ID = ? AND vreq.vreq_Default_per_ID = ?`,
-            [id, personId],
-        ).then((rows) => Number(rows[0].n));
-    }
-
-    before(() => {
-        createSchedule("Removal", "Service", {
-            requirements: [
-                { positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B, defaultAccepted: true },
-                { positionId: position.usher, minCount: 0, maxCount: 1, defaultPersonId: USHER },
-            ],
-        }).then((resp) => {
-            removalId = resp.body.schedule.id;
-        });
-        createSchedule("Removal Paused", "Service", {
-            active: false,
-            requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B }],
-        }).then((resp) => {
-            pausedId = resp.body.schedule.id;
-        });
-
-        api("POST", `${URL}/ministries`, { name: `${PREFIX} Hospitality`, description: "D32 removal fixture" }, 201).then((resp) => {
-            other.ministryId = resp.body.ministry.id;
-            api("GET", `${URL}/ministries/${other.ministryId}`).then((detail) => {
-                other.teamId = detail.body.teams[0].id;
-            });
-        });
-        cy.then(() => {
-            api("POST", `${URL}/ministries/${other.ministryId}/positions`, { name: `${PREFIX} Greeter`, teamId: other.teamId }, 201).then(
-                (resp) => {
-                    other.positionId = resp.body.position.id;
-                },
-            );
-        });
-        cy.then(() => {
-            api("POST", `${URL}/positions/${other.positionId}/qualifications`, { personId: LEADER_B }, [200, 201]);
+        it("refuses a default who is not qualified or does not exist, and changes nothing", () => {
+            api("POST", `${URL}/schedules/${scheduleId}`, { requirements: needs({ lead: { defaultPersonId: LEADER_A } }) });
             api(
                 "POST",
-                `${URL}/ministries/${other.ministryId}/events`,
-                weekly("Greeting", 1, 30, {
+                `${URL}/schedules/${scheduleId}`,
+                { name: `${PREFIX} Renamed`, requirements: needs({ lead: { defaultPersonId: NOT_QUALIFIED } }) },
+                403,
+            );
+            api("POST", `${URL}/schedules/${scheduleId}`, { requirements: needs({ lead: { defaultPersonId: 999999 } }) }, 404);
+            requirementsOf(scheduleId).then((rows) => {
+                expect(rows[position.lead].defaultPersonId).to.eq(LEADER_A);
+            });
+            api("GET", `${URL}/schedules/${scheduleId}`).its("body.schedule.name").should("eq", `${PREFIX} Dialog`);
+
+            createSchedule("Refused", "Service", { requirements: needs({ reader: { defaultPersonId: LEADER_A } }) }, 403);
+            dbOk("SELECT COUNT(*) AS n FROM volunteer_schedule_vsch WHERE vsch_Name = ?", [`${PREFIX} Refused`]).then((rows) => {
+                expect(Number(rows[0].n), "no half-made schedule").to.eq(0);
+            });
+        });
+
+        it("keeps a stored default whose qualification was revoked, and says it no longer qualifies", () => {
+            dbOk("UPDATE volunteer_qualification_vqal SET vqal_Active = 0 WHERE vqal_per_ID = ? AND vqal_vpos_ID = ?", [
+                LEADER_A,
+                position.lead,
+            ]);
+            // Saving the unchanged default again is not a new choice, so it is not re-checked.
+            api("POST", `${URL}/schedules/${scheduleId}`, {
+                requirements: needs({ lead: { defaultPersonId: LEADER_A, defaultAccepted: true } }),
+            });
+            requirementsOf(scheduleId).then((rows) => {
+                expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_A, defaultAccepted: true, defaultQualified: false });
+            });
+            dbOk("UPDATE volunteer_qualification_vqal SET vqal_Active = 1 WHERE vqal_per_ID = ? AND vqal_vpos_ID = ?", [
+                LEADER_A,
+                position.lead,
+            ]);
+        });
+
+        it("refuses a default on one occurrence's own needs: defaults belong to the schedule", () => {
+            generate(scheduleId, { through: isoDate(10) }).then((result) => {
+                expect(result.created).to.be.greaterThan(0);
+            });
+            dbOk("SELECT vocc_ID AS id FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ? LIMIT 1", [scheduleId]).then((rows) => {
+                api(
+                    "POST",
+                    `${URL}/occurrences/${rows[0].id}/requirements/replace`,
+                    { requirements: [{ positionId: position.lead, minCount: 2, maxCount: 2, defaultPersonId: LEADER_A }] },
+                    400,
+                );
+            });
+        });
+    });
+
+    // ── the Generate dialog ────────────────────────────────────────────────────
+
+    describe("Volunteer v2 D32 — Generate saves the dialog's defaults and assigns the saved ones", () => {
+        let scheduleId = 0;
+        let plainId = 0;
+
+        before(() => {
+            createSchedule("Generate", "Service", {
+                windowStart: isoDate(1),
+                windowEnd: isoDate(20),
+                requirements: [
+                    { positionId: position.lead, minCount: 1, maxCount: 1 },
+                    { positionId: position.reader, minCount: 1, maxCount: 1, defaultPersonId: READER },
+                ],
+            }).then((resp) => {
+                scheduleId = resp.body.schedule.id;
+            });
+            createSchedule("Saved Only", "Service", {
+                windowStart: isoDate(1),
+                windowEnd: isoDate(20),
+                requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B }],
+            }).then((resp) => {
+                plainId = resp.body.schedule.id;
+            });
+        });
+
+        it("refuses a default for a position the schedule does not ask for, before generating anything", () => {
+            generate(scheduleId, { defaults: [{ positionId: position.usher, personId: USHER }] }, 400);
+            dbOk("SELECT COUNT(*) AS n FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?", [scheduleId]).then((rows) => {
+                expect(Number(rows[0].n)).to.eq(0);
+            });
+            requirementsOf(scheduleId).then((rows) => {
+                expect(rows[position.reader].defaultPersonId, "the saved defaults are untouched").to.eq(READER);
+            });
+        });
+
+        it("saves the dialog's choices on the schedule — a blank one as none — and staffs the new occurrences with them", () => {
+            generate(scheduleId, {
+                defaults: [
+                    { positionId: position.lead, personId: LEADER_A, accepted: true },
+                    { positionId: position.reader, personId: null },
+                ],
+            }).then((result) => {
+                expect(result.created).to.be.greaterThan(0);
+                expect(result.assigned).to.eq(result.created);
+                expect(result.skipped).to.eq(0);
+                expect(result.unqualified).to.eq(0);
+            });
+            requirementsOf(scheduleId).then((rows) => {
+                expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_A, defaultAccepted: true });
+                expect(rows[position.reader]).to.include({ defaultPersonId: null });
+            });
+            dbOk("SELECT vreq_DefaultSetBy_per_ID AS setBy FROM volunteer_requirement_vreq WHERE vreq_vsch_ID = ? AND vreq_vpos_ID = ?", [
+                scheduleId,
+                position.lead,
+            ]).then((rows) => expect(Number(rows[0].setBy)).to.eq(ADMIN_PERSON));
+            staffingOf(scheduleId).then((occurrences) => {
+                for (const occurrence of occurrences) {
+                    expect(occurrence.assignments, occurrence.day).to.have.length(1);
+                    expect(occurrence.assignments[0]).to.include({
+                        positionId: position.lead,
+                        personId: LEADER_A,
+                        status: "accepted",
+                        coordinatorAccepts: 1,
+                        asks: 0,
+                    });
+                }
+            });
+        });
+
+        it("assigns the schedule's saved defaults on a run that names none, asking a pending one to respond", () => {
+            generate(plainId).then((result) => {
+                expect(result.created).to.be.greaterThan(0);
+                expect(result.assigned).to.eq(result.created);
+            });
+            staffingOf(plainId).then((occurrences) => {
+                for (const occurrence of occurrences) {
+                    expect(occurrence.assignments, occurrence.day).to.have.length(1);
+                    expect(occurrence.assignments[0]).to.include({
+                        personId: LEADER_B,
+                        status: "pending",
+                        source: "coordinator",
+                        assignedBy: ADMIN_PERSON,
+                        coordinatorAccepts: 0,
+                        asks: 1,
+                    });
+                }
+            });
+        });
+    });
+
+    // ── the daily top-up ───────────────────────────────────────────────────────
+
+    describe("Volunteer v2 D32 — the daily top-up assigns each position's saved default", () => {
+        let scheduleId = 0;
+        let rehearsals = [];
+        let pastEventId = 0;
+
+        before(() => {
+            setConfig(RATE_LIMIT, "0");
+            createEvents(weekly("Rehearsal", 1, 90)).then((resp) => {
+                rehearsals = resp.body.events;
+            });
+            cy.then(() => {
+                // Over already, today: generation makes its occurrence, the default is refused.
+                dbOk(
+                    `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive, event_ministry_id)
+                 VALUES (?, ?, '', '', ?, ?, 0, ?)`,
+                    [CHURCH_SERVICE_TYPE, `${PREFIX} Rehearsal`, `${serverToday()} 00:00:00`, `${serverToday()} 00:01:00`, ministryId],
+                ).then((rows) => {
+                    pastEventId = rows.insertId;
+                });
+                createSchedule("Rehearsal Crew", "Rehearsal", {
+                    requirements: [
+                        { positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_A, defaultAccepted: true },
+                        { positionId: position.reader, minCount: 1, maxCount: 1, defaultPersonId: READER, defaultAccepted: false },
+                        // A position this schedule never takes anyone in: its default has no room.
+                        { positionId: position.usher, minCount: 0, maxCount: 0, defaultPersonId: USHER },
+                    ],
+                }).then((resp) => {
+                    scheduleId = resp.body.schedule.id;
+                });
+            });
+            cy.then(() => {
+                dbOk("DELETE FROM config_cfg WHERE cfg_name IN (?, ?)", [TOP_UP_DATE, TOP_UP_RESULT]);
+            });
+        });
+
+        it("assigns a still-qualified default on every occurrence it creates: accepted without asking, pending with the please-respond email", () => {
+            runTimerJobs(false);
+            staffingOf(scheduleId).then((occurrences) => {
+                const upcoming = rehearsals.filter((event) => event.start.slice(0, 10) <= isoDate(HORIZON_DAYS));
+                expect(occurrences.map((o) => o.eventId)).to.have.members([pastEventId, ...upcoming.map((e) => e.id)]);
+
+                const past = occurrences.find((o) => o.eventId === pastEventId);
+                expect(past.assignments, "an occurrence that is over takes nobody").to.have.length(0);
+
+                for (const occurrence of occurrences.filter((o) => o.eventId !== pastEventId)) {
+                    const byPosition = Object.fromEntries(occurrence.assignments.map((a) => [a.positionId, a]));
+                    expect(byPosition[position.lead], occurrence.day).to.include({
+                        personId: LEADER_A,
+                        status: "accepted",
+                        source: "coordinator",
+                        assignedBy: ADMIN_PERSON,
+                        coordinatorAccepts: 1,
+                        asks: 0,
+                    });
+                    expect(byPosition[position.reader], occurrence.day).to.include({
+                        personId: READER,
+                        status: "pending",
+                        assignedBy: ADMIN_PERSON,
+                        coordinatorAccepts: 0,
+                        asks: 1,
+                    });
+                    expect(byPosition[position.usher], "no room for the Usher default").to.eq(undefined);
+                }
+            });
+            lastTopUp().then((result) => {
+                const upcoming = rehearsals.filter((event) => event.start.slice(0, 10) <= isoDate(HORIZON_DAYS)).length;
+                expect(result.assigned).to.be.at.least(upcoming * 2);
+                // Today's (over) occurrence refuses all three; every other one has no room for the Usher.
+                expect(result.skipped).to.be.at.least(upcoming + 3);
+                expect(result.unqualified).to.be.a("number");
+            });
+        });
+
+        it("skips a default whose qualification was revoked, leaves the gap, counts it and keeps the default", () => {
+            let newEventId = 0;
+            dbOk("SELECT vqal_ID AS id FROM volunteer_qualification_vqal WHERE vqal_per_ID = ? AND vqal_vpos_ID = ?", [
+                READER,
+                position.reader,
+            ]).then((rows) => {
+                api("DELETE", `${URL}/qualifications/${rows[0].id}`);
+            });
+            createEvents(oneEvent("Rehearsal", 2)).then((resp) => {
+                newEventId = resp.body.events[0].id;
+            });
+            cy.then(() => {
+                runTimerJobs(true);
+            });
+            staffingOf(scheduleId).then((occurrences) => {
+                const added = occurrences.find((o) => o.eventId === newEventId);
+                expect(added, "the new event got its occurrence").to.not.eq(undefined);
+                expect(added.assignments.map((a) => a.positionId), "the Reader is left open").to.deep.eq([position.lead]);
+                expect(added.assignments[0]).to.include({ personId: LEADER_A, status: "accepted" });
+                // Existing assignments of the revoked reader stay as they were (§2.7).
+                const earlier = occurrences.filter((o) => o.eventId !== newEventId && o.eventId !== pastEventId);
+                expect(earlier.every((o) => o.assignments.some((a) => a.personId === READER))).to.eq(true);
+            });
+            lastTopUp().then((result) => {
+                expect(result.unqualified).to.be.at.least(1);
+            });
+            requirementsOf(scheduleId).then((rows) => {
+                expect(rows[position.reader]).to.include({ defaultPersonId: READER, defaultQualified: false });
+            });
+        });
+
+        it("never reassigns existing occurrences when a default changes: only occurrences made from then on get the new one", () => {
+            let laterEventId = 0;
+            api("POST", `${URL}/schedules/${scheduleId}`, {
+                requirements: [
+                    { positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B, defaultAccepted: false },
+                    { positionId: position.reader, minCount: 1, maxCount: 1 },
+                    { positionId: position.usher, minCount: 0, maxCount: 0 },
+                ],
+            });
+            createEvents(oneEvent("Rehearsal", 3)).then((resp) => {
+                laterEventId = resp.body.events[0].id;
+            });
+            cy.then(() => {
+                runTimerJobs(true);
+            });
+            staffingOf(scheduleId).then((occurrences) => {
+                const later = occurrences.find((o) => o.eventId === laterEventId);
+                const leads = later.assignments.filter((a) => a.positionId === position.lead);
+                expect(leads).to.have.length(1);
+                expect(leads[0]).to.include({ personId: LEADER_B, status: "pending", asks: 1 });
+
+                for (const occurrence of occurrences.filter((o) => o.eventId !== laterEventId && o.eventId !== pastEventId)) {
+                    const lead = occurrence.assignments.filter((a) => a.positionId === position.lead);
+                    expect(lead.map((a) => a.personId), occurrence.day).to.deep.eq([LEADER_A]);
+                }
+            });
+        });
+    });
+
+    // ── Staff these events ─────────────────────────────────────────────────────
+
+    describe("Volunteer v2 D32 — Staff these events saves its defaults on the schedule", () => {
+        let scheduleId = 0;
+
+        it("saves them on the new schedule and assigns them on the occurrences up to the horizon", () => {
+            createEvents(
+                weekly("Workday", 1, 90, {
                     staff: {
-                        teamId: other.teamId,
-                        requirements: [{ positionId: other.positionId, minCount: 1, maxCount: 1 }],
-                        defaults: [{ positionId: other.positionId, personId: LEADER_B, accepted: true }],
+                        teamId,
+                        requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1 }],
+                        defaults: [{ positionId: position.lead, personId: LEADER_A, accepted: true }],
                     },
                 }),
-                201,
             ).then((resp) => {
-                other.scheduleId = resp.body.schedule.id;
+                scheduleId = resp.body.schedule.id;
+                expect(resp.body.reusedSchedule).to.eq(false);
+                const within = resp.body.events.filter((event) => event.start.slice(0, 10) <= isoDate(HORIZON_DAYS));
+                expect(resp.body.occurrences).to.have.length(within.length);
+                expect(resp.body.assigned).to.eq(within.length);
+            });
+            cy.then(() => {
+                requirementsOf(scheduleId).then((rows) => {
+                    expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_A, defaultAccepted: true });
+                });
+            });
+        });
+
+        it("saves them on the schedule the events are added to (D30)", () => {
+            createEvents(
+                oneEvent("Workday", 4, {
+                    staff: { teamId, defaults: [{ positionId: position.lead, personId: LEADER_B, accepted: false }] },
+                }),
+            ).then((resp) => {
+                expect(resp.body.reusedSchedule).to.eq(true);
+                expect(resp.body.schedule.id).to.eq(scheduleId);
+                expect(resp.body.assigned).to.eq(1);
+            });
+            cy.then(() => {
+                requirementsOf(scheduleId).then((rows) => {
+                    expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_B, defaultAccepted: false });
+                });
+            });
+        });
+
+        it("refuses a default for a position the new schedule does not ask for, and leaves nothing behind", () => {
+            createEvents(
+                weekly("Refused Workday", 1, 20, {
+                    staff: {
+                        teamId,
+                        requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1 }],
+                        defaults: [{ positionId: position.usher, personId: USHER, accepted: false }],
+                    },
+                }),
+                400,
+            );
+            dbOk("SELECT COUNT(*) AS n FROM events_event WHERE event_title = ?", [`${PREFIX} Refused Workday`]).then((rows) => {
+                expect(Number(rows[0].n)).to.eq(0);
             });
         });
     });
 
-    it("keeps the default when only one qualification is revoked", () => {
-        dbOk("SELECT vqal_ID AS id FROM volunteer_qualification_vqal WHERE vqal_per_ID = ? AND vqal_vpos_ID = ?", [
-            LEADER_B,
-            position.lead,
-        ]).then((rows) => {
-            api("DELETE", `${URL}/qualifications/${rows[0].id}`);
-        });
-        requirementsOf(removalId).then((rows) => {
-            expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_B, defaultAccepted: true, defaultQualified: false });
-        });
-        qualify("lead", LEADER_B);
-    });
+    // ── Remove Volunteer ───────────────────────────────────────────────────────
 
-    it("clears their defaults on every schedule of the ministry, keeps the needs, and leaves other people and ministries alone", () => {
-        let stored = 0;
-        let reported;
-        defaultCount(ministryId, LEADER_B).then((n) => {
-            stored = n;
-            expect(stored, "the two fixture schedules at least").to.be.at.least(2);
-        });
-        cy.then(() => {
-            api("DELETE", `${URL}/ministries/${ministryId}/volunteers/${LEADER_B}`).then((resp) => {
-                reported = resp.body.defaults;
+    describe("Volunteer v2 D32 — Remove Volunteer clears the person's defaults on the ministry's schedules", () => {
+        let removalId = 0;
+        let pausedId = 0;
+        const other = {};
+
+        function defaultCount(id, personId) {
+            return dbOk(
+                `SELECT COUNT(*) AS n FROM volunteer_requirement_vreq vreq
+               JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vreq.vreq_vsch_ID
+              WHERE vsch.vsch_vmin_ID = ? AND vreq.vreq_Default_per_ID = ?`,
+                [id, personId],
+            ).then((rows) => Number(rows[0].n));
+        }
+
+        before(() => {
+            createSchedule("Removal", "Service", {
+                requirements: [
+                    { positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B, defaultAccepted: true },
+                    { positionId: position.usher, minCount: 0, maxCount: 1, defaultPersonId: USHER },
+                ],
+            }).then((resp) => {
+                removalId = resp.body.schedule.id;
+            });
+            createSchedule("Removal Paused", "Service", {
+                active: false,
+                requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B }],
+            }).then((resp) => {
+                pausedId = resp.body.schedule.id;
+            });
+
+            api("POST", `${URL}/ministries`, { name: `${PREFIX} Hospitality`, description: "D32 removal fixture" }, 201).then((resp) => {
+                other.ministryId = resp.body.ministry.id;
+                api("GET", `${URL}/ministries/${other.ministryId}`).then((detail) => {
+                    other.teamId = detail.body.teams[0].id;
+                });
+            });
+            cy.then(() => {
+                api("POST", `${URL}/ministries/${other.ministryId}/positions`, { name: `${PREFIX} Greeter`, teamId: other.teamId }, 201).then(
+                    (resp) => {
+                        other.positionId = resp.body.position.id;
+                    },
+                );
+            });
+            cy.then(() => {
+                api("POST", `${URL}/positions/${other.positionId}/qualifications`, { personId: LEADER_B }, [200, 201]);
+                api(
+                    "POST",
+                    `${URL}/ministries/${other.ministryId}/events`,
+                    weekly("Greeting", 1, 30, {
+                        staff: {
+                            teamId: other.teamId,
+                            requirements: [{ positionId: other.positionId, minCount: 1, maxCount: 1 }],
+                            defaults: [{ positionId: other.positionId, personId: LEADER_B, accepted: true }],
+                        },
+                    }),
+                    201,
+                ).then((resp) => {
+                    other.scheduleId = resp.body.schedule.id;
+                });
             });
         });
-        defaultCount(ministryId, LEADER_B).then((left) => expect(left, "their defaults left in this ministry").to.eq(0));
 
-        dbOk(
-            `SELECT vreq_vsch_ID AS scheduleId, vreq_Default_per_ID AS person, vreq_DefaultAccepted AS accepted,
+        it("keeps the default when only one qualification is revoked", () => {
+            dbOk("SELECT vqal_ID AS id FROM volunteer_qualification_vqal WHERE vqal_per_ID = ? AND vqal_vpos_ID = ?", [
+                LEADER_B,
+                position.lead,
+            ]).then((rows) => {
+                api("DELETE", `${URL}/qualifications/${rows[0].id}`);
+            });
+            requirementsOf(removalId).then((rows) => {
+                expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_B, defaultAccepted: true, defaultQualified: false });
+            });
+            qualify("lead", LEADER_B);
+        });
+
+        it("clears their defaults on every schedule of the ministry, keeps the needs, and leaves other people and ministries alone", () => {
+            let stored = 0;
+            let reported;
+            defaultCount(ministryId, LEADER_B).then((n) => {
+                stored = n;
+                expect(stored, "the two fixture schedules at least").to.be.at.least(2);
+            });
+            cy.then(() => {
+                api("DELETE", `${URL}/ministries/${ministryId}/volunteers/${LEADER_B}`).then((resp) => {
+                    reported = resp.body.defaults;
+                });
+            });
+            defaultCount(ministryId, LEADER_B).then((left) => expect(left, "their defaults left in this ministry").to.eq(0));
+
+            dbOk(
+                `SELECT vreq_vsch_ID AS scheduleId, vreq_Default_per_ID AS person, vreq_DefaultAccepted AS accepted,
                     vreq_DefaultSetBy_per_ID AS setBy, vreq_MinCount AS minCount
                FROM volunteer_requirement_vreq WHERE vreq_vsch_ID IN (?, ?) AND vreq_vpos_ID = ?`,
-            [removalId, pausedId, position.lead],
-        ).then((rows) => {
-            expect(rows.map((row) => Number(row.scheduleId)), "the staffing need stays, inactive schedule too").to.have.members([
-                removalId,
-                pausedId,
-            ]);
-            for (const row of rows) {
-                expect(row.person).to.eq(null);
-                expect(Number(row.accepted)).to.eq(0);
-                expect(row.setBy).to.eq(null);
-                expect(Number(row.minCount)).to.eq(1);
-            }
+                [removalId, pausedId, position.lead],
+            ).then((rows) => {
+                expect(rows.map((row) => Number(row.scheduleId)), "the staffing need stays, inactive schedule too").to.have.members([
+                    removalId,
+                    pausedId,
+                ]);
+                for (const row of rows) {
+                    expect(row.person).to.eq(null);
+                    expect(Number(row.accepted)).to.eq(0);
+                    expect(row.setBy).to.eq(null);
+                    expect(Number(row.minCount)).to.eq(1);
+                }
+            });
+
+            requirementsOf(removalId).then((rows) => {
+                expect(rows[position.usher], "someone else's default").to.include({ defaultPersonId: USHER });
+            });
+            requirementsOf(other.scheduleId).then((rows) => {
+                expect(rows[other.positionId], "another ministry's schedule").to.include({
+                    defaultPersonId: LEADER_B,
+                    defaultAccepted: true,
+                    defaultQualified: true,
+                });
+            });
+            staffingOf(other.scheduleId).then((occurrences) => {
+                const assignments = occurrences.flatMap((occurrence) => occurrence.assignments);
+                expect(assignments).to.not.be.empty;
+                expect(assignments.every((a) => a.personId === LEADER_B && a.status === "accepted")).to.eq(true);
+            });
+            cy.then(() => expect(reported, "the response counts the cleared defaults").to.eq(stored));
         });
 
-        requirementsOf(removalId).then((rows) => {
-            expect(rows[position.usher], "someone else's default").to.include({ defaultPersonId: USHER });
-        });
-        requirementsOf(other.scheduleId).then((rows) => {
-            expect(rows[other.positionId], "another ministry's schedule").to.include({
-                defaultPersonId: LEADER_B,
-                defaultAccepted: true,
-                defaultQualified: true,
+        it("reports no defaults on a second removal", () => {
+            api("DELETE", `${URL}/ministries/${ministryId}/volunteers/${LEADER_B}`).then((resp) => {
+                expect(resp.body.defaults).to.eq(0);
             });
         });
-        staffingOf(other.scheduleId).then((occurrences) => {
-            const assignments = occurrences.flatMap((occurrence) => occurrence.assignments);
-            expect(assignments).to.not.be.empty;
-            expect(assignments.every((a) => a.personId === LEADER_B && a.status === "accepted")).to.eq(true);
+    });
+
+    // ── Ministry Settings ──────────────────────────────────────────────────────
+
+    describe("Volunteer v2 D32 — the server refuses a blank number setting", () => {
+        it("refuses a blank or non-numeric reminder lead time and keeps the stored value; 0 still means no reminders", () => {
+            setConfig(LEAD, "24");
+            setConfig(LEAD, "", 400);
+            setConfig(LEAD, "  ", 400);
+            setConfig(LEAD, "soon", 400);
+            getConfig(LEAD).should("eq", "24");
+            setConfig(LEAD, "0");
+            getConfig(LEAD).should("eq", "0");
         });
-        cy.then(() => expect(reported, "the response counts the cleared defaults").to.eq(stored));
-    });
 
-    it("reports no defaults on a second removal", () => {
-        api("DELETE", `${URL}/ministries/${ministryId}/volunteers/${LEADER_B}`).then((resp) => {
-            expect(resp.body.defaults).to.eq(0);
+        it("refuses a blank scheduling horizon, which keeps its value; a blank default event type still means none", () => {
+            setConfig(HORIZON, "6");
+            setConfig(HORIZON, "", 400);
+            getConfig(HORIZON).should("eq", "6");
+            setConfig(DEFAULT_TYPE, "");
+            getConfig(DEFAULT_TYPE).should("eq", "");
+            setConfig(HORIZON, "8");
         });
-    });
-});
-
-// ── Ministry Settings ──────────────────────────────────────────────────────
-
-describe("Volunteer v2 D32 — the server refuses a blank number setting", () => {
-    it("refuses a blank or non-numeric reminder lead time and keeps the stored value; 0 still means no reminders", () => {
-        setConfig(LEAD, "24");
-        setConfig(LEAD, "", 400);
-        setConfig(LEAD, "  ", 400);
-        setConfig(LEAD, "soon", 400);
-        getConfig(LEAD).should("eq", "24");
-        setConfig(LEAD, "0");
-        getConfig(LEAD).should("eq", "0");
-    });
-
-    it("refuses a blank scheduling horizon, which keeps its value; a blank default event type still means none", () => {
-        setConfig(HORIZON, "6");
-        setConfig(HORIZON, "", 400);
-        getConfig(HORIZON).should("eq", "6");
-        setConfig(DEFAULT_TYPE, "");
-        getConfig(DEFAULT_TYPE).should("eq", "");
-        setConfig(HORIZON, "8");
     });
 });

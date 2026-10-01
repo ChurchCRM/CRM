@@ -192,361 +192,363 @@ function cleanupFixtures() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-        originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-    });
-    setVersion("v2");
-
-    cleanupFixtures();
-
-    windowStart = isoDate(daysToNext(0));
-    windowEnd = isoDate(daysToNext(0) + 21);
-    sundayEventIds = [];
-    [0, 7, 14, 21].forEach((week) => {
-        const day = isoDate(daysToNext(0) + week);
-        dbOk(
-            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
-             VALUES (1, ?, '', '', ?, ?, 0)`,
-            [SUNDAY_TITLE, `${day} 09:00:00`, `${day} 10:00:00`],
-        ).then((result) => {
-            sundayEventIds.push(result.insertId);
+describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epic #9701)", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
+            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
         });
-    });
+        setVersion("v2");
 
-    api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries`, {
-        name: `${FIXTURE_PREFIX} Hospitality`,
-        description: "team-leader fixture",
-    }, 201).then((resp) => {
-        ministryId = resp.body.ministry.id;
-    });
+        cleanupFixtures();
 
-    cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
-            name: `${FIXTURE_PREFIX} Greeters`,
-            description: "the team person 99 leads",
-        }, 201).then((resp) => {
-            teamLed = resp.body.team.id;
-        });
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
-            name: `${FIXTURE_PREFIX} Ushers`,
-            description: "the team person 99 does NOT lead",
-        }, 201).then((resp) => {
-            teamOther = resp.body.team.id;
-        });
-    });
-
-    cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
-            name: `${FIXTURE_PREFIX} Door`,
-            description: "",
-            teamId: teamLed,
-            order: 1,
-        }, 201).then((resp) => {
-            posLedDoor = resp.body.position.id;
-        });
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
-            name: `${FIXTURE_PREFIX} Aisle`,
-            description: "",
-            teamId: teamOther,
-            order: 1,
-        }, 201).then((resp) => {
-            posOtherDoor = resp.body.position.id;
-        });
-    });
-
-    // The grant that makes person 99 a team leader — through the real scope API,
-    // as an administrator, which is the only way it is ever made (§4.6).
-    cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
-            personId: PERSON_LEADER,
-            scopeType: "team",
-            scopeId: teamLed,
-        }, [200, 201]).then((resp) => {
-            leaderScopeId = resp.body.scope.id;
-        });
-    });
-
-    // Somebody to assign later: in the pool and qualified for the led team's door.
-    cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${POOL_MEMBER}`, null, [200, 201]);
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/positions/${posLedDoor}/qualifications`, {
-            personId: POOL_MEMBER,
-            notes: "",
-        }, 201);
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    setVersion(originalVersion);
-});
-
-// ── the spec ───────────────────────────────────────────────────────────────
-
-describe("Volunteer v2 — a team leader on their own team", () => {
-    describe("Reading", () => {
-        it("Reads the qualification matrix of the team they lead", () => {
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/qualification-matrix`).then((resp) => {
-                expect(resp.body.teamId).to.eq(teamLed);
-                expect(resp.body.ministryId).to.eq(ministryId);
-                expect(resp.body.positions.map((p) => p.id)).to.include(posLedDoor);
-                expect(resp.body.positions.map((p) => p.id)).to.not.include(posOtherDoor);
-            });
-        });
-
-        it("Is refused the qualification matrix of another team", () => {
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamOther}/qualification-matrix`, null, 403);
-        });
-
-        it("Is refused the ministry-wide qualification matrix", () => {
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}/qualification-matrix`, null, 403);
-        });
-
-        it("Reads the schedules of the team they lead", () => {
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/schedules`).then((resp) => {
-                expect(resp.body.schedules).to.be.an("array");
-            });
-        });
-
-        it("Is refused another team's schedules, and the ministry-wide list", () => {
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamOther}/schedules`, null, 403);
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`, null, 403);
-        });
-
-        it("Sees only their own team's positions in the ministry position list", () => {
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`).then((resp) => {
-                const ids = resp.body.positions.map((p) => p.id);
-                expect(ids).to.include(posLedDoor);
-                expect(ids).to.not.include(posOtherDoor);
-            });
-        });
-
-        it("A login with no scope at all is refused every one of them", () => {
-            api(NOSCOPE_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/qualification-matrix`, null, 403);
-            api(NOSCOPE_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/schedules`, null, 403);
-        });
-    });
-
-    describe("Creating a schedule (design section 4.6)", () => {
-        it("Creates one for the team they lead", () => {
-            api(
-                LEADER_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-                schedulePayload(teamLed, "Greeters — Sunday"),
-                201,
-            ).then((resp) => {
-                expect(resp.body.schedule.teamId).to.eq(teamLed);
-                scheduleLed = resp.body.schedule.id;
-            });
-        });
-
-        it("Is refused one for a team they do not lead", () => {
-            api(
-                LEADER_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-                schedulePayload(teamOther, "Ushers — Sunday"),
-                403,
-            );
-        });
-
-        it("Writes nothing when it is refused", () => {
+        windowStart = isoDate(daysToNext(0));
+        windowEnd = isoDate(daysToNext(0) + 21);
+        sundayEventIds = [];
+        [0, 7, 14, 21].forEach((week) => {
+            const day = isoDate(daysToNext(0) + week);
             dbOk(
-                `SELECT vsch_ID FROM volunteer_schedule_vsch WHERE vsch_vtem_ID = ?`,
-                [teamOther],
-            ).then((rows) => {
-                expect(rows).to.have.length(0);
+                `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (1, ?, '', '', ?, ?, 0)`,
+                [SUNDAY_TITLE, `${day} 09:00:00`, `${day} 10:00:00`],
+            ).then((result) => {
+                sundayEventIds.push(result.insertId);
             });
         });
 
-        it("A login with no scope is refused even for a team of the same ministry", () => {
-            api(
-                NOSCOPE_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-                schedulePayload(teamLed, "Nobody — Sunday"),
-                403,
-            );
+        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries`, {
+            name: `${FIXTURE_PREFIX} Hospitality`,
+            description: "team-leader fixture",
+        }, 201).then((resp) => {
+            ministryId = resp.body.ministry.id;
         });
 
-        it("Edits and generates dates for their own schedule", () => {
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleLed}`, {
-                name: `${FIXTURE_PREFIX} Greeters — Sunday morning`,
-            }, 200);
-
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleLed}/requirements`, {
-                positionId: posLedDoor,
-                minCount: 1,
-                maxCount: 1,
-            }, [200, 201]);
-
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleLed}/generate`, {
-                through: windowEnd,
-            }, 200).then((resp) => {
-                expect(resp.body.created).to.be.greaterThan(0);
-            });
-        });
-    });
-
-    describe("Staffing one event (D22)", () => {
-        let staffedScheduleId = 0;
-
-        it("Staffs an event for the team they lead", () => {
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
-                eventId: sundayEventIds[3],
-                teamId: teamLed,
-                requirements: [{ positionId: posLedDoor, minCount: 1, maxCount: 1 }],
+        cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
+                name: `${FIXTURE_PREFIX} Greeters`,
+                description: "the team person 99 leads",
             }, 201).then((resp) => {
-                expect(resp.body.occurrence.eventId).to.eq(sundayEventIds[3]);
-                expect(resp.body.occurrence.teamId).to.eq(teamLed);
-                expect(resp.body.schedule.linkMode).to.eq("event");
-                expect(resp.body.schedule.oneOff).to.eq(true);
-                staffedScheduleId = resp.body.schedule.id;
+                teamLed = resp.body.team.id;
             });
-        });
-
-        it("Is refused a second staffing of the same event for the same team (409)", () => {
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
-                eventId: sundayEventIds[3],
-                teamId: teamLed,
-            }, 409);
-        });
-
-        it("Is refused staffing an event for a team they do not lead", () => {
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
-                eventId: sundayEventIds[2],
-                teamId: teamOther,
-            }, 403);
-            dbOk(`SELECT vsch_ID FROM volunteer_schedule_vsch WHERE vsch_vtem_ID = ?`, [teamOther]).then((rows) => {
-                expect(rows, "nothing written for the refused team").to.have.length(0);
-            });
-        });
-
-        it("A login with no scope is refused", () => {
-            api(NOSCOPE_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
-                eventId: sundayEventIds[2],
-                teamId: teamLed,
-            }, 403);
-        });
-
-        it("Keeps the staffed event's schedule off the team's schedule list", () => {
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/schedules`).then((resp) => {
-                expect(resp.body.schedules.map((row) => row.id)).to.not.include(staffedScheduleId);
-            });
-        });
-
-        it("Searches upcoming events for their own team only", () => {
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/upcoming-events?q=${encodeURIComponent(SUNDAY_TITLE)}&teamId=${teamLed}`).then(
-                (resp) => {
-                    const staffed = resp.body.events.find((row) => row.id === sundayEventIds[3]);
-                    expect(staffed.staffedByTeam).to.eq(true);
-                },
-            );
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/upcoming-events?teamId=${teamOther}`, null, 403);
-        });
-    });
-
-    describe("Staffing their own team's occurrence", () => {
-        it("Lists the dates of the team they lead", () => {
-            api(
-                LEADER_KEY,
-                "GET",
-                `${VOLUNTEER_URL}/occurrences?from=${windowStart}&to=${windowEnd}&teamId=${teamLed}`,
-            ).then((resp) => {
-                expect(resp.body.occurrences.length).to.be.greaterThan(0);
-                occurrenceLed = resp.body.occurrences[0].id;
-            });
-        });
-
-        it("Reads its staffing and assigns a qualified volunteer", () => {
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceLed}/staffing`).then((resp) => {
-                expect(resp.body.requirements.map((r) => r.positionId)).to.include(posLedDoor);
-            });
-
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceLed}/assignments`, {
-                positionId: posLedDoor,
-                personId: POOL_MEMBER,
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
+                name: `${FIXTURE_PREFIX} Ushers`,
+                description: "the team person 99 does NOT lead",
             }, 201).then((resp) => {
-                expect(resp.body.assignment.personId).to.eq(POOL_MEMBER);
+                teamOther = resp.body.team.id;
             });
         });
 
-        it("Overrides this date's staffing needs", () => {
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceLed}/requirements`, {
-                positionId: posLedDoor,
-                minCount: 2,
-                maxCount: 2,
-            }, [200, 201]);
-        });
-
-        it("A login with no scope is refused the same occurrence", () => {
-            api(NOSCOPE_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceLed}/staffing`, null, 403);
-        });
-    });
-
-    describe("Ministry-level acts stay refused", () => {
-        it("Cannot read the ministry document", () => {
-            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}`, null, 403);
-        });
-
-        it("Cannot create a team", () => {
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
-                name: `${FIXTURE_PREFIX} Smuggled`,
+        cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
+                name: `${FIXTURE_PREFIX} Door`,
                 description: "",
-            }, 403);
+                teamId: teamLed,
+                order: 1,
+            }, 201).then((resp) => {
+                posLedDoor = resp.body.position.id;
+            });
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
+                name: `${FIXTURE_PREFIX} Aisle`,
+                description: "",
+                teamId: teamOther,
+                order: 1,
+            }, 201).then((resp) => {
+                posOtherDoor = resp.body.position.id;
+            });
         });
 
-        it("Cannot add somebody to the ministry's pool", () => {
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${PERSON_NOSCOPE}`, null, 403);
-        });
-
-        it("Cannot grant themselves a second scope", () => {
-            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
+        // The grant that makes person 99 a team leader — through the real scope API,
+        // as an administrator, which is the only way it is ever made (§4.6).
+        cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
                 personId: PERSON_LEADER,
                 scopeType: "team",
-                scopeId: teamOther,
-            }, 403);
+                scopeId: teamLed,
+            }, [200, 201]).then((resp) => {
+                leaderScopeId = resp.body.scope.id;
+            });
         });
 
-        it("Cannot revoke the scope they hold", () => {
-            api(LEADER_KEY, "DELETE", `${VOLUNTEER_URL}/scopes/${leaderScopeId}`, null, 403);
+        // Somebody to assign later: in the pool and qualified for the led team's door.
+        cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${POOL_MEMBER}`, null, [200, 201]);
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/positions/${posLedDoor}/qualifications`, {
+                personId: POOL_MEMBER,
+                notes: "",
+            }, 201);
         });
     });
 
-    describe("The portal's own pages are not an API", () => {
-        /*
-         * Design P11 / the portal access rule: every portal page derives the
-         * acting person from the session, so an API key — which names an account
-         * but arrives without that session — is refused outright rather than
-         * being given a second route to the same data.
-         */
-        it("Refuses an API key on the My Teams pages", () => {
-            for (const url of [
-                PORTAL_TEAMS_URL,
-                `${PORTAL_TEAMS_URL}/${teamLed}`,
-                `${PORTAL_TEAMS_URL}/${teamLed}/occurrences/${occurrenceLed}`,
-            ]) {
+    after(() => {
+        cleanupFixtures();
+        setVersion(originalVersion);
+    });
+
+    // ── the spec ───────────────────────────────────────────────────────────────
+
+    describe("Volunteer v2 — a team leader on their own team", () => {
+        describe("Reading", () => {
+            it("Reads the qualification matrix of the team they lead", () => {
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/qualification-matrix`).then((resp) => {
+                    expect(resp.body.teamId).to.eq(teamLed);
+                    expect(resp.body.ministryId).to.eq(ministryId);
+                    expect(resp.body.positions.map((p) => p.id)).to.include(posLedDoor);
+                    expect(resp.body.positions.map((p) => p.id)).to.not.include(posOtherDoor);
+                });
+            });
+
+            it("Is refused the qualification matrix of another team", () => {
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamOther}/qualification-matrix`, null, 403);
+            });
+
+            it("Is refused the ministry-wide qualification matrix", () => {
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}/qualification-matrix`, null, 403);
+            });
+
+            it("Reads the schedules of the team they lead", () => {
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/schedules`).then((resp) => {
+                    expect(resp.body.schedules).to.be.an("array");
+                });
+            });
+
+            it("Is refused another team's schedules, and the ministry-wide list", () => {
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamOther}/schedules`, null, 403);
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`, null, 403);
+            });
+
+            it("Sees only their own team's positions in the ministry position list", () => {
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`).then((resp) => {
+                    const ids = resp.body.positions.map((p) => p.id);
+                    expect(ids).to.include(posLedDoor);
+                    expect(ids).to.not.include(posOtherDoor);
+                });
+            });
+
+            it("A login with no scope at all is refused every one of them", () => {
+                api(NOSCOPE_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/qualification-matrix`, null, 403);
+                api(NOSCOPE_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/schedules`, null, 403);
+            });
+        });
+
+        describe("Creating a schedule (design section 4.6)", () => {
+            it("Creates one for the team they lead", () => {
+                api(
+                    LEADER_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
+                    schedulePayload(teamLed, "Greeters — Sunday"),
+                    201,
+                ).then((resp) => {
+                    expect(resp.body.schedule.teamId).to.eq(teamLed);
+                    scheduleLed = resp.body.schedule.id;
+                });
+            });
+
+            it("Is refused one for a team they do not lead", () => {
+                api(
+                    LEADER_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
+                    schedulePayload(teamOther, "Ushers — Sunday"),
+                    403,
+                );
+            });
+
+            it("Writes nothing when it is refused", () => {
+                dbOk(
+                    `SELECT vsch_ID FROM volunteer_schedule_vsch WHERE vsch_vtem_ID = ?`,
+                    [teamOther],
+                ).then((rows) => {
+                    expect(rows).to.have.length(0);
+                });
+            });
+
+            it("A login with no scope is refused even for a team of the same ministry", () => {
+                api(
+                    NOSCOPE_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
+                    schedulePayload(teamLed, "Nobody — Sunday"),
+                    403,
+                );
+            });
+
+            it("Edits and generates dates for their own schedule", () => {
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleLed}`, {
+                    name: `${FIXTURE_PREFIX} Greeters — Sunday morning`,
+                }, 200);
+
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleLed}/requirements`, {
+                    positionId: posLedDoor,
+                    minCount: 1,
+                    maxCount: 1,
+                }, [200, 201]);
+
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleLed}/generate`, {
+                    through: windowEnd,
+                }, 200).then((resp) => {
+                    expect(resp.body.created).to.be.greaterThan(0);
+                });
+            });
+        });
+
+        describe("Staffing one event (D22)", () => {
+            let staffedScheduleId = 0;
+
+            it("Staffs an event for the team they lead", () => {
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
+                    eventId: sundayEventIds[3],
+                    teamId: teamLed,
+                    requirements: [{ positionId: posLedDoor, minCount: 1, maxCount: 1 }],
+                }, 201).then((resp) => {
+                    expect(resp.body.occurrence.eventId).to.eq(sundayEventIds[3]);
+                    expect(resp.body.occurrence.teamId).to.eq(teamLed);
+                    expect(resp.body.schedule.linkMode).to.eq("event");
+                    expect(resp.body.schedule.oneOff).to.eq(true);
+                    staffedScheduleId = resp.body.schedule.id;
+                });
+            });
+
+            it("Is refused a second staffing of the same event for the same team (409)", () => {
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
+                    eventId: sundayEventIds[3],
+                    teamId: teamLed,
+                }, 409);
+            });
+
+            it("Is refused staffing an event for a team they do not lead", () => {
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
+                    eventId: sundayEventIds[2],
+                    teamId: teamOther,
+                }, 403);
+                dbOk(`SELECT vsch_ID FROM volunteer_schedule_vsch WHERE vsch_vtem_ID = ?`, [teamOther]).then((rows) => {
+                    expect(rows, "nothing written for the refused team").to.have.length(0);
+                });
+            });
+
+            it("A login with no scope is refused", () => {
+                api(NOSCOPE_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
+                    eventId: sundayEventIds[2],
+                    teamId: teamLed,
+                }, 403);
+            });
+
+            it("Keeps the staffed event's schedule off the team's schedule list", () => {
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/schedules`).then((resp) => {
+                    expect(resp.body.schedules.map((row) => row.id)).to.not.include(staffedScheduleId);
+                });
+            });
+
+            it("Searches upcoming events for their own team only", () => {
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/upcoming-events?q=${encodeURIComponent(SUNDAY_TITLE)}&teamId=${teamLed}`).then(
+                    (resp) => {
+                        const staffed = resp.body.events.find((row) => row.id === sundayEventIds[3]);
+                        expect(staffed.staffedByTeam).to.eq(true);
+                    },
+                );
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/upcoming-events?teamId=${teamOther}`, null, 403);
+            });
+        });
+
+        describe("Staffing their own team's occurrence", () => {
+            it("Lists the dates of the team they lead", () => {
+                api(
+                    LEADER_KEY,
+                    "GET",
+                    `${VOLUNTEER_URL}/occurrences?from=${windowStart}&to=${windowEnd}&teamId=${teamLed}`,
+                ).then((resp) => {
+                    expect(resp.body.occurrences.length).to.be.greaterThan(0);
+                    occurrenceLed = resp.body.occurrences[0].id;
+                });
+            });
+
+            it("Reads its staffing and assigns a qualified volunteer", () => {
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceLed}/staffing`).then((resp) => {
+                    expect(resp.body.requirements.map((r) => r.positionId)).to.include(posLedDoor);
+                });
+
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceLed}/assignments`, {
+                    positionId: posLedDoor,
+                    personId: POOL_MEMBER,
+                }, 201).then((resp) => {
+                    expect(resp.body.assignment.personId).to.eq(POOL_MEMBER);
+                });
+            });
+
+            it("Overrides this date's staffing needs", () => {
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceLed}/requirements`, {
+                    positionId: posLedDoor,
+                    minCount: 2,
+                    maxCount: 2,
+                }, [200, 201]);
+            });
+
+            it("A login with no scope is refused the same occurrence", () => {
+                api(NOSCOPE_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceLed}/staffing`, null, 403);
+            });
+        });
+
+        describe("Ministry-level acts stay refused", () => {
+            it("Cannot read the ministry document", () => {
+                api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}`, null, 403);
+            });
+
+            it("Cannot create a team", () => {
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
+                    name: `${FIXTURE_PREFIX} Smuggled`,
+                    description: "",
+                }, 403);
+            });
+
+            it("Cannot add somebody to the ministry's pool", () => {
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${PERSON_NOSCOPE}`, null, 403);
+            });
+
+            it("Cannot grant themselves a second scope", () => {
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
+                    personId: PERSON_LEADER,
+                    scopeType: "team",
+                    scopeId: teamOther,
+                }, 403);
+            });
+
+            it("Cannot revoke the scope they hold", () => {
+                api(LEADER_KEY, "DELETE", `${VOLUNTEER_URL}/scopes/${leaderScopeId}`, null, 403);
+            });
+        });
+
+        describe("The portal's own pages are not an API", () => {
+            /*
+             * Design P11 / the portal access rule: every portal page derives the
+             * acting person from the session, so an API key — which names an account
+             * but arrives without that session — is refused outright rather than
+             * being given a second route to the same data.
+             */
+            it("Refuses an API key on the My Teams pages", () => {
+                for (const url of [
+                    PORTAL_TEAMS_URL,
+                    `${PORTAL_TEAMS_URL}/${teamLed}`,
+                    `${PORTAL_TEAMS_URL}/${teamLed}/occurrences/${occurrenceLed}`,
+                ]) {
+                    cy.request({
+                        method: "GET",
+                        url,
+                        headers: { "x-api-key": Cypress.env(LEADER_KEY) },
+                        failOnStatusCode: false,
+                    }).then((resp) => {
+                        expect(resp.status).to.eq(403);
+                    });
+                }
+            });
+
+            it("Refuses an administrator's API key just the same", () => {
                 cy.request({
                     method: "GET",
-                    url,
-                    headers: { "x-api-key": Cypress.env(LEADER_KEY) },
+                    url: PORTAL_TEAMS_URL,
+                    headers: { "x-api-key": Cypress.env(ADMIN_KEY) },
                     failOnStatusCode: false,
                 }).then((resp) => {
                     expect(resp.status).to.eq(403);
                 });
-            }
-        });
-
-        it("Refuses an administrator's API key just the same", () => {
-            cy.request({
-                method: "GET",
-                url: PORTAL_TEAMS_URL,
-                headers: { "x-api-key": Cypress.env(ADMIN_KEY) },
-                failOnStatusCode: false,
-            }).then((resp) => {
-                expect(resp.status).to.eq(403);
             });
         });
     });

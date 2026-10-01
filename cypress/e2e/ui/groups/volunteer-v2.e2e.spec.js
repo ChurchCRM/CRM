@@ -324,697 +324,699 @@ function cleanupFixtures() {
 
 // ── fixture — everything through the real APIs, before any login ───────────
 
-before(() => {
-    adminApi("GET", SETTING_URL, null, 200).then((resp) => {
-        originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-    });
-    setVersion("v2");
-    cleanupFixtures();
-
-    adminApi(
-        "POST",
-        `${VOLUNTEER_URL}/ministries`,
-        { name: MINISTRY_NAME, description: "#9714 UI walk-through" },
-        201,
-    ).then((resp) => {
-        ministryId = resp.body.ministry.id;
-    });
-
-    cy.then(() => {
-        adminApi(
-            "POST",
-            `${VOLUNTEER_URL}/scopes`,
-            {
-                personId: PERSON_COORDINATOR,
-                scopeType: "ministry",
-                scopeId: ministryId,
-            },
-            [200, 201],
-        );
-        adminApi("GET", `${VOLUNTEER_URL}/ministries/${ministryId}`, null, 200).then((resp) => {
-            expect(resp.body.teams, "the ministry came with one team").to.have.length(1);
-            expect(resp.body.teams[0].name).to.eq(TEAM_NAME);
-            teamId = resp.body.teams[0].id;
-        });
-    });
-
-    cy.then(() => {
-        adminApi(
-            "POST",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
-            { name: POSITION_ESPRESSO, teamId, order: 1 },
-            201,
-        ).then((resp) => {
-            posEspresso = resp.body.position.id;
-        });
-        adminApi(
-            "POST",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
-            { name: POSITION_MILK, teamId, order: 2 },
-            201,
-        ).then((resp) => {
-            posMilk = resp.body.position.id;
-        });
-    });
-
-    cy.then(() => {
-        // D19: the ministry came with its own pool Group, empty — fill it through
-        // the API rather than making a group and linking it.
-        POOL_ALL.forEach((personId) => {
-            adminApi(
-                "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
-                null,
-                [200, 201],
-            );
-        });
-        adminApi("GET", `${VOLUNTEER_URL}/ministries/${ministryId}/pool`, null, 200).then(
-            (resp) => {
-                groupId = resp.body.groupId;
-            },
-        );
-        // The volunteer persona is qualified for both, so they have something
-        // on S5 and something left to sign up for on S6.
-        POOL_ALL.forEach((personId) => {
-            adminApi(
-                "POST",
-                `${VOLUNTEER_URL}/positions/${posEspresso}/qualifications`,
-                { personId, notes: "" },
-                [200, 201],
-            );
-        });
-        [PERSON_VOLUNTEER, 8, 9].forEach((personId) => {
-            adminApi(
-                "POST",
-                `${VOLUNTEER_URL}/positions/${posMilk}/qualifications`,
-                { personId, notes: "" },
-                [200, 201],
-            );
-        });
-    });
-
-    cy.then(() => {
-        seriesStart = isoDate(daysToNext(0));
-        seriesEnd = isoDate(daysToNext(0) + 7);
-        adminApi(
-            "POST",
-            "/api/events/repeat",
-            {
-                Title: EVENT_TITLE,
-                Type: CHURCH_SERVICE_TYPE,
-                StartTime: "10:30:00",
-                EndTime: "11:45:00",
-                RecurType: "weekly",
-                RecurDOW: "Sunday",
-                RangeStart: seriesStart,
-                RangeEnd: seriesEnd,
-            },
-            200,
-        ).then((resp) => {
-            eventId = resp.body.eventIds[0];
-        });
-    });
-
-    cy.then(() => {
-        adminApi(
-            "POST",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-            {
-                name: `${PREFIX} Coffee Bar — Sunday`,
-                linkMode: "event_type",
-                eventTypeId: CHURCH_SERVICE_TYPE,
-                titleFilter: EVENT_TITLE,
-                windowStart: seriesStart,
-                teamId,
-            },
-            201,
-        ).then((resp) => {
-            scheduleId = resp.body.schedule.id;
-        });
-    });
-
-    cy.then(() => {
-        adminApi(
-            "POST",
-            `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
-            { positionId: posEspresso, minCount: 1, maxCount: 1 },
-            [200, 201],
-        );
-        adminApi(
-            "POST",
-            `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
-            { positionId: posMilk, minCount: 1, maxCount: 1 },
-            [200, 201],
-        );
-        adminApi(
-            "POST",
-            `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`,
-            { through: seriesEnd },
-            200,
-        );
-    });
-
-    cy.then(() => {
-        adminApi(
-            "GET",
-            `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
-            null,
-            200,
-        ).then((resp) => {
-            occurrenceId = resp.body.occurrences[0].id;
-        });
-    });
-
-    // The volunteer already holds the Espresso slot, so S5 has a card on it.
-    // Milk Station is deliberately left empty — that is the gap the coordinator
-    // fills in the walk below.
-    cy.then(() => {
-        adminApi(
-            "POST",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
-            { positionId: posEspresso, personId: PERSON_VOLUNTEER },
-            201,
-        );
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    setVersion(originalVersion);
-});
-
-// ── 1. the shortest loop, as three different people ───────────────────────
-
-describe("Volunteer v2 e2e (UI) — the shortest loop", () => {
-    it("admin: the ministry, its team and its positions are all on the ministry page", () => {
-        freshAdminLogin();
-        cy.visit(`${MINISTRIES_URL}/${ministryId}`);
-
-        cy.get("#overview-content", { timeout: 20000 }).should("be.visible");
-        cy.get("#overview-team-count").should("contain", "1");
-
-        cy.get("#nav-item-positions").click();
-        cy.get("#positions-table-wrapper", { timeout: 20000 })
-            .should("be.visible")
-            .and("contain", POSITION_ESPRESSO)
-            .and("contain", POSITION_MILK);
-
-        cy.get("#nav-item-schedules").click();
-        cy.get("#schedules", { timeout: 20000 })
-            .should("be.visible")
-            .and("contain", `${PREFIX} Coffee Bar`);
-    });
-
-    it("coordinator: the dashboard names the Milk Station gap", () => {
-        freshCoordinatorLogin();
-        cy.visit(DASHBOARD_URL);
-
-        cy.get("#volunteer-dashboard", { timeout: 20000 }).should("exist");
-        cy.get("#volunteer-gaps-content", { timeout: 20000 }).should(
-            "be.visible",
-        );
-        // Scoped to THIS occurrence: the schedule generated more than one date,
-        // and the later ones are legitimately still short on both positions.
-        cy.get(
-            `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posMilk}"]`,
-        ).should("exist");
-        // Espresso on this date is filled (pending counts as live).
-        cy.get(
-            `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posEspresso}"]`,
-        ).should("not.exist");
-
-        // A scoped coordinator is not an administrator: no link to Ministry Settings.
-        cy.get("#volunteer-settings-link").should("not.exist");
-    });
-
-    it("coordinator: one click reaches the staffing view and fills the gap", () => {
-        freshCoordinatorLogin();
-        cy.visit(DASHBOARD_URL);
-
-        cy.get("#volunteer-gaps-content", { timeout: 20000 }).should(
-            "be.visible",
-        );
-        // The Fill control is the anchor itself — it carries both ids so the
-        // staffing page can open anchored on the right position card.
-        cy.get(
-            `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posMilk}"]`,
-        ).click();
-
-        cy.url().should("include", "/ministries/occurrences/");
-        cy.get("#requirements-content", { timeout: 20000 }).should("be.visible");
-
-        const milkCard = () =>
-            cy.get(`.volunteer-requirement[data-position-id="${posMilk}"]`, {
-                timeout: 20000,
-            });
-
-        // Before: the amber gap banner is showing.
-        milkCard().find(".requirement-gap").should("not.have.class", "d-none");
-
-        cy.get(`.volunteer-assign-btn[data-position-id="${posMilk}"]`).click();
-
-        cy.get("#volunteer-assign-modal").should("be.visible");
-        // The picker is a TomSelect: the native <select> is `ts-hidden-accessible`
-        // and covered by the wrapper, so cy.select() cannot reach it. Drive the
-        // instance, the way the #9711 spec does.
-        cy.get("#assign-person-select")
-            .should("exist")
-            .then(($el) => {
-                const ts = $el[0].tomselect;
-                expect(ts, "the eligible picker is a TomSelect").to.exist;
-                const first = Object.keys(ts.options)[0];
-                expect(first, "the picker offers at least one person").to.not.eq(
-                    undefined,
-                );
-                ts.setValue(String(first));
-            });
-        cy.get("#assign-save").click();
-        cy.get("#volunteer-assign-modal").should("not.be.visible");
-
-        // After: 1 / 1 and the banner is hidden — no reload in between.
-        milkCard().find(".requirement-counts").should("contain", "1");
-        milkCard().find(".requirement-gap").should("have.class", "d-none");
-    });
-
-    it("coordinator: the gap is gone from the dashboard with no manual refresh", () => {
-        freshCoordinatorLogin();
-        cy.visit(DASHBOARD_URL);
-
-        cy.get("#volunteer-gaps-content, #volunteer-gaps-empty", {
-            timeout: 20000,
-        }).should("exist");
-        cy.get(
-            `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posMilk}"]`,
-        ).should("not.exist");
-    });
-
-    it("volunteer: their own commitment is on My Volunteer Schedule", () => {
-        freshMemberLogin();
-        cy.visit(MY_SCHEDULE_URL);
-
-        cy.get("#volunteer-my-schedule", { timeout: 20000 }).should("exist");
-        cy.get("#assignments-content", { timeout: 20000 })
-            .should("be.visible")
-            .and("contain", POSITION_ESPRESSO);
-
-        // §5.6 — the volunteer's page never uses the coordinator's vocabulary.
-        cy.get("#volunteer-my-schedule")
-            .invoke("text")
-            .then((text) => {
-                const lower = text.toLowerCase();
-                ["occurrence", "requirement"].forEach((word) => {
-                    expect(
-                        lower,
-                        `S5 must not say "${word}" to a volunteer (§5.6)`,
-                    ).to.not.include(word);
-                });
-            });
-    });
-
-    it("volunteer: the coordinator surface stays shut to them", () => {
-        freshMemberLogin();
-        cy.visit(DASHBOARD_URL, { failOnStatusCode: false });
-        cy.url().should("not.include", "/ministries/dashboard");
-    });
-});
-
-// ── 1b. rollout: the member surface in v1 (§3.8) ──────────────────────────
-
-/**
- * The seventh switch surface the rollout specs did not reach.
- * `admin.volunteer-v2.rollout.spec.js` covers the admin menu, the person-view
- * tab and the legacy editor across all three states, and
- * `admin.volunteer-v2.event-ministry.spec.js` covers #9713's event-editor
- * select in `v1` — but #9712's two **member** menu entries are only ever
- * asserted with V2 on, and they are visible to *every* authenticated user, so
- * they are the entries most likely to leak in `v1`.
- */
-describe("Volunteer v2 e2e (UI) — the member surface is invisible in v1 (#9704 / #9712)", () => {
+describe("Volunteer v2 — #9714's browser walk-through and the responsive pass", () => {
     before(() => {
-        setVersion("v1");
-    });
-
-    after(() => {
-        setVersion("v2");
-    });
-
-    it("shows a volunteer no volunteering navigation at all", () => {
-        freshMemberLogin();
-        cy.visit("/");
-        // Neither the portal's Volunteering entry (#9867) nor any link to the
-        // retired admin URLs.
-        cy.get("a[href$='portal/volunteer/schedule']").should("not.exist");
-        cy.get("a[href$='volunteer/my-schedule']").should("not.exist");
-        cy.get("a[href$='volunteer/opportunities']").should("not.exist");
-        cy.get("a[href$='ministries/dashboard']").should("not.exist");
-    });
-
-    it("does not serve the member pages by URL either", () => {
-        freshMemberLogin();
-        // With the flag on v1 the portal route answers 404 through the portal's
-        // own error page — the page itself never renders.
-        cy.visit(MY_SCHEDULE_URL, { failOnStatusCode: false });
-        cy.get("#volunteer-my-schedule").should("not.exist");
-
-        cy.visit(OPPORTUNITIES_URL, { failOnStatusCode: false });
-        cy.get("#volunteer-opportunities").should("not.exist");
-    });
-
-    it("leaves the legacy V1 person-view tab working for an administrator", () => {
-        freshAdminLogin();
-        cy.visit(`/people/view/${PERSON_VOLUNTEER}`);
-        cy.get("#nav-item-volunteer").should("exist");
-        cy.get("#nav-item-volunteer-v2").should("not.exist");
-    });
-});
-
-// ── 2. localization: no raw keys, no unsubstituted placeholders ───────────
-
-describe("Volunteer v2 e2e (UI) — localization sanity", () => {
-    /**
-     * The text is read from the page's own container, never from `body`:
-     * `.text()` walks `<script>` nodes too, and every V2 view's inline bootstrap
-     * script legitimately contains the strings this test forbids on screen.
-     */
-    // The ministries list page was retired with the navigation change; the
-    // ministry detail page it linked to is the surface that survived, and the
-    // sidebar lists the ministries now.
-    const screens = [
-        ["dashboard", DASHBOARD_URL, "#volunteer-dashboard"],
-        ["ministry", () => `${MINISTRIES_URL}/${ministryId}`, "#overview-content"],
-    ];
-
-    screens.forEach(([label, url, ready]) => {
-        it(`${label} renders no raw i18next key or unsubstituted placeholder`, () => {
-            freshAdminLogin();
-            cy.visit(typeof url === "function" ? url() : url);
-            cy.get(ready, { timeout: 20000 }).should("exist");
-
-            cy.get(ready)
-                .invoke("text")
-                .then((text) => {
-                    expect(text, `${label} has an unsubstituted {{…}}`).to.not.match(
-                        /\{\{\s*\w+\s*\}\}/,
-                    );
-                    // Built from fragments on purpose. `scripts/locale-check.js`
-                    // flags a literal translation call in any file the extractor
-                    // does not scan, and `cypress/` is not scanned, so spelling
-                    // the needle out here would fail the pre-commit hook — even
-                    // though this is an assertion that such a call never reaches
-                    // the screen, which is the opposite of the mistake the rule
-                    // is looking for.
-                    const rawCall = `i18next${"."}t(`;
-                    expect(text, `${label} printed a raw translation call`).to.not.include(
-                        rawCall,
-                    );
-                    expect(text, `${label} rendered "undefined"`).to.not.match(
-                        /\bundefined\b/,
-                    );
-                });
+        adminApi("GET", SETTING_URL, null, 200).then((resp) => {
+            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
         });
-    });
-});
+        setVersion("v2");
+        cleanupFixtures();
 
-// ── 2b. the locale switch (§5.10) ─────────────────────────────────────────
-
-/**
- * The failure §5.10 actually warns about is not a missing translation — V2's
- * msgids are brand new and no catalog has them yet — it is a **module-scope**
- * `i18next.t()` returning `undefined` on any locale that is not `en_US`
- * (upstream #9609). That only shows up once the locale is switched, so it
- * cannot be caught by any of the English assertions above.
- *
- * ChurchCRM resolves the locale per request from the user's `ui.locale`
- * preference (`cypress/support/ui-commands.js` → `setupLocaleAdminSession`),
- * not from a system-wide `sLanguage` setting, so that is what is switched here.
- * `fr_FR` is used because `src/locale/textdomain/fr_FR` is one of the catalogs
- * actually shipped in the tree.
- *
- * The proof that the catalog is live is self-calibrating: the same page is read
- * in `en_US` and in `fr_FR` and the two must differ. Hard-coding a French
- * string would only prove that one msgid is translated today.
- */
-describe("Volunteer v2 e2e (UI) — the locale switch (§5.10)", () => {
-    const ADMIN_PERSON = 1;
-    const LOCALE_URL = `/api/user/${ADMIN_PERSON}/setting/ui.locale`;
-
-    function setLocale(value) {
-        cy.makePrivateAPICall(
-            Cypress.env("admin.api.key"),
+        adminApi(
             "POST",
-            LOCALE_URL,
-            { value },
-            200,
-        );
-    }
-
-    after(() => {
-        setLocale("en_US");
-    });
-
-    it("renders the V2 dashboard in another language with no undefined labels", () => {
-        let english = "";
-
-        setLocale("en_US");
-        freshAdminLogin();
-        cy.visit(DASHBOARD_URL);
-        cy.get("#volunteer-dashboard", { timeout: 20000 }).should("exist");
-        cy.get("body")
-            .invoke("text")
-            .then((text) => {
-                english = text;
-            });
+            `${VOLUNTEER_URL}/ministries`,
+            { name: MINISTRY_NAME, description: "#9714 UI walk-through" },
+            201,
+        ).then((resp) => {
+            ministryId = resp.body.ministry.id;
+        });
 
         cy.then(() => {
-            setLocale("fr_FR");
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/scopes`,
+                {
+                    personId: PERSON_COORDINATOR,
+                    scopeType: "ministry",
+                    scopeId: ministryId,
+                },
+                [200, 201],
+            );
+            adminApi("GET", `${VOLUNTEER_URL}/ministries/${ministryId}`, null, 200).then((resp) => {
+                expect(resp.body.teams, "the ministry came with one team").to.have.length(1);
+                expect(resp.body.teams[0].name).to.eq(TEAM_NAME);
+                teamId = resp.body.teams[0].id;
+            });
+        });
+
+        cy.then(() => {
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
+                { name: POSITION_ESPRESSO, teamId, order: 1 },
+                201,
+            ).then((resp) => {
+                posEspresso = resp.body.position.id;
+            });
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
+                { name: POSITION_MILK, teamId, order: 2 },
+                201,
+            ).then((resp) => {
+                posMilk = resp.body.position.id;
+            });
+        });
+
+        cy.then(() => {
+            // D19: the ministry came with its own pool Group, empty — fill it through
+            // the API rather than making a group and linking it.
+            POOL_ALL.forEach((personId) => {
+                adminApi(
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                    null,
+                    [200, 201],
+                );
+            });
+            adminApi("GET", `${VOLUNTEER_URL}/ministries/${ministryId}/pool`, null, 200).then(
+                (resp) => {
+                    groupId = resp.body.groupId;
+                },
+            );
+            // The volunteer persona is qualified for both, so they have something
+            // on S5 and something left to sign up for on S6.
+            POOL_ALL.forEach((personId) => {
+                adminApi(
+                    "POST",
+                    `${VOLUNTEER_URL}/positions/${posEspresso}/qualifications`,
+                    { personId, notes: "" },
+                    [200, 201],
+                );
+            });
+            [PERSON_VOLUNTEER, 8, 9].forEach((personId) => {
+                adminApi(
+                    "POST",
+                    `${VOLUNTEER_URL}/positions/${posMilk}/qualifications`,
+                    { personId, notes: "" },
+                    [200, 201],
+                );
+            });
+        });
+
+        cy.then(() => {
+            seriesStart = isoDate(daysToNext(0));
+            seriesEnd = isoDate(daysToNext(0) + 7);
+            adminApi(
+                "POST",
+                "/api/events/repeat",
+                {
+                    Title: EVENT_TITLE,
+                    Type: CHURCH_SERVICE_TYPE,
+                    StartTime: "10:30:00",
+                    EndTime: "11:45:00",
+                    RecurType: "weekly",
+                    RecurDOW: "Sunday",
+                    RangeStart: seriesStart,
+                    RangeEnd: seriesEnd,
+                },
+                200,
+            ).then((resp) => {
+                eventId = resp.body.eventIds[0];
+            });
+        });
+
+        cy.then(() => {
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
+                {
+                    name: `${PREFIX} Coffee Bar — Sunday`,
+                    linkMode: "event_type",
+                    eventTypeId: CHURCH_SERVICE_TYPE,
+                    titleFilter: EVENT_TITLE,
+                    windowStart: seriesStart,
+                    teamId,
+                },
+                201,
+            ).then((resp) => {
+                scheduleId = resp.body.schedule.id;
+            });
+        });
+
+        cy.then(() => {
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
+                { positionId: posEspresso, minCount: 1, maxCount: 1 },
+                [200, 201],
+            );
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
+                { positionId: posMilk, minCount: 1, maxCount: 1 },
+                [200, 201],
+            );
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`,
+                { through: seriesEnd },
+                200,
+            );
+        });
+
+        cy.then(() => {
+            adminApi(
+                "GET",
+                `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
+                null,
+                200,
+            ).then((resp) => {
+                occurrenceId = resp.body.occurrences[0].id;
+            });
+        });
+
+        // The volunteer already holds the Espresso slot, so S5 has a card on it.
+        // Milk Station is deliberately left empty — that is the gap the coordinator
+        // fills in the walk below.
+        cy.then(() => {
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
+                { positionId: posEspresso, personId: PERSON_VOLUNTEER },
+                201,
+            );
+        });
+    });
+
+    after(() => {
+        cleanupFixtures();
+        setVersion(originalVersion);
+    });
+
+    // ── 1. the shortest loop, as three different people ───────────────────────
+
+    describe("Volunteer v2 e2e (UI) — the shortest loop", () => {
+        it("admin: the ministry, its team and its positions are all on the ministry page", () => {
+            freshAdminLogin();
+            cy.visit(`${MINISTRIES_URL}/${ministryId}`);
+
+            cy.get("#overview-content", { timeout: 20000 }).should("be.visible");
+            cy.get("#overview-team-count").should("contain", "1");
+
+            cy.get("#nav-item-positions").click();
+            cy.get("#positions-table-wrapper", { timeout: 20000 })
+                .should("be.visible")
+                .and("contain", POSITION_ESPRESSO)
+                .and("contain", POSITION_MILK);
+
+            cy.get("#nav-item-schedules").click();
+            cy.get("#schedules", { timeout: 20000 })
+                .should("be.visible")
+                .and("contain", `${PREFIX} Coffee Bar`);
+        });
+
+        it("coordinator: the dashboard names the Milk Station gap", () => {
+            freshCoordinatorLogin();
+            cy.visit(DASHBOARD_URL);
+
+            cy.get("#volunteer-dashboard", { timeout: 20000 }).should("exist");
+            cy.get("#volunteer-gaps-content", { timeout: 20000 }).should(
+                "be.visible",
+            );
+            // Scoped to THIS occurrence: the schedule generated more than one date,
+            // and the later ones are legitimately still short on both positions.
+            cy.get(
+                `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posMilk}"]`,
+            ).should("exist");
+            // Espresso on this date is filled (pending counts as live).
+            cy.get(
+                `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posEspresso}"]`,
+            ).should("not.exist");
+
+            // A scoped coordinator is not an administrator: no link to Ministry Settings.
+            cy.get("#volunteer-settings-link").should("not.exist");
+        });
+
+        it("coordinator: one click reaches the staffing view and fills the gap", () => {
+            freshCoordinatorLogin();
+            cy.visit(DASHBOARD_URL);
+
+            cy.get("#volunteer-gaps-content", { timeout: 20000 }).should(
+                "be.visible",
+            );
+            // The Fill control is the anchor itself — it carries both ids so the
+            // staffing page can open anchored on the right position card.
+            cy.get(
+                `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posMilk}"]`,
+            ).click();
+
+            cy.url().should("include", "/ministries/occurrences/");
+            cy.get("#requirements-content", { timeout: 20000 }).should("be.visible");
+
+            const milkCard = () =>
+                cy.get(`.volunteer-requirement[data-position-id="${posMilk}"]`, {
+                    timeout: 20000,
+                });
+
+            // Before: the amber gap banner is showing.
+            milkCard().find(".requirement-gap").should("not.have.class", "d-none");
+
+            cy.get(`.volunteer-assign-btn[data-position-id="${posMilk}"]`).click();
+
+            cy.get("#volunteer-assign-modal").should("be.visible");
+            // The picker is a TomSelect: the native <select> is `ts-hidden-accessible`
+            // and covered by the wrapper, so cy.select() cannot reach it. Drive the
+            // instance, the way the #9711 spec does.
+            cy.get("#assign-person-select")
+                .should("exist")
+                .then(($el) => {
+                    const ts = $el[0].tomselect;
+                    expect(ts, "the eligible picker is a TomSelect").to.exist;
+                    const first = Object.keys(ts.options)[0];
+                    expect(first, "the picker offers at least one person").to.not.eq(
+                        undefined,
+                    );
+                    ts.setValue(String(first));
+                });
+            cy.get("#assign-save").click();
+            cy.get("#volunteer-assign-modal").should("not.be.visible");
+
+            // After: 1 / 1 and the banner is hidden — no reload in between.
+            milkCard().find(".requirement-counts").should("contain", "1");
+            milkCard().find(".requirement-gap").should("have.class", "d-none");
+        });
+
+        it("coordinator: the gap is gone from the dashboard with no manual refresh", () => {
+            freshCoordinatorLogin();
+            cy.visit(DASHBOARD_URL);
+
+            cy.get("#volunteer-gaps-content, #volunteer-gaps-empty", {
+                timeout: 20000,
+            }).should("exist");
+            cy.get(
+                `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posMilk}"]`,
+            ).should("not.exist");
+        });
+
+        it("volunteer: their own commitment is on My Volunteer Schedule", () => {
+            freshMemberLogin();
+            cy.visit(MY_SCHEDULE_URL);
+
+            cy.get("#volunteer-my-schedule", { timeout: 20000 }).should("exist");
+            cy.get("#assignments-content", { timeout: 20000 })
+                .should("be.visible")
+                .and("contain", POSITION_ESPRESSO);
+
+            // §5.6 — the volunteer's page never uses the coordinator's vocabulary.
+            cy.get("#volunteer-my-schedule")
+                .invoke("text")
+                .then((text) => {
+                    const lower = text.toLowerCase();
+                    ["occurrence", "requirement"].forEach((word) => {
+                        expect(
+                            lower,
+                            `S5 must not say "${word}" to a volunteer (§5.6)`,
+                        ).to.not.include(word);
+                    });
+                });
+        });
+
+        it("volunteer: the coordinator surface stays shut to them", () => {
+            freshMemberLogin();
+            cy.visit(DASHBOARD_URL, { failOnStatusCode: false });
+            cy.url().should("not.include", "/ministries/dashboard");
+        });
+    });
+
+    // ── 1b. rollout: the member surface in v1 (§3.8) ──────────────────────────
+
+    /**
+     * The seventh switch surface the rollout specs did not reach.
+     * `admin.volunteer-v2.rollout.spec.js` covers the admin menu, the person-view
+     * tab and the legacy editor across all three states, and
+     * `admin.volunteer-v2.event-ministry.spec.js` covers #9713's event-editor
+     * select in `v1` — but #9712's two **member** menu entries are only ever
+     * asserted with V2 on, and they are visible to *every* authenticated user, so
+     * they are the entries most likely to leak in `v1`.
+     */
+    describe("Volunteer v2 e2e (UI) — the member surface is invisible in v1 (#9704 / #9712)", () => {
+        before(() => {
+            setVersion("v1");
+        });
+
+        after(() => {
+            setVersion("v2");
+        });
+
+        it("shows a volunteer no volunteering navigation at all", () => {
+            freshMemberLogin();
+            cy.visit("/");
+            // Neither the portal's Volunteering entry (#9867) nor any link to the
+            // retired admin URLs.
+            cy.get("a[href$='portal/volunteer/schedule']").should("not.exist");
+            cy.get("a[href$='volunteer/my-schedule']").should("not.exist");
+            cy.get("a[href$='volunteer/opportunities']").should("not.exist");
+            cy.get("a[href$='ministries/dashboard']").should("not.exist");
+        });
+
+        it("does not serve the member pages by URL either", () => {
+            freshMemberLogin();
+            // With the flag on v1 the portal route answers 404 through the portal's
+            // own error page — the page itself never renders.
+            cy.visit(MY_SCHEDULE_URL, { failOnStatusCode: false });
+            cy.get("#volunteer-my-schedule").should("not.exist");
+
+            cy.visit(OPPORTUNITIES_URL, { failOnStatusCode: false });
+            cy.get("#volunteer-opportunities").should("not.exist");
+        });
+
+        it("leaves the legacy V1 person-view tab working for an administrator", () => {
+            freshAdminLogin();
+            cy.visit(`/people/view/${PERSON_VOLUNTEER}`);
+            cy.get("#nav-item-volunteer").should("exist");
+            cy.get("#nav-item-volunteer-v2").should("not.exist");
+        });
+    });
+
+    // ── 2. localization: no raw keys, no unsubstituted placeholders ───────────
+
+    describe("Volunteer v2 e2e (UI) — localization sanity", () => {
+        /**
+         * The text is read from the page's own container, never from `body`:
+         * `.text()` walks `<script>` nodes too, and every V2 view's inline bootstrap
+         * script legitimately contains the strings this test forbids on screen.
+         */
+        // The ministries list page was retired with the navigation change; the
+        // ministry detail page it linked to is the surface that survived, and the
+        // sidebar lists the ministries now.
+        const screens = [
+            ["dashboard", DASHBOARD_URL, "#volunteer-dashboard"],
+            ["ministry", () => `${MINISTRIES_URL}/${ministryId}`, "#overview-content"],
+        ];
+
+        screens.forEach(([label, url, ready]) => {
+            it(`${label} renders no raw i18next key or unsubstituted placeholder`, () => {
+                freshAdminLogin();
+                cy.visit(typeof url === "function" ? url() : url);
+                cy.get(ready, { timeout: 20000 }).should("exist");
+
+                cy.get(ready)
+                    .invoke("text")
+                    .then((text) => {
+                        expect(text, `${label} has an unsubstituted {{…}}`).to.not.match(
+                            /\{\{\s*\w+\s*\}\}/,
+                        );
+                        // Built from fragments on purpose. `scripts/locale-check.js`
+                        // flags a literal translation call in any file the extractor
+                        // does not scan, and `cypress/` is not scanned, so spelling
+                        // the needle out here would fail the pre-commit hook — even
+                        // though this is an assertion that such a call never reaches
+                        // the screen, which is the opposite of the mistake the rule
+                        // is looking for.
+                        const rawCall = `i18next${"."}t(`;
+                        expect(text, `${label} printed a raw translation call`).to.not.include(
+                            rawCall,
+                        );
+                        expect(text, `${label} rendered "undefined"`).to.not.match(
+                            /\bundefined\b/,
+                        );
+                    });
+            });
+        });
+    });
+
+    // ── 2b. the locale switch (§5.10) ─────────────────────────────────────────
+
+    /**
+     * The failure §5.10 actually warns about is not a missing translation — V2's
+     * msgids are brand new and no catalog has them yet — it is a **module-scope**
+     * `i18next.t()` returning `undefined` on any locale that is not `en_US`
+     * (upstream #9609). That only shows up once the locale is switched, so it
+     * cannot be caught by any of the English assertions above.
+     *
+     * ChurchCRM resolves the locale per request from the user's `ui.locale`
+     * preference (`cypress/support/ui-commands.js` → `setupLocaleAdminSession`),
+     * not from a system-wide `sLanguage` setting, so that is what is switched here.
+     * `fr_FR` is used because `src/locale/textdomain/fr_FR` is one of the catalogs
+     * actually shipped in the tree.
+     *
+     * The proof that the catalog is live is self-calibrating: the same page is read
+     * in `en_US` and in `fr_FR` and the two must differ. Hard-coding a French
+     * string would only prove that one msgid is translated today.
+     */
+    describe("Volunteer v2 e2e (UI) — the locale switch (§5.10)", () => {
+        const ADMIN_PERSON = 1;
+        const LOCALE_URL = `/api/user/${ADMIN_PERSON}/setting/ui.locale`;
+
+        function setLocale(value) {
+            cy.makePrivateAPICall(
+                Cypress.env("admin.api.key"),
+                "POST",
+                LOCALE_URL,
+                { value },
+                200,
+            );
+        }
+
+        after(() => {
+            setLocale("en_US");
+        });
+
+        it("renders the V2 dashboard in another language with no undefined labels", () => {
+            let english = "";
+
+            setLocale("en_US");
             freshAdminLogin();
             cy.visit(DASHBOARD_URL);
             cy.get("#volunteer-dashboard", { timeout: 20000 }).should("exist");
-            // The five panels still render — a locale must never break the page.
-            cy.get("#volunteer-gaps-card").should("be.visible");
-            cy.get("#volunteer-upcoming-card").should("be.visible");
-
-            cy.get("#volunteer-dashboard")
-                .invoke("text")
-                .then((text) => {
-                    expect(
-                        text,
-                        "a module-scope translation call returned undefined on a non-en_US locale (#9609)",
-                    ).to.not.match(/\bundefined\b/);
-                    expect(
-                        text,
-                        "an unsubstituted interpolation survived the locale switch",
-                    ).to.not.match(/\{\{\s*\w+\s*\}\}/);
-                });
-
             cy.get("body")
                 .invoke("text")
-                .then((french) => {
-                    expect(
-                        french,
-                        "the fr_FR catalog was not applied — the page reads identically to en_US",
-                    ).to.not.eq(english);
+                .then((text) => {
+                    english = text;
                 });
-        });
-    });
 
-    it("keeps the volunteer's own page intact in another language", () => {
-        setLocale("fr_FR");
-        freshAdminLogin();
-        cy.visit(`${MINISTRIES_URL}/${ministryId}`);
-        cy.get("#overview-content", { timeout: 20000 }).should("be.visible");
-        cy.get("#overview-content")
-            .invoke("text")
-            .then((text) => {
-                expect(text).to.not.match(/\bundefined\b/);
-                expect(text).to.not.match(/\{\{\s*\w+\s*\}\}/);
-            });
-        // The ministry's own name is data, not a string to translate.
-        cy.get("#volunteer-ministry, body").should("contain", MINISTRY_NAME);
-    });
-});
+            cy.then(() => {
+                setLocale("fr_FR");
+                freshAdminLogin();
+                cy.visit(DASHBOARD_URL);
+                cy.get("#volunteer-dashboard", { timeout: 20000 }).should("exist");
+                // The five panels still render — a locale must never break the page.
+                cy.get("#volunteer-gaps-card").should("be.visible");
+                cy.get("#volunteer-upcoming-card").should("be.visible");
 
-// ── 3. the responsive pass (§5.9) ─────────────────────────────────────────
+                cy.get("#volunteer-dashboard")
+                    .invoke("text")
+                    .then((text) => {
+                        expect(
+                            text,
+                            "a module-scope translation call returned undefined on a non-en_US locale (#9609)",
+                        ).to.not.match(/\bundefined\b/);
+                        expect(
+                            text,
+                            "an unsubstituted interpolation survived the locale switch",
+                        ).to.not.match(/\{\{\s*\w+\s*\}\}/);
+                    });
 
-describe("Volunteer v2 e2e (UI) — responsive, coordinator and admin screens", () => {
-    beforeEach(() => {
-        freshAdminLogin();
-    });
-
-    afterEach(() => {
-        cy.viewport(1000, 660); // the docker config's default
-    });
-
-    [PHONE, TABLET].forEach((viewport) => {
-        const at = `${viewport.width}px`;
-
-        it(`dashboard fits at ${at}`, () => {
-            checkScreen("S1 dashboard", DASHBOARD_URL, "#volunteer-dashboard", viewport);
-            cy.get("#volunteer-gaps-card").should("be.visible");
-        });
-
-        it(`ministry page and every tab fit at ${at}`, () => {
-            checkScreen(
-                "S3 ministry",
-                `${MINISTRIES_URL}/${ministryId}`,
-                "#overview-content",
-                viewport,
-            );
-
-            [
-                "#nav-item-volunteers",
-                "#nav-item-positions",
-                "#nav-item-schedules",
-                "#nav-item-occurrences",
-                "#nav-item-help-wanted",
-            ].forEach((tab) => {
-                cy.get(tab).click();
-                // Give the tab's own fetch a moment to paint its table.
-                cy.get(".tab-pane.active", { timeout: 20000 }).should("be.visible");
-                assertNoHorizontalOverflow(`ministry tab ${tab} @ ${at}`);
+                cy.get("body")
+                    .invoke("text")
+                    .then((french) => {
+                        expect(
+                            french,
+                            "the fr_FR catalog was not applied — the page reads identically to en_US",
+                        ).to.not.eq(english);
+                    });
             });
         });
 
-        it(`occurrence / staffing view fits at ${at}`, () => {
-            checkScreen(
-                "S4 occurrence",
-                `/ministries/occurrences/${occurrenceId}`,
-                "#volunteer-occurrence",
-                viewport,
-            );
-            cy.get("#requirements-content", { timeout: 20000 }).should(
-                "be.visible",
-            );
-            assertNoHorizontalOverflow(`S4 after load @ ${at}`);
-        });
-
-        /**
-         * The event view's page-level width is NOT asserted here, and that is a
-         * deliberate exclusion rather than an oversight.
-         *
-         * `/event/view/{id}` overflows at 375 px for any **future, editable**
-         * event: the card footer at `src/event/views/view.php:79` lays
-         * Check-in + Deactivate + Edit out in a `d-flex gap-2` that cannot wrap,
-         * and the row measures 396 px inside a 360 px viewport. Proven
-         * independent of V2 while building #9714 — it reproduces with
-         * `sVolunteerVersion = v1` on an event carrying **no** volunteer
-         * ministry, so the Volunteers card is neither the cause nor able to fix
-         * it. Seeded events 1-3 hide it because they are all in 2016/2017, where
-         * `$eventEnded` drops the Check-in button and the remaining two fit.
-         *
-         * Fixing core markup does not belong in a V2 PR, so what is asserted is
-         * what V2 owns: the Volunteers card renders and stays inside its own
-         * column. Re-widen this to `assertNoHorizontalOverflow` once the footer
-         * is fixed upstream.
-         */
-        it(`the event view's Volunteers card stays inside its column at ${at}`, () => {
-            cy.viewport(viewport.width, viewport.height);
-            cy.visit(`/event/view/${eventId}`);
-            cy.get("#event-volunteers-card", { timeout: 20000 })
-                .should("exist")
-                .then(($card) => {
-                    const card = $card[0].getBoundingClientRect();
-                    const column = $card[0].parentElement.getBoundingClientRect();
-                    expect(
-                        Math.round(card.right),
-                        `the Volunteers card overflows its column at ${at}`,
-                    ).to.be.at.most(Math.round(column.right) + 1);
-                    expect(
-                        Math.round(card.width),
-                        `the Volunteers card is wider than the viewport at ${at}`,
-                    ).to.be.at.most(viewport.width);
+        it("keeps the volunteer's own page intact in another language", () => {
+            setLocale("fr_FR");
+            freshAdminLogin();
+            cy.visit(`${MINISTRIES_URL}/${ministryId}`);
+            cy.get("#overview-content", { timeout: 20000 }).should("be.visible");
+            cy.get("#overview-content")
+                .invoke("text")
+                .then((text) => {
+                    expect(text).to.not.match(/\bundefined\b/);
+                    expect(text).to.not.match(/\{\{\s*\w+\s*\}\}/);
                 });
-            cy.get("#event-volunteers-card").should("contain", MINISTRY_NAME);
-        });
-
-        it(`the person view's Volunteer tab fits at ${at}`, () => {
-            cy.viewport(viewport.width, viewport.height);
-            cy.visit(`/people/view/${PERSON_VOLUNTEER}`);
-            cy.get("#nav-item-volunteer-v2", { timeout: 20000 })
-                .should("exist")
-                .click();
-            cy.get("#volunteer-v2").should("be.visible");
-            assertNoHorizontalOverflow(`person view Volunteer tab @ ${at}`);
-        });
-    });
-});
-
-describe("Volunteer v2 e2e (UI) — responsive, the volunteer's own screens", () => {
-    beforeEach(() => {
-        freshMemberLogin();
-    });
-
-    afterEach(() => {
-        cy.viewport(1000, 660);
-    });
-
-    [PHONE, TABLET].forEach((viewport) => {
-        const at = `${viewport.width}px`;
-
-        it(`My Volunteer Schedule fits at ${at}`, () => {
-            checkScreen(
-                "S5 my schedule",
-                MY_SCHEDULE_URL,
-                "#volunteer-my-schedule",
-                viewport,
-            );
-            cy.get("#assignments-content", { timeout: 20000 }).should(
-                "be.visible",
-            );
-            assertNoHorizontalOverflow(`S5 after load @ ${at}`);
-        });
-
-        it(`Open Opportunities fits at ${at}`, () => {
-            checkScreen(
-                "S6 opportunities",
-                OPPORTUNITIES_URL,
-                "#volunteer-opportunities",
-                viewport,
-            );
-            cy.get(
-                "#opportunities-content, #opportunities-empty",
-                { timeout: 20000 },
-            ).should("exist");
-            assertNoHorizontalOverflow(`S6 after load @ ${at}`);
+            // The ministry's own name is data, not a string to translate.
+            cy.get("#volunteer-ministry, body").should("contain", MINISTRY_NAME);
         });
     });
 
-    it("S5's primary actions are visible and meet the 44px touch target on a phone", () => {
-        cy.viewport(PHONE.width, PHONE.height);
-        cy.visit(MY_SCHEDULE_URL);
-        cy.get("#assignments-content", { timeout: 20000 }).should("be.visible");
+    // ── 3. the responsive pass (§5.9) ─────────────────────────────────────────
 
-        cy.get("#assignments-content button")
-            .filter(":visible")
-            .should("have.length.greaterThan", 0)
-            .each(($btn) => {
-                const height = $btn[0].getBoundingClientRect().height;
-                expect(
-                    height,
-                    `"${$btn.text().trim()}" is ${Math.round(height)}px tall; §5.9 requires 44px`,
-                ).to.be.at.least(44);
+    describe("Volunteer v2 e2e (UI) — responsive, coordinator and admin screens", () => {
+        beforeEach(() => {
+            freshAdminLogin();
+        });
+
+        afterEach(() => {
+            cy.viewport(1000, 660); // the docker config's default
+        });
+
+        [PHONE, TABLET].forEach((viewport) => {
+            const at = `${viewport.width}px`;
+
+            it(`dashboard fits at ${at}`, () => {
+                checkScreen("S1 dashboard", DASHBOARD_URL, "#volunteer-dashboard", viewport);
+                cy.get("#volunteer-gaps-card").should("be.visible");
             });
+
+            it(`ministry page and every tab fit at ${at}`, () => {
+                checkScreen(
+                    "S3 ministry",
+                    `${MINISTRIES_URL}/${ministryId}`,
+                    "#overview-content",
+                    viewport,
+                );
+
+                [
+                    "#nav-item-volunteers",
+                    "#nav-item-positions",
+                    "#nav-item-schedules",
+                    "#nav-item-occurrences",
+                    "#nav-item-help-wanted",
+                ].forEach((tab) => {
+                    cy.get(tab).click();
+                    // Give the tab's own fetch a moment to paint its table.
+                    cy.get(".tab-pane.active", { timeout: 20000 }).should("be.visible");
+                    assertNoHorizontalOverflow(`ministry tab ${tab} @ ${at}`);
+                });
+            });
+
+            it(`occurrence / staffing view fits at ${at}`, () => {
+                checkScreen(
+                    "S4 occurrence",
+                    `/ministries/occurrences/${occurrenceId}`,
+                    "#volunteer-occurrence",
+                    viewport,
+                );
+                cy.get("#requirements-content", { timeout: 20000 }).should(
+                    "be.visible",
+                );
+                assertNoHorizontalOverflow(`S4 after load @ ${at}`);
+            });
+
+            /**
+             * The event view's page-level width is NOT asserted here, and that is a
+             * deliberate exclusion rather than an oversight.
+             *
+             * `/event/view/{id}` overflows at 375 px for any **future, editable**
+             * event: the card footer at `src/event/views/view.php:79` lays
+             * Check-in + Deactivate + Edit out in a `d-flex gap-2` that cannot wrap,
+             * and the row measures 396 px inside a 360 px viewport. Proven
+             * independent of V2 while building #9714 — it reproduces with
+             * `sVolunteerVersion = v1` on an event carrying **no** volunteer
+             * ministry, so the Volunteers card is neither the cause nor able to fix
+             * it. Seeded events 1-3 hide it because they are all in 2016/2017, where
+             * `$eventEnded` drops the Check-in button and the remaining two fit.
+             *
+             * Fixing core markup does not belong in a V2 PR, so what is asserted is
+             * what V2 owns: the Volunteers card renders and stays inside its own
+             * column. Re-widen this to `assertNoHorizontalOverflow` once the footer
+             * is fixed upstream.
+             */
+            it(`the event view's Volunteers card stays inside its column at ${at}`, () => {
+                cy.viewport(viewport.width, viewport.height);
+                cy.visit(`/event/view/${eventId}`);
+                cy.get("#event-volunteers-card", { timeout: 20000 })
+                    .should("exist")
+                    .then(($card) => {
+                        const card = $card[0].getBoundingClientRect();
+                        const column = $card[0].parentElement.getBoundingClientRect();
+                        expect(
+                            Math.round(card.right),
+                            `the Volunteers card overflows its column at ${at}`,
+                        ).to.be.at.most(Math.round(column.right) + 1);
+                        expect(
+                            Math.round(card.width),
+                            `the Volunteers card is wider than the viewport at ${at}`,
+                        ).to.be.at.most(viewport.width);
+                    });
+                cy.get("#event-volunteers-card").should("contain", MINISTRY_NAME);
+            });
+
+            it(`the person view's Volunteer tab fits at ${at}`, () => {
+                cy.viewport(viewport.width, viewport.height);
+                cy.visit(`/people/view/${PERSON_VOLUNTEER}`);
+                cy.get("#nav-item-volunteer-v2", { timeout: 20000 })
+                    .should("exist")
+                    .click();
+                cy.get("#volunteer-v2").should("be.visible");
+                assertNoHorizontalOverflow(`person view Volunteer tab @ ${at}`);
+            });
+        });
     });
 
-    it("S5 keeps its cards in one column at every width (§5.9)", () => {
-        cy.visit(MY_SCHEDULE_URL);
-        cy.get("#assignments-content", { timeout: 20000 }).should("be.visible");
+    describe("Volunteer v2 e2e (UI) — responsive, the volunteer's own screens", () => {
+        beforeEach(() => {
+            freshMemberLogin();
+        });
 
-        [PHONE.width, TABLET.width, 1200].forEach((width) => {
-            cy.viewport(width, 900);
-            cy.get("#assignments-content > *")
+        afterEach(() => {
+            cy.viewport(1000, 660);
+        });
+
+        [PHONE, TABLET].forEach((viewport) => {
+            const at = `${viewport.width}px`;
+
+            it(`My Volunteer Schedule fits at ${at}`, () => {
+                checkScreen(
+                    "S5 my schedule",
+                    MY_SCHEDULE_URL,
+                    "#volunteer-my-schedule",
+                    viewport,
+                );
+                cy.get("#assignments-content", { timeout: 20000 }).should(
+                    "be.visible",
+                );
+                assertNoHorizontalOverflow(`S5 after load @ ${at}`);
+            });
+
+            it(`Open Opportunities fits at ${at}`, () => {
+                checkScreen(
+                    "S6 opportunities",
+                    OPPORTUNITIES_URL,
+                    "#volunteer-opportunities",
+                    viewport,
+                );
+                cy.get(
+                    "#opportunities-content, #opportunities-empty",
+                    { timeout: 20000 },
+                ).should("exist");
+                assertNoHorizontalOverflow(`S6 after load @ ${at}`);
+            });
+        });
+
+        it("S5's primary actions are visible and meet the 44px touch target on a phone", () => {
+            cy.viewport(PHONE.width, PHONE.height);
+            cy.visit(MY_SCHEDULE_URL);
+            cy.get("#assignments-content", { timeout: 20000 }).should("be.visible");
+
+            cy.get("#assignments-content button")
                 .filter(":visible")
-                .then(($cards) => {
-                    if ($cards.length < 2) {
-                        return; // one card cannot prove or disprove a grid
-                    }
-                    const firstTop = $cards[0].getBoundingClientRect().top;
-                    const secondTop = $cards[1].getBoundingClientRect().top;
+                .should("have.length.greaterThan", 0)
+                .each(($btn) => {
+                    const height = $btn[0].getBoundingClientRect().height;
                     expect(
-                        secondTop,
-                        `at ${width}px S5 laid two cards side by side`,
-                    ).to.be.greaterThan(firstTop);
+                        height,
+                        `"${$btn.text().trim()}" is ${Math.round(height)}px tall; §5.9 requires 44px`,
+                    ).to.be.at.least(44);
                 });
+        });
+
+        it("S5 keeps its cards in one column at every width (§5.9)", () => {
+            cy.visit(MY_SCHEDULE_URL);
+            cy.get("#assignments-content", { timeout: 20000 }).should("be.visible");
+
+            [PHONE.width, TABLET.width, 1200].forEach((width) => {
+                cy.viewport(width, 900);
+                cy.get("#assignments-content > *")
+                    .filter(":visible")
+                    .then(($cards) => {
+                        if ($cards.length < 2) {
+                            return; // one card cannot prove or disprove a grid
+                        }
+                        const firstTop = $cards[0].getBoundingClientRect().top;
+                        const secondTop = $cards[1].getBoundingClientRect().top;
+                        expect(
+                            secondTop,
+                            `at ${width}px S5 laid two cards side by side`,
+                        ).to.be.greaterThan(firstTop);
+                    });
+            });
         });
     });
 });

@@ -269,245 +269,206 @@ function cleanupFixtures() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-        originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-    });
-    setVersion("v2");
-    cleanupFixtures();
-
-    cy.then(() => {
-        api(
-            ADMIN_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/ministries`,
-            { name: MINISTRY_NAME, description: "#9714 scenario 2 — UC2" },
-            201,
-        ).then((resp) => {
-            ministryId = resp.body.ministry.id;
+describe("Volunteer v2 — #9714 scenario 2, \"Sunday Worship\", as ONE end-to-end run", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
+            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
         });
-    });
+        setVersion("v2");
+        cleanupFixtures();
 
-    // UC2's coordinator is explicitly not an administrator.
-    cy.then(() => {
-        api(
-            ADMIN_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/scopes`,
-            {
-                personId: PERSON_COORDINATOR,
-                scopeType: "ministry",
-                scopeId: ministryId,
-            },
-            [200, 201],
-        );
-    });
-
-    cy.then(() => {
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/teams`,
-            { name: TEAM_NAME, description: "" },
-            201,
-        ).then((resp) => {
-            teamId = resp.body.team.id;
-        });
-    });
-
-    cy.then(() => {
-        POSITION_NAMES.forEach((name, index) => {
+        cy.then(() => {
             api(
-                COORDINATOR_KEY,
+                ADMIN_KEY,
                 "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
-                { name: `${PREFIX} ${name}`, teamId, order: index + 1 },
+                `${VOLUNTEER_URL}/ministries`,
+                { name: MINISTRY_NAME, description: "#9714 scenario 2 — UC2" },
                 201,
             ).then((resp) => {
-                positions[name] = resp.body.position.id;
+                ministryId = resp.body.ministry.id;
             });
         });
-    });
 
-    // D19: the ministry came with its own pool Group, empty — so the coordinator
-    // fills it rather than making a group and linking it.
-    cy.then(() => {
-        POOL_ALL.forEach((personId) => {
+        // UC2's coordinator is explicitly not an administrator.
+        cy.then(() => {
             api(
-                COORDINATOR_KEY,
+                ADMIN_KEY,
                 "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
-                null,
+                `${VOLUNTEER_URL}/scopes`,
+                {
+                    personId: PERSON_COORDINATOR,
+                    scopeType: "ministry",
+                    scopeId: ministryId,
+                },
                 [200, 201],
-            );
-        });
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
-            null,
-            200,
-        ).then((resp) => {
-            groupId = resp.body.groupId;
-        });
-    });
-
-    // Everybody in the pool is qualified for everything: UC2's constraint is
-    // one-per-position, not a narrow skill matrix, and the substitution has to
-    // have a qualified counterparty (§2.13 re-checks I2 for the replacement).
-    cy.then(() => {
-        POSITION_NAMES.forEach((name) => {
-            POOL_ALL.forEach((personId) => {
-                api(
-                    COORDINATOR_KEY,
-                    "POST",
-                    `${VOLUNTEER_URL}/positions/${positions[name]}/qualifications`,
-                    { personId, notes: "" },
-                    [200, 201],
-                );
-            });
-        });
-    });
-
-    cy.then(() => {
-        seriesStart = isoDate(daysToNext(0));
-        seriesEnd = isoDate(daysToNext(0) + 7);
-
-        api(
-            ADMIN_KEY,
-            "POST",
-            "/api/events/repeat",
-            {
-                Title: EVENT_TITLE,
-                Type: CHURCH_SERVICE_TYPE,
-                StartTime: "10:30:00",
-                EndTime: "11:45:00",
-                RecurType: "weekly",
-                RecurDOW: "Sunday",
-                RangeStart: seriesStart,
-                RangeEnd: seriesEnd,
-            },
-            200,
-        ).then((resp) => {
-            seriesEventIds = resp.body.eventIds;
-        });
-    });
-
-    cy.then(() => {
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-            {
-                name: `${PREFIX} Sunday Morning Worship`,
-                linkMode: "event_type",
-                eventTypeId: CHURCH_SERVICE_TYPE,
-                titleFilter: EVENT_TITLE,
-                windowStart: seriesStart,
-                teamId,
-            },
-            201,
-        ).then((resp) => {
-            scheduleId = resp.body.schedule.id;
-        });
-    });
-
-    // Five requirements, every one of them exactly one person (§0.4 UC2).
-    cy.then(() => {
-        POSITION_NAMES.forEach((name) => {
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
-                { positionId: positions[name], minCount: 1, maxCount: 1 },
-                [200, 201],
-            );
-        });
-    });
-
-    cy.then(() => {
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`,
-            { through: seriesEnd },
-            200,
-        );
-    });
-
-    cy.then(() => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
-        ).then((resp) => {
-            expect(resp.body.occurrences.length).to.be.greaterThan(0);
-            occurrenceId = resp.body.occurrences[0].id;
-        });
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    setVersion(originalVersion);
-});
-
-// ── the run ────────────────────────────────────────────────────────────────
-
-describe("Volunteer v2 e2e — #9714 scenario 2, Sunday Worship", () => {
-    it("has five Min 1 / Max 1 requirements and therefore five gaps to start with", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
-        ).then((resp) => {
-            expect(resp.body.requirements).to.have.length(5);
-            resp.body.requirements.forEach((r) => {
-                expect(r.minCount).to.eq(1);
-                expect(r.maxCount).to.eq(1);
-            });
-        });
-
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceId}/staffing`,
-        ).then((resp) => {
-            const total = resp.body.requirements.reduce(
-                (sum, r) => sum + r.gapCount,
-                0,
-            );
-            expect(total).to.eq(5);
-        });
-    });
-
-    it("lets a scoped, non-administrator coordinator fill all five positions", () => {
-        // Song Leader goes to the volunteer persona; the rest to the fillers.
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
-            {
-                positionId: positions["Song Leader"],
-                personId: PERSON_VOLUNTEER,
-            },
-            201,
-        ).then((resp) => {
-            originalAssignmentId = resp.body.assignment.id;
-            expect(resp.body.assignment.source).to.eq("coordinator");
-        });
-
-        POSITION_NAMES.slice(1).forEach((name, index) => {
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
-                { positionId: positions[name], personId: FILLERS[index] },
-                201,
             );
         });
 
         cy.then(() => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/teams`,
+                { name: TEAM_NAME, description: "" },
+                201,
+            ).then((resp) => {
+                teamId = resp.body.team.id;
+            });
+        });
+
+        cy.then(() => {
+            POSITION_NAMES.forEach((name, index) => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
+                    { name: `${PREFIX} ${name}`, teamId, order: index + 1 },
+                    201,
+                ).then((resp) => {
+                    positions[name] = resp.body.position.id;
+                });
+            });
+        });
+
+        // D19: the ministry came with its own pool Group, empty — so the coordinator
+        // fills it rather than making a group and linking it.
+        cy.then(() => {
+            POOL_ALL.forEach((personId) => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                    null,
+                    [200, 201],
+                );
+            });
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
+                null,
+                200,
+            ).then((resp) => {
+                groupId = resp.body.groupId;
+            });
+        });
+
+        // Everybody in the pool is qualified for everything: UC2's constraint is
+        // one-per-position, not a narrow skill matrix, and the substitution has to
+        // have a qualified counterparty (§2.13 re-checks I2 for the replacement).
+        cy.then(() => {
+            POSITION_NAMES.forEach((name) => {
+                POOL_ALL.forEach((personId) => {
+                    api(
+                        COORDINATOR_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/positions/${positions[name]}/qualifications`,
+                        { personId, notes: "" },
+                        [200, 201],
+                    );
+                });
+            });
+        });
+
+        cy.then(() => {
+            seriesStart = isoDate(daysToNext(0));
+            seriesEnd = isoDate(daysToNext(0) + 7);
+
+            api(
+                ADMIN_KEY,
+                "POST",
+                "/api/events/repeat",
+                {
+                    Title: EVENT_TITLE,
+                    Type: CHURCH_SERVICE_TYPE,
+                    StartTime: "10:30:00",
+                    EndTime: "11:45:00",
+                    RecurType: "weekly",
+                    RecurDOW: "Sunday",
+                    RangeStart: seriesStart,
+                    RangeEnd: seriesEnd,
+                },
+                200,
+            ).then((resp) => {
+                seriesEventIds = resp.body.eventIds;
+            });
+        });
+
+        cy.then(() => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
+                {
+                    name: `${PREFIX} Sunday Morning Worship`,
+                    linkMode: "event_type",
+                    eventTypeId: CHURCH_SERVICE_TYPE,
+                    titleFilter: EVENT_TITLE,
+                    windowStart: seriesStart,
+                    teamId,
+                },
+                201,
+            ).then((resp) => {
+                scheduleId = resp.body.schedule.id;
+            });
+        });
+
+        // Five requirements, every one of them exactly one person (§0.4 UC2).
+        cy.then(() => {
+            POSITION_NAMES.forEach((name) => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
+                    { positionId: positions[name], minCount: 1, maxCount: 1 },
+                    [200, 201],
+                );
+            });
+        });
+
+        cy.then(() => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`,
+                { through: seriesEnd },
+                200,
+            );
+        });
+
+        cy.then(() => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
+            ).then((resp) => {
+                expect(resp.body.occurrences.length).to.be.greaterThan(0);
+                occurrenceId = resp.body.occurrences[0].id;
+            });
+        });
+    });
+
+    after(() => {
+        cleanupFixtures();
+        setVersion(originalVersion);
+    });
+
+    // ── the run ────────────────────────────────────────────────────────────────
+
+    describe("Volunteer v2 e2e — #9714 scenario 2, Sunday Worship", () => {
+        it("has five Min 1 / Max 1 requirements and therefore five gaps to start with", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`,
+            ).then((resp) => {
+                expect(resp.body.requirements).to.have.length(5);
+                resp.body.requirements.forEach((r) => {
+                    expect(r.minCount).to.eq(1);
+                    expect(r.maxCount).to.eq(1);
+                });
+            });
+
             api(
                 COORDINATOR_KEY,
                 "GET",
@@ -517,191 +478,232 @@ describe("Volunteer v2 e2e — #9714 scenario 2, Sunday Worship", () => {
                     (sum, r) => sum + r.gapCount,
                     0,
                 );
-                expect(total).to.eq(0);
+                expect(total).to.eq(5);
             });
         });
-    });
 
-    it("records the volunteer's acceptance from the member surface", () => {
-        api(
-            SELFEDIT_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/me/assignments/${originalAssignmentId}/respond`,
-            { response: "accepted", comment: "Glad to" },
-            200,
-        ).then((resp) => {
-            expect(resp.body.assignment.status).to.eq("accepted");
+        it("lets a scoped, non-administrator coordinator fill all five positions", () => {
+            // Song Leader goes to the volunteer persona; the rest to the fillers.
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
+                {
+                    positionId: positions["Song Leader"],
+                    personId: PERSON_VOLUNTEER,
+                },
+                201,
+            ).then((resp) => {
+                originalAssignmentId = resp.body.assignment.id;
+                expect(resp.body.assignment.source).to.eq("coordinator");
+            });
+
+            POSITION_NAMES.slice(1).forEach((name, index) => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
+                    { positionId: positions[name], personId: FILLERS[index] },
+                    201,
+                );
+            });
+
+            cy.then(() => {
+                api(
+                    COORDINATOR_KEY,
+                    "GET",
+                    `${VOLUNTEER_URL}/occurrences/${occurrenceId}/staffing`,
+                ).then((resp) => {
+                    const total = resp.body.requirements.reduce(
+                        (sum, r) => sum + r.gapCount,
+                        0,
+                    );
+                    expect(total).to.eq(0);
+                });
+            });
         });
 
-        assignment(originalAssignmentId).then((body) => {
-            expect(body.responses).to.have.length(1);
-            expect(body.responses[0].response).to.eq("accepted");
-            expect(body.responses[0].channel).to.eq("web");
-            expect(body.responses[0].personId).to.eq(PERSON_VOLUNTEER);
-        });
-    });
+        it("records the volunteer's acceptance from the member surface", () => {
+            api(
+                SELFEDIT_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/me/assignments/${originalAssignmentId}/respond`,
+                { response: "accepted", comment: "Glad to" },
+                200,
+            ).then((resp) => {
+                expect(resp.body.assignment.status).to.eq("accepted");
+            });
 
-    it("proposes a substitute who has already agreed, changing nothing yet", () => {
-        api(
-            SELFEDIT_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/me/assignments/${originalAssignmentId}/propose-substitute`,
-            { personId: PERSON_SUBSTITUTE, comment: "He has agreed" },
-            201,
-        ).then((resp) => {
-            swapId = resp.body.swap.id;
-            expect(resp.body.swap.status).to.eq("proposed");
-            expect(resp.body.swap.proposedByPersonId).to.eq(PERSON_VOLUNTEER);
-            expect(resp.body.swap.proposedPersonId).to.eq(PERSON_SUBSTITUTE);
-        });
-
-        // Proposing decides nothing — the volunteer is still the one serving.
-        cy.then(() => {
             assignment(originalAssignmentId).then((body) => {
-                expect(body.assignment.status).to.eq("accepted");
-                expect(body.assignment.personId).to.eq(PERSON_VOLUNTEER);
+                expect(body.responses).to.have.length(1);
+                expect(body.responses[0].response).to.eq("accepted");
+                expect(body.responses[0].channel).to.eq("web");
+                expect(body.responses[0].personId).to.eq(PERSON_VOLUNTEER);
             });
         });
 
-        // …and the position is still counted as filled, so no gap opened.
-        cy.then(() => {
-            staffingFor(positions["Song Leader"]).then((row) => {
-                expect(row.liveCount).to.eq(1);
-                expect(row.gapCount).to.eq(0);
+        it("proposes a substitute who has already agreed, changing nothing yet", () => {
+            api(
+                SELFEDIT_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/me/assignments/${originalAssignmentId}/propose-substitute`,
+                { personId: PERSON_SUBSTITUTE, comment: "He has agreed" },
+                201,
+            ).then((resp) => {
+                swapId = resp.body.swap.id;
+                expect(resp.body.swap.status).to.eq("proposed");
+                expect(resp.body.swap.proposedByPersonId).to.eq(PERSON_VOLUNTEER);
+                expect(resp.body.swap.proposedPersonId).to.eq(PERSON_SUBSTITUTE);
             });
-        });
-    });
 
-    it("shows the proposal in the coordinator's queue", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/swaps?status=proposed&ministryId=${ministryId}`,
-        ).then((resp) => {
-            const mine = resp.body.swaps.filter((s) => s.id === swapId);
-            expect(mine).to.have.length(1);
-            expect(mine[0].occurrenceId).to.eq(occurrenceId);
-        });
-    });
+            // Proposing decides nothing — the volunteer is still the one serving.
+            cy.then(() => {
+                assignment(originalAssignmentId).then((body) => {
+                    expect(body.assignment.status).to.eq("accepted");
+                    expect(body.assignment.personId).to.eq(PERSON_VOLUNTEER);
+                });
+            });
 
-    it("approves the substitution in one transaction, and keeps both audit trails", () => {
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/swaps/${swapId}/approve`,
-            {},
-            200,
-        ).then((resp) => {
-            expect(resp.body.swap.status).to.eq("approved");
-        });
-
-        // The original row is terminal, still names the original volunteer, and
-        // is still readable. Nothing was deleted or rewritten (§2.13).
-        cy.then(() => {
-            assignment(originalAssignmentId).then((body) => {
-                expect(body.assignment.status).to.eq("substituted");
-                expect(body.assignment.personId).to.eq(PERSON_VOLUNTEER);
-
-                const kinds = body.responses.map((r) => r.response);
-                expect(kinds).to.include("accepted");
-                expect(kinds).to.include("substitute_proposed");
-                expect(kinds).to.include("substitute_approved");
+            // …and the position is still counted as filled, so no gap opened.
+            cy.then(() => {
+                staffingFor(positions["Song Leader"]).then((row) => {
+                    expect(row.liveCount).to.eq(1);
+                    expect(row.gapCount).to.eq(0);
+                });
             });
         });
 
-        // The replacement is traceable back to the row it replaced.
-        cy.then(() => {
-            staffingFor(positions["Song Leader"]).then((row) => {
-                const replacement = row.assignments.find(
-                    (a) => a.personId === PERSON_SUBSTITUTE,
-                );
-                expect(replacement, "a replacement row exists").to.not.eq(
-                    undefined,
-                );
-                expect(replacement.status).to.eq("accepted");
-                expect(replacement.source).to.eq("substitute");
-                expect(replacement.replacesAssignmentId).to.eq(
-                    originalAssignmentId,
-                );
-
-                // Both rows are visible, and only one of them counts as live.
-                expect(row.assignments.length).to.eq(2);
-                expect(row.liveCount).to.eq(1);
-                expect(row.gapCount).to.eq(0);
+        it("shows the proposal in the coordinator's queue", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/swaps?status=proposed&ministryId=${ministryId}`,
+            ).then((resp) => {
+                const mine = resp.body.swaps.filter((s) => s.id === swapId);
+                expect(mine).to.have.length(1);
+                expect(mine[0].occurrenceId).to.eq(occurrenceId);
             });
         });
 
-        // The replacement carries its own response history — "audit rows on
-        // both" (§6.5 row 2), not one shared log.
-        cy.then(() => {
-            staffingFor(positions["Song Leader"]).then((row) => {
-                const replacement = row.assignments.find(
-                    (a) => a.personId === PERSON_SUBSTITUTE,
-                );
-                assignment(replacement.id).then((body) => {
+        it("approves the substitution in one transaction, and keeps both audit trails", () => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/swaps/${swapId}/approve`,
+                {},
+                200,
+            ).then((resp) => {
+                expect(resp.body.swap.status).to.eq("approved");
+            });
+
+            // The original row is terminal, still names the original volunteer, and
+            // is still readable. Nothing was deleted or rewritten (§2.13).
+            cy.then(() => {
+                assignment(originalAssignmentId).then((body) => {
+                    expect(body.assignment.status).to.eq("substituted");
+                    expect(body.assignment.personId).to.eq(PERSON_VOLUNTEER);
+
                     const kinds = body.responses.map((r) => r.response);
                     expect(kinds).to.include("accepted");
-                    body.responses.forEach((r) => {
-                        expect(r.assignmentId).to.eq(replacement.id);
+                    expect(kinds).to.include("substitute_proposed");
+                    expect(kinds).to.include("substitute_approved");
+                });
+            });
+
+            // The replacement is traceable back to the row it replaced.
+            cy.then(() => {
+                staffingFor(positions["Song Leader"]).then((row) => {
+                    const replacement = row.assignments.find(
+                        (a) => a.personId === PERSON_SUBSTITUTE,
+                    );
+                    expect(replacement, "a replacement row exists").to.not.eq(
+                        undefined,
+                    );
+                    expect(replacement.status).to.eq("accepted");
+                    expect(replacement.source).to.eq("substitute");
+                    expect(replacement.replacesAssignmentId).to.eq(
+                        originalAssignmentId,
+                    );
+
+                    // Both rows are visible, and only one of them counts as live.
+                    expect(row.assignments.length).to.eq(2);
+                    expect(row.liveCount).to.eq(1);
+                    expect(row.gapCount).to.eq(0);
+                });
+            });
+
+            // The replacement carries its own response history — "audit rows on
+            // both" (§6.5 row 2), not one shared log.
+            cy.then(() => {
+                staffingFor(positions["Song Leader"]).then((row) => {
+                    const replacement = row.assignments.find(
+                        (a) => a.personId === PERSON_SUBSTITUTE,
+                    );
+                    assignment(replacement.id).then((body) => {
+                        const kinds = body.responses.map((r) => r.response);
+                        expect(kinds).to.include("accepted");
+                        body.responses.forEach((r) => {
+                            expect(r.assignmentId).to.eq(replacement.id);
+                        });
                     });
                 });
             });
         });
-    });
 
-    it("enqueues a swap_resolved outbox row for BOTH parties", () => {
-        outboxRows("swap_resolved", PERSON_VOLUNTEER).then((rows) => {
-            expect(rows.length, "the original volunteer is told").to.be.at.least(
-                1,
-            );
-        });
-        outboxRows("swap_resolved", PERSON_SUBSTITUTE).then((rows) => {
-            expect(rows.length, "the substitute is told").to.be.at.least(1);
-        });
-    });
-
-    it("refuses to approve or reject the same swap twice", () => {
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/swaps/${swapId}/approve`,
-            {},
-            409,
-        );
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/swaps/${swapId}/reject`,
-            {},
-            409,
-        );
-    });
-
-    it("keeps the substituted volunteer's own view honest", () => {
-        api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/assignments`).then(
-            (resp) => {
-                const here = resp.body.assignments.find(
-                    (a) => a.id === originalAssignmentId,
+        it("enqueues a swap_resolved outbox row for BOTH parties", () => {
+            outboxRows("swap_resolved", PERSON_VOLUNTEER).then((rows) => {
+                expect(rows.length, "the original volunteer is told").to.be.at.least(
+                    1,
                 );
-                // Either the row is gone from "what I am committed to", or it is
-                // there and says it is no longer theirs to answer. Both are
-                // honest; silently still showing "Going" would not be.
-                if (here !== undefined) {
-                    expect(here.status).to.eq("substituted");
-                    expect(here.canRespond).to.eq(false);
-                }
-            },
-        );
+            });
+            outboxRows("swap_resolved", PERSON_SUBSTITUTE).then((rows) => {
+                expect(rows.length, "the substitute is told").to.be.at.least(1);
+            });
+        });
 
-        api(
-            SELFEDIT_NOTES_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/me/assignments`,
-        ).then((resp) => {
-            const mine = resp.body.assignments.filter(
-                (a) => a.occurrenceId === occurrenceId,
+        it("refuses to approve or reject the same swap twice", () => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/swaps/${swapId}/approve`,
+                {},
+                409,
             );
-            expect(mine.length, "the substitute now has the commitment").to.be.at.least(1);
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/swaps/${swapId}/reject`,
+                {},
+                409,
+            );
+        });
+
+        it("keeps the substituted volunteer's own view honest", () => {
+            api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/assignments`).then(
+                (resp) => {
+                    const here = resp.body.assignments.find(
+                        (a) => a.id === originalAssignmentId,
+                    );
+                    // Either the row is gone from "what I am committed to", or it is
+                    // there and says it is no longer theirs to answer. Both are
+                    // honest; silently still showing "Going" would not be.
+                    if (here !== undefined) {
+                        expect(here.status).to.eq("substituted");
+                        expect(here.canRespond).to.eq(false);
+                    }
+                },
+            );
+
+            api(
+                SELFEDIT_NOTES_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/me/assignments`,
+            ).then((resp) => {
+                const mine = resp.body.assignments.filter(
+                    (a) => a.occurrenceId === occurrenceId,
+                );
+                expect(mine.length, "the substitute now has the commitment").to.be.at.least(1);
+            });
         });
     });
 });

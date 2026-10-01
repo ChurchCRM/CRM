@@ -180,285 +180,287 @@ function cleanupFixtures() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-        originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-    });
-    setVersion("v2");
-    cleanupFixtures();
-
-    api("POST", `${URL}/ministries`, { name: `${PREFIX} Children`, description: "D30 fixture", sundaySchool: true }, 201).then(
-        (resp) => {
-            ministryId = resp.body.ministry.id;
-            ministryName = resp.body.ministry.name;
-            api("GET", `${URL}/ministries/${ministryId}`).then((detail) => {
-                teamA = detail.body.teams[0].id;
-            });
-        },
-    );
-    for (const key of ["Empty Class", "Meeting Class", "Faith City", "Other Class", "Resting Class"]) {
-        makeClass(key);
-    }
-
-    cy.then(() => {
-        api("POST", `${URL}/ministries/${ministryId}/teams`, { name: `${PREFIX} Team B` }, 201).then((resp) => {
-            teamB = resp.body.team.id;
-        });
-        api("POST", `${URL}/ministries/${ministryId}/positions`, { name: `${PREFIX} Teacher`, teamId: teamA }, 201).then(
-            (resp) => {
-                position = resp.body.position.id;
-                api("POST", `${URL}/positions/${position}/qualifications`, { personId: POOL_MEMBER }, [200, 201]);
-            },
-        );
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    setVersion(originalVersion);
-});
-
-// ── Generate explains an empty run ─────────────────────────────────────────
-
-describe("Volunteer v2 D30 — a Generate run that finds no events says what it looked for", () => {
-    it("names the class, and the dates looked at, when its meetings lie beyond the horizon", () => {
-        createEvents(oneEvent("Empty Class Later", HORIZON_DAYS + 14, { linkedGroupId: classes["Empty Class"] }));
-        createSchedule({ name: "Empty Class", linkMode: "class", groupId: classes["Empty Class"] }).then((schedule) => {
-            generate(schedule.id).then((result) => {
-                expect(result).to.include({ created: 0, existing: 0, noEvents: true });
-                expect(result.from).to.eq(isoDate(0));
-                expect(result.through).to.eq(isoDate(HORIZON_DAYS));
-                expect(result.searched).to.include({
-                    linkMode: "class",
-                    groupId: classes["Empty Class"],
-                    groupName: `${PREFIX} Empty Class`,
-                    ministryId,
-                });
-            });
-        });
-    });
-
-    it("names the event type and title in event-type mode", () => {
-        createEvents(oneEvent("Later Service", 40));
-        createSchedule({
-            name: "Nothing Titled",
-            linkMode: "event_type",
-            eventTypeId: CHURCH_SERVICE_TYPE,
-            titleFilter: `${PREFIX} Later Service`,
-        }).then((schedule) => {
-            generate(schedule.id, { through: isoDate(30) }).then((result) => {
-                expect(result).to.include({ created: 0, existing: 0, noEvents: true, through: isoDate(30) });
-                expect(result.searched).to.include({
-                    linkMode: "event_type",
-                    eventTypeId: CHURCH_SERVICE_TYPE,
-                    eventTypeName: "Church Service",
-                    titleFilter: `${PREFIX} Later Service`,
-                    groupId: null,
-                });
-            });
-        });
-    });
-
-    it("names the ministry and title in ministry mode", () => {
-        createEvents(oneEvent("VBS", HORIZON_DAYS + 14));
-        createSchedule({ name: "No VBS", linkMode: "ministry", titleFilter: `${PREFIX} VBS` }).then((schedule) => {
-            generate(schedule.id).then((result) => {
-                expect(result.noEvents).to.eq(true);
-                expect(result.searched).to.include({
-                    linkMode: "ministry",
-                    ministryId,
-                    ministryName,
-                    titleFilter: `${PREFIX} VBS`,
-                });
-            });
-        });
-    });
-
-    it("reports a window that has already ended as nothing looked at", () => {
-        createSchedule({
-            name: "Ended",
-            linkMode: "class",
-            groupId: classes["Empty Class"],
-            windowStart: isoDate(-30),
-            windowEnd: isoDate(-5),
-        }).then((schedule) => {
-            generate(schedule.id).then((result) => {
-                expect(result.noEvents).to.eq(true);
-                expect(result.from).to.eq(isoDate(0));
-                expect(result.through).to.eq(isoDate(-5));
-            });
-        });
-    });
-
-    it("is not empty when events were found, even when every occurrence already existed", () => {
-        createEvents(weekly("Meeting", 1, 20, { linkedGroupId: classes["Meeting Class"] })).then((made) => {
-            createSchedule({ name: "Meeting Class", linkMode: "class", groupId: classes["Meeting Class"] }).then((schedule) => {
-                generate(schedule.id).then((first) => {
-                    expect(first).to.include({ created: made.events.length, existing: 0, noEvents: false });
-                });
-                generate(schedule.id).then((again) => {
-                    expect(again).to.include({ created: 0, existing: made.events.length, noEvents: false });
-                    expect(again.searched.groupName).to.eq(`${PREFIX} Meeting Class`);
-                });
-            });
-        });
-    });
-});
-
-// ── Staff these events reuses the schedule that already follows them ───────
-
-describe("Volunteer v2 D30 — Staff these events adds the events to the team's schedule that follows them", () => {
-    let classSchedule = null;
-    let earlierOccurrenceId = 0;
-
+describe("Volunteer v2 D30 — a Generate run that finds no events says what it looked for, and \"Staff these events\" adds new events to the team's schedule that already follows them instead of making a second one", () => {
     before(() => {
-        createEvents(oneEvent("Faith City Picnic", 12, { linkedGroupId: classes["Faith City"] }));
-        createSchedule({
-            name: "Faith City Teachers",
-            linkMode: "class",
-            groupId: classes["Faith City"],
-            windowStart: isoDate(10),
-            windowEnd: isoDate(20),
-            startOffsetMinutes: -15,
-            requirements: [{ positionId: position, minCount: 2, maxCount: 2 }],
-        }).then((schedule) => {
-            classSchedule = schedule;
-            generate(schedule.id).then((result) => {
-                expect(result.created).to.eq(1);
-                dbOk(`SELECT vocc_ID AS id FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?`, [schedule.id]).then((rows) => {
-                    earlierOccurrenceId = Number(rows[0].id);
+        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
+            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
+        });
+        setVersion("v2");
+        cleanupFixtures();
+
+        api("POST", `${URL}/ministries`, { name: `${PREFIX} Children`, description: "D30 fixture", sundaySchool: true }, 201).then(
+            (resp) => {
+                ministryId = resp.body.ministry.id;
+                ministryName = resp.body.ministry.name;
+                api("GET", `${URL}/ministries/${ministryId}`).then((detail) => {
+                    teamA = detail.body.teams[0].id;
                 });
-            });
-        });
-    });
-
-    it("adds a class series to the team's class schedule: no second schedule, one occurrence per event", () => {
-        createEvents(
-            weekly("Faith City", 1, 45, {
-                linkedGroupId: classes["Faith City"],
-                staff: {
-                    teamId: teamA,
-                    requirements: [{ positionId: position, minCount: 1, maxCount: 1 }],
-                    startOffsetMinutes: -60,
-                    defaults: [{ positionId: position, personId: POOL_MEMBER, accepted: true }],
-                },
-            }),
-        ).then((made) => {
-            const eventIds = made.events.map((e) => e.id);
-            expect(made.reusedSchedule).to.eq(true);
-            expect(made.schedule.id).to.eq(classSchedule.id);
-            expect(made.schedule.linkMode).to.eq("class");
-            expect(made.occurrences.map((o) => o.eventId)).to.have.members(eventIds);
-
-            schedulesFollowing(teamA, classes["Faith City"]).then((ids) => expect(ids).to.deep.eq([classSchedule.id]));
-            occurrencesOn(eventIds).then((rows) => {
-                expect(rows, "exactly one occurrence per new event").to.have.length(eventIds.length);
-                expect(new Set(rows.map((r) => Number(r.eventId))).size).to.eq(eventIds.length);
-                expect(rows.every((r) => Number(r.scheduleId) === classSchedule.id)).to.eq(true);
-            });
-
-            scheduleRow(classSchedule.id).then((row) => {
-                expect(row.windowStart, "the first date moved back to the first new event").to.eq(isoDate(1));
-                expect(row.windowEnd, "the last date moved on to the last new event").to.eq(isoDate(45));
-                expect(Number(row.startOffset), "the schedule's own offsets are kept").to.eq(-15);
-            });
-            api("GET", `${URL}/schedules/${classSchedule.id}/requirements`).then((resp) => {
-                expect(resp.body.requirements.map((r) => [r.positionId, r.minCount])).to.deep.eq([[position, 2]]);
-            });
-
-            expect(made.assigned).to.eq(eventIds.length);
-            dbOk(
-                `SELECT vasg.vasg_vocc_ID AS occurrenceId FROM volunteer_assignment_vasg vasg
-                   JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
-                  WHERE vocc.vocc_vsch_ID = ? AND vasg.vasg_per_ID = ?`,
-                [classSchedule.id, POOL_MEMBER],
-            ).then((rows) => {
-                const assigned = rows.map((r) => Number(r.occurrenceId));
-                expect(assigned).to.have.members(made.occurrences.map((o) => o.id));
-                expect(assigned, "the default is not put on an occurrence an earlier run made").not.to.include(earlierOccurrenceId);
-            });
-        });
-    });
-
-    it("adds a single class event to the same schedule instead of Staff this event", () => {
-        createEvents(oneEvent("Faith City Extra", 50, { linkedGroupId: classes["Faith City"], staff: { teamId: teamA } })).then(
-            (made) => {
-                const eventId = made.events[0].id;
-                expect(made.reusedSchedule).to.eq(true);
-                expect(made.schedule.id).to.eq(classSchedule.id);
-                expect(made.occurrences.map((o) => o.eventId)).to.deep.eq([eventId]);
-                occurrencesOn([eventId]).then((rows) => expect(rows).to.have.length(1));
-                dbOk(`SELECT COUNT(*) AS n FROM volunteer_schedule_vsch WHERE vsch_event_id = ?`, [eventId]).then((rows) =>
-                    expect(Number(rows[0].n), "no hidden one-event schedule").to.eq(0),
-                );
-                scheduleRow(classSchedule.id).then((row) => expect(row.windowEnd).to.eq(isoDate(50)));
             },
         );
-    });
+        for (const key of ["Empty Class", "Meeting Class", "Faith City", "Other Class", "Resting Class"]) {
+            makeClass(key);
+        }
 
-    it("adds a series with no class to the team's ministry schedule with exactly that title, leaving an open end open", () => {
-        createEvents(oneEvent("Workday", 1));
-        createSchedule({ name: "Workday Crew", linkMode: "ministry", titleFilter: `${PREFIX} Workday` }).then((schedule) => {
-            createEvents(weekly("Workday", 2, 30, { staff: { teamId: teamA } })).then((made) => {
-                expect(made.reusedSchedule).to.eq(true);
-                expect(made.schedule.id).to.eq(schedule.id);
-                occurrencesOn(made.events.map((e) => e.id)).then((rows) => {
-                    expect(rows).to.have.length(made.events.length);
-                    expect(rows.every((r) => Number(r.scheduleId) === schedule.id)).to.eq(true);
-                });
-                scheduleRow(schedule.id).then((row) => expect(row.windowEnd).to.eq(null));
+        cy.then(() => {
+            api("POST", `${URL}/ministries/${ministryId}/teams`, { name: `${PREFIX} Team B` }, 201).then((resp) => {
+                teamB = resp.body.team.id;
             });
-        });
-    });
-
-    it("makes a new schedule for another team", () => {
-        createEvents(weekly("Faith City B", 3, 30, { linkedGroupId: classes["Faith City"], staff: { teamId: teamB } })).then(
-            (made) => {
-                expect(made.reusedSchedule).to.eq(false);
-                expect(made.schedule.id).not.to.eq(classSchedule.id);
-                expect(made.schedule).to.include({ teamId: teamB, linkMode: "class", groupId: classes["Faith City"] });
-            },
-        );
-    });
-
-    it("makes a new schedule for another class", () => {
-        createEvents(weekly("Other Class", 3, 30, { linkedGroupId: classes["Other Class"], staff: { teamId: teamA } })).then(
-            (made) => {
-                expect(made.reusedSchedule).to.eq(false);
-                expect(made.schedule).to.include({ linkMode: "class", groupId: classes["Other Class"] });
-            },
-        );
-    });
-
-    it("makes a new schedule for another title", () => {
-        createEvents(weekly("Mowing", 3, 30, { staff: { teamId: teamA } })).then((made) => {
-            expect(made.reusedSchedule).to.eq(false);
-            expect(made.schedule).to.include({ linkMode: "ministry", titleFilter: `${PREFIX} Mowing` });
-        });
-    });
-
-    it("never reuses an inactive schedule", () => {
-        createEvents(oneEvent("Resting First", 1, { linkedGroupId: classes["Resting Class"] }));
-        createSchedule({ name: "Resting", linkMode: "class", groupId: classes["Resting Class"], active: false }).then((resting) => {
-            createEvents(weekly("Resting", 3, 30, { linkedGroupId: classes["Resting Class"], staff: { teamId: teamA } })).then(
-                (made) => {
-                    expect(made.reusedSchedule).to.eq(false);
-                    expect(made.schedule.id).not.to.eq(resting.id);
-                    expect(made.schedule.active).to.eq(true);
+            api("POST", `${URL}/ministries/${ministryId}/positions`, { name: `${PREFIX} Teacher`, teamId: teamA }, 201).then(
+                (resp) => {
+                    position = resp.body.position.id;
+                    api("POST", `${URL}/positions/${position}/qualifications`, { personId: POOL_MEMBER }, [200, 201]);
                 },
             );
         });
     });
 
-    it("refuses a single event that has already happened, as Staff this event does, and creates nothing", () => {
-        api(
-            "POST",
-            `${URL}/ministries/${ministryId}/events`,
-            oneEvent("Faith City Past", -2, { linkedGroupId: classes["Faith City"], staff: { teamId: teamA } }),
-            400,
-        );
-        dbOk(`SELECT COUNT(*) AS n FROM events_event WHERE event_title = ?`, [`${PREFIX} Faith City Past`]).then((rows) =>
-            expect(Number(rows[0].n)).to.eq(0),
-        );
+    after(() => {
+        cleanupFixtures();
+        setVersion(originalVersion);
+    });
+
+    // ── Generate explains an empty run ─────────────────────────────────────────
+
+    describe("Volunteer v2 D30 — a Generate run that finds no events says what it looked for", () => {
+        it("names the class, and the dates looked at, when its meetings lie beyond the horizon", () => {
+            createEvents(oneEvent("Empty Class Later", HORIZON_DAYS + 14, { linkedGroupId: classes["Empty Class"] }));
+            createSchedule({ name: "Empty Class", linkMode: "class", groupId: classes["Empty Class"] }).then((schedule) => {
+                generate(schedule.id).then((result) => {
+                    expect(result).to.include({ created: 0, existing: 0, noEvents: true });
+                    expect(result.from).to.eq(isoDate(0));
+                    expect(result.through).to.eq(isoDate(HORIZON_DAYS));
+                    expect(result.searched).to.include({
+                        linkMode: "class",
+                        groupId: classes["Empty Class"],
+                        groupName: `${PREFIX} Empty Class`,
+                        ministryId,
+                    });
+                });
+            });
+        });
+
+        it("names the event type and title in event-type mode", () => {
+            createEvents(oneEvent("Later Service", 40));
+            createSchedule({
+                name: "Nothing Titled",
+                linkMode: "event_type",
+                eventTypeId: CHURCH_SERVICE_TYPE,
+                titleFilter: `${PREFIX} Later Service`,
+            }).then((schedule) => {
+                generate(schedule.id, { through: isoDate(30) }).then((result) => {
+                    expect(result).to.include({ created: 0, existing: 0, noEvents: true, through: isoDate(30) });
+                    expect(result.searched).to.include({
+                        linkMode: "event_type",
+                        eventTypeId: CHURCH_SERVICE_TYPE,
+                        eventTypeName: "Church Service",
+                        titleFilter: `${PREFIX} Later Service`,
+                        groupId: null,
+                    });
+                });
+            });
+        });
+
+        it("names the ministry and title in ministry mode", () => {
+            createEvents(oneEvent("VBS", HORIZON_DAYS + 14));
+            createSchedule({ name: "No VBS", linkMode: "ministry", titleFilter: `${PREFIX} VBS` }).then((schedule) => {
+                generate(schedule.id).then((result) => {
+                    expect(result.noEvents).to.eq(true);
+                    expect(result.searched).to.include({
+                        linkMode: "ministry",
+                        ministryId,
+                        ministryName,
+                        titleFilter: `${PREFIX} VBS`,
+                    });
+                });
+            });
+        });
+
+        it("reports a window that has already ended as nothing looked at", () => {
+            createSchedule({
+                name: "Ended",
+                linkMode: "class",
+                groupId: classes["Empty Class"],
+                windowStart: isoDate(-30),
+                windowEnd: isoDate(-5),
+            }).then((schedule) => {
+                generate(schedule.id).then((result) => {
+                    expect(result.noEvents).to.eq(true);
+                    expect(result.from).to.eq(isoDate(0));
+                    expect(result.through).to.eq(isoDate(-5));
+                });
+            });
+        });
+
+        it("is not empty when events were found, even when every occurrence already existed", () => {
+            createEvents(weekly("Meeting", 1, 20, { linkedGroupId: classes["Meeting Class"] })).then((made) => {
+                createSchedule({ name: "Meeting Class", linkMode: "class", groupId: classes["Meeting Class"] }).then((schedule) => {
+                    generate(schedule.id).then((first) => {
+                        expect(first).to.include({ created: made.events.length, existing: 0, noEvents: false });
+                    });
+                    generate(schedule.id).then((again) => {
+                        expect(again).to.include({ created: 0, existing: made.events.length, noEvents: false });
+                        expect(again.searched.groupName).to.eq(`${PREFIX} Meeting Class`);
+                    });
+                });
+            });
+        });
+    });
+
+    // ── Staff these events reuses the schedule that already follows them ───────
+
+    describe("Volunteer v2 D30 — Staff these events adds the events to the team's schedule that follows them", () => {
+        let classSchedule = null;
+        let earlierOccurrenceId = 0;
+
+        before(() => {
+            createEvents(oneEvent("Faith City Picnic", 12, { linkedGroupId: classes["Faith City"] }));
+            createSchedule({
+                name: "Faith City Teachers",
+                linkMode: "class",
+                groupId: classes["Faith City"],
+                windowStart: isoDate(10),
+                windowEnd: isoDate(20),
+                startOffsetMinutes: -15,
+                requirements: [{ positionId: position, minCount: 2, maxCount: 2 }],
+            }).then((schedule) => {
+                classSchedule = schedule;
+                generate(schedule.id).then((result) => {
+                    expect(result.created).to.eq(1);
+                    dbOk(`SELECT vocc_ID AS id FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?`, [schedule.id]).then((rows) => {
+                        earlierOccurrenceId = Number(rows[0].id);
+                    });
+                });
+            });
+        });
+
+        it("adds a class series to the team's class schedule: no second schedule, one occurrence per event", () => {
+            createEvents(
+                weekly("Faith City", 1, 45, {
+                    linkedGroupId: classes["Faith City"],
+                    staff: {
+                        teamId: teamA,
+                        requirements: [{ positionId: position, minCount: 1, maxCount: 1 }],
+                        startOffsetMinutes: -60,
+                        defaults: [{ positionId: position, personId: POOL_MEMBER, accepted: true }],
+                    },
+                }),
+            ).then((made) => {
+                const eventIds = made.events.map((e) => e.id);
+                expect(made.reusedSchedule).to.eq(true);
+                expect(made.schedule.id).to.eq(classSchedule.id);
+                expect(made.schedule.linkMode).to.eq("class");
+                expect(made.occurrences.map((o) => o.eventId)).to.have.members(eventIds);
+
+                schedulesFollowing(teamA, classes["Faith City"]).then((ids) => expect(ids).to.deep.eq([classSchedule.id]));
+                occurrencesOn(eventIds).then((rows) => {
+                    expect(rows, "exactly one occurrence per new event").to.have.length(eventIds.length);
+                    expect(new Set(rows.map((r) => Number(r.eventId))).size).to.eq(eventIds.length);
+                    expect(rows.every((r) => Number(r.scheduleId) === classSchedule.id)).to.eq(true);
+                });
+
+                scheduleRow(classSchedule.id).then((row) => {
+                    expect(row.windowStart, "the first date moved back to the first new event").to.eq(isoDate(1));
+                    expect(row.windowEnd, "the last date moved on to the last new event").to.eq(isoDate(45));
+                    expect(Number(row.startOffset), "the schedule's own offsets are kept").to.eq(-15);
+                });
+                api("GET", `${URL}/schedules/${classSchedule.id}/requirements`).then((resp) => {
+                    expect(resp.body.requirements.map((r) => [r.positionId, r.minCount])).to.deep.eq([[position, 2]]);
+                });
+
+                expect(made.assigned).to.eq(eventIds.length);
+                dbOk(
+                    `SELECT vasg.vasg_vocc_ID AS occurrenceId FROM volunteer_assignment_vasg vasg
+                   JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
+                  WHERE vocc.vocc_vsch_ID = ? AND vasg.vasg_per_ID = ?`,
+                    [classSchedule.id, POOL_MEMBER],
+                ).then((rows) => {
+                    const assigned = rows.map((r) => Number(r.occurrenceId));
+                    expect(assigned).to.have.members(made.occurrences.map((o) => o.id));
+                    expect(assigned, "the default is not put on an occurrence an earlier run made").not.to.include(earlierOccurrenceId);
+                });
+            });
+        });
+
+        it("adds a single class event to the same schedule instead of Staff this event", () => {
+            createEvents(oneEvent("Faith City Extra", 50, { linkedGroupId: classes["Faith City"], staff: { teamId: teamA } })).then(
+                (made) => {
+                    const eventId = made.events[0].id;
+                    expect(made.reusedSchedule).to.eq(true);
+                    expect(made.schedule.id).to.eq(classSchedule.id);
+                    expect(made.occurrences.map((o) => o.eventId)).to.deep.eq([eventId]);
+                    occurrencesOn([eventId]).then((rows) => expect(rows).to.have.length(1));
+                    dbOk(`SELECT COUNT(*) AS n FROM volunteer_schedule_vsch WHERE vsch_event_id = ?`, [eventId]).then((rows) =>
+                        expect(Number(rows[0].n), "no hidden one-event schedule").to.eq(0),
+                    );
+                    scheduleRow(classSchedule.id).then((row) => expect(row.windowEnd).to.eq(isoDate(50)));
+                },
+            );
+        });
+
+        it("adds a series with no class to the team's ministry schedule with exactly that title, leaving an open end open", () => {
+            createEvents(oneEvent("Workday", 1));
+            createSchedule({ name: "Workday Crew", linkMode: "ministry", titleFilter: `${PREFIX} Workday` }).then((schedule) => {
+                createEvents(weekly("Workday", 2, 30, { staff: { teamId: teamA } })).then((made) => {
+                    expect(made.reusedSchedule).to.eq(true);
+                    expect(made.schedule.id).to.eq(schedule.id);
+                    occurrencesOn(made.events.map((e) => e.id)).then((rows) => {
+                        expect(rows).to.have.length(made.events.length);
+                        expect(rows.every((r) => Number(r.scheduleId) === schedule.id)).to.eq(true);
+                    });
+                    scheduleRow(schedule.id).then((row) => expect(row.windowEnd).to.eq(null));
+                });
+            });
+        });
+
+        it("makes a new schedule for another team", () => {
+            createEvents(weekly("Faith City B", 3, 30, { linkedGroupId: classes["Faith City"], staff: { teamId: teamB } })).then(
+                (made) => {
+                    expect(made.reusedSchedule).to.eq(false);
+                    expect(made.schedule.id).not.to.eq(classSchedule.id);
+                    expect(made.schedule).to.include({ teamId: teamB, linkMode: "class", groupId: classes["Faith City"] });
+                },
+            );
+        });
+
+        it("makes a new schedule for another class", () => {
+            createEvents(weekly("Other Class", 3, 30, { linkedGroupId: classes["Other Class"], staff: { teamId: teamA } })).then(
+                (made) => {
+                    expect(made.reusedSchedule).to.eq(false);
+                    expect(made.schedule).to.include({ linkMode: "class", groupId: classes["Other Class"] });
+                },
+            );
+        });
+
+        it("makes a new schedule for another title", () => {
+            createEvents(weekly("Mowing", 3, 30, { staff: { teamId: teamA } })).then((made) => {
+                expect(made.reusedSchedule).to.eq(false);
+                expect(made.schedule).to.include({ linkMode: "ministry", titleFilter: `${PREFIX} Mowing` });
+            });
+        });
+
+        it("never reuses an inactive schedule", () => {
+            createEvents(oneEvent("Resting First", 1, { linkedGroupId: classes["Resting Class"] }));
+            createSchedule({ name: "Resting", linkMode: "class", groupId: classes["Resting Class"], active: false }).then((resting) => {
+                createEvents(weekly("Resting", 3, 30, { linkedGroupId: classes["Resting Class"], staff: { teamId: teamA } })).then(
+                    (made) => {
+                        expect(made.reusedSchedule).to.eq(false);
+                        expect(made.schedule.id).not.to.eq(resting.id);
+                        expect(made.schedule.active).to.eq(true);
+                    },
+                );
+            });
+        });
+
+        it("refuses a single event that has already happened, as Staff this event does, and creates nothing", () => {
+            api(
+                "POST",
+                `${URL}/ministries/${ministryId}/events`,
+                oneEvent("Faith City Past", -2, { linkedGroupId: classes["Faith City"], staff: { teamId: teamA } }),
+                400,
+            );
+            dbOk(`SELECT COUNT(*) AS n FROM events_event WHERE event_title = ?`, [`${PREFIX} Faith City Past`]).then((rows) =>
+                expect(Number(rows[0].n)).to.eq(0),
+            );
+        });
     });
 });

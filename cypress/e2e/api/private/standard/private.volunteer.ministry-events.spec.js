@@ -192,456 +192,458 @@ function cleanupFixtures() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-        originalVersion = resp.body.value ?? resp.body.data ?? "v1";
-    });
-    setVersion("v2");
-    cleanupFixtures();
-
-    for (const key of ["A", "B", "C"]) {
-        api(ADMIN_KEY, "POST", `${URL}/ministries`, { name: `${PREFIX} Ministry ${key}`, description: "D24 fixture", sundaySchool: true }, 201).then(
-            (resp) => {
-                ministry[key] = resp.body.ministry.id;
-                ownCalendar[key] = resp.body.calendarId;
-                api(ADMIN_KEY, "GET", `${URL}/ministries/${ministry[key]}`).then((detail) => {
-                    firstTeam[key] = detail.body.teams[0].id;
-                });
-            },
-        );
-    }
-
-    api(ADMIN_KEY, "POST", "/api/calendars", {
-        Name: `${PREFIX} Bible Classes`,
-        ForegroundColor: "#FFFFFF",
-        BackgroundColor: "#1565C0",
-    }).then((resp) => {
-        grantedCalendar = resp.body.Id;
-    });
-
-    makeGroup("Adult Class", SUNDAY_SCHOOL_GROUP_TYPE).then((id) => {
-        adultClass = id;
-    });
-    makeGroup("Faith City", SUNDAY_SCHOOL_GROUP_TYPE).then((id) => {
-        faithCity = id;
-    });
-
-    cy.then(() => {
-        api(ADMIN_KEY, "PUT", `/api/calendars/${grantedCalendar}/ministries`, { ministryIds: [ministry.A] });
-        api(ADMIN_KEY, "POST", `${URL}/ministries/${ministry.A}/positions`, { name: `${PREFIX} Crew Lead`, teamId: firstTeam.A }, 201).then(
-            (resp) => {
-                position = resp.body.position.id;
-                api(ADMIN_KEY, "POST", `${URL}/positions/${position}/qualifications`, { personId: POOL_MEMBER }, [200, 201]);
-            },
-        );
-        grantScope(PERSON_COORDINATOR, "ministry", ministry.A);
-        grantScope(PERSON_COORDINATOR, "team", firstTeam.B);
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    setVersion(originalVersion);
-});
-
-// ── one event ──────────────────────────────────────────────────────────────
-
-describe("Volunteer v2 D24 — one ministry event through core", () => {
-    it("creates it as a coordinator without Add Events, owned by the ministry, on its own calendar, with the class linked", () => {
-        createEvents(
-            oneEvent("Workday", { description: "Bring gloves", linkedGroupId: adultClass }),
-            COORDINATOR_KEY,
-        ).then((resp) => {
-            expect(resp.body.events).to.have.length(1);
-            expect(resp.body.events[0].start).to.eq(`${isoDate(5)} 09:00:00`);
-            expect(resp.body.events[0].end).to.eq(`${isoDate(5)} 12:00:00`);
-            expect(resp.body, "no staffing was asked for").not.to.have.property("schedule");
-
-            const eventId = resp.body.events[0].id;
-            rowsTitled("Workday").then((rows) => {
-                expect(rows).to.have.length(1);
-                expect(Number(rows[0].event_ministry_id)).to.eq(ministry.A);
-                expect(rows[0].event_desc).to.eq("Bring gloves");
-                expect(Number(rows[0].event_type)).to.eq(CHURCH_SERVICE_TYPE);
-            });
-            pinsOf(eventId).then((pins) => expect(pins, "the ministry's own calendar by default").to.deep.eq([ownCalendar.A]));
-            audienceOf(eventId).then((groups) => expect(groups, "the Linked Group").to.deep.eq([adultClass]));
+describe("Volunteer v2 D24 — a ministry's events created through core from the ministry page, pinned by the D25 rule, optionally staffed in the same transaction; and the Calendar tab's list with staffing and headcount (D26)", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
+            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
         });
-    });
+        setVersion("v2");
+        cleanupFixtures();
 
-    it("pins to a church calendar opened to the ministry", () => {
-        createEvents(oneEvent("Granted", { calendarIds: [grantedCalendar, ownCalendar.A] }), COORDINATOR_KEY).then((resp) => {
-            pinsOf(resp.body.events[0].id).then((pins) =>
-                expect(pins).to.deep.eq([ownCalendar.A, grantedCalendar].sort((a, b) => a - b)),
+        for (const key of ["A", "B", "C"]) {
+            api(ADMIN_KEY, "POST", `${URL}/ministries`, { name: `${PREFIX} Ministry ${key}`, description: "D24 fixture", sundaySchool: true }, 201).then(
+                (resp) => {
+                    ministry[key] = resp.body.ministry.id;
+                    ownCalendar[key] = resp.body.calendarId;
+                    api(ADMIN_KEY, "GET", `${URL}/ministries/${ministry[key]}`).then((detail) => {
+                        firstTeam[key] = detail.body.teams[0].id;
+                    });
+                },
             );
+        }
+
+        api(ADMIN_KEY, "POST", "/api/calendars", {
+            Name: `${PREFIX} Bible Classes`,
+            ForegroundColor: "#FFFFFF",
+            BackgroundColor: "#1565C0",
+        }).then((resp) => {
+            grantedCalendar = resp.body.Id;
+        });
+
+        makeGroup("Adult Class", SUNDAY_SCHOOL_GROUP_TYPE).then((id) => {
+            adultClass = id;
+        });
+        makeGroup("Faith City", SUNDAY_SCHOOL_GROUP_TYPE).then((id) => {
+            faithCity = id;
+        });
+
+        cy.then(() => {
+            api(ADMIN_KEY, "PUT", `/api/calendars/${grantedCalendar}/ministries`, { ministryIds: [ministry.A] });
+            api(ADMIN_KEY, "POST", `${URL}/ministries/${ministry.A}/positions`, { name: `${PREFIX} Crew Lead`, teamId: firstTeam.A }, 201).then(
+                (resp) => {
+                    position = resp.body.position.id;
+                    api(ADMIN_KEY, "POST", `${URL}/positions/${position}/qualifications`, { personId: POOL_MEMBER }, [200, 201]);
+                },
+            );
+            grantScope(PERSON_COORDINATOR, "ministry", ministry.A);
+            grantScope(PERSON_COORDINATOR, "team", firstTeam.B);
         });
     });
 
-    it("refuses a church calendar not opened to the ministry, naming it, and creates nothing", () => {
-        createEvents(oneEvent("Public refused", { calendarIds: [ownCalendar.A, PUBLIC_CALENDAR] }), COORDINATOR_KEY, 403).then(
-            (resp) => {
-                expect(resp.body.message).to.contain("Public Calendar");
-            },
-        );
-        rowsTitled("Public refused").should("have.length", 0);
+    after(() => {
+        cleanupFixtures();
+        setVersion(originalVersion);
     });
 
-    it("refuses another ministry's own calendar", () => {
-        createEvents(oneEvent("Other own refused", { calendarIds: [ownCalendar.B] }), COORDINATOR_KEY, 403);
-        rowsTitled("Other own refused").should("have.length", 0);
-    });
+    // ── one event ──────────────────────────────────────────────────────────────
 
-    it("lets Add Events pin anywhere", () => {
-        createEvents(oneEvent("Admin public", { calendarIds: [PUBLIC_CALENDAR] })).then((resp) => {
-            pinsOf(resp.body.events[0].id).then((pins) => expect(pins).to.deep.eq([PUBLIC_CALENDAR]));
+    describe("Volunteer v2 D24 — one ministry event through core", () => {
+        it("creates it as a coordinator without Add Events, owned by the ministry, on its own calendar, with the class linked", () => {
+            createEvents(
+                oneEvent("Workday", { description: "Bring gloves", linkedGroupId: adultClass }),
+                COORDINATOR_KEY,
+            ).then((resp) => {
+                expect(resp.body.events).to.have.length(1);
+                expect(resp.body.events[0].start).to.eq(`${isoDate(5)} 09:00:00`);
+                expect(resp.body.events[0].end).to.eq(`${isoDate(5)} 12:00:00`);
+                expect(resp.body, "no staffing was asked for").not.to.have.property("schedule");
+
+                const eventId = resp.body.events[0].id;
+                rowsTitled("Workday").then((rows) => {
+                    expect(rows).to.have.length(1);
+                    expect(Number(rows[0].event_ministry_id)).to.eq(ministry.A);
+                    expect(rows[0].event_desc).to.eq("Bring gloves");
+                    expect(Number(rows[0].event_type)).to.eq(CHURCH_SERVICE_TYPE);
+                });
+                pinsOf(eventId).then((pins) => expect(pins, "the ministry's own calendar by default").to.deep.eq([ownCalendar.A]));
+                audienceOf(eventId).then((groups) => expect(groups, "the Linked Group").to.deep.eq([adultClass]));
+            });
+        });
+
+        it("pins to a church calendar opened to the ministry", () => {
+            createEvents(oneEvent("Granted", { calendarIds: [grantedCalendar, ownCalendar.A] }), COORDINATOR_KEY).then((resp) => {
+                pinsOf(resp.body.events[0].id).then((pins) =>
+                    expect(pins).to.deep.eq([ownCalendar.A, grantedCalendar].sort((a, b) => a - b)),
+                );
+            });
+        });
+
+        it("refuses a church calendar not opened to the ministry, naming it, and creates nothing", () => {
+            createEvents(oneEvent("Public refused", { calendarIds: [ownCalendar.A, PUBLIC_CALENDAR] }), COORDINATOR_KEY, 403).then(
+                (resp) => {
+                    expect(resp.body.message).to.contain("Public Calendar");
+                },
+            );
+            rowsTitled("Public refused").should("have.length", 0);
+        });
+
+        it("refuses another ministry's own calendar", () => {
+            createEvents(oneEvent("Other own refused", { calendarIds: [ownCalendar.B] }), COORDINATOR_KEY, 403);
+            rowsTitled("Other own refused").should("have.length", 0);
+        });
+
+        it("lets Add Events pin anywhere", () => {
+            createEvents(oneEvent("Admin public", { calendarIds: [PUBLIC_CALENDAR] })).then((resp) => {
+                pinsOf(resp.body.events[0].id).then((pins) => expect(pins).to.deep.eq([PUBLIC_CALENDAR]));
+            });
         });
     });
-});
 
-// ── a series ───────────────────────────────────────────────────────────────
+    // ── a series ───────────────────────────────────────────────────────────────
 
-describe("Volunteer v2 D24 — a series through the repeat engine", () => {
-    it("creates one event per matching weekday inside the range, every one owned by the ministry", () => {
-        const dow = WEEKDAYS[localDate(3).getDay()];
-        const expected = weekdaysBetween(dow, 1, 60);
+    describe("Volunteer v2 D24 — a series through the repeat engine", () => {
+        it("creates one event per matching weekday inside the range, every one owned by the ministry", () => {
+            const dow = WEEKDAYS[localDate(3).getDay()];
+            const expected = weekdaysBetween(dow, 1, 60);
 
-        createEvents(weekly("Weekly Class", dow, 1, 60), COORDINATOR_KEY).then((resp) => {
-            expect(resp.body.events.map((e) => e.start.slice(0, 10))).to.deep.eq(expected);
-            for (const event of resp.body.events) {
-                expect(event.start.slice(11)).to.eq("09:30:00");
-                expect(event.end.slice(11)).to.eq("10:30:00");
-            }
+            createEvents(weekly("Weekly Class", dow, 1, 60), COORDINATOR_KEY).then((resp) => {
+                expect(resp.body.events.map((e) => e.start.slice(0, 10))).to.deep.eq(expected);
+                for (const event of resp.body.events) {
+                    expect(event.start.slice(11)).to.eq("09:30:00");
+                    expect(event.end.slice(11)).to.eq("10:30:00");
+                }
+            });
+            rowsTitled("Weekly Class").then((rows) => {
+                expect(rows).to.have.length(expected.length);
+                for (const row of rows) {
+                    expect(Number(row.event_ministry_id)).to.eq(ministry.A);
+                }
+                pinsOf(rows[0].event_id).then((pins) => expect(pins).to.deep.eq([ownCalendar.A]));
+            });
         });
-        rowsTitled("Weekly Class").then((rows) => {
-            expect(rows).to.have.length(expected.length);
-            for (const row of rows) {
-                expect(Number(row.event_ministry_id)).to.eq(ministry.A);
-            }
-            pinsOf(rows[0].event_id).then((pins) => expect(pins).to.deep.eq([ownCalendar.A]));
+
+        it("puts a monthly day the month lacks on its last day", () => {
+            createEvents(
+                {
+                    ...weekly("Monthly", "Sunday", 1, 150),
+                    recurrence: { type: "monthly", dom: 31 },
+                },
+                COORDINATOR_KEY,
+            ).then((resp) => {
+                expect(resp.body.events.length).to.be.within(4, 6);
+                for (const event of resp.body.events) {
+                    const d = new Date(`${event.start.slice(0, 10)}T12:00:00`);
+                    const lastDay = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+                    expect(d.getDate(), event.start).to.eq(lastDay);
+                }
+            });
+        });
+
+        it("refuses a series over the repeat engine's cap and creates nothing", () => {
+            createEvents(weekly("Too Many", "Sunday", 1, 8 * 365), COORDINATOR_KEY, 400).then((resp) => {
+                expect(resp.body.message).to.contain(String(MAX_SERIES));
+            });
+            rowsTitled("Too Many").should("have.length", 0);
+        });
+
+        it("refuses a recurrence that finds no date in the range", () => {
+            const outside = isoDate(40).slice(5);
+            createEvents(
+                { ...weekly("No Dates", "Sunday", 1, 10), recurrence: { type: "yearly", doy: outside } },
+                COORDINATOR_KEY,
+                400,
+            );
+            rowsTitled("No Dates").should("have.length", 0);
         });
     });
 
-    it("puts a monthly day the month lacks on its last day", () => {
-        createEvents(
-            {
-                ...weekly("Monthly", "Sunday", 1, 150),
-                recurrence: { type: "monthly", dom: 31 },
-            },
-            COORDINATOR_KEY,
-        ).then((resp) => {
-            expect(resp.body.events.length).to.be.within(4, 6);
-            for (const event of resp.body.events) {
-                const d = new Date(`${event.start.slice(0, 10)}T12:00:00`);
-                const lastDay = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
-                expect(d.getDate(), event.start).to.eq(lastDay);
-            }
+    // ── staffing in the same transaction ───────────────────────────────────────
+
+    describe("Volunteer v2 D24 — staffing the new events", () => {
+        const staff = (overrides = {}) => ({
+            teamId: firstTeam.A,
+            requirements: [{ positionId: position, minCount: 1, maxCount: 1 }],
+            ...overrides,
         });
-    });
 
-    it("refuses a series over the repeat engine's cap and creates nothing", () => {
-        createEvents(weekly("Too Many", "Sunday", 1, 8 * 365), COORDINATOR_KEY, 400).then((resp) => {
-            expect(resp.body.message).to.contain(String(MAX_SERIES));
-        });
-        rowsTitled("Too Many").should("have.length", 0);
-    });
-
-    it("refuses a recurrence that finds no date in the range", () => {
-        const outside = isoDate(40).slice(5);
-        createEvents(
-            { ...weekly("No Dates", "Sunday", 1, 10), recurrence: { type: "yearly", doy: outside } },
-            COORDINATOR_KEY,
-            400,
-        );
-        rowsTitled("No Dates").should("have.length", 0);
-    });
-});
-
-// ── staffing in the same transaction ───────────────────────────────────────
-
-describe("Volunteer v2 D24 — staffing the new events", () => {
-    const staff = (overrides = {}) => ({
-        teamId: firstTeam.A,
-        requirements: [{ positionId: position, minCount: 1, maxCount: 1 }],
-        ...overrides,
-    });
-
-    it("staffs a class-linked series in class mode, generates its occurrences and assigns the defaults", () => {
-        createEvents(
-            weekly("Faith City", "Sunday", 1, 45, {
-                linkedGroupId: faithCity,
-                staff: staff({
-                    startOffsetMinutes: -30,
-                    defaults: [{ positionId: position, personId: POOL_MEMBER, accepted: true }],
+        it("staffs a class-linked series in class mode, generates its occurrences and assigns the defaults", () => {
+            createEvents(
+                weekly("Faith City", "Sunday", 1, 45, {
+                    linkedGroupId: faithCity,
+                    staff: staff({
+                        startOffsetMinutes: -30,
+                        defaults: [{ positionId: position, personId: POOL_MEMBER, accepted: true }],
+                    }),
                 }),
-            }),
-            COORDINATOR_KEY,
-        ).then((resp) => {
-            const eventIds = resp.body.events.map((e) => e.id);
-            const schedule = resp.body.schedule;
-            expect(schedule.linkMode).to.eq("class");
-            expect(schedule.groupId).to.eq(faithCity);
-            expect(schedule.teamId).to.eq(firstTeam.A);
-            expect(schedule.startOffsetMinutes).to.eq(-30);
-            expect(schedule.windowStart).to.eq(isoDate(1));
-            expect(schedule.windowEnd).to.eq(isoDate(45));
-            expect(resp.body.occurrences.map((o) => o.eventId)).to.have.members(eventIds);
-            expect(resp.body.assigned).to.eq(eventIds.length);
+                COORDINATOR_KEY,
+            ).then((resp) => {
+                const eventIds = resp.body.events.map((e) => e.id);
+                const schedule = resp.body.schedule;
+                expect(schedule.linkMode).to.eq("class");
+                expect(schedule.groupId).to.eq(faithCity);
+                expect(schedule.teamId).to.eq(firstTeam.A);
+                expect(schedule.startOffsetMinutes).to.eq(-30);
+                expect(schedule.windowStart).to.eq(isoDate(1));
+                expect(schedule.windowEnd).to.eq(isoDate(45));
+                expect(resp.body.occurrences.map((o) => o.eventId)).to.have.members(eventIds);
+                expect(resp.body.assigned).to.eq(eventIds.length);
 
-            dbOk(
-                `SELECT vasg_Status AS status FROM volunteer_assignment_vasg vasg
+                dbOk(
+                    `SELECT vasg_Status AS status FROM volunteer_assignment_vasg vasg
                    JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
                   WHERE vocc.vocc_vsch_ID = ? AND vasg.vasg_per_ID = ?`,
-                [schedule.id, POOL_MEMBER],
-            ).then((rows) => {
-                expect(rows).to.have.length(eventIds.length);
-                expect(rows.every((r) => r.status === "accepted")).to.eq(true);
+                    [schedule.id, POOL_MEMBER],
+                ).then((rows) => {
+                    expect(rows).to.have.length(eventIds.length);
+                    expect(rows.every((r) => r.status === "accepted")).to.eq(true);
+                });
             });
         });
-    });
 
-    it("staffs a series with no class in ministry mode narrowed to its title", () => {
-        createEvents(
-            weekly("Mowing", "Saturday", 1, 30, {
-                staff: staff({ defaults: [{ positionId: position, personId: POOL_MEMBER, accepted: false }] }),
-            }),
-            COORDINATOR_KEY,
-        ).then((resp) => {
-            expect(resp.body.schedule.linkMode).to.eq("ministry");
-            expect(resp.body.schedule.titleFilter).to.eq(`${PREFIX} Mowing`);
-            expect(resp.body.occurrences).to.have.length(resp.body.events.length);
-            expect(resp.body.assigned).to.eq(resp.body.events.length);
-        });
-    });
-
-    it("staffs one event through Staff this event", () => {
-        createEvents(oneEvent("Single Staffed", { date: isoDate(6), staff: staff() }), COORDINATOR_KEY).then((resp) => {
-            expect(resp.body.schedule.linkMode).to.eq("event");
-            expect(resp.body.schedule.oneOff).to.eq(true);
-            expect(resp.body.schedule.eventId).to.eq(resp.body.events[0].id);
-            expect(resp.body.occurrences).to.have.length(1);
-            expect(resp.body.occurrences[0].eventId).to.eq(resp.body.events[0].id);
-        });
-    });
-
-    it("leaves no event behind when the staffing is refused", () => {
-        createEvents(weekly("Rollback Team", "Sunday", 1, 30, { staff: staff({ teamId: firstTeam.B }) }), COORDINATOR_KEY, 400);
-        rowsTitled("Rollback Team").should("have.length", 0);
-
-        createEvents(
-            weekly("Rollback Position", "Sunday", 1, 30, {
-                staff: staff({ requirements: [{ positionId: 999999, minCount: 1 }] }),
-            }),
-            COORDINATOR_KEY,
-            400,
-        );
-        rowsTitled("Rollback Position").should("have.length", 0);
-
-        createEvents(
-            weekly("Rollback Default", "Sunday", 1, 30, {
-                staff: staff({ defaults: [{ positionId: position, personId: PERSON_COORDINATOR, accepted: true }] }),
-            }),
-            COORDINATOR_KEY,
-            [400, 403],
-        );
-        rowsTitled("Rollback Default").should("have.length", 0);
-
-        createEvents(oneEvent("Rollback Past", { date: isoDate(-2), staff: staff() }), COORDINATOR_KEY, 400);
-        rowsTitled("Rollback Past").should("have.length", 0);
-        dbOk(
-            `SELECT COUNT(*) AS n FROM volunteer_schedule_vsch WHERE vsch_Name LIKE ?`,
-            [`${PREFIX} Rollback%`],
-        ).then((rows) => expect(Number(rows[0].n), "no schedule either").to.eq(0));
-    });
-});
-
-// ── authorization ──────────────────────────────────────────────────────────
-
-describe("Volunteer v2 D24 — who may create a ministry's events", () => {
-    it("refuses the coordinator of another ministry", () => {
-        createEvents(oneEvent("Other Ministry"), COORDINATOR_KEY, 403, "C");
-        rowsTitled("Other Ministry").should("have.length", 0);
-    });
-
-    it("refuses a team leader of the ministry", () => {
-        createEvents(oneEvent("Team Leader", { calendarIds: [ownCalendar.B] }), COORDINATOR_KEY, 403, "B");
-        rowsTitled("Team Leader").should("have.length", 0);
-    });
-
-    it("refuses a self-service login even with a ministry scope", () => {
-        grantScope(PERSON_SELFEDIT, "team", firstTeam.A);
-        createEvents(oneEvent("Self Service"), SELFEDIT_KEY, 403);
-        grantScope(PERSON_SELFEDIT, "ministry", ministry.A);
-        createEvents(oneEvent("Self Service"), SELFEDIT_KEY, 403).then((resp) => {
-            expect(resp.body.message).to.eq("Only a coordinator of this ministry may create its events");
-        });
-        rowsTitled("Self Service").should("have.length", 0);
-        dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [PERSON_SELFEDIT]);
-    });
-
-    it("is closed while the rollout is v1", () => {
-        setVersion("v1");
-        createEvents(oneEvent("Rollout V1"), ADMIN_KEY, 403);
-        setVersion("v2");
-        rowsTitled("Rollout V1").should("have.length", 0);
-    });
-
-    it("needs a login", () => {
-        cy.request({ method: "POST", url: eventsUrl("A"), body: oneEvent("No Login"), failOnStatusCode: false }).then(
-            (resp) => expect(resp.status).to.eq(401),
-        );
-    });
-
-    it("answers 404 for an unknown ministry", () => {
-        api(ADMIN_KEY, "POST", `${URL}/ministries/999999/events`, oneEvent("Unknown"), 404);
-    });
-});
-
-// ── validation ─────────────────────────────────────────────────────────────
-
-describe("Volunteer v2 D24 — validation", () => {
-    const cases = [
-        ["no title", { title: "" }],
-        ["no event type", { eventTypeId: undefined }],
-        ["an unknown event type", { eventTypeId: 999999 }],
-        ["a malformed time", { startTime: "25:00" }],
-        ["an end before the start", { startTime: "12:00", endTime: "09:00" }],
-        ["no date", { date: undefined }],
-        ["a malformed date", { date: "2026-13-01" }],
-        ["calendarIds that are not a list", { calendarIds: "1" }],
-        ["an unknown calendar", { calendarIds: [999999] }],
-        ["an unknown class", { linkedGroupId: 999999 }],
-        ["a malformed staffing section", { staff: "yes" }],
-        ["staffing without a team", { staff: { requirements: [] } }],
-        ["an unknown recurrence", { date: undefined, recurrence: { type: "daily" }, rangeStart: isoDate(1), rangeEnd: isoDate(9) }],
-        ["weekly without a day", { date: undefined, recurrence: { type: "weekly" }, rangeStart: isoDate(1), rangeEnd: isoDate(9) }],
-        ["monthly on day 32", { date: undefined, recurrence: { type: "monthly", dom: 32 }, rangeStart: isoDate(1), rangeEnd: isoDate(90) }],
-        ["yearly on a day that never exists", { date: undefined, recurrence: { type: "yearly", doy: "02-30" }, rangeStart: isoDate(1), rangeEnd: isoDate(400) }],
-        ["a range that ends before it starts", { date: undefined, recurrence: { type: "weekly", dow: "Sunday" }, rangeStart: isoDate(9), rangeEnd: isoDate(1) }],
-        ["a series with no range", { date: undefined, recurrence: { type: "weekly", dow: "Sunday" } }],
-    ];
-
-    for (const [label, overrides] of cases) {
-        it(`answers 400 for ${label}`, () => {
-            const body = { ...oneEvent("Invalid"), ...overrides };
-            for (const key of Object.keys(body)) {
-                if (body[key] === undefined) {
-                    delete body[key];
-                }
-            }
-            createEvents(body, COORDINATOR_KEY, 400).then((resp) => {
-                expect(resp.body.success).to.eq(false);
-                expect(resp.body.message).to.be.a("string").and.not.be.empty;
+        it("staffs a series with no class in ministry mode narrowed to its title", () => {
+            createEvents(
+                weekly("Mowing", "Saturday", 1, 30, {
+                    staff: staff({ defaults: [{ positionId: position, personId: POOL_MEMBER, accepted: false }] }),
+                }),
+                COORDINATOR_KEY,
+            ).then((resp) => {
+                expect(resp.body.schedule.linkMode).to.eq("ministry");
+                expect(resp.body.schedule.titleFilter).to.eq(`${PREFIX} Mowing`);
+                expect(resp.body.occurrences).to.have.length(resp.body.events.length);
+                expect(resp.body.assigned).to.eq(resp.body.events.length);
             });
         });
-    }
 
-    it("created none of them", () => {
-        rowsTitled("Invalid").should("have.length", 0);
-    });
-});
-
-// ── the Calendar tab's list ────────────────────────────────────────────────
-
-describe("Volunteer v2 D24 — GET the ministry's events", () => {
-    let pastEventId = 0;
-    let gapEventId = 0;
-    let unplannedEventId = 0;
-
-    before(() => {
-        createEvents(
-            oneEvent("Gap", {
-                date: isoDate(8),
-                staff: { teamId: firstTeam.A, requirements: [{ positionId: position, minCount: 2, maxCount: 2 }] },
-            }),
-        ).then((resp) => {
-            gapEventId = resp.body.events[0].id;
+        it("staffs one event through Staff this event", () => {
+            createEvents(oneEvent("Single Staffed", { date: isoDate(6), staff: staff() }), COORDINATOR_KEY).then((resp) => {
+                expect(resp.body.schedule.linkMode).to.eq("event");
+                expect(resp.body.schedule.oneOff).to.eq(true);
+                expect(resp.body.schedule.eventId).to.eq(resp.body.events[0].id);
+                expect(resp.body.occurrences).to.have.length(1);
+                expect(resp.body.occurrences[0].eventId).to.eq(resp.body.events[0].id);
+            });
         });
-        createEvents(oneEvent("Unplanned", { date: isoDate(9), staff: { teamId: firstTeam.A, requirements: [] } })).then(
-            (resp) => {
-                unplannedEventId = resp.body.events[0].id;
-            },
-        );
-        createEvents(oneEvent("Past", { date: isoDate(-3), linkedGroupId: adultClass })).then((resp) => {
-            pastEventId = resp.body.events[0].id;
+
+        it("leaves no event behind when the staffing is refused", () => {
+            createEvents(weekly("Rollback Team", "Sunday", 1, 30, { staff: staff({ teamId: firstTeam.B }) }), COORDINATOR_KEY, 400);
+            rowsTitled("Rollback Team").should("have.length", 0);
+
+            createEvents(
+                weekly("Rollback Position", "Sunday", 1, 30, {
+                    staff: staff({ requirements: [{ positionId: 999999, minCount: 1 }] }),
+                }),
+                COORDINATOR_KEY,
+                400,
+            );
+            rowsTitled("Rollback Position").should("have.length", 0);
+
+            createEvents(
+                weekly("Rollback Default", "Sunday", 1, 30, {
+                    staff: staff({ defaults: [{ positionId: position, personId: PERSON_COORDINATOR, accepted: true }] }),
+                }),
+                COORDINATOR_KEY,
+                [400, 403],
+            );
+            rowsTitled("Rollback Default").should("have.length", 0);
+
+            createEvents(oneEvent("Rollback Past", { date: isoDate(-2), staff: staff() }), COORDINATOR_KEY, 400);
+            rowsTitled("Rollback Past").should("have.length", 0);
             dbOk(
-                `INSERT INTO eventcounts_evtcnt (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
-                 VALUES (?, 1, 'Total', 30, ''), (?, 2, 'Members', 12, '')`,
-                [pastEventId, pastEventId],
+                `SELECT COUNT(*) AS n FROM volunteer_schedule_vsch WHERE vsch_Name LIKE ?`,
+                [`${PREFIX} Rollback%`],
+            ).then((rows) => expect(Number(rows[0].n), "no schedule either").to.eq(0));
+        });
+    });
+
+    // ── authorization ──────────────────────────────────────────────────────────
+
+    describe("Volunteer v2 D24 — who may create a ministry's events", () => {
+        it("refuses the coordinator of another ministry", () => {
+            createEvents(oneEvent("Other Ministry"), COORDINATOR_KEY, 403, "C");
+            rowsTitled("Other Ministry").should("have.length", 0);
+        });
+
+        it("refuses a team leader of the ministry", () => {
+            createEvents(oneEvent("Team Leader", { calendarIds: [ownCalendar.B] }), COORDINATOR_KEY, 403, "B");
+            rowsTitled("Team Leader").should("have.length", 0);
+        });
+
+        it("refuses a self-service login even with a ministry scope", () => {
+            grantScope(PERSON_SELFEDIT, "team", firstTeam.A);
+            createEvents(oneEvent("Self Service"), SELFEDIT_KEY, 403);
+            grantScope(PERSON_SELFEDIT, "ministry", ministry.A);
+            createEvents(oneEvent("Self Service"), SELFEDIT_KEY, 403).then((resp) => {
+                expect(resp.body.message).to.eq("Only a coordinator of this ministry may create its events");
+            });
+            rowsTitled("Self Service").should("have.length", 0);
+            dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [PERSON_SELFEDIT]);
+        });
+
+        it("is closed while the rollout is v1", () => {
+            setVersion("v1");
+            createEvents(oneEvent("Rollout V1"), ADMIN_KEY, 403);
+            setVersion("v2");
+            rowsTitled("Rollout V1").should("have.length", 0);
+        });
+
+        it("needs a login", () => {
+            cy.request({ method: "POST", url: eventsUrl("A"), body: oneEvent("No Login"), failOnStatusCode: false }).then(
+                (resp) => expect(resp.status).to.eq(401),
             );
         });
-    });
 
-    it("lists the upcoming events the ministry owns, soonest first, with pins, class and per-team staffing", () => {
-        api(COORDINATOR_KEY, "GET", eventsUrl("A")).then((resp) => {
-            const events = resp.body.events;
-            expect(resp.body.past).to.eq(false);
-            expect(resp.body.from).to.eq(isoDate(0));
-            const starts = events.map((e) => e.start);
-            expect(starts).to.deep.eq([...starts].sort());
-            expect(events.some((e) => e.id === pastEventId), "the past is not listed").to.eq(false);
-
-            const titled = (title) => events.filter((e) => e.title === `${PREFIX} ${title}`);
-
-            const workday = titled("Workday")[0];
-            expect(workday.calendars).to.deep.eq([{ id: ownCalendar.A, name: `${PREFIX} Ministry A` }]);
-            expect(workday.linkedGroups).to.deep.eq([{ id: adultClass, name: `${PREFIX} Adult Class` }]);
-            expect(workday.staffing).to.deep.eq([]);
-            expect(workday.eventTypeName).to.eq("Church Service");
-
-            for (const event of titled("Faith City")) {
-                expect(event.staffing).to.have.length(1);
-                expect(event.staffing[0]).to.include({ teamId: firstTeam.A, status: "filled", needed: 1, filled: 1, gap: 0 });
-                expect(event.staffing[0].occurrenceIds).to.have.length(1);
-            }
-            for (const event of titled("Mowing")) {
-                expect(event.staffing[0]).to.include({ status: "pending", filled: 1, pending: 1 });
-            }
-
-            const gap = events.find((e) => e.id === gapEventId);
-            expect(gap.staffing[0]).to.include({ status: "gap", needed: 2, filled: 0, gap: 2 });
-            const unplanned = events.find((e) => e.id === unplannedEventId);
-            expect(unplanned.staffing[0]).to.include({ status: "unplanned", requirementCount: 0 });
-
-            expect(events.every((e) => e.title.startsWith(`${PREFIX}`)), "only this ministry's events").to.eq(true);
+        it("answers 404 for an unknown ministry", () => {
+            api(ADMIN_KEY, "POST", `${URL}/ministries/999999/events`, oneEvent("Unknown"), 404);
         });
     });
 
-    it("lists past events newest first with their headcount total", () => {
-        api(COORDINATOR_KEY, "GET", `${eventsUrl("A")}?past=1`).then((resp) => {
-            expect(resp.body.past).to.eq(true);
-            expect(resp.body.to).to.eq(isoDate(-1));
-            const past = resp.body.events.find((e) => e.id === pastEventId);
-            expect(past.headcount).to.deep.eq({ recorded: true, total: 42 });
-            const starts = resp.body.events.map((e) => e.start);
-            expect(starts).to.deep.eq([...starts].sort().reverse());
-        });
-        api(COORDINATOR_KEY, "GET", eventsUrl("A")).then((resp) => {
-            const workday = resp.body.events.find((e) => e.title === `${PREFIX} Workday`);
-            expect(workday.headcount).to.deep.eq({ recorded: false, total: 0 });
+    // ── validation ─────────────────────────────────────────────────────────────
+
+    describe("Volunteer v2 D24 — validation", () => {
+        const cases = [
+            ["no title", { title: "" }],
+            ["no event type", { eventTypeId: undefined }],
+            ["an unknown event type", { eventTypeId: 999999 }],
+            ["a malformed time", { startTime: "25:00" }],
+            ["an end before the start", { startTime: "12:00", endTime: "09:00" }],
+            ["no date", { date: undefined }],
+            ["a malformed date", { date: "2026-13-01" }],
+            ["calendarIds that are not a list", { calendarIds: "1" }],
+            ["an unknown calendar", { calendarIds: [999999] }],
+            ["an unknown class", { linkedGroupId: 999999 }],
+            ["a malformed staffing section", { staff: "yes" }],
+            ["staffing without a team", { staff: { requirements: [] } }],
+            ["an unknown recurrence", { date: undefined, recurrence: { type: "daily" }, rangeStart: isoDate(1), rangeEnd: isoDate(9) }],
+            ["weekly without a day", { date: undefined, recurrence: { type: "weekly" }, rangeStart: isoDate(1), rangeEnd: isoDate(9) }],
+            ["monthly on day 32", { date: undefined, recurrence: { type: "monthly", dom: 32 }, rangeStart: isoDate(1), rangeEnd: isoDate(90) }],
+            ["yearly on a day that never exists", { date: undefined, recurrence: { type: "yearly", doy: "02-30" }, rangeStart: isoDate(1), rangeEnd: isoDate(400) }],
+            ["a range that ends before it starts", { date: undefined, recurrence: { type: "weekly", dow: "Sunday" }, rangeStart: isoDate(9), rangeEnd: isoDate(1) }],
+            ["a series with no range", { date: undefined, recurrence: { type: "weekly", dow: "Sunday" } }],
+        ];
+
+        for (const [label, overrides] of cases) {
+            it(`answers 400 for ${label}`, () => {
+                const body = { ...oneEvent("Invalid"), ...overrides };
+                for (const key of Object.keys(body)) {
+                    if (body[key] === undefined) {
+                        delete body[key];
+                    }
+                }
+                createEvents(body, COORDINATOR_KEY, 400).then((resp) => {
+                    expect(resp.body.success).to.eq(false);
+                    expect(resp.body.message).to.be.a("string").and.not.be.empty;
+                });
+            });
+        }
+
+        it("created none of them", () => {
+            rowsTitled("Invalid").should("have.length", 0);
         });
     });
 
-    it("refuses a malformed or inverted window", () => {
-        api(COORDINATOR_KEY, "GET", `${eventsUrl("A")}?from=soon`, null, 400);
-        api(COORDINATOR_KEY, "GET", `${eventsUrl("A")}?from=${isoDate(9)}&to=${isoDate(1)}`, null, 400);
-    });
+    // ── the Calendar tab's list ────────────────────────────────────────────────
 
-    it("is the ministry coordinator's: another ministry's coordinator and a team leader get 403", () => {
-        api(COORDINATOR_KEY, "GET", eventsUrl("C"), null, 403);
-        api(COORDINATOR_KEY, "GET", eventsUrl("B"), null, 403);
-        api(ADMIN_KEY, "GET", `${URL}/ministries/999999/events`, null, 404);
-    });
-});
+    describe("Volunteer v2 D24 — GET the ministry's events", () => {
+        let pastEventId = 0;
+        let gapEventId = 0;
+        let unplannedEventId = 0;
 
-// ── the dialog's Fill by default with ──────────────────────────────────────
-
-describe("Volunteer v2 D24 — who may fill a position of a schedule not made yet", () => {
-    it("lists the position's qualified people, annotated with the pool", () => {
-        api(COORDINATOR_KEY, "GET", `${URL}/positions/${position}/eligible`).then((resp) => {
-            const member = resp.body.people.find((p) => p.personId === POOL_MEMBER);
-            expect(member, "the qualified member").to.exist;
-            expect(member.inPool).to.eq(true);
+        before(() => {
+            createEvents(
+                oneEvent("Gap", {
+                    date: isoDate(8),
+                    staff: { teamId: firstTeam.A, requirements: [{ positionId: position, minCount: 2, maxCount: 2 }] },
+                }),
+            ).then((resp) => {
+                gapEventId = resp.body.events[0].id;
+            });
+            createEvents(oneEvent("Unplanned", { date: isoDate(9), staff: { teamId: firstTeam.A, requirements: [] } })).then(
+                (resp) => {
+                    unplannedEventId = resp.body.events[0].id;
+                },
+            );
+            createEvents(oneEvent("Past", { date: isoDate(-3), linkedGroupId: adultClass })).then((resp) => {
+                pastEventId = resp.body.events[0].id;
+                dbOk(
+                    `INSERT INTO eventcounts_evtcnt (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
+                 VALUES (?, 1, 'Total', 30, ''), (?, 2, 'Members', 12, '')`,
+                    [pastEventId, pastEventId],
+                );
+            });
         });
-        api(ADMIN_KEY, "GET", `${URL}/positions/999999/eligible`, null, 404);
+
+        it("lists the upcoming events the ministry owns, soonest first, with pins, class and per-team staffing", () => {
+            api(COORDINATOR_KEY, "GET", eventsUrl("A")).then((resp) => {
+                const events = resp.body.events;
+                expect(resp.body.past).to.eq(false);
+                expect(resp.body.from).to.eq(isoDate(0));
+                const starts = events.map((e) => e.start);
+                expect(starts).to.deep.eq([...starts].sort());
+                expect(events.some((e) => e.id === pastEventId), "the past is not listed").to.eq(false);
+
+                const titled = (title) => events.filter((e) => e.title === `${PREFIX} ${title}`);
+
+                const workday = titled("Workday")[0];
+                expect(workday.calendars).to.deep.eq([{ id: ownCalendar.A, name: `${PREFIX} Ministry A` }]);
+                expect(workday.linkedGroups).to.deep.eq([{ id: adultClass, name: `${PREFIX} Adult Class` }]);
+                expect(workday.staffing).to.deep.eq([]);
+                expect(workday.eventTypeName).to.eq("Church Service");
+
+                for (const event of titled("Faith City")) {
+                    expect(event.staffing).to.have.length(1);
+                    expect(event.staffing[0]).to.include({ teamId: firstTeam.A, status: "filled", needed: 1, filled: 1, gap: 0 });
+                    expect(event.staffing[0].occurrenceIds).to.have.length(1);
+                }
+                for (const event of titled("Mowing")) {
+                    expect(event.staffing[0]).to.include({ status: "pending", filled: 1, pending: 1 });
+                }
+
+                const gap = events.find((e) => e.id === gapEventId);
+                expect(gap.staffing[0]).to.include({ status: "gap", needed: 2, filled: 0, gap: 2 });
+                const unplanned = events.find((e) => e.id === unplannedEventId);
+                expect(unplanned.staffing[0]).to.include({ status: "unplanned", requirementCount: 0 });
+
+                expect(events.every((e) => e.title.startsWith(`${PREFIX}`)), "only this ministry's events").to.eq(true);
+            });
+        });
+
+        it("lists past events newest first with their headcount total", () => {
+            api(COORDINATOR_KEY, "GET", `${eventsUrl("A")}?past=1`).then((resp) => {
+                expect(resp.body.past).to.eq(true);
+                expect(resp.body.to).to.eq(isoDate(-1));
+                const past = resp.body.events.find((e) => e.id === pastEventId);
+                expect(past.headcount).to.deep.eq({ recorded: true, total: 42 });
+                const starts = resp.body.events.map((e) => e.start);
+                expect(starts).to.deep.eq([...starts].sort().reverse());
+            });
+            api(COORDINATOR_KEY, "GET", eventsUrl("A")).then((resp) => {
+                const workday = resp.body.events.find((e) => e.title === `${PREFIX} Workday`);
+                expect(workday.headcount).to.deep.eq({ recorded: false, total: 0 });
+            });
+        });
+
+        it("refuses a malformed or inverted window", () => {
+            api(COORDINATOR_KEY, "GET", `${eventsUrl("A")}?from=soon`, null, 400);
+            api(COORDINATOR_KEY, "GET", `${eventsUrl("A")}?from=${isoDate(9)}&to=${isoDate(1)}`, null, 400);
+        });
+
+        it("is the ministry coordinator's: another ministry's coordinator and a team leader get 403", () => {
+            api(COORDINATOR_KEY, "GET", eventsUrl("C"), null, 403);
+            api(COORDINATOR_KEY, "GET", eventsUrl("B"), null, 403);
+            api(ADMIN_KEY, "GET", `${URL}/ministries/999999/events`, null, 404);
+        });
+    });
+
+    // ── the dialog's Fill by default with ──────────────────────────────────────
+
+    describe("Volunteer v2 D24 — who may fill a position of a schedule not made yet", () => {
+        it("lists the position's qualified people, annotated with the pool", () => {
+            api(COORDINATOR_KEY, "GET", `${URL}/positions/${position}/eligible`).then((resp) => {
+                const member = resp.body.people.find((p) => p.personId === POOL_MEMBER);
+                expect(member, "the qualified member").to.exist;
+                expect(member.inPool).to.eq(true);
+            });
+            api(ADMIN_KEY, "GET", `${URL}/positions/999999/eligible`, null, 404);
+        });
     });
 });

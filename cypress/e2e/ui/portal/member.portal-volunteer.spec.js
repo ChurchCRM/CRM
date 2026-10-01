@@ -227,291 +227,293 @@ function seedPendingDoorAssignment() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    setVersion("v2");
-    cleanupFixtures();
+describe("Member Portal (MP6, #9867) — volunteering inside the portal", () => {
+    before(() => {
+        setVersion("v2");
+        cleanupFixtures();
 
-    adminApi("POST", `${VOLUNTEER_URL}/ministries`, {
-        name: `${PREFIX} Hospitality`,
-        description: "member portal volunteering fixture",
-    }, 201).then((resp) => {
-        ministryId = resp.body.ministry.id;
-    });
-
-    // D19: advertise the ministry, so the "I'd like to help" button has a card.
-    cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}`, {
-            helpWanted: true,
-            helpWantedText: HELP_WANTED_TEXT,
-        }, 200);
-    });
-
-    cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
-            name: `${PREFIX} Greeters`,
+        adminApi("POST", `${VOLUNTEER_URL}/ministries`, {
+            name: `${PREFIX} Hospitality`,
             description: "member portal volunteering fixture",
         }, 201).then((resp) => {
-            teamId = resp.body.team.id;
+            ministryId = resp.body.ministry.id;
         });
-    });
 
-    cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
-            name: `${PREFIX} Door`,
-            teamId,
-            order: 1,
-        }, 201).then((resp) => {
-            posDoor = resp.body.position.id;
+        // D19: advertise the ministry, so the "I'd like to help" button has a card.
+        cy.then(() => {
+            adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}`, {
+                helpWanted: true,
+                helpWantedText: HELP_WANTED_TEXT,
+            }, 200);
         });
-        adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
-            name: `${PREFIX} Coffee`,
-            teamId,
-            order: 2,
-        }, 201).then((resp) => {
-            posCoffee = resp.body.position.id;
-        });
-    });
 
-    cy.then(() => {
-        [PERSON_MEMBER, POOL_MEMBER_A].forEach((personId) => {
-            adminApi(
-                "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
-                null,
-                [200, 201],
-            );
+        cy.then(() => {
+            adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
+                name: `${PREFIX} Greeters`,
+                description: "member portal volunteering fixture",
+            }, 201).then((resp) => {
+                teamId = resp.body.team.id;
+            });
         });
-    });
 
-    cy.then(() => {
-        [posDoor, posCoffee].forEach((positionId) => {
+        cy.then(() => {
+            adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
+                name: `${PREFIX} Door`,
+                teamId,
+                order: 1,
+            }, 201).then((resp) => {
+                posDoor = resp.body.position.id;
+            });
+            adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
+                name: `${PREFIX} Coffee`,
+                teamId,
+                order: 2,
+            }, 201).then((resp) => {
+                posCoffee = resp.body.position.id;
+            });
+        });
+
+        cy.then(() => {
             [PERSON_MEMBER, POOL_MEMBER_A].forEach((personId) => {
                 adminApi(
                     "POST",
-                    `${VOLUNTEER_URL}/positions/${positionId}/qualifications`,
-                    { personId, notes: "" },
-                    201,
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                    null,
+                    [200, 201],
                 );
+            });
+        });
+
+        cy.then(() => {
+            [posDoor, posCoffee].forEach((positionId) => {
+                [PERSON_MEMBER, POOL_MEMBER_A].forEach((personId) => {
+                    adminApi(
+                        "POST",
+                        `${VOLUNTEER_URL}/positions/${positionId}/qualifications`,
+                        { personId, notes: "" },
+                        201,
+                    );
+                });
+            });
+        });
+
+        cy.then(() => {
+            seriesStart = isoDate(daysToNext(0));
+            seriesEnd = isoDate(daysToNext(0) + 14);
+            adminApi("POST", "/api/events/repeat", {
+                Title: EVENT_TITLE,
+                Type: CHURCH_SERVICE_TYPE,
+                StartTime: "10:30:00",
+                EndTime: "11:45:00",
+                RecurType: "weekly",
+                RecurDOW: "Sunday",
+                RangeStart: seriesStart,
+                RangeEnd: seriesEnd,
+            }, 200);
+        });
+
+        cy.then(() => {
+            adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`, {
+                name: `${PREFIX} Hospitality — Sunday`,
+                linkMode: "event_type",
+                eventTypeId: CHURCH_SERVICE_TYPE,
+                titleFilter: EVENT_TITLE,
+                windowStart: seriesStart,
+                teamId,
+            }, 201).then((resp) => {
+                scheduleId = resp.body.schedule.id;
+            });
+        });
+
+        cy.then(() => {
+            adminApi("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`, {
+                positionId: posDoor,
+                minCount: 1,
+                maxCount: 2,
+            }, [200, 201]);
+            adminApi("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`, {
+                positionId: posCoffee,
+                minCount: 1,
+                maxCount: 1,
+            }, [200, 201]);
+        });
+
+        cy.then(() => {
+            adminApi("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`, {
+                through: seriesEnd,
+            }, 200);
+        });
+
+        cy.then(() => {
+            adminApi(
+                "GET",
+                `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
+            ).then((resp) => {
+                occurrenceId = resp.body.occurrences[0].id;
             });
         });
     });
 
-    cy.then(() => {
-        seriesStart = isoDate(daysToNext(0));
-        seriesEnd = isoDate(daysToNext(0) + 14);
-        adminApi("POST", "/api/events/repeat", {
-            Title: EVENT_TITLE,
-            Type: CHURCH_SERVICE_TYPE,
-            StartTime: "10:30:00",
-            EndTime: "11:45:00",
-            RecurType: "weekly",
-            RecurDOW: "Sunday",
-            RangeStart: seriesStart,
-            RangeEnd: seriesEnd,
-        }, 200);
+    after(() => {
+        cleanupFixtures();
+        setVersion("v1");
     });
 
-    cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`, {
-            name: `${PREFIX} Hospitality — Sunday`,
-            linkMode: "event_type",
-            eventTypeId: CHURCH_SERVICE_TYPE,
-            titleFilter: EVENT_TITLE,
-            windowStart: seriesStart,
-            teamId,
-        }, 201).then((resp) => {
-            scheduleId = resp.body.schedule.id;
+    // ── getting there ──────────────────────────────────────────────────────────
+
+    describe("Member Portal — finding volunteering (#9867)", () => {
+        beforeEach(() => {
+            seedPendingDoorAssignment();
+            freshMemberLogin();
+        });
+
+        it("lands the member in the portal with a Volunteering entry in the nav", () => {
+            cy.url({ timeout: 10000 }).should("include", "/portal");
+
+            cy.get("#portal-nav").within(() => {
+                cy.get(`a[href$="${SCHEDULE_URL}"]`).should("exist").and("contain", "Volunteering");
+            });
+            assertNoAdminShell();
+        });
+
+        it("shows the next commitment on the home page's volunteering card", () => {
+            cy.get("#portal-volunteering-card", { timeout: 10000 }).should("exist");
+            // Filled from /api/ministries/me/assignments once the locales are ready.
+            cy.get("#portal-volunteering-next", { timeout: 20000 })
+                .should("be.visible")
+                .and("contain", `${PREFIX} Door`);
+            cy.get("#portal-volunteering-pending").should("be.visible");
+        });
+
+        it("opens the schedule from the nav, in the portal layout", () => {
+            cy.get("#portal-nav").find(`a[href$="${SCHEDULE_URL}"]`).click();
+
+            cy.url().should("include", SCHEDULE_URL);
+            cy.get("#volunteer-my-schedule").should("exist");
+            cy.get(".volunteer-assignment-card", { timeout: 20000 }).should(
+                "have.length.at.least",
+                1,
+            );
+            assertNoAdminShell();
+
+            // The two pages are one nav entry with a tab bar between them.
+            cy.get("#portal-volunteer-tab-schedule").should("have.class", "is-active");
+            cy.get("#portal-volunteer-tab-opportunities").should("not.have.class", "is-active");
+        });
+
+        it("moves between the two pages with the tab bar", () => {
+            cy.visit(SCHEDULE_URL);
+            cy.get("#portal-volunteer-tab-opportunities").click();
+
+            cy.url().should("include", OPPORTUNITIES_URL);
+            cy.get("#volunteer-opportunities").should("exist");
+            cy.get("#portal-volunteer-tab-opportunities").should("have.class", "is-active");
+
+            cy.get("#portal-volunteer-tab-schedule").click();
+            cy.url().should("include", SCHEDULE_URL);
         });
     });
 
-    cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`, {
-            positionId: posDoor,
-            minCount: 1,
-            maxCount: 2,
-        }, [200, 201]);
-        adminApi("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/requirements`, {
-            positionId: posCoffee,
-            minCount: 1,
-            maxCount: 1,
-        }, [200, 201]);
-    });
+    // ── the workflows, unchanged by the move ───────────────────────────────────
 
-    cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`, {
-            through: seriesEnd,
-        }, 200);
-    });
-
-    cy.then(() => {
-        adminApi(
-            "GET",
-            `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryId}`,
-        ).then((resp) => {
-            occurrenceId = resp.body.occurrences[0].id;
+    describe("Member Portal — volunteering workflows (#9867)", () => {
+        beforeEach(() => {
+            seedPendingDoorAssignment();
+            freshMemberLogin();
         });
-    });
-});
 
-after(() => {
-    cleanupFixtures();
-    setVersion("v1");
-});
+        it("responds to an assignment from inside the portal", () => {
+            cy.visit(SCHEDULE_URL);
+            cy.get(".volunteer-assignment-card", { timeout: 20000 })
+                .first()
+                .find(".volunteer-accept")
+                .click();
 
-// ── getting there ──────────────────────────────────────────────────────────
+            cy.get(".volunteer-assignment-card")
+                .first()
+                .find(".volunteer-card-status")
+                .should("contain.text", "Going");
 
-describe("Member Portal — finding volunteering (#9867)", () => {
-    beforeEach(() => {
-        seedPendingDoorAssignment();
-        freshMemberLogin();
-    });
-
-    it("lands the member in the portal with a Volunteering entry in the nav", () => {
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-
-        cy.get("#portal-nav").within(() => {
-            cy.get(`a[href$="${SCHEDULE_URL}"]`).should("exist").and("contain", "Volunteering");
+            // …and the server agrees, not just the card.
+            adminApi(
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceId}/staffing`,
+                null,
+                200,
+            ).then((resp) => {
+                const rows = resp.body.requirements.flatMap((r) => r.assignments ?? []);
+                const mine = rows.find((a) => a.personId === PERSON_MEMBER);
+                expect(mine.status).to.eq("accepted");
+            });
         });
-        assertNoAdminShell();
-    });
 
-    it("shows the next commitment on the home page's volunteering card", () => {
-        cy.get("#portal-volunteering-card", { timeout: 10000 }).should("exist");
-        // Filled from /api/ministries/me/assignments once the locales are ready.
-        cy.get("#portal-volunteering-next", { timeout: 20000 })
-            .should("be.visible")
-            .and("contain", `${PREFIX} Door`);
-        cy.get("#portal-volunteering-pending").should("be.visible");
-    });
+        it("declines behind a bootbox prompt — the dialog works under the portal layout", () => {
+            // bootbox is an admin-shell script; the portal layout loads it too, or
+            // this button would do nothing at all (#9867).
+            cy.visit(SCHEDULE_URL);
+            cy.get(".volunteer-assignment-card", { timeout: 20000 })
+                .first()
+                .find(".volunteer-decline")
+                .click();
 
-    it("opens the schedule from the nav, in the portal layout", () => {
-        cy.get("#portal-nav").find(`a[href$="${SCHEDULE_URL}"]`).click();
+            cy.get(".bootbox").should("be.visible");
+            cy.get(".bootbox input").type("Away that weekend");
+            cy.get(".bootbox .btn-primary").click();
 
-        cy.url().should("include", SCHEDULE_URL);
-        cy.get("#volunteer-my-schedule").should("exist");
-        cy.get(".volunteer-assignment-card", { timeout: 20000 }).should(
-            "have.length.at.least",
-            1,
-        );
-        assertNoAdminShell();
-
-        // The two pages are one nav entry with a tab bar between them.
-        cy.get("#portal-volunteer-tab-schedule").should("have.class", "is-active");
-        cy.get("#portal-volunteer-tab-opportunities").should("not.have.class", "is-active");
-    });
-
-    it("moves between the two pages with the tab bar", () => {
-        cy.visit(SCHEDULE_URL);
-        cy.get("#portal-volunteer-tab-opportunities").click();
-
-        cy.url().should("include", OPPORTUNITIES_URL);
-        cy.get("#volunteer-opportunities").should("exist");
-        cy.get("#portal-volunteer-tab-opportunities").should("have.class", "is-active");
-
-        cy.get("#portal-volunteer-tab-schedule").click();
-        cy.url().should("include", SCHEDULE_URL);
-    });
-});
-
-// ── the workflows, unchanged by the move ───────────────────────────────────
-
-describe("Member Portal — volunteering workflows (#9867)", () => {
-    beforeEach(() => {
-        seedPendingDoorAssignment();
-        freshMemberLogin();
-    });
-
-    it("responds to an assignment from inside the portal", () => {
-        cy.visit(SCHEDULE_URL);
-        cy.get(".volunteer-assignment-card", { timeout: 20000 })
-            .first()
-            .find(".volunteer-accept")
-            .click();
-
-        cy.get(".volunteer-assignment-card")
-            .first()
-            .find(".volunteer-card-status")
-            .should("contain.text", "Going");
-
-        // …and the server agrees, not just the card.
-        adminApi(
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceId}/staffing`,
-            null,
-            200,
-        ).then((resp) => {
-            const rows = resp.body.requirements.flatMap((r) => r.assignments ?? []);
-            const mine = rows.find((a) => a.personId === PERSON_MEMBER);
-            expect(mine.status).to.eq("accepted");
+            cy.get(".volunteer-assignment-card")
+                .first()
+                .find(".volunteer-card-status")
+                .should("contain.text", "Declined");
         });
-    });
 
-    it("declines behind a bootbox prompt — the dialog works under the portal layout", () => {
-        // bootbox is an admin-shell script; the portal layout loads it too, or
-        // this button would do nothing at all (#9867).
-        cy.visit(SCHEDULE_URL);
-        cy.get(".volunteer-assignment-card", { timeout: 20000 })
-            .first()
-            .find(".volunteer-decline")
-            .click();
+        it("signs up for an open slot from the opportunities page", () => {
+            // Nothing else booked that day: with the Door assignment still in place,
+            // signing up for Coffee on the same occurrence is D16's "you are already
+            // helping that day" case, which asks first — a different test.
+            clearWorkflowRows();
+            freshMemberLogin();
+            cy.visit(OPPORTUNITIES_URL);
 
-        cy.get(".bootbox").should("be.visible");
-        cy.get(".bootbox input").type("Away that weekend");
-        cy.get(".bootbox .btn-primary").click();
+            cy.get(`.volunteer-opportunity-card[data-position-id="${posCoffee}"]`, {
+                timeout: 20000,
+            })
+                .first()
+                .find(".volunteer-signup")
+                .click();
 
-        cy.get(".volunteer-assignment-card")
-            .first()
-            .find(".volunteer-card-status")
-            .should("contain.text", "Declined");
-    });
+            // The slot is theirs, and the schedule page says so.
+            cy.visit(SCHEDULE_URL);
+            cy.get("#assignments-content", { timeout: 20000 })
+                .should("be.visible")
+                .and("contain", `${PREFIX} Coffee`);
+        });
 
-    it("signs up for an open slot from the opportunities page", () => {
-        // Nothing else booked that day: with the Door assignment still in place,
-        // signing up for Coffee on the same occurrence is D16's "you are already
-        // helping that day" case, which asks first — a different test.
-        clearWorkflowRows();
-        freshMemberLogin();
-        cy.visit(OPPORTUNITIES_URL);
+        it("offers to help a ministry that is advertising", () => {
+            // Start outside the pool, so the first tap takes the "has been added" path.
+            adminApi(
+                "DELETE",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${PERSON_MEMBER}`,
+                null,
+                [200, 404],
+            );
+            freshMemberLogin();
+            cy.visit(OPPORTUNITIES_URL);
 
-        cy.get(`.volunteer-opportunity-card[data-position-id="${posCoffee}"]`, {
-            timeout: 20000,
-        })
-            .first()
-            .find(".volunteer-signup")
-            .click();
+            cy.get("#help-wanted-section", { timeout: 20000 }).should("be.visible");
+            cy.get(`.volunteer-help-wanted-card[data-ministry-id="${ministryId}"]`)
+                .should("contain", HELP_WANTED_TEXT)
+                .find(".volunteer-offer-help")
+                .click();
 
-        // The slot is theirs, and the schedule page says so.
-        cy.visit(SCHEDULE_URL);
-        cy.get("#assignments-content", { timeout: 20000 })
-            .should("be.visible")
-            .and("contain", `${PREFIX} Coffee`);
-    });
+            // The toast is `window.CRM.notify` — a Notyf from the core bundle, which
+            // the portal layout loads exactly as the admin shell does.
+            cy.get(".notyf__toast").should("contain", "you'd like to help");
 
-    it("offers to help a ministry that is advertising", () => {
-        // Start outside the pool, so the first tap takes the "has been added" path.
-        adminApi(
-            "DELETE",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${PERSON_MEMBER}`,
-            null,
-            [200, 404],
-        );
-        freshMemberLogin();
-        cy.visit(OPPORTUNITIES_URL);
-
-        cy.get("#help-wanted-section", { timeout: 20000 }).should("be.visible");
-        cy.get(`.volunteer-help-wanted-card[data-ministry-id="${ministryId}"]`)
-            .should("contain", HELP_WANTED_TEXT)
-            .find(".volunteer-offer-help")
-            .click();
-
-        // The toast is `window.CRM.notify` — a Notyf from the core bundle, which
-        // the portal layout loads exactly as the admin shell does.
-        cy.get(".notyf__toast").should("contain", "you'd like to help");
-
-        adminApi("GET", `${VOLUNTEER_URL}/ministries/${ministryId}/pool`, null, 200).then(
-            (resp) => {
-                expect(resp.body.members.map((m) => m.personId)).to.include(PERSON_MEMBER);
-            },
-        );
+            adminApi("GET", `${VOLUNTEER_URL}/ministries/${ministryId}/pool`, null, 200).then(
+                (resp) => {
+                    expect(resp.body.members.map((m) => m.personId)).to.include(PERSON_MEMBER);
+                },
+            );
+        });
     });
 });

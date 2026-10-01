@@ -196,530 +196,532 @@ function cleanupFixtures() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    for (const name of [VERSION, HORIZON, DEFAULT_TYPE, RATE_LIMIT]) {
-        cy.makePrivateAdminAPICall("GET", configUrl(name), null, 200).then((resp) => {
-            original[name] = String(resp.body.value ?? "");
-        });
-    }
-    cy.makePrivateAdminAPICall("GET", configUrl("sTimeZone"), null, 200).then((resp) => {
-        timezone = resp.body.value || "UTC";
-    });
-    setConfig(VERSION, "v2");
-    setConfig(HORIZON, "8");
-    setConfig(DEFAULT_TYPE, "");
-    dbOk("UPDATE event_types SET type_name = 'Other', type_active = 1 WHERE type_id = ?", [OTHER_TYPE]);
-    cleanupFixtures();
-
-    api("POST", `${URL}/ministries`, { name: `${PREFIX} Children`, description: "D31 fixture", sundaySchool: true }, 201).then(
-        (resp) => {
-            ministryId = resp.body.ministry.id;
-            api("GET", `${URL}/ministries/${ministryId}`).then((detail) => {
-                teamA = detail.body.teams[0].id;
-            });
-        },
-    );
-    api("POST", `${URL}/ministries`, { name: `${PREFIX} Closed`, description: "D31 fixture" }, 201).then((resp) => {
-        closedMinistryId = resp.body.ministry.id;
-    });
-    for (const key of ["Faith City", "Empty Class"]) {
-        makeClass(key);
-    }
-    cy.then(() => {
-        api("POST", `${URL}/ministries/${ministryId}/teams`, { name: `${PREFIX} Team B` }, 201).then((resp) => {
-            teamB = resp.body.team.id;
-        });
-        api("POST", `${URL}/ministries/${ministryId}/positions`, { name: `${PREFIX} Helper`, teamId: teamA }, 201).then(
-            (resp) => {
-                position = resp.body.position.id;
-                api("POST", `${URL}/positions/${position}/qualifications`, { personId: POOL_MEMBER }, [200, 201]);
-            },
-        );
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    dbOk("UPDATE event_types SET type_name = 'Other', type_active = 1 WHERE type_id = ?", [OTHER_TYPE]);
-    for (const name of [HORIZON, DEFAULT_TYPE, RATE_LIMIT, VERSION]) {
-        setConfig(name, original[name]);
-    }
-});
-
-// ── The horizon ────────────────────────────────────────────────────────────
-
-describe("Volunteer v2 D31 — generation stops at the church-wide scheduling horizon", () => {
-    let service = [];
-    let schedule = null;
-
+describe("Volunteer v2 D31 — schedules follow events that already exist, up to a church-wide scheduling horizon that a daily timer job keeps every schedule filled to; the \"Other\" event type and the default type of a ministry's new events", () => {
     before(() => {
-        createEvents(weekly("Service", 1, 90)).then((events) => {
-            service = events;
-        });
-        cy.then(() => {
-            createSchedule({ name: "Weekly", linkMode: "ministry", titleFilter: `${PREFIX} Service` }).then((created) => {
-                schedule = created;
+        for (const name of [VERSION, HORIZON, DEFAULT_TYPE, RATE_LIMIT]) {
+            cy.makePrivateAdminAPICall("GET", configUrl(name), null, 200).then((resp) => {
+                original[name] = String(resp.body.value ?? "");
             });
+        }
+        cy.makePrivateAdminAPICall("GET", configUrl("sTimeZone"), null, 200).then((resp) => {
+            timezone = resp.body.value || "UTC";
         });
-    });
-
-    it("defaults to 8 weeks, and every schedule says how far a run reaches", () => {
-        cy.makePrivateAdminAPICall("GET", configUrl(HORIZON), null, 200).its("body.value").should("eq", "8");
-        expect(schedule).not.to.have.property("generateAheadDays");
-        expect(schedule).to.include({ horizonWeeks: 8, generateThrough: isoDate(HORIZON_DAYS) });
-    });
-
-    it("makes occurrences from today through today + the horizon, and no further", () => {
-        generate(schedule.id).then((result) => {
-            const inside = throughDay(service, HORIZON_DAYS);
-            expect(service.length, "the series runs past the horizon").to.be.greaterThan(inside.length);
-            expect(result).to.include({ from: isoDate(0), through: isoDate(HORIZON_DAYS), created: inside.length });
-            occurrencesOf(schedule.id).then((rows) => {
-                expect(rows.map((row) => row.eventId)).to.have.members(inside.map((event) => event.id));
-            });
-        });
-    });
-
-    it("never lets an explicit through pass the horizon", () => {
-        generate(schedule.id, { through: isoDate(90) }).then((result) => {
-            expect(result).to.include({ through: isoDate(HORIZON_DAYS), created: 0 });
-        });
-    });
-
-    it("stops at the schedule's last date when that comes first", () => {
-        createSchedule({ name: "Short", teamId: teamB, linkMode: "ministry", titleFilter: `${PREFIX} Service`, windowEnd: isoDate(20) }).then(
-            (short) => {
-                expect(short.generateThrough).to.eq(isoDate(20));
-                generate(short.id).then((result) => {
-                    expect(result).to.include({ through: isoDate(20), created: throughDay(service, 20).length });
-                });
-            },
-        );
-    });
-
-    it("follows a new horizon at once, within 1 to 52 weeks, and 8 when it is blank", () => {
-        setConfig(HORIZON, "2");
-        api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule").should("include", {
-            horizonWeeks: 2,
-            generateThrough: isoDate(14),
-        });
-        generate(schedule.id).its("through").should("eq", isoDate(14));
-        setConfig(HORIZON, "0");
-        api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 1);
-        // The config API refuses a blank (D32); one stored another way reads as the default, not 1.
-        cy.makePrivateAdminAPICall("POST", configUrl(HORIZON), { value: "" }, 400);
-        dbOk("UPDATE config_cfg SET cfg_value = '' WHERE cfg_name = ?", [HORIZON]);
-        api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 8);
-        setConfig(HORIZON, "99");
-        api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 52);
-        setConfig(HORIZON, "8");
-    });
-
-    it("does not cap Staff this event: a hand-picked event beyond the horizon is staffed", () => {
-        createEvents(oneEvent("Far Festival", HORIZON_DAYS + 24)).then((events) => {
-            api("POST", `${URL}/ministries/${ministryId}/staffed-events`, { eventId: events[0].id, teamId: teamA }, 201).then((resp) => {
-                expect(resp.body.occurrence.eventId).to.eq(events[0].id);
-            });
-        });
-    });
-
-    it("refuses the removed generateAheadDays on create and update", () => {
-        refuseSchedule({ name: "Ahead", linkMode: "ministry", titleFilter: `${PREFIX} Service`, generateAheadDays: 14 }).then((body) => {
-            expect(body.message).to.contain("generateAheadDays");
-        });
-        api("POST", `${URL}/schedules/${schedule.id}`, { generateAheadDays: 14 }, 400);
-    });
-});
-
-// ── The daily top-up ───────────────────────────────────────────────────────
-
-describe("Volunteer v2 D31 — every schedule is topped up to the horizon once a day", () => {
-    const made = {};
-    const schedules = {};
-    let notificationsBefore = 0;
-
-    before(() => {
-        setConfig(RATE_LIMIT, "0");
-        createEvents(weekly("Rehearsal", 1, 90)).then((events) => {
-            made.rehearsal = events;
-        });
-        createEvents(weekly("Paused Rehearsal", 1, 30)).then((events) => {
-            made.paused = events;
-        });
-        createEvents(oneEvent("Concert", 5)).then((events) => {
-            made.concert = events;
-        });
-        createEvents(weekly("Closed Workday", 1, 30), closedMinistryId).then((events) => {
-            made.closed = events;
-        });
-        cy.then(() => {
-            api("GET", `${URL}/ministries/${closedMinistryId}`).then((detail) => {
-                createSchedule(
-                    { name: "Closed Crew", teamId: detail.body.teams[0].id, linkMode: "ministry", titleFilter: `${PREFIX} Closed Workday` },
-                    closedMinistryId,
-                ).then((created) => {
-                    schedules.closed = created.id;
-                });
-            });
-            createSchedule({
-                name: "Rehearsal Crew",
-                linkMode: "ministry",
-                titleFilter: `${PREFIX} Rehearsal`,
-                requirements: [{ positionId: position, minCount: 1, maxCount: 1 }],
-            }).then((created) => {
-                schedules.rehearsal = created.id;
-            });
-            createSchedule({
-                name: "Ends Soon",
-                teamId: teamB,
-                linkMode: "ministry",
-                titleFilter: `${PREFIX} Rehearsal`,
-                windowEnd: isoDate(10),
-            }).then((created) => {
-                schedules.endsSoon = created.id;
-            });
-            createSchedule({ name: "Paused", linkMode: "ministry", titleFilter: `${PREFIX} Paused Rehearsal`, active: false }).then(
-                (created) => {
-                    schedules.paused = created.id;
-                },
-            );
-            api("POST", `${URL}/ministries/${ministryId}/staffed-events`, { eventId: made.concert[0].id, teamId: teamA }, 201).then(
-                (resp) => {
-                    schedules.oneOff = resp.body.schedule.id;
-                    // A one-off schedule whose occurrence was deleted: the top-up must not bring it back.
-                    dbOk("DELETE FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?", [schedules.oneOff]);
-                },
-            );
-        });
-        cy.then(() => {
-            api("POST", `${URL}/ministries/${closedMinistryId}`, { active: false });
-            dbOk("DELETE FROM config_cfg WHERE cfg_name IN (?, ?)", [TOP_UP_DATE, TOP_UP_RESULT]);
-            count("SELECT COUNT(*) AS n FROM volunteer_notification_vntf").then((n) => {
-                notificationsBefore = n;
-            });
-        });
-    });
-
-    it("fills every active schedule of an active ministry to the horizon on the day's first run", () => {
-        runTimerJobs();
-        occurrencesOf(schedules.rehearsal).then((rows) => {
-            expect(rows.map((row) => row.eventId)).to.have.members(throughDay(made.rehearsal, HORIZON_DAYS).map((e) => e.id));
-        });
-        occurrencesOf(schedules.endsSoon).then((rows) => {
-            expect(rows.map((row) => row.eventId), "not past its last date").to.have.members(
-                throughDay(made.rehearsal, 10).map((e) => e.id),
-            );
-        });
-        occurrencesOf(schedules.paused).should("have.length", 0);
-        occurrencesOf(schedules.oneOff).should("have.length", 0);
-        occurrencesOf(schedules.closed).should("have.length", 0);
-    });
-
-    it("records the day and what it made, for Ministry Settings", () => {
-        dbOk("SELECT cfg_name AS name, cfg_value AS value FROM config_cfg WHERE cfg_name IN (?, ?)", [TOP_UP_DATE, TOP_UP_RESULT]).then(
-            (rows) => {
-                const byName = Object.fromEntries(rows.map((row) => [row.name, row.value]));
-                expect(byName[TOP_UP_DATE]).to.eq(serverToday());
-                const result = JSON.parse(byName[TOP_UP_RESULT]);
-                expect(result.ranAt.slice(0, 10)).to.eq(serverToday());
-                const expected = throughDay(made.rehearsal, HORIZON_DAYS).length + throughDay(made.rehearsal, 10).length;
-                expect(result.created).to.be.at.least(expected);
-            },
-        );
-    });
-
-    it("assigns nobody and sends nothing", () => {
-        count(
-            `SELECT COUNT(*) AS n FROM volunteer_assignment_vasg vasg
-               JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
-              WHERE vocc.vocc_vsch_ID IN (?, ?)`,
-            [schedules.rehearsal, schedules.endsSoon],
-        ).should("eq", 0);
-        count("SELECT COUNT(*) AS n FROM volunteer_notification_vntf").then((n) => expect(n).to.eq(notificationsBefore));
-    });
-
-    it("runs once a day: a second run the same day adds nothing, even for a new event", () => {
-        createEvents(oneEvent("Rehearsal", 3, { startTime: "18:00", endTime: "19:00" })).then((events) => {
-            made.extra = events[0];
-        });
-        runTimerJobs();
-        occurrencesOf(schedules.rehearsal).then((rows) => {
-            expect(rows.map((row) => row.eventId)).not.to.include(made.extra.id);
-        });
-    });
-
-    it("runs again when an administrator asks, making only what is missing", () => {
-        occurrencesOf(schedules.rehearsal).then((before) => {
-            runTimerJobs(true);
-            occurrencesOf(schedules.rehearsal).then((rows) => {
-                expect(rows).to.have.length(before.length + 1);
-                expect(rows.map((row) => row.eventId)).to.include(made.extra.id);
-                expect(new Set(rows.map((row) => row.eventId)).size, "one occurrence per event").to.eq(rows.length);
-            });
-        });
-    });
-
-    it("does nothing while Volunteer v2 is off", () => {
-        setConfig(VERSION, "v1");
-        dbOk("DELETE FROM config_cfg WHERE cfg_name = ?", [TOP_UP_DATE]);
-        runTimerJobs(true);
-        count("SELECT COUNT(*) AS n FROM config_cfg WHERE cfg_name = ?", [TOP_UP_DATE]).should("eq", 0);
         setConfig(VERSION, "v2");
-    });
-});
-
-// ── The "Other" event type and the default type ────────────────────────────
-
-describe("Volunteer v2 D31 — an \"Other\" event type and the default type of ministry events", () => {
-    afterEach(() => {
+        setConfig(HORIZON, "8");
         setConfig(DEFAULT_TYPE, "");
         dbOk("UPDATE event_types SET type_name = 'Other', type_active = 1 WHERE type_id = ?", [OTHER_TYPE]);
-    });
+        cleanupFixtures();
 
-    it("seeds an active \"Other\" type with no recurrence defaults", () => {
-        dbOk("SELECT type_name AS name, type_defrecurtype AS recur, type_active AS active FROM event_types WHERE type_id = ?", [
-            OTHER_TYPE,
-        ]).then((rows) => {
-            expect(rows[0]).to.deep.eq({ name: "Other", recur: "none", active: 1 });
+        api("POST", `${URL}/ministries`, { name: `${PREFIX} Children`, description: "D31 fixture", sundaySchool: true }, 201).then(
+            (resp) => {
+                ministryId = resp.body.ministry.id;
+                api("GET", `${URL}/ministries/${ministryId}`).then((detail) => {
+                    teamA = detail.body.teams[0].id;
+                });
+            },
+        );
+        api("POST", `${URL}/ministries`, { name: `${PREFIX} Closed`, description: "D31 fixture" }, 201).then((resp) => {
+            closedMinistryId = resp.body.ministry.id;
         });
-    });
-
-    it("offers \"Other\" while no default is chosen, and the chosen type once one is", () => {
-        api("GET", `${URL}/event-types`).then((resp) => {
-            expect(resp.body.eventTypes).to.deep.include({ id: OTHER_TYPE, name: "Other" });
-            expect(resp.body.defaultEventTypeId).to.eq(OTHER_TYPE);
-        });
-        setConfig(DEFAULT_TYPE, String(CHURCH_SERVICE_TYPE));
-        defaultEventType().should("eq", CHURCH_SERVICE_TYPE);
-    });
-
-    it("falls back to \"Other\" when the chosen type is deleted or retired", () => {
-        dbOk(
-            `INSERT INTO event_types (type_name, type_defstarttime, type_defrecurtype, type_defrecurDOW, type_defrecurDOM, type_defrecurDOY, type_active)
-             VALUES (?, '10:00:00', 'none', 'Sunday', '', '2016-01-01', 1)`,
-            [`${PREFIX} Temporary`],
-        ).then((rows) => {
-            const typeId = rows.insertId;
-            setConfig(DEFAULT_TYPE, String(typeId));
-            defaultEventType().should("eq", typeId);
-            dbOk("UPDATE event_types SET type_active = 0 WHERE type_id = ?", [typeId]);
-            defaultEventType().should("eq", OTHER_TYPE);
-            dbOk("DELETE FROM event_types WHERE type_id = ?", [typeId]);
-            defaultEventType().should("eq", OTHER_TYPE);
-        });
-    });
-
-    it("survives \"Other\" being renamed: no default unless one is chosen, and a chosen one stays", () => {
-        dbOk("UPDATE event_types SET type_name = ? WHERE type_id = ?", [`${PREFIX} Misc`, OTHER_TYPE]);
-        defaultEventType().should("eq", null);
-        setConfig(DEFAULT_TYPE, String(OTHER_TYPE));
-        defaultEventType().should("eq", OTHER_TYPE);
-    });
-
-    it("is added by the 7.8.0 script only when the church has no type named \"Other\"", () => {
-        cy.readFile(UPGRADE_SCRIPT).then((script) => {
-            const start = script.lastIndexOf("INSERT INTO `event_types`");
-            const insert = script.slice(start, script.indexOf(";", start)).trim();
-            const others = () => count("SELECT COUNT(*) AS n FROM event_types WHERE type_name = 'Other'");
-
-            dbOk(insert);
-            others().should("eq", 1);
-
-            dbOk("UPDATE event_types SET type_name = ? WHERE type_id = ?", [`${PREFIX} Misc`, OTHER_TYPE]);
-            dbOk(insert);
-            dbOk(insert);
-            dbOk("SELECT type_id AS id, type_defrecurtype AS recur, type_active AS active FROM event_types WHERE type_name = 'Other'").then(
-                (rows) => {
-                    expect(rows, "added once, however often it runs").to.have.length(1);
-                    expect(rows[0]).to.include({ recur: "none", active: 1 });
-                    dbOk("DELETE FROM event_types WHERE type_id = ?", [rows[0].id]);
+        for (const key of ["Faith City", "Empty Class"]) {
+            makeClass(key);
+        }
+        cy.then(() => {
+            api("POST", `${URL}/ministries/${ministryId}/teams`, { name: `${PREFIX} Team B` }, 201).then((resp) => {
+                teamB = resp.body.team.id;
+            });
+            api("POST", `${URL}/ministries/${ministryId}/positions`, { name: `${PREFIX} Helper`, teamId: teamA }, 201).then(
+                (resp) => {
+                    position = resp.body.position.id;
+                    api("POST", `${URL}/positions/${position}/qualifications`, { personId: POOL_MEMBER }, [200, 201]);
                 },
             );
         });
     });
-});
 
-// ── Titles: required and exact ─────────────────────────────────────────────
+    after(() => {
+        cleanupFixtures();
+        dbOk("UPDATE event_types SET type_name = 'Other', type_active = 1 WHERE type_id = ?", [OTHER_TYPE]);
+        for (const name of [HORIZON, DEFAULT_TYPE, RATE_LIMIT, VERSION]) {
+            setConfig(name, original[name]);
+        }
+    });
 
-describe("Volunteer v2 D31 — a type or ministry schedule names one title, matched exactly", () => {
-    const made = {};
+    // ── The horizon ────────────────────────────────────────────────────────────
 
-    before(() => {
-        createEvents(weekly("VBS", 2, 30)).then((events) => {
-            made.vbs = events;
+    describe("Volunteer v2 D31 — generation stops at the church-wide scheduling horizon", () => {
+        let service = [];
+        let schedule = null;
+
+        before(() => {
+            createEvents(weekly("Service", 1, 90)).then((events) => {
+                service = events;
+            });
+            cy.then(() => {
+                createSchedule({ name: "Weekly", linkMode: "ministry", titleFilter: `${PREFIX} Service` }).then((created) => {
+                    schedule = created;
+                });
+            });
         });
-        createEvents(oneEvent("VBS Day 2", 3)).then((events) => {
-            made.vbsDay2 = events[0];
+
+        it("defaults to 8 weeks, and every schedule says how far a run reaches", () => {
+            cy.makePrivateAdminAPICall("GET", configUrl(HORIZON), null, 200).its("body.value").should("eq", "8");
+            expect(schedule).not.to.have.property("generateAheadDays");
+            expect(schedule).to.include({ horizonWeeks: 8, generateThrough: isoDate(HORIZON_DAYS) });
         });
-        createEvents(oneEvent("vbs", 4, { startTime: "13:00", endTime: "14:00" })).then((events) => {
-            made.vbsLower = events[0];
+
+        it("makes occurrences from today through today + the horizon, and no further", () => {
+            generate(schedule.id).then((result) => {
+                const inside = throughDay(service, HORIZON_DAYS);
+                expect(service.length, "the series runs past the horizon").to.be.greaterThan(inside.length);
+                expect(result).to.include({ from: isoDate(0), through: isoDate(HORIZON_DAYS), created: inside.length });
+                occurrencesOf(schedule.id).then((rows) => {
+                    expect(rows.map((row) => row.eventId)).to.have.members(inside.map((event) => event.id));
+                });
+            });
         });
-        createEvents(weekly("Vespers", 2, 30)).then((events) => {
-            made.vespers = events;
+
+        it("never lets an explicit through pass the horizon", () => {
+            generate(schedule.id, { through: isoDate(90) }).then((result) => {
+                expect(result).to.include({ through: isoDate(HORIZON_DAYS), created: 0 });
+            });
         });
-        createEvents(oneEvent("Vespers Supper", 5)).then((events) => {
-            made.vespersSupper = events[0];
+
+        it("stops at the schedule's last date when that comes first", () => {
+            createSchedule({ name: "Short", teamId: teamB, linkMode: "ministry", titleFilter: `${PREFIX} Service`, windowEnd: isoDate(20) }).then(
+                (short) => {
+                    expect(short.generateThrough).to.eq(isoDate(20));
+                    generate(short.id).then((result) => {
+                        expect(result).to.include({ through: isoDate(20), created: throughDay(service, 20).length });
+                    });
+                },
+            );
+        });
+
+        it("follows a new horizon at once, within 1 to 52 weeks, and 8 when it is blank", () => {
+            setConfig(HORIZON, "2");
+            api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule").should("include", {
+                horizonWeeks: 2,
+                generateThrough: isoDate(14),
+            });
+            generate(schedule.id).its("through").should("eq", isoDate(14));
+            setConfig(HORIZON, "0");
+            api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 1);
+            // The config API refuses a blank (D32); one stored another way reads as the default, not 1.
+            cy.makePrivateAdminAPICall("POST", configUrl(HORIZON), { value: "" }, 400);
+            dbOk("UPDATE config_cfg SET cfg_value = '' WHERE cfg_name = ?", [HORIZON]);
+            api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 8);
+            setConfig(HORIZON, "99");
+            api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 52);
+            setConfig(HORIZON, "8");
+        });
+
+        it("does not cap Staff this event: a hand-picked event beyond the horizon is staffed", () => {
+            createEvents(oneEvent("Far Festival", HORIZON_DAYS + 24)).then((events) => {
+                api("POST", `${URL}/ministries/${ministryId}/staffed-events`, { eventId: events[0].id, teamId: teamA }, 201).then((resp) => {
+                    expect(resp.body.occurrence.eventId).to.eq(events[0].id);
+                });
+            });
+        });
+
+        it("refuses the removed generateAheadDays on create and update", () => {
+            refuseSchedule({ name: "Ahead", linkMode: "ministry", titleFilter: `${PREFIX} Service`, generateAheadDays: 14 }).then((body) => {
+                expect(body.message).to.contain("generateAheadDays");
+            });
+            api("POST", `${URL}/schedules/${schedule.id}`, { generateAheadDays: 14 }, 400);
         });
     });
 
-    it("refuses a schedule with no title in either mode: there is no \"any event\"", () => {
-        refuseSchedule({ name: "Any Service", linkMode: "event_type", eventTypeId: CHURCH_SERVICE_TYPE }).its("message").should(
-            "eq",
-            "Choose the event this schedule follows",
-        );
-        refuseSchedule({ name: "Blank Service", linkMode: "event_type", eventTypeId: CHURCH_SERVICE_TYPE, titleFilter: "  " });
-        refuseSchedule({ name: "Any Event", linkMode: "ministry" }).its("message").should("eq", "Choose the event this schedule follows");
+    // ── The daily top-up ───────────────────────────────────────────────────────
+
+    describe("Volunteer v2 D31 — every schedule is topped up to the horizon once a day", () => {
+        const made = {};
+        const schedules = {};
+        let notificationsBefore = 0;
+
+        before(() => {
+            setConfig(RATE_LIMIT, "0");
+            createEvents(weekly("Rehearsal", 1, 90)).then((events) => {
+                made.rehearsal = events;
+            });
+            createEvents(weekly("Paused Rehearsal", 1, 30)).then((events) => {
+                made.paused = events;
+            });
+            createEvents(oneEvent("Concert", 5)).then((events) => {
+                made.concert = events;
+            });
+            createEvents(weekly("Closed Workday", 1, 30), closedMinistryId).then((events) => {
+                made.closed = events;
+            });
+            cy.then(() => {
+                api("GET", `${URL}/ministries/${closedMinistryId}`).then((detail) => {
+                    createSchedule(
+                        { name: "Closed Crew", teamId: detail.body.teams[0].id, linkMode: "ministry", titleFilter: `${PREFIX} Closed Workday` },
+                        closedMinistryId,
+                    ).then((created) => {
+                        schedules.closed = created.id;
+                    });
+                });
+                createSchedule({
+                    name: "Rehearsal Crew",
+                    linkMode: "ministry",
+                    titleFilter: `${PREFIX} Rehearsal`,
+                    requirements: [{ positionId: position, minCount: 1, maxCount: 1 }],
+                }).then((created) => {
+                    schedules.rehearsal = created.id;
+                });
+                createSchedule({
+                    name: "Ends Soon",
+                    teamId: teamB,
+                    linkMode: "ministry",
+                    titleFilter: `${PREFIX} Rehearsal`,
+                    windowEnd: isoDate(10),
+                }).then((created) => {
+                    schedules.endsSoon = created.id;
+                });
+                createSchedule({ name: "Paused", linkMode: "ministry", titleFilter: `${PREFIX} Paused Rehearsal`, active: false }).then(
+                    (created) => {
+                        schedules.paused = created.id;
+                    },
+                );
+                api("POST", `${URL}/ministries/${ministryId}/staffed-events`, { eventId: made.concert[0].id, teamId: teamA }, 201).then(
+                    (resp) => {
+                        schedules.oneOff = resp.body.schedule.id;
+                        // A one-off schedule whose occurrence was deleted: the top-up must not bring it back.
+                        dbOk("DELETE FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?", [schedules.oneOff]);
+                    },
+                );
+            });
+            cy.then(() => {
+                api("POST", `${URL}/ministries/${closedMinistryId}`, { active: false });
+                dbOk("DELETE FROM config_cfg WHERE cfg_name IN (?, ?)", [TOP_UP_DATE, TOP_UP_RESULT]);
+                count("SELECT COUNT(*) AS n FROM volunteer_notification_vntf").then((n) => {
+                    notificationsBefore = n;
+                });
+            });
+        });
+
+        it("fills every active schedule of an active ministry to the horizon on the day's first run", () => {
+            runTimerJobs();
+            occurrencesOf(schedules.rehearsal).then((rows) => {
+                expect(rows.map((row) => row.eventId)).to.have.members(throughDay(made.rehearsal, HORIZON_DAYS).map((e) => e.id));
+            });
+            occurrencesOf(schedules.endsSoon).then((rows) => {
+                expect(rows.map((row) => row.eventId), "not past its last date").to.have.members(
+                    throughDay(made.rehearsal, 10).map((e) => e.id),
+                );
+            });
+            occurrencesOf(schedules.paused).should("have.length", 0);
+            occurrencesOf(schedules.oneOff).should("have.length", 0);
+            occurrencesOf(schedules.closed).should("have.length", 0);
+        });
+
+        it("records the day and what it made, for Ministry Settings", () => {
+            dbOk("SELECT cfg_name AS name, cfg_value AS value FROM config_cfg WHERE cfg_name IN (?, ?)", [TOP_UP_DATE, TOP_UP_RESULT]).then(
+                (rows) => {
+                    const byName = Object.fromEntries(rows.map((row) => [row.name, row.value]));
+                    expect(byName[TOP_UP_DATE]).to.eq(serverToday());
+                    const result = JSON.parse(byName[TOP_UP_RESULT]);
+                    expect(result.ranAt.slice(0, 10)).to.eq(serverToday());
+                    const expected = throughDay(made.rehearsal, HORIZON_DAYS).length + throughDay(made.rehearsal, 10).length;
+                    expect(result.created).to.be.at.least(expected);
+                },
+            );
+        });
+
+        it("assigns nobody and sends nothing", () => {
+            count(
+                `SELECT COUNT(*) AS n FROM volunteer_assignment_vasg vasg
+               JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
+              WHERE vocc.vocc_vsch_ID IN (?, ?)`,
+                [schedules.rehearsal, schedules.endsSoon],
+            ).should("eq", 0);
+            count("SELECT COUNT(*) AS n FROM volunteer_notification_vntf").then((n) => expect(n).to.eq(notificationsBefore));
+        });
+
+        it("runs once a day: a second run the same day adds nothing, even for a new event", () => {
+            createEvents(oneEvent("Rehearsal", 3, { startTime: "18:00", endTime: "19:00" })).then((events) => {
+                made.extra = events[0];
+            });
+            runTimerJobs();
+            occurrencesOf(schedules.rehearsal).then((rows) => {
+                expect(rows.map((row) => row.eventId)).not.to.include(made.extra.id);
+            });
+        });
+
+        it("runs again when an administrator asks, making only what is missing", () => {
+            occurrencesOf(schedules.rehearsal).then((before) => {
+                runTimerJobs(true);
+                occurrencesOf(schedules.rehearsal).then((rows) => {
+                    expect(rows).to.have.length(before.length + 1);
+                    expect(rows.map((row) => row.eventId)).to.include(made.extra.id);
+                    expect(new Set(rows.map((row) => row.eventId)).size, "one occurrence per event").to.eq(rows.length);
+                });
+            });
+        });
+
+        it("does nothing while Volunteer v2 is off", () => {
+            setConfig(VERSION, "v1");
+            dbOk("DELETE FROM config_cfg WHERE cfg_name = ?", [TOP_UP_DATE]);
+            runTimerJobs(true);
+            count("SELECT COUNT(*) AS n FROM config_cfg WHERE cfg_name = ?", [TOP_UP_DATE]).should("eq", 0);
+            setConfig(VERSION, "v2");
+        });
     });
 
-    it("follows exactly the title in ministry mode, ignoring case: VBS, not VBS Day 2", () => {
-        createSchedule({ name: "VBS Crew", linkMode: "ministry", titleFilter: `${PREFIX} vbs` }).then((schedule) => {
-            made.vbsSchedule = schedule.id;
-            generate(schedule.id);
-            occurrencesOf(schedule.id).then((rows) => {
-                const ids = rows.map((row) => row.eventId);
-                expect(ids).to.have.members([...made.vbs.map((e) => e.id), made.vbsLower.id]);
-                expect(ids).not.to.include(made.vbsDay2.id);
+    // ── The "Other" event type and the default type ────────────────────────────
+
+    describe("Volunteer v2 D31 — an \"Other\" event type and the default type of ministry events", () => {
+        afterEach(() => {
+            setConfig(DEFAULT_TYPE, "");
+            dbOk("UPDATE event_types SET type_name = 'Other', type_active = 1 WHERE type_id = ?", [OTHER_TYPE]);
+        });
+
+        it("seeds an active \"Other\" type with no recurrence defaults", () => {
+            dbOk("SELECT type_name AS name, type_defrecurtype AS recur, type_active AS active FROM event_types WHERE type_id = ?", [
+                OTHER_TYPE,
+            ]).then((rows) => {
+                expect(rows[0]).to.deep.eq({ name: "Other", recur: "none", active: 1 });
+            });
+        });
+
+        it("offers \"Other\" while no default is chosen, and the chosen type once one is", () => {
+            api("GET", `${URL}/event-types`).then((resp) => {
+                expect(resp.body.eventTypes).to.deep.include({ id: OTHER_TYPE, name: "Other" });
+                expect(resp.body.defaultEventTypeId).to.eq(OTHER_TYPE);
+            });
+            setConfig(DEFAULT_TYPE, String(CHURCH_SERVICE_TYPE));
+            defaultEventType().should("eq", CHURCH_SERVICE_TYPE);
+        });
+
+        it("falls back to \"Other\" when the chosen type is deleted or retired", () => {
+            dbOk(
+                `INSERT INTO event_types (type_name, type_defstarttime, type_defrecurtype, type_defrecurDOW, type_defrecurDOM, type_defrecurDOY, type_active)
+             VALUES (?, '10:00:00', 'none', 'Sunday', '', '2016-01-01', 1)`,
+                [`${PREFIX} Temporary`],
+            ).then((rows) => {
+                const typeId = rows.insertId;
+                setConfig(DEFAULT_TYPE, String(typeId));
+                defaultEventType().should("eq", typeId);
+                dbOk("UPDATE event_types SET type_active = 0 WHERE type_id = ?", [typeId]);
+                defaultEventType().should("eq", OTHER_TYPE);
+                dbOk("DELETE FROM event_types WHERE type_id = ?", [typeId]);
+                defaultEventType().should("eq", OTHER_TYPE);
+            });
+        });
+
+        it("survives \"Other\" being renamed: no default unless one is chosen, and a chosen one stays", () => {
+            dbOk("UPDATE event_types SET type_name = ? WHERE type_id = ?", [`${PREFIX} Misc`, OTHER_TYPE]);
+            defaultEventType().should("eq", null);
+            setConfig(DEFAULT_TYPE, String(OTHER_TYPE));
+            defaultEventType().should("eq", OTHER_TYPE);
+        });
+
+        it("is added by the 7.8.0 script only when the church has no type named \"Other\"", () => {
+            cy.readFile(UPGRADE_SCRIPT).then((script) => {
+                const start = script.lastIndexOf("INSERT INTO `event_types`");
+                const insert = script.slice(start, script.indexOf(";", start)).trim();
+                const others = () => count("SELECT COUNT(*) AS n FROM event_types WHERE type_name = 'Other'");
+
+                dbOk(insert);
+                others().should("eq", 1);
+
+                dbOk("UPDATE event_types SET type_name = ? WHERE type_id = ?", [`${PREFIX} Misc`, OTHER_TYPE]);
+                dbOk(insert);
+                dbOk(insert);
+                dbOk("SELECT type_id AS id, type_defrecurtype AS recur, type_active AS active FROM event_types WHERE type_name = 'Other'").then(
+                    (rows) => {
+                        expect(rows, "added once, however often it runs").to.have.length(1);
+                        expect(rows[0]).to.include({ recur: "none", active: 1 });
+                        dbOk("DELETE FROM event_types WHERE type_id = ?", [rows[0].id]);
+                    },
+                );
             });
         });
     });
 
-    it("follows exactly the title in event-type mode too", () => {
-        createSchedule({
-            name: "Vespers Crew",
-            linkMode: "event_type",
-            eventTypeId: CHURCH_SERVICE_TYPE,
-            titleFilter: `${PREFIX} VESPERS`,
-        }).then((schedule) => {
-            generate(schedule.id);
-            occurrencesOf(schedule.id).then((rows) => {
-                const ids = rows.map((row) => row.eventId);
-                expect(ids).to.have.members(made.vespers.map((e) => e.id));
-                expect(ids).not.to.include(made.vespersSupper.id);
+    // ── Titles: required and exact ─────────────────────────────────────────────
+
+    describe("Volunteer v2 D31 — a type or ministry schedule names one title, matched exactly", () => {
+        const made = {};
+
+        before(() => {
+            createEvents(weekly("VBS", 2, 30)).then((events) => {
+                made.vbs = events;
+            });
+            createEvents(oneEvent("VBS Day 2", 3)).then((events) => {
+                made.vbsDay2 = events[0];
+            });
+            createEvents(oneEvent("vbs", 4, { startTime: "13:00", endTime: "14:00" })).then((events) => {
+                made.vbsLower = events[0];
+            });
+            createEvents(weekly("Vespers", 2, 30)).then((events) => {
+                made.vespers = events;
+            });
+            createEvents(oneEvent("Vespers Supper", 5)).then((events) => {
+                made.vespersSupper = events[0];
             });
         });
-    });
 
-    it("lists one title per series in the picker, however it is capitalised", () => {
-        api("GET", `${URL}/event-series?ministryId=${ministryId}`).then((resp) => {
-            const vbs = resp.body.series.filter((row) => row.title.toLowerCase() === `${PREFIX} vbs`.toLowerCase());
-            expect(vbs).to.have.length(1);
-            expect(vbs[0].count).to.eq(made.vbs.length + 1);
+        it("refuses a schedule with no title in either mode: there is no \"any event\"", () => {
+            refuseSchedule({ name: "Any Service", linkMode: "event_type", eventTypeId: CHURCH_SERVICE_TYPE }).its("message").should(
+                "eq",
+                "Choose the event this schedule follows",
+            );
+            refuseSchedule({ name: "Blank Service", linkMode: "event_type", eventTypeId: CHURCH_SERVICE_TYPE, titleFilter: "  " });
+            refuseSchedule({ name: "Any Event", linkMode: "ministry" }).its("message").should("eq", "Choose the event this schedule follows");
         });
-    });
 
-    it("adds new events only to the schedule with exactly their title (D30)", () => {
-        createSchedule({ name: "Day Two Crew", teamId: teamB, linkMode: "ministry", titleFilter: `${PREFIX} VBS Day 2` }).then((dayTwo) => {
-            api("POST", `${URL}/ministries/${ministryId}/events`, weekly("VBS", 31, 45, { staff: { teamId: teamB } }), 201).then((resp) => {
-                expect(resp.body.reusedSchedule, "VBS is not VBS Day 2").to.eq(false);
-                expect(resp.body.schedule.id).not.to.eq(dayTwo.id);
+        it("follows exactly the title in ministry mode, ignoring case: VBS, not VBS Day 2", () => {
+            createSchedule({ name: "VBS Crew", linkMode: "ministry", titleFilter: `${PREFIX} vbs` }).then((schedule) => {
+                made.vbsSchedule = schedule.id;
+                generate(schedule.id);
+                occurrencesOf(schedule.id).then((rows) => {
+                    const ids = rows.map((row) => row.eventId);
+                    expect(ids).to.have.members([...made.vbs.map((e) => e.id), made.vbsLower.id]);
+                    expect(ids).not.to.include(made.vbsDay2.id);
+                });
             });
         });
-        api(
-            "POST",
-            `${URL}/ministries/${ministryId}/events`,
-            { ...weekly("VBS", 46, 55), title: `${PREFIX} VBS`, staff: { teamId: teamA } },
-            201,
-        ).then((resp) => {
-            expect(resp.body.reusedSchedule, "the vbs schedule, whatever the case").to.eq(true);
-            expect(resp.body.schedule.id).to.eq(made.vbsSchedule);
-        });
-    });
 
-    it("generates nothing for a schedule saved without a title before D31, and says why", () => {
-        dbOk(
-            `INSERT INTO volunteer_schedule_vsch (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_Active)
-             VALUES (?, ?, ?, 'ministry', ?, 1)`,
-            [ministryId, teamA, `${PREFIX} Legacy`, isoDate(0)],
-        ).then((rows) => {
-            made.legacy = rows.insertId;
-            generate(made.legacy).then((result) => {
-                expect(result).to.include({ created: 0, existing: 0, noEvents: true });
-                expect(result.searched).to.include({ linkMode: "ministry", titleFilter: null });
-            });
-        });
-    });
-
-    it("asks for a title when such a schedule is next edited", () => {
-        api("POST", `${URL}/schedules/${made.legacy}`, { name: `${PREFIX} Legacy renamed` }, 400).its("body.message").should(
-            "eq",
-            "Choose the event this schedule follows",
-        );
-        api("POST", `${URL}/schedules/${made.legacy}`, { titleFilter: `${PREFIX} Vespers` }).its("body.schedule.titleFilter").should(
-            "eq",
-            `${PREFIX} Vespers`,
-        );
-    });
-});
-
-// ── A schedule follows events that already exist ───────────────────────────
-
-describe("Volunteer v2 D31 — a schedule is created, or re-pointed, only while an upcoming event matches", () => {
-    let following = null;
-
-    before(() => {
-        insertEvent("Empty Class Past", -7).then((eventId) => {
-            dbOk("INSERT INTO event_audience (event_id, group_id) VALUES (?, ?)", [eventId, classes["Empty Class"]]);
-        });
-        insertEvent("Gone Service", -3);
-        insertEvent("Cancelled Service", 6, { inactive: 1 });
-        createEvents(oneEvent("Faith City Meeting", 6, { linkedGroupId: classes["Faith City"] }));
-        createEvents(oneEvent("Last Workday", 2));
-        cy.then(() => {
-            createSchedule({ name: "Last Workday Crew", linkMode: "ministry", titleFilter: `${PREFIX} Last Workday` }).then((schedule) => {
-                following = schedule;
-            });
-        });
-    });
-
-    it("refuses a class schedule for a class whose meetings are all past", () => {
-        refuseSchedule({ name: "Empty Class Crew", linkMode: "class", groupId: classes["Empty Class"] }).its("message").should(
-            "contain",
-            `${PREFIX} Empty Class has no upcoming meetings on the calendar`,
-        );
-    });
-
-    it("refuses a title with no upcoming active event: unknown, only past or only inactive", () => {
-        for (const title of ["No Such Service", "Gone Service", "Cancelled Service"]) {
-            refuseSchedule({
-                name: `${title} Crew`,
+        it("follows exactly the title in event-type mode too", () => {
+            createSchedule({
+                name: "Vespers Crew",
                 linkMode: "event_type",
                 eventTypeId: CHURCH_SERVICE_TYPE,
-                titleFilter: `${PREFIX} ${title}`,
-            }).its("message").should("contain", `No upcoming Church Service events titled "${PREFIX} ${title}"`);
-        }
-        refuseSchedule({ name: "Nothing Crew", linkMode: "ministry", titleFilter: `${PREFIX} No Such Workday` }).its("message").should(
-            "contain",
-            "This ministry has no upcoming events titled",
-        );
-    });
+                titleFilter: `${PREFIX} VESPERS`,
+            }).then((schedule) => {
+                generate(schedule.id);
+                occurrencesOf(schedule.id).then((rows) => {
+                    const ids = rows.map((row) => row.eventId);
+                    expect(ids).to.have.members(made.vespers.map((e) => e.id));
+                    expect(ids).not.to.include(made.vespersSupper.id);
+                });
+            });
+        });
 
-    it("accepts a class with an upcoming meeting", () => {
-        createSchedule({ name: "Faith City Crew", linkMode: "class", groupId: classes["Faith City"] }).its("groupId").should(
-            "eq",
-            classes["Faith City"],
-        );
-    });
+        it("lists one title per series in the picker, however it is capitalised", () => {
+            api("GET", `${URL}/event-series?ministryId=${ministryId}`).then((resp) => {
+                const vbs = resp.body.series.filter((row) => row.title.toLowerCase() === `${PREFIX} vbs`.toLowerCase());
+                expect(vbs).to.have.length(1);
+                expect(vbs[0].count).to.eq(made.vbs.length + 1);
+            });
+        });
 
-    it("refuses changing what a schedule follows to events that do not exist", () => {
-        const update = (body) => api("POST", `${URL}/schedules/${following.id}`, body, 400);
-        update({ titleFilter: `${PREFIX} No Such Workday` });
-        update({ linkMode: "class", groupId: classes["Empty Class"] });
-        update({ linkMode: "event_type", eventTypeId: OTHER_TYPE, titleFilter: `${PREFIX} Last Workday` });
-        api("GET", `${URL}/schedules/${following.id}`).its("body.schedule").should("include", {
-            linkMode: "ministry",
-            titleFilter: `${PREFIX} Last Workday`,
+        it("adds new events only to the schedule with exactly their title (D30)", () => {
+            createSchedule({ name: "Day Two Crew", teamId: teamB, linkMode: "ministry", titleFilter: `${PREFIX} VBS Day 2` }).then((dayTwo) => {
+                api("POST", `${URL}/ministries/${ministryId}/events`, weekly("VBS", 31, 45, { staff: { teamId: teamB } }), 201).then((resp) => {
+                    expect(resp.body.reusedSchedule, "VBS is not VBS Day 2").to.eq(false);
+                    expect(resp.body.schedule.id).not.to.eq(dayTwo.id);
+                });
+            });
+            api(
+                "POST",
+                `${URL}/ministries/${ministryId}/events`,
+                { ...weekly("VBS", 46, 55), title: `${PREFIX} VBS`, staff: { teamId: teamA } },
+                201,
+            ).then((resp) => {
+                expect(resp.body.reusedSchedule, "the vbs schedule, whatever the case").to.eq(true);
+                expect(resp.body.schedule.id).to.eq(made.vbsSchedule);
+            });
+        });
+
+        it("generates nothing for a schedule saved without a title before D31, and says why", () => {
+            dbOk(
+                `INSERT INTO volunteer_schedule_vsch (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_Active)
+             VALUES (?, ?, ?, 'ministry', ?, 1)`,
+                [ministryId, teamA, `${PREFIX} Legacy`, isoDate(0)],
+            ).then((rows) => {
+                made.legacy = rows.insertId;
+                generate(made.legacy).then((result) => {
+                    expect(result).to.include({ created: 0, existing: 0, noEvents: true });
+                    expect(result.searched).to.include({ linkMode: "ministry", titleFilter: null });
+                });
+            });
+        });
+
+        it("asks for a title when such a schedule is next edited", () => {
+            api("POST", `${URL}/schedules/${made.legacy}`, { name: `${PREFIX} Legacy renamed` }, 400).its("body.message").should(
+                "eq",
+                "Choose the event this schedule follows",
+            );
+            api("POST", `${URL}/schedules/${made.legacy}`, { titleFilter: `${PREFIX} Vespers` }).its("body.schedule.titleFilter").should(
+                "eq",
+                `${PREFIX} Vespers`,
+            );
         });
     });
 
-    it("never refuses any other edit once its events have run out", () => {
-        dbOk(
-            `UPDATE events_event SET event_start = ?, event_end = ? WHERE event_title = ?`,
-            [`${isoDate(-3)} 09:30:00`, `${isoDate(-3)} 10:30:00`, `${PREFIX} Last Workday`],
-        );
-        const edit = (body) => api("POST", `${URL}/schedules/${following.id}`, body);
-        edit({ name: `${PREFIX} Last Workday Crew (renamed)` });
-        edit({ windowEnd: isoDate(60), startOffsetMinutes: -30, active: false });
-        edit({ requirements: [{ positionId: position, minCount: 2, maxCount: 2 }] });
-        edit({ titleFilter: `${PREFIX} LAST WORKDAY` }).its("body.schedule.titleFilter").should("eq", `${PREFIX} LAST WORKDAY`);
+    // ── A schedule follows events that already exist ───────────────────────────
+
+    describe("Volunteer v2 D31 — a schedule is created, or re-pointed, only while an upcoming event matches", () => {
+        let following = null;
+
+        before(() => {
+            insertEvent("Empty Class Past", -7).then((eventId) => {
+                dbOk("INSERT INTO event_audience (event_id, group_id) VALUES (?, ?)", [eventId, classes["Empty Class"]]);
+            });
+            insertEvent("Gone Service", -3);
+            insertEvent("Cancelled Service", 6, { inactive: 1 });
+            createEvents(oneEvent("Faith City Meeting", 6, { linkedGroupId: classes["Faith City"] }));
+            createEvents(oneEvent("Last Workday", 2));
+            cy.then(() => {
+                createSchedule({ name: "Last Workday Crew", linkMode: "ministry", titleFilter: `${PREFIX} Last Workday` }).then((schedule) => {
+                    following = schedule;
+                });
+            });
+        });
+
+        it("refuses a class schedule for a class whose meetings are all past", () => {
+            refuseSchedule({ name: "Empty Class Crew", linkMode: "class", groupId: classes["Empty Class"] }).its("message").should(
+                "contain",
+                `${PREFIX} Empty Class has no upcoming meetings on the calendar`,
+            );
+        });
+
+        it("refuses a title with no upcoming active event: unknown, only past or only inactive", () => {
+            for (const title of ["No Such Service", "Gone Service", "Cancelled Service"]) {
+                refuseSchedule({
+                    name: `${title} Crew`,
+                    linkMode: "event_type",
+                    eventTypeId: CHURCH_SERVICE_TYPE,
+                    titleFilter: `${PREFIX} ${title}`,
+                }).its("message").should("contain", `No upcoming Church Service events titled "${PREFIX} ${title}"`);
+            }
+            refuseSchedule({ name: "Nothing Crew", linkMode: "ministry", titleFilter: `${PREFIX} No Such Workday` }).its("message").should(
+                "contain",
+                "This ministry has no upcoming events titled",
+            );
+        });
+
+        it("accepts a class with an upcoming meeting", () => {
+            createSchedule({ name: "Faith City Crew", linkMode: "class", groupId: classes["Faith City"] }).its("groupId").should(
+                "eq",
+                classes["Faith City"],
+            );
+        });
+
+        it("refuses changing what a schedule follows to events that do not exist", () => {
+            const update = (body) => api("POST", `${URL}/schedules/${following.id}`, body, 400);
+            update({ titleFilter: `${PREFIX} No Such Workday` });
+            update({ linkMode: "class", groupId: classes["Empty Class"] });
+            update({ linkMode: "event_type", eventTypeId: OTHER_TYPE, titleFilter: `${PREFIX} Last Workday` });
+            api("GET", `${URL}/schedules/${following.id}`).its("body.schedule").should("include", {
+                linkMode: "ministry",
+                titleFilter: `${PREFIX} Last Workday`,
+            });
+        });
+
+        it("never refuses any other edit once its events have run out", () => {
+            dbOk(
+                `UPDATE events_event SET event_start = ?, event_end = ? WHERE event_title = ?`,
+                [`${isoDate(-3)} 09:30:00`, `${isoDate(-3)} 10:30:00`, `${PREFIX} Last Workday`],
+            );
+            const edit = (body) => api("POST", `${URL}/schedules/${following.id}`, body);
+            edit({ name: `${PREFIX} Last Workday Crew (renamed)` });
+            edit({ windowEnd: isoDate(60), startOffsetMinutes: -30, active: false });
+            edit({ requirements: [{ positionId: position, minCount: 2, maxCount: 2 }] });
+            edit({ titleFilter: `${PREFIX} LAST WORKDAY` }).its("body.schedule.titleFilter").should("eq", `${PREFIX} LAST WORKDAY`);
+        });
     });
 });

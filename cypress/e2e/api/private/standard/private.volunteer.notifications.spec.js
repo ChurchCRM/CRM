@@ -526,813 +526,815 @@ function resetWorkflow() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    cy.task("mail:available").then((result) => {
-        mailpitAvailable = result.available;
-        cy.log(
-            result.available
-                ? `Mailpit reachable at ${result.url}`
-                : `Mailpit NOT reachable at ${result.url} (${result.error}) — delivery assertions will skip`,
-        );
-    });
-
-    readConfig(SETTING_URL).then((value) => {
-        originalVersion = value || "v1";
-    });
-    readConfig(SMTP_HOST_URL).then((value) => {
-        originalSmtpHost = value;
-    });
-    readConfig(LEAD_HOURS_URL).then((value) => {
-        originalLeadHours = value;
-    });
-    readConfig(DO_NOT_EMAIL_URL).then((value) => {
-        originalDoNotEmail = value;
-    });
-    readConfig(CHURCH_NAME_URL).then((value) => {
-        churchName = value || "";
-    });
-
-    setConfig(SETTING_URL, "v2");
-    setConfig(EMAIL_ENABLED_URL, "1");
-    // Reminders are opt-in per test: a lead of 0 means "schedule none", so a
-    // fixture occurrence that happens to fall inside the default 48 hours
-    // cannot seed reminder rows into an unrelated assertion.
-    setConfig(LEAD_HOURS_URL, "0");
-    setConfig(DO_NOT_EMAIL_URL, String(DO_NOT_EMAIL_PROPERTY));
-
-    cleanupFixtures();
-
-    createMinistry("Coffee Bar").then((id) => {
-        ministryA = id;
-    });
-    createMinistry("Sound Booth").then((id) => {
-        ministryB = id;
-    });
-
-    cy.then(() => {
-        defaultTeam(ministryA).then((id) => {
-            teamA = id;
+describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9701)", () => {
+    before(() => {
+        cy.task("mail:available").then((result) => {
+            mailpitAvailable = result.available;
+            cy.log(
+                result.available
+                    ? `Mailpit reachable at ${result.url}`
+                    : `Mailpit NOT reachable at ${result.url} (${result.error}) — delivery assertions will skip`,
+            );
         });
-    });
 
-    cy.then(() => {
-        createPosition(ministryA, teamA, "Espresso", 1).then((id) => {
-            posEspresso = id;
+        readConfig(SETTING_URL).then((value) => {
+            originalVersion = value || "v1";
         });
-        createPosition(ministryA, teamA, "Milk Station", 2).then((id) => {
-            posMilk = id;
+        readConfig(SMTP_HOST_URL).then((value) => {
+            originalSmtpHost = value;
         });
-    });
+        readConfig(LEAD_HOURS_URL).then((value) => {
+            originalLeadHours = value;
+        });
+        readConfig(DO_NOT_EMAIL_URL).then((value) => {
+            originalDoNotEmail = value;
+        });
+        readConfig(CHURCH_NAME_URL).then((value) => {
+            churchName = value || "";
+        });
 
-    // D19: the ministry came with its own pool Group, empty. Filled through the
-    // API — there is no /api/groups write to work around any more.
-    cy.then(() => {
-        for (const personId of [
-            POOL_MEMBER_A,
-            POOL_MEMBER_B,
-            POOL_MEMBER_C,
-            PERSON_VOLUNTEER,
-        ]) {
+        setConfig(SETTING_URL, "v2");
+        setConfig(EMAIL_ENABLED_URL, "1");
+        // Reminders are opt-in per test: a lead of 0 means "schedule none", so a
+        // fixture occurrence that happens to fall inside the default 48 hours
+        // cannot seed reminder rows into an unrelated assertion.
+        setConfig(LEAD_HOURS_URL, "0");
+        setConfig(DO_NOT_EMAIL_URL, String(DO_NOT_EMAIL_PROPERTY));
+
+        cleanupFixtures();
+
+        createMinistry("Coffee Bar").then((id) => {
+            ministryA = id;
+        });
+        createMinistry("Sound Booth").then((id) => {
+            ministryB = id;
+        });
+
+        cy.then(() => {
+            defaultTeam(ministryA).then((id) => {
+                teamA = id;
+            });
+        });
+
+        cy.then(() => {
+            createPosition(ministryA, teamA, "Espresso", 1).then((id) => {
+                posEspresso = id;
+            });
+            createPosition(ministryA, teamA, "Milk Station", 2).then((id) => {
+                posMilk = id;
+            });
+        });
+
+        // D19: the ministry came with its own pool Group, empty. Filled through the
+        // API — there is no /api/groups write to work around any more.
+        cy.then(() => {
+            for (const personId of [
+                POOL_MEMBER_A,
+                POOL_MEMBER_B,
+                POOL_MEMBER_C,
+                PERSON_VOLUNTEER,
+            ]) {
+                api(
+                    ADMIN_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryA}/pool/${personId}`,
+                    null,
+                    [200, 201],
+                );
+            }
+        });
+
+        cy.then(() => {
+            qualify(posEspresso, POOL_MEMBER_A);
+            qualify(posEspresso, POOL_MEMBER_B);
+            qualify(posEspresso, POOL_MEMBER_C);
+            qualify(posEspresso, PERSON_VOLUNTEER);
+            qualify(posMilk, POOL_MEMBER_A);
+            qualify(posMilk, POOL_MEMBER_B);
+        });
+
+        cy.then(() => {
+            seriesStart = isoDate(daysToNext(0));
+            seriesEnd = isoDate(daysToNext(0) + 14);
+
+            api(ADMIN_KEY, "POST", "/api/events/repeat", {
+                Title: EVENT_TITLE,
+                Type: CHURCH_SERVICE_TYPE,
+                StartTime: "10:30:00",
+                EndTime: "11:45:00",
+                RecurType: "weekly",
+                RecurDOW: "Sunday",
+                RangeStart: seriesStart,
+                RangeEnd: seriesEnd,
+            }, 200).then((resp) => {
+                expect(resp.body.eventIds.length).to.eq(3);
+            });
+        });
+
+        cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryA}/schedules`, {
+                name: `${FIXTURE_PREFIX} Coffee Bar — Sunday`,
+                linkMode: "event_type",
+                eventTypeId: CHURCH_SERVICE_TYPE,
+                titleFilter: EVENT_TITLE,
+                windowStart: seriesStart,
+                teamId: teamA,
+            }, 201).then((resp) => {
+                scheduleA = resp.body.schedule.id;
+            });
+        });
+
+        cy.then(() => {
+            upsertRequirement(scheduleA, posEspresso, 1, 1);
+            upsertRequirement(scheduleA, posMilk, 1, 1);
+        });
+
+        cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleA}/generate`, {
+                through: seriesEnd,
+            }, 200);
+        });
+
+        cy.then(() => {
             api(
                 ADMIN_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryA}/pool/${personId}`,
-                null,
-                [200, 201],
-            );
+                "GET",
+                `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
+            ).then((resp) => {
+                const rows = resp.body.occurrences;
+                expect(rows.length).to.be.greaterThan(1);
+                occurrenceOne = rows[0].id;
+                occurrenceOneStart = rows[0].start;
+                occurrenceTwo = rows[1].id;
+                occurrenceTwoStart = rows[1].start;
+            });
+        });
+
+        // Person 3 coordinates Coffee Bar and nothing else — this is also the person
+        // §3.6's Reply-To resolution must land on, since the schedule's team has no
+        // leader of its own.
+        cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
+                personId: PERSON_COORDINATOR,
+                scopeType: "ministry",
+                scopeId: ministryA,
+            }, [200, 201]);
+        });
+    });
+
+    /** Put a setting back only if this run got far enough to learn what it was. */
+    function restoreConfig(url, captured) {
+        if (captured === null) {
+            return;
         }
-    });
-
-    cy.then(() => {
-        qualify(posEspresso, POOL_MEMBER_A);
-        qualify(posEspresso, POOL_MEMBER_B);
-        qualify(posEspresso, POOL_MEMBER_C);
-        qualify(posEspresso, PERSON_VOLUNTEER);
-        qualify(posMilk, POOL_MEMBER_A);
-        qualify(posMilk, POOL_MEMBER_B);
-    });
-
-    cy.then(() => {
-        seriesStart = isoDate(daysToNext(0));
-        seriesEnd = isoDate(daysToNext(0) + 14);
-
-        api(ADMIN_KEY, "POST", "/api/events/repeat", {
-            Title: EVENT_TITLE,
-            Type: CHURCH_SERVICE_TYPE,
-            StartTime: "10:30:00",
-            EndTime: "11:45:00",
-            RecurType: "weekly",
-            RecurDOW: "Sunday",
-            RangeStart: seriesStart,
-            RangeEnd: seriesEnd,
-        }, 200).then((resp) => {
-            expect(resp.body.eventIds.length).to.eq(3);
-        });
-    });
-
-    cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryA}/schedules`, {
-            name: `${FIXTURE_PREFIX} Coffee Bar — Sunday`,
-            linkMode: "event_type",
-            eventTypeId: CHURCH_SERVICE_TYPE,
-            titleFilter: EVENT_TITLE,
-            windowStart: seriesStart,
-            teamId: teamA,
-        }, 201).then((resp) => {
-            scheduleA = resp.body.schedule.id;
-        });
-    });
-
-    cy.then(() => {
-        upsertRequirement(scheduleA, posEspresso, 1, 1);
-        upsertRequirement(scheduleA, posMilk, 1, 1);
-    });
-
-    cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleA}/generate`, {
-            through: seriesEnd,
-        }, 200);
-    });
-
-    cy.then(() => {
-        api(
-            ADMIN_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
-        ).then((resp) => {
-            const rows = resp.body.occurrences;
-            expect(rows.length).to.be.greaterThan(1);
-            occurrenceOne = rows[0].id;
-            occurrenceOneStart = rows[0].start;
-            occurrenceTwo = rows[1].id;
-            occurrenceTwoStart = rows[1].start;
-        });
-    });
-
-    // Person 3 coordinates Coffee Bar and nothing else — this is also the person
-    // §3.6's Reply-To resolution must land on, since the schedule's team has no
-    // leader of its own.
-    cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
-            personId: PERSON_COORDINATOR,
-            scopeType: "ministry",
-            scopeId: ministryA,
-        }, [200, 201]);
-    });
-});
-
-/** Put a setting back only if this run got far enough to learn what it was. */
-function restoreConfig(url, captured) {
-    if (captured === null) {
-        return;
+        setConfig(url, captured);
     }
-    setConfig(url, captured);
-}
 
-after(() => {
-    cleanupFixtures();
-    setConfig(EMAIL_ENABLED_URL, "1");
-    restoreConfig(SETTING_URL, originalVersion);
-    restoreConfig(SMTP_HOST_URL, originalSmtpHost);
-    restoreConfig(LEAD_HOURS_URL, originalLeadHours);
-    restoreConfig(DO_NOT_EMAIL_URL, originalDoNotEmail);
-    clearMail();
-});
+    after(() => {
+        cleanupFixtures();
+        setConfig(EMAIL_ENABLED_URL, "1");
+        restoreConfig(SETTING_URL, originalVersion);
+        restoreConfig(SMTP_HOST_URL, originalSmtpHost);
+        restoreConfig(LEAD_HOURS_URL, originalLeadHours);
+        restoreConfig(DO_NOT_EMAIL_URL, originalDoNotEmail);
+        clearMail();
+    });
 
-// ───────────────────────────────────────────────────────────────────────────
+    // ───────────────────────────────────────────────────────────────────────────
 
-describe("Volunteer v2 — outbox enqueue is idempotent (§2.14, §6.6)", () => {
-    beforeEach(resetWorkflow);
+    describe("Volunteer v2 — outbox enqueue is idempotent (§2.14, §6.6)", () => {
+        beforeEach(resetWorkflow);
 
-    it("notifying twice reuses the one row, and the read endpoint shows one", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                const url = `${VOLUNTEER_URL}/assignments/${assignment.id}/notify`;
+        it("notifying twice reuses the one row, and the read endpoint shows one", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    const url = `${VOLUNTEER_URL}/assignments/${assignment.id}/notify`;
 
-                api(COORDINATOR_KEY, "POST", url, {}).then((first) => {
-                    // assign() already enqueued it, so even the first explicit
-                    // notify finds the existing row — that IS the dedupe key
-                    // doing its job (§2.14).
-                    expect(first.body.created).to.be.false;
+                    api(COORDINATOR_KEY, "POST", url, {}).then((first) => {
+                        // assign() already enqueued it, so even the first explicit
+                        // notify finds the existing row — that IS the dedupe key
+                        // doing its job (§2.14).
+                        expect(first.body.created).to.be.false;
 
-                    api(COORDINATOR_KEY, "POST", url, {}).then((second) => {
-                        expect(second.body.created).to.be.false;
-                        expect(second.body.notification.id).to.eq(
-                            first.body.notification.id,
+                        api(COORDINATOR_KEY, "POST", url, {}).then((second) => {
+                            expect(second.body.created).to.be.false;
+                            expect(second.body.notification.id).to.eq(
+                                first.body.notification.id,
+                            );
+                        });
+                    });
+
+                    notifications(assignment.id).then((resp) => {
+                        expect(resp.body.notifications).to.have.length(1);
+                        const row = resp.body.notifications[0];
+                        expect(row.type).to.eq("assignment");
+                        expect(row.channel).to.eq("email");
+                        expect(row.status).to.eq("pending");
+                        expect(row.attempts).to.eq(0);
+                        expect(row.personId).to.eq(POOL_MEMBER_A);
+                        expect(row.dedupeKey).to.eq(
+                            `assignment:${assignment.id}:${POOL_MEMBER_A}`,
                         );
                     });
-                });
+                },
+            );
+        });
 
-                notifications(assignment.id).then((resp) => {
-                    expect(resp.body.notifications).to.have.length(1);
-                    const row = resp.body.notifications[0];
-                    expect(row.type).to.eq("assignment");
-                    expect(row.channel).to.eq("email");
-                    expect(row.status).to.eq("pending");
-                    expect(row.attempts).to.eq(0);
-                    expect(row.personId).to.eq(POOL_MEMBER_A);
-                    expect(row.dedupeKey).to.eq(
-                        `assignment:${assignment.id}:${POOL_MEMBER_A}`,
+        it("?force=1 re-arms the same row rather than adding a second", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    const key = `assignment:${assignment.id}:${POOL_MEMBER_A}`;
+                    forceOutbox(key, { vntf_Status: "sent", vntf_Attempts: 2 });
+
+                    api(
+                        COORDINATOR_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/assignments/${assignment.id}/notify?force=1`,
+                        {},
                     );
-                });
-            },
-        );
-    });
 
-    it("?force=1 re-arms the same row rather than adding a second", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                const key = `assignment:${assignment.id}:${POOL_MEMBER_A}`;
-                forceOutbox(key, { vntf_Status: "sent", vntf_Attempts: 2 });
+                    notifications(assignment.id).then((resp) => {
+                        expect(resp.body.notifications).to.have.length(1);
+                        expect(resp.body.notifications[0].status).to.eq("pending");
+                        expect(resp.body.notifications[0].attempts).to.eq(0);
+                    });
+                },
+            );
+        });
 
-                api(
-                    COORDINATOR_KEY,
-                    "POST",
-                    `${VOLUNTEER_URL}/assignments/${assignment.id}/notify?force=1`,
-                    {},
-                );
+        it("a drained row is not re-sent by the next drain", function () {
+            requireMailpit(this);
 
-                notifications(assignment.id).then((resp) => {
-                    expect(resp.body.notifications).to.have.length(1);
-                    expect(resp.body.notifications[0].status).to.eq("pending");
-                    expect(resp.body.notifications[0].attempts).to.eq(0);
-                });
-            },
-        );
-    });
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    const key = `assignment:${assignment.id}:${POOL_MEMBER_A}`;
 
-    it("a drained row is not re-sent by the next drain", function () {
-        requireMailpit(this);
-
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                const key = `assignment:${assignment.id}:${POOL_MEMBER_A}`;
-
-                drain();
-                outboxRow(key).then((row) => {
-                    expect(row.vntf_Status).to.eq("sent");
-                });
-                listMail().then((messages) => {
-                    expect(messages).to.have.length(1);
-                });
-
-                drain();
-                listMail().then((messages) => {
-                    expect(
-                        messages,
-                        "a sent row is never re-selected (§3.6 step 1)",
-                    ).to.have.length(1);
-                });
-            },
-        );
-    });
-});
-
-describe("Volunteer v2 — the drain delivers (§3.6, Appendix C)", () => {
-    beforeEach(resetWorkflow);
-
-    it("sends the assignment mail with the position, the ministry and the coordinator Reply-To", function () {
-        requireMailpit(this);
-
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                drain();
-
-                outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_A}`).then(
-                    (row) => {
+                    drain();
+                    outboxRow(key).then((row) => {
                         expect(row.vntf_Status).to.eq("sent");
-                        expect(row.vntf_SentDate).to.not.be.null;
-                        expect(row.vntf_LastError).to.be.null;
-                    },
-                );
+                    });
+                    listMail().then((messages) => {
+                        expect(messages).to.have.length(1);
+                    });
 
-                mailTo(MEMBER_A_EMAIL).then((message) => {
-                    // The church name prefix is the shape every BaseEmail
-                    // subclass in the tree already uses.
-                    expect(message.Subject).to.contain(churchName);
-                    expect(message.Subject.toLowerCase()).to.contain("serve");
-
-                    const body = `${message.Text || ""}\n${message.HTML || ""}`;
-                    expect(body, "the position name").to.contain(ESPRESSO_NAME);
-                    expect(body, "the ministry name").to.contain(MINISTRY_NAME);
-                    expect(body, "the church wall-clock time").to.contain("10:30 AM");
-                    // The CTA points into the Member Portal since #9867 — that is
-                    // where a volunteer's schedule is.
-                    expect(body, "the CTA into my schedule").to.contain(
-                        "/portal/volunteer/schedule",
-                    );
-
-                    // N10 / CR6: replies reach the coordinator, not the office.
-                    const replyTo = (message.ReplyTo || []).map((r) => r.Address);
-                    expect(replyTo).to.deep.eq([COORDINATOR_EMAIL]);
-                    // The From stays the church address (BaseEmail.php).
-                    expect(message.From.Address).to.eq("demo@churchcrm.io");
-                });
-            },
-        );
+                    drain();
+                    listMail().then((messages) => {
+                        expect(
+                            messages,
+                            "a sent row is never re-selected (§3.6 step 1)",
+                        ).to.have.length(1);
+                    });
+                },
+            );
+        });
     });
 
-    it("alerts every coordinator when a VOLUNTEER declines, and nobody when the coordinator records it", function () {
-        requireMailpit(this);
+    describe("Volunteer v2 — the drain delivers (§3.6, Appendix C)", () => {
+        beforeEach(resetWorkflow);
 
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
-            (assignment) => {
-                api(
-                    SELFEDIT_KEY,
-                    "POST",
-                    `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
-                    { response: "declined" },
-                );
+        it("sends the assignment mail with the position, the ministry and the coordinator Reply-To", function () {
+            requireMailpit(this);
 
-                drain();
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    drain();
 
-                outboxRow(
-                    `decline_alert:${assignment.id}:${PERSON_COORDINATOR}`,
-                ).then((row) => {
-                    expect(row.vntf_Status).to.eq("sent");
-                });
-
-                mailTo(COORDINATOR_EMAIL, "declined").then((message) => {
-                    const body = `${message.Text || ""}\n${message.HTML || ""}`;
-                    expect(body, "who declined").to.contain("Amanda");
-                    expect(body, "the position still short").to.contain(
-                        ESPRESSO_NAME,
+                    outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_A}`).then(
+                        (row) => {
+                            expect(row.vntf_Status).to.eq("sent");
+                            expect(row.vntf_SentDate).to.not.be.null;
+                            expect(row.vntf_LastError).to.be.null;
+                        },
                     );
-                    expect(body, "the gap link").to.contain("/ministries/occurrences/");
-                    expect(body, "how many are still needed").to.contain("1");
-                    // §3.6: a coordinator-facing decline alert replies to the
-                    // volunteer who declined.
-                    const replyTo = (message.ReplyTo || []).map((r) => r.Address);
-                    expect(replyTo).to.deep.eq(["amanda.black@example.com"]);
-                });
 
-                // The same decline also opened a gap, so the coordinator gets the
-                // occurrence-scoped alert too — and THAT one carries no Reply-To,
-                // because it names no single volunteer (§3.6).
-                outboxRowsOfType("gap_alert").then((rows) => {
-                    expect(rows).to.have.length(1);
-                    expect(rows[0].vntf_Status).to.eq("sent");
-                    expect(Number(rows[0].vntf_per_ID)).to.eq(PERSON_COORDINATOR);
-                });
+                    mailTo(MEMBER_A_EMAIL).then((message) => {
+                        // The church name prefix is the shape every BaseEmail
+                        // subclass in the tree already uses.
+                        expect(message.Subject).to.contain(churchName);
+                        expect(message.Subject.toLowerCase()).to.contain("serve");
 
-                mailTo(COORDINATOR_EMAIL, "still need to be filled").then(
-                    (message) => {
-                        expect(message.ReplyTo || []).to.have.length(0);
                         const body = `${message.Text || ""}\n${message.HTML || ""}`;
-                        expect(body, "which positions are short").to.contain(
+                        expect(body, "the position name").to.contain(ESPRESSO_NAME);
+                        expect(body, "the ministry name").to.contain(MINISTRY_NAME);
+                        expect(body, "the church wall-clock time").to.contain("10:30 AM");
+                        // The CTA points into the Member Portal since #9867 — that is
+                        // where a volunteer's schedule is.
+                        expect(body, "the CTA into my schedule").to.contain(
+                            "/portal/volunteer/schedule",
+                        );
+
+                        // N10 / CR6: replies reach the coordinator, not the office.
+                        const replyTo = (message.ReplyTo || []).map((r) => r.Address);
+                        expect(replyTo).to.deep.eq([COORDINATOR_EMAIL]);
+                        // The From stays the church address (BaseEmail.php).
+                        expect(message.From.Address).to.eq("demo@churchcrm.io");
+                    });
+                },
+            );
+        });
+
+        it("alerts every coordinator when a VOLUNTEER declines, and nobody when the coordinator records it", function () {
+            requireMailpit(this);
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
+                (assignment) => {
+                    api(
+                        SELFEDIT_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
+                        { response: "declined" },
+                    );
+
+                    drain();
+
+                    outboxRow(
+                        `decline_alert:${assignment.id}:${PERSON_COORDINATOR}`,
+                    ).then((row) => {
+                        expect(row.vntf_Status).to.eq("sent");
+                    });
+
+                    mailTo(COORDINATOR_EMAIL, "declined").then((message) => {
+                        const body = `${message.Text || ""}\n${message.HTML || ""}`;
+                        expect(body, "who declined").to.contain("Amanda");
+                        expect(body, "the position still short").to.contain(
                             ESPRESSO_NAME,
                         );
-                    },
-                );
-            },
-        );
-    });
+                        expect(body, "the gap link").to.contain("/ministries/occurrences/");
+                        expect(body, "how many are still needed").to.contain("1");
+                        // §3.6: a coordinator-facing decline alert replies to the
+                        // volunteer who declined.
+                        const replyTo = (message.ReplyTo || []).map((r) => r.Address);
+                        expect(replyTo).to.deep.eq(["amanda.black@example.com"]);
+                    });
 
-    it("a coordinator-recorded decline enqueues and sends no decline alert", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                api(
-                    COORDINATOR_KEY,
-                    "POST",
-                    `${VOLUNTEER_URL}/assignments/${assignment.id}/status`,
-                    { status: "declined" },
-                );
+                    // The same decline also opened a gap, so the coordinator gets the
+                    // occurrence-scoped alert too — and THAT one carries no Reply-To,
+                    // because it names no single volunteer (§3.6).
+                    outboxRowsOfType("gap_alert").then((rows) => {
+                        expect(rows).to.have.length(1);
+                        expect(rows[0].vntf_Status).to.eq("sent");
+                        expect(Number(rows[0].vntf_per_ID)).to.eq(PERSON_COORDINATOR);
+                    });
 
-                drain();
-
-                outboxRowsOfType("decline_alert").then((rows) => {
-                    expect(rows).to.have.length(0);
-                });
-            },
-        );
-    });
-
-    it("a decline removes the volunteer's own pending row before it can be sent", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
-            (assignment) => {
-                outboxRow(`assignment:${assignment.id}:${PERSON_VOLUNTEER}`);
-
-                api(
-                    SELFEDIT_KEY,
-                    "POST",
-                    `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
-                    { response: "declined" },
-                );
-
-                // cancelPendingFor() deleted it (§3.6) — so nothing is owed to
-                // somebody who has already said no.
-                dbOk(
-                    `SELECT vntf_ID FROM volunteer_notification_vntf WHERE vntf_DedupeKey = ?`,
-                    [`assignment:${assignment.id}:${PERSON_VOLUNTEER}`],
-                ).then((rows) => {
-                    expect(rows).to.have.length(0);
-                });
-            },
-        );
-    });
-});
-
-describe("Volunteer v2 — skipped is not failed (§2.14, N2/N3)", () => {
-    beforeEach(resetWorkflow);
-
-    afterEach(() => {
-        setConfig(EMAIL_ENABLED_URL, "1");
-        dbOk(`UPDATE person_per SET per_Email = ? WHERE per_ID = ?`, [
-            "julie.gregory@example.com",
-            POOL_MEMBER_C,
-        ]);
-        dbOk(`DELETE FROM record2property_r2p WHERE r2p_pro_ID = ? AND r2p_record_ID = ?`, [
-            DO_NOT_EMAIL_PROPERTY,
-            POOL_MEMBER_A,
-        ]);
-    });
-
-    it("skips every row while email is switched off, without an attempt", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                setConfig(EMAIL_ENABLED_URL, "0");
-                drain();
-
-                outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_A}`).then(
-                    (row) => {
-                        expect(row.vntf_Status).to.eq("skipped");
-                        expect(
-                            row.vntf_Attempts,
-                            "isEmailEnabled() is checked BEFORE sending (N2)",
-                        ).to.eq(0);
-                        expect(row.vntf_SentDate).to.be.null;
-                    },
-                );
-
-                listMail().then((messages) => {
-                    expect(messages).to.have.length(0);
-                });
-            },
-        );
-    });
-
-    it("skips a recipient who has no email address", () => {
-        dbOk(`UPDATE person_per SET per_Email = NULL WHERE per_ID = ?`, [
-            POOL_MEMBER_C,
-        ]);
-
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_C).then(
-            (assignment) => {
-                drain();
-
-                outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_C}`).then(
-                    (row) => {
-                        expect(row.vntf_Status).to.eq("skipped");
-                        expect(row.vntf_Attempts).to.eq(0);
-                    },
-                );
-            },
-        );
-    });
-
-    it("honours the do-not-email opt-out (N3)", () => {
-        dbOk(
-            `INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID, r2p_Value)
-             VALUES (?, ?, '')`,
-            [DO_NOT_EMAIL_PROPERTY, POOL_MEMBER_A],
-        );
-
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                drain();
-
-                outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_A}`).then(
-                    (row) => {
-                        expect(row.vntf_Status).to.eq("skipped");
-                        expect(row.vntf_Attempts).to.eq(0);
-                    },
-                );
-
-                listMail().then((messages) => {
-                    const addressed = messages.filter((m) =>
-                        (m.To || []).some((t) => t.Address === MEMBER_A_EMAIL),
+                    mailTo(COORDINATOR_EMAIL, "still need to be filled").then(
+                        (message) => {
+                            expect(message.ReplyTo || []).to.have.length(0);
+                            const body = `${message.Text || ""}\n${message.HTML || ""}`;
+                            expect(body, "which positions are short").to.contain(
+                                ESPRESSO_NAME,
+                            );
+                        },
                     );
-                    expect(addressed).to.have.length(0);
-                });
-            },
-        );
+                },
+            );
+        });
+
+        it("a coordinator-recorded decline enqueues and sends no decline alert", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    api(
+                        COORDINATOR_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/assignments/${assignment.id}/status`,
+                        { status: "declined" },
+                    );
+
+                    drain();
+
+                    outboxRowsOfType("decline_alert").then((rows) => {
+                        expect(rows).to.have.length(0);
+                    });
+                },
+            );
+        });
+
+        it("a decline removes the volunteer's own pending row before it can be sent", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then(
+                (assignment) => {
+                    outboxRow(`assignment:${assignment.id}:${PERSON_VOLUNTEER}`);
+
+                    api(
+                        SELFEDIT_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`,
+                        { response: "declined" },
+                    );
+
+                    // cancelPendingFor() deleted it (§3.6) — so nothing is owed to
+                    // somebody who has already said no.
+                    dbOk(
+                        `SELECT vntf_ID FROM volunteer_notification_vntf WHERE vntf_DedupeKey = ?`,
+                        [`assignment:${assignment.id}:${PERSON_VOLUNTEER}`],
+                    ).then((rows) => {
+                        expect(rows).to.have.length(0);
+                    });
+                },
+            );
+        });
     });
 
-    it("skips a reminder whose occurrence has already ended", () => {
-        // The occurrence is re-anchored to a past event of its own, which is the
-        // only way to put a generated occurrence in the past without rewriting a
-        // shared church event: its window comes from the event it points at
-        // (VolunteerScheduleService::resolveOccurrenceWindow).
-        let savedEventId = null;
-        let pastEventId = null;
+    describe("Volunteer v2 — skipped is not failed (§2.14, N2/N3)", () => {
+        beforeEach(resetWorkflow);
 
-        dbOk(`SELECT vocc_event_id FROM volunteer_occurrence_vocc WHERE vocc_ID = ?`, [
-            occurrenceTwo,
-        ]).then((rows) => {
-            savedEventId = rows[0].vocc_event_id;
+        afterEach(() => {
+            setConfig(EMAIL_ENABLED_URL, "1");
+            dbOk(`UPDATE person_per SET per_Email = ? WHERE per_ID = ?`, [
+                "julie.gregory@example.com",
+                POOL_MEMBER_C,
+            ]);
+            dbOk(`DELETE FROM record2property_r2p WHERE r2p_pro_ID = ? AND r2p_record_ID = ?`, [
+                DO_NOT_EMAIL_PROPERTY,
+                POOL_MEMBER_A,
+            ]);
         });
-        dbOk(
-            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+
+        it("skips every row while email is switched off, without an attempt", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    setConfig(EMAIL_ENABLED_URL, "0");
+                    drain();
+
+                    outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_A}`).then(
+                        (row) => {
+                            expect(row.vntf_Status).to.eq("skipped");
+                            expect(
+                                row.vntf_Attempts,
+                                "isEmailEnabled() is checked BEFORE sending (N2)",
+                            ).to.eq(0);
+                            expect(row.vntf_SentDate).to.be.null;
+                        },
+                    );
+
+                    listMail().then((messages) => {
+                        expect(messages).to.have.length(0);
+                    });
+                },
+            );
+        });
+
+        it("skips a recipient who has no email address", () => {
+            dbOk(`UPDATE person_per SET per_Email = NULL WHERE per_ID = ?`, [
+                POOL_MEMBER_C,
+            ]);
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_C).then(
+                (assignment) => {
+                    drain();
+
+                    outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_C}`).then(
+                        (row) => {
+                            expect(row.vntf_Status).to.eq("skipped");
+                            expect(row.vntf_Attempts).to.eq(0);
+                        },
+                    );
+                },
+            );
+        });
+
+        it("honours the do-not-email opt-out (N3)", () => {
+            dbOk(
+                `INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID, r2p_Value)
+             VALUES (?, ?, '')`,
+                [DO_NOT_EMAIL_PROPERTY, POOL_MEMBER_A],
+            );
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    drain();
+
+                    outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_A}`).then(
+                        (row) => {
+                            expect(row.vntf_Status).to.eq("skipped");
+                            expect(row.vntf_Attempts).to.eq(0);
+                        },
+                    );
+
+                    listMail().then((messages) => {
+                        const addressed = messages.filter((m) =>
+                            (m.To || []).some((t) => t.Address === MEMBER_A_EMAIL),
+                        );
+                        expect(addressed).to.have.length(0);
+                    });
+                },
+            );
+        });
+
+        it("skips a reminder whose occurrence has already ended", () => {
+            // The occurrence is re-anchored to a past event of its own, which is the
+            // only way to put a generated occurrence in the past without rewriting a
+            // shared church event: its window comes from the event it points at
+            // (VolunteerScheduleService::resolveOccurrenceWindow).
+            let savedEventId = null;
+            let pastEventId = null;
+
+            dbOk(`SELECT vocc_event_id FROM volunteer_occurrence_vocc WHERE vocc_ID = ?`, [
+                occurrenceTwo,
+            ]).then((rows) => {
+                savedEventId = rows[0].vocc_event_id;
+            });
+            dbOk(
+                `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
              VALUES (?, ?, '', '', DATE_SUB(NOW(), INTERVAL 3 DAY), DATE_SUB(NOW(), INTERVAL 3 DAY), 0)`,
-            [CHURCH_SERVICE_TYPE, `${EVENT_TITLE} Past`],
-        ).then((result) => {
-            pastEventId = result.insertId;
-        });
+                [CHURCH_SERVICE_TYPE, `${EVENT_TITLE} Past`],
+            ).then((result) => {
+                pastEventId = result.insertId;
+            });
 
-        assign(COORDINATOR_KEY, occurrenceTwo, posMilk, POOL_MEMBER_B).then(
-            (assignment) => {
-                const key = `reminder:${assignment.id}:${POOL_MEMBER_B}`;
+            assign(COORDINATOR_KEY, occurrenceTwo, posMilk, POOL_MEMBER_B).then(
+                (assignment) => {
+                    const key = `reminder:${assignment.id}:${POOL_MEMBER_B}`;
 
-                dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_event_id = ? WHERE vocc_ID = ?`, [
-                    pastEventId,
-                    occurrenceTwo,
-                ]);
+                    dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_event_id = ? WHERE vocc_ID = ?`, [
+                        pastEventId,
+                        occurrenceTwo,
+                    ]);
 
-                dbOk(
-                    `INSERT INTO volunteer_notification_vntf
+                    dbOk(
+                        `INSERT INTO volunteer_notification_vntf
                         (vntf_Type, vntf_Channel, vntf_per_ID, vntf_vasg_ID, vntf_vocc_ID,
                          vntf_DedupeKey, vntf_ScheduledFor, vntf_Status, vntf_Attempts)
                      VALUES ('reminder', 'email', ?, ?, ?, ?, DATE_SUB(NOW(), INTERVAL 1 DAY), 'pending', 0)`,
-                    [POOL_MEMBER_B, assignment.id, occurrenceTwo, key],
-                );
+                        [POOL_MEMBER_B, assignment.id, occurrenceTwo, key],
+                    );
 
-                drain();
+                    drain();
 
-                outboxRow(key).then((row) => {
-                    expect(row.vntf_Status).to.eq("skipped");
-                    expect(row.vntf_Attempts).to.eq(0);
-                });
+                    outboxRow(key).then((row) => {
+                        expect(row.vntf_Status).to.eq("skipped");
+                        expect(row.vntf_Attempts).to.eq(0);
+                    });
 
-                cy.then(() => {
-                    dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_event_id = ? WHERE vocc_ID = ?`, [
-                        savedEventId,
-                        occurrenceTwo,
-                    ]);
-                    dbOk(`DELETE FROM events_event WHERE event_id = ?`, [pastEventId]);
-                });
-            },
-        );
-    });
-});
-
-describe("Volunteer v2 — the retry rule (§2.14, amended)", () => {
-    beforeEach(() => {
-        resetWorkflow();
-        // Nothing is listening on port 2, so PHPMailer fails to connect and
-        // send() returns false with an ErrorInfo — a genuine delivery failure,
-        // while isEmailEnabled() stays true so the row cannot be `skipped`.
-        setConfig(SMTP_HOST_URL, "127.0.0.1:2");
-    });
-
-    afterEach(() => {
-        restoreConfig(SMTP_HOST_URL, originalSmtpHost);
-    });
-
-    it("leaves a failed row pending with Attempts 1 and the error recorded", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                const key = `assignment:${assignment.id}:${POOL_MEMBER_A}`;
-
-                drain();
-
-                outboxRow(key).then((row) => {
-                    expect(
-                        row.vntf_Status,
-                        "a failure below the cap stays selectable (§2.14)",
-                    ).to.eq("pending");
-                    expect(row.vntf_Attempts).to.eq(1);
-                    expect(row.vntf_LastError).to.be.a("string").and.not.be.empty;
-                    expect(row.vntf_LastAttemptDate).to.not.be.null;
-                    expect(row.vntf_SentDate).to.be.null;
-                });
-
-                // The state change committed and stays committed: a delivery
-                // failure never rolls the assignment back.
-                api(
-                    ADMIN_KEY,
-                    "GET",
-                    `${VOLUNTEER_URL}/assignments/${assignment.id}`,
-                ).then((resp) => {
-                    expect(resp.body.assignment.status).to.eq("pending");
-                });
-            },
-        );
-    });
-
-    it("retries on the next drain, counting up", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                const key = `assignment:${assignment.id}:${POOL_MEMBER_A}`;
-
-                drain();
-                drain();
-
-                outboxRow(key).then((row) => {
-                    expect(row.vntf_Status).to.eq("pending");
-                    expect(row.vntf_Attempts).to.eq(2);
-                });
-            },
-        );
-    });
-
-    it("gives up at the fifth attempt, and failed is terminal", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                const key = `assignment:${assignment.id}:${POOL_MEMBER_A}`;
-
-                // Four failures already recorded; the next one is the cap.
-                forceOutbox(key, { vntf_Attempts: 4 });
-                drain();
-
-                outboxRow(key).then((row) => {
-                    expect(row.vntf_Status).to.eq("failed");
-                    expect(row.vntf_Attempts).to.eq(5);
-                });
-
-                // Terminal: the drain never selects it again, so the counter
-                // cannot keep climbing.
-                drain();
-                outboxRow(key).then((row) => {
-                    expect(row.vntf_Status).to.eq("failed");
-                    expect(row.vntf_Attempts).to.eq(5);
-                });
-
-                notifications(assignment.id).then((resp) => {
-                    expect(resp.body.notifications[0].status).to.eq("failed");
-                    expect(resp.body.notifications[0].lastError).to.be.a("string");
-                });
-            },
-        );
-    });
-});
-
-describe("Volunteer v2 — reminders (D11, Appendix B, §3.6)", () => {
-    beforeEach(resetWorkflow);
-
-    afterEach(() => {
-        setConfig(LEAD_HOURS_URL, "0");
-    });
-
-    it("schedules no reminder for an occurrence outside the lead window", () => {
-        assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
-            () => {
-                setConfig(LEAD_HOURS_URL, "1");
-                drain();
-
-                outboxRowsOfType("reminder").then((rows) => {
-                    expect(rows).to.have.length(0);
-                });
-            },
-        );
-    });
-
-    it("schedules one reminder per live assignment inside the lead window, at start minus the lead", () => {
-        // 21 days covers every occurrence the fixture generates, so the window
-        // question is decided by the setting rather than by which weekday the
-        // suite happens to run on.
-        const lead = 21 * 24;
-
-        assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                setConfig(LEAD_HOURS_URL, String(lead));
-                drain();
-
-                outboxRow(`reminder:${assignment.id}:${POOL_MEMBER_A}`).then(
-                    (row) => {
-                        expect(row.vntf_Type).to.eq("reminder");
-                        expect(row.vntf_ScheduledFor).to.eq(
-                            minusHours(occurrenceTwoStart, lead),
-                        );
-                        expect(Number(row.vntf_vasg_ID)).to.eq(assignment.id);
-                    },
-                );
-
-                // Idempotent on the dedupe key: a second timer-job run adds none.
-                drain();
-                outboxRowsOfType("reminder").then((rows) => {
-                    expect(rows).to.have.length(1);
-                });
-            },
-        );
-    });
-
-    it("counts the lead back from the SHIFT start, the schedule's offsets included (D21)", () => {
-        const lead = 21 * 24;
-
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleA}`, { startOffsetMinutes: -45 });
-        assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}`).then((resp) => {
-                    expect(resp.body.occurrence.start).to.eq(minusHours(occurrenceTwoStart, 0.75));
-                });
-
-                setConfig(LEAD_HOURS_URL, String(lead));
-                drain();
-
-                outboxRow(`reminder:${assignment.id}:${POOL_MEMBER_A}`).then((row) => {
-                    expect(row.vntf_ScheduledFor).to.eq(minusHours(occurrenceTwoStart, lead + 0.75));
-                });
-            },
-        );
-        cy.then(() => {
-            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleA}`, { startOffsetMinutes: 0 });
+                    cy.then(() => {
+                        dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_event_id = ? WHERE vocc_ID = ?`, [
+                            savedEventId,
+                            occurrenceTwo,
+                        ]);
+                        dbOk(`DELETE FROM events_event WHERE event_id = ?`, [pastEventId]);
+                    });
+                },
+            );
         });
     });
 
-    it("schedules no reminder for an assignment that is no longer live", () => {
-        assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                api(
-                    COORDINATOR_KEY,
-                    "POST",
-                    `${VOLUNTEER_URL}/assignments/${assignment.id}/status`,
-                    { status: "cancelled" },
-                );
+    describe("Volunteer v2 — the retry rule (§2.14, amended)", () => {
+        beforeEach(() => {
+            resetWorkflow();
+            // Nothing is listening on port 2, so PHPMailer fails to connect and
+            // send() returns false with an ErrorInfo — a genuine delivery failure,
+            // while isEmailEnabled() stays true so the row cannot be `skipped`.
+            setConfig(SMTP_HOST_URL, "127.0.0.1:2");
+        });
 
-                setConfig(LEAD_HOURS_URL, String(21 * 24));
-                drain();
+        afterEach(() => {
+            restoreConfig(SMTP_HOST_URL, originalSmtpHost);
+        });
 
-                outboxRowsOfType("reminder").then((rows) => {
-                    expect(rows).to.have.length(0);
-                });
-            },
-        );
-    });
+        it("leaves a failed row pending with Attempts 1 and the error recorded", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    const key = `assignment:${assignment.id}:${POOL_MEMBER_A}`;
 
-    it("delivers the reminder with the occurrence details", function () {
-        requireMailpit(this);
+                    drain();
 
-        assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                // Drain the assignment mail first, so the only message left to
-                // find is the reminder.
-                drain();
-                clearMail();
+                    outboxRow(key).then((row) => {
+                        expect(
+                            row.vntf_Status,
+                            "a failure below the cap stays selectable (§2.14)",
+                        ).to.eq("pending");
+                        expect(row.vntf_Attempts).to.eq(1);
+                        expect(row.vntf_LastError).to.be.a("string").and.not.be.empty;
+                        expect(row.vntf_LastAttemptDate).to.not.be.null;
+                        expect(row.vntf_SentDate).to.be.null;
+                    });
 
-                setConfig(LEAD_HOURS_URL, String(21 * 24));
-                drain();
+                    // The state change committed and stays committed: a delivery
+                    // failure never rolls the assignment back.
+                    api(
+                        ADMIN_KEY,
+                        "GET",
+                        `${VOLUNTEER_URL}/assignments/${assignment.id}`,
+                    ).then((resp) => {
+                        expect(resp.body.assignment.status).to.eq("pending");
+                    });
+                },
+            );
+        });
 
-                outboxRow(`reminder:${assignment.id}:${POOL_MEMBER_A}`).then(
-                    (row) => {
-                        expect(row.vntf_Status).to.eq("sent");
-                    },
-                );
+        it("retries on the next drain, counting up", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    const key = `assignment:${assignment.id}:${POOL_MEMBER_A}`;
 
-                mailTo(MEMBER_A_EMAIL).then((message) => {
-                    expect(message.Subject.toLowerCase()).to.contain("reminder");
-                    const body = `${message.Text || ""}\n${message.HTML || ""}`;
-                    expect(body).to.contain(ESPRESSO_NAME);
-                    expect(body).to.contain(MINISTRY_NAME);
-                    const replyTo = (message.ReplyTo || []).map((r) => r.Address);
-                    expect(replyTo).to.deep.eq([COORDINATOR_EMAIL]);
-                });
-            },
-        );
-    });
-});
+                    drain();
+                    drain();
 
-describe("Volunteer v2 — GET /assignments/{id}/notifications is scoped (§4.8)", () => {
-    let assignmentId = 0;
+                    outboxRow(key).then((row) => {
+                        expect(row.vntf_Status).to.eq("pending");
+                        expect(row.vntf_Attempts).to.eq(2);
+                    });
+                },
+            );
+        });
 
-    before(() => {
-        cleanupWorkflowRows();
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
-            (assignment) => {
-                assignmentId = assignment.id;
-            },
-        );
-    });
+        it("gives up at the fifth attempt, and failed is terminal", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    const key = `assignment:${assignment.id}:${POOL_MEMBER_A}`;
 
-    after(cleanupWorkflowRows);
+                    // Four failures already recorded; the next one is the cap.
+                    forceOutbox(key, { vntf_Attempts: 4 });
+                    drain();
 
-    it("is refused without authentication", () => {
-        cy.request({
-            method: "GET",
-            url: `${VOLUNTEER_URL}/assignments/${assignmentId}/notifications`,
-            failOnStatusCode: false,
-        }).then((resp) => {
-            expect(resp.status).to.eq(401);
+                    outboxRow(key).then((row) => {
+                        expect(row.vntf_Status).to.eq("failed");
+                        expect(row.vntf_Attempts).to.eq(5);
+                    });
+
+                    // Terminal: the drain never selects it again, so the counter
+                    // cannot keep climbing.
+                    drain();
+                    outboxRow(key).then((row) => {
+                        expect(row.vntf_Status).to.eq("failed");
+                        expect(row.vntf_Attempts).to.eq(5);
+                    });
+
+                    notifications(assignment.id).then((resp) => {
+                        expect(resp.body.notifications[0].status).to.eq("failed");
+                        expect(resp.body.notifications[0].lastError).to.be.a("string");
+                    });
+                },
+            );
         });
     });
 
-    it("is refused to a caller with no volunteer rights", () => {
-        notifications(assignmentId, PLAINAUTH_KEY, 403);
-    });
+    describe("Volunteer v2 — reminders (D11, Appendix B, §3.6)", () => {
+        beforeEach(resetWorkflow);
 
-    it("is refused to the volunteer whose assignment it is", () => {
-        // The member surface is /api/ministries/me; the coordinator read is not
-        // a self-service endpoint (§3.3.3).
-        notifications(assignmentId, SELFEDIT_KEY, 403);
-    });
+        afterEach(() => {
+            setConfig(LEAD_HOURS_URL, "0");
+        });
 
-    it("is allowed to the coordinator of that ministry", () => {
-        notifications(assignmentId, COORDINATOR_KEY).then((resp) => {
-            expect(resp.body.notifications).to.have.length(1);
-            expect(resp.body.notifications[0].assignmentId).to.eq(assignmentId);
+        it("schedules no reminder for an occurrence outside the lead window", () => {
+            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
+                () => {
+                    setConfig(LEAD_HOURS_URL, "1");
+                    drain();
+
+                    outboxRowsOfType("reminder").then((rows) => {
+                        expect(rows).to.have.length(0);
+                    });
+                },
+            );
+        });
+
+        it("schedules one reminder per live assignment inside the lead window, at start minus the lead", () => {
+            // 21 days covers every occurrence the fixture generates, so the window
+            // question is decided by the setting rather than by which weekday the
+            // suite happens to run on.
+            const lead = 21 * 24;
+
+            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    setConfig(LEAD_HOURS_URL, String(lead));
+                    drain();
+
+                    outboxRow(`reminder:${assignment.id}:${POOL_MEMBER_A}`).then(
+                        (row) => {
+                            expect(row.vntf_Type).to.eq("reminder");
+                            expect(row.vntf_ScheduledFor).to.eq(
+                                minusHours(occurrenceTwoStart, lead),
+                            );
+                            expect(Number(row.vntf_vasg_ID)).to.eq(assignment.id);
+                        },
+                    );
+
+                    // Idempotent on the dedupe key: a second timer-job run adds none.
+                    drain();
+                    outboxRowsOfType("reminder").then((rows) => {
+                        expect(rows).to.have.length(1);
+                    });
+                },
+            );
+        });
+
+        it("counts the lead back from the SHIFT start, the schedule's offsets included (D21)", () => {
+            const lead = 21 * 24;
+
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleA}`, { startOffsetMinutes: -45 });
+            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}`).then((resp) => {
+                        expect(resp.body.occurrence.start).to.eq(minusHours(occurrenceTwoStart, 0.75));
+                    });
+
+                    setConfig(LEAD_HOURS_URL, String(lead));
+                    drain();
+
+                    outboxRow(`reminder:${assignment.id}:${POOL_MEMBER_A}`).then((row) => {
+                        expect(row.vntf_ScheduledFor).to.eq(minusHours(occurrenceTwoStart, lead + 0.75));
+                    });
+                },
+            );
+            cy.then(() => {
+                api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleA}`, { startOffsetMinutes: 0 });
+            });
+        });
+
+        it("schedules no reminder for an assignment that is no longer live", () => {
+            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    api(
+                        COORDINATOR_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/assignments/${assignment.id}/status`,
+                        { status: "cancelled" },
+                    );
+
+                    setConfig(LEAD_HOURS_URL, String(21 * 24));
+                    drain();
+
+                    outboxRowsOfType("reminder").then((rows) => {
+                        expect(rows).to.have.length(0);
+                    });
+                },
+            );
+        });
+
+        it("delivers the reminder with the occurrence details", function () {
+            requireMailpit(this);
+
+            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    // Drain the assignment mail first, so the only message left to
+                    // find is the reminder.
+                    drain();
+                    clearMail();
+
+                    setConfig(LEAD_HOURS_URL, String(21 * 24));
+                    drain();
+
+                    outboxRow(`reminder:${assignment.id}:${POOL_MEMBER_A}`).then(
+                        (row) => {
+                            expect(row.vntf_Status).to.eq("sent");
+                        },
+                    );
+
+                    mailTo(MEMBER_A_EMAIL).then((message) => {
+                        expect(message.Subject.toLowerCase()).to.contain("reminder");
+                        const body = `${message.Text || ""}\n${message.HTML || ""}`;
+                        expect(body).to.contain(ESPRESSO_NAME);
+                        expect(body).to.contain(MINISTRY_NAME);
+                        const replyTo = (message.ReplyTo || []).map((r) => r.Address);
+                        expect(replyTo).to.deep.eq([COORDINATOR_EMAIL]);
+                    });
+                },
+            );
         });
     });
 
-    it("404s for an assignment that does not exist", () => {
-        notifications(99999999, ADMIN_KEY, 404);
+    describe("Volunteer v2 — GET /assignments/{id}/notifications is scoped (§4.8)", () => {
+        let assignmentId = 0;
+
+        before(() => {
+            cleanupWorkflowRows();
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then(
+                (assignment) => {
+                    assignmentId = assignment.id;
+                },
+            );
+        });
+
+        after(cleanupWorkflowRows);
+
+        it("is refused without authentication", () => {
+            cy.request({
+                method: "GET",
+                url: `${VOLUNTEER_URL}/assignments/${assignmentId}/notifications`,
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(401);
+            });
+        });
+
+        it("is refused to a caller with no volunteer rights", () => {
+            notifications(assignmentId, PLAINAUTH_KEY, 403);
+        });
+
+        it("is refused to the volunteer whose assignment it is", () => {
+            // The member surface is /api/ministries/me; the coordinator read is not
+            // a self-service endpoint (§3.3.3).
+            notifications(assignmentId, SELFEDIT_KEY, 403);
+        });
+
+        it("is allowed to the coordinator of that ministry", () => {
+            notifications(assignmentId, COORDINATOR_KEY).then((resp) => {
+                expect(resp.body.notifications).to.have.length(1);
+                expect(resp.body.notifications[0].assignmentId).to.eq(assignmentId);
+            });
+        });
+
+        it("404s for an assignment that does not exist", () => {
+            notifications(99999999, ADMIN_KEY, 404);
+        });
     });
 });

@@ -140,49 +140,50 @@ function cleanupFixtures() {
 
 // ── suite ──────────────────────────────────────────────────────────────────
 
-before(() => {
-    cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-        originalVersion = resp.body.value ?? resp.body.data ?? "v1";
+describe("Volunteer v2 — the ministry's own calendar (#9869, deferred from #9866)", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
+            originalVersion = resp.body.value ?? resp.body.data ?? "v1";
+        });
+        setVersion("v2");
+
+        cleanupFixtures();
+
+        createMinistryViaApi("Ministry A").then((body) => {
+            ministryA = body.ministry.id;
+            calendarA = body.calendarId;
+        });
+        createMinistryViaApi("Ministry B").then((body) => {
+            ministryB = body.ministry.id;
+            calendarB = body.calendarId;
+        });
+
+        cy.then(() => {
+            // Person 3 coordinates ministry A only, and holds no bAddEvent.
+            api(
+                ADMIN_KEY,
+                "POST",
+                "/api/ministries/scopes",
+                {
+                    personId: PERSON_COORDINATOR,
+                    scopeType: "ministry",
+                    scopeId: ministryA,
+                },
+                [200, 201],
+            );
+        });
     });
-    setVersion("v2");
 
-    cleanupFixtures();
-
-    createMinistryViaApi("Ministry A").then((body) => {
-        ministryA = body.ministry.id;
-        calendarA = body.calendarId;
-    });
-    createMinistryViaApi("Ministry B").then((body) => {
-        ministryB = body.ministry.id;
-        calendarB = body.calendarId;
+    after(() => {
+        cleanupFixtures();
+        setVersion(originalVersion);
     });
 
-    cy.then(() => {
-        // Person 3 coordinates ministry A only, and holds no bAddEvent.
-        api(
-            ADMIN_KEY,
-            "POST",
-            "/api/ministries/scopes",
-            {
-                personId: PERSON_COORDINATOR,
-                scopeType: "ministry",
-                scopeId: ministryA,
-            },
-            [200, 201],
-        );
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    setVersion(originalVersion);
-});
-
-describe("Volunteer v2 — the ministry calendar (#9869)", () => {
-    describe("the schema", () => {
-        it("calendars.ministry_id carries an ON DELETE SET NULL FK to volunteer_ministry_vmin", () => {
-            dbOk(
-                `SELECT rc.DELETE_RULE, kcu.REFERENCED_TABLE_NAME, kcu.REFERENCED_COLUMN_NAME
+    describe("Volunteer v2 — the ministry calendar (#9869)", () => {
+        describe("the schema", () => {
+            it("calendars.ministry_id carries an ON DELETE SET NULL FK to volunteer_ministry_vmin", () => {
+                dbOk(
+                    `SELECT rc.DELETE_RULE, kcu.REFERENCED_TABLE_NAME, kcu.REFERENCED_COLUMN_NAME
                    FROM information_schema.REFERENTIAL_CONSTRAINTS rc
                    JOIN information_schema.KEY_COLUMN_USAGE kcu
                      ON kcu.CONSTRAINT_NAME = rc.CONSTRAINT_NAME
@@ -190,351 +191,352 @@ describe("Volunteer v2 — the ministry calendar (#9869)", () => {
                   WHERE rc.CONSTRAINT_SCHEMA = DATABASE()
                     AND rc.TABLE_NAME = 'calendars'
                     AND kcu.COLUMN_NAME = 'ministry_id'`,
-            ).then((rows) => {
-                expect(rows.length, "the constraint exists").to.eq(1);
-                expect(rows[0].REFERENCED_TABLE_NAME).to.eq(
-                    "volunteer_ministry_vmin",
-                );
-                expect(rows[0].REFERENCED_COLUMN_NAME).to.eq("vmin_ID");
-                expect(rows[0].DELETE_RULE).to.eq("SET NULL");
+                ).then((rows) => {
+                    expect(rows.length, "the constraint exists").to.eq(1);
+                    expect(rows[0].REFERENCED_TABLE_NAME).to.eq(
+                        "volunteer_ministry_vmin",
+                    );
+                    expect(rows[0].REFERENCED_COLUMN_NAME).to.eq("vmin_ID");
+                    expect(rows[0].DELETE_RULE).to.eq("SET NULL");
+                });
             });
-        });
 
-        it("a ministry deleted behind the service's back nulls the link, never the calendar", () => {
-            let doomedMinistry = 0;
-            let doomedCalendar = 0;
+            it("a ministry deleted behind the service's back nulls the link, never the calendar", () => {
+                let doomedMinistry = 0;
+                let doomedCalendar = 0;
 
-            dbOk(
-                `INSERT INTO volunteer_ministry_vmin
+                dbOk(
+                    `INSERT INTO volunteer_ministry_vmin
                     (vmin_Name, vmin_Description, vmin_Active, vmin_CreatedDate)
                  VALUES (?, 'ministry calendar FK fixture', 1, NOW())`,
-                [`${PREFIX} FK Ministry`],
-            )
-                .then((rows) => {
-                    doomedMinistry = rows.insertId;
-                    return dbOk(
-                        `INSERT INTO calendars (name, foregroundColor, backgroundColor, ministry_id)
-                         VALUES (?, 'FFFFFF', '2E7D32', ?)`,
-                        [`${PREFIX} FK Calendar`, doomedMinistry],
-                    );
-                })
-                .then((rows) => {
-                    doomedCalendar = rows.insertId;
-                    return dbOk(
-                        `DELETE FROM volunteer_ministry_vmin WHERE vmin_ID = ?`,
-                        [doomedMinistry],
-                    );
-                })
-                .then(() =>
-                    dbOk(
-                        `SELECT ministry_id FROM calendars WHERE calendar_id = ?`,
-                        [doomedCalendar],
-                    ),
+                    [`${PREFIX} FK Ministry`],
                 )
-                .then((rows) => {
-                    expect(rows.length, "the calendar survived").to.eq(1);
-                    expect(rows[0].ministry_id, "the link was nulled").to.eq(
-                        null,
-                    );
-                });
+                    .then((rows) => {
+                        doomedMinistry = rows.insertId;
+                        return dbOk(
+                            `INSERT INTO calendars (name, foregroundColor, backgroundColor, ministry_id)
+                         VALUES (?, 'FFFFFF', '2E7D32', ?)`,
+                            [`${PREFIX} FK Calendar`, doomedMinistry],
+                        );
+                    })
+                    .then((rows) => {
+                        doomedCalendar = rows.insertId;
+                        return dbOk(
+                            `DELETE FROM volunteer_ministry_vmin WHERE vmin_ID = ?`,
+                            [doomedMinistry],
+                        );
+                    })
+                    .then(() =>
+                        dbOk(
+                            `SELECT ministry_id FROM calendars WHERE calendar_id = ?`,
+                            [doomedCalendar],
+                        ),
+                    )
+                    .then((rows) => {
+                        expect(rows.length, "the calendar survived").to.eq(1);
+                        expect(rows[0].ministry_id, "the link was nulled").to.eq(
+                            null,
+                        );
+                    });
+            });
         });
-    });
 
-    describe("the lifecycle (§5.3, the D19 shape)", () => {
-        it("creating a ministry creates its calendar, named after it and owned by it", () => {
-            expect(calendarA, "the create response names the calendar").to.be.a(
-                "number",
-            );
-            expect(calendarA).to.be.greaterThan(0);
+        describe("the lifecycle (§5.3, the D19 shape)", () => {
+            it("creating a ministry creates its calendar, named after it and owned by it", () => {
+                expect(calendarA, "the create response names the calendar").to.be.a(
+                    "number",
+                );
+                expect(calendarA).to.be.greaterThan(0);
 
-            dbOk(
-                `SELECT name, ministry_id, backgroundColor, foregroundColor, accesstoken
+                dbOk(
+                    `SELECT name, ministry_id, backgroundColor, foregroundColor, accesstoken
                    FROM calendars WHERE calendar_id = ?`,
-                [calendarA],
-            ).then((rows) => {
-                expect(rows.length).to.eq(1);
-                expect(rows[0].name).to.eq(`${PREFIX} Ministry A`);
-                expect(Number(rows[0].ministry_id)).to.eq(ministryA);
-                // A colour from the palette, not an empty column: the swatch in the
-                // portal legend has to mean something on day one.
-                expect(rows[0].backgroundColor).to.match(/^[0-9A-Fa-f]{6}$/);
-                expect(rows[0].foregroundColor).to.match(/^[0-9A-Fa-f]{6}$/);
-                // Never published by default — that is an administrator's decision.
-                expect(rows[0].accesstoken).to.eq(null);
-            });
-        });
-
-        it("gives two ministries two different calendars", () => {
-            expect(calendarB).to.be.greaterThan(0);
-            expect(calendarB, "not the same row").to.not.eq(calendarA);
-
-            dbOk(
-                `SELECT COUNT(*) AS n FROM calendars WHERE ministry_id IN (?, ?)`,
-                [ministryA, ministryB],
-            ).then((rows) => {
-                expect(Number(rows[0].n)).to.eq(2);
-            });
-        });
-
-        it("renaming the ministry renames its calendar", () => {
-            api(
-                ADMIN_KEY,
-                "POST",
-                `/api/ministries/ministries/${ministryA}`,
-                { name: `${PREFIX} Ministry A Renamed` },
-                200,
-            );
-
-            dbOk(`SELECT name FROM calendars WHERE calendar_id = ?`, [
-                calendarA,
-            ]).then((rows) => {
-                expect(rows[0].name).to.eq(`${PREFIX} Ministry A Renamed`);
+                    [calendarA],
+                ).then((rows) => {
+                    expect(rows.length).to.eq(1);
+                    expect(rows[0].name).to.eq(`${PREFIX} Ministry A`);
+                    expect(Number(rows[0].ministry_id)).to.eq(ministryA);
+                    // A colour from the palette, not an empty column: the swatch in the
+                    // portal legend has to mean something on day one.
+                    expect(rows[0].backgroundColor).to.match(/^[0-9A-Fa-f]{6}$/);
+                    expect(rows[0].foregroundColor).to.match(/^[0-9A-Fa-f]{6}$/);
+                    // Never published by default — that is an administrator's decision.
+                    expect(rows[0].accesstoken).to.eq(null);
+                });
             });
 
-            // Put it back so the pin tests below read as they were written.
-            api(
-                ADMIN_KEY,
-                "POST",
-                `/api/ministries/ministries/${ministryA}`,
-                { name: `${PREFIX} Ministry A` },
-                200,
-            );
-        });
+            it("gives two ministries two different calendars", () => {
+                expect(calendarB).to.be.greaterThan(0);
+                expect(calendarB, "not the same row").to.not.eq(calendarA);
 
-        it("deleting the ministry deletes its calendar", () => {
-            let doomedMinistry = 0;
-            let doomedCalendar = 0;
+                dbOk(
+                    `SELECT COUNT(*) AS n FROM calendars WHERE ministry_id IN (?, ?)`,
+                    [ministryA, ministryB],
+                ).then((rows) => {
+                    expect(Number(rows[0].n)).to.eq(2);
+                });
+            });
 
-            createMinistryViaApi("Disposable").then((body) => {
-                doomedMinistry = body.ministry.id;
-                doomedCalendar = body.calendarId;
-                expect(doomedCalendar).to.be.greaterThan(0);
-
-                // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
-                api(ADMIN_KEY, "POST", `/api/ministries/ministries/${doomedMinistry}`, { active: false }, 200);
+            it("renaming the ministry renames its calendar", () => {
                 api(
                     ADMIN_KEY,
-                    "DELETE",
-                    `/api/ministries/ministries/${doomedMinistry}`,
-                    null,
+                    "POST",
+                    `/api/ministries/ministries/${ministryA}`,
+                    { name: `${PREFIX} Ministry A Renamed` },
+                    200,
+                );
+
+                dbOk(`SELECT name FROM calendars WHERE calendar_id = ?`, [
+                    calendarA,
+                ]).then((rows) => {
+                    expect(rows[0].name).to.eq(`${PREFIX} Ministry A Renamed`);
+                });
+
+                // Put it back so the pin tests below read as they were written.
+                api(
+                    ADMIN_KEY,
+                    "POST",
+                    `/api/ministries/ministries/${ministryA}`,
+                    { name: `${PREFIX} Ministry A` },
+                    200,
+                );
+            });
+
+            it("deleting the ministry deletes its calendar", () => {
+                let doomedMinistry = 0;
+                let doomedCalendar = 0;
+
+                createMinistryViaApi("Disposable").then((body) => {
+                    doomedMinistry = body.ministry.id;
+                    doomedCalendar = body.calendarId;
+                    expect(doomedCalendar).to.be.greaterThan(0);
+
+                    // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
+                    api(ADMIN_KEY, "POST", `/api/ministries/ministries/${doomedMinistry}`, { active: false }, 200);
+                    api(
+                        ADMIN_KEY,
+                        "DELETE",
+                        `/api/ministries/ministries/${doomedMinistry}`,
+                        null,
+                        200,
+                    );
+
+                    dbOk(
+                        `SELECT calendar_id FROM calendars WHERE calendar_id = ?`,
+                        [doomedCalendar],
+                    ).then((rows) => {
+                        expect(
+                            rows.length,
+                            "the calendar went with the ministry, not SET NULL",
+                        ).to.eq(0);
+                    });
+                });
+            });
+        });
+
+        describe("a coordinator without Add Events (§5.3, the pin exception)", () => {
+            it("pins an event to their OWN ministry's calendar", () => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    "/api/events",
+                    eventBody({
+                        Title: `${PREFIX} Own Pin`,
+                        MinistryId: ministryA,
+                        PinnedCalendars: [calendarA],
+                    }),
                     200,
                 );
 
                 dbOk(
-                    `SELECT calendar_id FROM calendars WHERE calendar_id = ?`,
-                    [doomedCalendar],
-                ).then((rows) => {
-                    expect(
-                        rows.length,
-                        "the calendar went with the ministry, not SET NULL",
-                    ).to.eq(0);
-                });
-            });
-        });
-    });
-
-    describe("a coordinator without Add Events (§5.3, the pin exception)", () => {
-        it("pins an event to their OWN ministry's calendar", () => {
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                "/api/events",
-                eventBody({
-                    Title: `${PREFIX} Own Pin`,
-                    MinistryId: ministryA,
-                    PinnedCalendars: [calendarA],
-                }),
-                200,
-            );
-
-            dbOk(
-                `SELECT ce.calendar_id
+                    `SELECT ce.calendar_id
                    FROM calendar_events ce
                    JOIN events_event e ON e.event_id = ce.event_id
                   WHERE e.event_title = ?`,
-                [`${PREFIX} Own Pin`],
-            ).then((rows) => {
-                expect(rows.length, "the pin was written").to.eq(1);
-                expect(Number(rows[0].calendar_id)).to.eq(calendarA);
+                    [`${PREFIX} Own Pin`],
+                ).then((rows) => {
+                    expect(rows.length, "the pin was written").to.eq(1);
+                    expect(Number(rows[0].calendar_id)).to.eq(calendarA);
+                });
             });
-        });
 
-        it("is refused a pin to a church calendar nobody's ministry owns", () => {
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                "/api/events",
-                eventBody({
-                    Title: `${PREFIX} Church Pin`,
-                    MinistryId: ministryA,
-                    PinnedCalendars: [PUBLIC_CALENDAR],
-                }),
-                403,
-            );
-
-            dbOk(`SELECT event_id FROM events_event WHERE event_title = ?`, [
-                `${PREFIX} Church Pin`,
-            ]).then((rows) => {
-                expect(rows.length, "nothing was created").to.eq(0);
-            });
-        });
-
-        it("is refused a pin to another ministry's calendar", () => {
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                "/api/events",
-                eventBody({
-                    Title: `${PREFIX} Foreign Pin`,
-                    MinistryId: ministryA,
-                    PinnedCalendars: [calendarB],
-                }),
-                403,
-            );
-
-            dbOk(`SELECT event_id FROM events_event WHERE event_title = ?`, [
-                `${PREFIX} Foreign Pin`,
-            ]).then((rows) => {
-                expect(rows.length, "nothing was created").to.eq(0);
-            });
-        });
-
-        it("is refused a pin added on an UPDATE, and the event keeps its old pins", () => {
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                "/api/events",
-                eventBody({
-                    Title: `${PREFIX} Repin`,
-                    MinistryId: ministryA,
-                    PinnedCalendars: [calendarA],
-                }),
-                200,
-            );
-
-            dbOk(`SELECT event_id FROM events_event WHERE event_title = ?`, [
-                `${PREFIX} Repin`,
-            ]).then((rows) => {
-                const eventId = rows[0].event_id;
-
+            it("is refused a pin to a church calendar nobody's ministry owns", () => {
                 api(
                     COORDINATOR_KEY,
                     "POST",
-                    `/api/events/${eventId}`,
+                    "/api/events",
                     eventBody({
-                        Title: `${PREFIX} Repin`,
+                        Title: `${PREFIX} Church Pin`,
                         MinistryId: ministryA,
-                        PinnedCalendars: [calendarA, PUBLIC_CALENDAR],
+                        PinnedCalendars: [PUBLIC_CALENDAR],
                     }),
                     403,
                 );
 
+                dbOk(`SELECT event_id FROM events_event WHERE event_title = ?`, [
+                    `${PREFIX} Church Pin`,
+                ]).then((rows) => {
+                    expect(rows.length, "nothing was created").to.eq(0);
+                });
+            });
+
+            it("is refused a pin to another ministry's calendar", () => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    "/api/events",
+                    eventBody({
+                        Title: `${PREFIX} Foreign Pin`,
+                        MinistryId: ministryA,
+                        PinnedCalendars: [calendarB],
+                    }),
+                    403,
+                );
+
+                dbOk(`SELECT event_id FROM events_event WHERE event_title = ?`, [
+                    `${PREFIX} Foreign Pin`,
+                ]).then((rows) => {
+                    expect(rows.length, "nothing was created").to.eq(0);
+                });
+            });
+
+            it("is refused a pin added on an UPDATE, and the event keeps its old pins", () => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    "/api/events",
+                    eventBody({
+                        Title: `${PREFIX} Repin`,
+                        MinistryId: ministryA,
+                        PinnedCalendars: [calendarA],
+                    }),
+                    200,
+                );
+
+                dbOk(`SELECT event_id FROM events_event WHERE event_title = ?`, [
+                    `${PREFIX} Repin`,
+                ]).then((rows) => {
+                    const eventId = rows[0].event_id;
+
+                    api(
+                        COORDINATOR_KEY,
+                        "POST",
+                        `/api/events/${eventId}`,
+                        eventBody({
+                            Title: `${PREFIX} Repin`,
+                            MinistryId: ministryA,
+                            PinnedCalendars: [calendarA, PUBLIC_CALENDAR],
+                        }),
+                        403,
+                    );
+
+                    dbOk(
+                        `SELECT calendar_id FROM calendar_events WHERE event_id = ?`,
+                        [eventId],
+                    ).then((pins) => {
+                        expect(pins.length, "still exactly one pin").to.eq(1);
+                        expect(Number(pins[0].calendar_id)).to.eq(calendarA);
+                    });
+                });
+            });
+
+            it("may publish their own ministry's calendar but not another's", () => {
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `/api/calendars/${calendarA}/NewAccessToken`,
+                    null,
+                    200,
+                );
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `/api/calendars/${calendarB}/NewAccessToken`,
+                    null,
+                    403,
+                );
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    `/api/calendars/${PUBLIC_CALENDAR}/NewAccessToken`,
+                    null,
+                    403,
+                );
+
+                api(
+                    COORDINATOR_KEY,
+                    "DELETE",
+                    `/api/calendars/${calendarA}/AccessToken`,
+                    null,
+                    200,
+                );
+            });
+
+            it("loses the exception when the rollout flag goes back to v1", () => {
+                setVersion("v1");
+
+                api(
+                    COORDINATOR_KEY,
+                    "POST",
+                    "/api/events",
+                    eventBody({
+                        Title: `${PREFIX} V1 Pin`,
+                        MinistryId: ministryA,
+                        PinnedCalendars: [calendarA],
+                    }),
+                    403,
+                );
+
+                setVersion("v2");
+            });
+        });
+
+        describe("an administrator (the global right is unchanged)", () => {
+            it("pins to any calendar, ministry-owned or not", () => {
+                api(
+                    ADMIN_KEY,
+                    "POST",
+                    "/api/events",
+                    eventBody({
+                        Title: `${PREFIX} Admin Pin`,
+                        PinnedCalendars: [PUBLIC_CALENDAR, calendarA, calendarB],
+                    }),
+                    200,
+                );
+
                 dbOk(
-                    `SELECT calendar_id FROM calendar_events WHERE event_id = ?`,
-                    [eventId],
-                ).then((pins) => {
-                    expect(pins.length, "still exactly one pin").to.eq(1);
-                    expect(Number(pins[0].calendar_id)).to.eq(calendarA);
+                    `SELECT ce.calendar_id
+                   FROM calendar_events ce
+                   JOIN events_event e ON e.event_id = ce.event_id
+                  WHERE e.event_title = ?`,
+                    [`${PREFIX} Admin Pin`],
+                ).then((rows) => {
+                    expect(rows.length, "all three pins were written").to.eq(3);
                 });
             });
         });
 
-        it("may publish their own ministry's calendar but not another's", () => {
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                `/api/calendars/${calendarA}/NewAccessToken`,
-                null,
-                200,
-            );
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                `/api/calendars/${calendarB}/NewAccessToken`,
-                null,
-                403,
-            );
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                `/api/calendars/${PUBLIC_CALENDAR}/NewAccessToken`,
-                null,
-                403,
-            );
-
-            api(
-                COORDINATOR_KEY,
-                "DELETE",
-                `/api/calendars/${calendarA}/AccessToken`,
-                null,
-                200,
-            );
-        });
-
-        it("loses the exception when the rollout flag goes back to v1", () => {
-            setVersion("v1");
-
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                "/api/events",
-                eventBody({
-                    Title: `${PREFIX} V1 Pin`,
-                    MinistryId: ministryA,
-                    PinnedCalendars: [calendarA],
-                }),
-                403,
-            );
-
-            setVersion("v2");
-        });
-    });
-
-    describe("an administrator (the global right is unchanged)", () => {
-        it("pins to any calendar, ministry-owned or not", () => {
-            api(
-                ADMIN_KEY,
-                "POST",
-                "/api/events",
-                eventBody({
-                    Title: `${PREFIX} Admin Pin`,
-                    PinnedCalendars: [PUBLIC_CALENDAR, calendarA, calendarB],
-                }),
-                200,
-            );
-
-            dbOk(
-                `SELECT ce.calendar_id
-                   FROM calendar_events ce
-                   JOIN events_event e ON e.event_id = ce.event_id
-                  WHERE e.event_title = ?`,
-                [`${PREFIX} Admin Pin`],
-            ).then((rows) => {
-                expect(rows.length, "all three pins were written").to.eq(3);
-            });
-        });
-    });
-
-    describe("the admin Calendars tab", () => {
-        it("reports the ministry calendars with their ministry id", () => {
-            cy.makePrivateAdminAPICall(
-                "GET",
-                "/admin/api/member-portal/calendars",
-                null,
-                200,
-            ).then((resp) => {
-                const mine = resp.body.calendars.find(
-                    (c) => c.type === "calendar" && c.id === calendarA,
-                );
-                expect(mine, "ministry A's calendar is listed").to.exist;
-                expect(mine.ministryId).to.eq(ministryA);
-
-                const church = resp.body.calendars.find(
-                    (c) => c.type === "calendar" && c.id === PUBLIC_CALENDAR,
-                );
-                expect(church.ministryId, "a church calendar has none").to.eq(
+        describe("the admin Calendars tab", () => {
+            it("reports the ministry calendars with their ministry id", () => {
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    "/admin/api/member-portal/calendars",
                     null,
-                );
+                    200,
+                ).then((resp) => {
+                    const mine = resp.body.calendars.find(
+                        (c) => c.type === "calendar" && c.id === calendarA,
+                    );
+                    expect(mine, "ministry A's calendar is listed").to.exist;
+                    expect(mine.ministryId).to.eq(ministryA);
+
+                    const church = resp.body.calendars.find(
+                        (c) => c.type === "calendar" && c.id === PUBLIC_CALENDAR,
+                    );
+                    expect(church.ministryId, "a church calendar has none").to.eq(
+                        null,
+                    );
+                });
             });
         });
     });

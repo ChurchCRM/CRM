@@ -355,824 +355,826 @@ function resetWorkflow() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-        originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-    });
-    setVersion("v2");
-
-    cleanupFixtures();
-
-    // UC1 §2.17 — Coffee Bar: one ministry, one team, three positions.
-    createMinistry("Coffee Bar").then((id) => {
-        ministryA = id;
-    });
-    createMinistry("Sound Booth").then((id) => {
-        ministryB = id;
-    });
-
-    cy.then(() => {
-        defaultTeam(ministryA).then((id) => {
-            teamA = id;
+describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9701)", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
+            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
         });
-        defaultTeam(ministryB).then((id) => {
-            teamB = id;
+        setVersion("v2");
+
+        cleanupFixtures();
+
+        // UC1 §2.17 — Coffee Bar: one ministry, one team, three positions.
+        createMinistry("Coffee Bar").then((id) => {
+            ministryA = id;
         });
-    });
-
-    cy.then(() => {
-        createPosition(ministryA, teamA, "Espresso", 1).then((id) => {
-            posEspresso = id;
-        });
-        createPosition(ministryA, teamA, "Milk Station", 2).then((id) => {
-            posMilk = id;
-        });
-        createPosition(ministryA, teamA, "Expeditor", 3).then((id) => {
-            posExpeditor = id;
-        });
-    });
-
-    // D19: the ministry came with its own pool Group, empty. Fill it through the
-    // API rather than with raw SQL — the route is now writable by a coordinator, so
-    // there is nothing left for the fixture to work around.
-    cy.then(() => {
-        for (const personId of [
-            POOL_MEMBER_A,
-            POOL_MEMBER_B,
-            POOL_MEMBER_C,
-            POOL_MEMBER_UNQUALIFIED,
-            PERSON_VOLUNTEER,
-        ]) {
-            api(
-                ADMIN_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/ministries/${ministryA}/pool/${personId}`,
-                null,
-                [200, 201],
-            );
-        }
-    });
-
-    // Multiple qualifications per person, the §2.17 shape.
-    cy.then(() => {
-        qualify(posEspresso, POOL_MEMBER_A);
-        qualify(posEspresso, POOL_MEMBER_B);
-        qualify(posEspresso, PERSON_VOLUNTEER);
-        qualify(posEspresso, OUTSIDE_POOL_PERSON);
-        // …and straight back out of the pool, which is what makes them the I3 case
-        // now that qualifying somebody puts them in it (D19).
-        api(
-            ADMIN_KEY,
-            "DELETE",
-            `${VOLUNTEER_URL}/ministries/${ministryA}/pool/${OUTSIDE_POOL_PERSON}`,
-            null,
-            200,
-        );
-        qualify(posMilk, POOL_MEMBER_A);
-        qualify(posMilk, POOL_MEMBER_C);
-        qualify(posMilk, PERSON_VOLUNTEER);
-        qualify(posExpeditor, POOL_MEMBER_B);
-        qualify(posExpeditor, POOL_MEMBER_C);
-    });
-
-    // A real future event series; V2 must never create events_event rows itself.
-    cy.then(() => {
-        seriesStart = isoDate(daysToNext(0));
-        seriesEnd = isoDate(daysToNext(0) + 14);
-
-        api(ADMIN_KEY, "POST", "/api/events/repeat", {
-            Title: EVENT_TITLE,
-            Type: CHURCH_SERVICE_TYPE,
-            StartTime: "10:30:00",
-            EndTime: "11:45:00",
-            RecurType: "weekly",
-            RecurDOW: "Sunday",
-            RangeStart: seriesStart,
-            RangeEnd: seriesEnd,
-        }, 200).then((resp) => {
-            seriesEventIds = resp.body.eventIds;
-            expect(seriesEventIds.length).to.eq(3);
-        });
-    });
-
-    cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryA}/schedules`, {
-            name: `${FIXTURE_PREFIX} Coffee Bar — Sunday`,
-            linkMode: "event_type",
-            eventTypeId: CHURCH_SERVICE_TYPE,
-            titleFilter: EVENT_TITLE,
-            windowStart: seriesStart,
-            teamId: teamA,
-        }, 201).then((resp) => {
-            scheduleA = resp.body.schedule.id;
-        });
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryB}/schedules`, {
-            name: `${FIXTURE_PREFIX} Sound Booth — Sunday`,
-            linkMode: "event_type",
-            eventTypeId: CHURCH_SERVICE_TYPE,
-            titleFilter: EVENT_TITLE,
-            windowStart: seriesStart,
-            teamId: teamB,
-        }, 201).then((resp) => {
-            scheduleB = resp.body.schedule.id;
-        });
-    });
-
-    // §2.17: Espresso and Milk Station need exactly one; Expeditor is the
-    // optional third person (Min 0 / Max 1), which is what makes `openCount`
-    // different from `gapCount`.
-    cy.then(() => {
-        upsertRequirement(scheduleA, posEspresso, 1, 1).then((id) => {
-            reqEspresso = id;
-        });
-        upsertRequirement(scheduleA, posMilk, 1, 1);
-        upsertRequirement(scheduleA, posExpeditor, 0, 1);
-    });
-
-    cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleA}/generate`, {
-            through: seriesEnd,
-        }, 200);
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleB}/generate`, {
-            through: seriesEnd,
-        }, 200);
-    });
-
-    cy.then(() => {
-        api(
-            ADMIN_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
-        ).then((resp) => {
-            const rows = resp.body.occurrences;
-            expect(rows.length).to.be.greaterThan(1);
-            occurrenceOne = rows[0].id;
-            occurrenceTwo = rows[1].id;
-        });
-        api(
-            ADMIN_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryB}`,
-        ).then((resp) => {
-            occurrenceB = resp.body.occurrences[0].id;
-        });
-    });
-
-    // Person 3 coordinates Coffee Bar and nothing else — the §4.8 boundary.
-    cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
-            personId: PERSON_COORDINATOR,
-            scopeType: "ministry",
-            scopeId: ministryA,
-        }, [200, 201]);
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    setVersion(originalVersion);
-});
-
-// ───────────────────────────────────────────────────────────────────────────
-
-describe("Volunteer v2 — assign (§2.11.2 I1–I5, I8)", () => {
-    beforeEach(resetWorkflow);
-
-    it("assigns a qualified pool member and enqueues the assignment notification", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
-            const a = resp.body.assignment;
-            expect(a.occurrenceId).to.eq(occurrenceOne);
-            expect(a.positionId).to.eq(posEspresso);
-            expect(a.personId).to.eq(POOL_MEMBER_A);
-            expect(a.status).to.eq("pending");
-            expect(a.source).to.eq("coordinator");
-            expect(a.assignedByPersonId).to.eq(PERSON_COORDINATOR);
-            // The requirement is resolved server-side when the caller omits it.
-            expect(a.requirementId).to.eq(reqEspresso);
-
-            // §3.6: assign() enqueues an `assignment` message for the volunteer,
-            // keyed `assignment:{assignmentId}:{personId}` (§2.14).
-            outboxRows("assignment", POOL_MEMBER_A).then((rows) => {
-                expect(rows).to.have.length(1);
-                expect(rows[0].vntf_DedupeKey).to.eq(`assignment:${a.id}:${POOL_MEMBER_A}`);
-                expect(rows[0].vntf_Status).to.eq("pending");
-                expect(Number(rows[0].vntf_vasg_ID)).to.eq(a.id);
-            });
-        });
-    });
-
-    it("rejects a second identical assignment with 409 (I1)", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, {}, 409);
-
-        dbOk(
-            `SELECT COUNT(*) AS c FROM volunteer_assignment_vasg
-              WHERE vasg_vocc_ID = ? AND vasg_vpos_ID = ? AND vasg_per_ID = ?`,
-            [occurrenceOne, posEspresso, POOL_MEMBER_A],
-        ).then((rows) => {
-            expect(Number(rows[0].c)).to.eq(1);
-        });
-    });
-
-    it("refuses an unqualified person with 403 (I2)", () => {
-        assign(
-            COORDINATOR_KEY,
-            occurrenceOne,
-            posEspresso,
-            POOL_MEMBER_UNQUALIFIED,
-            {},
-            403,
-        );
-    });
-
-    it("refuses a qualified person outside the pool with 409, and accepts them with allowOutsidePool (I3)", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, OUTSIDE_POOL_PERSON, {}, 409);
-
-        assign(
-            COORDINATOR_KEY,
-            occurrenceOne,
-            posEspresso,
-            OUTSIDE_POOL_PERSON,
-            { allowOutsidePool: true },
-            201,
-        ).then((resp) => {
-            expect(resp.body.assignment.personId).to.eq(OUTSIDE_POOL_PERSON);
-            expect(resp.body.assignment.status).to.eq("pending");
-        });
-    });
-
-    it("refuses an occurrence that has been cancelled (I5)", () => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}/status`, {
-            status: "cancelled",
-        }, 200);
-
-        assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A, {}, 409);
-
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}/status`, {
-            status: "scheduled",
-        }, 200);
-    });
-
-    it("allows the same person on two different positions of one occurrence (I7, D16)", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, {}, 201);
-        assign(COORDINATOR_KEY, occurrenceOne, posMilk, POOL_MEMBER_A, {}, 201);
-
-        dbOk(
-            `SELECT COUNT(*) AS c FROM volunteer_assignment_vasg
-              WHERE vasg_vocc_ID = ? AND vasg_per_ID = ?`,
-            [occurrenceOne, POOL_MEMBER_A],
-        ).then((rows) => {
-            expect(Number(rows[0].c)).to.eq(2);
-        });
-
-        // The picker reports the clash rather than hiding the person (§5.5).
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posExpeditor}`,
-        ).then((resp) => {
-            const clash = resp.body.people.find((p) => p.personId === POOL_MEMBER_A);
-            // Person A is not qualified for Expeditor, so they are absent —
-            // check the one who IS, and holds Espresso nowhere.
-            expect(clash).to.eq(undefined);
-        });
-
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posMilk}`,
-        ).then((resp) => {
-            const person = resp.body.people.find((p) => p.personId === POOL_MEMBER_A);
-            expect(person, "an already-serving person stays in the picker").to.not.eq(undefined);
-            expect(person.conflictPositionId).to.eq(posEspresso);
-        });
-    });
-
-    it("reuses the declined row when the same person is re-assigned (I8)", () => {
-        let assignmentId = 0;
-
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
-            assignmentId = resp.body.assignment.id;
+        createMinistry("Sound Booth").then((id) => {
+            ministryB = id;
         });
 
         cy.then(() => {
-            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
-                status: "declined",
+            defaultTeam(ministryA).then((id) => {
+                teamA = id;
+            });
+            defaultTeam(ministryB).then((id) => {
+                teamB = id;
+            });
+        });
+
+        cy.then(() => {
+            createPosition(ministryA, teamA, "Espresso", 1).then((id) => {
+                posEspresso = id;
+            });
+            createPosition(ministryA, teamA, "Milk Station", 2).then((id) => {
+                posMilk = id;
+            });
+            createPosition(ministryA, teamA, "Expeditor", 3).then((id) => {
+                posExpeditor = id;
+            });
+        });
+
+        // D19: the ministry came with its own pool Group, empty. Fill it through the
+        // API rather than with raw SQL — the route is now writable by a coordinator, so
+        // there is nothing left for the fixture to work around.
+        cy.then(() => {
+            for (const personId of [
+                POOL_MEMBER_A,
+                POOL_MEMBER_B,
+                POOL_MEMBER_C,
+                POOL_MEMBER_UNQUALIFIED,
+                PERSON_VOLUNTEER,
+            ]) {
+                api(
+                    ADMIN_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryA}/pool/${personId}`,
+                    null,
+                    [200, 201],
+                );
+            }
+        });
+
+        // Multiple qualifications per person, the §2.17 shape.
+        cy.then(() => {
+            qualify(posEspresso, POOL_MEMBER_A);
+            qualify(posEspresso, POOL_MEMBER_B);
+            qualify(posEspresso, PERSON_VOLUNTEER);
+            qualify(posEspresso, OUTSIDE_POOL_PERSON);
+            // …and straight back out of the pool, which is what makes them the I3 case
+            // now that qualifying somebody puts them in it (D19).
+            api(
+                ADMIN_KEY,
+                "DELETE",
+                `${VOLUNTEER_URL}/ministries/${ministryA}/pool/${OUTSIDE_POOL_PERSON}`,
+                null,
+                200,
+            );
+            qualify(posMilk, POOL_MEMBER_A);
+            qualify(posMilk, POOL_MEMBER_C);
+            qualify(posMilk, PERSON_VOLUNTEER);
+            qualify(posExpeditor, POOL_MEMBER_B);
+            qualify(posExpeditor, POOL_MEMBER_C);
+        });
+
+        // A real future event series; V2 must never create events_event rows itself.
+        cy.then(() => {
+            seriesStart = isoDate(daysToNext(0));
+            seriesEnd = isoDate(daysToNext(0) + 14);
+
+            api(ADMIN_KEY, "POST", "/api/events/repeat", {
+                Title: EVENT_TITLE,
+                Type: CHURCH_SERVICE_TYPE,
+                StartTime: "10:30:00",
+                EndTime: "11:45:00",
+                RecurType: "weekly",
+                RecurDOW: "Sunday",
+                RangeStart: seriesStart,
+                RangeEnd: seriesEnd,
+            }, 200).then((resp) => {
+                seriesEventIds = resp.body.eventIds;
+                expect(seriesEventIds.length).to.eq(3);
+            });
+        });
+
+        cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryA}/schedules`, {
+                name: `${FIXTURE_PREFIX} Coffee Bar — Sunday`,
+                linkMode: "event_type",
+                eventTypeId: CHURCH_SERVICE_TYPE,
+                titleFilter: EVENT_TITLE,
+                windowStart: seriesStart,
+                teamId: teamA,
+            }, 201).then((resp) => {
+                scheduleA = resp.body.schedule.id;
+            });
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryB}/schedules`, {
+                name: `${FIXTURE_PREFIX} Sound Booth — Sunday`,
+                linkMode: "event_type",
+                eventTypeId: CHURCH_SERVICE_TYPE,
+                titleFilter: EVENT_TITLE,
+                windowStart: seriesStart,
+                teamId: teamB,
+            }, 201).then((resp) => {
+                scheduleB = resp.body.schedule.id;
+            });
+        });
+
+        // §2.17: Espresso and Milk Station need exactly one; Expeditor is the
+        // optional third person (Min 0 / Max 1), which is what makes `openCount`
+        // different from `gapCount`.
+        cy.then(() => {
+            upsertRequirement(scheduleA, posEspresso, 1, 1).then((id) => {
+                reqEspresso = id;
+            });
+            upsertRequirement(scheduleA, posMilk, 1, 1);
+            upsertRequirement(scheduleA, posExpeditor, 0, 1);
+        });
+
+        cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleA}/generate`, {
+                through: seriesEnd,
+            }, 200);
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleB}/generate`, {
+                through: seriesEnd,
             }, 200);
         });
 
         cy.then(() => {
-            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, {}, 201).then(
-                (resp) => {
-                    expect(resp.body.assignment.id, "the SAME row is reused").to.eq(assignmentId);
-                    expect(resp.body.assignment.status).to.eq("pending");
-                },
-            );
+            api(
+                ADMIN_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
+            ).then((resp) => {
+                const rows = resp.body.occurrences;
+                expect(rows.length).to.be.greaterThan(1);
+                occurrenceOne = rows[0].id;
+                occurrenceTwo = rows[1].id;
+            });
+            api(
+                ADMIN_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryB}`,
+            ).then((resp) => {
+                occurrenceB = resp.body.occurrences[0].id;
+            });
         });
 
+        // Person 3 coordinates Coffee Bar and nothing else — the §4.8 boundary.
         cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
+                personId: PERSON_COORDINATOR,
+                scopeType: "ministry",
+                scopeId: ministryA,
+            }, [200, 201]);
+        });
+    });
+
+    after(() => {
+        cleanupFixtures();
+        setVersion(originalVersion);
+    });
+
+    // ───────────────────────────────────────────────────────────────────────────
+
+    describe("Volunteer v2 — assign (§2.11.2 I1–I5, I8)", () => {
+        beforeEach(resetWorkflow);
+
+        it("assigns a qualified pool member and enqueues the assignment notification", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
+                const a = resp.body.assignment;
+                expect(a.occurrenceId).to.eq(occurrenceOne);
+                expect(a.positionId).to.eq(posEspresso);
+                expect(a.personId).to.eq(POOL_MEMBER_A);
+                expect(a.status).to.eq("pending");
+                expect(a.source).to.eq("coordinator");
+                expect(a.assignedByPersonId).to.eq(PERSON_COORDINATOR);
+                // The requirement is resolved server-side when the caller omits it.
+                expect(a.requirementId).to.eq(reqEspresso);
+
+                // §3.6: assign() enqueues an `assignment` message for the volunteer,
+                // keyed `assignment:{assignmentId}:{personId}` (§2.14).
+                outboxRows("assignment", POOL_MEMBER_A).then((rows) => {
+                    expect(rows).to.have.length(1);
+                    expect(rows[0].vntf_DedupeKey).to.eq(`assignment:${a.id}:${POOL_MEMBER_A}`);
+                    expect(rows[0].vntf_Status).to.eq("pending");
+                    expect(Number(rows[0].vntf_vasg_ID)).to.eq(a.id);
+                });
+            });
+        });
+
+        it("rejects a second identical assignment with 409 (I1)", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, {}, 409);
+
             dbOk(
                 `SELECT COUNT(*) AS c FROM volunteer_assignment_vasg
-                  WHERE vasg_vocc_ID = ? AND vasg_vpos_ID = ? AND vasg_per_ID = ?`,
+              WHERE vasg_vocc_ID = ? AND vasg_vpos_ID = ? AND vasg_per_ID = ?`,
                 [occurrenceOne, posEspresso, POOL_MEMBER_A],
             ).then((rows) => {
                 expect(Number(rows[0].c)).to.eq(1);
             });
-            // The audit survives the reuse: the decline row is still there.
-            history(assignmentId).then((rows) => {
-                expect(rows.map((r) => r.response)).to.include("declined");
-            });
-        });
-    });
-});
-
-describe("Volunteer v2 — respond (§2.11.1, §2.12)", () => {
-    let assignmentId = 0;
-
-    beforeEach(() => {
-        resetWorkflow();
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then((resp) => {
-            assignmentId = resp.body.assignment.id;
-        });
-    });
-
-    it("lets the volunteer accept their own assignment through the member surface", () => {
-        api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
-            response: "accepted",
-        }, 200).then((resp) => {
-            expect(resp.body.assignment.status).to.eq("accepted");
-            expect(resp.body.assignment.respondedDate).to.not.eq(null);
         });
 
-        history(assignmentId).then((rows) => {
-            expect(rows).to.have.length(1);
-            expect(rows[0].response).to.eq("accepted");
-            expect(rows[0].personId).to.eq(PERSON_VOLUNTEER);
-            expect(rows[0].channel).to.eq("web");
-        });
-    });
-
-    it("is idempotent: accepting twice is 200 and leaves ONE response row (§2.12, §6.6)", () => {
-        api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
-            response: "accepted",
-        }, 200);
-        api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
-            response: "accepted",
-        }, 200).then((resp) => {
-            expect(resp.body.assignment.status).to.eq("accepted");
-        });
-
-        history(assignmentId).then((rows) => {
-            expect(rows, "no second row for a no-op response").to.have.length(1);
-        });
-    });
-
-    it("reopens the gap on a volunteer decline and alerts every coordinator (§3.6)", () => {
-        api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
-            response: "declined",
-            comment: "Out of town",
-        }, 200).then((resp) => {
-            expect(resp.body.assignment.status).to.eq("declined");
-        });
-
-        // The gap is derived, so it simply reappears — nothing writes it.
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
-        ).then((resp) => {
-            const espresso = resp.body.requirements.find((r) => r.positionId === posEspresso);
-            expect(espresso.liveCount).to.eq(0);
-            expect(espresso.gapCount).to.eq(1);
-        });
-
-        // decline_alert goes to the coordinators, keyed per coordinator (§2.14).
-        cy.then(() => {
-            outboxRows("decline_alert", PERSON_COORDINATOR).then((rows) => {
-                expect(rows).to.have.length(1);
-                expect(rows[0].vntf_DedupeKey).to.eq(
-                    `decline_alert:${assignmentId}:${PERSON_COORDINATOR}`,
-                );
-            });
-        });
-    });
-
-    it("declining twice is 200 and still leaves ONE response row", () => {
-        api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
-            response: "declined",
-        }, 200);
-        api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
-            response: "declined",
-        }, 200);
-
-        history(assignmentId).then((rows) => {
-            expect(rows).to.have.length(1);
-        });
-    });
-
-    it("records a coordinator's accept on the volunteer's behalf with channel `coordinator`", () => {
-        api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
-            status: "accepted",
-            comment: "Confirmed by phone",
-        }, 200).then((resp) => {
-            expect(resp.body.assignment.status).to.eq("accepted");
-        });
-
-        history(assignmentId).then((rows) => {
-            expect(rows).to.have.length(1);
-            expect(rows[0].response).to.eq("accepted");
-            expect(rows[0].channel).to.eq("coordinator");
-            expect(rows[0].personId, "the coordinator is the author of the row").to.eq(
-                PERSON_COORDINATOR,
-            );
-        });
-    });
-
-    it("enqueues NO decline_alert for a coordinator-recorded decline (§2.11.1)", () => {
-        api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
-            status: "declined",
-        }, 200);
-
-        outboxRows("decline_alert", PERSON_COORDINATOR).then((rows) => {
-            expect(rows, "the coordinators already know").to.have.length(0);
-        });
-    });
-
-    it("rejects an illegal transition with 409 and reports the current status", () => {
-        api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
-            status: "cancelled",
-        }, 200);
-
-        api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
-            status: "accepted",
-        }, 409).then((resp) => {
-            expect(resp.body.currentStatus).to.eq("cancelled");
-        });
-    });
-
-    it("cancels through DELETE and reopens the gap", () => {
-        api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
-            response: "accepted",
-        }, 200);
-
-        api(COORDINATOR_KEY, "DELETE", `${VOLUNTEER_URL}/assignments/${assignmentId}`, null, 200);
-
-        api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/assignments/${assignmentId}`).then((resp) => {
-            expect(resp.body.assignment.status).to.eq("cancelled");
-        });
-    });
-});
-
-describe("Volunteer v2 — gaps (§2.11.3)", () => {
-    beforeEach(resetWorkflow);
-
-    it("derives live / gap / open per requirement", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
-        ).then((resp) => {
-            const espresso = resp.body.requirements.find((r) => r.positionId === posEspresso);
-            expect(espresso.minCount).to.eq(1);
-            expect(espresso.liveCount).to.eq(0);
-            expect(espresso.gapCount).to.eq(1);
-            expect(espresso.openCount).to.eq(1);
-
-            // Min 0 / Max 1: no gap, but a slot is open for self-signup.
-            const expeditor = resp.body.requirements.find((r) => r.positionId === posExpeditor);
-            expect(expeditor.gapCount).to.eq(0);
-            expect(expeditor.openCount).to.eq(1);
-        });
-
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
-
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
-        ).then((resp) => {
-            const espresso = resp.body.requirements.find((r) => r.positionId === posEspresso);
-            // A `pending` row counts as live — the gap is not re-opened until
-            // the volunteer actually declines.
-            expect(espresso.liveCount).to.eq(1);
-            expect(espresso.gapCount).to.eq(0);
-            expect(espresso.openCount).to.eq(0);
-            expect(espresso.assignments).to.have.length(1);
-            expect(espresso.assignments[0].personId).to.eq(POOL_MEMBER_A);
-        });
-    });
-
-    it("lists gaps across the caller's scope through GET /gaps", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/gaps?from=${seriesStart}&to=${seriesEnd}`,
-        ).then((resp) => {
-            const mine = resp.body.gaps.filter((g) => g.occurrenceId === occurrenceOne);
-            expect(mine.map((g) => g.positionId)).to.include.members([posEspresso, posMilk]);
-            // Min 0 is not a gap.
-            expect(mine.map((g) => g.positionId)).to.not.include(posExpeditor);
-            // §4.8: never another ministry's occurrence.
-            expect(resp.body.gaps.map((g) => g.occurrenceId)).to.not.include(occurrenceB);
-        });
-    });
-
-    it("requires from and to on GET /gaps", () => {
-        api(COORDINATOR_KEY, "GET", `${VOLUNTEER_URL}/gaps`, null, 400);
-    });
-
-    it("reports liveCount / gapCount / pendingCount on the occurrence list and filters with ?hasGaps=1", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
-        assign(COORDINATOR_KEY, occurrenceOne, posMilk, POOL_MEMBER_C);
-
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
-        ).then((resp) => {
-            const first = resp.body.occurrences.find((o) => o.id === occurrenceOne);
-            expect(first.liveCount).to.eq(2);
-            expect(first.gapCount).to.eq(0);
-            expect(first.pendingCount).to.eq(2);
-
-            const second = resp.body.occurrences.find((o) => o.id === occurrenceTwo);
-            expect(second.liveCount).to.eq(0);
-            expect(second.gapCount).to.eq(2);
-        });
-
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}&hasGaps=1`,
-        ).then((resp) => {
-            const ids = resp.body.occurrences.map((o) => o.id);
-            expect(ids).to.not.include(occurrenceOne);
-            expect(ids).to.include(occurrenceTwo);
-        });
-    });
-
-    it("reports the same counts on the occurrence detail", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
-
-        api(COORDINATOR_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceOne}`).then(
-            (resp) => {
-                expect(resp.body.occurrence.liveCount).to.eq(1);
-                expect(resp.body.occurrence.gapCount).to.eq(1);
-                const espresso = resp.body.requirements.find(
-                    (r) => r.positionId === posEspresso,
-                );
-                expect(espresso.liveCount).to.eq(1);
-                expect(espresso.gapCount).to.eq(0);
-            },
-        );
-    });
-});
-
-describe("Volunteer v2 — the eligible picker (§3.3.2, §2.17 rotation)", () => {
-    beforeEach(resetWorkflow);
-
-    it("offers only qualified people, flags pool membership and orders by last served", () => {
-        // Two historical assignments so the ordering has something to order by.
-        // They are inserted directly: I5 refuses to create an assignment on an
-        // occurrence that has already ended, which is exactly what these are.
-        dbOk(
-            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
-             VALUES (?, ?, '', '', ?, ?, 0)`,
-            [CHURCH_SERVICE_TYPE, `${EVENT_TITLE} Past`, `${isoDate(-28)} 10:30:00`, `${isoDate(-28)} 11:45:00`],
-        ).then((event) =>
-            dbOk(
-                `INSERT INTO volunteer_occurrence_vocc
-                     (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
-                 VALUES (?, ?, ?, 'scheduled', NOW())`,
-                [scheduleA, event.insertId, isoDate(-28)],
-            ),
-        ).then((rows) => {
-            const oldOccurrence = rows.insertId;
-            dbOk(
-                `INSERT INTO volunteer_assignment_vasg
-                     (vasg_vocc_ID, vasg_vpos_ID, vasg_per_ID, vasg_Status, vasg_Source, vasg_AssignedDate)
-                 VALUES (?, ?, ?, 'completed', 'coordinator', NOW())`,
-                [oldOccurrence, posEspresso, POOL_MEMBER_B],
-            );
-        });
-
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posEspresso}`,
-        ).then((resp) => {
-            const people = resp.body.people;
-            const ids = people.map((p) => p.personId);
-
-            // Qualified only — the unqualified pool member is never offered.
-            expect(ids).to.not.include(POOL_MEMBER_UNQUALIFIED);
-            expect(ids).to.include.members([POOL_MEMBER_A, POOL_MEMBER_B, PERSON_VOLUNTEER]);
-
-            // Out-of-pool qualified people are listed, flagged, never hidden.
-            const outside = people.find((p) => p.personId === OUTSIDE_POOL_PERSON);
-            expect(outside, "an out-of-pool qualified person is still offered").to.not.eq(
-                undefined,
-            );
-            expect(outside.inPool).to.eq(false);
-            expect(people.find((p) => p.personId === POOL_MEMBER_A).inPool).to.eq(true);
-
-            // lastServedDate ASC NULLS FIRST: never-served people come first,
-            // and the one who served most recently is last (§2.17 rotation).
-            const served = people.filter((p) => p.lastServedDate !== null);
-            expect(served.length).to.be.greaterThan(0);
-            const firstServedIndex = people.findIndex((p) => p.lastServedDate !== null);
-            people.slice(0, firstServedIndex).forEach((p) => {
-                expect(p.lastServedDate).to.eq(null);
-            });
-            expect(people[people.length - 1].personId).to.eq(POOL_MEMBER_B);
-        });
-    });
-
-    it("filters by ?q=", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posEspresso}&q=zzzznotaperson`,
-        ).then((resp) => {
-            expect(resp.body.people).to.have.length(0);
-        });
-    });
-
-    it("requires positionId", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible`,
-            null,
-            400,
-        );
-    });
-});
-
-/**
- * The Cart sink is gone from this surface.
- *
- * `POST /volunteer/cart/assign` and `VolunteerAssignmentService::assignFromCart()`
- * were removed with the occurrence page's "Assign everyone in the cart" button:
- * assigning is a per-person act with per-person eligibility rules (I1-I5), so the
- * bulk call half-succeeded and handed back a list of reasons — a worse answer than
- * the single-person picker, which can only ever offer assignable people. The Cart
- * still feeds V2 from the ministry page, where it fills the volunteer POOL
- * (`POST /ministries/{id}/pool/from-cart`, covered in
- * private.volunteer.pools-qualifications.spec.js).
- *
- * The case below is what stops the route coming back by accident.
- */
-describe("Volunteer v2 — the Cart sink is off the assignment surface", () => {
-    it("has no cart-assign route any more", () => {
-        cy.makePrivateAdminAPICall(
-            "POST",
-            CART_URL,
-            { Persons: [POOL_MEMBER_A, POOL_MEMBER_B] },
-            200,
-        );
-
-        cy.makePrivateAdminAPICall(
-            "POST",
-            `${VOLUNTEER_URL}/cart/assign`,
-            { occurrenceId: occurrenceOne, positionId: posEspresso },
-            404,
-        );
-
-        cy.makePrivateAdminAPICall("DELETE", CART_URL, null, 200);
-    });
-});
-
-describe("Volunteer v2 — notify re-enqueue (§3.3.2)", () => {
-    let assignmentId = 0;
-
-    beforeEach(() => {
-        resetWorkflow();
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
-            assignmentId = resp.body.assignment.id;
-        });
-    });
-
-    it("is idempotent through the dedupe key unless ?force=1", () => {
-        api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/notify`, {}, 200).then(
-            (resp) => {
-                expect(resp.body.created, "the assign() row already exists").to.eq(false);
-            },
-        );
-
-        outboxRows("assignment", POOL_MEMBER_A).then((rows) => {
-            expect(rows).to.have.length(1);
-        });
-    });
-
-    it("resets a sent row to pending with ?force=1", () => {
-        dbOk(
-            `UPDATE volunteer_notification_vntf SET vntf_Status = 'sent', vntf_SentDate = NOW()
-              WHERE vntf_vasg_ID = ? AND vntf_Type = 'assignment'`,
-            [assignmentId],
-        );
-
-        api(
-            COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/assignments/${assignmentId}/notify?force=1`,
-            {},
-            200,
-        );
-
-        outboxRows("assignment", POOL_MEMBER_A).then((rows) => {
-            expect(rows, "force re-arms the SAME row, it never adds a second").to.have.length(1);
-            expect(rows[0].vntf_Status).to.eq("pending");
-        });
-    });
-});
-
-describe("Volunteer v2 — authorization negatives (§4.8)", () => {
-    beforeEach(resetWorkflow);
-
-    it("401s an unauthenticated caller", () => {
-        cy.request({
-            method: "GET",
-            url: `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
-            failOnStatusCode: false,
-        }).then((resp) => {
-            expect(resp.status).to.eq(401);
-        });
-    });
-
-    it("403s a coordinator on another ministry's occurrence", () => {
-        api(
-            COORDINATOR_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceB}/staffing`,
-            null,
-            403,
-        );
-        assign(COORDINATOR_KEY, occurrenceB, posEspresso, POOL_MEMBER_A, {}, 403);
-    });
-
-    it("403s a user with no volunteer rights at all", () => {
-        api(
-            PLAINAUTH_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
-            null,
-            403,
-        );
-    });
-
-    it("403s the volunteer persona on the coordinator surface", () => {
-        api(
-            SELFEDIT_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
-            null,
-            403,
-        );
-    });
-
-    it("403s — never 404s — a member responding to someone else's assignment (§3.3.3)", () => {
-        let otherId = 0;
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
-            otherId = resp.body.assignment.id;
-        });
-
-        cy.then(() => {
-            api(
-                SELFEDIT_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/me/assignments/${otherId}/respond`,
-                { response: "accepted" },
+        it("refuses an unqualified person with 403 (I2)", () => {
+            assign(
+                COORDINATOR_KEY,
+                occurrenceOne,
+                posEspresso,
+                POOL_MEMBER_UNQUALIFIED,
+                {},
                 403,
             );
         });
-    });
 
-    it("lets the volunteer read only their own assignments on /me", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
-        assign(COORDINATOR_KEY, occurrenceOne, posMilk, PERSON_VOLUNTEER);
+        it("refuses a qualified person outside the pool with 409, and accepts them with allowOutsidePool (I3)", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, OUTSIDE_POOL_PERSON, {}, 409);
 
-        api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/assignments`).then((resp) => {
-            const ids = resp.body.assignments.map((a) => a.personId);
-            expect(ids.every((id) => id === PERSON_VOLUNTEER)).to.eq(true);
-            expect(resp.body.assignments.length).to.be.greaterThan(0);
-            const mine = resp.body.assignments[0];
-            expect(mine.positionName).to.be.a("string");
-            expect(mine.ministryName).to.be.a("string");
-            expect(mine.canRespond).to.eq(true);
+            assign(
+                COORDINATOR_KEY,
+                occurrenceOne,
+                posEspresso,
+                OUTSIDE_POOL_PERSON,
+                { allowOutsidePool: true },
+                201,
+            ).then((resp) => {
+                expect(resp.body.assignment.personId).to.eq(OUTSIDE_POOL_PERSON);
+                expect(resp.body.assignment.status).to.eq("pending");
+            });
+        });
+
+        it("refuses an occurrence that has been cancelled (I5)", () => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}/status`, {
+                status: "cancelled",
+            }, 200);
+
+            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A, {}, 409);
+
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}/status`, {
+                status: "scheduled",
+            }, 200);
+        });
+
+        it("allows the same person on two different positions of one occurrence (I7, D16)", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, {}, 201);
+            assign(COORDINATOR_KEY, occurrenceOne, posMilk, POOL_MEMBER_A, {}, 201);
+
+            dbOk(
+                `SELECT COUNT(*) AS c FROM volunteer_assignment_vasg
+              WHERE vasg_vocc_ID = ? AND vasg_per_ID = ?`,
+                [occurrenceOne, POOL_MEMBER_A],
+            ).then((rows) => {
+                expect(Number(rows[0].c)).to.eq(2);
+            });
+
+            // The picker reports the clash rather than hiding the person (§5.5).
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posExpeditor}`,
+            ).then((resp) => {
+                const clash = resp.body.people.find((p) => p.personId === POOL_MEMBER_A);
+                // Person A is not qualified for Expeditor, so they are absent —
+                // check the one who IS, and holds Espresso nowhere.
+                expect(clash).to.eq(undefined);
+            });
+
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posMilk}`,
+            ).then((resp) => {
+                const person = resp.body.people.find((p) => p.personId === POOL_MEMBER_A);
+                expect(person, "an already-serving person stays in the picker").to.not.eq(undefined);
+                expect(person.conflictPositionId).to.eq(posEspresso);
+            });
+        });
+
+        it("reuses the declined row when the same person is re-assigned (I8)", () => {
+            let assignmentId = 0;
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
+                assignmentId = resp.body.assignment.id;
+            });
+
+            cy.then(() => {
+                api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
+                    status: "declined",
+                }, 200);
+            });
+
+            cy.then(() => {
+                assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, {}, 201).then(
+                    (resp) => {
+                        expect(resp.body.assignment.id, "the SAME row is reused").to.eq(assignmentId);
+                        expect(resp.body.assignment.status).to.eq("pending");
+                    },
+                );
+            });
+
+            cy.then(() => {
+                dbOk(
+                    `SELECT COUNT(*) AS c FROM volunteer_assignment_vasg
+                  WHERE vasg_vocc_ID = ? AND vasg_vpos_ID = ? AND vasg_per_ID = ?`,
+                    [occurrenceOne, posEspresso, POOL_MEMBER_A],
+                ).then((rows) => {
+                    expect(Number(rows[0].c)).to.eq(1);
+                });
+                // The audit survives the reuse: the decline row is still there.
+                history(assignmentId).then((rows) => {
+                    expect(rows.map((r) => r.response)).to.include("declined");
+                });
+            });
         });
     });
 
-    it("takes no personId parameter on the member surface (§3.3.3)", () => {
-        assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+    describe("Volunteer v2 — respond (§2.11.1, §2.12)", () => {
+        let assignmentId = 0;
 
-        api(
-            SELFEDIT_KEY,
-            "GET",
-            `${VOLUNTEER_URL}/me/assignments?personId=${POOL_MEMBER_A}`,
-        ).then((resp) => {
-            const ids = resp.body.assignments.map((a) => a.personId);
-            expect(ids).to.not.include(POOL_MEMBER_A);
+        beforeEach(() => {
+            resetWorkflow();
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then((resp) => {
+                assignmentId = resp.body.assignment.id;
+            });
+        });
+
+        it("lets the volunteer accept their own assignment through the member surface", () => {
+            api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
+                response: "accepted",
+            }, 200).then((resp) => {
+                expect(resp.body.assignment.status).to.eq("accepted");
+                expect(resp.body.assignment.respondedDate).to.not.eq(null);
+            });
+
+            history(assignmentId).then((rows) => {
+                expect(rows).to.have.length(1);
+                expect(rows[0].response).to.eq("accepted");
+                expect(rows[0].personId).to.eq(PERSON_VOLUNTEER);
+                expect(rows[0].channel).to.eq("web");
+            });
+        });
+
+        it("is idempotent: accepting twice is 200 and leaves ONE response row (§2.12, §6.6)", () => {
+            api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
+                response: "accepted",
+            }, 200);
+            api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
+                response: "accepted",
+            }, 200).then((resp) => {
+                expect(resp.body.assignment.status).to.eq("accepted");
+            });
+
+            history(assignmentId).then((rows) => {
+                expect(rows, "no second row for a no-op response").to.have.length(1);
+            });
+        });
+
+        it("reopens the gap on a volunteer decline and alerts every coordinator (§3.6)", () => {
+            api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
+                response: "declined",
+                comment: "Out of town",
+            }, 200).then((resp) => {
+                expect(resp.body.assignment.status).to.eq("declined");
+            });
+
+            // The gap is derived, so it simply reappears — nothing writes it.
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
+            ).then((resp) => {
+                const espresso = resp.body.requirements.find((r) => r.positionId === posEspresso);
+                expect(espresso.liveCount).to.eq(0);
+                expect(espresso.gapCount).to.eq(1);
+            });
+
+            // decline_alert goes to the coordinators, keyed per coordinator (§2.14).
+            cy.then(() => {
+                outboxRows("decline_alert", PERSON_COORDINATOR).then((rows) => {
+                    expect(rows).to.have.length(1);
+                    expect(rows[0].vntf_DedupeKey).to.eq(
+                        `decline_alert:${assignmentId}:${PERSON_COORDINATOR}`,
+                    );
+                });
+            });
+        });
+
+        it("declining twice is 200 and still leaves ONE response row", () => {
+            api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
+                response: "declined",
+            }, 200);
+            api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
+                response: "declined",
+            }, 200);
+
+            history(assignmentId).then((rows) => {
+                expect(rows).to.have.length(1);
+            });
+        });
+
+        it("records a coordinator's accept on the volunteer's behalf with channel `coordinator`", () => {
+            api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
+                status: "accepted",
+                comment: "Confirmed by phone",
+            }, 200).then((resp) => {
+                expect(resp.body.assignment.status).to.eq("accepted");
+            });
+
+            history(assignmentId).then((rows) => {
+                expect(rows).to.have.length(1);
+                expect(rows[0].response).to.eq("accepted");
+                expect(rows[0].channel).to.eq("coordinator");
+                expect(rows[0].personId, "the coordinator is the author of the row").to.eq(
+                    PERSON_COORDINATOR,
+                );
+            });
+        });
+
+        it("enqueues NO decline_alert for a coordinator-recorded decline (§2.11.1)", () => {
+            api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
+                status: "declined",
+            }, 200);
+
+            outboxRows("decline_alert", PERSON_COORDINATOR).then((rows) => {
+                expect(rows, "the coordinators already know").to.have.length(0);
+            });
+        });
+
+        it("rejects an illegal transition with 409 and reports the current status", () => {
+            api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
+                status: "cancelled",
+            }, 200);
+
+            api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
+                status: "accepted",
+            }, 409).then((resp) => {
+                expect(resp.body.currentStatus).to.eq("cancelled");
+            });
+        });
+
+        it("cancels through DELETE and reopens the gap", () => {
+            api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignmentId}/respond`, {
+                response: "accepted",
+            }, 200);
+
+            api(COORDINATOR_KEY, "DELETE", `${VOLUNTEER_URL}/assignments/${assignmentId}`, null, 200);
+
+            api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/assignments/${assignmentId}`).then((resp) => {
+                expect(resp.body.assignment.status).to.eq("cancelled");
+            });
+        });
+    });
+
+    describe("Volunteer v2 — gaps (§2.11.3)", () => {
+        beforeEach(resetWorkflow);
+
+        it("derives live / gap / open per requirement", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
+            ).then((resp) => {
+                const espresso = resp.body.requirements.find((r) => r.positionId === posEspresso);
+                expect(espresso.minCount).to.eq(1);
+                expect(espresso.liveCount).to.eq(0);
+                expect(espresso.gapCount).to.eq(1);
+                expect(espresso.openCount).to.eq(1);
+
+                // Min 0 / Max 1: no gap, but a slot is open for self-signup.
+                const expeditor = resp.body.requirements.find((r) => r.positionId === posExpeditor);
+                expect(expeditor.gapCount).to.eq(0);
+                expect(expeditor.openCount).to.eq(1);
+            });
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
+            ).then((resp) => {
+                const espresso = resp.body.requirements.find((r) => r.positionId === posEspresso);
+                // A `pending` row counts as live — the gap is not re-opened until
+                // the volunteer actually declines.
+                expect(espresso.liveCount).to.eq(1);
+                expect(espresso.gapCount).to.eq(0);
+                expect(espresso.openCount).to.eq(0);
+                expect(espresso.assignments).to.have.length(1);
+                expect(espresso.assignments[0].personId).to.eq(POOL_MEMBER_A);
+            });
+        });
+
+        it("lists gaps across the caller's scope through GET /gaps", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/gaps?from=${seriesStart}&to=${seriesEnd}`,
+            ).then((resp) => {
+                const mine = resp.body.gaps.filter((g) => g.occurrenceId === occurrenceOne);
+                expect(mine.map((g) => g.positionId)).to.include.members([posEspresso, posMilk]);
+                // Min 0 is not a gap.
+                expect(mine.map((g) => g.positionId)).to.not.include(posExpeditor);
+                // §4.8: never another ministry's occurrence.
+                expect(resp.body.gaps.map((g) => g.occurrenceId)).to.not.include(occurrenceB);
+            });
+        });
+
+        it("requires from and to on GET /gaps", () => {
+            api(COORDINATOR_KEY, "GET", `${VOLUNTEER_URL}/gaps`, null, 400);
+        });
+
+        it("reports liveCount / gapCount / pendingCount on the occurrence list and filters with ?hasGaps=1", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+            assign(COORDINATOR_KEY, occurrenceOne, posMilk, POOL_MEMBER_C);
+
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
+            ).then((resp) => {
+                const first = resp.body.occurrences.find((o) => o.id === occurrenceOne);
+                expect(first.liveCount).to.eq(2);
+                expect(first.gapCount).to.eq(0);
+                expect(first.pendingCount).to.eq(2);
+
+                const second = resp.body.occurrences.find((o) => o.id === occurrenceTwo);
+                expect(second.liveCount).to.eq(0);
+                expect(second.gapCount).to.eq(2);
+            });
+
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}&hasGaps=1`,
+            ).then((resp) => {
+                const ids = resp.body.occurrences.map((o) => o.id);
+                expect(ids).to.not.include(occurrenceOne);
+                expect(ids).to.include(occurrenceTwo);
+            });
+        });
+
+        it("reports the same counts on the occurrence detail", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+
+            api(COORDINATOR_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceOne}`).then(
+                (resp) => {
+                    expect(resp.body.occurrence.liveCount).to.eq(1);
+                    expect(resp.body.occurrence.gapCount).to.eq(1);
+                    const espresso = resp.body.requirements.find(
+                        (r) => r.positionId === posEspresso,
+                    );
+                    expect(espresso.liveCount).to.eq(1);
+                    expect(espresso.gapCount).to.eq(0);
+                },
+            );
+        });
+    });
+
+    describe("Volunteer v2 — the eligible picker (§3.3.2, §2.17 rotation)", () => {
+        beforeEach(resetWorkflow);
+
+        it("offers only qualified people, flags pool membership and orders by last served", () => {
+            // Two historical assignments so the ordering has something to order by.
+            // They are inserted directly: I5 refuses to create an assignment on an
+            // occurrence that has already ended, which is exactly what these are.
+            dbOk(
+                `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (?, ?, '', '', ?, ?, 0)`,
+                [CHURCH_SERVICE_TYPE, `${EVENT_TITLE} Past`, `${isoDate(-28)} 10:30:00`, `${isoDate(-28)} 11:45:00`],
+            ).then((event) =>
+                dbOk(
+                    `INSERT INTO volunteer_occurrence_vocc
+                     (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
+                 VALUES (?, ?, ?, 'scheduled', NOW())`,
+                    [scheduleA, event.insertId, isoDate(-28)],
+                ),
+            ).then((rows) => {
+                const oldOccurrence = rows.insertId;
+                dbOk(
+                    `INSERT INTO volunteer_assignment_vasg
+                     (vasg_vocc_ID, vasg_vpos_ID, vasg_per_ID, vasg_Status, vasg_Source, vasg_AssignedDate)
+                 VALUES (?, ?, ?, 'completed', 'coordinator', NOW())`,
+                    [oldOccurrence, posEspresso, POOL_MEMBER_B],
+                );
+            });
+
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posEspresso}`,
+            ).then((resp) => {
+                const people = resp.body.people;
+                const ids = people.map((p) => p.personId);
+
+                // Qualified only — the unqualified pool member is never offered.
+                expect(ids).to.not.include(POOL_MEMBER_UNQUALIFIED);
+                expect(ids).to.include.members([POOL_MEMBER_A, POOL_MEMBER_B, PERSON_VOLUNTEER]);
+
+                // Out-of-pool qualified people are listed, flagged, never hidden.
+                const outside = people.find((p) => p.personId === OUTSIDE_POOL_PERSON);
+                expect(outside, "an out-of-pool qualified person is still offered").to.not.eq(
+                    undefined,
+                );
+                expect(outside.inPool).to.eq(false);
+                expect(people.find((p) => p.personId === POOL_MEMBER_A).inPool).to.eq(true);
+
+                // lastServedDate ASC NULLS FIRST: never-served people come first,
+                // and the one who served most recently is last (§2.17 rotation).
+                const served = people.filter((p) => p.lastServedDate !== null);
+                expect(served.length).to.be.greaterThan(0);
+                const firstServedIndex = people.findIndex((p) => p.lastServedDate !== null);
+                people.slice(0, firstServedIndex).forEach((p) => {
+                    expect(p.lastServedDate).to.eq(null);
+                });
+                expect(people[people.length - 1].personId).to.eq(POOL_MEMBER_B);
+            });
+        });
+
+        it("filters by ?q=", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posEspresso}&q=zzzznotaperson`,
+            ).then((resp) => {
+                expect(resp.body.people).to.have.length(0);
+            });
+        });
+
+        it("requires positionId", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible`,
+                null,
+                400,
+            );
+        });
+    });
+
+    /**
+     * The Cart sink is gone from this surface.
+     *
+     * `POST /volunteer/cart/assign` and `VolunteerAssignmentService::assignFromCart()`
+     * were removed with the occurrence page's "Assign everyone in the cart" button:
+     * assigning is a per-person act with per-person eligibility rules (I1-I5), so the
+     * bulk call half-succeeded and handed back a list of reasons — a worse answer than
+     * the single-person picker, which can only ever offer assignable people. The Cart
+     * still feeds V2 from the ministry page, where it fills the volunteer POOL
+     * (`POST /ministries/{id}/pool/from-cart`, covered in
+     * private.volunteer.pools-qualifications.spec.js).
+     *
+     * The case below is what stops the route coming back by accident.
+     */
+    describe("Volunteer v2 — the Cart sink is off the assignment surface", () => {
+        it("has no cart-assign route any more", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                CART_URL,
+                { Persons: [POOL_MEMBER_A, POOL_MEMBER_B] },
+                200,
+            );
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${VOLUNTEER_URL}/cart/assign`,
+                { occurrenceId: occurrenceOne, positionId: posEspresso },
+                404,
+            );
+
+            cy.makePrivateAdminAPICall("DELETE", CART_URL, null, 200);
+        });
+    });
+
+    describe("Volunteer v2 — notify re-enqueue (§3.3.2)", () => {
+        let assignmentId = 0;
+
+        beforeEach(() => {
+            resetWorkflow();
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
+                assignmentId = resp.body.assignment.id;
+            });
+        });
+
+        it("is idempotent through the dedupe key unless ?force=1", () => {
+            api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/notify`, {}, 200).then(
+                (resp) => {
+                    expect(resp.body.created, "the assign() row already exists").to.eq(false);
+                },
+            );
+
+            outboxRows("assignment", POOL_MEMBER_A).then((rows) => {
+                expect(rows).to.have.length(1);
+            });
+        });
+
+        it("resets a sent row to pending with ?force=1", () => {
+            dbOk(
+                `UPDATE volunteer_notification_vntf SET vntf_Status = 'sent', vntf_SentDate = NOW()
+              WHERE vntf_vasg_ID = ? AND vntf_Type = 'assignment'`,
+                [assignmentId],
+            );
+
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/assignments/${assignmentId}/notify?force=1`,
+                {},
+                200,
+            );
+
+            outboxRows("assignment", POOL_MEMBER_A).then((rows) => {
+                expect(rows, "force re-arms the SAME row, it never adds a second").to.have.length(1);
+                expect(rows[0].vntf_Status).to.eq("pending");
+            });
+        });
+    });
+
+    describe("Volunteer v2 — authorization negatives (§4.8)", () => {
+        beforeEach(resetWorkflow);
+
+        it("401s an unauthenticated caller", () => {
+            cy.request({
+                method: "GET",
+                url: `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(401);
+            });
+        });
+
+        it("403s a coordinator on another ministry's occurrence", () => {
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceB}/staffing`,
+                null,
+                403,
+            );
+            assign(COORDINATOR_KEY, occurrenceB, posEspresso, POOL_MEMBER_A, {}, 403);
+        });
+
+        it("403s a user with no volunteer rights at all", () => {
+            api(
+                PLAINAUTH_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
+                null,
+                403,
+            );
+        });
+
+        it("403s the volunteer persona on the coordinator surface", () => {
+            api(
+                SELFEDIT_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/staffing`,
+                null,
+                403,
+            );
+        });
+
+        it("403s — never 404s — a member responding to someone else's assignment (§3.3.3)", () => {
+            let otherId = 0;
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
+                otherId = resp.body.assignment.id;
+            });
+
+            cy.then(() => {
+                api(
+                    SELFEDIT_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/me/assignments/${otherId}/respond`,
+                    { response: "accepted" },
+                    403,
+                );
+            });
+        });
+
+        it("lets the volunteer read only their own assignments on /me", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+            assign(COORDINATOR_KEY, occurrenceOne, posMilk, PERSON_VOLUNTEER);
+
+            api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/assignments`).then((resp) => {
+                const ids = resp.body.assignments.map((a) => a.personId);
+                expect(ids.every((id) => id === PERSON_VOLUNTEER)).to.eq(true);
+                expect(resp.body.assignments.length).to.be.greaterThan(0);
+                const mine = resp.body.assignments[0];
+                expect(mine.positionName).to.be.a("string");
+                expect(mine.ministryName).to.be.a("string");
+                expect(mine.canRespond).to.eq(true);
+            });
+        });
+
+        it("takes no personId parameter on the member surface (§3.3.3)", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+
+            api(
+                SELFEDIT_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/me/assignments?personId=${POOL_MEMBER_A}`,
+            ).then((resp) => {
+                const ids = resp.body.assignments.map((a) => a.personId);
+                expect(ids).to.not.include(POOL_MEMBER_A);
+            });
         });
     });
 });

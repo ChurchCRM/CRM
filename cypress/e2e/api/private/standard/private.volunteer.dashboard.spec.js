@@ -366,477 +366,479 @@ function cleanupFixtures() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-before(() => {
-    cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
-        originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
-    });
-    setVersion("v2");
-    cleanupFixtures();
-
-    createMinistry("Coffee Bar").then((id) => {
-        ministryA = id;
-    });
-    createMinistry("Sound Booth").then((id) => {
-        ministryB = id;
-    });
-
-    cy.then(() => {
-        // Ministry A keeps the team it was created with as its Bar team, and gains a
-        // second one for sound — UC4's "one ministry, several teams".
-        defaultTeam(ministryA).then((id) => {
-            teamA1 = id;
+describe("Volunteer v2 — the coordinator dashboard aggregate (#9711, epic #9701)", () => {
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
+            originalVersion = resp.body.value ?? resp.body.Value ?? "v1";
         });
-        createTeam(ministryA, "Sound Team").then((id) => {
-            teamA2 = id;
+        setVersion("v2");
+        cleanupFixtures();
+
+        createMinistry("Coffee Bar").then((id) => {
+            ministryA = id;
         });
-        defaultTeam(ministryB).then((id) => {
-            teamB = id;
+        createMinistry("Sound Booth").then((id) => {
+            ministryB = id;
         });
-    });
 
-    cy.then(() => {
-        createPosition(ministryA, teamA1, "Espresso", 1).then((id) => {
-            posEspresso = id;
-        });
-        createPosition(ministryA, teamA1, "Milk Station", 2).then((id) => {
-            posMilk = id;
-        });
-        createPosition(ministryA, teamA2, "Audio Engineer", 3).then((id) => {
-            posSound = id;
-        });
-        createPosition(ministryB, teamB, "Booth Runner", 1).then((id) => {
-            posBooth = id;
-        });
-    });
-
-    // D19: each ministry came with its own pool Group, empty. Both are filled with
-    // the same three people, which is what the old shared-group fixture was really
-    // expressing — one roster feeding two ministries — without borrowing a seeded
-    // group whose membership this spec does not own.
-    cy.then(() => {
-        for (const ministryId of [ministryA, ministryB]) {
-            for (const personId of [POOL_MEMBER_A, POOL_MEMBER_B, POOL_MEMBER_C]) {
-                api(
-                    ADMIN_KEY,
-                    "POST",
-                    `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
-                    null,
-                    [200, 201],
-                );
-            }
-        }
-    });
-
-    cy.then(() => {
-        qualify(posEspresso, POOL_MEMBER_A);
-        qualify(posEspresso, POOL_MEMBER_B);
-        qualify(posMilk, POOL_MEMBER_A);
-        qualify(posMilk, POOL_MEMBER_C);
-        qualify(posSound, POOL_MEMBER_B);
-        qualify(posSound, POOL_MEMBER_C);
-        qualify(posBooth, POOL_MEMBER_A);
-        qualify(posBooth, POOL_MEMBER_B);
-    });
-
-    // A real future event series; V2 must never create events_event rows itself.
-    cy.then(() => {
-        seriesStart = isoDate(daysToNext(0));
-        seriesEnd = isoDate(daysToNext(0) + 35);
-
-        api(ADMIN_KEY, "POST", "/api/events/repeat", {
-            Title: EVENT_TITLE,
-            Type: CHURCH_SERVICE_TYPE,
-            StartTime: "10:30:00",
-            EndTime: "11:45:00",
-            RecurType: "weekly",
-            RecurDOW: "Sunday",
-            RangeStart: seriesStart,
-            RangeEnd: seriesEnd,
-        }, 200);
-    });
-
-    cy.then(() => {
-        createSchedule(ministryA, "Coffee Bar — Sunday", teamA1).then((id) => {
-            scheduleA1 = id;
-        });
-        createSchedule(ministryA, "Sound — Sunday", teamA2).then((id) => {
-            scheduleA2 = id;
-        });
-        createSchedule(ministryB, "Booth — Sunday", teamB).then((id) => {
-            scheduleB = id;
-        });
-    });
-
-    cy.then(() => {
-        upsertRequirement(scheduleA1, posEspresso, 1, 1);
-        upsertRequirement(scheduleA1, posMilk, 1, 2);
-        upsertRequirement(scheduleA2, posSound, 1, 1);
-        upsertRequirement(scheduleB, posBooth, 1, 1);
-    });
-
-    cy.then(() => {
-        generate(scheduleA1, seriesEnd);
-        generate(scheduleA2, seriesEnd);
-        generate(scheduleB, seriesEnd);
-    });
-
-    cy.then(() => {
-        occurrencesOf(scheduleA1).then((rows) => {
-            expect(rows.length, "ministry A occurrences generated").to.be.greaterThan(1);
-            occA1Near = Number(rows[0].id);
-            occA1Far = Number(rows[rows.length - 1].id);
-        });
-        occurrencesOf(scheduleA2).then((rows) => {
-            occA2 = Number(rows[0].id);
-        });
-        occurrencesOf(scheduleB).then((rows) => {
-            occB = Number(rows[0].id);
-        });
-    });
-
-    // Scope grants. Person 3 coordinates ministry A, person 95 ministry B and
-    // person 100 leads team A2 and nothing else — the §4.6 team-leader row.
-    cy.then(() => {
-        grantScope(PERSON_COORD_A, "ministry", ministryA);
-        grantScope(PERSON_COORD_B, "ministry", ministryB);
-        grantScope(PERSON_TEAM_LEADER, "team", teamA2);
-    });
-
-    // One pending assignment on ministry A's nearest occurrence — Espresso is then
-    // filled and Milk Station is not, so exactly one gap remains on that occurrence.
-    cy.then(() => {
-        assign(occA1Near, posEspresso, POOL_MEMBER_A);
-    });
-});
-
-after(() => {
-    cleanupFixtures();
-    setVersion(originalVersion);
-});
-
-// ── tests ──────────────────────────────────────────────────────────────────
-
-describe("GET /api/ministries/dashboard — shape and defaults (#9711, §3.3.2)", () => {
-    it("returns the five documented keys", () => {
-        dashboard(ADMIN_KEY).then((resp) => {
-            expect(resp.body).to.have.property("upcoming");
-            expect(resp.body).to.have.property("gaps");
-            expect(resp.body).to.have.property("pendingResponses");
-            expect(resp.body).to.have.property("proposedSwaps");
-            expect(resp.body).to.have.property("failedNotifications");
-            expect(resp.body.upcoming).to.be.an("array");
-            expect(resp.body.gaps).to.be.an("array");
-            expect(resp.body.pendingResponses).to.be.an("array");
-            expect(resp.body.proposedSwaps).to.be.an("array");
-            expect(resp.body.failedNotifications).to.be.a("number");
-        });
-    });
-
-    it("defaults to a 28 day window and reports the window it used", () => {
-        dashboard(ADMIN_KEY).then((resp) => {
-            expect(resp.body.days).to.eq(28);
-            expect(resp.body.from).to.eq(isoDate(0));
-            expect(resp.body.to).to.eq(isoDate(28));
-        });
-    });
-
-    it("carries the caller's scope so the page can offer an entry point", () => {
-        dashboard(ADMIN_KEY).then((resp) => {
-            expect(resp.body.scope).to.be.an("object");
-            expect(resp.body.scope.isManager).to.eq(true);
-            expect(resp.body.scope.ministries).to.be.an("array");
-            expect(resp.body.scope.teams).to.be.an("array");
-        });
-    });
-
-    it("rejects a days value outside the supported range", () => {
-        dashboard(ADMIN_KEY, "?days=0", 400);
-        dashboard(ADMIN_KEY, "?days=999", 400);
-        dashboard(ADMIN_KEY, "?days=notanumber", 400);
-    });
-});
-
-describe("GET /api/ministries/dashboard — the gap panel (#9711, §5.2)", () => {
-    it("lists the unfilled Milk Station requirement, soonest first", () => {
-        dashboard(ADMIN_KEY).then((resp) => {
-            const mine = resp.body.gaps.filter((gap) => gap.ministryId === ministryA);
-            expect(mine.length).to.be.greaterThan(0);
-
-            const names = mine.map((gap) => gap.positionName);
-            expect(names).to.include(`${FIXTURE_PREFIX} Milk Station`);
-
-            const dates = mine.map((gap) => gap.occurrenceDate);
-            const sorted = [...dates].sort();
-            expect(dates).to.deep.eq(sorted);
-        });
-    });
-
-    it("does not list a requirement that is filled", () => {
-        dashboard(ADMIN_KEY).then((resp) => {
-            const nearEspresso = resp.body.gaps.filter(
-                (gap) => gap.occurrenceId === occA1Near && gap.positionId === posEspresso,
-            );
-            expect(nearEspresso).to.have.length(0);
-        });
-    });
-
-    it("carries the context a row needs to be clickable", () => {
-        dashboard(ADMIN_KEY).then((resp) => {
-            const gap = resp.body.gaps.find((row) => row.occurrenceId === occA1Near);
-            expect(gap).to.be.an("object");
-            expect(gap.occurrenceId).to.eq(occA1Near);
-            expect(gap.positionId).to.be.a("number");
-            expect(gap.gapCount).to.be.greaterThan(0);
-            expect(gap.scheduleName).to.be.a("string");
-            expect(gap.ministryName).to.be.a("string");
-        });
-    });
-});
-
-describe("GET /api/ministries/dashboard — pending responses and swaps (#9711, §5.2)", () => {
-    it("lists the pending assignment with its occurrence context", () => {
-        dashboard(ADMIN_KEY).then((resp) => {
-            const row = resp.body.pendingResponses.find(
-                (pending) => pending.occurrenceId === occA1Near,
-            );
-            expect(row, "the pending Espresso assignment").to.be.an("object");
-            expect(row.status).to.eq("pending");
-            expect(row.personId).to.eq(POOL_MEMBER_A);
-            expect(row.positionName).to.eq(`${FIXTURE_PREFIX} Espresso`);
-            expect(row.occurrenceDate).to.be.a("string");
-            expect(row).to.have.property("withinReminderWindow");
-        });
-    });
-
-    it("drops an assignment once it has been answered", () => {
-        let assignmentId = 0;
-        assign(occA1Far, posEspresso, POOL_MEMBER_B).then((assignment) => {
-            assignmentId = assignment.id;
-        });
         cy.then(() => {
-            // occA1Far sits beyond the default 28-day window, so the wider one is
-            // what proves the row is listed at all.
-            dashboard(ADMIN_KEY, "?days=60").then((resp) => {
-                const ids = resp.body.pendingResponses.map((row) => row.id);
-                expect(ids).to.include(assignmentId);
+            // Ministry A keeps the team it was created with as its Bar team, and gains a
+            // second one for sound — UC4's "one ministry, several teams".
+            defaultTeam(ministryA).then((id) => {
+                teamA1 = id;
+            });
+            createTeam(ministryA, "Sound Team").then((id) => {
+                teamA2 = id;
+            });
+            defaultTeam(ministryB).then((id) => {
+                teamB = id;
             });
         });
+
         cy.then(() => {
-            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
-                status: "accepted",
-                comment: "",
+            createPosition(ministryA, teamA1, "Espresso", 1).then((id) => {
+                posEspresso = id;
+            });
+            createPosition(ministryA, teamA1, "Milk Station", 2).then((id) => {
+                posMilk = id;
+            });
+            createPosition(ministryA, teamA2, "Audio Engineer", 3).then((id) => {
+                posSound = id;
+            });
+            createPosition(ministryB, teamB, "Booth Runner", 1).then((id) => {
+                posBooth = id;
+            });
+        });
+
+        // D19: each ministry came with its own pool Group, empty. Both are filled with
+        // the same three people, which is what the old shared-group fixture was really
+        // expressing — one roster feeding two ministries — without borrowing a seeded
+        // group whose membership this spec does not own.
+        cy.then(() => {
+            for (const ministryId of [ministryA, ministryB]) {
+                for (const personId of [POOL_MEMBER_A, POOL_MEMBER_B, POOL_MEMBER_C]) {
+                    api(
+                        ADMIN_KEY,
+                        "POST",
+                        `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                        null,
+                        [200, 201],
+                    );
+                }
+            }
+        });
+
+        cy.then(() => {
+            qualify(posEspresso, POOL_MEMBER_A);
+            qualify(posEspresso, POOL_MEMBER_B);
+            qualify(posMilk, POOL_MEMBER_A);
+            qualify(posMilk, POOL_MEMBER_C);
+            qualify(posSound, POOL_MEMBER_B);
+            qualify(posSound, POOL_MEMBER_C);
+            qualify(posBooth, POOL_MEMBER_A);
+            qualify(posBooth, POOL_MEMBER_B);
+        });
+
+        // A real future event series; V2 must never create events_event rows itself.
+        cy.then(() => {
+            seriesStart = isoDate(daysToNext(0));
+            seriesEnd = isoDate(daysToNext(0) + 35);
+
+            api(ADMIN_KEY, "POST", "/api/events/repeat", {
+                Title: EVENT_TITLE,
+                Type: CHURCH_SERVICE_TYPE,
+                StartTime: "10:30:00",
+                EndTime: "11:45:00",
+                RecurType: "weekly",
+                RecurDOW: "Sunday",
+                RangeStart: seriesStart,
+                RangeEnd: seriesEnd,
             }, 200);
         });
+
         cy.then(() => {
-            dashboard(ADMIN_KEY, "?days=60").then((resp) => {
-                const ids = resp.body.pendingResponses.map((row) => row.id);
-                expect(ids).to.not.include(assignmentId);
+            createSchedule(ministryA, "Coffee Bar — Sunday", teamA1).then((id) => {
+                scheduleA1 = id;
+            });
+            createSchedule(ministryA, "Sound — Sunday", teamA2).then((id) => {
+                scheduleA2 = id;
+            });
+            createSchedule(ministryB, "Booth — Sunday", teamB).then((id) => {
+                scheduleB = id;
+            });
+        });
+
+        cy.then(() => {
+            upsertRequirement(scheduleA1, posEspresso, 1, 1);
+            upsertRequirement(scheduleA1, posMilk, 1, 2);
+            upsertRequirement(scheduleA2, posSound, 1, 1);
+            upsertRequirement(scheduleB, posBooth, 1, 1);
+        });
+
+        cy.then(() => {
+            generate(scheduleA1, seriesEnd);
+            generate(scheduleA2, seriesEnd);
+            generate(scheduleB, seriesEnd);
+        });
+
+        cy.then(() => {
+            occurrencesOf(scheduleA1).then((rows) => {
+                expect(rows.length, "ministry A occurrences generated").to.be.greaterThan(1);
+                occA1Near = Number(rows[0].id);
+                occA1Far = Number(rows[rows.length - 1].id);
+            });
+            occurrencesOf(scheduleA2).then((rows) => {
+                occA2 = Number(rows[0].id);
+            });
+            occurrencesOf(scheduleB).then((rows) => {
+                occB = Number(rows[0].id);
+            });
+        });
+
+        // Scope grants. Person 3 coordinates ministry A, person 95 ministry B and
+        // person 100 leads team A2 and nothing else — the §4.6 team-leader row.
+        cy.then(() => {
+            grantScope(PERSON_COORD_A, "ministry", ministryA);
+            grantScope(PERSON_COORD_B, "ministry", ministryB);
+            grantScope(PERSON_TEAM_LEADER, "team", teamA2);
+        });
+
+        // One pending assignment on ministry A's nearest occurrence — Espresso is then
+        // filled and Milk Station is not, so exactly one gap remains on that occurrence.
+        cy.then(() => {
+            assign(occA1Near, posEspresso, POOL_MEMBER_A);
+        });
+    });
+
+    after(() => {
+        cleanupFixtures();
+        setVersion(originalVersion);
+    });
+
+    // ── tests ──────────────────────────────────────────────────────────────────
+
+    describe("GET /api/ministries/dashboard — shape and defaults (#9711, §3.3.2)", () => {
+        it("returns the five documented keys", () => {
+            dashboard(ADMIN_KEY).then((resp) => {
+                expect(resp.body).to.have.property("upcoming");
+                expect(resp.body).to.have.property("gaps");
+                expect(resp.body).to.have.property("pendingResponses");
+                expect(resp.body).to.have.property("proposedSwaps");
+                expect(resp.body).to.have.property("failedNotifications");
+                expect(resp.body.upcoming).to.be.an("array");
+                expect(resp.body.gaps).to.be.an("array");
+                expect(resp.body.pendingResponses).to.be.an("array");
+                expect(resp.body.proposedSwaps).to.be.an("array");
+                expect(resp.body.failedNotifications).to.be.a("number");
+            });
+        });
+
+        it("defaults to a 28 day window and reports the window it used", () => {
+            dashboard(ADMIN_KEY).then((resp) => {
+                expect(resp.body.days).to.eq(28);
+                expect(resp.body.from).to.eq(isoDate(0));
+                expect(resp.body.to).to.eq(isoDate(28));
+            });
+        });
+
+        it("carries the caller's scope so the page can offer an entry point", () => {
+            dashboard(ADMIN_KEY).then((resp) => {
+                expect(resp.body.scope).to.be.an("object");
+                expect(resp.body.scope.isManager).to.eq(true);
+                expect(resp.body.scope.ministries).to.be.an("array");
+                expect(resp.body.scope.teams).to.be.an("array");
+            });
+        });
+
+        it("rejects a days value outside the supported range", () => {
+            dashboard(ADMIN_KEY, "?days=0", 400);
+            dashboard(ADMIN_KEY, "?days=999", 400);
+            dashboard(ADMIN_KEY, "?days=notanumber", 400);
+        });
+    });
+
+    describe("GET /api/ministries/dashboard — the gap panel (#9711, §5.2)", () => {
+        it("lists the unfilled Milk Station requirement, soonest first", () => {
+            dashboard(ADMIN_KEY).then((resp) => {
+                const mine = resp.body.gaps.filter((gap) => gap.ministryId === ministryA);
+                expect(mine.length).to.be.greaterThan(0);
+
+                const names = mine.map((gap) => gap.positionName);
+                expect(names).to.include(`${FIXTURE_PREFIX} Milk Station`);
+
+                const dates = mine.map((gap) => gap.occurrenceDate);
+                const sorted = [...dates].sort();
+                expect(dates).to.deep.eq(sorted);
+            });
+        });
+
+        it("does not list a requirement that is filled", () => {
+            dashboard(ADMIN_KEY).then((resp) => {
+                const nearEspresso = resp.body.gaps.filter(
+                    (gap) => gap.occurrenceId === occA1Near && gap.positionId === posEspresso,
+                );
+                expect(nearEspresso).to.have.length(0);
+            });
+        });
+
+        it("carries the context a row needs to be clickable", () => {
+            dashboard(ADMIN_KEY).then((resp) => {
+                const gap = resp.body.gaps.find((row) => row.occurrenceId === occA1Near);
+                expect(gap).to.be.an("object");
+                expect(gap.occurrenceId).to.eq(occA1Near);
+                expect(gap.positionId).to.be.a("number");
+                expect(gap.gapCount).to.be.greaterThan(0);
+                expect(gap.scheduleName).to.be.a("string");
+                expect(gap.ministryName).to.be.a("string");
             });
         });
     });
 
-    it("lists a proposed swap and drops it once decided", () => {
-        let assignmentId = 0;
-        let swapId = 0;
-
-        assign(occA2, posSound, POOL_MEMBER_B).then((assignment) => {
-            assignmentId = assignment.id;
+    describe("GET /api/ministries/dashboard — pending responses and swaps (#9711, §5.2)", () => {
+        it("lists the pending assignment with its occurrence context", () => {
+            dashboard(ADMIN_KEY).then((resp) => {
+                const row = resp.body.pendingResponses.find(
+                    (pending) => pending.occurrenceId === occA1Near,
+                );
+                expect(row, "the pending Espresso assignment").to.be.an("object");
+                expect(row.status).to.eq("pending");
+                expect(row.personId).to.eq(POOL_MEMBER_A);
+                expect(row.positionName).to.eq(`${FIXTURE_PREFIX} Espresso`);
+                expect(row.occurrenceDate).to.be.a("string");
+                expect(row).to.have.property("withinReminderWindow");
+            });
         });
-        cy.then(() => {
-            // The proposal is made on the volunteer's behalf through the coordinator
-            // surface's own data: /me/* never accepts a personId, so the swap row is
-            // created by the assigned volunteer themselves is not reachable here —
-            // the admin-facing path is a direct insert of a proposal row.
-            dbOk(
-                `INSERT INTO volunteer_swap_vswp
+
+        it("drops an assignment once it has been answered", () => {
+            let assignmentId = 0;
+            assign(occA1Far, posEspresso, POOL_MEMBER_B).then((assignment) => {
+                assignmentId = assignment.id;
+            });
+            cy.then(() => {
+                // occA1Far sits beyond the default 28-day window, so the wider one is
+                // what proves the row is listed at all.
+                dashboard(ADMIN_KEY, "?days=60").then((resp) => {
+                    const ids = resp.body.pendingResponses.map((row) => row.id);
+                    expect(ids).to.include(assignmentId);
+                });
+            });
+            cy.then(() => {
+                api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/assignments/${assignmentId}/status`, {
+                    status: "accepted",
+                    comment: "",
+                }, 200);
+            });
+            cy.then(() => {
+                dashboard(ADMIN_KEY, "?days=60").then((resp) => {
+                    const ids = resp.body.pendingResponses.map((row) => row.id);
+                    expect(ids).to.not.include(assignmentId);
+                });
+            });
+        });
+
+        it("lists a proposed swap and drops it once decided", () => {
+            let assignmentId = 0;
+            let swapId = 0;
+
+            assign(occA2, posSound, POOL_MEMBER_B).then((assignment) => {
+                assignmentId = assignment.id;
+            });
+            cy.then(() => {
+                // The proposal is made on the volunteer's behalf through the coordinator
+                // surface's own data: /me/* never accepts a personId, so the swap row is
+                // created by the assigned volunteer themselves is not reachable here —
+                // the admin-facing path is a direct insert of a proposal row.
+                dbOk(
+                    `INSERT INTO volunteer_swap_vswp
                     (vswp_vasg_ID, vswp_ProposedBy_per_ID, vswp_Proposed_per_ID, vswp_Status, vswp_ProposedDate)
                  VALUES (?, ?, ?, 'proposed', NOW())`,
-                [assignmentId, POOL_MEMBER_B, POOL_MEMBER_C],
-            );
-        });
-        cy.then(() => {
-            dbOk(`SELECT vswp_ID AS id FROM volunteer_swap_vswp WHERE vswp_vasg_ID = ?`, [
-                assignmentId,
-            ]).then((rows) => {
-                swapId = Number(rows[0].id);
+                    [assignmentId, POOL_MEMBER_B, POOL_MEMBER_C],
+                );
             });
-        });
-        cy.then(() => {
-            dashboard(ADMIN_KEY).then((resp) => {
-                const ids = resp.body.proposedSwaps.map((swap) => swap.id);
-                expect(ids).to.include(swapId);
-                const swap = resp.body.proposedSwaps.find((row) => row.id === swapId);
-                expect(swap.status).to.eq("proposed");
-                expect(swap.occurrenceId).to.eq(occA2);
+            cy.then(() => {
+                dbOk(`SELECT vswp_ID AS id FROM volunteer_swap_vswp WHERE vswp_vasg_ID = ?`, [
+                    assignmentId,
+                ]).then((rows) => {
+                    swapId = Number(rows[0].id);
+                });
             });
-        });
-        cy.then(() => {
-            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/swaps/${swapId}/reject`, { comment: "" }, 200);
-        });
-        cy.then(() => {
-            dashboard(ADMIN_KEY).then((resp) => {
-                const ids = resp.body.proposedSwaps.map((swap) => swap.id);
-                expect(ids).to.not.include(swapId);
+            cy.then(() => {
+                dashboard(ADMIN_KEY).then((resp) => {
+                    const ids = resp.body.proposedSwaps.map((swap) => swap.id);
+                    expect(ids).to.include(swapId);
+                    const swap = resp.body.proposedSwaps.find((row) => row.id === swapId);
+                    expect(swap.status).to.eq("proposed");
+                    expect(swap.occurrenceId).to.eq(occA2);
+                });
+            });
+            cy.then(() => {
+                api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/swaps/${swapId}/reject`, { comment: "" }, 200);
+            });
+            cy.then(() => {
+                dashboard(ADMIN_KEY).then((resp) => {
+                    const ids = resp.body.proposedSwaps.map((swap) => swap.id);
+                    expect(ids).to.not.include(swapId);
+                });
             });
         });
     });
-});
 
-describe("GET /api/ministries/dashboard — failedNotifications (#9711, §2.14)", () => {
-    it("counts only terminal failed rows, not pending or skipped ones", () => {
-        let assignmentId = 0;
+    describe("GET /api/ministries/dashboard — failedNotifications (#9711, §2.14)", () => {
+        it("counts only terminal failed rows, not pending or skipped ones", () => {
+            let assignmentId = 0;
 
-        dashboard(ADMIN_KEY, "?days=60").then((resp) => {
-            // The fixture's own assignment mail is still `pending`, so the baseline
-            // proves pending rows are NOT counted.
-            expect(resp.body.failedNotifications).to.eq(0);
-        });
-
-        assign(occA1Far, posMilk, POOL_MEMBER_C).then((assignment) => {
-            assignmentId = assignment.id;
-        });
-
-        cy.then(() => {
-            dbOk(
-                `UPDATE volunteer_notification_vntf
-                    SET vntf_Status = 'failed', vntf_Attempts = 5, vntf_LastError = 'test'
-                  WHERE vntf_vasg_ID = ? AND vntf_Type = 'assignment'`,
-                [assignmentId],
-            );
-        });
-
-        cy.then(() => {
             dashboard(ADMIN_KEY, "?days=60").then((resp) => {
-                expect(resp.body.failedNotifications).to.eq(1);
-            });
-        });
-
-        // `skipped` is not a failure either (§2.14).
-        cy.then(() => {
-            dbOk(
-                `UPDATE volunteer_notification_vntf
-                    SET vntf_Status = 'skipped'
-                  WHERE vntf_vasg_ID = ? AND vntf_Type = 'assignment'`,
-                [assignmentId],
-            );
-        });
-        cy.then(() => {
-            dashboard(ADMIN_KEY, "?days=60").then((resp) => {
+                // The fixture's own assignment mail is still `pending`, so the baseline
+                // proves pending rows are NOT counted.
                 expect(resp.body.failedNotifications).to.eq(0);
             });
-        });
-    });
-});
 
-describe("GET /api/ministries/dashboard — the days window (#9711, §3.3.2)", () => {
-    it("excludes an occurrence beyond the requested window", () => {
-        dashboard(ADMIN_KEY, "?days=1").then((resp) => {
-            const ids = resp.body.upcoming.map((occurrence) => occurrence.id);
-            expect(ids).to.not.include(occA1Far);
-        });
-    });
+            assign(occA1Far, posMilk, POOL_MEMBER_C).then((assignment) => {
+                assignmentId = assignment.id;
+            });
 
-    it("includes it again when the window is wide enough", () => {
-        dashboard(ADMIN_KEY, "?days=60").then((resp) => {
-            const ids = resp.body.upcoming.map((occurrence) => occurrence.id);
-            expect(ids).to.include(occA1Far);
-        });
-    });
+            cy.then(() => {
+                dbOk(
+                    `UPDATE volunteer_notification_vntf
+                    SET vntf_Status = 'failed', vntf_Attempts = 5, vntf_LastError = 'test'
+                  WHERE vntf_vasg_ID = ? AND vntf_Type = 'assignment'`,
+                    [assignmentId],
+                );
+            });
 
-    it("never reports an occurrence that has already happened", () => {
-        dashboard(ADMIN_KEY, "?days=60").then((resp) => {
-            const today = isoDate(0);
-            for (const occurrence of resp.body.upcoming) {
-                expect(occurrence.occurrenceDate >= today).to.eq(true);
-            }
-        });
-    });
-});
+            cy.then(() => {
+                dashboard(ADMIN_KEY, "?days=60").then((resp) => {
+                    expect(resp.body.failedNotifications).to.eq(1);
+                });
+            });
 
-describe("GET /api/ministries/dashboard — scoping happens in the query (#9711, §4.4)", () => {
-    it("an administrator sees both ministries", () => {
-        dashboard(ADMIN_KEY, "?days=60").then((resp) => {
-            const ministryIds = new Set(
-                resp.body.upcoming.map((occurrence) => occurrence.ministryId),
-            );
-            expect(ministryIds.has(ministryA)).to.eq(true);
-            expect(ministryIds.has(ministryB)).to.eq(true);
+            // `skipped` is not a failure either (§2.14).
+            cy.then(() => {
+                dbOk(
+                    `UPDATE volunteer_notification_vntf
+                    SET vntf_Status = 'skipped'
+                  WHERE vntf_vasg_ID = ? AND vntf_Type = 'assignment'`,
+                    [assignmentId],
+                );
+            });
+            cy.then(() => {
+                dashboard(ADMIN_KEY, "?days=60").then((resp) => {
+                    expect(resp.body.failedNotifications).to.eq(0);
+                });
+            });
         });
     });
 
-    it("ministry A's coordinator sees only ministry A", () => {
-        dashboard(COORD_A_KEY, "?days=60").then((resp) => {
-            for (const occurrence of resp.body.upcoming) {
-                expect(occurrence.ministryId).to.eq(ministryA);
-            }
-            for (const gap of resp.body.gaps) {
-                expect(gap.ministryId).to.eq(ministryA);
-            }
-            for (const pending of resp.body.pendingResponses) {
-                expect(pending.ministryId).to.eq(ministryA);
-            }
-            expect(resp.body.scope.isManager).to.eq(false);
-            expect(resp.body.scope.ministries.map((m) => m.id)).to.deep.eq([ministryA]);
+    describe("GET /api/ministries/dashboard — the days window (#9711, §3.3.2)", () => {
+        it("excludes an occurrence beyond the requested window", () => {
+            dashboard(ADMIN_KEY, "?days=1").then((resp) => {
+                const ids = resp.body.upcoming.map((occurrence) => occurrence.id);
+                expect(ids).to.not.include(occA1Far);
+            });
+        });
+
+        it("includes it again when the window is wide enough", () => {
+            dashboard(ADMIN_KEY, "?days=60").then((resp) => {
+                const ids = resp.body.upcoming.map((occurrence) => occurrence.id);
+                expect(ids).to.include(occA1Far);
+            });
+        });
+
+        it("never reports an occurrence that has already happened", () => {
+            dashboard(ADMIN_KEY, "?days=60").then((resp) => {
+                const today = isoDate(0);
+                for (const occurrence of resp.body.upcoming) {
+                    expect(occurrence.occurrenceDate >= today).to.eq(true);
+                }
+            });
         });
     });
 
-    it("ministry B's coordinator sees only ministry B", () => {
-        dashboard(COORD_B_KEY, "?days=60").then((resp) => {
-            for (const occurrence of resp.body.upcoming) {
-                expect(occurrence.ministryId).to.eq(ministryB);
-            }
-            expect(resp.body.scope.ministries.map((m) => m.id)).to.deep.eq([ministryB]);
+    describe("GET /api/ministries/dashboard — scoping happens in the query (#9711, §4.4)", () => {
+        it("an administrator sees both ministries", () => {
+            dashboard(ADMIN_KEY, "?days=60").then((resp) => {
+                const ministryIds = new Set(
+                    resp.body.upcoming.map((occurrence) => occurrence.ministryId),
+                );
+                expect(ministryIds.has(ministryA)).to.eq(true);
+                expect(ministryIds.has(ministryB)).to.eq(true);
+            });
+        });
+
+        it("ministry A's coordinator sees only ministry A", () => {
+            dashboard(COORD_A_KEY, "?days=60").then((resp) => {
+                for (const occurrence of resp.body.upcoming) {
+                    expect(occurrence.ministryId).to.eq(ministryA);
+                }
+                for (const gap of resp.body.gaps) {
+                    expect(gap.ministryId).to.eq(ministryA);
+                }
+                for (const pending of resp.body.pendingResponses) {
+                    expect(pending.ministryId).to.eq(ministryA);
+                }
+                expect(resp.body.scope.isManager).to.eq(false);
+                expect(resp.body.scope.ministries.map((m) => m.id)).to.deep.eq([ministryA]);
+            });
+        });
+
+        it("ministry B's coordinator sees only ministry B", () => {
+            dashboard(COORD_B_KEY, "?days=60").then((resp) => {
+                for (const occurrence of resp.body.upcoming) {
+                    expect(occurrence.ministryId).to.eq(ministryB);
+                }
+                expect(resp.body.scope.ministries.map((m) => m.id)).to.deep.eq([ministryB]);
+            });
+        });
+
+        it("a team-scope-only user sees only their own team's occurrences", () => {
+            dashboard(TEAM_LEADER_KEY, "?days=60").then((resp) => {
+                expect(resp.body.upcoming.length).to.be.greaterThan(0);
+                for (const occurrence of resp.body.upcoming) {
+                    expect(occurrence.teamId).to.eq(teamA2);
+                }
+                for (const gap of resp.body.gaps) {
+                    expect(gap.teamId).to.eq(teamA2);
+                }
+            });
+        });
+
+        it("a team leader gets a navigable entry point: their ministry, read-only, and their team", () => {
+            dashboard(TEAM_LEADER_KEY, "?days=60").then((resp) => {
+                expect(resp.body.scope.isManager).to.eq(false);
+
+                const ministries = resp.body.scope.ministries;
+                expect(ministries.map((m) => m.id)).to.include(ministryA);
+                const parent = ministries.find((m) => m.id === ministryA);
+                expect(parent.manageable, "read-only for a team leader").to.eq(false);
+
+                const teams = resp.body.scope.teams;
+                expect(teams.map((t) => t.id)).to.deep.eq([teamA2]);
+                expect(teams[0].ministryId).to.eq(ministryA);
+            });
+        });
+
+        it("a team leader never sees the sibling team's swaps or pending responses", () => {
+            dashboard(TEAM_LEADER_KEY, "?days=60").then((resp) => {
+                for (const pending of resp.body.pendingResponses) {
+                    expect(pending.teamId).to.eq(teamA2);
+                }
+                for (const swap of resp.body.proposedSwaps) {
+                    expect(swap.teamId).to.eq(teamA2);
+                }
+            });
+        });
+
+        it("refuses a caller with no volunteer rights at all", () => {
+            dashboard(PLAINAUTH_KEY, "", 403);
         });
     });
 
-    it("a team-scope-only user sees only their own team's occurrences", () => {
-        dashboard(TEAM_LEADER_KEY, "?days=60").then((resp) => {
-            expect(resp.body.upcoming.length).to.be.greaterThan(0);
-            for (const occurrence of resp.body.upcoming) {
-                expect(occurrence.teamId).to.eq(teamA2);
-            }
-            for (const gap of resp.body.gaps) {
-                expect(gap.teamId).to.eq(teamA2);
-            }
+    describe("GET /api/ministries/dashboard — the rollout gate (#9711, §3.3)", () => {
+        it("is refused when V2 is off, and reachable again when it is on", () => {
+            setVersion("v1");
+            dashboard(ADMIN_KEY, "", 403);
+            setVersion("v2");
+            dashboard(ADMIN_KEY, "", 200);
         });
-    });
-
-    it("a team leader gets a navigable entry point: their ministry, read-only, and their team", () => {
-        dashboard(TEAM_LEADER_KEY, "?days=60").then((resp) => {
-            expect(resp.body.scope.isManager).to.eq(false);
-
-            const ministries = resp.body.scope.ministries;
-            expect(ministries.map((m) => m.id)).to.include(ministryA);
-            const parent = ministries.find((m) => m.id === ministryA);
-            expect(parent.manageable, "read-only for a team leader").to.eq(false);
-
-            const teams = resp.body.scope.teams;
-            expect(teams.map((t) => t.id)).to.deep.eq([teamA2]);
-            expect(teams[0].ministryId).to.eq(ministryA);
-        });
-    });
-
-    it("a team leader never sees the sibling team's swaps or pending responses", () => {
-        dashboard(TEAM_LEADER_KEY, "?days=60").then((resp) => {
-            for (const pending of resp.body.pendingResponses) {
-                expect(pending.teamId).to.eq(teamA2);
-            }
-            for (const swap of resp.body.proposedSwaps) {
-                expect(swap.teamId).to.eq(teamA2);
-            }
-        });
-    });
-
-    it("refuses a caller with no volunteer rights at all", () => {
-        dashboard(PLAINAUTH_KEY, "", 403);
-    });
-});
-
-describe("GET /api/ministries/dashboard — the rollout gate (#9711, §3.3)", () => {
-    it("is refused when V2 is off, and reachable again when it is on", () => {
-        setVersion("v1");
-        dashboard(ADMIN_KEY, "", 403);
-        setVersion("v2");
-        dashboard(ADMIN_KEY, "", 200);
     });
 });
