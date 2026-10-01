@@ -14916,10 +14916,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Tệp đã chọn vượt quá kích thước tải lên tối đa của máy chủ này là"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Không có sự kiện nào được lên lịch cho hôm nay"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Đã xảy ra sự cố khi truy xuất đối tượng được yêu cầu"
 

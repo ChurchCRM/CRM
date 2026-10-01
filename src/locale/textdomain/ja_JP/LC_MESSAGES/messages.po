@@ -14877,10 +14877,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "選択したファイルがこのサーバーの最大アップロードサイズを超えています"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "本日予定されているイベントはありません"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "要求されたオブジェクトを取得する際に問題が発生しました"
 

@@ -14899,10 +14899,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "ఎంచుకున్న ఫైల్ ఈ సర్వర్ యొక్క గరిష్ఠ అప్‌లోడ్ పరిమాణాన్ని మించిపోయింది"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "నేడు ఏ కార్యక్రమాలూ షెడ్యూల్ చేయబడలేదు"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "అభ్యర్థించిన ఆబ్జెక్ట్‌ను పొందడంలో సమస్య ఉంది"
 

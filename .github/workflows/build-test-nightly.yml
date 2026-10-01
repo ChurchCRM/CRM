@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - uses: ./.github/actions/checkout-node-npm
 
@@ -127,6 +127,7 @@ jobs:
           - name: admin-ui
             spec: "cypress/e2e/ui-admin/**/*.spec.js"
             config: "cypress/configs/docker-admin.config.ts"
+            shard-total: 1
         include:
           # ui specs sharded 3× — cypress-split balances by spec file
           # split-index values are strings to avoid JS falsy coercion of 0
@@ -141,7 +142,7 @@ jobs:
             shard-total: 3
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - uses: ./.github/actions/checkout-node-npm
       with:
@@ -188,7 +189,7 @@ jobs:
         # reach the database fails the job instead of silently switching off.
         ROW_GUARD_DB_PORT: "3306"
         ROW_GUARD_REQUIRED: "1"
-        SPLIT: ${{ matrix.shard-total || '' }}
+        SPLIT: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
         SPLIT_INDEX: ${{ matrix.split-index }}
 
     - name: Collect Docker logs on failure
@@ -247,6 +248,7 @@ jobs:
           - name: admin-ui
             spec: "cypress/e2e/ui-admin/**/*.spec.js"
             config: "cypress/configs/docker-admin.config.ts"
+            shard-total: 1
         include:
           # split-index values are strings to avoid JS falsy coercion of 0
           - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
@@ -260,7 +262,7 @@ jobs:
             shard-total: 3
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - uses: ./.github/actions/checkout-node-npm
       with:
@@ -307,7 +309,7 @@ jobs:
         # DATABASE_SUBDIR_PORT (3307), not the 3306 default the guard would try.
         ROW_GUARD_DB_PORT: "3307"
         ROW_GUARD_REQUIRED: "1"
-        SPLIT: ${{ matrix.shard-total || '' }}
+        SPLIT: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
         SPLIT_INDEX: ${{ matrix.split-index }}
 
     - name: Collect Docker logs on failure
@@ -358,7 +360,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - uses: ./.github/actions/checkout-node-npm
 
@@ -452,7 +454,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - uses: ./.github/actions/checkout-node-npm
 
@@ -548,7 +550,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - name: Set up Node.js
       uses: actions/setup-node@v7
@@ -650,7 +652,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - name: Set up Node.js
       uses: actions/setup-node@v7
@@ -794,7 +796,7 @@ jobs:
             label: '6.0.0'
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - name: Set up Node.js
       uses: actions/setup-node@v7

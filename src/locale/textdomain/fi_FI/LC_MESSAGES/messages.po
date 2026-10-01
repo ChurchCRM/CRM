@@ -14889,10 +14889,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Valittu tiedosto ylittää palvelimen suurimman sallitun latauskoon"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Tänään ei ole aikataulutettuja tapahtumia"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Pyydetyn kohteen haussa tapahtui virhe"
 

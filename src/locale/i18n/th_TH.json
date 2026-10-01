@@ -3552,7 +3552,6 @@
   "System upgrade completed successfully!": "อัปเกรดระบบสำเร็จ!",
   "Text All": "ข้อความทั้งหมด",
   "The selected file exceeds this servers maximum upload size of": "ไฟล์ที่เลือกเกินขนาดการอัปโหลดสูงสุดของเซิร์ฟเวอร์นี้",
-  "There are no events scheduled for today": "ไม่มีกิจกรรมที่กำหนดไว้สำหรับวันนี้",
   "There was a problem retrieving the requested object": "มีปัญหาในการดึงวัตถุที่ร้องขอ",
   "This event type is used by": "ประเภทกิจกรรมนี้ถูกใช้โดย",
   "This field is required": "ฟิลด์นี้จำเป็นต้องมี",

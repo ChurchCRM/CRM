@@ -14990,10 +14990,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Fișierul selectat depășește mărimea maximă acceptată de server"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Nu există evenimente programate pentru astăzi"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "A apărut o problemă la preluare obiectului solicitat"
 

@@ -14907,10 +14907,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "선택한 파일이 서버 최대 업로드 크기를 초과했습니다:"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "오늘 예정된 이벤트가 없습니다"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "요청한 항목을 가져오는 중 문제가 발생했습니다."
 
