@@ -8,7 +8,7 @@
  * SERVER-SIDE at every boundary the flag touches:
  *
  *   - `GET /api/ministries/status`        — V2 API, gated by VolunteerV2EnabledMiddleware
- *   - `GET /api/volunteer-opportunities` — V1 API, deliberately enabled in EVERY state
+ *   - `GET /admin/api/volunteer-opportunities` — V1 API, deliberately enabled in EVERY state
  *                                          (design §3.8 surface 5; #9702 owns its retirement)
  *   - `GET /ministries/dashboard`         — V2 MVC module, gated by the same middleware
  *                                          plus VolunteerCoordinatorRoleAuthMiddleware on the
@@ -31,7 +31,7 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const STATUS_URL = "/api/ministries/status";
-const V1_API_URL = "/api/volunteer-opportunities";
+const V1_API_URL = "/admin/api/volunteer-opportunities";
 const DASHBOARD_URL = "/ministries/dashboard";
 
 /** Set the rollout state. The POST response body is not asserted: ConfigItem::setValue()
