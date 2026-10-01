@@ -484,10 +484,6 @@ msgid "Photos"
 msgstr "รูปภาพ"
 
 #: 
-msgid "Number of Columns"
-msgstr "จำนวนคอลัมน์"
-
-#: 
 msgid "Paper Size"
 msgstr "ขนาดกระดาษ"
 
@@ -851,10 +847,6 @@ msgstr "ลบรูปภาพ"
 #: 
 msgid "Timeline"
 msgstr "ไทม์ไลน์"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "คำมั่นสัญญาและการชำระเงิน"
 
 #: 
 msgid "Value"
@@ -12697,10 +12689,6 @@ msgid "Upcoming Events"
 msgstr "กิจกรรมที่กำลังจะมาถึง"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL http(s) แบบสมบูรณ์ของโลโก้คริสตจักรที่แสดงในเทมเพลตอีเมล (และนำมาใช้ซ้ำในที่อื่นในอนาคต) เพื่อการแสดงผลที่ดีที่สุดในโปรแกรมอีเมลต่างๆ ใช้ภาพแบนเนอร์แนวนอนที่มีอัตราส่วนประมาณ 3.5:1 (เช่น 350×100 px) รูปแบบ PNG หรือ JPG ผ่าน HTTPS เว้นว่างหรือป้อนค่าที่ไม่ถูกต้องเพื่อใช้โลโก้ ChurchCRM เริ่มต้น"
-
-#: 
 msgid "An option with that name already exists"
 msgstr "มีตัวเลือกที่มีชื่อนั้นอยู่แล้ว"
 
@@ -18505,4 +18493,504 @@ msgstr "ผู้รับมากเกินไปสำหรับโปร
 #: 
 msgid "{{minutes}} min left"
 msgstr "เหลือเวลา {{minutes}} นาที"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "ส่งเอกสารภาษีจำนวน %d ไปยังครอบครัวทางอีเมลสำเร็จแล้ว"
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "แถลงการบริจาค %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "การจำแนกทั้งหมด"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "ในฐานะผู้ดูแลระบบ โปรดตรวจสอบด้วย"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "ส่งอีเมลอวยพรวันเกิดไปยังผู้คนโดยอัตโนมัติในวันเกิดของพวกเขา"
+
+#: 
+msgid "Birthday Emails"
+msgstr "อีเมลวันเกิด"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "วันเกิด วันครบรอบ อาสาสมัคร และรายชื่อคนอื่นๆ ที่มีตัวกรองการจำแนก"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "เลือก %s เพื่อรันรายงานนี้"
+
+#: 
+msgid "Choose events"
+msgstr "เลือกกิจกรรม"
+
+#: 
+msgid "Choose..."
+msgstr "เลือก..."
+
+#: 
+msgid "Church Logo"
+msgstr "โลโก้โบสถ์"
+
+#: 
+msgid "Columns per Page"
+msgstr "คอลัมน์ต่อหน้า"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "ครอบครัว %s ที่เคารพ\n"
+"\n"
+"โปรดดูแถลงการบริจาคจำนวน %d จาก %s ที่แนบมากับอีเมลนี้\n"
+"\n"
+"หากคุณมีคำถามใดๆ โปรดติดต่อสำนักงานโบสถ์\n"
+"\n"
+"ขอบคุณสำหรับความมีน้ำใจของคุณ"
+
+#: 
+msgid "Download CSV"
+msgstr "ดาวน์โหลด CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "อีเมลเอกสารภาษี %d ฉบับ"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "เปิดหรือปิดใช้งานโมดูลการเงินและเมนูแถบด้านข้าง"
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "เปิดหรือปิดใช้งานโมดูลระดมทุน"
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "ล้มเหลวในการลบโลโก้โบสถ์"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "ล้มเหลวในการอัปโหลดโลโก้โบสถ์"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL โลโก้ทางเลือกสำหรับเทมเพลตอีเมล ใช้เฉพาะเมื่อไม่มีการอัปโหลดโลโก้โบสถ์บนหน้าข้อมูลโบสถ์ หน้าของแอปพลิเคชันจะละเว้นการตั้งค่านี้และใช้โลโก้ที่อัปโหลดหรือโลโก้ ChurchCRM เริ่มต้นเสมอ ต้องเป็น URL http(s) แบบสัมบูรณ์ สำหรับการแสดงผลที่ดีที่สุดในไคลเอนต์อีเมล ให้ใช้ภาพแบนเนอร์กว้างที่มีอัตราส่วนกว้างยาวประมาณ 3.5:1 (เช่น 350×100 px) PNG หรือ JPG บนเซิร์ฟเวอร์ HTTPS ปล่อยให้ว่างหรือป้อนค่าที่ไม่ถูกต้องเพื่อกลับไปใช้โลโก้ ChurchCRM เริ่มต้น"
+
+#: 
+msgid "Finance Module"
+msgstr "โมดูลการเงิน"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "ค้นหาคนที่ไม่ได้เข้าร่วมกิจกรรม"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "ค้นหาอาสาสมัครที่ตรงกับรหัสโอกาสเฉพาะสองรหัส"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "โอกาสการเป็นอาสาสมัครครั้งแรก"
+
+#: 
+msgid "Folded Booklet"
+msgstr "小冊子แบบพับ"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "โมดูลระดมทุน"
+
+#: 
+msgid "Giving History"
+msgstr "ประวัติการบริจาค"
+
+#: 
+msgid "Last Gift"
+msgstr "การบริจาคครั้งล่าสุด"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "ปล่อยให้ว่างสำหรับการจำแนกทั้งหมด"
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "จำนวนเอกสารปีภาษีสูงสุดที่จะแสดงต่อโปรไฟล์ครอบครัว (0 = ไม่มีขีดจำกัด)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "ปีภาษีสูงสุดที่แสดงต่อครอบครัว"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "วันครบรอบการเป็นสมาชิก"
+
+#: 
+msgid "Missing People"
+msgstr "คนที่หายไป"
+
+#: 
+msgid "No giving history found."
+msgstr "ไม่พบประวัติการบริจาค"
+
+#: 
+msgid "No people match these filters."
+msgstr "ไม่มีคนที่ตรงกับตัวกรองเหล่านี้"
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "หน้าไดเรกทอรีหนึ่งหน้าต่อแผ่น แนวตั้ง"
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "อนุญาตเฉพาะสคีม http และ https"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF หรือ WebP แบนเนอร์กว้างประมาณ 3.5:1 (เช่น 700x200) ใช้ได้ดีที่สุด PNG โปร่งใส ได้รับความนิยมมากกว่า"
+
+#: 
+msgid "Page Layout"
+msgstr "เค้าโครงหน้า"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "คนที่เข้าร่วมในเดือนใดเดือนหนึ่ง"
+
+#: 
+msgid "Pledged"
+msgstr "สัญญา"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "พิมพ์เอกสารภาษี %d ฉบับ"
+
+#: 
+msgid "Queries"
+msgstr "แบบสอบถาม"
+
+#: 
+msgid "Recent Friends"
+msgstr "เพื่อนล่าสุด"
+
+#: 
+msgid "Report not found"
+msgstr "ไม่พบรายงาน"
+
+#: 
+msgid "Run Report"
+msgstr "รันรายงาน"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "โอกาสการเป็นอาสาสมัครครั้งที่สอง"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "แสดงในแถบด้านข้าง บนหน้าลงชื่อเข้า และในอีเมล การอัปโหลดโลโก้จะแทนที่แบรนด์ ChurchCRM ทุกที่ที่ปรากฏ"
+
+#: 
+msgid "Single Pages"
+msgstr "หน้าเดี่ยว"
+
+#: 
+msgid "Tax Documents"
+msgstr "เอกสารภาษี"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "การส่งอีเมลเอกสารภาษีล้มเหลว โปรดตรวจสอบการตั้งค่าเซิร์ฟเวอร์อีเมลของคุณ"
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "หน้ากระดาษขนาดครึ่งสองหน้าเคียงข้างกันบนแผ่นแนวนอนแต่ละแผ่น ตามลำดับของสมุดเล่ม พิมพ์สองด้านด้วย \"พลิกขอบสั้น\" จากนั้นพับสแต็กครึ่งหนึ่ง คอลัมน์คำนวณต่อครึ่งหน้า"
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "ไม่สามารถส่งอีเมลเอกสารภาษี: ไม่พบข้อมูลการชำระเงินสำหรับปีนั้น"
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "ไม่สามารถส่งอีเมลเอกสารภาษี: ครอบครัวนี้ไม่มีที่อยู่อีเมลในไฟล์"
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "ไม่สามารถแก้ไขชื่อโฮสต์เซิร์ฟเวอร์ OpenLP ตรวจสอบที่อยู่และการเชื่อมต่อเครือข่าย"
+
+#: 
+msgid "Upload"
+msgstr "อัปโหลด"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "ใช้โลโก้ ChurchCRM เริ่มต้น"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "ดูการบริจาคของครอบครัวทั้งหมด"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "โอกาสการเป็นอาสาสมัคร"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "อาสาสมัครสำหรับโอกาสสองประการ"
+
+#: 
+msgid "YTD"
+msgstr "ตั้งแต่ต้นปี"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD ชำระเงิน"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "สำหรับข้อผิดพลาดในเวลาที่เกิดเหตุการณ์นี้ ดาวน์โหลดและแนบไฟล์บันทึกที่เกี่ยวข้องกับปัญหา GitHub ของคุณ - สิ่งนี้ช่วยให้เราแก้ไขปัญหาได้โดยไม่ต้องถามคำถามติดตามผล"
+
+#: 
+msgid "system logs"
+msgstr "บันทึกระบบ"
+
+#: 
+msgid "Access Control & Security"
+msgstr "การควบคุมการเข้าถึงและความปลอดภัย"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "อนุญาตให้บันทึกการชำระเงินที่ไม่สามารถหักลดหย่อนภาษีได้ (เช่น การขายสินค้า)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "อนุญาตการเข้าถึงโดยไม่ได้รับการยืนยันตัวตนต่อกิจกรรมสาธารณะ (สำหรับการฝังปฏิทิน)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "อนุญาตให้ผู้มาเยี่ยมชมสร้างบันทึกครอบครัวของตนเองผ่านหน้าการลงทะเบียนสาธารณะ"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "ส่งอีเมลวันเกิดโดยอัตโนมัติ (ต้องใช้ตัวจัดกำหนดการสำหรับงานพื้นหลัง)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "อีเมลอวยพรวันเกิด"
+
+#: 
+msgid "Communication & Email"
+msgstr "การสื่อสารและอีเมล"
+
+#: 
+msgid "Content Security Policy"
+msgstr "นโยบายความปลอดภัยของเนื้อหา"
+
+#: 
+msgid "Email System"
+msgstr "ระบบอีเมล"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "เปิดใช้งานหรือปิดใช้งานคุณลักษณะของสถาบันของคุณ"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "เปิดใช้งาน/ปิดใช้งานส่วนกิจกรรมในการนำทางหลัก"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "เปิดใช้งาน/ปิดใช้งานเมนูการเงินและคุณลักษณะการเงินทั้งหมด (เงินฝาก การชำระเงิน รายงาน)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "เปิดใช้งาน/ปิดใช้งานเมนูการระดมทุน"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "บังคับใช้ส่วนหัว CSP ที่เข้มงวดเพื่อป้องกันการโจมตี XSS"
+
+#: 
+msgid "Events Module"
+msgstr "โมดูลกิจกรรม"
+
+#: 
+msgid "Feature Toggles"
+msgstr "สวิตช์คุณลักษณะ"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "สวิตช์คุณลักษณะควบคุมโมดูลและคุณลักษณะใดที่พร้อมใช้งานใน ChurchCRM การเปลี่ยนแปลงจะมีผลใช้บังคับทันที"
+
+#: 
+msgid "Finance Features"
+msgstr "คุณลักษณะการเงิน"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "รวมที่อยู่ในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "รวมกิจกรรมปฏิทินในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "รวมคุณสมบัติครอบครัวที่กำหนดเองในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "รวมเงินฝากในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "รวมครอบครัวในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "รวมหน่วยงานในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "รวมการชำระเงินในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "รวมผู้คนในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Invalid setting"
+msgstr "การตั้งค่าไม่ถูกต้อง"
+
+#: 
+msgid "Lost Password Link"
+msgstr "ลิงค์รีเซ็ตรหัสผ่าน"
+
+#: 
+msgid "Manage All Features"
+msgstr "จัดการคุณลักษณะทั้งหมด"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "สวิตช์หลักสำหรับการส่งอีเมล จำเป็นสำหรับการรีเซ็ตรหัสผ่านและการแจ้งเตือน"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "การชำระเงินที่ไม่สามารถหักลดหย่อนได้"
+
+#: 
+msgid "Primary Modules"
+msgstr "โมดูลหลัก"
+
+#: 
+msgid "Public Calendar API"
+msgstr "API ปฏิทินสาธารณะ"
+
+#: 
+msgid "Saved"
+msgstr "บันทึก"
+
+#: 
+msgid "Search Families"
+msgstr "ค้นหาครอบครัว"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "ค้นหาคุณสมบัติที่กำหนดเองของครอบครัว"
+
+#: 
+msgid "Search Settings"
+msgstr "ค้นหาการตั้งค่า"
+
+#: 
+msgid "Self-Registration"
+msgstr "การลงทะเบียนด้วยตนเอง"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "แสดงตัวเลือก \"ลืมรหัสผ่าน\" บนหน้าจอเข้าสู่ระบบ (ให้ผู้ใช้รีเซ็ตได้)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "แสดง/ซ่อนโมดูลโรงเรียนวันอาทิตย์ในแถบด้านข้าง"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "ไม่สามารถปิดใช้งานผู้ดูแลระบบเพียงคนเดียวที่สามารถเข้าสู่ระบบได้"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "ไม่สามารถทำเครื่องหมายผู้ดูแลระบบเพียงคนเดียวที่สามารถเข้าสู่ระบบได้ว่าเสียชีวิต"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "เสียชีวิตแล้ว — ไม่สามารถเข้าสู่ระบบได้"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "ป้อนที่อยู่ที่สองก่อนที่จะทำเครื่องหมายเป็นที่อยู่สำหรับส่งจดหมาย"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "ไม่ทำงาน — ไม่สามารถเข้าสู่ระบบได้"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "จดหมายไปที่ที่อยู่ที่สอง ที่อยู่หลักยังคงเป็นสถานที่ทางกายภาพที่ใช้สำหรับแผนที่และทิศทาง"
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "จดหมายส่งไปที่ที่อยู่นี้แทนที่จะเป็นที่อยู่หลัก"
+
+#: 
+msgid "Mailing Address"
+msgstr "ที่อยู่สำหรับส่งจดหมาย"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "ที่อยู่สำหรับส่งจดหมายหากแตกต่าง"
+
+#: 
+msgid "Primary Address"
+msgstr "ที่อยู่หลัก"
+
+#: 
+msgid "Receives Mail"
+msgstr "รับจดหมาย"
+
+#: 
+msgid "Second Address"
+msgstr "ที่อยู่ที่สอง"
+
+#: 
+msgid "Second Home"
+msgstr "บ้านที่สอง"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "บุคคลที่เชื่อมโยงเสียชีวิตแล้วหรือไม่ทำงาน การเข้าสู่ระบบ เซสชัน และคีย์ API ถูกบล็อก จนกว่าบุคคลดังกล่าวจะทำให้ใช้งานได้อีกครั้ง"
+
+#: 
+msgid "This is the mailing address"
+msgstr "นี่คือที่อยู่สำหรับส่งจดหมาย"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "บุคคลนี้เสียชีวิตแล้วหรือไม่ทำงาน ดังนั้นบัญชีนี้ไม่สามารถเข้าสู่ระบบได้"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "เฉพาะผู้ดูแลระบบเท่านั้นที่สามารถลบบุคคลที่มีการเข้าสู่ระบบได้"
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "ไม่สามารถลบผู้ดูแลระบบคนสุดท้ายได้"
 

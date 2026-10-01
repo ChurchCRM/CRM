@@ -113,6 +113,8 @@ interface CRMActionMenuItem {
   data?: Record<string, string | number | null | undefined>;
   /** `button` only; emit `class=` before `type=` (cart-button markup compatibility). */
   classBeforeType?: boolean;
+  /** Greys the item out (`aria-disabled`) with this text as its title. */
+  disabledReason?: string;
 }
 
 interface CRMActionMenuOptions {
@@ -157,6 +159,8 @@ interface CRMNamespace {
    * menu labels and `data-*` values are escaped. Falsy items are skipped.
    */
   buildActionMenu?: (items: Array<CRMActionMenuItem | null | false | undefined>, opts?: CRMActionMenuOptions) => string;
+  /** Reason each person with a login cannot be deleted by the signed-in user, keyed by person ID. */
+  personDeleteBlocked?: Record<number, string>;
   renderPersonActionMenu?: (personId: number, personName: string, options?: CRMPersonActionMenuOptions) => string;
   renderFamilyActionMenu?: (familyId: number, familyName?: string, options?: CRMFamilyActionMenuOptions) => string;
   renderEventActionMenu?: (eventId: number, eventTitle: string, options?: CRMEventActionMenuOptions) => string;

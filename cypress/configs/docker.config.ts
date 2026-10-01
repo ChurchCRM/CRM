@@ -34,6 +34,8 @@ export default defineConfig({
     'limited.api.key': 'limitedUserApiKeyForTesting123456789012345678',
     'editrecords.api.key': 'judithMatthewsEditRecordsNoNotesApiKey1234',
     'menuoptions.api.key': 'menuOptionsOnlyApiKeyForTesting12345678901',
+    'deceased.api.key': 'deceasedUserApiKeyForTesting1234567890123',
+    'inactive.api.key': 'inactiveUserApiKeyForTesting1234567890123',
     'noperm.api.key': 'noPermUserApiKeyForTesting123456789012345678',
     'admin.username': 'admin',
     'admin.password': 'changeme',

@@ -8,6 +8,18 @@
 import { attachToModal, initAllPersonSelects } from "./common/person-select";
 import { escapeHtml } from "./utils/escape-html";
 
+// A failed request rejects with the API's `message` as `serverMessage`, so the
+// toast can say why instead of a generic "Please try again".
+function jsonUnlessFailed(res) {
+  if (res.ok) return res.json();
+  return res
+    .json()
+    .catch(() => ({}))
+    .then((body) => {
+      throw Object.assign(new Error(`HTTP ${res.status}`), { serverMessage: body.message });
+    });
+}
+
 $(() => {
   // Initialize DataTable for already checked-in people
   if ($("#checkedinTable").length > 0) {
@@ -148,15 +160,15 @@ $(() => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+      .then(jsonUnlessFailed)
       .then(() => {
         loadRoster(eventId);
       })
-      .catch(() => {
-        window.CRM.notify(i18next.t("Check-in failed. Please try again."), { type: "danger", delay: 5000 });
+      .catch((err) => {
+        window.CRM.notify(err.serverMessage || i18next.t("Check-in failed. Please try again."), {
+          type: "danger",
+          delay: 5000,
+        });
       })
       .finally(() => {
         $btn.prop("disabled", false);
@@ -171,15 +183,15 @@ $(() => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+      .then(jsonUnlessFailed)
       .then(() => {
         loadRoster(eventId);
       })
-      .catch(() => {
-        window.CRM.notify(i18next.t("Check-out failed. Please try again."), { type: "danger", delay: 5000 });
+      .catch((err) => {
+        window.CRM.notify(err.serverMessage || i18next.t("Check-out failed. Please try again."), {
+          type: "danger",
+          delay: 5000,
+        });
       })
       .finally(() => {
         $btn.prop("disabled", false);
@@ -344,16 +356,18 @@ $(document).on("click", ".roster-action-btn", function () {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ personId: personId }),
   })
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.json();
-    })
+    .then(jsonUnlessFailed)
     .then(() => {
       // Reload roster to reflect changes
       loadRoster(eventId);
     })
-    .catch(() => {
+    .catch((err) => {
       $btn.prop("disabled", false);
+      const fallback =
+        action === "checkout"
+          ? i18next.t("Check-out failed. Please try again.")
+          : i18next.t("Check-in failed. Please try again.");
+      window.CRM.notify(err.serverMessage || fallback, { type: "danger", delay: 5000 });
     });
 });
 
@@ -656,10 +670,7 @@ $(() => {
     fetch(`${window.CRM.root}/api/events/${eventId}/attendance/${personId}`, {
       method: "DELETE",
     })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+      .then(jsonUnlessFailed)
       .then(() => {
         $(`tr[data-person-id="${personId}"]`).fadeOut(300, function () {
           $(this).remove();
@@ -670,8 +681,11 @@ $(() => {
           loadRoster(eventId);
         }
       })
-      .catch(() => {
-        window.CRM.notify(i18next.t("Failed to delete. Please try again."), { type: "danger", delay: 5000 });
+      .catch((err) => {
+        window.CRM.notify(err.serverMessage || i18next.t("Failed to delete. Please try again."), {
+          type: "danger",
+          delay: 5000,
+        });
       });
   }
 });

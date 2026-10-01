@@ -10,7 +10,7 @@
  * Fixture data (#9729): a fresh install seeds zero rows in
  * volunteeropportunity_vol, and person-view.php only renders the assignment
  * form when at least one opportunity exists. The suite therefore creates one
- * through /api/volunteer-opportunities in `before` and deletes it in `after`,
+ * through /admin/api/volunteer-opportunities in `before` and deletes it in `after`,
  * so the assign/remove round-trip is actually reachable in CI.
  *
  * Control shape (#9729): the assignment control is a TomSelect-enhanced
@@ -37,14 +37,14 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
         // "That name already exists." guard cannot make this suite flaky.
         cy.request({
             method: "GET",
-            url: "/api/volunteer-opportunities",
+            url: "/admin/api/volunteer-opportunities",
             headers: adminApiHeaders(),
         }).then((listRes) => {
             const stale = listRes.body.volunteerOpportunities.filter((opp) => opp.name === OPPORTUNITY_NAME);
             stale.forEach((opp) => {
                 cy.request({
                     method: "DELETE",
-                    url: `/api/volunteer-opportunities/${opp.id}`,
+                    url: `/admin/api/volunteer-opportunities/${opp.id}`,
                     headers: adminApiHeaders(),
                     failOnStatusCode: false,
                 });
@@ -53,7 +53,7 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
 
         cy.request({
             method: "POST",
-            url: "/api/volunteer-opportunities",
+            url: "/admin/api/volunteer-opportunities",
             headers: adminApiHeaders(),
             body: { name: OPPORTUNITY_NAME, description: OPPORTUNITY_DESC, active: true },
         }).then((res) => {
@@ -76,7 +76,7 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
         });
         cy.request({
             method: "DELETE",
-            url: `/api/volunteer-opportunities/${opportunityId}`,
+            url: `/admin/api/volunteer-opportunities/${opportunityId}`,
             headers: adminApiHeaders(),
         })
             .its("status")

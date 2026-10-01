@@ -495,11 +495,6 @@ msgstr "图片"
 
 #: 
 #, fuzzy
-msgid "Number of Columns"
-msgstr "列数"
-
-#: 
-#, fuzzy
 msgid "Paper Size"
 msgstr "纸张大小"
 
@@ -871,10 +866,6 @@ msgstr "删除照片"
 #: 
 msgid "Timeline"
 msgstr "时间线"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "认捐和实付"
 
 #: 
 msgid "Value"
@@ -12790,10 +12781,6 @@ msgid "Upcoming Events"
 msgstr "即将到来的事件"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "在电子邮件模板中显示的教会标志的绝对 http(s) URL（未来也将在其他地方复用）。为在各电子邮件客户端获得最佳渲染效果，请使用宽横幅图片，宽高比约为 3.5:1（例如 350×100 像素），PNG 或 JPG 格式，通过 HTTPS 提供。留空或输入无效值将回退到默认的 ChurchCRM 标志。"
-
-#: 
 msgid "An option with that name already exists"
 msgstr "已存在同名选项"
 
@@ -18598,4 +18585,504 @@ msgstr "收件人数量超出邮件客户端限制（{{total}} > {{max}}），�
 #: 
 msgid "{{minutes}} min left"
 msgstr "剩余 {{minutes}} 分钟"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d 份税单已成功邮寄给家庭"
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d 捐献声明"
+
+#: 
+msgid "All classifications"
+msgstr "所有分类"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "作为管理员，请同时查看"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "在人们生日时自动发送生日问候邮件"
+
+#: 
+msgid "Birthday Emails"
+msgstr "生日邮件"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "生日、纪念日、志愿者和其他带有分类筛选的人员列表"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "选择 %s 来运行此报告"
+
+#: 
+msgid "Choose events"
+msgstr "选择事件"
+
+#: 
+msgid "Choose..."
+msgstr "选择..."
+
+#: 
+msgid "Church Logo"
+msgstr "教堂标志"
+
+#: 
+msgid "Columns per Page"
+msgstr "每页列数"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "亲爱的 %s 一家，\n"
+"\n"
+"请查收本邮件附件中的 %d 份来自 %s 的捐献声明。\n"
+"\n"
+"如有任何问题，请联系教堂办公室。\n"
+"\n"
+"感谢您的慷慨奉献。"
+
+#: 
+msgid "Download CSV"
+msgstr "下载 CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "邮寄 %d 份税单"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "启用或禁用财务模块和侧边栏菜单"
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "启用或禁用筹款模块"
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "移除教堂标志失败"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "上传教堂标志失败"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "邮件模板的备用标志 URL，仅在教堂信息页面未上传教堂标志时使用。应用程序的自己的页面忽略此设置，始终使用已上传的标志或默认的 ChurchCRM 标志。必须是绝对的 http(s) URL。为了在电子邮件客户端中获得最佳呈现效果，请使用宽横幅图像，宽高比大约为 3.5:1（例如 350×100 px），PNG 或 JPG 格式，通过 HTTPS 提供。留空或输入无效值以回退到默认的 ChurchCRM 标志。"
+
+#: 
+msgid "Finance Module"
+msgstr "财务模块"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "查找未参加活动的人员"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "查找与两个特定机会代码相匹配的志愿者"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "首个志愿者机会"
+
+#: 
+msgid "Folded Booklet"
+msgstr "折叠小册子"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "筹款模块"
+
+#: 
+msgid "Giving History"
+msgstr "捐献历史"
+
+#: 
+msgid "Last Gift"
+msgstr "最后的捐献"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "留空以包含所有分类"
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "每个家庭档案中显示的最大税年文件数（0 = 无限制）"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "每个家庭显示的最大税务年度"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "成员纪念日"
+
+#: 
+msgid "Missing People"
+msgstr "缺失人员"
+
+#: 
+msgid "No giving history found."
+msgstr "未发现捐献历史"
+
+#: 
+msgid "No people match these filters."
+msgstr "没有人员符合这些过滤器"
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "每页一个目录页，纵向"
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "仅允许 http 和 https 方案"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG、JPG、GIF 或 WebP。宽度约为 3.5:1 的宽横幅（例如 700x200）效果最佳；首选透明 PNG"
+
+#: 
+msgid "Page Layout"
+msgstr "页面布局"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "在特定月份加入的人员"
+
+#: 
+msgid "Pledged"
+msgstr "承诺"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "打印 %d 份税单"
+
+#: 
+msgid "Queries"
+msgstr "查询"
+
+#: 
+msgid "Recent Friends"
+msgstr "最近的朋友"
+
+#: 
+msgid "Report not found"
+msgstr "未找到报告"
+
+#: 
+msgid "Run Report"
+msgstr "运行报告"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "第二个志愿者机会"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "显示在侧边栏、登录页面和电子邮件中。上传标志会在其出现的任何地方替换 ChurchCRM 品牌"
+
+#: 
+msgid "Single Pages"
+msgstr "单个页面"
+
+#: 
+msgid "Tax Documents"
+msgstr "税单"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "税单邮件发送失败。请检查您的电子邮件服务器设置"
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "在每个横向页上并排放置两个半尺寸页面，按小册子顺序排列。双面打印，使用 flip on short edge，然后将堆栈对折。每个半页统计列数"
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "无法邮寄税单：未发现该年份的付款数据"
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "无法邮寄税单：该家庭在文件中没有电子邮件地址"
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "无法解析 OpenLP 服务器主机名。请检查地址和您的网络连接"
+
+#: 
+msgid "Upload"
+msgstr "上传"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "使用默认的 ChurchCRM 标志"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "查看完整的家庭捐献"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "志愿者机会"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "两个机会的志愿者"
+
+#: 
+msgid "YTD"
+msgstr "年初至今"
+
+#: 
+msgid "YTD Paid"
+msgstr "年初至今已付"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "查找发生此错误时周围的错误，并下载相关日志文件并将其附加到您的 GitHub 问题中——这有助于我们修复问题，而无需提出后续问题"
+
+#: 
+msgid "system logs"
+msgstr "系统日志"
+
+#: 
+msgid "Access Control & Security"
+msgstr "访问控制和安全"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "允许记录不可税收抵扣的款项（例如商品销售）"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "允许未认证访问公共事件（用于嵌入日历）"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "允许访客通过公开注册页面创建自己的家庭记录"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "自动发送生日电子邮件（需要后台作业调度程序）"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "生日问候电子邮件"
+
+#: 
+msgid "Communication & Email"
+msgstr "通信和电子邮件"
+
+#: 
+msgid "Content Security Policy"
+msgstr "内容安全策略"
+
+#: 
+msgid "Email System"
+msgstr "电子邮件系统"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "为您的组织启用或禁用功能"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "启用/禁用主导航中的事件部分"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "启用/禁用财务菜单和所有财务功能（存款、付款、报告）"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "启用/禁用筹款菜单"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "强制执行严格的CSP标头以防止XSS攻击"
+
+#: 
+msgid "Events Module"
+msgstr "事件模块"
+
+#: 
+msgid "Feature Toggles"
+msgstr "功能开关"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "功能开关控制ChurchCRM中哪些模块和功能可用。更改立即生效。"
+
+#: 
+msgid "Finance Features"
+msgstr "财务功能"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "在快速全局搜索中包含地址"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "在快速全局搜索中包含日历事件"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "在快速全局搜索中包含自定义家庭属性"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "在快速全局搜索中包含存款"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "在快速全局搜索中包含家庭"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "在快速全局搜索中包含事工"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "在快速全局搜索中包含付款"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "在快速全局搜索中包含人员"
+
+#: 
+msgid "Invalid setting"
+msgstr "无效设置"
+
+#: 
+msgid "Lost Password Link"
+msgstr "丢失密码链接"
+
+#: 
+msgid "Manage All Features"
+msgstr "管理所有功能"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "电子邮件发送的主开关。密码重置和通知需要。"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "不可抵扣的款项"
+
+#: 
+msgid "Primary Modules"
+msgstr "主要模块"
+
+#: 
+msgid "Public Calendar API"
+msgstr "公共日历API"
+
+#: 
+msgid "Saved"
+msgstr "已保存"
+
+#: 
+msgid "Search Families"
+msgstr "搜索家庭"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "搜索家庭自定义属性"
+
+#: 
+msgid "Search Settings"
+msgstr "搜索设置"
+
+#: 
+msgid "Self-Registration"
+msgstr "自助注册"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "在登录屏幕上显示\"忘记密码\"选项（允许用户自行重置）"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "在侧边栏中显示/隐藏主日学模块"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "无法停用唯一可以登录的管理员"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "无法将唯一可以登录的管理员标记为已故"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "已故——无法登录"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "输入第二个地址后再将其标记为邮寄地址"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "不活跃——无法登录"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "邮件发送到第二个地址；主地址仍然是用于地图和方向的物理位置。"
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "邮件发送到此地址而不是主地址"
+
+#: 
+msgid "Mailing Address"
+msgstr "邮寄地址"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "如果不同，邮寄地址"
+
+#: 
+msgid "Primary Address"
+msgstr "主地址"
+
+#: 
+msgid "Receives Mail"
+msgstr "接收邮件"
+
+#: 
+msgid "Second Address"
+msgstr "第二地址"
+
+#: 
+msgid "Second Home"
+msgstr "第二住所"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "关联的人已故或不活跃。登录、会话和API密钥被阻止，直到该人重新激活。"
+
+#: 
+msgid "This is the mailing address"
+msgstr "这是邮寄地址"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "此人已故或不活跃，因此此帐户无法登录"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "只有管理员可以删除有登录名的人。"
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "最后一个管理员无法删除。"
 

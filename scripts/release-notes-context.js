@@ -48,7 +48,7 @@ const BUCKETS = [
   { id: 'testing', title: 'Testing', match: f => /^(cypress|tests?)\//.test(f) },
   { id: 'ci', title: 'CI & tooling', match: f => /^(\.github|scripts|docker)\//.test(f) || /^(Gruntfile\.js|webpack\.config\.js|biome\.json|rector\.php|tsconfig\.json)$/.test(f) },
   { id: 'marketing', title: 'Marketing capture', match: f => /^playwright\//.test(f) },
-  { id: 'docs', title: 'Docs & agent guidance', match: f => /^(\.agents|\.claude|\.cursor|docs|knowledge-vault|changelog)\//.test(f) || /\.md$/.test(f) },
+  { id: 'docs', title: 'Docs & agent guidance', match: f => /^(\.agents|\.claude|docs|changelog)\//.test(f) || /\.md$/.test(f) },
 ];
 
 // Bot PRs that never carry release-note content of their own.

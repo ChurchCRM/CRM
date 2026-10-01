@@ -109,6 +109,10 @@ require_once __DIR__ . '/Include/Header.php';
               <span class="form-selectgroup-label"><?= gettext('Country') ?></span>
             </label>
             <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="SecondAddress" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Second Address') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
               <input type="checkbox" class="form-selectgroup-input" name="HomePhone" value="1">
               <span class="form-selectgroup-label"><?= gettext('Home Phone') ?></span>
             </label>
@@ -177,7 +181,7 @@ require_once __DIR__ . '/Include/Header.php';
               <div class="form-selectgroup form-selectgroup-pills mb-3">
                 <?php while ($Row = mysqli_fetch_array($rsCustomFields)) {
                     extract($Row);
-                    if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) { ?>
+                    if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) { ?>
                     <label class="form-selectgroup-item">
                       <input type="checkbox" class="form-selectgroup-input" name="<?= InputUtils::escapeAttribute($custom_Field) ?>" value="1">
                       <span class="form-selectgroup-label"><?= InputUtils::escapeHTML($custom_Name) ?></span>
@@ -191,7 +195,7 @@ require_once __DIR__ . '/Include/Header.php';
               <div class="form-selectgroup form-selectgroup-pills">
                 <?php while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
                     extract($Row);
-                    if ($aSecurityType[$fam_custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) { ?>
+                    if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) { ?>
                     <label class="form-selectgroup-item">
                       <input type="checkbox" class="form-selectgroup-input" name="<?= InputUtils::escapeAttribute($fam_custom_Field) ?>" value="1">
                       <span class="form-selectgroup-label"><?= InputUtils::escapeHTML($fam_custom_Name) ?></span>
