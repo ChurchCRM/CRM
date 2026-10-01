@@ -2686,7 +2686,7 @@ Answers, in this order, top to bottom:
 4. **Upcoming occurrences** — a DataTable (U2) over `GET /api/ministries/occurrences?from=today&to=+28d`,
    columns `Date · Time · Ministry/Team · Schedule · Staffed (n/m) · Status · Actions`. Staffed is a
    progress-style badge, green at full, amber when `pending` fills the gap, red when short.
-5. **Notification-health card** *(revised 2026-09-18 — was the admin-only settings strip)*: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours` and, since D31, `iVolunteerSchedulingHorizonWeeks` and `iVolunteerDefaultEventTypeId` — the cron hint, the queued count, the last timer-job run, the last schedule top-up and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`), which exists in every rollout state; it follows the Member Portal admin page, and both settings were removed from `buildCategories()` so they have one home. The page also explains V1, V2 and Both in prose. *Original text:* **Admin-only settings strip** — `window.CRM.settingsPanel` (U8) with `sVolunteerVersion` and
+5. **Notification-health card** *(revised 2026-09-18 — was the admin-only settings strip)*: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours` and, since D31, `iVolunteerSchedulingHorizonWeeks` and `iVolunteerDefaultEventTypeId` — the cron hint, the queued count, the last timer-job run, the last schedule top-up and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`; the `ministries-settings` bundle puts its times in ChurchCRM's locale, §5.10), which exists in every rollout state; it follows the Member Portal admin page, and both settings were removed from `buildCategories()` so they have one home. The page also explains V1, V2 and Both in prose. *Original text:* **Admin-only settings strip** — `window.CRM.settingsPanel` (U8) with `sVolunteerVersion` and
    `iVolunteerReminderLeadHours`, plus the failed-notification count with a link, inside
    `if ($isAdmin)`.
 
@@ -3187,8 +3187,16 @@ inside a translatable string, no decorative em-dash wrappers. Also:
   `i18next.t("{{count}} volunteers needed", { count: n })`.
 - **Never run `npm run locale:build`** and never commit `locale/messages.po`,
   `locale/messages.json`, `src/locale/i18n/*` or `src/locale/textdomain/*`. CI owns those files.
-- Dates and times through `DateTimeUtils` / `window.CRM.datePickerformat`; money — not applicable to
-  V2 — would go through `CurrencyFormatter`.
+- Every date and time a V2 page shows is in ChurchCRM's configured locale (`window.CRM.locale`),
+  never raw `YYYY-MM-DD HH:MM:SS` and never the browser's locale: `shortDate()`, `shortDateTime()`,
+  `shortTime()` and `shortDateTimeRange()` in `webpack/ministries/components/ui.ts`, all through
+  `formatWallClock()`, which formats the stored wall-clock parts in UTC so the browser's zone cannot
+  shift them (F24). The server has no `intl`, so a PHP or Twig view renders
+  `<time datetime="{stored}" data-format="date|datetime|time">{stored}</time>` and the page's bundle
+  calls `formatTimeElements()` (the portal's on every portal page). A sortable cell keeps the stored
+  value in `data-order`. Input values, CSV/print exports, API payloads and emails
+  (`DateTimeUtils::formatDate()`) are not affected. Money — not applicable to V2 — would go through
+  `CurrencyFormatter`.
 
 ---
 
