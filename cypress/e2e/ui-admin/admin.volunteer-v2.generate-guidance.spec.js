@@ -279,6 +279,8 @@ describe("Volunteer v2 D30 — why nothing was generated", () => {
         cy.get("#generateOccurrencesModal").should("not.be.visible");
         cy.get("#nav-item-calendar").should("have.class", "active");
         cy.get("#ministryEventModal").should("be.visible");
+        // The dialog focuses its title once the fade ends; typing before that loses keys to the move.
+        cy.get("#ministry-event-form-title").should("have.focus");
         cy.get("#ministryEventModalTitle").should("have.text", "New recurring event");
         cy.get("#ministry-event-form-series").should("be.checked");
         cy.get("#ministry-event-form-class").should("have.value", String(classId));
