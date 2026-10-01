@@ -1521,6 +1521,8 @@ INSERT INTO `person_per` VALUES (905,'Mr','Kyle','','Kioskonly','','','','','','
 -- Locale-admin: dedicated admin user for locale smoke tests (per_ID 906)
 -- Locale preference set per-test via POST /api/user/906/setting/ui.locale; never mutates system-wide sLanguage
 INSERT INTO `person_per` VALUES (906,'Mr','Locale','','Admin','','','','','','','USA','','','','locale-admin@churchcrm.test',NULL,1,1,1980,NULL,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL,NULL);
+-- Dedicated password-lockout test user (see the matching user_usr row).
+INSERT INTO `person_per` VALUES (907,'Mr','Login','','Lockout','','','','','','','USA','','','','login.lockout@example.com',NULL,1,1,1990,NULL,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL,NULL);
 -- Sign-in block fixtures (issue #10193): 910 deceased, 911 inactive, 912 active user deactivated mid-spec by session-ends spec. Password: changeme.
 INSERT INTO `person_per` VALUES (910,'Mr','Deceased','','Signin','','','','','','','USA','','','','deceased.user@example.com',NULL,1,1,1980,NULL,'2024-03-01',1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL,NULL);
 INSERT INTO `person_per` VALUES (911,'Mr','Inactive','','Signin','','','','','','','USA','','','','inactive.user@example.com',NULL,1,1,1980,NULL,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL,'2024-03-01');
@@ -1992,6 +1994,9 @@ INSERT INTO `user_usr` VALUES (902,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB
 -- Same TOTP secret (JBSWY3DPEBLW64TMMQ======) as twofa_user; starts unlocked (FailedLogins=0)
 -- so the lockout test exhausts iMaxFailedLogins with wrong OTPs and asserts the account locks.
 INSERT INTO `user_usr` VALUES (903,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'twofa_lockout_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'def50200923f831141edcddb9e69c79f4ef68b1f0cdd9acf4223f286f2c6ab7e0f09d397cabc831fdaa5bee117f409a50090ae4ea6ff51203508d29b59869396f303d5fd3cf14fe76cf85dba9c85735750aa4f312e1ab29caa60a15bb1b76aecb4a7be50423d2867e49a69ec',NULL,NULL,NULL);
+-- Dedicated password-lockout test user (API account-lockout test in public.user.spec.js).
+-- No module permissions, no 2FA, usr_FailedLogins starts at 0; the test locks it by design, so no other spec may log in as it.
+INSERT INTO `user_usr` VALUES (907,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'login_lockout_user',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 -- finance.only (id=904): Finance=1, non-admin — used to assert Finance role (not Admin) can access fund CRUD and dashboard
 INSERT INTO `user_usr` VALUES (904,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,1,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'grace.financeonly@example.com','financeOnlyApiKeyForTesting12345678901234',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 -- managegroups.only (id=905): ManageGroups=1, non-admin — used to assert ManageGroups role can access kiosk manager
