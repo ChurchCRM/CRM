@@ -3194,7 +3194,7 @@ inside a translatable string, no decorative em-dash wrappers. Also:
   shift them (F24). The server has no `intl`, so a PHP or Twig view renders
   `<time datetime="{stored}" data-format="date|datetime|time">{stored}</time>` and the page's bundle
   calls `formatTimeElements()` (the portal's on every portal page). A sortable cell keeps the stored
-  value in `data-order`. Input values, CSV/print exports, API payloads and emails
+  value in `data-order`, and Export CSV / Print carry that value (`exportButtons()`). Input values, CSV/print exports, API payloads and emails
   (`DateTimeUtils::formatDate()`) are not affected. Money — not applicable to V2 — would go through
   `CurrencyFormatter`.
 
