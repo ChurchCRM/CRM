@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Post-install patch for cypress-split to format durations with maxDecimalPoints: 1
- * Changes humanizeDuration calls to show durations like "15.9 seconds" instead of "15.974 seconds"
+ * Post-install patch for cypress-split to format durations as x.y sec
+ * Changes humanizeDuration calls to show durations like "15.9 sec" instead of "15.974 seconds"
  */
 
 const fs = require('fs');
@@ -13,9 +13,9 @@ const filePath = path.join(__dirname, '../node_modules/cypress-split/src/index.j
 try {
   let content = fs.readFileSync(filePath, 'utf8');
 
-  // Replace humanizeDuration(specDuration) with humanizeDuration(specDuration, { maxDecimalPoints: 1 })
+  // Replace humanizeDuration(specDuration) with (specDuration / 1000).toFixed(1) + " sec"
   const oldLine = 'const humanSpecDuration = humanizeDuration(specDuration)';
-  const newLine = 'const humanSpecDuration = humanizeDuration(specDuration, { maxDecimalPoints: 1 })';
+  const newLine = 'const humanSpecDuration = (specDuration / 1000).toFixed(1) + " sec"';
 
   if (content.includes(oldLine)) {
     content = content.replace(oldLine, newLine);

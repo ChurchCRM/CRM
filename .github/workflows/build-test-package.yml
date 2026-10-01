@@ -239,7 +239,7 @@ jobs:
         # &&/|| evaluation, `true && ''` is itself falsy, so an `== 'api'`
         # form would fall through to the `|| (matrix.shard-total || 1)`
         # fallback instead of returning ''.
-        shard-total: ${{ matrix.shard-total || 1 }}
+        shard-total: ${{ matrix.test-type.name != 'api' && (matrix.shard-total || 1) || '' }}
         shard-index: ${{ matrix.split-index || '0' }}
         docker-compose-profile: ci-root
       env:
@@ -335,7 +335,7 @@ jobs:
         # &&/|| evaluation, `true && ''` is itself falsy, so an `== 'api'`
         # form would fall through to the `|| (matrix.shard-total || 1)`
         # fallback instead of returning ''.
-        shard-total: ${{ matrix.shard-total || 1 }}
+        shard-total: ${{ matrix.test-type.name != 'api' && (matrix.shard-total || 1) || '' }}
         shard-index: ${{ matrix.split-index || '0' }}
         base-url: http://127.0.0.1:8080/churchcrm/
         docker-compose-profile: ci-subdir
