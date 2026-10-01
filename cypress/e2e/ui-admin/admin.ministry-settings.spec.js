@@ -166,7 +166,7 @@ describe("Admin → Ministry Settings", () => {
         }).as("leadValue");
     }
 
-    it("sends nothing when Save is pressed before the current values have loaded (D32)", () => {
+    it("offers no Save before the current values have loaded, so nothing is sent (D32)", () => {
         adminApi("POST", SETTING_URL, { value: "v2" }, 200);
         adminApi("POST", LEAD_URL, { value: "36" }, 200);
         freshAdminLogin();
@@ -174,9 +174,8 @@ describe("Admin → Ministry Settings", () => {
         cy.intercept("POST", "**/admin/api/system/config/*").as("saveSetting");
         cy.visit(PAGE_URL);
 
-        // An early press, while the lead time field is still empty.
         cy.get("#ministrySettingsPanel input[name='iVolunteerReminderLeadHours']").should("have.value", "");
-        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click({ force: true });
+        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").should("be.disabled");
 
         cy.wait("@leadValue");
         cy.get("#ministrySettingsPanel input[name='iVolunteerReminderLeadHours']").should("have.value", "36");
