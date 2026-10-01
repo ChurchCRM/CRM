@@ -196,7 +196,6 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         $isFamily = true;
 
         $pdf->sRecordName = '';
-        $pdf->sLastName = $per_LastName;
         $OutStr .= $pdf->sGetFamilyString($aRow);
         $bNoRecordName = true;
 
@@ -208,8 +207,11 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
         if (mysqli_num_rows($rsPerson) > 0) {
             $aHead = mysqli_fetch_array($rsPerson);
+            $pdf->sLastName = $aHead['per_LastName'];
             $OutStr .= $pdf->sGetHeadString($rsCustomFields, $aHead);
             $bNoRecordName = false;
+        } else {
+            $pdf->sLastName = $per_LastName;
         }
 
         // Find the Spouse of Household
