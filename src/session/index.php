@@ -6,7 +6,6 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Utils\InputUtils;
@@ -66,30 +65,10 @@ function processTwoFactorPost(Request $request, Response $response, array $args)
     AuthenticationManager::authenticate($twoFARequest);
 }
 
-/**
- * GET /session/end — sign out.
- *
- * While an admin masquerade is running (#9843) signing out must not strand the
- * administrator at the login page: it ends the masquerade and hands them back
- * their own session, exactly like the banner's exit control. The header's user
- * menu already renders that action under a matching label, but the substitution
- * lives here too so no other link to /session/end can drift from it.
- */
 function endSession(Request $request, Response $response, array $args): Response
 {
-    // Only a live masquerade is exited back to the administrator; a timed-out
-    // one ends the whole session like any other logout.
-    if (ImpersonationService::isActive() && AuthenticationManager::validateUserSessionIsActive(false)) {
-        $targetId = ImpersonationService::end();
-        if ($targetId !== null) {
-            return $response
-                ->withHeader('Location', SystemURLs::getRootPath() . '/v2/user/' . $targetId)
-                ->withStatus(302);
-        }
-    } else {
-        AuthenticationManager::endSession(true);
-    }
-
+    AuthenticationManager::endSession(true);
+    
     $redirectUrl = SystemURLs::getRootPath() . '/session/begin';
     $response = $response->withHeader('Location', $redirectUrl)->withStatus(302);
     $response->getBody()->write('');

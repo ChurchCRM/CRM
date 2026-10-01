@@ -2,6 +2,8 @@
 
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\ImpersonationService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\ChurchLogo;
 
@@ -47,9 +49,19 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
             <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify Family Info') ?>
           </a>
           <?php endif; ?>
-          <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="btn btn-outline-secondary">
+          <?php if (ImpersonationService::isActive()): ?>
+          <form method="post" class="d-grid"
+                action="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/user/impersonate/exit') ?>">
+            <?= CSRFUtils::getTokenInputField('user_impersonate') ?>
+            <button type="submit" id="limitedAccessSignOut" class="btn btn-outline-secondary">
+              <i class="fa-solid fa-right-from-bracket me-2"></i><?= gettext('Exit to your account') ?>
+            </button>
+          </form>
+          <?php else: ?>
+          <a href="<?= SystemURLs::getRootPath() ?>/session/end" id="limitedAccessSignOut" class="btn btn-outline-secondary">
             <i class="fa-solid fa-right-from-bracket me-2"></i><?= gettext('Log Out') ?>
           </a>
+          <?php endif; ?>
         </div>
       </div>
     </div>

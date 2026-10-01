@@ -161,6 +161,18 @@ describe("Admin Login as User (masquerade)", () => {
         cy.get(".navbar").should("contain.text", "Church Admin");
     });
 
+    it("the limited-access page's sign-out button returns the admin", () => {
+        cy.visit(`/v2/user/${SELF_SERVICE_USER_ID}`);
+        cy.get("#loginAsUser").click();
+        cy.get(".bootbox.modal .btn-warning").click();
+        cy.url().should("include", "/external/limited-access");
+
+        cy.get("#limitedAccessSignOut").should("contain.text", "Exit to your account").click();
+        cy.url().should("include", `/v2/user/${SELF_SERVICE_USER_ID}`);
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.get(".navbar").should("contain.text", "Church Admin");
+    });
+
     // A user created by an administrator must change their password on first
     // login. That obligation is the account owner's, not the masquerading
     // administrator's: before the guard in LocalAuthentication it bounced every
@@ -372,6 +384,17 @@ describe("Masquerade record does not survive its session", () => {
         cy.url().should("include", "/v2/dashboard");
         cy.get("#impersonationBanner").should("be.visible");
     }
+
+    it("GET /session/end during a live masquerade ends the whole session", () => {
+        cy.setupAdminSession({ forceLogin: true });
+        startMasquerade();
+
+        cy.visit("/session/end");
+        cy.url().should("include", "/session/begin");
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.visit("/v2/dashboard");
+        cy.url().should("include", "/session/begin");
+    });
 
     it("a real login in the same browser discards the record", () => {
         cy.setupAdminSession({ forceLogin: true });
