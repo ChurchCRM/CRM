@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - uses: ./.github/actions/checkout-node-npm
 
@@ -142,7 +142,7 @@ jobs:
             shard-total: 3
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - uses: ./.github/actions/checkout-node-npm
       with:
@@ -262,7 +262,7 @@ jobs:
             shard-total: 3
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - uses: ./.github/actions/checkout-node-npm
       with:
@@ -360,7 +360,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - uses: ./.github/actions/checkout-node-npm
 
@@ -454,7 +454,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - uses: ./.github/actions/checkout-node-npm
 
@@ -550,7 +550,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - name: Set up Node.js
       uses: actions/setup-node@v7
@@ -652,7 +652,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - name: Set up Node.js
       uses: actions/setup-node@v7
@@ -796,7 +796,7 @@ jobs:
             label: '6.0.0'
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
 
     - name: Set up Node.js
       uses: actions/setup-node@v7

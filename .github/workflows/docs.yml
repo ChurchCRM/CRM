@@ -38,7 +38,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout CRM
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7.0.1
       - uses: ./.github/actions/composer-install
         with:
           no-dev: 'false'
@@ -62,7 +62,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout CRM
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7.0.1
       - uses: ./.github/actions/composer-install
         with:
           no-dev: 'false'
