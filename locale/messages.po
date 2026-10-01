@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 17:20+0000\n"
+"POT-Creation-Date: 2026-10-01 01:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1980,7 +1980,13 @@ msgstr ""
 msgid "Can't change your own active status"
 msgstr ""
 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr ""
+
 msgid "Can't delete yourself"
+msgstr ""
+
+msgid "Can't mark the only administrator who can sign in as deceased"
 msgstr ""
 
 msgid "Can't scan?"
@@ -3431,6 +3437,9 @@ msgid "Dec"
 msgstr ""
 
 msgid "Deceased"
+msgstr ""
+
+msgid "Deceased — cannot sign in"
 msgstr ""
 
 msgid "December"
@@ -6587,6 +6596,9 @@ msgid "Inactive Groups"
 msgstr ""
 
 msgid "Inactive status can only be toggled for the classifications list"
+msgstr ""
+
+msgid "Inactive — cannot sign in"
 msgstr ""
 
 msgid "Include"
@@ -11954,6 +11966,9 @@ msgstr ""
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr ""
 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "The membership anniversary month for which you would like records returned."
 msgstr ""
@@ -12180,6 +12195,9 @@ msgid "This person already has a user account."
 msgstr ""
 
 msgid "This person is deceased"
+msgstr ""
+
+msgid "This person is deceased or inactive, so this account cannot sign in"
 msgstr ""
 
 msgid "This plugin does not support connection testing."
