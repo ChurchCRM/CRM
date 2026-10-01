@@ -156,6 +156,7 @@ function buildComponents(): void {
     positions,
     fetch: () => listTeamSchedules(teamId),
     invalidateOccurrences: () => occurrencesTable.invalidate(),
+    showOccurrences: (filter) => occurrencesTable.reveal(filter),
     classesAllowed: () => sundaySchool,
   });
 }

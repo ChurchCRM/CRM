@@ -1205,9 +1205,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!--
   New event / New recurring event (D24). One dialog with a One-time / Recurring switch. The
-  events are created through core with this ministry's id; "Staff these events" creates the
-  schedule that staffs them in the same request (the staffing-needs editor, the Volunteer
-  times rows and the Generate dialog's "Fill by default with" rows, reused).
+  events are created through core with this ministry's id, and only created: staffing them is
+  the question asked after Create (D33).
 -->
 <div class="modal fade" id="ministryEventModal" tabindex="-1" aria-hidden="true" aria-labelledby="ministryEventModalTitle">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg modal-fullscreen-sm-down" role="document">
@@ -1282,7 +1281,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="col-12 col-md-6 mb-3">
               <label class="form-label" for="ministry-event-form-range-end"><?= gettext('Last date') ?></label>
-              <input type="date" class="form-control" id="ministry-event-form-range-end">
+              <input type="date" class="form-control" id="ministry-event-form-range-end" required>
+              <div class="form-text text-warning d-none" role="status" id="ministry-event-form-range-end-note"></div>
             </div>
           </div>
         </div>
@@ -1301,31 +1301,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="form-label"><?= gettext('Calendars') ?></div>
           <div id="ministry-event-form-calendars"></div>
           <div class="form-text"><?= gettext('Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with.') ?></div>
-        </div>
-        <hr class="my-3">
-        <label class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="ministry-event-form-staff-toggle">
-          <span class="form-check-label fw-medium"><?= gettext('Staff these events') ?></span>
-        </label>
-        <div class="d-none mt-2" id="ministry-event-form-staff">
-          <div class="mb-3">
-            <label class="form-label" for="ministry-event-form-team"><?= gettext('Team') ?></label>
-            <select class="form-select" id="ministry-event-form-team"></select>
-          </div>
-          <!-- D30: the team's schedule that already follows these events takes them, with its own needs. -->
-          <div class="alert alert-info py-2 d-none" role="status" id="ministry-event-form-reuse"></div>
-          <div class="mb-3" id="ministry-event-form-offsets"></div>
-          <div id="ministry-event-form-plan">
-            <div class="mb-2">
-              <h6 class="mb-1"><i class="fa-solid fa-list-check me-2"></i><?= gettext('Staffing needs') ?></h6>
-              <div class="form-text"><?= gettext('How many volunteers each event needs. Uncheck a position these events do not use.') ?></div>
-            </div>
-            <div id="ministry-event-form-needs"></div>
-          </div>
-          <p class="text-body-secondary mt-3 mb-2">
-            <?= gettext('Choose who fills each position by default. They are assigned on every event made now, and asked to respond unless you set them as accepted.') ?>
-          </p>
-          <div id="ministry-event-form-defaults"></div>
         </div>
         <div class="alert alert-danger d-none mt-3" role="alert" id="ministry-event-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>

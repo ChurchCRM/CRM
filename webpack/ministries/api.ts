@@ -1155,10 +1155,11 @@ export function listScheduleRequirements(scheduleId: number): Promise<{ requirem
   return request(`/schedules/${scheduleId}/requirements`);
 }
 
+/** A new schedule generates on Save (D33): `generated` is that run, as a Generate run answers; null when saved inactive. */
 export function createSchedule(
   ministryId: number,
   payload: Record<string, unknown>,
-): Promise<{ schedule: VolunteerSchedule }> {
+): Promise<{ schedule: VolunteerSchedule; generated: VolunteerGenerateResult | null }> {
   return request(`/ministries/${ministryId}/schedules`, { method: "POST", body: JSON.stringify(payload) });
 }
 
@@ -1471,7 +1472,7 @@ export function listMinistryEvents(
   return request(`/ministries/${ministryId}/events${past ? "?past=1" : ""}`);
 }
 
-/** What the new-event dialog sends: one event (`date`) or a series (`recurrence` + range). */
+/** What the new-event dialog sends: one event (`date`) or a series (`recurrence` + range). Staffing is a separate step (D33). */
 export interface VolunteerMinistryEventInput {
   title: string;
   eventTypeId: number;
@@ -1484,30 +1485,38 @@ export interface VolunteerMinistryEventInput {
   recurrence?: { type: "weekly" | "monthly" | "yearly"; dow?: string; dom?: number; doy?: string };
   rangeStart?: string;
   rangeEnd?: string;
-  staff?: {
-    teamId: number;
-    /** Left out when the events go to a schedule that already follows them, whose own plan applies (D30). */
-    requirements?: VolunteerRequirementInput[];
-    startOffsetMinutes?: number;
-    endOffsetMinutes?: number;
-    defaults: VolunteerGenerateDefault[];
-  };
 }
 
 export function createMinistryEvents(
   ministryId: number,
   payload: VolunteerMinistryEventInput,
-): Promise<{
-  events: Array<{ id: number; title: string; start: string; end: string }>;
-  schedule?: VolunteerSchedule;
-  /** The events went to the team's schedule that already follows them (D30). */
-  reusedSchedule?: boolean;
-  occurrences?: Array<{ id: number; eventId: number; occurrenceDate: string }>;
-  assigned?: number;
-  skipped?: number;
-  unqualified?: number;
-}> {
+): Promise<{ events: Array<{ id: number; title: string; start: string; end: string }> }> {
   return request(`/ministries/${ministryId}/events`, { method: "POST", body: JSON.stringify(payload) });
+}
+
+/** One schedule that took new events (D33): what its run made. */
+export interface VolunteerStaffedSeriesRun {
+  schedule: VolunteerSchedule;
+  /** Its first or last date moved to cover the events. */
+  widened: boolean;
+  created: number;
+  existing: number;
+  from: string;
+  through: string;
+  assigned: number;
+  skipped: number;
+  unqualified: number;
+}
+
+/**
+ * "Staff them" for a new series (D33): the ministry's schedules that already follow these
+ * events take them, generated with their saved defaults. Empty when none follows them.
+ */
+export function staffMinistryEvents(
+  ministryId: number,
+  eventIds: number[],
+): Promise<{ schedules: VolunteerStaffedSeriesRun[] }> {
+  return request(`/ministries/${ministryId}/events/staff`, { method: "POST", body: JSON.stringify({ eventIds }) });
 }
 
 /** D28: the Calendar tab's Delete events — owned events only, all or none. */
@@ -1515,7 +1524,7 @@ export function deleteMinistryEvents(ministryId: number, eventIds: number[]): Pr
   return request(`/ministries/${ministryId}/events`, { method: "DELETE", body: JSON.stringify({ eventIds }) });
 }
 
-/** "Fill by default with" for a schedule that does not exist yet: the position's team's list. */
+/** The schedule dialog's Default volunteer (D32) for a schedule that may not exist yet: the position's team's list. */
 export function listPositionEligiblePeople(positionId: number): Promise<{ people: VolunteerEligiblePerson[] }> {
   return request(`/positions/${positionId}/eligible`);
 }

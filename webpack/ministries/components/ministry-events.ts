@@ -5,17 +5,12 @@
  * the ticked rows (D28).
  *
  * The events are core's. The dialog posts to `POST /ministries/{id}/events`, which creates
- * them through the calendar's own code with the ministry's id and, when "Staff these
- * events" is on, the schedule that staffs them in the same transaction. Editing one event
- * stays in the core event editor, which the row menu links to; Delete events goes through
- * core's delete path too, on the server.
- *
- * The staffing section reuses what the Schedules and Generate dialogs already are: the
- * staffing-needs editor, the two Volunteer times rows and the "Fill by default with" rows.
- * When the chosen team already has a schedule following these events (same class, or no
- * class and exactly this title), the section says the events go to that schedule and keeps
- * only "Fill by default with", over that schedule's needs — the server decides the same way
- * and reuses it (D30).
+ * them through the calendar's own code with the ministry's id — and only creates them (D33).
+ * Then it asks whether to staff them: one event opens Staff an event with it chosen; a series
+ * goes to the schedules that already follow it (`POST …/events/staff`, the server decides the
+ * match) and the Occurrences tab shows what they made, or — when none follows it — Add
+ * schedule opens for it. Editing one event stays in the core event editor, which the row menu
+ * links to; Delete events goes through core's delete path too, on the server.
  */
 
 import {
@@ -27,33 +22,16 @@ import {
   listEventTypes,
   listMinistryEvents,
   listPinnableCalendars,
-  listPositionEligiblePeople,
-  listScheduleRequirements,
-  listSchedules,
   notifyError,
+  notifyInfo,
   notifySuccess,
-  type VolunteerEligiblePerson,
+  staffMinistryEvents,
   type VolunteerMinistryEvent,
   type VolunteerMinistryEventInput,
   type VolunteerMinistryEventStaffing,
-  type VolunteerPosition,
-  type VolunteerRequirementRow,
-  type VolunteerSchedule,
   type VolunteerTeam,
 } from "../api";
-import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "../staffing-needs";
-import {
-  destroyDefaultFillPickers,
-  mountDefaultFillPickers,
-  readDefaultFills,
-  renderDefaultFillRow,
-  restoreDefaultFills,
-  type SavedDefault,
-  savedDefaultOf,
-  wireDefaultFillRows,
-} from "./default-fill";
-import { readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
-import type { MinistryEventPrefill } from "./schedules-table";
+import type { MinistryEventPrefill, SchedulePrefill } from "./schedules-table";
 import {
   actionMenu,
   byId,
@@ -61,11 +39,13 @@ import {
   destroyDataTable,
   escapeAttribute,
   escapeHtml,
+  formatIsoDate,
   hideModal,
   initDataTable,
   isoDate,
   modal,
   renderState,
+  shortDate,
   show,
   showModalError,
   tText,
@@ -84,13 +64,16 @@ export interface MinistryEventsOptions {
   /** D29: may the ministry's events have a class. */
   sundaySchool(): boolean;
   teams(): VolunteerTeam[];
-  positions(): VolunteerPosition[];
   ensureContext(): Promise<void>;
   occurrenceUrl(occurrenceId: number): string;
   /** Open the Staff an event dialog with this event chosen. */
   staffEvent(event: { id: number; title: string; start: string }): void;
-  /** New events may have come with a schedule and occurrences the other tabs cache. */
+  /** Staffing new events made occurrences the other tabs cache. */
   invalidateStaffing(): void;
+  /** Switch to the Occurrences tab, narrowed to these (D33). */
+  showOccurrences(filter: { text: string }): void;
+  /** Switch to the Schedules tab and open Add schedule pre-filled (D33). */
+  addSchedule(prefill: SchedulePrefill): void;
 }
 
 export interface MinistryEventsHandle {
@@ -110,20 +93,10 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
   let defaultEventTypeId: number | null = null;
   let classes: Array<{ groupId: number; name: string }> | null = null;
   let calendars: Array<{ id: number; name: string; own: boolean }> | null = null;
-  /** The class field was set by the staffing team's class (D23), not by hand. */
-  let classFromTeam = false;
-  const eligible = new Map<number, VolunteerEligiblePerson[]>();
-  let defaultPickers: TomSelectInstance[] = [];
-  let defaultsSequence = 0;
-  /** The ministry's schedules, fetched on open, for the "added to" hint (D30). */
-  let ministrySchedules: VolunteerSchedule[] = [];
-  /** The schedule the new events would be added to; 0 for a new one. */
-  let reuseScheduleId = 0;
-  const reuseNeeds = new Map<number, VolunteerRequirementRow[]>();
-  /** The schedule that found no events, when the dialog was opened from its warning (D30). */
-  let prefillScheduleName: string | null = null;
-  /** Which open the schedules fetched for the hint belong to. */
-  let openSequence = 0;
+  /** The Last date a series stops on, restored when the field is cleared (D33). */
+  let lastRangeEnd = "";
+  /** The Last date was chosen by hand, so moving the first date no longer moves it. */
+  let rangeEndChosen = false;
 
   const root = (): string => window.CRM?.root ?? "";
   const pastShown = (): boolean => byId<HTMLInputElement>("ministry-events-past")?.checked ?? false;
@@ -373,7 +346,6 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
   const value = (name: string): string =>
     field<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(name)?.value.trim() ?? "";
   const isSeries = (): boolean => field("series")?.checked ?? false;
-  const staffing = (): boolean => field("staff-toggle")?.checked ?? false;
 
   async function loadChoices(): Promise<void> {
     const ministryId = options.ministryId();
@@ -458,15 +430,6 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
                 </label>`,
               )
               .join("");
-    }
-
-    const team = field<HTMLSelectElement>("team");
-    if (team) {
-      team.innerHTML = options
-        .teams()
-        .filter((candidate) => candidate.active)
-        .map((candidate) => `<option value="${candidate.id}">${escapeHtml(candidate.name)}</option>`)
-        .join("");
     }
   }
 
@@ -555,7 +518,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
 
     const rule = recurrence();
     const dates = seriesDates(rule, first, last);
-    const short = (date: Date): string => date.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+    const short = (date: Date): string => shortDate(formatIsoDate(date));
     let text: string;
     if (dates.length === 0) {
       text = i18next.t("No date between the first and last date matches the recurrence");
@@ -584,201 +547,53 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     show(preview, true);
   }
 
-  // ── Staff these events ────────────────────────────────────────────────────
+  // ── The Last date (D33) ───────────────────────────────────────────────────
 
-  function teamPositions(): VolunteerPosition[] {
-    const teamId = Number(value("team"));
+  function oneYearAfter(iso: string): string {
+    const date = new Date(`${iso}T12:00:00`);
+    date.setFullYear(date.getFullYear() + 1);
 
-    return options.positions().filter((position) => position.active && position.teamId === teamId);
+    return formatIsoDate(date);
   }
 
-  function renderNeeds(): void {
-    const container = field("needs");
-    if (container) {
-      renderStaffingNeeds(
-        container,
-        teamPositions().map((position) => ({
-          id: position.id,
-          name: position.name,
-          teamId: position.teamId,
-          teamName: position.teamName,
-          order: position.order,
-        })),
-        [],
-        true,
-      );
+  /** Until the Last date is chosen by hand, it stays a year after the first date. */
+  function syncRangeStart(): void {
+    const first = value("range-start");
+    const last = field("range-end");
+    if (!rangeEndChosen && first !== "" && last) {
+      last.value = oneYearAfter(first);
+      lastRangeEnd = last.value;
     }
-    void renderDefaults();
+    renderPreview();
   }
 
-  /** The needs "Fill by default with" offers: the schedule's own when the events go to one, else the editor's. */
-  async function plannedNeeds(): Promise<
-    Array<{ positionId: number; name: string; minCount: number; maxCount: number | null; saved: SavedDefault | null }>
-  > {
-    const names = new Map(teamPositions().map((position) => [position.id, position.name]));
-    const scheduleId = reuseScheduleId;
-    if (scheduleId !== 0) {
-      if (!reuseNeeds.has(scheduleId)) {
-        try {
-          reuseNeeds.set(scheduleId, (await listScheduleRequirements(scheduleId)).requirements);
-        } catch {
-          reuseNeeds.set(scheduleId, []);
-        }
-      }
-
-      return (reuseNeeds.get(scheduleId) ?? []).map((row) => ({
-        positionId: row.positionId,
-        name: row.positionName ?? names.get(row.positionId) ?? "",
-        minCount: row.minCount,
-        maxCount: row.maxCount,
-        saved: savedDefaultOf(row),
-      }));
-    }
-
-    const needs = field("needs");
-
-    return needs === null
-      ? []
-      : readStaffingNeeds(needs).map((need) => ({
-          positionId: need.positionId,
-          name: names.get(need.positionId) ?? "",
-          minCount: need.minCount,
-          maxCount: need.maxCount ?? null,
-          saved: null,
-        }));
-  }
-
-  /** One "Fill by default with" row per position the plan asks for, as the Generate dialog draws them. */
-  async function renderDefaults(): Promise<void> {
-    const container = field("defaults");
-    if (!container) {
+  /** A series always has a last date: a cleared field is put back, and says so. */
+  function syncRangeEnd(): void {
+    const last = field("range-end");
+    const note = field("range-end-note");
+    if (!last) {
       return;
     }
-    const sequence = ++defaultsSequence;
-    const wanted = (await plannedNeeds()).filter((need) => need.maxCount === null || need.maxCount > 0);
-
-    const html: string[] = [];
-    for (const need of wanted) {
-      if (!eligible.has(need.positionId)) {
-        try {
-          eligible.set(need.positionId, (await listPositionEligiblePeople(need.positionId)).people);
-        } catch {
-          eligible.set(need.positionId, []);
-        }
+    if (last.value === "") {
+      const first = value("range-start");
+      last.value = lastRangeEnd !== "" ? lastRangeEnd : first !== "" ? oneYearAfter(first) : "";
+      if (note) {
+        note.textContent = tText("A recurring event needs a last date, so it is back to {{date}}.", {
+          date: shortDate(last.value),
+        });
       }
-      html.push(
-        renderDefaultFillRow(
-          "ministry-event-default",
-          need.positionId,
-          need.name,
-          need.minCount,
-          need.maxCount,
-          eligible.get(need.positionId) ?? [],
-          need.saved,
-        ),
-      );
+      show(note, true);
+    } else if (last.value !== lastRangeEnd) {
+      lastRangeEnd = last.value;
+      rangeEndChosen = true;
+      show(note, false);
     }
-    if (sequence !== defaultsSequence) {
-      return;
-    }
-
-    const previous = readDefaultFills(container);
-    destroyDefaultFillPickers(defaultPickers);
-    container.innerHTML = html.join("");
-    defaultPickers = mountDefaultFillPickers(container);
-    restoreDefaultFills(container, defaultPickers, previous);
-  }
-
-  /** D23 (d): a team linked to a class suggests that class, until the class is chosen by hand. */
-  function applyTeamClass(): void {
-    const select = field<HTMLSelectElement>("class");
-    if (!select || !options.sundaySchool()) {
-      return;
-    }
-    const team = options.teams().find((candidate) => candidate.id === Number(value("team")));
-    if (team?.classGroupId && (select.value === "" || classFromTeam)) {
-      if (!Array.from(select.options).some((option) => option.value === String(team.classGroupId))) {
-        select.append(new Option(team.classGroupName ?? "", String(team.classGroupId)));
-      }
-      select.value = String(team.classGroupId);
-      classFromTeam = true;
-    } else if (!team?.classGroupId && classFromTeam) {
-      select.value = "";
-      classFromTeam = false;
-    }
-  }
-
-  /**
-   * D30: the team's active schedule that already follows what this dialog creates — `class` mode
-   * on the chosen class, or with no class `ministry` mode on exactly this title. The server makes
-   * the same match and is the one that decides.
-   */
-  function followingSchedule(): VolunteerSchedule | null {
-    if (!staffing()) {
-      return null;
-    }
-    const teamId = Number(value("team"));
-    const classId = options.sundaySchool() ? Number(value("class")) || 0 : 0;
-    const title = value("title").toLowerCase();
-
-    return (
-      ministrySchedules.find(
-        (schedule) =>
-          schedule.teamId === teamId &&
-          schedule.active &&
-          !schedule.oneOff &&
-          (classId > 0
-            ? schedule.linkMode === "class" && schedule.groupId === classId
-            : schedule.linkMode === "ministry" &&
-              title !== "" &&
-              (schedule.titleFilter ?? "").trim().toLowerCase() === title),
-      ) ?? null
-    );
-  }
-
-  /** Say where the events go, and hide the plan editors a reused schedule does not take. */
-  function syncReuse(): void {
-    const schedule = followingSchedule();
-    const hint = field("reuse");
-    if (hint && schedule) {
-      hint.textContent = tText('These events will be added to "{{name}}" and staffed with its needs.', {
-        name: schedule.name,
-      });
-    }
-    show(hint, schedule !== null);
-    show(field("offsets"), schedule === null);
-    show(field("plan"), schedule === null);
-
-    const scheduleId = schedule?.id ?? 0;
-    if (scheduleId !== reuseScheduleId) {
-      reuseScheduleId = scheduleId;
-      void renderDefaults();
-    }
-  }
-
-  /** A class the staffing team suggested goes away with the staffing; one chosen by hand stays. */
-  function syncStaffing(): void {
-    show(field("staff"), staffing());
-    if (staffing()) {
-      applyTeamClass();
-    } else if (classFromTeam) {
-      const select = field<HTMLSelectElement>("class");
-      if (select) {
-        select.value = "";
-      }
-      classFromTeam = false;
-    }
+    renderPreview();
   }
 
   // ── Open and save ─────────────────────────────────────────────────────────
 
   async function openModal(series: boolean, prefill?: MinistryEventPrefill): Promise<void> {
-    // Only for the hint, so the dialog does not wait for it: the server reuses a following
-    // schedule whether or not the hint was shown.
-    const opening = ++openSequence;
-    const schedulesRequest = listSchedules(options.ministryId())
-      .then((data) => data.schedules)
-      .catch((): VolunteerSchedule[] => []);
     try {
       await options.ensureContext();
       await loadChoices();
@@ -787,15 +602,8 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
 
       return;
     }
-    ministrySchedules = [];
-    reuseNeeds.clear();
-    reuseScheduleId = 0;
 
-    // Qualifications may have changed on the Volunteers tab since the last open.
-    eligible.clear();
     fillSelects();
-    renderOffsetFields("ministry-event-form");
-    writeOffsets("ministry-event-form", 0, 0);
     for (const name of ["title", "description", "date", "range-start", "range-end", "dom", "doy-day"]) {
       const input = field<HTMLInputElement>(name);
       if (input) {
@@ -813,6 +621,10 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     }
     set("date", isoDate(1));
     set("range-start", isoDate(1));
+    rangeEndChosen = false;
+    lastRangeEnd = "";
+    syncRangeStart();
+    show(field("range-end-note"), false);
     set("start-time", "09:00");
     set("end-time", "10:00");
     set("recur-type", "weekly");
@@ -826,14 +638,8 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     if (kind) {
       (kind as HTMLInputElement).checked = true;
     }
-    const toggle = field("staff-toggle");
-    if (toggle) {
-      toggle.checked = false;
-    }
-    classFromTeam = false;
     show(field("error"), false);
 
-    prefillScheduleName = prefill?.scheduleName ?? null;
     if (prefill) {
       set("title", prefill.title ?? prefill.groupName ?? "");
       const classSelect = field<HTMLSelectElement>("class");
@@ -846,9 +652,6 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     }
 
     syncKind();
-    syncStaffing();
-    renderNeeds();
-    syncReuse();
 
     byId("ministryEventModal")?.addEventListener(
       "shown.bs.modal",
@@ -858,13 +661,6 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       { once: true },
     );
     modal("ministryEventModal")?.show();
-
-    void schedulesRequest.then((rows) => {
-      if (opening === openSequence) {
-        ministrySchedules = rows;
-        syncReuse();
-      }
-    });
   }
 
   function payload(): VolunteerMinistryEventInput | string {
@@ -911,28 +707,6 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       body.date = value("date");
     }
 
-    // The schedule the events go to keeps its own needs and times (D30).
-    if (staffing() && followingSchedule() !== null) {
-      body.staff = { teamId: Number(value("team")), defaults: readDefaultFills(field("defaults")) };
-    } else if (staffing()) {
-      const needs = field("needs");
-      const offsets = readOffsets("ministry-event-form");
-      if (typeof offsets === "string") {
-        return offsets;
-      }
-      const invalid = needs === null ? null : validateStaffingNeeds(needs);
-      if (invalid !== null) {
-        return invalid;
-      }
-      body.staff = {
-        teamId: Number(value("team")),
-        requirements: needs === null ? [] : readStaffingNeeds(needs),
-        startOffsetMinutes: offsets.start,
-        endOffsetMinutes: offsets.end,
-        defaults: readDefaultFills(field("defaults")),
-      };
-    }
-
     return body;
   }
 
@@ -949,29 +723,15 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     if (button) {
       button.disabled = true;
     }
+    const created = { series: isSeries(), linkedGroupId: body.linkedGroupId ?? null };
 
     createMinistryEvents(options.ministryId(), body)
       .then((result) => {
         hideModal("ministryEventModal");
-        const parts = [tText("Events created: {{total}}", { total: result.events.length })];
-        if (result.reusedSchedule && result.schedule) {
-          parts.push(i18next.t('Added to "{{name}}"', { name: result.schedule.name }));
-        }
-        if ((result.assigned ?? 0) > 0) {
-          parts.push(tText("Volunteers assigned: {{total}}", { total: result.assigned }));
-        }
-        if ((result.unqualified ?? 0) > 0) {
-          parts.push(
-            i18next.t("{{count}} left open because the default is no longer qualified", { count: result.unqualified }),
-          );
-        }
-        if (!result.schedule && prefillScheduleName !== null) {
-          parts.push(i18next.t('Generate occurrences on "{{name}}" to staff them', { name: prefillScheduleName }));
-        }
-        notifySuccess(parts.join(". "));
-        if (result.schedule) {
-          options.invalidateStaffing();
-        }
+        // After the dialog has gone, so the question is not stacked on a closing modal.
+        byId("ministryEventModal")?.addEventListener("hidden.bs.modal", () => askToStaff(result.events, created), {
+          once: true,
+        });
 
         return load(true);
       })
@@ -985,10 +745,149 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       });
   }
 
+  // ── Staff them? (D33) ─────────────────────────────────────────────────────
+
+  type CreatedEvent = { id: number; title: string; start: string; end: string };
+
+  /** Creating events and staffing them are separate steps: the question comes once the events exist. */
+  function askToStaff(made: CreatedEvent[], created: { series: boolean; linkedGroupId: number | null }): void {
+    if (made.length === 0) {
+      return;
+    }
+    const first = made[0];
+    const message =
+      made.length === 1
+        ? i18next.t("{{title}} on {{date}} created. Staff it now?", {
+            title: first.title,
+            date: shortDate(first.start),
+          })
+        : i18next.t("{{count}} {{title}} events created. Staff them now?", { count: made.length, title: first.title });
+
+    let staffThem = false;
+    let shown = false;
+    let closeWhenShown = false;
+    window.bootbox?.confirm({
+      message,
+      className: "ministry-event-staff-prompt",
+      buttons: {
+        confirm: { label: i18next.t("Staff them"), className: "btn-primary" },
+        cancel: { label: i18next.t("Not now"), className: "btn-outline-secondary" },
+      },
+      callback: (yes: boolean) => {
+        staffThem = yes;
+        if (shown) {
+          return true;
+        }
+        // Bootstrap drops a hide asked for while the dialog is still fading in (see hideModal()).
+        closeWhenShown = true;
+
+        return false;
+      },
+    });
+
+    const prompt = document.querySelector(".ministry-event-staff-prompt");
+    if (!prompt) {
+      return;
+    }
+    prompt.addEventListener(
+      "shown.bs.modal",
+      () => {
+        shown = true;
+        if (closeWhenShown) {
+          window.bootstrap.Modal.getOrCreateInstance(prompt).hide();
+        }
+      },
+      { once: true },
+    );
+    // The next dialog opens once this one has gone, so the two never share a backdrop.
+    prompt.addEventListener(
+      "hidden.bs.modal",
+      () => {
+        if (!staffThem) {
+          return;
+        }
+        if (created.series) {
+          void staffSeries(made, created.linkedGroupId);
+        } else {
+          options.staffEvent({ id: first.id, title: first.title, start: first.start });
+        }
+      },
+      { once: true },
+    );
+  }
+
+  /**
+   * A new series goes to every schedule that already follows it — the server finds them by
+   * class or exact title (core events have no series id). With none, Add schedule opens for it:
+   * on the class when one was chosen, else this ministry's events with exactly this title, which
+   * always finds the series because the ministry owns it.
+   */
+  async function staffSeries(made: CreatedEvent[], linkedGroupId: number | null): Promise<void> {
+    const title = made[0].title;
+    let runs: Awaited<ReturnType<typeof staffMinistryEvents>>["schedules"];
+    try {
+      runs = (
+        await staffMinistryEvents(
+          options.ministryId(),
+          made.map((event) => event.id),
+        )
+      ).schedules;
+    } catch (error) {
+      notifyError(errorMessage(error, i18next.t("The events could not be staffed")));
+
+      return;
+    }
+
+    if (runs.length === 0) {
+      const classTeam =
+        linkedGroupId === null ? undefined : options.teams().find((team) => team.classGroupId === linkedGroupId);
+      const groupName = classes?.find((row) => row.groupId === linkedGroupId)?.name ?? null;
+      options.addSchedule({
+        name: title,
+        teamId: classTeam?.id ?? null,
+        linkMode: linkedGroupId === null ? "ministry" : "class",
+        groupId: linkedGroupId,
+        groupName,
+        titleFilter: linkedGroupId === null ? title : null,
+      });
+
+      return;
+    }
+
+    invalidate();
+    options.invalidateStaffing();
+    if (runs.every((run) => run.created === 0)) {
+      notifyInfo(
+        i18next.t(
+          "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.",
+          {
+            names: runs.map((run) => `"${run.schedule.name}"`).join(", "),
+            count: runs[0].schedule.horizonWeeks,
+          },
+        ),
+      );
+
+      return;
+    }
+
+    const parts = runs.map((run) =>
+      i18next.t('"{{name}}": {{count}} occurrences created', { name: run.schedule.name, count: run.created }),
+    );
+    const assigned = runs.reduce((total, run) => total + run.assigned, 0);
+    const unqualified = runs.reduce((total, run) => total + run.unqualified, 0);
+    if (assigned > 0) {
+      parts.push(i18next.t("Volunteers assigned: {{total}}", { total: assigned }));
+    }
+    if (unqualified > 0) {
+      parts.push(i18next.t("{{count}} left open because the default is no longer qualified", { count: unqualified }));
+    }
+    notifySuccess(parts.join(". "));
+    options.showOccurrences({ text: title });
+  }
+
   function wire(): void {
     wireUnclippedRowMenus("ministry-events-table-wrapper");
     wireModalFadeGuard("ministryEventModal");
-    wireDefaultFillRows(field("defaults"));
 
     byId("ministry-events-past")?.addEventListener("change", () => {
       void load(true);
@@ -1004,32 +903,21 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       field(name)?.addEventListener("change", syncKind);
     }
     field("recur-type")?.addEventListener("change", syncRecurrence);
-    for (const name of ["dow", "dom", "doy-month", "doy-day", "range-start", "range-end"]) {
+    for (const name of ["dow", "dom", "doy-month", "doy-day"]) {
       field(name)?.addEventListener("input", renderPreview);
       field(name)?.addEventListener("change", renderPreview);
     }
-    field("class")?.addEventListener("change", () => {
-      classFromTeam = false;
-      syncReuse();
+    field("range-start")?.addEventListener("input", syncRangeStart);
+    field("range-start")?.addEventListener("change", syncRangeStart);
+    // Typed dates arrive as `input`, and a blank mid-typing is not a refusal yet.
+    field("range-end")?.addEventListener("input", () => {
+      if (value("range-end") !== "") {
+        syncRangeEnd();
+      }
     });
-    field("title")?.addEventListener("input", syncReuse);
-    field("staff-toggle")?.addEventListener("change", () => {
-      syncStaffing();
-      syncReuse();
-    });
-    field("team")?.addEventListener("change", () => {
-      renderNeeds();
-      applyTeamClass();
-      syncReuse();
-    });
-    field("needs")?.addEventListener("change", () => {
-      void renderDefaults();
-    });
+    field("range-end")?.addEventListener("change", syncRangeEnd);
+    field("range-end")?.addEventListener("blur", syncRangeEnd);
     field("save")?.addEventListener("click", save);
-    byId("ministryEventModal")?.addEventListener("hidden.bs.modal", () => {
-      destroyDefaultFillPickers(defaultPickers);
-      defaultPickers = [];
-    });
 
     // Delegated on the document: the rows are re-rendered on every load, and DataTables may
     // clone the header the Select All box lives in.

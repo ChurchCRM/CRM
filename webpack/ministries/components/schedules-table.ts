@@ -31,6 +31,10 @@
  * upcoming events and shows a class with none disabled ("add its meetings first"); there
  * is no "any event" choice, and the server refuses a schedule that would follow nothing.
  * Generation reaches the church-wide scheduling horizon, in weeks.
+ *
+ * D33: a NEW schedule generates on Save — the server runs it with the saved defaults — and the
+ * page lands on the Occurrences tab with what it made, or says why nothing came (D30's
+ * warning). Editing a schedule never generates.
  */
 
 import {
@@ -47,6 +51,7 @@ import {
   notifyError,
   notifyInfo,
   notifySuccess,
+  notifyWarning,
   updateSchedule,
   type VolunteerCandidatePosition,
   type VolunteerClassGroup,
@@ -92,8 +97,17 @@ export interface MinistryEventPrefill {
   groupId: number | null;
   groupName: string | null;
   title: string | null;
-  /** The schedule to generate again once the events exist. */
-  scheduleName: string;
+}
+
+/** What Add schedule starts with for a new series no schedule follows yet (D33). */
+export interface SchedulePrefill {
+  name: string;
+  /** Null: the first team, as a new schedule starts. */
+  teamId: number | null;
+  linkMode: "class" | "ministry";
+  groupId: number | null;
+  groupName: string | null;
+  titleFilter: string | null;
 }
 
 export interface SchedulesTableOptions {
@@ -118,11 +132,15 @@ export interface SchedulesTableOptions {
    * team leader), and the warnings then say who adds them instead.
    */
   addEvents?(prefill: MinistryEventPrefill): void;
+  /** D33: after a new schedule's Save made occurrences, show them on the Occurrences tab. */
+  showOccurrences?(filter: { text: string; teamId: number | null }): void;
 }
 
 export interface SchedulesTableHandle {
   load(force?: boolean): Promise<void>;
   invalidate(): void;
+  /** Open Add schedule pre-filled (D33). */
+  openNew(prefill: SchedulePrefill): void;
 }
 
 export function createSchedulesTable(options: SchedulesTableOptions): SchedulesTableHandle {
@@ -597,7 +615,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     renderStaffingNeeds(container, positions, scheduleRequirements, editingScheduleId === 0, eligibleByPosition);
   }
 
-  function openModal(schedule?: VolunteerSchedule): void {
+  function openModal(schedule?: VolunteerSchedule, prefill?: SchedulePrefill): void {
     editingScheduleId = schedule?.id ?? 0;
     modeFromTeamClass = false;
     show(byId("schedule-form-error"), false);
@@ -622,7 +640,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
               scheduleRequirements = [];
             });
 
-    const firstTeamId = schedule?.teamId ?? options.teams()[0]?.id ?? 0;
+    const firstTeamId = schedule?.teamId ?? prefill?.teamId ?? options.teams()[0]?.id ?? 0;
     const eligible = loadEligible(candidatePositionsForTeam(firstTeamId));
 
     void Promise.all([loadEventTypes(), loadClasses(), requirements, eligible]).then(async () => {
@@ -637,11 +655,11 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         }
       };
 
-      set("schedule-form-name", schedule?.name ?? "");
+      set("schedule-form-name", schedule?.name ?? prefill?.name ?? "");
       // A new schedule starts on the first team offered rather than on nothing,
       // because "nothing" is no longer a storable answer.
-      set("schedule-form-team", String(schedule?.teamId ?? options.teams()[0]?.id ?? ""));
-      set("schedule-form-link-mode", schedule?.linkMode ?? "event_type");
+      set("schedule-form-team", String(schedule?.teamId ?? prefill?.teamId ?? options.teams()[0]?.id ?? ""));
+      set("schedule-form-link-mode", schedule?.linkMode ?? prefill?.linkMode ?? "event_type");
       if (schedule?.eventTypeId) {
         set("schedule-form-event-type", String(schedule.eventTypeId));
       }
@@ -660,12 +678,29 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         title.textContent = schedule ? i18next.t("Edit schedule") : i18next.t("Add schedule");
       }
 
-      syncMode();
-      applyTeamClassDefault();
-      void fillEventSeries(schedule?.titleFilter ?? "");
+      if (prefill) {
+        applyPrefillClass(prefill);
+        syncMode();
+      } else {
+        syncMode();
+        applyTeamClassDefault();
+      }
+      void fillEventSeries(schedule?.titleFilter ?? prefill?.titleFilter ?? "");
       await renderNeeds();
       modal("scheduleModal")?.show();
     });
+  }
+
+  /** The class a pre-filled schedule follows (D33), offered even when the picker did not list it. */
+  function applyPrefillClass(prefill: SchedulePrefill): void {
+    const group = byId<HTMLSelectElement>("schedule-form-group");
+    if (!group || prefill.groupId === null) {
+      return;
+    }
+    if (!Array.from(group.options).some((option) => option.value === String(prefill.groupId))) {
+      group.append(new Option(prefill.groupName ?? "", String(prefill.groupId)));
+    }
+    group.value = String(prefill.groupId);
   }
 
   function formPayload(): Record<string, unknown> {
@@ -733,21 +768,79 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     }
 
     const payload = formPayload();
-    const request =
+    const request: Promise<void> =
       editingScheduleId === 0
-        ? createSchedule(options.ministryId(), payload)
-        : updateSchedule(editingScheduleId, payload);
+        ? createSchedule(options.ministryId(), payload).then((result) => {
+            hideModal("scheduleModal");
+            reportNewSchedule(result.schedule, result.generated);
+          })
+        : updateSchedule(editingScheduleId, payload).then(() => {
+            hideModal("scheduleModal");
+            notifySuccess(i18next.t("Schedule saved"));
+          });
 
     request
-      .then(() => {
-        hideModal("scheduleModal");
-        notifySuccess(editingScheduleId === 0 ? i18next.t("Schedule created") : i18next.t("Schedule saved"));
-
-        return load(true);
-      })
+      .then(() => load(true))
       .catch((error: unknown) => {
         showModalError("schedule", errorMessage(error, i18next.t("The schedule could not be saved")), notifyError);
       });
+  }
+
+  /**
+   * D33: a new schedule's Save generated it. What it made lands on the Occurrences tab with the
+   * run's numbers; a run that found nothing says why, in D30's words, and stays here.
+   */
+  function reportNewSchedule(schedule: VolunteerSchedule, run: VolunteerGenerateResult | null): void {
+    options.invalidateOccurrences();
+    if (run === null) {
+      notifySuccess(
+        i18next.t('Schedule "{{name}}" created. It is inactive, so it makes no occurrences until it is active.', {
+          name: schedule.name,
+        }),
+      );
+
+      return;
+    }
+    if (run.noEvents) {
+      const found = describeNothingFound(run, schedule);
+      notifyWarning(
+        [
+          i18next.t('Schedule "{{name}}" created.', { name: schedule.name }),
+          escapeHtml(found.text),
+          escapeHtml(found.hint),
+        ]
+          .filter((part) => part !== "")
+          .join(" "),
+      );
+
+      return;
+    }
+
+    notifySuccess(
+      [
+        i18next.t('Schedule "{{name}}" created: {{count}} occurrences', { name: schedule.name, count: run.created }),
+        ...defaultCounts(run),
+      ].join(". "),
+    );
+    options.showOccurrences?.({ text: schedule.name, teamId: schedule.teamId });
+  }
+
+  /** What a run's default volunteers came to (D32), for its toast. */
+  function defaultCounts(run: VolunteerGenerateResult): string[] {
+    const parts: string[] = [];
+    if (run.assigned > 0) {
+      parts.push(i18next.t("{{count}} volunteers assigned", { count: run.assigned }));
+    }
+    if (run.skipped > 0) {
+      parts.push(i18next.t("{{count}} could not be assigned", { count: run.skipped }));
+    }
+    if (run.unqualified > 0) {
+      parts.push(
+        i18next.t("{{count}} left open because the default is no longer qualified", { count: run.unqualified }),
+      );
+    }
+
+    return parts;
   }
 
   // ── Generate occurrences (2026-09-18) ───────────────────────────────────
@@ -907,18 +1000,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
             created: result.created,
             existing: result.existing,
           }),
+          ...defaultCounts(result),
         ];
-        if (result.assigned > 0) {
-          parts.push(i18next.t("{{count}} volunteers assigned", { count: result.assigned }));
-        }
-        if (result.skipped > 0) {
-          parts.push(i18next.t("{{count}} could not be assigned", { count: result.skipped }));
-        }
-        if (result.unqualified > 0) {
-          parts.push(
-            i18next.t("{{count}} left open because the default is no longer qualified", { count: result.unqualified }),
-          );
-        }
         notifySuccess(parts.join(". "));
         options.invalidateOccurrences();
 
@@ -940,7 +1023,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
   /** D30: the warning that replaces the success toast when a run found no events at all. */
   function showNothingFound(result: VolunteerGenerateResult): void {
-    const found = describeNothingFound(result);
+    const found = describeNothingFound(result, generatingSchedule);
     const text = byId("generate-form-warning-text");
     if (text) {
       text.textContent = found.text;
@@ -968,20 +1051,23 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   }
 
   /** Why a run found nothing, in the schedule's own terms, and what would fix it. */
-  function describeNothingFound(result: VolunteerGenerateResult): {
+  function describeNothingFound(
+    result: VolunteerGenerateResult,
+    schedule: VolunteerSchedule | null,
+  ): {
     text: string;
     hint: string;
     button: string;
     prefill: MinistryEventPrefill | null;
   } {
-    const name = generatingSchedule?.name ?? "";
+    const name = schedule?.name ?? "";
     const from = shortDate(result.from);
     const to = shortDate(result.through);
     const source = result.searched;
     const noButton = { button: "", prefill: null };
 
     if (result.from > result.through) {
-      const windowEnd = generatingSchedule?.windowEnd ?? null;
+      const windowEnd = schedule?.windowEnd ?? null;
       if (windowEnd !== null && windowEnd < result.from) {
         return {
           ...noButton,
@@ -997,7 +1083,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         ...noButton,
         text: tText("{{name}} starts on {{date}}, after the dates generated now (through {{through}}).", {
           name,
-          date: shortDate(generatingSchedule?.windowStart ?? result.from),
+          date: shortDate(schedule?.windowStart ?? result.from),
           through: to,
         }),
         hint: i18next.t("Generate again closer to its first date."),
@@ -1040,7 +1126,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
               })
             : coordinatorAdds,
           button: tText("New recurring event for {{name}}", { name: className }),
-          prefill: { groupId: source.groupId, groupName: className, title: null, scheduleName: name },
+          prefill: { groupId: source.groupId, groupName: className, title: null },
         };
       }
       case "ministry": {
@@ -1058,7 +1144,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
             : tText("{{ministry}} has no events between {{from}} and {{to}}.", { ministry, from, to }),
           hint: options.addEvents ? i18next.t("Add them on the Calendar tab, then generate again.") : coordinatorAdds,
           button: title ? tText("New recurring event titled {{title}}", { title }) : i18next.t("New recurring event"),
-          prefill: { groupId: null, groupName: null, title, scheduleName: name },
+          prefill: { groupId: null, groupName: null, title },
         };
       }
       case "event_type": {
@@ -1188,5 +1274,5 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
   wire();
 
-  return { load, invalidate };
+  return { load, invalidate, openNew: (prefill) => openModal(undefined, prefill) };
 }

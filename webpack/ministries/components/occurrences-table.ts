@@ -116,6 +116,11 @@ export interface OccurrencesTableHandle {
   invalidate(): void;
   /** Open Staff an event, with this event already chosen when one is given. */
   openStaff(event?: { id: number; title: string; start: string }): Promise<void>;
+  /**
+   * Switch to this tab narrowed to what was just made (D33): the Event box, the team where the
+   * page offers one, and the dates from today on.
+   */
+  reveal(filter: { text: string; teamId?: number | null }): void;
 }
 
 export function createOccurrencesTable(options: OccurrencesTableOptions): OccurrencesTableHandle {
@@ -608,6 +613,28 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     occurrences = null;
   }
 
+  function reveal(filter: { text: string; teamId?: number | null }): void {
+    const set = (id: string, text: string): void => {
+      const input = byId<HTMLInputElement>(id);
+      if (input) {
+        input.value = text;
+      }
+    };
+    set("occurrence-event-filter", filter.text);
+    set("occurrence-from", isoDate(0));
+    set("occurrence-to", "");
+    fillTeamFilter();
+    set("occurrence-team-filter", filter.teamId ? String(filter.teamId) : "");
+    occurrences = null;
+
+    const tab = byId("nav-item-occurrences");
+    if (tab?.classList.contains("active")) {
+      void load(true);
+    } else {
+      tab?.click();
+    }
+  }
+
   /**
    * The search form: Team · Event · From · To, all live.
    *
@@ -692,5 +719,6 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     load,
     invalidate,
     openStaff: (event) => options.ensureContext().then(() => openStaffModal(event)),
+    reveal,
   };
 }

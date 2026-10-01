@@ -211,7 +211,11 @@ function buildComponents(): void {
     teams,
     positions,
     fetch: () => listSchedules(ministryId),
-    invalidateOccurrences: () => occurrencesTable.invalidate(),
+    invalidateOccurrences: () => {
+      occurrencesTable.invalidate();
+      ministryEvents.invalidate();
+    },
+    showOccurrences: (filter) => occurrencesTable.reveal(filter),
     classesAllowed: sundaySchool,
     // D30: creating the ministry's events is a coordinator's, like the Calendar tab's own buttons.
     ...(isMinistryCoordinator
@@ -228,7 +232,6 @@ function buildComponents(): void {
     ministryId: () => ministryId,
     sundaySchool,
     teams,
-    positions,
     ensureContext: ensureDetail,
     occurrenceUrl: (occurrenceId) => `${window.CRM?.root ?? ""}/ministries/occurrences/${occurrenceId}`,
     staffEvent: (event) => {
@@ -238,6 +241,11 @@ function buildComponents(): void {
       schedulesTable.invalidate();
       occurrencesTable.invalidate();
       void load(true);
+    },
+    showOccurrences: (filter) => occurrencesTable.reveal(filter),
+    addSchedule: (prefill) => {
+      byId("nav-item-schedules")?.click();
+      schedulesTable.openNew(prefill);
     },
   });
 }

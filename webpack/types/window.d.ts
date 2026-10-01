@@ -347,8 +347,10 @@ interface BootboxStatic {
   confirm(options: {
     title?: string;
     message: string;
+    className?: string;
     buttons?: Record<string, { label?: string; className?: string }>;
-    callback: (result: boolean) => void;
+    /** Return false to keep the dialog open. */
+    callback: (result: boolean) => unknown;
   }): void;
   prompt(options: Record<string, unknown>): void;
 }
