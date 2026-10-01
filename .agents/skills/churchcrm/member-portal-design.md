@@ -322,7 +322,7 @@ render.
 |---|---|
 | `url(path)` | `SystemURLs::getRootPath() . path` |
 | `asset(path)` | `SystemURLs::assetVersioned(path)` (core assets) |
-| `theme_asset(path)` | `/portal/theme/<active>/<path>?v=<filemtime>`; if the file is missing in the active theme but present in `default`, the default's URL |
+| `theme_asset(path)` | `SystemURLs::getRootPath() . '/portal/theme/<active>/<path>?v=<filemtime>'`; if the file is missing in the active theme but present in `default`, the default's URL |
 | `csrf_field()` | `CSRFUtils::getTokenInputField()` |
 | `nonce()` | `SystemURLs::getCSPNonce()` |
 | `church` | `{name, address, city, state, zip, phone, email, website, logoUrl, socialLinks}` from `ChurchMetaData`; `logoUrl` is the uploaded logo from PR #9719 when set, else the stock image. The default theme's header uses it; a theme may replace it with `theme_asset()`. `socialLinks` (#9907) is the church's configured social accounts, ordered X, YouTube, Facebook, Instagram, each `{id, label, url, icon}`, empty when none is set — the default theme's footer renders them as icon links on its trailing edge |
@@ -785,7 +785,7 @@ carries #9876.
 | `aPortalCalendars` JSON config: a list of `{"type": "calendar"\|"system", "id": <int>}` — `type` `calendar` is a `calendars` row (church or ministry calendar), `type` `system` is a `SystemCalendars` virtual calendar; the two id spaces overlap, so the kind is part of the entry. `PortalCalendarService::visible()` drops any entry that no longer matches a calendar the church has, so a deleted calendar retires itself. Default `[]` | `SystemConfig.php`, `PortalCalendarService` |
 | `user_usr.usr_LastPortalActivity DATETIME NULL` | `7.8.0-member-portal-activity.sql`, same set |
 | `user_usr.usr_PortalCalendarToken VARCHAR(64) NULL` with a UNIQUE index — the bearer secret in a member's calendar feed URL; NULL means no feed (§5.3, "Subscribing") | `7.8.0-member-portal-activity.sql`, `Install.sql`, seed, `orm/schema.xml` |
-| `user_usr.usr_PortalCalendarSelection TEXT NULL` — JSON array of the calendar ids the member ticked, always intersected with what is shared before a feed is built | same set |
+| `user_usr.usr_PortalCalendarSelection TEXT NULL` — JSON array of the calendars the member ticked, as `"<type>:<id>"` strings (`"calendar:3"`, `"system:0"`) because the two id spaces overlap, always intersected with what is shared before a feed is built | same set |
 | Config items in §4 (no System Settings category) | `SystemConfig.php` |
 | `AppIntegrityService::isExcludedFromOrphanDetection` and `generate-signatures-node.js` gain `Include/themes/` (and `Include/modules/`) | core |
 | `.gitignore`: `src/Include/themes/*` except `default` | core |
