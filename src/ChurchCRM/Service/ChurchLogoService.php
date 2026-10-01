@@ -48,32 +48,20 @@ class ChurchLogoService
     }
 
     /**
-     * Content-derived version token for the cache-busting `?v=` query, or an
-     * empty string when no logo exists.
+     * URL of the uploaded logo relative to the application root, or null when
+     * none is stored.
      *
-     * A hash of the stored bytes guarantees a different URL whenever the
-     * logo's content changes, including two replacements inside the same
-     * second, which a filemtime() token (Photo's approach, #8662) cannot
-     * promise. xxh3 is bundled with ext/hash since PHP 8.1 and hashes the
-     * at-most-1200x400 PNG in well under a millisecond, so this is cheap
-     * enough for every page render.
+     * The `?v=` token is a hash of the stored bytes, so the URL changes whenever
+     * the content does, even for two replacements inside the same second, which
+     * a filemtime() token (Photo's approach, #8662) cannot promise. xxh3 hashes
+     * the at-most-1200x400 PNG in well under a millisecond.
      */
-    public static function getVersion(): string
+    public static function getUrlPath(): ?string
     {
         $path = self::getLogoPath();
-        if (!is_file($path)) {
-            return '';
-        }
+        $hash = is_file($path) ? hash_file('xxh3', $path) : false;
 
-        $hash = @hash_file('xxh3', $path);
-        if ($hash === false) {
-            // Unreadable at this instant (e.g. mid-replacement on a filesystem
-            // without atomic rename); fall back to stat data rather than fail.
-            clearstatcache(true, $path);
-            $hash = sprintf('%x-%x', (int) @filemtime($path), (int) @filesize($path));
-        }
-
-        return $hash;
+        return $hash === false ? null : '/Images/' . self::LOGO_FILENAME . '?v=' . $hash;
     }
 
     /**
@@ -81,11 +69,11 @@ class ChurchLogoService
      *
      * The logo is site-wide and served while this runs, so the new PNG is
      * encoded to a temporary file and renamed over the live one: a failed
-     * upload (bad image, over budget, disk full) leaves the current logo
+     * upload (bad image, over the size limit, disk full) leaves the current logo
      * exactly as it was, and readers never see a half-written file.
      *
      * @throws \Exception when the payload is not a supported image
-     * @throws PhotoSizeException when it exceeds the server upload limit or the decode pixel budget
+     * @throws PhotoSizeException when it exceeds the server upload limit or the source image size limit
      */
     public static function setImageFromBase64(string $base64): void
     {
@@ -94,7 +82,7 @@ class ChurchLogoService
         // Shared decode + MIME allow-list + upload-size validation
         $fileData = ImageSupportUtils::decodeBase64Image($base64);
 
-        // Also checks the source dimensions against the decode budget first
+        // Also checks the source dimensions against the size limit first
         $resizedImage = ImageSupportUtils::createResizedImage(
             $fileData,
             self::LOGO_MAX_WIDTH,

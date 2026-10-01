@@ -108,10 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(() => {
               window.location.href = cfg.redirectUrl;
             })
-            .catch(() => {
+            .catch((err) => {
               saveBtn.disabled = false;
               if (window.CRM?.notify) {
-                window.CRM.notify(t("Failed to save event. Please try again."), { type: "danger" });
+                window.CRM.notify(err.serverMessage || t("Failed to save event. Please try again."), {
+                  type: "danger",
+                });
               }
             });
         });
@@ -134,9 +136,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(() => {
                   window.location.href = cfg.redirectUrl;
                 })
-                .catch(() => {
+                .catch((err) => {
                   if (window.CRM?.notify) {
-                    window.CRM.notify(t("Failed to delete event. Please try again."), { type: "danger" });
+                    window.CRM.notify(err.serverMessage || t("Failed to delete event. Please try again."), {
+                      type: "danger",
+                    });
                   }
                 });
             },

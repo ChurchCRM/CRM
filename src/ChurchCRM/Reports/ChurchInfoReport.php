@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Reports;
 
-use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use FPDF;
 
@@ -23,11 +23,128 @@ class ChurchInfoReport extends FPDF
     public string $paperFormat = 'Letter';
 
     /**
+     * When true, every page the report draws is one half of a landscape sheet
+     * and the pages are imposed two-up in booklet order when the PDF is
+     * written. See enableBookletImposition().
+     */
+    protected bool $bookletImposition = false;
+
+    /**
+     * Lay the report out as a folded booklet.
+     *
+     * Each page the report draws becomes one half of the sheet turned
+     * landscape (a letter sheet gives 5.5 x 8.5 in pages, A4 gives A5). When
+     * the document is closed the pages are padded to a multiple of four and
+     * placed two per sheet in booklet order, so the sheets can be printed
+     * double sided (flip on the short edge) and folded down the middle.
+     *
+     * Must be called before the first AddPage().
+     */
+    public function enableBookletImposition(): void
+    {
+        if ($this->page > 0) {
+            $this->Error('Booklet imposition must be enabled before the first page is added');
+        }
+        $this->bookletImposition = true;
+
+        // FPDF stores the default size as [short edge, long edge] whatever the orientation.
+        [$sheetShort, $sheetLong] = $this->DefPageSize;
+        $this->DefOrientation = 'P';
+        $this->CurOrientation = 'P';
+        $this->DefPageSize = [$sheetLong / 2, $sheetShort];
+        $this->CurPageSize = $this->DefPageSize;
+        $this->w = $this->DefPageSize[0];
+        $this->h = $this->DefPageSize[1];
+        $this->wPt = $this->w * $this->k;
+        $this->hPt = $this->h * $this->k;
+        $this->PageBreakTrigger = $this->h - $this->bMargin;
+    }
+
+    public function isBookletImposition(): bool
+    {
+        return $this->bookletImposition;
+    }
+
+    protected function _putpages(): void
+    {
+        if ($this->bookletImposition) {
+            $this->imposeBookletPages();
+        }
+        parent::_putpages();
+    }
+
+    /**
+     * Rewrite the FPDF page buffers so each output page is a landscape sheet
+     * carrying two of the pages drawn so far, in booklet order.
+     *
+     * For N pages (padded to a multiple of 4) sheet i carries pages N-i and
+     * i+1, with the outer page on the left for even i and on the right for
+     * odd i. That is the order which lines the backs up when the stack is
+     * printed double sided with a short-edge flip and folded in half.
+     *
+     * FPDF keeps fonts and images in one document-wide resource dictionary
+     * and every page stream starts by setting its own font and colours, so
+     * two streams can be concatenated. Each is wrapped in q/Q so graphics
+     * state does not leak from the left page into the right one, and the
+     * right page is translated by one page width.
+     */
+    private function imposeBookletPages(): void
+    {
+        $pageCount = $this->page;
+        if ($pageCount === 0) {
+            return;
+        }
+
+        [$pageW, $pageH] = $this->DefPageSize;
+        $pageWPt = $pageW * $this->k;
+        $paddedCount = (int) ceil($pageCount / 4) * 4;
+
+        $pages = $this->pages;
+        $links = $this->PageLinks;
+        for ($i = 1; $i <= $paddedCount; $i++) {
+            if (!isset($pages[$i])) {
+                $pages[$i] = '';
+                $links[$i] = [];
+            } elseif (!empty($this->AliasNbPages)) {
+                $pages[$i] = str_replace($this->AliasNbPages, (string) $pageCount, $pages[$i]);
+            }
+        }
+
+        $sheets = [];
+        $sheetLinks = [];
+        $shift = sprintf("q 1 0 0 1 %.2F 0 cm\n", $pageWPt);
+        for ($i = 0; $i < $paddedCount / 2; $i++) {
+            $outer = $paddedCount - $i;
+            $inner = $i + 1;
+            [$left, $right] = $i % 2 === 0 ? [$outer, $inner] : [$inner, $outer];
+
+            $sheet = $i + 1;
+            $sheets[$sheet] = "q\n" . $pages[$left] . "\nQ\n" . $shift . $pages[$right] . "\nQ";
+
+            $sheetLinks[$sheet] = $links[$left];
+            foreach ($links[$right] as $link) {
+                $link[0] += $pageWPt;
+                $sheetLinks[$sheet][] = $link;
+            }
+        }
+
+        $this->pages = $sheets;
+        $this->PageLinks = $sheetLinks;
+        $this->PageInfo = [];
+        $this->page = count($sheets);
+        $this->AliasNbPages = '';
+        // Sheets are landscape: two page widths across, one page high.
+        $this->DefOrientation = 'P';
+        $this->DefPageSize = [$pageW * 2, $pageH];
+    }
+
+    /**
      * Converts a UTF-8 string to ISO-8859-1 for FPDF compatibility.
      * Uses iconv() if available, falls back to mb_convert_encoding().
      */
-    public static function convertToLatin1(string $str): string
+    public static function convertToLatin1(?string $str): string
     {
+        $str ??= '';
         if (function_exists('iconv')) {
             $result = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $str);
             if ($result !== false) {
@@ -38,7 +155,7 @@ class ChurchInfoReport extends FPDF
         return is_string($result) ? $result : $str;
     }
 
-    public function printRightJustified($x, $y, $str): void
+    public function printRightJustified($x, $y, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $iLen = strlen($strconv);
@@ -47,34 +164,59 @@ class ChurchInfoReport extends FPDF
         $this->Write(SystemConfig::getValue('incrementY'), $strconv);
     }
 
-    public function printRightJustifiedCell($x, $y, $wid, $str): void
+    public function printRightJustifiedCell($x, $y, $wid, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->Cell($wid, SystemConfig::getValue('incrementY'), $strconv, 1, 0, 'R');
     }
 
-    public function printCenteredCell($x, $y, $wid, $str): void
+    public function printCenteredCell($x, $y, $wid, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->Cell($wid, SystemConfig::getValue('incrementY'), $strconv, 1, 0, 'C');
     }
 
-    public function writeAt($x, $y, $str): void
+    public function writeAt($x, $y, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->Write(SystemConfig::getValue('incrementY'), $strconv);
     }
 
-    public function writeAtCell($x, $y, $wid, $str): void
+    public function writeAtCell($x, $y, $wid, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->MultiCell($wid, 4, $strconv, 1);
     }
 
+    /**
+     * Start a letter page from the six address parts as
+     * {@see \ChurchCRM\model\ChurchCRM\Family::getMailingAddressParts()} returns
+     * them, so letter reports resolve the mailing address once and hand it over
+     * whole instead of unpacking it at every call site.
+     */
+    public function startLetterPageForParts($fam_ID, $fam_Name, array $addressParts, $letterhead = ''): float
+    {
+        return $this->startLetterPage(
+            $fam_ID,
+            $fam_Name,
+            (string) ($addressParts['Address1'] ?? ''),
+            (string) ($addressParts['Address2'] ?? ''),
+            (string) ($addressParts['City'] ?? ''),
+            (string) ($addressParts['State'] ?? ''),
+            (string) ($addressParts['Zip'] ?? ''),
+            (string) ($addressParts['Country'] ?? ''),
+            $letterhead
+        );
+    }
+
+    /**
+     * The address block printed here is the one the letter will be mailed to.
+     * Callers pass the resolved mailing address — see startLetterPageForParts().
+     */
     public function startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, $letterhead = ''): float
     {
         $this->addPage();
@@ -103,18 +245,21 @@ class ChurchInfoReport extends FPDF
         }
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $this->makeSalutation($fam_ID));
         $curY += SystemConfig::getValue('incrementY');
-        if ($fam_Address1 !== null && $fam_Address1 !== '') {
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Address1);
-            $curY += SystemConfig::getValue('incrementY');
-        }
-        if ($fam_Address2 !== null && $fam_Address2 !== '') {
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Address2);
-            $curY += SystemConfig::getValue('incrementY');
-        }
-        $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
-        $curY += SystemConfig::getValue('incrementY');
-        if (Countries::isForeign($fam_Country)) {
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Country);
+        // The shared postal formatter drops empty parts, so a city-less address
+        // does not print a dangling ", IL  62998".
+        $addressBlock = Family::formatAddressBlock([
+            'Address1' => $fam_Address1,
+            'Address2' => $fam_Address2,
+            'City'     => $fam_City,
+            'State'    => $fam_State,
+            'Zip'      => $fam_Zip,
+            'Country'  => $fam_Country,
+        ]);
+        foreach (explode("\n", $addressBlock) as $addressLine) {
+            if ($addressLine === '') {
+                continue;
+            }
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, $addressLine);
             $curY += SystemConfig::getValue('incrementY');
         } // mm to get away from the second window
 

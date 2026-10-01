@@ -3,7 +3,7 @@
 /**
  * @OA\Info(
  *     title="ChurchCRM Private API",
- *     version="7.0.1",
+ *     version="__CHURCHCRM_VERSION__",
  *     description="Authenticated REST API for ChurchCRM. All endpoints require an API key passed via the x-api-key header. Obtain your API key from Profile → API Key inside the application, or via POST /public/user/login. Many endpoints require specific role permissions beyond basic authentication.",
  *     @OA\Contact(name="ChurchCRM", email="info@churchcrm.io", url="https://churchcrm.io"),
  *     @OA\License(name="MIT", url="https://opensource.org/licenses/MIT")

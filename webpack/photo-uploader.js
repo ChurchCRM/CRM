@@ -18,9 +18,8 @@ import { escapeHtml } from "./utils/escape-html";
  * @property {number} [maxFileSize=5000000] - Maximum file size in bytes (default: 5MB)
  * @property {number} [photoWidth=800] - Target photo width in pixels
  * @property {number} [photoHeight=800] - Target photo height in pixels
- * @property {('free'|'1:1'|'16:9'|'9:16')} [aspectRatio='1:1'] - Crop aspect ratio the image
- *   editor locks to. Defaults to the square crop person/family/user photos use; pass 'free'
- *   for non-square targets such as a banner-shaped church logo.
+ * @property {('1:1'|'free')} [aspectRatio='1:1'] - Crop ratio; 'free' for a banner such as the church logo
+ * @property {boolean} [webcam=true] - Offer the webcam tab; false for things that are not a person, such as the church logo
  * @property {string} [title='Upload Photo'] - Heading shown on the Uppy dashboard modal
  * @property {Function} [onComplete] - Callback function(result) after successful upload
  */
@@ -34,6 +33,47 @@ import { escapeHtml } from "./utils/escape-html";
  */
 
 /**
+ * Scale an image down to fit within maxWidth x maxHeight, never up. Images already
+ * inside the box are returned untouched. JPEG stays JPEG; everything else becomes PNG
+ * so transparency survives.
+ *
+ * @param {Blob} blob - The picked or cropped image
+ * @param {number} maxWidth
+ * @param {number} maxHeight
+ * @returns {Promise<Blob>}
+ */
+function shrinkToBox(blob, maxWidth, maxHeight) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(blob);
+    const img = new Image();
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const scale = Math.min(1, maxWidth / img.naturalWidth, maxHeight / img.naturalHeight);
+      if (scale === 1) {
+        resolve(blob);
+        return;
+      }
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.max(1, Math.round(img.naturalWidth * scale));
+      canvas.height = Math.max(1, Math.round(img.naturalHeight * scale));
+      const context = canvas.getContext("2d");
+      context.imageSmoothingQuality = "high";
+      context.drawImage(img, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob(
+        (shrunk) => (shrunk ? resolve(shrunk) : reject(new Error("Could not resize the image"))),
+        blob.type === "image/jpeg" ? "image/jpeg" : "image/png",
+        0.9,
+      );
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("This browser cannot open that image. Choose a JPEG or PNG."));
+    };
+    img.src = url;
+  });
+}
+
+/**
  * Create a photo uploader instance with modal dashboard
  *
  * @param {PhotoUploaderConfig} config - Configuration options
@@ -44,57 +84,53 @@ export function createPhotoUploader(config) {
   const maxFileSizeBytes =
     typeof config.maxFileSize === "string" ? parseInt(config.maxFileSize, 10) : config.maxFileSize || 5000000;
 
+  // The picture is shrunk to the stored size in the browser before it is sent, so the
+  // picked file only has to open in a browser; a 48 MP phone JPEG is 10-20 MB. The
+  // server limit applies to the shrunk payload below.
+  const MAX_SOURCE_FILE_BYTES = 50 * 1024 * 1024;
+  const displayMaxSizeMB = Math.round(MAX_SOURCE_FILE_BYTES / (1024 * 1024));
+
   // Base64 encoding inflates file size by ~33% (4/3 ratio). Reserve a small fixed safety
   // buffer for the data URI prefix, JSON wrapper bytes, and base64 padding so the encoded
   // POST body stays safely within PHP's post_max_size.
   const UPLOAD_BODY_OVERHEAD_BYTES = 4096;
-  const effectiveMaxFileSizeBytes = Math.max(0, Math.floor(maxFileSizeBytes * 0.75) - UPLOAD_BODY_OVERHEAD_BYTES);
-  const displayMaxSizeMB = (effectiveMaxFileSizeBytes / (1024 * 1024)).toFixed(1);
+  const maxPayloadBytes = Math.max(0, Math.floor(maxFileSizeBytes * 0.75) - UPLOAD_BODY_OVERHEAD_BYTES);
 
   const photoWidth = typeof config.photoWidth === "string" ? parseInt(config.photoWidth, 10) : config.photoWidth || 800;
 
   const photoHeight =
     typeof config.photoHeight === "string" ? parseInt(config.photoHeight, 10) : config.photoHeight || 800;
 
-  // Crop presets understood by @uppy/image-editor's setAspectRatio(), mapped to the
-  // cropperjs value. NaN is cropperjs's documented "free" ratio.
-  const CROPPER_RATIOS = { free: Number.NaN, "1:1": 1, "16:9": 16 / 9, "9:16": 9 / 16 };
-  const aspectRatio = config.aspectRatio in CROPPER_RATIOS ? config.aspectRatio : "1:1";
-  const isFixedAspectRatio = aspectRatio !== "free";
-
-  const dashboardTitle =
-    typeof config.title === "string" && config.title.trim().length > 0 ? config.title.trim() : "Upload Photo";
+  const freeCrop = config.aspectRatio === "free";
+  const allowWebcam = config.webcam !== false;
+  const dashboardTitle = config.title || "Upload Photo";
 
   const uppy = new Uppy({
     id: "photo-uploader",
     autoProceed: false,
     restrictions: {
       maxNumberOfFiles: 1,
-      maxFileSize: effectiveMaxFileSizeBytes,
+      maxFileSize: MAX_SOURCE_FILE_BYTES,
       allowedFileTypes: ["image/*"],
     },
-  })
-    .use(Dashboard, {
-      inline: false, // Use modal mode
-      trigger: null, // Don't auto-bind to a trigger
-      proudlyDisplayPoweredByUppy: false,
-      note: `Max file size: ${displayMaxSizeMB}MB`,
-      // Dashboard defaults its thumbnail generator to 'image/jpeg', which has no alpha
-      // channel — transparent PNGs (typically a church logo) come back with every
-      // transparent pixel painted black in the file-card preview. PNG thumbnails are
-      // slightly larger but preserve transparency. Display-only: the uploaded bytes are
-      // unaffected.
-      thumbnailType: "image/png",
-      closeModalOnClickOutside: true,
-      autoOpen: "imageEditor",
-      locale: {
-        strings: {
-          dashboardWindowTitle: dashboardTitle,
-          dashboardTitle: dashboardTitle,
-        },
+  }).use(Dashboard, {
+    inline: false, // Use modal mode
+    trigger: null, // Don't auto-bind to a trigger
+    proudlyDisplayPoweredByUppy: false,
+    note: `Max file size: ${displayMaxSizeMB}MB`,
+    // The default JPEG thumbnail has no alpha, so a transparent logo previews on black.
+    thumbnailType: "image/png",
+    closeModalOnClickOutside: true,
+    autoOpen: "imageEditor",
+    locale: {
+      strings: {
+        dashboardWindowTitle: dashboardTitle,
+        dashboardTitle: dashboardTitle,
       },
-    })
-    .use(Webcam, {
+    },
+  });
+  if (allowWebcam) {
+    uppy.use(Webcam, {
       countdown: false,
       modes: ["picture"],
       mirror: true,
@@ -104,45 +140,69 @@ export function createPhotoUploader(config) {
         height: { ideal: photoHeight },
       },
       preferredImageMimeType: "image/jpeg",
-    })
-    .use(ImageEditor, {
-      quality: 0.9,
-      cropperOptions: {
-        viewMode: 1,
-        aspectRatio: CROPPER_RATIOS[aspectRatio],
-        autoCropArea: 1,
-        responsive: true,
-        croppedCanvasOptions: {},
-      },
-      actions: {
-        revert: true,
-        rotate: true,
-        flip: true,
-        zoomIn: true,
-        zoomOut: true,
-        cropSquare: true,
-        // Widescreen presets are only useful when the target is not locked to a square.
-        cropWidescreen: !isFixedAspectRatio,
-        cropWidescreenVertical: !isFixedAspectRatio,
-      },
     });
+  }
 
-  // Enforce the configured ratio every time the editor opens (including after cancel +
-  // re-edit). resetEditorState() resets plugin state to aspectRatio:'free' on each start,
-  // which causes cropperjs and the UI to fall out of sync. Calling setAspectRatio() via
+  uppy.use(ImageEditor, {
+    quality: 0.9,
+    cropperOptions: {
+      viewMode: 1,
+      // NaN is cropperjs's "free" ratio
+      aspectRatio: freeCrop ? Number.NaN : 1,
+      autoCropArea: 1,
+      responsive: true,
+      croppedCanvasOptions: { maxWidth: photoWidth, maxHeight: photoHeight, imageSmoothingQuality: "high" },
+    },
+    actions: {
+      revert: true,
+      rotate: true,
+      flip: true,
+      zoomIn: true,
+      zoomOut: true,
+      cropSquare: true,
+      cropWidescreen: freeCrop,
+      cropWidescreenVertical: freeCrop,
+    },
+  });
+
+  // Enforce the crop ratio every time the editor opens (including after cancel + re-edit).
+  // resetEditorState() resets plugin state to aspectRatio:'free' on each start, which
+  // causes cropperjs and the UI to fall out of sync. Calling setAspectRatio() via
   // rAF (after initCropper runs in componentDidMount) keeps both in sync.
   uppy.on("file-editor:start", () => {
     const editor = uppy.getPlugin("ImageEditor");
     if (!editor) return;
     const enforce = () => {
       if (editor.cropper) {
-        editor.setAspectRatio(aspectRatio);
+        editor.setAspectRatio(freeCrop ? "free" : "1:1");
       } else {
         requestAnimationFrame(enforce);
       }
     };
     requestAnimationFrame(enforce);
   });
+
+  // Uppy's Save calls cropper.getCroppedCanvas(), which is null until cropperjs has
+  // decoded the image, and then reads .width from it. A large phone photo stays "not
+  // ready" for seconds, so Save has to wait for it.
+  const cropperIsReady = () => Boolean(uppy.getPlugin("ImageEditor")?.getPluginState().cropperReady);
+  const syncSaveButton = () =>
+    requestAnimationFrame(() => {
+      const saveButton = document.querySelector(".uppy-DashboardContent-save");
+      if (saveButton) saveButton.disabled = !cropperIsReady();
+    });
+  uppy.on("state-update", syncSaveButton);
+  uppy.on("file-editor:start", syncSaveButton);
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (event.target.closest?.(".uppy-DashboardContent-save") && !cropperIsReady()) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    },
+    true,
+  );
 
   // Handle all restriction failures (size, type, count) — use Uppy's own message so
   // the persistent alert accurately describes the actual failure reason.
@@ -253,7 +313,21 @@ export function createPhotoUploader(config) {
       return;
     }
 
-    reader.readAsDataURL(file.data);
+    shrinkToBox(file.data, photoWidth, photoHeight)
+      .then((shrunk) => {
+        if (shrunk.size > maxPayloadBytes) {
+          throw new Error(
+            `The resized image is larger than the server limit of ${(maxPayloadBytes / (1024 * 1024)).toFixed(1)}MB.`,
+          );
+        }
+        reader.readAsDataURL(shrunk);
+      })
+      .catch((error) => {
+        console.error("Resize error:", error.message);
+        showPersistentError(error.message);
+        uppy.emit("upload-error", file, error);
+        uppy.emit("complete", { successful: [], failed: [file] });
+      });
   });
 
   // Handle upload completion

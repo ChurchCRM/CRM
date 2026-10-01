@@ -478,10 +478,6 @@ msgid "Photos"
 msgstr "ఫోటోలు"
 
 #: 
-msgid "Number of Columns"
-msgstr "నిలువు వరుసల సంఖ్య"
-
-#: 
 msgid "Paper Size"
 msgstr "పేపర్ సైజు"
 
@@ -845,10 +841,6 @@ msgstr "ఫోటోను తొలగించండి"
 #: 
 msgid "Timeline"
 msgstr "కాలక్రమం"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "ప్రతిజ్ఞలు మరియు చెల్లింపులు"
 
 #: 
 msgid "Value"
@@ -12707,10 +12699,6 @@ msgid "Upcoming Events"
 msgstr "రాబోయే ఈవెంట్లు"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "ఇమెయిల్ టెంప్లేట్‌లలో చూపబడే చర్చి లోగో యొక్క సంపూర్ణ http(s) URL (మరియు భవిష్యత్తులో ఇతర చోట్ల కూడా పునర్వినియోగించబడుతుంది). ఇమెయిల్ క్లయింట్‌లలో ఉత్తమ రెండరింగ్ కోసం, HTTPS ద్వారా అందించబడే సుమారు 3.5:1 నిష్పత్తిలో (ఉదాహరణగా 350×100 px) విశాలమైన బ్యానర్ చిత్రాన్ని ఉపయోగించండి, PNG లేదా JPG. డిఫాల్ట్ ChurchCRM లోగోకు తిరిగి వెళ్ళడానికి ఖాళీగా వదలండి లేదా చెల్లని విలువ నమోదు చేయండి."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "ఆ పేరుతో ఒక ఎంపిక ఇప్పటికే ఉంది"
 
@@ -18521,4 +18509,272 @@ msgstr "ఇమెయిల్ క్లయింట్‌కు చాలా మ
 #: 
 msgid "{{minutes}} min left"
 msgstr "{{minutes}} నిమిషాలు మిగిలి ఉన్నాయి"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d పన్నుపత్రాలు కుటుంబానికి విజయవంతంగా ఈమెయిల్ చేయబడ్డాయి."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d దానం ప్రకటన"
+
+#: 
+msgid "All classifications"
+msgstr "అన్ని వర్గీకరణలు"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "నిర్వాహకుడిగా, దయచేసి కూడా సమీక్షించండి"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "జన్మదినంపై వ్యక్తులకు జన్మదిన శుభాకాంక్షల ఈమెయిల్ స్వయంచాలకంగా పంపండి."
+
+#: 
+msgid "Birthday Emails"
+msgstr "జన్మదిన ఈమెయిల్‌లు"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "జన్మదినాలు, వార్షికోత్సవాలు, స్వచ్ఛందసేవకులు మరియు వర్గీకరణ ఫిల్టర్‌తో ఇతర వ్యక్తుల జాబితాలు"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "ఈ నివేదనను అమలు చేయడానికి %s ఎంచుకోండి."
+
+#: 
+msgid "Choose events"
+msgstr "ఈవెంట్‌లను ఎంచుకోండి"
+
+#: 
+msgid "Choose..."
+msgstr "ఎంచుకోండి..."
+
+#: 
+msgid "Church Logo"
+msgstr "చర్చ్ లోగో"
+
+#: 
+msgid "Columns per Page"
+msgstr "పేజీకు నిలువు వరుసలు"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "ప్రియ %1$s కుటుంబం,\n"
+"\n"
+"దయచేసి ఈ ఈమెయిల్‌కు జోడించిన %3$s నుండి మీ %2$d దానం ప్రకటన కనుగొనండి.\n"
+"\n"
+"మీకు ఏవైనా ప్రశ్నలు ఉంటే, దయచేసి చర్చ్ కార్యాలయాన్ని సంప్రదించండి.\n"
+"\n"
+"మీ దానం కోసం థ్యాంక్ యు."
+
+#: 
+msgid "Download CSV"
+msgstr "CSVని డౌన్‌లోడ్ చేయండి"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "%d పన్నుపత్రాన్ని ఈమెయిల్ చేయండి"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "ఫిన్‌యాన్స్ మాడ్యూల్ మరియు సైడ్‌బార్ మెనూను ప్రారంభించండి లేదా నిలిపివేయండి."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "ఫండ్‌రైజర్ మాడ్యూల్‌ను ప్రారంభించండి లేదా నిలిపివేయండి."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "చర్చ్ లోగోను తీసివేయడం విఫలమైంది"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "చర్చ్ లోగోను అప్‌లోడ్ చేయడం విఫలమైంది"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "ఈమెయిల్ టెంప్లేట్‌ల కోసం ఫాల్‌బ్యాక్ లోగో URL, చర్చ్ సమాచారం పేజీలో చర్చ్ లోగో అప్‌లోడ్ చేయకపోతే మాత్రమే ఉపయోగించబడుతుంది. అప్లికేషన్ యొక్క స్వంత పేజీలు ఈ సెట్టింగ్‌ను విస్మరిస్తాయి మరియు ఎల్లప్పుడు అప్‌లోడ్ చేసిన లోగో లేదా డిఫాల్ట్ ChurchCRM లోగోను ఉపయోగిస్తాయి. తప్పనిసరిగా సంపూర్ణ http(s) URL ఉండాలి. ఈమెయిల్ క్లయింట్‌లలో ఉత్తమ రెండరింగ్ కోసం, సుమారు 3.5:1 అంశ నిష్పత్తిలో (ఉదాహరణకు 350×100 px) విస్తృత బ్యానర్ చిత్రాన్ని ఉపయోగించండి, PNG లేదా JPG, HTTPS మీద సేవ చేయబడింది. డిఫాల్ట్ ChurchCRM లోగోకు తిరిగి వెళ్లడానికి ఖాళీగా ఉండండి లేదా చెల్లని విలువను నమోదు చేయండి."
+
+#: 
+msgid "Finance Module"
+msgstr "ఫిన్‌యాన్స్ మాడ్యూల్"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "ఈవెంట్‌కు హాజరు కాని వ్యక్తులను కనుగొనండి"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "రెండు నిర్దిష్ట అవకాశ సంకేతాలకు సరిపోలిన స్వచ్ఛందసేవకులను కనుగొనండి"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "మొదటి స్వచ్ఛందసేవ అవకాశం"
+
+#: 
+msgid "Folded Booklet"
+msgstr "మడిపెట్టిన పుస్తకం"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "ఫండ్‌రైజర్ మాడ్యూల్"
+
+#: 
+msgid "Giving History"
+msgstr "దానం చరిత్ర"
+
+#: 
+msgid "Last Gift"
+msgstr "చివరి బహుమతి"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "అన్ని వర్గీకరణల కోసం ఖాళీగా ఉండండి."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "ప్రతి కుటుంబ ప్రొఫైల్‌కు చూపించడానికి పన్ను సంవత్సర పత్రాల గరిష్ఠ సంఖ్య (0 = నిర్వచనం లేదు)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "కుటుంబానికి చూపించిన గరిష్ఠ పన్ను సంవత్సరాలు"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "సభ్యత్వ వార్షికోత్సవాలు"
+
+#: 
+msgid "Missing People"
+msgstr "లేని వ్యక్తులు"
+
+#: 
+msgid "No giving history found."
+msgstr "దానం చరిత్ర కనుగొనబడలేదు."
+
+#: 
+msgid "No people match these filters."
+msgstr "ఈ ఫిల్టర్‌లకు సరిపోలిన వ్యక్తులు లేరు."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "పోర్ట్రెట్‌లో ఒక షీటుకు ఒక డైరెక్టరీ పేజీ."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "http మరియు https పథకాలు మాత్రమే అనుమతించబడతాయి."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF లేదా WebP. సుమారు 3.5:1 విస్తృత బ్యానర్ (ఉదాహరణకు 700x200) ఉత్తమంగా పనిచేస్తుంది; నిర్మల PNG ఆధ్యక్షతెనడుకుంది."
+
+#: 
+msgid "Page Layout"
+msgstr "పేజీ లేఅవుట్"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "ఒక నిర్దిష్ట నెలలో చేరిన వ్యక్తులు"
+
+#: 
+msgid "Pledged"
+msgstr "ప్రతిజ్ఞ చేసిన"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "%d పన్నుపత్రాన్ని ముద్రించండి"
+
+#: 
+msgid "Queries"
+msgstr "ప్రశ్నలు"
+
+#: 
+msgid "Recent Friends"
+msgstr "సమీప స్నేహితులు"
+
+#: 
+msgid "Report not found"
+msgstr "నివేదన కనుగొనబడలేదు"
+
+#: 
+msgid "Run Report"
+msgstr "నివేదనను అమలు చేయండి"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "రెండవ స్వచ్ఛందసేవ అవకాశం"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "సైడ్‌బార్‌లో, లాగిన్ పేజీలో మరియు ఈమెయిల్‌లలో చూపబడుతుంది. లోగోను అప్‌లోడ్ చేయడం ChurchCRM బ్రాండింగ్‌ను ఎక్కడ కనిపించినా భర్తీ చేస్తుంది."
+
+#: 
+msgid "Single Pages"
+msgstr "ఏకైక పేజీలు"
+
+#: 
+msgid "Tax Documents"
+msgstr "పన్నుపత్రాలు"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "పన్నుపత్ర ఈమెయిల్ పంపడం విఫలమైంది. దయచేసి మీ ఈమెయిల్ సర్వర్ సెట్టింగ్‌లను చెక్ చేయండి."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "ప్రతి ల్యాండ్‌స్కేప్ షీట్‌లో ఒక పక్కకు రెండు సగం పరిమాణ పేజీలు, పుస్తకం క్రమంలో. \"చిన్న అంచుపై ఫ్లిప్\" తో ద్విపార్శ్వ ముద్రణ, తరువాత స్టాక్‌ను సగానికి మడవండి. నిలువు వరుసలు సగం పేజీకు లెక్కించబడతాయి."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "పన్నుపత్రాన్ని ఈమెయిల్ చేయలేని: ఆ సంవత్సరానికి చెల్లింపు డేటా కనుగొనబడలేదు."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "పన్నుపత్రాన్ని ఈమెయిల్ చేయలేని: ఈ కుటుంబానికి ఫైల్‌లో ఈమెయిల్ చిరునామా లేదు."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "OpenLP సర్వర్ హోస్టుపేరును సమాధానం చేయలేము. చిరునామా మరియు మీ నెట్‌వర్క్ కనెక్షన్‌ను చెక్ చేయండి."
+
+#: 
+msgid "Upload"
+msgstr "అప్‌లోడ్"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "డిఫాల్ట్ ChurchCRM లోగోను ఉపయోగించుకుంటున్నారు"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "పూర్తి కుటుంబ దానం చూడండి"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "స్వచ్ఛందసేవ అవకాశం"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "రెండు అవకాశాల కోసం స్వచ్ఛందసేవకులు"
+
+#: 
+msgid "YTD"
+msgstr "సంవత్సరం ప్రారంభం నుండి"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD చెల్లించిన"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "ఇది జరిగిన సమయం చుట్టూ లోపాల కోసం, మరియు సంబంధిత లాగ్ ఫైల్‌ను డౌన్‌లోడ్ చేసి మీ GitHub సమస్యకు జోడించండి — ఇది ఫాలో-అప్ ప్రశ్నలు అడగకుండా సమస్యను సరిచేయడానికి సహాయపడుతుంది."
+
+#: 
+msgid "system logs"
+msgstr "సిస్టమ్ లాగ్‌లు"
 

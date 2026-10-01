@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\SystemService;
@@ -17,6 +18,7 @@ use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\ChurchLogo;
 use ChurchCRM\view\MenuRenderer;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
@@ -139,6 +141,14 @@ $_isImpersonating = ImpersonationService::isActive();
               <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-body-secondary fw-normal">(<?= gettext('optional') ?>)</span></label>
               <textarea id="issueDescription" class="form-control" rows="4" placeholder="<?= gettext('What went wrong? What did you expect to happen?') ?>"></textarea>
             </div>
+            <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
+            <div class="alert alert-warning mb-0">
+              <i class="fa-solid fa-file-lines me-1"></i>
+              <?= gettext('As an admin, please also review the') ?>
+              <a href="<?= SystemURLs::getRootPath() ?>/admin/system/logs" target="_blank" rel="noopener"><?= gettext('system logs') ?></a>
+              <?= gettext('for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.') ?>
+            </div>
+            <?php } ?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
@@ -283,28 +293,20 @@ $_isImpersonating = ImpersonationService::isActive();
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <?php
-      // An uploaded church logo replaces the stock mark and the church-name text. All
-      // three are always rendered (hidden with d-none) so the Church Info uploader can
-      // swap them without a page reload.
-      $bHasCustomLogo = ChurchMetaData::hasCustomLogo();
-      ?>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
-        <img src="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchLogoPath()) ?>"
-             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             id="sidebar-brand-image"
-             class="navbar-brand-image rounded<?= $bHasCustomLogo ? '' : ' d-none' ?>"
-             style="height: 42px; width: auto;">
+        <?php if (ChurchLogoService::hasCustomLogo()): ?>
+        <?= ChurchLogo::img(['class' => 'navbar-brand-image crm-brand-logo']) ?>
+        <?php else: ?>
         <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-ink-blue.svg"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-light sidebar-brand-stock<?= $bHasCustomLogo ? ' d-none' : '' ?>">
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-light">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-paper-blue.svg"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark sidebar-brand-stock<?= $bHasCustomLogo ? ' d-none' : '' ?>">
-        <span id="sidebar-brand-text"
-              class="navbar-brand-text ps-2 fs-4 fw-bold<?= $bHasCustomLogo ? ' d-none' : '' ?>">
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark">
+        <span class="navbar-brand-text ps-2 fs-4 fw-bold">
           <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>
         </span>
+        <?php endif; ?>
       </a>
       <div class="collapse navbar-collapse" id="sidebar-menu">
         <ul class="navbar-nav pt-xl-3">

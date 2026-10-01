@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Фотографії"
 
 #: 
-msgid "Number of Columns"
-msgstr "Кількість стовпців"
-
-#: 
 msgid "Paper Size"
 msgstr "Розмір паперу"
 
@@ -846,10 +842,6 @@ msgstr "Видалити фото"
 #: 
 msgid "Timeline"
 msgstr "Часова шкала"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Поручення та платежі"
 
 #: 
 msgid "Value"
@@ -12750,10 +12742,6 @@ msgid "Upcoming Events"
 msgstr "Майбутні події"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Абсолютна http(s) URL логотипу парафії, що відображається в шаблонах електронної пошти (і буде використовуватися в інших місцях у майбутньому). Для найкращого відображення в різних поштових клієнтах використовуйте широке банерне зображення з пропорцією приблизно 3,5:1 (наприклад 350×100 пікселів), PNG або JPG, через HTTPS. Залиште порожнім або введіть недійсне значення, щоб використовувати логотип ChurchCRM за замовчуванням."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "Варіант з такою назвою вже існує"
 
@@ -18576,4 +18564,272 @@ msgstr "Забагато отримувачів для поштового клі
 #: 
 msgid "{{minutes}} min left"
 msgstr "Залишилося {{minutes}} хв"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d податковий документ успішно надіслано сім'ї."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Звіт про пожертви"
+
+#: 
+msgid "All classifications"
+msgstr "Усі класифікації"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Як адміністратор, будь ласка, також перегляньте"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Автоматично відправляти привітальний лист із днем народження людям у день їх народження."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Електронні листи з днем народження"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Списки днів народження, річниць, волонтерів та інших людей з фільтром класифікації"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Виберіть %s для запуску цього звіту."
+
+#: 
+msgid "Choose events"
+msgstr "Виберіть подію"
+
+#: 
+msgid "Choose..."
+msgstr "Виберіть..."
+
+#: 
+msgid "Church Logo"
+msgstr "Логотип церкви"
+
+#: 
+msgid "Columns per Page"
+msgstr "Стовпців на сторінку"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Шановна родина %s,\n"
+"\n"
+"До цього листа додано ваш звіт про пожертви №%d від %s.\n"
+"\n"
+"Якщо у вас є питання, будь ласка, зв'яжіться з офісом церкви.\n"
+"\n"
+"Дякуємо за вашу щедрість."
+
+#: 
+msgid "Download CSV"
+msgstr "Завантажити CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Надіслати електронною поштою %d податковий документ"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Увімкніть або вимкніть модуль Finance та меню сайдбару."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Увімкніть або вимкніть модуль Fundraiser."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Не вдалося видалити логотип церкви"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Не вдалося завантажити логотип церкви"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL логотипу Fallback для шаблонів електронної пошти, використовується лише коли на сторінці Church Information не було завантажено логотип церкви. Власні сторінки додатка ігнорують це налаштування та завжди використовують завантажений логотип або логотип ChurchCRM за замовчуванням. Має бути абсолютна URL-адреса http(s). Для найкращого відображення на різних поштових клієнтах використовуйте широкий баннер приблизно з розміром 3.5:1 (наприклад 350×100 пікселів), PNG або JPG, обслуговуваний через HTTPS. Залиште пусто або введіть неправильне значення, щоб повернутися до логотипу ChurchCRM за замовчуванням."
+
+#: 
+msgid "Finance Module"
+msgstr "Модуль фінансів"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Знайти людей, які не відвідали подію"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Знайти волонтерів, які відповідають двом конкретним кодам можливостей"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Перша можливість для волонтера"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Складена брошура"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Модуль збору коштів"
+
+#: 
+msgid "Giving History"
+msgstr "Історія пожертв"
+
+#: 
+msgid "Last Gift"
+msgstr "Останній подарунок"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Залиште пусто для всіх класифікацій."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Максимальна кількість податкових документів року для показу на профіль сім'ї (0 = без обмеження)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Максимум податкових років, показаних на сім'ю"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Річниці членства"
+
+#: 
+msgid "Missing People"
+msgstr "Відсутні люди"
+
+#: 
+msgid "No giving history found."
+msgstr "Історія пожертв не знайдена."
+
+#: 
+msgid "No people match these filters."
+msgstr "Жодна людина не відповідає цим фільтрам."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Одна сторінка каталогу на лист, портрет."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Дозволені лише схеми http та https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF або WebP. Найкраще працює широкий баннер приблизно 3.5:1 (наприклад 700x200); переважно прозорий PNG."
+
+#: 
+msgid "Page Layout"
+msgstr "Макет сторінки"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Люди, які приєдналися в певному місяці"
+
+#: 
+msgid "Pledged"
+msgstr "Обіцяне"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Друк %d податковий документ"
+
+#: 
+msgid "Queries"
+msgstr "Запити"
+
+#: 
+msgid "Recent Friends"
+msgstr "Недавні друзі"
+
+#: 
+msgid "Report not found"
+msgstr "Звіт не знайдено"
+
+#: 
+msgid "Run Report"
+msgstr "Запустити звіт"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Друга можливість для волонтера"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Відображається на бічній панелі, на сторінці входу та в електронних листах. Завантаження логотипа замінює брендинг ChurchCRM скрізь, де він з’являється."
+
+#: 
+msgid "Single Pages"
+msgstr "Окремі сторінки"
+
+#: 
+msgid "Tax Documents"
+msgstr "Податкові документи"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Не вдалося надіслати лист із податковим документом. Перевірте налаштування поштового сервера."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Дві сторінки половинного розміру поруч на кожному аркуші в альбомній орієнтації в порядку буклета. Друкуйте з обох боків із перегортанням по короткому краю, потім складіть стос навпіл. Стовпці рахуються на півсторінки."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Неможливо надіслати податковий документ електронною поштою: за цей рік не знайдено даних про платежі."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Неможливо надіслати податковий документ електронною поштою: для цієї родини не вказано адресу електронної пошти."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Не вдалося визначити ім’я хоста сервера OpenLP. Перевірте адресу та мережеве з’єднання."
+
+#: 
+msgid "Upload"
+msgstr "Вивантажити"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Використовується стандартний логотип ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Переглянути всі пожертви родини"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Можливість служіння"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Волонтери для двох можливостей служіння"
+
+#: 
+msgid "YTD"
+msgstr "З початку року"
+
+#: 
+msgid "YTD Paid"
+msgstr "Сплачено з початку року"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "на наявність помилок у той час, коли це сталося, а також завантажте й додайте відповідний файл журналу до вашого звіту на GitHub — це допоможе нам виправити проблему без додаткових запитань."
+
+#: 
+msgid "system logs"
+msgstr "системні журнали"
 

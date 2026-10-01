@@ -186,7 +186,7 @@ class AuthenticationManager
             $result = self::getAuthenticationProvider()
                 ->validateUserSessionIsActive($updateLastOperationTimestamp);
 
-            return $result->isAuthenticated;
+            return $result->isAuthenticated && self::endSessionIfSignInBlocked();
         } catch (\Exception $error) {
             LoggerUtils::getAuthLogger()->debug(
                 'Error determining session authentication status.',
@@ -205,6 +205,7 @@ class AuthenticationManager
 
         try {
             $result = self::getAuthenticationProvider()->validateUserSessionIsActive(true);
+            $result->isAuthenticated = $result->isAuthenticated && self::endSessionIfSignInBlocked();
             // Auth providers will always include a `nextStepURL` if authentication fails.
             // Sometimes other actions may require a `nextStepURL` that should be enforced with
             // an authentication request (2FA, Expired Password, etc).
@@ -235,6 +236,28 @@ class AuthenticationManager
             );
             RedirectUtils::redirect(self::getSessionBeginURL());
         }
+    }
+
+    /**
+     * Ends the current session when its user is deceased or inactive.
+     *
+     * @return bool false when the session was ended
+     */
+    private static function endSessionIfSignInBlocked(): bool
+    {
+        $user = self::getCurrentUser();
+        $reason = $user->getSignInBlockedReason();
+        if ($reason === null) {
+            return true;
+        }
+
+        LoggerUtils::getAuthLogger()->warning('Ending session: account cannot sign in', [
+            'username' => $user->getUserName(),
+            'reason' => $reason,
+        ]);
+        self::endSession(true);
+
+        return false;
     }
 
     public static function getSessionBeginURL(): string

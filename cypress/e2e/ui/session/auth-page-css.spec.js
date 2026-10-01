@@ -49,10 +49,16 @@ describe("Auth Page CSS Regression", () => {
     });
 
     describe("Login Page — Segmented Pill Control (self-registration)", () => {
+        let savedSelfReg;
+
+        before(() => {
+            cy.getSystemConfig("bEnableSelfRegistration").then((value) => {
+                savedSelfReg = value;
+            });
+        });
+
         after(() => {
-            // Restore self-reg to disabled after this suite so other tests
-            // are not affected by the enabled state.
-            setSelfReg("0");
+            cy.restoreSystemConfig("bEnableSelfRegistration", savedSelfReg);
         });
 
         it("Pill control is hidden when self-registration is disabled", () => {

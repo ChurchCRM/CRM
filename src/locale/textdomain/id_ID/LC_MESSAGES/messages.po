@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Foto"
 
 #: 
-msgid "Number of Columns"
-msgstr "Jumlah Kolom"
-
-#: 
 msgid "Paper Size"
 msgstr "Ukuran kertas"
 
@@ -846,10 +842,6 @@ msgstr "Hapus foto"
 #: 
 msgid "Timeline"
 msgstr "Rentang waktu"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Permintaan dan pembayaran"
 
 #: 
 msgid "Value"
@@ -12714,10 +12706,6 @@ msgid "Upcoming Events"
 msgstr "Acara Mendatang"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL http(s) absolut dari logo gereja yang ditampilkan dalam templat email (dan akan digunakan ulang di tempat lain di masa mendatang). Untuk tampilan terbaik di klien email, gunakan gambar banner lebar dengan rasio aspek sekitar 3,5:1 (misalnya 350×100 px), PNG atau JPG, disajikan melalui HTTPS. Biarkan kosong atau masukkan nilai tidak valid untuk kembali ke logo ChurchCRM default."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "Opsi dengan nama tersebut sudah ada"
 
@@ -16903,6 +16891,10 @@ msgid "Count unique installs"
 msgstr "Hitung instalasi unik"
 
 #: 
+msgid "Data"
+msgstr "Data"
+
+#: 
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr "Data diproses oleh PostHog pada infrastruktur EU."
 
@@ -18212,6 +18204,10 @@ msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0
 msgstr "Jumlah hari yang dimiliki pengguna untuk mendaftar 2FA setelah diwajibkan. Atur ke 0 untuk menerapkan segera. Memperpendek masa tenggang yang sedang berlangsung dapat langsung mengunci pengguna."
 
 #: 
+msgid "Offline"
+msgstr "Luring"
+
+#: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
 msgstr "Lakukan ini hanya setelah masalah yang mendasarinya diperbaiki. Anda tetap perlu mengklik Aktifkan agar plugin berjalan kembali."
 
@@ -18514,4 +18510,272 @@ msgstr "Terlalu banyak penerima untuk klien email ({{total}} > {{max}}). Gunakan
 #: 
 msgid "{{minutes}} min left"
 msgstr "Sisa {{minutes}} menit"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d dokumen pajak berhasil dikirim ke keluarga melalui email."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Laporan Pemberian"
+
+#: 
+msgid "All classifications"
+msgstr "Semua klasifikasi"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Sebagai administrator, harap juga tinjau"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Secara otomatis mengirimkan email ucapan ulang tahun kepada orang-orang di hari ulang tahun mereka."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Email Ulang Tahun"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Daftar hari ulang tahun, hari jadi, relawan, dan orang-orang lainnya dengan filter klasifikasi"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Pilih %s untuk menjalankan laporan ini."
+
+#: 
+msgid "Choose events"
+msgstr "Pilih acara"
+
+#: 
+msgid "Choose..."
+msgstr "Pilih..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logo Gereja"
+
+#: 
+msgid "Columns per Page"
+msgstr "Kolom per Halaman"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Keluarga %s yang terhormat,\n"
+"\n"
+"Silakan temukan laporan pemberian %d Anda dari %s yang dilampirkan pada email ini.\n"
+"\n"
+"Jika Anda memiliki pertanyaan, silakan hubungi kantor gereja.\n"
+"\n"
+"Terima kasih atas kemurahan hati Anda."
+
+#: 
+msgid "Download CSV"
+msgstr "Unduh CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Email %d Dokumen Pajak"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Aktifkan atau nonaktifkan modul Keuangan dan menu bilah sisi."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Aktifkan atau nonaktifkan modul Penggalangan Dana."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Gagal menghapus logo gereja"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Gagal mengunggah logo gereja"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL logo cadangan untuk templat email, digunakan hanya ketika tidak ada logo gereja yang diunggah di halaman Informasi Gereja. Halaman aplikasi itu sendiri mengabaikan pengaturan ini dan selalu menggunakan logo yang diunggah atau logo ChurchCRM default. Harus berupa URL http(s) absolut. Untuk hasil terbaik di seluruh klien email, gunakan gambar spanduk lebar dengan rasio aspek kurang lebih 3,5:1 (misalnya 350×100 px), PNG atau JPG, yang disajikan melalui HTTPS. Biarkan kosong atau masukkan nilai yang tidak valid untuk kembali ke logo ChurchCRM default."
+
+#: 
+msgid "Finance Module"
+msgstr "Modul Keuangan"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Temukan orang-orang yang tidak menghadiri acara"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Temukan relawan yang sesuai dengan dua kode peluang spesifik"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Peluang Relawan Pertama"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Brosur Terlipat"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Modul Penggalangan Dana"
+
+#: 
+msgid "Giving History"
+msgstr "Riwayat Pemberian"
+
+#: 
+msgid "Last Gift"
+msgstr "Hadiah Terakhir"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Biarkan kosong untuk semua klasifikasi."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Jumlah maksimum dokumen tahun pajak yang ditampilkan per profil keluarga (0 = tanpa batas)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Jumlah maksimum tahun pajak yang ditampilkan per keluarga"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Hari Jadi Keanggotaan"
+
+#: 
+msgid "Missing People"
+msgstr "Orang-orang yang Hilang"
+
+#: 
+msgid "No giving history found."
+msgstr "Riwayat pemberian tidak ditemukan."
+
+#: 
+msgid "No people match these filters."
+msgstr "Tidak ada orang yang sesuai dengan filter ini."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Satu halaman direktori per lembar, potret."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Hanya skema http dan https yang diizinkan."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF, atau WebP. Spanduk lebar dengan rasio kurang lebih 3,5:1 (misalnya 700x200) bekerja terbaik; PNG transparan lebih disukai."
+
+#: 
+msgid "Page Layout"
+msgstr "Tata Letak Halaman"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Orang-orang yang bergabung pada bulan tertentu"
+
+#: 
+msgid "Pledged"
+msgstr "Dijanjikan"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Cetak %d Dokumen Pajak"
+
+#: 
+msgid "Queries"
+msgstr "Kueri"
+
+#: 
+msgid "Recent Friends"
+msgstr "Teman Baru"
+
+#: 
+msgid "Report not found"
+msgstr "Laporan tidak ditemukan"
+
+#: 
+msgid "Run Report"
+msgstr "Jalankan Laporan"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Peluang Relawan Kedua"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Ditampilkan di bilah sisi, di halaman login, dan di email. Mengunggah logo menggantikan branding ChurchCRM di mana pun logo tersebut muncul."
+
+#: 
+msgid "Single Pages"
+msgstr "Halaman Tunggal"
+
+#: 
+msgid "Tax Documents"
+msgstr "Dokumen Pajak"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Pengiriman email dokumen pajak gagal. Silakan periksa pengaturan server email Anda."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Dua halaman ukuran setengah berdampingan pada setiap lembar lanskap, dalam urutan brosur. Cetak dua sisi dengan \"balik di tepi pendek\", lalu lipat tumpukan menjadi dua. Kolom dihitung per setengah halaman."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Tidak dapat mengirim dokumen pajak melalui email: tidak ada data pembayaran yang ditemukan untuk tahun tersebut."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Tidak dapat mengirim dokumen pajak melalui email: keluarga ini tidak memiliki alamat email di file."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Tidak dapat menyelesaikan nama host server OpenLP. Periksa alamat dan koneksi jaringan Anda."
+
+#: 
+msgid "Upload"
+msgstr "Unggah"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Menggunakan logo ChurchCRM default"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Lihat Pemberian Keluarga Lengkap"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Peluang Relawan"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Relawan untuk Dua Peluang"
+
+#: 
+msgid "YTD"
+msgstr "Sejak awal tahun"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD Dibayar"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "untuk kesalahan sekitar waktu ini terjadi, dan unduh serta lampirkan file log yang relevan ke masalah GitHub Anda - ini membantu kami memperbaiki masalah tanpa mengajukan pertanyaan lanjutan."
+
+#: 
+msgid "system logs"
+msgstr "log sistem"
 

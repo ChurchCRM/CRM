@@ -1,5 +1,6 @@
 import { defineConfig } from 'cypress'
 import { verifyDownloadTasks } from 'cy-verify-downloads';
+import { registerRowCountGuard } from './row-count-guard';
 
 import base from './base.config'
 import { dbTasks, mailTasks } from './_shared'
@@ -34,6 +35,8 @@ export default defineConfig({
     'limited.api.key': 'limitedUserApiKeyForTesting123456789012345678',
     'editrecords.api.key': 'judithMatthewsEditRecordsNoNotesApiKey1234',
     'menuoptions.api.key': 'menuOptionsOnlyApiKeyForTesting12345678901',
+    'deceased.api.key': 'deceasedUserApiKeyForTesting1234567890123',
+    'inactive.api.key': 'inactiveUserApiKeyForTesting1234567890123',
     'noperm.api.key': 'noPermUserApiKeyForTesting123456789012345678',
     'admin.username': 'admin',
     'admin.password': 'changeme',
@@ -71,11 +74,12 @@ export default defineConfig({
         printLogsToConsole: 'onFail',
         printLogsToFile: 'always'
       });
-      // One registration only — a second on('task', ...) replaces the first.
-      // dbTasks adds db:query, the direct-MySQL task the Volunteer v2 schema;
-      // mailTasks adds the Mailpit reads #9710 asserts delivery with.
-      // specs use to assert constraints that have no HTTP surface (#9705).
+      // dbTasks adds db:query, the direct-MySQL task specs use to assert what has
+      // no HTTP surface (#9705); mailTasks adds the Mailpit reads (#9710).
       on('task', { ...verifyDownloadTasks, ...dbTasks, ...mailTasks });
+      // Test-database drift guard (#9769) — read-only row counts, plus the
+      // env flag cypress/support/e2e.js checks before arming the guard.
+      registerRowCountGuard(on, config);
       on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
           launchOptions.args.push('--disable-dev-shm-usage');

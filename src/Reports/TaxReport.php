@@ -8,6 +8,7 @@ require_once __DIR__ . '/../Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\CurrencyFormatter;
@@ -17,6 +18,20 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+
+// Support direct GET links from family profile: ?familyId=X&year=YYYY
+if (isset($_GET['familyId']) && isset($_GET['year'])) {
+    $gFamId = (int) InputUtils::legacyFilterInput($_GET['familyId'], 'int');
+    $gYear  = (int) InputUtils::legacyFilterInput($_GET['year'], 'int');
+    if ($gFamId > 0 && $gYear > 1990 && $gYear <= (int) date('Y')) {
+        $_POST['family']     = [$gFamId];
+        $_POST['DateStart']  = $gYear . '-01-01';
+        $_POST['DateEnd']    = $gYear . '-12-31';
+        $_POST['output']     = 'pdf';
+        $_POST['letterhead'] = 'address';
+        $_POST['remittance'] = 'no';
+    }
+}
 
 // Filter values
 $letterhead = InputUtils::legacyFilterInput($_POST['letterhead']);
@@ -81,6 +96,10 @@ $pledgeObjects = $financialService->getTaxReportData(
 
 // Convert Propel objects to array format for backward compatibility with existing PDF/CSV code
 $rsReport = [];
+// Statements are mailed, so the letter is addressed to the family's mailing address.
+// It is kept out of $rsReport on purpose: those keys become the CSV export's column
+// headers, and this report's CSV must not gain columns.
+$famMailingParts = [];
 foreach ($pledgeObjects as $pledge) {
     $row = [
         'fam_ID' => $pledge['FamId'],
@@ -101,6 +120,7 @@ foreach ($pledgeObjects as $pledge) {
         'plg_PledgeOrPayment' => $pledge['PledgeOrPayment'],
         'plg_NonDeductible' => $pledge['Nondeductible'] ?? 0,
     ];
+    $famMailingParts[$row['fam_ID']] ??= $pledge['Family']['MailingAddress'] ?? [];
     $rsReport[] = $row;
 }
 
@@ -133,7 +153,9 @@ if ($output === 'pdf') {
 
     class PdfTaxReport extends ChurchInfoReport
     {
-        // Constructor
+        /**
+         * Initialize the PDF document for tax report output.
+         */
         public function __construct()
         {
             parent::__construct('P', 'mm', $this->paperFormat);
@@ -143,10 +165,19 @@ if ($output === 'pdf') {
             $this->SetAutoPageBreak(false);
         }
 
-        public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, string $fam_envelope): float
+        /**
+         * Start a new page for a family's tax statement with letterhead and date range.
+         *
+         * @param int|string $fam_ID Family ID
+         * @param string $fam_Name Family name
+         * @param array $mailingParts Mailing address parts (from Family::getMailingAddressParts())
+         * @param string $fam_envelope Envelope number if applicable
+         * @return float Current Y position after header
+         */
+        public function startNewPage($fam_ID, $fam_Name, array $mailingParts, string $fam_envelope): float
         {
             global $letterhead, $sDateStart, $sDateEnd, $iDepID;
-            $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
+            $curY = $this->startLetterPageForParts($fam_ID, $fam_Name, $mailingParts, $letterhead);
             if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')) {
                 $this->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Envelope') . ': ' . $fam_envelope);
                 $curY += SystemConfig::getValue('incrementY');
@@ -168,7 +199,15 @@ if ($output === 'pdf') {
             return $curY + 2 * SystemConfig::getValue('incrementY');
         }
 
-        public function finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country): void
+        /**
+         * Finish the family's tax statement page with closing message, signature line, and optional remittance slip.
+         *
+         * @param float $curY Current Y position on the page
+         * @param int|string $fam_ID Family ID
+         * @param string $fam_Name Family name
+         * @param array $mailingParts Mailing address parts (from Family::getMailingAddressParts())
+         */
+        public function finishPage($curY, $fam_ID, $fam_Name, array $mailingParts): void
         {
             global $remittance;
             $curY += 2 * SystemConfig::getValue('incrementY');
@@ -197,18 +236,11 @@ if ($output === 'pdf') {
                 $curY = 215;
                 $this->writeAt(SystemConfig::getValue('leftX'), $curY, $this->makeSalutation($fam_ID));
                 $curY += SystemConfig::getValue('incrementY');
-                if ($fam_Address1 !== '') {
-                    $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Address1);
-                    $curY += SystemConfig::getValue('incrementY');
-                }
-                if ($fam_Address2 !== '') {
-                    $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Address2);
-                    $curY += SystemConfig::getValue('incrementY');
-                }
-                $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
-                $curY += SystemConfig::getValue('incrementY');
-                if (Countries::isForeign($fam_Country)) {
-                    $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Country);
+                foreach (explode("\n", Family::formatAddressBlock($mailingParts)) as $addressLine) {
+                    if ($addressLine === '') {
+                        continue;
+                    }
+                    $this->writeAt(SystemConfig::getValue('leftX'), $curY, $addressLine);
                     $curY += SystemConfig::getValue('incrementY');
                 }
                 $curX = 30;
@@ -221,8 +253,11 @@ if ($output === 'pdf') {
                 }
                 $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  ' . SystemConfig::getValue('sChurchZip'));
                 $curY += SystemConfig::getValue('incrementY');
-                if (Countries::isForeign($fam_Country)) {
-                    $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, $fam_Country);
+                // Pre-existing quirk kept as-is: this line under the church's return
+                // address prints the FAMILY's country, not the church's.
+                $mailingCountry = (string) ($mailingParts['Country'] ?? '');
+                if (Countries::isForeign($mailingCountry)) {
+                    $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, $mailingCountry);
                     $curY += SystemConfig::getValue('incrementY');
                 }
                 $curX = 100;
@@ -244,6 +279,8 @@ if ($output === 'pdf') {
     $currentFamilyID = -1;  // Initialize to -1 so first record (even with fam_ID=0) creates a new page
     foreach ($rsReport as $row) {
         extract($row);
+        // The statement is mailed, so every address block on it is the mailing address.
+        $famMailing = $famMailingParts[$fam_ID];
 
         // Minimum amount filtering is now handled in FinancialService
         // No need to re-query for minimum amount check
@@ -283,23 +320,13 @@ if ($output === 'pdf') {
                 }
             }
             $pdf->SetFont('Times', '', 10);
-            $pdf->finishPage(
-                $curY,
-                $fam_ID,
-                $fam_Name,
-                $fam_Address1,
-                $fam_Address2,
-                $fam_City,
-                $fam_State,
-                $fam_Zip,
-                $fam_Country
-            );
+            $pdf->finishPage($curY, $prev_fam_ID, $prev_fam_Name, $famMailingParts[$prev_fam_ID]);
         }
 
         // Start Page for New Family
         $cnt = 0;
         if ($fam_ID != $currentFamilyID) {
-            $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fam_envelope);
+            $curY = $pdf->startNewPage($fam_ID, $fam_Name, $famMailing, $fam_envelope);
             $summaryDateX = SystemConfig::getValue('leftX');
             $summaryCheckNoX = 40;
             $summaryMethodX = 60;
@@ -403,17 +430,7 @@ if ($output === 'pdf') {
             }
         }
         $pdf->SetFont('Times', '', 10);
-        $pdf->finishPage(
-            $curY,
-            $fam_ID,
-            $fam_Name,
-            $fam_Address1,
-            $fam_Address2,
-            $fam_City,
-            $fam_State,
-            $fam_Zip,
-            $fam_Country
-        );
+        $pdf->finishPage($curY, $fam_ID, $fam_Name, $famMailing);
     }
 
     if (SystemConfig::getIntValue('iPDFOutputType') === 1) {

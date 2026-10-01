@@ -12,6 +12,8 @@ use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\Collection;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -189,6 +191,8 @@ class EventService
         }
 
         $created = [];
+
+        $createdEvents = [];
         $skipped = 0;
 
         // One transaction for the whole series: the existence check below is a
@@ -242,6 +246,7 @@ class EventService
                     'title' => $eventTitle,
                     'date' => $date,
                 ];
+                $createdEvents[] = $event;
             }
 
             $con->commit();
@@ -249,6 +254,16 @@ class EventService
             $con->rollBack();
 
             throw $e;
+        }
+
+        // Bulk creation is still creation — a plugin listening on
+        // event.created must see every occurrence, not just the events made
+        // one at a time through newEvent()/quickCreateEvent(). Dispatched after
+        // the commit so a listener reading on the default connection sees the
+        // rows, and only when the whole series was written (a rollback above
+        // creates nothing, so nothing is announced).
+        foreach ($createdEvents as $createdEvent) {
+            HookManager::doAction(Hooks::EVENT_CREATED, $createdEvent);
         }
 
         return [

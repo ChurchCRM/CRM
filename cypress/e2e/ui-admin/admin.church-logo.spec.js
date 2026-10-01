@@ -3,12 +3,10 @@
 /**
  * UI tests for the Church Logo card on Admin -> Church Information (issue #9717)
  *
- * The card uses the project's shared Uppy photo uploader (the same dashboard the
- * person, family and user photo pages mount), so these tests drive the real Uppy
- * flow: open the dashboard, drop a file on its hidden input, accept the image
- * editor, then press Upload. They then verify that the uploaded logo replaces the
- * ChurchCRM branding in the sidebar and on the login page, and that removing it
- * restores the defaults.
+ * The card drives the shared Uppy photo uploader, and the server renders the
+ * logo state, so an upload or a removal reloads the page. The tests check that
+ * the uploaded logo replaces the ChurchCRM branding in the sidebar and on the
+ * login page, and that removing it restores the bundled brand assets.
  */
 
 // 120x40 solid PNG, built in memory so no binary fixture is needed. Deliberately
@@ -16,7 +14,7 @@
 const LOGO_PNG_BASE64 =
     "iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoCAIAAAC6iKlyAAAAUklEQVR42u3QQQ0AAAgEoOtjJhsZ2hbOBxsJSPVwIApEi0a0aNEWRItGtGjRFkSLRrRo0YgWjWjRohEtGtGiRSNaNKJFi0a0aESLFo1o0Yj+ZwGy/zgts+HrHQAAAABJRU5ErkJggg==";
 
-const LOGO_API_URL = "/api/system/church-logo";
+const LOGO_API_URL = "/admin/api/system/church-logo";
 
 /**
  * cy.request()/cy.makePrivate*APICall() overwrite the PHP session's
@@ -37,26 +35,66 @@ function freshAdminLogin() {
  * Drive the shared Uppy dashboard end to end: open it, hand the file to Uppy's
  * own hidden <input>, accept the auto-opened image editor, then press Upload.
  */
-function uploadLogoThroughUppy() {
+function uploadLogoThroughUppy(
+    file = {
+        contents: Cypress.Buffer.from(LOGO_PNG_BASE64, "base64"),
+        fileName: "church-logo-test.png",
+        mimeType: "image/png",
+    },
+) {
     cy.get("#church-logo-upload-btn").click();
     cy.get(".uppy-Dashboard--modal", { timeout: 10000 }).should("be.visible");
 
-    cy.get(".uppy-Dashboard-input")
-        .first()
-        .selectFile(
-            {
-                contents: Cypress.Buffer.from(LOGO_PNG_BASE64, "base64"),
-                fileName: "church-logo-test.png",
-                mimeType: "image/png",
-            },
-            { force: true },
-        );
+    cy.get(".uppy-Dashboard-input").first().selectFile(file, { force: true });
 
-    // The dashboard is configured with autoOpen: "imageEditor" — accept the
-    // default (free-ratio) crop.
-    cy.get(".uppy-DashboardContent-save", { timeout: 10000 }).click();
-
+    cy.get(".uppy-DashboardContent-save", { timeout: 10000 })
+        .should("not.be.disabled")
+        .click();
     cy.get(".uppy-StatusBar-actionBtn--upload", { timeout: 10000 }).click();
+}
+
+/**
+ * A 4032x3024 JPEG of random noise, drawn in the browser. Noise does not
+ * compress, so the file is well over the 2 MB the server accepts in one
+ * request: the size of a real phone photo, which the uploader has to shrink
+ * before sending.
+ */
+function buildPhonePhoto() {
+    return cy.window().then(
+        (win) =>
+            new Cypress.Promise((resolve) => {
+                const canvas = win.document.createElement("canvas");
+                canvas.width = 4032;
+                canvas.height = 3024;
+                const context = canvas.getContext("2d");
+                const pixels = context.createImageData(canvas.width, canvas.height);
+                for (let offset = 0; offset < pixels.data.length; offset += 65536) {
+                    win.crypto.getRandomValues(
+                        pixels.data.subarray(offset, offset + 65536),
+                    );
+                }
+                for (let i = 3; i < pixels.data.length; i += 4) {
+                    pixels.data[i] = 255;
+                }
+                context.putImageData(pixels, 0, 0);
+                canvas.toBlob(
+                    (blob) =>
+                        blob.arrayBuffer().then((buffer) =>
+                            resolve({
+                                contents: Cypress.Buffer.from(buffer),
+                                fileName: "phone-photo.jpg",
+                                mimeType: "image/jpeg",
+                            }),
+                        ),
+                    "image/jpeg",
+                    0.95,
+                );
+            }),
+    );
+}
+
+function sidebarBrandImages() {
+    return cy.get("#sidebar .navbar-brand img");
 }
 
 describe("Admin - Church Logo", () => {
@@ -87,15 +125,11 @@ describe("Admin - Church Logo", () => {
     });
 
     beforeEach(() => {
-        // Remove any logo left behind by a previous (possibly failed) run first,
-        // then establish the browser session.
         cy.makePrivateAdminAPICall("DELETE", LOGO_API_URL, null, 200);
         freshAdminLogin();
     });
 
     after(() => {
-        // Leave the instance as it was found: restore the original logo or make
-        // sure none is left behind for other specs.
         if (originalLogoBase64 !== null) {
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -110,13 +144,13 @@ describe("Admin - Church Logo", () => {
 
     it("Opens the shared Uppy dashboard from the Church Logo card", () => {
         cy.visit("/admin/system/church-info");
-
-        // The hand-rolled file input is gone: the card drives Uppy instead.
-        cy.get("#church-logo-file").should("not.exist");
         cy.window().its("CRM.photoUploader", { timeout: 10000 }).should("exist");
 
         cy.get("#church-logo-upload-btn").click();
         cy.get(".uppy-Dashboard--modal", { timeout: 10000 }).should("be.visible");
+        cy.get('.uppy-DashboardTab[data-uppy-acquirer-id="Webcam"]').should(
+            "not.exist",
+        );
 
         cy.get(".uppy-Dashboard-close").click();
         cy.get(".uppy-Dashboard--modal").should("not.be.visible");
@@ -125,73 +159,70 @@ describe("Admin - Church Logo", () => {
     it("Uploads a logo and replaces the sidebar branding", () => {
         cy.visit("/admin/system/church-info");
 
-        // Default state: stock icon, church name visible, no Remove button.
-        cy.get("#church-logo-card").should("exist");
-        cy.get("#church-logo-default-note").should("not.have.class", "d-none");
-        cy.get("#church-logo-remove-btn").should("have.class", "d-none");
-        cy.get("#sidebar-brand-text").should("not.have.class", "d-none");
-        cy.get("#sidebar-brand-image").should("have.class", "d-none");
-        cy.get(".sidebar-brand-stock").should("not.have.class", "d-none");
+        cy.get("#church-logo-default-note").should("be.visible");
+        cy.get("#church-logo-remove-btn").should("not.exist");
+        cy.get("#sidebar .navbar-brand-text").should("exist");
 
         cy.intercept("POST", `**${LOGO_API_URL}`).as("uploadLogo");
         uploadLogoThroughUppy();
         cy.wait("@uploadLogo").its("response.statusCode").should("eq", 200);
 
-        // The dashboard closes itself once the upload succeeds.
-        cy.get(".uppy-Dashboard--modal", { timeout: 10000 }).should(
-            "not.be.visible",
-        );
-
-        cy.get("#church-logo-message").should("have.class", "alert-success");
-        cy.get("#church-logo-default-note").should("have.class", "d-none");
-        cy.get("#church-logo-remove-btn").should("not.have.class", "d-none");
-
-        // Sidebar updates in place: logo shown, stock mark and church-name text hidden.
-        cy.get("#sidebar-brand-image").should(($img) => {
-            expect($img.attr("src")).to.include("church-logo.png");
-        });
-        cy.get("#sidebar-brand-image").should("not.have.class", "d-none");
-        cy.get(".sidebar-brand-stock").should("have.class", "d-none");
-        cy.get("#sidebar-brand-text").should("have.class", "d-none");
-
-        // The server-rendered page agrees after a reload.
-        cy.reload();
-        cy.get("#sidebar-brand-image").should(($img) => {
-            expect($img.attr("src")).to.include("church-logo.png");
-        });
-        cy.get(".sidebar-brand-stock").should("have.class", "d-none");
-        cy.get("#sidebar-brand-text").should("have.class", "d-none");
-        cy.get("#church-logo-preview").should(($img) => {
-            expect($img.attr("src")).to.include("church-logo.png");
-        });
+        // The page reloads and renders the new state.
+        cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
+        cy.get("#church-logo-default-note").should("not.exist");
+        cy.get("#church-logo-preview")
+            .should("have.attr", "src")
+            .and("include", "church-logo.png");
+        sidebarBrandImages()
+            .should("have.length", 1)
+            .and("have.attr", "src")
+            .and("include", "church-logo.png");
+        cy.get("#sidebar .navbar-brand-text").should("not.exist");
     });
 
-    it("Removes the logo and restores the ChurchCRM defaults", () => {
+    it("Accepts a phone photo larger than the server upload limit", () => {
         cy.visit("/admin/system/church-info");
 
-        cy.intercept("POST", `**${LOGO_API_URL}`).as("uploadLogo");
-        uploadLogoThroughUppy();
-        cy.wait("@uploadLogo").its("response.statusCode").should("eq", 200);
-        cy.get("#church-logo-remove-btn").should("not.have.class", "d-none");
+        buildPhonePhoto().then((photo) => {
+            expect(photo.contents.length).to.be.greaterThan(2 * 1024 * 1024);
+
+            cy.intercept("POST", `**${LOGO_API_URL}`).as("uploadLogo");
+            uploadLogoThroughUppy(photo);
+        });
+
+        cy.wait("@uploadLogo").then(({ request, response }) => {
+            expect(JSON.stringify(request.body).length).to.be.lessThan(2 * 1024 * 1024);
+            expect(response.statusCode).to.equal(200);
+        });
+        cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
+    });
+
+    it("Removes the logo and restores the bundled brand assets", () => {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            LOGO_API_URL,
+            { imgBase64: `data:image/png;base64,${LOGO_PNG_BASE64}` },
+            200,
+        );
+        freshAdminLogin();
+        cy.visit("/admin/system/church-info");
 
         cy.intercept("DELETE", `**${LOGO_API_URL}`).as("deleteLogo");
         cy.get("#church-logo-remove-btn").click();
         cy.wait("@deleteLogo").its("response.statusCode").should("eq", 200);
 
-        cy.get("#church-logo-message").should("have.class", "alert-success");
-        cy.get("#church-logo-default-note").should("not.have.class", "d-none");
-        cy.get("#church-logo-remove-btn").should("have.class", "d-none");
-        cy.get("#sidebar-brand-text").should("not.have.class", "d-none");
-        cy.get("#sidebar-brand-image").should("have.class", "d-none");
-        cy.get(".sidebar-brand-stock").should("not.have.class", "d-none");
-
-        cy.reload();
-        cy.get("#sidebar-brand-image").should("have.class", "d-none");
-        cy.get(".sidebar-brand-stock").should("not.have.class", "d-none");
-        cy.get("#sidebar-brand-text").should("not.have.class", "d-none");
-        cy.get("#church-logo-preview").should(($img) => {
-            expect($img.attr("src")).to.include("churchcrm-logo-ink-blue.svg");
-        });
+        cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("not.exist");
+        cy.get("#church-logo-default-note").should("be.visible");
+        cy.get("#church-logo-preview")
+            .should("have.attr", "src")
+            .and("include", "/Images/churchcrm-logo-ink-blue.svg");
+        cy.get("#sidebar .navbar-brand .crm-brand-logo-light")
+            .should("have.attr", "src")
+            .and("include", "/Images/churchcrm-symbol-ink-blue.svg");
+        cy.get("#sidebar .navbar-brand .crm-brand-logo-dark")
+            .should("have.attr", "src")
+            .and("include", "/Images/churchcrm-symbol-paper-blue.svg");
+        cy.get("#sidebar .navbar-brand-text").should("exist");
     });
 
     it("Shows the uploaded logo on the login page and the default after removal", () => {
@@ -204,16 +235,16 @@ describe("Admin - Church Logo", () => {
 
         cy.clearCookies();
         cy.visit("/session/begin");
-        cy.get("#login-logo").should(($img) => {
-            expect($img.attr("src")).to.include("church-logo.png");
-        });
+        cy.get(".login-header-logo img")
+            .should("have.attr", "src")
+            .and("include", "church-logo.png");
 
         cy.makePrivateAdminAPICall("DELETE", LOGO_API_URL, null, 200);
 
         cy.clearCookies();
         cy.visit("/session/begin");
-        cy.get("#login-logo").should(($img) => {
-            expect($img.attr("src")).to.include("churchcrm-logo-ink-blue.svg");
-        });
+        cy.get(".login-header-logo img")
+            .should("have.attr", "src")
+            .and("include", "/Images/churchcrm-logo-ink-blue.svg");
     });
 });

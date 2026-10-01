@@ -6,7 +6,7 @@
  * GET  /people/cart/to-family  Render the assign-to-family form (or empty state)
  * POST /people/cart/to-family  Validate, create/select family, assign cart persons, redirect
  *
- * Related: #9229 (this migration), #9227 (sibling /v2/cart -> /people/cart migration)
+ * Related: #9229 and #9227.
  */
 
 use ChurchCRM\Authentication\AuthenticationManager;
@@ -27,6 +27,32 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 $app->group('/cart', function (RouteCollectorProxy $group): void {
+
+    // Render the people selection cart (empty or populated state).
+    $getCartView = function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        $pageArgs = [
+            'sRootPath'     => SystemURLs::getRootPath(),
+            'sPageTitle'    => gettext('Cart'),
+            'sPageSubtitle' => gettext('Manage people in your cart'),
+            'aBreadcrumbs'  => PageHeader::breadcrumbs([
+                [gettext('People'), '/people/dashboard'],
+                [gettext('Cart')],
+            ]),
+        ];
+
+        if (!Cart::hasPeople()) {
+            return $renderer->render($response, 'cart/cartempty.php', $pageArgs);
+        }
+
+        $pageArgs['iNumFamilies'] = Cart::countFamilies();
+        $pageArgs['cartPeople'] = Cart::getCartPeople();
+
+        return $renderer->render($response, 'cart/cartview.php', $pageArgs);
+    };
+    $group->get('/', $getCartView);
+    $group->get('', $getCartView);
 
     // -----------------------------------------------------------------------
     // GET /people/cart/to-family — render form (or empty state)

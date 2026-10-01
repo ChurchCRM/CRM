@@ -39,19 +39,9 @@ jobs:
     steps:
       - name: Checkout CRM
         uses: actions/checkout@v7
-      - name: Setup PHP 8.4
-        uses: shivammathur/setup-php@v2
+      - uses: ./.github/actions/composer-install
         with:
-          php-version: '8.4'
-          extensions: mbstring, pdo, zip
-      - name: Cache Composer packages
-        uses: actions/cache@v6
-        with:
-          path: src/vendor
-          key: composer-dev-${{ hashFiles('src/composer.lock') }}
-          restore-keys: composer-dev-
-      - name: Install Composer dependencies (including dev)
-        run: cd src && composer install --no-interaction --prefer-dist
+          no-dev: 'false'
       - name: Generate Public API spec
         run: cd src && composer run openapi:public
       - name: Generate Private API spec
@@ -73,19 +63,9 @@ jobs:
     steps:
       - name: Checkout CRM
         uses: actions/checkout@v7
-      - name: Setup PHP 8.4
-        uses: shivammathur/setup-php@v2
+      - uses: ./.github/actions/composer-install
         with:
-          php-version: '8.4'
-          extensions: mbstring, pdo, zip
-      - name: Cache Composer packages
-        uses: actions/cache@v6
-        with:
-          path: src/vendor
-          key: composer-dev-${{ hashFiles('src/composer.lock') }}
-          restore-keys: composer-dev-
-      - name: Install Composer dependencies (including dev)
-        run: cd src && composer install --no-interaction --prefer-dist
+          no-dev: 'false'
       - name: Generate Public API spec
         run: cd src && composer run openapi:public
       - name: Generate Private API spec

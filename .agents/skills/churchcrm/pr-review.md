@@ -28,7 +28,7 @@ Answer before reading code:
 
 - What is the stated purpose?
 - Bug fix, feature, refactor, or migration?
-- Is there a linked issue? PRs without an issue are a hard block.
+- Does it meet the issue rule in `git-workflow.md`? Missing it is a hard block.
 - Does the goal belong in this milestone? Passing gates still does not mean merge if maintainers disagree with the goal.
 - Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin (#9995).
 
@@ -124,7 +124,6 @@ Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
 
 ### Git
 
-- [ ] Linked issue
 - [ ] No commented-out blocks, debug files, or drive-by refactors
 
 ---
