@@ -429,9 +429,9 @@ Legend for **Decision**:
 
 | Id | Capability | Existing code location | Decision | Notes |
 |---|---|---|---|---|
-| M1 | MVC module scaffold | `MvcAppFactory::create()` `src/ChurchCRM/Slim/MvcAppFactory.php:35`; models `src/event/index.php`, `src/groups/index.php` | **Reuse** | `src/volunteer/index.php` — 25 lines. Only three options exist (F26). Route paths are **module-relative**; `setBasePath()` supplies the prefix. |
+| M1 | MVC module scaffold | `MvcAppFactory::create()` `src/ChurchCRM/Slim/MvcAppFactory.php:35`; models `src/event/index.php`, `src/groups/index.php` | **Reuse** | `src/ministries/index.php` — 31 lines. Only three options exist (F26). Route paths are **module-relative**; `setBasePath()` supplies the prefix. |
 | M2 | Module `.htaccess` | `src/event/.htaccess` (8 lines) | **Reuse (copy exactly)** | Copy the event/groups/people variant, **not** finance/v2/admin — those three omit the `RewriteRule ^views/.*\.php$ - [F,L]` line and expose their templates directly (F33). |
-| M3 | Extra module-wide middleware the factory does not expose | `src/fundraiser/index.php:27-35` (wrapper `$app->group('', …)->add(...)`) | **Reuse** | How the rollout gate wraps the whole `/volunteer` module while individual route groups keep their own role gates (§3.1). |
+| M3 | Extra module-wide middleware the factory does not expose | `src/fundraiser/index.php:27-35` (wrapper `$app->group('', …)->add(...)`) | **Reuse** | How the rollout gate wraps the whole `/ministries` module while individual route groups keep their own role gates (§3.1). |
 | M4 | API entry point / route registration | `src/api/index.php` (75 lines; 36 `require` lines at `:38-73`) | **Reuse** | Add `src/api/routes/ministries/*.php` plus `require` lines. Route files act on the ambient `$app`. |
 | M5 | JSON rendering / error shape | `SlimUtils::renderJSON` (`:397`), `renderSuccessJSON` (`:26`), `renderErrorJSON` (`:35`) | **Reuse** | Two defects here are fixed by prerequisite **E-18** (#9737): at `850c70a8c`, `renderErrorJSON()` redacts any message containing the bare words *user*, *token* or *host* (`SlimUtils.php:41-43`), and `BaseAuthRoleMiddleware` emits a different JSON shape without calling `renderErrorJSON()` at all. E-18 narrows the regex to credential-shaped values and routes the role middlewares through `renderErrorJSON()`, so V2 lands on **one** error contract with **no phrasing constraint**. Per §0.2 rule 5, V2 does not phrase around the old regex; it waits for E-18 (a blocking prerequisite, §7.3). |
 | M6 | Entity load + 404 | `AbstractEntityMiddleware` (`:42-63`); model subclass `EventsMiddleware.php` | **Reuse (subclass)** | One ~25-line subclass per V2 entity. |
@@ -450,8 +450,8 @@ Legend for **Decision**:
 | R2 | Server-side CSV export | `CsvExporter` + `getContent()` (`src/ChurchCRM/Utils/CsvExporter.php:176`); route pattern `src/api/routes/finance/finance-deposits.php:204-232` | **Reuse** | **Never call `CsvExporter::create()` or `output()` from a Slim route — both `exit`** (`:199-200`, `:211`). Use `getContent()` and write to the PSR-7 body. |
 | R3 | PDF reporting | FPDF only; mPDF framework not merged (§0.6) | **Avoid** | If a printable roster is genuinely needed, the DataTables print button covers it. Do not couple V2 to #8136. |
 | R4 | Legacy query runner (`query_qry`) | `src/QueryList.php:16-20`, `src/QueryView.php:18-21` | **Do not use** | Deprecated and admin-gated under GHSA-6rgg-mrx3-92w7. Adding V2 seeded queries would add raw-SQL surface to a deprecated subsystem. |
-| T1 | Tests | Cypress only (F12); `cypress/e2e/api/private/standard/private.admin.volunteer-opportunities.spec.js` is the closest in-repo template | **Reuse the conventions** | §6. **Do not create `cypress/e2e/volunteer/`** — it would never run (F32). |
-| V1x | V1 volunteer tables / models / editor / API | `volunteeropportunity_vol`, `person2volunteeropp_p2vo`, `src/VolunteerOpportunityEditor.php`, `src/api/routes/system/volunteer-opportunities.php`, `PersonService::addVolunteerOpportunity()` | **Do not touch, do not read** | D7. The only permitted edits are the seven V1/V2 switch surfaces in §3.8, and even those are "decide whether to render", never "change behaviour". |
+| T1 | Tests | Cypress only (F12); `cypress/e2e/api/private/admin/private.admin.volunteer-opportunities.spec.js` is the closest in-repo template | **Reuse the conventions** | §6. **Do not create `cypress/e2e/volunteer/`** — it would never run (F32). |
+| V1x | V1 volunteer tables / models / editor / API | `volunteeropportunity_vol`, `person2volunteeropp_p2vo`, `src/VolunteerOpportunityEditor.php`, `src/admin/routes/api/system/volunteer-opportunities.php`, `PersonService::addVolunteerOpportunity()` | **Do not touch, do not read** | D7. The only permitted edits are the seven V1/V2 switch surfaces in §3.8, and even those are "decide whether to render", never "change behaviour". |
 
 ---
 
@@ -1467,58 +1467,46 @@ shape as `getEventRoster` (`events.php:968-1067`). V2 writes nothing to `event_a
 
 ## 3. API / module boundaries
 
-### 3.1 The `/volunteer` MVC module
+### 3.1 The `/ministries` MVC module
 
 ```
-src/volunteer/
+src/ministries/
   .htaccess                     ← byte-copy of src/event/.htaccess (M2)
-  index.php                     ← ~30 lines
-  routes/{dashboard,setup,ministry,occurrence,member}.php
-  views/{dashboard,setup,ministry-view,occurrence-view,my-schedule,opportunities}.php
-  views/partials/{staffing-table,gap-card,assignment-row}.php
-```
-
-**As built, after #9867** (the setup flow was removed in §5.3, and the member pages moved into the
-Member Portal):
-
-```
-src/volunteer/
-  .htaccess
   index.php
-  routes/{dashboard,ministry,occurrence,member-redirects}.php
+  routes/{dashboard,ministry,occurrence}.php
   views/{dashboard,ministry-view,occurrence-view}.php
-  views/partials/{…}
+  views/partials/ministry-create-modal.php
 ```
 
-`routes/member-redirects.php` is all that is left of the member half: two 302s to
-`/portal/volunteer/schedule` and `/portal/volunteer/opportunities`, kept for one release so old
-links and already-sent mail still work.
+It was planned and first built as `src/volunteer/`, with a setup route and the two member pages.
+The setup flow was removed (§5.3), the member pages moved into the Member Portal (#9867), the
+coordinator area moved to `/ministries` (D12, 2026-09-17), and the pre-release `/volunteer` module
+was dropped without redirects (2026-09-18).
 
 ```php
-// src/volunteer/index.php
+// src/ministries/index.php
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\MvcAppFactory;
 use Slim\Routing\RouteCollectorProxy;
 
-// NO module-level roleMiddleware: the coordinator area and the member area have
-// different gates and must live in the same module (see §3.2).
-$app = MvcAppFactory::create('/volunteer', [
+// NO module-level roleMiddleware: every gate is applied per route group (§3.2).
+$app = MvcAppFactory::create('/ministries', [
     'dashboardUrl'  => '/ministries/dashboard',
     'dashboardText' => gettext('Back to Ministry Dashboard'),
 ]);
 
 // Rollout gate for the whole module, using the wrapper-group idiom from
 // src/fundraiser/index.php:27-35 (the factory exposes no hook for this).
+// LIFO: VolunteerV2Enabled runs first, then CSRF.
 $app->group('', function (RouteCollectorProxy $group): void {
     $app = $group;                                  // alias so route files see $app
     require __DIR__ . '/routes/dashboard.php';
-    require __DIR__ . '/routes/ministries.php';
     require __DIR__ . '/routes/ministry.php';
     require __DIR__ . '/routes/occurrence.php';
-    require __DIR__ . '/routes/member.php';
-})->add(new VolunteerV2EnabledMiddleware());
+})->add(new CSRFMiddleware())->add(new VolunteerV2EnabledMiddleware());
 
 $app->run();
 ```
@@ -1526,8 +1514,8 @@ $app->run();
 Notes an implementer must not get wrong:
 
 - Route paths inside route files are **module-relative** (`$app->get('/dashboard', …)`), because
-  `setBasePath()` already carries `/volunteer`. Writing `/ministries/dashboard` yields
-  `/ministries/dashboard`.
+  `setBasePath()` already carries `/ministries`. Writing `/ministries/dashboard` yields
+  `/ministries/ministries/dashboard`.
 - Route files act on the ambient `$app`; there are **no controller classes** anywhere in this
   codebase and no `return function ($app)` convention. `routing-architecture.md` and
   `slim-mvc-skill.md` claim otherwise and are wrong — follow `src/event/` and
@@ -1542,20 +1530,19 @@ Notes an implementer must not get wrong:
 - No queries in views (`groups-mvc-guidelines.md:48`). `src/groups/views/dashboard.php:11-14`
   violates this; do not copy it.
 
-**`VolunteerV2EnabledMiddleware`** — a new middleware next to
-`src/ChurchCRM/Slim/Middleware/Request/Setting/`. It cannot extend `BaseAuthSettingMiddleware`,
-which only reads `getBooleanValue()` and returns an **empty body** with the reason in the HTTP
-reason phrase (S2). It reads `sVolunteerVersion`, allows `v2` and `both`, and otherwise returns
-`403` JSON for API requests / a `302` to `/v2/access-denied?role=ManageMinistries` for browser
-requests, using `BrowserRequestTrait` exactly as `BaseAuthRoleMiddleware` does
-(`BaseAuthRoleMiddleware.php:57-64`, `:73-78`).
+**`VolunteerV2EnabledMiddleware`** — a new middleware in `src/ChurchCRM/Volunteer/Middleware/`
+(D12). It cannot extend `BaseAuthSettingMiddleware`, which only reads `getBooleanValue()` and
+returns an **empty body** with the reason in the HTTP reason phrase (S2). It reads
+`sVolunteerVersion`, allows `v2` and `both`, and otherwise returns `403` JSON for API requests / a
+`302` to the site root for browser requests, using `BrowserRequestTrait` exactly as
+`BaseAuthRoleMiddleware` does (`BaseAuthRoleMiddleware.php:57-64`, `:73-78`).
 
 ### 3.2 Route groups and their gates
 
 | Area | Path prefix | Gate |
 |---|---|---|
 | Coordinator MVC | `/ministries/dashboard`, `/ministries/{id}`, `/ministries/occurrences/{id}` | `VolunteerCoordinatorRoleAuthMiddleware` on the group. `/ministries` with no id is a 302 to the dashboard, inside the same group and behind the same gate — the list page it used to serve was retired in favour of the sidebar's **Ministries** heading (§5.0) |
-| Member MVC | `/portal/volunteer/schedule`, `/portal/volunteer/opportunities` (moved out of this module by #9867; the old `/volunteer/my-schedule` and `/volunteer/opportunities` 302 here for one release) | **no role gate** — per-record authorization only, by authenticated person (D14). The rollout flag still applies: `PortalNav::isVolunteeringVisible()` gates both the route and the nav entry |
+| Member MVC | `/portal/volunteer/schedule`, `/portal/volunteer/opportunities` (moved out of this module by #9867; the old `/volunteer/my-schedule` and `/volunteer/opportunities` went with the `/volunteer` module, without redirects — D12) | **no role gate** — per-record authorization only, by authenticated person (D14). The rollout flag still applies: `PortalNav::isVolunteeringVisible()` gates both the route and the nav entry |
 | Coordinator API | `/api/ministries/...` | `VolunteerCoordinatorRoleAuthMiddleware` + `VolunteerV2EnabledMiddleware` on the group; per-entity middleware per route |
 | Member API | `/api/ministries/me/...` | `VolunteerV2EnabledMiddleware` only — every authenticated person is potentially a volunteer |
 | Global-manager-only API | `POST /api/ministries/ministries`, `DELETE /api/ministries/ministries/{id}`, all of `/api/ministries/scopes` | `ManageMinistriesRoleAuthMiddleware` on those routes |
@@ -1568,16 +1555,21 @@ last `->add()` runs first.
 
 Naming follows the surveyed conventions (`api-development.md` plus the real routes): **plural** for
 collections, **kebab-case** for multi-word, `{id:[0-9]+}` regex constraints on numeric ids.
-Registered by adding three `require` lines to `src/api/index.php` next to the existing 36:
+Registered by one `require` line per route file in `src/api/index.php` (`:67-74`):
 
 ```php
+require __DIR__ . '/routes/ministries/ministries-status.php';
+require __DIR__ . '/routes/ministries/ministries-scopes.php';
 require __DIR__ . '/routes/ministries/ministries-setup.php';
 require __DIR__ . '/routes/ministries/ministries-schedule.php';
 require __DIR__ . '/routes/ministries/ministries-events.php';   // D24, the Calendar tab
+require __DIR__ . '/routes/ministries/ministries-assignment.php';
 require __DIR__ . '/routes/ministries/ministries-me.php';
+require __DIR__ . '/routes/ministries/ministries-dashboard.php';
 ```
 
-> **Every one of those files opens its own `$app->group('/volunteer', …)` and must chain
+> **Every one of those files opens its own `$app->group('/ministries', …)` (`ministries-me.php`:
+> `'/ministries/me'`) and must chain
 > `->add(new VolunteerV2EnabledMiddleware())` on that group itself.** Slim 4 scopes `->add()` to the
 > single `RouteCollectorProxy` it is chained on; nothing propagates from the group in
 > `ministries-status.php` (#9704) to a group opened in another file, and an ungated group would be
@@ -1593,13 +1585,13 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 |---|---|---|---|---|
 | GET | `/api/ministries/ministries` | list ministries **scoped** to the caller | Coordinator | `?manageable=1&active=1` → `{ministries:[{id,name,description,active,teamCount,openGapCount}]}` |
 | POST | `/api/ministries/ministries` | create | **Manager** | `{name,description,sundaySchool?}` → `201 {ministry:{…}}`; `409` on duplicate name. Every ministry on the wire carries `sundaySchool` (D29), strictly boolean (`400` otherwise) |
-| GET | `/api/ministries/ministries/{ministryId}` | detail incl. teams (with their leaders and linked class), positions, pool and the overview `summary` | Coordinator of it | `MinistryMiddleware` → `{ministry, summary:{teamCount,volunteerCount,unfilledPositionCount}, teams[{…,leaders:[{scopeId,personId,personName}],classGroupId,classGroupName}], positions[], poolGroupId, poolGroupName, pool[]}`. `unfilledPositionCount` is scoped to the caller — §5.4 |
+| GET | `/api/ministries/ministries/{ministryId}` | detail incl. teams (with their leaders and linked class), positions, pool and the overview `summary` | Coordinator of it | `VolunteerMinistryMiddleware` → `{ministry, summary:{teamCount,volunteerCount,unfilledPositionCount}, teams[{…,leaders:[{scopeId,personId,personName}],classGroupId,classGroupName}], positions[], poolGroupId, poolGroupName, pool[]}`. `unfilledPositionCount` is scoped to the caller — §5.4 |
 | POST | `/api/ministries/ministries/{ministryId}` | update | Coordinator of it | `{name?,description?,active?,helpWanted?,helpWantedText?,sundaySchool?}` → `{ministry}`. Renaming renames the pool Group (D19). Changing `sundaySchool` is a manager's (`403` for a coordinator; the current value is accepted); turning it off is `409` while a team is linked, with `teams:[{id,name}]` (D29) |
 | DELETE | `/api/ministries/ministries/{ministryId}` | delete | **Manager** | `409` while the ministry is still **active** ("Deactivate this ministry before deleting it."). Once deactivated the delete is total — teams, positions, qualifications, schedules, occurrences, assignments and their responses/swaps/outbox rows, service history included — plus the scope rows (§2.15), the pool Group and the calendar, in one transaction *(revised 2026-09-17; the earlier occurrence/assignment 409 is gone)* |
 | GET | `/api/ministries/ministries/{ministryId}/teams` | list | Coordinator of it | `{teams:[…]}` |
 | POST | `/api/ministries/ministries/{ministryId}/teams` | create | Coordinator of it | `{name,description,classGroupId?,importPositionId?,importPositionName?}` → `201 {team}`. The class keys are D23's (§2.4); a class is `400` while the ministry's `sundaySchool` is off (D29) |
 | GET | `/api/ministries/ministries/{ministryId}/linkable-classes` | Sunday School classes a team may link (D23) | Coordinator of it | `?teamId=` keeps that team's own class in the list → `{sundaySchool, classes:[{id,name,teacherCount}]}`: every type-4 group not linked to another team, with its living Teacher-role members; `[]` while `sundaySchool` is off (D29) |
-| GET/POST/DELETE | `/api/ministries/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware`. Every team on the wire carries `classGroupId` and `classGroupName`. `POST` also takes `classGroupId` (`null` unlinks, absent leaves it) with `importPositionId`/`importPositionName` — `400` for a group that is not a class or has no Teacher role, or for teachers with no position to import into; `409` for a class another team holds; `403` for a team leader (§2.4); `400` for any class while the ministry's `sundaySchool` is off (D29). When the class changes, `classEvents: keep\|remove\|move` (D28, default `keep`, `move` needs a new class) says what happens to the ministry's own events of the old class. `DELETE` → `409` for the ministry's last team (D18); otherwise it takes positions, schedules, occurrences, assignments and team-leader grants with it (§2.4, revised 2026-09-26) — a linked class keeps its membership — and takes `{classEvents: keep\|remove\|delete}` (D28): `delete` is `409` while another ministry has volunteers on one of the events (unless Add Events) or core refuses one, and then nothing is deleted |
+| GET/POST/DELETE | `/api/ministries/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `VolunteerTeamMiddleware`. Every team on the wire carries `classGroupId` and `classGroupName`. `POST` also takes `classGroupId` (`null` unlinks, absent leaves it) with `importPositionId`/`importPositionName` — `400` for a group that is not a class or has no Teacher role, or for teachers with no position to import into; `409` for a class another team holds; `403` for a team leader (§2.4); `400` for any class while the ministry's `sundaySchool` is off (D29). When the class changes, `classEvents: keep\|remove\|move` (D28, default `keep`, `move` needs a new class) says what happens to the ministry's own events of the old class. `DELETE` → `409` for the ministry's last team (D18); otherwise it takes positions, schedules, occurrences, assignments and team-leader grants with it (§2.4, revised 2026-09-26) — a linked class keeps its membership — and takes `{classEvents: keep\|remove\|delete}` (D28): `delete` is `409` while another ministry has volunteers on one of the events (unless Add Events) or core refuses one, and then nothing is deleted |
 | GET | `/api/ministries/teams/{teamId}/class-events` | the team dialog's question (D28) | Coordinator / Team Leader of it | `{teamId,ministryId,ministryName,classGroupId,classGroupName,total,upcoming,otherStaffing:[{ministryId,ministryName,assigned,eventCount}]}` — the events the ministry owns whose Linked Group is the team's class; `upcoming` = today on; zeros for a team with no class |
 | GET | `/api/ministries/ministries/{ministryId}/pool` | who is in the ministry's pool Group (D19) | Coordinator of it | `{groupId,groupName,members:[{personId,displayName,inPool,qualifications[]}]}`, alphabetical |
 | POST | `/api/ministries/ministries/{ministryId}/pool/{personId}` | add to the pool | Coordinator of it — **no `ManageGroups` needed** (§4.6) | `201 {personId,added:true}`; `200 {added:false}` when already there. Writes through the Propel membership model, so `Hooks::GROUP_MEMBER_ADDED` fires (G3) |
@@ -1644,12 +1636,12 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | DELETE | `/api/ministries/requirements/{requirementId}` | remove | Coordinator | `200` |
 | POST | `/api/ministries/occurrences/{occurrenceId}/requirements` | upsert a **per-occurrence override** | Coordinator / Team Leader | `{positionId,minCount,maxCount?}` |
 | GET | `/api/ministries/occurrences` | coordinator occurrence list | Coordinator / Team Leader | **`from` and `to` are required** (M9); `?ministryId=&teamId=&scheduleId=&text=&hasGaps=1`; hard cap 500 → `{occurrences:[{id,scheduleId,scheduleName,scheduleOneOff,ministryId,teamId,eventId,occurrenceDate,start,end,status,requiredCount,liveCount,gapCount,pendingCount}]}` — `start`/`end` are the volunteers' times (event plus offsets, D21), null once the event was deleted |
-| GET | `/api/ministries/occurrences/{occurrenceId}` | detail | scope | `OccurrenceMiddleware` |
+| GET | `/api/ministries/occurrences/{occurrenceId}` | detail | scope | `VolunteerOccurrenceMiddleware` |
 | GET | `/api/ministries/occurrences/{occurrenceId}/staffing` | **the workhorse** | scope | `{occurrence, requirements:[{positionId,positionName,minCount,maxCount,liveCount,gapCount,assignments:[{id,personId,displayName,status,source,respondedDate,attendance}]}]}` — `attendance` is present only for linked occurrences (E10) |
 | GET | `/api/ministries/occurrences/{occurrenceId}/eligible` | who may be assigned | scope | `?positionId=&q=` → `{people:[{personId,displayName,inPool,lastServedDate,conflictPositionId}]}`, ordered by `lastServedDate ASC NULLS FIRST` (the rotation, §2.17) |
 | POST | `/api/ministries/occurrences/{occurrenceId}/assignments` | assign | scope | `{positionId,personId,requirementId?,allowOutsidePool?}` → `201 {assignment}`; `403` I2, `409` I1/I3/I5 |
-| GET | `/api/ministries/occurrences/{occurrenceId}/emails` | addresses for the email composer (U7) | scope | `{emails:[…]}` — do-not-email applied (N3) |
-| GET | `/api/ministries/occurrences/{occurrenceId}/roster/csv` | server-side CSV (R2) | scope | `text/csv` via `CsvExporter::getContent()` |
+| GET | `/api/ministries/occurrences/{occurrenceId}/emails` | addresses for the email composer (U7) — **not built** | scope | `{emails:[…]}` — do-not-email applied (N3) |
+| GET | `/api/ministries/occurrences/{occurrenceId}/roster/csv` | server-side CSV (R2) — **not built** | scope | `text/csv` via `CsvExporter::getContent()` |
 | POST | `/api/ministries/assignments/{assignmentId}/status` | coordinator status change, incl. recording a response on the volunteer's behalf (§2.11.1) | scope | `{status:'cancelled'\|'accepted'\|'declined', comment?}` → `{assignment}`; `accepted`/`declined` write a response row with `Channel='coordinator'` and the coordinator as `vrsp_per_ID`; `409` on an illegal transition |
 | DELETE | `/api/ministries/assignments/{assignmentId}` | cancel (never hard-deletes once responded) | scope | sets `cancelled`; hard-deletes only a `pending`, never-notified row |
 | POST | `/api/ministries/assignments/{assignmentId}/notify` | re-enqueue the assignment mail | scope | `{}` → `{notification:{status}}`; idempotent via the dedupe key unless `?force=1` |
@@ -1700,8 +1692,9 @@ They live beside the calendar routes they extend, not under `/api/ministries`; t
 
 ### 3.4 Service classes
 
-All in `src/ChurchCRM/Service/`, all **instance** classes instantiated with `new` (F17), Propel
-only, `LoggerUtils::getAppLogger()` for business events, `\RuntimeException(gettext('…'))` for
+All in `src/ChurchCRM/Volunteer/Service/` (D12), all **instance** classes instantiated with `new`
+(F17), Propel only, `LoggerUtils::getAppLogger()` for business events,
+`VolunteerException(gettext('…'), <status>)` (a `\RuntimeException` carrying the HTTP status) for
 validation failures that the route converts with `renderErrorJSON()`.
 
 ```php
@@ -1711,14 +1704,13 @@ final class VolunteerAuthorizationService
     public const SCOPE_TEAM     = 'team';
 
     public function isGlobalManager(User $user): bool;
-    public function hasAnyScope(User $user): bool;                       // gates the coordinator area
+    public function hasAnyScope(User $user): bool;                       // with Manage My Ministries, opens the coordinator area (D12)
     public function canManageMinistry(User $user, int $ministryId): bool;
     public function canManageTeam(User $user, int $teamId): bool;
     public function canManagePosition(User $user, int $positionId): bool;
     public function canManageOccurrence(User $user, VolunteerOccurrence $o): bool;
     public function canManageAssignment(User $user, VolunteerAssignment $a): bool;
     public function canRespondToAssignment(User $user, VolunteerAssignment $a): bool;  // self only
-    public function canManageMinistryLinkedEvent(User $user, Event $event): bool;      // §4.6
     /** Add Events, or (rollout on) a coordinator of the event's ministry — §4.6 "Ministry-linked events". */
     public function canWriteEvent(User $user, ?int $eventMinistryId): bool;
 
@@ -1780,6 +1772,10 @@ final class VolunteerMinistryService
     public function recordHelpOffer(VolunteerMinistry $m, int $personId): array;     // D19: joins the pool + enqueues help_offer
     public function createPosition(VolunteerMinistry $m, ?VolunteerTeam $t, string $name, string $description, int $order, bool $recruiting = false): VolunteerPosition;
     public function setPositionActive(VolunteerPosition $p, bool $active): VolunteerPosition;
+}
+
+final class VolunteerQualificationService   // split out of VolunteerMinistryService (D12)
+{
     public function grantQualification(int $personId, VolunteerPosition $p, User $actor, ?string $notes): VolunteerQualification;
     public function revokeQualification(VolunteerQualification $q, User $actor): VolunteerQualification;  // deactivates
     public function getQualifiedPersonIds(int $positionId): array;
@@ -1889,8 +1885,8 @@ final class VolunteerNotificationService
 
     /** Idempotent: findOneOrCreate on the dedupe key. Call inside the caller's transaction. */
     public function enqueue(string $type, int $recipientPersonId, ?int $assignmentId, ?int $occurrenceId, ?\DateTimeInterface $scheduledFor = null): VolunteerNotification;
-    /** Enqueue the reminder for an assignment at (occurrence start − iVolunteerReminderLeadHours). */
-    public function enqueueReminder(VolunteerAssignment $a): ?VolunteerNotification;
+    /** From the timer job: a reminder for every live assignment starting within iVolunteerReminderLeadHours. Returns rows enqueued. */
+    public function scheduleReminders(): int;
     /** Cancel pending outbox rows for an assignment that is no longer live. */
     public function cancelPendingFor(int $assignmentId): int;
     /** Drained by SystemService::runTimerJobs(). Returns ['sent'=>,'failed'=>,'skipped'=>]. */
@@ -1908,7 +1904,7 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 |---|---|---|
 | Sidebar menu | `src/ChurchCRM/Config/Menu/Menu.php` (registry) | **Two** headings, not one — see §5.0. `'Volunteer' => self::getVolunteerMenu($isVolunteerV2Enabled)` is the member surface; `'Ministries' => self::getMinistriesMenu($currentUser, $isVolunteerCoordinator)` is the administration surface and is built the way `getGroupMenu()` builds its per-group entries. Visibility booleans are computed once in `buildMenuItems()` like the others. **Menu visibility must mirror the route middleware exactly.** |
 | Member menu entry | ~~`Menu.php`~~ → `ChurchCRM\Portal\PortalNav` | **Moved out of the sidebar by #9867** (Member Portal P16). There is no "Volunteer" heading and no `getVolunteerMenu()`; the member surface is the portal's **Volunteering** entry, built by `PortalNav::build()` and gated by `PortalNav::isVolunteeringVisible()`. A volunteer with no assignments still sees it — that is intended, it is where they find open opportunities. |
-| Person view tab | `src/people/views/person-view.php:580-584` (nav) and `:680-761` (pane); route args `src/people/routes/view.php:246-248` | **Direct edit** — there is no `PERSON_VIEW_TABS` filter (F15). The route passes the rollout state; the view renders the V1 pane, the V2 pane, or both (§3.8). The V2 pane lists the person's qualifications and upcoming assignments, read-only, linking into `/volunteer`. Adding a real `Hooks::PERSON_VIEW_TABS` filter is a worthwhile core extraction, but it is **not a prerequisite** — editing the view directly is the established pattern (F15), not a workaround for a defect. Tracked as open question D-8, not in [Appendix E](#appendix-e--prerequisite-hardening-track). |
+| Person view tab | `src/people/views/person-view.php:580-584` (nav) and `:680-761` (pane); route args `src/people/routes/view.php:246-248` | **Direct edit** — there is no `PERSON_VIEW_TABS` filter (F15). The route passes the rollout state; the view renders the V1 pane, the V2 pane, or both (§3.8). The V2 pane lists the person's qualifications and upcoming assignments, read-only, linking into `/ministries`. Adding a real `Hooks::PERSON_VIEW_TABS` filter is a worthwhile core extraction, but it is **not a prerequisite** — editing the view directly is the established pattern (F15), not a workaround for a defect. Tracked as open question D-8, not in [Appendix E](#appendix-e--prerequisite-hardening-track). |
 | Event editor | `webpack/event-form.js` beside `#linkedGroupSelect` (`:271-272`) | the ministry select (§2.16 item 10) |
 | Event API | `src/api/routes/calendar/events.php` `applyEventExtendedFields()` `:234-282`, `getEvent` `:181-227` | §2.16 items 7–9 |
 | Event roster / staffing | `src/event/views/view.php` | a "Volunteers" card on the event view showing V2 staffing for occurrences linked to this event, gated on the rollout flag **and** on scope. Read-only; the edit affordance links to `/ministries/occurrences/{id}`. |
@@ -2036,7 +2032,7 @@ Hard boundary. A PR that changes any of these outside the seven switch surfaces 
 - `src/VolunteerOpportunityEditor.php`
 - `PersonService::addVolunteerOpportunity()` (`:309`) / `removeVolunteerOpportunity()` (`:321`)
 - The person-delete cascade at `src/ChurchCRM/model/ChurchCRM/Person.php:607`
-- `src/api/routes/system/volunteer-opportunities.php` and its registration at `src/api/index.php:65`
+- `src/admin/routes/api/system/volunteer-opportunities.php` (`/admin/api/volunteer-opportunities` since #10168) and its registration at `src/admin/index.php:30`
 - Seeded `query_qry` rows 25 and 100 and their `queryparameters_qrp` rows
 - The five existing V1 Cypress specs
 - **No V2 table may declare a foreign key to a V1 table, and no V2 code path may read one** (D7).
@@ -2051,7 +2047,7 @@ These are the only places the rollout flag has to be threaded. Everything else i
 | 2 | Person view "Volunteer" tab | `src/people/views/person-view.php:580-584` (nav), `:680-761` (pane) | `v1` → today's pane; `v2` → the V2 pane; `both` → **two clearly-labelled tabs**, "Volunteer (Legacy)" and "Volunteer", because #9704 requires the active experience to be obvious. The route (`src/people/routes/view.php:246-248`) passes the version in. |
 | 3 | Person-view assign `POST` / `RemoveVO` `GET` | `src/people/routes/view.php:22-48`, `:65-72` | **handlers untouched.** The flag only decides whether the form that posts to them is rendered. Do **not** add V2 writes to these handlers. |
 | 4 | Legacy editor page | `src/VolunteerOpportunityEditor.php:19` | in `v2`-only mode, a server-side redirect to `/ministries/dashboard`. This is the "enforce the rollout server-side" requirement of #9704, which explicitly permits changes "required to expose/disable the experience". |
-| 5 | V1 REST API group | `src/api/routes/system/volunteer-opportunities.php:265` | **leave enabled in every state.** It is already admin-only, and #9702's migration tooling will want it. Recommended: no change at all. |
+| 5 | V1 REST API group | `src/admin/routes/api/system/volunteer-opportunities.php:36-264` | **leave enabled in every state.** It is already admin-only, and #9702's migration tooling will want it. Recommended: no change at all. |
 | 6 | `QueryView` empty-state admin link | `src/QueryView.php:375-378` | hardcodes `VolunteerOpportunityEditor.php`; if #4 adds a redirect this link silently changes destination. **Leave it**; note it for #9702. |
 | 7 | Reports menu → `QueryList.php` | `src/ChurchCRM/Config/Menu/Menu.php:336` | the two seeded V1 volunteer queries stay listed in every state. Acceptable — they are V1 data reports and #9702 owns their retirement. |
 
@@ -2128,7 +2124,7 @@ Derived from the `usr_ManageFundraisers` precedent (`src/mysql/upgrade/7.4.3-man
 | 9 | `src/admin/views/user-editor.php:158-170` | add the checkbox to the `$permissions` array |
 | 10 | `User::getAllPermissions()` (`:243-264`) | add the key (note: this method currently has **no callers** — see Appendix E) |
 | 11 | `src/v2/routes/root.php:24-35` | add `'ManageMinistries'` and `'VolunteerCoordinator'` to the allow-list |
-| 12 | new `.../Request/Auth/ManageMinistriesRoleAuthMiddleware.php` and `VolunteerCoordinatorRoleAuthMiddleware.php` | §4.5 |
+| 12 | new `src/ChurchCRM/Volunteer/Middleware/ManageMinistriesRoleAuthMiddleware.php` and `VolunteerCoordinatorRoleAuthMiddleware.php` | §4.5 |
 
 ```php
 // src/ChurchCRM/model/ChurchCRM/User.php — beside isManageFundraisersEnabled() (:189)
@@ -2203,7 +2199,7 @@ The codebase already uses three layers, and V2 uses the same three — no more, 
 | Layer | Answers | V2 use |
 |---|---|---|
 | **Role middleware** (`BaseAuthRoleMiddleware`) | "Does this user have the coarse capability at all?" | `ManageMinistriesRoleAuthMiddleware` on global-manager routes; `VolunteerCoordinatorRoleAuthMiddleware` on the coordinator area. **Never** used for ministry/team scope — the middleware runs before route args are resolved into domain objects and the base class has no entity hook. |
-| **Entity middleware** (`AbstractEntityMiddleware::postEntityLoad()`) | "This specific record exists — may this user touch it?" | `MinistryMiddleware`, `TeamMiddleware`, `PositionMiddleware`, `ScheduleMiddleware`, `OccurrenceMiddleware`, `AssignmentMiddleware`, `SwapMiddleware`. |
+| **Entity middleware** (`AbstractEntityMiddleware::postEntityLoad()`) | "This specific record exists — may this user touch it?" | `VolunteerMinistryMiddleware`, `VolunteerTeamMiddleware`, `VolunteerPositionMiddleware`, `VolunteerScheduleMiddleware`, `VolunteerOccurrenceMiddleware`, `VolunteerAssignmentMiddleware`, `VolunteerSwapMiddleware`, `VolunteerQualificationMiddleware`. |
 | **Handler / service** | "Is this *particular operation* on this record allowed, is the payload in scope, and is the volunteer eligible?" | self-or-authorized checks, eligibility and capacity at signup time, and **list-query scoping**, which no middleware can do. |
 
 ```php
@@ -2212,16 +2208,13 @@ class VolunteerCoordinatorRoleAuthMiddleware extends BaseAuthRoleMiddleware
 {
     protected function hasRole(): bool
     {
-        if (!User::isVolunteerV2Enabled()) {
-            return false;
-        }
-        $authz = new VolunteerAuthorizationService();
-        return $this->user->isManageMinistriesEnabled() || $authz->hasAnyScope($this->user);
+        // D12 (Manage My Ministries) and the portal team-leader clause (#9868)
+        return $this->user->isVolunteerCoordinatorEnabled() || $this->user->isVolunteerTeamLeaderEnabled();
     }
 
     protected function noRoleMessage(): string
     {
-        return gettext('Volunteer coordinator access is required');
+        return gettext('Manage My Ministries access, with a ministry or team to manage, is required');
     }
 
     protected function getRoleName(): string
@@ -2232,7 +2225,7 @@ class VolunteerCoordinatorRoleAuthMiddleware extends BaseAuthRoleMiddleware
 ```
 
 ```php
-// src/ChurchCRM/Slim/Middleware/Api/MinistryMiddleware.php — the FamilyMiddleware:43-50 shape
+// src/ChurchCRM/Volunteer/Middleware/VolunteerMinistryMiddleware.php — the FamilyMiddleware:43-50 shape
 protected function postEntityLoad(ServerRequestInterface $request, mixed $entity): ?ResponseInterface
 {
     $currentUser = AuthenticationManager::getCurrentUser();
@@ -2321,8 +2314,8 @@ team.
 
 Reading is the same shape. The ministry-keyed list and qualification matrix stay ministry-gated —
 a ministry-wide screen is a coordinator's — and #9868 added the team-keyed twins a team leader
-asks instead: `GET /volunteer/teams/{id}/schedules` and
-`GET /volunteer/teams/{id}/qualification-matrix`, both behind `VolunteerTeamMiddleware`, both
+asks instead: `GET /api/ministries/teams/{id}/schedules` and
+`GET /api/ministries/teams/{id}/qualification-matrix`, both behind `VolunteerTeamMiddleware`, both
 serving exactly the document the ministry route serves with `?teamId=` set.
 
 **Pool membership (rewritten by D19).** Every `/api/groups` write requires the global
@@ -2516,10 +2509,9 @@ were widening the gate for moved. The two member MVC pages are now
 - the volunteer half of `isLimitedAccessAllowedPath()` is **exactly one entry**,
   `/api/ministries/me/`, still behind `isVolunteerV2Enabled()`. It stays because the portal's
   volunteering templates load the same two bundles and those bundles call that API;
-- `/volunteer/my-schedule` and `/volunteer/opportunities` are **gone from the list**. They survive
-  as 302s to the portal for one release (`src/volunteer/routes/member-redirects.php`), so a link in
-  already-sent mail still works — for a self-service session `AuthMiddleware` answers first and
-  lands them on `/portal/`, one click from their schedule, rather than on the page itself;
+- `/volunteer/my-schedule` and `/volunteer/opportunities` are **gone from the list**, and gone
+  altogether since the pre-release `/volunteer` module was dropped without redirects (D12,
+  2026-09-18): nothing under it had shipped;
 - step 3's link lives on the portal, not on `/external/limited-access`, whose page MP8 (#9869)
   deleted; the URL survives as a permanent 302 to `/portal` so old links keep working.
 
@@ -2535,7 +2527,7 @@ Every row here needs a Cypress spec (§6.5).
 | No API key, no session → any `/api/ministries/*` | `401`, body `{"error":"No logged in user","code":401}` (`AuthMiddleware.php:109-111`) |
 | Authenticated user with no manager flag and no scope → `GET /api/ministries/ministries` | `403` from `VolunteerCoordinatorRoleAuthMiddleware` |
 | Authenticated coordinator → `POST /api/ministries/ministries` | `403` — creation is manager-only |
-| Coordinator of ministry A → `POST /api/ministries/ministries/{B}` | `403` from `MinistryMiddleware::postEntityLoad()` |
+| Coordinator of ministry A → `POST /api/ministries/ministries/{B}` | `403` from `VolunteerMinistryMiddleware::postEntityLoad()` |
 | Coordinator of ministry A → `GET /api/ministries/ministries` | `200`, contains A, **never** B |
 | Coordinator of ministry A → `GET /api/ministries/occurrences?from=…&to=…` | `200`, contains no occurrence of ministry B |
 | Team leader of team T → any ministry-level write | `403` |
@@ -2550,7 +2542,7 @@ Every row here needs a Cypress spec (§6.5).
 | Second identical `respond('accepted')` | `200`, one state change, **one** response row |
 | Second `POST /schedules/{id}/generate` over the same window | `200` with `created: 0` |
 | Second identical notification enqueue | one outbox row |
-| Rollout `v1` → any `/api/ministries/*` or `/volunteer/*` | `403` / redirect from `VolunteerV2EnabledMiddleware` |
+| Rollout `v1` → any `/api/ministries/*` or `/ministries/*` | `403` / redirect from `VolunteerV2EnabledMiddleware` |
 | Rollout `v1` → V1 surfaces | unchanged and working |
 | EditSelf-exclusive volunteer → `GET /api/ministries/me/assignments` | `200` (the §4.7 exemption) |
 | EditSelf-exclusive volunteer → `GET /api/ministries/ministries` | `403` (not exempt) |
@@ -2653,8 +2645,8 @@ Sunday.
 | S2b | ~~My ministries and teams (the module index)~~ **removed** — the sidebar's **Ministries** heading lists the same ministries (§5.0), and `/ministries` 302s to S1. Its "New ministry" button lives on S1 | — | — | — |
 | S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, calendar, help wanted | `/ministries/{id}` | scope | `ministries-ministry` |
 | S4 | Occurrence / staffing view | `/ministries/occurrences/{id}` | scope | `ministries-occurrence` |
-| S5 | My schedule (member) | `/portal/volunteer/schedule` | authenticated person | `volunteer-my-schedule` |
-| S6 | Open opportunities (member) | `/portal/volunteer/opportunities` | authenticated person | `volunteer-opportunities` |
+| S5 | My schedule (member) | `/portal/volunteer/schedule` | authenticated person | `portal-volunteer-schedule` |
+| S6 | Open opportunities (member) | `/portal/volunteer/opportunities` | authenticated person | `portal-volunteer-opportunities` |
 
 Webpack entries are **bare, module-prefixed keys** mapping to `src/skin/v2/<key>.min.js`
 (`webpack.config.js:72-119`); views include them with
@@ -2666,8 +2658,8 @@ are gone; the pages are the Twig templates `volunteer/schedule.html.twig` and
 `volunteer/opportunities.html.twig` in `src/Include/themes/default/templates/`, which reproduce the
 same container ids and load the same two bundles with
 `<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/portal-volunteer-schedule.min.js') }}"></script>`.
-`webpack/ministries/{my-schedule,opportunities,member-ui}.ts` and `/api/ministries/me/*` did not
-change. Inside the portal the two pages are one nav entry, **Volunteering**, with a secondary tab
+The scripts (since 2026-09-18 `webpack/portal/{volunteer-schedule,volunteer-opportunities,member-ui}.ts`)
+and `/api/ministries/me/*` did not change. Inside the portal the two pages are one nav entry, **Volunteering**, with a secondary tab
 bar between them; the `.volunteer-touch-target` rules the two views carried inline moved to
 `src/skin/scss/_portal-volunteer.scss` and ship in `portal.min.css`.
 
@@ -2695,8 +2687,9 @@ panels from it. Do not fan out to five endpoints.
 
 ### 5.3 S2 — Setup flow — **removed**
 
-There is no guided setup flow and no `/volunteer/setup` route. The URL **404s**; the
-`volunteer-setup` bundle, its view, its route and its spec are all deleted.
+There is no guided setup flow and no setup route; the pre-release `/volunteer/setup` URL **404s**,
+as all of `/volunteer` does (D12). The `volunteer-setup` bundle, its view, its route and its spec
+are all deleted.
 
 The wizard walked a coordinator through seven steps. Six of them acquired a better home
 on the ministry page itself as the epic landed — teams and their leaders on Overview,
@@ -3043,7 +3036,8 @@ The single most important coordinator screen.
 - Row actions via the shared action-menu (U1): *Send reminder*, *Cancel assignment*, *Replace*,
   *View person*.
 - Footer actions: **Email these volunteers** (declarative `data-email-composer` +
-  `data-email-endpoint="volunteer/occurrences/{id}/emails"`, U7) and **Export CSV** (R2).
+  `data-email-endpoint="ministries/occurrences/{id}/emails"`, U7) and **Export CSV** (R2) —
+  **neither is built yet**, nor are their routes (§3.3.2).
 - **"Assign everyone in the cart" is RETIRED**, along with `POST /api/ministries/cart/assign` and
   `VolunteerAssignmentService::assignFromCart()`. Assignment is per person and carries per-person
   rules (I1–I5), so the bulk button routinely half-succeeded and reported a list of reasons a
@@ -3332,7 +3326,7 @@ is why that half of the change is not optional.
   The order is **API setup → `freshAdminLogin()` → UI assertions → teardown API calls**. API-only
   specs need no login at all.
 - `cy.intercept()` patterns must start `**/` — `test-subdir` runs the whole suite at `/churchcrm/`.
-- `x-api-key` authenticates Slim MVC pages (`/event`, `/volunteer`, `/v2`), so a pure `cy.request()`
+- `x-api-key` authenticates Slim MVC pages (`/event`, `/ministries`, `/v2`), so a pure `cy.request()`
   can assert their status codes — but **not** `/people/*` or any legacy root `.php` page: those
   require `Include/PageInit.php`, whose `ensureAuthentication()` runs at file-load time before any
   middleware, so an API-key request 302s to `/session/begin`. Assertions on the person view or on
@@ -3353,7 +3347,7 @@ rm -f src/logs/$(date +%Y-%m-%d)-*.log
 
 npm run test:api      -- --spec "cypress/e2e/api/private/standard/private.volunteer.assignment.spec.js"
 npm run test:ui       -- --spec "cypress/e2e/ui/people/volunteer-v2.member.spec.js"
-npm run test:ui-admin -- --spec "cypress/e2e/ui-admin/admin.volunteer-v2.setup.spec.js"
+npm run test:ui-admin -- --spec "cypress/e2e/ui-admin/admin.volunteer-v2.ministry-page.spec.js"
 
 cat src/logs/$(date +%Y-%m-%d)-php.log
 cat src/logs/$(date +%Y-%m-%d)-app.log
@@ -3381,7 +3375,7 @@ can land **in parallel with** #9704/#9705. None of them is a V2-only helper.
 | **CR1** | Extract `webpack/common/person-select.ts` → `initPersonSelect(el, opts)`; honour both `.personSearch` and `.person-search`; accept a custom endpoint; handle the `shown.bs.modal` / `hidden.bs.modal` TomSelect lifecycle and `maxOptions: null`. **Migrate `webpack/event-checkin.js` onto it in the same PR.** | `webpack/common/person-select.ts` (new), `webpack/event-checkin.js`, `webpack.config.js` | #9707, #9709, #9711, #9712 | new issue, or folded into #9707 |
 | **CR2** | Extract `buildActionMenu(items, opts)` in `src/skin/js/CRMJSOM.js`; re-express `renderPerson/Family/EventActionMenu` as wrappers (no behaviour change); add `renderVolunteerActionMenu`. Add the members to `webpack/types/window.d.ts`. | `src/skin/js/CRMJSOM.js`, `webpack/types/window.d.ts` | #9711 | new issue, or folded into #9711 |
 | **CR3** | Add `window.CRM.confirmAction({...})` over bootbox; migrate the three delegated handlers already in `CRMJSOM.js:812-955`. *Optional* — if the maintainer declines, V2 uses the canonical literal. | `src/skin/js/CRMJSOM.js` | #9709, #9711, #9712 | new issue |
-| **CR4** | Extract `ChurchCRM\Service\RecurrenceDateGenerator` (weekly / monthly / yearly, event-free); **migrate `EventService::generateOccurrenceDates()` onto it** in the same PR. Retires one of the two existing duplicate implementations. | `src/ChurchCRM/Service/RecurrenceDateGenerator.php` (new), `src/ChurchCRM/Service/EventService.php` | #9708 (standalone schedules only) | new issue, or folded into #9708 |
+| **CR4** | Extract `ChurchCRM\Service\RecurrenceDateGenerator` (weekly / monthly / yearly, event-free); **migrate `EventService::generateOccurrenceDates()` onto it** in the same PR. Retires one of the two existing duplicate implementations. | `src/ChurchCRM/Service/RecurrenceDateGenerator.php` (new), `src/ChurchCRM/Service/EventService.php` | #9708 (standalone schedules only — retired by D20) | new issue, or folded into #9708 |
 | **CR5** | Add `date`, `datetime` and `enum:a,b,c` types to `InputSanitizationMiddleware` with tests. | `src/ChurchCRM/Slim/Middleware/InputSanitizationMiddleware.php` | #9705 onward (soft) | new issue |
 | **CR6** | Add an optional **`Reply-To`** to `ChurchCRM\Emails\BaseEmail`: `public function setReplyTo(string $email, string $name = ''): void` storing a nullable pair, applied at the top of `send()` (`BaseEmail.php:52-59`) via PHPMailer's `addReplyTo($address, $name = '')` before `$this->mail->send()`; an empty address is a no-op and a `false` return from PHPMailer is logged through `LoggerUtils::getAppLogger()` and does not abort the send. **Why reusable:** every module that mails a person has the same problem — the only `From` any message can carry is the church address (`BaseEmail.php:24`), so a reply never reaches the human who caused the message. The capability belongs on the shared base class, not on a Volunteer-only email base. **Backward compatible by construction:** the constructor signature is untouched, all nine existing subclasses keep calling `parent::__construct($toAddresses)`, and a message that never calls `setReplyTo()` is byte-identical to today's. | `src/ChurchCRM/Emails/BaseEmail.php` | #9710 | new issue (this is E-14, moved into scope) |
 
@@ -3401,7 +3395,7 @@ message whose reply target is knowable — and a reviewer should not expect one.
 
 **PR contains:** `sVolunteerVersion` `ConfigItem` (+ `getVolunteerVersionChoices()`); the three
 `User` statics (`getVolunteerVersion`, `isVolunteerV2Enabled`, `isVolunteerV1Enabled`);
-`VolunteerV2EnabledMiddleware`; `src/volunteer/index.php` + `.htaccess` (copied from
+`VolunteerV2EnabledMiddleware`; `src/volunteer/index.php` (now `src/ministries/`) + `.htaccess` (copied from
 `src/event/.htaccess`) + a placeholder dashboard route and view; the `Menu.php` volunteer entry and
 the `Menu.php:114` V1 visibility change; the seven switch surfaces from §3.8 wired but rendering
 V1-as-today; `'ManageMinistries'`/`'VolunteerCoordinator'` in `src/v2/routes/root.php:24-35`;
@@ -3621,7 +3615,7 @@ to route around one of these.
 | Item | Blocks | Why it genuinely blocks |
 |---|---|---|
 | **E-2** (`npm run build:orm` broken) | wave 1 (#9705) | #9705's first instruction is to regenerate the ORM. An implementing agent following the documented command fails immediately. Fix it before anyone runs it. |
-| **E-5** (`.htaccess` view exposure) | wave 1 (#9704) | #9704 creates `src/volunteer/.htaccess` by copying an existing module. Three of the six candidates are unsafe, so "copy the safe one" is a trap rather than a design — and the three unsafe ones are a live authentication bypass on every install today. Fixing them removes both problems at once. |
+| **E-5** (`.htaccess` view exposure) | wave 1 (#9704) | #9704 creates `src/volunteer/.htaccess` (now `src/ministries/`) by copying an existing module. Three of the six candidates are unsafe, so "copy the safe one" is a trap rather than a design — and the three unsafe ones are a live authentication bypass on every install today. Fixing them removes both problems at once. |
 | **E-6** (`MvcAppFactory` leaks stack traces) | wave 1 (#9704) | `/volunteer` inherits it the moment the module exists. Shipping a new module that leaks stack traces in production is not acceptable, and V2 cannot opt out — the factory takes only three options (F26). |
 | **E-18** (two API error shapes + over-broad redaction) | wave 1 (#9705), wave 2 (#9706) | §4.8's authorization specs assert error bodies, and M5 currently forces V2 to *phrase around* a regex that eats the word *user*. Phrasing around a bug is exactly the workaround this rule forbids. Fix the contract, then write the tests against it. |
 | **E-19** (stale skill files) | wave 1, all of it | §0.2 rule 4 exists solely because of this. An agent implementing #9704 from `routing-architecture.md` or `slim-mvc-skill.md` produces `/volunteer/volunteer/`-style double prefixes and a `src/volunteer/middleware/` directory that nothing loads. It is L-sized and the single highest-leverage item here. |
@@ -3714,9 +3708,9 @@ consume it. This is #9703 deliverable 8.
 | Service | Why | Consumer issues |
 |---|---|---|
 | `VolunteerAuthorizationService` | No scope primitive exists (F10). Must be one class so the admin bypass lives in exactly one place and so a future `AuthorizationService` (#8758) can absorb it without call-site churn. | #9706 and every later issue |
-| `VolunteerMinistryService` | Ministry/team/pool/position/qualification CRUD with scope checks. `GroupService` is deliberately not extended: ~60 % raw concatenated SQL, `bManageGroups`-only gating, and `addUserToGroup()` swallows failures (G10). | #9707, #9715, D19 |
-| `VolunteerPoolWriter` | D19's managed-write context and the hook predicate, in one small final class so the two core models share exactly one implementation of "may this caller write a ministry's pool Group". Deliberately not a method on `VolunteerMinistryService`: the models must not depend on the setup service, and a depth counter with `try`/`finally` is the whole of it (§4.6). | D19 |
-| `VolunteerClassLinkService` | D23's link to a Sunday School class: validation, the teachers linking imports, the Teacher-role writes, and the predicate the membership hooks and the groups API ask. Static entry points because the core membership model calls it and must not depend on the setup services — the reason `VolunteerPoolWriter` is its own class. | D23 |
+| `VolunteerMinistryService` | Ministry/team/pool/position CRUD with scope checks; qualifications are `VolunteerQualificationService`, split out of it (D12). `GroupService` is deliberately not extended: ~60 % raw concatenated SQL, `bManageGroups`-only gating, and `addUserToGroup()` swallows failures (G10). | #9707, #9715, D19 |
+| `VolunteerPoolWriter` | D19's managed-write context and the hook predicate, in one small final class so the two core models share exactly one implementation of "may this caller write a ministry's pool Group". Deliberately not a method on `VolunteerMinistryService`: the models must not depend on that service, and a depth counter with `try`/`finally` is the whole of it (§4.6). | D19 |
+| `VolunteerClassLinkService` | D23's link to a Sunday School class: validation, the teachers linking imports, the Teacher-role writes, and the predicate the membership hooks and the groups API ask. Static entry points because the core membership model calls it and must not depend on the ministry services — the reason `VolunteerPoolWriter` is its own class. | D23 |
 | `VolunteerScheduleService` | Occurrence generation per link mode, Staff this event, the offset-aware window resolution and the effective-requirement merge. Cannot live in `EventService`, which exists to *create* events — precisely what #9713 forbids. | #9708, #9713, D20–D22 |
 | `VolunteerScheduleTopUp` | D31's daily top-up: claims the day, generates every active schedule to the horizon, records the result. A final class of its own, like `VolunteerPoolWriter`, because `SystemService` calls it and it owns a `config_cfg` claim no schedule method should carry. | D31 |
 | `VolunteerAssignmentService` | The whole assignment/response/gap/swap workflow, including the single gap implementation. No analogue exists. | #9709, #9711, #9712 |
@@ -3733,14 +3727,14 @@ consume it. This is #9703 deliverable 8.
 |---|---|---|
 | `VolunteerV2EnabledMiddleware` | `BaseAuthSettingMiddleware` reads booleans only and returns an empty body with the reason in the HTTP reason phrase (S2); the rollout state is a three-value `choice` (#9704). | #9704 |
 | `ManageMinistriesRoleAuthMiddleware`, `VolunteerCoordinatorRoleAuthMiddleware` | Thin `BaseAuthRoleMiddleware` subclasses (~20 lines each) — the established way to gate a route group. | #9706 |
-| `MinistryMiddleware`, `TeamMiddleware`, `PositionMiddleware`, `ScheduleMiddleware`, `OccurrenceMiddleware`, `AssignmentMiddleware`, `SwapMiddleware` | `AbstractEntityMiddleware` subclasses; `postEntityLoad()` is where per-record scope is decided (F25). | #9706 onward |
+| `VolunteerMinistryMiddleware`, `VolunteerTeamMiddleware`, `VolunteerPositionMiddleware`, `VolunteerScheduleMiddleware`, `VolunteerOccurrenceMiddleware`, `VolunteerAssignmentMiddleware`, `VolunteerSwapMiddleware`, `VolunteerQualificationMiddleware` | `AbstractEntityMiddleware` subclasses; `postEntityLoad()` is where per-record scope is decided (F25). | #9706 onward |
 | `VolunteerSearchResultProvider` | Two files (`BaseSearchResultProvider` subclass + one array line) to put volunteers in global search — the cleanest extension point in the codebase. | #9711 |
 | Seven `BaseEmail` subclasses | Appendix C. There is no generic "send an arbitrary message to a person" email class; every message type in the codebase is its own subclass. | #9710 |
 | `BaseEmail::setReplyTo()` *(core, CR6)* | Not V2-specific. `BaseEmail` builds one `PHPMailer` (`BaseEmail.php:35`) and sets a single `From` — the church address — at `:24`, with no `addReplyTo()` call anywhere in the class, so a reply to **any** ChurchCRM message reaches the church office rather than the person who caused it. An optional setter honoured in `send()` (`:52-59`) is the smallest change that fixes it for every module, and it is byte-identical behaviour for the nine existing subclasses that never call it. | CR6 → #9710 |
 | `webpack/common/person-select.ts` *(core, CR1)* | No shared person selector exists; four independent TomSelect instantiations with two class conventions (F13). | CR1 → #9707, #9709, #9711, #9712 |
 | `buildActionMenu()` in `CRMJSOM.js` *(core, CR2)* | No generic builder; three renderers sharing 22 verbatim lines (person↔family 48 of 58 identical) plus 35 hand-built dropdown triggers in 25 files (re-counted at `a22e68128`). #9709 forbids a Volunteer-only action-menu framework. | CR2 → #9711 |
 | `window.CRM.confirmAction()` *(core, CR3, optional)* | 47 `bootbox.confirm` literals in 32 files. | CR3 → #9709, #9711, #9712 |
-| Six webpack entries (`ministries-dashboard`, `-ministries`, `-ministry`, `-occurrence`, `-my-schedule`, `-opportunities`) | One per screen, matching the module-prefixed bare-key convention. | #9711, #9712, #9715 |
+| Six webpack entries (`ministries-dashboard`, `-ministry`, `-occurrence`, `-settings`; `portal-volunteer-schedule`, `-opportunities`) | One per screen, matching the module-prefixed bare-key convention; the two member bundles are the portal's (#9867). | #9711, #9712, #9715 |
 | `webpack/ministries/components/ministry-events.ts` | The Calendar tab, its New event dialog (D24) and the question asked after Create (D33): a component like the Schedules and Occurrences tables, so the tab is one entry in `ministry.ts`. | D24, D33 |
 | `webpack/ministries/components/default-fill.ts` | The Generate dialog's "Fill by default with" rows, out of `schedules-table.ts`; its option list also fills the staffing-needs editor's Default volunteer (D32). | D24, D32 |
 
