@@ -26,6 +26,12 @@
 
 // --- DataTables — Tabler skin ----------------------------------------
 .dt-container {
+  .dt-search,
+  .dt-info,
+  .dt-paging {
+    padding: 1rem 0.75rem;
+  }
+
   .dt-search input,
   .dt-length select {
     border: 1px solid var(--tblr-border-color);
@@ -40,6 +46,14 @@
       outline: 0;
       box-shadow: 0 0 0 0.2rem rgba(32, 107, 196, 0.15);
     }
+  }
+
+  .dt-length {
+    padding: 0 0.75rem;
+  }
+
+  .dt-length select {
+    padding-right: 2rem;
   }
 }
 
