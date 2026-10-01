@@ -402,7 +402,7 @@ export class CartManager {
    * @private
    */
   performEmptyCart(options) {
-    const reloadPage = options.reloadPage !== false && window.location.pathname.includes("/v2/cart");
+    const reloadPage = options.reloadPage !== false && window.location.pathname.includes("/people/cart");
     const reloadDelay = options.reloadDelay || 1500;
 
     return window.CRM.APIRequest({
@@ -609,7 +609,7 @@ export class CartManager {
     if (cartPeople.length > 0) {
       menuHtml = `
                 <li>
-                    <a class="dropdown-item" href="${window.CRM.root}/v2/cart">
+                    <a class="dropdown-item" href="${window.CRM.root}/people/cart">
                         <i class="fa-solid fa-eye text-primary"></i> ${i18next.t("View Cart")}
                     </a>
                     <a class="dropdown-item emptyCart">

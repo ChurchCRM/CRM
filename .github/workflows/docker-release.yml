@@ -1,0 +1,121 @@
+name: Build & Push Docker Images
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing stable release tag to publish
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docker-release
+  cancel-in-progress: false
+
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: churchcrm/crm
+
+jobs:
+  build-and-push:
+    # Never publish a pre-release build as :latest-* — operators pull that tag
+    # expecting the last stable release.
+    if: github.event_name == 'workflow_dispatch' || github.event.release.prerelease == false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - dockerfile: docker/Dockerfile.churchcrm-fpm-php8
+            tag-suffix: php8-fpm
+            platforms: linux/amd64,linux/arm64
+            needs-apache-config: false
+
+          - dockerfile: docker/Dockerfile.churchcrm-apache-php8
+            tag-suffix: php8-apache
+            platforms: linux/amd64,linux/arm64
+            needs-apache-config: true
+
+    steps:
+      - name: Checkout Dockerfiles
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: docker
+          persist-credentials: false
+
+      - name: Get version from release tag
+        id: version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag }}
+        run: |
+          VERSION="${RELEASE_TAG#v}"
+          [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Unsupported stable release tag" >&2; exit 1; }
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Download and verify the triggering release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          mkdir -p release-download build-context
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$RELEASE_TAG" > release-download/metadata.json
+          jq -e '.draft == false and .prerelease == false' release-download/metadata.json > /dev/null
+          ASSET="ChurchCRM-${VERSION}.zip"
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern "$ASSET" --dir release-download
+          DIGEST=$(jq -r --arg asset "$ASSET" '.assets[] | select(.name == $asset) | .digest' release-download/metadata.json)
+          [[ "$DIGEST" =~ ^sha256:[a-f0-9]{64}$ ]] || { echo "Missing release SHA-256 digest" >&2; exit 1; }
+          printf '%s  %s\n' "${DIGEST#sha256:}" "release-download/$ASSET" | sha256sum --check
+          python3 docker/prepare-release-context.py "release-download/$ASSET" build-context
+
+      - name: Add Apache config to build context
+        if: matrix.needs-apache-config
+        run: |
+          mkdir -p build-context/apache
+          cp docker/apache/default.conf build-context/apache/default.conf
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      - name: Log in to DockerHub
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Select latest tag
+        id: latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag }}
+          TAG_SUFFIX: ${{ matrix.tag-suffix }}
+        run: |
+          LATEST_TAG=$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)
+          if [[ "$RELEASE_TAG" == "$LATEST_TAG" ]]; then
+            echo "tag=$REGISTRY/$IMAGE_NAME:latest-$TAG_SUFFIX" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build and push
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: build-context
+          file: ${{ matrix.dockerfile }}
+          target: prod
+          platforms: ${{ matrix.platforms }}
+          push: true
+          provenance: mode=max
+          sbom: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.version.outputs.version }}-${{ matrix.tag-suffix }}
+            ${{ steps.latest.outputs.tag }}

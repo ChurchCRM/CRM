@@ -1,9 +1,31 @@
-name: Locale Sync POEditor
+name: "Locale: sync"
+
+# Upload terms, then download (docs/locale-pipeline.md). No translation happens here:
+#   1. upload terms   locale/messages.po -> POEditor, deleting terms that are no longer in the file
+#   2. download       POEditor -> src/locale + locale/terms/missing, opened as a PR on branch
+#                     locale/download/<version>
+#
+# Two flows end here:
+#   terms flow      merged terms PR -> (30 minute settle) -> upload terms -> download
+#   translate flow  translation agent -> Locale: upload translations -> download only
+#                   (dispatched with upload_terms=false)
+#
+# Every step is idempotent, so the trigger only decides when the run happens, not what it does:
+#   - push to master touching locale/messages.po (a merged terms PR, branch locale/terms/*).
+#     It first waits 30 minutes (job `settle`); a newer push cancels the wait and starts it again,
+#     so a burst of terms merges becomes one upload and one download
+#   - locale-upload-missing.yml dispatches it with upload_terms=false after a translate branch uploads (no wait)
+#   - daily schedule and manual run (no wait)
+# The sync PR itself never retriggers this workflow: it does not touch locale/messages.po.
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'locale/messages.po'
   schedule:
     # Run daily at midnight UTC
     - cron: "0 0 * * *"
@@ -23,47 +45,62 @@ on:
         required: false
         type: boolean
         default: false
+      upload_terms:
+        description: 'Upload locale/messages.po to POEditor before downloading'
+        required: false
+        type: boolean
+        default: true
+      max_term_deletions:
+        description: 'Let the terms upload delete up to this many POEditor terms (blank = default guard)'
+        required: false
+        type: string
+        default: ''
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+# Concurrency is per job, not per workflow: `settle` (first job) restarts its wait on every new push, and `download`
+# queues so a manual, scheduled or dispatched run never overlaps a settled push run.
 
 jobs:
-  download:
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
+  settle:
+    # Merge-storm guard, first so a newer push cancels the run before it does any work
+    if: github.event_name == 'push'
+    concurrency:
+      group: locale-sync-settle
+      cancel-in-progress: true
+    timeout-minutes: 40
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Wait 30 minutes for more terms merges
+      run: sleep 1800
+
+  setup:
+    needs: settle
+    if: ${{ !cancelled() && (needs.settle.result == 'success' || needs.settle.result == 'skipped') }}
+    timeout-minutes: 5
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.package-version.outputs.current-version }}
+      date: ${{ steps.date.outputs.date }}
+      trigger: ${{ steps.trigger.outputs.trigger }}
     env:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
-    - name: "🚀 Stage 1: Initialization & Checkout"
-      run: echo "Starting POEditor locale sync workflow..."
+    - name: Require master
+      # sync_terms deletes POEditor terms that are missing from locale/messages.po, so an older branch or
+      # tag must never be the source of that file
+      if: github.ref != 'refs/heads/master'
+      run: |
+        echo "::error::Locale: sync must run from master (this run is on $GITHUB_REF)"
+        exit 1
 
     - name: Checkout repository
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
-        # fetch full history so things like auto-changelog work properly
-        fetch-depth: 0
-        # Use token for write access
-        token: ${{ secrets.GITHUB_TOKEN }}
+        ref: master
 
     - name: Display operation mode
       run: |
         echo "🔧 **Operation Mode**: ${{ inputs.operation_mode || 'download-and-audit' }}"
-        case "${{ inputs.operation_mode || 'download-and-audit' }}" in
-          "audit-only")
-            echo "📋 Running audit-only mode - will check locale completeness without downloading"
-            ;;
-          "download-and-audit")
-            echo "🌍 Running full mode - will download locales and run audit"
-            echo "📋 Audit will be ${{ inputs.skip_audit == true && 'skipped' || 'included' }}"
-            ;;
-        esac
-
-    - name: Setup Node.js (from .nvmrc)
-      uses: actions/setup-node@v7
-      with:
-        node-version-file: '.nvmrc'
-        cache: 'npm'
+        echo "📋 Audit will be ${{ inputs.operation_mode == 'audit-only' && 'the only step' || inputs.skip_audit == true && 'skipped' || 'included' }}"
 
     - name: Get package version
       id: package-version
@@ -73,56 +110,72 @@ jobs:
       id: date
       run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
-    - name: Cache node modules
-      uses: actions/cache@v6
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-
-    - name: Install dependencies
+    - name: Describe trigger
+      id: trigger
+      env:
+        EVENT: ${{ github.event_name }}
       run: |
-        npm ci
-        npm install grunt-cli --save-dev
-
-    - name: "🔧 Stage 2: Pre-flight Checks"
-      run: echo "Validating configuration and dependencies..."
+        case "$EVENT" in
+          push) echo "trigger=Merged terms PR (locale/messages.po changed on master, after a 30 minute settle)" >> $GITHUB_OUTPUT ;;
+          workflow_dispatch) echo "trigger=Manual or dispatched run" >> $GITHUB_OUTPUT ;;
+          *) echo "trigger=Scheduled daily run" >> $GITHUB_OUTPUT ;;
+        esac
 
     - name: Check POEditor Token
       run: |
-        if [ -z "${{ secrets.POEDITOR_TOKEN }}" ]; then
+        if [ -z "$POEDITOR_TOKEN" ]; then
           echo "❌ POEDITOR_TOKEN secret is not set"
           echo "Set this secret in Settings → Secrets and variables → Actions with a valid POEditor API token."
           exit 1
         fi
         echo "✅ POEditor token is configured"
 
-    - name: "📤 Stage 3: Upload Missing Translations to POEditor"
-      run: echo "Beginning upload phase..."
+  download:
+    needs: setup
+    if: ${{ !cancelled() && needs.setup.result == 'success' }}
+    concurrency:
+      group: locale-sync-work
+      cancel-in-progress: false
+    timeout-minutes: 30
+    runs-on: ubuntu-24.04
+    outputs:
+      has_changes: ${{ steps.changes.outputs.has_changes }}
+      ref_sha: ${{ steps.snapshot.outputs.sha }}
+      downloaded_at: ${{ steps.snapshot.outputs.at }}
+    env:
+      POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        # the newest master once this job holds the work lock, not the commit that started the run
+        ref: master
+        # regression check compares against HEAD~1
+        fetch-depth: 2
 
-    - name: Upload missing translations to POEditor
+    - name: Record the master commit and time this sync is based on
+      id: snapshot
       run: |
-        echo "📤 Uploading missing translations to POEditor..."
-        node locale/scripts/poeditor-upload-missing.js
-        echo "✅ Upload completed successfully"
+        echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+        echo "at=$(date -u +%s)" >> "$GITHUB_OUTPUT"
 
-    - name: "⬇️ Stage 4: Download Locales from POEditor"
-      run: echo "Beginning download phase..."
+    - uses: ./.github/actions/checkout-node-npm
 
-    - name: Download locales from POEditor
+    - name: "1. Upload terms to POEditor"
+      if: inputs.operation_mode != 'audit-only' && (github.event_name != 'workflow_dispatch' || inputs.upload_terms)
+      env:
+        MAX_TERM_DELETIONS: ${{ inputs.max_term_deletions }}
+      run: |
+        if [ -n "$MAX_TERM_DELETIONS" ]; then
+          [[ "$MAX_TERM_DELETIONS" =~ ^[0-9]+$ ]] || { echo "::error::max_term_deletions must be a whole number"; exit 1; }
+          node locale/scripts/poeditor-upload-terms.js --max-deletions "$MAX_TERM_DELETIONS"
+        else
+          node locale/scripts/poeditor-upload-terms.js
+        fi
+
+    - name: "2. Download locales from POEditor"
       if: inputs.operation_mode != 'audit-only'
-      run: |
-        set -e  # Exit on any command failure
-        echo "🌍 Downloading locales from POEditor..."
-        
-        # Run the complete locale download workflow
-        npm run locale:download
-        
-        echo "✅ Locale download completed successfully"
-
-    - name: "✅ Stage 5: Validation & Quality Checks"
-      run: echo "Validating downloaded locales..."
+      run: npm run locale:download
 
     - name: Validate locale download integrity
       if: inputs.operation_mode != 'audit-only'
@@ -230,53 +283,109 @@ jobs:
       if: inputs.operation_mode != 'audit-only'
       id: changes
       run: |
-        if git diff --quiet; then
+        if [ -z "$(git status --porcelain -- src/locale/i18n src/locale/textdomain locale/terms/missing)" ]; then
           echo "No locale changes detected"
           echo "has_changes=false" >> $GITHUB_OUTPUT
         else
           echo "Locale changes detected"
           echo "has_changes=true" >> $GITHUB_OUTPUT
           echo "Changed files:"
-          git diff --name-only
+          git status --porcelain -- src/locale/i18n src/locale/textdomain locale/terms/missing
         fi
 
-    - name: "🔀 Stage 6: Finalize & Create Pull Request"
-      run: echo "Preparing PR submission..."
+    - name: Upload locale changes
+      if: steps.changes.outputs.has_changes == 'true'
+      uses: ./.github/actions/upload-artifact
+      with:
+        name: locale-changes
+        path: |
+          src/locale/i18n
+          src/locale/textdomain
+          locale/terms/missing
+        if-no-files-found: error
 
-    - name: Configure Git
-      if: inputs.operation_mode != 'audit-only'
+    - name: Run locale audit
+      if: inputs.operation_mode == 'audit-only' || inputs.skip_audit != true
+      run: npm run locale:audit
+
+  pull-request:
+    needs: [setup, download]
+    # audit failure after the artifact upload must not block the PR
+    if: ${{ !cancelled() && needs.download.outputs.has_changes == 'true' }}
+    # One publisher at a time. This job is kept separate from `download` so the write token never reaches the
+    # POEditor token or npm; the freshness step below keeps an older snapshot from replacing a newer one.
+    concurrency:
+      group: locale-sync-publish
+      cancel-in-progress: false
+    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        # the master commit the download was based on
+        ref: ${{ needs.download.outputs.ref_sha }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Skip when a newer sync already published
+      id: fresh
+      env:
+        VERSION: ${{ needs.setup.outputs.version }}
+        DOWNLOADED_AT: ${{ needs.download.outputs.downloaded_at }}
       run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
+        published=""
+        if git fetch --depth=1 origin "locale/download/$VERSION" 2>/dev/null; then
+          published=$(git log -1 --format=%B FETCH_HEAD | sed -n 's/^Downloaded-at: //p' | head -n 1)
+        fi
+        if [[ "$published" =~ ^[0-9]+$ ]] && [ "$published" -gt "$DOWNLOADED_AT" ]; then
+          echo "The branch already holds a newer download ($published > $DOWNLOADED_AT); not replacing it with an older one"
+          echo "stale=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "stale=false" >> "$GITHUB_OUTPUT"
+        fi
 
-    # Missing-term generation/commit handled inside the main downloader; separate steps removed
+    - name: Replace locale files with downloaded changes
+      if: steps.fresh.outputs.stale != 'true'
+      run: rm -rf src/locale/i18n src/locale/textdomain locale/terms/missing
+
+    - name: Download locale changes
+      if: steps.fresh.outputs.stale != 'true'
+      uses: ./.github/actions/download-artifact
+      with:
+        name: locale-changes
 
     - name: Create Pull Request
-      if: inputs.operation_mode != 'audit-only' && (steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch')
-      uses: peter-evans/create-pull-request@v8
+      if: steps.fresh.outputs.stale != 'true'
+      uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: 'locale/${{ steps.package-version.outputs.current-version}}'
+        base: master
+        branch: 'locale/download/${{ needs.setup.outputs.version }}'
         delete-branch: true
         labels: |
           localization
-        milestone: ${{ steps.package-version.outputs.current-version}}
-        title: "locale: update translations from POEditor - ${{ steps.date.outputs.date }}"
+        milestone: ${{ needs.setup.outputs.version }}
+        title: "locale: update translations from POEditor - ${{ needs.setup.outputs.date }}"
         commit-message: |
-          🌍 Locale update from POEditor on ${{ steps.date.outputs.date }}
+          🌍 Locale update from POEditor on ${{ needs.setup.outputs.date }}
           
           - Updated translations from POEditor
-          - Version: ${{ steps.package-version.outputs.current-version}}
-          - Triggered: ${{ github.event_name == 'workflow_dispatch' && 'Manual' || 'Scheduled' }}
+          - Version: ${{ needs.setup.outputs.version }}
+          - Triggered: ${{ needs.setup.outputs.trigger }}
+
+          Downloaded-at: ${{ needs.download.outputs.downloaded_at }}
         body: |
           ## 🌍 Automatic Locale Update
           
           This PR contains updated translations downloaded from POEditor and missing term reports for all locales.
           
           **Details:**
-          - 📅 **Date**: ${{ steps.date.outputs.date }}
-          - 🏷️ **Version**: ${{ steps.package-version.outputs.current-version}}
-          - 🚀 **Trigger**: ${{ github.event_name == 'workflow_dispatch' && 'Manual run' || 'Scheduled daily run' }}
+          - 📅 **Date**: ${{ needs.setup.outputs.date }}
+          - 🏷️ **Version**: ${{ needs.setup.outputs.version }}
+          - 🚀 **Trigger**: ${{ needs.setup.outputs.trigger }}
           
           **What's included:**
           - Updated translation files from POEditor
@@ -292,27 +401,4 @@ jobs:
           ---
           
           **Manual Run Options:**
-          ${{ inputs.operation_mode == 'audit-only' && '- 🔍 Audit-only mode (no downloads)' || inputs.skip_audit == true && '- ⏩ Audit skipped' || '- 🔍 Full download and audit' }}
-
-    - name: "📊 Stage 7: Audit & Report Results"
-      run: echo "Running final audit and generating report..."
-
-    - name: Run locale audit
-      if: inputs.operation_mode == 'audit-only' || (inputs.operation_mode != 'audit-only' && inputs.skip_audit != true)
-      run: |
-        echo "🔍 Running locale audit..."
-        npm run locale:audit
-        echo "✅ Locale audit completed"
-
-    - name: Report results
-      run: |
-        echo "## 📊 Workflow Results"
-        echo "- **Operation mode**: ${{ inputs.operation_mode || 'download-and-audit' }}"
-        echo "- **Download validation**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
-        echo "- **Regression check**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
-        echo "- **Missing terms report**: Generated for all locales"
-        echo "- **Changes detected**: ${{ inputs.operation_mode == 'audit-only' && 'N/A (audit-only)' || steps.changes.outputs.has_changes }}"
-        echo "- **PR created**: ${{ inputs.operation_mode == 'audit-only' && 'No (audit-only)' || ((steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch') && 'Yes' || 'No') }}"
-        echo "- **Branch**: ${{ inputs.operation_mode == 'audit-only' && 'N/A' || format('locale/{0}', steps.package-version.outputs.current-version) }}"
-        echo "- **Audit run**: ${{ (inputs.operation_mode == 'audit-only' || (inputs.operation_mode != 'audit-only' && inputs.skip_audit != true)) && 'Yes' || 'Skipped' }}"
-        echo "- **Trigger**: ${{ github.event_name }}"
+          ${{ inputs.skip_audit == true && '- ⏩ Audit skipped' || '- 🔍 Full download and audit' }}

@@ -1,0 +1,62 @@
+name: Wait for Server
+description: Poll a URL until server is ready, with retries
+
+inputs:
+  url:
+    description: 'Health check URL (e.g., http://127.0.0.1/api/public/echo)'
+    required: true
+  max-attempts:
+    description: 'Max retry attempts'
+    required: false
+    default: '12'
+  retry-delay-seconds:
+    description: 'Delay between retries'
+    required: false
+    default: '5'
+  docker-compose-files:
+    description: 'Docker compose files (comma-separated, e.g., docker/docker-compose.yaml,docker/docker-compose.parallel.yaml)'
+    required: false
+    default: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml'
+  docker-compose-profile:
+    description: 'Docker compose profile (e.g., ci-root, ci-subdir)'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Wait for server
+      shell: bash
+      env:
+        WFS_URL: ${{ inputs.url }}
+        WFS_MAX_ATTEMPTS: ${{ inputs.max-attempts }}
+        WFS_RETRY_DELAY: ${{ inputs.retry-delay-seconds }}
+        WFS_COMPOSE_FILES: ${{ inputs.docker-compose-files }}
+        WFS_COMPOSE_PROFILE: ${{ inputs.docker-compose-profile }}
+      run: |
+        max_attempts="$WFS_MAX_ATTEMPTS"
+        attempt=1
+        retry_delay="$WFS_RETRY_DELAY"
+
+        # Convert comma-separated docker-compose files to proper format
+        compose_files=""
+        for file in $(echo "$WFS_COMPOSE_FILES" | tr ',' '\n'); do
+          compose_files="$compose_files -f $file"
+        done
+
+        until curl -sf "$WFS_URL"; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts at $WFS_URL"
+            echo ""
+            echo "Docker compose status:"
+            docker compose $compose_files --profile "$WFS_COMPOSE_PROFILE" ps -a || true
+            echo ""
+            echo "Docker compose logs:"
+            docker compose $compose_files --profile "$WFS_COMPOSE_PROFILE" logs || true
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in ${retry_delay}s... (URL: $WFS_URL)"
+          sleep $retry_delay
+          attempt=$((attempt + 1))
+        done
+
+        echo "✓ Server ready at $WFS_URL"

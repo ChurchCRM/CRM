@@ -65,12 +65,17 @@ describe("Families Without Email API", () => {
      *
      * Lifecycle:
      *   before()  — enable self-reg, create the test family + member with email
-     *   after()   — delete family (with members), restore self-reg to disabled
+     *   after()   — delete family (with members), restore self-reg to its captured value
      */
     describe("person-level email filtering (seeded data)", () => {
         let testFamilyId = null;
+        let savedSelfReg;
 
         before(() => {
+            cy.getSystemConfig("bEnableSelfRegistration").then((value) => {
+                savedSelfReg = value;
+            });
+
             // Enable self-registration so the public register endpoint is accessible
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -117,12 +122,7 @@ describe("Families Without Email API", () => {
                     200,
                 );
             }
-            // Restore self-registration to disabled
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "admin/api/system/config/bEnableSelfRegistration",
-                { value: "0" },
-            );
+            cy.restoreSystemConfig("bEnableSelfRegistration", savedSelfReg);
         });
 
         it("excludes families whose members have a personal email even when the family email is empty", () => {

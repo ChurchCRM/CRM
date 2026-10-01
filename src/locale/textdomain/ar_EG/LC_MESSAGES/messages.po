@@ -478,10 +478,6 @@ msgid "Photos"
 msgstr "صور"
 
 #: 
-msgid "Number of Columns"
-msgstr "عدد الأعمدة"
-
-#: 
 msgid "Paper Size"
 msgstr "حجم الورق"
 
@@ -845,10 +841,6 @@ msgstr "مسح الصورة"
 #: 
 msgid "Timeline"
 msgstr "الجدول الزمني"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "التعهدات والمدفوعات"
 
 #: 
 msgid "Value"
@@ -7377,10 +7369,6 @@ msgid "Select the type of record this property applies to"
 msgstr "حدد نوع السجل الذي تنطبق عليه هذه الخاصية"
 
 #: 
-msgid "Total Pledges"
-msgstr "إجمالي التعهدات"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "تتبع وإدارة التزامات التعهدات حسب العائلة والصندوق"
 
@@ -12325,16 +12313,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "كيف تتكامل مدرسة الأحد والأحداث والـ Kiosks"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "تاريخ غير صالح لـ %s — الصيغة المتوقعة YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "صيغة تاريخ غير صالحة لـ rangeStart أو rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "تاريخ غير صالح؛ الصيغة المتوقعة YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12565,10 +12545,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "يجب أن تكون eventIds مصفوفة غير فارغة"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "نوع تكرار غير صالح"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "يجب أن تكون personIds مصفوفة غير فارغة"
 
@@ -12771,10 +12747,6 @@ msgstr "إجمالي الكشكات"
 #: 
 msgid "Upcoming Events"
 msgstr "الأحداث القادمة"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "عنوان URL المطلق لـ http(s) لشعار الكنيسة المعروض في قوالب البريد الإلكتروني (وسيُعاد استخدامه في مواضع أخرى مستقبلاً). للحصول على أفضل عرض في عملاء البريد الإلكتروني، استخدم صورة بانر عريضة بنسبة أبعاد تقريبية 3.5:1 (مثلاً 350×100 بكسل)، بصيغة PNG أو JPG، مستضافة عبر HTTPS. اتركه فارغاً أو أدخل قيمة غير صالحة للرجوع إلى شعار ChurchCRM الافتراضي."
 
 #: 
 msgid "An option with that name already exists"
@@ -14975,10 +14947,6 @@ msgstr "نص الكل"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "تجاوز ملف تحديد هذا خوادم أقصى حجم التحميل من"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "لا توجد أحداث مجدولة لليوم"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -17907,6 +17875,16 @@ msgid "Set up now"
 msgstr "إعداد الآن"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "المصادقة الثنائية مطلوبة. لديك %d يوم للتسجيل."
+msgstr[1] "المصادقة الثنائية مطلوبة. لديك يوم واحد للتسجيل."
+msgstr[2] "المصادقة الثنائية مطلوبة. لديك يومان للتسجيل."
+msgstr[3] "المصادقة الثنائية مطلوبة. لديك %d أيام للتسجيل."
+msgstr[4] "المصادقة الثنائية مطلوبة. لديك %d يومًا للتسجيل."
+msgstr[5] "المصادقة الثنائية مطلوبة. لديك %d يوم للتسجيل."
+
+#: 
 msgid "Unknown family"
 msgstr "عائلة غير معروفة"
 
@@ -18497,4 +18475,376 @@ msgstr "يجب أن يكون التخطي صفرًا أو عددًا صحيحً�
 #: 
 msgid "view families missing an email"
 msgstr "عرض الأسر التي تفتقر إلى بريد إلكتروني"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "المشترون في هذه السنة المالية"
+
+#: 
+msgid "Current"
+msgstr "الحالي"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "العناصر المتبرع بها (هذه السنة المالية)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "يجب ألا يزيد اسم الدخول عن %d حرفًا!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "المبلغ المجمّع في هذه السنة المالية"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "يجب أن يكون %s عنوان ويب كاملاً بصيغة https://‎، على سبيل المثال https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "الحساب لديه صلاحيات محدودة. يرجى التواصل مع أحد المسؤولين."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "حدث خطأ أثناء عرض صفحة الخطأ."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "يجب أن يبدأ كل عنوان بـ https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "إنشاء ملصقات"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "إنشاء ملصقات بريدية"
+
+#: 
+msgid "Labels"
+msgstr "ملصقات"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "ملصقات بريدية للأشخاص الموجودين في سلتك. الشخص الذي لا يملك عنوانًا خاصًا به يُستخدم عنوان أسرته."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "اختياري. روابط لحسابات الكنيسة الخاصة، تظهر للأعضاء في صفحات مثل تذييل البوابة. اترك الحقل فارغًا لإخفاء تلك الشبكة."
+
+#: 
+msgid "Options"
+msgstr "خيارات"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "المهام المجدولة"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "نشط، الوقت المتبقي: {{seconds}} ثانية"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "الفاصل الزمني المتوقع بين التشغيلات (بالساعات): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "الأسر التي تم تخطيها (لا يوجد بريد إلكتروني مسجل): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "الأسر التي تعذّر تحديد موقعها الجغرافي: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "الأسر التي ستتلقى رسائل تأكيد: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "الأعضاء الذين تم نسخهم: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "غير مدرج هنا: {{total}} إضافي"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "المستلمون: {{total}} — عدد كبير جدًا لرابط mailto:‎. استخدم نسخ العناوين بدلاً من ذلك."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "عدد المستلمين كبير جدًا لبرنامج البريد الإلكتروني ({{total}} > {{max}}). استخدم نسخ العناوين بدلاً من ذلك."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "متبقٍ {{minutes}} دقيقة"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "تم إرسال %d وثيقة ضريبية إلى الأسرة بنجاح عبر البريد الإلكتروني."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d بيان التبرع"
+
+#: 
+msgid "All classifications"
+msgstr "جميع التصنيفات"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "يرجى من المسؤول أيضاً مراجعة"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "إرسال بريد إلكتروني لتحية عيد الميلاد تلقائياً للأشخاص في عيد ميلادهم."
+
+#: 
+msgid "Birthday Emails"
+msgstr "رسائل عيد الميلاد الإلكترونية"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "أعياد الميلاد والذكريات السنوية والمتطوعون وقوائم الأشخاص الأخرى مع مرشح تصنيف"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "اختر %s لتشغيل هذا التقرير."
+
+#: 
+msgid "Choose events"
+msgstr "اختر الأحداث"
+
+#: 
+msgid "Choose..."
+msgstr "اختر..."
+
+#: 
+msgid "Church Logo"
+msgstr "شعار الكنيسة"
+
+#: 
+msgid "Columns per Page"
+msgstr "الأعمدة لكل صفحة"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "عائلة %s الكريمة،\n"
+"\n"
+"يرجى العثور على بيان التبرع %d الخاص بك من %s مرفقاً بهذا البريد الإلكتروني.\n"
+"\n"
+"إذا كان لديك أي أسئلة، يرجى التواصل مع مكتب الكنيسة.\n"
+"\n"
+"شكراً لك على كرمك."
+
+#: 
+msgid "Download CSV"
+msgstr "تحميل CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "إرسال %d وثيقة ضريبية عبر البريد الإلكتروني"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "تمكين أو تعطيل وحدة المالية والقائمة الجانبية."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "تمكين أو تعطيل وحدة جمع التبرعات."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "فشل حذف شعار الكنيسة"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "فشل تحميل شعار الكنيسة"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "عنوان URL لشعار الاحتياطي لقوالب البريد الإلكتروني، يُستخدم فقط عند عدم تحميل شعار الكنيسة على صفحة معلومات الكنيسة. تتجاهل صفحات التطبيق الخاصة هذا الإعداد وتستخدم دائماً الشعار المرفوع أو شعار ChurchCRM الافتراضي. يجب أن يكون عنوان URL مطلقاً http(s). للحصول على أفضل عرض عبر عملاء البريد الإلكتروني، استخدم صورة بانر عريضة بنسبة حوالي 3.5:1 (على سبيل المثال 350×100 بكسل)، PNG أو JPG، مقدم عبر HTTPS. اترك الحقل فارغاً أو أدخل قيمة غير صحيحة للعودة إلى شعار ChurchCRM الافتراضي."
+
+#: 
+msgid "Finance Module"
+msgstr "وحدة المالية"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "البحث عن الأشخاص الذين لم يحضروا حدثاً"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "العثور على المتطوعين الذين يطابقون رموز فرصتين محددة"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "فرصة التطوع الأولى"
+
+#: 
+msgid "Folded Booklet"
+msgstr "كراس مطوي"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "وحدة جمع التبرعات"
+
+#: 
+msgid "Giving History"
+msgstr "سجل التبرعات"
+
+#: 
+msgid "Last Gift"
+msgstr "الهدية الأخيرة"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "اترك الحقل فارغاً لجميع التصنيفات."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "الحد الأقصى لعدد وثائق السنة الضريبية المراد عرضها لكل ملف أسري (0 = بدون حد)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "الحد الأقصى للسنوات الضريبية المعروضة لكل أسرة"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "الذكريات السنوية للعضوية"
+
+#: 
+msgid "Missing People"
+msgstr "الأشخاص المفقودون"
+
+#: 
+msgid "No giving history found."
+msgstr "لم يتم العثور على سجل التبرعات."
+
+#: 
+msgid "No people match these filters."
+msgstr "لا أحد يطابق هذه المرشحات."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "صفحة دليل واحدة لكل ورقة، بصيغة عمودية."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "يُسمح فقط بأنظمة http و https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG أو JPG أو GIF أو WebP. بانر عريض بنسبة حوالي 3.5:1 (على سبيل المثال 700x200) يعمل بشكل أفضل؛ يُفضل PNG الشفاف."
+
+#: 
+msgid "Page Layout"
+msgstr "تخطيط الصفحة"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "الأشخاص الذين انضموا في شهر معين"
+
+#: 
+msgid "Pledged"
+msgstr "التزم"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "طباعة %d وثيقة ضريبية"
+
+#: 
+msgid "Queries"
+msgstr "الاستعلامات"
+
+#: 
+msgid "Recent Friends"
+msgstr "الأصدقاء الأخيرون"
+
+#: 
+msgid "Report not found"
+msgstr "لم يتم العثور على التقرير"
+
+#: 
+msgid "Run Report"
+msgstr "تشغيل التقرير"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "فرصة التطوع الثانية"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "يظهر في الشريط الجانبي والصفحة الرئيسية والرسائل الإلكترونية. سيؤدي تحميل شعار إلى استبدال علامات ChurchCRM في كل مكان يظهر فيه."
+
+#: 
+msgid "Single Pages"
+msgstr "صفحات منفردة"
+
+#: 
+msgid "Tax Documents"
+msgstr "الوثائق الضريبية"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "فشل إرسال بريد وثيقة ضريبية. يرجى التحقق من إعدادات خادم البريد الإلكتروني الخاص بك."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "صفحتان نصف الحجم جنباً إلى جنب على كل ورقة بصيغة أفقية، بترتيب الكراس. طباعة الجانبين مع \"التقليب على الحافة القصيرة\"، ثم طي المكدس في النصف. يتم حساب الأعمدة لكل نصف صفحة."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "لا يمكن إرسال وثيقة ضريبية عبر البريد الإلكتروني: لم يتم العثور على بيانات دفع لتلك السنة."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "لا يمكن إرسال وثيقة ضريبية عبر البريد الإلكتروني: هذه الأسرة ليس لديها عنوان بريد إلكتروني في الملف."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "لا يمكن حل اسم مضيف خادم OpenLP. تحقق من العنوان واتصالك بالشبكة."
+
+#: 
+msgid "Upload"
+msgstr "تحميل"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "باستخدام شعار ChurchCRM الافتراضي"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "عرض كامل التبرعات العائلية"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "فرصة التطوع"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "متطوعو فرصتين"
+
+#: 
+msgid "YTD"
+msgstr "منذ بداية السنة"
+
+#: 
+msgid "YTD Paid"
+msgstr "مدفوع منذ بداية السنة"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "للتحقق من الأخطاء حول الوقت الذي حدث فيه هذا، وقم بتحميل وإرفاق ملف السجل ذي الصلة بمشكلتك على GitHub - فهذا يساعدنا على إصلاح المشكلة دون طرح أسئلة متابعة."
+
+#: 
+msgid "system logs"
+msgstr "سجلات النظام"
 

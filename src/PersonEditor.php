@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -302,6 +303,12 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $bErrorFlag = true;
             $dDateDeceased = false;
         }
+    }
+
+    if ($bIsDeceased && $iPersonID > 0 && (new UserService())->isLastSignInCapableAdmin($iPersonID)) {
+        $sDateDeceasedError = '<span class="text-danger">'
+            . gettext("Can't mark the only administrator who can sign in as deceased") . '</span>';
+        $bErrorFlag = true;
     }
 
     // Validate Email

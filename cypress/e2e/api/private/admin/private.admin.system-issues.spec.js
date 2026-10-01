@@ -54,4 +54,46 @@ describe("API System Issues", () => {
             expect(resp.body.issueBody).to.contain("StandardUserPage");
         });
     });
+
+    it("Issues endpoint includes system/user locale, timezone, and custom field count", () => {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/issues",
+            {
+                pageName: "LocaleDiagnosticsPage",
+                screenSize: { height: 1080, width: 1920 },
+                windowSize: { height: 900, width: 1440 },
+                pageSize: { height: 2000, width: 1440 },
+                browserLocale: "fr-FR",
+                browserTimezone: "Europe/Paris",
+            },
+            200,
+        ).then((resp) => {
+            expect(resp.body.issueBody).to.contain("System Locale");
+            expect(resp.body.issueBody).to.contain("User Locale");
+            expect(resp.body.issueBody).to.contain("Browser Locale |fr-FR");
+            expect(resp.body.issueBody).to.contain("Church Country");
+            expect(resp.body.issueBody).to.contain("System Timezone");
+            expect(resp.body.issueBody).to.contain("Browser Timezone |Europe/Paris");
+            expect(resp.body.issueBody).to.match(/Person Custom Fields \|\d+\r\n/);
+            expect(resp.body.issueBody).to.match(/Family Custom Fields \|\d+\r\n/);
+        });
+    });
+
+    it("Issues endpoint falls back to 'Unknown' when browser locale/timezone are omitted", () => {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/issues",
+            {
+                pageName: "NoBrowserLocalePage",
+                screenSize: { height: 1080, width: 1920 },
+                windowSize: { height: 900, width: 1440 },
+                pageSize: { height: 2000, width: 1440 },
+            },
+            200,
+        ).then((resp) => {
+            expect(resp.body.issueBody).to.contain("Browser Locale |Unknown");
+            expect(resp.body.issueBody).to.contain("Browser Timezone |Unknown");
+        });
+    });
 });

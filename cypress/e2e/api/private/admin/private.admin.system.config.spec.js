@@ -45,6 +45,44 @@ describe("API Private Admin System Config", () => {
         });
     });
 
+    describe("Number settings", () => {
+        let savedTimeout;
+        let savedLatitude;
+
+        before(() => {
+            cy.getSystemConfig("iSMTPTimeout").then((value) => {
+                savedTimeout = value;
+            });
+            cy.getSystemConfig("iChurchLatitude").then((value) => {
+                savedLatitude = value;
+            });
+        });
+
+        after(() => {
+            cy.restoreSystemConfig("iSMTPTimeout", savedTimeout);
+            cy.restoreSystemConfig("iChurchLatitude", savedLatitude);
+        });
+
+        it("POST blank or non-number to a number setting with a default is refused", () => {
+            for (const value of ["", "  ", "abc"]) {
+                cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/iSMTPTimeout", { value }, 400);
+            }
+            cy.getSystemConfig("iSMTPTimeout").should("eq", savedTimeout);
+        });
+
+        it("POST a number to a number setting saves it", () => {
+            cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/iSMTPTimeout", { value: "25" }, 200)
+                .its("body.value")
+                .should("eq", "25");
+        });
+
+        it("POST blank to a number setting whose default is blank is accepted", () => {
+            cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/iChurchLatitude", { value: "abc" }, 400);
+            cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/iChurchLatitude", { value: "" }, 200);
+            cy.getSystemConfig("iChurchLatitude").should("eq", "");
+        });
+    });
+
     it("GET unknown config name returns 404", () => {
         cy.makePrivateAdminAPICall(
             "GET",

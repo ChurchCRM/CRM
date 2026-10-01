@@ -1,8 +1,13 @@
 name: Release & Start Next
 
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # Never cancel a release half-way: a cancelled run can leave a deleted tag
+  # or a draft without its next-version PR. A second dispatch waits instead.
+  cancel-in-progress: false
 
 
 # End-of-cycle one-click flow:
@@ -14,7 +19,12 @@ concurrency:
 #                   detected from package.json on that build's commit, so you
 #                   don't retype the version.
 #
-#   2. start_next — chains into release-prepare.yml (reusable) to bump master
+#   2. notes      — writes release-notes-context-<tag>.md (every PR in the
+#                   release with its full description, bucketed by the files
+#                   it touched) as a run artifact. The release-notes skill
+#                   reads it instead of opening each PR by hand.
+#
+#   3. start_next — chains into release-prepare.yml (reusable) to bump master
 #                   to the version you typed in `next_version` and open the
 #                   "Start <next> release" PR.
 #
@@ -54,13 +64,18 @@ on:
         description: 'Optional: the version you expect to release (e.g. 7.6.3). Leave blank to derive from package.json on the dispatch commit (master HEAD). Used to reject a build whose package.json version does not match.'
         required: false
         type: string
+      replace_existing:
+        description: 'Delete and recreate the release and tag if this version already exists. Leave off: an existing release stops the run instead of being silently replaced.'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   # ───────────────────────────────────────────────────────────────────
   # Publish the CURRENT version as a GitHub Release.
   # ───────────────────────────────────────────────────────────────────
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
       actions: read
@@ -74,6 +89,8 @@ jobs:
     outputs:
       release_tag: ${{ steps.tag.outputs.tag }}
       release_url: ${{ steps.release.outputs.release_url }}
+      previous_tag: ${{ steps.previous.outputs.tag }}
+      target_commit: ${{ steps.run.outputs.commit }}
     steps:
       - name: Determine expected version
         id: expected
@@ -250,6 +267,24 @@ jobs:
 
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
 
+      - name: Resolve previous release
+        id: previous
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          set -euo pipefail
+          # Latest published, non-prerelease release that is not the one being
+          # created. Passed to --notes-start-tag so the generated draft always
+          # compares against the last public release, not the nearest tag.
+          prev=$(gh release list --exclude-drafts --exclude-pre-releases --limit 20 --json tagName --jq '.[].tagName' \
+            | grep -vFx -- "$TAG" | head -n 1 || true)
+          if [ -z "$prev" ]; then
+            echo "::error::Could not find a previous published release to compare against."
+            exit 1
+          fi
+          echo "Previous release: $prev"
+          echo "tag=$prev" >> "$GITHUB_OUTPUT"
+
       - name: Download release artifact
         id: artifact
         env:
@@ -275,18 +310,27 @@ jobs:
           echo "zip_name=$zip_name" >> "$GITHUB_OUTPUT"
           echo "Found release asset: $zip_name"
 
-      - name: Create GitHub Release (delete and recreate if exists)
+      - name: Create GitHub Release
         id: release
         env:
           TAG: ${{ steps.tag.outputs.tag }}
+          PREVIOUS_TAG: ${{ steps.previous.outputs.tag }}
           TARGET_COMMIT: ${{ steps.run.outputs.commit }}
           ZIP_NAME: ${{ steps.artifact.outputs.zip_name }}
           IS_DRAFT: ${{ inputs.draft }}
           IS_PRERELEASE: ${{ inputs.prerelease }}
+          REPLACE_EXISTING: ${{ inputs.replace_existing }}
         run: |
           set -euo pipefail
 
-          # Check if release exists
+          if gh release view "$TAG" >/dev/null 2>&1 \
+            || gh api "repos/$GH_REPO/git/refs/tags/$TAG" >/dev/null 2>&1; then
+            if [ "$REPLACE_EXISTING" != "true" ]; then
+              echo "::error::Release or tag $TAG already exists. Edit it on GitHub, or re-run with replace_existing=true to delete and recreate it (this discards its notes)."
+              exit 1
+            fi
+          fi
+
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "Release $TAG already exists — deleting it and recreating from scratch."
             gh release delete "$TAG" --yes || {
@@ -316,6 +360,7 @@ jobs:
             --title "$TAG" \
             --target "$TARGET_COMMIT" \
             --generate-notes \
+            --notes-start-tag "$PREVIOUS_TAG" \
             --draft="$IS_DRAFT" \
             --prerelease="$IS_PRERELEASE" || {
             echo "::error::Failed to create release. Check token permissions and ensure tag $TAG is fully deleted."
@@ -352,6 +397,54 @@ jobs:
               echo ""
               echo "### [Open release page]($RELEASE_URL)"
             fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # ───────────────────────────────────────────────────────────────────
+  # Gather every PR in the release for the release-notes skill.
+  # Deterministic — no model call. A failure here never blocks the release.
+  # ───────────────────────────────────────────────────────────────────
+  notes_context:
+    needs: publish
+    if: success()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    continue-on-error: true
+    permissions:
+      contents: read
+      pull-requests: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ needs.publish.outputs.release_tag }}
+      PREVIOUS_TAG: ${{ needs.publish.outputs.previous_tag }}
+      TARGET_COMMIT: ${{ needs.publish.outputs.target_commit }}
+    steps:
+      # Pinned to commit SHAs (v7); the other workflows move with #10006.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: scripts
+
+      - uses: ./.github/actions/setup-node
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Build release-notes context
+        run: node scripts/release-notes-context.js "$PREVIOUS_TAG" "$TARGET_COMMIT" > "release-notes-context-$TAG.md"
+
+      - name: Upload context
+        uses: ./.github/actions/upload-artifact
+        with:
+          name: release-notes-context-${{ needs.publish.outputs.release_tag }}
+          path: release-notes-context-${{ needs.publish.outputs.release_tag }}.md
+          retention-days: 30
+
+      - name: Summary
+        run: |
+          {
+            echo "## Release notes context"
+            echo ""
+            echo "Artifact \`release-notes-context-$TAG\` covers $PREVIOUS_TAG → ${TARGET_COMMIT:0:12}."
+            echo "Next: ask an agent to \"write the $TAG release notes\" (\`.agents/skills/churchcrm/release-notes.md\`)."
           } >> "$GITHUB_STEP_SUMMARY"
 
   # ───────────────────────────────────────────────────────────────────

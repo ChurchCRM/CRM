@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Foto"
 
 #: 
-msgid "Number of Columns"
-msgstr "Veergude arv"
-
-#: 
 msgid "Paper Size"
 msgstr "Paberi suurus"
 
@@ -846,10 +842,6 @@ msgstr "Kustuta foto"
 #: 
 msgid "Timeline"
 msgstr "Ajaskaala"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Annetused ja maksed"
 
 #: 
 msgid "Value"
@@ -7361,10 +7353,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Valige kirje tüüp, millele see omadus kehtib"
 
 #: 
-msgid "Total Pledges"
-msgstr "Kokku Lubadusi"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Jälgige ja hallake lubaduste kohustusi perekonna ja fondi järgi"
 
@@ -12293,16 +12281,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Kuidas pühapäevakool + sündmused + kioskid sobivad kokku"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Vigane kuupäev %s jaoks — oodatakse AAAA-KK-PP"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Vigane kuupäevavorming vahemiku alguse või lõpu jaoks"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Vigane kuupäev; oodatav vorming AAAA-KK-PP"
 
 #: 
 msgid "Invalid event type ID"
@@ -12533,10 +12513,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds peab olema mittetühi massiiv"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "vigane korduvuse tüüp"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds peab olema mittetühi massiiv"
 
@@ -12739,10 +12715,6 @@ msgstr "Kioskeid kokku"
 #: 
 msgid "Upcoming Events"
 msgstr "Tulevased sündmused"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Koguduse logo absoluutne http(s) URL, mis kuvatakse meilimudelites (ja kasutatakse tulevikus mujal). Parima kuvamise tagamiseks meilirakenduses kasutage laia bännerPilti ligikaudse kuvasuhtega 3,5:1 (nt 350×100 px), PNG või JPG, mida serveeritakse HTTPS-i kaudu. Jätke tühjaks või sisestage kehtetu väärtus, et naasta ChurchCRM vaikimisi logo juurde."
 
 #: 
 msgid "An option with that name already exists"
@@ -14943,10 +14915,6 @@ msgstr "Tekstige kõik"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Valitud fail ületab selle serveri maksimaalse üleslaadimismahu"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Täna pole ühtegi sündmust planeeritud"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -17855,6 +17823,12 @@ msgid "Set up now"
 msgstr "Seadista kohe"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päev."
+msgstr[1] "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päeva."
+
+#: 
 msgid "Unknown family"
 msgstr "Tundmatu pere"
 
@@ -18159,6 +18133,10 @@ msgid "Last seen"
 msgstr "Viimati nähtud"
 
 #: 
+msgid "Link"
+msgstr "Link"
+
+#: 
 msgid "Link added successfully"
 msgstr "Link lisatud edukalt"
 
@@ -18441,4 +18419,376 @@ msgstr "skip peab olema null või positiivne täisarv"
 #: 
 msgid "view families missing an email"
 msgstr "vaata perekondi, kellel e-post puudub"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Ostjad sellel eelarveaastal"
+
+#: 
+msgid "Current"
+msgstr "Praegune"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Annetatud esemed (sellel eelarveaastal)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Kasutajanimi peab olema kuni %d tähemärki!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Kogutud sellel eelarveaastal"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s peab olema täielik https:// veebiaadress, näiteks https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Kontol on piiratud õigused. Võtke ühendust administraatoriga."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Vealehe kuvamisel tekkis viga."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Iga aadress peab algama https://-ga"
+
+#: 
+msgid "Generate Labels"
+msgstr "Loo sildid"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Loo postisildid"
+
+#: 
+msgid "Labels"
+msgstr "Sildid"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Postisildid teie ostukorvis olevate inimeste jaoks. Isikut, kellel oma aadress puudub, adresseeritakse tema pere aadressil."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Valikuline. Lingid koguduse enda kontodele, mida kuvatakse liikmetele lehtedel, näiteks portaali jaluses. Jätke väli tühjaks, et see võrgustik peita."
+
+#: 
+msgid "Options"
+msgstr "Valikud"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Ajastatud ülesanded"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktiivne, jäänud sekundeid: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Oodatav intervall käivituste vahel (tundides): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Vahele jäetud pered (e-posti aadress puudub): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Pered, mida ei õnnestunud geokodeerida: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Pered, kes saavad kinnituskirjad: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Kopeeritud liikmeid: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Siin pole loetletud: veel {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Saajaid: {{total}} — liiga palju mailto: lingi jaoks. Kasutage selle asemel aadresside kopeerimist."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Liiga palju saajaid e-posti kliendi jaoks ({{total}} > {{max}}). Kasutage selle asemel aadresside kopeerimist."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "Jäänud {{minutes}} min"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d maksudeklaratsioon saadeti perele edukalt."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d annetuste aruanne"
+
+#: 
+msgid "All classifications"
+msgstr "Kõik klassifikatsioonid"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Administraatorina palun vaadake üle ka"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Saada sünnipäeva õnnitlev e-kiri automaatselt inimestele nende sünnipäeval."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Sünnipäeva e-kirjad"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Sünnipäevad, juubileumid, vabatahtlikud ja muud inimeste nimekirjad klassifikatsioonifiltriga"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Valige %s, et käivitada see aruanne."
+
+#: 
+msgid "Choose events"
+msgstr "Valige sündmused"
+
+#: 
+msgid "Choose..."
+msgstr "Valige..."
+
+#: 
+msgid "Church Logo"
+msgstr "Kirikute logo"
+
+#: 
+msgid "Columns per Page"
+msgstr "Veerud lehe kaupa"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Kallis %s pere,\n"
+"\n"
+"Leiate oma %d annetuste aruande kuupäevast %s selle e-kirja juurde lisatuna.\n"
+"\n"
+"Kui teil on küsimusi, võtke ühendust kirikutoimistusse.\n"
+"\n"
+"Täname teid andelikkuse eest."
+
+#: 
+msgid "Download CSV"
+msgstr "Laadi alla CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Saada %d maksudeklaratsioon e-postiga"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Luba või keela rahamoduli ja külgribamenüü."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Luba või keela annetuste kogumise moodul."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Kirikute logo eemaldamine nurjus"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Kirikute logo üleslaadimine nurjus"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Tagasivõtte logo URL e-postimallide jaoks, kasutatakse ainult juhul, kui kirikute lehel pole Kirikute teabeküljele üles laaditud kirikute logot. Rakenduse enda lehed ignoreerivad seda sätet ja kasutavad alati üleslaaditud logot või vaikeseadistust ChurchCRM logot. Peab olema absoluutne http(s) URL. Parimaks kuvamiseks e-postikliendideskasutatakse laiapindset bänner-pilti umbes 3,5:1 kuvasuhtega (näiteks 350×100 pikslit), PNG või JPG, mis on edastatud HTTPS-i kaudu. Jätke tühjaks või sisestage kehtetu väärtus, et kasutada vaikeseadistust ChurchCRM logot."
+
+#: 
+msgid "Finance Module"
+msgstr "Rahamodul"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Leidke inimesed, kes ei osallenud sündmusel"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Leidke vabatahtlikud, kes vastavad kahele spetsiifilisele võimalusekoodile"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Esimene vabatahtliku võimalus"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Voltitud brošüür"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Annetuste kogumise moodul"
+
+#: 
+msgid "Giving History"
+msgstr "Annetuste ajalugu"
+
+#: 
+msgid "Last Gift"
+msgstr "Viimane kingitus"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Jätke kõigi klassifikatsioonide jaoks tühjaks."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Maksimaalne maksaaasta dokumentide arv, mida pereprofiili kaupa näidata (0 = piiranguta)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Perekaupa näidatavate maksuaastate maksimaalne arv"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Liikmuse juubileumid"
+
+#: 
+msgid "Missing People"
+msgstr "Puuduvad inimesed"
+
+#: 
+msgid "No giving history found."
+msgstr "Annetuste ajalugu ei leitud."
+
+#: 
+msgid "No people match these filters."
+msgstr "Ükski inimene ei vasta nendele filtritele."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Üks kataloogi leht paberilehe kohta, portree."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Lubatakse ainult http ja https skeemid."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF või WebP. Laiapindne bänner umbes 3,5:1 (näiteks 700x200) toimib kõige paremini; eelistatud on läbipaistev PNG."
+
+#: 
+msgid "Page Layout"
+msgstr "Lehe paigutus"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Inimesed, kes liitusid konkreetsel kuul"
+
+#: 
+msgid "Pledged"
+msgstr "Lubatud"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Prindi %d maksudeklaratsioon"
+
+#: 
+msgid "Queries"
+msgstr "Päringud"
+
+#: 
+msgid "Recent Friends"
+msgstr "Hiljutised sõbrad"
+
+#: 
+msgid "Report not found"
+msgstr "Aruannet ei leitud"
+
+#: 
+msgid "Run Report"
+msgstr "Käivita aruanne"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Teine vabatahtliku võimalus"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Näidatakse külgribal, sisselogimislehel ja e-kirjades. Pilt üles laadides asendatakse ChurchCRM kaubamärk kõikjal, kus see esineb."
+
+#: 
+msgid "Single Pages"
+msgstr "Üksikud lehed"
+
+#: 
+msgid "Tax Documents"
+msgstr "Maksudeklaratsioonid"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Maksudeklaratsiooni e-postiga saatmine nurjus. Palun kontrollige oma e-posti serveri seadistusi."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Kaks poole suurusega lehte kõrvuti igal maastikulehekalal, brošüüri järjekorras. Printida kahepoolselt valikuga \"pööra lühikesele küljele\", seejärel voltida virnas poole võrra. Veerud loendatakse poole lehega."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Maksudeklaratsiooni e-postiga saatmine pole võimalik: selle aasta makseteavet ei leitud."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Maksudeklaratsiooni e-postiga saatmine pole võimalik: sellel perel pole failides e-posti aadressi."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "OpenLP serveri hosti nime pole võimalik lahendada. Kontrollige aadressi ja oma võrguühendust."
+
+#: 
+msgid "Upload"
+msgstr "Laadi üles"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Kasutab vaikeseadistust ChurchCRM logot"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Vaata kõiki pere annetusi"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Vabatahtliku võimalus"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Vabatahtlikud kahe võimaluse jaoks"
+
+#: 
+msgid "YTD"
+msgstr "Aasta algusest"
+
+#: 
+msgid "YTD Paid"
+msgstr "Aasta algusest makstud"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "et otsida vigu selle juhtumise ajal ja laadida oma GitHub probleemile alla ning lisada asjaomane logifail – see aitab meil probleemi parandada ilma täiendavate küsimusteta."
+
+#: 
+msgid "system logs"
+msgstr "süsteemi logid"
 

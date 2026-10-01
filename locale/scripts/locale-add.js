@@ -18,6 +18,7 @@
  *   --locale <locale>      Full locale code (e.g., "ko_KR", "fr_FR")
  *   --country <country>    Country code (e.g., "KR", "FR")
  *   --datatables <name>    DataTables locale name (e.g., "Korean", "French")
+ *   --scripts <list>       Unicode scripts the language is written in, comma-separated (default: Latin; e.g., "Han,Hiragana,Katakana")
  *   --interactive          Interactive mode (prompts for all values)
  *   --dry-run              Show what would be created without making changes
  */
@@ -25,6 +26,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const { scriptTest } = require('./lib/translation-checks');
 
 class LanguageSetup {
     constructor() {
@@ -58,6 +60,9 @@ class LanguageSetup {
                     break;
                 case '--datatables':
                     config.datatables = args[++i];
+                    break;
+                case '--scripts':
+                    config.scripts = args[++i];
                     break;
                 case '--interactive':
                     this.interactive = true;
@@ -96,6 +101,7 @@ Options:
   --locale <locale>      Full locale code (e.g., "ko_KR", "fr_FR")
   --country <country>    Country code (e.g., "KR", "FR")
   --datatables <name>    DataTables locale name (e.g., "Korean", "French")
+  --scripts <list>       Unicode scripts the language is written in, comma-separated (default: Latin; e.g., "Han,Hiragana,Katakana")
   --interactive          Interactive mode (prompts for all values)
   --dry-run              Show what would be created without making changes
   --help, -h             Show this help message
@@ -152,6 +158,10 @@ Examples:
     /**
      * Validate configuration
      */
+    parseScripts(value) {
+        return (value || 'Latin').split(',').map(script => script.trim()).filter(Boolean);
+    }
+
     validateConfig(config) {
         const required = ['name', 'code', 'locale', 'country', 'datatables'];
         const missing = required.filter(field => !config[field]);
@@ -164,6 +174,13 @@ Examples:
         }
 
         // Validate format
+        const scripts = this.parseScripts(config.scripts);
+        const unknown = scripts.filter(script => !scriptTest(script));
+        if (scripts.length === 0 || unknown.length > 0) {
+            console.error(`❌ Invalid --scripts: ${config.scripts}. Give one or more Unicode script names, comma-separated (e.g., Latin or Han,Hiragana,Katakana)${unknown.length ? `; unknown: ${unknown.join(', ')}` : ''}`);
+            return false;
+        }
+
         if (!/^[a-z]{2,3}$/.test(config.code)) {
             console.error(`❌ Invalid language code: ${config.code}. Should be 2-3 lowercase letters (e.g., ko, fr, zh)`);
             return false;
@@ -224,6 +241,7 @@ Examples:
             languageCode: config.code,
             countryCode: config.country,
             dataTables: config.datatables,
+            scripts: this.parseScripts(config.scripts),
             fullCalendar: true,
             fullCalendarLocale: config.code,
             datePicker: true,

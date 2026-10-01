@@ -36,7 +36,7 @@
           "birthMonth": 1,
           "birthDay": 15,
           "maidenName": null,
-          "familyRole": 2,
+          "familyRole": 1,
           "photo": "rebecca.garcia.jpg"
         },
         {
@@ -118,7 +118,8 @@
           "birthDay": 15,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "thomas.hernandez.jpg"
         },
         {
           "title": null,
@@ -160,7 +161,8 @@
       "createdAt": "2024-01-02",
       "weddingDate": "2000-02-15T00:00:00.000Z",
       "active": true,
-      "verified": false
+      "verified": false,
+      "photo": "family.hernandez.jpg"
     },
     {
       "name": "Johnson",
@@ -255,12 +257,12 @@
         },
         {
           "title": null,
-          "firstName": "Jason",
+          "firstName": "Jessica",
           "middleName": null,
           "lastName": "Johnson",
           "birthYear": 1980,
-          "gender": "male",
-          "email": "jason.johnson32@demo.churchcrm.io",
+          "gender": "female",
+          "email": "jessica.johnson32@demo.churchcrm.io",
           "phone": null,
           "notes": [],
           "createdAt": "2024-01-05T08:00:00.000Z",
@@ -269,7 +271,7 @@
           "classification": "Guest",
           "maidenName": null,
           "familyRole": 3,
-          "photo": "jason.johnson32.jpg"
+          "photo": "jessica.johnson32.jpg"
         }
       ],
       "notes": [
@@ -283,7 +285,8 @@
       "createdAt": "2024-01-03",
       "weddingDate": "2000-03-15T00:00:00.000Z",
       "active": true,
-      "verified": false
+      "verified": false,
+      "photo": "family.johnson2.jpg"
     },
     {
       "name": "Williams",
@@ -346,7 +349,7 @@
           "birthDay": 13,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2,
+          "familyRole": 3,
           "photo": "mary.williams.jpg"
         },
         {
@@ -410,7 +413,6 @@
         }
       ],
       "createdAt": "2024-01-04",
-      "weddingDate": "2000-04-15T00:00:00.000Z",
       "active": true,
       "verified": true
     },
@@ -483,8 +485,7 @@
           "classification": "Member",
           "maidenName": null,
           "familyRole": 2,
-          "photo": "stephanie.scott.jpg",
-          "dateDeceased": "2018-05-09"
+          "photo": "stephanie.scott.jpg"
         },
         {
           "title": null,
@@ -618,7 +619,7 @@
           "firstName": "Kenneth",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2007,
+          "birthYear": 1968,
           "gender": "male",
           "email": "kenneth.johnson22@demo.churchcrm.io",
           "phone": null,
@@ -636,7 +637,8 @@
           "firstName": "Daniel",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2009,
+          "dateDeceased": "2025-11-02",
+          "birthYear": 1941,
           "gender": "male",
           "email": "daniel.johnson@demo.churchcrm.io",
           "phone": null,
@@ -646,13 +648,12 @@
           "birthDay": 25,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 3,
+          "familyRole": 4,
           "photo": "daniel.johnson.jpg"
         }
       ],
       "notes": [],
       "createdAt": "2024-01-06",
-      "weddingDate": "2000-06-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -747,9 +748,10 @@
       ],
       "notes": [],
       "createdAt": "2024-01-07",
-      "weddingDate": "2000-07-15T00:00:00.000Z",
+      "weddingDate": "2016-07-15T00:00:00.000Z",
       "active": true,
-      "verified": true
+      "verified": true,
+      "photo": "family.baker.jpg"
     },
     {
       "name": "Thompson",
@@ -794,7 +796,8 @@
           "birthDay": 2,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "steven.thompson.jpg"
         },
         {
           "title": "Mrs",
@@ -1038,7 +1041,7 @@
       ],
       "notes": [],
       "createdAt": "2024-01-09",
-      "weddingDate": "2000-09-15T00:00:00.000Z",
+      "weddingDate": "2018-09-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -1085,7 +1088,8 @@
           "birthMonth": 5,
           "birthDay": 14,
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "melissa.lewis.jpg"
         },
         {
           "title": "Mr",
@@ -1109,7 +1113,8 @@
           "birthMonth": 6,
           "birthDay": 15,
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "edward.lewis.jpg"
         },
         {
           "title": null,
@@ -1174,7 +1179,8 @@
       "createdAt": "2024-01-10",
       "weddingDate": "2000-10-15T00:00:00.000Z",
       "active": true,
-      "verified": true
+      "verified": true,
+      "photo": "family.lewis.jpg"
     },
     {
       "name": "Hernandez",
@@ -1244,7 +1250,8 @@
           "birthDay": 20,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "donna.hernandez.jpg"
         }
       ],
       "notes": [],
@@ -1296,7 +1303,8 @@
           "birthDay": 21,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "stephanie.adams.jpg"
         },
         {
           "title": "Mr",
@@ -1320,7 +1328,8 @@
           "birthDay": 22,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "andrew.adams.jpg"
         },
         {
           "title": null,
@@ -1447,7 +1456,8 @@
           "birthDay": 27,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "kevin.thomas.jpg"
         },
         {
           "title": "Mrs",
@@ -1471,7 +1481,8 @@
           "birthDay": 1,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "susan.thomas.jpg"
         }
       ],
       "notes": [],
@@ -1549,7 +1560,8 @@
           "classification": "Member",
           "maidenName": null,
           "familyRole": 2,
-          "dateDeceased": "2022-09-30"
+          "dateDeceased": "2022-09-30",
+          "photo": "emily.clark.jpg"
         },
         {
           "title": null,
@@ -1662,7 +1674,8 @@
           "birthDay": 8,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "donna.jackson.jpg"
         },
         {
           "title": null,
@@ -1679,7 +1692,7 @@
           "birthDay": 9,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1708,7 +1721,6 @@
         }
       ],
       "createdAt": "2024-01-15",
-      "weddingDate": "2019-03-14",
       "active": false,
       "verified": false
     },
@@ -1748,7 +1760,8 @@
           "birthDay": 11,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "laura.lee.jpg"
         },
         {
           "title": "Mr",
@@ -1765,7 +1778,8 @@
           "birthDay": 12,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "kenneth.lee.jpg"
         }
       ],
       "notes": [],
@@ -1810,7 +1824,8 @@
           "birthDay": 13,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "margaret.rodriguez.jpg"
         },
         {
           "title": "Mr",
@@ -1886,7 +1901,8 @@
       "createdAt": "2024-01-17",
       "weddingDate": "2019-05-16",
       "active": true,
-      "verified": false
+      "verified": false,
+      "photo": "family.rodriguez.jpg"
     },
     {
       "name": "Johnson",
@@ -1924,7 +1940,8 @@
           "birthDay": 18,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "carol.johnson.jpg"
         },
         {
           "title": "Mr",
@@ -1941,7 +1958,8 @@
           "birthDay": 19,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "edward.johnson.jpg"
         },
         {
           "title": null,
@@ -1982,7 +2000,8 @@
       "createdAt": "2024-01-18",
       "weddingDate": "2019-06-17",
       "active": true,
-      "verified": false
+      "verified": false,
+      "photo": "family.johnson.jpg"
     },
     {
       "name": "Robinson",
@@ -2020,7 +2039,8 @@
           "birthMonth": 4,
           "birthDay": 22,
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "brian.robinson.jpg"
         },
         {
           "title": null,
@@ -2037,14 +2057,14 @@
           "birthMonth": 5,
           "birthDay": 23,
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         }
       ],
       "notes": [],
       "createdAt": "2024-01-19",
-      "weddingDate": "2019-07-18",
       "active": true,
-      "verified": true
+      "verified": true,
+      "photo": "family.robinson.jpg"
     },
     {
       "name": "Williams",
@@ -2082,7 +2102,8 @@
           "birthDay": 24,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "mary.williams2.jpg"
         },
         {
           "title": "Mr",
@@ -2145,7 +2166,8 @@
           "birthDay": 26,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "donna.parker.jpg"
         },
         {
           "title": "Mr",
@@ -2162,7 +2184,8 @@
           "birthDay": 27,
           "classification": "Guest",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "edward.parker.jpg"
         }
       ],
       "notes": [],
@@ -2207,7 +2230,8 @@
           "birthDay": 1,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "christopher.lopez.jpg"
         },
         {
           "title": "Mrs",
@@ -2224,7 +2248,8 @@
           "birthDay": 2,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "amanda.lopez.jpg"
         }
       ],
       "notes": [],
@@ -2269,7 +2294,8 @@
           "birthDay": 3,
           "classification": "Member",
           "maidenName": "Robinson",
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "nancy.robinson.jpg"
         },
         {
           "title": "Mr",
@@ -2286,7 +2312,8 @@
           "birthDay": 4,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "joshua.robinson.jpg"
         }
       ],
       "notes": [],
@@ -2331,7 +2358,8 @@
           "birthDay": 5,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "george.carter.jpg"
         },
         {
           "title": "Mrs",
@@ -2348,7 +2376,8 @@
           "birthDay": 6,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "sarah.carter.jpg"
         },
         {
           "title": null,
@@ -2434,7 +2463,8 @@
           "birthDay": 9,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "robert.brown.jpg"
         },
         {
           "title": "Mrs",
@@ -2451,7 +2481,8 @@
           "birthDay": 10,
           "classification": "Guest",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "linda.brown.jpg"
         },
         {
           "title": null,
@@ -2475,7 +2506,8 @@
       "createdAt": "2024-01-25",
       "weddingDate": "2019-01-14",
       "active": true,
-      "verified": true
+      "verified": true,
+      "photo": "family.brown.jpg"
     },
     {
       "name": "Rodriguez",
@@ -2531,7 +2563,8 @@
           "birthDay": 13,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "sandra.rodriguez.jpg"
         },
         {
           "title": null,
@@ -2662,7 +2695,7 @@
           "birthDay": 19,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2718,7 +2751,6 @@
       ],
       "notes": [],
       "createdAt": "2024-01-27",
-      "weddingDate": "2019-03-16",
       "active": true,
       "verified": false
     },
@@ -2758,7 +2790,8 @@
           "birthMonth": 8,
           "birthDay": 23,
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "linda.nguyen.jpg"
         },
         {
           "title": "Mr",
@@ -2775,7 +2808,8 @@
           "birthMonth": 9,
           "birthDay": 24,
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "ryan.nguyen.jpg"
         },
         {
           "title": null,
@@ -2854,7 +2888,8 @@
           "birthDay": 27,
           "classification": "Member",
           "maidenName": "Torres",
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "laura.torres.jpg"
         },
         {
           "title": "Mr",
@@ -2924,7 +2959,8 @@
           "birthDay": 2,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "jason.johnson.jpg"
         },
         {
           "title": "Mrs",
@@ -2941,7 +2977,8 @@
           "birthDay": 3,
           "classification": "Guest",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "susan.johnson.jpg"
         }
       ],
       "notes": [],
@@ -2986,7 +3023,8 @@
           "birthDay": 4,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "kenneth.harris.jpg"
         },
         {
           "title": "Mrs",
@@ -3056,7 +3094,8 @@
           "birthDay": 6,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "jennifer.lee.jpg"
         },
         {
           "title": "Mr",
@@ -3073,7 +3112,8 @@
           "birthDay": 7,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "edward.lee.jpg"
         },
         {
           "title": null,
@@ -3176,7 +3216,8 @@
           "birthDay": 11,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "jessica.flores.jpg"
         },
         {
           "title": "Mr",
@@ -3193,7 +3234,8 @@
           "birthDay": 12,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "paul.flores.jpg"
         },
         {
           "title": null,
@@ -3272,7 +3314,8 @@
           "birthDay": 15,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "karen.flores.jpg"
         },
         {
           "title": "Mr",
@@ -3289,7 +3332,8 @@
           "birthDay": 16,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "kevin.flores.jpg"
         },
         {
           "title": null,
@@ -3385,7 +3429,8 @@
           "birthDay": 20,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "george.baker.jpg"
         },
         {
           "title": "Mrs",
@@ -3402,7 +3447,8 @@
           "birthDay": 21,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "donna.baker.jpg"
         }
       ],
       "notes": [],
@@ -3413,6 +3459,7 @@
     },
     {
       "name": "Campbell",
+      "photo": "family.campbell.jpg",
       "address": {
         "line1": "2655 Prairie Ln",
         "line2": null,
@@ -3455,7 +3502,7 @@
           "firstName": "Jennifer",
           "middleName": null,
           "lastName": "Campbell",
-          "birthYear": 2002,
+          "birthYear": 1996,
           "gender": "female",
           "email": "jennifer.campbell@demo.churchcrm.io",
           "phone": "(598) 564-6812",
@@ -3467,6 +3514,23 @@
           "maidenName": "Campbell",
           "familyRole": 2,
           "photo": "jennifer.campbell.jpg"
+        },
+        {
+          "title": null,
+          "firstName": "Ethan",
+          "middleName": null,
+          "lastName": "Campbell",
+          "birthYear": 2016,
+          "gender": "male",
+          "email": "ethan.campbell@demo.churchcrm.io",
+          "phone": null,
+          "notes": [],
+          "createdAt": "2024-02-07T08:00:00.000Z",
+          "birthMonth": 6,
+          "birthDay": 14,
+          "classification": "Member",
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
@@ -3511,7 +3575,8 @@
           "birthMonth": 12,
           "birthDay": 24,
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "kimberly.nelson.jpg"
         },
         {
           "title": "Mr",
@@ -3528,7 +3593,8 @@
           "birthMonth": 1,
           "birthDay": 25,
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "ryan.nelson.jpg"
         },
         {
           "title": null,
@@ -3624,7 +3690,8 @@
           "birthDay": 2,
           "classification": "Member",
           "maidenName": "Davis",
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "karen.davis.jpg"
         },
         {
           "title": "Mr",
@@ -3755,7 +3822,8 @@
           "birthDay": 8,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "kevin.nguyen.jpg"
         },
         {
           "title": "Mrs",
@@ -3772,7 +3840,8 @@
           "birthDay": 9,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "mary.nguyen.jpg"
         }
       ],
       "notes": [
@@ -3824,7 +3893,8 @@
           "birthDay": 10,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "emily.evans.jpg"
         },
         {
           "title": null,
@@ -3841,7 +3911,7 @@
           "birthDay": 11,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3880,9 +3950,9 @@
       ],
       "notes": [],
       "createdAt": "2024-02-09",
-      "weddingDate": "2019-04-19",
       "active": true,
-      "verified": true
+      "verified": true,
+      "photo": "family.evans.jpg"
     },
     {
       "name": "Harris",
@@ -3974,6 +4044,7 @@
           "firstName": "Mark",
           "middleName": null,
           "lastName": "King",
+          "active": false,
           "birthYear": 1993,
           "gender": "male",
           "email": "mark.king@demo.churchcrm.io",
@@ -4055,7 +4126,8 @@
           "birthDay": 18,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "kimberly.jones.jpg"
         },
         {
           "title": "Mr",
@@ -4072,7 +4144,8 @@
           "birthDay": 19,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "mark.jones.jpg"
         },
         {
           "title": null,
@@ -4186,7 +4259,8 @@
           "birthDay": 24,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "elizabeth.king.jpg"
         },
         {
           "title": "Mr",
@@ -4203,7 +4277,8 @@
           "birthDay": 25,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "anthony.king.jpg"
         },
         {
           "title": null,
@@ -4546,7 +4621,8 @@
           "birthDay": 13,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "sarah.hall2.jpg"
         },
         {
           "title": "Mr",
@@ -4563,7 +4639,8 @@
           "birthDay": 14,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "ronald.hall.jpg"
         },
         {
           "title": null,
@@ -4659,7 +4736,8 @@
           "birthDay": 18,
           "classification": "Member",
           "maidenName": "Thompson",
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "betty.thompson.jpg"
         },
         {
           "title": "Mr",
@@ -4676,7 +4754,8 @@
           "birthDay": 19,
           "classification": "Guest",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "daniel.thompson.jpg"
         },
         {
           "title": null,
@@ -4789,7 +4868,8 @@
           "birthDay": 24,
           "classification": "Member",
           "maidenName": "Brown",
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "patricia.brown.jpg"
         }
       ],
       "notes": [],
@@ -4851,7 +4931,8 @@
           "birthDay": 26,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "melissa.rodriguez.jpg"
         },
         {
           "title": null,
@@ -4971,7 +5052,8 @@
           "birthDay": 4,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "cynthia.thomas.jpg"
         },
         {
           "title": null,
@@ -4988,7 +5070,7 @@
           "birthDay": 5,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5044,7 +5126,6 @@
       ],
       "notes": [],
       "createdAt": "2024-02-20",
-      "weddingDate": "2019-03-10",
       "active": true,
       "verified": false
     },
@@ -5102,12 +5183,11 @@
           "birthDay": 10,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         }
       ],
       "notes": [],
       "createdAt": "2024-02-21",
-      "weddingDate": "2019-04-11",
       "active": true,
       "verified": true
     },
@@ -5147,7 +5227,8 @@
           "birthDay": 11,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "michelle.young.jpg"
         },
         {
           "title": "Mr",
@@ -5195,7 +5276,8 @@
       "createdAt": "2024-02-22",
       "weddingDate": "2019-05-12",
       "active": true,
-      "verified": false
+      "verified": false,
+      "photo": "family.young.jpg"
     },
     {
       "name": "Hall",
@@ -5331,7 +5413,8 @@
           "birthMonth": 3,
           "birthDay": 18,
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "ashley.jones.jpg"
         },
         {
           "title": "Mr",
@@ -5417,7 +5500,8 @@
           "birthDay": 21,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "michelle.thompson.jpg"
         },
         {
           "title": null,
@@ -5441,7 +5525,8 @@
       "createdAt": "2024-02-25",
       "weddingDate": "2019-08-15",
       "active": true,
-      "verified": false
+      "verified": false,
+      "photo": "family.thompson.jpg"
     },
     {
       "name": "Torres",
@@ -5463,7 +5548,6 @@
         },
         "email": "family.torres57@demo.churchcrm.io"
       },
-      "photo": "family.torres57.jpg",
       "members": [
         {
           "title": "Mr",
@@ -5497,7 +5581,7 @@
           "birthDay": 24,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5519,7 +5603,6 @@
       ],
       "notes": [],
       "createdAt": "2024-02-26",
-      "weddingDate": "2019-09-16",
       "active": false,
       "verified": false
     },
@@ -5576,7 +5659,8 @@
           "birthDay": 27,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "sarah.evans.jpg"
         },
         {
           "title": null,
@@ -5844,7 +5928,7 @@
           "birthDay": 12,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5866,7 +5950,6 @@
       ],
       "notes": [],
       "createdAt": "2024-02-29",
-      "weddingDate": "2019-12-19",
       "active": true,
       "verified": false
     },

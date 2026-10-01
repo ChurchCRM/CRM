@@ -282,10 +282,8 @@ function initializeGroupView() {
           window.CRM.APIRequest({
             method: "DELETE",
             path: "groups/" + window.CRM.currentGroup,
-          }).done((data) => {
-            if (data.status === "success") {
-              window.location.href = window.CRM.root + "/groups/dashboard";
-            }
+          }).done(() => {
+            window.location.href = window.CRM.root + "/groups/dashboard";
           });
         }
       },
@@ -295,15 +293,24 @@ function initializeGroupView() {
   // ------------------------------------------------------------------ //
   // Toggle Active / Email Export from Actions dropdown
   // ------------------------------------------------------------------ //
+  const notifyGroupUpdateFailed = (xhr) => {
+    window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update group. Please try again."), {
+      type: "danger",
+      delay: 5000,
+    });
+  };
+
   $("#toggleGroupActive").on("click", (e) => {
     e.preventDefault();
     $.ajax({
       type: "POST",
       url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/settings/active/" + !window.CRM.groupIsActive,
       dataType: "json",
-    }).done(() => {
-      location.reload();
-    });
+    })
+      .done(() => {
+        location.reload();
+      })
+      .fail(notifyGroupUpdateFailed);
   });
 
   $("#toggleGroupEmailExport").on("click", (e) => {
@@ -317,9 +324,11 @@ function initializeGroupView() {
         "/settings/email/export/" +
         !window.CRM.groupEmailExport,
       dataType: "json",
-    }).done(() => {
-      location.reload();
-    });
+    })
+      .done(() => {
+        location.reload();
+      })
+      .fail(notifyGroupUpdateFailed);
   });
 
   // Note: email action is handled by the email-composer.min.js bundle
@@ -484,25 +493,13 @@ function initializeGroupView() {
     initDataTable();
   });
 
-  // Person search for "Add Member" — uses BS5 modal for role selection
+  // Person search for "Add Member" — uses BS5 modal for role selection.
+  // The picker itself is the shared helper from webpack/common/person-select.ts
+  // (#9819), re-exported on window.CRM by skin-core.js because this file is
+  // loaded as a plain <script src> and is not part of any webpack bundle.
   $(".personSearch").each(function () {
     if (this.tomselect) return;
-    new TomSelect(this, {
-      valueField: "objid",
-      labelField: "text",
-      searchField: "text",
-      dropdownParent: "body",
-      load: (query, callback) => {
-        if (query.length < 2) return callback();
-        fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))
-          .then((res) => res.json())
-          .then((data) => {
-            callback(data);
-          })
-          .catch(() => {
-            callback();
-          });
-      },
+    window.CRM.initPersonSelect(this, {
       onChange: function (value) {
         if (!value) return;
 

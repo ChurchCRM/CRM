@@ -75,7 +75,7 @@ $(document).ready(function() {
                 name: 'iDoNotSmsPropertyId',
                 type: 'ajax',
                 label: <?= InputUtils::jsonEncodeForScript(gettext('Do Not SMS Property')) ?>,
-                ajaxUrl: '/api/system/properties/person',
+                ajaxUrl: '/admin/api/system/properties/person',
                 tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('iDoNotSmsPropertyId')) ?>
             }
         ],

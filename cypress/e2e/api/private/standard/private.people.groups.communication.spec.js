@@ -107,31 +107,3 @@ describe("API Group Communication Endpoints", () => {
         });
     });
 });
-
-describe("API System Properties Endpoint", () => {
-    it("GET /system/properties/person returns id/value pairs", () => {
-        cy.makePrivateAdminAPICall(
-            "GET",
-            `/api/system/properties/person`,
-            null,
-            200,
-        ).then((resp) => {
-            expect(resp.body).to.be.an("array");
-            if (resp.body.length > 0) {
-                expect(resp.body[0]).to.have.property("id");
-                expect(resp.body[0]).to.have.property("value");
-                expect(resp.body[0].id).to.be.a("number");
-                expect(resp.body[0].value).to.be.a("string");
-            }
-        });
-    });
-
-    it("non-admin is denied access", () => {
-        cy.makePrivateUserAPICall(
-            "GET",
-            `/api/system/properties/person`,
-            null,
-            [401, 403],
-        );
-    });
-});

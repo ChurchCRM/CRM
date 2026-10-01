@@ -4,6 +4,7 @@ namespace ChurchCRM\Reports;
 
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -32,9 +33,21 @@ class PdfDirectory extends ChurchInfoReport
     private string $sChurchCityEncoded;
     private string $sChurchStateEncoded;
 
-    public function __construct($nc = 1, $paper = 'letter', $fs = 10, $ls = 4)
+    /**
+     * @param int    $nc      columns per page
+     * @param string $paper   FPDF paper name: letter, legal or a4
+     * @param int    $fs      font size in points
+     * @param float  $ls      line spacing in mm
+     * @param bool   $booklet lay the pages out as a folded booklet (two half
+     *                        pages per landscape sheet, imposed for
+     *                        double-sided printing); columns are per half page
+     */
+    public function __construct($nc = 1, $paper = 'letter', $fs = 10, $ls = 4, bool $booklet = false)
     {
         parent::__construct('P', 'mm', $paper);
+        if ($booklet) {
+            $this->enableBookletImposition();
+        }
         $this->_Char_Size = $fs;
         $this->_LS = $ls;
         $this->SetMargins(0, 0);
@@ -42,7 +55,7 @@ class PdfDirectory extends ChurchInfoReport
         $this->setCharSize($this->_Char_Size);
         $this->SetAutoPageBreak(false);
         $this->_NCols = $nc;
-        $this->_ColWidth = 190 / $nc - $this->_Gutter;
+        $this->_ColWidth = $this->printableWidth() / $nc - $this->_Gutter;
 
         $this->sChurchNameEncoded = self::convertToLatin1(SystemConfig::getValue('sChurchName'));
         $this->sChurchAddressEncoded = self::convertToLatin1(SystemConfig::getValue('sChurchAddress'));
@@ -50,26 +63,35 @@ class PdfDirectory extends ChurchInfoReport
         $this->sChurchStateEncoded = self::convertToLatin1(SystemConfig::getValue('sChurchState'));
     }
 
+    /**
+     * Width available to the columns: the page width less both side margins.
+     * On a booklet this is the width of one half page.
+     */
+    public function printableWidth(): float
+    {
+        return $this->w - ($this->_Margin_Left * 2);
+    }
+
     public function header(): void
     {
         global $bDirUseTitlePage;
 
         if (($this->PageNo() > 1) || ($bDirUseTitlePage === false)) {
-            //Select Arial bold 15
-            $this->SetFont($this->_Font, 'B', 15);
+            $sTitle = $this->sChurchNameEncoded . ' - ' . gettext('Directory');
+            // Bold 15pt, stepped down until the title fits the framed cell
+            // (half-size booklet pages have less room than a full sheet).
+            $fontSize = 15;
+            $this->SetFont($this->_Font, 'B', $fontSize);
+            while ($fontSize > 8 && $this->GetStringWidth($sTitle) > $this->printableWidth() - 4) {
+                $fontSize--;
+                $this->SetFont($this->_Font, 'B', $fontSize);
+            }
             //Line break
             $this->Ln(7);
             //Move to the right
             $this->SetX($this->_Margin_Left);
             //Framed title
-            $this->Cell(
-                $this->w - ($this->_Margin_Left * 2),
-                10,
-                $this->sChurchNameEncoded . ' - ' . gettext('Directory'),
-                1,
-                0,
-                'C'
-            );
+            $this->Cell($this->printableWidth(), 10, $sTitle, 1, 0, 'C');
             $this->SetY(25);
         }
     }
@@ -99,14 +121,14 @@ class PdfDirectory extends ChurchInfoReport
         $this->SetFont($this->_Font, 'B', 15);
 
         if (is_readable(SystemConfig::getValue('bDirLetterHead'))) {
-            $this->Image(SystemConfig::getValue('bDirLetterHead'), 10, 5, 190);
+            $this->Image(SystemConfig::getValue('bDirLetterHead'), 10, 5, $this->w - 20);
         }
 
         //Line break
         $this->Ln(5);
-        //Move to the right
+        // Centred blocks spanning the full page width (a half page on a booklet)
         $this->MultiCell(
-            197,
+            $this->w,
             10,
             "\n\n\n" . $this->sChurchNameEncoded . "\n\n" . gettext('Directory') . "\n\n",
             0,
@@ -114,7 +136,7 @@ class PdfDirectory extends ChurchInfoReport
         );
         $this->Ln(5);
         $today = date(SystemConfig::getValue('sDateFormatLong'));
-        $this->MultiCell(197, 10, $today . "\n\n", 0, 'C');
+        $this->MultiCell($this->w, 10, $today . "\n\n", 0, 'C');
 
         $sContact = sprintf(
             "%s\n%s, %s  %s\n\n%s\n\n",
@@ -124,10 +146,11 @@ class PdfDirectory extends ChurchInfoReport
             SystemConfig::getValue('sChurchZip'),
             SystemConfig::getValue('sChurchPhone')
         );
-        $this->MultiCell(197, 10, $sContact, 0, 'C');
-        $this->Cell(10);
+        $this->MultiCell($this->w, 10, $sContact, 0, 'C');
+        // Disclaimer is inset 10mm on both sides so it wraps inside the page
+        $this->SetX(10);
         $sDirectoryDisclaimer = self::convertToLatin1($sDirectoryDisclaimer);
-        $this->MultiCell(197, 10, $sDirectoryDisclaimer, 0, 'C');
+        $this->MultiCell($this->w - 20, 10, $sDirectoryDisclaimer, 0, 'C');
         $this->addPage();
     }
 
@@ -306,6 +329,7 @@ class PdfDirectory extends ChurchInfoReport
         global $bDirFamilyEmail;
         global $bDirWedding;
         global $bDirAddress;
+        global $bDirMailingAddress;
 
         extract($aRow);
 
@@ -326,6 +350,14 @@ class PdfDirectory extends ChurchInfoReport
             }
             if (Countries::isForeign($fam_Country)) {
                 $sFamilyStr .= $fam_Country . "\n";
+            }
+            // Only families that actually mail somewhere other than their primary
+            // address get a second block, and only when the reader asked for it (#9743).
+            if ($bDirMailingAddress) {
+                $family = Family::readOnlyFromRow($aRow);
+                if ($family->hasDistinctMailingAddress()) {
+                    $sFamilyStr .= '   ' . gettext('Mailing Address') . ': ' . str_replace("\n", "\n   ", $family->getMailingAddressLines()) . "\n";
+                }
             }
         }
 

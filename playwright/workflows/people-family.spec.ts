@@ -1,55 +1,46 @@
+import path from 'node:path';
+
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanSelect, humanType } from '../support/human';
+import { humanClick, humanPause, humanSelect, humanType, settle } from '../support/human';
+import { uploadDemoPhoto } from '../support/photo';
+
+const KEVIN_THOMAS_PHOTO = path.join(__dirname, '..', '..', 'src', 'admin', 'demo', 'images', 'people', 'kevin.thomas.jpg');
 
 test.describe('People & Families', () => {
   test('people-family-overview', async ({ page }, testInfo) => {
-    // A church user browsing People & Families: open the family list, then
-    // drill into one family's profile. Deliberately the Scott family (see
-    // src/admin/demo/people.json), not just the first active row — every
-    // one of its 6 members has a real demo photo file, and its Raytown, MO
-    // address has real lat/lng, so the profile shows a full set of member
-    // photos and a properly geocoded map instead of placeholder avatars or
-    // an empty/default map view.
     await page.goto('/people/family');
 
     const rows = page.locator('#families tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
     await humanPause(page, 500);
 
-    // DataTables paginates (src/people/views/family-list.php) — with 62
-    // demo families, "Scott" isn't on the default first page, so search
-    // for it instead of filtering whatever rows happen to be rendered.
-    // DataTables 2.x's search box has no #{table}_filter wrapper (that's
-    // the 1.x id) — its input lives at `.dt-search input` (id `dt-search-N`).
-    await humanType(page.locator('.dt-search input'), 'Scott');
+    // Two families are named "Baker" in the seed data — the unique contact
+    // email (visible in the row's Email column) picks the one with a real
+    // family portrait and photographed parents (src/admin/demo/people.json),
+    // not the other, photo-less Baker family.
+    await humanType(page.locator('.dt-search input'), 'family.baker7');
     await humanPause(page, 500);
-    const scottRow = rows.filter({ hasText: 'Scott' }).first();
-    await expect(scottRow).toBeVisible({ timeout: 15000 });
-    await humanClick(scottRow.locator('td').first().locator('a').first());
+    const bakerRow = rows.filter({ hasText: 'family.baker7' }).first();
+    await expect(bakerRow).toBeVisible({ timeout: 15000 });
+    await humanClick(bakerRow.locator('td').first().locator('a').first());
     await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
     await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
-    // Let the map tiles and member photo thumbnails finish loading —
-    // captureScreen's own networkidle wait covers in-flight XHRs, but
-    // Leaflet's tile images and photo <img> tags aren't always caught by
-    // that if they're still queued.
-    await humanPause(page, 1000);
+    await settle(page, 1000);
 
+    // Not "...and a geocoded map": family-view.php stacks the photo above
+    // the Address card in a narrow right column, so the map itself renders
+    // below the fold at this viewport regardless of family — the
+    // "Geocoded" badge is what's actually visible in frame. See
+    // marketing-visuals-pipeline.md's "Map visibility" note.
     await captureScreen(page, testInfo, {
       name: 'people-family-overview',
-      purpose: 'Show how ChurchCRM organizes people and families, with member photos and a geocoded map',
+      purpose: 'Show how ChurchCRM organizes people and families, with member photos and a geocoded address',
     });
   });
 
   test('people-family-new-family', async ({ page }, testInfo) => {
-    // A church user registering a brand-new family: fill out the family
-    // form for the Whitfields, save, and land on their new profile page.
-    // "Whitfield" (not "Johnson" or any other seed surname — see
-    // src/admin/demo/people.json's lastName values) so this created family
-    // is never confused with, or accidentally aliased to, a seeded one in
-    // other screenshots (e.g. the pledge report already has a real,
-    // separate "Johnson" family from the demo data).
     await page.goto('/FamilyEditor.php');
     await humanPause(page, 500);
 
@@ -67,9 +58,24 @@ test.describe('People & Families', () => {
 
     await humanPause(page, 500);
     await humanClick(page.locator('button[name="FamilySubmit"]'));
-    await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
-    await expect(page.getByText('Whitfield', { exact: false }).first()).toBeVisible({ timeout: 10000 });
+    await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 15000 });
+    const michaelLink = page.getByText('Michael Whitfield', { exact: false }).first();
+    await expect(michaelLink).toBeVisible({ timeout: 10000 });
     await humanPause(page, 500);
+
+    // A family created live by this test starts with no photo of its own
+    // (there's no seed-data fixture to pull one from, unlike every other
+    // family in this pipeline) — upload one via the same API the app's own
+    // photo-uploader widget calls, so the resulting profile doesn't show
+    // initials placeholders in what's supposed to be the payoff screenshot.
+    const familyId = Number(new URL(page.url()).pathname.match(/\/people\/family\/(\d+)/)?.[1]);
+    const personHref = await michaelLink.getAttribute('href');
+    const personId = Number(personHref?.match(/\/people\/view\/(\d+)/)?.[1]);
+    await uploadDemoPhoto(page, 'family', familyId, KEVIN_THOMAS_PHOTO);
+    await uploadDemoPhoto(page, 'person', personId, KEVIN_THOMAS_PHOTO);
+    await page.reload();
+    await expect(page.getByText('Whitfield', { exact: false }).first()).toBeVisible({ timeout: 10000 });
+    await settle(page, 500);
 
     await captureScreen(page, testInfo, {
       name: 'people-family-new-family',
@@ -78,17 +84,9 @@ test.describe('People & Families', () => {
   });
 
   test('people-map-overview', async ({ page }, testInfo) => {
-    // A church user viewing the family map: pins are plotted from each
-    // family's geocoded address (see src/admin/demo/people.json), so this
-    // relies on the same demo data that gives people-family-overview a
-    // real, non-empty map — no address selection needed here, the page
-    // just needs enough seeded families with valid lat/lng to render a
-    // full map instead of a single dot or an empty view.
     await page.goto('/people/map');
     await expect(page.locator('#map')).toBeVisible({ timeout: 15000 });
-    // Leaflet loads tiles and pins asynchronously after the container
-    // itself is visible — give them time to paint before capturing.
-    await humanPause(page, 1500);
+    await settle(page, 1500);
 
     await captureScreen(page, testInfo, {
       name: 'people-map-overview',
@@ -97,14 +95,9 @@ test.describe('People & Families', () => {
   });
 
   test('people-photo-gallery', async ({ page }, testInfo) => {
-    // A church user browsing the photo directory: a grid of member photos
-    // (route: src/people/routes/people.php's /photos, function
-    // viewPeoplePhotoGallery). Defaults to "photos only" already
-    // (showOnlyWithPhotos defaults true), so no extra filtering needed to
-    // avoid a grid full of placeholder avatars.
     await page.goto('/people/photos');
     await expect(page.locator('#photo-grid')).toBeVisible({ timeout: 15000 });
-    await humanPause(page, 800);
+    await settle(page, 800);
 
     await captureScreen(page, testInfo, {
       name: 'people-photo-gallery',
@@ -113,16 +106,74 @@ test.describe('People & Families', () => {
   });
 
   test('people-directory-list', async ({ page }, testInfo) => {
-    // Secondary/optional shot (shot list): a filtered person directory, in
-    // case the family record alone feels thin on its own.
     await page.goto('/people/list');
     const rows = page.locator('#members tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
-    await humanPause(page, 500);
+    await settle(page, 500);
 
     await captureScreen(page, testInfo, {
       name: 'people-directory-list',
       purpose: 'Show the filtered person directory list',
+    });
+  });
+
+  // Inactive and deceased subjects come from src/admin/demo/people.json
+  // (Mark King: active false; Daniel Johnson: dateDeceased; Campbell:
+  // inactive family) so screenshots never mutate data another spec reads.
+  test('person-inactive-profile', async ({ page }, testInfo) => {
+    await page.goto('/people/list?personActiveStatus=inactive');
+    const rows = page.locator('#members tbody tr');
+    await expect(rows.first()).toBeVisible({ timeout: 15000 });
+
+    await humanType(page.locator('.dt-search input'), 'Mark King');
+    await humanPause(page, 500);
+    const targetRow = rows.filter({ hasText: 'Mark King' }).first();
+    await expect(targetRow).toBeVisible({ timeout: 15000 });
+    await humanClick(targetRow.locator('a').first());
+    await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
+    await expect(page.locator('#person-deactivated')).toBeVisible({ timeout: 10000 });
+    await settle(page, 800);
+
+    await captureScreen(page, testInfo, {
+      name: 'person-inactive-profile',
+      purpose: 'Show a person profile for an inactive member, including the inactive status banner',
+    });
+  });
+
+  test('person-deceased-profile', async ({ page }, testInfo) => {
+    // The people list always opens filtered to Living, so read the profile
+    // link from the server-rendered rows instead.
+    const listHtml = await (await page.request.get('/people/list')).text();
+    const profilePath = listHtml.match(/href="([^"]*\/people\/view\/\d+)" class="fw-bold">Daniel Johnson</)?.[1];
+    expect(profilePath).toBeTruthy();
+
+    await page.goto(profilePath!);
+    await expect(page.locator('.badge', { has: page.locator('.fa-cross') })).toBeVisible({ timeout: 10000 });
+    await settle(page, 800);
+
+    await captureScreen(page, testInfo, {
+      name: 'person-deceased-profile',
+      purpose: 'Show a person profile for a deceased member, including the Deceased badge and date',
+    });
+  });
+
+  test('family-inactive-profile', async ({ page }, testInfo) => {
+    await page.goto('/people/family?familyActiveStatus=inactive');
+    const rows = page.locator('#families tbody tr');
+    await expect(rows.first()).toBeVisible({ timeout: 15000 });
+
+    await humanType(page.locator('.dt-search input'), 'Campbell');
+    await humanPause(page, 500);
+    const targetRow = rows.filter({ hasText: 'Campbell' }).first();
+    await expect(targetRow).toBeVisible({ timeout: 15000 });
+    await humanClick(targetRow.locator('td').first().locator('a').first());
+    await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
+    await expect(page.locator('#family-deactivated')).toBeVisible({ timeout: 10000 });
+    await settle(page, 800);
+
+    await captureScreen(page, testInfo, {
+      name: 'family-inactive-profile',
+      purpose: 'Show a family profile for an inactive family, including the inactive status banner',
     });
   });
 });

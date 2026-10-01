@@ -172,7 +172,14 @@ describe("event-checkin.js openCheckoutByDialog TomSelect dropdownParent:body (#
         // and be clipped by overflow:hidden instead). Visibility is not checked here
         // because the TomSelect load callback requires a 2-char query before fetching
         // options, and clicking the control alone shows no list items.
-        cy.get("body > .ts-dropdown", { timeout: 5000 }).should("exist");
+        //
+        // Scoped to this instance's own dropdown: since #9819 the walk-in #child /
+        // #adult pickers on the same page are body-mounted too, so a bare
+        // `body > .ts-dropdown` would be satisfied by one of theirs. TomSelect ids
+        // its .ts-dropdown-content `<select id>-ts-dropdown`.
+        cy.get("body > .ts-dropdown > #checkoutBySelect-ts-dropdown", { timeout: 5000 }).should(
+            "exist",
+        );
 
         // Cancel without actually checking out (avoid side effects)
         cy.get(".modal.show #checkoutCancelBtn").click({ force: true });
@@ -186,7 +193,8 @@ describe("event-checkin.js openCheckoutByDialog TomSelect dropdownParent:body (#
         cy.get("#crm-checkout-by-modal", { timeout: 5000 }).should("not.exist");
 
         // Teardown: hidden.bs.modal destroys the TomSelect and removes the
-        // body-mounted dropdown.
-        cy.get("body > .ts-dropdown", { timeout: 5000 }).should("not.exist");
+        // body-mounted dropdown. Scoped to the modal's own select for the same
+        // reason as above — the walk-in pickers' dropdowns legitimately survive.
+        cy.get("#checkoutBySelect-ts-dropdown", { timeout: 5000 }).should("not.exist");
     });
 });

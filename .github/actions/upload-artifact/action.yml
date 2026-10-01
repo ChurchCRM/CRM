@@ -1,0 +1,33 @@
+name: 'Upload artifact'
+description: 'Single SHA pin for actions/upload-artifact. Run actions/checkout first.'
+
+inputs:
+  name:
+    description: 'Artifact name'
+    required: true
+  path:
+    description: 'Files or directories to upload'
+    required: true
+  retention-days:
+    description: 'Days to keep the artifact (empty = repository default)'
+    required: false
+    default: ''
+  if-no-files-found:
+    description: 'warn, error or ignore'
+    required: false
+    default: 'warn'
+  include-hidden-files:
+    description: 'Include hidden files'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ inputs.path }}
+        retention-days: ${{ inputs.retention-days }}
+        if-no-files-found: ${{ inputs.if-no-files-found }}
+        include-hidden-files: ${{ inputs.include-hidden-files }}

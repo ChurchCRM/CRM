@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Fotky"
 
 #: 
-msgid "Number of Columns"
-msgstr "Počet sloupců"
-
-#: 
 msgid "Paper Size"
 msgstr "Velikost papíru"
 
@@ -846,10 +842,6 @@ msgstr "Smazat foto"
 #: 
 msgid "Timeline"
 msgstr "Časová osa"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Příspěvky a platby"
 
 #: 
 msgid "Value"
@@ -7356,10 +7348,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Vyberte typ záznamu, na který se tato vlastnost vztahuje"
 
 #: 
-msgid "Total Pledges"
-msgstr "Celkové sliby"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Sledujte a spravujte závazky slibů podle rodiny a fondu"
 
@@ -12292,16 +12280,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jak spolu fungují Nedělní škola + Události + Kiosky"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Neplatné datum pro %s — očekáváno RRRR-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Neplatný formát data pro rangeStart nebo rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Neplatné datum; očekávaný formát RRRR-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12532,10 +12512,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds musí být neprázdné pole"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "neplatný typ opakování"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds musí být neprázdné pole"
 
@@ -12738,10 +12714,6 @@ msgstr "Celkem kiosků"
 #: 
 msgid "Upcoming Events"
 msgstr "Nadcházející události"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Absolutní URL http(s) loga sboru zobrazovaného v e-mailových šablonách (a v budoucnu i jinde). Pro nejlepší zobrazení v e-mailových klientech použijte široký bannerový obrázek v poměru stran přibližně 3,5:1 (například 350×100 px), PNG nebo JPG, servírovaný přes HTTPS. Ponechte prázdné nebo zadejte neplatnou hodnotu pro návrat k výchozímu logu ChurchCRM."
 
 #: 
 msgid "An option with that name already exists"
@@ -14944,10 +14916,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Vybraný soubor přesahuje maximální velikost nahrávání tohoto serveru"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Na dnešek nejsou naplánované žádné události"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Vyskytl se problém s načtením požadovaného objektu"
 
@@ -16935,6 +16903,10 @@ msgid "Count unique installs"
 msgstr "Počítat unikátní instalace"
 
 #: 
+msgid "Data"
+msgstr "Data"
+
+#: 
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr "Data jsou zpracovávána službou PostHog na infrastruktuře v EU."
 
@@ -17851,6 +17823,13 @@ msgid "Set up now"
 msgstr "Nastavit nyní"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den."
+msgstr[1] "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny."
+msgstr[2] "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní."
+
+#: 
 msgid "Unknown family"
 msgstr "Neznámá rodina"
 
@@ -18239,6 +18218,10 @@ msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0
 msgstr "Počet dní, které mají uživatelé na aktivaci dvoufaktorového ověření poté, co se stane povinným. Nastavením na 0 se vynutí okamžitě. Zkrácení aktivní ochranné lhůty může uživatele okamžitě uzamknout."
 
 #: 
+msgid "Offline"
+msgstr "Offline"
+
+#: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
 msgstr "Proveďte to až po vyřešení základního problému. Před opětovným spuštěním pluginu budete stále muset kliknout na Povolit."
 
@@ -18437,4 +18420,376 @@ msgstr "skip musí být nula nebo kladné celé číslo"
 #: 
 msgid "view families missing an email"
 msgstr "zobrazit rodiny bez e-mailu"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Kupující v tomto fiskálním roce"
+
+#: 
+msgid "Current"
+msgstr "Aktuální"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Darované položky (tento fiskální rok)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Přihlašovací jméno musí mít nejvýše %d znaků!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Vybráno v tomto fiskálním roce"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s musí být úplná webová adresa https://, například https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Účet má omezená oprávnění. Kontaktujte administrátora."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Při vykreslování chybové stránky došlo k chybě."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Každá adresa musí začínat na https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Generovat štítky"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Generovat poštovní štítky"
+
+#: 
+msgid "Labels"
+msgstr "Štítky"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Poštovní štítky pro osoby ve vašem košíku. Osoba bez vlastní adresy je adresována na adresu své rodiny."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Volitelné. Odkazy na účty církve na sociálních sítích, zobrazené členům na stránkách, jako je patička portálu. Ponecháte-li pole prázdné, daná síť se skryje."
+
+#: 
+msgid "Options"
+msgstr "Možnosti"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Naplánované úlohy"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktivní, zbývá sekund: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Očekávaný interval mezi spuštěními (hodiny): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Přeskočené rodiny (bez uvedené e-mailové adresy): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Rodiny, které se nepodařilo geokódovat: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Rodiny, kterým bude odeslán potvrzovací e-mail: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Zkopírovaní členové: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Zde neuvedeno: dalších {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Příjemci: {{total}} — příliš mnoho pro odkaz mailto:. Použijte místo toho Kopírovat adresy."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Příliš mnoho příjemců pro e-mailového klienta ({{total}} > {{max}}). Použijte místo toho Kopírovat adresy."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "zbývá {{minutes}} min"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d daňový dokument byl úspěšně zaslán rodině."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Výpis darů"
+
+#: 
+msgid "All classifications"
+msgstr "Všechny klasifikace"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Jako administrátor si prosím také prohlédněte"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Automaticky odeslat email s přáním k narozeninám osobě v den jejích narozenin."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Emaily k narozeninám"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Seznamy narozenin, výročí, dobrovolníků a dalších lidí s filtrem klasifikace"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Vyberte %s pro spuštění této zprávy."
+
+#: 
+msgid "Choose events"
+msgstr "Vyberte události"
+
+#: 
+msgid "Choose..."
+msgstr "Vyberte..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logo kostela"
+
+#: 
+msgid "Columns per Page"
+msgstr "Sloupce na stránku"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Vážená rodino %s,\n"
+"\n"
+"Najdete přiložený výpis darů číslo %d ze dne %s.\n"
+"\n"
+"Pokud máte nějaké otázky, kontaktujte prosím kostol.\n"
+"\n"
+"Děkujeme vám za vaši štědrost."
+
+#: 
+msgid "Download CSV"
+msgstr "Stáhnout CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Poslat email %d daňový dokument"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Povolte nebo zakažte modul Finance a boční menu."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Povolte nebo zakažte modul Fundraiser."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Nepodařilo se odstranit logo kostela"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Nepodařilo se nahrát logo kostela"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Fallback URL loga pro šablony emailů, používáno pouze pokud nebyl na stránce Church Information nahrán žádný logo kostela. Vlastní stránky aplikace ignorují toto nastavení a vždy používají nahráné logo nebo výchozí logo ChurchCRM. Musí být absolutní http(s) URL. Pro nejlepší vykreslování v emailových klientech použijte široký banner zhruba v poměru 3.5:1 (například 350×100 px), PNG nebo JPG, servírované přes HTTPS. Ponechte prázdné nebo zadejte neplatnou hodnotu pro návrat na výchozí logo ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Modul Finanční"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Najděte lidi, kteří se neúčastnili akce"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Najděte dobrovolníky, kteří odpovídají dvěma specifickým kódům příležitostí"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "První příležitost pro dobrovolníka"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Složená brožura"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Modul Fundraiser"
+
+#: 
+msgid "Giving History"
+msgstr "Historie darů"
+
+#: 
+msgid "Last Gift"
+msgstr "Poslední dar"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Ponechte prázdné pro všechny klasifikace."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Maximální počet daňových dokumentů ročníku k zobrazení na profilu rodiny (0 = bez omezení)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Maximálně daňových let zobrazených na rodinu"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Výročí členství"
+
+#: 
+msgid "Missing People"
+msgstr "Chybějící lidé"
+
+#: 
+msgid "No giving history found."
+msgstr "Nebyla nalezena žádná historie darů."
+
+#: 
+msgid "No people match these filters."
+msgstr "Žádní lidé neodpovídají těmto filtrům."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Jedna stránka adresáře na list, na výšku."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Jsou povolena pouze schémata http a https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF nebo WebP. Nejlépe funguje široký banner zhruba 3.5:1 (například 700x200); preferuje se průhledný PNG."
+
+#: 
+msgid "Page Layout"
+msgstr "Rozložení stránky"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Lidé, kteří se připojili v určitém měsíci"
+
+#: 
+msgid "Pledged"
+msgstr "Slíbeno"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Tisk %d daňový dokument"
+
+#: 
+msgid "Queries"
+msgstr "Dotazy"
+
+#: 
+msgid "Recent Friends"
+msgstr "Nedávní přátelé"
+
+#: 
+msgid "Report not found"
+msgstr "Zpráva nebyla nalezena"
+
+#: 
+msgid "Run Report"
+msgstr "Spustit zprávu"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Druhá příležitost pro dobrovolníka"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Zobrazuje se v postranním panelu, na přihlašovací stránce a v e-mailech. Nahráním loga se značka ChurchCRM nahradí všude, kde se zobrazuje."
+
+#: 
+msgid "Single Pages"
+msgstr "Jednotlivé stránky"
+
+#: 
+msgid "Tax Documents"
+msgstr "Daňové doklady"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Odeslání e-mailu s daňovým dokladem se nezdařilo. Zkontrolujte prosím nastavení e-mailového serveru."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Dvě poloviční stránky vedle sebe na každém listu na šířku v pořadí pro brožuru. Tiskněte oboustranně s otáčením podél kratší hrany a poté stoh přeložte napůl. Sloupce se počítají na půlstránku."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Daňový doklad nelze odeslat e-mailem: pro daný rok nebyly nalezeny žádné platební údaje."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Daňový doklad nelze odeslat e-mailem: tato rodina nemá uvedenou e-mailovou adresu."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Nelze přeložit název hostitele serveru OpenLP. Zkontrolujte adresu a síťové připojení."
+
+#: 
+msgid "Upload"
+msgstr "Nahrát"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Používá se výchozí logo ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Zobrazit všechny dary rodiny"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Dobrovolnická příležitost"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Dobrovolníci pro dvě příležitosti"
+
+#: 
+msgid "YTD"
+msgstr "Od začátku roku"
+
+#: 
+msgid "YTD Paid"
+msgstr "Zaplaceno od začátku roku"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "kvůli chybám v době, kdy k tomu došlo, a stáhněte a připojte příslušný soubor protokolu k hlášení na GitHubu – pomůže nám to vyřešit problém bez dalších doplňujících otázek."
+
+#: 
+msgid "system logs"
+msgstr "systémové protokoly"
 

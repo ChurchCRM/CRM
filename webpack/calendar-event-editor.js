@@ -230,8 +230,10 @@ function showEditContent(event, calendars, eventTypes, groups = []) {
   document.getElementById("eventSaveBtn").addEventListener("click", () => {
     saveEvent(formController.getEvent(), CRMRoot)
       .then(() => closeModal())
-      .catch(() => {
-        if (window.CRM?.notify) window.CRM.notify(t("Failed to save event. Please try again."), { type: "danger" });
+      .catch((err) => {
+        if (window.CRM?.notify) {
+          window.CRM.notify(err.serverMessage || t("Failed to save event. Please try again."), { type: "danger" });
+        }
       });
   });
 
@@ -284,9 +286,11 @@ function bindDeleteHandler(event) {
         if (!confirmed) return;
         deleteEvent(event.Id, CRMRoot)
           .then(() => closeModal())
-          .catch(() => {
+          .catch((err) => {
             if (window.CRM?.notify) {
-              window.CRM.notify(t("Failed to delete event. Please try again."), { type: "danger" });
+              window.CRM.notify(err.serverMessage || t("Failed to delete event. Please try again."), {
+                type: "danger",
+              });
             }
           });
       },

@@ -7,7 +7,7 @@
  * newly added and which were already present (duplicates). The endpoint must
  * return two arrays per call: `added` and `duplicate`.
  *
- * UI-level cart coverage (dropdown, v2/cart page, cart manager JS) lives in
+ * UI-level cart coverage (dropdown, /people/cart page, cart manager JS) lives in
  * cypress/e2e/ui/people/standard.cart.spec.js.
  */
 describe("API Private Cart - Duplicate Detection", () => {

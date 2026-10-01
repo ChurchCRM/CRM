@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -11,10 +12,48 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
 {
+    /** @var array<int, string>|null */
+    private static ?array $loginDeletionBlockedReasons = null;
+
+    /**
+     * Reasons the signed-in user may not delete each person who has a login, keyed by person ID.
+     * People without a login, or whom the user may delete, are absent.
+     *
+     * @return array<int, string>
+     */
+    public static function getLoginDeletionBlockedReasons(): array
+    {
+        if (self::$loginDeletionBlockedReasons !== null) {
+            return self::$loginDeletionBlockedReasons;
+        }
+
+        if (!AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
+            return self::$loginDeletionBlockedReasons = [];
+        }
+
+        $personIds = [];
+        foreach (UserQuery::create()->find() as $user) {
+            $personIds[] = $user->getPersonId();
+        }
+
+        $reasons = [];
+        if ($personIds !== []) {
+            foreach (PersonQuery::create()->filterById($personIds)->find() as $person) {
+                $reason = $person->getLoginDeletionBlockedReason();
+                if ($reason !== null) {
+                    $reasons[(int) $person->getId()] = $reason;
+                }
+            }
+        }
+
+        return self::$loginDeletionBlockedReasons = $reasons;
+    }
+
     /**
      * @return array<mixed, array<'address'|'displayName'|'familyID'|'familyRole'|'firstName'|'id'|'lastName'|'role'|'photoURI'|'title'|'uri', mixed>>
      */

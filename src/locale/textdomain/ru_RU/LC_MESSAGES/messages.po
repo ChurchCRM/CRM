@@ -491,11 +491,6 @@ msgstr "Фотографии"
 
 #: 
 #, fuzzy
-msgid "Number of Columns"
-msgstr "Количество колонок"
-
-#: 
-#, fuzzy
 msgid "Paper Size"
 msgstr "Размер Бумаги"
 
@@ -867,10 +862,6 @@ msgstr "Удалить фотографию"
 #: 
 msgid "Timeline"
 msgstr "Лента новостей"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Объявленные и платежи"
 
 #: 
 msgid "Value"
@@ -7429,10 +7420,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Выберите тип записи, к которой применяется это свойство"
 
 #: 
-msgid "Total Pledges"
-msgstr "Всего Обязательств"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Отслеживайте и управляйте обязательствами по семьям и фондам"
 
@@ -12369,16 +12356,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Как воскресная школа, мероприятия и Kiosk взаимодействуют"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Недопустимая дата для %s — ожидается YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Недопустимый формат даты для rangeStart или rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Недопустимая дата; ожидается формат YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12609,10 +12588,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds должен быть непустым массивом"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "недопустимый тип повторения"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds должен быть непустым массивом"
 
@@ -12815,10 +12790,6 @@ msgstr "Всего киосков"
 #: 
 msgid "Upcoming Events"
 msgstr "Предстоящие мероприятия"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Абсолютный http(s) URL логотипа церкви, отображаемого в шаблонах электронных писем (и используемого в других местах в будущем). Для наилучшего отображения в почтовых клиентах используйте широкое баннерное изображение с соотношением сторон примерно 3,5:1 (например, 350×100 пикселей), в формате PNG или JPG, через HTTPS. Оставьте пустым или введите недопустимое значение для использования логотипа ChurchCRM по умолчанию."
 
 #: 
 msgid "An option with that name already exists"
@@ -15019,10 +14990,6 @@ msgstr "Отправить текст всем"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Выбранный файл превышает максимальный размер загрузки этого сервера:"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "На сегодня мероприятий не запланировано"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -17423,6 +17390,14 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Elektronnaya pochta ne nastroena. Pozhaluysta, nastroyte parametry SMTP v sistemnykh nastroykakh."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Письмо отправлено %d семье."
+msgstr[1] "Письмо отправлено %d семьям."
+msgstr[2] "Письмо отправлено %d семьям."
+msgstr[3] "Письмо отправлено %d семьи."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Snachala vvedite pochtovyy adres."
 
@@ -17493,6 +17468,14 @@ msgstr "Platezhi po vybrannym depozitam ne naydeny"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Ne ukazany deystvitelnye identifikatory depozitov"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF-файл успешно отправлен %d семье."
+msgstr[1] "PDF-файл успешно отправлен %d семьям."
+msgstr[2] "PDF-файл успешно отправлен %d семьям."
+msgstr[3] "PDF-файл успешно отправлен %d семьи."
 
 #: 
 msgid "Partial Send"
@@ -17925,6 +17908,14 @@ msgid "Set up now"
 msgstr "Настроить сейчас"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Требуется двухфакторная аутентификация. У вас есть %d день на настройку."
+msgstr[1] "Требуется двухфакторная аутентификация. У вас есть %d дня на настройку."
+msgstr[2] "Требуется двухфакторная аутентификация. У вас есть %d дней на настройку."
+msgstr[3] "Требуется двухфакторная аутентификация. У вас есть %d дня на настройку."
+
+#: 
 msgid "Unknown family"
 msgstr "Неизвестная семья"
 
@@ -17939,4 +17930,952 @@ msgstr "Обновить координаты всех семей"
 #: 
 msgid "Update Coordinates"
 msgstr "Обновить координаты"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s был главой этой семьи и был отмечен как умерший. Пожалуйста, назначьте нового главу семьи."
+
+#: 
+msgid "Accept"
+msgstr "Принять"
+
+#: 
+msgid "Active Now"
+msgstr "Активен сейчас"
+
+#: 
+msgid "Adding..."
+msgstr "Добавление..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Все прихожане CRM с email уже подписаны на этот список!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Все подписчики MailChimp уже есть в ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Произошла ошибка при удалении файлов."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Вы абсолютно уверены? Это удалит все данные и восстановит заводские настройки по умолчанию."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Вы уверены, что хотите удалить ВСЕ файлы журналов? Это действие нельзя отменить."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Вы уверены, что хотите удалить киоск"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Вы уверены, что хотите удалить ссылку"
+
+#: 
+msgid "Assignment"
+msgstr "Назначение"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Фоновые задачи (письма о днях рождения и все запланированные задачи плагинов) ни разу не выполнялись в этой установке."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Фоновые задачи (письма о днях рождения и все запланированные задачи плагинов) последний раз выполнялись %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Резервное копирование..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Резервная копия скачана."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Резервная копия успешно загружена"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Невозможно изменить собственный статус активности"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Экспорт в ChMeetings успешно завершён"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Изменения успешно сохранены"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Отметить уход всех и деактивировать всех"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Отметить уход всех участников и деактивировать это мероприятие?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Проверьте почту — там письмо со ссылкой для сброса пароля"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Закрыть зависшие мероприятия?"
+
+#: 
+msgid "Comments"
+msgstr "Комментарии"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Не удалось загрузить предпросмотр письма. Закройте окно и попробуйте снова."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Создание и загрузка резервной копии. Это может занять несколько минут..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Не удалось сбросить базу данных."
+
+#: 
+msgid "Deceased"
+msgstr "Умерший"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Учётные данные администратора по умолчанию"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Удалить киоск"
+
+#: 
+msgid "Deleted Files"
+msgstr "Удалённые файлы"
+
+#: 
+msgid "Deleting..."
+msgstr "Удаление..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Загрузка не содержит заголовков вложения."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Ошибка при удалении файла журнала."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Ошибка при удалении файлов журнала."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Ошибка при скачивании файла журнала."
+
+#: 
+msgid "Error initiating download."
+msgstr "Ошибка при начале загрузки."
+
+#: 
+msgid "Error loading log file."
+msgstr "Ошибка при загрузке файла журнала."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Ошибка при загрузке самостоятельно зарегистрированных записей"
+
+#: 
+msgid "Errors"
+msgstr "Ошибки"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Исключать умерших прихожан из печатного справочника и экспорта в CSV."
+
+#: 
+msgid "Failed Files"
+msgstr "Файлы с ошибками"
+
+#: 
+msgid "Failed to add link"
+msgstr "Не удалось добавить ссылку"
+
+#: 
+msgid "Failed to add option"
+msgstr "Не удалось добавить вариант"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Не удалось закрыть мероприятия. Попробуйте снова."
+
+#: 
+msgid "Failed to delete"
+msgstr "Не удалось удалить"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Не удалось включить регистрацию через киоск"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Не удалось экспортировать CSV для ChMeetings"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Не удалось загрузить журнал аудита. Попробуйте снова."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Не удалось переименовать киоск"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Не удалось сохранить изменения"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Не удалось обновить плагин"
+
+#: 
+msgid "Family Id"
+msgstr "ID семьи"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Окончательное подтверждение"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Геокодирование семей… это может занять несколько минут. Вы можете оставить эту страницу открытой."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Геокодирование семей… обработано {{done}} из {{total}}, определено местоположение для {{geocoded}}."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Требуется обновление главы семьи"
+
+#: 
+msgid "Helpful Links"
+msgstr "Полезные ссылки"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Скрывать умерших из справочника"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Скрывать умерших прихожан из печатного справочника и экспорта в CSV."
+
+#: 
+msgid "Identify"
+msgstr "Идентифицировать"
+
+#: 
+msgid "Identify command sent"
+msgstr "Команда идентификации отправлена"
+
+#: 
+msgid "Individual"
+msgstr "Индивидуальный"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Внутреннее: дата и время последнего завершения фоновых задач по таймеру (ГГГГ-ММ-ДД ЧЧ:ММ:СС). Не редактировать вручную."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Элемент успешно удалён"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Название киоска"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Киоск принят"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Киоск успешно удалён"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Киоск должен быть принят"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Киоск переименован"
+
+#: 
+msgid "Last seen"
+msgstr "Последняя активность"
+
+#: 
+msgid "Link"
+msgstr "Ссылка"
+
+#: 
+msgid "Link added successfully"
+msgstr "Ссылка успешно добавлена"
+
+#: 
+msgid "Link deleted"
+msgstr "Ссылка удалена"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Название ссылки не может содержать HTML-теги"
+
+#: 
+msgid "Living"
+msgstr "Живой"
+
+#: 
+msgid "Log settings saved"
+msgstr "Настройки журнала сохранены"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Требуется имя для входа"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Человек отмечен как активный"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Человек отмечен как неактивный"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Минимальное количество минут между запусками фоновых задач по таймеру, инициированными загрузкой страницы. Не позволяет запускать задачи при каждом просмотре страницы в загруженное воскресное утро. Не применяется к запуску из командной строки. Установите 0, чтобы запускать при каждой загрузке страницы."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Новые пользователи не получат приветственное письмо, а сгенерированный пароль никогда не отображается. После создания учётной записи задайте пароль в разделе «Пользователи системы» с помощью «Изменить пароль» — либо сначала настройте отправку почты."
+
+#: 
+msgid "No changes to save"
+msgstr "Нет изменений для сохранения"
+
+#: 
+msgid "No contact info"
+msgstr "Нет контактной информации"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Пользовательские ссылки не настроены. Добавьте одну выше!"
+
+#: 
+msgid "No email"
+msgstr "Нет email"
+
+#: 
+msgid "No files were deleted."
+msgstr "Файлы не были удалены."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Справка для этого плагина недоступна."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Нет людей для добавления — все уже в корзине"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Нет людей для добавления — фильтр не дал результатов"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Недопустимая дата смерти"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Количество дней, которое есть у пользователей для подключения 2FA после того, как она стала обязательной. Установите 0, чтобы требовать её немедленно. Сокращение уже действующего льготного периода может немедленно заблокировать доступ пользователям."
+
+#: 
+msgid "Offline"
+msgstr "Не в сети"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Делайте это только после устранения основной проблемы. Вам всё равно нужно будет нажать «Включить», чтобы плагин заработал снова."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Пожалуйста, подтвердите активацию человека"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Пожалуйста, подтвердите деактивацию человека"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Статус плагина обновлён"
+
+#: 
+msgid "Registered"
+msgstr "Зарегистрирован"
+
+#: 
+msgid "Reload"
+msgstr "Перезагрузить"
+
+#: 
+msgid "Reload command sent"
+msgstr "Команда перезагрузки отправлена"
+
+#: 
+msgid "Rename"
+msgstr "Переименовать"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Переименовать киоск"
+
+#: 
+msgid "Reset Complete"
+msgstr "Сброс завершён"
+
+#: 
+msgid "Reset Settings"
+msgstr "Сбросить настройки"
+
+#: 
+msgid "Resetting..."
+msgstr "Сброс..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Запланированные задачи не выполняются"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Отсутствует токен безопасности. Обновите страницу."
+
+#: 
+msgid "Select…"
+msgstr "Выбрать…"
+
+#: 
+msgid "Sending..."
+msgstr "Отправка..."
+
+#: 
+msgid "Sending…"
+msgstr "Отправка…"
+
+#: 
+msgid "Settings reset"
+msgstr "Настройки сброшены"
+
+#: 
+msgid "Settings saved"
+msgstr "Настройки сохранены"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Настройки сохранены. Обновление информации об обновлении..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Показаны только активные люди."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Показаны только неактивные люди."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Успешно удалено"
+
+#: 
+msgid "Testing..."
+msgstr "Проверка..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "База данных очищена. Система готова к работе с чистого листа."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Тем временем резервный запуск при загрузке страницы продолжает работать. Измените время, через которое ChurchCRM показывает это предупреждение, с помощью настройки %1$s, или установите 0, чтобы скрыть его."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Этот человек неактивен"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Это найдёт координаты на карте для всех семей, у которых их нет, используя OpenStreetMap. Обработка семей идёт партиями по 50, примерно минута на партию. Вы можете оставить эту страницу открытой во время выполнения. Продолжить?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Этот человек умер"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Это очистит все настроенные значения для этого плагина. Это действие нельзя отменить."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Это безвозвратно удалит файлы плагина с диска и очистит его настройки. Это действие нельзя отменить."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL не может содержать HTML-теги"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Непредвиденная ошибка. Попробуйте снова."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Удалить плагин"
+
+#: 
+msgid "Upcoming"
+msgstr "Предстоящие"
+
+#: 
+msgid "Valid Until"
+msgstr "Действителен до"
+
+#: 
+msgid "View active only"
+msgstr "Показать только активных"
+
+#: 
+msgid "View all"
+msgstr "Показать все"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Показать все (включая неактивных)"
+
+#: 
+msgid "View inactive only"
+msgstr "Показать только неактивных"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Предупреждать на панели администратора, если фоновые задачи по таймеру не выполнялись указанное число часов. Значение 26 учитывает ежедневный cron с небольшим запасом. Установите 0, чтобы отключить предупреждение."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Без планировщика эти задачи запускаются только при загрузке страницы кем-либо, поэтому в тихий будний день запланированные письма вообще не отправляются. Добавьте задание cron, которое запускает исполнитель задач ежечасно от имени того же пользователя, от которого работает ваш веб-сервер"
+
+#: 
+msgid "check-outs"
+msgstr "уходы"
+
+#: 
+msgid "deceased"
+msgstr "умершие"
+
+#: 
+msgid "event"
+msgstr "мероприятие"
+
+#: 
+msgid "events?"
+msgstr "мероприятия?"
+
+#: 
+msgid "files"
+msgstr "файлы"
+
+#: 
+msgid "people from cart?"
+msgstr "людей из корзины?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "«skip» должен быть нулём или положительным целым числом"
+
+#: 
+msgid "view families missing an email"
+msgstr "показать семьи без email"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Покупатели за этот финансовый год"
+
+#: 
+msgid "Current"
+msgstr "Текущий"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Пожертвовано товаров (в этом финансовом году)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Имя для входа должно содержать не более %d символов!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Собрано в этом финансовом году"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s должен быть полным веб-адресом https://, например https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Учётная запись имеет ограниченные права. Обратитесь к администратору."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Произошла ошибка при отображении страницы ошибки."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Каждый адрес должен начинаться с https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Сформировать наклейки"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Сформировать почтовые наклейки"
+
+#: 
+msgid "Labels"
+msgstr "Наклейки"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Почтовые наклейки для людей в вашей корзине. Если у человека нет собственного адреса, используется адрес его семьи."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Необязательно. Ссылки на собственные аккаунты церкви, отображаемые прихожанам, например, в подвале портала. Оставьте поле пустым, чтобы скрыть эту сеть."
+
+#: 
+msgid "Options"
+msgstr "Параметры"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Запланированные задачи"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Активно, осталось секунд: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Ожидаемый интервал между запусками (часов): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Пропущено семей (нет email в записи): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Семей, которые не удалось геокодировать: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Семей, которые получат письма с подтверждением: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Скопировано прихожан: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Не показано здесь: ещё {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Получателей: {{total}} — слишком много для ссылки mailto:. Используйте «Копировать адреса»."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Слишком много получателей для почтового клиента ({{total}} > {{max}}). Используйте «Копировать адреса»."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "Осталось {{minutes}} мин"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d налоговый документ успешно отправлен семье по электронной почте."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Отчет о благотворительных взносах"
+
+#: 
+msgid "All classifications"
+msgstr "Все классификации"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Пожалуйста, в качестве администратора также проверьте"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Автоматически отправлять приветственное письмо на день рождения людям в день их рождения."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Письма на день рождения"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Дни рождения, годовщины, волонтеры и другие списки людей с фильтром классификации"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Выберите %s для запуска этого отчета."
+
+#: 
+msgid "Choose events"
+msgstr "Выберите события"
+
+#: 
+msgid "Choose..."
+msgstr "Выберите..."
+
+#: 
+msgid "Church Logo"
+msgstr "Логотип Церкви"
+
+#: 
+msgid "Columns per Page"
+msgstr "Столбцов на странице"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Дорогая семья %s,\n"
+"\n"
+"Пожалуйста, найдите вложенную в это письмо выписку о ваших %d благотворительных взносах от %s.\n"
+"\n"
+"Если у вас есть вопросы, пожалуйста, свяжитесь с офисом церкви.\n"
+"\n"
+"Спасибо за вашу щедрость."
+
+#: 
+msgid "Download CSV"
+msgstr "Загрузить CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Отправить %d налоговый документ по электронной почте"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Включить или отключить модуль Финансы и меню боковой панели."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Включить или отключить модуль сбора средств."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Ошибка при удалении логотипа Церкви"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Ошибка при загрузке логотипа Церкви"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL логотипа-заместителя для шаблонов электронной почты, используется только если логотип Церкви не был загружен на странице Информация о Церкви. Собственные страницы приложения игнорируют этот параметр и всегда используют загруженный логотип или логотип ChurchCRM по умолчанию. Должен быть абсолютный URL http(s). Для оптимального отображения в почтовых клиентах используйте широкий баннер с соотношением сторон примерно 3,5:1 (например, 350×100 px) в формате PNG или JPG, поданный через HTTPS. Оставьте пустым или введите неверное значение, чтобы вернуться к логотипу ChurchCRM по умолчанию."
+
+#: 
+msgid "Finance Module"
+msgstr "Модуль Финансы"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Найти людей, которые не присутствовали на мероприятии"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Найти волонтеров, соответствующих двум конкретным кодам возможностей"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Первая возможность для волонтеров"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Сложенный буклет"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Модуль сбора средств"
+
+#: 
+msgid "Giving History"
+msgstr "История благотворительных взносов"
+
+#: 
+msgid "Last Gift"
+msgstr "Последний подарок"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Оставьте пусто для всех классификаций."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Максимальное количество документов налогового года, отображаемых в профиле семьи (0 = без ограничений)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Максимальное количество налоговых лет, показанных на семью"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Годовщины членства"
+
+#: 
+msgid "Missing People"
+msgstr "Отсутствующие люди"
+
+#: 
+msgid "No giving history found."
+msgstr "История благотворительных взносов не найдена."
+
+#: 
+msgid "No people match these filters."
+msgstr "Никто не соответствует этим фильтрам."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Одна страница каталога на лист, книжная ориентация."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Допускаются только схемы http и https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF или WebP. Широкий баннер примерно 3,5:1 (например, 700x200) работает лучше всего; предпочтительно прозрачный PNG."
+
+#: 
+msgid "Page Layout"
+msgstr "Макет страницы"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Люди, присоединившиеся в определенный месяц"
+
+#: 
+msgid "Pledged"
+msgstr "Обещано"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Распечатать %d налоговый документ"
+
+#: 
+msgid "Queries"
+msgstr "Запросы"
+
+#: 
+msgid "Recent Friends"
+msgstr "Недавние друзья"
+
+#: 
+msgid "Report not found"
+msgstr "Отчет не найден"
+
+#: 
+msgid "Run Report"
+msgstr "Запустить отчет"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Вторая возможность для волонтеров"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Отображается в боковой панели, на странице входа и в письмах. Загрузка логотипа заменяет логотип ChurchCRM везде, где он появляется."
+
+#: 
+msgid "Single Pages"
+msgstr "Отдельные страницы"
+
+#: 
+msgid "Tax Documents"
+msgstr "Налоговые документы"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Ошибка при отправке налогового документа по электронной почте. Пожалуйста, проверьте параметры сервера электронной почты."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Две страницы половинного размера рядом на каждом листе в альбомной ориентации в порядке буклета. Печатать двусторонний формат с \"перелистыванием на коротком краю\", затем сложить стопку пополам. Столбцы считаются за половину страницы."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Невозможно отправить налоговый документ по электронной почте: для этого года не найдены данные платежа."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Невозможно отправить налоговый документ по электронной почте: у этой семьи нет адреса электронной почты в файле."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Не удается разрешить имя хоста сервера OpenLP. Проверьте адрес и соединение с сетью."
+
+#: 
+msgid "Upload"
+msgstr "Загрузить"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Использование логотипа ChurchCRM по умолчанию"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Просмотреть полные благотворительные взносы семьи"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Возможность для волонтеров"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Волонтеры для двух возможностей"
+
+#: 
+msgid "YTD"
+msgstr "С начала года"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD выплачено"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "для ошибок около момента, когда это произошло, и загрузите и прикрепите соответствующий файл журнала к вашей проблеме GitHub - это помогает нам исправить проблему, не задавая уточняющих вопросов."
+
+#: 
+msgid "system logs"
+msgstr "системные журналы"
 

@@ -10,14 +10,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     var groupId = <?= (int) $iGroupID ?>;
 
     function reorderFormProp(propId, direction) {
+        var fallback = <?= InputUtils::jsonEncodeForScript(gettext('An error occurred. Please try again.')) ?>;
         fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId + '/order', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ direction: direction })
         })
-        .then(function(r) { return r.json(); })
+        .then(function(r) { return r.json().catch(function() { return {}; }); })
         .then(function(data) {
-            if (data.success) { window.location.reload(); }
+            if (data.success) {
+                window.location.reload();
+                return;
+            }
+            window.CRM.notify(data.message || fallback, { type: 'danger', delay: 5000 });
+        })
+        .catch(function() {
+            window.CRM.notify(fallback, { type: 'danger', delay: 5000 });
         });
     }
 
@@ -40,14 +48,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             },
             callback: function(result) {
                 if (result) {
+                    var fallback = <?= InputUtils::jsonEncodeForScript(gettext('Failed to delete. Please try again.')) ?>;
                     fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId, {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ field: fieldId })
                     })
-                    .then(function(r) { return r.json(); })
+                    .then(function(r) { return r.json().catch(function() { return {}; }); })
                     .then(function(data) {
-                        if (data.success) { window.location.reload(); }
+                        if (data.success) {
+                            window.location.reload();
+                            return;
+                        }
+                        window.CRM.notify(data.message || fallback, { type: 'danger', delay: 5000 });
+                    })
+                    .catch(function() {
+                        window.CRM.notify(fallback, { type: 'danger', delay: 5000 });
                     });
                 }
             }

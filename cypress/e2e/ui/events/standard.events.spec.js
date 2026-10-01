@@ -10,6 +10,16 @@
 describe("Standard User - Event Check-in", () => {
     let testEventId;
 
+    // Only set when the API reports the event as newly created: quick-create
+    // returns `created: false` and an existing event's id when one already
+    // exists for that date+type, and deleting that would remove a row the spec
+    // did not create (#9769).
+    let createdEventId;
+
+    after(() => {
+        cy.cleanupEvents(createdEventId ? [createdEventId] : []);
+    });
+
     before(() => {
         // Create the event we'll use throughout this suite via the admin API
         // (the standard user can't create events). We use eventTypeId: 1 — the
@@ -22,6 +32,9 @@ describe("Standard User - Event Check-in", () => {
         ).then((createResp) => {
             expect(createResp.body).to.have.property("eventId");
             testEventId = createResp.body.eventId;
+            if (createResp.body.created !== false) {
+                createdEventId = testEventId;
+            }
         });
     });
 

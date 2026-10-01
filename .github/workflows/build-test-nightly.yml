@@ -3,7 +3,10 @@ name: Build, Test and Package (Nightly)
 # Consolidated nightly workflow covering all test types that are too heavy or
 # slow to run on every push/PR. This workflow supersedes upgrade-tests.yml
 # (which is deleted). The on-release trigger for upgrade tests is now
-# included in this file's on: block below.
+# included in this file's on: block below. It also runs on every push to a
+# release/** branch, since build-test-package.yml no longer runs the full
+# locale sweep for those pushes (PR #10103) — this is the automatic
+# full-locale gate for release-branch commits.
 #
 # What this workflow covers
 # ─────────────────────────
@@ -16,8 +19,8 @@ name: Build, Test and Package (Nightly)
 #   • test-subdir:           api, admin-ui, ui (3 shards) — subdirectory path
 #   • test-new-system:       setup-wizard (root path)
 #   • test-new-system-subdir setup-wizard (subdir path)
-#   • test-locale-root:      locale smoke tests (root)
-#   • test-locale-subdir:    locale smoke tests (subdir)
+#   • test-locale-root:      full locale sweep (root)
+#   • test-locale-subdir:    full locale sweep (subdir)
 #
 # Stage 2b – Upgrade tests (PHP 8.4 × PHP 8.5, 4 DB groups — parallel with 2a)
 #   • test-upgrade:  churchcrm-mysql | churchcrm-mariadb | v6-mysql | v6-mariadb
@@ -26,11 +29,14 @@ name: Build, Test and Package (Nightly)
 # Stage 3 – Summary
 #   • nightly-summary: always() — reports pass/fail counts to the step summary
 #
-# Concurrency: a new run cancels any in-progress nightly run (safe for both
-# scheduled and manual dispatch triggers — you always want the latest code).
+# Concurrency: a new run cancels any in-progress nightly run (safe for
+# scheduled/dispatch/release-publish triggers — you always want the latest
+# code). Release-branch pushes use their own concurrency group below so a
+# rapid string of pushes to release/** doesn't get cancelled mid-sweep by the
+# unrelated nightly schedule.
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -44,6 +50,14 @@ on:
   workflow_dispatch:
   release:
     types: [published]
+  push:
+    # Release branches get the exhaustive suite (incl. full locale sweep) on
+    # every push, not just nightly/dispatch/publish — build-test-package.yml
+    # no longer runs a full-locale job on these pushes (PR #10103), so this is
+    # the only automatic full-locale validation a release/** commit gets
+    # before it can be selected for release-publish.yml.
+    branches:
+      - 'release/**'
 
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
@@ -54,46 +68,14 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v7
-      with:
-        node-version-file: '.nvmrc'
-        cache: 'npm'
+    - uses: ./.github/actions/checkout-node-npm
 
-    - name: Install npm dependencies
-      run: npm ci
-
-    - name: Set up PHP 8.4
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.4'
-        extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath
-        coverage: none
-
-    - name: Get Composer cache directory
-      id: composer-cache
-      run: |
-        cd src
-        echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-    - name: Cache Composer packages
-      uses: actions/cache@v6
-      with:
-        path: ${{ steps.composer-cache.outputs.dir }}
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-        restore-keys: ${{ runner.os }}-composer-
-
-    - name: Install Composer dependencies
-      env:
-        COMPOSER_MEMORY_LIMIT: -1
-      run: |
-        cd src
-        composer install --no-dev --no-interaction --prefer-dist
+    - uses: ./.github/actions/composer-install
 
     - name: Build app
       run: npm run package
@@ -114,7 +96,7 @@ jobs:
         done
 
     - name: Upload build artifact
-      uses: actions/upload-artifact@v7
+      uses: ./.github/actions/upload-artifact
       with:
         name: nightly-build-${{ github.run_id }}
         path: |
@@ -134,7 +116,7 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -145,6 +127,7 @@ jobs:
           - name: admin-ui
             spec: "cypress/e2e/ui-admin/**/*.spec.js"
             config: "cypress/configs/docker-admin.config.ts"
+            shard-total: 1
         include:
           # ui specs sharded 3× — cypress-split balances by spec file
           # split-index values are strings to avoid JS falsy coercion of 0
@@ -159,26 +142,14 @@ jobs:
             shard-total: 3
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v7
+    - uses: ./.github/actions/checkout-node-npm
       with:
-        node-version-file: '.nvmrc'
-        cache: 'npm'
-
-    - name: Cache Cypress binary
-      uses: actions/cache@v6
-      with:
-        path: ~/.cache/Cypress
-        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-cypress-
-
-    - name: Install npm dependencies
-      run: npm ci
+        cache-cypress: 'true'
 
     - name: Download build artifact
-      uses: actions/download-artifact@v8.0.1
+      uses: ./.github/actions/download-artifact
       with:
         name: nightly-build-${{ github.run_id }}
         path: .
@@ -213,7 +184,12 @@ jobs:
     - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP 8.5)
       run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
       env:
-        SPLIT: ${{ matrix.shard-total || '' }}
+        # Test-database drift guard (#9769): the ci-root database is published on
+        # 3306 (docker-compose.parallel.yaml). Required, so a guard that cannot
+        # reach the database fails the job instead of silently switching off.
+        ROW_GUARD_DB_PORT: "3306"
+        ROW_GUARD_REQUIRED: "1"
+        SPLIT: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
         SPLIT_INDEX: ${{ matrix.split-index }}
 
     - name: Collect Docker logs on failure
@@ -226,7 +202,7 @@ jobs:
 
     - name: Upload debug artifacts
       if: failure()
-      uses: actions/upload-artifact@v7
+      uses: ./.github/actions/upload-artifact
       with:
         name: cypress-artifacts-php8.5-root-${{ matrix.test-type.name }}-${{ github.run_id }}
         path: |
@@ -237,18 +213,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: Root (${{ matrix.test-type.name }})'
         path: cypress/reports/junit-php8.5-root-${{ matrix.test-type.name }}-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -261,7 +230,7 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -272,6 +241,7 @@ jobs:
           - name: admin-ui
             spec: "cypress/e2e/ui-admin/**/*.spec.js"
             config: "cypress/configs/docker-admin.config.ts"
+            shard-total: 1
         include:
           # split-index values are strings to avoid JS falsy coercion of 0
           - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
@@ -285,26 +255,14 @@ jobs:
             shard-total: 3
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v7
+    - uses: ./.github/actions/checkout-node-npm
       with:
-        node-version-file: '.nvmrc'
-        cache: 'npm'
-
-    - name: Cache Cypress binary
-      uses: actions/cache@v6
-      with:
-        path: ~/.cache/Cypress
-        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-cypress-
-
-    - name: Install npm dependencies
-      run: npm ci
+        cache-cypress: 'true'
 
     - name: Download build artifact
-      uses: actions/download-artifact@v8.0.1
+      uses: ./.github/actions/download-artifact
       with:
         name: nightly-build-${{ github.run_id }}
         path: .
@@ -340,7 +298,11 @@ jobs:
       run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
-        SPLIT: ${{ matrix.shard-total || '' }}
+        # Test-database drift guard (#9769): the ci-subdir database is published on
+        # DATABASE_SUBDIR_PORT (3307), not the 3306 default the guard would try.
+        ROW_GUARD_DB_PORT: "3307"
+        ROW_GUARD_REQUIRED: "1"
+        SPLIT: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
         SPLIT_INDEX: ${{ matrix.split-index }}
 
     - name: Collect Docker logs on failure
@@ -353,7 +315,7 @@ jobs:
 
     - name: Upload debug artifacts
       if: failure()
-      uses: actions/upload-artifact@v7
+      uses: ./.github/actions/upload-artifact
       with:
         name: cypress-artifacts-php8.5-subdir-${{ matrix.test-type.name }}-${{ github.run_id }}
         path: |
@@ -364,18 +326,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: Subdirectory (${{ matrix.test-type.name }})'
         path: cypress/reports/junit-php8.5-subdir-${{ matrix.test-type.name }}-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -388,22 +343,15 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v7
-      with:
-        node-version-file: '.nvmrc'
-        cache: 'npm'
-
-    - name: Install npm dependencies
-      run: npm ci
+    - uses: ./.github/actions/checkout-node-npm
 
     - name: Download build artifact
-      uses: actions/download-artifact@v8.0.1
+      uses: ./.github/actions/download-artifact
       with:
         name: nightly-build-${{ github.run_id }}
         path: .
@@ -440,7 +388,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress tests (setup wizard, PHP 8.5)
-      uses: cypress-io/github-action@v7
+      uses: ./.github/actions/cypress
       with:
         command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-new-system-[suiteName]-[hash].xml
 
@@ -454,7 +402,7 @@ jobs:
 
     - name: Upload debug artifacts
       if: failure()
-      uses: actions/upload-artifact@v7
+      uses: ./.github/actions/upload-artifact
       with:
         name: cypress-artifacts-php8.5-new-system-${{ github.run_id }}
         path: |
@@ -465,18 +413,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: New System Setup (Root)'
         path: cypress/reports/junit-php8.5-new-system-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -489,22 +430,15 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v7
-      with:
-        node-version-file: '.nvmrc'
-        cache: 'npm'
-
-    - name: Install npm dependencies
-      run: npm ci
+    - uses: ./.github/actions/checkout-node-npm
 
     - name: Download build artifact
-      uses: actions/download-artifact@v8.0.1
+      uses: ./.github/actions/download-artifact
       with:
         name: nightly-build-${{ github.run_id }}
         path: .
@@ -541,7 +475,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress tests (setup wizard subdir, PHP 8.5)
-      uses: cypress-io/github-action@v7
+      uses: ./.github/actions/cypress
       with:
         command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-new-system-subdir-[suiteName]-[hash].xml
       env:
@@ -557,7 +491,7 @@ jobs:
 
     - name: Upload debug artifacts
       if: failure()
-      uses: actions/upload-artifact@v7
+      uses: ./.github/actions/upload-artifact
       with:
         name: cypress-artifacts-php8.5-new-system-subdir-${{ github.run_id }}
         path: |
@@ -568,43 +502,36 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: New System Setup (Subdirectory)'
         path: cypress/reports/junit-php8.5-new-system-subdir-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
       run: npm run docker:ci:new-system:subdir:down
 
-  # ── Locale smoke tests — root path (PHP 8.5) ─────────────────────────────
+  # ── Full locale sweep — root path (PHP 8.5) ─────────────────────────────
   test-locale-root:
     needs: build
-    timeout-minutes: 30
+    timeout-minutes: 120
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
     - name: Set up Node.js
-      uses: actions/setup-node@v7
+      uses: ./.github/actions/setup-node
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Cache Cypress binary
-      uses: actions/cache@v6
+      uses: ./.github/actions/cache
       with:
         path: ~/.cache/Cypress
         key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
@@ -614,7 +541,7 @@ jobs:
       run: npm ci
 
     - name: Download build artifact
-      uses: actions/download-artifact@v8.0.1
+      uses: ./.github/actions/download-artifact
       with:
         name: nightly-build-${{ github.run_id }}
         path: .
@@ -646,8 +573,8 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run locale smoke tests (root, PHP 8.5)
-      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-locale-[hash].xml
+    - name: Run full locale sweep (root, PHP 8.5)
+      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-locale-[hash].xml
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -659,7 +586,7 @@ jobs:
 
     - name: Upload debug artifacts
       if: failure()
-      uses: actions/upload-artifact@v7
+      uses: ./.github/actions/upload-artifact
       with:
         name: cypress-artifacts-php8.5-root-locale-${{ github.run_id }}
         path: |
@@ -670,43 +597,36 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: Root (locale)'
         path: cypress/reports/junit-php8.5-root-locale-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
       run: npm run docker:ci:root:down
 
-  # ── Locale smoke tests — subdirectory path (PHP 8.5) ─────────────────────
+  # ── Full locale sweep — subdirectory path (PHP 8.5) ─────────────────────
   test-locale-subdir:
     needs: build
-    timeout-minutes: 30
+    timeout-minutes: 120
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
     - name: Set up Node.js
-      uses: actions/setup-node@v7
+      uses: ./.github/actions/setup-node
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Cache Cypress binary
-      uses: actions/cache@v6
+      uses: ./.github/actions/cache
       with:
         path: ~/.cache/Cypress
         key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
@@ -716,7 +636,7 @@ jobs:
       run: npm ci
 
     - name: Download build artifact
-      uses: actions/download-artifact@v8.0.1
+      uses: ./.github/actions/download-artifact
       with:
         name: nightly-build-${{ github.run_id }}
         path: .
@@ -748,8 +668,8 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run locale smoke tests (subdir, PHP 8.5)
-      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-locale-[hash].xml
+    - name: Run full locale sweep (subdir, PHP 8.5)
+      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-locale-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
 
@@ -763,7 +683,7 @@ jobs:
 
     - name: Upload debug artifacts
       if: failure()
-      uses: actions/upload-artifact@v7
+      uses: ./.github/actions/upload-artifact
       with:
         name: cypress-artifacts-php8.5-subdir-locale-${{ github.run_id }}
         path: |
@@ -774,18 +694,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP 8.5: Subdirectory (locale)'
         path: cypress/reports/junit-php8.5-subdir-locale-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -803,7 +716,7 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       COMPOSE_MYSQL: ${{ matrix.group.database == 'mysql' && '-f docker/docker-compose.mysql.yaml' || '' }}
     strategy:
@@ -841,10 +754,10 @@ jobs:
             label: '6.0.0'
     steps:
     - name: Checkout
-      uses: actions/checkout@v7
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
     - name: Set up Node.js
-      uses: actions/setup-node@v7
+      uses: ./.github/actions/setup-node
       with:
         node-version-file: '.nvmrc'
         cache: 'npm'
@@ -853,7 +766,7 @@ jobs:
       run: npm ci
 
     - name: Download build artifact
-      uses: actions/download-artifact@v8.0.1
+      uses: ./.github/actions/download-artifact
       with:
         name: nightly-build-${{ github.run_id }}
         path: .
@@ -890,7 +803,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress upgrade test (${{ matrix.group.name }}, PHP ${{ matrix.php-version }})
-      uses: cypress-io/github-action@v7
+      uses: ./.github/actions/cypress
       with:
         command: npx cypress run --config-file cypress/configs/upgrade.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.group.name }}-[hash].xml
       env:
@@ -909,7 +822,7 @@ jobs:
 
     - name: Upload debug artifacts
       if: failure()
-      uses: actions/upload-artifact@v7
+      uses: ./.github/actions/upload-artifact
       with:
         name: cypress-artifacts-php${{ matrix.php-version }}-${{ matrix.group.name }}-${{ github.run_id }}
         path: |
@@ -920,18 +833,11 @@ jobs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP ${{ matrix.php-version }} / ${{ matrix.group.name }}: Upgrade from ${{ matrix.group.label }}'
         path: cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.group.name }}-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -953,7 +859,7 @@ jobs:
       - test-locale-subdir
       - test-upgrade
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Write summary
       run: |
@@ -966,8 +872,8 @@ jobs:
         echo "| PHP 8.5 subdir (api / admin-ui / ui ×3) | ${{ needs.test-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| PHP 8.5 new-system setup (root) | ${{ needs.test-new-system.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| PHP 8.5 new-system setup (subdir) | ${{ needs.test-new-system-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 locale smoke (root) | ${{ needs.test-locale-root.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 locale smoke (subdir) | ${{ needs.test-locale-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| PHP 8.5 full locale sweep (root) | ${{ needs.test-locale-root.result }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| PHP 8.5 full locale sweep (subdir) | ${{ needs.test-locale-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| Upgrade tests (8.4+8.5 × 4 groups) | ${{ needs.test-upgrade.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         # Determine overall status — check for non-success so skipped/cancelled

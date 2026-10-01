@@ -5,7 +5,20 @@
  * Uses TomSelect AJAX for person search.
  */
 
+import { attachToModal, initAllPersonSelects } from "./common/person-select";
 import { escapeHtml } from "./utils/escape-html";
+
+// A failed request rejects with the API's `message` as `serverMessage`, so the
+// toast can say why instead of a generic "Please try again".
+function jsonUnlessFailed(res) {
+  if (res.ok) return res.json();
+  return res
+    .json()
+    .catch(() => ({}))
+    .then((body) => {
+      throw Object.assign(new Error(`HTTP ${res.status}`), { serverMessage: body.message });
+    });
+}
 
 $(() => {
   // Initialize DataTable for already checked-in people
@@ -22,48 +35,24 @@ $(() => {
  * Called on document ready and can be called again if new fields are added dynamically
  */
 function initializePersonSearchFields() {
-  // Initialize TomSelect on all person search fields that haven't been initialized yet
-  $(".person-search").each(function () {
-    const el = this;
-
-    // Skip if already initialized
-    if (el.tomselect) {
-      return;
-    }
-
-    const placeholder = $(el).data("placeholder") || "";
-
-    new TomSelect(el, {
-      valueField: "objid",
-      labelField: "text",
-      searchField: "text",
-      placeholder: placeholder,
-      load: (query, callback) => {
-        if (query.length < 2) return callback();
-        fetch(`${window.CRM.root}/api/persons/search/${encodeURIComponent(query)}`)
-          .then((response) => response.json())
-          .then((data) => {
-            callback(
-              data.map((person) => ({
-                objid: person.objid,
-                text: person.text,
-                uri: person.uri,
-              })),
-            );
-          })
-          .catch(() => {
-            callback();
-          });
-      },
-      render: {
-        option: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
-        item: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
-      },
-      onChange: function (value) {
-        // Dispatch a custom event so bindPersonSearchEvents can react
-        $(el).trigger("tomselect:change", [value, this]);
-      },
-    });
+  // Shared person-search TomSelect (#9819). The valueField/labelField/searchField
+  // triple, the 2-character-guarded load callback and the placeholder read from
+  // data-placeholder all live in webpack/common/person-select.ts now; only the
+  // check-in specific mapping, rendering and change handler stay here.
+  initAllPersonSelects({
+    mapResult: (person) => ({
+      objid: person.objid,
+      text: person.text,
+      uri: person.uri,
+    }),
+    render: {
+      option: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
+      item: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
+    },
+    onChange: function (value, el) {
+      // Dispatch a custom event so bindPersonSearchEvents can react
+      $(el).trigger("tomselect:change", [value, this]);
+    },
   });
 
   // Bind event handlers (use .off first to prevent duplicate bindings)
@@ -171,15 +160,15 @@ $(() => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+      .then(jsonUnlessFailed)
       .then(() => {
         loadRoster(eventId);
       })
-      .catch(() => {
-        window.CRM.notify(i18next.t("Check-in failed. Please try again."), { type: "danger", delay: 5000 });
+      .catch((err) => {
+        window.CRM.notify(err.serverMessage || i18next.t("Check-in failed. Please try again."), {
+          type: "danger",
+          delay: 5000,
+        });
       })
       .finally(() => {
         $btn.prop("disabled", false);
@@ -194,15 +183,15 @@ $(() => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+      .then(jsonUnlessFailed)
       .then(() => {
         loadRoster(eventId);
       })
-      .catch(() => {
-        window.CRM.notify(i18next.t("Check-out failed. Please try again."), { type: "danger", delay: 5000 });
+      .catch((err) => {
+        window.CRM.notify(err.serverMessage || i18next.t("Check-out failed. Please try again."), {
+          type: "danger",
+          delay: 5000,
+        });
       })
       .finally(() => {
         $btn.prop("disabled", false);
@@ -367,16 +356,18 @@ $(document).on("click", ".roster-action-btn", function () {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ personId: personId }),
   })
-    .then((res) => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.json();
-    })
+    .then(jsonUnlessFailed)
     .then(() => {
       // Reload roster to reflect changes
       loadRoster(eventId);
     })
-    .catch(() => {
+    .catch((err) => {
       $btn.prop("disabled", false);
+      const fallback =
+        action === "checkout"
+          ? i18next.t("Check-out failed. Please try again.")
+          : i18next.t("Check-in failed. Please try again.");
+      window.CRM.notify(err.serverMessage || fallback, { type: "danger", delay: 5000 });
     });
 });
 
@@ -556,52 +547,15 @@ $(() => {
     document.body.appendChild(wrapper);
     const bsModal = new window.bootstrap.Modal(wrapper, { backdrop: "static" });
 
-    let tomSelectInstance = null;
-
-    // Destroy TomSelect and remove modal element once hidden
-    wrapper.addEventListener(
-      "hidden.bs.modal",
-      () => {
-        if (tomSelectInstance) {
-          try {
-            tomSelectInstance.destroy();
-          } catch (_e) {
-            // ignore
-          }
-          tomSelectInstance = null;
-        }
-        try {
-          bsModal.dispose();
-        } catch (_e) {
-          // ignore
-        }
-        if (wrapper.parentNode) wrapper.remove();
-      },
-      { once: true },
-    );
-
-    // Initialize TomSelect once the modal is fully visible (needs layout dimensions).
-    // shown.bs.modal fires after the CSS transition, so elements are measured correctly.
-    wrapper.addEventListener(
-      "shown.bs.modal",
-      () => {
-        const el = wrapper.querySelector("#checkoutBySelect");
-        if (!el || el.tomselect) return;
-        tomSelectInstance = new TomSelect(el, {
-          valueField: "objid",
-          labelField: "text",
-          searchField: "text",
-          placeholder: i18next.t("Search for supervisor..."),
-          dropdownParent: "body",
-          load: (query, callback) => {
-            if (query.length < 2) return callback();
-            fetch(`${window.CRM.root}/api/persons/search/${encodeURIComponent(query)}`)
-              .then((res) => res.json())
-              .then((data) => callback(data.map((p) => ({ objid: p.objid, text: p.text }))))
-              .catch(() => callback());
-          },
-        });
-
+    // Shared person-search TomSelect (#9819). attachToModal owns the
+    // shown.bs.modal → init / hidden.bs.modal → destroy() pair: TomSelect needs
+    // the modal's CSS transition to have finished before it can measure the
+    // control. Registered BEFORE the wrapper's own hidden handler below so the
+    // picker is torn down before the modal element leaves the DOM.
+    attachToModal(wrapper, "#checkoutBySelect", {
+      placeholder: i18next.t("Search for supervisor..."),
+      mapResult: (p) => ({ objid: p.objid, text: p.text }),
+      onInit: (tomSelectInstance) => {
         // Pre-populate with the person who checked them in (if available)
         if (checkinId && checkinName) {
           tomSelectInstance.addOption({ objid: checkinId, text: checkinName });
@@ -620,6 +574,19 @@ $(() => {
             }
           });
         }
+      },
+    });
+
+    // Remove the modal element once hidden
+    wrapper.addEventListener(
+      "hidden.bs.modal",
+      () => {
+        try {
+          bsModal.dispose();
+        } catch (_e) {
+          // ignore
+        }
+        if (wrapper.parentNode) wrapper.remove();
       },
       { once: true },
     );
@@ -703,10 +670,7 @@ $(() => {
     fetch(`${window.CRM.root}/api/events/${eventId}/attendance/${personId}`, {
       method: "DELETE",
     })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+      .then(jsonUnlessFailed)
       .then(() => {
         $(`tr[data-person-id="${personId}"]`).fadeOut(300, function () {
           $(this).remove();
@@ -717,8 +681,11 @@ $(() => {
           loadRoster(eventId);
         }
       })
-      .catch(() => {
-        window.CRM.notify(i18next.t("Failed to delete. Please try again."), { type: "danger", delay: 5000 });
+      .catch((err) => {
+        window.CRM.notify(err.serverMessage || i18next.t("Failed to delete. Please try again."), {
+          type: "danger",
+          delay: 5000,
+        });
       });
   }
 });

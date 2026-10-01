@@ -12,7 +12,7 @@ document.addEventListener("click", (e) => {
   const root = window.CRM?.root || "";
 
   btn.disabled = true;
-  fetch(`${root}/api/system/telemetry-consent`, {
+  fetch(`${root}/admin/api/system/telemetry-consent`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ level }),

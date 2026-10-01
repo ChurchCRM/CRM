@@ -49,7 +49,7 @@ describe("Empty Cart to Group", () => {
     });
 
     it("opens the group-selection modal when 'To Group' is clicked on the cart page", () => {
-        cy.visit("/v2/cart");
+        cy.visit("/people/cart");
 
         // Wait for the CRM and locales to be ready
         cy.window().should("have.property", "CRM");
@@ -92,7 +92,7 @@ describe("Empty Cart to Group", () => {
             expect(resp.status).to.eq(200);
             const groupId = resp.body.Id;
 
-            cy.visit("/v2/cart");
+            cy.visit("/people/cart");
 
             cy.window().should("have.property", "CRM");
             cy.window().its("CRM.localesLoaded").should("eq", true);
@@ -130,7 +130,7 @@ describe("Empty Cart to Group", () => {
     it("shows role dropdown after selecting a group with multiple roles", () => {
         // Use a well-known group from seed data that has roles defined.
         // Group ID 11 ("Clergy") has role list 23 per seed data.
-        cy.visit("/v2/cart");
+        cy.visit("/people/cart");
 
         cy.window().should("have.property", "CRM");
         cy.window().its("CRM.localesLoaded").should("eq", true);
@@ -165,7 +165,7 @@ describe("Empty Cart to Group", () => {
     });
 
     it("closes the modal on Cancel without emptying the cart", () => {
-        cy.visit("/v2/cart");
+        cy.visit("/people/cart");
 
         cy.window().should("have.property", "CRM");
         cy.window().its("CRM.localesLoaded").should("eq", true);

@@ -7,6 +7,7 @@ require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -120,10 +121,13 @@ $rsFamilies = RunQuery($sSQL);
 $sSQLFundCriteria = '';
 $fundParams = [];
 $fundTypes = '';
+// No fund selected means every fund in the chosen fiscal year: the fund
+// criteria stays empty and the letter text carries no fund clause.
+$fundCount = 0;
+$fundOnlyString = '';
 
 // Build parameterized criteria for funds (? placeholders bound in $fundParams)
 if (!empty($_POST['funds'])) {
-    $fundCount = 0;
     foreach ($_POST['funds'] as $fundID) {
         $fund[$fundCount++] = (int) InputUtils::legacyFilterInput($fundID, 'int');
     }
@@ -180,9 +184,9 @@ class PdfReminderReport extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
     }
 
-    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, string $fundOnlyString, int $iFYID): float
+    public function startNewPage($fam_ID, $fam_Name, array $mailingParts, string $fundOnlyString, int $iFYID): float
     {
-        $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+        $curY = $this->startLetterPageForParts($fam_ID, $fam_Name, $mailingParts);
         $curY += 2 * SystemConfig::getValue('incrementY');
         $blurb = SystemConfig::getValue('sReminder1') . FinancialService::formatFiscalYear($iFYID) . $fundOnlyString . '.';
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
@@ -261,7 +265,9 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     }
 
     // Add a page for this reminder report
-    $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fundOnlyString, $iFYID);
+    // The reminder is mailed, so it is addressed to the family's mailing address.
+    // $aFam comes from SELECT * FROM family_fam, so it carries every family column.
+    $curY = $pdf->startNewPage($fam_ID, $fam_Name, Family::readOnlyFromRow($aFam)->getMailingAddressParts(), $fundOnlyString, $iFYID);
 
     // Get pledges only
     $rsPledges = RunPreparedQuery(
@@ -285,7 +291,10 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     if (mysqli_num_rows($rsPledges) === 0) {
         $curY += $summaryIntervalY;
-        $noPledgeString = SystemConfig::getValue('sReminderNoPledge') . '(' . $fundOnlyString . ')';
+        $noPledgeString = SystemConfig::getValue('sReminderNoPledge');
+        if ($fundOnlyString !== '') {
+            $noPledgeString .= '(' . $fundOnlyString . ')';
+        }
         $pdf->writeAt($summaryDateX, $curY, $noPledgeString);
         $curY += 2 * $summaryIntervalY;
     } else {
@@ -393,13 +402,13 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             extract($aRow);
 
             // Format Data
-            if (strlen($plg_CheckNo) > 8) {
+            if (strlen((string) $plg_CheckNo) > 8) {
                 $plg_CheckNo = '...' . mb_substr($plg_CheckNo, -8, 8);
             }
             if (strlen($fundName) > 19) {
                 $fundName = mb_substr($fundName, 0, 18) . '...';
             }
-            if (strlen($plg_comment) > 30) {
+            if (strlen((string) $plg_comment) > 30) {
                 $plg_comment = mb_substr($plg_comment, 0, 30) . '...';
             }
 

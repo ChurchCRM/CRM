@@ -55,11 +55,11 @@ ChurchCRM translations follow a **three-phase process** with durability guarante
 # MANDATORY: Branch is created automatically by /locale-translate --init
 # Never reuse a prior run's locale/* branch, even from earlier the same day
 ```
-Branch format: `locale/{VERSION}-{YYYY-MM-DD}-{HHMMSS}` (e.g., `locale/7.2.0-2026-04-22-174530`)
+Branch format: `locale/translate/{VERSION}-{YYYY-MM-DD}-{HHMMSS}` (e.g., `locale/translate/7.2.0-2026-04-22-174530`). Pushing to it runs `locale-upload-missing.yml`. See [`docs/locale-pipeline.md`](../../../docs/locale-pipeline.md).
 
 **Why:** Unique timestamps prevent collisions when running multiple sessions per day.
 
-### Rule 2: Commit after EVERY locale
+### Rule 2: Commit after EVERY locale (or language-family batch)
 ```bash
 # Translations are secure locally after commit
 git add locale/terms/missing/<CODE>/ locale/terms/english-ok.json
@@ -76,11 +76,8 @@ git push origin $(git branch --show-current)
 
 **Why:** Remote work survives cloud session timeouts.
 
-### Rule 4: Upload to POEditor after EVERY push
-```bash
-# MANDATORY: Saves work to cloud
-node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
-```
+### Rule 4: The push uploads to POEditor
+Every push to `locale/translate/**` runs `locale-upload-missing.yml`, which uploads the changed locales and starts the POEditor sync. Upload by hand (`node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`) only if that run failed or your push used the Actions `GITHUB_TOKEN`.
 
 **Why:** POEditor is the source of truth for what's been reviewed. Uploaded terms won't be retranslated if you resume.
 
@@ -90,7 +87,7 @@ node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
 # Do: Run /locale-translate --all again
 
 /locale-translate --all
-# → Automatically creates a fresh locale/{version}-{date}-{time} branch
+# → Automatically creates a fresh locale/translate/{version}-{date}-{time} branch
 # → Already-uploaded terms are skipped by POEditor
 # → No duplicates
 ```
@@ -169,16 +166,16 @@ et
 
 1. **Claude reads** untranslated terms from `locale/terms/missing/{LOCALE}/{LOCALE}-N.json` batch files
 2. **Apply church-appropriate vocabulary** (see Church Vocabulary table below)
-3. **Commit immediately** — one commit per locale, never batched
+3. **Commit immediately** — one commit per locale, or one per language-family batch (see Batching Strategy). Never accumulate across families or tiers
 4. **Push immediately** — work is on remote, safe from session timeout
-5. **Upload to POEditor immediately** — `node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`
+5. **The push uploads it** — `locale-upload-missing.yml` sends the locale to POEditor
 
 **Example commit message:**
 ```
 locale: translate fr (French - France, 154 terms)
 ```
 
-**Key principle:** Each locale gets commit + push + upload before the next locale starts. If interrupted mid-`--all`, all completed locales are safe on remote AND in POEditor.
+**Key principle:** Each locale (or family batch) gets commit + push + upload before the next starts. If interrupted mid-`--all`, all completed locales are safe on remote AND in POEditor.
 
 ### Church Vocabulary (Denomination-Aware)
 
@@ -219,9 +216,9 @@ N/A, name@example.com, @, SMS, SMTP, API, HTTP, HTTPS, JSON, XML, HTML, CSS, E.1
 **Tested:** 28 locales / 665 terms in ~30 minutes (April 2026)
 
 1. **Small locales (≤10 terms):** Handle inline — all at once, one commit per locale
-2. **Large locales (>10 terms):** Dispatch 4 parallel `general-purpose` sub-agents
+2. **Large locales (>10 terms) or 10+ locales total:** Dispatch parallel `general-purpose` sub-agents, one per language family (see Batching Strategy)
 3. **Each sub-agent:** Reads → translates → **applies before returning** (this step is critical)
-4. **One locale per large-locale agent** (limits context pressure)
+4. **One family per agent:** 2–5 closely related locales. A large standalone locale is its own family (limits context pressure)
 5. **MANDATORY after each agent completes:** commit → push → upload to POEditor
 
 **Batch size:** Run 4 sub-agents in parallel max. More than 4 can cause context pressure.
@@ -229,6 +226,41 @@ N/A, name@example.com, @, SMS, SMTP, API, HTTP, HTTPS, JSON, XML, HTML, CSS, E.1
 **Special cases:**
 - Telugu (te): 5 batch files (673 terms) — process separately
 - Amharic (am): 100+ terms — process separately
+
+### Model Selection & Cost Efficiency <!-- learned: 2026-09-29 -->
+
+**Lowest-cost capable model for locale translation (10–40+ locales):**
+
+| Model | Provider | Cost/1K terms | Capable? | Notes |
+|-------|----------|---------------|----------|-------|
+| **Haiku 4.5** | Anthropic | **~$0.04** | ✅ Yes | **Cheapest + proven at scale** |
+| GPT-4o mini | OpenAI | ~$0.05 | ✅ Yes | 20% more expensive |
+| Grok-2 | xAI | ~$0.06 | ⚠️ Limited | Weak on non-Latin scripts |
+| Sonnet 4 | Anthropic | ~$0.12 | ✅ Yes | 3x cost, no quality gain |
+| Claude 3.5 | Anthropic | ~$0.08 | ✅ Yes | 2x cost, no benefit over Haiku |
+
+**Recommendation:** Use **Haiku 4.5** for all locale translation work — < 10 locales to 40+ with language-family batching.
+
+### Session Results (19 locales, Sept 2026)
+
+From `locale/translate/7.8.0-2026-09-29-052249` (PR #10176). Term counts change every run, so none are recorded here.
+
+- **TIER-1, 16 locales:** Spanish ×5 (es, es-AR, es-CO, es-MX, es-SV), Portuguese ×2 (pt, pt-br), Chinese ×2 (zh-CN, zh-TW), big singles ×7 (hi, fr, ru, id, de, ja, ar)
+- **TIER-2, 3 locales:** ml, ta, te
+- Reviewers caught 8 translation errors after the first pass. Check these before committing: church rendered as temple (hi), "Upload" translated as "Download" (fr), `%s`/`%d` reordered without positional indexes (hi, ja, ml, te), mixed scripts (ta, te), "email" rendered as physical post (zh-CN, zh-TW)
+- Plan mode can block `/tmp` writes mid-execution; recoverable via `SendMessage` resume
+
+### Batching Strategy
+
+1. **Group by language family** (not per-locale): Romance, Slavic, Uralic, Asian, etc.
+2. **One agent per family** — 2–5 related locales, max 4 agents in parallel (see Parallel Sub-Agents)
+3. **Each agent:** reads all batch files → translates → **applies all before returning** (critical)
+4. **One commit + push per family batch** as each completes (don't accumulate across families)
+5. **Reorder placeholders only with positional indexes** (`%1$s`, `%3$s`, `%2$d`), and keep one script per locale
+
+### Success Factor: Apply Before Return
+
+Sub-agent prompt **must explicitly require** that translations are applied BEFORE the agent returns. If an agent only produces translations without applying, the translations are lost (no commit/push happens).
 
 ---
 
@@ -255,22 +287,14 @@ npm run locale:upload:missing -- --yes
 - Discovers all locale folders in `locale/terms/missing/`
 - Validates each locale: checks for proper translations, suspects identical to key, empties
 - Skips suspect and empty terms (keeps batch files clean)
-- **Plural forms with numeric tokens:** Converts i18next's nested format `{ term: { "one": "...", "other": "..." } }` to POEditor's standard pipe-separated format `"singular|plural"` before sending
+- **Plurals:** never pipe-joined. `locale/messages.po` decides the shape (`locale/scripts/lib/poeditor-plurals.js`, tested by `npm run locale:test`):
+  - gettext plural (`msgid_plural`, PHP `%d`) → `{ "term": { "one": "…", "few": "…", "other": "…" } }`, one key per slot the batch file shows
+  - i18next `{{count}}` term (`msgctxt "one"` / `"other"`) → `{ "one": { "term": "…" }, "other": { "term": "…" } }`
+  - a batch value still pipe-joined in its first slot is re-slotted when the part count matches, otherwise blanked for re-translation
 - Uploads to POEditor with metadata (parsing & update counts)
 - After successful upload, refreshes local missing-term files (removes accepted terms)
 
-**Why pipe-separated format?** Terms with numeric tokens like `{{count}}`, `{{max}}`, etc. need to use i18next's plural handling with the `count` option. POEditor's API recognizes pipe-separated plurals (`"singular|plural"`) as proper plural forms, whereas nested objects are not supported. <!-- learned: 2026-08-15 -->
-
-**Example - Correct pluralization:**
-```
-Source code: i18next.t("Copied {{count}} member", { count: ids.length })
-
-Stored as:   "Copied {{count}} member": "Copied {{count}} member|Copied {{count}} members"
-             (not nested: ❌ "Copied {{count}} members": { "one": "...", "other": "..." })
-
-Uploaded to POEditor: Recognized as plural form ✅
-Downloaded back: Converts to nested format for i18next runtime ✅
-```
+A pipe-joined upload (`"A|B"`) is stored whole in POEditor's first plural slot, and one sent against a `{{count}}` term (which has no empty-context term in POEditor) is dropped. Both leave the term missing forever.
 
 ### Upload Flags
 
@@ -350,7 +374,7 @@ git push origin --delete locale/7.2.0-2026-04-27-143015
 |----------|---------|
 | **Cloud timeout at locale 20 of 39** | First 20 locales are committed, pushed, and already in POEditor. Resume with a new branch — remaining locales continue; no duplicates. |
 | **Local machine crash** | All completed work was pushed — nothing lost. |
-| **Want to inspect a specific run** | `git log origin/locale/{version}-*` — each session's work is immutable on its own branch. |
+| **Want to inspect a specific run** | `git log origin/locale/translate/{version}-*` — each session's work is immutable on its own branch. |
 | **Upload failure for one locale** | Translation is still committed + pushed. Retry upload with `npm run locale:upload:missing -- --locale <CODE>`. |
 
 ---
@@ -454,7 +478,7 @@ Some terms have `value = key` intentionally — they are the same in the target 
 - **Universal brand/tech names:** `GitHub`, `ChurchCRM`, `POEditor`, `API`, `URL`, `SMS`, `CSV`
 - **Words identical in target language:** e.g. `"in"` in German/Italian/Dutch, `"Minutes"` in French, `"Important"` in Romanian, `"Manual"` in Portuguese (Brazil)
 
-The upload script (`poeditor-upload-missing.js`) treats terms where `value === key` as "suspect" (possibly untranslated) and will skip them. To mark them as intentionally identical to English, add them to `locale/terms/english-ok.json`:
+The upload script (`poeditor-upload-missing.js`) treats terms where `value === key` as "suspect" (possibly untranslated) and will skip them. `--apply` records them in `locale/terms/english-ok.json` so the uploader accepts them (see "Identical-to-English values are recorded automatically" below). The generated file looks like this, abbreviated:
 
 ```json
 {
@@ -471,33 +495,13 @@ The upload script (`poeditor-upload-missing.js`) treats terms where `value === k
 }
 ```
 
-### MANDATORY: Always add to english-ok.json when translation equals English key
+### Identical-to-English values are recorded automatically
 
-**During every translation session, the orchestrator automatically handles this.** If you are a Claude Code agent translating manually:
-
-1. When you translate a term and the correct translation IS the same as the English key (e.g. `"SHA1 Hash": "SHA1 Hash"`), that is a VALID translation — not a mistake.
-2. Immediately add that term to `locale/terms/english-ok.json` for that locale.
-3. Always include `locale/terms/english-ok.json` in every `git add` and `git commit`.
-
-```bash
-# Add same-as-English terms to the allowlist for a locale
-python3 -c "
-import json
-ok = json.load(open('locale/terms/english-ok.json'))
-locale = 'LOCALE_CODE'  # replace with actual locale
-for term in ['SHA1 Hash', 'AM / PM', 'am / pm']:  # replace with actual terms
-    existing = set(ok.get(locale, []))
-    existing.add(term)
-    ok[locale] = sorted(existing)
-json.dump(ok, open('locale/terms/english-ok.json','w'), indent=2, ensure_ascii=False)
-open('locale/terms/english-ok.json','a').write('\n')
-print(f'Added terms to english-ok.json for {locale}')
-"
-```
+`locale-translate.js --apply` and `--apply-bulk` add any value identical to its key to `locale/terms/english-ok.json`, and `--prefill` fills terms already on the list without a model. Do not edit the file by hand. `locale-branch-manager.js --commit-and-push` stages it with the locale batches; if you commit with plain git, include it in the `git add`.
 
 ### Common terms that stay English across ALL locales
 
-These are always safe to add to `english-ok.json` when they appear as a term in any locale:
+These are always safe to keep identical to English (the script records them in `english-ok.json`) when they appear as a term in any locale:
 
 | Term | Reason |
 |------|--------|
