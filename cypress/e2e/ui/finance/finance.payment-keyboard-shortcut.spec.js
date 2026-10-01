@@ -9,9 +9,9 @@ describe("Payment editor Ctrl+Enter shortcut (#8942)", () => {
         cy.get("[data-bs-target='#newDepositModal']").click();
         cy.get("#depositComment").type(`Shortcut deposit ${Date.now()}`);
         cy.get("#addNewDeposit").click();
-        cy.location("pathname").should("include", "DepositSlipEditor.php");
-        cy.location("search").then((search) => {
-            cy.wrap(new URLSearchParams(search).get("DepositSlipID")).as("depositId");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
+        cy.location("pathname").then((pathname) => {
+            cy.wrap(pathname.split("/").pop()).as("depositId");
         });
 
         cy.get(".btn-success").click();

@@ -135,7 +135,7 @@ class DepositService {
 
     public function getViewURI(string $Id): string
     {
-        return SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
+        return SystemURLs::getRootPath() . '/finance/deposit/' . $Id;
     }
 
     /**

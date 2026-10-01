@@ -254,7 +254,7 @@
         dataType: "json",
       })
         .done((data) => {
-          window.location.href = `${window.CRM.root}/DepositSlipEditor.php?DepositSlipID=${data.Id}`;
+          window.location.href = `${window.CRM.root}/finance/deposit/${data.Id}`;
         })
         .fail((_jqXHR, _textStatus, errorThrown) => {
           window.CRM.notify(`${i18next.t("Failed to create deposit")}: ${errorThrown || i18next.t("Unknown error")}`, {

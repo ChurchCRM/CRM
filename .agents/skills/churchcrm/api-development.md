@@ -94,7 +94,7 @@ and auth middleware, and the Slim error handlers (#9737):
 
 - **`message` is canonical** — read it in new client code.
 - **`error` is an alias** of `message`, kept so the pre-existing
-  `responseJSON.error` consumers (e.g. `DepositSlipEditor.js`) keep working.
+  `responseJSON.error` consumers (e.g. `finance-deposit-editor.js`) keep working.
   Do not give it a different value.
 - **`code`** mirrors the HTTP status.
 - **`success: false`** lets a caller branch without inspecting the status.

@@ -221,7 +221,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 $totalAmount  = CurrencyFormatter::formatHtml($deposit['totalAmount'] ?? 0);
                 $isClosed     = (bool) ($deposit['Closed'] ?? false);
                 $tellerName   = InputUtils::escapeHTML($deposit['tellerName'] ?? '');
-                $editUrl      = InputUtils::escapeAttribute($sRootPath . '/DepositSlipEditor.php?DepositSlipID=' . $depositId);
+                $editUrl      = InputUtils::escapeAttribute($sRootPath . '/finance/deposit/' . $depositId);
                 $addPayUrl    = InputUtils::escapeAttribute(
                     $sRootPath . '/finance/pledge/new?type=Payment&depositId=' . $depositId
                     . '&linkBack=' . urlencode('/finance/deposit/search')
