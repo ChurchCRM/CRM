@@ -361,6 +361,7 @@ jobs:
       uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        base: master
         branch: 'locale/download/${{ needs.setup.outputs.version }}'
         delete-branch: true
         labels: |
