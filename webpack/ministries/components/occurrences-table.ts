@@ -64,8 +64,12 @@ import {
  */
 const OCCURRENCES_TABLE_OPTIONS: Record<string, unknown> = {
   searching: false,
-  // Column 0 is the row's checkbox: never sorted, never exported.
-  columnDefs: [{ targets: 0, orderable: false, searchable: false }],
+  // Column 0 is the row's checkbox: never sorted, never exported. Column 1 sorts on the
+  // stored start in `data-order`, left-aligned like the other text columns.
+  columnDefs: [
+    { targets: 0, orderable: false, searchable: false },
+    { targets: 1, type: "string" },
+  ],
   order: [[1, "asc"]],
   layout: {
     topStart: null,

@@ -37,7 +37,7 @@ import {
   type VolunteerDashboardPending,
   type VolunteerDashboardSwap,
 } from "./api";
-import { shortDate, shortDateTime } from "./components/ui";
+import { exportButtons, shortDate, shortDateTime } from "./components/ui";
 import { initMinistryCreate } from "./ministry-create";
 
 interface DashboardConfig {
@@ -344,7 +344,13 @@ function initDataTable(tableId: string): void {
   // §5.8: a failed ajax must render the inline block, never a browser alert.
   $.fn.dataTable.ext.errMode = "none";
 
-  table.DataTable({ ...(window.CRM?.plugin?.dataTable ?? {}) });
+  const defaults = window.CRM?.plugin?.dataTable ?? {};
+  table.DataTable({
+    ...defaults,
+    buttons: exportButtons(defaults.buttons),
+    // Sorted on the stored start in `data-order`, left-aligned like the other text columns.
+    columnDefs: [{ targets: 0, type: "string" }],
+  });
 }
 
 /**

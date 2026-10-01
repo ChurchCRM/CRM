@@ -219,7 +219,8 @@ export function initDataTable(tableId: string, overrides: Record<string, unknown
   $.fn.dataTable.ext.errMode = "none";
 
   const defaults = window.CRM?.plugin?.dataTable ?? {};
-  const api = table.DataTable({ ...defaults, ...overrides });
+  const buttons = exportButtons(defaults.buttons);
+  const api = table.DataTable({ ...defaults, buttons, ...overrides });
 
   if (buttonsInto) {
     const container = byId(buttonsInto);
@@ -227,9 +228,29 @@ export function initDataTable(tableId: string, overrides: Record<string, unknown
       // Emptied first: `destroyDataTable()` leaves the old group orphaned in here,
       // and every re-run of the Occurrences query re-inits the table.
       container.textContent = "";
-      new $.fn.dataTable.Buttons(api, { buttons: defaults.buttons }).container().appendTo(container);
+      new $.fn.dataTable.Buttons(api, { buttons }).container().appendTo(container);
     }
   }
+}
+
+/**
+ * The shared Export CSV / Print buttons, exporting a cell's stored value (`data-order`)
+ * where it has one: the screen shows a date in ChurchCRM's locale, an export keeps
+ * `Y-m-d H:i:s`. Cells without `data-order` export exactly what they did before.
+ */
+export function exportButtons(buttons: unknown): unknown {
+  if (!Array.isArray(buttons)) {
+    return buttons;
+  }
+
+  return buttons.map((button: unknown) =>
+    typeof button === "object" && button !== null
+      ? {
+          ...button,
+          exportOptions: { ...(button as { exportOptions?: object }).exportOptions, orthogonal: "sort" },
+        }
+      : button,
+  );
 }
 
 /**
@@ -428,11 +449,11 @@ export function shortDateTimeRange(start: string, end: string): string {
   return `${shortDateTime(start)} – ${start.slice(0, 10) === end.slice(0, 10) ? shortTime(end) : shortDateTime(end)}`;
 }
 
-const TIME_FORMATS: Record<string, (value: string) => string> = {
-  date: shortDate,
-  datetime: shortDateTime,
-  time: shortTime,
-};
+const TIME_FORMATS = new Map<string, (value: string) => string>([
+  ["date", shortDate],
+  ["datetime", shortDateTime],
+  ["time", shortTime],
+]);
 
 /**
  * Server-rendered dates: `<time datetime="…" data-format="date|datetime|time">` with the raw
@@ -441,7 +462,7 @@ const TIME_FORMATS: Record<string, (value: string) => string> = {
  */
 export function formatTimeElements(root: ParentNode = document): void {
   root.querySelectorAll<HTMLTimeElement>("time[data-format]").forEach((element) => {
-    const format = TIME_FORMATS[element.dataset.format ?? ""];
+    const format = TIME_FORMATS.get(element.dataset.format ?? "");
     if (format && element.dateTime !== "") {
       element.textContent = format(element.dateTime);
     }
