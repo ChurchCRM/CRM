@@ -777,7 +777,7 @@ class Family extends BaseFamily implements PhotoInterface
         $array['MailingAddress'] = $this->getMailingAddressParts();
         $array['MailingAddressLines'] = $this->getMailingAddressLines(', ');
 
-        if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+        if (!AuthenticationManager::isUserAuthenticated() || !AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             unset($array['ScanCheck'], $array['ScanCredit'], $array['Envelope']);
         }
 
