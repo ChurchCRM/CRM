@@ -52,7 +52,7 @@
   "Receives Mail": "รับจดหมาย",
   "Second Address": "ที่อยู่ที่สอง",
   "Second Home": "บ้านที่สอง",
-  "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again.": "",
+  "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again.": "บุคคลที่เชื่อมโยงเสียชีวิตแล้วหรือไม่ทำงาน การเข้าสู่ระบบ เซสชัน และคีย์ API ถูกบล็อก จนกว่าบุคคลดังกล่าวจะทำให้ใช้งานได้อีกครั้ง",
   "This is the mailing address": "นี่คือที่อยู่สำหรับส่งจดหมาย",
   "This person is deceased or inactive, so this account cannot sign in": "บุคคลนี้เสียชีวิตแล้วหรือไม่ทำงาน ดังนั้นบัญชีนี้ไม่สามารถเข้าสู่ระบบได้",
   "Only an administrator can delete a person who has a login.": "เฉพาะผู้ดูแลระบบเท่านั้นที่สามารถลบบุคคลที่มีการเข้าสู่ระบบได้",
