@@ -53,7 +53,7 @@
                     {% if team.nextOccurrence %}
                     {# Split around %s rather than |raw, so the translation stays escaped and the date can be a <time>. #}
                     {% set nextOn = gettext('Next on %s')|split('%s', 2) %}
-                    {{ nextOn[0] }}<time datetime="{{ team.nextOccurrence.date }}" data-format="date">{{ team.nextOccurrence.date }}</time>{{ nextOn[1] ?? '' }}
+                    <span>{{ nextOn[0] }}<time datetime="{{ team.nextOccurrence.date }}" data-format="date">{{ team.nextOccurrence.date }}</time>{{ nextOn[1] ?? '' }}</span>
                     {% else %}
                     {{ gettext('Nothing scheduled yet') }}
                     {% endif %}
