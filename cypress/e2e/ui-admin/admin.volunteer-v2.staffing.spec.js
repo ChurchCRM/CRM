@@ -547,7 +547,11 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.get("#volunteerOccurrencesTable tbody tr").first().as("row");
             cy.get("@row").find("td").eq(2).should("contain", TEAM_NAME);
             cy.get("@row").find("td").eq(3).should("contain", "single event");
-            cy.get("@row").find("td").eq(1).should("contain", `${isoDate(3)} 17:30`);
+            cy.get("@row")
+                .find("td")
+                .eq(1)
+                .should("contain", shortDateTime(isoDate(3), "17:30"))
+                .and("have.attr", "data-order", `${isoDate(3)} 17:30:00`);
 
             // Its hidden schedule is not on the Schedules tab, but does exist.
             cy.get("#nav-item-schedules").click();
