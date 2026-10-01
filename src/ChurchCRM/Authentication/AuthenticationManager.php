@@ -11,6 +11,7 @@ use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
@@ -268,7 +269,9 @@ class AuthenticationManager
     {
         $user = self::getCurrentUser();
         $reason = $user->getSignInBlockedReason();
-        if ($reason === null) {
+        // A masquerading administrator (#9843) may view a deceased or inactive
+        // account; ending the session here would also discard the administrator.
+        if ($reason === null || ImpersonationService::isActive()) {
             return true;
         }
 

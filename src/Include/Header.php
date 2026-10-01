@@ -624,7 +624,7 @@ if (TelemetryService::isEnabled()):
 //   - alert-warning (yellow) while > 1 day remains
 //   - alert-danger  (red)    when <= 1 day remains
 $_twoFAGraceUser = AuthenticationManager::getCurrentUser();
-if ($_twoFAGraceUser !== null):
+if ($_twoFAGraceUser !== null && !$_isImpersonating):
     $_twoFAGraceStatus = $_twoFAGraceUser->getTwoFactorGraceStatus();
     if ($_twoFAGraceStatus === 'within-grace'):
         $_twoFADaysLeft   = $_twoFAGraceUser->getTwoFactorGraceDaysRemaining();

@@ -161,6 +161,25 @@ describe("Admin Login as User (masquerade)", () => {
         cy.get(".navbar").should("contain.text", "Church Admin");
     });
 
+    [
+        [910, "deceased"],
+        [911, "inactive"],
+    ].forEach(([userId, status]) => {
+        it(`masquerades as a ${status} account and exits back to the admin`, () => {
+            cy.visit(`/v2/user/${userId}`);
+            cy.get("#loginAsUser").click();
+            cy.get(".bootbox.modal .btn-warning").click();
+            cy.get("#impersonationBanner").should("be.visible");
+
+            cy.visit("/v2/dashboard");
+            cy.url().should("not.include", "/session/begin");
+            cy.get("#impersonationExit").click();
+            cy.url().should("include", `/v2/user/${userId}`);
+            cy.get("#impersonationBanner").should("not.exist");
+            cy.get(".navbar").should("contain.text", "Church Admin");
+        });
+    });
+
     it("the limited-access page's sign-out button returns the admin", () => {
         cy.visit(`/v2/user/${SELF_SERVICE_USER_ID}`);
         cy.get("#loginAsUser").click();
