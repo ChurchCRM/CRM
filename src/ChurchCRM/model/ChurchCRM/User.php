@@ -381,39 +381,20 @@ class User extends BaseUser
     }
 
     /**
-     * Validate password against stored hash.
-     * Supports bcrypt (current), legacy SHA-256 (6.x migration), and legacy MD5
-     * (pre-6.x / ChurchInfo 1.x migration) formats.
-     * On any legacy match, the stored hash is transparently upgraded to bcrypt.
+     * Validate password against bcrypt hash. Legacy MD5 and SHA-256 hashes
+     * removed after 10 months of bcrypt availability (Nov 2025–Sept 2026).
+     * Users with legacy hashes must reset their password; see #10210.
      */
     public function isPasswordValid(string $password): bool
     {
         $storedHash = $this->getPassword();
 
-        // Check if this is a bcrypt hash (starts with $2y$)
+        // Only bcrypt (PASSWORD_DEFAULT) is supported. Legacy MD5 (pre-2012) and
+        // SHA-256 (2012–Nov 2025) hashes removed after 10 months of bcrypt
+        // availability. Users with legacy hashes must reset their password.
+        // See #10210.
         if ($this->isBcryptHash($storedHash)) {
             return password_verify($password, $storedHash);
-        }
-
-        // Legacy MD5 check — pre-6.x / ChurchInfo 1.x stored passwords as unsalted
-        // md5(password). MD5 is cryptographically weak and unsalted MD5 plaintexts are
-        // in public rainbow tables, so we accept it here only to let migrated accounts
-        // log in once, immediately re-hash to bcrypt, and force a new password — the
-        // weak plaintext must not remain in use just because the hash got stronger.
-        if ($this->isMd5Hash($storedHash) && hash_equals($storedHash, md5($password))) {
-            $this->setPassword($this->hashPassword($password));
-            $this->setNeedPasswordChange(true);
-            $this->save();
-            return true;
-        }
-
-        // Legacy SHA-256 check for migration period
-        $legacyHash = $this->legacyHashPassword($password);
-        if (hash_equals($storedHash, $legacyHash)) {
-            // Upgrade to bcrypt on successful login
-            $this->setPassword($this->hashPassword($password));
-            $this->save();
-            return true;
         }
 
         return false;
@@ -428,14 +409,6 @@ class User extends BaseUser
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
-    /**
-     * Legacy SHA-256 hashing for backward compatibility during migration.
-     * @deprecated Will be removed in a future version
-     */
-    private function legacyHashPassword(string $password): string
-    {
-        return hash('sha256', $password . $this->getPersonId());
-    }
 
     /**
      * Check if a hash is in bcrypt format.
@@ -445,14 +418,6 @@ class User extends BaseUser
         return str_starts_with($hash, '$2y$') || str_starts_with($hash, '$2b$') || str_starts_with($hash, '$2a$');
     }
 
-    /**
-     * Check if a hash looks like an unsalted MD5 digest (32 lowercase hex chars).
-     * Used during the ChurchInfo → ChurchCRM upgrade migration path.
-     */
-    private function isMd5Hash(string $hash): bool
-    {
-        return (bool) preg_match('/^[a-f0-9]{32}$/', $hash);
-    }
 
     // isAddEvent() is kept as an alias for isAddEventEnabled() since it's
     // called by isEnabledSecurity('bAddEvent') checks elsewhere in the codebase

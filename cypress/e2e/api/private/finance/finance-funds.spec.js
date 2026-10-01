@@ -227,3 +227,89 @@ describe("API Finance Funds - Access control", () => {
         );
     });
 });
+
+describe("API Finance Funds - categories", () => {
+    const stamp = Date.now();
+    const created = [];
+
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
+    after(() => {
+        cy.setupAdminSession();
+        created.forEach((id) => cy.makePrivateAdminAPICall("DELETE", `${BASE}/${id}`, null, [200, 404]));
+    });
+
+    function createFund(name, category) {
+        return cy.makePrivateAdminAPICall("POST", BASE, { name, category }, 201).then((resp) => {
+            created.push(resp.body.fund.id);
+            return resp.body.fund;
+        });
+    }
+
+    it("Creates a fund without a category (backward compatible) with category null", () => {
+        createFund(`CyNoCat ${stamp}`).then((fund) => {
+            expect(fund.category).to.equal(null);
+        });
+    });
+
+    it("Creates a fund with a category and lists it", () => {
+        const category = `CyCat ${stamp}`;
+        createFund(`CyCatFund ${stamp}`, category).then((fund) => {
+            expect(fund.category).to.equal(category);
+            cy.makePrivateAdminAPICall("GET", `${BASE}/categories`, null, 200).then((resp) => {
+                expect(resp.body.categories).to.include(category);
+            });
+        });
+    });
+
+    it("PUT sets, leaves unchanged when omitted, and clears with empty string", () => {
+        const category = `CyPut ${stamp}`;
+        createFund(`CyPutFund ${stamp}`).then((fund) => {
+            cy.makePrivateAdminAPICall("PUT", `${BASE}/${fund.id}`, { category }, 200).then((resp) => {
+                expect(resp.body.fund.category).to.equal(category);
+            });
+            cy.makePrivateAdminAPICall("PUT", `${BASE}/${fund.id}`, { description: "x" }, 200).then((resp) => {
+                expect(resp.body.fund.category).to.equal(category);
+            });
+            cy.makePrivateAdminAPICall("PUT", `${BASE}/${fund.id}`, { category: "" }, 200).then((resp) => {
+                expect(resp.body.fund.category).to.equal(null);
+            });
+        });
+    });
+
+    it("Rejects a category longer than 50 characters", () => {
+        cy.makePrivateAdminAPICall("POST", BASE, { name: `CyLong ${stamp}`, category: "x".repeat(51) }, 400);
+    });
+
+    it("Renames a category across funds and deletes it", () => {
+        const oldName = `CyOld ${stamp}`;
+        const newName = `CyNew ${stamp}`;
+        createFund(`CyRenA ${stamp}`, oldName).then((a) => {
+            createFund(`CyRenB ${stamp}`, oldName).then((b) => {
+                cy.makePrivateAdminAPICall("PUT", `${BASE}/categories`, { name: oldName, newName }, 200).then((resp) => {
+                    expect(resp.body.updated).to.equal(2);
+                });
+                cy.makePrivateAdminAPICall("GET", `${BASE}/categories`, null, 200).then((resp) => {
+                    expect(resp.body.categories).to.include(newName);
+                    expect(resp.body.categories).to.not.include(oldName);
+                });
+                cy.makePrivateAdminAPICall("DELETE", `${BASE}/categories?name=${encodeURIComponent(newName)}`, null, 200).then(
+                    (resp) => {
+                        expect(resp.body.updated).to.equal(2);
+                    },
+                );
+                cy.makePrivateAdminAPICall("PUT", `${BASE}/${a.id}`, { description: "still exists" }, 200).then((resp) => {
+                    expect(resp.body.fund.category).to.equal(null);
+                });
+                cy.makePrivateAdminAPICall("PUT", `${BASE}/${b.id}`, { description: "still exists" }, 200);
+            });
+        });
+    });
+
+    it("Rejects empty rename and delete names", () => {
+        cy.makePrivateAdminAPICall("PUT", `${BASE}/categories`, { name: "", newName: "x" }, 400);
+        cy.makePrivateAdminAPICall("DELETE", `${BASE}/categories?name=`, null, 400);
+    });
+});
