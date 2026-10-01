@@ -356,14 +356,27 @@ export function tText(key: string, vars?: Record<string, unknown>): string {
   return i18next.t(key, { ...(vars ?? {}), interpolation: { escapeValue: false } });
 }
 
-/** A `YYYY-MM-DD` date as the reader's short month and day, with the year when it is not this year. */
+/** ChurchCRM's configured locale (`en_US`) as a BCP 47 tag (`en-US`); the browser's when unset or unknown. */
+function appLocale(): string | undefined {
+  const tag = window.CRM?.locale?.replace("_", "-");
+  if (!tag) {
+    return undefined;
+  }
+  try {
+    return Intl.DateTimeFormat.supportedLocalesOf(tag).length > 0 ? tag : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/** A `YYYY-MM-DD` date as a short month and day in ChurchCRM's locale, with the year when it is not this year. */
 export function shortDate(iso: string): string {
   const date = new Date(`${iso.slice(0, 10)}T12:00:00`);
   if (Number.isNaN(date.getTime())) {
     return iso;
   }
 
-  return date.toLocaleDateString(undefined, {
+  return date.toLocaleDateString(appLocale(), {
     month: "short",
     day: "numeric",
     year: date.getFullYear() === new Date().getFullYear() ? undefined : "numeric",

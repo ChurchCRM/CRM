@@ -61,7 +61,7 @@ import {
   type VolunteerStaffing,
   type VolunteerSwap,
 } from "./api";
-import { tText } from "./components/ui";
+import { shortDate, tText } from "./components/ui";
 import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "./staffing-needs";
 
 interface OccurrenceConfig {
@@ -456,7 +456,7 @@ function describeCandidate(person: VolunteerEligiblePerson): string {
   if (person.lastServedDate === null) {
     parts.push(i18next.t("has not served yet"));
   } else {
-    parts.push(tText("last served {{date}}", { date: person.lastServedDate }));
+    parts.push(tText("last served {{date}}", { date: shortDate(person.lastServedDate) }));
   }
   if (person.conflictPositionName) {
     parts.push(tText("already serving as {{position}}", { position: person.conflictPositionName }));

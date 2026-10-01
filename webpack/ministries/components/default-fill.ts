@@ -13,13 +13,13 @@
  */
 
 import type { VolunteerEligiblePerson, VolunteerGenerateDefault, VolunteerRequirementRow } from "../api";
-import { escapeAttribute, escapeHtml, show, tText } from "./ui";
+import { escapeAttribute, escapeHtml, shortDate, show, tText } from "./ui";
 
 function describeCandidate(person: VolunteerEligiblePerson): string {
   const served =
     person.lastServedDate === null
       ? i18next.t("has not served yet")
-      : tText("last served {{date}}", { date: person.lastServedDate });
+      : tText("last served {{date}}", { date: shortDate(person.lastServedDate) });
 
   return `${person.displayName} — ${served}`;
 }

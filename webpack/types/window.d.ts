@@ -263,6 +263,8 @@ interface CRMSettingsPanel {
 
 interface CRMNamespace {
   root?: string;
+  /** ChurchCRM's configured locale, e.g. `en_US` (src/Include/Header.php). */
+  locale?: string;
   settingsPanel?: CRMSettingsPanel;
   timeZone?: string;
   plugins?: CRMPlugins;
