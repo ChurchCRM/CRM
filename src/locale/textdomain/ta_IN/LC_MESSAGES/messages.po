@@ -14935,10 +14935,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு இந்த சர்வரின் அதிகபட்ச பதிவேற்ற அளவைத் தாண்டுகிறது"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "இன்று எந்த நிகழ்வுகளும் திட்டமிடப்படவில்லை"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "கோரப்பட்ட பொருளைப் பெறுவதில் சிக்கல் ஏற்பட்டது"
 

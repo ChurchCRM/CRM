@@ -14887,10 +14887,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "തിരഞ്ഞെടുത്ത ഫയൽ ഈ സർവ്വറിന്റെ പരമാവധി അപ്‌ലോഡ് വലുപ്പം കവിഞ്ഞു"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "ഇന്ന് ഷെഡ്യൂൾ ചെയ്ത പരിപാടികൾ ഒന്നുമില്ല"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "അഭ്യർത്ഥിച്ച ഒബ്ജക്ട് ലഭ്യമാക്കുന്നതിൽ ഒരു പ്രശ്‌നം ഉണ്ടായി"
 

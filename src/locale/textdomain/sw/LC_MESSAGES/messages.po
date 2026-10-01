@@ -14918,10 +14918,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Faili iliyochaguliwa inazidi ukubwa wa juu zaidi wa upakiaji wa seva hizi"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Hakuna matukio yaliyopangwa kwa leo"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Kulikuwa na tatizo katika kurejesha kitu kilichoombwa"
 

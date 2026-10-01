@@ -14942,10 +14942,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Вибраний файл перевищує максимальний розмір цього сервера для завантаження"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "На сьогодні не заплановано жодних подій"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Не вдалося отримати запитаний об’єкт"
 

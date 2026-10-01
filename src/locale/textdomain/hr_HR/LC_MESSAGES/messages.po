@@ -14894,10 +14894,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Odabrana datoteka premašuje maksimalnu veličinu učitavanja ovog poslužitelja od"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Nema zakazanih događaja za danas"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Nastao je problem pri dohvaćanju traženog objekta"
 

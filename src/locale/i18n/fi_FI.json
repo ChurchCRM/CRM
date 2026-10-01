@@ -3562,7 +3562,6 @@
   "System upgrade completed successfully!": "Järjestelmän päivitys onnistui!",
   "Text All": "Tekstaa kaikille",
   "The selected file exceeds this servers maximum upload size of": "Valittu tiedosto ylittää palvelimen suurimman sallitun latauskoon",
-  "There are no events scheduled for today": "Tänään ei ole aikataulutettuja tapahtumia",
   "There was a problem retrieving the requested object": "Pyydetyn kohteen haussa tapahtui virhe",
   "This event type is used by": "Tätä tapahtumatyyppiä käyttää",
   "This field is required": "Tämä kenttä on pakollinen",

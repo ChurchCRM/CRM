@@ -14922,10 +14922,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Die geselekteerde lêer oorskry die maksimum oplaaigrootte van hierdie bedieners"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Daar is geen geleenthede vir vandag geskeduleer nie"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Kon nie die aangevraagde voorwerp ophaal nie"
 
