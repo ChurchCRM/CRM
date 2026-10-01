@@ -49,7 +49,7 @@ No hard blocks.
 6. Locale-sensitive values — dates, times, numbers, currency, or timezone that ignore ChurchCRM conventions. See below.
 7. Tests — feature or bug fix with no new or updated tests.
 8. Repo process — issue rule in `git-workflow.md` not met; title or body that describes different work than the diff.
-9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Raw SQL substitution, not ORM, leak history. Point the author at Slim/Tabler MVC + Propel, or a reports plugin. Security-only patches on Query View need an explicit maintainer exception. See #9995.
+9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Raw SQL substitution, not ORM, leak history. Point the author at Slim/Tabler MVC + Propel (`src/v2/`), or a reports plugin (`src/plugins/`; `src/plugins/community/` to share). See #9921. Security-only patches on Query View need an explicit maintainer exception. See #9995.
 
 Missing comments are not a hard block. Do not ask the author to add more comments. Wrong or essay comments can be deleted; that is not Request changes.
 
