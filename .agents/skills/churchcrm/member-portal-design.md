@@ -431,7 +431,10 @@ Navigation (the `nav` model), in order, each hidden when its feature is off or t
 nothing there: **Home · Calendar · Volunteering · My Teams · My Family · Profile**. The header
 shows the church logo and name, and one account menu: a button reading "Hello <first name>" over
 **Email History** (§5.8), **Change Password**, **Admin Console** (staff logins only, never during a
-masquerade) and **Sign out**.
+masquerade) and **Sign out**. During a masquerade, **Sign out** becomes **Exit to your account**
+(a POST to `/v2/user/impersonate/exit`, as in the admin shell's user menu), so the administrator
+returns to their own account instead of ending the session; a plain GET `/session/end` stays a full
+logout.
 The church name is not a link that restyles itself under the pointer. No admin sidebar anywhere.
 Staff opening the portal leave it again through Admin Console (P10); there is no fixed "viewing as
 yourself" bar. A masquerade still shows the banner from #9843, with its own exit control.
