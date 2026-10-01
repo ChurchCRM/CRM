@@ -57,7 +57,7 @@ an admin page is not finished.
 | # | Decision | Why |
 |---|---|---|
 | P1 | **New MVC module `src/portal/`, URL prefix `/portal`.** | Same shape as `src/volunteer/`, `src/event/` etc. (`MvcAppFactory`); nothing new for reviewers to learn. |
-| P2 | **Twig for portal pages, with a theme override loader.** | Twig 3 is already a dependency (`twig/twig ^3.20`) and already renders the emails with a `gettext` extension (`src/ChurchCRM/Twig/GettextExtension.php`), so reviewers know it. Its templates cannot execute PHP, only what the environment exposes, which is what makes church-supplied overrides safe. Its `FilesystemLoader` takes an ordered path list, which is the override mechanism itself. It compiles to cached PHP and recompiles on file change, which gives live editing for free. Plain-PHP views (`PhpRenderer`, used by every other module) offer none of that. |
+| P2 | **Twig for portal pages, with a theme override loader.** | Twig 3 is already a dependency (`twig/twig ^3.20`) and already renders the emails (`BaseEmail`), and a `GettextExtension` class exists (`src/ChurchCRM/Twig/GettextExtension.php`) even though the email environment never registers it (§0.6 fact 2), so reviewers know it. Its templates cannot execute PHP, only what the environment exposes, which is what makes church-supplied overrides safe. Its `FilesystemLoader` takes an ordered path list, which is the override mechanism itself. It compiles to cached PHP and recompiles on file change, which gives live editing for free. Plain-PHP views (`PhpRenderer`, used by every other module) offer none of that. |
 | P3 | **A theme is a folder. Its folder name is its identity. No manifest is required.** | The folder path already says everything the system needs. The display name is the folder name exactly, unless an optional `theme.json` provides `name` (and `author`, `description`) for the admin page. |
 | P4 | **Church themes live in `Include/themes/<name>/`; the system theme in `Include/themes/default/` (in core).** | `Include/` is the directory ChurchCRM already promises survives updates (it holds `Config.php`, which the upgrader never overwrites, and the orphan-file scan already exempts it). It is where a church FTPs files today. Payment gateways and other church-supplied modules get sibling folders under `Include/modules/<type>/` when they exist (§3.8). |
 | P5 | **Theme assets (CSS, JS, images, fonts) are served by the application at `/portal/theme/<name>/<path>`, never directly by the web server.** | `Include/` is deny-all at the web-server level on purpose (GHSA-mp2w-4q3r-ppx7) and must stay that way. A small streaming route with an extension allow-list, ETag and long cache headers costs one cheap request per asset and works identically on Apache, nginx and FrankenPHP with no server configuration. It also means templates and any stray file in a theme are never web-readable. |
@@ -88,27 +88,36 @@ an admin page is not finished.
 
 ### 0.6 Facts about the current codebase this design relies on
 
-Verified 2026-09-15/16 on `feature/volunteer-v2-integration` (2d43e432b); file:line as of then.
+Verified 2026-09-15/16 on `feature/volunteer-v2-integration` (2d43e432b) and re-verified 2026-09-18 on
+`feature/member-portal-full` (a6ded5ee5) against `upstream/master`. Citations name files and methods,
+not lines: line numbers drift with every merge (the 2026-09-16 review found four of them 13–126
+lines off), and every name below is greppable.
 
 1. **Page views are plain PHP** via `Slim\Views\PhpRenderer`; every module view `require`s
    `Include/Header.php` (the admin shell) and `Include/Footer.php`. The auth-flow pages use the
    minimal `Include/HeaderNotLoggedIn.php` / `FooterNotLoggedIn.php` (core CSS/JS bundle, moment,
    plugin head content; no sidebar).
-2. **Twig is present for email only**: `BaseEmail.php:42` builds a `FilesystemLoader` on
-   `src/templates/email`; `GettextExtension` exposes `gettext()`.
+2. **Twig is present for email only, and bare**: `BaseEmail::__construct()` builds a `FilesystemLoader`
+   on `src/templates/email` and an `Environment` with no extensions at all. `GettextExtension`
+   (`src/ChurchCRM/Twig/GettextExtension.php`) exists as a class exposing `gettext()` but is
+   registered nowhere on `master`; the portal environment (§3.4) is its first consumer.
 3. **`Include/` is deny-all at the web level** (`src/Include/.htaccess`, GHSA-mp2w-4q3r-ppx7) and
-   holds `Config.php`. The integrity/orphan scan (`AppIntegrityService::isExcludedFromOrphanDetection`,
-   `AppIntegrityService.php:~463`) exempts `Include/Config.php` and `plugins/community/`; a new
+   holds `Config.php`. The integrity/orphan scan (`AppIntegrityService::isExcludedFromOrphanDetection()`) exempts `Include/Config.php` and `plugins/community/`; a new
    `Include/themes/` pattern joins that list (and `generate-signatures-node.js`), so church themes
    are never reported as orphaned files.
-4. **Self-service persona** = `User::isEditSelfExclusive()` (`!isAdmin() && isEditSelf()`,
-   `User.php:138`). Every module permission getter short-circuits to false for it. `AuthMiddleware`
-   302s such browser sessions to `/external/limited-access` except for paths in
-   `isLimitedAccessAllowedPath()`; `Include/PageInit.php:25` applies the same bounce to every
-   legacy `*.php` page.
-5. **User id is the person id** (`user_usr.usr_per_ID`). `User::canEditPerson()` (`User.php:399`)
-   and `canViewFamily()` (`:435`) already express "own record / own family". `usr_LastLogin` and
-   `usr_LoginCount` are stamped by a real login (`LocalAuthentication.php:131-133`); a masquerade
+4. **Self-service persona** = `User::isEditSelfExclusive()` (`!isAdmin() && isEditSelf()`).
+   Every module permission getter short-circuits to false for it. `AuthMiddleware` 302s such
+   browser sessions to `/external/limited-access` except for an exempt path list. **On `master`
+   that list is `AuthMiddleware::isAuthFlowExemptPath()`** and holds only the forced
+   password-change and 2FA-enrolment pages and the APIs their bundle calls. The Volunteer v2
+   branch (#9706) renames it **`isLimitedAccessAllowedPath()`**, keeps those entries as the
+   `AUTH_FLOW_EXEMPT_PATHS` constant, and adds the `/api/ministries/me/` prefix; the portal
+   (#9863) adds the `/portal` and `/api/portal` prefixes (§2.2). This document uses the new name
+   throughout, so an implementer on `master` renames first. `Include/PageInit.php` applies the
+   same bounce to every legacy `*.php` page.
+5. **User id is the person id** (`user_usr.usr_per_ID`). `User::canEditPerson()`
+   and `canViewFamily()` already express "own record / own family". `usr_LastLogin` and
+   `usr_LoginCount` are stamped by a real login (`LocalAuthentication::prepareSuccessfulLoginOperations()`); a masquerade
    does not touch them (#9843).
 6. **Family verification** is a token flow (`Token::TYPE_FAMILY_VERIFY`) whose form is read-only plus
    a comment, ending in a `Note` of type `verify`. Members cannot edit fields through it.
@@ -120,7 +129,7 @@ Verified 2026-09-15/16 on `feature/volunteer-v2-integration` (2d43e432b); file:l
    sidebar, login and auth pages; `ChurchMetaData::getChurchLogoURL()` resolves it, falling back to
    the stock image. Per-user light/dark mode. No custom-CSS hook anywhere.
 9. **Settings**: `ConfigItem`s are declared in `SystemConfig::init()`; only items listed in a
-   category (`SystemConfig.php:~300-320`) appear on `src/SystemSettings.php`. Writes go through
+   category (`SystemConfig::buildCategories()`) appear on `src/SystemSettings.php`. Writes go through
    `POST /admin/api/system/config/{name}`. An item with no category is a first-class config value
    that the System Settings page never shows.
 10. **Plugins** can inject `<head>`/footer HTML and register routes under `/plugins/*` only; no asset
@@ -137,7 +146,7 @@ Verified 2026-09-15/16 on `feature/volunteer-v2-integration` (2d43e432b); file:l
 | Need | Existing thing | Verdict | Notes |
 |---|---|---|---|
 | Module skeleton, auth stack, CSRF, error pages | `MvcAppFactory`, `CSRFMiddleware`, `SlimUtils::registerDefaultHtmlErrorHandler` | **Reuse** | `src/portal/index.php` = `MvcAppFactory::create('/portal', [...])`. |
-| Template engine | Twig 3 + `GettextExtension` | **Reuse + extend** | New `ChurchCRM\Portal\PortalTwig` factory (§3.4). |
+| Template engine | Twig 3 (dependency; renders email) + the `GettextExtension` class, which nothing registers yet | **Reuse + extend** | New `ChurchCRM\Portal\PortalTwig` factory (§3.4) is the first environment to register `GettextExtension`; it gains `ngettext`. |
 | Minimal page chrome | `HeaderNotLoggedIn.php` / `FooterNotLoggedIn.php` | **Do not reuse as-is** | The portal renders its own `layout.html.twig`. The asset list those includes load (core CSS/JS bundle, moment, plugin head content, i18next, locale loader) is reproduced in the layout so plugins and translations keep working. |
 | Core bundle, Tabler, Bootstrap 5, TomSelect, bootbox, DataTables | `skin/v2/churchcrm.min.{css,js}` + Footer scripts | **Reuse** | The portal ships one extra entry `portal.min.{css,js}`; theme CSS loads after it. |
 | Self-service persona and family scoping | `isEditSelfExclusive()`, `canEditPerson()`, `canViewFamily()` | **Reuse** | The portal never invents a second permission model. |
@@ -234,10 +243,14 @@ every update; copy it and rename the copy.
    scripts (core bundle, i18next, locale loader, `portal.min.js`, the page's bundle, `theme.js` if
    present) — all with the CSP nonce.
 6. `GET /portal/theme/<name>/<path>` streams a theme file when `<name>` is a real theme folder,
-   `<path>` contains no `..`, and the extension is one of `css js png jpg jpeg gif svg webp ico
-   woff woff2 ttf` — with `Content-Type`, `ETag` from `filemtime`+size, `Cache-Control:
+   `<path>` is a clean relative path (no empty, `.` or `..` segment; no leading slash, drive
+   letter, backslash or NUL), the extension is one of `css js png jpg jpeg gif svg webp ico
+   woff woff2 ttf`, **and the assembled path resolves through `realpath()` to a regular file
+   whose real path starts with the theme folder's own `realpath()`** — so a symlink inside a
+   theme that points outside it (`images/config.css → ../../Config.php`) is refused like any
+   other miss (`ThemeAssetStreamer::resolve()`). The response carries `Content-Type`, `ETag` from `filemtime`+size, `Cache-Control:
    public, max-age=31536000` (URLs carry `?v=<filemtime>`), and `304` on `If-None-Match`. Anything
-   else is 404. This route is public (no session) so a cached page never breaks on a logged-out
+   else is a plain-text 404. This route is public (no session) so a cached page never breaks on a logged-out
    asset request, and it exposes nothing but the allow-listed static files.
 
 ### 2.3 Who lands where
@@ -377,7 +390,11 @@ moved.
 ### 3.7 Security
 
 - Theme files are never web-served directly (`Include/` stays deny-all); only the allow-listed
-  extensions come out through the asset route, only from real theme folders, never via `..`.
+  extensions come out through the asset route, only from real theme folders, never via `..`,
+  and never through a symlink that leaves the theme folder: the route compares the
+  `realpath()` of the file with the `realpath()` of the theme folder and 404s on a mismatch
+  (§2.2 step 6). The route is public, so this guard is what keeps a stray link from turning
+  `Include/Config.php` into a readable `.css`.
 - A theme is uploaded by the church's administrator and trusted to the degree of anything else that
   administrator puts on the server; the authoring guide says so and says never to use `|raw` on
   member data. Twig autoescape covers everything else.
@@ -536,8 +553,9 @@ must pin it to some existing church calendar.
 
 - **Portal visibility is chosen per calendar on the Admin → Member Portal page**, Calendars tab:
   one list with every church calendar and every system calendar, each with a "Show in Member
-  Portal" switch. Stored as `aPortalCalendars`, a JSON config value of calendar ids and system
-  calendar ids (system calendars are virtual, so a column on `calendars` cannot cover them). All
+  Portal" switch. Stored as `aPortalCalendars`, a JSON list of `{"type": "calendar"|"system", "id": <int>}`
+  entries (schema in §6; system calendars are virtual, so a column on `calendars` cannot cover
+  them, and their ids overlap the `calendars` ids, so every entry names its kind). All
   off by default after an upgrade; on a new install the "Events" church calendar is on and the
   system calendars are off. Birthdays and Anniversaries are a privacy call the administrator makes
   knowingly; when shown, the portal renders first name and last initial only, never ages or years.
@@ -764,7 +782,7 @@ carries #9876.
 | Change | File |
 |---|---|
 | `calendars.ministry_id INT NULL` with an index (ministry calendars, §5.3). The FK → `volunteer_ministry_vmin` `ON DELETE SET NULL` is added by the Volunteer v2 schema, which creates that table | `7.8.0-member-portal-calendars.sql`, `Install.sql`, seed, `orm/schema.xml` |
-| `aPortalCalendars` JSON config (portal-visible calendar and system-calendar ids) | `SystemConfig.php` |
+| `aPortalCalendars` JSON config: a list of `{"type": "calendar"\|"system", "id": <int>}` — `type` `calendar` is a `calendars` row (church or ministry calendar), `type` `system` is a `SystemCalendars` virtual calendar; the two id spaces overlap, so the kind is part of the entry. `PortalCalendarService::visible()` drops any entry that no longer matches a calendar the church has, so a deleted calendar retires itself. Default `[]` | `SystemConfig.php`, `PortalCalendarService` |
 | `user_usr.usr_LastPortalActivity DATETIME NULL` | `7.8.0-member-portal-activity.sql`, same set |
 | `user_usr.usr_PortalCalendarToken VARCHAR(64) NULL` with a UNIQUE index — the bearer secret in a member's calendar feed URL; NULL means no feed (§5.3, "Subscribing") | `7.8.0-member-portal-activity.sql`, `Install.sql`, seed, `orm/schema.xml` |
 | `user_usr.usr_PortalCalendarSelection TEXT NULL` — JSON array of the calendar ids the member ticked, always intersected with what is shared before a feed is built | same set |
@@ -779,7 +797,9 @@ carries #9876.
 Because this epic lands first, the volunteer integration branch changes before its PRs open:
 
 1. `src/volunteer/routes/member.php` and the two member views are removed; the pages live in the
-   portal (§5.4). The volunteer entries in `isLimitedAccessAllowedPath()` go with them.
+   portal (§5.4). The two `/volunteer/*` page entries in `isLimitedAccessAllowedPath()` go with them; the
+   `/api/ministries/me/` prefix stays, because the portal templates load the same bundles and those
+   bundles call exactly that API.
 2. The admin sidebar's "Volunteer" heading is removed; "Ministries" stays (P16).
 3. D14 revised (P17): `loadScopes()` drops its `isEditSelfExclusive()` short-circuit;
    `User::isVolunteerTeamLeaderEnabled()` is added; `isVolunteerCoordinatorEnabled()` keeps
