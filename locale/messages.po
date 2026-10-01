@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-01 01:04+0000\n"
+"POT-Creation-Date: 2026-10-01 02:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8914,6 +8914,9 @@ msgstr ""
 msgid "Only Payments with Pledges"
 msgstr ""
 
+msgid "Only an administrator can delete a person who has a login."
+msgstr ""
+
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
 msgstr ""
 
@@ -11961,6 +11964,9 @@ msgid "The default OpenLP port is 4316. Your server URL will typically be: http:
 msgstr ""
 
 msgid "The group could not be found. Please try again."
+msgstr ""
+
+msgid "The last administrator cannot be deleted."
 msgstr ""
 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
