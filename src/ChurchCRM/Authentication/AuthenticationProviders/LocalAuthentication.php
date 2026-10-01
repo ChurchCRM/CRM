@@ -21,7 +21,10 @@ class LocalAuthentication implements IAuthenticationProvider
 {
     private ?int $currentUserId = null;
     private ?User $currentUser = null;
+    private const PENDING_TWO_FACTOR_TTL = 600;
+
     private ?bool $bPendingTwoFactorAuth = null;
+    private ?int $tPendingTwoFactorStarted = null;
     private bool $authenticated = false;
     private ?int $tLastOperationTimestamp = null;
 
@@ -32,6 +35,7 @@ class LocalAuthentication implements IAuthenticationProvider
         return [
             'currentUserId' => $this->currentUserId,
             'bPendingTwoFactorAuth' => $this->bPendingTwoFactorAuth,
+            'tPendingTwoFactorStarted' => $this->tPendingTwoFactorStarted,
             'authenticated' => $this->authenticated,
             'tLastOperationTimestamp' => $this->tLastOperationTimestamp,
         ];
@@ -42,6 +46,7 @@ class LocalAuthentication implements IAuthenticationProvider
         // Restore the properties from serialized data
         $this->currentUserId = $data['currentUserId'] ?? null;
         $this->bPendingTwoFactorAuth = $data['bPendingTwoFactorAuth'] ?? null;
+        $this->tPendingTwoFactorStarted = $data['tPendingTwoFactorStarted'] ?? null;
         $this->authenticated = $data['authenticated'] ?? false;
         $this->tLastOperationTimestamp = $data['tLastOperationTimestamp'] ?? null;
     }
@@ -176,6 +181,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
                 $this->setCurrentUser($user);
                 $this->bPendingTwoFactorAuth = true;
+                $this->tPendingTwoFactorStarted = time();
                 LoggerUtils::getAuthLogger()->info('User partially authenticated, pending 2FA', $logCtx);
             } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled()) {
                 // Mandate is active but user has not enrolled. Stamp the grace period start (if not already
@@ -193,6 +199,15 @@ class LocalAuthentication implements IAuthenticationProvider
                 LoggerUtils::getAuthLogger()->info('User successfully logged in without 2FA', $logCtx);
             }
         } elseif ($AuthenticationRequest instanceof LocalTwoFactorTokenRequest && $this->bPendingTwoFactorAuth && $this->getCurrentUser() instanceof User) {
+            if (time() - ($this->tPendingTwoFactorStarted ?? 0) > self::PENDING_TWO_FACTOR_TTL) {
+                LoggerUtils::getAuthLogger()->warning('2FA step expired; password required again', $logCtx);
+                $this->bPendingTwoFactorAuth = false;
+                $this->tPendingTwoFactorStarted = null;
+                $this->setCurrentUser(null);
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                return $authenticationResult;
+            }
             // Guard: if the account is already locked (e.g. from a prior OTP failure in
             // this session), reject without incrementing the counter or re-sending email.
             if ($this->currentUser->isLocked()) {
