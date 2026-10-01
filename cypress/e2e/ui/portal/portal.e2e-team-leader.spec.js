@@ -440,6 +440,9 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
 
             cy.get("#volunteer-occurrence", { timeout: 15000 }).should("exist");
             assertNoAdminShell();
+            // The date in ChurchCRM's locale; the stored value stays on the <time>.
+            cy.get("#occurrence-when time").first().should("have.attr", "datetime");
+            cy.get("#occurrence-when").invoke("text").should("not.match", /\d{4}-\d{2}-\d{2}/);
 
             cy.get("#requirements-content .volunteer-assign-btn", { timeout: 15000 })
                 .first()

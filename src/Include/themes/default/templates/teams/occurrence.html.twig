@@ -46,7 +46,12 @@
 
         <p class="portal-card-text" id="occurrence-when">
             <i class="fa-solid fa-clock me-1" aria-hidden="true"></i>
-            {{ occurrence.start ?: occurrence.date }}{% if occurrence.end %} &ndash; {{ occurrence.end }}{% endif %}
+            {% if occurrence.start %}
+            <time datetime="{{ occurrence.start }}" data-format="datetime">{{ occurrence.start }}</time>
+            {% else %}
+            <time datetime="{{ occurrence.date }}" data-format="date">{{ occurrence.date }}</time>
+            {% endif %}
+            {% if occurrence.end %} &ndash; <time datetime="{{ occurrence.end }}" data-format="time">{{ occurrence.end }}</time>{% endif %}
         </p>
 
         <p class="portal-card-text" id="occurrence-ministry">

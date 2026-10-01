@@ -4,7 +4,8 @@
  * Deliberately tiny: the portal's chrome is server-rendered Twig, so the only
  * behaviour that belongs here is what needs the browser — opening the collapsed
  * navigation on a phone, the header's account menu, running the toast stack,
- * and filling in the home page's volunteering card. Page-specific bundles
+ * filling in the home page's volunteering card, and putting the dates a template
+ * renders as `<time data-format>` into ChurchCRM's locale. Page-specific bundles
  * (calendar, the two volunteer pages, teams) are separate entries.
  *
  * Strings go through the page's global i18next — the one the layout loads
@@ -15,6 +16,7 @@
  * has finished, so anything user-visible waits for onLocalesReady.
  */
 import { ensureCrmHelpers } from "../common/crm-helpers";
+import { formatTimeElements } from "../ministries/components/ui";
 import { formatWhat, formatWhen } from "./member-ui";
 import { type PortalToastType, portalToast, wireRenderedToasts } from "./portal-toast";
 import "./portal.scss";
@@ -282,6 +284,7 @@ function start(): void {
   wireAccountMenu();
   publishToastHelper();
   wireRenderedToasts();
+  formatTimeElements();
 
   if (typeof window.CRM?.onLocalesReady === "function") {
     window.CRM.onLocalesReady(wireLocalisedLabels);

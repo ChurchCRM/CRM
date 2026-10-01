@@ -7,6 +7,8 @@
  * machine, the "when" line every card starts with, and the escaping helper.
  */
 
+import { formatWallClock } from "../ministries/components/ui";
+
 /**
  * The §5.8 state machine for one pane.
  *
@@ -42,36 +44,17 @@ export function escapeHtml(value: string): string {
 }
 
 /**
- * "Sunday, 13 September · 10:30 AM" — the line §5.6 puts at the top of every card.
- *
- * The API sends naive wall-clock strings in the church's configured timezone (§2.0),
- * so they are parsed as local time (`"2026-09-13 10:30:00"` → `"2026-09-13T10:30:00"`)
- * and never as UTC. Formatting is `toLocaleString` with the browser's locale rather
- * than a hand-rolled format string: a volunteer reads this on their phone, and their
- * phone already knows how they write dates.
+ * "Sunday, September 13 at 10:30 AM" — the line §5.6 puts at the top of every card: the
+ * weekday spelled out, because a volunteer plans by the day they serve. ChurchCRM's
+ * locale and the church's wall-clock time, as every other V2 date (`formatWallClock()`).
  */
 export function formatWhen(start: string | null, occurrenceDate: string | null): string {
-  const raw = start ?? occurrenceDate;
-  if (!raw) {
-    return "";
+  const day: Intl.DateTimeFormatOptions = { weekday: "long", day: "numeric", month: "long" };
+  if (start) {
+    return formatWallClock(start, { ...day, hour: "numeric", minute: "2-digit" });
   }
 
-  const parsed = new Date(raw.replace(" ", "T"));
-  if (Number.isNaN(parsed.getTime())) {
-    return raw;
-  }
-
-  if (start === null) {
-    return parsed.toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "long" });
-  }
-
-  return parsed.toLocaleString(undefined, {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    hour: "numeric",
-    minute: "2-digit",
-  });
+  return occurrenceDate ? formatWallClock(occurrenceDate, day) : "";
 }
 
 /** "Worship Team — Song Leader", skipping whichever parts are absent. */
