@@ -485,6 +485,10 @@ class Bootstrapper
             'path'     => $cookiePath,
         ]);
 
+        // iSessionTimeout is enforced by the app but SystemConfig is not loaded yet; PHP's 1440s default
+        // would delete idle sessions first (#8959).
+        ini_set('session.gc_maxlifetime', (string) (7 * 24 * 3600));
+
         // Initialize the session
         $sessionName = self::SESSION_PREFIX . hash("md5", SystemURLs::getDocumentRoot());
         session_cache_limiter('private_no_expire:');
