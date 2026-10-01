@@ -697,7 +697,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
             cy.visit(ministryUrl());
             openOccurrencesTab();
 
-            cy.get("#volunteerOccurrencesTable tbody").should("not.contain", PAST_DATE);
+            cy.get("#volunteerOccurrencesTable tbody").find(`td[data-order^="${PAST_DATE}"]`).should("not.exist");
 
             cy.get("#occurrence-from").clear();
             cy.get("#occurrence-from").type(isoDate(-90));
@@ -705,7 +705,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
             lastOccurrenceQuery((params) => {
                 expect(params.get("from"), "from").to.eq(isoDate(-90));
             });
-            cy.get("#volunteerOccurrencesTable tbody").should("contain", PAST_DATE);
+            cy.get(`#volunteerOccurrencesTable tbody td[data-order^="${PAST_DATE}"]`).should("exist");
         });
 
         it("sends From + one year when To is left empty, and honours To when it is set", () => {

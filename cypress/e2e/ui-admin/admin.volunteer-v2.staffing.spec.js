@@ -78,6 +78,18 @@ function isoDate(offsetDays) {
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
+/** `YYYY-MM-DD` at `HH:MM` as the page's shortDateTime() writes it. */
+function shortDateTime(iso, time) {
+    const date = new Date(`${iso}T${time}:00`);
+    return date.toLocaleString(undefined, {
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        year: date.getFullYear() === new Date().getFullYear() ? undefined : "numeric",
+    });
+}
+
 /** A Church Service event on weekday `dow` (0 = Sunday) for `weeks` weeks from the next one. */
 function createWeeklyEvents(title, dow, weeks, startTime, endTime) {
     const first = (dow - new Date().getDay() + 7) % 7 || 7;
@@ -506,7 +518,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             // ends would lose the tail of it to Bootstrap's own focus move.
             cy.get("#staff-event-form-search").should("have.focus").type("Harvest");
             cy.get("#staff-event-form-event option").should("have.length", 2);
-            cy.get("#staff-event-form-event option").eq(1).should("contain", NAME).and("contain", isoDate(3));
+            cy.get("#staff-event-form-event option").eq(1).should("contain", NAME).and("contain", shortDateTime(isoDate(3), "18:00"));
             cy.get("#staff-event-form-event option").eq(1).then(($option) => {
                 cy.get("#staff-event-form-event").select(String($option.val()));
             });

@@ -46,6 +46,8 @@ import {
   isoDate,
   modal,
   renderState,
+  shortDate,
+  shortDateTime,
   show,
   showModalError,
   tText,
@@ -179,7 +181,8 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     body.innerHTML = rows
       .map((occurrence) => {
         const href = `${options.occurrenceUrl(occurrence.id)}${back}`;
-        const when = occurrence.start ?? occurrence.occurrenceDate ?? "";
+        const stored = occurrence.start ?? occurrence.occurrenceDate ?? "";
+        const when = occurrence.start ? shortDateTime(occurrence.start) : shortDate(stored);
         // One cell, one icon, says how the occurrence stands (review, 2026-09-18);
         // the words live in the tooltip. An EMPTY plan is not "fully staffed"
         // (§2.10): it has no gaps only because nobody said what it needs, so its
@@ -218,7 +221,7 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
             <input type="checkbox" class="form-check-input volunteer-occurrence-select"
                    data-occurrence-id="${occurrence.id}" aria-label="${escapeAttribute(tText("Select {{when}}", { when }))}">
           </td>
-          <td><a href="${href}">${escapeHtml(when)}</a></td>
+          <td data-order="${escapeAttribute(stored)}"><a href="${href}">${escapeHtml(when)}</a></td>
           <td>${escapeHtml(teamName)}</td>
           <td>${escapeHtml(occurrence.scheduleName ?? "")}${
             occurrence.scheduleOneOff
@@ -279,7 +282,7 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
   }
 
   function describeEvent(event: VolunteerUpcomingEvent): string {
-    const parts = [`${event.start.slice(0, 16)} — ${event.title}`];
+    const parts = [`${shortDateTime(event.start)} — ${event.title}`];
     if (event.eventTypeName) {
       parts.push(`(${event.eventTypeName})`);
     }

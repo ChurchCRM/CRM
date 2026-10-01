@@ -61,9 +61,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title mb-1"><?= InputUtils::escapeHTML($sScheduleName) ?></h3>
         <div class="text-body-secondary" id="occurrence-when">
           <i class="fa-solid fa-clock me-1"></i>
-          <?= InputUtils::escapeHTML($sStart !== '' ? $sStart : $sOccurrenceDate) ?>
+          <?php if ($sStart !== ''): ?>
+            <time datetime="<?= InputUtils::escapeAttribute($sStart) ?>" data-format="datetime"><?= InputUtils::escapeHTML($sStart) ?></time>
+          <?php else: ?>
+            <time datetime="<?= InputUtils::escapeAttribute($sOccurrenceDate) ?>" data-format="date"><?= InputUtils::escapeHTML($sOccurrenceDate) ?></time>
+          <?php endif; ?>
           <?php if ($sEnd !== ''): ?>
-            &ndash; <?= InputUtils::escapeHTML(substr($sEnd, 11)) ?>
+            &ndash; <time datetime="<?= InputUtils::escapeAttribute($sEnd) ?>" data-format="<?= substr($sEnd, 0, 10) === substr($sStart, 0, 10) ? 'time' : 'datetime' ?>"><?= InputUtils::escapeHTML($sEnd) ?></time>
           <?php endif; ?>
         </div>
         <div class="text-body-secondary" id="occurrence-ministry">

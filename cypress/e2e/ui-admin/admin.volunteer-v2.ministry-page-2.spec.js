@@ -521,7 +521,7 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
             cy.get("#volunteerOccurrencesTable").should("be.visible");
 
             cy.get("#occurrence-from").should("have.value", isoDate(0));
-            cy.get("#volunteerOccurrencesTable tbody").should("not.contain", PAST_DATE);
+            cy.get("#volunteerOccurrencesTable tbody").find(`td[data-order^="${PAST_DATE}"]`).should("not.exist");
         });
 
         it("has no Filter by Date button, dialog or range note left", () => {

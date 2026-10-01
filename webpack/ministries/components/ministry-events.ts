@@ -34,6 +34,7 @@ import {
 import type { MinistryEventPrefill, SchedulePrefill } from "./schedules-table";
 import {
   actionMenu,
+  appLocale,
   byId,
   confirmDelete,
   destroyDataTable,
@@ -46,6 +47,7 @@ import {
   modal,
   renderState,
   shortDate,
+  shortDateTimeRange,
   show,
   showModalError,
   tText,
@@ -56,7 +58,7 @@ import {
 /** EventService::MAX_REPEAT_OCCURRENCES — the server refuses a larger series. */
 const MAX_SERIES_EVENTS = 366;
 
-/** The values the API takes for a weekly recurrence; the labels are the browser's. */
+/** The values the API takes for a weekly recurrence; the labels are in ChurchCRM's locale. */
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 export interface MinistryEventsOptions {
@@ -102,12 +104,6 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
   const pastShown = (): boolean => byId<HTMLInputElement>("ministry-events-past")?.checked ?? false;
 
   // ── The table ─────────────────────────────────────────────────────────────
-
-  function when(event: VolunteerMinistryEvent): string {
-    const sameDay = event.start.slice(0, 10) === event.end.slice(0, 10);
-
-    return `${event.start.slice(0, 16)} – ${sameDay ? event.end.slice(11, 16) : event.end.slice(0, 16)}`;
-  }
 
   function staffingBadge(team: VolunteerMinistryEventStaffing): string {
     const look = {
@@ -179,9 +175,9 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       <tr data-event-id="${event.id}">
         <td class="w-1 no-export">
           <input type="checkbox" class="form-check-input ministry-event-select" data-event-id="${event.id}"
-                 aria-label="${escapeAttribute(tText("Select {{event}}", { event: `${when(event)} ${event.title}` }))}">
+                 aria-label="${escapeAttribute(tText("Select {{event}}", { event: `${shortDateTimeRange(event.start, event.end)} ${event.title}` }))}">
         </td>
-        <td data-order="${escapeAttribute(event.start)}">${escapeHtml(when(event))}</td>
+        <td data-order="${escapeAttribute(event.start)}">${escapeHtml(shortDateTimeRange(event.start, event.end))}</td>
         <td>
           <a class="fw-bold" href="${root()}/event/view/${event.id}">${escapeHtml(event.title)}</a>${
             event.inactive
@@ -396,7 +392,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       dow.innerHTML = WEEKDAYS.map(
         (day, index) =>
           `<option value="${day}">${escapeHtml(
-            new Date(2023, 0, 1 + index).toLocaleDateString(undefined, { weekday: "long" }),
+            new Date(2023, 0, 1 + index).toLocaleDateString(appLocale(), { weekday: "long" }),
           )}</option>`,
       ).join("");
     }
@@ -407,7 +403,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
         { length: 12 },
         (_, index) =>
           `<option value="${String(index + 1).padStart(2, "0")}">${escapeHtml(
-            new Date(2023, index, 1).toLocaleDateString(undefined, { month: "long" }),
+            new Date(2023, index, 1).toLocaleDateString(appLocale(), { month: "long" }),
           )}</option>`,
       ).join("");
     }
@@ -529,7 +525,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       if (rule.type === "weekly") {
         text = tText("Creates {{total}} events, every {{day}} from {{first}} to {{last}}", {
           ...range,
-          day: dates[0].toLocaleDateString(undefined, { weekday: "long" }),
+          day: dates[0].toLocaleDateString(appLocale(), { weekday: "long" }),
         });
       } else if (rule.type === "monthly") {
         text = tText("Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}", {

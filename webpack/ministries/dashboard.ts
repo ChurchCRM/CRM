@@ -37,6 +37,7 @@ import {
   type VolunteerDashboardPending,
   type VolunteerDashboardSwap,
 } from "./api";
+import { shortDate, shortDateTime } from "./components/ui";
 import { initMinistryCreate } from "./ministry-create";
 
 interface DashboardConfig {
@@ -123,25 +124,15 @@ function confirmAction(title: string, message: string, onConfirm: () => void, da
 }
 
 /**
- * When an occurrence happens, in the viewer's own locale.
- *
- * The server sends `start` as `Y-m-d H:i:s` already resolved in the church's timezone —
- * the anchored event's time moved by the schedule's offsets (D20, D21) — so it is rendered
- * as a wall-clock reading and never re-zoned here. A row with no time at all (its event was
- * deleted) falls back to the date.
+ * When an occurrence happens: its start — the anchored event's time moved by the schedule's
+ * offsets (D20, D21) — or, when its event was deleted, just its date.
  */
 function whenLabel(start: string | null, occurrenceDate: string | null): string {
-  const raw = start ?? occurrenceDate;
-  if (!raw) {
-    return "";
+  if (start) {
+    return shortDateTime(start);
   }
 
-  const parsed = new Date(raw.replace(" ", "T"));
-  if (Number.isNaN(parsed.getTime())) {
-    return raw;
-  }
-
-  return start === null ? parsed.toLocaleDateString() : parsed.toLocaleString();
+  return occurrenceDate ? shortDate(occurrenceDate) : "";
 }
 
 /** Where this row belongs — "Coffee Bar · Bar Team", with the team dropped when absent. */
@@ -405,7 +396,7 @@ function renderUpcoming(rows: VolunteerDashboardOccurrence[]): void {
 
       return `
         <tr>
-          <td><a href="${root()}/ministries/occurrences/${occurrence.id}">${escapeHtml(whenLabel(occurrence.start, occurrence.occurrenceDate))}</a></td>
+          <td data-order="${escapeHtml(occurrence.start ?? occurrence.occurrenceDate ?? "")}"><a href="${root()}/ministries/occurrences/${occurrence.id}">${escapeHtml(whenLabel(occurrence.start, occurrence.occurrenceDate))}</a></td>
           <td>${escapeHtml(ministryLabel(occurrence.ministryName, occurrence.teamName))}</td>
           <td>${escapeHtml(occurrence.scheduleName ?? "")}</td>
           <td class="text-center">${staffedBadge(occurrence)}</td>

@@ -61,7 +61,7 @@ import {
   type VolunteerStaffing,
   type VolunteerSwap,
 } from "./api";
-import { shortDate, tText } from "./components/ui";
+import { formatTimeElements, shortDate, shortDateTime, tText } from "./components/ui";
 import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "./staffing-needs";
 
 interface OccurrenceConfig {
@@ -264,7 +264,7 @@ function assignmentRow(assignment: VolunteerAssignment, showAttendance: boolean)
         <a href="${root}/people/view/${assignment.personId}" class="text-truncate d-block">${name}</a>
         <div class="small text-body-secondary">
           ${escapeHtml(sourceLabel(assignment.source))}
-          ${assignment.respondedDate ? ` &middot; ${escapeHtml(assignment.respondedDate)}` : ""}
+          ${assignment.respondedDate ? ` &middot; ${escapeHtml(shortDateTime(assignment.respondedDate))}` : ""}
           ${attendance === "" ? "" : ` &middot; ${escapeHtml(attendance)}`}
         </div>
       </div>
@@ -384,7 +384,7 @@ function renderSwaps(swaps: VolunteerSwap[]): void {
         <td>${escapeHtml(swap.positionName ?? "")}</td>
         <td>${escapeHtml(swap.proposedByName ?? "")}</td>
         <td>${escapeHtml(swap.proposedPersonName ?? "")}</td>
-        <td>${escapeHtml(swap.proposedDate ?? "")}</td>
+        <td>${escapeHtml(swap.proposedDate ? shortDateTime(swap.proposedDate) : "")}</td>
         <td class="text-center">
           ${actionMenu([
             {
@@ -970,6 +970,8 @@ function wire(): void {
 }
 
 function init(): void {
+  formatTimeElements();
+
   const config = (window.CRM?.volunteerOccurrence ?? {
     occurrenceId: 0,
     ministryId: 0,

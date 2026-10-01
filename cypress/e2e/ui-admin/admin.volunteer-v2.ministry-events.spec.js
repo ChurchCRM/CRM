@@ -66,6 +66,23 @@ function shortDate(iso) {
     });
 }
 
+/** `YYYY-MM-DD` at `HH:MM` as the page's shortDateTime() writes it. */
+function shortDateTime(iso, time) {
+    const date = new Date(`${iso}T${time}:00`);
+    return date.toLocaleString(undefined, {
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        year: date.getFullYear() === new Date().getFullYear() ? undefined : "numeric",
+    });
+}
+
+/** `HH:MM` as the page's shortTime() writes it. */
+function shortTime(time) {
+    return new Date(`2000-01-01T${time}:00`).toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+}
+
 function oneYearAfter(iso) {
     const date = new Date(`${iso}T12:00:00`);
     date.setFullYear(date.getFullYear() + 1);
@@ -236,7 +253,8 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         cy.get("#staffEventModal").should("not.be.visible");
 
         cy.contains("#volunteerMinistryEventsTable tbody tr", ONE_OFF).within(() => {
-            cy.contains(`${isoDate(4)} 09:00 – 12:00`);
+            cy.contains(`${shortDateTime(isoDate(4), "09:00")} – ${shortTime("12:00")}`);
+            cy.get(`td[data-order^="${isoDate(4)} 09:00"]`).should("exist");
             cy.contains(".badge", MINISTRY_NAME);
             cy.contains("Not staffed");
         });

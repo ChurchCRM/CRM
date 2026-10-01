@@ -353,6 +353,11 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
             cy.get("#occurrence-ministry").should("contain", TEAM_NAME);
             // D4 made visible: the time comes from the linked event.
             cy.get("#occurrence-when").should("contain", "10:30");
+            // In ChurchCRM's locale; the stored wall-clock value stays on the <time>.
+            cy.get("#occurrence-when time[data-format='datetime']")
+                .should("have.attr", "datetime")
+                .and("match", /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
+            cy.get("#occurrence-when").invoke("text").should("not.match", /\d{4}-\d{2}-\d{2}/);
             cy.get("#occurrence-event-link").should("have.attr", "href").and("include", "/event/view/");
 
             cy.get("#requirements-loading").should("not.be.visible");

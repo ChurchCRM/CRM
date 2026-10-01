@@ -52,7 +52,7 @@ import {
   VolunteerApiError,
   type VolunteerScopeGrant,
 } from "./api";
-import { tText } from "./components/ui";
+import { shortDate, tText } from "./components/ui";
 
 let ministryId = 0;
 let coordinators: VolunteerScopeGrant[] = [];
@@ -77,22 +77,6 @@ function root(): string {
 /** Row actions through the shared builder (U1/#9820), which owns every bit of escaping. */
 function actionMenu(items: CRMActionMenuItem[]): string {
   return window.CRM?.buildActionMenu?.(items) ?? "";
-}
-
-/**
- * When the grant was made, in the viewer's own locale.
- *
- * The server sends `Y-m-d H:i:s` already resolved in the church's timezone
- * (§2.0), so it is rendered as a wall-clock reading and never re-zoned.
- */
-function grantedLabel(granted: string | null): string {
-  if (!granted) {
-    return "";
-  }
-
-  const parsed = new Date(granted.replace(" ", "T"));
-
-  return Number.isNaN(parsed.getTime()) ? granted : parsed.toLocaleDateString();
 }
 
 /** The §5.8 state machine for the card, in one place so no state can be forgotten. */
@@ -180,7 +164,7 @@ function grantRow(grant: VolunteerScopeGrant): string {
       <td class="fw-bold">
         <a href="${root()}/people/view/${grant.personId}">${escapeHtml(grant.personName)}</a>
       </td>
-      <td>${escapeHtml(grantedLabel(grant.grantedDate))}</td>
+      <td>${escapeHtml(grant.grantedDate ? shortDate(grant.grantedDate) : "")}</td>
       <td class="w-1">${menu}</td>
     </tr>`;
 }
