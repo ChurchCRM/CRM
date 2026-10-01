@@ -73,7 +73,7 @@ an admin page is not finished.
 | P15 | **The volunteer member pages move into the portal: Twig templates replace their PHP views; their TypeScript bundles and `/api/ministries/me/*` are reused unchanged.** | The bundles render everything from the API; the PHP views were only chrome. |
 | P16 | **The admin shell loses its "Volunteer" heading. Member-facing volunteer functionality exists only in the portal; the admin side keeps "Ministries".** | One place for each audience. Staff reach their own schedule through the portal link in their user menu. |
 | P17 | **Volunteer v2 D14 is revised: scopes count for self-service accounts, and team leaders may create schedules for their own team.** Coordinators and managers stay staff accounts (D12 tiers unchanged). | UC2. D14's rationale (least authority for a volunteer login) still holds for volunteers; it never needed to deny scopes. |
-| P18 | **Release target 7.8.0**, migrations named `7.8.0-member-portal-*.sql`, not registered in `upgrade.json` until the block opens. | Maintainer's release policy, as for the volunteer epic. |
+| P18 | **Release target 7.8.0**, migrations named `7.8.0-member-portal-*.sql`, not registered in `upgrade.json` until the epic PR (master opened the 7.8.0 block on 2026-09-30, #10182). | Maintainer's release policy, as for the volunteer epic (D17). |
 
 ### 0.5 Non-goals (first version)
 
