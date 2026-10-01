@@ -47,6 +47,7 @@ describe("Donation Fund Categories - funds page", () => {
     it("pre-fills the category when editing a fund and saves a new one", () => {
         visitFunds();
         cy.contains("#fundsTable tr", fundName).find(".fund-edit-btn").click({ force: true });
+        cy.focused().should("have.id", "editFundModal");
         cy.get("#editFundCategory").should("have.value", category).clear().type(`${category} edited`);
         cy.get("#saveFundEdit").click();
         cy.contains("#fundsTable tr", fundName).should("contain", `${category} edited`);
