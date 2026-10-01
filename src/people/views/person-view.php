@@ -966,7 +966,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                                                         <div>
                                                             <span class="fw-bold"><?= InputUtils::escapeHTML($aAssignment['positionName'] ?? '') ?></span>
                                                             <div class="text-body-secondary small">
-                                                                <?= InputUtils::escapeHTML($aAssignment['occurrenceDate'] ?? '') ?>
+                                                                <time datetime="<?= InputUtils::escapeAttribute($aAssignment['occurrenceDate'] ?? '') ?>" data-format="date"><?= InputUtils::escapeHTML($aAssignment['occurrenceDate'] ?? '') ?></time>
                                                                 <?php if (!empty($aAssignment['ministryName'])) : ?>
                                                                     &middot; <?= InputUtils::escapeHTML($aAssignment['ministryName']) ?>
                                                                 <?php endif; ?>
