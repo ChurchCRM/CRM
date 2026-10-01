@@ -105,7 +105,7 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                 <div class="col-sm-6 col-lg-3">
                     <div class="text-muted small mb-1"><?= gettext('Deposit Slip') ?></div>
                     <div class="fw-bold">
-                        <a href="<?= $sRootPath ?>/DepositSlipEditor.php?DepositSlipID=<?= (int) $pledge['depositId'] ?>">
+                        <a href="<?= $sRootPath ?>/finance/deposit/<?= (int) $pledge['depositId'] ?>">
                             <?= sprintf(gettext('Deposit #%d'), (int) $pledge['depositId']) ?>
                         </a>
                     </div>
