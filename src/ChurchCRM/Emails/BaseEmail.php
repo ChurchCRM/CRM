@@ -126,6 +126,7 @@ abstract class BaseEmail
 
         $sent = false;
         try {
+            $this->applyReplyTo();
             $sent = $this->mail->send();
         } finally {
             $this->logSend($sent ? EmailLogService::STATUS_SENT : EmailLogService::STATUS_FAILED);
