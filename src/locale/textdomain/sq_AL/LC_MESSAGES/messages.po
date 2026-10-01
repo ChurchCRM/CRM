@@ -14912,10 +14912,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Skedari i përzgjedhur tejkalon madhësinë maksimale të ngarkimit të këtij serveri prej"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Nuk ka ngjarje të planifikuara për sot"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Pati një problem në marrjen e objektit të kërkuar"
 
@@ -18770,6 +18766,10 @@ msgstr "Mundësia e vullnetarizmit"
 #: 
 msgid "Volunteers for Two Opportunities"
 msgstr "Vullnetarë për dy mundësi"
+
+#: 
+msgid "YTD"
+msgstr "Nga fillimi i vitit"
 
 #: 
 msgid "YTD Paid"

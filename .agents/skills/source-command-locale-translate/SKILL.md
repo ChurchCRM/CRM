@@ -57,7 +57,11 @@ git checkout -b "locale/translate/$(node -p "require('./package.json').version")
 
 ```bash
 node locale/scripts/locale-translate.js --list
+node locale/scripts/locale-translate.js --prefill      # no model: allowlisted loanwords + case/punctuation variants of existing translations
+node locale/scripts/locale-translate.js --export       # deduplicated payload of what is still missing (add --locale a,b for one group)
 ```
+
+Review the `--prefill` matches it prints, then translate only what `--export` still lists.
 
 ---
 
@@ -94,19 +98,19 @@ Every key with `""` value needs a translation.
 - **Leave as `""` (do NOT translate):** `N/A`, `name@example.com`, `SHA1 Hash`, `BCC`
 - **If you hit a standalone pure-technical-acronym key** (e.g. `CSV`, `OFX`, `PDF`, `2FA`, `URL`) with nothing else in the string — don't translate it at all, even identically. These should never have been extracted as translatable terms; flag it as a source-code bug (needs unwrapping from `gettext()`/`i18next.t()`, see `i18n-localization.md` → "Do Not Wrap Brand / Technical Literals") instead of spending translation effort or adding it to `english-ok.json`.
 
-### 4c. Apply via temp file
+### 4c. Apply
 
 ```bash
-cat > /tmp/<LOCALE>-1-trans.json << 'ENDJSON'
-{ ... your translations JSON ... }
-ENDJSON
-
 node locale/scripts/locale-translate.js --apply \
   --file locale/terms/missing/<LOCALE>/<LOCALE>-1.json \
-  --translations "$(cat /tmp/<LOCALE>-1-trans.json)"
-
-rm /tmp/<LOCALE>-1-trans.json
+  --translations-file <path-to-translations.json>
 ```
+
+Write the JSON to a file (for example with a heredoc) instead of passing it inline: an apostrophe inside a translation would end a single-quoted shell argument.
+
+Several locales at once: `--apply-bulk --translations-file <path>` with `{"fr": {...}, "de": {...}}`.
+
+Apply checks every entry (placeholders, script, plural forms, known key), writes the valid ones, prints each rejected entry with its reason, and exits 1 if any was rejected. Fix only those and apply again. Values identical to the English key are added to `english-ok.json` automatically. An empty value leaves the term untranslated.
 
 For locales with multiple batch files (Telugu has 2 files), repeat for each file.
 
@@ -126,7 +130,7 @@ git commit -m "locale: translate <CODE> (<LANGUAGE>, <N> terms)"
 git push origin $(git branch --show-current)
 ```
 
-**Option C — branch manager script**:
+**Option C — branch manager script** (stages the batch folders and `english-ok.json` by path; `--locale` takes `es,es-MX,es-AR` for a family):
 ```bash
 node locale/scripts/locale-branch-manager.js --commit-and-push \
   --locale <CODE> --language "<LANGUAGE>" --terms <N>
@@ -136,7 +140,7 @@ node locale/scripts/locale-branch-manager.js --commit-and-push \
 
 ### 4e. The push uploads it
 
-Every push to a `locale/translate/**` branch runs [`Locale: upload missing terms`](../../.github/workflows/locale-upload-missing.yml). It uploads the locales that push changed to POEditor, then starts `Locale Sync POEditor`, which brings the translations back to `master` as a PR. Do not upload by hand, and do not commit refreshed batch files: the translation branch is never merged.
+Every push to a `locale/translate/**` branch that starts Actions (a push made with `GITHUB_TOKEN` does not) runs [`Locale: upload translations`](../../.github/workflows/locale-upload-missing.yml). It uploads the locales that push changed to POEditor, then starts `Locale: sync` (download only), which brings the translations back to `master` as a PR. Do not upload by hand, and do not commit refreshed batch files: the translation branch is never merged.
 
 Upload by hand only when that run cannot happen or failed:
 

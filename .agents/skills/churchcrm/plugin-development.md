@@ -103,6 +103,27 @@ src/plugins/core/{plugin-name}/
 }
 ```
 
+### Menu item permission
+
+The navigation menu is built from the PHP `getMenuItems()`; the `menuItems` block in `plugin.json` is metadata and is not read when the menu renders, so keep the two in sync.
+
+`permission` is optional. When set, the item is shown only to users for whom `User::isEnabledSecurity()` passes; administrators always pass. Valid names: `bAdmin`, `bAll`, `bAddRecords`, `bEditRecords`, `bDeleteRecords`, `bManageGroups`, `bFinance`, `bNotes`, or a per-user setting name such as `bEmailMailto`. An unrecognized name hides the item from non-admins (fails closed). No `permission` key means every signed-in user sees it.
+
+A hidden menu item is not access control. The plugin's routes must carry the matching middleware from `ChurchCRM\Slim\Middleware\Request\Auth\*` (`AdminRoleAuthMiddleware`, `FinanceRoleAuthMiddleware`, `EmailRoleAuthMiddleware`, `ManageGroupRoleAuthMiddleware`, `EditRecordsRoleAuthMiddleware`, `DeleteRecordRoleAuthMiddleware`, `NotesRoleAuthMiddleware`). Menu and route must agree.
+
+```php
+[
+    'parent' => 'admin',
+    'label' => gettext('My Plugin'),
+    'url' => 'plugins/my-plugin/dashboard',
+    'permission' => 'bAdmin',
+]
+```
+
+```php
+$app->get('/my-plugin/dashboard', $handler)->add(AdminRoleAuthMiddleware::class);
+```
+
 ## Creating a Plugin
 
 ### 1. Create plugin directory
@@ -167,6 +188,7 @@ class MyPluginPlugin extends AbstractPlugin
                 'label' => gettext('My Plugin'),
                 'url' => 'plugins/my-plugin/dashboard',
                 'icon' => 'fa-plug',
+                'permission' => 'bAdmin', // menu visibility only; guard the route with AdminRoleAuthMiddleware
             ],
         ];
     }

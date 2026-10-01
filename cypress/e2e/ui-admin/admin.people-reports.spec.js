@@ -25,14 +25,12 @@ const MONTH_NAMES = [
     "July", "August", "September", "October", "November", "December",
 ];
 
-// The server computes next month in the configured timezone. Accept next month
-// relative to either the browser or the UTC clock so a run around midnight on
-// the last day of a month does not flake.
+// The server computes next month in the seeded sTimeZone (America/Detroit),
+// which can differ from both the browser and UTC around month boundaries.
 function acceptableNextMonths() {
     const now = new Date();
-    const local = (now.getMonth() + 1) % 12 + 1;
-    const utc = (now.getUTCMonth() + 1) % 12 + 1;
-    return [String(local), String(utc)];
+    const detroit = Number(new Intl.DateTimeFormat("en-US", { timeZone: "America/Detroit", month: "numeric" }).format(now));
+    return [now.getMonth() + 1, now.getUTCMonth() + 1, detroit].map((m) => String((m % 12) + 1));
 }
 
 function rows() {

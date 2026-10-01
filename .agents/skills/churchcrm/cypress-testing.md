@@ -25,6 +25,12 @@ App under test: `DEVELOPING.md` (`npm run docker:test:start`).
 - No `.only` / `.skip` in committed specs
 - No narrative comments that repeat the `it()` title. One line only when Cypress or CI would otherwise surprise the next editor.
 
+## PDF reports
+
+- Assert report text with `pdfText()` from `cypress/support/pdf-text.js`: `cy.request({ encoding: "binary" })`, inflate each FlateDecode stream with `DecompressionStream("deflate")`, collect the `(text) Tj` operands. No PDF parser dependency needed
+- Assert a sequence after a unique marker, not `includes` alone, so the test proves which record printed what
+- The directory report pre-selects classifications (Unassigned people never print); `DELETE /api/family/{id}` only unlinks members, use `?deleteMembers=true` when the test created people
+
 ```bash
 npx cypress run --config-file cypress/configs/docker.config.ts \
   --spec "cypress/e2e/path/to/spec.js"

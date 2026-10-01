@@ -14942,10 +14942,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Вибраний файл перевищує максимальний розмір цього сервера для завантаження"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "На сьогодні не заплановано жодних подій"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Не вдалося отримати запитаний об’єкт"
 
@@ -18764,4 +18760,304 @@ msgstr "Запустити звіт"
 #: 
 msgid "Second Volunteer Opportunity"
 msgstr "Друга можливість для волонтера"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Відображається на бічній панелі, на сторінці входу та в електронних листах. Завантаження логотипа замінює брендинг ChurchCRM скрізь, де він з’являється."
+
+#: 
+msgid "Single Pages"
+msgstr "Окремі сторінки"
+
+#: 
+msgid "Tax Documents"
+msgstr "Податкові документи"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Не вдалося надіслати лист із податковим документом. Перевірте налаштування поштового сервера."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Дві сторінки половинного розміру поруч на кожному аркуші в альбомній орієнтації в порядку буклета. Друкуйте з обох боків із перегортанням по короткому краю, потім складіть стос навпіл. Стовпці рахуються на півсторінки."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Неможливо надіслати податковий документ електронною поштою: за цей рік не знайдено даних про платежі."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Неможливо надіслати податковий документ електронною поштою: для цієї родини не вказано адресу електронної пошти."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Не вдалося визначити ім’я хоста сервера OpenLP. Перевірте адресу та мережеве з’єднання."
+
+#: 
+msgid "Upload"
+msgstr "Вивантажити"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Використовується стандартний логотип ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Переглянути всі пожертви родини"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Можливість служіння"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Волонтери для двох можливостей служіння"
+
+#: 
+msgid "YTD"
+msgstr "З початку року"
+
+#: 
+msgid "YTD Paid"
+msgstr "Сплачено з початку року"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "на наявність помилок у той час, коли це сталося, а також завантажте й додайте відповідний файл журналу до вашого звіту на GitHub — це допоможе нам виправити проблему без додаткових запитань."
+
+#: 
+msgid "system logs"
+msgstr "системні журнали"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Контроль доступу та безпека"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Дозволити запис платежів, що не підлягають відрахуванню від податків (наприклад, продаж товарів)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Дозволити неавторизований доступ до публічних подій (для вбудовування календарів)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Дозволити відвідувачам створювати власні записи про сім'ю через сторінку публічної реєстрації"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Автоматично відправляти листи з днем народження (потрібен планувальник фонових завдань)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Листи привітання з днем народження"
+
+#: 
+msgid "Communication & Email"
+msgstr "Спілкування та електронна пошта"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Політика безпеки контенту"
+
+#: 
+msgid "Email System"
+msgstr "Система електронної пошти"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Увімкнути або вимкнути функції для вашої організації"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Увімкнути/вимкнути розділ Заходи в головній навігації"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Увімкнути/вимкнути меню Фінанси та всі фінансові функції (внески, платежі, звіти)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Увімкнути/вимкнути меню Збір коштів"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Застосовувати строгі заголовки CSP для захисту від XSS атак"
+
+#: 
+msgid "Events Module"
+msgstr "Модуль подій"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Перемикачі функцій"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Перемикачі функцій контролюють, які модулі та функції доступні в ChurchCRM. Зміни набувають чинності негайно."
+
+#: 
+msgid "Finance Features"
+msgstr "Фінансові функції"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Включити адреси в швидкий глобальний пошук"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Включити події календаря в швидкий глобальний пошук"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Включити користувацькі властивості сім'ї в швидкий глобальний пошук"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Включити внески в швидкий глобальний пошук"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Включити сім'ї в швидкий глобальний пошук"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Включити групи в швидкий глобальний пошук"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Включити платежі в швидкий глобальний пошук"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Включити людей в швидкий глобальний пошук"
+
+#: 
+msgid "Invalid setting"
+msgstr "Недійсний параметр"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Посилання на відновлення пароля"
+
+#: 
+msgid "Manage All Features"
+msgstr "Керувати всіма функціями"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Головний перемикач для відправлення листів. ПОТРІБЕН для скидання пароля та сповіщень"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Платежі, що не підлягають відрахуванню"
+
+#: 
+msgid "Primary Modules"
+msgstr "Основні модулі"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Публічний API календаря"
+
+#: 
+msgid "Saved"
+msgstr "Збережено"
+
+#: 
+msgid "Search Families"
+msgstr "Пошук сімей"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Пошук користувацьких властивостей сім'ї"
+
+#: 
+msgid "Search Settings"
+msgstr "Пошук параметрів"
+
+#: 
+msgid "Self-Registration"
+msgstr "Самореєстрація"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Показати опцію \"Забули пароль?\" на екрані входу (дозволяє користувачу самостійно скинути пароль)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Показати/приховати модуль недільної школи в бічній панелі"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Неможливо деактивувати єдиного адміністратора, який може увійти"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Неможливо позначити єдиного адміністратора, який може увійти, як померлого"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Помер — не може увійти"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Введіть другу адресу перед позначенням її як адреси для листування"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Неактивний — не може увійти"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Листи йдуть на другу адресу; основна адреса залишається фізичним місцем, яке використовується для карт та маршрутів."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Листи надсилаються на цю адресу замість основної адреси"
+
+#: 
+msgid "Mailing Address"
+msgstr "Адреса для листування"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Адреса для листування, якщо вона відрізняється"
+
+#: 
+msgid "Primary Address"
+msgstr "Основна адреса"
+
+#: 
+msgid "Receives Mail"
+msgstr "Отримує листи"
+
+#: 
+msgid "Second Address"
+msgstr "Друга адреса"
+
+#: 
+msgid "Second Home"
+msgstr "Другий будинок"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Пов'язана особа померла або неактивна. Вхід, сеанси та ключ API заблоковані до тих пір, поки особа не буде знову активована."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Це адреса для листування"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Ця особа померла або неактивна, тому цей обліковий запис не може увійти"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Тільки адміністратор може видалити людину, яка має вхід."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Останній адміністратор не може бути видалений."
 

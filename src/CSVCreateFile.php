@@ -8,6 +8,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\PersonQuery;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -294,6 +295,17 @@ if ($sFormat === 'addtocart') {
     if (!empty($_POST['Country'])) {
         $headers[] = 'Country';
     }
+    // Optional second family address (#9743) — opt-in so existing exports keep
+    // their column set byte-identical.
+    if (!empty($_POST['SecondAddress'])) {
+        $headers[] = 'Second Address 1';
+        $headers[] = 'Second Address 2';
+        $headers[] = 'Second City';
+        $headers[] = 'Second State';
+        $headers[] = 'Second Zip';
+        $headers[] = 'Second Country';
+        $headers[] = 'Mailing Address';
+    }
     if (!empty($_POST['HomePhone'])) {
         $headers[] = 'Home Phone';
     }
@@ -353,7 +365,7 @@ if ($sFormat === 'addtocart') {
         }
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
             extract($aFamRow);
-            if (($aSecurityType[$fam_custom_FieldSec] === 'bAll') || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
+            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
                     $headers[] = $fam_custom_Name;
@@ -365,7 +377,7 @@ if ($sFormat === 'addtocart') {
     if ($sFormat === 'rollup') {
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
             extract($aFamRow);
-            if (($aSecurityType[$fam_custom_FieldSec] === 'bAll') || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
+            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
                     $headers[] = $fam_custom_Name;
@@ -497,6 +509,22 @@ if ($sFormat === 'addtocart') {
                 if (isset($_POST['Country'])) {
                     $row[] = $sCountry;
                 }
+                if (!empty($_POST['SecondAddress'])) {
+                    // The export query already LEFT JOINs family_fam, so the
+                    // family is built from this row: no per-person family
+                    // query. The second address lives on the family only (no
+                    // person-level override), and a person with no family has
+                    // NULL family columns, which export as blank cells.
+                    $rowFamily = Family::readOnlyFromRow($aRow);
+                    $secondParts = $rowFamily->getSecondaryAddressParts();
+                    $row[] = $secondParts['Address1'];
+                    $row[] = $secondParts['Address2'];
+                    $row[] = $secondParts['City'];
+                    $row[] = $secondParts['State'];
+                    $row[] = $secondParts['Zip'];
+                    $row[] = $secondParts['Country'];
+                    $row[] = $rowFamily->isSecondAddressMailing() ? 'Yes' : 'No';
+                }
                 if (isset($_POST['HomePhone'])) {
                     $row[] = $sHomePhone;
                 }
@@ -576,7 +604,7 @@ if ($sFormat === 'addtocart') {
                             $type_ID = '';
 
                             extract($aCustomField);
-                            if ($aSecurityType[$custom_FieldSec] === 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
                                 if (isset($_POST["$custom_Field"])) {
                                     if ((int)$type_ID === 11) {
                                         $custom_Special = $sCountry;

@@ -14906,10 +14906,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "File yang dipilih melebihi ukuran unggahan maksimum server ini"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Tidak ada acara yang dijadwalkan untuk hari ini"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Terjadi masalah saat mengambil objek yang diminta"
 
@@ -16891,6 +16887,10 @@ msgid "Count unique installs"
 msgstr "Hitung instalasi unik"
 
 #: 
+msgid "Data"
+msgstr "Data"
+
+#: 
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr "Data diproses oleh PostHog pada infrastruktur EU."
 
@@ -18760,6 +18760,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "Relawan untuk Dua Peluang"
 
 #: 
+msgid "YTD"
+msgstr "Sejak awal tahun"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD Dibayar"
 
@@ -18770,4 +18774,236 @@ msgstr "untuk kesalahan sekitar waktu ini terjadi, dan unduh serta lampirkan fil
 #: 
 msgid "system logs"
 msgstr "log sistem"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Kontrol Akses dan Keamanan"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Izinkan pencatatan pembayaran tidak dapat dikurangkan dari pajak (misalnya penjualan barang dagangan)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Izinkan akses tidak terautentikasi ke acara publik (untuk menyematkan kalender)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Izinkan pengunjung untuk membuat catatan keluarga mereka sendiri melalui halaman pendaftaran publik"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Mengirim email ulang tahun secara otomatis (memerlukan penjadwal pekerjaan latar belakang)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Email Ucapan Ulang Tahun"
+
+#: 
+msgid "Communication & Email"
+msgstr "Komunikasi dan Email"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Kebijakan Keamanan Konten"
+
+#: 
+msgid "Email System"
+msgstr "Sistem Email"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Aktifkan atau nonaktifkan fitur untuk organisasi Anda"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Aktifkan/Nonaktifkan bagian Acara di navigasi utama"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Aktifkan/Nonaktifkan menu Keuangan dan semua fitur keuangan (setoran, pembayaran, laporan)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Aktifkan/Nonaktifkan menu Penggalangan Dana"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Terapkan header CSP ketat untuk melindungi dari serangan XSS"
+
+#: 
+msgid "Events Module"
+msgstr "Modul Acara"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Pengalih Fitur"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Pengalih fitur mengontrol modul dan fitur mana yang tersedia di ChurchCRM. Perubahan berlaku segera."
+
+#: 
+msgid "Finance Features"
+msgstr "Fitur Keuangan"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Sertakan alamat dalam pencarian global cepat"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Sertakan acara kalender dalam pencarian global cepat"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Sertakan properti keluarga khusus dalam pencarian global cepat"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Sertakan setoran dalam pencarian global cepat"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Sertakan keluarga dalam pencarian global cepat"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Sertakan pelayanan dalam pencarian global cepat"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Sertakan pembayaran dalam pencarian global cepat"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Sertakan orang-orang dalam pencarian global cepat"
+
+#: 
+msgid "Invalid setting"
+msgstr "Pengaturan tidak valid"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Tautan Atur Ulang Kata Sandi"
+
+#: 
+msgid "Manage All Features"
+msgstr "Kelola Semua Fitur"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Pengalih induk untuk pengiriman email. DIPERLUKAN untuk pengaturan ulang kata sandi dan notifikasi"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Pembayaran Tidak Dapat Dikurangkan"
+
+#: 
+msgid "Primary Modules"
+msgstr "Modul Utama"
+
+#: 
+msgid "Public Calendar API"
+msgstr "API Kalender Publik"
+
+#: 
+msgid "Saved"
+msgstr "Disimpan"
+
+#: 
+msgid "Search Families"
+msgstr "Cari Keluarga"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Cari Properti Khusus Keluarga"
+
+#: 
+msgid "Search Settings"
+msgstr "Pengaturan Pencarian"
+
+#: 
+msgid "Self-Registration"
+msgstr "Pendaftaran Mandiri"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Tampilkan opsi \"Lupa Kata Sandi\" di layar login (memungkinkan pengguna mengatur ulang sendiri)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Tampilkan/Sembunyikan modul Sekolah Minggu di bilah sisi"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Tidak dapat menonaktifkan satu-satunya administrator yang dapat masuk"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Tidak dapat menandai satu-satunya administrator yang dapat masuk sebagai almarhum"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Almarhum — tidak dapat masuk"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Masukkan alamat kedua sebelum menandainya sebagai alamat surat"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Tidak aktif — tidak dapat masuk"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Surat dikirim ke alamat kedua; alamat utama tetap merupakan lokasi fisik yang digunakan untuk peta dan arah."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Surat dikirim ke alamat ini bukan ke alamat utama"
+
+#: 
+msgid "Mailing Address"
+msgstr "Alamat Surat"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Alamat Surat jika Berbeda"
+
+#: 
+msgid "Primary Address"
+msgstr "Alamat Utama"
+
+#: 
+msgid "Receives Mail"
+msgstr "Menerima Surat"
+
+#: 
+msgid "Second Address"
+msgstr "Alamat Kedua"
+
+#: 
+msgid "Second Home"
+msgstr "Rumah Kedua"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Orang yang terhubung telah meninggal atau tidak aktif. Masuk, sesi, dan kunci API diblokir sampai orang tersebut diaktifkan kembali."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Ini adalah alamat surat"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Orang ini telah meninggal atau tidak aktif, sehingga akun ini tidak dapat masuk"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Hanya administrator yang dapat menghapus orang yang memiliki login."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Administrator terakhir tidak dapat dihapus."
 

@@ -94,6 +94,12 @@ function userLogin(Request $request, Response $response, array $args): Response
         throw new HttpUnauthorizedException($request, $genericError);
     }
 
+    $blockedReason = $user->getSignInBlockedReason();
+    if ($blockedReason !== null) {
+        $logger->warning('API login refused: account cannot sign in', ['username' => $user->getUserName(), 'reason' => $blockedReason]);
+        throw new HttpUnauthorizedException($request, $genericError);
+    }
+
     // Check 2FA enrollment BEFORE resetting failed logins (only reset on full auth)
     if ($user->is2FactorAuthEnabled()) {
         $otp = $body['otp'] ?? null;
@@ -172,6 +178,11 @@ function passwordResetRequest(Request $request, Response $response, array $args)
     if (empty($user) || empty($user->getEmail())) {
         // Don't reveal whether user exists (security best practice)
         $logger->warning('Password reset requested for non-existent user: ' . $userName);
+        return SlimUtils::renderJSON($response, ['success' => true]);
+    }
+
+    if ($user->getSignInBlockedReason() !== null) {
+        $logger->warning('Password reset requested for an account that cannot sign in: ' . $userName);
         return SlimUtils::renderJSON($response, ['success' => true]);
     }
 

@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Service\NotificationService;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\CurrencyFormatter;
@@ -241,6 +242,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               addRecords: <?= InputUtils::jsonEncodeForScript($currentUser->isAddRecordsEnabled()) ?>,
               editRecords: <?= InputUtils::jsonEncodeForScript($currentUser->isEditRecordsEnabled()) ?>,
           },
+          personDeleteBlocked: <?= InputUtils::jsonEncodeForScript((object) PersonService::getLoginDeletionBlockedReasons()) ?>,
           PageName:<?= InputUtils::jsonEncodeForScript($_SERVER['REQUEST_URI'] ?? '') ?>,
           telemetry: <?= InputUtils::jsonEncodeForScript([
               'level'      => TelemetryService::getLevel(),

@@ -23,3 +23,7 @@ Do not invent a different branch. If the constant changes, this card follows the
 ## Runtime
 
 Read `PluginManager` and the hook classes. Community plugins ship their own translations. Plugins are current product.
+
+## Menu items
+
+`PluginManager::getPluginMenuItems()` feeds `Menu::addPluginMenuItems()`, the only consumer of a plugin's `getMenuItems()`. An item's optional `permission` is checked with `User::isEnabledSecurity()`; unknown names hide the item from non-admins, and no key shows it to everyone. It is visibility only: plugin routes still need `ChurchCRM\Slim\Middleware\Request\Auth\*` middleware. Details: `plugin-development.md`.

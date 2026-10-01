@@ -185,7 +185,8 @@ function loadEnglishOkAllowlist() {
         const result = new Map();
         for (const [locale, terms] of Object.entries(raw)) {
             if (Array.isArray(terms)) {
-                result.set(locale.toLowerCase(), new Set(terms));
+                const key = locale.toLowerCase();
+                result.set(key, new Set([...(result.get(key) ?? []), ...terms]));
             }
         }
         return result;

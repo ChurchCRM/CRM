@@ -3582,7 +3582,6 @@
   "System upgrade completed successfully!": "Обновление системы успешно завершено!",
   "Text All": "Отправить текст всем",
   "The selected file exceeds this servers maximum upload size of": "Выбранный файл превышает максимальный размер загрузки этого сервера:",
-  "There are no events scheduled for today": "На сегодня мероприятий не запланировано",
   "There was a problem retrieving the requested object": "При получении запрошенного объекта возникла проблема",
   "This event type is used by": "Этот тип мероприятия используется",
   "This field is required": "обязательное поле",
@@ -4570,6 +4569,7 @@
   "View Full Family Giving": "Просмотреть полные благотворительные взносы семьи",
   "Volunteer Opportunity": "Возможность для волонтеров",
   "Volunteers for Two Opportunities": "Волонтеры для двух возможностей",
+  "YTD": "С начала года",
   "YTD Paid": "YTD выплачено",
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "для ошибок около момента, когда это произошло, и загрузите и прикрепите соответствующий файл журнала к вашей проблеме GitHub - это помогает нам исправить проблему, не задавая уточняющих вопросов.",
   "system logs": "системные журналы"

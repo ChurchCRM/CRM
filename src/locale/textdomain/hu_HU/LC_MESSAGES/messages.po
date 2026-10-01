@@ -14948,10 +14948,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "A kiválasztott fájl meghaladja a szerver maximális feltöltési korlátját:"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Ma nincs tervezett esemény"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Probléma merült fel a kért objektum lekérésekor"
 
@@ -18246,6 +18242,10 @@ msgstr "Nem érvényes elhalálozási dátum"
 #: 
 msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
 msgstr "Azoknak a napoknak a száma, amennyi idő a felhasználóknak a kétfaktoros hitelesítés beállítására áll rendelkezésre a kötelezővé tétele után. Állítsa 0-ra az azonnali kikényszerítéshez. Egy aktív türelmi idő lerövidítése azonnal kizárhatja a felhasználókat."
+
+#: 
+msgid "Offline"
+msgstr "Offline"
 
 #: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."

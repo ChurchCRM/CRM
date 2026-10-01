@@ -3562,7 +3562,6 @@
   "System upgrade completed successfully!": "सिस्टम अपग्रेड सफलतापूर्वक पूरा हुआ!",
   "Text All": "सभी को टेक्स्ट करें",
   "The selected file exceeds this servers maximum upload size of": "चयनित फ़ाइल इस सर्वर के अधिकतम अपलोड आकार से अधिक है",
-  "There are no events scheduled for today": "आज के लिए कोई कार्यक्रम निर्धारित नहीं है",
   "There was a problem retrieving the requested object": "अनुरोधित वस्तु प्राप्त करने में समस्या हुई",
   "This event type is used by": "इस ईवेंट प्रकार का उपयोग किया जाता है",
   "This field is required": "यह फ़ील्ड आवश्यक है",
@@ -4538,6 +4537,7 @@
   "View Full Family Giving": "पूर्ण परिवार दान देखें",
   "Volunteer Opportunity": "स्वयंसेवक अवसर",
   "Volunteers for Two Opportunities": "दो अवसरों के लिए स्वयंसेवक",
+  "YTD": "वर्ष-से-अब तक",
   "YTD Paid": "YTD भुगतान",
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "इस समय के आसपास त्रुटियों के लिए, और अपने GitHub समस्या में प्रासंगिक लॉग फ़ाइल को डाउनलोड और संलग्न करें - यह हमें अनुवर्ती प्रश्नों के बिना समस्या को ठीक करने में मदद करता है।",
   "system logs": "सिस्टम लॉग"

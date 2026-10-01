@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Reports;
 
-use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use FPDF;
 
@@ -142,8 +142,9 @@ class ChurchInfoReport extends FPDF
      * Converts a UTF-8 string to ISO-8859-1 for FPDF compatibility.
      * Uses iconv() if available, falls back to mb_convert_encoding().
      */
-    public static function convertToLatin1(string $str): string
+    public static function convertToLatin1(?string $str): string
     {
+        $str ??= '';
         if (function_exists('iconv')) {
             $result = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $str);
             if ($result !== false) {
@@ -154,7 +155,7 @@ class ChurchInfoReport extends FPDF
         return is_string($result) ? $result : $str;
     }
 
-    public function printRightJustified($x, $y, $str): void
+    public function printRightJustified($x, $y, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $iLen = strlen($strconv);
@@ -163,34 +164,59 @@ class ChurchInfoReport extends FPDF
         $this->Write(SystemConfig::getValue('incrementY'), $strconv);
     }
 
-    public function printRightJustifiedCell($x, $y, $wid, $str): void
+    public function printRightJustifiedCell($x, $y, $wid, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->Cell($wid, SystemConfig::getValue('incrementY'), $strconv, 1, 0, 'R');
     }
 
-    public function printCenteredCell($x, $y, $wid, $str): void
+    public function printCenteredCell($x, $y, $wid, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->Cell($wid, SystemConfig::getValue('incrementY'), $strconv, 1, 0, 'C');
     }
 
-    public function writeAt($x, $y, $str): void
+    public function writeAt($x, $y, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->Write(SystemConfig::getValue('incrementY'), $strconv);
     }
 
-    public function writeAtCell($x, $y, $wid, $str): void
+    public function writeAtCell($x, $y, $wid, ?string $str): void
     {
         $strconv = self::convertToLatin1($str);
         $this->SetXY($x, $y);
         $this->MultiCell($wid, 4, $strconv, 1);
     }
 
+    /**
+     * Start a letter page from the six address parts as
+     * {@see \ChurchCRM\model\ChurchCRM\Family::getMailingAddressParts()} returns
+     * them, so letter reports resolve the mailing address once and hand it over
+     * whole instead of unpacking it at every call site.
+     */
+    public function startLetterPageForParts($fam_ID, $fam_Name, array $addressParts, $letterhead = ''): float
+    {
+        return $this->startLetterPage(
+            $fam_ID,
+            $fam_Name,
+            (string) ($addressParts['Address1'] ?? ''),
+            (string) ($addressParts['Address2'] ?? ''),
+            (string) ($addressParts['City'] ?? ''),
+            (string) ($addressParts['State'] ?? ''),
+            (string) ($addressParts['Zip'] ?? ''),
+            (string) ($addressParts['Country'] ?? ''),
+            $letterhead
+        );
+    }
+
+    /**
+     * The address block printed here is the one the letter will be mailed to.
+     * Callers pass the resolved mailing address — see startLetterPageForParts().
+     */
     public function startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, $letterhead = ''): float
     {
         $this->addPage();
@@ -219,18 +245,21 @@ class ChurchInfoReport extends FPDF
         }
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $this->makeSalutation($fam_ID));
         $curY += SystemConfig::getValue('incrementY');
-        if ($fam_Address1 !== null && $fam_Address1 !== '') {
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Address1);
-            $curY += SystemConfig::getValue('incrementY');
-        }
-        if ($fam_Address2 !== null && $fam_Address2 !== '') {
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Address2);
-            $curY += SystemConfig::getValue('incrementY');
-        }
-        $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
-        $curY += SystemConfig::getValue('incrementY');
-        if (Countries::isForeign($fam_Country)) {
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Country);
+        // The shared postal formatter drops empty parts, so a city-less address
+        // does not print a dangling ", IL  62998".
+        $addressBlock = Family::formatAddressBlock([
+            'Address1' => $fam_Address1,
+            'Address2' => $fam_Address2,
+            'City'     => $fam_City,
+            'State'    => $fam_State,
+            'Zip'      => $fam_Zip,
+            'Country'  => $fam_Country,
+        ]);
+        foreach (explode("\n", $addressBlock) as $addressLine) {
+            if ($addressLine === '') {
+                continue;
+            }
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, $addressLine);
             $curY += SystemConfig::getValue('incrementY');
         } // mm to get away from the second window
 

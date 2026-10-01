@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
@@ -446,9 +447,15 @@ $sRootPath = SystemURLs::getRootPath();
                 </div>
                 <div class="card-body p-0">
                     <?php if ($activeFunds->count() > 0): ?>
+                    <?php foreach ((new DonationFundService())->groupByCategory($activeFunds) as $category => $funds): ?>
+                    <?php if ($category !== ''): ?>
+                    <div class="px-3 pt-2 pb-1">
+                        <small class="text-muted fw-bold text-uppercase"><?= InputUtils::escapeHTML($category) ?></small>
+                    </div>
+                    <?php endif; ?>
                     <ul class="list-group list-group-flush">
-                        <?php foreach ($activeFunds as $fund): ?>
-                        <li class="list-group-item d-flex justify-content-between align-items-center py-2">
+                        <?php foreach ($funds as $fund): ?>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-2 <?= $category !== '' ? 'ps-4' : '' ?>">
                             <a href="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/fund/<?= (int) $fund->getId() ?>/contributors" class="text-decoration-none">
                                 <?= InputUtils::escapeHTML($fund->getName()) ?>
                             </a>
@@ -458,6 +465,7 @@ $sRootPath = SystemURLs::getRootPath();
                         </li>
                         <?php endforeach; ?>
                     </ul>
+                    <?php endforeach; ?>
                     <?php else: ?>
                     <div class="empty py-3">
                         <p class="empty-title"><?= gettext('No active funds configured.') ?></p>

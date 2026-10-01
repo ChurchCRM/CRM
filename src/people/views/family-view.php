@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PersonDeleteGuard;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $sPageTitle = InputUtils::escapeHTML($family->getName());
@@ -241,7 +242,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                     <button class="dropdown-item AddToCart" data-cart-id="<?= $person->getId() ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
                     <div class="dropdown-divider"></div>
-                    <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $person->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                    <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $person->getId() ?>" data-view="family"<?= PersonDeleteGuard::attributes((int) $person->getId()) ?>><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
                     <?php endif; ?>
                 </div>
             </div>
@@ -492,7 +493,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
         <!-- Address Card -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= gettext("Address") ?>
+                <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= $family->hasSecondAddress() ? gettext("Primary Address") : gettext("Address") ?>
                     <?php if ($family->hasLatitudeAndLongitude()): ?>
                     <span class="badge bg-green-lt text-green ms-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
                         <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
@@ -559,6 +560,33 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                         <div id="map1" style="height: 200px;"></div>
                     </div>
                 <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <?php if ($family->hasSecondAddress()) :
+            // Second address (#9743). Map, geocode badge, directions and "Find
+            // Neighbors" stay on the primary card — lat/lng belongs to the
+            // physical address.
+            $secondAddress = $family->getSecondaryAddress();
+            $isMailing = $family->isSecondAddressMailing();
+        ?>
+        <!-- Second Address Card -->
+        <div class="card mb-3" id="second-address-card">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0">
+                    <i class="fa-solid <?= $isMailing ? 'fa-envelope' : 'fa-house-chimney' ?> me-1"></i>
+                    <?= $isMailing ? gettext('Mailing Address') : gettext('Second Home') ?>
+                    <?php if ($isMailing) : ?>
+                    <span class="badge bg-blue-lt text-blue ms-2" title="<?= gettext('Mail is sent to this address instead of the primary address') ?>">
+                        <i class="fa-solid fa-envelope"></i> <?= gettext('Receives Mail') ?>
+                    </span>
+                    <?php endif; ?>
+                </h3>
+            </div>
+            <div class="card-body">
+                <a href="https://maps.google.com/?q=<?= urlencode($secondAddress) ?>"
+                   target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($secondAddress) ?></a>
             </div>
         </div>
         <?php endif; ?>

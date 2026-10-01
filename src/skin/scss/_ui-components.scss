@@ -60,3 +60,10 @@
   font-size: 1.5rem;
   line-height: 1;
 }
+
+/* Delete control the signed-in user may not use (the person has a login).
+   Stays hoverable so its title explains why; the click handler ignores it. */
+.delete-person[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

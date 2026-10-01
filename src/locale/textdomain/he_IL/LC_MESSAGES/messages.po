@@ -14920,10 +14920,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "הקובץ שנבחר חורג מגודל ההעלאה המקסימלי של השרת"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "אין אירועים מתוכננים להיום"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "הייתה בעיה באחזור האובייקט המבוקש"
 
@@ -18782,6 +18778,10 @@ msgstr "הזדמנות מתנדב"
 #: 
 msgid "Volunteers for Two Opportunities"
 msgstr "מתנדבים לשתי הזדמנויות"
+
+#: 
+msgid "YTD"
+msgstr "מתחילת השנה"
 
 #: 
 msgid "YTD Paid"

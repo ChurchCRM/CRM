@@ -1,5 +1,8 @@
 name: Release & Start Next
 
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   # Never cancel a release half-way: a cancelled run can leave a deleted tag

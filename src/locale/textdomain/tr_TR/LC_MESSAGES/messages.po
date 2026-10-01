@@ -14922,10 +14922,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Seçilen dosya, bu sunucuların maksimum yükleme boyutunu aşıyor"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Bugün için planlanmış etkinlik yok"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "İstenen nesneyi geri almada bir sorun vardı"
 
@@ -18784,6 +18780,10 @@ msgstr "Gönüllü Fırsat"
 #: 
 msgid "Volunteers for Two Opportunities"
 msgstr "İki Fırsat için Gönüllüler"
+
+#: 
+msgid "YTD"
+msgstr "Yıl başından beri"
 
 #: 
 msgid "YTD Paid"

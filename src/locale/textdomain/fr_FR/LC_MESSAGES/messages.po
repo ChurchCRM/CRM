@@ -14919,10 +14919,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Le fichier sélectionné dépasse la capacité de téléchargement du serveur de"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Aucun événement n'est prévu aujourd'hui"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Il y a eu un problème lors de la récupération de l'objet demandé"
 
@@ -16003,6 +15999,10 @@ msgid "Choose family"
 msgstr "Choisir une famille"
 
 #: 
+msgid "Code"
+msgstr "Code"
+
+#: 
 msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
 msgstr "Configurez l'affichage des montants monétaires dans tout le système. Au fur et à mesure que les pages financières sont mises à jour pour utiliser ces paramètres (epic #8459), le symbole, la position et les séparateurs configurés ici s'appliqueront à l'ensemble du système."
 
@@ -16457,6 +16457,10 @@ msgstr "La réinitialisation supprimera définitivement"
 #: 
 msgid "Show"
 msgstr "Afficher"
+
+#: 
+msgid "Signature"
+msgstr "Signature"
 
 #: 
 msgid "Sort Data by"
@@ -17665,6 +17669,10 @@ msgid "Church"
 msgstr "Église"
 
 #: 
+msgid "Classifications"
+msgstr "Classifications"
+
+#: 
 msgid "Closest"
 msgstr "Le plus proche"
 
@@ -18471,6 +18479,10 @@ msgid "Optional. Links to the church's own accounts, shown to members on pages s
 msgstr "Facultatif. Liens vers les comptes propres de l'église, affichés aux membres sur des pages telles que le pied de page du portail. Laissez un champ vide pour masquer ce réseau."
 
 #: 
+msgid "Options"
+msgstr "Options"
+
+#: 
 msgid "Scheduled Tasks"
 msgstr "Tâches planifiées"
 
@@ -18765,6 +18777,10 @@ msgstr "Opportunité de bénévolat"
 #: 
 msgid "Volunteers for Two Opportunities"
 msgstr "Bénévoles pour deux opportunités"
+
+#: 
+msgid "YTD"
+msgstr "Cumul annuel"
 
 #: 
 msgid "YTD Paid"

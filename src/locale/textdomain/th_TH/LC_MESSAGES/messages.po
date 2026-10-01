@@ -14889,10 +14889,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "ไฟล์ที่เลือกเกินขนาดการอัปโหลดสูงสุดของเซิร์ฟเวอร์นี้"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "ไม่มีกิจกรรมที่กำหนดไว้สำหรับวันนี้"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "มีปัญหาในการดึงวัตถุที่ร้องขอ"
 
@@ -18747,6 +18743,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "อาสาสมัครสำหรับโอกาสสองประการ"
 
 #: 
+msgid "YTD"
+msgstr "ตั้งแต่ต้นปี"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD ชำระเงิน"
 
@@ -18757,4 +18757,236 @@ msgstr "สำหรับข้อผิดพลาดในเวลาที
 #: 
 msgid "system logs"
 msgstr "บันทึกระบบ"
+
+#: 
+msgid "Access Control & Security"
+msgstr "การควบคุมการเข้าถึงและความปลอดภัย"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "อนุญาตให้บันทึกการชำระเงินที่ไม่สามารถหักลดหย่อนภาษีได้ (เช่น การขายสินค้า)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "อนุญาตการเข้าถึงโดยไม่ได้รับการยืนยันตัวตนต่อกิจกรรมสาธารณะ (สำหรับการฝังปฏิทิน)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "อนุญาตให้ผู้มาเยี่ยมชมสร้างบันทึกครอบครัวของตนเองผ่านหน้าการลงทะเบียนสาธารณะ"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "ส่งอีเมลวันเกิดโดยอัตโนมัติ (ต้องใช้ตัวจัดกำหนดการสำหรับงานพื้นหลัง)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "อีเมลอวยพรวันเกิด"
+
+#: 
+msgid "Communication & Email"
+msgstr "การสื่อสารและอีเมล"
+
+#: 
+msgid "Content Security Policy"
+msgstr "นโยบายความปลอดภัยของเนื้อหา"
+
+#: 
+msgid "Email System"
+msgstr "ระบบอีเมล"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "เปิดใช้งานหรือปิดใช้งานคุณลักษณะของสถาบันของคุณ"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "เปิดใช้งาน/ปิดใช้งานส่วนกิจกรรมในการนำทางหลัก"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "เปิดใช้งาน/ปิดใช้งานเมนูการเงินและคุณลักษณะการเงินทั้งหมด (เงินฝาก การชำระเงิน รายงาน)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "เปิดใช้งาน/ปิดใช้งานเมนูการระดมทุน"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "บังคับใช้ส่วนหัว CSP ที่เข้มงวดเพื่อป้องกันการโจมตี XSS"
+
+#: 
+msgid "Events Module"
+msgstr "โมดูลกิจกรรม"
+
+#: 
+msgid "Feature Toggles"
+msgstr "สวิตช์คุณลักษณะ"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "สวิตช์คุณลักษณะควบคุมโมดูลและคุณลักษณะใดที่พร้อมใช้งานใน ChurchCRM การเปลี่ยนแปลงจะมีผลใช้บังคับทันที"
+
+#: 
+msgid "Finance Features"
+msgstr "คุณลักษณะการเงิน"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "รวมที่อยู่ในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "รวมกิจกรรมปฏิทินในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "รวมคุณสมบัติครอบครัวที่กำหนดเองในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "รวมเงินฝากในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "รวมครอบครัวในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "รวมหน่วยงานในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "รวมการชำระเงินในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "รวมผู้คนในการค้นหาทั่วโลกด่วน"
+
+#: 
+msgid "Invalid setting"
+msgstr "การตั้งค่าไม่ถูกต้อง"
+
+#: 
+msgid "Lost Password Link"
+msgstr "ลิงค์รีเซ็ตรหัสผ่าน"
+
+#: 
+msgid "Manage All Features"
+msgstr "จัดการคุณลักษณะทั้งหมด"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "สวิตช์หลักสำหรับการส่งอีเมล จำเป็นสำหรับการรีเซ็ตรหัสผ่านและการแจ้งเตือน"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "การชำระเงินที่ไม่สามารถหักลดหย่อนได้"
+
+#: 
+msgid "Primary Modules"
+msgstr "โมดูลหลัก"
+
+#: 
+msgid "Public Calendar API"
+msgstr "API ปฏิทินสาธารณะ"
+
+#: 
+msgid "Saved"
+msgstr "บันทึก"
+
+#: 
+msgid "Search Families"
+msgstr "ค้นหาครอบครัว"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "ค้นหาคุณสมบัติที่กำหนดเองของครอบครัว"
+
+#: 
+msgid "Search Settings"
+msgstr "ค้นหาการตั้งค่า"
+
+#: 
+msgid "Self-Registration"
+msgstr "การลงทะเบียนด้วยตนเอง"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "แสดงตัวเลือก \"ลืมรหัสผ่าน\" บนหน้าจอเข้าสู่ระบบ (ให้ผู้ใช้รีเซ็ตได้)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "แสดง/ซ่อนโมดูลโรงเรียนวันอาทิตย์ในแถบด้านข้าง"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "ไม่สามารถปิดใช้งานผู้ดูแลระบบเพียงคนเดียวที่สามารถเข้าสู่ระบบได้"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "ไม่สามารถทำเครื่องหมายผู้ดูแลระบบเพียงคนเดียวที่สามารถเข้าสู่ระบบได้ว่าเสียชีวิต"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "เสียชีวิตแล้ว — ไม่สามารถเข้าสู่ระบบได้"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "ป้อนที่อยู่ที่สองก่อนที่จะทำเครื่องหมายเป็นที่อยู่สำหรับส่งจดหมาย"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "ไม่ทำงาน — ไม่สามารถเข้าสู่ระบบได้"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "จดหมายไปที่ที่อยู่ที่สอง ที่อยู่หลักยังคงเป็นสถานที่ทางกายภาพที่ใช้สำหรับแผนที่และทิศทาง"
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "จดหมายส่งไปที่ที่อยู่นี้แทนที่จะเป็นที่อยู่หลัก"
+
+#: 
+msgid "Mailing Address"
+msgstr "ที่อยู่สำหรับส่งจดหมาย"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "ที่อยู่สำหรับส่งจดหมายหากแตกต่าง"
+
+#: 
+msgid "Primary Address"
+msgstr "ที่อยู่หลัก"
+
+#: 
+msgid "Receives Mail"
+msgstr "รับจดหมาย"
+
+#: 
+msgid "Second Address"
+msgstr "ที่อยู่ที่สอง"
+
+#: 
+msgid "Second Home"
+msgstr "บ้านที่สอง"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "บุคคลที่เชื่อมโยงเสียชีวิตแล้วหรือไม่ทำงาน การเข้าสู่ระบบ เซสชัน และคีย์ API ถูกบล็อก จนกว่าบุคคลดังกล่าวจะทำให้ใช้งานได้อีกครั้ง"
+
+#: 
+msgid "This is the mailing address"
+msgstr "นี่คือที่อยู่สำหรับส่งจดหมาย"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "บุคคลนี้เสียชีวิตแล้วหรือไม่ทำงาน ดังนั้นบัญชีนี้ไม่สามารถเข้าสู่ระบบได้"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "เฉพาะผู้ดูแลระบบเท่านั้นที่สามารถลบบุคคลที่มีการเข้าสู่ระบบได้"
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "ไม่สามารถลบผู้ดูแลระบบคนสุดท้ายได้"
 

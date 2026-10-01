@@ -3562,7 +3562,6 @@
   "System upgrade completed successfully!": "Përmirësimi i sistemit përfundoi me sukses!",
   "Text All": "Teksti Të Gjithë",
   "The selected file exceeds this servers maximum upload size of": "Skedari i përzgjedhur tejkalon madhësinë maksimale të ngarkimit të këtij serveri prej",
-  "There are no events scheduled for today": "Nuk ka ngjarje të planifikuara për sot",
   "There was a problem retrieving the requested object": "Pati një problem në marrjen e objektit të kërkuar",
   "This event type is used by": "Ky lloj ngjarjeje përdoret nga",
   "This field is required": "Kjo fushë është e detyrueshme",
@@ -4537,6 +4536,7 @@
   "View Full Family Giving": "Shiko dhurimin e plotë të familjes",
   "Volunteer Opportunity": "Mundësia e vullnetarizmit",
   "Volunteers for Two Opportunities": "Vullnetarë për dy mundësi",
+  "YTD": "Nga fillimi i vitit",
   "YTD Paid": "YTD Paguar",
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "për gabimet rreth kohës kur ndodhi kjo, dhe shkarkoni dhe bashkangjitni skedarin e log-ut përkatës në çështjen tuaj në GitHub — na ndihmon të rregullojmë problemin pa bërë pyetje ndjekese.",
   "system logs": "regjistra sistemi"

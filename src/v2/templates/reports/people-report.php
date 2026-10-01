@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PersonDeleteGuard;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -143,7 +144,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                                 <div class="dropdown-divider"></div>
                                 <button type="button" class="dropdown-item text-danger delete-person"
                                         data-person_id="<?= $personId ?>"
-                                        data-person_name="<?= InputUtils::escapeAttribute($row['Name']) ?>">
+                                        data-person_name="<?= InputUtils::escapeAttribute($row['Name']) ?>"<?= PersonDeleteGuard::attributes((int) $personId) ?>>
                                     <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                 </button>
                             </div>

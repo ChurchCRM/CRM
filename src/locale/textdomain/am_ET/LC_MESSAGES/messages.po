@@ -14930,10 +14930,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "የተመረጠው ፋይል  መጠን ከከፍተኛውን ፋይል የመጫኛ መጠን ይበልጣል"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "ለዛሬ ምንም ዝግጅቶች አልተቀለሱም"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "የተጠየቀውን ነገር ሰርስሮ ማውጣት ላይ ችግር ነበር"
 
@@ -18794,6 +18790,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "ሁለት ዕድለ ለ በስ volunteers ታች"
 
 #: 
+msgid "YTD"
+msgstr "ከዓመቱ መጀመሪያ እስከ አሁን"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD ክፍያ"
 
@@ -18804,4 +18804,236 @@ msgstr "በ ይህ ተስኖ አጋዥ ጊዜ አስህተት ለ, አውርድ 
 #: 
 msgid "system logs"
 msgstr "ስርዓት ዝርዝሮች"
+
+#: 
+msgid "Access Control & Security"
+msgstr "ተደራሲ ቁጥጥር እና ደህንነት"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "ታክስ ብር ያልተነሳ ክፍያ መመዝገብ ይፈቅዱ (ለምሳሌ, ሸቀጦች ሽያጭ)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "ለሕዝብ ክስተቶች ያለ ማረጋገጥ ተደራሲ ይፈቅዱ (ለሥዕል ማስገባት የቀናት)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "ጎብኚዎች ሕዝብ ምዝገባ ገጽ በኩል የራሳቸውን የቤተሰብ መዝገቦች እንዲፈጥሩ ይፈቅዱ"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "ደወሳደሳ ኢሜይልን በራስ ነክ ይላኩ (የጀርባ ሥራ አቀባይ ያስፈልጋል)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "ሙሉበርቱ ምድረ ሰናይ ኢሜይልች"
+
+#: 
+msgid "Communication & Email"
+msgstr "ትስስር እና ኢሜይል"
+
+#: 
+msgid "Content Security Policy"
+msgstr "የይዘት ደህንነት ፖሊሲ"
+
+#: 
+msgid "Email System"
+msgstr "ኢሜይል ስርዓት"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "ለእርስዎ ድርጅት ባህሪዎችን ያስችሉ ወይም ያሰናክሉ"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "በዋናው ዘዴገመት ዎ ክስተቶች ክፍልን ያስችሉ/ያሰናክሉ"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "የገንዘብ ምናሌ እና ሁሉም የገንዘብ ባህሪዎች (ተቀማጭዎች, ክፍያዎች, ሪፖርቶች) ያስችሉ/ያሰናክሉ"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "የገንዘብ ሰብሳቢ ምናሌን ያስችሉ/ያሰናክሉ"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "ከ XSS ጥቃቶች ለመጠበቅ ጥብቅ CSP ራስጌዎችን ያስገድዱ"
+
+#: 
+msgid "Events Module"
+msgstr "ክስተቶች ሞጁል"
+
+#: 
+msgid "Feature Toggles"
+msgstr "ባህሪ ተቀያይሮች"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "ባህሪ ተቀያይሮች በ ChurchCRM ውስጥ ምን ሞጁሎች እና ባህሪዎች አሉ ይቆጣጠራሉ. ለውጦች ወዲያውኑ ይተገበራሉ."
+
+#: 
+msgid "Finance Features"
+msgstr "ገንዘብ ባህሪዎች"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ አድራሻዎችን ያካትቱ"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ቀናት ክስተቶችን ያካትቱ"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ብጁ ቤተሰብ ንብረቶችን ያካትቱ"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ተቀማጭዎችን ያካትቱ"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ቤተሰቦችን ያካትቱ"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ሚኒስትሪዎችን ያካትቱ"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ክፍያዎችን ያካትቱ"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ሰዎችን ያካትቱ"
+
+#: 
+msgid "Invalid setting"
+msgstr "ልክ ያልሆነ ቅንጅት"
+
+#: 
+msgid "Lost Password Link"
+msgstr "የታሳቢ ሰሌዳ ሊንክ"
+
+#: 
+msgid "Manage All Features"
+msgstr "ሁሉንም ባህሪዎች ያስተዳድሩ"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "ኢሜይል ለመላክ ዋና ተቀያይር. ለሰሌዳ ዳግም ማቀናበር እና ማሳወቂያዎች ያስፈልጋል"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "ታክስ ብር ያልተነሳ ክፍያ"
+
+#: 
+msgid "Primary Modules"
+msgstr "ዋናዎች ሞጁሎች"
+
+#: 
+msgid "Public Calendar API"
+msgstr "ህዝብ ቀናት API"
+
+#: 
+msgid "Saved"
+msgstr "ተቀምጧል"
+
+#: 
+msgid "Search Families"
+msgstr "ቤተሰቦችን ይፈልጉ"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "ቤተሰብ ብጁ ንብረቶችን ይፈልጉ"
+
+#: 
+msgid "Search Settings"
+msgstr "ቅንጅቶች ይፈልጉ"
+
+#: 
+msgid "Self-Registration"
+msgstr "ራስ-ምዝገባ"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "በውስብስብ ገጽ ላይ \"ታሳቢ ሰሌዳ\" አማራጭን ያሳይ (ተጠቃሚ ራስ-ዳግም ማቀናበር ይፈቅድ)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "በጎን አሞሌ ውስጥ አንድ መእከል ትምህርት ቤት ሞጁልን ያሳይ/ደብቅ"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "ውስጥ መግባት ይችላል መሰሪነት ውጤቱ አሰናክሉ ይችላሉ"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "መግባት የሚችለውን ብቸኛ አስተዳዳሪ እንደሞተ ምልክት ማድረግ አይቻልም"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "የሞተ — መግባት አይችልም"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "ደብዳቤ አድራሻ ምልክት ባደርጉ በፊት ሁለተኛ አድራሻ አስገባ"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "ንቁ ያልሆነ — መግባት አይችልም"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "ደብዳቤ ሁለተኛ አድራሻ ወደ ይሄዳል; ዋና አድራሻ ሳጥኖች እና አቅጣጫዎች ለ ተጠቅሞ አካላዊ ቦታ ግብራ ይቀራል."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "ደብዳቤ ዋና አድራሻ ፍቃድ ይህ አድራሻ ይላካል"
+
+#: 
+msgid "Mailing Address"
+msgstr "ደብዳቤ አድራሻ"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "የተለየ ከሆነ ደብዳቤ አድራሻ"
+
+#: 
+msgid "Primary Address"
+msgstr "ዋና አድራሻ"
+
+#: 
+msgid "Receives Mail"
+msgstr "ደብዳቤ ይቀበላል"
+
+#: 
+msgid "Second Address"
+msgstr "ሁለተኛ አድራሻ"
+
+#: 
+msgid "Second Home"
+msgstr "ሁለተኛ ቤት"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "የተገናኘው ሰው ሞተ ወይም ንቁ ያልሆነ. ሰው ወደ ገበሮ ከተገበሮ ድረስ ውስጥ-ይሰለፉ, ክፍለ-ጊዜ እና API ቁልፍ ተከልክሎ ሉቅሩ."
+
+#: 
+msgid "This is the mailing address"
+msgstr "ይህ ደብዳቤ አድራሻ ነው"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "ይህ ሰው የሞተ ወይም ንቁ ያልሆነ ነው፣ ስለዚህ ይህ መለያ መግባት አይችልም"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "ተመሪ ብቻ ውስጥ መግባት ሰው ይሰርዙ ይችላሉ."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "የመጨረሻው ተመሪ ሊስረዝ አይችልም."
 

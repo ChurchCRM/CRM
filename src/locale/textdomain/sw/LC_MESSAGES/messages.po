@@ -14918,10 +14918,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Faili iliyochaguliwa inazidi ukubwa wa juu zaidi wa upakiaji wa seva hizi"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Hakuna matukio yaliyopangwa kwa leo"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Kulikuwa na tatizo katika kurejesha kitu kilichoombwa"
 
@@ -16906,6 +16902,10 @@ msgid "Count unique installs"
 msgstr "Hesabu usakinishaji wa kipekee"
 
 #: 
+msgid "Data"
+msgstr "Data"
+
+#: 
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr "Data inashughulikiwa na PostHog kwenye miundombinu ya EU."
 
@@ -18524,4 +18524,272 @@ msgstr "Wapokeaji ni wengi mno kwa programu ya barua pepe ({{total}} > {{max}}).
 #: 
 msgid "{{minutes}} min left"
 msgstr "dakika {{minutes}} zimebaki"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "Hati %d ya kodi imetumwa kwa familia kwa mafanikio."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "Taarifa ya Utoaji %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "Uainishaji wote"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Kama msimamizi, tafadhali pia kagua"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Tuma kiotomatiki barua pepe ya salamu za kuzaliwa kwa watu siku ya kuzaliwa kwao."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Barua Pepe za Siku ya Kuzaliwa"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Siku za kuzaliwa, maadhimisho, wajitolea na orodha nyingine za watu zenye kichujio cha uainishaji"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Chagua %s ili kuendesha ripoti hii."
+
+#: 
+msgid "Choose events"
+msgstr "Chagua matukio"
+
+#: 
+msgid "Choose..."
+msgstr "Chagua..."
+
+#: 
+msgid "Church Logo"
+msgstr "Nembo ya Kanisa"
+
+#: 
+msgid "Columns per Page"
+msgstr "Safu Wima kwa Ukurasa"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Mpendwa Familia ya %s,\n"
+"\n"
+"Tafadhali pata taarifa yako ya utoaji ya %d kutoka %s iliyoambatishwa kwenye barua pepe hii.\n"
+"\n"
+"Ikiwa una maswali yoyote, tafadhali wasiliana na ofisi ya kanisa.\n"
+"\n"
+"Asante kwa ukarimu wako."
+
+#: 
+msgid "Download CSV"
+msgstr "Pakua CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Tuma Hati ya Kodi %d kwa Barua Pepe"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Washa au zima moduli ya Fedha na menyu ya upau wa pembeni."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Washa au zima moduli ya Uchangishaji."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Imeshindwa kuondoa nembo ya kanisa"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Imeshindwa kupakia nembo ya kanisa"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL ya nembo mbadala kwa violezo vya barua pepe, inayotumika tu wakati hakuna nembo ya kanisa iliyopakiwa kwenye ukurasa wa Taarifa za Kanisa. Kurasa za programu yenyewe hazizingatii mpangilio huu na daima hutumia nembo iliyopakiwa au nembo chaguomsingi ya ChurchCRM. Lazima iwe URL kamili ya http(s). Kwa uonyeshaji bora kwenye wateja wa barua pepe, tumia picha ya bango pana yenye uwiano wa takriban 3.5:1 (kwa mfano 350×100 px), PNG au JPG, inayotolewa kupitia HTTPS. Acha wazi au weka thamani batili ili kurudi kwenye nembo chaguomsingi ya ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Moduli ya Fedha"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Tafuta watu ambao hawakuhudhuria tukio"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Tafuta wajitolea wanaolingana na misimbo miwili maalum ya nafasi"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Nafasi ya Kwanza ya Kujitolea"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Kijitabu Kilichokunjwa"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Moduli ya Uchangishaji"
+
+#: 
+msgid "Giving History"
+msgstr "Historia ya Utoaji"
+
+#: 
+msgid "Last Gift"
+msgstr "Mchango wa Mwisho"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Acha wazi kwa uainishaji wote."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Idadi ya juu zaidi ya hati za mwaka wa kodi za kuonyesha kwa kila wasifu wa familia (0 = bila kikomo)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Idadi ya juu ya miaka ya kodi inayoonyeshwa kwa kila familia"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Maadhimisho ya Uanachama"
+
+#: 
+msgid "Missing People"
+msgstr "Watu Waliokosekana"
+
+#: 
+msgid "No giving history found."
+msgstr "Hakuna historia ya utoaji iliyopatikana."
+
+#: 
+msgid "No people match these filters."
+msgstr "Hakuna watu wanaolingana na vichujio hivi."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Ukurasa mmoja wa saraka kwa kila karatasi, wima."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Miundo ya http na https pekee ndiyo inayoruhusiwa."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF au WebP. Bango pana lenye uwiano wa takriban 3.5:1 (kwa mfano 700x200) linafaa zaidi; PNG yenye uwazi inapendelewa."
+
+#: 
+msgid "Page Layout"
+msgstr "Mpangilio wa Ukurasa"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Watu waliojiunga katika mwezi fulani"
+
+#: 
+msgid "Pledged"
+msgstr "Iliyoahidiwa"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Chapisha Hati ya Kodi %d"
+
+#: 
+msgid "Queries"
+msgstr "Hoja"
+
+#: 
+msgid "Recent Friends"
+msgstr "Marafiki wa Hivi Karibuni"
+
+#: 
+msgid "Report not found"
+msgstr "Ripoti haijapatikana"
+
+#: 
+msgid "Run Report"
+msgstr "Endesha Ripoti"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Nafasi ya Pili ya Kujitolea"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Huonekana kwenye upau wa pembeni, ukurasa wa kuingia na kwenye barua pepe. Kupakia nembo hubadilisha chapa ya ChurchCRM kila mahali inapoonekana."
+
+#: 
+msgid "Single Pages"
+msgstr "Kurasa Moja Moja"
+
+#: 
+msgid "Tax Documents"
+msgstr "Hati za Kodi"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Barua pepe ya hati ya kodi imeshindwa kutumwa. Tafadhali angalia mipangilio ya seva ya barua pepe."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Kurasa mbili za nusu ukubwa zikiwa kando kwa kando kwenye kila karatasi ya mlalo, kwa mpangilio wa kijitabu. Chapisha pande zote mbili kwa \"kugeuza upande mfupi\", kisha kunja rundo katikati. Safu wima huhesabiwa kwa kila nusu ukurasa."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Haiwezekani kutuma hati ya kodi kwa barua pepe: hakuna data ya malipo iliyopatikana kwa mwaka huo."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Haiwezekani kutuma hati ya kodi kwa barua pepe: familia hii haina anwani ya barua pepe iliyohifadhiwa."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Imeshindwa kutatua jina la mwenyeji wa seva ya OpenLP. Angalia anwani na muunganisho wako wa mtandao."
+
+#: 
+msgid "Upload"
+msgstr "Pakia"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Inatumia nembo chaguomsingi ya ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Tazama Utoaji Kamili wa Familia"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Nafasi ya Kujitolea"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Wajitolea kwa Nafasi Mbili"
+
+#: 
+msgid "YTD"
+msgstr "Tangu Mwanzo wa Mwaka"
+
+#: 
+msgid "YTD Paid"
+msgstr "Yaliyolipwa Tangu Mwanzo wa Mwaka"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "kwa hitilafu karibu na wakati hili lilipotokea, na pakua na uambatishe faili husika ya kumbukumbu kwenye suala lako la GitHub — inatusaidia kurekebisha tatizo bila kuuliza maswali ya ziada."
+
+#: 
+msgid "system logs"
+msgstr "kumbukumbu za mfumo"
 

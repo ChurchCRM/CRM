@@ -55,6 +55,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Name` varchar(30) default NULL,
   `fun_Description` varchar(100) default NULL,
   `fun_Order` int(11) NOT NULL DEFAULT 0,
+  `fun_Category` varchar(50) default NULL,
   PRIMARY KEY  (`fun_ID`),
   UNIQUE KEY `fun_Name_unique` (`fun_Name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
@@ -265,6 +266,13 @@ CREATE TABLE `family_fam` (
   `fam_State` varchar(50) default NULL,
   `fam_Zip` varchar(50) default NULL,
   `fam_Country` varchar(50) default NULL,
+  `fam_SecondAddress1` varchar(255) default NULL,
+  `fam_SecondAddress2` varchar(255) default NULL,
+  `fam_SecondCity` varchar(50) default NULL,
+  `fam_SecondState` varchar(50) default NULL,
+  `fam_SecondZip` varchar(50) default NULL,
+  `fam_SecondCountry` varchar(50) default NULL,
+  `fam_SecondIsMailing` tinyint(1) unsigned NOT NULL default '0',
   `fam_HomePhone` varchar(30) default NULL,
   `fam_Email` varchar(100) default NULL,
   `fam_WeddingDate` date default NULL,
@@ -918,7 +926,7 @@ INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, 
                         `usr_CalStart`, `usr_CalEnd`, `usr_CalNoSchool1`, `usr_CalNoSchool2`, `usr_CalNoSchool3`, `usr_CalNoSchool4`,
                         `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`)
 VALUES
-  (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+  (1, '$2y$12$oBq/URJVlaV58kIVAN9oHuDenAzFz8Xe1GneeFdIWEtNdclehz6Hu', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Table structure for table `user_settings`

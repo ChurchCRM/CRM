@@ -14460,6 +14460,10 @@ msgid "Import failed. Please try again."
 msgstr "Importul a eșuat. Încercați din nou."
 
 #: 
+msgid "Important"
+msgstr "Important"
+
+#: 
 msgid "Importing..."
 msgstr "Se importă..."
 
@@ -14984,10 +14988,6 @@ msgstr "Text Toate"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Fișierul selectat depășește mărimea maximă acceptată de server"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Nu există evenimente programate pentru astăzi"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -15755,6 +15755,10 @@ msgid "Locked"
 msgstr "Blocat"
 
 #: 
+msgid "Major"
+msgstr "Major"
+
+#: 
 msgid "Missing required fields: fullPath and sha1"
 msgstr "Câmpuri obligatorii lipsă: fullPath și sha1"
 
@@ -16039,6 +16043,10 @@ msgstr "Declarații cumpărători"
 #: 
 msgid "Buyers Registered"
 msgstr "Cumpărători înregistrați"
+
+#: 
+msgid "Catalog"
+msgstr "Catalog"
 
 #: 
 msgid "Certificates"
@@ -18162,6 +18170,10 @@ msgstr "Identifică"
 #: 
 msgid "Identify command sent"
 msgstr "Comanda de identificare a fost trimisă"
+
+#: 
+msgid "Individual"
+msgstr "Individual"
 
 #: 
 msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."

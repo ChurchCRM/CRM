@@ -1,12 +1,12 @@
-name: "Locale: upload missing terms"
+name: "Locale: upload translations"
 
 # Uploads translated missing-term batches (locale/terms/missing/<locale>/) to
-# POEditor, then starts "Locale Sync POEditor" so the translations come back
+# POEditor, then starts "Locale: sync" in download-only mode so the translations come back
 # to master as a PR. Replaces running poeditor-upload-missing.js by hand.
 #
 # Triggers:
 #   - push to a translation branch (locale/translate/**, cut by
-#     locale-branch-manager.js): uploads only the locales changed by that push
+#     locale-branch-manager.js): uploads every locale changed on the branch since master
 #   - manual run: the locales you list, or every locale with batch files
 #
 # Pushes made with GITHUB_TOKEN do not start workflows, so a translation agent
@@ -25,7 +25,7 @@ on:
         required: false
         type: string
       sync:
-        description: 'Start "Locale Sync POEditor" afterwards'
+        description: 'Start "Locale: sync" afterwards'
         required: false
         type: boolean
         default: true
@@ -55,7 +55,7 @@ jobs:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -80,7 +80,6 @@ jobs:
         env:
           EVENT: ${{ github.event_name }}
           INPUT_LOCALES: ${{ inputs.locales }}
-          BEFORE: ${{ github.event.before }}
         run: |
           set -euo pipefail
           changed_locales() {
@@ -90,10 +89,10 @@ jobs:
 
           if [ "$EVENT" = "workflow_dispatch" ]; then
             locales="${INPUT_LOCALES// /}"
-          elif [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
-            locales=$(changed_locales "$(git merge-base origin/master HEAD)")
           else
-            locales=$(changed_locales "$BEFORE")
+            # Whole branch vs master, not just this push: a queued run superseded by a newer push is
+            # cancelled, and its locales must still be uploaded by the run that replaces it
+            locales=$(changed_locales "$(git merge-base origin/master HEAD)")
           fi
 
           if ! [[ "$locales" =~ ^[A-Za-z,-]*$ ]]; then
@@ -116,9 +115,9 @@ jobs:
           if [ -n "$LOCALES" ]; then args+=(--locale "$LOCALES"); fi
           node locale/scripts/poeditor-upload-missing.js "${args[@]}"
 
-      - name: Start POEditor sync
+      - name: Start download
         if: (github.event_name == 'push' && steps.locales.outputs.locales != '') || (github.event_name == 'workflow_dispatch' && inputs.sync)
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-        run: gh workflow run locale-sync-poeditor.yml --ref master
+        run: gh workflow run locale-sync-poeditor.yml --ref master -f upload_terms=false

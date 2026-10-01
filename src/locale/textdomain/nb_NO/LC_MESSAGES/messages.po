@@ -14992,10 +14992,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Den valgte filen overskrider serverens maksimale opplastingsstørrelse på"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Det er ingen planlagte arrangementer i dag"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Det oppsto et problem ved henting av det forespurte objektet"
 
@@ -16980,6 +16976,10 @@ msgid "Count unique installs"
 msgstr "Tell unike installasjoner"
 
 #: 
+msgid "Data"
+msgstr "Data"
+
+#: 
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr "Data behandles av PostHog på EU-infrastruktur."
 
@@ -17338,6 +17338,10 @@ msgstr "En uventet feil oppsto under sending av e-post. Kontroller SMTP-innstill
 #: 
 msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr "Er du sikker pa at du vil fjerne rollen '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Auto"
 
 #: 
 msgid "Auto follows your OS or browser setting; Light and Dark override it"
@@ -18862,4 +18866,236 @@ msgstr "for feil rundt tiden dette skjedde, og last ned og legg ved den relevant
 #: 
 msgid "system logs"
 msgstr "systemloggfiler"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Tilgangskontroll og sikkerhet"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Tillat registrering av ikke-fradragsberettigede betalinger (f.eks. varesalg)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Tillat uauthentisert tilgang til offentlige arrangementer (for innebygning av kalendere)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Tillat besøkende å opprette sine egne familieregistre via den offentlige registreringssiden"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Send automatisk bursdagse-poster (krever bakgrunnsjobplanlegger)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Bursdagsgreet e-poster"
+
+#: 
+msgid "Communication & Email"
+msgstr "Kommunikasjon og e-post"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Content Security Policy"
+
+#: 
+msgid "Email System"
+msgstr "E-postsystem"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Aktiver eller deaktiver funksjoner for organisasjonen din"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Aktiver/deaktiver Arrangementseksjonen i hovednavigasjonen"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Aktiver/deaktiver Finansmenyen og alle finansfunksjoner (innskudd, betalinger, rapporter)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Aktiver/deaktiver Innsamlingsmenyen"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Bruk streng CSP-overskrifter for å beskytte mot XSS-angrep"
+
+#: 
+msgid "Events Module"
+msgstr "Arrangementsmodul"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Funksjonsbrytere"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Funksjonsbrytere kontrollerer hvilke moduler og funksjoner som er tilgjengelige i ChurchCRM. Endringer trer i kraft umiddelbar."
+
+#: 
+msgid "Finance Features"
+msgstr "Finansfunksjoner"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Inkluder adresser i rask global søk"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Inkluder kalenderarrangementer i rask global søk"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Inkluder egendefinerte familiegenskaper i rask global søk"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Inkluder innskudd i rask global søk"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Inkluder familier i rask global søk"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Inkluder ministerie i rask global søk"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Inkluder betalinger i rask global søk"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Inkluder personer i rask global søk"
+
+#: 
+msgid "Invalid setting"
+msgstr "Ugyldig innstilling"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Lenke for gjenoppretting av passord"
+
+#: 
+msgid "Manage All Features"
+msgstr "Administrer alle funksjoner"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Hovedbryter for e-postsending. PÅKREVD for passordgjenoppretting og varsler"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Ikke-fradragsberettigede betalinger"
+
+#: 
+msgid "Primary Modules"
+msgstr "Primærmoduler"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Offentlig kalender-API"
+
+#: 
+msgid "Saved"
+msgstr "Lagret"
+
+#: 
+msgid "Search Families"
+msgstr "Søk familier"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Søk egendefinerte familiegenskaper"
+
+#: 
+msgid "Search Settings"
+msgstr "Søk innstillinger"
+
+#: 
+msgid "Self-Registration"
+msgstr "Selvregistrering"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Vis \"Glemt passord\"-alternativ på innloggingsskjermen (lar bruker tilbakestille selv)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Vis/skjul Søndagsskolen-modulen i sidepanelet"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Kan ikke deaktivere den eneste administratoren som kan logge inn"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Kan ikke markere den eneste administratoren som kan logge inn som avdød"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Avdød — kan ikke logge inn"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Angi en annen adresse før du markerer den som postadresse"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Inaktiv — kan ikke logge inn"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Post sendes til den andre adressen; den primære adressen forblir det fysiske stedet som brukes for kart og veibeskrivelser."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Post sendes til denne adressen i stedet for den primære adressen"
+
+#: 
+msgid "Mailing Address"
+msgstr "Postadresse"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Postadresse hvis annen"
+
+#: 
+msgid "Primary Address"
+msgstr "Primær adresse"
+
+#: 
+msgid "Receives Mail"
+msgstr "Mottar post"
+
+#: 
+msgid "Second Address"
+msgstr "Andre adressens"
+
+#: 
+msgid "Second Home"
+msgstr "Annet hjem"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Den tilknyttede personen er avdød eller inaktiv. Innlogging, økter og API-nøkkelen er blokkert til personen er aktiv igjen."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Dette er postadressens"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Denne personen er avdød eller inaktiv, så denne kontoen kan ikke logge inn"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Bare en administrator kan slette en person som har en innlogging."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Den siste administratoren kan ikke slettes."
 

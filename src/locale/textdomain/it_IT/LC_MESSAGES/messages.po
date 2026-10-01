@@ -14941,10 +14941,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Il file selezionato supera la dimensione massima di upload di questo server"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Non ci sono eventi programmati per oggi"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Si è verificato un problema durante il recupero dell'oggetto richiesto"
 
@@ -18243,6 +18239,10 @@ msgstr "Data di morte non valida"
 #: 
 msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
 msgstr "Numero di giorni a disposizione degli utenti per attivare l'autenticazione a due fattori dopo che diventa obbligatoria. Impostare a 0 per renderla obbligatoria immediatamente. Ridurre un periodo di tolleranza già attivo può bloccare immediatamente l'accesso agli utenti."
+
+#: 
+msgid "Offline"
+msgstr "Offline"
 
 #: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."

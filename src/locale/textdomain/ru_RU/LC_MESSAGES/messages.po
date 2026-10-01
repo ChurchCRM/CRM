@@ -14996,10 +14996,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Выбранный файл превышает максимальный размер загрузки этого сервера:"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "На сегодня мероприятий не запланировано"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "При получении запрошенного объекта возникла проблема"
 
@@ -18870,6 +18866,10 @@ msgstr "Возможность для волонтеров"
 #: 
 msgid "Volunteers for Two Opportunities"
 msgstr "Волонтеры для двух возможностей"
+
+#: 
+msgid "YTD"
+msgstr "С начала года"
 
 #: 
 msgid "YTD Paid"

@@ -31,10 +31,88 @@ $fundToArray = static function (DonationFund $fund): array {
         'description' => $fund->getDescription(),
         'active'      => $fund->getActive() === 'true',
         'order'       => (int) $fund->getOrder(),
+        'category'    => $fund->getCategory(),
     ];
 };
 
 $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArray): void {
+
+    /**
+     * @OA\Get(
+     *     path="/finance/api/funds/categories",
+     *     operationId="listDonationFundCategories",
+     *     summary="List distinct donation fund categories",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Sorted category labels",
+     *         @OA\JsonContent(@OA\Property(property="categories", type="array", @OA\Items(type="string")))
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
+    $group->get('/categories', function (Request $request, Response $response): Response {
+        return SlimUtils::renderJSON($response, ['categories' => (new DonationFundService())->getCategories()]);
+    });
+
+    /**
+     * @OA\Put(
+     *     path="/finance/api/funds/categories",
+     *     operationId="renameDonationFundCategory",
+     *     summary="Rename a category on every fund that uses it (merges if the new name exists)",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\RequestBody(required=true,
+     *         @OA\JsonContent(required={"name","newName"},
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="newName", type="string", maxLength=50)
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Number of funds updated"),
+     *     @OA\Response(response=400, description="Empty or too-long name"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
+    $group->put('/categories', function (Request $request, Response $response): Response {
+        try {
+            $input = (array) $request->getParsedBody();
+            $updated = (new DonationFundService())->renameCategory((string) ($input['name'] ?? ''), (string) ($input['newName'] ?? ''));
+
+            return SlimUtils::renderJSON($response, ['updated' => $updated]);
+        } catch (\InvalidArgumentException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to rename category'), [], 500, $e, $request);
+        }
+    })->add(new InputSanitizationMiddleware(['name' => 'text', 'newName' => 'text']));
+
+    /**
+     * @OA\Delete(
+     *     path="/finance/api/funds/categories",
+     *     operationId="deleteDonationFundCategory",
+     *     summary="Remove a category from every fund that uses it (funds become uncategorized)",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="name", in="query", required=true, @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Number of funds updated"),
+     *     @OA\Response(response=400, description="Empty name"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
+    $group->delete('/categories', function (Request $request, Response $response): Response {
+        try {
+            $name = (string) ($request->getQueryParams()['name'] ?? '');
+            $updated = (new DonationFundService())->deleteCategory($name);
+
+            return SlimUtils::renderJSON($response, ['updated' => $updated]);
+        } catch (\InvalidArgumentException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to delete category'), [], 500, $e, $request);
+        }
+    });
 
     /**
      * @OA\Post(
@@ -49,7 +127,8 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      *             required={"name"},
      *             @OA\Property(property="name", type="string", maxLength=30, example="Building Fund"),
      *             @OA\Property(property="description", type="string", maxLength=100, example="For building projects"),
-     *             @OA\Property(property="active", type="boolean", example=true)
+     *             @OA\Property(property="active", type="boolean", example=true),
+     *             @OA\Property(property="category", type="string", maxLength=50, nullable=true, example="Missions")
      *         )
      *     ),
      *     @OA\Response(response=201, description="Newly created fund",
@@ -59,7 +138,8 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      *                 @OA\Property(property="name", type="string"),
      *                 @OA\Property(property="description", type="string"),
      *                 @OA\Property(property="active", type="boolean"),
-     *                 @OA\Property(property="order", type="integer")
+     *                 @OA\Property(property="order", type="integer"),
+     *                 @OA\Property(property="category", type="string", nullable=true)
      *             )
      *         )
      *     ),
@@ -82,7 +162,8 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
             }
 
             $service = new DonationFundService();
-            $fund = $service->createFund($name, $description, $active);
+            $category = isset($input['category']) ? (string) $input['category'] : null;
+            $fund = $service->createFund($name, $description, $active, $category);
 
             return SlimUtils::renderJSON($response, ['fund' => $fundToArray($fund)], 201);
         } catch (\InvalidArgumentException $e) {
@@ -90,7 +171,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to create donation fund'), [], 500, $e, $request);
         }
-    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
+    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text', 'category' => 'text']));
 
     /**
      * @OA\Put(
@@ -105,7 +186,8 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
      *         @OA\JsonContent(
      *             @OA\Property(property="name", type="string", maxLength=30),
      *             @OA\Property(property="description", type="string", maxLength=100),
-     *             @OA\Property(property="active", type="boolean")
+     *             @OA\Property(property="active", type="boolean"),
+     *             @OA\Property(property="category", type="string", maxLength=50, nullable=true, description="Omit to leave unchanged; null or empty clears it")
      *         )
      *     ),
      *     @OA\Response(response=200, description="Updated fund"),
@@ -130,6 +212,9 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
             if (array_key_exists('active', $input)) {
                 $data['active'] = filter_var($input['active'], FILTER_VALIDATE_BOOLEAN);
             }
+            if (array_key_exists('category', $input)) {
+                $data['category'] = $input['category'] === null ? null : (string) $input['category'];
+            }
 
             $service = new DonationFundService();
             $fund = $service->updateFund($id, $data);
@@ -142,7 +227,7 @@ $app->group('/api/funds', function (RouteCollectorProxy $group) use ($fundToArra
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update donation fund'), [], 500, $e, $request);
         }
-    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
+    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text', 'category' => 'text']));
 
     /**
      * @OA\Delete(

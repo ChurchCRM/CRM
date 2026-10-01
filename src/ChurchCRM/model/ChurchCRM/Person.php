@@ -7,6 +7,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
+use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
@@ -16,6 +17,7 @@ use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Map\TableMap;
 
@@ -650,8 +652,49 @@ class Person extends BasePerson implements PhotoInterface
         return $nameString;
     }
 
+    /**
+     * Why the signed-in user may not delete this person, or null when they may.
+     *
+     * Deleting a person also deletes their login, so this guards the login:
+     * only an administrator may remove a person who has one, nobody may remove
+     * themselves, and the last administrator can never be removed.
+     */
+    public function getLoginDeletionBlockedReason(): ?string
+    {
+        $targetUser = UserQuery::create()->findPk($this->getId());
+        if ($targetUser === null || !AuthenticationManager::isUserAuthenticated()) {
+            return null;
+        }
+
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if ($currentUser->getId() === (int) $this->getId()) {
+            return gettext("Can't delete yourself");
+        }
+
+        if (!$currentUser->isAdmin()) {
+            return gettext('Only an administrator can delete a person who has a login.');
+        }
+
+        if ($targetUser->isAdmin()) {
+            $otherAdmins = UserQuery::create()
+                ->filterByAdmin(true)
+                ->filterByPersonId($this->getId(), Criteria::NOT_EQUAL)
+                ->count();
+            if ($otherAdmins === 0) {
+                return gettext('The last administrator cannot be deleted.');
+            }
+        }
+
+        return null;
+    }
+
     public function preDelete(?ConnectionInterface $con = null): bool
     {
+        $blockedReason = $this->getLoginDeletionBlockedReason();
+        if ($blockedReason !== null) {
+            throw new PersonDeletionBlockedException($blockedReason);
+        }
+
         // Snapshot before the cleanup below removes the rows toArray() reads
         // (the photo behind HasPhoto), so PERSON_DELETED listeners see the
         // person as they actually were.

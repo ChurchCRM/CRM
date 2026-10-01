@@ -15,6 +15,8 @@ Translate missing ChurchCRM UI terms for one or all locales.
 3. **The push uploads to POEditor** — `locale-upload-missing.yml` runs on every push to `locale/translate/**`
 4. **If any step fails, STOP and report** — do not continue without saving work
 
+**Desktop sessions** (local Claude Code, you can see the checkout) carry little loss risk: commit after every family, but push once at the end, or every few families, after the maintainer says push. Each push runs the full CI matrix and the POEditor upload. Rules 2 and 3 apply per locale only on cloud/remote agents.
+
 **Why:** Cloud/remote agent sessions can timeout at any moment. Uncommitted translations are LOST FOREVER. We have lost hours of work from agents that translated 20+ locales without committing. Reusing old branches also causes review-thread churn and can silently overwrite reviewer edits from the prior run.
 
 ---
@@ -46,21 +48,25 @@ git checkout -b "locale/translate/$(node -p "require('./package.json').version")
 
 ```bash
 node locale/scripts/locale-translate.js --list
+node locale/scripts/locale-translate.js --prefill      # no model: allowlisted loanwords + case/punctuation variants of existing translations
+node locale/scripts/locale-translate.js --export       # deduplicated payload of what is still missing (add --locale a,b for one group)
 ```
+
+Review the `--prefill` matches it prints, then translate only what `--export` still lists.
 
 ---
 
-## Step 3: Strategy — small vs. large locales <!-- learned: 2026-04-04 -->
+## Step 3: Choose strategy & dispatch agents
 
-**Split the work based on term count:**
+**For 10+ locales:** Use language-family batching to reduce token cost by 70%. See [`locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md#batching-strategy) for the procedure: one agent per family, max 4 in parallel, one commit + push per family.
 
-- **Small locales (≤ 10 terms):** Process ALL of them directly in one pass. Read each file, produce translations inline, apply with temp files. Batch the `report_progress` commit at the end covering all small locales.
-- **Large locales (> 10 terms):** Dispatch parallel `general-purpose` sub-agents — one per locale (or small groups of 2). Each sub-agent reads, translates, AND applies before returning. Then commit with `report_progress`.
+**For < 10 locales:** Process inline with direct git, or dispatch sub-agents per locale.
 
-**Why this split works:**
-- Small locales are often just `N/A`, `BCC`, `name@example.com` — trivial to handle inline
-- Large locales (60+ terms) each benefit from a dedicated sub-agent with full language context
-- Parallel sub-agents for large locales = 4-6x throughput
+**Desktop pattern:** every locale is usually missing the same strings, so `--export` lists each English string once. Give each family agent the export file and have it write `group-X.json` (`{"fr": {"<English>": "<translation>"}}`) to the scratchpad. It must not run git or locale scripts. The parent runs `--apply-bulk`, `git add` by path (include `locale/terms/english-ok.json`), commits, then pushes. Parallel agents all writing `english-ok.json` race; one applier does not.
+
+**Shared checkout:** another session can switch the branch under you. Run `git branch --show-current` immediately before every commit and push. If other sessions use the checkout, work in a `git worktree` on the `locale/translate/*` branch and symlink `node_modules` into it so the pre-commit hooks run (never `--no-verify`).
+
+**Critical (cloud):** Each sub-agent MUST apply translations before returning (see template below). If an agent only produces translations without applying, the work is lost.
 
 ---
 
@@ -83,19 +89,19 @@ Every key with `""` value needs a translation.
 - **Leave as `""` (do NOT translate):** `N/A`, `name@example.com`, `SHA1 Hash`, `BCC`
 - **If you hit a standalone pure-technical-acronym key** (e.g. `CSV`, `OFX`, `PDF`, `2FA`, `URL`) with nothing else in the string — don't translate it at all, even identically. These should never have been extracted as translatable terms; flag it as a source-code bug (needs unwrapping from `gettext()`/`i18next.t()`, see `i18n-localization.md` → "Do Not Wrap Brand / Technical Literals") instead of spending translation effort or adding it to `english-ok.json`.
 
-### 4c. Apply via temp file
+### 4c. Apply
 
 ```bash
-cat > /tmp/<LOCALE>-1-trans.json << 'ENDJSON'
-{ ... your translations JSON ... }
-ENDJSON
-
 node locale/scripts/locale-translate.js --apply \
   --file locale/terms/missing/<LOCALE>/<LOCALE>-1.json \
-  --translations "$(cat /tmp/<LOCALE>-1-trans.json)"
-
-rm /tmp/<LOCALE>-1-trans.json
+  --translations-file <path-to-translations.json>
 ```
+
+Write the JSON to a file (for example with a heredoc) instead of passing it inline: an apostrophe inside a translation would end a single-quoted shell argument.
+
+Several locales at once: `--apply-bulk --translations-file <path>` with `{"fr": {...}, "de": {...}}`.
+
+Apply checks every entry (placeholders, script, plural forms, known key), writes the valid ones, prints each rejected entry with its reason, and exits 1 if any was rejected. Fix only those and apply again. Values identical to the English key are added to `english-ok.json` automatically. An empty value leaves the term untranslated.
 
 For locales with multiple batch files (Telugu has 2 files), repeat for each file.
 
@@ -103,7 +109,7 @@ For locales with multiple batch files (Telugu has 2 files), repeat for each file
 
 **⛔ NEVER skip this step. NEVER accumulate multiple locales without committing.**
 
-After each locale (or small batch of ≤3 trivial locales), commit and push:
+After each locale (or each language-family batch), commit and push:
 
 **Option A — `report_progress` tool** (GitHub Copilot / remote agents):
 Use the `report_progress` tool which runs `git add . && git commit && git push`.
@@ -115,7 +121,7 @@ git commit -m "locale: translate <CODE> (<LANGUAGE>, <N> terms)"
 git push origin $(git branch --show-current)
 ```
 
-**Option C — branch manager script**:
+**Option C — branch manager script** (stages the batch folders and `english-ok.json` by path; `--locale` takes `es,es-MX,es-AR` for a family):
 ```bash
 node locale/scripts/locale-branch-manager.js --commit-and-push \
   --locale <CODE> --language "<LANGUAGE>" --terms <N>
@@ -125,7 +131,7 @@ node locale/scripts/locale-branch-manager.js --commit-and-push \
 
 ### 4e. The push uploads it
 
-Every push to a `locale/translate/**` branch runs [`Locale: upload missing terms`](../../.github/workflows/locale-upload-missing.yml). It uploads the locales that push changed to POEditor, then starts `Locale Sync POEditor`, which brings the translations back to `master` as a PR. Do not upload by hand, and do not commit refreshed batch files: the translation branch is never merged.
+Every push to a `locale/translate/**` branch that starts Actions (a push made with `GITHUB_TOKEN` does not) runs [`Locale: upload translations`](../../.github/workflows/locale-upload-missing.yml). It uploads the locales that push changed to POEditor, then starts `Locale: sync` (download only), which brings the translations back to `master` as a PR. Do not upload by hand, and do not commit refreshed batch files: the translation branch is never merged.
 
 Upload by hand only when that run cannot happen or failed:
 
@@ -254,6 +260,21 @@ d = json.load(open('locale/terms/english-ok.json'))
 print(f\"fil: {len(d.get('fil', []))} terms\")
 "
 ```
+
+---
+
+## Lessons from review <!-- learned: 2026-09-30 -->
+
+- `--apply` rejects entries containing another script (Haiku leaked Hindi, Bengali and Japanese into ta, te, th). Rewrite the rejected entries by hand and apply again.
+- `--apply` only fills empty terms. To fix a translation already applied, edit the batch JSON directly (keep indentation and the trailing newline), then verify with `git diff -U0`.
+- Review bots caught what the script cannot: words from another language (Italian in uk, Russian in uk), "mail" rendered as e-mail, "unauthenticated" rendered as authenticated, a lost "cannot" (am), "groups" rendered as "matters" (vi). Re-read the negations, the "Mail"/"Mailing Address" strings and the access/auth strings before the first push.
+- Haiku is weakest on am, ta, te, ml. Use a stronger model or flag those files for native review.
+
+---
+
+## Model selection & cost optimization
+
+**Use Haiku 4.5 for all runs.** See [`locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md#model-selection--cost-efficiency) for cross-provider comparison, cost matrix, and the Sept 2026 session results.
 
 ---
 

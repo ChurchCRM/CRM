@@ -92,6 +92,29 @@ class UserService
     }
 
     /**
+     * True when the person is an administrator who can sign in and no other
+     * administrator can. Such a person must not be made deceased or inactive.
+     */
+    public function isLastSignInCapableAdmin(int $personId): bool
+    {
+        $isTargetAdmin = false;
+        $otherAdmins = 0;
+
+        foreach (UserQuery::create()->filterByAdmin(true)->find() as $admin) {
+            if (!$admin->canSignIn()) {
+                continue;
+            }
+            if ($admin->getPersonId() === $personId) {
+                $isTargetAdmin = true;
+            } else {
+                $otherAdmins++;
+            }
+        }
+
+        return $isTargetAdmin && $otherAdmins === 0;
+    }
+
+    /**
      * Get users with failed login attempts
      * @return User[]|ObjectCollection
      */

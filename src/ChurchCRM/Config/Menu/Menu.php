@@ -222,13 +222,20 @@ class Menu
      * Plugins can register menu items via getMenuItems() which specify a 'parent' key.
      * This method merges those items into the appropriate parent menu.
      *
+     * An item that declares a non-empty 'permission' is shown only when
+     * User::isEnabledSecurity() grants it to the current user (administrators always pass).
+     * An unrecognized permission name is not granted, so the item is hidden. Items without
+     * a 'permission' are shown to every signed-in user. This controls visibility only; the
+     * plugin's routes must enforce access themselves.
+     *
      * @param array<string, MenuItem> $menus The main menu array to modify
      */
     private static function addPluginMenuItems(array &$menus): void
     {
         try {
             $pluginMenuItems = PluginManager::getPluginMenuItems();
-            
+            $currentUser = AuthenticationManager::getCurrentUser();
+
             foreach ($pluginMenuItems as $parentKey => $items) {
                 // Find the parent menu (case-insensitive match)
                 $parentMenu = null;
@@ -246,6 +253,11 @@ class Menu
                 
                 // Add each plugin menu item as a submenu
                 foreach ($items as $item) {
+                    $permission = $item['permission'] ?? '';
+                    if ($permission !== '' && !(is_string($permission) && $currentUser->isEnabledSecurity($permission))) {
+                        continue;
+                    }
+
                     $label = $item['label'] ?? '';
                     $url = $item['url'] ?? '';
                     $icon = $item['icon'] ?? 'fa-plug';

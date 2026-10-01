@@ -3562,7 +3562,6 @@
   "System upgrade completed successfully!": "Sistem yükseltme başarıyla tamamlandı!",
   "Text All": "Tüm Metni",
   "The selected file exceeds this servers maximum upload size of": "Seçilen dosya, bu sunucuların maksimum yükleme boyutunu aşıyor",
-  "There are no events scheduled for today": "Bugün için planlanmış etkinlik yok",
   "There was a problem retrieving the requested object": "İstenen nesneyi geri almada bir sorun vardı",
   "This event type is used by": "Bu etkinlik türü şu tarafından kullanılıyor",
   "This field is required": "Bu alan gereklidir",
@@ -4538,6 +4537,7 @@
   "View Full Family Giving": "Tam Aile Bağışını Görüntüle",
   "Volunteer Opportunity": "Gönüllü Fırsat",
   "Volunteers for Two Opportunities": "İki Fırsat için Gönüllüler",
+  "YTD": "Yıl başından beri",
   "YTD Paid": "YTD Ödendi",
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "bu olayın etrafındaki hatalar için ilgili günlük dosyasını indirin ve GitHub sorununuza ekleyin - bu sorunu takip eden sorular sormadan düzeltmemize yardımcı olur.",
   "system logs": "sistem günlükleri"

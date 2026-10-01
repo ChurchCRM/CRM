@@ -14920,10 +14920,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Vybraný soubor přesahuje maximální velikost nahrávání tohoto serveru"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Na dnešek nejsou naplánované žádné události"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Vyskytl se problém s načtením požadovaného objektu"
 
@@ -16911,6 +16907,10 @@ msgid "Count unique installs"
 msgstr "Počítat unikátní instalace"
 
 #: 
+msgid "Data"
+msgstr "Data"
+
+#: 
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr "Data jsou zpracovávána službou PostHog na infrastruktuře v EU."
 
@@ -18222,6 +18222,10 @@ msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0
 msgstr "Počet dní, které mají uživatelé na aktivaci dvoufaktorového ověření poté, co se stane povinným. Nastavením na 0 se vynutí okamžitě. Zkrácení aktivní ochranné lhůty může uživatele okamžitě uzamknout."
 
 #: 
+msgid "Offline"
+msgstr "Offline"
+
+#: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
 msgstr "Proveďte to až po vyřešení základního problému. Před opětovným spuštěním pluginu budete stále muset kliknout na Povolit."
 
@@ -18724,4 +18728,72 @@ msgstr "Spustit zprávu"
 #: 
 msgid "Second Volunteer Opportunity"
 msgstr "Druhá příležitost pro dobrovolníka"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Zobrazuje se v postranním panelu, na přihlašovací stránce a v e-mailech. Nahráním loga se značka ChurchCRM nahradí všude, kde se zobrazuje."
+
+#: 
+msgid "Single Pages"
+msgstr "Jednotlivé stránky"
+
+#: 
+msgid "Tax Documents"
+msgstr "Daňové doklady"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Odeslání e-mailu s daňovým dokladem se nezdařilo. Zkontrolujte prosím nastavení e-mailového serveru."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Dvě poloviční stránky vedle sebe na každém listu na šířku v pořadí pro brožuru. Tiskněte oboustranně s otáčením podél kratší hrany a poté stoh přeložte napůl. Sloupce se počítají na půlstránku."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Daňový doklad nelze odeslat e-mailem: pro daný rok nebyly nalezeny žádné platební údaje."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Daňový doklad nelze odeslat e-mailem: tato rodina nemá uvedenou e-mailovou adresu."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Nelze přeložit název hostitele serveru OpenLP. Zkontrolujte adresu a síťové připojení."
+
+#: 
+msgid "Upload"
+msgstr "Nahrát"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Používá se výchozí logo ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Zobrazit všechny dary rodiny"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Dobrovolnická příležitost"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Dobrovolníci pro dvě příležitosti"
+
+#: 
+msgid "YTD"
+msgstr "Od začátku roku"
+
+#: 
+msgid "YTD Paid"
+msgstr "Zaplaceno od začátku roku"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "kvůli chybám v době, kdy k tomu došlo, a stáhněte a připojte příslušný soubor protokolu k hlášení na GitHubu – pomůže nám to vyřešit problém bez dalších doplňujících otázek."
+
+#: 
+msgid "system logs"
+msgstr "systémové protokoly"
 
