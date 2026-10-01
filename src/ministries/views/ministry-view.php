@@ -1168,10 +1168,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <input type="date" class="form-control" id="schedule-form-window-end">
           </div>
         </div>
-        <label class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="schedule-form-active" checked>
-          <span class="form-check-label"><?= gettext('Active') ?></span>
-        </label>
 
         <!--
           Staffing needs (§2.10). A requirement is a separate entity from a position and

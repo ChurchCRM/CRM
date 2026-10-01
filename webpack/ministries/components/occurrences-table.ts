@@ -120,7 +120,7 @@ export interface OccurrencesTableHandle {
    * Switch to this tab narrowed to what was just made (D33): the Event box, the team where the
    * page offers one, and the dates from today on.
    */
-  reveal(filter: { text: string; teamId?: number | null }): void;
+  reveal(filter: { text: string; teamId?: number | null; from?: string; to?: string }): void;
 }
 
 export function createOccurrencesTable(options: OccurrencesTableOptions): OccurrencesTableHandle {
@@ -175,9 +175,10 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
 
     destroyDataTable("volunteerOccurrencesTable");
 
+    const back = filterQuery();
     body.innerHTML = rows
       .map((occurrence) => {
-        const href = options.occurrenceUrl(occurrence.id);
+        const href = `${options.occurrenceUrl(occurrence.id)}${back}`;
         const when = occurrence.start ?? occurrence.occurrenceDate ?? "";
         // One cell, one icon, says how the occurrence stands (review, 2026-09-18);
         // the words live in the tooltip. An EMPTY plan is not "fully staffed"
@@ -613,7 +614,25 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     occurrences = null;
   }
 
-  function reveal(filter: { text: string; teamId?: number | null }): void {
+  /** The current search, carried to an occurrence page so its Back button can return to it. */
+  function filterQuery(): string {
+    const params = new URLSearchParams();
+    const add = (key: string, id: string): void => {
+      const value = byId<HTMLInputElement | HTMLSelectElement>(id)?.value.trim() ?? "";
+      if (value !== "") {
+        params.set(key, value);
+      }
+    };
+    add("team", "occurrence-team-filter");
+    add("q", "occurrence-event-filter");
+    add("from", "occurrence-from");
+    add("to", "occurrence-to");
+    const query = params.toString();
+
+    return query === "" ? "" : `?${query}`;
+  }
+
+  function reveal(filter: { text: string; teamId?: number | null; from?: string; to?: string }): void {
     const set = (id: string, text: string): void => {
       const input = byId<HTMLInputElement>(id);
       if (input) {
@@ -621,8 +640,8 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
       }
     };
     set("occurrence-event-filter", filter.text);
-    set("occurrence-from", isoDate(0));
-    set("occurrence-to", "");
+    set("occurrence-from", filter.from ?? isoDate(0));
+    set("occurrence-to", filter.to ?? "");
     fillTeamFilter();
     set("occurrence-team-filter", filter.teamId ? String(filter.teamId) : "");
     occurrences = null;

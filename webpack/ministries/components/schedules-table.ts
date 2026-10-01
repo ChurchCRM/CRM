@@ -370,12 +370,14 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       const hint = byId("schedule-form-group-hint");
       const anyDisabled = rows.some((row) => !selectable(row));
       if (hint && anyDisabled) {
-        hint.textContent = options.addEvents
-          ? i18next.t(
-              "A class with no meetings on the calendar cannot be chosen yet. Add its meetings first with New recurring event on the Calendar tab, giving the class as the event's class.",
-            )
-          : i18next.t(
-              "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.",
+        hint.innerHTML = options.addEvents
+          ? `${escapeHtml(i18next.t("A class with no meetings on the calendar cannot be chosen yet."))} <a href="#" id="schedule-form-add-meetings">${escapeHtml(
+              i18next.t("Add its meetings first with New recurring event on the Calendar tab"),
+            )}</a>`
+          : escapeHtml(
+              i18next.t(
+                "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.",
+              ),
             );
       }
       show(hint, anyDisabled);
@@ -673,11 +675,6 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       set("schedule-form-window-start", schedule?.windowStart ?? isoDate(0));
       set("schedule-form-window-end", schedule?.windowEnd ?? "");
 
-      const active = byId<HTMLInputElement>("schedule-form-active");
-      if (active) {
-        active.checked = schedule?.active ?? true;
-      }
-
       const title = byId("scheduleModalTitle");
       if (title) {
         title.textContent = schedule ? i18next.t("Edit schedule") : i18next.t("Add schedule");
@@ -719,7 +716,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       teamId: Number(teamId),
       windowStart: value("schedule-form-window-start"),
       windowEnd: value("schedule-form-window-end") === "" ? null : value("schedule-form-window-end"),
-      active: byId<HTMLInputElement>("schedule-form-active")?.checked ?? true,
+      ...(editingScheduleId === 0 ? { active: true } : {}),
     };
 
     if (linkMode === "event_type") {
@@ -1211,6 +1208,24 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     });
 
     byId("schedule-add-btn")?.addEventListener("click", () => openModal());
+    document.addEventListener("click", (event) => {
+      const link = (event.target as HTMLElement | null)?.closest("#schedule-form-add-meetings");
+      if (!link || !options.addEvents) {
+        return;
+      }
+      event.preventDefault();
+      const team = options
+        .teams()
+        .find((candidate) => candidate.id === Number(byId<HTMLSelectElement>("schedule-form-team")?.value ?? 0));
+      const empty =
+        team?.classGroupId &&
+        !(classes ?? []).some((row) => row.groupId === team.classGroupId && row.upcomingCount > 0);
+      const prefill = empty
+        ? { groupId: team.classGroupId ?? null, groupName: team.classGroupName ?? null, title: null }
+        : { groupId: null, groupName: null, title: null };
+      byId("scheduleModal")?.addEventListener("hidden.bs.modal", () => options.addEvents?.(prefill), { once: true });
+      hideModal("scheduleModal");
+    });
     byId("schedule-form-save")?.addEventListener("click", save);
     byId("schedule-form-link-mode")?.addEventListener("change", () => {
       modeFromTeamClass = false;

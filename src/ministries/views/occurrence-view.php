@@ -50,6 +50,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div id="volunteer-occurrence">
 
+  <a class="btn btn-outline-secondary mb-3" id="occurrence-back" href="<?= InputUtils::escapeAttribute($sBackUrl) ?>">
+    <i class="fa-solid fa-arrow-left me-1"></i><?= gettext('Back to Occurrences') ?>
+  </a>
+
   <!-- Header: when, where the time comes from, and what state the occurrence is in -->
   <div class="card mb-3">
     <div class="card-body d-flex flex-wrap gap-3 align-items-start justify-content-between">

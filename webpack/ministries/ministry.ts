@@ -1121,6 +1121,21 @@ function classEventsQuestion(counted: TeamClassEvents): string {
     </fieldset>`;
 }
 
+/** An occurrence page's Back button returns here with `?tab=occurrences` and the search it came from. */
+function restoreOccurrenceSearch(): void {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("tab") !== "occurrences") {
+    return;
+  }
+  const isDate = (value: string | null): value is string => value !== null && /^\d{4}-\d{2}-\d{2}$/.test(value);
+  occurrencesTable.reveal({
+    text: params.get("q") ?? "",
+    teamId: Number(params.get("team")) || null,
+    from: isDate(params.get("from")) ? (params.get("from") as string) : undefined,
+    to: isDate(params.get("to")) ? (params.get("to") as string) : "",
+  });
+}
+
 function init(): void {
   const config = (window.CRM?.volunteerMinistry ?? {
     ministryId: 0,
@@ -1139,7 +1154,7 @@ function init(): void {
 
   buildComponents();
   wire();
-  void load();
+  void load().then(restoreOccurrenceSearch);
   // The coordinator/team-leader card (#9706) owns its own markup, state and
   // requests; this is the whole of its integration with the page.
   // A grant puts the person in the pool (2026-09-18), so the Volunteers grid is stale.

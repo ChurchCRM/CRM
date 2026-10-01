@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
@@ -85,9 +86,30 @@ $app->group('', function (RouteCollectorProxy $group): void {
         $ministryName = $ministry === null ? gettext('Ministry') : $ministry->getName();
         $scheduleName = $schedule === null ? gettext('Schedule') : $schedule->getName();
 
+        $query = $request->getQueryParams();
+        $back = ['tab' => 'occurrences'];
+        $backTeamId = InputUtils::filterInt($query['team'] ?? 0);
+        if ($backTeamId > 0) {
+            $back['team'] = $backTeamId;
+        }
+        $text = trim(mb_substr((string) ($query['q'] ?? ''), 0, 100));
+        if ($text !== '') {
+            $back['q'] = $text;
+        }
+        foreach (['from', 'to'] as $key) {
+            $date = (string) ($query[$key] ?? '');
+            if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) === 1) {
+                $back[$key] = $date;
+            }
+        }
+        $backUrl = $ministry === null
+            ? '/ministries/dashboard'
+            : '/ministries/' . (int) $ministry->getId() . '?' . http_build_query($back);
+
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
         return $renderer->render($response, 'occurrence-view.php', [
+            'sBackUrl' => SystemURLs::getRootPath() . $backUrl,
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => $scheduleName,
             'sPageSubtitle' => gettext('Who is needed, who is on, and what is still short'),
