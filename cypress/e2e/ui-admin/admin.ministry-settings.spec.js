@@ -221,6 +221,11 @@ describe("Admin → Ministry Settings", () => {
         freshAdminLogin();
         cy.visit(PAGE_URL);
 
+        // Shown in ChurchCRM's locale; the stored value stays on the <time> element.
+        cy.get("#ministry-topup-last-run time")
+            .should("have.attr", "datetime", "2026-09-30 06:00:00")
+            .and("contain", "6:00")
+            .and("not.contain", "2026-09-30");
         cy.get("#ministry-topup-created").should("contain", "5 new occurrences");
         cy.get("#ministry-topup-assigned").should("contain", "4 default volunteers assigned");
         cy.get("#ministry-topup-unqualified").should("contain", "2 defaults skipped: qualification revoked");

@@ -59,12 +59,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <p class="mb-2">
             <i class="fa-solid fa-clock-rotate-left me-1"></i>
             <?= gettext('Background jobs last ran') ?>:
-            <strong id="ministry-last-run"><?= $sLastTimerJobsRun === '' ? gettext('never') : InputUtils::escapeHTML($sLastTimerJobsRun) ?></strong>
+            <strong id="ministry-last-run"><?php if ($sLastTimerJobsRun === ''): ?><?= gettext('never') ?><?php else: ?><time datetime="<?= InputUtils::escapeAttribute($sLastTimerJobsRun) ?>" data-format="datetime"><?= InputUtils::escapeHTML($sLastTimerJobsRun) ?></time><?php endif; ?></strong>
           </p>
           <p class="mb-2" id="ministry-topup">
             <i class="fa-solid fa-calendar-plus me-1"></i>
             <?= gettext('Schedules last topped up') ?>:
-            <strong id="ministry-topup-last-run"><?= $aLastTopUp === null ? gettext('never') : InputUtils::escapeHTML($aLastTopUp['ranAt']) ?></strong>
+            <strong id="ministry-topup-last-run"><?php if ($aLastTopUp === null): ?><?= gettext('never') ?><?php else: ?><time datetime="<?= InputUtils::escapeAttribute($aLastTopUp['ranAt']) ?>" data-format="datetime"><?= InputUtils::escapeHTML($aLastTopUp['ranAt']) ?></time><?php endif; ?></strong>
             <?php if ($aLastTopUp !== null): ?>
               <span class="text-body-secondary" id="ministry-topup-created">— <?= InputUtils::escapeHTML(sprintf(
                   ngettext('%d new occurrence', '%d new occurrences', $aLastTopUp['created']),
@@ -131,7 +131,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <tr>
                       <td><?= InputUtils::escapeHTML($failure['type']) ?></td>
                       <td><?= InputUtils::escapeHTML($failure['person']) ?></td>
-                      <td><?= InputUtils::escapeHTML($failure['lastAttempt']) ?></td>
+                      <td><time datetime="<?= InputUtils::escapeAttribute($failure['lastAttempt']) ?>" data-format="datetime"><?= InputUtils::escapeHTML($failure['lastAttempt']) ?></time></td>
                       <td class="text-body-secondary small"><?= InputUtils::escapeHTML($failure['error']) ?></td>
                     </tr>
                   <?php endforeach; ?>
@@ -174,6 +174,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-settings.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function () {
     var runBtn = document.getElementById('ministry-run-jobs-btn');

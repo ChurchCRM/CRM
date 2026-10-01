@@ -113,6 +113,7 @@ module.exports = {
     'ministries-dashboard': './webpack/ministries/dashboard',
     'ministries-ministry': './webpack/ministries/ministry',
     'ministries-occurrence': './webpack/ministries/occurrence',
+    'ministries-settings': './webpack/ministries/settings',
     'portal-volunteer-schedule': './webpack/portal/volunteer-schedule',
     'portal-volunteer-opportunities': './webpack/portal/volunteer-opportunities',
     'email-composer': './webpack/common/email-composer',
