@@ -388,7 +388,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress tests (setup wizard, PHP 8.5)
-      uses: cypress-io/github-action@c541a95ea92d9239347a2355f2e895cd4b3f8060 # v7.4.6
+      uses: ./.github/actions/cypress
       with:
         command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-new-system-[suiteName]-[hash].xml
 
@@ -475,7 +475,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress tests (setup wizard subdir, PHP 8.5)
-      uses: cypress-io/github-action@c541a95ea92d9239347a2355f2e895cd4b3f8060 # v7.4.6
+      uses: ./.github/actions/cypress
       with:
         command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-new-system-subdir-[suiteName]-[hash].xml
       env:
@@ -803,7 +803,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress upgrade test (${{ matrix.group.name }}, PHP ${{ matrix.php-version }})
-      uses: cypress-io/github-action@c541a95ea92d9239347a2355f2e895cd4b3f8060 # v7.4.6
+      uses: ./.github/actions/cypress
       with:
         command: npx cypress run --config-file cypress/configs/upgrade.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.group.name }}-[hash].xml
       env:
