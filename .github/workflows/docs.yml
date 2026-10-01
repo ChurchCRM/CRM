@@ -38,7 +38,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout CRM
-        uses: actions/checkout@v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/composer-install
         with:
           no-dev: 'false'
@@ -47,7 +47,7 @@ jobs:
       - name: Generate Private API spec
         run: cd src && composer run openapi:private
       - name: Upload generated specs as artifacts
-        uses: actions/upload-artifact@v7
+        uses: ./.github/actions/upload-artifact
         with:
           name: openapi-specs-${{ github.run_id }}
           path: docs/openapi/generated/*.yaml
@@ -62,7 +62,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout CRM
-        uses: actions/checkout@v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/composer-install
         with:
           no-dev: 'false'
@@ -87,7 +87,7 @@ jobs:
           git commit -m "docs: update OpenAPI specifications"
           git push origin master
       - name: Upload generated specs as artifacts
-        uses: actions/upload-artifact@v7
+        uses: ./.github/actions/upload-artifact
         with:
           name: openapi-specs-${{ github.run_id }}
           path: docs/openapi/generated/*.yaml

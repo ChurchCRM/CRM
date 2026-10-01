@@ -420,11 +420,11 @@ jobs:
       TARGET_COMMIT: ${{ needs.publish.outputs.target_commit }}
     steps:
       # Pinned to commit SHAs (v7); the other workflows move with #10006.
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           sparse-checkout: scripts
 
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+      - uses: ./.github/actions/setup-node
         with:
           node-version-file: '.nvmrc'
 
@@ -432,7 +432,7 @@ jobs:
         run: node scripts/release-notes-context.js "$PREVIOUS_TAG" "$TARGET_COMMIT" > "release-notes-context-$TAG.md"
 
       - name: Upload context
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        uses: ./.github/actions/upload-artifact
         with:
           name: release-notes-context-${{ needs.publish.outputs.release_tag }}
           path: release-notes-context-${{ needs.publish.outputs.release_tag }}.md
