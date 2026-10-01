@@ -1,171 +1,101 @@
 /// <reference types="cypress" />
 
-/**
- * Donation Fund Category Tests
- *
- * Tests for the fun_Category field on donationfund_fun table.
- * Covers:
- * - Creating and editing funds with a category in DonationFundEditor.php
- * - Grouping of funds by category in the Finance Dashboard
- * - Category-based optgroup grouping in the Financial Reports fund filter
- */
+const stamp = Date.now();
+const category = `UI Category ${stamp}`;
+const renamed = `UI Renamed ${stamp}`;
+const fundName = `UI Cat Fund ${stamp}`;
+const API = "/finance/api/funds";
 
-// Shared test data — defined at file scope so all describe blocks can reuse them
-const categoryName = "Test Category " + Date.now();
-const fundName = "Test Fund Cat " + Date.now();
-
-/** Helper: create the test fund with a category via the DonationFundEditor UI */
-function createCategorizedFund() {
-    cy.setupAdminSession();
-    cy.visit("/DonationFundEditor.php");
-    cy.get("#newFieldName").type(fundName);
-    cy.get("#newFieldCategory").type(categoryName);
-    cy.get("#newFieldDesc").type("Category test fund");
-    cy.get("[name='AddField']").click();
-
-    // The Category column renders as an <input> inside <td>, not as text content
-    cy.get("input[name$='name'][value='" + fundName + "']")
-        .closest("tr")
-        .find("input[name$='category']")
-        .should("have.value", categoryName);
-}
-
-describe("Donation Fund Category - Editor", () => {
-    before(() => {
-        createCategorizedFund();
-    });
-
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
-    it("should display the Category column in the existing funds table", () => {
-        cy.visit("/DonationFundEditor.php");
-        cy.contains("th", "Category").should("be.visible");
-    });
-
-    it("should display Category field in the Add New Fund form", () => {
-        cy.visit("/DonationFundEditor.php");
-        cy.get("#newFieldCategory").should("be.visible");
-    });
-
-    it("should persist the fund category after creation", () => {
-        cy.visit("/DonationFundEditor.php");
-
-        // The Category column renders as an <input> — find the row by fund name input
-        // and assert the category input value
-        cy.get("input[name$='name'][value='" + fundName + "']")
-            .closest("tr")
-            .find("input[name$='category']")
-            .should("have.value", categoryName);
-    });
-
-    it("should allow editing the category of an existing fund", () => {
-        const updatedCategory = "Updated Category " + Date.now();
-
-        cy.visit("/DonationFundEditor.php");
-
-        // Find the row for our fund via the name input and update its category input
-        cy.get("input[name$='name'][value='" + fundName + "']")
-            .closest("tr")
-            .find("input[name$='category']")
-            .clear()
-            .type(updatedCategory);
-
-        cy.get("[name='SaveChanges']").click();
-
-        // After save the updated category value should appear in the category input
-        cy.get("input[name$='name'][value='" + fundName + "']")
-            .closest("tr")
-            .find("input[name$='category']")
-            .should("have.value", updatedCategory);
-    });
-});
-
-describe("Donation Fund Category - Finance Dashboard", () => {
-    // Use separate fund/category names so this describe block is fully
-    // independent of the Editor describe block above (which modifies the
-    // shared fund's category in its edit test, breaking the createCategorizedFund
-    // assertion if we try to reuse the same constants).
-    const dashCategoryName = "Dashboard Category " + Date.now();
-    const dashFundName = "Dashboard Fund " + Date.now();
+describe("Donation Fund Categories - funds page", () => {
+    let fundId;
 
     before(() => {
-        // Ensure a categorized fund exists regardless of spec execution order
         cy.setupAdminSession();
-        cy.visit("DonationFundEditor.php");
-        cy.get("#newFieldName").type(dashFundName);
-        cy.get("#newFieldCategory").type(dashCategoryName);
-        cy.get("#newFieldDesc").type("Dashboard category test fund");
-        cy.get("[name='AddField']").click();
-        cy.get("input[name$='name'][value='" + dashFundName + "']")
-            .closest("tr")
-            .find("input[name$='category']")
-            .should("have.value", dashCategoryName);
+        cy.makePrivateAdminAPICall("POST", API, { name: fundName, category }, 201).then((resp) => {
+            fundId = resp.body.fund.id;
+        });
+    });
+
+    after(() => {
+        cy.setupAdminSession();
+        cy.makePrivateAdminAPICall("DELETE", `${API}/${fundId}`, null, [200, 404]);
     });
 
     beforeEach(() => {
         cy.setupAdminSession();
     });
 
-    it("should display the Donation Funds section on the dashboard", () => {
+    it("shows the category column and category inputs", () => {
+        cy.visit("/finance/funds");
+        cy.contains("th", "Category").should("exist");
+        cy.get("#newFundCategory").should("be.visible");
+        cy.contains("#fundsTable tr", fundName).should("contain", category);
+    });
+
+    it("opens Edit with the Active switch matching the fund's status", () => {
+        cy.visit("/finance/funds");
+        cy.contains("#fundsTable tr", fundName).find(".fund-edit-btn").click({ force: true });
+        cy.get("#editFundActive").should("be.checked");
+    });
+
+    it("pre-fills the category when editing a fund and saves a new one", () => {
+        cy.visit("/finance/funds");
+        cy.contains("#fundsTable tr", fundName).find(".fund-edit-btn").click({ force: true });
+        cy.get("#editFundCategory").should("have.value", category).clear().type(`${category} edited`);
+        cy.get("#saveFundEdit").click();
+        cy.contains("#fundsTable tr", fundName).should("contain", `${category} edited`);
+    });
+
+    it("groups the fund under its category on the dashboard and report filter", () => {
         cy.visit("/finance/");
-        // Target the card heading specifically — cy.contains("Donation Funds") without a
-        // scope selector would match the Finance nav sidebar link first, which is hidden.
-        cy.contains("h3.card-title", "Donation Funds").should("be.visible");
-    });
-
-    it("should render category headers for funds that have a category assigned", () => {
-        cy.visit("/finance/");
-
-        // Category headers render as <small class="text-muted fw-bold text-uppercase">
-        // inside the card body of the Donation Funds card.
-        cy.contains("h3.card-title", "Donation Funds")
-            .closest(".card")
-            .find("small.text-muted")
-            .should("have.length.at.least", 1);
-    });
-});
-
-describe("Donation Fund Category - Financial Reports Fund Filter", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
-    it("should show fund filter optgroups on Giving Report", () => {
+        cy.contains("h3.card-title", "Donation Funds").closest(".card").should("contain", fundName);
         cy.visit("/FinancialReports.php");
         cy.get("#FinancialReportTypes").select("Giving Report");
         cy.get("#FinancialReports").submit();
-
-        cy.get("#fundsList").should("be.visible");
         cy.get("#fundsList optgroup").should("have.length.at.least", 1);
+        cy.contains("#fundsList option", fundName).should("exist");
     });
 
-    it("should show fund filter optgroups on Pledge Summary", () => {
-        cy.visit("/FinancialReports.php");
-        cy.get("#FinancialReportTypes").select("Pledge Family Summary");
-        cy.get("#FinancialReports").submit();
-
-        cy.get("#fundsList").should("be.visible");
-        cy.get("#fundsList optgroup").should("have.length.at.least", 1);
+    it("renames a category from the manage card", () => {
+        cy.makePrivateAdminAPICall("PUT", `${API}/${fundId}`, { category }, 200);
+        cy.visit("/finance/funds");
+        cy.get(`.category-rename-btn[data-category="${category}"]`).click();
+        cy.get(".bootbox-input").clear().type(renamed);
+        cy.get(".bootbox .btn-primary").click();
+        cy.contains("#fundsTable tr", fundName).should("contain", renamed);
     });
 
-    it("should show fund filter optgroups on Advanced Deposit Report", () => {
-        cy.visit("/FinancialReports.php");
-        cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-        cy.get("#FinancialReports").submit();
+    it("deleting a category keeps the fund but clears its category", () => {
+        cy.visit("/finance/funds");
+        cy.get(`.category-delete-btn[data-category="${renamed}"]`).click();
+        cy.get(".bootbox .btn-danger").click();
+        cy.contains("#fundsTable tr", fundName).should("exist").and("not.contain", renamed);
+    });
+});
 
-        cy.get("#fundsList").should("be.visible");
-        cy.get("#fundsList optgroup").should("have.length.at.least", 1);
+describe("Donation Funds - activate / deactivate from the row menu", () => {
+    const toggleName = `UI Toggle Fund ${Date.now()}`;
+    let toggleId;
+
+    before(() => {
+        cy.setupAdminSession();
+        cy.makePrivateAdminAPICall("POST", API, { name: toggleName }, 201).then((resp) => {
+            toggleId = resp.body.fund.id;
+        });
     });
 
-    it("should list funds in the Uncategorized group when no category is set", () => {
-        cy.visit("/FinancialReports.php");
-        cy.get("#FinancialReportTypes").select("Giving Report");
-        cy.get("#FinancialReports").submit();
+    after(() => {
+        cy.setupAdminSession();
+        cy.makePrivateAdminAPICall("DELETE", `${API}/${toggleId}`, null, [200, 404]);
+    });
 
-        // The default demo database has at least the 'Pledges' fund with no category
-        cy.get("#fundsList optgroup[label='Uncategorized']").should("exist");
-        cy.get("#fundsList optgroup[label='Uncategorized'] option").should("have.length.at.least", 1);
+    it("deactivates and reactivates a fund without opening Edit", () => {
+        cy.setupAdminSession();
+        cy.visit("/finance/funds");
+        cy.contains("#fundsTable tr", toggleName).find(".fund-toggle-active-btn").click({ force: true });
+        cy.contains("#fundsTable tr", toggleName).should("contain", "Inactive");
+
+        cy.contains("#fundsTable tr", toggleName).find(".fund-toggle-active-btn").click({ force: true });
+        cy.contains("#fundsTable tr", toggleName).should("contain", "Active").and("not.contain", "Inactive");
     });
 });

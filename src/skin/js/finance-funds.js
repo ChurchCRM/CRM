@@ -5,8 +5,10 @@
  * - DataTable enhancement of the server-rendered funds table
  * - Inline add new fund (POST /finance/api/funds)
  * - Edit fund via modal (PUT /finance/api/funds/{id})
+ * - Activate / deactivate (PUT /finance/api/funds/{id} with active)
  * - Move up / move down (PATCH /finance/api/funds/{id}/order)
  * - Delete fund with bootbox confirmation (DELETE /finance/api/funds/{id})
+ * - Rename / delete a category across funds (PUT/DELETE /finance/api/funds/categories)
  *
  * Requires: jQuery, DataTables, bootbox, i18next, window.CRM (loaded globally)
  * window.CRM.funds is injected by the PHP view.
@@ -53,11 +55,12 @@
       columns: [
         null, // Name
         null, // Description
+        null, // Category
         null, // Active
         { orderable: false, searchable: false }, // Actions
       ],
       order: [], // preserve server-defined order
-      columnDefs: [{ targets: [3], className: "text-center" }],
+      columnDefs: [{ targets: [4], className: "text-center" }],
     };
     $.extend(true, config, window.CRM.plugin ? window.CRM.plugin.dataTable : {});
     $("#fundsTable").DataTable(config);
@@ -71,6 +74,7 @@
     $("#addNewFund").on("click", () => {
       var name = $.trim($("#newFundName").val());
       var desc = $.trim($("#newFundDesc").val());
+      var category = $.trim($("#newFundCategory").val());
 
       $("#addFundError").addClass("d-none").text("");
 
@@ -79,7 +83,7 @@
         return;
       }
 
-      apiFetch("POST", apiBase, { name: name, description: desc, active: true })
+      apiFetch("POST", apiBase, { name: name, description: desc, category: category, active: true })
         .then((res) => {
           if (res.ok) {
             notify(i18n.addedOk, "success");
@@ -113,7 +117,8 @@
       $("#editFundId").val(btn.data("fund-id"));
       $("#editFundName").val(btn.data("fund-name"));
       $("#editFundDesc").val(btn.data("fund-desc"));
-      $("#editFundActive").prop("checked", btn.data("fund-active") === "true");
+      $("#editFundCategory").val(btn.data("fund-category"));
+      $("#editFundActive").prop("checked", btn.attr("data-fund-active") === "true");
       $("#editFundError").addClass("d-none").text("");
       $("#editFundModal").modal("show");
     });
@@ -133,6 +138,7 @@
       var payload = {
         name: name,
         description: $.trim($("#editFundDesc").val()),
+        category: $.trim($("#editFundCategory").val()),
         active: $("#editFundActive").is(":checked"),
       };
 
@@ -150,6 +156,28 @@
         .catch(() => {
           $("#editFundError").removeClass("d-none").text(i18n.errServer);
         });
+    });
+  }
+
+  // -----------------------------------------------------------------------
+  // Activate / deactivate from the row menu
+  // -----------------------------------------------------------------------
+
+  function bindToggleActive() {
+    $(document).on("click", ".fund-toggle-active-btn", function () {
+      var btn = $(this);
+      var activate = btn.attr("data-fund-active") !== "true";
+
+      apiFetch("PUT", `${apiBase}/${btn.data("fund-id")}`, { active: activate })
+        .then((res) => {
+          if (res.ok) {
+            notify(activate ? i18n.activatedOk : i18n.deactivatedOk, "success");
+            window.location.reload();
+          } else {
+            notify(res.data?.message ? res.data.message : i18n.errServer, "error");
+          }
+        })
+        .catch(() => notify(i18n.errServer, "error"));
     });
   }
 
@@ -227,6 +255,62 @@
   }
 
   // -----------------------------------------------------------------------
+  // Categories: rename / delete (applies to every fund in the category)
+  // -----------------------------------------------------------------------
+
+  function categoryRequest(method, url, body) {
+    apiFetch(method, url, body)
+      .then((res) => {
+        if (res.ok) {
+          notify(i18n.categoryUpdatedOk, "success");
+          window.location.reload();
+        } else {
+          notify(res.data?.message ? res.data.message : i18n.errServer, "error");
+        }
+      })
+      .catch(() => notify(i18n.errServer, "error"));
+  }
+
+  function bindCategories() {
+    $(document).on("click", ".category-rename-btn", function () {
+      var name = $(this).data("category");
+      bootbox.prompt({
+        title: i18n.renameCategoryTitle,
+        message: i18n.renameCategoryPrompt,
+        value: name,
+        buttons: {
+          cancel: { label: i18n.cancel, className: "btn-secondary" },
+          confirm: { label: i18n.renameLabel, className: "btn-primary" },
+        },
+        callback: (result) => {
+          var newName = $.trim(result || "");
+          if (newName && newName !== name) {
+            categoryRequest("PUT", `${apiBase}/categories`, { name: name, newName: newName });
+          }
+        },
+      });
+    });
+
+    $(document).on("click", ".category-delete-btn", function () {
+      var name = $(this).data("category");
+      bootbox.confirm({
+        title: i18n.deleteCategoryTitle,
+        message:
+          "<p><strong>" + $("<span>").text(name).html() + "</strong></p><p>" + i18n.deleteCategoryConfirm + "</p>",
+        buttons: {
+          cancel: { label: i18n.cancel, className: "btn-secondary" },
+          confirm: { label: i18n.delete, className: "btn-danger" },
+        },
+        callback: (result) => {
+          if (result) {
+            categoryRequest("DELETE", `${apiBase}/categories?name=${encodeURIComponent(name)}`);
+          }
+        },
+      });
+    });
+  }
+
+  // -----------------------------------------------------------------------
   // Init
   // -----------------------------------------------------------------------
 
@@ -234,8 +318,10 @@
     initDataTable();
     bindAddFund();
     bindEditFund();
+    bindToggleActive();
     bindReorder();
     bindDelete();
+    bindCategories();
   }
 
   $(document).ready(() => {

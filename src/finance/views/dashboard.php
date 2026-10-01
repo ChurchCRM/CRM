@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
@@ -445,26 +446,8 @@ $sRootPath = SystemURLs::getRootPath();
                     <span class="badge bg-blue-lt text-blue ms-auto"><?= $activeFundCount ?></span>
                 </div>
                 <div class="card-body p-0">
-                    <?php if ($activeFunds->count() > 0):
-                        // Partition funds into named categories (sorted) then uncategorized last
-                        $categorizedFunds = [];
-                        $uncategorizedFunds = [];
-                        foreach ($activeFunds as $fund) {
-                            $cat = $fund->getCategory();
-                            if ($cat !== null && $cat !== '') {
-                                $categorizedFunds[$cat][] = $fund;
-                            } else {
-                                $uncategorizedFunds[] = $fund;
-                            }
-                        }
-                        ksort($categorizedFunds);
-                        // Render named categories first, then uncategorized
-                        $allGroups = $categorizedFunds;
-                        if (!empty($uncategorizedFunds)) {
-                            $allGroups[''] = $uncategorizedFunds;
-                        }
-                    ?>
-                    <?php foreach ($allGroups as $category => $funds): ?>
+                    <?php if ($activeFunds->count() > 0): ?>
+                    <?php foreach ((new DonationFundService())->groupByCategory($activeFunds) as $category => $funds): ?>
                     <?php if ($category !== ''): ?>
                     <div class="px-3 pt-2 pb-1">
                         <small class="text-muted fw-bold text-uppercase"><?= InputUtils::escapeHTML($category) ?></small>
@@ -473,7 +456,9 @@ $sRootPath = SystemURLs::getRootPath();
                     <ul class="list-group list-group-flush">
                         <?php foreach ($funds as $fund): ?>
                         <li class="list-group-item d-flex justify-content-between align-items-center py-2 <?= $category !== '' ? 'ps-4' : '' ?>">
-                            <span><?= InputUtils::escapeHTML($fund->getName()) ?></span>
+                            <a href="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/fund/<?= (int) $fund->getId() ?>/contributors" class="text-decoration-none">
+                                <?= InputUtils::escapeHTML($fund->getName()) ?>
+                            </a>
                             <span class="badge bg-green-lt text-green">
                                 <i class="fa-solid fa-check"></i>
                             </span>

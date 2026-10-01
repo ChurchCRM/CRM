@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
+use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -237,44 +238,18 @@ if ($sReportType === '') {
             ->orderByActive()
             ->orderByName()
             ->find();
-        // Partition into named categories (sorted) then uncategorized last
-        $categorized = [];
-        $uncategorized = [];
-        foreach ($funds as $fund) {
-            $cat = $fund->getCategory();
-            if ($cat !== null && $cat !== '') {
-                $categorized[$cat][] = $fund;
-            } else {
-                $uncategorized[] = $fund;
-            }
-        }
-        ksort($categorized); ?>
+        $fundGroups = (new DonationFundService())->groupByCategory($funds);
+        $hasCategories = array_keys($fundGroups) !== ['']; ?>
       <div class="mb-3">
         <label class="form-label" for="fundsList"><?= gettext('Filter by Fund') ?>:</label>
         <select name="funds[]" multiple id="fundsList" class="form-select">
-          <?php
-          foreach ($categorized as $catLabel => $catFunds) {
-              echo '<optgroup label="' . InputUtils::escapeHTML($catLabel) . '">';
-              foreach ($catFunds as $fund) {
-                  echo '<option value="' . (int)$fund->getId() . '">' . InputUtils::escapeHTML($fund->getName());
-                  if ($fund->getActive() === 'false') {
-                      echo ' — INACTIVE';
-                  }
-                  echo '</option>';
-              }
-              echo '</optgroup>';
-          }
-          if (!empty($uncategorized)) {
-              echo '<optgroup label="' . gettext('Uncategorized') . '">';
-              foreach ($uncategorized as $fund) {
-                  echo '<option value="' . (int)$fund->getId() . '">' . InputUtils::escapeHTML($fund->getName());
-                  if ($fund->getActive() === 'false') {
-                      echo ' — INACTIVE';
-                  }
-                  echo '</option>';
-              }
-              echo '</optgroup>';
-          } ?>
+          <?php foreach ($fundGroups as $catLabel => $catFunds) : ?>
+            <?php if ($hasCategories) : ?><optgroup label="<?= InputUtils::escapeAttribute($catLabel !== '' ? $catLabel : gettext('Uncategorized')) ?>"><?php endif; ?>
+              <?php foreach ($catFunds as $fund) : ?>
+                <option value="<?= (int) $fund->getId() ?>"><?= InputUtils::escapeHTML($fund->getName()) ?><?= $fund->getActive() === 'false' ? ' — ' . gettext('INACTIVE') : '' ?></option>
+              <?php endforeach; ?>
+            <?php if ($hasCategories) : ?></optgroup><?php endif; ?>
+          <?php endforeach; ?>
         </select>
         <div class="d-flex gap-2 mt-2">
           <button type="button" id="addAllFunds" class="btn btn-sm btn-secondary"><?= gettext('Add All Funds') ?></button>
