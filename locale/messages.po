@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-01 17:50+0000\n"
+"POT-Creation-Date: 2026-10-01 19:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2994,6 +2994,9 @@ msgid "Could not load note."
 msgstr ""
 
 msgid "Could not load release information."
+msgstr ""
+
+msgid "Could not load the current settings. Reload the page to try again."
 msgstr ""
 
 msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
@@ -12285,6 +12288,9 @@ msgid "This report lists every event whose end date has passed but which is stil
 msgstr ""
 
 msgid "This role cannot be deleted."
+msgstr ""
+
+msgid "This setting must be a number"
 msgstr ""
 
 msgid "This title will be used for all generated events."
