@@ -670,12 +670,12 @@ export function initializeMainDashboard() {
             $("#todayEventsDashboardItem")
               .closest(".card-body")
               .html(
-                '<div class="empty py-4">' +
-                  '<div class="empty-icon"><i class="fa-solid fa-calendar-day fa-2x text-muted"></i></div>' +
-                  '<p class="empty-title">' +
+                '<div class="empty py-2">' +
+                  '<div class="empty-icon"><i class="fa-solid fa-calendar-day fa-lg text-muted"></i></div>' +
+                  '<p class="empty-title fs-6 mb-1">' +
                   i18next.t("No Events Today") +
                   "</p>" +
-                  '<p class="empty-subtitle text-muted">' +
+                  '<p class="empty-subtitle text-muted small">' +
                   i18next.t("There are no events scheduled for today") +
                   "</p>" +
                   "</div>",
