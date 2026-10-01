@@ -15012,10 +15012,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Den valda filen överskrider denna servers maximala uppladdningsstorlek på"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Det finns inga händelser schemalagda för idag"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Det gick inte att hämta det begärda objektet"
 
@@ -18890,4 +18886,236 @@ msgstr "för fel runt tiden detta hände, och ladda ner och bifoga relevant logg
 #: 
 msgid "system logs"
 msgstr "systemloggar"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Åtkomstkontroll och säkerhet"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Tillåt registrering av icke-avdragsgilla betalningar (t.ex. varuförsäljning)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Tillåt oautentiserad åtkomst till offentliga evenemang (för inbäddning av kalendrar)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Tillåt besökare att skapa sina egna familjeregister via den offentliga registreringssidan"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Skicka automatiskt födelsedagse-postmeddelanden (kräver bakgrundsjobbschemaläggare)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "E-postmeddelanden för födelsedag"
+
+#: 
+msgid "Communication & Email"
+msgstr "Kommunikation och e-post"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Content Security Policy"
+
+#: 
+msgid "Email System"
+msgstr "E-postsystem"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Aktivera eller inaktivera funktioner för din organisation"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Aktivera/inaktivera avsnittet Evenemang i huvudnavigeringen"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Aktivera/inaktivera Finansmenyn och alla finansfunktioner (insättningar, betalningar, rapporter)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Aktivera/inaktivera Insamlingsmenyn"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Använd strikta CSP-rubriker för att skydda mot XSS-attacker"
+
+#: 
+msgid "Events Module"
+msgstr "Evenemangmodul"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Funktionsväxlar"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Funktionsväxlar styr vilka moduler och funktioner som är tillgängliga i ChurchCRM. Ändringarna träder i kraft omedelbar."
+
+#: 
+msgid "Finance Features"
+msgstr "Finansfunktioner"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Inkludera adresser i snabb global sökning"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Inkludera kalenderhändelser i snabb global sökning"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Inkludera anpassade familjegenskaper i snabb global sökning"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Inkludera insättningar i snabb global sökning"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Inkludera familjer i snabb global sökning"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Inkludera ministerie i snabb global sökning"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Inkludera betalningar i snabb global sökning"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Inkludera personer i snabb global sökning"
+
+#: 
+msgid "Invalid setting"
+msgstr "Ogiltig inställning"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Länk för återställning av lösenord"
+
+#: 
+msgid "Manage All Features"
+msgstr "Hantera alla funktioner"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Huvudväxel för e-postöversändning. KRÄVS för lösenordsåterställning och meddelanden"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Icke-avdragsgilla betalningar"
+
+#: 
+msgid "Primary Modules"
+msgstr "Primära moduler"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Offentligt kalender-API"
+
+#: 
+msgid "Saved"
+msgstr "Sparad"
+
+#: 
+msgid "Search Families"
+msgstr "Sök familjer"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Sök anpassade familjegenskaper"
+
+#: 
+msgid "Search Settings"
+msgstr "Sök inställningar"
+
+#: 
+msgid "Self-Registration"
+msgstr "Självregistrering"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Visa \"Glömt lösenord\"-alternativ på inloggningsskärmen (gör att användare kan återställa själva)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Visa/dölj Söndagsskolmodulen i sidofältet"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Kan inte inaktivera den enda administratören som kan logga in"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Kan inte markera den enda administratören som kan logga in som avliden"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Avliden — kan inte logga in"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Ange en andra adress innan du markerar den som postadress"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Inaktiv — kan inte logga in"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Post skickas till den andra adressen; den primära adressen förblir den fysiska plats som används för kartor och vägbeskrivningar."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Post skickas till denna adress istället för den primära adressen"
+
+#: 
+msgid "Mailing Address"
+msgstr "Postadress"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Postadress om annat"
+
+#: 
+msgid "Primary Address"
+msgstr "Primär adress"
+
+#: 
+msgid "Receives Mail"
+msgstr "Mottar post"
+
+#: 
+msgid "Second Address"
+msgstr "Andra adressen"
+
+#: 
+msgid "Second Home"
+msgstr "Andra hemmet"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Den länkade personen är avliden eller inaktiv. Inloggning, sessioner och API-nyckeln är blockerade tills personen är aktiv igen."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Det här är postadressens"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Denna person är avliden eller inaktiv, så detta konto kan inte logga in"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Endast en administratör kan radera en person som har en inloggning."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Den sista administratören kan inte raderas."
 

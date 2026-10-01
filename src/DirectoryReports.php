@@ -3,6 +3,7 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\view\PageHeader;
@@ -172,7 +173,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
           <?php endforeach;
           if ($numCustomFields > 0) {
               while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-                  if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]])) {
+                  if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$rowCustomField['custom_FieldSec']])) {
                       $customName = 'bCustom' . $rowCustomField['custom_Order']; ?>
                 <div class="col">
                   <div class="form-check">

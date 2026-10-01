@@ -9,6 +9,7 @@ use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PersonDeleteGuard;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -445,7 +446,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
+                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $iPersonID ?>"<?= PersonDeleteGuard::attributes((int) $iPersonID) ?>><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -512,7 +513,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                             <button class="dropdown-item AddToCart" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                                             <?php if ($bOkToEdit) { ?>
                                             <div class="dropdown-divider"></div>
-                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($familyMember->getFullName()) ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($familyMember->getFullName()) ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"<?= PersonDeleteGuard::attributes((int) $familyMember->getId()) ?>><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
                                             <?php } ?>
                                         </div>
                                     </div>

@@ -56,11 +56,25 @@ on:
         type: string
         default: ''
 
-# Concurrency is per job, not per workflow: `settle` restarts its wait on every new push, and `download`
+# Concurrency is per job, not per workflow: `settle` (first job) restarts its wait on every new push, and `download`
 # queues so a manual, scheduled or dispatched run never overlaps a settled push run.
 
 jobs:
+  settle:
+    # Merge-storm guard, first so a newer push cancels the run before it does any work
+    if: github.event_name == 'push'
+    concurrency:
+      group: locale-sync-settle
+      cancel-in-progress: true
+    timeout-minutes: 40
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Wait 30 minutes for more terms merges
+      run: sleep 1800
+
   setup:
+    needs: settle
+    if: ${{ !cancelled() && (needs.settle.result == 'success' || needs.settle.result == 'skipped') }}
     timeout-minutes: 5
     runs-on: ubuntu-24.04
     outputs:
@@ -79,7 +93,7 @@ jobs:
         exit 1
 
     - name: Checkout repository
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
       with:
         ref: master
 
@@ -116,22 +130,9 @@ jobs:
         fi
         echo "✅ POEditor token is configured"
 
-  settle:
-    # Merge-storm guard. A newer push cancels this job; the run it belonged to then ends without syncing.
-    if: github.event_name == 'push'
-    needs: setup
-    concurrency:
-      group: locale-sync-settle
-      cancel-in-progress: true
-    timeout-minutes: 40
-    runs-on: ubuntu-24.04
-    steps:
-    - name: Wait 30 minutes for more terms merges
-      run: sleep 1800
-
   download:
-    needs: [setup, settle]
-    if: ${{ !cancelled() && needs.setup.result == 'success' && (needs.settle.result == 'success' || needs.settle.result == 'skipped') }}
+    needs: setup
+    if: ${{ !cancelled() && needs.setup.result == 'success' }}
     concurrency:
       group: locale-sync-work
       cancel-in-progress: false
@@ -145,7 +146,7 @@ jobs:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
       with:
         # the newest master once this job holds the work lock, not the commit that started the run
         ref: master
@@ -323,7 +324,7 @@ jobs:
       pull-requests: write
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v7
+      uses: actions/checkout@v7.0.1
       with:
         # the master commit the download was based on
         ref: ${{ needs.download.outputs.ref_sha }}
@@ -361,6 +362,7 @@ jobs:
       uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        base: master
         branch: 'locale/download/${{ needs.setup.outputs.version }}'
         delete-branch: true
         labels: |

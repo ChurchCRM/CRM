@@ -14935,10 +14935,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு இந்த சர்வரின் அதிகபட்ச பதிவேற்ற அளவைத் தாண்டுகிறது"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "இன்று எந்த நிகழ்வுகளும் திட்டமிடப்படவில்லை"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "கோரப்பட்ட பொருளைப் பெறுவதில் சிக்கல் ஏற்பட்டது"
 
@@ -18813,4 +18809,236 @@ msgstr "இது நடந்த நேரத்தின் சுற்று
 #: 
 msgid "system logs"
 msgstr "கணினி பதிவுகள்"
+
+#: 
+msgid "Access Control & Security"
+msgstr "அணுகல் கட்டுப்பாடு மற்றும் பாதுகாப்பு"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "வரி பிடிப்பு செய்யப்படாத பேமெண்ட்களை பதிவு செய்ய அனுமதி (எ.கா. பொருட்கள் விற்பனை)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "பொது நிகழ்வுகளுக்கு அங்கீகாரம் இல்லாமல் அணுகல் அனுமதி (கலெண்டர்களை உட்பொதிப்பதற்கு)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "பொது பதிவு பக்கத்தின் மூலம் பார்வையாளர்களை தங்களின் குடும்ப பதிவுகளை உருவாக்க அனுமதி"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "பிறந்தநாள் ஈமெயிலை தானாக அனுப்பவும் (பின்புல வேலை அட்டவணையை தேவை)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "பிறந்தநாள் வாழ்த்து ஈமெயிலுகள்"
+
+#: 
+msgid "Communication & Email"
+msgstr "தொடர்பாடல் மற்றும் ஈமெயில்"
+
+#: 
+msgid "Content Security Policy"
+msgstr "உள்ளடக்க பாதுகாப்பு கொள்கை"
+
+#: 
+msgid "Email System"
+msgstr "ஈமெயில் முறை"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "உங்கள் நிறுவனத்திற்கான சிறப்பு வசதிகளை செயல்படுத்தவோ அல்லது முடக்கவோ"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "முக்கிய வழிசெலுத்தலில் நிகழ்வுகள் பிரிவை செயல்படுத்தவோ முடக்கவோ"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "நிதி மெனுவையும் அனைத்து நிதி அம்சங்களையும் (வைப்புகள், கொடுப்பனவுகள், அறிக்கைகள்) இயக்கவும் அல்லது முடக்கவும்"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "நிதி திரட்டல் மெனுவை செயல்படுத்தவோ முடக்கவோ"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "XSS தாக்குதல்களிலிருந்து பாதுகாக்க கடுமையான CSP தலைப்புகளை பிற்பலிக்கவும்"
+
+#: 
+msgid "Events Module"
+msgstr "நிகழ்வுகள் மடுலு"
+
+#: 
+msgid "Feature Toggles"
+msgstr "சிறப்பு வசதி தலைப்புகள்"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "சிறப்பு வசதி தலைப்புகள் ChurchCRM இல் எந்த மடுலுகள் மற்றும் சிறப்பு வசதிகள் கிடைக்கும் என்பதை கட்டுப்படுத்தும். மாற்றங்கள் உடனே நகரும்."
+
+#: 
+msgid "Finance Features"
+msgstr "நிதி சிறப்பு வசதிகள்"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "வேகமான உலக தேடலில் முகவரிகளை சேர்க்கவும்"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "வேகமான உலக தேடலில் கலெண்டர் நிகழ்வுகளை சேர்க்கவும்"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "வேகமான உலக தேடலில் தனிப்பயன் குடும்ப சொத்துக்களை சேர்க்கவும்"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "விரைவு உலகளாவிய தேடலில் வைப்புகளைச் சேர்க்கவும்"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "வேகமான உலக தேடலில் குடும்பங்களை சேர்க்கவும்"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "வேகமான உலக தேடலில் பணிகளை சேர்க்கவும்"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "வேகமான உலக தேடலில் பேமெண்ட்ஸை சேர்க்கவும்"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "வேகமான உலக தேடலில் மக்களை சேர்க்கவும்"
+
+#: 
+msgid "Invalid setting"
+msgstr "செல்லாத அமைப்பு"
+
+#: 
+msgid "Lost Password Link"
+msgstr "இழந்த கடவுச்சொல் இணைப்பு"
+
+#: 
+msgid "Manage All Features"
+msgstr "அனைத்து சிறப்பு வசதிகளை நிர்வகிக்கவும்"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "ஈமெயில் அனுப்புவதற்கான முதன்மை தலைப்பு. கடவுச்சொல் மறுசெட்டுக்கள் மற்றும் அறிவுப்புகளுக்குத் தேவை"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "வரி பிடிப்பு செய்யப்படாத பேமெண்ட்ஸ்"
+
+#: 
+msgid "Primary Modules"
+msgstr "முதன்மை தொகுதிகள்"
+
+#: 
+msgid "Public Calendar API"
+msgstr "பொது கலெண்டர் API"
+
+#: 
+msgid "Saved"
+msgstr "சேமிக்கப்பட்டது"
+
+#: 
+msgid "Search Families"
+msgstr "குடும்பங்களைத் தேடுங்கள்"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "குடும்ப தனிப்பயன் சொத்துக்களைத் தேடுங்கள்"
+
+#: 
+msgid "Search Settings"
+msgstr "தேடல் அமைப்புகள்"
+
+#: 
+msgid "Self-Registration"
+msgstr "சுய-பதிவு"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "உள்நுழைவு திரையில் \"இழந்த கடவுச்சொல்\" விருப்பத்தைக் காட்டவும் (பயனர் சுய-மறுசெட்டை அனுமதி)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "பக்கப்பட்டையில் ஞாயிறு பள்ளி தொகுதியைக் காட்டு அல்லது மறை"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "உள்நுழைய முடியுமான ஒரே நிர்வாகிக்கு செயல்முறை நீக்க முடியாது"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "உள்நுழைய முடியுமான ஒரே நிர்வாகிக்கு இறந்ததாக குறிக்க முடியாது"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "இறந்தவர் — உள்நுழைய முடியாது"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "தபால் முகவரியாக குறிப்பிடுவதற்கு முன்பு இரண்டாவது முகவரியை உள்ளிடவும்"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "செயல்பாடற்ற — உள்நுழைய முடியாது"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "தபால் இரண்டாவது முகவரிக்கு செல்கிறது; முதன்மை முகவரி வரைபடங்கள் மற்றும் திசைகளுக்குப் பயன்படுத்தப்படும் உண்மை இடமாக இருக்கும்."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "தபால் முதன்மை முகவரிக்குப் பதிலாக இந்த முகவரிக்கு அனுப்பப்படுகிறது"
+
+#: 
+msgid "Mailing Address"
+msgstr "தபால் முகவரி"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "வேறுபட்டால் தபால் முகவரி"
+
+#: 
+msgid "Primary Address"
+msgstr "முதன்மை முகவரி"
+
+#: 
+msgid "Receives Mail"
+msgstr "தபாலை பெறுகிறது"
+
+#: 
+msgid "Second Address"
+msgstr "இரண்டாவது முகவரி"
+
+#: 
+msgid "Second Home"
+msgstr "இரண்டாவது வீடு"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "இணைக்கப்பட்ட நபர் இறந்துவிட்டார் அல்லது செயல்பாடற்றவர். நபர் மீண்டும் செயல்பாடுக்கு வருவார் வரை உள்நுழைவு, அமர்வுகள் மற்றும் API சாவி தடுக்கப்பட்டுள்ளன."
+
+#: 
+msgid "This is the mailing address"
+msgstr "இது தபால் முகவரி"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "இந்த நபர் இறந்துவிட்டார் அல்லது செயலற்றவர், எனவே இந்தக் கணக்கில் உள்நுழைய முடியாது"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "ஒரு நிர்வாகி மட்டுமே உள்நுழைவு உள்ள நபரை நீக்க முடியும்."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "கடைசி நிர்வாகிக்கு நீக்க முடியாது."
 

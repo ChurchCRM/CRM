@@ -14999,10 +14999,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Die Datei überschreitet die maximale Dateigröße"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Für heute sind keine Veranstaltungen geplant"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Es gab Probleme das Objekt zu empfangen."
 
@@ -18877,4 +18873,236 @@ msgstr "für Fehler um die Zeit, in der dies geschah, und laden Sie die relevant
 #: 
 msgid "system logs"
 msgstr "Systemprotokolle"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Zugriffskontrolle und Sicherheit"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Aufzeichnung von nicht steuerbegünstigten Zahlungen zulassen (z. B. Warenverkäufe)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Nicht authentifizierte Zugriffe auf öffentliche Veranstaltungen zulassen (für Kalendereinbettungen)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Besucher können ihre eigenen Familiendaten über die öffentliche Registrierungsseite erstellen"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Geburtstagsemails automatisch versenden (erfordert Hintergrund-Job-Scheduler)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Geburtstagsgrußemails"
+
+#: 
+msgid "Communication & Email"
+msgstr "Kommunikation und E-Mail"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Content Security Policy"
+
+#: 
+msgid "Email System"
+msgstr "E-Mail-System"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Funktionen für Ihre Organisation aktivieren oder deaktivieren"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Ereignissektion in der Hauptnavigation ein-/ausblenden"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Finanzmenü und alle Finanzfunktionen aktivieren/deaktivieren (Einzahlungen, Zahlungen, Berichte)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Fundraiser-Menü aktivieren/deaktivieren"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Strenge CSP-Header durchsetzen, um XSS-Attacken zu schützen"
+
+#: 
+msgid "Events Module"
+msgstr "Ereignismodul"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Funktionsschalter"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Funktionsschalter kontrollieren, welche Module und Funktionen in ChurchCRM verfügbar sind. Änderungen werden sofort wirksam."
+
+#: 
+msgid "Finance Features"
+msgstr "Finanzfunktionen"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Adressen in der schnellen globalen Suche einbeziehen"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Kalenderereignisse in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Benutzerdefinierte Familieneigenschaften in der schnellen globalen Suche einbeziehen"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Einzahlungen in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Familien in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Ministerien in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Zahlungen in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Personen in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Invalid setting"
+msgstr "Ungültige Einstellung"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Passwort-Rückstellungslink"
+
+#: 
+msgid "Manage All Features"
+msgstr "Alle Funktionen verwalten"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Master-Schalter für den E-Mail-Versand. ERFORDERLICH für Passwort-Rückstellungen und Benachrichtigungen"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Nicht steuerlich absetzbare Zahlungen"
+
+#: 
+msgid "Primary Modules"
+msgstr "Primäre Module"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Öffentliche Kalender-API"
+
+#: 
+msgid "Saved"
+msgstr "Gespeichert"
+
+#: 
+msgid "Search Families"
+msgstr "Familien durchsuchen"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Benutzerdefinierte Familieneigenschaften durchsuchen"
+
+#: 
+msgid "Search Settings"
+msgstr "Einstellungen durchsuchen"
+
+#: 
+msgid "Self-Registration"
+msgstr "Selbstregistrierung"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "\"Passwort vergessen\"-Option auf dem Anmeldebildschirm anzeigen (ermöglicht Selbstwiederherstellung durch Benutzer)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Sundayschool-Modul in der Seitenleiste anzeigen/verbergen"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Der einzige Administrator, der sich anmelden kann, kann nicht deaktiviert werden"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Der einzige Administrator, der sich anmelden kann, kann nicht als verstorben gekennzeichnet werden"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Verstorben — kann sich nicht anmelden"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Geben Sie eine zweite Adresse ein, bevor Sie sie als Postanschrift kennzeichnen"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Inaktiv — kann sich nicht anmelden"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Post wird an die zweite Adresse gesendet; die primäre Adresse bleibt der physische Standort, der für Karten und Richtungen verwendet wird."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Post wird an diese Adresse gesendet, anstatt an die primäre Adresse"
+
+#: 
+msgid "Mailing Address"
+msgstr "Postanschrift"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Postanschrift falls unterschiedlich"
+
+#: 
+msgid "Primary Address"
+msgstr "Primäre Adresse"
+
+#: 
+msgid "Receives Mail"
+msgstr "Empfängt Post"
+
+#: 
+msgid "Second Address"
+msgstr "Zweite Adresse"
+
+#: 
+msgid "Second Home"
+msgstr "Zweites Zuhause"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Die verknüpfte Person ist verstorben oder inaktiv. Anmeldung, Sitzungen und der API-Schlüssel sind blockiert, bis die Person wieder aktiv ist."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Dies ist die Postanschrift"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Diese Person ist verstorben oder inaktiv, daher kann dieses Konto sich nicht anmelden"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Nur ein Administrator kann eine Person mit einer Anmeldung löschen."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Der letzte Administrator kann nicht gelöscht werden."
 

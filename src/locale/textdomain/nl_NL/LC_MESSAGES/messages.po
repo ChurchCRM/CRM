@@ -14891,10 +14891,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Het geselecteerde bestand overschrijdt de maximale uploadgrootte van deze server van"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Er zijn geen evenementen gepland voor vandaag"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Er is een probleem met het ophalen van de gevraagde object"
 
@@ -18769,4 +18765,236 @@ msgstr "voor fouten rond het moment dat dit gebeurde, en download en voeg het re
 #: 
 msgid "system logs"
 msgstr "systeemlogboeken"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Toegangscontrole en beveiliging"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Opnemen van niet-aftrekbare betalingen toestaan (bijv. goederen verkoop)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Niet-geverifieerde toegang tot openbare evenementen toestaan (voor inbedding van kalenders)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Bezoekers kunnen hun eigen familiegegevens via de openbare registratiepagina aanmaken"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Verjaardagsemails automatisch verzenden (vereist achtergrond-jobplanner)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Verjaardagsgroetemails"
+
+#: 
+msgid "Communication & Email"
+msgstr "Communicatie en e-mail"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Content Security Policy"
+
+#: 
+msgid "Email System"
+msgstr "E-mailsysteem"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Functies voor uw organisatie in- of uitschakelen"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Evenementensectie in de hoofdnavigatie in-/uitschakelen"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Financieel menu en alle financiële functies in-/uitschakelen (stortingen, betalingen, rapporten)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Inzamelingsmenu in-/uitschakelen"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Strikte CSP-headers toepassen om XSS-aanvallen te voorkomen"
+
+#: 
+msgid "Events Module"
+msgstr "Evenementenmodule"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Functie-schakelaars"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Functie-schakelaars bepalen welke modules en functies beschikbaar zijn in ChurchCRM. Wijzigingen worden onmiddellijk van kracht."
+
+#: 
+msgid "Finance Features"
+msgstr "Financiële functies"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Adressen in snelle globale zoekopdracht opnemen"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Kalendergebeurtenissen in snelle globale zoekopdracht opnemen"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Aangepaste familieeigenschappen in snelle globale zoekopdracht opnemen"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Stortingen in snelle globale zoekopdracht opnemen"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Families in snelle globale zoekopdracht opnemen"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Ministerie in snelle globale zoekopdracht opnemen"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Betalingen in snelle globale zoekopdracht opnemen"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Personen in snelle globale zoekopdracht opnemen"
+
+#: 
+msgid "Invalid setting"
+msgstr "Ongeldige instelling"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Wachtwoord herstellen koppeling"
+
+#: 
+msgid "Manage All Features"
+msgstr "Alle functies beheren"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Hoofdschakelaar voor e-mailbezorging. VEREIST voor wachtwoord herstellen en meldingen"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Niet-aftrekbare betalingen"
+
+#: 
+msgid "Primary Modules"
+msgstr "Primaire modules"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Openbare kalender-API"
+
+#: 
+msgid "Saved"
+msgstr "Opgeslagen"
+
+#: 
+msgid "Search Families"
+msgstr "Families zoeken"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Aangepaste familieeigenschappen zoeken"
+
+#: 
+msgid "Search Settings"
+msgstr "Instellingen zoeken"
+
+#: 
+msgid "Self-Registration"
+msgstr "Zelf-registratie"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "\"Wachtwoord vergeten\"-optie op login-scherm weergeven (stelt gebruiker in staat zelf wachtwoord in te stellen)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Zondagsschool-module in zijbalk weergeven/verbergen"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Kan de enige beheerder die zich kan aanmelden niet deactiveren"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Kan de enige beheerder die zich kan aanmelden niet als overledene markeren"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Overledene — kan zich niet aanmelden"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Voer een tweede adres in voordat u het als postadres markeert"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Inactief — kan zich niet aanmelden"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Post wordt naar het tweede adres verzonden; het primaire adres blijft de fysieke locatie die wordt gebruikt voor kaarten en routebeschrijvingen."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Post wordt naar dit adres verzonden in plaats van naar het primaire adres"
+
+#: 
+msgid "Mailing Address"
+msgstr "Postadres"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Postadres indien anders"
+
+#: 
+msgid "Primary Address"
+msgstr "Primair adres"
+
+#: 
+msgid "Receives Mail"
+msgstr "Ontvangt post"
+
+#: 
+msgid "Second Address"
+msgstr "Tweede adres"
+
+#: 
+msgid "Second Home"
+msgstr "Tweede huis"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "De gekoppelde persoon is overledene of inactief. Aanmelden, sessies en de API-sleutel zijn geblokkeerd totdat de persoon opnieuw actief is."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Dit is het postadres"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Deze persoon is overledene of inactief, daarom kan deze account zich niet aanmelden"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Alleen een beheerder kan een persoon met een login verwijderen."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "De laatste beheerder kan niet worden verwijderd."
 

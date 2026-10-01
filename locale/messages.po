@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 17:20+0000\n"
+"POT-Creation-Date: 2026-10-01 05:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1980,7 +1980,13 @@ msgstr ""
 msgid "Can't change your own active status"
 msgstr ""
 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr ""
+
 msgid "Can't delete yourself"
+msgstr ""
+
+msgid "Can't mark the only administrator who can sign in as deceased"
 msgstr ""
 
 msgid "Can't scan?"
@@ -2108,6 +2114,9 @@ msgid "Catch JS errors"
 msgstr ""
 
 msgid "Catch recurring errors"
+msgstr ""
+
+msgid "Category"
 msgstr ""
 
 msgid "Category Name"
@@ -3431,6 +3440,9 @@ msgid "Dec"
 msgstr ""
 
 msgid "Deceased"
+msgstr ""
+
+msgid "Deceased — cannot sign in"
 msgstr ""
 
 msgid "December"
@@ -6589,6 +6601,9 @@ msgstr ""
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr ""
 
+msgid "Inactive — cannot sign in"
+msgstr ""
+
 msgid "Include"
 msgstr ""
 
@@ -8900,6 +8915,9 @@ msgid "Only Families with unpaid pledges"
 msgstr ""
 
 msgid "Only Payments with Pledges"
+msgstr ""
+
+msgid "Only an administrator can delete a person who has a login."
 msgstr ""
 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
@@ -11951,7 +11969,13 @@ msgstr ""
 msgid "The group could not be found. Please try again."
 msgstr ""
 
+msgid "The last administrator cannot be deleted."
+msgstr ""
+
 msgid "The latest stable release is {{version}}. You can reinstall it below."
+msgstr ""
+
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -12054,9 +12078,6 @@ msgid "The wedding anniversary month for which you would like records returned."
 msgstr ""
 
 msgid "Theme Mode"
-msgstr ""
-
-msgid "There are no events scheduled for today"
 msgstr ""
 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
@@ -12180,6 +12201,9 @@ msgid "This person already has a user account."
 msgstr ""
 
 msgid "This person is deceased"
+msgstr ""
+
+msgid "This person is deceased or inactive, so this account cannot sign in"
 msgstr ""
 
 msgid "This plugin does not support connection testing."
@@ -12711,6 +12735,9 @@ msgid "Unassigned"
 msgstr ""
 
 msgid "Unclassified"
+msgstr ""
+
+msgid "Uncategorized"
 msgstr ""
 
 msgid "Underpaid"
@@ -14040,6 +14067,9 @@ msgid "deposit(s) with no payments"
 msgstr ""
 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr ""
+
+msgid "e.g. Regular Offerings"
 msgstr ""
 
 msgid "e.g. Sunday Service"

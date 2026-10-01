@@ -14916,10 +14916,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Tệp đã chọn vượt quá kích thước tải lên tối đa của máy chủ này là"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Không có sự kiện nào được lên lịch cho hôm nay"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Đã xảy ra sự cố khi truy xuất đối tượng được yêu cầu"
 
@@ -18788,4 +18784,236 @@ msgstr "để kiểm tra lỗi xung quanh thời gian sự cố này, tải xu�
 #: 
 msgid "system logs"
 msgstr "nhật ký hệ thống"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Kiểm soát Truy cập và Bảo mật"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Cho phép ghi nhận các khoản thanh toán không được khấu trừ thuế (ví dụ: bán hàng hóa)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Cho phép truy cập chưa được xác thực đến các sự kiện công khai (để nhúng lịch)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Cho phép khách truy cập tạo hồ sơ gia đình của riêng họ qua trang đăng ký công khai"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Tự động gửi email sinh nhật (yêu cầu lập lịch công việc nền)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Email Chúc mừng sinh nhật"
+
+#: 
+msgid "Communication & Email"
+msgstr "Giao tiếp và Email"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Chính sách Bảo mật Nội dung"
+
+#: 
+msgid "Email System"
+msgstr "Hệ thống Email"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Bật hoặc tắt các tính năng cho tổ chức của bạn"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Bật/tắt phần Sự kiện trong điều hướng chính"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Bật/tắt menu Tài chính và tất cả các tính năng tài chính (tiền gửi, thanh toán, báo cáo)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Bật/tắt menu Gây quỹ"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Thực thi các tiêu đề CSP nghiêm ngặt để bảo vệ chống lại các tấn công XSS"
+
+#: 
+msgid "Events Module"
+msgstr "Mô-đun Sự kiện"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Các Công tắc Tính năng"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Các công tắc tính năng kiểm soát các mô-đun và tính năng nào có sẵn trong ChurchCRM. Các thay đổi có hiệu lực ngay lập tức."
+
+#: 
+msgid "Finance Features"
+msgstr "Tính năng Tài chính"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Bao gồm địa chỉ trong tìm kiếm toàn cầu nhanh"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Bao gồm các sự kiện lịch trong tìm kiếm toàn cầu nhanh"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Bao gồm các thuộc tính gia đình tùy chỉnh trong tìm kiếm toàn cầu nhanh"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Bao gồm các tiền gửi trong tìm kiếm toàn cầu nhanh"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Bao gồm các gia đình trong tìm kiếm toàn cầu nhanh"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Bao gồm các nhóm trong tìm kiếm toàn cầu nhanh"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Bao gồm các khoản thanh toán trong tìm kiếm toàn cầu nhanh"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Bao gồm mọi người trong tìm kiếm toàn cầu nhanh"
+
+#: 
+msgid "Invalid setting"
+msgstr "Cài đặt không hợp lệ"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Liên kết Đặt lại Mật khẩu"
+
+#: 
+msgid "Manage All Features"
+msgstr "Quản lý Tất cả Tính năng"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Công tắc chính cho việc gửi email. CẦN THIẾT cho việc đặt lại mật khẩu và thông báo"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Các Khoản thanh toán Không được khấu trừ"
+
+#: 
+msgid "Primary Modules"
+msgstr "Các Mô-đun Chính"
+
+#: 
+msgid "Public Calendar API"
+msgstr "API Lịch Công khai"
+
+#: 
+msgid "Saved"
+msgstr "Đã lưu"
+
+#: 
+msgid "Search Families"
+msgstr "Tìm kiếm Gia đình"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Tìm kiếm Thuộc tính Tùy chỉnh Gia đình"
+
+#: 
+msgid "Search Settings"
+msgstr "Cài đặt Tìm kiếm"
+
+#: 
+msgid "Self-Registration"
+msgstr "Tự đăng ký"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Hiển thị tùy chọn \"Quên mật khẩu\" trên màn hình đăng nhập (cho phép người dùng tự đặt lại)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Hiển thị/ẩn mô-đun Trường Chủ nhật trong thanh bên"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Không thể hủy kích hoạt quản trị viên duy nhất có thể đăng nhập"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Không thể đánh dấu quản trị viên duy nhất có thể đăng nhập là đã mất"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Đã mất — không thể đăng nhập"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Nhập địa chỉ thứ hai trước khi đánh dấu nó là địa chỉ gửi thư"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Không hoạt động — không thể đăng nhập"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Thư được gửi đến địa chỉ thứ hai; địa chỉ chính vẫn là vị trí vật lý được sử dụng cho bản đồ và hướng dẫn."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Thư được gửi đến địa chỉ này thay vì địa chỉ chính"
+
+#: 
+msgid "Mailing Address"
+msgstr "Địa chỉ Gửi thư"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Địa chỉ Gửi thư nếu Khác"
+
+#: 
+msgid "Primary Address"
+msgstr "Địa chỉ Chính"
+
+#: 
+msgid "Receives Mail"
+msgstr "Nhận Thư"
+
+#: 
+msgid "Second Address"
+msgstr "Địa chỉ Thứ hai"
+
+#: 
+msgid "Second Home"
+msgstr "Ngôi nhà Thứ hai"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Người được liên kết đã mất hoặc không hoạt động. Đăng nhập, phiên và khóa API bị chặn cho đến khi người đó được kích hoạt lại."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Đây là địa chỉ gửi thư"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Người này đã mất hoặc không hoạt động, do đó tài khoản này không thể đăng nhập"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Chỉ quản trị viên mới có thể xóa một người có tên đăng nhập."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Quản trị viên cuối cùng không thể bị xóa."
 

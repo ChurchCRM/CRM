@@ -163,14 +163,17 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                 <?php } ?>
                             </td>
                             <td class="text-center">
-                                <?php $locked = $user->isLocked(); $mustChange = $user->getNeedPasswordChange(); ?>
+                                <?php $locked = $user->isLocked(); $mustChange = $user->getNeedPasswordChange(); $signInBlockedLabel = $user->getSignInBlockedLabel(); ?>
+                                <?php if ($signInBlockedLabel !== null): ?>
+                                    <span class="badge rounded-pill bg-secondary text-white me-1" data-cy="sign-in-blocked-badge" data-sign-in-blocked="<?= InputUtils::escapeAttribute($user->getSignInBlockedReason()) ?>" title="<?= InputUtils::escapeAttribute(gettext('This person is deceased or inactive, so this account cannot sign in')) ?>"><i class="fa-solid fa-user-slash me-1"></i><?= InputUtils::escapeHTML($signInBlockedLabel) ?></span>
+                                <?php endif; ?>
                                 <?php if ($locked): ?>
                                     <span class="badge rounded-pill bg-danger text-white me-1" title="<?= InputUtils::escapeAttribute(gettext('Account locked due to too many failed login attempts')) ?>"><i class="fa-solid fa-lock me-1"></i><?= gettext('Locked') ?></span>
                                 <?php endif; ?>
                                 <?php if ($mustChange): ?>
                                     <span class="badge rounded-pill bg-warning text-white" title="<?= InputUtils::escapeAttribute(gettext('User must change their password at next login')) ?>"><i class="fa-solid fa-key me-1"></i><?= gettext('Must change password') ?></span>
                                 <?php endif; ?>
-                                <?php if (!$locked && !$mustChange): ?>
+                                <?php if (!$locked && !$mustChange && $signInBlockedLabel === null): ?>
                                     <span class="text-body-secondary">—</span>
                                 <?php endif; ?>
                             </td>

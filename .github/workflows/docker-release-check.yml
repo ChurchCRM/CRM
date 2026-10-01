@@ -18,7 +18,7 @@ jobs:
       matrix:
         flavor: [apache, fpm]
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: Test archive validation
@@ -32,8 +32,8 @@ jobs:
           python3 docker/prepare-release-context.py ChurchCRM-7.7.0.zip build-context
           mkdir -p build-context/apache
           cp docker/apache/default.conf build-context/apache/default.conf
-      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
-      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: build-context
           file: docker/Dockerfile.churchcrm-${{ matrix.flavor }}-php8

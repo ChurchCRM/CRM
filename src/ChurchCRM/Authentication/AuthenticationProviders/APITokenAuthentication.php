@@ -43,6 +43,15 @@ class APITokenAuthentication implements IAuthenticationProvider
         $authenticationResult->preventRedirect = true;
         $this->currentUser = UserQuery::create()->findOneByApiKey($AuthenticationRequest->APIToken);
 
+        $blockedReason = $this->currentUser?->getSignInBlockedReason();
+        if ($blockedReason !== null) {
+            LoggerUtils::getAuthLogger()->warning('API Key authentication refused: account cannot sign in', [
+                'username' => $this->currentUser->getUserName(),
+                'reason' => $blockedReason,
+            ]);
+            $this->currentUser = null;
+        }
+
         if (!empty($this->currentUser)) {
             LoggerUtils::getAuthLogger()->debug(sprintf(gettext('User authenticated via API Key: %s'), $this->currentUser->getName()));
             $authenticationResult->isAuthenticated = true;

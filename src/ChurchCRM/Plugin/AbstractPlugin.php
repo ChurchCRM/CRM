@@ -346,7 +346,17 @@ abstract class AbstractPlugin implements PluginInterface
      * - 'label': Display text (use gettext() for i18n)
      * - 'url': Relative URL path
      * - 'icon': Optional FontAwesome icon class
-     * - 'permission': Optional permission required (e.g., 'bAdmin')
+     * - 'permission': Optional. Shows the item only to users holding this permission;
+     *   administrators always see it. Valid names: 'bAdmin', 'bAll', 'bAddRecords',
+     *   'bEditRecords', 'bDeleteRecords', 'bManageGroups', 'bFinance', 'bNotes', or a
+     *   per-user setting name such as 'bEmailMailto'. An unrecognized name hides the item
+     *   from non-administrators (fails closed). Omit the key to show the item to every
+     *   signed-in user. This only controls menu visibility and is NOT access control: the
+     *   plugin's routes must still carry the matching ChurchCRM\Slim\Middleware\Request\Auth\*
+     *   middleware (AdminRoleAuthMiddleware, FinanceRoleAuthMiddleware, ...).
+     *
+     * Example: ['parent' => 'admin', 'label' => gettext('My Plugin'),
+     *           'url' => 'plugins/my-plugin/dashboard', 'permission' => 'bAdmin']
      *
      * @return array<int, array{parent: string, label: string, url: string, icon?: string, permission?: string}>
      */

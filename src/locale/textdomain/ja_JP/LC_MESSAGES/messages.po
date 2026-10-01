@@ -14877,10 +14877,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "選択したファイルがこのサーバーの最大アップロードサイズを超えています"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "本日予定されているイベントはありません"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "要求されたオブジェクトを取得する際に問題が発生しました"
 
@@ -18749,4 +18745,236 @@ msgstr "これが発生した時期のエラーについては、関連するロ
 #: 
 msgid "system logs"
 msgstr "システムログ"
+
+#: 
+msgid "Access Control & Security"
+msgstr "アクセス制御とセキュリティ"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "税控除不適格の支払い（例えば、商品販売）の記録を許可する"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "公開イベントへの認証されていないアクセスを許可する（カレンダー埋め込み用）"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "訪問者が公開登録ページを通じて自分の家族記録を作成することを許可する"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "誕生日メールを自動的に送信する（バックグラウンドジョブスケジューラが必要）"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "誕生日グリーティングメール"
+
+#: 
+msgid "Communication & Email"
+msgstr "コミュニケーションとメール"
+
+#: 
+msgid "Content Security Policy"
+msgstr "コンテンツセキュリティポリシー"
+
+#: 
+msgid "Email System"
+msgstr "メールシステム"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "組織の機能を有効または無効にする"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "メインナビゲーションのイベントセクションを有効/無効にする"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "財務メニューおよびすべての財務機能（預金、支払い、レポート）を有効/無効にする"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "募金メニューを有効/無効にする"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "XSS攻撃から保護するために厳密なCSPヘッダーを強制する"
+
+#: 
+msgid "Events Module"
+msgstr "イベントモジュール"
+
+#: 
+msgid "Feature Toggles"
+msgstr "機能トグル"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "機能トグルはChurchCRMで利用可能なモジュールと機能を制御します。変更は直ちに有効になります。"
+
+#: 
+msgid "Finance Features"
+msgstr "財務機能"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "クイックグローバル検索にアドレスを含める"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "クイックグローバル検索にカレンダーイベントを含める"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "クイックグローバル検索にカスタム家族プロパティを含める"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "クイックグローバル検索に預金を含める"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "クイックグローバル検索に家族を含める"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "クイックグローバル検索に事工を含める"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "クイックグローバル検索に支払いを含める"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "クイックグローバル検索に人を含める"
+
+#: 
+msgid "Invalid setting"
+msgstr "無効な設定"
+
+#: 
+msgid "Lost Password Link"
+msgstr "パスワードリセットリンク"
+
+#: 
+msgid "Manage All Features"
+msgstr "すべての機能を管理する"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "メール送信のマスタートグル。パスワードリセットと通知に必須。"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "控除不適格の支払い"
+
+#: 
+msgid "Primary Modules"
+msgstr "主要なモジュール"
+
+#: 
+msgid "Public Calendar API"
+msgstr "公開カレンダーAPI"
+
+#: 
+msgid "Saved"
+msgstr "保存しました"
+
+#: 
+msgid "Search Families"
+msgstr "家族を検索する"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "家族カスタムプロパティを検索する"
+
+#: 
+msgid "Search Settings"
+msgstr "検索設定"
+
+#: 
+msgid "Self-Registration"
+msgstr "自己登録"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "ログイン画面に\"パスワードをお忘れですか\"オプションを表示する（ユーザーがリセットできます）"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "サイドバーの日曜学校モジュールを表示/非表示にする"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "ログインできる唯一の管理者を無効にすることはできません"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "ログインできる唯一の管理者を故人としてマークすることはできません"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "故人――ログインできません"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "郵送先住所としてマークする前に2番目の住所を入力してください"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "非アクティブ――ログインできません"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "メールは2番目のアドレスに送信されます。主要なアドレスは地図と方向に使用される物理的な場所のままです。"
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "メールは主アドレスではなくこのアドレスに送信されます"
+
+#: 
+msgid "Mailing Address"
+msgstr "郵送先住所"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "異なる場合の郵送先住所"
+
+#: 
+msgid "Primary Address"
+msgstr "主要な住所"
+
+#: 
+msgid "Receives Mail"
+msgstr "メールを受け取ります"
+
+#: 
+msgid "Second Address"
+msgstr "2番目のアドレス"
+
+#: 
+msgid "Second Home"
+msgstr "セカンドホーム"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "リンクされた人は故人または非アクティブです。その人が再度アクティブになるまで、ログイン、セッション、APIキーはブロックされます。"
+
+#: 
+msgid "This is the mailing address"
+msgstr "これが郵送先住所です"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "この人は故人または非アクティブのため、このアカウントはログインできません"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "ログイン情報を持つ人を削除できるのは管理者だけです。"
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "最後の管理者は削除できません。"
 

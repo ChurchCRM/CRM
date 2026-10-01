@@ -14894,10 +14894,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Odabrana datoteka premašuje maksimalnu veličinu učitavanja ovog poslužitelja od"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Nema zakazanih događaja za danas"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Nastao je problem pri dohvaćanju traženog objekta"
 
@@ -18778,4 +18774,236 @@ msgstr "za greške oko vremena kada se to dogodilo, te preuzmite i priložite od
 #: 
 msgid "system logs"
 msgstr "sustavi logovi"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Kontrola pristupa i sigurnost"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Dozvoli zabilježavanje plaćanja koja nisu odbitna od poreza (npr. prodaja robe)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Dozvoli neautentificirani pristup javnim događajima (za ugrađivanje kalendara)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Dozvoli posjetiteljima da kreiraju vlastite zapise o obitelji kroz stranicu javne registracije"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Automatski slanje e-pošte za rođendane (zahtijeva raspoređivač zadataka u pozadini)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Čestitke za e-poštu na rođendan"
+
+#: 
+msgid "Communication & Email"
+msgstr "Komunikacija i e-pošta"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Politika sigurnosti sadržaja"
+
+#: 
+msgid "Email System"
+msgstr "Poštanski sustav"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Omogući ili onemogući značajke za vašu organizaciju"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Omogući/onemogući odjeljak Događaji u glavnoj navigaciji"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Omogući/onemogući Financijski izbornik i sve financijske značajke (depoziti, plaćanja, izvješća)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Omogući/onemogući izbornik Prikupljanja sredstava"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Provedi stroge CSP zaglavlje za zaštitu od XSS napada"
+
+#: 
+msgid "Events Module"
+msgstr "Modul događaja"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Sklopke značajki"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Sklopke značajki kontroliraju koje su module i značajke dostupne u ChurchCRM. Promjene stupaju na snagu odmah."
+
+#: 
+msgid "Finance Features"
+msgstr "Financijske značajke"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Uključi adrese u brzo globalno pretraživanje"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Uključi događaje kalendara u brzo globalno pretraživanje"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Uključi svojstva obitelji po mjeri u brzo globalno pretraživanje"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Uključi depozite u brzo globalno pretraživanje"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Uključi obitelji u brzo globalno pretraživanje"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Uključi grupe u brzo globalno pretraživanje"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Uključi plaćanja u brzo globalno pretraživanje"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Uključi ljude u brzo globalno pretraživanje"
+
+#: 
+msgid "Invalid setting"
+msgstr "Nevaljana postavka"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Veza za obnovu lozinke"
+
+#: 
+msgid "Manage All Features"
+msgstr "Upravljaj svim značajkama"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Glavni sklopka za slanje e-pošte. OBAVEZNO za ponovno postavljanje lozinke i obavijesti"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Plaćanja koja nisu odbitna"
+
+#: 
+msgid "Primary Modules"
+msgstr "Primarni moduli"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Javni API kalendara"
+
+#: 
+msgid "Saved"
+msgstr "Spremljeno"
+
+#: 
+msgid "Search Families"
+msgstr "Pretraživanje obitelji"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Pretraživanje svojstava obitelji po mjeri"
+
+#: 
+msgid "Search Settings"
+msgstr "Pretraživanje postavki"
+
+#: 
+msgid "Self-Registration"
+msgstr "Samoprijava"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Prikaži opciju \"Zaboravljena lozinka\" na ekranu prijave (omogućava korisniku da sam resetira lozinku)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Prikaži/sakrij modul Nedjeljske škole u bočnoj traci"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Nije moguće deaktivirati jedinog administratora koji se može prijaviti"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Nije moguće označiti jedinog administratora koji se može prijaviti kao umrlog"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Umro — ne može se prijaviti"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Unesite drugu adresu prije označavanja kao adrese za slanje pošte"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Neaktivan — ne može se prijaviti"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Pošta ide na drugu adresu; primarna adresa ostaje fizička lokacija korištena za mape i upute."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Pošta se šalje na ovu adresu umjesto primarne adrese"
+
+#: 
+msgid "Mailing Address"
+msgstr "Adresa za slanje pošte"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Adresa za slanje pošte ako se razlikuje"
+
+#: 
+msgid "Primary Address"
+msgstr "Primarna adresa"
+
+#: 
+msgid "Receives Mail"
+msgstr "Prima poštu"
+
+#: 
+msgid "Second Address"
+msgstr "Druga adresa"
+
+#: 
+msgid "Second Home"
+msgstr "Drugi dom"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Povezana osoba je umrla ili neaktivna. Prijava, sesije i API ključ su blokirani dok se osoba ne reaktivatira."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Ovo je adresa za slanje pošte"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Ova osoba je umrla ili neaktivna, pa se ovaj račun ne može prijaviti"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Samo administrator može obrisati osobu koja ima prijavu."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Posljednjeg administratora nije moguće obrisati."
 
