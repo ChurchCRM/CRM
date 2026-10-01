@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-01 02:53+0000\n"
+"POT-Creation-Date: 2026-10-01 05:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12075,9 +12075,6 @@ msgid "The wedding anniversary month for which you would like records returned."
 msgstr ""
 
 msgid "Theme Mode"
-msgstr ""
-
-msgid "There are no events scheduled for today"
 msgstr ""
 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
