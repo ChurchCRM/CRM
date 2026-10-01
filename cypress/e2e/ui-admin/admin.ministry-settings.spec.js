@@ -210,7 +210,7 @@ describe("Admin → Ministry Settings", () => {
         cy.visit(PAGE_URL);
 
         cy.wait("@horizonValue");
-        cy.get("#ministrySettingsPanel .settings-panel-load-error").should("be.visible");
+        cy.get("#ministrySettingsPanel #settingsPanelLoadError").should("be.visible");
         cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").should("be.disabled");
     });
 
