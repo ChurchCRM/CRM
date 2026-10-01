@@ -91,7 +91,7 @@ class SlimUtils
      * three shapes that used to be produced, so existing consumers keep
      * working: `message` for the `responseJSON.message` readers (the majority,
      * plus CRMJSOM's `message || error || msg` fallback), `error` for
-     * `responseJSON.error` readers (DepositSlipEditor), `code` for anything
+     * `responseJSON.error` readers (deposit editor), `code` for anything
      * branching on the status, and `success: false` so a response can be
      * tested without inspecting the HTTP status.
      *

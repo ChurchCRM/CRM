@@ -41,7 +41,7 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
                 ->_or()
                 ->filterById($SearchQuery)
                 ->addAsColumn('displayName', 'CONCAT("#",' . DepositTableMap::COL_DEP_ID . '," ",' . DepositTableMap::COL_DEP_COMMENT . ')')
-                ->addAsColumn('uri', 'CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . DepositTableMap::COL_DEP_ID . ')')
+                ->addAsColumn('uri', 'CONCAT("' . SystemURLs::getRootPath() . '/finance/deposit/",' . DepositTableMap::COL_DEP_ID . ')')
                 ->limit(SystemConfig::getIntValue('bSearchIncludeDepositsMax'))->find();
 
             if ($Deposits->count() > 0) {
