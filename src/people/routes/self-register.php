@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\view\PageHeader;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -15,12 +16,20 @@ $app->get('/self-register', function (Request $request, Response $response): Res
     $familyCount = FamilyQuery::create()
         ->filterByEnteredBy(Person::SELF_REGISTER)
         ->count();
-    // Standalone individuals only (no family) — family members are already
-    // counted as part of familyCount above.
-    $individualCount = PersonQuery::create()
+    // Everyone waiting for review who is not already counted as part of a
+    // self-registered family above: standalone individuals, plus people a
+    // member proposed for their own existing family in the Member Portal
+    // (#9865). Mirrors GET /api/persons/self-register exactly.
+    $selfRegisteredFamilyIds = FamilyQuery::create()
         ->filterByEnteredBy(Person::SELF_REGISTER)
-        ->filterByFamId(0)
-        ->count();
+        ->select('Id')
+        ->find()
+        ->getData();
+    $individualQuery = PersonQuery::create()->filterByEnteredBy(Person::SELF_REGISTER);
+    if ($selfRegisteredFamilyIds !== []) {
+        $individualQuery->filterByFamId($selfRegisteredFamilyIds, Criteria::NOT_IN);
+    }
+    $individualCount = $individualQuery->count();
 
     $pageArgs = [
         'sRootPath'       => SystemURLs::getRootPath(),

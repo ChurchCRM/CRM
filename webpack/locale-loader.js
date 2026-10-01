@@ -166,8 +166,14 @@ async function loadLocaleFiles(localeConfig) {
       moment.locale("en");
     }
 
-    // Load Bootstrap DatePicker locale if configured
-    if (localeConfig.datePicker) {
+    // Load Bootstrap DatePicker locale if configured — but only where the plugin it
+    // extends is actually on the page. Every one of those vendor files starts with
+    // `$.fn.datepicker.dates[...] = ...`, so loading it without bootstrap-datepicker
+    // throws "Cannot read properties of undefined (reading 'dates')" as an uncaught
+    // TypeError. That never came up while only the admin shell used this loader; the
+    // Member Portal (#9863) is the first page to call it with its own small bundle
+    // and no datepicker, and a French member got a broken page for it (#9869).
+    if (localeConfig.datePicker && typeof window.jQuery?.fn?.datepicker === "function") {
       const dpPath = `${rootPath}/locale/vendor/bootstrap-datepicker/bootstrap-datepicker.${localeConfig.languageCode}.min.js`;
       promises.push(
         loadScript(dpPath).catch((e) =>

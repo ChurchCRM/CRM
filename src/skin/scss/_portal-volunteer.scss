@@ -1,0 +1,90 @@
+// Member Portal — the volunteering pages (MP6, #9867)
+//
+// Two small groups of rules, both moved here from the `<style>` blocks the two
+// retired PHP views carried:
+//
+//   * `.volunteer-touch-target` / `.volunteer-card-actions` — the volunteer
+//     design's §5.9 mobile rule: 44px is the minimum touch target on the
+//     accept / decline / sign-up controls, and below `sm` those buttons are a
+//     full-width stack rather than a row. The markup they style is rendered by
+//     `webpack/volunteer/{my-schedule,opportunities}.ts`, which did not change
+//     when the pages moved, so neither may these class names.
+//   * `.portal-subnav` — the "My schedule" / "Find something to do" tabs the
+//     portal puts in place of the two sidebar entries the admin shell carried.
+//
+// Part of `portal.min.css`, never the RTL-flipped core bundle, so everything
+// here uses CSS logical properties only and the same design tokens `_portal.scss`
+// declares (design §3.5).
+
+.volunteer-touch-target {
+    min-block-size: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Below `sm` the actions are a full-width stack; above it they sit in a row.
+.volunteer-card-actions .volunteer-touch-target {
+    inline-size: 100%;
+}
+
+@media (min-width: 576px) {
+    .volunteer-card-actions .volunteer-touch-target {
+        inline-size: auto;
+    }
+}
+
+// Secondary navigation ---------------------------------------------------------
+
+.portal-subnav {
+    margin-block-end: var(--portal-gap);
+    border-block-end: 1px solid var(--portal-border);
+}
+
+.portal-subnav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.portal-subnav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    padding-inline: 0.875rem;
+    border-block-end: 2px solid transparent;
+    color: var(--portal-muted);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.portal-subnav-link:hover,
+.portal-subnav-link:focus-visible {
+    color: var(--portal-text);
+    text-decoration: none;
+}
+
+.portal-subnav-link.is-active {
+    color: var(--portal-primary);
+    border-block-end-color: var(--portal-primary);
+}
+
+// The home page's volunteering card --------------------------------------------
+
+.portal-volunteering-pending {
+    margin-block: 0.25rem 0.5rem;
+    font-weight: 600;
+    color: var(--portal-text);
+}
+
+.portal-card-link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+    color: var(--portal-primary);
+    font-weight: 500;
+}

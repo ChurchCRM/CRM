@@ -1,0 +1,87 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Email History — what the church has emailed this member, newest first.
+
+  Reached from the header's account menu, so no navigation entry is active
+  while it is open.
+
+  Variables: `emails`, `page`, `pages`, `total`, `previousUrl`, `nextUrl`
+  (see docs/portal-templates.md). Every date and status word arrives already
+  formatted; the template only prints.
+
+  The subject links to the detail page. The rows are a table on a wide screen
+  and a stack of blocks on a phone — the same list either way, so the markup
+  does not change with the width; `_portal.scss` does the switching.
+#}
+
+{% block content %}
+<div class="portal-email-history" id="portal-email-history">
+
+    <section class="portal-card">
+        <h1 class="portal-page-title">{{ gettext('Email History') }}</h1>
+
+        {% if emails is empty %}
+        <p class="portal-card-text" id="portal-email-empty">
+            {{ gettext('The church has not emailed you yet.') }}
+        </p>
+        {% else %}
+        <p class="portal-card-text">
+            {{ ngettext('%s email from the church', '%s emails from the church', total)|format(total) }}
+        </p>
+
+        <table class="portal-table" id="portal-email-table">
+            <thead>
+                <tr>
+                    <th scope="col">{{ gettext('Date') }}</th>
+                    <th scope="col">{{ gettext('Type') }}</th>
+                    <th scope="col">{{ gettext('Subject') }}</th>
+                    <th scope="col">{{ gettext('Status') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for email in emails %}
+                <tr class="portal-table-row" data-email-row="{{ email.id }}">
+                    <td class="portal-table-cell" data-label="{{ gettext('Date') }}">
+                        <span class="portal-email-date">{{ email.dateSent }}</span>
+                    </td>
+                    <td class="portal-table-cell" data-label="{{ gettext('Type') }}">
+                        <span class="portal-email-kind" data-email-type>{{ email.kindLabel }}</span>
+                    </td>
+                    <td class="portal-table-cell" data-label="{{ gettext('Subject') }}">
+                        <a class="portal-card-link portal-email-subject"
+                           href="{{ url('/portal/email-history/' ~ email.id) }}"
+                           data-email-subject>{{ email.subject|default(gettext('(no subject)')) }}</a>
+                    </td>
+                    <td class="portal-table-cell" data-label="{{ gettext('Status') }}">
+                        <span class="portal-email-status is-{{ email.status }}" data-email-status>{{ email.statusLabel }}</span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if pages > 1 %}
+        <nav class="portal-pager" id="portal-email-pager" aria-label="{{ gettext('Email History') }}">
+            {% if previousUrl %}
+            <a class="portal-button portal-button-quiet" id="portal-email-prev" href="{{ previousUrl }}" rel="prev">
+                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                <span>{{ gettext('Previous') }}</span>
+            </a>
+            {% endif %}
+
+            <span class="portal-pager-position">{{ gettext('Page %1$s of %2$s')|format(page, pages) }}</span>
+
+            {% if nextUrl %}
+            <a class="portal-button portal-button-quiet" id="portal-email-next" href="{{ nextUrl }}" rel="next">
+                <span>{{ gettext('Next') }}</span>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </a>
+            {% endif %}
+        </nav>
+        {% endif %}
+        {% endif %}
+    </section>
+
+</div>
+{% endblock %}

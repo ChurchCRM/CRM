@@ -67,10 +67,19 @@ function _populateSelect(selectEl, items) {
 }
 
 /**
+ * Volunteer v2 (D23): the role a volunteer team writes on this class (its Teacher role),
+ * or null. Such a role is never offered here and its members cannot be changed here.
+ */
+function _isLockedRole(roleId) {
+  var locked = window.CRM.groupLockedRoleId;
+  return locked !== null && locked !== undefined && String(roleId) === String(locked);
+}
+
+/**
  * Show a role selection modal for the current group. Calls callback(roleId).
  */
 function _showRoleModal(title, callback) {
-  var roles = window.CRM.groupRoles || [];
+  var roles = (window.CRM.groupRoles || []).filter((r) => !_isLockedRole(r.OptionId));
   if (roles.length <= 1) {
     // Auto-select the only role (or null)
     callback(roles.length === 1 ? String(roles[0].OptionId) : null);
@@ -722,7 +731,7 @@ function buildRolePills() {
   var $moveItems = $("#moveRoleItems").empty();
   window.CRM.groupRoles.forEach((role) => {
     var count = roleCounts[role.OptionId] || 0;
-    if (count === 0) return;
+    if (count === 0 || _isLockedRole(role.OptionId)) return;
     var roleName = window.CRM.escapeHtml(i18next.t(role.OptionName));
     var badge = ' <span class="badge bg-secondary-lt text-secondary ms-1">' + count + "</span>";
     $copyItems.append(
@@ -847,6 +856,7 @@ function initDataTable() {
         render: (data, type, full) => {
           // GHSA-m649-24q9-q6r4: use escapeAttribute for data-name attribute context (encodes quotes)
           var escapedName = window.CRM.escapeAttribute(full.Person.FullName || "");
+          var locked = _isLockedRole(full.RoleId);
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static">' +
@@ -859,11 +869,13 @@ function initDataTable() {
             '"><i class="fa-solid fa-eye me-2"></i>' +
             i18next.t("View") +
             "</a>" +
-            '<button class="dropdown-item changeMembership" data-personid="' +
-            full.PersonId +
-            '"><i class="fa-solid fa-users me-2"></i>' +
-            i18next.t("Change Role") +
-            "</button>" +
+            (locked
+              ? ""
+              : '<button class="dropdown-item changeMembership" data-personid="' +
+                full.PersonId +
+                '"><i class="fa-solid fa-users me-2"></i>' +
+                i18next.t("Change Role") +
+                "</button>") +
             '<button class="dropdown-item AddToCart" data-cart-id="' +
             full.PersonId +
             '" data-cart-type="person" data-label-add="' +
@@ -873,14 +885,17 @@ function initDataTable() {
             '"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">' +
             i18next.t("Add to Cart") +
             "</span></button>" +
-            '<div class="dropdown-divider"></div>' +
-            '<button class="dropdown-item text-danger remove-member-btn" data-personid="' +
-            full.PersonId +
-            '" data-name="' +
-            escapedName +
-            '"><i class="fa-solid fa-user-minus me-2"></i>' +
-            i18next.t("Remove") +
-            "</button></div></div>"
+            (locked
+              ? ""
+              : '<div class="dropdown-divider"></div>' +
+                '<button class="dropdown-item text-danger remove-member-btn" data-personid="' +
+                full.PersonId +
+                '" data-name="' +
+                escapedName +
+                '"><i class="fa-solid fa-user-minus me-2"></i>' +
+                i18next.t("Remove") +
+                "</button>") +
+            "</div></div>"
           );
         },
       },

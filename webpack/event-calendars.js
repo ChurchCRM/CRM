@@ -154,6 +154,68 @@ function deleteCalendar() {
   });
 }
 
+/**
+ * Volunteer v2 D25: the church calendar's "Ministries that may add events". The server sends
+ * the ministries only when the rollout is on and this user may change the grants, so an empty
+ * list means the field is not shown at all.
+ */
+function grantMinistries() {
+  return window.CRM.calendarJSArgs.grantMinistries || [];
+}
+
+function ministryGrantsFieldHtml() {
+  return (
+    '<select id="calendarMinistryGrants" class="form-select" multiple></select>' +
+    '<div class="form-text">' +
+    i18next.t("Their coordinators may pin their ministry's events to this calendar without Add Events permission.") +
+    "</div>"
+  );
+}
+
+/**
+ * Fill the field once it is in the DOM: active ministries, plus any inactive one the calendar
+ * is already opened to, so a save never drops a grant the administrator could not see.
+ */
+function initMinistryGrantsField(grantedMinistries) {
+  const select = document.getElementById("calendarMinistryGrants");
+  if (!select) return;
+
+  const grantedIds = grantedMinistries.map((m) => Number(m.id));
+  for (const ministry of grantMinistries()) {
+    const granted = grantedIds.includes(Number(ministry.id));
+    if (!ministry.active && !granted) continue;
+    const option = document.createElement("option");
+    option.value = String(ministry.id);
+    option.textContent = ministry.active ? ministry.name : `${ministry.name} (${i18next.t("Inactive")})`;
+    option.selected = granted;
+    select.appendChild(option);
+  }
+
+  if (window.TomSelect) {
+    new window.TomSelect(select, {
+      plugins: ["remove_button"],
+      placeholder: i18next.t("Select ministries..."),
+    });
+  }
+}
+
+function selectedMinistryGrants() {
+  const select = document.getElementById("calendarMinistryGrants");
+  return select ? Array.from(select.selectedOptions).map((option) => Number(option.value)) : [];
+}
+
+function saveMinistryGrants(calendarId, ministryIds) {
+  return window.CRM.APIRequest({
+    method: "PUT",
+    path: `calendars/${calendarId}/ministries`,
+    data: JSON.stringify({ ministryIds }),
+  });
+}
+
+function calendarTakesMinistryGrants(calendar) {
+  return (calendar.MinistryId === null || calendar.MinistryId === undefined) && grantMinistries().length > 0;
+}
+
 window.calendarPropertiesModal = {
   _copyToClipboard: (text) => {
     if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
@@ -296,6 +358,14 @@ window.calendarPropertiesModal = {
       "</div>" +
       "</div>" +
       "</div>" +
+      (calendarTakesMinistryGrants(calendar)
+        ? '<div class="mt-3 d-none" id="calendarMinistryGrantsField">' +
+          '<label class="form-label text-muted small mb-1" for="calendarMinistryGrants">' +
+          i18next.t("Ministries that may add events") +
+          "</label>" +
+          ministryGrantsFieldHtml() +
+          "</div>"
+        : "") +
       "</form>";
 
     const $object = $("<div/>").html(frm_str).contents();
@@ -318,12 +388,19 @@ window.calendarPropertiesModal = {
 
     return $object;
   },
-  getButtons: () => {
+  getButtons: (calendar) => {
     const buttons = [];
     buttons.push({
       label: i18next.t("Cancel"),
       className: "btn btn-secondary float-end",
     });
+    if (calendarTakesMinistryGrants(calendar)) {
+      buttons.push({
+        label: i18next.t("Save"),
+        className: "btn btn-primary float-end",
+        callback: window.calendarPropertiesModal.saveMinistryGrants,
+      });
+    }
     if (window.CRM.calendarJSArgs.isModifiable) {
       buttons.push({
         label: i18next.t("Delete Calendar"),
@@ -333,6 +410,23 @@ window.calendarPropertiesModal = {
     }
     return buttons;
   },
+  loadMinistryGrants: (calendar) => {
+    if (!calendarTakesMinistryGrants(calendar)) return;
+    window.CRM.APIRequest({
+      method: "GET",
+      path: `calendars/${calendar.Id}/ministries`,
+    }).done((data) => {
+      initMinistryGrantsField(data.ministries || []);
+      $("#calendarMinistryGrantsField").removeClass("d-none");
+    });
+  },
+  saveMinistryGrants: () => {
+    saveMinistryGrants(window.calendarPropertiesModal.calendar.Id, selectedMinistryGrants()).done(() => {
+      window.CRM.notify(i18next.t("Calendar saved"), { type: "success" });
+      window.calendarPropertiesModal.modal.modal("hide");
+    });
+    return false;
+  },
   show: (calendar) => {
     window.calendarPropertiesModal.calendar = calendar;
     const bootboxmessage = window.calendarPropertiesModal.getBootboxContent(calendar);
@@ -340,13 +434,14 @@ window.calendarPropertiesModal = {
       title: escapeHtml(getLocalizedCalendarName(calendar.Name)),
       message: bootboxmessage,
       show: true,
-      buttons: window.calendarPropertiesModal.getButtons(),
+      buttons: window.calendarPropertiesModal.getButtons(calendar),
       onEscape: () => {
         window.calendarPropertiesModal.modal.modal("hide");
       },
     });
     $("#NewAccessToken").click(window.calendarPropertiesModal.newAccessToken);
     $("#DeleteAccessToken").click(window.calendarPropertiesModal.deleteAccessToken);
+    window.calendarPropertiesModal.loadMinistryGrants(calendar);
   },
   newAccessToken: () => {
     window.CRM.APIRequest({
@@ -359,6 +454,7 @@ window.calendarPropertiesModal = {
       $body.append(closeBtn);
       $("#NewAccessToken").click(window.calendarPropertiesModal.newAccessToken);
       $("#DeleteAccessToken").click(window.calendarPropertiesModal.deleteAccessToken);
+      window.calendarPropertiesModal.loadMinistryGrants(newcalendar);
       closeBtn.on("click", () => {
         window.calendarPropertiesModal.modal.modal("hide");
       });
@@ -444,6 +540,16 @@ window.newCalendarModal = {
       '" />' +
       "</td>" +
       "</tr>" +
+      (grantMinistries().some((ministry) => ministry.active)
+        ? '<tr id="calendarMinistryGrantsField">' +
+          "<td>" +
+          i18next.t("Ministries that may add events") +
+          ":</td>" +
+          '<td colspan="3">' +
+          ministryGrantsFieldHtml() +
+          "</td>" +
+          "</tr>"
+        : "") +
       "</table>" +
       "</form>";
     const object = $("<div/>").html(frm_str).contents();
@@ -482,12 +588,19 @@ window.newCalendarModal = {
       ForegroundColor: $("#ForegroundColor").val(),
       BackgroundColor: $("#BackgroundColor").val(),
     };
+    const ministryIds = selectedMinistryGrants();
     window.CRM.APIRequest({
       method: "POST",
       path: "calendars",
       data: JSON.stringify(newCalendar),
-    }).done(() => {
-      initializeFilterSettings();
+    }).done((calendar) => {
+      if (ministryIds.length === 0) {
+        initializeFilterSettings();
+        return;
+      }
+      saveMinistryGrants(calendar.Id, ministryIds).always(() => {
+        initializeFilterSettings();
+      });
     });
   },
   show: () => {
@@ -501,6 +614,7 @@ window.newCalendarModal = {
         window.calendarPropertiesModal.modal.modal("hide");
       },
     });
+    initMinistryGrantsField([]);
   },
 };
 
@@ -806,6 +920,13 @@ function registerCalendarSelectionEvents() {
   });
 }
 
+/**
+ * Draw the two lists of `calendars` rows: church calendars, and the ministry
+ * calendars that name an owning ministry (`MinistryId`, #9866). A ministry
+ * calendar behaves exactly like a church one — same source, same switch, same
+ * Focus and properties actions — it is only listed under its own heading, and
+ * the heading stays hidden when no calendar has a ministry.
+ */
 function showAllUserCalendars() {
   window.CRM.APIRequest({
     method: "GET",
@@ -813,10 +934,20 @@ function showAllUserCalendars() {
     suppressErrorDialog: true,
   }).done((calendars) => {
     $("#calendarUserList").empty();
+    $("#calendarMinistryList").empty();
+    let ministryCount = 0;
+
     $.each(calendars.Calendars, (_idx, calendar) => {
-      $("#calendarUserList").append(getCalendarFilterElement(calendar, "user"));
+      const isMinistryCalendar = calendar.MinistryId !== null && calendar.MinistryId !== undefined;
+      const list = isMinistryCalendar ? "#calendarMinistryList" : "#calendarUserList";
+      if (isMinistryCalendar) {
+        ministryCount += 1;
+      }
+      $(list).append(getCalendarFilterElement(calendar, "user"));
       addCalendarEventSource("user", calendar.Id);
     });
+
+    $("#calendarMinistrySection").toggleClass("d-none", ministryCount === 0);
   });
 }
 

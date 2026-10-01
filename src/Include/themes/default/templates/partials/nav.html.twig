@@ -1,0 +1,21 @@
+{#
+  The portal navigation. The entries come from the `nav` model, which decides
+  what this member may see; a theme may restyle this partial but should keep
+  rendering every entry it is given.
+#}
+<nav class="portal-nav" id="portal-nav" aria-label="{{ gettext('Member Portal') }}">
+    <div class="portal-container">
+        <ul class="portal-nav-list">
+            {% for item in nav %}
+            <li class="portal-nav-item">
+                <a class="portal-nav-link{% if item.active %} is-active{% endif %}"
+                   href="{{ item.url }}"{% if item.active %} aria-current="page"{% endif %}>
+                    {% if item.icon %}<i class="{{ item.icon }}" aria-hidden="true"></i>{% endif %}
+                    <span>{{ item.label }}</span>
+                    {% if item.badge %}<span class="portal-nav-badge">{{ item.badge }}</span>{% endif %}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</nav>

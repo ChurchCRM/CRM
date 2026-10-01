@@ -1,0 +1,20 @@
+-- Volunteer Management v2 (#9706, epic #9701): add the usr_ManageMinistries permission column.
+--
+-- Tier: Administrator > *Global Volunteer Manager* > Ministry Coordinator > Team Leader > Volunteer.
+-- A global volunteer manager has authority over every ministry and every team without being a
+-- system administrator; ministry/team-scoped authority lives in volunteer_scope_vscp instead
+-- (created by 7.8.0-volunteer-v2-schema.sql, which must therefore run first).
+--
+-- Storage follows the usr_ManageFundraisers precedent (7.4.3-manage-fundraisers.sql): a first-class
+-- permission is a user_usr boolean column, not a userconfig_ucfg row.
+--
+-- Note: plain ALTER TABLE (no IF NOT EXISTS) is safe here because the upgrade
+-- runner is version-gated: fresh installs set the DB version to the current
+-- release via installChurchCRMSchema() and never execute historical migration
+-- scripts. IF NOT EXISTS is a MariaDB-only extension unsupported by MySQL.
+ALTER TABLE `user_usr` ADD COLUMN `usr_ManageMinistries` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER `usr_ManageFundraisers`;
+-- Manage My Ministries (2026-09-18, product owner): the permission an administrator gives a
+-- ministry coordinator. It opens the Ministries heading, the Ministry Dashboard and the pages
+-- of the ministries the login holds a coordinator scope for - and nothing else. Manage
+-- Ministries above stays the global tier (every ministry, create, deactivate, delete).
+ALTER TABLE `user_usr` ADD COLUMN `usr_ManageMyMinistries` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER `usr_ManageMinistries`;

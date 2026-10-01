@@ -11,6 +11,9 @@ use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerNotificationService;
+use ChurchCRM\Volunteer\Service\VolunteerScheduleTopUp;
 use PDO;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Exception\PropelException;
@@ -98,11 +101,13 @@ class SystemService
      *     cron access, and it is rate limited here so a busy Sunday morning
      *     runs the jobs once, not once per page view.
      *
-     * @param bool $force Skip the rate limit (command-line / explicit runs)
+     * @param bool $force               Skip the rate limit (command-line / explicit runs)
+     * @param bool $forceScheduleTopUp  Top up the volunteer schedules even though today's
+     *                                  top-up has run (an administrator's explicit run)
      *
      * @return bool true if the jobs ran, false if the rate limit skipped them
      */
-    public static function runTimerJobs(bool $force = false): bool
+    public static function runTimerJobs(bool $force = false, bool $forceScheduleTopUp = false): bool
     {
         if (!self::claimTimerJobsRun($force)) {
             LoggerUtils::getAppLogger()->debug('Skipping background job processing — last run is inside the minimum interval', [
@@ -118,6 +123,29 @@ class SystemService
 
         self::runTimerJob('BirthdayEmailService', static function (): void {
             BirthdayEmailService::run();
+        });
+
+        // Volunteer Management v2 (#9710, design §3.6). There is no scheduler in
+        // ChurchCRM, so these four ARE the scheduler for the volunteer module:
+        // schedules are filled to the scheduling horizon once a day (D31),
+        // reminders become due, the outbox is emptied, and assignments whose
+        // occurrence is over are closed out. Each is its own runTimerJob() call
+        // so one failure cannot take the others — a mail server that is down
+        // must not stop assignments being marked completed.
+        self::runTimerJob('VolunteerScheduleTopUp', static function () use ($forceScheduleTopUp): void {
+            VolunteerScheduleTopUp::run($forceScheduleTopUp);
+        });
+
+        self::runTimerJob('VolunteerNotificationService::scheduleReminders', static function (): void {
+            (new VolunteerNotificationService())->scheduleReminders();
+        });
+
+        self::runTimerJob('VolunteerNotificationService::drainOutbox', static function (): void {
+            VolunteerNotificationService::drainOutbox();
+        });
+
+        self::runTimerJob('VolunteerAssignmentService::markCompleted', static function (): void {
+            (new VolunteerAssignmentService())->markCompleted(DateTimeUtils::getToday());
         });
 
         // Fire the CRON_RUN hook so plugins can register scheduled tasks.

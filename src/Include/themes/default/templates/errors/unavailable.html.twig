@@ -1,0 +1,15 @@
+{#
+  What a member sees when the church's active theme fails to render. It says
+  what happened and nothing about the template that broke (design §3.3).
+#}
+{% extends "@default/layout.html.twig" %}
+
+{% block header %}{% endblock %}
+{% block nav %}{% endblock %}
+
+{% block content %}
+<section class="portal-card portal-unavailable">
+    <h1 class="portal-error-title">{{ gettext('The Member Portal is temporarily unavailable') }}</h1>
+    <p class="portal-error-text">{{ gettext('The church office has been notified. Please try again later.') }}</p>
+</section>
+{% endblock %}
