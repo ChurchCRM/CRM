@@ -45,7 +45,7 @@
   "Enter a second address before marking it as the mailing address": "Kirjoita toinen osoite ennen kuin merkitset sen postiosoitteeksi",
   "Inactive — cannot sign in": "Passiivinen — ei voi kirjautua",
   "Mail goes to the second address; the primary address stays the physical location used for maps and directions.": "Posti lähetetään toiseen osoitteeseen; ensisijainen osoite pysyy fyysisenä sijainti, jota käytetään karttoihin ja reittiohjeihin.",
-  "Mail is sent to this address instead of the primary address": "Sähköposti lähetetään tähän osoitteeseen ensisijaisen osoitteen sijaan",
+  "Mail is sent to this address instead of the primary address": "Posti lähetetään tähän osoitteeseen ensisijaisen osoitteen sijaan",
   "Mailing Address": "Postiosoite",
   "Mailing Address if Different": "Postiosoite jos eri",
   "Primary Address": "Ensisijainen osoite",

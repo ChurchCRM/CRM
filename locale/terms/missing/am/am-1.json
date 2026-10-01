@@ -40,10 +40,10 @@
   "Show \"Lost Password\" option on login screen (allows user self-reset)": "በውስብስብ ገጽ ላይ \"ታሳቢ ሰሌዳ\" አማራጭን ያሳይ (ተጠቃሚ ራስ-ዳግም ማቀናበር ይፈቅድ)",
   "Show/hide the Sunday School module in sidebar": "በጎን አሞሌ ውስጥ አንድ መእከል ትምህርት ቤት ሞጁልን ያሳይ/ደብቅ",
   "Can't deactivate the only administrator who can sign in": "ውስጥ መግባት ይችላል መሰሪነት ውጤቱ አሰናክሉ ይችላሉ",
-  "Can't mark the only administrator who can sign in as deceased": "ውስጥ መግባት ይችላል መሰሪነት ውጤቱ ሞተ ምልክት ያድርጉ ይችላሉ",
-  "Deceased — cannot sign in": "ሞተ — ውስጥ መግባት ይችላሉ",
+  "Can't mark the only administrator who can sign in as deceased": "መግባት የሚችለውን ብቸኛ አስተዳዳሪ እንደሞተ ምልክት ማድረግ አይቻልም",
+  "Deceased — cannot sign in": "የሞተ — መግባት አይችልም",
   "Enter a second address before marking it as the mailing address": "ደብዳቤ አድራሻ ምልክት ባደርጉ በፊት ሁለተኛ አድራሻ አስገባ",
-  "Inactive — cannot sign in": "ንቁ ያልሆነ — ውስጥ መግባት ይችላሉ",
+  "Inactive — cannot sign in": "ንቁ ያልሆነ — መግባት አይችልም",
   "Mail goes to the second address; the primary address stays the physical location used for maps and directions.": "ደብዳቤ ሁለተኛ አድራሻ ወደ ይሄዳል; ዋና አድራሻ ሳጥኖች እና አቅጣጫዎች ለ ተጠቅሞ አካላዊ ቦታ ግብራ ይቀራል.",
   "Mail is sent to this address instead of the primary address": "ደብዳቤ ዋና አድራሻ ፍቃድ ይህ አድራሻ ይላካል",
   "Mailing Address": "ደብዳቤ አድራሻ",
@@ -54,7 +54,7 @@
   "Second Home": "ሁለተኛ ቤት",
   "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again.": "የተገናኘው ሰው ሞተ ወይም ንቁ ያልሆነ. ሰው ወደ ገበሮ ከተገበሮ ድረስ ውስጥ-ይሰለፉ, ክፍለ-ጊዜ እና API ቁልፍ ተከልክሎ ሉቅሩ.",
   "This is the mailing address": "ይህ ደብዳቤ አድራሻ ነው",
-  "This person is deceased or inactive, so this account cannot sign in": "ይህ ሰው ሞተ ወይም ንቁ ያልሆነ ነው, ስለዚህ ይህ ሂሳብ ውስጥ መግባት ይችላሉ",
+  "This person is deceased or inactive, so this account cannot sign in": "ይህ ሰው የሞተ ወይም ንቁ ያልሆነ ነው፣ ስለዚህ ይህ መለያ መግባት አይችልም",
   "Only an administrator can delete a person who has a login.": "ተመሪ ብቻ ውስጥ መግባት ሰው ይሰርዙ ይችላሉ.",
   "The last administrator cannot be deleted.": "የመጨረሻው ተመሪ ሊስረዝ አይችልም."
 }

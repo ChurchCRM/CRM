@@ -1,7 +1,7 @@
 {
   "Access Control & Security": "Kontrola dostępu i bezpieczeństwo",
   "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "Zezwól na rejestrowanie płatności, które nie podlegają odliczeniu od podatku (np. sprzedaż towarów)",
-  "Allow unauthenticated access to public events (for embedding calendars)": "Zezwól na uwierzytelniany dostęp do zdarzeń publicznych (do osadzania kalendarzy)",
+  "Allow unauthenticated access to public events (for embedding calendars)": "Zezwól na nieuwierzytelniony dostęp do wydarzeń publicznych (do osadzania kalendarzy)",
   "Allow visitors to create their own family records via public registration page": "Zezwól odwiedzającym na tworzenie własnych rekordów rodzinnych za pośrednictwem strony publicznej rejestracji",
   "Automatically send birthday emails (requires background job scheduler)": "Automatycznie wysyłaj wiadomości e-mail z okazji urodzin (wymaga harmonogramu zadań w tle)",
   "Birthday Greeting Emails": "Wiadomości e-mail z okazji urodzin",

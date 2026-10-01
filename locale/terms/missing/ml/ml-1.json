@@ -1,7 +1,7 @@
 {
   "Access Control & Security": "പ്രവേശന നിയന്ത്രണവും സുരക്ഷയും",
   "Allow recording non-tax-deductible payments (e.g., merchandise sales)": "നികുതി കിഴിവില്ലാത്ത പേയ്‌മെന്റുകൾ രേഖപ്പെടുത്താൻ അനുവദിക്കുക (ഉദാ., ചരക്ക് വിൽപ്പനം)",
-  "Allow unauthenticated access to public events (for embedding calendars)": "പൊതു ഇവന്റുകളിലേക്ക് പ്രമാണീകരിച്ചിയായ പ്രവേശനം അനുവദിക്കുക (കലണ്ടറുകൾ തിരുകാനായി)",
+  "Allow unauthenticated access to public events (for embedding calendars)": "പൊതു ഇവന്റുകളിലേക്ക് ലോഗിൻ ചെയ്യാതെയുള്ള പ്രവേശനം അനുവദിക്കുക (കലണ്ടറുകൾ എംബെഡ് ചെയ്യാൻ)",
   "Allow visitors to create their own family records via public registration page": "സന്ദർശകരെ പൊതു രജിസ്ട്രേഷൻ പേജിലൂടെ സ്വന്തം കുടുംബ റെക്കോർഡുകൾ സൃഷ്ടിക്കാൻ അനുവദിക്കുക",
   "Automatically send birthday emails (requires background job scheduler)": "ജന്മദിന ഇമെയിലുകൾ സ്വയമായി അയയ്ക്കുക (പശ്ചാത്തല ജോബ് ഷെഡ്യൂലർ ആവശ്യമാണ്)",
   "Birthday Greeting Emails": "ജന്മദിന ആശംസ ഇമെയിലുകൾ",
