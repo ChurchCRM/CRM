@@ -166,6 +166,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   let classModeOption: HTMLOptionElement | null = null;
   /** The upcoming count of every title the Event picker offers, for its warning (D30). */
   let seriesCounts = new Map<string, number>();
+  let seriesRequest = 0;
   /** Who may be each position's default (D32), fetched once per position per open. */
   let eligibleByPosition = new Map<number, VolunteerEligiblePerson[]>();
   let needsSequence = 0;
@@ -398,6 +399,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     const typeId = Number(byId<HTMLSelectElement>("schedule-form-event-type")?.value ?? 0);
     const from = byId<HTMLInputElement>("schedule-form-window-start")?.value || undefined;
     const wanted = keep ?? select.value;
+    const request = ++seriesRequest;
     let series: Array<{ title: string; count: number }> = [];
     if (byMinistry || typeId > 0) {
       try {
@@ -407,6 +409,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       } catch {
         series = [];
       }
+    }
+    if (request !== seriesRequest) {
+      return;
     }
     if (wanted !== "" && !series.some((row) => row.title === wanted)) {
       series = [{ title: wanted, count: 0 }, ...series];
