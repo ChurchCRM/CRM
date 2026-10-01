@@ -1156,6 +1156,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="form-text"><?= gettext('One occurrence is made for each date of this event. Only events already on the calendar can be chosen.') ?></div>
           <div class="alert alert-warning py-2 mt-2 mb-0 d-none" role="status" id="schedule-form-title-warning"></div>
         </div>
+        <div class="d-none" id="schedule-form-details">
         <div class="mb-3" id="schedule-form-offsets"></div>
         <div class="row g-2">
           <div class="col-12 col-md-6 mb-3">
@@ -1188,6 +1189,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </div>
         </div>
         <div id="schedule-form-needs"></div>
+        </div>
 
         <div class="alert alert-danger d-none mt-3" role="alert" id="schedule-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
@@ -1195,7 +1197,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-        <button type="button" class="btn btn-primary" id="schedule-form-save"><?= gettext('Save') ?></button>
+        <button type="button" class="btn btn-primary d-none" id="schedule-form-save"><?= gettext('Save') ?></button>
       </div>
     </div>
   </div>

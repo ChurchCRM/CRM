@@ -222,17 +222,18 @@ describe("Volunteer v2 D31 — schedules follow events that exist, up to the hor
             .and("contain", "Add its meetings first with New recurring event on the Calendar tab");
     });
 
-    it("will not save a schedule that names no event", () => {
+    it("shows nothing below the event, and no Save, until an event is chosen", () => {
         openSchedulesTab();
         openAddSchedule();
         cy.get("#schedule-form-name").type(`${PREFIX} Nameless`);
         cy.get("#schedule-form-link-mode").select("ministry");
         cy.get(`#schedule-form-title-filter option[value="${WORKDAY}"]`).should("exist");
-        cy.intercept("POST", `**/api/ministries/ministries/${ministryId}/schedules`).as("create");
-        cy.get("#schedule-form-save").click();
-        cy.get("#schedule-form-error").should("be.visible").and("contain", "Choose the event this schedule follows");
-        cy.get("#scheduleModal").should("be.visible");
-        cy.get("@create.all").should("have.length", 0);
+        cy.get("#schedule-form-details").should("not.be.visible");
+        cy.get("#schedule-form-save").should("not.be.visible");
+        cy.get("#scheduleModal .modal-footer").contains("Cancel").should("be.visible");
+        cy.get("#schedule-form-title-filter").select(WORKDAY);
+        cy.get("#schedule-form-details").should("be.visible");
+        cy.get("#schedule-form-save").should("be.visible");
     });
 
     it("says in weeks how far Generate reaches, or that the schedule ends first", () => {

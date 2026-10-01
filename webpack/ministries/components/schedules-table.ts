@@ -441,6 +441,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       )} ${whereToAddEvents(name)}`;
     }
     show(warning, empty);
+    syncDetails();
   }
 
   /** D30: the Event picker's choice has no upcoming events, or there are none to choose from. */
@@ -466,6 +467,18 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       warning.textContent = text;
     }
     show(warning, text !== "");
+    syncDetails();
+  }
+
+  /** Nothing below the event choice is shown, and nothing can be saved, until an event (or class) is chosen. */
+  function syncDetails(): void {
+    const mode = byId<HTMLSelectElement>("schedule-form-link-mode")?.value;
+    const chosen =
+      mode === "class"
+        ? (byId<HTMLSelectElement>("schedule-form-group")?.value ?? "") !== ""
+        : (byId<HTMLSelectElement>("schedule-form-title-filter")?.value ?? "") !== "";
+    show(byId("schedule-form-details"), chosen);
+    show(byId("schedule-form-save"), chosen);
   }
 
   /**
