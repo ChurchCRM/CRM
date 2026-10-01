@@ -5,6 +5,7 @@ namespace ChurchCRM\Service\Geocoding;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 /**
  * Tries the configured geocoding providers in order until one returns
@@ -34,7 +35,7 @@ class GeocoderChain
     public function __construct(array $providers)
     {
         $this->providers = $providers;
-        $this->logger = LoggerUtils::getAppLogger();
+        $this->logger = LoggerUtils::getAppLogger() ?? new NullLogger();
     }
 
     /**

@@ -4,6 +4,7 @@ namespace ChurchCRM\Service\Geocoding;
 
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 /**
  * Shared HTTP plumbing for geocoders that call a JSON web service.
@@ -14,7 +15,7 @@ abstract class AbstractHttpGeocoder implements GeocoderProviderInterface
 
     public function __construct()
     {
-        $this->logger = LoggerUtils::getAppLogger();
+        $this->logger = LoggerUtils::getAppLogger() ?? new NullLogger();
     }
 
     public function supports(?string $country): bool
