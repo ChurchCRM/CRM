@@ -221,6 +221,17 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
               },
               {
                 type: "button",
+                icon: schedule.active ? "fa-solid fa-box-archive" : "fa-solid fa-rotate-left",
+                label: schedule.active ? i18next.t("Deactivate") : i18next.t("Reactivate"),
+                className: "volunteer-schedule-toggle-active",
+                data: {
+                  "schedule-id": schedule.id,
+                  "schedule-name": schedule.name,
+                  active: schedule.active ? "1" : "0",
+                },
+              },
+              {
+                type: "button",
                 icon: "fa-solid fa-trash",
                 label: i18next.t("Delete"),
                 className: "volunteer-schedule-delete",
@@ -1251,7 +1262,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     // would go stale.
     document.addEventListener("click", (event) => {
       const target = (event.target as HTMLElement | null)?.closest<HTMLElement>(
-        ".volunteer-schedule-edit, .volunteer-schedule-delete, .volunteer-schedule-generate",
+        ".volunteer-schedule-edit, .volunteer-schedule-delete, .volunteer-schedule-generate, .volunteer-schedule-toggle-active",
       );
       if (!target) {
         return;
@@ -1259,6 +1270,43 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
       if (target.classList.contains("volunteer-schedule-edit")) {
         openModal((schedules ?? []).find((row) => row.id === Number(target.dataset.scheduleId)));
+
+        return;
+      }
+
+      if (target.classList.contains("volunteer-schedule-toggle-active")) {
+        const scheduleId = Number(target.dataset.scheduleId);
+        const activate = target.dataset.active !== "1";
+        const run = (): void => {
+          updateSchedule(scheduleId, { active: activate })
+            .then(() => {
+              notifySuccess(activate ? i18next.t("Schedule reactivated") : i18next.t("Schedule deactivated"));
+
+              return load(true);
+            })
+            .catch((error: unknown) => {
+              notifyError(
+                errorMessage(
+                  error,
+                  activate
+                    ? i18next.t("The schedule could not be reactivated")
+                    : i18next.t("The schedule could not be deactivated"),
+                ),
+              );
+            });
+        };
+        if (activate) {
+          run();
+        } else {
+          confirmDelete(
+            i18next.t("Deactivate schedule"),
+            i18next.t(
+              "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated.",
+              { name: target.dataset.scheduleName ?? "" },
+            ),
+            run,
+          );
+        }
 
         return;
       }
