@@ -202,6 +202,15 @@ import "../src/skin/scss/system-settings-panel.scss";
     return value || "";
   }
 
+  function fetchJSON(url) {
+    return fetch(url).then((response) => {
+      if (!response.ok) {
+        throw new Error(`${url}: ${response.status} ${response.statusText}`);
+      }
+      return response.json();
+    });
+  }
+
   // Settings Panel Class
   class SettingsPanel {
     constructor() {
@@ -265,32 +274,37 @@ import "../src/skin/scss/system-settings-panel.scss";
       this.fetchAndApplyValues();
     }
 
-    // Fetch current values from API and update each input individually
+    // Fetch current values from the API and fill each input. Save posts every
+    // field, so the fields and Save stay disabled until all of them are filled.
     fetchAndApplyValues() {
       // Password fields never show their current value
-      const settingsToFetch = this.options.settings.filter((s) => {
-        const cfg = this.getSettingConfig(s);
-        return cfg.type !== "password";
-      });
-
-      settingsToFetch.forEach((s) => {
-        const name = typeof s === "string" ? s : s.name;
-        const cfg = this.getSettingConfig(s);
-
-        fetch(`${window.CRM.root}${this.options.configApiPath}/${name}`)
-          .then((response) => response.json())
-          .then((data) => {
+      const loads = this.options.settings
+        .map((s) => this.getSettingConfig(s))
+        .filter((cfg) => cfg.type !== "password")
+        .map((cfg) =>
+          fetchJSON(`${window.CRM.root}${this.options.configApiPath}/${cfg.name}`).then((data) => {
             // For ajax selects, load options from the remote URL first
             if (cfg.type === "ajax" && cfg.ajaxUrl) {
-              this.loadAjaxOptions(name, cfg.ajaxUrl, data.value);
-            } else {
-              this.applyValue(name, data.value);
+              return this.loadAjaxOptions(cfg.name, cfg.ajaxUrl, data.value);
             }
-          })
-          .catch(() => {
-            console.warn("Could not load setting:", name);
-          });
-      });
+            this.applyValue(cfg.name, data.value);
+          }),
+        );
+
+      return Promise.all(loads)
+        .then(() => {
+          this.container.querySelector("#settingsPanelFields").disabled = false;
+          this.container.querySelector("#settingsPanelSaveBtn").disabled = false;
+        })
+        .catch((error) => {
+          console.warn("Could not load settings:", error);
+          this.container
+            .querySelector("#settingsPanelForm")
+            .insertAdjacentHTML(
+              "afterbegin",
+              `<div id="settingsPanelLoadError" class="alert alert-danger" role="alert">${t("Could not load the current settings. Reload the page to try again.")}</div>`,
+            );
+        });
     }
 
     // Load options for an ajax-type select from a remote URL, then set the value
@@ -298,22 +312,17 @@ import "../src/skin/scss/system-settings-panel.scss";
       const select = this.container.querySelector(`select[name="${name}"]`);
       if (!select) return;
 
-      fetch(window.CRM.root + url)
-        .then((response) => response.json())
-        .then((options) => {
-          options.forEach((opt) => {
-            const option = document.createElement("option");
-            option.value = opt.id;
-            option.textContent = opt.value;
-            if (String(opt.id) === String(currentValue)) {
-              option.selected = true;
-            }
-            select.appendChild(option);
-          });
-        })
-        .catch(() => {
-          console.warn("Could not load ajax options for:", name);
+      return fetchJSON(window.CRM.root + url).then((options) => {
+        options.forEach((opt) => {
+          const option = document.createElement("option");
+          option.value = opt.id;
+          option.textContent = opt.value;
+          if (String(opt.id) === String(currentValue)) {
+            option.selected = true;
+          }
+          select.appendChild(option);
         });
+      });
     }
 
     // Update a single input (or radio group) without re-rendering the whole panel
@@ -380,10 +389,12 @@ import "../src/skin/scss/system-settings-panel.scss";
                     </div>
                     <div class="card-body">
                         <form id="settingsPanelForm">
+                            <fieldset id="settingsPanelFields" disabled>
                             ${presetsHtml}
                             <div class="row">
                                 ${settingsHtml}
                             </div>
+                            </fieldset>
                             <hr class="my-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 ${
@@ -395,7 +406,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                 `
                                     : "<div></div>"
                                 }
-                                <button type="button" id="settingsPanelSaveBtn" class="btn btn-primary">
+                                <button type="button" id="settingsPanelSaveBtn" class="btn btn-primary" disabled>
                                     <i class="fa-solid fa-save me-1"></i> ${t("Save Settings")}
                                 </button>
                             </div>
