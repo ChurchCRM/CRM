@@ -4,7 +4,8 @@
  * People Dashboard — Settings Panel tests (#9994).
  *
  * Boolean settings render as Yes/No radio pills (value 1 / 0), not a checkbox.
- * Values are applied after GET /admin/api/system/config/{name}.
+ * Values are applied after GET /admin/api/system/config/{name}; the fields
+ * stay disabled until every value has loaded.
  * The toggle test changes bEnableSelfRegistration; after() puts back the value
  * captured in before().
  */
@@ -40,16 +41,13 @@ describe("People Dashboard — Settings Panel", () => {
     });
 
     it("toggles Self Registration setting and saves successfully", () => {
-        cy.intercept("GET", "**/admin/api/system/config/bEnableSelfRegistration").as(
-            "loadSelfReg",
-        );
         cy.intercept("POST", "**/admin/api/system/config/bEnableSelfRegistration").as(
             "saveConfig",
         );
 
         cy.contains("button", "People Settings").click();
         cy.get("#peopleSettings.show", { timeout: 10000 }).should("be.visible");
-        cy.wait("@loadSelfReg");
+        cy.get("#peopleSettings #settingsPanelFields", { timeout: 10000 }).should("not.be.disabled");
 
         const yesRadio = "#peopleSettings input[name='bEnableSelfRegistration'][value='1']";
         const noRadio = "#peopleSettings input[name='bEnableSelfRegistration'][value='0']";
