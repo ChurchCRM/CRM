@@ -119,7 +119,13 @@
     "scripts": [
       "/mysql/upgrade/7.8.0-family-second-address.sql",
       "/mysql/upgrade/7.8.0-fund-category.sql",
-      "/mysql/upgrade/7.8.0-email-log.sql"
+      "/mysql/upgrade/7.8.0-email-log.sql",
+      "/mysql/upgrade/7.8.0-member-portal-calendars.sql",
+      "/mysql/upgrade/7.8.0-volunteer-v2-schema.sql",
+      "/mysql/upgrade/7.8.0-volunteer-v2-manager-permission.sql",
+      "/mysql/upgrade/7.8.0-volunteer-v2-event-ministry.sql",
+      "/mysql/upgrade/7.8.0-volunteer-v2-group-ministry.sql",
+      "/mysql/upgrade/7.8.0-member-portal-activity.sql"
     ],
     "dbVersion": "7.8.0"
   }
