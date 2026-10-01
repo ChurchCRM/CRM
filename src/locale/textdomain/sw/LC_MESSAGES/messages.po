@@ -7350,10 +7350,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Chagua aina ya rekodi ambayo mali hii inatumika"
 
 #: 
-msgid "Total Pledges"
-msgstr "Jumla ya Ahadi"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Fuatilia na simamia ahadi kwa familia na mfuko"
 

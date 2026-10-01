@@ -7369,10 +7369,6 @@ msgid "Select the type of record this property applies to"
 msgstr "حدد نوع السجل الذي تنطبق عليه هذه الخاصية"
 
 #: 
-msgid "Total Pledges"
-msgstr "إجمالي التعهدات"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "تتبع وإدارة التزامات التعهدات حسب العائلة والصندوق"
 

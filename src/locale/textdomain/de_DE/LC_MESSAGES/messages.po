@@ -7431,10 +7431,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Wählen Sie den Datensatztyp, für den diese Eigenschaft gilt"
 
 #: 
-msgid "Total Pledges"
-msgstr "Gesamtzusagen"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Verfolgen und verwalten Sie Zusagenverpflichtungen nach Familie und Fonds"
 

@@ -7380,10 +7380,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Válassza ki a rekord típusát, amelyre ez a tulajdonság vonatkozik"
 
 #: 
-msgid "Total Pledges"
-msgstr "Összes Ígéret"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Kövesse és kezelje az ígéret vállalásokat család és alap szerint"
 

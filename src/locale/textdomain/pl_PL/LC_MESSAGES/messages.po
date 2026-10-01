@@ -7417,10 +7417,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Wybierz typ rekordu, do którego odnosi się ta właściwość"
 
 #: 
-msgid "Total Pledges"
-msgstr "Łączne Zobowiązania"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Śledź i zarządzaj zobowiązaniami według rodziny i funduszu"
 

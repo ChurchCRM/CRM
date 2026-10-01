@@ -7323,10 +7323,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Selecteer het recordtype waarop deze eigenschap van toepassing is"
 
 #: 
-msgid "Total Pledges"
-msgstr "Totale Toezeggingen"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Volg en beheer toezeggingen per familie en fonds"
 

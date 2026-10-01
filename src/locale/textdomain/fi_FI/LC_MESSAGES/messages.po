@@ -7321,10 +7321,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Valitse tietuetyyppi, johon tämä ominaisuus liittyy"
 
 #: 
-msgid "Total Pledges"
-msgstr "Lupaukset Yhteensä"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Seuraa ja hallitse lupausitoumuksia perheen ja rahaston mukaan"
 

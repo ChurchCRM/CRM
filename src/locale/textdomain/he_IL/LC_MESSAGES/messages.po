@@ -7352,10 +7352,6 @@ msgid "Select the type of record this property applies to"
 msgstr "בחר את סוג הרשומה שאליה מאפיין זה חל"
 
 #: 
-msgid "Total Pledges"
-msgstr "סה\"כ התחייבויות"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "עקוב ונהל התחייבויות לפי משפחה וקרן"
 

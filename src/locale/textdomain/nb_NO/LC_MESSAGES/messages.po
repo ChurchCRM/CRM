@@ -7424,10 +7424,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Velg posttypen denne egenskapen gjelder for"
 
 #: 
-msgid "Total Pledges"
-msgstr "Totale Løfter"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Spor og administrer løfteforpliktelser etter familie og fond"
 

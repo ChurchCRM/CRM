@@ -7361,10 +7361,6 @@ msgid "Select the type of record this property applies to"
 msgstr "ይህ ንብረት የሚተገበርበትን የመዝገብ ዓይነት ይምረጡ"
 
 #: 
-msgid "Total Pledges"
-msgstr "ጠቅላላ ቃል ኪዳኖች"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "የቃል ኪዳን ቁርጠኝነቶችን በቤተሰብ እና በፈንድ ይከታተሉ እና ያስተዳድሩ"
 

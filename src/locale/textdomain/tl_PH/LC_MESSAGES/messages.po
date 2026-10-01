@@ -7319,10 +7319,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Piliin ang uri ng rekord na inilalapat ng katangiang ito"
 
 #: 
-msgid "Total Pledges"
-msgstr "Kabuuang Pangako"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Subaybayan at pamahalaan ang mga pangakong pangako ayon sa pamilya at pondo"
 

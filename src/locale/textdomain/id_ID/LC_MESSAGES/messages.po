@@ -7342,10 +7342,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Pilih jenis catatan yang berlaku untuk properti ini"
 
 #: 
-msgid "Total Pledges"
-msgstr "Total Janji"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Lacak dan kelola komitmen janji berdasarkan keluarga dan dana"
 

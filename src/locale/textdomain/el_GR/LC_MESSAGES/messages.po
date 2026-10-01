@@ -7354,10 +7354,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Επιλέξτε τον τύπο εγγραφής στον οποίο εφαρμόζεται αυτή η ιδιότητα"
 
 #: 
-msgid "Total Pledges"
-msgstr "Συνολικές Υποσχέσεις"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Παρακολουθήστε και διαχειριστείτε τις δεσμεύσεις υποσχέσεων ανά οικογένεια και ταμείο"
 

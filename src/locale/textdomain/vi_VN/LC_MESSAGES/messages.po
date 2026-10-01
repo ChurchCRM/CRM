@@ -7352,10 +7352,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Chọn loại bản ghi mà thuộc tính này áp dụng"
 
 #: 
-msgid "Total Pledges"
-msgstr "Tổng Cam kết"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Theo dõi và quản lý các cam kết theo gia đình và quỹ"
 

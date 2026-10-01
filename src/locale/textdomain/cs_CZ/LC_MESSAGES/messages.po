@@ -7348,10 +7348,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Vyberte typ záznamu, na který se tato vlastnost vztahuje"
 
 #: 
-msgid "Total Pledges"
-msgstr "Celkové sliby"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Sledujte a spravujte závazky slibů podle rodiny a fondu"
 
