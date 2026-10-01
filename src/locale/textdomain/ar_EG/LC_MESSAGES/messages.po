@@ -14953,10 +14953,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "تجاوز ملف تحديد هذا خوادم أقصى حجم التحميل من"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "لا توجد أحداث مجدولة لليوم"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "كانت هناك مشكلة استرجاع الكائن المطلوب"
 

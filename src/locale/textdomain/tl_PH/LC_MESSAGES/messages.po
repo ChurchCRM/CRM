@@ -14887,10 +14887,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Ang napiling file ay lumagpas sa pinakamataas na sukat ng upload ng server na"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Walang mga kaganapang nakatakda para ngayon"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Nagkaroon ng problema sa pagkuha ng hiniling na object"
 

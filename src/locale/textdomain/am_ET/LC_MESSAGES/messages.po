@@ -14930,10 +14930,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "የተመረጠው ፋይል  መጠን ከከፍተኛውን ፋይል የመጫኛ መጠን ይበልጣል"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "ለዛሬ ምንም ዝግጅቶች አልተቀለሱም"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "የተጠየቀውን ነገር ሰርስሮ ማውጣት ላይ ችግር ነበር"
 

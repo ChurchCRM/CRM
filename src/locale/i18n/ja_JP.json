@@ -3552,7 +3552,6 @@
   "System upgrade completed successfully!": "システムアップグレードが正常に完了しました!",
   "Text All": "すべてにテキストを送信",
   "The selected file exceeds this servers maximum upload size of": "選択したファイルがこのサーバーの最大アップロードサイズを超えています",
-  "There are no events scheduled for today": "本日予定されているイベントはありません",
   "There was a problem retrieving the requested object": "要求されたオブジェクトを取得する際に問題が発生しました",
   "This event type is used by": "このイベントタイプは以下で使用されています",
   "This field is required": "この項目は必須です",

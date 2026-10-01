@@ -14992,10 +14992,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Den valgte filen overskrider serverens maksimale opplastingsstørrelse på"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Det er ingen planlagte arrangementer i dag"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Det oppsto et problem ved henting av det forespurte objektet"
 

@@ -14921,10 +14921,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Valitud fail ületab selle serveri maksimaalse üleslaadimismahu"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Täna pole ühtegi sündmust planeeritud"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Taotletud objekti toomisel ilmnes probleem"
 

@@ -14981,10 +14981,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "所选文件超过此服务器的最大上载大小"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "今日没有安排活动"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "检索请求对象时出现问题"
 

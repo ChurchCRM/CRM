@@ -3552,7 +3552,6 @@
   "System upgrade completed successfully!": "시스템 업그레이드가 완료되었습니다!",
   "Text All": "모두에게 텍스트 보내기",
   "The selected file exceeds this servers maximum upload size of": "선택한 파일이 서버 최대 업로드 크기를 초과했습니다:",
-  "There are no events scheduled for today": "오늘 예정된 이벤트가 없습니다",
   "There was a problem retrieving the requested object": "요청한 항목을 가져오는 중 문제가 발생했습니다.",
   "This event type is used by": "이 이벤트 유형은 다음에서 사용됩니다",
   "This field is required": "필수 입력 항목입니다",
