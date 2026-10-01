@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-01 05:20+0000\n"
+"POT-Creation-Date: 2026-10-01 17:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2122,6 +2122,9 @@ msgstr ""
 msgid "Category Name"
 msgstr ""
 
+msgid "Category updated."
+msgstr ""
+
 #. Context: countries
 msgid "Cayman Islands"
 msgstr ""
@@ -3548,6 +3551,9 @@ msgstr ""
 msgid "Delete Calendar"
 msgstr ""
 
+msgid "Delete Category"
+msgstr ""
+
 msgid "Delete Confirmation"
 msgstr ""
 
@@ -4907,6 +4913,9 @@ msgstr ""
 msgid "Failed to delete"
 msgstr ""
 
+msgid "Failed to delete category"
+msgstr ""
+
 msgid "Failed to delete class. Please try again."
 msgstr ""
 
@@ -5085,6 +5094,9 @@ msgid "Failed to remove from class. Please try again."
 msgstr ""
 
 msgid "Failed to remove group"
+msgstr ""
+
+msgid "Failed to rename category"
 msgstr ""
 
 msgid "Failed to rename kiosk"
@@ -5763,6 +5775,9 @@ msgstr ""
 msgid "Fund Allocation"
 msgstr ""
 
+msgid "Fund Categories"
+msgstr ""
+
 msgid "Fund Name"
 msgstr ""
 
@@ -5772,10 +5787,16 @@ msgstr ""
 msgid "Fund Total"
 msgstr ""
 
+msgid "Fund activated."
+msgstr ""
+
 msgid "Fund added successfully."
 msgstr ""
 
 msgid "Fund contributor pledge summary by fiscal year"
+msgstr ""
+
+msgid "Fund deactivated."
 msgstr ""
 
 msgid "Fund deleted successfully."
@@ -5821,6 +5842,9 @@ msgid "Fundraising"
 msgstr ""
 
 msgid "Funds"
+msgstr ""
+
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
 msgstr ""
 
 msgid "GA4 Measurement ID"
@@ -6417,6 +6441,9 @@ msgid "ICS URL"
 msgstr ""
 
 msgid "ID"
+msgstr ""
+
+msgid "INACTIVE"
 msgstr ""
 
 msgid "IP Address"
@@ -8316,6 +8343,9 @@ msgstr ""
 msgid "New Zealand"
 msgstr ""
 
+msgid "New category name (an existing name merges the two)"
+msgstr ""
+
 msgid "New family details"
 msgstr ""
 
@@ -9005,6 +9035,9 @@ msgstr ""
 msgid "Option not found"
 msgstr ""
 
+msgid "Optional"
+msgstr ""
+
 msgid "Optional - only required if OpenLP authentication is enabled"
 msgstr ""
 
@@ -9021,6 +9054,9 @@ msgid "Optional detailed description of this property type"
 msgstr ""
 
 msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr ""
+
+msgid "Optional — pick or type a new category"
 msgstr ""
 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -9143,6 +9179,9 @@ msgid "Page route"
 msgstr ""
 
 msgid "Paid"
+msgstr ""
+
+msgid "Paid beyond the pledge"
 msgstr ""
 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
@@ -9788,6 +9827,9 @@ msgstr ""
 msgid "Pledged Amount"
 msgstr ""
 
+msgid "Pledged but not yet paid"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Pledged this year"
 msgstr ""
@@ -10315,6 +10357,9 @@ msgid "Removed from cart successfully"
 msgstr ""
 
 msgid "Rename"
+msgstr ""
+
+msgid "Rename Category"
 msgstr ""
 
 msgid "Rename Kiosk"
@@ -11580,6 +11625,9 @@ msgstr ""
 msgid "Still Checked In"
 msgstr ""
 
+msgid "Still Owed"
+msgstr ""
+
 msgid "Streak"
 msgstr ""
 
@@ -11639,6 +11687,9 @@ msgid "Suggesting better phrasing for existing translations"
 msgstr ""
 
 msgid "Summary Data"
+msgstr ""
+
+msgid "Summary by Category"
 msgstr ""
 
 msgid "Summer"
@@ -12487,13 +12538,13 @@ msgstr ""
 msgid "Total Kiosks"
 msgstr ""
 
+msgid "Total Paid"
+msgstr ""
+
 msgid "Total Payments"
 msgstr ""
 
 msgid "Total Pledged"
-msgstr ""
-
-msgid "Total Pledges"
 msgstr ""
 
 msgid "Total Raised"
@@ -12734,10 +12785,10 @@ msgstr ""
 msgid "Unassigned"
 msgstr ""
 
-msgid "Unclassified"
+msgid "Uncategorized"
 msgstr ""
 
-msgid "Uncategorized"
+msgid "Unclassified"
 msgstr ""
 
 msgid "Underpaid"
@@ -14067,9 +14118,6 @@ msgid "deposit(s) with no payments"
 msgstr ""
 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
-msgstr ""
-
-msgid "e.g. Regular Offerings"
 msgstr ""
 
 msgid "e.g. Sunday Service"
