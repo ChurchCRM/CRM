@@ -6,6 +6,12 @@ const renamed = `UI Renamed ${stamp}`;
 const fundName = `UI Cat Fund ${stamp}`;
 const API = "/finance/api/funds";
 
+// Row-menu handlers bind after the locale bundle loads; DataTables init runs in the same step.
+const visitFunds = () => {
+    cy.visit("/finance/funds");
+    cy.get("#fundsTable_wrapper").should("exist");
+};
+
 describe("Donation Fund Categories - funds page", () => {
     let fundId;
 
@@ -26,20 +32,20 @@ describe("Donation Fund Categories - funds page", () => {
     });
 
     it("shows the category column and category inputs", () => {
-        cy.visit("/finance/funds");
+        visitFunds();
         cy.contains("th", "Category").should("exist");
         cy.get("#newFundCategory").should("be.visible");
         cy.contains("#fundsTable tr", fundName).should("contain", category);
     });
 
     it("opens Edit with the Active switch matching the fund's status", () => {
-        cy.visit("/finance/funds");
+        visitFunds();
         cy.contains("#fundsTable tr", fundName).find(".fund-edit-btn").click({ force: true });
         cy.get("#editFundActive").should("be.checked");
     });
 
     it("pre-fills the category when editing a fund and saves a new one", () => {
-        cy.visit("/finance/funds");
+        visitFunds();
         cy.contains("#fundsTable tr", fundName).find(".fund-edit-btn").click({ force: true });
         cy.get("#editFundCategory").should("have.value", category).clear().type(`${category} edited`);
         cy.get("#saveFundEdit").click();
@@ -58,7 +64,7 @@ describe("Donation Fund Categories - funds page", () => {
 
     it("renames a category from the manage card", () => {
         cy.makePrivateAdminAPICall("PUT", `${API}/${fundId}`, { category }, 200);
-        cy.visit("/finance/funds");
+        visitFunds();
         cy.get(`.category-rename-btn[data-category="${category}"]`).click();
         cy.get(".bootbox-input").clear().type(renamed);
         cy.get(".bootbox .btn-primary").click();
@@ -66,7 +72,7 @@ describe("Donation Fund Categories - funds page", () => {
     });
 
     it("deleting a category keeps the fund but clears its category", () => {
-        cy.visit("/finance/funds");
+        visitFunds();
         cy.get(`.category-delete-btn[data-category="${renamed}"]`).click();
         cy.get(".bootbox .btn-danger").click();
         cy.contains("#fundsTable tr", fundName).should("exist").and("not.contain", renamed);
@@ -91,9 +97,10 @@ describe("Donation Funds - activate / deactivate from the row menu", () => {
 
     it("deactivates and reactivates a fund without opening Edit", () => {
         cy.setupAdminSession();
-        cy.visit("/finance/funds");
+        visitFunds();
         cy.contains("#fundsTable tr", toggleName).find(".fund-toggle-active-btn").click({ force: true });
         cy.contains("#fundsTable tr", toggleName).should("contain", "Inactive");
+        cy.get("#fundsTable_wrapper").should("exist");
 
         cy.contains("#fundsTable tr", toggleName).find(".fund-toggle-active-btn").click({ force: true });
         cy.contains("#fundsTable tr", toggleName).should("contain", "Active").and("not.contain", "Inactive");
