@@ -105,9 +105,13 @@ const fetchFeed = (url) => {
     return cy.request({ method: "GET", url, failOnStatusCode: false });
 };
 
+/** Titles of the events the tests create; POST /api/events returns no id, so after() looks them up (#9769). */
+const createdEventTitles = [];
+
 /** Create an event on a calendar, inside the feed's window. */
-const createEvent = (title, calendarId, day) =>
-    cy.request({
+const createEvent = (title, calendarId, day) => {
+    createdEventTitles.push(title);
+    return cy.request({
         method: "POST",
         url: "/api/events",
         headers: { "content-type": "application/json", "x-api-key": adminKey() },
@@ -120,6 +124,7 @@ const createEvent = (title, calendarId, day) =>
             Desc: "<p>An evening gathering</p>",
         },
     });
+};
 
 /** A day inside the feed window (today − 3 months … today + 18 months). */
 const dayInWindow = (monthsAhead) => {
@@ -144,6 +149,12 @@ describe("Member Portal calendar subscription", () => {
 
     after(() => {
         setVisibleCalendars([]);
+        cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((resp) => {
+            const ids = (resp.body.Events || [])
+                .filter((event) => createdEventTitles.includes(event.Title))
+                .map((event) => event.Id);
+            cy.cleanupEvents(ids);
+        });
     });
 
     describe("Who may call the portal endpoint", () => {

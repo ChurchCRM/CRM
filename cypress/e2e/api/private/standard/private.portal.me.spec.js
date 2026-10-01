@@ -383,6 +383,12 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
     });
 
     describe("POST /api/portal/family/members", () => {
+        const createdPersonIds = [];
+
+        after(() => {
+            cy.cleanupPeople(createdPersonIds);
+        });
+
         it("creates a pending self-registration in the actor's own family", () => {
             const firstName = `Api${String(Date.now()).slice(-6)}`;
             portalLogin(adultUser);
@@ -395,6 +401,7 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
                 ).then((response) => {
                     expect(response.body.success).to.eq(true);
                     expect(response.body.personId).to.be.greaterThan(0);
+                    createdPersonIds.push(response.body.personId);
 
                     cy.makePrivateAdminAPICall("GET", `/api/person/${response.body.personId}`, null, 200).then(
                         (person) => {
