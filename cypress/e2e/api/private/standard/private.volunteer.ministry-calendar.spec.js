@@ -105,6 +105,12 @@ function createMinistryViaApi(name) {
 
 function cleanupFixtures() {
     dbOk(
+        `DELETE ce FROM calendar_events ce
+           JOIN events_event e ON e.event_id = ce.event_id
+          WHERE e.event_title LIKE ?`,
+        [`${PREFIX}%`],
+    );
+    dbOk(
         `DELETE FROM events_event WHERE event_title LIKE ?`,
         [`${PREFIX}%`],
     );
