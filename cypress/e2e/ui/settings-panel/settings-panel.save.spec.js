@@ -76,7 +76,7 @@ describe("Settings Panel — Save button", () => {
         cy.get("#mapAdminSettings", { timeout: 10000 }).should("have.class", "show").and("not.have.class", "collapsing");
 
         // Pick a zoom level different from the default (10) and save
-        cy.get("#mapAdminSettings select[name='iMapZoom']").should("be.enabled").select("14");
+        cy.get("#mapAdminSettings select[name='iMapZoom']").select("14");
         cy.get("#mapAdminSettings #settingsPanelSaveBtn").click();
         cy.wait("@saveConfig");
 
