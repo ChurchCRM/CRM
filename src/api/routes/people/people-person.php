@@ -186,7 +186,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     path="/person/{personId}",
      *     operationId="deletePerson",
      *     summary="Delete a person record",
-     *     description="Permanently delete a person and all their associated records. Current user cannot delete their own account.",
+     *     description="Permanently delete a person and all their associated records. A person who has a login can only be deleted by an administrator, never by themselves, and the last administrator cannot be deleted.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
@@ -196,7 +196,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Cannot delete yourself or DeleteRecords role required"),
+     *     @OA\Response(response=403, description="DeleteRecords role required, or this person has a login that the current user may not delete"),
      *     @OA\Response(response=404, description="Person not found")
      * )
      * @OA\Post(
@@ -243,8 +243,9 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     // Delete person
     $group->delete('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
-        if (AuthenticationManager::getCurrentUser()->getId() === (int) $person->getId()) {
-            throw new HttpForbiddenException($request, gettext("Can't delete yourself"));
+        $blockedReason = $person->getLoginDeletionBlockedReason();
+        if ($blockedReason !== null) {
+            throw new HttpForbiddenException($request, $blockedReason);
         }
         // PERSON_DELETED is dispatched from Person::postDelete() so that the
         // family-member cascade in DELETE /family/{id}?deleteMembers=true
