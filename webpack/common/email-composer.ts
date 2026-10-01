@@ -747,7 +747,7 @@ function updateClientButtonHref(): void {
 
   if (tooMany) {
     const reason = i18next.t(
-      "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses or Send instead.",
+      "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead.",
       { total: currentEmails.length, max: MAX_MAILTO_RECIPIENTS },
     );
     clientBtn.title = reason;
