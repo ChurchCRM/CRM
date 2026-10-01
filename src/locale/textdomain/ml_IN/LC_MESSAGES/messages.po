@@ -7319,10 +7319,6 @@ msgid "Select the type of record this property applies to"
 msgstr "ഈ സ്വഭാവം ബാധകമാകുന്ന റെക്കോർഡ് തരം തിരഞ്ഞെടുക്കൂ"
 
 #: 
-msgid "Total Pledges"
-msgstr "ആകെ സംഭാവന പ്രതിജ്ഞകൾ"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "കുടുംബം, ഫണ്ട് അനുസരിച്ച് സംഭാവന പ്രതിജ്ഞ ട്രാക്ക്, മാനേജ് ചെയ്യൂ"
 

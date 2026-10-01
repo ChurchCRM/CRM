@@ -7325,10 +7325,6 @@ msgid "Select the type of record this property applies to"
 msgstr "เลือกประเภทระเบียนที่คุณสมบัตินี้ใช้กับ"
 
 #: 
-msgid "Total Pledges"
-msgstr "คำมั่นสัญญาทั้งหมด"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "ติดตามและจัดการความมุ่งมั่นคำมั่นสัญญาตามครอบครัวและกองทุน"
 

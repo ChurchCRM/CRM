@@ -7331,10 +7331,6 @@ msgid "Select the type of record this property applies to"
 msgstr "ఈ ఆస్తికి వర్తించే రికార్డ్ రకాన్ని ఎంచుకోండి"
 
 #: 
-msgid "Total Pledges"
-msgstr "మొత్తం వాగ్దానాలు"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "కుటుంబం మరియు నిధి ద్వారా వాగ్దాన నిబద్ధతలను ట్రాక్ చేయండి మరియు నిర్వహించండి"
 

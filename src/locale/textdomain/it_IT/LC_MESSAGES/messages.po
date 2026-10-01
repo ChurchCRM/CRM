@@ -7373,10 +7373,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Seleziona il tipo di record a cui si applica questa proprietà"
 
 #: 
-msgid "Total Pledges"
-msgstr "Totale Impegni"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Traccia e gestisci gli impegni per famiglia e fondo"
 

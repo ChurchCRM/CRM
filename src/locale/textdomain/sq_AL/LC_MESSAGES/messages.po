@@ -7344,10 +7344,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Zgjidhni llojin e rekordit që kjo veti aplikon"
 
 #: 
-msgid "Total Pledges"
-msgstr "Totali i zotimeve"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Gjurmoni dhe menaxhoni angazhimet e zotimeve sipas familjes dhe fondit"
 

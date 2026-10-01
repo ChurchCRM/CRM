@@ -7358,10 +7358,6 @@ msgid "Select the type of record this property applies to"
 msgstr "இந்த பண்பு பொருந்தும் பதிவின் வகையைத் தேர்ந்தெடுக்கவும்"
 
 #: 
-msgid "Total Pledges"
-msgstr "மொத்த உறுதிமொழிகள்"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "குடும்பம் மற்றும் நிதியின் அடிப்படையில் உறுதிமொழிப் பொறுப்புகளைக் கண்காணித்து நிர்வகிக்கவும்"
 

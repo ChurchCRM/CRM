@@ -7343,10 +7343,6 @@ msgid "Select the type of record this property applies to"
 msgstr "이 속성이 적용되는 레코드 유형을 선택하세요"
 
 #: 
-msgid "Total Pledges"
-msgstr "총 서약"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "가족 및 기금별 서약 약정 추적 및 관리"
 

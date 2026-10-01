@@ -7354,10 +7354,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Bu özelliğin uygulandığı kayıt türünü seçin"
 
 #: 
-msgid "Total Pledges"
-msgstr "Toplam Taahhütler"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Aile ve fona göre taahhüt yükümlülüklerini takip edin ve yönetin"
 

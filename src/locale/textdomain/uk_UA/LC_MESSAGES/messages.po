@@ -7366,10 +7366,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Виберіть тип запису, до якого застосовується ця властивість"
 
 #: 
-msgid "Total Pledges"
-msgstr "Усього Зобов'язань"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Відстежуйте та керуйте зобов'язаннями за сім'ями та фондами"
 

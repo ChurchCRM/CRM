@@ -7417,10 +7417,6 @@ msgid "Select the type of record this property applies to"
 msgstr "选择此属性适用的记录类型"
 
 #: 
-msgid "Total Pledges"
-msgstr "认捐总额"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "按家庭和基金跟踪和管理认捐承诺"
 

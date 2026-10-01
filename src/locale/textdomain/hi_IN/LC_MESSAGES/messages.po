@@ -7318,10 +7318,6 @@ msgid "Select the type of record this property applies to"
 msgstr "इस संपत्ति पर लागू होने वाले रिकॉर्ड का प्रकार चुनें"
 
 #: 
-msgid "Total Pledges"
-msgstr "कुल प्रतिज्ञाएं"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "परिवार और फंड द्वारा प्रतिज्ञा प्रतिबद्धताओं को ट्रैक और प्रबंधित करें"
 

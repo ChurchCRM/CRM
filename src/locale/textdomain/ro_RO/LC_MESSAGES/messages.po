@@ -7418,10 +7418,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Selectați tipul de înregistrare la care se aplică această proprietate"
 
 #: 
-msgid "Total Pledges"
-msgstr "Total Angajamente"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Urmăriți și gestionați angajamentele după familie și fond"
 

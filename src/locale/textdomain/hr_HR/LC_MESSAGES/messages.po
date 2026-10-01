@@ -7322,10 +7322,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Odaberite vrstu zapisa na koji se ovo svojstvo primjenjuje"
 
 #: 
-msgid "Total Pledges"
-msgstr "Ukupni zavjeti"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Pratite i upravljajte obvezama zavjeta prema obitelji i fondu"
 

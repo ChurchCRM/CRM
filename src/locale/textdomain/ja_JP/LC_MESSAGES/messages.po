@@ -7313,10 +7313,6 @@ msgid "Select the type of record this property applies to"
 msgstr "このプロパティが適用されるレコードタイプを選択"
 
 #: 
-msgid "Total Pledges"
-msgstr "誓約合計"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "家族と基金別に誓約コミットメントを追跡および管理"
 

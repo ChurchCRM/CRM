@@ -7354,10 +7354,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Kies die tipe rekord waarvoor hierdie eiendom van toepassing is"
 
 #: 
-msgid "Total Pledges"
-msgstr "Totale Beloftes"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Volg en bestuur belofte-verpligtinge per gesin en fonds"
 
