@@ -4,9 +4,12 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PersonDeleteGuard;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -359,6 +362,41 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 <?php endif; ?>
             </div>
         </div>
+
+        <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && !empty($fam_ID)) { ?>
+        <!-- Giving History Card (Finance role only) -->
+        <div class="card mb-3" id="giving-history-card">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot me-1"></i> <?= gettext("Giving History") ?></h3>
+                <span id="person-ytd-total-badge" class="badge bg-green-lt text-green ms-2 d-none"></span>
+            </div>
+            <div class="card-body p-0">
+                <div id="giving-history-loading" class="px-3 py-2 text-muted">
+                    <i class="fa-solid fa-spinner fa-spin me-1"></i> <?= gettext("Loading…") ?>
+                </div>
+                <div id="giving-history-content" class="d-none">
+                    <ul class="list-unstyled mb-0 px-3 py-2">
+                        <li class="mb-2">
+                            <i class="fa-solid fa-calendar-check me-2 text-muted" style="width:1rem;text-align:center;"></i>
+                            <strong><?= gettext("YTD Paid") ?>:</strong> <span id="person-giving-ytd" class="text-success fw-bold">$0.00</span>
+                        </li>
+                        <li class="mb-2" id="person-last-gift-row">
+                            <i class="fa-solid fa-hand-holding-dollar me-2 text-muted" style="width:1rem;text-align:center;"></i>
+                            <strong><?= gettext("Last Gift") ?>:</strong> <span id="person-last-gift">—</span>
+                        </li>
+                    </ul>
+                    <div class="px-3 pb-2">
+                        <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= (int)$fam_ID ?>#giving-history" class="btn btn-sm btn-outline-primary w-100">
+                            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("View Full Family Giving") ?>
+                        </a>
+                    </div>
+                </div>
+                <div id="giving-history-empty" class="d-none px-3 py-2 text-muted">
+                    <i class="fa-solid fa-circle-info me-1"></i> <?= gettext("No giving history found.") ?>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
     </div>
     <div class="col-lg-8">
         <!-- Toolbar -->
@@ -408,7 +446,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
+                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $iPersonID ?>"<?= PersonDeleteGuard::attributes((int) $iPersonID) ?>><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -475,7 +513,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                             <button class="dropdown-item AddToCart" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                                             <?php if ($bOkToEdit) { ?>
                                             <div class="dropdown-divider"></div>
-                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($familyMember->getFullName()) ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($familyMember->getFullName()) ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"<?= PersonDeleteGuard::attributes((int) $familyMember->getId()) ?>><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -491,13 +529,18 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
 
         <?php
         // Address card — mirrors the family-view Address card. Renders when the
-        // person has a mailing address OR a map config (family-less person with
-        // their own address). The #person-map element must exist whenever
-        // $personMapConfig is set, or person-view.js's L.map() call throws.
+        // person has a mailing address, the family has a distinct mailing address
+        // (#9743), OR a map config (family-less person with their own address).
+        // The #person-map element must exist whenever $personMapConfig is set, or
+        // person-view.js's L.map() call throws.
         $personDirectionsUrl = $person->getDirectionsUrl();
         $personAppleDirectionsUrl = $person->getAppleMapsDirectionsUrl();
+        $personFamily = $person->getFamily();
+        $familyMailingAddress = $personFamily !== null && $personFamily->hasDistinctMailingAddress()
+            ? $personFamily->getSecondaryAddress()
+            : '';
         ?>
-        <?php if (!empty($formattedMailingAddress) || $personMapConfig !== null) : ?>
+        <?php if (!empty($formattedMailingAddress) || $familyMailingAddress !== '' || $personMapConfig !== null) : ?>
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= gettext('Address') ?>
@@ -515,6 +558,18 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             <div class="card-body">
                 <?php if (!empty($formattedMailingAddress)) : ?>
                 <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
+                <?php endif; ?>
+                <?php
+                // The address above stays the person's own / inherited primary
+                // address. The family's distinct mailing address goes underneath,
+                // even when there is no primary address, so it is clear where mail goes.
+                if ($familyMailingAddress !== '') : ?>
+                <div class="mt-2 text-body-secondary small" id="person-family-mailing-address">
+                    <i class="fa-solid fa-envelope me-1"></i><strong><?= gettext('Mailing Address') ?></strong>:
+                    <?= InputUtils::escapeHTML($familyMailingAddress) ?>
+                </div>
+                <?php endif; ?>
+                <?php if (!empty($formattedMailingAddress)) : ?>
                 <div class="mt-2 d-flex flex-wrap gap-1">
                     <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
                     <div class="btn-group directions-btn-group">
@@ -832,6 +887,8 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             window.CRM.currentPersonID = <?= $iPersonID ?>;
             window.CRM.currentPersonActive = <?= $person->isActive() ? "true" : "false" ?>;
             window.CRM.currentPersonName = <?= InputUtils::jsonEncodeForScript($person->getFullName()) ?>;
+            window.CRM.personFamId = <?= (int)$fam_ID ?>;
+            window.CRM.currentFY = <?= json_encode(FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId() ?? 1)) ?>;
 
             $("#deletePhoto").click(function() {
                 window.CRM.deletePhoto("person", window.CRM.currentPersonID);

@@ -1,6 +1,6 @@
 ---
 title: "Observability, Logging & Metrics"
-intent: "Guidance for logging, metrics, and monitoring for new MVCs and APIs"
+intent: "Guidance for logging in new MVCs and APIs. Do not invent monitoring endpoints."
 tags: ["logging","monitoring","metrics","observability"]
 prereqs: ["[[code-standards]]","[[development-workflows]]"]
 complexity: "intermediate"
@@ -8,22 +8,19 @@ complexity: "intermediate"
 
 # Observability, Logging & Metrics
 
-Recommendations:
-- Use `LoggerUtils::getAppLogger()` for structured logs (JSON output desirable in production).
-- Add contextual metadata: user id, request id, route, and operation (e.g., `group.enroll`).
-- Emit deprecation and migration metrics when shims are used.
+## Current product (do this)
 
-Metrics:
-- Track request counts, error rates, latency (p95/p99) per endpoint.
-- Expose a `/health` and `/metrics` endpoint (Prometheus compatible) at entry-points.
+- Use `LoggerUtils::getAppLogger()` for application logs.
+- Add useful context when you already have it: user id, route, operation (for example `group.enroll`).
+- Do not log secrets, donation amounts tied to a person in debug dumps, or raw request bodies that may contain passwords.
 
-Tracing:
-- Correlate logs with request IDs (generate `X-Request-Id` in middleware).
-- Optionally add OpenTelemetry spans around service operations (GroupService, DB calls).
+## Not current product (do not add unless an issue asks)
 
-Alerting:
-- Alert on sustained increased error rates (>1% for 5m) or slow responses (p99 > 2s).
+There is **no** Prometheus `/metrics` endpoint, **no** OpenTelemetry pipeline, and **no** first-party alerting stack in ChurchCRM today. Do not implement those as part of an unrelated feature and do not describe them as shipping capabilities.
 
-Testing & rollout:
-- Add integration tests asserting logs contain required context fields.
-- Validate metrics endpoint on staging before production rollout.
+If a church or host needs metrics, that is a future issue, not a silent add-on.
+
+## Tests
+
+- Prefer asserting user-visible behaviour over asserting log line shape.
+- If you add a log assertion, keep it on a stable message string, not a timestamp.

@@ -62,7 +62,7 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
         try {
             $logger->info('Admin demo data import started', ['includeFinancial' => $includeFinancial, 'includeEvents' => $includeEvents, 'includeSundaySchool' => $includeSundaySchool]);
             $demoService = new DemoDataService();
-            $result = $demoService->importDemoData($includeFinancial, $includeEvents, $includeSundaySchool);
+            $result = $demoService->importDemoData($includeFinancial, $includeEvents, $includeSundaySchool, $force);
 
             $duration = $result['endTime'] - $result['startTime'];
 

@@ -1,0 +1,23 @@
+name: 'Cache'
+description: 'Single SHA pin for actions/cache. Run actions/checkout first.'
+
+inputs:
+  path:
+    description: 'Paths to cache'
+    required: true
+  key:
+    description: 'Cache key'
+    required: true
+  restore-keys:
+    description: 'Fallback key prefixes'
+    required: false
+    default: ''
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+      with:
+        path: ${{ inputs.path }}
+        key: ${{ inputs.key }}
+        restore-keys: ${{ inputs.restore-keys }}

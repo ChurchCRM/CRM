@@ -478,10 +478,6 @@ msgid "Photos"
 msgstr "ፎቶዎች"
 
 #: 
-msgid "Number of Columns"
-msgstr "የአምዶች ብዛት"
-
-#: 
 msgid "Paper Size"
 msgstr "የወረቀት መጠን"
 
@@ -845,10 +841,6 @@ msgstr "ፎቶ ሰርዝ"
 #: 
 msgid "Timeline"
 msgstr "የጊዜ መስመር"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "ቃል የተገባ ገንዘብ እና ክፍያዎች"
 
 #: 
 msgid "Value"
@@ -7369,10 +7361,6 @@ msgid "Select the type of record this property applies to"
 msgstr "ይህ ንብረት የሚተገበርበትን የመዝገብ ዓይነት ይምረጡ"
 
 #: 
-msgid "Total Pledges"
-msgstr "ጠቅላላ ቃል ኪዳኖች"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "የቃል ኪዳን ቁርጠኝነቶችን በቤተሰብ እና በፈንድ ይከታተሉ እና ያስተዳድሩ"
 
@@ -12301,16 +12289,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "ሰንበት ትምህርት ቤት + ዝግጅቶች + ኪዮስኮች እንዴት አብረው ይሰሩ"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "ለ %s ወቅታዊ ቀን አይደለም — ሚጠበቀው YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "ለ rangeStart ወይም rangeEnd የቀን ቅርጸ ትክክለኛ አይደለም"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "ትክክለኛ ያልሆነ ቀን; ሚጠበቀው ቅርጸ YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12541,10 +12521,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds ባዶ ያልሆነ ድርድር መሆን አለበት"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "ትክክለኛ ያልሆነ ድግግሞሽ ዓይነት"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds ባዶ ያልሆነ ድርድር መሆን አለበት"
 
@@ -12747,10 +12723,6 @@ msgstr "ጠቅላላ ኪዮስኮች"
 #: 
 msgid "Upcoming Events"
 msgstr "መጪ ዝግጅቶች"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "በኢሜይል ቅጾች ውስጥ የሚታይ የቤተ ክርስቲያን አርማ ፍፁም http(s) URL (እና ወደፊት በሌሎች ቦታዎችም ጥቅም ላይ የሚውል)። በኢሜይል ደንበኞች ውስጥ ለተሻለ ማሳያ፣ HTTPS ላይ የቀረበ ሰፊ ሰሌዳ ምስል ከ3.5:1 ጋር ተቀራራቢ ጥምርታ ያለው (ለምሳሌ 350×100 px)፣ PNG ወይም JPG ይጠቀሙ። ወደ ነባሪ ChurchCRM አርማ ለመመለስ ባዶ ይተው ወይም ልቅ ዋጋ ያስገቡ።"
 
 #: 
 msgid "An option with that name already exists"
@@ -14952,10 +14924,6 @@ msgstr "ሁሉንም ጽሑፍ"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "የተመረጠው ፋይል  መጠን ከከፍተኛውን ፋይል የመጫኛ መጠን ይበልጣል"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "ለዛሬ ምንም ዝግጅቶች አልተቀለሱም"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -17864,6 +17832,12 @@ msgid "Set up now"
 msgstr "አሁን ያዋቅሩ"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "ባለሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀን አለዎት።"
+msgstr[1] "ባለሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀናት አሉዎት።"
+
+#: 
 msgid "Unknown family"
 msgstr "ያልታወቀ ቤተሰብ"
 
@@ -18454,4 +18428,608 @@ msgstr "skip ዜሮ ወይም አዎንታዊ ኢንቲጀር መሆን አለ�
 #: 
 msgid "view families missing an email"
 msgstr "ኢሜይል የሌላቸውን ቤተሰቦች ይመልከቱ"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "በዚህ በጀት ዓመት ገዢዎች"
+
+#: 
+msgid "Current"
+msgstr "የአሁኑ"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "በዚህ በጀት ዓመት የተለገሱ ዕቃዎች"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "መግቢያ ስም %d ወይም ከዚያ ያነሱ ፊደላት ሊኖረው ይገባል!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "በዚህ በጀት ዓመት የተሰበሰበ መጠን"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s ሙሉ የ https:// ድረ-ገጽ አድራሻ መሆን አለበት፣ ለምሳሌ https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "መለያው የተገደበ ፈቃድ አለው። አስተዳዳሪን ያነጋግሩ።"
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "የስህተት ገጹን በማሳየት ላይ ሳለ ስህተት ተከስቷል።"
+
+#: 
+msgid "Each address must start with https://"
+msgstr "እያንዳንዱ አድራሻ በ https:// መጀመር አለበት"
+
+#: 
+msgid "Generate Labels"
+msgstr "ስያሜዎችን ፍጠር"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "የፖስታ ስያሜዎችን ፍጠር"
+
+#: 
+msgid "Labels"
+msgstr "ስያሜዎች"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "በቅርጫትዎ ውስጥ ላሉ ሰዎች የፖስታ ስያሜዎች። የራሱ አድራሻ የሌለው ሰው በቤተሰቡ አድራሻ ይላካል።"
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "አማራጭ ነው። ወደ ቤተክርስቲያኗ የራሷ መለያዎች የሚያገናኙ አገናኞች፣ ለምእመናን በፖርታል ግርጌ ገጽ ባሉ ገጾች ላይ ይታያሉ። ያንን አውታረ መረብ ለመደበቅ መስኩን ባዶ ይተውት።"
+
+#: 
+msgid "Options"
+msgstr "አማራጮች"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "የተያዙ ተግባራት"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "ገቢር ነው፣ የቀሩ ሰከንዶች፦ {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "በሩጫዎች መካከል የሚጠበቅ ልዩነት (ሰዓታት)፦ %d።"
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "የታለፉ ቤተሰቦች (የኢሜይል አድራሻ ስለሌላቸው)፦ {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "በጂኦኮድ ሊገለጹ ያልቻሉ ቤተሰቦች፦ {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "የማረጋገጫ ኢሜይል የሚደርሳቸው ቤተሰቦች፦ {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "የተቀዱ አባላት፦ {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "እዚህ ያልተዘረዘሩ፦ ተጨማሪ {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "ተቀባዮች፦ {{total}} — ለ mailto: አገናኝ በጣም ብዙ ናቸው። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።"
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባዮች አሉ ({{total}} > {{max}})። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።"
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} ደቂቃ ቀርቷል"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d የግብር ሰነድ ለቤተሰብ በተሳካ ሁኔታ በኢሜል ተላልፏል።"
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d የለገና መግለጫ"
+
+#: 
+msgid "All classifications"
+msgstr "ሁሉም ምድቦች"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "እንደ አስተዳዳሪ እባክዎ እንዲሁም ይገምግሙ"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "በቀልደ ውስጥ በሰዎች ልደት በተሳካ ሁኔታ በ ሌላ የተወለደ ሰው ተመሪት ኢሜል ይላኩ።"
+
+#: 
+msgid "Birthday Emails"
+msgstr "የተወለደ ሰው ኢሜሎች"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "ልደቶች፣ ዓመታዊ አደራሮች፣ በስ volunteers ታች እና ሌሎች ሰዎች ዝርዝሮች ከምድብ ማጣሪያ ጋር"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "ይህን ሪፖርት ለማስኬድ %s ይምረጡ።"
+
+#: 
+msgid "Choose events"
+msgstr "ክስተቶች ይምረጡ"
+
+#: 
+msgid "Choose..."
+msgstr "ይምረጡ..."
+
+#: 
+msgid "Church Logo"
+msgstr "የቤተክርስቲያን ሎጎ"
+
+#: 
+msgid "Columns per Page"
+msgstr "በጠፍጣፊ ስቱ"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "ውድ %s ቤተሰብ,\n"
+"\n"
+"እባክዎ ከ%s የተወሰደ %d የለገና መግለጫ በዚህ ኢሜል ውስጥ ተያያዥ ይፈልጉ።\n"
+"\n"
+"ቢሆንም ፍርሒ ካላችሁ እባክዎን ወደ ቤተክርስቲያን ቢሮ ያገኙን።\n"
+"\n"
+"ለምግባርዎ 感謝します።"
+
+#: 
+msgid "Download CSV"
+msgstr "CSV አውርድ"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "%d የግብር ሰነድ ኢሜል"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "የፋይናንስ ሞጁል እና ጎን አሞሌ ምግባር ምርጥ ወይም ካሰቅል።"
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "ሳቅላ ሞጁል ምርጥ ወይም ካሰቅል።"
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "የቤተክርስቲያን ሎጎ ማስወገድ ሳቅሏል"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "የቤተክርስቲያን ሎጎ መላክ ሳቅሏል"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "ለኢሜል ቴምፕሌቶች ተጠቀማወቁ ሎጎ URL፣ በቤተክርስቲያን መረጃ ገጽ ላይ ምንም የቤተክርስቲያን ሎጎ ሲሰቅል ብቻ። በተዛማች አፕሊኬሽን ገጽታ ይህንን ቅንብር ችላ ይላሉ እና ሁልጊዜ የወደቀ ሎጎ ወይም ነባር ChurchCRM ሎጎ ይጠቀሙ። የሰፈነ http(s) URL መሆን አለበት። በኢሜል ወገንት አባላት ውስጥ ምርጥ አቀናበር ለ, ሰፊ ባነር ምስል በተለይ 3.5:1 ገጽታ ሬሾ (ለምሳሌ 350×100 px), PNG ወይም JPG, በHTTPS ላይ ሊያገለግል ይቻላል። ነባር ChurchCRM ሎጎ ለመቀለብ ባዶ ሆን ወይም ክ valid ገልገሳውን ገቢ ያስገቡ።"
+
+#: 
+msgid "Finance Module"
+msgstr "የፋይናንስ ሞጁል"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "ክስተትን ያልተሳተፉ ሰዎችን ያግኙ"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "ሁለት ውስን ዕድል ኮዶች ተቆራኝተው በስ volunteers ታች ያግኙ"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "የመጀመሪያ በስ volunteers ታች ዕድል"
+
+#: 
+msgid "Folded Booklet"
+msgstr "ታጠፈ የመጽሐፍ"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "ሳቅላ ሞጁል"
+
+#: 
+msgid "Giving History"
+msgstr "የለገና ታሪክ"
+
+#: 
+msgid "Last Gift"
+msgstr "የመጨረሻ ሁለት"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "ሁሉም ምድቦች ባዶ ሆኑ።"
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "ከ ቤተሰብ ገፅ እንደገና ያሳውቁ ከፍተኛ ቁጥር የ ግብር ዘመን ሰነዶች (0 = ገደብ አይደለም)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "ከ ቤተሰብ ታይተው ከፍተኛ ግብር ዘመናት"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "ጸሀፍ አደራሮች"
+
+#: 
+msgid "Missing People"
+msgstr "ጠፍቷል ሰዎች"
+
+#: 
+msgid "No giving history found."
+msgstr "ምንም የለገና ታሪክ አልተገኘም።"
+
+#: 
+msgid "No people match these filters."
+msgstr "ምንም ሰዎች እነዚህ ማጣሪያዎች ተጣጥለዋል አልደለም."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "ስትት ከ አንድ እንደገና ገጽ, ሙል."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "ዊ http እና https ሕቅ ብቻ ፍቅድ."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF ወይም WebP. ሰፊ ባነር በግምት 3.5:1 (ለምሳሌ 700x200) ምርጥ ይሰራል; ግልፅ PNG ምርጫ ።"
+
+#: 
+msgid "Page Layout"
+msgstr "ገጽ ዕቅድ"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "አንድ በተወሰነ ወር ውስጥ ተጋብዘው ሰዎች"
+
+#: 
+msgid "Pledged"
+msgstr "ቃል ገብተሪያ"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "%d የግብር ሰነድ ሞተር"
+
+#: 
+msgid "Queries"
+msgstr "ጥያቄዎች"
+
+#: 
+msgid "Recent Friends"
+msgstr "ወላጅ ወገኖች"
+
+#: 
+msgid "Report not found"
+msgstr "ሪፖርት አልተገኘም"
+
+#: 
+msgid "Run Report"
+msgstr "ሪፖርት ማስኬድ"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "ሁለተኛ በስ volunteers ታች ዕድል"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "በጎን ዘሪ, በ ግብዓት ገጽ ላይ እና በ ኢሜሎች ውስጥ ሊሰጥ. ሎጎ መላክ ChurchCRM ማርክ በ ሁሉም ስፍራ መቀየር."
+
+#: 
+msgid "Single Pages"
+msgstr "አንድ ቀሎ ገጾች"
+
+#: 
+msgid "Tax Documents"
+msgstr "የግብር ሰነዶች"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "የግብር ሰነድ ኢሜል ምላሽ ይስጥ ሳቅሏል። እባክዎ ኢሜል አገልግሎት ቅንብር ይለካ።"
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "ሁለት ግማሽ-ዓዝ ገጾች በ ዩነስኮ ላይ በ አንድ ሳር ሉሰ ምሊት በ ሳቅላ ዝርዝር.ሞተር-በ ሁለት ገጽታ ከ \"ፍ በ ሸ ጠርዝ\", ከዚያ የ ዛ ክምር ውስጥ በግማሽ fold. አምዶች በግማሽ ገጽ ለእያንዳንዱ ይቆራሙ."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "የግብር ሰነድ ኢሜል መስጠት ተችሏል: ምንም ክፍያ ሂሳብ ለ ደርሶ ዘመን አልተገኘም."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "የግብር ሰነድ ኢሜል መስጠት ተችሏል: ይህ ቤተሰብ በ ፋይል ላይ ምንም ኢሜል አድራሻ ስ."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "OpenLP አገልግሎት ኩባንያ ስም ጠና ተችሏል። ስ ያ ካሊ ና ኔ እንጋገር ግንኙነት."
+
+#: 
+msgid "Upload"
+msgstr "መላክ"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "ነባር ChurchCRM ሎጎ ማስተቀማት"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "ሙሉ ቤተሰብ ለገና ተመልከት"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "በስ volunteers ታች ዕድል"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "ሁለት ዕድለ ለ በስ volunteers ታች"
+
+#: 
+msgid "YTD"
+msgstr "ከዓመቱ መጀመሪያ እስከ አሁን"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD ክፍያ"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "በ ይህ ተስኖ አጋዥ ጊዜ አስህተት ለ, አውርድ ና አሟሙ ተዛማች ዝርዝር ፋይል ወደ ነ GitHub ጉዳይ — ለ ጊዜ ይህ ሂሳብ ድስት ገጥሞ ጠይቅ እንደገና ጥያቄ."
+
+#: 
+msgid "system logs"
+msgstr "ስርዓት ዝርዝሮች"
+
+#: 
+msgid "Access Control & Security"
+msgstr "ተደራሲ ቁጥጥር እና ደህንነት"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "ታክስ ብር ያልተነሳ ክፍያ መመዝገብ ይፈቅዱ (ለምሳሌ, ሸቀጦች ሽያጭ)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "ለሕዝብ ክስተቶች ያለ ማረጋገጥ ተደራሲ ይፈቅዱ (ለሥዕል ማስገባት የቀናት)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "ጎብኚዎች ሕዝብ ምዝገባ ገጽ በኩል የራሳቸውን የቤተሰብ መዝገቦች እንዲፈጥሩ ይፈቅዱ"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "ደወሳደሳ ኢሜይልን በራስ ነክ ይላኩ (የጀርባ ሥራ አቀባይ ያስፈልጋል)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "ሙሉበርቱ ምድረ ሰናይ ኢሜይልች"
+
+#: 
+msgid "Communication & Email"
+msgstr "ትስስር እና ኢሜይል"
+
+#: 
+msgid "Content Security Policy"
+msgstr "የይዘት ደህንነት ፖሊሲ"
+
+#: 
+msgid "Email System"
+msgstr "ኢሜይል ስርዓት"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "ለእርስዎ ድርጅት ባህሪዎችን ያስችሉ ወይም ያሰናክሉ"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "በዋናው ዘዴገመት ዎ ክስተቶች ክፍልን ያስችሉ/ያሰናክሉ"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "የገንዘብ ምናሌ እና ሁሉም የገንዘብ ባህሪዎች (ተቀማጭዎች, ክፍያዎች, ሪፖርቶች) ያስችሉ/ያሰናክሉ"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "የገንዘብ ሰብሳቢ ምናሌን ያስችሉ/ያሰናክሉ"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "ከ XSS ጥቃቶች ለመጠበቅ ጥብቅ CSP ራስጌዎችን ያስገድዱ"
+
+#: 
+msgid "Events Module"
+msgstr "ክስተቶች ሞጁል"
+
+#: 
+msgid "Feature Toggles"
+msgstr "ባህሪ ተቀያይሮች"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "ባህሪ ተቀያይሮች በ ChurchCRM ውስጥ ምን ሞጁሎች እና ባህሪዎች አሉ ይቆጣጠራሉ. ለውጦች ወዲያውኑ ይተገበራሉ."
+
+#: 
+msgid "Finance Features"
+msgstr "ገንዘብ ባህሪዎች"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ አድራሻዎችን ያካትቱ"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ቀናት ክስተቶችን ያካትቱ"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ብጁ ቤተሰብ ንብረቶችን ያካትቱ"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ተቀማጭዎችን ያካትቱ"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ቤተሰቦችን ያካትቱ"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ሚኒስትሪዎችን ያካትቱ"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ክፍያዎችን ያካትቱ"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "በፈጣን ዓለም አቀፍ ፍለጋ ውስጥ ሰዎችን ያካትቱ"
+
+#: 
+msgid "Invalid setting"
+msgstr "ልክ ያልሆነ ቅንጅት"
+
+#: 
+msgid "Lost Password Link"
+msgstr "የታሳቢ ሰሌዳ ሊንክ"
+
+#: 
+msgid "Manage All Features"
+msgstr "ሁሉንም ባህሪዎች ያስተዳድሩ"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "ኢሜይል ለመላክ ዋና ተቀያይር. ለሰሌዳ ዳግም ማቀናበር እና ማሳወቂያዎች ያስፈልጋል"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "ታክስ ብር ያልተነሳ ክፍያ"
+
+#: 
+msgid "Primary Modules"
+msgstr "ዋናዎች ሞጁሎች"
+
+#: 
+msgid "Public Calendar API"
+msgstr "ህዝብ ቀናት API"
+
+#: 
+msgid "Saved"
+msgstr "ተቀምጧል"
+
+#: 
+msgid "Search Families"
+msgstr "ቤተሰቦችን ይፈልጉ"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "ቤተሰብ ብጁ ንብረቶችን ይፈልጉ"
+
+#: 
+msgid "Search Settings"
+msgstr "ቅንጅቶች ይፈልጉ"
+
+#: 
+msgid "Self-Registration"
+msgstr "ራስ-ምዝገባ"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "በውስብስብ ገጽ ላይ \"ታሳቢ ሰሌዳ\" አማራጭን ያሳይ (ተጠቃሚ ራስ-ዳግም ማቀናበር ይፈቅድ)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "በጎን አሞሌ ውስጥ አንድ መእከል ትምህርት ቤት ሞጁልን ያሳይ/ደብቅ"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "ውስጥ መግባት ይችላል መሰሪነት ውጤቱ አሰናክሉ ይችላሉ"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "መግባት የሚችለውን ብቸኛ አስተዳዳሪ እንደሞተ ምልክት ማድረግ አይቻልም"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "የሞተ — መግባት አይችልም"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "ደብዳቤ አድራሻ ምልክት ባደርጉ በፊት ሁለተኛ አድራሻ አስገባ"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "ንቁ ያልሆነ — መግባት አይችልም"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "ደብዳቤ ሁለተኛ አድራሻ ወደ ይሄዳል; ዋና አድራሻ ሳጥኖች እና አቅጣጫዎች ለ ተጠቅሞ አካላዊ ቦታ ግብራ ይቀራል."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "ደብዳቤ ዋና አድራሻ ፍቃድ ይህ አድራሻ ይላካል"
+
+#: 
+msgid "Mailing Address"
+msgstr "ደብዳቤ አድራሻ"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "የተለየ ከሆነ ደብዳቤ አድራሻ"
+
+#: 
+msgid "Primary Address"
+msgstr "ዋና አድራሻ"
+
+#: 
+msgid "Receives Mail"
+msgstr "ደብዳቤ ይቀበላል"
+
+#: 
+msgid "Second Address"
+msgstr "ሁለተኛ አድራሻ"
+
+#: 
+msgid "Second Home"
+msgstr "ሁለተኛ ቤት"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "የተገናኘው ሰው ሞተ ወይም ንቁ ያልሆነ. ሰው ወደ ገበሮ ከተገበሮ ድረስ ውስጥ-ይሰለፉ, ክፍለ-ጊዜ እና API ቁልፍ ተከልክሎ ሉቅሩ."
+
+#: 
+msgid "This is the mailing address"
+msgstr "ይህ ደብዳቤ አድራሻ ነው"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "ይህ ሰው የሞተ ወይም ንቁ ያልሆነ ነው፣ ስለዚህ ይህ መለያ መግባት አይችልም"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "ተመሪ ብቻ ውስጥ መግባት ሰው ይሰርዙ ይችላሉ."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "የመጨረሻው ተመሪ ሊስረዝ አይችልም."
 

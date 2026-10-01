@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:claude.com)",
+      "Bash(gh pr *)",
+      "Bash(gh auth *)",
+      "Bash(git fetch *)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}

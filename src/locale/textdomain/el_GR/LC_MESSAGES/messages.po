@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Φωτογραφίες"
 
 #: 
-msgid "Number of Columns"
-msgstr "Αριθμός στηλών"
-
-#: 
 msgid "Paper Size"
 msgstr "Μέγεθος χαρτιού"
 
@@ -846,10 +842,6 @@ msgstr "Διαγραφή φωτογραφίας"
 #: 
 msgid "Timeline"
 msgstr "Χρονοδιάγραμμα"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Ενέχυρα και πληρωμές"
 
 #: 
 msgid "Value"
@@ -7362,10 +7354,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Επιλέξτε τον τύπο εγγραφής στον οποίο εφαρμόζεται αυτή η ιδιότητα"
 
 #: 
-msgid "Total Pledges"
-msgstr "Συνολικές Υποσχέσεις"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Παρακολουθήστε και διαχειριστείτε τις δεσμεύσεις υποσχέσεων ανά οικογένεια και ταμείο"
 
@@ -12294,16 +12282,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Πώς συνδέονται το Κατηχητικό + Εκδηλώσεις + Κιόσκια"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Μη έγκυρη ημερομηνία για %s — αναμένεται YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Μη έγκυρη μορφή ημερομηνίας για rangeStart ή rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Μη έγκυρη ημερομηνία· αναμένεται μορφή YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12534,10 +12514,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "Το eventIds πρέπει να είναι μη κενός πίνακας"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "μη έγκυρος τύπος επανάληψης"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "Το personIds πρέπει να είναι μη κενός πίνακας"
 
@@ -12740,10 +12716,6 @@ msgstr "Σύνολο Kiosk"
 #: 
 msgid "Upcoming Events"
 msgstr "Προσεχή συμβάντα"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Απόλυτη http(s) διεύθυνση URL του λογότυπου της εκκλησίας που εμφανίζεται στα πρότυπα email (και θα επαναχρησιμοποιηθεί αλλού στο μέλλον). Για βέλτιστη απόδοση σε προγράμματα email, χρησιμοποιήστε μια πλατιά εικόνα banner με αναλογία περίπου 3,5:1 (π.χ. 350×100 px), PNG ή JPG, που προσφέρεται μέσω HTTPS. Αφήστε κενό ή εισαγάγετε μη έγκυρη τιμή για να επιστρέψετε στο προεπιλεγμένο λογότυπο ChurchCRM."
 
 #: 
 msgid "An option with that name already exists"
@@ -14944,10 +14916,6 @@ msgstr "Κείμενο Όλα"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Το επιλεγμένο αρχείο υπερβαίνει το μέγιστο μέγεθος μεταφόρτωσης αυτού του διακομιστή"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Δεν υπάρχουν προγραμματισμένες εκδηλώσεις για σήμερα"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -17856,6 +17824,12 @@ msgid "Set up now"
 msgstr "Ρύθμιση τώρα"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Απαιτείται έλεγχος ταυτότητας δύο παραγόντων. Έχετε %d ημέρα για εγγραφή."
+msgstr[1] "Απαιτείται έλεγχος ταυτότητας δύο παραγόντων. Έχετε %d ημέρες για εγγραφή."
+
+#: 
 msgid "Unknown family"
 msgstr "Άγνωστη οικογένεια"
 
@@ -18446,4 +18420,376 @@ msgstr "το skip πρέπει να είναι μηδέν ή θετικός ακ
 #: 
 msgid "view families missing an email"
 msgstr "προβολή οικογενειών χωρίς email"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Αγοραστές Αυτού του Οικονομικού Έτους"
+
+#: 
+msgid "Current"
+msgstr "Τρέχον"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Είδη που Δωρήθηκαν (Αυτό το Οικονομικό Έτος)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Το όνομα χρήστη πρέπει να έχει %d χαρακτήρες ή λιγότερους!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Συγκεντρωθέντα Αυτού του Οικονομικού Έτους"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "Το %s πρέπει να είναι πλήρης διεύθυνση ιστού https://, για παράδειγμα https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Ο λογαριασμός έχει περιορισμένα δικαιώματα. Επικοινωνήστε με έναν διαχειριστή."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Παρουσιάστηκε σφάλμα κατά την εμφάνιση της σελίδας σφάλματος."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Κάθε διεύθυνση πρέπει να ξεκινά με https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Δημιουργία Ετικετών"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Δημιουργία ετικετών αλληλογραφίας"
+
+#: 
+msgid "Labels"
+msgstr "Ετικέτες"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Ετικέτες αλληλογραφίας για τα άτομα στο καλάθι σας. Ένα άτομο χωρίς δική του διεύθυνση απευθύνεται στη διεύθυνση της οικογένειάς του."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Προαιρετικό. Σύνδεσμοι προς τους λογαριασμούς της εκκλησίας σας, οι οποίοι εμφανίζονται στα μέλη σε σελίδες όπως το υποσέλιδο της πύλης. Αφήστε ένα πεδίο κενό για να αποκρύψετε το συγκεκριμένο δίκτυο."
+
+#: 
+msgid "Options"
+msgstr "Επιλογές"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Προγραμματισμένες Εργασίες"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Ενεργό, δευτερόλεπτα που απομένουν: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Αναμενόμενο διάστημα μεταξύ εκτελέσεων (ώρες): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Οικογένειες που παραλείφθηκαν (δεν υπάρχει καταχωρημένη διεύθυνση email): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Οικογένειες που δεν ήταν δυνατό να γεωκωδικοποιηθούν: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Οικογένειες που θα λάβουν emails επιβεβαίωσης: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Μέλη που αντιγράφηκαν: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Δεν αναφέρονται εδώ: {{total}} ακόμη"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Παραλήπτες: {{total}} — πάρα πολλοί για σύνδεσμο mailto:. Χρησιμοποιήστε αντ' αυτού την Αντιγραφή Διευθύνσεων."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Πάρα πολλοί παραλήπτες για τον πελάτη email ({{total}} > {{max}}). Χρησιμοποιήστε αντ' αυτού την Αντιγραφή Διευθύνσεων."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} λεπτά απομένουν"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d έγγραφο φόρου αποστάλθηκε στην οικογένεια με επιτυχία."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Δήλωση Παροχής"
+
+#: 
+msgid "All classifications"
+msgstr "Όλες οι ταξινομήσεις"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Ως διαχειριστής, παρακαλώ επίσης ανασκοπήστε την"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Αποστείλετε αυτόματα ένα email χαιρετισμού γενεθλίων σε ανθρώπους στα γενέθλιά τους."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Emails Γενεθλίων"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Γενέθλια, επέτειοι, εθελοντές και άλλες λίστες ανθρώπων με φίλτρο ταξινόμησης"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Επιλέξτε %s για να εκτελέσετε αυτήν την αναφορά."
+
+#: 
+msgid "Choose events"
+msgstr "Επιλέξτε συμβάντα"
+
+#: 
+msgid "Choose..."
+msgstr "Επιλέξτε..."
+
+#: 
+msgid "Church Logo"
+msgstr "Λογότυπο Εκκλησίας"
+
+#: 
+msgid "Columns per Page"
+msgstr "Στήλες ανά σελίδα"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Αγαπητή %s Οικογένεια,\n"
+"\n"
+"Parakaloμε βρείτε τη δήλωση παροχής %d από %s που επισυνάπτεται σε αυτό το email.\n"
+"\n"
+"Εάν έχετε οποιεσδήποτε ερωτήσεις, παρακαλώ επικοινωνήστε με το γραφείο της εκκλησίας.\n"
+"\n"
+"Ευχαριστούμε για τη γενναιοδωρία σας."
+
+#: 
+msgid "Download CSV"
+msgstr "Κατεβάστε CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Email %d Έγγραφο Φόρου"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Ενεργοποιήστε ή απενεργοποιήστε τη σύνδεση χρηματοδότησης και το μενού της πλευρικής γραμμής."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Ενεργοποιήστε ή απενεργοποιήστε τη σύνδεση Fundraiser."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Αποτυχία αφαίρεσης λογότυπου εκκλησίας"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Αποτυχία μεταφόρτωσης λογότυπου εκκλησίας"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Διεύθυνση URL λογότυπου εναλλακτικής λύσης για πρότυπα email, χρησιμοποιείται μόνο όταν δεν έχει μεταφορτωθεί λογότυπο εκκλησίας στη σελίδα Church Information. Οι δικές της σελίδες της εφαρμογής αγνοούν αυτήν τη ρύθμιση και χρησιμοποιούν πάντα το μεταφορτωθέν λογότυπο ή το προεπιλεγμένο λογότυπο ChurchCRM. Πρέπει να είναι απόλυτη διεύθυνση URL http(s). Για καλύτερη απόδοση σε όλους τους πελάτες email, χρησιμοποιήστε μια ευρεία εικόνα σάσας περίπου 3,5:1 (για παράδειγμα 350×100 px), PNG ή JPG, που χρησιμεύει μέσω HTTPS. Αφήστε κενό ή εισάγετε ένα άκυρο χαρακτηριστικό για να επιστρέψετε στο προεπιλεγμένο λογότυπο ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Σύνδεση Χρηματοδότησης"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Βρείτε ανθρώπους που δεν παρακολούθησαν ένα συμβάν"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Βρείτε εθελοντές που ταιριάζουν με δύο συγκεκριμένους κωδικούς ευκαιρίας"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Πρώτη Ευκαιρία Εθελοντή"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Διπλωμένο Έντυπο"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Σύνδεση Συγκέντρωσης Κεφαλαίων"
+
+#: 
+msgid "Giving History"
+msgstr "Ιστορία Παροχής"
+
+#: 
+msgid "Last Gift"
+msgstr "Τελευταία Δώρο"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Αφήστε κενό για όλες τις ταξινομήσεις."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Μέγιστος αριθμός εγγράφων φορολογικού έτους που θα εμφανίζονται ανά προφίλ οικογένειας (0 = χωρίς όριο)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Μέγιστα φορολογικά έτη που εμφανίζονται ανά οικογένεια"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Επέτειοι Ιδιότητας Μέλους"
+
+#: 
+msgid "Missing People"
+msgstr "Εξαφανισμένοι Άνθρωποι"
+
+#: 
+msgid "No giving history found."
+msgstr "Δεν βρέθηκε ιστορία παροχής."
+
+#: 
+msgid "No people match these filters."
+msgstr "Κανένα άτομο δεν ταιριάζει με αυτά τα φίλτρα."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Μία σελίδα καταλόγου ανά φύλλο, πορτρέτο."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Επιτρέπονται μόνο τα σχέδια http και https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF ή WebP. Μια ευρεία σάσα περίπου 3,5:1 (για παράδειγμα 700x200) λειτουργεί καλύτερα· προτιμάται διαφανή PNG."
+
+#: 
+msgid "Page Layout"
+msgstr "Διάταξη Σελίδας"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Άνθρωποι που ενημερώθησαν σε έναν συγκεκριμένο μήνα"
+
+#: 
+msgid "Pledged"
+msgstr "Υποσχέθηκε"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Εκτύπωση %d Έγγραφο Φόρου"
+
+#: 
+msgid "Queries"
+msgstr "Ερωτήματα"
+
+#: 
+msgid "Recent Friends"
+msgstr "Πρόσφατοι Φίλοι"
+
+#: 
+msgid "Report not found"
+msgstr "Η αναφορά δεν βρέθηκε"
+
+#: 
+msgid "Run Report"
+msgstr "Εκτέλεση Αναφοράς"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Δεύτερη Ευκαιρία Εθελοντή"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Εμφανίζεται στη πλευρική γραμμή, στη σελίδα σύνδεσης και στα email. Η μεταφόρτωση ενός λογότυπου αντικαθιστά την εμπορική σήμανση ChurchCRM παντού που εμφανίζεται."
+
+#: 
+msgid "Single Pages"
+msgstr "Μεμονωμένες Σελίδες"
+
+#: 
+msgid "Tax Documents"
+msgstr "Έγγραφα Φόρου"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Το email του εγγράφου φόρου δεν κατάφερε να αποσταλεί. Παρακαλώ ελέγξτε τις ρυθμίσεις του διακομιστή email σας."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Δύο σελίδες μισού μεγέθους δίπλα δίπλα σε κάθε φύλλο τοπίου, σε σειρά εκδόσεων. Εκτύπωση διπλής όψης με \"flip on short edge\", στη συνέχεια διπλώστε τη στοίβα στη μέση. Οι στήλες μετρώνται ανά μισή σελίδα."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Δεν είναι δυνατή η αποστολή email του εγγράφου φόρου: δεν βρέθηκαν στοιχεία πληρωμής για εκείνο το έτος."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Δεν είναι δυνατή η αποστολή email του εγγράφου φόρου: αυτή η οικογένεια δεν έχει διεύθυνση email στο αρχείο."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Δεν είναι δυνατή η επίλυση του ονόματος κεντρικού υπολογιστή του διακομιστή OpenLP. Ελέγξτε τη διεύθυνση και τη σύνδεσή σας στο δίκτυο."
+
+#: 
+msgid "Upload"
+msgstr "Μεταφόρτωση"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Χρήση προεπιλεγμένου λογότυπου ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Προβολή Πλήρους Παροχής Οικογένειας"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Ευκαιρία Εθελοντή"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Εθελοντές για Δύο Ευκαιρίες"
+
+#: 
+msgid "YTD"
+msgstr "Από αρχής έτους"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD Πληρώθηκε"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "για σφάλματα γύρω από την ώρα που συνέβη αυτό, και κατεβάστε και επισυνάψτε το σχετικό αρχείο αρχείου καταγραφής στο πρόβλημά σας στο GitHub - μας βοηθά να επιλύσουμε το πρόβλημα χωρίς να κάνουμε ερωτήσεις ακολούθησης."
+
+#: 
+msgid "system logs"
+msgstr "αρχεία καταγραφής συστήματος"
 

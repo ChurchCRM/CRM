@@ -498,11 +498,6 @@ msgstr "Fotos"
 
 #: 
 #, fuzzy
-msgid "Number of Columns"
-msgstr "Anzahl der Spalten"
-
-#: 
-#, fuzzy
 msgid "Paper Size"
 msgstr "Papiergröße"
 
@@ -874,10 +869,6 @@ msgstr "Foto löschen"
 #: 
 msgid "Timeline"
 msgstr "Zeitstrahl"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Spendenzusagen und Zahlungen"
 
 #: 
 msgid "Value"
@@ -7440,10 +7431,6 @@ msgid "Select the type of record this property applies to"
 msgstr "Wählen Sie den Datensatztyp, für den diese Eigenschaft gilt"
 
 #: 
-msgid "Total Pledges"
-msgstr "Gesamtzusagen"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "Verfolgen und verwalten Sie Zusagenverpflichtungen nach Familie und Fonds"
 
@@ -12372,16 +12359,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Wie Sonntagsschule, Veranstaltungen und Kiosks zusammenpassen"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Ungültiges Datum für %s – erwartet YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Ungültiges Datumsformat für Bereichsstart oder Bereichsende"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Ungültiges Datum; erwartet YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12612,10 +12591,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds muss ein nicht leeres Array sein"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "ungültiger Wiederholungstyp"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds muss ein nicht leeres Array sein"
 
@@ -12818,10 +12793,6 @@ msgstr "Kioske gesamt"
 #: 
 msgid "Upcoming Events"
 msgstr "Bevorstehende Veranstaltungen"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Absolute http(s)-URL des Kirchenlogos, das in E-Mail-Vorlagen angezeigt wird (und künftig auch an anderen Stellen). Für eine optimale Darstellung in E-Mail-Clients verwenden Sie bitte ein breites Bannerbild im Verhältnis von etwa 3,5:1 (z. B. 350×100 px), PNG oder JPG, bereitgestellt über HTTPS. Leer lassen oder einen ungültigen Wert eingeben, um zum Standard-ChurchCRM-Logo zurückzukehren."
 
 #: 
 msgid "An option with that name already exists"
@@ -15024,10 +14995,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Die Datei überschreitet die maximale Dateigröße"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Für heute sind keine Veranstaltungen geplant"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Es gab Probleme das Objekt zu empfangen."
 
@@ -16106,6 +16073,10 @@ msgstr "Gruppe auswählen ..."
 #: 
 msgid "Choose family"
 msgstr "Familie auswählen"
+
+#: 
+msgid "Code"
+msgstr "Code"
 
 #: 
 msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
@@ -17930,6 +17901,12 @@ msgid "Set up now"
 msgstr "Jetzt einrichten"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tag Zeit, sich zu registrieren."
+msgstr[1] "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tage Zeit, sich zu registrieren."
+
+#: 
 msgid "Unknown family"
 msgstr "Unbekannte Familie"
 
@@ -18234,6 +18211,10 @@ msgid "Last seen"
 msgstr "Zuletzt gesehen"
 
 #: 
+msgid "Link"
+msgstr "Verknüpfung"
+
+#: 
 msgid "Link added successfully"
 msgstr "Link erfolgreich hinzugefügt"
 
@@ -18312,6 +18293,10 @@ msgstr "Kein gültiges Sterbedatum"
 #: 
 msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
 msgstr "Anzahl der Tage, die Benutzern zur Registrierung für 2FA zur Verfügung stehen, nachdem diese verpflichtend wurde. Auf 0 setzen, um sie sofort zu erzwingen. Das Verkürzen einer aktiven Übergangsfrist kann Benutzer sofort aussperren."
+
+#: 
+msgid "Offline"
+msgstr "Offline"
 
 #: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
@@ -18512,4 +18497,608 @@ msgstr "skip muss null oder eine positive ganze Zahl sein"
 #: 
 msgid "view families missing an email"
 msgstr "Familien ohne E-Mail-Adresse anzeigen"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Käufer in diesem Geschäftsjahr"
+
+#: 
+msgid "Current"
+msgstr "Aktuell"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Gespendete Artikel (dieses Geschäftsjahr)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Der Login darf höchstens %d Zeichen lang sein!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Gesammelt in diesem Geschäftsjahr"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s muss eine vollständige https://-Webadresse sein, zum Beispiel https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Das Konto hat eingeschränkte Berechtigungen. Wenden Sie sich an einen Administrator."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Beim Rendern der Fehlerseite ist ein Fehler aufgetreten."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Jede Adresse muss mit https:// beginnen."
+
+#: 
+msgid "Generate Labels"
+msgstr "Etiketten generieren"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Adressetiketten generieren"
+
+#: 
+msgid "Labels"
+msgstr "Etiketten"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Adressetiketten für die Personen in Ihrem Warenkorb. Eine Person ohne eigene Adresse wird an die Adresse ihrer Familie adressiert."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Optional. Links zu den eigenen Konten der Kirche, die den Mitgliedern auf Seiten wie der Portal-Fußzeile angezeigt werden. Lassen Sie ein Feld leer, um dieses Netzwerk auszublenden."
+
+#: 
+msgid "Options"
+msgstr "Optionen"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Geplante Aufgaben"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktiv, verbleibende Sekunden: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Erwartetes Intervall zwischen den Ausführungen (Stunden): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Übersprungene Familien (keine E-Mail-Adresse hinterlegt): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Familien, die nicht geokodiert werden konnten: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Familien, die Bestätigungs-E-Mails erhalten: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Kopierte Mitglieder: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Hier nicht aufgeführt: {{total}} weitere"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Empfänger: {{total}} — zu viele für einen mailto:-Link. Verwenden Sie stattdessen 'Adressen kopieren'."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Zu viele Empfänger für den E-Mail-Client ({{total}} > {{max}}). Verwenden Sie stattdessen 'Adressen kopieren'."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} Min. verbleibend"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d Steuerdokument erfolgreich per E-Mail an die Familie versendet."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Spendenbescheinigung"
+
+#: 
+msgid "All classifications"
+msgstr "Alle Kategorien"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Bitte überprüfen Sie als Administrator auch die"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Automatisch eine Geburtstagsgrußmail an Personen an ihrem Geburtstag versenden."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Geburtstagsmails"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Geburtstage, Jahrestage, Freiwillige und andere Personenlisten mit Kategoriefilter"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Wählen Sie %s aus, um diesen Bericht auszuführen."
+
+#: 
+msgid "Choose events"
+msgstr "Ereignisse auswählen"
+
+#: 
+msgid "Choose..."
+msgstr "Wählen Sie..."
+
+#: 
+msgid "Church Logo"
+msgstr "Kirchenlogo"
+
+#: 
+msgid "Columns per Page"
+msgstr "Spalten pro Seite"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Liebe Familie %s,\n"
+"\n"
+"bitte finden Sie anbei Ihre %d Spendenbescheinigung vom %s.\n"
+"\n"
+"Bei Fragen kontaktieren Sie bitte das Gemeindebüro.\n"
+"\n"
+"Vielen Dank für Ihre Großzügigkeit."
+
+#: 
+msgid "Download CSV"
+msgstr "CSV herunterladen"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "%d Steuerdokument per E-Mail versenden"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Aktivieren oder deaktivieren Sie das Finanzmodul und das Seitenleistenmenü."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Aktivieren oder deaktivieren Sie das Fundraising-Modul."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Kirchenlogo konnte nicht gelöscht werden"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Kirchenlogo konnte nicht hochgeladen werden"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Fallback-Logo-URL für E-Mail-Vorlagen, wird nur verwendet, wenn kein Kirchenlogo auf der Seite \"Kircheninformationen\" hochgeladen wurde. Die eigenen Seiten der Anwendung ignorieren diese Einstellung und verwenden immer das hochgeladene Logo oder das Standard-ChurchCRM-Logo. Muss eine absolute http(s)-URL sein. Für optimale Darstellung in E-Mail-Clients verwenden Sie ein breites Bannerbild im Verhältnis von etwa 3,5:1 (z. B. 350×100 px), PNG oder JPG, bereitgestellt über HTTPS. Lassen Sie das Feld leer oder geben Sie einen ungültigen Wert ein, um auf das Standard-ChurchCRM-Logo zurückzugreifen."
+
+#: 
+msgid "Finance Module"
+msgstr "Finanzmodul"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Personen suchen, die an einem Ereignis nicht teilgenommen haben"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Freiwillige suchen, die zwei spezifische Gelegenheitscodes erfüllen"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Erste Freiwilligengelegenheit"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Gefaltetes Heftchen"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Fundraising-Modul"
+
+#: 
+msgid "Giving History"
+msgstr "Spendenverlauf"
+
+#: 
+msgid "Last Gift"
+msgstr "Letzte Gabe"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Leer lassen für alle Kategorien."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Maximale Anzahl von Steuerjahrdokumenten pro Familienprofil (0 = ohne Limit)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Maximale Steuerjahre pro Familie"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Mitgliederjubiläen"
+
+#: 
+msgid "Missing People"
+msgstr "Fehlende Personen"
+
+#: 
+msgid "No giving history found."
+msgstr "Kein Spendenverlauf gefunden."
+
+#: 
+msgid "No people match these filters."
+msgstr "Keine Personen entsprechen diesen Filtern."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Eine Verzeichnisseite pro Blatt, Hochformat."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Nur http- und https-Schemata sind zulässig."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF oder WebP. Ein breites Banner mit etwa 3,5:1 (z. B. 700×200) funktioniert am besten; transparentes PNG wird bevorzugt."
+
+#: 
+msgid "Page Layout"
+msgstr "Seitenlayout"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Personen, die in einem bestimmten Monat beigetreten sind"
+
+#: 
+msgid "Pledged"
+msgstr "Zugesagt"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "%d Steuerdokument drucken"
+
+#: 
+msgid "Queries"
+msgstr "Abfragen"
+
+#: 
+msgid "Recent Friends"
+msgstr "Kürzliche Freunde"
+
+#: 
+msgid "Report not found"
+msgstr "Bericht nicht gefunden"
+
+#: 
+msgid "Run Report"
+msgstr "Bericht ausführen"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Zweite Freiwilligengelegenheit"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Angezeigt in der Seitenleiste, auf der Anmeldeseite und in E-Mails. Durch das Hochladen eines Logos wird das ChurchCRM-Branding überall ersetzt."
+
+#: 
+msgid "Single Pages"
+msgstr "Einzelne Seiten"
+
+#: 
+msgid "Tax Documents"
+msgstr "Steuerdokumente"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "E-Mail für Steuerdokument konnte nicht versendet werden. Bitte überprüfen Sie Ihre E-Mail-Servereinstellungen."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Zwei halbgroße Seiten nebeneinander auf jedem Querformatblatt in Heftchenreihenfolge. Doppelseitig drucken mit \"auf kurzer Kante wenden\" und dann den Stapel in der Mitte falten. Die Spalten werden pro halbgroße Seite gezählt."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Steuerdokument kann nicht per E-Mail versendet werden: Keine Zahlungsdaten für dieses Jahr gefunden."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Steuerdokument kann nicht per E-Mail versendet werden: Diese Familie hat keine E-Mail-Adresse im Dateisystem."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "OpenLP-Serverhostname konnte nicht aufgelöst werden. Überprüfen Sie die Adresse und Ihre Netzwerkverbindung."
+
+#: 
+msgid "Upload"
+msgstr "Hochladen"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Verwendet Standard-ChurchCRM-Logo"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Vollständige Familienspenden anzeigen"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Freiwilligengelegenheit"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Freiwillige für zwei Gelegenheiten"
+
+#: 
+msgid "YTD"
+msgstr "JTD"
+
+#: 
+msgid "YTD Paid"
+msgstr "JTD gezahlt"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "für Fehler um die Zeit, in der dies geschah, und laden Sie die relevante Protokolldatei herunter und fügen Sie sie an Ihr GitHub-Problem an – das hilft uns, das Problem zu beheben, ohne Nachfragen zu stellen."
+
+#: 
+msgid "system logs"
+msgstr "Systemprotokolle"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Zugriffskontrolle und Sicherheit"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Aufzeichnung von nicht steuerbegünstigten Zahlungen zulassen (z. B. Warenverkäufe)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Nicht authentifizierte Zugriffe auf öffentliche Veranstaltungen zulassen (für Kalendereinbettungen)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Besucher können ihre eigenen Familiendaten über die öffentliche Registrierungsseite erstellen"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Geburtstagsemails automatisch versenden (erfordert Hintergrund-Job-Scheduler)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Geburtstagsgrußemails"
+
+#: 
+msgid "Communication & Email"
+msgstr "Kommunikation und E-Mail"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Content Security Policy"
+
+#: 
+msgid "Email System"
+msgstr "E-Mail-System"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Funktionen für Ihre Organisation aktivieren oder deaktivieren"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Ereignissektion in der Hauptnavigation ein-/ausblenden"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Finanzmenü und alle Finanzfunktionen aktivieren/deaktivieren (Einzahlungen, Zahlungen, Berichte)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Fundraiser-Menü aktivieren/deaktivieren"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Strenge CSP-Header durchsetzen, um XSS-Attacken zu schützen"
+
+#: 
+msgid "Events Module"
+msgstr "Ereignismodul"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Funktionsschalter"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Funktionsschalter kontrollieren, welche Module und Funktionen in ChurchCRM verfügbar sind. Änderungen werden sofort wirksam."
+
+#: 
+msgid "Finance Features"
+msgstr "Finanzfunktionen"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Adressen in der schnellen globalen Suche einbeziehen"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Kalenderereignisse in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Benutzerdefinierte Familieneigenschaften in der schnellen globalen Suche einbeziehen"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Einzahlungen in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Familien in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Ministerien in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Zahlungen in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Personen in die schnelle globale Suche einbeziehen"
+
+#: 
+msgid "Invalid setting"
+msgstr "Ungültige Einstellung"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Passwort-Rückstellungslink"
+
+#: 
+msgid "Manage All Features"
+msgstr "Alle Funktionen verwalten"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Master-Schalter für den E-Mail-Versand. ERFORDERLICH für Passwort-Rückstellungen und Benachrichtigungen"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Nicht steuerlich absetzbare Zahlungen"
+
+#: 
+msgid "Primary Modules"
+msgstr "Primäre Module"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Öffentliche Kalender-API"
+
+#: 
+msgid "Saved"
+msgstr "Gespeichert"
+
+#: 
+msgid "Search Families"
+msgstr "Familien durchsuchen"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Benutzerdefinierte Familieneigenschaften durchsuchen"
+
+#: 
+msgid "Search Settings"
+msgstr "Einstellungen durchsuchen"
+
+#: 
+msgid "Self-Registration"
+msgstr "Selbstregistrierung"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "\"Passwort vergessen\"-Option auf dem Anmeldebildschirm anzeigen (ermöglicht Selbstwiederherstellung durch Benutzer)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Sundayschool-Modul in der Seitenleiste anzeigen/verbergen"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Der einzige Administrator, der sich anmelden kann, kann nicht deaktiviert werden"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Der einzige Administrator, der sich anmelden kann, kann nicht als verstorben gekennzeichnet werden"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Verstorben — kann sich nicht anmelden"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Geben Sie eine zweite Adresse ein, bevor Sie sie als Postanschrift kennzeichnen"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Inaktiv — kann sich nicht anmelden"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Post wird an die zweite Adresse gesendet; die primäre Adresse bleibt der physische Standort, der für Karten und Richtungen verwendet wird."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Post wird an diese Adresse gesendet, anstatt an die primäre Adresse"
+
+#: 
+msgid "Mailing Address"
+msgstr "Postanschrift"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Postanschrift falls unterschiedlich"
+
+#: 
+msgid "Primary Address"
+msgstr "Primäre Adresse"
+
+#: 
+msgid "Receives Mail"
+msgstr "Empfängt Post"
+
+#: 
+msgid "Second Address"
+msgstr "Zweite Adresse"
+
+#: 
+msgid "Second Home"
+msgstr "Zweites Zuhause"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Die verknüpfte Person ist verstorben oder inaktiv. Anmeldung, Sitzungen und der API-Schlüssel sind blockiert, bis die Person wieder aktiv ist."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Dies ist die Postanschrift"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Diese Person ist verstorben oder inaktiv, daher kann dieses Konto sich nicht anmelden"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Nur ein Administrator kann eine Person mit einer Anmeldung löschen."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Der letzte Administrator kann nicht gelöscht werden."
 

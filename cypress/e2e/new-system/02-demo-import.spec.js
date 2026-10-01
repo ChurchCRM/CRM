@@ -125,6 +125,29 @@ describe('02 - Demo Data Import', () => {
             });
         });
 
+        it('should import inactive families as deactivated', () => {
+            cy.request('/people/family?familyActiveStatus=inactive').its('body').then((html) => {
+                expect(Cypress.$(html).find('tbody tr').text()).to.contain('Torres');
+            });
+            cy.request('/people/family').its('body').then((html) => {
+                expect(Cypress.$(html).find('tbody tr').text()).not.to.contain('Torres');
+            });
+        });
+
+        it('should import inactive people as deactivated', () => {
+            cy.request('/people/list?personActiveStatus=inactive').its('body').should('contain', 'Mark King');
+            cy.request('/people/list').its('body').should('not.contain', 'Mark King');
+        });
+
+        it('should import dateDeceased as deceased', () => {
+            cy.request('/people/list').its('body').then((html) => {
+                ['Emily Clark', 'Daniel Johnson'].forEach((name) => {
+                    expect(html).to.match(new RegExp(`>${name}</a>\\s*<span[^>]*title="Deceased"`));
+                });
+                expect(html).not.to.match(/>Charles Green<\/a>\s*<span[^>]*title="Deceased"/);
+            });
+        });
+
         it('should navigate to home page correctly (not setup)', () => {
             cy.visit('/');
             

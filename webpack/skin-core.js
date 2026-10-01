@@ -46,6 +46,9 @@ import { deletePhoto, showPhotoLightbox } from "./photo-utils";
 // Import form utilities (phone mask toggles, etc.)
 import "../src/skin/js/form-utils.js";
 
+// Shared AJAX person-search TomSelect (#9819)
+import { initAllPersonSelects, initPersonSelect } from "./common/person-select";
+
 // Import issue reporter (GitHub issue modal)
 import "../src/skin/js/IssueReporter.js";
 
@@ -60,6 +63,12 @@ if (typeof window !== "undefined") {
   window.CRM = window.CRM || {};
   window.CRM.showPhotoLightbox = showPhotoLightbox;
   window.CRM.deletePhoto = deletePhoto;
+
+  // Shared person-search TomSelect (#9819). Re-exported on window.CRM for
+  // scripts that are loaded as a plain <script src> and so cannot import it —
+  // currently src/skin/js/GroupView.js. Webpack entries import it directly.
+  window.CRM.initPersonSelect = initPersonSelect;
+  window.CRM.initAllPersonSelects = initAllPersonSelects;
 
   // Process any queued editors
   if (window._quillInitQueue && window._quillInitQueue.length > 0) {

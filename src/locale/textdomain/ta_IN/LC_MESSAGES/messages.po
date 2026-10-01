@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "புகைப்படங்கள்"
 
 #: 
-msgid "Number of Columns"
-msgstr "நெடுவரிசைகளின் எண்ணிக்கை"
-
-#: 
 msgid "Paper Size"
 msgstr "காகித அளவு"
 
@@ -846,10 +842,6 @@ msgstr "புகைப்படத்தை நீக்கு"
 #: 
 msgid "Timeline"
 msgstr "காலவரிசை"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "உறுதிமொழிகள் மற்றும் கொடுக்கவேண்டியது"
 
 #: 
 msgid "Value"
@@ -7366,10 +7358,6 @@ msgid "Select the type of record this property applies to"
 msgstr "இந்த பண்பு பொருந்தும் பதிவின் வகையைத் தேர்ந்தெடுக்கவும்"
 
 #: 
-msgid "Total Pledges"
-msgstr "மொத்த உறுதிமொழிகள்"
-
-#: 
 msgid "Track and manage pledge commitments by family and fund"
 msgstr "குடும்பம் மற்றும் நிதியின் அடிப்படையில் உறுதிமொழிப் பொறுப்புகளைக் கண்காணித்து நிர்வகிக்கவும்"
 
@@ -12305,16 +12293,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "ஞாயிற்றுப்பள்ளி + நிகழ்வுகள் + கியோஸ்க்குகள் எவ்வாறு ஒன்றிணைகின்றன"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "%s-க்கு தவறான தேதி — YYYY-MM-DD வடிவம் எதிர்பார்க்கப்படுகிறது"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart அல்லது rangeEnd-க்கு தவறான தேதி வடிவம்"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "தவறான தேதி; YYYY-MM-DD வடிவம் எதிர்பார்க்கப்படுகிறது"
 
 #: 
 msgid "Invalid event type ID"
@@ -12545,10 +12525,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds ஒரு காலியற்ற அணியாக இருக்க வேண்டும்"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "தவறான மீண்டும் நிகழும் வகை"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds ஒரு காலியற்ற அணியாக இருக்க வேண்டும்"
 
@@ -12751,10 +12727,6 @@ msgstr "மொத்த கியோஸ்க்கள்"
 #: 
 msgid "Upcoming Events"
 msgstr "வரவிருக்கும் நிகழ்வுகள்"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "மின்னஞ்சல் வார்ப்புருக்களில் காட்டப்படும் திருச்சபையின் லோகோவின் முழுமையான http(s) URL (எதிர்காலத்தில் வேறு இடங்களிலும் மீண்டும் பயன்படுத்தப்படும்). மின்னஞ்சல் கிளையண்டுகளில் சிறந்த காட்சிக்கு, தோராயமாக 3.5:1 விகிதத்தில் (எடுத்துக்காட்டாக 350×100 px) அகலமான பேனர் படத்தை PNG அல்லது JPG வடிவத்தில், HTTPS வழியாக வழங்கவும். இயல்புநிலை ChurchCRM லோகோவைப் பயன்படுத்த வெறுமையாக விடவும் அல்லது தவறான மதிப்பை உள்ளிடவும்."
 
 #: 
 msgid "An option with that name already exists"
@@ -14959,10 +14931,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு இந்த சர்வரின் அதிகபட்ச பதிவேற்ற அளவைத் தாண்டுகிறது"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "இன்று எந்த நிகழ்வுகளும் திட்டமிடப்படவில்லை"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "கோரப்பட்ட பொருளைப் பெறுவதில் சிக்கல் ஏற்பட்டது"
 
@@ -16623,18 +16591,6 @@ msgid "Coordinates Updated"
 msgstr "ஆயத்தொலைவுகள் புதுப்பிக்கப்பட்டன"
 
 #: 
-msgctxt "one"
-msgid "Copied {{count}} members"
-msgstr "{{count}} உறுப்பினர்கள் நகலெடுக்கப்பட்டனர்\n"
-"சூழல்: ஒன்று"
-
-#: 
-msgctxt "other"
-msgid "Copied {{count}} members"
-msgstr "இந்தப் பட்டியலில் {{count}} பெறுநர்கள் உள்ளனர் — இது mailto: இணைப்புக்கு மிக அதிகம். அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
-"சூழல்: ஒன்று"
-
-#: 
 msgid "Copy Addresses"
 msgstr "முகவரிகளை நகலெடு"
 
@@ -16751,30 +16707,6 @@ msgid "This group only has one role."
 msgstr "இந்த குழுவில் ஒரே ஒரு பாத்திரம் மட்டுமே உள்ளது."
 
 #: 
-msgctxt "one"
-msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
-msgstr "இந்தப் பட்டியலில் {{count}} பெறுநர்கள் உள்ளனர் — இது mailto: இணைப்புக்கு மிக அதிகம். அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
-"சூழல்: மற்றவை"
-
-#: 
-msgctxt "other"
-msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
-msgstr "மின்னஞ்சல் செயலிக்கு அதிகப்படியான பெறுநர்கள் ({{count}} > {{max}}). அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
-"சூழல்: ஒன்று"
-
-#: 
-msgctxt "one"
-msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
-msgstr "மின்னஞ்சல் செயலிக்கு அதிகப்படியான பெறுநர்கள் ({{count}} > {{max}}). அதற்குப் பதிலாக 'முகவரிகளை நகலெடு' என்பதைப் பயன்படுத்தவும்.\n"
-"சூழல்: மற்றவை"
-
-#: 
-msgctxt "other"
-msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
-msgstr "{{count}} நிமிடம் மீதமுள்ளது\n"
-"சூழல்: ஒன்று"
-
-#: 
 msgid "Who is bringing in {{name}}?"
 msgstr "{{name}}-ஐ யார் அழைத்து வருகிறார்?"
 
@@ -16801,16 +16733,6 @@ msgstr "பெறுநர்"
 #: 
 msgid "recipients"
 msgstr "பெறுநர்கள்"
-
-#: 
-msgctxt "one"
-msgid "{{count}} min left"
-msgstr "{{count}} நிமிடங்கள் மீதமுள்ளன"
-
-#: 
-msgctxt "other"
-msgid "{{count}} min left"
-msgstr "{{count}} நிமிடங்கள் மீதமுள்ளன"
 
 #: 
 msgid "{{hours}}h {{mins}}m left"
@@ -17915,6 +17837,12 @@ msgid "Set up now"
 msgstr "இப்போது அமைக்கவும்"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "இரு-காரணி அங்கீகாரம் தேவை. பதிவு செய்ய உங்களுக்கு %d நாள் உள்ளது."
+msgstr[1] "இரு-காரணி அங்கீகாரம் தேவை. பதிவு செய்ய உங்களுக்கு %d நாட்கள் உள்ளன."
+
+#: 
 msgid "Unknown family"
 msgstr "தெரியாத குடும்பம்"
 
@@ -17929,4 +17857,1184 @@ msgstr "அனைத்து குடும்ப ஆயத்தொலைவ�
 #: 
 msgid "Update Coordinates"
 msgstr "ஆயத்தொலைவுகளைப் புதுப்பிக்கவும்"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s இக்குடும்பத்தின் தலைவராக இருந்தார், மேலும் காலமானவராக குறிக்கப்பட்டுள்ளார். தயவுசெய்து புதிய குடும்பத் தலைவரை நியமிக்கவும்."
+
+#: 
+msgid "Accept"
+msgstr "ஏற்றுக்கொள்"
+
+#: 
+msgid "Active Now"
+msgstr "தற்போது செயலில்"
+
+#: 
+msgid "Adding..."
+msgstr "சேர்க்கப்படுகிறது..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "மின்னஞ்சல் கொண்ட அனைத்து CRM உறுப்பினர்களும் இந்தப் பட்டியலில் சேர்க்கப்பட்டுள்ளனர்!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "அனைத்து MailChimp சந்தாதாரர்களும் ChurchCRM-இல் உள்ளனர்!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "கோப்புகளை நீக்கும் போது பிழை ஏற்பட்டது."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "நீங்கள் முற்றிலும் உறுதியாக இருக்கிறீர்களா? இது அனைத்து தரவையும் அழித்து, ஆரம்ப அமைப்புகளை மீட்டமைக்கும்."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "அனைத்து பதிவு கோப்புகளையும் நீக்க விரும்புகிறீர்களா? இந்த செயலை மீட்டெடுக்க முடியாது."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "கியோஸ்கை நீக்க விரும்புகிறீர்களா"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "இந்த இணைப்பை நீக்க விரும்புகிறீர்களா"
+
+#: 
+msgid "Assignment"
+msgstr "நியமனம்"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "பின்னணி பணிகள் (பிறந்தநாள் மின்னஞ்சல்கள் மற்றும் ஒவ்வொரு செருகுநிரல் திட்டமிடப்பட்ட பணியும்) இந்த நிறுவலில் ஒருபோதும் இயங்கவில்லை."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "பின்னணி பணிகள் (பிறந்தநாள் மின்னஞ்சல்கள் மற்றும் ஒவ்வொரு செருகுநிரல் திட்டமிடப்பட்ட பணியும்) கடைசியாக %s அன்று இயங்கியது."
+
+#: 
+msgid "Backing up..."
+msgstr "காப்புப்பிரதி எடுக்கப்படுகிறது..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "காப்புப்பிரதி பதிவிறக்கம் செய்யப்பட்டது."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "காப்புப்பிரதி வெற்றிகரமாக பதிவேற்றப்பட்டது"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "உங்கள் சொந்த செயல்நிலையை மாற்ற முடியாது"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings ஏற்றுமதி வெற்றிகரமாக முடிந்தது"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "மாற்றங்கள் வெற்றிகரமாக சேமிக்கப்பட்டன"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "அனைவரையும் வெளியேற்றி அனைத்தையும் செயலிழக்கச் செய்"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "அனைவரையும் வெளியேற்றி இந்த நிகழ்வை செயலிழக்கச் செய்யவா?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "கடவுச்சொல் மீட்டமைப்பு இணைப்புக்காக உங்கள் மின்னஞ்சலைச் சரிபார்க்கவும்"
+
+#: 
+msgid "Close stuck events?"
+msgstr "நிலைத்துவிட்ட நிகழ்வுகளை மூடவா?"
+
+#: 
+msgid "Comments"
+msgstr "கருத்துகள்"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "மின்னஞ்சல் முன்னோட்டத்தை ஏற்ற முடியவில்லை. மூடிவிட்டு மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "காப்புப்பிரதி உருவாக்கப்பட்டு பதிவேற்றப்படுகிறது. இதற்கு சில நிமிடங்கள் ஆகலாம்..."
+
+#: 
+msgid "Database reset failed."
+msgstr "தரவுத்தளம் மீட்டமைப்பு தோல்வியடைந்தது."
+
+#: 
+msgid "Deceased"
+msgstr "காலமானவர்"
+
+#: 
+msgid "Default admin credentials"
+msgstr "இயல்புநிலை நிர்வாக நற்சான்றிதழ்கள்"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "கியோஸ்கை நீக்கு"
+
+#: 
+msgid "Deleted Files"
+msgstr "நீக்கப்பட்ட கோப்புகள்"
+
+#: 
+msgid "Deleting..."
+msgstr "நீக்கப்படுகிறது..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "பதிவிறக்கம் இணைப்பு தலைப்புகள் இல்லாமல் திரும்பியது."
+
+#: 
+msgid "Error deleting log file."
+msgstr "பதிவு கோப்பை நீக்குவதில் பிழை."
+
+#: 
+msgid "Error deleting log files."
+msgstr "பதிவு கோப்புகளை நீக்குவதில் பிழை."
+
+#: 
+msgid "Error downloading log file."
+msgstr "பதிவு கோப்பை பதிவிறக்குவதில் பிழை."
+
+#: 
+msgid "Error initiating download."
+msgstr "பதிவிறக்கத்தைத் தொடங்குவதில் பிழை."
+
+#: 
+msgid "Error loading log file."
+msgstr "பதிவு கோப்பை ஏற்றுவதில் பிழை."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "சுய-பதிவு செய்யப்பட்ட பதிவுகளை ஏற்றுவதில் பிழை"
+
+#: 
+msgid "Errors"
+msgstr "பிழைகள்"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "அச்சிடப்பட்ட அடைவு மற்றும் CSV ஏற்றுமதிகளில் இருந்து காலமான உறுப்பினர்களை விலக்கு."
+
+#: 
+msgid "Failed Files"
+msgstr "தோல்வியடைந்த கோப்புகள்"
+
+#: 
+msgid "Failed to add link"
+msgstr "இணைப்பைச் சேர்க்க முடியவில்லை"
+
+#: 
+msgid "Failed to add option"
+msgstr "விருப்பத்தைச் சேர்க்க முடியவில்லை"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "நிகழ்வுகளை மூட முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Failed to delete"
+msgstr "நீக்க முடியவில்லை"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "கியோஸ்க் பதிவை இயக்க முடியவில்லை"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV ஏற்றுமதி செய்ய முடியவில்லை"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "தணிக்கையை ஏற்ற முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "கியோஸ்கை மறுபெயரிட முடியவில்லை"
+
+#: 
+msgid "Failed to save changes"
+msgstr "மாற்றங்களைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "செருகுநிரலை புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Family Id"
+msgstr "குடும்ப அடையாள எண்"
+
+#: 
+msgid "Final Confirmation"
+msgstr "இறுதி உறுதிப்படுத்தல்"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "குடும்பங்களை புவிக்குறியீடு செய்கிறது… இதற்கு சில நிமிடங்கள் ஆகலாம். இந்தப் பக்கத்தைத் திறந்தே வைக்கலாம்."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "குடும்பங்களை புவிக்குறியீடு செய்கிறது… {{total}}-இல் {{done}} செயலாக்கப்பட்டது, {{geocoded}} கண்டறியப்பட்டது."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "குடும்பத் தலைவர் புதுப்பிப்பு தேவை"
+
+#: 
+msgid "Helpful Links"
+msgstr "பயனுள்ள இணைப்புகள்"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "காலமானவர்களை அடைவில் இருந்து மறை"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "அச்சிடப்பட்ட அடைவு மற்றும் CSV ஏற்றுமதிகளில் இருந்து காலமான உறுப்பினர்களை மறை."
+
+#: 
+msgid "Identify"
+msgstr "அடையாளம் காண்"
+
+#: 
+msgid "Identify command sent"
+msgstr "அடையாளம் காணும் கட்டளை அனுப்பப்பட்டது"
+
+#: 
+msgid "Individual"
+msgstr "தனிநபர்"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "உள்ளக: பின்னணி டைமர் பணிகள் முடிந்த கடைசி தேதி மற்றும் நேரம் (YYYY-MM-DD HH:MM:SS). கைமுறையாக திருத்த வேண்டாம்."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "உருப்படி வெற்றிகரமாக நீக்கப்பட்டது"
+
+#: 
+msgid "Kiosk Name"
+msgstr "கியோஸ்க் பெயர்"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "கியோஸ்க் ஏற்றுக்கொள்ளப்பட்டது"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "கியோஸ்க் வெற்றிகரமாக நீக்கப்பட்டது"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "கியோஸ்க் ஏற்றுக்கொள்ளப்பட வேண்டும்"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "கியோஸ்க் மறுபெயரிடப்பட்டது"
+
+#: 
+msgid "Last seen"
+msgstr "கடைசியாகக் காணப்பட்டது"
+
+#: 
+msgid "Link"
+msgstr "இணைப்பு"
+
+#: 
+msgid "Link added successfully"
+msgstr "இணைப்பு வெற்றிகரமாக சேர்க்கப்பட்டது"
+
+#: 
+msgid "Link deleted"
+msgstr "இணைப்பு நீக்கப்பட்டது"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "இணைப்பு பெயரில் HTML குறிச்சொற்கள் இருக்கக்கூடாது"
+
+#: 
+msgid "Living"
+msgstr "உயிருடன் உள்ளவர்"
+
+#: 
+msgid "Log settings saved"
+msgstr "பதிவு அமைப்புகள் சேமிக்கப்பட்டன"
+
+#: 
+msgid "Login Name is Required"
+msgstr "உள்நுழைவு பெயர் தேவை"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "நபரை செயலில் உள்ளவராக குறித்தது"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "நபரை செயலற்றவராக குறித்தது"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "பக்க ஏற்றத்தால் தூண்டப்படும் பின்னணி டைமர்-பணி இயக்கங்களுக்கு இடையே உள்ள குறைந்தபட்ச நிமிடங்களின் எண்ணிக்கை. பரபரப்பான ஞாயிறு காலையில் ஒவ்வொரு பக்கக் காட்சிக்கும் பணிகள் இயங்குவதை இது தடுக்கும். கட்டளை-வரி இயக்கிக்கு இது பொருந்தாது. ஒவ்வொரு பக்க ஏற்றத்திலும் இயங்க 0 எனக் குறிக்கவும்."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "புதிய பயனர்களுக்கு வரவேற்பு மின்னஞ்சல் வராது, மேலும் உருவாக்கப்பட்ட கடவுச்சொல் ஒருபோதும் காட்டப்படாது. கணக்கை உருவாக்கிய பிறகு, கணினி பயனர்கள் பகுதியில் கடவுச்சொல்லை மாற்று-ஐப் பயன்படுத்தி ஒன்றை அமைக்கவும் — அல்லது முதலில் மின்னஞ்சலை உள்ளமைக்கவும்."
+
+#: 
+msgid "No changes to save"
+msgstr "சேமிக்க மாற்றங்கள் இல்லை"
+
+#: 
+msgid "No contact info"
+msgstr "தொடர்பு தகவல் இல்லை"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "தனிப்பயன் இணைப்புகள் எதுவும் உள்ளமைக்கப்படவில்லை. மேலே ஒன்றைச் சேர்க்கவும்!"
+
+#: 
+msgid "No email"
+msgstr "மின்னஞ்சல் இல்லை"
+
+#: 
+msgid "No files were deleted."
+msgstr "எந்த கோப்பும் நீக்கப்படவில்லை."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "இந்த செருகுநிரலுக்கு உதவி எதுவும் கிடைக்கவில்லை."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "சேர்க்க நபர்கள் இல்லை - அனைவரும் ஏற்கனவே கார்ட்டில் உள்ளனர்"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "சேர்க்க நபர்கள் இல்லை - வடிகட்டி முடிவுகள் எதுவும் தரவில்லை"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "சரியான இறப்பு தேதி அல்ல"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "2FA கட்டாயமாக்கப்பட்ட பிறகு பயனர்கள் அதில் பதிவு செய்ய வேண்டிய நாட்களின் எண்ணிக்கை. உடனடியாக அமல்படுத்த 0 எனக் குறிக்கவும். செயலில் உள்ள சலுகை காலத்தை குறைப்பது பயனர்களை உடனடியாக பூட்டிவிடலாம்."
+
+#: 
+msgid "Offline"
+msgstr "ஆஃப்லைன்"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "அடிப்படைச் சிக்கல் சரிசெய்யப்பட்ட பிறகே இதைச் செய்யவும். செருகுநிரல் மீண்டும் இயங்குவதற்கு முன் நீங்கள் இயக்கு-ஐ கிளிக் செய்ய வேண்டும்."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "நபரை செயல்படுத்துவதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "நபரை செயலிழக்கச் செய்வதை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Plugin status updated"
+msgstr "செருகுநிரல் நிலை புதுப்பிக்கப்பட்டது"
+
+#: 
+msgid "Registered"
+msgstr "பதிவு செய்யப்பட்டது"
+
+#: 
+msgid "Reload"
+msgstr "மீண்டும் ஏற்று"
+
+#: 
+msgid "Reload command sent"
+msgstr "மீண்டும் ஏற்றும் கட்டளை அனுப்பப்பட்டது"
+
+#: 
+msgid "Rename"
+msgstr "மறுபெயரிடு"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "கியோஸ்கை மறுபெயரிடு"
+
+#: 
+msgid "Reset Complete"
+msgstr "மீட்டமைப்பு முடிந்தது"
+
+#: 
+msgid "Reset Settings"
+msgstr "அமைப்புகளை மீட்டமை"
+
+#: 
+msgid "Resetting..."
+msgstr "மீட்டமைக்கப்படுகிறது..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "திட்டமிடப்பட்ட பணிகள் இயங்கவில்லை"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "பாதுகாப்பு டோக்கன் இல்லை. பக்கத்தைப் புதுப்பிக்கவும்."
+
+#: 
+msgid "Select…"
+msgstr "தேர்ந்தெடு…"
+
+#: 
+msgid "Sending..."
+msgstr "அனுப்பப்படுகிறது..."
+
+#: 
+msgid "Sending…"
+msgstr "அனுப்பப்படுகிறது…"
+
+#: 
+msgid "Settings reset"
+msgstr "அமைப்புகள் மீட்டமைக்கப்பட்டன"
+
+#: 
+msgid "Settings saved"
+msgstr "அமைப்புகள் சேமிக்கப்பட்டன"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "அமைப்புகள் சேமிக்கப்பட்டன. மேம்படுத்தல் தகவலைப் புதுப்பிக்கிறது..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "செயலில் உள்ள நபர்களை மட்டும் காட்டுகிறது."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "செயலற்ற நபர்களை மட்டும் காட்டுகிறது."
+
+#: 
+msgid "Successfully deleted"
+msgstr "வெற்றிகரமாக நீக்கப்பட்டது"
+
+#: 
+msgid "Testing..."
+msgstr "சோதிக்கப்படுகிறது..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "தரவுத்தளம் அழிக்கப்பட்டது. கணினி புதிதாகத் தொடங்கத் தயாராக உள்ளது."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "இதற்கிடையில் பக்க-ஏற்ற மாற்று வழி தொடர்ந்து செயல்படும். இந்த எச்சரிக்கையைக் காட்டுவதற்கு முன் ChurchCRM எவ்வளவு நேரம் காத்திருக்கும் என்பதை %1$s அமைப்பு மூலம் மாற்றவும், அல்லது அதை மறைக்க 0 எனக் குறிக்கவும்."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "இந்த நபர் செயலற்றவர்"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "OpenStreetMap-ஐப் பயன்படுத்தி, வரைபடத் தொகுப்பு எண்கள் இல்லாத ஒவ்வொரு குடும்பத்திற்கும் இது அவற்றைக் கண்டறியும். இது 50 குடும்பங்களின் தொகுதிகளாக, தொகுதிக்கு ஏறக்குறைய ஒரு நிமிடம் என்ற வேகத்தில் செயல்படும். இது இயங்கும்போது இந்தப் பக்கத்தைத் திறந்தே வைக்கலாம். தொடரவா?"
+
+#: 
+msgid "This person is deceased"
+msgstr "இந்த நபர் காலமானவர்"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "இது இந்த செருகுநிரலுக்கான அனைத்து உள்ளமைக்கப்பட்ட மதிப்புகளையும் அழிக்கும். இதை மீட்டெடுக்க முடியாது."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "இது செருகுநிரல் கோப்புகளை வட்டில் இருந்து நிரந்தரமாக நீக்கி, அதன் அமைப்புகளை அழிக்கும். இதை மீட்டெடுக்க முடியாது."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL-இல் HTML குறிச்சொற்கள் இருக்கக்கூடாது"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "எதிர்பாராத பிழை. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "செருகுநிரலை நிறுவல் நீக்கு"
+
+#: 
+msgid "Upcoming"
+msgstr "வரவிருக்கும்"
+
+#: 
+msgid "Valid Until"
+msgstr "செல்லுபடியாகும் காலம்"
+
+#: 
+msgid "View active only"
+msgstr "செயலில் உள்ளவை மட்டும் காண்"
+
+#: 
+msgid "View all"
+msgstr "அனைத்தையும் காண்"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "அனைத்தையும் காண் (செயலற்றவை உட்பட)"
+
+#: 
+msgid "View inactive only"
+msgstr "செயலற்றவை மட்டும் காண்"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "பின்னணி டைமர் பணிகள் இவ்வளவு மணிநேரம் இயங்காதபோது நிர்வாக டாஷ்போர்டில் எச்சரிக்கவும். 26 என்பது தினசரி cron ஒன்றுடன் சிறிது மாறுபாட்டையும் அனுமதிக்கும். எச்சரிக்கையை முடக்க 0 எனக் குறிக்கவும்."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "ஒரு திட்டமிடுபவர் இல்லாமல், இந்தப் பணிகள் யாராவது ஒரு பக்கத்தை ஏற்றும்போது மட்டுமே இயங்கும், எனவே அமைதியான வார நாளில் திட்டமிடப்பட்ட அஞ்சல் எதுவும் அனுப்பப்படாது. உங்கள் இணைய சேவையகம் இயங்கும் அதே பயனராக, பணி இயக்கியை ஒவ்வொரு மணி நேரமும் இயக்கும் cron பதிவை சேர்க்கவும்"
+
+#: 
+msgid "check-outs"
+msgstr "வெளியேற்றங்கள்"
+
+#: 
+msgid "deceased"
+msgstr "காலமானவர்"
+
+#: 
+msgid "event"
+msgstr "நிகழ்வு"
+
+#: 
+msgid "events?"
+msgstr "நிகழ்வுகளா?"
+
+#: 
+msgid "files"
+msgstr "கோப்புகள்"
+
+#: 
+msgid "people from cart?"
+msgstr "கார்ட்டில் இருந்து நபர்களா?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip பூஜ்ஜியமாகவோ அல்லது நேர்மறை முழு எண்ணாகவோ இருக்க வேண்டும்"
+
+#: 
+msgid "view families missing an email"
+msgstr "மின்னஞ்சல் இல்லாத குடும்பங்களைக் காண்"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "இந்த நிதியாண்டில் வாங்குபவர்கள்"
+
+#: 
+msgid "Current"
+msgstr "தற்போதைய"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "நன்கொடையாக அளிக்கப்பட்ட பொருட்கள் (இந்த நிதியாண்டு)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "உள்நுழைவு %d எழுத்துகளுக்கு மேல் இருக்கக்கூடாது!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "இந்த நிதியாண்டில் திரட்டப்பட்ட தொகை"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s முழுமையான https:// இணைய முகவரியாக இருக்க வேண்டும், எடுத்துக்காட்டாக https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "கணக்கிற்கு வரையறுக்கப்பட்ட அனுமதிகள் உள்ளன. நிர்வாகியைத் தொடர்பு கொள்ளவும்."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "பிழைப் பக்கத்தை காட்டும்போது பிழை ஏற்பட்டது."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "ஒவ்வொரு முகவரியும் https:// இல் தொடங்க வேண்டும்"
+
+#: 
+msgid "Generate Labels"
+msgstr "லேபிள்களை உருவாக்கு"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "அஞ்சல் லேபிள்களை உருவாக்கு"
+
+#: 
+msgid "Labels"
+msgstr "லேபிள்கள்"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "உங்கள் கார்ட்டில் உள்ள நபர்களுக்கான அஞ்சல் லேபிள்கள். சொந்த முகவரி இல்லாத ஒரு நபர், அவரது குடும்ப முகவரியில் குறிப்பிடப்படுவார்."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "விருப்பத்தேர்வு. தேவாலயத்தின் சொந்தக் கணக்குகளுக்கான இணைப்புகள், போர்ட்டல் அடிக்குறிப்பு போன்ற பக்கங்களில் உறுப்பினர்களுக்குக் காட்டப்படும். அந்த வலைப்பின்னலை மறைக்க ஒரு புலத்தை வெறுமையாக விடவும்."
+
+#: 
+msgid "Options"
+msgstr "விருப்பங்கள்"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "திட்டமிடப்பட்ட பணிகள்"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "செயலில், மீதமுள்ள வினாடிகள்: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "இயக்கங்களுக்கு இடையேயான எதிர்பார்க்கப்படும் இடைவெளி (மணிநேரம்): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "தவிர்க்கப்பட்ட குடும்பங்கள் (பதிவில் மின்னஞ்சல் முகவரி இல்லை): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "புவிக்குறியீடு செய்ய முடியாத குடும்பங்கள்: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "உறுதிப்படுத்தல் மின்னஞ்சல்களைப் பெறும் குடும்பங்கள்: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "நகலெடுக்கப்பட்ட உறுப்பினர்கள்: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "இங்கே பட்டியலிடப்படவில்லை: மேலும் {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "பெறுநர்கள்: {{total}} — mailto: இணைப்புக்கு அதிகமானவை. அதற்குப் பதிலாக முகவரிகளை நகலெடு-ஐப் பயன்படுத்தவும்."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "மின்னஞ்சல் கிளையண்ட்டுக்கு பெறுநர்கள் அதிகம் ({{total}} > {{max}}). அதற்குப் பதிலாக முகவரிகளை நகலெடு-ஐப் பயன்படுத்தவும்."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} நிமிடங்கள் மீதம்"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d வரி ஆவணம் குடும்பத்திற்கு வெற்றிகரமாக மின்னஞ்சல் அனுப்பப்பட்டது."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d வழங்குதல் அறிக்கை"
+
+#: 
+msgid "All classifications"
+msgstr "அனைத்து வகைப்பாடுகள்"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "நிர்வாகி என்ற முறையில், தயவு செய்து பின்வருவனவையும் மதிப்பாய்வு செய்யவும்"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "பிறந்த நாளில் மக்களுக்கு தானாகவே பிறந்த நாள் வாழ்த்து மின்னஞ்சல் அனுப்பவும்."
+
+#: 
+msgid "Birthday Emails"
+msgstr "பிறந்த நாள் மின்னஞ்சல்கள்"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "பிறந்த நாள்கள், வார்ஷிகோஷணைகள், தன்னார்வலர்கள் மற்றும் வகைப்பாடு வடிப்பல் கொண்ட மற்ற மக்கள் பட்டியல்கள்"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "இந்த அறிக்கையை இயக்க %s தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose events"
+msgstr "நிகழ்வுகளைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose..."
+msgstr "தேர்ந்தெடுக்கவும்..."
+
+#: 
+msgid "Church Logo"
+msgstr "தேவாலய சின்னம்"
+
+#: 
+msgid "Columns per Page"
+msgstr "பக்கத்திற்கு நெடுவரிசைகள்"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "அன்பு %s குடும்பத்தினர்,\n"
+"\n"
+"தயவு செய்து உங்கள் %d வழங்குதல் அறிக்கை %s இலிருந்து இந்த மின்னஞ்சலுடன் இணைக்கப்பட்ட கோப்பாக கண்டறியவும்.\n"
+"\n"
+"ஏதேனும் கேள்விகள் இருந்தால், தயவு செய்து தேவாலய அலுவலகத்தைத் தொடர்பு கொள்ளவும்.\n"
+"\n"
+"உங்கள் தாரளத்திற்கு நன்றி."
+
+#: 
+msgid "Download CSV"
+msgstr "CSV ஐ பதிவிறக்கவும்"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "மின்னஞ்சல் %d வரி ஆவணம்"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "நிதி தொகுதி மற்றும் பக்க பட்டி பட்டியைத் இயக்க அல்லது முடக்கவும்."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "நிதி சங்கேத சேவையளாளர் தொகுதியைத் இயக்க அல்லது முடக்கவும்."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "தேவாலய சின்னத்தை நீக்க தவறிவிட்டது"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "தேவாலய சின்னத்தை அப்லோட் செய்ய தவறிவிட்டது"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "மின்னஞ்சல் வார்ப்புருக்களுக்கான வழிபாட சின்ன URL, தேவாலய தகவல் பக்கத்தில் தேவாலய சின்னம் அப்லோட் செய்யப்படாத போது மட்டுமே பயன்படுத்தப்படுகிறது. பயன்பாட்டின் சொந்த பக்கங்கள் இந்த அமைப்பை புறக்கணித்து எப்போதும் அப்லோட் செய்யப்பட்ட சின்னத்தை அல்லது இயல்பான ChurchCRM சின்னத்தைப் பயன்படுத்துகின்றன. முழுமையான http(s) URL ஆக இருக்க வேண்டும். மின்னஞ்சல் வாகனங்களிலான சிறந்த வரைபடத்திற்கு, தோராயமாக 3.5:1 தர விகிதத்தில் (உதாரணமாக 350×100 px) PNG அல்லது JPG இல், HTTPS க்கு மீது வழங்கப்பட்ட பரந்த பட்டை படத்தைப் பயன்படுத்தவும். வெற்றுவாக விடவும் அல்லது இயல்பான ChurchCRM சின்னத்திற்கு திரும்பவும் செய்ய தவறான மதிப்பை உள்ளிடவும்."
+
+#: 
+msgid "Finance Module"
+msgstr "நிதி தொகுதி"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "ஒரு நிகழ்வுக்கு கலந்துகொள்ளாத மக்களைக் கண்டறியவும்"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "இரண்டு குறிப்பிட்ட வாய்ப்பு குறியீடுகளுடன் பொருந்தும் தன்னார்வலர்களைக் கண்டறியவும்"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "முதல் தன்னார்வல வாய்ப்பு"
+
+#: 
+msgid "Folded Booklet"
+msgstr "மடிந்த புத்தகம்"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "நிதி சங்கேத தொகுதி"
+
+#: 
+msgid "Giving History"
+msgstr "வழங்குதல் வரலாறு"
+
+#: 
+msgid "Last Gift"
+msgstr "கடைசி பரிசு"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "அனைத்து வகைப்பாடுகளுக்கும் வெற்றுவாக விடவும்."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "குடும்ப சுயவிவரத்தில் காட்ட வேண்டிய வரி வருட ஆவணங்களின் அதிகபட்ச எண்ணிக்கை (0 = வரம்பு இல்லை)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "ஒரு குடும்பத்திற்குக் காட்டப்பட்ட அதிகபட்ச வரி வருடங்கள்"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "உறுப்பினர் வார்ஷிகோஷணைகள்"
+
+#: 
+msgid "Missing People"
+msgstr "விடுபட்ட மக்கள்"
+
+#: 
+msgid "No giving history found."
+msgstr "வழங்குதல் வரலாறு கண்டறியப்படவில்லை."
+
+#: 
+msgid "No people match these filters."
+msgstr "இந்த வடிப்பல்களுடன் பொருந்தும் மக்கள் இல்லை."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "ஒரு ஆவணக் பக்கம் ஒரு தாளுக்கு, உயர் நிலை."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "http மற்றும் https திட்டங்கள் மட்டுமே அனுமதிக்கப்படுகின்றன."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF அல்லது WebP. தோராயமாக 3.5:1 பரந்த பட்டை (உதாரணமாக 700x200) சிறந்தது; வெளிப்படையான PNG விரும்பப்படுகிறது."
+
+#: 
+msgid "Page Layout"
+msgstr "பக்க தளவமைப்பு"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "ஒரு குறிப்பிட்ட மாதத்தில் சேர்ந்த மக்கள்"
+
+#: 
+msgid "Pledged"
+msgstr "உறுதிமொழி"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "அச்சு %d வரி ஆவணம்"
+
+#: 
+msgid "Queries"
+msgstr "வினாவல்கள்"
+
+#: 
+msgid "Recent Friends"
+msgstr "சமீபத்திய நண்பர்கள்"
+
+#: 
+msgid "Report not found"
+msgstr "அறிக்கை கண்டறியப்படவில்லை"
+
+#: 
+msgid "Run Report"
+msgstr "அறிக்கையை இயக்கவும்"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "இரண்டாவது தன்னார்வல வாய்ப்பு"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "பக்க பட்டியில், உள்நுழைவு பக்கத்தில் மற்றும் மின்னஞ்சல்களில் காட்டப்படுகிறது. ஒரு சின்னத்தை அப்லோட் செய்வது ChurchCRM பிராண்டிங்கை அது தோன்றும் எல்லா இடங்களிலும் மாற்றுகிறது."
+
+#: 
+msgid "Single Pages"
+msgstr "ஒற்றை பக்கங்கள்"
+
+#: 
+msgid "Tax Documents"
+msgstr "வரி ஆவணங்கள்"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "வரி ஆவணம் மின்னஞ்சல் அனுப்பத் தவறிவிட்டது. உங்கள் மின்னஞ்சல் சேவையக அமைப்புகளைச் சரிபார்க்கவும்."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "இரண்டு அரை-அளவு பக்கங்கள் ஒவ்வொரு ல்யாண்ட்ஸ்கேப் தாளுக்கும் ஒருவருக்கொருவர், புத்தக வரிசையில். \"குறுகிய விளிம்பில் புரட்டு\" என்பதைக் கொண்டு இரட்டை-பக்கம் அச்சு செய்யவும், பின்னர் ஸ்டேக்கை பாதியாக மடிக்கவும். நெடுவரிசைகள் ஒவ்வொரு அரை பக்கத்திற்கும் எண்ணப்படுகின்றன."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "வரி ஆவணம் மின்னஞ்சல் செய்ய முடியாது: அந்த வருடத்திற்கு பணி தரவு கண்டறியப்படவில்லை."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "வரி ஆவணம் மின்னஞ்சல் செய்ய முடியாது: இந்த குடும்பத்திற்கு கோப்பில் மின்னஞ்சல் முகவரி இல்லை."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "OpenLP சேவையக ஹோஸ்ட்பெயரை தீர்க்க முடியாது. முகவரி மற்றும் உங்கள் நெட்வொர்க் இணைப்பைச் சரிபார்க்கவும்."
+
+#: 
+msgid "Upload"
+msgstr "அப்லோட்"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "இயல்பான ChurchCRM சின்னத்தைப் பயன்படுத்துகிறது"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "முழு குடும்ப வழங்குதல் பார்க்கவும்"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "தன்னார்வல வாய்ப்பு"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "இரண்டு வாய்ப்புகளுக்கான தன்னார்வலர்கள்"
+
+#: 
+msgid "YTD"
+msgstr "ஆண்டு வரை"
+
+#: 
+msgid "YTD Paid"
+msgstr "ஆண்டு வரை செலுத்தியது"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "இது நடந்த நேரத்தின் சுற்றுவட்டாரத்தில் பிழைகளுக்கு, மற்றும் தொடர்புடைய பதிவு கோப்பை பதிவிறக்கவும் உங்கள் GitHub சிக்கலுக்கு இணைக்கவும் — இது சிக்கலை கூடுதல் கேள்விகள் இல்லாமல் சரிசெய்ய உதவுகிறது."
+
+#: 
+msgid "system logs"
+msgstr "கணினி பதிவுகள்"
+
+#: 
+msgid "Access Control & Security"
+msgstr "அணுகல் கட்டுப்பாடு மற்றும் பாதுகாப்பு"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "வரி பிடிப்பு செய்யப்படாத பேமெண்ட்களை பதிவு செய்ய அனுமதி (எ.கா. பொருட்கள் விற்பனை)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "பொது நிகழ்வுகளுக்கு அங்கீகாரம் இல்லாமல் அணுகல் அனுமதி (கலெண்டர்களை உட்பொதிப்பதற்கு)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "பொது பதிவு பக்கத்தின் மூலம் பார்வையாளர்களை தங்களின் குடும்ப பதிவுகளை உருவாக்க அனுமதி"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "பிறந்தநாள் ஈமெயிலை தானாக அனுப்பவும் (பின்புல வேலை அட்டவணையை தேவை)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "பிறந்தநாள் வாழ்த்து ஈமெயிலுகள்"
+
+#: 
+msgid "Communication & Email"
+msgstr "தொடர்பாடல் மற்றும் ஈமெயில்"
+
+#: 
+msgid "Content Security Policy"
+msgstr "உள்ளடக்க பாதுகாப்பு கொள்கை"
+
+#: 
+msgid "Email System"
+msgstr "ஈமெயில் முறை"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "உங்கள் நிறுவனத்திற்கான சிறப்பு வசதிகளை செயல்படுத்தவோ அல்லது முடக்கவோ"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "முக்கிய வழிசெலுத்தலில் நிகழ்வுகள் பிரிவை செயல்படுத்தவோ முடக்கவோ"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "நிதி மெனுவையும் அனைத்து நிதி அம்சங்களையும் (வைப்புகள், கொடுப்பனவுகள், அறிக்கைகள்) இயக்கவும் அல்லது முடக்கவும்"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "நிதி திரட்டல் மெனுவை செயல்படுத்தவோ முடக்கவோ"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "XSS தாக்குதல்களிலிருந்து பாதுகாக்க கடுமையான CSP தலைப்புகளை பிற்பலிக்கவும்"
+
+#: 
+msgid "Events Module"
+msgstr "நிகழ்வுகள் மடுலு"
+
+#: 
+msgid "Feature Toggles"
+msgstr "சிறப்பு வசதி தலைப்புகள்"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "சிறப்பு வசதி தலைப்புகள் ChurchCRM இல் எந்த மடுலுகள் மற்றும் சிறப்பு வசதிகள் கிடைக்கும் என்பதை கட்டுப்படுத்தும். மாற்றங்கள் உடனே நகரும்."
+
+#: 
+msgid "Finance Features"
+msgstr "நிதி சிறப்பு வசதிகள்"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "வேகமான உலக தேடலில் முகவரிகளை சேர்க்கவும்"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "வேகமான உலக தேடலில் கலெண்டர் நிகழ்வுகளை சேர்க்கவும்"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "வேகமான உலக தேடலில் தனிப்பயன் குடும்ப சொத்துக்களை சேர்க்கவும்"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "விரைவு உலகளாவிய தேடலில் வைப்புகளைச் சேர்க்கவும்"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "வேகமான உலக தேடலில் குடும்பங்களை சேர்க்கவும்"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "வேகமான உலக தேடலில் பணிகளை சேர்க்கவும்"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "வேகமான உலக தேடலில் பேமெண்ட்ஸை சேர்க்கவும்"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "வேகமான உலக தேடலில் மக்களை சேர்க்கவும்"
+
+#: 
+msgid "Invalid setting"
+msgstr "செல்லாத அமைப்பு"
+
+#: 
+msgid "Lost Password Link"
+msgstr "இழந்த கடவுச்சொல் இணைப்பு"
+
+#: 
+msgid "Manage All Features"
+msgstr "அனைத்து சிறப்பு வசதிகளை நிர்வகிக்கவும்"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "ஈமெயில் அனுப்புவதற்கான முதன்மை தலைப்பு. கடவுச்சொல் மறுசெட்டுக்கள் மற்றும் அறிவுப்புகளுக்குத் தேவை"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "வரி பிடிப்பு செய்யப்படாத பேமெண்ட்ஸ்"
+
+#: 
+msgid "Primary Modules"
+msgstr "முதன்மை தொகுதிகள்"
+
+#: 
+msgid "Public Calendar API"
+msgstr "பொது கலெண்டர் API"
+
+#: 
+msgid "Saved"
+msgstr "சேமிக்கப்பட்டது"
+
+#: 
+msgid "Search Families"
+msgstr "குடும்பங்களைத் தேடுங்கள்"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "குடும்ப தனிப்பயன் சொத்துக்களைத் தேடுங்கள்"
+
+#: 
+msgid "Search Settings"
+msgstr "தேடல் அமைப்புகள்"
+
+#: 
+msgid "Self-Registration"
+msgstr "சுய-பதிவு"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "உள்நுழைவு திரையில் \"இழந்த கடவுச்சொல்\" விருப்பத்தைக் காட்டவும் (பயனர் சுய-மறுசெட்டை அனுமதி)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "பக்கப்பட்டையில் ஞாயிறு பள்ளி தொகுதியைக் காட்டு அல்லது மறை"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "உள்நுழைய முடியுமான ஒரே நிர்வாகிக்கு செயல்முறை நீக்க முடியாது"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "உள்நுழைய முடியுமான ஒரே நிர்வாகிக்கு இறந்ததாக குறிக்க முடியாது"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "இறந்தவர் — உள்நுழைய முடியாது"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "தபால் முகவரியாக குறிப்பிடுவதற்கு முன்பு இரண்டாவது முகவரியை உள்ளிடவும்"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "செயல்பாடற்ற — உள்நுழைய முடியாது"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "தபால் இரண்டாவது முகவரிக்கு செல்கிறது; முதன்மை முகவரி வரைபடங்கள் மற்றும் திசைகளுக்குப் பயன்படுத்தப்படும் உண்மை இடமாக இருக்கும்."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "தபால் முதன்மை முகவரிக்குப் பதிலாக இந்த முகவரிக்கு அனுப்பப்படுகிறது"
+
+#: 
+msgid "Mailing Address"
+msgstr "தபால் முகவரி"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "வேறுபட்டால் தபால் முகவரி"
+
+#: 
+msgid "Primary Address"
+msgstr "முதன்மை முகவரி"
+
+#: 
+msgid "Receives Mail"
+msgstr "தபாலை பெறுகிறது"
+
+#: 
+msgid "Second Address"
+msgstr "இரண்டாவது முகவரி"
+
+#: 
+msgid "Second Home"
+msgstr "இரண்டாவது வீடு"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "இணைக்கப்பட்ட நபர் இறந்துவிட்டார் அல்லது செயல்பாடற்றவர். நபர் மீண்டும் செயல்பாடுக்கு வருவார் வரை உள்நுழைவு, அமர்வுகள் மற்றும் API சாவி தடுக்கப்பட்டுள்ளன."
+
+#: 
+msgid "This is the mailing address"
+msgstr "இது தபால் முகவரி"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "இந்த நபர் இறந்துவிட்டார் அல்லது செயலற்றவர், எனவே இந்தக் கணக்கில் உள்நுழைய முடியாது"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "ஒரு நிர்வாகி மட்டுமே உள்நுழைவு உள்ள நபரை நீக்க முடியும்."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "கடைசி நிர்வாகிக்கு நீக்க முடியாது."
 

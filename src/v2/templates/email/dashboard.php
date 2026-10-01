@@ -130,7 +130,7 @@ $(document).ready(function() {
             { name: 'sSMTPUser',             type: 'text',    label: <?= InputUtils::jsonEncodeForScript(gettext('SMTP Username')) ?>,          tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sSMTPUser')) ?> },
             { name: 'sSMTPPass',             type: 'password',label: <?= InputUtils::jsonEncodeForScript(gettext('SMTP Password')) ?>,          tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sSMTPPass')) ?> },
             { name: 'sToEmailAddress',       type: 'text',    label: <?= InputUtils::jsonEncodeForScript(gettext('Copy Church Email')) ?>,        tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sToEmailAddress')) ?> },
-            { name: 'iDoNotEmailPropertyId', type: 'ajax',    label: <?= InputUtils::jsonEncodeForScript(gettext('Do Not Email Property')) ?>,  tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('iDoNotEmailPropertyId')) ?>, ajaxUrl: '/api/system/properties/person' },
+            { name: 'iDoNotEmailPropertyId', type: 'ajax',    label: <?= InputUtils::jsonEncodeForScript(gettext('Do Not Email Property')) ?>,  tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('iDoNotEmailPropertyId')) ?>, ajaxUrl: '/admin/api/system/properties/person' },
             { name: 'sEmailPreheader',       type: 'text',    label: <?= InputUtils::jsonEncodeForScript(gettext('Default Inbox Preview Text')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sEmailPreheader')) ?> }
         ],
         showAllSettingsLink: true

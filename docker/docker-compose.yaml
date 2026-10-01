@@ -3,11 +3,11 @@ services:
     profiles: [test, ci]
     image: mariadb:10.11
     ports:
-      - ${DATABASE_PORT:-3306}:3306
+      - ${DOCKER_BIND_ADDRESS:-127.0.0.1}:${DATABASE_PORT:-3306}:3306
     env_file:
       - .env
     volumes:
-      - ../cypress/data:/docker-entrypoint-initdb.d
+      - ../cypress/data:/docker-entrypoint-initdb.d:ro
     hostname: crm-database
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
@@ -18,8 +18,8 @@ services:
     profiles: [test]
     image: axllent/mailpit:latest
     ports:
-      - ${MAILSERVER_PORT:-1025}:1025
-      - ${MAILSERVER_GUI_PORT:-8025}:8025
+      - ${DOCKER_BIND_ADDRESS:-127.0.0.1}:${MAILSERVER_PORT:-1025}:1025
+      - ${DOCKER_BIND_ADDRESS:-127.0.0.1}:${MAILSERVER_GUI_PORT:-8025}:8025
     hostname: crm-mailserver
 
   webserver:
@@ -30,7 +30,7 @@ services:
       target: test
     image: churchcrm/crm:php8-debian
     ports:
-      - ${WEBSERVER_PORT:-80}:80
+      - ${DOCKER_BIND_ADDRESS:-127.0.0.1}:${WEBSERVER_PORT:-80}:80
     volumes:
       - ../src:/var/www/html
       - ..:/home/ChurchCRM

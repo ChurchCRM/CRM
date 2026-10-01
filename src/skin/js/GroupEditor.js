@@ -38,7 +38,7 @@ function initializeGroupEditor() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to set group specific property status:", error);
-        window.CRM.notify(i18next.t("Failed to update properties. Please try again."), {
+        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update properties. Please try again."), {
           type: "danger",
           delay: 5000,
         });
@@ -80,7 +80,7 @@ function initializeGroupEditor() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to update group:", error);
-        window.CRM.notify(i18next.t("Failed to update group. Please try again."), {
+        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update group. Please try again."), {
           type: "danger",
           delay: 5000,
         });
@@ -139,7 +139,7 @@ function initializeGroupEditor() {
       .fail((xhr, status, error) => {
         console.error("Failed to add new role:", error);
         $("#submitNewRole").prop("disabled", false);
-        window.CRM.notify(i18next.t("Failed to add role. Please try again."), {
+        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to add role. Please try again."), {
           type: "danger",
           delay: 5000,
         });
@@ -214,7 +214,7 @@ function initializeGroupEditor() {
       .fail((xhr, status, error) => {
         console.error("Failed to delete role:", error);
         $("#confirmDeleteRole").prop("disabled", false);
-        window.CRM.notify(i18next.t("Failed to delete role. Please try again."), {
+        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to delete role. Please try again."), {
           type: "danger",
           delay: 5000,
         });
@@ -244,7 +244,7 @@ function initializeGroupEditor() {
 
     const d = replaceRow.data();
     d.lst_OptionSequence = currentRoleSequence;
-    setGroupRoleOrder(groupID, d.lst_OptionID, d.lst_OptionSequence);
+    const swapRequest = setGroupRoleOrder(groupID, d.lst_OptionID, d.lst_OptionSequence);
     replaceRow.data(d);
 
     dataT
@@ -253,7 +253,12 @@ function initializeGroupEditor() {
       }, 2)
       .data(newRoleSequence);
 
-    setGroupRoleOrder(groupID, roleID, newRoleSequence);
+    $.when(swapRequest, setGroupRoleOrder(groupID, roleID, newRoleSequence)).fail((xhr) => {
+      window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update role. Please try again."), {
+        type: "danger",
+        delay: 5000,
+      });
+    });
     dataT.rows().invalidate().draw(true);
     dataT.order([[2, "asc"]]).draw();
   });
@@ -277,7 +282,7 @@ function initializeGroupEditor() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to update role name:", error);
-        window.CRM.notify(i18next.t("Failed to update role name. Please try again."), {
+        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update role name. Please try again."), {
           type: "danger",
           delay: 5000,
         });
@@ -303,7 +308,7 @@ function initializeGroupEditor() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to set default role:", error);
-        window.CRM.notify(i18next.t("Failed to set default role. Please try again."), {
+        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to set default role. Please try again."), {
           type: "danger",
           delay: 5000,
         });
@@ -390,17 +395,11 @@ $(document).ready(() => {
 });
 
 function setGroupRoleOrder(groupID, roleID, groupRoleOrder) {
-  $.ajax({
+  return $.ajax({
     method: "POST",
     url: `${window.CRM.root}/api/groups/${groupID}/roles/${roleID}`,
     data: JSON.stringify({ groupRoleOrder }),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-  })
-    .done((data) => {
-      // Role order updated successfully
-    })
-    .fail((xhr, status, error) => {
-      console.error("Failed to update role order:", error);
-    });
+  });
 }

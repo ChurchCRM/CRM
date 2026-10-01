@@ -40,7 +40,6 @@ describe("Admin Debug", () => {
         cy.contains("System Settings");
         cy.contains("People");
         cy.contains("Report Settings");
-        cy.contains("Financial Settings");
         cy.contains("Quick Search");
         cy.contains("Confession");
     });

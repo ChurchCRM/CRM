@@ -1,0 +1,35 @@
+name: 'Node.js + npm install'
+description: 'Setup Node.js from .nvmrc, cache npm, run npm ci. Run actions/checkout before this action.'
+
+inputs:
+  cache-cypress:
+    description: 'Also cache Cypress binary'
+    required: false
+    default: 'false'
+
+outputs:
+  node-version:
+    description: 'Node version installed'
+    value: ${{ steps.setup-node.outputs.node-version }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Node.js
+      id: setup-node
+      uses: ./.github/actions/setup-node
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Cache Cypress (optional)
+      if: ${{ inputs.cache-cypress == 'true' }}
+      uses: ./.github/actions/cache
+      with:
+        path: ~/.cache/Cypress
+        key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-cypress-
+
+    - name: Install npm dependencies
+      run: npm ci
+      shell: bash

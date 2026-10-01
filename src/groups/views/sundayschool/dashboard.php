@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PersonDeleteGuard;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 
@@ -371,7 +372,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <button type="button"
                                         class="dropdown-item text-danger delete-person"
                                         data-person_id="<?= $kidId ?>"
-                                        data-person_name="<?= InputUtils::escapeAttribute($firstName . ' ' . $LastName) ?>">
+                                        data-person_name="<?= InputUtils::escapeAttribute($firstName . ' ' . $LastName) ?>"<?= PersonDeleteGuard::attributes((int) $kidId) ?>>
                                         <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>

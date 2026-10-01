@@ -1,4 +1,11 @@
-name: Locale Generate App Terms
+name: "Locale: terms"
+
+# Terms stage of the locale pipeline (docs/locale-pipeline.md): extract new source strings into
+# locale/messages.po and open a PR on branch locale/terms/<version>-<timestamp>.
+# Merging that PR starts locale-sync-poeditor.yml, which uploads the terms and downloads the result.
+#
+# The sync stage writes src/locale/i18n and src/locale/textdomain, so those paths are excluded:
+# merging a sync PR (or this PR, which only adds translation keys) must not start another extraction.
 
 on:
   push:
@@ -6,6 +13,8 @@ on:
       - master
     paths:
       - 'src/**'
+      - '!src/locale/i18n/**'
+      - '!src/locale/textdomain/**'
   workflow_dispatch:
 
 concurrency:
@@ -19,16 +28,16 @@ permissions:
 jobs:
   update-locale:
     timeout-minutes: 20
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
       
       - name: Setup Node.js (from .nvmrc)
-        uses: actions/setup-node@v7
+        uses: ./.github/actions/setup-node
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
@@ -124,7 +133,7 @@ jobs:
       
       - name: Upload generated locale files
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: ./.github/actions/upload-artifact
         with:
           name: locale-generated-files
           path: |
@@ -160,7 +169,7 @@ jobs:
       
       - name: Upload diff reports
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: ./.github/actions/upload-artifact
         with:
           name: locale-diff-reports
           path: locale-diffs/
@@ -177,7 +186,8 @@ jobs:
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
           TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-          BRANCH_NAME="locale/update-$TIMESTAMP"
+          VERSION=$(node -p "require('./package.json').version")
+          BRANCH_NAME="locale/terms/$VERSION-$TIMESTAMP"
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
           git checkout -b "$BRANCH_NAME"
       
@@ -216,7 +226,7 @@ jobs:
           ## Next Steps
           - Review the new strings that need translation
           - Merge this PR to update the base locale file
-          - Upload to POEditor for translation if needed" \
+          - The merge starts Locale: sync, which uploads the new terms to POEditor and then downloads" \
             --base ${{ github.ref_name }} \
             --head "$BRANCH_NAME" \
             --label "Localization"

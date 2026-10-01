@@ -164,6 +164,30 @@ if (!in_array($format, ['yaml', 'json'], true)) {
 // Resolve absolute paths (relative to this script's directory or src/)
 $srcDir = __DIR__ . '/../../src';
 
+// The OpenAPI info files use a token so their version always comes from the
+// application metadata instead of becoming stale after a release.
+$composerJsonPath = $srcDir . '/composer.json';
+$composerJsonContents = file_get_contents($composerJsonPath);
+if ($composerJsonContents === false) {
+    $fail("could not read $composerJsonPath");
+}
+try {
+    $composer = json_decode($composerJsonContents, true, flags: JSON_THROW_ON_ERROR);
+} catch (\JsonException $e) {
+    $fail("$composerJsonPath is not valid JSON: {$e->getMessage()}");
+}
+$applicationVersion = $composer['version'] ?? null;
+if (!is_string($applicationVersion) || $applicationVersion === '') {
+    $fail('src/composer.json does not contain a valid application version');
+}
+
+$temporaryInfoFile = null;
+register_shutdown_function(static function () use (&$temporaryInfoFile): void {
+    if ($temporaryInfoFile !== null && file_exists($temporaryInfoFile)) {
+        unlink($temporaryInfoFile);
+    }
+});
+
 $resolvePath = static function (string $path) use ($srcDir): string {
     // Every branch returns a CANONICAL absolute path (realpath) when the path exists, so
     // that scan paths and --exclude paths compare lexically whatever form the caller used
@@ -225,6 +249,24 @@ foreach ($paths as $path) {
 
     foreach ($finder as $file) {
         $filesToScan[] = $file->getPathname();
+    }
+}
+
+// Substitute the application version in the info file before swagger-php
+// parses its annotations. Keeping the source tokenized prevents generated
+// specs from depending on a manually updated literal.
+$infoFile = $resolvePath($paths[0]);
+if (is_file($infoFile)) {
+    $infoContents = file_get_contents($infoFile);
+    if ($infoContents === false) {
+        $fail("could not read info file: $infoFile");
+    }
+    if (str_contains($infoContents, '__CHURCHCRM_VERSION__')) {
+        $temporaryInfoFile = tempnam(sys_get_temp_dir(), 'churchcrm-openapi-');
+        if ($temporaryInfoFile === false || file_put_contents($temporaryInfoFile, str_replace('__CHURCHCRM_VERSION__', $applicationVersion, $infoContents)) === false) {
+            $fail('could not prepare versioned OpenAPI info file');
+        }
+        $filesToScan = array_map(static fn (string $file): string => $file === $infoFile ? $temporaryInfoFile : $file, $filesToScan);
     }
 }
 

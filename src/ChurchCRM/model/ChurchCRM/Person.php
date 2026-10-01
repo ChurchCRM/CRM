@@ -7,6 +7,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
+use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
@@ -16,6 +17,7 @@ use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Map\TableMap;
 
@@ -650,8 +652,49 @@ class Person extends BasePerson implements PhotoInterface
         return $nameString;
     }
 
+    /**
+     * Why the signed-in user may not delete this person, or null when they may.
+     *
+     * Deleting a person also deletes their login, so this guards the login:
+     * only an administrator may remove a person who has one, nobody may remove
+     * themselves, and the last administrator can never be removed.
+     */
+    public function getLoginDeletionBlockedReason(): ?string
+    {
+        $targetUser = UserQuery::create()->findPk($this->getId());
+        if ($targetUser === null || !AuthenticationManager::isUserAuthenticated()) {
+            return null;
+        }
+
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if ($currentUser->getId() === (int) $this->getId()) {
+            return gettext("Can't delete yourself");
+        }
+
+        if (!$currentUser->isAdmin()) {
+            return gettext('Only an administrator can delete a person who has a login.');
+        }
+
+        if ($targetUser->isAdmin()) {
+            $otherAdmins = UserQuery::create()
+                ->filterByAdmin(true)
+                ->filterByPersonId($this->getId(), Criteria::NOT_EQUAL)
+                ->count();
+            if ($otherAdmins === 0) {
+                return gettext('The last administrator cannot be deleted.');
+            }
+        }
+
+        return null;
+    }
+
     public function preDelete(?ConnectionInterface $con = null): bool
     {
+        $blockedReason = $this->getLoginDeletionBlockedReason();
+        if ($blockedReason !== null) {
+            throw new PersonDeletionBlockedException($blockedReason);
+        }
+
         // Snapshot before the cleanup below removes the rows toArray() reads
         // (the photo behind HasPhoto), so PERSON_DELETED listeners see the
         // person as they actually were.
@@ -1045,5 +1088,62 @@ class Person extends BasePerson implements PhotoInterface
         }
         $family = $this->getFamily();
         return $family?->getHomePhone() ?? '';
+    }
+
+    public function getVisibleCustomFieldDefinitions(): array
+    {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $allFields = PersonCustomMasterQuery::create()->orderByOrder()->find();
+        $visibleFields = [];
+        foreach ($allFields as $field) {
+            if ($currentUser->isEnabledSecurity($field->getFieldSecurity())) {
+                $visibleFields[] = $field;
+            }
+        }
+        return $visibleFields;
+    }
+
+    /**
+     * Returns this person's custom field values, filtered to only the fields the
+     * current user is permitted to view (GHSA-p6xx-xx98-f323).
+     *
+     * `person_custom` stores each custom field as a dynamically-added column keyed
+     * by the field's short code (PersonCustomMaster::getId()); it is not part of the
+     * generated Propel schema, so these values are never present in
+     * Person::exportTo()/toArray() output (that only surfaces the table's real
+     * Propel column, `per_ID`, under the one-to-one `singlePersonCustom` key).
+     * Callers that need per-field custom data — e.g. the JSON API — must use this
+     * method instead of relying on `singlePersonCustom` from exportTo().
+     *
+     * @return array<int, array{id: string, name: string, value: string}>
+     */
+    public function getVisibleCustomFieldValues(): array
+    {
+        $visibleFields = $this->getVisibleCustomFieldDefinitions();
+        if (empty($visibleFields)) {
+            return [];
+        }
+
+        $rawQry = PersonCustomQuery::create();
+        foreach ($visibleFields as $field) {
+            $rawQry->addAsColumn(str_replace(['.', '(', ')'], '', $field->getId()), $field->getId());
+        }
+        $personCustomData = $rawQry->findOneByPerId($this->getId());
+
+        $result = [];
+        if ($personCustomData) {
+            foreach ($visibleFields as $field) {
+                $value = trim((string) $personCustomData->getVirtualColumn(str_replace(['.', '(', ')'], '', $field->getId())));
+                if ($value !== '') {
+                    $result[] = [
+                        'id'    => $field->getId(),
+                        'name'  => $field->getName(),
+                        'value' => $value,
+                    ];
+                }
+            }
+        }
+
+        return $result;
     }
 }

@@ -102,7 +102,7 @@ Create a wiki article when the topic is:
 **Use the appropriate skill file instead for:**
 - API patterns → [API Development](./api-development.md) skill
 - Code standards → [Code Standards](./code-standards.md) skill
-- Job workflows → Inline in `copilot-instructions.md`
+- Job workflows → the relevant skill in `.agents/skills/`
 - Quick reference → Comments in the code itself
 
 **Use README or guide files for:**

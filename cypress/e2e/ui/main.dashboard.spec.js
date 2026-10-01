@@ -157,13 +157,42 @@ describe("Report Issue", () => {
         cy.get("#issueDescription").type(description);
 
         cy.get("#submitIssue").click();
-        cy.wait("@postIssue");
+        cy.wait("@postIssue").its("request.body").then((body) => {
+            expect(body).to.have.property("browserLocale");
+            expect(body).to.have.property("browserTimezone");
+        });
 
         cy.get("@windowOpen").should("have.been.calledOnce");
         cy.get("@windowOpen").should(
             "have.been.calledWithMatch",
             /^https:\/\/github\.com\/ChurchCRM\/CRM\/issues\/new/
         );
+        cy.get("@windowOpen").its("firstCall.args.0").should("include", "labels=in-app-report");
         cy.get("@windowOpen").its("firstCall.args.0").should("include", encodeURIComponent(description));
+    });
+
+    it("does not show the admin log-review hint to standard users", () => {
+        cy.visit("v2/dashboard");
+        cy.get("#supportMenu").click();
+        cy.get("#reportIssue").click();
+
+        cy.get("#IssueReportModal").should("be.visible");
+        cy.get("#IssueReportModal").contains("system logs").should("not.exist");
+    });
+});
+
+describe("Report Issue (Admin)", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    it("shows a hint to review and attach system logs, linking to the log viewer", () => {
+        cy.visit("v2/dashboard");
+        cy.get("#supportMenu").click();
+        cy.get("#reportIssue").click();
+
+        cy.get("#IssueReportModal").should("be.visible");
+        cy.get("#IssueReportModal")
+            .contains("a", "system logs")
+            .should("have.attr", "href")
+            .and("include", "/admin/system/logs");
     });
 });

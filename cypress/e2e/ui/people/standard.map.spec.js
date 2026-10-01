@@ -144,7 +144,7 @@ describe("Find Neighbors (/people/map/neighbors)", () => {
     describe("Update All Coordinates (#9846)", () => {
         it("Runs every batch from one click, passing the failure count as skip", () => {
             const calls = [];
-            cy.intercept("POST", "**/api/map/geocode-all", (req) => {
+            cy.intercept("POST", "**/admin/api/map/geocode-all", (req) => {
                 calls.push(req.body);
             }).as("geocodeAll");
 

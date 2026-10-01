@@ -1,3 +1,4 @@
+| `test-error-redaction.php` | Regression tests for the /api error redaction rules and canonical error payload (#9737); runs in CI | `npm run test:php` |
 # ChurchCRM Build & Utility Scripts
 
 This folder contains Node.js and shell scripts used for building, packaging, and maintaining ChurchCRM.

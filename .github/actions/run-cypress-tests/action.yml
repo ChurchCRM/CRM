@@ -1,0 +1,109 @@
+name: Run Cypress Tests & Report
+description: Run Cypress tests with JUnit reporting and debug artifact upload
+inputs:
+  config-file:
+    description: Path to Cypress config
+    required: true
+  spec:
+    description: Cypress spec glob
+    required: true
+  test-name:
+    description: Test name for artifacts and reports
+    required: true
+  php-version:
+    description: PHP version for artifact naming
+    required: true
+  deployment:
+    description: Deployment type for artifact naming
+    required: true
+  shard-total:
+    description: Total number of test shards
+    required: false
+    default: ''
+  shard-index:
+    description: Zero-based test shard index
+    required: false
+    default: ''
+  base-url:
+    description: Optional CYPRESS_BASE_URL override
+    required: false
+    default: ''
+  docker-compose-profile:
+    description: Docker compose profile whose logs are collected on failure (skipped when empty)
+    required: false
+    default: ''
+  docker-compose-files:
+    description: Docker compose files (comma-separated) used to collect logs
+    required: false
+    default: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml'
+runs:
+  using: composite
+  steps:
+    - name: Run Cypress
+      id: cypress
+      shell: bash
+      run: |
+        report_file="cypress/reports/junit-php${PHP_VERSION}-${DEPLOYMENT}-${TEST_NAME}-[suiteName]-[hash].xml"
+        spec_args=()
+        if [[ -z "$SPLIT" ]]; then
+          spec_args+=(--spec "$TEST_SPEC")
+        fi
+        npx cypress run \
+          --config-file "$CONFIG_FILE" \
+          "${spec_args[@]}" \
+          --headless --browser electron \
+          --reporter junit \
+          --reporter-options "mochaFile=$report_file"
+      env:
+        CONFIG_FILE: ${{ inputs.config-file }}
+        # Only set as TEST_SPEC (consumed by the --spec CLI flag above), never
+        # as SPEC: cypress-split treats a truthy env.SPEC as an explicit
+        # override list of spec files (see cypress-split/src/parse-inputs.js),
+        # bypassing its own specPattern-based discovery. Setting it here made
+        # cypress-split resolve 0 specs for every job once shard-total
+        # defaulted to 1 below (globby.sync() on the path.resolve()'d pattern
+        # found nothing), so every Cypress run failed against an empty spec.
+        TEST_SPEC: ${{ inputs.spec }}
+        PHP_VERSION: ${{ inputs.php-version }}
+        DEPLOYMENT: ${{ inputs.deployment }}
+        TEST_NAME: ${{ inputs.test-name }}
+        SPLIT: ${{ inputs.shard-total }}
+        SPLIT_INDEX: ${{ inputs.shard-index }}
+        CYPRESS_BASE_URL: ${{ inputs.base-url }}
+
+    - name: Collect Docker logs on failure
+      if: failure() && inputs.docker-compose-profile != ''
+      shell: bash
+      env:
+        COMPOSE_FILES: ${{ inputs.docker-compose-files }}
+        COMPOSE_PROFILE: ${{ inputs.docker-compose-profile }}
+        LOG_NAME: docker-compose-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}.log
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        compose_files=""
+        for file in $(echo "$COMPOSE_FILES" | tr ',' '\n'); do
+          compose_files="$compose_files -f $file"
+        done
+        log="cypress/logs/docker/$LOG_NAME"
+        docker compose $compose_files --profile "$COMPOSE_PROFILE" logs > "$log" 2>&1 || true
+        docker compose $compose_files --profile "$COMPOSE_PROFILE" ps -a >> "$log" 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: failure()
+      uses: ./.github/actions/upload-artifact
+      with:
+        name: cypress-artifacts-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 15
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: ./.github/actions/test-reporter
+      if: always()
+      with:
+        name: 'PHP ${{ inputs.php-version }}: ${{ inputs.deployment }} (${{ inputs.test-name }})'
+        path: cypress/reports/junit-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}-*.xml

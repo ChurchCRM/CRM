@@ -176,22 +176,20 @@ class Menu
             $groupMenu->addSubMenu($tmpMenu);
         }
 
-        $canSeeGroupAdmin = $isAdmin || $isMenuOptions || $isManageGroups;
-        if ($canSeeGroupAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-users'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
-
-            $groupMenu->addSubMenu($adminMenu);
-        }
+        // Each entry mirrors its route's permission: PropertyList.php requires MenuOptions,
+        // group types require Admin, the kiosk manager requires ManageGroups.
+        $adminMenu = new MenuItem(gettext('Admin'), '', true);
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isMenuOptions, 'fa-users'));
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
+        $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
+        $groupMenu->addSubMenu($adminMenu);
 
         return $groupMenu;
     }
 
     private static function getSundaySchoolMenu(bool $isAdmin, bool $isManageGroups): MenuItem
     {
-        $isEnabled = $isManageGroups && ($isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'));
+        $isEnabled = SystemConfig::getBooleanValue('bEnabledSundaySchool') && ($isAdmin || $isManageGroups);
         $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isEnabled, 'fa-school');
         if (!$isEnabled) {
             // Sunday School pages live under /groups/sundayschool, behind ManageGroupRoleAuthMiddleware.
@@ -224,13 +222,20 @@ class Menu
      * Plugins can register menu items via getMenuItems() which specify a 'parent' key.
      * This method merges those items into the appropriate parent menu.
      *
+     * An item that declares a non-empty 'permission' is shown only when
+     * User::isEnabledSecurity() grants it to the current user (administrators always pass).
+     * An unrecognized permission name is not granted, so the item is hidden. Items without
+     * a 'permission' are shown to every signed-in user. This controls visibility only; the
+     * plugin's routes must enforce access themselves.
+     *
      * @param array<string, MenuItem> $menus The main menu array to modify
      */
     private static function addPluginMenuItems(array &$menus): void
     {
         try {
             $pluginMenuItems = PluginManager::getPluginMenuItems();
-            
+            $currentUser = AuthenticationManager::getCurrentUser();
+
             foreach ($pluginMenuItems as $parentKey => $items) {
                 // Find the parent menu (case-insensitive match)
                 $parentMenu = null;
@@ -248,6 +253,11 @@ class Menu
                 
                 // Add each plugin menu item as a submenu
                 foreach ($items as $item) {
+                    $permission = $item['permission'] ?? '';
+                    if ($permission !== '' && !(is_string($permission) && $currentUser->isEnabledSecurity($permission))) {
+                        continue;
+                    }
+
                     $label = $item['label'] ?? '';
                     $url = $item['url'] ?? '';
                     $icon = $item['icon'] ?? 'fa-plug';
@@ -331,9 +341,12 @@ class Menu
 
     private static function getReportsMenu(bool $isAdmin): MenuItem
     {
-        // Query Menu is the only entry, so link straight to it rather than nesting a single child.
-        // GHSA-6rgg-mrx3-92w7: QueryList.php now requires isAdmin(); hide from non-admins.
-        return new MenuItem(gettext('Data/Reports'), 'QueryList.php', $isAdmin, 'fa-database');
+        // GHSA-6rgg-mrx3-92w7: QueryList.php requires isAdmin(); hide the whole menu from non-admins.
+        $reportsMenu = new MenuItem(gettext('Data/Reports'), '', $isAdmin, 'fa-database');
+        $reportsMenu->addSubMenu(new MenuItem(gettext('Queries'), 'QueryList.php', $isAdmin, 'fa-database'));
+        $reportsMenu->addSubMenu(new MenuItem(gettext('People Reports'), 'v2/reports/people', $isAdmin, 'fa-table-list'));
+
+        return $reportsMenu;
     }
 
     private static function addGroupSubMenus($menuName, $groupId, string $viewURl, ?array $groupsByType = null): ?MenuItem
@@ -370,6 +383,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Get Started'), 'admin/get-started', $isAdmin, 'fa-rocket'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-gear'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-gear'));
+        $menu->addSubMenu(new MenuItem(gettext('Feature Toggles'), 'admin/system/feature-toggles', $isAdmin, 'fa-toggle-on'));
         $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins/management', $isAdmin, 'fa-plug'));
         $menu->addSubMenu(new MenuItem(gettext('Export'), 'admin/export', $isAdmin, 'fa-file-export'));
 

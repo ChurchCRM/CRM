@@ -4,7 +4,13 @@ use ChurchCRM\Utils\MiscUtils;
 
 // This file contains functions specifically related to address labels
 
-function FontSelect($fieldname): void
+/**
+ * Names of the fonts FPDF ships metrics for, in the form fontFromName() parses
+ * ("Helvetica", "Helvetica Bold", ...).
+ *
+ * @return string[]
+ */
+function getLabelFontNames(): array
 {
     // Absolute path: the previous relative 'vendor/setasign/fpdf' only resolved
     // when the CWD happened to be the web root, and scandir() failing left the
@@ -43,13 +49,47 @@ function FontSelect($fieldname): void
     $fontnames = array_values(array_unique($fontnames));
     sort($fontnames);
 
+    return $fontnames;
+}
+
+/**
+ * Label formats known to PdfLabel.
+ *
+ * @return string[]
+ */
+function getLabelTypes(): array
+{
+    return ['Tractor', '5160', '5161', '5162', '5163', '5164', '8600', 'L7163'];
+}
+
+/**
+ * Font sizes offered for labels; 'default' lets the report choose.
+ *
+ * @return array<int, int|string>
+ */
+function getLabelFontSizes(): array
+{
+    return ['default', 6, 7, 8, 9, 10, 11, 12, 14, 16, 18];
+}
+
+/**
+ * The value the label form last submitted for a field, remembered by the
+ * report in a cookie, or null when there is none.
+ */
+function getLabelFormCookie(string $fieldname): ?string
+{
+    return array_key_exists($fieldname, $_COOKIE) ? (string) $_COOKIE[$fieldname] : null;
+}
+
+function FontSelect($fieldname): void
+{
     echo '<tr>';
     echo '<td class="LabelColumn">' . gettext('Font') . ':</td>';
     echo '<td class="TextColumn">';
-    echo "<select name=\"$fieldname\">";
-    foreach ($fontnames as $n) {
+    echo "<select name=\"$fieldname\" class=\"form-select\">";
+    foreach (getLabelFontNames() as $n) {
         $sel = '';
-        if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $n) {
+        if (getLabelFormCookie($fieldname) == $n) {
             $sel = ' selected';
         }
         echo '<option value="' . $n . '"' . $sel . '>' . $n . '</option>';
@@ -61,14 +101,13 @@ function FontSelect($fieldname): void
 
 function FontSizeSelect($fieldname): void
 {
-    $sizes = ['default', 6, 7, 8, 9, 10, 11, 12, 14, 16, 18];
     echo '<tr>';
     echo '<td class="LabelColumn"> ' . gettext('Font Size') . ':</td>';
     echo '<td class="TextColumn">';
-    echo "<select name=\"$fieldname\">";
-    foreach ($sizes as $s) {
+    echo "<select name=\"$fieldname\" class=\"form-select\">";
+    foreach (getLabelFontSizes() as $s) {
         $sel = '';
-        if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $s) {
+        if (getLabelFormCookie($fieldname) == $s) {
             $sel = ' selected';
         }
         echo '<option value="' . $s . '"' . $sel . '>' . gettext("$s") . '</option>';
@@ -80,14 +119,13 @@ function FontSizeSelect($fieldname): void
 
 function LabelSelect($fieldname): void
 {
-    $labels = ['Tractor', '5160', '5161', '5162', '5163', '5164', '8600', 'L7163'];
     echo '<tr>';
     echo '<td class="LabelColumn">' . gettext('Label Type') . ':</td>';
     echo '<td class="TextColumn">';
-    echo "<select name=\"$fieldname\">";
-    foreach ($labels as $l) {
+    echo "<select name=\"$fieldname\" class=\"form-select\">";
+    foreach (getLabelTypes() as $l) {
         $sel = '';
-        if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $l) {
+        if (getLabelFormCookie($fieldname) == $l) {
             $sel = ' selected';
         }
         echo '<option value="' . $l . '"' . $sel . '>' . gettext("$l") . '</option>';
@@ -95,87 +133,4 @@ function LabelSelect($fieldname): void
     echo '</select>';
     echo '</td>';
     echo '</tr>';
-}
-
-function LabelGroupSelect($fieldname): void
-{
-    echo '<tr><td class="LabelColumn">' . gettext('Label Grouping') . '</td>';
-    echo '<td class="TextColumn">';
-    echo '<div class="form-check">';
-    echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"radio\" value=\"indiv\" id=\"{$fieldname}_indiv\" ";
-
-    if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] != 'fam') {
-        echo 'checked';
-    }
-
-    echo '><label class="form-check-label" for="' . $fieldname . '_indiv">' . gettext('All Individuals') . '</label></div>';
-    echo '<div class="form-check">';
-    echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"radio\" value=\"fam\" id=\"{$fieldname}_fam\" ";
-
-    if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] === 'fam') {
-        echo 'checked';
-    }
-
-    echo '><label class="form-check-label" for="' . $fieldname . '_fam">' . gettext('Grouped by Family') . '</label></div></td></tr>';
-}
-
-function ToParentsOfCheckBox($fieldname): void
-{
-    echo '<tr><td class="LabelColumn">' . gettext('To the parents of') . ':</td>';
-    echo '<td class="TextColumn">';
-    echo '<div class="form-check">';
-    echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"checkbox\" ";
-    echo 'id="ToParent" value="1" ';
-
-    if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname]) {
-        echo 'checked';
-    }
-
-    echo '></div></td></tr>';
-}
-
-function StartRowStartColumn(): void
-{
-    echo '
-    <tr>
-    <td class="LabelColumn">' . gettext('Start Row') . ':
-    </td>
-    <td class="TextColumn">
-    <input type="text" name="startrow" id="startrow" maxlength="2" size="3" value="1">
-    </td>
-    </tr>
-    <tr>
-    <td class="LabelColumn">' . gettext('Start Column') . ':
-    </td>
-    <td class="TextColumn">
-    <input type="text" name="startcol" id="startcol" maxlength="2" size="3" value="1">
-    </td>
-    </tr>';
-}
-
-function IgnoreIncompleteAddresses(): void
-{
-    echo '
-    <tr>
-    <td class="LabelColumn">' . gettext('Ignore Incomplete Addresses') . ':
-    </td>
-    <td class="TextColumn">
-    <input class="form-check-input" type="checkbox" name="onlyfull" id="onlyfull" value="1" checked>
-    </td>
-    </tr>';
-}
-
-function LabelFileType(): void
-{
-    echo '
-    <tr>
-        <td class="LabelColumn">' . gettext('File Type') . ':
-        </td>
-        <td class="TextColumn">
-            <select name="filetype">
-                <option value="PDF">PDF</option>
-                <option value="CSV">CSV</option>
-            </select>
-        </td>
-    </tr>';
 }

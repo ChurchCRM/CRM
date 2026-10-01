@@ -22,5 +22,6 @@
   "plugin.holidays.enabled": "1",
   "plugin.holidays.countries": "USA",
   "plugin.holidays.categories": "official,religious",
-  "bEnabledEmail": "0"
+  "bEnabledEmail": "0",
+  "sTelemetryLevel": "full"
 }

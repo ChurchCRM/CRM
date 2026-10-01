@@ -10,37 +10,42 @@ back to a stale or placeholder artifact.
 
 ## How to run
 
-Requires Google Chrome installed on the machine (the pipeline drives it via
-Playwright's `channel: 'chrome'`, not Playwright's own bundled Chromium — see
-"Known limitations" below for why).
+Uses Playwright's bundled Chromium (`npm run marketing:install` once). Set
+`BROWSER_CHANNEL=chrome` or run `npm run marketing:chrome` to use installed
+Google Chrome instead.
 
 ```bash
-npm run marketing:visuals           # start a fresh instance, seed it, run all workflows
+npm run marketing                   # fresh instance, seed it, capture, finalize videos, check, manifest
+npm run marketing:screenshots -- --grep "person-.*-profile"   # re-run a subset against a fresh DB
 npm run docker:ci:new-system:down   # tear down the instance when you're done
 ```
 
-`marketing:visuals` chains three steps (see `package.json`):
+`marketing` chains these steps (see `package.json`):
 
 1. `docker:ci:new-system:start` — brings up a fresh ChurchCRM instance with an
    empty database (the same Docker Compose profile the `test-new-system` CI
    job uses), reachable at `http://127.0.0.1:8081/`.
-2. `marketing:visuals:test` — runs `playwright test`. Its `setup` project
+2. `marketing:screenshots` — runs `playwright test`. Its `setup` project
    (`playwright/setup/bootstrap.setup.ts`) drives the setup wizard, sets a
    working admin password, saves church info, and imports demo data — the
    same UI flow already proven by
    `cypress/e2e/new-system/01-setup-wizard.spec.js` and
    `02-demo-import.spec.js` — as two real, recorded tests (this is the
    "setup and church info" video and the "how to use the sample data" video),
-   then saves an authenticated session so the `desktop`/`tablet`/`mobile`
+   then saves an authenticated session so the `recordings` and `screenshots`
    projects don't have to log in again. Every test then screenshots its
    "useful view" via `playwright/support/capture.ts`, using human-paced
    interactions (`playwright/support/human.ts`) so the videos show someone
    actually working through the app rather than an instant scripted bot.
-3. `marketing:visuals:videos` — `scripts/finalize-marketing-videos.js` copies
+3. `marketing:videos` — `scripts/finalize-marketing-videos.js` copies
    each workflow's recorded video from Playwright's internal report to its
    deterministic artifact path (see below). This runs as a separate step
    because Playwright only finalizes a video after its browser context
    closes, which happens after the test itself has already returned.
+4. `marketing:check` — `scripts/check-marketing-visuals.js` verifies every
+   capture produced its artifacts.
+5. `marketing:manifest` — `scripts/generate-marketing-manifest.js` rolls
+   every metadata sidecar (see below) into one `playwright/artifacts/manifest.csv`.
 
 The instance is left running after a successful (or failed) run so you can
 inspect it — `docker:ci:new-system:down` tears it down explicitly.
@@ -74,18 +79,25 @@ inspect it — `docker:ci:new-system:down` tears it down explicitly.
   screenshot. See the "Marketing-clean" section in
   `.agents/skills/churchcrm/marketing-visuals-pipeline.md` for the full list
   of what's been handled and what to watch for in a new workflow.
-- **Screenshots**: full-page, one per test, at
-  `playwright/artifacts/screenshots/<device>/<name>.png`, where `<device>`
-  is `setup` (the two bootstrap videos), `desktop` (1440×900), `tablet`
-  (834×1194), or `mobile` (375×812) — the three form factors from
+- **Screenshots**: viewport-cropped (not full-page — see `captureScreen()`'s
+  doc comment in `playwright/support/capture.ts` for why), one per test per
+  form factor, at `playwright/artifacts/screenshots/<device>/<name>.png`,
+  where `<device>` is `desktop` (1440×900), `tablet` (1024×768), or
+  `mobile` (430×932) — see
   `.agents/skills/churchcrm/responsive-design-guidelines.md`.
 - **Videos**: one per test, at
-  `playwright/artifacts/videos/<device>/<name>.webm`.
-- **Metadata**: one JSON file per screenshot, at
+  `playwright/artifacts/videos/<device>/<name>.webm`, where `<device>` is
+  `setup` (the two bootstrap recordings) or `recordings` (other click-through
+  demos).
+- **Metadata**: one JSON file per screenshot/video, at
   `playwright/artifacts/metadata/<device>/<name>.json`, containing the
   workflow name, purpose, product, git commit SHA, locale, device, viewport,
-  timestamp, seed version, and artifact filenames.
-- **Artifacts** are all gitignored — see `.gitignore`.
+  timestamp, seed version, and artifact filenames. `npm run marketing`
+  rolls every sidecar into one `playwright/artifacts/manifest.csv` for a
+  quick, spreadsheet-friendly look at a whole run (see "How to run" above).
+- **Artifacts**: screenshots, videos, and `manifest.csv` are committed;
+  everything else (the metadata JSON sidecars, `report.json`) is
+  gitignored — see `.gitignore`.
 
 ## How to add a workflow
 
@@ -116,10 +128,14 @@ Seed data lives entirely in `src/admin/demo/` (`people.json`, `groups.json`,
 copy. Edit those fixtures directly; the next pipeline run picks them up
 automatically via the existing `/admin/api/demo/load` import.
 
-`playwright/setup/bootstrap.setup.ts` additionally creates one family of its
-own ("Johnson") as part of the People & Families workflow, to demonstrate
-the *create a new family* flow — that is workflow behavior, not seed data,
-and lives in `playwright/workflows/people-family.spec.ts`.
+`playwright/workflows/people-family.spec.ts`'s `people-family-new-family`
+test additionally creates one family of its own ("Whitfield") as part of
+the People & Families workflow, to demonstrate the *create a new family*
+flow — that is workflow behavior, not seed data. Pick a family/person name
+here (and anywhere else a spec creates or edits a demo record) that's
+confirmed absent from `src/admin/demo/people.json` — grep `playwright/`
+first regardless, since a name already claimed by a *different* spec is
+just as real a collision as one already in the seed data.
 
 ## How to troubleshoot
 
@@ -142,19 +158,16 @@ and lives in `playwright/workflows/people-family.spec.ts`.
 - **Port 8081 already in use** — another `ci-new-system` instance (or a
   previous run's containers) is still up; `npm run docker:ci:new-system:down`
   before retrying.
-- **Network policy blocks (`403` / "no matching allow rule") building the
-  Docker image** — in a sandboxed environment, this needs `deb.debian.org`
-  (the Docker image's `apt-get update`) explicitly allowed. Not a bug in
-  this pipeline.
-- **No Chrome found / launch fails** — the pipeline uses the machine's
-  installed Google Chrome (`channel: 'chrome'` in `playwright.config.ts`),
-  not Playwright's bundled Chromium. Install Chrome normally
-  (https://www.google.com/chrome/) — no `playwright install` step needed.
+- **Network policy blocks in a sandbox** — allow `deb.debian.org` (Docker
+  image `apt-get`) and `tile.openstreetmap.org` (map tiles). Without tiles,
+  every capture with a map fails with "Map tiles did not finish loading".
+- **Browser missing** — `npm run marketing:install`, or use
+  `BROWSER_CHANNEL=chrome` with Chrome installed.
 
 ## Shot list coverage
 
-Each device project (`desktop` = 1440×900 @2×, `tablet` = 834×1194 @2×,
-`mobile` = 390×844 @2×) produces the full set of screenshots below.
+Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
+430×932 (all @2×) in one page load.
 
 | Shot | Test |
 | --- | --- |
@@ -180,16 +193,15 @@ Each device project (`desktop` = 1440×900 @2×, `tablet` = 834×1194 @2×,
 
 ## Known limitations (first milestone)
 
-- Runs on the machine's installed Google Chrome (`channel: 'chrome'`), not
-  Playwright's bundled Chromium — `playwright install`'s download from
-  cdn.playwright.dev/storage.googleapis.com hangs indefinitely on some
-  sandboxed/restricted networks, so this sidesteps it entirely. One fixed
-  viewport per form factor (no touch/UA emulation).
+- One fixed viewport per form factor (no touch/UA emulation).
 - English locale only.
 - Root-path install only (no subdirectory variant).
-- Not wired into CI yet — this is local-only for now.
-- No artifact manifest, change detection, or automated PR generation — see
-  the bootstrap issue for what's intentionally deferred to later work.
+- No content-hash/change-detection field in the metadata sidecars — see
+  #9663 for what was deliberately descoped there (closed not-planned).
+  `manifest.csv` (above) is a rollup of the existing sidecars, not that.
+- CI wiring (`.github/workflows/marketing-capture-assets.yml`,
+  `workflow_dispatch`) and its automated update-PR on `master` both exist
+  now — this is no longer a gap.
 - Media-quality passes so far only cover what was actually visually
   inspected in this milestone (the system-update banner, timezone warning,
   inactive-record filtering). A new workflow should get the same visual
