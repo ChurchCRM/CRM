@@ -75,7 +75,7 @@ the epic (#9701) and from the church driving this work.
 | **UC1** | **Coffee Bar.** One ministry with one team — the team the ministry was created with (D18). 15 volunteers in one existing ChurchCRM Group. Five positions (Setup, Cleanup, Espresso, Milk Station, Expeditor). 2–3 people needed each Sunday. Volunteers hold multiple qualifications. Assignments rotate. Weekly notification; accept/decline; declines create gaps; qualified volunteers self-sign-up. | Group-as-pool; many-to-many qualification; a *count* requirement that is not one-per-position; self-service signup. |
 | **UC2** | **Sunday Worship.** "Sunday Morning Worship" is a recurring ChurchCRM calendar event, Sundays 10:30–11:45. A coordinator (**not** a system administrator) fills Song Leader, Communion Leader, Opening Prayer, Closing Prayer and Preacher for each occurrence, weeks ahead, from qualified people. Volunteers confirm, decline, or propose a substitute who has already agreed; the coordinator approves or rejects. | Occurrence must be the **event** row; exactly-one-per-position requirements; substitution/swap as a first-class, coordinator-approved workflow; non-admin coordinator. |
 | **UC3** | **Parallel ministries on the same occurrence.** The sound booth needs Audio Engineers during that same service, under a **different** coordinator, in a different team/ministry. | Occurrence↔event is many-to-one: several V2 occurrences (different schedules, different ministries) may point at the same `events_event` row. Authorization is per ministry/team, not per event. |
-| **UC4** | **Children's Ministry.** One Ministry, several Teams, five weekly "events" (Elementary Bible Hour Sun 09:30–10:15, Nursery Bible Hour Sun 09:30–10:15, Children's Church Sun 10:30–11:45, Wednesday Night Elementary Wed 19:00–20:00, Wednesday Night Preschool Wed 19:00–20:00). Each team may have its own leader, or one coordinator manages all. For class-type events the coordinator also wants to see **attendance** (existing event check-in) alongside who served. | Teams under a Ministry; per-team leader scope; one schedule per weekly event; read-only reuse of `event_attend`. |
+| **UC4** | **Children's Ministry.** One Ministry, several Teams, five weekly "events" (Elementary Bible Hour Sun 09:30–10:15, Nursery Bible Hour Sun 09:30–10:15, Children's Church Sun 10:30–11:45, Wednesday Night Elementary Wed 19:00–20:00, Wednesday Night Preschool Wed 19:00–20:00). A Sunday School class such as Faith City (about eight volunteers, one team leader) is a team of its own, linked to its class (D23). Each team may have its own leader, or one coordinator manages all. For class-type events the coordinator also wants to see **attendance** (existing event check-in) alongside who served. | Teams under a Ministry; a team linked to its class, whose Teacher role V2 writes; per-team leader scope; one schedule per weekly event; read-only reuse of `event_attend`. |
 | **UC5** | **Reminder.** A reminder email goes out a configurable, system-level time before the occurrence. | A notification outbox with a due time, drained by whatever passes for a scheduler in ChurchCRM. |
 
 Non-hierarchical by design: **Teams under Ministry is sufficient. There are no nested ministries.**
@@ -87,7 +87,7 @@ Non-hierarchical by design: **Teams under Ministry is sufficient. There are no n
 | D1 | **Groups are the volunteer pool/roster.** V2 never copies membership. *(Amended by D19: the reference is `group_grp.grp_ministry_id` on the Group, not a row in a link table — a ministry owns exactly one Group.)* | #9701 |
 | D2 | **Qualifications are NOT Group Roles.** Qualification is a separate many-to-many person↔position relation. | #9701, and structurally forced (§2) |
 | D3 | **Occurrences/shifts are separate from assignments.** | #9701 |
-| D4 | **When a schedule is linked to a ChurchCRM Event, the event occurrence is authoritative** for date/time and occurrence identity. No second recurrence engine for linked schedules. Unlinked schedules may generate their own occurrences. | #9701, #9708, #9713 |
+| D4 | **When a schedule is linked to a ChurchCRM Event, the event occurrence is authoritative** for date/time and occurrence identity. No second recurrence engine for linked schedules. Unlinked schedules may generate their own occurrences. *(**Amended by D20, 2026-09-26:** every occurrence is anchored to an event, so the event is authoritative for all of them and V2 generates no dates of its own — §0.8.)* | #9701, #9708, #9713 |
 | D5 | **Authorization is server-side and scope-based.** UI hiding is never treated as security. | #9701, #9706 |
 | D6 | **V1/V2 rollout is controlled independently of migration**, by a version/rollout setting, not a boolean. | #9701, #9704, #9702 |
 | D7 | **V2 must not read or write V1 tables at runtime** (`volunteeropportunity_vol`, `person2volunteeropp_p2vo`). | #9703 |
@@ -99,10 +99,11 @@ Non-hierarchical by design: **Teams under Ministry is sufficient. There are no n
 | D13 | **Substitution/swap is core**, not optional. | Church product decision, #9709 |
 | D14 | **Volunteers are ChurchCRM members with logins** — the "Non-Admin Member Access" persona, i.e. an **EditSelf-exclusive** user. Self-service lives on authenticated member-facing pages, authorized per authenticated person. **Tokenized accept/decline links in email for people without logins are a documented future extension, not in scope.** *(**Revised 2026-09-16** by the Member Portal epic, decision P17, issue [#9867](https://github.com/ChurchCRM/CRM/issues/9867): **volunteer scopes count for a self-service login.** `VolunteerAuthorizationService::loadScopes()` no longer discards the grants of an EditSelf-exclusive account — only the rollout-flag short-circuit remains — and `User::isVolunteerTeamLeaderEnabled()` reports a held `team` grant regardless of the flag. A self-service-only account **can never be a coordinator; it may lead a team, exercised in the Member Portal (MP6/MP7)**: `isVolunteerCoordinatorEnabled()` keeps its own EditSelf short-circuit, so the coordinator dashboard and the sidebar's Ministries heading stay closed to it. The member surface itself moved out of the admin shell into `/portal/volunteer/*` at the same time — §4.7, §5.0, §5.1.)* | Resolves audit open question; see §4.7. Revision: Member Portal design §0.4 P17, §7 |
 | D15 | **Reminders and scheduling**: there is no scheduler in ChurchCRM. V2 specifies a **notification outbox** table (idempotent enqueue keyed by assignment + type, send log, retry-safe) drained by the existing `POST /api/background/timerjobs` mechanism. Installations wanting punctual reminders configure a real cron or external ping of that endpoint with an API key — **zero code**. Best-effort delivery on page load is the documented fallback. | Resolves audit open question; see §3.6 |
-| D17 | **Release target is 7.8.0.** Volunteer v2 is excluded from 7.7.0 (maintainer, #9818/#9817/#9805). The rollout flag ships defaulting to `v1`, V1 stays fully compatible, and the authorization and migration prerequisites in this document remain explicit; V2 migration scripts are named `7.8.0-*` and are registered only when the 7.8.0 block opens. | Maintainer decision, 2026-09-12 |
+| D17 | **Release target is 7.8.0.** Volunteer v2 is excluded from 7.7.0 (maintainer, #9818/#9817/#9805). The rollout flag ships defaulting to `v1`, V1 stays fully compatible, and the authorization and migration prerequisites in this document remain explicit; V2 migration scripts are named `7.8.0-*` and are registered only by the epic PR, after the product owner's testing — master opened the 7.8.0 block itself on 2026-09-30 (`7.8.0-family-second-address.sql`, #10182). | Maintainer decision, 2026-09-12; product owner, 2026-09-30 |
 | D16 | **A person may hold multiple qualifications within the same team and the same ministry**, and may be assigned to different positions on different occurrences. **Multi-position on one occurrence is allowed**, with a UI warning and no server-side block — one person can lead singing and serve communion in the same service. The schema already permits all of this unchanged (§2.7, §2.11.2 I7). | Product decision |
 | D19 | **A ministry owns exactly one core Group — its volunteer pool — and coordinators may write it.** Creating a ministry creates that Group in the same transaction: named after the ministry, typed "Ministry", carrying a new nullable core column `group_grp.grp_ministry_id` (FK → `vmin_ID`, `ON DELETE SET NULL`). Renaming the ministry renames the Group; deleting the ministry deletes it. The `volunteer_pool_vpol` link table is **removed** — nothing had shipped, and the Group's own ministry id is the link. Three consequences follow. **(a) The `bManageGroups` model hooks gain one exception** (F21 fixed rather than worked around): a write to a Group carrying a ministry id is allowed when the caller coordinates that ministry — decided by `VolunteerAuthorizationService` reading `volunteer_scope_vscp`, never `$_SESSION`, so API-key callers are judged identically — or when a V2 service has opened an explicit managed-write context (`VolunteerPoolWriter::run()`) after authorizing the write itself. A Group with a NULL ministry id takes the unchanged V1 path, flag and all. **(b) Qualification no longer requires pool membership, in either direction**: the picker may name anyone, qualifying somebody outside the pool ADDS them to it, revoking a qualification never removes them, and the qualification matrix's rows are the pool ∪ everyone qualified. Self-signup and `GET /me/opportunities` test qualification only — I3 is gone from the member surface (the coordinator's out-of-pool override is unchanged). **(c) A ministry can advertise**: `vmin_HelpWanted` / `vmin_HelpWantedText` put it on the Open Opportunities page with an "I'd like to help" button that joins the pool and mails the coordinators (outbox type `help_offer`, one per coordinator per day). *(Amended round four: there are now TWO ways to be advertising — the ministry-level switch, or **any active position with `vpos_Recruiting` on**, which also lists those positions by name under "New volunteers needed for the following positions" (§5.6). Either alone is enough, and `recordHelpOffer()` shares the same test, so the button is never rendered over a `403`. **Why:** a coordinator who has already named the roles they need has said everything the section needs; making them find a second switch on a different tab to be listed at all was the friction this removes.)* The Groups module keeps the Group fully visible and its MEMBERSHIP fully editable; only its identity moves — `POST`/`DELETE /api/groups/{id}` answer `409`, the editor redirects, and the page says whose pool it is. **Why:** D-1's read-only pool was the single most-reported friction in review — a coordinator could see who was in their pool and not add to it, and the fix "give every coordinator `bManageGroups`" grants edit rights over every group in the church. Owning the Group is what makes a narrow exception expressible at all. | Church product decision |
 | D18 | **Every ministry always has at least one team, and positions and schedules always belong to a team.** Creating a ministry auto-creates its first team, named `"{Ministry name} Team"`, in the same transaction as the ministry; it is an ordinary team and can be renamed. `vpos_vtem_ID` and `vsch_vtem_ID` are **`NOT NULL`**, their foreign keys are `ON DELETE CASCADE` (a `NOT NULL` column cannot take `SET NULL`), and the API answers `400` to a position or schedule with no `teamId`. A ministry's **only** team cannot be deleted — `409`, *"A ministry needs at least one team. Rename it instead."* — while deleting the ministry still takes its teams with it. Scope semantics are unchanged: a ministry coordinator manages every team of their ministry, a team leader their own. **Why:** the "ministry-wide position" this replaces was the mechanism behind a real ambiguity — two teams under "Children's Ministry" each owned a "Lead Teacher", and a ministry-wide view listed the name twice with nothing to say which team it meant. Where a screen can still show positions from more than one team (the qualification matrix with its filter on *All teams*, a cross-team "still needed" line, a dashboard gap list), a position is labelled `"{Team} · {Position}"`; where the context is already one team, the bare name stands. | Church product decision |
+| D20–D31 | **Core-reuse revision (2026-09-26, extended to 2026-09-30).** Every occurrence anchored to an event, with optional time offsets; four ways for a schedule to find its events; teams linked to Sunday School classes with V2 writing the Teacher role; coordinators create one-off and recurring ministry events from the ministry page; administrators open church calendars to ministries; class meetings are events with core headcounts; portal legend toggles; a class's events change only as the coordinator chooses; the Sunday School switch; empty Generate runs explained; schedules follow existing events up to a church-wide scheduling horizon, topped up daily. Full text in §0.8. | Church product decision |
 
 #### D14 — rationale and the alternative
 
@@ -245,11 +246,66 @@ be false, the section that depends on it must be revisited.
 | F26 | `MvcAppFactory::create()` accepts **exactly three** options (`dashboardUrl`, `dashboardText`, `roleMiddleware`) and always passes `addErrorMiddleware(true, true, true)` — full error detail, in production, with no way to turn it off. | `src/ChurchCRM/Slim/MvcAppFactory.php:35-62` |
 | F27 | `SystemConfig` defaults live in PHP, not the DB. `config_cfg` is created empty and `ConfigItem::setValue()` deletes the row when the value equals the default. **Adding a setting needs no SQL on install or upgrade.** | `Install.sql:20-24`; `ConfigItem.php:67-87` |
 | F28 | `event_audience` is documented as "a prospective audience for the purpose of advertising / outreach" — it is **not** an ownership relation. | `orm/schema.xml:820` |
-| F29 | The DB version in development is **7.7.0**; Volunteer v2 is **excluded from 7.7.0 and targets 7.8.0** (maintainer decision on #9818, 2026-09-12). V2 migration scripts are named `7.8.0-volunteer-v2-*.sql` and are **not registered** in `src/mysql/upgrade.json` until the 7.8.0 development boundary opens; until then fresh installs get the schema from `Install.sql` and the test database from `seed.sql` (D17). | `src/mysql/upgrade.json` (tail); #9818 |
+| F29 | The DB version in development is **7.8.0** (master opened the block on 2026-09-30 with `7.8.0-family-second-address.sql`, #10182); Volunteer v2 is **excluded from 7.7.0 and targets 7.8.0** (maintainer decision on #9818, 2026-09-12). V2 migration scripts are named `7.8.0-volunteer-v2-*.sql` and are **not registered** in `src/mysql/upgrade.json` until the epic PR (D17); until then fresh installs get the schema from `Install.sql` and the test database from `seed.sql` (D17). | `src/mysql/upgrade.json` (tail); #9818 |
 | F30 | `orm/schema.xml:460-462` contains a real bug: the `PrimaryContact` foreign key maps `local="event_type"` → `person_per.per_ID`. **Do not copy that FK block as a template.** | `orm/schema.xml:460-462` |
 | F31 | `i18next.t()` inside a `.php` view is **never extracted** — the JS extractor scans only `src/skin/js/**` and `webpack/**`. At least 14 core files have this bug today. | `locale/scripts/i18next.config.ts:6-10` |
 | F32 | Only `cypress/e2e/api/**`, `cypress/e2e/ui/**` and `cypress/e2e/ui-admin/**` are matched by a Cypress `specPattern`. `cypress/e2e/finance/` exists and **has never run**. | `cypress/configs/{base,docker,docker-ui,docker-admin}.config.ts` |
 | F33 | `src/finance/`, `src/v2/` and `src/admin/` `.htaccess` files do **not** block direct access to their view templates; `src/event/`, `src/groups/` and `src/people/` do. | `src/event/.htaccess` (8 lines) vs the other three |
+
+
+### 0.8 Core-reuse revision (2026-09-26)
+
+The first implementation (withdrawn PR #9933) built several things next to core ChurchCRM instead of
+on it. A product review against how the church runs its classes, ministry events and children's
+check-in found five places where V2 had become a second source of truth:
+
+| Core already has | V2 had built beside it | Resolution |
+|---|---|---|
+| Sunday School class (a `group_grp` row of type 4) | a Team with the same people | D23: a team may **be linked to** the class |
+| the class's Teacher role | Qualifications for the class's positions | D23: V2 **writes** the Teacher role from qualifications |
+| calendar events | standalone occurrences with times of their own | D20: every occurrence is **anchored to an event** |
+| recurring events (`EventService::createRepeatEvents`) | a standalone schedule's own weekly/monthly pattern | D20/D24: V2 has **no recurrence engine**; coordinators create recurring events through core's |
+| pinning an event to a calendar | `event_ministry_id` with no path to the calendar | D24/D25: ministry events are created from the ministry page and pinned by rule |
+
+The rule applied everywhere below: **core owns what happens and who belongs (events, calendars,
+groups); V2 owns only who serves when (positions, qualifications, schedules' staffing, assignments).**
+
+**Driving facts from the product owner (2026-09-26).**
+
+- Class meetings are events. Children's check-in (wanted, several simultaneous children's classes),
+  the church website's feeds and adult-class headcounts are all per event in core: `event_attend`
+  is per person per event, roster check-in and the kiosk read an event's Linked Group
+  (`event_audience`) and a kiosk is assigned to one event (`kioskassginment_kasm.kasm_EventId`),
+  public feeds are per calendar, and headcounts are `eventcounts_evtcnt` rows per event.
+- The website shows a simple calendar (Bible Class Hour, Worship Hour, Evening Service — the Public
+  Calendar) and a separate "Bible Classes this Sunday" page fed by **one shared church calendar**
+  holding every class meeting. There is no parent/child link between a class event and Bible Class
+  Hour; they share a time slot and live on different calendars.
+- **Teacher names are never published.** V2 adds nothing to event rows or to any public feed.
+- Adult classes need a **total count** only, no roster. Faith City (children) is a stable class with
+  about eight volunteers and one team leader. Adult classes have one teacher each and change topic
+  (and title) by term. Building & Grounds has no classes and needs an occasional workday event.
+
+| # | Decision |
+|---|---|
+| D20 | **Every occurrence is anchored to a calendar event.** `vocc_event_id` is set on every occurrence when it is created (service-enforced; the column stays nullable only so `ON DELETE SET NULL` keeps service history when an event is deleted, E12). V2 generates **no dates of its own**: the `standalone` link mode, `vsch_RecurType`/`RecurDOW`/`RecurDOM`/`StartTime`/`EndTime`, `vocc_StartDateTime`/`vocc_EndDateTime` and `vocc_schedule_start_uidx` are removed, and V2 no longer uses `RecurrenceDateGenerator`. The one-off occurrence "for a date that follows no calendar event" is replaced by **Staff this event** (D22). Amends D4 ("unlinked schedules may generate their own occurrences"): the event is now authoritative for every occurrence, not only linked ones. |
+| D21 | **A schedule may shift its volunteers' times relative to the event.** `vsch_StartOffsetMinutes` and `vsch_EndOffsetMinutes` (signed `INT`, default `0`, each within ±720) are added to the event's start and end: Coffee Bar setup for a 10:30 service is `StartOffsetMinutes = -45`; a cleanup crew is `StartOffsetMinutes` = the event's length. Times are still computed lazily from the event row, so moving the event moves the shift (§2.9). An occurrence whose event was deleted has a date and no times. |
+| D22 | **A schedule finds its events in one of four ways** (`vsch_LinkMode`): `event_type` — events of a type with one title (church-wide services); `class` — events whose Linked Group is `vsch_grp_ID` (new column, FK → `group_grp`, `ON DELETE SET NULL`); `ministry` — events this schedule's ministry owns (`events_event.event_ministry_id`) with one title *(amended by D31: the title is required in both modes and matched exactly, ignoring case — it was an optional `LIKE %title%` narrowing)*; `event` — exactly one event, `vsch_event_id` (new column, FK → `events_event`, `ON DELETE SET NULL`). **Staff this event** creates a hidden `event`-mode schedule (`vsch_OneOff = 1`) with its staffing needs and one occurrence. Anchoring is a read-only reference: a coordinator may anchor to any event, not only their ministry's. |
+| D23 | **A team may be linked to a Sunday School class.** `vtem_grp_ID` (nullable, `UNIQUE`, FK → `group_grp`, `ON DELETE SET NULL`; the group must have type 4, "Sunday School Class"). While V2 is on and the team is linked: (a) **qualifications are the single place teachers are entered** — granting a qualification for any position of the team makes the person a member of the class with its **Teacher** role (through `VolunteerPoolWriter`, like the pool Group of D19); revoking their last active qualification in that team removes that membership if its role is Teacher; a person who is a **Student** in the class is refused (`409`) rather than silently re-roled. (b) **Linking imports** the class's current Teacher-role members as qualifications for a position the coordinator chooses, so nothing is re-entered. (c) **Teacher-role writes to the class from outside V2** (Sunday School class page, group editor, group API) are refused with a message naming the ministry and team; student membership stays fully editable there, and the class page says where its teachers are managed. (d) A new schedule for a linked team defaults to the `class` link mode with that class. Core Sunday School reads (dashboard counts, class page, cart, Class Attendance PDF, kiosk roster) keep working unchanged because they still read the Teacher role. Unlinking leaves the class's membership as it is. |
+| D24 | **Coordinators create their ministry's events, one-off or recurring, from the ministry page.** A **Calendar** tab on the ministry page lists the events the ministry owns (upcoming by default, past on demand) with each one's staffing status, and offers **New event** and **New recurring event**. The dialog takes title, event type (existing types), description, Linked Group (optional — a class), date/time or a recurrence (weekly/monthly/yearly with a date range), and the calendars to pin (D25). `POST /api/ministries/ministries/{id}/events` creates the events through core — `EventService::createRecurringEvents()` (the repeat engine, same cap) for a series, `EventService::createEvent()` (the path `POST /api/events` now shares) for one event — with `event_ministry_id` set; any refusal leaves nothing behind, and `event.created` fires for each event after the commit. *(Amended by D33: the dialog only creates events, and staffing them is the question asked after Create; its optional **Staff these events** section, which made or reused a schedule in the same transaction, is gone.)* Only a coordinator of the ministry (or a global manager) may: team leaders and self-service logins are refused. Editing an event stays in the core event editor, which already authorizes by ministry ownership (§2.16); deleting one or several goes through core's delete path from the Calendar tab too (D28). The admin calendar page stays read-only for users without Add Events. |
+| D25 | **Administrators open church calendars to ministries.** New table `volunteer_calendar_vcal` (`vcal_calendar_id` → `calendars`, `vcal_vmin_ID` → `volunteer_ministry_vmin`, both `ON DELETE CASCADE`, composite PK). A coordinator may pin events **their ministry owns** to their ministry's own calendar (unchanged) **and** to every church calendar an administrator has opened to that ministry — the shared "Bible Classes" calendar is the driving case. Managing a calendar (name, colours, public link) stays with Add Events, and with the ministry's coordinators for its own calendar only (`CalendarWriteRoleAuthMiddleware`, unchanged). The admin calendar page's calendar dialog gains "Ministries that may add events" while V2 is on. |
+| D26 | **Class meetings are events; headcounts are core event counts.** A class is represented by its own events (one per class per date), each with the class as its Linked Group when it has a roster, pinned to the shared classes calendar. Adult-class totals use the event type's attendance count categories (`eventcounts_evtcnt`); the occurrence page (admin and portal) shows a read-only **Headcount** card with the anchored event's categories, values and total (added up as the core event view adds them), links to the core event editor where they are entered for a viewer who may edit the event, and for an event with a Linked Group says how many are checked in (`event_attend`) against the roster. The Calendar tab shows the total for past events. V2 writes nothing to `event_attend` or to event counts. |
+| D27 | **The portal calendar's legend switches calendars on and off** (Member Portal design §5.3), remembered per browser, so a member who shares both the Public and the classes calendars can hide the 9:30 detail. |
+| D28 | **A class's events change only as the coordinator chooses** (2026-09-28). The team → class link ("this team staffs the class") and an event's Linked Group ("the class meets at this event") are different facts, so nothing happens to events silently. When Edit Team changes the class, the update takes `classEvents: keep \| remove \| move` (default `keep`; `move` needs a new class); Delete team takes `keep \| remove \| delete`. Either applies, in the team's transaction, to the events **this ministry owns** (`event_ministry_id`) whose Linked Group is the old class; events an administrator created are never touched, and each event is re-checked with `canWriteEvent()`. The Calendar tab gains **Delete events** for ticked rows. Deleting goes through core's delete path (`EventService::deleteEvent()`, extracted from `DELETE /api/events/{id}` with its checked-in and kiosk refusals), all or none, and is refused (`409`, naming them) while another ministry has volunteers assigned on one of the events, unless the caller holds Add Events. The Occurrences tab's Delete still removes only staffing. A class still held by events an administrator made is freed in the class's own delete — core Sunday School, not this epic. |
+| D29 | **A ministry says whether it provides teachers for Sunday School** (2026-09-28). `vmin_SundaySchool`, off by default, is asked in Add Ministry and shown in Edit ministry. Only a global manager or an administrator may change it — a coordinator sees it read-only and a different value from them is `403` — and turning it off is refused (`409`, naming the teams) while a team of the ministry is linked to a class. While it is off, its teams cannot link a class (`400`; `linkable-classes` is empty), its schedules cannot take the `class` mode and its events cannot take a Linked Group (`400` each), and the screens hide the Sunday School Class field, *A class's meetings* (admin page and portal) and the new-event Class field. A class schedule the ministry already has stays editable but cannot be re-pointed. The 7.8.0 script turns the switch on for a ministry that already has a linked team or a class schedule. |
+| D30 | **Tell the coordinator why nothing was generated, and never duplicate a schedule** (2026-09-29). A Generate run that finds no event at all answers `noEvents: true` with what it looked for (`searched`: mode, class, type and title, or ministry and title) and the dates (`from`, `through`); the screens show it as an amber warning worded for the mode — not the green toast — and on the ministry page offer **New recurring event** pre-filled with the class or the title (after Create, *Staff them* finds the schedule, D33). A run whose events all had occurrences already is a neutral info toast. The schedule dialog shows each class's upcoming meetings and warns when the chosen class, or title, has none *(D31: a class or title with none can no longer be chosen; the warning stays for a stored one whose events have run out, and for a schedule saved without a title)*. **Staff these events** adds the new events to the chosen team's **active** schedule that already follows them — `class` mode on the same class when a class is chosen, otherwise `ministry` mode with exactly this title, ignoring case, as generation matches it since D31 — instead of creating a second one, for a series and for a single event alike: that schedule's window is widened to take the events in (first date moved back to the first new event, a last date moved on to the last one, an open end left open), it is generated through the last new event, *Fill by default with* goes on the occurrences that run created *(D32: and is saved on that schedule)*, and its own staffing needs and offsets are kept; the response says `reusedSchedule: true`. *(Amended by D33: Staff these events is gone. Its reuse lives on as **Staff them** after a series is created — every matching schedule of the ministry, of any team and in `event_type` mode too, takes the events, widened the same way; nothing makes a schedule without the coordinator's Add schedule.)* |
+| D31 | **Schedules follow events that already exist, up to a church-wide scheduling horizon** (2026-09-30, product owner). (a) **Horizon.** One setting on Admin → Ministry Settings, `iVolunteerSchedulingHorizonWeeks` (weeks, default 8, 1–52, PHP default, no SQL — F27), replaces the per-schedule `vsch_GenerateAheadDays`, which is removed (a payload naming `generateAheadDays` is `400`). Every Generate run makes occurrences for events from today through the earlier of today + horizon and the schedule's last date; an explicit `through` may narrow that but not pass it. A Staff this event schedule is not capped: its one event was picked by hand. (b) **Daily top-up.** The timer jobs (D15) run `VolunteerScheduleTopUp` at most once a day (the day is claimed atomically in `config_cfg`, `sLastVolunteerTopUpRunDate`, as the birthday mail claims its day): every active, non-one-off schedule of every active ministry is generated to the horizon — idempotent through the unique key *(amended by D32: it assigns each position's saved default volunteer on the occurrences it creates; it used to create occurrences only)*. Ministry Settings shows the last run and the occurrences it created (`sLastVolunteerTopUpResult`), and **Run background jobs now** runs it again. (c) **"Other" event type.** The 7.8.0 script adds an active event type named "Other" with no recurrence defaults when none exists (Install.sql and seed.sql carry it as type 3); `iVolunteerDefaultEventTypeId` names the type a ministry's new event starts with — unset, inactive or deleted falls back to the active type named "Other", else none — so renaming or deleting "Other" is safe. The Calendar tab's New event dialog preselects it and it stays changeable. (d) **Must exist.** The schedule dialog (admin and portal) has no "any event of this type" / "any of this ministry's events" choice: `event_type` and `ministry` schedules need a title (`400` without one), matched exactly, ignoring case, in generation and in D30's reuse. Creating a schedule, or changing what it follows (mode, type, title, class), is refused (`400`) unless at least one upcoming active event matches; other edits (name, needs, offsets, dates) never are. The pickers offer only titles with upcoming events; a class with none is disabled, *"add its meetings first"*. A schedule saved without a title before D31 generates nothing, the D30 warning says to choose an event, and editing it requires one. (e) The Generate dialog speaks in weeks: *"Occurrences are created for events in the next {N} weeks (through {date})."*, or *"… through {date}, when this schedule ends."* **Why:** a per-schedule number of days nobody chose, and a type-wide "any event", were how a schedule came to staff the wrong events or nothing at all; a church plans a fixed season ahead, and the calendar is where the events are made. |
+| D32 | **Default volunteers belong to the schedule, and every run that makes occurrences assigns them** (2026-09-30, product owner). (a) **Stored on the staffing need.** A schedule's template requirement rows (`vreq_vsch_ID` set) carry `vreq_Default_per_ID` (FK → `person_per`, `ON DELETE SET NULL`), `vreq_DefaultAccepted` (default 0) and `vreq_DefaultSetBy_per_ID` (FK → `person_per`, `ON DELETE SET NULL`); an occurrence's override rows take none (`400`). **Why there:** a default is "who fills this position on this schedule" — one per position, which is exactly the row that already says how many of that position the schedule needs, so no new table is needed, the existing unique key gives one per schedule and position, and unchecking the position or deleting the schedule takes the default with it. The set-by column exists because the daily top-up runs as nobody: whoever chose the default is recorded as the assigner and, for an accepted default, as the coordinator who answered on the volunteer's behalf. (b) **Saved where it is chosen.** The schedule dialog's staffing needs show and edit a default per position (none allowed); the Generate dialog's *Fill by default with* saves its rows on the schedule (a blank row as none) and opens on the saved ones *(the New event dialog's Staff these events did too until D33 removed it)*. A new choice must hold an active qualification (`403`); the stored one named again is kept even while its qualification is revoked, marked *"no longer qualified"*. (c) **Assigned on new occurrences only.** Every Generate run and every daily top-up *(D33: and a new schedule's Save and Staff them)* assigns each saved default on the occurrences that run creates and never on existing ones, so changing a default reassigns nobody — and D31's gap closes: an occurrence beyond the horizon gets its default when the top-up reaches it. A default who no longer holds an active qualification leaves the position open as a gap, logged and counted (`unqualified`; Ministry Settings: *"2 defaults skipped: qualification revoked"*); the assignment rules still apply (one row per person and position, nothing on an occurrence that is over or cancelled, no room past `MaxCount`), counted as `skipped`. An accepted default is recorded as accepted through the coordinator channel and asked nothing; a pending one gets the "please respond" email. (d) **A quick Save cannot blank a setting — fixed in core by upstream PR #10217 (issue #10216), which this line merges instead of carrying its own copy** (moved there 2026-09-30). The shared settings panel keeps its fields and Save disabled until every current value has loaded, and says so when one cannot be (`#settingsPanelLoadError`); the config API refuses (`400`) a value that is not a number, blank included, for a `number` setting whose default is not blank — a blank lead time read as 0, no reminders — while a number whose default is blank (`iVolunteerDefaultEventTypeId`) still takes a blank. V2 keeps only its own part: Ministry Settings' tests of that behaviour, and `horizonWeeks()` reading a blank stored some other way as the default. (e) **Remove Volunteer clears them** (amended 2026-09-30, product owner). Revoking one qualification keeps the default, left open as above; **Remove Volunteer** (§5.4) clears every default naming the person on every schedule of the ministry, active or not — person, accepted flag and set-by — in the removal's transaction, and changes no occurrence or assignment beyond the upcoming ones removal already cancels. It is the only path that ends someone's part in a ministry: the portal offers a team leader no removal (the route is `403` to them), and a pool-only removal (`DELETE …/pool/{personId}`, the Groups module) revokes nothing, so it keeps the default too. |
+| D33 | **Events, schedules and occurrences are created separately** (2026-10-01, product owner). (a) **The New event / New recurring event dialog only creates events** — title, type (D31's default), class, one date and times or a recurrence, calendars, description. Its *Staff these events* section is gone, and `POST …/events` answers a `staff` key with `400` (*"Staffing is set up after the events are created"*). (b) **A series' Last date** starts one year after its first date and follows it until it is chosen by hand; it is required — a cleared field is put back and says so — and the scheduling horizon does not cap it (core's 366-event cap does). (c) **After Create the page asks** *"{N} {title} events created. Staff them now?"* (one event: *"{title} on {date} created. Staff it now?"*) with **Staff them** / **Not now**. One event: **Staff them** opens Staff an event with it chosen. A series: `POST …/events/staff` sends it to every active, non-one-off schedule of the ministry that follows it — `class` mode on its class, `ministry` mode with exactly its title, `event_type` mode with its type and exactly its title, titles ignoring case; each is widened to cover the events as D30 widened them, generated through the last event up to the horizon, and assigns its saved defaults (D32) on what that run made; the Occurrences tab then shows the new dates (its Event box set to the title) and the toast names each schedule and how many it made. When none follows the series, the Schedules tab opens **Add schedule** pre-filled: `class` mode on the class when one was chosen, otherwise `ministry` mode with exactly the title — never `event_type`, because the ministry owns its new events, so the ministry's own title picker always finds them; team = the team linked to that class, else the first; name = the title. Matching is by class and title because core events carry no series id (F7), an accepted limitation. **Not now** closes and nothing else happens. (d) **A new schedule generates on Save** — Add schedule on the admin page and the portal team page, and `POST …/schedules` itself — up to the horizon, assigning its saved defaults; the response's `generated` is that run, and the page lands on the Occurrences tab narrowed to the schedule with a toast of what it made, or D30's warning (an amber toast) when it found nothing. A schedule saved inactive is paused and makes none (`generated: null`), as the daily top-up leaves it alone. Editing a schedule never generates. **Why:** one dialog that made events and a schedule at once, and reused a schedule by rules nobody could see, was the hardest screen of V2; now each step does one thing, and the question after Create says what comes next. |
+
+**Upstream follow-ups** found during this review (event series identity, a kiosk serving several
+simultaneous class events, event locations/rooms, the public JSON feed's shape) are left to
+separate upstream issues and are **not** part of this epic.
 
 ---
 
@@ -321,10 +377,10 @@ Legend for **Decision**:
 |---|---|---|---|---|
 | E1 | Occurrence identity when linked | `events_event.event_id` (`orm/schema.xml:442-476`) | **Reuse** | A nullable FK from `volunteer_occurrence_vocc`. It is the only identity an event has (F7). |
 | E2 | "The same weekly service" (series) | — **nothing exists** (F7) | **New, V2-owned** | V2 owns the series as `volunteer_schedule_vsch`. The binding to core is **schedule → `event_type` (+ optional title filter) + date window**, resolved to concrete `events_event` rows per generation window — the same key `skipExisting` already trusts (F8). **Do not try to reverse-engineer a series out of `events_event`.** |
-| E3 | Recurrence date math (unlinked schedules only) | `EventService::generateOccurrenceDates()` `src/ChurchCRM/Service/EventService.php:157-300`, **duplicated** at `src/api/routes/calendar/events.php:1411-1467` | **Extract → reuse** (core-reusable) | Extract weekly/monthly/yearly date generation into an event-free `ChurchCRM\Service\RecurrenceDateGenerator`, migrate `EventService` onto it in the same PR, then call it from V2. This *retires* an existing duplication instead of adding a third copy. See §7.1-CR4. |
+| E3 | Recurrence date math | `EventService::generateOccurrenceDates()` `src/ChurchCRM/Service/EventService.php:157-300`, **duplicated** at `src/api/routes/calendar/events.php:1411-1467` | **Extract** (core-reusable); **V2 does not use it** (D20) | Weekly/monthly/yearly date generation was extracted into an event-free `ChurchCRM\Service\RecurrenceDateGenerator` and `EventService` migrated onto it (§7.1-CR4). V2 has no recurrence engine: every occurrence is anchored to an event, and recurring events are created through core's `createRepeatEvents` (D24). |
 | E4 | Bulk event creation | `EventService::createRepeatEvents()` `:52-143`; `generateRecurringEvents()` `events.php:1373` | **Do not use** | Both create `events_event` rows. #9713 forbids V2 creating duplicate events. V2 *links to* events; it does not manufacture them. (A coordinator who needs new events uses the existing event editor — with `event_ministry_id` set, §2.16.) |
-| E5 | Idempotent generation | `skipExisting` scan at `events.php:1494-1507` | **Extend / re-express** | Express idempotency as database `UNIQUE` keys on the occurrence table (§2.8), not an application-level scan. `UNIQUE(vocc_vsch_ID, vocc_event_id)` and `UNIQUE(vocc_vsch_ID, vocc_StartDateTime)` make double generation a no-op at the storage layer. |
-| E6 | Event ⇄ group link | `event_audience` (`orm/schema.xml:820-834`) | **Reuse, read-only** | Semantics are explicitly "prospective audience for advertising / outreach" (F28), and every UI writes at most one row (`findOne()` at `events.php:196`). V2 may *read* it to pre-suggest a pool group. **V2 never writes it and never uses it as the ministry link.** |
+| E5 | Idempotent generation | `skipExisting` scan at `events.php:1494-1507` | **Extend / re-express** | Express idempotency as a database `UNIQUE` key on the occurrence table (§2.9), not an application-level scan. `UNIQUE(vocc_vsch_ID, vocc_event_id)` makes double generation a no-op at the storage layer. |
+| E6 | Event ⇄ group link | `event_audience` (`orm/schema.xml:820-834`) | **Reuse, read-only** | Semantics are explicitly "prospective audience for advertising / outreach" (F28), and every UI writes at most one row (`findOne()` at `events.php:196`) — the event editor's Linked Group. A `class` schedule reads it to find a class's meetings (D22). **V2 never writes it and never uses it as the ministry link.** |
 | E7 | Event-type → default group | `event_types.type_grpid` (`orm/schema.xml:410-413`) | **Reuse, read-only** | A useful default pool suggestion when a coordinator links a schedule to an event type. |
 | E8 | Ministry ownership of an event | — **nothing exists** | **New column on core** | Nullable `events_event.event_ministry_id` → `volunteer_ministry_vmin.vmin_ID`, `ON DELETE SET NULL`. Full change list in §2.16. |
 | E9 | Roster-against-an-occurrence query shape | `getEventRoster` `events.php:968-1067` | **Extend (copy the shape, not the endpoint)** | It already does exactly what V2's staffing view needs structurally: group members ⟕ `event_attend` for this event → per-person `checked_in` / `checked_out` / `not_checked_in` + `stats`. V2 adds its own endpoint using the same join idiom. **Do not fork or modify `getEventRoster`.** |
@@ -386,7 +442,7 @@ Legend for **Decision**:
 | S2 | Rollout enforcement middleware | `BaseAuthSettingMiddleware` (`src/ChurchCRM/Slim/Middleware/Request/Setting/BaseAuthSettingMiddleware.php:12-23`) | **Extend (new sibling, not a subclass)** | The base class only understands `getBooleanValue()` (`:16`) and returns an **empty body** with the reason in the HTTP reason-phrase (`:17-19`). A choice-valued gate needs its own small middleware that returns proper JSON. §3.1. |
 | S3 | Reminder lead time | `ConfigItem` type `number`; `SystemConfig::getIntValue()` (`:488`) | **Reuse** | `iVolunteerReminderLeadHours`, default `48`. Appendix B. |
 | S4 | Admin settings surface | `window.CRM.settingsPanel` (U8) vs `src/SystemSettings.php` + `buildCategories()` | **Reuse both** | `bEnabledEvents`/`bEnabledSundaySchool` are not in any category today, so the panel-only approach is the established newer pattern, and V2 exposes both settings on the volunteer dashboard behind `if ($isAdmin)` (#9711). **Until that dashboard exists**, a setting with no category is reachable only through the config API, so #9704 also registers a `Volunteer` category in `buildCategories()` holding `sVolunteerVersion`; `iVolunteerReminderLeadHours` joins it in #9710. |
-| B1 | New tables / migration | `orm/schema.xml` + `src/mysql/upgrade/X.Y.Z-*.sql` + `src/mysql/upgrade.json` + `src/mysql/install/Install.sql` (+ `cypress/data/seed.sql`); worked example `src/mysql/upgrade/7.6.4-pledge-denominations.sql` | **Reuse the conventions** | Name the script `7.8.0-volunteer-v2-*.sql` and **do not register it** until the 7.8.0 block of `upgrade.json` exists (D17, F29); do not create that block yourself. `CREATE TABLE IF NOT EXISTS`, InnoDB, `utf8mb4_unicode_ci`, index names `_idx` / `_uidx`, a leading comment naming the issue. Full checklist Appendix A. |
+| B1 | New tables / migration | `orm/schema.xml` + `src/mysql/upgrade/X.Y.Z-*.sql` + `src/mysql/upgrade.json` + `src/mysql/install/Install.sql` (+ `cypress/data/seed.sql`); worked example `src/mysql/upgrade/7.6.4-pledge-denominations.sql` | **Reuse the conventions** | Name the script `7.8.0-volunteer-v2-*.sql` and **do not register it**: master's 7.8.0 block exists, but V2 scripts join it only in the epic PR (D17, F29). `CREATE TABLE IF NOT EXISTS`, InnoDB, `utf8mb4_unicode_ci`, index names `_idx` / `_uidx`, a leading comment naming the issue. Full checklist Appendix A. |
 | B2 | Model generation | `cd src && composer run orm-gen` (`src/composer.json:98`) | **Reuse** | **`npm run build:orm` is broken** — `package.json:33` points at `--config-dir=propel` relative to `src/`, and `src/propel` does not exist. Also `orm/propel.php` must be copied from `orm/propel.php.dist` first. Appendix A. |
 | L1 | Localization (PHP) | `gettext()` / `ngettext()`; bootstrapped at `Bootstrapper.php:289-334` | **Reuse** | 5,724 `gettext()` call sites; `_()` is used zero times — do not introduce it. Colons go **outside** the call. Never run `npm run locale:build`; never commit `locale/messages.po`. |
 | L2 | Localization (JS) | `i18next` UMD global; `webpack/locale-loader.js:116-232`; `window.CRM.onLocalesReady` | **Reuse, with one hard rule** | **Every `i18next.t()` call must live in a file under `webpack/`.** Calls inside `.php` views are silently never extracted (F31). Defer init behind `window.CRM.onLocalesReady(init)` or `t()` returns `undefined` on non-`en_US` locales (`email-composer.ts:820-829`, upstream #9609). |
@@ -438,6 +494,7 @@ Derived from `db-schema-migration.md` and from the newest real table in the tree
 | Substitution / Swap | `volunteer_swap_vswp` | proposed replacement + coordinator decision | (D13) |
 | Notification outbox | `volunteer_notification_vntf` | idempotent enqueue + send log | (#9710, D15) |
 | Scope | `volunteer_scope_vscp` | user → ministry/team authority | (#9706) |
+| Calendar grant | `volunteer_calendar_vcal` | church calendar ↔ ministry allowed to pin to it | (D25) |
 
 Plus **two nullable columns on core tables**: `events_event.event_ministry_id` (§2.16) and
 `group_grp.grp_ministry_id` (§2.5, D19).
@@ -456,6 +513,8 @@ erDiagram
     volunteer_ministry_vmin ||--o{ volunteer_position_vpos  : "defines positions"
     volunteer_ministry_vmin ||--o{ volunteer_schedule_vsch  : "schedules"
     volunteer_ministry_vmin ||--o{ events_event             : "optionally owns"
+    volunteer_ministry_vmin ||--o{ volunteer_calendar_vcal  : "may pin to"
+    calendars               ||--o{ volunteer_calendar_vcal  : "is opened to"
 
     volunteer_team_vtem     ||--o{ volunteer_position_vpos  : "owns"
     volunteer_team_vtem     ||--o{ volunteer_schedule_vsch  : "owns"
@@ -514,6 +573,7 @@ write, and every ministry query inherits `preSelect()`.
 | `vmin_CreatedBy_per_ID` | `CreatedByPersonId` | `mediumint(9) unsigned` null | FK → `person_per.per_ID`, `ON DELETE SET NULL` |
 | `vmin_HelpWanted` | `HelpWanted` | `tinyint(1)` required default `0` | D19: advertise on the Open Opportunities page |
 | `vmin_HelpWantedText` | `HelpWantedText` | `TEXT` null | D19: the coordinator's own prose, rendered escaped with line breaks preserved |
+| `vmin_SundaySchool` | `SundaySchool` | `BOOLEAN` `tinyint(1) unsigned` required default `0` | D29: the ministry may provide teachers for Sunday School — link teams to classes, follow a class's meetings, give its events a class. A global manager's to change; off is refused while a team is linked |
 
 Indexes: `vmin_name_uidx UNIQUE (vmin_Name)`, `vmin_active_idx (vmin_Active)`.
 
@@ -533,8 +593,10 @@ finest authorization scope (Team Leader) and the usual owner of a pool and a sch
 | `vtem_Name` | `Name` | `VARCHAR(100)` required | |
 | `vtem_Description` | `Description` | `VARCHAR(255)` null | |
 | `vtem_Active` | `Active` | `BOOLEAN` required default `1` | |
+| `vtem_grp_ID` | `ClassGroupId` | `mediumint(8) unsigned` null | **D23.** FK → `group_grp.grp_ID`, `ON DELETE SET NULL`. The Sunday School class (group type 4) this team staffs; NULL = not linked. See "Linked Sunday School class" below. |
 
-Indexes: `vtem_ministry_name_uidx UNIQUE (vtem_vmin_ID, vtem_Name)`, `vtem_ministry_idx (vtem_vmin_ID)`.
+Indexes: `vtem_ministry_name_uidx UNIQUE (vtem_vmin_ID, vtem_Name)`, `vtem_class_group_uidx UNIQUE (vtem_grp_ID)`
+(a class has at most one team; MySQL lets any number of NULLs through), `vtem_ministry_idx (vtem_vmin_ID)`.
 
 **A ministry never has zero teams (D18).** `VolunteerMinistryService::createMinistry()` creates the
 first one — `"{Ministry name} Team"` — inside the same transaction as the ministry, so the API, the
@@ -544,6 +606,50 @@ rename it, add more beside it. What cannot happen is removing the last one — `
 has nowhere to put a position or a schedule, both of which are now `NOT NULL` on their team column.
 Deleting the **ministry** still cascades its teams away as before. UC1 is exactly this shape: Coffee
 Bar is one ministry with the one team it was born with (§5.3).
+
+**Deleting any other team takes everything under it** *(revised 2026-09-26, product owner)*: its
+positions with their qualifications (revoked ones included) and staffing requirements, its schedules
+and occurrences, every assignment on them with their responses, swaps and outbox rows — service
+history included — and its team-leader scope rows, in one transaction. There is no deactivate-first
+gate as there is for a ministry; the confirmation dialog names what goes and points at **Deactivate**
+as the way to keep the history. `deleteTeam()` deletes the assignments by hand first (their position
+key is `RESTRICT`) and the scope rows (no FK, §2.15); the FKs cascade the rest. The earlier rule —
+`409` while the team still owned positions or schedules — was dropped because it chained onto the
+position rule in §2.6, which revoked qualifications made impossible to satisfy.
+
+#### Linked Sunday School class (D23)
+
+A team may be linked to one Sunday School class, and a class to one team. Core keeps the class —
+its roster, its Student role, attendance, the dashboard, the reports. The link hands V2 exactly one
+thing: who holds the class's **Teacher** role, found by NAME in the class's role list as every core
+Sunday School read finds it (`SundaySchoolService`, the class page, `ClassAttendance.php`, the cart's
+"Add Teachers"). Those reads keep working unchanged. `VolunteerClassLinkService` owns the rules.
+
+- **Linking** is part of team create/update (`classGroupId`; `null` unlinks) and is a
+  coordinator's act (§4.6) — a team leader gets `403`. The ministry must provide teachers for
+  Sunday School (D29, `400`). The group must exist and be type 4 (`400`),
+  be linked to no other team (`409`), and have a role named Teacher (`400`). When it has teachers,
+  the caller names the position of THIS team they are qualified for — `importPositionId`, or
+  `importPositionName` to create one in the same transaction — or gets a `400` saying which team's
+  position is needed. Each living teacher gets an active qualification granted by the actor and,
+  like any qualified person, joins the pool (D19). Nobody is entered twice.
+- **Qualifications then write the Teacher role** (§2.7), through `VolunteerPoolWriter::run()`.
+- **Every other Teacher-role write is refused while V2 is on** — the class page, the group view,
+  the role editor, cart-to-group and `/api/groups` (§4.6). Student writes keep the core path. So
+  are renaming or deleting the Teacher role and changing the class's type, each of which would
+  un-teacher the class behind V2's back. Deleting the class is not refused: the FK unlinks the team.
+- **Lifecycle.** Unlinking, deleting the team and deactivating it leave the class's membership
+  exactly as it is — the class goes on meeting; unlinking also hands its teachers back to the class
+  page. Deactivating does not unlink. Deleting a position revokes as §2.7 says. A position with
+  active qualifications cannot move into or out of a linked team (`409`), because that would change
+  who teaches as a side effect. With the rollout at `v1` the link is inert: the V2 API is closed, so
+  nothing is projected, and nothing is refused.
+- **The class's events (D28).** Changing the class (to none or another) or deleting the team asks
+  what happens to the events the ministry owns whose Linked Group is the old class — `classEvents`
+  on the update (`keep`, `remove` the class from them, `move` them to the new class) or on the delete
+  (`keep`, `remove`, `delete` them through core). `keep` is the default, so a caller that does not
+  ask changes no event. `VolunteerEventService::applyClassEventsChoice()` does it inside the team's
+  transaction; `GET /teams/{id}/class-events` gives the dialog its numbers.
 
 ### 2.5 Volunteer Pool — the ministry's own Group (D19)
 
@@ -618,10 +724,10 @@ Teacher. Owned by a ministry; optionally narrowed to a team.
 |---|---|---|---|
 | `vpos_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vpos_vmin_ID` | `MinistryId` | `INTEGER` required | FK → `volunteer_ministry_vmin.vmin_ID`, `ON DELETE CASCADE` |
-| `vpos_vtem_ID` | `TeamId` | `INTEGER` required | FK → `volunteer_team_vtem.vtem_ID`, `ON DELETE CASCADE`. **Every position belongs to a team** (D18); there is no ministry-wide position. `CASCADE` rather than `SET NULL` because the column is `NOT NULL`; it never actually fires, since `deleteTeam()` refuses a team that still owns positions. |
+| `vpos_vtem_ID` | `TeamId` | `INTEGER` required | FK → `volunteer_team_vtem.vtem_ID`, `ON DELETE CASCADE`. **Every position belongs to a team** (D18); there is no ministry-wide position. `CASCADE` rather than `SET NULL` because the column is `NOT NULL`, and it is how `deleteTeam()` takes the team's positions with it (§2.4, revised 2026-09-26). |
 | `vpos_Name` | `Name` | `VARCHAR(100)` required | |
 | `vpos_Description` | `Description` | `VARCHAR(255)` null | "operational requirements" per #9715 live here as prose. |
-| `vpos_Active` | `Active` | `BOOLEAN` required default `1` | #9715: deactivation must not destroy history — so **deactivate, never delete**, once assignments exist. |
+| `vpos_Active` | `Active` | `BOOLEAN` required default `1` | #9715: deactivation must not destroy history — **deactivate** is how a position is retired with its history kept; **delete** removes the history with it (revised 2026-09-26). |
 | `vpos_Recruiting` | `Recruiting` | `tinyint(1)` required default `0` | **"Recruit Volunteers"** (round four): advertise this position **by name** on the Open Opportunities page (§5.6). Independent of the ministry-level `vmin_HelpWanted`, and default **off** — turning V2 on must never publish a position nobody chose. An INACTIVE position is never advertised whatever this says, so `vpos_Active` is the outer gate. |
 | `vpos_Order` | `Order` | `INTEGER` required default `0` | display order within the ministry |
 
@@ -638,10 +744,15 @@ Indexes: `vpos_ministry_team_name_uidx UNIQUE (vpos_vmin_ID, vpos_vtem_ID, vpos_
 > a team, **not** via a `NOT NULL DEFAULT 0` sentinel — that is the `event_types.type_grpid`
 > anti-pattern and it would break the FK.
 
-**Deleting a position** is allowed only when it has no qualifications, requirements or assignments;
-otherwise the API returns `409` with a count, mirroring `DELETE /api/volunteer-opportunities/{id}`
-(`src/api/routes/system/volunteer-opportunities.php:232-264`, which deliberately diverges from V1's
-cascading editor). Coordinators deactivate instead.
+**Deleting a position** *(revised 2026-09-26, product owner)* removes it with its qualifications —
+revoked ones included — its staffing requirements and every assignment to it, service history
+included, in one transaction; `deletePosition()` deletes the assignments by hand first because
+`vasg_vpos_ID` is `RESTRICT`, and the other keys cascade. The confirmation dialog names what goes and
+points at **Deactivate** as the way to keep the history. The original rule — `409` with a count while
+anything referenced the position, mirroring `DELETE /api/volunteer-opportunities/{id}` — was dropped
+because unticking a qualification only revokes it (§2.7): the row stays, no screen lists it, and it
+still counted, so a position anybody had ever been qualified for could never be deleted, and neither
+could its team.
 
 ### 2.7 Qualification — `volunteer_qualification_vqal`
 
@@ -684,106 +795,157 @@ changes affect *future* eligibility without rewriting historical assignments. Be
 past assignments stay valid and readable no matter what happens to the qualification row. That is
 the whole reason the assignment does not reference a qualification.
 
+**Projection onto a linked class (D23).** On a team linked to a Sunday School class (§2.4), a
+qualification is also what makes somebody one of its teachers:
+
+| Qualification change on the team | The class's membership |
+|---|---|
+| Grant, any position of the team | joins with the Teacher role; already a Teacher: nothing. A member under **any other role** — a Student above all — is refused `409` naming the class, and nothing is written |
+| Revoke of the person's LAST active qualification among the team's positions (deactivated positions count as long as the qualification is active) | removed, if and only if the role is Teacher |
+| Revoke of any other; deactivating a position or the team | nothing |
+| Delete a position | as revoking each of its active qualifications |
+| Remove Volunteer (§5.4) | as revoking each — the Teacher role ends with the last |
+
+The membership write is in the same transaction as the qualification row, inside
+`VolunteerPoolWriter::run()`, so a team leader's grant writes the class without Manage Groups and
+`Hooks::GROUP_MEMBER_ADDED` / `GROUP_MEMBER_REMOVED` fire as for a Groups-module edit.
+
 ### 2.8 Schedule — `volunteer_schedule_vsch`
 
-**Purpose.** The recurring series V2 owns. This is where D4 is implemented: a schedule is either
-**linked** to a ChurchCRM event type (the event occurrences are authoritative) or **standalone**
-(V2 generates its own dates).
+**Purpose.** Which calendar events a team staffs. This is where D20–D22 are implemented: every
+occurrence is anchored to an event, V2 generates **no dates of its own**, and the schedule only says
+**how its events are found** (`vsch_LinkMode`) and how the volunteers' times sit relative to them
+(the two offsets).
 
-**How a schedule links to an "event series" given there is no series id (F7).** The binding is
-`event_type` **+ an optional title filter** + a **date window** — the same de-facto key the core
-itself already trusts for `skipExisting` and find-or-create (F8). Generation resolves that key to
-concrete `events_event` rows inside the window and creates one occurrence row per event found. The
-coordinator may then detach an individual occurrence (`vocc_Status = 'cancelled'`) without
-affecting the schedule. **Hand-picking individual events is not the primary binding** because it
-violates the product principle ("set it up once"); it is available as a per-occurrence action.
+**The four link modes (D22).** There is no event series identifier in core (F7), so each mode is a
+query V2 runs over `events_event` at generation time, always restricted to **active** events inside
+the schedule's window and — for every mode but `event` — no further ahead than the church-wide
+scheduling horizon (D31):
+
+| `vsch_LinkMode` | Finds | Binding columns | Used for |
+|---|---|---|---|
+| `event_type` | events of one type with one title | `vsch_event_type_id` (required), `vsch_TitleFilter` (required, D31) | church-wide services: Sunday worship, Wednesday night |
+| `class` | events whose Linked Group (`event_audience`) is the class | `vsch_grp_ID` (required) | a class's meetings: Faith City |
+| `ministry` | events this schedule's ministry owns (`events_event.event_ministry_id`) with one title | `vsch_TitleFilter` (required, D31) | a ministry's own events: a Building & Grounds workday |
+| `event` | exactly one event | `vsch_event_id` (required) | the hidden schedule behind **Staff this event** (`vsch_OneOff = 1`) |
+
+The title is the de-facto series key core itself trusts (F8): the schedule dialog offers the
+distinct upcoming titles of the chosen type or of the ministry's events, so a schedule follows ONE
+series rather than every event that shares a type. **Since D31 it is required and exact:** an
+`event_type` or `ministry` schedule names one title, compared ignoring case (`LOWER(event_title) =
+LOWER(vsch_TitleFilter)`), so "VBS" never picks up "VBS Day 2" — the optional `LIKE %title%` it
+replaces did — and there is no "any event of this type" choice. **Anchoring is a read-only
+reference:** a schedule may follow, and Staff this event may anchor to, any event — not only the
+ministry's own. A coordinator detaches one occurrence by cancelling it (`vocc_Status = 'cancelled'`).
+
+**A schedule follows events that already exist (D31).** Creating a schedule, or changing what it
+follows — mode, type, title or class — is refused (`400`, naming what was looked for) unless at
+least one active event it would follow starts today or later. Nothing else about an edit (name,
+needs, offsets, dates, Active) is ever refused for it, so a schedule whose events have run out can
+still be tidied up. A type or ministry schedule saved without a title before D31 follows nothing:
+generation finds no event for it, the D30 warning says to choose one, and any edit must give it a
+title.
+
+**An empty run is explained (D30), and a new series joins the schedules that follow it (D33).** A
+generation run that finds no event says what the schedule looked for (§3.3.2), so the screens can say
+why nothing came (§5.4) — since D31 that means its events have run out, lie beyond the horizon, or it
+names no title. A new schedule's Save is such a run. **Staff them**, asked after a series is created,
+never makes a schedule: every active, non-one-off schedule of the ministry that follows the new
+events — `class` mode on their class, `ministry` mode with exactly their title, `event_type` mode with
+their type and exactly their title, titles ignoring case
+(`VolunteerScheduleService::findSchedulesFollowing()`) — takes them. Each one's window grows to cover
+them (`vsch_WindowStart` moves back to the first new event, a set `vsch_WindowEnd` moves on to the
+last, a `NULL` end stays open); its needs, offsets and everything else stay as they are. With none,
+the coordinator adds a schedule.
 
 | Column | phpName | Type | Notes |
 |---|---|---|---|
 | `vsch_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vsch_vmin_ID` | `MinistryId` | `INTEGER` required | FK → ministry, `ON DELETE CASCADE` |
 | `vsch_vtem_ID` | `TeamId` | `INTEGER` required | FK → team, `ON DELETE CASCADE`. **Every schedule belongs to a team** (D18), so the positions its staffing plan may name are exactly that team's. |
-| `vsch_Name` | `Name` | `VARCHAR(100)` required | e.g. "Sunday Morning Worship", "Coffee Bar — Sunday" |
-| `vsch_LinkMode` | `LinkMode` | `enum('event_type','standalone')` required | |
-| `vsch_event_type_id` | `EventTypeId` | `INTEGER` null | FK → `event_types.type_id`, `ON DELETE SET NULL`. Required when `LinkMode = 'event_type'`. |
-| `vsch_TitleFilter` | `TitleFilter` | `VARCHAR(255)` null | optional `LIKE` narrowing when one event type carries several distinct services (UC4: Elementary vs Nursery Bible Hour). |
-| `vsch_RecurType` | `RecurType` | `enum('none','weekly','monthly','yearly')` required default `'none'` | standalone only |
-| `vsch_RecurDOW` | `RecurDow` | `enum('Sunday',…,'Saturday')` null | standalone weekly; same value domain as `event_types.type_defrecurDOW` |
-| `vsch_RecurDOM` | `RecurDom` | `TINYINT` null | standalone monthly |
-| `vsch_StartTime` | `StartTime` | `TIME` null | standalone only |
-| `vsch_EndTime` | `EndTime` | `TIME` null | standalone only |
+| `vsch_Name` | `Name` | `VARCHAR(100)` required | e.g. "Sunday Morning Worship", "Coffee Bar — Sunday"; a Staff this event schedule defaults to the event's title |
+| `vsch_LinkMode` | `LinkMode` | `enum('event_type','class','ministry','event')` required | the table above |
+| `vsch_event_type_id` | `EventTypeId` | `INTEGER` null | FK → `event_types.type_id`, `ON DELETE SET NULL`. `event_type` mode only. |
+| `vsch_TitleFilter` | `TitleFilter` | `VARCHAR(255)` null | the events' exact title, ignoring case; required in `event_type` and `ministry` modes (D31; UC4: Elementary vs Nursery Bible Hour), NULL in the other two |
+| `vsch_grp_ID` | `GroupId` | `mediumint(8) unsigned` null | FK → `group_grp.grp_ID`, `ON DELETE SET NULL`. `class` mode only; any existing group (the picker offers active Sunday School classes and groups with upcoming linked events). |
+| `vsch_event_id` | `EventId` | `INTEGER` null | FK → `events_event.event_id`, `ON DELETE SET NULL`. `event` mode only; set only through Staff this event. |
+| `vsch_StartOffsetMinutes` | `StartOffsetMinutes` | `INTEGER` required default `0` | added to the event's start to give the volunteers' start (D21); within ±720 |
+| `vsch_EndOffsetMinutes` | `EndOffsetMinutes` | `INTEGER` required default `0` | added to the event's end to give the volunteers' end (D21); within ±720 |
 | `vsch_WindowStart` | `WindowStart` | `DATE` required | no occurrence is ever generated before this |
 | `vsch_WindowEnd` | `WindowEnd` | `DATE` null | `NULL` = open-ended |
-| `vsch_GenerateAheadDays` | `GenerateAheadDays` | `INTEGER` required default `56` | how far ahead a generation run materialises occurrences (8 weeks) |
 | `vsch_Active` | `Active` | `BOOLEAN` required default `1` | |
+| `vsch_OneOff` | `OneOff` | `BOOLEAN` required default `0` | a Staff this event schedule: never listed on the Schedules tab, deleted with its only occurrence |
 
-Indexes: `vsch_ministry_idx (vsch_vmin_ID)`, `vsch_type_idx (vsch_event_type_id)`,
+Indexes: `vsch_ministry_idx (vsch_vmin_ID)`, `vsch_team_idx (vsch_vtem_ID)`,
+`vsch_type_idx (vsch_event_type_id)`, `vsch_group_idx (vsch_grp_ID)`, `vsch_event_idx (vsch_event_id)`,
 `vsch_active_window_idx (vsch_Active, vsch_WindowStart)`.
 
 **Invariants (service-enforced — MySQL cannot express conditional `NOT NULL`):**
 
-- `LinkMode = 'event_type'` ⇒ `vsch_event_type_id IS NOT NULL` **and** `RecurType = 'none'` and
-  the four standalone recurrence/time columns are `NULL`. *A linked schedule never carries its own
-  recurrence — that is the "no competing recurrence engines" rule (D4).*
-- `LinkMode = 'standalone'` ⇒ `vsch_event_type_id IS NULL`, `RecurType != 'none'`,
-  `vsch_StartTime IS NOT NULL`.
+- The mode's binding column is set and names an existing row; the other modes' binding columns are
+  NULL (switching modes clears them), and `vsch_TitleFilter` is NULL in `class` and `event` modes
+  and required in the other two (D31). A binding whose target was later deleted (the FK set it to
+  NULL) simply finds nothing.
+- A new binding has an upcoming active event to follow (D31, above).
+- `event` mode is created only by Staff this event and never changes mode or event afterwards;
+  `POST …/schedules` accepts only the other three, and refuses an `eventId`.
+- The removed standalone fields (`recurType`, `recurDow`, `recurDom`, `startTime`, `endTime`) are
+  refused with `400` when a payload names them, never silently ignored (D20); so is the removed
+  `generateAheadDays` (D31) — how far ahead a schedule is generated is the church-wide
+  `iVolunteerSchedulingHorizonWeeks` (Appendix B).
 
 ### 2.9 Occurrence — `volunteer_occurrence_vocc`
 
-**Purpose.** One concrete opportunity to serve. This is the row assignments hang off.
+**Purpose.** One concrete opportunity to serve, **always anchored to a calendar event (D20)**. This is
+the row assignments hang off.
 
-**How date/time is stored.**
-
-- **Linked** (`vocc_event_id IS NOT NULL`): `vocc_StartDateTime` / `vocc_EndDateTime` are **NULL**
-  and the occurrence's real start/end are read **lazily from the event row at render time**
-  (`events_event.event_start` / `event_end`). There is deliberately no denormalised copy, so there
-  is no synchronisation problem to solve and no `EVENT_UPDATED` hook to add (E11). This *is* what
-  "the event occurrence is the source of truth" means operationally.
-- **Standalone** (`vocc_event_id IS NULL`): `vocc_StartDateTime` / `vocc_EndDateTime` are
-  authoritative, stored as naive wall-clock in `sTimeZone` (F24).
-- **Always**: `vocc_OccurrenceDate` (`DATE`) is populated for both modes. It is explicitly
-  **non-authoritative** for a linked occurrence — it exists only as a cheap sort/filter key for
-  range queries and, after an event is deleted (E12), as the historical anchor that keeps a past
-  occurrence meaningful.
+**How date/time is stored.** Not at all. `vocc_event_id` is set on every insert, and the volunteers'
+start and end are read **lazily at render time** from the event row plus the schedule's offsets
+(`VolunteerScheduleService::resolveOccurrenceWindow()`: `event_start + vsch_StartOffsetMinutes`,
+`event_end + vsch_EndOffsetMinutes`; a shift whose offsets cross on a short event ends at its start).
+There is deliberately no denormalised copy, so there is no synchronisation problem to solve and no
+`EVENT_UPDATED` hook to add (E11): moving the event, or changing the offsets, moves the shift — and
+the reminder, the emails and every page with it. `vocc_OccurrenceDate` (`DATE`) is copied from the
+event as a cheap sort/filter key; after an event is deleted (E12) it is the only date left, and the
+occurrence has a date and no times.
 
 | Column | phpName | Type | Notes |
 |---|---|---|---|
 | `vocc_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vocc_vsch_ID` | `ScheduleId` | `INTEGER` required | FK → schedule, `ON DELETE CASCADE` |
-| `vocc_event_id` | `EventId` | `INTEGER` null | FK → `events_event.event_id`, **`ON DELETE SET NULL`** |
-| `vocc_OccurrenceDate` | `OccurrenceDate` | `DATE` required | non-authoritative when linked; see above |
-| `vocc_StartDateTime` | `StartDateTime` | `DATETIME` null | standalone only |
-| `vocc_EndDateTime` | `EndDateTime` | `DATETIME` null | standalone only |
+| `vocc_event_id` | `EventId` | `INTEGER` null | FK → `events_event.event_id`, **`ON DELETE SET NULL`**. Nullable only so a deleted event leaves the service history behind; the service sets it on every insert. |
+| `vocc_OccurrenceDate` | `OccurrenceDate` | `DATE` required | the event's date at generation; see above |
 | `vocc_Status` | `Status` | `enum('scheduled','cancelled')` required default `'scheduled'` | a coordinator may cancel one occurrence without touching the schedule |
 | `vocc_Notes` | `Notes` | `VARCHAR(255)` null | |
 | `vocc_GeneratedDate` | `GeneratedDate` | `DATETIME` required | |
 
 Indexes:
 
-**Deliberately no CHECK that a standalone row has `vocc_StartDateTime`.** After `fk_vocc_event` has
-`SET NULL` a deleted event, a formerly linked row legitimately has neither an event nor a start time,
-and MariaDB refuses a CHECK on a column an FK action can change (error 1901). `VolunteerScheduleService`
-must always set `vocc_StartDateTime` for standalone schedules; `vocc_schedule_start_uidx` then
-deduplicates them (#9705 review).
-
-- `vocc_schedule_event_uidx UNIQUE (vocc_vsch_ID, vocc_event_id)` — idempotent **linked**
-  generation. MySQL permits multiple `NULL`s in a unique index, so standalone rows never collide here.
-- `vocc_schedule_start_uidx UNIQUE (vocc_vsch_ID, vocc_StartDateTime)` — idempotent **standalone**
-  generation. Linked rows have `NULL` here, so they never collide either.
+- `vocc_schedule_event_uidx UNIQUE (vocc_vsch_ID, vocc_event_id)` — idempotent generation. MySQL
+  permits several `NULL`s in a unique index, so occurrences whose events were deleted never collide.
 - `vocc_date_idx (vocc_OccurrenceDate)`, `vocc_event_idx (vocc_event_id)`.
 
 **Invariants:**
 
-- Exactly one of (`vocc_event_id`, `vocc_StartDateTime`) is non-NULL — except for a formerly-linked
-  occurrence whose event was deleted, which has both NULL and survives on `vocc_OccurrenceDate`
-  alone. Service-enforced; the API rejects a write that violates it.
+- `vocc_event_id` is non-NULL on insert (service-enforced); it becomes NULL only through the FK
+  when the event is deleted.
 - **Generation is idempotent by construction.** Running generation twice over the same window
-  inserts nothing new: the two unique keys reject the duplicates. Implementation uses
+  inserts nothing new: the unique key rejects the duplicates. Implementation uses
   `findOneOrCreate()` in a transaction, the same idiom `Event::checkInPerson()` uses
   (`Event.php:87-90`).
+- **Generation reaches the scheduling horizon (D31).** A run looks at the events from the later of
+  today and `vsch_WindowStart` through the earliest of today + `iVolunteerSchedulingHorizonWeeks`
+  weeks, `vsch_WindowEnd` and a caller's `through` — the horizon is a cap, never exceeded. The one
+  exception is a Staff this event schedule, whose single event may be any distance ahead. A new
+  schedule's Save runs it once (D33, unless the schedule is saved inactive). Nobody has
+  to press Generate to stay ahead: the daily top-up (§3.6) runs the same generation for every active,
+  non-one-off schedule of every active ministry, so an event that comes within the horizon gets its
+  occurrence by the next day. Both assign each position's saved default volunteer on the
+  occurrences they create, and only on those (D32, §2.10).
 - **Historical occurrences are immutable.** Generation never touches an occurrence whose effective
   date is in the past, never deletes occurrences, and never changes `vocc_event_id` on an existing
-  row. Changing a schedule's window or recurrence affects only future materialisation.
+  row. Changing a schedule's window or binding affects only future materialisation; changing its
+  offsets moves every occurrence's reported times at once, because they are derived.
 - Several occurrences from **different schedules** may point at the **same** `events_event` row
   (UC3). The unique key is per schedule, so this is allowed by design.
 
@@ -802,8 +964,12 @@ deduplicates them (#9705 review).
 | `vreq_MinCount` | `MinCount` | `INTEGER` required default `1` | the number below which a **gap** exists |
 | `vreq_MaxCount` | `MaxCount` | `INTEGER` null | `NULL` = same as `MinCount`. Capacity ceiling for self-signup. |
 | `vreq_Notes` | `Notes` | `VARCHAR(255)` null | |
+| `vreq_Default_per_ID` | `DefaultPersonId` | `mediumint(9) unsigned` null | FK → `person_per.per_ID`, `ON DELETE SET NULL`. D32, template rows only: the schedule's default volunteer for this position |
+| `vreq_DefaultAccepted` | `DefaultAccepted` | `BOOLEAN` required default `0` | the default is recorded as accepted (coordinator channel) instead of being asked to respond |
+| `vreq_DefaultSetBy_per_ID` | `DefaultSetByPersonId` | `mediumint(9) unsigned` null | FK → `person_per.per_ID`, `ON DELETE SET NULL`. Who chose the default; the daily top-up assigns in their name |
 
-Indexes: `vreq_schedule_position_uidx UNIQUE (vreq_vsch_ID, vreq_vpos_ID)`,
+Indexes: `vreq_default_person_idx (vreq_Default_per_ID)`, `vreq_default_set_by_idx (vreq_DefaultSetBy_per_ID)`,
+`vreq_schedule_position_uidx UNIQUE (vreq_vsch_ID, vreq_vpos_ID)`,
 
 A `CHECK ((vreq_vsch_ID IS NULL) <> (vreq_vocc_ID IS NULL))` (`vreq_one_parent_chk`, SQL only — Propel cannot
 express CHECK) enforces "exactly one parent" on MariaDB 10.2.1+ / MySQL 8.0.16+; MySQL 5.7 parses and
@@ -820,6 +986,19 @@ ignores it (#9705 review).
   schedule's rows for positions the occurrence does not override. One function,
   `VolunteerScheduleService::getEffectiveRequirements(int $occurrenceId): array`, is the single
   place that resolves this; nothing else may re-implement the merge.
+- **A default volunteer lives on a template row only (D32)** — an override row naming one is `400`.
+  Choosing one requires an active qualification for the position; the stored one is kept when named
+  again, whatever its qualification, and `defaultQualified` on the wire says whether it still holds.
+- **Remove Volunteer clears the person's defaults (D32).** `removeVolunteerFromMinistry()` blanks
+  `vreq_Default_per_ID`, `vreq_DefaultAccepted` and `vreq_DefaultSetBy_per_ID` on every template row of
+  the ministry's schedules, active or not, that names them, in the removal's transaction; the staffing
+  need stays and other ministries' schedules are untouched. Revoking one qualification and a pool-only
+  removal (`DELETE …/pool/{personId}`, the Groups module) keep the default, left open while unqualified.
+- **Defaults are assigned on the occurrences a run creates, never on existing ones.**
+  `VolunteerAssignmentService::assignScheduleDefaults()` is the one place that does it, for a new
+  schedule's Save, Generate, Staff them and the daily top-up alike: an unqualified default leaves the
+  position open (`unqualified`), and `assign()`'s rules decide the rest (`skipped`) — plus the
+  capacity check, so a default never lands past `MaxCount`.
 
 This is how UC1 and UC2 are both expressed with no special-case column: Coffee Bar is **one**
 requirement with `MinCount = 2, MaxCount = 3` against a generic "Coffee Bar Volunteer" position (or
@@ -834,13 +1013,13 @@ requirements of `MinCount = 1, MaxCount = 1`, one per named position.
 |---|---|---|---|
 | `vasg_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vasg_vocc_ID` | `OccurrenceId` | `INTEGER` required | FK → occurrence, `ON DELETE CASCADE` |
-| `vasg_vpos_ID` | `PositionId` | `INTEGER` required | FK → position, `ON DELETE RESTRICT` (a position with assignments cannot be deleted — §2.6) |
+| `vasg_vpos_ID` | `PositionId` | `INTEGER` required | FK → position, `ON DELETE RESTRICT`, so no ordinary edit can delete a position from under a roster; `deletePosition()`, `deleteTeam()` and `deleteMinistry()` delete the assignments explicitly first (§2.6) |
 | `vasg_per_ID` | `PersonId` | `mediumint(9) unsigned` required | FK → `person_per.per_ID`, `ON DELETE CASCADE` |
 | `vasg_vreq_ID` | `RequirementId` | `INTEGER` null | FK → requirement, `ON DELETE SET NULL`. Which requirement this fills; nullable so an assignment survives a requirement being restructured. |
 | `vasg_Status` | `Status` | `enum('pending','accepted','declined','cancelled','substituted','completed')` required default `'pending'` | §2.11.1 |
 | `vasg_Source` | `Source` | `enum('coordinator','self_signup','substitute')` required default `'coordinator'` | |
 | `vasg_AssignedDate` | `AssignedDate` | `DATETIME` required | |
-| `vasg_AssignedBy_per_ID` | `AssignedByPersonId` | `mediumint(9) unsigned` null | FK → `person_per.per_ID`, `ON DELETE SET NULL`. NULL for self-signup. |
+| `vasg_AssignedBy_per_ID` | `AssignedByPersonId` | `mediumint(9) unsigned` null | FK → `person_per.per_ID`, `ON DELETE SET NULL`. NULL for self-signup. For a default the daily top-up assigns, whoever chose the default (D32) |
 | `vasg_RespondedDate` | `RespondedDate` | `DATETIME` null | denormalised from the latest response |
 | `vasg_Replaces_vasg_ID` | `ReplacesAssignmentId` | `INTEGER` null | self-FK, `ON DELETE SET NULL` — links a substitute back to the assignment it replaced |
 | `vasg_Notes` | `Notes` | `VARCHAR(255)` null | |
@@ -1093,7 +1272,7 @@ match `vmin_ID`. `ON DELETE SET NULL` so deleting a ministry never deletes churc
 | 1 | `orm/schema.xml` | the column + the FK above, inside `<table name="events_event">` |
 | 2 | `src/mysql/install/Install.sql` | the same column in the `events_event` `CREATE TABLE` (line ~118). **Required**, not optional — nothing validates Install.sql against schema.xml. |
 | 3 | `src/mysql/upgrade/7.8.0-volunteer-v2-event-ministry.sql` | `ALTER TABLE events_event ADD COLUMN event_ministry_id int(11) DEFAULT NULL AFTER secondary_contact_person_id;` + `ADD KEY` + `ADD CONSTRAINT … ON DELETE SET NULL`. Plain `ALTER` — **not** `ADD COLUMN IF NOT EXISTS` (see the comment in `src/mysql/upgrade/7.4.3-manage-fundraisers.sql:5-8`). Must run **after** the table-creation migration. |
-| 4 | `src/mysql/upgrade.json` | **not touched** — the script (`7.8.0-volunteer-v2-event-ministry.sql`) is registered in the 7.8.0 block when it opens, after the schema and permission scripts (D17, F29) |
+| 4 | `src/mysql/upgrade.json` | **not touched** — the script (`7.8.0-volunteer-v2-event-ministry.sql`) is registered in the 7.8.0 block by the epic PR, after the schema and permission scripts (D17, F29) |
 | 5 | `cypress/data/seed.sql` | the same column in its `events_event` `CREATE TABLE` — **ask the user before editing `seed.sql`** (`db-schema-migration.md`) |
 | 6 | Propel regen | `cd src && composer run orm-gen` (copy `orm/propel.php.dist` → `orm/propel.php` first), then `npm run build:php:validate:orm`. `Base/` and `Map/` are gitignored — nothing is committed from the regen. |
 | 7 | Event API — write | `applyEventExtendedFields()` (`src/api/routes/calendar/events.php:234-282`) gains explicit `MinistryId` handling next to `LinkedGroupId`. **This is mandatory, not stylistic:** `updateEvent` (`:567`) uses `$Event->fromArray($input)`, so a `MinistryId` key would otherwise flow straight through with no authorization check at all. |
@@ -1103,6 +1282,9 @@ match `vmin_ID`. `ON DELETE SET NULL` so deleting a ministry never deletes churc
 | 11 | Per-row event authorization | `AddEventsRoleAuthMiddleware` is a global boolean; there is no per-row event authorization anywhere today. A coordinator editing *their* ministry's event needs a handler-level check in `updateEvent`/`setEventTime`/`setEventStatus`/`deleteEvent`. §4.6. |
 | 12 | Tests | `cypress/e2e/ui-admin/event-editor.spec.js`, `cypress/e2e/api/private/standard/private.calendar.*.spec.js` |
 | 13 | Docs | `CLAUDE.md` → a user-visible field change **requires a sibling documentation issue** linked from the PR |
+| 14 | Calendar pins (D25) | A caller without Add Events may pin an event only to calendars `VolunteerCalendarService::mayPin()` allows for the event's **resolved** ministry: that ministry's own calendar (`calendars.ministry_id`) and every church calendar opened to it in `volunteer_calendar_vcal` (§4.6). `eventCalendarPinGuard()` in `events.php` asks it for every pin `newEvent`/`updateEvent` adds or removes, and re-asks for kept pins when the ministry changes. An update without `PinnedCalendars` leaves the pins alone. The editor offers what `GET /api/calendars/pinnable?ministryId=` returns and lists pins the user cannot change under the select |
+| 15 | Ministry events (D24) | The ministry page's Calendar tab creates the ministry's own events without the event editor: `POST /api/ministries/ministries/{id}/events` (§3.3.2) sets `event_ministry_id` to the path's ministry, pins by the rule of item 14 (omitted = the ministry's own calendar) and writes through `EventService::createEvent()` / `createRecurringEvents()`, the code `POST /api/events` and the repeat editor run. It only creates them (D33): `POST …/events/staff` and Staff this event staff them afterwards. `VolunteerAuthorizationService::canWriteEvent()` is item 11's rule, shared by `events.php` and the occurrence page's headcount link |
+| 16 | Deleting a ministry's events (D28) | `EventService::deleteRefusal()` / `deleteEvent()` are `DELETE /api/events/{id}`'s checked-in and kiosk refusals and its delete, moved out of the route. The Calendar tab's `DELETE /api/ministries/ministries/{id}/events` and Delete team's `classEvents: delete` call them per event inside one transaction, after `canWriteEvent()` and the other-ministries check, so a refusal deletes nothing |
 
 ### 2.17 Worked examples — the three use cases as concrete rows
 
@@ -1129,16 +1311,20 @@ volunteer_qualification_vqal (…, per=3, pos=1, active)  (…, per=3, pos=3, ac
 
 volunteer_schedule_vsch   (1, min=1, team=1, 'Coffee Bar — Sunday',
                            LinkMode='event_type', event_type_id=1 (Church Service),
-                           WindowStart=2026-09-13, GenerateAheadDays=56, active)
+                           TitleFilter='Sunday Morning Worship',
+                           StartOffsetMinutes=-45, EndOffsetMinutes=0,   -- set up before the 10:30 service (D21)
+                           WindowStart=2026-09-13, active)   -- generated 8 weeks ahead: the horizon (D31)
 
 -- "2–3 volunteers required each week", not one per station:
 volunteer_requirement_vreq (1, sch=1, pos=3 'Espresso',     Min=1, Max=1)
                            (2, sch=1, pos=4 'Milk Station', Min=1, Max=1)
                            (3, sch=1, pos=5 'Expeditor',    Min=0, Max=1)   ← optional third person
 
--- generation resolves event_type 1 inside the window to concrete events:
-volunteer_occurrence_vocc (11, sch=1, event_id=501, date=2026-09-13, start=NULL, 'scheduled')
-                          (12, sch=1, event_id=508, date=2026-09-20, start=NULL, 'scheduled')
+-- generation resolves event_type 1 + the title inside the window to concrete events; every
+-- occurrence is anchored to one (D20) and keeps no time of its own:
+volunteer_occurrence_vocc (11, sch=1, event_id=501, date=2026-09-13, 'scheduled')
+                          (12, sch=1, event_id=508, date=2026-09-20, 'scheduled')
+-- resolveOccurrenceWindow(11) = event 501's 10:30–11:45 moved by the offsets = 09:45–11:45
 
 volunteer_assignment_vasg (101, occ=11, pos=3, per=3,  req=1, 'pending',  source='coordinator')
                           (102, occ=11, pos=4, per=7,  req=2, 'accepted', source='coordinator')
@@ -1166,8 +1352,8 @@ volunteer_position_vpos   (10, min=2, team=2, 'Song Leader')      (11, … 'Comm
                           (14, … 'Preacher')
 
 volunteer_schedule_vsch   (2, min=2, team=2, 'Sunday Morning Worship',
-                           LinkMode='event_type', event_type_id=1, TitleFilter=NULL,
-                           WindowStart=2026-09-13, active)
+                           LinkMode='event_type', event_type_id=1, TitleFilter='Sunday Morning Worship',
+                           StartOffsetMinutes=0, EndOffsetMinutes=0, WindowStart=2026-09-13, active)
 
 volunteer_requirement_vreq (10..14, sch=2, pos=10..14, Min=1, Max=1)     -- exactly one each
 
@@ -1210,34 +1396,67 @@ That is **UC3**: two ministries, two coordinators, one calendar event. The sound
 ministry with its own schedule against the same event type. Authorization is per ministry (§4), so
 the Worship coordinator cannot touch Coffee Bar's assignments on the shared occurrence.
 
-#### UC4 — Children's Ministry (one ministry, several teams, per-team leaders, attendance visible)
+#### UC4 — Children's Ministry (one ministry, a team per class, per-team leaders, attendance visible)
 
 ```
-volunteer_ministry_vmin (3, "Children's Ministry", active)
-volunteer_team_vtem     (3, min=3, 'Elementary')  (4, min=3, 'Nursery')  (5, min=3, 'Preschool')
+volunteer_ministry_vmin (3, "Children's Ministry", active, SundaySchool=1)   -- may use classes (D29)
+volunteer_team_vtem     (3, min=3, 'Faith City', vtem_grp_ID=41)   -- linked to its class (D23)
+                        (4, min=3, 'Nursery')    (5, min=3, 'Preschool')
 
 group_grp               (40, "Children's Ministry", type=Ministry, grp_ministry_id=3)
                         -- ONE pool for the whole ministry (D19): every team draws on the same people
+                        (41, 'Faith City', type=4 Sunday School Class)
+                        -- core's class: its Student rows are entered on the class page as always
 
 volunteer_scope_vscp    (…, per=61, 'ministry', 3)   -- one coordinator over everything
-                        (…, per=62, 'team',     4)   -- Nursery has its own leader
-                        (…, per=63, 'team',     5)   -- Preschool has its own leader
+                        (…, per=62, 'team',     3)   -- Faith City's one team leader
+                        (…, per=63, 'team',     4)   -- Nursery has its own leader
 
-volunteer_position_vpos (20, min=3, team=3, 'Elementary Teacher')   (21, min=3, team=3, 'Elementary Helper')
-                        (22, min=3, team=4, 'Nursery Teacher')      (23, min=3, team=5, 'Preschool Teacher')
+volunteer_position_vpos (20, min=3, team=3, 'Lead Teacher')   (21, min=3, team=3, 'Helper')
+                        (22, min=3, team=4, 'Nursery Teacher') (23, min=3, team=5, 'Preschool Teacher')
 
--- five weekly "events", five schedules, one per event type (or one type + a title filter):
-volunteer_schedule_vsch (3, min=3, team=3, 'Elementary Bible Hour',      LinkMode='event_type', type=2)
-                        (4, min=3, team=4, 'Nursery Bible Hour',         LinkMode='event_type', type=2,
-                                                                          TitleFilter='Nursery')
-                        (5, min=3, team=3, "Children's Church",          LinkMode='event_type', type=3)
-                        (6, min=3, team=3, 'Wednesday Night Elementary', LinkMode='event_type', type=4)
-                        (7, min=3, team=5, 'Wednesday Night Preschool',  LinkMode='event_type', type=5)
+volunteer_qualification_vqal  -- about eight people for positions 20 and 21 …
+person2group2role_p2g2r (…, grp=41, role=Teacher) × 8   -- … and V2 writes them into the class (D23)
+
+events_event            (601, 'Faith City', 2026-09-13 09:30)   -- the class meets as events whose
+event_audience          (601, 41)                               -- Linked Group is the class (D26)
+
+-- a class's meetings, a church-wide service, and the ministry's own events (D22):
+volunteer_schedule_vsch (3, min=3, team=3, 'Faith City',                LinkMode='class', grp=41)
+                        (4, min=3, team=4, 'Nursery Bible Hour',        LinkMode='event_type', type=2,
+                                                                         TitleFilter='Nursery Bible Hour')
+                        (5, min=3, team=5, 'Wednesday Night Preschool', LinkMode='event_type', type=5,
+                                                                         TitleFilter='Wednesday Night')
+                        (7, min=3, team=5, 'VBS Setup',                 LinkMode='ministry', TitleFilter='VBS',
+                                                                         StartOffsetMinutes=-60)
+-- a one-time event staffed through Staff this event: a hidden single-event schedule, one occurrence
+volunteer_schedule_vsch (8, min=3, team=5, 'Fall Festival',             LinkMode='event', event_id=733,
+                                                                         OneOff=1)
+volunteer_occurrence_vocc (81, sch=8, event_id=733, date=2026-10-31)
 ```
 
-Two schedules (3 and 4) share event type 2 and are separated by `vsch_TitleFilter` — that is what
-the filter column is for. If the church instead creates distinct event types, the filter stays NULL
-and nothing else changes.
+Faith City is a stable class with about eight volunteers and one team leader. Linking the team to
+the class (§2.4) imported the class's existing teachers as Lead Teacher qualifications; from then
+on the coordinator or the team leader ticks the Volunteers grid, and the class page, the Sunday
+School dashboard's teacher count, the cart's "Add Teachers" and the Class Attendance PDF follow,
+because they read the class's Teacher role. The class page says where its teachers are managed
+and no longer changes them. The earlier shape — one "Elementary" team spanning several events —
+could not say which class a volunteer taught and gave check-in no roster, which is why a class is
+its own team.
+
+Schedule 3 follows every event linked to the class, whatever its title — a class that changes topic
+by term keeps its schedule. Schedules 4 and 5 share an event type with other services and name their
+series by `vsch_TitleFilter` — that is what the title column is for, and since D31 it is required and
+exact. Schedule 7 follows the events Children's Ministry owns (`event_ministry_id = 3`) titled "VBS"
+— not "VBS Day 2" — with the crew arriving an hour early.
+
+The coordinator made event 601 and its Sundays in one step on the ministry's **Calendar** tab
+(D24): *New recurring event*, weekly on Sunday for the term, Class = Faith City, pinned to the
+church's Bible Classes calendar the administrator opened to the ministry (D25), with *Staff these
+events* on for the Faith City team — whose class link pre-filled the Class (D23 d). One request made
+the events through the repeat engine, schedule 3 in `class` mode over the term, its occurrences, and
+the default volunteers. The VBS events behind schedule 7 were made the same way without a class,
+which is why that schedule follows the ministry's events by title.
 
 **Attendance beside who served (UC4)**: the occurrence view joins
 `volunteer_assignment_vasg → event_attend(event_id = vocc_event_id, person_id = vasg_per_ID)`
@@ -1354,6 +1573,7 @@ Registered by adding three `require` lines to `src/api/index.php` next to the ex
 ```php
 require __DIR__ . '/routes/ministries/ministries-setup.php';
 require __DIR__ . '/routes/ministries/ministries-schedule.php';
+require __DIR__ . '/routes/ministries/ministries-events.php';   // D24, the Calendar tab
 require __DIR__ . '/routes/ministries/ministries-me.php';
 ```
 
@@ -1372,27 +1592,29 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | Method | Path | Purpose | Auth | Request → Response |
 |---|---|---|---|---|
 | GET | `/api/ministries/ministries` | list ministries **scoped** to the caller | Coordinator | `?manageable=1&active=1` → `{ministries:[{id,name,description,active,teamCount,openGapCount}]}` |
-| POST | `/api/ministries/ministries` | create | **Manager** | `{name,description}` → `201 {ministry:{…}}`; `409` on duplicate name |
-| GET | `/api/ministries/ministries/{ministryId}` | detail incl. teams (with their leaders), positions, pool and the overview `summary` | Coordinator of it | `MinistryMiddleware` → `{ministry, summary:{teamCount,volunteerCount,unfilledPositionCount}, teams[{…,leaders:[{scopeId,personId,personName}]}], positions[], poolGroupId, poolGroupName, pool[]}`. `unfilledPositionCount` is scoped to the caller — §5.4 |
-| POST | `/api/ministries/ministries/{ministryId}` | update | Coordinator of it | `{name?,description?,active?,helpWanted?,helpWantedText?}` → `{ministry}`. Renaming renames the pool Group (D19) |
+| POST | `/api/ministries/ministries` | create | **Manager** | `{name,description,sundaySchool?}` → `201 {ministry:{…}}`; `409` on duplicate name. Every ministry on the wire carries `sundaySchool` (D29), strictly boolean (`400` otherwise) |
+| GET | `/api/ministries/ministries/{ministryId}` | detail incl. teams (with their leaders and linked class), positions, pool and the overview `summary` | Coordinator of it | `MinistryMiddleware` → `{ministry, summary:{teamCount,volunteerCount,unfilledPositionCount}, teams[{…,leaders:[{scopeId,personId,personName}],classGroupId,classGroupName}], positions[], poolGroupId, poolGroupName, pool[]}`. `unfilledPositionCount` is scoped to the caller — §5.4 |
+| POST | `/api/ministries/ministries/{ministryId}` | update | Coordinator of it | `{name?,description?,active?,helpWanted?,helpWantedText?,sundaySchool?}` → `{ministry}`. Renaming renames the pool Group (D19). Changing `sundaySchool` is a manager's (`403` for a coordinator; the current value is accepted); turning it off is `409` while a team is linked, with `teams:[{id,name}]` (D29) |
 | DELETE | `/api/ministries/ministries/{ministryId}` | delete | **Manager** | `409` while the ministry is still **active** ("Deactivate this ministry before deleting it."). Once deactivated the delete is total — teams, positions, qualifications, schedules, occurrences, assignments and their responses/swaps/outbox rows, service history included — plus the scope rows (§2.15), the pool Group and the calendar, in one transaction *(revised 2026-09-17; the earlier occurrence/assignment 409 is gone)* |
 | GET | `/api/ministries/ministries/{ministryId}/teams` | list | Coordinator of it | `{teams:[…]}` |
-| POST | `/api/ministries/ministries/{ministryId}/teams` | create | Coordinator of it | `{name,description}` → `201 {team}` |
-| GET/POST/DELETE | `/api/ministries/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware` |
+| POST | `/api/ministries/ministries/{ministryId}/teams` | create | Coordinator of it | `{name,description,classGroupId?,importPositionId?,importPositionName?}` → `201 {team}`. The class keys are D23's (§2.4); a class is `400` while the ministry's `sundaySchool` is off (D29) |
+| GET | `/api/ministries/ministries/{ministryId}/linkable-classes` | Sunday School classes a team may link (D23) | Coordinator of it | `?teamId=` keeps that team's own class in the list → `{sundaySchool, classes:[{id,name,teacherCount}]}`: every type-4 group not linked to another team, with its living Teacher-role members; `[]` while `sundaySchool` is off (D29) |
+| GET/POST/DELETE | `/api/ministries/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware`. Every team on the wire carries `classGroupId` and `classGroupName`. `POST` also takes `classGroupId` (`null` unlinks, absent leaves it) with `importPositionId`/`importPositionName` — `400` for a group that is not a class or has no Teacher role, or for teachers with no position to import into; `409` for a class another team holds; `403` for a team leader (§2.4); `400` for any class while the ministry's `sundaySchool` is off (D29). When the class changes, `classEvents: keep\|remove\|move` (D28, default `keep`, `move` needs a new class) says what happens to the ministry's own events of the old class. `DELETE` → `409` for the ministry's last team (D18); otherwise it takes positions, schedules, occurrences, assignments and team-leader grants with it (§2.4, revised 2026-09-26) — a linked class keeps its membership — and takes `{classEvents: keep\|remove\|delete}` (D28): `delete` is `409` while another ministry has volunteers on one of the events (unless Add Events) or core refuses one, and then nothing is deleted |
+| GET | `/api/ministries/teams/{teamId}/class-events` | the team dialog's question (D28) | Coordinator / Team Leader of it | `{teamId,ministryId,ministryName,classGroupId,classGroupName,total,upcoming,otherStaffing:[{ministryId,ministryName,assigned,eventCount}]}` — the events the ministry owns whose Linked Group is the team's class; `upcoming` = today on; zeros for a team with no class |
 | GET | `/api/ministries/ministries/{ministryId}/pool` | who is in the ministry's pool Group (D19) | Coordinator of it | `{groupId,groupName,members:[{personId,displayName,inPool,qualifications[]}]}`, alphabetical |
 | POST | `/api/ministries/ministries/{ministryId}/pool/{personId}` | add to the pool | Coordinator of it — **no `ManageGroups` needed** (§4.6) | `201 {personId,added:true}`; `200 {added:false}` when already there. Writes through the Propel membership model, so `Hooks::GROUP_MEMBER_ADDED` fires (G3) |
 | POST | `/api/ministries/ministries/{ministryId}/pool/from-cart` | **cart sink** (P5/P6): put everyone in the session cart in the pool | Coordinator of it | no body — the people come from `Cart::getCartPeople()` → `200 {added:int, alreadyMembers:int}`; `400` when the cart is empty. Idempotent per person; grants **no** qualification, and the cart is not emptied. This is what "Add from Cart" on S3 calls |
-| DELETE | `/api/ministries/ministries/{ministryId}/pool/{personId}` | remove from the pool | Coordinator of it | `200`; `404` when they are not in it. Qualifications are **not** revoked (D19) |
-| DELETE | `/api/ministries/ministries/{ministryId}/volunteers/{personId}` | "Remove Volunteer": revoke every qualification for a position of this ministry, cancel every live assignment on a still-to-come occurrence of it, and remove them from the pool — one transaction | Coordinator of it (**ministry-level**: a team leader gets `403`) | `200 {personId,qualifications,assignments,removedFromPool}`; `404` for an unknown person. Idempotent: a second call reports zeroes. Past assignments are untouched — §5.4 |
+| DELETE | `/api/ministries/ministries/{ministryId}/pool/{personId}` | remove from the pool | Coordinator of it | `200`; `404` when they are not in it. Qualifications are **not** revoked (D19), and schedule defaults are kept (D32) |
+| DELETE | `/api/ministries/ministries/{ministryId}/volunteers/{personId}` | "Remove Volunteer": revoke every qualification for a position of this ministry, cancel every live assignment on a still-to-come occurrence of it, remove them from the pool, and clear every schedule default of the ministry that names them (D32) — one transaction | Coordinator of it (**ministry-level**: a team leader gets `403`) | `200 {personId,qualifications,assignments,removedFromPool,defaults}`; `404` for an unknown person. Idempotent: a second call reports zeroes. Past assignments are untouched — §5.4 |
 | GET | `/api/ministries/ministries/{ministryId}/members` | the qualification matrix's rows | Coordinator of it | pool ∪ everyone qualified for a position in view (D19): `{members:[{personId,displayName,inPool,groupIds[],qualifications:[positionId],qualificationIds{}}]}` |
 | GET | `/api/ministries/teams/{teamId}/members` | the same, narrowed to one team's positions | Coordinator / Team Leader | as above |
 | GET | `/api/ministries/ministries/{ministryId}/positions` | list | Coordinator / Team Leader | `?active=1&teamId=` → `{positions:[…]}` |
 | POST | `/api/ministries/ministries/{ministryId}/positions` | create | Coordinator of it | `{name,description,teamId?,order?,recruiting?}` → `201`; `409` duplicate. `recruiting` defaults **false** and is **strictly** boolean — `true`/`false`/`1`/`0` and their string spellings, anything else `400` (the sanitizer has no bool type, and `(bool) "no"` is `true`) |
-| GET/POST/DELETE | `/api/ministries/positions/{positionId}` | read / update / deactivate-or-delete | Coordinator of the ministry | `POST {…,recruiting?}` with the same strict boolean rule; `DELETE` → `409` when referenced (§2.6). Every position on the wire carries `recruiting`, so an absent key never has to be read as "off" |
+| GET/POST/DELETE | `/api/ministries/positions/{positionId}` | read / update / deactivate-or-delete | Coordinator of the ministry | `POST {…,recruiting?}` with the same strict boolean rule; `DELETE` takes qualifications, staffing requirements and assignments with it (§2.6, revised 2026-09-26). Every position on the wire carries `recruiting`, so an absent key never has to be read as "off" |
 | GET | `/api/ministries/positions/{positionId}/qualifications` | who is qualified | Coordinator / Team Leader | `{qualifications:[{id,personId,displayName,active,grantedDate}]}` |
-| POST | `/api/ministries/positions/{positionId}/qualifications` | grant | Coordinator / Team Leader **of that position** | `{personId,notes?}` → `201`; idempotent — re-granting a deactivated row reactivates it |
+| POST | `/api/ministries/positions/{positionId}/qualifications` | grant | Coordinator / Team Leader **of that position** | `{personId,notes?}` → `201`; idempotent — re-granting a deactivated row reactivates it. On a team linked to a class the person also becomes a teacher; `409` for a member of the class under another role (D23, §2.7) |
 | ~~POST~~ | ~~`/api/ministries/positions/{positionId}/qualifications/from-cart`~~ | **RETIRED.** Bulk-qualifying the cart for one position had no caller left once S3's cart dialog stopped asking for a position; the cart now fills the pool instead (`/pool/from-cart` above) | — | — |
-| DELETE | `/api/ministries/qualifications/{qualificationId}` | revoke (**deactivates**) | Coordinator / Team Leader | `200 {qualification}` with `active:false` |
+| DELETE | `/api/ministries/qualifications/{qualificationId}` | revoke (**deactivates**) | Coordinator / Team Leader | `200 {qualification}` with `active:false`. The person's last one on a linked team ends their Teacher role in the class (D23, §2.7) |
 | GET | `/api/ministries/people/{personId}/qualifications` | one person's qualifications | Coordinator+, or self | scoped to the caller's ministries |
 | GET | `/api/ministries/scopes` | list scope grants | **Manager**, or coordinator of the named ministry | `?ministryId=&teamId=&personId=` |
 | POST | `/api/ministries/scopes` | grant coordinator / team-leader authority | **Manager** (ministry scope) or coordinator of the ministry (team scope) | `{personId,scopeType,scopeId}` → `201`; idempotent |
@@ -1402,16 +1624,26 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 
 | Method | Path | Purpose | Auth | Request → Response |
 |---|---|---|---|---|
-| GET | `/api/ministries/ministries/{ministryId}/schedules` | list | Coordinator / Team Leader | `{schedules:[…]}` |
-| POST | `/api/ministries/ministries/{ministryId}/schedules` | create | Coordinator of it | `{name,linkMode,eventTypeId?,titleFilter?,recurType?,recurDow?,recurDom?,startTime?,endTime?,windowStart,windowEnd?,teamId?}` → `201`; `400` when the §2.8 invariants fail |
-| GET/POST/DELETE | `/api/ministries/schedules/{scheduleId}` | read / update / delete | Coordinator | `DELETE` cascades occurrences **only when none has an assignment**, else `409` |
-| POST | `/api/ministries/schedules/{scheduleId}/generate` | materialise occurrences | Coordinator | `{through?: 'YYYY-MM-DD', defaults?: [{positionId, personId, accepted}]}` → `{created:int, existing:int, through:'…', assigned:int, skipped:int}`. **Idempotent** (§2.9). Defaults to `today + vsch_GenerateAheadDays`. `defaults` (review 2026-09-18) assigns one person per position on every occurrence **this run creates** — never on rows an earlier run made — with `allowOutsidePool`; `accepted: true` records a coordinator-channel acceptance and skips the "please answer" message. Every default is validated before the first occurrence is written. |
+| GET | `/api/ministries/ministries/{ministryId}/schedules` | list (never the hidden Staff this event schedules) | Coordinator / Team Leader | `{schedules:[{id,ministryId,teamId,name,linkMode,eventTypeId,eventTypeName,titleFilter,groupId,groupName,groupSundaySchool,eventId,eventTitle,eventStart,startOffsetMinutes,endOffsetMinutes,windowStart,windowEnd,horizonWeeks,generateThrough,active,oneOff,occurrenceCount}]}` — `horizonWeeks` is the church-wide scheduling horizon and `generateThrough` the last date a Generate run reaches (the horizon, or `windowEnd` when that comes first, D31); `/api/ministries/teams/{teamId}/schedules` is the team-gated twin |
+| POST | `/api/ministries/ministries/{ministryId}/schedules` | create | Coordinator of it, or leader of the payload's team | `{name,teamId,linkMode:'event_type'\|'class'\|'ministry',eventTypeId?,titleFilter?,groupId?,startOffsetMinutes?,endOffsetMinutes?,windowStart,windowEnd?,active?,requirements?}` → `201 {schedule, generated}` — the new schedule generates on Save (D33): `generated` is that run up to the horizon, with its saved defaults assigned, shaped as the Generate answer below, and `null` for a schedule saved inactive; a run over the occurrence cap refuses the schedule (`400`, nothing written); `titleFilter` is required in the `event_type` and `ministry` modes and matched exactly, ignoring case (D31); `400` when the §2.8 invariants fail — a missing or unknown type or group, a missing title, no upcoming active event to follow (D31, naming what was looked for), an offset outside ±720, an `eventId`, the `event` or retired `standalone` mode, or any removed field (`recurType`, `recurDow`, `recurDom`, `startTime`, `endTime`, `generateAheadDays`) — and for the `class` mode while the ministry's `sundaySchool` is off (D29; an existing class schedule may be edited but not re-pointed) Each `requirements` row may carry the position's default volunteer (D32): `defaultPersonId` (`null` clears it, absent keeps the stored one) and `defaultAccepted`; a new default must hold an active qualification (`403`; an unknown person `404`) |
+| GET/POST/DELETE | `/api/ministries/schedules/{scheduleId}` | read / update / delete | Coordinator | `POST` takes any subset of the create payload; switching mode clears the old mode's columns; a Staff this event schedule keeps its mode and event. Changing what it follows (mode, type, title, class) is `400` unless an upcoming active event matches; nothing else is refused for that, but a type or ministry schedule with no title must be given one (D31). `DELETE` cascades occurrences **only when none has an assignment**, else `409` |
+| POST | `/api/ministries/ministries/{ministryId}/staffed-events` | **Staff this event** (D22): a hidden `event`-mode schedule (`oneOff`), its staffing needs and its one occurrence, in one transaction | Coordinator of it, or leader of the payload's team | `{eventId,teamId,name?,startOffsetMinutes?,endOffsetMinutes?,requirements?}` → `201 {occurrence,schedule}`; `400` for an unknown, inactive or past event, a team of another ministry, a bad offset or need; `409` when that team already staffs that event this way. Any upcoming event may be staffed (anchoring is read-only). Deleting the occurrence deletes the schedule |
+| POST | `/api/ministries/ministries/{ministryId}/events` | **a ministry's own events** (D24), one or a series, through core — `ministries-events.php` | Coordinator of it or a global manager; team leaders and self-service logins `403` | `{title, eventTypeId, description?, linkedGroupId?, calendarIds?, startTime, endTime}` plus either `{date}` or `{recurrence:{type:'weekly'\|'monthly'\|'yearly', dow?, dom?, doy?:'MM-DD'}, rangeStart, rangeEnd}` → `201 {events:[{id,title,start,end}]}`. `calendarIds` omitted = the ministry's own calendar; each must pass `mayPin()` for this ministry (`403` naming the calendar). `linkedGroupId` is `400` while the ministry's `sundaySchool` is off (D29). A series uses the repeat engine and its cap (366); `rangeEnd` is required and not capped by the scheduling horizon. It only creates events (D33): a `staff` key is `400` (*"Staffing is set up after the events are created"*). `400` for a missing or malformed field, an unknown type, class or calendar, or a recurrence with no date in the range or over the cap; nothing is written on any error |
+| POST | `/api/ministries/ministries/{ministryId}/events/staff` | **Staff them** (D33): a new series goes to every schedule of the ministry that follows it | Coordinator of it or a global manager; team leaders and self-service logins `403` | `{eventIds:[int]}` → `{schedules:[{schedule, widened, created, existing, from, through, assigned, skipped, unqualified}]}`. The events must be this ministry's (`403`, unknown `404`) and one series — one title ignoring case, one type, one set of Linked Groups (`400`). Every active, non-one-off schedule of the ministry in `class` mode on their class, `ministry` mode with exactly their title or `event_type` mode with their type and exactly their title (`findSchedulesFollowing()`) is widened to cover them (D30's rule; `widened` says whether its dates moved), generated through the last event and never past the horizon, in one transaction; then each one's saved defaults go on the occurrences its run made (D32). `schedules: []` when none follows them: nothing is written, and the page offers Add schedule |
+| GET | `/api/ministries/ministries/{ministryId}/events` | the Calendar tab's list (D24, D26) | Coordinator of it | `?past=1&from=&to=` → `{events:[{id,title,start,end,eventTypeId,eventTypeName,inactive,calendars:[{id,name}],linkedGroups:[{id,name}],headcount:{recorded,total},staffing:[{teamId,teamName,occurrenceIds,needed,filled,pending,gap,requirementCount,status}],otherStaffing:[{ministryId,ministryName,assigned}]}],from,to,past,limit,capped}` — events whose `event_ministry_id` is the ministry, inactive ones included. Upcoming = today to a year ahead, soonest first; `past=1` = the year before today, newest first; cap 500. `staffing` is per team of THIS ministry over its scheduled occurrences anchored to the event, from `getGaps()`; `status` is `unplanned` (no needs set), `gap`, `pending` or `filled`. `otherStaffing` (D28) is every OTHER ministry with an occurrence on the event and how many of its volunteers are assigned (pending or accepted) |
+| DELETE | `/api/ministries/ministries/{ministryId}/events` | the Calendar tab's **Delete events** (D28) | Coordinator of it or a global manager; team leaders and self-service logins `403` | `{eventIds:[int]}` → `{deleted}`. `400` for an empty or malformed list, `404` for an unknown event, `403` for an event this ministry does not own. Each is re-checked with `canWriteEvent()` and deleted through `EventService::deleteEvent()` in one transaction; `409` (with `ministries`) while another ministry has volunteers assigned on one of them unless the caller holds Add Events, and `409` with core's reason (and `eventId`) when core refuses one — nothing is deleted then |
+| GET | `/api/ministries/positions/{positionId}/eligible` | the schedule dialog's Default volunteer (D32) | Coordinator / Team Leader of the position | `?q=` → `{people:[…]}` — `/schedules/{id}/eligible`'s list for a schedule not created yet: the position's team's pool annotates it |
+| GET | `/api/ministries/event-types` | the schedule dialog's and the New event dialog's type picker | Coordinator / Team Leader | `{eventTypes:[{id,name}], defaultEventTypeId}` — active types; here because a portal team leader cannot reach `/api/events/types`. `defaultEventTypeId` (D31) is the type a ministry's new event starts with: `iVolunteerDefaultEventTypeId` when it names an active type, else the active type named "Other", else `null` |
+| GET | `/api/ministries/event-series` | the title picker | Coordinator / Team Leader | `?eventTypeId=` or `?ministryId=`, `&from=` → `{series:[{title,nextStart,count}]}` — distinct titles of the upcoming active events of the type, or owned by the ministry, one per title ignoring case (as generation matches them, D31); `400` with neither |
+| GET | `/api/ministries/classes` | the class picker | Coordinator / Team Leader | `?from=` → `{classes:[{groupId,name,sundaySchool,upcomingCount,nextStart}]}` — active Sunday School classes (type 4) plus any group with upcoming active linked events |
+| GET | `/api/ministries/upcoming-events` | the Staff an event picker | Coordinator / Team Leader | `?q=&from=&to=&teamId=` → `{events:[{id,title,start,end,eventTypeId,eventTypeName,staffedByTeam}]}` — active events from today on, title substring (`%`/`_` literal), soonest first, at most 50; `staffedByTeam` says whether `teamId` already has an occurrence on it; `403` for a team the caller does not manage |
+| POST | `/api/ministries/schedules/{scheduleId}/generate` | materialise occurrences | Coordinator | `{through?: 'YYYY-MM-DD', defaults?: [{positionId, personId|null, accepted}]}` → `{created:int, existing:int, from:'…', through:'…', assigned:int, skipped:int, unqualified:int, noEvents:bool, searched:{linkMode,groupId,groupName,eventTypeId,eventTypeName,titleFilter,ministryId,ministryName,eventId,eventTitle}}`. Anchors one occurrence to each active event the schedule's mode finds in the window, up to the scheduling horizon (D31: `through` may narrow the run, never pass today + `iVolunteerSchedulingHorizonWeeks`; a Staff this event schedule is not capped); never creates or changes an event. `from`/`through` are the dates actually looked at (`from` is after `through` when the window has ended or not begun); `noEvents` is true when no event was found at all, and `searched` names what was looked for, so the screen can say why (D30). **Idempotent** (§2.9). `through` defaults to today + the horizon. `defaults` (review 2026-09-18; D32) is **saved on the schedule's staffing needs** first — one entry per position, a blank `personId` clearing that position's default, `400` for a position the needs do not ask for, `403` for a new default who is not qualified — in the same transaction as the generation, so a refused default leaves nothing made. Then every **saved** default is assigned on each occurrence **this run creates** — never on rows an earlier run made — with `allowOutsidePool`; `accepted: true` records a coordinator-channel acceptance and skips the "please answer" message. A run without `defaults` assigns the saved ones unchanged. `assigned`, `skipped` (the assignment rules refused it on one occurrence) and `unqualified` (the default no longer holds an active qualification, so the position stays open) count the default assignments. |
 | GET | `/api/ministries/schedules/{scheduleId}/eligible?positionId=` | who may fill a position on the occurrences about to be generated | Coordinator | The Generate Occurrences dialog's "Fill by default with" picker: the same list as `/occurrences/{id}/eligible` (rotation order, `inPool` annotated) without the double-duty annotation, since no occurrence exists yet. |
-| GET | `/api/ministries/schedules/{scheduleId}/requirements` | template requirements | Coordinator / Team Leader | `{requirements:[…]}` |
+| GET | `/api/ministries/schedules/{scheduleId}/requirements` | template requirements | Coordinator / Team Leader | `{requirements:[{id,scheduleId,occurrenceId,positionId,positionName,minCount,maxCount,notes,source,defaultPersonId,defaultPersonName,defaultAccepted,defaultQualified,…}]}` — the default volunteer per position (D32); `defaultQualified` is `false` while its qualification is revoked, `null` with no default |
 | POST | `/api/ministries/schedules/{scheduleId}/requirements` | upsert a template requirement | Coordinator | `{positionId,minCount,maxCount?,notes?}` → `200/201`; upsert on the unique key |
 | DELETE | `/api/ministries/requirements/{requirementId}` | remove | Coordinator | `200` |
 | POST | `/api/ministries/occurrences/{occurrenceId}/requirements` | upsert a **per-occurrence override** | Coordinator / Team Leader | `{positionId,minCount,maxCount?}` |
-| GET | `/api/ministries/occurrences` | coordinator occurrence list | Coordinator / Team Leader | **`from` and `to` are required** (M9); `?ministryId=&teamId=&hasGaps=1`; hard cap 500 → `{occurrences:[{id,scheduleId,scheduleName,ministryId,teamId,eventId,start,end,status,requiredCount,liveCount,gapCount,pendingCount}]}` |
+| GET | `/api/ministries/occurrences` | coordinator occurrence list | Coordinator / Team Leader | **`from` and `to` are required** (M9); `?ministryId=&teamId=&scheduleId=&text=&hasGaps=1`; hard cap 500 → `{occurrences:[{id,scheduleId,scheduleName,scheduleOneOff,ministryId,teamId,eventId,occurrenceDate,start,end,status,requiredCount,liveCount,gapCount,pendingCount}]}` — `start`/`end` are the volunteers' times (event plus offsets, D21), null once the event was deleted |
 | GET | `/api/ministries/occurrences/{occurrenceId}` | detail | scope | `OccurrenceMiddleware` |
 | GET | `/api/ministries/occurrences/{occurrenceId}/staffing` | **the workhorse** | scope | `{occurrence, requirements:[{positionId,positionName,minCount,maxCount,liveCount,gapCount,assignments:[{id,personId,displayName,status,source,respondedDate,attendance}]}]}` — `attendance` is present only for linked occurrences (E10) |
 | GET | `/api/ministries/occurrences/{occurrenceId}/eligible` | who may be assigned | scope | `?positionId=&q=` → `{people:[{personId,displayName,inPool,lastServedDate,conflictPositionId}]}`, ordered by `lastServedDate ASC NULLS FIRST` (the rotation, §2.17) |
@@ -1455,6 +1687,17 @@ annotate every route with `@OA\*` DocBlocks above the named function or above th
 `docs/openapi/generated/private-api.yaml`. Security annotations follow `api-development.md`:
 `AuthMiddleware` ⇒ `security={{"ApiKeyAuth":{}}}` + `401`; a role middleware ⇒ also `403`.
 
+#### 3.3.5 Calendar grants — core `src/api/routes/calendar/calendar.php` (D25)
+
+They live beside the calendar routes they extend, not under `/api/ministries`; the service is
+`VolunteerCalendarService`.
+
+| Method | Path | Purpose | Auth | Request → Response |
+|---|---|---|---|---|
+| GET | `/api/calendars/{id}/ministries` | the ministries a church calendar is opened to | Add Events, rollout on | `{calendarId, ministries:[{id,name,active}]}` ordered by name; `404` unknown calendar |
+| PUT | `/api/calendars/{id}/ministries` | replace them | Add Events, rollout on | `{ministryIds:[int]}` (`[]` closes it) → same shape; `400` not a list of positive ids or an unknown ministry, `409` for a ministry's own calendar |
+| GET | `/api/calendars/pinnable` | the calendars the caller may pin an event of a ministry to | any signed-in user | `?ministryId=` (omit for none) → `{ministryId, calendarIds:[int]}`: every calendar with Add Events; otherwise the ministry's own calendar plus the calendars opened to it when the caller manages the ministry, else `[]` |
+
 ### 3.4 Service classes
 
 All in `src/ChurchCRM/Service/`, all **instance** classes instantiated with `new` (F17), Propel
@@ -1476,6 +1719,8 @@ final class VolunteerAuthorizationService
     public function canManageAssignment(User $user, VolunteerAssignment $a): bool;
     public function canRespondToAssignment(User $user, VolunteerAssignment $a): bool;  // self only
     public function canManageMinistryLinkedEvent(User $user, Event $event): bool;      // §4.6
+    /** Add Events, or (rollout on) a coordinator of the event's ministry — §4.6 "Ministry-linked events". */
+    public function canWriteEvent(User $user, ?int $eventMinistryId): bool;
 
     /** Ministry ids this user may administer; [] for a plain volunteer. Scopes LIST queries. */
     public function getManagedMinistryIds(User $user): array;
@@ -1494,12 +1739,34 @@ final class VolunteerAuthorizationService
 ```
 
 ```php
+final class VolunteerClassLinkService   // D23, §2.4 — the team ↔ Sunday School class link
+{
+    public static function findLinkedTeam(int $groupId): ?VolunteerTeam;
+    public static function teacherRoleId(Group $class): ?int;                      // by role NAME, as core reads it
+    /** The hooks' and /api/groups' question: null, or the 409 naming the ministry and team. Free at v1. */
+    public static function findTeacherWriteConflict(int $groupId, ?int $fromRoleId, ?int $toRoleId): ?VolunteerException;
+    public static function findTeacherRoleLock(int $groupId, int $roleId): ?VolunteerException;   // rename/delete the Teacher role
+    public static function findClassTypeLock(int $groupId): ?VolunteerException;                  // type away from Sunday School
+    public static function describeLink(int $groupId, User $viewer): ?array;       // the class page / group view note
+    public static function assertMinistryTeaches(int $ministryId): void;           // D29: 400 unless vmin_SundaySchool is on
+    public function listLinkableClasses(?int $teamId = null): array;                // [{id,name,teacherCount}]
+    public function requireLinkableClass(int $groupId, ?int $teamId): Group;       // 400 / 409
+    public function teacherPersonIds(Group $class): array;                          // who linking imports
+    public function assertMayTeach(Group $class, int $personId): void;              // 409 for a Student
+    public function addTeacher(Group $class, int $personId): bool;                  // managed write
+    public function removeTeacherIfUnqualified(VolunteerTeam $t, Group $class, int $personId): bool;
+}
+```
+
+```php
 final class VolunteerMinistryService
 {
-    public function createMinistry(string $name, string $description, User $actor): VolunteerMinistry;
+    public function createMinistry(string $name, string $description, User $actor, bool $sundaySchool = false): VolunteerMinistry;   // D29 switch
     public function updateMinistry(VolunteerMinistry $m, array $fields, User $actor): VolunteerMinistry;
     public function deleteMinistry(VolunteerMinistry $m, User $actor): void;   // 409 while the ministry is active (§3.3.1, 2026-09-17); otherwise deletes everything — assignments explicitly first (their position key is RESTRICT), then the row, whose FK cascades take teams/positions/qualifications/schedules/occurrences; the polymorphic volunteer_scope_vscp rows (no FK, §2.15), the pool Group and the calendar are removed explicitly in the same transaction
-    public function createTeam(VolunteerMinistry $m, string $name, string $description, User $actor): VolunteerTeam;
+    public function createTeam(VolunteerMinistry $m, string $name, string $description, User $actor, array $classLink = []): VolunteerTeam;
+    public function updateTeam(VolunteerTeam $t, array $fields, User $actor): VolunteerTeam;   // D23: classGroupId / importPositionId / importPositionName link, relink or unlink a class; D28: classEvents
+    public function deleteTeam(VolunteerTeam $t, User $actor, string $classEvents = 'keep'): void;   // D28: keep / remove / delete the class's owned events
     // D19 — the ministry's own pool Group. No link/unlink: createMinistry() made it.
     public function getPoolGroup(int $ministryId): ?Group;
     public function addPoolMember(int $ministryId, int $personId, User $actor): bool;      // true when a row was created
@@ -1522,15 +1789,41 @@ final class VolunteerMinistryService
 ```php
 final class VolunteerScheduleService
 {
+    /** event_type, class or ministry mode (D22); the event mode only through staffEvent(). */
     public function createSchedule(VolunteerMinistry $m, array $fields, User $actor): VolunteerSchedule;
-    /** Idempotent. Returns ['created'=>int,'existing'=>int,'through'=>string]. */
+    /** D33: createSchedule() + generateOccurrences() to the horizon in one transaction; ['schedule', 'generated' => ?run], null when saved inactive. */
+    public function createScheduleAndGenerate(VolunteerMinistry $m, array $fields, User $actor): array;
+    /** D33: the ministry's active, non-one-off schedules that follow a series — class on its groups, ministry or event_type on its title (and type). */
+    public function findSchedulesFollowing(int $ministryId, string $title, int $eventTypeId, array $groupIds): array;
+    /** Staff this event: hidden event-mode schedule + needs + one occurrence; 409 for a second one per team and event. */
+    public function staffEvent(VolunteerMinistry $m, array $fields, User $actor): VolunteerOccurrence;
+    /** Idempotent, capped at the horizon (D31). Returns ['created'=>int,'existing'=>int,'from'=>string,'through'=>string,'createdIds'=>int[]]. */
     public function generateOccurrences(VolunteerSchedule $s, ?\DateTimeInterface $through = null): array;
-    /** Occurrence start/end, resolved from the event row when linked. Single source of truth. */
+    /** D31: iVolunteerSchedulingHorizonWeeks, held within 1–52; and the last date a run with no `through` reaches. */
+    public static function horizonWeeks(): int;
+    public function generationThrough(VolunteerSchedule $s): string;
+    /** D31: whether an active event the schedule follows is still to come — the rule schedule creation and re-pointing obey. */
+    public function hasUpcomingEvents(VolunteerSchedule $s): bool;
+    /** D30: what a schedule looks for, with names — the Generate answer's `searched`. */
+    public function describeEventSource(VolunteerSchedule $s): array;
+    /** The active events a schedule's mode finds in a date range; titles match exactly, ignoring case (D31). */
+    public function findEvents(VolunteerSchedule $s, \DateTimeInterface $start, \DateTimeInterface $end): array;
+    /** The volunteers' start/end: the anchored event's plus the schedule's offsets (D21). Single source of truth. */
     public function resolveOccurrenceWindow(VolunteerOccurrence $o): array;   // ['start'=>?DateTime,'end'=>?DateTime]
     /** Occurrence-level overrides unioned with schedule templates. Nothing else may re-implement this. */
     public function getEffectiveRequirements(int $occurrenceId): array;
     public function upsertRequirement(?VolunteerSchedule $s, ?VolunteerOccurrence $o, VolunteerPosition $p, int $min, ?int $max): VolunteerRequirement;
+    /** D32: the Generate dialog's defaults, saved on the template rows (a blank one clears). */
+    public function saveDefaults(VolunteerSchedule $s, array $defaults, User $actor): void;
     public function cancelOccurrence(VolunteerOccurrence $o, User $actor): VolunteerOccurrence;
+}
+
+/** D31's daily top-up, from runTimerJobs(): every active, non-one-off schedule of an active ministry to the horizon. */
+final class VolunteerScheduleTopUp
+{
+    /** Once a day (claimed in config_cfg) unless $force; assigns the saved defaults (D32). Null when skipped. */
+    public static function run(bool $force = false): ?array;   // ['ranAt','schedules','created','failed','assigned','skipped','unqualified']
+    public static function lastResult(): ?array;               // for Admin → Ministry Settings
 }
 ```
 
@@ -1547,7 +1840,39 @@ final class VolunteerAssignmentService
     /** The single gap implementation. Everything that shows a gap calls this. */
     public function getGaps(array $occurrenceIds): array;
     public function getEligiblePeople(VolunteerOccurrence $o, VolunteerPosition $p, ?string $query = null): array;
+    /** The same list before the schedule exists (the schedule dialog's Default volunteer, D32): the position's team's pool. */
+    public function getEligiblePeopleForPosition(VolunteerPosition $p, ?string $query = null): array;
+    /** D32: save the dialog's defaults, generate, assign the saved defaults on what this run created. $actor null = the top-up. */
+    public function generateWithDefaults(VolunteerSchedule $s, ?\DateTimeInterface $through, ?array $defaults, ?User $actor): array;
+    /** D33: a new schedule's Save — createScheduleAndGenerate(), then its saved defaults on the occurrences it made. */
+    public function createScheduleWithOccurrences(VolunteerMinistry $m, array $fields, User $actor): array;
+    /** D32: each saved default on the given new occurrences; ['assigned','skipped','unqualified']. */
+    public function assignScheduleDefaults(VolunteerSchedule $s, array $occurrenceIds, ?User $actor): array;
     public function markCompleted(\DateTimeInterface $upTo): int;   // called from the timer job
+}
+```
+
+```php
+final class VolunteerEventService   // D24 / D26 — a ministry's own events, and the event facts V2 reads
+{
+    /** One event or a series through EventService, pinned by mayPin() — one transaction; event.created after the commit. Never staffs them (D33). */
+    public function createMinistryEvents(VolunteerMinistry $m, array $input, User $actor): array;
+    /** D33 "Staff them": the series goes to every schedule following it, each widened (D30), generated and assigned its saved defaults. */
+    public function staffOnFollowingSchedules(VolunteerMinistry $m, array $eventIds, User $actor): array;
+    /** The Calendar tab: the ministry's events with pins, Linked Groups, headcount totals and per-team staffing from getGaps(). */
+    public function listMinistryEvents(VolunteerMinistry $m, string $from, string $to, bool $newestFirst): array;
+    /** Attendance-count totals per event, summed as the core event view sums them. */
+    public function headcountTotals(array $eventIds): array;
+    /** The occurrence page's Headcount card: categories, total, editor link for an editor, check-ins vs the roster. */
+    public function headcount(Event $event, User $viewer): array;
+    /** D28: per event, the OTHER ministries staffing it and how many of their volunteers are assigned. */
+    public function otherMinistriesStaffing(int $ministryId, array $eventIds): array;
+    /** D28: the owned events of a class — total, upcoming, other ministries' staffing — for the team dialog. */
+    public function summarizeOwnedClassEvents(int $ministryId, int $groupId): array;
+    /** D28: keep / remove / move / delete them, in the caller's transaction, each re-checked with canWriteEvent(). */
+    public function applyClassEventsChoice(int $ministryId, int $groupId, ?int $newGroupId, string $choice, User $actor): int;
+    /** D28: the Calendar tab's Delete events — owned events only, through EventService::deleteEvent(), all or none. */
+    public function deleteOwnedEvents(VolunteerMinistry $m, array $eventIds, User $actor): int;
 }
 ```
 
@@ -1590,11 +1915,13 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 | Calendar | `src/ChurchCRM/dto/FullCalendarEvent.php:52-75` | add `extendedProps.volunteerGapCount` / `volunteerStaffed` for events the caller may see (E13) |
 | Global search | `src/api/routes/search.php:39-47` + a new `VolunteerSearchResultProvider` | E/P2. Results scoped by `getManagedMinistryIds()`. |
 | Cart | `src/skin/js/cart.js:606-636` (dropdown) + `POST /api/ministries/ministries/{id}/pool/from-cart` | P6. Adding a V2 entry to the dropdown means editing that hardcoded function — flagged, not required for the first release; the ministry page offers "Add from Cart" on its Volunteers tab. The occurrence page's "assign everyone in the cart" button and its route are retired. |
-| Timer job | `src/ChurchCRM/Service/SystemService.php:78` | `VolunteerNotificationService::drainOutbox();` and `(new VolunteerAssignmentService())->markCompleted(DateTimeUtils::getNowDateTime());` next to `BirthdayEmailService::run();` |
+| Timer job | `src/ChurchCRM/Service/SystemService.php:78` | `VolunteerScheduleTopUp::run()` (D31), `VolunteerNotificationService::drainOutbox();` and `(new VolunteerAssignmentService())->markCompleted(DateTimeUtils::getNowDateTime());` next to `BirthdayEmailService::run();`; `runTimerJobs()` gains `$forceScheduleTopUp`, which only an administrator's `force` on `POST /api/background/timerjobs` sets |
 | Event deletion | `src/ChurchCRM/model/ChurchCRM/Event.php:51-62` | null the occurrence link (E12) |
 | Access-denied page | `src/v2/routes/root.php:24-35` | add `'ManageMinistries'` and `'VolunteerCoordinator'` |
 | Header permission block | `src/Include/Header.php:230-233` | optionally add `window.CRM.permissions.volunteerCoordinator` — **advisory only**; the server gate is the control |
 | Auth entry gate | `src/ChurchCRM/Slim/Middleware/AuthMiddleware.php:60-64`, `:76`, `:130-137` | the narrow member-path exemption (§4.7) |
+| Group membership writes | `Person2group2roleP2g2r` hooks; `src/api/routes/people/people-groups.php` (`addperson`, `removeperson`, `userRole`, role rename/delete, group update); `src/groups/routes/member-role.php`; `src/groups/routes/cart.php` | D23: a Teacher-role write on a linked class is refused while V2 is on — `409` with `ministryId/ministryName/teamId/teamName` from the API, a flash message from the two pages (§4.6) |
+| Sunday School class page, group view | `src/groups/views/sundayschool/class-view.php`, `src/groups/views/group-view.php`, `src/skin/js/GroupView.js` | D23: while V2 is on and the class is linked, a note "Teachers of this class are managed in Ministries → {Ministry} → {Team}" (the ministry is a link only for a viewer who may open it), and no control adds, removes, re-roles, copies or moves a teacher; student controls are unchanged |
 
 ### 3.6 Notification delivery (D15) in detail
 
@@ -1602,7 +1929,7 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 
 | Trigger | Type | Recipient | `ScheduledFor` |
 |---|---|---|---|
-| `assign()` / cart assign | `assignment` | the volunteer | now |
+| `assign()`, and a pending default a run assigns (D32) | `assignment` | the volunteer | now |
 | `assign()` / `selfSignup()` accepted | `reminder` | the volunteer | occurrence start − `iVolunteerReminderLeadHours` |
 | `respond('declined')` **by the volunteer** (`Channel='web'`) | `decline_alert` | `getCoordinatorPersonIds(ministry, team)` | now — a coordinator-recorded decline (`Channel='coordinator'`) enqueues nothing |
 | `selfSignup()` | `signup_confirm` | the volunteer | now |
@@ -1675,6 +2002,20 @@ asked not to be mailed at, so the opt-out is honoured here too.
    address cannot stop the batch.
 4. Retry is therefore implicit in step 1: a row that failed fewer than 5 times is still `pending`
    and still due. `failed` is terminal (§2.14) and is never re-selected.
+
+**The daily schedule top-up (D31)** runs in the same timer jobs, before the reminders:
+`VolunteerScheduleTopUp::run()` claims today in `config_cfg` (`sLastVolunteerTopUpRunDate`, the
+same single-statement claim `BirthdayEmailService` makes, so concurrent page loads run it once) and
+generates every active, non-one-off schedule of every active ministry up to the scheduling horizon
+(§2.9). On the occurrences it creates it assigns each position's saved default volunteer (D32,
+§2.10) in the name of whoever chose the default — the assigner, and the coordinator-channel responder
+of an accepted default — so a pending default's `assignment` message is queued and sent by the same
+run's drain; an unqualified default is logged and left open. The occurrence unique key makes it
+idempotent. Its result (`{ranAt, schedules, created, failed, assigned, skipped, unqualified}`) is
+stored in `sLastVolunteerTopUpResult`, logged, and shown on Admin → Ministry Settings. A schedule that fails
+(the occurrence cap) is logged and skipped; the others still run. Nothing happens while V2 is off.
+**Run background jobs now** on Ministry Settings (`force: true`, administrators only) runs it again
+the same day; the command-line runner and the page-load trigger run it at most once a day.
 
 **Punctuality.** Because the drain runs on page loads (F9), reminders are best-effort by default.
 Installations that need them on time add a real cron with **no code change**:
@@ -1777,8 +2118,8 @@ Derived from the `usr_ManageFundraisers` precedent (`src/mysql/upgrade/7.4.3-man
 | # | File | Change |
 |---|---|---|
 | 1 | `orm/schema.xml` after `usr_ManageFundraisers` (`:596`) | `<column name="usr_ManageMinistries" phpName="ManageMinistries" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>` |
-| 2 | `src/mysql/upgrade/7.8.0-volunteer-v2-manager-permission.sql` | `ALTER TABLE \`user_usr\` ADD COLUMN \`usr_ManageMinistries\` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER \`usr_ManageFundraisers\`;` — plain `ALTER`, **not** `IF NOT EXISTS` (see `7.4.3-manage-fundraisers.sql:5-8`); the same script adds `usr_ManageMyMinistries` after it (D12, 2026-09-18), and `Install.sql` / `seed.sql` carry both columns |
-| 3 | `src/mysql/upgrade.json` | **not touched** — `7.8.0-volunteer-v2-manager-permission.sql` is registered in the 7.8.0 block when it opens, after the schema script (D17, F29) |
+| 2 | `src/mysql/upgrade/7.8.0-volunteer-v2-manager-permission.sql` | `ALTER TABLE \`user_usr\` ADD COLUMN \`usr_ManageMinistries\` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER \`usr_ManageFundraisers\`;` — plain `ALTER`, **not** `IF NOT EXISTS` (see `7.4.3-manage-fundraisers.sql:5-8`) |
+| 3 | `src/mysql/upgrade.json` | **not touched** — `7.8.0-volunteer-v2-manager-permission.sql` is registered in the 7.8.0 block by the epic PR, after the schema script (D17, F29) |
 | 4 | `src/mysql/install/Install.sql` | the same column in the `user_usr` `CREATE TABLE` — **required** |
 | 5 | `cypress/data/seed.sql` | the same column in its `user_usr` `CREATE TABLE`, plus a seeded manager and a seeded coordinator (§6.4) — **ask the user before editing `seed.sql`** |
 | 6 | ORM | `cd src && composer run orm-gen`, then `npm run build:php:validate:orm` |
@@ -1914,10 +2255,15 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 |---|---|---|---|---|---|
 | Create ministry | ✓ | ✓ | ✗ | ✗ | ✗ |
 | Edit / deactivate ministry | ✓ | ✓ | scope | ✗ | ✗ |
+| Set whether a ministry provides teachers for Sunday School (D29) | ✓ | ✓ | ✗ (read-only; the current value is accepted) | ✗ | ✗ |
 | Delete ministry (only once deactivated — 2026-09-17) | ✓ | ✓ | ✗ | ✗ | ✗ |
 | Grant ministry scope (make a coordinator) | ✓ | ✓ | ✗ | ✗ | ✗ |
 | Grant team scope (make a team leader) | ✓ | ✓ | scope | ✗ | ✗ |
 | Create / edit team | ✓ | ✓ | scope | ✗ | ✗ |
+| Link / unlink a team to a Sunday School class (D23) — only while the ministry provides teachers (D29) | ✓ | ✓ | scope | ✗ | ✗ |
+| Keep / remove / move / delete the ministry's own events of a team's class on class change or team delete (D28) | ✓ | ✓ | scope | ✗ | ✗ |
+| Teacher-role write on a linked class outside V2 (Groups module, `/api/groups`, cart) while V2 is on | ✗ | ✗ | ✗ | ✗ | ✗ |
+| Student-role write on a linked class | Manage Groups, unchanged | | | | |
 | ~~Link / unlink a pool Group~~ | — | — | — | — | — | *(D19: there is nothing to link — a ministry owns its Group)* |
 | **Add/remove people in the pool Group** | ✓ | ✓ | scope | ✗ (ministry-level route) | ✗ |
 | Edit / delete the pool Group itself | ✗ — it is the ministry's | ✗ | ✗ | ✗ | ✗ |
@@ -1927,6 +2273,7 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 | Deactivate position | ✓ | ✓ | scope | scope (own team) | ✗ |
 | Grant / revoke qualification | ✓ | ✓ | scope | scope (own team's positions) | ✗ |
 | Create / edit schedule | ✓ | ✓ | scope | scope (own team) | ✗ |<!-- gate: see "Team-leader schedules" below -->
+| Staff this event (D22) | ✓ | ✓ | scope | scope (own team) | ✗ |
 | Set staffing requirements (template) | ✓ | ✓ | scope | scope (own team) | ✗ |
 | Set per-occurrence requirement override | ✓ | ✓ | scope | scope | ✗ |
 | Generate occurrences | ✓ | ✓ | scope | scope | ✗ |
@@ -1940,10 +2287,14 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 | View another person's assignments | ✓ | ✓ | scope | scope | ✗ |
 | View attendance beside the roster | ✓ | ✓ | scope | scope | ✗ |
 | Create / edit an event **with** a ministry id | ✓ | ✓ (their ministries) | scope | ✗ | ✗ |
+| Create a ministry's events (and staff them) from its Calendar tab (D24) | ✓ | ✓ | scope — never a self-service login | ✗ | ✗ |
+| Delete a ministry's own events from its Calendar tab (D28) — refused while another ministry has volunteers there, unless Add Events | ✓ | ✓ | scope — never a self-service login | ✗ | ✗ |
 | Create / edit an event with **no** ministry id | existing `AddEvent` rules, unchanged | | | | |
+| Pin a ministry's event to its own calendar, or to a church calendar opened to that ministry | ✓ | ✓ | scope | ✗ | ✗ |
+| Open a church calendar to ministries (D25) | ✓ | ✗ unless they hold Add Events | ✗ | ✗ | ✗ |
 | Change the rollout setting / reminder lead time | ✓ | ✗ | ✗ | ✗ | ✗ |
 
-Three rows need explaining.
+Four rows need explaining.
 
 **Team-leader schedules (#9868).** "scope (own team)" on the schedule rows is not something a
 single middleware can say, because `POST /ministries/{ministryId}/schedules` is keyed on
@@ -1957,8 +2308,9 @@ allowed = canManageMinistry(user, ministryId)                       // unchanged
            && team(body.teamId).ministryId === ministryId)          // the team-leader clause
 ```
 
-`VolunteerScheduleCreateMiddleware` applies it from the raw payload and
-`VolunteerScheduleService::createSchedule()` applies it again from the resolved row, because a
+`VolunteerScheduleCreateMiddleware` applies it from the raw payload — on
+`POST /ministries/{ministryId}/staffed-events` too — and `VolunteerScheduleService` applies it again
+from the resolved row (`createSchedule()`, `staffEvent()`), because a
 middleware that read a body is never the last word on a write (§4.5, layer three). The second
 conjunct of the team clause is load-bearing: without it a leader of a team could create a schedule
 naming their own team under a ministry they have nothing to do with.
@@ -2013,6 +2365,34 @@ id unless the managed-write context is open, so `VolunteerMinistryService::delet
 only path, and the `409` from `DELETE /api/groups/{id}` is a statement about the model rather than
 a UI convention.
 
+**Linked Sunday School classes (D23).** The same hooks carry a refusal the other way round: a
+Teacher-role write on a class linked to a team, from outside V2, is refused for everyone —
+administrators and Manage Groups included, because the rule is one source of truth, not a
+permission.
+
+```php
+// Person2group2roleP2g2r::preInsert / preUpdate / preDelete, AFTER assertMembershipWritable()
+$conflict = VolunteerClassLinkService::findTeacherWriteConflict($groupId, $fromRoleId, $toRoleId);
+if ($conflict !== null) { throw $conflict; }   // 409, naming the ministry and team
+```
+
+1. **Free at `v1`.** The managed-write check and the rollout check come before any query; while
+   V2 is on it costs one indexed lookup on `vtem_class_group_uidx` per membership write, and a
+   `preUpdate` that does not touch the role asks nothing.
+2. **Asked after the permission check**, so a caller who may not write the group learns nothing
+   about links.
+3. **The managed-write context is the only way through, and D19's exception widens by exactly one
+   case:** `VolunteerPoolWriter::mayWriteLinkedClass()` lets a V2 service inside `run()` write a
+   class a team is linked to — the qualification service giving or taking the Teacher role after
+   authorizing the qualification change. A coordinator gets no standing write access to a class,
+   unlike to their ministry's pool.
+
+`/api/groups` asks the same predicate before writing and answers `409` with
+`ministryId/ministryName/teamId/teamName`, because `GroupService::addUserToGroup()` swallows the
+model's refusal and would report a success; the role editor and cart-to-group turn it into a flash
+message. Renaming or deleting the Teacher role and changing the class's type answer `409` the same
+way (`findTeacherRoleLock()`, `findClassTypeLock()`).
+
 **Ministry-linked events.** `AddEventsRoleAuthMiddleware` is a global boolean
 (`canManageEvents()`); there is no per-row event authorization anywhere today. The rule V2 adds, in
 the handlers of `newEvent` / `updateEvent` / `setEventTime` / `setEventStatus` / `deleteEvent`:
@@ -2026,7 +2406,52 @@ allowed = isAdmin()
 
 Setting or clearing `MinistryId` additionally requires authority over the **new** value and over the
 **current** value respectively. A coordinator with no `AddEvent` permission can therefore create
-and edit events for their ministry and nothing else — which is exactly D9.
+and edit events for their ministry and nothing else — which is exactly D9. The rule is
+`VolunteerAuthorizationService::canWriteEvent()`, which `events.php` and the occurrence page's
+Headcount link both ask.
+
+The Calendar tab's `POST /ministries/{id}/events` (D24) is gated by `VolunteerMinistryMiddleware`
+(coordinator of the path's ministry, a global manager or an administrator — so a team leader gets
+`403`), and `VolunteerEventService` refuses a self-service (EditSelf-exclusive) login with `403` even
+when it holds a ministry scope: a member login never writes church events. The ministry is the path's,
+so the only other decision is the pins, each asked of `mayPin()` below.
+
+Deleting or changing a ministry's events from V2 (D28 — the Calendar tab's Delete events and a
+team's `classEvents`) is narrower still: only events whose `event_ministry_id` is the ministry, each
+asked `canWriteEvent()` again, never from a self-service login, and — because another ministry's
+volunteers would be left serving at an event that no longer exists — refused while another ministry
+has a pending or accepted assignment on one of them, unless the caller holds Add Events:
+
+```
+allowed = !editSelfExclusive && every event: event.MinistryId === path ministry && canWriteEvent(user, event.MinistryId)
+       && (canManageEvents() || no other ministry has a live assignment on any of them)
+       && EventService::deleteRefusal(event) === null            // delete only; core's checked-in / kiosk guards
+```
+
+**The Sunday School switch (D29)** is a global manager's: `updateMinistry()` refuses a coordinator a
+different value (`403`) and accepts the current one, so a form that always sends the field works for
+both. The class link, the `class` schedule mode and an event's Linked Group all ask
+`VolunteerClassLinkService::assertMinistryTeaches()` (`400`), whoever the caller is.
+
+**Calendar pins (D25).** Which calendars such an event may be pinned to is one rule,
+`VolunteerCalendarService::mayPin()`, judged against the event's **resolved** ministry (after
+`resolveEventMinistryId()`), never the calendar's:
+
+```
+allowed = canManageEvents()
+       || (rollout on && eventMinistry !== null && canManageMinistry(user, eventMinistry)
+           && (calendar.ministry_id === eventMinistry
+               || (calendar.ministry_id === null && volunteer_calendar_vcal has (calendar, eventMinistry))))
+```
+
+`eventCalendarPinGuard()` asks it only for pins that change: an added pin under the resolved
+ministry, a removed pin under the current or the resolved one, and — when the ministry changes —
+every pin that stays, under the new one. So a pin somebody with Add Events made survives a
+coordinator's edit and cannot be removed by it, and a coordinator of two ministries cannot carry an
+event onto a calendar opened only to the other. The repeat editor, quick-create and
+`generate-recurring` stay Add Events only. Administering a calendar (name, colours, public link,
+delete) is unaffected: `CalendarWriteRoleAuthMiddleware` still allows Add Events, or a coordinator
+of the calendar's **own** ministry, and a grant confers nothing there.
 
 ### 4.7 The EditSelf-exclusive volunteer — the one core auth change
 
@@ -2050,11 +2475,12 @@ D14 makes volunteers EditSelf-exclusive users. `AuthMiddleware` currently blocks
 private function isLimitedAccessAllowedPath(ServerRequestInterface $request): bool
 {
     $path = $request->getUri()->getPath();
+    $rootPath = SystemURLs::getRootPath();
 
-    if (str_contains($path, '/user/current/changepassword')
-        || str_contains($path, '/user/current/manage2fa')
-        || str_contains($path, '/user/current/enroll2fa')) {
-        return true;                                        // existing #8680 exemptions
+    foreach (self::AUTH_FLOW_EXEMPT_PATHS as $exemptPath) {  // existing #8680 exemptions
+        if ($path === $rootPath . $exemptPath) {
+            return true;
+        }
     }
 
     // Volunteer v2 member self-service: the EditSelf-exclusive member persona IS the
@@ -2064,7 +2490,7 @@ private function isLimitedAccessAllowedPath(ServerRequestInterface $request): bo
         return false;
     }
 
-    return str_contains($path, '/api/ministries/me/');
+    return str_starts_with($path, $rootPath . '/api/ministries/me/');
 }
 ```
 
@@ -2075,7 +2501,9 @@ private function isLimitedAccessAllowedPath(ServerRequestInterface $request): bo
 
 3. Give the volunteer somewhere to go from the self-service landing page.
 
-**Why this is safe.** The allowed paths are enumerated literally, are all behind the rollout flag,
+**Why this is safe.** The allowed paths are enumerated literally, **anchored at the install's root
+path** (never `str_contains()`, which would let `/api/person/1/api/ministries/me/…` or a future
+catch-all route through the gate; review finding on #9933), are all behind the rollout flag,
 derive the acting person from the session (never a parameter), and are additionally gated by
 `VolunteerV2EnabledMiddleware`. The exemption grants *reachability*, not authority: every one of
 those routes still authorizes per record.
@@ -2223,7 +2651,7 @@ Sunday.
 | S1 | Coordinator dashboard — "what needs my attention" | `/ministries/dashboard` | Coordinator | `ministries-dashboard` |
 | S2 | ~~Setup flow (guided)~~ **removed** — see §5.3 | — | — | — |
 | S2b | ~~My ministries and teams (the module index)~~ **removed** — the sidebar's **Ministries** heading lists the same ministries (§5.0), and `/ministries` 302s to S1. Its "New ministry" button lives on S1 | — | — | — |
-| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, help wanted | `/ministries/{id}` | scope | `ministries-ministry` |
+| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, calendar, help wanted | `/ministries/{id}` | scope | `ministries-ministry` |
 | S4 | Occurrence / staffing view | `/ministries/occurrences/{id}` | scope | `ministries-occurrence` |
 | S5 | My schedule (member) | `/portal/volunteer/schedule` | authenticated person | `volunteer-my-schedule` |
 | S6 | Open opportunities (member) | `/portal/volunteer/opportunities` | authenticated person | `volunteer-opportunities` |
@@ -2258,7 +2686,7 @@ Answers, in this order, top to bottom:
 4. **Upcoming occurrences** — a DataTable (U2) over `GET /api/ministries/occurrences?from=today&to=+28d`,
    columns `Date · Time · Ministry/Team · Schedule · Staffed (n/m) · Status · Actions`. Staffed is a
    progress-style badge, green at full, amber when `pending` fills the gap, red when short.
-5. **Notification-health card** *(revised 2026-09-18 — was the admin-only settings strip)*: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours` — the cron hint, the queued count, the last timer-job run and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`), which exists in every rollout state; it follows the Member Portal admin page, and both settings were removed from `buildCategories()` so they have one home. The page also explains V1, V2 and Both in prose. *Original text:* **Admin-only settings strip** — `window.CRM.settingsPanel` (U8) with `sVolunteerVersion` and
+5. **Notification-health card** *(revised 2026-09-18 — was the admin-only settings strip)*: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours` and, since D31, `iVolunteerSchedulingHorizonWeeks` and `iVolunteerDefaultEventTypeId` — the cron hint, the queued count, the last timer-job run, the last schedule top-up and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`; the `ministries-settings` bundle puts its times in ChurchCRM's locale, §5.10), which exists in every rollout state; it follows the Member Portal admin page, and both settings were removed from `buildCategories()` so they have one home. The page also explains V1, V2 and Both in prose. *Original text:* **Admin-only settings strip** — `window.CRM.settingsPanel` (U8) with `sVolunteerVersion` and
    `iVolunteerReminderLeadHours`, plus the failed-notification count with a link, inside
    `if ($isAdmin)`.
 
@@ -2294,14 +2722,18 @@ them), the Groups module, or their own "I'd like to help".
 
 ### 5.4 S3 — Ministry detail
 
-Six tabs, all lazily loaded on activation (the `attendance-history.ts` pattern, U6), in
+Seven tabs, all lazily loaded on activation (the `attendance-history.ts` pattern, U6), in
 this order:
 
-**Overview · Volunteers · Positions · Schedules · Occurrences · Help Wanted**
+**Overview · Positions · Volunteers · Schedules · Occurrences · Calendar · Help Wanted**
 
 The card header names the ministry, shows the **Inactive** badge when `Active = 0`, and
 carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
 
+- **Edit** (D29), offered to anyone who may open the page: name, description and *"Can this
+  ministry provide teachers for Sunday School?"* — a switch a volunteer manager may change and
+  everyone else sees disabled with *"Only a volunteer manager can change this."* Saving reloads the
+  page. The dashboard's **New ministry** dialog asks the same question, off by default.
 - on an **active** ministry: **Deactivate**, offered to anyone who may open the page (a
   coordinator may deactivate their own ministry — §4.6 "Edit / deactivate: scope"). It
   confirms, sets `active:false` through the ordinary update and reloads: the ministry leaves
@@ -2340,6 +2772,22 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
   `/scopes` listing. A team is treated as having at most one leader; if the API ever holds
   more, all are named and "Remove Team Leader" revokes them all.
 
+  **Sunday School class (D23).** A linked team's name cell names its class — a link to the
+  class page for a viewer with Manage Groups, plain text otherwise. The Add/Edit team dialog has
+  an optional **Sunday School Class** select filled from `/linkable-classes`; choosing a class
+  that is not the team's current one and has teachers shows **"Qualify its current teachers
+  for"** with the team's positions and, when none is named Teacher, "New position: Teacher" —
+  the only choice while adding a team — and "Teachers to import: N" under it. Clearing the
+  select unlinks. The Member Portal's team page shows the class read-only. **The field is hidden**
+  while the ministry does not provide teachers for Sunday School (D29).
+
+  **The class's events (D28).** When Edit Team moves away from a class the ministry created events
+  for (`GET /teams/{id}/class-events`, fetched on open), the dialog says *"{Ministry} created N events
+  for {old class} (M upcoming)."* and asks **Keep them on {old class}** (default) / **Remove the class
+  from them** / **Move them to {new class}** (only when a new class is chosen); the answer rides on the
+  save as `classEvents`. The Delete team confirmation asks the same with **Keep / Remove the class from
+  them / Delete those events**, and names other ministries whose volunteers serve at some of them.
+
   The **Ministry Coordinators** card (renamed from "Coordinators and team leaders") is
   ministry-coordinator grants and nothing else — no team-leader section, modal or copy.
   Same visibility rule as before: rendered for a global volunteer manager, and the grant
@@ -2358,11 +2806,12 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
   `DELETE /api/ministries/ministries/{id}/volunteers/{personId}`, which in one transaction
   revokes every qualification of that person for a position of this ministry, cancels
   every live assignment of theirs on a still-to-come occurrence of it through the ordinary
-  cancel path (so pending outbox rows are cancelled and the response trail is kept), and
-  removes them from the pool Group through the managed-write context. Past assignments are
-  left alone. The response carries the counts and the toast reports them. The page's
-  `isMinistryCoordinator` flag is advisory; the route authorizes with the ministry-level
-  entity middleware (D5).
+  cancel path (so pending outbox rows are cancelled and the response trail is kept),
+  removes them from the pool Group through the managed-write context, and clears every
+  default volunteer entry naming them on the ministry's schedules (D32). Past assignments are
+  left alone. The confirm lists all four; the response carries the counts and the toast
+  reports them. The page's `isMinistryCoordinator` flag is advisory; the route authorizes
+  with the ministry-level entity middleware (D5).
 
   **A tick confirms itself in a toast.** Each checkbox is its own write and there is no
   Save button, so the hint *"Ticks save as you make them."* sits above the grid and the
@@ -2392,6 +2841,62 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
   horizontal scroller would clip the dropdown (table-action-menu.md). A ministry with very
   many positions therefore wraps its columns rather than scrolling them.
 
+- **Schedules** lists each schedule with a **Which events** column saying, in words, where its
+  dates come from (D22) — *"Church Service events titled {title}"*, *"Sunday School: {class}"*
+  (*"Meetings of {group}"* for a group that is not a Sunday School class), *"This ministry's events
+  titled {title}"*; a schedule saved without a title before D31 reads *"Church Service events (no
+  event chosen yet)"* / *"This ministry's events (no event chosen yet)"* — with the offsets under it
+  in muted text when there are any. Staff this event's hidden
+  schedules are never listed. **Add schedule / Edit** opens one dialog: name, team, **Where the
+  dates come from** (*Church events of a type* → event type + Event title picker, the distinct
+  upcoming titles of that type; *A class's meetings* → class picker, from
+  `GET /ministries/classes`; *This ministry's events* → the same title picker over the ministry's
+  own events; an event is required — there is no *"any event of this type"* / *"any of this
+  ministry's events"* choice, and the picker offers only titles with upcoming events, D31), the two
+  **Volunteer times** rows — *"Volunteers start [n] [minutes before / after
+  the event starts]"* and *"Volunteers finish [n] [minutes after / before the event ends]"*,
+  stored as signed minutes within ±720 — first and last date, Active, and the staffing needs, each
+  with its **Default volunteer** (D32): a picker over the position's qualified people (pool first) with
+  *None*, and *Set as Accepted* once somebody is chosen. A stored default whose qualification was
+  revoked stays selected as *"{name} (no longer qualified)"* with the note that the position is left
+  open on new occurrences; unchecking the position disables its default.
+  There are no weekly-pattern or time fields: V2 generates no dates of its own (D20). A stored
+  class or title the picker no longer offers is kept as its own option rather than dropped.
+  Each class in the picker shows its upcoming meetings (*"Faith City (12 upcoming)"*); a class with
+  none is **disabled** (D31) — *"Faith City (no upcoming meetings — add its meetings first)"* — and a
+  hint under the picker says to add its meetings with New recurring event on the Calendar tab (on the
+  portal: that a coordinator of the ministry adds them). The server refuses the same (§2.8). A stored
+  class whose meetings have run out stays selectable, labelled *"(no upcoming meetings)"*, with the
+  amber D30 note; the Event picker warns the same way when a stored title, or the type or the ministry
+  as a whole, has nothing upcoming. Saving without an event or a class says so in the dialog.
+  **Generate occurrences** (row menu) opens the *Fill by default with* dialog. Its first line says
+  how far the run reaches, in weeks (D31): *"Occurrences are created for events in the next 8 weeks
+  (through Nov 25)."*, or, when the schedule's last date comes first, *"Occurrences are created for
+  events through Oct 20, when this schedule ends."* — from the schedule's `horizonWeeks` and
+  `generateThrough`. Nobody has to come back to generate more: the daily top-up keeps every schedule
+  filled to the horizon (§3.6) and assigns the saved defaults on what it makes. The rows open on the
+  schedule's saved defaults and the run saves what the dialog shows, a *Leave open* row as none (D32);
+  the toast adds how many were left open because the default is no longer qualified. Its answer is a green
+  toast when occurrences were made, a neutral info toast when every event already had one, and — when
+  no event was found at all — an amber warning inside the dialog in the schedule's own terms: *"No
+  events on the calendar use Faith City as their class between Oct 4 and Nov 29."*, *"No Church
+  Service events titled Worship Hour between …"*, *"Children's Ministry has no events titled VBS
+  between …"*, that its dates have ended or not begun, or — for a schedule saved without a title —
+  *"{name} does not name the event it follows, so it has nothing to staff."* (D30, D31). For a class or a ministry schedule a
+  coordinator also gets **New recurring event for {class}** / **New recurring event titled {title}**,
+  which switches to the Calendar tab and opens its dialog pre-filled (class, or title); after Create,
+  *Staff them* finds the schedule (D33). The portal shows the warning without the button.
+  **A new schedule generates on Save (D33)** — here and on the portal's team page — up to the horizon,
+  assigning its saved defaults: the page switches to the Occurrences tab narrowed to it (Event box =
+  the schedule's name, Team = its team, From today) with a green toast — *"Schedule "{name}" created:
+  {N} occurrences"* plus the default counts — or, when the run found nothing, stays here with D30's
+  words as an amber toast. A schedule saved inactive makes none and says so. Editing never generates.
+  **A new schedule for a team linked to a class (D23 d)** starts on *A class's meetings* with that
+  class; picking another team undoes only that default, and a source chosen by hand stays.
+  *A class's meetings* is not offered while the ministry does not provide teachers for Sunday School
+  (D29), except to a schedule that already follows a class.
+  The same dialog and table serve the portal's team page (MP7).
+
 - **Occurrences** carries a compact search form above the table — **Team · Event · From ·
   To** — laid out like the Volunteers tab's controls, with every field live: a change
   re-runs `GET /occurrences` (the text box debounced ~300 ms, and the DataTable destroyed
@@ -2406,6 +2911,14 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
   the "Back to upcoming" link**, all of which are gone: the dialog could only narrow by
   date, so which team and which service had to be read off the table by eye.
 
+  **Staff an event** (D22) sits beside Delete and replaces the old *Add occurrence*. Its dialog
+  searches upcoming events by title and date (`GET /ministries/upcoming-events`, debounced), shows
+  each as *"{start} — {title} ({type})"* with *"· already staffed by this team"* when the chosen
+  team already has an occurrence on it, and takes the team, an optional name (the event's title
+  by default), the two Volunteer times rows and the staffing needs. Save calls
+  `POST /ministries/{id}/staffed-events`; a `409` is shown inside the dialog. The new row carries
+  a *single event* badge; deleting it deletes its hidden schedule.
+
   **Round four finished the job: this table has no DataTables "Search:" box.** It is the
   one table in V2 initialised with `searching: false`, because the form above already
   narrows the query SERVER-side and a second box filtering only the drawn page answers
@@ -2416,6 +2929,52 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
   `window.CRM.plugin.dataTable.buttons` config (so `:not(.no-export)` and the
   `no-export` Actions column are untouched) and moved; nothing about the shared
   DataTables defaults changes, and every other table in the install keeps its search box.
+
+- **Calendar** (D24) lists the events the ministry owns (`GET /ministries/{id}/events`) —
+  upcoming by default, soonest first; a **Show past events** switch lists the year before today,
+  newest first. Columns: **Date and time**, **Event** (a link to `/event/view/{id}`, the type under
+  it, an *Inactive* badge), **Calendars** and **Class** (badges), **Staffing** — one badge per team
+  of this ministry with occurrences on the event, *"{Team}: {filled} of {needed}"* (*"no staffing
+  needs set"* when unplanned), red for a gap, yellow while an answer is pending, green when filled
+  and confirmed, each linking to the occurrence page; *"Not staffed"* when none — and for a past
+  event its headcount total (*"Headcount: 42"* / *"No headcount recorded yet"*, D26). The row menu
+  offers **Staff this event** (upcoming, active events: the Occurrences tab's Staff an event dialog
+  with the event already chosen), **Edit event** (`/event/editor/{id}`) and **View event**. The
+  table sits in `.volunteer-scroll-x` with the unclipped row menus; empty, loading and error states
+  per §5.8, with separate empty texts for upcoming and past.
+
+  **New event** and **New recurring event** open one dialog with a *One-time / Recurring* switch:
+  title, event type (`/ministries/event-types`, starting on its `defaultEventTypeId` — "Other" unless
+  Ministry Settings names another type, and still changeable, for a class that needs headcount
+  categories, D31), description, **Class** (optional — the Linked
+  Group, from `/ministries/classes`), then either a date or *Repeats* weekly (day of the week) /
+  monthly (day of the month; a day the month lacks falls on its last day) / yearly (month and day)
+  with a first and last date, the start and end times, and the **Calendars** the ministry may pin to
+  (`/api/calendars/pinnable?ministryId=`, named from `/api/calendars`), its own calendar ticked. A
+  series shows a preview computed with the repeat engine's rules — *"Creates 13 events, every
+  Sunday from Sep 6 to Nov 29"* — or says no date matches or that the range is over the cap. The
+  **Last date** starts one year after the first date and follows it until it is chosen by hand; it is
+  required, and clearing it puts it back with *"A recurring event needs a last date, so it is back to
+  {date}."* (D33). The dialog creates events and nothing else (D33). The dialog goes full screen below
+  `sm`. The Class field is hidden while the ministry does not provide teachers for Sunday School (D29).
+
+  **After Create the page asks** (D33) — *"{N} {title} events created. Staff them now?"*, or for one
+  event *"{title} on {date} created. Staff it now?"* — with **Staff them** and **Not now** (which closes
+  and does nothing else). For one event, Staff them opens the Occurrences tab's **Staff an event** with
+  it chosen. For a series it calls `POST …/events/staff`: the schedules that follow the series take it,
+  and the page switches to the Occurrences tab with the Event box set to the title and the toast
+  *""{schedule}": N occurrences created"* per schedule (an info toast when the events all lie past the
+  horizon, made later by the daily top-up). When no schedule follows it, the Schedules tab opens **Add
+  schedule** pre-filled — *A class's meetings* on the class when one was chosen, otherwise *This
+  ministry's events* with exactly the title; the team linked to that class, else the first team; the
+  title as the name — and its Save lands on the Occurrences tab as above.
+
+  **Delete events** (D28): the table's first column is a checkbox with **Select all** in its header
+  (kept in step across the header copies DataTables makes), and the button above the table reads
+  *"Delete events (N)"* while rows are ticked. The confirmation says what goes with the events and
+  names the other ministries whose volunteers are assigned to some of them; the server refuses those
+  unless the user manages the calendar, and a refusal — theirs or core's (checked in, kiosk) — is the
+  toast, with nothing deleted. The Occurrences tab's Delete stays staffing-only.
 
 - **Positions** gained a **Recruiting** column in round four, between *Team* and
   *Status*: a green check (`fa-solid fa-check text-success`, labelled *"Recruiting"* for
@@ -2451,9 +3010,19 @@ make answers `409`.
 
 The single most important coordinator screen.
 
-- **Header**: date, time (resolved by `VolunteerScheduleService::resolveOccurrenceWindow()`),
-  ministry/team, schedule name, and — when linked — a link to the event
-  (`/event/view/{id}`) with a "Times come from this event" note, which is how D4 is made visible.
+- **Header**: date, the volunteers' time (resolved by
+  `VolunteerScheduleService::resolveOccurrenceWindow()`: the event's plus the schedule's offsets),
+  ministry/team, schedule name, and a link to the anchored event (`/event/view/{id}`) with a
+  "Times come from this event" note and, when the schedule has offsets, the sentence that says how
+  they move the shift (*"Volunteers start 45 minutes before the event starts."*) — which is how
+  D20/D21 are made visible. An occurrence whose event was deleted shows its date and no link.
+- **Headcount card (D26)**, below the staffing, for an occurrence with an event, read-only and
+  server-rendered by `VolunteerEventService::headcount()`: the event type's count categories with
+  the event's values and the **Total** (the core event view's sum), or *"No headcount recorded
+  yet"*; an **Enter counts** button to `/event/editor/{id}` for a viewer who may edit the event
+  (`canWriteEvent()`) and is not a self-service login; and for an event with a Linked Group,
+  *"Checked in: N of M on the class roster"* from `event_attend`. The portal's team occurrence page
+  (`teams/occurrence.html.twig`) shows the same card.
 - **One card per position**, each showing `filled / required`, the assigned people (avatar + name +
   status badge), and an **Assign** control that opens the shared person selector (P4) bound to
   `GET /occurrences/{id}/eligible?positionId=` — so the picker can only ever offer qualified people.
@@ -2554,7 +3123,7 @@ when something needs filling."
 |---|---|
 | S1 | Tabler cards + badges, DataTables (U2), action menu (U1), bootbox confirm (U3), `window.CRM.notify` (U5), settings panel (U8), `PageHeader` (U11) |
 | S2b | Tabler forms + one modal ("New ministry"), `window.CRM.notify` (U5) |
-| S3 | DataTables (U2), person selector (P4), avatar loader (P8), lazily-loaded tabs (U6), Cart sink (P6, "Add from Cart" into the pool) |
+| S3 | DataTables (U2), person selector (P4), avatar loader (P8), lazily-loaded tabs (U6), Cart sink (P6, "Add from Cart" into the pool); the Calendar tab reuses the Staff an event dialog and, through Staff them (D33), the Schedules tab's Add schedule dialog |
 | S4 | person selector (P4), action menu (U1), email composer (U7), CSV export (R1/R2), avatar loader (P8) |
 | S5/S6 | Tabler cards + badges, bootbox confirm/prompt (U3), `window.CRM.notify` (U5), person selector (P4, for "find a sub") |
 
@@ -2618,8 +3187,16 @@ inside a translatable string, no decorative em-dash wrappers. Also:
   `i18next.t("{{count}} volunteers needed", { count: n })`.
 - **Never run `npm run locale:build`** and never commit `locale/messages.po`,
   `locale/messages.json`, `src/locale/i18n/*` or `src/locale/textdomain/*`. CI owns those files.
-- Dates and times through `DateTimeUtils` / `window.CRM.datePickerformat`; money — not applicable to
-  V2 — would go through `CurrencyFormatter`.
+- Every date and time a V2 page shows is in ChurchCRM's configured locale (`window.CRM.locale`),
+  never raw `YYYY-MM-DD HH:MM:SS` and never the browser's locale: `shortDate()`, `shortDateTime()`,
+  `shortTime()` and `shortDateTimeRange()` in `webpack/ministries/components/ui.ts`, all through
+  `formatWallClock()`, which formats the stored wall-clock parts in UTC so the browser's zone cannot
+  shift them (F24). The server has no `intl`, so a PHP or Twig view renders
+  `<time datetime="{stored}" data-format="date|datetime|time">{stored}</time>` and the page's bundle
+  calls `formatTimeElements()` (the portal's on every portal page). A sortable cell keeps the stored
+  value in `data-order`, and Export CSV / Print carry that value (`exportButtons()`). Input values, CSV/print exports, API payloads and emails
+  (`DateTimeUtils::formatDate()`) are not affected. Money — not applicable to V2 — would go through
+  `CurrencyFormatter`.
 
 ---
 
@@ -2658,7 +3235,9 @@ Only three globs are wired into a Cypress config (F32):
 | Spec | Path | Covers |
 |---|---|---|
 | `private.volunteer.setup.spec.js` | `cypress/e2e/api/private/standard/` | ministry/team/pool/position/qualification CRUD, duplicate `409`s, delete-when-referenced `409`s |
-| `private.volunteer.schedule.spec.js` | `cypress/e2e/api/private/standard/` | schedule CRUD, §2.8 invariants, **generation idempotency**, linked vs standalone, requirement upsert and per-occurrence override |
+| `private.volunteer.schedule.spec.js` | `cypress/e2e/api/private/standard/` | schedule CRUD, §2.8 invariants, **generation idempotency**, the generation range and cap, requirement upsert and per-occurrence override |
+| `private.volunteer.anchored.spec.js` | `cypress/e2e/api/private/standard/` | D20–D22: generation in `class` (through `event_audience`), `ministry` (through `event_ministry_id`) and `event_type` modes with inactive events skipped; offsets in every returned time; the retired fields refused; Staff this event (create, hidden, `409`, validation and authorization negatives, delete) and its event search |
+| `admin.volunteer-v2.anchored.spec.js` | `cypress/e2e/ui-admin/` | the schedule dialog's three sources, class and title pickers and offsets; the Staff an event dialog |
 | `private.volunteer.assignment.spec.js` | `cypress/e2e/api/private/standard/` | assign → notify → accept/decline → gap → self-signup → fill; lifecycle transitions; I1–I8 |
 | `private.volunteer.swap.spec.js` | `cypress/e2e/api/private/standard/` | propose / approve / reject, the one-transaction approval, audit preservation |
 | `private.volunteer.authorization.spec.js` | `cypress/e2e/api/private/standard/` | the whole §4.8 matrix |
@@ -2668,6 +3247,14 @@ Only three globs are wired into a Cypress config (F32):
 | `volunteer-v2.coordinator.spec.js` | `cypress/e2e/ui/groups/` | S1 → S4 coordinator path; gap visible; assign from the eligible picker; localized strings present |
 | `admin.volunteer-v2.ministry-page.spec.js` | `cypress/e2e/ui-admin/` | S3 end to end as admin: tab order, Overview counts + Teams card, Volunteers tab and Remove Volunteer, Help Wanted tab, the removed pool panel, `/volunteer/setup` 404, the "New ministry" modal |
 | `admin.volunteer-v2.event-ministry.spec.js` | `cypress/e2e/ui-admin/` | the ministry field on the event editor; authorization on set/clear |
+| `private.volunteer.team-class.spec.js` | `cypress/e2e/api/private/standard/` | D23: link validation (`400`/`409`/`403`), the teacher import, grant/revoke/position-delete projection, the Student `409`, the groups API's `409`s for Teacher writes, student writes, rollout `v1`, unlink and class deletion |
+| `admin.volunteer-v2.team-class.spec.js` | `cypress/e2e/ui-admin/` | D23 on screen: the team dialog's class select and import, the teams card's class link, the class page and group view notes and hidden teacher controls, the role editor's refusal |
+| `private.volunteer.ministry-events.spec.js` | `cypress/e2e/api/private/standard/` | D24: one event through core (ministry id, own calendar by default, Linked Group in `event_audience`, no staffing), weekly and monthly series against the range and the cap, pins to a granted calendar and `403` for an ungranted one with nothing created, authorization (another ministry's coordinator, a team leader, a self-service login with a ministry scope, rollout `v1`, no login), the validation `400`s (a `staff` key and a series with no last date among them), the list's staffing statuses and past headcount, the position eligible list |
+| `private.volunteer.staff-after-create.spec.js` | `cypress/e2e/api/private/standard/` | D33: a `staff` key refused with nothing written; a series needs its last date and is not capped by the horizon; a new schedule generates on Save with its defaults, says what it looked for when nothing is in reach, and an edit does not generate; Staff them — every schedule on the class (widened, defaults only on the new occurrences), the ministry schedule with exactly the title ignoring case, the event-type schedule with the type and title and never another ministry's, another type left out, inactive and Staff this event schedules ignored, a series past the horizon only widening; the `400`/`403`/`404` negatives, team leader, self-service and rollout `v1` |
+| `private.volunteer.sunday-school-switch.spec.js` | `cypress/e2e/api/private/standard/` | D29: off by default and on every payload, strict boolean, a coordinator may send but not change it, class link / class schedule / event class `400` while off with nothing written, turning off `409` naming the linked teams, on → everything works, an existing class schedule editable but not re-pointable, the 7.8.0 `UPDATE` (run from the script) |
+| `private.volunteer.class-events.spec.js` | `cypress/e2e/api/private/standard/` | D28: `class-events` counts (owned only, upcoming apart, zeros, `403`); team update keep / remove / move (and `400`s); team delete keep / remove / delete, the other-ministry `409` for a coordinator and the Add Events override keeping that ministry's history, core's checked-in refusal deleting nothing; the Calendar tab's list `otherStaffing` and Delete events (`400`/`404`/`403` negatives, team leader `403`, other-ministry and kiosk `409`s deleting nothing, owned events deleted through core) |
+| `admin.volunteer-v2.sunday-school.spec.js` | `cypress/e2e/ui-admin/` | D29 and D28 on screen: the New ministry question, every class control hidden while off, Edit ministry read-only for a coordinator and a manager turning it on, Edit Team's events question with Move, Delete team's question deleting the events, the Calendar tab's Delete events refused for a coordinator (naming the other ministry) and Select all for an administrator |
+| `admin.volunteer-v2.ministry-events.spec.js` | `cypress/e2e/ui-admin/` | the Calendar tab: tab order, empty state, a one-off event with no staffing section and *Not now*, the Last date's one-year default and refused blank, a class series with no schedule opening Add schedule pre-filled and its Save landing on Occurrences, a later series sent to that schedule by Staff them, a one-time event's Staff them opening Staff an event, Staff this event from a row, the editor and view links, the past switch with headcount; the Headcount card on the admin and portal occurrence pages; D23's class default in the schedule dialog |
 
 ### 6.4 Fixtures
 
@@ -2715,7 +3302,7 @@ contains only codes the endpoint genuinely returns.
 | 2. Worship recurring + substitution | `private.volunteer.swap.spec.js` | 5 `Min 1/Max 1` requirements; accept; propose a substitute; approve; original row is `substituted` and still readable; replacement carries `replaces` and `source='substitute'`; response rows exist for both |
 | 3. Authorization boundaries | `private.volunteer.authorization.spec.js` | the full §4.8 table |
 | 4. V1/V2 coexistence and rollout states | `private.volunteer.rollout.spec.js` | `v1`: `/api/ministries/*` `403`, V1 API `200`, V1 menu item present; `v2`: inverse; `both`: both reachable and the person view shows two labelled tabs. Restore the original value in `after()`. |
-| 5. Linked and unlinked schedules | `private.volunteer.schedule.spec.js` | linked: occurrence has `eventId`, `startDateTime` is null, times come from the event, changing `event_start` changes the occurrence's reported time with no V2 write; unlinked: V2 generates dates and the times are its own |
+| 5. Anchored occurrences | `private.volunteer.schedule.spec.js`, `private.volunteer.anchored.spec.js` | every occurrence has `eventId`; its times come from the event plus the schedule's offsets, and changing `event_start` or the offsets changes the reported time with no V2 write; a deleted event leaves the date and no times; each link mode finds exactly its events; reminders count back from the shift start (`private.volunteer.notifications.spec.js`) |
 | 6. Retry / idempotency | all four API specs | see §6.6 |
 
 ### 6.6 Idempotency and negative-path recipes
@@ -2831,7 +3418,7 @@ empty body); `Menu`/`MenuItem` reused with a boolean permission argument.
 *Depends on:* #9704 (for the flag it gates behind). Can be developed in parallel from day one.
 
 **PR contains:** the 13 `schema.xml` tables; one `src/mysql/upgrade/7.8.0-volunteer-v2-schema.sql`;
-**no** `upgrade.json` entry (D17 — registered when the 7.8.0 block opens); the matching `Install.sql` blocks; the `seed.sql` blocks
+the `upgrade.json` `current`-block entry; the matching `Install.sql` blocks; the `seed.sql` blocks
 (**after asking**); the hand-written model + query subclasses; lifecycle enum constants on the
 models; `private.volunteer.setup.spec.js` covering the constraints. **No `events_event` column** —
 that ships with #9713. **No services beyond what the constraint tests need.**
@@ -2881,7 +3468,7 @@ has no FK to qualification" reasoning; `GroupService` **not** extended, and why.
 #### #9708 — Recurring schedules and occurrence generation
 
 *Normative sections:* §2.8, §2.9, §2.10, §3.3.2 (schedule half), §3.4 (`VolunteerScheduleService`).
-*Depends on:* #9705, #9706. *Needs* CR4 for standalone schedules.
+*Depends on:* #9705, #9706. *(Revised by D20–D22: no standalone schedules, so no use of CR4.)*
 
 **PR contains:** `VolunteerScheduleService` incl. `generateOccurrences()`,
 `resolveOccurrenceWindow()`, `getEffectiveRequirements()`; the schedule/requirement/generate
@@ -3039,7 +3626,7 @@ to route around one of these.
 | **E-18** (two API error shapes + over-broad redaction) | wave 1 (#9705), wave 2 (#9706) | §4.8's authorization specs assert error bodies, and M5 currently forces V2 to *phrase around* a regex that eats the word *user*. Phrasing around a bug is exactly the workaround this rule forbids. Fix the contract, then write the tests against it. |
 | **E-19** (stale skill files) | wave 1, all of it | §0.2 rule 4 exists solely because of this. An agent implementing #9704 from `routing-architecture.md` or `slim-mvc-skill.md` produces `/volunteer/volunteer/`-style double prefixes and a `src/volunteer/middleware/` directory that nothing loads. It is L-sized and the single highest-leverage item here. |
 | **E-1** (`PrimaryContact` FK on the wrong column) | wave 5 (#9713) | #9713 adds an FK to `events_event` in the same file; the broken block sits three lines away and is the nearest template. Fix it before anyone is tempted to copy it. |
-| **E-16** (two recurrence implementations) | wave 3 (#9708) | This *is* CR4. #9708's standalone schedules need the extracted generator, and adding a third copy is forbidden (reuse row E3, §1.4 — note that is the matrix id, not defect E-3). Deliberately tracked in both places: as prerequisite **CR4** in §7.1, as the defect it retires here. |
+| **E-16** (two recurrence implementations) | wave 3 (#9708) | This *is* CR4. #9708's standalone schedules needed the extracted generator (retired by D20; the core extraction stands), and adding a third copy is forbidden (reuse row E3, §1.4 — note that is the matrix id, not defect E-3). Deliberately tracked in both places: as prerequisite **CR4** in §7.1, as the defect it retires here. |
 
 *Non-blocking — file them, fix them in parallel, do not let them gate V2:*
 
@@ -3070,9 +3657,10 @@ Constraints an implementer must respect:
 
 - **#9705 owns every `schema.xml` / `Install.sql` edit except two.** The exceptions are
   `usr_ManageMinistries` (#9706) and `events_event.event_ministry_id` (#9713), each in its own
-  `7.8.0-volunteer-v2-*.sql` script. **No V2 PR edits `upgrade.json`** (D17): the three scripts are
-  registered together, in the order schema → permission → event ministry, when the maintainer opens
-  the 7.8.0 block.
+  `7.8.0-volunteer-v2-*.sql` script. **No V2 PR edits `upgrade.json`** (D17): the scripts are
+  registered together by the epic PR in master's 7.8.0 block, in the order Appendix A step 3
+  gives (the Member Portal's calendars script first, then schema → permission → event ministry →
+  group ministry → portal activity).
 - **#9709 is the keystone.** Waves 5 and 6 all consume `VolunteerAssignmentService`. Do not start
   #9710/#9711/#9712 against a stub.
 - #9715 and #9707 both touch `VolunteerMinistryService`. Split it cleanly: #9715 owns ministry / team /
@@ -3097,13 +3685,14 @@ consume it. This is #9703 deliverable 8.
 | `volunteer_team_vtem` | Same as above at the team level (`list_lst (3,2)` is a group *type*). Team is the finest authorization scope; it needs an id that a scope row can reference and that a coordinator cannot delete by deleting a group. | #9705, #9715, #9706 |
 | `volunteer_position_vpos` | Nothing in core models "a role a volunteer can serve in". V1's `volunteeropportunity_vol` is the nearest and is a flat admin list with `VARCHAR(30)` names, no owner, no team, no ordering within a ministry — and D7 forbids depending on it. Group Roles are excluded by F19/F20. | #9705, #9715, #9707, #9709 |
 | `volunteer_qualification_vqal` | Person↔position many-to-many is **structurally impossible** on `person2group2role_p2g2r`: PK `(PersonId, GroupId)` permits one role per person per group (F19), and role option ids renumber on delete (F20). Group member properties (`groupprop_<id>`) are runtime-`CREATE TABLE`, `c1..cN` columns, no PK on the master table, raw SQL throughout, and dropped on disable (G8). V1's `person2volunteeropp_p2vo` has no FKs, nullable join columns and no unique constraint. | #9705, #9707, #9709, #9712 |
-| `volunteer_schedule_vsch` | **There is no event series identifier of any kind** (F7) — no `series_id`, no `parent_event_id`, no recurrence rule on the event. Bulk "repeat" creates N unlinked rows and discards the id list. V2 must own the series or there is nothing to attach staffing requirements to. | #9705, #9708, #9713 |
-| `volunteer_occurrence_vocc` | An `events_event` row cannot carry per-ministry staffing state, and UC3 needs several ministries staffing the same event independently. A link row is also what lets *unlinked* schedules exist at all (#9708) and what preserves history when an event is deleted (E12/F23). | #9705, #9708, #9709, #9713 |
+| `volunteer_schedule_vsch` | **There is no event series identifier of any kind** (F7) — no `series_id`, no `parent_event_id`, no recurrence rule on the event. Bulk "repeat" creates N unlinked rows and discards the id list. A schedule records how a team's events are found (by type, class, ministry or one event, D22), its offsets (D21) and its staffing plan; it generates no dates of its own (D20). | #9705, #9708, #9713, D20–D22 |
+| `volunteer_occurrence_vocc` | An `events_event` row cannot carry per-ministry staffing state, and UC3 needs several ministries staffing the same event independently. The row is anchored to an event (D20) and is what preserves history when an event is deleted (E12/F23). | #9705, #9708, #9709, #9713 |
 | `volunteer_requirement_vreq` | "This occurrence needs 2–3 espresso people" has no home in core. `eventcounts_evtcnt` is a per-type aggregate head-count with **no FK at DB level** and no position concept. | #9705, #9708, #9709 |
 | `volunteer_assignment_vasg` | person + position + occurrence + lifecycle does not exist. `event_attend` is `(event_id, person_id)` presence with timestamps — no position, no status, no source, no assigner (E10). V1's `person2volunteeropp_p2vo` is a flat tag with no time dimension at all. | #9705, #9709, #9712 |
 | `volunteer_response_vrsp` | #9709 requires that swap and response history survive; nothing in core stores a response to anything. The nearest audit trail is a `note_nte` timeline note, which is prose and unqueryable. | #9705, #9709, #9712 |
 | `volunteer_swap_vswp` | No proposal/approval workflow exists anywhere in the codebase. Modelling a swap as two assignment rows alone would lose the proposer, the decision, the decider and the rejection case. | #9705, #9709, #9712 |
 | `volunteer_notification_vntf` | **There is no queue, outbox, send log or delivery-status storage in the schema** (F16). The only idempotency marker in the entire messaging stack is one global `config_cfg` string (`sLastBirthdayEmailRunDate`) with a check-then-set race — it cannot express "the reminder for assignment 4711 has been sent". #9710 requires duplicate suppression on retry and #9712 requires idempotent responses. | #9705, #9710 |
+| `volunteer_calendar_vcal` | D25. `calendars` carries no notion of who may write to it beyond the global Add Events right, and `calendars.ministry_id` can name one owner, not several ministries that may pin to a shared church calendar. A link table with a composite PK and two cascading FKs; `vcal_calendar_id` is `int(11)` because `calendars.calendar_id` is `int(11)` on every SQL path (the `mediumint` in `schema.xml` is not what the database holds, and a mismatched FK is refused). | D25 |
 | `volunteer_scope_vscp` | **No table in `orm/schema.xml` persists a user→object scope** (F10). Every existing gate is a global boolean on `user_usr`. The RBAC tables from #8758 do not exist in code. Group Roles cannot carry it (§4.2, five pieces of evidence). | #9705, #9706 |
 
 ### 8.2 New columns on existing tables
@@ -3114,7 +3703,11 @@ consume it. This is #9703 deliverable 8.
 | `events_event.event_ministry_id` | D9: a coordinator must create and edit *their* ministry's events without the global `AddEvent` right, and there is no per-row event authorization today. `event_audience` cannot carry it — different semantics (F28), wrong cardinality in the API, and it points at groups. | #9713 |
 | `group_grp.grp_ministry_id` | D19: a ministry owns exactly one Group — its volunteer pool. Replaces the `volunteer_pool_vpol` link table, which never shipped: a link gives the model hooks nothing to reason about, which is why the pool was read-only (D-1). This column is what makes the `bManageGroups` exception expressible per-group rather than per-user (§2.5, §4.6). | D19 |
 | `volunteer_ministry_vmin.vmin_HelpWanted` / `vmin_HelpWantedText` | D19: a ministry advertises on the Open Opportunities page. Two columns on the row that owns the advert; nothing in core expresses "this area wants more people". | D19 |
+| `volunteer_ministry_vmin.vmin_SundaySchool` | D29: whether a ministry provides teachers for Sunday School at all. Most ministries never touch a class, so the class controls are noise to them and a class link made by mistake writes a class's Teacher role; one switch on the row that owns the teams is the smallest statement of it. | D29 |
+| `volunteer_requirement_vreq.vreq_Default_per_ID` / `vreq_DefaultAccepted` / `vreq_DefaultSetBy_per_ID` | D32: a schedule's default volunteer per position, which Generate and the daily top-up assign on new occurrences. On the template row because that row already is "this position on this schedule"; the set-by person is who the top-up, which runs as nobody, records as assigner and responder. | D32 |
+| `volunteer_team_vtem.vtem_grp_ID` | D23: a team staffs one Sunday School class, and V2 writes that class's Teacher role from the team's qualifications. The class stays a core group; nothing about it is copied, so a column naming it is the whole link. | D23 |
 | `volunteer_notification_vntf.vntf_Context` | D19: the outbox's first type that hangs off neither an assignment nor an occurrence. `help_offer` is about a ministry and a person, and the one fact its message needs — *were they already in the pool?* — is true only at the moment of the click and cannot be recomputed at delivery time. | D19 |
+| `event_types` row "Other" *(a row, not a column)* | D31: a ministry's own event that is neither a service nor a class (a workday, a planning meeting) needs a type with no recurrence defaults to start from. The 7.8.0 script inserts it only when no type is named "Other"; Install.sql and seed.sql carry it as type 3. `iVolunteerDefaultEventTypeId` can name another type, so nothing depends on the row surviving. | D31 |
 
 ### 8.3 New services
 
@@ -3123,10 +3716,16 @@ consume it. This is #9703 deliverable 8.
 | `VolunteerAuthorizationService` | No scope primitive exists (F10). Must be one class so the admin bypass lives in exactly one place and so a future `AuthorizationService` (#8758) can absorb it without call-site churn. | #9706 and every later issue |
 | `VolunteerMinistryService` | Ministry/team/pool/position/qualification CRUD with scope checks. `GroupService` is deliberately not extended: ~60 % raw concatenated SQL, `bManageGroups`-only gating, and `addUserToGroup()` swallows failures (G10). | #9707, #9715, D19 |
 | `VolunteerPoolWriter` | D19's managed-write context and the hook predicate, in one small final class so the two core models share exactly one implementation of "may this caller write a ministry's pool Group". Deliberately not a method on `VolunteerMinistryService`: the models must not depend on the setup service, and a depth counter with `try`/`finally` is the whole of it (§4.6). | D19 |
-| `VolunteerScheduleService` | Occurrence generation, the linked/unlinked window resolution, and the effective-requirement merge. Cannot live in `EventService`, which exists to *create* events — precisely what #9713 forbids. | #9708, #9713 |
+| `VolunteerClassLinkService` | D23's link to a Sunday School class: validation, the teachers linking imports, the Teacher-role writes, and the predicate the membership hooks and the groups API ask. Static entry points because the core membership model calls it and must not depend on the setup services — the reason `VolunteerPoolWriter` is its own class. | D23 |
+| `VolunteerScheduleService` | Occurrence generation per link mode, Staff this event, the offset-aware window resolution and the effective-requirement merge. Cannot live in `EventService`, which exists to *create* events — precisely what #9713 forbids. | #9708, #9713, D20–D22 |
+| `VolunteerScheduleTopUp` | D31's daily top-up: claims the day, generates every active schedule to the horizon, records the result. A final class of its own, like `VolunteerPoolWriter`, because `SystemService` calls it and it owns a `config_cfg` claim no schedule method should carry. | D31 |
 | `VolunteerAssignmentService` | The whole assignment/response/gap/swap workflow, including the single gap implementation. No analogue exists. | #9709, #9711, #9712 |
+| `VolunteerCalendarService` | D25: the one pin rule (`mayPin()`), the editor's `pinnableCalendarIds()`, and reading/replacing a calendar's grants. Not in `VolunteerAuthorizationService`, which answers who manages what; this answers where a ministry's events may go, and reads a table that service does not own. | D25 |
+| `VolunteerEventService` | D24/D26/D28/D33: a ministry's events created through `EventService`, and "Staff them" sending a new series to the schedules that follow it through `VolunteerScheduleService`, the Calendar tab's list, the headcount the occurrence page reads, and what happens to a class's owned events when its team changes or a coordinator deletes events. `EventService` creates events for everyone and must not know about schedules; `VolunteerScheduleService` never creates an event (D20). The one class that knows both sits between them. | D24, D26, D33 |
+| `EventService::createEvent()` *(core)* | Not V2-specific: the single-event write `POST /api/events` did inline, moved so the Calendar tab creates the same row through the same code. | D24 |
+| `EventService::deleteRefusal()` / `deleteEvent()` *(core)* | Not V2-specific: `DELETE /api/events/{id}`'s checked-in and kiosk refusals and its delete, moved out of the route so the Calendar tab's Delete events and Delete team's "Delete those events" go through the same guards rather than a copy. | D28 |
 | `VolunteerNotificationService` | `dto\Notification` cannot carry a message body (no-op setters, hard-coded text, `sendSMS()` always returns `true`) and `NotificationService` is an in-app banner registry with no table. Neither can enqueue, deduplicate, schedule or retry. | #9710 |
-| `RecurrenceDateGenerator` *(core, CR4)* | Not V2-specific: it removes one of the **two** existing duplicate recurrence implementations while giving V2 the date math it needs for standalone schedules. | CR4 → #9708 |
+| `RecurrenceDateGenerator` *(core, CR4)* | Not V2-specific: it removes one of the **two** existing duplicate recurrence implementations in `EventService`. V2 no longer calls it (D20): its dates come from events. | CR4 |
 
 ### 8.4 New middleware and components
 
@@ -3142,6 +3741,8 @@ consume it. This is #9703 deliverable 8.
 | `buildActionMenu()` in `CRMJSOM.js` *(core, CR2)* | No generic builder; three renderers sharing 22 verbatim lines (person↔family 48 of 58 identical) plus 35 hand-built dropdown triggers in 25 files (re-counted at `a22e68128`). #9709 forbids a Volunteer-only action-menu framework. | CR2 → #9711 |
 | `window.CRM.confirmAction()` *(core, CR3, optional)* | 47 `bootbox.confirm` literals in 32 files. | CR3 → #9709, #9711, #9712 |
 | Six webpack entries (`ministries-dashboard`, `-ministries`, `-ministry`, `-occurrence`, `-my-schedule`, `-opportunities`) | One per screen, matching the module-prefixed bare-key convention. | #9711, #9712, #9715 |
+| `webpack/ministries/components/ministry-events.ts` | The Calendar tab, its New event dialog (D24) and the question asked after Create (D33): a component like the Schedules and Occurrences tables, so the tab is one entry in `ministry.ts`. | D24, D33 |
+| `webpack/ministries/components/default-fill.ts` | The Generate dialog's "Fill by default with" rows, out of `schedules-table.ts`; its option list also fills the staffing-needs editor's Default volunteer (D32). | D24, D32 |
 
 **Nothing else is new.** No new UI framework, no new bulk-selection system, no second roster, no
 second person picker, no second calendar, no second messaging stack, no second authorization system,
@@ -3167,10 +3768,14 @@ Corrected against the actual tooling in the tree.
    (2026-09-12): Volunteer v2 targets **7.8.0** and is excluded from 7.7.0; "do not register a
    future 7.8.0 migration in the active 7.7.0 upgrade graph — register it when the 7.8.0
    development/version boundary is opened". Until then fresh installs get the tables from
-   `Install.sql` and the Cypress database from `seed.sql`. When the 7.8.0 block exists, list the V2
-   scripts in it in this order: schema → manager permission → event ministry → group ministry
-   (the last two each FK `volunteer_ministry_vmin`, which the schema script creates). F29's
-   "append to the `current` block" is superseded.
+   `Install.sql` and the Cypress database from `seed.sql`. The epic PR lists them in master's 7.8.0
+   block, after master's own scripts, in this order: **member-portal-calendars → volunteer-v2-schema → manager permission
+   → event ministry → group ministry → member-portal-activity**. The portal calendars script must come
+   first because it adds `calendars.ministry_id`, and the volunteer schema script adds the
+   `calendars_ministry_fk` foreign key on that column (proven 2026-09-19: registering the schema
+   script first fails with "Key column 'ministry_id' doesn't exist"). Every CREATE in the schema
+   script is `IF NOT EXISTS`, so a half-applied run resumes cleanly. F29's "append to the `current`
+   block" is superseded.
 4. **`src/mysql/install/Install.sql`** — mirror every change. **Required, not optional**: nothing in
    the build validates Install.sql against `schema.xml`, and they have already drifted for
    `events_event` (nullability and defaults disagree today).
@@ -3239,16 +3844,26 @@ public static function getVolunteerVersionChoices(): array
 |---|---|---|---|
 | `sVolunteerVersion` | `choice` | `v1` | The rollout state (#9704). `s` = string, matching the `sTimeZone`/`sLogLevel`/`sTelemetryLevel` convention. **Pick `v1` deliberately and never change the default** — changing a default retroactively changes behaviour on every install that never overrode it. |
 | `iVolunteerReminderLeadHours` | `number` | `48` | D11: system-level, administrator-adjustable, **not** per volunteer. Read with `SystemConfig::getIntValue()`. |
+| `iVolunteerSchedulingHorizonWeeks` | `number` | `8` | D31: how many weeks ahead every schedule is generated, church-wide; replaces the per-schedule `vsch_GenerateAheadDays`. Read through `VolunteerScheduleService::horizonWeeks()`: the config API refuses a blank or non-number (#10217, D32), but the row can be written other ways, so a blank or non-numeric value reads as 8 and a number is held within 1–52. |
+| `iVolunteerDefaultEventTypeId` | `number` | `''` | D31: the event type a ministry's new event starts with. Unset, inactive or deleted falls back to the active type named "Other", else none (`VolunteerEventService::defaultEventTypeId()`). |
+| `sLastVolunteerTopUpRunDate` | `text` | `''` | D31, internal: the day (`Y-m-d`, in `sTimeZone`) the daily top-up last ran — its once-a-day claim. Not on any settings page. |
+| `sLastVolunteerTopUpResult` | `text` | `''` | D31, internal: JSON `{ranAt, schedules, created, failed, assigned, skipped, unqualified}` of the last top-up (the last three D32's default assignments), which Ministry Settings shows. |
 
 **No `bEnabledVolunteer` / `bEnabledVolunteerV2` boolean is added.** `sVolunteerVersion` subsumes
 it, and two flags would inevitably drift. Anywhere a boolean reads better in code, use
 `User::isVolunteerV2Enabled()`.
 
-Both settings are surfaced through `window.CRM.settingsPanel` on the volunteer dashboard inside
-`if ($isAdmin)` (S4/U8), backed by `POST /admin/api/system/config/{name}`. They are also
-listed in a `Volunteer` category in `SystemConfig::buildCategories()` (S4) so that Admin → System
-Settings shows them before the V2 dashboard's panel exists (#9711) — a setting with no category is
-otherwise invisible in the UI.
+The four user-facing settings are surfaced through `window.CRM.settingsPanel` (U8) on **Admin →
+Ministry Settings** (`src/admin/views/ministry-settings.php`), backed by
+`POST /admin/api/system/config/{name}`; the default event type is a choice of the active event
+types, its empty entry saying what it falls back to. None is in a `buildCategories()` category
+(2026-09-18), so that page — which exists in every rollout state — is their one home. The panel
+keeps its fields and Save disabled until every current value has loaded, and the config API
+refuses a blank or non-numeric value for a `number` setting whose default is not blank (core,
+upstream PR #10217 — D32 (d)). The same
+page's *Background jobs and delivery* card shows the last top-up, how many occurrences it made, how
+many default volunteers it assigned, and the defaults it skipped — *"2 defaults skipped:
+qualification revoked"* apart from the rest.
 
 Optional, advisory only: `volunteerVersion: <?= SystemConfig::getValueForJs('sVolunteerVersion') ?>`
 in the `window.CRM` block at `src/Include/Header.php:160-245`. The server gate is the real control.
@@ -3381,6 +3996,7 @@ mistaking a pre-existing defect for a V2 regression.
 | E-17 | **`events_event` is `utf8`, not `utf8mb4`** — so an emoji in an event title fails, against the project's own rule. | `Install.sql:118-131`; `db-schema-migration.md` | A cheap in-policy win, but it must be its own issue — **do not smuggle a charset conversion into a V2 PR**. | **Minimal complete fix:** one upgrade script doing `ALTER TABLE events_event CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`, with the matching `Install.sql` and `seed.sql` edits — preceded by an audit of that table's index key lengths and of the charset of every column on either side of an FK it participates in, since `utf8mb4` widens index prefixes and MySQL refuses a charset mismatch across an FK. Scoped to `events_event` and its FK partners; a tree-wide legacy-charset migration is a different, larger issue and must not be smuggled in here — nor into a V2 PR. | M | #9736 |
 | E-18 | **Two API error shapes** — `{"error", "code"}` from middleware vs `{"success", "message"}` from `SlimUtils::renderErrorJSON()`; and the redaction regex in `renderErrorJSON()`/`sanitizeErrorMessage()` swallows the innocuous words *user* and *token*. | `BaseAuthRoleMiddleware.php:42-44`, `:62-64`; `SlimUtils.php:41-43`, `:68` | V2 must phrase error messages around it (M5) and assert the right shape in tests. | **Minimal complete fix:** make `BaseAuthRoleMiddleware` emit the `SlimUtils::renderErrorJSON()` shape so the API has exactly one documented error contract, and narrow the redaction regex to match credential-shaped assignments (`password=`, `api_key:`) instead of the bare English words *user*, *token* and *host*. Both halves are needed — one shape without a sane regex still swallows legitimate messages. | M | #9737 |
 | E-19 | **Stale skill files.** `routing-architecture.md` and `slim-mvc-skill.md` describe a `return function ($app)` route convention, module-prefixed route paths, `src/<module>/middleware/` directories and a `MenuSection` class — **none of which exist**, and following them produces `/finance/finance/`-style double prefixes. `table-action-menu.md`, `tabler-components.md` §14 and `responsive-design-guidelines.md` disagree with each other and with the code about the action-menu trigger icon and the dropdown-overflow fix. `service-layer.md` shows a DI container that does not exist. `webpack-typescript.md` shows entry keys and `.tsx` files that do not exist. | as cited throughout | An agent implementing a V2 issue from those files will produce broken routes. §0.2 rule 4 exists because of this. | **Minimal complete fix:** rewrite the files that are demonstrably wrong against the code, one small PR each, every claim grep-verified — `routing-architecture.md` and `slim-mvc-skill.md` (route convention, module prefixes, non-existent `src/<module>/middleware/` and `MenuSection`), `service-layer.md` (the DI container that does not exist), `webpack-typescript.md` (entry keys and `.tsx` files that do not exist), and one reconciliation pass over `table-action-menu.md` / `tabler-components.md` §14 / `responsive-design-guidelines.md` so the three agree with the code and each other. Not a docs-system overhaul and not a pass over all 50 skill files — but genuinely large, because each file has to be re-derived from source. | L | #9738 (a), #9739 (b), #9740 (c), #9741 (d), #9742 (e) |
+| E-20 | **Fixed upstream by #10125 (2026-09-29).** **The admin calendar page's New Calendar dialog could not create a calendar** — `webpack/event-calendars.js` strips the `#` from both colours, and `NewCalendar()` refuses any colour without one (`400 Invalid color format`), so every save fails silently. Found 2026-09-26 while building D25's dialog; the Cypress "Create New Calendar" test never checks the result. | `webpack/event-calendars.js` (`saveButtonCallback`); `src/api/routes/calendar/calendar.php` (`NewCalendar`) | D25 adds "Ministries that may add events" to that dialog. | Send the colours with their `#` (the API strips it before storing); assert the created row in the Cypress test. Done in core by #10125; the epic's own copy (from `feature/vreuse-calendar-grants`) was dropped for master's lines when master was merged in, and only D25's grant field stays in `event-calendars.js`. | S | #10124, fixed by #10125 |
 
 ---
 
