@@ -42,6 +42,19 @@ describe("Member Portal — My Family", () => {
         cy.url().should("not.include", "/session/begin");
     };
 
+    /** The members the portal proposed, found again on the pending list by first name. */
+    const proposedFirstNames = [];
+
+    after(() => {
+        cy.makePrivateAdminAPICall("GET", "/api/persons/self-register", null, 200).then((response) => {
+            cy.cleanupPeople(
+                (response.body.people || [])
+                    .filter((person) => proposedFirstNames.includes(person.FirstName))
+                    .map((person) => person.Id),
+            );
+        });
+    });
+
     describe("An adult of the family", () => {
         it("sees the address, the members list and their own highlighted row", () => {
             loginAs(adultUser);
@@ -124,6 +137,7 @@ describe("Member Portal — My Family", () => {
         it("adds a family member, and the entry waits on People → Self Registrations", () => {
             const stamp = String(Date.now()).slice(-6);
             const firstName = `Portal${stamp}`;
+            proposedFirstNames.push(firstName);
 
             loginAs(adultUser);
             cy.visit("/portal/family");
