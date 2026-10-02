@@ -247,6 +247,9 @@ import "../src/skin/scss/system-settings-panel.scss";
     constructor() {
       this.options = {};
       this.settingValues = {};
+      this.savedValues = {};
+      this.latestValues = {};
+      this.writeQueue = {};
       this.initialized = false;
     }
 
@@ -320,6 +323,7 @@ import "../src/skin/scss/system-settings-panel.scss";
               return this.loadAjaxOptions(cfg.name, cfg.ajaxUrl, data.value);
             }
             this.applyValue(cfg.name, data.value);
+            this.savedValues[cfg.name] = data.value != null ? String(data.value) : "";
           }),
         );
 
@@ -467,6 +471,7 @@ import "../src/skin/scss/system-settings-panel.scss";
     bindEvents() {
       this.container.querySelectorAll('select[data-type="persons"]').forEach((el) => {
         window.CRM.initPersonSelect(el, { plugins: ["remove_button"] });
+        this.savedValues[el.name] = SettingTypes.persons.getValue(el);
       });
 
       // Initialize Bootstrap tooltips on help icons
@@ -558,20 +563,39 @@ import "../src/skin/scss/system-settings-panel.scss";
       const val = SettingTypes[input.dataset.type].getValue(input);
       if (val === null) return;
 
-      this.postSetting(input.name, val)
+      const name = input.name;
+      this.latestValues[name] = val;
+
+      // One write at a time per setting, so the last selection is the last write.
+      this.writeQueue[name] = (this.writeQueue[name] || Promise.resolve())
+        .then(() => this.postSetting(name, val))
         .then(() => {
+          this.savedValues[name] = val;
           if (window.CRM?.notify) {
             window.CRM.notify(t("Settings saved successfully"), { type: "success", delay: 2000 });
           }
           if (typeof this.options.onSave === "function") {
-            this.options.onSave({ [input.name]: val });
+            this.options.onSave({ [name]: val });
           }
         })
         .catch(() => {
           if (window.CRM?.notify) {
             window.CRM.notify(t("Failed to save settings"), { type: "error", delay: 5000 });
           }
+          if (this.latestValues[name] === val) this.revertField(input);
         });
+    }
+
+    // Show the last value the server confirmed after a failed save.
+    revertField(input) {
+      const previous = this.savedValues[input.name];
+      if (previous === undefined) return;
+      if (input.tomselect) {
+        input.tomselect.setValue(previous ? previous.split(",") : [], true);
+      } else {
+        this.applyValue(input.name, previous);
+      }
+      this.latestValues[input.name] = previous;
     }
 
     // Save all settings

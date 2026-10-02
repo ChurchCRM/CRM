@@ -137,6 +137,17 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
         $deletedSeq = $option->getOptionSequence();
         $option->delete();
 
+        // A freed classification ID can be reused by the next one added; drop it from the flag lists.
+        if ($listId === 1) {
+            foreach (['sInactiveClassification', 'sDirClassifications'] as $configKey) {
+                $kept = array_filter(
+                    explode(',', SystemConfig::getValue($configKey)),
+                    fn ($k) => is_numeric($k) && (int) $k !== $optionId,
+                );
+                SystemConfig::setValue($configKey, implode(',', $kept));
+            }
+        }
+
         // Resequence remaining options
         $remaining = ListOptionQuery::create()
             ->filterById($listId)

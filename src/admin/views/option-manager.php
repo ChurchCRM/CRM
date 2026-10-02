@@ -237,6 +237,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     method: 'POST',
                     path: 'options/' + listId + '/' + optionId + '/' + toggle[1],
                     data: JSON.stringify({})
+                }).fail(function() {
+                    checkbox.checked = !checkbox.checked;
                 });
             });
         });

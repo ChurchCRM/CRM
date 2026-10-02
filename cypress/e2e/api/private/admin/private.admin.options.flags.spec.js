@@ -113,6 +113,28 @@ describe("API Private Admin OptionManager — flags", () => {
         });
     });
 
+    describe("DELETE /{listId}/{optionId} flag cleanup", () => {
+        it("drops a deleted classification from the directory and inactive lists", () => {
+            cy.makePrivateAdminAPICall("POST", `/admin/api/options/${classificationsList}`, {
+                name: `CypressFlagCleanup_${Date.now()}`,
+            }, 200).then((created) => {
+                const id = created.body.optionId ?? created.body.id;
+                expect(id, "created option id").to.be.a("number");
+                const flagged = (suffix) =>
+                    cy.makePrivateAdminAPICall("POST", `/admin/api/options/${classificationsList}/${id}/${suffix}`, {}, 200);
+                flagged("directory");
+                flagged("inactive");
+                cy.makePrivateAdminAPICall("DELETE", `/admin/api/options/${classificationsList}/${id}`, null, 200);
+                cy.getSystemConfig("sDirClassifications").then((value) => {
+                    expect(value.split(",").map(Number)).to.not.include(id);
+                });
+                cy.getSystemConfig("sInactiveClassification").then((value) => {
+                    expect(value.split(",").map(Number)).to.not.include(id);
+                });
+            });
+        });
+    });
+
     describe("POST /{listId}/{optionId}/default", () => {
         it("sets the default role of the group that owns the role list", () => {
             cy.makePrivateAdminAPICall("GET", "/api/groups/1", null, 200).then((group) => {

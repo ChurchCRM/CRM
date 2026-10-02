@@ -140,13 +140,13 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => $listConfig['title'],
             'sPageSubtitle' => sprintf(gettext('Manage %s options'), $listConfig['noun']),
-            'aBreadcrumbs' => PageHeader::breadcrumbs(array_filter([
+            'aBreadcrumbs' => PageHeader::breadcrumbs(array_values(array_filter([
                 $breadcrumbParent,
                 in_array($mode, ['famroles', 'famcustom', 'classes', 'custom'], true)
                     ? [gettext('People Settings'), '/admin/people']
                     : null,
                 [$listConfig['title']],
-            ])),
+            ]))),
             'sPageHeaderButtons' => in_array($mode, ['famroles', 'famcustom', 'classes', 'custom'], true) ? PageHeader::peopleSettingsButton() : '',
             'mode' => $mode,
             'listId' => $listConfig['listId'],

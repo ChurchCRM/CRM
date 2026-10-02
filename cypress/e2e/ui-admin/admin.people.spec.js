@@ -5,6 +5,13 @@ describe("Admin People", () => {
         cy.setupAdminSession();
     });
 
+    describe("Options editor breadcrumbs", () => {
+        it("marks the page title active on the Group Types editor", () => {
+            cy.visit("admin/system/options?mode=grptypes");
+            cy.get(".breadcrumb .breadcrumb-item.active").should("contain", "Group Types Editor");
+        });
+    });
+
     describe("Person Classifications Editor", () => {
         it("loads the page with existing classifications", () => {
             cy.visit("admin/system/options?mode=classes");

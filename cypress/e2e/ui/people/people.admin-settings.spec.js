@@ -31,10 +31,10 @@ describe("People Settings hub", () => {
 
         it("links to the hub from the People Dashboard instead of expanding a panel", () => {
             cy.visit("/people/dashboard");
-            cy.contains("a", "People Settings").should("have.attr", "href").and("include", "/admin/people");
+            cy.get(".page-header .btn-list a").should("have.length", 1).and("contain", "People Settings");
+            cy.get(".page-header .btn-list a").should("have.attr", "href").and("include", "/admin/people");
             cy.get("#peopleSettings").should("not.exist");
-            cy.get(".page-header .btn-list a").should("have.length", 1);
-            cy.contains("a", "People Settings").click();
+            cy.get(".page-header .btn-list a").click();
             cy.url().should("include", "/admin/people");
         });
 
@@ -114,7 +114,10 @@ describe("People Settings hub", () => {
             cy.get("#peoplePeople .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
             cy.get("#peoplePeople").should("contain.text", "Hide Friend Date");
             cy.get("#peoplePeople .form-label").filter(":contains('Set true to disable')").should("not.exist");
-            cy.get("#peoplePeople [title*='Set true to disable entering Friend Date']").should("exist");
+            // Bootstrap moves title to data-bs-original-title once the tooltip is initialised.
+            cy.get(
+                "#peoplePeople [title*='Set true to disable entering Friend Date'], #peoplePeople [data-bs-original-title*='Set true to disable entering Friend Date']",
+            ).should("exist");
         });
 
         it("renders choice settings as selects with their options", () => {
@@ -131,7 +134,7 @@ describe("People Settings hub", () => {
                 cy.get("#peopleNewMembers .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
                 cy.get("#peopleNewMembers .ts-wrapper").should("exist");
 
-                cy.get("#peopleNewMembers .ts-control input").type("a", { force: true });
+                cy.get("#peopleNewMembers .ts-control input").type("Church", { force: true });
                 cy.get(".ts-dropdown .option", { timeout: 10000 }).first().click({ force: true });
 
                 cy.wait("@saveRecipients").then((interception) => {

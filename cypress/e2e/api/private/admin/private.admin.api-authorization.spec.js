@@ -72,7 +72,7 @@ describe("Admin API authorization matrix", () => {
     });
 
     it("covers every admin API route", () => {
-        expect(ROUTES).to.have.length(48);
+        expect(ROUTES).to.have.length(49);
     });
 
     describe("non-admin API key is refused (403)", () => {
