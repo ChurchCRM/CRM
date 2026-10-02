@@ -161,16 +161,17 @@ describe("Volunteer v2 — a ministry's pool Group in the Groups module (D19)", 
     });
 
     it("disables Edit and Delete in the group list's row action menu", () => {
+        cy.intercept("GET", /\/api\/groups\/(\?|$)/).as("groupList");
         cy.visit("/groups/dashboard");
-        cy.get("#groupsTable").should("be.visible");
+        // The table is drawn empty before its data arrives; typing before then lets
+        // the late draw detach the filtered row under the next command.
+        cy.wait("@groupList");
         // DataTables paginates; search narrows to the one row this is about.
         // `.dt-search` is the v2+/v3 layout container — the legacy
         // `.dataTables_filter` no longer exists (datatables-v3-upgrade.spec.js).
         cy.get(".dt-search input").first().type(MINISTRY_NAME);
-        cy.get("#groupsTable tbody tr")
-            .should("have.length", 1)
-            .find("[data-bs-toggle='dropdown']")
-            .click();
+        cy.get("#groupsTable tbody tr").should("have.length", 1).and("contain", MINISTRY_NAME);
+        cy.get("#groupsTable tbody tr [data-bs-toggle='dropdown']").click();
 
         cy.get("#groupsTable tbody tr .dropdown-menu").within(() => {
             cy.contains("Edit")
