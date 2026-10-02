@@ -479,7 +479,10 @@ describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to
 
             cy.get("#portal-confirm-change-needed").click();
             cy.get("#portal-confirm-comment").should("be.visible").type(comment);
+            cy.intercept("POST", "**/api/portal/family/confirm").as("confirmFamily");
             cy.get("#portal-confirm-submit").click();
+            // The database is read only after the answer is in: querying on the click raced the request.
+            cy.wait("@confirmFamily").its("response.statusCode").should("eq", 200);
 
             // The confirm writes a note against the family — the one fact in this run
             // with no HTTP surface a member may read.
