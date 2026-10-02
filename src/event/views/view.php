@@ -272,7 +272,7 @@ $inactive = (int) $event->getInActive() === 1;
         </div>
         <div class="list-group list-group-flush">
           <?php foreach ($volunteerOccurrences as $vo): ?>
-            <div class="list-group-item">
+            <div class="list-group-item volunteer-staffing-row" data-volunteer-staffing="<?= InputUtils::escapeAttribute(json_encode($vo['staffing'])) ?>">
               <div class="d-flex justify-content-between align-items-start gap-2">
                 <div>
                   <div class="fw-bold"><?= InputUtils::escapeHTML($vo['ministryName']) ?></div>
@@ -280,9 +280,7 @@ $inactive = (int) $event->getInActive() === 1;
                     <div class="text-body-secondary small"><?= InputUtils::escapeHTML($vo['scheduleName']) ?></div>
                   <?php endif; ?>
                   <?php if ($vo['requirementCount'] > 0): ?>
-                    <div class="small mt-1">
-                      <?= sprintf(gettext('%1$d of %2$d filled'), $vo['liveCount'], $vo['requiredCount']) ?>
-                    </div>
+                    <div class="small mt-1 volunteer-staffing-detail"></div>
                   <?php endif; ?>
                 </div>
                 <div class="text-end">
@@ -293,12 +291,9 @@ $inactive = (int) $event->getInActive() === 1;
                       green and the coordinator never learns there is nothing to fill.
                     -->
                     <span class="badge bg-secondary-lt text-secondary"><?= gettext('No staffing needs set') ?></span>
-                  <?php elseif ($vo['gapCount'] > 0): ?>
-                    <span class="badge bg-orange-lt text-orange">
-                      <?= sprintf(gettext('%d still needed'), $vo['gapCount']) ?>
-                    </span>
                   <?php else: ?>
-                    <span class="badge bg-green-lt text-green"><?= gettext('Fully staffed') ?></span>
+                    <!-- Worded by the ministries-event-staffing bundle, as on every V2 screen (D34). -->
+                    <span class="badge volunteer-staffing-badge"></span>
                   <?php endif; ?>
                   <div class="mt-2 small">
                     <a href="<?= $sRootPath ?>/ministries/occurrences/<?= (int) $vo['occurrenceId'] ?>">
@@ -335,6 +330,10 @@ $inactive = (int) $event->getInActive() === 1;
     <?php endif; ?>
   </div>
 </div>
+
+<?php if (!empty($volunteerOccurrences)): ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-event-staffing.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
 
 <?php if (!empty($canSendEmail)): ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

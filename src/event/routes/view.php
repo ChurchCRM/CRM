@@ -147,20 +147,21 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
                 $ministry = $schedule === null
                     ? null
                     : VolunteerMinistryQuery::create()->findPk((int) $schedule->getMinistryId());
-                $summaryRow = $gaps[(int) $occurrence->getId()] ?? [
-                    'gapCount' => 0,
-                    'liveCount' => 0,
-                    'requiredCount' => 0,
-                    'requirementCount' => 0,
-                ];
+                $summaryRow = $gaps[(int) $occurrence->getId()] ?? [];
 
                 $volunteerOccurrences[] = [
                     'occurrenceId'  => (int) $occurrence->getId(),
                     'ministryName'  => $ministry === null ? gettext('Volunteer') : $ministry->getName(),
                     'scheduleName'  => $schedule === null ? '' : $schedule->getName(),
-                    'liveCount'     => (int) $summaryRow['liveCount'],
-                    'requiredCount' => (int) $summaryRow['requiredCount'],
-                    'gapCount'      => (int) $summaryRow['gapCount'],
+                    // The rollup the shared staffing formatter words (D34).
+                    'staffing'      => [
+                        'requiredCount' => (int) ($summaryRow['requiredCount'] ?? 0),
+                        'capacity'      => (int) ($summaryRow['capacity'] ?? 0),
+                        'liveCount'     => (int) ($summaryRow['liveCount'] ?? 0),
+                        'gapCount'      => (int) ($summaryRow['gapCount'] ?? 0),
+                        'openCount'     => (int) ($summaryRow['openCount'] ?? 0),
+                        'pendingCount'  => (int) ($summaryRow['pendingCount'] ?? 0),
+                    ],
                     // How many positions the plan names at all. Zero means nobody has
                     // said what this occurrence needs, which must never render as
                     // "Fully staffed" (§2.10).

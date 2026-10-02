@@ -114,6 +114,8 @@ module.exports = {
     'ministries-ministry': './webpack/ministries/ministry',
     'ministries-occurrence': './webpack/ministries/occurrence',
     'ministries-settings': './webpack/ministries/settings',
+    // The core event view's Volunteers card, worded like every V2 screen (D34).
+    'ministries-event-staffing': './webpack/ministries/event-staffing',
     'portal-volunteer-schedule': './webpack/portal/volunteer-schedule',
     'portal-volunteer-opportunities': './webpack/portal/volunteer-opportunities',
     'email-composer': './webpack/common/email-composer',

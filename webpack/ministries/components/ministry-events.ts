@@ -32,6 +32,7 @@ import {
   type VolunteerTeam,
 } from "../api";
 import type { MinistryEventPrefill, SchedulePrefill } from "./schedules-table";
+import { rollupStaffing, STAFFING_BADGE_CLASS, staffingTitle } from "./staffing-label";
 import {
   actionMenu,
   appLocale,
@@ -106,29 +107,26 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
   // ── The table ─────────────────────────────────────────────────────────────
 
   function staffingBadge(team: VolunteerMinistryEventStaffing): string {
-    const look = {
-      gap: {
-        cls: "bg-red-lt text-red",
-        tip: tText("{{total}} still needed", { total: team.gap }),
-      },
-      pending: {
-        cls: "bg-yellow-lt text-yellow",
-        tip: tText("Every position is assigned; {{total}} not yet confirmed", { total: team.pending }),
-      },
-      filled: { cls: "bg-green-lt text-green", tip: i18next.t("Every position is filled and confirmed") },
-      unplanned: { cls: "bg-secondary-lt text-secondary", tip: i18next.t("No staffing needs set") },
-    }[team.status];
-    const label =
+    const counts =
       team.status === "unplanned"
-        ? tText("{{team}}: no staffing needs set", { team: team.teamName })
-        : tText("{{team}}: {{filled}} of {{needed}}", {
-            team: team.teamName,
-            filled: team.filled,
-            needed: team.needed,
+        ? null
+        : rollupStaffing({
+            requiredCount: team.needed,
+            capacity: team.capacity,
+            liveCount: team.filled,
+            gapCount: team.gap,
+            openCount: team.openCount,
+            pendingCount: team.pending,
           });
+    const tone = counts?.tone ?? "secondary";
+    const label =
+      counts === null
+        ? tText("{{team}}: no staffing needs set", { team: team.teamName })
+        : tText("{{team}}: {{staffing}}", { team: team.teamName, staffing: counts.label });
+    const tip = counts === null ? i18next.t("No staffing needs set") : staffingTitle(counts);
 
-    return `<a class="badge ${look.cls} me-1 mb-1 ministry-event-staffing" data-team-id="${team.teamId}" data-status="${team.status}"
-              href="${escapeAttribute(options.occurrenceUrl(team.occurrenceIds[0]))}" title="${escapeAttribute(look.tip)}">${escapeHtml(label)}</a>`;
+    return `<a class="badge ${STAFFING_BADGE_CLASS[tone]} me-1 mb-1 ministry-event-staffing" data-team-id="${team.teamId}" data-status="${team.status}" data-tone="${tone}"
+              href="${escapeAttribute(options.occurrenceUrl(team.occurrenceIds[0]))}" title="${escapeAttribute(tip)}">${escapeHtml(label)}</a>`;
   }
 
   function row(event: VolunteerMinistryEvent): string {

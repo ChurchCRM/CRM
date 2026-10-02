@@ -32,6 +32,7 @@ import {
   type VolunteerHelpWantedMinistry,
   type VolunteerMyOpportunity,
 } from "../ministries/api";
+import { requirementStaffing } from "../ministries/components/staffing-label";
 import { tText } from "../ministries/components/ui";
 import {
   byId,
@@ -114,12 +115,9 @@ function cardHtml(opportunity: VolunteerMyOpportunity): string {
        </div>`
     : "";
 
-  const needed =
-    opportunity.openCount > 1
-      ? `<span class="badge bg-secondary-lt text-secondary volunteer-card-needed">${escapeHtml(
-          i18next.t("{{count}} still needed", { count: opportunity.openCount }),
-        )}</span>`
-      : `<span class="badge bg-secondary-lt text-secondary volunteer-card-needed">${escapeHtml(i18next.t("One more needed"))}</span>`;
+  const needed = `<span class="badge bg-secondary-lt text-secondary volunteer-card-needed">${escapeHtml(
+    requirementStaffing(opportunity).label,
+  )}</span>`;
 
   return memberCardHtml({
     variantClass: "volunteer-opportunity-card",

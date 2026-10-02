@@ -37,7 +37,8 @@ import {
   type VolunteerDashboardPending,
   type VolunteerDashboardSwap,
 } from "./api";
-import { exportButtons, shortDate, shortDateTime } from "./components/ui";
+import { requirementStaffing, rollupStaffing, STAFFING_BADGE_CLASS, staffingTitle } from "./components/staffing-label";
+import { escapeAttribute, exportButtons, shortDate, shortDateTime } from "./components/ui";
 import { initMinistryCreate } from "./ministry-create";
 
 interface DashboardConfig {
@@ -171,6 +172,7 @@ function renderGaps(gaps: VolunteerDashboardGap[]): void {
   list.innerHTML = gaps
     .map((gap) => {
       const where = ministryLabel(gap.ministryName, gap.teamName);
+      const counts = requirementStaffing(gap);
 
       return `
         <a class="list-group-item list-group-item-action volunteer-gap-link"
@@ -185,7 +187,7 @@ function renderGaps(gaps: VolunteerDashboardGap[]): void {
               </div>
             </div>
             <div class="text-nowrap">
-              <span class="badge bg-danger-lt text-danger me-2">${i18next.t("{{count}} still needed", { count: gap.gapCount })}</span>
+              <span class="badge bg-danger-lt text-danger me-2 volunteer-gap-count" title="${escapeAttribute(staffingTitle(counts))}">${escapeHtml(counts.label)}</span>
               <span class="btn btn-sm btn-primary">
                 <i class="fa-solid fa-user-plus me-1"></i>${i18next.t("Fill")}
               </span>
@@ -354,9 +356,9 @@ function initDataTable(tableId: string): void {
 }
 
 /**
- * The staffed badge: green at full, amber while a pending reply is what is filling the
- * requirement, red when genuinely short — §5.2 item 4's progress-style badge. The counts
- * come from the server's single gap implementation and nothing is re-derived here.
+ * The staffed badge, worded by the shared formatter (D34): red when short, amber while a
+ * pending reply is what meets the minimums, green otherwise, neutral for an optional slot
+ * nobody took. The counts come from the server's single gap implementation.
  */
 function staffedBadge(occurrence: VolunteerDashboardOccurrence): string {
   // An occurrence whose plan is EMPTY has no gaps only because nobody ever said what it
@@ -365,16 +367,10 @@ function staffedBadge(occurrence: VolunteerDashboardOccurrence): string {
     return `<span class="badge bg-secondary-lt text-secondary">${i18next.t("No staffing needs set")}</span>`;
   }
 
-  const label = `${occurrence.liveCount} / ${occurrence.requiredCount}`;
+  const counts = rollupStaffing(occurrence);
 
-  if (occurrence.gapCount > 0) {
-    return `<span class="badge bg-red-lt text-red">${label}</span>`;
-  }
-  if (occurrence.pendingCount > 0) {
-    return `<span class="badge bg-yellow-lt text-yellow">${label}</span>`;
-  }
-
-  return `<span class="badge bg-green-lt text-green">${label}</span>`;
+  return `<span class="badge ${STAFFING_BADGE_CLASS[counts.tone]} volunteer-staffed-badge" data-tone="${counts.tone}"
+                title="${escapeAttribute(staffingTitle(counts))}">${escapeHtml(counts.label)}</span>`;
 }
 
 function renderUpcoming(rows: VolunteerDashboardOccurrence[]): void {

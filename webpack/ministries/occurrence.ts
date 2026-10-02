@@ -61,7 +61,8 @@ import {
   type VolunteerStaffing,
   type VolunteerSwap,
 } from "./api";
-import { formatTimeElements, shortDate, shortDateTime, tText } from "./components/ui";
+import { requirementStaffing, STAFFING_BADGE_CLASS, staffingTitle } from "./components/staffing-label";
+import { escapeAttribute, formatTimeElements, shortDate, shortDateTime, tText } from "./components/ui";
 import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "./staffing-needs";
 
 interface OccurrenceConfig {
@@ -282,23 +283,19 @@ function assignmentRow(assignment: VolunteerAssignment, showAttendance: boolean)
  */
 function requirementCard(requirement: VolunteerStaffedRequirement, showAttendance: boolean): string {
   const rows = requirement.assignments.map((a) => assignmentRow(a, showAttendance)).join("");
-  const hasGap = requirement.gapCount > 0;
+  const counts = requirementStaffing(requirement);
   const canAssign = staffing?.occurrence.status !== "cancelled";
 
   return `
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card h-100 volunteer-requirement" data-position-id="${requirement.positionId}">
-        <div class="card-header d-flex align-items-center justify-content-between gap-2">
+        <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-2">
           <h5 class="card-title mb-0 text-truncate">${escapeHtml(requirement.positionName ?? "")}</h5>
-          <span class="badge bg-secondary-lt requirement-counts">
-            ${requirement.liveCount} / ${requirement.minCount}
-          </span>
+          <span class="badge ${STAFFING_BADGE_CLASS[counts.tone]} requirement-counts" data-tone="${counts.tone}"
+                title="${escapeAttribute(staffingTitle(counts))}">${escapeHtml(counts.label)}</span>
         </div>
         <div class="card-body">
-          <div class="alert alert-warning py-1 px-2 mb-2 requirement-gap ${hasGap ? "" : "d-none"}" role="alert">
-            <i class="fa-solid fa-triangle-exclamation me-1"></i>
-            ${escapeHtml(i18next.t("{{count}} still needed", { count: requirement.gapCount }))}
-          </div>
+          <div class="small text-body-secondary mb-2 requirement-detail ${counts.detail === "" ? "d-none" : ""}">${escapeHtml(counts.detail)}</div>
           <div class="empty py-3 volunteer-empty ${rows === "" ? "" : "d-none"}">
             <div class="empty-icon"><i class="fa-solid fa-user-plus fa-2x text-muted"></i></div>
             <p class="empty-title mb-0">${escapeHtml(i18next.t("Nobody assigned yet"))}</p>

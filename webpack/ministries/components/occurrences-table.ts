@@ -34,6 +34,7 @@ import {
 } from "../api";
 import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "../staffing-needs";
 import { readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
+import { rollupStaffing, type StaffingTone, staffingTitle } from "./staffing-label";
 import {
   byId,
   confirmDelete,
@@ -53,6 +54,14 @@ import {
   tText,
   wireModalFadeGuard,
 } from "./ui";
+
+/** The Filled cell is one icon per tone; the words are in its tooltip. */
+const TONE_ICON: Record<StaffingTone, { color: string; icon: string }> = {
+  danger: { color: "text-red", icon: "fa-solid fa-triangle-exclamation" },
+  warning: { color: "text-yellow", icon: "fa-solid fa-hourglass-half" },
+  success: { color: "text-green", icon: "fa-solid fa-circle-check" },
+  secondary: { color: "text-secondary", icon: "fa-regular fa-circle" },
+};
 
 /**
  * The Occurrences table's own DataTables options.
@@ -146,10 +155,6 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
    * list; only the join happens here.
    */
   function gapSummary(occurrence: VolunteerOccurrenceSummary): string {
-    if (occurrence.gaps.length === 0) {
-      return i18next.t("{{count}} still needed", { count: occurrence.gapCount });
-    }
-
     // A ministry-wide table lists every schedule of the ministry, so two rows can be
     // short of a "Lead Teacher" that means two different teams' positions. The team is
     // named on each one, from the occurrence's own schedule.
@@ -188,31 +193,20 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
         const stored = occurrence.start ?? occurrence.occurrenceDate ?? "";
         const when = occurrence.start ? shortDateTime(occurrence.start) : shortDate(stored);
         // One cell, one icon, says how the occurrence stands (review, 2026-09-18);
-        // the words live in the tooltip. An EMPTY plan is not "fully staffed"
+        // the words live in the tooltip (D34). An EMPTY plan is not "fully staffed"
         // (§2.10): it has no gaps only because nobody said what it needs, so its
-        // icon links to where the needs are set. Otherwise: green when every
-        // position is assigned AND every assignment accepted, amber when every
-        // position is assigned but somebody has not answered yet, red when a
-        // position is still unassigned — the tooltip names what is short.
+        // icon links to where the needs are set. When short, the tooltip also names
+        // what is short.
         let filled: string;
         if (occurrence.requirementCount === 0) {
           const label = i18next.t("No staffing needs set");
           filled = `<a class="text-secondary" href="${href}" title="${escapeAttribute(label)}" aria-label="${escapeAttribute(label)}"><i class="fa-solid fa-circle-question fa-lg" aria-hidden="true"></i></a>`;
-        } else if (occurrence.gapCount > 0) {
-          const label = tText("{{live}} of {{required}} filled — {{needed}} still needed", {
-            live: occurrence.liveCount,
-            required: occurrence.requiredCount,
-            needed: gapSummary(occurrence),
-          });
-          filled = `<span class="text-red" title="${escapeAttribute(label)}" aria-label="${escapeAttribute(label)}"><i class="fa-solid fa-triangle-exclamation fa-lg" aria-hidden="true"></i></span>`;
-        } else if (occurrence.pendingCount > 0) {
-          const label = tText("Every position is assigned; {{count}} not yet confirmed", {
-            count: occurrence.pendingCount,
-          });
-          filled = `<span class="text-yellow" title="${escapeAttribute(label)}" aria-label="${escapeAttribute(label)}"><i class="fa-solid fa-hourglass-half fa-lg" aria-hidden="true"></i></span>`;
         } else {
-          const label = i18next.t("Every position is filled and confirmed");
-          filled = `<span class="text-green" title="${escapeAttribute(label)}" aria-label="${escapeAttribute(label)}"><i class="fa-solid fa-circle-check fa-lg" aria-hidden="true"></i></span>`;
+          const counts = rollupStaffing(occurrence);
+          const short = occurrence.gapCount > 0 ? gapSummary(occurrence) : "";
+          const label = short === "" ? staffingTitle(counts) : `${staffingTitle(counts)}\n${short}`;
+          const look = TONE_ICON[counts.tone];
+          filled = `<span class="${look.color} volunteer-occurrence-staffing" data-tone="${counts.tone}" title="${escapeAttribute(label)}" aria-label="${escapeAttribute(label)}"><i class="${look.icon} fa-lg" aria-hidden="true"></i></span>`;
         }
 
         const teamName = options.teams().find((team) => team.id === occurrence.teamId)?.name ?? "";
