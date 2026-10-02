@@ -30,6 +30,7 @@ const V2_TABLES_CHILD_FIRST = [
     "volunteer_swap_vswp",
     "volunteer_response_vrsp",
     "volunteer_assignment_vasg",
+    "volunteer_requirement_default_vrdf",
     "volunteer_requirement_vreq",
     "volunteer_occurrence_vocc",
     "volunteer_schedule_vsch",
@@ -117,9 +118,15 @@ const EXPECTED_COLUMNS = {
         "vreq_MinCount",
         "vreq_MaxCount",
         "vreq_Notes",
-        "vreq_Default_per_ID",
-        "vreq_DefaultAccepted",
-        "vreq_DefaultSetBy_per_ID",
+    ],
+    // D35: a schedule need's default volunteers, several per position.
+    volunteer_requirement_default_vrdf: [
+        "vrdf_ID",
+        "vrdf_vreq_ID",
+        "vrdf_per_ID",
+        "vrdf_Accepted",
+        "vrdf_SetBy_per_ID",
+        "vrdf_Sort",
     ],
     volunteer_assignment_vasg: [
         "vasg_ID",
@@ -208,8 +215,9 @@ const EXPECTED_DELETE_RULES = {
     "volunteer_requirement_vreq.vreq_vsch_ID": "CASCADE",
     "volunteer_requirement_vreq.vreq_vocc_ID": "CASCADE",
     "volunteer_requirement_vreq.vreq_vpos_ID": "CASCADE",
-    "volunteer_requirement_vreq.vreq_Default_per_ID": "SET NULL",
-    "volunteer_requirement_vreq.vreq_DefaultSetBy_per_ID": "SET NULL",
+    "volunteer_requirement_default_vrdf.vrdf_vreq_ID": "CASCADE",
+    "volunteer_requirement_default_vrdf.vrdf_per_ID": "CASCADE",
+    "volunteer_requirement_default_vrdf.vrdf_SetBy_per_ID": "SET NULL",
     "volunteer_assignment_vasg.vasg_vocc_ID": "CASCADE",
     "volunteer_assignment_vasg.vasg_vpos_ID": "RESTRICT",
     "volunteer_assignment_vasg.vasg_per_ID": "CASCADE",
@@ -307,7 +315,7 @@ describe("API Private Volunteer v2 core schema", () => {
     });
 
     describe("Schema shape", () => {
-        it("creates all 12 volunteer_* tables as InnoDB / utf8mb4", () => {
+        it("creates all 13 volunteer_* tables as InnoDB / utf8mb4", () => {
             const placeholders = V2_TABLES.map(() => "?").join(", ");
             dbOk(
                 `SELECT TABLE_NAME, ENGINE, TABLE_COLLATION
@@ -327,7 +335,7 @@ describe("API Private Volunteer v2 core schema", () => {
                         `${table} collation`,
                     ).to.match(/^utf8mb4_/);
                 });
-                expect(rows).to.have.length(12);
+                expect(rows).to.have.length(13);
             });
         });
 
@@ -359,7 +367,7 @@ describe("API Private Volunteer v2 core schema", () => {
                 V2_TABLES,
             ).then((rows) => {
                 expect(rows, "one single-column PK per table").to.have.length(
-                    12,
+                    13,
                 );
                 rows.forEach((row) => {
                     expect(row.COLUMN_NAME, `PK of ${row.TABLE_NAME}`).to.match(

@@ -469,7 +469,7 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
                     name: `${PREFIX} Faith City Teachers`,
                     linkMode: "class",
                     groupId: faithCity,
-                    requirements: [{ positionId: position, minCount: 1, maxCount: 1, defaultPersonId: POOL_MEMBER, defaultAccepted: true }],
+                    requirements: [{ positionId: position, minCount: 1, maxCount: 1, defaults: [{ personId: POOL_MEMBER, accepted: true }] }],
                 });
             });
             createEvents(weekly("Mowing", "Saturday", 1, 30)).then(() => {
@@ -477,7 +477,7 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
                     name: `${PREFIX} Mowing Crew`,
                     linkMode: "ministry",
                     titleFilter: `${PREFIX} Mowing`,
-                    requirements: [{ positionId: position, minCount: 1, maxCount: 1, defaultPersonId: POOL_MEMBER, defaultAccepted: false }],
+                    requirements: [{ positionId: position, minCount: 1, maxCount: 1, defaults: [{ personId: POOL_MEMBER, accepted: false }] }],
                 });
             });
             createEvents(oneEvent("Gap", { date: isoDate(8) })).then((resp) => {

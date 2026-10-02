@@ -1138,7 +1138,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 `/api/ministries/schedules/${scheduleId}/generate`,
                 {
                     through,
-                    defaults: [{ positionId: positionOne, personId: PERSON_PLAIN, accepted: true }],
+                    requirements: [{ positionId: positionOne, defaults: [{ personId: PERSON_PLAIN, accepted: true }] }],
                 },
                 403,
             );
@@ -1163,7 +1163,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                     `/api/ministries/schedules/${scheduleId}/generate`,
                     {
                         through,
-                        defaults: [{ positionId: rows.insertId, personId: PERSON_COORDINATOR }],
+                        requirements: [{ positionId: rows.insertId, defaults: [{ personId: PERSON_COORDINATOR }] }],
                     },
                     400,
                 );
@@ -1178,9 +1178,9 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 `/api/ministries/schedules/${scheduleId}/generate`,
                 {
                     through,
-                    defaults: [
-                        { positionId: positionOne, personId: PERSON_COORDINATOR, accepted: true },
-                        { positionId: positionTwo, personId: PERSON_PLAIN, accepted: false },
+                    requirements: [
+                        { positionId: positionOne, defaults: [{ personId: PERSON_COORDINATOR, accepted: true }] },
+                        { positionId: positionTwo, defaults: [{ personId: PERSON_PLAIN, accepted: false }] },
                     ],
                 },
             ).then((resp) => {
@@ -1235,7 +1235,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 `/api/ministries/schedules/${scheduleId}/generate`,
                 {
                     through,
-                    defaults: [{ positionId: positionOne, personId: PERSON_COORDINATOR, accepted: true }],
+                    requirements: [{ positionId: positionOne, defaults: [{ personId: PERSON_COORDINATOR, accepted: true }] }],
                 },
             ).then((resp) => {
                 expect(resp.body.created).to.eq(0);
@@ -1256,7 +1256,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                     ADMIN_KEY,
                     "POST",
                     `/api/ministries/schedules/${id}/generate`,
-                    { through, defaults: [{ positionId: positionOne, personId: "" }] },
+                    { through, requirements: [{ positionId: positionOne, defaults: [{ personId: "" }] }] },
                 ).then((resp) => {
                     expect(resp.body.created).to.be.greaterThan(0);
                     expect(resp.body.assigned).to.eq(0);

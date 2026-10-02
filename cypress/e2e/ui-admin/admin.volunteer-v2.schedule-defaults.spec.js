@@ -1,9 +1,10 @@
 /// <reference types="cypress" />
 
 /**
- * Volunteer v2 D32 on screen — the schedule dialog's staffing needs show and edit a default
- * volunteer per position, the Generate dialog opens on the schedule's saved defaults, and a
- * default whose qualification was revoked is kept and marked. Design §0.8 D32, §5.4.
+ * Volunteer v2 D32 on screen — the schedule dialog's staffing needs show and edit the default
+ * volunteers per position, one picker per place up to Max (D35), the Generate dialog opens on the
+ * schedule's saved defaults, and a default whose qualification was revoked is kept and marked.
+ * Design §0.8 D32, D35, §5.4.
  *
  * Fixtures go in through the admin API. Order in every hook is fixture → login → visit, because
  * cy.request() rotates the PHP session cookie.
@@ -17,6 +18,7 @@ const PREFIX = "UIDEF32";
 const SERVICE = `${PREFIX} Service`;
 const LEADER = 8;
 const READER = 9;
+const SECOND = 10;
 const CHURCH_SERVICE_TYPE = 1;
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -89,6 +91,10 @@ function need(key) {
     return `#schedule-form-needs .volunteer-need-row[data-position-id="${position[key]}"]`;
 }
 
+function picker(key, index = 0) {
+    return cy.get(`${need(key)} select.volunteer-need-default-select`).eq(index);
+}
+
 describe("Volunteer v2 D32 — default volunteers belong to the schedule", () => {
     before(() => {
         admin("POST", SETTING_URL, { value: "v2" });
@@ -127,6 +133,7 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
         });
         cy.then(() => {
             admin("POST", `/api/ministries/positions/${position.lead}/qualifications`, { personId: LEADER }, [200, 201]);
+            admin("POST", `/api/ministries/positions/${position.lead}/qualifications`, { personId: SECOND }, [200, 201]);
             admin("POST", `/api/ministries/positions/${position.reader}/qualifications`, { personId: READER }, [200, 201]);
             admin(
                 "POST",
@@ -161,42 +168,106 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
         freshAdminLogin();
     });
 
-    it("offers a default volunteer per staffing need in a new schedule, None by default", () => {
+    it("offers one default picker per place in a new schedule, None by default, and a second one when Max goes to 2", () => {
         openSchedulesTab();
         cy.get("#schedule-add-btn").click();
         cy.get("#scheduleModal").should("be.visible");
         cy.get("#schedule-form-name").should("have.focus");
-        cy.get("#schedule-form-needs select.volunteer-need-default").should("have.length", 2).each(($select) => {
+        cy.get("#schedule-form-needs select.volunteer-need-default-select").should("have.length", 2).each(($select) => {
             expect($select.val()).to.eq("");
             expect($select.find("option:selected").text()).to.eq("None");
         });
-        cy.get(`${need("lead")} select.volunteer-need-default option[value="${LEADER}"]`).should("exist");
-        cy.get(`${need("lead")} select.volunteer-need-default option[value="${READER}"]`).should("not.exist");
+        picker("lead").find(`option[value="${LEADER}"]`).should("exist");
+        picker("lead").find(`option[value="${READER}"]`).should("not.exist");
         cy.get(`${need("lead")} .volunteer-need-default-accepted-wrap`).should("not.be.visible");
+
+        // The staffing needs open once the event is chosen (D31).
+        cy.get("#schedule-form-link-mode").select("ministry");
+        cy.get(`#schedule-form-title-filter option[value="${SERVICE}"]`).should("exist");
+        cy.get("#schedule-form-title-filter").select(SERVICE);
+        cy.get(`${need("lead")} .volunteer-need-max`).type("{selectall}2").should("have.value", "2");
+        cy.get(`${need("lead")} select.volunteer-need-default-select`).should("have.length", 2);
+        picker("lead", 0).select(String(LEADER));
+        picker("lead", 1).find(`option[value="${LEADER}"]`).should("not.exist");
+        picker("lead", 1).find(`option[value="${SECOND}"]`).should("exist");
+
+        cy.get(`${need("lead")} .volunteer-need-max`).type("{selectall}1").should("have.value", "1");
+        cy.get(`${need("lead")} select.volunteer-need-default-select`).should("have.length", 1).and("have.value", String(LEADER));
     });
 
-    it("edits and saves the default per position with the schedule", () => {
+    it("edits and saves two defaults on a Max-2 need, in order, with the schedule", () => {
         openSchedulesTab();
         openRowAction("edit");
         cy.get("#scheduleModal").should("be.visible");
-        cy.get(`${need("lead")} select.volunteer-need-default`).should("have.value", "").select(String(LEADER));
-        cy.get(`${need("lead")} .volunteer-need-default-accepted-wrap`).should("be.visible");
-        cy.get(`${need("lead")} .volunteer-need-default-accepted`).check();
-        cy.get(`${need("reader")} select.volunteer-need-default`).select(String(READER));
+        cy.get(`${need("lead")} select.volunteer-need-default-select`).should("have.length", 1);
+        cy.get(`${need("lead")} .volunteer-need-max`).type("{selectall}2").should("have.value", "2");
+        picker("lead", 0).should("have.value", "").select(String(LEADER));
+        cy.get(`${need("lead")} .volunteer-need-default-accepted-wrap`).eq(0).scrollIntoView().should("be.visible");
+        cy.get(`${need("lead")} .volunteer-need-default-accepted`).eq(0).check();
+        picker("lead", 1).select(String(SECOND));
+        picker("lead", 0).find(`option[value="${SECOND}"]`).should("not.exist");
+        picker("reader").select(String(READER));
 
-        // Unchecking a need takes its default out of play with it.
+        // Unchecking a need takes its defaults out of play with it.
         cy.get(`${need("reader")} .volunteer-need-check`).uncheck();
-        cy.get(`${need("reader")} select.volunteer-need-default`).should("be.disabled");
+        picker("reader").should("be.disabled");
         cy.get(`${need("reader")} .volunteer-need-check`).check();
 
         cy.intercept("POST", `**/api/ministries/schedules/${scheduleId}`).as("save");
         cy.get("#schedule-form-save").click();
-        cy.wait("@save").its("response.statusCode").should("eq", 200);
+        cy.wait("@save").then((interception) => {
+            expect(interception.response.statusCode).to.eq(200);
+            const lead = interception.request.body.requirements.find((row) => row.positionId === position.lead);
+            expect(lead).to.include({ maxCount: 2 });
+            expect(lead.defaults).to.deep.eq([
+                { personId: LEADER, accepted: true },
+                { personId: SECOND, accepted: false },
+            ]);
+        });
         cy.get("#scheduleModal").should("not.be.visible");
 
         requirements().then((rows) => {
-            expect(rows[position.lead]).to.include({ defaultPersonId: LEADER, defaultAccepted: true });
-            expect(rows[position.reader]).to.include({ defaultPersonId: READER, defaultAccepted: false });
+            expect(rows[position.lead].defaults.map((d) => [d.personId, d.accepted])).to.deep.eq([
+                [LEADER, true],
+                [SECOND, false],
+            ]);
+            expect(rows[position.reader].defaults.map((d) => [d.personId, d.accepted])).to.deep.eq([[READER, false]]);
+        });
+    });
+
+    it("keeps both choices when Max goes below them, marks the extra one and blocks Save until one is removed", () => {
+        openSchedulesTab();
+        openRowAction("edit");
+        cy.get("#scheduleModal").should("be.visible");
+        cy.get(`${need("lead")} select.volunteer-need-default-select`).should("have.length", 2);
+        picker("lead", 0).should("have.value", String(LEADER));
+        picker("lead", 1).should("have.value", String(SECOND));
+
+        cy.get(`${need("lead")} .volunteer-need-max`).type("{selectall}1").should("have.value", "1");
+        cy.get(`${need("lead")} select.volunteer-need-default-select`).should("have.length", 2);
+        picker("lead", 0).should("not.have.class", "is-invalid");
+        picker("lead", 1).should("have.class", "is-invalid").and("have.value", String(SECOND));
+        cy.get(`${need("lead")} .volunteer-need-default-over`).eq(1).scrollIntoView().should("be.visible");
+
+        cy.intercept("POST", `**/api/ministries/schedules/${scheduleId}`, cy.spy().as("save"));
+        cy.get("#schedule-form-save").click();
+        cy.get("#schedule-form-error")
+            .scrollIntoView()
+            .should("be.visible")
+            .and("contain.text", "Max is 1 but 2 default volunteers are chosen. Remove one or raise Max.");
+        cy.get("#scheduleModal").should("be.visible");
+        cy.get("@save").should("not.have.been.called");
+
+        picker("lead", 1).select("");
+        cy.get(`${need("lead")} select.volunteer-need-default-select`).should("have.length", 1).and("have.value", String(LEADER));
+        cy.get("#schedule-form-needs").parent().find(".volunteer-needs-notice").should("not.be.visible");
+
+        // Raising Max again brings the empty place back; nothing was saved in between.
+        cy.get(`${need("lead")} .volunteer-need-max`).type("{selectall}2").should("have.value", "2");
+        cy.get(`${need("lead")} select.volunteer-need-default-select`).should("have.length", 2);
+        requirements().then((rows) => {
+            expect(rows[position.lead]).to.include({ maxCount: 2 });
+            expect(rows[position.lead].defaults.map((d) => d.personId)).to.deep.eq([LEADER, SECOND]);
         });
     });
 
@@ -205,27 +276,28 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
         openRowAction("generate");
         cy.get("#generateOccurrencesModal").should("be.visible");
         cy.get("#generate-form-loading").should("not.be.visible");
-        cy.get(`#generate-form-rows select.generate-default-select[data-position-id="${position.lead}"]`).should(
-            "have.value",
-            String(LEADER),
-        );
-        cy.get(`#generate-form-rows .generate-default-row[data-position-id="${position.lead}"] .generate-default-accepted`).should(
-            "be.checked",
-        );
-        cy.get(`#generate-form-rows select.generate-default-select[data-position-id="${position.reader}"]`).should(
-            "have.value",
-            String(READER),
-        );
-        cy.get(`#generate-form-rows .generate-default-row[data-position-id="${position.reader}"] .generate-default-accepted`).should(
-            "not.be.checked",
-        );
+        const leadRow = `#generate-form-rows .generate-default-row[data-position-id="${position.lead}"]`;
+        const readerRow = `#generate-form-rows .generate-default-row[data-position-id="${position.reader}"]`;
+        cy.get(`${leadRow} select.generate-default-select`).should("have.length", 2);
+        cy.get(`${leadRow} select.generate-default-select`).eq(0).should("have.value", String(LEADER));
+        cy.get(`${leadRow} select.generate-default-select`).eq(1).should("have.value", String(SECOND));
+        cy.get(`${leadRow} .generate-default-accepted`).eq(0).should("be.checked");
+        cy.get(`${leadRow} .generate-default-accepted`).eq(1).should("not.be.checked");
+        cy.get(`${readerRow} select.generate-default-select`).should("have.length", 1).and("have.value", String(READER));
+        cy.get(`${readerRow} .generate-default-accepted`).should("not.be.checked");
 
         cy.intercept("POST", `**/api/ministries/schedules/${scheduleId}/generate`).as("generate");
         cy.get("#generate-form-save").click();
         cy.wait("@generate").then((interception) => {
-            expect(interception.request.body.defaults).to.deep.include({ positionId: position.lead, personId: LEADER, accepted: true });
+            expect(interception.request.body.requirements).to.deep.include({
+                positionId: position.lead,
+                defaults: [
+                    { personId: LEADER, accepted: true },
+                    { personId: SECOND, accepted: false },
+                ],
+            });
             expect(interception.response.body.created).to.be.greaterThan(0);
-            expect(interception.response.body.assigned).to.eq(interception.response.body.created * 2);
+            expect(interception.response.body.assigned).to.eq(interception.response.body.created * 3);
         });
         cy.get("#generateOccurrencesModal").should("not.be.visible");
     });
@@ -238,15 +310,15 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
         openSchedulesTab();
         openRowAction("edit");
         cy.get("#scheduleModal").should("be.visible");
-        cy.get(`${need("reader")} select.volunteer-need-default`).should("have.value", String(READER));
-        cy.get(`${need("reader")} select.volunteer-need-default option:selected`).should("contain", "(no longer qualified)");
+        picker("reader").should("have.value", String(READER));
+        picker("reader").find("option:selected").should("contain", "(no longer qualified)");
         cy.get(`${need("reader")} .volunteer-need-default-unqualified`).should("be.visible");
         cy.get("#schedule-form-save").click();
         cy.get("#scheduleModal").should("not.be.visible");
 
         openRowAction("generate");
         cy.get("#generate-form-loading").should("not.be.visible");
-        cy.get(`#generate-form-rows select.generate-default-select[data-position-id="${position.reader}"]`).should(
+        cy.get(`#generate-form-rows .generate-default-row[data-position-id="${position.reader}"] select.generate-default-select`).should(
             "have.value",
             String(READER),
         );
@@ -254,7 +326,7 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
             "be.visible",
         );
         requirements().then((rows) => {
-            expect(rows[position.reader]).to.include({ defaultPersonId: READER, defaultQualified: false });
+            expect(rows[position.reader].defaults[0]).to.include({ personId: READER, qualified: false });
         });
         cy.dbQuery("UPDATE volunteer_qualification_vqal SET vqal_Active = 1 WHERE vqal_per_ID = ? AND vqal_vpos_ID = ?", [
             READER,
@@ -262,7 +334,7 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
         ]);
     });
 
-    it("gives the portal's team page the same default column", () => {
+    it("gives the portal's team page the same default pickers", () => {
         openSchedulesTab(`/portal/teams/${teamId}`);
         cy.get(`.volunteer-schedule-edit[data-schedule-id="${scheduleId}"]`, { timeout: 15000 })
             .closest("tr")
@@ -270,6 +342,8 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
             .click();
         cy.get(`.volunteer-schedule-edit[data-schedule-id="${scheduleId}"]`).should("be.visible").click();
         cy.get("#scheduleModal").should("be.visible");
-        cy.get(`${need("lead")} select.volunteer-need-default`).should("have.value", String(LEADER));
+        cy.get(`${need("lead")} select.volunteer-need-default-select`).should("have.length", 2);
+        picker("lead", 0).should("have.value", String(LEADER));
+        picker("lead", 1).should("have.value", String(SECOND));
     });
 });
