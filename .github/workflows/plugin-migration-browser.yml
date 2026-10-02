@@ -40,14 +40,14 @@ jobs:
       PLUGIN_BROWSER_DB_PASSWORD: browser-tests
       CYPRESS_BASE_URL: 'http://127.0.0.1:8097/'
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version-file: '.nvmrc'
           cache: npm
-      - uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2
         with:
           php-version: '8.4'
           extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath
@@ -80,7 +80,7 @@ jobs:
         run: npx cypress run --config-file cypress/configs/plugin-migrations.config.ts --headless --browser electron --reporter junit --reporter-options 'mochaFile=cypress/reports/plugin-migrations-[hash].xml'
       - name: Upload browser evidence
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: plugin-migration-browser-${{ github.run_id }}
           path: |
