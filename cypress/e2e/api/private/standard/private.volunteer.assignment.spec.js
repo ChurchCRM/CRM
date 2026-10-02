@@ -999,6 +999,28 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
             });
         });
 
+        it("never shows a future date as last served, though the rotation still counts it", () => {
+            // occurrenceOne is upcoming: the assignment is real, but nobody has served it yet.
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}/eligible?positionId=${posEspresso}`,
+            ).then((resp) => {
+                const people = resp.body.people;
+                const a = people.find((p) => p.personId === POOL_MEMBER_A);
+                expect(a.lastServedDate, "an upcoming assignment is not \"last served\"").to.eq(null);
+                const neverServed = people.filter((p) => p.personId !== POOL_MEMBER_A && p.lastServedDate === null);
+                const indexOfA = people.indexOf(a);
+                neverServed.forEach((p) => {
+                    expect(people.indexOf(p), `${p.displayName} comes before the person already booked`).to.be.lessThan(
+                        indexOfA,
+                    );
+                });
+            });
+        });
+
         it("filters by ?q=", () => {
             api(
                 COORDINATOR_KEY,

@@ -63,7 +63,7 @@ import {
 } from "./api";
 import { requirementStaffing, STAFFING_BADGE_CLASS, staffingTitle } from "./components/staffing-label";
 import { escapeAttribute, formatTimeElements, shortDate, shortDateTime, tText } from "./components/ui";
-import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "./staffing-needs";
+import { readStaffingNeeds, renderStaffingNeeds, revealStaffingNeedsProblem } from "./staffing-needs";
 
 interface OccurrenceConfig {
   occurrenceId: number;
@@ -791,9 +791,8 @@ function saveNeeds(): void {
     return;
   }
 
-  const invalid = validateStaffingNeeds(rows);
-  if (invalid !== null) {
-    showNeedsError(invalid);
+  if (revealStaffingNeedsProblem(rows)) {
+    show(byId("needs-form-error"), false);
 
     return;
   }

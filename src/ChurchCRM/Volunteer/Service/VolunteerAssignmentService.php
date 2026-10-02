@@ -1408,13 +1408,13 @@ class VolunteerAssignmentService
      * no rotation table and no algorithm: the person who has served least recently is
      * simply offered first.
      *
-     * `lastServedDate` is the latest occurrence date on which the person holds or held a
-     * live-or-completed assignment **anywhere in this ministry**, not just on this
+     * `lastServedDate` is the latest occurrence date, up to today, on which the person holds
+     * or held a live-or-completed assignment **anywhere in this ministry**, not just on this
      * position. The design says "last served date" without narrowing it; ministry-wide
      * is what UC1's "assignments rotate" means in practice — someone who ran the milk
-     * station last Sunday should not be top of the espresso list this Sunday. Future
-     * dates count too, so scheduling four weeks ahead in one sitting rotates rather than
-     * offering the same person every week.
+     * station last Sunday should not be top of the espresso list this Sunday. The ORDER
+     * counts future dates too, so scheduling four weeks ahead in one sitting rotates rather
+     * than offering the same person every week; the date shown never lies in the future.
      *
      * `conflictPositionId` carries I7/D16: the person already holds ANOTHER position on
      * this occurrence. It is an annotation, never a filter and never an error — the UI
@@ -1625,7 +1625,9 @@ class VolunteerAssignmentService
             $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId()
         ));
 
-        $lastServed = $this->lastServedDates($qualifiedIds, (int) $schedule->getMinistryId());
+        $served = $this->lastServedDates($qualifiedIds, (int) $schedule->getMinistryId());
+        $lastServed = $served['past'];
+        $rotation = $served['latest'];
         $conflicts = $occurrenceId === null
             ? []
             : $this->conflictingPositions($occurrenceId, $qualifiedIds, (int) $position->getId());
@@ -1655,20 +1657,22 @@ class VolunteerAssignmentService
         }
 
         // NULLS FIRST, then oldest date, then name so the order is stable when several
-        // people have never served — which, on a brand-new ministry, is everyone.
-        usort($people, static function (array $a, array $b): int {
-            if ($a['lastServedDate'] === null && $b['lastServedDate'] === null) {
+        // people have never served — which, on a brand-new ministry, is everyone. The
+        // order uses future assignments as well (see above), the shown date does not.
+        usort($people, static function (array $a, array $b) use ($rotation): int {
+            $aDate = $rotation[$a['personId']] ?? null;
+            $bDate = $rotation[$b['personId']] ?? null;
+            if ($aDate === null && $bDate === null) {
                 return strcasecmp($a['displayName'], $b['displayName']);
             }
-            if ($a['lastServedDate'] === null) {
+            if ($aDate === null) {
                 return -1;
             }
-            if ($b['lastServedDate'] === null) {
+            if ($bDate === null) {
                 return 1;
             }
 
-            return $a['lastServedDate'] <=> $b['lastServedDate']
-                ?: strcasecmp($a['displayName'], $b['displayName']);
+            return $aDate <=> $bDate ?: strcasecmp($a['displayName'], $b['displayName']);
         });
 
         return $people;
@@ -2373,20 +2377,23 @@ class VolunteerAssignmentService
      *
      * @param int[] $personIds
      *
-     * @return array<int, string> person id → `Y-m-d`
+     * @return array{latest: array<int, string>, past: array<int, string>} person id → `Y-m-d`:
+     *         the latest date of all (the rotation order) and the latest up to today (shown)
      */
     private function lastServedDates(array $personIds, int $ministryId): array
     {
         if ($personIds === []) {
-            return [];
+            return ['latest' => [], 'past' => []];
         }
 
         $occurrenceIds = $this->ministryOccurrenceIds($ministryId);
         if ($occurrenceIds === []) {
-            return [];
+            return ['latest' => [], 'past' => []];
         }
 
+        $today = (new \DateTimeImmutable('now', DateTimeUtils::getConfiguredTimezone()))->format('Y-m-d');
         $dates = [];
+        $pastDates = [];
         $occurrenceDates = [];
         foreach (
             VolunteerOccurrenceQuery::create()
@@ -2416,9 +2423,12 @@ class VolunteerAssignmentService
             if (!isset($dates[$personId]) || $date > $dates[$personId]) {
                 $dates[$personId] = $date;
             }
+            if ($date <= $today && (!isset($pastDates[$personId]) || $date > $pastDates[$personId])) {
+                $pastDates[$personId] = $date;
+            }
         }
 
-        return $dates;
+        return ['latest' => $dates, 'past' => $pastDates];
     }
 
     /**

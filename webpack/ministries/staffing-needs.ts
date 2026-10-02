@@ -318,6 +318,21 @@ export function validateStaffingNeeds(container: HTMLElement): string | null {
   return null;
 }
 
+/**
+ * Save's check: the editor already shows a count or default problem inline, so the caller
+ * must not repeat it in its own error box. Refreshes that notice, brings it into view, and
+ * answers whether there was a problem.
+ */
+export function revealStaffingNeedsProblem(container: HTMLElement): boolean {
+  refreshWarning(container);
+  if (validateStaffingNeeds(container) === null) {
+    return false;
+  }
+  noticeElement(container)?.scrollIntoView({ block: "nearest" });
+
+  return true;
+}
+
 /** How many rows are checked — the caller's "may I warn about an empty plan?" test. */
 export function countCheckedNeeds(container: HTMLElement): number {
   return container.querySelectorAll<HTMLInputElement>(".volunteer-need-check:checked").length;

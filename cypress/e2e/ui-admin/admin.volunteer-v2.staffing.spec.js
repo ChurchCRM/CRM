@@ -380,9 +380,10 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                 .and("contain.text", "the maximum cannot be below the minimum");
 
             cy.get("#schedule-form-save").click();
-            // The modal stays open and nothing was written.
+            // The modal stays open and nothing was written. The problem is said once, inline.
             cy.get("#scheduleModal").should("be.visible");
-            cy.get("#schedule-form-error").should("be.visible");
+            cy.get(".volunteer-needs-notice").should("be.visible");
+            cy.get("#schedule-form-error").should("not.be.visible");
             cy.makePrivateAdminAPICall(
                 "GET",
                 `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
@@ -907,7 +908,10 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.get("#needs-form-save").click();
 
             cy.get("#volunteer-needs-modal").should("be.visible");
-            cy.get("#needs-form-error").should("be.visible");
+            cy.get("#volunteer-needs-modal .volunteer-needs-notice")
+                .should("be.visible")
+                .and("contain.text", "the maximum cannot be below the minimum");
+            cy.get("#needs-form-error").should("not.be.visible");
         });
     });
 });
