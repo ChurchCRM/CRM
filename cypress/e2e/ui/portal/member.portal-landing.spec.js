@@ -219,10 +219,17 @@ describe("Member Portal — the home page's Profile card", () => {
             SOCIAL.forEach((network) => setConfig(network.config, on ? network.url : ""));
         };
 
+        let originalWebsite = null;
+
         before(() => setAllSocial(true));
 
         // Leave the install as we found it — no church social links configured.
-        after(() => setAllSocial(false));
+        after(() => {
+            setAllSocial(false);
+            if (originalWebsite !== null) {
+                setConfig("sChurchWebSite", originalWebsite);
+            }
+        });
 
         it("The footer shows one icon link per configured network, opened safely", () => {
             login();
@@ -235,6 +242,28 @@ describe("Member Portal — the home page's Profile card", () => {
                     .should("have.attr", "href", network.url)
                     .and("have.attr", "target", "_blank")
                     .and("have.attr", "rel", "noopener noreferrer");
+            });
+        });
+
+        it("The footer links only to web addresses, whatever an administrator typed", () => {
+            cy.request({
+                url: "/admin/api/system/config/sChurchWebSite",
+                headers: { "x-api-key": adminKey() },
+            }).then((resp) => {
+                originalWebsite = resp.body.value ?? "";
+                setConfig("sChurchWebSite", "javascript:alert(document.domain)");
+                setConfig("sChurchX", "javascript:alert(document.domain)");
+                login();
+                cy.url({ timeout: 10000 }).should("include", "/portal");
+                cy.get(".portal-footer").should("exist");
+                cy.get('.portal-footer a[href^="javascript"]').should("not.exist");
+                cy.get(".portal-footer").should("not.contain.text", "Church website");
+
+                setConfig("sChurchWebSite", "https://www.example.org/");
+                cy.visit("/portal/");
+                cy.get('.portal-footer a.portal-footer-detail[href="https://www.example.org/"]').should("exist");
+
+                setConfig("sChurchX", SOCIAL[0].url);
             });
         });
 

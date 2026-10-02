@@ -245,13 +245,27 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             'zip' => ChurchMetaData::getChurchZip(),
             'phone' => ChurchMetaData::getChurchPhone(),
             'email' => ChurchMetaData::getChurchEmail(),
-            'website' => ChurchMetaData::getChurchWebSite(),
+            'website' => self::webAddressOrEmpty(ChurchMetaData::getChurchWebSite()),
             'logoUrl' => ChurchMetaData::getChurchLogoURL(),
             // The church's own social accounts (#9907), already filtered to
             // the configured ones and ordered X, YouTube, Facebook, Instagram.
             // Each entry is {id, label, url, icon}; empty when none is set.
-            'socialLinks' => ChurchMetaData::getChurchSocialLinks(),
+            'socialLinks' => array_values(array_filter(
+                ChurchMetaData::getChurchSocialLinks(),
+                static fn (array $link): bool => ChurchMetaData::isValidSocialUrl((string) $link['url'])
+            )),
         ];
+    }
+
+    /**
+     * These addresses are typed by an administrator and land in an `href`, where
+     * escaping cannot stop a `javascript:` URL: only http(s) is handed to a theme.
+     */
+    private static function webAddressOrEmpty(string $url): string
+    {
+        $scheme = strtolower((string) parse_url($url, PHP_URL_SCHEME));
+
+        return filter_var($url, FILTER_VALIDATE_URL) !== false && in_array($scheme, ['http', 'https'], true) ? $url : '';
     }
 
     /**
