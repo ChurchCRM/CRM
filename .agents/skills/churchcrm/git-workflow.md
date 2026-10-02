@@ -10,6 +10,7 @@ intent: How agents commit and push on ChurchCRM.
 - Branch from current `master`. `fix/issue-N-short` (or `fix/short`, `ci/short` with no issue) or `feature/short`
 - Link an open issue when the PR changes user-visible behavior (feature or bug fix). CI, docs, tooling, dependency, and trivial PRs need none; say why in the PR body
 - Imperative subject, under 72 chars
+- Milestone for a PR and the issues it links is the `version` in `package.json` (7.8.0 → milestone `7.8.0`). Do not guess from the open milestone list or the latest release
 - `npm run lint` and the matching build before you ask to commit
 - Stage files by explicit path, never `git add -A` / `.`. Before commit, `git status --short` and `git diff --cached --name-status` must list only files the task expects; unstage or delete strays (editor/`sed -i` backups like `*-E`, generated files, symlinks) first
 - Show the diff. Wait for yes before commit
