@@ -1,10 +1,8 @@
 -- Volunteer Management v2 (D19, epic #9701): give a core Group an optional owning ministry.
 --
--- NOT REGISTERED YET. Volunteer v2 is excluded from 7.7.0 and targets 7.8.0, so this script is
--- deliberately absent from src/mysql/upgrade.json: a future migration must not sit in the active
--- 7.7.0 upgrade graph. It gets registered when the 7.8.0 development/version boundary is opened,
--- and it must be ordered AFTER 7.8.0-volunteer-v2-schema.sql (which creates the FK target
--- volunteer_ministry_vmin) and after 7.8.0-volunteer-v2-manager-permission.sql.
+-- Registered in the 7.8.0 block of src/mysql/upgrade.json, ordered AFTER
+-- 7.8.0-volunteer-v2-schema.sql (which creates the FK target volunteer_ministry_vmin) and after
+-- 7.8.0-volunteer-v2-manager-permission.sql.
 --
 -- Fresh installs and the Cypress seed database get the column from src/mysql/install/Install.sql
 -- and cypress/data/seed.sql respectively, so only an upgrading installation needs this script.
