@@ -85,6 +85,8 @@ interface PersonSelectOptions {
   mapResult?: (item: PersonSearchResult) => PersonSearchResult;
   /** Overrides the element's `data-placeholder`. */
   placeholder?: string;
+  /** TomSelect plugins to enable, e.g. `["remove_button"]` on a multi-select. */
+  plugins?: string[];
   /** Passed straight to TomSelect's `render` setting (e.g. `option` / `item`). */
   render?: Record<string, unknown>;
   /** Called with `this` bound to the TomSelect instance, plus the original element. */

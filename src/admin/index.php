@@ -34,6 +34,7 @@ require __DIR__ . '/routes/api/import.php';
 require __DIR__ . '/routes/import.php';
 require __DIR__ . '/routes/export.php';
 require __DIR__ . '/routes/system.php';
+require __DIR__ . '/routes/people.php';
 require __DIR__ . '/routes/member-portal.php';
 require __DIR__ . '/routes/ministry-settings.php';
 

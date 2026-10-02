@@ -181,6 +181,7 @@ Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
 | Giving — deposit entry | `finance-deposit-entry` |
 | Giving — fund/pledge report | `finance-pledge-report` |
 | Settings — user permissions (nice-to-have) | `settings-user-permissions` |
+| Settings — People hub (release notes) | `admin-people-settings` |
 | Mobile — one panel cropped | any of the above from the `mobile` project |
 
 **Not automated** — pick these from the generated artifacts by hand:
