@@ -133,7 +133,7 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
             // on does not exist until V2 is on.
             cy.visit("/admin/ministry-settings");
             cy.get('#ministrySettingsPanel select[name="sVolunteerVersion"]').should("be.enabled").and("have.value", "v1").select("v2");
-            cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();
+            cy.get("#ministrySettingsPanel .settings-panel-save").click();
             cy.get(".notyf__toast, .alert-success", { timeout: 10000 }).should("exist");
 
             cy.visit(PERSON_VIEW_URL);

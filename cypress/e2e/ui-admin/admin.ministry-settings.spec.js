@@ -138,7 +138,7 @@ describe("Admin → Ministry Settings", () => {
 
         cy.get("#ministrySettingsPanel input[name='iVolunteerSchedulingHorizonWeeks']").should("be.enabled").clear().type("10");
         cy.get("#ministrySettingsPanel select[name='iVolunteerDefaultEventTypeId']").select("Church Service");
-        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();
+        cy.get("#ministrySettingsPanel .settings-panel-save").click();
         cy.get("#ministry-topup-hint", { timeout: 10000 }).should("contain", "up to 10 weeks ahead");
         adminApi("GET", HORIZON_URL, null, 200).its("body.value").should("eq", "10");
         adminApi("GET", DEFAULT_TYPE_URL, null, 200).its("body.value").should("eq", "1");
@@ -175,7 +175,7 @@ describe("Admin → Ministry Settings", () => {
         cy.visit(PAGE_URL);
 
         cy.get("#ministrySettingsPanel input[name='iVolunteerReminderLeadHours']").should("have.value", "");
-        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").should("be.disabled");
+        cy.get("#ministrySettingsPanel .settings-panel-save").should("be.disabled");
 
         cy.wait("@leadValue");
         cy.get("#ministrySettingsPanel input[name='iVolunteerReminderLeadHours']").should("have.value", "36");
@@ -191,11 +191,11 @@ describe("Admin → Ministry Settings", () => {
         slowLeadTime();
         cy.visit(PAGE_URL);
 
-        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").should("be.disabled");
+        cy.get("#ministrySettingsPanel .settings-panel-save").should("be.disabled");
         // A field changed now would be overwritten by the value on its way.
         cy.get("#ministrySettingsPanel input[name='iVolunteerSchedulingHorizonWeeks']").should("be.disabled");
         cy.wait("@leadValue");
-        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").should("be.enabled");
+        cy.get("#ministrySettingsPanel .settings-panel-save").should("be.enabled");
         cy.get("#ministrySettingsPanel input[name='iVolunteerSchedulingHorizonWeeks']").should("be.enabled");
     });
 
@@ -209,8 +209,8 @@ describe("Admin → Ministry Settings", () => {
         cy.visit(PAGE_URL);
 
         cy.wait("@horizonValue");
-        cy.get("#ministrySettingsPanel #settingsPanelLoadError").should("be.visible");
-        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").should("be.disabled");
+        cy.get("#ministrySettingsPanel .settings-panel-load-error").should("be.visible");
+        cy.get("#ministrySettingsPanel .settings-panel-save").should("be.disabled");
     });
 
     it("shows what the last top-up assigned and the defaults it skipped (D32)", () => {
@@ -242,7 +242,7 @@ describe("Admin → Ministry Settings", () => {
         // No Ministries heading and no dashboard button in V1 — this page is the way in.
         cy.get('a[href$="/ministries/dashboard"]').should("not.exist");
         cy.get("#ministrySettingsPanel select[name='sVolunteerVersion']").should("be.enabled").and("have.value", "v1").select("v2");
-        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();
+        cy.get("#ministrySettingsPanel .settings-panel-save").click();
 
         // onSave reloads the page; the sidebar and the header button follow.
         cy.get('a[href$="/ministries/dashboard"]', { timeout: 10000 }).should("exist");

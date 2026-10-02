@@ -523,7 +523,7 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
                 .and("be.enabled")
                 .clear()
                 .type("12");
-            cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();
+            cy.get("#ministrySettingsPanel .settings-panel-save").click();
 
             cy.then(() => {
                 adminApi("GET", LEAD_SETTING_URL, null, 200).then((resp) => {
