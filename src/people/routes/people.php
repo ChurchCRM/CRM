@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\ConfirmReportEmailResult;
 use ChurchCRM\Service\ConfirmReportService;
 use ChurchCRM\Service\PersonService;
@@ -199,19 +200,6 @@ function listPeople(Request $request, Response $response, array $args): Response
         $personActiveStatus = 'all';
     }
 
-    $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
-
-    if ($sInactiveClassificationIds === '') {
-        $sInactiveClassificationIds = '-1';
-    }
-
-    $aInactiveClassificationIds = explode(',', $sInactiveClassificationIds);
-    $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k): bool => is_numeric($k));
-
-    if (count($aInactiveClassificationIds) !== count($aInactiveClasses)) {
-        LoggerUtils::getAppLogger()->warning('Encountered invalid configuration(s) for sInactiveClassification, please fix this');
-    }
-
     $members->leftJoinFamily();
 
     // Apply person active status filter
@@ -316,13 +304,6 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         ->orderByOptionSequence()
         ->find();
 
-    $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
-    $aInactiveClasses = [];
-    if ($sInactiveClassificationIds !== '') {
-        $aInactiveClassificationIds = explode(',', $sInactiveClassificationIds);
-        $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k): bool => is_numeric($k));
-    }
-
     $page           = isset($queryParams['page']) ? max(1, InputUtils::filterInt($queryParams['page'])) : 1;
     $allowedLimits  = [20, 50, 100];
     $requestedLimit = isset($queryParams['perPage']) ? (int)$queryParams['perPage'] : 50;
@@ -332,9 +313,7 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         ->orderByLastName()
         ->orderByFirstName();
 
-    if (!empty($aInactiveClasses)) {
-        $peopleQuery->filterByClsId($aInactiveClasses, Criteria::NOT_IN);
-    }
+    (new ClassificationService())->excludeInactive($peopleQuery);
 
     if ($filterUnassigned) {
         $peopleQuery->where('Person.ClsId IS NULL OR Person.ClsId = 0');

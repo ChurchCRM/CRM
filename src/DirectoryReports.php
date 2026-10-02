@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Directory reports');
@@ -39,7 +40,7 @@ $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom
 $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
 
-$aDefaultClasses = explode(',', SystemConfig::getValue('sDirClassifications'));
+$aDefaultClasses = (new ClassificationService())->getDirectoryIds();
 $aDirRoleHead = explode(',', SystemConfig::getValue('sDirRoleHead'));
 $aDirRoleSpouse = explode(',', SystemConfig::getValue('sDirRoleSpouse'));
 $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));

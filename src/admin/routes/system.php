@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
@@ -123,12 +124,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $inactiveClasses = [];
         $directoryClasses = [];
         if ($mode === 'classes') {
-            $numericIds = fn (string $key): array => array_filter(
-                explode(',', (string) SystemConfig::getValue($key)),
-                fn ($k) => is_numeric($k)
-            );
-            $inactiveClasses = $numericIds('sInactiveClassification');
-            $directoryClasses = $numericIds('sDirClassifications');
+            $classificationService = new ClassificationService();
+            $inactiveClasses = $classificationService->getInactiveIds();
+            $directoryClasses = $classificationService->getDirectoryIds();
         }
 
         $breadcrumbParent = match ($mode) {
