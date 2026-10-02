@@ -63,6 +63,28 @@ class ClassificationService
         return $query;
     }
 
+    /**
+     * Person Listing filter. 'active' drops deactivated people and inactive classifications,
+     * 'inactive' keeps only those, anything else ('all') leaves the query alone.
+     */
+    public function filterByActiveStatus(PersonQuery $query, string $status): PersonQuery
+    {
+        if ($status === 'active') {
+            $query->filterByDateDeactivated(null);
+
+            return $this->excludeInactive($query);
+        }
+
+        if ($status === 'inactive') {
+            $inactiveIds = $this->getInactiveIds();
+            // ids are ints, so inlining them is safe
+            $inClasses = $inactiveIds === [] ? '' : ' OR Person.ClsId IN (' . implode(',', $inactiveIds) . ')';
+            $query->where('(Person.DateDeactivated IS NOT NULL' . $inClasses . ')');
+        }
+
+        return $query;
+    }
+
     /** @return int[] */
     private function read(string $key): array
     {

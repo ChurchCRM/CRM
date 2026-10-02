@@ -15,7 +15,6 @@ use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
-use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -202,12 +201,7 @@ function listPeople(Request $request, Response $response, array $args): Response
 
     $members->leftJoinFamily();
 
-    // Apply person active status filter
-    if ($personActiveStatus === 'active') {
-        $members->filterByDateDeactivated(null);
-    } elseif ($personActiveStatus === 'inactive') {
-        $members->filterByDateDeactivated(null, Criteria::ISNOTNULL);
-    }
+    (new ClassificationService())->filterByActiveStatus($members, $personActiveStatus);
 
     $members->find();
 
