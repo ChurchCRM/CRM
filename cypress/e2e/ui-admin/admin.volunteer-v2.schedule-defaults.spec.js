@@ -255,6 +255,7 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
         cy.get("#schedule-form-needs")
             .parent()
             .find(".volunteer-needs-notice")
+            .scrollIntoView()
             .should("be.visible")
             .and("contain.text", "Max is 1 but 2 default volunteers are chosen. Remove one or raise Max.");
         cy.get("#schedule-form-error").should("not.be.visible");
