@@ -233,12 +233,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         document.querySelectorAll(toggle[0]).forEach(function(checkbox) {
             checkbox.addEventListener('change', function() {
                 const optionId = this.closest('tr').dataset.optionId;
+                checkbox.disabled = true;
                 window.CRM.AdminAPIRequest({
                     method: 'POST',
                     path: 'options/' + listId + '/' + optionId + '/' + toggle[1],
                     data: JSON.stringify({})
                 }).fail(function() {
                     checkbox.checked = !checkbox.checked;
+                }).always(function() {
+                    checkbox.disabled = false;
                 });
             });
         });

@@ -78,6 +78,18 @@ describe("API Private Admin OptionManager — flags", () => {
             });
         });
 
+        it("keeps a stored Unassigned (0) while other classifications are toggled", () => {
+            cy.restoreSystemConfig("sDirClassifications", "0,1");
+            const url = `/admin/api/options/${classificationsList}/1/directory`;
+            cy.makePrivateAdminAPICall("POST", url, {}, 200).then((off) => {
+                expect(off.body.directory).to.deep.eq([0]);
+            });
+            cy.makePrivateAdminAPICall("POST", url, {}, 200).then((on) => {
+                expect(on.body.directory).to.deep.eq([0, 1]);
+            });
+            cy.getSystemConfig("sDirClassifications").should("eq", "0,1");
+        });
+
         it("leaves the inactive list untouched", () => {
             cy.getSystemConfig("sInactiveClassification").then((before) => {
                 cy.makePrivateAdminAPICall(
