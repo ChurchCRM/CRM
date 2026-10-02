@@ -256,6 +256,8 @@ function volunteerEventIdList(mixed $raw): ?array
  *                     @OA\Property(property="filled", type="integer"),
  *                     @OA\Property(property="pending", type="integer"),
  *                     @OA\Property(property="gap", type="integer"),
+ *                     @OA\Property(property="openCount", type="integer", description="D34: room left, summed over the team's positions (each position's max minus its live assignments, never below 0)"),
+ *                     @OA\Property(property="capacity", type="integer", description="D34: the summed maximums; a position with no maximum counts its minimum (a NULL MaxCount means the same as MinCount)"),
  *                     @OA\Property(property="requirementCount", type="integer"),
  *                     @OA\Property(property="status", type="string", enum={"unplanned","gap","pending","filled"})
  *                 ))

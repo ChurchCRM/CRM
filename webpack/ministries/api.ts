@@ -685,6 +685,8 @@ export interface VolunteerOccurrenceSummary {
   liveCount: number;
   gapCount: number;
   openCount: number;
+  /** The summed maximums (a NULL max counts its min), for "Full · 3 of 3" and friends (D34). */
+  capacity: number;
   pendingCount: number;
   /**
    * The genuinely-short positions by name, so a list can say "1 Lead Teacher, 2 Helper"
@@ -991,7 +993,9 @@ export interface VolunteerMyOpportunity {
   end: string | null;
   openCount: number;
   minCount: number;
+  maxCount: number | null;
   liveCount: number;
+  gapCount: number;
   alreadyServing: boolean;
   alreadyServingPositionNames: string[];
 }
@@ -1374,8 +1378,11 @@ export type VolunteerDashboardGap = {
   positionId: number;
   positionName: string | null;
   minCount: number;
+  maxCount: number | null;
   liveCount: number;
   gapCount: number;
+  openCount: number;
+  pendingCount: number;
 } & VolunteerDashboardContext;
 
 export type VolunteerDashboardPending = VolunteerAssignment &
@@ -1443,6 +1450,9 @@ export interface VolunteerMinistryEventStaffing {
   filled: number;
   pending: number;
   gap: number;
+  /** Room left and summed maximums, for the D34 wording. */
+  openCount: number;
+  capacity: number;
   requirementCount: number;
   /** `unplanned` = no staffing needs set (§2.10). */
   status: "unplanned" | "gap" | "pending" | "filled";

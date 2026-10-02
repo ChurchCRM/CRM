@@ -927,6 +927,9 @@ class VolunteerAssignmentService
      *     gap(R)  = max(0, R.MinCount - live(R))
      *     open(R) = (R.MaxCount ?? R.MinCount) - live(R)      -- self-signup capacity
      *
+     * The occurrence totals sum them, plus `capacity` = Σ (R.MaxCount ?? R.MinCount): no
+     * requirement is uncapped, because a NULL MaxCount means "same as MinCount" (§2.10).
+     *
      * Two queries in total regardless of how many occurrences are asked about — one for
      * the assignments, one (inside `getEffectiveRequirements()`) per occurrence for the
      * requirement merge. Callers that need counts for a LIST hand in every id at once.
@@ -935,7 +938,7 @@ class VolunteerAssignmentService
      *
      * @return array<int, array{
      *     requirements: array<int, array{requirementId: ?int, positionId: int, positionName: ?string, minCount: int, maxCount: ?int, liveCount: int, gapCount: int, openCount: int, pendingCount: int, acceptedCount: int, source: string}>,
-     *     liveCount: int, gapCount: int, openCount: int, pendingCount: int, requiredCount: int
+     *     liveCount: int, gapCount: int, openCount: int, pendingCount: int, requiredCount: int, capacity: int, requirementCount: int
      * }> keyed by occurrence id
      */
     public function getGaps(array $occurrenceIds): array
@@ -975,6 +978,7 @@ class VolunteerAssignmentService
                 'openCount' => 0,
                 'pendingCount' => 0,
                 'requiredCount' => 0,
+                'capacity' => 0,
                 'requirementCount' => 0,
             ];
 
@@ -1011,6 +1015,7 @@ class VolunteerAssignmentService
                 $totals['openCount'] += max(0, $capacity - $live);
                 $totals['pendingCount'] += $pending;
                 $totals['requiredCount'] += $min;
+                $totals['capacity'] += $capacity;
                 if ($capacity > 0) {
                     $totals['requirementCount']++;
                 }
@@ -1028,7 +1033,7 @@ class VolunteerAssignmentService
      *
      * @param int[] $occurrenceIds
      *
-     * @return array<int, array{occurrenceId: int, positionId: int, positionName: ?string, minCount: int, liveCount: int, gapCount: int}>
+     * @return array<int, array{occurrenceId: int, positionId: int, positionName: ?string, minCount: int, maxCount: ?int, liveCount: int, gapCount: int, openCount: int, pendingCount: int}>
      */
     public function getOpenGaps(array $occurrenceIds): array
     {
@@ -1043,8 +1048,11 @@ class VolunteerAssignmentService
                     'positionId' => $requirement['positionId'],
                     'positionName' => $requirement['positionName'],
                     'minCount' => $requirement['minCount'],
+                    'maxCount' => $requirement['maxCount'],
                     'liveCount' => $requirement['liveCount'],
                     'gapCount' => $requirement['gapCount'],
+                    'openCount' => $requirement['openCount'],
+                    'pendingCount' => $requirement['pendingCount'],
                 ];
             }
         }
@@ -1690,7 +1698,7 @@ class VolunteerAssignmentService
      * what the screen does with it. Hiding it would quietly make double-duty
      * impossible from the member side, which is the opposite of the product decision.
      *
-     * @return array<int, array{occurrenceId: int, positionId: int, positionName: ?string, ministryName: ?string, teamName: ?string, occurrenceDate: ?string, start: ?string, end: ?string, openCount: int, minCount: int, liveCount: int, alreadyServing: bool, alreadyServingPositionNames: string[]}>
+     * @return array<int, array{occurrenceId: int, positionId: int, positionName: ?string, ministryName: ?string, teamName: ?string, occurrenceDate: ?string, start: ?string, end: ?string, openCount: int, minCount: int, maxCount: ?int, liveCount: int, gapCount: int, alreadyServing: bool, alreadyServingPositionNames: string[]}>
      */
     public function listOpportunitiesForPerson(
         int $personId,
@@ -1796,7 +1804,9 @@ class VolunteerAssignmentService
                     'end' => $window['end'] === null ? null : $window['end']->format('Y-m-d H:i:s'),
                     'openCount' => (int) $requirement['openCount'],
                     'minCount' => (int) $requirement['minCount'],
+                    'maxCount' => $requirement['maxCount'],
                     'liveCount' => (int) $requirement['liveCount'],
+                    'gapCount' => (int) $requirement['gapCount'],
                     // D16/I7 — an annotation the card warns on, never a filter.
                     'alreadyServing' => $alsoHere !== [],
                     'alreadyServingPositionNames' => $alsoHere,

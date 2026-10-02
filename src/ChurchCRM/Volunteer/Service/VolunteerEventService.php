@@ -703,11 +703,12 @@ class VolunteerEventService
      * Per event, per team of this ministry: what its scheduled occurrences anchored to the
      * event need and have. `status` is the one word the tab's badge shows: `unplanned` (no
      * staffing needs set, §2.10), `gap`, `pending` (every slot taken, not every answer in)
-     * or `filled`.
+     * or `filled`. `openCount` is the room left and `capacity` the summed maximums, so the
+     * badge can say "Covered · 1 more welcome" or "Full" (D34).
      *
      * @param int[] $eventIds
      *
-     * @return array<int, array<int, array{teamId: int, teamName: string, occurrenceIds: int[], needed: int, filled: int, pending: int, gap: int, requirementCount: int, status: string}>>
+     * @return array<int, array<int, array{teamId: int, teamName: string, occurrenceIds: int[], needed: int, filled: int, pending: int, gap: int, openCount: int, capacity: int, requirementCount: int, status: string}>>
      */
     private function staffingByEvent(int $ministryId, array $eventIds): array
     {
@@ -753,6 +754,8 @@ class VolunteerEventService
                 'filled' => 0,
                 'pending' => 0,
                 'gap' => 0,
+                'openCount' => 0,
+                'capacity' => 0,
                 'requirementCount' => 0,
             ];
             $entry['occurrenceIds'][] = $occurrenceId;
@@ -760,6 +763,8 @@ class VolunteerEventService
             $entry['filled'] += (int) ($summary['liveCount'] ?? 0);
             $entry['pending'] += (int) ($summary['pendingCount'] ?? 0);
             $entry['gap'] += (int) ($summary['gapCount'] ?? 0);
+            $entry['openCount'] += (int) ($summary['openCount'] ?? 0);
+            $entry['capacity'] += (int) ($summary['capacity'] ?? 0);
             $entry['requirementCount'] += (int) ($summary['requirementCount'] ?? 0);
             $byEvent[$eventId][$teamId] = $entry;
         }

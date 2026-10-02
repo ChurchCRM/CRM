@@ -280,6 +280,7 @@ function volunteerOccurrenceToArray(
         'liveCount' => (int) ($counts['liveCount'] ?? 0),
         'gapCount' => (int) ($counts['gapCount'] ?? 0),
         'openCount' => (int) ($counts['openCount'] ?? 0),
+        'capacity' => (int) ($counts['capacity'] ?? 0),
         'pendingCount' => (int) ($counts['pendingCount'] ?? 0),
         // The short positions by name, so a list can say "1 Lead Teacher, 2 Helper"
         // instead of a bare number a coordinator cannot act on. Sliced out of the same
@@ -1223,7 +1224,15 @@ function deleteVolunteerRequirement(Request $request, Response $response, array 
  *     @OA\Response(response=403, description="Volunteer coordinator access is required, or V2 is not enabled"),
  *     @OA\Response(response=200, description="OK",
  *         @OA\JsonContent(
- *             @OA\Property(property="occurrences", type="array", @OA\Items(type="object")),
+ *             @OA\Property(property="occurrences", type="array", @OA\Items(type="object",
+ *                 @OA\Property(property="requiredCount", type="integer", description="The summed minimums"),
+ *                 @OA\Property(property="requirementCount", type="integer", description="How many positions can take someone; 0 = no staffing needs set"),
+ *                 @OA\Property(property="liveCount", type="integer"),
+ *                 @OA\Property(property="gapCount", type="integer", description="The summed shortfall below each minimum"),
+ *                 @OA\Property(property="openCount", type="integer", description="The summed room left below each maximum"),
+ *                 @OA\Property(property="capacity", type="integer", description="D34: the summed maximums; a NULL MaxCount counts as its MinCount"),
+ *                 @OA\Property(property="pendingCount", type="integer")
+ *             )),
  *             @OA\Property(property="limit", type="integer"),
  *             @OA\Property(property="capped", type="boolean")
  *         )
