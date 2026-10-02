@@ -4471,10 +4471,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "ഡേറ്റ്-പിക്കറിൽ തീയതി നിർവ്വചിക്കാൻ, ഡിഫോൾട്ടായി: Y-m-d, ഉദാഹരണം ഫ്രഞ്ചിൽ: d/m/Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "പുതിയ കുടുംബം അല്ലെങ്കിൽ വ്യക്തി ചേർക്കുമ്പോൾ അറിയിക്കേണ്ടവരുടെ PersonID-കളുടെ കോമ-വേർതിരിച്ച ലിസ്‌റ്റ്"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "ബാഹ്യ കലണ്ടർ API-ൽ നിന്ന് ഇവന്റുകൾ ആധികാരികതയില്ലാതെ വായിക്കാൻ അനുവദിക്കുക"
 
@@ -10901,10 +10897,6 @@ msgstr "പൊതു HTML, ICS, JSON URLs വഴി കലണ്ടർ ഇവന
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "സ്വയം രജിസ്ട്രേഷൻ പേജ് വഴി സന്ദർശകർ സ്വന്തം കുടുംബ record ഉണ്ടാക്കാൻ അനുവദിക്കുക"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "സന്ദർശകർ പുതിയ കുടുംബങ്ങളായി സ്വയം രജിസ്ട്രേഷൻ ചെയ്യാൻ അനുവദിക്കുക."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17975,10 +17967,6 @@ msgid "Errors"
 msgstr "പിശകുകൾ"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "മരണപ്പെട്ട അംഗങ്ങളെ പ്രിന്റ് ചെയ്ത ഡയറക്ടറിയിൽ നിന്നും CSV എക്സ്പോർട്ടുകളിൽ നിന്നും ഒഴിവാക്കുക."
-
-#: 
 msgid "Failed Files"
 msgstr "പരാജയപ്പെട്ട ഫയലുകൾ"
 
@@ -18507,14 +18495,6 @@ msgid "As an admin, please also review the"
 msgstr "കാര്യനിർവാഹകനെന്ന നിലയിൽ, ദയവായി ഇതും പരിശോധിക്കുക"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "ജന്മദിനത്തിൽ ആളുകൾക്ക് സ്വയമായി ജന്മദിന സുഖാശംസ ഇമെയിൽ അയയ്ക്കുക."
-
-#: 
-msgid "Birthday Emails"
-msgstr "ജന്മദിന ഇമെയിലുകൾ"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "ജന്മദിനങ്ങൾ, വാർഷികങ്ങൾ, സന്നദ്ധപരിചാരകർ, വർഗ്ഗീകരണ ഫിൽറ്ററുമായുള്ള മറ്റ് അംഗങ്ങളുടെ ലിസ്റ്റുകൾ"
 
@@ -18769,10 +18749,6 @@ msgstr "നികുതി കിഴിവില്ലാത്ത പേയ്�
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "പൊതു ഇവന്റുകളിലേക്ക് ലോഗിൻ ചെയ്യാതെയുള്ള പ്രവേശനം അനുവദിക്കുക (കലണ്ടറുകൾ എംബെഡ് ചെയ്യാൻ)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "സന്ദർശകരെ പൊതു രജിസ്ട്രേഷൻ പേജിലൂടെ സ്വന്തം കുടുംബ റെക്കോർഡുകൾ സൃഷ്ടിക്കാൻ അനുവദിക്കുക"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

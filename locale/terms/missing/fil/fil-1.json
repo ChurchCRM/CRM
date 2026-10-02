@@ -1,5 +1,22 @@
 {
   "N/A": "",
   "Could not load the current settings. Reload the page to try again.": "",
-  "This setting must be a number": ""
+  "This setting must be a number": "",
+  "Child Role": "",
+  "Directory inclusion can only be toggled for the classifications list": "",
+  "Greeter Message 1": "",
+  "Greeter Message 2": "",
+  "Head of House Role": "",
+  "Hide Address Without Family": "",
+  "Hide Friend Date": "",
+  "Hide Newsletter Subscriptions": "",
+  "Hide Wedding Date": "",
+  "In Directory": "",
+  "Include Details in Notifications": "",
+  "Notification Recipients": "",
+  "People to notify when a new family or person is added": "",
+  "Person initials style": "",
+  "Person name display style": "",
+  "Spouse Role": "",
+  "Uppercase Zip/Postcodes": ""
 }

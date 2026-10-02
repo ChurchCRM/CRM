@@ -4523,10 +4523,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Para definir la fecha en el Selector de Fechas, por defecto: Y-m-d, por ejemplo en Francés: d/m/Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Lista separada por comas de Id de persona para notificar cuando una nueva familia o persona es agregada."
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Permitir lecturas no autentificadas de eventos de la API del calendario externo"
 
@@ -10960,10 +10956,6 @@ msgstr "Permitir acceso no autenticado a eventos del calendario mediante URLs p�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Permitir que los visitantes creen su propio registro familiar a través de la página de auto-registro"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Permitir que los visitantes se auto-registren como nuevas familias."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18035,10 +18027,6 @@ msgid "Errors"
 msgstr "Errores"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Excluir a los miembros difuntos del directorio impreso y de las exportaciones CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Archivos fallidos"
 
@@ -18567,14 +18555,6 @@ msgid "As an admin, please also review the"
 msgstr "Como administrador, también revise el"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Enviar automáticamente un correo de felicitación de cumpleaños a las personas en su cumpleaños."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Correos de Cumpleaños"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Cumpleaños, aniversarios, voluntarios y otras listas de personas con filtro de clasificación"
 
@@ -18829,10 +18809,6 @@ msgstr "Permitir el registro de pagos no deducibles de impuestos (p. ej., ventas
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Permitir acceso no autenticado a eventos públicos (para incrustar calendarios)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Permitir que los visitantes creen sus propios registros familiares mediante la página de registro público"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

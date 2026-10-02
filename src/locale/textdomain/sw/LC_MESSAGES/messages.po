@@ -4498,10 +4498,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Kwa kufafanua tarehe katika Kichagua Tarehe, kwa chaguo-msingi : Y-m-d, Kwa Kifaransa : d/m/Y kwa mfano."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Orodha Iliyotenganishwa na Koma ya Vitambulisho vya Watu vya watu wa kuwaarifu wakati familia mpya au mtu anaongezwa"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Ruhusu usomaji ambao haujaidhinishwa wa matukio kutoka kwa API ya kalenda ya nje"
 
@@ -10932,10 +10928,6 @@ msgstr "Ruhusu ufikiaji usiohitaji uthibitishaji kwa matukio ya kalenda kupitia 
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Ruhusu wageni kuunda rekodi yao ya familia kupitia ukurasa wa kujiandikisha"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Ruhusu wageni kujisajili kama familia mpya."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18006,10 +17998,6 @@ msgid "Errors"
 msgstr "Hitilafu"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Ondoa wanachama waliofariki kutoka kwenye orodha iliyochapishwa na uhamishaji wa CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Faili Zilizoshindwa"
 
@@ -18538,14 +18526,6 @@ msgid "As an admin, please also review the"
 msgstr "Kama msimamizi, tafadhali pia kagua"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Tuma kiotomatiki barua pepe ya salamu za kuzaliwa kwa watu siku ya kuzaliwa kwao."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Barua Pepe za Siku ya Kuzaliwa"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Siku za kuzaliwa, maadhimisho, wajitolea na orodha nyingine za watu zenye kichujio cha uainishaji"
 
@@ -18800,10 +18780,6 @@ msgstr "Ruhusu kurekodi malipo yasiyokatwa kodi (k.m., mauzo ya bidhaa)"
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Ruhusu ufikiaji bila kuingia kwenye matukio ya umma (kwa ajili ya kupachika kalenda)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Ruhusu wageni kuunda rekodi za familia zao wenyewe kupitia ukurasa wa usajili wa umma"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

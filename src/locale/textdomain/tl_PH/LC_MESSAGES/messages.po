@@ -4471,10 +4471,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Para sa pagtukoy ng petsa sa Date-Picker, bilang default: Y-m-d, Sa Pranses: d/m/Y halimbawa."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Listahang pinaghiwalay ng kuwit ng mga PersonID ng mga taong aabisuhan kapag may bagong pamilya o taong naidagdag"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Payagan ang hindi napatunayan na pagbabasa ng mga kaganapan mula sa external calendar API"
 
@@ -10901,10 +10897,6 @@ msgstr "Payagan ang hindi napatunayan na access sa mga kaganapan ng kalendaryo s
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Payagan ang mga bisita na lumikha ng kanilang sariling rekord ng pamilya sa pamamagitan ng pahina ng sariling pagpaparehistro"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Payagan ang mga bisita na mag-self-register bilang mga bagong pamilya."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17971,10 +17963,6 @@ msgid "Errors"
 msgstr "Mga Error"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Ibukod ang mga yumaong miyembro sa naka-print na directory at CSV export."
-
-#: 
 msgid "Failed Files"
 msgstr "Mga Nabigong File"
 
@@ -18503,14 +18491,6 @@ msgid "As an admin, please also review the"
 msgstr "Bilang isang admin, mangyaring suriin din ang"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Awtomatikong magpadala ng email na binati sa kaarawan sa mga taong nasa kanilang kaarawan."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Mga Email ng Kaarawan"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Mga kaarawan, anibersaryo, mga boluntaryo at iba pang listahan ng mga tao na may filter ng klasipikasyon"
 
@@ -18765,10 +18745,6 @@ msgstr "Payagan ang pagtatala ng mga pagbabayad na hindi maaaring ibawas sa buwi
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Payagan ang hindi na-authenticate na access sa mga pampublikong kaganapan (para sa pag-embed ng mga kalendaryo)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Payagan ang mga bisita na lumikha ng kanilang sariling mga talaan ng pamilya sa pamamagitan ng pampublikong pahina ng pagpaparehistro"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

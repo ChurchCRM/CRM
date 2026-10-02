@@ -4590,10 +4590,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "För att definiera datumet i Date-Picker, per standard: Ymd, på franska: d / m / Y till exempel."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Kommaseparerad lista med person-ID för personer som ska meddelas när en ny familj eller person läggs till"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Tillåt obekräftade läsningar av händelser från det externa kalender API"
 
@@ -11026,10 +11022,6 @@ msgstr "Tillåt oautentiserad åtkomst till kalenderhändelser via offentliga HT
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Tillåt besökare att skapa sin egen familjepost via självregistreringssidan"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Tillåt besökare att registrera sig som nya familjer."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18100,10 +18092,6 @@ msgid "Errors"
 msgstr "Fel"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Uteslut avlidna medlemmar från den utskrivna medlemsförteckningen och CSV-exporter."
-
-#: 
 msgid "Failed Files"
 msgstr "Misslyckade filer"
 
@@ -18632,14 +18620,6 @@ msgid "As an admin, please also review the"
 msgstr "Som administratör, vänligen granska också"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Skicka automatiskt ett gratulationse-postmeddelande på födelsedag till personer på deras födelsedag."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Födelsedag e-post"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Födelsedagar, jubileer, volontärer och andra personlistor med klassificeringsfilter"
 
@@ -18894,10 +18874,6 @@ msgstr "Tillåt registrering av icke-avdragsgilla betalningar (t.ex. varuförsä
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Tillåt oautentiserad åtkomst till offentliga evenemang (för inbäddning av kalendrar)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Tillåt besökare att skapa sina egna familjeregister via den offentliga registreringssidan"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
