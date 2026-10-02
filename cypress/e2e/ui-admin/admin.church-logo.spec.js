@@ -197,6 +197,40 @@ describe("Admin - Church Logo", () => {
         cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
     });
 
+    it("Reloads the page only after the server has answered the upload", () => {
+        const events = [];
+        cy.visit("/admin/system/church-info").then(() => {
+            cy.on("window:before:unload", () => events.push("reload"));
+        });
+        cy.intercept("POST", `**${LOGO_API_URL}`, (req) => {
+            req.on("response", (res) => {
+                res.setDelay(2000);
+            });
+            req.on("after:response", () => events.push("response"));
+        });
+
+        uploadLogoThroughUppy();
+
+        cy.get("#church-logo-remove-btn", { timeout: 15000 }).should("be.visible");
+        cy.wrap(events).should("deep.equal", ["response", "reload"]);
+    });
+
+    it("Keeps the page and shows the server's reason when the upload fails", () => {
+        cy.visit("/admin/system/church-info");
+        cy.intercept("POST", `**${LOGO_API_URL}`, {
+            statusCode: 400,
+            body: { message: "Refused for the test" },
+            delay: 2000,
+        }).as("uploadLogo");
+
+        uploadLogoThroughUppy();
+
+        cy.wait("@uploadLogo");
+        cy.get(".uppy-StatusBar-actionBtn--retry").should("be.visible");
+        cy.get("#uppy-error-container").should("contain", "Refused for the test");
+        cy.get("#church-logo-remove-btn").should("not.exist");
+    });
+
     it("Removes the logo and restores the bundled brand assets", () => {
         cy.makePrivateAdminAPICall(
             "POST",
