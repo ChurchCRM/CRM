@@ -4496,10 +4496,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Për përcaktimin e datës në zgjedhësin e datave, si parazgjedhje: Y-m-d, në frëngjisht: d/m/Y për shembull."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Listë e ndarë me presje e ID-ve të personave që do të njoftohen kur shtohet një familje ose person i ri"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Lejo leximin e paautentifikuar të ngjarjeve nga API e kalendarit të jashtëm"
 
@@ -10926,10 +10922,6 @@ msgstr "Lejo aksesin e pavërtetuar te ngjarjet e kalendarit përmes URL-ve publ
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Lejo vizitorët të krijojnë regjistrimin e tyre familjar përmes faqes së vetë-regjistrimit"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Lejo vizitorët të vetë-regjistrohen si familje të reja."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17996,10 +17988,6 @@ msgid "Errors"
 msgstr "Gabime"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Përjashto anëtarët e ndjerë nga direktoria e shtypur dhe eksportet CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Skedarë të Dështuar"
 
@@ -18528,14 +18516,6 @@ msgid "As an admin, please also review the"
 msgstr "Si administrator, ju lutemi rishikoni edhe"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Dërgoni automatikisht një email përshëndetje ditëlindjeje për njerëzit në ditën e tyre të lindjes."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Emailet e ditëlindjes"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Ditëlindjet, jubileumet, vullnetarët dhe listat e tjera të njerëzve me një filtër klasifikimi"
 
@@ -18790,10 +18770,6 @@ msgstr "Lejoni regjistrimin e pagesave që nuk mund të zbriten nga tatimi (p.sh
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Lejoni qasjen e pa-vërtetuar në ngjarje publike (për ngulitjen e kalendarëve)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Lejoni vizitorët të krijojnë rekord familjar të tyre përmes faqes publike të regjistrimit"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

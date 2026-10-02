@@ -4532,10 +4532,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "A dátumválasztó formátumának meghatározásához, alapértelmezett: Y-m-d, például magyarul: Y.m.d."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Azon személyek azonosítóinak (PersonID) vesszővel elválasztott listája, akiket értesíteni kell új család vagy személy hozzáadásakor"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Események hitelesítés nélküli olvasásának engedélyezése a külső naptár API-ból"
 
@@ -10962,10 +10958,6 @@ msgstr "Hitelesítés nélküli hozzáférés engedélyezése naptári eseménye
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Látogatók számára engedélyezze saját család nyilvántartásának létrehozását az önregisztrációs oldalon"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Engedje meg a látogatóknak, hogy új családként regisztráljanak."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18032,10 +18024,6 @@ msgid "Errors"
 msgstr "Hibák"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Az elhunyt tagok kizárása a nyomtatott névjegyzékből és a CSV-exportokból."
-
-#: 
 msgid "Failed Files"
 msgstr "Sikertelen fájlok"
 
@@ -18564,14 +18552,6 @@ msgid "As an admin, please also review the"
 msgstr "Adminisztrátorként kérjük, tekintse meg a következőket is:"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Születésnapi üdvözlő e-mail automatikus küldése embereknek születésnapjukon."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Születésnapi e-mailek"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Születésnapok, évfordulók, önkéntesek és egyéb emberek listája besorolás szűrővel"
 
@@ -18826,10 +18806,6 @@ msgstr "Az adólevonás nélküli kifizetések rögzítésének engedélyezése 
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "A nem hitelesített hozzáférés engedélyezése nyilvános eseményekhez (naptárak beágyazásához)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Az látogatók számára engedélyezi saját családi nyilvántartások létrehozását a nyilvános regisztrációs oldalon keresztül"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

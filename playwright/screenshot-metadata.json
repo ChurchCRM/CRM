@@ -97,6 +97,10 @@
     "title": "User Permissions",
     "category": "Admin & Settings"
   },
+  "admin-person-classifications": {
+    "title": "Person Classifications",
+    "category": "Admin & Settings"
+  },
   "admin-people-settings": {
     "title": "People Settings",
     "category": "Admin & Settings"

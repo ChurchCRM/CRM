@@ -4500,10 +4500,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "להגדרת התאריך בבוחר התאריכים, כברירת מחדל: Y-m-d, בצרפתית: d/m/Y לדוגמה."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "רשימת PersonIDs מופרדת בפסיקים של אנשים שיש להודיע להם כאשר נוספת משפחה או אדם חדש"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "אפשר קריאה ללא הזדהות של אירועים מ-API הלוח שנה החיצוני"
 
@@ -10934,10 +10930,6 @@ msgstr "אפשר גישה לא מאומתת לאירועי לוח שנה באמ�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "אפשר למבקרים ליצור רשומת משפחה משלהם דרך דף ההרשמה העצמי"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "אפשר למבקרים להירשם בעצמם כמשפחות חדשות."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18008,10 +18000,6 @@ msgid "Errors"
 msgstr "שגיאות"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "החרג חברים נפטרים מהמדריך המודפס ומייצוא ה-CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "קבצים שנכשלו"
 
@@ -18540,14 +18528,6 @@ msgid "As an admin, please also review the"
 msgstr "כמנהל, אנא בדוק גם את"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "שלח באופן אוטומטי דוא\"ל ברכת יום הולדת לאנשים ביום הולדתם."
-
-#: 
-msgid "Birthday Emails"
-msgstr "דוא\"ל יום הולדת"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "ימי הולדת, יום שנה, מתנדבים וכן רשימות אנשים אחרות עם מסנן סיווג"
 
@@ -18802,10 +18782,6 @@ msgstr "אפשר רישום תשלומים שלא ניתן להפחית מיסי
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "אפשר גישה ללא הצדקה לאירועים ציבוריים (לשיבוץ לוחות שנה)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "אפשר לביקורים ליצור את רשומות המשפחה שלהם דרך דף ההרשמה הציבורי"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

@@ -4562,10 +4562,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Pentru definirea datei în Data-Picker, în mod implicit: Y-m-d, în franceză: d / m / Y de exemplu."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Listă separată prin virgule a ID-urilor de persoană a persoanelor care trebuie notificate atunci când este adăugată o nouă familie sau persoană"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Permiteți citirile neautentificat ale evenimentelor din API-ul calendarului extern"
 
@@ -11003,10 +10999,6 @@ msgstr "Permiteți accesul neautentificat la evenimentele calendarului prin URL-
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Permiteți vizitatorilor să creeze propria înregistrare de familie prin pagina de auto-înregistrare"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Permite vizitatorilor să se auto-înregistreze ca familii noi."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18080,10 +18072,6 @@ msgid "Errors"
 msgstr "Erori"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Exclude membrii decedați din directorul tipărit și din exporturile CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Fișiere eșuate"
 
@@ -18612,14 +18600,6 @@ msgid "As an admin, please also review the"
 msgstr "Ca administrator, vă rugăm să consultați și"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Trimite automat un email de felicitare de ziua onomastică persoanelor în ziua lor de naștere."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Email-uri de ziua onomastică"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Zile de naștere, aniversări, voluntari și alte liste de persoane cu filtru de clasificare"
 
@@ -18874,10 +18854,6 @@ msgstr "Permite înregistrarea plăților nedeductibile (de ex., vânzări de m�
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Permite accesul neautentificat la evenimentele publice (pentru încorporarea calendarelor)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Permite vizitatorilor să creeze propriile dosare familiale prin pagina de înregistrare publică"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

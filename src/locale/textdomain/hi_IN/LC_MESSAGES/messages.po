@@ -4474,10 +4474,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "डेट-पिकर में तिथि परिभाषित करने के लिए, डिफ़ॉल्ट रूप से: Y-m-d।"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "नया परिवार या व्यक्ति जोड़े जाने पर सूचित किए जाने वाले व्यक्तियों की PersonIDs की सूची"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "बाहरी कैलेंडर API से कार्यक्रमों को बिना प्रमाणीकरण के पढ़ने की अनुमति दें"
 
@@ -10900,10 +10896,6 @@ msgstr "सार्वजनिक HTML, ICS और JSON URL के माध�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "आगंतुकों को स्व-पंजीकरण पृष्ठ के माध्यम से अपना परिवार रिकॉर्ड बनाने की अनुमति दें"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "आगंतुकों को नए परिवार के रूप में स्व-पंजीकरण करने की अनुमति दें।"
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17974,10 +17966,6 @@ msgid "Errors"
 msgstr "त्रुटियाँ"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "मुद्रित निर्देशिका और CSV एक्सपोर्ट से दिवंगत सदस्यों को बाहर रखें।"
-
-#: 
 msgid "Failed Files"
 msgstr "विफल फ़ाइलें"
 
@@ -18506,14 +18494,6 @@ msgid "As an admin, please also review the"
 msgstr "प्रशासक के रूप में, कृपया की भी समीक्षा करें"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "जन्मदिन पर लोगों को स्वचालित रूप से जन्मदिन की बधाई वाला ईमेल भेजें।"
-
-#: 
-msgid "Birthday Emails"
-msgstr "जन्मदिन ईमेल"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "जन्मदिन, वर्षगांठ, स्वयंसेवक और अन्य लोगों की सूची वर्गीकरण फ़िल्टर के साथ"
 
@@ -18768,10 +18748,6 @@ msgstr "कर-कटौती योग्य न होने वाले भ
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "सार्वजनिक कार्यक्रमों तक बिना लॉगिन के पहुंच की अनुमति दें (कैलेंडर एम्बेड करने के लिए)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "आगंतुकों को सार्वजनिक पंजीकरण पृष्ठ के माध्यम से अपने परिवार के रिकॉर्ड बनाने की अनुमति दें"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

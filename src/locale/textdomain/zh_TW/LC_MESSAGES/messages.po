@@ -4587,10 +4587,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "要在日期選取器中定義日期，默認情況下：Y-m-d，在法國：d/m/Y。"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "添加新家庭或人員時要通知的人員ID列表用逗號分隔"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "允許從外部日曆API中進行未經身份驗證的事件讀取"
 
@@ -11073,10 +11069,6 @@ msgstr "允許透過公開的 HTML、ICS 和 JSON URL 未經驗證地存取行�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "允許訪客透過自助登記頁面建立自己的家庭記錄"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "允許訪客自助登記為新家庭。"
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18140,10 +18132,6 @@ msgid "Errors"
 msgstr "錯誤"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "在列印通訊錄與 CSV 匯出中排除已故會友。"
-
-#: 
 msgid "Failed Files"
 msgstr "失敗的檔案"
 
@@ -18672,14 +18660,6 @@ msgid "As an admin, please also review the"
 msgstr "作為管理員，請同時查看"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "在人們生日時自動發送生日問候電郵"
-
-#: 
-msgid "Birthday Emails"
-msgstr "生日電郵"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "生日、紀念日、志願者和其他帶有分類篩選的人員列表"
 
@@ -18934,10 +18914,6 @@ msgstr "允許記錄不可抵稅的款項（例如商品銷售）"
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "允許未認證存取公開事件（用於嵌入日曆）"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "允許訪客透過公開註冊頁面建立自己的家庭記錄"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

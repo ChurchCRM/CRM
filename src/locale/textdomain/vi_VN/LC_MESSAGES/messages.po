@@ -4511,10 +4511,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Để xác định ngày trong Công cụ chọn ngày, theo mặc định: Ymd, Ví dụ: bằng tiếng Pháp: d / m / Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Được phân tách bằng dấu phẩy Danh sách ID cá nhân của mọi người để thông báo khi một gia đình hoặc người mới được thêm vào"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Cho phép đọc các sự kiện chưa được xác thực từ API lịch bên ngoài"
 
@@ -10931,10 +10927,6 @@ msgstr "Cho phép truy cập không xác thực vào các sự kiện lịch qua
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Cho phép khách truy cập tạo hồ sơ gia đình của riêng họ qua trang tự đăng ký"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Cho phép khách truy cập tự đăng ký là gia đình mới."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17998,10 +17990,6 @@ msgid "Errors"
 msgstr "Lỗi"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Loại trừ các thành viên đã qua đời khỏi danh bạ in và tệp xuất CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Tệp thất bại"
 
@@ -18530,14 +18518,6 @@ msgid "As an admin, please also review the"
 msgstr "Là quản trị viên, vui lòng cũng xem xét"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Tự động gửi email lời chúc sinh nhật đến mọi người vào ngày sinh nhật của họ."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Email Sinh Nhật"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Danh sách sinh nhật, kỷ niệm, tình nguyện viên và những người khác với bộ lọc phân loại"
 
@@ -18792,10 +18772,6 @@ msgstr "Cho phép ghi nhận các khoản thanh toán không được khấu tr�
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Cho phép truy cập chưa được xác thực đến các sự kiện công khai (để nhúng lịch)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Cho phép khách truy cập tạo hồ sơ gia đình của riêng họ qua trang đăng ký công khai"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

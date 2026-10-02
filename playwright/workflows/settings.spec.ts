@@ -31,6 +31,19 @@ test.describe('Settings', () => {
     });
   });
 
+  test('admin-person-classifications', async ({ page }, testInfo) => {
+    // Route: src/admin/routes/system.php ("/admin/system/options?mode=classes"), admin-only.
+    await page.goto('/admin/system/options?mode=classes');
+    await expect(page.locator('#optionsTable tbody tr').first()).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('.directory-toggle').first()).toBeVisible();
+    await settle(page, 600);
+
+    await captureScreen(page, testInfo, {
+      name: 'admin-person-classifications',
+      purpose: 'Show classification management with the Inactive and In Directory flags',
+    });
+  });
+
   test('admin-plugin-management', async ({ page }, testInfo) => {
     // Route: src/plugins/index.php ("/plugins/management/..."), gated to
     // admins. Reinforces the plugin ecosystem story — core + community

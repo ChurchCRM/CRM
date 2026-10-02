@@ -4483,10 +4483,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "สำหรับกำหนดวันที่ใน Date-Picker ค่าเริ่มต้น: Y-m-d ในภาษาฝรั่งเศส: d/m/Y เป็นต้น"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "รายการ PersonID ที่คั่นด้วยคอมมาของคนที่จะแจ้งเตือนเมื่อเพิ่มครอบครัวหรือบุคคลใหม่"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "อนุญาตให้อ่านกิจกรรมที่ไม่ได้รับการยืนยันตัวตนจาก API ปฏิทินภายนอก"
 
@@ -10904,10 +10900,6 @@ msgstr "อนุญาตการเข้าถึงกิจกรรมใ
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "อนุญาตให้ผู้เยี่ยมชมสร้างบันทึกครอบครัวของตนเองผ่านหน้าลงทะเบียนด้วยตนเอง"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "อนุญาตให้ผู้เยี่ยมชมลงทะเบียนตนเองเป็นครอบครัวใหม่"
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17971,10 +17963,6 @@ msgid "Errors"
 msgstr "ข้อผิดพลาด"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "ไม่รวมสมาชิกที่เสียชีวิตแล้วในสมุดรายชื่อที่พิมพ์และการส่งออกไฟล์ CSV"
-
-#: 
 msgid "Failed Files"
 msgstr "ไฟล์ที่ล้มเหลว"
 
@@ -18503,14 +18491,6 @@ msgid "As an admin, please also review the"
 msgstr "ในฐานะผู้ดูแลระบบ โปรดตรวจสอบด้วย"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "ส่งอีเมลอวยพรวันเกิดไปยังผู้คนโดยอัตโนมัติในวันเกิดของพวกเขา"
-
-#: 
-msgid "Birthday Emails"
-msgstr "อีเมลวันเกิด"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "วันเกิด วันครบรอบ อาสาสมัคร และรายชื่อคนอื่นๆ ที่มีตัวกรองการจำแนก"
 
@@ -18765,10 +18745,6 @@ msgstr "อนุญาตให้บันทึกการชำระเง
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "อนุญาตการเข้าถึงโดยไม่ได้รับการยืนยันตัวตนต่อกิจกรรมสาธารณะ (สำหรับการฝังปฏิทิน)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "อนุญาตให้ผู้มาเยี่ยมชมสร้างบันทึกครอบครัวของตนเองผ่านหน้าการลงทะเบียนสาธารณะ"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
