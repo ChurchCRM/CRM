@@ -1,0 +1,184 @@
+<?php
+
+use ChurchCRM\Emails\BulkEmail;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Slim\Middleware\Request\Auth\EmailRoleAuthMiddleware;
+use ChurchCRM\Slim\SlimUtils;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+
+/**
+ * @OA\Post(
+ *     path="/email/send",
+ *     summary="Send a bulk email to a list of recipients via the server-side SMTP configuration",
+ *     tags={"Email"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"recipients","subject","body"},
+ *             @OA\Property(property="recipients", type="array", @OA\Items(type="string"),
+ *                 description="List of recipient email addresses"),
+ *             @OA\Property(property="subject", type="string", description="Email subject line"),
+ *             @OA\Property(property="body",    type="string", description="Plain-text email body"),
+ *             @OA\Property(property="bcc",     type="boolean",
+ *                 description="When true, recipients are placed in BCC instead of To (default false)")
+ *         )
+ *     ),
+ *     @OA\Response(response=200, description="Email sent successfully",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="sent",    type="integer",
+ *                 description="Number of messages sent"),
+ *             @OA\Property(property="failed",  type="integer",
+ *                 description="Number of messages that failed to send"),
+ *             @OA\Property(property="skipped", type="integer",
+ *                 description="Number of addresses skipped before send (invalid format or duplicate). sent + failed + skipped always equals the total number of entries in the request recipients array."),
+ *             @OA\Property(property="errors",  type="array",   @OA\Items(type="string"))
+ *         )
+ *     ),
+ *     @OA\Response(response=400, description="Invalid or missing request data"),
+ *     @OA\Response(response=422, description="Email sending is disabled or SMTP is not configured"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Email permission required")
+ * )
+ */
+$app->group('/email', function (RouteCollectorProxy $group): void {
+    $group->post('/send', function (Request $request, Response $response): Response {
+        // Guard: email must be fully enabled — checks BOTH the bEnabledEmail admin toggle
+        // AND a valid SMTP configuration (stricter than the frontend smtpConfigured signal,
+        // which only tests hasValidMailServerSettings()).
+        if (!SystemConfig::isEmailEnabled()) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Email sending is not configured. Please set up SMTP settings before sending.'),
+                [],
+                422,
+                null,
+                $request,
+            );
+        }
+
+        $payload = $request->getParsedBody();
+
+        // ── Validate required fields ──────────────────────────────────── //
+        if (!isset($payload['recipients']) || !is_array($payload['recipients']) || count($payload['recipients']) === 0) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('recipients must be a non-empty array of email addresses'),
+                [],
+                400,
+                null,
+                $request,
+            );
+        }
+
+        if (empty(trim((string)($payload['subject'] ?? ''))) || !is_string($payload['subject'])) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('subject is required'),
+                [],
+                400,
+                null,
+                $request,
+            );
+        }
+
+        if (!isset($payload['body']) || !is_string($payload['body']) || trim($payload['body']) === '') {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('body is required'),
+                [],
+                400,
+                null,
+                $request,
+            );
+        }
+
+        // ── Normalise, validate, and deduplicate recipients ───────────── //
+        // $totalRequested is used to compute the `skipped` count so that
+        // sent + failed + skipped always equals the number of entries the
+        // caller submitted, with no silent drops.
+        $rawRecipients  = $payload['recipients'];
+        $totalRequested = count($rawRecipients);
+
+        $seen       = [];
+        $recipients = [];
+        foreach ($rawRecipients as $addr) {
+            if (!is_string($addr)) {
+                continue; // non-string entry → skipped
+            }
+            $addr = trim($addr);
+            if ($addr === '' || !filter_var($addr, FILTER_VALIDATE_EMAIL)) {
+                continue; // empty or invalid address → skipped
+            }
+            // Normalise to lowercase for deduplication (addresses are
+            // case-insensitive in practice even though the local-part is
+            // technically case-sensitive per RFC 5321).
+            $normalised = strtolower($addr);
+            if (isset($seen[$normalised])) {
+                continue; // duplicate → skipped
+            }
+            $seen[$normalised] = true;
+            $recipients[]      = $addr;
+        }
+
+        $skipped = $totalRequested - count($recipients);
+
+        if (count($recipients) === 0) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('No valid email addresses found in recipients list'),
+                [],
+                400,
+                null,
+                $request,
+            );
+        }
+
+        $subject = trim($payload['subject']);
+        $body    = trim($payload['body']);
+        $bcc     = !empty($payload['bcc']) && $payload['bcc'] !== false && $payload['bcc'] !== 'false';
+
+        // ── Limit batch size to guard against accidental spam ─────────── //
+        // The batch-size check is applied after deduplication so that a
+        // request with many duplicates is not rejected for a limit it would
+        // not actually reach.
+        $maxBatchSize = 500;
+        if (count($recipients) > $maxBatchSize) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                sprintf(gettext('Recipient count (%d) exceeds the maximum allowed per send (%d)'), count($recipients), $maxBatchSize),
+                [],
+                400,
+                null,
+                $request,
+            );
+        }
+
+        // ── Send ─────────────────────────────────────────────────────── //
+        try {
+            $email  = new BulkEmail($recipients, $subject, $body, $bcc);
+            $sent   = $email->send() ? count($recipients) : 0;
+            $failed = count($recipients) - $sent;
+            $errors = $failed > 0 ? array_filter([$email->getError()]) : [];
+
+            // Invariant: $sent + $failed + $skipped === $totalRequested
+            return SlimUtils::renderJSON($response, [
+                'sent'    => $sent,
+                'failed'  => $failed,
+                'skipped' => $skipped,
+                'errors'  => $errors,
+            ]);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Failed to send email'),
+                [],
+                500,
+                $e,
+                $request,
+            );
+        }
+    });
+})->add(EmailRoleAuthMiddleware::class);
