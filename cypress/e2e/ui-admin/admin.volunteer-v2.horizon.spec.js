@@ -233,7 +233,8 @@ describe("Volunteer v2 D31 — schedules follow events that exist, up to the hor
         cy.get("#scheduleModal .modal-footer").contains("Cancel").should("be.visible");
         cy.get("#schedule-form-title-filter").select(WORKDAY);
         cy.get("#schedule-form-details").should("be.visible");
-        cy.get("#schedule-form-save").should("be.visible");
+        // The dialog is taller than the window, so Save is below the fold of the scrolling modal.
+        cy.get("#schedule-form-save").scrollIntoView().should("be.visible");
     });
 
     it("says in weeks how far Generate reaches, or that the schedule ends first", () => {
