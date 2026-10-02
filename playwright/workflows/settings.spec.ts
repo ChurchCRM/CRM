@@ -12,6 +12,8 @@ test.describe('Settings', () => {
 
     await captureScreen(page, testInfo, {
       name: 'settings-user-permissions',
+      title: 'User Permissions',
+      category: 'Admin & Settings',
       purpose: 'Show user/permission management — self-hosted control story',
     });
   });
@@ -27,6 +29,8 @@ test.describe('Settings', () => {
 
     await captureScreen(page, testInfo, {
       name: 'admin-people-settings',
+      title: 'People Settings',
+      category: 'Admin & Settings',
       purpose: 'Show the People settings hub — list shortcuts and auto-saving settings in one place',
     });
   });
@@ -40,6 +44,8 @@ test.describe('Settings', () => {
 
     await captureScreen(page, testInfo, {
       name: 'admin-person-classifications',
+      title: 'Person Classifications',
+      category: 'Admin & Settings',
       purpose: 'Show classification management with the Inactive and In Directory flags',
     });
   });
@@ -54,6 +60,8 @@ test.describe('Settings', () => {
 
     await captureScreen(page, testInfo, {
       name: 'admin-plugin-management',
+      title: 'Plugin Management',
+      category: 'Admin & Settings',
       purpose: 'Show the plugin management admin page — core and community plugins',
     });
   });

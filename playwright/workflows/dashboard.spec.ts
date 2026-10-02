@@ -13,6 +13,9 @@ test.describe('Dashboard', () => {
 
     await captureScreen(page, testInfo, {
       name: 'dashboard-hero',
+      title: 'Dashboard',
+      category: 'Dashboards',
+      dark: 'dashboard-hero-dark',
       purpose: 'Landing dashboard after login — hero shot',
     });
   });

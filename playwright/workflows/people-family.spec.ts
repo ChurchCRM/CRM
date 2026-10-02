@@ -36,6 +36,9 @@ test.describe('People & Families', () => {
     // marketing-visuals-pipeline.md's "Map visibility" note.
     await captureScreen(page, testInfo, {
       name: 'people-family-overview',
+      title: 'Family Profile',
+      category: 'People & Families',
+      dark: 'people-family-overview-dark',
       purpose: 'Show how ChurchCRM organizes people and families, with member photos and a geocoded address',
     });
   });
@@ -79,6 +82,8 @@ test.describe('People & Families', () => {
 
     await captureScreen(page, testInfo, {
       name: 'people-family-new-family',
+      title: 'Add a New Family',
+      category: 'People & Families',
       purpose: 'Show creating a new family and its resulting profile page',
     });
   });
@@ -90,6 +95,8 @@ test.describe('People & Families', () => {
 
     await captureScreen(page, testInfo, {
       name: 'people-map-overview',
+      title: 'Family Map',
+      category: 'People & Families',
       purpose: 'Show the family map with geocoded pins across the congregation',
     });
   });
@@ -101,6 +108,8 @@ test.describe('People & Families', () => {
 
     await captureScreen(page, testInfo, {
       name: 'people-photo-gallery',
+      title: 'Photo Directory',
+      category: 'People & Families',
       purpose: 'Show the photo directory — a grid of congregation member photos',
     });
   });
@@ -113,6 +122,8 @@ test.describe('People & Families', () => {
 
     await captureScreen(page, testInfo, {
       name: 'people-directory-list',
+      title: 'People Directory',
+      category: 'People & Families',
       purpose: 'Show the filtered person directory list',
     });
   });
@@ -136,6 +147,8 @@ test.describe('People & Families', () => {
 
     await captureScreen(page, testInfo, {
       name: 'person-inactive-profile',
+      title: 'Inactive Member Profile',
+      category: 'People & Families',
       purpose: 'Show a person profile for an inactive member, including the inactive status banner',
     });
   });
@@ -153,6 +166,8 @@ test.describe('People & Families', () => {
 
     await captureScreen(page, testInfo, {
       name: 'person-deceased-profile',
+      title: 'Deceased Member Profile',
+      category: 'People & Families',
       purpose: 'Show a person profile for a deceased member, including the Deceased badge and date',
     });
   });
@@ -173,6 +188,8 @@ test.describe('People & Families', () => {
 
     await captureScreen(page, testInfo, {
       name: 'family-inactive-profile',
+      title: 'Inactive Family Profile',
+      category: 'People & Families',
       purpose: 'Show a family profile for an inactive family, including the inactive status banner',
     });
   });
