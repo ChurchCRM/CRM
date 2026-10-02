@@ -30,6 +30,10 @@ Reference: `src/admin/routes/people.php`, `src/admin/views/people.php`.
 7. The area dashboard keeps only a link to the hub. No settings panel there.
 8. Group settings by what they edit (Person form, Family form, Notifications), not by when they were added.
 
+## Reports
+
+No reporting app. A report lives in the module that owns its data and permissions (`/people/reports`, `/finance/reports`). Its settings live in that area's admin hub. The Reports menu only collects what each module registers.
+
 ## Moving a key
 
 - Keep the `ConfigItem` in `buildConfigs()`. Removing it makes `scrapeDBConfigs()` delete the saved value.
