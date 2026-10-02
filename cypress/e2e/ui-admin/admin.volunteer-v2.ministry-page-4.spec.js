@@ -482,5 +482,20 @@ describe("Volunteer v2 ministry page, round four (#9701)", () => {
             cy.get("#positionModal").should("not.contain", "i18next");
             cy.get("#positionModal").invoke("text").should("not.match", /\{\{[a-z]+\}\}/);
         });
+
+        it("draws the Positions tab once when it is opened before the ministry has loaded", () => {
+            cy.intercept("GET", `**${VOLUNTEER_URL}/ministries/${ministryId}`, (req) => {
+                req.on("response", (res) => {
+                    res.setDelay(1500);
+                });
+            }).as("ministryDetail");
+            cy.visit(ministryUrl());
+            cy.get("@ministryDetail.all").should("have.length", 1);
+
+            openPositionsTab();
+            cy.get("@ministryDetail.all").should("have.length", 1);
+            positionRow(POSITION_QUIET).find("[data-bs-toggle='dropdown']").click();
+            positionRow(POSITION_QUIET).find(".dropdown-menu").should("be.visible");
+        });
     });
 });

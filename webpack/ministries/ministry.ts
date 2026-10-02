@@ -393,16 +393,38 @@ function paneStates(pane: "overview" | "positions"): Array<TabName | PaneName> {
   return pane === "overview" ? ["overview", "teams"] : [pane];
 }
 
-async function load(force = false): Promise<void> {
+/**
+ * The ministry fetch still out, if any. A tab opened before it lands waits for it
+ * (its pane is drawn when it lands): a second fetch would draw the pane twice, and
+ * the second drawing replaces the rows — closing a row menu the user just opened.
+ */
+let pendingLoad: Promise<void> | null = null;
+
+function load(force = false): Promise<void> {
   if (detail !== null && !force) {
     renderHelpWanted(detail);
     for (const pane of activated) {
       TAB_RENDERERS[pane](detail);
     }
 
-    return;
+    return Promise.resolve();
   }
 
+  if (pendingLoad !== null && !force) {
+    return pendingLoad;
+  }
+
+  const request = fetchAndRender().finally(() => {
+    if (pendingLoad === request) {
+      pendingLoad = null;
+    }
+  });
+  pendingLoad = request;
+
+  return request;
+}
+
+async function fetchAndRender(): Promise<void> {
   for (const pane of activated) {
     for (const state of paneStates(pane)) {
       renderState(state, "loading");
