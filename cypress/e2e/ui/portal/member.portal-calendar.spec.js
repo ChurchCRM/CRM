@@ -73,10 +73,18 @@ const gotoDay = (isoDay) => {
 
 const thisYear = () => new Date().getFullYear();
 
+/** POST /api/events answers without the new id, so the events are found again by title. */
+const createdEventTitles = [];
+
 describe("Member Portal calendar", () => {
     after(() => {
         setVisibleCalendars([]);
         setConfig("bPortalShowCalendar", "1");
+        cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((resp) => {
+            cy.cleanupEvents(
+                (resp.body.Events || []).filter((e) => createdEventTitles.includes(e.Title)).map((e) => e.Id),
+            );
+        });
     });
 
     it("Says so when no calendar has been shared", () => {
@@ -94,6 +102,7 @@ describe("Member Portal calendar", () => {
         const day = `${thisYear()}-05-14`;
 
         setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
+        createdEventTitles.push(title);
         cy.request({
             method: "POST",
             url: "/api/events",
