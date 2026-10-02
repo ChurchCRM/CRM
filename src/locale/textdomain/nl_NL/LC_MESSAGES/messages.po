@@ -18994,3 +18994,83 @@ msgstr "Alleen een beheerder kan een persoon met een login verwijderen."
 msgid "The last administrator cannot be deleted."
 msgstr "De laatste beheerder kan niet worden verwijderd."
 
+#: 
+msgid "Category"
+msgstr "Categorie"
+
+#: 
+msgid "Category updated."
+msgstr "Categorie bijgewerkt."
+
+#: 
+msgid "Delete Category"
+msgstr "Categorie verwijderen"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kan categorie niet verwijderen"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kan categorie niet hernoemen"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fondscategorieën"
+
+#: 
+msgid "Fund activated."
+msgstr "Fonds geactiveerd."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fonds gedeactiveerd."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Fondsen in deze categorie worden ongecategoriseerd. De fondsen zelf worden niet verwijderd."
+
+#: 
+msgid "INACTIVE"
+msgstr "Niet actieve"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nieuwe categorienaam (een bestaande naam voegt de twee samen)"
+
+#: 
+msgid "Optional"
+msgstr "Optioneel"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Optioneel — kies of typ een nieuwe categorie"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Meer betaald dan de financiële toezegging"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Beloofd maar nog niet betaald"
+
+#: 
+msgid "Rename Category"
+msgstr "Categorie hernoemen"
+
+#: 
+msgid "Still Owed"
+msgstr "Nog verschuldigd"
+
+#: 
+msgid "Summary by Category"
+msgstr "Samenvatting per categorie"
+
+#: 
+msgid "Total Paid"
+msgstr "Totaal betaald"
+
+#: 
+msgid "Uncategorized"
+msgstr "Zonder categorie"
+

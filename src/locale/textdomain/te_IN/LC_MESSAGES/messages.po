@@ -19002,3 +19002,83 @@ msgstr "నిర్వాహకుడు మాత్రమే లాగిన�
 msgid "The last administrator cannot be deleted."
 msgstr "చివరి నిర్వాహకుడిని తొలగించలేము."
 
+#: 
+msgid "Category"
+msgstr "వర్గం"
+
+#: 
+msgid "Category updated."
+msgstr "వర్గం నవీకరించబడింది."
+
+#: 
+msgid "Delete Category"
+msgstr "వర్గాన్ని తొలగించు"
+
+#: 
+msgid "Failed to delete category"
+msgstr "వర్గాన్ని తొలగించడం విఫలమైంది"
+
+#: 
+msgid "Failed to rename category"
+msgstr "వర్గం పేరు మార్చడం విఫలమైంది"
+
+#: 
+msgid "Fund Categories"
+msgstr "నిధి వర్గాలు"
+
+#: 
+msgid "Fund activated."
+msgstr "నిధి సక్రియం చేయబడింది."
+
+#: 
+msgid "Fund deactivated."
+msgstr "నిధి నిష్క్రియం చేయబడింది."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "ఈ వర్గంలోని నిధులు వర్గీకరించబడనివిగా మారతాయి. నిధులు తొలగించబడవు."
+
+#: 
+msgid "INACTIVE"
+msgstr "నిష్క్రియ"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "కొత్త వర్గం పేరు (ఇప్పటికే ఉన్న పేరు ఇస్తే రెండూ విలీనమవుతాయి)"
+
+#: 
+msgid "Optional"
+msgstr "ఐచ్ఛికం"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "ఐచ్ఛికం — వర్గాన్ని ఎంచుకోండి లేదా కొత్తది టైప్ చేయండి"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "ఆర్థిక నిబద్ధతకు మించి చెల్లించినది"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "ఆర్థిక నిబద్ధత చేశారు కానీ ఇంకా చెల్లించలేదు"
+
+#: 
+msgid "Rename Category"
+msgstr "వర్గం పేరు మార్చు"
+
+#: 
+msgid "Still Owed"
+msgstr "ఇంకా చెల్లించవలసినది"
+
+#: 
+msgid "Summary by Category"
+msgstr "వర్గం వారీగా సారాంశం"
+
+#: 
+msgid "Total Paid"
+msgstr "మొత్తం చెల్లించినది"
+
+#: 
+msgid "Uncategorized"
+msgstr "వర్గీకరించబడనివి"
+

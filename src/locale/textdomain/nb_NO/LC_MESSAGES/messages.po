@@ -19095,3 +19095,83 @@ msgstr "Bare en administrator kan slette en person som har en innlogging."
 msgid "The last administrator cannot be deleted."
 msgstr "Den siste administratoren kan ikke slettes."
 
+#: 
+msgid "Category"
+msgstr "Kategori"
+
+#: 
+msgid "Category updated."
+msgstr "Kategori oppdatert."
+
+#: 
+msgid "Delete Category"
+msgstr "Slett kategori"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kunne ikke slette kategori"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kunne ikke gi kategori nytt navn"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fondkategorier"
+
+#: 
+msgid "Fund activated."
+msgstr "Fond aktivert."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fond deaktivert."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Midler i denne kategorien blir ukategorisert. Midlene selv blir ikke slettet."
+
+#: 
+msgid "INACTIVE"
+msgstr "Inaktiv"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nytt kategorinavn (et eksisterende navn slår de to sammen)"
+
+#: 
+msgid "Optional"
+msgstr "Valgfritt"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Valgfritt — velg eller skriv inn en ny kategori"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Betalt mer enn den finansielle forpliktelsen"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Løftet men ikke betalt ennå"
+
+#: 
+msgid "Rename Category"
+msgstr "Gi kategori nytt navn"
+
+#: 
+msgid "Still Owed"
+msgstr "Fortsatt skyldig"
+
+#: 
+msgid "Summary by Category"
+msgstr "Sammendrag per kategori"
+
+#: 
+msgid "Total Paid"
+msgstr "Totalt betalt"
+
+#: 
+msgid "Uncategorized"
+msgstr "Uten kategori"
+

@@ -18793,3 +18793,315 @@ msgstr "για σφάλματα γύρω από την ώρα που συνέβ�
 msgid "system logs"
 msgstr "αρχεία καταγραφής συστήματος"
 
+#: 
+msgid "Access Control & Security"
+msgstr "Έλεγχος πρόσβασης και ασφάλεια"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Επιτρέπει την καταγραφή πληρωμών που δεν αφαιρούνται φόρου (π.χ. πώληση εμπορευμάτων)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Επιτρέπει την μη πιστοποιημένη πρόσβαση σε δημόσια γεγονότα (για ενσωμάτωση ημερολογίων)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Επιτρέπει στους επισκέπτες να δημιουργήσουν τις δικές τους οικογενειακές εγγραφές μέσω της δημόσιας σελίδας εγγραφής"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Αυτόματη αποστολή μηνυμάτων ηλεκτρονικής αλληλογραφίας γενεθλίων (απαιτεί χρονοπρογραμματιστή εργασίας φόντου)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Μηνύματα χαιρετισμού γενεθλίων"
+
+#: 
+msgid "Communication & Email"
+msgstr "Επικοινωνία και ηλεκτρονική αλληλογραφία"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Πολιτική ασφάλειας περιεχομένου"
+
+#: 
+msgid "Email System"
+msgstr "Σύστημα ηλεκτρονικής αλληλογραφίας"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Ενεργοποιήστε ή απενεργοποιήστε τις δυνατότητες για την οργάνωσή σας"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Ενεργοποίηση/απενεργοποίηση της ενότητας Γεγονότα στην κύρια πλοήγηση"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Ενεργοποίηση/απενεργοποίηση του μενού Χρηματοοικονομικά και όλων των χρηματοοικονομικών δυνατοτήτων (καταθέσεις, πληρωμές, αναφορές)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Ενεργοποίηση/απενεργοποίηση του μενού Συγκέντρωσης κεφαλαίων"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Επιβολή αυστηρών κεφαλίδων CSP για προστασία έναντι επιθέσεων XSS"
+
+#: 
+msgid "Events Module"
+msgstr "Ενότητα Γεγονότων"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Διακόπτες δυνατοτήτων"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Οι διακόπτες δυνατοτήτων ελέγχουν ποιες ενότητες και δυνατότητες είναι διαθέσιμες στο ChurchCRM. Οι αλλαγές ισχύουν αμέσως."
+
+#: 
+msgid "Finance Features"
+msgstr "Χρηματοοικονομικές δυνατότητες"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Συμπερίληψη διευθύνσεων στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Συμπερίληψη γεγονότων ημερολογίου στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Συμπερίληψη προσαρμοσμένων ιδιοτήτων οικογένειας στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Συμπερίληψη καταθέσεων στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Συμπερίληψη οικογενειών στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Συμπερίληψη ομάδων στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Συμπερίληψη πληρωμών στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Συμπερίληψη ανθρώπων στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Invalid setting"
+msgstr "Μη έγκυρη ρύθμιση"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Σύνδεσμος χαμένου κωδικού πρόσβασης"
+
+#: 
+msgid "Manage All Features"
+msgstr "Διαχείριση όλων των δυνατοτήτων"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Κύριος διακόπτης για αποστολή ηλεκτρονικής αλληλογραφίας. ΑΠΑΙΤΕΙΤΑΙ για επαναφορές κωδικού πρόσβασης και ειδοποιήσεις"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Μη εκπεστέα πληρωμές"
+
+#: 
+msgid "Primary Modules"
+msgstr "Κύριες ενότητες"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Δημόσιο API ημερολογίου"
+
+#: 
+msgid "Saved"
+msgstr "Αποθηκεύτηκε"
+
+#: 
+msgid "Search Families"
+msgstr "Αναζήτηση οικογενειών"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Αναζήτηση προσαρμοσμένων ιδιοτήτων οικογένειας"
+
+#: 
+msgid "Search Settings"
+msgstr "Ρυθμίσεις αναζήτησης"
+
+#: 
+msgid "Self-Registration"
+msgstr "Αυτο-εγγραφή"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Εμφάνιση της επιλογής \"Χαμένος κωδικός πρόσβασης\" στην οθόνη σύνδεσης (επιτρέπει την αυτο-επαναφορά του χρήστη)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Εμφάνιση/απόκρυψη της ενότητας Σχολής Κυριακής στη γραμμή πλευράς"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Δεν είναι δυνατή η απενεργοποίηση του μόνου διαχειριστή που μπορεί να συνδεθεί"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Δεν είναι δυνατή η σήμανση του μόνου διαχειριστή που μπορεί να συνδεθεί ως αποθανόντος"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Αποθανόν — δεν μπορεί να συνδεθεί"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Εισαγάγετε μια δεύτερη διεύθυνση πριν την ορίσετε ως διεύθυνση αλληλογραφίας"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Ανενεργό — δεν μπορεί να συνδεθεί"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Το ταχυδρομείο πηγαίνει στη δεύτερη διεύθυνση· η κύρια διεύθυνση παραμένει η φυσική τοποθεσία που χρησιμοποιείται για χάρτες και κατευθύνσεις."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Το ταχυδρομείο αποστέλλεται σε αυτή τη διεύθυνση αντί της κύριας διεύθυνσης"
+
+#: 
+msgid "Mailing Address"
+msgstr "Διεύθυνση αλληλογραφίας"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Διεύθυνση αλληλογραφίας εάν διαφέρει"
+
+#: 
+msgid "Primary Address"
+msgstr "Κύρια διεύθυνση"
+
+#: 
+msgid "Receives Mail"
+msgstr "Λαμβάνει ταχυδρομείο"
+
+#: 
+msgid "Second Address"
+msgstr "Δεύτερη διεύθυνση"
+
+#: 
+msgid "Second Home"
+msgstr "Δεύτερη κατοικία"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Το συνδεδεμένο άτομο είναι αποθανόν ή ανενεργό. Η σύνδεση, οι περίοδοι και το κλειδί API αποκλείονται έως ότου το άτομο ενεργοποιηθεί ξανά."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Αυτή είναι η διεύθυνση αλληλογραφίας"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Αυτό το άτομο είναι αποθανόν ή ανενεργό, οπότε αυτός ο λογαριασμός δεν μπορεί να συνδεθεί"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Μόνο ένας διαχειριστής μπορεί να διαγράψει ένα άτομο που έχει σύνδεση."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Ο τελευταίος διαχειριστής δεν μπορεί να διαγραφεί."
+
+#: 
+msgid "Category"
+msgstr "Κατηγορία"
+
+#: 
+msgid "Category updated."
+msgstr "Η κατηγορία ενημερώθηκε."
+
+#: 
+msgid "Delete Category"
+msgstr "Διαγραφή κατηγορίας"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Η διαγραφή της κατηγορίας απέτυχε"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Η μετονομασία της κατηγορίας απέτυχε"
+
+#: 
+msgid "Fund Categories"
+msgstr "Κατηγορίες Κεφαλαίων"
+
+#: 
+msgid "Fund activated."
+msgstr "Το κεφάλαιο ενεργοποιήθηκε."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Το κεφάλαιο απενεργοποιήθηκε."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Τα κεφάλαια σε αυτήν την κατηγορία θα γίνουν ακατηγοριοποίητα. Τα ίδια τα κεφάλαια δεν διαγράφονται."
+
+#: 
+msgid "INACTIVE"
+msgstr "Αδρανής"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Νέο όνομα κατηγορίας (ένα υπάρχον όνομα συγχωνεύει τα δύο)"
+
+#: 
+msgid "Optional"
+msgstr "Προαιρετικό"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Προαιρετικό — επιλέξτε ή πληκτρολογήστε μια νέα κατηγορία"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Πληρωμένο πέρα από την δέσμευση"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Δεσμευμένο αλλά δεν πληρώθηκε ακόμη"
+
+#: 
+msgid "Rename Category"
+msgstr "Μετονομασία κατηγορίας"
+
+#: 
+msgid "Still Owed"
+msgstr "Εξακολουθεί να οφείλεται"
+
+#: 
+msgid "Summary by Category"
+msgstr "Περίληψη κατά κατηγορία"
+
+#: 
+msgid "Total Paid"
+msgstr "Σύνολο πληρωθέντων"
+
+#: 
+msgid "Uncategorized"
+msgstr "Ακατηγοριοποίητο"
+

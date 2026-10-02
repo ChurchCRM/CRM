@@ -19057,3 +19057,83 @@ msgstr "Тільки адміністратор може видалити люд
 msgid "The last administrator cannot be deleted."
 msgstr "Останній адміністратор не може бути видалений."
 
+#: 
+msgid "Category"
+msgstr "Категорія"
+
+#: 
+msgid "Category updated."
+msgstr "Категорія оновлена."
+
+#: 
+msgid "Delete Category"
+msgstr "Видалити категорію"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Помилка при видаленні категорії"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Помилка при перейменуванні категорії"
+
+#: 
+msgid "Fund Categories"
+msgstr "Категорії пожертвувань"
+
+#: 
+msgid "Fund activated."
+msgstr "Категорія пожертвувань активована."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Категорія пожертвувань деактивована."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Пожертвування в цій категорії будуть без категорії. Самі пожертвування не видаляються."
+
+#: 
+msgid "INACTIVE"
+msgstr "Неактивний"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Нова назва категорії (існуюча назва об'єднає дві)"
+
+#: 
+msgid "Optional"
+msgstr "Необов'язково"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Необов'язково — виберіть або введіть нову категорію"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Оплачено понад зобов'язання"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Зобов'язання обіцяно, але не оплачено"
+
+#: 
+msgid "Rename Category"
+msgstr "Перейменувати категорію"
+
+#: 
+msgid "Still Owed"
+msgstr "Все ще заборгованість"
+
+#: 
+msgid "Summary by Category"
+msgstr "Резюме за категоріями"
+
+#: 
+msgid "Total Paid"
+msgstr "Всього сплачено"
+
+#: 
+msgid "Uncategorized"
+msgstr "Без категорії"
+
