@@ -576,12 +576,14 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
             cy.get("#volunteer-assign-modal").should("be.visible");
             // The picker is a TomSelect: the native <select> is `ts-hidden-accessible`
             // and covered by the wrapper, so cy.select() cannot reach it. Drive the
-            // instance, the way the #9711 spec does.
+            // instance, the way the #9711 spec does, once the eligible list has landed
+            // and built it.
             cy.get("#assign-person-select")
-                .should("exist")
+                .should(($el) => {
+                    expect($el[0].tomselect, "the eligible picker is a TomSelect").to.exist;
+                })
                 .then(($el) => {
                     const ts = $el[0].tomselect;
-                    expect(ts, "the eligible picker is a TomSelect").to.exist;
                     const first = Object.keys(ts.options)[0];
                     expect(first, "the picker offers at least one person").to.not.eq(
                         undefined,

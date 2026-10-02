@@ -486,11 +486,14 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
             // S4: assign the one qualified person from the eligible picker.
             cy.get(`.volunteer-assign-btn[data-position-id="${posMilk}"]`).click();
             cy.get("#volunteer-assign-modal").should("be.visible");
-            cy.get("#assign-person-select").should("exist").then(($el) => {
-                const ts = $el[0].tomselect;
-                expect(ts, "the eligible picker is a TomSelect").to.exist;
-                ts.setValue(String(POOL_MEMBER_B));
-            });
+            // TomSelect is built when the eligible list lands, after the modal opens.
+            cy.get("#assign-person-select")
+                .should(($el) => {
+                    expect($el[0].tomselect, "the eligible picker is a TomSelect").to.exist;
+                })
+                .then(($el) => {
+                    $el[0].tomselect.setValue(String(POOL_MEMBER_B));
+                });
             cy.get("#assign-save").click();
             cy.get("#volunteer-assign-modal").should("not.be.visible");
 
