@@ -323,6 +323,14 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
 
     after(() => {
         clearAssignments();
+        // The series is re-created every run; leaving it behind trips the row-count
+        // guard, and an occurrence whose event is gone would be picked up next run.
+        cy.dbQuery("DELETE FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?", [scheduleId]);
+        cy.dbQuery(
+            "DELETE FROM calendar_events WHERE event_id IN (SELECT event_id FROM events_event WHERE event_title = ?)",
+            [EVENT_TITLE],
+        );
+        cy.dbQuery("DELETE FROM events_event WHERE event_title = ?", [EVENT_TITLE]);
         setVersion("v1");
     });
 
