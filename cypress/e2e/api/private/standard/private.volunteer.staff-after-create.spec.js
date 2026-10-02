@@ -277,7 +277,7 @@ describe("Volunteer v2 D33 — events, schedules and occurrences are created sep
                     name: "Generated Teachers",
                     linkMode: "class",
                     groupId: classes["Generated Class"],
-                    requirements: [{ positionId: teacher, minCount: 1, maxCount: 1, defaultPersonId: POOL_MEMBER, defaultAccepted: true }],
+                    requirements: [{ positionId: teacher, minCount: 1, maxCount: 1, defaults: [{ personId: POOL_MEMBER, accepted: true }] }],
                 }).then((body) => {
                     expect(body.generated).to.include({
                         created: withinHorizon.length,
@@ -347,7 +347,7 @@ describe("Volunteer v2 D33 — events, schedules and occurrences are created sep
                 windowStart: isoDate(10),
                 windowEnd: isoDate(20),
                 startOffsetMinutes: -15,
-                requirements: [{ positionId: teacher, minCount: 2, maxCount: 2, defaultPersonId: POOL_MEMBER, defaultAccepted: true }],
+                requirements: [{ positionId: teacher, minCount: 2, maxCount: 2, defaults: [{ personId: POOL_MEMBER, accepted: true }] }],
             }).then((body) => {
                 schedule.classA1 = body.schedule.id;
                 expect(body.generated.created).to.eq(1);

@@ -2392,30 +2392,49 @@ CREATE TABLE `volunteer_requirement_vreq` (
   `vreq_MinCount` int(11)      NOT NULL DEFAULT 1,
   `vreq_MaxCount` int(11)               DEFAULT NULL,
   `vreq_Notes`    varchar(255)          DEFAULT NULL,
-  `vreq_Default_per_ID`      mediumint(9) unsigned          DEFAULT NULL,
-  `vreq_DefaultAccepted`     tinyint(1) unsigned   NOT NULL DEFAULT 0,
-  `vreq_DefaultSetBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
   PRIMARY KEY (`vreq_ID`),
   UNIQUE KEY `vreq_schedule_position_uidx`   (`vreq_vsch_ID`, `vreq_vpos_ID`),
   UNIQUE KEY `vreq_occurrence_position_uidx` (`vreq_vocc_ID`, `vreq_vpos_ID`),
   KEY `vreq_position_idx`                    (`vreq_vpos_ID`),
-  KEY `vreq_default_person_idx`              (`vreq_Default_per_ID`),
-  KEY `vreq_default_set_by_idx`              (`vreq_DefaultSetBy_per_ID`),
   CONSTRAINT `fk_vreq_schedule` FOREIGN KEY (`vreq_vsch_ID`)
       REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vreq_occurrence` FOREIGN KEY (`vreq_vocc_ID`)
       REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vreq_position` FOREIGN KEY (`vreq_vpos_ID`)
       REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE CASCADE,
-  CONSTRAINT `fk_vreq_default_person` FOREIGN KEY (`vreq_Default_per_ID`)
-      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL,
-  CONSTRAINT `fk_vreq_default_set_by` FOREIGN KEY (`vreq_DefaultSetBy_per_ID`)
-      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL,
   -- Exactly one parent: a template requirement belongs to a schedule, an
   -- override to an occurrence, never both and never neither. Enforced on
   -- MariaDB 10.2.1+ / MySQL 8.0.16+; parsed and ignored by MySQL 5.7.
   CONSTRAINT `vreq_one_parent_chk`
       CHECK ((`vreq_vsch_ID` IS NULL) <> (`vreq_vocc_ID` IS NULL))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_requirement_default_vrdf`
+-- Volunteer Management v2 (D35); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_requirement_default_vrdf`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_requirement_default_vrdf` (
+  `vrdf_ID`           int(11)               NOT NULL AUTO_INCREMENT,
+  `vrdf_vreq_ID`      int(11)               NOT NULL,
+  `vrdf_per_ID`       mediumint(9) unsigned NOT NULL,
+  `vrdf_Accepted`     tinyint(1) unsigned   NOT NULL DEFAULT 0,
+  `vrdf_SetBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vrdf_Sort`         smallint(6)           NOT NULL DEFAULT 0,
+  PRIMARY KEY (`vrdf_ID`),
+  UNIQUE KEY `vrdf_requirement_person_uidx` (`vrdf_vreq_ID`, `vrdf_per_ID`),
+  KEY `vrdf_person_idx`                     (`vrdf_per_ID`),
+  KEY `vrdf_set_by_idx`                     (`vrdf_SetBy_per_ID`),
+  CONSTRAINT `fk_vrdf_requirement` FOREIGN KEY (`vrdf_vreq_ID`)
+      REFERENCES `volunteer_requirement_vreq` (`vreq_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vrdf_person` FOREIGN KEY (`vrdf_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vrdf_set_by` FOREIGN KEY (`vrdf_SetBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

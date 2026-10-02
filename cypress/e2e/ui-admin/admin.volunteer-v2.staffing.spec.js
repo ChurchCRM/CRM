@@ -696,8 +696,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                 cy.contains("Nobody is qualified for this position yet");
             });
 
-            // Choose the default through the underlying select (TomSelect mirrors it and
-            // fires change), then tick Set as Accepted once it appears.
+            // Choose the default, then tick Set as Accepted once it appears.
             cy.get(`.generate-default-row[data-position-id="${posLead}"] select.generate-default-select`).then(($select) => {
                 const value = $select.find("option").eq(1).val();
                 cy.wrap($select).select(String(value), { force: true });
@@ -707,8 +706,8 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
 
             cy.intercept("POST", `**/api/ministries/schedules/${scheduleId}/generate`).as("generate");
             cy.get("#generate-form-save").click();
-            cy.wait("@generate").its("request.body.defaults").should("deep.eq", [
-                { positionId: posLead, personId: PERSON_DEFAULT, accepted: true },
+            cy.wait("@generate").its("request.body.requirements").should("deep.eq", [
+                { positionId: posLead, defaults: [{ personId: PERSON_DEFAULT, accepted: true }] },
             ]);
             cy.get("#generateOccurrencesModal").should("not.be.visible");
             cy.get("#volunteerSchedulesTable tbody tr", { timeout: 15000 })
@@ -754,8 +753,8 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.intercept("POST", `**/api/ministries/schedules/${scheduleId}/generate`).as("generate");
             cy.get("#generate-form-save").click();
             cy.wait("@generate").then(({ request, response }) => {
-                // D32: every row is sent, a blank one as "no default for this position".
-                expect(request.body.defaults).to.deep.eq([{ positionId: posLead, personId: null, accepted: false }]);
+                // D32: every row with pickers is sent, an empty list as "no default for this position".
+                expect(request.body.requirements).to.deep.eq([{ positionId: posLead, defaults: [] }]);
                 expect(response.body.created).to.be.greaterThan(0);
                 expect(response.body.assigned).to.eq(0);
             });
