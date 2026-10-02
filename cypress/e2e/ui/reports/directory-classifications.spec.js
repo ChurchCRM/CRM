@@ -65,6 +65,13 @@ describe("Directory report - classification selection (#10248)", () => {
         });
     });
 
+    it("rejects a non-numeric classification instead of treating it as Unassigned", () => {
+        cy.request(directoryPost("invalid")).then((response) => {
+            expect(response.status).to.eq(400);
+            expect(response.headers["content-type"] || "").to.not.include("application/pdf");
+        });
+    });
+
     it("accepts Unassigned alone as a selection", () => {
         cy.request(directoryPost("0")).then((response) => {
             expect(response.status).to.eq(200);

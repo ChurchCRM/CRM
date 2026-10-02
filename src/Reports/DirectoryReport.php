@@ -14,6 +14,11 @@ use ChurchCRM\Utils\MiscUtils;
 // Get and filter the classifications selected
 $aClasses = [];
 foreach ((array) ($_POST['sDirClassifications'] ?? []) as $Cls) {
+    // 'int' filtering turns junk into 0, which would quietly select Unassigned.
+    if (!array_key_exists('cartdir', $_POST) && !(is_scalar($Cls) && ctype_digit(trim((string) $Cls)))) {
+        http_response_code(400);
+        exit(gettext('Select at least one classification to include in the directory.'));
+    }
     $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
 }
 $sDirClassifications = implode(',', $aClasses);
