@@ -1302,7 +1302,7 @@ CREATE TABLE `volunteer_occurrence_vocc` (
   KEY `vocc_event_idx` (`vocc_event_id`),
   CONSTRAINT `fk_vocc_schedule` FOREIGN KEY (`vocc_vsch_ID`)
       REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
-  -- Nullable only so a deleted event leaves the service history behind (D20);
+  -- Nullable only so a deleted event leaves the service history behind (D20),
   -- VolunteerScheduleService sets it on every insert.
   CONSTRAINT `fk_vocc_event` FOREIGN KEY (`vocc_event_id`)
       REFERENCES `events_event` (`event_id`) ON DELETE SET NULL
