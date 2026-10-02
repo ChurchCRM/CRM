@@ -53,7 +53,8 @@ describe("Inactive classifications apply to Person Listing and dashboard (#10247
         cy.get("#FirstName").type("Inactive");
         cy.get("#LastName").type(LAST_NAME);
         cy.get("#Gender").select("1");
-        cy.get("#Classification").select(String(created.classificationId));
+        // created.classificationId is set by the earlier .then(); read it when this step runs, not when it is queued.
+        cy.then(() => cy.get("#Classification").select(String(created.classificationId)));
         cy.get('button[name="PersonSubmit"]').click();
         cy.location("pathname")
             .should("include", "/people/view/")

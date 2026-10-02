@@ -8,14 +8,15 @@
  */
 const SELECT = 'select[name="sDirClassifications[]"]';
 
-const directoryPost = (classifications) => ({
+// One classification id as a plain string: an array value is form-encoded as a nested array, which PHP rejects.
+const directoryPost = (classification) => ({
     method: "POST",
     url: "Reports/DirectoryReport.php",
     form: true,
     encoding: "binary",
     failOnStatusCode: false,
     body: {
-        ...(classifications.length ? { "sDirClassifications[]": classifications } : {}),
+        ...(classification === undefined ? {} : { "sDirClassifications[]": classification }),
         "sDirRoleHead[]": "1",
         "sDirRoleSpouse[]": "2",
         "sDirRoleChild[]": "3",
@@ -57,7 +58,7 @@ describe("Directory report - classification selection (#10248)", () => {
     });
 
     it("rejects an empty classification selection instead of printing everyone", () => {
-        cy.request(directoryPost([])).then((response) => {
+        cy.request(directoryPost()).then((response) => {
             expect(response.status).to.eq(400);
             expect(response.headers["content-type"] || "").to.not.include("application/pdf");
             expect(response.body).to.include("Select at least one classification");
@@ -65,7 +66,7 @@ describe("Directory report - classification selection (#10248)", () => {
     });
 
     it("accepts Unassigned alone as a selection", () => {
-        cy.request(directoryPost(["0"])).then((response) => {
+        cy.request(directoryPost("0")).then((response) => {
             expect(response.status).to.eq(200);
             expect(response.headers["content-type"]).to.include("application/pdf");
         });
