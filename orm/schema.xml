@@ -1379,14 +1379,6 @@
         <column name="vreq_MaxCount" phpName="MaxCount" type="INTEGER"
                 description="NULL means the same as MinCount. Capacity ceiling for self-signup"/>
         <column name="vreq_Notes" phpName="Notes" type="VARCHAR" size="255"/>
-        <column name="vreq_Default_per_ID" phpName="DefaultPersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
-                description="Template level only (D32): who is assigned to this position on every occurrence the schedule creates, while they stay qualified"/>
-        <column name="vreq_DefaultAccepted" phpName="DefaultAccepted" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
-                required="true" defaultValue="0"
-                description="The default is recorded as having accepted, by the coordinator channel, instead of being asked to respond"/>
-        <column name="vreq_DefaultSetBy_per_ID" phpName="DefaultSetByPersonId" type="SMALLINT" size="9"
-                sqlType="mediumint(9) unsigned"
-                description="Who chose the default: the assigner and, for an accepted default, the responder when the daily top-up assigns it"/>
         <foreign-key foreignTable="volunteer_schedule_vsch" name="VolunteerRequirementSchedule" phpName="Schedule"
                      refPhpName="VolunteerRequirement" onDelete="cascade">
             <reference local="vreq_vsch_ID" foreign="vsch_ID"/>
@@ -1399,14 +1391,6 @@
                      refPhpName="VolunteerRequirement" onDelete="cascade">
             <reference local="vreq_vpos_ID" foreign="vpos_ID"/>
         </foreign-key>
-        <foreign-key foreignTable="person_per" name="VolunteerRequirementDefaultPerson" phpName="DefaultPerson"
-                     refPhpName="DefaultVolunteerRequirement" onDelete="setnull">
-            <reference local="vreq_Default_per_ID" foreign="per_ID"/>
-        </foreign-key>
-        <foreign-key foreignTable="person_per" name="VolunteerRequirementDefaultSetBy" phpName="DefaultSetByPerson"
-                     refPhpName="DefaultSetVolunteerRequirement" onDelete="setnull">
-            <reference local="vreq_DefaultSetBy_per_ID" foreign="per_ID"/>
-        </foreign-key>
         <unique name="vreq_schedule_position_uidx">
             <unique-column name="vreq_vsch_ID"/>
             <unique-column name="vreq_vpos_ID"/>
@@ -1418,11 +1402,44 @@
         <index name="vreq_position_idx">
             <index-column name="vreq_vpos_ID"/>
         </index>
-        <index name="vreq_default_person_idx">
-            <index-column name="vreq_Default_per_ID"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+    <table name="volunteer_requirement_default_vrdf" idMethod="native" phpName="VolunteerRequirementDefault"
+           description="Volunteer v2 (D35): a schedule's default volunteers for one staffing need, several per position, assigned in vrdf_Sort order on every occurrence the schedule creates while they stay qualified. Template requirements only">
+        <column name="vrdf_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vrdf_vreq_ID" phpName="RequirementId" type="INTEGER" required="true"/>
+        <column name="vrdf_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
+                required="true"/>
+        <column name="vrdf_Accepted" phpName="Accepted" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
+                required="true" defaultValue="0"
+                description="Recorded as having accepted, by the coordinator channel, instead of being asked to respond"/>
+        <column name="vrdf_SetBy_per_ID" phpName="SetByPersonId" type="SMALLINT" size="9"
+                sqlType="mediumint(9) unsigned"
+                description="Who chose the default: the assigner and, for an accepted default, the responder when the daily top-up assigns it"/>
+        <column name="vrdf_Sort" phpName="Sort" type="SMALLINT" required="true" defaultValue="0"/>
+        <foreign-key foreignTable="volunteer_requirement_vreq" name="VolunteerRequirementDefaultRequirement"
+                     phpName="Requirement" refPhpName="VolunteerRequirementDefault" onDelete="cascade">
+            <reference local="vrdf_vreq_ID" foreign="vreq_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="VolunteerRequirementDefaultPerson" phpName="Person"
+                     refPhpName="VolunteerRequirementDefault" onDelete="cascade">
+            <reference local="vrdf_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="VolunteerRequirementDefaultSetBy" phpName="SetByPerson"
+                     refPhpName="SetVolunteerRequirementDefault" onDelete="setnull">
+            <reference local="vrdf_SetBy_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <unique name="vrdf_requirement_person_uidx">
+            <unique-column name="vrdf_vreq_ID"/>
+            <unique-column name="vrdf_per_ID"/>
+        </unique>
+        <index name="vrdf_person_idx">
+            <index-column name="vrdf_per_ID"/>
         </index>
-        <index name="vreq_default_set_by_idx">
-            <index-column name="vreq_DefaultSetBy_per_ID"/>
+        <index name="vrdf_set_by_idx">
+            <index-column name="vrdf_SetBy_per_ID"/>
         </index>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
