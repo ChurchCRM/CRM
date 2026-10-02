@@ -4500,10 +4500,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "ቀኑን በ Date-Picker ለመግለጽ፣ በነባሪ፡ yyyy-mm-dd፣ በፈረንሳይኛ፡ dd/mm/yyyy ለምሳሌ."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "አዲስ ቤተሰብ ወይም ሰው ሲታከል ለማሳወቅ በነጠላ ሰረዝ የተለዩ የሰዎች መታወቂያዎች ዝርዝር"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "ከውጫዊ የቀን መቁጠሪያ API ያልተረጋገጡ የክስተቶች ንባብ ፍቀድ"
 
@@ -10943,10 +10939,6 @@ msgstr "ህዝባዊ HTML፣ ICS እና JSON URLs አማካኝነት ወደ ቀ�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "ጎብኚዎች በራሳቸው ምዝገባ ገጽ አማካኝነት የራሳቸውን የቤተሰብ ሪኮርድ እንዲፈጥሩ ፍቀድ"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "ጎብኝዎች እራሳቸውን እንደ አዲስ ቤተሰቦች እንዲያስመዘግቡ ፍቀድ"
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18018,10 +18010,6 @@ msgid "Errors"
 msgstr "ስህተቶች"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "የሞቱ አባላትን ከታተመው ማውጫ እና ከCSV ወደ ውጭ መላኮች ያግልሉ።"
-
-#: 
 msgid "Failed Files"
 msgstr "ያልተሳኩ ፋይሎች"
 
@@ -18550,14 +18538,6 @@ msgid "As an admin, please also review the"
 msgstr "እንደ አስተዳዳሪ እባክዎ እንዲሁም ይገምግሙ"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "በቀልደ ውስጥ በሰዎች ልደት በተሳካ ሁኔታ በ ሌላ የተወለደ ሰው ተመሪት ኢሜል ይላኩ።"
-
-#: 
-msgid "Birthday Emails"
-msgstr "የተወለደ ሰው ኢሜሎች"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "ልደቶች፣ ዓመታዊ አደራሮች፣ በስ volunteers ታች እና ሌሎች ሰዎች ዝርዝሮች ከምድብ ማጣሪያ ጋር"
 
@@ -18812,10 +18792,6 @@ msgstr "ታክስ ብር ያልተነሳ ክፍያ መመዝገብ ይፈቅዱ 
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "ለሕዝብ ክስተቶች ያለ ማረጋገጥ ተደራሲ ይፈቅዱ (ለሥዕል ማስገባት የቀናት)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "ጎብኚዎች ሕዝብ ምዝገባ ገጽ በኩል የራሳቸውን የቤተሰብ መዝገቦች እንዲፈጥሩ ይፈቅዱ"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

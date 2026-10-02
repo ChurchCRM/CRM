@@ -4499,10 +4499,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Kuupäeva määramiseks kuupäevavalijas, vaikimisi: Y-m-d, prantsuse keeles: näiteks d/m/Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Komadega eraldatud loend inimestest, keda uue pere või inimese lisamisel teavitada"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Lubage välise kalendri API-st sündmuste autentimata lugemist"
 
@@ -10935,10 +10931,6 @@ msgstr "Luba autentimata juurdepääs kalendrisündmustele avalike HTML-, ICS- j
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Luba külastajatel luua oma perekonnakirje iseteeninduse lehel"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Luba külastajatel registreeruda uute peredena."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18009,10 +18001,6 @@ msgid "Errors"
 msgstr "Vead"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Jäta surnud liikmed välja trükitud kataloogist ja CSV ekspordist."
-
-#: 
 msgid "Failed Files"
 msgstr "Ebaõnnestunud failid"
 
@@ -18541,14 +18529,6 @@ msgid "As an admin, please also review the"
 msgstr "Administraatorina palun vaadake üle ka"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Saada sünnipäeva õnnitlev e-kiri automaatselt inimestele nende sünnipäeval."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Sünnipäeva e-kirjad"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Sünnipäevad, juubileumid, vabatahtlikud ja muud inimeste nimekirjad klassifikatsioonifiltriga"
 
@@ -18803,10 +18783,6 @@ msgstr "Lubada mittemahakasvuliste maksete salvestamist (nt kaubamüük)"
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Lubada autentimata juurdepääs avalikele sündmustele (kalendrite manustamiseks)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Lubada külaliste luua oma perekonnaandmeid avaliku registreerumise lehekülje kaudu"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

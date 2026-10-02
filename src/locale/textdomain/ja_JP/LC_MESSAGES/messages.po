@@ -4471,10 +4471,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "日付ピッカーの日付形式を定義するには、デフォルト: Y-m-d、フランス語の例: d/m/Y"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "新しい家族または人物が追加されたときに通知する人のPersonIDのカンマ区切りリスト"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "外部カレンダーAPIからの認証なしイベント読み取りを許可"
 
@@ -10892,10 +10888,6 @@ msgstr "公開 HTML、ICS、JSON URL を通じてカレンダーイベントへ�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "訪問者が自己登録ページで自分の家族記録を作成することを許可"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "訪問者が新しい家族として自己登録することを許可します。"
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17959,10 +17951,6 @@ msgid "Errors"
 msgstr "エラー"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "印刷用ディレクトリおよびCSVエクスポートから故人の会員を除外します。"
-
-#: 
 msgid "Failed Files"
 msgstr "失敗したファイル"
 
@@ -18491,14 +18479,6 @@ msgid "As an admin, please also review the"
 msgstr "管理者の方は、以下もご確認ください:"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "誕生日に人々に自動的に誕生日お祝いメールを送信します。"
-
-#: 
-msgid "Birthday Emails"
-msgstr "誕生日メール"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "誕生日、記念日、ボランティア、および分類フィルター付きの他の人物リスト"
 
@@ -18753,10 +18733,6 @@ msgstr "税控除不適格の支払い（例えば、商品販売）の記録を
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "公開イベントへの認証されていないアクセスを許可する（カレンダー埋め込み用）"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "訪問者が公開登録ページを通じて自分の家族記録を作成することを許可する"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

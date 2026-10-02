@@ -4470,10 +4470,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Za definiranje datuma u birač datuma, zadano: G-m-d, Npr. na francuskom: d/m/G."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Popis ID-ova osoba odvojenih zarezom koji se obavještavaju kada se doda nova obitelj ili osoba"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Dopusti neautentificirano čitanje događaja s vanjskog API-ja kalendara"
 
@@ -10907,10 +10903,6 @@ msgstr "Dozvoli neautentificirani pristup kalendarskim događajima putem javnih 
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Dozvoli posjetiteljima kreiranje vlastitog obiteljskog zapisa putem stranice za samo-registraciju"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Dozvoli posjetiteljima samo-registraciju kao novih obitelji."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17988,10 +17980,6 @@ msgid "Errors"
 msgstr "Greške"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Isključi preminule članove iz tiskanog imenika i CSV izvoza."
-
-#: 
 msgid "Failed Files"
 msgstr "Neuspjele datoteke"
 
@@ -18520,14 +18508,6 @@ msgid "As an admin, please also review the"
 msgstr "Kao administrator, molimo vas da također pregledajte"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Automatski pošalji e-poštu za rođendan ljudima na njihov rođendan."
-
-#: 
-msgid "Birthday Emails"
-msgstr "E-pošte za rođendan"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Rođendani, godišnjice, volonteri i drugi popisi ljudí s filtrom klasifikacije"
 
@@ -18782,10 +18762,6 @@ msgstr "Dozvoli zabilježavanje plaćanja koja nisu odbitna od poreza (npr. prod
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Dozvoli neautentificirani pristup javnim događajima (za ugrađivanje kalendara)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Dozvoli posjetiteljima da kreiraju vlastite zapise o obitelji kroz stranicu javne registracije"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

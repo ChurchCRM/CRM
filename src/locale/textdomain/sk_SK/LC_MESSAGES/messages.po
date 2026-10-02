@@ -4470,10 +4470,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Pre definovanie dátumu v Date-Picker, predvolene: Y-m-d, napr. vo francúzštine: d/m/Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Zoznam PersonID oddelený čiarkami – ľudia upozornení pri pridaní novej rodiny alebo osoby"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Povoliť neoverené čítanie udalostí z externého kalendárneho API"
 
@@ -10920,10 +10916,6 @@ msgstr "Povoliť neautentifikovaný prístup k udalostiam kalendára cez verejn�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Povoliť návštevníkom vytvoriť vlastný záznam rodiny cez stránku samoregistrácie"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Povoliť návštevníkom samoregistráciu ako nové rodiny."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18008,10 +18000,6 @@ msgid "Errors"
 msgstr "Chyby"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Vylúčiť zosnulých členov z tlačeného adresára a exportov CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Neúspešné súbory"
 
@@ -18540,14 +18528,6 @@ msgid "As an admin, please also review the"
 msgstr "Ako správca si prosím prehliadnite aj"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Automaticky posielať gratulačný email k narodeninám ľuďom v deň ich narodenia."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Emaily k narodeninám"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Zoznamy narodenín, výročí, dobrovoľníkov a ďalších ľudí s filtrom klasifikácie"
 
@@ -18802,10 +18782,6 @@ msgstr "Umožniť zaznamenávanie platieb, ktoré nie sú daňovo odpočítateľ
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Umožniť prístup bez prihlásenia k verejným udalostiam (na vkladanie kalendárov)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Umožniť návštevníkom vytvoriť vlastné záznamy rodín prostredníctvom verejnej registračnej stránky"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

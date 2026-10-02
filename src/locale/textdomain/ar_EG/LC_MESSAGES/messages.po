@@ -4498,10 +4498,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "لتحديد موعد في تاريخ-المنتقى، في الافتراضي: YMD، وفي الفرنسية: د / م / Y على سبيل المثال."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "قائمة PersonIDs من الناس مفصولة بفواصل لإعلام عند إضافة عائلة جديدة أو شخص"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "يقرأ تسمح غير مصادقة من الأحداث من API التقويم الخارجي"
 
@@ -10963,10 +10959,6 @@ msgstr "السماح بالوصول غير المصرح به لأحداث الت
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "السماح للزوار بإنشاء سجل أسرتهم الخاص عبر صفحة التسجيل الذاتي"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "السماح للزوار بالتسجيل الذاتي كعائلات جديدة."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18065,10 +18057,6 @@ msgid "Errors"
 msgstr "أخطاء"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "استبعاد الأعضاء المتوفين من الدليل المطبوع وتصديرات CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "الملفات الفاشلة"
 
@@ -18597,14 +18585,6 @@ msgid "As an admin, please also review the"
 msgstr "يرجى من المسؤول أيضاً مراجعة"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "إرسال بريد إلكتروني لتحية عيد الميلاد تلقائياً للأشخاص في عيد ميلادهم."
-
-#: 
-msgid "Birthday Emails"
-msgstr "رسائل عيد الميلاد الإلكترونية"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "أعياد الميلاد والذكريات السنوية والمتطوعون وقوائم الأشخاص الأخرى مع مرشح تصنيف"
 
@@ -18859,10 +18839,6 @@ msgstr "السماح بتسجيل المدفوعات غير القابلة لل�
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "السماح بالوصول غير المصرح به إلى الأحداث العامة (لتضمين التقويمات)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "السماح للزوار بإنشاء سجلات عائلاتهم الخاصة عبر صفحة التسجيل العام"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

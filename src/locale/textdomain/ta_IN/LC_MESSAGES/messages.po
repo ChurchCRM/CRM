@@ -4497,10 +4497,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "தேதி- எடுப்பவர் (Date-Picker) இல் தேதியை வரையறுக்க, இயல்புநிலைக்கு : Y-m-d, பிரெஞ்சு மொழியில் : d/m/Y எடுத்துக்காட்டாக."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "ஒரு புதிய குடும்பம் அல்லது நபர் சேர்க்கப்படும் போது தெரிவிக்க வேண்டிய நபர்களின் தனிநபர் ஐடிகளின் கமாவால் பிரிக்கப்பட்ட பட்டியல்"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "வெளிப்புற காலண்டர் API இலிருந்து நிகழ்வுகளின் அங்கீகரிக்கப்படாத வாசிப்புகளை அனுமதிக்கவும்"
 
@@ -10943,10 +10939,6 @@ msgstr "பொது HTML, ICS மற்றும் JSON URL-கள் வா�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "சுய-பதிவுப் பக்கம் வாயிலாக, வருகையாளர்கள் தங்களுக்கான குடும்பப் பதிவை அவர்களே உருவாக்கிக்கொள்ள அனுமதி அளித்தல்"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "பார்வையாளர்களை புதிய குடும்பங்களாக சுய-பதிவு செய்ய அனுமதி."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18023,10 +18015,6 @@ msgid "Errors"
 msgstr "பிழைகள்"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "அச்சிடப்பட்ட அடைவு மற்றும் CSV ஏற்றுமதிகளில் இருந்து காலமான உறுப்பினர்களை விலக்கு."
-
-#: 
 msgid "Failed Files"
 msgstr "தோல்வியடைந்த கோப்புகள்"
 
@@ -18555,14 +18543,6 @@ msgid "As an admin, please also review the"
 msgstr "நிர்வாகி என்ற முறையில், தயவு செய்து பின்வருவனவையும் மதிப்பாய்வு செய்யவும்"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "பிறந்த நாளில் மக்களுக்கு தானாகவே பிறந்த நாள் வாழ்த்து மின்னஞ்சல் அனுப்பவும்."
-
-#: 
-msgid "Birthday Emails"
-msgstr "பிறந்த நாள் மின்னஞ்சல்கள்"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "பிறந்த நாள்கள், வார்ஷிகோஷணைகள், தன்னார்வலர்கள் மற்றும் வகைப்பாடு வடிப்பல் கொண்ட மற்ற மக்கள் பட்டியல்கள்"
 
@@ -18817,10 +18797,6 @@ msgstr "வரி பிடிப்பு செய்யப்படாத ப
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "பொது நிகழ்வுகளுக்கு அங்கீகாரம் இல்லாமல் அணுகல் அனுமதி (கலெண்டர்களை உட்பொதிப்பதற்கு)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "பொது பதிவு பக்கத்தின் மூலம் பார்வையாளர்களை தங்களின் குடும்ப பதிவுகளை உருவாக்க அனுமதி"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"

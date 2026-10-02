@@ -4559,10 +4559,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Для определения формата даты, по умолчанию: Y-m-d, например: d.m.Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Список ID людей через запятую для уведомления при добавлении новой семьи или человека"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Разрешить неавторизованное чтение событий через внешнее API календаря"
 
@@ -11008,10 +11004,6 @@ msgstr "Разрешить неаутентифицированный досту
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Разрешить посетителям создавать собственную запись семьи через страницу самостоятельной регистрации"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Разрешить посетителям самостоятельно регистрироваться как новые семьи."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18096,10 +18088,6 @@ msgid "Errors"
 msgstr "Ошибки"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Исключать умерших прихожан из печатного справочника и экспорта в CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Файлы с ошибками"
 
@@ -18628,14 +18616,6 @@ msgid "As an admin, please also review the"
 msgstr "Пожалуйста, в качестве администратора также проверьте"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Автоматически отправлять приветственное письмо на день рождения людям в день их рождения."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Письма на день рождения"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Дни рождения, годовщины, волонтеры и другие списки людей с фильтром классификации"
 
@@ -18890,10 +18870,6 @@ msgstr "Разрешить записывать не подлежащие нал
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Разрешить доступ без входа к публичным событиям (для встраивания календарей)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Разрешить посетителям создавать собственные записи семей через страницу публичной регистрации"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
