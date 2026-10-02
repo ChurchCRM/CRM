@@ -13,13 +13,15 @@ use ChurchCRM\Utils\MiscUtils;
 
 // Get and filter the classifications selected
 $aClasses = [];
-if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] !== '') {
-    foreach ($_POST['sDirClassifications'] as $Cls) {
-        $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
-    }
-    $sDirClassifications = implode(',', $aClasses);
-} else {
-    $sDirClassifications = '';
+foreach ((array) ($_POST['sDirClassifications'] ?? []) as $Cls) {
+    $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
+}
+$sDirClassifications = implode(',', $aClasses);
+
+// The browser omits an empty multi-select, and no qualifier would print everyone (the cart directory is limited by the cart instead).
+if ($aClasses === [] && !array_key_exists('cartdir', $_POST)) {
+    http_response_code(400);
+    exit(gettext('Select at least one classification to include in the directory.'));
 }
 $aHeads = [];
 foreach ($_POST['sDirRoleHead'] as $Head) {
