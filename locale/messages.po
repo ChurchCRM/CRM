@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-01 19:36+0000\n"
+"POT-Creation-Date: 2026-10-02 17:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -986,12 +986,6 @@ msgstr ""
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr ""
 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr ""
-
-msgid "Allow visitors to self-register as new families."
-msgstr ""
-
 msgid "Almost there — review your details"
 msgstr ""
 
@@ -1454,9 +1448,6 @@ msgstr ""
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr ""
 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr ""
-
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr ""
 
@@ -1747,9 +1738,6 @@ msgid "Birth Year"
 msgstr ""
 
 msgid "Birthday"
-msgstr ""
-
-msgid "Birthday Emails"
 msgstr ""
 
 msgid "Birthday Greeting Emails"
@@ -2336,6 +2324,9 @@ msgstr ""
 msgid "Checks"
 msgstr ""
 
+msgid "Child Role"
+msgstr ""
+
 msgid "Children"
 msgstr ""
 
@@ -2653,9 +2644,6 @@ msgid "Column was automatically matched to a ChurchCRM field."
 msgstr ""
 
 msgid "Columns per Page"
-msgstr ""
-
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
 msgstr ""
 
 msgid "Comma separated list of classifications that should appear as inactive"
@@ -3792,6 +3780,9 @@ msgstr ""
 msgid "Directory Reports"
 msgstr ""
 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr ""
+
 msgid "Directory reports"
 msgstr ""
 
@@ -4703,9 +4694,6 @@ msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other charac
 msgstr ""
 
 msgid "Exclude Inactive Families"
-msgstr ""
-
-msgid "Exclude deceased members from the printed directory and CSV exports."
 msgstr ""
 
 msgid "Exclude from Email Export"
@@ -6122,6 +6110,12 @@ msgstr ""
 msgid "Greenland (Kalaallit Nunaat)"
 msgstr ""
 
+msgid "Greeter Message 1"
+msgstr ""
+
+msgid "Greeter Message 2"
+msgstr ""
+
 #. Context: countries
 msgid "Grenada"
 msgstr ""
@@ -6297,6 +6291,9 @@ msgstr ""
 msgid "Head Count"
 msgstr ""
 
+msgid "Head of House Role"
+msgstr ""
+
 msgid "Head of Household Update Needed"
 msgstr ""
 
@@ -6326,16 +6323,28 @@ msgstr ""
 msgid "Here"
 msgstr ""
 
+msgid "Hide Address Without Family"
+msgstr ""
+
 msgid "Hide Age"
 msgstr ""
 
 msgid "Hide Deceased from Directory"
 msgstr ""
 
+msgid "Hide Friend Date"
+msgstr ""
+
 msgid "Hide Latitude/Longitude"
 msgstr ""
 
+msgid "Hide Newsletter Subscriptions"
+msgstr ""
+
 msgid "Hide Person Address"
+msgstr ""
+
+msgid "Hide Wedding Date"
 msgstr ""
 
 msgid "Hide advanced options"
@@ -6619,6 +6628,9 @@ msgstr ""
 msgid "Importing..."
 msgstr ""
 
+msgid "In Directory"
+msgstr ""
+
 msgid "In Use"
 msgstr ""
 
@@ -6635,6 +6647,9 @@ msgid "Inactive — cannot sign in"
 msgstr ""
 
 msgid "Include"
+msgstr ""
+
+msgid "Include Details in Notifications"
 msgstr ""
 
 msgid "Include Sunday School classes and enrollments"
@@ -8846,6 +8861,9 @@ msgstr ""
 msgid "Notes access"
 msgstr ""
 
+msgid "Notification Recipients"
+msgstr ""
+
 msgid "Notification for"
 msgstr ""
 
@@ -9367,6 +9385,9 @@ msgstr ""
 msgid "People to assign"
 msgstr ""
 
+msgid "People to notify when a new family or person is added"
+msgstr ""
+
 msgid "People who joined in a particular month"
 msgstr ""
 
@@ -9461,7 +9482,13 @@ msgstr ""
 msgid "Person has no family"
 msgstr ""
 
+msgid "Person initials style"
+msgstr ""
+
 msgid "Person is not checked in"
+msgstr ""
+
+msgid "Person name display style"
 msgstr ""
 
 msgid "Person not found"
@@ -11563,6 +11590,9 @@ msgstr ""
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr ""
 
+msgid "Spouse Role"
+msgstr ""
+
 msgid "Spring"
 msgstr ""
 
@@ -12996,6 +13026,9 @@ msgid "Upload session expired. Please upload the file again."
 msgstr ""
 
 msgid "Uploading, please wait..."
+msgstr ""
+
+msgid "Uppercase Zip/Postcodes"
 msgstr ""
 
 #. Context: countries
