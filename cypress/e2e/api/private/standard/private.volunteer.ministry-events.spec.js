@@ -517,7 +517,15 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
 
                 for (const event of titled("Faith City")) {
                     expect(event.staffing).to.have.length(1);
-                    expect(event.staffing[0]).to.include({ teamId: firstTeam.A, status: "filled", needed: 1, filled: 1, gap: 0 });
+                    expect(event.staffing[0]).to.include({
+                        teamId: firstTeam.A,
+                        status: "filled",
+                        needed: 1,
+                        filled: 1,
+                        gap: 0,
+                        openCount: 0,
+                        capacity: 1,
+                    });
                     expect(event.staffing[0].occurrenceIds).to.have.length(1);
                 }
                 for (const event of titled("Mowing")) {
@@ -525,9 +533,9 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
                 }
 
                 const gap = events.find((e) => e.id === gapEventId);
-                expect(gap.staffing[0]).to.include({ status: "gap", needed: 2, filled: 0, gap: 2 });
+                expect(gap.staffing[0]).to.include({ status: "gap", needed: 2, filled: 0, gap: 2, openCount: 2, capacity: 2 });
                 const unplanned = events.find((e) => e.id === unplannedEventId);
-                expect(unplanned.staffing[0]).to.include({ status: "unplanned", requirementCount: 0 });
+                expect(unplanned.staffing[0]).to.include({ status: "unplanned", requirementCount: 0, openCount: 0, capacity: 0 });
 
                 expect(events.every((e) => e.title.startsWith(`${PREFIX}`)), "only this ministry's events").to.eq(true);
             });

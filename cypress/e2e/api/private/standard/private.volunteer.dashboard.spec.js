@@ -581,6 +581,23 @@ describe("Volunteer v2 — the coordinator dashboard aggregate (#9711, epic #970
             });
         });
 
+        it("carries the room and capacity the Staffed badge is worded from (D34)", () => {
+            dashboard(ADMIN_KEY).then((resp) => {
+                // Espresso 1–1 with one pending, Milk Station 1–2 with nobody.
+                const near = resp.body.upcoming.find((row) => row.id === occA1Near);
+                expect(near).to.include({
+                    requiredCount: 2,
+                    capacity: 3,
+                    liveCount: 1,
+                    gapCount: 1,
+                    openCount: 2,
+                    pendingCount: 1,
+                });
+                const milk = resp.body.gaps.find((row) => row.occurrenceId === occA1Near);
+                expect(milk).to.include({ minCount: 1, maxCount: 2, gapCount: 1, openCount: 2, pendingCount: 0 });
+            });
+        });
+
         it("carries the context a row needs to be clickable", () => {
             dashboard(ADMIN_KEY).then((resp) => {
                 const gap = resp.body.gaps.find((row) => row.occurrenceId === occA1Near);

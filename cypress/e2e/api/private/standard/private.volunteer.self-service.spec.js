@@ -524,6 +524,7 @@ describe("Volunteer v2 — the member self-service surface (#9712, epic #9701)",
                 expect(row.teamName).to.contain(FIXTURE_PREFIX);
                 expect(row.start, "start comes from the linked event (D4)").to.contain("10:30:00");
                 expect(row.openCount).to.eq(2);
+                expect(row).to.include({ minCount: 1, maxCount: 2, gapCount: 1 });
             });
         });
 

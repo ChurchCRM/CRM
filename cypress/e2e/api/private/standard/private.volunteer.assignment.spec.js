@@ -843,6 +843,9 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
                 const expeditor = resp.body.requirements.find((r) => r.positionId === posExpeditor);
                 expect(expeditor.gapCount).to.eq(0);
                 expect(expeditor.openCount).to.eq(1);
+
+                // D34: the occurrence rollup carries the summed room and maximums.
+                expect(resp.body.occurrence).to.include({ requiredCount: 2, gapCount: 2, openCount: 3, capacity: 3 });
             });
 
             assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
@@ -871,6 +874,13 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
             ).then((resp) => {
                 const mine = resp.body.gaps.filter((g) => g.occurrenceId === occurrenceOne);
                 expect(mine.map((g) => g.positionId)).to.include.members([posEspresso, posMilk]);
+                expect(mine.find((g) => g.positionId === posMilk)).to.include({
+                    minCount: 1,
+                    maxCount: 1,
+                    gapCount: 1,
+                    openCount: 1,
+                    pendingCount: 0,
+                });
                 // Min 0 is not a gap.
                 expect(mine.map((g) => g.positionId)).to.not.include(posExpeditor);
                 // §4.8: never another ministry's occurrence.

@@ -385,6 +385,10 @@ describe("Member Portal — the layout of \"Find something to do\"", () => {
                 .and("contain", "Sign up");
         });
 
+        it("words the open slot like every staffing screen (D34)", () => {
+            cy.get(".volunteer-opportunity-card").first().find(".volunteer-card-needed").should("have.text", "Needs 1 more");
+        });
+
         it("still shows the 'Upcoming availability' heading above the cards, and no info box", () => {
             cy.contains("#volunteer-opportunities h3", "Upcoming availability").should("be.visible");
             cy.get("#volunteer-opportunities").should("not.contain", RETIRED_SENTENCE);

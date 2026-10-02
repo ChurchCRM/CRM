@@ -512,6 +512,8 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                         expect(row.requiredCount, "nobody is REQUIRED").to.eq(0);
                         expect(row.requirementCount, "but a plan exists").to.eq(1);
                         expect(row.gapCount).to.eq(0);
+                        expect(row.openCount, "room for the optional one").to.eq(1);
+                        expect(row.capacity).to.eq(1);
                     });
                 });
             });
@@ -607,6 +609,10 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                 expect(row.requiredCount).to.eq(6);
                 expect(row.requirementCount).to.eq(2);
                 expect(row.requirementsOverridden).to.eq(true);
+                // D34: the summed maximums and room, Lead 4–5 plus Helper 2–2, nobody assigned.
+                expect(row.capacity).to.eq(7);
+                expect(row.openCount).to.eq(7);
+                expect(row.gapCount).to.eq(6);
             });
 
             // The schedule's own plan is untouched — other occurrences still follow it.
@@ -633,6 +639,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                 // `requirementCount` answers "how many positions can take anyone".
                 expect(row.requirementCount).to.eq(1);
                 expect(row.gapCount).to.eq(1);
+                expect(row.capacity, "a Min 0 / Max 0 row adds no capacity").to.eq(1);
             });
         });
 
@@ -647,6 +654,8 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
             occurrence(occurrenceId).then((row) => {
                 expect(row.requirementCount).to.eq(0);
                 expect(row.gapCount).to.eq(0);
+                expect(row.openCount).to.eq(0);
+                expect(row.capacity).to.eq(0);
             });
         });
 

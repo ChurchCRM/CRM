@@ -13,7 +13,7 @@
  * This spec walks that exact path through the browser:
  *
  *   1. A schedule created through the schedule form, with its default staffing needs,
- *      yields occurrences showing `0/1` filled and "1 Lead Teacher" still needed —
+ *      yields occurrences reading "Needs 1 more" with "1 Lead Teacher" named as short —
  *      never "Fully staffed".
  *   2. A schedule saved with every need UNCHECKED warns in the form and its occurrences
  *      say "No staffing needs set", which is a different sentence from "Fully staffed"
@@ -448,8 +448,8 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                             cy.get("td").eq(4).invoke("text").invoke("trim").should("eq", "");
                             cy.get("td").eq(4).find(".text-red .fa-triangle-exclamation").should("exist");
                             cy.get("td").eq(4).find("[title]").invoke("attr", "title")
-                                .should("contain", "0 of 1")
-                                .and("contain", "1 ")
+                                .should("contain", "Needs 1 more")
+                                .and("contain", "0 of 1")
                                 .and("contain", "Lead Teacher");
                         });
                 });
@@ -790,7 +790,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
         it("overrides this week's needs and puts them back", () => {
             cy.visit(`/ministries/occurrences/${occurrenceId}`);
             cy.get("#requirements-loading").should("not.be.visible");
-            cy.get(".volunteer-requirement .requirement-counts").should("contain.text", "0 / 1");
+            cy.get(".volunteer-requirement .requirement-counts").should("have.text", "Needs 1 more");
 
             cy.get("#requirements-edit").click();
             cy.get("#volunteer-needs-modal").should("be.visible");
@@ -810,8 +810,8 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.get("#volunteer-needs-modal").should("not.be.visible");
             cy.get(".volunteer-requirement").should("have.length", 2);
             cy.get(`.volunteer-requirement[data-position-id="${posLead}"] .requirement-counts`).should(
-                "contain.text",
-                "0 / 3",
+                "have.text",
+                "Needs 3 more",
             );
 
             // And back again.
@@ -823,8 +823,8 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.get("#volunteer-needs-modal").should("not.be.visible");
             cy.get(".volunteer-requirement").should("have.length", 1);
             cy.get(`.volunteer-requirement[data-position-id="${posLead}"] .requirement-counts`).should(
-                "contain.text",
-                "0 / 1",
+                "have.text",
+                "Needs 1 more",
             );
 
             // Last, because cy.request() rotates the session cookie out from under the
@@ -867,8 +867,8 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.get("#volunteer-needs-modal").should("not.be.visible");
             cy.get("#requirements-empty").should("not.be.visible");
             cy.get(`.volunteer-requirement[data-position-id="${posLead}"] .requirement-counts`).should(
-                "contain.text",
-                "0 / 2",
+                "have.text",
+                "Needs 2 more",
             );
         });
 

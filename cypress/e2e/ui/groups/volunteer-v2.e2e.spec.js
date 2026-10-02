@@ -569,8 +569,7 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
                     timeout: 20000,
                 });
 
-            // Before: the amber gap banner is showing.
-            milkCard().find(".requirement-gap").should("not.have.class", "d-none");
+            milkCard().find(".requirement-counts").should("have.text", "Needs 1 more");
 
             cy.get(`.volunteer-assign-btn[data-position-id="${posMilk}"]`).click();
 
@@ -592,9 +591,8 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
             cy.get("#assign-save").click();
             cy.get("#volunteer-assign-modal").should("not.be.visible");
 
-            // After: 1 / 1 and the banner is hidden — no reload in between.
-            milkCard().find(".requirement-counts").should("contain", "1");
-            milkCard().find(".requirement-gap").should("have.class", "d-none");
+            // No reload in between.
+            milkCard().find(".requirement-counts").should("have.text", "Full · 1 of 1");
         });
 
         it("coordinator: the gap is gone from the dashboard with no manual refresh", () => {

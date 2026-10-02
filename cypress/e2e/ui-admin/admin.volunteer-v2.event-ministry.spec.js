@@ -429,8 +429,7 @@ describe("Volunteer v2 — event ministry field and Volunteers card (#9713)", ()
                 "be.visible",
             );
             cy.get("#event-volunteers-card").should("contain", MINISTRY_NAME);
-            // minCount 2, nobody assigned.
-            cy.get("#event-volunteers-card").should("contain", "2");
+            cy.get("#event-volunteers-card .volunteer-staffing-badge").should("have.text", "Needs 2 more");
             cy.get("#event-volunteers-card")
                 .find(`a[href*="/ministries/occurrences/${occurrenceId}"]`)
                 .should("exist");
