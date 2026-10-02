@@ -19004,3 +19004,83 @@ msgstr "로그인 정보가 있는 사람을 삭제할 수 있는 권한은 관�
 msgid "The last administrator cannot be deleted."
 msgstr "마지막 관리자는 삭제할 수 없습니다."
 
+#: 
+msgid "Category"
+msgstr "카테고리"
+
+#: 
+msgid "Category updated."
+msgstr "카테고리가 업데이트되었습니다."
+
+#: 
+msgid "Delete Category"
+msgstr "카테고리 삭제"
+
+#: 
+msgid "Failed to delete category"
+msgstr "카테고리 삭제 실패"
+
+#: 
+msgid "Failed to rename category"
+msgstr "카테고리 이름 변경 실패"
+
+#: 
+msgid "Fund Categories"
+msgstr "헌금 카테고리"
+
+#: 
+msgid "Fund activated."
+msgstr "헌금 기금이 활성화되었습니다."
+
+#: 
+msgid "Fund deactivated."
+msgstr "헌금 기금이 비활성화되었습니다."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "이 카테고리의 헌금은 미분류가 됩니다. 헌금 자체는 삭제되지 않습니다."
+
+#: 
+msgid "INACTIVE"
+msgstr "비활성"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "새 카테고리 이름 (기존 이름은 둘을 병합합니다)"
+
+#: 
+msgid "Optional"
+msgstr "선택 사항"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "선택 사항 — 새 카테고리를 선택하거나 입력"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "헌금 약속을 초과한 지불"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "약속했지만 아직 지불하지 않음"
+
+#: 
+msgid "Rename Category"
+msgstr "카테고리 이름 변경"
+
+#: 
+msgid "Still Owed"
+msgstr "아직 미지불"
+
+#: 
+msgid "Summary by Category"
+msgstr "카테고리별 요약"
+
+#: 
+msgid "Total Paid"
+msgstr "총 지불액"
+
+#: 
+msgid "Uncategorized"
+msgstr "미분류"
+

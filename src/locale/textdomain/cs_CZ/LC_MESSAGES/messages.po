@@ -18793,3 +18793,315 @@ msgstr "kvůli chybám v době, kdy k tomu došlo, a stáhněte a připojte př�
 msgid "system logs"
 msgstr "systémové protokoly"
 
+#: 
+msgid "Access Control & Security"
+msgstr "Přístupová kontrola a bezpečnost"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Umožnit zaznamenávání plateb, které nejsou daňově odečitatelné (např. prodej zboží)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Umožnit přístup bez přihlášení k veřejným událostem (pro vkládání kalendářů)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Umožnit návštěvníkům vytváření vlastních záznamů rodin prostřednictvím veřejné registrační stránky"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Automaticky odesílat e-maily k narozeninám (vyžaduje plánovač úloh na pozadí)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "E-maily k narozeninám"
+
+#: 
+msgid "Communication & Email"
+msgstr "Komunikace a e-mail"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Zásada zabezpečení obsahu"
+
+#: 
+msgid "Email System"
+msgstr "Systém e-mailu"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Povolení nebo zakázání funkcí pro vaši organizaci"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Povolení/zakázání sekce Události v hlavní navigaci"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Povolení/zakázání menu Finanční a všech finančních funkcí (vklady, platby, zprávy)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Povolení/zakázání menu Fundraising"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Vynucovat přísné záhlaví CSP pro ochranu před XSS útoky"
+
+#: 
+msgid "Events Module"
+msgstr "Modul Události"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Přepínače funkcí"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Přepínače funkcí řídí, které moduly a funkce jsou v ChurchCRM dostupné. Změny se projeví okamžitě."
+
+#: 
+msgid "Finance Features"
+msgstr "Finanční funkce"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Zahrnout adresy v rychlé globální vyhledávání"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Zahrnout kalendářní události v rychlé globální vyhledávání"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Zahrnout vlastní vlastnosti rodiny v rychlé globální vyhledávání"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Zahrnout vklady v rychlé globální vyhledávání"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Zahrnout rodiny v rychlé globální vyhledávání"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Zahrnout ministerstva v rychlé globální vyhledávání"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Zahrnout platby v rychlé globální vyhledávání"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Zahrnout lidi v rychlé globální vyhledávání"
+
+#: 
+msgid "Invalid setting"
+msgstr "Neplatné nastavení"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Odkaz na zapomenuté heslo"
+
+#: 
+msgid "Manage All Features"
+msgstr "Spravovat všechny funkce"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Hlavní přepínač pro odesílání e-mailů. VYŽADOVÁNO pro obnovení hesla a oznámení"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Platby, které nejsou daňově odečitatelné"
+
+#: 
+msgid "Primary Modules"
+msgstr "Primární moduly"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Veřejné API kalendáře"
+
+#: 
+msgid "Saved"
+msgstr "Uloženo"
+
+#: 
+msgid "Search Families"
+msgstr "Vyhledat rodiny"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Vyhledat vlastní vlastnosti rodiny"
+
+#: 
+msgid "Search Settings"
+msgstr "Nastavení vyhledávání"
+
+#: 
+msgid "Self-Registration"
+msgstr "Vlastní registrace"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Zobrazit možnost \"Zapomenuté heslo\" na přihlašovací obrazovce (umožňuje uživateli vlastní resetování)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Zobrazit/skrýt modul neděliské školy v bočním panelu"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Nelze deaktivovat jediného správce, který se může přihlásit"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Nelze označit jediného správce, který se může přihlásit, jako zemřelého"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Zemřelý — nemůže se přihlásit"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Zadejte druhou adresu před označením jako poštovní adresu"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Neaktivní — nemůže se přihlásit"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Pošta jde na druhou adresu; primární adresa zůstává fyzickým umístěním pro mapy a navigaci."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Pošta je odeslána na tuto adresu místo primární adresy"
+
+#: 
+msgid "Mailing Address"
+msgstr "Poštovní adresa"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Poštovní adresa, pokud se liší"
+
+#: 
+msgid "Primary Address"
+msgstr "Primární adresa"
+
+#: 
+msgid "Receives Mail"
+msgstr "Přijímá poštu"
+
+#: 
+msgid "Second Address"
+msgstr "Druhá adresa"
+
+#: 
+msgid "Second Home"
+msgstr "Druhý dům"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Propojená osoba je zemřelá nebo neaktivní. Přihlášení, relace a klíč API jsou blokovány, dokud osoba není opět aktivní."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Toto je poštovní adresa"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Tato osoba je zemřelá nebo neaktivní, takže se tento účet nemůže přihlásit"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Pouze správce může smazat osobu, která má přihlášení."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Poslední správce nelze smazat."
+
+#: 
+msgid "Category"
+msgstr "Kategorie"
+
+#: 
+msgid "Category updated."
+msgstr "Kategorie aktualizována."
+
+#: 
+msgid "Delete Category"
+msgstr "Smazat kategorii"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Nepodařilo se smazat kategorii"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Nepodařilo se přejmenovat kategorii"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategorie darů"
+
+#: 
+msgid "Fund activated."
+msgstr "Kategorie darů aktivována."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Kategorie darů deaktivována."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Dary v této kategorii budou bez kategorie. Dary samotné nejsou smazány."
+
+#: 
+msgid "INACTIVE"
+msgstr "Neaktivní"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nový název kategorie (stávající název sloučí obě)"
+
+#: 
+msgid "Optional"
+msgstr "Volitelné"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Volitelné — vyberte nebo zadejte novou kategorii"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Zaplaceno více než příslib"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Přislíbeno, ale ještě nezaplaceno"
+
+#: 
+msgid "Rename Category"
+msgstr "Přejmenovat kategorii"
+
+#: 
+msgid "Still Owed"
+msgstr "Zbývá zaplatit"
+
+#: 
+msgid "Summary by Category"
+msgstr "Souhrn podle kategorie"
+
+#: 
+msgid "Total Paid"
+msgstr "Celkem zaplaceno"
+
+#: 
+msgid "Uncategorized"
+msgstr "Bez kategorie"
+

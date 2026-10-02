@@ -18815,3 +18815,315 @@ msgstr "hibákat keressen az adott időponti körül, és töltse le valamint cs
 msgid "system logs"
 msgstr "rendszer naplók"
 
+#: 
+msgid "Access Control & Security"
+msgstr "Hozzáférés-vezérlés és biztonság"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Az adólevonás nélküli kifizetések rögzítésének engedélyezése (pl. árucikkek értékesítése)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "A nem hitelesített hozzáférés engedélyezése nyilvános eseményekhez (naptárak beágyazásához)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Az látogatók számára engedélyezi saját családi nyilvántartások létrehozását a nyilvános regisztrációs oldalon keresztül"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Születésnapi e-mailek automatikus küldése (háttér-feladat ütemezőre szükséges)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Születésnapi köszöntő e-mailek"
+
+#: 
+msgid "Communication & Email"
+msgstr "Kommunikáció és e-mail"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Tartalombiztonsági irányelv"
+
+#: 
+msgid "Email System"
+msgstr "E-mail rendszer"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Engedélyezze vagy tiltsa le a szervezet funkcióit"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Az Események szakasz engedélyezése/letiltása a fő navigációban"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "A Pénzügyek menü és az összes pénzügyi funkció engedélyezése/letiltása (betételek, kifizetések, jelentések)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Az Adománygyűjtő menü engedélyezése/letiltása"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Szigorú CSP fejlécek érvényesítése az XSS támadások elleni védelemhez"
+
+#: 
+msgid "Events Module"
+msgstr "Események modul"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Funkciók kapcsolói"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "A funkciókapcsolók szabályozzák, hogy mely modulok és funkciók érhetők el a ChurchCRM-ben. A módosítások azonnal érvénybe lépnek."
+
+#: 
+msgid "Finance Features"
+msgstr "Pénzügyi funkciók"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Címek belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Naptáresemények belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Egyéni családi tulajdonságok belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Betételek belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Családok belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Csoportok belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Kifizetések belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Emberek belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Invalid setting"
+msgstr "Érvénytelen beállítás"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Elfeledett jelszó link"
+
+#: 
+msgid "Manage All Features"
+msgstr "Az összes funkció kezelése"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "E-mail küldésre vonatkozó fő kapcsoló. SZÜKSÉGES a jelszó-visszaállítások és értesítések számára"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Nem levonható kifizetések"
+
+#: 
+msgid "Primary Modules"
+msgstr "Fő modulok"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Nyilvános naptár API"
+
+#: 
+msgid "Saved"
+msgstr "Mentve"
+
+#: 
+msgid "Search Families"
+msgstr "Családok keresése"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Családi egyéni tulajdonságok keresése"
+
+#: 
+msgid "Search Settings"
+msgstr "Keresési beállítások"
+
+#: 
+msgid "Self-Registration"
+msgstr "Önregisztráció"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "A \"Jelszót elfelejtette?\" lehetőség megjelenítése a bejelentkezési képernyőn (lehetővé teszi a felhasználó önálló visszaállítását)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "A vasárnapi iskola modul megjelenítése/elrejtése az oldalsávban"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Nem lehet deaktiválni az egyetlen bejelentkezési képességgel rendelkező rendszergazdát"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Nem lehet az egyetlen bejelentkezési képességgel rendelkező rendszergazdát elhunynak jelölni"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Elhunyt — nem tud bejelentkezni"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Adjon meg egy másik címet, mielőtt a levelezési címként jelölné meg"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Inaktív — nem tud bejelentkezni"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "A levél a másik címre megy; az elsődleges cím marad a térképekhez és útvonalkereséshez használt fizikai hely."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "A levél erre a címre kerül az elsődleges cím helyett"
+
+#: 
+msgid "Mailing Address"
+msgstr "Levelezési cím"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Levelezési cím, ha eltérő"
+
+#: 
+msgid "Primary Address"
+msgstr "Elsődleges cím"
+
+#: 
+msgid "Receives Mail"
+msgstr "Levelet kap"
+
+#: 
+msgid "Second Address"
+msgstr "Másik cím"
+
+#: 
+msgid "Second Home"
+msgstr "Másik otthon"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "A csatolt személy elhunyt vagy inaktív. A bejelentkezés, a munkamenetek és az API-kulcs le van tiltva, amíg a személyt ismét aktívvá nem teszik."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Ez a levelezési cím"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Ez a személy elhunyt vagy inaktív, ezért ez a fiók nem tud bejelentkezni"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Csak egy rendszergazda tudja törölni azt a személyt, akinek van bejelentkezése."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Az utolsó rendszergazda nem törölhető."
+
+#: 
+msgid "Category"
+msgstr "Kategória"
+
+#: 
+msgid "Category updated."
+msgstr "A kategória frissítve."
+
+#: 
+msgid "Delete Category"
+msgstr "Kategória törlése"
+
+#: 
+msgid "Failed to delete category"
+msgstr "A kategória törlése sikertelen"
+
+#: 
+msgid "Failed to rename category"
+msgstr "A kategória átnevezése sikertelen"
+
+#: 
+msgid "Fund Categories"
+msgstr "Alapforrások kategóriái"
+
+#: 
+msgid "Fund activated."
+msgstr "Az alapforrás aktiválva."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Az alapforrás kikapcsolva."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Az ebben a kategóriában lévő alapforrások kategóriázatlan lesz. Az alapforrások maguk nem törlődnek."
+
+#: 
+msgid "INACTIVE"
+msgstr "Inaktív"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Új kategória neve (egy meglévő név az osztályat egyesít)"
+
+#: 
+msgid "Optional"
+msgstr "Opcionális"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opcionális — válassz vagy írj be egy új kategóriát"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "A megígért összegen túl fizetett"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Megígért, de még nem fizetett"
+
+#: 
+msgid "Rename Category"
+msgstr "Kategória átnevezése"
+
+#: 
+msgid "Still Owed"
+msgstr "Még mindig esedékes"
+
+#: 
+msgid "Summary by Category"
+msgstr "Összegzés kategória szerint"
+
+#: 
+msgid "Total Paid"
+msgstr "Összesen fizetett"
+
+#: 
+msgid "Uncategorized"
+msgstr "Kategóriázatlan"
+

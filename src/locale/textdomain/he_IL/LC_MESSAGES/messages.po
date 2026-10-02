@@ -18791,3 +18791,315 @@ msgstr "לשגיאות סביב הזמן שזה קרה, ולהורדה ולהצ�
 msgid "system logs"
 msgstr "רישומי מערכת"
 
+#: 
+msgid "Access Control & Security"
+msgstr "בקרת גישה וביטחון"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "אפשר רישום תשלומים שלא ניתן להפחית מיסים (למשל, מכירת סחורה)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "אפשר גישה ללא הצדקה לאירועים ציבוריים (לשיבוץ לוחות שנה)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "אפשר לביקורים ליצור את רשומות המשפחה שלהם דרך דף ההרשמה הציבורי"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "שלח אימיילים ליום הולדת באופן אוטומטי (דורש מתזמן עבודה ברקע)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "אימיילים של ברכות ליום הולדת"
+
+#: 
+msgid "Communication & Email"
+msgstr "תקשורת ודואר אלקטרוני"
+
+#: 
+msgid "Content Security Policy"
+msgstr "מדיניות אבטחת תוכן"
+
+#: 
+msgid "Email System"
+msgstr "מערכת דואר אלקטרוני"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "הפוך לזמין או כבה תכונות לארגון שלך"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "הפוך לזמין/כבה את קטע האירועים בניווט הראשי"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "הפוך לזמין/כבה את תפריט הFinance וכל תכונות הממון (הפקדות, תשלומים, דוחות)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "הפוך לזמין/כבה את תפריט Fundraiser"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "אכוף כותרות CSP קפדניות להגנה מפני התקפות XSS"
+
+#: 
+msgid "Events Module"
+msgstr "מודול אירועים"
+
+#: 
+msgid "Feature Toggles"
+msgstr "החלפות תכונות"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "החלפות תכונות שולטות באילו מודולים ותכונות זמינים ב-ChurchCRM. שינויים נכנסים לתוקף מיד."
+
+#: 
+msgid "Finance Features"
+msgstr "תכונות במימון"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "כלול כתובות בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "כלול אירועי לוח שנה בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "כלול תכונות משפחה מותאמות בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "כלול הפקדות בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "כלול משפחות בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "כלול קבוצות בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "כלול תשלומים בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "כלול אנשים בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Invalid setting"
+msgstr "הגדרה לא חוקית"
+
+#: 
+msgid "Lost Password Link"
+msgstr "קישור סיסמה שנשכחה"
+
+#: 
+msgid "Manage All Features"
+msgstr "נהל את כל התכונות"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "החלפה ראשית לשליחת דואר אלקטרוני. נדרש לאיפוס סיסמה והודעות"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "תשלומים שלא ניתן להפחית"
+
+#: 
+msgid "Primary Modules"
+msgstr "מודולים ראשוניים"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Calendar API ציבורי"
+
+#: 
+msgid "Saved"
+msgstr "נשמר"
+
+#: 
+msgid "Search Families"
+msgstr "משפחות חיפוש"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "חיפוש בתכונות משפחה מותאמות"
+
+#: 
+msgid "Search Settings"
+msgstr "הגדרות חיפוש"
+
+#: 
+msgid "Self-Registration"
+msgstr "הרשמה עצמית"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "הצג אפשרות \"סיסמה שנשכחה\" על מסך הכניסה (מאפשר איפוס עצמי של המשתמש)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "הצג/הסתר את מודול בית ספר ראשון ביום ראשון בסרגל הצד"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "לא ניתן להשביח את המנהל היחיד שיכול להיכנס"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "לא ניתן לסמן את המנהל היחיד שיכול להיכנס כמת"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "מת — לא יכול להיכנס"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "הזן כתובת שנייה לפני סימונה ככתובת דואר"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "לא פעיל — לא יכול להיכנס"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "דואר הולך לכתובת השנייה; הכתובת הראשונה נשארת במיקום הפיזי המשמש למפות והוראות."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "דואר נשלח לכתובת זו במקום לכתובת הראשונה"
+
+#: 
+msgid "Mailing Address"
+msgstr "כתובת דואר"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "כתובת דואר אם שונה"
+
+#: 
+msgid "Primary Address"
+msgstr "כתובת ראשונית"
+
+#: 
+msgid "Receives Mail"
+msgstr "מקבל דואר"
+
+#: 
+msgid "Second Address"
+msgstr "כתובת שנייה"
+
+#: 
+msgid "Second Home"
+msgstr "בית שני"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "האדם המקושר מת או לא פעיל. כניסה, הפעלות ומפתח API חסומים עד שהאדם מופעל שוב."
+
+#: 
+msgid "This is the mailing address"
+msgstr "זו כתובת הדואר"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "האדם הזה מת או לא פעיל, כך שחשבון זה לא יכול להיכנס"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "רק מנהל יכול למחוק אדם שיש לו כניסה."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "לא ניתן למחוק את המנהל האחרון."
+
+#: 
+msgid "Category"
+msgstr "קטגוריה"
+
+#: 
+msgid "Category updated."
+msgstr "הקטגוריה עודכנה."
+
+#: 
+msgid "Delete Category"
+msgstr "מחק קטגוריה"
+
+#: 
+msgid "Failed to delete category"
+msgstr "נכשל מחיקת הקטגוריה"
+
+#: 
+msgid "Failed to rename category"
+msgstr "נכשלה שינוי שם הקטגוריה"
+
+#: 
+msgid "Fund Categories"
+msgstr "קטגוריות קרנות"
+
+#: 
+msgid "Fund activated."
+msgstr "הקרן הופעלה."
+
+#: 
+msgid "Fund deactivated."
+msgstr "הקרן הושבתה."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "הקרנות בקטגוריה זו יהיו ללא קטגוריה. הקרנות עצמן לא נמחקות."
+
+#: 
+msgid "INACTIVE"
+msgstr "לא פעיל"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "שם קטגוריה חדש (שם קיים משלב את השניים)"
+
+#: 
+msgid "Optional"
+msgstr "אופציונלי"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "אופציונלי — בחר או הקלד קטגוריה חדשה"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "שולם מעבר להתחייבות"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "התחייב אך עדיין לא שולם"
+
+#: 
+msgid "Rename Category"
+msgstr "שנה שם קטגוריה"
+
+#: 
+msgid "Still Owed"
+msgstr "עדיין חייב"
+
+#: 
+msgid "Summary by Category"
+msgstr "סיכום לפי קטגוריה"
+
+#: 
+msgid "Total Paid"
+msgstr "סה\"כ שולם"
+
+#: 
+msgid "Uncategorized"
+msgstr "ללא קטגוריה"
+

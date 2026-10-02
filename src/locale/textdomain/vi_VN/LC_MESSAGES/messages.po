@@ -19013,3 +19013,83 @@ msgstr "Chỉ quản trị viên mới có thể xóa một người có tên đ
 msgid "The last administrator cannot be deleted."
 msgstr "Quản trị viên cuối cùng không thể bị xóa."
 
+#: 
+msgid "Category"
+msgstr "Danh mục"
+
+#: 
+msgid "Category updated."
+msgstr "Danh mục đã được cập nhật."
+
+#: 
+msgid "Delete Category"
+msgstr "Xóa danh mục"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Không thể xóa danh mục"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Không thể đổi tên danh mục"
+
+#: 
+msgid "Fund Categories"
+msgstr "Danh mục quỹ tài chính"
+
+#: 
+msgid "Fund activated."
+msgstr "Quỹ đã được kích hoạt."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Quỹ đã bị vô hiệu hóa."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Các quỹ trong danh mục này sẽ trở thành không được phân loại. Bản thân các quỹ không bị xóa."
+
+#: 
+msgid "INACTIVE"
+msgstr "Hủy kích hoạt"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Tên danh mục mới (tên hiện có sẽ hợp nhất hai cái)"
+
+#: 
+msgid "Optional"
+msgstr "Tùy chọn"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Tùy chọn — chọn hoặc nhập danh mục mới"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Thanh toán vượt quá lời hứa"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Đã hứa nhưng chưa thanh toán"
+
+#: 
+msgid "Rename Category"
+msgstr "Đổi tên danh mục"
+
+#: 
+msgid "Still Owed"
+msgstr "Vẫn nợ"
+
+#: 
+msgid "Summary by Category"
+msgstr "Tóm tắt theo danh mục"
+
+#: 
+msgid "Total Paid"
+msgstr "Tổng thanh toán"
+
+#: 
+msgid "Uncategorized"
+msgstr "Không được phân loại"
+

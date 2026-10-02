@@ -18992,3 +18992,83 @@ msgstr "Vain järjestelmänvalvoja voi poistaa henkilön, jolla on kirjautuminen
 msgid "The last administrator cannot be deleted."
 msgstr "Viimeistä järjestelmänvalvojaa ei voi poistaa."
 
+#: 
+msgid "Category"
+msgstr "Luokka"
+
+#: 
+msgid "Category updated."
+msgstr "Luokka päivitetty."
+
+#: 
+msgid "Delete Category"
+msgstr "Poista luokka"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Luokan poistaminen epäonnistui"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Luokan nimen muuttaminen epäonnistui"
+
+#: 
+msgid "Fund Categories"
+msgstr "Rahastojen luokat"
+
+#: 
+msgid "Fund activated."
+msgstr "Rahasto aktivoitu."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Rahasto deaktivoitu."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Tässä luokassa olevat rahastot tulevat luokittelemattomiksi. Rahastoja itse ei poisteta."
+
+#: 
+msgid "INACTIVE"
+msgstr "Epäaktiivinen"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Uusi luokan nimi (olemassa oleva nimi yhdistää nämä kaksi)"
+
+#: 
+msgid "Optional"
+msgstr "Valinnainen"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Valinnainen — valitse tai kirjoita uusi luokka"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Maksettu sitoutumusta enemmän"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Luvattu mutta ei vielä maksettu"
+
+#: 
+msgid "Rename Category"
+msgstr "Vaihda luokan nimi"
+
+#: 
+msgid "Still Owed"
+msgstr "Vielä erääntynyt"
+
+#: 
+msgid "Summary by Category"
+msgstr "Yhteenveto luokittain"
+
+#: 
+msgid "Total Paid"
+msgstr "Yhteensä maksettu"
+
+#: 
+msgid "Uncategorized"
+msgstr "Ilman luokkaa"
+

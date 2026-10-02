@@ -18990,3 +18990,83 @@ msgstr "ലോഗിൻ കഴിയുന്ന വ്യക്തിയെ ഏ
 msgid "The last administrator cannot be deleted."
 msgstr "അവസാന ഭരണാധികാരിയെ വെട്ടിപ്പഴിക്കാൻ കഴിയില്ല."
 
+#: 
+msgid "Category"
+msgstr "വിഭാഗം"
+
+#: 
+msgid "Category updated."
+msgstr "വിഭാഗം അപ്‌ഡേറ്റ് ചെയ്തു."
+
+#: 
+msgid "Delete Category"
+msgstr "വിഭാഗം ഇല്ലാതാക്കുക"
+
+#: 
+msgid "Failed to delete category"
+msgstr "വിഭാഗം ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to rename category"
+msgstr "വിഭാഗത്തിന്റെ പേര് മാറ്റുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Fund Categories"
+msgstr "ഫണ്ട് വിഭാഗങ്ങൾ"
+
+#: 
+msgid "Fund activated."
+msgstr "ഫണ്ട് സജീവമാക്കി."
+
+#: 
+msgid "Fund deactivated."
+msgstr "ഫണ്ട് നിർജ്ജീവമാക്കി."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "ഈ വിഭാഗത്തിലെ ഫണ്ടുകൾ വിഭാഗീകരിക്കാത്തവയാകും. ഫണ്ടുകൾ തന്നെ ഇല്ലാതാക്കപ്പെടില്ല."
+
+#: 
+msgid "INACTIVE"
+msgstr "നിഷ്‌ക്രിയം"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "പുതിയ വിഭാഗത്തിന്റെ പേര് (നിലവിലുള്ള പേര് നൽകിയാൽ രണ്ടും ലയിക്കും)"
+
+#: 
+msgid "Optional"
+msgstr "ഓപ്ഷണൽ"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "ഓപ്ഷണൽ — ഒരു വിഭാഗം തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ പുതിയത് ടൈപ്പ് ചെയ്യുക"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "സാമ്പത്തിക പ്രതിബദ്ധതയ്ക്കപ്പുറം അടച്ചത്"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "സാമ്പത്തിക പ്രതിബദ്ധത നൽകി, പക്ഷേ ഇതുവരെ അടച്ചിട്ടില്ല"
+
+#: 
+msgid "Rename Category"
+msgstr "വിഭാഗത്തിന്റെ പേര് മാറ്റുക"
+
+#: 
+msgid "Still Owed"
+msgstr "ഇനിയും നൽകാനുള്ളത്"
+
+#: 
+msgid "Summary by Category"
+msgstr "വിഭാഗം അനുസരിച്ചുള്ള സംഗ്രഹം"
+
+#: 
+msgid "Total Paid"
+msgstr "ആകെ അടച്ചത്"
+
+#: 
+msgid "Uncategorized"
+msgstr "വിഭാഗീകരിക്കാത്തത്"
+

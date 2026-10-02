@@ -19003,3 +19003,83 @@ msgstr "Samo administrator može obrisati osobu koja ima prijavu."
 msgid "The last administrator cannot be deleted."
 msgstr "Posljednjeg administratora nije moguće obrisati."
 
+#: 
+msgid "Category"
+msgstr "Kategorija"
+
+#: 
+msgid "Category updated."
+msgstr "Kategorija ažurirana."
+
+#: 
+msgid "Delete Category"
+msgstr "Obriši kategoriju"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Greška pri brisanju kategorije"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Greška pri preimenovanju kategorije"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategorije prinosa"
+
+#: 
+msgid "Fund activated."
+msgstr "Kategorija prinosa aktivirana."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Kategorija prinosa deaktivirana."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Prinosi u ovoj kategoriji će postati bez kategorije. Samo prinosi se neće obrisati."
+
+#: 
+msgid "INACTIVE"
+msgstr "Neaktivan"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Novo ime kategorije (postojeće ime će spojiti oba)"
+
+#: 
+msgid "Optional"
+msgstr "Izbjeglivo"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Izbjeglivo — odaberite ili upišite novu kategoriju"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Plaćeno više od obaveze"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Obećano, ali još nije plaćeno"
+
+#: 
+msgid "Rename Category"
+msgstr "Preimenuj kategoriju"
+
+#: 
+msgid "Still Owed"
+msgstr "Još duguje"
+
+#: 
+msgid "Summary by Category"
+msgstr "Sažetak po kategoriji"
+
+#: 
+msgid "Total Paid"
+msgstr "Ukupno plaćeno"
+
+#: 
+msgid "Uncategorized"
+msgstr "Bez kategorije"
+

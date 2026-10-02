@@ -18974,3 +18974,83 @@ msgstr "ログイン情報を持つ人を削除できるのは管理者だけで
 msgid "The last administrator cannot be deleted."
 msgstr "最後の管理者は削除できません。"
 
+#: 
+msgid "Category"
+msgstr "カテゴリ"
+
+#: 
+msgid "Category updated."
+msgstr "カテゴリが更新されました。"
+
+#: 
+msgid "Delete Category"
+msgstr "カテゴリを削除"
+
+#: 
+msgid "Failed to delete category"
+msgstr "カテゴリの削除に失敗しました"
+
+#: 
+msgid "Failed to rename category"
+msgstr "カテゴリの名前変更に失敗しました"
+
+#: 
+msgid "Fund Categories"
+msgstr "献金カテゴリ"
+
+#: 
+msgid "Fund activated."
+msgstr "献金が有効化されました。"
+
+#: 
+msgid "Fund deactivated."
+msgstr "献金が無効化されました。"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "このカテゴリの献金は未分類になります。献金自体は削除されません。"
+
+#: 
+msgid "INACTIVE"
+msgstr "非アクティブ"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "新しいカテゴリ名（既存の名前は2つをマージします）"
+
+#: 
+msgid "Optional"
+msgstr "オプション"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "オプション — 新しいカテゴリを選択または入力"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "誓約を超えた支払い"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "誓約されたが未払い"
+
+#: 
+msgid "Rename Category"
+msgstr "カテゴリを名前変更"
+
+#: 
+msgid "Still Owed"
+msgstr "未払い額"
+
+#: 
+msgid "Summary by Category"
+msgstr "カテゴリ別サマリ"
+
+#: 
+msgid "Total Paid"
+msgstr "支払合計"
+
+#: 
+msgid "Uncategorized"
+msgstr "未分類"
+

@@ -19033,3 +19033,83 @@ msgstr "ተመሪ ብቻ ውስጥ መግባት ሰው ይሰርዙ ይችላሉ
 msgid "The last administrator cannot be deleted."
 msgstr "የመጨረሻው ተመሪ ሊስረዝ አይችልም."
 
+#: 
+msgid "Category"
+msgstr "ምድብ"
+
+#: 
+msgid "Category updated."
+msgstr "ምድብ ተዘምኗል።"
+
+#: 
+msgid "Delete Category"
+msgstr "ምድብ ሰርዝ"
+
+#: 
+msgid "Failed to delete category"
+msgstr "ምድብን መሰረዝ አልተሳካም"
+
+#: 
+msgid "Failed to rename category"
+msgstr "ምድብን እንደገና መሰየም አልተሳካም"
+
+#: 
+msgid "Fund Categories"
+msgstr "የፈንድ ምድቦች"
+
+#: 
+msgid "Fund activated."
+msgstr "ፈንድ ነቅቷል።"
+
+#: 
+msgid "Fund deactivated."
+msgstr "ፈንድ ቦዝኗል።"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "በዚህ ምድብ ውስጥ ያሉ ፈንዶች ያልተመደቡ ይሆናሉ። ፈንዶቹ ራሳቸው አይሰረዙም።"
+
+#: 
+msgid "INACTIVE"
+msgstr "እንቅስቃሴ-አልባ"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "አዲስ የምድብ ስም (ነባር ስም ከተጠቀሙ ሁለቱ ይዋሃዳሉ)"
+
+#: 
+msgid "Optional"
+msgstr "አማራጭ"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "አማራጭ — ምድብ ይምረጡ ወይም አዲስ ይጻፉ"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "ከገባው የገንዘብ ቃል ኪዳን በላይ የተከፈለ"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "የገንዘብ ቃል ኪዳን የተገባ ግን ገና ያልተከፈለ"
+
+#: 
+msgid "Rename Category"
+msgstr "ምድብን እንደገና ሰይም"
+
+#: 
+msgid "Still Owed"
+msgstr "አሁንም የሚቀረው ዕዳ"
+
+#: 
+msgid "Summary by Category"
+msgstr "በምድብ ማጠቃለያ"
+
+#: 
+msgid "Total Paid"
+msgstr "ጠቅላላ የተከፈለ"
+
+#: 
+msgid "Uncategorized"
+msgstr "ያልተመደበ"
+
