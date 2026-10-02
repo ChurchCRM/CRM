@@ -5,11 +5,11 @@ use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerRequirement;
+use ChurchCRM\model\ChurchCRM\VolunteerRequirementDefault;
 use ChurchCRM\model\ChurchCRM\VolunteerRequirementQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
@@ -115,7 +115,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
             ]));
         $schedule->delete('', 'deleteVolunteerSchedule');
 
-        // `defaults` (a nested array) has no sanitizer type; VolunteerAssignmentService
+        // `requirements` (a nested array) has no sanitizer type; VolunteerScheduleService
         // validates each row itself. `through` is still proved here.
         $schedule->post('/generate', 'generateVolunteerOccurrences')
             ->add(new InputSanitizationMiddleware(['through' => 'date?']));
@@ -321,8 +321,7 @@ function volunteerOccurrenceGapList(array $counts): array
 function volunteerRequirementToArray(VolunteerRequirement $requirement, array $counts = []): array
 {
     $position = VolunteerPositionQuery::create()->findPk((int) $requirement->getPositionId());
-    $defaultPersonId = $requirement->getDefaultPersonId() === null ? null : (int) $requirement->getDefaultPersonId();
-    $defaultPerson = $defaultPersonId === null ? null : PersonQuery::create()->findPk($defaultPersonId);
+    $positionId = (int) $requirement->getPositionId();
 
     return [
         'id' => (int) $requirement->getId(),
@@ -334,14 +333,20 @@ function volunteerRequirementToArray(VolunteerRequirement $requirement, array $c
         'maxCount' => $requirement->getMaxCount() === null ? null : (int) $requirement->getMaxCount(),
         'notes' => $requirement->getNotes(),
         'source' => $requirement->getOccurrenceId() === null ? 'schedule' : 'occurrence',
-        // D32: the schedule's default volunteer for this position; `defaultQualified` is false
-        // while their qualification is revoked, when generation leaves the position open.
-        'defaultPersonId' => $defaultPersonId,
-        'defaultPersonName' => $defaultPerson?->getFullName(),
-        'defaultAccepted' => $defaultPersonId !== null && (bool) $requirement->getDefaultAccepted(),
-        'defaultQualified' => $defaultPersonId === null
-            ? null
-            : VolunteerScheduleService::holdsQualification($defaultPersonId, (int) $requirement->getPositionId()),
+        // D32/D35: the schedule's default volunteers for this position, in the order they are
+        // assigned; `qualified` is false while one's qualification is revoked, when generation
+        // leaves that slot open. An occurrence's override has none.
+        'defaults' => array_map(
+            static fn (VolunteerRequirementDefault $default): array => [
+                'personId' => (int) $default->getPersonId(),
+                'name' => $default->getPerson()?->getFullName(),
+                'accepted' => (bool) $default->getAccepted(),
+                'setBy' => $default->getSetByPersonId() === null ? null : (int) $default->getSetByPersonId(),
+                'setByName' => $default->getSetByPerson()?->getFullName(),
+                'qualified' => VolunteerScheduleService::holdsQualification((int) $default->getPersonId(), $positionId),
+            ],
+            (new VolunteerScheduleService())->defaultsOf($requirement)
+        ),
         // Same rule as the occurrence shape: the counts arrive from getGaps(), they are
         // never derived here (#9709, §2.11.3).
         'liveCount' => (int) ($counts['liveCount'] ?? 0),
@@ -508,14 +513,20 @@ function listVolunteerTeamSchedules(Request $request, Response $response): Respo
  *                 @OA\Property(property="positionId", type="integer"),
  *                 @OA\Property(property="minCount", type="integer", example=1),
  *                 @OA\Property(property="maxCount", type="integer", nullable=true, example=1),
- *                 @OA\Property(property="notes", type="string", nullable=true)
+ *                 @OA\Property(property="notes", type="string", nullable=true),
+ *                 @OA\Property(property="defaults", type="array", description="D32/D35: the position's default volunteers in the order they are assigned. Absent keeps the stored ones, an empty list clears them. At most the position's Max (its Min when Max is blank), never more than 50, each person once; a new one must hold an active qualification, a stored one named again is kept even when it no longer does. The removed defaultPersonId and defaultAccepted fields are refused (400).",
+ *                     @OA\Items(type="object", required={"personId"},
+ *                         @OA\Property(property="personId", type="integer"),
+ *                         @OA\Property(property="accepted", type="boolean", description="Recorded as accepted instead of being asked to respond. Left out: the stored flag, false for a new default")
+ *                     )
+ *                 )
  *             )
  *         )
  *     )),
- *     @OA\Response(response=400, description="A design section 2.8 invariant was violated: a missing or unknown event type or group, a missing title, no upcoming event that matches (D31), an offset outside +/-720, an eventId, or a removed field"),
+ *     @OA\Response(response=400, description="A design section 2.8 invariant was violated: a missing or unknown event type or group, a missing title, no upcoming event that matches (D31), an offset outside +/-720, an eventId, or a removed field; or a staffing need with more default volunteers than its Max, or one person twice"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized: you neither administer this ministry nor lead the team named by teamId (design section 4.6), or V2 is not enabled"),
- *     @OA\Response(response=404, description="No such ministry"),
+ *     @OA\Response(response=403, description="Not authorized: you neither administer this ministry nor lead the team named by teamId (design section 4.6), a new default volunteer is not qualified, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry, or a default volunteer names an unknown person"),
  *     @OA\Response(response=201, description="Created, with its occurrences generated",
  *         @OA\JsonContent(
  *             @OA\Property(property="schedule", type="object"),
@@ -734,22 +745,27 @@ function listVolunteerScheduleEligiblePeople(Request $request, Response $respons
  *     path="/ministries/schedules/{scheduleId}/generate",
  *     operationId="generateVolunteerOccurrences",
  *     summary="Materialise this schedule's occurrences up to a date",
- *     description="Idempotent. Attaches one occurrence to each active event the schedule follows (by type, class, ministry or the one event) inside the window, from today up to the scheduling horizon (D31; a Staff this event schedule is not capped by it). No calendar event is ever created or changed. `defaults` (D32) is saved on the schedule's staffing needs first — one entry per position, a blank personId clearing that position's default — and then every saved default is assigned on the occurrences THIS run creates (never on ones an earlier run made), while its person holds an active qualification; with accepted=true they are recorded as having accepted and are not asked to respond. Without `defaults` the saved ones are assigned unchanged.",
+ *     description="Idempotent. Attaches one occurrence to each active event the schedule follows (by type, class, ministry or the one event) inside the window, from today up to the scheduling horizon (D31; a Staff this event schedule is not capped by it). No calendar event is ever created or changed. `requirements[].defaults` (D32, D35) is saved on the schedule's staffing needs first — per position, the whole list in the order they are assigned, an empty list clearing it, a position left out keeping its own; the counts are not changed — and then every saved default is assigned, in that order, on the occurrences THIS run creates (never on ones an earlier run made), while its person holds an active qualification; with accepted=true they are recorded as having accepted and are not asked to respond. Without `requirements` the saved ones are assigned unchanged. The old `defaults` key is refused (400).",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="scheduleId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=false, @OA\JsonContent(
  *         @OA\Property(property="through", type="string", format="date", nullable=true,
  *             description="Defaults to, and may not go past, today plus the scheduling horizon (iVolunteerSchedulingHorizonWeeks); the schedule's last date caps it too"),
- *         @OA\Property(property="defaults", type="array", @OA\Items(type="object",
- *             @OA\Property(property="positionId", type="integer"),
- *             @OA\Property(property="personId", type="integer", nullable=true, description="Blank or null: no default for this position"),
- *             @OA\Property(property="accepted", type="boolean")
+ *         @OA\Property(property="requirements", type="array", @OA\Items(type="object",
+ *             required={"positionId"},
+ *             @OA\Property(property="positionId", type="integer", description="A position this schedule's staffing needs ask for"),
+ *             @OA\Property(property="defaults", type="array", description="The position's default volunteers in the order they are assigned; at most its Max (its Min when Max is blank), and never more than 50",
+ *                 @OA\Items(type="object", required={"personId"},
+ *                     @OA\Property(property="personId", type="integer"),
+ *                     @OA\Property(property="accepted", type="boolean", description="Left out: the stored flag, false for a new default")
+ *                 )
+ *             )
  *         ))
  *     )),
- *     @OA\Response(response=400, description="Malformed date, the run would exceed the occurrence cap, or a default names a position this schedule's staffing needs do not ask for"),
+ *     @OA\Response(response=400, description="Malformed date, the run would exceed the occurrence cap, the old defaults key, a position this schedule's staffing needs do not ask for, a person named twice, or more defaults than the position's Max"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this schedule, a default is not qualified, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Not authorized for this schedule, a new default is not qualified, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such schedule, or a default names an unknown person"),
  *     @OA\Response(response=200, description="OK",
  *         @OA\JsonContent(
@@ -789,10 +805,16 @@ function generateVolunteerOccurrences(Request $request, Response $response): Res
         $through = DateTimeUtils::createDateTime((string) $input['through']);
     }
 
-    $defaults = isset($input['defaults']) && is_array($input['defaults']) ? array_values($input['defaults']) : null;
+    if (array_key_exists('defaults', $input)) {
+        return SlimUtils::renderErrorJSON($response, gettext('Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]'), [], 400, null, $request);
+    }
+    if (array_key_exists('requirements', $input) && !is_array($input['requirements'])) {
+        return SlimUtils::renderErrorJSON($response, gettext('The staffing needs must be a list'), [], 400, null, $request);
+    }
+    $requirements = isset($input['requirements']) ? array_values($input['requirements']) : null;
 
     try {
-        $result = (new VolunteerAssignmentService())->generateWithDefaults($schedule, $through, $defaults, AuthenticationManager::getCurrentUser());
+        $result = (new VolunteerAssignmentService())->generateWithDefaults($schedule, $through, $requirements, AuthenticationManager::getCurrentUser());
     } catch (VolunteerException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
     } catch (\RuntimeException | \InvalidArgumentException $e) {
@@ -834,7 +856,21 @@ function volunteerGenerateResultToArray(array $result, VolunteerSchedule $schedu
  *     @OA\Response(response=403, description="Not authorized for this schedule, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such schedule"),
  *     @OA\Response(response=200, description="OK",
- *         @OA\JsonContent(@OA\Property(property="requirements", type="array", @OA\Items(type="object")))
+ *         @OA\JsonContent(@OA\Property(property="requirements", type="array", @OA\Items(type="object",
+ *             @OA\Property(property="positionId", type="integer"),
+ *             @OA\Property(property="minCount", type="integer"),
+ *             @OA\Property(property="maxCount", type="integer", nullable=true),
+ *             @OA\Property(property="defaults", type="array", description="D32/D35: the default volunteers, in the order they are assigned",
+ *                 @OA\Items(type="object",
+ *                     @OA\Property(property="personId", type="integer"),
+ *                     @OA\Property(property="name", type="string"),
+ *                     @OA\Property(property="accepted", type="boolean"),
+ *                     @OA\Property(property="setBy", type="integer", nullable=true, description="Who chose the default; the daily top-up assigns in their name"),
+ *                     @OA\Property(property="setByName", type="string", nullable=true),
+ *                     @OA\Property(property="qualified", type="boolean", description="False while the qualification is revoked: generation then leaves the slot open")
+ *                 )
+ *             )
+ *         )))
  *     )
  * )
  */
@@ -868,7 +904,7 @@ function listVolunteerScheduleRequirements(Request $request, Response $response)
  *         @OA\Property(property="maxCount", type="integer", nullable=true, example=1),
  *         @OA\Property(property="notes", type="string", nullable=true)
  *     )),
- *     @OA\Response(response=400, description="Unknown position, or counts out of range"),
+ *     @OA\Response(response=400, description="Unknown position, counts out of range, or a Max below the number of default volunteers the need already has (D35)"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this schedule, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such schedule"),

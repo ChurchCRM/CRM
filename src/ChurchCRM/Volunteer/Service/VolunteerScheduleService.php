@@ -20,6 +20,8 @@ use ChurchCRM\model\ChurchCRM\VolunteerPosition;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualificationQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerRequirement;
+use ChurchCRM\model\ChurchCRM\VolunteerRequirementDefault;
+use ChurchCRM\model\ChurchCRM\VolunteerRequirementDefaultQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerRequirementQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
@@ -82,6 +84,9 @@ class VolunteerScheduleService
 
     /** `group_grp.grp_Type` of a Sunday School class (list_lst 3, option 4). */
     public const SUNDAY_SCHOOL_GROUP_TYPE = 4;
+
+    /** The most default volunteers one staffing need may name, whatever its Max (D35). */
+    public const MAX_DEFAULTS = 50;
 
     /** The removed standalone mode's fields. A payload naming one is refused, never ignored (D20). */
     private const RETIRED_FIELDS = ['recurType', 'recurDow', 'recurDom', 'startTime', 'endTime'];
@@ -1388,6 +1393,9 @@ class VolunteerScheduleService
      * this an upsert rather than an insert: re-posting the same position updates the counts
      * on the existing row instead of failing with a duplicate.
      *
+     * A schedule's row may not end up with more default volunteers than its counts allow
+     * (D35): `$defaultCount` is how many it will have, null for the ones it has now.
+     *
      * @throws \RuntimeException
      */
     public function upsertRequirement(
@@ -1396,7 +1404,8 @@ class VolunteerScheduleService
         VolunteerPosition $position,
         int $minCount,
         ?int $maxCount = null,
-        ?string $notes = null
+        ?string $notes = null,
+        ?int $defaultCount = null
     ): VolunteerRequirement {
         if (($schedule === null) === ($occurrence === null)) {
             throw new \RuntimeException(gettext('A staffing requirement belongs to exactly one of a schedule or an occurrence'));
@@ -1426,6 +1435,9 @@ class VolunteerScheduleService
 
         $requirement = $query->findOneOrCreate();
         $wasNew = $requirement->isNew();
+        if ($schedule !== null) {
+            $this->assertDefaultsFit($position, $minCount, $maxCount, $defaultCount ?? $this->countDefaults($requirement));
+        }
 
         $requirement->setScheduleId($schedule === null ? null : (int) $schedule->getId());
         $requirement->setOccurrenceId($occurrence === null ? null : (int) $occurrence->getId());
@@ -1460,10 +1472,11 @@ class VolunteerScheduleService
      * An empty `$rows` is legal and means "nothing is needed here" — the schedule form
      * warns about it, the service does not refuse it.
      *
-     * A schedule's rows may also carry its default volunteer (D32): `defaultPersonId` (null
-     * clears it; absent keeps the stored one) and `defaultAccepted`. An occurrence's may not.
+     * A schedule's rows may also carry its default volunteers (D32, D35): `defaults`, a list
+     * of {personId, accepted?} in the order they are assigned — `[]` clears them, an absent
+     * key keeps the stored ones. An occurrence's rows may not.
      *
-     * @param mixed $rows list of {positionId, minCount, maxCount?, notes?, defaultPersonId?, defaultAccepted?}
+     * @param mixed $rows list of {positionId, minCount, maxCount?, notes?, defaults?}
      *
      * @return VolunteerRequirement[] the resulting rows, in the order they were given
      *
@@ -1509,8 +1522,21 @@ class VolunteerScheduleService
                 ? (int) $row['maxCount']
                 : null;
 
-            if ($occurrence !== null && !empty($row['defaultPersonId'])) {
+            if (array_key_exists('defaultPersonId', $row) || array_key_exists('defaultAccepted', $row)) {
+                throw VolunteerException::invalid(gettext('A staffing need lists its default volunteers in "defaults": [{personId, accepted}]'));
+            }
+            if ($occurrence !== null && !empty($row['defaults'])) {
                 throw VolunteerException::invalid(gettext('A default volunteer belongs to the schedule\'s staffing needs, not to one occurrence'));
+            }
+
+            $defaults = null;
+            if ($schedule !== null) {
+                $stored = $this->templateRequirement($schedule, $positionId);
+                $defaults = array_key_exists('defaults', $row) ? $this->parseDefaults($row['defaults'], $position, $stored) : null;
+                $this->assertDefaultsFit($position, (int) $row['minCount'], $maxCount, $defaults === null ? $this->countDefaults($stored) : count($defaults));
+                if ($defaults !== null) {
+                    $this->assertNewDefaultsQualified($defaults, $position, $stored);
+                }
             }
 
             $wanted[$positionId] = [
@@ -1520,7 +1546,7 @@ class VolunteerScheduleService
                 // The route sanitizer is declarative and per-field; a nested array never
                 // passes through it, so the notes of a nested row are sanitized here.
                 'notes' => isset($row['notes']) ? InputUtils::sanitizeText((string) $row['notes']) : null,
-                'default' => $schedule === null ? null : $this->readDefault($row, $positionId, $this->templateRequirement($schedule, $positionId)),
+                'defaults' => $defaults,
             ];
         }
 
@@ -1532,10 +1558,11 @@ class VolunteerScheduleService
                 $entry['position'],
                 $entry['minCount'],
                 $entry['maxCount'],
-                $entry['notes']
+                $entry['notes'],
+                $entry['defaults'] === null ? null : count($entry['defaults'])
             );
-            if ($entry['default'] !== null) {
-                $this->writeDefault($requirement, $entry['default'], $actor);
+            if ($entry['defaults'] !== null) {
+                $this->writeDefaults($requirement, $entry['defaults'], $actor);
             }
             $result[] = $requirement;
         }
@@ -1553,37 +1580,73 @@ class VolunteerScheduleService
     }
 
     /**
-     * D32: the default volunteers the Generate dialog names, saved on
-     * the schedule's staffing needs — a blank person clears that position's. Each position
-     * must be one the needs ask for, because the default lives on that need. Nothing is
-     * written unless every entry is valid.
+     * D32/D35: the default volunteers the Generate dialog names, saved on the schedule's
+     * staffing needs — `requirements: [{positionId, defaults: [{personId, accepted?}]}]`, an
+     * empty list clearing that position's, a position left out keeping its own. Each position
+     * must be one the needs ask for, because the defaults live on that need; the counts are
+     * not changed here. Nothing is written unless every entry is valid.
      *
-     * @param array<int, mixed> $defaults list of {positionId, personId, accepted?}
+     * @param array<int, mixed> $requirements
      *
      * @throws VolunteerException
      */
-    public function saveDefaults(VolunteerSchedule $schedule, array $defaults, User $actor): void
+    public function saveDefaults(VolunteerSchedule $schedule, array $requirements, User $actor): void
     {
         $plan = [];
-        foreach ($defaults as $default) {
-            if (!is_array($default)) {
-                throw VolunteerException::invalid(gettext('Each default volunteer must name a position'));
+        $seen = [];
+        foreach ($requirements as $entry) {
+            if (!is_array($entry)) {
+                throw VolunteerException::invalid(gettext('Each staffing need must name a position'));
             }
-            $positionId = (int) ($default['positionId'] ?? 0);
+            $positionId = (int) ($entry['positionId'] ?? 0);
+            if (isset($seen[$positionId])) {
+                throw VolunteerException::invalid(gettext('The same position is listed twice in the staffing needs'));
+            }
+            $seen[$positionId] = true;
             $requirement = $this->templateRequirement($schedule, $positionId);
             if ($requirement === null) {
                 throw VolunteerException::invalid(gettext('A default volunteer can only be chosen for a position this schedule\'s staffing needs ask for'));
             }
-            $plan[] = [$requirement, $this->readDefault(
-                ['defaultPersonId' => $default['personId'] ?? null, 'defaultAccepted' => $default['accepted'] ?? false],
-                $positionId,
-                $requirement
-            )];
+            if (!array_key_exists('defaults', $entry)) {
+                continue;
+            }
+            $position = VolunteerPositionQuery::create()->findPk($positionId);
+            $choices = $this->parseDefaults($entry['defaults'], $position, $requirement);
+            $this->assertDefaultsFit(
+                $position,
+                (int) $requirement->getMinCount(),
+                $requirement->getMaxCount() === null ? null : (int) $requirement->getMaxCount(),
+                count($choices)
+            );
+            $this->assertNewDefaultsQualified($choices, $position, $requirement);
+            $plan[$positionId] = [$requirement, $choices];
         }
 
-        foreach ($plan as [$requirement, $choice]) {
-            $this->writeDefault($requirement, $choice, $actor);
+        foreach ($plan as [$requirement, $choices]) {
+            $this->writeDefaults($requirement, $choices, $actor);
         }
+    }
+
+    /**
+     * A template requirement's default volunteers in the order they are assigned (D35); none
+     * for an occurrence's override or a row not saved yet.
+     *
+     * @return VolunteerRequirementDefault[]
+     */
+    public function defaultsOf(?VolunteerRequirement $requirement): array
+    {
+        if ($requirement === null || $requirement->isNew() || $requirement->getScheduleId() === null) {
+            return [];
+        }
+
+        return iterator_to_array(
+            VolunteerRequirementDefaultQuery::create()
+                ->filterByRequirementId((int) $requirement->getId())
+                ->orderBySort()
+                ->orderById()
+                ->find(),
+            false
+        );
     }
 
     /** Whether a person may be assigned to a position at all (I2): an active qualification. */
@@ -1609,79 +1672,167 @@ class VolunteerScheduleService
             ->findOne();
     }
 
-    /**
-     * One row's default as asked for, or null when the row does not mention it. A NEW choice
-     * must be a person holding an active qualification for the position; the stored default,
-     * named again, is kept as it is even after that qualification was revoked — it is not a
-     * new choice, and generation leaves it open until they qualify again.
-     *
-     * @param array<string, mixed> $row
-     *
-     * @return array{personId: ?int, accepted: bool}|null
-     *
-     * @throws VolunteerException
-     */
-    private function readDefault(array $row, int $positionId, ?VolunteerRequirement $stored): ?array
+    private function countDefaults(?VolunteerRequirement $requirement): int
     {
-        if (!array_key_exists('defaultPersonId', $row)) {
-            return null;
+        if ($requirement === null || $requirement->isNew()) {
+            return 0;
         }
 
-        $raw = $row['defaultPersonId'];
-        $personId = null;
-        if ($raw !== null && $raw !== '' && (string) $raw !== '0') {
+        return VolunteerRequirementDefaultQuery::create()
+            ->filterByRequirementId((int) $requirement->getId())
+            ->count();
+    }
+
+    /**
+     * D35: a need takes no more default volunteers than it has room for — its Max, or its Min
+     * when Max is blank, as the capacity of an occurrence reads them (§2.10).
+     *
+     * @throws VolunteerException 400
+     */
+    private function assertDefaultsFit(VolunteerPosition $position, int $minCount, ?int $maxCount, int $chosen): void
+    {
+        $max = $maxCount ?? $minCount;
+        if ($chosen > min(max($max, 0), self::MAX_DEFAULTS)) {
+            throw VolunteerException::invalid(sprintf(
+                gettext('%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.'),
+                $position->getName(),
+                $max,
+                $chosen
+            ));
+        }
+    }
+
+    /**
+     * One need's default volunteers as asked for, in order: a blank entry is skipped, a person
+     * named twice or more than MAX_DEFAULTS of them is refused. `accepted` left out keeps the
+     * stored flag. Who may be chosen is {@see self::assertNewDefaultsQualified()}'s question.
+     *
+     * @return array<int, array{personId: int, accepted: bool}>
+     *
+     * @throws VolunteerException 400
+     */
+    private function parseDefaults(mixed $list, VolunteerPosition $position, ?VolunteerRequirement $stored): array
+    {
+        if ($list === null) {
+            return [];
+        }
+        if (!is_array($list)) {
+            throw VolunteerException::invalid(gettext('The default volunteers must be a list'));
+        }
+        if (count($list) > self::MAX_DEFAULTS) {
+            throw VolunteerException::invalid(sprintf(gettext('At most %d default volunteers can be chosen for one position'), self::MAX_DEFAULTS));
+        }
+
+        $storedAccepted = [];
+        foreach ($this->defaultsOf($stored) as $default) {
+            $storedAccepted[(int) $default->getPersonId()] = (bool) $default->getAccepted();
+        }
+
+        $choices = [];
+        foreach ($list as $entry) {
+            if (!is_array($entry)) {
+                throw VolunteerException::invalid(gettext('Each default volunteer must name a person'));
+            }
+            $raw = $entry['personId'] ?? null;
+            if ($raw === null || $raw === '' || (string) $raw === '0') {
+                continue;
+            }
             if (!is_numeric($raw) || (int) $raw <= 0) {
                 throw VolunteerException::invalid(gettext('The default volunteer must be a person'));
             }
             $personId = (int) $raw;
-        }
-
-        $unchanged = $personId !== null
-            && $stored !== null
-            && $stored->getDefaultPersonId() !== null
-            && (int) $stored->getDefaultPersonId() === $personId;
-
-        if ($personId !== null && !$unchanged) {
-            if (PersonQuery::create()->findPk($personId) === null) {
-                throw VolunteerException::notFound(gettext('Person not found'));
+            if (isset($choices[$personId])) {
+                throw VolunteerException::invalid(sprintf(
+                    gettext('%s: the same person is chosen twice as a default volunteer'),
+                    $position->getName()
+                ));
             }
-            if (!self::holdsQualification($personId, $positionId)) {
-                throw VolunteerException::forbidden(gettext('That person is not qualified for this position'));
-            }
+
+            $choices[$personId] = [
+                'personId' => $personId,
+                'accepted' => array_key_exists('accepted', $entry)
+                    ? filter_var($entry['accepted'], FILTER_VALIDATE_BOOLEAN)
+                    : $storedAccepted[$personId] ?? false,
+            ];
         }
 
-        $accepted = false;
-        if ($personId !== null) {
-            $accepted = array_key_exists('defaultAccepted', $row)
-                ? filter_var($row['defaultAccepted'], FILTER_VALIDATE_BOOLEAN)
-                : $unchanged && (bool) $stored->getDefaultAccepted();
-        }
-
-        return ['personId' => $personId, 'accepted' => $accepted];
+        return array_values($choices);
     }
 
     /**
-     * @param array{personId: ?int, accepted: bool} $choice
+     * A NEW default must be a person holding an active qualification for the position; a
+     * stored default, named again, is kept as it is even after that qualification was
+     * revoked — it is not a new choice, and generation leaves its place open until they
+     * qualify again.
+     *
+     * @param array<int, array{personId: int, accepted: bool}> $choices
+     *
+     * @throws VolunteerException 404 for an unknown person, 403 for one not qualified
      */
-    private function writeDefault(VolunteerRequirement $requirement, array $choice, ?User $actor): void
+    private function assertNewDefaultsQualified(array $choices, VolunteerPosition $position, ?VolunteerRequirement $stored): void
     {
-        $storedPerson = $requirement->getDefaultPersonId() === null ? null : (int) $requirement->getDefaultPersonId();
-        if ($storedPerson === $choice['personId'] && (bool) $requirement->getDefaultAccepted() === $choice['accepted']) {
-            return;
+        $kept = array_map(static fn (VolunteerRequirementDefault $default): int => (int) $default->getPersonId(), $this->defaultsOf($stored));
+        foreach ($choices as $choice) {
+            if (in_array($choice['personId'], $kept, true)) {
+                continue;
+            }
+            if (PersonQuery::create()->findPk($choice['personId']) === null) {
+                throw VolunteerException::notFound(gettext('Person not found'));
+            }
+            if (!self::holdsQualification($choice['personId'], (int) $position->getId())) {
+                throw VolunteerException::forbidden(gettext('That person is not qualified for this position'));
+            }
+        }
+    }
+
+    /**
+     * Make a need's stored defaults match `$choices` exactly, keeping each surviving row. Who
+     * set a default changes only when the person or the accepted flag does: the daily top-up
+     * assigns in that person's name.
+     *
+     * @param array<int, array{personId: int, accepted: bool}> $choices
+     */
+    private function writeDefaults(VolunteerRequirement $requirement, array $choices, ?User $actor): void
+    {
+        $stored = [];
+        foreach ($this->defaultsOf($requirement) as $default) {
+            $stored[(int) $default->getPersonId()] = $default;
+        }
+        $wanted = array_flip(array_column($choices, 'personId'));
+
+        $changed = false;
+        foreach ($stored as $personId => $default) {
+            if (!isset($wanted[$personId])) {
+                $default->delete();
+                $changed = true;
+            }
         }
 
-        $requirement->setDefaultPersonId($choice['personId']);
-        $requirement->setDefaultAccepted($choice['accepted']);
-        $requirement->setDefaultSetByPersonId($choice['personId'] === null || $actor === null ? null : (int) $actor->getId());
-        $requirement->save();
+        foreach ($choices as $sort => $choice) {
+            $default = $stored[$choice['personId']] ?? null;
+            if ($default !== null && (bool) $default->getAccepted() === $choice['accepted'] && (int) $default->getSort() === $sort) {
+                continue;
+            }
+            if ($default === null || (bool) $default->getAccepted() !== $choice['accepted']) {
+                $default ??= (new VolunteerRequirementDefault())
+                    ->setRequirementId((int) $requirement->getId())
+                    ->setPersonId($choice['personId']);
+                $default->setSetByPersonId($actor === null ? null : (int) $actor->getId());
+            }
+            $default->setAccepted($choice['accepted']);
+            $default->setSort($sort);
+            $default->save();
+            $changed = true;
+        }
 
-        $this->logger->info('Volunteer schedule default set', [
-            'scheduleId' => $requirement->getScheduleId(),
-            'positionId' => $requirement->getPositionId(),
-            'personId' => $choice['personId'],
-            'accepted' => $choice['accepted'],
-            'actorPersonId' => $actor?->getId(),
-        ]);
+        if ($changed) {
+            $this->logger->info('Volunteer schedule defaults set', [
+                'scheduleId' => $requirement->getScheduleId(),
+                'positionId' => $requirement->getPositionId(),
+                'personIds' => array_column($choices, 'personId'),
+                'actorPersonId' => $actor?->getId(),
+            ]);
+        }
     }
 
     /**
