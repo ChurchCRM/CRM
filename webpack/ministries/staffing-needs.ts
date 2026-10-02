@@ -29,8 +29,17 @@ import {
   type VolunteerRequirementInput,
   type VolunteerRequirementRow,
 } from "./api";
-import { defaultCandidateOptions, savedDefaultOf } from "./components/default-fill";
-import { show, tText } from "./components/ui";
+import {
+  defaultSlotsProblem,
+  handleDefaultSlotChange,
+  readDefaultSlots,
+  renderDefaultSlots,
+  savedDefaultsOf,
+  setDefaultSlotsDisabled,
+  setDefaultSlotsLimit,
+  syncAllDefaultSlots,
+} from "./components/default-fill";
+import { tText } from "./components/ui";
 
 /** Hard ceiling on a count, matching the `number` inputs' own `max`. */
 const MAX_COUNT = 99;
@@ -52,8 +61,9 @@ function escapeAttribute(value: string): string {
  * position with no requirement row renders unchecked, because that is exactly what the
  * absence of the row means.
  *
- * `eligible` adds the schedule's default volunteer to every row (D32): who may fill the
- * position, per position. Only a schedule's plan has defaults; an occurrence's does not.
+ * `eligible` adds the schedule's default volunteers to every row (D32, D35): who may fill the
+ * position, one picker per place up to Max. Only a schedule's plan has defaults; an
+ * occurrence's does not.
  */
 export function renderStaffingNeeds(
   container: HTMLElement,
@@ -123,48 +133,61 @@ export function renderStaffingNeeds(
                    aria-label="${escapeAttribute(tText("Maximum allowed for {{position}}", { position: label(position) }))}"
                    ${checked ? "" : "disabled"}>
           </div>
-          ${eligible === null ? "" : defaultCells(rowId, label(position), eligible.get(position.id) ?? [], existing, checked)}
+          ${eligible === null ? "" : defaultCells(rowId, label(position), eligible.get(position.id) ?? [], existing, checked, max)}
         </div>`;
     })
     .join("");
 
   wire(container);
+  syncAllDefaultSlots(container);
   refreshWarning(container);
 }
 
-/** The row's default volunteer (D32): a picker with "None", and "Set as Accepted" once somebody is chosen. */
+/** The row's default volunteers (D35): a picker with "None" per place, and "Set as Accepted" once somebody is chosen. */
 function defaultCells(
   rowId: string,
   positionName: string,
   people: VolunteerEligiblePerson[],
   existing: VolunteerRequirementRow | undefined,
   checked: boolean,
+  max: number,
 ): string {
-  const saved = savedDefaultOf(existing);
+  const saved = savedDefaultsOf(existing);
+  if (people.length === 0 && saved.length === 0) {
+    return `
+          <div class="col-12">
+            <div class="form-hint volunteer-need-default-empty">${escapeHtml(
+              i18next.t("Nobody is qualified for this position yet, so it stays open."),
+            )}</div>
+          </div>`;
+  }
 
   return `
-          <div class="col-12 col-sm-8">
-            <label class="form-label small mb-1" for="${rowId}-default">${escapeHtml(i18next.t("Default volunteer"))}</label>
-            <select class="form-select form-select-sm volunteer-need-default" id="${rowId}-default"
-                    aria-label="${escapeAttribute(tText("Default volunteer for {{position}}", { position: positionName }))}"
-                    ${checked ? "" : "disabled"}>
-              ${defaultCandidateOptions(people, i18next.t("None"), saved)}
-            </select>
-            ${
-              saved !== null && !saved.qualified
-                ? `<div class="form-hint text-warning volunteer-need-default-unqualified">${escapeHtml(
-                    i18next.t("No longer qualified: this position is left open on new occurrences."),
-                  )}</div>`
-                : ""
-            }
-          </div>
-          <div class="col-12 col-sm-4 pb-sm-1">
-            <label class="form-check mb-0 volunteer-need-default-accepted-wrap${saved === null ? " d-none" : ""}">
-              <input class="form-check-input volunteer-need-default-accepted" type="checkbox"
-                     ${saved?.accepted ? "checked" : ""} ${checked ? "" : "disabled"}>
-              <span class="form-check-label">${escapeHtml(i18next.t("Set as Accepted"))}</span>
-            </label>
+          <div class="col-12">
+            ${renderDefaultSlots({
+              id: `${rowId}-defaults`,
+              prefix: "volunteer-need-default",
+              heading: i18next.t("Default volunteers"),
+              positionName,
+              people,
+              saved,
+              blankLabel: i18next.t("None"),
+              limit: max,
+              small: true,
+              disabled: !checked,
+            })}
           </div>`;
+}
+
+function slotsIn(row: HTMLElement | null | undefined): HTMLElement | null {
+  return row?.querySelector<HTMLElement>(".volunteer-default-slots") ?? null;
+}
+
+/** The Max as typed, `null` while the field is blank or not a number. */
+function typedMax(row: HTMLElement | null | undefined): number | null {
+  const parsed = Number.parseInt(row?.querySelector<HTMLInputElement>(".volunteer-need-max")?.value ?? "", 10);
+
+  return Number.isNaN(parsed) ? null : parsed;
 }
 
 /**
@@ -185,21 +208,17 @@ function wire(container: HTMLElement): void {
     if (target?.classList.contains("volunteer-need-check")) {
       const row = target.closest<HTMLElement>(".volunteer-need-row");
       const checked = (target as HTMLInputElement).checked;
-      for (const input of row?.querySelectorAll<HTMLInputElement | HTMLSelectElement>(
-        ".volunteer-need-min, .volunteer-need-max, .volunteer-need-default, .volunteer-need-default-accepted",
-      ) ?? []) {
+      for (const input of row?.querySelectorAll<HTMLInputElement>(".volunteer-need-min, .volunteer-need-max") ?? []) {
         input.disabled = !checked;
+      }
+      const slots = slotsIn(row);
+      if (slots) {
+        setDefaultSlotsDisabled(slots, !checked);
       }
       refreshWarning(container);
     }
-    if (target?.classList.contains("volunteer-need-default")) {
-      const row = target.closest<HTMLElement>(".volunteer-need-row");
-      const chosen = (target as HTMLSelectElement).value !== "";
-      show(row?.querySelector<HTMLElement>(".volunteer-need-default-accepted-wrap") ?? null, chosen);
-      const accepted = row?.querySelector<HTMLInputElement>(".volunteer-need-default-accepted");
-      if (accepted && !chosen) {
-        accepted.checked = false;
-      }
+    if (handleDefaultSlotChange(target) !== null) {
+      refreshWarning(container);
     }
   });
 
@@ -216,6 +235,14 @@ function wire(container: HTMLElement): void {
       const min = Number.parseInt(target.value, 10);
       if (maxInput && Number.isFinite(min) && Number.parseInt(maxInput.value, 10) < min) {
         maxInput.value = String(min);
+      }
+    }
+    // D35: one default picker per place, so the pickers follow Max as it is typed.
+    if (target?.classList.contains("volunteer-need-min") || target?.classList.contains("volunteer-need-max")) {
+      const row = target.closest<HTMLElement>(".volunteer-need-row");
+      const slots = slotsIn(row);
+      if (slots) {
+        setDefaultSlotsLimit(slots, typedMax(row));
       }
     }
     refreshWarning(container);
@@ -240,12 +267,9 @@ export function readStaffingNeeds(container: HTMLElement): VolunteerRequirementI
       maxCount: max,
     };
 
-    const picker = row.querySelector<HTMLSelectElement>(".volunteer-need-default");
-    if (picker) {
-      const personId = Number(picker.value || 0);
-      need.defaultPersonId = personId > 0 ? personId : null;
-      need.defaultAccepted =
-        personId > 0 && (row.querySelector<HTMLInputElement>(".volunteer-need-default-accepted")?.checked ?? false);
+    const slots = slotsIn(row);
+    if (slots) {
+      need.defaults = readDefaultSlots(slots);
     }
 
     rows.push(need);
@@ -283,6 +307,11 @@ export function validateStaffingNeeds(container: HTMLElement): string | null {
     }
     if (max < min) {
       return i18next.t("{{position}}: the maximum cannot be below the minimum.", { position: name });
+    }
+    const slots = slotsIn(row);
+    const tooMany = slots === null ? null : defaultSlotsProblem(slots);
+    if (tooMany !== null) {
+      return tooMany;
     }
   }
 

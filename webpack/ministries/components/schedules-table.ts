@@ -20,8 +20,9 @@
  * creates, never on ones an earlier run made.
  *
  * D32: those defaults belong to the schedule. The schedule dialog's staffing needs show and
- * edit one per position, the Generate dialog opens on them and saves what it runs with, and
- * the daily top-up assigns them on the occurrences it creates.
+ * edit them, the Generate dialog opens on them and saves what it runs with, and the daily
+ * top-up assigns them on the occurrences it creates. D35: several per position, one picker
+ * per place up to Max, in both dialogs.
  *
  * D30: a run that finds no events keeps the dialog open with a warning saying what it
  * looked for, and — where the viewer may create the ministry's events — a button to the
@@ -64,11 +65,11 @@ import {
 } from "../api";
 import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "../staffing-needs";
 import {
-  destroyDefaultFillPickers,
-  mountDefaultFillPickers,
+  defaultFillsProblem,
   readDefaultFills,
   renderDefaultFillRow,
-  savedDefaultOf,
+  savedDefaultsOf,
+  syncAllDefaultSlots,
   wireDefaultFillRows,
 } from "./default-fill";
 import { offsetSummary, readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
@@ -874,20 +875,12 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   let generatingSchedule: VolunteerSchedule | null = null;
   /** What the warning's New recurring event button opens with, after a run found nothing (D30). */
   let nothingFoundPrefill: MinistryEventPrefill | null = null;
-  /** One TomSelect per position row, torn down when the dialog closes. */
-  let generateSelects: TomSelectInstance[] = [];
-
-  function destroyGenerateSelects(): void {
-    destroyDefaultFillPickers(generateSelects);
-    generateSelects = [];
-  }
 
   function openGenerateModal(schedule: VolunteerSchedule): void {
     generatingScheduleId = schedule.id;
     generatingSchedule = schedule;
     nothingFoundPrefill = null;
     show(byId("generate-form-warning"), false);
-    destroyGenerateSelects();
 
     const intro = byId("generate-form-intro");
     if (intro) {
@@ -909,10 +902,10 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
     listScheduleRequirements(schedule.id)
       .then(async (data) => {
-        // Only the positions the plan actually asks for: a Max of 0 is "not on this
-        // schedule", and offering a default for it would assign into a slot no
-        // occurrence has.
-        const wanted = data.requirements.filter((row) => row.maxCount === null || row.maxCount > 0);
+        // Only the positions the plan actually asks for: no room (a Max of 0, or a blank Max
+        // with a Min of 0) is "not on this schedule", and offering a default for it would
+        // assign into a slot no occurrence has.
+        const wanted = data.requirements.filter((row) => (row.maxCount ?? row.minCount) > 0);
         const html: string[] = [];
         for (const row of wanted) {
           const position = options.positions().find((candidate) => candidate.id === row.positionId);
@@ -931,7 +924,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
               row.minCount,
               row.maxCount,
               people,
-              savedDefaultOf(row),
+              savedDefaultsOf(row),
             ),
           );
         }
@@ -942,9 +935,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         if (rows) {
           rows.innerHTML = html.join("");
         }
+        syncAllDefaultSlots(rows);
         show(byId("generate-form-empty"), wanted.length === 0);
-
-        generateSelects = mountDefaultFillPickers(rows);
       })
       .catch((error: unknown) => {
         showModalError(
@@ -983,14 +975,20 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     if (scheduleId === 0) {
       return;
     }
+    const tooMany = defaultFillsProblem(byId("generate-form-rows"));
+    if (tooMany !== null) {
+      showModalError("generate", tooMany, notifyError);
+
+      return;
+    }
     const save = byId<HTMLButtonElement>("generate-form-save");
     if (save) {
       save.disabled = true;
     }
 
-    const defaults = readDefaultFills(byId("generate-form-rows"));
-    const anyDefault = defaults.some((row) => row.personId !== null);
-    generateOccurrences(scheduleId, { defaults })
+    const requirements = readDefaultFills(byId("generate-form-rows"));
+    const anyDefault = requirements.some((row) => row.defaults.length > 0);
+    generateOccurrences(scheduleId, { requirements })
       .then((result) => {
         // Nothing to anchor to is not a success: the dialog stays open and says why (D30).
         if (result.noEvents) {
@@ -1219,7 +1217,6 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       });
       hideModal("generateOccurrencesModal");
     });
-    byId("generateOccurrencesModal")?.addEventListener("hidden.bs.modal", destroyGenerateSelects);
     wireDefaultFillRows(byId("generate-form-rows"));
 
     // Focus the first field once the modal has finished animating. Without it
