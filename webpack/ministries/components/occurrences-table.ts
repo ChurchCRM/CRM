@@ -32,7 +32,7 @@ import {
   type VolunteerTeam,
   type VolunteerUpcomingEvent,
 } from "../api";
-import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "../staffing-needs";
+import { readStaffingNeeds, renderStaffingNeeds, revealStaffingNeedsProblem } from "../staffing-needs";
 import { readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
 import { rollupStaffing, type StaffingTone, staffingTitle } from "./staffing-label";
 import {
@@ -401,13 +401,13 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
 
       return;
     }
-    const invalid = !eventId
-      ? i18next.t("Choose the event to staff")
-      : needs === null
-        ? null
-        : validateStaffingNeeds(needs);
-    if (invalid !== null) {
-      showModalError("staff-event", invalid);
+    if (!eventId) {
+      showModalError("staff-event", i18next.t("Choose the event to staff"));
+
+      return;
+    }
+    if (needs !== null && revealStaffingNeedsProblem(needs)) {
+      show(byId("staff-event-form-error"), false);
 
       return;
     }

@@ -251,10 +251,16 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
 
         cy.intercept("POST", `**/api/ministries/schedules/${scheduleId}`, cy.spy().as("save"));
         cy.get("#schedule-form-save").click();
-        cy.get("#schedule-form-error")
-            .scrollIntoView()
+        // Said once, where the extra choice is — not repeated in the form's error box.
+        cy.get("#schedule-form-needs")
+            .parent()
+            .find(".volunteer-needs-notice")
             .should("be.visible")
             .and("contain.text", "Max is 1 but 2 default volunteers are chosen. Remove one or raise Max.");
+        cy.get("#schedule-form-error").should("not.be.visible");
+        cy.get("#scheduleModal")
+            .contains(/Max is 1 but 2 default volunteers are chosen/)
+            .should("have.length", 1);
         cy.get("#scheduleModal").should("be.visible");
         cy.get("@save").should("not.have.been.called");
 

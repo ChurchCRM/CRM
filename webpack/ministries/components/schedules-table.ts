@@ -63,7 +63,7 @@ import {
   type VolunteerSchedule,
   type VolunteerTeam,
 } from "../api";
-import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "../staffing-needs";
+import { readStaffingNeeds, renderStaffingNeeds, revealStaffingNeedsProblem } from "../staffing-needs";
 import {
   defaultFillsProblem,
   readDefaultFills,
@@ -784,10 +784,14 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   function save(): void {
     const needs = byId("schedule-form-needs");
     const offsets = readOffsets("schedule-form");
-    const invalid =
-      missingSource() ?? (typeof offsets === "string" ? offsets : needs === null ? null : validateStaffingNeeds(needs));
+    const invalid = missingSource() ?? (typeof offsets === "string" ? offsets : null);
     if (invalid !== null) {
       showModalError("schedule", invalid, notifyError);
+
+      return;
+    }
+    if (needs !== null && revealStaffingNeedsProblem(needs)) {
+      show(byId("schedule-form-error"), false);
 
       return;
     }
