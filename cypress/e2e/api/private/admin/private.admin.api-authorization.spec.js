@@ -31,6 +31,7 @@ const ROUTES = [
     ["POST", "/admin/api/options/1/1/reorder"],
     ["POST", "/admin/api/options/1/1/default"],
     ["POST", "/admin/api/options/1/1/inactive"],
+    ["POST", "/admin/api/options/1/1/directory"],
     ["GET", "/admin/api/orphaned-files"],
     ["POST", "/admin/api/orphaned-files/delete-all"],
     ["GET", "/admin/api/system/church-logo"],
@@ -71,7 +72,7 @@ describe("Admin API authorization matrix", () => {
     });
 
     it("covers every admin API route", () => {
-        expect(ROUTES).to.have.length(48);
+        expect(ROUTES).to.have.length(49);
     });
 
     describe("non-admin API key is refused (403)", () => {

@@ -6,8 +6,6 @@ use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<p class="text-body-secondary mb-3"><?= sprintf(gettext('Manage %s options'), InputUtils::escapeHTML($noun)) ?></p>
-
 <!-- Add New Option -->
 <div class="card mb-4">
     <div class="card-status-top bg-success"></div>
@@ -51,6 +49,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <th><?= gettext('Name') ?></th>
                     <?php if ($mode === 'classes'): ?>
                     <th style="width: 100px;"><?= gettext('Inactive') ?></th>
+                    <th style="width: 100px;"><?= gettext('In Directory') ?></th>
                     <?php endif; ?>
                     <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                 </tr>
@@ -69,6 +68,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input inactive-toggle"
                                    <?= in_array($option->getOptionId(), $inactiveClasses) ? 'checked' : '' ?>>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input directory-toggle"
+                                   <?= in_array($option->getOptionId(), $directoryClasses) ? 'checked' : '' ?>>
                         </div>
                     </td>
                     <?php endif; ?>
@@ -223,15 +228,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         });
     });
 
-    // Inactive toggle (classes mode only)
-    document.querySelectorAll('.inactive-toggle').forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-            const row = this.closest('tr');
-            const optionId = row.dataset.optionId;
-            window.CRM.AdminAPIRequest({
-                method: 'POST',
-                path: 'options/' + listId + '/' + optionId + '/inactive',
-                data: JSON.stringify({})
+    // Inactive / In Directory toggles (classes mode only)
+    [['.inactive-toggle', 'inactive'], ['.directory-toggle', 'directory']].forEach(function(toggle) {
+        document.querySelectorAll(toggle[0]).forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                const optionId = this.closest('tr').dataset.optionId;
+                window.CRM.AdminAPIRequest({
+                    method: 'POST',
+                    path: 'options/' + listId + '/' + optionId + '/' + toggle[1],
+                    data: JSON.stringify({})
+                }).fail(function() {
+                    checkbox.checked = !checkbox.checked;
+                });
             });
         });
     });

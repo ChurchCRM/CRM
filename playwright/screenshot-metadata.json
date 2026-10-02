@@ -97,6 +97,10 @@
     "title": "User Permissions",
     "category": "Admin & Settings"
   },
+  "admin-people-settings": {
+    "title": "People Settings",
+    "category": "Admin & Settings"
+  },
   "admin-plugin-management": {
     "title": "Plugin Management",
     "category": "Admin & Settings"

@@ -291,9 +291,9 @@ describe("Deceased Person Flag", () => {
 
     // -----------------------------------------------------------------------
     // bHideDeceasedFromDirectory — moved from the System Settings page to the
-    // People Dashboard settings panel (#9522).
+    // People Settings hub (#9522, /admin/people).
     // These three tests require admin access: the config API uses the admin API
-    // key and the People Dashboard settings panel is admin-only.
+    // key and the People Settings hub is admin-only.
     // -----------------------------------------------------------------------
 
     it("bHideDeceasedFromDirectory toggles via the config API and defaults to on", () => {
@@ -311,11 +311,11 @@ describe("Deceased Person Flag", () => {
         cy.makePrivateAdminAPICall("POST", key, { value: "1" }, 200); // restore
     });
 
-    it("the People Dashboard settings panel exposes the deceased-directory toggle", () => {
-        // #peopleSettings only renders for admins — switch to the admin session
+    it("the People Settings hub exposes the deceased-directory toggle", () => {
+        // The hub only renders for admins — switch to the admin session
         cy.setupAdminSession();
-        cy.visit("/people/dashboard");
-        cy.get("#peopleSettings", { timeout: 10000 })
+        cy.visit("/admin/people");
+        cy.get("#peoplePeople", { timeout: 10000 })
             .find("[name='bHideDeceasedFromDirectory']")
             .should("exist");
     });

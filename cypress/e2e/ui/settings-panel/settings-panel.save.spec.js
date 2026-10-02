@@ -23,7 +23,7 @@ describe("Settings Panel — load and Save", () => {
     const openMapSettings = () => {
         cy.contains("Map Settings").click();
         cy.get("#mapAdminSettings", { timeout: 10000 }).should("have.class", "show").and("not.have.class", "collapsing");
-        cy.get("#mapAdminSettings #settingsPanelFields", { timeout: 10000 }).should("not.be.disabled");
+        cy.get("#mapAdminSettings .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
     };
 
     // The held config GETs time out after defaultCommandTimeout, so give them
@@ -40,15 +40,15 @@ describe("Settings Panel — load and Save", () => {
         cy.get("#mapAdminSettings", { timeout: 10000 }).should("have.class", "show").and("not.have.class", "collapsing");
         cy.wrap(held).should("have.length", 3);
 
-        cy.get("#mapAdminSettings #settingsPanelSaveBtn", { timeout: 5000 }).should("be.disabled");
+        cy.get("#mapAdminSettings .settings-panel-save", { timeout: 5000 }).should("be.disabled");
         cy.get("#mapAdminSettings select[name='iMapZoom']", { timeout: 5000 }).should("be.disabled");
         cy.get("#mapAdminSettings input[name='bHideLatLon']", { timeout: 5000 }).should("be.disabled");
 
         cy.then(() => held.forEach((release) => release()));
 
-        cy.get("#mapAdminSettings #settingsPanelSaveBtn").should("not.be.disabled");
+        cy.get("#mapAdminSettings .settings-panel-save").should("not.be.disabled");
         cy.get("#mapAdminSettings select[name='iMapZoom']").should("not.be.disabled").and("have.value", "10");
-        cy.get("#mapAdminSettings #settingsPanelLoadError").should("not.exist");
+        cy.get("#mapAdminSettings .settings-panel-load-error").should("not.exist");
         cy.get("@saveConfig.all").should("have.length", 0);
     });
 
@@ -60,10 +60,10 @@ describe("Settings Panel — load and Save", () => {
 
         cy.visit("people/map");
         cy.contains("Map Settings").click();
-        cy.get("#mapAdminSettings #settingsPanelLoadError", { timeout: 10000 })
+        cy.get("#mapAdminSettings .settings-panel-load-error", { timeout: 10000 })
             .should("be.visible")
             .and("contain.text", "Could not load the current settings");
-        cy.get("#mapAdminSettings #settingsPanelSaveBtn").should("be.disabled");
+        cy.get("#mapAdminSettings .settings-panel-save").should("be.disabled");
         cy.get("#mapAdminSettings select[name='iMapZoom']").should("be.disabled");
     });
 
@@ -73,12 +73,12 @@ describe("Settings Panel — load and Save", () => {
         cy.visit("people/map");
         openMapSettings();
 
-        cy.get("#mapAdminSettings #settingsPanelSaveBtn").click();
+        cy.get("#mapAdminSettings .settings-panel-save").click();
         cy.wait("@saveConfig");
 
         // The panel POSTs every setting in parallel and re-enables the button only
         // once all of them settle, so the button is the real synchronisation point.
-        cy.get("#mapAdminSettings #settingsPanelSaveBtn", { timeout: 10000 })
+        cy.get("#mapAdminSettings .settings-panel-save", { timeout: 10000 })
             .should("not.be.disabled")
             .and("contain.text", "Save Settings");
 
@@ -102,10 +102,10 @@ describe("Settings Panel — load and Save", () => {
         cy.visit("people/map");
         openMapSettings();
 
-        cy.get("#mapAdminSettings #settingsPanelSaveBtn").click();
+        cy.get("#mapAdminSettings .settings-panel-save").click();
         cy.wait("@saveConfigFail");
 
-        cy.get("#mapAdminSettings #settingsPanelSaveBtn", { timeout: 10000 })
+        cy.get("#mapAdminSettings .settings-panel-save", { timeout: 10000 })
             .should("not.be.disabled")
             .and("contain.text", "Save Settings");
         cy.contains("Failed to save settings").should("exist");
@@ -123,7 +123,7 @@ describe("Settings Panel — load and Save", () => {
 
         // Pick a zoom level different from the default (10) and save
         cy.get("#mapAdminSettings select[name='iMapZoom']").select("14");
-        cy.get("#mapAdminSettings #settingsPanelSaveBtn").click();
+        cy.get("#mapAdminSettings .settings-panel-save").click();
         cy.wait("@saveConfig");
 
         // Tile URLs carry the zoom level: /{z}/{x}/{y}.png — no cy.reload() here
