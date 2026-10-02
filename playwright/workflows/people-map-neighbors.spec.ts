@@ -45,6 +45,8 @@ test.describe('Maps', () => {
 
     await captureScreen(page, testInfo, {
       name: 'people-map-find-neighbors',
+      title: 'Find Neighbors on the Map',
+      category: 'People & Families',
       purpose: 'Show Find Neighbors — nearest families to a selected family, plotted by distance on the map',
     });
   });
@@ -97,6 +99,8 @@ test.describe('Maps', () => {
 
     await captureScreen(page, testInfo, {
       name: 'people-map-group-view',
+      title: 'Group Map View',
+      category: 'People & Families',
       purpose: 'Show the congregation map filtered to one group, with a role-based legend',
     });
   });

@@ -55,6 +55,8 @@ test('mark-member-inactive', async ({ page }, testInfo) => {
 
   await captureScreen(page, testInfo, {
     name: 'mark-member-inactive',
+    title: 'Mark a Member Inactive',
+    category: 'Recordings',
     purpose: 'Show marking a member inactive from the profile Actions menu, ending on the Inactive banner',
   });
 });

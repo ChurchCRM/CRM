@@ -28,6 +28,8 @@ test.describe('Communication', () => {
 
     await captureScreen(page, testInfo, {
       name: 'communication-mailing-list',
+      title: 'Mailing Lists',
+      category: 'Communication',
       purpose: 'Show selecting a group into the cart as a mailing list',
     });
   });

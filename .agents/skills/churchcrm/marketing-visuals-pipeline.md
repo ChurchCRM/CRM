@@ -57,7 +57,7 @@ The run ends with `marketing:manifest`
 JSON sidecar under `playwright/artifacts/metadata/` and consolidates them
 into one JSON manifest at `playwright/artifacts/manifest.json` — one
 object per capture, organized by workflow name, with all devices grouped
-together, plus title/category metadata from `screenshot-metadata.json` —
+together, plus title/category metadata taken from each capture's `captureScreen()` options —
 name, device, screenshot-or-video, relative path, whether that file
 actually exists and its size, purpose text, viewport, commit, etc. It's
 for scanning/looking up a whole run's output at a glance without opening

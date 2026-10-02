@@ -13,9 +13,9 @@
  * always reflects exactly what the pipeline actually produced — not a
  * separately maintained list.
  *
- * Includes metadata mappings for titles and categories (from
- * screenshot-metadata.json) so the website has a single source of truth
- * for display data without manual template updates.
+ * Titles, categories and dark-mode links come from each capture's sidecar,
+ * which captureScreen() writes from the options in the spec, so the spec is the
+ * single source of truth for display data.
  *
  * Committed to the repo and published to the website for dynamic screenshot
  * gallery loading.
@@ -28,7 +28,6 @@ const ARTIFACTS_ROOT = path.join(__dirname, '..', 'playwright', 'artifacts');
 const METADATA_ROOT = path.join(ARTIFACTS_ROOT, 'metadata');
 const MANIFEST_PATH = path.join(ARTIFACTS_ROOT, 'manifest.json');
 const MANIFEST_CSV_PATH = path.join(ARTIFACTS_ROOT, 'manifest.csv');
-const SCREENSHOT_METADATA_PATH = path.join(__dirname, '..', 'playwright', 'screenshot-metadata.json');
 const VIDEO_DEVICES = new Set(['recordings', 'setup']);
 
 /**
@@ -124,12 +123,6 @@ function main() {
   // (groups a capture's desktop/tablet/mobile together), then device.
   metadataFiles.sort((a, b) => a.file.localeCompare(b.file));
 
-  // Load screenshot metadata (titles, categories, dark mode variants)
-  let screenshotMetadata = {};
-  if (fs.existsSync(SCREENSHOT_METADATA_PATH)) {
-    screenshotMetadata = JSON.parse(fs.readFileSync(SCREENSHOT_METADATA_PATH, 'utf8'));
-  }
-
   // Group artifacts by workflow name
   const workflowMap = new Map();
   for (const { locale, device, file } of metadataFiles) {
@@ -144,13 +137,12 @@ function main() {
   // Build manifest array with merged data
   const artifacts = [];
   for (const [workflow, entries] of workflowMap) {
-    const metadata = screenshotMetadata[workflow] || {};
     for (const { locale, device, meta } of entries) {
       artifacts.push({
         ...buildArtifactEntry(locale, device, meta),
-        title: metadata.title || workflow,
-        category: metadata.category || null,
-        dark: metadata.dark || null,
+        title: meta.title || workflow,
+        category: meta.category || null,
+        dark: meta.dark || null,
       });
     }
   }
