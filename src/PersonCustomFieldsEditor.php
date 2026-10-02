@@ -24,6 +24,7 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('People'), '/people/dashboard'],
     [gettext('Custom Person Fields')],
 ]);
+$sPageHeaderButtons = PageHeader::peopleSettingsButton();
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 

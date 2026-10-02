@@ -133,4 +133,12 @@ class PageHeader
 
         return $html;
     }
+
+    /** Header button back to the People settings hub; admin-only like the hub itself. */
+    public static function peopleSettingsButton(): string
+    {
+        return self::buttons([
+            ['label' => gettext('People Settings'), 'url' => '/admin/people', 'icon' => 'fa-sliders'],
+        ]);
+    }
 }

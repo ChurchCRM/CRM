@@ -244,34 +244,46 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderSuccessJSON($response);
     });
 
-    // Toggle inactive classification (classifications list only — listId 1)
-    $group->post('/{listId:[0-9]+}/{optionId:[0-9]+}/inactive', function (Request $request, Response $response, array $args): Response {
-        $listId = (int) $args['listId'];
-        $optionId = (int) $args['optionId'];
+    // Toggle a classification in/out of a comma-separated ID setting (classifications list only — listId 1)
+    $toggleClassificationFlag = fn (string $configKey, string $responseKey, string $wrongListMessage) =>
+        function (Request $request, Response $response, array $args) use ($configKey, $responseKey, $wrongListMessage): Response {
+            $listId = (int) $args['listId'];
+            $optionId = (int) $args['optionId'];
 
-        if ($listId !== 1) {
-            throw new HttpBadRequestException($request, gettext('Inactive status can only be toggled for the classifications list'));
-        }
+            if ($listId !== 1) {
+                throw new HttpBadRequestException($request, $wrongListMessage);
+            }
 
-        $option = ListOptionQuery::create()
-            ->filterById($listId)
-            ->filterByOptionId($optionId)
-            ->findOne();
-        if ($option === null) {
-            throw new HttpNotFoundException($request, gettext('Option not found'));
-        }
+            $option = ListOptionQuery::create()
+                ->filterById($listId)
+                ->filterByOptionId($optionId)
+                ->findOne();
+            if ($option === null) {
+                throw new HttpNotFoundException($request, gettext('Option not found'));
+            }
 
-        $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
-        $aInactiveClasses = array_map('intval', array_filter($aInactiveClassificationIds, fn ($k) => is_numeric($k)));
+            $ids = explode(',', SystemConfig::getValue($configKey));
+            $ids = array_map('intval', array_filter($ids, fn ($k) => is_numeric($k)));
 
-        if (in_array($optionId, $aInactiveClasses, true)) {
-            $aInactiveClasses = array_values(array_diff($aInactiveClasses, [$optionId]));
-        } else {
-            $aInactiveClasses[] = $optionId;
-        }
+            if (in_array($optionId, $ids, true)) {
+                $ids = array_values(array_diff($ids, [$optionId]));
+            } else {
+                $ids[] = $optionId;
+            }
 
-        SystemConfig::setValue('sInactiveClassification', implode(',', $aInactiveClasses));
+            SystemConfig::setValue($configKey, implode(',', $ids));
 
-        return SlimUtils::renderJSON($response, ['inactive' => $aInactiveClasses]);
-    });
+            return SlimUtils::renderJSON($response, [$responseKey => $ids]);
+        };
+
+    $group->post('/{listId:[0-9]+}/{optionId:[0-9]+}/inactive', $toggleClassificationFlag(
+        'sInactiveClassification',
+        'inactive',
+        gettext('Inactive status can only be toggled for the classifications list'),
+    ));
+    $group->post('/{listId:[0-9]+}/{optionId:[0-9]+}/directory', $toggleClassificationFlag(
+        'sDirClassifications',
+        'directory',
+        gettext('Directory inclusion can only be toggled for the classifications list'),
+    ));
 });
