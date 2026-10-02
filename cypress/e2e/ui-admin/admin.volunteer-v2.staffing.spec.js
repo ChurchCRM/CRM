@@ -171,6 +171,27 @@ function openSchedulesTab() {
     cy.get("#schedules-loading").should("not.be.visible");
 }
 
+/**
+ * Open the occurrence page's needs editor from `trigger` and wait for `shown.bs.modal`.
+ * Bootstrap focuses the dialog when its fade ends, so keys typed into a row before then
+ * go to the dialog instead of the field.
+ */
+function openNeedsEditor(trigger) {
+    cy.get("#volunteer-needs-modal").then(($modal) => {
+        $modal[0].dataset.cyShown = "0";
+        $modal[0].addEventListener(
+            "shown.bs.modal",
+            () => {
+                $modal[0].dataset.cyShown = "1";
+            },
+            { once: true },
+        );
+    });
+    cy.get(trigger).click();
+    cy.get("#volunteer-needs-modal").should("be.visible").and("have.attr", "data-cy-shown", "1");
+    cy.get("#needs-loading").should("not.be.visible");
+}
+
 /** Fill the schedule form's non-staffing half: this spec's Wednesday events. */
 function fillScheduleBasics(name) {
     cy.get("#schedule-form-name").clear().type(name);
@@ -791,9 +812,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.get("#requirements-loading").should("not.be.visible");
             cy.get(".volunteer-requirement .requirement-counts").should("have.text", "Needs 1 more");
 
-            cy.get("#requirements-edit").click();
-            cy.get("#volunteer-needs-modal").should("be.visible");
-            cy.get("#needs-loading").should("not.be.visible");
+            openNeedsEditor("#requirements-edit");
             // Pre-filled from the EFFECTIVE plan: the schedule's row is checked, the
             // position with no row is offered unchecked.
             cy.get(`#staffing-need-${posLead}-check`).should("be.checked");
@@ -855,9 +874,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                 .and("contain.text", "No staffing needs set")
                 .and("not.contain.text", "Nobody is needed yet");
 
-            cy.get("#requirements-empty-edit").click();
-            cy.get("#volunteer-needs-modal").should("be.visible");
-            cy.get("#needs-loading").should("not.be.visible");
+            openNeedsEditor("#requirements-empty-edit");
             cy.get(`#staffing-need-${posLead}-check`).check({ force: true });
             cy.get(`#staffing-need-${posLead}-min`).clear().type("2");
             cy.get(`#staffing-need-${posLead}-max`).clear().type("2");
@@ -874,9 +891,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
         it("refuses a maximum below the minimum in the modal", () => {
             cy.visit(`/ministries/occurrences/${occurrenceId}`);
             cy.get("#requirements-loading").should("not.be.visible");
-            cy.get("#requirements-edit").click();
-            cy.get("#volunteer-needs-modal").should("be.visible");
-            cy.get("#needs-loading").should("not.be.visible");
+            openNeedsEditor("#requirements-edit");
             // `#needs-loading` starts hidden, so "not visible" can be true before the
             // rows arrive; wait for the row this test edits to be there and checked,
             // or the numbers are typed into a field that is about to be replaced.
