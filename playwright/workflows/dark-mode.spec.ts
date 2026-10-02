@@ -41,6 +41,8 @@ test.describe('Dark Mode', () => {
 
       await captureScreen(page, testInfo, {
         name: 'dashboard-hero-dark',
+        title: 'Dashboard (Dark Mode)',
+        category: 'Dashboards',
         purpose: 'Landing dashboard after login — hero shot in dark mode',
       });
     } finally {
@@ -84,6 +86,8 @@ test.describe('Dark Mode', () => {
 
       await captureScreen(page, testInfo, {
         name: 'people-family-overview-dark',
+        title: 'Family Profile (Dark Mode)',
+        category: 'People & Families',
         purpose: 'Show family profile with member photos and a geocoded address in dark mode',
       });
     } finally {

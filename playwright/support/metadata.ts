@@ -26,6 +26,9 @@ function getCommit(): string {
 export interface ArtifactMetadata {
   workflow: string;
   purpose: string;
+  title: string;
+  category: string;
+  dark: string | null;
   device: string;
   viewport: { width: number; height: number };
   /** Null for video-only captures (currently just the `setup` project). */
@@ -43,6 +46,9 @@ export function writeMetadata(destination: string, data: ArtifactMetadata): void
   const metadata = {
     workflow: data.workflow,
     purpose: data.purpose,
+    title: data.title,
+    category: data.category,
+    dark: data.dark,
     product: 'ChurchCRM',
     commit: getCommit(),
     locale: LOCALE,
