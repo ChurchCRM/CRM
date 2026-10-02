@@ -19038,3 +19038,83 @@ msgstr "ஒரு நிர்வாகி மட்டுமே உள்நு
 msgid "The last administrator cannot be deleted."
 msgstr "கடைசி நிர்வாகிக்கு நீக்க முடியாது."
 
+#: 
+msgid "Category"
+msgstr "வகை"
+
+#: 
+msgid "Category updated."
+msgstr "வகை புதுப்பிக்கப்பட்டது."
+
+#: 
+msgid "Delete Category"
+msgstr "வகையை நீக்கு"
+
+#: 
+msgid "Failed to delete category"
+msgstr "வகையை நீக்க முடியவில்லை"
+
+#: 
+msgid "Failed to rename category"
+msgstr "வகையின் பெயரை மாற்ற முடியவில்லை"
+
+#: 
+msgid "Fund Categories"
+msgstr "நிதி வகைகள்"
+
+#: 
+msgid "Fund activated."
+msgstr "நிதி செயல்படுத்தப்பட்டது."
+
+#: 
+msgid "Fund deactivated."
+msgstr "நிதி செயலிழக்கப்பட்டது."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "இந்த வகையில் உள்ள நிதிகள் வகைப்படுத்தப்படாதவையாக மாறும். நிதிகள் நீக்கப்படாது."
+
+#: 
+msgid "INACTIVE"
+msgstr "செயலற்ற நிலை"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "புதிய வகையின் பெயர் (ஏற்கனவே உள்ள பெயரை உள்ளிட்டால் இரண்டும் இணைக்கப்படும்)"
+
+#: 
+msgid "Optional"
+msgstr "விருப்பத்திற்குரியது"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "விருப்பத்திற்குரியது — வகையைத் தேர்ந்தெடுக்கவும் அல்லது புதியதை உள்ளிடவும்"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "நிதி உறுதிமொழிக்கு மேல் செலுத்தப்பட்டது"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "நிதி உறுதிமொழி அளிக்கப்பட்டது ஆனால் இன்னும் செலுத்தப்படவில்லை"
+
+#: 
+msgid "Rename Category"
+msgstr "வகையின் பெயரை மாற்று"
+
+#: 
+msgid "Still Owed"
+msgstr "இன்னும் செலுத்த வேண்டியது"
+
+#: 
+msgid "Summary by Category"
+msgstr "வகை வாரியான சுருக்கம்"
+
+#: 
+msgid "Total Paid"
+msgstr "மொத்தம் செலுத்தியது"
+
+#: 
+msgid "Uncategorized"
+msgstr "வகைப்படுத்தப்படாதவை"
+

@@ -18792,3 +18792,315 @@ msgstr "et otsida vigu selle juhtumise ajal ja laadida oma GitHub probleemile al
 msgid "system logs"
 msgstr "süsteemi logid"
 
+#: 
+msgid "Access Control & Security"
+msgstr "Juurdepääsu juhtimine ja turvalisus"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Lubada mittemahakasvuliste maksete salvestamist (nt kaubamüük)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Lubada autentimata juurdepääs avalikele sündmustele (kalendrite manustamiseks)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Lubada külaliste luua oma perekonnaandmeid avaliku registreerumise lehekülje kaudu"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Saada automaatselt sünnipäeva kirju (nõuab tausta tööülesannete planeerijat)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Sünnipäeva tervituse e-kirjad"
+
+#: 
+msgid "Communication & Email"
+msgstr "Suhtlemine ja e-post"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Content Security Policy"
+
+#: 
+msgid "Email System"
+msgstr "E-posti süsteem"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Luba või keela funktsioonid oma organisatsioonile"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Luba/keela sündmuste jaotis peamisel navigeerimisel"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Luba/keela rahandusmenu ja kõik rahanduse funktsioonid (deposiidid, maksed, aruanded)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Luba/keela Fundraiser menüü"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Jõusta ranged CSP päised XSS-rünnakute vastu kaitsmiseks"
+
+#: 
+msgid "Events Module"
+msgstr "Sündmuste moodul"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Funktsioonide lülitid"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Funktsioonide lülitid kontrollivad, millised moodulid ja funktsioonid on saadaval ChurchCRM-is. Muutused jõustuvad kohe."
+
+#: 
+msgid "Finance Features"
+msgstr "Rahandusfunktsioonid"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Kaasa aadressid kiirsel otsingusse"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Kaasa kalendrisündmused kiirsel otsingusse"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Kaasa kohandatud perekonna omadused kiirsel otsingusse"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Kaasa deposiidid kiirsel otsingusse"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Kaasa perekonnad kiirsel otsingusse"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Kaasa rühmad kiirsel otsingusse"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Kaasa maksed kiirsel otsingusse"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Kaasa inimesed kiirsel otsingusse"
+
+#: 
+msgid "Invalid setting"
+msgstr "Sobimatu seade"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Unustatud parooli link"
+
+#: 
+msgid "Manage All Features"
+msgstr "Halda kõiki funktsioonide"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Peamise lüliti e-posti saatmiseks. NÕUTAV parooli lähtestamiseks ja märguannete jaoks"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Mittemahakasvulised maksed"
+
+#: 
+msgid "Primary Modules"
+msgstr "Peamised moodulid"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Avalik kalender API"
+
+#: 
+msgid "Saved"
+msgstr "Salvestatud"
+
+#: 
+msgid "Search Families"
+msgstr "Otsi perekondade järgi"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Otsi perekonna kohandatud omadusi"
+
+#: 
+msgid "Search Settings"
+msgstr "Otsingu seaded"
+
+#: 
+msgid "Self-Registration"
+msgstr "Iseseisev registreerimine"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Näita \"Unustatud parool\" valikut sisselogimise ekraanil (lubab kasutajal ise lähtestada)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Näita/peida pühapäeva kooli moodulit külgribas"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Ei saa keelata ainsast administraatorit, kes saab sisse logida"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Ei saa märkida ainsast administraatorit, kes saab sisse logida, kui surnud"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Surnud — ei saa sisse logida"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Sisestage teine aadress enne selle märkimist postiaadressina"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Mitteaktiivne — ei saa sisse logida"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Posti saadetakse teisele aadressile; peamine aadress jääb füüsiliseks asukohaaks, mida kasutatakse kaartide ja juhistega."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Posti saadetakse sellele aadressile peamise aadressi asemel"
+
+#: 
+msgid "Mailing Address"
+msgstr "Postiaadress"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Postiaadress, kui see on erinev"
+
+#: 
+msgid "Primary Address"
+msgstr "Peamine aadress"
+
+#: 
+msgid "Receives Mail"
+msgstr "Saab posti"
+
+#: 
+msgid "Second Address"
+msgstr "Teine aadress"
+
+#: 
+msgid "Second Home"
+msgstr "Teine kodu"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Seotud isik on surnud või mitteaktiivne. Sisselogimine, seansid ja API võti on blokeeritud, kuni isik aktiveeritakse uuesti."
+
+#: 
+msgid "This is the mailing address"
+msgstr "See on postiaadress"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "See isik on surnud või mitteaktiivne, seega see konto ei saa sisse logida"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Ainult administraator saab kustutada isikut, kellel on sisselogimine."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Viimast administraatorit ei saa kustutada."
+
+#: 
+msgid "Category"
+msgstr "Kategooria"
+
+#: 
+msgid "Category updated."
+msgstr "Kategooria uuendatud."
+
+#: 
+msgid "Delete Category"
+msgstr "Kustuta kategooria"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kategooria kustutamine ebaõnnestus"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kategooria ümbernimetamine ebaõnnestus"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fondi kategooriad"
+
+#: 
+msgid "Fund activated."
+msgstr "Fond aktiveeritud."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fond deaktiveeritud."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Selle kategooria fondid muutuvad kategoriseerimata. Fondid ise ei kustutatakse."
+
+#: 
+msgid "INACTIVE"
+msgstr "Mitteaktiivne"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Uus kategooria nimi (olemasolev nimi ühendab neid kahte)"
+
+#: 
+msgid "Optional"
+msgstr "Valikuline"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Valikuline — valige või sisestage uus kategooria"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Lubatust rohkem makstud"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Lubatud kuid veel maksmata"
+
+#: 
+msgid "Rename Category"
+msgstr "Kategooria ümbernimetamine"
+
+#: 
+msgid "Still Owed"
+msgstr "Veel võlgu"
+
+#: 
+msgid "Summary by Category"
+msgstr "Kokkuvõte kategooriate kaupa"
+
+#: 
+msgid "Total Paid"
+msgstr "Kokku makstud"
+
+#: 
+msgid "Uncategorized"
+msgstr "Kategoriseerimata"
+

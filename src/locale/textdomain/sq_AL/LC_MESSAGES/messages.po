@@ -18779,3 +18779,315 @@ msgstr "për gabimet rreth kohës kur ndodhi kjo, dhe shkarkoni dhe bashkangjitn
 msgid "system logs"
 msgstr "regjistra sistemi"
 
+#: 
+msgid "Access Control & Security"
+msgstr "Kontrolli i Aksesit dhe Siguria"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Lejoni regjistrimin e pagesave që nuk mund të zbriten nga tatimi (p.sh. shitje merce)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Lejoni qasjen e pa-vërtetuar në ngjarje publike (për ngulitjen e kalendarëve)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Lejoni vizitorët të krijojnë rekord familjar të tyre përmes faqes publike të regjistrimit"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Dërgoni automatikisht email-et e ditëlindjes (kërkon planifikuesi i punës në prapavijë)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Email-et e Përshëndetjes për Ditëlindje"
+
+#: 
+msgid "Communication & Email"
+msgstr "Komunikimi dhe Email"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Politika e Sigurimit të Përmbajtjes"
+
+#: 
+msgid "Email System"
+msgstr "Sistemi i Email"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Aktivizoni ose çaktivizoni funksionet për organizatën tuaj"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Aktivizoni/çaktivizoni seksionin e ngjarjeve në navigacionin kryesor"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Aktivizoni/çaktivizoni menynë e Financës dhe të gjithë funksionet e financave (depozita, pagesa, raporte)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Aktivizoni/çaktivizoni menynë e grumbullimit të fondeve"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Zbatoni kokë CSP të rreptë për të mbrojtur kundër sulmeve XSS"
+
+#: 
+msgid "Events Module"
+msgstr "Moduli i Ngjarjeve"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Çelësat e Funksionit"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Çelësat e funksionit kontrollojnë cilat module dhe funksione janë të disponueshme në ChurchCRM. Ndryshimet hyjnë në fuqi menjëherë."
+
+#: 
+msgid "Finance Features"
+msgstr "Funksionet e Financës"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Përfshi adresa në kërkimin global të shpejtë"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Përfshi ngjarjet e kalendarit në kërkimin global të shpejtë"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Përfshi pronësi të familjes së personalizuar në kërkimin global të shpejtë"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Përfshi depozita në kërkimin global të shpejtë"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Përfshi familje në kërkimin global të shpejtë"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Përfshi grupe në kërkimin global të shpejtë"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Përfshi pagesa në kërkimin global të shpejtë"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Përfshi njerëz në kërkimin global të shpejtë"
+
+#: 
+msgid "Invalid setting"
+msgstr "Rregullim i pavlefshëm"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Lidhja e fjalëkalimit të humbur"
+
+#: 
+msgid "Manage All Features"
+msgstr "Menaxhoni të Gjithë Funksionet"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Çelës kryesor për dërgimin e email. I NEVOJSHËM për rivendosjen e fjalëkalimit dhe njoftimet"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Pagesa të pakapshme"
+
+#: 
+msgid "Primary Modules"
+msgstr "Modulet Kryesore"
+
+#: 
+msgid "Public Calendar API"
+msgstr "API i Kalendarit Publik"
+
+#: 
+msgid "Saved"
+msgstr "Ruajtur"
+
+#: 
+msgid "Search Families"
+msgstr "Kërkimi i Familjeve"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Kërkimi i Pronësive të Familjes të Personalizuar"
+
+#: 
+msgid "Search Settings"
+msgstr "Cilësimet e Kërkimit"
+
+#: 
+msgid "Self-Registration"
+msgstr "Regjistrimi i Vetë"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Shfaq opsionin \"Fjalëkalim i humbur\" në ekranin e hyrjes (lejon rivendosje të vetë të përdoruesit)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Shfaq/fshih modulin e Shkolës të Dielës në shiritin anësor"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Nuk mund të çaktivizoni administratorin e vetëm që mund të hyjë"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Nuk mund të shënoni administratorin e vetëm që mund të hyjë si të vdekur"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "I vdekur — nuk mund të hyj"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Futni një adresë të dytë përpara se ta shënoni si adresë postale"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Joaktiv — nuk mund të hyj"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Posta shkon në adresën e dytë; adresa parësore mbetet vendndodhja fizike e përdorur për hartat dhe udhëzimet."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Posta dërgohet në këtë adresë në vend të adresës parësore"
+
+#: 
+msgid "Mailing Address"
+msgstr "Adresa Postale"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Adresa Postale nëse ndryshon"
+
+#: 
+msgid "Primary Address"
+msgstr "Adresa Parësore"
+
+#: 
+msgid "Receives Mail"
+msgstr "Merr Postë"
+
+#: 
+msgid "Second Address"
+msgstr "Adresa e Dytë"
+
+#: 
+msgid "Second Home"
+msgstr "Shtëpia e Dytë"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Personi i lidhur është i vdekur ose joaktiv. Hyrja, seanseve dhe çelësi i API janë bllokuar derisa personi të bëhet përsëri aktiv."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Kjo është adresa postale"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Ky person është i vdekur ose joaktiv, kështu që ky llogari nuk mund të hyj"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Vetëm një administrator mund të fshijë një person që ka një hyrje."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Administratori i fundit nuk mund të fshihet."
+
+#: 
+msgid "Category"
+msgstr "Kategoria"
+
+#: 
+msgid "Category updated."
+msgstr "Kategoria u përditësua."
+
+#: 
+msgid "Delete Category"
+msgstr "Fshi kategorinë"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Dështoi fshirja e kategorisë"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Dështoi ndryshe emri i kategorisë"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategorite e Fondeve"
+
+#: 
+msgid "Fund activated."
+msgstr "Fondi u aktivizua."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fondi u deaktivizua."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Fondet në këtë kategori do të bëhen të pakategorizuara. Vetë fondet nuk fshihen."
+
+#: 
+msgid "INACTIVE"
+msgstr "Joaktiv"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Emri i ri i kategorisë (një emër ekzistues bashkon të dyja)"
+
+#: 
+msgid "Optional"
+msgstr "Opsional"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opsional — zgjedh ose shkruaj një kategori të re"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Paguar përtej premtimit"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Premtuar por akoma nuk është paguar"
+
+#: 
+msgid "Rename Category"
+msgstr "Ndrysho emrin e kategorisë"
+
+#: 
+msgid "Still Owed"
+msgstr "Akoma ka borxh"
+
+#: 
+msgid "Summary by Category"
+msgstr "Përmbledhja sipas kategorisë"
+
+#: 
+msgid "Total Paid"
+msgstr "Totali i paguar"
+
+#: 
+msgid "Uncategorized"
+msgstr "I pakategorizuar"
+

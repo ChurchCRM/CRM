@@ -18986,3 +18986,83 @@ msgstr "Ang tanging administrator lamang ang maaaring magbura ng isang tao na ma
 msgid "The last administrator cannot be deleted."
 msgstr "Ang huling administrator ay hindi maaaring mabura."
 
+#: 
+msgid "Category"
+msgstr "Kategorya"
+
+#: 
+msgid "Category updated."
+msgstr "Nag-update na ang kategorya."
+
+#: 
+msgid "Delete Category"
+msgstr "Burahin ang Kategorya"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Nabigong burahin ang kategorya"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Nabigong baguhin ang pangalan ng kategorya"
+
+#: 
+msgid "Fund Categories"
+msgstr "Mga Kategorya ng Alok"
+
+#: 
+msgid "Fund activated."
+msgstr "Nag-activate na ang alok."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Nag-deactivate na ang alok."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Ang mga alok sa kategoryang ito ay magiging walang kategorya. Ang mga alok mismo ay hindi tinatanggal."
+
+#: 
+msgid "INACTIVE"
+msgstr "Hindi Aktibo"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Pangalan ng bagong kategorya (ang kasalukuyang pangalan ay pinagsasama ang dalawa)"
+
+#: 
+msgid "Optional"
+msgstr "Opsyonal"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opsyonal — pumili o magtype ng bagong kategorya"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Babayaran na lampas sa pangako"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Nangako ngunit hindi pa babayaran"
+
+#: 
+msgid "Rename Category"
+msgstr "Baguhin ang Pangalan ng Kategorya"
+
+#: 
+msgid "Still Owed"
+msgstr "Basta pa rin na Inutang"
+
+#: 
+msgid "Summary by Category"
+msgstr "Buod ayon sa Kategorya"
+
+#: 
+msgid "Total Paid"
+msgstr "Kabuuang Babayaran"
+
+#: 
+msgid "Uncategorized"
+msgstr "Walang Kategorya"
+

@@ -18812,3 +18812,316 @@ msgstr "per errori intorno al momento in cui ciò è accaduto, e scarica e alleg
 msgid "system logs"
 msgstr "registri di sistema"
 
+#: 
+msgid "Access Control & Security"
+msgstr "Controllo accessi e sicurezza"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Consenti la registrazione di pagamenti non deducibili (ad es., vendita di merce)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Consenti accesso non autenticato agli eventi pubblici (per incorporare calendari)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Consenti ai visitatori di creare i propri dossier familiari tramite la pagina di registrazione pubblica"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Invia automaticamente e-mail di compleanno (richiede scheduler di attività in background)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "E-mail di auguri di compleanno"
+
+#: 
+msgid "Communication & Email"
+msgstr "Comunicazione ed e-mail"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Politica di sicurezza dei contenuti"
+
+#: 
+msgid "Email System"
+msgstr "Sistema di e-mail"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Abilita o disabilita le funzioni per la tua organizzazione"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Abilita/disabilita la sezione Eventi nella navigazione principale"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Abilita/disabilita il menu Finanza e tutte le funzioni finanziarie (depositi, pagamenti, report)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Abilita/disabilita il menu Raccolta fondi"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Applica intestazioni CSP rigorose per proteggere da attacchi XSS"
+
+#: 
+msgid "Events Module"
+msgstr "Modulo Eventi"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Toggle funzionalità"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "I toggle delle funzionalità controllano quali moduli e funzioni sono disponibili in ChurchCRM. I cambiamenti hanno effetto immediato."
+
+#: 
+msgid "Finance Features"
+msgstr "Funzioni finanziarie"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Includi indirizzi nella ricerca globale rapida"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Includi eventi del calendario nella ricerca globale rapida"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Includi proprietà familiari personalizzate nella ricerca globale rapida"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Includi depositi nella ricerca globale rapida"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Includi famiglie nella ricerca globale rapida"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Includi ministeri nella ricerca globale rapida"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Includi pagamenti nella ricerca globale rapida"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Includi persone nella ricerca globale rapida"
+
+#: 
+msgid "Invalid setting"
+msgstr "Impostazione non valida"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Collegamento password dimenticata"
+
+#: 
+msgid "Manage All Features"
+msgstr "Gestisci tutte le funzioni"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Toggle master per l'invio di e-mail. RICHIESTO per reimpostazioni password e notifiche"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Pagamenti non deducibili"
+
+#: 
+msgid "Primary Modules"
+msgstr "Moduli principali"
+
+#: 
+msgid "Public Calendar API"
+msgstr "API calendario pubblico"
+
+#: 
+msgid "Saved"
+msgstr "Salvato"
+
+#: 
+msgid "Search Families"
+msgstr "Ricerca famiglie"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Ricerca proprietà personalizzate della famiglia"
+
+#: 
+msgid "Search Settings"
+msgstr "Impostazioni di ricerca"
+
+#: 
+msgid "Self-Registration"
+msgstr "Auto-registrazione"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Mostra l'opzione \"Password dimenticata\" nella schermata di accesso (consente all'utente di reimpostarsi)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Mostra/nascondi il modulo Scuola domenicale nella barra laterale"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Impossibile disattivare l'unico amministratore che può accedere"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Impossibile contrassegnare l'unico amministratore che può accedere come deceduto"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Deceduto — non può accedere"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Inserisci un secondo indirizzo prima di contrassegnarlo come indirizzo postale"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Inattivo — non può accedere"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "La posta va al secondo indirizzo; l'indirizzo principale rimane la posizione fisica utilizzata per mappe e indicazioni."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "La posta viene inviata a questo indirizzo invece di quello principale"
+
+#: 
+msgid "Mailing Address"
+msgstr "Indirizzo postale"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Indirizzo postale se diverso"
+
+#: 
+msgid "Primary Address"
+msgstr "Indirizzo principale"
+
+#: 
+msgid "Receives Mail"
+msgstr "Riceve posta"
+
+#: 
+msgid "Second Address"
+msgstr "Secondo indirizzo"
+
+#: 
+msgid "Second Home"
+msgstr "Seconda casa"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "La persona collegata è deceduta o inattiva. L'accesso, le sessioni e la chiave API sono bloccati finché la persona non viene riattivata."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Questo è l'indirizzo postale"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Questa persona è deceduta o inattiva, quindi questo account non può accedere"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Solo un amministratore può eliminare una persona che ha un accesso."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "L'ultimo amministratore non può essere eliminato."
+
+#: 
+msgid "Category"
+msgstr "Categoria"
+
+#: 
+msgid "Category updated."
+msgstr "Categoria aggiornata."
+
+#: 
+msgid "Delete Category"
+msgstr "Elimina categoria"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Impossibile eliminare la categoria"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Impossibile rinominare la categoria"
+
+#: 
+msgid "Fund Categories"
+msgstr "Categorie di fondi"
+
+#: 
+msgid "Fund activated."
+msgstr "Fondo attivato."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fondo disattivato."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "I fondi in questa categoria diventeranno non categorizzati. I fondi stessi non vengono eliminati."
+
+#: 
+msgid "INACTIVE"
+msgstr "Inattivo\n"
+""
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nuovo nome categoria (un nome esistente unisce i due)"
+
+#: 
+msgid "Optional"
+msgstr "Facoltativo"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Facoltativo — scegli o digita una nuova categoria"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Pagato oltre l'impegno finanziario"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Promesso ma non ancora pagato"
+
+#: 
+msgid "Rename Category"
+msgstr "Rinomina categoria"
+
+#: 
+msgid "Still Owed"
+msgstr "Ancora dovuto"
+
+#: 
+msgid "Summary by Category"
+msgstr "Riepilogo per categoria"
+
+#: 
+msgid "Total Paid"
+msgstr "Totale pagato"
+
+#: 
+msgid "Uncategorized"
+msgstr "Non categorizzato"
+

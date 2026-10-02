@@ -19098,3 +19098,83 @@ msgstr "Tylko administrator może usunąć osobu, która ma login."
 msgid "The last administrator cannot be deleted."
 msgstr "Ostatniego administratora nie można usunąć."
 
+#: 
+msgid "Category"
+msgstr "Kategoria"
+
+#: 
+msgid "Category updated."
+msgstr "Kategoria zaktualizowana."
+
+#: 
+msgid "Delete Category"
+msgstr "Usuń kategorię"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Nie udało się usunąć kategorię"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Nie udało się zmienić nazwę kategorii"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategorie ofiar"
+
+#: 
+msgid "Fund activated."
+msgstr "Kategoria ofiar aktywowana."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Kategoria ofiar wyłączona."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Ofiary w tej kategorii staną się bez kategorii. Same ofiary nie będą usunięte."
+
+#: 
+msgid "INACTIVE"
+msgstr "Nieaktywny"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nowa nazwa kategorii (istniejąca nazwa połączy obie)"
+
+#: 
+msgid "Optional"
+msgstr "Opcjonalne"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opcjonalne — wybierz lub wpisz nową kategorię"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Zapłacone poza zobowiązaniem"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Obiecane, ale jeszcze niezapłacone"
+
+#: 
+msgid "Rename Category"
+msgstr "Zmień nazwę kategorii"
+
+#: 
+msgid "Still Owed"
+msgstr "Jeszcze należne"
+
+#: 
+msgid "Summary by Category"
+msgstr "Podsumowanie wg kategorii"
+
+#: 
+msgid "Total Paid"
+msgstr "Łącznie zapłacone"
+
+#: 
+msgid "Uncategorized"
+msgstr "Bez kategorii"
+

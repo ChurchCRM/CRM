@@ -18986,3 +18986,83 @@ msgstr "เฉพาะผู้ดูแลระบบเท่านั้น
 msgid "The last administrator cannot be deleted."
 msgstr "ไม่สามารถลบผู้ดูแลระบบคนสุดท้ายได้"
 
+#: 
+msgid "Category"
+msgstr "หมวดหมู่"
+
+#: 
+msgid "Category updated."
+msgstr "อัปเดตหมวดหมู่แล้ว"
+
+#: 
+msgid "Delete Category"
+msgstr "ลบหมวดหมู่"
+
+#: 
+msgid "Failed to delete category"
+msgstr "ไม่สามารถลบหมวดหมู่ได้"
+
+#: 
+msgid "Failed to rename category"
+msgstr "ไม่สามารถเปลี่ยนชื่อหมวดหมู่ได้"
+
+#: 
+msgid "Fund Categories"
+msgstr "หมวดหมู่เงินอุดหนุน"
+
+#: 
+msgid "Fund activated."
+msgstr "เปิดใช้เงินอุดหนุนแล้ว"
+
+#: 
+msgid "Fund deactivated."
+msgstr "ปิดใช้เงินอุดหนุนแล้ว"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "เงินอุดหนุนในหมวดหมู่นี้จะกลายเป็นไม่มีหมวดหมู่ เงินอุดหนุนนั้นเองจะไม่ถูกลบ"
+
+#: 
+msgid "INACTIVE"
+msgstr "ไม่ใช้งาน"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "ชื่อหมวดหมู่ใหม่ (ชื่อที่มีอยู่จะรวมสองชื่อ)"
+
+#: 
+msgid "Optional"
+msgstr "ทางเลือก"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "ทางเลือก — เลือกหรือพิมพ์หมวดหมู่ใหม่"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "จ่ายเกินกว่าสัญญา"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "สัญญาแล้วแต่ยังไม่ได้จ่าย"
+
+#: 
+msgid "Rename Category"
+msgstr "เปลี่ยนชื่อหมวดหมู่"
+
+#: 
+msgid "Still Owed"
+msgstr "ยังคงเป็นหนี้"
+
+#: 
+msgid "Summary by Category"
+msgstr "สรุปตามหมวดหมู่"
+
+#: 
+msgid "Total Paid"
+msgstr "รวมจ่าย"
+
+#: 
+msgid "Uncategorized"
+msgstr "ไม่มีหมวดหมู่"
+

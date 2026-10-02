@@ -19115,3 +19115,83 @@ msgstr "Endast en administratör kan radera en person som har en inloggning."
 msgid "The last administrator cannot be deleted."
 msgstr "Den sista administratören kan inte raderas."
 
+#: 
+msgid "Category"
+msgstr "Kategori"
+
+#: 
+msgid "Category updated."
+msgstr "Kategori uppdaterad."
+
+#: 
+msgid "Delete Category"
+msgstr "Ta bort kategori"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kunde inte ta bort kategori"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kunde inte byta namn på kategori"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fondkategorier"
+
+#: 
+msgid "Fund activated."
+msgstr "Fond aktiverad."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fond inaktiverad."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Fonder i denna kategori blir okategoriserade. Fonderna själva raderas inte."
+
+#: 
+msgid "INACTIVE"
+msgstr "Inaktiv"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nytt kategorinamn (ett befintligt namn slår samman de två)"
+
+#: 
+msgid "Optional"
+msgstr "Valfritt"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Valfritt — välj eller skriv in en ny kategori"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Betalt mer än den finansiella förpliktelsen"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Utlovat men ännu inte betalt"
+
+#: 
+msgid "Rename Category"
+msgstr "Byt namn på kategori"
+
+#: 
+msgid "Still Owed"
+msgstr "Fortfarande skyldig"
+
+#: 
+msgid "Summary by Category"
+msgstr "Sammanfattning per kategori"
+
+#: 
+msgid "Total Paid"
+msgstr "Totalt betalt"
+
+#: 
+msgid "Uncategorized"
+msgstr "Utan kategori"
+

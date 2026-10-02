@@ -19078,3 +19078,83 @@ msgstr "只有管理员可以删除有登录名的人。"
 msgid "The last administrator cannot be deleted."
 msgstr "最后一个管理员无法删除。"
 
+#: 
+msgid "Category"
+msgstr "类别"
+
+#: 
+msgid "Category updated."
+msgstr "类别已更新。"
+
+#: 
+msgid "Delete Category"
+msgstr "删除类别"
+
+#: 
+msgid "Failed to delete category"
+msgstr "删除类别失败"
+
+#: 
+msgid "Failed to rename category"
+msgstr "重命名类别失败"
+
+#: 
+msgid "Fund Categories"
+msgstr "财务基金类别"
+
+#: 
+msgid "Fund activated."
+msgstr "财务基金已启用。"
+
+#: 
+msgid "Fund deactivated."
+msgstr "财务基金已停用。"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "此类别中的基金将变为未分类。这些基金本身不会被删除。"
+
+#: 
+msgid "INACTIVE"
+msgstr "待用"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "新类别名称（现有名称会合并这两个）"
+
+#: 
+msgid "Optional"
+msgstr "可选"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "可选 — 选择或输入新类别"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "超出财务承诺的支付"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "已承诺但尚未支付"
+
+#: 
+msgid "Rename Category"
+msgstr "重命名类别"
+
+#: 
+msgid "Still Owed"
+msgstr "仍欠款"
+
+#: 
+msgid "Summary by Category"
+msgstr "按类别汇总"
+
+#: 
+msgid "Total Paid"
+msgstr "支付总额"
+
+#: 
+msgid "Uncategorized"
+msgstr "未分类"
+

@@ -18993,3 +18993,83 @@ msgstr "Solo un administrador puede eliminar a una persona que tiene un inicio d
 msgid "The last administrator cannot be deleted."
 msgstr "El último administrador no puede ser eliminado."
 
+#: 
+msgid "Category"
+msgstr "Categoría"
+
+#: 
+msgid "Category updated."
+msgstr "Categoría actualizada."
+
+#: 
+msgid "Delete Category"
+msgstr "Eliminar categoría"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Error al eliminar la categoría"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Error al cambiar el nombre de la categoría"
+
+#: 
+msgid "Fund Categories"
+msgstr "Categorías de fondos"
+
+#: 
+msgid "Fund activated."
+msgstr "Fondo activado."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fondo desactivado."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Los fondos en esta categoría se volverán sin categoría. Los fondos en sí no se eliminan."
+
+#: 
+msgid "INACTIVE"
+msgstr "Inactivo"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nuevo nombre de categoría (un nombre existente combina los dos)"
+
+#: 
+msgid "Optional"
+msgstr "Opcional"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opcional — elige o escribe una categoría nueva"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Pagado más allá del compromiso financiero"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Comprometido pero aún no pagado"
+
+#: 
+msgid "Rename Category"
+msgstr "Cambiar nombre de categoría"
+
+#: 
+msgid "Still Owed"
+msgstr "Todavía se debe"
+
+#: 
+msgid "Summary by Category"
+msgstr "Resumen por categoría"
+
+#: 
+msgid "Total Paid"
+msgstr "Total pagado"
+
+#: 
+msgid "Uncategorized"
+msgstr "Sin categoría"
+

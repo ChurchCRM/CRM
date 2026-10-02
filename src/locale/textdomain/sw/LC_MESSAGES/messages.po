@@ -18789,3 +18789,315 @@ msgstr "kwa hitilafu karibu na wakati hili lilipotokea, na pakua na uambatishe f
 msgid "system logs"
 msgstr "kumbukumbu za mfumo"
 
+#: 
+msgid "Access Control & Security"
+msgstr "Udhibiti wa Ufikiaji na Usalama"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Ruhusu kurekodi malipo yasiyokatwa kodi (k.m., mauzo ya bidhaa)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Ruhusu ufikiaji bila kuingia kwenye matukio ya umma (kwa ajili ya kupachika kalenda)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "Ruhusu wageni kuunda rekodi za familia zao wenyewe kupitia ukurasa wa usajili wa umma"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Tuma barua pepe za siku ya kuzaliwa kiotomatiki (inahitaji kipanga ratiba cha kazi za usuli)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Barua Pepe za Salamu za Siku ya Kuzaliwa"
+
+#: 
+msgid "Communication & Email"
+msgstr "Mawasiliano na Barua Pepe"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Sera ya Usalama wa Maudhui"
+
+#: 
+msgid "Email System"
+msgstr "Mfumo wa Barua Pepe"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Washa au zima vipengele kwa shirika lako"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Washa/zima sehemu ya Matukio kwenye urambazaji mkuu"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Washa/zima menyu ya Fedha na vipengele vyote vya fedha (amana, malipo, ripoti)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Washa/zima menyu ya Uchangishaji"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Lazimisha vichwa vikali vya CSP kulinda dhidi ya mashambulizi ya XSS"
+
+#: 
+msgid "Events Module"
+msgstr "Moduli ya Matukio"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Swichi za Vipengele"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Swichi za vipengele hudhibiti ni moduli na vipengele vipi vinapatikana katika ChurchCRM. Mabadiliko huanza kutumika mara moja."
+
+#: 
+msgid "Finance Features"
+msgstr "Vipengele vya Fedha"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Jumuisha anwani katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Jumuisha matukio ya kalenda katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Jumuisha sifa maalum za familia katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Jumuisha amana katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Jumuisha familia katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Jumuisha huduma katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Jumuisha malipo katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Jumuisha watu katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Invalid setting"
+msgstr "Mpangilio batili"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Kiungo cha Nenosiri Lililosahaulika"
+
+#: 
+msgid "Manage All Features"
+msgstr "Simamia Vipengele Vyote"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Swichi kuu ya kutuma barua pepe. INAHITAJIKA kwa kuweka upya nenosiri na arifa"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Malipo Yasiyokatwa Kodi"
+
+#: 
+msgid "Primary Modules"
+msgstr "Moduli Kuu"
+
+#: 
+msgid "Public Calendar API"
+msgstr "API ya Kalenda ya Umma"
+
+#: 
+msgid "Saved"
+msgstr "Imehifadhiwa"
+
+#: 
+msgid "Search Families"
+msgstr "Tafuta Familia"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Tafuta Sifa Maalum za Familia"
+
+#: 
+msgid "Search Settings"
+msgstr "Tafuta Mipangilio"
+
+#: 
+msgid "Self-Registration"
+msgstr "Kujisajili Mwenyewe"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Onyesha chaguo la \"Nenosiri Lililosahaulika\" kwenye skrini ya kuingia (huruhusu mtumiaji kujiwekea upya mwenyewe)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Onyesha/ficha moduli ya Shule ya Jumapili kwenye utepe wa pembeni"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Haiwezekani kuzima msimamizi pekee anayeweza kuingia"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Haiwezekani kumwekea alama ya marehemu msimamizi pekee anayeweza kuingia"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Marehemu — hawezi kuingia"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Weka anwani ya pili kabla ya kuiweka kama anwani ya posta"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Hafanyi kazi — hawezi kuingia"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Barua za posta hutumwa kwa anwani ya pili; anwani ya msingi hubaki kuwa mahali halisi panapotumika kwa ramani na maelekezo."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Barua za posta hutumwa kwa anwani hii badala ya anwani ya msingi"
+
+#: 
+msgid "Mailing Address"
+msgstr "Anwani ya Posta"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Anwani ya Posta kama ni Tofauti"
+
+#: 
+msgid "Primary Address"
+msgstr "Anwani ya Msingi"
+
+#: 
+msgid "Receives Mail"
+msgstr "Hupokea Barua za Posta"
+
+#: 
+msgid "Second Address"
+msgstr "Anwani ya Pili"
+
+#: 
+msgid "Second Home"
+msgstr "Nyumba ya Pili"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Mtu aliyeunganishwa ni marehemu au hafanyi kazi. Kuingia, vipindi na ufunguo wa API vimezuiwa hadi mtu huyo afanywe hai tena."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Hii ndiyo anwani ya posta"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Mtu huyu ni marehemu au hafanyi kazi, kwa hiyo akaunti hii haiwezi kuingia"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Msimamizi pekee ndiye anayeweza kumfuta mtu mwenye akaunti ya kuingia."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Msimamizi wa mwisho hawezi kufutwa."
+
+#: 
+msgid "Category"
+msgstr "Kategoria"
+
+#: 
+msgid "Category updated."
+msgstr "Kategoria imesasishwa."
+
+#: 
+msgid "Delete Category"
+msgstr "Futa Kategoria"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Imeshindwa kufuta kategoria"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Imeshindwa kubadilisha jina la kategoria"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategoria za Mfuko"
+
+#: 
+msgid "Fund activated."
+msgstr "Mfuko umewashwa."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Mfuko umezimwa."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Mifuko iliyo katika kategoria hii itakuwa haina kategoria. Mifuko yenyewe haifutwi."
+
+#: 
+msgid "INACTIVE"
+msgstr "Isiyotumika"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Jina jipya la kategoria (jina lililopo likitumika, hizo mbili huunganishwa)"
+
+#: 
+msgid "Optional"
+msgstr "Hiari"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Hiari — chagua au andika kategoria mpya"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Imelipwa zaidi ya ahadi ya kifedha"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Imeahidiwa lakini bado haijalipwa"
+
+#: 
+msgid "Rename Category"
+msgstr "Badilisha Jina la Kategoria"
+
+#: 
+msgid "Still Owed"
+msgstr "Bado Inadaiwa"
+
+#: 
+msgid "Summary by Category"
+msgstr "Muhtasari kwa Kategoria"
+
+#: 
+msgid "Total Paid"
+msgstr "Jumla Iliyolipwa"
+
+#: 
+msgid "Uncategorized"
+msgstr "Haina Kategoria"
+

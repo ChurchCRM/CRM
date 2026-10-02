@@ -19003,3 +19003,83 @@ msgstr "Hanya administrator yang dapat menghapus orang yang memiliki login."
 msgid "The last administrator cannot be deleted."
 msgstr "Administrator terakhir tidak dapat dihapus."
 
+#: 
+msgid "Category"
+msgstr "Kategori"
+
+#: 
+msgid "Category updated."
+msgstr "Kategori telah diperbarui."
+
+#: 
+msgid "Delete Category"
+msgstr "Hapus Kategori"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Gagal menghapus kategori"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Gagal mengganti nama kategori"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategori Persembahan"
+
+#: 
+msgid "Fund activated."
+msgstr "Persembahan telah diaktifkan."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Persembahan telah dinonaktifkan."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Persembahan dalam kategori ini akan menjadi tidak terkategori. Persembahan itu sendiri tidak dihapus."
+
+#: 
+msgid "INACTIVE"
+msgstr "Non-aktif"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nama kategori baru (nama yang ada menggabungkan keduanya)"
+
+#: 
+msgid "Optional"
+msgstr "Opsional"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opsional — pilih atau ketikkan kategori baru"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Dibayar melebihi komitmen keuangan"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Berkomitmen tetapi belum dibayar"
+
+#: 
+msgid "Rename Category"
+msgstr "Ganti Nama Kategori"
+
+#: 
+msgid "Still Owed"
+msgstr "Masih Terhutang"
+
+#: 
+msgid "Summary by Category"
+msgstr "Ringkasan berdasarkan Kategori"
+
+#: 
+msgid "Total Paid"
+msgstr "Total Dibayar"
+
+#: 
+msgid "Uncategorized"
+msgstr "Tidak Terkategori"
+
