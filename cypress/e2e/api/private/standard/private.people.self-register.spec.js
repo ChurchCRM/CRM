@@ -106,6 +106,26 @@ describe("API Private Self-Register Review", () => {
         });
     });
 
+    it("Reports approved and total counts alongside pending", () => {
+        registerPerson().then((personId) => {
+            cy.makePrivateAdminAPICall("GET", "/api/persons/self-register/count", null, 200).then((before) => {
+                cy.makePrivateAdminAPICall("POST", `/api/person/${personId}/approve-review`, null, 200);
+                cy.makePrivateAdminAPICall("GET", "/api/persons/self-register/count", null, 200).then((after) => {
+                    expect(after.body.count).to.eq(before.body.count - 1);
+                    expect(after.body.approved).to.eq(before.body.approved + 1);
+                    expect(after.body.total).to.eq(before.body.total);
+                });
+            });
+        });
+    });
+
+    it("Rejects a second single approve of the same person", () => {
+        registerPerson().then((personId) => {
+            cy.makePrivateAdminAPICall("POST", `/api/person/${personId}/approve-review`, null, 200);
+            cy.makePrivateAdminAPICall("POST", `/api/person/${personId}/approve-review`, null, 400);
+        });
+    });
+
     it("Counts pending registrations", () => {
         pendingCount().then((before) => {
             registerPerson();

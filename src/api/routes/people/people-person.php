@@ -6,6 +6,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\SystemService;
@@ -348,6 +349,15 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON(
                 $response,
                 gettext('This person belongs to a family — approve the family instead'),
+                [],
+                400
+            );
+        }
+
+        if ($person->getEnteredBy() !== Person::SELF_REGISTER || !$person->getNeedsReview()) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('This person is not a pending self-registration'),
                 [],
                 400
             );

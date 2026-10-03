@@ -201,6 +201,15 @@ describe("API Private Family", () => {
                 const ids = response.body.families.map((f) => f.Id);
                 expect(ids).to.not.include(23);
             });
+
+            cy.makePrivateAdminAPICall("GET", "/api/person/116", null, 200).then((response) => {
+                expect(response.body.NeedsReview).to.equal(false);
+            });
+        });
+
+        it("Rejects approving a family that is not a pending self-registration", () => {
+            // family 1 (Campbell) is staff-created
+            cy.makePrivateAdminAPICall("POST", "/api/family/1/approve-review", null, 400);
         });
     });
 

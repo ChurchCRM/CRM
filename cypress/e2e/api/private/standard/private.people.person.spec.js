@@ -198,6 +198,11 @@ describe("API Private Person", () => {
             );
         });
 
+        it("Rejects approval for a person who is not a pending self-registration", () => {
+            // person 1 (Church Admin) is staff-created and family-less
+            cy.makePrivateAdminAPICall("POST", "/api/person/1/approve-review", null, 400);
+        });
+
         it("Rejects approval for a person who belongs to a family", () => {
             // seed.sql person 104 (Mark Smith) belongs to family 21
             cy.makePrivateAdminAPICall(

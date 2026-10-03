@@ -167,10 +167,12 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/self-register/count', function (Request $request, Response $response, array $args): Response {
-        $count = FamilyQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByNeedsReview(true)->count()
-            + PersonQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByFamId(0)->filterByNeedsReview(true)->count();
+        $tally = fn (bool $needsReview): int => FamilyQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByNeedsReview($needsReview)->count()
+            + PersonQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByFamId(0)->filterByNeedsReview($needsReview)->count();
+        $pending = $tally(true);
+        $approved = $tally(false);
 
-        return SlimUtils::renderJSON($response, ['count' => $count]);
+        return SlimUtils::renderJSON($response, ['count' => $pending, 'approved' => $approved, 'total' => $pending + $approved]);
     });
 
     /**

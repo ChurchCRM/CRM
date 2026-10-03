@@ -184,10 +184,16 @@ describe("Self Registrations review page", () => {
             registerPerson().then(({ lastName }) => {
                 cy.intercept("POST", "**/approve-review").as("approveOne");
                 cy.visit("people/self-register");
-                row(lastName).find('[data-bs-toggle="dropdown"]').click();
-                cy.get(".dropdown-menu.show .approve-review").click();
-                cy.wait("@approveOne").its("response.statusCode").should("eq", 200);
-                cy.get("#selfRegistrations tbody").should("not.contain", lastName);
+                cy.get("#selfRegPending").invoke("text").then((pendingBefore) => {
+                    cy.get("#selfRegApproved").invoke("text").then((approvedBefore) => {
+                        row(lastName).find('[data-bs-toggle="dropdown"]').click();
+                        cy.get(".dropdown-menu.show .approve-review").click();
+                        cy.wait("@approveOne").its("response.statusCode").should("eq", 200);
+                        cy.get("#selfRegistrations tbody").should("not.contain", lastName);
+                        cy.get("#selfRegPending").should(($el) => expect(Number($el.text())).to.eq(Number(pendingBefore) - 1));
+                        cy.get("#selfRegApproved").should(($el) => expect(Number($el.text())).to.eq(Number(approvedBefore) + 1));
+                    });
+                });
             });
         });
     });

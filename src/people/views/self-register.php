@@ -31,7 +31,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="fw-medium text-body"><?= $pendingCount ?></div>
+                        <div class="fw-medium text-body" id="selfRegPending"><?= $pendingCount ?></div>
                         <div class="text-body-secondary"><?= gettext('Pending review') ?></div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="fw-medium text-body"><?= $approvedCount ?></div>
+                        <div class="fw-medium text-body" id="selfRegApproved"><?= $approvedCount ?></div>
                         <div class="text-body-secondary"><?= gettext('Approved') ?></div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="fw-medium text-body"><?= $pendingCount + $approvedCount ?></div>
+                        <div class="fw-medium text-body" id="selfRegTotal"><?= $pendingCount + $approvedCount ?></div>
                         <div class="text-body-secondary"><?= gettext('Total registrations') ?></div>
                     </div>
                 </div>
@@ -288,7 +288,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     var approvalInFlight = false;
 
+    function refreshSelfRegisterCounts() {
+        window.CRM.APIRequest({
+            method: 'GET',
+            path: 'persons/self-register/count',
+            suppressErrorDialog: true
+        }).done(function (counts) {
+            $('#selfRegPending').text(counts.count);
+            $('#selfRegApproved').text(counts.approved);
+            $('#selfRegTotal').text(counts.total);
+            window.CRM.dashboard.loadSelfRegisterPendingCount();
+        });
+    }
+
     function reloadSelfRegister() {
+        refreshSelfRegisterCounts();
         $('#selfRegistrations tr.month-group').remove();
         $('#selfRegistrations').DataTable().destroy();
         return initializeSelfRegister().always(function () {

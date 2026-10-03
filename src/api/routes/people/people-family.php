@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
@@ -442,6 +443,16 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/approve-review', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
+
+        if ($family->getEnteredBy() !== Person::SELF_REGISTER || !$family->getNeedsReview()) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('This family is not a pending self-registration'),
+                [],
+                400
+            );
+        }
+
         $con = Propel::getWriteConnection(FamilyTableMap::DATABASE_NAME);
         $con->beginTransaction();
         try {
