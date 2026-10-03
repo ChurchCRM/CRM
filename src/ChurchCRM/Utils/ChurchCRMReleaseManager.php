@@ -95,6 +95,23 @@ class ChurchCRMReleaseManager
                     // Only cache stable releases; skip if latest is a prerelease
                     if ($release->hasVersion() && !$release->isPreRelease()) {
                         $eligibleReleases[] = $release;
+                    } elseif (!$release->hasVersion()) {
+                        try {
+                            $earlier = $client->repo()->releases()->all(
+                                ChurchCRMReleaseManager::GITHUB_USER_NAME,
+                                ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
+                            );
+                        } catch (\Exception $e) {
+                            LoggerUtils::getAppLogger()->warning('Failed to fetch earlier releases from GitHub API', ['error' => $e->getMessage()]);
+                            $earlier = [];
+                        }
+                        foreach ($earlier as $r) {
+                            $candidate = new ChurchCRMRelease($r);
+                            if ($candidate->hasVersion() && !$candidate->isPreRelease()) {
+                                $eligibleReleases[] = $candidate;
+                                break;
+                            }
+                        }
                     }
                 }
             }
