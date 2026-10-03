@@ -38,16 +38,21 @@ describe("API — Cart to Family", () => {
      * directly to the login endpoint. Must be called AFTER any
      * makePrivateAdminAPICall() that clobbered the session cookie.
      */
+    before(() => {
+        cy.rememberTestEnv(["standard.username", "standard.password", "admin.api.key"]);
+    });
+
     function freshStandardLogin() {
         cy.request({
             method: "POST",
             url: "/session/begin",
             form: true,
             body: {
-                User: Cypress.env("standard.username"),
-                Password: Cypress.env("standard.password"),
+                User: Cypress.testEnv("standard.username"),
+                Password: Cypress.testEnv("standard.password"),
             },
             followRedirect: false, // 302 → /v2/dashboard on success
+            log: false,
         });
     }
 
@@ -100,7 +105,7 @@ describe("API — Cart to Family", () => {
         cy.request({
             method: "GET",
             url: "/api/families/latest",
-            headers: { "X-API-Key": Cypress.env("admin.api.key") },
+            headers: { "X-API-Key": Cypress.testEnv("admin.api.key") },
             failOnStatusCode: false,
         }).then((resp) => {
             const latestFamilies = (resp.body && resp.body.families) ? resp.body.families : [];
@@ -131,7 +136,7 @@ describe("API — Cart to Family", () => {
                 method: "POST",
                 url: ROUTE,
                 form: true,
-                headers: { "X-API-Key": Cypress.env("admin.api.key") },
+                headers: { "X-API-Key": Cypress.testEnv("admin.api.key") },
                 body: {
                     FamilyID: "0",
                     FamilyName: "",
@@ -151,7 +156,7 @@ describe("API — Cart to Family", () => {
             cy.request({
                 method: "GET",
                 url: "/api/families/latest",
-                headers: { "X-API-Key": Cypress.env("admin.api.key") },
+                headers: { "X-API-Key": Cypress.testEnv("admin.api.key") },
                 failOnStatusCode: false,
             }).then((afterResp) => {
                 const latestFamiliesAfter = (afterResp.body && afterResp.body.families) ? afterResp.body.families : [];

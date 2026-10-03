@@ -4,6 +4,7 @@ import { setupCommonNodeEvents } from './_shared'
 
 export default defineConfig({
   ...base,
+  allowCypressEnv: false,
   env: {
     ...base.env,
     'db.host': 'database-new-system',

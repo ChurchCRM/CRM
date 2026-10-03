@@ -128,13 +128,15 @@ describe("GET /api/families/verify-email-preview", () => {
         it("returns 403 when the caller lacks EditRecords permission", () => {
             // limited.api.key = limitedUserApiKeyForTesting123456789012345678
             // This user has no EditRecords role → EditRecordsRoleAuthMiddleware rejects.
+            cy.readEnv("limited.api.key").then((apiKey) => {
             cy.apiRequest({
                 method: "GET",
                 url: "/api/families/verify-email-preview",
-                headers: { "x-api-key": Cypress.env("limited.api.key") },
+                headers: { "x-api-key": apiKey },
                 failOnStatusCode: false,
             }).then((resp) => {
                 expect(resp.status).to.equal(403);
+            });
             });
         });
     });

@@ -24,16 +24,9 @@ describe("Confirmation Reports - MVC Routes", () => {
      * contamination from prior tests.
      * Pattern follows cypress/e2e/ui/people/standard.cart-to-family.spec.js.
      */
-    function freshAdminLogin() {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(Cypress.env("admin.username"));
-        cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-        cy.url().should("not.include", "/session/begin");
-    }
 
     beforeEach(() => {
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
         cy.visit("/LettersAndLabels.php");
     });
 
@@ -279,7 +272,7 @@ describe("Confirmation Reports - MVC Routes", () => {
     // Part 2: Send Confirmation Preview Modal
     // ================================================================
     describe("People Verify — send confirmation modal", () => {
-        // The outer beforeEach already calls freshAdminLogin(). This inner beforeEach
+        // The outer beforeEach already calls cy.freshAdminFormLogin(). This inner beforeEach
         // only navigates to the verify page — no second login needed.
         beforeEach(() => {
             cy.visit("people/verify");

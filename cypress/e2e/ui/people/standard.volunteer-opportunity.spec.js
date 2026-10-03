@@ -30,7 +30,11 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
     /** @type {number} */
     let opportunityId;
 
-    const adminApiHeaders = () => ({ "x-api-key": Cypress.env("admin.api.key") });
+    const adminApiHeaders = () => ({ "x-api-key": Cypress.testEnv("admin.api.key") });
+
+    before(() => {
+        cy.rememberTestEnv(["admin.api.key"]);
+    });
 
     before(() => {
         // Remove any leftover opportunity from an interrupted earlier run so the

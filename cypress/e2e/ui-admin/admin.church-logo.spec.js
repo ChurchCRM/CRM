@@ -21,15 +21,6 @@ const LOGO_API_URL = "/admin/api/system/church-logo";
  * authentication provider, so a browser session established before an API call
  * is dead afterwards. Always log in fresh AFTER the API calls.
  */
-function freshAdminLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").should("not.be.disabled").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").should("not.be.disabled").type(
-        `${Cypress.env("admin.password")}{enter}`,
-    );
-    cy.url().should("not.include", "/session/begin");
-}
 
 /**
  * Drive the shared Uppy dashboard end to end: open it, hand the file to Uppy's
@@ -126,7 +117,7 @@ describe("Admin - Church Logo", () => {
 
     beforeEach(() => {
         cy.makePrivateAdminAPICall("DELETE", LOGO_API_URL, null, 200);
-        freshAdminLogin();
+        cy.freshAdminFormLogin({ enabled: true });
     });
 
     after(() => {
@@ -257,7 +248,7 @@ describe("Admin - Church Logo", () => {
             { imgBase64: `data:image/png;base64,${LOGO_PNG_BASE64}` },
             200,
         );
-        freshAdminLogin();
+        cy.freshAdminFormLogin({ enabled: true });
         cy.visit("/admin/system/church-info");
 
         cy.intercept("DELETE", `**${LOGO_API_URL}`).as("deleteLogo");

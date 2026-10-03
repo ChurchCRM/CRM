@@ -9,19 +9,15 @@
 // ***********************************************
 
 // -- Modern API command patterns --
-Cypress.Commands.add(
-    "makePrivateAdminAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.makePrivateAPICall(
-            Cypress.env("admin.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
+
+function privateApiCall(keyName) {
+    return (method, url, body, expectedStatus = 200, timeoutMs) =>
+        cy.readEnv(keyName).then((key) =>
+            cy.makePrivateAPICall(key, method, url, body, expectedStatus, timeoutMs),
         );
-    },
-);
+}
+
+Cypress.Commands.add("makePrivateAdminAPICall", privateApiCall("admin.api.key"));
 
 // Effective value of a SystemConfig key (the default when no config_cfg row exists).
 Cypress.Commands.add("getSystemConfig", (name) => {
@@ -43,109 +39,25 @@ Cypress.Commands.add("restoreSystemConfig", (name, value) => {
     cy.getSystemConfig(name).should("eq", value);
 });
 
-Cypress.Commands.add(
-    "makePrivateUserAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.makePrivateAPICall(
-            Cypress.env("user.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+Cypress.Commands.add("makePrivateUserAPICall", privateApiCall("user.api.key"));
 
-Cypress.Commands.add(
-    "makePrivateFinanceOnlyAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        // grace.financeonly (id=904): Finance=1, non-admin.
-        // Used to verify Finance-role (not Admin) can access /finance/api/funds CRUD.
-        return cy.makePrivateAPICall(
-            Cypress.env("finance.only.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+// grace.financeonly (id=904): Finance=1, non-admin.
+// Used to verify Finance-role (not Admin) can access /finance/api/funds CRUD.
+Cypress.Commands.add("makePrivateFinanceOnlyAPICall", privateApiCall("finance.only.api.key"));
 
-Cypress.Commands.add(
-    "makePrivateManageGroupsOnlyAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        // kyle.kioskonly (id=905): ManageGroups=1, non-admin.
-        // Used to verify ManageGroups-role can access /kiosk/api/* endpoints.
-        return cy.makePrivateAPICall(
-            Cypress.env("managegroups.only.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+// kyle.kioskonly (id=905): ManageGroups=1, non-admin.
+// Used to verify ManageGroups-role can access /kiosk/api/* endpoints.
+Cypress.Commands.add("makePrivateManageGroupsOnlyAPICall", privateApiCall("managegroups.only.api.key"));
 
-Cypress.Commands.add(
-    "makePrivateNoFinanceAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.makePrivateAPICall(
-            Cypress.env("nofinance.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+Cypress.Commands.add("makePrivateNoFinanceAPICall", privateApiCall("nofinance.api.key"));
 
-Cypress.Commands.add(
-    "makePrivateNoManageFundraisersAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        // Backed by a seed user (per_ID=96) with Finance=1 but ManageFundraisers=0.
-        // Proves the ManageFundraisers gate fires independently of the Finance role.
-        return cy.makePrivateAPICall(
-            Cypress.env("nofundraiser.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+// Backed by a seed user (per_ID=96) with Finance=1 but ManageFundraisers=0.
+// Proves the ManageFundraisers gate fires independently of the Finance role.
+Cypress.Commands.add("makePrivateNoManageFundraisersAPICall", privateApiCall("nofundraiser.api.key"));
 
-Cypress.Commands.add(
-    "makePrivatePlainAuthAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.makePrivateAPICall(
-            Cypress.env("plainauth.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+Cypress.Commands.add("makePrivatePlainAuthAPICall", privateApiCall("plainauth.api.key"));
 
-Cypress.Commands.add(
-    "makePrivateEditSelfAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.makePrivateAPICall(
-            Cypress.env("selfedit.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+Cypress.Commands.add("makePrivateEditSelfAPICall", privateApiCall("selfedit.api.key"));
 
 /**
  * EditSelf+Notes user — regression sentinel for FamilyReadMiddleware vs FamilyMiddleware.
@@ -161,99 +73,39 @@ Cypress.Commands.add(
  * full profile/notes for non-own family 1 (FamilyMiddleware, canViewFamily=false). That
  * would make these tests detect a FamilyReadMiddleware→FamilyMiddleware regression.
  */
-Cypress.Commands.add(
-    "makePrivateEditSelfPlusNotesAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.makePrivateAPICall(
-            Cypress.env("selfedit.plus.notes.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+Cypress.Commands.add("makePrivateEditSelfPlusNotesAPICall", privateApiCall("selfedit.plus.notes.api.key"));
 
-Cypress.Commands.add(
-    "makePrivateLimitedAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        // limited.user (id=4): usr_Notes=0, usr_Admin=0, usr_EditRecords=0,
-        // usr_EditSelf=1 — an EditSelf-ONLY user (NOT a zero-permission user).
-        // EditSelf is exclusive, so AuthMiddleware::isEditSelfExclusive() blocks
-        // this user → always returns 403.
-        // Use this fixture ONLY to verify that Notes-gated endpoints return 403.
-        // Do NOT use for routes that should return 200 for authenticated users
-        // (e.g. timeline) — use makePrivateEditRecordsAPICall instead.
-        //
-        // For a genuinely zero-permission user (all flags 0, EditSelf=0) see
-        // noperm.user (id=901), which now passes the gate with read-only access
-        // under the read-default policy (#9003).
-        return cy.makePrivateAPICall(
-            Cypress.env("limited.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+// limited.user (id=4): usr_Notes=0, usr_Admin=0, usr_EditRecords=0,
+// usr_EditSelf=1 — an EditSelf-ONLY user (NOT a zero-permission user).
+// EditSelf is exclusive, so AuthMiddleware::isEditSelfExclusive() blocks
+// this user → always returns 403.
+// Use this fixture ONLY to verify that Notes-gated endpoints return 403.
+// Do NOT use for routes that should return 200 for authenticated users
+// (e.g. timeline) — use makePrivateEditRecordsAPICall instead.
+//
+// For a genuinely zero-permission user (all flags 0, EditSelf=0) see
+// noperm.user (id=901), which now passes the gate with read-only access
+// under the read-default policy (#9003).
+Cypress.Commands.add("makePrivateLimitedAPICall", privateApiCall("limited.api.key"));
 
-Cypress.Commands.add(
-    "makePrivateEditRecordsAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        // judith.matthews (id=95): usr_EditRecords=1, usr_Notes=0, usr_Admin=0.
-        // Passes AuthMiddleware (has EditRecords permission) but canReadNotes()
-        // returns false (no Notes flag). Use for testing routes that should
-        // return 200 to authenticated users but strip note items (e.g. timeline).
-        return cy.makePrivateAPICall(
-            Cypress.env("editrecords.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+// judith.matthews (id=95): usr_EditRecords=1, usr_Notes=0, usr_Admin=0.
+// Passes AuthMiddleware (has EditRecords permission) but canReadNotes()
+// returns false (no Notes flag). Use for testing routes that should
+// return 200 to authenticated users but strip note items (e.g. timeline).
+Cypress.Commands.add("makePrivateEditRecordsAPICall", privateApiCall("editrecords.api.key"));
 
-Cypress.Commands.add(
-    "makePrivateMenuOptionsAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        // menuoptions.user (id=902): usr_MenuOptions=1, all other permission flags 0,
-        // non-admin, non-EditSelf. Used to verify EditRecords gate on person/family
-        // property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but
-        // is blocked by EditRecordsRoleAuthMiddleware (expects 403 on record routes).
-        return cy.makePrivateAPICall(
-            Cypress.env("menuoptions.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+// menuoptions.user (id=902): usr_MenuOptions=1, all other permission flags 0,
+// non-admin, non-EditSelf. Used to verify EditRecords gate on person/family
+// property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but
+// is blocked by EditRecordsRoleAuthMiddleware (expects 403 on record routes).
+Cypress.Commands.add("makePrivateMenuOptionsAPICall", privateApiCall("menuoptions.api.key"));
 
-Cypress.Commands.add(
-    "makePrivateNoPermAPICall",
-    (method, url, body, expectedStatus = 200, timeoutMs) => {
-        // noperm.user (id=901): every permission flag 0, usr_EditSelf=0,
-        // non-admin. The genuinely zero-permission user — it passes
-        // AuthMiddleware under the read-default policy (#9003) and gets
-        // read-only access, so every write route must answer 403 for it.
-        // Use this to prove a write route carries a role gate at all.
-        return cy.makePrivateAPICall(
-            Cypress.env("noperm.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
-    },
-);
+// noperm.user (id=901): every permission flag 0, usr_EditSelf=0,
+// non-admin. The genuinely zero-permission user — it passes
+// AuthMiddleware under the read-default policy (#9003) and gets
+// read-only access, so every write route must answer 403 for it.
+// Use this to prove a write route carries a role gate at all.
+Cypress.Commands.add("makePrivateNoPermAPICall", privateApiCall("noperm.api.key"));
 
 Cypress.Commands.add(
     "makePrivateAPICall",
@@ -343,7 +195,8 @@ const numericIds = (ids) => (ids || []).filter((id) => Number.isFinite(Number(id
  * record and which step failed.
  */
 function cleanupRequest(label, method, url, body) {
-    return cy
+    return cy.readEnv("admin.api.key").then((apiKey) =>
+        cy
         .request({
             method,
             url,
@@ -351,7 +204,7 @@ function cleanupRequest(label, method, url, body) {
             failOnStatusCode: false,
             headers: {
                 "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
+                "x-api-key": apiKey,
             },
             withCredentials: false,
         })
@@ -362,17 +215,19 @@ function cleanupRequest(label, method, url, body) {
                     `got ${resp.status} ${JSON.stringify(resp.body)}`,
             ).to.be.oneOf(CLEANUP_OK_STATUSES);
             return resp;
-        });
+        }),
+    );
 }
 
 /** Re-read a record after cleanup and fail unless it is gone. */
 function assertGone(label, url) {
-    return cy
+    return cy.readEnv("admin.api.key").then((apiKey) =>
+        cy
         .request({
             method: "GET",
             url,
             failOnStatusCode: false,
-            headers: { "x-api-key": Cypress.env("admin.api.key") },
+            headers: { "x-api-key": apiKey },
             withCredentials: false,
         })
         .then((resp) => {
@@ -380,7 +235,8 @@ function assertGone(label, url) {
                 resp.status,
                 `${label} is still in the database after cleanup (GET ${url} returned ${resp.status}, expected 404)`,
             ).to.eq(404);
-        });
+        }),
+    );
 }
 
 /**

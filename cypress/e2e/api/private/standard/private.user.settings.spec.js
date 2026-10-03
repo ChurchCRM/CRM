@@ -1,6 +1,10 @@
 /// <reference types="cypress" />
 
 describe("API Private User Settings", () => {
+    before(() => {
+        cy.rememberTestEnv(["admin.api.key"]);
+    });
+
     it("Set / GET Current User ui.style", () => {
         const json = { value: "dark" };
         cy.makePrivateUserAPICall(
@@ -15,7 +19,7 @@ describe("API Private User Settings", () => {
             url: "/api/user/3/setting/ui.style",
             headers: {
                 "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
+                "x-api-key": Cypress.testEnv("admin.api.key"),
             },
         }).then((resp) => {
             expect(resp.status).to.eq(200);
@@ -45,7 +49,7 @@ describe("API Private User Settings", () => {
             url: "/api/user/3/setting/ui.theme.primary",
             headers: {
                 "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
+                "x-api-key": Cypress.testEnv("admin.api.key"),
             },
         }).then((resp) => {
             expect(resp.status).to.eq(200);
@@ -75,7 +79,7 @@ describe("API Private User Settings", () => {
             url: "/api/user/3/setting/ui.table.size",
             headers: {
                 "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
+                "x-api-key": Cypress.testEnv("admin.api.key"),
             },
         }).then((resp) => {
             expect(resp.status).to.eq(200);
@@ -105,7 +109,7 @@ describe("API Private User Settings", () => {
             url: "/api/user/3/setting/ui.style",
             headers: {
                 "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
+                "x-api-key": Cypress.testEnv("admin.api.key"),
             },
         }).then((resp) => {
             expect(resp.status).to.eq(200);

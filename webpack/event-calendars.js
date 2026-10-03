@@ -717,11 +717,19 @@ function initializeCalendar() {
   if (window.CRM._calendarResizeHandler) {
     window.removeEventListener("resize", window.CRM._calendarResizeHandler);
   }
-  let _resizeTimer;
+  let resizeTimer;
+  let lastMobile = window.innerWidth < 768;
   window.CRM._calendarResizeHandler = () => {
-    clearTimeout(_resizeTimer);
-    _resizeTimer = setTimeout(() => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
       const nowMobile = window.innerWidth < 768;
+      // setOption forces a FullCalendar relayout. Calling it when the
+      // breakpoint did not change is what leaves ResizeObserver notifications
+      // undelivered in the same frame.
+      if (nowMobile === lastMobile) {
+        return;
+      }
+      lastMobile = nowMobile;
       window.CRM.fullcalendar.setOption("headerToolbar", nowMobile ? mobileHeaderToolbar : desktopHeaderToolbar);
       window.CRM.fullcalendar.setOption("footerToolbar", nowMobile ? mobileFooterToolbar : false);
     }, 200);

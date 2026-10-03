@@ -178,7 +178,8 @@ export function registerRowCountGuard(on: any, config: any) {
     },
   });
 
-  // Tell the support file whether the guard is armed. Configs that do not call
+  // Tell the support file whether the guard is armed. Public flag, read with
+  // Cypress.expose(). Configs that do not call
   // registerRowCountGuard() at all (new-system, locale, upgrade) leave it
   // switched off, which is what we want for suites that deliberately reseed or
   // import demo data.
@@ -191,7 +192,7 @@ export function registerRowCountGuard(on: any, config: any) {
     armed = false;
     console.warn('[row-count-guard] ROW_GUARD_DISABLED is set — the test-database drift guard (#9769) is OFF for this run.');
   }
-  config.env = { ...config.env, rowCountGuard: armed };
+  config.expose = { ...config.expose, rowCountGuard: armed };
 
   return config;
 }

@@ -93,6 +93,7 @@ module.exports = {
     'system-settings-panel': './webpack/system-settings-panel',
     'kiosk-registration-closed': './webpack/kiosk-registration-closed',
     kiosk: './webpack/kiosk',
+    'people-settings': './webpack/people-settings',
     'people-list': './webpack/people/person-list',
     'people-family-list': './webpack/people/family-list',
     'people-family-view': './webpack/people/family-view',

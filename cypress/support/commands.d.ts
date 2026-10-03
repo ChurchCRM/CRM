@@ -20,6 +20,30 @@ declare namespace Cypress {
      * @param password - Credential password
      * @param options - Optional flags (forceLogin bypasses cached session)
      */
+    /**
+     * Read one required Cypress env value. Fails when the key is missing.
+     */
+    readEnv(key: string): Chainable<string>;
+
+    /**
+     * Load env keys for later synchronous reads via Cypress.testEnv().
+     * Optional keys may be undefined; callers apply their own defaults.
+     */
+    rememberTestEnv(keys: string[]): Chainable<Record<string, unknown>>;
+
+    /**
+     * Clear cookies and log in through the admin form. Use after cy.request(),
+     * which replaces the PHP session cy.session() would restore.
+     */
+    freshAdminFormLogin(options?: {
+      clearAll?: boolean;
+      path?: string;
+      timeout?: number;
+      visible?: boolean;
+      enabled?: boolean;
+      sessionCookie?: boolean;
+    }): Chainable<void>;
+
     setupLoginSession(
       sessionName: string,
       username: string,
@@ -579,4 +603,7 @@ declare namespace Cypress {
      */
     waitForNotification(expectedText: string, options?: { timeout?: number }): Chainable<void>;
   }
+
+  /** Value previously loaded with cy.rememberTestEnv(). */
+  function testEnv(key: string): unknown;
 }
