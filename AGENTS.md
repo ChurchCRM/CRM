@@ -51,4 +51,4 @@ Plugin registry URL: `CentralServices::PLUGIN_REGISTRY_URL` (External branch tod
 
 ## Tests
 
-Run the failing spec in isolation before committing test fixes. Do not assume Cypress / Yasumi fixture shapes — read the source. `cy.visit()` paths start with `/`.
+Run the failing spec in isolation before committing test fixes. Before a push, run the specs the change touches locally and check UI changes in a browser at desktop, tablet, and phone widths; UI PRs carry screenshots (`git-workflow.md`, `cypress-testing.md`). Do not assume Cypress / Yasumi fixture shapes — read the source. `cy.visit()` paths start with `/`.
