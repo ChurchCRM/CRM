@@ -195,7 +195,17 @@ if ($bCanManageGroups) {
                             <div class="text-body-secondary small"><?= gettext('Teacher') ?></div>
                         </div>
                         <div class="col-auto d-flex gap-2">
-                            <?php if ($teacher->getEmail()): ?>
+                            <?php if ($teacher->getEmail() && $canEmail): ?>
+                            <button type="button" class="btn btn-sm btn-ghost-primary"
+                                    data-email-composer
+                                    data-email-person-id="<?= (int) $teacher->getId() ?>"
+                                    data-email-address="<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>"
+                                    data-email-name="<?= InputUtils::escapeAttribute($teacher->getFullName()) ?>"
+                                    data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $teacher->getFullName())) ?>"
+                                    title="<?= gettext('Send email from ChurchCRM') ?>: <?= InputUtils::escapeAttribute($teacher->getEmail()) ?>">
+                                <i class="fa-solid fa-envelope"></i>
+                            </button>
+                            <?php elseif ($teacher->getEmail()): ?>
                             <a href="mailto:<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" class="btn btn-sm btn-ghost-primary" title="<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-solid fa-envelope"></i>
                             </a>
@@ -266,7 +276,15 @@ if ($bCanManageGroups) {
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <?php if ($child['kidEmail']): ?>
+                                    <?php if ($child['kidEmail'] && $canEmail): ?>
+                                    <button type="button" class="btn btn-sm btn-ghost-primary py-0 px-1"
+                                            data-email-composer
+                                            data-email-person-id="<?= (int) $child['kidId'] ?>"
+                                            data-email-address="<?= InputUtils::escapeAttribute($child['kidEmail']) ?>"
+                                            data-email-name="<?= InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>"
+                                            data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $child['firstName'] . ' ' . $child['LastName'])) ?>"
+                                            title="<?= gettext('Send email from ChurchCRM') ?>: <?= InputUtils::escapeAttribute($child['kidEmail']) ?>"><i class="fa-solid fa-envelope"></i></button>
+                                    <?php elseif ($child['kidEmail']): ?>
                                     <a href="mailto:<?= InputUtils::escapeAttribute($child['kidEmail']) ?>" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-envelope text-primary"></i></a>
                                     <?php else: ?>
                                     <span class="text-body-secondary">—</span>
@@ -375,7 +393,7 @@ if ($bCanManageGroups) {
                                             <dd class="col-sm-7">
                                                 <a href="<?= Person::getViewURIForId((int) $child['dadId']) ?>"><?= InputUtils::escapeHTML($child['dadFirstName'] . ' ' . $child['dadLastName']) ?></a>
                                                 <?php if ($child['dadCellPhone']): ?><br><small><a href="tel:<?= urlencode($child['dadCellPhone']) ?>"><?= InputUtils::escapeHTML($child['dadCellPhone']) ?></a></small><?php endif; ?>
-                                                <?php if ($child['dadEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['dadEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($child['dadEmail']) ?></a></small><?php endif; ?>
+                                                <?php if ($child['dadEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['dadEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($child['dadEmail']) ?></a><?php if ($canEmail): ?> <button type="button" class="btn btn-sm btn-ghost-primary py-0 px-1" data-email-composer data-email-person-id="<?= (int) $child['dadId'] ?>" data-email-address="<?= InputUtils::escapeAttribute($child['dadEmail']) ?>" data-email-name="<?= InputUtils::escapeAttribute($child['dadFirstName'] . ' ' . $child['dadLastName']) ?>" data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $child['dadFirstName'] . ' ' . $child['dadLastName'])) ?>" title="<?= gettext('Send email from ChurchCRM') ?>"><i class="fa-solid fa-paper-plane"></i></button><?php endif; ?></small><?php endif; ?>
                                             </dd>
                                             <?php endif; ?>
                                             <?php if ($child['momFirstName']): ?>
@@ -383,7 +401,7 @@ if ($bCanManageGroups) {
                                             <dd class="col-sm-7">
                                                 <a href="<?= Person::getViewURIForId((int) $child['momId']) ?>"><?= InputUtils::escapeHTML($child['momFirstName'] . ' ' . $child['momLastName']) ?></a>
                                                 <?php if ($child['momCellPhone']): ?><br><small><a href="tel:<?= urlencode($child['momCellPhone']) ?>"><?= InputUtils::escapeHTML($child['momCellPhone']) ?></a></small><?php endif; ?>
-                                                <?php if ($child['momEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['momEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($child['momEmail']) ?></a></small><?php endif; ?>
+                                                <?php if ($child['momEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['momEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($child['momEmail']) ?></a><?php if ($canEmail): ?> <button type="button" class="btn btn-sm btn-ghost-primary py-0 px-1" data-email-composer data-email-person-id="<?= (int) $child['momId'] ?>" data-email-address="<?= InputUtils::escapeAttribute($child['momEmail']) ?>" data-email-name="<?= InputUtils::escapeAttribute($child['momFirstName'] . ' ' . $child['momLastName']) ?>" data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $child['momFirstName'] . ' ' . $child['momLastName'])) ?>" title="<?= gettext('Send email from ChurchCRM') ?>"><i class="fa-solid fa-paper-plane"></i></button><?php endif; ?></small><?php endif; ?>
                                             </dd>
                                             <?php endif; ?>
                                         </dl>

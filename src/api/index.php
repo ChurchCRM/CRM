@@ -61,6 +61,7 @@ require __DIR__ . '/routes/public/public-register.php';
 require __DIR__ . '/routes/system/property-types.php';
 require __DIR__ . '/routes/system/system-issues.php';
 require __DIR__ . '/routes/cart.php';
+require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/background.php';
 require __DIR__ . '/routes/geocoder.php';
 require __DIR__ . '/routes/search.php';

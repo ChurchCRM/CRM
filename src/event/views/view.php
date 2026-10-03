@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -158,6 +159,20 @@ $inactive = (int) $event->getInActive() === 1;
         $rawEmails = array_unique(array_filter(array_column($nonAttendees, 'email')));
         $nonAttendeeEmails = implode(',', $rawEmails);
         $eventTitle = $event->getTitle();  // raw, not HTML-escaped — used only in URL encoding
+        // Server-side send needs the Email permission on top of a working, enabled SMTP setup.
+        $canSendEmail = $emailEnabled && AuthenticationManager::getCurrentUser()->isEmailEnabled();
+        // Recipients with ids for the composer (one message per person, sent by ChurchCRM).
+        $nonAttendeeRecipients = [];
+        foreach ($nonAttendees as $naRow) {
+            if (!empty($naRow['email'])) {
+                $nonAttendeeRecipients[] = [
+                    'personId' => (int) $naRow['personId'],
+                    'familyId' => null,
+                    'name'     => (string) $naRow['fullName'],
+                    'email'    => (string) $naRow['email'],
+                ];
+            }
+        }
       ?>
       <div class="card">
         <div class="card-header">
@@ -171,7 +186,11 @@ $inactive = (int) $event->getInActive() === 1;
           </h3>
           <?php if (!empty($nonAttendees)): ?>
             <div class="card-options gap-1">
-              <?php if ($emailEnabled && $nonAttendeeEmails !== ''): ?>
+              <?php if ($canSendEmail && $nonAttendeeRecipients !== []): ?>
+                <button type="button" id="event-email-non-attendees" class="btn btn-sm btn-outline-primary">
+                  <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
+                </button>
+              <?php elseif ($emailEnabled && $nonAttendeeEmails !== ''): ?>
                 <a href="mailto:?bcc=<?= htmlspecialchars($nonAttendeeEmails, ENT_QUOTES, 'UTF-8') ?>&amp;subject=<?= rawurlencode($eventTitle) ?>"
                    class="btn btn-sm btn-outline-primary">
                   <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
@@ -208,6 +227,15 @@ $inactive = (int) $event->getInActive() === 1;
                         <a href="mailto:<?= InputUtils::escapeHTML($na['email']) ?>">
                           <?= InputUtils::escapeHTML($na['email']) ?>
                         </a>
+                        <?php if ($canSendEmail): ?>
+                        <button type="button" class="btn btn-sm btn-ghost-primary py-0 px-1"
+                                data-email-composer
+                                data-email-person-id="<?= (int) $na['personId'] ?>"
+                                data-email-address="<?= InputUtils::escapeAttribute($na['email']) ?>"
+                                data-email-name="<?= InputUtils::escapeAttribute($na['fullName']) ?>"
+                                data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $na['fullName'])) ?>"
+                                title="<?= gettext('Send email from ChurchCRM') ?>"><i class="fa-solid fa-paper-plane"></i></button>
+                        <?php endif; ?>
                       <?php else: ?>
                         <span class="text-body-secondary">—</span>
                       <?php endif; ?>
@@ -251,6 +279,27 @@ $inactive = (int) $event->getInActive() === 1;
     <?php endif; ?>
   </div>
 </div>
+
+<?php if (!empty($canSendEmail)): ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  // "Email All" non-attendees: open the composer with the people behind the addresses so
+  // Send posts ids (one message each) rather than one BCC mailto.
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("event-email-non-attendees");
+    if (!btn) return;
+    var recipients = <?= InputUtils::jsonEncodeForScript($nonAttendeeRecipients ?? []) ?>;
+    btn.addEventListener("click", function () {
+      if (!window.CRM || !window.CRM.emailComposer) return;
+      window.CRM.emailComposer.open({
+        title: <?= InputUtils::jsonEncodeForScript(sprintf(gettext('Email non-attendees: %s'), $event->getTitle())) ?>,
+        emails: recipients.map(function (r) { return r.email; }),
+        recipients: recipients
+      });
+    });
+  });
+</script>
+<?php endif; ?>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

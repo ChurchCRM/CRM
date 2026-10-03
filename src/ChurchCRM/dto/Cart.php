@@ -259,6 +259,18 @@ class Cart
      */
     public static function getEmails(): array
     {
+        return array_column(self::getEmailRecipients(), 'email');
+    }
+
+    /**
+     * Returns the cart people who can be emailed, one entry per unique address, with the
+     * person id and name so the composer can send by id (POST /api/email/send).
+     * Respects the iDoNotEmailPropertyId exclusion setting.
+     *
+     * @return list<array{personId: int, familyId: null, name: string, email: string}>
+     */
+    public static function getEmailRecipients(): array
+    {
         self::checkCart();
         $cartIds = array_values(array_filter(array_map('intval', $_SESSION['aPeopleCart']), fn ($id) => $id > 0));
         if (empty($cartIds)) {
@@ -268,7 +280,7 @@ class Cart
         // Delegate to PersonService to avoid duplicating the DoNotEmail exclusion logic
         $doNotEmailSet = (new PersonService())->buildDoNotEmailSet($cartIds);
 
-        $emails = [];
+        $recipients = [];
         $emailsSeen = [];
         // No per_fam_ID filter here: the cart may intentionally contain persons
         // with per_fam_ID=0 (unassigned). We email whoever is in the cart.
@@ -282,11 +294,11 @@ class Cart
             $email = trim((string) $cartPerson->getEmail());
             if ($email !== '' && !isset($emailsSeen[strtolower($email)])) {
                 $emailsSeen[strtolower($email)] = true;
-                $emails[] = $email;
+                $recipients[] = PersonService::mailingRecipient($cartPerson, $email);
             }
         }
 
-        return $emails;
+        return $recipients;
     }
 
     public static function getSMSLink(): string

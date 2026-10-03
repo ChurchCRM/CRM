@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
@@ -233,7 +234,10 @@ class PersonService
      * Member recipients only. The church default address (sToEmailAddress) is a system
      * setting handled by the composer at render time, not returned here.
      *
-     * @return array{emails: string[], byRole: array<string, string[]>}
+     * `recipients` carries the person id and name next to each address so the composer can
+     * send by id (POST /api/email/send) instead of by address.
+     *
+     * @return array{emails: string[], byRole: array<string, string[]>, recipients: list<array{personId: int, familyId: null, name: string, email: string}>}
      */
     public function getMailingEmails(): array
     {
@@ -257,6 +261,7 @@ class PersonService
 
         $emails = [];
         $byRole = [];
+        $recipients = [];
         $emailsSeen = [];
 
         foreach ($persons as $person) {
@@ -269,12 +274,28 @@ class PersonService
             }
             $emailsSeen[strtolower($email)] = true;
             $emails[] = $email;
+            $recipients[] = self::mailingRecipient($person, $email);
 
             $roleName = $roleNameMap[(int) $person->getClsId()] ?? gettext('Member');
             $byRole[$roleName][] = $email;
         }
 
-        return ['emails' => $emails, 'byRole' => $byRole];
+        return ['emails' => $emails, 'byRole' => $byRole, 'recipients' => $recipients];
+    }
+
+    /**
+     * One entry of the `recipients` array returned by the mailing-list methods.
+     *
+     * @return array{personId: int, familyId: null, name: string, email: string}
+     */
+    public static function mailingRecipient(Person $person, string $email): array
+    {
+        return [
+            'personId' => (int) $person->getId(),
+            'familyId' => null,
+            'name'     => $person->getFullName(),
+            'email'    => $email,
+        ];
     }
 
     /**
@@ -286,7 +307,7 @@ class PersonService
      * setting handled by the composer at render time, not returned here.
      *
      * @param \ChurchCRM\model\ChurchCRM\Group $group The Group object (already loaded by GroupMiddleware)
-     * @return array{emails: string[], byRole: array<string, string[]>}
+     * @return array{emails: string[], byRole: array<string, string[]>, recipients: list<array{personId: int, familyId: null, name: string, email: string}>}
      */
     public function getGroupMailingEmails(\ChurchCRM\model\ChurchCRM\Group $group): array
     {
@@ -315,6 +336,7 @@ class PersonService
 
         $emails = [];
         $byRole = [];
+        $recipients = [];
         $emailsSeen = [];
 
         foreach ($memberships as $membership) {
@@ -334,12 +356,13 @@ class PersonService
             }
             $emailsSeen[strtolower($email)] = true;
             $emails[] = $email;
+            $recipients[] = self::mailingRecipient($person, $email);
 
             $roleName = $roleNameMap[(int) $membership->getRoleId()] ?? gettext('Member');
             $byRole[$roleName][] = $email;
         }
 
-        return ['emails' => $emails, 'byRole' => $byRole];
+        return ['emails' => $emails, 'byRole' => $byRole, 'recipients' => $recipients];
     }
 
     /**
