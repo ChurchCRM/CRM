@@ -1,0 +1,11 @@
+{% extends "@default/layout.html.twig" %}
+
+{% block content %}
+<section class="portal-card portal-error portal-error-403">
+    <h1 class="portal-error-title">{{ gettext('You cannot open this page') }}</h1>
+    <p class="portal-error-text">
+        {{ gettext('This page is not part of your account. If you think it should be, ask the church office.') }}
+    </p>
+    <p><a class="portal-button" href="{{ url('/portal/') }}">{{ gettext('Back to the Member Portal') }}</a></p>
+</section>
+{% endblock %}

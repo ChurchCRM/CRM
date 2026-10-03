@@ -4,8 +4,9 @@
  * Use case B — "self-verify" via a token link, opened by someone with NO account.
  * An admin mints the link (GET /api/family/{id}/verify/url) and shares it; the
  * recipient visits /external/verify/{token} with no session. Path A (EditSelf
- * account users) reaches the SAME page and is covered in
- * cypress/e2e/ui/security/limited-access.spec.js.
+ * account users) reaches the SAME page; since the Member Portal landed (#9863)
+ * those users start at /portal, and MP4 moves the verify flow into it —
+ * see cypress/e2e/ui/portal/member.portal-landing.spec.js.
  */
 function verifyPathFromApiUrl(absoluteUrl) {
     const { pathname, search } = new URL(absoluteUrl);
@@ -48,8 +49,11 @@ describe("Family verification — self-verify token link (no account)", () => {
         cy.get("#confirmVerifyBtn").click();
         cy.get("#confirm-Verify").should("be.visible");
         cy.get("#UpdateNeeded").click();
-        cy.get("#confirm-info-data").should("be.visible").click().type("Update needed");
-        cy.get("#confirm-info-data").invoke("val").should("include", "Update");
+        // Bootstrap moves focus to the dialog when its fade-in ends; typing that started
+        // before that moment gets cut off ("Updat"). Let the fade finish, then type.
+        cy.get("#confirm-info-data").should("be.visible");
+        cy.wait(400);
+        cy.get("#confirm-info-data").click().type("Update needed").should("have.value", "Update needed");
     });
 
     it("Should display modal footer buttons", function() {

@@ -19,10 +19,19 @@ class FullCalendarEvent
     public ?string $url = null;
     public string $id;
     public bool $editable;
-    /** @var array<string,string>|null Extra metadata passed through to FullCalendar extendedProps */
+    /** @var array<string,mixed>|null Extra metadata passed through to FullCalendar extendedProps */
     public ?array $extendedProps = null;
 
-    public static function createFromEvent(Event $CRMEvent, Calendar $CRMCalendar): self
+    /**
+     * @param array{gapCount: int, liveCount: int, requiredCount: int, staffed: bool, occurrenceIds: int[]}|null $volunteerStaffing
+     *     Volunteer v2 staffing roll-up for this event (#9713, design §3.5), or null when the
+     *     event has no V2 occurrence the caller may see. Passed in rather than derived here:
+     *     the caller resolves it for the whole feed in one call
+     *     (`VolunteerAssignmentService::getEventStaffingSummary()`), because deriving it per
+     *     event would fan a month of calendar out into one query per row — and because that
+     *     is also where the per-caller scoping lives.
+     */
+    public static function createFromEvent(Event $CRMEvent, Calendar $CRMCalendar, ?array $volunteerStaffing = null): self
     {
         $fce = new self();
 
@@ -68,6 +77,14 @@ class FullCalendarEvent
             }
         } catch (\Throwable $e) {
             // not a holiday event — virtual columns absent
+        }
+
+        // Volunteer v2 staffing (#9713, §3.5). Only set when the caller may actually see
+        // this event's staffing: an event with no visible V2 occurrence keeps exactly the
+        // extendedProps it had before, so nothing downstream has to special-case a zero.
+        if ($volunteerStaffing !== null) {
+            $extendedProps['volunteerGapCount'] = (int) $volunteerStaffing['gapCount'];
+            $extendedProps['volunteerStaffed'] = (bool) $volunteerStaffing['staffed'];
         }
 
         if (!empty($extendedProps)) {

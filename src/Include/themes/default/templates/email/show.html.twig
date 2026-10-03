@@ -1,0 +1,73 @@
+{% extends "layout.html.twig" %}
+
+{#
+  One email from the member's history.
+
+  Variables: `email` (the same shape the list rows use), `body` (the stored
+  HTML, unformatted) and `hasBody` (see docs/portal-templates.md).
+
+  **The stored body is never printed into this document.** It is HTML somebody
+  else wrote, kept exactly as it was sent, so it goes into the `srcdoc` of an
+  iframe with an empty `sandbox` attribute — the strictest form there is: its
+  own opaque origin, no scripts, no forms, no plugins, and no way to navigate
+  the page around it. Twig's autoescaping is what puts it in the attribute
+  safely; an override must keep both the iframe and the escaping. Printing
+  `{{ body }}` anywhere else, or reaching for `|raw`, would hand a member's
+  browser somebody else's markup with the portal's own origin behind it.
+
+  The frame keeps a fixed height rather than growing to fit its content: with
+  an empty `sandbox` the document inside is cross-origin to this page, so its
+  height cannot be measured from here, and the only ways to measure it —
+  `allow-same-origin`, or a script inside the frame — are exactly the two
+  permissions this page must not grant. The frame scrolls instead.
+#}
+
+{% block content %}
+<div class="portal-email-detail" id="portal-email-detail">
+
+    <section class="portal-card">
+        <h1 class="portal-page-title">{{ email.subject|default(gettext('(no subject)')) }}</h1>
+
+        <dl class="portal-detail-list" id="portal-email-meta">
+            <dt>{{ gettext('Date') }}</dt>
+            <dd data-field="dateSent">{{ email.dateSent }}</dd>
+
+            <dt>{{ gettext('Type') }}</dt>
+            <dd data-field="kindLabel">{{ email.kindLabel }}</dd>
+
+            <dt>{{ gettext('Status') }}</dt>
+            <dd data-field="status">
+                <span class="portal-email-status is-{{ email.status }}">{{ email.statusLabel }}</span>
+            </dd>
+
+            <dt>{{ gettext('To') }}</dt>
+            <dd data-field="address">{{ email.address }}</dd>
+        </dl>
+    </section>
+
+    <section class="portal-card">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+            <span>{{ gettext('Message') }}</span>
+        </h2>
+
+        {% if hasBody %}
+        <iframe class="portal-email-body" id="portal-email-body" sandbox=""
+                title="{{ gettext('Email content') }}" srcdoc="{{ body }}"></iframe>
+        {% else %}
+        <p class="portal-card-text" id="portal-email-nobody">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            {{ gettext('The content of this email was not kept.') }}
+        </p>
+        {% endif %}
+    </section>
+
+    <p class="portal-action-row">
+        <a class="portal-button portal-button-quiet" id="portal-email-back" href="{{ url('/portal/email-history') }}">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+            <span>{{ gettext('Back to Email History') }}</span>
+        </a>
+    </p>
+
+</div>
+{% endblock %}

@@ -94,9 +94,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             });
             var people = (peopleResp[0].people || []).map(function (p) {
                 return {
-                    type: 'individual',
+                    // A person proposed for an existing family (the Member
+                    // Portal's "add a family member") is not a standalone
+                    // individual, and staff need to see which family before
+                    // approving. Both still link to the person record.
+                    type: p.FamilyName ? 'familyMember' : 'individual',
                     id: p.Id,
-                    name: p.FullName,
+                    name: p.FamilyName ? p.FullName + ' (' + p.FamilyName + ')' : p.FullName,
                     email: p.Email,
                     phone: p.HomePhone || p.CellPhone,
                     dateEntered: p.DateEntered
@@ -112,9 +116,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         data: 'type',
                         width: '12%',
                         render: function (data) {
-                            return data === 'family'
-                                ? '<span class="badge bg-secondary-lt text-secondary">' + i18next.t('Family') + '</span>'
-                                : '<span class="badge bg-info-lt text-info">' + i18next.t('Individual') + '</span>';
+                            if (data === 'family') {
+                                return '<span class="badge bg-secondary-lt text-secondary">' + i18next.t('Family') + '</span>';
+                            }
+                            if (data === 'familyMember') {
+                                return '<span class="badge bg-warning-lt text-warning">' + i18next.t('Family Member') + '</span>';
+                            }
+                            return '<span class="badge bg-info-lt text-info">' + i18next.t('Individual') + '</span>';
                         }
                     },
                     {

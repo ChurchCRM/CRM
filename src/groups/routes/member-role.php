@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Volunteer\VolunteerException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -86,7 +87,15 @@ $app->post('/{groupID:[0-9]+}/members/{personID:[0-9]+}/role', function (Request
 
     if ($p2g2r !== null) {
         $p2g2r->setRoleId($iNewRole);
-        $p2g2r->save();
+        try {
+            $p2g2r->save();
+        } catch (VolunteerException $e) {
+            // Volunteer v2 (D23): the Teacher role of a linked class is managed by a team.
+            $_SESSION['sGlobalMessage']      = $e->getMessage();
+            $_SESSION['sGlobalMessageClass'] = 'danger';
+
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/groups/view/' . $iGroupID);
+        }
     } else {
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/groups/dashboard');
     }

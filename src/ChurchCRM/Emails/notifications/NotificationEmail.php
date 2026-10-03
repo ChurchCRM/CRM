@@ -68,4 +68,9 @@ class NotificationEmail extends BaseEmail
     {
         return $this->getSubSubject();
     }
+
+    protected function getLogKind(): string
+    {
+        return 'notification';
+    }
 }

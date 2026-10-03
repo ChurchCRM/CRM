@@ -164,6 +164,15 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
                 ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'),               'checked' => $perms['manageGroups']],
                 ['name' => 'Finance',            'label' => gettext('Manage Donations and Finance'),  'checked' => $perms['finance']],
                 ['name' => 'ManageFundraisers', 'label' => gettext('Manage Fundraisers'),              'checked' => $perms['manageFundraisers']],
+                // Volunteer Management v2 (#9706). Rendered in every rollout state, matching
+                // ManageFundraisers rather than the AddEvent row below: a checkbox that
+                // disappears with a system setting would be silently cleared by the next save,
+                // because extractModulePerms() reads every permission from the posted form.
+                ['name' => 'ManageMinistries', 'label' => gettext('Manage Ministries'),                'checked' => $perms['manageMinistries']],
+                // Manage My Ministries (2026-09-18): the coordinator's permission. Opens the
+                // Ministries heading for the ministries the person is made a coordinator of
+                // (on the ministry page), and grants nothing over any other ministry.
+                ['name' => 'ManageMyMinistries', 'label' => gettext('Manage My Ministries'),          'checked' => $perms['manageMyMinistries']],
             ];
             if ($eventsEnabled) {
                 $permissions[] = ['name' => 'AddEvent', 'label' => gettext('Manage Events'), 'checked' => !empty($perms['addEvent'])];

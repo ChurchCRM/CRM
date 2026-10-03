@@ -15,7 +15,7 @@ if (empty($timeline)) { ?>
         <span><?= gettext('No timeline events yet.') ?></span>
     </div>
 <?php } else {
-    $timelineCounts = ['notes' => 0, 'events' => 0, 'system' => 0];
+    $timelineCounts = ['notes' => 0, 'events' => 0, 'email' => 0, 'system' => 0];
     foreach ($timeline as $tlItem) {
         $cat = $tlItem['category'] ?? 'notes';
         if (isset($timelineCounts[$cat])) {
@@ -33,6 +33,12 @@ if (empty($timeline)) { ?>
             <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Events') ?>
             <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['events'] ?></span>
         </button>
+        <?php if ($timelineCounts['email'] > 0) { ?>
+        <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="email">
+            <i class="fa-solid fa-envelope-open-text me-1"></i><?= gettext('Emails') ?>
+            <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['email'] ?></span>
+        </button>
+        <?php } ?>
         <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="system">
             <i class="fa-solid fa-gear me-1"></i><?= gettext('System') ?>
             <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['system'] ?></span>

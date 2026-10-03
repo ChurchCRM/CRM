@@ -1,0 +1,100 @@
+{% extends "layout.html.twig" %}
+
+{#
+  My Family → Confirm your family details.
+
+  The portal's door into the flow the emailed verify link opens: the member
+  says whether anything needs changing, and the answer becomes the same
+  `verify` note staff already review. Posts to POST /api/portal/family/confirm.
+
+  Variables: `family`, `members`, `canEdit`, `canConfirm`
+  (see docs/portal-templates.md).
+#}
+
+{% block content %}
+<div class="portal-family-confirm">
+
+    <section class="portal-card">
+        <h1 class="portal-page-title">{{ gettext('Confirm your family details') }}</h1>
+        <p class="portal-card-text">
+            {{ gettext('Have a look at what the church has on file for your household, then tell us whether it is still right.') }}
+        </p>
+    </section>
+
+    <section class="portal-card">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
+            <span>{{ gettext('Where we reach you') }}</span>
+        </h2>
+        <dl class="portal-detail-list">
+            <dt>{{ gettext('Address') }}</dt>
+            <dd>{{ family.address1|default('—') }}{% if family.address2 %}, {{ family.address2 }}{% endif %}</dd>
+
+            <dt>{{ gettext('City') }}</dt>
+            <dd>{{ family.city|default('—') }}</dd>
+
+            <dt>{{ gettext('State') }}</dt>
+            <dd>{{ family.state|default('—') }}</dd>
+
+            <dt>{{ gettext('Zip') }}</dt>
+            <dd>{{ family.zip|default('—') }}</dd>
+
+            <dt>{{ gettext('Country') }}</dt>
+            <dd>{{ family.country|default('—') }}</dd>
+
+            <dt>{{ gettext('Home Phone') }}</dt>
+            <dd>{{ family.homePhone|default('—') }}</dd>
+
+            <dt>{{ gettext('Email') }}</dt>
+            <dd>{{ family.email|default('—') }}</dd>
+        </dl>
+
+        <ul class="portal-member-list">
+            {% for person in members %}
+            <li class="portal-member{% if person.isSelf %} is-self{% endif %}">
+                <span class="portal-member-text">
+                    <span class="portal-member-fullname">{{ person.fullName }}</span>
+                    <span class="portal-member-role">{{ person.role }}</span>
+                </span>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <form class="portal-card portal-form" id="portal-confirm-form" method="post"
+          action="{{ url('/api/portal/family/confirm') }}" novalidate>
+        {{ csrf_field() }}
+
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <span>{{ gettext('Is this still right?') }}</span>
+        </h2>
+
+        <div class="portal-choice">
+            <input type="radio" id="portal-confirm-no-change" name="result" value="no-change" checked>
+            <label for="portal-confirm-no-change">{{ gettext('Everything is correct') }}</label>
+        </div>
+
+        <div class="portal-choice">
+            <input type="radio" id="portal-confirm-change-needed" name="result" value="change-needed">
+            <label for="portal-confirm-change-needed">{{ gettext('Something needs changing') }}</label>
+        </div>
+
+        <div class="portal-field" id="portal-confirm-comment-field" hidden>
+            <label class="portal-field-label" for="portal-confirm-comment">{{ gettext('What needs changing?') }}</label>
+            <textarea class="portal-input" id="portal-confirm-comment" name="comment" rows="4"></textarea>
+            <p class="portal-field-error" data-error-for="comment" role="alert"></p>
+        </div>
+
+        <div class="portal-form-actions">
+            <button class="portal-button" type="submit" id="portal-confirm-submit">{{ gettext('Send your answer') }}</button>
+            <a class="portal-button portal-button-quiet" href="{{ url('/portal/family') }}">{{ gettext('Cancel') }}</a>
+        </div>
+    </form>
+
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ asset('/skin/v2/portal-family.min.js') }}"></script>
+{% endblock %}

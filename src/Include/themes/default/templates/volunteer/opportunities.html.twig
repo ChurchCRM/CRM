@@ -1,0 +1,106 @@
+{% extends "layout.html.twig" %}
+
+{#
+  S6 — open opportunities, in the Member Portal (MP6, #9867; Member Portal design
+  §5.4, volunteer design §5.6).
+
+  Two lists of the same kind of thing — something a volunteer can say yes to — over
+  `GET /api/ministries/me/help-wanted` and `GET /api/ministries/me/opportunities`.
+  D19's "Ministries looking for help" comes first with its one **I'd like to help**
+  button per ministry; below the section break, "Upcoming availability" holds the
+  scheduled positions, each with a single **Sign up** button. The list is server-side
+  eligibility, and the server re-validates at signup (§3.3.3, D5), so the button is
+  never a trap.
+
+  Both card lists are rendered by `webpack/portal/volunteer-opportunities.ts` from ONE
+  markup builder (`memberCardHtml`), so the two sections read as one page rather
+  than two features. The "nothing open" card below is the static third instance of
+  that same shape — when the builder changes, change this block with it.
+
+  Every id below is one `webpack/portal/volunteer-opportunities.ts` looks for: the bundle
+  did not change when the page moved (P15), so none of them may be renamed here.
+  What DID change is the markup inside them — `#opportunities-empty` is no longer a
+  Tabler `.empty` block but a card in the availability list, carrying the page's only
+  **Back to my schedule** button.
+
+  An empty list is a **first-class state, not an error** (§5.6): a card saying
+  nothing is open right now, never a spinner that never resolves.
+#}
+
+{% block content %}
+<div class="portal-volunteer">
+
+    {% include 'volunteer/partials/tabs.html.twig' %}
+
+    <div id="volunteer-opportunities">
+
+        {#
+          Ministries looking for help (D19, design §5.6).
+
+          ABOVE the shift list on purpose: a volunteer with no qualifications yet
+          sees an empty shift list, and this is the section that gives them
+          somewhere to go. The whole block is hidden by opportunities.ts when no
+          ministry is advertising — a heading over nothing is worse than silence.
+        #}
+        <div class="d-none" id="help-wanted-section">
+            <h3 class="h4 mb-2">{{ gettext('Ministries looking for help') }}</h3>
+            <p class="text-body-secondary">
+                {{ gettext('These ministries would like more people. Tell them you are interested and someone will be in touch.') }}
+            </p>
+            <div id="help-wanted-content"></div>
+            <hr class="my-4">
+        </div>
+
+        {#
+          Upcoming availability. Unlike the section above, this heading pair is
+          ALWAYS shown: "nothing is open" is an answer to the question the page
+          asks, and a member who came here to look for a slot deserves to be told
+          that in words rather than to find the page apparently missing a section.
+        #}
+        <h3 class="h4 mb-2">{{ gettext('Upcoming availability') }}</h3>
+        <p class="text-body-secondary">
+            {{ gettext('These scheduled positions still need someone.') }}
+        </p>
+
+        <div class="volunteer-loading text-center py-4" id="opportunities-loading">
+            <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+            {{ gettext('Loading') }}
+        </div>
+
+        <div class="alert alert-danger d-none" role="alert" id="opportunities-error">
+            <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+            <span class="volunteer-error-text"></span>
+            <button type="button" class="btn btn-sm btn-outline-danger ms-2" id="opportunities-retry">{{ gettext('Retry') }}</button>
+        </div>
+
+        <div class="d-none" id="opportunities-empty">
+            <div class="card mb-3 volunteer-nothing-open-card">
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2 justify-content-between align-items-start">
+                        <div>
+                            <div class="volunteer-card-title volunteer-nothing-open-title fw-bold">
+                                <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>{{ gettext('Nothing open right now') }}
+                            </div>
+                            <p class="volunteer-card-text text-body-secondary mt-2 mb-0">
+                                {{ gettext('We will email you when something needs filling.') }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-3 d-grid gap-2 d-sm-flex volunteer-card-actions">
+                        <a class="btn btn-primary volunteer-touch-target" href="{{ url('/portal/volunteer/schedule') }}">
+                            <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>{{ gettext('Back to my schedule') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-none" id="opportunities-content"></div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/portal-volunteer-opportunities.min.js') }}"></script>
+{% endblock %}

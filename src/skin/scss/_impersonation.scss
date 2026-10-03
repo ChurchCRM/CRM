@@ -1,0 +1,57 @@
+// Admin masquerade banner (#9843)
+//
+// Rendered by Include/ImpersonationBanner.php immediately after <body>, so it
+// sits above both the fixed vertical sidebar and the sticky topbar. Those two
+// are position:fixed / position:sticky and therefore ignore the body padding,
+// so `body.impersonating` offsets all three explicitly.
+
+:root {
+    --impersonation-bar-height: 2.5rem;
+}
+
+.impersonation-bar {
+    position: fixed;
+    top: 0;
+    inset-inline: 0;
+    // Above Tabler's sticky topbar and fixed sidebar, below modals/backdrops
+    // so bootbox confirmations still cover it.
+    z-index: 1040;
+    min-height: var(--impersonation-bar-height);
+    border-bottom: 1px solid var(--tblr-border-color);
+}
+
+.impersonation-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.25rem 1rem;
+}
+
+.impersonation-bar-text {
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.impersonation-bar-actions {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+body.impersonating {
+    padding-top: var(--impersonation-bar-height);
+}
+
+body.impersonating .navbar.sticky-top,
+body.impersonating .navbar-vertical {
+    top: var(--impersonation-bar-height);
+}
+
+// The auth-flow layout (HeaderNotLoggedIn.php — login, password reset, 404, the
+// self-service password and 2FA pages) is a full-viewport column flex. Shorten it
+// by the bar so the added body padding does not push the sticky footer past the
+// fold. The Member Portal, where an EditSelf-exclusive masquerade actually lands,
+// carries its own copy of these rules in `_portal-bar.scss` (#9869).
+body.impersonating.page-auth {
+    min-height: calc(100vh - var(--impersonation-bar-height));
+}
