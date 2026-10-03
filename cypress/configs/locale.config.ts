@@ -13,6 +13,11 @@ export default defineConfig({
   viewportHeight: 1080,
   viewportWidth: 1920,
   projectId: 'n4qnyb',
+  allowCypressEnv: false,
+  expose: {
+    // Public suite selector. Override with --expose LOCALE_TIER=full
+    LOCALE_TIER: 'smoke',
+  },
   env: {
     // Shared API keys (used by makePrivateAPICall in setupLocaleAdminSession)
     'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
@@ -21,8 +26,6 @@ export default defineConfig({
     'locale.admin.username': 'locale-admin@churchcrm.test',
     'locale.admin.password': 'changeme',
     'locale.admin.api.key': 'localeAdminApiKeyForTesting1234567890',
-    // Default tier: smoke (15 high-risk locales). Override with --env LOCALE_TIER=full
-    'LOCALE_TIER': 'smoke',
   },
   retries: 0,
   numTestsKeptInMemory: 0,

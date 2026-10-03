@@ -14,6 +14,23 @@ $app->group('/api/system/config/{configName}', function (RouteCollectorProxy $gr
     $group->post('/', 'setConfigValueByNameAPI');
 })->add(AdminRoleAuthMiddleware::class);
 
+/**
+ * @OA\Get(
+ *     path="/admin/api/system/config/{configName}",
+ *     operationId="getSystemConfigValue",
+ *     summary="Get the current value of a system setting",
+ *     description="Returns the stored value, or the shipped default when none is stored. Password settings always return an empty value.",
+ *     tags={"Admin"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="configName", in="path", required=true, @OA\Schema(type="string"), example="iSMTPTimeout"),
+ *     @OA\Response(response=200, description="Setting value",
+ *         @OA\JsonContent(@OA\Property(property="value", type="string", example="10"))
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Admin role required"),
+ *     @OA\Response(response=404, description="Configuration item not found")
+ * )
+ */
 function getConfigValueByNameAPI(Request $request, Response $response, array $args): Response
 {
     $configName = $args['configName'];
@@ -30,6 +47,27 @@ function getConfigValueByNameAPI(Request $request, Response $response, array $ar
     return SlimUtils::renderJSON($response, ['value' => SystemConfig::getValue($configName)]);
 }
 
+/**
+ * @OA\Post(
+ *     path="/admin/api/system/config/{configName}",
+ *     operationId="setSystemConfigValue",
+ *     summary="Set the value of a system setting",
+ *     description="An empty value for a password setting keeps the stored password. A number setting takes a number; it takes an empty value only when its shipped default is empty.",
+ *     tags={"Admin"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="configName", in="path", required=true, @OA\Schema(type="string"), example="iSMTPTimeout"),
+ *     @OA\RequestBody(required=true,
+ *         @OA\JsonContent(@OA\Property(property="value", type="string", example="10"))
+ *     ),
+ *     @OA\Response(response=200, description="Setting saved (password settings return an empty value)",
+ *         @OA\JsonContent(@OA\Property(property="value", type="string", example="10"))
+ *     ),
+ *     @OA\Response(response=400, description="A number setting was given a value that is not a number"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Admin role required"),
+ *     @OA\Response(response=404, description="Configuration item not found")
+ * )
+ */
 function setConfigValueByNameAPI(Request $request, Response $response, array $args): Response
 {
     $configName = $args['configName'];
@@ -45,6 +83,11 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
     // Never overwrite a password with an empty value
     if ($isPassword && empty($value)) {
         return SlimUtils::renderJSON($response, ['value' => '']);
+    }
+
+    $blankAllowed = $value === '' && $configItem->getDefault() === '';
+    if ($configItem->getType() === 'number' && !is_numeric($value) && !$blankAllowed) {
+        return SlimUtils::renderErrorJSON($response, gettext('This setting must be a number'), [], 400, null, $request);
     }
 
     // Sanitization is applied centrally in SystemConfig::setValue() — no duplicate call here.

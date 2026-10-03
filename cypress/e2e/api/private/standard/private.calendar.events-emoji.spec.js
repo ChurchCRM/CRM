@@ -19,6 +19,9 @@ const END = "2099-09-20T10:00:00";
 describe("API Private Calendar Events — utf8mb4 titles (#9736)", () => {
     /** @type {number[]} */
     const createdIds = [];
+    before(() => {
+        cy.rememberTestEnv(["admin.api.key"]);
+    });
 
     /**
      * Look an event up by exact title through GET /api/events.
@@ -42,7 +45,7 @@ describe("API Private Calendar Events — utf8mb4 titles (#9736)", () => {
                 cy.request({
                     method: "DELETE",
                     url: `/api/events/${event.Id}`,
-                    headers: { "x-api-key": Cypress.env("admin.api.key") },
+                    headers: { "x-api-key": Cypress.testEnv("admin.api.key") },
                     failOnStatusCode: false,
                 });
             });
@@ -56,7 +59,7 @@ describe("API Private Calendar Events — utf8mb4 titles (#9736)", () => {
             cy.request({
                 method: "DELETE",
                 url: `/api/events/${id}`,
-                headers: { "x-api-key": Cypress.env("admin.api.key") },
+                headers: { "x-api-key": Cypress.testEnv("admin.api.key") },
                 failOnStatusCode: false,
             });
         });

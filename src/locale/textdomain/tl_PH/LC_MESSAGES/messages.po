@@ -4471,10 +4471,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Para sa pagtukoy ng petsa sa Date-Picker, bilang default: Y-m-d, Sa Pranses: d/m/Y halimbawa."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Listahang pinaghiwalay ng kuwit ng mga PersonID ng mga taong aabisuhan kapag may bagong pamilya o taong naidagdag"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Payagan ang hindi napatunayan na pagbabasa ng mga kaganapan mula sa external calendar API"
 
@@ -7317,10 +7313,6 @@ msgstr "Alisin ang bilang ng presensyang ito?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Piliin ang uri ng rekord na inilalapat ng katangiang ito"
-
-#: 
-msgid "Total Pledges"
-msgstr "Kabuuang Pangako"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10363,10 +10355,6 @@ msgstr "Available ang Update"
 msgid "User must have Notes permission"
 msgstr "Ang user ay dapat may pahintulot sa mga Tala"
 
-#: 
-msgid "Address Defaults"
-msgstr "Mga Default na Address"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10426,10 +10414,6 @@ msgstr "I-configure ang Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Ikonekta ang Mailchimp para i-sync ang mga listahan ng email para sa mga newsletter at campaign."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopyahin mula sa address ng simbahan"
 
 #: 
 msgid "Copy to clipboard"
@@ -10758,10 +10742,6 @@ msgid "The property for which you would like person records returned."
 msgstr "Ang katangian kung saan gusto mong ibalik ang mga rekord ng tao."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ang mga halagang ito ay naka-pre-fill kapag lumilikha ng mga bagong pamilya. Iwanang blangko para mangailangan ng manual na pagpasok."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Yunit na ginagamit para sukatin ang distansya."
 
@@ -10905,10 +10885,6 @@ msgstr "Payagan ang hindi napatunayan na access sa mga kaganapan ng kalendaryo s
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Payagan ang mga bisita na lumikha ng kanilang sariling rekord ng pamilya sa pamamagitan ng pahina ng sariling pagpaparehistro"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Payagan ang mga bisita na mag-self-register bilang mga bagong pamilya."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11186,10 +11162,6 @@ msgstr "Gumagana ang Gravatar sa pamamagitan ng pag-convert ng mga email address
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Itago ang Latitude/Longitude"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Itago ang Address ng Tao"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -17333,6 +17305,10 @@ msgid "Manage Events"
 msgstr "Pamahalaan ang mga Kaganapan"
 
 #: 
+msgid "N/A"
+msgstr "N/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Bagong Deposito"
 
@@ -17975,10 +17951,6 @@ msgid "Errors"
 msgstr "Mga Error"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Ibukod ang mga yumaong miyembro sa naka-print na directory at CSV export."
-
-#: 
 msgid "Failed Files"
 msgstr "Mga Nabigong File"
 
@@ -18295,10 +18267,6 @@ msgid "This Person is Inactive"
 msgstr "Hindi Aktibo ang Taong Ito"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Hinahanap nito ang mga koordinada sa mapa para sa bawat pamilyang kulang nito, gamit ang OpenStreetMap. Pinoproseso nito ang mga pamilya sa mga batch na 50, humigit-kumulang isang minuto bawat batch. Maaari mong iwanang bukas ang pahinang ito habang tumatakbo ito. Magpatuloy?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Yumao na ang taong ito"
 
@@ -18505,14 +18473,6 @@ msgstr "Lahat ng klasipikasyon"
 #: 
 msgid "As an admin, please also review the"
 msgstr "Bilang isang admin, mangyaring suriin din ang"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Awtomatikong magpadala ng email na binati sa kaarawan sa mga taong nasa kanilang kaarawan."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Mga Email ng Kaarawan"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18771,10 +18731,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Payagan ang hindi na-authenticate na access sa mga pampublikong kaganapan (para sa pag-embed ng mga kalendaryo)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Payagan ang mga bisita na lumikha ng kanilang sariling mga talaan ng pamilya sa pamamagitan ng pampublikong pahina ng pagpaparehistro"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Awtomatikong magpadala ng mga email ng kaarawan (kailangan ng background job scheduler)"
 
@@ -18989,4 +18945,160 @@ msgstr "Ang tanging administrator lamang ang maaaring magbura ng isang tao na ma
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Ang huling administrator ay hindi maaaring mabura."
+
+#: 
+msgid "Category"
+msgstr "Kategorya"
+
+#: 
+msgid "Category updated."
+msgstr "Nag-update na ang kategorya."
+
+#: 
+msgid "Delete Category"
+msgstr "Burahin ang Kategorya"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Nabigong burahin ang kategorya"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Nabigong baguhin ang pangalan ng kategorya"
+
+#: 
+msgid "Fund Categories"
+msgstr "Mga Kategorya ng Alok"
+
+#: 
+msgid "Fund activated."
+msgstr "Nag-activate na ang alok."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Nag-deactivate na ang alok."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Ang mga alok sa kategoryang ito ay magiging walang kategorya. Ang mga alok mismo ay hindi tinatanggal."
+
+#: 
+msgid "INACTIVE"
+msgstr "Hindi Aktibo"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Pangalan ng bagong kategorya (ang kasalukuyang pangalan ay pinagsasama ang dalawa)"
+
+#: 
+msgid "Optional"
+msgstr "Opsyonal"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opsyonal — pumili o magtype ng bagong kategorya"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Babayaran na lampas sa pangako"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Nangako ngunit hindi pa babayaran"
+
+#: 
+msgid "Rename Category"
+msgstr "Baguhin ang Pangalan ng Kategorya"
+
+#: 
+msgid "Still Owed"
+msgstr "Basta pa rin na Inutang"
+
+#: 
+msgid "Summary by Category"
+msgstr "Buod ayon sa Kategorya"
+
+#: 
+msgid "Total Paid"
+msgstr "Kabuuang Babayaran"
+
+#: 
+msgid "Uncategorized"
+msgstr "Walang Kategorya"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Hindi ma-load ang kasalukuyang mga setting. I-reload ang pahina para subukang muli."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Dapat numero ang setting na ito"
+
+#: 
+msgid "Child Role"
+msgstr "Tungkulin ng Anak"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Ang pagsama sa direktoryo ay maaari lamang i-toggle para sa listahan ng mga klasipikasyon"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Mensahe ng Pagtanggap 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Mensahe ng Pagtanggap 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Tungkulin ng Puno ng Sambahayan"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Itago ang Address na Walang Pamilya"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Itago ang Petsa ng Pagkakaibigan"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Itago ang mga Subscription sa Newsletter"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Itago ang Petsa ng Kasal"
+
+#: 
+msgid "In Directory"
+msgstr "Nasa Direktoryo"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Isama ang mga Detalye sa mga Abiso"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Mga Tatanggap ng Abiso"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Mga taong aabisuhan kapag may idinagdag na bagong pamilya o tao"
+
+#: 
+msgid "Person initials style"
+msgstr "Istilo ng mga inisyal ng tao"
+
+#: 
+msgid "Person name display style"
+msgstr "Istilo ng pagpapakita ng pangalan ng tao"
+
+#: 
+msgid "Spouse Role"
+msgstr "Tungkulin ng Asawa"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Malalaking Titik na Zip/Postcode"
 

@@ -4497,10 +4497,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "தேதி- எடுப்பவர் (Date-Picker) இல் தேதியை வரையறுக்க, இயல்புநிலைக்கு : Y-m-d, பிரெஞ்சு மொழியில் : d/m/Y எடுத்துக்காட்டாக."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "ஒரு புதிய குடும்பம் அல்லது நபர் சேர்க்கப்படும் போது தெரிவிக்க வேண்டிய நபர்களின் தனிநபர் ஐடிகளின் கமாவால் பிரிக்கப்பட்ட பட்டியல்"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "வெளிப்புற காலண்டர் API இலிருந்து நிகழ்வுகளின் அங்கீகரிக்கப்படாத வாசிப்புகளை அனுமதிக்கவும்"
 
@@ -7356,10 +7352,6 @@ msgstr "இந்த வருகை எண்ணிக்கையை அகற
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "இந்த பண்பு பொருந்தும் பதிவின் வகையைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "Total Pledges"
-msgstr "மொத்த உறுதிமொழிகள்"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10405,10 +10397,6 @@ msgstr "புதுப்பிப்பு கிடைக்கிறது"
 msgid "User must have Notes permission"
 msgstr "பயனருக்கு குறிப்புகள் அனுமதி இருக்க வேண்டும்"
 
-#: 
-msgid "Address Defaults"
-msgstr "முகவரி இயல்புநிலைகள்"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10468,10 +10456,6 @@ msgstr "Vonage ஐ உள்ளமைக்கவும்"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "செய்திமடல் மற்றும் பிரচாரங்களுக்கான ஈமெயில் பட்டியலை ஒத்திசைக்க Mailchimp ஐ இணையுங்கள்."
-
-#: 
-msgid "Copy from church address"
-msgstr "தேவாலய முகவரியிலிருந்து நகலெடுக்கவும்"
 
 #: 
 msgid "Copy to clipboard"
@@ -10800,10 +10784,6 @@ msgid "The property for which you would like person records returned."
 msgstr "நீங்கள் நபர் பதிவுகள் திரும்ப பெற விரும்பும் சொத்து."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "புதிய குடும்பங்களை உருவாக்கும்போது இந்த மதிப்புகள் முன்பே நிரப்பப்படும். கையேடு உள்ளீட்டை அவசியப்படுத்த காலியாக விடவும்."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "தூரத்தை அளவிட பயன்படுத்தப்படும் அலகு."
 
@@ -10947,10 +10927,6 @@ msgstr "பொது HTML, ICS மற்றும் JSON URL-கள் வா�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "சுய-பதிவுப் பக்கம் வாயிலாக, வருகையாளர்கள் தங்களுக்கான குடும்பப் பதிவை அவர்களே உருவாக்கிக்கொள்ள அனுமதி அளித்தல்"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "பார்வையாளர்களை புதிய குடும்பங்களாக சுய-பதிவு செய்ய அனுமதி."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11230,10 +11206,6 @@ msgstr "Gravatar ஆனது மின்னஞ்சல் முகவரி�
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "அட்சரேகை/தீர்க்கரேகையை மறை"
-
-#: 
-msgid "Hide Person Address"
-msgstr "நபர் முகவரியை மறை"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18027,10 +17999,6 @@ msgid "Errors"
 msgstr "பிழைகள்"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "அச்சிடப்பட்ட அடைவு மற்றும் CSV ஏற்றுமதிகளில் இருந்து காலமான உறுப்பினர்களை விலக்கு."
-
-#: 
 msgid "Failed Files"
 msgstr "தோல்வியடைந்த கோப்புகள்"
 
@@ -18347,10 +18315,6 @@ msgid "This Person is Inactive"
 msgstr "இந்த நபர் செயலற்றவர்"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "OpenStreetMap-ஐப் பயன்படுத்தி, வரைபடத் தொகுப்பு எண்கள் இல்லாத ஒவ்வொரு குடும்பத்திற்கும் இது அவற்றைக் கண்டறியும். இது 50 குடும்பங்களின் தொகுதிகளாக, தொகுதிக்கு ஏறக்குறைய ஒரு நிமிடம் என்ற வேகத்தில் செயல்படும். இது இயங்கும்போது இந்தப் பக்கத்தைத் திறந்தே வைக்கலாம். தொடரவா?"
-
-#: 
 msgid "This person is deceased"
 msgstr "இந்த நபர் காலமானவர்"
 
@@ -18557,14 +18521,6 @@ msgstr "அனைத்து வகைப்பாடுகள்"
 #: 
 msgid "As an admin, please also review the"
 msgstr "நிர்வாகி என்ற முறையில், தயவு செய்து பின்வருவனவையும் மதிப்பாய்வு செய்யவும்"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "பிறந்த நாளில் மக்களுக்கு தானாகவே பிறந்த நாள் வாழ்த்து மின்னஞ்சல் அனுப்பவும்."
-
-#: 
-msgid "Birthday Emails"
-msgstr "பிறந்த நாள் மின்னஞ்சல்கள்"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18823,10 +18779,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "பொது நிகழ்வுகளுக்கு அங்கீகாரம் இல்லாமல் அணுகல் அனுமதி (கலெண்டர்களை உட்பொதிப்பதற்கு)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "பொது பதிவு பக்கத்தின் மூலம் பார்வையாளர்களை தங்களின் குடும்ப பதிவுகளை உருவாக்க அனுமதி"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "பிறந்தநாள் ஈமெயிலை தானாக அனுப்பவும் (பின்புல வேலை அட்டவணையை தேவை)"
 
@@ -19041,4 +18993,160 @@ msgstr "ஒரு நிர்வாகி மட்டுமே உள்நு
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "கடைசி நிர்வாகிக்கு நீக்க முடியாது."
+
+#: 
+msgid "Category"
+msgstr "வகை"
+
+#: 
+msgid "Category updated."
+msgstr "வகை புதுப்பிக்கப்பட்டது."
+
+#: 
+msgid "Delete Category"
+msgstr "வகையை நீக்கு"
+
+#: 
+msgid "Failed to delete category"
+msgstr "வகையை நீக்க முடியவில்லை"
+
+#: 
+msgid "Failed to rename category"
+msgstr "வகையின் பெயரை மாற்ற முடியவில்லை"
+
+#: 
+msgid "Fund Categories"
+msgstr "நிதி வகைகள்"
+
+#: 
+msgid "Fund activated."
+msgstr "நிதி செயல்படுத்தப்பட்டது."
+
+#: 
+msgid "Fund deactivated."
+msgstr "நிதி செயலிழக்கப்பட்டது."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "இந்த வகையில் உள்ள நிதிகள் வகைப்படுத்தப்படாதவையாக மாறும். நிதிகள் நீக்கப்படாது."
+
+#: 
+msgid "INACTIVE"
+msgstr "செயலற்ற நிலை"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "புதிய வகையின் பெயர் (ஏற்கனவே உள்ள பெயரை உள்ளிட்டால் இரண்டும் இணைக்கப்படும்)"
+
+#: 
+msgid "Optional"
+msgstr "விருப்பத்திற்குரியது"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "விருப்பத்திற்குரியது — வகையைத் தேர்ந்தெடுக்கவும் அல்லது புதியதை உள்ளிடவும்"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "நிதி உறுதிமொழிக்கு மேல் செலுத்தப்பட்டது"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "நிதி உறுதிமொழி அளிக்கப்பட்டது ஆனால் இன்னும் செலுத்தப்படவில்லை"
+
+#: 
+msgid "Rename Category"
+msgstr "வகையின் பெயரை மாற்று"
+
+#: 
+msgid "Still Owed"
+msgstr "இன்னும் செலுத்த வேண்டியது"
+
+#: 
+msgid "Summary by Category"
+msgstr "வகை வாரியான சுருக்கம்"
+
+#: 
+msgid "Total Paid"
+msgstr "மொத்தம் செலுத்தியது"
+
+#: 
+msgid "Uncategorized"
+msgstr "வகைப்படுத்தப்படாதவை"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "தற்போதைய அமைப்புகளை ஏற்ற முடியவில்லை. மீண்டும் முயற்சிக்க பக்கத்தை மீண்டும் ஏற்றவும்."
+
+#: 
+msgid "This setting must be a number"
+msgstr "இந்த அமைப்பு ஒரு எண்ணாக இருக்க வேண்டும்"
+
+#: 
+msgid "Child Role"
+msgstr "பிள்ளையின் பங்கு"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "அடைவில் சேர்ப்பதை வகைப்பாடுகள் பட்டியலுக்கு மட்டுமே மாற்ற முடியும்"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "வரவேற்பு செய்தி 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "வரவேற்பு செய்தி 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "குடும்பத் தலைவரின் பங்கு"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "குடும்பம் இல்லாத முகவரிகளை மறை"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "நட்பு தேதியை மறை"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "செய்திமடல் சந்தாக்களை மறை"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "திருமண தேதியை மறை"
+
+#: 
+msgid "In Directory"
+msgstr "அடைவில்"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "அறிவிப்புகளில் விவரங்களைச் சேர்"
+
+#: 
+msgid "Notification Recipients"
+msgstr "அறிவிப்பைப் பெறுபவர்கள்"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "புதிய குடும்பம் அல்லது நபர் சேர்க்கப்படும்போது அறிவிக்கப்பட வேண்டியவர்கள்"
+
+#: 
+msgid "Person initials style"
+msgstr "நபரின் முதலெழுத்துகளின் பாணி"
+
+#: 
+msgid "Person name display style"
+msgstr "நபரின் பெயர் காட்டும் பாணி"
+
+#: 
+msgid "Spouse Role"
+msgstr "துணைவரின் பங்கு"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "அஞ்சல் குறியீடுகளைப் பெரிய எழுத்தில் காட்டு"
 

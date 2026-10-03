@@ -13,6 +13,8 @@ test.describe('Groups & Ministry', () => {
 
     await captureScreen(page, testInfo, {
       name: 'groups-ministry-overview',
+      title: 'Ministry Groups',
+      category: 'Groups & Events',
       purpose: 'Show ministry group organization and membership',
     });
   });

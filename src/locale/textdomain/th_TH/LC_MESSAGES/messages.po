@@ -4483,10 +4483,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "สำหรับกำหนดวันที่ใน Date-Picker ค่าเริ่มต้น: Y-m-d ในภาษาฝรั่งเศส: d/m/Y เป็นต้น"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "รายการ PersonID ที่คั่นด้วยคอมมาของคนที่จะแจ้งเตือนเมื่อเพิ่มครอบครัวหรือบุคคลใหม่"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "อนุญาตให้อ่านกิจกรรมที่ไม่ได้รับการยืนยันตัวตนจาก API ปฏิทินภายนอก"
 
@@ -7323,10 +7319,6 @@ msgstr "ลบการนับการเข้าร่วมนี้?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "เลือกประเภทระเบียนที่คุณสมบัตินี้ใช้กับ"
-
-#: 
-msgid "Total Pledges"
-msgstr "คำมั่นสัญญาทั้งหมด"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10366,10 +10358,6 @@ msgstr "มีการอัปเดต"
 msgid "User must have Notes permission"
 msgstr "ผู้ใช้ต้องมีสิทธิ์บันทึก"
 
-#: 
-msgid "Address Defaults"
-msgstr "ค่าเริ่มต้นที่อยู่"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10429,10 +10417,6 @@ msgstr "กำหนดค่า Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "เชื่อมต่อ Mailchimp เพื่อซิงค์รายชื่ออีเมลสำหรับจดหมายข่าวและแคมเปญ"
-
-#: 
-msgid "Copy from church address"
-msgstr "คัดลอกจากที่อยู่โบสถ์"
 
 #: 
 msgid "Copy to clipboard"
@@ -10761,10 +10745,6 @@ msgid "The property for which you would like person records returned."
 msgstr "คุณสมบัติที่คุณต้องการให้บันทึกบุคคลส่งคืน"
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "ค่าเหล่านี้ถูกเติมไว้ล่วงหน้าเมื่อสร้างครอบครัวใหม่ ปล่อยให้ว่างเพื่อต้องการการป้อนข้อมูลด้วยตนเอง"
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "หน่วยที่ใช้ในการวัดระยะทาง"
 
@@ -10908,10 +10888,6 @@ msgstr "อนุญาตการเข้าถึงกิจกรรมใ
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "อนุญาตให้ผู้เยี่ยมชมสร้างบันทึกครอบครัวของตนเองผ่านหน้าลงทะเบียนด้วยตนเอง"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "อนุญาตให้ผู้เยี่ยมชมลงทะเบียนตนเองเป็นครอบครัวใหม่"
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11189,10 +11165,6 @@ msgstr "Gravatar ทำงานโดยการแปลงที่อยู
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "ซ่อนละติจูด/ลองจิจูด"
-
-#: 
-msgid "Hide Person Address"
-msgstr "ซ่อนที่อยู่บุคคล"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -17975,10 +17947,6 @@ msgid "Errors"
 msgstr "ข้อผิดพลาด"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "ไม่รวมสมาชิกที่เสียชีวิตแล้วในสมุดรายชื่อที่พิมพ์และการส่งออกไฟล์ CSV"
-
-#: 
 msgid "Failed Files"
 msgstr "ไฟล์ที่ล้มเหลว"
 
@@ -18295,10 +18263,6 @@ msgid "This Person is Inactive"
 msgstr "บุคคลนี้ไม่ได้ใช้งาน"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "ระบบจะค้นหาพิกัดแผนที่ให้กับทุกครอบครัวที่ยังไม่มีพิกัด โดยใช้ OpenStreetMap โดยจะประมวลผลครอบครัวเป็นชุดๆ ละ 50 ครอบครัว ใช้เวลาประมาณหนึ่งนาทีต่อชุด คุณสามารถเปิดหน้านี้ทิ้งไว้ระหว่างดำเนินการได้ ดำเนินการต่อหรือไม่?"
-
-#: 
 msgid "This person is deceased"
 msgstr "บุคคลนี้เสียชีวิตแล้ว"
 
@@ -18505,14 +18469,6 @@ msgstr "การจำแนกทั้งหมด"
 #: 
 msgid "As an admin, please also review the"
 msgstr "ในฐานะผู้ดูแลระบบ โปรดตรวจสอบด้วย"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "ส่งอีเมลอวยพรวันเกิดไปยังผู้คนโดยอัตโนมัติในวันเกิดของพวกเขา"
-
-#: 
-msgid "Birthday Emails"
-msgstr "อีเมลวันเกิด"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18771,10 +18727,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "อนุญาตการเข้าถึงโดยไม่ได้รับการยืนยันตัวตนต่อกิจกรรมสาธารณะ (สำหรับการฝังปฏิทิน)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "อนุญาตให้ผู้มาเยี่ยมชมสร้างบันทึกครอบครัวของตนเองผ่านหน้าการลงทะเบียนสาธารณะ"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "ส่งอีเมลวันเกิดโดยอัตโนมัติ (ต้องใช้ตัวจัดกำหนดการสำหรับงานพื้นหลัง)"
 
@@ -18989,4 +18941,160 @@ msgstr "เฉพาะผู้ดูแลระบบเท่านั้น
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "ไม่สามารถลบผู้ดูแลระบบคนสุดท้ายได้"
+
+#: 
+msgid "Category"
+msgstr "หมวดหมู่"
+
+#: 
+msgid "Category updated."
+msgstr "อัปเดตหมวดหมู่แล้ว"
+
+#: 
+msgid "Delete Category"
+msgstr "ลบหมวดหมู่"
+
+#: 
+msgid "Failed to delete category"
+msgstr "ไม่สามารถลบหมวดหมู่ได้"
+
+#: 
+msgid "Failed to rename category"
+msgstr "ไม่สามารถเปลี่ยนชื่อหมวดหมู่ได้"
+
+#: 
+msgid "Fund Categories"
+msgstr "หมวดหมู่เงินอุดหนุน"
+
+#: 
+msgid "Fund activated."
+msgstr "เปิดใช้เงินอุดหนุนแล้ว"
+
+#: 
+msgid "Fund deactivated."
+msgstr "ปิดใช้เงินอุดหนุนแล้ว"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "เงินอุดหนุนในหมวดหมู่นี้จะกลายเป็นไม่มีหมวดหมู่ เงินอุดหนุนนั้นเองจะไม่ถูกลบ"
+
+#: 
+msgid "INACTIVE"
+msgstr "ไม่ใช้งาน"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "ชื่อหมวดหมู่ใหม่ (ชื่อที่มีอยู่จะรวมสองชื่อ)"
+
+#: 
+msgid "Optional"
+msgstr "ทางเลือก"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "ทางเลือก — เลือกหรือพิมพ์หมวดหมู่ใหม่"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "จ่ายเกินกว่าสัญญา"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "สัญญาแล้วแต่ยังไม่ได้จ่าย"
+
+#: 
+msgid "Rename Category"
+msgstr "เปลี่ยนชื่อหมวดหมู่"
+
+#: 
+msgid "Still Owed"
+msgstr "ยังคงเป็นหนี้"
+
+#: 
+msgid "Summary by Category"
+msgstr "สรุปตามหมวดหมู่"
+
+#: 
+msgid "Total Paid"
+msgstr "รวมจ่าย"
+
+#: 
+msgid "Uncategorized"
+msgstr "ไม่มีหมวดหมู่"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "ไม่สามารถโหลดการตั้งค่าปัจจุบันได้ โปรดโหลดหน้านี้ใหม่เพื่อลองอีกครั้ง"
+
+#: 
+msgid "This setting must be a number"
+msgstr "การตั้งค่านี้ต้องเป็นตัวเลข"
+
+#: 
+msgid "Child Role"
+msgstr "บทบาทของบุตร"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "การรวมอยู่ในสมุดรายชื่อสามารถสลับได้เฉพาะรายการการจัดประเภทเท่านั้น"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "ข้อความต้อนรับ 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "ข้อความต้อนรับ 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "บทบาทของหัวหน้าครอบครัว"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "ซ่อนที่อยู่ที่ไม่มีครอบครัว"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "ซ่อนวันที่เป็นเพื่อน"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "ซ่อนการสมัครรับจดหมายข่าว"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "ซ่อนวันแต่งงาน"
+
+#: 
+msgid "In Directory"
+msgstr "อยู่ในสมุดรายชื่อ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "รวมรายละเอียดในการแจ้งเตือน"
+
+#: 
+msgid "Notification Recipients"
+msgstr "ผู้รับการแจ้งเตือน"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "บุคคลที่จะได้รับแจ้งเมื่อมีการเพิ่มครอบครัวหรือบุคคลใหม่"
+
+#: 
+msgid "Person initials style"
+msgstr "รูปแบบอักษรย่อของบุคคล"
+
+#: 
+msgid "Person name display style"
+msgstr "รูปแบบการแสดงชื่อบุคคล"
+
+#: 
+msgid "Spouse Role"
+msgstr "บทบาทของคู่สมรส"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "รหัสไปรษณีย์ตัวพิมพ์ใหญ่"
 

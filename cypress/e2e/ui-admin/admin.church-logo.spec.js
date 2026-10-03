@@ -21,15 +21,6 @@ const LOGO_API_URL = "/admin/api/system/church-logo";
  * authentication provider, so a browser session established before an API call
  * is dead afterwards. Always log in fresh AFTER the API calls.
  */
-function freshAdminLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(
-        `${Cypress.env("admin.password")}{enter}`,
-    );
-    cy.url().should("not.include", "/session/begin");
-}
 
 /**
  * Drive the shared Uppy dashboard end to end: open it, hand the file to Uppy's
@@ -126,7 +117,7 @@ describe("Admin - Church Logo", () => {
 
     beforeEach(() => {
         cy.makePrivateAdminAPICall("DELETE", LOGO_API_URL, null, 200);
-        freshAdminLogin();
+        cy.freshAdminFormLogin({ enabled: true });
     });
 
     after(() => {
@@ -165,7 +156,7 @@ describe("Admin - Church Logo", () => {
 
         cy.intercept("POST", `**${LOGO_API_URL}`).as("uploadLogo");
         uploadLogoThroughUppy();
-        cy.wait("@uploadLogo").its("response.statusCode").should("eq", 200);
+        cy.wait("@uploadLogo", { timeout: 15000 }).its("response.statusCode").should("eq", 200);
 
         // The page reloads and renders the new state.
         cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
@@ -190,11 +181,64 @@ describe("Admin - Church Logo", () => {
             uploadLogoThroughUppy(photo);
         });
 
-        cy.wait("@uploadLogo").then(({ request, response }) => {
+        cy.wait("@uploadLogo", { timeout: 15000 }).then(({ request, response }) => {
             expect(JSON.stringify(request.body).length).to.be.lessThan(2 * 1024 * 1024);
             expect(response.statusCode).to.equal(200);
         });
         cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
+    });
+
+    it("Converts an iPhone HEIC photo to JPEG before uploading (#10156)", () => {
+        cy.visit("/admin/system/church-info");
+
+        cy.readFile("cypress/fixtures/test-photo.heic", null).then((heic) => {
+            cy.intercept("POST", `**${LOGO_API_URL}`).as("uploadLogo");
+            uploadLogoThroughUppy({
+                contents: heic,
+                fileName: "IMG_0001.HEIC",
+                mimeType: "image/heic",
+            });
+        });
+
+        cy.wait("@uploadLogo").then(({ request, response }) => {
+            expect(request.body.imgBase64).to.match(/^data:image\/jpeg;base64,/);
+            expect(response.statusCode).to.equal(200);
+        });
+        cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
+    });
+
+    it("Reloads the page only after the server has answered the upload", () => {
+        const events = [];
+        cy.visit("/admin/system/church-info").then(() => {
+            cy.on("window:before:unload", () => events.push("reload"));
+        });
+        cy.intercept("POST", `**${LOGO_API_URL}`, (req) => {
+            req.on("response", (res) => {
+                res.setDelay(2000);
+            });
+            req.on("after:response", () => events.push("response"));
+        });
+
+        uploadLogoThroughUppy();
+
+        cy.get("#church-logo-remove-btn", { timeout: 15000 }).should("be.visible");
+        cy.wrap(events).should("deep.equal", ["response", "reload"]);
+    });
+
+    it("Keeps the page and shows the server's reason when the upload fails", () => {
+        cy.visit("/admin/system/church-info");
+        cy.intercept("POST", `**${LOGO_API_URL}`, {
+            statusCode: 400,
+            body: { message: "Refused for the test" },
+            delay: 2000,
+        }).as("uploadLogo");
+
+        uploadLogoThroughUppy();
+
+        cy.wait("@uploadLogo", { timeout: 15000 });
+        cy.get(".uppy-StatusBar-actionBtn--retry").should("be.visible");
+        cy.get("#uppy-error-container").should("contain", "Refused for the test");
+        cy.get("#church-logo-remove-btn").should("not.exist");
     });
 
     it("Removes the logo and restores the bundled brand assets", () => {
@@ -204,7 +248,7 @@ describe("Admin - Church Logo", () => {
             { imgBase64: `data:image/png;base64,${LOGO_PNG_BASE64}` },
             200,
         );
-        freshAdminLogin();
+        cy.freshAdminFormLogin({ enabled: true });
         cy.visit("/admin/system/church-info");
 
         cy.intercept("DELETE", `**${LOGO_API_URL}`).as("deleteLogo");

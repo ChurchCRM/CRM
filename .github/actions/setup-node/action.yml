@@ -1,0 +1,31 @@
+name: 'Setup Node.js'
+description: 'Single SHA pin for actions/setup-node. Run actions/checkout first.'
+
+inputs:
+  node-version:
+    description: 'Node version'
+    required: false
+    default: ''
+  node-version-file:
+    description: 'File with the Node version'
+    required: false
+    default: ''
+  cache:
+    description: 'Package manager to cache'
+    required: false
+    default: ''
+
+outputs:
+  node-version:
+    description: 'Node version installed'
+    value: ${{ steps.setup-node.outputs.node-version }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: setup-node
+      uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+      with:
+        node-version: ${{ inputs.node-version }}
+        node-version-file: ${{ inputs.node-version-file }}
+        cache: ${{ inputs.cache }}

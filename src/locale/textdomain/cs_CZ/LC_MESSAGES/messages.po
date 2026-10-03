@@ -4494,10 +4494,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Pro definování data v Date-Pickeru, ve výchozím nastavení: Y-m-d, například ve francouzštině: d/m/Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Seznam ID osob oddělených čárkou, které mají být upozorněny na přidání nové rodiny nebo osoby"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Povolení neověřeného čtení událostí z rozhraní API externího kalendáře"
 
@@ -7346,10 +7342,6 @@ msgstr "Odebrat tento počet účasti?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Vyberte typ záznamu, na který se tato vlastnost vztahuje"
-
-#: 
-msgid "Total Pledges"
-msgstr "Celkové sliby"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10395,10 +10387,6 @@ msgstr "Aktualizace k dispozici"
 msgid "User must have Notes permission"
 msgstr "Uživatel musí mít oprávnění pro poznámky"
 
-#: 
-msgid "Address Defaults"
-msgstr "Výchozí hodnoty adresy"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10458,10 +10446,6 @@ msgstr "Konfigurovat Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Připojte Mailchimp k synchronizaci seznamů e-mailů pro zpravodaje a kampáně."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopírovat z adresy kostela"
 
 #: 
 msgid "Copy to clipboard"
@@ -10790,10 +10774,6 @@ msgid "The property for which you would like person records returned."
 msgstr "Vlastnost, pro kterou chcete vrátit záznamy osob."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Tyto hodnoty jsou předvyplněny při vytváření nových rodin. Nechejte prázdné, aby se vyžadoval ruční záznam."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Jednotka používaná k měření vzdálenosti."
 
@@ -10937,10 +10917,6 @@ msgstr "Umožnit neověřený přístup ke kalendářovým událostem prostředn
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Umožnit návštěvníkům vytvořit vlastní rodinný záznam prostřednictvím stránky pro vlastní registraci"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Povolte návštěvníkům registrovat se jako nové rodiny."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11218,10 +11194,6 @@ msgstr "Gravatar funguje tak, že převádí e-mailové adresy na hash (MD5). Sk
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Skrýt zeměpisnou šířku/délku"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Skrýt adresu osoby"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -17370,6 +17342,10 @@ msgid "Manage Events"
 msgstr "Spravovat udalosti"
 
 #: 
+msgid "N/A"
+msgstr "N/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Novy vklad"
 
@@ -18014,10 +17990,6 @@ msgid "Errors"
 msgstr "Chyby"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Vyloučit zesnulé členy z tištěného adresáře a exportů CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Neúspěšné soubory"
 
@@ -18334,10 +18306,6 @@ msgid "This Person is Inactive"
 msgstr "Tato osoba je neaktivní"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Tímto se najdou mapové souřadnice pro všechny rodiny, kterým chybí, pomocí OpenStreetMap. Rodiny se zpracovávají po dávkách po 50, přibližně minutu na dávku. Během průběhu můžete nechat tuto stránku otevřenou. Pokračovat?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Tato osoba je zesnulá"
 
@@ -18544,14 +18512,6 @@ msgstr "Všechny klasifikace"
 #: 
 msgid "As an admin, please also review the"
 msgstr "Jako administrátor si prosím také prohlédněte"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Automaticky odeslat email s přáním k narozeninám osobě v den jejích narozenin."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Emaily k narozeninám"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18796,4 +18756,388 @@ msgstr "kvůli chybám v době, kdy k tomu došlo, a stáhněte a připojte př�
 #: 
 msgid "system logs"
 msgstr "systémové protokoly"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Přístupová kontrola a bezpečnost"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Umožnit zaznamenávání plateb, které nejsou daňově odečitatelné (např. prodej zboží)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Umožnit přístup bez přihlášení k veřejným událostem (pro vkládání kalendářů)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Automaticky odesílat e-maily k narozeninám (vyžaduje plánovač úloh na pozadí)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "E-maily k narozeninám"
+
+#: 
+msgid "Communication & Email"
+msgstr "Komunikace a e-mail"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Zásada zabezpečení obsahu"
+
+#: 
+msgid "Email System"
+msgstr "Systém e-mailu"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Povolení nebo zakázání funkcí pro vaši organizaci"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Povolení/zakázání sekce Události v hlavní navigaci"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Povolení/zakázání menu Finanční a všech finančních funkcí (vklady, platby, zprávy)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Povolení/zakázání menu Fundraising"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Vynucovat přísné záhlaví CSP pro ochranu před XSS útoky"
+
+#: 
+msgid "Events Module"
+msgstr "Modul Události"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Přepínače funkcí"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Přepínače funkcí řídí, které moduly a funkce jsou v ChurchCRM dostupné. Změny se projeví okamžitě."
+
+#: 
+msgid "Finance Features"
+msgstr "Finanční funkce"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Zahrnout adresy v rychlé globální vyhledávání"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Zahrnout kalendářní události v rychlé globální vyhledávání"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Zahrnout vlastní vlastnosti rodiny v rychlé globální vyhledávání"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Zahrnout vklady v rychlé globální vyhledávání"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Zahrnout rodiny v rychlé globální vyhledávání"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Zahrnout ministerstva v rychlé globální vyhledávání"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Zahrnout platby v rychlé globální vyhledávání"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Zahrnout lidi v rychlé globální vyhledávání"
+
+#: 
+msgid "Invalid setting"
+msgstr "Neplatné nastavení"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Odkaz na zapomenuté heslo"
+
+#: 
+msgid "Manage All Features"
+msgstr "Spravovat všechny funkce"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Hlavní přepínač pro odesílání e-mailů. VYŽADOVÁNO pro obnovení hesla a oznámení"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Platby, které nejsou daňově odečitatelné"
+
+#: 
+msgid "Primary Modules"
+msgstr "Primární moduly"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Veřejné API kalendáře"
+
+#: 
+msgid "Saved"
+msgstr "Uloženo"
+
+#: 
+msgid "Search Families"
+msgstr "Vyhledat rodiny"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Vyhledat vlastní vlastnosti rodiny"
+
+#: 
+msgid "Search Settings"
+msgstr "Nastavení vyhledávání"
+
+#: 
+msgid "Self-Registration"
+msgstr "Vlastní registrace"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Zobrazit možnost \"Zapomenuté heslo\" na přihlašovací obrazovce (umožňuje uživateli vlastní resetování)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Zobrazit/skrýt modul neděliské školy v bočním panelu"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Nelze deaktivovat jediného správce, který se může přihlásit"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Nelze označit jediného správce, který se může přihlásit, jako zemřelého"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Zemřelý — nemůže se přihlásit"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Zadejte druhou adresu před označením jako poštovní adresu"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Neaktivní — nemůže se přihlásit"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Pošta jde na druhou adresu; primární adresa zůstává fyzickým umístěním pro mapy a navigaci."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Pošta je odeslána na tuto adresu místo primární adresy"
+
+#: 
+msgid "Mailing Address"
+msgstr "Poštovní adresa"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Poštovní adresa, pokud se liší"
+
+#: 
+msgid "Primary Address"
+msgstr "Primární adresa"
+
+#: 
+msgid "Receives Mail"
+msgstr "Přijímá poštu"
+
+#: 
+msgid "Second Address"
+msgstr "Druhá adresa"
+
+#: 
+msgid "Second Home"
+msgstr "Druhý dům"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Propojená osoba je zemřelá nebo neaktivní. Přihlášení, relace a klíč API jsou blokovány, dokud osoba není opět aktivní."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Toto je poštovní adresa"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Tato osoba je zemřelá nebo neaktivní, takže se tento účet nemůže přihlásit"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Pouze správce může smazat osobu, která má přihlášení."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Poslední správce nelze smazat."
+
+#: 
+msgid "Category"
+msgstr "Kategorie"
+
+#: 
+msgid "Category updated."
+msgstr "Kategorie aktualizována."
+
+#: 
+msgid "Delete Category"
+msgstr "Smazat kategorii"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Nepodařilo se smazat kategorii"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Nepodařilo se přejmenovat kategorii"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategorie darů"
+
+#: 
+msgid "Fund activated."
+msgstr "Kategorie darů aktivována."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Kategorie darů deaktivována."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Dary v této kategorii budou bez kategorie. Dary samotné nejsou smazány."
+
+#: 
+msgid "INACTIVE"
+msgstr "Neaktivní"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nový název kategorie (stávající název sloučí obě)"
+
+#: 
+msgid "Optional"
+msgstr "Volitelné"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Volitelné — vyberte nebo zadejte novou kategorii"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Zaplaceno více než příslib"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Přislíbeno, ale ještě nezaplaceno"
+
+#: 
+msgid "Rename Category"
+msgstr "Přejmenovat kategorii"
+
+#: 
+msgid "Still Owed"
+msgstr "Zbývá zaplatit"
+
+#: 
+msgid "Summary by Category"
+msgstr "Souhrn podle kategorie"
+
+#: 
+msgid "Total Paid"
+msgstr "Celkem zaplaceno"
+
+#: 
+msgid "Uncategorized"
+msgstr "Bez kategorie"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Nepodařilo se načíst aktuální nastavení. Znovu načtěte stránku a zkuste to znovu."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Toto nastavení musí být číslo"
+
+#: 
+msgid "Child Role"
+msgstr "Role dítěte"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Zahrnutí do adresáře lze přepínat pouze pro seznam klasifikací"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Uvítací zpráva 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Uvítací zpráva 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Role hlavy rodiny"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Skrýt adresy bez rodiny"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Skrýt datum přátelství"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Skrýt odběry newsletteru"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Skrýt datum svatby"
+
+#: 
+msgid "In Directory"
+msgstr "V adresáři"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Zahrnout podrobnosti do oznámení"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Příjemci oznámení"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Osoby, které se mají upozornit při přidání nové rodiny nebo osoby"
+
+#: 
+msgid "Person initials style"
+msgstr "Styl iniciál osoby"
+
+#: 
+msgid "Person name display style"
+msgstr "Styl zobrazení jména osoby"
+
+#: 
+msgid "Spouse Role"
+msgstr "Role manžela/manželky"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "PSČ velkými písmeny"
 

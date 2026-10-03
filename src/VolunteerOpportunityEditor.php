@@ -226,6 +226,7 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Admin'), '/admin/'],
     [gettext('Volunteer Opportunities')],
 ]);
+$sPageHeaderButtons = PageHeader::peopleSettingsButton();
 require_once __DIR__ . '/Include/Header.php';
 ?>
 

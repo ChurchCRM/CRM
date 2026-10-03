@@ -4470,10 +4470,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Za definiranje datuma u birač datuma, zadano: G-m-d, Npr. na francuskom: d/m/G."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Popis ID-ova osoba odvojenih zarezom koji se obavještavaju kada se doda nova obitelj ili osoba"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Dopusti neautentificirano čitanje događaja s vanjskog API-ja kalendara"
 
@@ -7320,10 +7316,6 @@ msgstr "Ukloniti ovaj broj prisutnih?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Odaberite vrstu zapisa na koji se ovo svojstvo primjenjuje"
-
-#: 
-msgid "Total Pledges"
-msgstr "Ukupni zavjeti"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10369,10 +10361,6 @@ msgstr "Dostupno ažuriranje"
 msgid "User must have Notes permission"
 msgstr "Korisnik mora imati dozvolu za bilješke"
 
-#: 
-msgid "Address Defaults"
-msgstr "Zadane postavke adrese"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10432,10 +10420,6 @@ msgstr "Konfiguriraj Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Povežite Mailchimp za sinkronizaciju popisa e-pošte za biltene i kampanje."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopiraj s adrese župe"
 
 #: 
 msgid "Copy to clipboard"
@@ -10764,10 +10748,6 @@ msgid "The property for which you would like person records returned."
 msgstr "Svojstvo za koje želite vraćene zapise osoba."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ove vrijednosti su unaprijed ispunjene pri kreiranju novih obitelji. Ostavite prazno za zahtijevanje ručnog unosa."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Jedinica za mjerenje udaljenosti."
 
@@ -10911,10 +10891,6 @@ msgstr "Dozvoli neautentificirani pristup kalendarskim događajima putem javnih 
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Dozvoli posjetiteljima kreiranje vlastitog obiteljskog zapisa putem stranice za samo-registraciju"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Dozvoli posjetiteljima samo-registraciju kao novih obitelji."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11192,10 +11168,6 @@ msgstr "Gravatar funkcionira tako da pretvara adrese e-pošte u hash (MD5). Stva
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Sakrij geografsku širinu/dužinu"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Sakrij adresu osobe"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -17992,10 +17964,6 @@ msgid "Errors"
 msgstr "Greške"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Isključi preminule članove iz tiskanog imenika i CSV izvoza."
-
-#: 
 msgid "Failed Files"
 msgstr "Neuspjele datoteke"
 
@@ -18312,10 +18280,6 @@ msgid "This Person is Inactive"
 msgstr "Ova osoba je neaktivna"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Ovo pronalazi koordinate na karti za sve obitelji kojima nedostaju, koristeći OpenStreetMap. Obrađuje obitelji u skupinama po 50, otprilike minutu po skupini. Možete ostaviti ovu stranicu otvorenom dok se izvršava. Nastaviti?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Ova osoba je preminula"
 
@@ -18522,14 +18486,6 @@ msgstr "Sve klasifikacije"
 #: 
 msgid "As an admin, please also review the"
 msgstr "Kao administrator, molimo vas da također pregledajte"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Automatski pošalji e-poštu za rođendan ljudima na njihov rođendan."
-
-#: 
-msgid "Birthday Emails"
-msgstr "E-pošte za rođendan"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18788,10 +18744,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Dozvoli neautentificirani pristup javnim događajima (za ugrađivanje kalendara)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Dozvoli posjetiteljima da kreiraju vlastite zapise o obitelji kroz stranicu javne registracije"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Automatski slanje e-pošte za rođendane (zahtijeva raspoređivač zadataka u pozadini)"
 
@@ -19006,4 +18958,160 @@ msgstr "Samo administrator može obrisati osobu koja ima prijavu."
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Posljednjeg administratora nije moguće obrisati."
+
+#: 
+msgid "Category"
+msgstr "Kategorija"
+
+#: 
+msgid "Category updated."
+msgstr "Kategorija ažurirana."
+
+#: 
+msgid "Delete Category"
+msgstr "Obriši kategoriju"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Greška pri brisanju kategorije"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Greška pri preimenovanju kategorije"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategorije prinosa"
+
+#: 
+msgid "Fund activated."
+msgstr "Kategorija prinosa aktivirana."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Kategorija prinosa deaktivirana."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Prinosi u ovoj kategoriji će postati bez kategorije. Samo prinosi se neće obrisati."
+
+#: 
+msgid "INACTIVE"
+msgstr "Neaktivan"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Novo ime kategorije (postojeće ime će spojiti oba)"
+
+#: 
+msgid "Optional"
+msgstr "Izbjeglivo"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Izbjeglivo — odaberite ili upišite novu kategoriju"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Plaćeno više od obaveze"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Obećano, ali još nije plaćeno"
+
+#: 
+msgid "Rename Category"
+msgstr "Preimenuj kategoriju"
+
+#: 
+msgid "Still Owed"
+msgstr "Još duguje"
+
+#: 
+msgid "Summary by Category"
+msgstr "Sažetak po kategoriji"
+
+#: 
+msgid "Total Paid"
+msgstr "Ukupno plaćeno"
+
+#: 
+msgid "Uncategorized"
+msgstr "Bez kategorije"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Trenutačne postavke nije moguće učitati. Ponovno učitajte stranicu i pokušajte opet."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Ova postavka mora biti broj"
+
+#: 
+msgid "Child Role"
+msgstr "Uloga djeteta"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Uključivanje u imenik može se mijenjati samo za popis klasifikacija"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Poruka dobrodošlice 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Poruka dobrodošlice 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Uloga glave obitelji"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Sakrij adrese bez obitelji"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Sakrij datum prijateljstva"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Sakrij pretplate na bilten"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Sakrij datum vjenčanja"
+
+#: 
+msgid "In Directory"
+msgstr "U imeniku"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Uključi pojedinosti u obavijesti"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Primatelji obavijesti"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Osobe koje treba obavijestiti kada se doda nova obitelj ili osoba"
+
+#: 
+msgid "Person initials style"
+msgstr "Stil inicijala osobe"
+
+#: 
+msgid "Person name display style"
+msgstr "Stil prikaza imena osobe"
+
+#: 
+msgid "Spouse Role"
+msgstr "Uloga supružnika"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Poštanski brojevi velikim slovima"
 

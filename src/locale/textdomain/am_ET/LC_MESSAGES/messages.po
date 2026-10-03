@@ -4500,10 +4500,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "ቀኑን በ Date-Picker ለመግለጽ፣ በነባሪ፡ yyyy-mm-dd፣ በፈረንሳይኛ፡ dd/mm/yyyy ለምሳሌ."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "አዲስ ቤተሰብ ወይም ሰው ሲታከል ለማሳወቅ በነጠላ ሰረዝ የተለዩ የሰዎች መታወቂያዎች ዝርዝር"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "ከውጫዊ የቀን መቁጠሪያ API ያልተረጋገጡ የክስተቶች ንባብ ፍቀድ"
 
@@ -7359,10 +7355,6 @@ msgstr "ይህን የመገኘት ቆጠራ ያስወግዱ?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ይህ ንብረት የሚተገበርበትን የመዝገብ ዓይነት ይምረጡ"
-
-#: 
-msgid "Total Pledges"
-msgstr "ጠቅላላ ቃል ኪዳኖች"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10405,10 +10397,6 @@ msgstr "ወደ ታዋቅ ይገኛል"
 msgid "User must have Notes permission"
 msgstr "ተጠቃሚ ማስታወሻ ፍቃድ ሊሆን ይገባ"
 
-#: 
-msgid "Address Defaults"
-msgstr "የአድራሻ ነባሮች"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10468,10 +10456,6 @@ msgstr "Vonage ማቀናጀት"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Mailchimp ለዜና ደብዳቤ እና ሙሙናት ኢሜይል ዝርዝር ለማመጣመስ ያገናኙ።"
-
-#: 
-msgid "Copy from church address"
-msgstr "ከቤተ ክርስቲያን አድራሻ ይቅዱ"
 
 #: 
 msgid "Copy to clipboard"
@@ -10800,10 +10784,6 @@ msgid "The property for which you would like person records returned."
 msgstr "የሰው መዝገቦች ለመመለስ ይሚደለገው ንብረት።"
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "እነዚህ ዋጋዎች ወደ ታዳሪ ቤተሰቦች ሲፈጠሩ አስቀድመው ተሞልተዋል። በእጅ ግቤት ለመፍለግ ባዶ ይተውት።"
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "ርቀት ለመለካት ያገለግለ ክፍል።"
 
@@ -10947,10 +10927,6 @@ msgstr "ህዝባዊ HTML፣ ICS እና JSON URLs አማካኝነት ወደ ቀ�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "ጎብኚዎች በራሳቸው ምዝገባ ገጽ አማካኝነት የራሳቸውን የቤተሰብ ሪኮርድ እንዲፈጥሩ ፍቀድ"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "ጎብኝዎች እራሳቸውን እንደ አዲስ ቤተሰቦች እንዲያስመዘግቡ ፍቀድ"
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11228,10 +11204,6 @@ msgstr "Gravatar የኢሜይል አድራሻዎችን ወደ ሀሽ (MD5) በ�
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "ኬክሮስ/ኦሮምን ደብቅ"
-
-#: 
-msgid "Hide Person Address"
-msgstr "የሰው አድራሻ ደብቅ"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18022,10 +17994,6 @@ msgid "Errors"
 msgstr "ስህተቶች"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "የሞቱ አባላትን ከታተመው ማውጫ እና ከCSV ወደ ውጭ መላኮች ያግልሉ።"
-
-#: 
 msgid "Failed Files"
 msgstr "ያልተሳኩ ፋይሎች"
 
@@ -18342,10 +18310,6 @@ msgid "This Person is Inactive"
 msgstr "ይህ ሰው ንቁ አይደለም"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "ይህ OpenStreetMapን በመጠቀም የካርታ መጋጠሚያዎች ለሌላቸው ለእያንዳንዱ ቤተሰብ ያገኛል። ይህ ቤተሰቦችን በ50 ቡድኖች፣ ለእያንዳንዱ ቡድን ወደ አንድ ደቂቃ ያህል ያካሂዳል። ይህ በሚሮጥበት ጊዜ ይህን ገጽ ክፍት አድርገው መተው ይችላሉ። ይቀጥሉ?"
-
-#: 
 msgid "This person is deceased"
 msgstr "ይህ ሰው ሞቷል"
 
@@ -18552,14 +18516,6 @@ msgstr "ሁሉም ምድቦች"
 #: 
 msgid "As an admin, please also review the"
 msgstr "እንደ አስተዳዳሪ እባክዎ እንዲሁም ይገምግሙ"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "በቀልደ ውስጥ በሰዎች ልደት በተሳካ ሁኔታ በ ሌላ የተወለደ ሰው ተመሪት ኢሜል ይላኩ።"
-
-#: 
-msgid "Birthday Emails"
-msgstr "የተወለደ ሰው ኢሜሎች"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18818,10 +18774,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "ለሕዝብ ክስተቶች ያለ ማረጋገጥ ተደራሲ ይፈቅዱ (ለሥዕል ማስገባት የቀናት)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "ጎብኚዎች ሕዝብ ምዝገባ ገጽ በኩል የራሳቸውን የቤተሰብ መዝገቦች እንዲፈጥሩ ይፈቅዱ"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "ደወሳደሳ ኢሜይልን በራስ ነክ ይላኩ (የጀርባ ሥራ አቀባይ ያስፈልጋል)"
 
@@ -19036,4 +18988,160 @@ msgstr "ተመሪ ብቻ ውስጥ መግባት ሰው ይሰርዙ ይችላሉ
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "የመጨረሻው ተመሪ ሊስረዝ አይችልም."
+
+#: 
+msgid "Category"
+msgstr "ምድብ"
+
+#: 
+msgid "Category updated."
+msgstr "ምድብ ተዘምኗል።"
+
+#: 
+msgid "Delete Category"
+msgstr "ምድብ ሰርዝ"
+
+#: 
+msgid "Failed to delete category"
+msgstr "ምድብን መሰረዝ አልተሳካም"
+
+#: 
+msgid "Failed to rename category"
+msgstr "ምድብን እንደገና መሰየም አልተሳካም"
+
+#: 
+msgid "Fund Categories"
+msgstr "የፈንድ ምድቦች"
+
+#: 
+msgid "Fund activated."
+msgstr "ፈንድ ነቅቷል።"
+
+#: 
+msgid "Fund deactivated."
+msgstr "ፈንድ ቦዝኗል።"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "በዚህ ምድብ ውስጥ ያሉ ፈንዶች ያልተመደቡ ይሆናሉ። ፈንዶቹ ራሳቸው አይሰረዙም።"
+
+#: 
+msgid "INACTIVE"
+msgstr "እንቅስቃሴ-አልባ"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "አዲስ የምድብ ስም (ነባር ስም ከተጠቀሙ ሁለቱ ይዋሃዳሉ)"
+
+#: 
+msgid "Optional"
+msgstr "አማራጭ"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "አማራጭ — ምድብ ይምረጡ ወይም አዲስ ይጻፉ"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "ከገባው የገንዘብ ቃል ኪዳን በላይ የተከፈለ"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "የገንዘብ ቃል ኪዳን የተገባ ግን ገና ያልተከፈለ"
+
+#: 
+msgid "Rename Category"
+msgstr "ምድብን እንደገና ሰይም"
+
+#: 
+msgid "Still Owed"
+msgstr "አሁንም የሚቀረው ዕዳ"
+
+#: 
+msgid "Summary by Category"
+msgstr "በምድብ ማጠቃለያ"
+
+#: 
+msgid "Total Paid"
+msgstr "ጠቅላላ የተከፈለ"
+
+#: 
+msgid "Uncategorized"
+msgstr "ያልተመደበ"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "የአሁኑን ቅንብሮች መጫን አልተቻለም። እንደገና ለመሞከር ገጹን እንደገና ይጫኑ።"
+
+#: 
+msgid "This setting must be a number"
+msgstr "ይህ ቅንብር ቁጥር መሆን አለበት"
+
+#: 
+msgid "Child Role"
+msgstr "የልጅ ሚና"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "በማውጫ ውስጥ መካተትን መቀያየር የሚቻለው ለምድቦች ዝርዝር ብቻ ነው"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "የእንኳን ደህና መጡ መልእክት 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "የእንኳን ደህና መጡ መልእክት 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "የቤተሰብ ራስ ሚና"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "ቤተሰብ የሌላቸውን አድራሻዎች ደብቅ"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "የወዳጅነት ቀንን ደብቅ"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "የጋዜጣ ደንበኝነቶችን ደብቅ"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "የጋብቻ ቀንን ደብቅ"
+
+#: 
+msgid "In Directory"
+msgstr "በማውጫ ውስጥ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "በማሳወቂያዎች ውስጥ ዝርዝሮችን አካት"
+
+#: 
+msgid "Notification Recipients"
+msgstr "የማሳወቂያ ተቀባዮች"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "አዲስ ቤተሰብ ወይም ሰው ሲጨመር ማሳወቂያ የሚደርሳቸው ሰዎች"
+
+#: 
+msgid "Person initials style"
+msgstr "የሰው የመጀመሪያ ፊደላት ዘይቤ"
+
+#: 
+msgid "Person name display style"
+msgstr "የሰው ስም አሳያይ ዘይቤ"
+
+#: 
+msgid "Spouse Role"
+msgstr "የትዳር ጓደኛ ሚና"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "የፖስታ ኮዶችን በትልልቅ ፊደላት"
 

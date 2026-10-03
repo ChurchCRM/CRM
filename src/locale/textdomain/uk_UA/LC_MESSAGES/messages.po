@@ -4500,10 +4500,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Для визначення дати в засобі вибору дати за замовчуванням: Y-m-d, французькою мовою: d / m / Y, наприклад."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Розділений комами список PersonIDs людей, яких потрібно повідомити про додавання нової родини чи людини"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Дозволити неавторизоване читання подій із зовнішнього API календаря"
 
@@ -7364,10 +7360,6 @@ msgstr "Видалити цей підрахунок відвідуваност�
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Виберіть тип запису, до якого застосовується ця властивість"
-
-#: 
-msgid "Total Pledges"
-msgstr "Усього Зобов'язань"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10416,10 +10408,6 @@ msgstr "Доступне оновлення"
 msgid "User must have Notes permission"
 msgstr "Користувач повинен мати дозвіл на нотатки"
 
-#: 
-msgid "Address Defaults"
-msgstr "За замовчуванням адреси"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10479,10 +10467,6 @@ msgstr "Налаштуйте Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Підключіть Mailchimp для синхронізації списків електронної пошти для розсилок і кампаній."
-
-#: 
-msgid "Copy from church address"
-msgstr "Скопіювати з адреси церкви"
 
 #: 
 msgid "Copy to clipboard"
@@ -10811,10 +10795,6 @@ msgid "The property for which you would like person records returned."
 msgstr "Властивість, для якої потрібно повернути записи осіб."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ці значення попередньо заповнюються при створенні нових сімей. Залиште пусто, щоб потребувати ручного введення."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Одиниця для вимірювання відстані."
 
@@ -10958,10 +10938,6 @@ msgstr "Дозволити неавтентифікований доступ д�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Дозволити відвідувачам створювати власний запис сім'ї через сторінку самореєстрації"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Дозвольте відвідувачам самостійно реєструватися як нові сім'ї."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11239,10 +11215,6 @@ msgstr "Gravatar працює шляхом перетворення електр
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Приховати широту/довготу"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Приховати адресу особи"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18046,10 +18018,6 @@ msgid "Errors"
 msgstr "Помилки"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Виключати померлих учасників з друкованого довідника та експортів CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Файли з помилками"
 
@@ -18366,10 +18334,6 @@ msgid "This Person is Inactive"
 msgstr "Ця особа неактивна"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Це визначить координати на карті для кожної сім'ї, якій їх бракує, за допомогою OpenStreetMap. Обробка відбувається партіями по 50 сімей, приблизно по хвилині на партію. Ви можете залишити цю сторінку відкритою під час виконання. Продовжити?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Ця особа померла"
 
@@ -18576,14 +18540,6 @@ msgstr "Усі класифікації"
 #: 
 msgid "As an admin, please also review the"
 msgstr "Як адміністратор, будь ласка, також перегляньте"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Автоматично відправляти привітальний лист із днем народження людям у день їх народження."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Електронні листи з днем народження"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18842,10 +18798,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Дозволити неавторизований доступ до публічних подій (для вбудовування календарів)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Дозволити відвідувачам створювати власні записи про сім'ю через сторінку публічної реєстрації"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Автоматично відправляти листи з днем народження (потрібен планувальник фонових завдань)"
 
@@ -19060,4 +19012,160 @@ msgstr "Тільки адміністратор може видалити люд
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Останній адміністратор не може бути видалений."
+
+#: 
+msgid "Category"
+msgstr "Категорія"
+
+#: 
+msgid "Category updated."
+msgstr "Категорія оновлена."
+
+#: 
+msgid "Delete Category"
+msgstr "Видалити категорію"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Помилка при видаленні категорії"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Помилка при перейменуванні категорії"
+
+#: 
+msgid "Fund Categories"
+msgstr "Категорії пожертвувань"
+
+#: 
+msgid "Fund activated."
+msgstr "Категорія пожертвувань активована."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Категорія пожертвувань деактивована."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Пожертвування в цій категорії будуть без категорії. Самі пожертвування не видаляються."
+
+#: 
+msgid "INACTIVE"
+msgstr "Неактивний"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Нова назва категорії (існуюча назва об'єднає дві)"
+
+#: 
+msgid "Optional"
+msgstr "Необов'язково"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Необов'язково — виберіть або введіть нову категорію"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Оплачено понад зобов'язання"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Зобов'язання обіцяно, але не оплачено"
+
+#: 
+msgid "Rename Category"
+msgstr "Перейменувати категорію"
+
+#: 
+msgid "Still Owed"
+msgstr "Все ще заборгованість"
+
+#: 
+msgid "Summary by Category"
+msgstr "Резюме за категоріями"
+
+#: 
+msgid "Total Paid"
+msgstr "Всього сплачено"
+
+#: 
+msgid "Uncategorized"
+msgstr "Без категорії"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Не вдалося завантажити поточні налаштування. Перезавантажте сторінку та спробуйте ще раз."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Цей параметр має бути числом"
+
+#: 
+msgid "Child Role"
+msgstr "Роль дитини"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Включення до довідника можна перемикати лише для списку класифікацій"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Вітальне повідомлення 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Вітальне повідомлення 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Роль голови родини"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Приховувати адреси без родини"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Приховувати дату знайомства"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Приховувати підписки на розсилку"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Приховувати дату весілля"
+
+#: 
+msgid "In Directory"
+msgstr "У довіднику"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Включати подробиці в сповіщення"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Отримувачі сповіщень"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Кого сповіщати, коли додано нову родину або особу"
+
+#: 
+msgid "Person initials style"
+msgstr "Стиль ініціалів особи"
+
+#: 
+msgid "Person name display style"
+msgstr "Стиль відображення імені особи"
+
+#: 
+msgid "Spouse Role"
+msgstr "Роль подружжя"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Поштові індекси великими літерами"
 

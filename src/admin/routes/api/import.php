@@ -22,6 +22,7 @@ use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+use ChurchCRM\Utils\AddressDefaults;
 
 // Prefixes used to encode extension-data mappings in the column-mapping payload
 const CSV_PERSON_CUSTOM_PREFIX = 'pcustom_';
@@ -659,7 +660,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         // Person/Family editors (PersonEditor.php, FamilyEditor.php) so rows whose
         // CSV omits a Country aren't silently stored blank and rendered as the
         // first country in the dropdown (Afghanistan). See issue #4347.
-        $defaultCountry = (string) SystemConfig::getValue('sDefaultCountry');
+        $defaultCountry = AddressDefaults::country();
 
         try {
             foreach ($csv->getRecords() as $row) {

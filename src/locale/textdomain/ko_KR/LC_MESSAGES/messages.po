@@ -4497,10 +4497,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "날짜 형식 기본값은 Y-m-d이며, 프랑스식 예시는 d/m/Y입니다."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "새 가족이나 개인이 추가될 때 알림을 받을 사람들의 PersonID를 쉼표로 구분해 입력"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "외부 캘린더 API에서 인증 없이 행사 읽기 허용"
 
@@ -7341,10 +7337,6 @@ msgstr "이 출석 수를 제거하시겠습니까?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "이 속성이 적용되는 레코드 유형을 선택하세요"
-
-#: 
-msgid "Total Pledges"
-msgstr "총 서약"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10384,10 +10376,6 @@ msgstr "업데이트 가능"
 msgid "User must have Notes permission"
 msgstr "사용자에게 메모 권한이 있어야 합니다"
 
-#: 
-msgid "Address Defaults"
-msgstr "주소 기본값"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10447,10 +10435,6 @@ msgstr "Vonage 구성"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Mailchimp을 연결하여 뉴스레터 및 캠페인의 이메일 목록을 동기화합니다."
-
-#: 
-msgid "Copy from church address"
-msgstr "교회 주소에서 복사"
 
 #: 
 msgid "Copy to clipboard"
@@ -10779,10 +10763,6 @@ msgid "The property for which you would like person records returned."
 msgstr "사람 레코드를 반환하고 싶은 속성입니다."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "이 값들은 새 가족을 만들 때 미리 채워집니다. 수동 입력을 요구하려면 비워두세요."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "거리를 측정하는 데 사용되는 단위입니다."
 
@@ -10926,10 +10906,6 @@ msgstr "공개 HTML, ICS, JSON URL을 통해 캘린더 이벤트에 비인증 �
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "방문자가 자기 등록 페이지를 통해 자신의 가족 기록을 생성하도록 허용"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "방문자가 새 가족으로 자기 등록하도록 허용합니다."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11207,10 +11183,6 @@ msgstr "Gravatar는 이메일 주소를 해시(MD5)로 변환하여 작동합니
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "위도/경도 숨기기"
-
-#: 
-msgid "Hide Person Address"
-msgstr "개인 주소 숨기기"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -17993,10 +17965,6 @@ msgid "Errors"
 msgstr "오류"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "별세한 성도를 인쇄용 명부 및 CSV 내보내기에서 제외합니다."
-
-#: 
 msgid "Failed Files"
 msgstr "실패한 파일"
 
@@ -18313,10 +18281,6 @@ msgid "This Person is Inactive"
 msgstr "이 사람은 비활성 상태입니다"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "OpenStreetMap을 사용하여 좌표가 없는 모든 가정의 지도 좌표를 찾습니다. 50가정씩 배치로 처리하며, 배치당 약 1분이 소요됩니다. 실행되는 동안 이 페이지를 열어 두셔도 됩니다. 계속하시겠습니까?"
-
-#: 
 msgid "This person is deceased"
 msgstr "이 사람은 별세했습니다"
 
@@ -18523,14 +18487,6 @@ msgstr "모든 분류"
 #: 
 msgid "As an admin, please also review the"
 msgstr "관리자로서 다음을 검토해주세요."
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "생일에 사람들에게 자동으로 생일 인사말 이메일을 보냅니다."
-
-#: 
-msgid "Birthday Emails"
-msgstr "생일 이메일"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18789,10 +18745,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "공개 이벤트에 대한 인증되지 않은 접근을 허용(달력 포함용)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "방문자가 공개 등록 페이지를 통해 자신의 가족 기록을 만들 수 있도록 허용"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "생일 이메일 자동 전송(백그라운드 작업 스케줄러 필요)"
 
@@ -19007,4 +18959,160 @@ msgstr "로그인 정보가 있는 사람을 삭제할 수 있는 권한은 관�
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "마지막 관리자는 삭제할 수 없습니다."
+
+#: 
+msgid "Category"
+msgstr "카테고리"
+
+#: 
+msgid "Category updated."
+msgstr "카테고리가 업데이트되었습니다."
+
+#: 
+msgid "Delete Category"
+msgstr "카테고리 삭제"
+
+#: 
+msgid "Failed to delete category"
+msgstr "카테고리 삭제 실패"
+
+#: 
+msgid "Failed to rename category"
+msgstr "카테고리 이름 변경 실패"
+
+#: 
+msgid "Fund Categories"
+msgstr "헌금 카테고리"
+
+#: 
+msgid "Fund activated."
+msgstr "헌금 기금이 활성화되었습니다."
+
+#: 
+msgid "Fund deactivated."
+msgstr "헌금 기금이 비활성화되었습니다."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "이 카테고리의 헌금은 미분류가 됩니다. 헌금 자체는 삭제되지 않습니다."
+
+#: 
+msgid "INACTIVE"
+msgstr "비활성"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "새 카테고리 이름 (기존 이름은 둘을 병합합니다)"
+
+#: 
+msgid "Optional"
+msgstr "선택 사항"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "선택 사항 — 새 카테고리를 선택하거나 입력"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "헌금 약속을 초과한 지불"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "약속했지만 아직 지불하지 않음"
+
+#: 
+msgid "Rename Category"
+msgstr "카테고리 이름 변경"
+
+#: 
+msgid "Still Owed"
+msgstr "아직 미지불"
+
+#: 
+msgid "Summary by Category"
+msgstr "카테고리별 요약"
+
+#: 
+msgid "Total Paid"
+msgstr "총 지불액"
+
+#: 
+msgid "Uncategorized"
+msgstr "미분류"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "현재 설정을 불러오지 못했습니다. 페이지를 새로고침한 후 다시 시도하세요."
+
+#: 
+msgid "This setting must be a number"
+msgstr "이 설정은 숫자여야 합니다"
+
+#: 
+msgid "Child Role"
+msgstr "자녀 역할"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "명부 포함 여부는 분류 목록에서만 전환할 수 있습니다"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "환영 메시지 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "환영 메시지 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "세대주 역할"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "가족이 없는 주소 숨기기"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "친구 등록일 숨기기"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "뉴스레터 구독 숨기기"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "결혼 기념일 숨기기"
+
+#: 
+msgid "In Directory"
+msgstr "명부에 포함"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "알림에 세부 정보 포함"
+
+#: 
+msgid "Notification Recipients"
+msgstr "알림 수신자"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "새 가족 또는 사람이 추가될 때 알림을 받을 사람"
+
+#: 
+msgid "Person initials style"
+msgstr "사람 이니셜 형식"
+
+#: 
+msgid "Person name display style"
+msgstr "사람 이름 표시 형식"
+
+#: 
+msgid "Spouse Role"
+msgstr "배우자 역할"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "우편번호 대문자 사용"
 

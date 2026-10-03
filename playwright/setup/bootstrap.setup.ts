@@ -107,11 +107,13 @@ setup('setup-church-info', async ({ page }, testInfo) => {
 
   await humanPause(page, 500);
   await humanClick(page.locator('#church-info-form button[type=submit]'));
-  await page.getByText('Church information saved successfully').first().waitFor({ state: 'visible', timeout: 10000 });
+  await page.getByText(/Church information saved/).first().waitFor({ state: 'visible', timeout: 10000 });
   await settle(page, 800);
 
   await captureScreen(page, testInfo, {
     name: 'setup-church-info',
+    title: 'Setup - Church Info',
+    category: 'Setup',
     purpose: 'Show first-run setup: prerequisites, database configuration, and church info',
   });
 });
@@ -155,6 +157,8 @@ setup('demo-data-import', async ({ page }, testInfo) => {
 
   await captureScreen(page, testInfo, {
     name: 'demo-data-import',
+    title: 'Demo Data Import',
+    category: 'Setup',
     purpose: 'Show importing the sample data set and the resulting seeded families',
   });
 

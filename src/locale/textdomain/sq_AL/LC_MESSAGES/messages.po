@@ -4496,10 +4496,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Për përcaktimin e datës në zgjedhësin e datave, si parazgjedhje: Y-m-d, në frëngjisht: d/m/Y për shembull."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Listë e ndarë me presje e ID-ve të personave që do të njoftohen kur shtohet një familje ose person i ri"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Lejo leximin e paautentifikuar të ngjarjeve nga API e kalendarit të jashtëm"
 
@@ -7342,10 +7338,6 @@ msgstr "Hiq këtë numërim pjesëmarrjeje?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Zgjidhni llojin e rekordit që kjo veti aplikon"
-
-#: 
-msgid "Total Pledges"
-msgstr "Totali i zotimeve"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10388,10 +10380,6 @@ msgstr "Përditësim i Disponueshëm"
 msgid "User must have Notes permission"
 msgstr "Përdoruesi duhet të ketë lejen Shënime"
 
-#: 
-msgid "Address Defaults"
-msgstr "Adresa Parazgjedhur"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10451,10 +10439,6 @@ msgstr "Konfiguroni Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Lidhuni Mailchimp për të sinkronizuar listat e email-it për buletine dhe fushatat."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopjoji nga adresa e kishës"
 
 #: 
 msgid "Copy to clipboard"
@@ -10783,10 +10767,6 @@ msgid "The property for which you would like person records returned."
 msgstr "Prona për të cilën dëshiron që të rekorde persone të kthehet."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Këto vlera paraplotësohen kur krijohen familje të reja. Lini bosh për të kërkuar futjen manuale."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Njësia e përdorur për matur distancën."
 
@@ -10930,10 +10910,6 @@ msgstr "Lejo aksesin e pavërtetuar te ngjarjet e kalendarit përmes URL-ve publ
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Lejo vizitorët të krijojnë regjistrimin e tyre familjar përmes faqes së vetë-regjistrimit"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Lejo vizitorët të vetë-regjistrohen si familje të reja."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11211,10 +11187,6 @@ msgstr "Gravatar funksionon duke konvertuar adresat e email-it në një hash (MD
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Fshih Gjerësinë/Gjatësinë Gjeografike"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Fshih Adresën e Personit"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -17358,6 +17330,10 @@ msgid "Manage Events"
 msgstr "Administro Ngjarjet"
 
 #: 
+msgid "N/A"
+msgstr "N/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Depozte e Re"
 
@@ -18000,10 +17976,6 @@ msgid "Errors"
 msgstr "Gabime"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Përjashto anëtarët e ndjerë nga direktoria e shtypur dhe eksportet CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Skedarë të Dështuar"
 
@@ -18320,10 +18292,6 @@ msgid "This Person is Inactive"
 msgstr "Ky Person është Joaktiv"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Kjo gjen koordinatat e hartës për çdo familje që nuk i ka ato, duke përdorur OpenStreetMap. Kalon nëpër familjet në grupe nga 50, rreth një minutë për grup. Mund ta mbani këtë faqe të hapur ndërsa ekzekutohet. Të vazhdohet?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Ky person është i/e ndjerë"
 
@@ -18530,14 +18498,6 @@ msgstr "Të gjitha klasifikimet"
 #: 
 msgid "As an admin, please also review the"
 msgstr "Si administrator, ju lutemi rishikoni edhe"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Dërgoni automatikisht një email përshëndetje ditëlindjeje për njerëzit në ditën e tyre të lindjes."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Emailet e ditëlindjes"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18782,4 +18742,388 @@ msgstr "për gabimet rreth kohës kur ndodhi kjo, dhe shkarkoni dhe bashkangjitn
 #: 
 msgid "system logs"
 msgstr "regjistra sistemi"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Kontrolli i Aksesit dhe Siguria"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Lejoni regjistrimin e pagesave që nuk mund të zbriten nga tatimi (p.sh. shitje merce)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Lejoni qasjen e pa-vërtetuar në ngjarje publike (për ngulitjen e kalendarëve)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Dërgoni automatikisht email-et e ditëlindjes (kërkon planifikuesi i punës në prapavijë)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Email-et e Përshëndetjes për Ditëlindje"
+
+#: 
+msgid "Communication & Email"
+msgstr "Komunikimi dhe Email"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Politika e Sigurimit të Përmbajtjes"
+
+#: 
+msgid "Email System"
+msgstr "Sistemi i Email"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Aktivizoni ose çaktivizoni funksionet për organizatën tuaj"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Aktivizoni/çaktivizoni seksionin e ngjarjeve në navigacionin kryesor"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Aktivizoni/çaktivizoni menynë e Financës dhe të gjithë funksionet e financave (depozita, pagesa, raporte)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Aktivizoni/çaktivizoni menynë e grumbullimit të fondeve"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Zbatoni kokë CSP të rreptë për të mbrojtur kundër sulmeve XSS"
+
+#: 
+msgid "Events Module"
+msgstr "Moduli i Ngjarjeve"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Çelësat e Funksionit"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Çelësat e funksionit kontrollojnë cilat module dhe funksione janë të disponueshme në ChurchCRM. Ndryshimet hyjnë në fuqi menjëherë."
+
+#: 
+msgid "Finance Features"
+msgstr "Funksionet e Financës"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Përfshi adresa në kërkimin global të shpejtë"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Përfshi ngjarjet e kalendarit në kërkimin global të shpejtë"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Përfshi pronësi të familjes së personalizuar në kërkimin global të shpejtë"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Përfshi depozita në kërkimin global të shpejtë"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Përfshi familje në kërkimin global të shpejtë"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Përfshi grupe në kërkimin global të shpejtë"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Përfshi pagesa në kërkimin global të shpejtë"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Përfshi njerëz në kërkimin global të shpejtë"
+
+#: 
+msgid "Invalid setting"
+msgstr "Rregullim i pavlefshëm"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Lidhja e fjalëkalimit të humbur"
+
+#: 
+msgid "Manage All Features"
+msgstr "Menaxhoni të Gjithë Funksionet"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Çelës kryesor për dërgimin e email. I NEVOJSHËM për rivendosjen e fjalëkalimit dhe njoftimet"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Pagesa të pakapshme"
+
+#: 
+msgid "Primary Modules"
+msgstr "Modulet Kryesore"
+
+#: 
+msgid "Public Calendar API"
+msgstr "API i Kalendarit Publik"
+
+#: 
+msgid "Saved"
+msgstr "Ruajtur"
+
+#: 
+msgid "Search Families"
+msgstr "Kërkimi i Familjeve"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Kërkimi i Pronësive të Familjes të Personalizuar"
+
+#: 
+msgid "Search Settings"
+msgstr "Cilësimet e Kërkimit"
+
+#: 
+msgid "Self-Registration"
+msgstr "Regjistrimi i Vetë"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Shfaq opsionin \"Fjalëkalim i humbur\" në ekranin e hyrjes (lejon rivendosje të vetë të përdoruesit)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Shfaq/fshih modulin e Shkolës të Dielës në shiritin anësor"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Nuk mund të çaktivizoni administratorin e vetëm që mund të hyjë"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Nuk mund të shënoni administratorin e vetëm që mund të hyjë si të vdekur"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "I vdekur — nuk mund të hyj"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Futni një adresë të dytë përpara se ta shënoni si adresë postale"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Joaktiv — nuk mund të hyj"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Posta shkon në adresën e dytë; adresa parësore mbetet vendndodhja fizike e përdorur për hartat dhe udhëzimet."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Posta dërgohet në këtë adresë në vend të adresës parësore"
+
+#: 
+msgid "Mailing Address"
+msgstr "Adresa Postale"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Adresa Postale nëse ndryshon"
+
+#: 
+msgid "Primary Address"
+msgstr "Adresa Parësore"
+
+#: 
+msgid "Receives Mail"
+msgstr "Merr Postë"
+
+#: 
+msgid "Second Address"
+msgstr "Adresa e Dytë"
+
+#: 
+msgid "Second Home"
+msgstr "Shtëpia e Dytë"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Personi i lidhur është i vdekur ose joaktiv. Hyrja, seanseve dhe çelësi i API janë bllokuar derisa personi të bëhet përsëri aktiv."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Kjo është adresa postale"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Ky person është i vdekur ose joaktiv, kështu që ky llogari nuk mund të hyj"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Vetëm një administrator mund të fshijë një person që ka një hyrje."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Administratori i fundit nuk mund të fshihet."
+
+#: 
+msgid "Category"
+msgstr "Kategoria"
+
+#: 
+msgid "Category updated."
+msgstr "Kategoria u përditësua."
+
+#: 
+msgid "Delete Category"
+msgstr "Fshi kategorinë"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Dështoi fshirja e kategorisë"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Dështoi ndryshe emri i kategorisë"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategorite e Fondeve"
+
+#: 
+msgid "Fund activated."
+msgstr "Fondi u aktivizua."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fondi u deaktivizua."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Fondet në këtë kategori do të bëhen të pakategorizuara. Vetë fondet nuk fshihen."
+
+#: 
+msgid "INACTIVE"
+msgstr "Joaktiv"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Emri i ri i kategorisë (një emër ekzistues bashkon të dyja)"
+
+#: 
+msgid "Optional"
+msgstr "Opsional"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opsional — zgjedh ose shkruaj një kategori të re"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Paguar përtej premtimit"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Premtuar por akoma nuk është paguar"
+
+#: 
+msgid "Rename Category"
+msgstr "Ndrysho emrin e kategorisë"
+
+#: 
+msgid "Still Owed"
+msgstr "Akoma ka borxh"
+
+#: 
+msgid "Summary by Category"
+msgstr "Përmbledhja sipas kategorisë"
+
+#: 
+msgid "Total Paid"
+msgstr "Totali i paguar"
+
+#: 
+msgid "Uncategorized"
+msgstr "I pakategorizuar"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Cilësimet aktuale nuk u ngarkuan dot. Rifreskoni faqen për të provuar përsëri."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Ky cilësim duhet të jetë një numër"
+
+#: 
+msgid "Child Role"
+msgstr "Roli i fëmijës"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Përfshirja në drejtori mund të ndërrohet vetëm për listën e klasifikimeve"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Mesazhi i mirëseardhjes 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Mesazhi i mirëseardhjes 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Roli i kryefamiljarit"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Fshih adresat pa familje"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Fshih datën e miqësisë"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Fshih abonimet në buletin"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Fshih datën e martesës"
+
+#: 
+msgid "In Directory"
+msgstr "Në drejtori"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Përfshi detaje në njoftime"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Marrësit e njoftimeve"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Personat që njoftohen kur shtohet një familje ose person i ri"
+
+#: 
+msgid "Person initials style"
+msgstr "Stili i inicialeve të personit"
+
+#: 
+msgid "Person name display style"
+msgstr "Stili i shfaqjes së emrit të personit"
+
+#: 
+msgid "Spouse Role"
+msgstr "Roli i bashkëshortit/es"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Kodet postare me shkronja të mëdha"
 

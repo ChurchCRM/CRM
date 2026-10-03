@@ -19,23 +19,14 @@ const personId = 2;
 const multiRoleGroupId = 1; // Angels class — has Teacher (1) + Student (2)
 const specialPropsGroupId = 23; // has grp_hasSpecialProps = 1
 
-// API-based data setup runs BEFORE freshAdminLogin(). Despite withCredentials:false
+// API-based data setup runs BEFORE cy.freshAdminFormLogin(). Despite withCredentials:false
 // on makePrivateAPICall, CI confirmed that cy.setupAdminSession() is not sufficient —
-// the PHP session is still killed by cy.request(). freshAdminLogin() is required.
+// the PHP session is still killed by cy.request(). cy.freshAdminFormLogin() is required.
 
 /**
  * Direct login — bypasses cy.session() cache so that earlier
  * cy.request() calls (which reset the PHP session) don't interfere.
  */
-function freshAdminLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(
-        Cypress.env("admin.password") + "{enter}",
-    );
-    cy.url().should("not.include", "/session/begin");
-}
 
 /**
  * Remove person from a group via API (ignores 404 if not a member).
@@ -63,7 +54,7 @@ describe("PersonView: Add to group with multiple roles", () => {
 
     it("should show role picker when selecting a multi-role group and add successfully", () => {
         // Login after API setup
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
 
         // Visit PersonView and open Add to Group modal
         cy.visit(`/people/view/${personId}`);
@@ -97,7 +88,7 @@ describe("PersonView: Add to group with multiple roles", () => {
 
     it("should allow selecting a specific role before adding", () => {
         // Login after API setup
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
 
         // Visit PersonView and open modal
         cy.visit(`/people/view/${personId}`);
@@ -149,7 +140,7 @@ describe("PersonView: Update Properties for group with special props", () => {
         );
 
         // Login after API setup
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
 
         // Visit PersonView and go to Groups tab
         cy.visit(`/people/view/${personId}`);
@@ -193,7 +184,7 @@ describe("PersonView: Update Properties for group with special props", () => {
         );
 
         // Login
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
 
         // Navigate directly to member properties page
         cy.visit(

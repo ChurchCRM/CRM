@@ -17,6 +17,7 @@
 require("cy-verify-downloads").addCustomCommand();
 
 // Import commands.js using ES2015 syntax:
+import "./test-env";
 import "./ui-commands";
 import "./api-commands";
 
@@ -194,7 +195,7 @@ before(function () {
     rowGuard.baseline = null;
     rowGuard.allowances = {};
 
-    if (!Cypress.env("rowCountGuard")) {
+    if (!Cypress.expose("rowCountGuard")) {
         return;
     }
 

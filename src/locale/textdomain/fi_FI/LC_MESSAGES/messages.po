@@ -4478,10 +4478,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Päivämäärän valitsimen PHP-muoto, oletus: Y-m-d, esim. suomeksi: d.m.Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Pilkulla erotettu lista henkilötunnuksista (PersonID), joille ilmoitetaan, kun uusi perhe tai henkilö lisätään"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Salli tapahtumien lukeminen ulkoisen kalenteri-API:n kautta ilman tunnistautumista"
 
@@ -7319,10 +7315,6 @@ msgstr "Poista tämä läsnäololuku?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Valitse tietuetyyppi, johon tämä ominaisuus liittyy"
-
-#: 
-msgid "Total Pledges"
-msgstr "Lupaukset Yhteensä"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10365,10 +10357,6 @@ msgstr "Päivitys saatavilla"
 msgid "User must have Notes permission"
 msgstr "Käyttäjällä on oltava muistiinpano-oikeudet"
 
-#: 
-msgid "Address Defaults"
-msgstr "Osoitteen oletusasetukset"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10428,10 +10416,6 @@ msgstr "Määritä Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Yhdistä Mailchimp sähköpostilistan synkronointiin uutiskirjeille ja kampanjoille."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopioi seurakunnan osoitteesta"
 
 #: 
 msgid "Copy to clipboard"
@@ -10760,10 +10744,6 @@ msgid "The property for which you would like person records returned."
 msgstr "Omaisuus, jolle haluat henkilön tietueet palautetuksi."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Nämä arvot esitäytetään luotaessa uusia perheitä. Jätä tyhjäksi, jos haluat vaatia manuaalista merkintää."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Etäisyyden mittaamiseen käytetty yksikkö."
 
@@ -10907,10 +10887,6 @@ msgstr "Salli todentamaton pääsy kalenteritapahtumiin julkisten HTML-, ICS- ja
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Salli vierailijoiden luoda oma perherekisterinsä itsensä rekisteröitymissivun kautta"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Salli vierailijoiden rekisteröityä uusina perheenä."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11188,10 +11164,6 @@ msgstr "Gravatar toimii muuntamalla sähköpostiosoitteet tiivisteeksi (MD5). Va
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Piilota leveys- ja pituusaste"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Piilota henkilön osoite"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -17981,10 +17953,6 @@ msgid "Errors"
 msgstr "Virheet"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Jätä kuolleet jäsenet pois tulostettavasta hakemistosta ja CSV-vienneistä."
-
-#: 
 msgid "Failed Files"
 msgstr "Epäonnistuneet tiedostot"
 
@@ -18301,10 +18269,6 @@ msgid "This Person is Inactive"
 msgstr "Tämä henkilö on epäaktiivinen"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Tämä etsii karttakoordinaatit jokaiselle perheelle, joilta ne puuttuvat, käyttäen OpenStreetMapia. Se käy läpi perheet 50 kappaleen erissä, noin minuutti erää kohden. Voit pitää tämän sivun auki suorituksen ajan. Jatketaanko?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Tämä henkilö on kuollut"
 
@@ -18511,14 +18475,6 @@ msgstr "Kaikki luokittelut"
 #: 
 msgid "As an admin, please also review the"
 msgstr "Järjestelmänvalvojana tarkista myös"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Lähetä synttäriterveiset automaattisesti ihmisille heidän syntymäpäivänään."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Syntymäpäiväsähköpostit"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18777,10 +18733,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Salli todentamattoman pääsyn julkisiin tapahtumiin (kalentereiden upottamista varten)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Salli vierailijat luoda omia perheeseään julkisen rekisteröintisivun kautta"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Lähetä syntymäpäivä-sähköpostit automaattisesti (vaatii taustaprosessiajoittelija)"
 
@@ -18995,4 +18947,160 @@ msgstr "Vain järjestelmänvalvoja voi poistaa henkilön, jolla on kirjautuminen
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Viimeistä järjestelmänvalvojaa ei voi poistaa."
+
+#: 
+msgid "Category"
+msgstr "Luokka"
+
+#: 
+msgid "Category updated."
+msgstr "Luokka päivitetty."
+
+#: 
+msgid "Delete Category"
+msgstr "Poista luokka"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Luokan poistaminen epäonnistui"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Luokan nimen muuttaminen epäonnistui"
+
+#: 
+msgid "Fund Categories"
+msgstr "Rahastojen luokat"
+
+#: 
+msgid "Fund activated."
+msgstr "Rahasto aktivoitu."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Rahasto deaktivoitu."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Tässä luokassa olevat rahastot tulevat luokittelemattomiksi. Rahastoja itse ei poisteta."
+
+#: 
+msgid "INACTIVE"
+msgstr "Epäaktiivinen"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Uusi luokan nimi (olemassa oleva nimi yhdistää nämä kaksi)"
+
+#: 
+msgid "Optional"
+msgstr "Valinnainen"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Valinnainen — valitse tai kirjoita uusi luokka"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Maksettu sitoutumusta enemmän"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Luvattu mutta ei vielä maksettu"
+
+#: 
+msgid "Rename Category"
+msgstr "Vaihda luokan nimi"
+
+#: 
+msgid "Still Owed"
+msgstr "Vielä erääntynyt"
+
+#: 
+msgid "Summary by Category"
+msgstr "Yhteenveto luokittain"
+
+#: 
+msgid "Total Paid"
+msgstr "Yhteensä maksettu"
+
+#: 
+msgid "Uncategorized"
+msgstr "Ilman luokkaa"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Nykyisiä asetuksia ei voitu ladata. Lataa sivu uudelleen ja yritä uudestaan."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Tämän asetuksen on oltava luku"
+
+#: 
+msgid "Child Role"
+msgstr "Lapsen rooli"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Hakemistoon sisällyttämisen voi vaihtaa vain luokituslistalle"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Tervetuloviesti 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Tervetuloviesti 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Taloudenpäämiehen rooli"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Piilota osoitteet, joilla ei ole perhettä"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Piilota ystävyyspäivä"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Piilota uutiskirjetilaukset"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Piilota hääpäivä"
+
+#: 
+msgid "In Directory"
+msgstr "Hakemistossa"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Sisällytä tiedot ilmoituksiin"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Ilmoitusten vastaanottajat"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Henkilöt, joille ilmoitetaan, kun uusi perhe tai henkilö lisätään"
+
+#: 
+msgid "Person initials style"
+msgstr "Henkilön nimikirjainten tyyli"
+
+#: 
+msgid "Person name display style"
+msgstr "Henkilön nimen esitystapa"
+
+#: 
+msgid "Spouse Role"
+msgstr "Puolison rooli"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Postinumerot isoilla kirjaimilla"
 

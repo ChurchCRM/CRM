@@ -13,6 +13,7 @@ export default defineConfig({
   viewportHeight: 1080,
   viewportWidth: 1920,
   projectId: 'n4qnyb',
+  allowCypressEnv: false,
   env: {},
   retries: 0,
   numTestsKeptInMemory: 0,

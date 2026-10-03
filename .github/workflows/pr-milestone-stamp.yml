@@ -1,8 +1,9 @@
 name: "Issues: stamp milestone on merge"
 
-# When a PR is merged with no milestone, put the PR and every attached issue
-# (open or already closed) on the milestone whose title matches package.json
-# version. Deterministic only — no model call.
+# When a PR is merged, put it and every issue it fixes on one milestone, then
+# close those issues if they are still open. A mention is not a fix.
+# Milestone: the PR's milestone, or package.json version when the PR has none.
+# Deterministic only — no model call.
 
 concurrency:
   group: pr-milestone-${{ github.event.pull_request.number || inputs.pr_number }}
@@ -28,12 +29,12 @@ jobs:
     name: Stamp package.json milestone
     if: |
       github.event_name == 'workflow_dispatch' ||
-      (github.event.pull_request.merged == true && github.event.pull_request.milestone == null)
+      github.event.pull_request.merged == true
     timeout-minutes: 5
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout package.json
-        uses: actions/checkout@v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 1
           persist-credentials: false
@@ -42,19 +43,18 @@ jobs:
           sparse-checkout-cone-mode: false
 
       - name: Stamp milestone from package.json version
-        uses: actions/github-script@v9
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         env:
           PR_NUMBER: ${{ inputs.pr_number }}
         with:
           script: |
             const fs = require('fs');
             const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-            const version = String(pkg.version || '').trim();
-            if (!/^\d+\.\d+\.\d+/.test(version)) {
-              core.setFailed(`package.json version is not semver-like: ${version}`);
+            const packageVersion = String(pkg.version || '').trim();
+            if (!/^\d+\.\d+\.\d+/.test(packageVersion)) {
+              core.setFailed(`package.json version is not semver-like: ${packageVersion}`);
               return;
             }
-            console.log(`Target milestone title: ${version}`);
 
             const owner = context.repo.owner;
             const repo = context.repo.repo;
@@ -71,6 +71,9 @@ jobs:
               console.log(`PR #${prNumber} is not merged — skip`);
               return;
             }
+
+            const version = (pr.milestone && pr.milestone.title) || packageVersion;
+            console.log(`Target milestone title: ${version}`);
 
             const openMilestones = await github.paginate(github.rest.issues.listMilestones, {
               owner, repo, state: 'open', per_page: 100,
@@ -93,6 +96,7 @@ jobs:
             }
             console.log(`Using milestone #${milestone.number} (${milestone.title})`);
 
+            // Issues this PR finishes. Mentions and "refs" do not qualify.
             const linked = new Set();
 
             try {
@@ -115,21 +119,8 @@ jobs:
               console.log('GraphQL closingIssuesReferences failed:', e.message);
             }
 
-            const timeline = await github.paginate(github.rest.issues.listEventsForTimeline, {
-              owner, repo, issue_number: prNumber, per_page: 100,
-            });
-            for (const event of timeline) {
-              const src = event.source && event.source.issue;
-              if (event.event === 'cross-referenced' && src && !src.pull_request) {
-                linked.add(src.number);
-              }
-              if (event.event === 'connected' && src && !src.pull_request) {
-                linked.add(src.number);
-              }
-            }
-
             const text = `${pr.title || ''}\n${pr.body || ''}`;
-            const re = /\b(?:fix(?:es|ed)?|close[sd]?|resolve[sd]?|refs?|references)\s+#(\d+)/gi;
+            const re = /\b(?:fix(?:es|ed)?|close[sd]?|resolve[sd]?)\s+#(\d+)/gi;
             let match;
             while ((match = re.exec(text)) !== null) {
               linked.add(parseInt(match[1], 10));
@@ -148,22 +139,36 @@ jobs:
               }
               const current = issue.milestone && issue.milestone.title;
               const isClosed = issue.state === 'closed';
-              const shouldForce = forceIfClosed && isClosed;
+              const shouldForce = kind === 'issue' || (forceIfClosed && isClosed);
               if (current === version) {
                 console.log(`${kind} #${issueNumber} already on ${version}`);
-                return;
-              }
-              if (current && !shouldForce) {
+              } else if (current && !shouldForce) {
                 console.log(`${kind} #${issueNumber} already on ${current} — leave open item`);
-                return;
+              } else {
+                await github.rest.issues.update({
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                  milestone: milestone.number,
+                });
+                console.log(`Stamped ${kind} #${issueNumber} (${issue.state}) → ${version}`);
               }
-              await github.rest.issues.update({
-                owner,
-                repo,
-                issue_number: issueNumber,
-                milestone: milestone.number,
-              });
-              console.log(`Stamped ${kind} #${issueNumber} (${issue.state}) → ${version}`);
+              if (kind === 'issue' && issue.state === 'open') {
+                await github.rest.issues.update({
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                  state: 'closed',
+                  state_reason: 'completed',
+                });
+                await github.rest.issues.createComment({
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                  body: `Closed by #${prNumber}. Milestone ${version}.`,
+                });
+                console.log(`Closed issue #${issueNumber}`);
+              }
             }
 
             if (!pr.milestone) {

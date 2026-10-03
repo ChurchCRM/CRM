@@ -4474,10 +4474,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Voor het definiëren van de datum in Datumkiezer, standaard: Y-m-d, In het Frans: d/m/Y bijvoorbeeld."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Door komma's gescheiden lijst met persoons-ID's van mensen om op de hoogte te stellen wanneer een nieuw gezin of nieuwe persoon wordt toegevoegd"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Sta niet-geverifieerde koppelingen van gebeurtenissen vanuit de externe agenda-API toe"
 
@@ -7321,10 +7317,6 @@ msgstr "Deze aanwezigheidstelling verwijderen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Selecteer het recordtype waarop deze eigenschap van toepassing is"
-
-#: 
-msgid "Total Pledges"
-msgstr "Totale Toezeggingen"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10367,10 +10359,6 @@ msgstr "Update Beschikbaar"
 msgid "User must have Notes permission"
 msgstr "Gebruiker moet toestemming voor Notities hebben"
 
-#: 
-msgid "Address Defaults"
-msgstr "Adres standaardinstellingen"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10430,10 +10418,6 @@ msgstr "Vonage configureren"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Verbind Mailchimp om e-maillijsten voor nieuwsbrieven en campagnes te synchroniseren."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopiëren van kerkadres"
 
 #: 
 msgid "Copy to clipboard"
@@ -10762,10 +10746,6 @@ msgid "The property for which you would like person records returned."
 msgstr "De eigenschap waarvoor u personeelsrecords wilt hebben geretourneerd."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Deze waarden worden vooraf ingevuld bij het maken van nieuwe families. Laat leeg om handmatige invoer te vereisen."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Eenheid voor het meten van afstand."
 
@@ -10909,10 +10889,6 @@ msgstr "Niet-geverifieerde toegang tot agendagebeurtenissen via openbare HTML-, 
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Bezoekers toestaan hun eigen gezinsrecord aan te maken via de zelfregistratiepagina"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Bezoekers toestaan zich zelf te registreren als nieuwe gezinnen."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11190,10 +11166,6 @@ msgstr "Gravatar werkt door e-mailadressen om te zetten in een hash (MD5). Het d
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Breedte-/lengtegraad verbergen"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Persoonadres verbergen"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -17983,10 +17955,6 @@ msgid "Errors"
 msgstr "Fouten"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Sluit overleden leden uit van de gedrukte ledenlijst en CSV-exports."
-
-#: 
 msgid "Failed Files"
 msgstr "Mislukte bestanden"
 
@@ -18303,10 +18271,6 @@ msgid "This Person is Inactive"
 msgstr "Deze persoon is inactief"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Dit zoekt kaartcoördinaten voor elk gezin waarvan deze ontbreken, met behulp van OpenStreetMap. De gezinnen worden verwerkt in groepen van 50, ongeveer een minuut per groep. U kunt deze pagina open laten staan terwijl dit wordt uitgevoerd. Doorgaan?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Deze persoon is overleden"
 
@@ -18513,14 +18477,6 @@ msgstr "Alle classificaties"
 #: 
 msgid "As an admin, please also review the"
 msgstr "Als beheerder, controleer ook de"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Automatisch een verjaardagsgroet per e-mail naar mensen sturen op hun verjaardag."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Verjaardage-mails"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18779,10 +18735,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Niet-geverifieerde toegang tot openbare evenementen toestaan (voor inbedding van kalenders)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Bezoekers kunnen hun eigen familiegegevens via de openbare registratiepagina aanmaken"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Verjaardagsemails automatisch verzenden (vereist achtergrond-jobplanner)"
 
@@ -18997,4 +18949,160 @@ msgstr "Alleen een beheerder kan een persoon met een login verwijderen."
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "De laatste beheerder kan niet worden verwijderd."
+
+#: 
+msgid "Category"
+msgstr "Categorie"
+
+#: 
+msgid "Category updated."
+msgstr "Categorie bijgewerkt."
+
+#: 
+msgid "Delete Category"
+msgstr "Categorie verwijderen"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kan categorie niet verwijderen"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kan categorie niet hernoemen"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fondscategorieën"
+
+#: 
+msgid "Fund activated."
+msgstr "Fonds geactiveerd."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fonds gedeactiveerd."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Fondsen in deze categorie worden ongecategoriseerd. De fondsen zelf worden niet verwijderd."
+
+#: 
+msgid "INACTIVE"
+msgstr "Niet actieve"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nieuwe categorienaam (een bestaande naam voegt de twee samen)"
+
+#: 
+msgid "Optional"
+msgstr "Optioneel"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Optioneel — kies of typ een nieuwe categorie"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Meer betaald dan de financiële toezegging"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Beloofd maar nog niet betaald"
+
+#: 
+msgid "Rename Category"
+msgstr "Categorie hernoemen"
+
+#: 
+msgid "Still Owed"
+msgstr "Nog verschuldigd"
+
+#: 
+msgid "Summary by Category"
+msgstr "Samenvatting per categorie"
+
+#: 
+msgid "Total Paid"
+msgstr "Totaal betaald"
+
+#: 
+msgid "Uncategorized"
+msgstr "Zonder categorie"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "De huidige instellingen konden niet worden geladen. Laad de pagina opnieuw om het nog eens te proberen."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Deze instelling moet een getal zijn"
+
+#: 
+msgid "Child Role"
+msgstr "Rol kind"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Opname in de gids kan alleen worden in- of uitgeschakeld voor de lijst met classificaties"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Welkomstbericht 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Welkomstbericht 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Rol gezinshoofd"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Adressen zonder gezin verbergen"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Vriendschapsdatum verbergen"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Nieuwsbriefabonnementen verbergen"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Huwelijksdatum verbergen"
+
+#: 
+msgid "In Directory"
+msgstr "In de gids"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Details opnemen in meldingen"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Ontvangers van meldingen"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Personen die op de hoogte worden gebracht wanneer een nieuw gezin of een nieuwe persoon wordt toegevoegd"
+
+#: 
+msgid "Person initials style"
+msgstr "Stijl van de initialen van de persoon"
+
+#: 
+msgid "Person name display style"
+msgstr "Weergavestijl van de naam van de persoon"
+
+#: 
+msgid "Spouse Role"
+msgstr "Rol echtgenoot/echtgenote"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Postcodes in hoofdletters"
 

@@ -4566,10 +4566,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "要在日期选取器中定义日期，默认情况下：Y-m-d，在法国：d/m/Y。"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "添加新家庭或人员时要通知的人员ID列表用逗号分隔"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "允许从外部日历API中进行未经身份验证的事件读取"
 
@@ -7415,10 +7411,6 @@ msgstr "删除此出席计数？"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "选择此属性适用的记录类型"
-
-#: 
-msgid "Total Pledges"
-msgstr "认捐总额"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10458,10 +10450,6 @@ msgstr "有可用更新"
 msgid "User must have Notes permission"
 msgstr "用户必须拥有备注权限"
 
-#: 
-msgid "Address Defaults"
-msgstr "地址默认值"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10521,10 +10509,6 @@ msgstr "配置Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "连接Mailchimp以同步新闻通讯和活动的电子邮件列表。"
-
-#: 
-msgid "Copy from church address"
-msgstr "从教会地址复制"
 
 #: 
 msgid "Copy to clipboard"
@@ -10853,10 +10837,6 @@ msgid "The property for which you would like person records returned."
 msgstr "您想要返回人员记录的属性。"
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "创建新家庭时，这些值会预先填充。留空以要求手动输入。"
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "用于测量距离的单位。"
 
@@ -11000,10 +10980,6 @@ msgstr "允许通过公共HTML、ICS和JSON URL未经身份验证访问日历事
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "允许访客通过自助注册页面创建自己的家庭记录"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "允许访客自助注册为新家庭。"
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11281,10 +11257,6 @@ msgstr "Gravatar通过将电子邮件地址转换为哈希值（MD5）来工作�
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "隐藏经纬度"
-
-#: 
-msgid "Hide Person Address"
-msgstr "隐藏成员地址"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18067,10 +18039,6 @@ msgid "Errors"
 msgstr "错误"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "在打印通讯录和 CSV 导出中排除已故会友。"
-
-#: 
 msgid "Failed Files"
 msgstr "失败的文件"
 
@@ -18387,10 +18355,6 @@ msgid "This Person is Inactive"
 msgstr "此人员已停用"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "此操作将使用 OpenStreetMap 为所有缺少地图坐标的家庭查找坐标，系统会以每批 50 个家庭的方式处理，每批约需一分钟。运行期间您可以保持此页面打开。是否继续？"
-
-#: 
 msgid "This person is deceased"
 msgstr "此人已故"
 
@@ -18597,14 +18561,6 @@ msgstr "所有分类"
 #: 
 msgid "As an admin, please also review the"
 msgstr "作为管理员，请同时查看"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "在人们生日时自动发送生日问候邮件"
-
-#: 
-msgid "Birthday Emails"
-msgstr "生日邮件"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18863,10 +18819,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "允许未认证访问公共事件（用于嵌入日历）"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "允许访客通过公开注册页面创建自己的家庭记录"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "自动发送生日电子邮件（需要后台作业调度程序）"
 
@@ -19081,4 +19033,160 @@ msgstr "只有管理员可以删除有登录名的人。"
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "最后一个管理员无法删除。"
+
+#: 
+msgid "Category"
+msgstr "类别"
+
+#: 
+msgid "Category updated."
+msgstr "类别已更新。"
+
+#: 
+msgid "Delete Category"
+msgstr "删除类别"
+
+#: 
+msgid "Failed to delete category"
+msgstr "删除类别失败"
+
+#: 
+msgid "Failed to rename category"
+msgstr "重命名类别失败"
+
+#: 
+msgid "Fund Categories"
+msgstr "财务基金类别"
+
+#: 
+msgid "Fund activated."
+msgstr "财务基金已启用。"
+
+#: 
+msgid "Fund deactivated."
+msgstr "财务基金已停用。"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "此类别中的基金将变为未分类。这些基金本身不会被删除。"
+
+#: 
+msgid "INACTIVE"
+msgstr "待用"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "新类别名称（现有名称会合并这两个）"
+
+#: 
+msgid "Optional"
+msgstr "可选"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "可选 — 选择或输入新类别"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "超出财务承诺的支付"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "已承诺但尚未支付"
+
+#: 
+msgid "Rename Category"
+msgstr "重命名类别"
+
+#: 
+msgid "Still Owed"
+msgstr "仍欠款"
+
+#: 
+msgid "Summary by Category"
+msgstr "按类别汇总"
+
+#: 
+msgid "Total Paid"
+msgstr "支付总额"
+
+#: 
+msgid "Uncategorized"
+msgstr "未分类"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "无法加载当前设置。请刷新页面后重试。"
+
+#: 
+msgid "This setting must be a number"
+msgstr "此设置必须是数字"
+
+#: 
+msgid "Child Role"
+msgstr "子女角色"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "仅可为分类列表切换是否收录到通讯录"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "欢迎消息 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "欢迎消息 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "户主角色"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "隐藏没有家庭的地址"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "隐藏结识日期"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "隐藏通讯订阅"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "隐藏结婚日期"
+
+#: 
+msgid "In Directory"
+msgstr "在通讯录中"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "在通知中包含详细信息"
+
+#: 
+msgid "Notification Recipients"
+msgstr "通知接收人"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "新增家庭或人员时需要通知的人员"
+
+#: 
+msgid "Person initials style"
+msgstr "人员姓名首字母样式"
+
+#: 
+msgid "Person name display style"
+msgstr "人员姓名显示样式"
+
+#: 
+msgid "Spouse Role"
+msgstr "配偶角色"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "邮政编码大写"
 

@@ -4498,10 +4498,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "لتحديد موعد في تاريخ-المنتقى، في الافتراضي: YMD، وفي الفرنسية: د / م / Y على سبيل المثال."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "قائمة PersonIDs من الناس مفصولة بفواصل لإعلام عند إضافة عائلة جديدة أو شخص"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "يقرأ تسمح غير مصادقة من الأحداث من API التقويم الخارجي"
 
@@ -7367,10 +7363,6 @@ msgstr "إزالة عدد الحضور هذا؟"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "حدد نوع السجل الذي تنطبق عليه هذه الخاصية"
-
-#: 
-msgid "Total Pledges"
-msgstr "إجمالي التعهدات"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10425,10 +10417,6 @@ msgstr "التحديث متاح"
 msgid "User must have Notes permission"
 msgstr "يجب أن يكون لدى المستخدم إذن الملاحظات"
 
-#: 
-msgid "Address Defaults"
-msgstr "إعدادات العنوان الافتراضية"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10488,10 +10476,6 @@ msgstr "تكوين Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "قم بتوصيل Mailchimp لمزامنة قوائم البريد الإلكتروني للرسائل الإخبارية والحملات."
-
-#: 
-msgid "Copy from church address"
-msgstr "انسخ من عنوان الكنيسة"
 
 #: 
 msgid "Copy to clipboard"
@@ -10820,10 +10804,6 @@ msgid "The property for which you would like person records returned."
 msgstr "الخاصية التي تريد إرجاع سجلات الأشخاص عنها."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "يتم ملء هذه القيم مسبقاً عند إنشاء عائلات جديدة. اترك فارغاً لطلب الإدخال اليدوي."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "الوحدة المستخدمة لقياس المسافة."
 
@@ -10967,10 +10947,6 @@ msgstr "السماح بالوصول غير المصرح به لأحداث الت
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "السماح للزوار بإنشاء سجل أسرتهم الخاص عبر صفحة التسجيل الذاتي"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "السماح للزوار بالتسجيل الذاتي كعائلات جديدة."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11248,10 +11224,6 @@ msgstr "يعمل Gravatar عن طريق تحويل عناوين البريد ا�
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "إخفاء خط العرض / خط الطول"
-
-#: 
-msgid "Hide Person Address"
-msgstr "إخفاء عنوان الشخص"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18069,10 +18041,6 @@ msgid "Errors"
 msgstr "أخطاء"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "استبعاد الأعضاء المتوفين من الدليل المطبوع وتصديرات CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "الملفات الفاشلة"
 
@@ -18389,10 +18357,6 @@ msgid "This Person is Inactive"
 msgstr "هذا الشخص غير نشط"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "يقوم هذا بالعثور على إحداثيات الخريطة لكل أسرة تفتقر إليها، باستخدام OpenStreetMap. يعمل على الأسر في دفعات من 50، بحوالي دقيقة لكل دفعة. يمكنك إبقاء هذه الصفحة مفتوحة أثناء التشغيل. هل تريد المتابعة؟"
-
-#: 
 msgid "This person is deceased"
 msgstr "هذا الشخص متوفى"
 
@@ -18599,14 +18563,6 @@ msgstr "جميع التصنيفات"
 #: 
 msgid "As an admin, please also review the"
 msgstr "يرجى من المسؤول أيضاً مراجعة"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "إرسال بريد إلكتروني لتحية عيد الميلاد تلقائياً للأشخاص في عيد ميلادهم."
-
-#: 
-msgid "Birthday Emails"
-msgstr "رسائل عيد الميلاد الإلكترونية"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18851,4 +18807,388 @@ msgstr "للتحقق من الأخطاء حول الوقت الذي حدث في�
 #: 
 msgid "system logs"
 msgstr "سجلات النظام"
+
+#: 
+msgid "Access Control & Security"
+msgstr "التحكم في الوصول والأمان"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "السماح بتسجيل المدفوعات غير القابلة للخصم الضريبي (على سبيل المثال، مبيعات البضائع)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "السماح بالوصول غير المصرح به إلى الأحداث العامة (لتضمين التقويمات)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "إرسال رسائل عيد الميلاد تلقائيًا (يتطلب جدولة المهام الخلفية)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "رسائل تحية أعياد الميلاد"
+
+#: 
+msgid "Communication & Email"
+msgstr "الاتصالات والبريد الإلكتروني"
+
+#: 
+msgid "Content Security Policy"
+msgstr "سياسة أمان المحتوى"
+
+#: 
+msgid "Email System"
+msgstr "نظام البريد الإلكتروني"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "تفعيل أو تعطيل الميزات للمنظمة الخاصة بك"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "تفعيل/تعطيل قسم الأحداث في الملاحة الرئيسية"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "تفعيل/تعطيل قائمة التمويل وجميع ميزات التمويل (الودائع والمدفوعات والتقارير)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "تفعيل/تعطيل قائمة جمع التبرعات"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "فرض رؤوس CSP صارمة للحماية من هجمات XSS"
+
+#: 
+msgid "Events Module"
+msgstr "وحدة الأحداث"
+
+#: 
+msgid "Feature Toggles"
+msgstr "تبديلات الميزات"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "تتحكم تبديلات الميزات في الوحدات والميزات المتاحة في ChurchCRM. يتم تطبيق التغييرات على الفور."
+
+#: 
+msgid "Finance Features"
+msgstr "ميزات التمويل"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "تضمين العناوين في البحث العام السريع"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "تضمين أحداث التقويم في البحث العام السريع"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "تضمين خصائص العائلة المخصصة في البحث العام السريع"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "تضمين الودائع في البحث العام السريع"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "تضمين العائلات في البحث العام السريع"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "تضمين المجموعات في البحث العام السريع"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "تضمين المدفوعات في البحث العام السريع"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "تضمين الأشخاص في البحث العام السريع"
+
+#: 
+msgid "Invalid setting"
+msgstr "إعداد غير صحيح"
+
+#: 
+msgid "Lost Password Link"
+msgstr "رابط كلمة المرور المفقودة"
+
+#: 
+msgid "Manage All Features"
+msgstr "إدارة جميع الميزات"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "تبديل رئيسي لإرسال البريد الإلكتروني. مطلوب لإعادة تعيين كلمات المرور والإخطارات"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "المدفوعات غير القابلة للخصم"
+
+#: 
+msgid "Primary Modules"
+msgstr "الوحدات الأساسية"
+
+#: 
+msgid "Public Calendar API"
+msgstr "واجهة برمجة التطبيقات للتقويم العام"
+
+#: 
+msgid "Saved"
+msgstr "تم الحفظ"
+
+#: 
+msgid "Search Families"
+msgstr "البحث عن العائلات"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "البحث في خصائص العائلة المخصصة"
+
+#: 
+msgid "Search Settings"
+msgstr "إعدادات البحث"
+
+#: 
+msgid "Self-Registration"
+msgstr "التسجيل الذاتي"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "إظهار خيار \"كلمة المرور المفقودة\" على شاشة تسجيل الدخول (يسمح بإعادة تعيين المستخدم)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "إظهار/إخفاء وحدة مدرسة الأحد في الشريط الجانبي"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "لا يمكن تعطيل المسؤول الوحيد الذي يمكنه تسجيل الدخول"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "لا يمكن تحديد المسؤول الوحيد الذي يمكنه تسجيل الدخول كمتوفى"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "متوفى — لا يمكنه تسجيل الدخول"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "أدخل عنوانًا ثانيًا قبل تحديده كعنوان البريد"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "غير نشط — لا يمكنه تسجيل الدخول"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "يذهب البريد إلى العنوان الثاني؛ يبقى العنوان الأساسي الموقع الفيزيائي المستخدم للخرائط والاتجاهات."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "يتم إرسال البريد إلى هذا العنوان بدلاً من العنوان الأساسي"
+
+#: 
+msgid "Mailing Address"
+msgstr "عنوان البريد"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "عنوان البريد إن اختلف"
+
+#: 
+msgid "Primary Address"
+msgstr "العنوان الأساسي"
+
+#: 
+msgid "Receives Mail"
+msgstr "يستقبل البريد"
+
+#: 
+msgid "Second Address"
+msgstr "العنوان الثاني"
+
+#: 
+msgid "Second Home"
+msgstr "البيت الثاني"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "الشخص المرتبط متوفى أو غير نشط. تسجيل الدخول والجلسات ومفتاح API محظورة حتى يتم تنشيط الشخص مرة أخرى."
+
+#: 
+msgid "This is the mailing address"
+msgstr "هذا هو عنوان البريد"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "هذا الشخص متوفى أو غير نشط، لذا لا يمكن لهذا الحساب تسجيل الدخول"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "فقط المسؤول يمكنه حذف شخص لديه تسجيل دخول."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "لا يمكن حذف آخر مسؤول."
+
+#: 
+msgid "Category"
+msgstr "الفئة"
+
+#: 
+msgid "Category updated."
+msgstr "تم تحديث الفئة."
+
+#: 
+msgid "Delete Category"
+msgstr "حذف الفئة"
+
+#: 
+msgid "Failed to delete category"
+msgstr "فشل حذف الفئة"
+
+#: 
+msgid "Failed to rename category"
+msgstr "فشل إعادة تسمية الفئة"
+
+#: 
+msgid "Fund Categories"
+msgstr "فئات الصندوق"
+
+#: 
+msgid "Fund activated."
+msgstr "تم تفعيل الصندوق."
+
+#: 
+msgid "Fund deactivated."
+msgstr "تم تعطيل الصندوق."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "ستصبح الصناديق في هذه الفئة غير مصنفة. الصناديق نفسها لا تُحذف."
+
+#: 
+msgid "INACTIVE"
+msgstr "غير نشط"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "اسم الفئة الجديد (دمج اسم موجود بين الاثنين)"
+
+#: 
+msgid "Optional"
+msgstr "اختياري"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "اختياري — اختر أو اكتب فئة جديدة"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "المبلغ المدفوع بعد التعهد"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "تعهدت به ولم يُدفع بعد"
+
+#: 
+msgid "Rename Category"
+msgstr "إعادة تسمية الفئة"
+
+#: 
+msgid "Still Owed"
+msgstr "لا يزال مستحقًا"
+
+#: 
+msgid "Summary by Category"
+msgstr "الملخص حسب الفئة"
+
+#: 
+msgid "Total Paid"
+msgstr "إجمالي المدفوع"
+
+#: 
+msgid "Uncategorized"
+msgstr "غير مصنفة"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "تعذّر تحميل الإعدادات الحالية. أعد تحميل الصفحة للمحاولة مرة أخرى."
+
+#: 
+msgid "This setting must be a number"
+msgstr "يجب أن يكون هذا الإعداد رقمًا"
+
+#: 
+msgid "Child Role"
+msgstr "دور الابن/الابنة"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "لا يمكن تبديل الإدراج في الدليل إلا لقائمة التصنيفات"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "رسالة الترحيب 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "رسالة الترحيب 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "دور رب الأسرة"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "إخفاء العناوين بدون أسرة"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "إخفاء تاريخ الصداقة"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "إخفاء الاشتراكات في النشرة الإخبارية"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "إخفاء تاريخ الزواج"
+
+#: 
+msgid "In Directory"
+msgstr "في الدليل"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "تضمين التفاصيل في الإشعارات"
+
+#: 
+msgid "Notification Recipients"
+msgstr "مستلمو الإشعارات"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "الأشخاص الذين سيتم إشعارهم عند إضافة أسرة أو شخص جديد"
+
+#: 
+msgid "Person initials style"
+msgstr "نمط الأحرف الأولى للشخص"
+
+#: 
+msgid "Person name display style"
+msgstr "نمط عرض اسم الشخص"
+
+#: 
+msgid "Spouse Role"
+msgstr "دور الزوج/الزوجة"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "الرموز البريدية بأحرف كبيرة"
 

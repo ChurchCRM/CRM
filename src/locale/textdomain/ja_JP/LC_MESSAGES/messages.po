@@ -4471,10 +4471,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "日付ピッカーの日付形式を定義するには、デフォルト: Y-m-d、フランス語の例: d/m/Y"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "新しい家族または人物が追加されたときに通知する人のPersonIDのカンマ区切りリスト"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "外部カレンダーAPIからの認証なしイベント読み取りを許可"
 
@@ -7311,10 +7307,6 @@ msgstr "この出席カウントを削除しますか？"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "このプロパティが適用されるレコードタイプを選択"
-
-#: 
-msgid "Total Pledges"
-msgstr "誓約合計"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10354,10 +10346,6 @@ msgstr "アップデートあり"
 msgid "User must have Notes permission"
 msgstr "ユーザーにはメモの権限が必要です"
 
-#: 
-msgid "Address Defaults"
-msgstr "アドレスデフォルト"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10417,10 +10405,6 @@ msgstr "Vonageを構成する"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Mailchimpを接続して、ニュースレターおよびキャンペーンのメールリストを同期します。"
-
-#: 
-msgid "Copy from church address"
-msgstr "教会のアドレスからコピー"
 
 #: 
 msgid "Copy to clipboard"
@@ -10749,10 +10733,6 @@ msgid "The property for which you would like person records returned."
 msgstr "ユーザーレコードを返してほしいプロパティ。"
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "これらの値は、新しい家族を作成するときに事前に入力されます。手動入力が必要な場合は空白のままにします。"
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "距離を測定するために使用される単位。"
 
@@ -10896,10 +10876,6 @@ msgstr "公開 HTML、ICS、JSON URL を通じてカレンダーイベントへ�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "訪問者が自己登録ページで自分の家族記録を作成することを許可"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "訪問者が新しい家族として自己登録することを許可します。"
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11177,10 +11153,6 @@ msgstr "Gravatar はメールアドレスをハッシュ（MD5）に変換する
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "緯度・経度を非表示"
-
-#: 
-msgid "Hide Person Address"
-msgstr "個人の住所を非表示"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -17963,10 +17935,6 @@ msgid "Errors"
 msgstr "エラー"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "印刷用ディレクトリおよびCSVエクスポートから故人の会員を除外します。"
-
-#: 
 msgid "Failed Files"
 msgstr "失敗したファイル"
 
@@ -18283,10 +18251,6 @@ msgid "This Person is Inactive"
 msgstr "この人物は無効です"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "OpenStreetMapを使用して、地図座標が未設定のすべての家族の座標を検索します。50件ずつのバッチで処理され、1バッチあたり約1分かかります。実行中もこのページを開いたままにしておけます。続行しますか?"
-
-#: 
 msgid "This person is deceased"
 msgstr "この人物は故人です"
 
@@ -18493,14 +18457,6 @@ msgstr "すべての分類"
 #: 
 msgid "As an admin, please also review the"
 msgstr "管理者の方は、以下もご確認ください:"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "誕生日に人々に自動的に誕生日お祝いメールを送信します。"
-
-#: 
-msgid "Birthday Emails"
-msgstr "誕生日メール"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18759,10 +18715,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "公開イベントへの認証されていないアクセスを許可する（カレンダー埋め込み用）"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "訪問者が公開登録ページを通じて自分の家族記録を作成することを許可する"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "誕生日メールを自動的に送信する（バックグラウンドジョブスケジューラが必要）"
 
@@ -18977,4 +18929,160 @@ msgstr "ログイン情報を持つ人を削除できるのは管理者だけで
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "最後の管理者は削除できません。"
+
+#: 
+msgid "Category"
+msgstr "カテゴリ"
+
+#: 
+msgid "Category updated."
+msgstr "カテゴリが更新されました。"
+
+#: 
+msgid "Delete Category"
+msgstr "カテゴリを削除"
+
+#: 
+msgid "Failed to delete category"
+msgstr "カテゴリの削除に失敗しました"
+
+#: 
+msgid "Failed to rename category"
+msgstr "カテゴリの名前変更に失敗しました"
+
+#: 
+msgid "Fund Categories"
+msgstr "献金カテゴリ"
+
+#: 
+msgid "Fund activated."
+msgstr "献金が有効化されました。"
+
+#: 
+msgid "Fund deactivated."
+msgstr "献金が無効化されました。"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "このカテゴリの献金は未分類になります。献金自体は削除されません。"
+
+#: 
+msgid "INACTIVE"
+msgstr "非アクティブ"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "新しいカテゴリ名（既存の名前は2つをマージします）"
+
+#: 
+msgid "Optional"
+msgstr "オプション"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "オプション — 新しいカテゴリを選択または入力"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "誓約を超えた支払い"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "誓約されたが未払い"
+
+#: 
+msgid "Rename Category"
+msgstr "カテゴリを名前変更"
+
+#: 
+msgid "Still Owed"
+msgstr "未払い額"
+
+#: 
+msgid "Summary by Category"
+msgstr "カテゴリ別サマリ"
+
+#: 
+msgid "Total Paid"
+msgstr "支払合計"
+
+#: 
+msgid "Uncategorized"
+msgstr "未分類"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "現在の設定を読み込めませんでした。ページを再読み込みして、もう一度お試しください。"
+
+#: 
+msgid "This setting must be a number"
+msgstr "この設定は数値である必要があります"
+
+#: 
+msgid "Child Role"
+msgstr "子の役割"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "名簿への掲載は、分類リストでのみ切り替えられます"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "ウェルカムメッセージ 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "ウェルカムメッセージ 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "世帯主の役割"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "家族のない住所を非表示にする"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "友人登録日を非表示にする"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "ニュースレター購読を非表示にする"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "結婚記念日を非表示にする"
+
+#: 
+msgid "In Directory"
+msgstr "名簿に掲載"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "通知に詳細を含める"
+
+#: 
+msgid "Notification Recipients"
+msgstr "通知の受信者"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "新しい家族または人物が追加されたときに通知する人"
+
+#: 
+msgid "Person initials style"
+msgstr "人物のイニシャルの形式"
+
+#: 
+msgid "Person name display style"
+msgstr "人物の名前の表示形式"
+
+#: 
+msgid "Spouse Role"
+msgstr "配偶者の役割"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "郵便番号を大文字にする"
 

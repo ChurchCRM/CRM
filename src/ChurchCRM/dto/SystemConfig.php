@@ -164,6 +164,7 @@ class   SystemConfig
             'bHideFamilyNewsletter'                => new ConfigItem('bHideFamilyNewsletter', 'boolean', '0', gettext('Set true to disable management of newsletter subscriptions in the Family Editor.')),
             'bHideWeddingDate'                     => new ConfigItem('bHideWeddingDate', 'boolean', '0', gettext('Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.')),
             'bHideLatLon'                          => new ConfigItem('bHideLatLon', 'boolean', '0', gettext('When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.')),
+            'sGeocoderProviders'                   => new ConfigItem('sGeocoderProviders', 'text', 'Nominatim', gettext('Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.')),
             'bUseDonationEnvelopes'                => new ConfigItem('bUseDonationEnvelopes', 'boolean', '0', gettext('Enable the use of numbered donation envelopes for tracking contributions')),
             'iChecksPerDepositForm'                => new ConfigItem('iChecksPerDepositForm', 'number', '14', gettext('How many checks to print per deposit slip page')),
             'bUseScannedChecks'                    => new ConfigItem('bUseScannedChecks', 'boolean', '0', gettext('Allow scanned check images to be attached to deposit records')),
@@ -224,8 +225,8 @@ class   SystemConfig
             'sConfirmSincerely'                    => new ConfigItem('sConfirmSincerely', 'text', 'Sincerely', gettext('Used to end a letter before Signer')),
             'sDear'                                => new ConfigItem('sDear', 'text', 'Dear', gettext('Text before name in emails/reports')),
             'sDepositSlipType'                     => new ConfigItem('sDepositSlipType', 'choice', 'QBDT', gettext('Deposit ticket type'), '', '{"Choices":["QBDT (QuickBooks):QBDT"]}'),
-            'iPersonNameStyle'                     => new ConfigItem('iPersonNameStyle', 'choice', '4', '', '', json_encode(SystemConfig::getNameChoices())),
-            'iPersonInitialStyle'                  => new ConfigItem('iPersonInitialStyle', 'choice', '0', '', '', json_encode(SystemConfig::getInitialStyleChoices())),
+            'iPersonNameStyle'                     => new ConfigItem('iPersonNameStyle', 'choice', '4', gettext('Person name display style'), '', json_encode(SystemConfig::getNameChoices())),
+            'iPersonInitialStyle'                  => new ConfigItem('iPersonInitialStyle', 'choice', '0', gettext('Person initials style'), '', json_encode(SystemConfig::getInitialStyleChoices())),
             'bDisplayBillCounts'                   => new ConfigItem('bDisplayBillCounts', 'boolean', '1', gettext('Show a breakdown of bill denominations on the deposit slip report')),
             'sKioskVisibilityTimestamp'            => new ConfigItem('sKioskVisibilityTimestamp', 'text', '', gettext('KioskVisibilityTimestamp')),
             'bEnableLostPassword'                  => new ConfigItem('bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
@@ -243,7 +244,7 @@ class   SystemConfig
             'bEnableExternalCalendarAPI'           => new ConfigItem('bEnableExternalCalendarAPI', 'boolean', '0', gettext('Allow unauthenticated reads of events from the external calendar API')),
             'sCalendarEmbedOrigins'                => new ConfigItem('sCalendarEmbedOrigins', 'text', '*', gettext('Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any origin. Restrict to specific origins for tighter security, e.g. "https://mysite.org https://embed.example.com".')),
             
-            'sNewPersonNotificationRecipientIDs'   => new ConfigItem('sNewPersonNotificationRecipientIDs', 'text', '', gettext('Comma Separated list of PersonIDs of people to notify when a new family or person is added')),
+            'sNewPersonNotificationRecipientIDs'   => new ConfigItem('sNewPersonNotificationRecipientIDs', 'text', '', gettext('People to notify when a new family or person is added')),
             'bSearchIncludePersons'                => new ConfigItem('bSearchIncludePersons', 'boolean', '1', gettext('Search People')),
             'bSearchIncludeFamilies'               => new ConfigItem('bSearchIncludeFamilies', 'boolean', '1', gettext('Search Family')),
             'bSearchIncludeFamilyHOH'              => new ConfigItem('bSearchIncludeFamilyHOH', 'boolean', '1', gettext('Show Family Head of House Names')),
@@ -300,9 +301,6 @@ class   SystemConfig
     private static function buildCategories(): array
     {
         return [
-            gettext('New Members & Greeting') => ['sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2'],
-            gettext('People')              => ['sDirClassifications', 'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideWeddingDate', 'bForceUppercaseZip', 'sInactiveClassification'],
-            gettext('Families')            => ['sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'bHideFamilyNewsletter'],
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Scheduled Tasks')    => ['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'],
@@ -421,6 +419,9 @@ class   SystemConfig
                     'label' => $label,
                     'tooltip' => $tooltip
                 ];
+                if ($entry['type'] === 'choice') {
+                    $entry['choices'] = self::getChoices($settingName);
+                }
 
                 $configurations[] = $entry;
             }
@@ -441,6 +442,8 @@ class   SystemConfig
                 return 'number';
             case 'boolean':
                 return 'boolean';
+            case 'choice':
+                return 'choice';
             case 'password':
                 return 'password';
             case 'text':

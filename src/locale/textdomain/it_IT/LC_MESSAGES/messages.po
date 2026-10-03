@@ -4519,10 +4519,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Per definire la data in Date-Picker, per impostazione predefinita: Y-m-d, in francese: d / m / Y ad esempio."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Virgola Separato elenco di PersonID di persone da notificare quando viene aggiunta una nuova famiglia o persona"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Consenti letture non autenticate di eventi dall'API calendario esterna"
 
@@ -7371,10 +7367,6 @@ msgstr "Rimuovere questo conteggio presenze?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Seleziona il tipo di record a cui si applica questa proprietà"
-
-#: 
-msgid "Total Pledges"
-msgstr "Totale Impegni"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10417,10 +10409,6 @@ msgstr "Aggiornamento Disponibile"
 msgid "User must have Notes permission"
 msgstr "L'utente deve avere il permesso Note"
 
-#: 
-msgid "Address Defaults"
-msgstr "Predefiniti Indirizzo"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10480,10 +10468,6 @@ msgstr "Configura Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Connetti Mailchimp per sincronizzare gli elenchi di posta per newsletter e campagne."
-
-#: 
-msgid "Copy from church address"
-msgstr "Copia dall'indirizzo della chiesa"
 
 #: 
 msgid "Copy to clipboard"
@@ -10812,10 +10796,6 @@ msgid "The property for which you would like person records returned."
 msgstr "La proprietà per la quale desideri che i record delle persone vengano restituiti."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Questi valori sono pre-compilati durante la creazione di nuove famiglie. Lascia vuoto per richiedere l'immissione manuale."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Unità utilizzata per misurare la distanza."
 
@@ -10959,10 +10939,6 @@ msgstr "Consenti l'accesso non autenticato agli eventi del calendario tramite UR
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Consenti ai visitatori di creare il proprio record familiare tramite la pagina di auto-registrazione"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Consenti ai visitatori di auto-registrarsi come nuove famiglie."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11240,10 +11216,6 @@ msgstr "Gravatar funziona convertendo gli indirizzi email in un hash (MD5). L'in
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Nascondi Latitudine/Longitudine"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Nascondi Indirizzo Persona"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18033,10 +18005,6 @@ msgid "Errors"
 msgstr "Errori"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Escludi i membri deceduti dalla directory stampata e dalle esportazioni CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "File non riusciti"
 
@@ -18353,10 +18321,6 @@ msgid "This Person is Inactive"
 msgstr "Questa persona è inattiva"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Questa operazione trova le coordinate geografiche per ogni famiglia che ne è priva, utilizzando OpenStreetMap. Elabora le famiglie in gruppi di 50, circa un minuto per gruppo. Puoi lasciare questa pagina aperta durante l'esecuzione. Continuare?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Questa persona è deceduta"
 
@@ -18563,14 +18527,6 @@ msgstr "Tutte le classificazioni"
 #: 
 msgid "As an admin, please also review the"
 msgstr "Come amministratore, si prega di consultare anche il"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Invia automaticamente un'email di auguri di compleanno alle persone nel loro compleanno."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Email di compleanno"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18815,4 +18771,389 @@ msgstr "per errori intorno al momento in cui ciò è accaduto, e scarica e alleg
 #: 
 msgid "system logs"
 msgstr "registri di sistema"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Controllo accessi e sicurezza"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Consenti la registrazione di pagamenti non deducibili (ad es., vendita di merce)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Consenti accesso non autenticato agli eventi pubblici (per incorporare calendari)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Invia automaticamente e-mail di compleanno (richiede scheduler di attività in background)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "E-mail di auguri di compleanno"
+
+#: 
+msgid "Communication & Email"
+msgstr "Comunicazione ed e-mail"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Politica di sicurezza dei contenuti"
+
+#: 
+msgid "Email System"
+msgstr "Sistema di e-mail"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Abilita o disabilita le funzioni per la tua organizzazione"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Abilita/disabilita la sezione Eventi nella navigazione principale"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Abilita/disabilita il menu Finanza e tutte le funzioni finanziarie (depositi, pagamenti, report)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Abilita/disabilita il menu Raccolta fondi"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Applica intestazioni CSP rigorose per proteggere da attacchi XSS"
+
+#: 
+msgid "Events Module"
+msgstr "Modulo Eventi"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Toggle funzionalità"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "I toggle delle funzionalità controllano quali moduli e funzioni sono disponibili in ChurchCRM. I cambiamenti hanno effetto immediato."
+
+#: 
+msgid "Finance Features"
+msgstr "Funzioni finanziarie"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Includi indirizzi nella ricerca globale rapida"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Includi eventi del calendario nella ricerca globale rapida"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Includi proprietà familiari personalizzate nella ricerca globale rapida"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Includi depositi nella ricerca globale rapida"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Includi famiglie nella ricerca globale rapida"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Includi ministeri nella ricerca globale rapida"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Includi pagamenti nella ricerca globale rapida"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Includi persone nella ricerca globale rapida"
+
+#: 
+msgid "Invalid setting"
+msgstr "Impostazione non valida"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Collegamento password dimenticata"
+
+#: 
+msgid "Manage All Features"
+msgstr "Gestisci tutte le funzioni"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Toggle master per l'invio di e-mail. RICHIESTO per reimpostazioni password e notifiche"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Pagamenti non deducibili"
+
+#: 
+msgid "Primary Modules"
+msgstr "Moduli principali"
+
+#: 
+msgid "Public Calendar API"
+msgstr "API calendario pubblico"
+
+#: 
+msgid "Saved"
+msgstr "Salvato"
+
+#: 
+msgid "Search Families"
+msgstr "Ricerca famiglie"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Ricerca proprietà personalizzate della famiglia"
+
+#: 
+msgid "Search Settings"
+msgstr "Impostazioni di ricerca"
+
+#: 
+msgid "Self-Registration"
+msgstr "Auto-registrazione"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Mostra l'opzione \"Password dimenticata\" nella schermata di accesso (consente all'utente di reimpostarsi)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Mostra/nascondi il modulo Scuola domenicale nella barra laterale"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Impossibile disattivare l'unico amministratore che può accedere"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Impossibile contrassegnare l'unico amministratore che può accedere come deceduto"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Deceduto — non può accedere"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Inserisci un secondo indirizzo prima di contrassegnarlo come indirizzo postale"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Inattivo — non può accedere"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "La posta va al secondo indirizzo; l'indirizzo principale rimane la posizione fisica utilizzata per mappe e indicazioni."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "La posta viene inviata a questo indirizzo invece di quello principale"
+
+#: 
+msgid "Mailing Address"
+msgstr "Indirizzo postale"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Indirizzo postale se diverso"
+
+#: 
+msgid "Primary Address"
+msgstr "Indirizzo principale"
+
+#: 
+msgid "Receives Mail"
+msgstr "Riceve posta"
+
+#: 
+msgid "Second Address"
+msgstr "Secondo indirizzo"
+
+#: 
+msgid "Second Home"
+msgstr "Seconda casa"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "La persona collegata è deceduta o inattiva. L'accesso, le sessioni e la chiave API sono bloccati finché la persona non viene riattivata."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Questo è l'indirizzo postale"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Questa persona è deceduta o inattiva, quindi questo account non può accedere"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Solo un amministratore può eliminare una persona che ha un accesso."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "L'ultimo amministratore non può essere eliminato."
+
+#: 
+msgid "Category"
+msgstr "Categoria"
+
+#: 
+msgid "Category updated."
+msgstr "Categoria aggiornata."
+
+#: 
+msgid "Delete Category"
+msgstr "Elimina categoria"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Impossibile eliminare la categoria"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Impossibile rinominare la categoria"
+
+#: 
+msgid "Fund Categories"
+msgstr "Categorie di fondi"
+
+#: 
+msgid "Fund activated."
+msgstr "Fondo attivato."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fondo disattivato."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "I fondi in questa categoria diventeranno non categorizzati. I fondi stessi non vengono eliminati."
+
+#: 
+msgid "INACTIVE"
+msgstr "Inattivo\n"
+""
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nuovo nome categoria (un nome esistente unisce i due)"
+
+#: 
+msgid "Optional"
+msgstr "Facoltativo"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Facoltativo — scegli o digita una nuova categoria"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Pagato oltre l'impegno finanziario"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Promesso ma non ancora pagato"
+
+#: 
+msgid "Rename Category"
+msgstr "Rinomina categoria"
+
+#: 
+msgid "Still Owed"
+msgstr "Ancora dovuto"
+
+#: 
+msgid "Summary by Category"
+msgstr "Riepilogo per categoria"
+
+#: 
+msgid "Total Paid"
+msgstr "Totale pagato"
+
+#: 
+msgid "Uncategorized"
+msgstr "Non categorizzato"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Impossibile caricare le impostazioni correnti. Ricarica la pagina per riprovare."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Questa impostazione deve essere un numero"
+
+#: 
+msgid "Child Role"
+msgstr "Ruolo di figlio"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "L'inclusione nell'elenco può essere attivata o disattivata solo per l'elenco delle classificazioni"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Messaggio di benvenuto 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Messaggio di benvenuto 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Ruolo di capofamiglia"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Nascondi indirizzi senza famiglia"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Nascondi data di amicizia"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Nascondi iscrizioni alla newsletter"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Nascondi data di matrimonio"
+
+#: 
+msgid "In Directory"
+msgstr "Nell'elenco"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Includi dettagli nelle notifiche"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Destinatari delle notifiche"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Persone da avvisare quando viene aggiunta una nuova famiglia o persona"
+
+#: 
+msgid "Person initials style"
+msgstr "Stile delle iniziali della persona"
+
+#: 
+msgid "Person name display style"
+msgstr "Stile di visualizzazione del nome della persona"
+
+#: 
+msgid "Spouse Role"
+msgstr "Ruolo di coniuge"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "CAP in maiuscolo"
 

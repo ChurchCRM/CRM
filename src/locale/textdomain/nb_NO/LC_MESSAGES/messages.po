@@ -4581,10 +4581,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "For å definere dato i datovelgeren, standard: Y-m-d, f.eks. d/m/Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Kommaseparert liste over PersonID-er for personer som skal varsles når en ny familie eller person legges til"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Tillat uautorisert lesing av hendelser fra det eksterne kalender-API-et"
 
@@ -7422,10 +7418,6 @@ msgstr "Fjerne denne oppmøtetellingen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Velg posttypen denne egenskapen gjelder for"
-
-#: 
-msgid "Total Pledges"
-msgstr "Totale Løfter"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10468,10 +10460,6 @@ msgstr "Oppdatering tilgjengelig"
 msgid "User must have Notes permission"
 msgstr "Brukeren må ha notat-tillatelse"
 
-#: 
-msgid "Address Defaults"
-msgstr "Adresse standarder"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10531,10 +10519,6 @@ msgstr "Konfigurer Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Koble til Mailchimp for å synkronisere e-postlister for nyhetsbrev og kampanjer."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopier fra kirkeadresse"
 
 #: 
 msgid "Copy to clipboard"
@@ -10863,10 +10847,6 @@ msgid "The property for which you would like person records returned."
 msgstr "Eiendommen du vil ha personposter for."
 
 #: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Disse verdiene fylles inn på forhånd når du oppretter nye familier. La være tomt for å kreve manuell oppføring."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Enhet som brukes for å måle avstand."
 
@@ -11010,10 +10990,6 @@ msgstr "Tillat uautentisert tilgang til kalenderhendelser via offentlige HTML-, 
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Tillat besøkende å opprette sin egen familiepost via siden for selvregistrering"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Tillat besøkende å registrere seg som nye familier."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -11291,10 +11267,6 @@ msgstr "Gravatar fungerer ved å konvertere e-postadresser til en hash (MD5). De
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Skjul bredde-/lengdegrad"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Skjul personadresse"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18084,10 +18056,6 @@ msgid "Errors"
 msgstr "Feil"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Ekskluder avdøde medlemmer fra den trykte katalogen og CSV-eksporter."
-
-#: 
 msgid "Failed Files"
 msgstr "Mislykkede filer"
 
@@ -18404,10 +18372,6 @@ msgid "This Person is Inactive"
 msgstr "Denne personen er inaktiv"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Dette finner kartkoordinater for hver familie som mangler dem, ved hjelp av OpenStreetMap. Familiene behandles i grupper på 50, omtrent ett minutt per gruppe. Du kan la denne siden være åpen mens den kjører. Fortsette?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Denne personen er avdød"
 
@@ -18614,14 +18578,6 @@ msgstr "Alle klassifiseringer"
 #: 
 msgid "As an admin, please also review the"
 msgstr "Som administrator, vennligst gjennomgå også"
-
-#: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Send automatisk en bursdagshilsen via e-post til personer på deres fødselsdag."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Bursdags-e-poster"
 
 #: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
@@ -18880,10 +18836,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Tillat uauthentisert tilgang til offentlige arrangementer (for innebygning av kalendere)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Tillat besøkende å opprette sine egne familieregistre via den offentlige registreringssiden"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Send automatisk bursdagse-poster (krever bakgrunnsjobplanlegger)"
 
@@ -19098,4 +19050,160 @@ msgstr "Bare en administrator kan slette en person som har en innlogging."
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Den siste administratoren kan ikke slettes."
+
+#: 
+msgid "Category"
+msgstr "Kategori"
+
+#: 
+msgid "Category updated."
+msgstr "Kategori oppdatert."
+
+#: 
+msgid "Delete Category"
+msgstr "Slett kategori"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kunne ikke slette kategori"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kunne ikke gi kategori nytt navn"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fondkategorier"
+
+#: 
+msgid "Fund activated."
+msgstr "Fond aktivert."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fond deaktivert."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Midler i denne kategorien blir ukategorisert. Midlene selv blir ikke slettet."
+
+#: 
+msgid "INACTIVE"
+msgstr "Inaktiv"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nytt kategorinavn (et eksisterende navn slår de to sammen)"
+
+#: 
+msgid "Optional"
+msgstr "Valgfritt"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Valgfritt — velg eller skriv inn en ny kategori"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Betalt mer enn den finansielle forpliktelsen"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Løftet men ikke betalt ennå"
+
+#: 
+msgid "Rename Category"
+msgstr "Gi kategori nytt navn"
+
+#: 
+msgid "Still Owed"
+msgstr "Fortsatt skyldig"
+
+#: 
+msgid "Summary by Category"
+msgstr "Sammendrag per kategori"
+
+#: 
+msgid "Total Paid"
+msgstr "Totalt betalt"
+
+#: 
+msgid "Uncategorized"
+msgstr "Uten kategori"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Kunne ikke laste inn gjeldende innstillinger. Last inn siden på nytt og prøv igjen."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Denne innstillingen må være et tall"
+
+#: 
+msgid "Child Role"
+msgstr "Rolle som barn"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Katalogoppføring kan bare slås av eller på for klassifiseringslisten"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Velkomstmelding 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Velkomstmelding 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Rolle som husstandsoverhode"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Skjul adresser uten familie"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Skjul vennskapsdato"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Skjul nyhetsbrevabonnementer"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Skjul bryllupsdato"
+
+#: 
+msgid "In Directory"
+msgstr "I katalogen"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Ta med detaljer i varsler"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Mottakere av varsler"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Personer som skal varsles når en ny familie eller person legges til"
+
+#: 
+msgid "Person initials style"
+msgstr "Stil for personens initialer"
+
+#: 
+msgid "Person name display style"
+msgstr "Visningsstil for personens navn"
+
+#: 
+msgid "Spouse Role"
+msgstr "Rolle som ektefelle"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Postnumre med store bokstaver"
 

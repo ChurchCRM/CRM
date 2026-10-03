@@ -73,6 +73,32 @@ function shrinkToBox(blob, maxWidth, maxHeight) {
   });
 }
 
+const HEIC_PATTERN = /\.(heic|heif)$/i;
+
+/**
+ * @param {{name?: string, type?: string}} file
+ * @returns {boolean}
+ */
+function isHeic(file) {
+  return /^image\/hei[cf]/i.test(file.type || "") || HEIC_PATTERN.test(file.name || "");
+}
+
+/**
+ * @param {Blob} blob
+ * @returns {Promise<string>} The blob as a data: URL
+ */
+function readAsDataUrl(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () =>
+      typeof reader.result === "string"
+        ? resolve(reader.result)
+        : reject(new Error("Failed to read file: invalid data"));
+    reader.onerror = () => reject(new Error("Failed to read file"));
+    reader.readAsDataURL(blob);
+  });
+}
+
 /**
  * Create a photo uploader instance with modal dashboard
  *
@@ -105,13 +131,22 @@ export function createPhotoUploader(config) {
   const allowWebcam = config.webcam !== false;
   const dashboardTitle = config.title || "Upload Photo";
 
+  let heicConversions = 0;
+
   const uppy = new Uppy({
     id: "photo-uploader",
     autoProceed: false,
+    onBeforeUpload: (files) => {
+      if (heicConversions > 0) {
+        showPersistentError("This HEIC photo is still being converted. Try again in a moment.");
+        return false;
+      }
+      return files;
+    },
     restrictions: {
       maxNumberOfFiles: 1,
       maxFileSize: MAX_SOURCE_FILE_BYTES,
-      allowedFileTypes: ["image/*"],
+      allowedFileTypes: ["image/*", ".heic", ".heif"],
     },
   }).use(Dashboard, {
     inline: false, // Use modal mode
@@ -214,120 +249,91 @@ export function createPhotoUploader(config) {
     showPersistentError(message);
   });
 
-  // Custom upload handler that converts image to base64
-  uppy.on("upload", (_data) => {
-    // Clear any previous persistent errors when a new upload starts
-    clearPersistentError();
-
-    // Get all files
-    const files = Object.values(uppy.getState().files);
-    if (!files || files.length === 0) {
-      console.error("No files to upload");
+  // Browsers cannot open HEIC (iPhone) photos, so convert them to JPEG as they are added;
+  // the editor, the resize and the server then only ever see a JPEG. The converter is a
+  // large library, loaded only when a HEIC file is picked.
+  uppy.on("file-added", async (file) => {
+    if (!isHeic(file) || !(file.data instanceof Blob)) {
       return;
     }
-
-    const file = files[0];
-
-    // v5+: Use 'complete' field instead of 'uploadComplete'
-    uppy.setFileState(file.id, {
-      progress: { uploadStarted: Date.now(), complete: false, percentage: 0 },
-    });
-
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      // v5+: file.data is now nullable, so check e.target.result
-      const base64 = e.target?.result;
-      if (!base64 || typeof base64 !== "string") {
-        const error = new Error("Failed to read file: invalid data");
-        console.error("FileReader error:", error);
-        showPersistentError(error.message);
-        uppy.emit("upload-error", file, error);
-        uppy.emit("complete", { successful: [], failed: [file] });
-        return;
+    clearPersistentError();
+    heicConversions++;
+    let jpeg;
+    let sourceStillPresent = false;
+    try {
+      const { default: heic2any } = await import("heic2any");
+      const converted = await heic2any({ blob: file.data, toType: "image/jpeg", quality: 0.9 });
+      jpeg = Array.isArray(converted) ? converted[0] : converted;
+    } catch (error) {
+      console.error("HEIC conversion failed", error);
+      showPersistentError("This HEIC photo could not be converted. Export it as a JPEG and try again.");
+    } finally {
+      heicConversions--;
+      // A remove click during conversion must not be undone by adding the JPEG.
+      sourceStillPresent = Boolean(uppy.getFile(file.id));
+      if (sourceStillPresent) {
+        uppy.removeFile(file.id);
       }
+    }
+    if (!jpeg || !sourceStillPresent) {
+      return;
+    }
+    try {
+      uppy.addFile({
+        name: file.name.replace(HEIC_PATTERN, ".jpg"),
+        type: "image/jpeg",
+        data: jpeg,
+        source: file.source,
+      });
+    } catch (error) {
+      console.error("Converted HEIC photo was rejected", error);
+    }
+  });
 
-      // Send base64 image to API (backend now handles format detection)
-      fetch(config.uploadUrl, {
+  // An uploader step, not an `upload` listener: Uppy emits `complete` only after this
+  // resolves, so onComplete (a page reload) cannot run before the photo is sent (#10269).
+  uppy.addUploader(async (fileIDs) => {
+    clearPersistentError();
+    const file = uppy.getFile(fileIDs[0]);
+    if (!file) {
+      return;
+    }
+    uppy.emit("upload-start", [file]);
+
+    try {
+      // v5+: file.data is nullable for remote files
+      if (file.data == null) {
+        throw new Error("File data is not available");
+      }
+      const shrunk = await shrinkToBox(file.data, photoWidth, photoHeight);
+      if (shrunk.size > maxPayloadBytes) {
+        throw new Error(
+          `The resized image is larger than the server limit of ${(maxPayloadBytes / (1024 * 1024)).toFixed(1)}MB.`,
+        );
+      }
+      const imgBase64 = await readAsDataUrl(shrunk);
+
+      const response = await fetch(config.uploadUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         credentials: "include",
-        body: JSON.stringify({ imgBase64: base64 }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            // Parse error JSON first; only fall back to statusText if parsing fails
-            return response
-              .json()
-              .then((errorData) => {
-                throw new Error(errorData.message || `Upload failed: ${response.statusText}`);
-              })
-              .catch((parseError) => {
-                if (parseError instanceof SyntaxError) {
-                  throw new Error(`Upload failed: ${response.statusText}`);
-                }
-                throw parseError;
-              });
-          }
-          return response.json();
-        })
-        .then((data) => {
-          // v5+: Use 'complete' field to indicate upload completion
-          uppy.setFileState(file.id, {
-            progress: { complete: true, percentage: 100 },
-            uploadURL: config.uploadUrl,
-            response: { body: data },
-          });
-
-          uppy.emit("upload-success", file, { body: data });
-          uppy.emit("complete", { successful: [file], failed: [] });
-        })
-        .catch((error) => {
-          // v5+: Proper error type handling with meaningful messages
-          const uploadError = error instanceof Error ? error : new Error(String(error));
-          console.error("Upload error:", uploadError.message);
-          showPersistentError(uploadError.message);
-          uppy.emit("upload-error", file, uploadError);
-          uppy.emit("complete", { successful: [], failed: [file] });
-        });
-    };
-
-    reader.onerror = (error) => {
-      const fileError = new Error("Failed to read file");
-      console.error("FileReader error:", error || fileError);
-      showPersistentError(fileError.message);
-      uppy.emit("upload-error", file, fileError);
-      uppy.emit("complete", { successful: [], failed: [file] });
-    };
-
-    // v5+: file.data is nullable for remote files, check existence
-    if (file.data == null) {
-      const error = new Error("File data is not available");
-      console.error(error.message);
-      showPersistentError(error.message);
-      uppy.emit("upload-error", file, error);
-      uppy.emit("complete", { successful: [], failed: [file] });
-      return;
-    }
-
-    shrinkToBox(file.data, photoWidth, photoHeight)
-      .then((shrunk) => {
-        if (shrunk.size > maxPayloadBytes) {
-          throw new Error(
-            `The resized image is larger than the server limit of ${(maxPayloadBytes / (1024 * 1024)).toFixed(1)}MB.`,
-          );
-        }
-        reader.readAsDataURL(shrunk);
-      })
-      .catch((error) => {
-        console.error("Resize error:", error.message);
-        showPersistentError(error.message);
-        uppy.emit("upload-error", file, error);
-        uppy.emit("complete", { successful: [], failed: [file] });
+        body: JSON.stringify({ imgBase64 }),
       });
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.message || `Upload failed: ${response.statusText}`);
+      }
+      const data = await response.json();
+      uppy.emit("upload-success", file, { status: response.status, body: data, uploadURL: config.uploadUrl });
+    } catch (error) {
+      const uploadError = error instanceof Error ? error : new Error(String(error));
+      console.error("Upload error:", uploadError.message);
+      showPersistentError(uploadError.message);
+      uppy.emit("upload-error", file, uploadError);
+    }
   });
 
   // Handle upload completion
