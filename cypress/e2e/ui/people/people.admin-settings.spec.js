@@ -11,7 +11,7 @@
  */
 
 describe("People Settings hub", () => {
-    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies", "#peopleDefaults", "#peopleMap"];
+    const SECTIONS = ["#peopleNewMembers", "#peopleFamilies", "#peoplePeople", "#peopleMap"];
     let savedProviders;
     let savedFriendDate;
     let savedDefaultCity;
@@ -130,20 +130,32 @@ describe("People Settings hub", () => {
             ).should("exist");
         });
 
-        it("has a New Record Defaults section with the address defaults", () => {
+        it("puts greeting first, then families, people, and map, with address defaults in the greeting section", () => {
             cy.visit("/admin/people");
-            cy.get("#peopleDefaults .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
-            ["sDefaultState", "sDefaultCity", "sDefaultZip"].forEach((name) => {
-                cy.get(`#peopleDefaults input[name='${name}']`).should("exist");
+            cy.get("#peopleNewMembers .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+            cy.get(".settings-panel-card h6").then(($headings) => {
+                const titles = [...$headings].map((heading) => heading.textContent);
+                expect(titles[0]).to.contain("New Members & Greeting");
+                expect(titles[1]).to.contain("Families");
+                expect(titles[2]).to.contain("People");
+                expect(titles[3]).to.contain("Map Settings");
             });
-            cy.get("#peopleDefaults select[name='sDefaultCountry'] option").should("have.length.greaterThan", 50);
+            cy.get("#peopleDefaults").should("not.exist");
+            cy.get("#peopleNewMembers h4.subheader").should("contain", "New Record Defaults");
+            cy.get("#peopleNewMembers input[name='sDefaultCity']").should("exist");
+            cy.get("#peopleNewMembers input[name='sDefaultZip']").should("exist");
+            cy.get("#peopleNewMembers select[name='sDefaultCountry'] option").should("have.length.greaterThan", 50);
+            cy.get("#peopleNewMembers select[name='sDefaultCountry']").should("have.value", "US");
+            cy.get("#peopleNewMembers select[name='sDefaultState'] option").should("have.length.greaterThan", 10);
+            cy.get("#peopleNewMembers input[name='sDefaultState']").should("not.exist");
+            cy.get("#copy-church-address").should("contain", "Copy from Church Info");
         });
 
         it("auto-saves the default city", () => {
             cy.intercept("POST", "**/admin/api/system/config/sDefaultCity").as("saveCity");
             cy.visit("/admin/people");
-            cy.get("#peopleDefaults .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
-            cy.get("#peopleDefaults input[name='sDefaultCity']").clear().type("Hubville").blur();
+            cy.get("#peopleNewMembers .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+            cy.get("#peopleNewMembers input[name='sDefaultCity']").clear().type("Hubville").blur();
             cy.wait("@saveCity").its("response.statusCode").should("eq", 200);
             cy.getSystemConfig("sDefaultCity").should("eq", "Hubville");
         });
