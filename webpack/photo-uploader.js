@@ -259,6 +259,7 @@ export function createPhotoUploader(config) {
     clearPersistentError();
     heicConversions++;
     let jpeg;
+    let sourceStillPresent = false;
     try {
       const { default: heic2any } = await import("heic2any");
       const converted = await heic2any({ blob: file.data, toType: "image/jpeg", quality: 0.9 });
@@ -268,9 +269,13 @@ export function createPhotoUploader(config) {
       showPersistentError("This HEIC photo could not be converted. Export it as a JPEG and try again.");
     } finally {
       heicConversions--;
-      uppy.removeFile(file.id);
+      // A remove click during conversion must not be undone by adding the JPEG.
+      sourceStillPresent = Boolean(uppy.getFile(file.id));
+      if (sourceStillPresent) {
+        uppy.removeFile(file.id);
+      }
     }
-    if (!jpeg) {
+    if (!jpeg || !sourceStillPresent) {
       return;
     }
     try {
