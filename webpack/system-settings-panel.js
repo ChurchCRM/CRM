@@ -173,6 +173,25 @@ import "../src/skin/scss/system-settings-panel.scss";
         return el.value || null;
       },
     },
+    // An ordered pick from a fixed list (setting.choices = [{ value, label }]), stored as a
+    // comma-separated string. The order the items were picked in is the order that is saved.
+    multiselect: {
+      render: (setting) => `
+            <div class="col-md-6 col-lg-4 mb-3">
+              <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                ${escapeHtml(resolve(setting.label))}
+              </label>
+              <select multiple class="form-select setting-input"
+                      id="${setting.name}" name="${setting.name}"
+                      data-type="multiselect">
+                ${(setting.choices || []).map((c) => `<option value="${escapeHtml(String(c.value))}">${escapeHtml(c.label)}</option>`).join("")}
+              </select>
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
+            </div>
+          `,
+      getValue: (el) =>
+        (el.tomselect ? el.tomselect.getValue() : Array.from(el.selectedOptions, (o) => o.value)).join(","),
+    },
     // setting.selected = [{ id, text }]: the picker needs names, which the config API does not return.
     persons: {
       render: (setting) => `
@@ -377,6 +396,15 @@ import "../src/skin/scss/system-settings-panel.scss";
       }
 
       const input = inputs[0];
+      if (input.dataset.type === "multiselect" && input.tomselect) {
+        const options = Array.from(input.options, (o) => o.value);
+        const picked = String(value ?? "")
+          .split(",")
+          .map((part) => options.find((option) => option.toLowerCase() === part.trim().toLowerCase()))
+          .filter(Boolean);
+        input.tomselect.setValue(picked, true);
+        return;
+      }
       if (input.dataset.type === "boolean") {
         input.checked = value === "1" || value === "true" || value === true;
       } else {
@@ -469,6 +497,10 @@ import "../src/skin/scss/system-settings-panel.scss";
 
     // Bind event handlers
     bindEvents() {
+      this.container.querySelectorAll('select[data-type="multiselect"]').forEach((el) => {
+        new window.TomSelect(el, { plugins: ["remove_button"], maxOptions: null });
+      });
+
       this.container.querySelectorAll('select[data-type="persons"]').forEach((el) => {
         window.CRM.initPersonSelect(el, { plugins: ["remove_button"] });
         this.savedValues[el.name] = SettingTypes.persons.getValue(el);
