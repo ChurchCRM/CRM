@@ -158,8 +158,12 @@ describe('Upgrade via Restore', () => {
             // Wait for the form submit button to be interactive before submitting
             cy.get('#church-info-form button[type=submit], #church-info-form input[type=submit]').should('not.be.disabled');
             cy.get('#church-info-form').submit();
-            // Assert on the visible success message, not the URL (which already contains 'church-info')
-            cy.contains('Church information saved successfully', { timeout: 10000 }).should('be.visible');
+            // Save geocodes before the redirect. CI often gets no hit, which
+            // still saves the church and shows the manual-coordinates warning.
+            cy.contains(
+                /Church information saved successfully|could not be auto-located/,
+                { timeout: 45000 },
+            ).should('be.visible');
         });
 
         it('should verify fresh install is working', () => {
@@ -217,7 +221,14 @@ describe('Upgrade via Restore', () => {
 
     // Step 2.5 only runs for sources that force a password change after migration
     // (ChurchInfo 1.x / MD5). For ChurchCRM 6.x (SHA-256 silent migration) it is skipped.
-    (forcesPasswordChange ? describe : describe.skip)('Step 2.5: Complete Forced Password Change (MD5 Migration)', () => {
+    // The flag is assigned in before(), so the suite must skip at runtime.
+    describe('Step 2.5: Complete Forced Password Change (MD5 Migration)', () => {
+        before(function () {
+            if (!forcesPasswordChange) {
+                this.skip();
+            }
+        });
+
         // The restored legacy account authenticates via the MD5 fallback in
         // User::isPasswordValid(), which forces a password change on that first
         // login (the weak, potentially-compromised MD5 plaintext must not remain
