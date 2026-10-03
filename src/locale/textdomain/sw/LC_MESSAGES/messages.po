@@ -11206,10 +11206,6 @@ msgstr "Gravatar hufanya kazi kwa kubadilisha anwani za barua pepe kuwa hash (MD
 msgid "Hide Latitude/Longitude"
 msgstr "Ficha latitudo/longitudo"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Ficha anwani ya mtu"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

@@ -11178,10 +11178,6 @@ msgstr "Gravatar ทำงานโดยการแปลงที่อยู
 msgid "Hide Latitude/Longitude"
 msgstr "ซ่อนละติจูด/ลองจิจูด"
 
-#: 
-msgid "Hide Person Address"
-msgstr "ซ่อนที่อยู่บุคคล"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

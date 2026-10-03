@@ -11175,10 +11175,6 @@ msgstr "Gumagana ang Gravatar sa pamamagitan ng pag-convert ng mga email address
 msgid "Hide Latitude/Longitude"
 msgstr "Itago ang Latitude/Longitude"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Itago ang Address ng Tao"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

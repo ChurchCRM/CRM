@@ -11329,10 +11329,6 @@ msgstr "O Gravatar funciona convertendo endereços de email em hash (MD5). O end
 msgid "Hide Latitude/Longitude"
 msgstr "Ocultar Latitude/Longitude"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Ocultar Endereço da Pessoa"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

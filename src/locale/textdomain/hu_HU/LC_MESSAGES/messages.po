@@ -11236,10 +11236,6 @@ msgstr "A Gravatar úgy működik, hogy az e-mail-címeket hash értékké (MD5)
 msgid "Hide Latitude/Longitude"
 msgstr "Szélesség/Hosszúság elrejtése"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Személy címének elrejtése"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

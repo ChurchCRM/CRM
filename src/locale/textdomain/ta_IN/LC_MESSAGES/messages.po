@@ -11219,10 +11219,6 @@ msgstr "Gravatar ஆனது மின்னஞ்சல் முகவரி�
 msgid "Hide Latitude/Longitude"
 msgstr "அட்சரேகை/தீர்க்கரேகையை மறை"
 
-#: 
-msgid "Hide Person Address"
-msgstr "நபர் முகவரியை மறை"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

@@ -11209,10 +11209,6 @@ msgstr "Gravatar toimib e-posti aadresside räsiks (MD5) teisendamise teel. Tege
 msgid "Hide Latitude/Longitude"
 msgstr "Peida laiuskraad/pikkuskraad"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Peida isiku aadress"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

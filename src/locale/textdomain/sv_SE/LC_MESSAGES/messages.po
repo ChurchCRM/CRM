@@ -11300,10 +11300,6 @@ msgstr "Gravatar fungerar genom att konvertera e-postadresser till en hash (MD5)
 msgid "Hide Latitude/Longitude"
 msgstr "Dölj latitud/longitud"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Dölj personadress"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

@@ -11210,10 +11210,6 @@ msgstr "Gravatar, e-posta adreslerini bir karma değerine (MD5) dönüştürerek
 msgid "Hide Latitude/Longitude"
 msgstr "Enlemi/Boylamı Gizle"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Kişi Adresini Gizle"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

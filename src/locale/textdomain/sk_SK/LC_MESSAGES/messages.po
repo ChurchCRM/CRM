@@ -11194,10 +11194,6 @@ msgstr "Gravatar funguje konvertovaním e-mailových adries na hash (MD5). Skuto
 msgid "Hide Latitude/Longitude"
 msgstr "Skryť zemepisnú šírku/dĺžku"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Skryť adresu osoby"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

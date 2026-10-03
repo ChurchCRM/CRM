@@ -11270,10 +11270,6 @@ msgstr "Gravatar通过将电子邮件地址转换为哈希值（MD5）来工作�
 msgid "Hide Latitude/Longitude"
 msgstr "隐藏经纬度"
 
-#: 
-msgid "Hide Person Address"
-msgstr "隐藏成员地址"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

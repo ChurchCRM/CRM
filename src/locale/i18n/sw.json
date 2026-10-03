@@ -2679,7 +2679,6 @@
   "Gravatar Website": "Tovuti ya Gravatar",
   "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image.": "Gravatar hufanya kazi kwa kubadilisha anwani za barua pepe kuwa hash (MD5). Anwani halisi ya barua pepe haitumiwi kamwe kwa seva za Gravatar - hash tu ndiyo inatumika kutafuta picha.",
   "Hide Latitude/Longitude": "Ficha latitudo/longitudo",
-  "Hide Person Address": "Ficha anwani ya mtu",
   "How it works": "Jinsi inavyofanya kazi",
   "How many checks to print per deposit slip page": "Ni hundi ngapi za kuchapisha kwa ukurasa wa stakabadhi ya amana",
   "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status": "Ikiwa ujumbe wa SMS haujatumwa:\n1. Thibitisha Ufunguo wa API na Siri ni sahihi (bila nafasi za ziada)\n2. Angalia Nambari ya Kutoka ni nambari halali ya Vonage unayomiliki\n3. Hakikisha nambari za simu za wapokeaji zinajumuisha msimbo wa nchi\n4. Angalia salio la akaunti yako ya Vonage\n5. Kagua Vonage Dashboard > SMS > Kumbukumbu kwa hali ya uwasilishaji",

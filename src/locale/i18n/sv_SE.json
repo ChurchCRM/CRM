@@ -2679,7 +2679,6 @@
   "Gravatar Website": "Gravatar webbplats",
   "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image.": "Gravatar fungerar genom att konvertera e-postadresser till en hash (MD5). Den faktiska e-postadressen skickas aldrig till Gravatars servrar – endast hashen används för att slå upp bilden.",
   "Hide Latitude/Longitude": "Dölj latitud/longitud",
-  "Hide Person Address": "Dölj personadress",
   "How it works": "Hur det fungerar",
   "How many checks to print per deposit slip page": "Hur många checkar som ska skrivas ut per insättningskvittosida",
   "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status": "Om SMS-meddelanden inte skickas:\n1. Verifiera att API-nyckel och hemlighet är korrekta (inga extra mellanslag)\n2. Kontrollera att Från-numret är ett giltigt Vonage-nummer du äger\n3. Se till att mottagarens telefonnummer inkluderar landskod\n4. Kontrollera ditt Vonage-kontosaldo\n5. Granska Vonage Dashboard > SMS > Loggar för leveransstatus",

@@ -11237,10 +11237,6 @@ msgstr "يعمل Gravatar عن طريق تحويل عناوين البريد ا�
 msgid "Hide Latitude/Longitude"
 msgstr "إخفاء خط العرض / خط الطول"
 
-#: 
-msgid "Hide Person Address"
-msgstr "إخفاء عنوان الشخص"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

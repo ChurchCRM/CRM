@@ -11175,10 +11175,6 @@ msgstr "Gravatar funciona convirtiendo direcciones de correo electrónico en un 
 msgid "Hide Latitude/Longitude"
 msgstr "Ocultar Latitud/Longitud"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Ocultar Dirección de Persona"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

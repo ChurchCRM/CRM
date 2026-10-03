@@ -11181,10 +11181,6 @@ msgstr "Gravatar funkcionira tako da pretvara adrese e-pošte u hash (MD5). Stva
 msgid "Hide Latitude/Longitude"
 msgstr "Sakrij geografsku širinu/dužinu"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Sakrij adresu osobe"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

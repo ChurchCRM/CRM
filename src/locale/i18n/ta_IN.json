@@ -2679,7 +2679,6 @@
   "Gravatar Website": "Gravatar இணையதளம்",
   "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image.": "Gravatar ஆனது மின்னஞ்சல் முகவரிகளை ஒரு ஹாஷாக (MD5) மாற்றுவதன் மூலம் செயல்படுகிறது. உண்மையான மின்னஞ்சல் முகவரி Gravatar-இன் சர்வர்களுக்கு ஒருபோதும் அனுப்பப்படுவதில்லை - படத்தைத் தேடுவதற்கு அந்த ஹாஷ் மட்டுமே பயன்படுத்தப்படுகிறது.",
   "Hide Latitude/Longitude": "அட்சரேகை/தீர்க்கரேகையை மறை",
-  "Hide Person Address": "நபர் முகவரியை மறை",
   "How it works": "இது எவ்வாறு செயல்படுகிறது",
   "How many checks to print per deposit slip page": "ஒவ்வொரு வைப்பு சீட்டு பக்கத்திலும் எத்தனை காசோலைகள் அச்சிட வேண்டும்",
   "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status": "குறுஞ்செய்திகள் (SMS) அனுப்பப்படவில்லை என்றால்:\n1. API கீ மற்றும் சீக்ரெட் சரியாக உள்ளதா (கூடுதல் இடைவெளிகள் இல்லை) என்பதைச் சரிபார்க்கவும்.\n2. அனுப்புநர் எண் (From Number) உங்களுடைய சரியான Vonage எண் தானா என்பதைச் சரிபார்க்கவும்.\n3. பெறுநரின் தொலைபேசி எண்களில் நாட்டுக் குறியீடு உள்ளதா என்பதை உறுதிசெய்யவும்.\n4. உங்கள் Vonage கணக்கு இருப்பைச் சரிபார்க்கவும்.\n5. செய்தி சென்றடைந்த நிலையை அறிய, Vonage டாஷ்போர்டு > SMS > பதிவுகள் (Logs) பகுதிக்குச் செல்லவும்.",

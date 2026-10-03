@@ -11207,10 +11207,6 @@ msgstr "Gravatar fonctionne en convertissant les adresses e-mail en un hash (MD5
 msgid "Hide Latitude/Longitude"
 msgstr "Masquer la latitude/longitude"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Masquer l'adresse de la personne"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

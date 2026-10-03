@@ -11282,10 +11282,6 @@ msgstr "Gravatar работает, преобразуя адреса элект�
 msgid "Hide Latitude/Longitude"
 msgstr "Скрыть широту/долготу"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Скрыть адрес персоны"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
