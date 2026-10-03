@@ -24,6 +24,16 @@ Incoming vuln report: `security-report-triage.md`.
 - Destructive IDs: `$_GET` on GET, `$_POST` on POST — not `$_REQUEST`
 - Role checks on the same page as the write
 
+## Admin masquerade ("Login as User", #9843)
+
+`ImpersonationService` bypasses every credential check. Keep these invariants:
+
+- Session payload only through `AuthenticationManager::establishSessionAsUser()` (shared with login). No `session_regenerate_id()` on start/exit (in-flight XHRs would 401 to the login page), no last-login/login-count stamps, no login hooks
+- `$_SESSION['impersonator']` is the single source of truth; both `Include/Header.php` and `Include/HeaderNotLoggedIn.php` read it for the exit banner, and `/user/impersonate/exit` stays in `AuthMiddleware::isAuthFlowExemptPath()`
+- Routes: `SessionOnlyMiddleware` (API keys are accepted on MVC routes otherwise); `NoActiveMasqueradeMiddleware` must run before `AdminRoleAuthMiddleware` (Slim runs `->add()` in reverse)
+- Never impersonate another administrator
+- Every identity change writes an auth-log line naming both user ids (`Masquerade started/ended/aborted`)
+
 ## Review
 
 Security findings are a hard block (`maintainer-review-gates.md`). Fix in the same PR.
