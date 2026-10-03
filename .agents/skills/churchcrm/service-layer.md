@@ -396,3 +396,20 @@ Recurring events had two independent implementations (issue #9735): `EventServic
 The shared, documented policy lives in the `EventService` class docblock: one cap (`MAX_REPEAT_OCCURRENCES`, expressed in occurrences rather than calendar span so it means something for yearly recurrence too), caller-supplied title/times win and otherwise fall back to the event type's defaults, and `skipExisting` dedups on `(event type, calendar date)`.
 
 Endpoint adapters keep their own request/response shapes — the unification is behavioural, not a URL change.
+
+## Geocoding goes through a provider chain <!-- learned: 2026-09-15 -->
+
+`GeoUtils::getLatLong()` no longer talks to Nominatim directly. It delegates to
+`ChurchCRM\Service\Geocoding\GeocoderChain::fromConfig()`, which reads the
+`sGeocoderProviders` setting ("Nominatim, Census" by default, surfaced on the
+Family Map's Map Settings panel) and tries each `GeocoderProviderInterface`
+in order until one returns coordinates. To add a service: extend
+`AbstractHttpGeocoder`, implement `getName()`/`geocode()` (and `supports()` when
+it only covers some countries, like `CensusGeocoder`), and register the
+lower-case name in `GeocoderChain::PROVIDERS`. Never call a geocoding HTTP
+endpoint from anywhere else — every caller (family save, person, church info,
+bulk action, `/api/geocoder/address`) must keep going through `GeoUtils`.
+
+```php
+$coords = GeoUtils::getLatLong($street, $city, $state, $zip, $country); // ['Latitude' => .., 'Longitude' => ..] or zeros
+```

@@ -4,6 +4,7 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\Geocoding\GeocoderChain;
 
 class GeoUtils
 {
@@ -99,13 +100,13 @@ class GeoUtils
     }
 
     /**
-     * Geocode an address to latitude/longitude using OpenStreetMap's Nominatim service.
+     * Geocode an address to latitude/longitude.
      *
-     * Nominatim is free and requires no API key. No admin configuration needed.
+     * The street line is normalised first (see normalizeStreet()), then the
+     * providers configured in the `sGeocoderProviders` setting (Nominatim,
+     * then the US Census Bureau by default) are tried in order until one
+     * answers. No API key is needed for either.
      * Supports both concatenated address strings and structured components.
-     * The street line is normalised first (see normalizeStreet()); when a
-     * structured query finds nothing, one free-form retry is made with the
-     * normalised address before giving up.
      *
      * @param string $address The address to geocode (can be full address or just street)
      * @param string|null $city City name (improves accuracy when provided)
@@ -121,135 +122,12 @@ class GeoUtils
         ?string $zip = null,
         ?string $country = null
     ): array {
-        $logger = LoggerUtils::getAppLogger();
-        $localeInfo = Bootstrapper::getCurrentLocale();
-
-        $notFound = ['Latitude' => 0, 'Longitude' => 0];
-
         if (empty(trim($address))) {
-            $logger->warning('Geocoding: empty address provided');
-            return $notFound;
+            LoggerUtils::getAppLogger()->warning('Geocoding: empty address provided');
+            return ['Latitude' => 0.0, 'Longitude' => 0.0];
         }
 
-        try {
-            $logger->debug('Using: Geo Provider - Nominatim (OpenStreetMap)');
-
-            $street = self::normalizeStreet($address);
-            $baseParams = [
-                'format' => 'json',
-                'limit' => 1,
-                'accept-language' => $localeInfo->getShortLocale(),
-            ];
-
-            $freeFormParts = [$street];
-            foreach ([$city, $state, $zip] as $part) {
-                if (!empty($part)) {
-                    $freeFormParts[] = trim($part);
-                }
-            }
-            // Don't add country to the free-form query - it often causes matching to fail
-            $freeForm = $baseParams + ['q' => implode(', ', $freeFormParts)];
-
-            // Use a structured query first when components are provided (better accuracy)
-            if (!empty($city) || !empty($state) || !empty($zip)) {
-                $structured = $baseParams + ['street' => $street];
-                if (!empty($city)) {
-                    $structured['city'] = trim($city);
-                }
-                if (!empty($state)) {
-                    $structured['state'] = trim($state);
-                }
-                if (!empty($zip)) {
-                    $structured['postalcode'] = trim($zip);
-                }
-                // Only add country if it's actually provided (not empty/null)
-                if (!empty($country)) {
-                    $structured['country'] = trim($country);
-                }
-
-                $result = self::queryNominatim($structured);
-                if ($result !== null) {
-                    $logger->debug('Geocoding successful: lat=' . $result['Latitude'] . ', lng=' . $result['Longitude']);
-                    return $result;
-                }
-
-                // Structured queries need OSM's exact street spelling; retry once
-                // free-form, after the 1 req/sec pause Nominatim's policy requires.
-                // The pause holds this PHP worker for a second on every miss; at
-                // ChurchCRM's scale that is acceptable, and the bulk action already
-                // paces itself at one family per second (FamilyService).
-                $logger->debug('Geocoding: structured query found nothing, retrying free-form');
-                sleep(1);
-            }
-
-            $result = self::queryNominatim($freeForm, true);
-            if ($result === null) {
-                $logger->warning('Geocoding: No results found for address (see service log for familyId)');
-                return $notFound;
-            }
-
-            $logger->debug('Geocoding successful: lat=' . $result['Latitude'] . ', lng=' . $result['Longitude']);
-            return $result;
-        } catch (\Throwable $exception) {
-            $logger->warning('Geocoding error: ' . $exception->getMessage());
-        }
-
-        return $notFound;
-    }
-
-    /**
-     * Nominatim "addresstype" values that mean the match is only a locality
-     * (the street was not found and Nominatim fell back to the city, county,
-     * postcode...). A free-form query happily returns these, and a pin on the
-     * wrong town is worse than no pin, so they are rejected.
-     */
-    private const LOCALITY_ADDRESS_TYPES = [
-        'city', 'town', 'village', 'hamlet', 'suburb', 'neighbourhood', 'quarter', 'borough',
-        'municipality', 'county', 'state', 'region', 'province', 'country', 'postcode', 'administrative',
-    ];
-
-    /**
-     * One Nominatim search request.
-     *
-     * @param array<string, mixed> $params query parameters (format, limit, q or structured fields)
-     * @param bool $requireStreetLevel reject a result that is only a locality (see LOCALITY_ADDRESS_TYPES)
-     * @return array{Latitude: float, Longitude: float}|null null when the request failed or returned nothing usable
-     */
-    private static function queryNominatim(array $params, bool $requireStreetLevel = false): ?array
-    {
-        $logger = LoggerUtils::getAppLogger();
-        $url = 'https://nominatim.openstreetmap.org/search?' . http_build_query($params);
-
-        // Nominatim ToS requires a User-Agent header; add timeout to avoid hanging PHP workers
-        $context = stream_context_create([
-            'http' => [
-                'method'  => 'GET',
-                'header'  => "User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)\r\n",
-                'timeout' => 10,
-            ],
-        ]);
-
-        $response = file_get_contents($url, false, $context);
-        if ($response === false) {
-            $logger->warning('Geocoding failed: Nominatim API request failed');
-            return null;
-        }
-
-        $results = json_decode($response, true, 512);
-        if (empty($results) || !\is_array($results) || !isset($results[0]['lat'], $results[0]['lon'])) {
-            return null;
-        }
-
-        $addressType = strtolower((string) ($results[0]['addresstype'] ?? $results[0]['type'] ?? ''));
-        if ($requireStreetLevel && \in_array($addressType, self::LOCALITY_ADDRESS_TYPES, true)) {
-            $logger->debug('Geocoding: free-form result is only a locality (' . $addressType . '), ignoring');
-            return null;
-        }
-
-        return [
-            'Latitude'  => (float) $results[0]['lat'],
-            'Longitude' => (float) $results[0]['lon'],
-        ];
+        return GeocoderChain::fromConfig()->geocode(self::normalizeStreet($address), $city, $state, $zip, $country);
     }
 
     /**
