@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -12,17 +14,14 @@ use Slim\Views\PhpRenderer;
 $app->get('/self-register', function (Request $request, Response $response): Response {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-    $familyCount = FamilyQuery::create()
-        ->filterByEnteredBy(Person::SELF_REGISTER)
-        ->filterByNeedsReview(true)
-        ->count();
-    // Standalone individuals only (no family) — family members are already
-    // counted as part of familyCount above.
-    $individualCount = PersonQuery::create()
-        ->filterByEnteredBy(Person::SELF_REGISTER)
-        ->filterByFamId(0)
-        ->filterByNeedsReview(true)
-        ->count();
+    $familyQuery = fn () => FamilyQuery::create()->filterByEnteredBy(Person::SELF_REGISTER);
+    // Standalone individuals only (no family): family members count under their family.
+    $individualQuery = fn () => PersonQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByFamId(0);
+
+    $pendingCount = $familyQuery()->filterByNeedsReview(true)->count()
+        + $individualQuery()->filterByNeedsReview(true)->count();
+    $approvedCount = $familyQuery()->filterByNeedsReview(false)->count()
+        + $individualQuery()->filterByNeedsReview(false)->count();
 
     $pageArgs = [
         'sRootPath'       => SystemURLs::getRootPath(),
@@ -32,8 +31,10 @@ $app->get('/self-register', function (Request $request, Response $response): Res
             [gettext('People'), '/people/dashboard'],
             [gettext('Self Registrations')],
         ]),
-        'familyCount'     => $familyCount,
-        'individualCount' => $individualCount,
+        'pendingCount'    => $pendingCount,
+        'approvedCount'   => $approvedCount,
+        'selfRegEnabled'  => SystemConfig::getBooleanValue('bEnableSelfRegistration'),
+        'isAdmin'         => AuthenticationManager::getCurrentUser()->isAdmin(),
     ];
 
     return $renderer->render($response, 'self-register.php', $pageArgs);

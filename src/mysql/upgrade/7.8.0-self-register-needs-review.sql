@@ -14,6 +14,7 @@ ALTER TABLE `person_per` ADD COLUMN `per_NeedsReview` tinyint(1) unsigned NOT NU
 ALTER TABLE `family_fam` ADD COLUMN `fam_NeedsReview` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER `fam_Envelope`;
 
 -- Backfill: existing self-registered records (per_EnteredBy/fam_EnteredBy = Person::SELF_REGISTER)
--- predate this flag and were never reviewed — flag them for review too.
-UPDATE `person_per` SET `per_NeedsReview` = 1 WHERE `per_EnteredBy` = -1;
-UPDATE `family_fam` SET `fam_NeedsReview` = 1 WHERE `fam_EnteredBy` = -1;
+-- predate this flag. Flag the ones nobody has edited since sign-up; a record a staff
+-- user has already edited (EditedBy set) counts as reviewed.
+UPDATE `person_per` SET `per_NeedsReview` = 1 WHERE `per_EnteredBy` = -1 AND COALESCE(`per_EditedBy`, 0) = 0;
+UPDATE `family_fam` SET `fam_NeedsReview` = 1 WHERE `fam_EnteredBy` = -1 AND COALESCE(`fam_EditedBy`, 0) = 0;

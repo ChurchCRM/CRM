@@ -158,6 +158,15 @@ describe("API Private Family", () => {
     });
 
     describe("POST /api/family/{familyId}/approve-review - Approve Self-Registered Family", () => {
+        it("Rejects a user without EditRecords", () => {
+            cy.makePrivateNoPermAPICall(
+                "POST",
+                "/api/family/23/approve-review",
+                null,
+                403,
+            );
+        });
+
         it("Clears the family's needs-review flag and cascades to its members", () => {
             // seed.sql family 23 (Turner) is self-registered (fam_EnteredBy = -1)
             // with members 115 and 116, all still pending review.

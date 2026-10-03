@@ -141,7 +141,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/families/self-register",
-     *     summary="Get the last 100 self-registered families still awaiting review",
+     *     summary="Get self-registered families still awaiting review",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Response(response=200, description="Self-registered families awaiting review, ordered by date entered descending",
@@ -154,7 +154,6 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->filterByNeedsReview(true)
             ->orderByDateEntered(Criteria::DESC)
-            ->limit(100)
             ->find();
 
         return SlimUtils::renderJSON($response, ['families' => $families->toArray()]);

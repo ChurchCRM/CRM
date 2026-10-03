@@ -189,6 +189,15 @@ describe("API Private Person", () => {
     });
 
     describe("POST /api/person/{personId}/approve-review - Approve Self-Registered Person", () => {
+        it("Rejects a user without EditRecords", () => {
+            cy.makePrivateNoPermAPICall(
+                "POST",
+                "/api/person/229/approve-review",
+                null,
+                403,
+            );
+        });
+
         it("Rejects approval for a person who belongs to a family", () => {
             // seed.sql person 104 (Mark Smith) belongs to family 21
             cy.makePrivateAdminAPICall(
@@ -232,6 +241,30 @@ describe("API Private Person", () => {
             ).then((response) => {
                 const ids = response.body.people.map((p) => p.Id);
                 expect(ids).to.not.include(229);
+            });
+        });
+    });
+
+    describe("POST /api/persons/self-register/approve - Batch approve self-registrations", () => {
+        it("Rejects a user without EditRecords", () => {
+            cy.makePrivateNoPermAPICall(
+                "POST",
+                "/api/persons/self-register/approve",
+                { families: [], persons: [] },
+                403,
+            );
+        });
+
+        it("Ignores people who are not pending self-registrations", () => {
+            // person 104 is not self-registered, so nothing is approved
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/persons/self-register/approve",
+                { families: [], persons: [104] },
+                200,
+            ).then((response) => {
+                expect(response.body).to.have.property("success", true);
+                expect(response.body.approved).to.equal(0);
             });
         });
     });
