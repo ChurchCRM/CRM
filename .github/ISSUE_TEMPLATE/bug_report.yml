@@ -14,7 +14,7 @@ body:
         **Tip:** The easiest way to file a bug (auto-captures system info) is the in-app reporter:
         **Support → Report an Issue** inside your ChurchCRM installation.
 
-        **Urgent, or want to chat while you file?** Come into our Discord and ping a maintainer — but please still open the issue here so it doesn't get lost:
+        **Want help first, or to talk it through live?** Come into Discord. That is the right place for support and a conversation. Open a GitHub issue when the bug should be tracked and fixed:
         👉 <https://discord.gg/tuWyFzj3Nj>
 
   - type: checkboxes
