@@ -37,7 +37,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      */
     it("should return data when filtering by Deposit Date with a matching date range", () => {
         cy.visit("/FinancialReports.php");
-        cy.contains("Financial Reports").should("be.visible");
+        cy.get(".page-title").contains("Financial Reports").should("be.visible");
 
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
         cy.get("#FinancialReports").submit();
