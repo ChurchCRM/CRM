@@ -1664,7 +1664,7 @@ CREATE TABLE `queryparameteroptions_qpo` (
   `qpo_Display` varchar(50) NOT NULL DEFAULT '',
   `qpo_Value` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`qpo_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1674,12 +1674,12 @@ CREATE TABLE `queryparameteroptions_qpo` (
 LOCK TABLES `queryparameteroptions_qpo` WRITE;
 /*!40000 ALTER TABLE `queryparameteroptions_qpo` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `queryparameteroptions_qpo` VALUES (10,27,'2012/2013','17'),(11,27,'2013/2014','18'),(12,27,'2014/2015','19'),(13,27,'2015/2016','20'),(14,28,'2012/2013','17'),(15,28,'2013/2014','18'),(16,28,'2014/2015','19'),(17,28,'2015/2016','20'),(18,30,'2012/2013','17'),(19,30,'2013/2014','18'),(20,30,'2014/2015','19'),(21,30,'2015/2016','20'),(22,31,'2012/2013','17'),(23,31,'2013/2014','18'),(24,31,'2014/2015','19'),(25,31,'2015/2016','20'),(28,32,'2012/2013','17'),(29,32,'2013/2014','18'),(30,32,'2014/2015','19'),(31,32,'2015/2016','20'),(37,28,'2016/2017','21'),(38,28,'2017/2018','22'),(39,28,'2018/2019','23'),(40,28,'2019/2020','24'),(41,28,'2020/2021','25'),(42,28,'2021/2022','26'),(43,28,'2022/2023','27'),(44,30,'2016/2017','21'),(45,30,'2017/2018','22'),(46,30,'2018/2019','23'),(47,30,'2019/2020','24'),(48,30,'2020/2021','25'),(49,30,'2021/2022','26'),(50,30,'2022/2023','27'),(51,31,'2016/2017','21'),(52,31,'2017/2018','22'),(53,31,'2018/2019','23'),(54,31,'2019/2020','24'),(55,31,'2020/2021','25'),(56,31,'2021/2022','26'),(57,31,'2022/2023','27'),(58,32,'2016/2017','21'),(59,32,'2017/2018','22'),(60,32,'2018/2019','23'),(61,32,'2019/2020','24'),(62,32,'2020/2021','25'),(63,32,'2021/2022','26'),(64,32,'2022/2023','27');
+INSERT INTO `queryparameteroptions_qpo` VALUES (10,27,'2012/2013','17'),(11,27,'2013/2014','18'),(12,27,'2014/2015','19'),(13,27,'2015/2016','20'),(14,28,'2012/2013','17'),(15,28,'2013/2014','18'),(16,28,'2014/2015','19'),(17,28,'2015/2016','20'),(18,30,'2012/2013','17'),(19,30,'2013/2014','18'),(20,30,'2014/2015','19'),(21,30,'2015/2016','20'),(22,31,'2012/2013','17'),(23,31,'2013/2014','18'),(24,31,'2014/2015','19'),(25,31,'2015/2016','20'),(37,28,'2016/2017','21'),(38,28,'2017/2018','22'),(39,28,'2018/2019','23'),(40,28,'2019/2020','24'),(41,28,'2020/2021','25'),(42,28,'2021/2022','26'),(43,28,'2022/2023','27'),(44,30,'2016/2017','21'),(45,30,'2017/2018','22'),(46,30,'2018/2019','23'),(47,30,'2019/2020','24'),(48,30,'2020/2021','25'),(49,30,'2021/2022','26'),(50,30,'2022/2023','27'),(51,31,'2016/2017','21'),(52,31,'2017/2018','22'),(53,31,'2018/2019','23'),(54,31,'2019/2020','24'),(55,31,'2020/2021','25'),(56,31,'2021/2022','26'),(57,31,'2022/2023','27'),(58,27,'2016/2017','21'),(59,27,'2017/2018','22'),(60,27,'2018/2019','23'),(61,27,'2019/2020','24'),(62,27,'2020/2021','25'),(63,27,'2021/2022','26'),(64,27,'2022/2023','27');
 /*!40000 ALTER TABLE `queryparameteroptions_qpo` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `queryparameteroptions_qpo` with 48 row(s)
+-- Dumped table `queryparameteroptions_qpo` with 44 row(s)
 --
 
 --
@@ -1717,12 +1717,12 @@ CREATE TABLE `queryparameters_qrp` (
 LOCK TABLES `queryparameters_qrp` WRITE;
 /*!40000 ALTER TABLE `queryparameters_qrp` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `queryparameters_qrp` VALUES (21,21,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Registered students','Group of registered students','group','1',1,0,'',12,1,1,2),(27,28,1,'','First Fiscal Year','First fiscal year for comparison','fyid1','9',1,0,'',12,9,0,0),(28,28,1,'','Second Fiscal Year','Second fiscal year for comparison','fyid2','9',1,0,'',12,9,0,0),(30,30,1,'','First Fiscal Year','Pledged this year','fyid1','9',1,0,'',12,9,0,0),(31,30,1,'','Second Fiscal Year','but not this year','fyid2','9',1,0,'',12,9,0,0),(32,32,1,'','Fiscal Year','Fiscal Year.','fyid','9',1,0,'',12,9,0,0);
+INSERT INTO `queryparameters_qrp` VALUES (27,28,1,'','First Fiscal Year','First fiscal year for comparison','fyid1','9',1,0,'',12,9,0,0),(28,28,1,'','Second Fiscal Year','Second fiscal year for comparison','fyid2','9',1,0,'',12,9,0,0),(30,30,1,'','First Fiscal Year','Pledged this year','fyid1','9',1,0,'',12,9,0,0),(31,30,1,'','Second Fiscal Year','but not this year','fyid2','9',1,0,'',12,9,0,0);
 /*!40000 ALTER TABLE `queryparameters_qrp` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `queryparameters_qrp` with 6 row(s)
+-- Dumped table `queryparameters_qrp` with 4 row(s)
 --
 
 --
@@ -1749,12 +1749,12 @@ CREATE TABLE `query_qry` (
 LOCK TABLES `query_qry` WRITE;
 /*!40000 ALTER TABLE `query_qry` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `query_qry` VALUES (21,'SELECT per_ID as AddToCart, CONCAT(\'<a href=/people/view/\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID WHERE p2g2r_grp_ID=~group~ ORDER BY per_LastName','Registered students','Find Registered students',1),(28,'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=\'Pledge\' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=\'Pledge\' order by fam_Name','Pledge comparison','Compare pledges between two fiscal years',1),(30,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name, fam_address1, fam_city, fam_state, fam_zip FROM person_per join family_fam on per_fam_id=fam_id where per_fmr_id<>3 and per_fam_id in (select fam_id from family_fam inner join pledge_plg a on a.plg_famID=fam_ID and a.plg_FYID=~fyid1~ and a.plg_amount>0) and per_fam_id not in (select fam_id from family_fam inner join pledge_plg b on b.plg_famID=fam_ID and b.plg_FYID=~fyid2~ and b.plg_amount>0)','Missing pledges','Find people who pledged one year but not another',1),(31,'select per_ID as AddToCart, per_FirstName, per_LastName, per_email from person_per, autopayment_aut where aut_famID=per_fam_ID and aut_CreditCard!=\"\" and per_email!=\"\" and (per_fmr_ID=1 or per_fmr_ID=2 or per_cls_ID=1)','Credit Card People','People who are configured to pay by credit card.',0),(32,'SELECT fam_Name, fam_Envelope, b.fun_Name as Fund_Name, a.plg_amount as Pledge from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid~ and a.plg_PledgeOrPayment=\'Pledge\' and a.plg_amount>0 join donationfund_fun b on b.fun_ID = a.plg_fundID order by fam_Name, a.plg_fundID','Family Pledge by Fiscal Year','Pledge summary by family name for each fund for the selected fiscal year',1);
+INSERT INTO `query_qry` VALUES (28,'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=\'Pledge\' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=\'Pledge\' order by fam_Name','Pledge comparison','Compare pledges between two fiscal years',1),(30,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name, fam_address1, fam_city, fam_state, fam_zip FROM person_per join family_fam on per_fam_id=fam_id where per_fmr_id<>3 and per_fam_id in (select fam_id from family_fam inner join pledge_plg a on a.plg_famID=fam_ID and a.plg_FYID=~fyid1~ and a.plg_amount>0) and per_fam_id not in (select fam_id from family_fam inner join pledge_plg b on b.plg_famID=fam_ID and b.plg_FYID=~fyid2~ and b.plg_amount>0)','Missing pledges','Find people who pledged one year but not another',1);
 /*!40000 ALTER TABLE `query_qry` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `query_qry` with 5 row(s)
+-- Dumped table `query_qry` with 2 row(s)
 --
 
 --
