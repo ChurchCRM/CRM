@@ -17382,6 +17382,10 @@ msgid "Manage Events"
 msgstr "Esemenyek kezelese"
 
 #: 
+msgid "N/A"
+msgstr "N/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Uj befizetes"
 

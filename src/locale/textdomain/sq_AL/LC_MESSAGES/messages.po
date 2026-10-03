@@ -17346,6 +17346,10 @@ msgid "Manage Events"
 msgstr "Administro Ngjarjet"
 
 #: 
+msgid "N/A"
+msgstr "N/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Depozte e Re"
 

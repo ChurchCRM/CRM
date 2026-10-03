@@ -17428,6 +17428,10 @@ msgid "Manage Events"
 msgstr "Gestioneaza evenimente"
 
 #: 
+msgid "N/A"
+msgstr "N/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Depozit nou"
 
