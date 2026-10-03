@@ -11,7 +11,7 @@
  */
 
 describe("People Settings hub", () => {
-    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies"];
+    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies", "#peopleMap"];
     let savedFriendDate;
 
     before(() => {
@@ -118,6 +118,18 @@ describe("People Settings hub", () => {
             cy.get(
                 "#peoplePeople [title*='Set true to disable entering Friend Date'], #peoplePeople [data-bs-original-title*='Set true to disable entering Friend Date']",
             ).should("exist");
+        });
+
+        it("has a Map Settings section instead of a panel on the map page", () => {
+            cy.visit("/admin/people");
+            cy.get("#peopleMap .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+            cy.get("#peopleMap select[name='iMapZoom'] option").should("have.length.at.least", 5);
+            cy.get("#peopleMap input[name='bHideLatLon']").should("exist");
+            cy.get("#peopleMap [name='bHidePersonAddress']").should("not.exist");
+
+            cy.visit("/people/map");
+            cy.get("#mapAdminSettings").should("not.exist");
+            cy.get(".page-header .btn-list a[href$='/admin/people#peopleMap']").should("contain", "Map Settings");
         });
 
         it("renders choice settings as selects with their options", () => {
