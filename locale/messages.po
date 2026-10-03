@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-03 18:35+0000\n"
+"POT-Creation-Date: 2026-10-03 22:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,10 +123,6 @@ msgid "%d person successfully added to selected family."
 msgid_plural "%d people successfully added to selected family."
 msgstr[0] ""
 msgstr[1] ""
-
-#, php-format
-msgid "%d record(s) returned"
-msgstr ""
 
 #, php-format
 msgid "%d repeat event created successfully."
@@ -566,9 +562,6 @@ msgstr ""
 msgid "Add Recurring Event"
 msgstr ""
 
-msgid "Add Results to Cart"
-msgstr ""
-
 msgid "Add Role"
 msgstr ""
 
@@ -666,9 +659,6 @@ msgid "Add staff and volunteers"
 msgstr ""
 
 msgid "Add staff or volunteers as system users"
-msgstr ""
-
-msgid "Add the relevant records first."
 msgstr ""
 
 msgid "Add to Buyer List"
@@ -1740,11 +1730,9 @@ msgstr ""
 msgid "Birthday Greeting Emails"
 msgstr ""
 
-#. Context: query_qry
 msgid "Birthdays"
 msgstr ""
 
-#. Context: query_qry
 msgid "Birthdays & Anniversaries"
 msgstr ""
 
@@ -2180,9 +2168,6 @@ msgstr ""
 msgid "Change role"
 msgstr ""
 
-msgid "Change this in System Settings."
-msgstr ""
-
 msgid "Changes not saved! Please correct and try again!"
 msgstr ""
 
@@ -2353,15 +2338,7 @@ msgstr ""
 msgid "Choose a property..."
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Choose a volunteer opportunity"
-msgstr ""
-
 msgid "Choose an event..."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Choose customer person field"
 msgstr ""
 
 msgid "Choose events"
@@ -2498,13 +2475,15 @@ msgstr ""
 msgid "Class List Export"
 msgstr ""
 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr ""
+
 msgid "Class must be one of p, f, or g"
 msgstr ""
 
 msgid "Classes"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Classification"
 msgstr ""
 
@@ -2646,9 +2625,6 @@ msgstr ""
 msgid "Comma separated list of classifications that should appear as inactive"
 msgstr ""
 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr ""
-
 msgid "Comment"
 msgstr ""
 
@@ -2687,10 +2663,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Comoros (‫جزر القمر‬‎)"
-msgstr ""
-
-#. Context: query_qry
-msgid "Compare pledges between two fiscal years"
 msgstr ""
 
 msgid "Comparing timezones..."
@@ -3203,9 +3175,6 @@ msgstr ""
 msgid "Current database"
 msgstr ""
 
-msgid "Current fiscal year"
-msgstr ""
-
 msgid "Current person"
 msgstr ""
 
@@ -3240,10 +3209,6 @@ msgid "Custom Person Fields"
 msgstr ""
 
 msgid "Custom Person Fields Editor"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Custom field"
 msgstr ""
 
 msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
@@ -3305,16 +3270,10 @@ msgstr ""
 msgid "Data"
 msgstr ""
 
-msgid "Data & Reports"
-msgstr ""
-
 msgid "Data Quality"
 msgstr ""
 
 msgid "Data is processed by PostHog on EU infrastructure."
-msgstr ""
-
-msgid "Data/Reports"
 msgstr ""
 
 msgid "Database"
@@ -4581,7 +4540,6 @@ msgstr ""
 msgid "Ethiopia"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Event"
 msgstr ""
 
@@ -4705,9 +4663,6 @@ msgstr ""
 msgid "Excluded"
 msgstr ""
 
-msgid "Execute Query"
-msgstr ""
-
 msgid "Existing Custom Family Fields"
 msgstr ""
 
@@ -4743,9 +4698,6 @@ msgid "Explore with Demo Data"
 msgstr ""
 
 msgid "Export"
-msgstr ""
-
-msgid "Export Options"
 msgstr ""
 
 msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
@@ -5387,10 +5339,6 @@ msgstr ""
 msgid "Field deleted successfully"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Field value"
-msgstr ""
-
 msgid "Field where Father Of Confession is listed, must be a people of group type"
 msgstr ""
 
@@ -5472,9 +5420,6 @@ msgstr ""
 msgid "Filter by log level"
 msgstr ""
 
-msgid "Filtering"
-msgstr ""
-
 #. plugin:holidays:section:1:title
 msgid "Filtering by category"
 msgstr ""
@@ -5501,9 +5446,6 @@ msgid "Finance Module"
 msgstr ""
 
 msgid "Finance access"
-msgstr ""
-
-msgid "Finance permission query IDs"
 msgstr ""
 
 msgid "Finance permission required"
@@ -5536,23 +5478,10 @@ msgstr ""
 msgid "Find people who did not attend an event"
 msgstr ""
 
-#. Context: query_qry
-msgid "Find people who didn't attend an event"
-msgstr ""
-
-#. Context: query_qry
-msgid "Find people who pledged one year but not another"
-msgstr ""
-
 msgid "Find the line"
 msgstr ""
 
-#. Context: query_qry
 msgid "Find volunteers for a particular opportunity"
-msgstr ""
-
-#. Context: query_qry
-msgid "Find volunteers for who match two specific opportunity codes"
 msgstr ""
 
 msgid "Find volunteers who match two specific opportunity codes"
@@ -5573,10 +5502,6 @@ msgstr ""
 msgid "First"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "First Fiscal Year"
-msgstr ""
-
 msgid "First Name"
 msgstr ""
 
@@ -5584,10 +5509,6 @@ msgid "First Sunday"
 msgstr ""
 
 msgid "First Volunteer Opportunity"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "First fiscal year for comparison"
 msgstr ""
 
 msgid "First month of the fiscal year"
@@ -5603,10 +5524,6 @@ msgid "First name must be at least 2 characters"
 msgstr ""
 
 msgid "First name must be entered"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "First volunteer opportunity choice"
 msgstr ""
 
 msgid "FirstName MiddleName LastName"
@@ -5714,7 +5631,6 @@ msgstr ""
 msgid "Friend Date"
 msgstr ""
 
-#. Context: query_qry
 msgid "Friends who signed up in previous months"
 msgstr ""
 
@@ -5898,9 +5814,6 @@ msgstr ""
 msgid "Generate and download confirmation letters"
 msgstr ""
 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr ""
-
 msgid "Generate annual giving statements for tax purposes"
 msgstr ""
 
@@ -5908,9 +5821,6 @@ msgid "Generate annual tax-deductible giving statements for donors. Can be print
 msgstr ""
 
 msgid "Generate class lists, attendance sheets, and photo books"
-msgstr ""
-
-msgid "Generate detailed reports for individual deposits or date ranges."
 msgstr ""
 
 msgid "Generate directory listings and printed materials"
@@ -6207,6 +6117,9 @@ msgstr ""
 msgid "Group management access"
 msgstr ""
 
+msgid "Group membership lists and Sunday School class reports"
+msgstr ""
+
 msgid "Group not found"
 msgstr ""
 
@@ -6263,10 +6176,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Guernsey"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "Guest"
 msgstr ""
 
 #. Context: countries
@@ -7795,10 +7704,6 @@ msgstr ""
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Match custom field to this value"
-msgstr ""
-
 msgid "Matches an entry on the approved plugin list"
 msgstr ""
 
@@ -7881,7 +7786,6 @@ msgstr ""
 msgid "Mayotte"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
 msgid "Member"
 msgstr ""
 
@@ -7903,10 +7807,6 @@ msgstr ""
 msgid "Member's Name"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Member, Regular Attender, etc."
-msgstr ""
-
 msgid "Member/Friend"
 msgstr ""
 
@@ -7919,10 +7819,6 @@ msgstr ""
 msgid "Members copied: {{total}}"
 msgstr ""
 
-#. Context: query_qry
-msgid "Members who joined in a particular month"
-msgstr ""
-
 msgid "Members, Visitors, Children"
 msgstr ""
 
@@ -7933,10 +7829,6 @@ msgid "Membership Date"
 msgstr ""
 
 msgid "Membership Reports"
-msgstr ""
-
-#. Context: query_qry
-msgid "Membership anniversaries"
 msgstr ""
 
 msgid "Membership not found"
@@ -8040,14 +7932,6 @@ msgstr ""
 msgid "Missing or incorrect translations?"
 msgstr ""
 
-#. Context: query_qry
-msgid "Missing people"
-msgstr ""
-
-#. Context: query_qry
-msgid "Missing pledges"
-msgstr ""
-
 #, php-format
 msgid "Missing required field: %s"
 msgstr ""
@@ -8099,7 +7983,6 @@ msgstr ""
 msgid "Montenegro (Crna Gora)"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Month"
 msgstr ""
 
@@ -8130,7 +8013,6 @@ msgstr ""
 msgid "Monthly on the"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Months"
 msgstr ""
 
@@ -8140,9 +8022,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Morocco (‫المغرب‬‎)"
-msgstr ""
-
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr ""
 
 msgid "Mother"
@@ -8414,10 +8293,6 @@ msgid "Niue"
 msgstr ""
 
 msgid "No"
-msgstr ""
-
-#, php-format
-msgid "No \"%s\" options are defined yet."
 msgstr ""
 
 #, php-format
@@ -8733,14 +8608,6 @@ msgstr ""
 msgid "No, cancel this deletion"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
-msgid "Non-Attender"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "Non-Attender (staff)"
-msgstr ""
-
 msgid "Non-Deductible"
 msgstr ""
 
@@ -8897,7 +8764,6 @@ msgstr ""
 msgid "Number of lines to display"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Number of months since becoming a friend"
 msgstr ""
 
@@ -9400,18 +9266,15 @@ msgstr ""
 msgid "People who joined in a particular month"
 msgstr ""
 
-#. Context: query_qry
 msgid "People with birthdays in a particular month"
 msgstr ""
 
-#. Context: query_qry
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr ""
 
 msgid "People with no personal or work email on record"
 msgstr ""
 
-#. Context: query_qry
 msgid "People with wedding anniversaries in a particular month"
 msgstr ""
 
@@ -9478,7 +9341,6 @@ msgstr ""
 msgid "Person already in cart"
 msgstr ""
 
-#. Context: query_qry
 msgid "Person by Property"
 msgstr ""
 
@@ -9853,10 +9715,6 @@ msgstr ""
 msgid "Pledge Summary By Family"
 msgstr ""
 
-#. Context: query_qry
-msgid "Pledge comparison"
-msgstr ""
-
 msgid "Pledge group not found"
 msgstr ""
 
@@ -9867,10 +9725,6 @@ msgid "Pledged Amount"
 msgstr ""
 
 msgid "Pledged but not yet paid"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Pledged this year"
 msgstr ""
 
 msgid "Pledges"
@@ -10065,7 +9919,6 @@ msgstr ""
 msgid "Properties Form"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Property"
 msgstr ""
 
@@ -10129,15 +9982,6 @@ msgid "Quarantined"
 msgstr ""
 
 msgid "Quarterly"
-msgstr ""
-
-msgid "Queries"
-msgstr ""
-
-msgid "Query Listing"
-msgstr ""
-
-msgid "Query View"
 msgstr ""
 
 msgid "Quick Actions"
@@ -10219,10 +10063,6 @@ msgid "Recent Deposits"
 msgstr ""
 
 msgid "Recent Friends"
-msgstr ""
-
-#. Context: query_qry
-msgid "Recent friends"
 msgstr ""
 
 msgid "Recipient Naming Method"
@@ -10325,10 +10165,6 @@ msgstr ""
 msgid "Registration Error"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
-msgid "Regular Attender"
-msgstr ""
-
 msgid "Regular Backups"
 msgstr ""
 
@@ -10360,9 +10196,6 @@ msgid "Remove All from Cart"
 msgstr ""
 
 msgid "Remove Property"
-msgstr ""
-
-msgid "Remove Results from Cart"
 msgstr ""
 
 msgid "Remove all from Cart"
@@ -10422,9 +10255,6 @@ msgstr ""
 msgid "Report Start Date"
 msgstr ""
 
-msgid "Report Tips"
-msgstr ""
-
 msgid "Report Type"
 msgstr ""
 
@@ -10438,9 +10268,6 @@ msgid "Report not found"
 msgstr ""
 
 msgid "Reports"
-msgstr ""
-
-msgid "Reports related to member voting eligibility and organization governance."
 msgstr ""
 
 msgid "Request Family Info Verification"
@@ -10575,7 +10402,6 @@ msgstr ""
 msgid "Return to Person Record"
 msgstr ""
 
-#. Context: query_qry
 msgid "Returns person records which are assigned the given property."
 msgstr ""
 
@@ -10651,9 +10477,6 @@ msgid "Rows per page"
 msgstr ""
 
 msgid "Run"
-msgstr ""
-
-msgid "Run Query Again"
 msgstr ""
 
 msgid "Run Report"
@@ -10945,22 +10768,10 @@ msgstr ""
 msgid "Second Address"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Second Fiscal Year"
-msgstr ""
-
 msgid "Second Home"
 msgstr ""
 
 msgid "Second Volunteer Opportunity"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Second fiscal year for comparison"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Second volunteer opportunity choice"
 msgstr ""
 
 msgid "Secure"
@@ -11098,10 +10909,6 @@ msgid "Select none"
 msgstr ""
 
 msgid "Select role"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Select the desired event"
 msgstr ""
 
 msgid "Select the type of record this property applies to"
@@ -12042,10 +11849,6 @@ msgstr ""
 msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "The birthday month for which you would like records returned."
-msgstr ""
-
 msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
 msgstr ""
 
@@ -12072,14 +11875,6 @@ msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr ""
 
 msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "The membership anniversary month for which you would like records returned."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "The month for which you would like birthdays and anniversaries returned."
 msgstr ""
 
 msgid "The month that starts your organization's fiscal year"
@@ -12112,10 +11907,6 @@ msgid "The property could not be removed."
 msgstr ""
 
 msgid "The property could not be unassigned."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "The property for which you would like person records returned."
 msgstr ""
 
 msgid "The property is already assigned."
@@ -12167,10 +11958,6 @@ msgid "The template already contains every column you can map — the core Perso
 msgstr ""
 
 msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "The wedding anniversary month for which you would like records returned."
 msgstr ""
 
 msgid "Theme Mode"
@@ -12339,31 +12126,6 @@ msgid "This user can only review and update their own family profile. Individual
 msgstr ""
 
 msgid "This user must set a new password the next time they sign in."
-msgstr ""
-
-#, php-format
-msgid "This value cannot be less than %d characters long"
-msgstr ""
-
-#, php-format
-msgid "This value cannot be more than %d characters long"
-msgstr ""
-
-#, php-format
-msgid "This value cannot be more than %s"
-msgstr ""
-
-msgid "This value is required."
-msgstr ""
-
-msgid "This value must be a valid field name."
-msgstr ""
-
-#, php-format
-msgid "This value must be at least %s"
-msgstr ""
-
-msgid "This value must be numeric."
 msgstr ""
 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
@@ -12625,9 +12387,6 @@ msgid "Track and manage pledge commitments by family and fund"
 msgstr ""
 
 msgid "Track family pledges and fund contributions by fiscal year"
-msgstr ""
-
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr ""
 
 msgid "Transaction Details"
@@ -13072,9 +12831,6 @@ msgstr ""
 msgid "Use authenticator app instead"
 msgstr ""
 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr ""
-
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr ""
 
@@ -13419,9 +13175,6 @@ msgstr ""
 msgid "View and manage system log files for debugging."
 msgstr ""
 
-msgid "View and run saved database queries"
-msgstr ""
-
 msgid "View buyer numbers and paddle assignments"
 msgstr ""
 
@@ -13444,9 +13197,6 @@ msgid "View inactive only"
 msgstr ""
 
 msgid "View pledge or payment details"
-msgstr ""
-
-msgid "View query results"
 msgstr ""
 
 msgid "View release notes"
@@ -13473,17 +13223,12 @@ msgstr ""
 msgid "Volunteer Opportunity Editor"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Volunteer opportunities"
-msgstr ""
-
 msgid "Volunteer opportunity not found"
 msgstr ""
 
 msgid "Volunteer-entered headcounts, broken down by category."
 msgstr ""
 
-#. Context: query_qry
 msgid "Volunteers"
 msgstr ""
 
@@ -13625,7 +13370,6 @@ msgstr ""
 msgid "Wedding"
 msgstr ""
 
-#. Context: query_qry
 msgid "Wedding Anniversaries"
 msgstr ""
 
@@ -14039,7 +13783,8 @@ msgstr ""
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
 msgstr ""
 
-msgid "Your fiscal year starts in month"
+#, php-format
+msgid "Your fiscal year starts in %s."
 msgstr ""
 
 msgid "Your new password is too similar to your old one."
@@ -14126,10 +13871,6 @@ msgid "and"
 msgstr ""
 
 msgid "assigned"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "but not this year"
 msgstr ""
 
 msgid "by"
