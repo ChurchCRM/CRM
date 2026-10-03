@@ -10387,10 +10387,6 @@ msgstr "Mise à Jour Disponible"
 msgid "User must have Notes permission"
 msgstr "L'utilisateur doit avoir la permission Notes"
 
-#: 
-msgid "Address Defaults"
-msgstr "Paramètres par défaut de l'adresse"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10450,10 +10446,6 @@ msgstr "Configurer Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Connectez Mailchimp pour synchroniser les listes de courrier électronique pour les bulletins et les campagnes."
-
-#: 
-msgid "Copy from church address"
-msgstr "Copier de l'adresse de l'église"
 
 #: 
 msgid "Copy to clipboard"
@@ -10780,10 +10772,6 @@ msgstr "Le mois d'anniversaire d'adhésion pour lequel vous souhaitez que les do
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "La propriété pour laquelle vous souhaitez que les dossiers des personnes soient retournés."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ces valeurs sont préremplies lors de la création de nouvelles familles. Laissez vide pour exiger une saisie manuelle."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18309,10 +18297,6 @@ msgstr "Le mécanisme de secours par chargement de page continue de fonctionner 
 #: 
 msgid "This Person is Inactive"
 msgstr "Cette personne est inactive"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Cela recherche les coordonnées cartographiques de chaque famille qui en est dépourvue, à l'aide d'OpenStreetMap. Le traitement se fait par lots de 50 familles, à raison d'environ une minute par lot. Vous pouvez laisser cette page ouverte pendant le traitement. Continuer ?"
 
 #: 
 msgid "This person is deceased"

@@ -10380,10 +10380,6 @@ msgstr "Përditësim i Disponueshëm"
 msgid "User must have Notes permission"
 msgstr "Përdoruesi duhet të ketë lejen Shënime"
 
-#: 
-msgid "Address Defaults"
-msgstr "Adresa Parazgjedhur"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10443,10 +10439,6 @@ msgstr "Konfiguroni Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Lidhuni Mailchimp për të sinkronizuar listat e email-it për buletine dhe fushatat."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopjoji nga adresa e kishës"
 
 #: 
 msgid "Copy to clipboard"
@@ -10773,10 +10765,6 @@ msgstr "Muaji i ndërrimit të anëtarësimit për të cilin dëshiron që të r
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Prona për të cilën dëshiron që të rekorde persone të kthehet."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Këto vlera paraplotësohen kur krijohen familje të reja. Lini bosh për të kërkuar futjen manuale."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18302,10 +18290,6 @@ msgstr "Ndërkohë, alternativa e ngarkimit të faqes vazhdon të funksionojë. 
 #: 
 msgid "This Person is Inactive"
 msgstr "Ky Person është Joaktiv"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Kjo gjen koordinatat e hartës për çdo familje që nuk i ka ato, duke përdorur OpenStreetMap. Kalon nëpër familjet në grupe nga 50, rreth një minutë për grup. Mund ta mbani këtë faqe të hapur ndërsa ekzekutohet. Të vazhdohet?"
 
 #: 
 msgid "This person is deceased"

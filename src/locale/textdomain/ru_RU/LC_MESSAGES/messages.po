@@ -10462,10 +10462,6 @@ msgstr "Доступно обновление"
 msgid "User must have Notes permission"
 msgstr "Пользователь должен иметь разрешение на заметки"
 
-#: 
-msgid "Address Defaults"
-msgstr "Значения адреса по умолчанию"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10525,10 +10521,6 @@ msgstr "Настроить Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Подключите Mailchimp для синхронизации списков электронной почты для бюллетеней и кампаний."
-
-#: 
-msgid "Copy from church address"
-msgstr "Скопировать с адреса церкви"
 
 #: 
 msgid "Copy to clipboard"
@@ -10855,10 +10847,6 @@ msgstr "Месяц годовщины членства, для которого 
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Свойство, для которого вы хотите вернуть записи персоны."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Эти значения предварительно заполняются при создании новых семей. Оставьте пусто, чтобы потребовать ручной ввод."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18398,10 +18386,6 @@ msgstr "Тем временем резервный запуск при загр�
 #: 
 msgid "This Person is Inactive"
 msgstr "Этот человек неактивен"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Это найдёт координаты на карте для всех семей, у которых их нет, используя OpenStreetMap. Обработка семей идёт партиями по 50, примерно минута на партию. Вы можете оставить эту страницу открытой во время выполнения. Продолжить?"
 
 #: 
 msgid "This person is deceased"

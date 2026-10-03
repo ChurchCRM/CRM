@@ -1,3 +1,8 @@
 {
-  "Select at least one classification to include in the directory.": ""
+  "Select at least one classification to include in the directory.": "",
+  "Geocoding services": "",
+  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "",
+  "New Record Defaults": "",
+  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "",
+  "Used for new records and for geocoding when a record has no country.": ""
 }

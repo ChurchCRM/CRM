@@ -10359,10 +10359,6 @@ msgstr "Update Beschikbaar"
 msgid "User must have Notes permission"
 msgstr "Gebruiker moet toestemming voor Notities hebben"
 
-#: 
-msgid "Address Defaults"
-msgstr "Adres standaardinstellingen"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10422,10 +10418,6 @@ msgstr "Vonage configureren"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Verbind Mailchimp om e-maillijsten voor nieuwsbrieven en campagnes te synchroniseren."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopiëren van kerkadres"
 
 #: 
 msgid "Copy to clipboard"
@@ -10752,10 +10744,6 @@ msgstr "De jubileummaand van het lidmaatschap waarvoor u records wilt hebben ger
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "De eigenschap waarvoor u personeelsrecords wilt hebben geretourneerd."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Deze waarden worden vooraf ingevuld bij het maken van nieuwe families. Laat leeg om handmatige invoer te vereisen."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18281,10 +18269,6 @@ msgstr "De terugvaloptie bij paginabezoek blijft ondertussen werken. Wijzig via 
 #: 
 msgid "This Person is Inactive"
 msgstr "Deze persoon is inactief"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Dit zoekt kaartcoördinaten voor elk gezin waarvan deze ontbreken, met behulp van OpenStreetMap. De gezinnen worden verwerkt in groepen van 50, ongeveer een minuut per groep. U kunt deze pagina open laten staan terwijl dit wordt uitgevoerd. Doorgaan?"
 
 #: 
 msgid "This person is deceased"

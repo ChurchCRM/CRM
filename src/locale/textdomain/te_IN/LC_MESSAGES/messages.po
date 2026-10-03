@@ -10367,10 +10367,6 @@ msgstr "నవీకరణ అందుబాటులో ఉంది"
 msgid "User must have Notes permission"
 msgstr "వినియోగదారుకు గమనికల అనుమతి ఉండాలి"
 
-#: 
-msgid "Address Defaults"
-msgstr "చిరునామా డిఫాల్ట్‌లు"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10430,10 +10426,6 @@ msgstr "Vonage ని కాన్ఫిగర్ చేయండి"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "వార్తాలేఖ మరియు ప్రచారాల కోసం ఇమెయిల్ జాబితాలను సమకాలీకరించడానికి Mailchimp ను కనెక్ట్ చేయండి."
-
-#: 
-msgid "Copy from church address"
-msgstr "చర్చ చిరునామా నుండి కాపీ చేయండి"
 
 #: 
 msgid "Copy to clipboard"
@@ -10760,10 +10752,6 @@ msgstr "మీరు రికార్డులు తిరిగి పొం
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "మీరు వ్యక్తి రికార్డులు తిరిగి పొందాలనుకుంటున్న గుణం."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "కొత్త కుటుంబాలు సృష్టించేటప్పుడు ఈ విలువలు ముందే నింపబడతాయి. మాన్యువల్ నమోదు అవసరమైతే ఖాళీగా వదిలండి."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18289,10 +18277,6 @@ msgstr "ఈలోగా పేజీ-లోడ్ ఫాల్‌బ్యాక
 #: 
 msgid "This Person is Inactive"
 msgstr "ఈ వ్యక్తి నిష్క్రియంగా ఉన్నారు"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "OpenStreetMapను ఉపయోగించి, మ్యాప్ కోఆర్డినేట్‌లు లేని ప్రతి కుటుంబానికి వాటిని కనుగొంటుంది. ఇది కుటుంబాలను 50 బ్యాచ్‌లుగా ప్రాసెస్ చేస్తుంది, ప్రతి బ్యాచ్‌కు దాదాపు ఒక నిమిషం పడుతుంది. ఇది నడుస్తున్నప్పుడు మీరు ఈ పేజీని తెరిచి ఉంచవచ్చు. కొనసాగించాలా?"
 
 #: 
 msgid "This person is deceased"

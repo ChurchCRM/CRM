@@ -10375,10 +10375,6 @@ msgstr "Pembaruan Tersedia"
 msgid "User must have Notes permission"
 msgstr "Pengguna harus memiliki izin Catatan"
 
-#: 
-msgid "Address Defaults"
-msgstr "Default Alamat"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10438,10 +10434,6 @@ msgstr "Konfigurasi Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Hubungkan Mailchimp untuk menyinkronkan daftar email untuk buletin dan kampanye."
-
-#: 
-msgid "Copy from church address"
-msgstr "Salin dari alamat gereja"
 
 #: 
 msgid "Copy to clipboard"
@@ -10768,10 +10760,6 @@ msgstr "Bulan hari jadi keanggotaan tempat Anda ingin catatan dikembalikan."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Properti tempat Anda ingin catatan orang dikembalikan."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Nilai-nilai ini diisi sebelumnya saat membuat keluarga baru. Biarkan kosong untuk memerlukan entri manual."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18290,10 +18278,6 @@ msgstr "Sementara itu, mekanisme cadangan saat pemuatan halaman tetap berfungsi.
 #: 
 msgid "This Person is Inactive"
 msgstr "Orang ini Tidak Aktif"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Ini akan mencari koordinat peta untuk setiap keluarga yang belum memilikinya, menggunakan OpenStreetMap. Prosesnya berjalan per kelompok 50 keluarga, sekitar satu menit per kelompok. Anda dapat membiarkan halaman ini tetap terbuka selama proses berjalan. Lanjutkan?"
 
 #: 
 msgid "This person is deceased"

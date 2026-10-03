@@ -10527,10 +10527,6 @@ msgstr "有可用更新"
 msgid "User must have Notes permission"
 msgstr "使用者必須擁有備註權限"
 
-#: 
-msgid "Address Defaults"
-msgstr "地址預設值"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10590,10 +10586,6 @@ msgstr "設定Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "連接Mailchimp以同步電子報和行銷活動的電子郵件清單。"
-
-#: 
-msgid "Copy from church address"
-msgstr "從教會地址複製"
 
 #: 
 msgid "Copy to clipboard"
@@ -10920,10 +10912,6 @@ msgstr "您想要返回記錄的會員週年月份。"
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "您想要返回人員記錄的屬性。"
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "建立新家庭時，這些值會預先填充。留空以要求手動輸入。"
 
 #: 
 msgid "Unit used to measure distance."
@@ -18442,10 +18430,6 @@ msgstr "在此期間，頁面載入的備用機制仍會持續運作。您可以
 #: 
 msgid "This Person is Inactive"
 msgstr "此人已停用"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "這將使用 OpenStreetMap，為所有缺少地圖座標的家庭尋找座標。系統會以每批 50 個家庭進行處理，每批約需一分鐘。執行期間您可以讓此頁面保持開啟。要繼續嗎？"
 
 #: 
 msgid "This person is deceased"
