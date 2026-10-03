@@ -24,6 +24,9 @@ if (defined('MIGRATION_TEST_FAULT_PHASE')) {
     PluginManager::init($workspace . '/plugins');
     PluginManager::enablePlugin('migration-example');
     throw new RuntimeException('Fault boundary was not reached.');
+} elseif ($mode === 'stall') {
+    sleep(60);
+    exit(90);
 } elseif ($mode === 'lock') {
     PluginMigrationManager::withLock('migration-example', static function (): void {
         echo "locked\n";

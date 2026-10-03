@@ -38,10 +38,9 @@ final class MigrationFaultConnection extends ConnectionWrapper
     {
         echo 'barrier=' . MIGRATION_TEST_FAULT_PHASE . "\n";
         fflush(STDOUT);
-        // Parent kills this process without releasing the barrier. Timeout
-        // prevents stranding a worker if its parent fails.
-        stream_set_timeout(STDIN, 30);
-        fgets(STDIN);
+        // Parent kills this process without releasing the barrier. A bounded
+        // sleep also exits on Windows, where pipe read timeouts do not work.
+        sleep(30);
         exit(90);
     }
 }

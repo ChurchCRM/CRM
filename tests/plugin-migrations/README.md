@@ -68,9 +68,10 @@ Generator directory is invalid: it breaks core queries as well as plugin ones.
 The production test removes only Generator/Command, retaining required runtime
 types. This is test isolation, not advice to modify installed vendor packages.
 
-The test-only `FaultConnection.php` pauses real DDL at pipe barriers. The parent
-kills the worker (SIGKILL on Linux; TerminateProcess on Windows), reconnects and
-verifies the attempt state. Tests cover before DDL, after DDL before completion,
+The test-only `FaultConnection.php` pauses real DDL at file barriers, with a
+bounded worker sleep if the parent disappears. The parent kills the worker
+(SIGKILL on Linux; TerminateProcess on Windows), reconnects and verifies the
+attempt state. Tests cover before DDL, after DDL before completion,
 after completion before activation, and between ordered resources. They also
 test lock exclusion across DDL implicit commits, lock release on process death,
 per-database/per-plugin isolation, route withholding, hook cleanup and full

@@ -172,8 +172,10 @@ committing the caller's work.
 ## Ship generated Propel/Perpl models
 
 Generate models during plugin development using the Perpl version from the
-target ChurchCRM release (`src/composer.lock`). Use datasource `default`, a
-namespace beneath the main plugin class namespace, and plugin-local output:
+target ChurchCRM release (`src/composer.lock`). Build against the schema after
+all migrations in the release; for the two-resource example above, that means
+including `note`. Use datasource `default`, a namespace beneath the main plugin
+class namespace, and plugin-local output:
 
 ```xml
 <database name="default" namespace="ChurchCRM\Plugins\MigrationExample\Model"
@@ -181,14 +183,18 @@ namespace beneath the main plugin class namespace, and plugin-local output:
   <table name="plugin_migration_example__entries" phpName="Entry">
     <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="label" type="VARCHAR" size="100" required="true"/>
+    <column name="note" type="VARCHAR" size="100"/>
   </table>
 </database>
 ```
 
 The [fixture build configuration](../../tests/fixtures/plugins/community/migration-example/orm/propel.php)
 sets `generator.namespaceAutoPackage` to false, `paths.schemaDir` to its `orm`
-directory and `paths.phpDir` to its `src` directory. From a ChurchCRM development
-checkout, after installing its Composer dependencies:
+directory and `paths.phpDir` to its `src` directory. The test fixture deliberately
+ships the initial 1.0.0 model without `note` to exercise the 1.1.0 upgrade; a
+distributed 1.1.0 plugin would rebuild and ship models that include `note`.
+From a ChurchCRM development checkout, after installing its Composer
+dependencies:
 
 ```sh
 php src/vendor/bin/propel --config-dir=tests/fixtures/plugins/community/migration-example/orm model:build

@@ -94,7 +94,7 @@ Both timestamps mean success. The unresolved phases are intentionally not
 distinguishable from the ledger alone. This is not crash-atomic exactly-once DDL.
 
 [FaultConnection.php](../../tests/plugin-migrations/FaultConnection.php) supplies
-test-only pipe barriers; [failure-recovery.php](../../tests/plugin-migrations/failure-recovery.php)
+test-only file barriers; [failure-recovery.php](../../tests/plugin-migrations/failure-recovery.php)
 terminates real workers, checks durable state from another connection and
 restarts. Other requests cannot enable/disable/uninstall at those barriers,
 including after the DDL implicit commit. Other plugin/database lock names remain
@@ -129,7 +129,9 @@ are used. Temporary packages and database dumps are not part of the source diff.
 | Linux, PHP 8.4.25, MySQL 8.0.46; production dependencies, generator commands absent | 40 passed, 0 failed; exit 0 | No skips; symlink subcase executed |
 | Linux, PHP 8.4.25, MariaDB 10.11.19-MariaDB-ubu2204; development dependencies | 40 passed, 0 failed; exit 0 | No skips; symlink subcase executed |
 | Linux, PHP 8.4.25, MariaDB 10.11.19-MariaDB-ubu2204; production dependencies, generator commands absent | 40 passed, 0 failed; exit 0 | No skips; symlink subcase executed |
-| Full Cypress browser suite | **Not run** | Targeted real Slim route/view tests were used |
+| Full Cypress browser suite at implementation commit `ddcfa3965388e8f0c21c04669275713fdf463fb1` | **Not run** | Targeted real Slim route/view tests were used |
+| Migration browser suite at `b4a1ddac4107337f2a1fc5ce3646fdeaf6a5688a` | [5 passed, 0 failed or skipped](https://github.com/mitk5/CRM/actions/runs/34306922795/job/102325431188) | Real Linux browser and MariaDB 10.11 |
+| Full PHP 8.4 Cypress matrix at `b4a1ddac4107337f2a1fc5ce3646fdeaf6a5688a` | [3,440 passed, 0 failed, 4 pending, 0 skipped after failure](https://github.com/mitk5/CRM/actions/runs/34306922822) | Root and subdirectory jobs; first root API attempt failed before Cypress and its same-head retry passed 663 tests |
 
 Hosted job logs: [MySQL 8.0](https://github.com/mitk5/CRM/actions/runs/34299382732/job/102302860281)
 and [MariaDB 10.11](https://github.com/mitk5/CRM/actions/runs/34299382732/job/102302860108).

@@ -27,12 +27,31 @@ use Slim\Psr7\Factory\ServerRequestFactory;
 function crashAt(string $phase, callable $atBarrier): void
 {
     global $workspace, $connection;
+    $barrierFile = tempnam($workspace, 'migration-barrier-');
+    if ($barrierFile === false) {
+        throw new RuntimeException('Could not create crash barrier file');
+    }
     $process = proc_open([PHP_BINARY, __DIR__ . '/worker.php', $workspace, $phase],
-        [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
-    check(is_resource($process), 'Could not start crash worker');
+        [0 => ['pipe', 'r'], 1 => ['file', $barrierFile, 'w'], 2 => ['pipe', 'w']], $pipes);
+    if (!is_resource($process)) {
+        unlink($barrierFile);
+        throw new RuntimeException('Could not start crash worker');
+    }
     try {
-        stream_set_timeout($pipes[1], 20);
-        check(trim((string) fgets($pipes[1])) === 'barrier=' . $phase, 'Worker did not reach ' . $phase);
+        // Windows PHP reports proc_open pipes ready before they contain data;
+        // polling a dedicated file keeps the barrier deadline effective there.
+        $deadline = microtime(true) + 20;
+        do {
+            $output = file_get_contents($barrierFile);
+            if ($output !== false && str_contains($output, "\n")) {
+                break;
+            }
+            if (!proc_get_status($process)['running']) {
+                break;
+            }
+            usleep(10_000);
+        } while (microtime(true) < $deadline);
+        check(trim((string) file_get_contents($barrierFile)) === 'barrier=' . $phase, 'Worker did not reach ' . $phase);
         check(proc_get_status($process)['running'], 'Worker exited before crash');
         $atBarrier();
     } finally {
@@ -42,6 +61,7 @@ function crashAt(string $phase, callable $atBarrier): void
             fclose($pipe);
         }
         $exit = proc_close($process);
+        unlink($barrierFile);
         check($terminated && $exit !== 0, 'Crash worker was not terminated');
     }
     // Connection teardown releases GET_LOCK asynchronously at the server.
@@ -52,6 +72,18 @@ function crashAt(string $phase, callable $atBarrier): void
     $release = $connection->prepare('SELECT RELEASE_LOCK(?)');
     $release->execute([$lock]);
 }
+
+$tests['stalled crash worker is killed at the barrier deadline'] = static function (): void {
+    fresh();
+    $started = microtime(true);
+    try {
+        crashAt('stall', static fn () => null);
+        throw new RuntimeException('Stalled worker unexpectedly reached the barrier');
+    } catch (RuntimeException $e) {
+        check($e->getMessage() === 'Worker did not reach stall', 'Unexpected stalled-worker failure: ' . $e->getMessage());
+    }
+    check(microtime(true) - $started < 30, 'Stalled worker exceeded the barrier deadline');
+};
 
 $tests['normal core SQL importer creates the ledger on a full clean install and upgrade'] = static function () use ($connection, $root): void {
     check($connection->query('SELECT DATABASE()')->fetchColumn() === 'churchcrm_plugin_migrations_test', 'Unsafe install target');
