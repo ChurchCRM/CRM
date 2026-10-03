@@ -73,6 +73,16 @@ function shrinkToBox(blob, maxWidth, maxHeight) {
   });
 }
 
+const HEIC_PATTERN = /\.(heic|heif)$/i;
+
+/**
+ * @param {{name?: string, type?: string}} file
+ * @returns {boolean}
+ */
+function isHeic(file) {
+  return /^image\/hei[cf]/i.test(file.type || "") || HEIC_PATTERN.test(file.name || "");
+}
+
 /**
  * @param {Blob} blob
  * @returns {Promise<string>} The blob as a data: URL
@@ -121,13 +131,22 @@ export function createPhotoUploader(config) {
   const allowWebcam = config.webcam !== false;
   const dashboardTitle = config.title || "Upload Photo";
 
+  let heicConversions = 0;
+
   const uppy = new Uppy({
     id: "photo-uploader",
     autoProceed: false,
+    onBeforeUpload: (files) => {
+      if (heicConversions > 0) {
+        showPersistentError("This HEIC photo is still being converted. Try again in a moment.");
+        return false;
+      }
+      return files;
+    },
     restrictions: {
       maxNumberOfFiles: 1,
       maxFileSize: MAX_SOURCE_FILE_BYTES,
-      allowedFileTypes: ["image/*"],
+      allowedFileTypes: ["image/*", ".heic", ".heif"],
     },
   }).use(Dashboard, {
     inline: false, // Use modal mode
@@ -228,6 +247,47 @@ export function createPhotoUploader(config) {
         ? error.message
         : `File size exceeds maximum of ${displayMaxSizeMB}MB. Please select a smaller file.`;
     showPersistentError(message);
+  });
+
+  // Browsers cannot open HEIC (iPhone) photos, so convert them to JPEG as they are added;
+  // the editor, the resize and the server then only ever see a JPEG. The converter is a
+  // large library, loaded only when a HEIC file is picked.
+  uppy.on("file-added", async (file) => {
+    if (!isHeic(file) || !(file.data instanceof Blob)) {
+      return;
+    }
+    clearPersistentError();
+    heicConversions++;
+    let jpeg;
+    let sourceStillPresent = false;
+    try {
+      const { default: heic2any } = await import("heic2any");
+      const converted = await heic2any({ blob: file.data, toType: "image/jpeg", quality: 0.9 });
+      jpeg = Array.isArray(converted) ? converted[0] : converted;
+    } catch (error) {
+      console.error("HEIC conversion failed", error);
+      showPersistentError("This HEIC photo could not be converted. Export it as a JPEG and try again.");
+    } finally {
+      heicConversions--;
+      // A remove click during conversion must not be undone by adding the JPEG.
+      sourceStillPresent = Boolean(uppy.getFile(file.id));
+      if (sourceStillPresent) {
+        uppy.removeFile(file.id);
+      }
+    }
+    if (!jpeg || !sourceStillPresent) {
+      return;
+    }
+    try {
+      uppy.addFile({
+        name: file.name.replace(HEIC_PATTERN, ".jpg"),
+        type: "image/jpeg",
+        data: jpeg,
+        source: file.source,
+      });
+    } catch (error) {
+      console.error("Converted HEIC photo was rejected", error);
+    }
   });
 
   // An uploader step, not an `upload` listener: Uppy emits `complete` only after this
