@@ -172,9 +172,9 @@ jobs:
           operations-per-run: 30
           stale-issue-label: Stale
           stale-pr-label: Stale
-          # Kept open on purpose: security, work we already accepted, parent epics, and beginner tasks.
+          # Kept open on purpose: security, parent epics, and beginner tasks.
           # Everything else, including enhancements, goes stale when the reporter goes quiet.
-          exempt-issue-labels: 'Security,security-delete-required,accepted,Epic,good first issue'
+          exempt-issue-labels: 'Security,security-delete-required,Epic,good first issue'
           exempt-pr-labels: 'Security,security-delete-required,dependencies'
           remove-stale-when-updated: true
           remove-stale-when-commented: true
