@@ -20,6 +20,7 @@ App under test: `DEVELOPING.md` (`npm run docker:test:start`).
 
 - New endpoint or user-visible flow gets a test in the same PR (`maintainer-review-gates.md`)
 - Clear `src/logs/$(date +%Y-%m-%d)-*.log` before a local run; read the log even if the spec passes
+- Before push, run the specs the change touches locally: `npm run docker:test:reset:db`, then `cypress run` with a comma-separated `--spec` list (new specs plus the existing ones for pages you changed). The reset replaces the test database with the seed; never aim a run at a database that holds real data. Seed rows that specs approve or delete are gone until the next reset. Specs that need a record should create their own, not consume a seed row
 - Stable selectors: `id`, `data-cy`, `name`, href/text — not visual utility classes
 - Do not put optional demo values in Cypress seed if that would break the suite. Demo import is `src/admin/demo/config.json`
 - No `.only` / `.skip` in committed specs
