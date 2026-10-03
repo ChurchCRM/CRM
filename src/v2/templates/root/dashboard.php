@@ -7,7 +7,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <?php if ($canReviewSelfRegistrations) { ?>
-<div class="alert alert-warning d-none align-items-center justify-content-between" id="selfRegisterDashboardAlert" role="status">
+<div class="alert alert-warning d-none flex-wrap gap-2 align-items-center justify-content-between" id="selfRegisterDashboardAlert" role="status">
     <div>
         <i class="fa-solid fa-user-clock me-2"></i>
         <strong id="selfRegisterDashboardCount">0</strong>

@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<div class="alert <?= $selfRegEnabled ? 'alert-success' : 'alert-warning' ?> d-flex align-items-center justify-content-between" role="status">
+<div class="alert <?= $selfRegEnabled ? 'alert-success' : 'alert-warning' ?> d-flex flex-wrap gap-2 align-items-center justify-content-between" role="status">
     <div>
         <i class="fa-solid <?= $selfRegEnabled ? 'fa-circle-check' : 'fa-circle-pause' ?> me-2"></i>
         <strong><?= $selfRegEnabled ? gettext('Self-registration is enabled') : gettext('Self-registration is disabled') ?></strong>
