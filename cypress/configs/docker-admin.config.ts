@@ -27,6 +27,7 @@ export default defineConfig({
   viewportHeight: 1080,
   viewportWidth: 1920,
   projectId: 'n4qnyb',
+  allowCypressEnv: false,
   env: {
     'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
     'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',

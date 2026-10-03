@@ -7,8 +7,9 @@
  * login used to pass as a finished one.
  */
 describe("Unfinished logins are not sessions", () => {
-    const standardUser = Cypress.env("standard.username");
-    const standardPassword = Cypress.env("standard.password");
+    before(() => {
+        cy.rememberTestEnv(["standard.username", "standard.password"]);
+    });
     const STANDARD_USER_ID = 3;
     let originalTimeout;
 
@@ -52,7 +53,7 @@ describe("Unfinished logins are not sessions", () => {
     });
 
     it("a wrong password does not sign the user in", () => {
-        postLogin(standardUser, "not-the-password").its("status").should("eq", 200);
+        postLogin(Cypress.testEnv("standard.username"), "not-the-password").its("status").should("eq", 200);
         expectSignedOut();
     });
 
@@ -65,7 +66,7 @@ describe("Unfinished logins are not sessions", () => {
     });
 
     it("a completed login still works", () => {
-        postLogin(standardUser, standardPassword).then((resp) => {
+        postLogin(Cypress.testEnv("standard.username"), Cypress.testEnv("standard.password")).then((resp) => {
             expect(resp.status).to.eq(302);
             expect(resp.redirectedToUrl).to.include("/v2/dashboard");
         });

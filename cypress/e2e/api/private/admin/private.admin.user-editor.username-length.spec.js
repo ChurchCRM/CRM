@@ -11,6 +11,9 @@
 // create/delete here.
 describe("API Private Admin User Editor - username length validation (#9831)", () => {
     const personId = 10;
+    before(() => {
+        cy.rememberTestEnv(["admin.api.key"]);
+    });
 
     function postAdminForm(url, body) {
         // Mirrors cy.makePrivateAPICall() (cypress/support/api-commands.js) but
@@ -25,7 +28,7 @@ describe("API Private Admin User Editor - username length validation (#9831)", (
             withCredentials: false,
             headers: {
                 "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
+                "x-api-key": Cypress.testEnv("admin.api.key"),
             },
             body,
         });

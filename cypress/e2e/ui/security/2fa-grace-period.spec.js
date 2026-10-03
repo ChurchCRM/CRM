@@ -90,8 +90,9 @@ describe("2FA Grace Period — config API", () => {
 });
 
 describe("2FA Grace Period — enforcement", () => {
-    const standardUser = Cypress.env("standard.username");
-    const standardPassword = Cypress.env("standard.password");
+    before(() => {
+        cy.rememberTestEnv(["standard.username", "standard.password"]);
+    });
 
     // Helper: set bRequire2FA to 1 or 0
     function setRequire2FA(value) {
@@ -137,8 +138,8 @@ describe("2FA Grace Period — enforcement", () => {
 
         cy.clearCookies();
         cy.visit("/session/begin");
-        cy.get("input[name=User]").type(standardUser);
-        cy.get("input[name=Password]").type(standardPassword + "{enter}");
+        cy.get("input[name=User]").type(Cypress.testEnv("standard.username"));
+        cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
 
         // Should land on dashboard, NOT on the enrollment page
         cy.url({ timeout: 15000 }).should("not.include", "manage2fa");
@@ -156,8 +157,8 @@ describe("2FA Grace Period — enforcement", () => {
 
         cy.clearCookies();
         cy.visit("/session/begin");
-        cy.get("input[name=User]").type(standardUser);
-        cy.get("input[name=Password]").type(standardPassword + "{enter}");
+        cy.get("input[name=User]").type(Cypress.testEnv("standard.username"));
+        cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
 
         // Immediate mode: no grace window, must redirect to manage2fa
         cy.url({ timeout: 15000 }).should("include", "manage2fa");
@@ -179,8 +180,8 @@ describe("2FA Grace Period — enforcement", () => {
 
         cy.clearCookies();
         cy.visit("/session/begin");
-        cy.get("input[name=User]").type(standardUser);
-        cy.get("input[name=Password]").type(standardPassword + "{enter}");
+        cy.get("input[name=User]").type(Cypress.testEnv("standard.username"));
+        cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
 
         cy.url({ timeout: 15000 }).should("not.include", "manage2fa");
         // Banner must NOT be present when mandate is off
