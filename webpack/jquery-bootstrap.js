@@ -1,11 +1,16 @@
 /**
  * jQuery plus Bootstrap's jQuery plugin bridge.
- * Webpack gives each entry its own jQuery, and Bootstrap 5 only patches
- * window.jQuery on DOMContentLoaded. Alias "jquery" to this module so
+ * Webpack gives each entry its own jQuery. Alias "jquery" to this module so
  * $(...).tooltip / .modal / .collapse work in every bundle.
+ *
+ * Export jQuery before loading Bootstrap. Bootstrap imports "jquery", which
+ * is this file, and a live ESM import runs before this body finishes.
  */
-import * as bootstrap from "bootstrap";
-import $ from "jquery-core";
+const $ = require("jquery-core");
+
+module.exports = $;
+
+const bootstrap = require("bootstrap");
 
 const plugins = [
   bootstrap.Alert,
@@ -28,5 +33,3 @@ for (const Plugin of plugins) {
     $.fn[Plugin.NAME].Constructor = Plugin;
   }
 }
-
-export default $;
