@@ -9,14 +9,13 @@ concurrency:
 # the community agent is down, rate-limited, or out of budget.
 #
 #   1. Security guard on newly opened issues
-#   2. Normalize bug issue types when "bug" label is applied
-#   3. Mark stale inactive issues
-#   4. Review closed stale issues that have no linked PR
+#   2. Mark stale inactive issues
+#   3. Review closed stale issues that have no linked PR
 # ==============================================================================
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [opened]
   schedule:
     - cron: '0 2 * * 1'
   workflow_dispatch:
@@ -95,46 +94,6 @@ jobs:
             }
             console.log('Nothing security-shaped.');
 
-  ensure-bug-type:
-    if: |
-      github.event_name == 'issues' &&
-      github.event.action == 'labeled' &&
-      github.event.label.name == 'bug'
-    name: Normalize bug issue type
-    timeout-minutes: 5
-    runs-on: ubuntu-24.04
-
-    steps:
-      - name: Ensure Issue Type is "Bug"
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
-        with:
-          script: |
-            const issue = context.payload.issue || {};
-            if (!issue.node_id) {
-              console.log('No issue payload — skip');
-              return;
-            }
-            const currentType = issue.type?.name || null;
-            if (currentType === 'Bug') {
-              console.log('Issue type is already Bug');
-              return;
-            }
-            try {
-              const result = await github.graphql(`
-                mutation($issueId:ID!, $issueType:IssueType!) {
-                  updateIssue(input: {id: $issueId, issueType: $issueType}) {
-                    issue { type }
-                  }
-                }
-              `, {
-                issueId: issue.node_id,
-                issueType: 'BUG'
-              });
-              console.log('Updated issue type to Bug:', result);
-            } catch (e) {
-              console.log('Could not update issue type:', e.message);
-            }
-
   mark-stale:
     if: |
       github.event_name == 'schedule' ||
@@ -172,9 +131,9 @@ jobs:
           operations-per-run: 30
           stale-issue-label: Stale
           stale-pr-label: Stale
-          # Kept open on purpose: security, work we already accepted, parent epics, and beginner tasks.
+          # Kept open on purpose: security, parent epics, and beginner tasks.
           # Everything else, including enhancements, goes stale when the reporter goes quiet.
-          exempt-issue-labels: 'Security,security-delete-required,accepted,Epic,good first issue'
+          exempt-issue-labels: 'Security,security-delete-required,Epic,good first issue'
           exempt-pr-labels: 'Security,security-delete-required,dependencies'
           remove-stale-when-updated: true
           remove-stale-when-commented: true
