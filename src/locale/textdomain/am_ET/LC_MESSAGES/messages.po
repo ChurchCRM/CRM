@@ -10397,10 +10397,6 @@ msgstr "ወደ ታዋቅ ይገኛል"
 msgid "User must have Notes permission"
 msgstr "ተጠቃሚ ማስታወሻ ፍቃድ ሊሆን ይገባ"
 
-#: 
-msgid "Address Defaults"
-msgstr "የአድራሻ ነባሮች"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10460,10 +10456,6 @@ msgstr "Vonage ማቀናጀት"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Mailchimp ለዜና ደብዳቤ እና ሙሙናት ኢሜይል ዝርዝር ለማመጣመስ ያገናኙ።"
-
-#: 
-msgid "Copy from church address"
-msgstr "ከቤተ ክርስቲያን አድራሻ ይቅዱ"
 
 #: 
 msgid "Copy to clipboard"
@@ -10790,10 +10782,6 @@ msgstr "አባልነት ወለድ ወር ለመዝገቦች ዓይነተ ሊመ�
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "የሰው መዝገቦች ለመመለስ ይሚደለገው ንብረት።"
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "እነዚህ ዋጋዎች ወደ ታዳሪ ቤተሰቦች ሲፈጠሩ አስቀድመው ተሞልተዋል። በእጅ ግቤት ለመፍለግ ባዶ ይተውት።"
 
 #: 
 msgid "Unit used to measure distance."
@@ -11216,10 +11204,6 @@ msgstr "Gravatar የኢሜይል አድራሻዎችን ወደ ሀሽ (MD5) በ�
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "ኬክሮስ/ኦሮምን ደብቅ"
-
-#: 
-msgid "Hide Person Address"
-msgstr "የሰው አድራሻ ደብቅ"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18326,10 +18310,6 @@ msgid "This Person is Inactive"
 msgstr "ይህ ሰው ንቁ አይደለም"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "ይህ OpenStreetMapን በመጠቀም የካርታ መጋጠሚያዎች ለሌላቸው ለእያንዳንዱ ቤተሰብ ያገኛል። ይህ ቤተሰቦችን በ50 ቡድኖች፣ ለእያንዳንዱ ቡድን ወደ አንድ ደቂቃ ያህል ያካሂዳል። ይህ በሚሮጥበት ጊዜ ይህን ገጽ ክፍት አድርገው መተው ይችላሉ። ይቀጥሉ?"
-
-#: 
 msgid "This person is deceased"
 msgstr "ይህ ሰው ሞቷል"
 
@@ -19088,4 +19068,80 @@ msgstr "ጠቅላላ የተከፈለ"
 #: 
 msgid "Uncategorized"
 msgstr "ያልተመደበ"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "የአሁኑን ቅንብሮች መጫን አልተቻለም። እንደገና ለመሞከር ገጹን እንደገና ይጫኑ።"
+
+#: 
+msgid "This setting must be a number"
+msgstr "ይህ ቅንብር ቁጥር መሆን አለበት"
+
+#: 
+msgid "Child Role"
+msgstr "የልጅ ሚና"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "በማውጫ ውስጥ መካተትን መቀያየር የሚቻለው ለምድቦች ዝርዝር ብቻ ነው"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "የእንኳን ደህና መጡ መልእክት 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "የእንኳን ደህና መጡ መልእክት 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "የቤተሰብ ራስ ሚና"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "ቤተሰብ የሌላቸውን አድራሻዎች ደብቅ"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "የወዳጅነት ቀንን ደብቅ"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "የጋዜጣ ደንበኝነቶችን ደብቅ"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "የጋብቻ ቀንን ደብቅ"
+
+#: 
+msgid "In Directory"
+msgstr "በማውጫ ውስጥ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "በማሳወቂያዎች ውስጥ ዝርዝሮችን አካት"
+
+#: 
+msgid "Notification Recipients"
+msgstr "የማሳወቂያ ተቀባዮች"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "አዲስ ቤተሰብ ወይም ሰው ሲጨመር ማሳወቂያ የሚደርሳቸው ሰዎች"
+
+#: 
+msgid "Person initials style"
+msgstr "የሰው የመጀመሪያ ፊደላት ዘይቤ"
+
+#: 
+msgid "Person name display style"
+msgstr "የሰው ስም አሳያይ ዘይቤ"
+
+#: 
+msgid "Spouse Role"
+msgstr "የትዳር ጓደኛ ሚና"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "የፖስታ ኮዶችን በትልልቅ ፊደላት"
 

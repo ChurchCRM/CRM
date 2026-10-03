@@ -10389,10 +10389,6 @@ msgstr "Uuendus saadaval"
 msgid "User must have Notes permission"
 msgstr "Kasutajal peavad olema märkmete õigused"
 
-#: 
-msgid "Address Defaults"
-msgstr "Aadressi vaikeväärtused"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10452,10 +10448,6 @@ msgstr "Konfigureerige Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Ühendage Mailchimp e-posti loendite sünkroonimiseks uudiskirjade ja kampaaniate jaoks."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopeerige kiriku aadressist"
 
 #: 
 msgid "Copy to clipboard"
@@ -10782,10 +10774,6 @@ msgstr "Liikmeteaastapäeva kuu, mille jaoks soovite kirjeid tagasi saada."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Vara, mille jaoks soovite inimeste kirjeid tagasi saada."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Need väärtused täidetakse eelnevalt uute perede loomisel. Jätke tühjaks, et nõuda käsitsi sisestamist."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11208,10 +11196,6 @@ msgstr "Gravatar toimib e-posti aadresside räsiks (MD5) teisendamise teel. Tege
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Peida laiuskraad/pikkuskraad"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Peida isiku aadress"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18317,10 +18301,6 @@ msgid "This Person is Inactive"
 msgstr "See isik on mitteaktiivne"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "See otsib OpenStreetMap'i abil kaardikoordinaadid kõigile perekondadele, kellel need puuduvad. See töötleb perekondi 50 kaupa, iga partii võtab aega umbes minuti. Võite selle lehe töö käigus avatuna hoida. Jätkata?"
-
-#: 
 msgid "This person is deceased"
 msgstr "See isik on surnud"
 
@@ -19079,4 +19059,80 @@ msgstr "Kokku makstud"
 #: 
 msgid "Uncategorized"
 msgstr "Kategoriseerimata"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Praeguseid seadeid ei õnnestunud laadida. Värskendage lehte ja proovige uuesti."
+
+#: 
+msgid "This setting must be a number"
+msgstr "See seade peab olema arv"
+
+#: 
+msgid "Child Role"
+msgstr "Lapse roll"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Kataloogi kaasamist saab ümber lülitada ainult klassifikatsioonide loendi jaoks"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Tervitussõnum 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Tervitussõnum 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Leibkonnapea roll"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Peida aadressid ilma perekonnata"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Peida sõprussuhte kuupäev"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Peida uudiskirja tellimused"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Peida pulmakuupäev"
+
+#: 
+msgid "In Directory"
+msgstr "Kataloogis"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Lisa teavitustesse üksikasjad"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Teavituste saajad"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Isikud, keda teavitatakse uue perekonna või isiku lisamisel"
+
+#: 
+msgid "Person initials style"
+msgstr "Isiku initsiaalide stiil"
+
+#: 
+msgid "Person name display style"
+msgstr "Isiku nime kuvamise stiil"
+
+#: 
+msgid "Spouse Role"
+msgstr "Abikaasa roll"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Sihtnumbrid suurtähtedega"
 

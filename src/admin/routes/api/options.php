@@ -1,9 +1,9 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -137,15 +137,8 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
         $deletedSeq = $option->getOptionSequence();
         $option->delete();
 
-        // A freed classification ID can be reused by the next one added; drop it from the flag lists.
         if ($listId === 1) {
-            foreach (['sInactiveClassification', 'sDirClassifications'] as $configKey) {
-                $kept = array_filter(
-                    explode(',', SystemConfig::getValue($configKey)),
-                    fn ($k) => is_numeric($k) && (int) $k !== $optionId,
-                );
-                SystemConfig::setValue($configKey, implode(',', $kept));
-            }
+            (new ClassificationService())->removeFromFlags($optionId);
         }
 
         // Resequence remaining options
@@ -256,8 +249,8 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
     });
 
     // Toggle a classification in/out of a comma-separated ID setting (classifications list only — listId 1)
-    $toggleClassificationFlag = fn (string $configKey, string $responseKey, string $wrongListMessage) =>
-        function (Request $request, Response $response, array $args) use ($configKey, $responseKey, $wrongListMessage): Response {
+    $toggleClassificationFlag = fn (string $toggleMethod, string $responseKey, string $wrongListMessage) =>
+        function (Request $request, Response $response, array $args) use ($toggleMethod, $responseKey, $wrongListMessage): Response {
             $listId = (int) $args['listId'];
             $optionId = (int) $args['optionId'];
 
@@ -273,27 +266,18 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
                 throw new HttpNotFoundException($request, gettext('Option not found'));
             }
 
-            $ids = explode(',', SystemConfig::getValue($configKey));
-            $ids = array_map('intval', array_filter($ids, fn ($k) => is_numeric($k)));
-
-            if (in_array($optionId, $ids, true)) {
-                $ids = array_values(array_diff($ids, [$optionId]));
-            } else {
-                $ids[] = $optionId;
-            }
-
-            SystemConfig::setValue($configKey, implode(',', $ids));
+            $ids = (new ClassificationService())->$toggleMethod($optionId);
 
             return SlimUtils::renderJSON($response, [$responseKey => $ids]);
         };
 
     $group->post('/{listId:[0-9]+}/{optionId:[0-9]+}/inactive', $toggleClassificationFlag(
-        'sInactiveClassification',
+        'toggleInactive',
         'inactive',
         gettext('Inactive status can only be toggled for the classifications list'),
     ));
     $group->post('/{listId:[0-9]+}/{optionId:[0-9]+}/directory', $toggleClassificationFlag(
-        'sDirClassifications',
+        'toggleDirectory',
         'directory',
         gettext('Directory inclusion can only be toggled for the classifications list'),
     ));

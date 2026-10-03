@@ -10357,10 +10357,6 @@ msgstr "Actualización disponible"
 msgid "User must have Notes permission"
 msgstr "El usuario debe tener permiso de Notas"
 
-#: 
-msgid "Address Defaults"
-msgstr "Valores predeterminados de dirección"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10420,10 +10416,6 @@ msgstr "Configurar Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Conecta Mailchimp para sincronizar listas de correo electrónico para boletines y campañas."
-
-#: 
-msgid "Copy from church address"
-msgstr "Copiar de la dirección de la Iglesia"
 
 #: 
 msgid "Copy to clipboard"
@@ -10750,10 +10742,6 @@ msgstr "El mes de aniversario de membresía para el que desea que se devuelvan l
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "La propiedad para la que desea que se devuelvan los registros de personas."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Estos valores se rellenan automáticamente al crear nuevas familias. Deje en blanco para requerir entrada manual."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11176,10 +11164,6 @@ msgstr "Gravatar funciona convirtiendo direcciones de correo electrónico en un 
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Ocultar Latitud/Longitud"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Ocultar Dirección de Persona"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18286,10 +18270,6 @@ msgid "This Person is Inactive"
 msgstr "Esta persona está inactiva"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Esto busca las coordenadas del mapa para cada familia a la que le falten, usando OpenStreetMap. Procesa a las familias en lotes de 50, aproximadamente un minuto por lote. Puede dejar esta página abierta mientras se ejecuta. ¿Desea continuar?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Esta persona está fallecida"
 
@@ -19048,4 +19028,80 @@ msgstr "Total pagado"
 #: 
 msgid "Uncategorized"
 msgstr "Sin categoría"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "No se pudo cargar la configuración actual. Recargue la página para intentarlo de nuevo."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Este ajuste debe ser un número"
+
+#: 
+msgid "Child Role"
+msgstr "Rol de hijo"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "La inclusión en el directorio solo se puede activar o desactivar en la lista de clasificaciones"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Mensaje de bienvenida 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Mensaje de bienvenida 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Rol de cabeza de familia"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Ocultar direcciones sin familia"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Ocultar fecha de amigo"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Ocultar suscripciones al boletín"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Ocultar fecha de boda"
+
+#: 
+msgid "In Directory"
+msgstr "En el directorio"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Incluir detalles en las notificaciones"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Destinatarios de notificaciones"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Personas a notificar cuando se agrega una nueva familia o persona"
+
+#: 
+msgid "Person initials style"
+msgstr "Estilo de iniciales de la persona"
+
+#: 
+msgid "Person name display style"
+msgstr "Estilo de visualización del nombre de la persona"
+
+#: 
+msgid "Spouse Role"
+msgstr "Rol de cónyuge"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Códigos postales en mayúsculas"
 

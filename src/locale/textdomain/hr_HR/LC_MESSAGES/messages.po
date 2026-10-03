@@ -10361,10 +10361,6 @@ msgstr "Dostupno ažuriranje"
 msgid "User must have Notes permission"
 msgstr "Korisnik mora imati dozvolu za bilješke"
 
-#: 
-msgid "Address Defaults"
-msgstr "Zadane postavke adrese"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10424,10 +10420,6 @@ msgstr "Konfiguriraj Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Povežite Mailchimp za sinkronizaciju popisa e-pošte za biltene i kampanje."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopiraj s adrese župe"
 
 #: 
 msgid "Copy to clipboard"
@@ -10754,10 +10746,6 @@ msgstr "Mjesec godišnjice članstva za koji želite vraćene zapise."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Svojstvo za koje želite vraćene zapise osoba."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ove vrijednosti su unaprijed ispunjene pri kreiranju novih obitelji. Ostavite prazno za zahtijevanje ručnog unosa."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11180,10 +11168,6 @@ msgstr "Gravatar funkcionira tako da pretvara adrese e-pošte u hash (MD5). Stva
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Sakrij geografsku širinu/dužinu"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Sakrij adresu osobe"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18296,10 +18280,6 @@ msgid "This Person is Inactive"
 msgstr "Ova osoba je neaktivna"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Ovo pronalazi koordinate na karti za sve obitelji kojima nedostaju, koristeći OpenStreetMap. Obrađuje obitelji u skupinama po 50, otprilike minutu po skupini. Možete ostaviti ovu stranicu otvorenom dok se izvršava. Nastaviti?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Ova osoba je preminula"
 
@@ -19058,4 +19038,80 @@ msgstr "Ukupno plaćeno"
 #: 
 msgid "Uncategorized"
 msgstr "Bez kategorije"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Trenutačne postavke nije moguće učitati. Ponovno učitajte stranicu i pokušajte opet."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Ova postavka mora biti broj"
+
+#: 
+msgid "Child Role"
+msgstr "Uloga djeteta"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Uključivanje u imenik može se mijenjati samo za popis klasifikacija"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Poruka dobrodošlice 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Poruka dobrodošlice 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Uloga glave obitelji"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Sakrij adrese bez obitelji"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Sakrij datum prijateljstva"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Sakrij pretplate na bilten"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Sakrij datum vjenčanja"
+
+#: 
+msgid "In Directory"
+msgstr "U imeniku"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Uključi pojedinosti u obavijesti"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Primatelji obavijesti"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Osobe koje treba obavijestiti kada se doda nova obitelj ili osoba"
+
+#: 
+msgid "Person initials style"
+msgstr "Stil inicijala osobe"
+
+#: 
+msgid "Person name display style"
+msgstr "Stil prikaza imena osobe"
+
+#: 
+msgid "Spouse Role"
+msgstr "Uloga supružnika"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Poštanski brojevi velikim slovima"
 

@@ -1,21 +1,8 @@
 {
-  "Could not load the current settings. Reload the page to try again.": "",
-  "This setting must be a number": "",
-  "Child Role": "",
-  "Directory inclusion can only be toggled for the classifications list": "",
-  "Greeter Message 1": "",
-  "Greeter Message 2": "",
-  "Head of House Role": "",
-  "Hide Address Without Family": "",
-  "Hide Friend Date": "",
-  "Hide Newsletter Subscriptions": "",
-  "Hide Wedding Date": "",
-  "In Directory": "",
-  "Include Details in Notifications": "",
-  "Notification Recipients": "",
-  "People to notify when a new family or person is added": "",
-  "Person initials style": "",
-  "Person name display style": "",
-  "Spouse Role": "",
-  "Uppercase Zip/Postcodes": ""
+  "Select at least one classification to include in the directory.": "",
+  "Geocoding services": "",
+  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "",
+  "New Record Defaults": "",
+  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "",
+  "Used for new records and for geocoding when a record has no country.": ""
 }

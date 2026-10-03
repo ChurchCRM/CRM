@@ -10385,10 +10385,6 @@ msgstr "Co ban cap nhat"
 msgid "User must have Notes permission"
 msgstr "Nguoi dung phai co quyen Ghi chu"
 
-#: 
-msgid "Address Defaults"
-msgstr "Địa chỉ Mặc định"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10448,10 +10444,6 @@ msgstr "Cấu hình Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Kết nối Mailchimp để đồng bộ hóa danh sách email cho bản tin và chiến dịch."
-
-#: 
-msgid "Copy from church address"
-msgstr "Sao chép từ địa chỉ Nhà thờ"
 
 #: 
 msgid "Copy to clipboard"
@@ -10778,10 +10770,6 @@ msgstr "Tháng kỷ niệm thành viên mà bạn muốn trả lại bản ghi."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Tài sản mà bạn muốn trả lại bản ghi người."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Các giá trị này được điền sẵn khi tạo gia đình mới. Để trống để yêu cầu nhập thủ công."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11204,10 +11192,6 @@ msgstr "Gravatar hoạt động bằng cách chuyển đổi địa chỉ email 
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Ẩn vĩ độ/kinh độ"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Ẩn địa chỉ cá nhân"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18306,10 +18290,6 @@ msgid "This Person is Inactive"
 msgstr "Người này không hoạt động"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Chức năng này tìm tọa độ bản đồ cho mọi gia đình còn thiếu, sử dụng OpenStreetMap. Nó xử lý các gia đình theo từng đợt 50, khoảng một phút mỗi đợt. Bạn có thể để trang này mở trong khi nó chạy. Tiếp tục?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Người này đã qua đời"
 
@@ -19068,4 +19048,80 @@ msgstr "Tổng thanh toán"
 #: 
 msgid "Uncategorized"
 msgstr "Không được phân loại"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Không thể tải cài đặt hiện tại. Hãy tải lại trang để thử lại."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Cài đặt này phải là một số"
+
+#: 
+msgid "Child Role"
+msgstr "Vai trò con cái"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Việc đưa vào danh bạ chỉ có thể bật/tắt cho danh sách phân loại"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Lời chào 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Lời chào 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Vai trò chủ hộ"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Ẩn địa chỉ không có gia đình"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Ẩn ngày kết bạn"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Ẩn đăng ký bản tin"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Ẩn ngày cưới"
+
+#: 
+msgid "In Directory"
+msgstr "Trong danh bạ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Bao gồm chi tiết trong thông báo"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Người nhận thông báo"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Những người được thông báo khi có gia đình hoặc cá nhân mới được thêm"
+
+#: 
+msgid "Person initials style"
+msgstr "Kiểu chữ cái đầu của người"
+
+#: 
+msgid "Person name display style"
+msgstr "Kiểu hiển thị tên người"
+
+#: 
+msgid "Spouse Role"
+msgstr "Vai trò vợ/chồng"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Mã bưu chính viết hoa"
 

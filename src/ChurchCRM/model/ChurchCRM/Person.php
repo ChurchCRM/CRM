@@ -372,7 +372,7 @@ class Person extends BasePerson implements PhotoInterface
 
         // Person has their own address — try geocoding it first.
         if (!empty($this->getAddress1())) {
-            $latLng = GeoUtils::getLatLong($this->getAddress());
+            $latLng = GeoUtils::getLatLong($this->getAddress(), null, null, null, $this->getCountry());
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 return ['Latitude' => $latLng['Latitude'], 'Longitude' => $latLng['Longitude']];
             }

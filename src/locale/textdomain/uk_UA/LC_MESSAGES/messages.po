@@ -10408,10 +10408,6 @@ msgstr "Доступне оновлення"
 msgid "User must have Notes permission"
 msgstr "Користувач повинен мати дозвіл на нотатки"
 
-#: 
-msgid "Address Defaults"
-msgstr "За замовчуванням адреси"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10471,10 +10467,6 @@ msgstr "Налаштуйте Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Підключіть Mailchimp для синхронізації списків електронної пошти для розсилок і кампаній."
-
-#: 
-msgid "Copy from church address"
-msgstr "Скопіювати з адреси церкви"
 
 #: 
 msgid "Copy to clipboard"
@@ -10801,10 +10793,6 @@ msgstr "Місяць річниці членства, для якого потр
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Властивість, для якої потрібно повернути записи осіб."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ці значення попередньо заповнюються при створенні нових сімей. Залиште пусто, щоб потребувати ручного введення."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11227,10 +11215,6 @@ msgstr "Gravatar працює шляхом перетворення електр
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Приховати широту/довготу"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Приховати адресу особи"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18350,10 +18334,6 @@ msgid "This Person is Inactive"
 msgstr "Ця особа неактивна"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Це визначить координати на карті для кожної сім'ї, якій їх бракує, за допомогою OpenStreetMap. Обробка відбувається партіями по 50 сімей, приблизно по хвилині на партію. Ви можете залишити цю сторінку відкритою під час виконання. Продовжити?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Ця особа померла"
 
@@ -19112,4 +19092,80 @@ msgstr "Всього сплачено"
 #: 
 msgid "Uncategorized"
 msgstr "Без категорії"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Не вдалося завантажити поточні налаштування. Перезавантажте сторінку та спробуйте ще раз."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Цей параметр має бути числом"
+
+#: 
+msgid "Child Role"
+msgstr "Роль дитини"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Включення до довідника можна перемикати лише для списку класифікацій"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Вітальне повідомлення 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Вітальне повідомлення 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Роль голови родини"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Приховувати адреси без родини"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Приховувати дату знайомства"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Приховувати підписки на розсилку"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Приховувати дату весілля"
+
+#: 
+msgid "In Directory"
+msgstr "У довіднику"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Включати подробиці в сповіщення"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Отримувачі сповіщень"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Кого сповіщати, коли додано нову родину або особу"
+
+#: 
+msgid "Person initials style"
+msgstr "Стиль ініціалів особи"
+
+#: 
+msgid "Person name display style"
+msgstr "Стиль відображення імені особи"
+
+#: 
+msgid "Spouse Role"
+msgstr "Роль подружжя"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Поштові індекси великими літерами"
 

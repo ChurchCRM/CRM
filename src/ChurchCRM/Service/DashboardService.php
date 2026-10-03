@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\FunctionsUtils;
-use Propel\Runtime\ActiveQuery\Criteria;
 
 const GENDER_STATS_UNASSIGNED = 0;
 const GENDER_STATS_MAN = 1;
@@ -27,11 +26,6 @@ class DashboardService
 
     public function getDashboardStats(): array
     {
-        $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
-        if ($sInactiveClassificationIds === '') {
-            $sInactiveClassificationIds = '-1';
-        }
-        $aInactiveClassificationIds = explode(',', $sInactiveClassificationIds);
         $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
 
         $personCount = 0;
@@ -48,8 +42,7 @@ class DashboardService
         ];
         $familyRoleStats = [];
 
-        $people = PersonQuery::Create('per')
-            ->filterByClsId($aInactiveClassificationIds, Criteria::NOT_IN)
+        $people = (new ClassificationService())->excludeInactive(PersonQuery::Create('per'))
             ->useFamilyQuery('fam', 'left join')
             ->filterByDateDeactivated(null)
             ->endUse()

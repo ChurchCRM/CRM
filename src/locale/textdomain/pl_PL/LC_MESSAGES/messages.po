@@ -10456,10 +10456,6 @@ msgstr "Dostępna aktualizacja"
 msgid "User must have Notes permission"
 msgstr "Użytkownik musi mieć uprawnienie do notatek"
 
-#: 
-msgid "Address Defaults"
-msgstr "Ustawienia domyślne adresu"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10519,10 +10515,6 @@ msgstr "Skonfiguruj Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Połącz Mailchimp, aby zsynchronizować listy e-mail dla biuletynów i kampanii."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopiuj z adresu kościoła"
 
 #: 
 msgid "Copy to clipboard"
@@ -10849,10 +10841,6 @@ msgstr "Miesiąc rocznicy członkowstwa, dla którego chcesz zwrócić rekordy."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Właściwość, dla której chcesz zwrócić rekordy osób."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Te wartości są wstępnie wypełniane podczas tworzenia nowych rodzin. Pozostaw puste, aby wymagać ręcznego wpisu."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11275,10 +11263,6 @@ msgstr "Gravatar działa poprzez konwersję adresów e-mail na skrót (MD5). Rze
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Ukryj szerokość/długość geograficzną"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Ukryj adres osoby"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18391,10 +18375,6 @@ msgid "This Person is Inactive"
 msgstr "Ta osoba jest nieaktywna"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Znajduje współrzędne mapy dla każdej rodziny, której ich brakuje, korzystając z OpenStreetMap. Przetwarza rodziny partiami po 50, co zajmuje około minuty na partię. Możesz zostawić tę stronę otwartą podczas działania procesu. Kontynuować?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Ta osoba nie żyje"
 
@@ -19153,4 +19133,80 @@ msgstr "Łącznie zapłacone"
 #: 
 msgid "Uncategorized"
 msgstr "Bez kategorii"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Nie udało się wczytać bieżących ustawień. Odśwież stronę i spróbuj ponownie."
+
+#: 
+msgid "This setting must be a number"
+msgstr "To ustawienie musi być liczbą"
+
+#: 
+msgid "Child Role"
+msgstr "Rola dziecka"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Uwzględnianie w katalogu można przełączać tylko dla listy klasyfikacji"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Wiadomość powitalna 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Wiadomość powitalna 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Rola głowy rodziny"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Ukryj adresy bez rodziny"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Ukryj datę znajomości"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Ukryj subskrypcje newslettera"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Ukryj datę ślubu"
+
+#: 
+msgid "In Directory"
+msgstr "W katalogu"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Dołącz szczegóły w powiadomieniach"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Odbiorcy powiadomień"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Osoby powiadamiane o dodaniu nowej rodziny lub osoby"
+
+#: 
+msgid "Person initials style"
+msgstr "Styl inicjałów osoby"
+
+#: 
+msgid "Person name display style"
+msgstr "Styl wyświetlania imienia i nazwiska osoby"
+
+#: 
+msgid "Spouse Role"
+msgstr "Rola małżonka"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Kody pocztowe wielkimi literami"
 

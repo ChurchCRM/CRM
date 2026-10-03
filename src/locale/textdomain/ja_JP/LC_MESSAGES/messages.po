@@ -10346,10 +10346,6 @@ msgstr "アップデートあり"
 msgid "User must have Notes permission"
 msgstr "ユーザーにはメモの権限が必要です"
 
-#: 
-msgid "Address Defaults"
-msgstr "アドレスデフォルト"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10409,10 +10405,6 @@ msgstr "Vonageを構成する"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Mailchimpを接続して、ニュースレターおよびキャンペーンのメールリストを同期します。"
-
-#: 
-msgid "Copy from church address"
-msgstr "教会のアドレスからコピー"
 
 #: 
 msgid "Copy to clipboard"
@@ -10739,10 +10731,6 @@ msgstr "レコードを返してほしい会員周年記念月。"
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "ユーザーレコードを返してほしいプロパティ。"
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "これらの値は、新しい家族を作成するときに事前に入力されます。手動入力が必要な場合は空白のままにします。"
 
 #: 
 msgid "Unit used to measure distance."
@@ -11165,10 +11153,6 @@ msgstr "Gravatar はメールアドレスをハッシュ（MD5）に変換する
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "緯度・経度を非表示"
-
-#: 
-msgid "Hide Person Address"
-msgstr "個人の住所を非表示"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18267,10 +18251,6 @@ msgid "This Person is Inactive"
 msgstr "この人物は無効です"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "OpenStreetMapを使用して、地図座標が未設定のすべての家族の座標を検索します。50件ずつのバッチで処理され、1バッチあたり約1分かかります。実行中もこのページを開いたままにしておけます。続行しますか?"
-
-#: 
 msgid "This person is deceased"
 msgstr "この人物は故人です"
 
@@ -19029,4 +19009,80 @@ msgstr "支払合計"
 #: 
 msgid "Uncategorized"
 msgstr "未分類"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "現在の設定を読み込めませんでした。ページを再読み込みして、もう一度お試しください。"
+
+#: 
+msgid "This setting must be a number"
+msgstr "この設定は数値である必要があります"
+
+#: 
+msgid "Child Role"
+msgstr "子の役割"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "名簿への掲載は、分類リストでのみ切り替えられます"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "ウェルカムメッセージ 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "ウェルカムメッセージ 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "世帯主の役割"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "家族のない住所を非表示にする"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "友人登録日を非表示にする"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "ニュースレター購読を非表示にする"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "結婚記念日を非表示にする"
+
+#: 
+msgid "In Directory"
+msgstr "名簿に掲載"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "通知に詳細を含める"
+
+#: 
+msgid "Notification Recipients"
+msgstr "通知の受信者"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "新しい家族または人物が追加されたときに通知する人"
+
+#: 
+msgid "Person initials style"
+msgstr "人物のイニシャルの形式"
+
+#: 
+msgid "Person name display style"
+msgstr "人物の名前の表示形式"
+
+#: 
+msgid "Spouse Role"
+msgstr "配偶者の役割"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "郵便番号を大文字にする"
 

@@ -92,24 +92,4 @@ describe("Settings Panel — Choice Dropdowns", () => {
             });
         });
     });
-
-    describe("Map View — Zoom Level", () => {
-        it("zoom level dropdown has geographic scale options", () => {
-            cy.visit("people/map");
-            // Map settings may not render if church address is not geocoded;
-            // skip gracefully if the settings panel container doesn't exist
-            cy.get("body").then(($body) => {
-                if ($body.find("#mapAdminSettings").length === 0) {
-                    cy.log("Map settings panel not rendered (church address may not be geocoded) — skipping");
-                    return;
-                }
-
-                cy.get("#mapAdminSettings", { timeout: 10000 }).should("exist");
-                cy.get("#mapAdminSettings").within(() => {
-                    cy.get("select[name='iMapZoom']").should("exist");
-                    cy.get("select[name='iMapZoom'] option").should("have.length.at.least", 5);
-                });
-            });
-        });
-    });
 });

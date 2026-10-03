@@ -272,8 +272,8 @@ if (geocodeAllBtn) {
     window.bootbox.confirm({
       title: t("Update All Family Coordinates"),
       message: t(
-        "This finds map coordinates for every family that is missing them, using OpenStreetMap. " +
-          "It works through the families in batches of 50, about a minute per batch. " +
+        "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. " +
+          "It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. " +
           "You can keep this page open while it runs. Continue?",
       ),
       buttons: {
@@ -349,16 +349,6 @@ const cfg = window.CRM.mapConfig;
 if (cfg && document.getElementById("map")) {
   // -- Map init ---------------------------------------------------------------
   const map = L.map("map").setView([cfg.churchLat, cfg.churchLng], cfg.zoom);
-
-  // Map Settings saved on this page (see map-view.php): apply the new default
-  // zoom to the map that is already showing, so no reload is needed. The other
-  // map settings only affect the editors and geocoding, not this view.
-  document.addEventListener("crm:mapsettings-saved", (event) => {
-    const zoom = Number.parseInt(event.detail?.iMapZoom, 10);
-    if (Number.isFinite(zoom) && zoom > 0 && zoom !== map.getZoom()) {
-      map.setView([cfg.churchLat, cfg.churchLng], zoom);
-    }
-  });
 
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,

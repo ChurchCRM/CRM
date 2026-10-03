@@ -22,7 +22,7 @@ test.describe('Settings', () => {
     // Route: src/admin/routes/people.php ("/admin/people"), admin-only. Shows
     // the People hub: list/editor shortcuts plus auto-saving settings panels.
     await page.goto('/admin/people');
-    for (const section of ['#peoplePeople', '#peopleFamilies', '#peopleNewMembers']) {
+    for (const section of ['#peoplePeople', '#peopleFamilies', '#peopleNewMembers', '#peopleDefaults', '#peopleMap']) {
       await expect(page.locator(`${section} .settings-panel-fields`)).toBeEnabled({ timeout: 15000 });
     }
     await settle(page, 600);

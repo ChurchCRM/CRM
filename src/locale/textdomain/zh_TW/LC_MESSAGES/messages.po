@@ -10527,10 +10527,6 @@ msgstr "有可用更新"
 msgid "User must have Notes permission"
 msgstr "使用者必須擁有備註權限"
 
-#: 
-msgid "Address Defaults"
-msgstr "地址預設值"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10590,10 +10586,6 @@ msgstr "設定Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "連接Mailchimp以同步電子報和行銷活動的電子郵件清單。"
-
-#: 
-msgid "Copy from church address"
-msgstr "從教會地址複製"
 
 #: 
 msgid "Copy to clipboard"
@@ -10920,10 +10912,6 @@ msgstr "您想要返回記錄的會員週年月份。"
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "您想要返回人員記錄的屬性。"
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "建立新家庭時，這些值會預先填充。留空以要求手動輸入。"
 
 #: 
 msgid "Unit used to measure distance."
@@ -11346,10 +11334,6 @@ msgstr "Gravatar 通過將電子郵件地址轉換為雜湊值（MD5）來運作
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "隱藏緯度／經度"
-
-#: 
-msgid "Hide Person Address"
-msgstr "隱藏個人地址"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18448,10 +18432,6 @@ msgid "This Person is Inactive"
 msgstr "此人已停用"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "這將使用 OpenStreetMap，為所有缺少地圖座標的家庭尋找座標。系統會以每批 50 個家庭進行處理，每批約需一分鐘。執行期間您可以讓此頁面保持開啟。要繼續嗎？"
-
-#: 
 msgid "This person is deceased"
 msgstr "此人已故"
 
@@ -19210,4 +19190,80 @@ msgstr "支付總額"
 #: 
 msgid "Uncategorized"
 msgstr "未分類"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "無法載入目前的設定。請重新整理頁面後再試一次。"
+
+#: 
+msgid "This setting must be a number"
+msgstr "此設定必須是數字"
+
+#: 
+msgid "Child Role"
+msgstr "子女角色"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "僅能針對分類清單切換是否收錄於通訊錄"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "歡迎訊息 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "歡迎訊息 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "戶長角色"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "隱藏沒有家庭的地址"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "隱藏結識日期"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "隱藏電子報訂閱"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "隱藏結婚日期"
+
+#: 
+msgid "In Directory"
+msgstr "在通訊錄中"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "在通知中包含詳細資料"
+
+#: 
+msgid "Notification Recipients"
+msgstr "通知收件人"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "新增家庭或人員時需要通知的人員"
+
+#: 
+msgid "Person initials style"
+msgstr "人員姓名縮寫樣式"
+
+#: 
+msgid "Person name display style"
+msgstr "人員姓名顯示樣式"
+
+#: 
+msgid "Spouse Role"
+msgstr "配偶角色"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "郵遞區號大寫"
 

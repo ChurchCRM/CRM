@@ -24,8 +24,8 @@ const LOGO_API_URL = "/admin/api/system/church-logo";
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(
+    cy.get("input[name=User]").should("not.be.disabled").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").should("not.be.disabled").type(
         `${Cypress.env("admin.password")}{enter}`,
     );
     cy.url().should("not.include", "/session/begin");
@@ -165,7 +165,7 @@ describe("Admin - Church Logo", () => {
 
         cy.intercept("POST", `**${LOGO_API_URL}`).as("uploadLogo");
         uploadLogoThroughUppy();
-        cy.wait("@uploadLogo").its("response.statusCode").should("eq", 200);
+        cy.wait("@uploadLogo", { timeout: 15000 }).its("response.statusCode").should("eq", 200);
 
         // The page reloads and renders the new state.
         cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
@@ -190,7 +190,7 @@ describe("Admin - Church Logo", () => {
             uploadLogoThroughUppy(photo);
         });
 
-        cy.wait("@uploadLogo").then(({ request, response }) => {
+        cy.wait("@uploadLogo", { timeout: 15000 }).then(({ request, response }) => {
             expect(JSON.stringify(request.body).length).to.be.lessThan(2 * 1024 * 1024);
             expect(response.statusCode).to.equal(200);
         });
@@ -225,7 +225,7 @@ describe("Admin - Church Logo", () => {
 
         uploadLogoThroughUppy();
 
-        cy.wait("@uploadLogo");
+        cy.wait("@uploadLogo", { timeout: 15000 });
         cy.get(".uppy-StatusBar-actionBtn--retry").should("be.visible");
         cy.get("#uppy-error-container").should("contain", "Refused for the test");
         cy.get("#church-logo-remove-btn").should("not.exist");

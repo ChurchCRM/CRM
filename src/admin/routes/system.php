@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
@@ -123,12 +124,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $inactiveClasses = [];
         $directoryClasses = [];
         if ($mode === 'classes') {
-            $numericIds = fn (string $key): array => array_filter(
-                explode(',', (string) SystemConfig::getValue($key)),
-                fn ($k) => is_numeric($k)
-            );
-            $inactiveClasses = $numericIds('sInactiveClassification');
-            $directoryClasses = $numericIds('sDirClassifications');
+            $classificationService = new ClassificationService();
+            $inactiveClasses = $classificationService->getInactiveIds();
+            $directoryClasses = $classificationService->getDirectoryIds();
         }
 
         $breadcrumbParent = match ($mode) {
@@ -480,10 +478,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'iChurchLatitude'  => ($latFloat !== 0.0 || $lngFloat !== 0.0) ? (string) $latFloat : '',
             'iChurchLongitude' => ($latFloat !== 0.0 || $lngFloat !== 0.0) ? (string) $lngFloat : '',
             'sChurchWebSite'   => SystemConfig::getValue('sChurchWebSite'),
-            'sDefaultCity'     => SystemConfig::getValue('sDefaultCity'),
-            'sDefaultState'    => SystemConfig::getValue('sDefaultState'),
-            'sDefaultZip'      => SystemConfig::getValue('sDefaultZip'),
-            'sDefaultCountry'  => SystemConfig::getValue('sDefaultCountry'),
         ];
 
         $pageArgs = [
@@ -605,10 +599,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 'iChurchLatitude'  => $rawLatInput !== '' ? $rawLatInput : (string) (float) SystemConfig::getValue('iChurchLatitude'),
                 'iChurchLongitude' => $rawLngInput !== '' ? $rawLngInput : (string) (float) SystemConfig::getValue('iChurchLongitude'),
                 'sChurchWebSite'   => $body['sChurchWebSite'] ?? '',
-                'sDefaultCity'     => $body['sDefaultCity'] ?? '',
-                'sDefaultState'    => $body['sDefaultState'] ?? '',
-                'sDefaultZip'      => $body['sDefaultZip'] ?? '',
-                'sDefaultCountry'  => $body['sDefaultCountry'] ?? '',
             ];
 
             $pageArgs = [
@@ -679,10 +669,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         foreach ($socialNetworks as $network) {
             SystemConfig::setValue($network['config'], $network['url']);
         }
-        SystemConfig::setValue('sDefaultCity', $body['sDefaultCity'] ?? '');
-        SystemConfig::setValue('sDefaultState', $body['sDefaultState'] ?? '');
-        SystemConfig::setValue('sDefaultZip', $body['sDefaultZip'] ?? '');
-        SystemConfig::setValue('sDefaultCountry', $body['sDefaultCountry'] ?? '');
 
         // Flash success via the system-wide notify. If geocoding silently
         // failed (Nominatim returned no result for a non-empty address) we
@@ -713,10 +699,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sChurchYouTube'   => 'text',
         'sChurchFacebook'  => 'text',
         'sChurchInstagram' => 'text',
-        'sDefaultCity'    => 'text',
-        'sDefaultState'   => 'text',
-        'sDefaultZip'     => 'text',
-        'sDefaultCountry' => 'text',
     ]));
 
     // ── Localization & Formats ───────────────────────────────────────────────
