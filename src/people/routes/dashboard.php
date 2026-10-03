@@ -51,6 +51,7 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'familyRoleStats'    => $familyRoleStats,
         'isAdmin'            => $isAdmin,
         'canEmail'           => $currentUser->isEmailEnabled(),
+        'canLetters'         => $currentUser->isMenuOptionsEnabled(),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -14,239 +15,82 @@ if ($iFYMonth === 1) {
 } else {
     $currentMonth = (int) date('n');
     if ($currentMonth >= $iFYMonth) {
-        $fyLabel = $currentYear . '/' . substr($currentYear + 1, 2, 2);
+        $fyLabel = $currentYear . '/' . substr((string) ($currentYear + 1), 2, 2);
     } else {
-        $fyLabel = ($currentYear - 1) . '/' . substr($currentYear, 2, 2);
+        $fyLabel = ($currentYear - 1) . '/' . substr((string) $currentYear, 2, 2);
     }
 }
 
+$monthNames = [
+    1 => gettext('January'), 2 => gettext('February'), 3 => gettext('March'),
+    4 => gettext('April'), 5 => gettext('May'), 6 => gettext('June'),
+    7 => gettext('July'), 8 => gettext('August'), 9 => gettext('September'),
+    10 => gettext('October'), 11 => gettext('November'), 12 => gettext('December'),
+];
+$fyMonthName = $monthNames[$iFYMonth] ?? '';
+
 ?>
 
-<div class="container-fluid">
-    <div class="row">
-        <!-- Tax & Giving Reports -->
-        <div class="col-lg-6 mb-4">
-            <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-status-top bg-success"></div>
-                <div class="card-header py-3">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-receipt"></i> <?= gettext('Tax & Giving Reports') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <p class="text-body-secondary small mb-3">
-                        <?= gettext('Generate annual giving statements for donors and identify giving patterns.') ?>
-                    </p>
-                    
-                    <div class="list-group list-group-flush">
-                        <!-- Giving Report (Tax Statements) -->
-                        <a href="<?= SystemURLs::getRootPath() ?>/FinancialReports.php?ReportType=Giving%20Report" class="list-group-item list-group-item-action finance-list-group-item py-3">
-                            <div class="d-flex w-100 justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">
-                                        <i class="fa-solid fa-file-invoice text-success me-2"></i>
-                                        <?= gettext('Giving Report (Tax Statements)') ?>
-                                    </h6>
-                                    <small class="text-body-secondary"><?= gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.') ?></small>
-                                </div>
-                                <span class="badge bg-green-lt text-green">PDF</span>
-                            </div>
-                        </a>
-                        
-                        <!-- Zero Givers -->
-                        <a href="<?= SystemURLs::getRootPath() ?>/FinancialReports.php?ReportType=Zero%20Givers" class="list-group-item list-group-item-action finance-list-group-item py-3">
-                            <div class="d-flex w-100 justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">
-                                        <i class="fa-solid fa-user-slash text-warning me-2"></i>
-                                        <?= gettext('Zero Givers') ?>
-                                    </h6>
-                                    <small class="text-body-secondary"><?= gettext('Identify members who have not made any donations within a date range.') ?></small>
-                                </div>
-                                <span class="badge bg-warning text-dark rounded-pill">PDF</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pledge Reports -->
-        <div class="col-lg-6 mb-4">
-            <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-status-top bg-info"></div>
-                <div class="card-header py-3">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-hand-holding-dollar"></i> <?= gettext('Pledge Reports') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <p class="text-body-secondary small mb-3">
-                        <?= gettext('Track pledges and payment progress for campaigns and fiscal year budgeting.') ?>
-                    </p>
-                    
-                    <div class="list-group list-group-flush">
-                        <!-- Pledge Summary (now interactive DataTable dashboard) -->
-                        <a href="<?= SystemURLs::getRootPath() ?>/finance/pledge/dashboard" class="list-group-item list-group-item-action finance-list-group-item py-3">
-                            <div class="d-flex w-100 justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">
-                                        <i class="fa-solid fa-chart-bar text-info me-2"></i>
-                                        <?= gettext('Pledge Summary') ?>
-                                    </h6>
-                                    <small class="text-body-secondary"><?= gettext('Interactive pledges-vs-payments summary by fund with sort, search, and export.') ?></small>
-                                </div>
-                                <span class="badge bg-info rounded-pill">DataTable</span>
-                            </div>
-                        </a>
-                        
-                        <!-- Pledge Family Summary -->
-                        <a href="<?= SystemURLs::getRootPath() ?>/FinancialReports.php?ReportType=Pledge%20Family%20Summary" class="list-group-item list-group-item-action finance-list-group-item py-3">
-                            <div class="d-flex w-100 justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">
-                                        <i class="fa-solid fa-users text-info me-2"></i>
-                                        <?= gettext('Pledge Family Summary') ?>
-                                    </h6>
-                                    <small class="text-body-secondary"><?= gettext('Detailed breakdown of pledges and payments by family.') ?></small>
-                                </div>
-                                <span class="badge bg-info rounded-pill">PDF</span>
-                            </div>
-                        </a>
-                        
-                        <!-- Pledge Reminders -->
-                        <a href="<?= SystemURLs::getRootPath() ?>/FinancialReports.php?ReportType=Pledge%20Reminders" class="list-group-item list-group-item-action finance-list-group-item py-3">
-                            <div class="d-flex w-100 justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">
-                                        <i class="fa-solid fa-bell text-warning me-2"></i>
-                                        <?= gettext('Pledge Reminders') ?>
-                                    </h6>
-                                    <small class="text-body-secondary"><?= gettext('Generate reminder letters for families with outstanding pledges.') ?></small>
-                                </div>
-                                <span class="badge bg-warning text-dark rounded-pill">PDF</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Deposit Reports -->
-        <div class="col-lg-6 mb-4">
-            <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-status-top bg-primary"></div>
-                <div class="card-header py-3">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-cash-register"></i> <?= gettext('Deposit Reports') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <p class="text-body-secondary small mb-3">
-                        <?= gettext('Generate detailed reports for individual deposits or date ranges.') ?>
-                    </p>
-                    
-                    <div class="list-group list-group-flush">
-                        <!-- Individual Deposit Report -->
-                        <a href="<?= SystemURLs::getRootPath() ?>/FinancialReports.php?ReportType=Individual%20Deposit%20Report" class="list-group-item list-group-item-action finance-list-group-item py-3">
-                            <div class="d-flex w-100 justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">
-                                        <i class="fa-solid fa-file-invoice text-primary me-2"></i>
-                                        <?= gettext('Individual Deposit Report') ?>
-                                    </h6>
-                                    <small class="text-body-secondary"><?= gettext('Detailed breakdown of a single deposit slip.') ?></small>
-                                </div>
-                                <span class="badge bg-primary rounded-pill">PDF/CSV</span>
-                            </div>
-                        </a>
-                        
-                        <!-- Advanced Deposit Report -->
-                        <a href="<?= SystemURLs::getRootPath() ?>/FinancialReports.php?ReportType=Advanced%20Deposit%20Report" class="list-group-item list-group-item-action finance-list-group-item py-3">
-                            <div class="d-flex w-100 justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">
-                                        <i class="fa-solid fa-database text-secondary me-2"></i>
-                                        <?= gettext('Advanced Deposit Report') ?>
-                                    </h6>
-                                    <small class="text-body-secondary"><?= gettext('Customizable report with filtering by date, fund, family, and payment method.') ?></small>
-                                </div>
-                                <span class="badge bg-light text-dark">PDF/CSV</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Membership & Other Reports -->
-        <div class="col-lg-6 mb-4">
-            <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-header bg-dark text-white py-3">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-clipboard-list"></i> <?= gettext('Membership Reports') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <p class="text-body-secondary small mb-3">
-                        <?= gettext('Reports related to member voting eligibility and organization governance.') ?>
-                    </p>
-                    
-                    <div class="list-group list-group-flush">
-                        <!-- Voting Members -->
-                        <a href="<?= SystemURLs::getRootPath() ?>/FinancialReports.php?ReportType=Voting%20Members" class="list-group-item list-group-item-action finance-list-group-item py-3">
-                            <div class="d-flex w-100 justify-content-between align-items-center">
-                                <div>
-                                    <h6 class="mb-1">
-                                        <i class="fa-solid fa-square-poll-vertical text-dark me-2"></i>
-                                        <?= gettext('Voting Members') ?>
-                                    </h6>
-                                    <small class="text-body-secondary"><?= gettext('List members eligible to vote based on giving history and membership criteria.') ?></small>
-                                </div>
-                                <span class="badge bg-dark rounded-pill">PDF</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="card mb-3">
+    <div class="card-body py-3">
+        <i class="fa-solid fa-calendar-days me-1"></i>
+        <?= gettext('Fiscal Year') ?>: <strong><?= InputUtils::escapeHTML($fyLabel) ?></strong>
+        <span class="text-secondary ms-2"><?= InputUtils::escapeHTML(sprintf(gettext('Your fiscal year starts in %s.'), $fyMonthName)) ?></span>
     </div>
+</div>
 
-    <!-- Help Section -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card finance-card shadow-sm border-0">
-                <div class="card-header bg-light py-2">
-                    <h5 class="mb-0 text-body-secondary">
-                        <i class="fa-solid fa-circle-info"></i> <?= gettext('Report Tips') ?>
-                    </h5>
+<div class="card" id="financeReports">
+    <div class="list-group list-group-flush">
+        <?php
+        $sections = [
+            [
+                'title' => gettext('Tax & Giving Reports'),
+                'reports' => [
+                    ['href' => '/FinancialReports.php?ReportType=Giving%20Report', 'title' => gettext('Giving Report (Tax Statements)'), 'description' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.')],
+                    ['href' => '/FinancialReports.php?ReportType=Zero%20Givers', 'title' => gettext('Zero Givers'), 'description' => gettext('Identify members who have not made any donations within a date range.')],
+                ],
+            ],
+            [
+                'title' => gettext('Pledge Reports'),
+                'reports' => [
+                    ['href' => '/finance/pledge/dashboard', 'title' => gettext('Pledge Summary'), 'description' => gettext('Interactive pledges-vs-payments summary by fund with sort, search, and export.')],
+                    ['href' => '/FinancialReports.php?ReportType=Pledge%20Family%20Summary', 'title' => gettext('Pledge Family Summary'), 'description' => gettext('Detailed breakdown of pledges and payments by family.')],
+                    ['href' => '/FinancialReports.php?ReportType=Pledge%20Reminders', 'title' => gettext('Pledge Reminders'), 'description' => gettext('Generate reminder letters for families with outstanding pledges.')],
+                ],
+            ],
+            [
+                'title' => gettext('Deposit Reports'),
+                'reports' => [
+                    ['href' => '/FinancialReports.php?ReportType=Individual%20Deposit%20Report', 'title' => gettext('Individual Deposit Report'), 'description' => gettext('Detailed breakdown of a single deposit slip.')],
+                    ['href' => '/FinancialReports.php?ReportType=Advanced%20Deposit%20Report', 'title' => gettext('Advanced Deposit Report'), 'description' => gettext('Customizable report with filtering by date, fund, family, and payment method.')],
+                ],
+            ],
+            [
+                'title' => gettext('Membership Reports'),
+                'reports' => [
+                    ['href' => '/FinancialReports.php?ReportType=Voting%20Members', 'title' => gettext('Voting Members'), 'description' => gettext('List members eligible to vote based on giving history and membership criteria.')],
+                ],
+            ],
+        ];
+        foreach ($sections as $section) :
+            ?>
+        <div class="list-group-item bg-light fw-bold"><?= InputUtils::escapeHTML($section['title']) ?></div>
+            <?php foreach ($section['reports'] as $report) : ?>
+        <div class="list-group-item">
+            <div class="row align-items-center">
+                <div class="col">
+                    <a href="<?= $sRootPath . $report['href'] ?>" class="fw-bold text-body"><?= InputUtils::escapeHTML($report['title']) ?></a>
+                    <div class="text-secondary"><?= InputUtils::escapeHTML($report['description']) ?></div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h6><i class="fa-solid fa-calendar-check text-primary"></i> <?= gettext('Fiscal Year') ?></h6>
-                            <p class="small text-body-secondary">
-                                <?= gettext('Your fiscal year starts in month') ?> <strong><?= $iFYMonth ?></strong>.
-                                <?= gettext('Current fiscal year') ?>: <strong><?= $fyLabel ?></strong>.
-                                <?= gettext('Change this in System Settings.') ?>
-                            </p>
-                        </div>
-                        <div class="col-md-4">
-                            <h6><i class="fa-solid fa-download text-success"></i> <?= gettext('Export Options') ?></h6>
-                            <p class="small text-body-secondary">
-                                <?= gettext('Most reports can be exported as PDF for printing or CSV for spreadsheet analysis.') ?>
-                            </p>
-                        </div>
-                        <div class="col-md-4">
-                            <h6><i class="fa-solid fa-filter text-info"></i> <?= gettext('Filtering') ?></h6>
-                            <p class="small text-body-secondary">
-                                <?= gettext('Use classification and family filters to generate reports for specific groups of donors.') ?>
-                            </p>
-                        </div>
-                    </div>
+                <div class="col-auto">
+                    <a href="<?= $sRootPath . $report['href'] ?>" class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-play me-1"></i><?= gettext('Run') ?>
+                    </a>
                 </div>
             </div>
         </div>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
     </div>
 </div>
 

@@ -51,13 +51,12 @@ describe("Finance Reports Index", () => {
         cy.contains("Voting Members");
     });
 
-    it("should display Report Tips section", () => {
+    it("should show the current fiscal year above the report list", () => {
         cy.visit("/finance/reports");
 
-        cy.contains("Report Tips");
-        cy.contains("Fiscal Year");
-        cy.contains("Export Options");
-        cy.contains("Filtering");
+        cy.contains("Fiscal Year").should("be.visible");
+        cy.contains("Your fiscal year starts in").should("be.visible");
+        cy.contains("Report Tips").should("not.exist");
     });
 
     it("should navigate to Giving Report from link", () => {
@@ -80,7 +79,7 @@ describe("Finance Reports Index", () => {
     it("should navigate to Pledge Summary from link", () => {
         cy.visit("/finance/reports");
 
-        cy.contains("h6", "Pledge Summary").click();
+        cy.contains("a", "Pledge Summary").click();
         cy.url().should("include", "/finance/pledge/dashboard");
     });
 

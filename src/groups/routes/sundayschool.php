@@ -281,9 +281,8 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'sPageTitle'         => gettext('Sunday School Reports'),
             'sPageSubtitle'      => gettext('Generate class lists, attendance sheets, and photo books'),
             'aBreadcrumbs'       => PageHeader::breadcrumbs([
-                [gettext('Groups'), '/groups/dashboard'],
-                [gettext('Sunday School'), '/groups/sundayschool/dashboard'],
-                [gettext('Reports')],
+                [gettext('Group Reports'), '/groups/reports'],
+                [gettext('Sunday School Reports')],
             ]),
             'groups'             => $groups,
             'iFYID'              => $iFYID,
