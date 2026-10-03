@@ -38,6 +38,13 @@ class ReportCatalog
                 'url'         => 'people/reports',
                 'icon'        => 'fa-table-list',
             ]],
+            [$user->isManageGroupsEnabled(), [
+                'module'      => gettext('Groups'),
+                'title'       => gettext('Group Reports'),
+                'description' => gettext('Group membership lists and Sunday School class reports'),
+                'url'         => 'groups/reports',
+                'icon'        => 'fa-users',
+            ]],
             [$user->isFinanceEnabled(), [
                 'module'      => gettext('Finance'),
                 'title'       => gettext('Financial Reports'),

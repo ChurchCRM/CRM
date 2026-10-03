@@ -15,7 +15,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $sPageTitle = gettext('Letters and Mailing Labels');
 $sPageSubtitle = gettext('Generate mailing labels and form letters');
 $aBreadcrumbs = PageHeader::breadcrumbs([
-
+    [gettext('People Reports'), '/people/reports'],
     [gettext('Letters and Labels')],
 ]);
 require_once __DIR__ . '/Include/Header.php';

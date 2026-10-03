@@ -8,6 +8,7 @@ describe("Reports menu (#10259)", () => {
             cy.visit("/v2/dashboard");
             cy.get("body").should("not.contain", "Fatal error");
             cy.get('a[href$="/people/reports"]').should("contain", "People Reports");
+            cy.get('a[href$="/groups/reports"]').should("contain", "Group Reports");
             cy.get('a[href$="/finance/reports"]').should("contain", "Financial Reports");
             cy.get("a[href$='/v2/reports']").should("not.exist");
             cy.contains("a", "Fundraiser Reports").should("not.exist");

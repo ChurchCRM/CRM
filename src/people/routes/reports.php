@@ -32,6 +32,18 @@ function getPeopleReportsIndex(Request $request, Response $response, array $args
             [gettext('People Reports')],
         ]),
         'reports' => (new PeopleReportService())->getReports(),
+        'links' => [
+            [
+                'href' => '/DirectoryReports.php',
+                'title' => gettext('People Directory'),
+                'description' => gettext('Printable directory of all people, grouped by family'),
+            ],
+            [
+                'href' => '/LettersAndLabels.php',
+                'title' => gettext('Letters & Mailing Labels'),
+                'description' => gettext('Generate letters and mailing labels'),
+            ],
+        ],
     ]);
 }
 
