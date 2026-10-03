@@ -145,7 +145,15 @@ describe("Finance Deposits", () => {
         cy.get("#deleteSelectedRows").should("be.disabled");
         cy.get("#paymentsTable tbody .row-select").first().check();
         cy.get("#deleteSelectedRows").should("not.be.disabled");
+        cy.get("#paymentsTable tbody .row-select").first().uncheck();
+        cy.get("#deleteSelectedRows").should("be.disabled");
+
+        // Indeterminate select-all is not checked, so uncheck() would not clear rows.
+        cy.get("#selectAllPayments").check();
+        cy.get("#paymentsTable tbody .row-select:not(:checked)").should("have.length", 0);
+        cy.get("#deleteSelectedRows").should("not.be.disabled");
         cy.get("#selectAllPayments").uncheck();
+        cy.get("#paymentsTable tbody .row-select:checked").should("have.length", 0);
         cy.get("#deleteSelectedRows").should("be.disabled");
     });
 
