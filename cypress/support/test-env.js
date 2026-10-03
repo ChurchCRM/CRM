@@ -57,21 +57,19 @@ Cypress.Commands.add("freshAdminFormLogin", (options = {}) => {
             cy.clearCookies();
         }
         cy.visit(options.path || "/session/begin");
-        const user = cy.get(
-            "input[name=User]",
-            options.timeout ? { timeout: options.timeout } : undefined,
-        );
-        const pass = cy.get("input[name=Password]");
-        if (options.visible) {
-            user.should("be.visible");
-            pass.should("be.visible");
-        }
-        if (options.enabled) {
-            user.should("not.be.disabled");
-            pass.should("not.be.disabled");
-        }
-        user.type(username);
-        pass.type(`${password}{enter}`, { log: false });
+        const userOpts = options.timeout ? { timeout: options.timeout } : undefined;
+        const field = (selector, opts) => {
+            let input = cy.get(selector, opts);
+            if (options.visible) {
+                input = input.should("be.visible");
+            }
+            if (options.enabled) {
+                input = input.should("not.be.disabled");
+            }
+            return input;
+        };
+        field("input[name=User]", userOpts).type(username);
+        field("input[name=Password]").type(`${password}{enter}`, { log: false });
         cy.url().should("not.include", "/session/begin");
         if (options.sessionCookie) {
             cy.getCookies().should("satisfy", (cookies) =>
