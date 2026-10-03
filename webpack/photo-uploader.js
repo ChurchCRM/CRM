@@ -131,9 +131,18 @@ export function createPhotoUploader(config) {
   const allowWebcam = config.webcam !== false;
   const dashboardTitle = config.title || "Upload Photo";
 
+  let heicConversions = 0;
+
   const uppy = new Uppy({
     id: "photo-uploader",
     autoProceed: false,
+    onBeforeUpload: (files) => {
+      if (heicConversions > 0) {
+        showPersistentError("This HEIC photo is still being converted. Try again in a moment.");
+        return false;
+      }
+      return files;
+    },
     restrictions: {
       maxNumberOfFiles: 1,
       maxFileSize: MAX_SOURCE_FILE_BYTES,
@@ -248,11 +257,23 @@ export function createPhotoUploader(config) {
       return;
     }
     clearPersistentError();
+    heicConversions++;
+    let jpeg;
     try {
       const { default: heic2any } = await import("heic2any");
       const converted = await heic2any({ blob: file.data, toType: "image/jpeg", quality: 0.9 });
-      const jpeg = Array.isArray(converted) ? converted[0] : converted;
+      jpeg = Array.isArray(converted) ? converted[0] : converted;
+    } catch (error) {
+      console.error("HEIC conversion failed", error);
+      showPersistentError("This HEIC photo could not be converted. Export it as a JPEG and try again.");
+    } finally {
+      heicConversions--;
       uppy.removeFile(file.id);
+    }
+    if (!jpeg) {
+      return;
+    }
+    try {
       uppy.addFile({
         name: file.name.replace(HEIC_PATTERN, ".jpg"),
         type: "image/jpeg",
@@ -260,9 +281,7 @@ export function createPhotoUploader(config) {
         source: file.source,
       });
     } catch (error) {
-      console.error("HEIC conversion failed", error);
-      uppy.removeFile(file.id);
-      showPersistentError("This HEIC photo could not be converted. Export it as a JPEG and try again.");
+      console.error("Converted HEIC photo was rejected", error);
     }
   });
 
