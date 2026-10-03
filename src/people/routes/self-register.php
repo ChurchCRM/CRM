@@ -14,12 +14,14 @@ $app->get('/self-register', function (Request $request, Response $response): Res
 
     $familyCount = FamilyQuery::create()
         ->filterByEnteredBy(Person::SELF_REGISTER)
+        ->filterByNeedsReview(true)
         ->count();
     // Standalone individuals only (no family) — family members are already
     // counted as part of familyCount above.
     $individualCount = PersonQuery::create()
         ->filterByEnteredBy(Person::SELF_REGISTER)
         ->filterByFamId(0)
+        ->filterByNeedsReview(true)
         ->count();
 
     $pageArgs = [

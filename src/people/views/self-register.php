@@ -78,7 +78,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
 
     function initializeSelfRegister() {
-        $.when(
+        return $.when(
             $.get(window.CRM.root + "/api/families/self-register"),
             $.get(window.CRM.root + "/api/persons/self-register")
         ).done(function (familiesResp, peopleResp) {
@@ -178,8 +178,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         });
     }
 
+    var approvalInFlight = false;
+
     // Approve a self-registered family or family-less person, clearing its needs-review flag
     $(document).on('click', '.approve-review', function () {
+        if (approvalInFlight) {
+            return;
+        }
+        approvalInFlight = true;
         var entityType = $(this).data('entity-type');
         var entityId = $(this).data('entity-id');
         var apiPath = (entityType === 'family' ? 'family/' : 'person/') + entityId + '/approve-review';
@@ -190,8 +196,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }).done(function () {
             window.CRM.notify(i18next.t('Approved'), { type: 'success', delay: 3000 });
             $('#selfRegistrations').DataTable().destroy();
-            initializeSelfRegister();
+            initializeSelfRegister().always(function () {
+                approvalInFlight = false;
+            });
         }).fail(function (xhr) {
+            approvalInFlight = false;
             var msg = xhr.responseJSON && xhr.responseJSON.message
                 ? xhr.responseJSON.message
                 : i18next.t('An error occurred');

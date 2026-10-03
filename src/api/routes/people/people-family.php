@@ -8,7 +8,9 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FamilyService;
@@ -21,7 +23,6 @@ use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
-use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
@@ -446,14 +447,21 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         try {
             $family->setNeedsReview(false);
             $family->save($con);
-            foreach ($family->getPeople() as $person) {
-                $person->setNeedsReview(false);
-                $person->save($con);
-            }
+            PersonQuery::create()
+                ->filterByFamId($family->getId())
+                ->update(['NeedsReview' => false], $con);
             $con->commit();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             $con->rollBack();
-            throw $e;
+
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Could not approve this family'),
+                [],
+                500,
+                $e,
+                $request
+            );
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);
