@@ -156,6 +156,24 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
     });
 
     /**
+     * @OA\Get(
+     *     path="/persons/self-register/count",
+     *     summary="Count self-registered families and family-less people awaiting review",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Pending count",
+     *         @OA\JsonContent(@OA\Property(property="count", type="integer"))
+     *     )
+     * )
+     */
+    $group->get('/self-register/count', function (Request $request, Response $response, array $args): Response {
+        $count = FamilyQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByNeedsReview(true)->count()
+            + PersonQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByFamId(0)->filterByNeedsReview(true)->count();
+
+        return SlimUtils::renderJSON($response, ['count' => $count]);
+    });
+
+    /**
      * @OA\Post(
      *     path="/persons/self-register/approve",
      *     summary="Approve several self-registered families and family-less people at once",

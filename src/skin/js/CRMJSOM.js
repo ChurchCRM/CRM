@@ -565,6 +565,31 @@ window.CRM.dashboard = {
   },
 
   /**
+   * Show the number of self-registrations awaiting review on the People menu badge
+   * and on the home dashboard alert.
+   */
+  loadSelfRegisterPendingCount: () => {
+    const badge = document.getElementById("selfRegisterPending");
+    const alert = document.getElementById("selfRegisterDashboardAlert");
+    if (!badge && !alert) return;
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "persons/self-register/count",
+      suppressErrorDialog: true,
+    }).done((data) => {
+      if (badge) {
+        badge.innerText = data.count;
+        badge.classList.toggle("d-none", !data.count);
+      }
+      if (alert) {
+        document.getElementById("selfRegisterDashboardCount").innerText = data.count;
+        alert.classList.toggle("d-none", !data.count);
+        alert.classList.toggle("d-flex", Boolean(data.count));
+      }
+    });
+  },
+
+  /**
    * Load active fundraiser count once on page load for menu badge.
    * Replaces session-cached count, ensuring always fresh data.
    */

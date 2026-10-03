@@ -21,7 +21,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <div class="row mb-3">
-    <div class="col-sm-6 col-lg-4">
+    <div class="col-12 col-md-4">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -38,7 +38,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-4">
+    <div class="col-12 col-md-4">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -55,7 +55,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-4">
+    <div class="col-12 col-md-4">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -100,18 +100,28 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    function renderSelfRegisterContact(email, phone) {
-        if (!email && !phone) {
+    function uniqueValues(list) {
+        return list.filter(function (v, i) { return v && list.indexOf(v) === i; });
+    }
+
+    function renderSelfRegisterContact(emails, phones) {
+        if (!emails.length && !phones.length) {
             return '<span class="badge bg-warning-lt text-warning">' + i18next.t('No contact info') + '</span>';
         }
-        var parts = [];
-        if (email) {
-            parts.push('<div>' + window.CRM.escapeHtml(email) + '</div>');
+        return emails.map(function (e) { return '<div>' + window.CRM.escapeHtml(e) + '</div>'; }).join('')
+            + phones.map(function (p) { return '<div class="text-body-secondary">' + window.CRM.escapeHtml(p) + '</div>'; }).join('');
+    }
+
+    function formatAddress(r) {
+        return [r.Address1, [r.City, [r.State, r.Zip].filter(Boolean).join(' ')].filter(Boolean).join(', ')].filter(Boolean).join(', ');
+    }
+
+    function daysAgo(date) {
+        var n = moment().startOf('day').diff(moment(date).startOf('day'), 'days');
+        if (n <= 0) {
+            return i18next.t('Today');
         }
-        if (phone) {
-            parts.push('<div class="text-body-secondary">' + window.CRM.escapeHtml(phone) + '</div>');
-        }
-        return parts.join('');
+        return n === 1 ? i18next.t('Yesterday') : n + ' ' + i18next.t('days ago');
     }
 
     var canApprove = !!(window.CRM.permissions && window.CRM.permissions.editRecords);
@@ -148,9 +158,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 return {
                     type: 'family',
                     id: f.Id,
-                    name: f.FamilyString,
-                    email: f.Email,
-                    phone: f.HomePhone,
+                    name: f.Name,
+                    address: formatAddress(f),
+                    members: f.Members || [],
+                    emails: uniqueValues([f.Email].concat(f.MemberEmails || [])),
+                    phones: uniqueValues([f.HomePhone].concat(f.MemberPhones || [])),
                     dateEntered: f.DateEntered,
                     needsReview: !!f.NeedsReview
                 };
@@ -160,8 +172,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     type: 'individual',
                     id: p.Id,
                     name: p.FullName,
-                    email: p.Email,
-                    phone: p.HomePhone || p.CellPhone,
+                    address: formatAddress(p),
+                    emails: uniqueValues([p.Email, p.WorkEmail]),
+                    phones: uniqueValues([p.CellPhone, p.HomePhone, p.WorkPhone]),
                     dateEntered: p.DateEntered,
                     needsReview: !!p.NeedsReview
                 };
@@ -177,7 +190,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         orderable: false,
                         searchable: false,
                         visible: canApprove,
-                        className: 'w-1 no-export',
+                        className: 'w-1 no-export text-nowrap',
+                        responsivePriority: 1,
                         render: function (data, type, row) {
                             return '<input type="checkbox" class="form-check-input row-select" data-entity-type="' + row.type + '" data-entity-id="' + row.id + '">';
                         }
@@ -185,7 +199,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     {
                         title: i18next.t('Type'),
                         data: 'type',
-                        width: '12%',
+                        responsivePriority: 5,
+                        width: '10%',
                         render: function (data) {
                             return data === 'family'
                                 ? '<span class="badge bg-secondary-lt text-secondary">' + i18next.t('Family') + '</span>'
@@ -195,33 +210,46 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     {
                         title: i18next.t('Name'),
                         data: 'name',
-                        width: '33%',
+                        responsivePriority: 1,
+                        width: '36%',
                         render: function (data, type, row) {
+                            var members = row.members || [];
                             if (type !== 'display') {
-                                return data;
+                                return data + ' ' + members.join(' ') + ' ' + (row.address || '');
                             }
                             var url = row.type === 'family'
                                 ? window.CRM.root + '/people/family/' + encodeURIComponent(row.id)
                                 : window.CRM.root + '/people/view/' + encodeURIComponent(row.id);
-                            return '<a href="' + url + '">' + window.CRM.escapeHtml(data) + '</a>';
+                            var html = '<a href="' + url + '">' + window.CRM.escapeHtml(data) + '</a>';
+                            if (members.length) {
+                                html += ' <span class="text-body-secondary small">· ' + window.CRM.escapeHtml(members.join(', ')) + '</span>';
+                            }
+                            if (row.address) {
+                                html += '<div class="text-body-secondary small"><i class="fa-solid fa-location-dot me-1"></i>' + window.CRM.escapeHtml(row.address) + '</div>';
+                            }
+                            return html;
                         }
                     },
                     {
                         title: i18next.t('Contact'),
                         data: null,
+                        responsivePriority: 3,
                         orderable: false,
                         searchable: false,
-                        width: '25%',
+                        width: '28%',
                         render: function (data, type, row) {
-                            return renderSelfRegisterContact(row.email, row.phone);
+                            return renderSelfRegisterContact(row.emails, row.phones);
                         }
                     },
                     {
                         title: i18next.t('Registered'),
                         data: 'dateEntered',
+                        responsivePriority: 4,
                         width: '15%',
                         render: function (data, type) {
-                            return type === 'display' ? moment(data).format("ll") : data;
+                            return type === 'display'
+                                ? moment(data).format("ll") + '<div class="text-body-secondary small">' + window.CRM.escapeHtml(daysAgo(data)) + '</div>'
+                                : data;
                         }
                     },
                     {
@@ -229,8 +257,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         data: null,
                         orderable: false,
                         searchable: false,
-                        className: 'text-end w-1 no-export',
-                        width: '15%',
+                        className: 'text-end w-1 no-export text-nowrap',
+                        responsivePriority: 2,
                         render: function (data, type, row) {
                             return row.type === 'family'
                                 ? window.CRM.renderFamilyActionMenu(row.id, row.name, { needsReview: row.needsReview })
