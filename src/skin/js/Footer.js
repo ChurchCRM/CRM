@@ -196,7 +196,7 @@ function initializeApp() {
   // Load open deposit count once on page load (replaces session-cached badge)
   window.CRM.dashboard?.loadOpenDepositCount();
 
-  window.CRM.dashboard.loadSelfRegisterPendingCount();
+  window.CRM.dashboard?.loadSelfRegisterPendingCount();
 
   // Load fundraiser count once on page load (replaces session-cached badge)
   window.CRM.dashboard?.loadFundraiserCount();

@@ -220,7 +220,7 @@ function refreshSelfRegisterCounts() {
     $("#selfRegPending").text(counts.count);
     $("#selfRegApproved").text(counts.approved);
     $("#selfRegTotal").text(counts.total);
-    window.CRM.dashboard.loadSelfRegisterPendingCount();
+    window.CRM.dashboard?.loadSelfRegisterPendingCount();
   });
 }
 
