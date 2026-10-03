@@ -1,22 +1,3 @@
 {
-  "N/A": "",
-  "Could not load the current settings. Reload the page to try again.": "Az aktuális beállításokat nem sikerült betölteni. Töltse újra az oldalt, és próbálja meg újra.",
-  "This setting must be a number": "Ennek a beállításnak számnak kell lennie",
-  "Child Role": "Gyermek szerepe",
-  "Directory inclusion can only be toggled for the classifications list": "A névjegyzékbe való felvétel csak az osztályozások listájánál kapcsolható át",
-  "Greeter Message 1": "Üdvözlő üzenet 1",
-  "Greeter Message 2": "Üdvözlő üzenet 2",
-  "Head of House Role": "Családfő szerepe",
-  "Hide Address Without Family": "Család nélküli címek elrejtése",
-  "Hide Friend Date": "Barátság dátumának elrejtése",
-  "Hide Newsletter Subscriptions": "Hírlevél-feliratkozások elrejtése",
-  "Hide Wedding Date": "Esküvő dátumának elrejtése",
-  "In Directory": "A névjegyzékben",
-  "Include Details in Notifications": "Részletek belefoglalása az értesítésekbe",
-  "Notification Recipients": "Értesítések címzettjei",
-  "People to notify when a new family or person is added": "Értesítendő személyek új család vagy személy hozzáadásakor",
-  "Person initials style": "Személy monogramjának stílusa",
-  "Person name display style": "Személy nevének megjelenítési stílusa",
-  "Spouse Role": "Házastárs szerepe",
-  "Uppercase Zip/Postcodes": "Irányítószámok nagybetűvel"
+  "N/A": ""
 }

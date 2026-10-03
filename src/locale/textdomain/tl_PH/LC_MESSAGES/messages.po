@@ -19042,3 +19042,79 @@ msgstr "Kabuuang Babayaran"
 msgid "Uncategorized"
 msgstr "Walang Kategorya"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Hindi ma-load ang kasalukuyang mga setting. I-reload ang pahina para subukang muli."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Dapat numero ang setting na ito"
+
+#: 
+msgid "Child Role"
+msgstr "Tungkulin ng Anak"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Ang pagsama sa direktoryo ay maaari lamang i-toggle para sa listahan ng mga klasipikasyon"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Mensahe ng Pagtanggap 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Mensahe ng Pagtanggap 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Tungkulin ng Puno ng Sambahayan"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Itago ang Address na Walang Pamilya"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Itago ang Petsa ng Pagkakaibigan"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Itago ang mga Subscription sa Newsletter"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Itago ang Petsa ng Kasal"
+
+#: 
+msgid "In Directory"
+msgstr "Nasa Direktoryo"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Isama ang mga Detalye sa mga Abiso"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Mga Tatanggap ng Abiso"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Mga taong aabisuhan kapag may idinagdag na bagong pamilya o tao"
+
+#: 
+msgid "Person initials style"
+msgstr "Istilo ng mga inisyal ng tao"
+
+#: 
+msgid "Person name display style"
+msgstr "Istilo ng pagpapakita ng pangalan ng tao"
+
+#: 
+msgid "Spouse Role"
+msgstr "Tungkulin ng Asawa"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Malalaking Titik na Zip/Postcode"
+

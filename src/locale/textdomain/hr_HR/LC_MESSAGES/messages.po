@@ -19059,3 +19059,79 @@ msgstr "Ukupno plaćeno"
 msgid "Uncategorized"
 msgstr "Bez kategorije"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Trenutačne postavke nije moguće učitati. Ponovno učitajte stranicu i pokušajte opet."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Ova postavka mora biti broj"
+
+#: 
+msgid "Child Role"
+msgstr "Uloga djeteta"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Uključivanje u imenik može se mijenjati samo za popis klasifikacija"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Poruka dobrodošlice 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Poruka dobrodošlice 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Uloga glave obitelji"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Sakrij adrese bez obitelji"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Sakrij datum prijateljstva"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Sakrij pretplate na bilten"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Sakrij datum vjenčanja"
+
+#: 
+msgid "In Directory"
+msgstr "U imeniku"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Uključi pojedinosti u obavijesti"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Primatelji obavijesti"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Osobe koje treba obavijestiti kada se doda nova obitelj ili osoba"
+
+#: 
+msgid "Person initials style"
+msgstr "Stil inicijala osobe"
+
+#: 
+msgid "Person name display style"
+msgstr "Stil prikaza imena osobe"
+
+#: 
+msgid "Spouse Role"
+msgstr "Uloga supružnika"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Poštanski brojevi velikim slovima"
+

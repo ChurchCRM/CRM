@@ -19079,3 +19079,79 @@ msgstr "סה\"כ שולם"
 msgid "Uncategorized"
 msgstr "ללא קטגוריה"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "לא ניתן לטעון את ההגדרות הנוכחיות. רענן את הדף כדי לנסות שוב."
+
+#: 
+msgid "This setting must be a number"
+msgstr "הגדרה זו חייבת להיות מספר"
+
+#: 
+msgid "Child Role"
+msgstr "תפקיד ילד"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "ניתן להחליף את ההכללה בספרייה רק עבור רשימת הסיווגים"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "הודעת קבלת פנים 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "הודעת קבלת פנים 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "תפקיד ראש משק הבית"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "הסתר כתובות ללא משפחה"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "הסתר תאריך חברות"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "הסתר מנויים לניוזלטר"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "הסתר תאריך חתונה"
+
+#: 
+msgid "In Directory"
+msgstr "בספרייה"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "כלול פרטים בהתראות"
+
+#: 
+msgid "Notification Recipients"
+msgstr "נמעני התראות"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "אנשים שיקבלו הודעה כאשר נוספת משפחה או אדם חדשים"
+
+#: 
+msgid "Person initials style"
+msgstr "סגנון ראשי התיבות של האדם"
+
+#: 
+msgid "Person name display style"
+msgstr "סגנון הצגת שם האדם"
+
+#: 
+msgid "Spouse Role"
+msgstr "תפקיד בן/בת זוג"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "מיקודים באותיות רישיות"
+

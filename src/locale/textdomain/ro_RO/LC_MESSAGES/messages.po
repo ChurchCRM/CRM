@@ -19151,3 +19151,79 @@ msgstr "Total plătit"
 msgid "Uncategorized"
 msgstr "Necategorizat"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Setările curente nu au putut fi încărcate. Reîncărcați pagina pentru a încerca din nou."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Această setare trebuie să fie un număr"
+
+#: 
+msgid "Child Role"
+msgstr "Rol de copil"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Includerea în director poate fi comutată doar pentru lista de clasificări"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Mesaj de bun venit 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Mesaj de bun venit 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Rol de cap de familie"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Ascunde adresele fără familie"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Ascunde data prieteniei"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Ascunde abonamentele la buletin informativ"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Ascunde data căsătoriei"
+
+#: 
+msgid "In Directory"
+msgstr "În director"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Include detalii în notificări"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Destinatarii notificărilor"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Persoane de notificat când se adaugă o familie sau o persoană nouă"
+
+#: 
+msgid "Person initials style"
+msgstr "Stilul inițialelor persoanei"
+
+#: 
+msgid "Person name display style"
+msgstr "Stilul de afișare a numelui persoanei"
+
+#: 
+msgid "Spouse Role"
+msgstr "Rol de soț/soție"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Coduri poștale cu majuscule"
+

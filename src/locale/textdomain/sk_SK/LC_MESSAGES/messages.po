@@ -19079,3 +19079,79 @@ msgstr "Celkovo zaplatené"
 msgid "Uncategorized"
 msgstr "Bez kategórie"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Aktuálne nastavenia sa nepodarilo načítať. Znova načítajte stránku a skúste to znova."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Toto nastavenie musí byť číslo"
+
+#: 
+msgid "Child Role"
+msgstr "Rola dieťaťa"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Zahrnutie do adresára možno prepínať iba pre zoznam klasifikácií"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Uvítacia správa 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Uvítacia správa 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Rola hlavy rodiny"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Skryť adresy bez rodiny"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Skryť dátum priateľstva"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Skryť odbery newslettra"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Skryť dátum svadby"
+
+#: 
+msgid "In Directory"
+msgstr "V adresári"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Zahrnúť podrobnosti do oznámení"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Príjemcovia oznámení"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Osoby, ktoré sa majú upozorniť pri pridaní novej rodiny alebo osoby"
+
+#: 
+msgid "Person initials style"
+msgstr "Štýl iniciál osoby"
+
+#: 
+msgid "Person name display style"
+msgstr "Štýl zobrazenia mena osoby"
+
+#: 
+msgid "Spouse Role"
+msgstr "Rola manžela/manželky"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "PSČ veľkými písmenami"
+
