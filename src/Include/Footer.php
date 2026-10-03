@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
@@ -74,59 +73,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
   </div>
 
 </div><!-- /.page -->
-
-<!-- InputMask -->
-<script src="<?= SystemURLs::assetVersioned('/skin/external/inputmask/jquery.inputmask.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/inputmask/inputmask.binding.js') ?>"></script>
-
-<script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
-
-<!-- DataTables: Core library and Bootstrap 5 integration -->
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.bootstrap5.min.js') ?>"></script>
-<!-- DataTables: Extensions -->
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.buttons.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/buttons.bootstrap5.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/buttons.html5.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/buttons.print.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.responsive.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/responsive.bootstrap5.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.select.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/select.bootstrap5.min.js') ?>"></script>
-
-<!-- temporal-polyfill and FullCalendar v7 are now bundled in event-calendars.min.js via webpack.
-     They are no longer loaded as global scripts here. -->
-<script src="<?= SystemURLs::assetVersioned('/skin/external/bootbox/bootbox.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/i18next/i18next.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/just-validate/just-validate.production.min.js') ?>"></script>
-
-<script src="<?= SystemURLs::assetVersioned('/skin/js/Footer.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/locale-loader.min.js') ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    // Load locale files dynamically
-    (function() {
-        const localeConfig = <?= InputUtils::jsonEncodeForScript(Bootstrapper::getCurrentLocale()->getLocaleConfigArray()) ?>;
-        if (window.CRM && window.CRM.loadLocaleFiles) {
-            window.CRM.loadLocaleFiles(localeConfig);
-        }
-    })();
-</script>
-
-<!-- Fullscreen toggle -->
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    document.getElementById('fullscreenToggle')?.addEventListener('click', function (e) {
-        e.preventDefault();
-        var icon = this.querySelector('i');
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen();
-            if (icon) { icon.className = 'fa-solid fa-compress'; }
-        } else {
-            document.exitFullscreen();
-            if (icon) { icon.className = 'fa-solid fa-maximize'; }
-        }
-    });
-</script>
 
 <?php if (isset($sGlobalMessage) && !empty($sGlobalMessage)) { ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">

@@ -633,8 +633,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             are all needed regardless of whether the person has a family or address
             (e.g. the admin's own "Church Admin" placeholder person has neither).
         -->
-        <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
-        <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+
         <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
 
         <!-- Tabbed Content -->

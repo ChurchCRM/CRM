@@ -32,6 +32,9 @@ import "daterangepicker/daterangepicker.css";
 // bs-stepper CSS
 import "bs-stepper/dist/css/bs-stepper.min.css";
 
+// Leaflet CSS. Map pages load the JS from their own bundles.
+import "leaflet/dist/leaflet.css";
+
 // Import Quill editor CSS
 import "quill/dist/quill.snow.css";
 

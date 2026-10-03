@@ -175,7 +175,7 @@ function initializeApp() {
     });
   })();
 
-  window.CRM.system.runTimerJobs();
+  window.CRM.system?.runTimerJobs();
 
   $(".date-picker").datepicker({
     format: window.CRM.datePickerformat,
@@ -191,15 +191,15 @@ function initializeApp() {
   initializeFormValidation();
 
   // Load event counters once on page load (no polling needed - values only change at midnight)
-  window.CRM.dashboard.loadEventCounters();
+  window.CRM.dashboard?.loadEventCounters();
 
   // Load open deposit count once on page load (replaces session-cached badge)
-  window.CRM.dashboard.loadOpenDepositCount();
+  window.CRM.dashboard?.loadOpenDepositCount();
 
   window.CRM.dashboard.loadSelfRegisterPendingCount();
 
   // Load fundraiser count once on page load (replaces session-cached badge)
-  window.CRM.dashboard.loadFundraiserCount();
+  window.CRM.dashboard?.loadFundraiserCount();
 
   // Initialize notification dismissal handlers
   document.querySelectorAll(".js-dismiss-notification").forEach((btn) => {
@@ -223,6 +223,7 @@ function initializeApp() {
 
 // Helper function to run initialization code after locales are loaded
 // Usage: window.CRM.onLocalesReady(function() { /* your init code */ });
+window.CRM = window.CRM || {};
 window.CRM.onLocalesReady = (callback) => {
   if (window.CRM.localesLoaded) {
     callback();
