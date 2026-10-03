@@ -10354,10 +10354,6 @@ msgstr "अपडेट उपलब्ध"
 msgid "User must have Notes permission"
 msgstr "उपयोगकर्ता के पास नोट्स अनुमति होनी चाहिए"
 
-#: 
-msgid "Address Defaults"
-msgstr "पता डिफ़ॉल्ट"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10417,10 +10413,6 @@ msgstr "Vonage कॉन्फ़िगर करें"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "न्यूजलेटर और अभियानों के लिए ईमेल सूचियों को सिंक करने के लिए Mailchimp से कनेक्ट करें।"
-
-#: 
-msgid "Copy from church address"
-msgstr "चर्च के पते से कॉपी करें"
 
 #: 
 msgid "Copy to clipboard"
@@ -10747,10 +10739,6 @@ msgstr "सदस्यता वर्षगांठि का महीना
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "संपत्ति जिसके लिए आप व्यक्ति रिकॉर्ड लौटाना चाहते हैं।"
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "नए परिवार बनाते समय ये मान पूर्व-भरे होते हैं। मैनुअल प्रविष्टि की आवश्यकता के लिए खाली छोड़ दें।"
 
 #: 
 msgid "Unit used to measure distance."
@@ -18276,10 +18264,6 @@ msgstr "इस बीच पेज-लोड फ़ॉलबैक काम क
 #: 
 msgid "This Person is Inactive"
 msgstr "यह व्यक्ति निष्क्रिय है"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "यह OpenStreetMap का उपयोग करके उन सभी परिवारों के लिए मैप निर्देशांक ढूंढता है जिनके पास ये नहीं हैं। यह 50 के बैचों में परिवारों को संसाधित करता है, प्रति बैच लगभग एक मिनट। चलने के दौरान आप यह पेज खुला रख सकते हैं। जारी रखें?"
 
 #: 
 msgid "This person is deceased"

@@ -10390,10 +10390,6 @@ msgstr "Güncelleme Mevcut"
 msgid "User must have Notes permission"
 msgstr "Kullanıcının Not izni olmalıdır"
 
-#: 
-msgid "Address Defaults"
-msgstr "Adres Varsayılanları"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10453,10 +10449,6 @@ msgstr "Vonage Yapılandırması"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Haber bültenleri ve kampanyalar için e-posta listelerini senkronize etmek üzere Mailchimp'i bağlayın."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kilise adresinden kopyala"
 
 #: 
 msgid "Copy to clipboard"
@@ -10783,10 +10775,6 @@ msgstr "Kayıtların döndürülmesini istediğiniz üyelik yıldönümü ayı."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Kişi kayıtlarının döndürülmesini istediğiniz mülkiyet."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Bu değerler yeni aileler oluşturulurken önceden doldurulur. Manuel giriş gerektirmek için boş bırakın."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18312,10 +18300,6 @@ msgstr "Bu sırada sayfa yükleme yedek mekanizması çalışmaya devam eder. Ch
 #: 
 msgid "This Person is Inactive"
 msgstr "Bu Kişi Pasif"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Bu işlem, OpenStreetMap kullanarak konum bilgisi eksik olan her aile için harita koordinatlarını bulur. Aileleri 50'şerlik gruplar halinde işler, her grup yaklaşık bir dakika sürer. İşlem çalışırken bu sayfayı açık tutabilirsiniz. Devam edilsin mi?"
 
 #: 
 msgid "This person is deceased"

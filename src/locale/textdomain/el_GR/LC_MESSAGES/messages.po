@@ -10390,10 +10390,6 @@ msgstr "Διαθέσιμη ενημέρωση"
 msgid "User must have Notes permission"
 msgstr "Ο χρήστης πρέπει να έχει δικαίωμα σημειώσεων"
 
-#: 
-msgid "Address Defaults"
-msgstr "Προεπιλογές διευθύνσεων"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10453,10 +10449,6 @@ msgstr "Διαμορφώστε το Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Συνδέστε το Mailchimp για να συγχρονίσετε τις λίστες ηλεκτρονικής αλληλογραφίας για ενημερωτικές δελτία και καμπάνιες."
-
-#: 
-msgid "Copy from church address"
-msgstr "Αντιγραφή από διεύθυνση Εκκλησίας"
 
 #: 
 msgid "Copy to clipboard"
@@ -10783,10 +10775,6 @@ msgstr "Ο μήνας επετείου μέλους για τον οποίο θ�
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Η ιδιοκτησία για την οποία θέλετε να επιστραφούν τα αρχεία ατόμου."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Αυτές οι τιμές προσυμπληρώνονται κατά τη δημιουργία νέων οικογενειών. Αφήστε κενό για να απαιτήσετε χειροκίνητη εισαγωγή."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18312,10 +18300,6 @@ msgstr "Η εναλλακτική λύση φόρτωσης σελίδας συ�
 #: 
 msgid "This Person is Inactive"
 msgstr "Αυτό το Άτομο είναι Ανενεργό"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Αυτό βρίσκει τις συντεταγμένες χάρτη για κάθε οικογένεια που δεν τις έχει, χρησιμοποιώντας το OpenStreetMap. Επεξεργάζεται τις οικογένειες σε παρτίδες των 50, περίπου ένα λεπτό ανά παρτίδα. Μπορείτε να αφήσετε αυτή τη σελίδα ανοιχτή όσο εκτελείται. Συνέχεια;"
 
 #: 
 msgid "This person is deceased"

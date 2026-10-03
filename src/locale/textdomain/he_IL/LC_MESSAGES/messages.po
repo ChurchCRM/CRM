@@ -10388,10 +10388,6 @@ msgstr "עדכון זמין"
 msgid "User must have Notes permission"
 msgstr "למשתמש חייבת להיות הרשאת הערות"
 
-#: 
-msgid "Address Defaults"
-msgstr "ברירות מחדל של כתובת"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10451,10 +10447,6 @@ msgstr "הגדר את Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "חבר את Mailchimp כדי לסנכרן רשימות דוא\"ל לניוזלטרים קמפיינים."
-
-#: 
-msgid "Copy from church address"
-msgstr "העתק מכתובת הכנסייה"
 
 #: 
 msgid "Copy to clipboard"
@@ -10781,10 +10773,6 @@ msgstr "חודש ההתחברות שעבורו תרצה להחזיר רשומו�
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "הרכוש שעבורו תרצה להחזיר רשומות אדם."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "ערכים אלה מלאים מראש בעת יצירת משפחות חדשות. השאר ריק כדי לדרוש ערך ידני."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18310,10 +18298,6 @@ msgstr "מנגנון הגיבוי המבוסס על טעינת דף ממשיך �
 #: 
 msgid "This Person is Inactive"
 msgstr "אדם זה אינו פעיל"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "פעולה זו מאתרת קואורדינטות מפה עבור כל משפחה שחסרות לה, באמצעות OpenStreetMap. התהליך מעבד את המשפחות באצוות של 50, כדקה לאצווה. ניתן להשאיר דף זה פתוח בזמן הריצה. להמשיך?"
 
 #: 
 msgid "This person is deceased"

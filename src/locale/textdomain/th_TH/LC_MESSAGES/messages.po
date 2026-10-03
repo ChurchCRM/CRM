@@ -10358,10 +10358,6 @@ msgstr "มีการอัปเดต"
 msgid "User must have Notes permission"
 msgstr "ผู้ใช้ต้องมีสิทธิ์บันทึก"
 
-#: 
-msgid "Address Defaults"
-msgstr "ค่าเริ่มต้นที่อยู่"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10421,10 +10417,6 @@ msgstr "กำหนดค่า Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "เชื่อมต่อ Mailchimp เพื่อซิงค์รายชื่ออีเมลสำหรับจดหมายข่าวและแคมเปญ"
-
-#: 
-msgid "Copy from church address"
-msgstr "คัดลอกจากที่อยู่โบสถ์"
 
 #: 
 msgid "Copy to clipboard"
@@ -10751,10 +10743,6 @@ msgstr "เดือนวันครบรอบการเป็นสมา
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "คุณสมบัติที่คุณต้องการให้บันทึกบุคคลส่งคืน"
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "ค่าเหล่านี้ถูกเติมไว้ล่วงหน้าเมื่อสร้างครอบครัวใหม่ ปล่อยให้ว่างเพื่อต้องการการป้อนข้อมูลด้วยตนเอง"
 
 #: 
 msgid "Unit used to measure distance."
@@ -18273,10 +18261,6 @@ msgstr "ระหว่างนี้ระบบสำรองที่ทำ
 #: 
 msgid "This Person is Inactive"
 msgstr "บุคคลนี้ไม่ได้ใช้งาน"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "ระบบจะค้นหาพิกัดแผนที่ให้กับทุกครอบครัวที่ยังไม่มีพิกัด โดยใช้ OpenStreetMap โดยจะประมวลผลครอบครัวเป็นชุดๆ ละ 50 ครอบครัว ใช้เวลาประมาณหนึ่งนาทีต่อชุด คุณสามารถเปิดหน้านี้ทิ้งไว้ระหว่างดำเนินการได้ ดำเนินการต่อหรือไม่?"
 
 #: 
 msgid "This person is deceased"

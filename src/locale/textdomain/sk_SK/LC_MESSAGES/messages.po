@@ -10374,10 +10374,6 @@ msgstr "Dostupná aktualizácia"
 msgid "User must have Notes permission"
 msgstr "Používateľ musí mať oprávnenie na poznámky"
 
-#: 
-msgid "Address Defaults"
-msgstr "Predvolené nastavenia adresy"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10437,10 +10433,6 @@ msgstr "Konfigurovať Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Pripojiť Mailchimp na synchronizáciu e-mailových zoznamov pre spravodaje a kampane."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopírovať z adresy cirkvi"
 
 #: 
 msgid "Copy to clipboard"
@@ -10767,10 +10759,6 @@ msgstr "Mesiac výročia členstva, pre ktorý chcete vrátiť záznamy."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Vlastnosť, pre ktorú chcete vrátiť záznamy osôb."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Tieto hodnoty sú predvyplnené pri vytváraní nových rodín. Ponechajte prázdne na vyžadovanie ručného zadania."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18310,10 +18298,6 @@ msgstr "Medzičasom naďalej funguje záložné spúšťanie pri načítaní str
 #: 
 msgid "This Person is Inactive"
 msgstr "Táto osoba je neaktívna"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Toto vyhľadá mapové súradnice pre všetky rodiny, ktoré ich nemajú, pomocou OpenStreetMap. Rodiny sa spracúvajú v dávkach po 50, čo trvá približne minútu na dávku. Túto stránku môžete počas behu ponechať otvorenú. Pokračovať?"
 
 #: 
 msgid "This person is deceased"

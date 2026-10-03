@@ -10355,10 +10355,6 @@ msgstr "Available ang Update"
 msgid "User must have Notes permission"
 msgstr "Ang user ay dapat may pahintulot sa mga Tala"
 
-#: 
-msgid "Address Defaults"
-msgstr "Mga Default na Address"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10418,10 +10414,6 @@ msgstr "I-configure ang Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Ikonekta ang Mailchimp para i-sync ang mga listahan ng email para sa mga newsletter at campaign."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopyahin mula sa address ng simbahan"
 
 #: 
 msgid "Copy to clipboard"
@@ -10748,10 +10740,6 @@ msgstr "Ang buwan ng anibersaryo ng pagiging miyembro kung saan gusto mong ibali
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Ang katangian kung saan gusto mong ibalik ang mga rekord ng tao."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ang mga halagang ito ay naka-pre-fill kapag lumilikha ng mga bagong pamilya. Iwanang blangko para mangailangan ng manual na pagpasok."
 
 #: 
 msgid "Unit used to measure distance."
@@ -18277,10 +18265,6 @@ msgstr "Patuloy na gumagana ang page-load fallback samantala. Baguhin kung gaano
 #: 
 msgid "This Person is Inactive"
 msgstr "Hindi Aktibo ang Taong Ito"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Hinahanap nito ang mga koordinada sa mapa para sa bawat pamilyang kulang nito, gamit ang OpenStreetMap. Pinoproseso nito ang mga pamilya sa mga batch na 50, humigit-kumulang isang minuto bawat batch. Maaari mong iwanang bukas ang pahinang ito habang tumatakbo ito. Magpatuloy?"
 
 #: 
 msgid "This person is deceased"
