@@ -15,7 +15,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $sPageTitle = gettext('Pledge Reminder Report');
 $sPageSubtitle = gettext('Generate pledge reminder letters');
 $aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Finance'), '/finance/'],
+    [gettext('Financial Reports'), '/finance/reports'],
     [gettext('Pledge Reminders')],
 ]);
 require_once __DIR__ . '/Include/Header.php';

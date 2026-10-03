@@ -18,7 +18,7 @@ describe("Issue #7854 - Financial Reports Fix", () => {
         it("should display actual fund names and family names (not UNDESIGNATED/UNASSIGNED)", () => {
             // Navigate to Financial Reports
             cy.visit("/FinancialReports.php");
-            cy.contains("Financial Reports").should("be.visible");
+            cy.get(".page-title").contains("Financial Reports").should("be.visible");
 
             // Select Advanced Deposit Report
             cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
