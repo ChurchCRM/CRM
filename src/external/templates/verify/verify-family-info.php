@@ -13,10 +13,6 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 
 $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 ?>
-<?php if ($doShowMap) : ?>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
-<?php endif; ?>
-
 <div class="container-fluid py-4">
     <!-- Navigation Bar for logged-in limited users -->
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -288,8 +284,9 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
     </div>
 </div>
 
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/family-verify.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/family-verify.min.js') ?>"></script>
 <?php if ($doShowMap) : ?>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     (function () {
         var lat = <?= InputUtils::jsonEncodeForScript((float) $family->getLatitude()) ?>;
@@ -307,8 +304,5 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     var token = '<?= $token->getToken()?>';
 </script>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/family-verify.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/family-verify.min.js') ?>"></script>
-
 <?php
 require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");

@@ -6,7 +6,7 @@ use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+
 
 <div class="row">
     <div class="col-12">
@@ -181,7 +181,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
 </style>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.mapNeighborsConfig = <?= InputUtils::jsonEncodeForScript([
         'apiUrl'       => $apiUrl,

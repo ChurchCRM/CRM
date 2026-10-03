@@ -15,6 +15,44 @@ import $ from "jquery";
 
 window.jQuery = window.$ = $;
 
+import moment from "moment";
+
+window.moment = moment;
+
+import Inputmask from "inputmask";
+import "inputmask/dist/jquery.inputmask";
+import "inputmask/dist/bindings/inputmask.binding";
+
+window.Inputmask = Inputmask;
+
+import "bootstrap-datepicker";
+import "daterangepicker";
+
+import DataTable from "datatables.net-bs5";
+import "datatables.net-buttons-bs5";
+import "datatables.net-buttons/js/buttons.html5";
+import "datatables.net-buttons/js/buttons.print";
+import "datatables.net-responsive-bs5";
+import "datatables.net-select-bs5";
+
+window.DataTable = DataTable;
+
+import bootbox from "bootbox";
+
+window.bootbox = bootbox;
+
+import i18next from "i18next";
+
+window.i18next = i18next;
+
+import JustValidate from "just-validate";
+
+window.JustValidate = JustValidate;
+
+import Stepper from "bs-stepper";
+
+window.Stepper = Stepper;
+
 // Import ApexCharts - Tabler-recommended charting library (replacing Chart.js)
 import ApexCharts from "apexcharts";
 

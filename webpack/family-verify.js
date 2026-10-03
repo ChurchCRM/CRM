@@ -1,4 +1,5 @@
 import "./family-verify.css";
+import "./leaflet-global";
 
 document.addEventListener("DOMContentLoaded", () => {
   const verifyBtn = document.getElementById("onlineVerifyBtn");

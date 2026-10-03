@@ -12,10 +12,10 @@
  *                 legend); families sharing exact coordinates are fanned
  *                 into a small ring so each stays clickable
  *
- * Leaflet is loaded as a global from skin/external/leaflet/leaflet.js
+ * Leaflet comes from webpack/leaflet-global.js.
  * (see webpack externals: { leaflet: 'L' }).
  */
-import L from "leaflet";
+import L from "../leaflet-global";
 
 $(document).ready(() => {
   window.CRM.onLocalesReady(() => {

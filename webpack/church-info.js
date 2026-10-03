@@ -7,6 +7,7 @@
  */
 
 import { buildAdminAPIUrl } from "./api-utils";
+import L from "./leaflet-global";
 
 // Holds the active Leaflet map instance so it can be torn down and recreated
 // when coordinates are regenerated (Leaflet does not support re-centering a
@@ -15,7 +16,7 @@ let currentChurchMap = null;
 
 function initChurchMap() {
   const mapContainer = document.getElementById("church-location-map");
-  if (!mapContainer || !window.L || !window.CRM?.churchMapConfig) {
+  if (!mapContainer || !window.CRM?.churchMapConfig) {
     return;
   }
 
@@ -26,18 +27,18 @@ function initChurchMap() {
   const cfg = window.CRM.churchMapConfig;
 
   try {
-    currentChurchMap = window.L.map("church-location-map", {
+    currentChurchMap = L.map("church-location-map", {
       scrollWheelZoom: false,
       zoomControl: true,
     }).setView([cfg.lat, cfg.lng], 15);
 
-    window.L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors',
     }).addTo(currentChurchMap);
 
-    window.L.marker([cfg.lat, cfg.lng])
+    L.marker([cfg.lat, cfg.lng])
       .bindPopup(`<strong>${window.CRM.escapeHtml(cfg.name)}</strong>`)
       .addTo(currentChurchMap);
 
