@@ -11195,10 +11195,6 @@ msgstr "Gravatar bekerja dengan mengonversi alamat email menjadi hash (MD5). Ala
 msgid "Hide Latitude/Longitude"
 msgstr "Sembunyikan Lintang/Bujur"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Sembunyikan Alamat Orang"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

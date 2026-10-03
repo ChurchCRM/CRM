@@ -11210,10 +11210,6 @@ msgstr "Το Gravatar λειτουργεί μετατρέποντας διευθ
 msgid "Hide Latitude/Longitude"
 msgstr "Απόκρυψη Γεωγρ. Πλάτους/Μήκους"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Απόκρυψη Διεύθυνσης Ατόμου"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

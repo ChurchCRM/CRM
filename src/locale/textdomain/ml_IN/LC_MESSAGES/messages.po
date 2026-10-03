@@ -11175,10 +11175,6 @@ msgstr "Gravatar ഇമെയിൽ വിലാസങ്ങൾ hash (MD5) ആ�
 msgid "Hide Latitude/Longitude"
 msgstr "Latitude/Longitude മറയ്ക്കുക"
 
-#: 
-msgid "Hide Person Address"
-msgstr "വ്യക്തി വിലാസം മറയ്ക്കുക"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

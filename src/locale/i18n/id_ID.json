@@ -2670,7 +2670,6 @@
   "Gravatar Website": "Situs Web Gravatar",
   "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image.": "Gravatar bekerja dengan mengonversi alamat email menjadi hash (MD5). Alamat email sebenarnya tidak pernah dikirim ke server Gravatar - hanya hash yang digunakan untuk mencari gambar.",
   "Hide Latitude/Longitude": "Sembunyikan Lintang/Bujur",
-  "Hide Person Address": "Sembunyikan Alamat Orang",
   "How it works": "Cara kerjanya",
   "How many checks to print per deposit slip page": "Berapa banyak cek yang dicetak per halaman slip setoran",
   "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status": "Jika pesan SMS tidak terkirim:\n1. Pastikan API Key dan Secret sudah benar (tidak ada spasi ekstra)\n2. Periksa bahwa Nomor Pengirim adalah nomor Vonage yang valid yang Anda miliki\n3. Pastikan nomor telepon penerima mencakup kode negara\n4. Periksa saldo akun Vonage Anda\n5. Tinjau Dasbor Vonage > SMS > Log untuk status pengiriman",

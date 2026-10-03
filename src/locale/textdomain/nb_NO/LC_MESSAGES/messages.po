@@ -11280,10 +11280,6 @@ msgstr "Gravatar fungerer ved å konvertere e-postadresser til en hash (MD5). De
 msgid "Hide Latitude/Longitude"
 msgstr "Skjul bredde-/lengdegrad"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Skjul personadresse"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

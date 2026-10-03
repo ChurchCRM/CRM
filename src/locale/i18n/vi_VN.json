@@ -2670,7 +2670,6 @@
   "Gravatar Website": "Trang web Gravatar",
   "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image.": "Gravatar hoạt động bằng cách chuyển đổi địa chỉ email thành hàm băm (MD5). Địa chỉ email thực tế không bao giờ được gửi đến máy chủ của Gravatar - chỉ hàm băm được sử dụng để tra cứu hình ảnh.",
   "Hide Latitude/Longitude": "Ẩn vĩ độ/kinh độ",
-  "Hide Person Address": "Ẩn địa chỉ cá nhân",
   "How it works": "Cách hoạt động",
   "How many checks to print per deposit slip page": "Số séc cần in trên mỗi trang phiếu tiền gửi",
   "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status": "Nếu tin nhắn SMS không được gửi:\n1. Xác minh API Key và Secret có đúng không (không có khoảng trắng thừa)\n2. Kiểm tra Số gửi là số Vonage hợp lệ bạn sở hữu\n3. Đảm bảo số điện thoại người nhận có mã quốc gia\n4. Kiểm tra số dư tài khoản Vonage của bạn\n5. Xem lại Bảng điều khiển Vonage > SMS > Nhật ký để biết trạng thái gửi",

@@ -11347,10 +11347,6 @@ msgstr "Gravatar 通過將電子郵件地址轉換為雜湊值（MD5）來運作
 msgid "Hide Latitude/Longitude"
 msgstr "隱藏緯度／經度"
 
-#: 
-msgid "Hide Person Address"
-msgstr "隱藏個人地址"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

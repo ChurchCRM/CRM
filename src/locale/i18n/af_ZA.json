@@ -2679,7 +2679,6 @@
   "Gravatar Website": "Gravatar-webwerf",
   "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image.": "Gravatar werk deur e-posadresse na 'n hash (MD5) om te skakel. Die werklike e-posadres word nooit na Gravatar se bedieners gestuur nie — slegs die hash word gebruik om die beeld op te soek.",
   "Hide Latitude/Longitude": "Versteek Breedtegraad/Lengtegraad",
-  "Hide Person Address": "Versteek Persoonadres",
   "How it works": "Hoe dit werk",
   "How many checks to print per deposit slip page": "Hoeveel tjekke per depositostrokiebladsy gedruk moet word",
   "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status": "As SMS-boodskappe nie gestuur word nie:\n1. Verifieer dat die API-sleutel en geheim korrek is (geen ekstra spasies nie)\n2. Kontroleer dat die Van-nommer 'n geldige Vonage-nommer is wat jy besit\n3. Maak seker dat ontvanger-telefoonnommers die landkode insluit\n4. Kontroleer jou Vonage-rekeningbalans\n5. Hersien die Vonage-kontroleskerm > SMS > Logs vir afleweringstatus",

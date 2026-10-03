@@ -2688,7 +2688,6 @@
   "Gravatar Website": "Site web Gravatar",
   "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image.": "Gravatar funcționează prin convertirea adreselor de e-mail într-un hash (MD5). Adresa de e-mail reală nu este niciodată trimisă serverelor Gravatar - doar hash-ul este utilizat pentru căutarea imaginii.",
   "Hide Latitude/Longitude": "Ascunde latitudine/longitudine",
-  "Hide Person Address": "Ascunde adresa persoanei",
   "How it works": "Cum funcționează",
   "How many checks to print per deposit slip page": "Câte cecuri se imprimă pe pagina bonului de depozit",
   "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status": "Dacă mesajele SMS nu sunt trimise:\n1. Verificați că cheia API și secretul sunt corecte (fără spații suplimentare)\n2. Verificați că numărul expeditorului este un număr Vonage valid pe care îl dețineți\n3. Asigurați-vă că numerele de telefon ale destinatarilor includ codul de țară\n4. Verificați soldul contului Vonage\n5. Consultați Vonage Dashboard > SMS > Jurnale pentru starea livrării",

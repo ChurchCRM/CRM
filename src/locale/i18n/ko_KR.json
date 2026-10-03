@@ -2670,7 +2670,6 @@
   "Gravatar Website": "Gravatar 웹사이트",
   "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image.": "Gravatar는 이메일 주소를 해시(MD5)로 변환하여 작동합니다. 실제 이메일 주소는 Gravatar 서버로 전송되지 않으며, 이미지 조회에는 해시만 사용됩니다.",
   "Hide Latitude/Longitude": "위도/경도 숨기기",
-  "Hide Person Address": "개인 주소 숨기기",
   "How it works": "작동 방식",
   "How many checks to print per deposit slip page": "입금 전표 페이지당 인쇄할 수표 수",
   "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status": "SMS 메시지가 전송되지 않는 경우:\n1. API 키와 시크릿이 올바른지 확인 (여분의 공백 없이)\n2. 발신 번호가 소유한 유효한 Vonage 번호인지 확인\n3. 수신자 전화번호에 국가 코드가 포함되어 있는지 확인\n4. Vonage 계정 잔액 확인\n5. Vonage 대시보드 > SMS > 로그에서 전달 상태 확인",

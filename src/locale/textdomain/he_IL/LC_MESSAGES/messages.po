@@ -11208,10 +11208,6 @@ msgstr "Gravatar פועל על ידי המרת כתובות דוא\"ל לגיב�
 msgid "Hide Latitude/Longitude"
 msgstr "הסתר קו רוחב/קו אורך"
 
-#: 
-msgid "Hide Person Address"
-msgstr "הסתר כתובת אדם"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

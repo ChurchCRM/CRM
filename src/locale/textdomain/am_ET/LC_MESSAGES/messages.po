@@ -11217,10 +11217,6 @@ msgstr "Gravatar የኢሜይል አድራሻዎችን ወደ ሀሽ (MD5) በ�
 msgid "Hide Latitude/Longitude"
 msgstr "ኬክሮስ/ኦሮምን ደብቅ"
 
-#: 
-msgid "Hide Person Address"
-msgstr "የሰው አድራሻ ደብቅ"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

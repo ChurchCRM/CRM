@@ -11174,10 +11174,6 @@ msgstr "Gravatar ईमेल पतों को हैश (MD5) में प�
 msgid "Hide Latitude/Longitude"
 msgstr "अक्षांश/देशांतर छुपाएं"
 
-#: 
-msgid "Hide Person Address"
-msgstr "व्यक्ति का पता छुपाएं"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

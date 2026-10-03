@@ -11200,10 +11200,6 @@ msgstr "Gravatar funksionon duke konvertuar adresat e email-it në një hash (MD
 msgid "Hide Latitude/Longitude"
 msgstr "Fshih Gjerësinë/Gjatësinë Gjeografike"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Fshih Adresën e Personit"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

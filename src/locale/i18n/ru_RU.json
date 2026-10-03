@@ -2697,7 +2697,6 @@
   "Gravatar Website": "Сайт Gravatar",
   "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image.": "Gravatar работает, преобразуя адреса электронной почты в хэш (MD5). Фактический адрес электронной почты никогда не отправляется на серверы Gravatar — для поиска изображения используется только хэш.",
   "Hide Latitude/Longitude": "Скрыть широту/долготу",
-  "Hide Person Address": "Скрыть адрес персоны",
   "How it works": "Как это работает",
   "How many checks to print per deposit slip page": "Сколько чеков печатать на страницу квитанции депозита",
   "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status": "Если SMS-сообщения не отправляются:\n1. Убедитесь, что API Key и Secret верны (без лишних пробелов)\n2. Проверьте, что номер отправителя — действительный номер Vonage, которым вы владеете\n3. Убедитесь, что номера телефонов получателей включают код страны\n4. Проверьте баланс вашего аккаунта Vonage\n5. Откройте Панель Vonage > SMS > Журналы для проверки статуса доставки",
