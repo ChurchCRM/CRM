@@ -73,6 +73,16 @@ function shrinkToBox(blob, maxWidth, maxHeight) {
   });
 }
 
+const HEIC_PATTERN = /\.(heic|heif)$/i;
+
+/**
+ * @param {{name?: string, type?: string}} file
+ * @returns {boolean}
+ */
+function isHeic(file) {
+  return /^image\/hei[cf]/i.test(file.type || "") || HEIC_PATTERN.test(file.name || "");
+}
+
 /**
  * @param {Blob} blob
  * @returns {Promise<string>} The blob as a data: URL
@@ -127,7 +137,7 @@ export function createPhotoUploader(config) {
     restrictions: {
       maxNumberOfFiles: 1,
       maxFileSize: MAX_SOURCE_FILE_BYTES,
-      allowedFileTypes: ["image/*"],
+      allowedFileTypes: ["image/*", ".heic", ".heif"],
     },
   }).use(Dashboard, {
     inline: false, // Use modal mode
@@ -228,6 +238,32 @@ export function createPhotoUploader(config) {
         ? error.message
         : `File size exceeds maximum of ${displayMaxSizeMB}MB. Please select a smaller file.`;
     showPersistentError(message);
+  });
+
+  // Browsers cannot open HEIC (iPhone) photos, so convert them to JPEG as they are added;
+  // the editor, the resize and the server then only ever see a JPEG. The converter is a
+  // large library, loaded only when a HEIC file is picked.
+  uppy.on("file-added", async (file) => {
+    if (!isHeic(file) || !(file.data instanceof Blob)) {
+      return;
+    }
+    clearPersistentError();
+    try {
+      const { default: heic2any } = await import("heic2any");
+      const converted = await heic2any({ blob: file.data, toType: "image/jpeg", quality: 0.9 });
+      const jpeg = Array.isArray(converted) ? converted[0] : converted;
+      uppy.removeFile(file.id);
+      uppy.addFile({
+        name: file.name.replace(HEIC_PATTERN, ".jpg"),
+        type: "image/jpeg",
+        data: jpeg,
+        source: file.source,
+      });
+    } catch (error) {
+      console.error("HEIC conversion failed", error);
+      uppy.removeFile(file.id);
+      showPersistentError("This HEIC photo could not be converted. Export it as a JPEG and try again.");
+    }
   });
 
   // An uploader step, not an `upload` listener: Uppy emits `complete` only after this

@@ -142,6 +142,7 @@
         "dompurify": "^3.4.16",
         "flag-icons": "^7.5.0",
         "fullcalendar": "^7.1.0",
+        "heic2any": "^0.0.4",
         "i18next": "^26.4.2",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
