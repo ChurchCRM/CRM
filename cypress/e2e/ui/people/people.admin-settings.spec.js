@@ -11,17 +11,22 @@
  */
 
 describe("People Settings hub", () => {
-    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies"];
+    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies", "#peopleMap"];
+    let savedProviders;
     let savedFriendDate;
 
     before(() => {
         cy.getSystemConfig("bHideFriendDate").then((value) => {
             savedFriendDate = value;
         });
+        cy.getSystemConfig("sGeocoderProviders").then((value) => {
+            savedProviders = value;
+        });
     });
 
     after(() => {
         cy.restoreSystemConfig("bHideFriendDate", savedFriendDate);
+        cy.restoreSystemConfig("sGeocoderProviders", savedProviders);
     });
 
     describe("as admin", () => {
@@ -118,6 +123,37 @@ describe("People Settings hub", () => {
             cy.get(
                 "#peoplePeople [title*='Set true to disable entering Friend Date'], #peoplePeople [data-bs-original-title*='Set true to disable entering Friend Date']",
             ).should("exist");
+        });
+
+        it("has a Map Settings section instead of a panel on the map page", () => {
+            cy.visit("/admin/people");
+            cy.get("#peopleMap .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+            cy.get("#peopleMap select[name='iMapZoom'] option").should("have.length.at.least", 5);
+            cy.get("#peopleMap input[name='bHideLatLon']").should("exist");
+            cy.get("#peopleMap select[name='sGeocoderProviders']").should("exist");
+            // Hide Person Address lives under People, not twice
+            cy.get("[name='bHidePersonAddress']").should("have.length", 2); // Yes/No pills of one setting
+            cy.get("#peopleMap [name='bHidePersonAddress']").should("not.exist");
+
+            cy.visit("/people/map");
+            cy.get("#mapAdminSettings").should("not.exist");
+            cy.get(".page-header .btn-list a[href$='/admin/people#peopleMap']").should("contain", "Map Settings");
+        });
+
+        it("picks geocoding services in order and auto-saves the ranking", () => {
+            cy.intercept("POST", "**/admin/api/system/config/sGeocoderProviders").as("saveProviders");
+            cy.visit("/admin/people");
+            cy.get("#peopleMap .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+
+            // Nominatim is the default; US Census is opt-in
+            cy.get("#peopleMap .ts-control .item").should("have.length", 1).and("contain", "Nominatim");
+            cy.get("#peopleMap .ts-control").click();
+            cy.get("#peopleMap .ts-dropdown .option").contains("US Census").click({ force: true });
+
+            cy.wait("@saveProviders").then((interception) => {
+                expect(interception.response.statusCode).to.eq(200);
+                expect(interception.request.body.value).to.eq("Nominatim,US Census");
+            });
         });
 
         it("renders choice settings as selects with their options", () => {

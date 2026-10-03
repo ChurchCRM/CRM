@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\Geocoding\GeocoderChain;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\view\PageHeader;
@@ -21,6 +22,9 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'peopleNewMembers' => [gettext('New Members & Greeting'), 'fa-solid fa-user-plus', [
             'bEnableSelfRegistration', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2',
         ]],
+        'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
+            'iMapZoom', 'bHideLatLon', 'sGeocoderProviders',
+        ]],
     ];
 
     // Short labels; the legacy sentence stays as the help text.
@@ -39,6 +43,9 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'IncludeDataInNewPersonNotifications'  => gettext('Include Details in Notifications'),
         'sGreeterCustomMsg1'                   => gettext('Greeter Message 1'),
         'sGreeterCustomMsg2'                   => gettext('Greeter Message 2'),
+        'iMapZoom'                             => gettext('Default Map View'),
+        'bHideLatLon'                          => gettext('Hide Latitude/Longitude'),
+        'sGeocoderProviders'                   => gettext('Geocoding services'),
     ];
 
     $sections = [];
@@ -51,6 +58,13 @@ $app->get('/people', function (Request $request, Response $response): Response {
 
             if (in_array($setting['name'], ['sGreeterCustomMsg1', 'sGreeterCustomMsg2'], true)) {
                 $setting['type'] = 'textarea';
+            }
+            if ($setting['name'] === GeocoderChain::CONFIG_KEY) {
+                $setting['type'] = 'multiselect';
+                $setting['choices'] = array_map(
+                    static fn (string $name): array => ['value' => $name, 'label' => $name],
+                    GeocoderChain::availableProviderNames(),
+                );
             }
             if ($setting['name'] === 'sNewPersonNotificationRecipientIDs') {
                 $ids = array_filter(explode(',', SystemConfig::getValue($setting['name'])), 'is_numeric');
