@@ -11,7 +11,7 @@
  */
 
 describe("People Settings hub", () => {
-    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies"];
+    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies", "#peopleDefaults"];
     let savedFriendDate;
 
     before(() => {
@@ -118,6 +118,33 @@ describe("People Settings hub", () => {
             cy.get(
                 "#peoplePeople [title*='Set true to disable entering Friend Date'], #peoplePeople [data-bs-original-title*='Set true to disable entering Friend Date']",
             ).should("exist");
+        });
+
+        it("has a New Record Defaults section with the address defaults", () => {
+            cy.visit("/admin/people");
+            cy.get("#peopleDefaults .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+            ["sDefaultState", "sDefaultCity", "sDefaultZip"].forEach((name) => {
+                cy.get(`#peopleDefaults input[name='${name}']`).should("exist");
+            });
+            cy.get("#peopleDefaults select[name='sDefaultCountry'] option").should("have.length.greaterThan", 50);
+        });
+
+        it("auto-saves the default city", () => {
+            cy.getSystemConfig("sDefaultCity").then((original) => {
+                cy.intercept("POST", "**/admin/api/system/config/sDefaultCity").as("saveCity");
+                cy.visit("/admin/people");
+                cy.get("#peopleDefaults .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+                cy.get("#peopleDefaults input[name='sDefaultCity']").clear().type("Hubville").blur();
+                cy.wait("@saveCity").its("response.statusCode").should("eq", 200);
+                cy.getSystemConfig("sDefaultCity").should("eq", "Hubville");
+                cy.restoreSystemConfig("sDefaultCity", original);
+            });
+        });
+
+        it("no longer lists the address defaults on Church Info", () => {
+            cy.visit("/admin/system/church-info");
+            cy.get("#sChurchCity").should("exist");
+            cy.get("#sDefaultCity, #sDefaultCountry, #sDefaultZip, #sDefaultStateContainer, #copy-church-address").should("not.exist");
         });
 
         it("renders choice settings as selects with their options", () => {

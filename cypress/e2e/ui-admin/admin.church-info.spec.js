@@ -49,26 +49,6 @@ describe("Admin - Church Information Page", () => {
         cy.get("#sChurchCountry").should("exist");
     });
 
-    it("should display address default fields", () => {
-        cy.visit("admin/system/church-info");
-
-        cy.get("#sDefaultCity").should("exist");
-        cy.get("#sDefaultStateContainer").should("exist");
-        cy.get("#sDefaultZip").should("exist");
-        cy.get("#sDefaultCountry").should("exist");
-    });
-
-    it("should update default state dropdown when default country changes to US", () => {
-        cy.visit("admin/system/church-info");
-
-        cy.get("#sDefaultCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
-
-        cy.tomSelectByValue("#sDefaultCountry", "US");
-
-        cy.get("#sDefaultState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
-        cy.get("#sDefaultState option").should("have.length.greaterThan", 50);
-    });
-
     it("should update state dropdown when country changes to US", () => {
         cy.visit("admin/system/church-info");
 
@@ -136,35 +116,6 @@ describe("Admin - Church Information Page", () => {
         cy.visit("admin/system/church-info");
 
         cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
-        cy.get("#sDefaultCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
-    });
-
-    it("should copy church address to default fields", () => {
-        cy.visit("admin/system/church-info");
-
-        // Wait for page to load
-        cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
-
-        // Fill church address fields
-        cy.get("#sChurchCity").clear().type("Springfield");
-        cy.get("#sChurchZip").clear().type("62701");
-
-        // Select church state (country defaults to US on page load)
-        cy.get("#sChurchState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
-        cy.tomSelectByValue("#sChurchState", "IL");
-        // Verify state value is actually set before proceeding
-        cy.get("#sChurchState").should("have.value", "IL");
-
-        // Click copy button
-        cy.get("#copy-church-address").click();
-
-        // Verify defaults were populated
-        cy.get("#sDefaultCity").should("have.value", "Springfield");
-        cy.get("#sDefaultZip").should("have.value", "62701");
-        cy.get("#sDefaultCountry").should("have.value", "US");
-
-        // Default state should now be a dropdown with IL selected
-        cy.get("#sDefaultState", { timeout: 10000 }).should("have.value", "IL");
     });
 
     it("should display the preview section", () => {

@@ -21,6 +21,9 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'peopleNewMembers' => [gettext('New Members & Greeting'), 'fa-solid fa-user-plus', [
             'bEnableSelfRegistration', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2',
         ]],
+        'peopleDefaults' => [gettext('New Record Defaults'), 'fa-solid fa-address-card', [
+            'sDefaultCountry', 'sDefaultState', 'sDefaultCity', 'sDefaultZip',
+        ]],
     ];
 
     // Short labels; the legacy sentence stays as the help text.
@@ -39,6 +42,10 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'IncludeDataInNewPersonNotifications'  => gettext('Include Details in Notifications'),
         'sGreeterCustomMsg1'                   => gettext('Greeter Message 1'),
         'sGreeterCustomMsg2'                   => gettext('Greeter Message 2'),
+        'sDefaultCountry'                      => gettext('Default Country'),
+        'sDefaultState'                        => gettext('Default State'),
+        'sDefaultCity'                         => gettext('Default City'),
+        'sDefaultZip'                          => gettext('Default Zip'),
     ];
 
     $sections = [];
@@ -47,6 +54,10 @@ $app->get('/people', function (Request $request, Response $response): Response {
             $setting['label'] = $labels[$setting['name']] ?? $setting['label'];
             if ($setting['tooltip'] === $setting['label']) {
                 unset($setting['tooltip']);
+            }
+
+            if ($setting['name'] === 'sDefaultCountry') {
+                $setting['tooltip'] = gettext('Used for new records and for geocoding when a record has no country.');
             }
 
             if (in_array($setting['name'], ['sGreeterCustomMsg1', 'sGreeterCustomMsg2'], true)) {
