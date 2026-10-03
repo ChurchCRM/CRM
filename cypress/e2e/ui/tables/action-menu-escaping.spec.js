@@ -55,21 +55,6 @@ const created = { personId: null, personName: null, familyId: null, eventId: nul
  * and `cy.setupAdminSession({ forceLogin: true })` is documented as not sufficient to
  * recover from that.
  */
-function freshAdminLogin() {
-    cy.clearAllCookies();
-    cy.visit("/session/begin");
-    // Type only once the form is actually up. Typing into a page that is still
-    // settling occasionally fails with "Cannot read properties of undefined
-    // (reading 'KeyboardEvent')" — Cypress lost the AUT window mid-keystroke.
-    cy.get("input[name=User]").should("be.visible").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]")
-        .should("be.visible")
-        .type(Cypress.env("admin.password") + "{enter}");
-    cy.url().should("not.include", "/session/begin");
-    cy.getCookies().should("satisfy", (cookies) =>
-        cookies.some((cookie) => cookie.name.startsWith("CRM-")),
-    );
-}
 
 /** Delete every person / family / event this spec's markers match. Idempotent. */
 function deleteLeftovers() {
@@ -184,7 +169,7 @@ describe("Row action menus — markup and attribute escaping (#9820)", () => {
         });
 
         // ── Person and family have no create API; they go through the legacy editors.
-        freshAdminLogin();
+        cy.freshAdminFormLogin({ clearAll: true, visible: true, sessionCookie: true });
 
         cy.visit("/PersonEditor.php");
         cy.get("#FirstName").type(HOSTILE, { parseSpecialCharSequences: false });

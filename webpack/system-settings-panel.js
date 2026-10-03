@@ -173,6 +173,25 @@ import "../src/skin/scss/system-settings-panel.scss";
         return el.value || null;
       },
     },
+    // An ordered pick from a fixed list (setting.choices = [{ value, label }]), stored as a
+    // comma-separated string. The order the items were picked in is the order that is saved.
+    multiselect: {
+      render: (setting) => `
+            <div class="col-md-6 col-lg-4 mb-3">
+              <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                ${escapeHtml(resolve(setting.label))}
+              </label>
+              <select multiple class="form-select setting-input"
+                      id="${setting.name}" name="${setting.name}"
+                      data-type="multiselect">
+                ${(setting.choices || []).map((c) => `<option value="${escapeHtml(String(c.value))}">${escapeHtml(c.label)}</option>`).join("")}
+              </select>
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
+            </div>
+          `,
+      getValue: (el) =>
+        (el.tomselect ? el.tomselect.getValue() : Array.from(el.selectedOptions, (o) => o.value)).join(","),
+    },
     // setting.selected = [{ id, text }]: the picker needs names, which the config API does not return.
     persons: {
       render: (setting) => `
@@ -189,6 +208,61 @@ import "../src/skin/scss/system-settings-panel.scss";
             </div>
           `,
       getValue: (el) => Array.from(el.selectedOptions, (o) => o.value).join(","),
+    },
+    // A section label inside one panel. Not a stored setting. An optional button
+    // is page-specific: the page binds its click handler by buttonId.
+    heading: {
+      render: (setting) => {
+        const button = setting.buttonLabel
+          ? `<button type="button" class="btn btn-outline-secondary btn-sm" id="${escapeHtml(setting.buttonId || "")}">
+               ${setting.buttonIcon ? `<i class="${escapeHtml(setting.buttonIcon)} me-1"></i>` : ""}${escapeHtml(resolve(setting.buttonLabel))}
+             </button>`
+          : "";
+        return `
+            <div class="col-12">
+              <div class="d-flex align-items-center justify-content-between mt-2 mb-3">
+                <h4 class="subheader mb-0">${escapeHtml(resolve(setting.label))}</h4>
+                ${button}
+              </div>
+            </div>`;
+      },
+      getValue: () => null,
+    },
+    // Country list comes from the public countries API. The stored value may be an
+    // ISO code or a legacy country name; the control always submits the code.
+    country: {
+      render: (setting) => `
+            <div class="col-md-6 col-lg-4 mb-3">
+              <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                ${escapeHtml(resolve(setting.label))}
+              </label>
+              <select class="form-select setting-input"
+                      id="${setting.name}" name="${setting.name}"
+                      data-type="country">
+                <option value="">— ${t("Select Country")} —</option>
+              </select>
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
+            </div>`,
+      getValue: (el) => el.value,
+    },
+    // States are never free text. setting.country names the country control in the
+    // same panel; this select lists that country's states and is empty until one is chosen.
+    state: {
+      render: (setting) => `
+            <div class="col-md-6 col-lg-4 mb-3">
+              <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                ${escapeHtml(resolve(setting.label))}
+              </label>
+              <div id="${setting.name}Control">
+                <select class="form-select setting-input"
+                        id="${setting.name}" name="${setting.name}"
+                        data-type="state">
+                  <option value="">— ${t("Select State")} —</option>
+                </select>
+              </div>
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
+            </div>`,
+      getValue: (el) => el.value,
     },
     ajax: {
       render: (setting) => `
@@ -240,6 +314,18 @@ import "../src/skin/scss/system-settings-panel.scss";
       }
       return response.json();
     });
+  }
+
+  let countriesPromise = null;
+
+  function fetchCountries() {
+    if (!countriesPromise) {
+      countriesPromise = fetchJSON(`${window.CRM.root}/api/public/data/countries`).catch((error) => {
+        countriesPromise = null;
+        throw error;
+      });
+    }
+    return countriesPromise;
   }
 
   // Settings Panel Class
@@ -313,21 +399,39 @@ import "../src/skin/scss/system-settings-panel.scss";
     // field, so the fields and Save stay disabled until all of them are filled.
     fetchAndApplyValues() {
       // Password fields never show their current value
-      const loads = this.options.settings
-        .map((s) => this.getSettingConfig(s))
-        .filter((cfg) => cfg.type !== "password" && cfg.type !== "persons")
+      const configs = this.options.settings.map((s) => this.getSettingConfig(s));
+      const loads = configs
+        .filter((cfg) => !["password", "persons", "heading", "state"].includes(cfg.type))
         .map((cfg) =>
           fetchJSON(`${window.CRM.root}${this.options.configApiPath}/${cfg.name}`).then((data) => {
             // For ajax selects, load options from the remote URL first
             if (cfg.type === "ajax" && cfg.ajaxUrl) {
               return this.loadAjaxOptions(cfg.name, cfg.ajaxUrl, data.value);
             }
+            if (cfg.type === "country") {
+              return this.loadCountryOptions(cfg.name, data.value);
+            }
             this.applyValue(cfg.name, data.value);
             this.savedValues[cfg.name] = data.value != null ? String(data.value) : "";
           }),
         );
 
+      // State lists depend on the country control, so they load after countries.
+      const stateLoads = () =>
+        Promise.all(
+          configs
+            .filter((cfg) => cfg.type === "state")
+            .map((cfg) =>
+              fetchJSON(`${window.CRM.root}${this.options.configApiPath}/${cfg.name}`).then((data) => {
+                const stored = data.value != null ? String(data.value) : "";
+                this.savedValues[cfg.name] = stored;
+                return this.syncState(cfg, stored, false);
+              }),
+            ),
+        );
+
       return Promise.all(loads)
+        .then(stateLoads)
         .then(() => {
           this.container.querySelector(".settings-panel-fields").disabled = false;
           const saveBtn = this.container.querySelector(".settings-panel-save");
@@ -342,6 +446,96 @@ import "../src/skin/scss/system-settings-panel.scss";
               `<div class="alert alert-danger settings-panel-load-error" role="alert">${t("Could not load the current settings. Reload the page to try again.")}</div>`,
             );
         });
+    }
+
+    loadCountryOptions(name, currentValue) {
+      const select = this.container.querySelector(`select[name="${name}"]`);
+      if (!select) return Promise.resolve();
+
+      return fetchCountries().then((countries) => {
+        const stored = currentValue != null ? String(currentValue) : "";
+        select.replaceChildren();
+        const blank = document.createElement("option");
+        blank.value = "";
+        blank.textContent = `— ${t("Select Country")} —`;
+        select.appendChild(blank);
+
+        let matched = "";
+        countries.forEach((country) => {
+          const option = document.createElement("option");
+          option.value = country.code;
+          option.textContent = country.name;
+          if (stored === country.code || stored === country.name) {
+            option.selected = true;
+            matched = country.code;
+          }
+          select.appendChild(option);
+        });
+        if (matched) {
+          select.value = matched;
+        }
+        this.savedValues[name] = select.value;
+      });
+    }
+
+    // Replace the state control with that country's state list. save=true writes the
+    // new value (a country change clears it unless dataset.keepState names one to keep).
+    syncState(cfg, selectedValue, save) {
+      const country = this.container.querySelector(`[name="${cfg.country}"]`);
+      const code = (country?.value || "").toLowerCase();
+      this.stateRequests = this.stateRequests || {};
+      const requestId = (this.stateRequests[cfg.name] || 0) + 1;
+      this.stateRequests[cfg.name] = requestId;
+
+      const apply = (states) => {
+        if (this.stateRequests[cfg.name] !== requestId) return;
+        const control = this.renderStateControl(cfg.name, states || {}, selectedValue);
+        if (save && control) {
+          control.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      };
+
+      if (!code) {
+        apply({});
+        return Promise.resolve();
+      }
+
+      return fetchJSON(`${window.CRM.root}/api/public/data/countries/${code}/states`)
+        .then(apply)
+        .catch(() => apply({}));
+    }
+
+    renderStateControl(name, states, selectedValue) {
+      const holder = this.container.querySelector(`#${name}Control`);
+      if (!holder) return null;
+
+      const select = document.createElement("select");
+      select.className = "form-select setting-input";
+      select.id = name;
+      select.name = name;
+      select.dataset.type = "state";
+
+      const blank = document.createElement("option");
+      blank.value = "";
+      blank.textContent = `— ${t("Select State")} —`;
+      select.appendChild(blank);
+
+      let matched = "";
+      Object.keys(states).forEach((code) => {
+        const option = document.createElement("option");
+        option.value = code;
+        option.textContent = states[code];
+        if (selectedValue === code || selectedValue === states[code]) {
+          option.selected = true;
+          matched = code;
+        }
+        select.appendChild(option);
+      });
+      if (matched) {
+        select.value = matched;
+      }
+      holder.replaceChildren(select);
+      return select;
     }
 
     // Load options for an ajax-type select from a remote URL, then set the value
@@ -377,6 +571,15 @@ import "../src/skin/scss/system-settings-panel.scss";
       }
 
       const input = inputs[0];
+      if (input.dataset.type === "multiselect" && input.tomselect) {
+        const options = Array.from(input.options, (o) => o.value);
+        const picked = String(value ?? "")
+          .split(",")
+          .map((part) => options.find((option) => option.toLowerCase() === part.trim().toLowerCase()))
+          .filter(Boolean);
+        input.tomselect.setValue(picked, true);
+        return;
+      }
       if (input.dataset.type === "boolean") {
         input.checked = value === "1" || value === "true" || value === true;
       } else {
@@ -469,6 +672,23 @@ import "../src/skin/scss/system-settings-panel.scss";
 
     // Bind event handlers
     bindEvents() {
+      this.container.querySelectorAll('select[data-type="country"]').forEach((el) => {
+        el.addEventListener("change", () => {
+          const keep = el.dataset.keepState || "";
+          delete el.dataset.keepState;
+          this.options.settings
+            .map((setting) => this.getSettingConfig(setting))
+            .filter((cfg) => cfg.type === "state" && cfg.country === el.name)
+            .forEach((cfg) => {
+              this.syncState(cfg, keep, true);
+            });
+        });
+      });
+
+      this.container.querySelectorAll('select[data-type="multiselect"]').forEach((el) => {
+        new window.TomSelect(el, { plugins: ["remove_button"], maxOptions: null });
+      });
+
       this.container.querySelectorAll('select[data-type="persons"]').forEach((el) => {
         window.CRM.initPersonSelect(el, { plugins: ["remove_button"] });
         this.savedValues[el.name] = SettingTypes.persons.getValue(el);

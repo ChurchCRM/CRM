@@ -10386,10 +10386,6 @@ msgstr "Sasisho Linapatikana"
 msgid "User must have Notes permission"
 msgstr "Mtumiaji lazima awe na ruhusa ya Maelezo"
 
-#: 
-msgid "Address Defaults"
-msgstr "Anwani za Chaguo Msingi"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10449,10 +10445,6 @@ msgstr "Sanidi Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Unganisha Mailchimp kusambaza orodha ya barua pepe kwa ajili ya jarida na kampeni."
-
-#: 
-msgid "Copy from church address"
-msgstr "Nakili kutoka kwa anwani ya kanisa"
 
 #: 
 msgid "Copy to clipboard"
@@ -10779,10 +10771,6 @@ msgstr "Mwezi wa maadhimisho ya uanachama ambao ungependa kurudisha rekodi."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Umiliki ambao ungependa kurudisha rekodi za mtu."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Thamani hizi zinajazwa mapema wakati wa kutengeneza familia mpya. Acha tupu ili kuomba kuingizwa kwa mikono."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11205,10 +11193,6 @@ msgstr "Gravatar hufanya kazi kwa kubadilisha anwani za barua pepe kuwa hash (MD
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Ficha latitudo/longitudo"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Ficha anwani ya mtu"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18312,10 +18296,6 @@ msgstr "Suluhisho mbadala la upakiaji wa ukurasa linaendelea kufanya kazi wakati
 #: 
 msgid "This Person is Inactive"
 msgstr "Mtu Huyu Hatumiki"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Hii hutafuta viwianishi vya ramani kwa kila familia ambayo haina, kwa kutumia OpenStreetMap. Inachakata familia kwa makundi ya 50, takribani dakika moja kwa kila kundi. Unaweza kuacha ukurasa huu ukiwa wazi wakati inaendesha. Endelea?"
 
 #: 
 msgid "This person is deceased"

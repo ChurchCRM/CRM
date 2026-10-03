@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\Geocoding\GeocoderChain;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\view\PageHeader;
@@ -12,14 +13,18 @@ $app->get('/people', function (Request $request, Response $response): Response {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $sectionDefinitions = [
-        'peoplePeople' => [gettext('People'), 'fa-solid fa-user', [
-            'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideDeceasedFromDirectory',
+        'peopleNewMembers' => [gettext('New Members & Greeting'), 'fa-solid fa-user-plus', [
+            'bEnableSelfRegistration', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2',
+            'sDefaultCountry', 'sDefaultState', 'sDefaultCity', 'sDefaultZip',
         ]],
         'peopleFamilies' => [gettext('Families'), 'fa-solid fa-people-roof', [
             'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'bHideWeddingDate', 'bHideFamilyNewsletter', 'bForceUppercaseZip',
         ]],
-        'peopleNewMembers' => [gettext('New Members & Greeting'), 'fa-solid fa-user-plus', [
-            'bEnableSelfRegistration', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2',
+        'peoplePeople' => [gettext('People'), 'fa-solid fa-user', [
+            'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideDeceasedFromDirectory',
+        ]],
+        'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
+            'iMapZoom', 'bHideLatLon', 'sGeocoderProviders',
         ]],
     ];
 
@@ -39,6 +44,13 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'IncludeDataInNewPersonNotifications'  => gettext('Include Details in Notifications'),
         'sGreeterCustomMsg1'                   => gettext('Greeter Message 1'),
         'sGreeterCustomMsg2'                   => gettext('Greeter Message 2'),
+        'sDefaultCountry'                      => gettext('Default Country'),
+        'sDefaultState'                        => gettext('Default State'),
+        'sDefaultCity'                         => gettext('Default City'),
+        'sDefaultZip'                          => gettext('Default Zip'),
+        'iMapZoom'                             => gettext('Default Map View'),
+        'bHideLatLon'                          => gettext('Hide Latitude/Longitude'),
+        'sGeocoderProviders'                   => gettext('Geocoding services'),
     ];
 
     $sections = [];
@@ -49,8 +61,27 @@ $app->get('/people', function (Request $request, Response $response): Response {
                 unset($setting['tooltip']);
             }
 
+            if ($setting['name'] === 'sDefaultCountry') {
+                $setting['type'] = 'country';
+                unset($setting['choices']);
+                $setting['tooltip'] = gettext('Used for new records and for geocoding when a record has no country.');
+            }
+
+            if ($setting['name'] === 'sDefaultState') {
+                $setting['type'] = 'state';
+                $setting['country'] = 'sDefaultCountry';
+                unset($setting['tooltip']);
+            }
+
             if (in_array($setting['name'], ['sGreeterCustomMsg1', 'sGreeterCustomMsg2'], true)) {
                 $setting['type'] = 'textarea';
+            }
+            if ($setting['name'] === GeocoderChain::CONFIG_KEY) {
+                $setting['type'] = 'multiselect';
+                $setting['choices'] = array_map(
+                    static fn (string $name): array => ['value' => $name, 'label' => $name],
+                    GeocoderChain::availableProviderNames(),
+                );
             }
             if ($setting['name'] === 'sNewPersonNotificationRecipientIDs') {
                 $ids = array_filter(explode(',', SystemConfig::getValue($setting['name'])), 'is_numeric');
@@ -63,6 +94,24 @@ $app->get('/people', function (Request $request, Response $response): Response {
 
             return $setting;
         }, SystemConfig::getSettingsConfig($keys));
+
+        if ($id === 'peopleNewMembers') {
+            $withHeading = [];
+            foreach ($settings as $setting) {
+                if ($setting['name'] === 'sDefaultCountry') {
+                    $withHeading[] = [
+                        'name' => 'newRecordDefaultsHeading',
+                        'type' => 'heading',
+                        'label' => gettext('New Record Defaults'),
+                        'buttonId' => 'copy-church-address',
+                        'buttonLabel' => gettext('Copy from Church Info'),
+                        'buttonIcon' => 'fa-solid fa-church',
+                    ];
+                }
+                $withHeading[] = $setting;
+            }
+            $settings = $withHeading;
+        }
 
         $sections[] = ['id' => $id, 'title' => $title, 'icon' => $icon, 'settings' => $settings];
     }

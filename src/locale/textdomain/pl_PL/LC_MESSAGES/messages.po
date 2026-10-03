@@ -10456,10 +10456,6 @@ msgstr "Dostępna aktualizacja"
 msgid "User must have Notes permission"
 msgstr "Użytkownik musi mieć uprawnienie do notatek"
 
-#: 
-msgid "Address Defaults"
-msgstr "Ustawienia domyślne adresu"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10519,10 +10515,6 @@ msgstr "Skonfiguruj Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Połącz Mailchimp, aby zsynchronizować listy e-mail dla biuletynów i kampanii."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopiuj z adresu kościoła"
 
 #: 
 msgid "Copy to clipboard"
@@ -10849,10 +10841,6 @@ msgstr "Miesiąc rocznicy członkowstwa, dla którego chcesz zwrócić rekordy."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Właściwość, dla której chcesz zwrócić rekordy osób."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Te wartości są wstępnie wypełniane podczas tworzenia nowych rodzin. Pozostaw puste, aby wymagać ręcznego wpisu."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11275,10 +11263,6 @@ msgstr "Gravatar działa poprzez konwersję adresów e-mail na skrót (MD5). Rze
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Ukryj szerokość/długość geograficzną"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Ukryj adres osoby"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18389,10 +18373,6 @@ msgstr "W międzyczasie nadal działa mechanizm zastępczy uruchamiany przy wczy
 #: 
 msgid "This Person is Inactive"
 msgstr "Ta osoba jest nieaktywna"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Znajduje współrzędne mapy dla każdej rodziny, której ich brakuje, korzystając z OpenStreetMap. Przetwarza rodziny partiami po 50, co zajmuje około minuty na partię. Możesz zostawić tę stronę otwartą podczas działania procesu. Kontynuować?"
 
 #: 
 msgid "This person is deceased"

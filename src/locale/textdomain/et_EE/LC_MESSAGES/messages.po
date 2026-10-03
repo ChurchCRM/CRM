@@ -10389,10 +10389,6 @@ msgstr "Uuendus saadaval"
 msgid "User must have Notes permission"
 msgstr "Kasutajal peavad olema märkmete õigused"
 
-#: 
-msgid "Address Defaults"
-msgstr "Aadressi vaikeväärtused"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10452,10 +10448,6 @@ msgstr "Konfigureerige Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Ühendage Mailchimp e-posti loendite sünkroonimiseks uudiskirjade ja kampaaniate jaoks."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopeerige kiriku aadressist"
 
 #: 
 msgid "Copy to clipboard"
@@ -10782,10 +10774,6 @@ msgstr "Liikmeteaastapäeva kuu, mille jaoks soovite kirjeid tagasi saada."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Vara, mille jaoks soovite inimeste kirjeid tagasi saada."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Need väärtused täidetakse eelnevalt uute perede loomisel. Jätke tühjaks, et nõuda käsitsi sisestamist."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11208,10 +11196,6 @@ msgstr "Gravatar toimib e-posti aadresside räsiks (MD5) teisendamise teel. Tege
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Peida laiuskraad/pikkuskraad"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Peida isiku aadress"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18315,10 +18299,6 @@ msgstr "Lehe laadimise varulahendus töötab vahepeal edasi. Muutke, kui kaua Ch
 #: 
 msgid "This Person is Inactive"
 msgstr "See isik on mitteaktiivne"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "See otsib OpenStreetMap'i abil kaardikoordinaadid kõigile perekondadele, kellel need puuduvad. See töötleb perekondi 50 kaupa, iga partii võtab aega umbes minuti. Võite selle lehe töö käigus avatuna hoida. Jätkata?"
 
 #: 
 msgid "This person is deceased"

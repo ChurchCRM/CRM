@@ -10357,10 +10357,6 @@ msgstr "Päivitys saatavilla"
 msgid "User must have Notes permission"
 msgstr "Käyttäjällä on oltava muistiinpano-oikeudet"
 
-#: 
-msgid "Address Defaults"
-msgstr "Osoitteen oletusasetukset"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10420,10 +10416,6 @@ msgstr "Määritä Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Yhdistä Mailchimp sähköpostilistan synkronointiin uutiskirjeille ja kampanjoille."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopioi seurakunnan osoitteesta"
 
 #: 
 msgid "Copy to clipboard"
@@ -10750,10 +10742,6 @@ msgstr "Jäsenyyden vuosipäivän kuukausi, jolle haluat tietueet palautetuksi."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Omaisuus, jolle haluat henkilön tietueet palautetuksi."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Nämä arvot esitäytetään luotaessa uusia perheitä. Jätä tyhjäksi, jos haluat vaatia manuaalista merkintää."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11176,10 +11164,6 @@ msgstr "Gravatar toimii muuntamalla sähköpostiosoitteet tiivisteeksi (MD5). Va
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Piilota leveys- ja pituusaste"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Piilota henkilön osoite"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18283,10 +18267,6 @@ msgstr "Sivunlatauksen varajärjestelmä toimii sillä välin edelleen. Muuta, k
 #: 
 msgid "This Person is Inactive"
 msgstr "Tämä henkilö on epäaktiivinen"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Tämä etsii karttakoordinaatit jokaiselle perheelle, joilta ne puuttuvat, käyttäen OpenStreetMapia. Se käy läpi perheet 50 kappaleen erissä, noin minuutti erää kohden. Voit pitää tämän sivun auki suorituksen ajan. Jatketaanko?"
 
 #: 
 msgid "This person is deceased"

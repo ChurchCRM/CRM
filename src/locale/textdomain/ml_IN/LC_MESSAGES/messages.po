@@ -10355,10 +10355,6 @@ msgstr "അദ്യതനം ലഭ്യം"
 msgid "User must have Notes permission"
 msgstr "ഉപയോക്താവിന് കുറിപ്പ് അനുമതി ഉണ്ടായിരിക്കണം"
 
-#: 
-msgid "Address Defaults"
-msgstr "വിലാസ ഡിഫോൾട്ടുകൾ"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10418,10 +10414,6 @@ msgstr "Vonage ക്രമീകരിക്കുക"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "വാർത്താക്കുറിപ്പുകൾക്കും കാമ്പയിനുകൾക്കും ഇമെയിൽ ലിസ്‌റ്റുകൾ സമന്വയിക്കാൻ Mailchimp ബന്ധിപ്പിക്കുക."
-
-#: 
-msgid "Copy from church address"
-msgstr "സഭാ വിലാസത്തിൽ നിന്ന് പകർത്തുക"
 
 #: 
 msgid "Copy to clipboard"
@@ -10748,10 +10740,6 @@ msgstr "അംഗത്വ വാർഷിക മാസം."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "ഏത് ഗുണം ഉള്ള ആളുകളുടെ രേഖകൾ വേണ്ടത്."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "പുതിയ കുടുംബങ്ങൾ ഉണ്ടാക്കുമ്പോൾ ഈ മൂല്യങ്ങൾ മുൻകൂട്ടി നൽകപ്പെടും. മാനുവൽ ഇൻപുട്ട് ആവശ്യമെങ്കിൽ ശൂന്യമായി ഇടുക."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11174,10 +11162,6 @@ msgstr "Gravatar ഇമെയിൽ വിലാസങ്ങൾ hash (MD5) ആ�
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Latitude/Longitude മറയ്ക്കുക"
-
-#: 
-msgid "Hide Person Address"
-msgstr "വ്യക്തി വിലാസം മറയ്ക്കുക"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18281,10 +18265,6 @@ msgstr "ഇതിനിടയിൽ പേജ്-ലോഡ് ഫോൾബാക
 #: 
 msgid "This Person is Inactive"
 msgstr "ഈ വ്യക്തി നിർജ്ജീവമാണ്"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "OpenStreetMap ഉപയോഗിച്ച് മാപ്പ് കോർഡിനേറ്റുകൾ ഇല്ലാത്ത എല്ലാ കുടുംബങ്ങൾക്കും ഇത് കണ്ടെത്തുന്നു. ഇത് 50 വീതമുള്ള ബാച്ചുകളായി കുടുംബങ്ങളെ പ്രോസസ് ചെയ്യുന്നു, ഓരോ ബാച്ചിനും ഏകദേശം ഒരു മിനിറ്റ്. ഇത് പ്രവർത്തിക്കുമ്പോൾ ഈ പേജ് തുറന്നു തന്നെ വയ്ക്കാം. തുടരണോ?"
 
 #: 
 msgid "This person is deceased"

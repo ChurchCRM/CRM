@@ -10,16 +10,23 @@ class ChurchCRMRelease
 
     private array $rawRelease;
     private string $versionString = '0.0.0';
+    private bool $hasVersion = false;
+
+    private const VERSION_PATTERN = '/^\d+\.\d+\.\d+/';
 
     public function __construct(array $releaseArray)
     {
         $this->rawRelease = $releaseArray;
 
-        $rawVersion = $releaseArray['tag_name'] ?? $releaseArray['name'] ?? '0.0.0';
-        $normalizedVersion = ltrim(trim((string) $rawVersion), 'vV');
-
-        if ($normalizedVersion === '') {
-            $normalizedVersion = '0.0.0';
+        // A placeholder tag (e.g. "untagged-c80e...") must not hide a good release name (#10096)
+        $normalizedVersion = '0.0.0';
+        foreach ([$releaseArray['tag_name'] ?? null, $releaseArray['name'] ?? null] as $candidate) {
+            $candidate = ltrim(trim((string) $candidate), 'vV');
+            if (preg_match(self::VERSION_PATTERN, $candidate) === 1) {
+                $normalizedVersion = $candidate;
+                $this->hasVersion = true;
+                break;
+            }
         }
 
         $this->versionString = $normalizedVersion;
@@ -29,6 +36,11 @@ class ChurchCRMRelease
             $this->MINOR = (int) ($matches[2] ?? 0);
             $this->PATCH = (int) ($matches[3] ?? 0);
         }
+    }
+
+    public function hasVersion(): bool
+    {
+        return $this->hasVersion;
     }
 
     public function equals(ChurchCRMRelease $b): bool

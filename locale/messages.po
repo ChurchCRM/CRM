@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-02 17:59+0000\n"
+"POT-Creation-Date: 2026-10-03 18:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -703,9 +703,6 @@ msgid "Additional Information"
 msgstr ""
 
 msgid "Address"
-msgstr ""
-
-msgid "Address Defaults"
 msgstr ""
 
 msgid "Address Status"
@@ -2940,7 +2937,7 @@ msgstr ""
 msgid "Copy error message"
 msgstr ""
 
-msgid "Copy from church address"
+msgid "Copy from Church Info"
 msgstr ""
 
 msgid "Copy to Group"
@@ -2969,6 +2966,9 @@ msgstr ""
 msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
+msgid "Could not copy the church address."
+msgstr ""
+
 msgid "Could not find coordinates for that address. Try entering them manually."
 msgstr ""
 
@@ -2985,6 +2985,9 @@ msgid "Could not load release information."
 msgstr ""
 
 msgid "Could not load the current settings. Reload the page to try again."
+msgstr ""
+
+msgid "Could not match the church country."
 msgstr ""
 
 msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
@@ -5970,6 +5973,12 @@ msgstr ""
 msgid "Geocoding request failed. Please try again."
 msgstr ""
 
+msgid "Geocoding services"
+msgstr ""
+
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr ""
+
 msgid "Geocoding successful"
 msgstr ""
 
@@ -6339,9 +6348,6 @@ msgid "Hide Latitude/Longitude"
 msgstr ""
 
 msgid "Hide Newsletter Subscriptions"
-msgstr ""
-
-msgid "Hide Person Address"
 msgstr ""
 
 msgid "Hide Wedding Date"
@@ -8343,6 +8349,9 @@ msgid "New Person Added"
 msgstr ""
 
 msgid "New Pledge"
+msgstr ""
+
+msgid "New Record Defaults"
 msgstr ""
 
 msgid "New Release"
@@ -11064,6 +11073,9 @@ msgstr ""
 msgid "Select an event type…"
 msgstr ""
 
+msgid "Select at least one classification to include in the directory."
+msgstr ""
+
 msgid "Select calendars..."
 msgstr ""
 
@@ -12200,9 +12212,6 @@ msgstr ""
 msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
 msgstr ""
 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr ""
-
 msgid "Third-party extensions."
 msgstr ""
 
@@ -12239,7 +12248,7 @@ msgstr ""
 msgid "This field is required"
 msgstr ""
 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
 msgstr ""
 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
@@ -13083,6 +13092,9 @@ msgid "Use this key to authenticate API requests. Regenerating will invalidate t
 msgstr ""
 
 msgid "Used as the default start time when creating events of this type."
+msgstr ""
+
+msgid "Used for new records and for geocoding when a record has no country."
 msgstr ""
 
 msgid "Used for scheduling events and reporting times."

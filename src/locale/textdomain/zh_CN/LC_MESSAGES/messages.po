@@ -10450,10 +10450,6 @@ msgstr "有可用更新"
 msgid "User must have Notes permission"
 msgstr "用户必须拥有备注权限"
 
-#: 
-msgid "Address Defaults"
-msgstr "地址默认值"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10513,10 +10509,6 @@ msgstr "配置Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "连接Mailchimp以同步新闻通讯和活动的电子邮件列表。"
-
-#: 
-msgid "Copy from church address"
-msgstr "从教会地址复制"
 
 #: 
 msgid "Copy to clipboard"
@@ -10843,10 +10835,6 @@ msgstr "您想要返回记录的会员周年月份。"
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "您想要返回人员记录的属性。"
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "创建新家庭时，这些值会预先填充。留空以要求手动输入。"
 
 #: 
 msgid "Unit used to measure distance."
@@ -11269,10 +11257,6 @@ msgstr "Gravatar通过将电子邮件地址转换为哈希值（MD5）来工作�
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "隐藏经纬度"
-
-#: 
-msgid "Hide Person Address"
-msgstr "隐藏成员地址"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18369,10 +18353,6 @@ msgstr "与此同时，页面加载回退机制仍会继续工作。可通过 %1
 #: 
 msgid "This Person is Inactive"
 msgstr "此人员已停用"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "此操作将使用 OpenStreetMap 为所有缺少地图坐标的家庭查找坐标，系统会以每批 50 个家庭的方式处理，每批约需一分钟。运行期间您可以保持此页面打开。是否继续？"
 
 #: 
 msgid "This person is deceased"

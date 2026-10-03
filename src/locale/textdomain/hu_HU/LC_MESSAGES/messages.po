@@ -10416,10 +10416,6 @@ msgstr "Frissítés elérhető"
 msgid "User must have Notes permission"
 msgstr "A felhasználónak megjegyzés-jogosultsággal kell rendelkeznie"
 
-#: 
-msgid "Address Defaults"
-msgstr "Cím alapértelmezett beállítások"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10479,10 +10475,6 @@ msgstr "Vonage konfigurálása"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Csatlakoztassa a Mailchimpet az e-mail listák szinkronizálásához hírleveleknél és kampányoknál."
-
-#: 
-msgid "Copy from church address"
-msgstr "Másolás az egyházi címről"
 
 #: 
 msgid "Copy to clipboard"
@@ -10809,10 +10801,6 @@ msgstr "A tagsági évfordulós hónap, amelyre vissza szeretné adni a nyilván
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Az a tulajdonság, amelyre vissza szeretné adni a személyes nyilvántartásokat."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ezek az értékek automatikusan kitöltésre kerülnek új családok létrehozásakor. Hagyja üresen, ha kézi bevitelre van szükség."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11235,10 +11223,6 @@ msgstr "A Gravatar úgy működik, hogy az e-mail-címeket hash értékké (MD5)
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Szélesség/Hosszúság elrejtése"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Személy címének elrejtése"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18342,10 +18326,6 @@ msgstr "Az oldalbetöltéses tartalék megoldás eközben tovább működik. A %
 #: 
 msgid "This Person is Inactive"
 msgstr "Ez a személy inaktív"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Ez megkeresi a térképkoordinátákat minden olyan családhoz, amelyiknél hiányoznak, az OpenStreetMap segítségével. A családokat 50-es csoportokban dolgozza fel, csoportonként körülbelül egy perc alatt. Az oldalt nyitva hagyhatja a futás közben. Folytatja?"
 
 #: 
 msgid "This person is deceased"

@@ -10,7 +10,7 @@
  * browser holds. The browser's cart is always empty when cy.visit() is called.
  *
  * Fix: addToCart and cart state checks use cy.request() (no X-API-Key) so the
- * browser's session is used consistently. No second freshAdminLogin() is needed
+ * browser's session is used consistently. No second cy.freshAdminFormLogin() is needed
  * after addToCart because the session auth state is not corrupted.
  *
  * Seed data used:
@@ -49,15 +49,6 @@ describe("Cart to Family — UI", () => {
      * Direct form login — creates a fresh PHP session with local auth.
      * Called in beforeEach; each test starts with a clean session (empty cart).
      */
-    function freshAdminLogin() {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(Cypress.env("admin.username"));
-        cy.get("input[name=Password]").type(
-            Cypress.env("admin.password") + "{enter}",
-        );
-        cy.url().should("not.include", "/session/begin");
-    }
 
     /**
      * Add person IDs to the cart using the browser's session cookie.
@@ -88,9 +79,9 @@ describe("Cart to Family — UI", () => {
         });
 
     beforeEach(() => {
-        // freshAdminLogin() creates a new PHP session, which always starts with
+        // cy.freshAdminFormLogin() creates a new PHP session, which always starts with
         // an empty cart — no separate emptyCart() call is needed.
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
     });
 
     after(() => {
@@ -105,7 +96,7 @@ describe("Cart to Family — UI", () => {
         // Person 37 was moved into the seeded Campbell family (fam_ID 1), which
         // no endpoint can undo — put it back through the editor form.
         REASSIGNED_PERSON_IDS.forEach((personId) => {
-            freshAdminLogin();
+            cy.freshAdminFormLogin();
             cy.visit(`/PersonEditor.php?PersonID=${personId}`);
             cy.get("#familyId").select("0", { force: true });
             cy.get("#FamilyRole").select("0", { force: true });

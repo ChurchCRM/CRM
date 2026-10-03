@@ -25,13 +25,6 @@ describe("Mailing address on mailed reports (#9743)", () => {
      * Direct form login, as in confirm-reports.spec.js: these pages need the
      * MenuOptions role flag and a PHP session uncontaminated by earlier tests.
      */
-    const freshAdminLogin = () => {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(Cypress.env("admin.username"));
-        cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-        cy.url().should("not.include", "/session/begin");
-    };
 
     /**
      * Creates a family whose flagged second address is in a different ZIP.
@@ -93,7 +86,7 @@ describe("Mailing address on mailed reports (#9743)", () => {
     };
 
     beforeEach(() => {
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
         cy.visit("/LettersAndLabels.php");
     });
 
@@ -211,7 +204,7 @@ describe("Mailing address on mailed reports (#9743)", () => {
      * default, prints the flagged second address under a "Mailing Address:" label.
      *
      * Mocha runs a nested suite after its parent's own tests, so these start from
-     * the parent's freshAdminLogin() and are unaffected by the API-key calls above.
+     * the parent's cy.freshAdminFormLogin() and are unaffected by the API-key calls above.
      * Families created here land in the same createdFamilyIds list, so the shared
      * `after` hook still returns family_fam to the row count it started with.
      */

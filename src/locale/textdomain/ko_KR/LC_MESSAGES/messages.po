@@ -10376,10 +10376,6 @@ msgstr "업데이트 가능"
 msgid "User must have Notes permission"
 msgstr "사용자에게 메모 권한이 있어야 합니다"
 
-#: 
-msgid "Address Defaults"
-msgstr "주소 기본값"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10439,10 +10435,6 @@ msgstr "Vonage 구성"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Mailchimp을 연결하여 뉴스레터 및 캠페인의 이메일 목록을 동기화합니다."
-
-#: 
-msgid "Copy from church address"
-msgstr "교회 주소에서 복사"
 
 #: 
 msgid "Copy to clipboard"
@@ -10769,10 +10761,6 @@ msgstr "레코드를 반환하고 싶은 회원 기념일 월입니다."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "사람 레코드를 반환하고 싶은 속성입니다."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "이 값들은 새 가족을 만들 때 미리 채워집니다. 수동 입력을 요구하려면 비워두세요."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11195,10 +11183,6 @@ msgstr "Gravatar는 이메일 주소를 해시(MD5)로 변환하여 작동합니
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "위도/경도 숨기기"
-
-#: 
-msgid "Hide Person Address"
-msgstr "개인 주소 숨기기"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18295,10 +18279,6 @@ msgstr "그동안 페이지 로드 대체 방식은 계속 작동합니다. Chur
 #: 
 msgid "This Person is Inactive"
 msgstr "이 사람은 비활성 상태입니다"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "OpenStreetMap을 사용하여 좌표가 없는 모든 가정의 지도 좌표를 찾습니다. 50가정씩 배치로 처리하며, 배치당 약 1분이 소요됩니다. 실행되는 동안 이 페이지를 열어 두셔도 됩니다. 계속하시겠습니까?"
 
 #: 
 msgid "This person is deceased"

@@ -10467,10 +10467,6 @@ msgstr "Update verfügbar"
 msgid "User must have Notes permission"
 msgstr "Benutzer muss die Berechtigung für Notizen haben"
 
-#: 
-msgid "Address Defaults"
-msgstr "Adresse Standardwerte"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10530,10 +10526,6 @@ msgstr "Vonage konfigurieren"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Verbinden Sie Mailchimp, um E-Mail-Listen für Newsletter und Kampagnen zu synchronisieren."
-
-#: 
-msgid "Copy from church address"
-msgstr "Von Kirchenadresse kopieren"
 
 #: 
 msgid "Copy to clipboard"
@@ -10860,10 +10852,6 @@ msgstr "Der Mitgliedschaftsjubiläumsmonat, für den Sie Sätze zurück haben m�
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Die Eigenschaft, für die Sie Personensätze zurück haben möchten."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Diese Werte werden beim Erstellen neuer Familien automatisch ausgefüllt. Lassen Sie leer, um die manuelle Eingabe zu erzwingen."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11286,10 +11274,6 @@ msgstr "Gravatar funktioniert, indem E-Mail-Adressen in einen Hash (MD5) umgewan
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Breitengrad/Längengrad ausblenden"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Personadresse ausblenden"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18393,10 +18377,6 @@ msgstr "Der Seitenaufruf-Fallback funktioniert währenddessen weiter. Ändern Si
 #: 
 msgid "This Person is Inactive"
 msgstr "Diese Person ist inaktiv"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Dies ermittelt mithilfe von OpenStreetMap die Kartenkoordinaten für alle Familien, denen diese fehlen. Die Familien werden in Gruppen von 50 verarbeitet, was etwa eine Minute pro Gruppe dauert. Sie können diese Seite während der Ausführung geöffnet lassen. Fortfahren?"
 
 #: 
 msgid "This person is deceased"

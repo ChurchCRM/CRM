@@ -10387,10 +10387,6 @@ msgstr "Aktualizace k dispozici"
 msgid "User must have Notes permission"
 msgstr "Uživatel musí mít oprávnění pro poznámky"
 
-#: 
-msgid "Address Defaults"
-msgstr "Výchozí hodnoty adresy"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10450,10 +10446,6 @@ msgstr "Konfigurovat Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Připojte Mailchimp k synchronizaci seznamů e-mailů pro zpravodaje a kampáně."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopírovat z adresy kostela"
 
 #: 
 msgid "Copy to clipboard"
@@ -10780,10 +10772,6 @@ msgstr "Měsíc výročí členství, pro který chcete vrátit záznamy."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Vlastnost, pro kterou chcete vrátit záznamy osob."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Tyto hodnoty jsou předvyplněny při vytváření nových rodin. Nechejte prázdné, aby se vyžadoval ruční záznam."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11206,10 +11194,6 @@ msgstr "Gravatar funguje tak, že převádí e-mailové adresy na hash (MD5). Sk
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Skrýt zeměpisnou šířku/délku"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Skrýt adresu osoby"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18320,10 +18304,6 @@ msgstr "Záložní mechanismus při načtení stránky mezitím funguje dál. Zm
 #: 
 msgid "This Person is Inactive"
 msgstr "Tato osoba je neaktivní"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Tímto se najdou mapové souřadnice pro všechny rodiny, kterým chybí, pomocí OpenStreetMap. Rodiny se zpracovávají po dávkách po 50, přibližně minutu na dávku. Během průběhu můžete nechat tuto stránku otevřenou. Pokračovat?"
 
 #: 
 msgid "This person is deceased"

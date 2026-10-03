@@ -42,13 +42,7 @@ describe("Inactive classifications apply to Person Listing and dashboard (#10247
         });
 
         // Person has no create API; the legacy editor is the only way in.
-        cy.clearAllCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").should("be.visible").type(Cypress.env("admin.username"));
-        cy.get("input[name=Password]")
-            .should("be.visible")
-            .type(Cypress.env("admin.password") + "{enter}");
-        cy.url().should("not.include", "/session/begin");
+        cy.freshAdminFormLogin({ clearAll: true, visible: true });
         cy.visit("/PersonEditor.php");
         cy.get("#FirstName").type("Inactive");
         cy.get("#LastName").type(LAST_NAME);

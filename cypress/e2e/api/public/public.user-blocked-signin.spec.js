@@ -12,6 +12,10 @@ function publicPost(url, body) {
 }
 
 describe("API Public User - blocked sign-in for deceased and inactive people", () => {
+    before(() => {
+        cy.rememberTestEnv(["deceased.api.key", "inactive.api.key"]);
+    });
+
     const blockedUsers = [
         { userName: "deceased.user", apiKeyEnv: "deceased.api.key" },
         { userName: "inactive.user", apiKeyEnv: "inactive.api.key" },
@@ -22,7 +26,7 @@ describe("API Public User - blocked sign-in for deceased and inactive people", (
             it("login with the correct password returns 401 and no apiKey", () => {
                 publicPost("/api/public/user/login", { userName, password: "changeme" }).then((resp) => {
                     expect(resp.status).to.eq(401);
-                    expect(JSON.stringify(resp.body)).not.to.contain(Cypress.env(apiKeyEnv));
+                    expect(JSON.stringify(resp.body)).not.to.contain(Cypress.testEnv(apiKeyEnv));
                 });
             });
 
@@ -38,7 +42,7 @@ describe("API Public User - blocked sign-in for deceased and inactive people", (
             });
 
             it("API key request returns 401", () => {
-                cy.makePrivateAPICall(Cypress.env(apiKeyEnv), "GET", "/api/person/2", null, 401);
+                cy.makePrivateAPICall(Cypress.testEnv(apiKeyEnv), "GET", "/api/person/2", null, 401);
             });
 
             it("password reset answers like it does for an unknown user", () => {

@@ -107,7 +107,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
 
   await humanPause(page, 500);
   await humanClick(page.locator('#church-info-form button[type=submit]'));
-  await page.getByText('Church information saved successfully').first().waitFor({ state: 'visible', timeout: 10000 });
+  await page.getByText(/Church information saved/).first().waitFor({ state: 'visible', timeout: 10000 });
   await settle(page, 800);
 
   await captureScreen(page, testInfo, {

@@ -10357,10 +10357,6 @@ msgstr "Actualización disponible"
 msgid "User must have Notes permission"
 msgstr "El usuario debe tener permiso de Notas"
 
-#: 
-msgid "Address Defaults"
-msgstr "Valores predeterminados de dirección"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10420,10 +10416,6 @@ msgstr "Configurar Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Conecta Mailchimp para sincronizar listas de correo electrónico para boletines y campañas."
-
-#: 
-msgid "Copy from church address"
-msgstr "Copiar de la dirección de la Iglesia"
 
 #: 
 msgid "Copy to clipboard"
@@ -10750,10 +10742,6 @@ msgstr "El mes de aniversario de membresía para el que desea que se devuelvan l
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "La propiedad para la que desea que se devuelvan los registros de personas."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Estos valores se rellenan automáticamente al crear nuevas familias. Deje en blanco para requerir entrada manual."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11176,10 +11164,6 @@ msgstr "Gravatar funciona convirtiendo direcciones de correo electrónico en un 
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Ocultar Latitud/Longitud"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Ocultar Dirección de Persona"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18284,10 +18268,6 @@ msgstr "Mientras tanto, el mecanismo alternativo de carga de página sigue funci
 #: 
 msgid "This Person is Inactive"
 msgstr "Esta Persona está Inactiva"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Esto busca las coordenadas del mapa para cada familia a la que le faltan, usando OpenStreetMap. Procesa a las familias en lotes de 50, aproximadamente un minuto por lote. Podés dejar esta página abierta mientras se ejecuta. ¿Continuar?"
 
 #: 
 msgid "This person is deceased"

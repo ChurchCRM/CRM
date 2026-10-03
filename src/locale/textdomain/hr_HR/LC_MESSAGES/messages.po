@@ -10361,10 +10361,6 @@ msgstr "Dostupno ažuriranje"
 msgid "User must have Notes permission"
 msgstr "Korisnik mora imati dozvolu za bilješke"
 
-#: 
-msgid "Address Defaults"
-msgstr "Zadane postavke adrese"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10424,10 +10420,6 @@ msgstr "Konfiguriraj Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Povežite Mailchimp za sinkronizaciju popisa e-pošte za biltene i kampanje."
-
-#: 
-msgid "Copy from church address"
-msgstr "Kopiraj s adrese župe"
 
 #: 
 msgid "Copy to clipboard"
@@ -10754,10 +10746,6 @@ msgstr "Mjesec godišnjice članstva za koji želite vraćene zapise."
 #: 
 msgid "The property for which you would like person records returned."
 msgstr "Svojstvo za koje želite vraćene zapise osoba."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ove vrijednosti su unaprijed ispunjene pri kreiranju novih obitelji. Ostavite prazno za zahtijevanje ručnog unosa."
 
 #: 
 msgid "Unit used to measure distance."
@@ -11180,10 +11168,6 @@ msgstr "Gravatar funkcionira tako da pretvara adrese e-pošte u hash (MD5). Stva
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Sakrij geografsku širinu/dužinu"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Sakrij adresu osobe"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -18294,10 +18278,6 @@ msgstr "U međuvremenu, rezervni mehanizam pri učitavanju stranice i dalje radi
 #: 
 msgid "This Person is Inactive"
 msgstr "Ova osoba je neaktivna"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Ovo pronalazi koordinate na karti za sve obitelji kojima nedostaju, koristeći OpenStreetMap. Obrađuje obitelji u skupinama po 50, otprilike minutu po skupini. Možete ostaviti ovu stranicu otvorenom dok se izvršava. Nastaviti?"
 
 #: 
 msgid "This person is deceased"
