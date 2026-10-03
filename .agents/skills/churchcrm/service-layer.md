@@ -399,16 +399,26 @@ Endpoint adapters keep their own request/response shapes — the unification is 
 
 ## Geocoding goes through a provider chain <!-- learned: 2026-09-15 -->
 
-`GeoUtils::getLatLong()` no longer talks to Nominatim directly. It delegates to
+`GeoUtils::getLatLong()` never talks to a geocoding service directly. It asks
 `ChurchCRM\Service\Geocoding\GeocoderChain::fromConfig()`, which reads the
-`sGeocoderProviders` setting ("Nominatim, Census" by default, surfaced on the
-Family Map's Map Settings panel) and tries each `GeocoderProviderInterface`
-in order until one returns coordinates. To add a service: extend
-`AbstractHttpGeocoder`, implement `getName()`/`geocode()` (and `supports()` when
-it only covers some countries, like `CensusGeocoder`), and register the
-lower-case name in `GeocoderChain::PROVIDERS`. Never call a geocoding HTTP
-endpoint from anywhere else — every caller (family save, person, church info,
-bulk action, `/api/geocoder/address`) must keep going through `GeoUtils`.
+`sGeocoderProviders` setting ("Nominatim" by default; "Nominatim, Census" opts in
+to the US Census Bureau; surfaced on the Family Map's Map Settings panel) and
+iterates the `GeocoderProviderInterface`s one by one. `results()` is a lazy
+generator: it yields a `GeocodeResult` (coordinates plus the address the provider
+matched) per provider that found the address, so stopping at the first one never
+calls the rest, and a time budget stops it starting new providers late in a request.
+
+Which providers apply to an address is decided from its country: the record's own
+country, else `sDefaultCountry`, else `sChurchCountry`; when all are blank
+`supports()` receives null and a country-limited provider (Census) must decline.
+Callers should pass the record's country to `getLatLong()`.
+
+To add a service: extend `AbstractHttpGeocoder`, implement `getName()`/`geocode()`
+(returning a `GeocodeResult`, with the matched address when the service gives one)
+and `supports()` when it only covers some countries, then register the lower-case
+name in `GeocoderChain::PROVIDERS`. Never call a geocoding HTTP endpoint from
+anywhere else: every caller (family save, person, church info, bulk action,
+`/api/geocoder/address`) must keep going through `GeoUtils`.
 
 ```php
 $coords = GeoUtils::getLatLong($street, $city, $state, $zip, $country); // ['Latitude' => .., 'Longitude' => ..] or zeros

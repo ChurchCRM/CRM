@@ -755,7 +755,7 @@ class Family extends BaseFamily implements PhotoInterface
     public function updateLanLng(): void
     {
         if (!empty($this->getAddress()) && (!$this->hasLatitudeAndLongitude())) {
-            $latLng = GeoUtils::getLatLong($this->getAddress());
+            $latLng = GeoUtils::getLatLong($this->getAddress(), null, null, null, $this->getCountry());
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 $this->setLatitude($latLng['Latitude']);
                 $this->setLongitude($latLng['Longitude']);

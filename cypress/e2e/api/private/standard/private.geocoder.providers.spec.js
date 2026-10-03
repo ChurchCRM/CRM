@@ -3,21 +3,32 @@
 /**
  * Geocoding provider chain (#9848).
  *
- * `sGeocoderProviders` is a comma-separated ranking of geocoding services;
- * GeoUtils::getLatLong() tries them in order. These tests drive
- * POST /api/geocoder/address under different rankings, using a stable public
- * address (the Empire State Building) that both services resolve, and assert
- * the result lands within ~1 km. Every lookup is a live call to the chosen
- * service; the setting is restored to its default afterwards.
+ * `sGeocoderProviders` is a comma-separated ranking of geocoding services
+ * ("Nominatim" by default; Census is opt-in). GeoUtils::getLatLong() asks them
+ * one by one. Census only answers for the US, decided from the record's country,
+ * else sDefaultCountry, else sChurchCountry; if all are blank it is skipped.
+ *
+ * These tests drive POST /api/geocoder/address, which sends no country, so the
+ * default/church country settings decide. They use a stable public address (the
+ * Empire State Building) that both services resolve and assert the result lands
+ * within ~1 km. Every lookup that reaches a service is a live call; the settings
+ * are restored afterwards.
  */
 describe("API Private Geocoder — provider chain (#9848)", () => {
-    const CONFIG_URL = "/admin/api/system/config/sGeocoderProviders";
-    const DEFAULT_RANKING = "Nominatim, Census";
+    const CONFIG = (name) => `/admin/api/system/config/${name}`;
+    const SETTINGS = ["sGeocoderProviders", "sDefaultCountry", "sChurchCountry"];
+    const DEFAULT_RANKING = "Nominatim";
     const ADDRESS = "350 5th Avenue, New York, NY 10118";
     const EMPIRE_STATE = { lat: 40.7484, lon: -73.9857 };
     const TOLERANCE = 0.01; // ~1 km
 
-    const setRanking = (value) => cy.makePrivateAdminAPICall("POST", CONFIG_URL, { value }, 200);
+    const original = {};
+
+    const setConfig = (name, value) => cy.makePrivateAdminAPICall("POST", CONFIG(name), { value }, 200);
+    const setCountries = (defaultCountry, churchCountry) => {
+        setConfig("sDefaultCountry", defaultCountry);
+        setConfig("sChurchCountry", churchCountry);
+    };
 
     const expectNear = (body) => {
         expect(body).to.have.property("Latitude").that.is.a("number");
@@ -26,46 +37,87 @@ describe("API Private Geocoder — provider chain (#9848)", () => {
         expect(Math.abs(body.Longitude - EMPIRE_STATE.lon)).to.be.lessThan(TOLERANCE);
     };
 
+    const expectNotFound = (body) => {
+        expect(body.Latitude).to.equal(0);
+        expect(body.Longitude).to.equal(0);
+    };
+
     const geocode = () =>
         cy.makePrivateAdminAPICall("POST", "/api/geocoder/address", { address: ADDRESS }, 200, 40000);
 
-    after(() => {
-        setRanking(DEFAULT_RANKING);
+    before(() => {
+        SETTINGS.forEach((name) => {
+            cy.getSystemConfig(name).then((value) => {
+                original[name] = value;
+            });
+        });
     });
 
-    it("ships with Nominatim then Census as the default ranking", () => {
-        cy.makePrivateAdminAPICall("GET", CONFIG_URL, null, 200).then((response) => {
+    after(() => {
+        SETTINGS.forEach((name) => cy.restoreSystemConfig(name, original[name]));
+    });
+
+    it("ships with Nominatim alone as the default ranking (Census is opt-in)", () => {
+        cy.makePrivateAdminAPICall("GET", CONFIG("sGeocoderProviders"), null, 200).then((response) => {
             expect(response.body.value).to.equal(DEFAULT_RANKING);
         });
     });
 
     it("round-trips a custom ranking through the settings API", () => {
-        setRanking("Census, Nominatim").then((response) => {
+        setConfig("sGeocoderProviders", "Census, Nominatim").then((response) => {
             expect(response.body.value).to.equal("Census, Nominatim");
         });
-        cy.makePrivateAdminAPICall("GET", CONFIG_URL, null, 200).then((response) => {
+        cy.makePrivateAdminAPICall("GET", CONFIG("sGeocoderProviders"), null, 200).then((response) => {
             expect(response.body.value).to.equal("Census, Nominatim");
         });
-    });
-
-    it("geocodes with the US Census Bureau alone", () => {
-        setRanking("Census");
-        geocode().then((response) => expectNear(response.body));
     });
 
     it("geocodes with Nominatim alone", () => {
-        setRanking("Nominatim");
+        setConfig("sGeocoderProviders", DEFAULT_RANKING);
         cy.wait(1100); // Nominatim usage policy: one request per second
         geocode().then((response) => expectNear(response.body));
     });
 
+    it("geocodes with the US Census Bureau when the default country is the US", () => {
+        setConfig("sGeocoderProviders", "Census");
+        setCountries("US", "");
+        geocode().then((response) => expectNear(response.body));
+    });
+
+    it("falls back to the church country when the default country is blank", () => {
+        setConfig("sGeocoderProviders", "Census");
+        setCountries("", "US");
+        geocode().then((response) => expectNear(response.body));
+    });
+
+    it("does not ask Census about a non-US default country", () => {
+        setConfig("sGeocoderProviders", "Census");
+        setCountries("GB", "US");
+        geocode().then((response) => expectNotFound(response.body));
+    });
+
+    it("does not ask Census when no country is configured anywhere", () => {
+        setConfig("sGeocoderProviders", "Census");
+        setCountries("", "");
+        geocode().then((response) => expectNotFound(response.body));
+    });
+
     it("ignores unknown names and still geocodes with the remaining service", () => {
-        setRanking("Bogus, Census");
+        setConfig("sGeocoderProviders", "Bogus, Census");
+        setCountries("US", "");
+        geocode().then((response) => expectNear(response.body));
+    });
+
+    it("tries the next service when the first finds nothing", () => {
+        // Census declines (non-US default country), so the answer has to come from Nominatim.
+        setConfig("sGeocoderProviders", "Census, Nominatim");
+        setCountries("GB", "");
+        cy.wait(1100);
         geocode().then((response) => expectNear(response.body));
     });
 
     it("falls back to Nominatim when the ranking names no usable service", () => {
-        setRanking("Nowhere");
+        setConfig("sGeocoderProviders", "Nowhere");
         cy.wait(1100);
         geocode().then((response) => expectNear(response.body));
     });

@@ -274,7 +274,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family = $request->getAttribute('family');
 
         $familyAddress = $family->getAddress();
-        $familyLatLong = GeoUtils::getLatLong($familyAddress);
+        $familyLatLong = GeoUtils::getLatLong($familyAddress, null, null, null, $family->getCountry());
         $familyDrivingInfo = GeoUtils::drivingDistanceMatrix(
             $familyAddress,
             ChurchMetaData::getChurchAddress()
