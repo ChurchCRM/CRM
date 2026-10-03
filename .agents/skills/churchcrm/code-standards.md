@@ -16,6 +16,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - JSON in `<script>`: `InputUtils::jsonEncodeForScript()`
 - Redirects: `RedirectUtils` — not raw `header('Location')`
 - UI: Tabler + Bootstrap 5. Wrap `gettext()` / `i18next.t()`
+- JS: page logic goes in a `webpack/` entry, registered in `webpack.config.js` and loaded with one `<script src="<?= SystemURLs::assetVersioned('/skin/v2/NAME.min.js') ?>">`. No inline `<script>` blocks for page logic; a one-line config handoff with `InputUtils::jsonEncodeForScript()` is fine. Read `window.CRM` at run time (inside `onLocalesReady`), never at module load (`webpack-typescript.md`)
 - Reports: never extend `QueryView.php` / `QueryList.php` or add `query_qry` rows (#9921). Core reports → `src/v2/` route + controller + Twig. One church's needs → a plugin in `src/plugins/` (shareable in `src/plugins/community/`)
 - Tests with behavior changes
 - Comments are rare. Names and tests carry intent. Do not restate the next line. Comment only a *why* that the code cannot say (CI trap, security invariant, deliberate deviation). Do not add paragraph comments in specs.

@@ -95,6 +95,7 @@ Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
 - [ ] UI text wrapped with `gettext()` or `i18next.t()`
 - [ ] No `alert()` / `confirm()` — `window.CRM.notify()` and bootbox or a Bootstrap modal
 - [ ] Server-side initial state where a JS-only flash would show
+- [ ] Page logic is a `webpack/` entry, not an inline `<script>` block in the view
 
 ### i18n
 
@@ -187,7 +188,7 @@ When implementing review feedback on a branch you were asked to fix:
 
 1. Confirm each thread is still true on the current HEAD
 2. Fix, show the diff, wait for push approval
-3. Do not resolve threads unless the maintainer asks
+3. After the approved push, resolve the threads that push fixed (`git-workflow.md` → After push)
 
 ---
 
