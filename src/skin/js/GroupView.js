@@ -778,6 +778,9 @@ function initDataTable() {
         title: i18next.t("Name"),
         data: "PersonId",
         render: (data, type, full) => {
+          if (type === "sort" || type === "type") {
+            return ((full.Person.LastName || "") + " " + (full.Person.FirstName || "")).toLowerCase();
+          }
           // GHSA-m649-24q9-q6r4: HTML-escape for HTML content context (not attribute)
           var escapedName = window.CRM.escapeHtml(full.Person.FullName || "");
           return (
