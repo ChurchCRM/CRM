@@ -98,6 +98,7 @@ module.exports = {
     'people-person-view': './webpack/people/person-view',
     'people-map-view': './webpack/people/map-view',
     'people-map-neighbors': './webpack/people/map-neighbors',
+    'people-self-register': './webpack/people/self-register',
     'error': './webpack/error',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
