@@ -11277,10 +11277,6 @@ msgstr "Gravatar funcționează prin convertirea adreselor de e-mail într-un ha
 msgid "Hide Latitude/Longitude"
 msgstr "Ascunde latitudine/longitudine"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Ascunde adresa persoanei"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

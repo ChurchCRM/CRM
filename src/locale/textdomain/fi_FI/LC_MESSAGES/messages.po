@@ -11177,10 +11177,6 @@ msgstr "Gravatar toimii muuntamalla sähköpostiosoitteet tiivisteeksi (MD5). Va
 msgid "Hide Latitude/Longitude"
 msgstr "Piilota leveys- ja pituusaste"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Piilota henkilön osoite"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

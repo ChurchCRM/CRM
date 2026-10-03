@@ -2679,7 +2679,6 @@
   "Gravatar Website": "Gravatar वेबसाइट",
   "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image.": "Gravatar ईमेल पतों को हैश (MD5) में परिवर्तित करके काम करता है। वास्तविक ईमेल पता कभी भी Gravatar के सर्वर पर नहीं भेजा जाता — छवि खोजने के लिए केवल हैश का उपयोग किया जाता है।",
   "Hide Latitude/Longitude": "अक्षांश/देशांतर छुपाएं",
-  "Hide Person Address": "व्यक्ति का पता छुपाएं",
   "How it works": "यह कैसे काम करता है",
   "How many checks to print per deposit slip page": "प्रति जमा पर्ची पृष्ठ पर कितने चेक प्रिंट करें",
   "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status": "यदि SMS संदेश नहीं भेजे जा रहे:\n1. API Key और Secret सही हैं (कोई अतिरिक्त रिक्त स्थान नहीं) इसकी पुष्टि करें\n2. सुनिश्चित करें कि From Number आपका एक वैध Vonage नंबर है\n3. सुनिश्चित करें कि प्राप्तकर्ता के फ़ोन नंबर में देश कोड शामिल है\n4. अपना Vonage खाता शेष जांचें\n5. Vonage Dashboard > SMS > Logs में डिलीवरी स्थिति देखें",

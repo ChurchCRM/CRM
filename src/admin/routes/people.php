@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\Geocoding\GeocoderChain;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\view\PageHeader;
@@ -25,7 +26,7 @@ $app->get('/people', function (Request $request, Response $response): Response {
             'sDefaultCountry', 'sDefaultState', 'sDefaultCity', 'sDefaultZip',
         ]],
         'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
-            'iMapZoom', 'bHideLatLon',
+            'iMapZoom', 'bHideLatLon', 'sGeocoderProviders',
         ]],
     ];
 
@@ -51,6 +52,7 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'sDefaultZip'                          => gettext('Default Zip'),
         'iMapZoom'                             => gettext('Default Map View'),
         'bHideLatLon'                          => gettext('Hide Latitude/Longitude'),
+        'sGeocoderProviders'                   => gettext('Geocoding services'),
     ];
 
     $sections = [];
@@ -67,6 +69,13 @@ $app->get('/people', function (Request $request, Response $response): Response {
 
             if (in_array($setting['name'], ['sGreeterCustomMsg1', 'sGreeterCustomMsg2'], true)) {
                 $setting['type'] = 'textarea';
+            }
+            if ($setting['name'] === GeocoderChain::CONFIG_KEY) {
+                $setting['type'] = 'multiselect';
+                $setting['choices'] = array_map(
+                    static fn (string $name): array => ['value' => $name, 'label' => $name],
+                    GeocoderChain::availableProviderNames(),
+                );
             }
             if ($setting['name'] === 'sNewPersonNotificationRecipientIDs') {
                 $ids = array_filter(explode(',', SystemConfig::getValue($setting['name'])), 'is_numeric');

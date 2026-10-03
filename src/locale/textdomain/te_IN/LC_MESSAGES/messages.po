@@ -11187,10 +11187,6 @@ msgstr "Gravatar ఈమెయిల్ చిరునామాలను హ్�
 msgid "Hide Latitude/Longitude"
 msgstr "అక్షాంశం/రేఖాంశం దాచండి"
 
-#: 
-msgid "Hide Person Address"
-msgstr "వ్యక్తి చిరునామా దాచండి"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

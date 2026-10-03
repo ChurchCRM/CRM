@@ -11205,10 +11205,6 @@ msgstr "Gravatar hoạt động bằng cách chuyển đổi địa chỉ email 
 msgid "Hide Latitude/Longitude"
 msgstr "Ẩn vĩ độ/kinh độ"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Ẩn địa chỉ cá nhân"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

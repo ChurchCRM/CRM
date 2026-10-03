@@ -9,14 +9,13 @@ concurrency:
 # the community agent is down, rate-limited, or out of budget.
 #
 #   1. Security guard on newly opened issues
-#   2. Normalize bug issue types when "bug" label is applied
-#   3. Mark stale inactive issues
-#   4. Review closed stale issues that have no linked PR
+#   2. Mark stale inactive issues
+#   3. Review closed stale issues that have no linked PR
 # ==============================================================================
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [opened]
   schedule:
     - cron: '0 2 * * 1'
   workflow_dispatch:
@@ -83,57 +82,17 @@ jobs:
             if (hasCVE) {
               const body = fs.readFileSync(path.join(process.env.GITHUB_WORKSPACE, '.github/issue-comments/security.md'), 'utf8');
               await github.rest.issues.createComment({ ...ref, body });
-              await github.rest.issues.addLabels({ ...ref, labels: ['security', 'security-delete-required'] });
+              await github.rest.issues.addLabels({ ...ref, labels: ['Security', 'security-delete-required'] });
               await github.rest.issues.update({ ...ref, state: 'closed', state_reason: 'not_planned' });
               console.log('CVE/GHSA reference: template posted, labelled, closed.');
               return;
             }
             if (looksSecurity) {
-              await github.rest.issues.addLabels({ ...ref, labels: ['security'] });
+              await github.rest.issues.addLabels({ ...ref, labels: ['Security'] });
               console.log('Vulnerability-shaped wording: labelled security.');
               return;
             }
             console.log('Nothing security-shaped.');
-
-  ensure-bug-type:
-    if: |
-      github.event_name == 'issues' &&
-      github.event.action == 'labeled' &&
-      github.event.label.name == 'bug'
-    name: Normalize bug issue type
-    timeout-minutes: 5
-    runs-on: ubuntu-24.04
-
-    steps:
-      - name: Ensure Issue Type is "Bug"
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
-        with:
-          script: |
-            const issue = context.payload.issue || {};
-            if (!issue.node_id) {
-              console.log('No issue payload — skip');
-              return;
-            }
-            const currentType = issue.type?.name || null;
-            if (currentType === 'Bug') {
-              console.log('Issue type is already Bug');
-              return;
-            }
-            try {
-              const result = await github.graphql(`
-                mutation($issueId:ID!, $issueType:IssueType!) {
-                  updateIssue(input: {id: $issueId, issueType: $issueType}) {
-                    issue { type }
-                  }
-                }
-              `, {
-                issueId: issue.node_id,
-                issueType: 'BUG'
-              });
-              console.log('Updated issue type to Bug:', result);
-            } catch (e) {
-              console.log('Could not update issue type:', e.message);
-            }
 
   mark-stale:
     if: |
@@ -148,14 +107,34 @@ jobs:
         uses: actions/stale@4391f3da665fdf50b6810c1a66712fb9ba21aa93 # v11
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          stale-issue-message: 'This issue has been inactive for 45 days. If this is still relevant, please comment to keep it open. Otherwise it will be closed in 7 days.'
-          stale-pr-message: 'This PR has been inactive for 45 days. If this is still relevant, please comment to keep it open. Otherwise it will be closed in 7 days.'
+          # A reply keeps it open. Silence means we close it. The wording stays welcoming on purpose.
+          stale-issue-message: |
+            Thanks for taking the time to report this. Reports like this are how the ChurchCRM community keeps moving.
+
+            We have not heard anything here for 45 days, and we need a reply from you to keep going. Please comment if this is still happening, if you are working on it, or if you can help someone else pick it up. A short comment is enough, and it keeps the issue open.
+
+            If you would rather talk it through than write it all here, come to Discord: https://discord.gg/tuWyFzj3Nj
+
+            If we do not hear back, we will close it in 14 days. No reply means this is no longer a concern we can act on. You are welcome to reopen it any time with a new comment.
+          stale-pr-message: |
+            Thanks for putting this pull request together. Contributor work is how ChurchCRM moves, and we want yours.
+
+            We have not heard anything here for 45 days. If you are still working on it, or you want a review, please reply and we will keep it open. If you are stuck, say so and we will help.
+
+            If you would rather talk it through than write it all here, come to Discord: https://discord.gg/tuWyFzj3Nj
+
+            If we do not hear back, we will close it in 14 days so the queue stays honest for the rest of the community. You are welcome to reopen it any time and we will pick it back up.
           days-before-stale: 45
-          days-before-close: 7
-          stale-issue-label: stale
-          stale-pr-label: stale
-          exempt-issue-labels: 'security,security-delete-required,pinned,documentation,type: documentation,enhancement,Epic,accepted,Feature Request: Multi-Church,Feature: Attendance,Feature: Cart,Feature: Data Import / Export,Feature: Emails,Feature: Events / Calendar,Feature: Financial,Feature: Geographical / Maps,Feature: Groups,Feature: Kiosk,Feature: Members,Feature: Non-Admin Member Access,Feature: Notifications,Feature: Reports,Feature: Search,Feature: Self-Register / Verify,Feature: SMS,Feature: Social,Feature: Sunday School,Feature: Users,Feature: Volunteer'
-          exempt-pr-labels: 'security,security-delete-required,pinned,documentation,type: documentation'
+          days-before-close: 14
+          days-before-pr-close: 14
+          # Cap each Monday so a backlog does not get a wall of comments in one night.
+          operations-per-run: 30
+          stale-issue-label: Stale
+          stale-pr-label: Stale
+          # Kept open on purpose: security, parent epics, and beginner tasks.
+          # Everything else, including enhancements, goes stale when the reporter goes quiet.
+          exempt-issue-labels: 'Security,security-delete-required,Epic,good first issue'
+          exempt-pr-labels: 'Security,security-delete-required,dependencies'
           remove-stale-when-updated: true
           remove-stale-when-commented: true
 

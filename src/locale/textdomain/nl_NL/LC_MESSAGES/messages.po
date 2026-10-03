@@ -11179,10 +11179,6 @@ msgstr "Gravatar werkt door e-mailadressen om te zetten in een hash (MD5). Het d
 msgid "Hide Latitude/Longitude"
 msgstr "Breedte-/lengtegraad verbergen"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Persoonadres verbergen"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

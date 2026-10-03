@@ -202,7 +202,7 @@ class ChurchMetaData
     private static function updateLatLng(): void
     {
         if (self::getChurchFullAddress() !== '') {
-            $latLng = GeoUtils::getLatLong(self::getChurchFullAddress());
+            $latLng = GeoUtils::getLatLong(self::getChurchFullAddress(), null, null, null, self::readString('sChurchCountry'));
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 SystemConfig::setValue('iChurchLatitude', $latLng['Latitude']);
                 SystemConfig::setValue('iChurchLongitude', $latLng['Longitude']);

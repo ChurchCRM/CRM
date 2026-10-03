@@ -11166,10 +11166,6 @@ msgstr "Gravatar はメールアドレスをハッシュ（MD5）に変換する
 msgid "Hide Latitude/Longitude"
 msgstr "緯度・経度を非表示"
 
-#: 
-msgid "Hide Person Address"
-msgstr "個人の住所を非表示"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

@@ -11276,10 +11276,6 @@ msgstr "Gravatar działa poprzez konwersję adresów e-mail na skrót (MD5). Rze
 msgid "Hide Latitude/Longitude"
 msgstr "Ukryj szerokość/długość geograficzną"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Ukryj adres osoby"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 

@@ -7,10 +7,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        👋 **Questions belong in GitHub** — they help the next person who searches for the same thing. Please fill in the form below.
-
-        **Want to chat live or have an urgent question?** Ping us on Discord — then still open the issue here so the answer is searchable:
+        👋 Need help right now, or want to talk it through? Come to Discord. You do not have to open a GitHub issue just to get support:
         👉 <https://discord.gg/tuWyFzj3Nj>
+
+        Open an issue when the question should stay searchable for the next person. Please fill in the form below.
 
         Before opening: please check [the docs](https://docs.churchcrm.io).
 
