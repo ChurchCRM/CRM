@@ -38,7 +38,7 @@ function freshLogin(username, password) {
 }
 
 function adminLogin() {
-    freshLogin(Cypress.env("admin.username"), Cypress.env("admin.password"));
+    freshLogin(Cypress.testEnv("admin.username"), Cypress.testEnv("admin.password"));
 }
 
 function setVersion(value) {
@@ -91,6 +91,10 @@ function cleanupFixtures() {
     dbOk(`DELETE FROM calendars WHERE name LIKE ?`, [`${PREFIX}%`]);
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, [`${PREFIX}%`]);
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password", "standard.username", "standard.password"]);
+});
 
 describe("Volunteer v2 D25 — calendar grants in the UI", () => {
     before(() => {
@@ -206,7 +210,7 @@ describe("Volunteer v2 D25 — calendar grants in the UI", () => {
             eventId = rows[0].event_id;
         });
 
-        freshLogin(Cypress.env("standard.username"), Cypress.env("standard.password"));
+        freshLogin(Cypress.testEnv("standard.username"), Cypress.testEnv("standard.password"));
         cy.then(() => cy.visit(`/event/editor/${eventId}`));
         cy.intercept("POST", "**/api/events/*").as("saveEvent");
 

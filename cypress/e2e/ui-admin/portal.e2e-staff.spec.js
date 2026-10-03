@@ -70,8 +70,8 @@ const MEMBER_PORTAL_PAGES = [...PORTAL_PAGES, "/portal/family"];
 function adminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(`${Cypress.env("admin.password")}{enter}`);
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(`${Cypress.testEnv("admin.password")}{enter}`);
     cy.url({ timeout: 10000 }).should("include", ADMIN_DASHBOARD);
 }
 
@@ -113,6 +113,10 @@ function assertMasqueradeBanner() {
     accountMenuItems().should("not.contain.text", ADMIN_CONSOLE_TEXT);
     cy.get("body").type("{esc}");
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password"]);
+});
 
 describe("Member Portal e2e — #9869 scenario 3, staff in the portal", () => {
     describe("an administrator, being themselves", () => {

@@ -72,11 +72,11 @@ let groupA = 0;
 let mailpitAvailable = false;
 
 function coordinatorKey() {
-    return Cypress.env("editrecords.api.key");
+    return Cypress.testEnv("editrecords.api.key");
 }
 
 function volunteerKey() {
-    return Cypress.env("selfedit.api.key");
+    return Cypress.testEnv("selfedit.api.key");
 }
 
 /** Run SQL and fail the test if the database rejected it. */
@@ -209,6 +209,10 @@ function requireMailpit(ctx) {
         ctx.skip();
     }
 }
+
+before(() => {
+    cy.rememberTestEnv(["selfedit.api.key", "editrecords.api.key"]);
+});
 
 describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
     before(() => {

@@ -25,7 +25,7 @@ const HEADER_PURPLE = "rgb(75, 0, 130)";
 const MEMBER_USER = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 
-const adminKey = () => Cypress.env("admin.api.key");
+const adminKey = () => Cypress.testEnv("admin.api.key");
 
 /** Stashed in `before` and restored in `after` — see the comment there. */
 let originalVolunteerVersion = "v1";
@@ -61,6 +61,10 @@ const loginAsMember = () => {
     cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
     cy.url({ timeout: 10000 }).should("include", "/portal");
 };
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
 
 describe("Admin → Member Portal page", () => {
     before(() => {

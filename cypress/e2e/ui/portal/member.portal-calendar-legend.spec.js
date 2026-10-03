@@ -23,7 +23,7 @@ const adminRequest = (method, url, body) =>
     cy.request({
         method,
         url,
-        headers: { "content-type": "application/json", "x-api-key": Cypress.env("admin.api.key") },
+        headers: { "content-type": "application/json", "x-api-key": Cypress.testEnv("admin.api.key") },
         body,
     });
 
@@ -62,6 +62,10 @@ const cleanup = () => {
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${PREFIX}%`]);
     dbOk(`DELETE FROM calendars WHERE name LIKE ?`, [`${PREFIX}%`]);
 };
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
 
 describe("Member Portal calendar legend toggles", () => {
     before(() => {

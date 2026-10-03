@@ -87,7 +87,7 @@ function dbOk(sql, params = []) {
 
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(
-        Cypress.env(key),
+        Cypress.testEnv(key),
         method,
         url,
         body,
@@ -265,6 +265,10 @@ function createPausedThenActive(ministryId, body) {
 }
 
 // ── suite ──────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "plainauth.api.key"]);
+});
 
 describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
     before(() => {

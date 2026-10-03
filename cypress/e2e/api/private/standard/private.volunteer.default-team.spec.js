@@ -118,6 +118,10 @@ function scheduleBody(teamId, name) {
     };
 }
 
+before(() => {
+    cy.rememberTestEnv(["user.api.key"]);
+});
+
 describe("Volunteer v2 — every ministry has at least one team (#9701)", () => {
     before(() => {
         setVersion("v2");
@@ -454,7 +458,7 @@ describe("Volunteer v2 — every ministry has at least one team (#9701)", () => 
 
         it("lets a team leader create a position in their own team", () => {
             cy.makePrivateAPICall(
-                Cypress.env("user.api.key"),
+                Cypress.testEnv("user.api.key"),
                 "POST",
                 `${MINISTRIES_URL}/${ministryId}/positions`,
                 { name: `${PREFIX} Leader Made`, teamId, order: 1 },
@@ -466,7 +470,7 @@ describe("Volunteer v2 — every ministry has at least one team (#9701)", () => 
 
         it("still refuses a team leader a position with no team (400, not 201)", () => {
             cy.makePrivateAPICall(
-                Cypress.env("user.api.key"),
+                Cypress.testEnv("user.api.key"),
                 "POST",
                 `${MINISTRIES_URL}/${ministryId}/positions`,
                 { name: `${PREFIX} Leader Team-less` },
@@ -476,7 +480,7 @@ describe("Volunteer v2 — every ministry has at least one team (#9701)", () => 
 
         it("does not let a team leader delete the team they lead", () => {
             cy.makePrivateAPICall(
-                Cypress.env("user.api.key"),
+                Cypress.testEnv("user.api.key"),
                 "DELETE",
                 `${TEAMS_URL}/${teamId}`,
                 null,

@@ -82,7 +82,7 @@ function qualificationOf(personId, positionId) {
 
 function grant(positionId, personId, status = 201, key = "admin.api.key") {
     return cy.makePrivateAPICall(
-        Cypress.env(key),
+        Cypress.testEnv(key),
         "POST",
         `${POSITIONS_URL}/${positionId}/qualifications`,
         { personId },
@@ -127,6 +127,10 @@ function cleanupFixtures() {
     dbOk("DELETE FROM calendars WHERE name LIKE ?", like);
     dbOk("DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?", like);
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "selfedit.api.key"]);
+});
 
 describe("Volunteer v2 — a team linked to a Sunday School class (D23)", () => {
     before(() => {
@@ -215,7 +219,7 @@ describe("Volunteer v2 — a team linked to a Sunday School class (D23)", () => 
 
         it("refuses a team leader", () => {
             cy.makePrivateAPICall(
-                Cypress.env(LEADER_KEY),
+                Cypress.testEnv(LEADER_KEY),
                 "POST",
                 `${TEAMS_URL}/${teamId}`,
                 { classGroupId: classA, importPositionId: positionLead },

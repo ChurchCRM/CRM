@@ -42,6 +42,10 @@ function csrfTokenFromPage() {
         .invoke("val");
 }
 
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "standard.username", "standard.password"]);
+});
+
 describe("Admin Login as User (masquerade)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
@@ -405,7 +409,7 @@ describe("Admin Login as User (masquerade)", () => {
                 method: "POST",
                 url: `/v2/user/${TARGET_USER_ID}/impersonate`,
                 headers: {
-                    "x-api-key": Cypress.env("admin.api.key"),
+                    "x-api-key": Cypress.testEnv("admin.api.key"),
                     Accept: "application/json",
                 },
                 form: true,
@@ -469,8 +473,8 @@ describe("Masquerade record does not survive its session", () => {
             url: "/session/begin",
             form: true,
             body: {
-                User: Cypress.env("standard.username"),
-                Password: Cypress.env("standard.password"),
+                User: Cypress.testEnv("standard.username"),
+                Password: Cypress.testEnv("standard.password"),
             },
         });
 

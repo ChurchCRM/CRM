@@ -44,7 +44,7 @@ let churchName = "Main St. Cathedral";
 
 const SUBSCRIPTION_URL = "/api/portal/calendar/subscription";
 
-const adminKey = () => Cypress.env("admin.api.key");
+const adminKey = () => Cypress.testEnv("admin.api.key");
 
 const setVisibleCalendars = (visible) =>
     cy.request({
@@ -137,11 +137,15 @@ const dayInWindow = (monthsAhead) => {
 /** Unfold RFC 5545 continuation lines so a property can be matched whole. */
 const unfold = (ics) => ics.replace(/\r\n[ \t]/g, "");
 
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
+
 describe("Member Portal calendar subscription", () => {
     before(() => {
         cy.request({
             url: "/admin/api/system/config/sChurchName",
-            headers: { "x-api-key": Cypress.env("admin.api.key") },
+            headers: { "x-api-key": Cypress.testEnv("admin.api.key") },
         }).then((response) => {
             churchName = response.body.value ?? response.body.data ?? churchName;
         });

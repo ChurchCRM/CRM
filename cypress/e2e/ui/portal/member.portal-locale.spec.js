@@ -51,7 +51,7 @@ const TRANSLATED = {
  */
 const UNTRANSLATED = ["My Family"];
 
-const adminKey = () => Cypress.env("admin.api.key");
+const adminKey = () => Cypress.testEnv("admin.api.key");
 
 const setLocale = (value) =>
     cy.request({
@@ -78,6 +78,10 @@ const loginAsMember = () => {
     cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
     cy.url({ timeout: 10000 }).should("include", "/portal");
 };
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
 
 describe("Member Portal — the member's own language (#9869)", () => {
     before(() => {

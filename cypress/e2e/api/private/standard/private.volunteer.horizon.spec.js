@@ -51,7 +51,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(ADMIN_KEY), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(ADMIN_KEY), method, url, body, expectedStatus);
 }
 
 function setConfig(name, value) {
@@ -197,6 +197,10 @@ function cleanupFixtures() {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
 
 describe("Volunteer v2 D31 — schedules follow events that already exist, up to a church-wide scheduling horizon that a daily timer job keeps every schedule filled to; the \"Other\" event type and the default type of a ministry's new events", () => {
     before(() => {

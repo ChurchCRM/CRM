@@ -20,7 +20,7 @@
  *   person 105 Mary Smith       no email, family 21 has no email
  *   family 1   Campbell         no family email
  */
-const mailpit = () => Cypress.env("mailpitUrl") || "http://localhost:8025";
+const mailpit = () => Cypress.testEnv("mailpitUrl") || "http://localhost:8025";
 
 const clearMailpit = () =>
     cy.request({ method: "DELETE", url: `${mailpit()}/api/v1/messages`, failOnStatusCode: false });
@@ -32,6 +32,10 @@ const mailpitMessages = (tag) =>
         .then((resp) => resp.body.messages.filter((m) => m.Subject.includes(tag)));
 
 const send = (body, expectedStatus = 200) => cy.makePrivateAdminAPICall("POST", "/api/email/send", body, expectedStatus);
+
+before(() => {
+    cy.rememberTestEnv(["mailpitUrl"]);
+});
 
 describe("API POST /api/email/send", () => {
     describe("resolution and delivery", () => {

@@ -72,7 +72,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(key), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -209,6 +209,10 @@ function shifted(wallClock, minutes) {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "plainauth.api.key"]);
+});
 
 describe("Volunteer v2 — every occurrence anchored to a calendar event (D20), schedule time offsets (D21) and the four ways a schedule finds its events, Staff this event included (D22)", () => {
     before(() => {

@@ -12,7 +12,7 @@
  * Override Mailpit with `--env mailpitUrl=http://localhost:8070` on a stack with
  * non-default ports.
  */
-const mailpit = () => Cypress.env("mailpitUrl") || "http://localhost:8025";
+const mailpit = () => Cypress.testEnv("mailpitUrl") || "http://localhost:8025";
 
 const mailpitMessages = (tag) =>
     cy
@@ -29,6 +29,10 @@ const composeAndSend = (subject, body) => {
     cy.get("#crm-email-send-submit").click();
     return cy.wait("@send");
 };
+
+before(() => {
+    cy.rememberTestEnv(["mailpitUrl"]);
+});
 
 describe("Send email from a record", () => {
     beforeEach(() => {

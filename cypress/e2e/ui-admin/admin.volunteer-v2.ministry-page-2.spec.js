@@ -77,14 +77,14 @@ let scheduleId = 0;
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
     // One retry: in CI a login page occasionally reloads while the name is being
     // typed (the submit then goes out with an empty user and bounces back here).
     cy.url().then((url) => {
         if (url.includes("/session/begin")) {
-            cy.get("input[name=User]").clear().type(Cypress.env("admin.username"));
-            cy.get("input[name=Password]").clear().type(Cypress.env("admin.password") + "{enter}");
+            cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
+            cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
     cy.url().should("not.include", "/session/begin");
@@ -181,6 +181,10 @@ function clearQualifications(positionId) {
         },
     );
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password"]);
+});
 
 describe("Volunteer v2 ministry page, round two (#9701)", () => {
     before(() => {

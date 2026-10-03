@@ -34,8 +34,8 @@ let classId = 0;
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(`${Cypress.env("admin.password")}{enter}`);
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(`${Cypress.testEnv("admin.password")}{enter}`);
     cy.url().should("not.include", "/session/begin");
 }
 
@@ -172,6 +172,10 @@ function rowAction(title, selector) {
     cy.contains("#volunteerMinistryEventsTable tbody tr", title).first().find("[data-bs-toggle='dropdown']").click();
     cy.contains("#volunteerMinistryEventsTable tbody tr", title).first().find(selector).should("be.visible").click();
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password"]);
+});
 
 describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount card (D26)", () => {
     before(() => {

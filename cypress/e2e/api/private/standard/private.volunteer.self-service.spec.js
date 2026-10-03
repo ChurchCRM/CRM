@@ -83,7 +83,7 @@ function dbOk(sql, params = []) {
 
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(
-        Cypress.env(key),
+        Cypress.testEnv(key),
         method,
         url,
         body,
@@ -310,6 +310,10 @@ function cleanupFixtures() {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key", "plainauth.api.key"]);
+});
 
 describe("Volunteer v2 — the member self-service surface (#9712, epic #9701)", () => {
     before(() => {

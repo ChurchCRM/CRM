@@ -137,7 +137,7 @@ function postUserEditor(personId, fields) {
     return cy.request({
         method: "POST",
         url: `/admin/system/users/${personId}/edit`,
-        headers: { "x-api-key": Cypress.env("admin.api.key") },
+        headers: { "x-api-key": Cypress.testEnv("admin.api.key") },
         form: true,
         body: fields,
         failOnStatusCode: false,
@@ -149,7 +149,7 @@ function postUserEditor(personId, fields) {
 function getUserEditor(personId) {
     return pageRequest(
         `/admin/system/users/${personId}/edit`,
-        Cypress.env("admin.api.key"),
+        Cypress.testEnv("admin.api.key"),
     );
 }
 
@@ -164,6 +164,10 @@ function restoreManagerUser() {
         Notes: "1",
     });
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "plainauth.api.key"]);
+});
 
 describe("Volunteer v2 scoped authorization (#9706)", () => {
     before(() => {
@@ -235,7 +239,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
 
         it("denies a standard user with every flag but Admin", () => {
             cy.makePrivateAPICall(
-                Cypress.env("user.api.key"),
+                Cypress.testEnv("user.api.key"),
                 "GET",
                 SCOPES_URL,
                 null,
@@ -608,7 +612,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             );
 
             cy.makePrivateAPICall(
-                Cypress.env("user.api.key"),
+                Cypress.testEnv("user.api.key"),
                 "GET",
                 ME_PERMISSIONS_URL,
                 null,
@@ -635,7 +639,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 201,
             );
             cy.makePrivateAPICall(
-                Cypress.env("user.api.key"),
+                Cypress.testEnv("user.api.key"),
                 "GET",
                 SCOPES_URL,
                 null,
@@ -688,13 +692,13 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
         });
 
         it("serves the dashboard to an administrator", () => {
-            pageRequest(DASHBOARD_URL, Cypress.env("admin.api.key")).then((resp) => {
+            pageRequest(DASHBOARD_URL, Cypress.testEnv("admin.api.key")).then((resp) => {
                 expect(resp.status).to.eq(200);
             });
         });
 
         it("denies the dashboard to a user with no scope", () => {
-            pageRequest(DASHBOARD_URL, Cypress.env("user.api.key")).then((resp) => {
+            pageRequest(DASHBOARD_URL, Cypress.testEnv("user.api.key")).then((resp) => {
                 expect(resp.status).to.be.oneOf([302, 403]);
                 if (resp.status === 302) {
                     expect(resp.headers.location).to.include(
@@ -715,7 +719,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 },
                 201,
             );
-            pageRequest(DASHBOARD_URL, Cypress.env("user.api.key")).then((resp) => {
+            pageRequest(DASHBOARD_URL, Cypress.testEnv("user.api.key")).then((resp) => {
                 expect(resp.status).to.eq(200);
             });
         });
@@ -731,7 +735,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 },
                 201,
             );
-            pageRequest(DASHBOARD_URL, Cypress.env("plainauth.api.key")).then(
+            pageRequest(DASHBOARD_URL, Cypress.testEnv("plainauth.api.key")).then(
                 (resp) => {
                     expect(resp.status).to.eq(200);
                 },
@@ -803,7 +807,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
 
             // Still not a coordinator anywhere it matters.
             cy.makePrivateEditSelfAPICall("GET", SCOPES_URL, null, 403);
-            pageRequest(DASHBOARD_URL, Cypress.env("selfedit.api.key")).then((resp) => {
+            pageRequest(DASHBOARD_URL, Cypress.testEnv("selfedit.api.key")).then((resp) => {
                 expect(resp.status).to.be.oneOf([302, 403]);
             });
 
@@ -882,7 +886,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
         });
 
         it("is redirected away from the coordinator dashboard", () => {
-            pageRequest(DASHBOARD_URL, Cypress.env("selfedit.api.key")).then(
+            pageRequest(DASHBOARD_URL, Cypress.testEnv("selfedit.api.key")).then(
                 (resp) => {
                     expect(resp.status).to.be.oneOf([302, 403]);
                 },

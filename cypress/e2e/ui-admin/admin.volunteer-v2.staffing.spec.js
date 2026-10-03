@@ -53,14 +53,14 @@ let posHelper = 0;
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
         if (url.includes("/session/begin")) {
-            cy.get("input[name=User]").clear().type(Cypress.env("admin.username"));
-            cy.get("input[name=Password]").clear().type(Cypress.env("admin.password") + "{enter}");
+            cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
+            cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
     cy.url().should("not.include", "/session/begin");
@@ -244,6 +244,10 @@ function onlyScheduleId() {
             return resp.body.schedules[0].id;
         });
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password"]);
+});
 
 describe("Volunteer v2 — staffing needs (§2.10)", () => {
     before(() => {

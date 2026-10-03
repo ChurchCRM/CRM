@@ -99,7 +99,7 @@ function dbOk(sql, params = []) {
 
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(
-        Cypress.env(key),
+        Cypress.testEnv(key),
         method,
         url,
         body,
@@ -300,6 +300,10 @@ function daysToNext(dow) {
 }
 
 // ── suite ──────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "nofinance.api.key", "plainauth.api.key"]);
+});
 
 describe("Volunteer v2 — event ministry ownership and calendar integration (#9713)", () => {
     before(() => {

@@ -105,7 +105,7 @@ let positionBTeam = 0;
 let teamBDefault = 0;
 
 function userKey() {
-    return Cypress.env("user.api.key");
+    return Cypress.testEnv("user.api.key");
 }
 
 /** Run SQL and fail the test if the database rejected it. */
@@ -236,6 +236,10 @@ function countQualificationRows(personId, positionId) {
         [personId, positionId],
     ).then((rows) => Number(rows[0].c));
 }
+
+before(() => {
+    cy.rememberTestEnv(["user.api.key"]);
+});
 
 describe("Volunteer v2 pool and qualification API (#9707)", () => {
     before(() => {

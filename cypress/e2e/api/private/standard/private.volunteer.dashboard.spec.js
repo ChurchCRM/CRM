@@ -100,7 +100,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(key), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -365,6 +365,10 @@ function cleanupFixtures() {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "nofinance.api.key", "plainauth.api.key", "menuoptions.api.key"]);
+});
 
 describe("Volunteer v2 — the coordinator dashboard aggregate (#9711, epic #9701)", () => {
     before(() => {

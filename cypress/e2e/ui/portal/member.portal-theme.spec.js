@@ -18,7 +18,7 @@ const THEME_ID = "cypresstheme";
 const THEME_DIR = `src/Include/themes/${THEME_ID}`;
 const HEADER_GREEN = "rgb(0, 100, 0)";
 
-const adminKey = () => Cypress.env("admin.api.key");
+const adminKey = () => Cypress.testEnv("admin.api.key");
 
 const setPortalTheme = (value) =>
     cy.request({
@@ -40,10 +40,14 @@ const loginAsMember = () => {
 const loginAsAdmin = () => {
     cy.clearCookies();
     cy.visit("session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
     cy.url({ timeout: 10000 }).should("include", "/v2/dashboard");
 };
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "admin.username", "admin.password"]);
+});
 
 describe("Member Portal — church theme", () => {
     before(() => {

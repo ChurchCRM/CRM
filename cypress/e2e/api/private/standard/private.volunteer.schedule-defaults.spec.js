@@ -59,7 +59,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(ADMIN_KEY), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(ADMIN_KEY), method, url, body, expectedStatus);
 }
 
 function setConfig(name, value, expectedStatus = 200) {
@@ -264,6 +264,10 @@ function cleanupFixtures() {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
 
 describe("Volunteer v2 D32 — default volunteers belong to the schedule", () => {
     before(() => {

@@ -14,6 +14,10 @@
  * spending a band of every page on it. The bar's offset class survives for the
  * masquerade banner only.
  */
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
+
 describe("Member Portal — staff access", () => {
     beforeEach(() => {
         cy.setupAdminSession();
@@ -166,7 +170,7 @@ describe("Member Portal — a member with no family", () => {
         cy.request({
             method: "POST",
             url: `/admin/api/system/config/${name}`,
-            headers: { "content-type": "application/json", "x-api-key": Cypress.env("admin.api.key") },
+            headers: { "content-type": "application/json", "x-api-key": Cypress.testEnv("admin.api.key") },
             body: { value },
             failOnStatusCode: false,
         });

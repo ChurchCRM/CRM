@@ -50,7 +50,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(key), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -193,6 +193,10 @@ function cleanupFixtures() {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key"]);
+});
 
 describe("Volunteer v2 D24 — a ministry's events created through core from the ministry page, pinned by the D25 rule; and the Calendar tab's list with staffing and headcount (D26)", () => {
     before(() => {

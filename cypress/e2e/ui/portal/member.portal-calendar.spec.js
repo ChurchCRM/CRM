@@ -35,7 +35,7 @@ const BIRTHDAY_PERSON_INITIALS = "Albert C.";
 const BIRTHDAY_PERSON_FULL_NAME = "Albert Campbell";
 const BIRTHDAY_MONTH_DAY = "09-09";
 
-const adminKey = () => Cypress.env("admin.api.key");
+const adminKey = () => Cypress.testEnv("admin.api.key");
 
 const setVisibleCalendars = (visible) =>
     cy.request({
@@ -75,6 +75,10 @@ const thisYear = () => new Date().getFullYear();
 
 /** POST /api/events answers without the new id, so the events are found again by title. */
 const createdEventTitles = [];
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
 
 describe("Member Portal calendar", () => {
     after(() => {

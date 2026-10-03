@@ -74,7 +74,7 @@ const PAGES = [
     ["opportunities", "/portal/volunteer/opportunities", "#volunteer-opportunities"],
 ];
 
-const adminKey = () => Cypress.env("admin.api.key");
+const adminKey = () => Cypress.testEnv("admin.api.key");
 
 const setConfig = (name, value) =>
     cy.request({
@@ -188,6 +188,10 @@ function assertTouchTargets(label) {
         ).to.deep.eq([]);
     });
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
 
 describe("Member Portal — responsive (#9869)", () => {
     before(() => {

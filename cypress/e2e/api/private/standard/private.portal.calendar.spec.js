@@ -26,7 +26,7 @@ const MEMBER_PASSWORD = "changeme";
 
 const EVENTS_URL = "/api/portal/calendar/events";
 
-const adminKey = () => Cypress.env("admin.api.key");
+const adminKey = () => Cypress.testEnv("admin.api.key");
 
 const setVisibleCalendars = (visible) =>
     cy.request({
@@ -63,6 +63,10 @@ const getEvents = (query = {}) =>
         qs: query,
         failOnStatusCode: false,
     });
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
 
 describe("Member Portal calendar API", () => {
     after(() => {

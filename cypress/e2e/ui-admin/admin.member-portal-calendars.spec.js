@@ -28,7 +28,7 @@ const CHURCH_CALENDAR_ID = 1;
 const CHURCH_CALENDAR_NAME = "Public Calendar";
 const MINISTRY_CALENDAR_NAME = "PORTALCAL Youth Ministry";
 
-const adminKey = () => Cypress.env("admin.api.key");
+const adminKey = () => Cypress.testEnv("admin.api.key");
 
 const setVisibleCalendars = (visible) =>
     cy.request({
@@ -65,6 +65,10 @@ const removeMinistryCalendar = () => {
         MINISTRY_CALENDAR_NAME,
     ]);
 };
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
 
 describe("Admin → Member Portal → Calendars", () => {
     before(() => {

@@ -67,14 +67,14 @@ let teamA = 0;
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
         if (url.includes("/session/begin")) {
-            cy.get("input[name=User]").clear().type(Cypress.env("admin.username"));
-            cy.get("input[name=Password]").clear().type(Cypress.env("admin.password") + "{enter}");
+            cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
+            cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
     cy.url().should("not.include", "/session/begin");
@@ -84,14 +84,14 @@ function freshAdminLogin() {
 function freshStandardLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("standard.username"));
-    cy.get("input[name=Password]").type(Cypress.env("standard.password") + "{enter}");
+    cy.get("input[name=User]").type(Cypress.testEnv("standard.username"));
+    cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
         if (url.includes("/session/begin")) {
-            cy.get("input[name=User]").clear().type(Cypress.env("standard.username"));
-            cy.get("input[name=Password]").clear().type(Cypress.env("standard.password") + "{enter}");
+            cy.get("input[name=User]").clear().type(Cypress.testEnv("standard.username"));
+            cy.get("input[name=Password]").clear().type(Cypress.testEnv("standard.password") + "{enter}");
         }
     });
     cy.url().should("not.include", "/session/begin");
@@ -158,6 +158,10 @@ function menuSectionShouldNotExist(title) {
         .filter((_i, el) => el.textContent.trim() === title)
         .should("have.length", 0);
 }
+
+before(() => {
+    cy.rememberTestEnv(["user.api.key", "admin.username", "admin.password", "standard.username", "standard.password"]);
+});
 
 describe("Volunteer v2 — the Ministries sidebar heading", () => {
     before(() => {
@@ -328,15 +332,15 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
 
             // Last: cy.request() rotates the session cookie.
             cy.makePrivateAPICall(
-                Cypress.env("user.api.key"),
+                Cypress.testEnv("user.api.key"),
                 "POST",
                 `${VOLUNTEER_URL}/ministries`,
                 { name: `${PREFIX} Forbidden`, description: "" },
                 403,
             );
-            cy.makePrivateAPICall(Cypress.env("user.api.key"), "DELETE", `${VOLUNTEER_URL}/ministries/${ministryB}`, null, 403);
+            cy.makePrivateAPICall(Cypress.testEnv("user.api.key"), "DELETE", `${VOLUNTEER_URL}/ministries/${ministryB}`, null, 403);
             cy.makePrivateAPICall(
-                Cypress.env("user.api.key"),
+                Cypress.testEnv("user.api.key"),
                 "POST",
                 `${VOLUNTEER_URL}/ministries/${ministryB}`,
                 { active: false },
@@ -371,8 +375,8 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
             cy.get("#volunteer-dashboard").should("not.exist");
 
             // The scope row is still there — only the permission is missing.
-            cy.makePrivateAPICall(Cypress.env("user.api.key"), "GET", `${VOLUNTEER_URL}/ministries/${ministryA}`, null, 403);
-            cy.makePrivateAPICall(Cypress.env("user.api.key"), "GET", `${VOLUNTEER_URL}/me/permissions`, null, 200).then(
+            cy.makePrivateAPICall(Cypress.testEnv("user.api.key"), "GET", `${VOLUNTEER_URL}/ministries/${ministryA}`, null, 403);
+            cy.makePrivateAPICall(Cypress.testEnv("user.api.key"), "GET", `${VOLUNTEER_URL}/me/permissions`, null, 200).then(
                 (resp) => {
                     expect(resp.body.isManageMyMinistries).to.eq(false);
                     expect(resp.body.isCoordinator).to.eq(false);

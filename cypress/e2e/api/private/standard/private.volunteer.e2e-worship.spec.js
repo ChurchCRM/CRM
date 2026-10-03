@@ -94,7 +94,7 @@ function dbOk(sql, params = []) {
 
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(
-        Cypress.env(key),
+        Cypress.testEnv(key),
         method,
         url,
         body,
@@ -268,6 +268,10 @@ function cleanupFixtures() {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key"]);
+});
 
 describe("Volunteer v2 — #9714 scenario 2, \"Sunday Worship\", as ONE end-to-end run", () => {
     before(() => {

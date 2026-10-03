@@ -36,11 +36,11 @@ function freshLogin(username, password) {
 }
 
 function adminLogin() {
-    freshLogin(Cypress.env("admin.username"), Cypress.env("admin.password"));
+    freshLogin(Cypress.testEnv("admin.username"), Cypress.testEnv("admin.password"));
 }
 
 function coordinatorLogin() {
-    freshLogin(Cypress.env("standard.username"), Cypress.env("standard.password"));
+    freshLogin(Cypress.testEnv("standard.username"), Cypress.testEnv("standard.password"));
 }
 
 function admin(method, url, body, status = 200) {
@@ -122,6 +122,10 @@ function teamAction(teamName, selector) {
 function tickEvent(title) {
     cy.contains("#volunteerMinistryEventsTable tbody tr", `${PREFIX} ${title}`).find(".ministry-event-select").check();
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password", "standard.username", "standard.password"]);
+});
 
 describe("Volunteer v2 — the Sunday School switch (D29) and a class's events (D28), on screen", () => {
     before(() => {

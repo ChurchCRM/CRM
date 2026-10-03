@@ -60,7 +60,7 @@ const PORTAL_PAGES = [
     ["family", "/portal/family", ".portal-card"],
 ];
 
-const adminKey = () => Cypress.env("admin.api.key");
+const adminKey = () => Cypress.testEnv("admin.api.key");
 
 const setConfig = (name, value) =>
     cy.request({
@@ -81,8 +81,8 @@ const readConfig = (name) =>
 function adminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(`${Cypress.env("admin.password")}{enter}`);
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(`${Cypress.testEnv("admin.password")}{enter}`);
     cy.url({ timeout: 10000 }).should("include", "/v2/dashboard");
 }
 
@@ -93,6 +93,10 @@ function memberLogin() {
     cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
     cy.url({ timeout: 10000 }).should("include", "/portal");
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "admin.username", "admin.password"]);
+});
 
 describe("Member Portal e2e — #9869 scenario 4, a church themes the portal", () => {
     before(() => {

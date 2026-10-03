@@ -45,8 +45,8 @@ function admin(method, url, body, status = 200) {
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(`${Cypress.env("admin.password")}{enter}`);
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(`${Cypress.testEnv("admin.password")}{enter}`);
     cy.url().should("not.include", "/session/begin");
 }
 
@@ -88,6 +88,10 @@ function cleanupFixtures() {
 function card(key) {
     return cy.get(`.volunteer-requirement[data-position-id="${positionIds[key]}"]`);
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password"]);
+});
 
 describe("Volunteer v2 — staffing counts read as status words (D34)", () => {
     before(() => {

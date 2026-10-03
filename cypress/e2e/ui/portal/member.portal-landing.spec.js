@@ -12,6 +12,10 @@
  *   - /external/limited-access is retired and redirects to /portal
  *   - a legacy *.php page bounces to /portal (Include/PageInit.php)
  */
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
+
 describe("Member Portal — self-service landing", () => {
     const memberUser = "lena.black.editself.notes@example.com";
     const memberPassword = "changeme";
@@ -191,7 +195,7 @@ describe("Member Portal — the home page's Profile card", () => {
     // from `church.socialLinks` (ChurchMetaData::getChurchSocialLinks()). The
     // ChurchCRM credit link that used to live there is gone for good.
     describe("Footer social links (#9907)", () => {
-        const adminKey = () => Cypress.env("admin.api.key");
+        const adminKey = () => Cypress.testEnv("admin.api.key");
 
         const SOCIAL = [
             { config: "sChurchX", id: "x", label: "X", url: "https://x.com/seedchurch" },

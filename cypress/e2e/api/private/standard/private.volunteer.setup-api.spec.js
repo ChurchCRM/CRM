@@ -56,7 +56,7 @@ let ministryA = 0;
 let ministryB = 0;
 
 function userKey() {
-    return Cypress.env("user.api.key");
+    return Cypress.testEnv("user.api.key");
 }
 
 /** Run SQL and fail the test if the database rejected it. */
@@ -150,6 +150,10 @@ function grantMinistryScope(ministryId) {
         [200, 201],
     );
 }
+
+before(() => {
+    cy.rememberTestEnv(["user.api.key"]);
+});
 
 describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
     before(() => {

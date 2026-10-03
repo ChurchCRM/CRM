@@ -35,7 +35,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(key), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function admin(method, url, body, expectedStatus = 200) {
@@ -90,6 +90,10 @@ function cleanupFixtures() {
     dbOk("DELETE FROM calendars WHERE name LIKE ?", like);
     dbOk("DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?", like);
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key"]);
+});
 
 describe("Volunteer v2 D29 — \"Can this ministry provide teachers for Sunday School?\" (design §0.8, §2.3, §4.6)", () => {
     before(() => {

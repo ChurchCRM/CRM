@@ -33,8 +33,8 @@ let shortCrewId = 0;
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(`${Cypress.env("admin.password")}{enter}`);
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(`${Cypress.testEnv("admin.password")}{enter}`);
     cy.url().should("not.include", "/session/begin");
 }
 
@@ -126,6 +126,10 @@ function openNewEvent() {
     cy.get("#ministryEventModal").should("be.visible");
     cy.get("#ministry-event-form-title").should("have.focus");
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password"]);
+});
 
 describe("Volunteer v2 D31 — schedules follow events that exist, up to the horizon", () => {
     before(() => {

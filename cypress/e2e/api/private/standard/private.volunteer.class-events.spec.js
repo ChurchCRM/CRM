@@ -49,7 +49,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(key), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function admin(method, url, body, expectedStatus = 200) {
@@ -166,6 +166,10 @@ function cleanupFixtures() {
 }
 
 const CLASS_KEYS = ["keep", "remove", "move", "moveTo", "delKeep", "delRemove", "delDelete", "delCore"];
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key"]);
+});
 
 describe("Volunteer v2 D28 — a class's events when its team's class changes or the team is deleted, and the Calendar tab's Delete events (design §0.8, §2.4, §3.3, §4.6)", () => {
     before(() => {

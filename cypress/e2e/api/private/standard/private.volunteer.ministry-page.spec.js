@@ -88,7 +88,7 @@ function dbOk(sql, params = []) {
 
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(
-        Cypress.env(key),
+        Cypress.testEnv(key),
         method,
         url,
         body,
@@ -291,6 +291,10 @@ function summaryEndpointFor(key, expectedStatus = 200) {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "editrecords.api.key"]);
+});
 
 describe("Volunteer v2 — the two API surfaces the restructured ministry page needs (epic #9701, design §5.4 as amended by the product owner)", () => {
     before(() => {

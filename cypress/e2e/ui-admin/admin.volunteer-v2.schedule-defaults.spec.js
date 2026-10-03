@@ -30,8 +30,8 @@ const position = {};
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(`${Cypress.env("admin.password")}{enter}`);
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(`${Cypress.testEnv("admin.password")}{enter}`);
     cy.url().should("not.include", "/session/begin");
 }
 
@@ -94,6 +94,10 @@ function need(key) {
 function picker(key, index = 0) {
     return cy.get(`${need(key)} select.volunteer-need-default-select`).eq(index);
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password"]);
+});
 
 describe("Volunteer v2 D32 — default volunteers belong to the schedule", () => {
     before(() => {

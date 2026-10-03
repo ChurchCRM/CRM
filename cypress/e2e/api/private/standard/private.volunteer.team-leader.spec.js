@@ -74,7 +74,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(key), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -191,6 +191,10 @@ function cleanupFixtures() {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key"]);
+});
 
 describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epic #9701)", () => {
     before(() => {
@@ -534,7 +538,7 @@ describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epi
                     cy.request({
                         method: "GET",
                         url,
-                        headers: { "x-api-key": Cypress.env(LEADER_KEY) },
+                        headers: { "x-api-key": Cypress.testEnv(LEADER_KEY) },
                         failOnStatusCode: false,
                     }).then((resp) => {
                         expect(resp.status).to.eq(403);
@@ -546,7 +550,7 @@ describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epi
                 cy.request({
                     method: "GET",
                     url: PORTAL_TEAMS_URL,
-                    headers: { "x-api-key": Cypress.env(ADMIN_KEY) },
+                    headers: { "x-api-key": Cypress.testEnv(ADMIN_KEY) },
                     failOnStatusCode: false,
                 }).then((resp) => {
                     expect(resp.status).to.eq(403);

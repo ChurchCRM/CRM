@@ -130,7 +130,7 @@ function dbOk(sql, params = []) {
 
 function api(key, method, url, body, expectedStatus = 200) {
     return cy.makePrivateAPICall(
-        Cypress.env(key),
+        Cypress.testEnv(key),
         method,
         url,
         body,
@@ -525,6 +525,10 @@ function resetWorkflow() {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "plainauth.api.key"]);
+});
 
 describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9701)", () => {
     before(() => {

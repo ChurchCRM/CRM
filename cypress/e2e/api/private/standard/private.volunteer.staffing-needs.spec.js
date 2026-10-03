@@ -67,7 +67,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(key), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -216,6 +216,10 @@ function occurrence(occurrenceId) {
 }
 
 // ── suite ──────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key"]);
+});
 
 describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
     before(() => {

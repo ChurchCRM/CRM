@@ -67,7 +67,7 @@ let defaultTeamNameA = "";
 let positionAlphaFirst = 0;
 
 function volunteerKey() {
-    return Cypress.env("selfedit.api.key");
+    return Cypress.testEnv("selfedit.api.key");
 }
 
 function adminApi(method, url, body, expectedStatus = 200) {
@@ -144,6 +144,10 @@ function helpWantedRow(ministryId, assert) {
             );
         });
 }
+
+before(() => {
+    cy.rememberTestEnv(["selfedit.api.key"]);
+});
 
 describe("Volunteer v2 position recruiting flag (#9701)", () => {
     before(() => {

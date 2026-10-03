@@ -42,7 +42,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(ADMIN_KEY), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(ADMIN_KEY), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -153,6 +153,10 @@ function cleanupFixtures() {
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key"]);
+});
 
 describe("Volunteer v2 D30 — a Generate run that finds no events says what it looked for", () => {
     before(() => {

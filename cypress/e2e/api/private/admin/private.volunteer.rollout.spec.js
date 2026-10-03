@@ -62,8 +62,12 @@ function pageRequest(url, apiKey) {
 }
 
 function adminPageRequest(url) {
-    return pageRequest(url, Cypress.env("admin.api.key"));
+    return pageRequest(url, Cypress.testEnv("admin.api.key"));
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key"]);
+});
 
 describe("Volunteer v2 rollout flag (#9704)", () => {
     before(() => {
@@ -148,7 +152,7 @@ describe("Volunteer v2 rollout flag (#9704)", () => {
             // and no volunteer_scope_vscp row, so VolunteerCoordinatorRoleAuthMiddleware
             // turns them away. The scoped positive path lives in
             // cypress/e2e/api/private/standard/private.volunteer.authorization.spec.js (#9706).
-            pageRequest(DASHBOARD_URL, Cypress.env("user.api.key")).then((resp) => {
+            pageRequest(DASHBOARD_URL, Cypress.testEnv("user.api.key")).then((resp) => {
                 expect(resp.status).to.be.oneOf([302, 403]);
                 if (resp.status === 302) {
                     expect(resp.headers.location).to.include("access-denied");

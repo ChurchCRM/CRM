@@ -34,14 +34,14 @@ let originalLead = "48";
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
         if (url.includes("/session/begin")) {
-            cy.get("input[name=User]").clear().type(Cypress.env("admin.username"));
-            cy.get("input[name=Password]").clear().type(Cypress.env("admin.password") + "{enter}");
+            cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
+            cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
     cy.url().should("not.include", "/session/begin");
@@ -50,14 +50,14 @@ function freshAdminLogin() {
 function freshStandardLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("standard.username"));
-    cy.get("input[name=Password]").type(Cypress.env("standard.password") + "{enter}");
+    cy.get("input[name=User]").type(Cypress.testEnv("standard.username"));
+    cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
         if (url.includes("/session/begin")) {
-            cy.get("input[name=User]").clear().type(Cypress.env("standard.username"));
-            cy.get("input[name=Password]").clear().type(Cypress.env("standard.password") + "{enter}");
+            cy.get("input[name=User]").clear().type(Cypress.testEnv("standard.username"));
+            cy.get("input[name=Password]").clear().type(Cypress.testEnv("standard.password") + "{enter}");
         }
     });
     cy.url().should("not.include", "/session/begin");
@@ -66,6 +66,10 @@ function freshStandardLogin() {
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password", "standard.username", "standard.password"]);
+});
 
 describe("Admin → Ministry Settings", () => {
     before(() => {

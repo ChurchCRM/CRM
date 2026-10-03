@@ -18,6 +18,10 @@
  *   - "Add a family member" creates a pending self-registration entry, never a
  *     live member
  */
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password"]);
+});
+
 describe("Member Portal — My Family", () => {
     const adultUser = "lena.black.editself.notes@example.com";
     const nonAdultUser = "limited.user";
@@ -37,8 +41,8 @@ describe("Member Portal — My Family", () => {
     const freshAdminLogin = () => {
         cy.clearCookies();
         cy.visit("/session/begin");
-        cy.get("input[name=User]").type(Cypress.env("admin.username"));
-        cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+        cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+        cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
         cy.url().should("not.include", "/session/begin");
     };
 

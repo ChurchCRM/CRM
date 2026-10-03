@@ -73,7 +73,7 @@ function dbOk(sql, params = []) {
 }
 
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(Cypress.env(key), method, url, body, expectedStatus);
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -263,6 +263,10 @@ function propose(assignmentId, substitutePersonId, status = 201, key = SELFEDIT_
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key", "plainauth.api.key"]);
+});
 
 describe("Volunteer v2 — substitution / swap workflow (#9709, epic #9701, D13)", () => {
     before(() => {

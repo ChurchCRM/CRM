@@ -65,14 +65,14 @@ let positionId = 0;
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.get("input[name=User]").type(Cypress.testEnv("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.testEnv("admin.password") + "{enter}");
     // One retry: in CI a login page occasionally reloads while the name is being
     // typed (the submit then goes out with an empty user and bounces back here).
     cy.url().then((url) => {
         if (url.includes("/session/begin")) {
-            cy.get("input[name=User]").clear().type(Cypress.env("admin.username"));
-            cy.get("input[name=Password]").clear().type(Cypress.env("admin.password") + "{enter}");
+            cy.get("input[name=User]").clear().type(Cypress.testEnv("admin.username"));
+            cy.get("input[name=Password]").clear().type(Cypress.testEnv("admin.password") + "{enter}");
         }
     });
     cy.url().should("not.include", "/session/begin");
@@ -82,14 +82,14 @@ function freshAdminLogin() {
 function freshLeaderLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("nofinance.username"));
-    cy.get("input[name=Password]").type(Cypress.env("nofinance.password") + "{enter}");
+    cy.get("input[name=User]").type(Cypress.testEnv("nofinance.username"));
+    cy.get("input[name=Password]").type(Cypress.testEnv("nofinance.password") + "{enter}");
     // One retry: under CI load the submit occasionally lands back on the login
     // page although the server logged the login (a lost cookie on the redirect).
     cy.url().then((url) => {
         if (url.includes("/session/begin")) {
-            cy.get("input[name=User]").clear().type(Cypress.env("nofinance.username"));
-            cy.get("input[name=Password]").clear().type(Cypress.env("nofinance.password") + "{enter}");
+            cy.get("input[name=User]").clear().type(Cypress.testEnv("nofinance.username"));
+            cy.get("input[name=Password]").clear().type(Cypress.testEnv("nofinance.password") + "{enter}");
         }
     });
     cy.url().should("not.include", "/session/begin");
@@ -129,6 +129,10 @@ function cleanupFixtures() {
 function ministryUrl() {
     return `${MINISTRIES_URL}/${ministryId}`;
 }
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password", "nofinance.username", "nofinance.password"]);
+});
 
 describe("Volunteer v2 ministry page (#9701)", () => {
     before(() => {

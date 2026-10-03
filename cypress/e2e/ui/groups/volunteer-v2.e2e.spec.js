@@ -105,13 +105,13 @@ function freshLogin(username, password) {
 }
 
 function freshAdminLogin() {
-    freshLogin(Cypress.env("admin.username"), Cypress.env("admin.password"));
+    freshLogin(Cypress.testEnv("admin.username"), Cypress.testEnv("admin.password"));
 }
 
 function freshCoordinatorLogin() {
     freshLogin(
-        Cypress.env("standard.username"),
-        Cypress.env("standard.password"),
+        Cypress.testEnv("standard.username"),
+        Cypress.testEnv("standard.password"),
     );
 }
 
@@ -323,6 +323,10 @@ function cleanupFixtures() {
 }
 
 // ── fixture — everything through the real APIs, before any login ───────────
+
+before(() => {
+    cy.rememberTestEnv(["admin.api.key", "admin.username", "admin.password", "standard.username", "standard.password"]);
+});
 
 describe("Volunteer v2 — #9714's browser walk-through and the responsive pass", () => {
     before(() => {
@@ -761,7 +765,7 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
 
         function setLocale(value) {
             cy.makePrivateAPICall(
-                Cypress.env("admin.api.key"),
+                Cypress.testEnv("admin.api.key"),
                 "POST",
                 LOCALE_URL,
                 { value },
