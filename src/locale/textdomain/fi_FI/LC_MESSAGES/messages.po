@@ -4478,10 +4478,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Päivämäärän valitsimen PHP-muoto, oletus: Y-m-d, esim. suomeksi: d.m.Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Pilkulla erotettu lista henkilötunnuksista (PersonID), joille ilmoitetaan, kun uusi perhe tai henkilö lisätään"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Salli tapahtumien lukeminen ulkoisen kalenteri-API:n kautta ilman tunnistautumista"
 
@@ -7319,10 +7315,6 @@ msgstr "Poista tämä läsnäololuku?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Valitse tietuetyyppi, johon tämä ominaisuus liittyy"
-
-#: 
-msgid "Total Pledges"
-msgstr "Lupaukset Yhteensä"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10907,10 +10899,6 @@ msgstr "Salli todentamaton pääsy kalenteritapahtumiin julkisten HTML-, ICS- ja
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Salli vierailijoiden luoda oma perherekisterinsä itsensä rekisteröitymissivun kautta"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Salli vierailijoiden rekisteröityä uusina perheenä."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17981,10 +17969,6 @@ msgid "Errors"
 msgstr "Virheet"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Jätä kuolleet jäsenet pois tulostettavasta hakemistosta ja CSV-vienneistä."
-
-#: 
 msgid "Failed Files"
 msgstr "Epäonnistuneet tiedostot"
 
@@ -18513,14 +18497,6 @@ msgid "As an admin, please also review the"
 msgstr "Järjestelmänvalvojana tarkista myös"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Lähetä synttäriterveiset automaattisesti ihmisille heidän syntymäpäivänään."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Syntymäpäiväsähköpostit"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Syntymäpäivät, vuosipäivät, vapaaehtoiset ja muut henkilölistat, joissa on luokitussuodatin"
 
@@ -18777,10 +18753,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Salli todentamattoman pääsyn julkisiin tapahtumiin (kalentereiden upottamista varten)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Salli vierailijat luoda omia perheeseään julkisen rekisteröintisivun kautta"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Lähetä syntymäpäivä-sähköpostit automaattisesti (vaatii taustaprosessiajoittelija)"
 
@@ -18995,4 +18967,84 @@ msgstr "Vain järjestelmänvalvoja voi poistaa henkilön, jolla on kirjautuminen
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Viimeistä järjestelmänvalvojaa ei voi poistaa."
+
+#: 
+msgid "Category"
+msgstr "Luokka"
+
+#: 
+msgid "Category updated."
+msgstr "Luokka päivitetty."
+
+#: 
+msgid "Delete Category"
+msgstr "Poista luokka"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Luokan poistaminen epäonnistui"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Luokan nimen muuttaminen epäonnistui"
+
+#: 
+msgid "Fund Categories"
+msgstr "Rahastojen luokat"
+
+#: 
+msgid "Fund activated."
+msgstr "Rahasto aktivoitu."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Rahasto deaktivoitu."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Tässä luokassa olevat rahastot tulevat luokittelemattomiksi. Rahastoja itse ei poisteta."
+
+#: 
+msgid "INACTIVE"
+msgstr "Epäaktiivinen"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Uusi luokan nimi (olemassa oleva nimi yhdistää nämä kaksi)"
+
+#: 
+msgid "Optional"
+msgstr "Valinnainen"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Valinnainen — valitse tai kirjoita uusi luokka"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Maksettu sitoutumusta enemmän"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Luvattu mutta ei vielä maksettu"
+
+#: 
+msgid "Rename Category"
+msgstr "Vaihda luokan nimi"
+
+#: 
+msgid "Still Owed"
+msgstr "Vielä erääntynyt"
+
+#: 
+msgid "Summary by Category"
+msgstr "Yhteenveto luokittain"
+
+#: 
+msgid "Total Paid"
+msgstr "Yhteensä maksettu"
+
+#: 
+msgid "Uncategorized"
+msgstr "Ilman luokkaa"
 

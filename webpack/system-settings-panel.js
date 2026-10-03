@@ -99,6 +99,20 @@ import "../src/skin/scss/system-settings-panel.scss";
                 `,
       getValue: (el) => el.value,
     },
+    textarea: {
+      render: (setting) => `
+                    <div class="col-12 col-lg-6 mb-3">
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                            ${escapeHtml(resolve(setting.label))}
+                        </label>
+                        <textarea class="form-control setting-input"
+                                  id="${setting.name}" name="${setting.name}"
+                                  data-type="textarea" rows="3" maxlength="255"></textarea>
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
+                    </div>
+                `,
+      getValue: (el) => el.value,
+    },
     choice: {
       render: (setting, value) => {
         let optionsHtml = "";
@@ -159,6 +173,23 @@ import "../src/skin/scss/system-settings-panel.scss";
         return el.value || null;
       },
     },
+    // setting.selected = [{ id, text }]: the picker needs names, which the config API does not return.
+    persons: {
+      render: (setting) => `
+            <div class="col-md-6 col-lg-4 mb-3">
+              <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                ${escapeHtml(resolve(setting.label))}
+              </label>
+              <select multiple class="form-select setting-input"
+                      id="${setting.name}" name="${setting.name}"
+                      data-type="persons">
+                ${(setting.selected || []).map((p) => `<option value="${escapeHtml(String(p.id))}" selected>${escapeHtml(p.text)}</option>`).join("")}
+              </select>
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
+            </div>
+          `,
+      getValue: (el) => Array.from(el.selectedOptions, (o) => o.value).join(","),
+    },
     ajax: {
       render: (setting) => `
             <div class="col-md-6 col-lg-4 mb-3">
@@ -202,11 +233,23 @@ import "../src/skin/scss/system-settings-panel.scss";
     return value || "";
   }
 
+  function fetchJSON(url) {
+    return fetch(url).then((response) => {
+      if (!response.ok) {
+        throw new Error(`${url}: ${response.status} ${response.statusText}`);
+      }
+      return response.json();
+    });
+  }
+
   // Settings Panel Class
   class SettingsPanel {
     constructor() {
       this.options = {};
       this.settingValues = {};
+      this.savedValues = {};
+      this.latestValues = {};
+      this.writeQueue = {};
       this.initialized = false;
     }
 
@@ -232,6 +275,7 @@ import "../src/skin/scss/system-settings-panel.scss";
           settings: [],
           onSave: null,
           showAllSettingsLink: true,
+          autoSave: false,
           allSettingsUrl: "/SystemSettings.php",
           configApiPath: "/admin/api/system/config",
           headerClass: "bg-primary-lt",
@@ -265,32 +309,39 @@ import "../src/skin/scss/system-settings-panel.scss";
       this.fetchAndApplyValues();
     }
 
-    // Fetch current values from API and update each input individually
+    // Fetch current values from the API and fill each input. Save posts every
+    // field, so the fields and Save stay disabled until all of them are filled.
     fetchAndApplyValues() {
       // Password fields never show their current value
-      const settingsToFetch = this.options.settings.filter((s) => {
-        const cfg = this.getSettingConfig(s);
-        return cfg.type !== "password";
-      });
-
-      settingsToFetch.forEach((s) => {
-        const name = typeof s === "string" ? s : s.name;
-        const cfg = this.getSettingConfig(s);
-
-        fetch(`${window.CRM.root}${this.options.configApiPath}/${name}`)
-          .then((response) => response.json())
-          .then((data) => {
+      const loads = this.options.settings
+        .map((s) => this.getSettingConfig(s))
+        .filter((cfg) => cfg.type !== "password" && cfg.type !== "persons")
+        .map((cfg) =>
+          fetchJSON(`${window.CRM.root}${this.options.configApiPath}/${cfg.name}`).then((data) => {
             // For ajax selects, load options from the remote URL first
             if (cfg.type === "ajax" && cfg.ajaxUrl) {
-              this.loadAjaxOptions(name, cfg.ajaxUrl, data.value);
-            } else {
-              this.applyValue(name, data.value);
+              return this.loadAjaxOptions(cfg.name, cfg.ajaxUrl, data.value);
             }
-          })
-          .catch(() => {
-            console.warn("Could not load setting:", name);
-          });
-      });
+            this.applyValue(cfg.name, data.value);
+            this.savedValues[cfg.name] = data.value != null ? String(data.value) : "";
+          }),
+        );
+
+      return Promise.all(loads)
+        .then(() => {
+          this.container.querySelector(".settings-panel-fields").disabled = false;
+          const saveBtn = this.container.querySelector(".settings-panel-save");
+          if (saveBtn) saveBtn.disabled = false;
+        })
+        .catch((error) => {
+          console.warn("Could not load settings:", error);
+          this.container
+            .querySelector(".settings-panel-form")
+            .insertAdjacentHTML(
+              "afterbegin",
+              `<div class="alert alert-danger settings-panel-load-error" role="alert">${t("Could not load the current settings. Reload the page to try again.")}</div>`,
+            );
+        });
     }
 
     // Load options for an ajax-type select from a remote URL, then set the value
@@ -298,22 +349,17 @@ import "../src/skin/scss/system-settings-panel.scss";
       const select = this.container.querySelector(`select[name="${name}"]`);
       if (!select) return;
 
-      fetch(window.CRM.root + url)
-        .then((response) => response.json())
-        .then((options) => {
-          options.forEach((opt) => {
-            const option = document.createElement("option");
-            option.value = opt.id;
-            option.textContent = opt.value;
-            if (String(opt.id) === String(currentValue)) {
-              option.selected = true;
-            }
-            select.appendChild(option);
-          });
-        })
-        .catch(() => {
-          console.warn("Could not load ajax options for:", name);
+      return fetchJSON(window.CRM.root + url).then((options) => {
+        options.forEach((opt) => {
+          const option = document.createElement("option");
+          option.value = opt.id;
+          option.textContent = opt.value;
+          if (String(opt.id) === String(currentValue)) {
+            option.selected = true;
+          }
+          select.appendChild(option);
         });
+      });
     }
 
     // Update a single input (or radio group) without re-rendering the whole panel
@@ -379,12 +425,17 @@ import "../src/skin/scss/system-settings-panel.scss";
                         </h6>
                     </div>
                     <div class="card-body">
-                        <form id="settingsPanelForm">
+                        <form class="settings-panel-form">
+                            <fieldset class="settings-panel-fields" disabled>
                             ${presetsHtml}
                             <div class="row">
                                 ${settingsHtml}
                             </div>
-                            <hr class="my-3">
+                            </fieldset>
+                            ${
+                              this.options.autoSave
+                                ? ""
+                                : `<hr class="my-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 ${
                                   this.options.showAllSettingsLink
@@ -395,10 +446,11 @@ import "../src/skin/scss/system-settings-panel.scss";
                                 `
                                     : "<div></div>"
                                 }
-                                <button type="button" id="settingsPanelSaveBtn" class="btn btn-primary">
+                                <button type="button" class="btn btn-primary settings-panel-save" disabled>
                                     <i class="fa-solid fa-save me-1"></i> ${t("Save Settings")}
                                 </button>
-                            </div>
+                            </div>`
+                            }
                         </form>
                     </div>
                 </div>
@@ -417,16 +469,28 @@ import "../src/skin/scss/system-settings-panel.scss";
 
     // Bind event handlers
     bindEvents() {
+      this.container.querySelectorAll('select[data-type="persons"]').forEach((el) => {
+        window.CRM.initPersonSelect(el, { plugins: ["remove_button"] });
+        this.savedValues[el.name] = SettingTypes.persons.getValue(el);
+      });
+
       // Initialize Bootstrap tooltips on help icons
       if (window.$ && $.fn.tooltip) {
         $(this.container).find('[data-bs-toggle="tooltip"]').tooltip();
       }
 
-      const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
+      const saveBtn = this.container.querySelector(".settings-panel-save");
 
       if (saveBtn) {
         saveBtn.addEventListener("click", () => {
           this.save();
+        });
+      }
+
+      if (this.options.autoSave) {
+        this.container.addEventListener("change", (event) => {
+          const input = event.target.closest(".setting-input");
+          if (input && SettingTypes[input.dataset.type]) this.saveOne(input);
         });
       }
 
@@ -478,9 +542,65 @@ import "../src/skin/scss/system-settings-panel.scss";
         .join("");
     }
 
+    // fetch() only rejects on network errors, so a 4xx/5xx from the config API
+    // has to be turned into a rejection explicitly or a failure reads as success.
+    postSetting(key, value) {
+      return fetch(`${window.CRM.root}${this.options.configApiPath}/${key}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ value: value }),
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error(`${key}: ${response.status} ${response.statusText}`);
+        }
+        return response;
+      });
+    }
+
+    saveOne(input) {
+      const val = SettingTypes[input.dataset.type].getValue(input);
+      if (val === null) return;
+
+      const name = input.name;
+      this.latestValues[name] = val;
+
+      // One write at a time per setting, so the last selection is the last write.
+      this.writeQueue[name] = (this.writeQueue[name] || Promise.resolve())
+        .then(() => this.postSetting(name, val))
+        .then(() => {
+          this.savedValues[name] = val;
+          if (window.CRM?.notify) {
+            window.CRM.notify(t("Settings saved successfully"), { type: "success", delay: 2000 });
+          }
+          if (typeof this.options.onSave === "function") {
+            this.options.onSave({ [name]: val });
+          }
+        })
+        .catch(() => {
+          if (window.CRM?.notify) {
+            window.CRM.notify(t("Failed to save settings"), { type: "error", delay: 5000 });
+          }
+          if (this.latestValues[name] === val) this.revertField(input);
+        });
+    }
+
+    // Show the last value the server confirmed after a failed save.
+    revertField(input) {
+      const previous = this.savedValues[input.name];
+      if (previous === undefined) return;
+      if (input.tomselect) {
+        input.tomselect.setValue(previous ? previous.split(",") : [], true);
+      } else {
+        this.applyValue(input.name, previous);
+      }
+      this.latestValues[input.name] = previous;
+    }
+
     // Save all settings
     save() {
-      const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
+      const saveBtn = this.container.querySelector(".settings-panel-save");
       const originalHtml = saveBtn.innerHTML;
 
       // Disable button and show loading
@@ -500,23 +620,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         }
       });
 
-      // Save each setting. fetch() only rejects on network errors, so a 4xx/5xx
-      // from the config API has to be turned into a rejection explicitly or the
-      // failure would be reported as a success.
-      const promises = Object.keys(settings).map((key) =>
-        fetch(`${window.CRM.root}${this.options.configApiPath}/${key}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ value: settings[key] }),
-        }).then((response) => {
-          if (!response.ok) {
-            throw new Error(`${key}: ${response.status} ${response.statusText}`);
-          }
-          return response;
-        }),
-      );
+      const promises = Object.keys(settings).map((key) => this.postSetting(key, settings[key]));
 
       Promise.all(promises)
         .then(() => {

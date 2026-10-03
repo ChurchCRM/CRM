@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-01 05:20+0000\n"
+"POT-Creation-Date: 2026-10-02 17:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -986,12 +986,6 @@ msgstr ""
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr ""
 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr ""
-
-msgid "Allow visitors to self-register as new families."
-msgstr ""
-
 msgid "Almost there — review your details"
 msgstr ""
 
@@ -1454,9 +1448,6 @@ msgstr ""
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr ""
 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr ""
-
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr ""
 
@@ -1747,9 +1738,6 @@ msgid "Birth Year"
 msgstr ""
 
 msgid "Birthday"
-msgstr ""
-
-msgid "Birthday Emails"
 msgstr ""
 
 msgid "Birthday Greeting Emails"
@@ -2122,6 +2110,9 @@ msgstr ""
 msgid "Category Name"
 msgstr ""
 
+msgid "Category updated."
+msgstr ""
+
 #. Context: countries
 msgid "Cayman Islands"
 msgstr ""
@@ -2331,6 +2322,9 @@ msgid "Checking…"
 msgstr ""
 
 msgid "Checks"
+msgstr ""
+
+msgid "Child Role"
 msgstr ""
 
 msgid "Children"
@@ -2650,9 +2644,6 @@ msgid "Column was automatically matched to a ChurchCRM field."
 msgstr ""
 
 msgid "Columns per Page"
-msgstr ""
-
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
 msgstr ""
 
 msgid "Comma separated list of classifications that should appear as inactive"
@@ -2991,6 +2982,9 @@ msgid "Could not load note."
 msgstr ""
 
 msgid "Could not load release information."
+msgstr ""
+
+msgid "Could not load the current settings. Reload the page to try again."
 msgstr ""
 
 msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
@@ -3548,6 +3542,9 @@ msgstr ""
 msgid "Delete Calendar"
 msgstr ""
 
+msgid "Delete Category"
+msgstr ""
+
 msgid "Delete Confirmation"
 msgstr ""
 
@@ -3781,6 +3778,9 @@ msgid "Directory"
 msgstr ""
 
 msgid "Directory Reports"
+msgstr ""
+
+msgid "Directory inclusion can only be toggled for the classifications list"
 msgstr ""
 
 msgid "Directory reports"
@@ -4696,9 +4696,6 @@ msgstr ""
 msgid "Exclude Inactive Families"
 msgstr ""
 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr ""
-
 msgid "Exclude from Email Export"
 msgstr ""
 
@@ -4907,6 +4904,9 @@ msgstr ""
 msgid "Failed to delete"
 msgstr ""
 
+msgid "Failed to delete category"
+msgstr ""
+
 msgid "Failed to delete class. Please try again."
 msgstr ""
 
@@ -5085,6 +5085,9 @@ msgid "Failed to remove from class. Please try again."
 msgstr ""
 
 msgid "Failed to remove group"
+msgstr ""
+
+msgid "Failed to rename category"
 msgstr ""
 
 msgid "Failed to rename kiosk"
@@ -5763,6 +5766,9 @@ msgstr ""
 msgid "Fund Allocation"
 msgstr ""
 
+msgid "Fund Categories"
+msgstr ""
+
 msgid "Fund Name"
 msgstr ""
 
@@ -5772,10 +5778,16 @@ msgstr ""
 msgid "Fund Total"
 msgstr ""
 
+msgid "Fund activated."
+msgstr ""
+
 msgid "Fund added successfully."
 msgstr ""
 
 msgid "Fund contributor pledge summary by fiscal year"
+msgstr ""
+
+msgid "Fund deactivated."
 msgstr ""
 
 msgid "Fund deleted successfully."
@@ -5821,6 +5833,9 @@ msgid "Fundraising"
 msgstr ""
 
 msgid "Funds"
+msgstr ""
+
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
 msgstr ""
 
 msgid "GA4 Measurement ID"
@@ -6095,6 +6110,12 @@ msgstr ""
 msgid "Greenland (Kalaallit Nunaat)"
 msgstr ""
 
+msgid "Greeter Message 1"
+msgstr ""
+
+msgid "Greeter Message 2"
+msgstr ""
+
 #. Context: countries
 msgid "Grenada"
 msgstr ""
@@ -6270,6 +6291,9 @@ msgstr ""
 msgid "Head Count"
 msgstr ""
 
+msgid "Head of House Role"
+msgstr ""
+
 msgid "Head of Household Update Needed"
 msgstr ""
 
@@ -6299,16 +6323,28 @@ msgstr ""
 msgid "Here"
 msgstr ""
 
+msgid "Hide Address Without Family"
+msgstr ""
+
 msgid "Hide Age"
 msgstr ""
 
 msgid "Hide Deceased from Directory"
 msgstr ""
 
+msgid "Hide Friend Date"
+msgstr ""
+
 msgid "Hide Latitude/Longitude"
 msgstr ""
 
+msgid "Hide Newsletter Subscriptions"
+msgstr ""
+
 msgid "Hide Person Address"
+msgstr ""
+
+msgid "Hide Wedding Date"
 msgstr ""
 
 msgid "Hide advanced options"
@@ -6417,6 +6453,9 @@ msgid "ICS URL"
 msgstr ""
 
 msgid "ID"
+msgstr ""
+
+msgid "INACTIVE"
 msgstr ""
 
 msgid "IP Address"
@@ -6589,6 +6628,9 @@ msgstr ""
 msgid "Importing..."
 msgstr ""
 
+msgid "In Directory"
+msgstr ""
+
 msgid "In Use"
 msgstr ""
 
@@ -6605,6 +6647,9 @@ msgid "Inactive — cannot sign in"
 msgstr ""
 
 msgid "Include"
+msgstr ""
+
+msgid "Include Details in Notifications"
 msgstr ""
 
 msgid "Include Sunday School classes and enrollments"
@@ -8316,6 +8361,9 @@ msgstr ""
 msgid "New Zealand"
 msgstr ""
 
+msgid "New category name (an existing name merges the two)"
+msgstr ""
+
 msgid "New family details"
 msgstr ""
 
@@ -8813,6 +8861,9 @@ msgstr ""
 msgid "Notes access"
 msgstr ""
 
+msgid "Notification Recipients"
+msgstr ""
+
 msgid "Notification for"
 msgstr ""
 
@@ -9005,6 +9056,9 @@ msgstr ""
 msgid "Option not found"
 msgstr ""
 
+msgid "Optional"
+msgstr ""
+
 msgid "Optional - only required if OpenLP authentication is enabled"
 msgstr ""
 
@@ -9021,6 +9075,9 @@ msgid "Optional detailed description of this property type"
 msgstr ""
 
 msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr ""
+
+msgid "Optional — pick or type a new category"
 msgstr ""
 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -9143,6 +9200,9 @@ msgid "Page route"
 msgstr ""
 
 msgid "Paid"
+msgstr ""
+
+msgid "Paid beyond the pledge"
 msgstr ""
 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
@@ -9325,6 +9385,9 @@ msgstr ""
 msgid "People to assign"
 msgstr ""
 
+msgid "People to notify when a new family or person is added"
+msgstr ""
+
 msgid "People who joined in a particular month"
 msgstr ""
 
@@ -9419,7 +9482,13 @@ msgstr ""
 msgid "Person has no family"
 msgstr ""
 
+msgid "Person initials style"
+msgstr ""
+
 msgid "Person is not checked in"
+msgstr ""
+
+msgid "Person name display style"
 msgstr ""
 
 msgid "Person not found"
@@ -9786,6 +9855,9 @@ msgid "Pledged"
 msgstr ""
 
 msgid "Pledged Amount"
+msgstr ""
+
+msgid "Pledged but not yet paid"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -10315,6 +10387,9 @@ msgid "Removed from cart successfully"
 msgstr ""
 
 msgid "Rename"
+msgstr ""
+
+msgid "Rename Category"
 msgstr ""
 
 msgid "Rename Kiosk"
@@ -11515,6 +11590,9 @@ msgstr ""
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr ""
 
+msgid "Spouse Role"
+msgstr ""
+
 msgid "Spring"
 msgstr ""
 
@@ -11580,6 +11658,9 @@ msgstr ""
 msgid "Still Checked In"
 msgstr ""
 
+msgid "Still Owed"
+msgstr ""
+
 msgid "Streak"
 msgstr ""
 
@@ -11639,6 +11720,9 @@ msgid "Suggesting better phrasing for existing translations"
 msgstr ""
 
 msgid "Summary Data"
+msgstr ""
+
+msgid "Summary by Category"
 msgstr ""
 
 msgid "Summer"
@@ -12236,6 +12320,9 @@ msgstr ""
 msgid "This role cannot be deleted."
 msgstr ""
 
+msgid "This setting must be a number"
+msgstr ""
+
 msgid "This title will be used for all generated events."
 msgstr ""
 
@@ -12487,13 +12574,13 @@ msgstr ""
 msgid "Total Kiosks"
 msgstr ""
 
+msgid "Total Paid"
+msgstr ""
+
 msgid "Total Payments"
 msgstr ""
 
 msgid "Total Pledged"
-msgstr ""
-
-msgid "Total Pledges"
 msgstr ""
 
 msgid "Total Raised"
@@ -12734,10 +12821,10 @@ msgstr ""
 msgid "Unassigned"
 msgstr ""
 
-msgid "Unclassified"
+msgid "Uncategorized"
 msgstr ""
 
-msgid "Uncategorized"
+msgid "Unclassified"
 msgstr ""
 
 msgid "Underpaid"
@@ -12939,6 +13026,9 @@ msgid "Upload session expired. Please upload the file again."
 msgstr ""
 
 msgid "Uploading, please wait..."
+msgstr ""
+
+msgid "Uppercase Zip/Postcodes"
 msgstr ""
 
 #. Context: countries
@@ -14067,9 +14157,6 @@ msgid "deposit(s) with no payments"
 msgstr ""
 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
-msgstr ""
-
-msgid "e.g. Regular Offerings"
 msgstr ""
 
 msgid "e.g. Sunday Service"

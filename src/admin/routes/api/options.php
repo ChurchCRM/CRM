@@ -1,9 +1,9 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -137,6 +137,10 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
         $deletedSeq = $option->getOptionSequence();
         $option->delete();
 
+        if ($listId === 1) {
+            (new ClassificationService())->removeFromFlags($optionId);
+        }
+
         // Resequence remaining options
         $remaining = ListOptionQuery::create()
             ->filterById($listId)
@@ -244,34 +248,37 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderSuccessJSON($response);
     });
 
-    // Toggle inactive classification (classifications list only — listId 1)
-    $group->post('/{listId:[0-9]+}/{optionId:[0-9]+}/inactive', function (Request $request, Response $response, array $args): Response {
-        $listId = (int) $args['listId'];
-        $optionId = (int) $args['optionId'];
+    // Toggle a classification in/out of a comma-separated ID setting (classifications list only — listId 1)
+    $toggleClassificationFlag = fn (string $toggleMethod, string $responseKey, string $wrongListMessage) =>
+        function (Request $request, Response $response, array $args) use ($toggleMethod, $responseKey, $wrongListMessage): Response {
+            $listId = (int) $args['listId'];
+            $optionId = (int) $args['optionId'];
 
-        if ($listId !== 1) {
-            throw new HttpBadRequestException($request, gettext('Inactive status can only be toggled for the classifications list'));
-        }
+            if ($listId !== 1) {
+                throw new HttpBadRequestException($request, $wrongListMessage);
+            }
 
-        $option = ListOptionQuery::create()
-            ->filterById($listId)
-            ->filterByOptionId($optionId)
-            ->findOne();
-        if ($option === null) {
-            throw new HttpNotFoundException($request, gettext('Option not found'));
-        }
+            $option = ListOptionQuery::create()
+                ->filterById($listId)
+                ->filterByOptionId($optionId)
+                ->findOne();
+            if ($option === null) {
+                throw new HttpNotFoundException($request, gettext('Option not found'));
+            }
 
-        $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
-        $aInactiveClasses = array_map('intval', array_filter($aInactiveClassificationIds, fn ($k) => is_numeric($k)));
+            $ids = (new ClassificationService())->$toggleMethod($optionId);
 
-        if (in_array($optionId, $aInactiveClasses, true)) {
-            $aInactiveClasses = array_values(array_diff($aInactiveClasses, [$optionId]));
-        } else {
-            $aInactiveClasses[] = $optionId;
-        }
+            return SlimUtils::renderJSON($response, [$responseKey => $ids]);
+        };
 
-        SystemConfig::setValue('sInactiveClassification', implode(',', $aInactiveClasses));
-
-        return SlimUtils::renderJSON($response, ['inactive' => $aInactiveClasses]);
-    });
+    $group->post('/{listId:[0-9]+}/{optionId:[0-9]+}/inactive', $toggleClassificationFlag(
+        'toggleInactive',
+        'inactive',
+        gettext('Inactive status can only be toggled for the classifications list'),
+    ));
+    $group->post('/{listId:[0-9]+}/{optionId:[0-9]+}/directory', $toggleClassificationFlag(
+        'toggleDirectory',
+        'directory',
+        gettext('Directory inclusion can only be toggled for the classifications list'),
+    ));
 });

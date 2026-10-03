@@ -4511,10 +4511,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Để xác định ngày trong Công cụ chọn ngày, theo mặc định: Ymd, Ví dụ: bằng tiếng Pháp: d / m / Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Được phân tách bằng dấu phẩy Danh sách ID cá nhân của mọi người để thông báo khi một gia đình hoặc người mới được thêm vào"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Cho phép đọc các sự kiện chưa được xác thực từ API lịch bên ngoài"
 
@@ -7350,10 +7346,6 @@ msgstr "Xóa số đếm điểm danh này?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Chọn loại bản ghi mà thuộc tính này áp dụng"
-
-#: 
-msgid "Total Pledges"
-msgstr "Tổng Cam kết"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10935,10 +10927,6 @@ msgstr "Cho phép truy cập không xác thực vào các sự kiện lịch qua
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Cho phép khách truy cập tạo hồ sơ gia đình của riêng họ qua trang tự đăng ký"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Cho phép khách truy cập tự đăng ký là gia đình mới."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18002,10 +17990,6 @@ msgid "Errors"
 msgstr "Lỗi"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Loại trừ các thành viên đã qua đời khỏi danh bạ in và tệp xuất CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Tệp thất bại"
 
@@ -18534,14 +18518,6 @@ msgid "As an admin, please also review the"
 msgstr "Là quản trị viên, vui lòng cũng xem xét"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Tự động gửi email lời chúc sinh nhật đến mọi người vào ngày sinh nhật của họ."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Email Sinh Nhật"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Danh sách sinh nhật, kỷ niệm, tình nguyện viên và những người khác với bộ lọc phân loại"
 
@@ -18798,10 +18774,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Cho phép truy cập chưa được xác thực đến các sự kiện công khai (để nhúng lịch)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Cho phép khách truy cập tạo hồ sơ gia đình của riêng họ qua trang đăng ký công khai"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Tự động gửi email sinh nhật (yêu cầu lập lịch công việc nền)"
 
@@ -19016,4 +18988,84 @@ msgstr "Chỉ quản trị viên mới có thể xóa một người có tên đ
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Quản trị viên cuối cùng không thể bị xóa."
+
+#: 
+msgid "Category"
+msgstr "Danh mục"
+
+#: 
+msgid "Category updated."
+msgstr "Danh mục đã được cập nhật."
+
+#: 
+msgid "Delete Category"
+msgstr "Xóa danh mục"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Không thể xóa danh mục"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Không thể đổi tên danh mục"
+
+#: 
+msgid "Fund Categories"
+msgstr "Danh mục quỹ tài chính"
+
+#: 
+msgid "Fund activated."
+msgstr "Quỹ đã được kích hoạt."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Quỹ đã bị vô hiệu hóa."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Các quỹ trong danh mục này sẽ trở thành không được phân loại. Bản thân các quỹ không bị xóa."
+
+#: 
+msgid "INACTIVE"
+msgstr "Hủy kích hoạt"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Tên danh mục mới (tên hiện có sẽ hợp nhất hai cái)"
+
+#: 
+msgid "Optional"
+msgstr "Tùy chọn"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Tùy chọn — chọn hoặc nhập danh mục mới"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Thanh toán vượt quá lời hứa"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Đã hứa nhưng chưa thanh toán"
+
+#: 
+msgid "Rename Category"
+msgstr "Đổi tên danh mục"
+
+#: 
+msgid "Still Owed"
+msgstr "Vẫn nợ"
+
+#: 
+msgid "Summary by Category"
+msgstr "Tóm tắt theo danh mục"
+
+#: 
+msgid "Total Paid"
+msgstr "Tổng thanh toán"
+
+#: 
+msgid "Uncategorized"
+msgstr "Không được phân loại"
 

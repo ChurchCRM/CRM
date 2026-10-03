@@ -4590,10 +4590,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "För att definiera datumet i Date-Picker, per standard: Ymd, på franska: d / m / Y till exempel."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Kommaseparerad lista med person-ID för personer som ska meddelas när en ny familj eller person läggs till"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Tillåt obekräftade läsningar av händelser från det externa kalender API"
 
@@ -7442,10 +7438,6 @@ msgstr "Ta bort denna närvaroräkning?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Välj den posttyp som denna egenskap gäller för"
-
-#: 
-msgid "Total Pledges"
-msgstr "Totala Löften"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -11030,10 +11022,6 @@ msgstr "Tillåt oautentiserad åtkomst till kalenderhändelser via offentliga HT
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Tillåt besökare att skapa sin egen familjepost via självregistreringssidan"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Tillåt besökare att registrera sig som nya familjer."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18104,10 +18092,6 @@ msgid "Errors"
 msgstr "Fel"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Uteslut avlidna medlemmar från den utskrivna medlemsförteckningen och CSV-exporter."
-
-#: 
 msgid "Failed Files"
 msgstr "Misslyckade filer"
 
@@ -18636,14 +18620,6 @@ msgid "As an admin, please also review the"
 msgstr "Som administratör, vänligen granska också"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Skicka automatiskt ett gratulationse-postmeddelande på födelsedag till personer på deras födelsedag."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Födelsedag e-post"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Födelsedagar, jubileer, volontärer och andra personlistor med klassificeringsfilter"
 
@@ -18900,10 +18876,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Tillåt oautentiserad åtkomst till offentliga evenemang (för inbäddning av kalendrar)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Tillåt besökare att skapa sina egna familjeregister via den offentliga registreringssidan"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Skicka automatiskt födelsedagse-postmeddelanden (kräver bakgrundsjobbschemaläggare)"
 
@@ -19118,4 +19090,84 @@ msgstr "Endast en administratör kan radera en person som har en inloggning."
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Den sista administratören kan inte raderas."
+
+#: 
+msgid "Category"
+msgstr "Kategori"
+
+#: 
+msgid "Category updated."
+msgstr "Kategori uppdaterad."
+
+#: 
+msgid "Delete Category"
+msgstr "Ta bort kategori"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kunde inte ta bort kategori"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kunde inte byta namn på kategori"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fondkategorier"
+
+#: 
+msgid "Fund activated."
+msgstr "Fond aktiverad."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fond inaktiverad."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Fonder i denna kategori blir okategoriserade. Fonderna själva raderas inte."
+
+#: 
+msgid "INACTIVE"
+msgstr "Inaktiv"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nytt kategorinamn (ett befintligt namn slår samman de två)"
+
+#: 
+msgid "Optional"
+msgstr "Valfritt"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Valfritt — välj eller skriv in en ny kategori"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Betalt mer än den finansiella förpliktelsen"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Utlovat men ännu inte betalt"
+
+#: 
+msgid "Rename Category"
+msgstr "Byt namn på kategori"
+
+#: 
+msgid "Still Owed"
+msgstr "Fortfarande skyldig"
+
+#: 
+msgid "Summary by Category"
+msgstr "Sammanfattning per kategori"
+
+#: 
+msgid "Total Paid"
+msgstr "Totalt betalt"
+
+#: 
+msgid "Uncategorized"
+msgstr "Utan kategori"
 

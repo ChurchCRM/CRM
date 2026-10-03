@@ -1,0 +1,21 @@
+{
+  "Could not load the current settings. Reload the page to try again.": "የአሁኑን ቅንብሮች መጫን አልተቻለም። እንደገና ለመሞከር ገጹን እንደገና ይጫኑ።",
+  "This setting must be a number": "ይህ ቅንብር ቁጥር መሆን አለበት",
+  "Child Role": "የልጅ ሚና",
+  "Directory inclusion can only be toggled for the classifications list": "በማውጫ ውስጥ መካተትን መቀያየር የሚቻለው ለምድቦች ዝርዝር ብቻ ነው",
+  "Greeter Message 1": "የእንኳን ደህና መጡ መልእክት 1",
+  "Greeter Message 2": "የእንኳን ደህና መጡ መልእክት 2",
+  "Head of House Role": "የቤተሰብ ራስ ሚና",
+  "Hide Address Without Family": "ቤተሰብ የሌላቸውን አድራሻዎች ደብቅ",
+  "Hide Friend Date": "የወዳጅነት ቀንን ደብቅ",
+  "Hide Newsletter Subscriptions": "የጋዜጣ ደንበኝነቶችን ደብቅ",
+  "Hide Wedding Date": "የጋብቻ ቀንን ደብቅ",
+  "In Directory": "በማውጫ ውስጥ",
+  "Include Details in Notifications": "በማሳወቂያዎች ውስጥ ዝርዝሮችን አካት",
+  "Notification Recipients": "የማሳወቂያ ተቀባዮች",
+  "People to notify when a new family or person is added": "አዲስ ቤተሰብ ወይም ሰው ሲጨመር ማሳወቂያ የሚደርሳቸው ሰዎች",
+  "Person initials style": "የሰው የመጀመሪያ ፊደላት ዘይቤ",
+  "Person name display style": "የሰው ስም አሳያይ ዘይቤ",
+  "Spouse Role": "የትዳር ጓደኛ ሚና",
+  "Uppercase Zip/Postcodes": "የፖስታ ኮዶችን በትልልቅ ፊደላት"
+}

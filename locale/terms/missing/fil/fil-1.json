@@ -1,3 +1,22 @@
 {
-  "N/A": ""
+  "N/A": "",
+  "Could not load the current settings. Reload the page to try again.": "Hindi ma-load ang kasalukuyang mga setting. I-reload ang pahina para subukang muli.",
+  "This setting must be a number": "Dapat numero ang setting na ito",
+  "Child Role": "Tungkulin ng Anak",
+  "Directory inclusion can only be toggled for the classifications list": "Ang pagsama sa direktoryo ay maaari lamang i-toggle para sa listahan ng mga klasipikasyon",
+  "Greeter Message 1": "Mensahe ng Pagtanggap 1",
+  "Greeter Message 2": "Mensahe ng Pagtanggap 2",
+  "Head of House Role": "Tungkulin ng Puno ng Sambahayan",
+  "Hide Address Without Family": "Itago ang Address na Walang Pamilya",
+  "Hide Friend Date": "Itago ang Petsa ng Pagkakaibigan",
+  "Hide Newsletter Subscriptions": "Itago ang mga Subscription sa Newsletter",
+  "Hide Wedding Date": "Itago ang Petsa ng Kasal",
+  "In Directory": "Nasa Direktoryo",
+  "Include Details in Notifications": "Isama ang mga Detalye sa mga Abiso",
+  "Notification Recipients": "Mga Tatanggap ng Abiso",
+  "People to notify when a new family or person is added": "Mga taong aabisuhan kapag may idinagdag na bagong pamilya o tao",
+  "Person initials style": "Istilo ng mga inisyal ng tao",
+  "Person name display style": "Istilo ng pagpapakita ng pangalan ng tao",
+  "Spouse Role": "Tungkulin ng Asawa",
+  "Uppercase Zip/Postcodes": "Malalaking Titik na Zip/Postcode"
 }

@@ -12,6 +12,8 @@ test.describe('Giving', () => {
 
     await captureScreen(page, testInfo, {
       name: 'finance-deposit-entry',
+      title: 'Deposit Entry',
+      category: 'Finance & Giving',
       purpose: 'Show deposit slip records — the transactional side of giving',
     });
   });
@@ -25,6 +27,8 @@ test.describe('Giving', () => {
 
     await captureScreen(page, testInfo, {
       name: 'finance-pledge-report',
+      title: 'Pledges & Funds',
+      category: 'Finance & Giving',
       purpose: 'Show fund/pledge totals and progress',
     });
   });

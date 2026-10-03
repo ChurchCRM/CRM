@@ -4577,10 +4577,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Für die Definition des Datums in der Datumsauswahl, standardmäßig : Y-m-d, auf Französisch : d/m/Y zum Beispiel."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Komma Getrennte Liste von PersonIDs von Personen, die zu benachrichtigen sind, wenn eine neue Familie oder Person hinzugefügt wird"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Zulassen nicht authentifizierter Lesevorgänge von Ereignissen aus der externen Kalender-API"
 
@@ -7429,10 +7425,6 @@ msgstr "Diese Anwesenheitszahl entfernen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Wählen Sie den Datensatztyp, für den diese Eigenschaft gilt"
-
-#: 
-msgid "Total Pledges"
-msgstr "Gesamtzusagen"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -11017,10 +11009,6 @@ msgstr "Nicht authentifizierten Zugriff auf Kalendereinträge über öffentliche
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Besuchern erlauben, ihren eigenen Familieneintrag über die Selbstregistrierungsseite zu erstellen"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Besuchern erlauben, sich als neue Familien selbst zu registrieren."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18091,10 +18079,6 @@ msgid "Errors"
 msgstr "Fehler"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Verstorbene Mitglieder aus dem gedruckten Verzeichnis und den CSV-Exporten ausschließen."
-
-#: 
 msgid "Failed Files"
 msgstr "Fehlgeschlagene Dateien"
 
@@ -18623,14 +18607,6 @@ msgid "As an admin, please also review the"
 msgstr "Bitte überprüfen Sie als Administrator auch die"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Automatisch eine Geburtstagsgrußmail an Personen an ihrem Geburtstag versenden."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Geburtstagsmails"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Geburtstage, Jahrestage, Freiwillige und andere Personenlisten mit Kategoriefilter"
 
@@ -18887,10 +18863,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Nicht authentifizierte Zugriffe auf öffentliche Veranstaltungen zulassen (für Kalendereinbettungen)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Besucher können ihre eigenen Familiendaten über die öffentliche Registrierungsseite erstellen"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Geburtstagsemails automatisch versenden (erfordert Hintergrund-Job-Scheduler)"
 
@@ -19105,4 +19077,84 @@ msgstr "Nur ein Administrator kann eine Person mit einer Anmeldung löschen."
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Der letzte Administrator kann nicht gelöscht werden."
+
+#: 
+msgid "Category"
+msgstr "Kategorie"
+
+#: 
+msgid "Category updated."
+msgstr "Kategorie aktualisiert."
+
+#: 
+msgid "Delete Category"
+msgstr "Kategorie löschen"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kategorie konnte nicht gelöscht werden"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kategorie konnte nicht umbenannt werden"
+
+#: 
+msgid "Fund Categories"
+msgstr "Spendenkategorien"
+
+#: 
+msgid "Fund activated."
+msgstr "Spende aktiviert."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Spende deaktiviert."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Spenden in dieser Kategorie werden nicht kategorisiert. Die Spenden selbst werden nicht gelöscht."
+
+#: 
+msgid "INACTIVE"
+msgstr "Inaktiv"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Neuer Kategoriename (ein vorhandener Name führt die beiden zusammen)"
+
+#: 
+msgid "Optional"
+msgstr "Optional"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Optional — wählen oder geben Sie eine neue Kategorie ein"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Über die finanzielle Verpflichtung hinaus bezahlt"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Finanziell verpflichtet, aber noch nicht bezahlt"
+
+#: 
+msgid "Rename Category"
+msgstr "Kategorie umbenennen"
+
+#: 
+msgid "Still Owed"
+msgstr "Noch geschuldet"
+
+#: 
+msgid "Summary by Category"
+msgstr "Zusammenfassung nach Kategorie"
+
+#: 
+msgid "Total Paid"
+msgstr "Gesamt bezahlt"
+
+#: 
+msgid "Uncategorized"
+msgstr "Unkategorisiert"
 

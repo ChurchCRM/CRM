@@ -4500,10 +4500,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Vir die definisie van die datum in Date-Picker, standaard: Y-m-d, In Frans: d / m / Y byvoorbeeld."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Kommaskeide lys van Persoon-ID's van mense om in kennis te stel wanneer 'n nuwe gesin of persoon bygevoeg word"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Laat ongemagtigde voorlesings toe van gebeure vanaf die eksterne kalender-API"
 
@@ -7352,10 +7348,6 @@ msgstr "Verwyder hierdie bywoningstelling?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Kies die tipe rekord waarvoor hierdie eiendom van toepassing is"
-
-#: 
-msgid "Total Pledges"
-msgstr "Totale Beloftes"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10940,10 +10932,6 @@ msgstr "Laat ongestaafde toegang tot kalendergebeurtenisse toe via openbare HTML
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Laat besoekers toe om hul eie gesinsrekord te skep via die selfregistrasie-bladsy"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Laat besoekers toe om as nuwe gesinne te selfregistreer."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18014,10 +18002,6 @@ msgid "Errors"
 msgstr "Foute"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Sluit oorlede lede uit die gedrukte gids en CSV-uitvoere uit."
-
-#: 
 msgid "Failed Files"
 msgstr "Mislukte Lêers"
 
@@ -18546,14 +18530,6 @@ msgid "As an admin, please also review the"
 msgstr "As administrateur, bekyk asseblief ook die"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Stuur outomaties 'n verjaarsdagegroet per e-pos aan mense op hul verjaardag."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Verjaarsdagse-posse"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Verjaardae, verjaardae, vrywilligers en ander menslyste met 'n klassifikasiefilter"
 
@@ -18810,10 +18786,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Laat ongeauthentiseerde toegang tot openbare geleenthede toe (vir kalenderinbedding)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Laat besoekers toe om hul eie familierekords via die openbare registrasieblad te skep"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Stuur outomaties verjaardagse-poste (benodig agtergrond-jobbeplanner)"
 
@@ -19028,4 +19000,84 @@ msgstr "Slegs 'n administrateur kan 'n persoon met 'n aanmelding uitwis."
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Die laaste administrateur kan nie uitgewis word nie."
+
+#: 
+msgid "Category"
+msgstr "Kategorie"
+
+#: 
+msgid "Category updated."
+msgstr "Kategorie opgedateer."
+
+#: 
+msgid "Delete Category"
+msgstr "Kategorie verwyder"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kon nie kategorie verwyder nie"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kon nie kategorie hernoem nie"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fonds kategorieë"
+
+#: 
+msgid "Fund activated."
+msgstr "Fonds geaktiveer."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fonds gedeaktiveer."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Fondse in hierdie kategorie sal ongeorder word. Die fondse self word nie verwyder nie."
+
+#: 
+msgid "INACTIVE"
+msgstr "Onaktief"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nuwe kategorienaam (bestaande naam voeg die twee saam)"
+
+#: 
+msgid "Optional"
+msgstr "Opsioneel"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opsioneel — kies of tik 'n nuwe kategorie in"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Meer betaal as die finansiële verpligting"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Beloof maar nog nie betaal nie"
+
+#: 
+msgid "Rename Category"
+msgstr "Kategorie hernoem"
+
+#: 
+msgid "Still Owed"
+msgstr "Nog verskuldig"
+
+#: 
+msgid "Summary by Category"
+msgstr "Opsomming per kategorie"
+
+#: 
+msgid "Total Paid"
+msgstr "Totaal betaal"
+
+#: 
+msgid "Uncategorized"
+msgstr "Sonder kategorie"
 

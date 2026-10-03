@@ -12,7 +12,41 @@ test.describe('Settings', () => {
 
     await captureScreen(page, testInfo, {
       name: 'settings-user-permissions',
+      title: 'User Permissions',
+      category: 'Admin & Settings',
       purpose: 'Show user/permission management — self-hosted control story',
+    });
+  });
+
+  test('admin-people-settings', async ({ page }, testInfo) => {
+    // Route: src/admin/routes/people.php ("/admin/people"), admin-only. Shows
+    // the People hub: list/editor shortcuts plus auto-saving settings panels.
+    await page.goto('/admin/people');
+    for (const section of ['#peoplePeople', '#peopleFamilies', '#peopleNewMembers']) {
+      await expect(page.locator(`${section} .settings-panel-fields`)).toBeEnabled({ timeout: 15000 });
+    }
+    await settle(page, 600);
+
+    await captureScreen(page, testInfo, {
+      name: 'admin-people-settings',
+      title: 'People Settings',
+      category: 'Admin & Settings',
+      purpose: 'Show the People settings hub — list shortcuts and auto-saving settings in one place',
+    });
+  });
+
+  test('admin-person-classifications', async ({ page }, testInfo) => {
+    // Route: src/admin/routes/system.php ("/admin/system/options?mode=classes"), admin-only.
+    await page.goto('/admin/system/options?mode=classes');
+    await expect(page.locator('#optionsTable tbody tr').first()).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('.directory-toggle').first()).toBeVisible();
+    await settle(page, 600);
+
+    await captureScreen(page, testInfo, {
+      name: 'admin-person-classifications',
+      title: 'Person Classifications',
+      category: 'Admin & Settings',
+      purpose: 'Show classification management with the Inactive and In Directory flags',
     });
   });
 
@@ -26,6 +60,8 @@ test.describe('Settings', () => {
 
     await captureScreen(page, testInfo, {
       name: 'admin-plugin-management',
+      title: 'Plugin Management',
+      category: 'Admin & Settings',
       purpose: 'Show the plugin management admin page — core and community plugins',
     });
   });

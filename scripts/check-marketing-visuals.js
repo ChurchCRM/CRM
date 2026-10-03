@@ -98,6 +98,12 @@ function main() {
   for (const { locale, device, file } of metadataFiles) {
     const meta = JSON.parse(fs.readFileSync(file, 'utf8'));
 
+    for (const field of ['title', 'category']) {
+      if (!meta[field]) {
+        problems.push(`${meta.workflow} (${locale}/${device}): sidecar has no ${field} — add it to the captureScreen() options`);
+      }
+    }
+
     if (VIDEO_DEVICES.has(device)) {
       if (meta.video) {
         checkFile(problems, `video (${meta.workflow})`, path.join(ARTIFACTS_ROOT, 'videos', device, meta.video), MIN_VIDEO_BYTES);

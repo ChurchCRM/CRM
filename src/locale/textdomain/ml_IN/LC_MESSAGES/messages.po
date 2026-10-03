@@ -4471,10 +4471,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "ഡേറ്റ്-പിക്കറിൽ തീയതി നിർവ്വചിക്കാൻ, ഡിഫോൾട്ടായി: Y-m-d, ഉദാഹരണം ഫ്രഞ്ചിൽ: d/m/Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "പുതിയ കുടുംബം അല്ലെങ്കിൽ വ്യക്തി ചേർക്കുമ്പോൾ അറിയിക്കേണ്ടവരുടെ PersonID-കളുടെ കോമ-വേർതിരിച്ച ലിസ്‌റ്റ്"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "ബാഹ്യ കലണ്ടർ API-ൽ നിന്ന് ഇവന്റുകൾ ആധികാരികതയില്ലാതെ വായിക്കാൻ അനുവദിക്കുക"
 
@@ -7317,10 +7313,6 @@ msgstr "ഈ ഹാജർ എണ്ണം നീക്കണോ?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ഈ സ്വഭാവം ബാധകമാകുന്ന റെക്കോർഡ് തരം തിരഞ്ഞെടുക്കൂ"
-
-#: 
-msgid "Total Pledges"
-msgstr "ആകെ സംഭാവന പ്രതിജ്ഞകൾ"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10905,10 +10897,6 @@ msgstr "പൊതു HTML, ICS, JSON URLs വഴി കലണ്ടർ ഇവന
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "സ്വയം രജിസ്ട്രേഷൻ പേജ് വഴി സന്ദർശകർ സ്വന്തം കുടുംബ record ഉണ്ടാക്കാൻ അനുവദിക്കുക"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "സന്ദർശകർ പുതിയ കുടുംബങ്ങളായി സ്വയം രജിസ്ട്രേഷൻ ചെയ്യാൻ അനുവദിക്കുക."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17979,10 +17967,6 @@ msgid "Errors"
 msgstr "പിശകുകൾ"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "മരണപ്പെട്ട അംഗങ്ങളെ പ്രിന്റ് ചെയ്ത ഡയറക്ടറിയിൽ നിന്നും CSV എക്സ്പോർട്ടുകളിൽ നിന്നും ഒഴിവാക്കുക."
-
-#: 
 msgid "Failed Files"
 msgstr "പരാജയപ്പെട്ട ഫയലുകൾ"
 
@@ -18511,14 +18495,6 @@ msgid "As an admin, please also review the"
 msgstr "കാര്യനിർവാഹകനെന്ന നിലയിൽ, ദയവായി ഇതും പരിശോധിക്കുക"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "ജന്മദിനത്തിൽ ആളുകൾക്ക് സ്വയമായി ജന്മദിന സുഖാശംസ ഇമെയിൽ അയയ്ക്കുക."
-
-#: 
-msgid "Birthday Emails"
-msgstr "ജന്മദിന ഇമെയിലുകൾ"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "ജന്മദിനങ്ങൾ, വാർഷികങ്ങൾ, സന്നദ്ധപരിചാരകർ, വർഗ്ഗീകരണ ഫിൽറ്ററുമായുള്ള മറ്റ് അംഗങ്ങളുടെ ലിസ്റ്റുകൾ"
 
@@ -18775,10 +18751,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "പൊതു ഇവന്റുകളിലേക്ക് ലോഗിൻ ചെയ്യാതെയുള്ള പ്രവേശനം അനുവദിക്കുക (കലണ്ടറുകൾ എംബെഡ് ചെയ്യാൻ)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "സന്ദർശകരെ പൊതു രജിസ്ട്രേഷൻ പേജിലൂടെ സ്വന്തം കുടുംബ റെക്കോർഡുകൾ സൃഷ്ടിക്കാൻ അനുവദിക്കുക"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "ജന്മദിന ഇമെയിലുകൾ സ്വയമായി അയയ്ക്കുക (പശ്ചാത്തല ജോബ് ഷെഡ്യൂലർ ആവശ്യമാണ്)"
 
@@ -18993,4 +18965,84 @@ msgstr "ലോഗിൻ കഴിയുന്ന വ്യക്തിയെ ഏ
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "അവസാന ഭരണാധികാരിയെ വെട്ടിപ്പഴിക്കാൻ കഴിയില്ല."
+
+#: 
+msgid "Category"
+msgstr "വിഭാഗം"
+
+#: 
+msgid "Category updated."
+msgstr "വിഭാഗം അപ്‌ഡേറ്റ് ചെയ്തു."
+
+#: 
+msgid "Delete Category"
+msgstr "വിഭാഗം ഇല്ലാതാക്കുക"
+
+#: 
+msgid "Failed to delete category"
+msgstr "വിഭാഗം ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to rename category"
+msgstr "വിഭാഗത്തിന്റെ പേര് മാറ്റുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Fund Categories"
+msgstr "ഫണ്ട് വിഭാഗങ്ങൾ"
+
+#: 
+msgid "Fund activated."
+msgstr "ഫണ്ട് സജീവമാക്കി."
+
+#: 
+msgid "Fund deactivated."
+msgstr "ഫണ്ട് നിർജ്ജീവമാക്കി."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "ഈ വിഭാഗത്തിലെ ഫണ്ടുകൾ വിഭാഗീകരിക്കാത്തവയാകും. ഫണ്ടുകൾ തന്നെ ഇല്ലാതാക്കപ്പെടില്ല."
+
+#: 
+msgid "INACTIVE"
+msgstr "നിഷ്‌ക്രിയം"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "പുതിയ വിഭാഗത്തിന്റെ പേര് (നിലവിലുള്ള പേര് നൽകിയാൽ രണ്ടും ലയിക്കും)"
+
+#: 
+msgid "Optional"
+msgstr "ഓപ്ഷണൽ"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "ഓപ്ഷണൽ — ഒരു വിഭാഗം തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ പുതിയത് ടൈപ്പ് ചെയ്യുക"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "സാമ്പത്തിക പ്രതിബദ്ധതയ്ക്കപ്പുറം അടച്ചത്"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "സാമ്പത്തിക പ്രതിബദ്ധത നൽകി, പക്ഷേ ഇതുവരെ അടച്ചിട്ടില്ല"
+
+#: 
+msgid "Rename Category"
+msgstr "വിഭാഗത്തിന്റെ പേര് മാറ്റുക"
+
+#: 
+msgid "Still Owed"
+msgstr "ഇനിയും നൽകാനുള്ളത്"
+
+#: 
+msgid "Summary by Category"
+msgstr "വിഭാഗം അനുസരിച്ചുള്ള സംഗ്രഹം"
+
+#: 
+msgid "Total Paid"
+msgstr "ആകെ അടച്ചത്"
+
+#: 
+msgid "Uncategorized"
+msgstr "വിഭാഗീകരിക്കാത്തത്"
 

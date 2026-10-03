@@ -18,6 +18,7 @@ const directoryRequest = (layout, extra = {}) => ({
     failOnStatusCode: false,
     body: {
         sDirLayout: layout,
+        "sDirClassifications[]": "1",
         "sDirRoleHead[]": "1",
         "sDirRoleSpouse[]": "2",
         "sDirRoleChild[]": "3",

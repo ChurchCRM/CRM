@@ -49,6 +49,8 @@ test('find-neighbors-search', async ({ page }, testInfo) => {
 
   await captureScreen(page, testInfo, {
     name: 'find-neighbors-search',
+    title: 'Find Neighbors Search',
+    category: 'Recordings',
     purpose: 'Show finding nearby families from a family profile, with results plotted by distance on the map',
   });
 });

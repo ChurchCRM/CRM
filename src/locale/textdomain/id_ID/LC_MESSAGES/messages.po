@@ -4501,10 +4501,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Untuk menentukan tanggal di Date-Picker, per default: Ymd, Dalam Bahasa Perancis: d / m / Y misalnya."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Daftar PersonIDs orang yang terpisah untuk koma untuk memberi tahu ketika keluarga atau orang baru ditambahkan"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Izinkan membaca acara yang tidak diautentikasi dari API kalender eksternal"
 
@@ -7340,10 +7336,6 @@ msgstr "Hapus hitungan kehadiran ini?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Pilih jenis catatan yang berlaku untuk properti ini"
-
-#: 
-msgid "Total Pledges"
-msgstr "Total Janji"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10925,10 +10917,6 @@ msgstr "Izinkan akses tidak terautentikasi ke acara kalender melalui URL HTML, I
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Izinkan pengunjung membuat catatan keluarga mereka sendiri melalui halaman pendaftaran mandiri"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Izinkan pengunjung mendaftar sendiri sebagai keluarga baru."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17992,10 +17980,6 @@ msgid "Errors"
 msgstr "Kesalahan"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Kecualikan jemaat yang telah meninggal dunia dari direktori cetak dan ekspor CSV."
-
-#: 
 msgid "Failed Files"
 msgstr "Berkas yang Gagal"
 
@@ -18524,14 +18508,6 @@ msgid "As an admin, please also review the"
 msgstr "Sebagai administrator, harap juga tinjau"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Secara otomatis mengirimkan email ucapan ulang tahun kepada orang-orang di hari ulang tahun mereka."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Email Ulang Tahun"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Daftar hari ulang tahun, hari jadi, relawan, dan orang-orang lainnya dengan filter klasifikasi"
 
@@ -18788,10 +18764,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Izinkan akses tidak terautentikasi ke acara publik (untuk menyematkan kalender)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Izinkan pengunjung untuk membuat catatan keluarga mereka sendiri melalui halaman pendaftaran publik"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Mengirim email ulang tahun secara otomatis (memerlukan penjadwal pekerjaan latar belakang)"
 
@@ -19006,4 +18978,84 @@ msgstr "Hanya administrator yang dapat menghapus orang yang memiliki login."
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Administrator terakhir tidak dapat dihapus."
+
+#: 
+msgid "Category"
+msgstr "Kategori"
+
+#: 
+msgid "Category updated."
+msgstr "Kategori telah diperbarui."
+
+#: 
+msgid "Delete Category"
+msgstr "Hapus Kategori"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Gagal menghapus kategori"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Gagal mengganti nama kategori"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategori Persembahan"
+
+#: 
+msgid "Fund activated."
+msgstr "Persembahan telah diaktifkan."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Persembahan telah dinonaktifkan."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Persembahan dalam kategori ini akan menjadi tidak terkategori. Persembahan itu sendiri tidak dihapus."
+
+#: 
+msgid "INACTIVE"
+msgstr "Non-aktif"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nama kategori baru (nama yang ada menggabungkan keduanya)"
+
+#: 
+msgid "Optional"
+msgstr "Opsional"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opsional — pilih atau ketikkan kategori baru"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Dibayar melebihi komitmen keuangan"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Berkomitmen tetapi belum dibayar"
+
+#: 
+msgid "Rename Category"
+msgstr "Ganti Nama Kategori"
+
+#: 
+msgid "Still Owed"
+msgstr "Masih Terhutang"
+
+#: 
+msgid "Summary by Category"
+msgstr "Ringkasan berdasarkan Kategori"
+
+#: 
+msgid "Total Paid"
+msgstr "Total Dibayar"
+
+#: 
+msgid "Uncategorized"
+msgstr "Tidak Terkategori"
 

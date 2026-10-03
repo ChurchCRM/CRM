@@ -1,0 +1,21 @@
+{
+  "Could not load the current settings. Reload the page to try again.": "現在の設定を読み込めませんでした。ページを再読み込みして、もう一度お試しください。",
+  "This setting must be a number": "この設定は数値である必要があります",
+  "Child Role": "子の役割",
+  "Directory inclusion can only be toggled for the classifications list": "名簿への掲載は、分類リストでのみ切り替えられます",
+  "Greeter Message 1": "ウェルカムメッセージ 1",
+  "Greeter Message 2": "ウェルカムメッセージ 2",
+  "Head of House Role": "世帯主の役割",
+  "Hide Address Without Family": "家族のない住所を非表示にする",
+  "Hide Friend Date": "友人登録日を非表示にする",
+  "Hide Newsletter Subscriptions": "ニュースレター購読を非表示にする",
+  "Hide Wedding Date": "結婚記念日を非表示にする",
+  "In Directory": "名簿に掲載",
+  "Include Details in Notifications": "通知に詳細を含める",
+  "Notification Recipients": "通知の受信者",
+  "People to notify when a new family or person is added": "新しい家族または人物が追加されたときに通知する人",
+  "Person initials style": "人物のイニシャルの形式",
+  "Person name display style": "人物の名前の表示形式",
+  "Spouse Role": "配偶者の役割",
+  "Uppercase Zip/Postcodes": "郵便番号を大文字にする"
+}

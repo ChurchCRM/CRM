@@ -4500,10 +4500,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Tarih seçmesinin tarihini tanımlamak için, varsayılan başına: y-m-d, Fransızca: D/m/y Örneğin."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Yeni bir aile veya kişi eklendiğinde bilgilendirilecek kişilerin kişilerinin virgül ayrılmış listesi"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Harici takvim API'sından kimlik doğrulanmamış olayların okunmasına izin verin"
 
@@ -7352,10 +7348,6 @@ msgstr "Bu katılım sayısını kaldır?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Bu özelliğin uygulandığı kayıt türünü seçin"
-
-#: 
-msgid "Total Pledges"
-msgstr "Toplam Taahhütler"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10940,10 +10932,6 @@ msgstr "Takvim etkinliklerine genel HTML, ICS ve JSON URL'leri aracılığıyla 
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Ziyaretçilerin kendi kendine kayıt sayfası aracılığıyla aile kaydı oluşturmasına izin ver"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Ziyaretçilerin yeni aileler olarak kendi kendine kaydolmasına izin verin."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -18014,10 +18002,6 @@ msgid "Errors"
 msgstr "Hatalar"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Vefat etmiş üyeleri basılı rehberden ve CSV dışa aktarımlarından hariç tut."
-
-#: 
 msgid "Failed Files"
 msgstr "Başarısız Dosyalar"
 
@@ -18546,14 +18530,6 @@ msgid "As an admin, please also review the"
 msgstr "Yönetici olarak lütfen aşağıdakileri de gözden geçirin"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Doğum günlerinde kişilere otomatik olarak doğum günü tebrik e-postası gönderin."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Doğum Günü E-postaları"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Doğum günleri, yıldönümleri, gönüllüler ve sınıflandırma filtresine sahip diğer kişi listeleri"
 
@@ -18796,4 +18772,312 @@ msgstr "bu olayın etrafındaki hatalar için ilgili günlük dosyasını indiri
 #: 
 msgid "system logs"
 msgstr "sistem günlükleri"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Erişim Kontrolü ve Güvenliği"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Vergi indirimine tabi olmayan ödemelerin kaydedilmesine izin ver (örneğin, ürün satışları)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Genel etkinliklere kimliği doğrulanmamış erişime izin ver (takvimleri gömme için)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Doğum günü e-postalarını otomatik olarak gönder (arka plan iş zamanlayıcısı gerekir)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Doğum Günü Tebrik E-postaları"
+
+#: 
+msgid "Communication & Email"
+msgstr "İletişim ve E-posta"
+
+#: 
+msgid "Content Security Policy"
+msgstr "İçerik Güvenliği Politikası"
+
+#: 
+msgid "Email System"
+msgstr "E-posta Sistemi"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Kuruluşunuz için özellikleri etkinleştirin veya devre dışı bırakın"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Ana navigasyonda Etkinlikler bölümünü etkinleştirin/devre dışı bırakın"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Finans menüsünü ve tüm finansal özellikleri etkinleştirin/devre dışı bırakın (mevduatlar, ödemeler, raporlar)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Bağış Toplayıcı menüsünü etkinleştirin/devre dışı bırakın"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "XSS saldırılarına karşı korunmak için katı CSP başlıklarını uygula"
+
+#: 
+msgid "Events Module"
+msgstr "Etkinlikler Modülü"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Özellik Değiştirgeleri"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Özellik değiştirgeleri, ChurchCRM'de hangi modüllerin ve özelliklerin kullanılabilir olduğunu kontrol eder. Değişiklikler hemen geçerli olur."
+
+#: 
+msgid "Finance Features"
+msgstr "Finansal Özellikler"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Hızlı genel aramaya adresleri dahil et"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Hızlı genel aramaya takvim etkinliklerini dahil et"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Hızlı genel aramaya özel aile özelliklerini dahil et"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Hızlı genel aramaya mevduatları dahil et"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Hızlı genel aramaya aileleri dahil et"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Hızlı genel aramaya grupları dahil et"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Hızlı genel aramaya ödemeleri dahil et"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Hızlı genel aramaya insanları dahil et"
+
+#: 
+msgid "Invalid setting"
+msgstr "Geçersiz ayar"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Kaybolan Şifre Bağlantısı"
+
+#: 
+msgid "Manage All Features"
+msgstr "Tüm Özellikleri Yönet"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "E-posta gönderimi için ana değiştirge. Parola sıfırlaması ve bildirimler için GEREKLİDİR"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Düşülemez Ödemeler"
+
+#: 
+msgid "Primary Modules"
+msgstr "Birincil Modüller"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Genel Takvim API"
+
+#: 
+msgid "Saved"
+msgstr "Kaydedildi"
+
+#: 
+msgid "Search Families"
+msgstr "Aileleri Ara"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Aile Özel Özelliklerini Ara"
+
+#: 
+msgid "Search Settings"
+msgstr "Arama Ayarları"
+
+#: 
+msgid "Self-Registration"
+msgstr "Kendi Kendine Kayıt"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Giriş ekranında \"Kaybolan Şifre\" seçeneğini göster (kullanıcının kendi kendine sıfırlamasına izin verir)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Yan çubukta Pazar Okulu modülünü göster/gizle"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Giriş yapabilen tek yöneticiyi devre dışı bırakamazsınız"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Giriş yapabilen tek yöneticiyi vefat etmiş olarak işaretleyemezsiniz"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Vefat etmiş — giriş yapamaz"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Posta adresi olarak işaretlemeden önce ikinci bir adres girin"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Etkin değil — giriş yapamaz"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Posta ikinci adrese gider; birincil adres, haritalar ve yönergeler için kullanılan fiziksel konum kalır."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Posta, birincil adres yerine bu adrese gönderilir"
+
+#: 
+msgid "Mailing Address"
+msgstr "Posta Adresi"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Farklıysa Posta Adresi"
+
+#: 
+msgid "Primary Address"
+msgstr "Birincil Adres"
+
+#: 
+msgid "Receives Mail"
+msgstr "Posta Alır"
+
+#: 
+msgid "Second Address"
+msgstr "İkinci Adres"
+
+#: 
+msgid "Second Home"
+msgstr "İkinci Ev"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Bağlantılı kişi vefat etmiş veya etkin değil. Kişi yeniden etkin hale getirilene kadar oturum açma, oturumlar ve API anahtarı engellenir."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Bu, posta adresidir"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Bu kişi vefat etmiş veya etkin değil, bu nedenle bu hesap giriş yapamaz"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Yalnızca bir yönetici, bir girişi olan bir kişiyi silebilir."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Son yönetici silinemez."
+
+#: 
+msgid "Category"
+msgstr "Kategori"
+
+#: 
+msgid "Category updated."
+msgstr "Kategori güncellendi."
+
+#: 
+msgid "Delete Category"
+msgstr "Kategoriyi Sil"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kategori silme başarısız"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kategoriyi yeniden adlandırma başarısız"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fon Kategorileri"
+
+#: 
+msgid "Fund activated."
+msgstr "Fon etkinleştirildi."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fon devre dışı bırakıldı."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Bu kategorideki fonlar kategorisiz hale gelecek. Fonların kendileri silinmez."
+
+#: 
+msgid "INACTIVE"
+msgstr "Aktif olmayan"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Yeni kategori adı (mevcut bir ad ikisini birleştirir)"
+
+#: 
+msgid "Optional"
+msgstr "İsteğe bağlı"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "İsteğe bağlı — yeni bir kategori seçin veya yazın"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Sözün ötesinde ödenen"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Söz verildi ancak henüz ödenmedi"
+
+#: 
+msgid "Rename Category"
+msgstr "Kategoriyi Yeniden Adlandır"
+
+#: 
+msgid "Still Owed"
+msgstr "Hâlâ Borçlu"
+
+#: 
+msgid "Summary by Category"
+msgstr "Kategoriye Göre Özet"
+
+#: 
+msgid "Total Paid"
+msgstr "Toplam Ödenen"
+
+#: 
+msgid "Uncategorized"
+msgstr "Kategorisiz"
 

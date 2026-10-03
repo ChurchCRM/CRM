@@ -1,0 +1,21 @@
+{
+  "Could not load the current settings. Reload the page to try again.": "தற்போதைய அமைப்புகளை ஏற்ற முடியவில்லை. மீண்டும் முயற்சிக்க பக்கத்தை மீண்டும் ஏற்றவும்.",
+  "This setting must be a number": "இந்த அமைப்பு ஒரு எண்ணாக இருக்க வேண்டும்",
+  "Child Role": "பிள்ளையின் பங்கு",
+  "Directory inclusion can only be toggled for the classifications list": "அடைவில் சேர்ப்பதை வகைப்பாடுகள் பட்டியலுக்கு மட்டுமே மாற்ற முடியும்",
+  "Greeter Message 1": "வரவேற்பு செய்தி 1",
+  "Greeter Message 2": "வரவேற்பு செய்தி 2",
+  "Head of House Role": "குடும்பத் தலைவரின் பங்கு",
+  "Hide Address Without Family": "குடும்பம் இல்லாத முகவரிகளை மறை",
+  "Hide Friend Date": "நட்பு தேதியை மறை",
+  "Hide Newsletter Subscriptions": "செய்திமடல் சந்தாக்களை மறை",
+  "Hide Wedding Date": "திருமண தேதியை மறை",
+  "In Directory": "அடைவில்",
+  "Include Details in Notifications": "அறிவிப்புகளில் விவரங்களைச் சேர்",
+  "Notification Recipients": "அறிவிப்பைப் பெறுபவர்கள்",
+  "People to notify when a new family or person is added": "புதிய குடும்பம் அல்லது நபர் சேர்க்கப்படும்போது அறிவிக்கப்பட வேண்டியவர்கள்",
+  "Person initials style": "நபரின் முதலெழுத்துகளின் பாணி",
+  "Person name display style": "நபரின் பெயர் காட்டும் பாணி",
+  "Spouse Role": "துணைவரின் பங்கு",
+  "Uppercase Zip/Postcodes": "அஞ்சல் குறியீடுகளைப் பெரிய எழுத்தில் காட்டு"
+}

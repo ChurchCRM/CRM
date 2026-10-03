@@ -4474,10 +4474,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "डेट-पिकर में तिथि परिभाषित करने के लिए, डिफ़ॉल्ट रूप से: Y-m-d।"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "नया परिवार या व्यक्ति जोड़े जाने पर सूचित किए जाने वाले व्यक्तियों की PersonIDs की सूची"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "बाहरी कैलेंडर API से कार्यक्रमों को बिना प्रमाणीकरण के पढ़ने की अनुमति दें"
 
@@ -7316,10 +7312,6 @@ msgstr "यह उपस्थिति गणना हटाएं?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "इस संपत्ति पर लागू होने वाले रिकॉर्ड का प्रकार चुनें"
-
-#: 
-msgid "Total Pledges"
-msgstr "कुल प्रतिज्ञाएं"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10904,10 +10896,6 @@ msgstr "सार्वजनिक HTML, ICS और JSON URL के माध�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "आगंतुकों को स्व-पंजीकरण पृष्ठ के माध्यम से अपना परिवार रिकॉर्ड बनाने की अनुमति दें"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "आगंतुकों को नए परिवार के रूप में स्व-पंजीकरण करने की अनुमति दें।"
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17978,10 +17966,6 @@ msgid "Errors"
 msgstr "त्रुटियाँ"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "मुद्रित निर्देशिका और CSV एक्सपोर्ट से दिवंगत सदस्यों को बाहर रखें।"
-
-#: 
 msgid "Failed Files"
 msgstr "विफल फ़ाइलें"
 
@@ -18510,14 +18494,6 @@ msgid "As an admin, please also review the"
 msgstr "प्रशासक के रूप में, कृपया की भी समीक्षा करें"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "जन्मदिन पर लोगों को स्वचालित रूप से जन्मदिन की बधाई वाला ईमेल भेजें।"
-
-#: 
-msgid "Birthday Emails"
-msgstr "जन्मदिन ईमेल"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "जन्मदिन, वर्षगांठ, स्वयंसेवक और अन्य लोगों की सूची वर्गीकरण फ़िल्टर के साथ"
 
@@ -18760,4 +18736,312 @@ msgstr "इस समय के आसपास त्रुटियों क�
 #: 
 msgid "system logs"
 msgstr "सिस्टम लॉग"
+
+#: 
+msgid "Access Control & Security"
+msgstr "अभिगम नियंत्रण और सुरक्षा"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "कर-कटौती योग्य न होने वाले भुगतान दर्ज करने की अनुमति दें (जैसे, सामग्री की बिक्री)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "सार्वजनिक कार्यक्रमों तक बिना लॉगिन के पहुंच की अनुमति दें (कैलेंडर एम्बेड करने के लिए)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "जन्मदिन के ईमेल स्वचालित रूप से भेजें (बैकग्राउंड जॉब शेड्यूलर आवश्यक है)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "जन्मदिन की शुभकामना ईमेल"
+
+#: 
+msgid "Communication & Email"
+msgstr "संचार और ईमेल"
+
+#: 
+msgid "Content Security Policy"
+msgstr "सामग्री सुरक्षा नीति"
+
+#: 
+msgid "Email System"
+msgstr "ईमेल प्रणाली"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "अपने संगठन के लिए सुविधाएं सक्षम या अक्षम करें"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "मुख्य नेविगेशन में कार्यक्रम अनुभाग सक्षम/अक्षम करें"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "वित्त मेनू और सभी वित्त सुविधाओं (जमा, भुगतान, रिपोर्ट) को सक्षम/अक्षम करें"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "धन-संग्रह मेनू सक्षम/अक्षम करें"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "XSS हमलों से बचाव के लिए सख्त CSP हेडर लागू करें"
+
+#: 
+msgid "Events Module"
+msgstr "कार्यक्रम मॉड्यूल"
+
+#: 
+msgid "Feature Toggles"
+msgstr "सुविधा स्विच"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "सुविधा स्विच नियंत्रित करते हैं कि ChurchCRM में कौन से मॉड्यूल और सुविधाएं उपलब्ध हैं। परिवर्तन तुरंत प्रभावी होते हैं।"
+
+#: 
+msgid "Finance Features"
+msgstr "वित्त सुविधाएं"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "त्वरित वैश्विक खोज में पते शामिल करें"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "त्वरित वैश्विक खोज में कैलेंडर कार्यक्रम शामिल करें"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "त्वरित वैश्विक खोज में कस्टम परिवार गुण शामिल करें"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "त्वरित वैश्विक खोज में जमा शामिल करें"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "त्वरित वैश्विक खोज में परिवार शामिल करें"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "त्वरित वैश्विक खोज में मंत्रालय शामिल करें"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "त्वरित वैश्विक खोज में भुगतान शामिल करें"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "त्वरित वैश्विक खोज में लोग शामिल करें"
+
+#: 
+msgid "Invalid setting"
+msgstr "अमान्य सेटिंग"
+
+#: 
+msgid "Lost Password Link"
+msgstr "पासवर्ड भूल गए लिंक"
+
+#: 
+msgid "Manage All Features"
+msgstr "सभी सुविधाएं प्रबंधित करें"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "ईमेल भेजने का मुख्य स्विच। पासवर्ड रीसेट और सूचनाओं के लिए आवश्यक"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "कर-कटौती योग्य न होने वाले भुगतान"
+
+#: 
+msgid "Primary Modules"
+msgstr "प्रमुख मॉड्यूल"
+
+#: 
+msgid "Public Calendar API"
+msgstr "सार्वजनिक कैलेंडर API"
+
+#: 
+msgid "Saved"
+msgstr "सहेजा गया"
+
+#: 
+msgid "Search Families"
+msgstr "परिवार खोजें"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "परिवार के कस्टम गुण खोजें"
+
+#: 
+msgid "Search Settings"
+msgstr "सेटिंग खोजें"
+
+#: 
+msgid "Self-Registration"
+msgstr "स्व-पंजीकरण"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "लॉगिन स्क्रीन पर \"पासवर्ड भूल गए\" विकल्प दिखाएं (उपयोगकर्ता को स्वयं रीसेट करने देता है)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "साइडबार में रविवारीय पाठशाला मॉड्यूल दिखाएं/छिपाएं"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "एकमात्र ऐसे व्यवस्थापक को निष्क्रिय नहीं किया जा सकता जो साइन इन कर सकता है"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "एकमात्र ऐसे व्यवस्थापक को दिवंगत के रूप में चिह्नित नहीं किया जा सकता जो साइन इन कर सकता है"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "दिवंगत — साइन इन नहीं कर सकते"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "दूसरे पते को डाक पते के रूप में चिह्नित करने से पहले उसे दर्ज करें"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "निष्क्रिय — साइन इन नहीं कर सकते"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "डाक दूसरे पते पर जाती है; प्राथमिक पता वह भौतिक स्थान बना रहता है जो मानचित्र और दिशा-निर्देशों के लिए उपयोग होता है।"
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "डाक प्राथमिक पते के बजाय इस पते पर भेजी जाती है"
+
+#: 
+msgid "Mailing Address"
+msgstr "डाक पता"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "यदि भिन्न हो तो डाक पता"
+
+#: 
+msgid "Primary Address"
+msgstr "प्राथमिक पता"
+
+#: 
+msgid "Receives Mail"
+msgstr "डाक प्राप्त करता है"
+
+#: 
+msgid "Second Address"
+msgstr "दूसरा पता"
+
+#: 
+msgid "Second Home"
+msgstr "दूसरा घर"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "संबद्ध व्यक्ति दिवंगत या निष्क्रिय है। व्यक्ति के पुनः सक्रिय होने तक साइन-इन, सत्र और API कुंजी अवरुद्ध हैं।"
+
+#: 
+msgid "This is the mailing address"
+msgstr "यह डाक पता है"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "यह व्यक्ति दिवंगत या निष्क्रिय है, इसलिए यह खाता साइन इन नहीं कर सकता"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "केवल व्यवस्थापक ही लॉगिन वाले व्यक्ति को हटा सकता है।"
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "अंतिम व्यवस्थापक को हटाया नहीं जा सकता।"
+
+#: 
+msgid "Category"
+msgstr "श्रेणी"
+
+#: 
+msgid "Category updated."
+msgstr "श्रेणी अपडेट की गई।"
+
+#: 
+msgid "Delete Category"
+msgstr "श्रेणी हटाएं"
+
+#: 
+msgid "Failed to delete category"
+msgstr "श्रेणी हटाने में विफल"
+
+#: 
+msgid "Failed to rename category"
+msgstr "श्रेणी का नाम बदलने में विफल"
+
+#: 
+msgid "Fund Categories"
+msgstr "निधि श्रेणियां"
+
+#: 
+msgid "Fund activated."
+msgstr "निधि सक्रिय की गई।"
+
+#: 
+msgid "Fund deactivated."
+msgstr "निधि निष्क्रिय की गई।"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "इस श्रेणी की निधियां अवर्गीकृत हो जाएंगी। निधियां स्वयं हटाई नहीं जाती हैं।"
+
+#: 
+msgid "INACTIVE"
+msgstr "निष्क्रिय"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "नई श्रेणी का नाम (मौजूदा नाम डालने पर दोनों मिल जाएंगी)"
+
+#: 
+msgid "Optional"
+msgstr "वैकल्पिक"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "वैकल्पिक — कोई श्रेणी चुनें या नई लिखें"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "वित्तीय प्रतिबद्धता से अधिक भुगतान"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "वित्तीय प्रतिबद्धता की गई पर अभी भुगतान नहीं हुआ"
+
+#: 
+msgid "Rename Category"
+msgstr "श्रेणी का नाम बदलें"
+
+#: 
+msgid "Still Owed"
+msgstr "अभी देय शेष"
+
+#: 
+msgid "Summary by Category"
+msgstr "श्रेणी के अनुसार सारांश"
+
+#: 
+msgid "Total Paid"
+msgstr "कुल भुगतान"
+
+#: 
+msgid "Uncategorized"
+msgstr "अवर्गीकृत"
 

@@ -1,0 +1,21 @@
+{
+  "Could not load the current settings. Reload the page to try again.": "현재 설정을 불러오지 못했습니다. 페이지를 새로고침한 후 다시 시도하세요.",
+  "This setting must be a number": "이 설정은 숫자여야 합니다",
+  "Child Role": "자녀 역할",
+  "Directory inclusion can only be toggled for the classifications list": "명부 포함 여부는 분류 목록에서만 전환할 수 있습니다",
+  "Greeter Message 1": "환영 메시지 1",
+  "Greeter Message 2": "환영 메시지 2",
+  "Head of House Role": "세대주 역할",
+  "Hide Address Without Family": "가족이 없는 주소 숨기기",
+  "Hide Friend Date": "친구 등록일 숨기기",
+  "Hide Newsletter Subscriptions": "뉴스레터 구독 숨기기",
+  "Hide Wedding Date": "결혼 기념일 숨기기",
+  "In Directory": "명부에 포함",
+  "Include Details in Notifications": "알림에 세부 정보 포함",
+  "Notification Recipients": "알림 수신자",
+  "People to notify when a new family or person is added": "새 가족 또는 사람이 추가될 때 알림을 받을 사람",
+  "Person initials style": "사람 이니셜 형식",
+  "Person name display style": "사람 이름 표시 형식",
+  "Spouse Role": "배우자 역할",
+  "Uppercase Zip/Postcodes": "우편번호 대문자 사용"
+}

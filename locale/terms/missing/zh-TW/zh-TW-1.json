@@ -1,0 +1,21 @@
+{
+  "Could not load the current settings. Reload the page to try again.": "無法載入目前的設定。請重新整理頁面後再試一次。",
+  "This setting must be a number": "此設定必須是數字",
+  "Child Role": "子女角色",
+  "Directory inclusion can only be toggled for the classifications list": "僅能針對分類清單切換是否收錄於通訊錄",
+  "Greeter Message 1": "歡迎訊息 1",
+  "Greeter Message 2": "歡迎訊息 2",
+  "Head of House Role": "戶長角色",
+  "Hide Address Without Family": "隱藏沒有家庭的地址",
+  "Hide Friend Date": "隱藏結識日期",
+  "Hide Newsletter Subscriptions": "隱藏電子報訂閱",
+  "Hide Wedding Date": "隱藏結婚日期",
+  "In Directory": "在通訊錄中",
+  "Include Details in Notifications": "在通知中包含詳細資料",
+  "Notification Recipients": "通知收件人",
+  "People to notify when a new family or person is added": "新增家庭或人員時需要通知的人員",
+  "Person initials style": "人員姓名縮寫樣式",
+  "Person name display style": "人員姓名顯示樣式",
+  "Spouse Role": "配偶角色",
+  "Uppercase Zip/Postcodes": "郵遞區號大寫"
+}

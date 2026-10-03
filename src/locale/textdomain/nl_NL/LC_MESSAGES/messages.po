@@ -4474,10 +4474,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Voor het definiëren van de datum in Datumkiezer, standaard: Y-m-d, In het Frans: d/m/Y bijvoorbeeld."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Door komma's gescheiden lijst met persoons-ID's van mensen om op de hoogte te stellen wanneer een nieuw gezin of nieuwe persoon wordt toegevoegd"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Sta niet-geverifieerde koppelingen van gebeurtenissen vanuit de externe agenda-API toe"
 
@@ -7321,10 +7317,6 @@ msgstr "Deze aanwezigheidstelling verwijderen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Selecteer het recordtype waarop deze eigenschap van toepassing is"
-
-#: 
-msgid "Total Pledges"
-msgstr "Totale Toezeggingen"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10909,10 +10901,6 @@ msgstr "Niet-geverifieerde toegang tot agendagebeurtenissen via openbare HTML-, 
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Bezoekers toestaan hun eigen gezinsrecord aan te maken via de zelfregistratiepagina"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Bezoekers toestaan zich zelf te registreren als nieuwe gezinnen."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17983,10 +17971,6 @@ msgid "Errors"
 msgstr "Fouten"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Sluit overleden leden uit van de gedrukte ledenlijst en CSV-exports."
-
-#: 
 msgid "Failed Files"
 msgstr "Mislukte bestanden"
 
@@ -18515,14 +18499,6 @@ msgid "As an admin, please also review the"
 msgstr "Als beheerder, controleer ook de"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Automatisch een verjaardagsgroet per e-mail naar mensen sturen op hun verjaardag."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Verjaardage-mails"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Verjaardagen, jubilea, vrijwilligers en andere persoonlijsten met een classificatiefilter"
 
@@ -18779,10 +18755,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Niet-geverifieerde toegang tot openbare evenementen toestaan (voor inbedding van kalenders)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Bezoekers kunnen hun eigen familiegegevens via de openbare registratiepagina aanmaken"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "Verjaardagsemails automatisch verzenden (vereist achtergrond-jobplanner)"
 
@@ -18997,4 +18969,84 @@ msgstr "Alleen een beheerder kan een persoon met een login verwijderen."
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "De laatste beheerder kan niet worden verwijderd."
+
+#: 
+msgid "Category"
+msgstr "Categorie"
+
+#: 
+msgid "Category updated."
+msgstr "Categorie bijgewerkt."
+
+#: 
+msgid "Delete Category"
+msgstr "Categorie verwijderen"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kan categorie niet verwijderen"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kan categorie niet hernoemen"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fondscategorieën"
+
+#: 
+msgid "Fund activated."
+msgstr "Fonds geactiveerd."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fonds gedeactiveerd."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Fondsen in deze categorie worden ongecategoriseerd. De fondsen zelf worden niet verwijderd."
+
+#: 
+msgid "INACTIVE"
+msgstr "Niet actieve"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nieuwe categorienaam (een bestaande naam voegt de twee samen)"
+
+#: 
+msgid "Optional"
+msgstr "Optioneel"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Optioneel — kies of typ een nieuwe categorie"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Meer betaald dan de financiële toezegging"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Beloofd maar nog niet betaald"
+
+#: 
+msgid "Rename Category"
+msgstr "Categorie hernoemen"
+
+#: 
+msgid "Still Owed"
+msgstr "Nog verschuldigd"
+
+#: 
+msgid "Summary by Category"
+msgstr "Samenvatting per categorie"
+
+#: 
+msgid "Total Paid"
+msgstr "Totaal betaald"
+
+#: 
+msgid "Uncategorized"
+msgstr "Zonder categorie"
 

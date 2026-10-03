@@ -5,6 +5,13 @@ describe("Admin People", () => {
         cy.setupAdminSession();
     });
 
+    describe("Options editor breadcrumbs", () => {
+        it("marks the page title active on the Group Types editor", () => {
+            cy.visit("admin/system/options?mode=grptypes");
+            cy.get(".breadcrumb .breadcrumb-item.active").should("contain", "Group Types Editor");
+        });
+    });
+
     describe("Person Classifications Editor", () => {
         it("loads the page with existing classifications", () => {
             cy.visit("admin/system/options?mode=classes");
@@ -12,10 +19,28 @@ describe("Admin People", () => {
             cy.get("#optionsTable tbody tr").should("have.length.greaterThan", 0);
         });
 
+        it("breadcrumbs back through People Settings", () => {
+            cy.visit("admin/system/options?mode=classes");
+            cy.get(".breadcrumb a[href$='/admin/people']").should("contain", "People Settings");
+        });
+
         it("shows the Inactive column for classifications", () => {
             cy.visit("admin/system/options?mode=classes");
             cy.get("#optionsTable thead").should("contain", "Inactive");
             cy.get(".inactive-toggle").should("have.length.greaterThan", 0);
+        });
+
+        it("shows the In Directory column and saves a toggle", () => {
+            cy.intercept("POST", "**/admin/api/options/1/*/directory").as("toggleDirectory");
+            cy.visit("admin/system/options?mode=classes");
+            cy.get("#optionsTable thead").should("contain", "In Directory");
+            cy.get(".directory-toggle").should("have.length.greaterThan", 0);
+
+            cy.get(".directory-toggle").first().click();
+            cy.wait("@toggleDirectory").its("response.statusCode").should("eq", 200);
+            // put it back
+            cy.get(".directory-toggle").first().click();
+            cy.wait("@toggleDirectory").its("response.statusCode").should("eq", 200);
         });
 
         it("displays existing classification names (Member)", () => {
@@ -59,6 +84,20 @@ describe("Admin People", () => {
     });
 
     describe("Family Roles Editor", () => {
+        it("shows the page subtitle once", () => {
+            cy.visit("admin/system/options?mode=famroles");
+            cy.get("body")
+                .invoke("text")
+                .then((text) => {
+                    expect(text.split("Manage Family Role options").length - 1).to.eq(1);
+                });
+        });
+
+        it("links back to People Settings from the header", () => {
+            cy.visit("admin/system/options?mode=famroles");
+            cy.get(".page-header .btn-list a[href$='/admin/people']").should("contain", "People Settings");
+        });
+
         it("loads the page with existing roles", () => {
             cy.visit("admin/system/options?mode=famroles");
             cy.contains("Family Roles Editor");

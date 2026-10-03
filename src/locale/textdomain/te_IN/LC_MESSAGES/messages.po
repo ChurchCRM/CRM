@@ -4483,10 +4483,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "తేదీ-పికర్‌లో తేదీ నిర్వచించడానికి, డిఫాల్ట్‌గా: Y-m-d, ఫ్రెంచ్‌లో: d/m/Y ఉదాహరణకు."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "కొత్త కుటుంబం లేదా వ్యక్తి జోడించినప్పుడు నోటిఫై చేయవలసిన వ్యక్తుల PersonIDs ల కామా వేరు చేయబడిన జాబితా"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "బాహ్య క్యాలెండర్ API నుండి సంఘటనల అనధికారిక పఠనాన్ని అనుమతించండి"
 
@@ -7329,10 +7325,6 @@ msgstr "ఈ హాజరు గణనను తీసివేయాలా?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ఈ ఆస్తికి వర్తించే రికార్డ్ రకాన్ని ఎంచుకోండి"
-
-#: 
-msgid "Total Pledges"
-msgstr "మొత్తం వాగ్దానాలు"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -10917,10 +10909,6 @@ msgstr "పబ్లిక్ HTML, ICS, మరియు JSON URL ల ద్వ�
 #: 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "సందర్శకులు స్వీయ-నమోదు పేజీ ద్వారా వారి స్వంత కుటుంబ రికార్డు సృష్టించడానికి అనుమతించండి"
-
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "సందర్శకులను కొత్త కుటుంబాలుగా స్వీయ-నమోదు చేసుకోవడానికి అనుమతించండి."
 
 #. plugin:external-backup:section:5:content
 #: 
@@ -17991,10 +17979,6 @@ msgid "Errors"
 msgstr "లోపాలు"
 
 #: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "మరణించిన సభ్యులను ముద్రిత డైరెక్టరీ మరియు CSV ఎగుమతుల నుండి మినహాయించండి."
-
-#: 
 msgid "Failed Files"
 msgstr "విఫలమైన ఫైళ్లు"
 
@@ -18523,14 +18507,6 @@ msgid "As an admin, please also review the"
 msgstr "నిర్వాహకుడిగా, దయచేసి కూడా సమీక్షించండి"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "జన్మదినంపై వ్యక్తులకు జన్మదిన శుభాకాంక్షల ఈమెయిల్ స్వయంచాలకంగా పంపండి."
-
-#: 
-msgid "Birthday Emails"
-msgstr "జన్మదిన ఈమెయిల్‌లు"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "జన్మదినాలు, వార్షికోత్సవాలు, స్వచ్ఛందసేవకులు మరియు వర్గీకరణ ఫిల్టర్‌తో ఇతర వ్యక్తుల జాబితాలు"
 
@@ -18787,10 +18763,6 @@ msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "ప్రజా ఈవెంట్‌లకు ఆధీకరణ లేని ప్రాప్యతను అనుమతించండి (క్యాలెండర్‌లను పొందుపరచడానికి)"
 
 #: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "సందర్శకులను ప్రజా నమోదు పేజీ ద్వారా వారి సొంత కుటుంబ రికార్డులను సృష్టించుకోవడానికి అనుమతించండి"
-
-#: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
 msgstr "పుట్టినరోజు ఇమెయిల్‌లను స్వయంచాలకంగా పంపండి (నేపథ్య ఉద్యోగ షెడ్యూలర్ అవసరం)"
 
@@ -19005,4 +18977,84 @@ msgstr "నిర్వాహకుడు మాత్రమే లాగిన�
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "చివరి నిర్వాహకుడిని తొలగించలేము."
+
+#: 
+msgid "Category"
+msgstr "వర్గం"
+
+#: 
+msgid "Category updated."
+msgstr "వర్గం నవీకరించబడింది."
+
+#: 
+msgid "Delete Category"
+msgstr "వర్గాన్ని తొలగించు"
+
+#: 
+msgid "Failed to delete category"
+msgstr "వర్గాన్ని తొలగించడం విఫలమైంది"
+
+#: 
+msgid "Failed to rename category"
+msgstr "వర్గం పేరు మార్చడం విఫలమైంది"
+
+#: 
+msgid "Fund Categories"
+msgstr "నిధి వర్గాలు"
+
+#: 
+msgid "Fund activated."
+msgstr "నిధి సక్రియం చేయబడింది."
+
+#: 
+msgid "Fund deactivated."
+msgstr "నిధి నిష్క్రియం చేయబడింది."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "ఈ వర్గంలోని నిధులు వర్గీకరించబడనివిగా మారతాయి. నిధులు తొలగించబడవు."
+
+#: 
+msgid "INACTIVE"
+msgstr "నిష్క్రియ"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "కొత్త వర్గం పేరు (ఇప్పటికే ఉన్న పేరు ఇస్తే రెండూ విలీనమవుతాయి)"
+
+#: 
+msgid "Optional"
+msgstr "ఐచ్ఛికం"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "ఐచ్ఛికం — వర్గాన్ని ఎంచుకోండి లేదా కొత్తది టైప్ చేయండి"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "ఆర్థిక నిబద్ధతకు మించి చెల్లించినది"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "ఆర్థిక నిబద్ధత చేశారు కానీ ఇంకా చెల్లించలేదు"
+
+#: 
+msgid "Rename Category"
+msgstr "వర్గం పేరు మార్చు"
+
+#: 
+msgid "Still Owed"
+msgstr "ఇంకా చెల్లించవలసినది"
+
+#: 
+msgid "Summary by Category"
+msgstr "వర్గం వారీగా సారాంశం"
+
+#: 
+msgid "Total Paid"
+msgstr "మొత్తం చెల్లించినది"
+
+#: 
+msgid "Uncategorized"
+msgstr "వర్గీకరించబడనివి"
 

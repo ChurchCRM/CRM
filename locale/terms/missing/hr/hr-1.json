@@ -1,0 +1,21 @@
+{
+  "Could not load the current settings. Reload the page to try again.": "Trenutačne postavke nije moguće učitati. Ponovno učitajte stranicu i pokušajte opet.",
+  "This setting must be a number": "Ova postavka mora biti broj",
+  "Child Role": "Uloga djeteta",
+  "Directory inclusion can only be toggled for the classifications list": "Uključivanje u imenik može se mijenjati samo za popis klasifikacija",
+  "Greeter Message 1": "Poruka dobrodošlice 1",
+  "Greeter Message 2": "Poruka dobrodošlice 2",
+  "Head of House Role": "Uloga glave obitelji",
+  "Hide Address Without Family": "Sakrij adrese bez obitelji",
+  "Hide Friend Date": "Sakrij datum prijateljstva",
+  "Hide Newsletter Subscriptions": "Sakrij pretplate na bilten",
+  "Hide Wedding Date": "Sakrij datum vjenčanja",
+  "In Directory": "U imeniku",
+  "Include Details in Notifications": "Uključi pojedinosti u obavijesti",
+  "Notification Recipients": "Primatelji obavijesti",
+  "People to notify when a new family or person is added": "Osobe koje treba obavijestiti kada se doda nova obitelj ili osoba",
+  "Person initials style": "Stil inicijala osobe",
+  "Person name display style": "Stil prikaza imena osobe",
+  "Spouse Role": "Uloga supružnika",
+  "Uppercase Zip/Postcodes": "Poštanski brojevi velikim slovima"
+}
