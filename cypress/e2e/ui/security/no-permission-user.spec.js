@@ -219,11 +219,14 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
             });
         });
 
-        it("Data/Reports nav link is hidden from non-admins (GHSA-6rgg-mrx3-92w7)", () => {
+        it("Reports nav is hidden when the user has no report permission", () => {
             cy.visit("v2/dashboard");
             cy.get(".navbar-nav").each(($nav) => {
                 cy.wrap($nav).within(() => {
-                    cy.contains("Data/Reports").should("not.exist");
+                    cy.contains("a", "Reports").should("not.exist");
+                    cy.contains("a", "People Reports").should("not.exist");
+                    cy.contains("a", "Financial Reports").should("not.exist");
+                    cy.contains("a", "Queries").should("not.exist");
                 });
             });
         });

@@ -345,7 +345,6 @@ class Menu
     {
         $reports = ReportCatalog::forUser(AuthenticationManager::getCurrentUser());
         $reportsMenu = new MenuItem(gettext('Reports'), '', $reports !== [] || $isAdmin, 'fa-database');
-        $reportsMenu->addSubMenu(new MenuItem(gettext('All Reports'), 'v2/reports', true, 'fa-list'));
         foreach ($reports as $report) {
             $reportsMenu->addSubMenu(new MenuItem($report['title'], $report['url'], true, $report['icon']));
         }

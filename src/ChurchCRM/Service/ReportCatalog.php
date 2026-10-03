@@ -5,9 +5,8 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\User;
 
 /**
- * Every module-owned report in one list. The Reports menu and the Reports
- * index page are both built from forUser(), so a report appears once and only
- * to users allowed to open it.
+ * Module report links for the Reports menu. forUser() returns only the
+ * reports the current user is allowed to open.
  */
 class ReportCatalog
 {
@@ -45,13 +44,6 @@ class ReportCatalog
                 'description' => gettext('Generate reports for tax statements, pledge tracking, and financial analysis.'),
                 'url'         => 'finance/reports',
                 'icon'        => 'fa-file-invoice',
-            ]],
-            [$user->isManageFundraisersEnabled(), [
-                'module'      => gettext('Fundraiser'),
-                'title'       => gettext('Fundraiser Reports'),
-                'description' => gettext('Bid sheets, certificates and catalogs are run from each fundraiser.'),
-                'url'         => 'fundraiser/',
-                'icon'        => 'fa-money-bill-1',
             ]],
         ];
     }

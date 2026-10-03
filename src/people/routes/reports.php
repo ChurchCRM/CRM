@@ -29,7 +29,6 @@ function getPeopleReportsIndex(Request $request, Response $response, array $args
         'sPageTitle' => gettext('People Reports'),
         'sPageSubtitle' => gettext('Birthdays, anniversaries, volunteers and other people lists with a classification filter'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
-            [gettext('Reports'), '/v2/reports'],
             [gettext('People Reports')],
         ]),
         'reports' => (new PeopleReportService())->getReports(),
@@ -70,7 +69,6 @@ function getPeopleReport(Request $request, Response $response, array $args): Res
         'sPageTitle' => $report['name'],
         'sPageSubtitle' => $report['description'],
         'aBreadcrumbs' => PageHeader::breadcrumbs([
-            [gettext('Reports'), '/v2/reports'],
             [gettext('People Reports'), '/people/reports'],
             [$report['name']],
         ]),

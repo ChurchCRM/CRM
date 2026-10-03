@@ -80,7 +80,7 @@ describe("Finance Reports Index", () => {
     it("should navigate to Pledge Summary from link", () => {
         cy.visit("/finance/reports");
 
-        cy.contains("h6", "Pledge Summary").click();
+        cy.contains("a", "Pledge Summary").click();
         cy.url().should("include", "/finance/pledge/dashboard");
     });
 
