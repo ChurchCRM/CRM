@@ -744,13 +744,14 @@ window.CRM.dashboard = {
     options = options || {};
     const root = window.CRM.root;
     return window.CRM.buildActionMenu([
-      options.needsReview && canEditRecords() && {
-        type: "button",
-        className: "approve-review",
-        icon: "fa-solid fa-check",
-        label: i18next.t("Approve"),
-        data: { "entity-type": "person", "entity-id": personId },
-      },
+      options.needsReview &&
+        canEditRecords() && {
+          type: "button",
+          className: "approve-review",
+          icon: "fa-solid fa-check",
+          label: i18next.t("Approve"),
+          data: { "entity-type": "person", "entity-id": personId },
+        },
       options.needsReview && canEditRecords() && { type: "divider" },
       {
         type: "link",
@@ -798,13 +799,14 @@ window.CRM.dashboard = {
     options = options || {};
     const root = window.CRM.root;
     return window.CRM.buildActionMenu([
-      options.needsReview && canEditRecords() && {
-        type: "button",
-        className: "approve-review",
-        icon: "fa-solid fa-check",
-        label: i18next.t("Approve"),
-        data: { "entity-type": "family", "entity-id": familyId },
-      },
+      options.needsReview &&
+        canEditRecords() && {
+          type: "button",
+          className: "approve-review",
+          icon: "fa-solid fa-check",
+          label: i18next.t("Approve"),
+          data: { "entity-type": "family", "entity-id": familyId },
+        },
       options.needsReview && canEditRecords() && { type: "divider" },
       {
         type: "link",
