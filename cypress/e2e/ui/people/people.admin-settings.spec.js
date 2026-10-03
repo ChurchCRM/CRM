@@ -11,13 +11,17 @@
  */
 
 describe("People Settings hub", () => {
-    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies", "#peopleMap"];
+    const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies", "#peopleDefaults", "#peopleMap"];
     let savedProviders;
     let savedFriendDate;
+    let savedDefaultCity;
 
     before(() => {
         cy.getSystemConfig("bHideFriendDate").then((value) => {
             savedFriendDate = value;
+        });
+        cy.getSystemConfig("sDefaultCity").then((value) => {
+            savedDefaultCity = value;
         });
         cy.getSystemConfig("sGeocoderProviders").then((value) => {
             savedProviders = value;
@@ -26,6 +30,7 @@ describe("People Settings hub", () => {
 
     after(() => {
         cy.restoreSystemConfig("bHideFriendDate", savedFriendDate);
+        cy.restoreSystemConfig("sDefaultCity", savedDefaultCity);
         cy.restoreSystemConfig("sGeocoderProviders", savedProviders);
     });
 
@@ -123,6 +128,30 @@ describe("People Settings hub", () => {
             cy.get(
                 "#peoplePeople [title*='Set true to disable entering Friend Date'], #peoplePeople [data-bs-original-title*='Set true to disable entering Friend Date']",
             ).should("exist");
+        });
+
+        it("has a New Record Defaults section with the address defaults", () => {
+            cy.visit("/admin/people");
+            cy.get("#peopleDefaults .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+            ["sDefaultState", "sDefaultCity", "sDefaultZip"].forEach((name) => {
+                cy.get(`#peopleDefaults input[name='${name}']`).should("exist");
+            });
+            cy.get("#peopleDefaults select[name='sDefaultCountry'] option").should("have.length.greaterThan", 50);
+        });
+
+        it("auto-saves the default city", () => {
+            cy.intercept("POST", "**/admin/api/system/config/sDefaultCity").as("saveCity");
+            cy.visit("/admin/people");
+            cy.get("#peopleDefaults .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+            cy.get("#peopleDefaults input[name='sDefaultCity']").clear().type("Hubville").blur();
+            cy.wait("@saveCity").its("response.statusCode").should("eq", 200);
+            cy.getSystemConfig("sDefaultCity").should("eq", "Hubville");
+        });
+
+        it("no longer lists the address defaults on Church Info", () => {
+            cy.visit("/admin/system/church-info");
+            cy.get("#sChurchCity").should("exist");
+            cy.get("#sDefaultCity, #sDefaultCountry, #sDefaultZip, #sDefaultStateContainer, #copy-church-address").should("not.exist");
         });
 
         it("has a Map Settings section instead of a panel on the map page", () => {
