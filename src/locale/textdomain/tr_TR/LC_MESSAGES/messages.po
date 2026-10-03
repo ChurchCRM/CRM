@@ -11210,10 +11210,6 @@ msgstr "Gravatar, e-posta adreslerini bir karma değerine (MD5) dönüştürerek
 msgid "Hide Latitude/Longitude"
 msgstr "Enlemi/Boylamı Gizle"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Kişi Adresini Gizle"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19080,4 +19076,80 @@ msgstr "Toplam Ödenen"
 #: 
 msgid "Uncategorized"
 msgstr "Kategorisiz"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Geçerli ayarlar yüklenemedi. Tekrar denemek için sayfayı yenileyin."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Bu ayar bir sayı olmalıdır"
+
+#: 
+msgid "Child Role"
+msgstr "Çocuk rolü"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Rehbere dahil etme yalnızca sınıflandırma listesi için açılıp kapatılabilir"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Karşılama mesajı 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Karşılama mesajı 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Hane reisi rolü"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Ailesi olmayan adresleri gizle"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Arkadaşlık tarihini gizle"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Bülten aboneliklerini gizle"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Evlilik tarihini gizle"
+
+#: 
+msgid "In Directory"
+msgstr "Rehberde"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Bildirimlere ayrıntıları dahil et"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Bildirim alıcıları"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Yeni bir aile veya kişi eklendiğinde bilgilendirilecek kişiler"
+
+#: 
+msgid "Person initials style"
+msgstr "Kişi baş harfleri stili"
+
+#: 
+msgid "Person name display style"
+msgstr "Kişi adı görüntüleme stili"
+
+#: 
+msgid "Spouse Role"
+msgstr "Eş rolü"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Posta kodlarını büyük harf yap"
 

@@ -11228,10 +11228,6 @@ msgstr "Gravatar працює шляхом перетворення електр
 msgid "Hide Latitude/Longitude"
 msgstr "Приховати широту/довготу"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Приховати адресу особи"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19112,4 +19108,80 @@ msgstr "Всього сплачено"
 #: 
 msgid "Uncategorized"
 msgstr "Без категорії"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Не вдалося завантажити поточні налаштування. Перезавантажте сторінку та спробуйте ще раз."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Цей параметр має бути числом"
+
+#: 
+msgid "Child Role"
+msgstr "Роль дитини"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Включення до довідника можна перемикати лише для списку класифікацій"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Вітальне повідомлення 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Вітальне повідомлення 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Роль голови родини"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Приховувати адреси без родини"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Приховувати дату знайомства"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Приховувати підписки на розсилку"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Приховувати дату весілля"
+
+#: 
+msgid "In Directory"
+msgstr "У довіднику"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Включати подробиці в сповіщення"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Отримувачі сповіщень"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Кого сповіщати, коли додано нову родину або особу"
+
+#: 
+msgid "Person initials style"
+msgstr "Стиль ініціалів особи"
+
+#: 
+msgid "Person name display style"
+msgstr "Стиль відображення імені особи"
+
+#: 
+msgid "Spouse Role"
+msgstr "Роль подружжя"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Поштові індекси великими літерами"
 

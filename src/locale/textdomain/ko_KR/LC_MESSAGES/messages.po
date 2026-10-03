@@ -11196,10 +11196,6 @@ msgstr "Gravatar는 이메일 주소를 해시(MD5)로 변환하여 작동합니
 msgid "Hide Latitude/Longitude"
 msgstr "위도/경도 숨기기"
 
-#: 
-msgid "Hide Person Address"
-msgstr "개인 주소 숨기기"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19059,4 +19055,80 @@ msgstr "총 지불액"
 #: 
 msgid "Uncategorized"
 msgstr "미분류"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "현재 설정을 불러오지 못했습니다. 페이지를 새로고침한 후 다시 시도하세요."
+
+#: 
+msgid "This setting must be a number"
+msgstr "이 설정은 숫자여야 합니다"
+
+#: 
+msgid "Child Role"
+msgstr "자녀 역할"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "명부 포함 여부는 분류 목록에서만 전환할 수 있습니다"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "환영 메시지 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "환영 메시지 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "세대주 역할"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "가족이 없는 주소 숨기기"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "친구 등록일 숨기기"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "뉴스레터 구독 숨기기"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "결혼 기념일 숨기기"
+
+#: 
+msgid "In Directory"
+msgstr "명부에 포함"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "알림에 세부 정보 포함"
+
+#: 
+msgid "Notification Recipients"
+msgstr "알림 수신자"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "새 가족 또는 사람이 추가될 때 알림을 받을 사람"
+
+#: 
+msgid "Person initials style"
+msgstr "사람 이니셜 형식"
+
+#: 
+msgid "Person name display style"
+msgstr "사람 이름 표시 형식"
+
+#: 
+msgid "Spouse Role"
+msgstr "배우자 역할"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "우편번호 대문자 사용"
 

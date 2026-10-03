@@ -11206,10 +11206,6 @@ msgstr "Gravatar hufanya kazi kwa kubadilisha anwani za barua pepe kuwa hash (MD
 msgid "Hide Latitude/Longitude"
 msgstr "Ficha latitudo/longitudo"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Ficha anwani ya mtu"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19076,4 +19072,80 @@ msgstr "Jumla Iliyolipwa"
 #: 
 msgid "Uncategorized"
 msgstr "Haina Kategoria"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Imeshindwa kupakia mipangilio ya sasa. Pakia upya ukurasa ili ujaribu tena."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Mpangilio huu lazima uwe nambari"
+
+#: 
+msgid "Child Role"
+msgstr "Jukumu la Mtoto"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Kujumuishwa kwenye saraka kunaweza kubadilishwa tu kwa orodha ya madaraja"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Ujumbe wa Karibu 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Ujumbe wa Karibu 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Jukumu la Kichwa cha Kaya"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Ficha Anwani Zisizo na Familia"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Ficha Tarehe ya Urafiki"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Ficha Usajili wa Jarida"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Ficha Tarehe ya Ndoa"
+
+#: 
+msgid "In Directory"
+msgstr "Kwenye Saraka"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Jumuisha Maelezo kwenye Arifa"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Wapokeaji wa Arifa"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Watu wa kuarifiwa familia au mtu mpya anapoongezwa"
+
+#: 
+msgid "Person initials style"
+msgstr "Mtindo wa herufi za kwanza za mtu"
+
+#: 
+msgid "Person name display style"
+msgstr "Mtindo wa kuonyesha jina la mtu"
+
+#: 
+msgid "Spouse Role"
+msgstr "Jukumu la Mwenzi"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Misimbo ya Posta kwa Herufi Kubwa"
 

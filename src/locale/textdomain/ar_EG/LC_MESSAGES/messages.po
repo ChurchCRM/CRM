@@ -11237,10 +11237,6 @@ msgstr "يعمل Gravatar عن طريق تحويل عناوين البريد ا�
 msgid "Hide Latitude/Longitude"
 msgstr "إخفاء خط العرض / خط الطول"
 
-#: 
-msgid "Hide Person Address"
-msgstr "إخفاء عنوان الشخص"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19135,4 +19131,80 @@ msgstr "إجمالي المدفوع"
 #: 
 msgid "Uncategorized"
 msgstr "غير مصنفة"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "تعذّر تحميل الإعدادات الحالية. أعد تحميل الصفحة للمحاولة مرة أخرى."
+
+#: 
+msgid "This setting must be a number"
+msgstr "يجب أن يكون هذا الإعداد رقمًا"
+
+#: 
+msgid "Child Role"
+msgstr "دور الابن/الابنة"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "لا يمكن تبديل الإدراج في الدليل إلا لقائمة التصنيفات"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "رسالة الترحيب 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "رسالة الترحيب 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "دور رب الأسرة"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "إخفاء العناوين بدون أسرة"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "إخفاء تاريخ الصداقة"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "إخفاء الاشتراكات في النشرة الإخبارية"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "إخفاء تاريخ الزواج"
+
+#: 
+msgid "In Directory"
+msgstr "في الدليل"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "تضمين التفاصيل في الإشعارات"
+
+#: 
+msgid "Notification Recipients"
+msgstr "مستلمو الإشعارات"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "الأشخاص الذين سيتم إشعارهم عند إضافة أسرة أو شخص جديد"
+
+#: 
+msgid "Person initials style"
+msgstr "نمط الأحرف الأولى للشخص"
+
+#: 
+msgid "Person name display style"
+msgstr "نمط عرض اسم الشخص"
+
+#: 
+msgid "Spouse Role"
+msgstr "دور الزوج/الزوجة"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "الرموز البريدية بأحرف كبيرة"
 

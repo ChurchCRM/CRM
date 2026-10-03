@@ -23,7 +23,7 @@ describe("Settings Panel — load and Save", () => {
     // room and keep the disabled checks on the usual 5s.
     it("Email Settings: fields and Save stay disabled until every value has loaded", { defaultCommandTimeout: 30000 }, () => {
         const held = [];
-        cy.intercept("GET", "**/admin/api/system/config/*", (req) =>
+        cy.intercept("GET", "**/admin/api/system/config/sSMTPHost", (req) =>
             new Promise((release) => held.push(release)).then(() => req.continue()),
         );
         cy.intercept("POST", "**/admin/api/system/config/*").as("saveConfig");
@@ -31,7 +31,7 @@ describe("Settings Panel — load and Save", () => {
         cy.visit("v2/email/dashboard");
         cy.contains("Email Settings").click();
         cy.get("#emailSettings", { timeout: 10000 }).should("have.class", "show").and("not.have.class", "collapsing");
-        cy.wrap(held).should("have.length.at.least", 3);
+        cy.wrap(held).should("have.length", 1);
 
         cy.get("#emailSettings .settings-panel-save", { timeout: 5000 }).should("be.disabled");
         cy.get("#emailSettings select[name='sPHPMailerSMTPSecure']", { timeout: 5000 }).should("be.disabled");

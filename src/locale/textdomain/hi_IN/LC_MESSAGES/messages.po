@@ -11174,10 +11174,6 @@ msgstr "Gravatar ईमेल पतों को हैश (MD5) में प�
 msgid "Hide Latitude/Longitude"
 msgstr "अक्षांश/देशांतर छुपाएं"
 
-#: 
-msgid "Hide Person Address"
-msgstr "व्यक्ति का पता छुपाएं"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19044,4 +19040,80 @@ msgstr "कुल भुगतान"
 #: 
 msgid "Uncategorized"
 msgstr "अवर्गीकृत"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "वर्तमान सेटिंग लोड नहीं हो सकीं। पुनः प्रयास करने के लिए पृष्ठ को रीलोड करें।"
+
+#: 
+msgid "This setting must be a number"
+msgstr "यह सेटिंग एक संख्या होनी चाहिए"
+
+#: 
+msgid "Child Role"
+msgstr "बच्चे की भूमिका"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "निर्देशिका में शामिल करना केवल वर्गीकरण सूची के लिए बदला जा सकता है"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "स्वागत संदेश 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "स्वागत संदेश 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "परिवार के मुखिया की भूमिका"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "बिना परिवार वाले पते छिपाएँ"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "मित्रता की तारीख छिपाएँ"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "न्यूज़लेटर सदस्यताएँ छिपाएँ"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "विवाह की तारीख छिपाएँ"
+
+#: 
+msgid "In Directory"
+msgstr "निर्देशिका में"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "सूचनाओं में विवरण शामिल करें"
+
+#: 
+msgid "Notification Recipients"
+msgstr "सूचना प्राप्तकर्ता"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "नया परिवार या व्यक्ति जोड़े जाने पर सूचित किए जाने वाले लोग"
+
+#: 
+msgid "Person initials style"
+msgstr "व्यक्ति के आद्याक्षर की शैली"
+
+#: 
+msgid "Person name display style"
+msgstr "व्यक्ति के नाम की प्रदर्शन शैली"
+
+#: 
+msgid "Spouse Role"
+msgstr "जीवनसाथी की भूमिका"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "पिन कोड बड़े अक्षरों में"
 

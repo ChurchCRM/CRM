@@ -11210,10 +11210,6 @@ msgstr "Gravatar werk deur e-posadresse na 'n hash (MD5) om te skakel. Die werkl
 msgid "Hide Latitude/Longitude"
 msgstr "Versteek Breedtegraad/Lengtegraad"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Versteek Persoonadres"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19080,4 +19076,80 @@ msgstr "Totaal betaal"
 #: 
 msgid "Uncategorized"
 msgstr "Sonder kategorie"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Kon nie die huidige instellings laai nie. Herlaai die bladsy om weer te probeer."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Hierdie instelling moet 'n getal wees"
+
+#: 
+msgid "Child Role"
+msgstr "Rol van kind"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Insluiting in die gids kan slegs vir die klassifikasielys oorgeskakel word"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Verwelkomingsboodskap 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Verwelkomingsboodskap 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Rol van huishoudingshoof"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Versteek adresse sonder gesin"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Versteek vriendskapsdatum"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Versteek nuusbriefintekeninge"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Versteek troudatum"
+
+#: 
+msgid "In Directory"
+msgstr "In die gids"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Sluit besonderhede in kennisgewings in"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Ontvangers van kennisgewings"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Persone om in kennis te stel wanneer 'n nuwe gesin of persoon bygevoeg word"
+
+#: 
+msgid "Person initials style"
+msgstr "Styl van die persoon se voorletters"
+
+#: 
+msgid "Person name display style"
+msgstr "Vertoonstyl van die persoon se naam"
+
+#: 
+msgid "Spouse Role"
+msgstr "Rol van eggenoot/eggenote"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Poskodes in hoofletters"
 

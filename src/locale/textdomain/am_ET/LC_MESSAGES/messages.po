@@ -11217,10 +11217,6 @@ msgstr "Gravatar የኢሜይል አድራሻዎችን ወደ ሀሽ (MD5) በ�
 msgid "Hide Latitude/Longitude"
 msgstr "ኬክሮስ/ኦሮምን ደብቅ"
 
-#: 
-msgid "Hide Person Address"
-msgstr "የሰው አድራሻ ደብቅ"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19088,4 +19084,80 @@ msgstr "ጠቅላላ የተከፈለ"
 #: 
 msgid "Uncategorized"
 msgstr "ያልተመደበ"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "የአሁኑን ቅንብሮች መጫን አልተቻለም። እንደገና ለመሞከር ገጹን እንደገና ይጫኑ።"
+
+#: 
+msgid "This setting must be a number"
+msgstr "ይህ ቅንብር ቁጥር መሆን አለበት"
+
+#: 
+msgid "Child Role"
+msgstr "የልጅ ሚና"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "በማውጫ ውስጥ መካተትን መቀያየር የሚቻለው ለምድቦች ዝርዝር ብቻ ነው"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "የእንኳን ደህና መጡ መልእክት 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "የእንኳን ደህና መጡ መልእክት 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "የቤተሰብ ራስ ሚና"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "ቤተሰብ የሌላቸውን አድራሻዎች ደብቅ"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "የወዳጅነት ቀንን ደብቅ"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "የጋዜጣ ደንበኝነቶችን ደብቅ"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "የጋብቻ ቀንን ደብቅ"
+
+#: 
+msgid "In Directory"
+msgstr "በማውጫ ውስጥ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "በማሳወቂያዎች ውስጥ ዝርዝሮችን አካት"
+
+#: 
+msgid "Notification Recipients"
+msgstr "የማሳወቂያ ተቀባዮች"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "አዲስ ቤተሰብ ወይም ሰው ሲጨመር ማሳወቂያ የሚደርሳቸው ሰዎች"
+
+#: 
+msgid "Person initials style"
+msgstr "የሰው የመጀመሪያ ፊደላት ዘይቤ"
+
+#: 
+msgid "Person name display style"
+msgstr "የሰው ስም አሳያይ ዘይቤ"
+
+#: 
+msgid "Spouse Role"
+msgstr "የትዳር ጓደኛ ሚና"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "የፖስታ ኮዶችን በትልልቅ ፊደላት"
 

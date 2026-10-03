@@ -11300,10 +11300,6 @@ msgstr "Gravatar fungerar genom att konvertera e-postadresser till en hash (MD5)
 msgid "Hide Latitude/Longitude"
 msgstr "Dölj latitud/longitud"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Dölj personadress"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19170,4 +19166,80 @@ msgstr "Totalt betalt"
 #: 
 msgid "Uncategorized"
 msgstr "Utan kategori"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Det gick inte att läsa in de aktuella inställningarna. Ladda om sidan och försök igen."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Den här inställningen måste vara ett tal"
+
+#: 
+msgid "Child Role"
+msgstr "Roll som barn"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Katalogtillhörighet kan bara växlas för klassificeringslistan"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Välkomstmeddelande 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Välkomstmeddelande 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Roll som hushållsföreståndare"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Dölj adresser utan familj"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Dölj vänskapsdatum"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Dölj nyhetsbrevsprenumerationer"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Dölj bröllopsdatum"
+
+#: 
+msgid "In Directory"
+msgstr "I katalogen"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Ta med detaljer i aviseringar"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Mottagare av aviseringar"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Personer att meddela när en ny familj eller person läggs till"
+
+#: 
+msgid "Person initials style"
+msgstr "Stil för personens initialer"
+
+#: 
+msgid "Person name display style"
+msgstr "Visningsstil för personens namn"
+
+#: 
+msgid "Spouse Role"
+msgstr "Roll som make/maka"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Postnummer med versaler"
 

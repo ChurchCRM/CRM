@@ -11210,10 +11210,6 @@ msgstr "Το Gravatar λειτουργεί μετατρέποντας διευθ
 msgid "Hide Latitude/Longitude"
 msgstr "Απόκρυψη Γεωγρ. Πλάτους/Μήκους"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Απόκρυψη Διεύθυνσης Ατόμου"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19080,4 +19076,80 @@ msgstr "Σύνολο πληρωθέντων"
 #: 
 msgid "Uncategorized"
 msgstr "Ακατηγοριοποίητο"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Δεν ήταν δυνατή η φόρτωση των τρεχουσών ρυθμίσεων. Ανανεώστε τη σελίδα και δοκιμάστε ξανά."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Αυτή η ρύθμιση πρέπει να είναι αριθμός"
+
+#: 
+msgid "Child Role"
+msgstr "Ρόλος παιδιού"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Η συμπερίληψη στον κατάλογο μπορεί να εναλλαχθεί μόνο για τη λίστα ταξινομήσεων"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Μήνυμα υποδοχής 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Μήνυμα υποδοχής 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Ρόλος αρχηγού οικογένειας"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Απόκρυψη διευθύνσεων χωρίς οικογένεια"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Απόκρυψη ημερομηνίας φιλίας"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Απόκρυψη συνδρομών στο ενημερωτικό δελτίο"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Απόκρυψη ημερομηνίας γάμου"
+
+#: 
+msgid "In Directory"
+msgstr "Στον κατάλογο"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Συμπερίληψη λεπτομερειών στις ειδοποιήσεις"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Παραλήπτες ειδοποιήσεων"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Άτομα που θα ειδοποιούνται όταν προστίθεται νέα οικογένεια ή νέο άτομο"
+
+#: 
+msgid "Person initials style"
+msgstr "Στυλ αρχικών του ατόμου"
+
+#: 
+msgid "Person name display style"
+msgstr "Στυλ εμφάνισης ονόματος του ατόμου"
+
+#: 
+msgid "Spouse Role"
+msgstr "Ρόλος συζύγου"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Ταχυδρομικοί κώδικες με κεφαλαία"
 

@@ -11195,10 +11195,6 @@ msgstr "Gravatar bekerja dengan mengonversi alamat email menjadi hash (MD5). Ala
 msgid "Hide Latitude/Longitude"
 msgstr "Sembunyikan Lintang/Bujur"
 
-#: 
-msgid "Hide Person Address"
-msgstr "Sembunyikan Alamat Orang"
-
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 #: 
@@ -19058,4 +19054,80 @@ msgstr "Total Dibayar"
 #: 
 msgid "Uncategorized"
 msgstr "Tidak Terkategori"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Tidak dapat memuat pengaturan saat ini. Muat ulang halaman untuk mencoba lagi."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Pengaturan ini harus berupa angka"
+
+#: 
+msgid "Child Role"
+msgstr "Peran anak"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Penyertaan dalam direktori hanya dapat diubah untuk daftar klasifikasi"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Pesan sambutan 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Pesan sambutan 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Peran kepala keluarga"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Sembunyikan alamat tanpa keluarga"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Sembunyikan tanggal pertemanan"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Sembunyikan langganan buletin"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Sembunyikan tanggal pernikahan"
+
+#: 
+msgid "In Directory"
+msgstr "Dalam direktori"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Sertakan detail dalam notifikasi"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Penerima notifikasi"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Orang yang diberi tahu saat keluarga atau orang baru ditambahkan"
+
+#: 
+msgid "Person initials style"
+msgstr "Gaya inisial orang"
+
+#: 
+msgid "Person name display style"
+msgstr "Gaya tampilan nama orang"
+
+#: 
+msgid "Spouse Role"
+msgstr "Peran pasangan"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Kode pos huruf besar"
 

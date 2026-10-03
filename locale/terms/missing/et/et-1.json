@@ -1,21 +1,3 @@
 {
-  "Could not load the current settings. Reload the page to try again.": "Praeguseid seadeid ei õnnestunud laadida. Värskendage lehte ja proovige uuesti.",
-  "This setting must be a number": "See seade peab olema arv",
-  "Child Role": "Lapse roll",
-  "Directory inclusion can only be toggled for the classifications list": "Kataloogi kaasamist saab ümber lülitada ainult klassifikatsioonide loendi jaoks",
-  "Greeter Message 1": "Tervitussõnum 1",
-  "Greeter Message 2": "Tervitussõnum 2",
-  "Head of House Role": "Leibkonnapea roll",
-  "Hide Address Without Family": "Peida aadressid ilma perekonnata",
-  "Hide Friend Date": "Peida sõprussuhte kuupäev",
-  "Hide Newsletter Subscriptions": "Peida uudiskirja tellimused",
-  "Hide Wedding Date": "Peida pulmakuupäev",
-  "In Directory": "Kataloogis",
-  "Include Details in Notifications": "Lisa teavitustesse üksikasjad",
-  "Notification Recipients": "Teavituste saajad",
-  "People to notify when a new family or person is added": "Isikud, keda teavitatakse uue perekonna või isiku lisamisel",
-  "Person initials style": "Isiku initsiaalide stiil",
-  "Person name display style": "Isiku nime kuvamise stiil",
-  "Spouse Role": "Abikaasa roll",
-  "Uppercase Zip/Postcodes": "Sihtnumbrid suurtähtedega"
+  "Select at least one classification to include in the directory.": ""
 }

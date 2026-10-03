@@ -1,21 +1,3 @@
 {
-  "Could not load the current settings. Reload the page to try again.": "Nykyisiä asetuksia ei voitu ladata. Lataa sivu uudelleen ja yritä uudestaan.",
-  "This setting must be a number": "Tämän asetuksen on oltava luku",
-  "Child Role": "Lapsen rooli",
-  "Directory inclusion can only be toggled for the classifications list": "Hakemistoon sisällyttämisen voi vaihtaa vain luokituslistalle",
-  "Greeter Message 1": "Tervetuloviesti 1",
-  "Greeter Message 2": "Tervetuloviesti 2",
-  "Head of House Role": "Taloudenpäämiehen rooli",
-  "Hide Address Without Family": "Piilota osoitteet, joilla ei ole perhettä",
-  "Hide Friend Date": "Piilota ystävyyspäivä",
-  "Hide Newsletter Subscriptions": "Piilota uutiskirjetilaukset",
-  "Hide Wedding Date": "Piilota hääpäivä",
-  "In Directory": "Hakemistossa",
-  "Include Details in Notifications": "Sisällytä tiedot ilmoituksiin",
-  "Notification Recipients": "Ilmoitusten vastaanottajat",
-  "People to notify when a new family or person is added": "Henkilöt, joille ilmoitetaan, kun uusi perhe tai henkilö lisätään",
-  "Person initials style": "Henkilön nimikirjainten tyyli",
-  "Person name display style": "Henkilön nimen esitystapa",
-  "Spouse Role": "Puolison rooli",
-  "Uppercase Zip/Postcodes": "Postinumerot isoilla kirjaimilla"
+  "Select at least one classification to include in the directory.": ""
 }
