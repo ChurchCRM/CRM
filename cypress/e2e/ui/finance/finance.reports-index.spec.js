@@ -51,13 +51,12 @@ describe("Finance Reports Index", () => {
         cy.contains("Voting Members");
     });
 
-    it("should display Report Tips section", () => {
+    it("should show the current fiscal year above the report list", () => {
         cy.visit("/finance/reports");
 
-        cy.contains("Report Tips");
-        cy.contains("Fiscal Year");
-        cy.contains("Export Options");
-        cy.contains("Filtering");
+        cy.contains("Fiscal Year").should("be.visible");
+        cy.contains("Your fiscal year starts in").should("be.visible");
+        cy.contains("Report Tips").should("not.exist");
     });
 
     it("should navigate to Giving Report from link", () => {

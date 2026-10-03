@@ -31,6 +31,14 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
 
 ?>
 
+<div class="card mb-3">
+    <div class="card-body py-3">
+        <i class="fa-solid fa-calendar-days me-1"></i>
+        <?= gettext('Fiscal Year') ?>: <strong><?= InputUtils::escapeHTML($fyLabel) ?></strong>
+        <span class="text-secondary ms-2"><?= InputUtils::escapeHTML(sprintf(gettext('Your fiscal year starts in %s.'), $fyMonthName)) ?></span>
+    </div>
+</div>
+
 <div class="card" id="financeReports">
     <div class="list-group list-group-flush">
         <?php
@@ -83,32 +91,6 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
         </div>
             <?php endforeach; ?>
         <?php endforeach; ?>
-    </div>
-</div>
-
-<div class="card mt-3">
-    <div class="card-header">
-        <h3 class="card-title mb-0"><?= gettext('Report Tips') ?></h3>
-    </div>
-    <div class="card-body">
-        <div class="row g-3">
-            <div class="col-md-4">
-                <h4 class="mb-1"><?= gettext('Fiscal Year') ?></h4>
-                <p class="text-secondary mb-0">
-                    <?= InputUtils::escapeHTML(sprintf(gettext('Your fiscal year starts in %s.'), $fyMonthName)) ?>
-                    <?= InputUtils::escapeHTML(gettext('Current fiscal year')) ?>: <strong><?= InputUtils::escapeHTML($fyLabel) ?></strong>.
-                    <?= InputUtils::escapeHTML(gettext('Change this in System Settings.')) ?>
-                </p>
-            </div>
-            <div class="col-md-4">
-                <h4 class="mb-1"><?= gettext('Export Options') ?></h4>
-                <p class="text-secondary mb-0"><?= gettext('Most reports can be exported as PDF for printing or CSV for spreadsheet analysis.') ?></p>
-            </div>
-            <div class="col-md-4">
-                <h4 class="mb-1"><?= gettext('Filtering') ?></h4>
-                <p class="text-secondary mb-0"><?= gettext('Use classification and family filters to generate reports for specific groups of donors.') ?></p>
-            </div>
-        </div>
     </div>
 </div>
 
