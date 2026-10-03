@@ -24,6 +24,9 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'peopleDefaults' => [gettext('New Record Defaults'), 'fa-solid fa-address-card', [
             'sDefaultCountry', 'sDefaultState', 'sDefaultCity', 'sDefaultZip',
         ]],
+        'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
+            'iMapZoom', 'bHideLatLon',
+        ]],
     ];
 
     // Short labels; the legacy sentence stays as the help text.
@@ -46,6 +49,8 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'sDefaultState'                        => gettext('Default State'),
         'sDefaultCity'                         => gettext('Default City'),
         'sDefaultZip'                          => gettext('Default Zip'),
+        'iMapZoom'                             => gettext('Default Map View'),
+        'bHideLatLon'                          => gettext('Hide Latitude/Longitude'),
     ];
 
     $sections = [];

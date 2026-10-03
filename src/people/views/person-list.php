@@ -455,7 +455,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         }
                         // Handle Role column (hidden for filter)
                         elseif ($column->displayFunction === 'getFamilyRoleName') {
-                            echo emptyOrUnassigned($columnData);
+                            echo InputUtils::escapeHTML((string) emptyOrUnassigned($columnData));
                         }
                         // Handle Properties column (hidden for filter)
                         elseif ($column->displayFunction === 'getPropertiesString') {
@@ -480,10 +480,10 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             if (is_array($columnData)) {
                                 echo emptyOrUnassignedJSON($columnData);
                             } else {
-                                echo emptyOrUnassigned($columnData);
+                                echo InputUtils::escapeHTML((string) emptyOrUnassigned($columnData));
                             }
                         } else {
-                            echo $columnData;
+                            echo InputUtils::escapeHTML((string) $columnData);
                         }
                     }
                     echo '</td>';
