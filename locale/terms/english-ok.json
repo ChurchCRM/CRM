@@ -19,7 +19,8 @@
     "Test",
     "am / pm",
     "Data",
-    "Offline"
+    "Offline",
+    "N/A"
   ],
   "el": [
     "Azure",
@@ -500,7 +501,8 @@
     "Check-out",
     "Preview",
     "Teller",
-    "Mailing Address"
+    "Mailing Address",
+    "N/A"
   ],
   "fr": [
     "AM / PM",
@@ -629,7 +631,8 @@
     "Online",
     "SHA1 Hash",
     "Test",
-    "am / pm"
+    "am / pm",
+    "N/A"
   ],
   "tr": [
     "4. Kiosk",
@@ -660,7 +663,8 @@
     "ICS URL",
     "Online",
     "SHA1 Hash",
-    "Offline"
+    "Offline",
+    "N/A"
   ],
   "it": [
     "AM / PM",
@@ -758,7 +762,8 @@
     "Individual",
     "Important",
     "Major",
-    "Catalog"
+    "Catalog",
+    "N/A"
   ],
   "sv": [
     "4. Kiosk",
