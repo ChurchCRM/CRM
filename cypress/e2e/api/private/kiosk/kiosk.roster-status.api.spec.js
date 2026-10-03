@@ -14,6 +14,7 @@ describe("Kiosk device roster - check-in status is scoped to the assigned event"
     let groupId = null;
     let kioskId = null;
     let kioskCookie = null;
+    let kioskCookiePath = null;
     let existingKioskIds = new Set();
     let currentEventId = null;
     let pastEventId = null;
@@ -89,11 +90,12 @@ describe("Kiosk device roster - check-in status is scoped to the assigned event"
                 // device and stores its path-scoped kioskCookie in the jar.
                 cy.clearCookies();
                 cy.visit("/kiosk/", { failOnStatusCode: false });
-                // Cypress clears cookies between tests, so keep the value and
-                // put it back in beforeEach().
+                // Cypress clears cookies between tests. The server path includes
+                // the install prefix (/kiosk/ at the root, /churchcrm/kiosk/ in CI).
                 cy.getCookie("kioskCookie").then((cookie) => {
                     expect(cookie, "kioskCookie set by registration").to.not.be.null;
                     kioskCookie = cookie.value;
+                    kioskCookiePath = cookie.path;
                 });
                 cy.restoreSystemConfig("sKioskVisibilityTimestamp", originalVisibility);
 
@@ -117,7 +119,7 @@ describe("Kiosk device roster - check-in status is scoped to the assigned event"
     });
 
     beforeEach(() => {
-        cy.setCookie("kioskCookie", kioskCookie, { path: "/kiosk/" });
+        cy.setCookie("kioskCookie", kioskCookie, { path: kioskCookiePath });
     });
 
     after(() => {
