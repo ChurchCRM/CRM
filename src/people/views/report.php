@@ -7,7 +7,7 @@ use ChurchCRM\view\PersonDeleteGuard;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-$reportUrl = $sRootPath . '/v2/reports/people/' . InputUtils::escapeAttribute($slug);
+$reportUrl = $sRootPath . '/people/reports/' . InputUtils::escapeAttribute($slug);
 $canEdit = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled();
 $cart = $_SESSION['aPeopleCart'] ?? [];
 $missingLabels = array_map(static fn (string $key): string => $report['params'][$key]['label'], $missing);
