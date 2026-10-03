@@ -42,8 +42,8 @@ describe("API Private Geocoder — provider chain (#9848)", () => {
         expect(body.Longitude).to.equal(0);
     };
 
-    const geocode = () =>
-        cy.makePrivateAdminAPICall("POST", "/api/geocoder/address", { address: ADDRESS }, 200, 40000);
+    const geocode = (address = ADDRESS) =>
+        cy.makePrivateAdminAPICall("POST", "/api/geocoder/address", { address }, 200, 40000);
 
     before(() => {
         SETTINGS.forEach((name) => {
@@ -82,6 +82,15 @@ describe("API Private Geocoder — provider chain (#9848)", () => {
         setConfig("sGeocoderProviders", "US Census");
         setCountries("US", "");
         geocode().then((response) => expectNear(response.body));
+    });
+
+    it("keeps a route number intact so US Census can match it (FM 1960 is not 1960th)", () => {
+        setConfig("sGeocoderProviders", "US Census");
+        setCountries("US", "");
+        geocode("4210 FM 1960 Rd W, Houston, TX 77068").then(({ body }) => {
+            expect(Math.abs(body.Latitude - 29.9909)).to.be.lessThan(0.05);
+            expect(Math.abs(body.Longitude - -95.4929)).to.be.lessThan(0.05);
+        });
     });
 
     it("falls back to the church country when the default country is blank", () => {
