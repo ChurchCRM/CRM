@@ -70,7 +70,7 @@ Publishing the draft is a person's click. That `release: published` event then s
 
 | Workflow (file) | Starts on | Does |
 |---|---|---|
-| `Issues: hygiene` (`issue-management.yml`) | issue opened or labeled, Mondays 02:00 UTC, manual | Security guard on new issues, bug type normalization, stale marking, review of closed stale issues |
+| `Issues: hygiene` (`issue-management.yml`) | issue opened or labeled, Mondays 02:00 UTC, manual | Security guard on new issues, bug type normalization, stale marking, review of closed stale issues. After 45 quiet days it asks the reporter to reply (that keeps it open). No reply closes it 14 days later. Exempt: `Security`, `security-delete-required`, `accepted`, `Epic`, `good first issue`. At most 30 items per Monday. |
 | `Issues: stamp milestone on merge` (`pr-milestone-stamp.yml`) | PR closed, manual | Puts a merged PR and its issues on the milestone matching the `package.json` version |
 | `Marketing: capture screenshots & videos` (`marketing-capture-assets.yml`) | manual | Captures every locale's screenshots. On `master` it opens a PR when the committed visuals differ; on any other branch it fails if they are stale |
 

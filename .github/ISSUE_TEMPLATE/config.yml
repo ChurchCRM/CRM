@@ -6,9 +6,9 @@ contact_links:
   - name: 📚 Documentation
     url: https://docs.churchcrm.io
     about: Check our documentation for answers to common questions before opening an issue
-  - name: 💬 Discord (Urgent? Want to chat?)
+  - name: 💬 Discord — talk it through
     url: https://discord.gg/tuWyFzj3Nj
-    about: Join our Discord to chat with maintainers in real time — please still open a GitHub issue so we can track and fix it
+    about: Live help and conversation. Use Discord when you want support or to chat, instead of only opening a GitHub issue
   - name: 🔒 Report a Security Vulnerability (Private)
     url: https://github.com/ChurchCRM/CRM/security/advisories/new
     about: Never file security issues publicly — use a private security advisory
