@@ -73,6 +73,7 @@ module.exports = {
     'calendar-event-editor': './webpack/calendar-event-editor.js',
     'two-factor-enrollment': './webpack/two-factor-enrollment.js',
     churchcrm: './webpack/skin-main',
+    theme: './webpack/theme.js',
     'churchcrm-rtl': './webpack/skin-rtl',
     'photo-uploader': './webpack/photo-uploader-entry',
     'root-dashboard': './webpack/root-dashboard',
