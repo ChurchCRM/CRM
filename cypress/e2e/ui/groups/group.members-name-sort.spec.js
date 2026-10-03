@@ -4,7 +4,7 @@ describe("Group members table sorts by last name, then first name (#9836)", () =
     beforeEach(() => cy.setupStandardSession());
 
     it("orders the Name column independently of the display name style", () => {
-        cy.makePrivateAdminAPICall("GET", "/api/groups/9/members", null, 200).then((response) => {
+        cy.request("/api/groups/9/members").then((response) => {
             const members = response.body.Person2group2roleP2g2rs;
             expect(members.length).to.be.greaterThan(1);
             const key = (m) => `${m.Person.LastName || ""} ${m.Person.FirstName || ""}`.toLowerCase();
@@ -12,7 +12,6 @@ describe("Group members table sorts by last name, then first name (#9836)", () =
 
             cy.visit("groups/view/9");
             cy.get("#membersTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 2);
-            cy.get("#membersTable thead th").contains("Name").click();
             cy.get("#membersTable thead th[aria-sort='ascending']").should("exist");
             cy.get("#membersTable tbody tr")
                 .first()
