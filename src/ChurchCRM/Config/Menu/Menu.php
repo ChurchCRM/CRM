@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\FundRaiserService;
+use ChurchCRM\Service\ReportCatalog;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
@@ -306,7 +307,6 @@ class Menu
 
         $depositsMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'finance/', $isFinanceEnabled, 'fa-gauge'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'finance/deposit/search', $isFinanceEnabled, 'fa-list'));
-        $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'finance/reports', $isFinanceEnabled, 'fa-file-invoice'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Pledge Dashboard'), 'finance/pledge/dashboard', $isFinanceEnabled, 'fa-handshake'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'DepositSlipEditor.php?DepositSlipID=' . $_SESSION['iCurrentDeposit'], $isFinanceEnabled, 'fa-pen-to-square'));
 
@@ -342,10 +342,11 @@ class Menu
 
     private static function getReportsMenu(bool $isAdmin): MenuItem
     {
-        // GHSA-6rgg-mrx3-92w7: QueryList.php requires isAdmin(); hide the whole menu from non-admins.
-        $reportsMenu = new MenuItem(gettext('Data/Reports'), '', $isAdmin, 'fa-database');
-        $reportsMenu->addSubMenu(new MenuItem(gettext('Queries'), 'QueryList.php', $isAdmin, 'fa-database'));
-        $reportsMenu->addSubMenu(new MenuItem(gettext('People Reports'), 'v2/reports/people', $isAdmin, 'fa-table-list'));
+        $reports = ReportCatalog::forUser(AuthenticationManager::getCurrentUser());
+        $reportsMenu = new MenuItem(gettext('Reports'), '', $reports !== [], 'fa-database');
+        foreach ($reports as $report) {
+            $reportsMenu->addSubMenu(new MenuItem($report['title'], $report['url'], true, $report['icon']));
+        }
 
         return $reportsMenu;
     }

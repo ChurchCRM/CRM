@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\PeopleReportService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
@@ -11,28 +12,52 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-// Data/Reports -> People Reports: the people queries of the frozen Query View
+// Reports -> People Reports: the people queries of the frozen Query View
 // (issue #9995) rebuilt as an MVC page on Propel. Admin only, like QueryList.php.
-$app->group('/reports/people', function (RouteCollectorProxy $group): void {
+$app->group('/reports', function (RouteCollectorProxy $group): void {
     $group->get('', 'getPeopleReportsIndex');
     $group->get('/', 'getPeopleReportsIndex');
     $group->get('/{slug:[a-z-]+}', 'getPeopleReport');
     $group->get('/{slug:[a-z-]+}/csv', 'getPeopleReportCsv');
 })->add(AdminRoleAuthMiddleware::class);
 
+/**
+ * @return array<int, array{href: string, title: string, description: string}>
+ */
+function peopleReportLinks(): array
+{
+    $user = AuthenticationManager::getCurrentUser();
+    $links = [
+        [
+            'href' => '/DirectoryReports.php',
+            'title' => gettext('People Directory'),
+            'description' => gettext('Printable directory of all people, grouped by family'),
+        ],
+    ];
+    if ($user->isMenuOptionsEnabled()) {
+        $links[] = [
+            'href' => '/LettersAndLabels.php',
+            'title' => gettext('Letters & Mailing Labels'),
+            'description' => gettext('Generate letters and mailing labels'),
+        ];
+    }
+
+    return $links;
+}
+
 function getPeopleReportsIndex(Request $request, Response $response, array $args): Response
 {
-    $renderer = new PhpRenderer('templates/reports/');
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-    return $renderer->render($response, 'people-index.php', [
+    return $renderer->render($response, 'reports-index.php', [
         'sRootPath' => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('People Reports'),
         'sPageSubtitle' => gettext('Birthdays, anniversaries, volunteers and other people lists with a classification filter'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
-            [gettext('Data/Reports')],
             [gettext('People Reports')],
         ]),
         'reports' => (new PeopleReportService())->getReports(),
+        'links' => peopleReportLinks(),
     ]);
 }
 
@@ -63,15 +88,14 @@ function getPeopleReport(Request $request, Response $response, array $args): Res
 
     $rows = $missing === [] ? $service->run($slug, $values) : null;
 
-    $renderer = new PhpRenderer('templates/reports/');
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-    return $renderer->render($response, 'people-report.php', [
+    return $renderer->render($response, 'report.php', [
         'sRootPath' => SystemURLs::getRootPath(),
         'sPageTitle' => $report['name'],
         'sPageSubtitle' => $report['description'],
         'aBreadcrumbs' => PageHeader::breadcrumbs([
-            [gettext('Data/Reports')],
-            [gettext('People Reports'), '/v2/reports/people'],
+            [gettext('People Reports'), '/people/reports'],
             [$report['name']],
         ]),
         'slug' => $slug,

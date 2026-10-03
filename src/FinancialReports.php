@@ -30,10 +30,13 @@ $sPageSubtitle = gettext('Generate financial statements and giving reports');
 if ($sReportType) {
     $sPageTitle .= ': ' . gettext($sReportType);
 }
-$aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Finance'), '/finance/'],
-    [gettext('Reports')],
-]);
+$reportCrumbs = [
+    [gettext('Financial Reports'), '/finance/reports'],
+];
+if ($sReportType !== '') {
+    $reportCrumbs[] = [gettext($sReportType)];
+}
+$aBreadcrumbs = PageHeader::breadcrumbs($reportCrumbs);
 require_once __DIR__ . '/Include/Header.php';
 // Preserve submitted dates/datetype for both selection and filters views
 $sDateStart = '';

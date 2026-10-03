@@ -7,7 +7,7 @@ use ChurchCRM\view\PersonDeleteGuard;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-$reportUrl = $sRootPath . '/v2/reports/people/' . InputUtils::escapeAttribute($slug);
+$reportUrl = $sRootPath . '/people/reports/' . InputUtils::escapeAttribute($slug);
 $canEdit = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled();
 $cart = $_SESSION['aPeopleCart'] ?? [];
 $missingLabels = array_map(static fn (string $key): string => $report['params'][$key]['label'], $missing);
@@ -18,7 +18,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
     </div>
     <div class="card-body">
         <form id="reportFilters" method="get" action="<?= $reportUrl ?>">
-            <div class="row g-3 align-items-end">
+            <div class="row g-3 align-items-start">
                 <?php foreach ($report['params'] as $key => $param) :
                     $id = InputUtils::escapeAttribute($key);
                     $value = $values[$key] ?? null;
@@ -55,6 +55,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                 </div>
                 <?php endforeach; ?>
                 <div class="col-auto">
+                    <label class="form-label d-none d-md-block">&nbsp;</label>
                     <button type="submit" id="runReport" class="btn btn-primary">
                         <i class="fa-solid fa-play me-1"></i><?= gettext('Run Report') ?>
                     </button>
