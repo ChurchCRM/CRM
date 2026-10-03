@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-02 17:59+0000\n"
+"POT-Creation-Date: 2026-10-03 13:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6341,9 +6341,6 @@ msgstr ""
 msgid "Hide Newsletter Subscriptions"
 msgstr ""
 
-msgid "Hide Person Address"
-msgstr ""
-
 msgid "Hide Wedding Date"
 msgstr ""
 
@@ -11062,6 +11059,9 @@ msgid "Select all"
 msgstr ""
 
 msgid "Select an event type…"
+msgstr ""
+
+msgid "Select at least one classification to include in the directory."
 msgstr ""
 
 msgid "Select calendars..."
