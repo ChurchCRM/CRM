@@ -17321,6 +17321,10 @@ msgid "Manage Events"
 msgstr "Pamahalaan ang mga Kaganapan"
 
 #: 
+msgid "N/A"
+msgstr "N/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Bagong Deposito"
 
