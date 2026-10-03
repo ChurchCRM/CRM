@@ -6,10 +6,10 @@
 import "./jquery-global";
 
 import bootbox from "bootbox";
+import Stepper from "bs-stepper";
 import DataTable from "datatables.net-bs5";
 import i18next from "i18next";
 import JustValidate from "just-validate";
-import Stepper from "bs-stepper";
 import moment from "moment";
 
 import "./inputmask-global";
