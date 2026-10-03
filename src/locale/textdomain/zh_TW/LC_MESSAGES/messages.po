@@ -1713,30 +1713,6 @@ msgid "Properties"
 msgstr "屬性"
 
 #: 
-msgid "Query Listing"
-msgstr "查詢上市"
-
-#: 
-msgid "Query View"
-msgstr "查詢視圖"
-
-#: 
-msgid "This value is required."
-msgstr "此值是必需的。"
-
-#: 
-msgid "This value must be numeric."
-msgstr "此值必須是數字。"
-
-#: 
-msgid "Run Query Again"
-msgstr "再次運行查詢"
-
-#: 
-msgid "Execute Query"
-msgstr "執行查詢"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "質押提醒報告"
 
@@ -2699,10 +2675,6 @@ msgstr "查看買家"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "將捐贈者添加到買方名單"
-
-#: 
-msgid "Data/Reports"
-msgstr "數據/報告"
 
 #: 
 #, fuzzy
@@ -5180,16 +5152,6 @@ msgstr "缺少PHP ZipArchive"
 
 #: 
 #, fuzzy
-msgid "Add Results to Cart"
-msgstr "將結果添加到購物車"
-
-#: 
-#, fuzzy
-msgid "Remove Results from Cart"
-msgstr "從購物車中刪除結果"
-
-#: 
-#, fuzzy
 msgid "Database Reset Functions"
 msgstr "資料庫重置功能"
 
@@ -6492,10 +6454,6 @@ msgid "Cart"
 msgstr "購物車/清單"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "在系統設定中更改此項。"
-
-#: 
 msgid "Church Membership"
 msgstr "教會成員身分"
 
@@ -6546,10 +6504,6 @@ msgstr "建立或選擇一筆存款以開始。"
 #: 
 msgid "Current Deposit"
 msgstr "當前存款"
-
-#: 
-msgid "Current fiscal year"
-msgstr "當前財政年度"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6612,10 +6566,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "在生成聲明之前，確保稅務年度的所有存款都已關閉。"
 
 #: 
-msgid "Export Options"
-msgstr "匯出選項"
-
-#: 
 msgid "F"
 msgstr "女"
 
@@ -6630,10 +6580,6 @@ msgstr "家庭導覽"
 #: 
 msgid "Feb"
 msgstr "二月"
-
-#: 
-msgid "Filtering"
-msgstr "過濾"
 
 #: 
 msgid "Finance"
@@ -6656,16 +6602,8 @@ msgid "Generate Tax Statements"
 msgstr "生成稅務聲明"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "為捐贈者生成年度奉獻聲明並識別奉獻模式。"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "為捐贈者生成年度免稅奉獻聲明。可以列印或發送電子郵件。"
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "為個人存款或日期範圍生成詳細報告。"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6726,10 +6664,6 @@ msgstr "三月"
 #: 
 msgid "Membership Reports"
 msgstr "成員報告"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "大多數報告可以匯出為 PDF 供列印，或匯出為 CSV 供電子表格分析。"
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6808,14 +6742,6 @@ msgid "Recording a Pledge"
 msgstr "記錄認獻"
 
 #: 
-msgid "Report Tips"
-msgstr "報告提示"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "與成員投票資格和組織管理相關的報告。"
-
-#: 
 msgid "Reset"
 msgstr "重設"
 
@@ -6892,20 +6818,12 @@ msgid "Total Amount"
 msgstr "總金額"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "追踪運動和財政年度預算的認獻和付款進度。"
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "未滿足的先決條件"
 
 #: 
 msgid "Upgrade"
 msgstr "升級"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "使用分類和家庭過濾器為特定的捐贈者群體生成報告。"
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6930,10 +6848,6 @@ msgstr "今年以來認獻"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "您可以現在建立家庭成員，也可以稍後添加。所有條目都將成為新的個人記錄。"
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "您的財政年度開始月份為"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -9158,10 +9072,6 @@ msgid "Current person"
 msgstr "目前人員"
 
 #: 
-msgid "Data & Reports"
-msgstr "資料與報表"
-
-#: 
 msgid "Database Reset"
 msgstr "資料庫重設"
 
@@ -10180,10 +10090,6 @@ msgid "View and manage system log files for debugging"
 msgstr "檢視和管理系統日誌檔案以進行除錯"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "檢視和執行已儲存的資料庫查詢"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "檢視買家編號和競標牌分配"
 
@@ -10202,10 +10108,6 @@ msgstr "檢視家庭奉獻承諾摘要和基金分配"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "檢視小組成員、角色和屬性"
-
-#: 
-msgid "View query results"
-msgstr "檢視查詢結果"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10540,16 +10442,6 @@ msgstr "行事曆設定"
 msgid "Calendars"
 msgstr "行事曆"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "選擇志工機會"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "選擇人員欄位"
-
 #: 
 msgid "Church Identity"
 msgstr "教會身份"
@@ -10570,11 +10462,6 @@ msgstr "ChurchCRM可以直接傳送電子郵件。"
 msgid "Communication"
 msgstr "通訊"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "比較兩個會計年度之間的承諾"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "在下方設定中設定SMTP以從系統傳送電子郵件。"
@@ -10590,11 +10477,6 @@ msgstr "連接Mailchimp以同步電子報和行銷活動的電子郵件清單。
 #: 
 msgid "Copy to clipboard"
 msgstr "複製到剪貼簿"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "自訂欄位"
 
 #: 
 msgid "Default Country"
@@ -10648,16 +10530,6 @@ msgstr "無法擷取電子郵件地址"
 msgid "Failed to retrieve phone numbers"
 msgstr "無法擷取電話號碼"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "欄位值"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "找出有志在某一年但不是另一年的人"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10665,33 +10537,8 @@ msgstr "為特定機會尋找志願者"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "為符合兩個特定機會代碼的志願者提供支持"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "第一個財政年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "用於比較的第一個財政年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "第一個志願者機會選擇"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "在前幾個月註冊的朋友"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "訪客"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10715,31 +10562,6 @@ msgstr "管理活動、生日和週年紀念"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "將自訂欄位匹配到此值"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "成員、經常參加者等"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "在特定月份加入的成員"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "會員週年紀念"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "缺少的奉獻承諾"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "月份"
 
@@ -10759,16 +10581,6 @@ msgstr "新成員通知電子郵件"
 #: 
 msgid "No cell phone on file"
 msgstr "檔案中沒有手機"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "非出席者"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "非出席者（工作人員）"
 
 #: 
 msgid "Not Classified"
@@ -10805,30 +10617,10 @@ msgstr "用於將成員從簡訊/文本列表中排除的人員屬性"
 msgid "Person property used to exclude members from email lists"
 msgstr "用於將成員從電子郵件列表中排除的人員屬性"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "奉獻承諾比較"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "今年承諾奉獻"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "屬性"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "最近的朋友"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "經常參加者"
 
 #. Context: query_qry
 #: 
@@ -10850,21 +10642,6 @@ msgstr "SMTP 已配置"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP 未配置"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "第二個財政年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "用於比較的第二個財政年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "第二個志願者機會選擇"
 
 #: 
 msgid "Send text message"
@@ -10898,21 +10675,6 @@ msgstr "文本工具"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "文本消息操作可從組和主日學班級視圖中獲得。使用\"文本\"下拉菜單複製電話號碼或向組成員發送簡訊。"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "您想要返回記錄的生日月份。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "您想要返回記錄的會員週年月份。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "您想要返回人員記錄的屬性。"
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "用於測量距離的單位。"
@@ -10921,11 +10683,6 @@ msgstr "用於測量距離的單位。"
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "用戶權限通過 mailto: 鏈接發送電子郵件"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "志願者機會"
 
 #. Context: query_qry
 #: 
@@ -10943,11 +10700,6 @@ msgstr "Vonage 簡訊未配置"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "沒有 Vonage，文本操作將打開您設備的原生簡訊應用或將電話號碼複製到剪貼板。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "但今年不是"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -11142,10 +10894,6 @@ msgstr "選擇當 Gravatar 不存在時顯示的內容：\n"
 "• RoboHash - 唯一生成的機器人\n"
 "• 空白 - 透明（回退到首字母）"
 
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "需要財務權限才能查看的查詢 ID（以逗號分隔）"
-
 #. plugin:custom-links:section:4:content
 #: 
 msgid "Common uses for custom links:\n"
@@ -11256,10 +11004,6 @@ msgstr "啟用掃描支票功能"
 #: 
 msgid "Features"
 msgstr "功能"
-
-#: 
-msgid "Finance permission query IDs"
-msgstr "財務權限查詢 ID"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -14402,11 +14146,6 @@ msgstr "家庭姓氏必須至少包含 2 個字元"
 msgid "Fields"
 msgstr "欄位"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "尋找未參加活動的人員"
-
 #: 
 msgid "First name is required"
 msgstr "名字是必填項"
@@ -14586,11 +14325,6 @@ msgstr "成員已加入名單。"
 #: 
 msgid "Minimum length is"
 msgstr "最小長度為"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "缺席人員"
 
 #: 
 msgid "Move"
@@ -14959,11 +14693,6 @@ msgstr "選擇日曆..."
 #: 
 msgid "Select event type..."
 msgstr "選擇活動類型..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "選擇所需活動"
 
 #: 
 msgid "Sequence"
@@ -16423,10 +16152,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s 家庭的 %1$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "已回傳 %d 筆記錄"
-
-#: 
 msgid "Assign role to all"
 msgstr "指派角色給所有人"
 
@@ -16597,22 +16322,6 @@ msgstr "系統設定"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "此義工機會已有人員指派，刪除將取消指派"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "此值不可少於 %d 個字元"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "此值不可多於 %d 個字元"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "此值不可超過 %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "此值必須至少為 %s"
 
 #: 
 msgid "Total Deposits"
@@ -17622,16 +17331,6 @@ msgstr "最低出價 %s。"
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "特定月份有生日或結婚週年紀念日的成員"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "您希望查詢生日與週年紀念日的月份。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "您希望查詢結婚週年紀念日記錄的月份。"
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "所有購買總計：%s"
@@ -17851,10 +17550,6 @@ msgid "Selected family"
 msgstr "已選家庭"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "此值必須是有效的欄位名稱。"
-
-#: 
 msgid "Could not load data"
 msgstr "無法載入資料"
 
@@ -17863,16 +17558,8 @@ msgid "Please refresh the page or try again later."
 msgstr "請重新整理頁面或稍後再試。"
 
 #: 
-msgid "Add the relevant records first."
-msgstr "請先新增相關記錄。"
-
-#: 
 msgid "All Months"
 msgstr "所有月份"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "尚未定義任何「%s」選項。"
 
 #: 
 msgid "No events found for %s %d."
@@ -18794,10 +18481,6 @@ msgstr "承諾"
 #: 
 msgid "Print %d Tax Doc"
 msgstr "打印 %d 份稅單"
-
-#: 
-msgid "Queries"
-msgstr "查詢"
 
 #: 
 msgid "Recent Friends"

@@ -1709,30 +1709,6 @@ msgid "Properties"
 msgstr "Proprietăți"
 
 #: 
-msgid "Query Listing"
-msgstr "Listarea interogare"
-
-#: 
-msgid "Query View"
-msgstr "Vezi interogare"
-
-#: 
-msgid "This value is required."
-msgstr "Este nevoie de această valoare."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Această valoare trebuie să fie numeric."
-
-#: 
-msgid "Run Query Again"
-msgstr "Rulați din nou interogarea"
-
-#: 
-msgid "Execute Query"
-msgstr "Executa interogări"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Raportul Memento gaj"
 
@@ -2680,10 +2656,6 @@ msgstr "Vizualizare cumpărători"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Adăugați donatori la lista cumpărătorilor"
-
-#: 
-msgid "Data/Reports"
-msgstr "Dată/Rapoarte"
 
 #: 
 msgid "Family Properties"
@@ -5131,14 +5103,6 @@ msgid "Missing PHP ZipArchive"
 msgstr "Lipsește PHP ZipArchive"
 
 #: 
-msgid "Add Results to Cart"
-msgstr "Adaugă rezultatele în coș"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Șterge rezultatele din coș"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Funcții de resetare a Bazei de Date"
 
@@ -6412,10 +6376,6 @@ msgid "Cart"
 msgstr "Coș"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Schimbați acest lucru în Setările de sistem."
-
-#: 
 msgid "Church Membership"
 msgstr "Membru al bisericii"
 
@@ -6466,10 +6426,6 @@ msgstr "Creați sau selectați un depozit pentru a începe."
 #: 
 msgid "Current Deposit"
 msgstr "Depozit curent"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Anul fiscal curent"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6532,10 +6488,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Asigurați-vă că toate depozitele pentru anul fiscal sunt închise înainte de a genera declarațiile."
 
 #: 
-msgid "Export Options"
-msgstr "Opțiuni de export"
-
-#: 
 msgid "F"
 msgstr "F"
 
@@ -6550,10 +6502,6 @@ msgstr "Navigare familie"
 #: 
 msgid "Feb"
 msgstr "Feb"
-
-#: 
-msgid "Filtering"
-msgstr "Filtrare"
 
 #: 
 msgid "Finance"
@@ -6576,16 +6524,8 @@ msgid "Generate Tax Statements"
 msgstr "Generează declarații fiscale"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Generați declarații anuale de donații pentru donatori și identificați modelele de donație."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generați declarații anuale de donații deductibile fiscal pentru donatori. Pot fi tipărite sau trimise prin e-mail."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Generați rapoarte detaliate pentru depozite individuale sau intervale de date."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6646,10 +6586,6 @@ msgstr "Mar"
 #: 
 msgid "Membership Reports"
 msgstr "Rapoarte de membru"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Majoritatea rapoartelor pot fi exportate ca PDF pentru tipărire sau CSV pentru analiză în tabel."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6728,14 +6664,6 @@ msgid "Recording a Pledge"
 msgstr "Înregistrarea unui angajament"
 
 #: 
-msgid "Report Tips"
-msgstr "Sfaturi pentru rapoarte"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Rapoarte legate de eligibilitatea votului membrilor și guvernanța organizației."
-
-#: 
 msgid "Reset"
 msgstr "Resetare"
 
@@ -6812,20 +6740,12 @@ msgid "Total Amount"
 msgstr "Sumă totală"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Urmăriți angajamentele și progresul plăților pentru campanii și bugetarea anului fiscal."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Cerințe prealabile neîndeplinite"
 
 #: 
 msgid "Upgrade"
 msgstr "Actualizare"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Utilizați filtrele de clasificare și familie pentru a genera rapoarte pentru grupuri specifice de donatori."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6850,10 +6770,6 @@ msgstr "Angajamente de la începutul anului"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Puteți crea membri ai familiei acum sau îi puteți adăuga mai târziu. Toate intrările vor deveni înregistrări noi de persoane."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Anul dvs. fiscal începe în luna"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -9088,10 +9004,6 @@ msgid "Current person"
 msgstr "Persoana curentă"
 
 #: 
-msgid "Data & Reports"
-msgstr "Date și rapoarte"
-
-#: 
 msgid "Database Reset"
 msgstr "Resetare bază de date"
 
@@ -10110,10 +10022,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Vizualizați și gestionați fișierele jurnal de sistem pentru depanare"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Vizualizați și executați interogări salvate în baza de date"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Vizualizați numerele cumpărătorilor și atribuirile plăcuțelor"
 
@@ -10132,10 +10040,6 @@ msgstr "Vizualizați sumarele angajamentelor familiale și alocările fondurilor
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Vizualizați membrii grupului, rolurile și proprietățile"
-
-#: 
-msgid "View query results"
-msgstr "Vizualizează rezultatele interogării"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10470,16 +10374,6 @@ msgstr "Setări calendar"
 msgid "Calendars"
 msgstr "Calendare"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Alegeți o oportunitate de voluntariat"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Alegeți câmpul persoanei"
-
 #: 
 msgid "Church Identity"
 msgstr "Identitatea Bisericii"
@@ -10500,11 +10394,6 @@ msgstr "ChurchCRM poate trimite e-mailuri direct."
 msgid "Communication"
 msgstr "Comunicare"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Comparați angajamentele între doi ani fiscali"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Configurați SMTP în setările de mai jos pentru a trimite e-mailuri din sistem."
@@ -10520,11 +10409,6 @@ msgstr "Conectați Mailchimp pentru a sincroniza listele de e-mailuri pentru bul
 #: 
 msgid "Copy to clipboard"
 msgstr "Copiat în clipboard"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Câmp personalizat"
 
 #: 
 msgid "Default Country"
@@ -10578,16 +10462,6 @@ msgstr "Eșec la preluarea adreselor de e-mail"
 msgid "Failed to retrieve phone numbers"
 msgstr "Eșec la preluarea numerelor de telefon"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Valoarea câmpului"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Găsiți persoane care s-au angajat un an, dar nu altul"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10595,33 +10469,8 @@ msgstr "Gasiti voluntari pentru o anumita oportunitate"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Gasiti voluntari care se potrivesc cu doua coduri de oportunitate specifice"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Primul an fiscal"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Primul an fiscal pentru comparație"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Prima alegere de oportunitate de voluntar"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Prieteni care s-au înscris în lunile anterioare"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Oaspete"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10645,31 +10494,6 @@ msgstr "Gestionați evenimente, zile de naștere și aniversări"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Potriviți câmpul personalizat la această valoare"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Membru, participant regulat etc."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Membri care s-au alăturat într-o anumită lună"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Aniversări de membri"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Angajamente lipsă"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Lună"
 
@@ -10689,16 +10513,6 @@ msgstr "E-mailuri de notificare pentru noi membri"
 #: 
 msgid "No cell phone on file"
 msgstr "Niciun telefon mobil în dosar"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Non-participant"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Non-participant (personal)"
 
 #: 
 msgid "Not Classified"
@@ -10735,30 +10549,10 @@ msgstr "Proprietate persoană utilizată pentru a exclude membrii din listele SM
 msgid "Person property used to exclude members from email lists"
 msgstr "Proprietate persoană utilizată pentru a exclude membrii din listele de e-mail"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Comparația angajamentelor"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Angajat anul acesta"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Proprietate"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Prieteni recenți"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Participant regulat"
 
 #. Context: query_qry
 #: 
@@ -10780,21 +10574,6 @@ msgstr "SMTP configurat"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP nu este configurat"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Al doilea an fiscal"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Al doilea an fiscal pentru comparație"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "A doua alegere de oportunitate de voluntar"
 
 #: 
 msgid "Send text message"
@@ -10828,21 +10607,6 @@ msgstr "Instrumente text"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Acțiunile de mesagerie text sunt disponibile din vederile de grup și clasă de Școală de Duminică. Utilizați dropdown-ul \"Text\" pentru a copia numerele de telefon sau pentru a trimite mesaje SMS membrilor grupului."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Luna de naștere pentru care doriți să se returneze înregistrări."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Luna aniversării de membru pentru care doriți să se returneze înregistrări."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Proprietatea pentru care doriți să se returneze înregistrări de persoană."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Unitate folosită pentru a măsura distanța."
@@ -10851,11 +10615,6 @@ msgstr "Unitate folosită pentru a măsura distanța."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Permisiune utilizator pentru a trimite e-mail prin linkuri mailto:"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Oportunități de voluntariat"
 
 #. Context: query_qry
 #: 
@@ -10873,11 +10632,6 @@ msgstr "Vonage SMS nu este configurat"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Fără Vonage, acțiunile text vor deschide aplicația SMS nativă a dispozitivului sau vor copia numerele de telefon în clipboard."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "dar nu în acest an"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -11072,10 +10826,6 @@ msgstr "Alegeți ce apare când nu există Gravatar:\n"
 "• RoboHash - Robot generat unic\n"
 "• Blank - Transparent (implicit inițiale)"
 
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "ID-uri de interogare separate prin virgulă care necesită permisiuni financiare pentru vizualizare"
-
 #. plugin:custom-links:section:4:content
 #: 
 msgid "Common uses for custom links:\n"
@@ -11186,10 +10936,6 @@ msgstr "Activează utilizarea cecurilor scanate"
 #: 
 msgid "Features"
 msgstr "Funcționalități"
-
-#: 
-msgid "Finance permission query IDs"
-msgstr "ID-uri interogări permisiuni finanțe"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -14334,11 +14080,6 @@ msgstr "Numele familiei trebuie să aibă cel puțin 2 caractere"
 msgid "Fields"
 msgstr "Câmpuri"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Găsiți persoane care nu au participat la un eveniment"
-
 #: 
 msgid "First name is required"
 msgstr "Prenumele este obligatoriu"
@@ -14518,11 +14259,6 @@ msgstr "Membrii au fost adăugați în selecție."
 #: 
 msgid "Minimum length is"
 msgstr "Lungimea minimă este"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Persoane absente"
 
 #: 
 msgid "Move"
@@ -14891,11 +14627,6 @@ msgstr "Selectați calendare..."
 #: 
 msgid "Select event type..."
 msgstr "Selectați tipul evenimentului..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Selectați evenimentul dorit"
 
 #: 
 msgid "Sequence"
@@ -16361,10 +16092,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s din familia %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d inregistrare(i) returnata(e)"
-
-#: 
 msgid "Assign role to all"
 msgstr "Atribuiti rolul tuturor"
 
@@ -16535,22 +16262,6 @@ msgstr "Configurare sistem"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Exista persoane atribuite acestei oportunitati de voluntariat. Stergerea va deatribui"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Aceasta valoare nu poate fi mai scurta de %d caractere"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Aceasta valoare nu poate fi mai lunga de %d caractere"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Aceasta valoare nu poate fi mai mare de %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Aceasta valoare trebuie sa fie cel putin %s"
 
 #: 
 msgid "Total Deposits"
@@ -17564,16 +17275,6 @@ msgstr "Ofertă minimă %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Persoane cu zile de naștere sau aniversări de căsătorie într-o anumită lună"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Luna pentru care doriți să fie afișate zilele de naștere și aniversările."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Luna aniversării de căsătorie pentru care doriți să fie afișate înregistrările."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Total toate achizițiile: %s"
@@ -17793,10 +17494,6 @@ msgid "Selected family"
 msgstr "Familie selectată"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Această valoare trebuie să fie un nume de câmp valid."
-
-#: 
 msgid "Could not load data"
 msgstr "Nu s-au putut încărca datele"
 
@@ -17805,16 +17502,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Vă rugăm să actualizați pagina sau să încercați din nou mai târziu."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Adăugați mai întâi înregistrările relevante."
-
-#: 
 msgid "All Months"
 msgstr "Toate lunile"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Nu există încă opțiuni \"%s\" definite."
 
 #: 
 msgid "No events found for %s %d."
@@ -18738,10 +18427,6 @@ msgstr "Promis"
 #: 
 msgid "Print %d Tax Doc"
 msgstr "Tipărește %d document fiscal"
-
-#: 
-msgid "Queries"
-msgstr "Interogări"
 
 #: 
 msgid "Recent Friends"

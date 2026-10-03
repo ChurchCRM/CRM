@@ -1668,30 +1668,6 @@ msgid "Properties"
 msgstr "Властивості"
 
 #: 
-msgid "Query Listing"
-msgstr "Список запитів"
-
-#: 
-msgid "Query View"
-msgstr "Перегляд запитів"
-
-#: 
-msgid "This value is required."
-msgstr "Це значення обов’язкове."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Це значення має бути числовим."
-
-#: 
-msgid "Run Query Again"
-msgstr "Знову запустіть запит"
-
-#: 
-msgid "Execute Query"
-msgstr "Виконати запит"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Звіт про нагадування про заставу"
 
@@ -2619,10 +2595,6 @@ msgstr "Переглянути покупців"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Додайте донорів до списку покупців"
-
-#: 
-msgid "Data/Reports"
-msgstr "Дані / Звіти"
 
 #: 
 msgid "Family Properties"
@@ -5074,14 +5046,6 @@ msgid "Missing PHP ZipArchive"
 msgstr "Відсутній PHP ZipArchive"
 
 #: 
-msgid "Add Results to Cart"
-msgstr "Додати результати в кошик"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Видаліть результати з кошика"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Функції скидання бази даних"
 
@@ -6358,10 +6322,6 @@ msgid "Cart"
 msgstr "Кошик"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Змініть це в налаштуваннях системи."
-
-#: 
 msgid "Church Membership"
 msgstr "Членство в церкві"
 
@@ -6412,10 +6372,6 @@ msgstr "Створіть або виберіть депозит, щоб поча
 #: 
 msgid "Current Deposit"
 msgstr "Поточний депозит"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Поточний фінансовий рік"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6478,10 +6434,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Переконайтеся, що всі депозити за податковий рік закриті."
 
 #: 
-msgid "Export Options"
-msgstr "Параметри експорту"
-
-#: 
 msgid "F"
 msgstr "Ж"
 
@@ -6496,10 +6448,6 @@ msgstr "Навігація сім'ями"
 #: 
 msgid "Feb"
 msgstr "Лют"
-
-#: 
-msgid "Filtering"
-msgstr "Фільтрація"
 
 #: 
 msgid "Finance"
@@ -6522,16 +6470,8 @@ msgid "Generate Tax Statements"
 msgstr "Генерувати податкові виписки"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Створюйте щорічні виписки про пожертви для донорів."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Створюйте податкові виписки. Можна друкувати або надсилати поштою."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Генеруйте детальні звіти за депозитами або датами."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6592,10 +6532,6 @@ msgstr "Бер"
 #: 
 msgid "Membership Reports"
 msgstr "Звіти про членство"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Більшість звітів можна експортувати в PDF або CSV."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6674,14 +6610,6 @@ msgid "Recording a Pledge"
 msgstr "Реєстрація обіцяного внеску"
 
 #: 
-msgid "Report Tips"
-msgstr "Поради щодо звітів"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Звіти про право голосу та управління."
-
-#: 
 msgid "Reset"
 msgstr "Скинути"
 
@@ -6758,20 +6686,12 @@ msgid "Total Amount"
 msgstr "Загальна сума"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Відстежуйте обіцянки для бюджетування."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Невиконані вимоги"
 
 #: 
 msgid "Upgrade"
 msgstr "Оновити"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Використовуйте фільтри для генерації звітів."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6796,10 +6716,6 @@ msgstr "Обіцянки з поч. року"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Ви можете додати членів сім'ї зараз або пізніше."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Ваш фінансовий рік починається у місяці"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -9039,10 +8955,6 @@ msgid "Current person"
 msgstr "Поточна людина"
 
 #: 
-msgid "Data & Reports"
-msgstr "Дані та звіти"
-
-#: 
 msgid "Database Reset"
 msgstr "Скидання бази даних"
 
@@ -10061,10 +9973,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Переглядайте та керуйте файлами системного журналу для налагодження"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Переглядайте та запускайте збережені запити бази даних"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Переглядайте номери покупців та призначення весла"
 
@@ -10083,10 +9991,6 @@ msgstr "Переглядайте зведення сімейних обіцян�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Переглядайте членів групи, ролі та властивості"
-
-#: 
-msgid "View query results"
-msgstr "Переглядайте результати запиту"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10421,16 +10325,6 @@ msgstr "Параметри календаря"
 msgid "Calendars"
 msgstr "Календарі"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Виберіть можливість волонтерства"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Виберіть поле людини"
-
 #: 
 msgid "Church Identity"
 msgstr "Ідентичність церкви"
@@ -10451,11 +10345,6 @@ msgstr "ChurchCRM може відправляти електронні лист�
 msgid "Communication"
 msgstr "Комунікація"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Порівняйте обіцянки між двома фінансовими роками"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Налаштуйте SMTP у наведених нижче параметрах, щоб відправляти електронні листи з системи."
@@ -10471,11 +10360,6 @@ msgstr "Підключіть Mailchimp для синхронізації спи�
 #: 
 msgid "Copy to clipboard"
 msgstr "Скопіювати в буфер обміну"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Користувацьке поле"
 
 #: 
 msgid "Default Country"
@@ -10529,16 +10413,6 @@ msgstr "Не вдалося отримати адреси електронної
 msgid "Failed to retrieve phone numbers"
 msgstr "Не вдалося отримати номери телефонів"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Значення поля"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Знайдіть людей, які обіцяли один рік, але не інший"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10546,33 +10420,8 @@ msgstr "Знайдіть волонтерів для певної можливо
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Знайдіть волонтерів, які відповідають двом конкретним кодам можливостей"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Перший фінансовий рік"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Перший фінансовий рік для порівняння"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Перший вибір можливості волонтера"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Друзі, які зареєструвалися в попередніх місяцях"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Гість"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10596,31 +10445,6 @@ msgstr "Керування подіями, днями народження та 
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Встановити користувацьке поле на це значення"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Член, звичайний відвідувач тощо"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Члени, які приєдналися в певному місяці"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Річниці членства"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Відсутні обіцянки"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Місяць"
 
@@ -10640,16 +10464,6 @@ msgstr "Сповіщення електронної пошти для нових
 #: 
 msgid "No cell phone on file"
 msgstr "Мобільного телефону немає"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Не-відвідувач"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Не-відвідувач (персонал)"
 
 #: 
 msgid "Not Classified"
@@ -10686,30 +10500,10 @@ msgstr "Властивість особи, яка використовуєтьс
 msgid "Person property used to exclude members from email lists"
 msgstr "Властивість особи, яка використовується для виключення членів зі списків електронної пошти"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Порівняння обіцянок"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Обіцяно цього року"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Власність"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Недавні друзі"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Звичайний відвідувач"
 
 #. Context: query_qry
 #: 
@@ -10731,21 +10525,6 @@ msgstr "SMTP налаштований"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP не налаштований"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Другий фінансовий рік"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Другий фінансовий рік для порівняння"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Другий вибір можливості волонтера"
 
 #: 
 msgid "Send text message"
@@ -10779,21 +10558,6 @@ msgstr "Текстові інструменти"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Дії обміну текстовими повідомленнями доступні з переглядів групи та класу недільної школи. Використовуйте розкривний список \"Текст\", щоб скопіювати номери телефонів або надіслати SMS-повідомлення членам групи."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Місяць дня народження, для якого потрібно повернути записи."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Місяць річниці членства, для якого потрібно повернути записи."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Властивість, для якої потрібно повернути записи осіб."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Одиниця для вимірювання відстані."
@@ -10802,11 +10566,6 @@ msgstr "Одиниця для вимірювання відстані."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Дозвіл користувача на надсилання електронної пошти через посилання mailto:"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Можливості волонтерства"
 
 #. Context: query_qry
 #: 
@@ -10824,11 +10583,6 @@ msgstr "Vonage SMS не налаштований"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Без Vonage дії з текстом відкриють вбудовану програму SMS вашого пристрою або скопіюють номери телефонів у буфер обміну."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "але не цього року"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -11023,10 +10777,6 @@ msgstr "Виберіть, що відображається, якщо Gravatar �
 "• RoboHash — унікальний згенерований робот\n"
 "• Blank — прозорий (відображаються ініціали)"
 
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "Ідентифікатори запитів, розділені комами, для перегляду яких необхідні фінансові права"
-
 #. plugin:custom-links:section:4:content
 #: 
 msgid "Common uses for custom links:\n"
@@ -11137,10 +10887,6 @@ msgstr "Увімкнути використання сканованих чек�
 #: 
 msgid "Features"
 msgstr "Функції"
-
-#: 
-msgid "Finance permission query IDs"
-msgstr "Ідентифікатори запитів дозволів фінансів"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -14286,11 +14032,6 @@ msgstr "Прізвище сім'ї має містити принаймні 2 с
 msgid "Fields"
 msgstr "Поля"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Знайти людей, які не відвідали захід"
-
 #: 
 msgid "First name is required"
 msgstr "Ім'я обов'язкове"
@@ -14470,11 +14211,6 @@ msgstr "Члени додані до вибору."
 #: 
 msgid "Minimum length is"
 msgstr "Мінімальна довжина —"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Відсутні парафіяни"
 
 #: 
 msgid "Move"
@@ -14843,11 +14579,6 @@ msgstr "Виберіть календарі..."
 #: 
 msgid "Select event type..."
 msgstr "Виберіть тип події..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Оберіть потрібний захід"
 
 #: 
 msgid "Sequence"
@@ -16316,10 +16047,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s із сімʼї %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "Повернено %d запис(ів)"
-
-#: 
 msgid "Assign role to all"
 msgstr "Призначити роль усім"
 
@@ -16490,22 +16217,6 @@ msgstr "Системна конфігурація"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "До цієї волонтерської можливості призначені люди. Видалення скасує призначення"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Це значення не може бути коротшим за %d символів"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Це значення не може бути довшим за %d символів"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Це значення не може бути більшим за %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Це значення має бути не менше %s"
 
 #: 
 msgid "Total Deposits"
@@ -17521,16 +17232,6 @@ msgstr "Мінімальна ставка: %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Парафіяни з днями народження або річницями вінчання у певному місяці"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Місяць, за який потрібно отримати дні народження та річниці."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Місяць річниці вінчання, за який потрібно отримати записи."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Загальна сума всіх покупок: %s"
@@ -17750,10 +17451,6 @@ msgid "Selected family"
 msgstr "Обрана сім'я"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Це значення має бути дійсним іменем поля."
-
-#: 
 msgid "Could not load data"
 msgstr "Не вдалося завантажити дані"
 
@@ -17762,16 +17459,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Будь ласка, оновіть сторінку або спробуйте пізніше."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Спочатку додайте відповідні записи."
-
-#: 
 msgid "All Months"
 msgstr "Всі місяці"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Параметри \"%s\" ще не визначені."
 
 #: 
 msgid "No events found for %s %d."
@@ -18696,10 +18385,6 @@ msgstr "Обіцяне"
 #: 
 msgid "Print %d Tax Doc"
 msgstr "Друк %d податковий документ"
-
-#: 
-msgid "Queries"
-msgstr "Запити"
 
 #: 
 msgid "Recent Friends"

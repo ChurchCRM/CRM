@@ -1665,30 +1665,6 @@ msgid "Properties"
 msgstr "Propriétés"
 
 #: 
-msgid "Query Listing"
-msgstr "Liste des requêtes"
-
-#: 
-msgid "Query View"
-msgstr "Voir les Requêtes"
-
-#: 
-msgid "This value is required."
-msgstr "Cette valeur est requise."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Cette valeur doit être numérique."
-
-#: 
-msgid "Run Query Again"
-msgstr "Exécuter à nouveau la Requête"
-
-#: 
-msgid "Execute Query"
-msgstr "Exécuter la Requête"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Rappel de rapport de contribution"
 
@@ -2616,10 +2592,6 @@ msgstr "Afficher les acheteurs"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Ajouter les donateurs à la liste des acheteurs"
-
-#: 
-msgid "Data/Reports"
-msgstr "Données/Rapports"
 
 #: 
 msgid "Family Properties"
@@ -5066,14 +5038,6 @@ msgid "Missing PHP ZipArchive"
 msgstr "L'archive ZIP PHP est manquante"
 
 #: 
-msgid "Add Results to Cart"
-msgstr "Ajouter les résultats au panier"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Enlever les résultats du panier"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Fonctions de réinitialisation de la base de données"
 
@@ -6347,10 +6311,6 @@ msgid "Cart"
 msgstr "Panier"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Modifiez ceci dans les paramètres système."
-
-#: 
 msgid "Church Membership"
 msgstr "Adhésion à l'église"
 
@@ -6401,10 +6361,6 @@ msgstr "Créez ou sélectionnez un versement pour commencer."
 #: 
 msgid "Current Deposit"
 msgstr "Versement actuel"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Année fiscale actuelle"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6467,10 +6423,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Assurez-vous que tous les versements pour l'année fiscale sont fermés avant de générer les relevés."
 
 #: 
-msgid "Export Options"
-msgstr "Options d'export"
-
-#: 
 msgid "F"
 msgstr "F"
 
@@ -6485,10 +6437,6 @@ msgstr "Navigation familiale"
 #: 
 msgid "Feb"
 msgstr "Fév"
-
-#: 
-msgid "Filtering"
-msgstr "Filtrage"
 
 #: 
 msgid "Finance"
@@ -6511,16 +6459,8 @@ msgid "Generate Tax Statements"
 msgstr "Générer des déclarations fiscales"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Générez les relevés de dons annuels pour les donateurs et identifiez les tendances de dons."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Générez les relevés de dons annuels déductibles des impôts pour les donateurs. Peuvent être imprimés ou envoyés par courriel."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Générez des rapports détaillés pour des versements individuels ou des plages de dates."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6581,10 +6521,6 @@ msgstr "Mar"
 #: 
 msgid "Membership Reports"
 msgstr "Rapports d'adhésion"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "La plupart des rapports peuvent être exportés en PDF pour l'impression ou en CSV pour l'analyse des feuilles de calcul."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6663,14 +6599,6 @@ msgid "Recording a Pledge"
 msgstr "Enregistrement d'une promesse"
 
 #: 
-msgid "Report Tips"
-msgstr "Conseils de rapport"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Rapports liés à l'éligibilité de vote des membres et à la gouvernance organisationnelle."
-
-#: 
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -6747,20 +6675,12 @@ msgid "Total Amount"
 msgstr "Montant total"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Suivez la progression des promesses et des paiements pour les campagnes et la budgétisation de l'année fiscale."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Prérequis non satisfaits"
 
 #: 
 msgid "Upgrade"
 msgstr "Mettre à niveau"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Utilisez les filtres de classification et de famille pour générer des rapports pour des groupes de donateurs spécifiques."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6785,10 +6705,6 @@ msgstr "Promesses depuis le début de l'année"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Vous pouvez créer les membres de la famille maintenant ou les ajouter plus tard. Tous les enregistrements deviendront de nouveaux enregistrements de personne."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Votre année fiscale commence au mois"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -9018,10 +8934,6 @@ msgid "Current person"
 msgstr "Personne actuelle"
 
 #: 
-msgid "Data & Reports"
-msgstr "Données et rapports"
-
-#: 
 msgid "Database Reset"
 msgstr "Réinitialisation de la base de données"
 
@@ -10040,10 +9952,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Voir et gérer les fichiers journaux système pour le débogage"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Voir et exécuter des requêtes de base de données sauvegardées"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Voir les numéros d'acheteurs et les affectations de palettes"
 
@@ -10062,10 +9970,6 @@ msgstr "Voir les récapitulatifs d'engagements financiers de la famille et les a
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Voir les fidèles du groupe, les rôles et les propriétés"
-
-#: 
-msgid "View query results"
-msgstr "Voir les résultats de la requête"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10400,16 +10304,6 @@ msgstr "Paramètres du calendrier"
 msgid "Calendars"
 msgstr "Calendriers"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Choisissez une opportunité de bénévolat"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Choisir le champ de la personne"
-
 #: 
 msgid "Church Identity"
 msgstr "Identité de l'église"
@@ -10430,11 +10324,6 @@ msgstr "ChurchCRM peut envoyer des emails directement."
 msgid "Communication"
 msgstr "Communication"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Comparer les engagements entre deux exercices fiscaux"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Configurez SMTP dans les paramètres ci-dessous pour envoyer des e-mails à partir du système."
@@ -10450,11 +10339,6 @@ msgstr "Connectez Mailchimp pour synchroniser les listes de courrier électroniq
 #: 
 msgid "Copy to clipboard"
 msgstr "Copier dans le presse-papiers"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Champ personnalisé"
 
 #: 
 msgid "Default Country"
@@ -10508,16 +10392,6 @@ msgstr "Impossible de récupérer les adresses e-mail"
 msgid "Failed to retrieve phone numbers"
 msgstr "Impossible de récupérer les numéros de téléphone"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Valeur de champ"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Trouver les personnes qui se sont engagées une année mais pas l'autre"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10525,33 +10399,8 @@ msgstr "Trouver des bénévoles pour une opportunité particulière"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Trouvez des bénévoles qui correspondent à deux codes d'opportunité spécifiques"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Première année fiscale"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Première année fiscale pour comparaison"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Premier choix d'opportunité de bénévolat"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Les amis qui se sont inscrits aux mois précédents"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Invité"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10575,31 +10424,6 @@ msgstr "Gérez les événements, les anniversaires et les dates commémoratives"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Faire correspondre le champ personnalisé à cette valeur"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Membre de l'église, Participant régulier, etc."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Membres de la paroisse qui se sont joints au cours d'un mois particulier"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Anniversaires d'adhésion"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Engagements manquants"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Mois"
 
@@ -10619,16 +10443,6 @@ msgstr "E-mails de notification de nouveau membre"
 #: 
 msgid "No cell phone on file"
 msgstr "Pas de téléphone portable en dossier"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Non-participant"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Non-participant (personnel)"
 
 #: 
 msgid "Not Classified"
@@ -10665,30 +10479,10 @@ msgstr "Propriété de personne utilisée pour exclure les membres de la paroiss
 msgid "Person property used to exclude members from email lists"
 msgstr "Propriété de personne utilisée pour exclure les membres de la paroisse des listes de diffusion"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Comparaison des engagements financiers"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Engagement financier cette année"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Propriété"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Amis récents"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Fidèle pratiquant"
 
 #. Context: query_qry
 #: 
@@ -10710,21 +10504,6 @@ msgstr "SMTP configuré"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP non configuré"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Deuxième année fiscale"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Deuxième année fiscale à titre de comparaison"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Deuxième choix d'opportunité de bénévole"
 
 #: 
 msgid "Send text message"
@@ -10758,21 +10537,6 @@ msgstr "Outils SMS "
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Les actions de messagerie SMS sont disponibles dans les vues Groupe et Classe d'école du dimanche. Utilisez le menu déroulant \"SMS\" pour copier les numéros de téléphone ou envoyer des messages SMS aux membres du groupe."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Le mois d'anniversaire pour lequel vous souhaitez que les dossiers soient retournés."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Le mois d'anniversaire d'adhésion pour lequel vous souhaitez que les dossiers soient retournés."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "La propriété pour laquelle vous souhaitez que les dossiers des personnes soient retournés."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Unité utilisée pour mesurer la distance."
@@ -10781,11 +10545,6 @@ msgstr "Unité utilisée pour mesurer la distance."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Autorisation utilisateur pour envoyer des courriels via des liens mailto:"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Opportunités de bénévolat"
 
 #. Context: query_qry
 #: 
@@ -10803,11 +10562,6 @@ msgstr "Vonage SMS non configuré"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Sans Vonage, les actions de SMS ouvriront l'application SMS native de votre appareil ou copieront les numéros de téléphone dans le presse-papiers."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "mais pas cette année"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -11002,10 +10756,6 @@ msgstr "Choisir ce qui s'affiche quand aucun Gravatar n'existe :\n"
 "• RoboHash - Robot généré unique\n"
 "• Blank - Transparent (par défaut les initiales)"
 
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "IDs de requête séparées par des virgules qui nécessitent des autorisations de finance pour être consultées"
-
 #. plugin:custom-links:section:4:content
 #: 
 msgid "Common uses for custom links:\n"
@@ -11116,10 +10866,6 @@ msgstr "Activer l'utilisation de chèques numérisés"
 #: 
 msgid "Features"
 msgstr "Fonctionnalités"
-
-#: 
-msgid "Finance permission query IDs"
-msgstr "IDs de requête d'autorisation de finance"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -14263,11 +14009,6 @@ msgstr "Le nom de famille doit comporter au moins 2 caractères"
 msgid "Fields"
 msgstr "Champs"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Trouver les personnes n'ayant pas participé à un événement"
-
 #: 
 msgid "First name is required"
 msgstr "Le prénom est obligatoire"
@@ -14447,11 +14188,6 @@ msgstr "Fidèles ajoutés au panier."
 #: 
 msgid "Minimum length is"
 msgstr "La longueur minimale est"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Personnes manquantes"
 
 #: 
 msgid "Move"
@@ -14820,11 +14556,6 @@ msgstr "Sélectionner les calendriers..."
 #: 
 msgid "Select event type..."
 msgstr "Sélectionnez le type d'événement..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Sélectionner l'événement souhaité"
 
 #: 
 msgid "Sequence"
@@ -16287,10 +16018,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s de la famille %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d enregistrement(s) retourné(s)"
-
-#: 
 msgid "Assign role to all"
 msgstr "Attribuer un rôle à tous"
 
@@ -16461,22 +16188,6 @@ msgstr "Configuration du système"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Des personnes sont assignées à cette opportunité de bénévolat. La suppression les désassignera"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Cette valeur ne peut pas contenir moins de %d caractères"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Cette valeur ne peut pas contenir plus de %d caractères"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Cette valeur ne peut pas être supérieure à %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Cette valeur doit être d'au moins %s"
 
 #: 
 msgid "Total Deposits"
@@ -17488,16 +17199,6 @@ msgstr "Mise minimale %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Personnes dont l'anniversaire de naissance ou de mariage tombe dans un mois particulier"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Le mois pour lequel vous souhaitez obtenir les anniversaires de naissance et de mariage."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Le mois d'anniversaire de mariage pour lequel vous souhaitez obtenir des enregistrements."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Total de tous les achats : %s"
@@ -17717,10 +17418,6 @@ msgid "Selected family"
 msgstr "Famille sélectionnée"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Cette valeur doit être un nom de champ valide."
-
-#: 
 msgid "Could not load data"
 msgstr "Impossible de charger les données"
 
@@ -17729,16 +17426,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Veuillez actualiser la page ou réessayer plus tard."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Ajoutez d'abord les enregistrements pertinents."
-
-#: 
 msgid "All Months"
 msgstr "Tous les mois"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Aucune option \"%s\" n'est encore définie."
 
 #: 
 msgid "No events found for %s %d."
@@ -18661,10 +18350,6 @@ msgstr "Promis"
 #: 
 msgid "Print %d Tax Doc"
 msgstr "Imprimer %d document fiscal"
-
-#: 
-msgid "Queries"
-msgstr "Requêtes"
 
 #: 
 msgid "Recent Friends"
