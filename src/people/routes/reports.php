@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\PeopleReportService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
@@ -20,6 +21,30 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     $group->get('/{slug:[a-z-]+}/csv', 'getPeopleReportCsv');
 })->add(AdminRoleAuthMiddleware::class);
 
+/**
+ * @return array<int, array{href: string, title: string, description: string}>
+ */
+function peopleReportLinks(): array
+{
+    $user = AuthenticationManager::getCurrentUser();
+    $links = [
+        [
+            'href' => '/DirectoryReports.php',
+            'title' => gettext('People Directory'),
+            'description' => gettext('Printable directory of all people, grouped by family'),
+        ],
+    ];
+    if ($user->isMenuOptionsEnabled()) {
+        $links[] = [
+            'href' => '/LettersAndLabels.php',
+            'title' => gettext('Letters & Mailing Labels'),
+            'description' => gettext('Generate letters and mailing labels'),
+        ];
+    }
+
+    return $links;
+}
+
 function getPeopleReportsIndex(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -32,18 +57,7 @@ function getPeopleReportsIndex(Request $request, Response $response, array $args
             [gettext('People Reports')],
         ]),
         'reports' => (new PeopleReportService())->getReports(),
-        'links' => [
-            [
-                'href' => '/DirectoryReports.php',
-                'title' => gettext('People Directory'),
-                'description' => gettext('Printable directory of all people, grouped by family'),
-            ],
-            [
-                'href' => '/LettersAndLabels.php',
-                'title' => gettext('Letters & Mailing Labels'),
-                'description' => gettext('Generate letters and mailing labels'),
-            ],
-        ],
+        'links' => peopleReportLinks(),
     ]);
 }
 
