@@ -45,7 +45,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
             $Payments = PledgeQuery::create()
             ->addAsColumn('GroupAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->addAsColumn('displayName', 'CONCAT("#",' . PledgeTableMap::COL_PLG_PLGID . ')')
-            ->addAsColumn('uri', 'CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . PledgeTableMap::COL_PLG_DEPID . ')')
+            ->addAsColumn('uri', 'CONCAT("' . SystemURLs::getRootPath() . '/finance/deposit/",' . PledgeTableMap::COL_PLG_DEPID . ')')
             //->limit(SystemConfig::getValue("bSearchIncludePaymentsMax")) // this can't be limited here due to how Propel ORM doesn't handle HAVING clause nicely, so we do it in PHP
             ->groupByGroupKey()
             ->find();
@@ -79,7 +79,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
             $Payments = PledgeQuery::create()
             ->filterByCheckNo("$SearchQuery", Criteria::EQUAL)
             ->addAsColumn('displayName', 'CONCAT("#",' . PledgeTableMap::COL_PLG_PLGID . ')')
-            ->addAsColumn('uri', 'CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . PledgeTableMap::COL_PLG_DEPID . ')')
+            ->addAsColumn('uri', 'CONCAT("' . SystemURLs::getRootPath() . '/finance/deposit/",' . PledgeTableMap::COL_PLG_DEPID . ')')
             ->limit(SystemConfig::getIntValue('bSearchIncludePaymentsMax'))
             ->groupByGroupKey()
             ->find();
