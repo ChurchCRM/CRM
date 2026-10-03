@@ -401,9 +401,7 @@ Use **plain JavaScript** (`.js`) when:
 - The file is a thin DOM-ready event-handler wrapper with no API calls
 - The module renders HTML via template literals (no type benefit)
 
-**Why:** `datatables.net` augments the jQuery `JQuery<T>` interface via side-effect import. This requires either:
-- `import 'datatables.net'` (would bundle DataTables, wasting ~200 KB since it's loaded globally)
-- Adding `"datatables.net"` to tsconfig `types` array (untested — may conflict)
+**Why:** DataTables, moment, the date pickers, bootbox, i18next, JustValidate, and bs-stepper are imported by `webpack/vendor-globals.js` and shipped in `churchcrm.min.js`. Do not add `<script>` tags for them. Leaflet is imported from `webpack/leaflet-global.js` by the map entries. Locale files for moment, the datepicker, and DataTables are dynamic `import()`s in `webpack/locale-loader.js`, not files copied into `src/locale/vendor`. There is no Grunt copy step.
 
 Existing JS-only entries: `admin-dashboard.js`, `backup.js`, `restore.js`, `church-info.js`.
 

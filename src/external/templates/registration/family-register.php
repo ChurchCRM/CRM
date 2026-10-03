@@ -384,7 +384,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
     </div>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/bs-stepper/bs-stepper.min.js') ?>"></script>
+
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/family-register.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/DropdownManager.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/FamilyRegister.js') ?>"></script>

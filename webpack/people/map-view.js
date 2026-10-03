@@ -4,10 +4,9 @@
  * Reads window.CRM.mapConfig (set by people/views/map-view.php) and
  * fetches family/person data from GET /api/map/families[?groupId=N].
  *
- * Leaflet is loaded as a global from skin/external/leaflet/leaflet.js
- * (see webpack externals: { leaflet: 'L' }). No Google Maps API key required.
+ * Leaflet comes from webpack/leaflet-global.js. No Google Maps API key required.
  */
-import L from "leaflet";
+import L from "../leaflet-global";
 
 // Resolve i18next lazily on every call — this module can load before the
 // global i18next is ready, so capturing t at module load would freeze it to a

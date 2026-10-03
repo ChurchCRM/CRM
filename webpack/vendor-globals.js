@@ -9,6 +9,7 @@ import bootbox from "bootbox";
 import DataTable from "datatables.net-bs5";
 import i18next from "i18next";
 import JustValidate from "just-validate";
+import Stepper from "bs-stepper";
 import moment from "moment";
 
 import "./inputmask-global";
@@ -26,6 +27,7 @@ window.moment = moment;
 window.bootbox = bootbox;
 window.i18next = i18next;
 window.JustValidate = JustValidate;
+window.Stepper = Stepper;
 window.DataTable = DataTable;
 
 document.addEventListener("DOMContentLoaded", () => {
