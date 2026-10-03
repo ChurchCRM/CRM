@@ -12,7 +12,7 @@ describe("Financial Reports", () => {
         cy.contains("Finance Dashboard");
 
         // Click Reports from action buttons
-        cy.contains("a", "Reports").click();
+        cy.get('a.btn[href$="/finance/reports"]').click();
         cy.url().should("contain", "/finance/reports");
         cy.contains("Financial Reports");
     });
