@@ -197,6 +197,25 @@ describe("Admin - Church Logo", () => {
         cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
     });
 
+    it("Converts an iPhone HEIC photo to JPEG before uploading (#10156)", () => {
+        cy.visit("/admin/system/church-info");
+
+        cy.readFile("cypress/fixtures/test-photo.heic", null).then((heic) => {
+            cy.intercept("POST", `**${LOGO_API_URL}`).as("uploadLogo");
+            uploadLogoThroughUppy({
+                contents: heic,
+                fileName: "IMG_0001.HEIC",
+                mimeType: "image/heic",
+            });
+        });
+
+        cy.wait("@uploadLogo").then(({ request, response }) => {
+            expect(request.body.imgBase64).to.match(/^data:image\/jpeg;base64,/);
+            expect(response.statusCode).to.equal(200);
+        });
+        cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
+    });
+
     it("Reloads the page only after the server has answered the upload", () => {
         const events = [];
         cy.visit("/admin/system/church-info").then(() => {
