@@ -21,6 +21,9 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'peopleNewMembers' => [gettext('New Members & Greeting'), 'fa-solid fa-user-plus', [
             'bEnableSelfRegistration', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2',
         ]],
+        'peopleMap' => [gettext('Map Settings'), 'fa-solid fa-map', [
+            'iMapZoom', 'bHideLatLon',
+        ]],
     ];
 
     // Short labels; the legacy sentence stays as the help text.
@@ -39,6 +42,8 @@ $app->get('/people', function (Request $request, Response $response): Response {
         'IncludeDataInNewPersonNotifications'  => gettext('Include Details in Notifications'),
         'sGreeterCustomMsg1'                   => gettext('Greeter Message 1'),
         'sGreeterCustomMsg2'                   => gettext('Greeter Message 2'),
+        'iMapZoom'                             => gettext('Default Map View'),
+        'bHideLatLon'                          => gettext('Hide Latitude/Longitude'),
     ];
 
     $sections = [];
