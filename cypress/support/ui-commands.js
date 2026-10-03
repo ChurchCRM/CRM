@@ -48,7 +48,7 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
 
 /**
  * Sets up a cached admin login session for Cypress UI tests.
- * Reads credentials from the Cypress config env (cypress/configs/docker.config.ts
+ * Reads credentials with cy.env() (cypress/configs/docker.config.ts
  * for the standard CI/dev runner, cypress/configs/new-system.config.ts for
  * the new-system job). See `.agents/skills/churchcrm/cypress-testing.md`
  * for the full rationale.
@@ -58,17 +58,20 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
  * Note: Uses cy.session() with explicit validation to cache login across test runs.
  * If validation fails, the session is cleared and login is re-attempted.
  */
+function sessionFromEnv(sessionName, usernameKey, passwordKey, options) {
+    return cy.readEnv(usernameKey).then((username) =>
+        cy.readEnv(passwordKey).then((password) => {
+            cy.setupLoginSession(sessionName, username, password, options);
+        }),
+    );
+}
+
 Cypress.Commands.add('setupAdminSession', (options = {}) => {
-    const username = Cypress.env('admin.username');
-    const password = Cypress.env('admin.password');
-    if (!username || !password) {
-        throw new Error('Admin credentials not configured in cypress/configs/docker.config.ts (or cypress/configs/new-system.config.ts) env: admin.username and admin.password required');
-    }
     // Validate against a Finance-protected endpoint so that a stale or
     // cross-contaminated session (e.g. from a non-Finance spec that ran
     // earlier in the same Cypress worker) is detected and triggers a
     // fresh login instead of proceeding with the wrong role.
-    cy.setupLoginSession('admin-session', username, password, {
+    return sessionFromEnv('admin-session', 'admin.username', 'admin.password', {
         ...options,
         validate: () => {
             cy.request({ url: '/api/deposits', failOnStatusCode: false })
@@ -87,14 +90,9 @@ Cypress.Commands.add('setupAdminSession', (options = {}) => {
  * Note: Uses cy.session() with explicit validation to cache login across test runs.
  * If validation fails, the session is cleared and login is re-attempted.
  */
-Cypress.Commands.add('setupStandardSession', (options = {}) => {
-    const username = Cypress.env('standard.username');
-    const password = Cypress.env('standard.password');
-    if (!username || !password) {
-        throw new Error('Standard user credentials not configured in cypress/configs/docker.config.ts env: standard.username and standard.password required');
-    }
-    cy.setupLoginSession('standard-session', username, password, options);
-});
+Cypress.Commands.add('setupStandardSession', (options = {}) =>
+    sessionFromEnv('standard-session', 'standard.username', 'standard.password', options),
+);
 
 /**
  * Sets up a cached session for a user WITHOUT finance permissions.
@@ -104,14 +102,9 @@ Cypress.Commands.add('setupStandardSession', (options = {}) => {
  * Usage in test files:
  *   beforeEach(() => cy.setupNoFinanceSession());
  */
-Cypress.Commands.add('setupNoFinanceSession', (options = {}) => {
-    const username = Cypress.env('nofinance.username');
-    const password = Cypress.env('nofinance.password');
-    if (!username || !password) {
-        throw new Error('No-finance user credentials not configured in cypress/configs/docker.config.ts env: nofinance.username and nofinance.password required');
-    }
-    cy.setupLoginSession('nofinance-session', username, password, options);
-});
+Cypress.Commands.add('setupNoFinanceSession', (options = {}) =>
+    sessionFromEnv('nofinance-session', 'nofinance.username', 'nofinance.password', options),
+);
 
 /**
  * Sets up a cached session for a user WITH Finance + DeleteRecords but WITHOUT
@@ -119,14 +112,9 @@ Cypress.Commands.add('setupNoFinanceSession', (options = {}) => {
  * FundRaiserDelete.php correctly denies on the ManageFundraisers gate even when
  * the caller has passed the DeleteRecords gate.
  */
-Cypress.Commands.add('setupNoManageFundraisersSession', (options = {}) => {
-    const username = Cypress.env('nofundraiser.username');
-    const password = Cypress.env('nofundraiser.password');
-    if (!username || !password) {
-        throw new Error('No-ManageFundraisers user credentials not configured in cypress/configs/docker.config.ts env: nofundraiser.username and nofundraiser.password required');
-    }
-    cy.setupLoginSession('nofundraiser-session', username, password, options);
-});
+Cypress.Commands.add('setupNoManageFundraisersSession', (options = {}) =>
+    sessionFromEnv('nofundraiser-session', 'nofundraiser.username', 'nofundraiser.password', options),
+);
 
 /**
  * Sets up a cached session for a Finance-only user (per_ID=904: grace.financeonly).
@@ -134,35 +122,24 @@ Cypress.Commands.add('setupNoManageFundraisersSession', (options = {}) => {
  * users (not just admins) can access fund CRUD, dashboard Financial Settings panel,
  * and the Finance nav Admin submenu (Envelope Manager, Donation Funds).
  */
-Cypress.Commands.add('setupFinanceOnlySession', (options = {}) => {
-    const username = Cypress.env('finance.only.username');
-    const password = Cypress.env('finance.only.password');
-    if (!username || !password) {
-        throw new Error('Finance-only user credentials not configured in cypress/configs/docker.config.ts env: finance.only.username and finance.only.password required');
-    }
-    cy.setupLoginSession('finance-only-session', username, password, {
+Cypress.Commands.add('setupFinanceOnlySession', (options = {}) =>
+    sessionFromEnv('finance-only-session', 'finance.only.username', 'finance.only.password', {
         ...options,
         validate: () => {
-            // Validate by checking a finance-protected endpoint
             cy.request({ url: '/api/deposits', failOnStatusCode: false })
                 .its('status').should('eq', 200);
         }
-    });
-});
+    }),
+);
 
 /**
  * Sets up a cached session for a ManageGroups-only user (per_ID=905: kyle.kioskonly).
  * This user has ManageGroups=1 and is NOT an admin. Used to verify that ManageGroups-role
  * users (not just admins) can access the Kiosk Manager page and API.
  */
-Cypress.Commands.add('setupManageGroupsOnlySession', (options = {}) => {
-    const username = Cypress.env('managegroups.only.username');
-    const password = Cypress.env('managegroups.only.password');
-    if (!username || !password) {
-        throw new Error('ManageGroups-only user credentials not configured in cypress/configs/docker.config.ts env: managegroups.only.username and managegroups.only.password required');
-    }
-    cy.setupLoginSession('managegroups-only-session', username, password, options);
-});
+Cypress.Commands.add('setupManageGroupsOnlySession', (options = {}) =>
+    sessionFromEnv('managegroups-only-session', 'managegroups.only.username', 'managegroups.only.password', options),
+);
 
 /**
  * cy.loginWithCredentials(username, password, sessionName, expectSuccess = true)
@@ -591,29 +568,36 @@ Cypress.Commands.add('waitForNotification', (expectedText, options = {}) => {
  * @example cy.setupLocaleAdminSession('ar_EG')
  */
 Cypress.Commands.add('setupLocaleAdminSession', (localeValue) => {
-    const userId = Cypress.env('locale.admin.id');
-    const apiKey = Cypress.env('locale.admin.api.key');
-    const username = Cypress.env('locale.admin.username');
-    const password = Cypress.env('locale.admin.password');
+    return cy.rememberTestEnv([
+        'locale.admin.id',
+        'locale.admin.api.key',
+        'locale.admin.username',
+        'locale.admin.password',
+    ]).then(() => {
+        const userId = Cypress.testEnv('locale.admin.id');
+        const apiKey = Cypress.testEnv('locale.admin.api.key');
+        const username = Cypress.testEnv('locale.admin.username');
+        const password = Cypress.testEnv('locale.admin.password');
 
-    if (!userId || !apiKey || !username || !password) {
-        throw new Error(
-            'Locale-admin credentials not configured. ' +
-            'Ensure locale.admin.id, locale.admin.api.key, locale.admin.username, ' +
-            'and locale.admin.password are set in cypress/configs/locale.config.ts env.',
-        );
-    }
+        if (!userId || !apiKey || !username || !password) {
+            throw new Error(
+                'Locale-admin credentials not configured. ' +
+                'Ensure locale.admin.id, locale.admin.api.key, locale.admin.username, ' +
+                'and locale.admin.password are set in cypress/configs/locale.config.ts env.',
+            );
+        }
 
-    // Set the user's locale preference via API (withCredentials:false avoids
-    // interfering with the browser session cookie that cy.session manages).
-    cy.makePrivateAPICall(apiKey, 'POST', `/api/user/${userId}/setting/ui.locale`, { value: localeValue }, 200);
+        // Set the user's locale preference via API (withCredentials:false avoids
+        // interfering with the browser session cookie that cy.session manages).
+        cy.makePrivateAPICall(apiKey, 'POST', `/api/user/${userId}/setting/ui.locale`, { value: localeValue }, 200);
 
-    // Establish (or restore from cache) the browser session for locale-admin.
+        // Establish (or restore from cache) the browser session for locale-admin.
     // Known limitation: the cy.session key is static ('locale-admin-session'),
     // so if the locale were ever read at login time rather than per-request
     // (e.g. persisted in the session cookie), the cache could serve a stale
     // locale. ChurchCRM resolves locale per-request from the DB preference,
     // so this is safe for now.
-    cy.setupLoginSession('locale-admin-session', username, password);
+        cy.setupLoginSession('locale-admin-session', username, password);
+    });
 });
 

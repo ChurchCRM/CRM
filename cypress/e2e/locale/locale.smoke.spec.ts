@@ -7,8 +7,8 @@
  *   full            — all 49 locales run on release branches, nightly, and
  *                     manual workflow_dispatch.
  *
- * Select tier via Cypress env:
- *   --env LOCALE_TIER=full   (or set in locale.config.ts)
+ * Select tier via Cypress expose:
+ *   --expose LOCALE_TIER=full   (or set in locale.config.ts)
  *
  * Adding a page to the suite: add one entry to cypress/fixtures/locale-pages.ts.
  * The spec and CI workflow never need to change.
@@ -67,7 +67,7 @@ const allLocales: LocaleEntry[] = Object.entries(
   nativeName: v.nativeName ?? name,
 }));
 
-const tier: string = (Cypress.env('LOCALE_TIER') as string) ?? 'smoke';
+const tier: string = (Cypress.expose('LOCALE_TIER') as string) ?? 'smoke';
 
 const localesUnderTest: LocaleEntry[] =
   tier === 'full'

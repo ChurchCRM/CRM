@@ -30,6 +30,9 @@ describe("API Private Admin - Background Timer Jobs concurrency", () => {
     let originalFeature;
     let originalRateLimit;
     let configuredTimezone;
+    before(() => {
+        cy.rememberTestEnv(["admin.api.key"]);
+    });
 
     const configUrl = (name) => `/admin/api/system/config/${name}`;
 
@@ -80,7 +83,7 @@ describe("API Private Admin - Background Timer Jobs concurrency", () => {
      */
     const fireConcurrentTimerJobs = () =>
         cy.window().then((win) => {
-            const apiKey = Cypress.env("admin.api.key");
+            const apiKey = Cypress.testEnv("admin.api.key");
             const calls = Array.from({ length: CONCURRENT_REQUESTS }, () =>
                 win.fetch(timerJobsUrl(), {
                     method: "POST",

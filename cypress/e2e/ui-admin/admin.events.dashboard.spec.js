@@ -21,19 +21,6 @@ const createdEventIds = [];
  * sufficient to recover from that, so any API call that precedes a cy.visit()
  * in this spec is followed by a real clear-and-form-login instead.
  */
-function freshAdminLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-    // Leaving /session/begin is not by itself proof of a successful login (an
-    // error page would satisfy it too) — confirm a CRM session cookie exists,
-    // the same check cy.session()'s validate() uses in support/ui-commands.js.
-    cy.url().should("not.include", "/session/begin");
-    cy.getCookies().should("satisfy", (cookies) =>
-        cookies.some((cookie) => cookie.name.startsWith("CRM-")),
-    );
-}
 
 /**
  * Helper — quick-create a fresh event using the seeded "Church Service"
@@ -202,7 +189,7 @@ describe("Events Dashboard (MVC)", () => {
             cy.makePrivateAdminAPICall("GET", "/api/events/types", null, 200).then((apiResp) => {
                 expect(apiResp.body).to.have.property("EventTypes");
                 const apiCount = apiResp.body.EventTypes.length;
-                freshAdminLogin();
+                cy.freshAdminFormLogin({ sessionCookie: true });
                 cy.visit("event/dashboard");
 
                 // The view renders the count as a plain <div class="fw-medium">
@@ -220,7 +207,7 @@ describe("Events Dashboard (MVC)", () => {
         it("event title row does not render Quill empty placeholder (<p><br /></p>)", () => {
             // Ensure at least one row exists so the assertion is meaningful.
             createTestEvent(() => {
-                freshAdminLogin();
+                cy.freshAdminFormLogin({ sessionCookie: true });
                 cy.visit("event/dashboard");
                 // The literal markup must NEVER appear as text under any event row
                 cy.get("table tbody").should("not.contain.text", "<p>");
@@ -239,7 +226,7 @@ describe("Events Dashboard (MVC)", () => {
                     { active: false },
                     200,
                 );
-                freshAdminLogin();
+                cy.freshAdminFormLogin({ sessionCookie: true });
 
                 cy.visit(`event/checkin/${eventId}`);
 
@@ -294,7 +281,7 @@ describe("Events Dashboard (MVC)", () => {
                     { active: true },
                     200,
                 );
-                freshAdminLogin();
+                cy.freshAdminFormLogin({ sessionCookie: true });
             });
 
             it("renders the standard action dropdown for each event row", () => {
@@ -354,7 +341,7 @@ describe("Events Dashboard (MVC)", () => {
                     { active: false },
                     200,
                 );
-                freshAdminLogin();
+                cy.freshAdminFormLogin({ sessionCookie: true });
             });
 
             it("Activate POSTs /api/events/{id}/status with active=true", () => {

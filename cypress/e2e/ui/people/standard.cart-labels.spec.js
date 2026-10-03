@@ -37,13 +37,6 @@ describe("Cart mailing labels (#9873)", () => {
      * Direct form login, as in confirm-reports.spec.js: a fresh PHP session
      * uncontaminated by earlier specs, and the cart lives in that session.
      */
-    const freshAdminLogin = () => {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(Cypress.env("admin.username"));
-        cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-        cy.url().should("not.include", "/session/begin");
-    };
 
     const emptyCart = () => {
         cy.request({
@@ -55,7 +48,7 @@ describe("Cart mailing labels (#9873)", () => {
     };
 
     before(() => {
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
 
         cy.visit("/FamilyEditor.php");
         cy.contains("Family Info");
@@ -87,7 +80,7 @@ describe("Cart mailing labels (#9873)", () => {
     });
 
     beforeEach(() => {
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
         emptyCart();
         cy.request({
             method: "POST",

@@ -3,6 +3,7 @@ import base from './base.config'
 
 export default defineConfig({
   ...base,
+  allowCypressEnv: false,
   env: {
     ...base.env,
     'db.host': 'database-new-system',

@@ -14,6 +14,9 @@ describe("API People - deleting a person with a login is guarded", () => {
     const createdPersonIds = [];
     const createdFamilyIds = [];
     const ids = {};
+    before(() => {
+        cy.rememberTestEnv(["admin.api.key"]);
+    });
 
     const createPerson = (firstName, key) => {
         cy.visit("/PersonEditor.php");
@@ -67,7 +70,7 @@ describe("API People - deleting a person with a login is guarded", () => {
                 withCredentials: false,
                 headers: {
                     "content-type": "application/json",
-                    "x-api-key": Cypress.env("admin.api.key"),
+                    "x-api-key": Cypress.testEnv("admin.api.key"),
                 },
                 body: {
                     PersonID: ids.adminMember,

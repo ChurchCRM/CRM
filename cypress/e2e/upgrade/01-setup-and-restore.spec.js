@@ -24,38 +24,75 @@
  */
 
 describe('Upgrade via Restore', () => {
-    const dbConfig = {
-        host: Cypress.env('db.host') || 'database-new-system',
-        port: Cypress.env('db.port') || '3306',
-        name: Cypress.env('db.name') || 'churchcrm',
-        user: Cypress.env('db.user') || 'churchcrm',
-        password: Cypress.env('db.password') || 'changeme'
+    let dbConfig = {
+        host: 'database-new-system',
+        port: '3306',
+        name: 'churchcrm',
+        user: 'churchcrm',
+        password: 'changeme'
     };
 
-    const setupAdmin = {
-        username: Cypress.env('admin.username') || 'admin',
-        password: Cypress.env('admin.password') || 'changeme'
+    let setupAdmin = {
+        username: 'admin',
+        password: 'changeme'
     };
 
-    const upgradeSqlFile = Cypress.env('UPGRADE_SQL_FILE');
-    const upgradeAdminUser = Cypress.env('UPGRADE_ADMIN_USER') || 'Admin';
-    const upgradeAdminPass = Cypress.env('UPGRADE_ADMIN_PASS') || 'changeme';
+    let upgradeSqlFile;
+    let upgradeAdminUser = 'Admin';
+    let upgradeAdminPass = 'changeme';
 
     // New password set during forced password change on the fresh install.
     // Configured in upgrade.config.ts so it can be overridden without editing this file.
-    const newAdminPassword = Cypress.env('admin.new.password') || 'AdminP@ss1234!';
+    let newAdminPassword = 'AdminP@ss1234!';
 
     // Whether the restored source forces a password change on the first post-migration
     // login (true for ChurchInfo 1.x MD5 accounts). Absent/false for ChurchCRM 6.x,
     // which migrates SHA-256 → bcrypt silently without requiring a change.
-    const forcesPasswordChange = String(Cypress.env('UPGRADE_FORCE_PASSWORD_CHANGE')).toLowerCase() === 'true';
+    let forcesPasswordChange = false;
 
     // Password configured for the post-forced-change login (ChurchInfo 1.x / MD5 path only).
-    const postUpgradePassword = Cypress.env('admin.post.upgrade.password') || 'PostMigrateP@ss9012!';
+    let postUpgradePassword = 'PostMigrateP@ss9012!';
 
     // Effective password for all Step 3 verification logins: the forced-change value when
     // the source requires it, otherwise the original restored password (silent migration).
-    const verifyPassword = forcesPasswordChange ? postUpgradePassword : upgradeAdminPass;
+    let verifyPassword = upgradeAdminPass;
+
+    before(() => {
+        cy.rememberTestEnv([
+            'db.host',
+            'db.port',
+            'db.name',
+            'db.user',
+            'db.password',
+            'admin.username',
+            'admin.password',
+            'UPGRADE_SQL_FILE',
+            'UPGRADE_ADMIN_USER',
+            'UPGRADE_ADMIN_PASS',
+            'admin.new.password',
+            'UPGRADE_FORCE_PASSWORD_CHANGE',
+            'admin.post.upgrade.password',
+        ]).then(() => {
+            dbConfig = {
+                host: Cypress.testEnv('db.host') || 'database-new-system',
+                port: Cypress.testEnv('db.port') || '3306',
+                name: Cypress.testEnv('db.name') || 'churchcrm',
+                user: Cypress.testEnv('db.user') || 'churchcrm',
+                password: Cypress.testEnv('db.password') || 'changeme'
+            };
+            setupAdmin = {
+                username: Cypress.testEnv('admin.username') || 'admin',
+                password: Cypress.testEnv('admin.password') || 'changeme'
+            };
+            upgradeSqlFile = Cypress.testEnv('UPGRADE_SQL_FILE');
+            upgradeAdminUser = Cypress.testEnv('UPGRADE_ADMIN_USER') || 'Admin';
+            upgradeAdminPass = Cypress.testEnv('UPGRADE_ADMIN_PASS') || 'changeme';
+            newAdminPassword = Cypress.testEnv('admin.new.password') || 'AdminP@ss1234!';
+            forcesPasswordChange = String(Cypress.testEnv('UPGRADE_FORCE_PASSWORD_CHANGE')).toLowerCase() === 'true';
+            postUpgradePassword = Cypress.testEnv('admin.post.upgrade.password') || 'PostMigrateP@ss9012!';
+            verifyPassword = forcesPasswordChange ? postUpgradePassword : upgradeAdminPass;
+        });
+    });
 
     describe('Step 1: Fresh Install via Setup Wizard', () => {
         it('should complete setup wizard', () => {

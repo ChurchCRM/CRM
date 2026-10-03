@@ -225,14 +225,11 @@ describe('03 - Backup and Restore', () => {
                 
                 backupFilename = response.body.BackupDownloadFileName.replace(/^.*[\\\/]/, '');
                 cy.log('Created backup for restore test: ' + backupFilename);
-                
-                // Store in Cypress env for next test
-                Cypress.env('lastBackupFile', backupFilename);
             });
         });
 
         it('should verify backup download works', () => {
-            const savedBackup = Cypress.env('lastBackupFile');
+            const savedBackup = backupFilename;
             if (!savedBackup) {
                 cy.log('No backup filename saved, skipping download test');
                 return;
