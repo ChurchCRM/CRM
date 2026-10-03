@@ -838,11 +838,11 @@ require_once __DIR__ . '/Include/Header.php';
     <?php } else { // Hidden fields when address is hidden ?>
         <input type="hidden" name="Address1" value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>">
         <input type="hidden" name="Address2" value="<?= InputUtils::escapeAttribute(stripslashes($sAddress2)) ?>">
-        <input type="hidden" name="City" value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>">
-        <input type="hidden" name="State" value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>">
-        <input type="hidden" name="StateTextbox" value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>">
-        <input type="hidden" name="Zip" value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>">
-        <input type="hidden" name="Country" value="<?= InputUtils::escapeAttribute(stripslashes($sCountry)) ?>">
+        <input type="hidden" name="City" value="<?= InputUtils::escapeAttribute(stripslashes($isNewPerson ? '' : $sCity)) ?>">
+        <input type="hidden" name="State" value="<?= InputUtils::escapeAttribute(stripslashes($isNewPerson ? '' : $sState)) ?>">
+        <input type="hidden" name="StateTextbox" value="<?= InputUtils::escapeAttribute(stripslashes($isNewPerson ? '' : $sState)) ?>">
+        <input type="hidden" name="Zip" value="<?= InputUtils::escapeAttribute(stripslashes($isNewPerson ? '' : $sZip)) ?>">
+        <input type="hidden" name="Country" value="<?= InputUtils::escapeAttribute(stripslashes($isNewPerson ? '' : $sCountry)) ?>">
     <?php } ?>
 
     <!-- Card 3: Contact Information -->

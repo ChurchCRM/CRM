@@ -34,4 +34,11 @@ describe("Address defaults fall back to the church address", () => {
         cy.visit("/FamilyEditor.php");
         cy.get("#City").should("have.value", "Defaultown");
     });
+
+    it("does not post the church address as hidden fields for a new person added to a family", () => {
+        setConfig("sDefaultCity", "");
+        setConfig("sChurchCity", "Churchville");
+        cy.visit("/PersonEditor.php?FamilyID=1");
+        cy.get("input[type=hidden][name=City]").should("have.value", "");
+    });
 });
