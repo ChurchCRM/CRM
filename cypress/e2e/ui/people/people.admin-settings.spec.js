@@ -13,15 +13,20 @@
 describe("People Settings hub", () => {
     const SECTIONS = ["#peopleNewMembers", "#peoplePeople", "#peopleFamilies", "#peopleDefaults"];
     let savedFriendDate;
+    let savedDefaultCity;
 
     before(() => {
         cy.getSystemConfig("bHideFriendDate").then((value) => {
             savedFriendDate = value;
         });
+        cy.getSystemConfig("sDefaultCity").then((value) => {
+            savedDefaultCity = value;
+        });
     });
 
     after(() => {
         cy.restoreSystemConfig("bHideFriendDate", savedFriendDate);
+        cy.restoreSystemConfig("sDefaultCity", savedDefaultCity);
     });
 
     describe("as admin", () => {
@@ -130,15 +135,12 @@ describe("People Settings hub", () => {
         });
 
         it("auto-saves the default city", () => {
-            cy.getSystemConfig("sDefaultCity").then((original) => {
-                cy.intercept("POST", "**/admin/api/system/config/sDefaultCity").as("saveCity");
-                cy.visit("/admin/people");
-                cy.get("#peopleDefaults .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
-                cy.get("#peopleDefaults input[name='sDefaultCity']").clear().type("Hubville").blur();
-                cy.wait("@saveCity").its("response.statusCode").should("eq", 200);
-                cy.getSystemConfig("sDefaultCity").should("eq", "Hubville");
-                cy.restoreSystemConfig("sDefaultCity", original);
-            });
+            cy.intercept("POST", "**/admin/api/system/config/sDefaultCity").as("saveCity");
+            cy.visit("/admin/people");
+            cy.get("#peopleDefaults .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+            cy.get("#peopleDefaults input[name='sDefaultCity']").clear().type("Hubville").blur();
+            cy.wait("@saveCity").its("response.statusCode").should("eq", 200);
+            cy.getSystemConfig("sDefaultCity").should("eq", "Hubville");
         });
 
         it("no longer lists the address defaults on Church Info", () => {
