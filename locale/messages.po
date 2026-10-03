@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-03 15:47+0000\n"
+"POT-Creation-Date: 2026-10-03 18:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2937,6 +2937,9 @@ msgstr ""
 msgid "Copy error message"
 msgstr ""
 
+msgid "Copy from Church Info"
+msgstr ""
+
 msgid "Copy to Group"
 msgstr ""
 
@@ -2963,6 +2966,9 @@ msgstr ""
 msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
+msgid "Could not copy the church address."
+msgstr ""
+
 msgid "Could not find coordinates for that address. Try entering them manually."
 msgstr ""
 
@@ -2979,6 +2985,9 @@ msgid "Could not load release information."
 msgstr ""
 
 msgid "Could not load the current settings. Reload the page to try again."
+msgstr ""
+
+msgid "Could not match the church country."
 msgstr ""
 
 msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
