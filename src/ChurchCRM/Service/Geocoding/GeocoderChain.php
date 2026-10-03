@@ -4,25 +4,34 @@ namespace ChurchCRM\Service\Geocoding;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\LoggerUtils;
+use Generator;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
 /**
- * Tries the configured geocoding providers in order until one returns
- * coordinates. The order comes from the `sGeocoderProviders` setting, a
- * comma-separated list such as "Nominatim, Census"; a church that does not
- * want a provider removes it from the list. Unknown names are logged and
+ * Asks the configured geocoding providers one by one. The order comes from the
+ * `sGeocoderProviders` setting, a comma-separated list such as "Nominatim, Census"
+ * (just "Nominatim" by default; Census is opt-in). Unknown names are logged and
  * ignored; an empty or entirely invalid list falls back to Nominatim.
+ *
+ * results() is lazy: a provider is only called when the caller asks for the next
+ * result, so stopping at the first usable one never contacts the rest.
  */
 class GeocoderChain
 {
     public const CONFIG_KEY = 'sGeocoderProviders';
+
+    /** No further provider is started after this many seconds, which keeps a family save under PHP's 30 s limit. */
+    public const TIME_BUDGET_SECONDS = 18;
 
     /** Registry of providers that ship with ChurchCRM, keyed by lower-case name. */
     private const PROVIDERS = [
         'nominatim' => NominatimGeocoder::class,
         'census'    => CensusGeocoder::class,
     ];
+
+    /** @var array<string, GeocoderProviderInterface[]> providers per ranking string, resolved once per request */
+    private static array $resolved = [];
 
     /** @var GeocoderProviderInterface[] */
     private array $providers;
@@ -43,17 +52,25 @@ class GeocoderChain
      */
     public static function fromConfig(): self
     {
-        return new self(self::resolveProviders((string) SystemConfig::getValue(self::CONFIG_KEY)));
+        $ranking = (string) SystemConfig::getValue(self::CONFIG_KEY);
+
+        return new self(self::$resolved[$ranking] ??= self::resolveProviders($ranking));
     }
 
     /**
-     * Names of every provider that ships with ChurchCRM, for settings help text.
-     *
-     * @return string[]
+     * The country used to decide which providers apply: the record's own, else the
+     * default country, else the church country. Null when all of them are blank.
      */
-    public static function availableProviderNames(): array
+    public static function resolveCountry(?string $recordCountry): ?string
     {
-        return array_map(static fn (string $class): string => (new $class())->getName(), array_values(self::PROVIDERS));
+        foreach ([$recordCountry, SystemConfig::getValue('sDefaultCountry'), SystemConfig::getValue('sChurchCountry')] as $candidate) {
+            $candidate = trim((string) $candidate);
+            if ($candidate !== '') {
+                return $candidate;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -63,7 +80,7 @@ class GeocoderChain
      */
     public static function resolveProviders(string $ranking): array
     {
-        $logger = LoggerUtils::getAppLogger();
+        $logger = LoggerUtils::getAppLogger() ?? new NullLogger();
         $providers = [];
         $seen = [];
 
@@ -98,15 +115,26 @@ class GeocoderChain
     }
 
     /**
-     * Ask each provider in turn. Returns [0, 0] when none of them found the address.
+     * One usable result per provider that found the address, in provider order.
+     * Providers that do not cover the country, fail, or find nothing are skipped.
+     * $country is the record's own country; the country that decides which providers
+     * apply is resolved from it (see resolveCountry()).
      *
-     * @return array{Latitude: float, Longitude: float}
+     * @return Generator<int, GeocodeResult>
      */
-    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): array
+    public function results(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): Generator
     {
+        $resolvedCountry = self::resolveCountry($country);
+        $startedAt = microtime(true);
+
         foreach ($this->providers as $provider) {
-            if (!$provider->supports($country)) {
-                $this->logger->debug('Geocoding: ' . $provider->getName() . ' skipped, does not cover "' . $country . '"');
+            if (microtime(true) - $startedAt >= static::TIME_BUDGET_SECONDS) {
+                $this->logger->warning('Geocoding: time budget used up, not trying ' . $provider->getName() . ' or later providers');
+                return;
+            }
+
+            if (!$provider->supports($resolvedCountry)) {
+                $this->logger->debug('Geocoding: ' . $provider->getName() . ' skipped, does not cover "' . $resolvedCountry . '"');
                 continue;
             }
 
@@ -118,17 +146,27 @@ class GeocoderChain
                 continue;
             }
 
-            // Cast before comparing: a provider returning integer zeros must not pass as a hit.
-            if ($result !== null && ((float) $result['Latitude'] !== 0.0 || (float) $result['Longitude'] !== 0.0)) {
-                $this->logger->debug(
-                    'Geocoding: ' . $provider->getName() . ' found lat=' . $result['Latitude'] . ', lng=' . $result['Longitude']
-                );
-                return $result;
+            if ($result === null || !$result->hasCoordinates()) {
+                $this->logger->debug('Geocoding: ' . $provider->getName() . ' had no result');
+                continue;
             }
-            $this->logger->debug('Geocoding: ' . $provider->getName() . ' had no result');
+
+            $this->logger->debug('Geocoding: ' . $provider->getName() . ' found lat=' . $result->latitude . ', lng=' . $result->longitude);
+            yield $result;
+        }
+    }
+
+    /**
+     * The first usable result, or null when no provider found the address.
+     */
+    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): ?GeocodeResult
+    {
+        foreach ($this->results($street, $city, $state, $zip, $country) as $result) {
+            return $result;
         }
 
         $this->logger->warning('Geocoding: No results found for address from any provider (see service log for familyId)');
-        return ['Latitude' => 0.0, 'Longitude' => 0.0];
+
+        return null;
     }
 }

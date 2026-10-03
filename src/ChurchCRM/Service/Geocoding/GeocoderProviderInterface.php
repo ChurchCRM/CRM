@@ -15,16 +15,16 @@ interface GeocoderProviderInterface
     public function getName(): string;
 
     /**
-     * Whether this provider can be asked about an address in the given country.
-     * A null/empty country means "unknown" and every provider should accept it.
+     * Whether this provider should be asked about an address in the given country.
+     * $country is the resolved country (the record's own, else the default country, else
+     * the church country); null means none of them is set. A provider that covers only some
+     * countries must decline a null country.
      */
     public function supports(?string $country): bool;
 
     /**
      * Look up an address. Returns null when the service had no answer or the
      * request failed, so the chain can move on to the next provider.
-     *
-     * @return array{Latitude: float, Longitude: float}|null
      */
-    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): ?array;
+    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): ?GeocodeResult;
 }

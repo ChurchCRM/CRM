@@ -32,11 +32,12 @@ class NominatimGeocoder extends AbstractHttpGeocoder
         'municipality', 'county', 'state', 'region', 'province', 'country', 'postcode', 'administrative',
     ];
 
-    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): ?array
+    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): ?GeocodeResult
     {
         $baseParams = [
             'format' => 'json',
             'limit' => 1,
+            'addressdetails' => 1,
             'accept-language' => Bootstrapper::getCurrentLocale()->getShortLocale(),
         ];
 
@@ -85,9 +86,8 @@ class NominatimGeocoder extends AbstractHttpGeocoder
     /**
      * @param array<string, mixed> $params
      * @param bool $requireStreetLevel reject a result that is only a locality (see LOCALITY_ADDRESS_TYPES)
-     * @return array{Latitude: float, Longitude: float}|null
      */
-    private function search(array $params, bool $requireStreetLevel): ?array
+    private function search(array $params, bool $requireStreetLevel): ?GeocodeResult
     {
         $results = $this->fetchJson(
             self::ENDPOINT . '?' . http_build_query($params),
@@ -103,9 +103,31 @@ class NominatimGeocoder extends AbstractHttpGeocoder
             return null;
         }
 
-        return [
-            'Latitude'  => (float) $results[0]['lat'],
-            'Longitude' => (float) $results[0]['lon'],
-        ];
+        return new GeocodeResult(
+            (float) $results[0]['lat'],
+            (float) $results[0]['lon'],
+            self::NAME,
+            self::addressParts($results[0]['address'] ?? null)
+        );
+    }
+
+    /**
+     * The matched address from Nominatim's "address" object, with blanks dropped.
+     *
+     * @return array{street?: string, city?: string, state?: string, zip?: string, country?: string}
+     */
+    private static function addressParts(mixed $address): array
+    {
+        if (!\is_array($address)) {
+            return [];
+        }
+
+        return array_filter([
+            'street'  => trim(($address['house_number'] ?? '') . ' ' . ($address['road'] ?? '')),
+            'city'    => (string) ($address['city'] ?? $address['town'] ?? $address['village'] ?? $address['hamlet'] ?? ''),
+            'state'   => (string) ($address['state'] ?? ''),
+            'zip'     => (string) ($address['postcode'] ?? ''),
+            'country' => (string) ($address['country'] ?? ''),
+        ], static fn (string $value): bool => $value !== '');
     }
 }

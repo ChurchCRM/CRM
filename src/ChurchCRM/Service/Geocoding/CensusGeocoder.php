@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Service\Geocoding;
 
+use ChurchCRM\data\Countries;
+
 /**
  * The US Census Bureau geocoder. Free, no API key, United States only.
  * Interpolates house numbers from TIGER street ranges, which makes it far
@@ -16,8 +18,10 @@ class CensusGeocoder extends AbstractHttpGeocoder
     private const ENDPOINT = 'https://geocoding.geo.census.gov/geocoder/locations/';
     private const BENCHMARK = 'Public_AR_Current';
 
-    /** Spellings of the United States accepted in the family/church country field. */
-    private const US_COUNTRY_VALUES = ['us', 'usa', 'u.s.', 'u.s.a.', 'united states', 'united states of america'];
+    private const COUNTRY_NAME = 'United States';
+
+    /** The service is slower than Nominatim, but GeocoderChain also caps the whole lookup. */
+    private const TIMEOUT_SECONDS = 10;
 
     public function getName(): string
     {
@@ -26,11 +30,10 @@ class CensusGeocoder extends AbstractHttpGeocoder
 
     public function supports(?string $country): bool
     {
-        $country = strtolower(trim((string) $country));
-        return $country === '' || \in_array($country, self::US_COUNTRY_VALUES, true);
+        return Countries::toISO($country) === 'US';
     }
 
-    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): ?array
+    public function geocode(string $street, ?string $city, ?string $state, ?string $zip, ?string $country): ?GeocodeResult
     {
         $params = ['benchmark' => self::BENCHMARK, 'format' => 'json'];
 
@@ -51,16 +54,22 @@ class CensusGeocoder extends AbstractHttpGeocoder
             $url = self::ENDPOINT . 'onelineaddress?' . http_build_query($params);
         }
 
-        // The Census service is slower than Nominatim; allow a longer timeout.
-        $data = $this->fetchJson($url, [], 20);
-        $match = $data['result']['addressMatches'][0]['coordinates'] ?? null;
-        if (!\is_array($match) || !isset($match['x'], $match['y'])) {
+        $data = $this->fetchJson($url, [], self::TIMEOUT_SECONDS);
+        $match = $data['result']['addressMatches'][0] ?? null;
+        $coordinates = \is_array($match) ? ($match['coordinates'] ?? null) : null;
+        if (!\is_array($coordinates) || !isset($coordinates['x'], $coordinates['y'])) {
             return null;
         }
 
-        return [
-            'Latitude'  => (float) $match['y'],
-            'Longitude' => (float) $match['x'],
-        ];
+        $components = \is_array($match['addressComponents'] ?? null) ? $match['addressComponents'] : [];
+        $address = array_filter([
+            'street'  => trim(explode(',', (string) ($match['matchedAddress'] ?? ''))[0]),
+            'city'    => (string) ($components['city'] ?? ''),
+            'state'   => (string) ($components['state'] ?? ''),
+            'zip'     => (string) ($components['zip'] ?? ''),
+            'country' => self::COUNTRY_NAME,
+        ], static fn (string $value): bool => $value !== '');
+
+        return new GeocodeResult((float) $coordinates['y'], (float) $coordinates['x'], self::NAME, $address);
     }
 }

@@ -127,7 +127,9 @@ class GeoUtils
             return ['Latitude' => 0.0, 'Longitude' => 0.0];
         }
 
-        return GeocoderChain::fromConfig()->geocode(self::normalizeStreet($address), $city, $state, $zip, $country);
+        $result = GeocoderChain::fromConfig()->geocode(self::normalizeStreet($address), $city, $state, $zip, $country);
+
+        return $result === null ? ['Latitude' => 0.0, 'Longitude' => 0.0] : $result->toLatLong();
     }
 
     /**
