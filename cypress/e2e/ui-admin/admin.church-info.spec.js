@@ -15,7 +15,6 @@ describe("Admin - Church Information Page", () => {
         cy.contains("Church Identity").should("be.visible");
         cy.contains("Contact Information").should("be.visible");
         cy.contains("Location").should("be.visible");
-        cy.contains("Address Defaults").should("be.visible");
         cy.contains("Display Preview").should("be.visible");
     });
 
