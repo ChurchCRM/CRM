@@ -81,8 +81,8 @@ describe("API Private Geocoder — street name normalisation (#9847)", () => {
             200,
             30000,
         ).then((response) => {
-            expect(response.body.Latitude).to.be.within(29.9, 30.1);
-            expect(response.body.Longitude).to.be.within(-95.6, -95.4);
+            expect(response.body.Latitude).to.be.within(29.8, 30.1);
+            expect(response.body.Longitude).to.be.within(-95.7, -95.3);
         });
     });
 

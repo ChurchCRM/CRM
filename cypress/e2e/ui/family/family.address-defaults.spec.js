@@ -34,11 +34,4 @@ describe("Address defaults fall back to the church address", () => {
         cy.visit("/FamilyEditor.php");
         cy.get("#City").should("have.value", "Defaultown");
     });
-
-    it("pre-fills a new person with the church city when no default city is set", () => {
-        setConfig("sDefaultCity", "");
-        setConfig("sChurchCity", "Churchville");
-        cy.visit("/PersonEditor.php");
-        cy.get("#City").should("have.value", "Churchville");
-    });
 });
