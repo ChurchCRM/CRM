@@ -18,6 +18,9 @@ class GeoUtils
     /**
      * Trailing unit designators that geocoders cannot use ("Apt 215", "#231", "Unit B", "Suite 4").
      */
+    /** Words that put a route number in front of a street type ("FM 1960 Rd"): that number is not a numbered street. */
+    private const ROUTE_PREFIXES = 'fm|rm|cr|sr|us|ih|sh|pr|hwy|highway|route|rte|rt|county|co|state';
+
     private const UNIT_DESIGNATORS = '#|apt\.?|apartment|unit|suite|ste\.?|lot|bldg\.?|building|fl\.?|floor|rm\.?|room';
 
     /**
@@ -72,6 +75,10 @@ class GeoUtils
                 preg_match('/^\d+$/', $tokens[$i]) !== 1
                 || preg_match('/^(?:' . self::STREET_TYPES . ')\.?$/i', $tokens[$i + 1]) !== 1
             ) {
+                continue;
+            }
+            // "FM 1960 Rd" and "County Road 1550" are routes, not "1960th Rd"; real numbered streets have at most 3 digits.
+            if (strlen($tokens[$i]) > 3 || ($i > 0 && preg_match('/^(?:' . self::ROUTE_PREFIXES . ')\.?$/i', $tokens[$i - 1]) === 1)) {
                 continue;
             }
             // The first token is normally the house number ("6047 Avenue F"), so it is only

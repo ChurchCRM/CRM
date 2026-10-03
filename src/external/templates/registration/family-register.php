@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\AddressDefaults;
 
 $sPageTitle = gettext("Family Registration");
 require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
@@ -80,13 +81,13 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="familyCity"><?= gettext('City') ?> <span class="text-danger">*</span></label>
-                                <input id="familyCity" name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>" required value="<?= SystemConfig::getValueForAttr('sDefaultCity') ?>">
+                                <input id="familyCity" name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>" required value="<?= InputUtils::escapeAttribute(AddressDefaults::city()) ?>">
                                 <div class="invalid-feedback"></div>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="familyState"><?= gettext('State') ?></label>
                                 <div id="familyStateContainer">
-                                    <input id="familyState" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" value="<?= SystemConfig::getValueForAttr('sDefaultState') ?>" data-default="<?= SystemConfig::getValueForAttr('sDefaultState') ?>">
+                                    <input id="familyState" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" value="<?= InputUtils::escapeAttribute(AddressDefaults::state()) ?>" data-default="<?= InputUtils::escapeAttribute(AddressDefaults::state()) ?>">
                                 </div>
                             </div>
                         </div>
@@ -94,12 +95,12 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="familyZip"><?= gettext('Zip Code') ?> <span class="text-danger">*</span></label>
-                                <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" value="<?= SystemConfig::getValueForAttr('sDefaultZip') ?>" required>
+                                <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" value="<?= InputUtils::escapeAttribute(AddressDefaults::zip()) ?>" required>
                                 <div class="invalid-feedback"></div>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="familyCountry"><?= gettext('Country') ?></label>
-                                <select id="familyCountry" name="familyCountry" class="form-select" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultCountry') ?>">
+                                <select id="familyCountry" name="familyCountry" class="form-select" data-system-default="<?= InputUtils::escapeAttribute(AddressDefaults::country()) ?>">
                                 </select>
                             </div>
                         </div>
