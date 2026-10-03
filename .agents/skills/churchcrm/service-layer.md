@@ -401,7 +401,7 @@ Endpoint adapters keep their own request/response shapes — the unification is 
 
 `GeoUtils::getLatLong()` never talks to a geocoding service directly. It asks
 `ChurchCRM\Service\Geocoding\GeocoderChain::fromConfig()`, which reads the
-`sGeocoderProviders` setting ("Nominatim" by default; "Nominatim, Census" opts in
+`sGeocoderProviders` setting ("Nominatim" by default; "Nominatim, US Census" opts in
 to the US Census Bureau; surfaced on the Family Map's Map Settings panel) and
 iterates the `GeocoderProviderInterface`s one by one. `results()` is a lazy
 generator: it yields a `GeocodeResult` (coordinates plus the address the provider
@@ -410,7 +410,7 @@ calls the rest, and a time budget stops it starting new providers late in a requ
 
 Which providers apply to an address is decided from its country: the record's own
 country, else `sDefaultCountry`, else `sChurchCountry`; when all are blank
-`supports()` receives null and a country-limited provider (Census) must decline.
+`supports()` receives null and a country-limited provider (US Census) must decline.
 Callers should pass the record's country to `getLatLong()`.
 
 To add a service: extend `AbstractHttpGeocoder`, implement `getName()`/`geocode()`

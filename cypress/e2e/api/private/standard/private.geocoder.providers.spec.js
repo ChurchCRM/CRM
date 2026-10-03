@@ -4,8 +4,8 @@
  * Geocoding provider chain (#9848).
  *
  * `sGeocoderProviders` is a comma-separated ranking of geocoding services
- * ("Nominatim" by default; Census is opt-in). GeoUtils::getLatLong() asks them
- * one by one. Census only answers for the US, decided from the record's country,
+ * ("Nominatim" by default; US Census is opt-in). GeoUtils::getLatLong() asks them
+ * one by one. US Census only answers for the US, decided from the record's country,
  * else sDefaultCountry, else sChurchCountry; if all are blank it is skipped.
  *
  * These tests drive POST /api/geocoder/address, which sends no country, so the
@@ -57,18 +57,18 @@ describe("API Private Geocoder — provider chain (#9848)", () => {
         SETTINGS.forEach((name) => cy.restoreSystemConfig(name, original[name]));
     });
 
-    it("ships with Nominatim alone as the default ranking (Census is opt-in)", () => {
+    it("ships with Nominatim alone as the default ranking (US Census is opt-in)", () => {
         cy.makePrivateAdminAPICall("GET", CONFIG("sGeocoderProviders"), null, 200).then((response) => {
             expect(response.body.value).to.equal(DEFAULT_RANKING);
         });
     });
 
     it("round-trips a custom ranking through the settings API", () => {
-        setConfig("sGeocoderProviders", "Census, Nominatim").then((response) => {
-            expect(response.body.value).to.equal("Census, Nominatim");
+        setConfig("sGeocoderProviders", "US Census, Nominatim").then((response) => {
+            expect(response.body.value).to.equal("US Census, Nominatim");
         });
         cy.makePrivateAdminAPICall("GET", CONFIG("sGeocoderProviders"), null, 200).then((response) => {
-            expect(response.body.value).to.equal("Census, Nominatim");
+            expect(response.body.value).to.equal("US Census, Nominatim");
         });
     });
 
@@ -79,38 +79,38 @@ describe("API Private Geocoder — provider chain (#9848)", () => {
     });
 
     it("geocodes with the US Census Bureau when the default country is the US", () => {
-        setConfig("sGeocoderProviders", "Census");
+        setConfig("sGeocoderProviders", "US Census");
         setCountries("US", "");
         geocode().then((response) => expectNear(response.body));
     });
 
     it("falls back to the church country when the default country is blank", () => {
-        setConfig("sGeocoderProviders", "Census");
+        setConfig("sGeocoderProviders", "US Census");
         setCountries("", "US");
         geocode().then((response) => expectNear(response.body));
     });
 
-    it("does not ask Census about a non-US default country", () => {
-        setConfig("sGeocoderProviders", "Census");
+    it("does not ask US Census about a non-US default country", () => {
+        setConfig("sGeocoderProviders", "US Census");
         setCountries("GB", "US");
         geocode().then((response) => expectNotFound(response.body));
     });
 
-    it("does not ask Census when no country is configured anywhere", () => {
-        setConfig("sGeocoderProviders", "Census");
+    it("does not ask US Census when no country is configured anywhere", () => {
+        setConfig("sGeocoderProviders", "US Census");
         setCountries("", "");
         geocode().then((response) => expectNotFound(response.body));
     });
 
     it("ignores unknown names and still geocodes with the remaining service", () => {
-        setConfig("sGeocoderProviders", "Bogus, Census");
+        setConfig("sGeocoderProviders", "Bogus, US Census");
         setCountries("US", "");
         geocode().then((response) => expectNear(response.body));
     });
 
     it("tries the next service when the first finds nothing", () => {
-        // Census declines (non-US default country), so the answer has to come from Nominatim.
-        setConfig("sGeocoderProviders", "Census, Nominatim");
+        // US Census declines (non-US default country), so the answer has to come from Nominatim.
+        setConfig("sGeocoderProviders", "US Census, Nominatim");
         setCountries("GB", "");
         cy.wait(1100);
         geocode().then((response) => expectNear(response.body));

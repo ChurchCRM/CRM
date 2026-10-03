@@ -10,8 +10,8 @@ use Psr\Log\NullLogger;
 
 /**
  * Asks the configured geocoding providers one by one. The order comes from the
- * `sGeocoderProviders` setting, a comma-separated list such as "Nominatim, Census"
- * (just "Nominatim" by default; Census is opt-in). Unknown names are logged and
+ * `sGeocoderProviders` setting, a comma-separated list such as "Nominatim, US Census"
+ * (just "Nominatim" by default; US Census is opt-in). Unknown names are logged and
  * ignored; an empty or entirely invalid list falls back to Nominatim.
  *
  * results() is lazy: a provider is only called when the caller asks for the next
@@ -27,7 +27,7 @@ class GeocoderChain
     /** Registry of providers that ship with ChurchCRM, keyed by lower-case name. */
     private const PROVIDERS = [
         'nominatim' => NominatimGeocoder::class,
-        'census'    => CensusGeocoder::class,
+        'us census' => CensusGeocoder::class,
     ];
 
     /** @var array<string, GeocoderProviderInterface[]> providers per ranking string, resolved once per request */
@@ -58,6 +58,16 @@ class GeocoderChain
     }
 
     /**
+     * Names of the providers that ship with ChurchCRM, for the settings picker.
+     *
+     * @return string[]
+     */
+    public static function availableProviderNames(): array
+    {
+        return array_map(static fn (string $class): string => (new $class())->getName(), array_values(self::PROVIDERS));
+    }
+
+    /**
      * The country used to decide which providers apply: the record's own, else the
      * default country, else the church country. Null when all of them are blank.
      */
@@ -74,7 +84,7 @@ class GeocoderChain
     }
 
     /**
-     * Turn "Nominatim, Census" into provider instances, in order.
+     * Turn "Nominatim, US Census" into provider instances, in order.
      *
      * @return GeocoderProviderInterface[]
      */

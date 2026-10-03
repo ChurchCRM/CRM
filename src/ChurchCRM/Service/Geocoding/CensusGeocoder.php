@@ -13,7 +13,7 @@ use ChurchCRM\data\Countries;
  */
 class CensusGeocoder extends AbstractHttpGeocoder
 {
-    public const NAME = 'Census';
+    public const NAME = 'US Census';
 
     private const ENDPOINT = 'https://geocoding.geo.census.gov/geocoder/locations/';
     private const BENCHMARK = 'Public_AR_Current';
