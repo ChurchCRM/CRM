@@ -12,6 +12,20 @@
 import posthog from "posthog-js";
 
 const cfg = window.CRM?.telemetry;
+// Chrome reports this when a ResizeObserver callback changes layout before
+// every notification in the frame is delivered. FullCalendar's own observer
+// does that; it is not an application exception.
+function isBenignResizeObserverLoop(event) {
+  if (event?.event !== "$exception") {
+    return false;
+  }
+  const list = event.properties?.$exception_list || [];
+  return list.some((item) => {
+    const text = `${item?.value || ""} ${item?.type || ""}`;
+    return text.includes("ResizeObserver loop");
+  });
+}
+
 if (cfg?.key && cfg.level && cfg.level !== "none") {
   posthog.init(cfg.key, {
     api_host: cfg.endpoint,
@@ -22,5 +36,6 @@ if (cfg?.key && cfg.level && cfg.level !== "none") {
     capture_exceptions: true, // active at all levels (errors / warnings / full)
     person_profiles: "never",
     bootstrap: { distinctID: cfg.distinctID || "" },
+    before_send: (event) => (isBenignResizeObserverLoop(event) ? null : event),
   });
 }
