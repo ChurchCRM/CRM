@@ -19050,3 +19050,79 @@ msgstr "Totaal betaald"
 msgid "Uncategorized"
 msgstr "Zonder categorie"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "De huidige instellingen konden niet worden geladen. Laad de pagina opnieuw om het nog eens te proberen."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Deze instelling moet een getal zijn"
+
+#: 
+msgid "Child Role"
+msgstr "Rol kind"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Opname in de gids kan alleen worden in- of uitgeschakeld voor de lijst met classificaties"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Welkomstbericht 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Welkomstbericht 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Rol gezinshoofd"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Adressen zonder gezin verbergen"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Vriendschapsdatum verbergen"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Nieuwsbriefabonnementen verbergen"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Huwelijksdatum verbergen"
+
+#: 
+msgid "In Directory"
+msgstr "In de gids"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Details opnemen in meldingen"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Ontvangers van meldingen"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Personen die op de hoogte worden gebracht wanneer een nieuw gezin of een nieuwe persoon wordt toegevoegd"
+
+#: 
+msgid "Person initials style"
+msgstr "Stijl van de initialen van de persoon"
+
+#: 
+msgid "Person name display style"
+msgstr "Weergavestijl van de naam van de persoon"
+
+#: 
+msgid "Spouse Role"
+msgstr "Rol echtgenoot/echtgenote"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Postcodes in hoofdletters"
+

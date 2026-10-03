@@ -19058,3 +19058,79 @@ msgstr "మొత్తం చెల్లించినది"
 msgid "Uncategorized"
 msgstr "వర్గీకరించబడనివి"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "ప్రస్తుత సెట్టింగ్‌లను లోడ్ చేయలేకపోయాము. మళ్లీ ప్రయత్నించడానికి పేజీని రీలోడ్ చేయండి."
+
+#: 
+msgid "This setting must be a number"
+msgstr "ఈ సెట్టింగ్ తప్పనిసరిగా ఒక సంఖ్య అయి ఉండాలి"
+
+#: 
+msgid "Child Role"
+msgstr "పిల్లల పాత్ర"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "డైరెక్టరీలో చేర్చడాన్ని వర్గీకరణల జాబితాకు మాత్రమే మార్చగలరు"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "స్వాగత సందేశం 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "స్వాగత సందేశం 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "కుటుంబ పెద్ద పాత్ర"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "కుటుంబం లేని చిరునామాలను దాచండి"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "స్నేహ తేదీని దాచండి"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "వార్తాలేఖ చందాలను దాచండి"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "వివాహ తేదీని దాచండి"
+
+#: 
+msgid "In Directory"
+msgstr "డైరెక్టరీలో"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "నోటిఫికేషన్లలో వివరాలను చేర్చండి"
+
+#: 
+msgid "Notification Recipients"
+msgstr "నోటిఫికేషన్ గ్రహీతలు"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "కొత్త కుటుంబం లేదా వ్యక్తిని జోడించినప్పుడు తెలియజేయవలసిన వ్యక్తులు"
+
+#: 
+msgid "Person initials style"
+msgstr "వ్యక్తి ఇనీషియల్స్ శైలి"
+
+#: 
+msgid "Person name display style"
+msgstr "వ్యక్తి పేరు ప్రదర్శన శైలి"
+
+#: 
+msgid "Spouse Role"
+msgstr "జీవిత భాగస్వామి పాత్ర"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "పిన్ కోడ్‌లను పెద్ద అక్షరాలలో చూపండి"
+

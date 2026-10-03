@@ -19046,3 +19046,79 @@ msgstr "ആകെ അടച്ചത്"
 msgid "Uncategorized"
 msgstr "വിഭാഗീകരിക്കാത്തത്"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "നിലവിലെ ക്രമീകരണങ്ങൾ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. വീണ്ടും ശ്രമിക്കാൻ പേജ് റീലോഡ് ചെയ്യുക."
+
+#: 
+msgid "This setting must be a number"
+msgstr "ഈ ക്രമീകരണം ഒരു സംഖ്യ ആയിരിക്കണം"
+
+#: 
+msgid "Child Role"
+msgstr "കുട്ടിയുടെ പങ്ക്"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "ഡയറക്ടറിയിൽ ഉൾപ്പെടുത്തൽ വർഗ്ഗീകരണങ്ങളുടെ പട്ടികയ്ക്ക് മാത്രമേ മാറ്റാൻ കഴിയൂ"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "സ്വാഗത സന്ദേശം 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "സ്വാഗത സന്ദേശം 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "കുടുംബനാഥന്റെ പങ്ക്"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "കുടുംബമില്ലാത്ത വിലാസങ്ങൾ മറയ്ക്കുക"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "സൗഹൃദ തീയതി മറയ്ക്കുക"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "വാർത്താക്കത്ത് സബ്‌സ്‌ക്രിപ്ഷനുകൾ മറയ്ക്കുക"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "വിവാഹ തീയതി മറയ്ക്കുക"
+
+#: 
+msgid "In Directory"
+msgstr "ഡയറക്ടറിയിൽ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "അറിയിപ്പുകളിൽ വിശദാംശങ്ങൾ ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Notification Recipients"
+msgstr "അറിയിപ്പ് സ്വീകർത്താക്കൾ"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "പുതിയ കുടുംബമോ വ്യക്തിയോ ചേർക്കുമ്പോൾ അറിയിക്കേണ്ടവർ"
+
+#: 
+msgid "Person initials style"
+msgstr "വ്യക്തിയുടെ ഇനിഷ്യലുകളുടെ ശൈലി"
+
+#: 
+msgid "Person name display style"
+msgstr "വ്യക്തിയുടെ പേര് പ്രദർശിപ്പിക്കുന്ന ശൈലി"
+
+#: 
+msgid "Spouse Role"
+msgstr "പങ്കാളിയുടെ പങ്ക്"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "പിൻകോഡുകൾ വലിയ അക്ഷരങ്ങളിൽ"
+

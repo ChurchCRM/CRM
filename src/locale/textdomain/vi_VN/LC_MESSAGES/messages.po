@@ -19069,3 +19069,79 @@ msgstr "Tổng thanh toán"
 msgid "Uncategorized"
 msgstr "Không được phân loại"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Không thể tải cài đặt hiện tại. Hãy tải lại trang để thử lại."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Cài đặt này phải là một số"
+
+#: 
+msgid "Child Role"
+msgstr "Vai trò con cái"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Việc đưa vào danh bạ chỉ có thể bật/tắt cho danh sách phân loại"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Lời chào 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Lời chào 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Vai trò chủ hộ"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Ẩn địa chỉ không có gia đình"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Ẩn ngày kết bạn"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Ẩn đăng ký bản tin"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Ẩn ngày cưới"
+
+#: 
+msgid "In Directory"
+msgstr "Trong danh bạ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Bao gồm chi tiết trong thông báo"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Người nhận thông báo"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Những người được thông báo khi có gia đình hoặc cá nhân mới được thêm"
+
+#: 
+msgid "Person initials style"
+msgstr "Kiểu chữ cái đầu của người"
+
+#: 
+msgid "Person name display style"
+msgstr "Kiểu hiển thị tên người"
+
+#: 
+msgid "Spouse Role"
+msgstr "Vai trò vợ/chồng"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Mã bưu chính viết hoa"
+

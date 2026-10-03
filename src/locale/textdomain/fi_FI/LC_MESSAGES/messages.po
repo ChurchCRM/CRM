@@ -19048,3 +19048,79 @@ msgstr "Yhteensä maksettu"
 msgid "Uncategorized"
 msgstr "Ilman luokkaa"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Nykyisiä asetuksia ei voitu ladata. Lataa sivu uudelleen ja yritä uudestaan."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Tämän asetuksen on oltava luku"
+
+#: 
+msgid "Child Role"
+msgstr "Lapsen rooli"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Hakemistoon sisällyttämisen voi vaihtaa vain luokituslistalle"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Tervetuloviesti 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Tervetuloviesti 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Taloudenpäämiehen rooli"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Piilota osoitteet, joilla ei ole perhettä"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Piilota ystävyyspäivä"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Piilota uutiskirjetilaukset"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Piilota hääpäivä"
+
+#: 
+msgid "In Directory"
+msgstr "Hakemistossa"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Sisällytä tiedot ilmoituksiin"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Ilmoitusten vastaanottajat"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Henkilöt, joille ilmoitetaan, kun uusi perhe tai henkilö lisätään"
+
+#: 
+msgid "Person initials style"
+msgstr "Henkilön nimikirjainten tyyli"
+
+#: 
+msgid "Person name display style"
+msgstr "Henkilön nimen esitystapa"
+
+#: 
+msgid "Spouse Role"
+msgstr "Puolison rooli"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Postinumerot isoilla kirjaimilla"
+

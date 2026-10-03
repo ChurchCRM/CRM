@@ -19101,3 +19101,79 @@ msgstr "Totale pagato"
 msgid "Uncategorized"
 msgstr "Non categorizzato"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Impossibile caricare le impostazioni correnti. Ricarica la pagina per riprovare."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Questa impostazione deve essere un numero"
+
+#: 
+msgid "Child Role"
+msgstr "Ruolo di figlio"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "L'inclusione nell'elenco può essere attivata o disattivata solo per l'elenco delle classificazioni"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Messaggio di benvenuto 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Messaggio di benvenuto 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Ruolo di capofamiglia"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Nascondi indirizzi senza famiglia"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Nascondi data di amicizia"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Nascondi iscrizioni alla newsletter"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Nascondi data di matrimonio"
+
+#: 
+msgid "In Directory"
+msgstr "Nell'elenco"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Includi dettagli nelle notifiche"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Destinatari delle notifiche"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Persone da avvisare quando viene aggiunta una nuova famiglia o persona"
+
+#: 
+msgid "Person initials style"
+msgstr "Stile delle iniziali della persona"
+
+#: 
+msgid "Person name display style"
+msgstr "Stile di visualizzazione del nome della persona"
+
+#: 
+msgid "Spouse Role"
+msgstr "Ruolo di coniuge"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "CAP in maiuscolo"
+

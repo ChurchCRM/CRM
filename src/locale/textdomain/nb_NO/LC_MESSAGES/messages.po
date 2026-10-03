@@ -19151,3 +19151,79 @@ msgstr "Totalt betalt"
 msgid "Uncategorized"
 msgstr "Uten kategori"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Kunne ikke laste inn gjeldende innstillinger. Last inn siden på nytt og prøv igjen."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Denne innstillingen må være et tall"
+
+#: 
+msgid "Child Role"
+msgstr "Rolle som barn"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Katalogoppføring kan bare slås av eller på for klassifiseringslisten"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Velkomstmelding 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Velkomstmelding 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Rolle som husstandsoverhode"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Skjul adresser uten familie"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Skjul vennskapsdato"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Skjul nyhetsbrevabonnementer"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Skjul bryllupsdato"
+
+#: 
+msgid "In Directory"
+msgstr "I katalogen"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Ta med detaljer i varsler"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Mottakere av varsler"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Personer som skal varsles når en ny familie eller person legges til"
+
+#: 
+msgid "Person initials style"
+msgstr "Stil for personens initialer"
+
+#: 
+msgid "Person name display style"
+msgstr "Visningsstil for personens navn"
+
+#: 
+msgid "Spouse Role"
+msgstr "Rolle som ektefelle"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Postnumre med store bokstaver"
+

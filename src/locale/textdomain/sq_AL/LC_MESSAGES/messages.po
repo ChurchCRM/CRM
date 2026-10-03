@@ -19067,3 +19067,79 @@ msgstr "Totali i paguar"
 msgid "Uncategorized"
 msgstr "I pakategorizuar"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Cilësimet aktuale nuk u ngarkuan dot. Rifreskoni faqen për të provuar përsëri."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Ky cilësim duhet të jetë një numër"
+
+#: 
+msgid "Child Role"
+msgstr "Roli i fëmijës"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Përfshirja në drejtori mund të ndërrohet vetëm për listën e klasifikimeve"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Mesazhi i mirëseardhjes 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Mesazhi i mirëseardhjes 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Roli i kryefamiljarit"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Fshih adresat pa familje"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Fshih datën e miqësisë"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Fshih abonimet në buletin"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Fshih datën e martesës"
+
+#: 
+msgid "In Directory"
+msgstr "Në drejtori"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Përfshi detaje në njoftime"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Marrësit e njoftimeve"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Personat që njoftohen kur shtohet një familje ose person i ri"
+
+#: 
+msgid "Person initials style"
+msgstr "Stili i inicialeve të personit"
+
+#: 
+msgid "Person name display style"
+msgstr "Stili i shfaqjes së emrit të personit"
+
+#: 
+msgid "Spouse Role"
+msgstr "Roli i bashkëshortit/es"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Kodet postare me shkronja të mëdha"
+

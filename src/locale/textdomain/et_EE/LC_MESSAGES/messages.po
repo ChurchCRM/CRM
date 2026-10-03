@@ -19080,3 +19080,79 @@ msgstr "Kokku makstud"
 msgid "Uncategorized"
 msgstr "Kategoriseerimata"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Praeguseid seadeid ei õnnestunud laadida. Värskendage lehte ja proovige uuesti."
+
+#: 
+msgid "This setting must be a number"
+msgstr "See seade peab olema arv"
+
+#: 
+msgid "Child Role"
+msgstr "Lapse roll"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Kataloogi kaasamist saab ümber lülitada ainult klassifikatsioonide loendi jaoks"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Tervitussõnum 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Tervitussõnum 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Leibkonnapea roll"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Peida aadressid ilma perekonnata"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Peida sõprussuhte kuupäev"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Peida uudiskirja tellimused"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Peida pulmakuupäev"
+
+#: 
+msgid "In Directory"
+msgstr "Kataloogis"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Lisa teavitustesse üksikasjad"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Teavituste saajad"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Isikud, keda teavitatakse uue perekonna või isiku lisamisel"
+
+#: 
+msgid "Person initials style"
+msgstr "Isiku initsiaalide stiil"
+
+#: 
+msgid "Person name display style"
+msgstr "Isiku nime kuvamise stiil"
+
+#: 
+msgid "Spouse Role"
+msgstr "Abikaasa roll"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Sihtnumbrid suurtähtedega"
+

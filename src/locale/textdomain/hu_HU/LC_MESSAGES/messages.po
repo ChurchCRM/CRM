@@ -19103,3 +19103,79 @@ msgstr "Összesen fizetett"
 msgid "Uncategorized"
 msgstr "Kategóriázatlan"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Az aktuális beállításokat nem sikerült betölteni. Töltse újra az oldalt, és próbálja meg újra."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Ennek a beállításnak számnak kell lennie"
+
+#: 
+msgid "Child Role"
+msgstr "Gyermek szerepe"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "A névjegyzékbe való felvétel csak az osztályozások listájánál kapcsolható át"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Üdvözlő üzenet 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Üdvözlő üzenet 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Családfő szerepe"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Család nélküli címek elrejtése"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Barátság dátumának elrejtése"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Hírlevél-feliratkozások elrejtése"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Esküvő dátumának elrejtése"
+
+#: 
+msgid "In Directory"
+msgstr "A névjegyzékben"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Részletek belefoglalása az értesítésekbe"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Értesítések címzettjei"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Értesítendő személyek új család vagy személy hozzáadásakor"
+
+#: 
+msgid "Person initials style"
+msgstr "Személy monogramjának stílusa"
+
+#: 
+msgid "Person name display style"
+msgstr "Személy nevének megjelenítési stílusa"
+
+#: 
+msgid "Spouse Role"
+msgstr "Házastárs szerepe"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Irányítószámok nagybetűvel"
+

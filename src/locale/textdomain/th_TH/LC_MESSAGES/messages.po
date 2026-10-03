@@ -19042,3 +19042,79 @@ msgstr "รวมจ่าย"
 msgid "Uncategorized"
 msgstr "ไม่มีหมวดหมู่"
 
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "ไม่สามารถโหลดการตั้งค่าปัจจุบันได้ โปรดโหลดหน้านี้ใหม่เพื่อลองอีกครั้ง"
+
+#: 
+msgid "This setting must be a number"
+msgstr "การตั้งค่านี้ต้องเป็นตัวเลข"
+
+#: 
+msgid "Child Role"
+msgstr "บทบาทของบุตร"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "การรวมอยู่ในสมุดรายชื่อสามารถสลับได้เฉพาะรายการการจัดประเภทเท่านั้น"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "ข้อความต้อนรับ 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "ข้อความต้อนรับ 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "บทบาทของหัวหน้าครอบครัว"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "ซ่อนที่อยู่ที่ไม่มีครอบครัว"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "ซ่อนวันที่เป็นเพื่อน"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "ซ่อนการสมัครรับจดหมายข่าว"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "ซ่อนวันแต่งงาน"
+
+#: 
+msgid "In Directory"
+msgstr "อยู่ในสมุดรายชื่อ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "รวมรายละเอียดในการแจ้งเตือน"
+
+#: 
+msgid "Notification Recipients"
+msgstr "ผู้รับการแจ้งเตือน"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "บุคคลที่จะได้รับแจ้งเมื่อมีการเพิ่มครอบครัวหรือบุคคลใหม่"
+
+#: 
+msgid "Person initials style"
+msgstr "รูปแบบอักษรย่อของบุคคล"
+
+#: 
+msgid "Person name display style"
+msgstr "รูปแบบการแสดงชื่อบุคคล"
+
+#: 
+msgid "Spouse Role"
+msgstr "บทบาทของคู่สมรส"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "รหัสไปรษณีย์ตัวพิมพ์ใหญ่"
+
