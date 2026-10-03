@@ -1657,30 +1657,6 @@ msgid "Properties"
 msgstr "Ominaisuudet"
 
 #: 
-msgid "Query Listing"
-msgstr "Kyselyluettelo"
-
-#: 
-msgid "Query View"
-msgstr "Kyselynäkymä"
-
-#: 
-msgid "This value is required."
-msgstr "Tämä arvo on pakollinen."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Tämän arvon on oltava numeerinen."
-
-#: 
-msgid "Run Query Again"
-msgstr "Suorita kysely uudelleen"
-
-#: 
-msgid "Execute Query"
-msgstr "Suorita kysely"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Sitoumusmuistutusraportti"
 
@@ -2600,10 +2576,6 @@ msgstr "Näytä ostajat"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Lisää lahjoittajat ostajalistalle"
-
-#: 
-msgid "Data/Reports"
-msgstr "Tiedot/Raportit"
 
 #: 
 msgid "Family Properties"
@@ -5038,14 +5010,6 @@ msgid "Missing PHP ZipArchive"
 msgstr "PHP ZipArchive puuttuu"
 
 #: 
-msgid "Add Results to Cart"
-msgstr "Lisää tulokset koriin"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Poista tulokset korista"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Tietokannan nollaustoiminnot"
 
@@ -6317,10 +6281,6 @@ msgid "Cart"
 msgstr "Ostoskori"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Muuta tämä järjestelmän asetuksissa."
-
-#: 
 msgid "Church Membership"
 msgstr "Kirkon jäsenyys"
 
@@ -6371,10 +6331,6 @@ msgstr "Luo tai valitse talletusliuska aloittaaksesi."
 #: 
 msgid "Current Deposit"
 msgstr "Nykyinen talletusliuska"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Nykyinen tilivuosi"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6437,10 +6393,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Varmista, että kaikki tilivuoden talletusliuskat on suljettu ennen kuin luot lausuntoja."
 
 #: 
-msgid "Export Options"
-msgstr "Vientivaihtoehdot"
-
-#: 
 msgid "F"
 msgstr "F"
 
@@ -6455,10 +6407,6 @@ msgstr "Perheen navigointi"
 #: 
 msgid "Feb"
 msgstr "Helmi"
-
-#: 
-msgid "Filtering"
-msgstr "Suodatus"
 
 #: 
 msgid "Finance"
@@ -6481,16 +6429,8 @@ msgid "Generate Tax Statements"
 msgstr "Luo veroilmoitukset"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Luo vuosittaiset lahjoitusotteet lahjoittajille ja tunnista lahjoitusmallit."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Luo vuosittaiset vähennyskelpoiset lahjoitusotteet lahjoittajille. Voidaan tulostaa tai lähettää sähköpostitse."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Luo yksityiskohtaisia raportteja yksittäisistä talletuksista tai aikaväleistä."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6551,10 +6491,6 @@ msgstr "Maalis"
 #: 
 msgid "Membership Reports"
 msgstr "Jäsenyysraportit"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Useimmat raportit voidaan viedä PDF-muodossa tulostusta varten tai CSV-muodossa taulukkolaskentaan."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6633,14 +6569,6 @@ msgid "Recording a Pledge"
 msgstr "Sitoumuksen kirjaaminen"
 
 #: 
-msgid "Report Tips"
-msgstr "Raporttivinkkejä"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Raportit, jotka liittyvät jäsenten äänioikeuteen ja organisaation hallintoon."
-
-#: 
 msgid "Reset"
 msgstr "Nollaa"
 
@@ -6717,20 +6645,12 @@ msgid "Total Amount"
 msgstr "Kokonaissumma"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Seuraa sitoumuksia ja maksujen edistymistä kampanjoissa ja tilikauden budjetoinnissa."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Täyttämättömät esivaatimukset"
 
 #: 
 msgid "Upgrade"
 msgstr "Päivitä"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Käytä luokitus- ja perhesuodattimia luodaksesi raportteja tietyille lahjoittajaryhmille."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6755,10 +6675,6 @@ msgstr "Sitoumukset vuoden alusta (YTD)"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Voit luoda perheenjäsenet nyt tai lisätä heidät myöhemmin. Kaikista merkinnöistä tulee uusia henkilötietoja."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Tilikausi alkaa kuukaudessa"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -8988,10 +8904,6 @@ msgid "Current person"
 msgstr "Nykyinen henkilö"
 
 #: 
-msgid "Data & Reports"
-msgstr "Tiedot ja raportit"
-
-#: 
 msgid "Database Reset"
 msgstr "Tietokannan nollaus"
 
@@ -10010,10 +9922,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Näytä ja hallitse järjestelmän lokitiedostoja vianmääritystä varten"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Näytä ja suorita tallennettuja tietokantakyselyitä"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Näytä ostajien numerot ja numeroliitokset"
 
@@ -10032,10 +9940,6 @@ msgstr "Näytä perheen lupausyhteenvedot ja rahastojako"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Näytä ryhmän jäsenet, roolit ja ominaisuudet"
-
-#: 
-msgid "View query results"
-msgstr "Näytä kyselyn tulokset"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10370,16 +10274,6 @@ msgstr "Kalenterin asetukset"
 msgid "Calendars"
 msgstr "Kalenterit"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Valitse vapaaehtoistyön mahdollisuus"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Valitse henkilökenttä"
-
 #: 
 msgid "Church Identity"
 msgstr "Seurakunnan tunnistus"
@@ -10400,11 +10294,6 @@ msgstr "ChurchCRM voi lähettää sähköposteja suoraan."
 msgid "Communication"
 msgstr "Viestintä"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Vertaa lupauksia kahden tilivuoden välillä"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Määritä SMTP alla olevissa asetuksissa lähettääksesi sähköpostia järjestelmästä."
@@ -10420,11 +10309,6 @@ msgstr "Yhdistä Mailchimp sähköpostilistan synkronointiin uutiskirjeille ja k
 #: 
 msgid "Copy to clipboard"
 msgstr "Kopioi leikepöydälle"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Mukautettu kenttä"
 
 #: 
 msgid "Default Country"
@@ -10478,16 +10362,6 @@ msgstr "Sähköpostiosoitteiden noutaminen epäonnistui"
 msgid "Failed to retrieve phone numbers"
 msgstr "Puhelinnumeroiden noutaminen epäonnistui"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Kentän arvo"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Etsi ihmisiä, jotka luvattivat yhtenä vuonna mutta eivät toisena"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10495,33 +10369,8 @@ msgstr "Etsi vapaaehtoisia tietylle mahdollisuudelle"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Etsi vapaaehtoisia, jotka vastaavat kahta tiettyä mahdollisuuskoodia"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Ensimmäinen tilikausi"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Ensimmäinen tilikausi vertailua varten"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Ensimmäinen vapaaehtoisen mahdollisuuden valinta"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Ystävät, jotka rekisteröityivät edellisillä kuukausilla"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Vieras"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10545,31 +10394,6 @@ msgstr "Hallinnoi tapahtumia, syntymäpäiviä ja vuosipäiviä"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Sovita mukautettu kenttä tälle arvolle"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Jäsen, tavallinen osallistuja jne."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Jäsenet, jotka liittyivät tietyllä kuukaudella"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Jäsenyyden vuosipäivät"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Puuttuvat lupaukset"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Kuukausi"
 
@@ -10589,16 +10413,6 @@ msgstr "Uusien jäsenten ilmoitusten sähköpostit"
 #: 
 msgid "No cell phone on file"
 msgstr "Tiedostossa ei ole matkapuhelinta"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Ei-osallistuja"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Ei-osallistuja (henkilöstö)"
 
 #: 
 msgid "Not Classified"
@@ -10635,30 +10449,10 @@ msgstr "Henkilön omaisuus, jota käytetään jäsenten poissulkemiseen SMS/teks
 msgid "Person property used to exclude members from email lists"
 msgstr "Henkilön omaisuus, jota käytetään jäsenten poissulkemiseen sähköpostiluetteloista"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Lupausvertailu"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Luvattu tänä vuonna"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Omaisuus"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Viimeaikaiset ystävät"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Tavallinen osallistuja"
 
 #. Context: query_qry
 #: 
@@ -10680,21 +10474,6 @@ msgstr "SMTP-määritys"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP:tä ei ole konfiguroitu"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Toinen tilikausi"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Toinen tilikausi vertailua varten"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Toinen vapaaehtoisen mahdollisuuden valinta"
 
 #: 
 msgid "Send text message"
@@ -10728,21 +10507,6 @@ msgstr "Tekstityökalut"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Tekstiviestien toiminnot ovat saatavilla ryhmä- ja pyhäkoulun luokka näkymissä. Kopioi puhelinnumerot tai lähetä tekstiviestejä ryhmän jäsenille \"Teksti\" -pudotusvalikossa."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Syntymäpäiväkuukausi, jolle haluat tietueet palautetuksi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Jäsenyyden vuosipäivän kuukausi, jolle haluat tietueet palautetuksi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Omaisuus, jolle haluat henkilön tietueet palautetuksi."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Etäisyyden mittaamiseen käytetty yksikkö."
@@ -10751,11 +10515,6 @@ msgstr "Etäisyyden mittaamiseen käytetty yksikkö."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Käyttäjän oikeus lähettää sähköpostia mailto: linkien kautta"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Vapaaehtoisten mahdollisuudet"
 
 #. Context: query_qry
 #: 
@@ -10773,11 +10532,6 @@ msgstr "Vonage SMS:tä ei ole konfiguroitu"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Ilman Vonagea tekstintoiminnot avaavat laitteesi native SMS-sovelluksen tai kopioivat puhelinnumerot leikepöydälle."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "mutta ei tänä vuonna"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10972,10 +10726,6 @@ msgstr "Valitse, mitä näytetään, kun Gravatar-kuvaa ei ole:\n"
 "• RoboHash – Yksilöllinen generoitu robotti\n"
 "• Blank – Läpinäkyvä (palautuu nimikirjaimiin)"
 
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "Pilkuilla erotetut kyselytunnukset, joiden katseleminen vaatii taloushallintaoikeudet"
-
 #. plugin:custom-links:section:4:content
 #: 
 msgid "Common uses for custom links:\n"
@@ -11086,10 +10836,6 @@ msgstr "Ota skannattujen shekkien käyttö käyttöön"
 #: 
 msgid "Features"
 msgstr "Ominaisuudet"
-
-#: 
-msgid "Finance permission query IDs"
-msgstr "Taloushallinnon lupa-kyselyjen tunnukset"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -14233,11 +13979,6 @@ msgstr "Perheen nimen on oltava vähintään 2 merkkiä pitkä"
 msgid "Fields"
 msgstr "Kentät"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Etsi henkilöitä, jotka eivät osallistuneet tapahtumaan"
-
 #: 
 msgid "First name is required"
 msgstr "Etunimi on pakollinen"
@@ -14417,11 +14158,6 @@ msgstr "Jäsenet lisätty valintaan."
 #: 
 msgid "Minimum length is"
 msgstr "Vähimmäispituus on"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Puuttuvat henkilöt"
 
 #: 
 msgid "Move"
@@ -14790,11 +14526,6 @@ msgstr "Valitse kalenterit..."
 #: 
 msgid "Select event type..."
 msgstr "Valitse tapahtuman tyyppi..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Valitse haluttu tapahtuma"
 
 #: 
 msgid "Sequence"
@@ -16257,10 +15988,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s perheen %1$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d tietue(tta) palautettu"
-
-#: 
 msgid "Assign role to all"
 msgstr "Määritä rooli kaikille"
 
@@ -16431,22 +16158,6 @@ msgstr "Järjestelmän asetukset"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Tähän vapaaehtoistehtävään on määritetty henkilöitä. Poistaminen poistaa heidän määrityksensä"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Tämä arvo ei voi olla lyhyempi kuin %d merkkiä"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Tämä arvo ei voi olla pidempi kuin %d merkkiä"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Tämä arvo ei voi olla enemmän kuin %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Tämän arvon on oltava vähintään %s"
 
 #: 
 msgid "Total Deposits"
@@ -17458,16 +17169,6 @@ msgstr "Vähimmäistarjous %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Henkilöt, joilla on syntymäpäivä tai häävuosipäivä tietyssä kuussa"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Kuukausi, jonka syntymäpäivät ja vuosipäivät haluat hakea."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Häävuosipäiväkuukausi, jonka tietueet haluat hakea."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Kaikkien ostojen yhteissumma: %s"
@@ -17687,10 +17388,6 @@ msgid "Selected family"
 msgstr "Valittu perhe"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Tämän arvon on oltava kelvollinen kenttänimi."
-
-#: 
 msgid "Could not load data"
 msgstr "Tietoja ei voitu ladata"
 
@@ -17699,16 +17396,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Päivitä sivu tai yritä myöhemmin uudelleen."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Lisää ensin asiaankuuluvat tietueet."
-
-#: 
 msgid "All Months"
 msgstr "Kaikki kuukaudet"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "\"%s\"-vaihtoehtoja ei ole vielä määritetty."
 
 #: 
 msgid "No events found for %s %d."
@@ -18631,10 +18320,6 @@ msgstr "Luvattuna"
 #: 
 msgid "Print %d Tax Doc"
 msgstr "Tulosta %d veroasiakirja"
-
-#: 
-msgid "Queries"
-msgstr "Kyselyt"
 
 #: 
 msgid "Recent Friends"

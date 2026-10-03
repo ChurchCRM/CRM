@@ -1650,30 +1650,6 @@ msgid "Properties"
 msgstr "Vlastnosti"
 
 #: 
-msgid "Query Listing"
-msgstr "Zoznam dopytov"
-
-#: 
-msgid "Query View"
-msgstr "Zobrazenie dopytu"
-
-#: 
-msgid "This value is required."
-msgstr "Táto hodnota je povinná."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Táto hodnota musí byť číselná."
-
-#: 
-msgid "Run Query Again"
-msgstr "Spustiť dopyt znova"
-
-#: 
-msgid "Execute Query"
-msgstr "Vykonať dopyt"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Správa o pripomienkach záväzkov"
 
@@ -2593,10 +2569,6 @@ msgstr "Zobraziť kupujúcich"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Pridať darcov do zoznamu kupujúcich"
-
-#: 
-msgid "Data/Reports"
-msgstr "Údaje/Správy"
 
 #: 
 msgid "Family Properties"
@@ -5042,14 +5014,6 @@ msgid "Missing PHP ZipArchive"
 msgstr "Chýba PHP ZipArchive"
 
 #: 
-msgid "Add Results to Cart"
-msgstr "Pridať výsledky do košíka"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Odstrániť výsledky z košíka"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Funkcie obnovenia databázy"
 
@@ -6324,10 +6288,6 @@ msgid "Cart"
 msgstr "Košík"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Zmeňte to v systémových nastaveniach."
-
-#: 
 msgid "Church Membership"
 msgstr "Členstvo v cirkvi"
 
@@ -6378,10 +6338,6 @@ msgstr "Vytvorte alebo vyberte vklad pre začatie."
 #: 
 msgid "Current Deposit"
 msgstr "Aktuálny vklad"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Aktuálny fiškálny rok"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6444,10 +6400,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Uistite sa, že všetky vklady za daňový rok sú zatvorené pred generovaním výkazov."
 
 #: 
-msgid "Export Options"
-msgstr "Možnosti exportu"
-
-#: 
 msgid "F"
 msgstr "Ž"
 
@@ -6462,10 +6414,6 @@ msgstr "Navigácia rodiny"
 #: 
 msgid "Feb"
 msgstr "Feb"
-
-#: 
-msgid "Filtering"
-msgstr "Filtrovanie"
 
 #: 
 msgid "Finance"
@@ -6488,16 +6436,8 @@ msgid "Generate Tax Statements"
 msgstr "Generovať daňové výkazy"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Generujte ročné výkazy darovania pre darcov a identifikujte vzory darovania."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generujte ročné daňovo uznateľné výkazy darovania pre darcov. Môžu byť vytlačené alebo zaslané e-mailom."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Generujte podrobné správy pre jednotlivé vklady alebo časové rozsahy."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6558,10 +6498,6 @@ msgstr "Mar"
 #: 
 msgid "Membership Reports"
 msgstr "Správy o členstve"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Väčšinu správ možno exportovať ako PDF na tlač alebo CSV na tabuľkovú analýzu."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6640,14 +6576,6 @@ msgid "Recording a Pledge"
 msgstr "Záznam záväzku"
 
 #: 
-msgid "Report Tips"
-msgstr "Tipy pre správy"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Správy súvisiace s oprávnenosťou členov hlasovať a riadením organizácie."
-
-#: 
 msgid "Reset"
 msgstr "Resetovať"
 
@@ -6724,20 +6652,12 @@ msgid "Total Amount"
 msgstr "Celková suma"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Sledujte záväzky a priebeh platieb pre kampane a rozpočtovanie fiškálneho roka."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Nesplnené predpoklady"
 
 #: 
 msgid "Upgrade"
 msgstr "Aktualizácia"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Použite filtre klasifikácie a rodiny na generovanie správ pre konkrétne skupiny darcov."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6762,10 +6682,6 @@ msgstr "Záväzky od začiatku roka"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Môžete teraz vytvoriť členov rodiny alebo ich pridať neskôr. Všetky záznamy sa stanú novými záznamami osoby."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Váš fiškálny rok začína v mesiaci"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -9005,10 +8921,6 @@ msgid "Current person"
 msgstr "Aktuálna osoba"
 
 #: 
-msgid "Data & Reports"
-msgstr "Dáta a správy"
-
-#: 
 msgid "Database Reset"
 msgstr "Reset databázy"
 
@@ -10027,10 +9939,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Zobraziť a spravovať systémové súbory záznamu na ladenie"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Zobraziť a spustiť uložené databázové dopyty"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Zobraziť čísla kupujúcich a priradenia pálok"
 
@@ -10049,10 +9957,6 @@ msgstr "Zobraziť súhrny záväzkov rodiny a pridelenia fondov"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Zobraziť členov skupiny, roly a vlastnosti"
-
-#: 
-msgid "View query results"
-msgstr "Zobraziť výsledky dopytu"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10387,16 +10291,6 @@ msgstr "Nastavenia kalendára"
 msgid "Calendars"
 msgstr "Kalendáre"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Vyberte dobrovoľnícku príležitosť"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Vyberte vlastné pole osoby"
-
 #: 
 msgid "Church Identity"
 msgstr "Identita cirkvi"
@@ -10417,11 +10311,6 @@ msgstr "ChurchCRM môže odosielať e-maily priamo."
 msgid "Communication"
 msgstr "Komunikácia"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Porovnať záväzky medzi dvomi fiškálnymi rokmi"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Nakonfigurujte SMTP v nastaveniach nižšie na odosielanie e-mailov zo systému."
@@ -10437,11 +10326,6 @@ msgstr "Pripojiť Mailchimp na synchronizáciu e-mailových zoznamov pre spravod
 #: 
 msgid "Copy to clipboard"
 msgstr "Kopírovať do schránky"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Vlastné pole"
 
 #: 
 msgid "Default Country"
@@ -10495,16 +10379,6 @@ msgstr "Načítanie e-mailových adries zlyhalo"
 msgid "Failed to retrieve phone numbers"
 msgstr "Načítanie telefónnych čísel zlyhalo"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Hodnota poľa"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Nájsť osoby, ktoré sa zaviazali jeden rok, ale nie druhý"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10512,33 +10386,8 @@ msgstr "Nájsť dobrovoľníkov pre konkrétnu príležitosť"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Nájsť dobrovoľníkov, ktorí zodpovedajú dvom konkrétnym kódom príležitostí"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Prvý fiškálny rok"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Prvý fiškálny rok na porovnanie"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Prvá voľba dobrovoľníckej príležitosti"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Priatelia, ktorí sa zaregistrovali v predchádzajúcich mesiacoch"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Hosť"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10562,31 +10411,6 @@ msgstr "Spravovať podujatia, narodeniny a výročia"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Priradiť vlastné pole k tejto hodnote"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Člen, pravidelný návštevník, atď."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Členovia, ktorí sa pridali v konkrétnom mesiaci"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Výročia členstva"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Chýbajúce záväzky"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Mesiac"
 
@@ -10606,16 +10430,6 @@ msgstr "E-mailové notifikácie o nových členoch"
 #: 
 msgid "No cell phone on file"
 msgstr "Žiadny mobilný telefón nie je zaznamenaný"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Nenavštevujúci"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Nenavštevujúci (personál)"
 
 #: 
 msgid "Not Classified"
@@ -10652,30 +10466,10 @@ msgstr "Vlastnosť osoby na vylúčenie členov zo zoznamov SMS/textových sprá
 msgid "Person property used to exclude members from email lists"
 msgstr "Vlastnosť osoby na vylúčenie členov z e-mailových zoznamov"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Porovnanie záväzkov"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Zaviazaní tento rok"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Vlastnosť"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Nedávni priatelia"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Pravidelný návštevník"
 
 #. Context: query_qry
 #: 
@@ -10697,21 +10491,6 @@ msgstr "SMTP nakonfigurované"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP nie je nakonfigurované"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Druhý fiškálny rok"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Druhý fiškálny rok na porovnanie"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Druhá voľba dobrovoľníckej príležitosti"
 
 #: 
 msgid "Send text message"
@@ -10745,21 +10524,6 @@ msgstr "Nástroje textových správ"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Akcie textových správ sú dostupné zo zobrazení skupín a tried nedeľnej školy. Použite rozbaľovaciu ponuku \"Text\" na kopírovanie telefónnych čísel alebo odosielanie SMS správ členom skupiny."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Mesiac narodenín, pre ktorý chcete vrátiť záznamy."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Mesiac výročia členstva, pre ktorý chcete vrátiť záznamy."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Vlastnosť, pre ktorú chcete vrátiť záznamy osôb."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Jednotka na meranie vzdialenosti."
@@ -10768,11 +10532,6 @@ msgstr "Jednotka na meranie vzdialenosti."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Oprávnenie používateľa na odosielanie e-mailov cez odkazy mailto:"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Dobrovoľnícke príležitosti"
 
 #. Context: query_qry
 #: 
@@ -10790,11 +10549,6 @@ msgstr "Vonage SMS nie je nakonfigurované"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Bez Vonage budú textové akcie otvárať natívnu SMS aplikáciu vášho zariadenia alebo kopírovať telefónne čísla do schránky."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "ale nie tento rok"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10989,10 +10743,6 @@ msgstr "Vyberte, čo sa zobrazí, keď Gravatar neexistuje:\n"
 "• RoboHash - Jedinečný generovaný robot\n"
 "• Blank - Transparentné (zobrazí sa iniciály)"
 
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "ID dopytov oddelené čiarkou, ktoré vyžadujú finančné oprávnenia na zobrazenie"
-
 #. plugin:custom-links:section:4:content
 #: 
 msgid "Common uses for custom links:\n"
@@ -11103,10 +10853,6 @@ msgstr "Povoliť používanie naskenovaných šekov"
 #: 
 msgid "Features"
 msgstr "Funkcie"
-
-#: 
-msgid "Finance permission query IDs"
-msgstr "ID dopytov s finančným oprávnením"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -14252,11 +13998,6 @@ msgstr "Názov rodiny musí mať aspoň 2 znaky"
 msgid "Fields"
 msgstr "Polia"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Nájsť osoby, ktoré sa nezúčastnili podujatia"
-
 #: 
 msgid "First name is required"
 msgstr "Meno je povinné"
@@ -14436,11 +14177,6 @@ msgstr "Členovia pridaní do košíka."
 #: 
 msgid "Minimum length is"
 msgstr "Minimálna dĺžka je"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Chýbajúce osoby"
 
 #: 
 msgid "Move"
@@ -14809,11 +14545,6 @@ msgstr "Vybrať kalendáre..."
 #: 
 msgid "Select event type..."
 msgstr "Vybrať typ udalosti..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Vybrať požadovanú udalosť"
 
 #: 
 msgid "Sequence"
@@ -16282,10 +16013,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s z rodiny %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "Vrátených %d záznamov"
-
-#: 
 msgid "Assign role to all"
 msgstr "Priradiť rolu všetkým"
 
@@ -16456,22 +16183,6 @@ msgstr "Konfigurácia systému"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "K tejto dobrovoľníckej príležitosti sú priradení ľudia. Vymazaním sa zrušia priradenia"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Táto hodnota nesmí mať menej ako %d znakov"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Táto hodnota nesmí mať viac ako %d znakov"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Táto hodnota nesmí byť viac ako %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Táto hodnota musí byť aspoň %s"
 
 #: 
 msgid "Total Deposits"
@@ -17487,16 +17198,6 @@ msgstr "Minimálna ponuka %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Osoby s narodeninami alebo výročiami sobášu v danom mesiaci"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Mesiac, pre ktorý chcete zobraziť narodeniny a výročia."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Mesiac výročia sobášu, pre ktorý chcete zobraziť záznamy."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Celkový súčet všetkých nákupov: %s"
@@ -17716,10 +17417,6 @@ msgid "Selected family"
 msgstr "Vybraná rodina"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Táto hodnota musí byť platný názov poľa."
-
-#: 
 msgid "Could not load data"
 msgstr "Nepodarilo sa načítať údaje"
 
@@ -17728,16 +17425,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Obnovte stránku alebo to skúste neskôr znova."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Najprv pridajte príslušné záznamy."
-
-#: 
 msgid "All Months"
 msgstr "Všetky mesiace"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Zatiaľ nie sú definované žiadne možnosti \"%s\"."
 
 #: 
 msgid "No events found for %s %d."
@@ -18662,10 +18351,6 @@ msgstr "Zaväzujem sa"
 #: 
 msgid "Print %d Tax Doc"
 msgstr "Tlač %d daňový dokument"
-
-#: 
-msgid "Queries"
-msgstr "Dotazy"
 
 #: 
 msgid "Recent Friends"

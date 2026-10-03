@@ -1668,30 +1668,6 @@ msgid "Properties"
 msgstr "பண்புகள்"
 
 #: 
-msgid "Query Listing"
-msgstr "வினவல் பட்டியல்"
-
-#: 
-msgid "Query View"
-msgstr "வினவல் பார்வை"
-
-#: 
-msgid "This value is required."
-msgstr "இந்த மதிப்பு தேவை."
-
-#: 
-msgid "This value must be numeric."
-msgstr "இந்த மதிப்பு எண்ணாக இருக்க வேண்டும்."
-
-#: 
-msgid "Run Query Again"
-msgstr "வினவலை மீண்டும் இயக்கவும்"
-
-#: 
-msgid "Execute Query"
-msgstr "வினவலை இயக்கவும்"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "உறுதிமொழி நினைவூட்டல் அறிக்கை"
 
@@ -2617,10 +2593,6 @@ msgstr "வாங்குபவர்களைக் காண்க"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "வாங்குபவர் பட்டியலில் நன்கொடையாளர்களைச் சேர்க்கவும்"
-
-#: 
-msgid "Data/Reports"
-msgstr "தரவு/அறிக்கைகள்"
 
 #: 
 msgid "Family Properties"
@@ -5070,14 +5042,6 @@ msgid "Missing PHP ZipArchive"
 msgstr "PHP ZipArchive இல்லை"
 
 #: 
-msgid "Add Results to Cart"
-msgstr "மென்வண்டியில் (கார்ட்டில்) முடிவுகளைச் சேர்க்கவும்"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "மென்வண்டியில்  (கார்ட்டில்) இருந்து முடிவுகளை அகற்று"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "தரவுத்தள மீட்டமைப்பு செயல்பாடுகள்"
 
@@ -6353,10 +6317,6 @@ msgid "Cart"
 msgstr "வண்டி"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "இதை கணினி அமைப்புகளில் மாற்றவும்."
-
-#: 
 msgid "Church Membership"
 msgstr "தேவாலய உறுப்பினர் நிலை"
 
@@ -6407,11 +6367,6 @@ msgstr "தொடங்குவதற்கு ஒரு வைப்புத�
 #: 
 msgid "Current Deposit"
 msgstr "நடப்பு வைப்பு"
-
-#: 
-#, fuzzy
-msgid "Current fiscal year"
-msgstr "நடப்பு நிதியாண்டு"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6474,10 +6429,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "அறிக்கைகளை உருவாக்குவதற்கு முன்பு வரி ஆண்டிற்கான அனைத்து வைப்புத்தொகைகளும் மூடப்பட்டிருப்பதை உறுதிசெய்யவும்."
 
 #: 
-msgid "Export Options"
-msgstr "ஏற்றுமதி விருப்பங்கள்"
-
-#: 
 msgid "F"
 msgstr "F"
 
@@ -6492,10 +6443,6 @@ msgstr "குடும்ப வழிசெலுத்தல்"
 #: 
 msgid "Feb"
 msgstr "பிப்ரவரி"
-
-#: 
-msgid "Filtering"
-msgstr "வடிகட்டுதல்"
 
 #: 
 msgid "Finance"
@@ -6518,16 +6465,8 @@ msgid "Generate Tax Statements"
 msgstr "வரி அறிக்கைகளை உருவாக்கு"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "நன்கொடையாளர்களுக்கு வருடாந்திர கொடுப்பனவு அறிக்கைகளை உருவாக்கி கொடுக்கும் முறைகளை அடையாளம் காணு."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "நன்கொடையாளர்களுக்கு வருடாந்திர வரி விலக்கு அளிக்கும் கொடுப்பனவு அறிக்கைகளை உருவாக்கு. அச்சிடலாம் அல்லது மின்னஞ்சல் செய்யலாம்."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "தனிப்பட்ட வைப்புத்தொகைகள் அல்லது தேதி வரம்புகளுக்கு விரிவான அறிக்கைகளை உருவாக்கு."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6588,10 +6527,6 @@ msgstr "மார்ச்"
 #: 
 msgid "Membership Reports"
 msgstr "உறுப்பினர் அறிக்கைகள்"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "பெரும்பாலான அறிக்கைகளை அச்சிடுவதற்காக PDF ஆகவோ அல்லது விரிதாள் பகுப்பாய்விற்காக CSV ஆகவோ ஏற்றுமதி செய்யலாம்."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6670,14 +6605,6 @@ msgid "Recording a Pledge"
 msgstr "உறுதிமொழியைப் பதிவு செய்தல்"
 
 #: 
-msgid "Report Tips"
-msgstr "அறிக்கை குறிப்புகள்"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "உறுப்பினர்களின் வாக்களிக்கும் தகுதி மற்றும் நிறுவன நிர்வாகம் தொடர்பான அறிக்கைகள்."
-
-#: 
 msgid "Reset"
 msgstr "மீட்டமை"
 
@@ -6754,20 +6681,12 @@ msgid "Total Amount"
 msgstr "மொத்தத் தொகை"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "பிரச்சாரங்கள் மற்றும் நிதியாண்டு வரவு செலவுத் திட்டமிடலுக்கான உறுதிமொழிகள் மற்றும் கட்டண முன்னேற்றத்தைக் கண்காணிக்கவும்."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "நிறைவேற்றப்படாத முன்நிபந்தனைகள்"
 
 #: 
 msgid "Upgrade"
 msgstr "மேம்படுத்து"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "குறிப்பிட்ட நன்கொடையாளர் குழுக்களுக்கான அறிக்கைகளை உருவாக்க, வகைப்பாடு மற்றும் குடும்ப வடிகட்டிகளைப் பயன்படுத்தவும்."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6792,10 +6711,6 @@ msgstr "இந்த ஆண்டுக்கான உறுதிமொழி�
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "நீங்கள் இப்போது குடும்ப உறுப்பினர்களை உருவாக்கலாம் அல்லது பின்னர் சேர்க்கலாம். அனைத்து உள்ளீடுகளும் புதிய நபர்களின் பதிவுகளாக மாறும்."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "உங்கள் நிதியாண்டு இந்த மாதத்தில் தொடங்குகிறது"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -9028,10 +8943,6 @@ msgid "Current person"
 msgstr "தற்போதைய நபர்"
 
 #: 
-msgid "Data & Reports"
-msgstr "தரவு & அறிக்கைகள்"
-
-#: 
 msgid "Database Reset"
 msgstr "தரவுத்தள மீட்டமைப்பு"
 
@@ -10050,10 +9961,6 @@ msgid "View and manage system log files for debugging"
 msgstr "பிழைத்திருத்தத்திற்கான கணினி பதிவு கோப்புகளைப் பார்த்து நிர்வகிக்கவும்"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "சேமிக்கப்பட்ட தரவுத்தள வினவல்களைப் பார்த்து இயக்கவும்"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "வாங்குநர் எண்கள் மற்றும் பேடில் ஒதுக்கீடுகளைக் காண்"
 
@@ -10072,10 +9979,6 @@ msgstr "குடும்ப நிதி உறுதிமொழி சுர
 #: 
 msgid "View group members, roles, and properties"
 msgstr "குழு உறுப்பினர்கள், பாத்திரங்கள் மற்றும் பண்புகளைக் காண்"
-
-#: 
-msgid "View query results"
-msgstr "வினவல் முடிவுகளைக் காண்"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10410,16 +10313,6 @@ msgstr "நாட்காட்சி அமைப்புகள்"
 msgid "Calendars"
 msgstr "நாட்காட்சிகள்"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "தொண்டு வாய்ப்பு தேர்ந்தெடுக்கவும்"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "நபர் புலம் தேர்ந்தெடுக்கவும்"
-
 #: 
 msgid "Church Identity"
 msgstr "தேவாலய அடையாளம்"
@@ -10440,11 +10333,6 @@ msgstr "ChurchCRM ஈமெயிலை நேரடியாக அனுப்
 msgid "Communication"
 msgstr "தொடர்பாடல்"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "இரண்டு நிதி ஆண்டுகளுக்கு இடையே உறுதிமொழிகளை ஒப்பிடுக"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "கணினியிலிருந்து மின்னஞ்சல் அனுப்ப கீழே உள்ள அமைப்புகளில் SMTP ஐ உள்ளமைக்கவும்."
@@ -10460,11 +10348,6 @@ msgstr "செய்திமடல் மற்றும் பிரচார�
 #: 
 msgid "Copy to clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "தனிப்பயன் புலம்"
 
 #: 
 msgid "Default Country"
@@ -10518,16 +10401,6 @@ msgstr "மின்னஞ்சல் முகவரிகளைப் பெ�
 msgid "Failed to retrieve phone numbers"
 msgstr "தொலைபேசி எண்களைப் பெற முடியவில்லை"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "புல மதிப்பு"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "ஒரு ஆண்டுக்கு உறுதி அளித்தும் மற்றொரு ஆண்டுக்கு அளிக்காதவர்களை கண்டுபிடிக்கவும்"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10535,33 +10408,8 @@ msgstr "ஒரு குறிப்பிட்ட வாய்ப்பிற�
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "இரண்டு குறிப்பிட்ட வாய்ப்பு குறியீடுகளுக்கு பொருந்தும் தன்னார்வலர்களைக் கண்டுபிடிக்கவும்"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "முதல் நிதியாண்டு"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "ஒப்பிடுவதற்கான முதல் நிதியாண்டு"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "முதல் தன்னார்வ வாய்ப்பு தேர்வு"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "முந்தைய மாதங்களில் பதிவு செய்த நண்பர்கள்"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "விருந்தினர்"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10585,31 +10433,6 @@ msgstr "நிகழ்வுகள், பிறந்தநாள்கள் 
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "தனிப்பயன் புலத்தை இந்த மதிப்புடன் பொருத்தவும்"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "உறுப்பினர், வழக்கமான பங்கேற்பாளர், போன்றவை"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "குறிப்பிட்ட மாதத்தில் சேர்ந்த உறுப்பினர்கள்"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "உறுப்பினர் ஆண்டு நினைவுகள்"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "காணாமல் போன வாக்குறுதிகள்"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "மாதம்"
 
@@ -10629,16 +10452,6 @@ msgstr "புதிய உறுப்பினர் அறிவிப்ப�
 #: 
 msgid "No cell phone on file"
 msgstr "பதிவில் செல்போன் இல்லை  "
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "வருகையில்லாதவர்"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "பங்கேற்காதவர் (பணியாளர்)"
 
 #: 
 msgid "Not Classified"
@@ -10675,30 +10488,10 @@ msgstr "SMS/உரை பட்டியல்களில் இருந்த
 msgid "Person property used to exclude members from email lists"
 msgstr "மின்னஞ்சல் பட்டியல்களில் இருந்து உறுப்பினர்களை விலக்க பயன்படுத்தப்படும் நபர் பண்பு"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "உறுதிமொழி ஒப்பீடு"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "இந்த ஆண்டில் உறுதியளிக்கப்பட்டது"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "சொத்து"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "சமீபத்திய நண்பர்கள்"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "தொடர்ந்து பங்கேற்பவர்"
 
 #. Context: query_qry
 #: 
@@ -10720,21 +10513,6 @@ msgstr "SMTP கட்டமைக்கப்பட்டது"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP கட்டமைக்கப்படவில்லை"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "இரண்டாம் நிதியாண்டு"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "ஒப்பிடுவதற்கான இரண்டாம் நிதியாண்டு"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "இரண்டாவது தன்னார்வ வாய்ப்பு தேர்வு"
 
 #: 
 msgid "Send text message"
@@ -10768,21 +10546,6 @@ msgstr "உரை கருவிகள்"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "குழு மற்றும் ஞாயிறு பள்ளி வகுப்பு பார்வைகளில் இருந்து உரைச் செய்தி நடவடிக்கைகள் கிடைக்கின்றன. \"Text\" dropdown-ஐ பயன்படுத்தி குழு உறுப்பினர்களின் தொலைபேசி எண்களை நகலெடுக்கவும் அல்லது SMS செய்திகளை அனுப்பவும்."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "பதிவுகள் திரும்ப பெற விரும்பும் பிறந்தநாள் மாதம்."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "பதிவுகள் திரும்ப பெற விரும்பும் உறுப்பினர் ஆண்டு நிறைவு மாதம்."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "நீங்கள் நபர் பதிவுகள் திரும்ப பெற விரும்பும் சொத்து."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "தூரத்தை அளவிட பயன்படுத்தப்படும் அலகு."
@@ -10791,11 +10554,6 @@ msgstr "தூரத்தை அளவிட பயன்படுத்தப�
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "mailto: இணைப்புகள் மூலம் மின்னஞ்சல் அனுப்ப பயனர் அனுமதி"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "தன்னார்வ வாய்ப்புகள்"
 
 #. Context: query_qry
 #: 
@@ -10813,11 +10571,6 @@ msgstr "Vonage SMS அமைக்கப்படவில்லை"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage இல்லாமல், உரை செயல்கள் உங்கள் சாதனத்தின் இயல்புநிலை SMS செயலியைத் திறக்கும் அல்லது தொலைபேசி எண்களை கிளிப்போர்டுக்கு நகலெடுக்கும்."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "ஆனால் இந்த ஆண்டில் இல்லை"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -11013,10 +10766,6 @@ msgstr "Gravatar இல்லாதபோது என்ன தோன்ற வ
 "• ரோபோஹாஷ் - தனித்துவமாக உருவாக்கப்பட்ட ரோபோ\n"
 "• வெற்று - ஒளிபுகும் (முதலெழுத்துக்களுக்குத் திரும்பும்)"
 
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "காண்பதற்கு நிதி அனுமதிகள் தேவைப்படும், காற்புள்ளியால் பிரிக்கப்பட்ட வினவல் ஐடிகள்"
-
 #. plugin:custom-links:section:4:content
 #: 
 msgid "Common uses for custom links:\n"
@@ -11127,10 +10876,6 @@ msgstr "ஸ்கான் செய்யப்பட்ட காசோலை�
 #: 
 msgid "Features"
 msgstr "அம்சங்கள்"
-
-#: 
-msgid "Finance permission query IDs"
-msgstr "நிதி அனுமதி வினவல் ஐடிகள்"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -14277,11 +14022,6 @@ msgstr "குடும்பப் பெயர் குறைந்தது 
 msgid "Fields"
 msgstr "புலங்கள்"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "ஒரு நிகழ்வில் கலந்துகொள்ளாத நபர்களைக் கண்டறியவும்."
-
 #: 
 msgid "First name is required"
 msgstr "முதல் பெயர் கட்டாயமாகும்."
@@ -14461,11 +14201,6 @@ msgstr "Members added to cart."
 #: 
 msgid "Minimum length is"
 msgstr "Minimum length is"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Missing people"
 
 #: 
 msgid "Move"
@@ -14836,11 +14571,6 @@ msgstr "நாட்காட்டிகளைத் தேர்ந்தெ�
 #: 
 msgid "Select event type..."
 msgstr "நிகழ்வு வகையைத் தேர்ந்தெடுக்கவும்..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "விரும்பிய நிகழ்வைத் தேர்ந்தெடுக்கவும்"
 
 #: 
 msgid "Sequence"
@@ -16303,10 +16033,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s குடும்பத்தின் %1$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d பதிவு(கள்) திரும்பியது"
-
-#: 
 msgid "Assign role to all"
 msgstr "அனைவருக்கும் பாத்திரம் ஒதுக்கு"
 
@@ -16477,22 +16203,6 @@ msgstr "கணினி கட்டமைப்பு"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "இந்த தன்னார்வ வாய்ப்பிற்கு நியமிக்கப்பட்டவர்கள் உள்ளனர். நீக்குதல் நியமனத்தை நீக்கும்"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "இந்த மதிப்பு %d எழுத்துகளுக்கும் குறைவாக இருக்கக்கூடாது"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "இந்த மதிப்பு %d எழுத்துகளுக்கும் அதிகமாக இருக்கக்கூடாது"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "இந்த மதிப்பு %s-ஐ விட அதிகமாக இருக்கக்கூடாது"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "இந்த மதிப்பு குறைந்தபட்சம் %s ஆக இருக்க வேண்டும்"
 
 #: 
 msgid "Total Deposits"
@@ -17504,16 +17214,6 @@ msgstr "குறைந்தபட்ச ஏலம் %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "ஒரு குறிப்பிட்ட மாதத்தில் பிறந்தநாள் அல்லது திருமண நினைவு நாள் உள்ளவர்கள்"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "பிறந்தநாட்கள் மற்றும் நினைவு நாட்களை பெற விரும்பும் மாதம்."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "திருமண நினைவு நாள் பதிவுகளை பெற விரும்பும் மாதம்."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "அனைத்து கொள்முதல்களின் மொத்தம்: %s"
@@ -17733,10 +17433,6 @@ msgid "Selected family"
 msgstr "தேர்ந்தெடுக்கப்பட்ட குடும்பம்"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "இந்த மதிப்பு சரியான புலப் பெயராக இருக்க வேண்டும்."
-
-#: 
 msgid "Could not load data"
 msgstr "தரவை ஏற்ற முடியவில்லை"
 
@@ -17745,16 +17441,8 @@ msgid "Please refresh the page or try again later."
 msgstr "பக்கத்தை புதுப்பிக்கவும் அல்லது பின்னர் மீண்டும் முயற்சிக்கவும்."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "முதலில் தொடர்புடைய பதிவுகளை சேர்க்கவும்."
-
-#: 
 msgid "All Months"
 msgstr "அனைத்து மாதங்கள்"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "\"%s\" விருப்பங்கள் இன்னும் வரையறுக்கப்படவில்லை."
 
 #: 
 msgid "No events found for %s %d."
@@ -18677,10 +18365,6 @@ msgstr "உறுதிமொழி"
 #: 
 msgid "Print %d Tax Doc"
 msgstr "அச்சு %d வரி ஆவணம்"
-
-#: 
-msgid "Queries"
-msgstr "வினாவல்கள்"
 
 #: 
 msgid "Recent Friends"

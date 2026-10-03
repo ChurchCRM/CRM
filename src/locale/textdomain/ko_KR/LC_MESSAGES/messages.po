@@ -1668,30 +1668,6 @@ msgid "Properties"
 msgstr "속성"
 
 #: 
-msgid "Query Listing"
-msgstr "쿼리 목록"
-
-#: 
-msgid "Query View"
-msgstr "쿼리 보기"
-
-#: 
-msgid "This value is required."
-msgstr "필수 입력 값입니다."
-
-#: 
-msgid "This value must be numeric."
-msgstr "숫자를 입력해야 합니다."
-
-#: 
-msgid "Run Query Again"
-msgstr "쿼리 다시 실행"
-
-#: 
-msgid "Execute Query"
-msgstr "쿼리 실행"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "서약 독촉 보고서"
 
@@ -2617,10 +2593,6 @@ msgstr "구매자 보기"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "기부자를 구매자 목록에 추가"
-
-#: 
-msgid "Data/Reports"
-msgstr "데이터/보고서"
 
 #: 
 msgid "Family Properties"
@@ -5063,14 +5035,6 @@ msgid "Missing PHP ZipArchive"
 msgstr "PHP ZipArchive 모듈이 없습니다"
 
 #: 
-msgid "Add Results to Cart"
-msgstr "결과를 카트에 추가"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "결과를 카트에서 제거"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "데이터베이스 초기화 기능"
 
@@ -6340,10 +6304,6 @@ msgid "Cart"
 msgstr "장바구니"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "시스템 설정에서 변경하세요."
-
-#: 
 msgid "Church Membership"
 msgstr "교회 회원"
 
@@ -6394,11 +6354,6 @@ msgstr "시작하려면 입금을 생성하거나 선택하세요."
 #: 
 msgid "Current Deposit"
 msgstr "현재 입금"
-
-#: 
-#, fuzzy
-msgid "Current fiscal year"
-msgstr "현재 회계연도:"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6461,10 +6416,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "명세서를 생성하기 전에 해당 세금 연도의 모든 입금이 닫혀 있는지 확인하세요."
 
 #: 
-msgid "Export Options"
-msgstr "내보내기 옵션"
-
-#: 
 msgid "F"
 msgstr "여"
 
@@ -6479,10 +6430,6 @@ msgstr "가족 탐색"
 #: 
 msgid "Feb"
 msgstr "2월"
-
-#: 
-msgid "Filtering"
-msgstr "필터링"
 
 #: 
 msgid "Finance"
@@ -6505,16 +6452,8 @@ msgid "Generate Tax Statements"
 msgstr "세금 명세서 생성"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "기부자를 위한 연간 헌금 명세서를 생성하고 헌금 패턴을 식별합니다."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "기부자를 위한 연간 세금 공제 가능한 헌금 명세서를 생성합니다. 인쇄하거나 이메일로 보낼 수 있습니다."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "개별 입금 또는 날짜 범위에 대한 상세 보고서를 생성합니다."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6575,10 +6514,6 @@ msgstr "3월"
 #: 
 msgid "Membership Reports"
 msgstr "회원 보고서"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "대부분의 보고서는 인쇄용 PDF 또는 스프레드시트 분석용 CSV로 내보낼 수 있습니다."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6657,14 +6592,6 @@ msgid "Recording a Pledge"
 msgstr "서약 기록"
 
 #: 
-msgid "Report Tips"
-msgstr "보고서 팁"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "회원 투표 자격 및 조직 거버넌스와 관련된 보고서입니다."
-
-#: 
 msgid "Reset"
 msgstr "재설정"
 
@@ -6741,20 +6668,12 @@ msgid "Total Amount"
 msgstr "총액"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "캠페인 및 회계연도 예산을 위한 서약 및 결제 진행 상황을 추적합니다."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "충족되지 않은 전제 조건"
 
 #: 
 msgid "Upgrade"
 msgstr "업그레이드"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "분류 및 가족 필터를 사용하여 특정 기부자 그룹에 대한 보고서를 생성합니다."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6779,10 +6698,6 @@ msgstr "연초 이후 서약"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "지금 가족 구성원을 생성하거나 나중에 추가할 수 있습니다. 모든 항목은 새로운 사람 레코드가 됩니다."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "회계연도 시작 월"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -9007,10 +8922,6 @@ msgid "Current person"
 msgstr "현재 사람"
 
 #: 
-msgid "Data & Reports"
-msgstr "데이터 및 보고서"
-
-#: 
 msgid "Database Reset"
 msgstr "데이터베이스 초기화"
 
@@ -10029,10 +9940,6 @@ msgid "View and manage system log files for debugging"
 msgstr "디버깅을 위한 시스템 로그 파일 보기 및 관리"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "저장된 데이터베이스 쿼리 보기 및 실행"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "구매자 번호 및 패들 배정 보기"
 
@@ -10051,10 +9958,6 @@ msgstr "가족 서약 요약 및 기금 배분 보기"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "그룹 교인, 역할 및 속성 보기"
-
-#: 
-msgid "View query results"
-msgstr "쿼리 결과 보기"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10389,16 +10292,6 @@ msgstr "달력 설정"
 msgid "Calendars"
 msgstr "달력"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "자원봉사 기회 선택"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "사람 필드 선택"
-
 #: 
 msgid "Church Identity"
 msgstr "교회 신원"
@@ -10419,11 +10312,6 @@ msgstr "ChurchCRM은 이메일을 직접 보낼 수 있습니다."
 msgid "Communication"
 msgstr "의사 소통"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "두 회계 연도 간 약속 비교"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "아래 설정에서 SMTP를 구성하여 시스템에서 이메일을 보냅니다."
@@ -10439,11 +10327,6 @@ msgstr "Mailchimp을 연결하여 뉴스레터 및 캠페인의 이메일 목록
 #: 
 msgid "Copy to clipboard"
 msgstr "클립보드에 복사"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "사용자 정의 필드"
 
 #: 
 msgid "Default Country"
@@ -10497,16 +10380,6 @@ msgstr "이메일 주소 검색 실패"
 msgid "Failed to retrieve phone numbers"
 msgstr "전화번호 검색 실패"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "필드 값"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "한 해에는 약속했지만 다른 해에는 약속하지 않은 사람을 찾기"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10514,33 +10387,8 @@ msgstr "특정 기회를 위해 자원봉사자 찾기"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "두 가지 특정 기회 코드와 일치하는 자원봉사자 찾기"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "첫 번째 회계 연도"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "비교할 첫 번째 회계 연도"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "첫 번째 자원봉사 기회 선택"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "이전 달에 가입한 친구들"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "손님"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10564,31 +10412,6 @@ msgstr "이벤트, 생일 및 기념일 관리"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "사용자 정의 필드를 이 값으로 일치"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "회원, 정기 참석자 등"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "특정 달에 가입한 회원"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "회원 기념일"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "누락된 약속"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "달"
 
@@ -10608,16 +10431,6 @@ msgstr "신규 회원 알림 이메일"
 #: 
 msgid "No cell phone on file"
 msgstr "파일에 휴대폰 없음"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "미참석자"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "미참석자 (직원)"
 
 #: 
 msgid "Not Classified"
@@ -10654,30 +10467,10 @@ msgstr "SMS/텍스트 목록에서 회원을 제외하는 데 사용되는 사�
 msgid "Person property used to exclude members from email lists"
 msgstr "이메일 목록에서 회원을 제외하는 데 사용되는 사람 속성"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "약속 비교"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "올해 약속"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "속성"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "최근 친구"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "정기 참석자"
 
 #. Context: query_qry
 #: 
@@ -10699,21 +10492,6 @@ msgstr "SMTP 구성됨"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP 미구성"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "두 번째 회계 연도"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "비교할 두 번째 회계 연도"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "두 번째 자원봉사 기회 선택"
 
 #: 
 msgid "Send text message"
@@ -10747,21 +10525,6 @@ msgstr "텍스트 도구"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "문자 메시징 작업은 그룹 및 주일학교 반 보기에서 사용할 수 있습니다. \"텍스트\" 드롭다운을 사용하여 전화번호를 복사하거나 그룹 회원에게 SMS 메시지를 보냅니다."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "레코드를 반환하고 싶은 생일 월입니다."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "레코드를 반환하고 싶은 회원 기념일 월입니다."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "사람 레코드를 반환하고 싶은 속성입니다."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "거리를 측정하는 데 사용되는 단위입니다."
@@ -10770,11 +10533,6 @@ msgstr "거리를 측정하는 데 사용되는 단위입니다."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "mailto: 링크를 통해 이메일을 보낼 수 있는 사용자 권한"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "자원봉사 기회"
 
 #. Context: query_qry
 #: 
@@ -10792,11 +10550,6 @@ msgstr "Vonage SMS 미구성"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage가 없으면 문자 작업은 기기의 기본 SMS 앱을 열거나 전화번호를 클립보드에 복사합니다."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "하지만 올해는 아님"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10991,10 +10744,6 @@ msgstr "Gravatar가 없을 때 표시할 항목 선택:\n"
 "• RoboHash - 고유 생성 로봇\n"
 "• 공백 - 투명 (이니셜로 대체)"
 
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "재정 권한이 필요한 쿼리 ID (쉼표로 구분)"
-
 #. plugin:custom-links:section:4:content
 #: 
 msgid "Common uses for custom links:\n"
@@ -11105,10 +10854,6 @@ msgstr "스캔한 수표 사용 활성화"
 #: 
 msgid "Features"
 msgstr "기능"
-
-#: 
-msgid "Finance permission query IDs"
-msgstr "재정 권한 쿼리 ID"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -14251,11 +13996,6 @@ msgstr "가족 이름은 최소 2자 이상이어야 합니다"
 msgid "Fields"
 msgstr "필드"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "이벤트에 참석하지 않은 성도 찾기"
-
 #: 
 msgid "First name is required"
 msgstr "이름은 필수입니다"
@@ -14435,11 +14175,6 @@ msgstr "교인이 목록에 추가되었습니다."
 #: 
 msgid "Minimum length is"
 msgstr "최소 길이는"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "누락된 성도"
 
 #: 
 msgid "Move"
@@ -14808,11 +14543,6 @@ msgstr "캘린더 선택..."
 #: 
 msgid "Select event type..."
 msgstr "이벤트 유형 선택..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "원하는 이벤트 선택"
 
 #: 
 msgid "Sequence"
@@ -16272,10 +16002,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s 가정의 %1$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d개의 레코드가 반환되었습니다"
-
-#: 
 msgid "Assign role to all"
 msgstr "모든 구성원에게 역할 할당"
 
@@ -16446,22 +16172,6 @@ msgstr "시스템 구성"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "이 봉사 기회에 배정된 사람들이 있습니다. 삭제하면 배정이 취소됩니다"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "이 값은 %d자 미만일 수 없습니다"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "이 값은 %d자를 초과할 수 없습니다"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "이 값은 %s을(를) 초과할 수 없습니다"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "이 값은 최소 %s 이상이어야 합니다"
 
 #: 
 msgid "Total Deposits"
@@ -17471,16 +17181,6 @@ msgstr "최소 입찰가 %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "특정 월에 생일 또는 결혼 기념일이 있는 성도"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "생일 및 기념일을 조회할 월을 선택하세요."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "결혼 기념일 기록을 조회할 월을 선택하세요."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "전체 구매 합계: %s"
@@ -17700,10 +17400,6 @@ msgid "Selected family"
 msgstr "선택된 가정"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "이 값은 유효한 필드 이름이어야 합니다."
-
-#: 
 msgid "Could not load data"
 msgstr "데이터를 불러올 수 없습니다"
 
@@ -17712,16 +17408,8 @@ msgid "Please refresh the page or try again later."
 msgstr "페이지를 새로 고치거나 나중에 다시 시도하세요."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "먼저 관련 레코드를 추가하세요."
-
-#: 
 msgid "All Months"
 msgstr "모든 달"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "아직 \"%s\" 옵션이 정의되지 않았습니다."
 
 #: 
 msgid "No events found for %s %d."
@@ -18643,10 +18331,6 @@ msgstr "서약함"
 #: 
 msgid "Print %d Tax Doc"
 msgstr "%d개 세금 문서 인쇄"
-
-#: 
-msgid "Queries"
-msgstr "쿼리"
 
 #: 
 msgid "Recent Friends"
