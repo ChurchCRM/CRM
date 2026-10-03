@@ -42,7 +42,7 @@ Plugin registry URL: `CentralServices::PLUGIN_REGISTRY_URL` (External branch tod
 
 - Confirm `git branch --show-current` before committing docs
 - Do not land cross-cutting skill edits on an unrelated feature branch
-- After a push, resolve threads the commit actually fixed (or comment with SHA + URLs)
+- After a push that fixes review comments, resolve every thread it fixed before you report done: check each against the pushed code, reply with the SHA when unclear, leave unfixed threads open (`git-workflow.md`)
 - Do not merge or close issues unless the maintainer answers yes to a direct question
 - User-visible behavior: open a docs tracking issue on ChurchCRM/CRM. It does not block feature merge. Docs PRs wait for the release. See `docs/contributing-pr-review.md`
 - UI that belongs on a marketing or docs page: one PR carries the code, the Cypress specs, and the Playwright capture (the `playwright/workflows/` spec, the `en` PNGs, and the `manifest.json` entries; `marketing-visuals-pipeline.md`). Run the pipeline in a git worktree on its own compose project, never on the dev checkout: it deletes `src/Include/Config.php`. Open a separate Playwright issue only when the capture cannot be taken yet
