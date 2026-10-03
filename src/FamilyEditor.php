@@ -21,6 +21,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Utils\AddressDefaults;
 
 $sPageTitle = gettext('Family Editor');
 $sPageSubtitle = gettext('Create and edit family information and relationships');
@@ -507,10 +508,10 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     } else {
         //Adding....
         //Set defaults
-        $sCity = SystemConfig::getValue('sDefaultCity');
-        $sCountry = SystemConfig::getValue('sDefaultCountry');
-        $sState = SystemConfig::getValue('sDefaultState');
-        $sZip = SystemConfig::getValue('sDefaultZip');
+        $sCity = AddressDefaults::city();
+        $sCountry = AddressDefaults::country();
+        $sState = AddressDefaults::state();
+        $sZip = AddressDefaults::zip();
         $iClassification = '0';
         $iFamilyMemberRows = 4;
 
