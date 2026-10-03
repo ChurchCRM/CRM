@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service\Geocoding;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\AddressDefaults;
 use ChurchCRM\Utils\LoggerUtils;
 use Generator;
 use Psr\Log\LoggerInterface;
@@ -73,14 +74,12 @@ class GeocoderChain
      */
     public static function resolveCountry(?string $recordCountry): ?string
     {
-        foreach ([$recordCountry, SystemConfig::getValue('sDefaultCountry'), SystemConfig::getValue('sChurchCountry')] as $candidate) {
-            $candidate = trim((string) $candidate);
-            if ($candidate !== '') {
-                return $candidate;
-            }
+        $recordCountry = trim((string) $recordCountry);
+        if ($recordCountry !== '') {
+            return $recordCountry;
         }
 
-        return null;
+        return AddressDefaults::country() ?: null;
     }
 
     /**
