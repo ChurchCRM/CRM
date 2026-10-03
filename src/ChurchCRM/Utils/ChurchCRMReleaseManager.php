@@ -66,6 +66,9 @@ class ChurchCRMReleaseManager
 
                 foreach ($gitHubReleases as $r) {
                     $release = new ChurchCRMRelease($r);
+                    if (!$release->hasVersion()) {
+                        continue;
+                    }
                     if ($release->isPreRelease()) {
                         if ($allowPrerelease) {
                             $eligibleReleases[] = $release;
@@ -90,7 +93,7 @@ class ChurchCRMReleaseManager
                 if (is_array($latestRelease) && !empty($latestRelease)) {
                     $release = new ChurchCRMRelease($latestRelease);
                     // Only cache stable releases; skip if latest is a prerelease
-                    if (!$release->isPreRelease()) {
+                    if ($release->hasVersion() && !$release->isPreRelease()) {
                         $eligibleReleases[] = $release;
                     }
                 }
@@ -645,7 +648,7 @@ class ChurchCRMReleaseManager
         $stableReleases = [];
         foreach ($gitHubReleases as $r) {
             $release = new ChurchCRMRelease($r);
-            if (!$release->isPreRelease()) {
+            if ($release->hasVersion() && !$release->isPreRelease()) {
                 $stableReleases[] = $release;
             }
         }
