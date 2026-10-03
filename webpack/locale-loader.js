@@ -29,16 +29,6 @@ window.CRM.onLocalesReady = (callback) => {
  * @param {string} url - The URL of the script to load
  * @returns {Promise<void>}
  */
-function loadScript(url) {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = url;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
-    document.head.appendChild(script);
-  });
-}
-
 /**
  * Check browser locale against current ChurchCRM locale and notify user if different
  */
@@ -151,28 +141,39 @@ async function loadLocaleFiles(localeConfig) {
     // Load Moment.js locale if configured
     // Skip for 'en' as it's the default locale built into moment.js
     if (localeConfig.momentLocale && localeConfig.momentLocale !== "en" && typeof moment !== "undefined") {
-      const momentPath = `${rootPath}/locale/vendor/moment/${localeConfig.momentLocale}.js`;
+      const momentCode = localeConfig.momentLocale;
       promises.push(
-        loadScript(momentPath)
+        import(`moment/locale/${momentCode}.js`)
           .then(() => {
-            if (typeof moment !== "undefined" && typeof moment.locale === "function") {
-              moment.locale(localeConfig.momentLocale);
+            if (typeof moment.locale === "function") {
+              moment.locale(momentCode);
             }
           })
-          .catch((e) => console.warn(`Failed to load moment locale ${localeConfig.momentLocale}:`, e)),
+          .catch((e) => console.warn(`Failed to load moment locale ${momentCode}:`, e)),
       );
     } else if (localeConfig.momentLocale === "en" && typeof moment !== "undefined") {
-      // Set to 'en' without loading (built-in default)
       moment.locale("en");
     }
 
-    // Load Bootstrap DatePicker locale if configured
     if (localeConfig.datePicker) {
-      const dpPath = `${rootPath}/locale/vendor/bootstrap-datepicker/bootstrap-datepicker.${localeConfig.languageCode}.min.js`;
+      const languageCode = localeConfig.languageCode;
       promises.push(
-        loadScript(dpPath).catch((e) =>
-          console.warn(`Failed to load DatePicker locale ${localeConfig.languageCode}:`, e),
+        import(`bootstrap-datepicker/dist/locales/bootstrap-datepicker.${languageCode}.min.js`).catch((e) =>
+          console.warn(`Failed to load DatePicker locale ${languageCode}:`, e),
         ),
+      );
+    }
+
+    if (localeConfig.dataTables && window.CRM.plugin?.dataTable?.language) {
+      const dataTablesCode = localeConfig.dataTables;
+      promises.push(
+        import(`datatables.net-plugins/i18n/${dataTablesCode}.json`)
+          .then((mod) => {
+            const slot = window.CRM.plugin.dataTable.language;
+            delete slot.url;
+            Object.assign(slot, mod.default ?? mod);
+          })
+          .catch((e) => console.warn(`Failed to load DataTables locale ${dataTablesCode}:`, e)),
       );
     }
 

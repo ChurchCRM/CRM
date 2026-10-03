@@ -208,9 +208,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               dataTable : {
 "pageLength": <?= $tableSize ?>,
 "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100,"All"]],
-"language": {
-"url":"<?= SystemURLs::getRootPath() ?>/locale/vendor/datatables/<?= $localeInfo->getDataTables() ?>.json"
-                  },
+"language": {},
                   responsive: true,
                   layout: {
                       topStart: 'search',

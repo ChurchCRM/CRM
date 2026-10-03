@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -117,11 +118,6 @@ module.exports = {
     filename: '[name].min.js',
     publicPath: 'auto',
   },
-  externals: {
-    // Leaflet is loaded as a global from skin/external/leaflet/leaflet.js (Grunt-copied).
-    // Mapping it here lets webpack entries import 'leaflet' without bundling it.
-    leaflet: 'L',
-  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     alias: {
@@ -175,6 +171,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].min.css',
       ignoreOrder: false,
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
     }),
     new FixCssUrlQuotesPlugin(),
   ],

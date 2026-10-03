@@ -2,12 +2,11 @@
  * Leaflet map initialisation for the family detail view (/people/family/:id).
  *
  * PHP injects window.CRM.familyMapConfig = { lat, lng } when the family
- * has stored geocoded coordinates. Leaflet is loaded as a global from
- * skin/external/leaflet/leaflet.js (see webpack externals: { leaflet: 'L' }).
+ * has stored geocoded coordinates. Leaflet comes from webpack/leaflet-global.js.
  *
  * Also handles the "Refresh Coordinates" button for families without coordinates.
  */
-import L from "leaflet";
+import L from "../leaflet-global";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
 import { initTimelineFilter } from "./timeline-filter";
 

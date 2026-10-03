@@ -273,7 +273,6 @@ $socialPlaceholders = [
                         && $lngFloat >= -180.0 && $lngFloat <= 180.0;
                     ?>
 
-                    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
                     <div id="church-location-map" class="mb-2 rounded border<?= $hasCoords ? '' : ' d-none' ?>" style="height:280px;"></div>
                     <div class="alert alert-info mt-3 mb-0<?= $hasCoords ? ' d-none' : '' ?>" id="no-coords-alert">
                         <i class="fa-solid fa-location-dot me-2"></i>
@@ -288,7 +287,6 @@ $socialPlaceholders = [
                             'hasCoords' => $hasCoords,
                         ]) ?>;
                     </script>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
                 </div>
             </div>
         </div>
