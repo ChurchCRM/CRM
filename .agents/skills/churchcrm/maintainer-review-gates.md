@@ -71,7 +71,7 @@ If hard blocks stay open and the author goes quiet, maintainers may close the PR
 
 - Demo-import in `src/admin/demo/config.json`. Never Cypress seed if that would break tests.
 - User manual tracking issue on ChurchCRM/CRM. Docs PRs merge after the release ships.
-- Playwright capture issue when the PR changes UI that belongs on a marketing or docs page. Ask the author to open it (or open it yourself) and link it. Not a blocker.
+- Playwright capture when the PR changes UI that belongs on a marketing or docs page. It ships in the same PR (spec, `en` PNGs, manifest entries); ask the author to add it. If it cannot be taken yet, an issue linked from the PR is enough. Not a blocker.
 - Marketing / blog only on a full end-to-end feature. Ask George. Skip bug/security-only.
 - Member-facing consumer when this PR is storage-only.
 - Extra screenshots. If they have tablet/mobile shots, ask them to attach. Do not Request changes only because shots are missing.

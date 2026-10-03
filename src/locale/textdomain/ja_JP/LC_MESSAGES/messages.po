@@ -1650,30 +1650,6 @@ msgid "Properties"
 msgstr "プロパティ"
 
 #: 
-msgid "Query Listing"
-msgstr "クエリ一覧"
-
-#: 
-msgid "Query View"
-msgstr "クエリビュー"
-
-#: 
-msgid "This value is required."
-msgstr "この値は必須です。"
-
-#: 
-msgid "This value must be numeric."
-msgstr "この値は数値である必要があります。"
-
-#: 
-msgid "Run Query Again"
-msgstr "クエリを再実行"
-
-#: 
-msgid "Execute Query"
-msgstr "クエリを実行"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "献金予約リマインダーレポート"
 
@@ -2593,10 +2569,6 @@ msgstr "購入者を表示"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "寄付者を購入者リストに追加"
-
-#: 
-msgid "Data/Reports"
-msgstr "データ/レポート"
 
 #: 
 msgid "Family Properties"
@@ -5034,14 +5006,6 @@ msgid "Missing PHP ZipArchive"
 msgstr "PHP ZipArchiveがありません"
 
 #: 
-msgid "Add Results to Cart"
-msgstr "結果をカートに追加"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "結果をカートから削除"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "データベースリセット機能"
 
@@ -6311,10 +6275,6 @@ msgid "Cart"
 msgstr "カート"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "システム設定で変更してください。"
-
-#: 
 msgid "Church Membership"
 msgstr "教会メンバーシップ"
 
@@ -6365,10 +6325,6 @@ msgstr "開始するには預金を作成または選択してください。"
 #: 
 msgid "Current Deposit"
 msgstr "現在の預金"
-
-#: 
-msgid "Current fiscal year"
-msgstr "現在の会計年度"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6431,10 +6387,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "明細書を生成する前に、税年度のすべての預金が締め切られていることを確認してください。"
 
 #: 
-msgid "Export Options"
-msgstr "エクスポートオプション"
-
-#: 
 msgid "F"
 msgstr "女"
 
@@ -6449,10 +6401,6 @@ msgstr "家族ナビゲーション"
 #: 
 msgid "Feb"
 msgstr "2月"
-
-#: 
-msgid "Filtering"
-msgstr "フィルタリング"
 
 #: 
 msgid "Finance"
@@ -6475,16 +6423,8 @@ msgid "Generate Tax Statements"
 msgstr "税務報告書（寄付証明書）の作成"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "寄付者の年間寄付明細書を生成し、寄付パターンを特定します。"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "寄付者の年間控除対象寄付明細書を生成します。印刷またはメールで送信できます。"
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "個々の預金または日付範囲の詳細なレポートを生成します。"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6545,10 +6485,6 @@ msgstr "3月"
 #: 
 msgid "Membership Reports"
 msgstr "会員レポート"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "ほとんどのレポートは、印刷用にPDFとして、またはスプレッドシート分析用にCSVとしてエクスポートできます。"
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6627,14 +6563,6 @@ msgid "Recording a Pledge"
 msgstr "誓約の記録"
 
 #: 
-msgid "Report Tips"
-msgstr "レポートのヒント"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "メンバーの投票資格と組織ガバナンスに関連するレポート。"
-
-#: 
 msgid "Reset"
 msgstr "リセット"
 
@@ -6711,20 +6639,12 @@ msgid "Total Amount"
 msgstr "合計金額"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "キャンペーンと会計年度予算の誓約と支払い進捗を追跡します。"
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "未達成の前提条件"
 
 #: 
 msgid "Upgrade"
 msgstr "アップグレード"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "分類と家族フィルターを使用して、特定の寄付者グループのレポートを生成します。"
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6749,10 +6669,6 @@ msgstr "年初来の誓約"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "今すぐ家族メンバーを作成するか、後で追加できます。すべてのエントリは新しい人物レコードになります。"
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "あなたの会計年度は月に始まります"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -8977,10 +8893,6 @@ msgid "Current person"
 msgstr "現在の人"
 
 #: 
-msgid "Data & Reports"
-msgstr "データとレポート"
-
-#: 
 msgid "Database Reset"
 msgstr "データベースリセット"
 
@@ -9999,10 +9911,6 @@ msgid "View and manage system log files for debugging"
 msgstr "デバッグ用のシステムログファイルを表示・管理"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "保存されたデータベースクエリを表示・実行"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "購入者番号とパドルの割り当てを表示"
 
@@ -10021,10 +9929,6 @@ msgstr "家族の献金誓約概要と基金配分を表示"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "グループメンバー、役割、プロパティを表示"
-
-#: 
-msgid "View query results"
-msgstr "クエリ結果を表示"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10359,16 +10263,6 @@ msgstr "カレンダー設定"
 msgid "Calendars"
 msgstr "カレンダー"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "ボランティアの機会を選択してください"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "人物フィールドを選択してください"
-
 #: 
 msgid "Church Identity"
 msgstr "教会のアイデンティティ"
@@ -10389,11 +10283,6 @@ msgstr "ChurchCRMはメールを直接送信できます。"
 msgid "Communication"
 msgstr "通信"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "2つの会計年度間でプレッジを比較する"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "以下の設定でSMTPを構成して、システムからメールを送信します。"
@@ -10409,11 +10298,6 @@ msgstr "Mailchimpを接続して、ニュースレターおよびキャンペー
 #: 
 msgid "Copy to clipboard"
 msgstr "クリップボードにコピー"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "カスタムフィールド"
 
 #: 
 msgid "Default Country"
@@ -10467,16 +10351,6 @@ msgstr "メールアドレスの取得に失敗しました"
 msgid "Failed to retrieve phone numbers"
 msgstr "電話番号の取得に失敗しました"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "フィールド値"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "ある年は誓約したが別の年は誓約しなかった人を探す"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10484,33 +10358,8 @@ msgstr "特定の機会のためにボランティアを見つける"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "2つの特定の機会コードに一致するボランティアを見つける"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "最初の会計年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "比較用の最初の会計年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "最初のボランティア機会の選択"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "前の月にサインアップした友達"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "ゲスト"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10534,31 +10383,6 @@ msgstr "イベント、誕生日、周年記念を管理する"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "カスタムフィールドをこの値に一致させる"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "メンバー、常連参加者など"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "特定の月に参加したメンバー"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "会員の周年記念"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "誓約の欠落"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "月"
 
@@ -10578,16 +10402,6 @@ msgstr "新メンバー通知メール"
 #: 
 msgid "No cell phone on file"
 msgstr "ファイルに携帯電話がありません"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "非参加者"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "非参加者（スタッフ）"
 
 #: 
 msgid "Not Classified"
@@ -10624,30 +10438,10 @@ msgstr "SMS/テキストリストからメンバーを除外するために使�
 msgid "Person property used to exclude members from email lists"
 msgstr "メールリストからメンバーを除外するために使用されるユーザープロパティ"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "誓約の比較"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "今年誓約した"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "プロパティ"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "最近の友達"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "常連参加者"
 
 #. Context: query_qry
 #: 
@@ -10669,21 +10463,6 @@ msgstr "SMTP構成済み"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTPが構成されていません"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "第2会計年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "比較用の第2会計年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "第2のボランティア機会の選択"
 
 #: 
 msgid "Send text message"
@@ -10717,21 +10496,6 @@ msgstr "テキストツール"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "テキストメッセージングアクションは、グループと日曜学校のクラスビューから利用できます。 「テキスト」ドロップダウンを使用して、電話番号をコピーするか、グループメンバーにSMSメッセージを送信します。"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "レコードを返してほしい誕生月。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "レコードを返してほしい会員周年記念月。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "ユーザーレコードを返してほしいプロパティ。"
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "距離を測定するために使用される単位。"
@@ -10740,11 +10504,6 @@ msgstr "距離を測定するために使用される単位。"
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "mailto：リンク経由でメールを送信するためのユーザー権限"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "ボランティアの機会"
 
 #. Context: query_qry
 #: 
@@ -10762,11 +10521,6 @@ msgstr "Vonage SMSが設定されていません"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonageがない場合、テキストアクションはデバイスのネイティブSMSアプリを開くか、電話番号をクリップボードにコピーします。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "しかし今年はない"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10961,10 +10715,6 @@ msgstr "Gravatar が存在しない場合の表示を選択：\n"
 "• RoboHash - 固有生成ロボット\n"
 "• ブランク - 透明（イニシャルにフォールバック）"
 
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "財務権限が必要なクエリ ID（カンマ区切り）"
-
 #. plugin:custom-links:section:4:content
 #: 
 msgid "Common uses for custom links:\n"
@@ -11075,10 +10825,6 @@ msgstr "スキャン小切手の使用を有効化"
 #: 
 msgid "Features"
 msgstr "機能"
-
-#: 
-msgid "Finance permission query IDs"
-msgstr "財務権限クエリ ID"
 
 #. plugin:openlp:section:3:title
 #: 
@@ -14221,11 +13967,6 @@ msgstr "家族名は2文字以上である必要があります"
 msgid "Fields"
 msgstr "フィールド"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "イベントに参加しなかった人を検索"
-
 #: 
 msgid "First name is required"
 msgstr "名は必須です"
@@ -14405,11 +14146,6 @@ msgstr "メンバーがリストに追加されました。"
 #: 
 msgid "Minimum length is"
 msgstr "最小長は"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "未参加者"
 
 #: 
 msgid "Move"
@@ -14778,11 +14514,6 @@ msgstr "カレンダーを選択..."
 #: 
 msgid "Select event type..."
 msgstr "イベントタイプを選択..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "対象イベントを選択"
 
 #: 
 msgid "Sequence"
@@ -16242,10 +15973,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s 家族の %1$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d 件のレコードが返されました"
-
-#: 
 msgid "Assign role to all"
 msgstr "全員に役割を割り当てる"
 
@@ -16416,22 +16143,6 @@ msgstr "システム設定"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "このボランティア機会に割り当てられている人がいます。削除すると割り当てが解除されます"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "この値は %d 文字以上である必要があります"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "この値は %d 文字以内である必要があります"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "この値は %s 以下である必要があります"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "この値は %s 以上である必要があります"
 
 #: 
 msgid "Total Deposits"
@@ -17441,16 +17152,6 @@ msgstr "最低入札価格 %s。"
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "特定の月に誕生日または結婚記念日がある方"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "誕生日と記念日を取得したい月を選択してください。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "記録を取得したい結婚記念日の月を選択してください。"
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "全購入合計：%s"
@@ -17670,10 +17371,6 @@ msgid "Selected family"
 msgstr "選択した家族"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "この値は有効なフィールド名である必要があります。"
-
-#: 
 msgid "Could not load data"
 msgstr "データを読み込めませんでした"
 
@@ -17682,16 +17379,8 @@ msgid "Please refresh the page or try again later."
 msgstr "ページを更新するか、後でもう一度お試しください。"
 
 #: 
-msgid "Add the relevant records first."
-msgstr "最初に関連するレコードを追加してください。"
-
-#: 
 msgid "All Months"
 msgstr "すべての月"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "\"%s\" オプションはまだ定義されていません。"
 
 #: 
 msgid "No events found for %s %d."
@@ -18613,10 +18302,6 @@ msgstr "誓約された"
 #: 
 msgid "Print %d Tax Doc"
 msgstr "%d件の税務文書を印刷"
-
-#: 
-msgid "Queries"
-msgstr "クエリー"
 
 #: 
 msgid "Recent Friends"

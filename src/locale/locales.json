@@ -245,7 +245,7 @@
     "dataTables": "fil",
     "fullCalendar": true,
     "fullCalendarLocale": "fil",
-    "datePicker": true,
+    "datePicker": false,
     "momentLocale": "tl-ph",
     "isRTL": false,
     "scripts": ["Latin"]
@@ -414,7 +414,7 @@
     "region": "Asia",
     "fullCalendar": true,
     "fullCalendarLocale": "ml",
-    "datePicker": true,
+    "datePicker": false,
     "isRTL": false,
     "scripts": ["Malayalam"]
   },

@@ -13,9 +13,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 
 $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 ?>
-<?php if ($doShowMap) : ?>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
-<?php endif; ?>
+
 
 <div class="container-fluid py-4">
     <!-- Navigation Bar for logged-in limited users -->
@@ -289,9 +287,8 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 </div>
 
 <?php if ($doShowMap) : ?>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    (function () {
+    document.addEventListener("DOMContentLoaded", function () {
         var lat = <?= InputUtils::jsonEncodeForScript((float) $family->getLatitude()) ?>;
         var lng = <?= InputUtils::jsonEncodeForScript((float) $family->getLongitude()) ?>;
         var map = L.map('map1', { scrollWheelZoom: false, dragging: false, zoomControl: false })
@@ -301,7 +298,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
         }).addTo(map);
         L.marker([lat, lng]).addTo(map);
-    })();
+    });
 </script>
 <?php endif; ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

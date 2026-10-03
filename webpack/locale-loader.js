@@ -25,21 +25,6 @@ window.CRM.onLocalesReady = (callback) => {
 };
 
 /**
- * Dynamically load a script file
- * @param {string} url - The URL of the script to load
- * @returns {Promise<void>}
- */
-function loadScript(url) {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = url;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
-    document.head.appendChild(script);
-  });
-}
-
-/**
  * Check browser locale against current ChurchCRM locale and notify user if different
  */
 function checkBrowserLocale() {
@@ -81,13 +66,13 @@ function checkBrowserLocale() {
 
     alert.innerHTML = `
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      <strong>${i18next.t("Browser language preference detected")}</strong>
-      <div>${i18next.t("Your browser language preference differs from your ChurchCRM locale")}.</div>
+      <strong>${window.i18next.t("Browser language preference detected")}</strong>
+      <div>${window.i18next.t("Your browser language preference differs from your ChurchCRM locale")}.</div>
       <div class="mt-2">
         <a href="${userSettingsUrl}" class="btn btn-sm btn-primary">
-          <i class="fa-solid fa-cog mr-1"></i>${i18next.t("Change Your Locale")}
+          <i class="fa-solid fa-cog mr-1"></i>${window.i18next.t("Change Your Locale")}
         </a>
-        <button id="dismissBrowserLocaleBtn" class="btn btn-sm btn-secondary ml-2">${i18next.t("Dismiss")}</button>
+        <button id="dismissBrowserLocaleBtn" class="btn btn-sm btn-secondary ml-2">${window.i18next.t("Dismiss")}</button>
       </div>
     `;
 
@@ -150,35 +135,41 @@ async function loadLocaleFiles(localeConfig) {
 
     // Load Moment.js locale if configured
     // Skip for 'en' as it's the default locale built into moment.js
-    if (localeConfig.momentLocale && localeConfig.momentLocale !== "en" && typeof moment !== "undefined") {
-      const momentPath = `${rootPath}/locale/vendor/moment/${localeConfig.momentLocale}.js`;
+    if (localeConfig.momentLocale && localeConfig.momentLocale !== "en" && window.moment) {
+      const momentCode = localeConfig.momentLocale;
       promises.push(
-        loadScript(momentPath)
+        import(`moment/locale/${momentCode}.js`)
           .then(() => {
-            if (typeof moment !== "undefined" && typeof moment.locale === "function") {
-              moment.locale(localeConfig.momentLocale);
-            }
+            window.moment.locale(momentCode);
           })
-          .catch((e) => console.warn(`Failed to load moment locale ${localeConfig.momentLocale}:`, e)),
+          .catch((e) => console.warn(`Failed to load moment locale ${momentCode}:`, e)),
       );
-    } else if (localeConfig.momentLocale === "en" && typeof moment !== "undefined") {
-      // Set to 'en' without loading (built-in default)
-      moment.locale("en");
+    } else if (localeConfig.momentLocale === "en" && window.moment) {
+      window.moment.locale("en");
     }
 
-    // Load Bootstrap DatePicker locale if configured — but only where the plugin it
-    // extends is actually on the page. Every one of those vendor files starts with
-    // `$.fn.datepicker.dates[...] = ...`, so loading it without bootstrap-datepicker
-    // throws "Cannot read properties of undefined (reading 'dates')" as an uncaught
-    // TypeError. That never came up while only the admin shell used this loader; the
-    // Member Portal (#9863) is the first page to call it with its own small bundle
-    // and no datepicker, and a French member got a broken page for it (#9869).
+    // Only where bootstrap-datepicker is on the page: its locale files assign
+    // `$.fn.datepicker.dates[...]` and throw without it, which broke the Member Portal
+    // for French members (#9869).
     if (localeConfig.datePicker && typeof window.jQuery?.fn?.datepicker === "function") {
-      const dpPath = `${rootPath}/locale/vendor/bootstrap-datepicker/bootstrap-datepicker.${localeConfig.languageCode}.min.js`;
+      const languageCode = localeConfig.languageCode;
       promises.push(
-        loadScript(dpPath).catch((e) =>
-          console.warn(`Failed to load DatePicker locale ${localeConfig.languageCode}:`, e),
+        import(`bootstrap-datepicker/dist/locales/bootstrap-datepicker.${languageCode}.min.js`).catch((e) =>
+          console.warn(`Failed to load DatePicker locale ${languageCode}:`, e),
         ),
+      );
+    }
+
+    if (localeConfig.dataTables && window.CRM.plugin?.dataTable?.language) {
+      const dataTablesCode = localeConfig.dataTables;
+      promises.push(
+        import(`datatables.net-plugins/i18n/${dataTablesCode}.json`)
+          .then((mod) => {
+            const slot = window.CRM.plugin.dataTable.language;
+            delete slot.url;
+            Object.assign(slot, mod.default ?? mod);
+          })
+          .catch((e) => console.warn(`Failed to load DataTables locale ${dataTablesCode}:`, e)),
       );
     }
 
@@ -200,7 +191,7 @@ async function loadLocaleFiles(localeConfig) {
     await Promise.all(promises);
 
     // Initialize i18next after locale keys are loaded
-    if (typeof i18next !== "undefined" && window.CRM.i18keys) {
+    if (window.i18next && window.CRM.i18keys) {
       const i18nextOpt = {
         lng: window.CRM.shortLocale,
         nsSeparator: false,
@@ -213,7 +204,7 @@ async function loadLocaleFiles(localeConfig) {
       i18nextOpt.resources[window.CRM.shortLocale] = {
         translation: window.CRM.i18keys,
       };
-      i18next.init(i18nextOpt);
+      window.i18next.init(i18nextOpt);
 
       // Detect browser locale and prompt user if different
       checkBrowserLocale();

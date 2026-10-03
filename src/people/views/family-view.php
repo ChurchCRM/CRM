@@ -819,7 +819,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 <?php } ?>
 
 <!-- Leaflet map (loaded only if geocoded) -->
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+
 <?php if ($family->hasAddress() && $family->hasLatitudeAndLongitude()) : ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = window.CRM || {};
@@ -865,7 +865,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 </div>
 <?php endif; ?>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-family-view.min.js') ?>"></script>
 <?php if ($canSendEmail) : ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

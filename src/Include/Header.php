@@ -36,9 +36,8 @@ PluginManager::init($pluginsPath);
 // Resolve theme attributes from user settings
 $_themeUser = AuthenticationManager::getCurrentUser();
 $_themeMode = $_themeUser->getThemeMode(); // 'auto' | 'default' | 'dark'
-$_themeAttrs = '';
-// Explicit dark: stamp data-bs-theme on <html> server-side for FOWT-safe rendering
-// without JS. Auto mode is handled by the inline <head> script below.
+$_themeAttrs = ' data-theme-mode="' . InputUtils::escapeAttribute($_themeMode) . '"';
+// Explicit dark: stamp data-bs-theme on <html> so first paint does not wait on theme.min.js.
 if ($_themeMode === 'dark') {
     $_themeAttrs .= ' data-bs-theme="dark"';
 }
@@ -62,57 +61,8 @@ $_isImpersonating = ImpersonationService::isActive();
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <!-- Theme controller: must run synchronously before page paint to prevent flash-of-wrong-theme. -->
-  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    (function () {
-      // Ensure window.CRM exists; body script will Object.assign more properties later.
-      window.CRM = window.CRM || {};
-
-      var mql = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-      var _listening = false;
-
-      function _applyDark() {
-        document.documentElement.setAttribute('data-bs-theme', 'dark');
-      }
-      function _applyLight() {
-        document.documentElement.removeAttribute('data-bs-theme');
-      }
-      function _onChange(e) {
-        if (e.matches) { _applyDark(); } else { _applyLight(); }
-      }
-      // Delegate to _onChange so both paths share the same dark/light logic.
-      // Falls back to light when matchMedia is unavailable (mql === null).
-      function _applySystem() {
-        _onChange({ matches: mql ? mql.matches : false });
-      }
-
-      /**
-       * Apply a theme mode and manage the matchMedia listener lifecycle.
-       * mode: 'auto' | 'default' | 'dark'
-       * Called once on page load (below) and by user.js when the user toggles the setting.
-       */
-      window.CRM.theme = {
-        setMode: function (mode) {
-          if (mode === 'auto') {
-            _applySystem();
-            if (mql && !_listening) {
-              mql.addEventListener('change', _onChange);
-              _listening = true;
-            }
-          } else {
-            if (_listening) {
-              mql.removeEventListener('change', _onChange);
-              _listening = false;
-            }
-            if (mode === 'dark') { _applyDark(); } else { _applyLight(); }
-          }
-        }
-      };
-
-      // Apply the server-resolved theme mode immediately (FOWT prevention).
-      window.CRM.theme.setMode(<?= InputUtils::jsonEncodeForScript($_themeMode) ?>);
-    }());
-  </script>
+  <!-- Before skin CSS so auto mode can set data-bs-theme before first paint. -->
+  <script src="<?= SystemURLs::assetVersioned('/skin/v2/theme.min.js') ?>"></script>
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
   <?= PluginManager::getPluginHeadContent() ?>
   <style nonce="<?= SystemURLs::getCSPNonce() ?>">:root { --currency-symbol: <?= $_currencySymbolCss ?>; }</style>
@@ -174,112 +124,50 @@ $_isImpersonating = ImpersonationService::isActive();
   }
   ?>
   <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-      // Initialize window.CRM if not already created by webpack bundles
-      if (!window.CRM) {
-          window.CRM = {};
-      }
-
-      // Extend window.CRM with server-side configuration (preserving existing properties like notify)
-      Object.assign(window.CRM, {
-          root:"<?= SystemURLs::getRootPath() ?>",
-          fullURL:"<?= SystemURLs::getURL() ?>",
-          lang:"<?= $localeInfo->getLanguageCode() ?>",
-          isRTL:<?= $localeInfo->isRTL() ? 'true' : 'false' ?>,
-          userId:"<?= AuthenticationManager::getCurrentUser()->getId() ?>",
-          userName:<?= InputUtils::jsonEncodeForScript(AuthenticationManager::getCurrentUser()->getPerson()?->getFullName() ?? '') ?>,
-          version:"<?= $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown' ?>",
-          systemLocale:"<?= $localeInfo->getSystemLocale() ?>",
-          locale:"<?= $localeInfo->getLocale() ?>",
-          shortLocale:"<?= $localeInfo->getShortLocale() ?>",
-          timeZone:<?= SystemConfig::getValueForJs('sTimeZone') ?>,
-          maxUploadSize:"<?= SystemService::getMaxUploadFileSize(true) ?>",
-          maxUploadSizeBytes:"<?= SystemService::getMaxUploadFileSize(false) ?>",
-          datePickerformat:<?= SystemConfig::getValueForJs('sDatePickerPlaceHolder') ?>,
-          churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
-          systemConfigs: {
-            sDateTimeFormat:<?= DateTimeUtils::getDateTimeFormatForJs() ?>,
-          },
-          comm: {
-            // True only when bEnabledEmail is on AND SMTP is configured: the same check BaseEmail::send()
-            // and POST /api/email/send apply, so the composer never offers a Send that would be refused.
-            emailSendingEnabled: <?= InputUtils::jsonEncodeForScript(SystemConfig::isEmailEnabled()) ?>,
-            // Closing the composer pre-fills at the end of a new message: "Sincerely," + the current user's name + the church name.
-            emailSignature: <?= InputUtils::jsonEncodeForScript(\ChurchCRM\Service\EmailComposerService::defaultSignature(AuthenticationManager::getCurrentUser())) ?>,
-            vonageEnabled: <?= InputUtils::jsonEncodeForScript(PluginManager::getPlugin('vonage')?->isConfigured() ?? false) ?>,
-            // Church default "to" address (sToEmailAddress); exposed only to email-enabled
-            // users. The email composer offers it as a removable default recipient.
-            defaultEmailToAddress: <?= AuthenticationManager::getCurrentUser()->isEmailEnabled() ? SystemConfig::getValueForJs('sToEmailAddress') : InputUtils::jsonEncodeForScript('') ?>,
-          },
-          // Plugin configs from active plugins (via getClientConfig())
-          plugins: <?= InputUtils::jsonEncodeForScript(PluginManager::getPluginsClientConfig(), JSON_FORCE_OBJECT) ?>,
-          // Legacy: keep bEnableGravatarPhotos for backward compatibility with existing JS
-          bEnableGravatarPhotos: <?= InputUtils::jsonEncodeForScript(PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false) ?>,
-          plugin: {
-              dataTable : {
-"pageLength": <?= $tableSize ?>,
-"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100,"All"]],
-"language": {
-"url":"<?= SystemURLs::getRootPath() ?>/locale/vendor/datatables/<?= $localeInfo->getDataTables() ?>.json"
-                  },
-                  responsive: true,
-                  layout: {
-                      topStart: 'search',
-                      topEnd: 'buttons',
-                      bottomStart: 'pageLength',
-                      bottomEnd: ['info', 'paging']
-                  },
-                  buttons: [
-                      {
-                          extend: 'csv',
-                          text: '<i class="fa-solid fa-table"></i>',
-                          titleAttr: 'Export CSV',
-                          exportOptions: {
-                              columns: ':not(.no-export)'
-                          }
-                      },
-                      {
-                          extend: 'print',
-                          text: '<i class="fa-solid fa-print"></i>',
-                          titleAttr: 'Print',
-                          exportOptions: {
-                              columns: ':not(.no-export)'
-                          }
-                      }
-                  ]
-              }
-          },
-          permissions: {
-              addRecords: <?= InputUtils::jsonEncodeForScript($currentUser->isAddRecordsEnabled()) ?>,
-              editRecords: <?= InputUtils::jsonEncodeForScript($currentUser->isEditRecordsEnabled()) ?>,
-          },
-          personDeleteBlocked: <?= InputUtils::jsonEncodeForScript((object) PersonService::getLoginDeletionBlockedReasons()) ?>,
-          PageName:<?= InputUtils::jsonEncodeForScript($_SERVER['REQUEST_URI'] ?? '') ?>,
-          telemetry: <?= InputUtils::jsonEncodeForScript([
-              'level'      => TelemetryService::getLevel(),
-              'key'        => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',
-              'endpoint'   => TelemetryService::POSTHOG_ENDPOINT,
+      window.CRM.applyPageConfig(<?= InputUtils::jsonEncodeForScript([
+          'root' => SystemURLs::getRootPath(),
+          'fullURL' => SystemURLs::getURL(),
+          'lang' => $localeInfo->getLanguageCode(),
+          'isRTL' => $localeInfo->isRTL(),
+          'userId' => (string) $currentUser->getId(),
+          'userName' => $currentUser->getPerson()?->getFullName() ?? '',
+          'version' => $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown',
+          'systemLocale' => $localeInfo->getSystemLocale(),
+          'locale' => $localeInfo->getLocale(),
+          'shortLocale' => $localeInfo->getShortLocale(),
+          'timeZone' => SystemConfig::getValue('sTimeZone'),
+          'maxUploadSize' => SystemService::getMaxUploadFileSize(true),
+          'maxUploadSizeBytes' => (string) SystemService::getMaxUploadFileSize(false),
+          'datePickerformat' => SystemConfig::getValue('sDatePickerPlaceHolder'),
+          'churchWebSite' => SystemConfig::getValue('sChurchWebSite'),
+          'systemConfigs' => [
+              'sDateTimeFormat' => json_decode(DateTimeUtils::getDateTimeFormatForJs(), true),
+          ],
+          'comm' => [
+              'emailSendingEnabled' => SystemConfig::isEmailEnabled(),
+              'emailSignature' => \ChurchCRM\Service\EmailComposerService::defaultSignature($currentUser),
+              'vonageEnabled' => PluginManager::getPlugin('vonage')?->isConfigured() ?? false,
+              'defaultEmailToAddress' => $currentUser->isEmailEnabled() ? SystemConfig::getValue('sToEmailAddress') : '',
+          ],
+          'plugins' => PluginManager::getPluginsClientConfig() ?: new stdClass(),
+          'bEnableGravatarPhotos' => PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false,
+          'permissions' => [
+              'addRecords' => $currentUser->isAddRecordsEnabled(),
+              'editRecords' => $currentUser->isEditRecordsEnabled(),
+          ],
+          'personDeleteBlocked' => (object) PersonService::getLoginDeletionBlockedReasons(),
+          'PageName' => $_SERVER['REQUEST_URI'] ?? '',
+          'telemetry' => [
+              'level' => TelemetryService::getLevel(),
+              'key' => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',
+              'endpoint' => TelemetryService::POSTHOG_ENDPOINT,
               'distinctID' => SystemConfig::getValue('sSystemID'),
-          ]) ?>,
-          currency: <?= InputUtils::jsonEncodeForScript(CurrencyFormatter::toArray()) ?>
-      });
-      // Attach format() to window.CRM.currency so JS callers (DataTables, Chart.js)
-      // can render localised money via window.CRM.currency.format(amount [, decimals]).
-      window.CRM.currency.format = function (amount, decimals) {
-          if (decimals === undefined) decimals = 2;
-          var val = parseFloat(amount);
-          if (isNaN(val)) return '';          // match PHP empty-string fallback for non-numeric input
-          var parts = val.toFixed(decimals).split('.');
-          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, this.thousand);
-          var formatted = parts[0] + (decimals > 0 ? this.decimal + parts[1] : '');
-          var sym = this.symbol.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-          return this.position === 'after'
-              ? formatted + '\u00A0' + sym
-              : sym + '\u00A0' + formatted;
-      };
-      // Initialize moment locale if available
-      if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
-          moment.locale(window.CRM.shortLocale);
-      }
+          ],
+          'currency' => CurrencyFormatter::toArray(),
+          'dataTablePageLength' => (int) $tableSize,
+          'dataTableLanguageUrl' => SystemURLs::getRootPath() . '/locale/vendor/datatables/' . $localeInfo->getDataTables() . '.json',
+          'localeConfig' => $localeInfo->getLocaleConfigArray(),
+      ]) ?>);
   </script>
   <script src="<?= SystemURLs::assetVersioned('/skin/js/CRMJSOM.js') ?>"></script>
   <script src="<?= SystemURLs::assetVersioned('/skin/js/CommunicationUtils.js') ?>"></script>
