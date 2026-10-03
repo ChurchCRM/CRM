@@ -119,7 +119,7 @@ module.exports = {
     publicPath: 'auto',
   },
   externals: {
-    // Leaflet is loaded as a global from skin/external/leaflet/leaflet.js (Grunt-copied).
+    // Leaflet is loaded as a global from skin/external/leaflet/leaflet.js.
     // Mapping it here lets webpack entries import 'leaflet' without bundling it.
     leaflet: 'L',
   },
