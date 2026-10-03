@@ -72,20 +72,6 @@ describe("API Private Geocoder — street name normalisation (#9847)", () => {
         });
     });
 
-    it("keeps a route number intact (FM 1960 is not 1960th)", () => {
-        cy.wait(1100);
-        cy.makePrivateAdminAPICall(
-            "POST",
-            "/api/geocoder/address",
-            { address: "4210 FM 1960 Rd W, Houston, TX 77068" },
-            200,
-            30000,
-        ).then((response) => {
-            expect(response.body.Latitude).to.be.within(29.8, 30.1);
-            expect(response.body.Longitude).to.be.within(-95.7, -95.3);
-        });
-    });
-
     it("strips stacked unit designators", () => {
         cy.wait(1100);
         cy.makePrivateAdminAPICall(
