@@ -12,7 +12,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/family-register.min.css') ?>">
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM = {
+    window.CRM = Object.assign(window.CRM || {}, {
         root:"<?= SystemURLs::getRootPath() ?>",
         churchWebSite:"<?= SystemURLs::getRootPath() ?>/",
         churchName:<?= json_encode(ChurchMetaData::getChurchName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
@@ -21,7 +21,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
             cell:<?= SystemConfig::getValueForJs('sPhoneFormatCell') ?>,
             work:<?= SystemConfig::getValueForJs('sPhoneFormatWithExt') ?>
         }
-    };
+    });
 </script>
 <div class="register-box" style="max-width: 900px;">
     <div class="register-logo text-center mb-4">

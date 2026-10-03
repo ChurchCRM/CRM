@@ -171,8 +171,8 @@ module.exports = {
       ignoreOrder: false,
     }),
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
+      $: path.resolve(__dirname, 'webpack/jquery-shared.js'),
+      jQuery: path.resolve(__dirname, 'webpack/jquery-shared.js'),
     }),
     new FixCssUrlQuotesPlugin(),
   ],
