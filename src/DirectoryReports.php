@@ -12,7 +12,6 @@ use ChurchCRM\view\PageHeader;
 $sPageTitle = gettext('Directory reports');
 $sPageSubtitle = gettext('Generate directory listings and printed materials');
 $aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Data & Reports'), '/QueryList.php'],
     [gettext('Directory Reports')],
 ]);
 require_once __DIR__ . '/Include/Header.php';

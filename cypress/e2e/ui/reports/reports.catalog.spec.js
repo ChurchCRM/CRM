@@ -14,10 +14,11 @@ describe("Reports menu (#10259)", () => {
             cy.request({ url: "/v2/reports", failOnStatusCode: false }).its("status").should("eq", 404);
         });
 
-        it("keeps Queries next to the module reports", () => {
+        it("does not link to the retired query list", () => {
             cy.visit("/v2/dashboard");
             cy.get('a[href$="/people/reports"]').should("exist");
-            cy.get('a[href$="QueryList.php"]').should("exist");
+            cy.get('a[href$="QueryList.php"]').should("not.exist");
+            cy.request({ url: "/QueryList.php", failOnStatusCode: false }).its("status").should("eq", 404);
         });
 
         it("serves People Reports from /people/reports", () => {

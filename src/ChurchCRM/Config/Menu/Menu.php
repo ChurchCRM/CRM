@@ -343,12 +343,10 @@ class Menu
     private static function getReportsMenu(bool $isAdmin): MenuItem
     {
         $reports = ReportCatalog::forUser(AuthenticationManager::getCurrentUser());
-        $reportsMenu = new MenuItem(gettext('Reports'), '', $reports !== [] || $isAdmin, 'fa-database');
+        $reportsMenu = new MenuItem(gettext('Reports'), '', $reports !== [], 'fa-database');
         foreach ($reports as $report) {
             $reportsMenu->addSubMenu(new MenuItem($report['title'], $report['url'], true, $report['icon']));
         }
-        // GHSA-6rgg-mrx3-92w7: QueryList.php requires isAdmin()
-        $reportsMenu->addSubMenu(new MenuItem(gettext('Queries'), 'QueryList.php', $isAdmin, 'fa-database'));
 
         return $reportsMenu;
     }

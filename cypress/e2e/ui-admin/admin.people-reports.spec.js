@@ -52,7 +52,7 @@ describe("People Reports (#9914, #9915)", () => {
     it("is reachable from the Data/Reports menu next to Queries", () => {
         cy.visit("/v2/dashboard");
         cy.get('a[href$="/people/reports"]').should("exist");
-        cy.get('a[href$="QueryList.php"]').should("exist");
+        cy.get('a[href$="QueryList.php"]').should("not.exist");
     });
 
     it("month dropdown lists the twelve months and defaults to next month", () => {

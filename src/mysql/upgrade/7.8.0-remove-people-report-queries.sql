@@ -1,16 +1,9 @@
--- ChurchCRM 7.8.0 — Remove people queries that now live at /people/reports.
--- qry_ID 9, 18, 22, 25, 26, 100, 201, 300, 301.
--- Pledge comparison (28) and missing pledges (30) stay on Query List.
--- Idempotent: a second run deletes nothing.
+-- ChurchCRM 7.8.0 — Drop the predefined-query tables.
+-- People queries now live at /people/reports. The two pledge queries that
+-- remained are retired with the tables. Idempotent.
 
-DELETE FROM queryparameteroptions_qpo
-WHERE qpo_qrp_ID IN (
-    SELECT qrp_ID FROM queryparameters_qrp
-    WHERE qrp_qry_ID IN (9, 18, 22, 25, 26, 100, 201, 300, 301)
-);
+DROP TABLE IF EXISTS `queryparameteroptions_qpo`;
+DROP TABLE IF EXISTS `queryparameters_qrp`;
+DROP TABLE IF EXISTS `query_qry`;
 
-DELETE FROM queryparameters_qrp
-WHERE qrp_qry_ID IN (9, 18, 22, 25, 26, 100, 201, 300, 301);
-
-DELETE FROM query_qry
-WHERE qry_ID IN (9, 18, 22, 25, 26, 100, 201, 300, 301);
+DELETE FROM `config_cfg` WHERE `cfg_name` = 'aFinanceQueries';

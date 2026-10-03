@@ -145,19 +145,15 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
         });
     });
 
-    describe("Query list and QueryView are admin-only (GHSA-6rgg-mrx3-92w7)", () => {
+    describe("Retired query pages are gone", () => {
         beforeEach(login);
 
-        // After the admin gate fix, non-admin users are redirected to access-denied
-        // on both QueryList.php and QueryView.php.
-        it("Query list redirects non-admins to access-denied", () => {
-            cy.visit("QueryList.php", { failOnStatusCode: false });
-            cy.url().should("include", "/v2/access-denied");
+        it("Query list is not served", () => {
+            cy.request({ url: "QueryList.php", failOnStatusCode: false }).its("status").should("eq", 404);
         });
 
-        it("Opening any QueryView directly redirects non-admins to access-denied", () => {
-            cy.visit("QueryView.php?QueryID=28", { failOnStatusCode: false });
-            cy.url().should("include", "/v2/access-denied");
+        it("Query view is not served", () => {
+            cy.request({ url: "QueryView.php?QueryID=28", failOnStatusCode: false }).its("status").should("eq", 404);
         });
     });
 
@@ -226,7 +222,7 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
                     cy.contains("a", "Reports").should("not.exist");
                     cy.contains("a", "People Reports").should("not.exist");
                     cy.contains("a", "Financial Reports").should("not.exist");
-                    cy.contains("a", "Queries").should("not.exist");
+
                 });
             });
         });
