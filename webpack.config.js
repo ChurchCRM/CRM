@@ -121,11 +121,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
-    alias: {
-      // Real package. "jquery" is the bridge in webpack/jquery-bootstrap.js.
-      'jquery-core': path.resolve(__dirname, 'node_modules/jquery'),
-      jquery: path.resolve(__dirname, 'webpack/jquery-bootstrap.js'),
-    },
   },
   cache: {
     type: 'filesystem',
