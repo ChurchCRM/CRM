@@ -6,10 +6,12 @@ import "./admin-dashboard.css";
 import "./telemetry-consent";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize tooltips if jQuery is available
-  if (typeof jQuery !== "undefined") {
-    jQuery('[data-bs-toggle="tooltip"]').tooltip();
-  }
+  // Bootstrap's data API is on window.bootstrap. The page bundle's jQuery
+  // does not get $.fn.tooltip.
+  window.bootstrap?.Tooltip &&
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+      window.bootstrap.Tooltip.getOrCreateInstance(el);
+    });
 
   // Add smooth scroll behavior
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

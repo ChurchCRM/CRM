@@ -46,7 +46,7 @@ const BUCKETS = [
   { id: 'locale', title: 'Localization', match: f => /^(locale|src\/locale)\//.test(f) },
   { id: 'deps', title: 'Dependencies', match: f => /(^|\/)(package(-lock)?\.json|composer\.(json|lock))$/.test(f) },
   { id: 'testing', title: 'Testing', match: f => /^(cypress|tests?)\//.test(f) },
-  { id: 'ci', title: 'CI & tooling', match: f => /^(\.github|scripts|docker)\//.test(f) || /^(Gruntfile\.js|webpack\.config\.js|biome\.json|rector\.php|tsconfig\.json)$/.test(f) },
+  { id: 'ci', title: 'CI & tooling', match: f => /^(\.github|scripts|docker)\//.test(f) || /^(webpack\.config\.js|biome\.json|rector\.php|tsconfig\.json)$/.test(f) },
   { id: 'marketing', title: 'Marketing capture', match: f => /^playwright\//.test(f) },
   { id: 'docs', title: 'Docs & agent guidance', match: f => /^(\.agents|\.claude|docs|changelog)\//.test(f) || /\.md$/.test(f) },
 ];

@@ -694,10 +694,9 @@ import "../src/skin/scss/system-settings-panel.scss";
         this.savedValues[el.name] = SettingTypes.persons.getValue(el);
       });
 
-      // Initialize Bootstrap tooltips on help icons
-      if (window.$ && $.fn.tooltip) {
-        $(this.container).find('[data-bs-toggle="tooltip"]').tooltip();
-      }
+      this.container.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+        window.bootstrap?.Tooltip?.getOrCreateInstance(el);
+      });
 
       const saveBtn = this.container.querySelector(".settings-panel-save");
 

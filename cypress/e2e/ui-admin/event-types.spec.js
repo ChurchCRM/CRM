@@ -62,6 +62,7 @@ describe('Event Type Management', () => {
             const dt = win.$('#eventTypesTable').DataTable();
             dt.search(query).draw();
         });
+        cy.get('#eventTypesTable tbody', { timeout: 20000 }).should('contain', query);
     }
 
     it('should create event type with midnight (12:00 AM)', () => {

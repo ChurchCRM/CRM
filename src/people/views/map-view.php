@@ -16,7 +16,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
      the church has no location configured. -->
 <div id="geocodeAllResults" class="mt-2" aria-live="polite"></div>
 
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+
 
 <?php if (!$mapConfig['hasLocation']): ?>
     <div class="alert alert-danger">
@@ -82,7 +82,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.mapConfig = <?= InputUtils::jsonEncodeForScript($mapConfig) ?>;
 </script>

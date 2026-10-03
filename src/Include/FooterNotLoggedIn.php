@@ -1,11 +1,7 @@
 <?php
 
-use ChurchCRM\Bootstrapper;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
-
-use ChurchCRM\Utils\InputUtils;
 ?>
 
 <div class="auth-footer">
@@ -33,26 +29,6 @@ use ChurchCRM\Utils\InputUtils;
   </div>
 </div>
 
-  <!-- InputMask -->
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/inputmask/jquery.inputmask.min.js') ?>"></script>
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/inputmask/inputmask.binding.js') ?>"></script>
-
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js') ?>"></script>
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/bootbox/bootbox.min.js') ?>"></script>
-
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/i18next/i18next.min.js') ?>"></script>
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/just-validate/just-validate.production.min.js') ?>"></script>
-
-  <script src="<?= SystemURLs::assetVersioned('/skin/v2/locale-loader.min.js') ?>"></script>
-  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    // Load locale files dynamically
-    (function() {
-        const localeConfig = <?= InputUtils::jsonEncodeForScript(Bootstrapper::getCurrentLocale()->getLocaleConfigArray()) ?>;
-        if (window.CRM && window.CRM.loadLocaleFiles) {
-            window.CRM.loadLocaleFiles(localeConfig);
-        }
-    })();
-  </script>
   <?= PluginManager::getPluginFooterContent() ?>
 </body>
 </html>

@@ -5,8 +5,8 @@
 import "./get-started.css";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Bootstrap tooltips
-  if (typeof jQuery !== "undefined") {
-    jQuery('[data-bs-toggle="tooltip"]').tooltip();
-  }
+  window.bootstrap?.Tooltip &&
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+      window.bootstrap.Tooltip.getOrCreateInstance(el);
+    });
 });

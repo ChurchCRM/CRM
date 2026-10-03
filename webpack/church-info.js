@@ -7,6 +7,7 @@
  */
 
 import { buildAdminAPIUrl } from "./api-utils";
+import L from "./leaflet-global";
 
 // Holds the active Leaflet map instance so it can be torn down and recreated
 // when coordinates are regenerated (Leaflet does not support re-centering a
