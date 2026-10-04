@@ -325,8 +325,10 @@ class DemoDataService
 
                 $family->setSendNewsletter((isset($famData['sendNewsletter']) && $famData['sendNewsletter']) ? 'TRUE' : 'FALSE');
                 $familySelfRegistered = !empty($famData['selfRegistered']);
+                $familyNeedsReview = $familySelfRegistered && ($famData['needsReview'] ?? true);
                 if ($familySelfRegistered) {
                     $family->setEnteredBy(Person::SELF_REGISTER);
+                    $family->setNeedsReview($familyNeedsReview);
                 }
                 if (($famData['active'] ?? true) === false) {
                     $family->setDateDeactivated($today);
@@ -392,6 +394,7 @@ class DemoDataService
                         }
                         if ($familySelfRegistered) {
                             $person->setEnteredBy(Person::SELF_REGISTER);
+                            $person->setNeedsReview($familyNeedsReview);
                         }
                         $this->applyDemoPersonStatus($person, $m, $today);
                         $person->save();
@@ -510,6 +513,7 @@ class DemoDataService
                 }
                 if (!empty($m['selfRegistered'])) {
                     $person->setEnteredBy(Person::SELF_REGISTER);
+                    $person->setNeedsReview($m['needsReview'] ?? true);
                 }
                 $this->applyDemoPersonStatus($person, $m, $today);
                 $person->save();

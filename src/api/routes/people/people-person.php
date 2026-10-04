@@ -6,6 +6,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\SystemService;
@@ -327,6 +328,46 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
     // Set person role
     $group->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
+
+    /**
+     * @OA\Post(
+     *     path="/person/{personId}/approve-review",
+     *     summary="Approve a self-registered, family-less person, clearing their needs-review flag",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Person approved",
+     *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
+     *     ),
+     *     @OA\Response(response=400, description="Person belongs to a family — approve via the family instead")
+     * )
+     */
+    $group->post('/approve-review', function (Request $request, Response $response, array $args): Response {
+        $person = $request->getAttribute('person');
+
+        if ($person->getFamId() > 0) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('This person belongs to a family — approve the family instead'),
+                [],
+                400
+            );
+        }
+
+        if ($person->getEnteredBy() !== Person::SELF_REGISTER || !$person->getNeedsReview()) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('This person is not a pending self-registration'),
+                [],
+                400
+            );
+        }
+
+        $person->setNeedsReview(false);
+        $person->save();
+
+        return SlimUtils::renderJSON($response, ['success' => true]);
+    })->add(new EditRecordsRoleAuthMiddleware());
 
     // Add person to cart
     $group->post('/addToCart', function (Request $request, Response $response, array $args): Response {

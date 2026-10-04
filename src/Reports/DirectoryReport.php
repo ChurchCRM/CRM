@@ -144,6 +144,9 @@ if (SystemConfig::getBooleanValue('bHideDeceasedFromDirectory')) {
     $sWhereExt .= 'AND per_DateDeceased IS NULL ';
 }
 
+// Self-registrations still awaiting review do not go in the printed directory.
+$sWhereExt .= ' AND per_NeedsReview = 0 ';
+
 //Exclude inactive families
 if ($bExcludeInactive) {
     $sWhereExt .= ' AND fam_DateDeactivated is null';
