@@ -16474,24 +16474,12 @@ msgid "Family Delete Confirmation"
 msgstr "Potvrzení smazání rodiny"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Jednotlivci (bez rodiny)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nové vlastní registrace"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Potvrzení smazání typu vlastnosti"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Zkontrolujte nové rodiny a jednotlivce, kteří se zaregistrovali prostřednictvím veřejného registračního formuláře"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Níže zkontrolujte nové přihlášky z veřejného registračního formuláře. Záznamy bez e-mailu nebo telefonu jsou označeny — před dalším kontaktem ověřte kontaktní údaje."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

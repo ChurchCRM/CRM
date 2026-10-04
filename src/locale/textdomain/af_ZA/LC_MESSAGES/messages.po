@@ -16473,24 +16473,12 @@ msgid "Family Delete Confirmation"
 msgstr "Gesin-verwyderingsbevestiging"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Individue (geen gesin)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nuwe Self-registrasies"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Eiendomstipe-verwyderingsbevestiging"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Hersien nuwe gesinne en individue wat op jou openbare registrasievorm aangemeld het"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Hersien nuwe aanmeldings van jou openbare registrasievorm hieronder. Inskrywings sonder e-pos of telefoon is gemerk — verifieer kontakinligting voor opvolging."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

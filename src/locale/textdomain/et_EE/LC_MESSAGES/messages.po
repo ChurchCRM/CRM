@@ -16472,24 +16472,12 @@ msgid "Family Delete Confirmation"
 msgstr "Pere kustutamise kinnitus"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Üksikisikud (ilma pereta)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Uued isiklikud registreerumised"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Omaduse tüübi kustutamise kinnitus"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Vaata üle uued pered ja isikud, kes registreerusid avaliku registreerimisvormiga"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Vaata allpool üle uued registreerumised avaliku registreerimisvormiga. Kirjed ilma e-posti või telefonita on märgistatud — kontrolli kontaktandmeid enne järeltegevust."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

@@ -16450,24 +16450,12 @@ msgid "Family Delete Confirmation"
 msgstr "కుటుంబ తొలగింపు నిర్ధారణ"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "వ్యక్తులు (కుటుంబం లేచు)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "కొత్త స్వయం నమోదులు"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "ఆస్తి రకం తొలగింపు నిర్ధారణ"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "మీ పబ్లిక్ నమోదు ఫార్మ్లో సైన్ అప్ చేసిన కొత్త కుటుంబాలు మరియు వ్యక్తులను సమీక్షించండి"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "దిగువ మీ పబ్లిక్ నమోదు ఫార్మ్ నుండి కొత్త సైన్-అప్‌లను సమీక్షించండి. ఇమెయిల్ లేదా ఫోన్ లేని ఎంట్రీలు ఫ్లాగ్ చేయబడ్డాయి — అనుసరించే ముందు సంపర్క సమాచారాన్ని ధృవీకరించండి."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

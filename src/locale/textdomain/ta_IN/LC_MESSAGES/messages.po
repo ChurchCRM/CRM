@@ -16485,24 +16485,12 @@ msgid "Family Delete Confirmation"
 msgstr "குடும்பம் நீக்கும் உறுதிப்படுத்தல்"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "தனியாட்கள் (குடும்பம் இல்லாதவர்கள்)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "புதிய சுய-பதிவுகள்"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "சொத்து வகை நீக்கும் உறுதிப்படுத்தல்"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "உங்கள் பொது பதிவு படிவத்தில் பதிவு செய்த புதிய குடும்பங்கள் மற்றும் தனியாட்களை மதிப்பாய்வு செய்யுங்கள்"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "கீழே உங்கள் பொது பதிவு படிவத்திலிருந்து புதிய பதிவுகளை மதிப்பாய்வு செய்யுங்கள். மின்னஞ்சல் அல்லது தொலைபேசி இல்லாத பதிவுகள் கொடியிடப்பட்டுள்ளன — தொடர்பு கொள்வதற்கு முன் தொடர்பு தகவலை சரிபாருங்கள்."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
