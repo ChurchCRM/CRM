@@ -303,6 +303,11 @@ function daysToNext(dow) {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key", "nofinance.api.key", "plainauth.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — event ministry ownership and calendar integration (#9713)", () => {

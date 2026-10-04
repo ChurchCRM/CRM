@@ -194,6 +194,11 @@ function cleanupFixtures() {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epic #9701)", () => {

@@ -266,6 +266,11 @@ function propose(assignmentId, substitutePersonId, status = 201, key = SELFEDIT_
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key", "plainauth.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — substitution / swap workflow (#9709, epic #9701, D13)", () => {

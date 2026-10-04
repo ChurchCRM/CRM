@@ -212,6 +212,11 @@ function shifted(wallClock, minutes) {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "plainauth.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — every occurrence anchored to a calendar event (D20), schedule time offsets (D21) and the four ways a schedule finds its events, Staff this event included (D22)", () => {

@@ -227,6 +227,14 @@ function seedPendingDoorAssignment() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
+before(() => {
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
+});
+
 describe("Member Portal (MP6, #9867) — volunteering inside the portal", () => {
     before(() => {
         setVersion("v2");

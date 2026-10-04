@@ -368,6 +368,11 @@ function cleanupFixtures() {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key", "nofinance.api.key", "plainauth.api.key", "menuoptions.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — the coordinator dashboard aggregate (#9711, epic #9701)", () => {

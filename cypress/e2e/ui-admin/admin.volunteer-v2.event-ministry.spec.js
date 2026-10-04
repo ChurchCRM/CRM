@@ -275,6 +275,11 @@ function buildFixtures() {
 
 before(() => {
     cy.rememberTestEnv(["admin.username", "admin.password"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — event ministry field and Volunteers card (#9713)", () => {

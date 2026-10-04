@@ -165,6 +165,12 @@ declare namespace Cypress {
      */
     restoreSystemConfig(name: string, value: string | undefined): Chainable<void>;
 
+    /** Run the browser in the church's time zone (sTimeZone), the zone the server counts days in. */
+    useChurchTimeZone(): Chainable<void>;
+
+    /** Undo useChurchTimeZone. */
+    useHostTimeZone(): Chainable<void>;
+
     /**
      * Make API request with user privileges
      * @param method - HTTP method

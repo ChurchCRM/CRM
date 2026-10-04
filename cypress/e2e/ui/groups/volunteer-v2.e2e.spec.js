@@ -326,6 +326,11 @@ function cleanupFixtures() {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "admin.username", "admin.password", "standard.username", "standard.password"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — #9714's browser walk-through and the responsive pass", () => {

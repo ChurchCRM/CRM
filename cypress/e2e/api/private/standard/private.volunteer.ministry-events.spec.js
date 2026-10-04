@@ -196,6 +196,11 @@ function cleanupFixtures() {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 D24 — a ministry's events created through core from the ministry page, pinned by the D25 rule; and the Calendar tab's list with staffing and headcount (D26)", () => {

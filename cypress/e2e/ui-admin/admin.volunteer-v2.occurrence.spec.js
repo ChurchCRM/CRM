@@ -145,6 +145,11 @@ function daysToNext(dow) {
 
 before(() => {
     cy.rememberTestEnv(["admin.username", "admin.password"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {

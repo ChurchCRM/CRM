@@ -271,6 +271,11 @@ function cleanupFixtures() {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — #9714 scenario 2, \"Sunday Worship\", as ONE end-to-end run", () => {

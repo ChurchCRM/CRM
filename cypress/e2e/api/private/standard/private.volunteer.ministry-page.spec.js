@@ -294,6 +294,11 @@ function summaryEndpointFor(key, expectedStatus = 200) {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key", "editrecords.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — the two API surfaces the restructured ministry page needs (epic #9701, design §5.4 as amended by the product owner)", () => {

@@ -184,6 +184,14 @@ function cleanupFixtures() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
+before(() => {
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
+});
+
 describe("Member Portal (MP7, #9868) — My Teams", () => {
     before(() => {
         setVersion("v2");

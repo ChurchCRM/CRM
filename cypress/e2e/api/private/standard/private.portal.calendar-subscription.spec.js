@@ -139,6 +139,11 @@ const unfold = (ics) => ics.replace(/\r\n[ \t]/g, "");
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Member Portal calendar subscription", () => {

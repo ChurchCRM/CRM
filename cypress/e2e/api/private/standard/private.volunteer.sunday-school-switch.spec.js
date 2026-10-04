@@ -93,6 +93,11 @@ function cleanupFixtures() {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 D29 — \"Can this ministry provide teachers for Sunday School?\" (design §0.8, §2.3, §4.6)", () => {

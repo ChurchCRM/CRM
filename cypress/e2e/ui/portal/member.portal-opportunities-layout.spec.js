@@ -167,6 +167,14 @@ function cleanupFixtures() {
 
 // ── fixture: an advertising ministry, one position, and NO schedule yet ─────
 
+before(() => {
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
+});
+
 describe("Member Portal — the layout of \"Find something to do\"", () => {
     before(() => {
         adminApi("POST", SETTING_URL, { value: "v2" }, 200);

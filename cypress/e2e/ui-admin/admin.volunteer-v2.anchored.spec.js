@@ -91,6 +91,11 @@ function openAddSchedule() {
 
 before(() => {
     cy.rememberTestEnv(["admin.username", "admin.password"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — where a schedule's dates come from, and Staff an event", () => {

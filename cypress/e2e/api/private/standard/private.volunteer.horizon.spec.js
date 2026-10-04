@@ -200,6 +200,11 @@ function cleanupFixtures() {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 D31 — schedules follow events that already exist, up to a church-wide scheduling horizon that a daily timer job keeps every schedule filled to; the \"Other\" event type and the default type of a ministry's new events", () => {

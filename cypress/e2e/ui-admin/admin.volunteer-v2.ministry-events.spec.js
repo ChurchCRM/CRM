@@ -175,6 +175,11 @@ function rowAction(title, selector) {
 
 before(() => {
     cy.rememberTestEnv(["admin.username", "admin.password"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount card (D26)", () => {

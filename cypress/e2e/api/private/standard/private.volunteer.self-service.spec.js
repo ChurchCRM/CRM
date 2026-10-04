@@ -313,6 +313,11 @@ function cleanupFixtures() {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key", "plainauth.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — the member self-service surface (#9712, epic #9701)", () => {

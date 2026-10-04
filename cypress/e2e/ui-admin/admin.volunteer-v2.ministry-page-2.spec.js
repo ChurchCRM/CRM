@@ -184,6 +184,11 @@ function clearQualifications(positionId) {
 
 before(() => {
     cy.rememberTestEnv(["admin.username", "admin.password"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 ministry page, round two (#9701)", () => {

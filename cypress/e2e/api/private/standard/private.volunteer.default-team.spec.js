@@ -120,6 +120,11 @@ function scheduleBody(teamId, name) {
 
 before(() => {
     cy.rememberTestEnv(["user.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — every ministry has at least one team (#9701)", () => {

@@ -125,6 +125,11 @@ function tickEvent(title) {
 
 before(() => {
     cy.rememberTestEnv(["admin.username", "admin.password", "standard.username", "standard.password"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — the Sunday School switch (D29) and a class's events (D28), on screen", () => {

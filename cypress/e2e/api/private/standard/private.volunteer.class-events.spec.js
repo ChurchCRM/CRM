@@ -169,6 +169,11 @@ const CLASS_KEYS = ["keep", "remove", "move", "moveTo", "delKeep", "delRemove", 
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 D28 — a class's events when its team's class changes or the team is deleted, and the Calendar tab's Delete events (design §0.8, §2.4, §3.3, §4.6)", () => {

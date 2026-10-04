@@ -129,6 +129,11 @@ function openNewEvent() {
 
 before(() => {
     cy.rememberTestEnv(["admin.username", "admin.password"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 D31 — schedules follow events that exist, up to the horizon", () => {

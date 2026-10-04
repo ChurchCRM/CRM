@@ -371,6 +371,11 @@ function buildFixture() {
 
 before(() => {
     cy.rememberTestEnv(["admin.username", "admin.password", "standard.username", "standard.password"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 coordinator dashboard (#9711)", () => {

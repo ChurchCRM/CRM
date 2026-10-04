@@ -219,6 +219,11 @@ function occurrence(occurrenceId) {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {

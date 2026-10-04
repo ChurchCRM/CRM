@@ -251,6 +251,14 @@ function seedPendingDoorAssignment() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
+before(() => {
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
+});
+
 describe("Volunteer v2 — S5 / S6, the volunteer self-service screens (#9712, §5.6), inside the Member Portal (#9867)", () => {
     before(() => {
         setVersion("v2");

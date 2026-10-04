@@ -212,6 +212,14 @@ const SUNDAY_EVENTS = `${PREFIX} Sunday Welcome`;
 
 // ── the church, the day before the volunteer was asked ─────────────────────
 
+before(() => {
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
+});
+
 describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\", as ONE end-to-end run", () => {
     before(() => {
         adminApi("GET", SETTING_URL, null, 200).then((resp) => {

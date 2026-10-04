@@ -78,6 +78,11 @@ const createdEventTitles = [];
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Member Portal calendar", () => {

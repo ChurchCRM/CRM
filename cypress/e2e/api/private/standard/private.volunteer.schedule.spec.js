@@ -268,6 +268,11 @@ function createPausedThenActive(ministryId, body) {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key", "plainauth.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {

@@ -244,6 +244,14 @@ function cleanupFixtures() {
 
 // ── the church's week, set up the way a coordinator would have left it ─────
 
+before(() => {
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
+});
+
 describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to-end run", () => {
     before(() => {
         adminApi("GET", SETTING_URL, null, 200).then((resp) => {

@@ -357,6 +357,11 @@ function resetWorkflow() {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "plainauth.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9701)", () => {

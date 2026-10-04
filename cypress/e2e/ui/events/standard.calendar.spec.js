@@ -23,6 +23,14 @@ function openNewEventModal() {
     cy.get("#event-title-input", { timeout: 15000 }).should("exist");
 }
 
+before(() => {
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
+});
+
 describe("Standard Calendar", () => {
     beforeEach(() => cy.setupStandardSession());
 

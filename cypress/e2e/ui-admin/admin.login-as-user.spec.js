@@ -44,6 +44,11 @@ function csrfTokenFromPage() {
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "standard.username", "standard.password"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Admin Login as User (masquerade)", () => {
