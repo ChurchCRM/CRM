@@ -225,7 +225,7 @@ menu escape downward.
 - `src/people/views/family-list.php:62`
 - `src/people/views/person-view.php:417`
 - `src/finance/views/funds/index.php:111`
-- `src/skin/js/finance-deposit-editor.js` (payments table)
+- `webpack/finance-deposit-editor.js` (payments table)
 
 ### The superseded form: `overflow: visible` <!-- learned: 2026-09-11 -->
 

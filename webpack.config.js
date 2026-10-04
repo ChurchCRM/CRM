@@ -126,6 +126,7 @@ module.exports = {
     'email-composer': './webpack/common/email-composer',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
+    'finance-deposit-editor': './webpack/finance-deposit-editor',
   },
   output: {
     path: path.resolve('./src/skin/v2'),
