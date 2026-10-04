@@ -124,7 +124,7 @@
       order: [[config.canDelete ? 2 : 1, "asc"]],
       drawCallback: function () {
         $("#payment-count").text(this.api().rows().count());
-        updateSelectionState();
+        updateSelectionState(this.api());
       },
     };
     $.extend(settings, window.CRM.plugin.dataTable);
@@ -135,17 +135,18 @@
     paymentsTable = $("#paymentsTable").DataTable(settings);
   }
 
-  function visibleGroupKeys() {
-    return paymentsTable
+  function visibleGroupKeys(table = paymentsTable) {
+    return table
       .rows({ search: "applied" })
       .data()
       .toArray()
       .map((row) => String(row.GroupKey));
   }
 
-  function updateSelectionState() {
+  // drawCallback fires during init, before paymentsTable is assigned, so it passes its own API.
+  function updateSelectionState(table = paymentsTable) {
     const selected = selectedKeys.size;
-    const visible = visibleGroupKeys();
+    const visible = visibleGroupKeys(table);
     const visibleSelected = visible.filter((key) => selectedKeys.has(key)).length;
     $("#deleteSelectedRows")
       .prop("disabled", selected === 0)
