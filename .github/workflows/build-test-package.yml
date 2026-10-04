@@ -83,6 +83,8 @@ jobs:
   #   everything else   → ["8.4"]        (push/PR — 8.5 and exhaustive
   #                                        coverage live in build-test-nightly.yml)
   configure:
+    # Locale sync PRs only touch translations; every job below needs this one, so they skip too.
+    if: ${{ !startsWith(github.head_ref, 'locale/') }}
     runs-on: ubuntu-24.04
     outputs:
       php-versions: ${{ steps.set-matrix.outputs.php-versions }}
