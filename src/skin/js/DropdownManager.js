@@ -44,6 +44,10 @@ class DropdownManager {
     }).done(function (data) {
       countrySelect.empty();
 
+      if (config.userSelected === "" && config.systemDefault === "") {
+        countrySelect.append(new Option("", "", true, true));
+      }
+
       $.each(data, function (idx, country) {
         let selected = false;
 

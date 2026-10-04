@@ -2,7 +2,7 @@
 
 describe("Address defaults fall back to the church address", () => {
     const original = {};
-    const keys = ["sDefaultCity", "sChurchCity"];
+    const keys = ["sDefaultCity", "sChurchCity", "sDefaultCountry", "sChurchCountry"];
 
     const setConfig = (name, value) =>
         cy.makePrivateAdminAPICall("POST", `admin/api/system/config/${name}`, { value }, 200);
@@ -40,5 +40,16 @@ describe("Address defaults fall back to the church address", () => {
         setConfig("sChurchCity", "Churchville");
         cy.visit("/PersonEditor.php?FamilyID=1");
         cy.get("input[type=hidden][name=City]").should("have.value", "");
+    });
+    it("leaves the country blank when no country default is configured", () => {
+        setConfig("sDefaultCountry", "");
+        setConfig("sChurchCountry", "");
+        cy.visit("/FamilyEditor.php");
+        cy.get("#Country", { timeout: 10000 })
+            .should("have.class", "tomselected")
+            .find("option")
+            .first()
+            .should("have.value", "");
+        cy.get("#Country").should("have.value", "");
     });
 });
