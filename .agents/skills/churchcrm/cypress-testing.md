@@ -25,6 +25,7 @@ App under test: `DEVELOPING.md` (`npm run docker:test:start`).
 - Do not put optional demo values in Cypress seed if that would break the suite. Demo import is `src/admin/demo/config.json`
 - No `.only` / `.skip` in committed specs
 - `allowCypressEnv` is false. Do not call `Cypress.env()`. Secrets go through `cy.readEnv(key)` or `cy.rememberTestEnv(keys)` / `Cypress.testEnv(key)` in `cypress/support/test-env.js`. Public run flags (`rowCountGuard`, `LOCALE_TIER`) use `Cypress.expose()`; select the locale tier with `--expose LOCALE_TIER=full`
+- The server counts days in `sTimeZone`; CI's browser is on UTC, a day ahead every evening. A spec that builds dates from the browser clock calls `cy.useChurchTimeZone()` in a root `before()` and `cy.useHostTimeZone()` in a root `after()` (`cypress/support/church-time-zone.js`). Check it locally with `TZ=UTC npx cypress run ...` between 8 pm and midnight Eastern
 - No narrative comments that repeat the `it()` title. One line only when Cypress or CI would otherwise surprise the next editor.
 
 ## PDF reports
