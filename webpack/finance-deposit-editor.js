@@ -18,6 +18,8 @@
   };
 
   let paymentsTable;
+  // Selection is kept by GroupKey so it survives paging, sorting and filtering.
+  const selectedKeys = new Set();
   let fundChart;
 
   function paymentUrl(groupKey, suffix) {
@@ -37,7 +39,8 @@
         orderable: false,
         searchable: false,
         className: "w-1",
-        render: () => '<input type="checkbox" class="form-check-input row-select">',
+        render: (_data, _type, row) =>
+          `<input type="checkbox" class="form-check-input row-select"${selectedKeys.has(String(row.GroupKey)) ? " checked" : ""}>`,
       });
     }
 
@@ -132,25 +135,26 @@
     paymentsTable = $("#paymentsTable").DataTable(settings);
   }
 
-  function selectedGroupKeys() {
-    const keys = [];
-    $("#paymentsTable tbody .row-select:checked").each(function () {
-      keys.push(paymentsTable.row($(this).closest("tr")).data().GroupKey);
-    });
-    return keys;
+  function visibleGroupKeys() {
+    return paymentsTable
+      .rows({ search: "applied" })
+      .data()
+      .toArray()
+      .map((row) => String(row.GroupKey));
   }
 
   function updateSelectionState() {
-    const total = $("#paymentsTable tbody .row-select").length;
-    const selected = $("#paymentsTable tbody .row-select:checked").length;
+    const selected = selectedKeys.size;
+    const visible = visibleGroupKeys();
+    const visibleSelected = visible.filter((key) => selectedKeys.has(key)).length;
     $("#deleteSelectedRows")
       .prop("disabled", selected === 0)
       .html(
         `<i class="fa-solid fa-trash-can me-1"></i>${i18next.t("Delete Selected")}${selected ? ` (${selected})` : ""}`,
       );
     $("#selectAllPayments")
-      .prop("checked", total > 0 && selected === total)
-      .prop("indeterminate", selected > 0 && selected < total);
+      .prop("checked", visible.length > 0 && visibleSelected === visible.length)
+      .prop("indeterminate", visibleSelected > 0 && visibleSelected < visible.length);
   }
 
   function confirmDelete(groupKeys) {
@@ -170,35 +174,58 @@
         if (!confirmed) {
           return;
         }
-        $.when(
-          ...groupKeys.map((key) =>
-            $.ajax({
-              type: "DELETE",
-              url: `${window.CRM.root}/api/payments/${encodeURIComponent(key)}`,
-              dataType: "json",
-            }),
+        $("#deleteSelectedRows").prop("disabled", true);
+        // Wait for every request to settle so the outcome (and the reload) reflects the server state.
+        const results = groupKeys.map((key) =>
+          $.ajax({
+            type: "DELETE",
+            url: `${window.CRM.root}/api/payments/${encodeURIComponent(key)}`,
+            dataType: "json",
+          }).then(
+            () => ({ key, ok: true }),
+            () => ({ key, ok: false }),
           ),
-        )
-          .done(() => {
+        );
+        $.when(...results).done((...settled) => {
+          const failed = settled.filter((result) => !result.ok);
+          if (failed.length === 0) {
             window.CRM.notify(i18next.t("Payments deleted successfully"), { type: "success", delay: 2000 });
             setTimeout(() => window.location.reload(), 600);
-          })
-          .fail(() => window.CRM.notify(i18next.t("Error deleting payments"), { type: "danger", delay: 6000 }));
+            return;
+          }
+          settled.filter((result) => result.ok).forEach((result) => selectedKeys.delete(result.key));
+          const message =
+            failed.length === settled.length
+              ? i18next.t("Error deleting payments")
+              : `${i18next.t("Some payments could not be deleted")} (${failed.length}/${settled.length})`;
+          window.CRM.notify(message, { type: "danger", delay: 6000 });
+          paymentsTable.ajax.reload(() => updateSelectionState(), false);
+        });
       },
     });
   }
 
   function initActions() {
-    $("#paymentsTable").on("change", ".row-select", updateSelectionState);
+    $("#paymentsTable").on("change", ".row-select", function () {
+      const key = String(paymentsTable.row($(this).closest("tr")).data().GroupKey);
+      if (this.checked) {
+        selectedKeys.add(key);
+      } else {
+        selectedKeys.delete(key);
+      }
+      updateSelectionState();
+    });
     $("#paymentsTable").on("change", "#selectAllPayments", function () {
-      $("#paymentsTable tbody .row-select").prop("checked", this.checked);
+      const checked = this.checked;
+      visibleGroupKeys().forEach((key) => (checked ? selectedKeys.add(key) : selectedKeys.delete(key)));
+      $("#paymentsTable tbody .row-select").prop("checked", checked);
       updateSelectionState();
     });
     $("#paymentsTable").on("click", ".delete-payment", function () {
       confirmDelete([String($(this).data("group-key"))]);
     });
     $("#deleteSelectedRows").on("click", () => {
-      const keys = selectedGroupKeys();
+      const keys = [...selectedKeys];
       if (keys.length > 0) {
         confirmDelete(keys);
       }
@@ -260,7 +287,7 @@
     });
 
     $("#clearFundFilter").on("click", function () {
-      paymentsTable.search("").draw();
+      paymentsTable.search("").columns().search("").draw();
       $(this).addClass("d-none");
     });
   }
@@ -278,7 +305,12 @@
         toolbar: { show: false },
         events: {
           dataPointSelection: (_event, _chart, opts) => {
-            paymentsTable.search(config.fundLabels[opts.dataPointIndex]).draw();
+            // Match whole fund names in the Fund column only, so other columns can't leak in.
+            const label = $.fn.dataTable.util.escapeRegex(config.fundLabels[opts.dataPointIndex]);
+            paymentsTable
+              .column(config.canDelete ? 3 : 2)
+              .search(`(^|, )${label}(,|$)`, true, false)
+              .draw();
             $("#clearFundFilter").removeClass("d-none");
             document.getElementById("paymentsTable").scrollIntoView({ behavior: "smooth", block: "start" });
           },
