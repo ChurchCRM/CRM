@@ -123,7 +123,9 @@ describe("Self Registrations review page", () => {
         it("shows a pending family's member names, address, contact and age", () => {
             registerFamily().then(({ name }) => {
                 cy.visit("people/self-register");
-                row(name).should("contain", "Fam").and("contain", "1 Review St").and("contain", "member-ui@example.com").and("contain", "Today");
+                row(name).should("contain", "Fam").and("contain", "1 Review St").and("contain", "member-ui@example.com");
+                // Registered moments ago; a run that crosses midnight renders "Yesterday" instead of "Today".
+                row(name).invoke("text").should("match", /Today|Yesterday/);
             });
         });
 
