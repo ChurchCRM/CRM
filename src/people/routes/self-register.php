@@ -1,11 +1,12 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Person;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\view\PageHeader;
-use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -13,23 +14,14 @@ use Slim\Views\PhpRenderer;
 $app->get('/self-register', function (Request $request, Response $response): Response {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-    $familyCount = FamilyQuery::create()
-        ->filterByEnteredBy(Person::SELF_REGISTER)
-        ->count();
-    // Everyone waiting for review who is not already counted as part of a
-    // self-registered family above: standalone individuals, plus people a
-    // member proposed for their own existing family in the Member Portal
-    // (#9865). Mirrors GET /api/persons/self-register exactly.
-    $selfRegisteredFamilyIds = FamilyQuery::create()
-        ->filterByEnteredBy(Person::SELF_REGISTER)
-        ->select('Id')
-        ->find()
-        ->getData();
-    $individualQuery = PersonQuery::create()->filterByEnteredBy(Person::SELF_REGISTER);
-    if ($selfRegisteredFamilyIds !== []) {
-        $individualQuery->filterByFamId($selfRegisteredFamilyIds, Criteria::NOT_IN);
-    }
-    $individualCount = $individualQuery->count();
+    $familyQuery = fn () => FamilyQuery::create()->filterByEnteredBy(Person::SELF_REGISTER);
+    // Members of a self-registered family count under their family.
+    $individualQuery = fn () => PersonService::selfRegisteredPersonQuery();
+
+    $pendingCount = $familyQuery()->filterByNeedsReview(true)->count()
+        + $individualQuery()->filterByNeedsReview(true)->count();
+    $approvedCount = $familyQuery()->filterByNeedsReview(false)->count()
+        + $individualQuery()->filterByNeedsReview(false)->count();
 
     $pageArgs = [
         'sRootPath'       => SystemURLs::getRootPath(),
@@ -39,8 +31,10 @@ $app->get('/self-register', function (Request $request, Response $response): Res
             [gettext('People'), '/people/dashboard'],
             [gettext('Self Registrations')],
         ]),
-        'familyCount'     => $familyCount,
-        'individualCount' => $individualCount,
+        'pendingCount'    => $pendingCount,
+        'approvedCount'   => $approvedCount,
+        'selfRegEnabled'  => SystemConfig::getBooleanValue('bEnableSelfRegistration'),
+        'isAdmin'         => AuthenticationManager::getCurrentUser()->isAdmin(),
     ];
 
     return $renderer->render($response, 'self-register.php', $pageArgs);

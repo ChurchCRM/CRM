@@ -58,6 +58,26 @@ class PersonService
     /**
      * @return array<mixed, array<'address'|'displayName'|'familyID'|'familyRole'|'firstName'|'id'|'lastName'|'role'|'photoURI'|'title'|'uri', mixed>>
      */
+    /**
+     * Self-registered people reviewed on their own: individuals from the public form
+     * and people a member proposed for their existing family in the Member Portal
+     * (#9865). Members of a self-registered family are reviewed with that family.
+     */
+    public static function selfRegisteredPersonQuery(): PersonQuery
+    {
+        $query = PersonQuery::create()->filterByEnteredBy(Person::SELF_REGISTER);
+        $selfRegisteredFamilyIds = FamilyQuery::create()
+            ->filterByEnteredBy(Person::SELF_REGISTER)
+            ->select('Id')
+            ->find()
+            ->getData();
+        if ($selfRegisteredFamilyIds !== []) {
+            $query->filterByFamId($selfRegisteredFamilyIds, Criteria::NOT_IN);
+        }
+
+        return $query;
+    }
+
     public function search(string $searchTerm, bool $includeFamilyRole = true): array
     {
         $searchLikeString = '%' . $searchTerm . '%';

@@ -307,6 +307,7 @@ CREATE TABLE `family_fam` (
   `fam_Latitude` double default NULL,
   `fam_Longitude` double default NULL,
   `fam_Envelope` mediumint(9) NOT NULL default '0',
+  `fam_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -560,6 +561,7 @@ CREATE TABLE `person_per` (
   `per_Twitter` varchar(50) default NULL,
   `per_LinkedIn` varchar(50) default NULL,
   `per_DateDeactivated` date DEFAULT NULL,
+  `per_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`per_ID`),
   INDEX `idx_per_fam_ID` (`per_fam_ID`),
   INDEX `idx_per_cls_ID` (`per_cls_ID`),

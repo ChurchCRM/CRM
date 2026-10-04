@@ -380,6 +380,7 @@ class PortalSelfService
         $person->setFamily($family);
         $person->setFmrId(self::resolveRoleId($body['role'] ?? null));
         $person->setEnteredBy(Person::SELF_REGISTER);
+        $person->setNeedsReview(true);
         $person->setDateEntered(new DateTime());
 
         $birthday = self::asString($body['birthday'] ?? '');

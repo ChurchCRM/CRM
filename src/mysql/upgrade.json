@@ -120,6 +120,7 @@
       "/mysql/upgrade/7.8.0-family-second-address.sql",
       "/mysql/upgrade/7.8.0-fund-category.sql",
       "/mysql/upgrade/7.8.0-remove-people-report-queries.sql",
+      "/mysql/upgrade/7.8.0-self-register-needs-review.sql",
       "/mysql/upgrade/7.8.0-email-log.sql",
       "/mysql/upgrade/7.8.0-member-portal-calendars.sql",
       "/mysql/upgrade/7.8.0-volunteer-v2-schema.sql",

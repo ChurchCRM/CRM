@@ -409,6 +409,9 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             if ($person->isDeceased()) {
                                 echo ' <span class="badge bg-secondary-lt text-secondary" title="' . gettext('Deceased') . '"><i class="fa-solid fa-cross"></i></span>';
                             }
+                            if ($person->getNeedsReview()) {
+                                echo ' <span class="badge bg-warning-lt text-warning ms-1" title="' . gettext('Pending review') . '"><i class="fa-solid fa-user-clock"></i> ' . gettext('Pending review') . '</span>';
+                            }
                             // Add role in parentheses
                             $role = $person->getFamilyRoleName();
                             if (!empty($role) && $role !== 'Unassigned') {

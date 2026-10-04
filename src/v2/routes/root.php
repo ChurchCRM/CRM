@@ -116,6 +116,7 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         'dashboardCounts'                 => $dashboardCounts,
         'sundaySchoolEnabled'             => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
         'depositEnabled'                  => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),
+        'canReviewSelfRegistrations'      => AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
         'eventsEnabled'                   => SystemConfig::getBooleanValue('bEnabledEvents'),
         'genderDataCheckCount'            => $genderDataCheckCount,
         'roleDataCheckCount'              => $roleDataCheckCount,

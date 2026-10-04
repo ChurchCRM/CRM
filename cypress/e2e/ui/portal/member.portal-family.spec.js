@@ -48,13 +48,16 @@ describe("Member Portal — My Family", () => {
 
     /** The members the portal proposed, found again on the pending list by first name. */
     const proposedFirstNames = [];
+    /** Proposed members already approved, so no longer on the pending list. */
+    const approvedIds = [];
 
     after(() => {
         cy.makePrivateAdminAPICall("GET", "/api/persons/self-register", null, 200).then((response) => {
             cy.cleanupPeople(
                 (response.body.people || [])
                     .filter((person) => proposedFirstNames.includes(person.FirstName))
-                    .map((person) => person.Id),
+                    .map((person) => person.Id)
+                    .concat(approvedIds),
             );
         });
     });
@@ -163,6 +166,18 @@ describe("Member Portal — My Family", () => {
             cy.visit("/people/self-register");
             cy.get("#selfRegistrations", { timeout: 15000 }).should("contain", firstName);
             cy.get("#selfRegistrations").should("contain", "Family Member");
+
+            // Their family is not a self-registration, so staff approve them on their own.
+            cy.makePrivateAdminAPICall("GET", "/api/persons/self-register", null, 200).then((response) => {
+                const proposed = response.body.people.find((person) => person.FirstName === firstName);
+                expect(proposed.FamilyName).to.not.equal("");
+                expect(proposed.NeedsReview).to.equal(true);
+                approvedIds.push(proposed.Id);
+                cy.makePrivateAdminAPICall("POST", `/api/person/${proposed.Id}/approve-review`, null, 200);
+            });
+            cy.makePrivateAdminAPICall("GET", "/api/persons/self-register", null, 200).then((response) => {
+                expect(response.body.people.map((person) => person.FirstName)).to.not.include(firstName);
+            });
         });
     });
 

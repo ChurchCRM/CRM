@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\PersonService;
@@ -128,8 +129,8 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      * @OA\Get(
      *     path="/persons/self-register",
      *     operationId="getSelfRegisteredPersons",
-     *     summary="List recently self-registered persons",
-     *     description="Returns up to 100 persons who registered via the public self-registration form, newest first.",
+     *     summary="List recently self-registered persons still awaiting review",
+     *     description="Returns self-registered persons still awaiting review who are not part of a self-registered family, newest first: individuals from the public form, and people proposed for an existing family in the Member Portal (with FamilyName set).",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Response(response=200, description="List of self-registered persons",
@@ -141,40 +142,98 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
-        // Everyone who is waiting for review *and is not already shown as part
-        // of a self-registered family*: standalone individuals from the public
-        // form, plus people a member proposed for their own — existing —
-        // family through the Member Portal (#9865). Excluding only the
-        // self-registered families keeps the two lists from duplicating each
-        // other, which is what the old "no family at all" filter was for.
-        $selfRegisteredFamilyIds = FamilyQuery::create()
-            ->filterByEnteredBy(Person::SELF_REGISTER)
-            ->select('Id')
-            ->find()
-            ->getData();
-
-        $query = PersonQuery::create()
-            ->filterByEnteredBy(Person::SELF_REGISTER)
+        $people = PersonService::selfRegisteredPersonQuery()
+            ->filterByNeedsReview(true)
             ->orderByDateEntered(Criteria::DESC)
-            ->limit(100);
-        if ($selfRegisteredFamilyIds !== []) {
-            $query->filterByFamId($selfRegisteredFamilyIds, Criteria::NOT_IN);
-        }
-        $people = $query->find();
+            ->find();
 
         $rows = [];
         foreach ($people as $person) {
             $family = $person->getFamily();
             $rows[] = array_merge($person->toArray(), [
-                // The list distinguishes "individual with no family" from
-                // "proposed member of an existing family", so staff know which
-                // record they are about to attach somebody to.
+                // Set for someone proposed for an existing family, so staff see
+                // which family they are about to add them to.
                 'FamilyName' => $family === null ? '' : (string) $family->getName(),
             ]);
         }
 
         return SlimUtils::renderJSON($response, ['people' => $rows]);
     });
+
+    /**
+     * @OA\Get(
+     *     path="/persons/self-register/count",
+     *     summary="Count self-registered families and people reviewed on their own that await review",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Pending count",
+     *         @OA\JsonContent(@OA\Property(property="count", type="integer"))
+     *     )
+     * )
+     */
+    $group->get('/self-register/count', function (Request $request, Response $response, array $args): Response {
+        $tally = fn (bool $needsReview): int => FamilyQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByNeedsReview($needsReview)->count()
+            + PersonService::selfRegisteredPersonQuery()->filterByNeedsReview($needsReview)->count();
+        $pending = $tally(true);
+        $approved = $tally(false);
+
+        return SlimUtils::renderJSON($response, ['count' => $pending, 'approved' => $approved, 'total' => $pending + $approved]);
+    });
+
+    /**
+     * @OA\Post(
+     *     path="/persons/self-register/approve",
+     *     summary="Approve several self-registered families and people at once",
+     *     description="Clears the needs-review flag on the listed self-registered families (and their members) and people reviewed on their own (not part of a self-registered family). Ids that are not pending self-registrations are ignored.",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\RequestBody(required=true, @OA\JsonContent(
+     *         @OA\Property(property="families", type="array", @OA\Items(type="integer")),
+     *         @OA\Property(property="persons", type="array", @OA\Items(type="integer"))
+     *     )),
+     *     @OA\Response(response=200, description="Approved",
+     *         @OA\JsonContent(@OA\Property(property="success", type="boolean"), @OA\Property(property="approved", type="integer"))
+     *     ),
+     *     @OA\Response(response=403, description="EditRecords permission required")
+     * )
+     */
+    $group->post('/self-register/approve', function (Request $request, Response $response, array $args): Response {
+        $body = $request->getParsedBody() ?? [];
+        $familyIds = array_values(array_filter(array_map('intval', (array) ($body['families'] ?? []))));
+        $personIds = array_values(array_filter(array_map('intval', (array) ($body['persons'] ?? []))));
+
+        $con = Propel::getWriteConnection(PersonTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+        try {
+            $approved = 0;
+            if ($familyIds) {
+                $pendingFamilyIds = FamilyQuery::create()
+                    ->filterById($familyIds, Criteria::IN)
+                    ->filterByEnteredBy(Person::SELF_REGISTER)
+                    ->filterByNeedsReview(true)
+                    ->select('Id')
+                    ->find($con)
+                    ->toArray();
+                if ($pendingFamilyIds) {
+                    $approved += FamilyQuery::create()->filterById($pendingFamilyIds, Criteria::IN)->update(['NeedsReview' => false], $con);
+                    PersonQuery::create()->filterByFamId($pendingFamilyIds, Criteria::IN)->update(['NeedsReview' => false], $con);
+                }
+            }
+            if ($personIds) {
+                $approved += PersonService::selfRegisteredPersonQuery()
+                    ->filterById($personIds, Criteria::IN)
+                    ->filterByNeedsReview(true)
+                    ->update(['NeedsReview' => false], $con);
+            }
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            return SlimUtils::renderErrorJSON($response, gettext('Could not approve the selected registrations'), [], 500, $e, $request);
+        }
+
+        return SlimUtils::renderJSON($response, ['success' => true, 'approved' => $approved]);
+    })->add(new EditRecordsRoleAuthMiddleware());
 });
 
 /**
