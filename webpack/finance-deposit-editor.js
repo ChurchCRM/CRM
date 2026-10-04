@@ -1,7 +1,8 @@
 /**
  * Deposit editor (/finance/deposit/{id}).
  * Config comes from window.depositEditorConfig (see finance/views/deposits/editor.php).
- * Requires i18next, DataTables, bootbox and ApexCharts, all loaded globally.
+ * Webpack entry (skin/v2/finance-deposit-editor.min.js). i18next, DataTables, bootbox
+ * and ApexCharts come from the global skin bundle.
  */
 (() => {
   const config = window.depositEditorConfig;

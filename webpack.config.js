@@ -154,6 +154,7 @@ module.exports = {
     'portal-teams': './webpack/portal/teams.ts',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
+    'finance-deposit-editor': './webpack/finance-deposit-editor',
   },
   output: {
     path: path.resolve('./src/skin/v2'),

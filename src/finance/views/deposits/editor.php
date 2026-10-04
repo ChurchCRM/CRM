@@ -217,6 +217,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       'fundData' => array_values($fundData),
   ]) ?>;
 </script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/finance-deposit-editor.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-deposit-editor.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
