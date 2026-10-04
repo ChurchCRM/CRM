@@ -20,8 +20,8 @@
     {% else %}
     <link rel="stylesheet" href="{{ asset('/skin/v2/churchcrm.min.css') }}">
     {% endif %}
+    {# Also brings moment, bootbox, i18next and the locale loader (webpack/skin-core.js). #}
     <script src="{{ asset('/skin/v2/churchcrm.min.js') }}"></script>
-    <script src="{{ asset('/skin/external/moment/moment.min.js') }}"></script>
 
     {{ portal.pluginHead }}
 
@@ -86,12 +86,6 @@
 <script nonce="{{ nonce() }}">
     window.CRM = Object.assign(window.CRM || {}, {{ portal.bootstrapJson }});
 </script>
-{# Confirmations and prompts. Not part of the core bundle — the admin shell loads
-   it from Include/Footer.php, and every portal page that asks a member "are you
-   sure?" needs the same dialog (design §1, "bootbox — reuse"). #}
-<script src="{{ asset('/skin/external/bootbox/bootbox.min.js') }}"></script>
-<script src="{{ asset('/skin/external/i18next/i18next.min.js') }}"></script>
-<script src="{{ asset('/skin/v2/locale-loader.min.js') }}"></script>
 <script nonce="{{ nonce() }}">
     (function () {
         var localeConfig = {{ portal.localeConfigJson }};

@@ -8,9 +8,9 @@
  * renders as `<time data-format>` into ChurchCRM's locale. Page-specific bundles
  * (calendar, the two volunteer pages, teams) are separate entries.
  *
- * Strings go through the page's global i18next — the one the layout loads
- * (`skin/external/i18next`) and the one `locale-loader.min.js` actually calls
- * `init()` on, never a bundled copy: importing the npm package here would give
+ * Strings go through the page's global i18next — the one `churchcrm.min.js`
+ * exposes and its locale loader calls `init()` on, never a bundled copy:
+ * importing the npm package here would give
  * this bundle a second, permanently empty instance whose `t()` only ever echoes
  * the key back (#9867). That instance is only populated once the locale loader
  * has finished, so anything user-visible waits for onLocalesReady.
