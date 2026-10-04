@@ -16481,24 +16481,12 @@ msgid "Family Delete Confirmation"
 msgstr "የቤተሰብ ሰርዛ ማረጋገጫ"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "ግለሰቦች (ቤተሰብ የሌላቸው)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "አዲስ ራስ-ምዝገባዎች"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "የንብረት ዓይነት ሰርዛ ማረጋገጫ"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "በህዝብ ምዝገባ ቅጽዎ ላይ የተመዘገቡ አዲስ ቤተሰቦችንና ግለሰቦችን ይገምግሙ"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "ከታች ያለውን የህዝብ ምዝገባ ቅጽዎ አዲስ ተመዝጋቢዎችን ይገምግሙ። ኢሜይል ወይም ስልክ የሌላቸው ምልክት ተደርጎባቸዋል — ከመከታተሉ በፊት ያረጋግጡ።"
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

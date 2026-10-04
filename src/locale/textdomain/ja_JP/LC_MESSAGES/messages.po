@@ -16425,24 +16425,12 @@ msgid "Family Delete Confirmation"
 msgstr "家族削除の確認"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "個人（家族なし）"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "新しい自己登録"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "プロパティ種別削除の確認"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "公開登録フォームから登録した新しい家族と個人を確認してください"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "以下に公開登録フォームからの新しい登録を確認してください。メールまたは電話番号がない登録はフラグが立てられています — フォローアップ前に連絡先情報を確認してください。"
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

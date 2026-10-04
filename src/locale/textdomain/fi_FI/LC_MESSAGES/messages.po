@@ -16440,24 +16440,12 @@ msgid "Family Delete Confirmation"
 msgstr "Perheen poistamisen vahvistus"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Yksityishenkilöt (ei perhettä)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Uudet itse rekisteröityneet"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Ominaisuustyypin poistamisen vahvistus"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tarkista uudet perheet ja henkilöt, jotka ovat rekisteröityneet julkisella rekisteröintilomakkeella"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Tarkista alla julkisen rekisteröintilomakkeen uudet ilmoittautumiset. Merkinnät, joista puuttuu sähköposti tai puhelin, on merkitty — tarkista yhteystiedot ennen yhteydenottoa."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

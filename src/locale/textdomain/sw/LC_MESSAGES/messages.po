@@ -16469,24 +16469,12 @@ msgid "Family Delete Confirmation"
 msgstr "Uthibitisho wa Kufuta Familia"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Watu Binafsi (bila familia)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Usajili Mpya wa Kibinafsi"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Uthibitisho wa Kufuta Aina ya Mali"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Kagua familia na watu binafsi wapya ambao wamejisajili kwenye fomu yako ya usajili ya umma"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Kagua usajili mpya kutoka kwenye fomu yako ya usajili ya umma hapa chini. Maingizo yasiyo na barua pepe au simu yamewekwa alama — thibitisha mawasiliano kabla ya kufuatilia."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

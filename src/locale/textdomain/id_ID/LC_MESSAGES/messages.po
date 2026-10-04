@@ -16454,24 +16454,12 @@ msgid "Family Delete Confirmation"
 msgstr "Konfirmasi Penghapusan Keluarga"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Individu (tanpa keluarga)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Pendaftaran Mandiri Baru"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Konfirmasi Penghapusan Jenis Properti"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tinjau keluarga dan individu baru yang mendaftar melalui formulir pendaftaran publik Anda"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Tinjau pendaftaran baru dari formulir pendaftaran publik Anda di bawah ini. Entri tanpa email atau telepon ditandai — verifikasi informasi kontak sebelum menindaklanjuti."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

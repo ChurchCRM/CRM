@@ -16604,24 +16604,12 @@ msgid "Family Delete Confirmation"
 msgstr "確認刪除家庭"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "個人（無家庭）"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "新自助登記"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "確認刪除屬性類型"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "審查透過公開登記表單新登記的家庭與個人"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "請在下方審查來自公開登記表單的新登記資料，沒有電子郵件或電話的項目已被標記，請在後續跟進前確認聯絡資訊。"
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
