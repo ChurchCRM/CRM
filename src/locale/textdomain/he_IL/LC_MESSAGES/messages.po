@@ -16471,24 +16471,12 @@ msgid "Family Delete Confirmation"
 msgstr "אישור מחיקת משפחה"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "יחידים (ללא משפחה)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "רישומים עצמאיים חדשים"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "אישור מחיקת סוג נכס"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "סקור משפחות ויחידים חדשים שנרשמו בטופס הרשומה הציבורי שלך"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "סקור רישומים חדשים מהטופס הציבורי השלך להלן. רשומות ללא דואר אלקטרוני או טלפון מסומנות — אמת פרטי קשר לפני המעקב."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

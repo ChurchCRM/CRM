@@ -16454,24 +16454,12 @@ msgid "Family Delete Confirmation"
 msgstr "가정 삭제 확인"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "개인 (가정 없음)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "새 자기 등록"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "속성 유형 삭제 확인"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "공개 등록 양식에서 등록한 새 가정 및 개인을 검토하세요"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "아래에서 공개 등록 양식의 새 등록자를 검토하세요. 이메일이나 전화번호가 없는 항목은 표시됩니다."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

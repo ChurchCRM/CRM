@@ -16442,24 +16442,12 @@ msgid "Family Delete Confirmation"
 msgstr "Bevestiging gezin verwijderen"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Individuen (geen gezin)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nieuwe zelfregistraties"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Bevestiging eigenschapstype verwijderen"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Bekijk nieuwe gezinnen en individuen die zich hebben aangemeld via uw openbare registratieformulier"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Bekijk hieronder nieuwe aanmeldingen van uw openbare registratieformulier. Vermeldingen zonder e-mail of telefoonnummer zijn gemarkeerd — verifieer de contactgegevens voordat u contact opneemt."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

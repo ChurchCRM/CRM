@@ -16437,24 +16437,12 @@ msgid "Family Delete Confirmation"
 msgstr "परिवार हटाने की पुष्टि"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "व्यक्तिगत (कोई परिवार नहीं)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "नए स्व-पंजीकरण"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "संपत्ति प्रकार हटाने की पुष्टि"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "उन नए परिवारों और व्यक्तियों की समीक्षा करें जिन्होंने आपके सार्वजनिक पंजीकरण फ़ॉर्म पर साइन अप किया"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "नीचे अपने सार्वजनिक पंजीकरण फ़ॉर्म से नए साइन-अप की समीक्षा करें। बिना ईमेल या फ़ोन वाली प्रविष्टियाँ चिह्नित हैं — अनुवर्ती कार्रवाई से पहले संपर्क जानकारी सत्यापित करें।"
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

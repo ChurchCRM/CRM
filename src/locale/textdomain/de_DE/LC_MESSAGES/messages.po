@@ -16550,24 +16550,12 @@ msgid "Family Delete Confirmation"
 msgstr "Löschen der Familie bestätigen"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Einzelpersonen (ohne Familie)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Neue Selbstregistrierungen"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Löschen des Eigenschaftstyps bestätigen"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Neue Familien und Einzelpersonen überprüfen, die sich über Ihr öffentliches Anmeldeformular registriert haben"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Überprüfen Sie unten die neuen Anmeldungen aus Ihrem öffentlichen Anmeldeformular. Einträge ohne E-Mail oder Telefon sind markiert – überprüfen Sie die Kontaktdaten vor der Nachverfolgung."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

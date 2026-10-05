@@ -16499,24 +16499,12 @@ msgid "Family Delete Confirmation"
 msgstr "Család törlésének megerősítése"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Egyének (nincs családjuk)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Új önregisztrációk"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Tulajdonságtípus törlésének megerősítése"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tekintse át a nyilvános regisztrációs urlapon feliratkozott új családokat és egyéneket"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Az alábbiakban tekintse át a nyilvános regisztrációs urlap új regisztrációit. Az e-mail vagy telefonszám nélküli bejegyzések meg vannak jelölve — ellenőrizze az adatokat."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

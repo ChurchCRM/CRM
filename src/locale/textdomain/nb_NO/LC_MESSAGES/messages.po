@@ -16543,24 +16543,12 @@ msgid "Family Delete Confirmation"
 msgstr "Bekreft sletting av familie"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Enkeltpersoner (uten familie)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nye selvregistreringer"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Bekreft sletting av eiendomstype"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Gjennomgå nye familier og enkeltpersoner som registrerte seg på det offentlige registreringsskjemaet"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Gjennomgå nye påmeldinger fra det offentlige registreringsskjemaet nedenfor. Oppføringer uten e-post eller telefon er markert – verifiser kontaktinformasjon før oppfølging."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

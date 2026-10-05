@@ -16438,24 +16438,12 @@ msgid "Family Delete Confirmation"
 msgstr "Kumpirmasyon ng Pagbubura ng Pamilya"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Mga Indibidwal (walang pamilya)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Mga Bagong Self-Registration"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Kumpirmasyon ng Pagbubura ng Uri ng Ari-arian"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Suriin ang mga bagong pamilya at indibidwal na nag-sign up sa iyong pampublikong form ng pagpaparehistro"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Suriin ang mga bagong nag-sign up mula sa iyong pampublikong form sa ibaba. Ang mga entry na walang email o telepono ay minarkahan — i-verify ang impormasyon sa pakikipag-ugnayan bago mag-follow up."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
