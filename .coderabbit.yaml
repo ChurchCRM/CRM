@@ -1,6 +1,9 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
 # Single review system for ChurchCRM/CRM.
-# Human maintainers still approve and merge. CodeRabbit never approves.
+# Hard blockers fail a pre-merge check (reviews.pre_merge_checks, mode: error),
+# and request_changes_workflow turns that into a blocking review. Humans merge.
+# request_changes_workflow also lets CodeRabbit approve once it is clean, so
+# branch protection must still require a human (CODEOWNERS) approval.
 #
 # Disable the Docker AI Factory reviewer separately (GitHub App / webhook at
 # ai-factory.docker.team). It is not a workflow in this repo. It posts as
@@ -10,10 +13,8 @@ language: en-US
 early_access: false
 
 tone_instructions: >-
-  Be concise and specific. Report only hard blocks: security, authz, data leak,
-  upgrade breakage, missing tests on a feature or bug fix, unwrapped user-visible
-  strings, Query View feature work, or a wrong date/money contract. No nits,
-  praise, style-only comments, or locale:build requests. Never approve.
+  Concise. Hard blocks only: security, authz, data leak, upgrade breakage,
+  missing tests, unwrapped strings, Query View work, date/money contract. No nits.
 
 reviews:
   profile: chill
@@ -39,8 +40,49 @@ reviews:
   assess_linked_issues: true
   enable_prompt_for_ai_agents: true
   instructions: >-
-    Apply maintainer-review-gates.md. Hard blocks only. Do not approve.
+    Apply maintainer-review-gates.md. Hard blocks only.
     Do not ask for locale:build or messages.po.
+
+  pre_merge_checks:
+    override_requested_reviewers_only: true
+    title:
+      mode: warning
+      requirements: Imperative subject under 72 characters.
+    issue_assessment:
+      mode: warning
+    docstrings:
+      mode: "off"
+    custom_checks:
+      - name: Authorization and data exposure
+        mode: error
+        instructions: |
+          Fail if a new or changed route, API endpoint, controller, or query returns
+          or mutates person, family, finance, or admin data without an explicit
+          authorization check (role middleware or permission test), or if a
+          non-Finance user can read finance fields. Pass if no such code changed.
+      - name: Schema upgrade safety
+        mode: error
+        instructions: |
+          Fail if the Propel schema or src/mysql/install SQL changes without a
+          matching script in src/mysql/upgrade/ and an upgrade.json entry, or if a
+          new column is NOT NULL without a default. Pass if no schema changed.
+      - name: Tests for behavior changes
+        mode: error
+        instructions: |
+          Fail if the PR fixes a bug or changes user-visible behavior under src/
+          without adding or updating a spec in cypress/. Pass for CI, docs,
+          tooling, locale, dependency, and refactor-only PRs.
+      - name: No Query View expansion
+        mode: error
+        instructions: |
+          Fail if the PR modifies QueryView.php or QueryList.php, or adds query_qry
+          rows. New reports belong in src/v2/ or a plugin.
+      - name: Injection and escaping
+        mode: error
+        instructions: |
+          Fail if the PR adds RunQuery() or raw SQL, concatenates request input into
+          a query, or prints request or database values into HTML or script without
+          InputUtils escaping.
 
   auto_review:
     enabled: true
@@ -49,9 +91,12 @@ reviews:
     auto_pause_after_reviewed_commits: 5
     base_branches:
       - ".*"
-    ignore_branches:
-      - "locale/.*"
-      - "master"
+    ignore_title_keywords:
+      - "locale: update translations from POEditor"
+      - "Update locale strings"
+      - "chore(marketing): update marketing visuals"
+      - "WIP"
+      - "DO NOT MERGE"
     ignore_usernames:
       - "github-actions[bot]"
       - "dependabot[bot]"
@@ -114,6 +159,24 @@ reviews:
     autofix:
       enabled: false
 
+  tools:
+    # Web: repo lints with Biome (biome.json). No ESLint config.
+    biome:
+      enabled: true
+    eslint:
+      enabled: false
+    # PHP: no phpstan.neon with paths:, so PHPStan cannot run. PHPMD needs no config.
+    phpstan:
+      enabled: false
+    phpmd:
+      enabled: true
+    actionlint:
+      enabled: true
+    gitleaks:
+      enabled: true
+    semgrep:
+      enabled: true
+
 knowledge_base:
   opt_out: false
   learnings:
@@ -144,19 +207,3 @@ knowledge_base:
 
 chat:
   auto_reply: true
-
-tools:
-  # Web: repo lints with Biome (biome.json). No ESLint config.
-  biome:
-    enabled: true
-  eslint:
-    enabled: false
-  # PHP: no phpstan.neon with paths:, so PHPStan cannot run. PHPMD needs no config.
-  phpstan:
-    enabled: false
-  phpmd:
-    enabled: true
-  actionlint:
-    enabled: true
-  gitleaks:
-    enabled: true
