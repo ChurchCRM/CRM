@@ -10,11 +10,10 @@
  * Two deliberate additions the extraction forced, both of which are no-ops on the
  * admin page:
  *
- *  - `initDataTable()` / `destroyDataTable()` now check that DataTables is
- *    actually loaded before touching it. The admin shell loads it from
- *    `Include/Footer.php`; the Member Portal does not load the admin shell at
- *    all, so on a portal page the tables are plain tables and the helpers do
- *    nothing rather than throwing on `$.fn.dataTable`.
+ *  - `initDataTable()` / `destroyDataTable()` act only in the admin shell, which
+ *    installs `window.CRM.plugin.dataTable`. The Member Portal loads the
+ *    DataTables library too (inside churchcrm.min.js) but keeps its tables
+ *    plain, so there the helpers do nothing.
  *  - `renderState()` takes the pane name as a plain string, because the portal's
  *    pane set is a subset of the ministry page's and an enum shared between them
  *    would have to be the union of both.
@@ -168,7 +167,7 @@ export function escapeAttribute(value: string): string {
 
 /** Is DataTables actually on this page? The Member Portal does not load it. */
 function hasDataTables(): boolean {
-  return typeof $ !== "undefined" && $.fn?.dataTable !== undefined;
+  return typeof $ !== "undefined" && $.fn?.dataTable !== undefined && window.CRM?.plugin?.dataTable !== undefined;
 }
 
 /**

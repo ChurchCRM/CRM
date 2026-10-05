@@ -319,6 +319,9 @@ describe("Member Portal (MP7, #9868) — My Teams", () => {
 
                 // And still no admin shell.
                 cy.get("#sidebar").should("not.exist");
+                // Plain tables: the portal loads the DataTables library but not the admin table setup.
+                cy.get("#volunteerPositionsTable").should("not.have.class", "dataTable");
+                cy.get(".dt-search, .dt-length, .dt-paging, .dt-info").should("not.exist");
             });
 
             it("Shows a position's row menu in full on a phone, not clipped by the scrolling table (2026-09-18)", () => {
