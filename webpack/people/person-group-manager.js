@@ -301,7 +301,7 @@ function handleChangeRole(personId, groupId, currentRoleId) {
     confirm.addEventListener("click", () => {
       if (!selectedRoleId) return;
       confirm.disabled = true;
-      window.CRM.groups.addPerson(groupId, personId, selectedRoleId).done(() => {
+      window.CRM.groups.setRole(groupId, personId, selectedRoleId).done(() => {
         modal.hide();
         location.reload();
       });

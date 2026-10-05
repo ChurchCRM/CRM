@@ -591,10 +591,10 @@ function initializeGroupView() {
     var PersonID = $(e.currentTarget).data("personid");
     _showRoleModal(i18next.t("Change Role"), (roleId) => {
       if (!roleId) return;
-      window.CRM.groups.addPerson(window.CRM.currentGroup, PersonID, roleId).done(() => {
+      window.CRM.groups.setRole(window.CRM.currentGroup, PersonID, roleId).done(() => {
         window.CRM.DataTableAPI.row((idx, data) => {
           if (Number(data.PersonId) === Number(PersonID)) {
-            data.RoleId = roleId;
+            data.RoleId = Number(roleId);
             return true;
           }
         });
