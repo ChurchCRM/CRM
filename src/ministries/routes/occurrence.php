@@ -11,7 +11,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Volunteer\Service\VolunteerEventService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
-use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerAdminAreaRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -135,4 +135,4 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'aHeadcount' => $linkedEvent === null ? null : (new VolunteerEventService($authz))->headcount($linkedEvent, $currentUser),
         ]);
     });
-})->add(VolunteerCoordinatorRoleAuthMiddleware::class);
+})->add(VolunteerAdminAreaRoleAuthMiddleware::class);

@@ -373,7 +373,7 @@ function staffedBadge(occurrence: VolunteerDashboardOccurrence): string {
                 title="${escapeAttribute(staffingTitle(counts))}">${escapeHtml(counts.label)}</span>`;
 }
 
-function renderUpcoming(rows: VolunteerDashboardOccurrence[]): void {
+function renderUpcoming(rows: VolunteerDashboardOccurrence[], manageableMinistryIds: Set<number>): void {
   const body = byId("volunteer-upcoming-table")?.querySelector("tbody");
   if (!body) {
     return;
@@ -411,12 +411,13 @@ function renderUpcoming(rows: VolunteerDashboardOccurrence[]): void {
                 icon: "fa-solid fa-list-check",
                 label: i18next.t("Staff this occurrence"),
               },
-              occurrence.ministryId !== null && {
-                type: "link",
-                href: `${root()}/ministries/${occurrence.ministryId}`,
-                icon: "fa-solid fa-handshake-angle",
-                label: i18next.t("Open the ministry"),
-              },
+              occurrence.ministryId !== null &&
+                manageableMinistryIds.has(occurrence.ministryId) && {
+                  type: "link",
+                  href: `${root()}/ministries/${occurrence.ministryId}`,
+                  icon: "fa-solid fa-handshake-angle",
+                  label: i18next.t("Open the ministry"),
+                },
               occurrence.eventId !== null && {
                 type: "link",
                 href: `${root()}/event/view/${occurrence.eventId}`,
@@ -515,7 +516,10 @@ function renderAll(dashboard: VolunteerDashboard): void {
   renderGaps(dashboard.gaps);
   renderPending(dashboard.pendingResponses);
   renderSwaps(dashboard.proposedSwaps);
-  renderUpcoming(dashboard.upcoming);
+  renderUpcoming(
+    dashboard.upcoming,
+    new Set(dashboard.scope.ministries.filter((ministry) => ministry.manageable).map((ministry) => ministry.id)),
+  );
   renderScope(dashboard.scope);
   renderFailedNotifications(dashboard.failedNotifications);
   show(byId("volunteer-capped-note"), dashboard.capped);

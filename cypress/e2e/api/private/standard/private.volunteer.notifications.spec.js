@@ -522,6 +522,7 @@ function upsertRequirement(scheduleId, positionId, minCount, maxCount) {
 function resetWorkflow() {
     cleanupWorkflowRows();
     clearMail();
+    dbOk("DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?", [PERSON_PLAIN]);
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
@@ -896,6 +897,29 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     );
                 },
             );
+        });
+
+        it("links a team leader without Manage My Ministries to the portal's copy of the date", function () {
+            requireMailpit(this);
+
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/scopes`, {
+                personId: PERSON_PLAIN,
+                scopeType: "team",
+                scopeId: teamA,
+            }, [200, 201]).then(() => {
+                assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then((assignment) => {
+                    api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`, {
+                        response: "declined",
+                    });
+                    drain();
+
+                    mailTo("john.plainauth@example.com", "declined").then((message) => {
+                        const body = `${message.Text || ""}\n${message.HTML || ""}`;
+                        expect(body).to.contain(`/portal/teams/${teamA}/occurrences/${occurrenceOne}`);
+                        expect(body).to.not.contain("/ministries/occurrences/");
+                    });
+                });
+            });
         });
 
         it("a coordinator-recorded decline enqueues and sends no decline alert", () => {

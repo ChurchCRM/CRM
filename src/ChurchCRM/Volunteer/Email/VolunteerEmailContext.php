@@ -35,8 +35,29 @@ final class VolunteerEmailContext
         private readonly ?\DateTimeInterface $start = null,
         private readonly ?\DateTimeInterface $end = null,
         private readonly ?string $locationName = null,
-        private readonly ?int $occurrenceId = null
+        private readonly ?int $occurrenceId = null,
+        private readonly ?int $teamId = null,
+        private readonly bool $portalLinks = false
     ) {
+    }
+
+    /**
+     * The same context with its links into the Member Portal, for a team leader who
+     * has no Manage My Ministries access and so cannot open the admin pages.
+     */
+    public function withPortalLinks(): self
+    {
+        return new self(
+            $this->ministryName,
+            $this->teamName,
+            $this->positionName,
+            $this->start,
+            $this->end,
+            $this->locationName,
+            $this->occurrenceId,
+            $this->teamId,
+            true
+        );
     }
 
     public function getMinistryName(): string
@@ -108,8 +129,21 @@ final class VolunteerEmailContext
         if ($this->occurrenceId === null) {
             return '';
         }
+        if ($this->portalLinks && $this->teamId !== null) {
+            return SystemURLs::getURL() . '/portal/teams/' . $this->teamId . '/occurrences/' . $this->occurrenceId;
+        }
 
         return SystemURLs::getURL() . '/ministries/occurrences/' . $this->occurrenceId;
+    }
+
+    /** Where a swap request is reviewed: the dashboard, or the date's portal page for a team leader. */
+    public function getSwapReviewURL(): string
+    {
+        if ($this->portalLinks && $this->teamId !== null && $this->occurrenceId !== null) {
+            return $this->getOccurrenceURL();
+        }
+
+        return self::getDashboardURL();
     }
 
     /**

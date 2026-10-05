@@ -7,6 +7,7 @@ use ChurchCRM\Emails\BaseEmail;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
@@ -930,7 +931,8 @@ class VolunteerNotificationService
             $window['start'] ?? null,
             $window['end'] ?? null,
             $this->locationNameFor($occurrence),
-            (int) $occurrence->getId()
+            (int) $occurrence->getId(),
+            $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId()
         );
     }
 
@@ -957,6 +959,14 @@ class VolunteerNotificationService
     ): ?BaseEmail {
         $to = [$address];
         $recipientName = (string) $recipient->getFullName();
+
+        // A team leader without Manage My Ministries runs their team from the Member
+        // Portal; the admin pages these alerts link to would turn them away.
+        $alertTypes = [self::TYPE_DECLINE_ALERT, self::TYPE_GAP_ALERT, self::TYPE_SWAP_PROPOSED];
+        if (in_array($row->getType(), $alertTypes, true)
+            && UserQuery::create()->findPk((int) $recipient->getId())?->isVolunteerCoordinatorEnabled() !== true) {
+            $context = $context->withPortalLinks();
+        }
 
         switch ($row->getType()) {
             case self::TYPE_ASSIGNMENT:

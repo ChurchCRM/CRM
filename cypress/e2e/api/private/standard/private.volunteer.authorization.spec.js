@@ -192,6 +192,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
     after(() => {
         cleanupFixtures();
         restoreManagerUser();
+        cy.dbQuery("UPDATE user_usr SET usr_ManageMyMinistries = 0 WHERE usr_per_ID = ?", [PERSON_MANAGER]);
         setVersion("v1");
     });
 
@@ -724,7 +725,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             });
         });
 
-        it("serves the dashboard to a team leader", () => {
+        it("turns a team leader without Manage My Ministries away from the dashboard: they use the portal", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 SCOPES_URL,
@@ -735,11 +736,30 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 },
                 201,
             );
-            pageRequest(DASHBOARD_URL, Cypress.testEnv("plainauth.api.key")).then(
-                (resp) => {
-                    expect(resp.status).to.eq(200);
+            pageRequest(DASHBOARD_URL, Cypress.testEnv("plainauth.api.key")).then((resp) => {
+                expect(resp.status).to.be.oneOf([302, 403]);
+                if (resp.status === 302) {
+                    expect(resp.headers.location).to.include("role=VolunteerCoordinator");
+                }
+            });
+        });
+
+        it("serves the dashboard to a team leader with Manage My Ministries", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                SCOPES_URL,
+                {
+                    personId: PERSON_MANAGER,
+                    scopeType: "team",
+                    scopeId: teamB1,
                 },
+                201,
             );
+            cy.dbQuery("UPDATE user_usr SET usr_ManageMyMinistries = 1 WHERE usr_per_ID = ?", [PERSON_MANAGER]);
+            pageRequest(DASHBOARD_URL, Cypress.testEnv("plainauth.api.key")).then((resp) => {
+                expect(resp.status).to.eq(200);
+            });
+            cy.dbQuery("UPDATE user_usr SET usr_ManageMyMinistries = 0 WHERE usr_per_ID = ?", [PERSON_MANAGER]);
         });
     });
 

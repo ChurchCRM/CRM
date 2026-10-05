@@ -3,7 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
-use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerAdminAreaRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -13,9 +13,9 @@ use Slim\Views\PhpRenderer;
 
 // Route paths are module-relative: setBasePath() already carries '/ministries'.
 //
-// The coordinator area is gated by VolunteerCoordinatorRoleAuthMiddleware (#9706):
-// an administrator, a global volunteer manager, a ministry coordinator or a team
-// leader. Which ministry or team a coordinator may actually touch is decided per
+// The coordinator area is gated by VolunteerAdminAreaRoleAuthMiddleware (#9706), which
+// mirrors the sidebar: an administrator, a global volunteer manager, or a Manage My
+// Ministries login with a ministry or team to manage. Which ministry or team a coordinator may actually touch is decided per
 // record by the entity middlewares and, on the aggregate, by the query scoping in
 // `GET /api/ministries/dashboard` — never here (design §4.5).
 //
@@ -53,4 +53,4 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'iDays'         => 28,
         ]);
     });
-})->add(VolunteerCoordinatorRoleAuthMiddleware::class);
+})->add(VolunteerAdminAreaRoleAuthMiddleware::class);

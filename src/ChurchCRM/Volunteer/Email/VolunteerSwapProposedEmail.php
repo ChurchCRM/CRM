@@ -52,7 +52,7 @@ class VolunteerSwapProposedEmail extends BaseVolunteerEmail
 
     protected function getFullURL(): string
     {
-        return VolunteerEmailContext::getDashboardURL();
+        return $this->context->getSwapReviewURL();
     }
 
     protected function getButtonText(): string

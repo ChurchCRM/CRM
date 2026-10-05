@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
-use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerAdminAreaRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -80,4 +80,4 @@ $app->group('', function (RouteCollectorProxy $group): void {
                 : null,
         ]);
     });
-})->add(VolunteerCoordinatorRoleAuthMiddleware::class);
+})->add(VolunteerAdminAreaRoleAuthMiddleware::class);
