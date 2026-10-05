@@ -927,23 +927,32 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $input = $request->getParsedBody() ?? [];
         $group = $request->getAttribute('group');
 
-        $roleID = $input['RoleID'] ?? $group->getDefaultRole();
-
-        $groupService = new GroupService();
-        $groupService->addUserToGroup($groupID, $userID, $roleID);
-
-        $membership = Person2group2roleP2g2rQuery::create()
+        // An existing member keeps their role (userRole changes it); nothing was added, so no hook or note.
+        $existing = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId((int) $groupID)
             ->filterByPersonId((int) $userID)
             ->findOne();
-        HookManager::doAction(Hooks::GROUP_MEMBER_ADDED, $membership, $group, $person);
+        if ($existing === null) {
+            $roleID = $input['RoleID'] ?? $group->getDefaultRole();
 
-        $note = new Note();
-        $note->setText(gettext('Added to group') . ': ' . $group->getName());
-        $note->setType('group');
-        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-        $note->setPerId($person->getId());
-        $note->save();
+            $groupService = new GroupService();
+            $groupService->addUserToGroup($groupID, $userID, $roleID);
+
+            $membership = Person2group2roleP2g2rQuery::create()
+                ->filterByGroupId((int) $groupID)
+                ->filterByPersonId((int) $userID)
+                ->findOne();
+            if ($membership !== null) {
+                HookManager::doAction(Hooks::GROUP_MEMBER_ADDED, $membership, $group, $person);
+
+                $note = new Note();
+                $note->setText(gettext('Added to group') . ': ' . $group->getName());
+                $note->setType('group');
+                $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
+                $note->setPerId($person->getId());
+                $note->save();
+            }
+        }
         $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->filterByPersonId((int) $userID)
@@ -963,22 +972,30 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *         @OA\JsonContent(@OA\Property(property="roleID", type="integer"))
      *     ),
      *     @OA\Response(response=200, description="Updated membership object"),
+     *     @OA\Response(response=400, description="roleID is not one of the group's roles"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
-     *     @OA\Response(response=404, description="Membership not found")
+     *     @OA\Response(response=404, description="Group or membership not found")
      * )
      */
     $group->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $groupID = (int) $args['groupID'];
+        $group = $request->getAttribute('group');
         $userID = (int) $args['userID'];
         $roleID = (int) ($request->getParsedBody()['roleID'] ?? 0);
-        $membership = Person2group2roleP2g2rQuery::create()->filterByGroupId($groupID)->filterByPersonId($userID)->findOne();
+        $membership = Person2group2roleP2g2rQuery::create()->filterByGroupId($group->getId())->filterByPersonId($userID)->findOne();
         if ($membership === null) {
             throw new HttpNotFoundException($request, gettext('Membership not found'));
+        }
+        $isGroupRole = ListOptionQuery::create()
+            ->filterById($group->getRoleListId())
+            ->filterByOptionId($roleID)
+            ->count() > 0;
+        if (!$isGroupRole) {
+            return SlimUtils::renderErrorJSON($response, gettext('That role is not one of this group\'s roles.'), [], 400);
         }
         $membership->setRoleId($roleID);
         $membership->save();
         return SlimUtils::renderJSON($response, $membership->toArray());
-    });
+    })->add(GroupMiddleware::class);
 
     /**
      * @OA\Post(
