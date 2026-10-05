@@ -4855,10 +4855,12 @@ paths:
       responses:
         '200':
           description: 'Updated membership object'
+        '400':
+          description: "roleID is not one of the group's roles"
         '403':
           description: 'ManageGroupRole role required'
         '404':
-          description: 'Membership not found'
+          description: 'Group or membership not found'
       security:
         -
           ApiKeyAuth: []
