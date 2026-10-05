@@ -16448,24 +16448,12 @@ msgid "Family Delete Confirmation"
 msgstr "Potvrda brisanja obitelji"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Pojedinci (bez obitelji)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nove samoprijave"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Potvrda brisanja vrste svojstva"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Pregledajte nove obitelji i pojedince koji su se prijavili putem javnog obrasca za registraciju"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Pregledajte nove prijave s vašeg javnog obrasca za registraciju ispod. Unosi bez e-pošte ili telefona su označeni — provjerite kontaktne podatke prije nastavka."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

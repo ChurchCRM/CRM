@@ -16529,24 +16529,12 @@ msgid "Family Delete Confirmation"
 msgstr "确认删除家庭"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "个人（无家庭）"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "新自主注册"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "确认删除属性类型"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "审核通过公开注册表单注册的新家庭和个人"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "请在下方审核来自公开注册表单的新注册信息。未填写电子邮件或电话的条目已标记——跟进前请核实联系方式。"
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

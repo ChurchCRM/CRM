@@ -16553,24 +16553,12 @@ msgid "Family Delete Confirmation"
 msgstr "Подтверждение удаления семьи"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Частные лица (без семьи)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Новые самостоятельные регистрации"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Подтверждение удаления типа свойства"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Просмотрите новые семьи и отдельных лиц, зарегистрировавшихся через публичную форму регистрации"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Просмотрите новые регистрации из публичной формы ниже. Записи без электронной почты или телефона отмечены — проверьте контактные данные перед тем, как связаться."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

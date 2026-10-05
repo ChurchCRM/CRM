@@ -16463,24 +16463,12 @@ msgid "Family Delete Confirmation"
 msgstr "Konfirmim i fshirjes së familjes"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Individë (pa familje)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Regjistrimi të reja vetjake"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Konfirmim i fshirjes së llojit të pronësisë"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Rishikoni familjet dhe individët e rinj që u regjistruan në formularin tuaj publik të regjistrimit"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Rishikoni regjistrimet e reja nga formulari juaj publik. Shënimet pa email ose telefon janë shënuar — verifikoni informacionin e kontaktit para se të ndiqni."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
