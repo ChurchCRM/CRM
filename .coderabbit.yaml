@@ -53,8 +53,6 @@ reviews:
       - "locale/.*"
       - "master"
     ignore_title_keywords:
-      - "locale: update translations from POEditor"
-      - "Update locale strings"
       - "chore(marketing): update marketing visuals"
     ignore_usernames:
       - "github-actions[bot]"
