@@ -29,11 +29,18 @@ class PeopleReportService
 {
     public const UNASSIGNED_CLASSIFICATION = 0;
 
+    /** Mailing-label modes, as Reports/PDFLabel.php names them: by person, or one per household. */
+    public const LABEL_PERSON = 'indiv';
+    public const LABEL_HOUSEHOLD = 'fam';
+
     private const FAMILY_ROLE_HEAD = 1;
     private const FAMILY_ROLE_SPOUSE = 2;
 
     /**
-     * @return array<string, array{name: string, description: string, params: array<string, array<string, mixed>>, columns: array<string, string>}>
+     * A report with 'labelGrouping' addresses its labels itself (each row carries a LabelMode);
+     * on the others the user picks one label per person or per household.
+     *
+     * @return array<string, array{name: string, description: string, params: array<string, array<string, mixed>>, columns: array<string, string>, labelGrouping?: string}>
      */
     public function getReports(): array
     {
@@ -104,12 +111,14 @@ class PeopleReportService
                 'description' => gettext('People with wedding anniversaries in a particular month'),
                 'params' => ['month' => $month, 'classification' => $classification],
                 'columns' => ['Day' => gettext('Day'), 'Date' => gettext('Date'), 'Name' => gettext('Name')],
+                'labelGrouping' => gettext('One label for each couple.'),
             ],
             'birthdays-anniversaries' => [
                 'name' => gettext('Birthdays & Anniversaries'),
                 'description' => gettext('People with birthdays or wedding anniversaries in a particular month'),
                 'params' => ['month' => $month, 'classification' => $classification],
                 'columns' => ['Type' => gettext('Type'), 'Day' => gettext('Day'), 'Name' => gettext('Name')],
+                'labelGrouping' => gettext('Birthdays are addressed to the person and anniversaries to the couple.'),
             ],
         ];
     }
@@ -277,6 +286,34 @@ class PeopleReportService
     }
 
     /**
+     * Who gets a mailing label when a report is printed as labels (#10343): person id =>
+     * label modes. A row keeps its own LabelMode; other rows get $defaultMode. Someone in
+     * the report twice, such as a birthday and an anniversary in the same month, gets both.
+     * Empty when the report is unknown or a required filter is missing.
+     *
+     * @param array<string, mixed> $input query-string values, as for resolveParams()
+     * @return array<int, string[]>
+     */
+    public function labelEntries(string $slug, array $input, string $defaultMode): array
+    {
+        if ($this->getReport($slug) === null) {
+            return [];
+        }
+        ['values' => $values, 'missing' => $missing] = $this->resolveParams($slug, $input);
+        if ($missing !== []) {
+            return [];
+        }
+
+        $entries = [];
+        foreach ($this->run($slug, $values) as $row) {
+            $mode = $row['LabelMode'] ?? $defaultMode;
+            $entries[(int) $row['Id']][$mode] = $mode;
+        }
+
+        return array_map('array_values', $entries);
+    }
+
+    /**
      * @param int[] $classifications
      */
     private function personByProperty(int $propertyId, array $classifications): array
@@ -407,7 +444,7 @@ class PeopleReportService
         $rows = [];
         $query = PersonQuery::create()->filterByBirthMonth($month)->filterByBirthDay(0, Criteria::GREATER_THAN);
         foreach ($this->applyClassification($query, $classifications)->find() as $person) {
-            $rows[] = $this->row($person, ['Type' => gettext('Birthday'), 'Day' => (int) $person->getBirthDay(), 'SortName' => $person->getLastName() . ' ' . $person->getFirstName()]);
+            $rows[] = $this->row($person, ['Type' => gettext('Birthday'), 'Day' => (int) $person->getBirthDay(), 'SortName' => $person->getLastName() . ' ' . $person->getFirstName(), 'LabelMode' => self::LABEL_PERSON]);
         }
         foreach ($this->anniversaryRows($month, $classifications) as $row) {
             $rows[] = ['Type' => gettext('Anniversary')] + $row;
@@ -439,6 +476,7 @@ class PeopleReportService
                 'Day' => (int) $date->format('j'),
                 'Date' => $date->format('Y-m-d'),
                 'SortName' => $person->getLastName() . ' ' . $person->getFirstName(),
+                'LabelMode' => self::LABEL_HOUSEHOLD,
             ]);
         }
 
