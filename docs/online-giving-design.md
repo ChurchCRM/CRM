@@ -26,9 +26,9 @@
 
 **How to read this**
 - Ids: **D** proposed product choice; **A** proposed technical choice; **F** flow (§4); **I** invariant (§3.3); **Q** open question (§8.1); **T** threat (§6); **R** requirement (Appendix A); **GIV-nn** a proposed child PR (§7), not filed.
-- Table short names (§3.2): `gint` = `giving_intent_gint`, `gtxn` = `giving_transaction_gtxn`, `grec` = `giving_recurring_grec`, `gcus` = `giving_customer_gcus`, `gwhe` = `giving_webhook_event_gwhe`, `gntf` = `giving_notification_gntf`, `gcon` = `giving_consent_gcon`, `gnc` = `giving_noncash_gnc`, `faud` = `finance_audit_faud`, `srl` = `system_ratelimit_srl`.
+- Table short names (§3.2): `gint` = `giving_intent_gint`, `gtxn` = `giving_transaction_gtxn`, `grec` = `giving_recurring_grec`, `gcus` = `giving_customer_gcus`, `gwhe` = `giving_webhook_event_gwhe`, `gntf` = `giving_notification_gntf`, `gnc` = `giving_noncash_gnc`, `faud` = `finance_audit_faud`, `srl` = `system_ratelimit_srl`.
 - Tags: **[portal branch]** = code only on the unreleased branches above; **[#NNNN]** = needs that unmerged work (#8977, #9843 or #9876).
-- Terms: HoH = head of household; UQ = unique key; PI = Stripe PaymentIntent; FMV = fair market value of goods the donor received; ACH = US bank debit; TOTP = authenticator-app code; SAQ-A = the shortest PCI DSS self-assessment, for merchants that hand all card entry to a provider; FAQ 1588 = the PCI Security Standards Council FAQ on SAQ-A script criteria; GDPR = EU data protection law; CASL = Canada's Anti-Spam Legislation.
+- Terms: HoH = head of household; UQ = unique key; PI = Stripe PaymentIntent; FMV = fair market value of goods the donor received; ACH = US bank debit; TOTP = authenticator-app code; SAQ-A = the shortest PCI DSS self-assessment, for merchants that hand all card entry to a provider; FAQ 1588 = the PCI Security Standards Council FAQ on SAQ-A script criteria.
 
 ---
 
@@ -55,7 +55,7 @@
 | D1 | The first release ships **Stripe, PayPal and BTCPay Server** as gateway plugins. **Release gate:** online giving stays hidden until all three are merged. Reason: the contract is proven against three different payment models (card processor, PayPal account, self-hosted crypto) before any church relies on it, and a church picks its gateway once, because recurring gifts cannot be moved from one gateway to another. |
 | D2 | Upstream epic. The Giving domain and gateway contract live in core. Gateways are core plugins in `src/plugins/core/{stripe,paypal,btcpay}/`. |
 | D3 | Anyone who is not Head of Household (HoH), **spouse included**, sees only gifts credited to them. The HoH sees the whole family, including gifts recorded to the family as a whole. |
-| D4 | The public page is anonymous. An optional email gets a receipt. "Join our newsletter" is **single opt-in** (subscribed at once). It is **checked by default when the church's country is the United States and unchecked everywhere else**; a setting overrides it (checked, unchecked or hidden). The page links "If you are a member, click here" to `/portal/giving`, which requires login and returns the member there. Reason: US law (CAN-SPAM) needs no prior opt-in, so a checked box is lawful there and grows the church's list; a pre-checked box is not valid consent under GDPR or CASL, so a church outside the US starts unchecked without having to find the setting, and the help text says so (§6 Consent). |
+| D4 | The public page is anonymous. An optional email gets a receipt. The page links "If you are a member, click here" to `/portal/giving`, which requires login and returns the member there. **No newsletter sign-up** (removed 2026-10-05): ChurchCRM has no email newsletter to sign up for — only the family "Send Newsletter" flag, used for printed labels, and a Mailchimp plugin that reads audiences — so the giving pages do not add one. |
 | D5 | v1 uses **hosted redirect** for all three gateways (Stripe Checkout, PayPal approval page, BTCPay checkout link). Apple Pay and Google Pay appear on Stripe's hosted page, including for recurring gifts. On-page wallet buttons come later (GIV-60). |
 | D6 | **The first recurring charge falls on the chosen day**, not today unless today is that day (Stripe "Last day" chosen on a 28th–30th starts on the next last day, F3). The UI reads "First gift on Oct 1, then monthly on the 1st". Days 1–28, plus "Last day". |
 | D7 | PayPal recurring uses **Subscriptions v1 REST**, the current replacement for PayPal's older NVP "Recurring Payment profiles". |
@@ -81,7 +81,7 @@
 | A10 | HoH: `plg_FamID = :fam OR plg_PerID = :actor`; others: `plg_PerID = :actor`. | D3. |
 | A11 | Refund rows dated on the refund date, in the open deposit; re-issue flag across years. | Closed periods never change. |
 | A12 | Covered fee spread by largest remainder (leftover cents go to the lines with the largest fractional parts; ties to the larger line, then the lower fund id); designated fund optional. Each row stores its share in `plg_FeeCovered`. | Fund shares stay honest, and a covered fee stays a gift on top: it never pays down a fundraiser balance or counts toward the price of an item (F12). |
-| A13 | Separate `gntf`, `gcon`, `gcus`, `gnc` tables. | Own lifecycles and retention. |
+| A13 | Separate `gntf`, `gcus`, `gnc` tables. | Own lifecycles and retention. |
 | A14 | Core append-only `finance_audit_faud`. | Edits delete and re-insert; logs last 3 days (`LoggerUtils.php:19`). |
 | A15 | Encrypted `secret` type (Defuse, `src/composer.json:38`), key from `Include/Config.php` or env; live blocked without it. | A DB-stored key like `sTwoFASecretKey` (`src/Include/LoadConfigs.php:57-62`) protects nothing in a dump. |
 | A16 | `RateLimitService` + `ClientIp` (trusted proxies); per-session, per-email, circuit breaker; high per-IP ceiling; Turnstile deferred to GIV-60. | Sunday Wi-Fi shares an IP; Turnstile needs the GIV-60 CSP builder. |
@@ -96,7 +96,7 @@
 | A25 | Plugin-local `vendor/` (D10); PayPal and BTCPay over REST. | No gateway SDK in core. |
 | A26 | Overridable pages (D8); server-built redirect; host allow-list on server and client; readiness warns about plugin head scripts. | Blocks a rewritten redirect URL. |
 | A27 | One `RecurrenceScheduler` for anchor, first-charge date and UI sentence (D6). | UI and gateway always agree. |
-| A28 | Single opt-in newsletter, checked by default for a US church and unchecked elsewhere, setting checked/unchecked/off, evidence stored (D4). | D4. |
+| A28 | Removed 2026-10-05: no newsletter sign-up (D4). | |
 | A29 | Stable `sGivingInstallId` UUID in metadata; a cloned DB forces test mode. | A URL hash would orphan subscriptions after a domain change. |
 | A30 | Public page `/portal/give` with anonymous-safe Twig and a signed return token. | Themes reused; no session needed after checkout. |
 | A31 | Attribution set when recorded and changed only through the audited attribution service (F8); recurring charges use the owner's family at charge time (D11). | History never shifts silently. |
@@ -225,7 +225,6 @@ interface PaymentGatewayInterface
 | `GIFT_RECORDED` | `giving.gift.recorded` | once per new payment group from `PledgeWriter`, after commit |
 | `GIFT_REFUNDED` | `giving.gift.refunded` | refund recorded |
 | `RECURRING_GIFT_CREATED`/`_CANCELLED`/`_FAILED` | `giving.recurring.*` | lifecycle |
-| `NEWSLETTER_OPTIN` | `newsletter.optin` | only after the gift succeeds |
 | `DEPOSIT_CLOSED` (`:70`) | `deposit.closed` | wired into `POST /api/deposits/{id}` on 0→1; today only in dead `setDeposit` (`FinancialService.php:120-122`) |
 | `DONATION_RECEIVED` (`:64`) | `donation.received` | unchanged: per row, again on edits (`FinancialService.php:438`) |
 
@@ -366,7 +365,6 @@ utf8mb4 InnoDB, `int(11)` ids, real FKs between new tables; `person_per`/`family
 - `giving_customer_gcus`: gateway, mode, customer ref, `gcus_per_ID` (NULL once the person is deleted); UQ(gateway, mode, ref) and UQ(gateway, mode, per_ID).
 - `giving_webhook_event_gwhe`: `gwhe_ID bigint`, gateway, mode, `gwhe_EventRef` (UQ with gateway), `gwhe_Source` (webhook, reconcile, return), type, object ref, `gwhe_Status` (received, held, processed, ignored, failed, review), attempts, sanitised last error, payload hash, `gwhe_Payload` (encrypted, 90 days), timestamps.
 - `giving_notification_gntf` (outbox): `gntf_Type` (receipt, refund, recurring_created/cancelled/failed, fundraiser_receipt, admin_alert), `gntf_DedupeKey varchar(190) UQ` (`receipt:{gtxn}`), to-email, per/fam/gtxn/grec ids, scheduled-for, `gntf_Status` (pending, sent, failed, skipped), attempts, last error, sent-at. Standalone (Volunteer v2's `vntf` is similar [portal branch]).
-- `giving_consent_gcon`: `gcon_gint_ID`, email, name, `gcon_DefaultState` (checked, unchecked), form version, wording, IP hash, `gcon_Status` (held, dispatched, stored, discarded, withdrawn), timestamps.
 - `giving_noncash_gnc` (1:1 with a crypto charge `gtxn`, shared by all its rows): `gnc_gtxn_ID` PK/FK, `gnc_Asset`, `gnc_Quantity decimal(24,12)`, `gnc_Network enum('onchain','lightning')`, `gnc_Rate decimal(20,8)`, `gnc_RateSource`, `gnc_TxIds`, `gnc_AppraisalFlag` (> $5,000, Form 8283 Section B), `gnc_DisposedDate`, `gnc_DisposalProceeds`, `gnc_Form8282FiledDate`.
 - `finance_audit_faud` (append-only; no update/delete API): `faud_ID bigint`, date, `faud_ActorPerId` (signed), `faud_ImpersonatorPerId`, `faud_Action`, entity type and id, `faud_Before`/`faud_After` JSON (secrets excluded), `faud_IpHash`.
 - `system_ratelimit_srl`: `srl_Key varchar(191) PK` (hashed bucket), window start, count; one atomic UPDATE per hit.
@@ -394,7 +392,6 @@ utf8mb4 InnoDB, `int(11)` ids, real FKs between new tables; `person_per`/`family
 | `sGivingGatewayOrder`, `sGivingDepositBatching`, `aGivingAmountPresets` | stripe,paypal,btcpay; weekly; 25,50,100,250 | batching: daily, weekly, monthly |
 | `iGivingMinPublic`, `iGivingMaxPublic`, `iGivingMinMember`, `iGivingMaxMember` | 5, 10,000; 1, 25,000 | whole currency units; hard cap 999,999.99 |
 | `sGivingCoverFeeDefault`, `iGivingFeeCoverFund` | unchecked, 0 | 0 = spread |
-| `sGivingNewsletterOptIn` | auto (D4) | auto (checked when `sChurchCountry` is the United States, else unchecked), checked, unchecked, off; help names GDPR and CASL |
 | `sGivingReceiptText`, `bGivingReceiptPerRecurringCharge`, `sGivingStatementMode` | IRS wording; 1; household | mode: household, individual, both |
 | `sGivingTrustedProxies` | empty | CIDRs for `ClientIp` |
 | `sGivingPrivacyNoticeUrl`, `sGivingRefundPolicyUrl` | empty | shown on giving pages (GIV-71) |
@@ -414,7 +411,7 @@ The HMAC key for IP hashes and return tokens is not a setting. It is derived fro
 4. `AllocationSplitter` splits the gross: covered fee in proportion, by largest remainder (A12); each line keeps its fee share for `plg_FeeCovered`.
 5. `GivingDepositService::depositFor()` under `GET_LOCK('giving_deposit_'.gw)` on the same connection (batch); payout mode leaves `plg_depID` NULL.
 6. `PledgeWriter::insertGroup()`, one Payment row per fund: date = `gtxn_OccurredAt` in `sTimeZone`; FY via `FiscalYearUtils::getFiscalYearIdForDate()`; ids per F8 (recurring: `familyOf(owner)` at charge time, D11); method per §3.1; `plg_gtxn_ID`, `plg_fr_ID`, `plg_pn_ID` (from `gint_fr_ID`/`gint_pn_ID`); `plg_FeeCovered` = the line's fee share; NonDeductible = fundraiser FMV part or 0; schedule: one-time → 'Once', weekly/monthly/annually → 'Weekly'/'Monthly'/'Annually'; `plg_aut_Cleared=1`; EditedBy = actor or −3; GroupKey `gtxn{id}|0|{fam}|{funds}|{date}` (no scan).
-7. Update `gtxn` (succeeded, GroupKey, deposit, fee), `gint` (completed), `grec` (last/next charge; active unless in review); audit; enqueue `receipt:{gtxn}` (an INSERT into `gntf`, status pending); GIV-34 adds: move a `held` consent to dispatch; `COMMIT`.
+7. Update `gtxn` (succeeded, GroupKey, deposit, fee), `gint` (completed), `grec` (last/next charge; active unless in review); audit; enqueue `receipt:{gtxn}` (an INSERT into `gntf`, status pending); `COMMIT`.
 8. After commit: `DONATION_RECEIVED` per row, `GIFT_RECORDED` once; GIV-17 flushes up to 5 notifications; any `gwhe` held awaiting this charge (a refund or dispute that arrived first) is applied now.
 
 **Family lookup.** Every place that copies "the person's family" into `plg_FamID`, `gint_fam_ID`, `gtxn_fam_ID` or `grec_fam_ID` calls `PledgeWriter::familyOf(Person)` (GIV-04). It maps `per_fam_ID = 0` to NULL: the column is `NOT NULL default '0'` (`Install.sql:521`), and unlinking members sets 0 (`src/api/routes/people/people-family.php:501`). Without it, family-less people would write 0 and break I6.
@@ -433,10 +430,10 @@ The HMAC key for IP hashes and return tokens is not a setting. It is derived fro
 1. **`GET /portal/give[?fund=&amount=]`**, outside `PortalAccessMiddleware`. The AuthMiddleware public-path list gains exactly `/portal/give`, matched on whole segments (`isPublicPath()`, `AuthMiddleware.php:138-151` [portal branch]), so `/portal/giving` stays private. `PublicGivingEnabledMiddleware` answers 404 when `bEnablePublicGiving` is off, except for a request carrying a valid `fundraiserPayment` token (the page and its `POST /api/public/giving/intents`), so fundraiser pay links (F12) work without a public page; the D1 gate and `bEnableOnlineGiving` still apply.
    - **Anonymous-safe Twig:** `PortalExtension::getGlobals()` always builds `member` (`:262`), `nav` (`PortalNav.php:167`) and color mode (`:210`), and each calls `AuthenticationManager::getCurrentUser()`, which throws without a session provider (`src/ChurchCRM/Portal/PortalExtension.php:208-216,260-266`; `AuthenticationManager.php:24-35,42-56` [portal branch]). GIV-33 adds `AuthenticationManager::tryGetCurrentUser(): ?User` and makes these globals return null or defaults. The route calls `PortalTwig::preparePage()` (`PortalTwig.php:56-63` [portal branch]) for the CSP nonce.
    - `giving/public.html.twig` extends `layout-public.html.twig` (logo, no nav or account menu); both overridable (D8). CSRF token from the anonymous session.
-2. **Form:** fund, amount, gateway/method, fee cover; optional "Email me a receipt" (prompt at $250+); "Join our newsletter" once an email is entered (`sGivingNewsletterOptIn`, GIV-34); honeypot, minimum fill time; privacy and refund links; **"If you are a member, click here"** → `/portal/giving?fund=&amount=`; "No login yet? Contact the church office"; "Members can sign in to give monthly"; signed-in visitors see "give from your account". The member link and "sign in to give monthly" render only when the portal Give tab is available (portal on, `bEnabledFinance`, `bPortalShowGiving`, the D1 gate, `bEnableOnlineGiving`, a gateway); otherwise the page shows only "Contact the church office", so members never log in to a hidden section.
-3. **`POST /api/public/giving/intents`** behind `StrictCSRFMiddleware` (rejects the `X-API-Key` bypass, `src/ChurchCRM/Slim/Middleware/CSRFMiddleware.php:38-44`), `RateLimitMiddleware` and the circuit breaker. Creates `gint` (channel public, ids NULL, email); GIV-34 adds a `held` `gcon` if the newsletter box is ticked. Always rejects `kind=recurring` (422). Stripe gets `customer_email` as prefill only, not `receipt_email`.
+2. **Form:** fund, amount, gateway/method, fee cover; optional "Email me a receipt" (prompt at $250+); honeypot, minimum fill time; privacy and refund links; **"If you are a member, click here"** → `/portal/giving?fund=&amount=`; "No login yet? Contact the church office"; "Members can sign in to give monthly"; signed-in visitors see "give from your account". The member link and "sign in to give monthly" render only when the portal Give tab is available (portal on, `bEnabledFinance`, `bPortalShowGiving`, the D1 gate, `bEnableOnlineGiving`, a gateway); otherwise the page shows only "Contact the church office", so members never log in to a hidden section.
+3. **`POST /api/public/giving/intents`** behind `StrictCSRFMiddleware` (rejects the `X-API-Key` bypass, `src/ChurchCRM/Slim/Middleware/CSRFMiddleware.php:38-44`), `RateLimitMiddleware` and the circuit breaker. Creates `gint` (channel public, ids NULL, email). Always rejects `kind=recurring` (422). Stripe gets `customer_email` as prefill only, not `receipt_email`.
 4. **Return** carries an HMAC token (uuid + 7-day expiry, giving HMAC key, §3.4): `GET /portal/give/return?t=…` needs no session. Valid → status, amount, fund, printable receipt. Invalid/expired → "Thank you. If you entered an email, your receipt is on its way." Never a 404 after paying.
-5. **F0 writes** both ids NULL, EditedBy −3; receipt to the email if given. With GIV-34: `gcon` → dispatched and `NEWSLETTER_OPTIN` (→ `stored` if unhandled); a failed gift → `gcon` discarded.
+5. **F0 writes** both ids NULL, EditedBy −3; receipt to the email if given.
 6. **Member link** works on upstream as is: `AuthMiddleware::redirectToLogin()` stores path and query in `$_SESSION['location']` (`AuthMiddleware.php:197-215`, write `:208`, called `:109`); `AuthenticationManager::authenticate()` returns there (`AuthenticationManager.php:136-149`), after any 2FA step (`:131-134`). `/portal/giving` must stay behind the global `AuthMiddleware`, which runs before `PortalAccessMiddleware` (`src/ChurchCRM/Slim/MvcAppFactory.php:61-67`; `src/portal/index.php:34-42` [portal branch]), whose own redirect stores no location (`PortalAccessMiddleware.php:39-43` [portal branch]).
 7. Never auto-matched to a person, including through the email log (§6). No recurring on this page.
 
@@ -571,7 +568,6 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
   - **Needs review:** each reason has an action: Accept as received (records the received amount), or Refund (GIV-41).
   - **Undeposited.**
   - **Gateways:** health, mode, last webhook/sync, receive-only switch, Sync now.
-  - **Newsletter sign-ups CSV** (GIV-34).
   - **Households:** families with gifts but no living, active head.
 - Finance dashboard card; `/finance/funds` "Offer online" toggle; `person-view.php` Finance-only Giving card (`GET /api/payments/person/{id}/list`); family view Given by and Source columns (card `src/people/views/family-view.php:651-695`; columns are DataTable definitions in `src/skin/js/FamilyView.js:141-175`, fed at `:105`); `DepositSlipEditor.php` gross/fees/net; `PledgeDetails.php` "Online transaction" panel; paddle list Send payment link, Paid, Balance.
 
@@ -595,7 +591,7 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
 
 ---
 
-## 6. Security, PCI, privacy, consent, receipts
+## 6. Security, PCI, privacy, receipts
 
 | # | Threat | Control | Child PR (§7) |
 |---|---|---|---|
@@ -626,12 +622,10 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
 
 **Privacy**
 - No auto-matching of anonymous gifts; staff re-attribute only on request, audited.
-- A guest's email sits on `gint_DonorEmail`, `gcon_Email` (if opted in), `gntf_ToEmail`, and the email log once #9876 lands. Anonymous receipts log with a "do not resolve" context, because `EmailLogService::logSend()` otherwise matches the address to a person or family (`src/ChurchCRM/Service/EmailLogService.php:42-75`, `:65-67` [portal branch, #9876]); upstream `BaseEmail` does not log (`src/ChurchCRM/Emails/BaseEmail.php:52-59`).
-- **Erase guest donor PII** (Finance, audited) redacts email and name on `gint`, `gcon`, `gntf`, email-log rows [#9876] and stored `gwhe` payloads; money stays.
+- A guest's email sits on `gint_DonorEmail`, `gntf_ToEmail`, and the email log once #9876 lands. Anonymous receipts log with a "do not resolve" context, because `EmailLogService::logSend()` otherwise matches the address to a person or family (`src/ChurchCRM/Service/EmailLogService.php:42-75`, `:65-67` [portal branch, #9876]); upstream `BaseEmail` does not log (`src/ChurchCRM/Emails/BaseEmail.php:52-59`).
+- **Erase guest donor PII** (Finance, audited) redacts email and name on `gint`, `gntf`, email-log rows [#9876] and stored `gwhe` payloads; money stays.
 - **Person delete** (`Person::preDelete`, `src/ChurchCRM/model/ChurchCRM/Person.php:653`) clears the person's ids: `plg_PerID`, `gtxn_per_ID`, `gint_per_ID`, `grec_per_ID` and `gcus_per_ID` (the family keeps its gifts; audited). It is refused while the person owns a pending, active, past_due or review recurring gift, and while any of their rows has `plg_FamID` NULL: clearing those would turn a named gift into an anonymous one (I6), so Finance re-attributes them first. Family delete: §5.4.
-- **Retention:** pledge rows, `gtxn`, `gnc`, `faud` permanent · `gwhe_Payload` 90 days · IP hashes 30 days · abandoned `gint` 180 days · sent `gntf` 1 year · consent while subscribed + 2 years.
-
-**Consent (D4).** Single opt-in, checked by default only for a US church (`sGivingNewsletterOptIn` = auto), shown once an email is entered, separate from the receipt, sent only after the gift succeeds. With Mailchimp: new `MailChimpService::upsertSubscriber()` → `PUT /lists/{id}/members/{md5(lowercase email)}`, `status_if_new=subscribed`, tag `giving`, to the plugin's unused `defaultListId`; Mailchimp's opt-in settings govern only its own forms, and its Acceptable Use Policy requires consent evidence, which `gcon` keeps. Without Mailchimp: same rule, CSV export. No path claims double opt-in; the help text says a pre-checked box is not valid consent under GDPR or CASL, which is why auto leaves it unchecked outside the US; GIV-71 reviews. `fam_SendNewsLetter` is untouched.
+- **Retention:** pledge rows, `gtxn`, `gnc`, `faud` permanent · `gwhe_Payload` 90 days · IP hashes 30 days · abandoned `gint` 180 days · sent `gntf` 1 year.
 
 **Receipts (US).** Organisation, amount, date, number, goods-and-services wording. Each receipt is the contemporaneous acknowledgment for a single gift of $250+ (gifts are not aggregated). Over $75 with goods: deductible limited to the excess over the good-faith FMV (`di_estprice`). Crypto is property: asset and quantity, no value; > $5,000 flagged for Form 8283 Section B (qualified appraisal, church signs the donee part); disposal within 3 years tracked for Form 8282.
 
@@ -677,7 +671,7 @@ Nothing here is filed yet (D12). One concern and one PR per child; each user-vis
 | GIV-31 | Give tab, one-time | F1, §5.1 | 30, 11, 16, 17, one of 20/22/24, #9843 |
 | GIV-32 | Recurring in the portal: notices, More Info, Cancel | F3, F5 | 31, 21 or 23, #9843 |
 | GIV-33 | Public anonymous page | F2, §5.2 | 31 |
-| GIV-34 | Newsletter opt-in: checkbox, `gcon`, F0 consent step, Mailchimp, CSV | F2, §6 Consent | 33 |
+| GIV-34 | Removed 2026-10-05: no newsletter sign-up (D4) | – | – |
 | **F** | **Finance operations** | | |
 | GIV-40 | Finance dashboard and review queue | §5.3 | 03, 16, 17 |
 | GIV-41 | Refunds, disputes, staff cancel and Resume, guest PII erase (TOTP) | F7, §6 | 40; 20 or 22; 21 or 23 for staff cancel |
@@ -733,7 +727,7 @@ The six questions are listed at the top of this document, under "Questions for t
 | Automatic deposits with gross/fees/net; payout-exact deposits (opt-in); catch-up sync and webhook health | Keep (GIV-16/42) |
 | Finance audit log; test mode with purge and clone detection; encrypted secrets; core rate limiter | Keep (GIV-03/15/13/11) |
 | Plugin-disable guard and receive-only; delete guards; past-due badge with Update payment method | Keep (GIV-12/21/32) |
-| HoH transparency note; consent evidence; privacy and refund links; deep links and QR | Keep (GIV-31/34/71/33) |
+| HoH transparency note; privacy and refund links; deep links and QR | Keep (GIV-31/71/33) |
 | Paper card-number line removed from fundraiser statements | Keep (GIV-51) |
 | WCAG 2.2 AA; gateway locale | Keep, as acceptance criteria |
 | Recurring edit/pause; biweekly; dunning emails (gateways send their own); website iframe | Defer |
@@ -801,14 +795,14 @@ Each requirement and each proposed product choice (D1–D12), with the sections 
 | R47 | Core contract, core plugins | §2.1, §2.6, D10 | SDK in plugin vendor |
 | R48 | Public donor stays anonymous | F2.5, §6 | Email log not resolved |
 | R49 | Optional receipt email on the public page | F2.2, F2.4, GIV-17 | Signed return token |
-| R50 | Newsletter box checked by default | F2.2, §6, GIV-34 | Single opt-in; EU/CA setting |
+| R50 | Removed 2026-10-05: no newsletter sign-up | D4 | |
 | R51 | "If you are a member, click here" link | F2.2 | Shown only when the portal Give tab is available; plus "Contact the church office" |
 | R52 | Login returns to the Give page | F2.6 | `AuthMiddleware.php:197-215` |
 | R53 | 7.8.0, `7.8.0-*.sql`, not in `upgrade.json` | §3 | |
 | D1 | Three gateways; release gate | §2.4, §7 | |
 | D2 | Upstream; core contract; core plugins | §2.1, §2.6 | |
 | D3 | HoH / non-HoH visibility | A10, §5.1, §5.3 | |
-| D4 | Public page, receipt, newsletter, member link | F2, §6 | |
+| D4 | Public page, receipt, member link | F2 | |
 | D5 | Hosted redirect; wallets on Stripe | A1, F10 | |
 | D6 | First charge on chosen day | F3, A27 | |
 | D7 | PayPal Subscriptions v1 | §2.3, F3, GIV-23 | |
