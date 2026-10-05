@@ -975,7 +975,8 @@ class VolunteerMinistryService
         int $order,
         User $actor,
         bool $recruiting = false,
-        bool $selfAssignable = true
+        bool $selfAssignable = true,
+        bool $active = true
     ): VolunteerPosition {
         $ministryId = (int) $ministry->getId();
 
@@ -993,7 +994,7 @@ class VolunteerMinistryService
         $position->setTeamId($teamId);
         $position->setName($name);
         $position->setDescription($this->normalizeDescription($description));
-        $position->setActive(true);
+        $position->setActive($active);
         $position->setRecruiting($recruiting);
         // "Self-assignable" (2026-09-18): off means the Member Portal never offers
         // the position and self-signup is refused — a team leader or coordinator

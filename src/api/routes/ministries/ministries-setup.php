@@ -1291,6 +1291,7 @@ function listVolunteerPositions(Request $request, Response $response): Response
  *         @OA\Property(property="order", type="integer", description="Display order within the ministry"),
  *         @OA\Property(property="recruiting", type="boolean", default=false, description="Advertise this position by name on the Open Opportunities page. Strictly boolean - true/false/1/0 and their string spellings only; anything else is a 400")
  *         @OA\Property(property="selfAssignable", type="boolean", default=true, description="Qualified volunteers may sign themselves up for open dates. False: only a team leader or coordinator assigns the position, and the Member Portal never offers it (2026-09-18)."),
+ *         @OA\Property(property="active", type="boolean", default=true, description="False creates the position inactive. Strictly boolean, like recruiting."),
  *     )),
  *     @OA\Response(response=400, description="The name or the teamId is missing, the team belongs to another ministry, or recruiting was not a boolean"),
  *     @OA\Response(response=401, description="Not authenticated"),
@@ -1355,6 +1356,14 @@ function createVolunteerPosition(Request $request, Response $response): Response
         }
     }
 
+    $active = true;
+    if (array_key_exists('active', $body)) {
+        $active = volunteerSetupStrictBoolean($body['active']);
+        if ($active === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Active must be true or false'), [], 400, null, $request);
+        }
+    }
+
     try {
         $position = (new VolunteerMinistryService())->createPosition(
             $ministry,
@@ -1364,7 +1373,8 @@ function createVolunteerPosition(Request $request, Response $response): Response
             isset($body['order']) ? (int) $body['order'] : 0,
             volunteerSetupActor(),
             $recruiting,
-            $selfAssignable
+            $selfAssignable,
+            $active
         );
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);

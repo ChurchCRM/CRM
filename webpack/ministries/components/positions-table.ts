@@ -243,6 +243,7 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
             description,
             teamId,
             order: Number(orderValue) || 0,
+            active,
             recruiting,
             selfAssignable,
           })

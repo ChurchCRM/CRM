@@ -860,6 +860,23 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
         });
 
+        it("creates a position inactive when the Active switch is off, and refuses a non-boolean (400)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${MINISTRIES_URL}/${ministryA}/positions`,
+                { name: `${PREFIX} Retired Usher`, teamId: homeTeamId, order: 11, active: false },
+                201,
+            ).then((resp) => {
+                expect(resp.body.position.active).to.eq(false);
+            });
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${MINISTRIES_URL}/${ministryA}/positions`,
+                { name: `${PREFIX} Maybe Usher`, teamId: homeTeamId, order: 12, active: "perhaps" },
+                400,
+            );
+        });
+
         it("rejects a position with no team at all (400)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",

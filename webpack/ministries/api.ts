@@ -375,6 +375,7 @@ export function createPosition(
     description: string;
     teamId: number | null;
     order: number;
+    active?: boolean;
     recruiting?: boolean;
     selfAssignable?: boolean;
   },
