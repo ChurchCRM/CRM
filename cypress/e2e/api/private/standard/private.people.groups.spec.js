@@ -466,6 +466,121 @@ describe("API Private Group Operations", () => {
         });
     });
 
+    // Uses its own group so no seeded roster or role is touched.
+    describe("Changing a member's role (#10337)", () => {
+        const personId = 2;
+        const memberRoleId = 1; // a new group's default role, "Member"
+        const groupName = `Role change ${Date.now()}`;
+        let roleGroupId;
+        let leaderRoleId;
+
+        const getRoleId = () =>
+            cy
+                .makePrivateAdminAPICall("GET", `/api/groups/${roleGroupId}/members`, null, 200)
+                .then((resp) => {
+                    const membership = resp.body.Person2group2roleP2g2rs.find(
+                        (member) => member.PersonId === personId
+                    );
+                    expect(membership, `person ${personId} membership`).to.exist;
+                    return membership.RoleId;
+                });
+
+        const countAddedNotes = () =>
+            cy
+                .makePrivateAdminAPICall("GET", `/api/timeline/person/${personId}`, null, 200)
+                .then(
+                    (resp) =>
+                        resp.body.timeline.filter(
+                            (item) => item.text === `Added to group: ${groupName}`
+                        ).length
+                );
+
+        before(() => {
+            cy.makePrivateAdminAPICall("POST", "/api/groups/", { groupName }, 200).then((resp) => {
+                roleGroupId = resp.body.Id;
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/groups/${roleGroupId}/roles`,
+                    { roleName: "Leader" },
+                    200
+                ).then((roleResp) => {
+                    leaderRoleId = roleResp.body.newRole.roleID;
+                });
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/groups/${roleGroupId}/addperson/${personId}`,
+                    { RoleID: memberRoleId },
+                    200
+                );
+            });
+        });
+
+        after(() => {
+            if (roleGroupId) {
+                cy.makePrivateAdminAPICall("DELETE", `/api/groups/${roleGroupId}`, null, [200, 404]);
+            }
+        });
+
+        it("addperson leaves an existing member's role alone and logs no second add", () => {
+            countAddedNotes().should("eq", 1);
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${roleGroupId}/addperson/${personId}`,
+                { RoleID: leaderRoleId },
+                200
+            );
+
+            getRoleId().should("eq", memberRoleId);
+            countAddedNotes().should("eq", 1);
+        });
+
+        it("userRole moves the member to another of the group's roles", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${roleGroupId}/userRole/${personId}`,
+                { roleID: leaderRoleId },
+                200
+            ).then((resp) => {
+                expect(resp.body.RoleId).to.equal(leaderRoleId);
+            });
+            getRoleId().should("eq", leaderRoleId);
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${roleGroupId}/userRole/${personId}`,
+                { roleID: memberRoleId },
+                200
+            );
+            getRoleId().should("eq", memberRoleId);
+        });
+
+        it("userRole refuses a role the group does not have", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${roleGroupId}/userRole/${personId}`,
+                { roleID: 999 },
+                400
+            );
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${roleGroupId}/userRole/${personId}`,
+                {},
+                400
+            );
+            getRoleId().should("eq", memberRoleId);
+        });
+
+        it("userRole on a group that does not exist returns 404", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/999999/userRole/${personId}`,
+                { roleID: 1 },
+                404
+            );
+        });
+    });
+
     describe("Authorization Tests - Non-Admin Users", () => {
         it("Non-admin should be denied adding group members", () => {
             // plainauth (john.plainauth, id 900) passes AuthMiddleware and lacks
