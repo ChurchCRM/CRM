@@ -3,15 +3,51 @@
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfLabel;
 use ChurchCRM\dto\Cart;
+use ChurchCRM\Service\PeopleReportService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
-function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
+/**
+ * The person and family columns a label reads, keyed by column name as the
+ * label code below expects.
+ */
+function LabelRow(Person $person): array
+{
+    $family = $person->getFamily();
+
+    return [
+        'per_ID'        => $person->getId(),
+        'per_fam_ID'    => $person->getFamId(),
+        'per_fmr_ID'    => $person->getFmrId(),
+        'per_Title'     => $person->getTitle(),
+        'per_FirstName' => $person->getFirstName(),
+        'per_LastName'  => $person->getLastName(),
+        'per_Suffix'    => $person->getSuffix(),
+        'per_Address1'  => $person->getAddress1(),
+        'per_Address2'  => $person->getAddress2(),
+        'per_City'      => $person->getCity(),
+        'per_State'     => $person->getState(),
+        'per_Zip'       => $person->getZip(),
+        'fam_Address1'  => $family?->getAddress1(),
+        'fam_Address2'  => $family?->getAddress2(),
+        'fam_City'      => $family?->getCity(),
+        'fam_State'     => $family?->getState(),
+        'fam_Zip'       => $family?->getZip(),
+    ];
+}
+
+function GroupBySalutation(string $famID, $aAdultRole, $aChildRole, array $aPersonIds)
 {
     // Function to place the name(s) on a label when grouping multiple
     // family members on the same label.
@@ -25,22 +61,21 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
     // such as"All Souls Church"
     // Similar logic is applied if mailing to Sunday School children.
 
-    $sSQL = 'SELECT * FROM family_fam WHERE fam_ID=' . $famID;
-    $rsFamInfo = RunQuery($sSQL);
-
-    if (mysqli_num_rows($rsFamInfo) === 0) {
+    $family = FamilyQuery::create()->findPk((int) $famID);
+    if ($family === null) {
         return 'Invalid Family' . $famID;
     }
+    $fam_Name = $family->getName();
 
-    $aFam = mysqli_fetch_array($rsFamInfo);
-    extract($aFam);
-
-    // Only get family members that are in the cart (exclude deceased)
-    $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID=' . $famID . ' AND per_ID IN ('
-    . Cart::getCartIdString() . ') AND per_DateDeceased IS NULL ORDER BY per_LastName, per_FirstName';
-
-    $rsMembers = RunQuery($sSQL);
-    $numMembers = mysqli_num_rows($rsMembers);
+    // Only family members who get this household label (exclude deceased)
+    $aMembers = array_map('LabelRow', PersonQuery::create()
+        ->filterByFamId((int) $famID)
+        ->filterById($aPersonIds, Criteria::IN)
+        ->filterByDateDeceased(null, Criteria::ISNULL)
+        ->orderByLastName()
+        ->orderByFirstName()
+        ->find()
+        ->getData());
 
     // Initialize to"Nothing to return"  If this value is returned
     // the calling program knows to skip this mode and try the next
@@ -53,8 +88,7 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
     $numChild = 0;
     $numOther = 0;
 
-    for ($ind = 0; $ind < $numMembers; $ind++) {
-        $member = mysqli_fetch_array($rsMembers);
+    foreach ($aMembers as $member) {
         extract($member);
 
         $bAdult = false;
@@ -92,11 +126,9 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
         extract($aAdult[0]);
         $sNameAdult = $per_FirstName . ' ' . $per_LastName;
     } elseif ($numAdult == 2) {
-        $firstMember = mysqli_fetch_array($rsMembers);
         extract($aAdult[0]);
         $firstFirstName = $per_FirstName;
         $firstLastName = $per_LastName;
-        $secondMember = mysqli_fetch_array($rsMembers);
         extract($aAdult[1]);
         $secondFirstName = $per_FirstName;
         $secondLastName = $per_LastName;
@@ -115,27 +147,23 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
 
     // Salutation for children grouped together
     if ($numChild > 0) {
-        $firstMember = mysqli_fetch_array($rsMembers);
         extract($aChild[0]);
         $firstFirstName = $per_FirstName;
         $firstLastName = $per_LastName;
     }
     if ($numChild > 1) {
-        $secondMember = mysqli_fetch_array($rsMembers);
         extract($aChild[1]);
         $secondFirstName = $per_FirstName;
         $secondLastName = $per_LastName;
         $bSameLastNames = $bSameLastNames && ($firstLastName == $secondLastName);
     }
     if ($numChild > 2) {
-        $thirdMember = mysqli_fetch_array($rsMembers);
         extract($aChild[2]);
         $thirdFirstName = $per_FirstName;
         $thirdLastName = $per_LastName;
         $bSameLastNames = $bSameLastNames && ($secondLastName == $thirdLastName);
     }
     if ($numChild > 3) {
-        $fourthMember = mysqli_fetch_array($rsMembers);
         extract($aChild[3]);
         $fourthFirstName = $per_FirstName;
         $fourthLastName = $per_LastName;
@@ -578,10 +606,13 @@ function SelectLabelAddress(array $aRow): array
     ];
 }
 
-function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComplete): string
+/**
+ * @param array<int, string[]> $aEntries person id => label modes: "indiv" labels the person by
+ *                                       name, "fam" gives their household one label. A person
+ *                                       can have both (#10343).
+ */
+function GenerateLabels(&$pdf, array $aEntries, $iBulkMailPresort, $bToParents, $bOnlyComplete): array
 {
-    // $mode is"indiv" or"fam"
-
     $sAdultRole = SystemConfig::getValue('sDirRoleHead') . ',' . SystemConfig::getValue('sDirRoleSpouse');
     $sAdultRole = trim($sAdultRole," ,\t\n\r\0\x0B");
     $aAdultRole = explode(',', $sAdultRole);
@@ -593,106 +624,93 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     $aChildRole = array_unique($aChildRole);
     sort($aChildRole);
 
-    $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ';
-    $sSQL .= 'ON person_per.per_fam_ID = family_fam.fam_ID ';
-    $sSQL .= 'WHERE per_ID IN (' . Cart::getCartIdString() . ') ';
-    $sSQL .= 'AND per_DateDeceased IS NULL ';
-    $sSQL .= 'ORDER BY per_LastName, per_FirstName, fam_Zip';
-    $rsCartItems = RunQuery($sSQL);
+    $sLabelList = [];
+    $aPersonIds = array_map('intval', array_keys($aEntries));
+    $aHouseholdIds = array_map('intval', array_keys(array_filter(
+        $aEntries,
+        static fn (array $aModes): bool => in_array('fam', $aModes, true)
+    )));
+    if ($aPersonIds === []) {
+        return $sLabelList;
+    }
+
+    $aRows = array_map('LabelRow', PersonQuery::create()
+        ->filterById($aPersonIds, Criteria::IN)
+        ->filterByDateDeceased(null, Criteria::ISNULL)
+        ->leftJoinWithFamily()
+        ->orderByLastName()
+        ->orderByFirstName()
+        ->addAscendingOrderByColumn(FamilyTableMap::COL_FAM_ZIP)
+        ->find()
+        ->getData());
     $didFam = [];
 
-    while ($aRow = mysqli_fetch_array($rsCartItems)) {
-        // It's possible (but unlikely) that three labels can be generated for a
-        // family even when they are grouped.
-        // At most one label for all adults
-        // At most one label for all children
-        // At most one label for all others (for example, another church or a landscape
-        // company)
-
-
-
-        // mysqli returns the column as a string, so compare as an integer;
-        // GroupBySalutation() cannot build a label for family 0.
-        if (((int) $aRow['per_fam_ID'] === 0) && ($mode === 'fam')) {
-            // Skip people with no family ID
-            continue;
-        }
-
-        // Skip if mode is fam and we have already printed labels
-        if (array_key_exists($aRow['per_fam_ID'], $didFam) && $didFam[$aRow['per_fam_ID']] && ($mode === 'fam')) {
-            continue;
-        }
-
-        $didFam[$aRow['per_fam_ID']] = 1;
-
-        unset($aName);
-
-        if ($mode === 'fam') {
-            $aName = GroupBySalutation($aRow['per_fam_ID'], $aAdultRole, $aChildRole);
-
-            // One label per household (#9873): the adults' salutation when an
-            // adult of the family is in the cart, else the children's (so a
-            // class list still gets "To the parents of"), else the family
-            // name. Before, a family with adults and children in the cart got
-            // one label for each group.
-            foreach (['adult', 'child', 'other'] as $sGroup) {
-                if ($aName[$sGroup] !== 'Nothing to return') {
-                    $aName = [$sGroup => $aName[$sGroup]];
-                    break;
+    foreach ($aRows as $aRow) {
+        foreach ($aEntries[(int) $aRow['per_ID']] as $mode) {
+            if ($mode === 'fam') {
+                // mysqli returns the column as a string, so compare as an integer;
+                // GroupBySalutation() cannot build a label for family 0.
+                if ((int) $aRow['per_fam_ID'] === 0 || isset($didFam[$aRow['per_fam_ID']])) {
+                    continue;
                 }
-            }
-        } else {
-            $sName = MiscUtils::formatFullName(
-                $aRow['per_Title'],
-                $aRow['per_FirstName'],
-                '',
-                $aRow['per_LastName'],
-                $aRow['per_Suffix'],
-                1
-            );
+                $didFam[$aRow['per_fam_ID']] = true;
 
-            $bChild = false;
-            foreach ($aChildRole as $value) {
-                if ($aRow['per_fmr_ID'] == $value) {
-                    $bChild = true;
+                $aName = GroupBySalutation((string) $aRow['per_fam_ID'], $aAdultRole, $aChildRole, $aHouseholdIds);
+
+                // One label per household (#9873): the adults' salutation when an
+                // adult of the family is listed, else the children's (so a
+                // class list still gets "To the parents of"), else the family
+                // name. Before, a family with adults and children in the cart got
+                // one label for each group.
+                foreach (['adult', 'child', 'other'] as $sGroup) {
+                    if ($aName[$sGroup] !== 'Nothing to return') {
+                        $aName = [$sGroup => $aName[$sGroup]];
+                        break;
+                    }
                 }
-            }
-
-            if ($bChild) {
-                $aName['child'] = mb_substr($sName, 0, 33);
             } else {
-                $aName['indiv'] = mb_substr($sName, 0, 33);
-            }
-        }
+                $sName = MiscUtils::formatFullName(
+                    $aRow['per_Title'],
+                    $aRow['per_FirstName'],
+                    '',
+                    $aRow['per_LastName'],
+                    $aRow['per_Suffix'],
+                    1
+                );
 
-        foreach ($aName as $key => $sName) {
-            // Bail out if nothing to print
-            if ($sName === 'Nothing to return') {
-                continue;
-            }
+                $bChild = false;
+                foreach ($aChildRole as $value) {
+                    if ($aRow['per_fmr_ID'] == $value) {
+                        $bChild = true;
+                    }
+                }
 
-            if ($bToParents && ($key === 'child')) {
-                $sName ="To the parents of:\n" . $sName;
-            }
-
-            // A person's own address wins; otherwise fall back to the family
-            // address, as Person::getAddress() and the newsletter labels do.
-            // Households normally carry the address on the family record only,
-            // which left these labels blank (#9873).
-            $aAddress = SelectLabelAddress($aRow);
-            $sAddress1 = $aAddress['Address1'];
-            $sAddress2 = $aAddress['Address2'];
-            $sCity = $aAddress['City'];
-            $sState = $aAddress['State'];
-            $sZip = $aAddress['Zip'];
-
-            $sAddress = $sAddress1;
-            if ($sAddress2 !== '') {
-                $sAddress .="\n" . $sAddress2;
+                $aName = $bChild ? ['child' => mb_substr($sName, 0, 33)] : ['indiv' => mb_substr($sName, 0, 33)];
             }
 
-            if (!$bOnlyComplete || (strlen($sAddress) && strlen($sCity) && strlen($sState) && strlen($sZip))) {
-                $sLabelList[] = ['Name' => $sName, 'Address' => $sAddress, 'City' => $sCity, 'State' => $sState, 'Zip' => $sZip]; //,'fam_ID'=>$aRow['fam_ID']);
+            foreach ($aName as $key => $sName) {
+                // Bail out if nothing to print
+                if ($sName === 'Nothing to return') {
+                    continue;
+                }
+
+                if ($bToParents && ($key === 'child')) {
+                    $sName ="To the parents of:\n" . $sName;
+                }
+
+                // A person's own address wins; otherwise fall back to the family
+                // address, as Person::getAddress() and the newsletter labels do.
+                // Households normally carry the address on the family record only,
+                // which left these labels blank (#9873).
+                $aAddress = SelectLabelAddress($aRow);
+                $sAddress = $aAddress['Address1'];
+                if ($aAddress['Address2'] !== '') {
+                    $sAddress .="\n" . $aAddress['Address2'];
+                }
+
+                if (!$bOnlyComplete || (strlen($sAddress) && strlen($aAddress['City']) && strlen($aAddress['State']) && strlen($aAddress['Zip']))) {
+                    $sLabelList[] = ['Name' => $sName, 'Address' => $sAddress, 'City' => $aAddress['City'], 'State' => $aAddress['State'], 'Zip' => $aAddress['Zip']];
+                }
             }
         }
     }
@@ -737,11 +755,13 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         }
     }
 
-    if (isset($zipLabels)) {
-        return serialize($zipLabels);
-    } else {
-        return serialize($sLabelList);
-    }
+    return $zipLabels ?? $sLabelList;
+}
+
+// Labels for a People Report's rows (#10343) instead of the cart. The reports are admin only.
+$sReportSlug = (string) ($_GET['report'] ?? '');
+if ($sReportSlug !== '') {
+    AuthenticationManager::redirectHomeIfNotAdmin();
 }
 
 // Standard format
@@ -777,8 +797,10 @@ if ($startcol > 1 || $startrow > 1) {
     $pdf->addPage();
 }
 
-$mode = $_GET['groupbymode'];
-setcookie('groupbymode', $mode, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+$mode = ($_GET['groupbymode'] ?? '') === 'fam' ? 'fam' : 'indiv';
+if (isset($_GET['groupbymode'])) {
+    setcookie('groupbymode', $mode, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
+}
 
 if (array_key_exists('bulkmailpresort', $_GET)) {
     $bulkmailpresort = $_GET['bulkmailpresort'];
@@ -807,13 +829,18 @@ if ($bulkmailpresort) {
 $bToParents = (array_key_exists('toparents', $_GET) && $_GET['toparents'] == 1);
 setcookie('toparents', $bToParents, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
-$bOnlyComplete = ($_GET['onlyfull'] == 1);
+$bOnlyComplete = ($_GET['onlyfull'] ?? '') === '1';
 
 $sFileType = InputUtils::legacyFilterInput($_GET['filetype'], 'char', 4);
 
-$aLabelList = unserialize(
-    GenerateLabels($pdf, $mode, $iBulkCode, $bToParents, $bOnlyComplete)
-);
+// A report can address some rows by person and others by household; the cart uses the chosen grouping.
+if ($sReportSlug !== '') {
+    $aEntries = (new PeopleReportService())->labelEntries($sReportSlug, $_GET, $mode);
+} else {
+    $aEntries = array_fill_keys(array_map('intval', array_filter(explode(',', Cart::getCartIdString()))), [$mode]);
+}
+
+$aLabelList = GenerateLabels($pdf, $aEntries, $iBulkCode, $bToParents, $bOnlyComplete);
 
 if ($sFileType === 'PDF') {
     if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
