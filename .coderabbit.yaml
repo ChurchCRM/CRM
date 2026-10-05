@@ -17,7 +17,7 @@ tone_instructions: >-
 
 reviews:
   profile: chill
-  request_changes_workflow: false
+  request_changes_workflow: true
   high_level_summary: true
   high_level_summary_in_walkthrough: true
   poem: false
