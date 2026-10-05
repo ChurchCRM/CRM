@@ -16563,24 +16563,12 @@ msgid "Family Delete Confirmation"
 msgstr "Bekräftelse på borttagning av familj"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Enskilda personer (ingen familj)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nya självregistreringar"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Bekräftelse på borttagning av egenskapstyp"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Granska nya familjer och enskilda personer som registrerade sig via ditt offentliga registreringsformulär"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Granska nya registreringar från ditt offentliga registreringsformulär nedan. Poster utan e-post eller telefon är markerade – verifiera kontaktuppgifter innan du följer upp."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

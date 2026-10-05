@@ -16473,24 +16473,12 @@ msgid "Family Delete Confirmation"
 msgstr "Επιβεβαίωση Διαγραφής Οικογένειας"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Μεμονωμένα Άτομα (χωρίς οικογένεια)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Νέες Αυτο-Εγγραφές"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Επιβεβαίωση Διαγραφής Τύπου Ιδιότητας"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Ελέγξτε νέες οικογένειες και άτομα που εγγράφηκαν μέσω της δημόσιας φόρμας εγγραφής"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Ελέγξτε παρακάτω τις νέες εγγραφές από τη δημόσια φόρμα σας. Οι εγγραφές χωρίς email ή τηλέφωνο επισημαίνονται — επαληθεύστε τα στοιχεία επικοινωνίας πριν από οποιαδήποτε ενέργεια."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

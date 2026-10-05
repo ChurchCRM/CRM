@@ -16464,24 +16464,12 @@ msgid "Family Delete Confirmation"
 msgstr "Xác nhận xóa gia đình"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Cá nhân (không có gia đình)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Đăng ký mới tự thực hiện"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Xác nhận xóa loại thuộc tính"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Xem xét các gia đình và cá nhân mới đã đăng ký qua biểu mẫu đăng ký công khai của bạn"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Xem xét các đăng ký mới từ biểu mẫu đăng ký công khai của bạn bên dưới. Các mục không có email hoặc số điện thoại được đánh dấu — hãy xác minh thông tin liên lạc trước khi theo dõi."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

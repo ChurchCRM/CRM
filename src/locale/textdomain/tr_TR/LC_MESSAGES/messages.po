@@ -16473,24 +16473,12 @@ msgid "Family Delete Confirmation"
 msgstr "Aile Silme Onayı"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Bireyler (aile yok)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Yeni Kendi Kendine Kayıtlar"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Özellik Türü Silme Onayı"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Genel kayıt formunuza kaydolan yeni aileleri ve bireyleri inceleyin"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Aşağıda genel kayıt formunuzdan gelen yeni kayıtları inceleyin. E-posta veya telefon numarası olmayan girişler işaretlenmiştir — takip etmeden önce iletişim bilgilerini doğrulayın."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

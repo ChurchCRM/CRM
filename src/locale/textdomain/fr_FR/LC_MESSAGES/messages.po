@@ -16470,24 +16470,12 @@ msgid "Family Delete Confirmation"
 msgstr "Confirmation de suppression de la famille"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Personnes sans famille"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nouvelles auto-inscriptions"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Confirmation de suppression du type de propriété"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Examiner les nouvelles familles et personnes inscrites via votre formulaire d'inscription public"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Examinez ci-dessous les nouvelles inscriptions depuis votre formulaire public. Les entrées sans e-mail ni téléphone sont signalées — vérifiez les coordonnées avant de donner suite."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

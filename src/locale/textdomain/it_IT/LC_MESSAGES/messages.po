@@ -16492,24 +16492,12 @@ msgid "Family Delete Confirmation"
 msgstr "Conferma eliminazione famiglia"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Individui (senza famiglia)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nuove auto-registrazioni"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Conferma eliminazione tipo di proprietà"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Esamina le nuove famiglie e i singoli fedeli che si sono registrati tramite il modulo pubblico"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Esamina di seguito le nuove iscrizioni dal modulo pubblico. Le voci prive di e-mail o telefono sono contrassegnate — verifica le informazioni di contatto prima di procedere."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
