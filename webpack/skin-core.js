@@ -66,9 +66,6 @@ if (typeof window !== "undefined") {
   window.CRM.showPhotoLightbox = showPhotoLightbox;
   window.CRM.deletePhoto = deletePhoto;
 
-  // Shared person-search TomSelect (#9819). Re-exported on window.CRM for
-  // scripts that are loaded as a plain <script src> and so cannot import it —
-  // currently src/skin/js/GroupView.js. Webpack entries import it directly.
   window.CRM.initPersonSelect = initPersonSelect;
   window.CRM.initAllPersonSelects = initAllPersonSelects;
 

@@ -113,6 +113,7 @@ module.exports = {
     'people-map-neighbors': './webpack/people/map-neighbors',
     'people-self-register': './webpack/people/self-register',
     'error': './webpack/error',
+    'groups-group-view': './webpack/groups/group-view',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
     'repeat-event-editor': './webpack/repeat-event-editor',
