@@ -112,6 +112,7 @@ module.exports = {
     'people-map-view': './webpack/people/map-view',
     'people-map-neighbors': './webpack/people/map-neighbors',
     'people-self-register': './webpack/people/self-register',
+    'people-labels-modal': './webpack/people/labels-modal',
     'error': './webpack/error',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
