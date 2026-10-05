@@ -87,12 +87,14 @@ reviews:
     auto_pause_after_reviewed_commits: 5
     base_branches:
       - ".*"
+    # Locale sync PRs only. Dependabot bumps are reviewed (#10330 was skipped).
     ignore_usernames:
       - "github-actions[bot]"
-      - "dependabot[bot]"
     labels:
       - "!Localization"
 
+  # Excludes must not be the only files in a real PR. Lockfiles, vendored skin
+  # libs, and Playwright specs are the diff on dependency and test PRs.
   path_filters:
     - "!locale/**"
     - "!**/messages.po"
@@ -100,9 +102,6 @@ reviews:
     - "!**/node_modules/**"
     - "!**/dist/**"
     - "!**/*.min.js"
-    - "!**/*.lock"
-    - "!src/skin/external/**"
-    - "!playwright/workflows/**"
     - "!playwright/**/*.png"
     - "!**/*.png"
     - "!**/*.jpg"
@@ -112,6 +111,10 @@ reviews:
       instructions: |
         Apply maintainer-review-gates.md. Hard blocks only.
         Do not ask for locale:build or messages.po.
+    - path: "**/*.{lock,json}"
+      instructions: |
+        Dependency bump. Read release notes for breaking changes, security fixes,
+        and behavior ChurchCRM tests. Do not nitpick lockfile formatting.
     - path: "src/**/*.php"
       instructions: |
         PHP 8.4. Propel ORM only — flag new RunQuery() or raw SQL.
