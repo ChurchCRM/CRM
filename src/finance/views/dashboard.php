@@ -498,7 +498,6 @@ $(document).ready(function() {
             { name: 'bUseScannedChecks',     type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable use of scanned checks')) ?> },
             { name: 'bEnableNonDeductible',  type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable non-deductible payments')) ?> },
             { name: 'bUseDonationEnvelopes', type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable use of donation envelopes')) ?> },
-            { name: 'aFinanceQueries',       type: 'text',    label: <?= InputUtils::jsonEncodeForScript(gettext('Finance permission query IDs')) ?>, placeholder: '30,31,32' }
         ],
         onSave: function() {
             // Reload page after short delay to show updated fiscal year data

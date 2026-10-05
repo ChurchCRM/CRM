@@ -1668,30 +1668,6 @@ msgid "Properties"
 msgstr "Özellikleri"
 
 #: 
-msgid "Query Listing"
-msgstr "Sorgu Listesi"
-
-#: 
-msgid "Query View"
-msgstr "Sorgu Görünümü"
-
-#: 
-msgid "This value is required."
-msgstr "Bu değer gereklidir."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Bu değer sayısal olmalıdır."
-
-#: 
-msgid "Run Query Again"
-msgstr "Sorguyu tekrar çalıştırın"
-
-#: 
-msgid "Execute Query"
-msgstr "Sorguyu çalıştır"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Rehin Hatırlatma Raporu"
 
@@ -2619,10 +2595,6 @@ msgstr "Alıcıları Görüntüle"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Alıcı listesine bağışçılar ekleyin"
-
-#: 
-msgid "Data/Reports"
-msgstr "Veri/Raporlar"
 
 #: 
 msgid "Family Properties"
@@ -4500,10 +4472,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Tarih seçmesinin tarihini tanımlamak için, varsayılan başına: y-m-d, Fransızca: D/m/y Örneğin."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Yeni bir aile veya kişi eklendiğinde bilgilendirilecek kişilerin kişilerinin virgül ayrılmış listesi"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Harici takvim API'sından kimlik doğrulanmamış olayların okunmasına izin verin"
 
@@ -5072,14 +5040,6 @@ msgstr[1] "%d yıl önce"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "PHP Ziparchive eksik"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "Sepete sonuç ekle"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Sepetin sonuçlarını kaldırın"
 
 #: 
 msgid "Database Reset Functions"
@@ -6354,10 +6314,6 @@ msgid "Cart"
 msgstr "Sepet"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Bunu Sistem Ayarları'ndan değiştirin."
-
-#: 
 msgid "Church Membership"
 msgstr "Kilise Üyeliği"
 
@@ -6408,10 +6364,6 @@ msgstr "Başlamak için bir para yatırma işlemi oluşturun veya seçin."
 #: 
 msgid "Current Deposit"
 msgstr "Mevcut Para Yatırma"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Mevcut mali yıl"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6474,10 +6426,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Beyanname oluşturmadan önce vergi yılına ait tüm para yatırma işlemlerinin kapatıldığından emin olun."
 
 #: 
-msgid "Export Options"
-msgstr "Dışa Aktarma Seçenekleri"
-
-#: 
 msgid "F"
 msgstr "K"
 
@@ -6492,10 +6440,6 @@ msgstr "Aile Navigasyonu"
 #: 
 msgid "Feb"
 msgstr "Şub"
-
-#: 
-msgid "Filtering"
-msgstr "Filtreleme"
 
 #: 
 msgid "Finance"
@@ -6518,16 +6462,8 @@ msgid "Generate Tax Statements"
 msgstr "Vergi Beyannameleri Oluştur"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Bağışçılar için yıllık bağış beyannameleri oluşturun ve bağış modellerini belirleyin."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Bağışçılar için vergiden düşülebilir yıllık bağış beyannameleri oluşturun. Yazdırılabilir veya e-postalanabilir."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Bireysel para yatırma işlemleri veya tarih aralıkları için ayrıntılı raporlar oluşturun."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6588,10 +6524,6 @@ msgstr "Mar"
 #: 
 msgid "Membership Reports"
 msgstr "Üyelik Raporları"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Çoğu rapor, yazdırmak için PDF veya hesap çizelgesi analizi için CSV olarak dışa aktarılabilir."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6670,14 +6602,6 @@ msgid "Recording a Pledge"
 msgstr "Taahhüt Kaydetme"
 
 #: 
-msgid "Report Tips"
-msgstr "Rapor İpuçları"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Üye oy kullanma uygunluğu ve kuruluş yönetimi ile ilgili raporlar."
-
-#: 
 msgid "Reset"
 msgstr "Sıfırla"
 
@@ -6754,20 +6678,12 @@ msgid "Total Amount"
 msgstr "Toplam Tutar"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Kampanyalar ve mali yıl bütçelemesi için taahhütleri ve ödeme ilerlemesini takip edin."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Karşılanmayan Önkoşullar"
 
 #: 
 msgid "Upgrade"
 msgstr "Yükselt"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Belirli bağışçı grupları için raporlar oluşturmak üzere sınıflandırma ve aile filtrelerini kullanın."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6792,10 +6708,6 @@ msgstr "Yılbaşından Bugüne Taahhütler"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Aile üyelerini şimdi oluşturabilir veya daha sonra ekleyebilirsiniz. Tüm girişler yeni kişi kayıtları olacaktır."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Mali yılınızın başladığı ay:"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7352,10 +7264,6 @@ msgstr "Bu katılım sayısını kaldır?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Bu özelliğin uygulandığı kayıt türünü seçin"
-
-#: 
-msgid "Total Pledges"
-msgstr "Toplam Taahhütler"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -9029,10 +8937,6 @@ msgid "Current person"
 msgstr "Mevcut kişi"
 
 #: 
-msgid "Data & Reports"
-msgstr "Veri ve Raporlar"
-
-#: 
 msgid "Database Reset"
 msgstr "Veritabanı Sıfırlama"
 
@@ -10051,10 +9955,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Hata ayıklama için sistem günlük dosyalarını görüntüle ve yönet"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Kayıtlı veritabanı sorgularını görüntüle ve çalıştır"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Alıcı numaralarını ve palet atamalarını görüntüle"
 
@@ -10073,10 +9973,6 @@ msgstr "Aile bağış taahhüdü özetlerini ve fon dağılımlarını görünt�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Grup üyelerini, rolleri ve özellikleri görüntüle"
-
-#: 
-msgid "View query results"
-msgstr "Sorgu sonuçlarını görüntüle"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10398,10 +10294,6 @@ msgstr "Güncelleme Mevcut"
 msgid "User must have Notes permission"
 msgstr "Kullanıcının Not izni olmalıdır"
 
-#: 
-msgid "Address Defaults"
-msgstr "Adres Varsayılanları"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10414,16 +10306,6 @@ msgstr "Takvim Ayarları"
 #: 
 msgid "Calendars"
 msgstr "Takvimler"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Gönüllü bir fırsat seçin"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Kişi alanını seçin"
 
 #: 
 msgid "Church Identity"
@@ -10445,11 +10327,6 @@ msgstr "ChurchCRM doğrudan e-posta gönderebilir."
 msgid "Communication"
 msgstr "İletişim"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "İki mali yıl arasındaki taahhütleri karşılaştırın"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Sistem tarafından e-posta göndermek için aşağıdaki ayarlarda SMTP'yi yapılandırın."
@@ -10463,17 +10340,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Haber bültenleri ve kampanyalar için e-posta listelerini senkronize etmek üzere Mailchimp'i bağlayın."
 
 #: 
-msgid "Copy from church address"
-msgstr "Kilise adresinden kopyala"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "Panoya kopyala"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Özel alan"
 
 #: 
 msgid "Default Country"
@@ -10527,16 +10395,6 @@ msgstr "E-posta adresleri alınamadı"
 msgid "Failed to retrieve phone numbers"
 msgstr "Telefon numaraları alınamadı"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Alan Değeri"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Bir yıl söz veren ancak diğer bir yıl söz vermeyen kişileri bulun"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10544,33 +10402,8 @@ msgstr "Belirli bir fırsat için gönüllüler bulun"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "İki belirli fırsat koduna uygun gönüllüleri bulun"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "İlk Mali Yıl"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Karşılaştırma için ilk mali yıl"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "İlk gönüllü fırsat seçimi"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Önceki aylarda kaydolan arkadaşlar"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Misafir"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10594,31 +10427,6 @@ msgstr "Etkinlikleri, doğum günlerini ve yıldönümlerini yönetin"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Özel alanı bu değerle eşleştirin"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Üye, Düzenli Katılımcı vb."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Belirli bir ayda katılan üyeler"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Üyelik yıldönümleri"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Eksik sözler"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Ay"
 
@@ -10638,16 +10446,6 @@ msgstr "Yeni üye bildirim e-postaları"
 #: 
 msgid "No cell phone on file"
 msgstr "Dosyada cep telefonu yok"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Katılmayan Kişi"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Katılmayan Kişi (personel)"
 
 #: 
 msgid "Not Classified"
@@ -10684,30 +10482,10 @@ msgstr "Üyeleri SMS/metin listelerinden hariç tutmak için kullanılan kişi �
 msgid "Person property used to exclude members from email lists"
 msgstr "Üyeleri e-posta listelerinden hariç tutmak için kullanılan kişi özelliği"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Söz karşılaştırması"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Bu yıl söz verildi"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Mülkiyet"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Son arkadaşlar"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Düzenli Katılımcı"
 
 #. Context: query_qry
 #: 
@@ -10729,21 +10507,6 @@ msgstr "SMTP Yapılandırılmış"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP Yapılandırılmamış"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "İkinci Mali Yıl"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Karşılaştırma için ikinci mali yıl"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "İkinci gönüllü fırsat seçimi"
 
 #: 
 msgid "Send text message"
@@ -10777,25 +10540,6 @@ msgstr "Metin Araçları"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Kısa mesaj eylem Grup ve Pazar Okulu sınıf görünümlerinden mevcuttur. Telefon numaralarını kopyalamak veya grup üyelerine SMS mesajları göndermek için \"Metin\" açılır menüsünü kullanın."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Kayıtların döndürülmesini istediğiniz doğum ayı."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Kayıtların döndürülmesini istediğiniz üyelik yıldönümü ayı."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Kişi kayıtlarının döndürülmesini istediğiniz mülkiyet."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Bu değerler yeni aileler oluşturulurken önceden doldurulur. Manuel giriş gerektirmek için boş bırakın."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Mesafeyi ölçmek için kullanılan birim."
@@ -10804,11 +10548,6 @@ msgstr "Mesafeyi ölçmek için kullanılan birim."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Mailto: bağlantıları aracılığıyla e-posta göndermek için kullanıcı izni"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Gönüllü fırsatları"
 
 #. Context: query_qry
 #: 
@@ -10826,11 +10565,6 @@ msgstr "Vonage SMS Yapılandırılmamış"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage olmadan, metin eylemleri cihazınızın yerel SMS uygulamasını açar veya telefon numaralarını panoya kopyalar."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "ama bu yıl değil"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10941,10 +10675,6 @@ msgstr "Takvim etkinliklerine genel HTML, ICS ve JSON URL'leri aracılığıyla 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Ziyaretçilerin kendi kendine kayıt sayfası aracılığıyla aile kaydı oluşturmasına izin ver"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Ziyaretçilerin yeni aileler olarak kendi kendine kaydolmasına izin verin."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -11028,10 +10758,6 @@ msgstr "Gravatar mevcut olmadığında neyin görüneceğini seçin:\n"
 "• Retro - 8-bit atari tarzı piksel sanatı\n"
 "• RoboHash - Benzersiz üretilmiş robot\n"
 "• Boş - Şeffaf (baş harflere döner)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "Görüntülemek için finans izni gerektiren virgülle ayrılmış sorgu kimlikleri"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11144,10 +10870,6 @@ msgstr "Taranan çek kullanımını etkinleştir"
 msgid "Features"
 msgstr "Özellikler"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "Finans izni sorgu kimlikleri"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11221,10 +10943,6 @@ msgstr "Gravatar, e-posta adreslerini bir karma değerine (MD5) dönüştürerek
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Enlemi/Boylamı Gizle"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Kişi Adresini Gizle"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -14294,11 +14012,6 @@ msgstr "Aile adı en az 2 karakter olmalıdır"
 msgid "Fields"
 msgstr "Alanlar"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Bir etkinliğe katılmayan kişileri bul"
-
 #: 
 msgid "First name is required"
 msgstr "Ad gereklidir"
@@ -14478,11 +14191,6 @@ msgstr "Üyeler listeye eklendi."
 #: 
 msgid "Minimum length is"
 msgstr "Minimum uzunluk:"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Eksik kişiler"
 
 #: 
 msgid "Move"
@@ -14851,11 +14559,6 @@ msgstr "Takvim seçin..."
 #: 
 msgid "Select event type..."
 msgstr "Etkinlik türünü seçin..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "İstediğiniz etkinliği seçin"
 
 #: 
 msgid "Sequence"
@@ -16318,10 +16021,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s ailesinden %1$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d kayıt döndürüldü"
-
-#: 
 msgid "Assign role to all"
 msgstr "Herkese rol ata"
 
@@ -16492,22 +16191,6 @@ msgstr "Sistem Yapılandırması"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Bu Gönüllü Fırsatına atanmış kişiler var. Silme işlemi atamaları kaldıracak"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Bu değer %d karakterden kısa olamaz"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Bu değer %d karakterden uzun olamaz"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Bu değer %s değerinden büyük olamaz"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Bu değer en az %s olmalıdır"
 
 #: 
 msgid "Total Deposits"
@@ -16790,24 +16473,12 @@ msgid "Family Delete Confirmation"
 msgstr "Aile Silme Onayı"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Bireyler (aile yok)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Yeni Kendi Kendine Kayıtlar"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Özellik Türü Silme Onayı"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Genel kayıt formunuza kaydolan yeni aileleri ve bireyleri inceleyin"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Aşağıda genel kayıt formunuzdan gelen yeni kayıtları inceleyin. E-posta veya telefon numarası olmayan girişler işaretlenmiştir — takip etmeden önce iletişim bilgilerini doğrulayın."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17519,16 +17190,6 @@ msgstr "Minimum teklif %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Belirli bir ayda doğum günü veya evlilik yıl dönümü olan kişiler"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Doğum günleri ve yıl dönümlerinin listelenmesini istediğiniz ay."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Kayıtların listelenmesini istediğiniz evlilik yıl dönümü ayı."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Tüm satın alımların toplamı: %s"
@@ -17748,10 +17409,6 @@ msgid "Selected family"
 msgstr "Seçilen aile"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Bu değer geçerli bir alan adı olmalıdır."
-
-#: 
 msgid "Could not load data"
 msgstr "Veriler yüklenemedi"
 
@@ -17760,16 +17417,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Lütfen sayfayı yenileyin veya daha sonra tekrar deneyin."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Önce ilgili kayıtları ekleyin."
-
-#: 
 msgid "All Months"
 msgstr "Tüm Aylar"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Henüz \"%s\" seçeneği tanımlanmamış."
 
 #: 
 msgid "No events found for %s %d."
@@ -18012,10 +17661,6 @@ msgstr "Kendi kendine kayıt olan girişler yüklenirken hata oluştu"
 #: 
 msgid "Errors"
 msgstr "Hatalar"
-
-#: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Vefat etmiş üyeleri basılı rehberden ve CSV dışa aktarımlarından hariç tut."
 
 #: 
 msgid "Failed Files"
@@ -18334,10 +17979,6 @@ msgid "This Person is Inactive"
 msgstr "Bu Kişi Pasif"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Bu işlem, OpenStreetMap kullanarak konum bilgisi eksik olan her aile için harita koordinatlarını bulur. Aileleri 50'şerlik gruplar halinde işler, her grup yaklaşık bir dakika sürer. İşlem çalışırken bu sayfayı açık tutabilirsiniz. Devam edilsin mi?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Bu kişi vefat etmiş"
 
@@ -18546,14 +18187,6 @@ msgid "As an admin, please also review the"
 msgstr "Yönetici olarak lütfen aşağıdakileri de gözden geçirin"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Doğum günlerinde kişilere otomatik olarak doğum günü tebrik e-postası gönderin."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Doğum Günü E-postaları"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Doğum günleri, yıldönümleri, gönüllüler ve sınıflandırma filtresine sahip diğer kişi listeleri"
 
@@ -18710,10 +18343,6 @@ msgid "Print %d Tax Doc"
 msgstr "%d Vergi Belgesi Yazdır"
 
 #: 
-msgid "Queries"
-msgstr "Sorgular"
-
-#: 
 msgid "Recent Friends"
 msgstr "Son Arkadaşlar"
 
@@ -18796,4 +18425,388 @@ msgstr "bu olayın etrafındaki hatalar için ilgili günlük dosyasını indiri
 #: 
 msgid "system logs"
 msgstr "sistem günlükleri"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Erişim Kontrolü ve Güvenliği"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Vergi indirimine tabi olmayan ödemelerin kaydedilmesine izin ver (örneğin, ürün satışları)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Genel etkinliklere kimliği doğrulanmamış erişime izin ver (takvimleri gömme için)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Doğum günü e-postalarını otomatik olarak gönder (arka plan iş zamanlayıcısı gerekir)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Doğum Günü Tebrik E-postaları"
+
+#: 
+msgid "Communication & Email"
+msgstr "İletişim ve E-posta"
+
+#: 
+msgid "Content Security Policy"
+msgstr "İçerik Güvenliği Politikası"
+
+#: 
+msgid "Email System"
+msgstr "E-posta Sistemi"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Kuruluşunuz için özellikleri etkinleştirin veya devre dışı bırakın"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Ana navigasyonda Etkinlikler bölümünü etkinleştirin/devre dışı bırakın"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Finans menüsünü ve tüm finansal özellikleri etkinleştirin/devre dışı bırakın (mevduatlar, ödemeler, raporlar)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Bağış Toplayıcı menüsünü etkinleştirin/devre dışı bırakın"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "XSS saldırılarına karşı korunmak için katı CSP başlıklarını uygula"
+
+#: 
+msgid "Events Module"
+msgstr "Etkinlikler Modülü"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Özellik Değiştirgeleri"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Özellik değiştirgeleri, ChurchCRM'de hangi modüllerin ve özelliklerin kullanılabilir olduğunu kontrol eder. Değişiklikler hemen geçerli olur."
+
+#: 
+msgid "Finance Features"
+msgstr "Finansal Özellikler"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Hızlı genel aramaya adresleri dahil et"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Hızlı genel aramaya takvim etkinliklerini dahil et"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Hızlı genel aramaya özel aile özelliklerini dahil et"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Hızlı genel aramaya mevduatları dahil et"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Hızlı genel aramaya aileleri dahil et"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Hızlı genel aramaya grupları dahil et"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Hızlı genel aramaya ödemeleri dahil et"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Hızlı genel aramaya insanları dahil et"
+
+#: 
+msgid "Invalid setting"
+msgstr "Geçersiz ayar"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Kaybolan Şifre Bağlantısı"
+
+#: 
+msgid "Manage All Features"
+msgstr "Tüm Özellikleri Yönet"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "E-posta gönderimi için ana değiştirge. Parola sıfırlaması ve bildirimler için GEREKLİDİR"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Düşülemez Ödemeler"
+
+#: 
+msgid "Primary Modules"
+msgstr "Birincil Modüller"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Genel Takvim API"
+
+#: 
+msgid "Saved"
+msgstr "Kaydedildi"
+
+#: 
+msgid "Search Families"
+msgstr "Aileleri Ara"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Aile Özel Özelliklerini Ara"
+
+#: 
+msgid "Search Settings"
+msgstr "Arama Ayarları"
+
+#: 
+msgid "Self-Registration"
+msgstr "Kendi Kendine Kayıt"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Giriş ekranında \"Kaybolan Şifre\" seçeneğini göster (kullanıcının kendi kendine sıfırlamasına izin verir)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Yan çubukta Pazar Okulu modülünü göster/gizle"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Giriş yapabilen tek yöneticiyi devre dışı bırakamazsınız"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Giriş yapabilen tek yöneticiyi vefat etmiş olarak işaretleyemezsiniz"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Vefat etmiş — giriş yapamaz"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Posta adresi olarak işaretlemeden önce ikinci bir adres girin"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Etkin değil — giriş yapamaz"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Posta ikinci adrese gider; birincil adres, haritalar ve yönergeler için kullanılan fiziksel konum kalır."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Posta, birincil adres yerine bu adrese gönderilir"
+
+#: 
+msgid "Mailing Address"
+msgstr "Posta Adresi"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Farklıysa Posta Adresi"
+
+#: 
+msgid "Primary Address"
+msgstr "Birincil Adres"
+
+#: 
+msgid "Receives Mail"
+msgstr "Posta Alır"
+
+#: 
+msgid "Second Address"
+msgstr "İkinci Adres"
+
+#: 
+msgid "Second Home"
+msgstr "İkinci Ev"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Bağlantılı kişi vefat etmiş veya etkin değil. Kişi yeniden etkin hale getirilene kadar oturum açma, oturumlar ve API anahtarı engellenir."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Bu, posta adresidir"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Bu kişi vefat etmiş veya etkin değil, bu nedenle bu hesap giriş yapamaz"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Yalnızca bir yönetici, bir girişi olan bir kişiyi silebilir."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Son yönetici silinemez."
+
+#: 
+msgid "Category"
+msgstr "Kategori"
+
+#: 
+msgid "Category updated."
+msgstr "Kategori güncellendi."
+
+#: 
+msgid "Delete Category"
+msgstr "Kategoriyi Sil"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kategori silme başarısız"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kategoriyi yeniden adlandırma başarısız"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fon Kategorileri"
+
+#: 
+msgid "Fund activated."
+msgstr "Fon etkinleştirildi."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fon devre dışı bırakıldı."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Bu kategorideki fonlar kategorisiz hale gelecek. Fonların kendileri silinmez."
+
+#: 
+msgid "INACTIVE"
+msgstr "Aktif olmayan"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Yeni kategori adı (mevcut bir ad ikisini birleştirir)"
+
+#: 
+msgid "Optional"
+msgstr "İsteğe bağlı"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "İsteğe bağlı — yeni bir kategori seçin veya yazın"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Sözün ötesinde ödenen"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Söz verildi ancak henüz ödenmedi"
+
+#: 
+msgid "Rename Category"
+msgstr "Kategoriyi Yeniden Adlandır"
+
+#: 
+msgid "Still Owed"
+msgstr "Hâlâ Borçlu"
+
+#: 
+msgid "Summary by Category"
+msgstr "Kategoriye Göre Özet"
+
+#: 
+msgid "Total Paid"
+msgstr "Toplam Ödenen"
+
+#: 
+msgid "Uncategorized"
+msgstr "Kategorisiz"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Geçerli ayarlar yüklenemedi. Tekrar denemek için sayfayı yenileyin."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Bu ayar bir sayı olmalıdır"
+
+#: 
+msgid "Child Role"
+msgstr "Çocuk rolü"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Rehbere dahil etme yalnızca sınıflandırma listesi için açılıp kapatılabilir"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Karşılama mesajı 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Karşılama mesajı 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Hane reisi rolü"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Ailesi olmayan adresleri gizle"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Arkadaşlık tarihini gizle"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Bülten aboneliklerini gizle"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Evlilik tarihini gizle"
+
+#: 
+msgid "In Directory"
+msgstr "Rehberde"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Bildirimlere ayrıntıları dahil et"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Bildirim alıcıları"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Yeni bir aile veya kişi eklendiğinde bilgilendirilecek kişiler"
+
+#: 
+msgid "Person initials style"
+msgstr "Kişi baş harfleri stili"
+
+#: 
+msgid "Person name display style"
+msgstr "Kişi adı görüntüleme stili"
+
+#: 
+msgid "Spouse Role"
+msgstr "Eş rolü"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Posta kodlarını büyük harf yap"
 

@@ -94,9 +94,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
-                <a href="<?= $sRootPath ?>/people/self-register" class="btn btn-outline-info">
-                    <i class="fa-solid fa-user-clock me-1"></i><?= gettext('New Self-Registrations') ?>
-                </a>
                 <?php if ($canEmail): ?>
                     <button type="button" class="btn btn-outline-primary"
                             data-email-composer
@@ -222,6 +219,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
+                    <?php if (!empty($canLetters)) : ?>
                     <a href="<?= $sRootPath ?>/LettersAndLabels.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-envelope-open-text fa-fw text-body-secondary me-3"></i>
                         <div>
@@ -230,6 +228,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -311,43 +310,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }
     });
 </script>
-
-<?php if ($isAdmin): ?>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function () {
-    window.CRM.settingsPanel.init({
-        container: '#peopleSettings',
-        title: <?= InputUtils::jsonEncodeForScript(gettext('People Settings')) ?>,
-        icon: 'fa-solid fa-sliders',
-        settings: [
-            {
-                name: 'bEnableSelfRegistration',
-                type: 'boolean',
-                label: <?= InputUtils::jsonEncodeForScript(gettext('Self Registration')) ?>,
-                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Allow visitors to self-register as new families.')) ?>
-            },
-            {
-                name: 'bHideDeceasedFromDirectory',
-                type: 'boolean',
-                label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Deceased from Directory')) ?>,
-                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Exclude deceased members from the printed directory and CSV exports.')) ?>
-            },
-            {
-                name: 'bEnableBirthdayEmails',
-                type: 'boolean',
-                label: <?= InputUtils::jsonEncodeForScript(gettext('Birthday Emails')) ?>,
-                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Automatically send a birthday greeting email to people on their birthday.')) ?>
-            }
-        ],
-        onSave: function () {
-            setTimeout(function () { window.location.reload(); }, 1500);
-        }
-    });
-});
-</script>
-<?php endif; ?>
 
 <?php if ($canEmail): ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

@@ -18,5 +18,6 @@ require __DIR__ . '/routes/view.php';
 require __DIR__ . '/routes/cart.php';
 require __DIR__ . '/routes/self-register.php';
 require __DIR__ . '/routes/map.php';
+require __DIR__ . '/routes/reports.php';
 
 $app->run();

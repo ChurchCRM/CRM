@@ -19,8 +19,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             'sPageTitle' => gettext('Financial Reports'),
             'sPageSubtitle' => gettext('Generate reports for tax statements, pledge tracking, and financial analysis.'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Finance'), '/finance/'],
-                [gettext('Reports')],
+                [gettext('Financial Reports')],
             ]),
         ];
         
@@ -36,8 +35,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             'sPageTitle' => gettext('Tax Statements (Giving Report)'),
             'sPageSubtitle' => gettext('Generate annual giving statements for tax purposes'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Finance'), '/finance/'],
-                [gettext('Reports'), '/finance/reports'],
+                [gettext('Financial Reports'), '/finance/reports'],
                 [gettext('Tax Statements')],
             ]),
             'iFYMonth' => SystemConfig::getValue('iFYMonth'),

@@ -4,11 +4,7 @@
 
 Guide for agents (and developers) creating new marketing screenshot and video workflows.
 
-When you add a new Playwright workflow test, you create two things:
-1. **The spec file** (`playwright/workflows/*.spec.ts`) — what gets captured
-2. **The metadata entry** (`playwright/screenshot-metadata.json`) — how it displays
-
-The pipeline automatically generates `manifest.json` from these two sources.
+When you add a new Playwright workflow test, you edit one file: the spec (`playwright/workflows/*.spec.ts`). Its `captureScreen()` options carry what is captured (`name`, `purpose`) and how it is shown (`title`, `category`, optional `dark`). They are written to each capture's sidecar, and `manifest.json` is generated from the sidecars. There is no second file to keep in step.
 
 ## Step 1: Write the Workflow Spec
 
@@ -36,6 +32,8 @@ test.describe('<Feature Name>', () => {
     // name MUST match test name
     await captureScreen(page, testInfo, {
       name: '<workflow-name>',
+      title: 'Display Title',
+      category: 'People & Families',
       purpose: 'Short marketing description of what this shows'
     });
   });
@@ -47,6 +45,7 @@ test.describe('<Feature Name>', () => {
 | Requirement | Details |
 |---|---|
 | **Test name** | Must match the `name` in `captureScreen()`. Format: `kebab-case`. Example: `dashboard-hero` |
+| **Title and category** | Required. `title` is the gallery heading; `category` must be one of the values under "Title and category" below. `marketing:check` fails a capture whose sidecar has neither. |
 | **Purpose string** | Marketing description (40-80 chars). Ends with period. Examples: `"The landing dashboard after login — hero shot."` |
 | **Viewport** | Playwright auto-captures at 3 viewports: desktop (1440×900), tablet (1024×768), mobile (430×932) |
 | **Waits** | Always wait for content visibility before capturing. Use `await expect(...).toBeVisible()` |
@@ -78,32 +77,11 @@ test('dashboard-hero-dark', async ({ page }, testInfo) => {
 });
 ```
 
-Then in metadata, reference the dark variant:
-```json
-{
-  "dashboard-hero": {
-    "title": "Dashboard",
-    "category": "Dashboards",
-    "dark": "dashboard-hero-dark"
-  }
-}
-```
+Then point the light capture at its dark twin by adding `dark: 'dashboard-hero-dark'` to the light capture's `captureScreen()` options (the dark capture leaves `dark` out).
 
-## Step 2: Add Metadata Entry
+## Step 2: Title and Category
 
-**File:** `playwright/screenshot-metadata.json`
-
-### Schema
-
-```json
-{
-  "<workflow-name>": {
-    "title": "Display Title",
-    "category": "Category Name",
-    "dark": null  // or "workflow-name-dark"
-  }
-}
-```
+Both are options of `captureScreen()` in the spec (Step 1). Guidelines:
 
 ### Title Guidelines
 
@@ -129,40 +107,7 @@ Then in metadata, reference the dark variant:
 - `"Recordings"` — demo videos of workflows
 - `"Setup"` — installation and initial setup videos
 
-**Adding a new category:** Edit this file and `.agents/skills/churchcrm/playwright-workflow-development.md` to update the enum.
-
-### Dark Variant
-
-- **null** (default) if no dark-mode variant exists
-- **string** (workflow name) if dark variant is captured
-- Links light and dark shots for the website toggle
-
-### Example
-
-```json
-{
-  "dashboard-hero": {
-    "title": "Dashboard",
-    "category": "Dashboards",
-    "dark": "dashboard-hero-dark"
-  },
-  "dashboard-hero-dark": {
-    "title": "Dashboard (Dark Mode)",
-    "category": "Dashboards",
-    "dark": null
-  },
-  "people-directory-list": {
-    "title": "People Directory",
-    "category": "People & Families",
-    "dark": null
-  },
-  "admin-plugin-management": {
-    "title": "Plugin Management",
-    "category": "Admin & Settings",
-    "dark": null
-  }
-}
-```
+**Adding a new category:** use the new name in `captureScreen()` and add it to the list above.
 
 ## Step 3: Run the Pipeline
 
@@ -173,8 +118,7 @@ Then in metadata, reference the dark variant:
 2. Each test captures screenshots at 3 viewports (desktop, tablet, mobile)
 3. Scripts finalize any recorded videos
 4. **`npm run marketing:manifest` auto-generates `manifest.json`**
-   - Reads metadata JSON sidecars from capture
-   - Merges with `screenshot-metadata.json`
+   - Reads the metadata JSON sidecars written by each capture (title, category and dark link included)
    - Outputs single `artifacts/manifest.json` with all metadata
 
 **Output:**
@@ -198,7 +142,6 @@ playwright/artifacts/
 **Files to commit:**
 ```bash
 git add playwright/artifacts/manifest.json
-git add playwright/screenshot-metadata.json
 git add playwright/artifacts/screenshots/
 git add playwright/artifacts/videos/
 git commit -m "chore: add workflow-name screenshot and video"
@@ -219,7 +162,6 @@ npm run publish:visuals
 
 This automatically copies:
 - `manifest.json` → website `data/manifest.json`
-- `screenshot-metadata.json` → website `data/screenshot-metadata.json`
 - Screenshots and videos to website `static/images/`
 
 ## Validation
@@ -261,12 +203,12 @@ npm run marketing:manifest && cat playwright/artifacts/manifest.json | jq 'lengt
 
 **Problem:** Screenshot exists but not in manifest.json
 - ✅ Did you run `npm run marketing` (not just screenshots)?
-- ✅ Is there a metadata entry in `screenshot-metadata.json`?
+- ✅ Does the spec's `captureScreen()` have `title` and `category`?
 - ✅ Check test name matches capture name exactly
 - ✅ Check `.gitignore` isn't excluding the file
 
 **Problem:** Manifest.json has wrong metadata
-- ✅ Check `screenshot-metadata.json` has correct spelling
+- ✅ Check `title` and `category` in the spec's `captureScreen()` call are spelled correctly
 - ✅ Check category is in the enum
 - ✅ Re-run `npm run marketing:manifest`
 
@@ -296,7 +238,6 @@ The pipeline does the rest automatically.
 
 ## Resources
 
-- **Schema:** `playwright/screenshot-metadata.schema.json`
 - **Example specs:** `playwright/workflows/dashboard.spec.ts` (simple), `playwright/workflows/people-family.spec.ts` (complex)
 - **Capture function:** `playwright/support/capture.ts`
 - **Human helpers:** `playwright/support/human.ts` (pause, click, type, etc.)

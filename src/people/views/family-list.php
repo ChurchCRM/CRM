@@ -96,6 +96,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     
                     <td>
                         <?= $family->getLinkHtml(true, true) ?>
+                        <?php if ($family->getNeedsReview()) { ?>
+                            <span class="badge bg-warning-lt text-warning ms-1" title="<?= gettext('Pending review') ?>"><i class="fa-solid fa-user-clock"></i> <?= gettext('Pending review') ?></span>
+                        <?php } ?>
                         <?php if (!$family->isActive()) { ?>
                             <span class="badge bg-light text-dark ms-2" title="<?= gettext('Inactive') ?>">
                                 <i class="fa-solid fa-power-off"></i> <?= gettext('Inactive') ?>

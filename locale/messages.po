@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-01 05:20+0000\n"
+"POT-Creation-Date: 2026-10-04 01:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,10 +123,6 @@ msgid "%d person successfully added to selected family."
 msgid_plural "%d people successfully added to selected family."
 msgstr[0] ""
 msgstr[1] ""
-
-#, php-format
-msgid "%d record(s) returned"
-msgstr ""
 
 #, php-format
 msgid "%d repeat event created successfully."
@@ -566,9 +562,6 @@ msgstr ""
 msgid "Add Recurring Event"
 msgstr ""
 
-msgid "Add Results to Cart"
-msgstr ""
-
 msgid "Add Role"
 msgstr ""
 
@@ -668,9 +661,6 @@ msgstr ""
 msgid "Add staff or volunteers as system users"
 msgstr ""
 
-msgid "Add the relevant records first."
-msgstr ""
-
 msgid "Add to Buyer List"
 msgstr ""
 
@@ -703,9 +693,6 @@ msgid "Additional Information"
 msgstr ""
 
 msgid "Address"
-msgstr ""
-
-msgid "Address Defaults"
 msgstr ""
 
 msgid "Address Status"
@@ -986,12 +973,6 @@ msgstr ""
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr ""
 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr ""
-
-msgid "Allow visitors to self-register as new families."
-msgstr ""
-
 msgid "Almost there — review your details"
 msgstr ""
 
@@ -1046,6 +1027,9 @@ msgid "An automatic database upgrade was attempted but failed. Please check the 
 msgstr ""
 
 msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr ""
+
+msgid "An error occurred"
 msgstr ""
 
 msgid "An error occurred during demo data import"
@@ -1190,6 +1174,15 @@ msgid "Applying System Update..."
 msgstr ""
 
 msgid "Applying..."
+msgstr ""
+
+msgid "Approve"
+msgstr ""
+
+msgid "Approve selected"
+msgstr ""
+
+msgid "Approved"
 msgstr ""
 
 msgid "Approved Community Plugins"
@@ -1452,9 +1445,6 @@ msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr ""
 
 msgid "Automatically send a birthday greeting email to people on their birthday"
-msgstr ""
-
-msgid "Automatically send a birthday greeting email to people on their birthday."
 msgstr ""
 
 msgid "Automatically send birthday emails (requires background job scheduler)"
@@ -1749,17 +1739,12 @@ msgstr ""
 msgid "Birthday"
 msgstr ""
 
-msgid "Birthday Emails"
-msgstr ""
-
 msgid "Birthday Greeting Emails"
 msgstr ""
 
-#. Context: query_qry
 msgid "Birthdays"
 msgstr ""
 
-#. Context: query_qry
 msgid "Birthdays & Anniversaries"
 msgstr ""
 
@@ -2122,6 +2107,9 @@ msgstr ""
 msgid "Category Name"
 msgstr ""
 
+msgid "Category updated."
+msgstr ""
+
 #. Context: countries
 msgid "Cayman Islands"
 msgstr ""
@@ -2186,13 +2174,13 @@ msgstr ""
 msgid "Change Your Locale"
 msgstr ""
 
+msgid "Change in People Settings"
+msgstr ""
+
 msgid "Change required"
 msgstr ""
 
 msgid "Change role"
-msgstr ""
-
-msgid "Change this in System Settings."
 msgstr ""
 
 msgid "Changes not saved! Please correct and try again!"
@@ -2333,6 +2321,9 @@ msgstr ""
 msgid "Checks"
 msgstr ""
 
+msgid "Child Role"
+msgstr ""
+
 msgid "Children"
 msgstr ""
 
@@ -2362,15 +2353,7 @@ msgstr ""
 msgid "Choose a property..."
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Choose a volunteer opportunity"
-msgstr ""
-
 msgid "Choose an event..."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Choose customer person field"
 msgstr ""
 
 msgid "Choose events"
@@ -2507,13 +2490,15 @@ msgstr ""
 msgid "Class List Export"
 msgstr ""
 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr ""
+
 msgid "Class must be one of p, f, or g"
 msgstr ""
 
 msgid "Classes"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Classification"
 msgstr ""
 
@@ -2652,13 +2637,7 @@ msgstr ""
 msgid "Columns per Page"
 msgstr ""
 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr ""
-
 msgid "Comma separated list of classifications that should appear as inactive"
-msgstr ""
-
-msgid "Comma-separated query IDs that require finance permissions to view"
 msgstr ""
 
 msgid "Comment"
@@ -2699,10 +2678,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Comoros (‫جزر القمر‬‎)"
-msgstr ""
-
-#. Context: query_qry
-msgid "Compare pledges between two fiscal years"
 msgstr ""
 
 msgid "Comparing timezones..."
@@ -2949,7 +2924,7 @@ msgstr ""
 msgid "Copy error message"
 msgstr ""
 
-msgid "Copy from church address"
+msgid "Copy from Church Info"
 msgstr ""
 
 msgid "Copy to Group"
@@ -2975,7 +2950,16 @@ msgstr ""
 msgid "Costs"
 msgstr ""
 
+msgid "Could not approve the selected registrations"
+msgstr ""
+
+msgid "Could not approve this family"
+msgstr ""
+
 msgid "Could not connect to MailChimp. Please check your API key."
+msgstr ""
+
+msgid "Could not copy the church address."
 msgstr ""
 
 msgid "Could not find coordinates for that address. Try entering them manually."
@@ -2991,6 +2975,12 @@ msgid "Could not load note."
 msgstr ""
 
 msgid "Could not load release information."
+msgstr ""
+
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr ""
+
+msgid "Could not match the church country."
 msgstr ""
 
 msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
@@ -3206,9 +3196,6 @@ msgstr ""
 msgid "Current database"
 msgstr ""
 
-msgid "Current fiscal year"
-msgstr ""
-
 msgid "Current person"
 msgstr ""
 
@@ -3243,10 +3230,6 @@ msgid "Custom Person Fields"
 msgstr ""
 
 msgid "Custom Person Fields Editor"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Custom field"
 msgstr ""
 
 msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
@@ -3308,16 +3291,10 @@ msgstr ""
 msgid "Data"
 msgstr ""
 
-msgid "Data & Reports"
-msgstr ""
-
 msgid "Data Quality"
 msgstr ""
 
 msgid "Data is processed by PostHog on EU infrastructure."
-msgstr ""
-
-msgid "Data/Reports"
 msgstr ""
 
 msgid "Database"
@@ -3546,6 +3523,9 @@ msgid "Delete All Orphaned Files"
 msgstr ""
 
 msgid "Delete Calendar"
+msgstr ""
+
+msgid "Delete Category"
 msgstr ""
 
 msgid "Delete Confirmation"
@@ -3781,6 +3761,9 @@ msgid "Directory"
 msgstr ""
 
 msgid "Directory Reports"
+msgstr ""
+
+msgid "Directory inclusion can only be toggled for the classifications list"
 msgstr ""
 
 msgid "Directory reports"
@@ -4578,7 +4561,6 @@ msgstr ""
 msgid "Ethiopia"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Event"
 msgstr ""
 
@@ -4696,16 +4678,10 @@ msgstr ""
 msgid "Exclude Inactive Families"
 msgstr ""
 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr ""
-
 msgid "Exclude from Email Export"
 msgstr ""
 
 msgid "Excluded"
-msgstr ""
-
-msgid "Execute Query"
 msgstr ""
 
 msgid "Existing Custom Family Fields"
@@ -4743,9 +4719,6 @@ msgid "Explore with Demo Data"
 msgstr ""
 
 msgid "Export"
-msgstr ""
-
-msgid "Export Options"
 msgstr ""
 
 msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
@@ -4905,6 +4878,9 @@ msgid "Failed to decode payment request"
 msgstr ""
 
 msgid "Failed to delete"
+msgstr ""
+
+msgid "Failed to delete category"
 msgstr ""
 
 msgid "Failed to delete class. Please try again."
@@ -5085,6 +5061,9 @@ msgid "Failed to remove from class. Please try again."
 msgstr ""
 
 msgid "Failed to remove group"
+msgstr ""
+
+msgid "Failed to rename category"
 msgstr ""
 
 msgid "Failed to rename kiosk"
@@ -5381,10 +5360,6 @@ msgstr ""
 msgid "Field deleted successfully"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Field value"
-msgstr ""
-
 msgid "Field where Father Of Confession is listed, must be a people of group type"
 msgstr ""
 
@@ -5466,9 +5441,6 @@ msgstr ""
 msgid "Filter by log level"
 msgstr ""
 
-msgid "Filtering"
-msgstr ""
-
 #. plugin:holidays:section:1:title
 msgid "Filtering by category"
 msgstr ""
@@ -5495,9 +5467,6 @@ msgid "Finance Module"
 msgstr ""
 
 msgid "Finance access"
-msgstr ""
-
-msgid "Finance permission query IDs"
 msgstr ""
 
 msgid "Finance permission required"
@@ -5530,23 +5499,10 @@ msgstr ""
 msgid "Find people who did not attend an event"
 msgstr ""
 
-#. Context: query_qry
-msgid "Find people who didn't attend an event"
-msgstr ""
-
-#. Context: query_qry
-msgid "Find people who pledged one year but not another"
-msgstr ""
-
 msgid "Find the line"
 msgstr ""
 
-#. Context: query_qry
 msgid "Find volunteers for a particular opportunity"
-msgstr ""
-
-#. Context: query_qry
-msgid "Find volunteers for who match two specific opportunity codes"
 msgstr ""
 
 msgid "Find volunteers who match two specific opportunity codes"
@@ -5567,10 +5523,6 @@ msgstr ""
 msgid "First"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "First Fiscal Year"
-msgstr ""
-
 msgid "First Name"
 msgstr ""
 
@@ -5578,10 +5530,6 @@ msgid "First Sunday"
 msgstr ""
 
 msgid "First Volunteer Opportunity"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "First fiscal year for comparison"
 msgstr ""
 
 msgid "First month of the fiscal year"
@@ -5597,10 +5545,6 @@ msgid "First name must be at least 2 characters"
 msgstr ""
 
 msgid "First name must be entered"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "First volunteer opportunity choice"
 msgstr ""
 
 msgid "FirstName MiddleName LastName"
@@ -5708,7 +5652,6 @@ msgstr ""
 msgid "Friend Date"
 msgstr ""
 
-#. Context: query_qry
 msgid "Friends who signed up in previous months"
 msgstr ""
 
@@ -5763,6 +5706,9 @@ msgstr ""
 msgid "Fund Allocation"
 msgstr ""
 
+msgid "Fund Categories"
+msgstr ""
+
 msgid "Fund Name"
 msgstr ""
 
@@ -5772,10 +5718,16 @@ msgstr ""
 msgid "Fund Total"
 msgstr ""
 
+msgid "Fund activated."
+msgstr ""
+
 msgid "Fund added successfully."
 msgstr ""
 
 msgid "Fund contributor pledge summary by fiscal year"
+msgstr ""
+
+msgid "Fund deactivated."
 msgstr ""
 
 msgid "Fund deleted successfully."
@@ -5821,6 +5773,9 @@ msgid "Fundraising"
 msgstr ""
 
 msgid "Funds"
+msgstr ""
+
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
 msgstr ""
 
 msgid "GA4 Measurement ID"
@@ -5880,9 +5835,6 @@ msgstr ""
 msgid "Generate and download confirmation letters"
 msgstr ""
 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr ""
-
 msgid "Generate annual giving statements for tax purposes"
 msgstr ""
 
@@ -5890,9 +5842,6 @@ msgid "Generate annual tax-deductible giving statements for donors. Can be print
 msgstr ""
 
 msgid "Generate class lists, attendance sheets, and photo books"
-msgstr ""
-
-msgid "Generate detailed reports for individual deposits or date ranges."
 msgstr ""
 
 msgid "Generate directory listings and printed materials"
@@ -5953,6 +5902,12 @@ msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} locat
 msgstr ""
 
 msgid "Geocoding request failed. Please try again."
+msgstr ""
+
+msgid "Geocoding services"
+msgstr ""
+
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
 msgstr ""
 
 msgid "Geocoding successful"
@@ -6095,6 +6050,12 @@ msgstr ""
 msgid "Greenland (Kalaallit Nunaat)"
 msgstr ""
 
+msgid "Greeter Message 1"
+msgstr ""
+
+msgid "Greeter Message 2"
+msgstr ""
+
 #. Context: countries
 msgid "Grenada"
 msgstr ""
@@ -6177,6 +6138,9 @@ msgstr ""
 msgid "Group management access"
 msgstr ""
 
+msgid "Group membership lists and Sunday School class reports"
+msgstr ""
+
 msgid "Group not found"
 msgstr ""
 
@@ -6235,10 +6199,6 @@ msgstr ""
 msgid "Guernsey"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
-msgid "Guest"
-msgstr ""
-
 #. Context: countries
 msgid "Guinea (Guinée)"
 msgstr ""
@@ -6270,6 +6230,9 @@ msgstr ""
 msgid "Head Count"
 msgstr ""
 
+msgid "Head of House Role"
+msgstr ""
+
 msgid "Head of Household Update Needed"
 msgstr ""
 
@@ -6299,16 +6262,25 @@ msgstr ""
 msgid "Here"
 msgstr ""
 
+msgid "Hide Address Without Family"
+msgstr ""
+
 msgid "Hide Age"
 msgstr ""
 
 msgid "Hide Deceased from Directory"
 msgstr ""
 
+msgid "Hide Friend Date"
+msgstr ""
+
 msgid "Hide Latitude/Longitude"
 msgstr ""
 
-msgid "Hide Person Address"
+msgid "Hide Newsletter Subscriptions"
+msgstr ""
+
+msgid "Hide Wedding Date"
 msgstr ""
 
 msgid "Hide advanced options"
@@ -6417,6 +6389,9 @@ msgid "ICS URL"
 msgstr ""
 
 msgid "ID"
+msgstr ""
+
+msgid "INACTIVE"
 msgstr ""
 
 msgid "IP Address"
@@ -6589,6 +6564,9 @@ msgstr ""
 msgid "Importing..."
 msgstr ""
 
+msgid "In Directory"
+msgstr ""
+
 msgid "In Use"
 msgstr ""
 
@@ -6605,6 +6583,9 @@ msgid "Inactive — cannot sign in"
 msgstr ""
 
 msgid "Include"
+msgstr ""
+
+msgid "Include Details in Notifications"
 msgstr ""
 
 msgid "Include Sunday School classes and enrollments"
@@ -6684,9 +6665,6 @@ msgid "Individual"
 msgstr ""
 
 msgid "Individual Deposit Report"
-msgstr ""
-
-msgid "Individuals (no family)"
 msgstr ""
 
 #. Context: countries
@@ -7744,10 +7722,6 @@ msgstr ""
 msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Match custom field to this value"
-msgstr ""
-
 msgid "Matches an entry on the approved plugin list"
 msgstr ""
 
@@ -7830,7 +7804,6 @@ msgstr ""
 msgid "Mayotte"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
 msgid "Member"
 msgstr ""
 
@@ -7852,10 +7825,6 @@ msgstr ""
 msgid "Member's Name"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Member, Regular Attender, etc."
-msgstr ""
-
 msgid "Member/Friend"
 msgstr ""
 
@@ -7868,10 +7837,6 @@ msgstr ""
 msgid "Members copied: {{total}}"
 msgstr ""
 
-#. Context: query_qry
-msgid "Members who joined in a particular month"
-msgstr ""
-
 msgid "Members, Visitors, Children"
 msgstr ""
 
@@ -7882,10 +7847,6 @@ msgid "Membership Date"
 msgstr ""
 
 msgid "Membership Reports"
-msgstr ""
-
-#. Context: query_qry
-msgid "Membership anniversaries"
 msgstr ""
 
 msgid "Membership not found"
@@ -7989,14 +7950,6 @@ msgstr ""
 msgid "Missing or incorrect translations?"
 msgstr ""
 
-#. Context: query_qry
-msgid "Missing people"
-msgstr ""
-
-#. Context: query_qry
-msgid "Missing pledges"
-msgstr ""
-
 #, php-format
 msgid "Missing required field: %s"
 msgstr ""
@@ -8048,7 +8001,6 @@ msgstr ""
 msgid "Montenegro (Crna Gora)"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Month"
 msgstr ""
 
@@ -8079,7 +8031,6 @@ msgstr ""
 msgid "Monthly on the"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Months"
 msgstr ""
 
@@ -8089,9 +8040,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Morocco (‫المغرب‬‎)"
-msgstr ""
-
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr ""
 
 msgid "Mother"
@@ -8300,13 +8248,13 @@ msgstr ""
 msgid "New Pledge"
 msgstr ""
 
+msgid "New Record Defaults"
+msgstr ""
+
 msgid "New Release"
 msgstr ""
 
 msgid "New Role"
-msgstr ""
-
-msgid "New Self-Registrations"
 msgstr ""
 
 msgid "New User"
@@ -8314,6 +8262,9 @@ msgstr ""
 
 #. Context: countries
 msgid "New Zealand"
+msgstr ""
+
+msgid "New category name (an existing name merges the two)"
 msgstr ""
 
 msgid "New family details"
@@ -8357,10 +8308,6 @@ msgid "Niue"
 msgstr ""
 
 msgid "No"
-msgstr ""
-
-#, php-format
-msgid "No \"%s\" options are defined yet."
 msgstr ""
 
 #, php-format
@@ -8676,14 +8623,6 @@ msgstr ""
 msgid "No, cancel this deletion"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
-msgid "Non-Attender"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "Non-Attender (staff)"
-msgstr ""
-
 msgid "Non-Deductible"
 msgstr ""
 
@@ -8813,6 +8752,9 @@ msgstr ""
 msgid "Notes access"
 msgstr ""
 
+msgid "Notification Recipients"
+msgstr ""
+
 msgid "Notification for"
 msgstr ""
 
@@ -8837,7 +8779,6 @@ msgstr ""
 msgid "Number of lines to display"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Number of months since becoming a friend"
 msgstr ""
 
@@ -9005,6 +8946,9 @@ msgstr ""
 msgid "Option not found"
 msgstr ""
 
+msgid "Optional"
+msgstr ""
+
 msgid "Optional - only required if OpenLP authentication is enabled"
 msgstr ""
 
@@ -9021,6 +8965,9 @@ msgid "Optional detailed description of this property type"
 msgstr ""
 
 msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr ""
+
+msgid "Optional — pick or type a new category"
 msgstr ""
 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -9143,6 +9090,9 @@ msgid "Page route"
 msgstr ""
 
 msgid "Paid"
+msgstr ""
+
+msgid "Paid beyond the pledge"
 msgstr ""
 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
@@ -9280,7 +9230,13 @@ msgstr ""
 msgid "Pending"
 msgstr ""
 
+msgid "Pending Registrations"
+msgstr ""
+
 msgid "Pending Self Verify"
+msgstr ""
+
+msgid "Pending review"
 msgstr ""
 
 msgid "People"
@@ -9325,21 +9281,21 @@ msgstr ""
 msgid "People to assign"
 msgstr ""
 
+msgid "People to notify when a new family or person is added"
+msgstr ""
+
 msgid "People who joined in a particular month"
 msgstr ""
 
-#. Context: query_qry
 msgid "People with birthdays in a particular month"
 msgstr ""
 
-#. Context: query_qry
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr ""
 
 msgid "People with no personal or work email on record"
 msgstr ""
 
-#. Context: query_qry
 msgid "People with wedding anniversaries in a particular month"
 msgstr ""
 
@@ -9406,7 +9362,6 @@ msgstr ""
 msgid "Person already in cart"
 msgstr ""
 
-#. Context: query_qry
 msgid "Person by Property"
 msgstr ""
 
@@ -9419,7 +9374,13 @@ msgstr ""
 msgid "Person has no family"
 msgstr ""
 
+msgid "Person initials style"
+msgstr ""
+
 msgid "Person is not checked in"
+msgstr ""
+
+msgid "Person name display style"
 msgstr ""
 
 msgid "Person not found"
@@ -9775,10 +9736,6 @@ msgstr ""
 msgid "Pledge Summary By Family"
 msgstr ""
 
-#. Context: query_qry
-msgid "Pledge comparison"
-msgstr ""
-
 msgid "Pledge group not found"
 msgstr ""
 
@@ -9788,8 +9745,7 @@ msgstr ""
 msgid "Pledged Amount"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Pledged this year"
+msgid "Pledged but not yet paid"
 msgstr ""
 
 msgid "Pledges"
@@ -9984,7 +9940,6 @@ msgstr ""
 msgid "Properties Form"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Property"
 msgstr ""
 
@@ -10048,15 +10003,6 @@ msgid "Quarantined"
 msgstr ""
 
 msgid "Quarterly"
-msgstr ""
-
-msgid "Queries"
-msgstr ""
-
-msgid "Query Listing"
-msgstr ""
-
-msgid "Query View"
 msgstr ""
 
 msgid "Quick Actions"
@@ -10138,10 +10084,6 @@ msgid "Recent Deposits"
 msgstr ""
 
 msgid "Recent Friends"
-msgstr ""
-
-#. Context: query_qry
-msgid "Recent friends"
 msgstr ""
 
 msgid "Recipient Naming Method"
@@ -10244,8 +10186,7 @@ msgstr ""
 msgid "Registration Error"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
-msgid "Regular Attender"
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
 msgstr ""
 
 msgid "Regular Backups"
@@ -10281,9 +10222,6 @@ msgstr ""
 msgid "Remove Property"
 msgstr ""
 
-msgid "Remove Results from Cart"
-msgstr ""
-
 msgid "Remove all from Cart"
 msgstr ""
 
@@ -10317,6 +10255,9 @@ msgstr ""
 msgid "Rename"
 msgstr ""
 
+msgid "Rename Category"
+msgstr ""
+
 msgid "Rename Kiosk"
 msgstr ""
 
@@ -10338,9 +10279,6 @@ msgstr ""
 msgid "Report Start Date"
 msgstr ""
 
-msgid "Report Tips"
-msgstr ""
-
 msgid "Report Type"
 msgstr ""
 
@@ -10354,9 +10292,6 @@ msgid "Report not found"
 msgstr ""
 
 msgid "Reports"
-msgstr ""
-
-msgid "Reports related to member voting eligibility and organization governance."
 msgstr ""
 
 msgid "Request Family Info Verification"
@@ -10491,7 +10426,6 @@ msgstr ""
 msgid "Return to Person Record"
 msgstr ""
 
-#. Context: query_qry
 msgid "Returns person records which are assigned the given property."
 msgstr ""
 
@@ -10510,7 +10444,10 @@ msgstr ""
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr ""
 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgid "Review now"
+msgstr ""
+
+msgid "Review self registrations"
 msgstr ""
 
 msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
@@ -10567,9 +10504,6 @@ msgid "Rows per page"
 msgstr ""
 
 msgid "Run"
-msgstr ""
-
-msgid "Run Query Again"
 msgstr ""
 
 msgid "Run Report"
@@ -10861,22 +10795,10 @@ msgstr ""
 msgid "Second Address"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Second Fiscal Year"
-msgstr ""
-
 msgid "Second Home"
 msgstr ""
 
 msgid "Second Volunteer Opportunity"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Second fiscal year for comparison"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Second volunteer opportunity choice"
 msgstr ""
 
 msgid "Secure"
@@ -10989,6 +10911,9 @@ msgstr ""
 msgid "Select an event type…"
 msgstr ""
 
+msgid "Select at least one classification to include in the directory."
+msgstr ""
+
 msgid "Select calendars..."
 msgstr ""
 
@@ -11007,14 +10932,13 @@ msgstr ""
 msgid "Select how do you want to request the family information to be verified"
 msgstr ""
 
+msgid "Select month"
+msgstr ""
+
 msgid "Select none"
 msgstr ""
 
 msgid "Select role"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Select the desired event"
 msgstr ""
 
 msgid "Select the type of record this property applies to"
@@ -11051,6 +10975,12 @@ msgid "Self Verify"
 msgstr ""
 
 msgid "Self-Registration"
+msgstr ""
+
+msgid "Self-registration is disabled"
+msgstr ""
+
+msgid "Self-registration is enabled"
 msgstr ""
 
 msgid "Self-service"
@@ -11515,6 +11445,9 @@ msgstr ""
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr ""
 
+msgid "Spouse Role"
+msgstr ""
+
 msgid "Spring"
 msgstr ""
 
@@ -11580,6 +11513,9 @@ msgstr ""
 msgid "Still Checked In"
 msgstr ""
 
+msgid "Still Owed"
+msgstr ""
+
 msgid "Streak"
 msgstr ""
 
@@ -11639,6 +11575,9 @@ msgid "Suggesting better phrasing for existing translations"
 msgstr ""
 
 msgid "Summary Data"
+msgstr ""
+
+msgid "Summary by Category"
 msgstr ""
 
 msgid "Summer"
@@ -11946,10 +11885,6 @@ msgstr ""
 msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "The birthday month for which you would like records returned."
-msgstr ""
-
 msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
 msgstr ""
 
@@ -11976,14 +11911,6 @@ msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr ""
 
 msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "The membership anniversary month for which you would like records returned."
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "The month for which you would like birthdays and anniversaries returned."
 msgstr ""
 
 msgid "The month that starts your organization's fiscal year"
@@ -12018,10 +11945,6 @@ msgstr ""
 msgid "The property could not be unassigned."
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "The property for which you would like person records returned."
-msgstr ""
-
 msgid "The property is already assigned."
 msgstr ""
 
@@ -12032,6 +11955,9 @@ msgid "The property is successfully removed."
 msgstr ""
 
 msgid "The property is successfully unassigned."
+msgstr ""
+
+msgid "The public registration form is turned off. Existing registrations are listed below."
 msgstr ""
 
 msgid "The record could not be found."
@@ -12073,10 +11999,6 @@ msgstr ""
 msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr ""
-
 msgid "Theme Mode"
 msgstr ""
 
@@ -12116,9 +12038,6 @@ msgstr ""
 msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
 msgstr ""
 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr ""
-
 msgid "Third-party extensions."
 msgstr ""
 
@@ -12152,10 +12071,13 @@ msgstr ""
 msgid "This event type is used by"
 msgstr ""
 
+msgid "This family is not a pending self-registration"
+msgstr ""
+
 msgid "This field is required"
 msgstr ""
 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
 msgstr ""
 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
@@ -12200,10 +12122,16 @@ msgstr ""
 msgid "This person already has a user account."
 msgstr ""
 
+msgid "This person belongs to a family — approve the family instead"
+msgstr ""
+
 msgid "This person is deceased"
 msgstr ""
 
 msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr ""
+
+msgid "This person is not a pending self-registration"
 msgstr ""
 
 msgid "This plugin does not support connection testing."
@@ -12236,6 +12164,12 @@ msgstr ""
 msgid "This role cannot be deleted."
 msgstr ""
 
+msgid "This self-registered family is pending review"
+msgstr ""
+
+msgid "This setting must be a number"
+msgstr ""
+
 msgid "This title will be used for all generated events."
 msgstr ""
 
@@ -12243,31 +12177,6 @@ msgid "This user can only review and update their own family profile. Individual
 msgstr ""
 
 msgid "This user must set a new password the next time they sign in."
-msgstr ""
-
-#, php-format
-msgid "This value cannot be less than %d characters long"
-msgstr ""
-
-#, php-format
-msgid "This value cannot be more than %d characters long"
-msgstr ""
-
-#, php-format
-msgid "This value cannot be more than %s"
-msgstr ""
-
-msgid "This value is required."
-msgstr ""
-
-msgid "This value must be a valid field name."
-msgstr ""
-
-#, php-format
-msgid "This value must be at least %s"
-msgstr ""
-
-msgid "This value must be numeric."
 msgstr ""
 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
@@ -12487,13 +12396,13 @@ msgstr ""
 msgid "Total Kiosks"
 msgstr ""
 
+msgid "Total Paid"
+msgstr ""
+
 msgid "Total Payments"
 msgstr ""
 
 msgid "Total Pledged"
-msgstr ""
-
-msgid "Total Pledges"
 msgstr ""
 
 msgid "Total Raised"
@@ -12519,6 +12428,9 @@ msgstr ""
 msgid "Total raised (no goal set)"
 msgstr ""
 
+msgid "Total registrations"
+msgstr ""
+
 msgid "Totals"
 msgstr ""
 
@@ -12529,9 +12441,6 @@ msgid "Track and manage pledge commitments by family and fund"
 msgstr ""
 
 msgid "Track family pledges and fund contributions by fiscal year"
-msgstr ""
-
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr ""
 
 msgid "Transaction Details"
@@ -12734,10 +12643,10 @@ msgstr ""
 msgid "Unassigned"
 msgstr ""
 
-msgid "Unclassified"
+msgid "Uncategorized"
 msgstr ""
 
-msgid "Uncategorized"
+msgid "Unclassified"
 msgstr ""
 
 msgid "Underpaid"
@@ -12941,6 +12850,9 @@ msgstr ""
 msgid "Uploading, please wait..."
 msgstr ""
 
+msgid "Uppercase Zip/Postcodes"
+msgstr ""
+
 #. Context: countries
 msgid "Uruguay"
 msgstr ""
@@ -12973,9 +12885,6 @@ msgstr ""
 msgid "Use authenticator app instead"
 msgstr ""
 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr ""
-
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr ""
 
@@ -12993,6 +12902,9 @@ msgid "Use this key to authenticate API requests. Regenerating will invalidate t
 msgstr ""
 
 msgid "Used as the default start time when creating events of this type."
+msgstr ""
+
+msgid "Used for new records and for geocoding when a record has no country."
 msgstr ""
 
 msgid "Used for scheduling events and reporting times."
@@ -13317,9 +13229,6 @@ msgstr ""
 msgid "View and manage system log files for debugging."
 msgstr ""
 
-msgid "View and run saved database queries"
-msgstr ""
-
 msgid "View buyer numbers and paddle assignments"
 msgstr ""
 
@@ -13344,9 +13253,6 @@ msgstr ""
 msgid "View pledge or payment details"
 msgstr ""
 
-msgid "View query results"
-msgstr ""
-
 msgid "View release notes"
 msgstr ""
 
@@ -13354,6 +13260,9 @@ msgid "View transaction details for a pledge payment"
 msgstr ""
 
 msgid "Visit Our Website"
+msgstr ""
+
+msgid "Visitors can sign up on your public registration form."
 msgstr ""
 
 msgid "Volunteer"
@@ -13371,17 +13280,12 @@ msgstr ""
 msgid "Volunteer Opportunity Editor"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Volunteer opportunities"
-msgstr ""
-
 msgid "Volunteer opportunity not found"
 msgstr ""
 
 msgid "Volunteer-entered headcounts, broken down by category."
 msgstr ""
 
-#. Context: query_qry
 msgid "Volunteers"
 msgstr ""
 
@@ -13523,7 +13427,6 @@ msgstr ""
 msgid "Wedding"
 msgstr ""
 
-#. Context: query_qry
 msgid "Wedding Anniversaries"
 msgstr ""
 
@@ -13750,6 +13653,9 @@ msgstr ""
 msgid "Yes, delete"
 msgstr ""
 
+msgid "Yesterday"
+msgstr ""
+
 msgid "You are about to add a new deposit without a comment"
 msgstr ""
 
@@ -13937,7 +13843,8 @@ msgstr ""
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
 msgstr ""
 
-msgid "Your fiscal year starts in month"
+#, php-format
+msgid "Your fiscal year starts in %s."
 msgstr ""
 
 msgid "Your new password is too similar to your old one."
@@ -14026,10 +13933,6 @@ msgstr ""
 msgid "assigned"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "but not this year"
-msgstr ""
-
 msgid "by"
 msgstr ""
 
@@ -14060,6 +13963,9 @@ msgstr ""
 msgid "days"
 msgstr ""
 
+msgid "days ago"
+msgstr ""
+
 msgid "deceased"
 msgstr ""
 
@@ -14067,9 +13973,6 @@ msgid "deposit(s) with no payments"
 msgstr ""
 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
-msgstr ""
-
-msgid "e.g. Regular Offerings"
 msgstr ""
 
 msgid "e.g. Sunday Service"
@@ -14348,6 +14251,9 @@ msgid "select an option"
 msgstr ""
 
 msgid "selected family has no coordinates"
+msgstr ""
+
+msgid "self-registrations are waiting for review"
 msgstr ""
 
 msgid "skip must be zero or a positive integer"

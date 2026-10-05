@@ -14,12 +14,12 @@
 
 describe('01 - Setup Wizard', () => {
     // Database configuration from environment
-    const dbConfig = {
-        host: Cypress.env('db.host') || 'database-new-system',
-        port: Cypress.env('db.port') || '3306',
-        name: Cypress.env('db.name') || 'churchcrm',
-        user: Cypress.env('db.user') || 'churchcrm',
-        password: Cypress.env('db.password') || 'changeme'
+    let dbConfig = {
+        host: 'database-new-system',
+        port: '3306',
+        name: 'churchcrm',
+        user: 'churchcrm',
+        password: 'changeme'
     };
 
     // Default admin credentials after fresh install
@@ -29,7 +29,20 @@ describe('01 - Setup Wizard', () => {
     };
 
     // New password set during the forced change step
-    const newAdminPassword = Cypress.env('admin.new.password') || 'AdminP@ss1234!';
+    let newAdminPassword = 'AdminP@ss1234!';
+
+    before(() => {
+        cy.rememberTestEnv(['db.host', 'db.port', 'db.name', 'db.user', 'db.password', 'admin.new.password']).then(() => {
+            dbConfig = {
+                host: Cypress.testEnv('db.host') || 'database-new-system',
+                port: Cypress.testEnv('db.port') || '3306',
+                name: Cypress.testEnv('db.name') || 'churchcrm',
+                user: Cypress.testEnv('db.user') || 'churchcrm',
+                password: Cypress.testEnv('db.password') || 'changeme'
+            };
+            newAdminPassword = Cypress.testEnv('admin.new.password') || 'AdminP@ss1234!';
+        });
+    });
 
     describe('Fresh Installation', () => {
         it('should display the setup wizard on first visit', () => {
@@ -151,8 +164,6 @@ describe('01 - Setup Wizard', () => {
             // ChurchInfoRequiredMiddleware redirects admin to church-info when sChurchName is empty
             cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
 
-            // Store new password in Cypress env so 02-demo-import.spec.js can read it
-            cy.then(() => { Cypress.env('newSystemAdminPassword', newAdminPassword); });
         });
     });
 
@@ -251,7 +262,7 @@ describe('01 - Setup Wizard', () => {
         });
 
         it('should reset admin password back to changeme for subsequent specs', () => {
-            // Cypress.env() does not persist across spec files, so specs 02-04
+            // A password set in this spec does not carry into specs 02-04, so specs 02-04
             // cannot know the password set here. Reset to the default 'changeme'
             // so all downstream specs can login with the well-known credentials.
             cy.visit('/login');

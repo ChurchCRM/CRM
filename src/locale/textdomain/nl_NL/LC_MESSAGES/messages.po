@@ -1650,30 +1650,6 @@ msgid "Properties"
 msgstr "Kenmerken"
 
 #: 
-msgid "Query Listing"
-msgstr "Overzicht van queries"
-
-#: 
-msgid "Query View"
-msgstr "Query Overzicht"
-
-#: 
-msgid "This value is required."
-msgstr "Deze waarde is vereist."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Deze waarde moet numeriek zijn."
-
-#: 
-msgid "Run Query Again"
-msgstr "Draai Query opnieuw"
-
-#: 
-msgid "Execute Query"
-msgstr "Execute Query"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Bijdrage herinneering Rapport"
 
@@ -2596,10 +2572,6 @@ msgstr "Overzicht inkopers"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Donateurs toevoegen aan winkelmand"
-
-#: 
-msgid "Data/Reports"
-msgstr "Data & prints"
 
 #: 
 msgid "Family Properties"
@@ -4474,10 +4446,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Voor het definiëren van de datum in Datumkiezer, standaard: Y-m-d, In het Frans: d/m/Y bijvoorbeeld."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Door komma's gescheiden lijst met persoons-ID's van mensen om op de hoogte te stellen wanneer een nieuw gezin of nieuwe persoon wordt toegevoegd"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Sta niet-geverifieerde koppelingen van gebeurtenissen vanuit de externe agenda-API toe"
 
@@ -5041,14 +5009,6 @@ msgstr[1] "%d jaar oud"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "Ontbrekende PHP ZipArchive"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "Voeg resultaten toe aan werkbestand"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Resultaten uit werkbestand verwijderen"
 
 #: 
 msgid "Database Reset Functions"
@@ -6323,10 +6283,6 @@ msgid "Cart"
 msgstr "Winkelwagen"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Wijzig dit in Systeeminstellingen."
-
-#: 
 msgid "Church Membership"
 msgstr "Kerklid"
 
@@ -6377,10 +6333,6 @@ msgstr "Maak of selecteer een storting om te beginnen."
 #: 
 msgid "Current Deposit"
 msgstr "Huidge Storting"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Huidig fiscaal jaar"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6443,10 +6395,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Zorg ervoor dat alle stortingen voor het belastingjaar zijn gesloten voordat u afschriften genereert."
 
 #: 
-msgid "Export Options"
-msgstr "Exportopties"
-
-#: 
 msgid "F"
 msgstr "V"
 
@@ -6461,10 +6409,6 @@ msgstr "Familienavigatie"
 #: 
 msgid "Feb"
 msgstr "Feb"
-
-#: 
-msgid "Filtering"
-msgstr "Filteren"
 
 #: 
 msgid "Finance"
@@ -6487,16 +6431,8 @@ msgid "Generate Tax Statements"
 msgstr "Belastingafschriften Genereren"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Genereer jaarlijkse giftafschriften voor donateurs en identificeer giftpatronen."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Genereer jaarlijkse aftrekbare giftafschriften voor donateurs. Kan worden afgedrukt of per e-mail verzonden."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Genereer gedetailleerde rapporten voor individuele stortingen of datumbereiken."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6557,10 +6493,6 @@ msgstr "Mar"
 #: 
 msgid "Membership Reports"
 msgstr "Lidmaatschapsrapporten"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "De meeste rapporten kunnen als PDF voor afdrukken of CSV voor spreadsheetanalyse worden geëxporteerd."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6639,14 +6571,6 @@ msgid "Recording a Pledge"
 msgstr "Een belofte registreren"
 
 #: 
-msgid "Report Tips"
-msgstr "Rapporttips"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Rapporten met betrekking tot stemgerechtigheid van leden en organisatiebeheer."
-
-#: 
 msgid "Reset"
 msgstr "Resetten"
 
@@ -6723,20 +6647,12 @@ msgid "Total Amount"
 msgstr "Totaalbedrag"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Volg toezeggingen en betalingsvoortgang voor campagnes en budgettering van fiscale jaren."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Niet-voldane Vereisten"
 
 #: 
 msgid "Upgrade"
 msgstr "Upgrade"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Gebruik classificatie- en familiefilters om rapporten voor specifieke groepen donateurs te genereren."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6761,10 +6677,6 @@ msgstr "JTD-toezeggingen"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "U kunt familieleden nu toevoegen of later toevoegen. Alle vermeldingen worden nieuwe persoonrecords."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Uw fiscale jaar begint in maand"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7321,10 +7233,6 @@ msgstr "Deze aanwezigheidstelling verwijderen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Selecteer het recordtype waarop deze eigenschap van toepassing is"
-
-#: 
-msgid "Total Pledges"
-msgstr "Totale Toezeggingen"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -8998,10 +8906,6 @@ msgid "Current person"
 msgstr "Huidige persoon"
 
 #: 
-msgid "Data & Reports"
-msgstr "Gegevens & rapporten"
-
-#: 
 msgid "Database Reset"
 msgstr "Database resetten"
 
@@ -10020,10 +9924,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Systeemlogbestanden bekijken en beheren voor foutopsporing"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Opgeslagen databasequery's bekijken en uitvoeren"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Kopersnummers en peddeltoewijzingen bekijken"
 
@@ -10042,10 +9942,6 @@ msgstr "Overzichten van gezinstoezeggingen en fondstoewijzingen bekijken"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Groepsleden, rollen en eigenschappen bekijken"
-
-#: 
-msgid "View query results"
-msgstr "Queryresultaten bekijken"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10367,10 +10263,6 @@ msgstr "Update Beschikbaar"
 msgid "User must have Notes permission"
 msgstr "Gebruiker moet toestemming voor Notities hebben"
 
-#: 
-msgid "Address Defaults"
-msgstr "Adres standaardinstellingen"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10383,16 +10275,6 @@ msgstr "Kalenderinstellingen"
 #: 
 msgid "Calendars"
 msgstr "Kalenders"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Kies een vrijwilligersmogelijkheid"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Kies persoonsveld"
 
 #: 
 msgid "Church Identity"
@@ -10414,11 +10296,6 @@ msgstr "ChurchCRM kan e-mails rechtstreeks verzenden."
 msgid "Communication"
 msgstr "Communicatie"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Vergelij toezeggingen tussen twee boekjaren"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Configureer SMTP in de onderstaande instellingen om e-mails vanuit het systeem te verzenden."
@@ -10432,17 +10309,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Verbind Mailchimp om e-maillijsten voor nieuwsbrieven en campagnes te synchroniseren."
 
 #: 
-msgid "Copy from church address"
-msgstr "Kopiëren van kerkadres"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "Kopiëren naar klembord"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Aangepast veld"
 
 #: 
 msgid "Default Country"
@@ -10496,16 +10364,6 @@ msgstr "Kan e-mailadressen niet ophalen"
 msgid "Failed to retrieve phone numbers"
 msgstr "Kan telefoonnummers niet ophalen"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Veldwaarde"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Zoek mensen die het ene jaar hebben beloofd maar niet het andere"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10513,33 +10371,8 @@ msgstr "Zoek vrijwilligers voor een bepaalde gelegenheid"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Zoek vrijwilligers die twee specifieke opportuniteitscodes matchen"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Eerste fiscaal jaar"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Eerste fiscaal jaar ter vergelijking"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Eerste keuze vrijwilligersopportuniteit"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Vrienden die zich in voorgaande maanden hebben aangemeld"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Gast"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10563,31 +10396,6 @@ msgstr "Evenementen, verjaardagen en verjaarsdagen beheren"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Aangepast veld matchen met deze waarde"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Lid, regelmatige deelnemer, enz."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Leden die zich in een bepaalde maand hebben aangemeld"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Jubileumverjaardagen van lidmaatschap"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Ontbrekende beloften"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Maand"
 
@@ -10607,16 +10415,6 @@ msgstr "E-mailmeldingen voor nieuwe leden"
 #: 
 msgid "No cell phone on file"
 msgstr "Geen mobiele telefoon in dossier"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Niet-deelnemer"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Niet-deelnemer (personeel)"
 
 #: 
 msgid "Not Classified"
@@ -10653,30 +10451,10 @@ msgstr "Personeelseigenschap gebruikt om leden uit te sluiten van SMS/tekstlijst
 msgid "Person property used to exclude members from email lists"
 msgstr "Personeelseigenschap gebruikt om leden uit te sluiten van e-maillijsten"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Vergelijking van beloften"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Dit jaar beloofd"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Eigenschap"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Recente vrienden"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Regelmatige deelnemer"
 
 #. Context: query_qry
 #: 
@@ -10698,21 +10476,6 @@ msgstr "SMTP geconfigureerd"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP niet geconfigureerd"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Tweede fiscaal jaar"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Tweede fiscaal jaar ter vergelijking"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Tweede keuze vrijwilligersopportuniteit"
 
 #: 
 msgid "Send text message"
@@ -10746,25 +10509,6 @@ msgstr "Hulpmiddelen voor teksten"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Acties voor tekstberichten zijn beschikbaar in de weergaven van groepen en zondagsschoolklassen. Gebruik het \"Tekst\" vervolgkeuzemenu om telefoonnummers te kopiëren of SMS-berichten naar groepsleden te verzenden."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "De verjaardagsmaand waarvoor u records wilt hebben geretourneerd."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "De jubileummaand van het lidmaatschap waarvoor u records wilt hebben geretourneerd."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "De eigenschap waarvoor u personeelsrecords wilt hebben geretourneerd."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Deze waarden worden vooraf ingevuld bij het maken van nieuwe families. Laat leeg om handmatige invoer te vereisen."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Eenheid voor het meten van afstand."
@@ -10773,11 +10517,6 @@ msgstr "Eenheid voor het meten van afstand."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Gebruikersmachtiging voor het verzenden van e-mail via mailto: koppelingen"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Vrijwilligersmogelijkheden"
 
 #. Context: query_qry
 #: 
@@ -10795,11 +10534,6 @@ msgstr "Vonage SMS niet geconfigureerd"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Zonder Vonage openen tekstacties uw native SMS-app of kopiëren telefoonnummers naar het klembord."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "maar niet dit jaar"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10910,10 +10644,6 @@ msgstr "Niet-geverifieerde toegang tot agendagebeurtenissen via openbare HTML-, 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Bezoekers toestaan hun eigen gezinsrecord aan te maken via de zelfregistratiepagina"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Bezoekers toestaan zich zelf te registreren als nieuwe gezinnen."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -10997,10 +10727,6 @@ msgstr "Kies wat wordt weergegeven als er geen Gravatar bestaat:\n"
 "• Retro - 8-bit arcadestijl pixelkunst\n"
 "• RoboHash - Unieke gegenereerde robot\n"
 "• Leeg - Transparant (valt terug op initialen)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "Door komma's gescheiden query-ID's waarvoor financiële rechten nodig zijn om te bekijken"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11113,10 +10839,6 @@ msgstr "Gebruik van gescande cheques inschakelen"
 msgid "Features"
 msgstr "Functies"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "Query-ID's voor financiële machtigingen"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11190,10 +10912,6 @@ msgstr "Gravatar werkt door e-mailadressen om te zetten in een hash (MD5). Het d
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Breedte-/lengtegraad verbergen"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Persoonadres verbergen"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -14263,11 +13981,6 @@ msgstr "Achternaam moet minimaal 2 tekens bevatten"
 msgid "Fields"
 msgstr "Velden"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Zoek personen die niet aanwezig waren bij een evenement"
-
 #: 
 msgid "First name is required"
 msgstr "Voornaam is verplicht"
@@ -14447,11 +14160,6 @@ msgstr "Leden toegevoegd aan winkelwagen."
 #: 
 msgid "Minimum length is"
 msgstr "Minimumlengte is"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Ontbrekende personen"
 
 #: 
 msgid "Move"
@@ -14820,11 +14528,6 @@ msgstr "Selecteer agenda's..."
 #: 
 msgid "Select event type..."
 msgstr "Selecteer type evenement..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Selecteer het gewenste evenement"
 
 #: 
 msgid "Sequence"
@@ -16287,10 +15990,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s van de familie %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d record(s) gevonden"
-
-#: 
 msgid "Assign role to all"
 msgstr "Rol toewijzen aan iedereen"
 
@@ -16461,22 +16160,6 @@ msgstr "Systeemconfiguratie"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Er zijn mensen toegewezen aan deze vrijwilligersmogelijkheid. Verwijderen zal de toewijzing ongedaan maken"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Deze waarde mag niet korter zijn dan %d tekens"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Deze waarde mag niet langer zijn dan %d tekens"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Deze waarde mag niet meer zijn dan %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Deze waarde moet minimaal %s zijn"
 
 #: 
 msgid "Total Deposits"
@@ -16759,24 +16442,12 @@ msgid "Family Delete Confirmation"
 msgstr "Bevestiging gezin verwijderen"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Individuen (geen gezin)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nieuwe zelfregistraties"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Bevestiging eigenschapstype verwijderen"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Bekijk nieuwe gezinnen en individuen die zich hebben aangemeld via uw openbare registratieformulier"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Bekijk hieronder nieuwe aanmeldingen van uw openbare registratieformulier. Vermeldingen zonder e-mail of telefoonnummer zijn gemarkeerd — verifieer de contactgegevens voordat u contact opneemt."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17488,16 +17159,6 @@ msgstr "Minimumbieding %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Gemeenteleden met verjaardagen of huwelijksjubilea in een bepaalde maand"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "De maand waarvoor u verjaardagen en jubilea wilt ophalen."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "De maand van het huwelijksjubileum waarvoor u gegevens wilt ophalen."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Totaal van alle aankopen: %s"
@@ -17717,10 +17378,6 @@ msgid "Selected family"
 msgstr "Geselecteerd gezin"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Deze waarde moet een geldige veldnaam zijn."
-
-#: 
 msgid "Could not load data"
 msgstr "Kan gegevens niet laden"
 
@@ -17729,16 +17386,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Vernieuw de pagina of probeer het later opnieuw."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Voeg eerst de relevante records toe."
-
-#: 
 msgid "All Months"
 msgstr "Alle maanden"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Er zijn nog geen \"%s\" opties gedefinieerd."
 
 #: 
 msgid "No events found for %s %d."
@@ -17981,10 +17630,6 @@ msgstr "Fout bij het laden van zelfgeregistreerde inschrijvingen"
 #: 
 msgid "Errors"
 msgstr "Fouten"
-
-#: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Sluit overleden leden uit van de gedrukte ledenlijst en CSV-exports."
 
 #: 
 msgid "Failed Files"
@@ -18303,10 +17948,6 @@ msgid "This Person is Inactive"
 msgstr "Deze persoon is inactief"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Dit zoekt kaartcoördinaten voor elk gezin waarvan deze ontbreken, met behulp van OpenStreetMap. De gezinnen worden verwerkt in groepen van 50, ongeveer een minuut per groep. U kunt deze pagina open laten staan terwijl dit wordt uitgevoerd. Doorgaan?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Deze persoon is overleden"
 
@@ -18515,14 +18156,6 @@ msgid "As an admin, please also review the"
 msgstr "Als beheerder, controleer ook de"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Automatisch een verjaardagsgroet per e-mail naar mensen sturen op hun verjaardag."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Verjaardage-mails"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Verjaardagen, jubilea, vrijwilligers en andere persoonlijsten met een classificatiefilter"
 
@@ -18679,10 +18312,6 @@ msgid "Print %d Tax Doc"
 msgstr "Print %d belastingdocument"
 
 #: 
-msgid "Queries"
-msgstr "Vragen"
-
-#: 
 msgid "Recent Friends"
 msgstr "Recente vrienden"
 
@@ -18777,10 +18406,6 @@ msgstr "Opnemen van niet-aftrekbare betalingen toestaan (bijv. goederen verkoop)
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Niet-geverifieerde toegang tot openbare evenementen toestaan (voor inbedding van kalenders)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Bezoekers kunnen hun eigen familiegegevens via de openbare registratiepagina aanmaken"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
@@ -18997,4 +18622,160 @@ msgstr "Alleen een beheerder kan een persoon met een login verwijderen."
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "De laatste beheerder kan niet worden verwijderd."
+
+#: 
+msgid "Category"
+msgstr "Categorie"
+
+#: 
+msgid "Category updated."
+msgstr "Categorie bijgewerkt."
+
+#: 
+msgid "Delete Category"
+msgstr "Categorie verwijderen"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Kan categorie niet verwijderen"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Kan categorie niet hernoemen"
+
+#: 
+msgid "Fund Categories"
+msgstr "Fondscategorieën"
+
+#: 
+msgid "Fund activated."
+msgstr "Fonds geactiveerd."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Fonds gedeactiveerd."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Fondsen in deze categorie worden ongecategoriseerd. De fondsen zelf worden niet verwijderd."
+
+#: 
+msgid "INACTIVE"
+msgstr "Niet actieve"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nieuwe categorienaam (een bestaande naam voegt de twee samen)"
+
+#: 
+msgid "Optional"
+msgstr "Optioneel"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Optioneel — kies of typ een nieuwe categorie"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Meer betaald dan de financiële toezegging"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Beloofd maar nog niet betaald"
+
+#: 
+msgid "Rename Category"
+msgstr "Categorie hernoemen"
+
+#: 
+msgid "Still Owed"
+msgstr "Nog verschuldigd"
+
+#: 
+msgid "Summary by Category"
+msgstr "Samenvatting per categorie"
+
+#: 
+msgid "Total Paid"
+msgstr "Totaal betaald"
+
+#: 
+msgid "Uncategorized"
+msgstr "Zonder categorie"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "De huidige instellingen konden niet worden geladen. Laad de pagina opnieuw om het nog eens te proberen."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Deze instelling moet een getal zijn"
+
+#: 
+msgid "Child Role"
+msgstr "Rol kind"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Opname in de gids kan alleen worden in- of uitgeschakeld voor de lijst met classificaties"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Welkomstbericht 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Welkomstbericht 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Rol gezinshoofd"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Adressen zonder gezin verbergen"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Vriendschapsdatum verbergen"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Nieuwsbriefabonnementen verbergen"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Huwelijksdatum verbergen"
+
+#: 
+msgid "In Directory"
+msgstr "In de gids"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Details opnemen in meldingen"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Ontvangers van meldingen"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Personen die op de hoogte worden gebracht wanneer een nieuw gezin of een nieuwe persoon wordt toegevoegd"
+
+#: 
+msgid "Person initials style"
+msgstr "Stijl van de initialen van de persoon"
+
+#: 
+msgid "Person name display style"
+msgstr "Weergavestijl van de naam van de persoon"
+
+#: 
+msgid "Spouse Role"
+msgstr "Rol echtgenoot/echtgenote"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Postcodes in hoofdletters"
 

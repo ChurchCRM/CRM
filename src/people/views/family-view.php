@@ -94,6 +94,12 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
 $taxEmailSent  = filter_input(INPUT_GET, 'TaxEmailSent', FILTER_VALIDATE_INT);
 $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
 ?>
+<?php if ($family->getNeedsReview()) : ?>
+<div class="alert alert-warning">
+    <i class="fa-solid fa-user-clock me-1"></i><strong><?= gettext('This self-registered family is pending review') ?></strong>
+    <a href="<?= SystemURLs::getRootPath() ?>/people/self-register" class="ms-2"><?= gettext('Review self registrations') ?></a>
+</div>
+<?php endif; ?>
 <div id="family-deactivated" class="alert alert-warning d-none">
     <strong><?= gettext("This Family is Inactive") ?> </strong>
 </div>
@@ -783,7 +789,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 <?php } ?>
 
 <!-- Leaflet map (loaded only if geocoded) -->
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+
 <?php if ($family->hasAddress() && $family->hasLatitudeAndLongitude()) : ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = window.CRM || {};
@@ -829,7 +835,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 </div>
 <?php endif; ?>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-family-view.min.js') ?>"></script>
 
 <!-- Photo uploader bundle - loaded only on this page -->

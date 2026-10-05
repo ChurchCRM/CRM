@@ -57,7 +57,7 @@ The run ends with `marketing:manifest`
 JSON sidecar under `playwright/artifacts/metadata/` and consolidates them
 into one JSON manifest at `playwright/artifacts/manifest.json` — one
 object per capture, organized by workflow name, with all devices grouped
-together, plus title/category metadata from `screenshot-metadata.json` —
+together, plus title/category metadata taken from each capture's `captureScreen()` options —
 name, device, screenshot-or-video, relative path, whether that file
 actually exists and its size, purpose text, viewport, commit, etc. It's
 for scanning/looking up a whole run's output at a glance without opening
@@ -70,6 +70,17 @@ it, and don't be surprised if its `commit`/`timestamp` columns lag the
 repo by a commit or two (it reflects whatever run last regenerated it, not
 necessarily HEAD). An older `manifest.csv` format is obsolete: the script
 deletes any leftover `manifest.csv` on each run, and it's gitignored.
+
+### Adding a capture in a feature PR
+
+The capture ships in the same PR as the UI change, not a follow-up.
+
+1. Make a `git worktree` at the PR commit, symlink `node_modules`, then `composer:install`, `build:js`, `build:signatures`.
+2. Start the pipeline's own stack with `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:start`. It uses ports 8081 and 3308, so it does not collide with the dev or test stacks. It removes `src/Include/Config.php`, which is why it never runs in the main checkout.
+3. First run: `BROWSER_CHANNEL=chrome CHURCHCRM_LOCALE=en npm run marketing:screenshots -- --grep "<capture-name>"`. After a UI tweak, re-run only the capture on the seeded instance with `-- --project=screenshots --no-deps --grep "<capture-name>"`.
+4. Open the desktop, tablet, and mobile PNGs and look at them. Fix anything cramped, then re-run.
+5. Commit the spec, the three `en` PNGs, and hand-added `manifest.json` entries (one per device; copy the fields from the sidecar JSON, which is gitignored). Never commit `report.json` or the other locales.
+6. Tear down with `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:down`.
 
 Full details, directory layout, and troubleshooting: `playwright/README.md`.
 

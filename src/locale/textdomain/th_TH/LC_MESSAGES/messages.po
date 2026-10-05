@@ -1662,30 +1662,6 @@ msgid "Properties"
 msgstr "คุณสมบัติ"
 
 #: 
-msgid "Query Listing"
-msgstr "รายการคิวรี"
-
-#: 
-msgid "Query View"
-msgstr "มุมมองคิวรี"
-
-#: 
-msgid "This value is required."
-msgstr "ค่านี้จำเป็นต้องมี"
-
-#: 
-msgid "This value must be numeric."
-msgstr "ค่านี้ต้องเป็นตัวเลข"
-
-#: 
-msgid "Run Query Again"
-msgstr "รันคิวรีอีกครั้ง"
-
-#: 
-msgid "Execute Query"
-msgstr "รันคิวรี"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "รายงานการเตือนคำมั่นสัญญา"
 
@@ -2605,10 +2581,6 @@ msgstr "ดูผู้ซื้อ"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "เพิ่มผู้บริจาคไปยังรายการผู้ซื้อ"
-
-#: 
-msgid "Data/Reports"
-msgstr "ข้อมูล/รายงาน"
 
 #: 
 msgid "Family Properties"
@@ -4483,10 +4455,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "สำหรับกำหนดวันที่ใน Date-Picker ค่าเริ่มต้น: Y-m-d ในภาษาฝรั่งเศส: d/m/Y เป็นต้น"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "รายการ PersonID ที่คั่นด้วยคอมมาของคนที่จะแจ้งเตือนเมื่อเพิ่มครอบครัวหรือบุคคลใหม่"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "อนุญาตให้อ่านกิจกรรมที่ไม่ได้รับการยืนยันตัวตนจาก API ปฏิทินภายนอก"
 
@@ -5048,14 +5016,6 @@ msgstr[0] "%d ปี"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "ไม่มี PHP ZipArchive"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "เพิ่มผลลัพธ์ลงในตะกร้า"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "ลบผลลัพธ์ออกจากตะกร้า"
 
 #: 
 msgid "Database Reset Functions"
@@ -6327,10 +6287,6 @@ msgid "Cart"
 msgstr "ตะกร้า"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "เปลี่ยนในการตั้งค่าระบบ"
-
-#: 
 msgid "Church Membership"
 msgstr "สมาชิกภาพคริสตจักร"
 
@@ -6381,10 +6337,6 @@ msgstr "สร้างหรือเลือกการฝากเพื่
 #: 
 msgid "Current Deposit"
 msgstr "การฝากปัจจุบัน"
-
-#: 
-msgid "Current fiscal year"
-msgstr "ปีงบประมาณปัจจุบัน"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6447,10 +6399,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "ตรวจสอบให้แน่ใจว่าการฝากทั้งหมดสำหรับปีภาษีปิดแล้วก่อนสร้างใบแจ้ง"
 
 #: 
-msgid "Export Options"
-msgstr "ตัวเลือกการส่งออก"
-
-#: 
 msgid "F"
 msgstr "ห"
 
@@ -6465,10 +6413,6 @@ msgstr "การนำทางครอบครัว"
 #: 
 msgid "Feb"
 msgstr "ก.พ."
-
-#: 
-msgid "Filtering"
-msgstr "การกรอง"
 
 #: 
 msgid "Finance"
@@ -6491,16 +6435,8 @@ msgid "Generate Tax Statements"
 msgstr "สร้างใบแจ้งภาษี"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "สร้างใบแจ้งการให้ประจำปีสำหรับผู้บริจาคและระบุรูปแบบการให้"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "สร้างใบแจ้งการให้ที่หักลดหย่อนภาษีประจำปีสำหรับผู้บริจาค สามารถพิมพ์หรือส่งอีเมลได้"
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "สร้างรายงานรายละเอียดสำหรับการฝากแต่ละรายการหรือช่วงวันที่"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6561,10 +6497,6 @@ msgstr "มี.ค."
 #: 
 msgid "Membership Reports"
 msgstr "รายงานสมาชิกภาพ"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "รายงานส่วนใหญ่สามารถส่งออกเป็น PDF สำหรับพิมพ์หรือ CSV สำหรับการวิเคราะห์สเปรดชีต"
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6643,14 +6575,6 @@ msgid "Recording a Pledge"
 msgstr "บันทึกคำมั่นสัญญา"
 
 #: 
-msgid "Report Tips"
-msgstr "เคล็ดลับรายงาน"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "รายงานที่เกี่ยวข้องกับสิทธิ์การลงคะแนนของสมาชิกและการกำกับดูแลองค์กร"
-
-#: 
 msgid "Reset"
 msgstr "รีเซ็ต"
 
@@ -6727,20 +6651,12 @@ msgid "Total Amount"
 msgstr "จำนวนรวม"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "ติดตามคำมั่นสัญญาและความคืบหน้าการชำระเงินสำหรับแคมเปญและการจัดทำงบประมาณปีงบประมาณ"
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "ข้อกำหนดเบื้องต้นที่ไม่ตรงตามเงื่อนไข"
 
 #: 
 msgid "Upgrade"
 msgstr "อัปเกรด"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "ใช้ตัวกรองการจัดประเภทและครอบครัวเพื่อสร้างรายงานสำหรับกลุ่มผู้บริจาคเฉพาะ"
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6765,10 +6681,6 @@ msgstr "คำมั่นสัญญา YTD"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "คุณอาจสร้างสมาชิกครอบครัวตอนนี้หรือเพิ่มในภายหลัง รายการทั้งหมดจะกลายเป็นระเบียนบุคคลใหม่"
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "ปีงบประมาณของคุณเริ่มต้นในเดือน"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7323,10 +7235,6 @@ msgstr "ลบการนับการเข้าร่วมนี้?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "เลือกประเภทระเบียนที่คุณสมบัตินี้ใช้กับ"
-
-#: 
-msgid "Total Pledges"
-msgstr "คำมั่นสัญญาทั้งหมด"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -8997,10 +8905,6 @@ msgid "Current person"
 msgstr "บุคคลปัจจุบัน"
 
 #: 
-msgid "Data & Reports"
-msgstr "ข้อมูลและรายงาน"
-
-#: 
 msgid "Database Reset"
 msgstr "รีเซ็ตฐานข้อมูล"
 
@@ -10019,10 +9923,6 @@ msgid "View and manage system log files for debugging"
 msgstr "ดูและจัดการไฟล์บันทึกระบบสำหรับการแก้ไขปัญหา"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "ดูและเรียกใช้คิวรีฐานข้อมูลที่บันทึกไว้"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "ดูหมายเลขผู้ซื้อและการกำหนดป้ายหมายเลข"
 
@@ -10041,10 +9941,6 @@ msgstr "ดูสรุปคำปฏิญาณถวายของครอ
 #: 
 msgid "View group members, roles, and properties"
 msgstr "ดูสมาชิกกลุ่ม บทบาท และคุณสมบัติ"
-
-#: 
-msgid "View query results"
-msgstr "ดูผลลัพธ์คิวรี"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10366,10 +10262,6 @@ msgstr "มีการอัปเดต"
 msgid "User must have Notes permission"
 msgstr "ผู้ใช้ต้องมีสิทธิ์บันทึก"
 
-#: 
-msgid "Address Defaults"
-msgstr "ค่าเริ่มต้นที่อยู่"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10382,16 +10274,6 @@ msgstr "การตั้งค่าปฏิทิน"
 #: 
 msgid "Calendars"
 msgstr "ปฏิทิน"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "เลือกโอกาสอาสาสมัคร"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "เลือกฟิลด์บุคคล"
 
 #: 
 msgid "Church Identity"
@@ -10413,11 +10295,6 @@ msgstr "ChurchCRM สามารถส่งอีเมลโดยตรง"
 msgid "Communication"
 msgstr "การสื่อสาร"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "เปรียบเทียบสัญญาระหว่างสองปีงบประมาณ"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "กำหนดค่า SMTP ในการตั้งค่าด้านล่างเพื่อส่งอีเมลจากระบบ"
@@ -10431,17 +10308,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "เชื่อมต่อ Mailchimp เพื่อซิงค์รายชื่ออีเมลสำหรับจดหมายข่าวและแคมเปญ"
 
 #: 
-msgid "Copy from church address"
-msgstr "คัดลอกจากที่อยู่โบสถ์"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "คัดลอกไปยังคลิปบอร์ด"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "ฟิลด์ที่กำหนดเอง"
 
 #: 
 msgid "Default Country"
@@ -10495,16 +10363,6 @@ msgstr "ไม่สามารถดึงที่อยู่อีเมล
 msgid "Failed to retrieve phone numbers"
 msgstr "ไม่สามารถดึงหมายเลขโทรศัพท์"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "ค่าฟิลด์"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "ค้นหาผู้คนที่สัญญาในปีหนึ่ง แต่ไม่ใช่อีกปีหนึ่ง"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10512,33 +10370,8 @@ msgstr "ค้นหาอาสาสมัครสำหรับโอกา
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "ค้นหาอาสาสมัครที่ตรงกับรหัสโอกาสเฉพาะสองรหัส"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "ปีการคลังแรก"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "ปีการคลังแรกเพื่อเปรียบเทียบ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "ตัวเลือกโอกาสการเป็นอาสาสมัครแรก"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "เพื่อนที่ลงทะเบียนในเดือนก่อนหน้า"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "แขก"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10562,31 +10395,6 @@ msgstr "จัดการอีเวนต์วันเกิดและว
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "จับคู่ฟิลด์ที่กำหนดเองกับค่านี้"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "สมาชิก ผู้เข้าร่วมประจำ ฯลฯ"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "สมาชิกที่เข้าร่วมในเดือนใดเดือนหนึ่ง"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "วันครบรอบการเป็นสมาชิก"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "สัญญาที่หายไป"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "เดือน"
 
@@ -10606,16 +10414,6 @@ msgstr "อีเมลการแจ้งเตือนสมาชิกใ
 #: 
 msgid "No cell phone on file"
 msgstr "ไม่มีโทรศัพท์มือถือในไฟล์"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "ผู้ที่ไม่เข้าร่วม"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "ผู้ที่ไม่เข้าร่วม (พนักงาน)"
 
 #: 
 msgid "Not Classified"
@@ -10652,30 +10450,10 @@ msgstr "คุณสมบัติของคนที่ใช้เพื่
 msgid "Person property used to exclude members from email lists"
 msgstr "คุณสมบัติของคนที่ใช้เพื่อแยกสมาชิกออกจากรายชื่ออีเมล"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "การเปรียบเทียบสัญญา"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "สัญญาปีนี้"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "สัญชาติ"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "เพื่อนล่าสุด"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "ผู้เข้าร่วมประจำ"
 
 #. Context: query_qry
 #: 
@@ -10697,21 +10475,6 @@ msgstr "SMTP ที่ตั้งค่าแล้ว"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP ไม่ได้รับการกำหนดค่า"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "ปีการคลังที่สอง"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "ปีการคลังที่สองเพื่อเปรียบเทียบ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "ตัวเลือกโอกาสการเป็นอาสาสมัครที่สอง"
 
 #: 
 msgid "Send text message"
@@ -10745,25 +10508,6 @@ msgstr "เครื่องมือข้อความ"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "การดำเนินการส่งข้อความข้อความมีอยู่จากมุมมองกลุ่มและชั้นเรียนโรงเรียนวันอาทิตย์ ใช้เมนูแบบเลื่อนลง \"ข้อความ\" เพื่อคัดลอกหมายเลขโทรศัพท์หรือส่งข้อความ SMS ไปยังสมาชิกกลุ่ม"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "เดือนวันเกิดที่คุณต้องการให้ส่งคืนบันทึก"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "เดือนวันครบรอบการเป็นสมาชิกที่คุณต้องการให้ส่งคืนบันทึก"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "คุณสมบัติที่คุณต้องการให้บันทึกบุคคลส่งคืน"
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "ค่าเหล่านี้ถูกเติมไว้ล่วงหน้าเมื่อสร้างครอบครัวใหม่ ปล่อยให้ว่างเพื่อต้องการการป้อนข้อมูลด้วยตนเอง"
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "หน่วยที่ใช้ในการวัดระยะทาง"
@@ -10772,11 +10516,6 @@ msgstr "หน่วยที่ใช้ในการวัดระยะท
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "สิทธิ์ผู้ใช้ในการส่งอีเมลผ่านลิงค์ mailto:"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "โอกาสอาสาสมัคร"
 
 #. Context: query_qry
 #: 
@@ -10794,11 +10533,6 @@ msgstr "Vonage SMS ไม่ได้รับการกำหนดค่า"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "โดยไม่มี Vonage การดำเนินการข้อความจะเปิดแอป SMS ดั้งเดิมของอุปกรณ์หรือคัดลอกหมายเลขโทรศัพท์ไปยังคลิปบอร์ด"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "แต่ไม่ใช่ปีนี้"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10909,10 +10643,6 @@ msgstr "อนุญาตการเข้าถึงกิจกรรมใ
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "อนุญาตให้ผู้เยี่ยมชมสร้างบันทึกครอบครัวของตนเองผ่านหน้าลงทะเบียนด้วยตนเอง"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "อนุญาตให้ผู้เยี่ยมชมลงทะเบียนตนเองเป็นครอบครัวใหม่"
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -10996,10 +10726,6 @@ msgstr "เลือกสิ่งที่จะแสดงเมื่อไ
 "• เรโทร - พิกเซลอาร์ตสไตล์อาร์เคด 8 บิต\n"
 "• RoboHash - หุ่นยนต์ที่สร้างขึ้นเฉพาะ\n"
 "• ว่างเปล่า - โปร่งใส (ย้อนกลับเป็นตัวอักษรย่อ)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "ID คิวรีที่คั่นด้วยเครื่องหมายจุลภาคซึ่งต้องการสิทธิ์ทางการเงินในการดู"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11112,10 +10838,6 @@ msgstr "เปิดใช้งานการใช้เช็คที่ส
 msgid "Features"
 msgstr "คุณสมบัติ"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "ID คิวรีสิทธิ์ทางการเงิน"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11189,10 +10911,6 @@ msgstr "Gravatar ทำงานโดยการแปลงที่อยู
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "ซ่อนละติจูด/ลองจิจูด"
-
-#: 
-msgid "Hide Person Address"
-msgstr "ซ่อนที่อยู่บุคคล"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -14261,11 +13979,6 @@ msgstr "ชื่อครอบครัวต้องมีอย่างน
 msgid "Fields"
 msgstr "ฟิลด์"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "ค้นหาสมาชิกที่ไม่ได้เข้าร่วมกิจกรรม"
-
 #: 
 msgid "First name is required"
 msgstr "ต้องมีชื่อจริง"
@@ -14445,11 +14158,6 @@ msgstr "เพิ่มสมาชิกไปยังรายการแล
 #: 
 msgid "Minimum length is"
 msgstr "ความยาวต่ำสุดคือ"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "สมาชิกที่ขาดหาย"
 
 #: 
 msgid "Move"
@@ -14818,11 +14526,6 @@ msgstr "เลือกปฏิทิน..."
 #: 
 msgid "Select event type..."
 msgstr "เลือกประเภทอีเวนต์..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "เลือกกิจกรรมที่ต้องการ"
 
 #: 
 msgid "Sequence"
@@ -16282,10 +15985,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s จากครอบครัว %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "พบ %d รายการ"
-
-#: 
 msgid "Assign role to all"
 msgstr "กำหนดบทบาทให้ทุกคน"
 
@@ -16456,22 +16155,6 @@ msgstr "การตั้งค่าระบบ"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "มีคนถูกกำหนดให้กับโอกาสอาสาสมัครนี้ การลบจะยกเลิกการกำหนด"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "ค่านี้ต้องมีความยาวไม่น้อยกว่า %d ตัวอักษร"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "ค่านี้ต้องมีความยาวไม่เกิน %d ตัวอักษร"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "ค่านี้ต้องไม่เกิน %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "ค่านี้ต้องมีอย่างน้อย %s"
 
 #: 
 msgid "Total Deposits"
@@ -16754,24 +16437,12 @@ msgid "Family Delete Confirmation"
 msgstr "ยืนยันการลบครอบครัว"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "บุคคล (ไม่มีครอบครัว)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "การลงทะเบียนด้วยตนเองใหม่"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "ยืนยันการลบประเภทคุณสมบัติ"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "ตรวจสอบครอบครัวและบุคคลใหม่ที่ลงทะเบียนในแบบฟอร์มการลงทะเบียนสาธารณของคุณ"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "ตรวจสอบการลงทะเบียนใหม่จากแบบฟอร์มสาธารณของคุณด้านล่าง รายการที่ไม่มีอีเมลหรือโทรศัพท์จะถูกตั้งธง — ยืนยันข้อมูลติดต่อก่อนติดตามผล"
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17481,16 +17152,6 @@ msgstr "ราคาเสนอขั้นต่ำ %s"
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "สมาชิกที่มีวันเกิดหรือวันครบรอบแต่งงานในเดือนที่ระบุ"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "เดือนที่ต้องการดูข้อมูลวันเกิดและวันครบรอบ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "เดือนครบรอบแต่งงานที่ต้องการดูข้อมูล"
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "ยอดรวมการซื้อทั้งหมด: %s"
@@ -17710,10 +17371,6 @@ msgid "Selected family"
 msgstr "ครอบครัวที่เลือก"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "ค่านี้ต้องเป็นชื่อฟิลด์ที่ถูกต้อง"
-
-#: 
 msgid "Could not load data"
 msgstr "ไม่สามารถโหลดข้อมูลได้"
 
@@ -17722,16 +17379,8 @@ msgid "Please refresh the page or try again later."
 msgstr "กรุณารีเฟรชหน้าหรือลองใหม่ภายหลัง"
 
 #: 
-msgid "Add the relevant records first."
-msgstr "เพิ่มระเบียนที่เกี่ยวข้องก่อน"
-
-#: 
 msgid "All Months"
 msgstr "ทุกเดือน"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "ยังไม่มีการกำหนดตัวเลือก \"%s\""
 
 #: 
 msgid "No events found for %s %d."
@@ -17973,10 +17622,6 @@ msgstr "เกิดข้อผิดพลาดในการโหลดร
 #: 
 msgid "Errors"
 msgstr "ข้อผิดพลาด"
-
-#: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "ไม่รวมสมาชิกที่เสียชีวิตแล้วในสมุดรายชื่อที่พิมพ์และการส่งออกไฟล์ CSV"
 
 #: 
 msgid "Failed Files"
@@ -18295,10 +17940,6 @@ msgid "This Person is Inactive"
 msgstr "บุคคลนี้ไม่ได้ใช้งาน"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "ระบบจะค้นหาพิกัดแผนที่ให้กับทุกครอบครัวที่ยังไม่มีพิกัด โดยใช้ OpenStreetMap โดยจะประมวลผลครอบครัวเป็นชุดๆ ละ 50 ครอบครัว ใช้เวลาประมาณหนึ่งนาทีต่อชุด คุณสามารถเปิดหน้านี้ทิ้งไว้ระหว่างดำเนินการได้ ดำเนินการต่อหรือไม่?"
-
-#: 
 msgid "This person is deceased"
 msgstr "บุคคลนี้เสียชีวิตแล้ว"
 
@@ -18507,14 +18148,6 @@ msgid "As an admin, please also review the"
 msgstr "ในฐานะผู้ดูแลระบบ โปรดตรวจสอบด้วย"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "ส่งอีเมลอวยพรวันเกิดไปยังผู้คนโดยอัตโนมัติในวันเกิดของพวกเขา"
-
-#: 
-msgid "Birthday Emails"
-msgstr "อีเมลวันเกิด"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "วันเกิด วันครบรอบ อาสาสมัคร และรายชื่อคนอื่นๆ ที่มีตัวกรองการจำแนก"
 
@@ -18671,10 +18304,6 @@ msgid "Print %d Tax Doc"
 msgstr "พิมพ์เอกสารภาษี %d ฉบับ"
 
 #: 
-msgid "Queries"
-msgstr "แบบสอบถาม"
-
-#: 
 msgid "Recent Friends"
 msgstr "เพื่อนล่าสุด"
 
@@ -18769,10 +18398,6 @@ msgstr "อนุญาตให้บันทึกการชำระเง
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "อนุญาตการเข้าถึงโดยไม่ได้รับการยืนยันตัวตนต่อกิจกรรมสาธารณะ (สำหรับการฝังปฏิทิน)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "อนุญาตให้ผู้มาเยี่ยมชมสร้างบันทึกครอบครัวของตนเองผ่านหน้าการลงทะเบียนสาธารณะ"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
@@ -18989,4 +18614,160 @@ msgstr "เฉพาะผู้ดูแลระบบเท่านั้น
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "ไม่สามารถลบผู้ดูแลระบบคนสุดท้ายได้"
+
+#: 
+msgid "Category"
+msgstr "หมวดหมู่"
+
+#: 
+msgid "Category updated."
+msgstr "อัปเดตหมวดหมู่แล้ว"
+
+#: 
+msgid "Delete Category"
+msgstr "ลบหมวดหมู่"
+
+#: 
+msgid "Failed to delete category"
+msgstr "ไม่สามารถลบหมวดหมู่ได้"
+
+#: 
+msgid "Failed to rename category"
+msgstr "ไม่สามารถเปลี่ยนชื่อหมวดหมู่ได้"
+
+#: 
+msgid "Fund Categories"
+msgstr "หมวดหมู่เงินอุดหนุน"
+
+#: 
+msgid "Fund activated."
+msgstr "เปิดใช้เงินอุดหนุนแล้ว"
+
+#: 
+msgid "Fund deactivated."
+msgstr "ปิดใช้เงินอุดหนุนแล้ว"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "เงินอุดหนุนในหมวดหมู่นี้จะกลายเป็นไม่มีหมวดหมู่ เงินอุดหนุนนั้นเองจะไม่ถูกลบ"
+
+#: 
+msgid "INACTIVE"
+msgstr "ไม่ใช้งาน"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "ชื่อหมวดหมู่ใหม่ (ชื่อที่มีอยู่จะรวมสองชื่อ)"
+
+#: 
+msgid "Optional"
+msgstr "ทางเลือก"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "ทางเลือก — เลือกหรือพิมพ์หมวดหมู่ใหม่"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "จ่ายเกินกว่าสัญญา"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "สัญญาแล้วแต่ยังไม่ได้จ่าย"
+
+#: 
+msgid "Rename Category"
+msgstr "เปลี่ยนชื่อหมวดหมู่"
+
+#: 
+msgid "Still Owed"
+msgstr "ยังคงเป็นหนี้"
+
+#: 
+msgid "Summary by Category"
+msgstr "สรุปตามหมวดหมู่"
+
+#: 
+msgid "Total Paid"
+msgstr "รวมจ่าย"
+
+#: 
+msgid "Uncategorized"
+msgstr "ไม่มีหมวดหมู่"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "ไม่สามารถโหลดการตั้งค่าปัจจุบันได้ โปรดโหลดหน้านี้ใหม่เพื่อลองอีกครั้ง"
+
+#: 
+msgid "This setting must be a number"
+msgstr "การตั้งค่านี้ต้องเป็นตัวเลข"
+
+#: 
+msgid "Child Role"
+msgstr "บทบาทของบุตร"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "การรวมอยู่ในสมุดรายชื่อสามารถสลับได้เฉพาะรายการการจัดประเภทเท่านั้น"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "ข้อความต้อนรับ 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "ข้อความต้อนรับ 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "บทบาทของหัวหน้าครอบครัว"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "ซ่อนที่อยู่ที่ไม่มีครอบครัว"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "ซ่อนวันที่เป็นเพื่อน"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "ซ่อนการสมัครรับจดหมายข่าว"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "ซ่อนวันแต่งงาน"
+
+#: 
+msgid "In Directory"
+msgstr "อยู่ในสมุดรายชื่อ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "รวมรายละเอียดในการแจ้งเตือน"
+
+#: 
+msgid "Notification Recipients"
+msgstr "ผู้รับการแจ้งเตือน"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "บุคคลที่จะได้รับแจ้งเมื่อมีการเพิ่มครอบครัวหรือบุคคลใหม่"
+
+#: 
+msgid "Person initials style"
+msgstr "รูปแบบอักษรย่อของบุคคล"
+
+#: 
+msgid "Person name display style"
+msgstr "รูปแบบการแสดงชื่อบุคคล"
+
+#: 
+msgid "Spouse Role"
+msgstr "บทบาทของคู่สมรส"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "รหัสไปรษณีย์ตัวพิมพ์ใหญ่"
 

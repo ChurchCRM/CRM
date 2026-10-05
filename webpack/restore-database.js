@@ -153,7 +153,7 @@ function handleRestoreSubmit($form) {
       setRestoreStatus("idle");
 
       // Show success modal overlay
-      $("#restoreSuccessModal").modal("show");
+      window.bootstrap.Modal.getOrCreateInstance(document.getElementById("restoreSuccessModal")).show();
 
       // Log out the user via API (session will be invalid after DB restore)
       $.ajax({

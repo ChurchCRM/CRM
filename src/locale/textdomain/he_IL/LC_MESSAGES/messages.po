@@ -1668,30 +1668,6 @@ msgid "Properties"
 msgstr "מאפיינים"
 
 #: 
-msgid "Query Listing"
-msgstr "רשימת שאילתות"
-
-#: 
-msgid "Query View"
-msgstr "תצוגת שאילתה"
-
-#: 
-msgid "This value is required."
-msgstr "ערך זה הוא חובה."
-
-#: 
-msgid "This value must be numeric."
-msgstr "ערך זה חייב להיות מספרי."
-
-#: 
-msgid "Run Query Again"
-msgstr "הרץ שאילתה שוב"
-
-#: 
-msgid "Execute Query"
-msgstr "הרץ שאילתה"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "דוח תזכורת התחייבויות"
 
@@ -2617,10 +2593,6 @@ msgstr "הצג לקוחות"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "הוסף תורמים לרשימת הקונים"
-
-#: 
-msgid "Data/Reports"
-msgstr "נתונים/דוחות"
 
 #: 
 msgid "Family Properties"
@@ -4500,10 +4472,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "להגדרת התאריך בבוחר התאריכים, כברירת מחדל: Y-m-d, בצרפתית: d/m/Y לדוגמה."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "רשימת PersonIDs מופרדת בפסיקים של אנשים שיש להודיע להם כאשר נוספת משפחה או אדם חדש"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "אפשר קריאה ללא הזדהות של אירועים מ-API הלוח שנה החיצוני"
 
@@ -5071,14 +5039,6 @@ msgstr[1] "%d שנים"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "חסר PHP ZipArchive"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "הוסף תוצאות לסל"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "הסר תוצאות מהסל"
 
 #: 
 msgid "Database Reset Functions"
@@ -6352,10 +6312,6 @@ msgid "Cart"
 msgstr "סל"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "שנה זאת בהגדרות המערכת."
-
-#: 
 msgid "Church Membership"
 msgstr "חברות בכנסייה"
 
@@ -6406,10 +6362,6 @@ msgstr "צור או בחר הפקדה כדי להתחיל."
 #: 
 msgid "Current Deposit"
 msgstr "הפקדה נוכחית"
-
-#: 
-msgid "Current fiscal year"
-msgstr "שנת כספים נוכחית"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6472,10 +6424,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "ודא שכל ההפקדות לשנת המס סגורות לפני הפקת הצהרות."
 
 #: 
-msgid "Export Options"
-msgstr "אפשרויות ייצוא"
-
-#: 
 msgid "F"
 msgstr "נ"
 
@@ -6490,10 +6438,6 @@ msgstr "ניווט משפחה"
 #: 
 msgid "Feb"
 msgstr "פבר'"
-
-#: 
-msgid "Filtering"
-msgstr "סינון"
 
 #: 
 msgid "Finance"
@@ -6516,16 +6460,8 @@ msgid "Generate Tax Statements"
 msgstr "הפק הצהרות מס"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "הפק דוחות תרומה שנתיים וזהה דפוסי נתינה."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "הפק אישורי תרומה לצרכי מס. ניתן להדפיס או לשלוח במייל."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "הפק דוחות מפורטים להפקדות בודדות או לטווח תאריכים."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6586,10 +6522,6 @@ msgstr "מרץ"
 #: 
 msgid "Membership Reports"
 msgstr "דוחות חברות"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "ניתן לייצא את רוב הדוחות כ-PDF או CSV."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6668,14 +6600,6 @@ msgid "Recording a Pledge"
 msgstr "רישום התחייבות"
 
 #: 
-msgid "Report Tips"
-msgstr "טיפים לדוחות"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "דוחות הקשורים לזכות הצבעה וניהול הארגון."
-
-#: 
 msgid "Reset"
 msgstr "איפוס"
 
@@ -6752,20 +6676,12 @@ msgid "Total Amount"
 msgstr "סכום כולל"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "עקוב אחר התחייבויות ותשלומים לקמפיינים ותקציב."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "דרישות מוקדם שלא נענו"
 
 #: 
 msgid "Upgrade"
 msgstr "שדרוג"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "השתמש במסנני סיווג ומשפחה להפקת דוחות לתורמים ספציפיים."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6790,10 +6706,6 @@ msgstr "התחייבויות מתחילת השנה"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "ניתן ליצור בני משפחה כעת או להוסיף מאוחר יותר."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "שנת הכספים שלך מתחילה בחודש"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7350,10 +7262,6 @@ msgstr "להסיר ספירת נוכחות זו?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "בחר את סוג הרשומה שאליה מאפיין זה חל"
-
-#: 
-msgid "Total Pledges"
-msgstr "סה\"כ התחייבויות"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -9027,10 +8935,6 @@ msgid "Current person"
 msgstr "אדם נוכחי"
 
 #: 
-msgid "Data & Reports"
-msgstr "נתונים ודוחות"
-
-#: 
 msgid "Database Reset"
 msgstr "איפוס מסד נתונים"
 
@@ -10049,10 +9953,6 @@ msgid "View and manage system log files for debugging"
 msgstr "צפייה וניהול קבצי יומן מערכת לאיתור באגים"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "צפייה והפעלת שאילתות מסד נתונים שמורות"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "צפייה במספרי קונים ושיוכי מספרים"
 
@@ -10071,10 +9971,6 @@ msgstr "צפייה בסיכומי התחייבויות כספיות משפחתי
 #: 
 msgid "View group members, roles, and properties"
 msgstr "צפייה בחברי קבוצה, תפקידים ומאפיינים"
-
-#: 
-msgid "View query results"
-msgstr "צפייה בתוצאות שאילתה"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10396,10 +10292,6 @@ msgstr "עדכון זמין"
 msgid "User must have Notes permission"
 msgstr "למשתמש חייבת להיות הרשאת הערות"
 
-#: 
-msgid "Address Defaults"
-msgstr "ברירות מחדל של כתובת"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10412,16 +10304,6 @@ msgstr "הגדרות לוח שנה"
 #: 
 msgid "Calendars"
 msgstr "לוחות שנה"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "בחר הזדמנות התנדבות"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "בחר שדה אדם"
 
 #: 
 msgid "Church Identity"
@@ -10443,11 +10325,6 @@ msgstr "ChurchCRM יכול לשלוח דוא\"ל ישירות."
 msgid "Communication"
 msgstr "תקשורת"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "השווה התחייבויות בין שתי שנים פיסקליות"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "הגדר SMTP בהגדרות להלן כדי לשלוח דוא\"ל מהמערכת."
@@ -10461,17 +10338,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "חבר את Mailchimp כדי לסנכרן רשימות דוא\"ל לניוזלטרים קמפיינים."
 
 #: 
-msgid "Copy from church address"
-msgstr "העתק מכתובת הכנסייה"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "העתק ללוח הגזירים"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "שדה מותאם אישית"
 
 #: 
 msgid "Default Country"
@@ -10525,16 +10393,6 @@ msgstr "נכשל בשחזור כתובות דוא\"ל"
 msgid "Failed to retrieve phone numbers"
 msgstr "נכשל בשחזור מספרי טלפון"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "ערך שדה"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "מצא אנשים שהתחייבו בשנה אחת אך לא בשנייה"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10542,33 +10400,8 @@ msgstr "מצא מתנדבים להזדמנות מסוימת"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "מצא מתנדבים החופפים לשני קודי הזדמנות ספציפיים"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "השנה הכספית הראשונה"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "השנה הכספית הראשונה להשוואה"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "בחירת הזדמנות התנדבות ראשונה"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "חברים שנרשמו בחודשים הקודמים"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "אורח"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10592,31 +10425,6 @@ msgstr "ניהול אירועים, ימי הולדת ויום שנה"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "תאם שדה מותאם לערך זה"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "חבר, משתתף קבוע וכו'"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "חברים שהצטרפו בחודש מסוים"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "יום שנה של חברות"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "התחייבויות חסרות"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "חודש"
 
@@ -10636,16 +10444,6 @@ msgstr "הודעות דוא\"ל על חברים חדשים"
 #: 
 msgid "No cell phone on file"
 msgstr "אין טלפון סלולרי בקובץ"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "אדם שאינו משתתף"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "לא משתתף (צוות)"
 
 #: 
 msgid "Not Classified"
@@ -10682,30 +10480,10 @@ msgstr "רכוש אדם המשמש להוצאת חברים מרשימות SMS / 
 msgid "Person property used to exclude members from email lists"
 msgstr "רכוש אדם המשמש להוצאת חברים מרשימות דוא\"ל"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "השוואת התחייבות"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "התחייב השנה"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "רכוש"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "חברים אחרונים"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "משתתף קבוע"
 
 #. Context: query_qry
 #: 
@@ -10727,21 +10505,6 @@ msgstr "SMTP מוגדר"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP לא מוגדר"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "השנה הכספית השנייה"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "השנה הכספית השנייה להשוואה"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "בחירת הזדמנות התנדבות שנייה"
 
 #: 
 msgid "Send text message"
@@ -10775,25 +10538,6 @@ msgstr "כלי טקסט"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "פעולות ההודעות הטקסטואליות זמינות מתצוגות קבוצה וכיתה בבית הספר ביום ראשון. השתמש בתפריט הנפתח \"טקסט\" להעתקת מספרי טלפון או שליחת הודעות SMS לחברי הקבוצה."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "חודש ההולדת שעבורו תרצה להחזיר רשומות."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "חודש ההתחברות שעבורו תרצה להחזיר רשומות."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "הרכוש שעבורו תרצה להחזיר רשומות אדם."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "ערכים אלה מלאים מראש בעת יצירת משפחות חדשות. השאר ריק כדי לדרוש ערך ידני."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "יחידה המשמשת למדידת מרחק."
@@ -10802,11 +10546,6 @@ msgstr "יחידה המשמשת למדידת מרחק."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "הרשאת משתמש לשליחת דוא\"ל דרך קישורי mailto:"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "הזדמנויות התנדבות"
 
 #. Context: query_qry
 #: 
@@ -10824,11 +10563,6 @@ msgstr "Vonage SMS לא מוגדר"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "ללא Vonage, פעולות טקסט יפתחו את אפליקציית ה- SMS המקורית של ההתקן שלך או יעתיקו מספרי טלפון ללוח."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "אך לא השנה"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10939,10 +10673,6 @@ msgstr "אפשר גישה לא מאומתת לאירועי לוח שנה באמ�
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "אפשר למבקרים ליצור רשומת משפחה משלהם דרך דף ההרשמה העצמי"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "אפשר למבקרים להירשם בעצמם כמשפחות חדשות."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -11026,10 +10756,6 @@ msgstr "בחר מה מוצג כאשר לא קיים Gravatar:\n"
 "• Retro - פיקסל ארט בסגנון arcade 8-bit\n"
 "• RoboHash - רובוט ייחודי שנוצר אוטומטית\n"
 "• Blank - שקוף (חוזר לאותיות ראשוניות)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "מזהי שאילתות מופרדים בפסיקים הדורשים הרשאות כספים לצפייה"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11142,10 +10868,6 @@ msgstr "אפשר שימוש בצ'קים סרוקים"
 msgid "Features"
 msgstr "תכונות"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "מזהי שאילתת הרשאת כספים"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11219,10 +10941,6 @@ msgstr "Gravatar פועל על ידי המרת כתובות דוא\"ל לגיב�
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "הסתר קו רוחב/קו אורך"
-
-#: 
-msgid "Hide Person Address"
-msgstr "הסתר כתובת אדם"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -14292,11 +14010,6 @@ msgstr "שם המשפחה חייב להכיל לפחות 2 תווים"
 msgid "Fields"
 msgstr "שדות"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "מצא אנשים שלא השתתפו באירוע"
-
 #: 
 msgid "First name is required"
 msgstr "שם פרטי הוא שדה חובה"
@@ -14476,11 +14189,6 @@ msgstr "חברים נוספו לרשימה."
 #: 
 msgid "Minimum length is"
 msgstr "האורך המינימלי הוא"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "אנשים חסרים"
 
 #: 
 msgid "Move"
@@ -14849,11 +14557,6 @@ msgstr "בחר לוחות שנה..."
 #: 
 msgid "Select event type..."
 msgstr "בחר סוג אירוע..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "בחר את האירוע הרצוי"
 
 #: 
 msgid "Sequence"
@@ -16316,10 +16019,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s ממשפחת %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d רשומות הוחזרו"
-
-#: 
 msgid "Assign role to all"
 msgstr "הקצא תפקיד לכולם"
 
@@ -16490,22 +16189,6 @@ msgstr "תצורת מערכת"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "יש אנשים שהוקצו להזדמנות ההתנדבות זו. המחיקה תבטל את הקצאתם"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "ערך זה לא יכול להיות פחות מ-%d תווים"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "ערך זה לא יכול להיות יותר מ-%d תווים"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "ערך זה לא יכול להיות יותר מ-%s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "ערך זה חייב להיות לפחות %s"
 
 #: 
 msgid "Total Deposits"
@@ -16788,24 +16471,12 @@ msgid "Family Delete Confirmation"
 msgstr "אישור מחיקת משפחה"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "יחידים (ללא משפחה)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "רישומים עצמאיים חדשים"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "אישור מחיקת סוג נכס"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "סקור משפחות ויחידים חדשים שנרשמו בטופס הרשומה הציבורי שלך"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "סקור רישומים חדשים מהטופס הציבורי השלך להלן. רשומות ללא דואר אלקטרוני או טלפון מסומנות — אמת פרטי קשר לפני המעקב."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17517,16 +17188,6 @@ msgstr "הצעת מחיר מינימלית %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "אנשים עם ימי הולדת או יובלי נישואין בחודש מסוים"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "החודש שעבורו תרצה לקבל ימי הולדת ויובלים."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "חודש יובל הנישואין שעבורו תרצה לקבל רשומות."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "סך כל הרכישות: %s"
@@ -17746,10 +17407,6 @@ msgid "Selected family"
 msgstr "משפחה שנבחרה"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "ערך זה חייב להיות שם שדה חוקי."
-
-#: 
 msgid "Could not load data"
 msgstr "לא ניתן לטעון נתונים"
 
@@ -17758,16 +17415,8 @@ msgid "Please refresh the page or try again later."
 msgstr "אנא רענן את הדף או נסה שוב מאוחר יותר."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "הוסף תחילה את הרשומות הרלוונטיות."
-
-#: 
 msgid "All Months"
 msgstr "כל החודשים"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "טרם הוגדרו אפשרויות \"%s\"."
 
 #: 
 msgid "No events found for %s %d."
@@ -18010,10 +17659,6 @@ msgstr "שגיאה בטעינת הרשומות שנרשמו עצמאית"
 #: 
 msgid "Errors"
 msgstr "שגיאות"
-
-#: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "החרג חברים נפטרים מהמדריך המודפס ומייצוא ה-CSV."
 
 #: 
 msgid "Failed Files"
@@ -18332,10 +17977,6 @@ msgid "This Person is Inactive"
 msgstr "אדם זה אינו פעיל"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "פעולה זו מאתרת קואורדינטות מפה עבור כל משפחה שחסרות לה, באמצעות OpenStreetMap. התהליך מעבד את המשפחות באצוות של 50, כדקה לאצווה. ניתן להשאיר דף זה פתוח בזמן הריצה. להמשיך?"
-
-#: 
 msgid "This person is deceased"
 msgstr "אדם זה נפטר"
 
@@ -18544,14 +18185,6 @@ msgid "As an admin, please also review the"
 msgstr "כמנהל, אנא בדוק גם את"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "שלח באופן אוטומטי דוא\"ל ברכת יום הולדת לאנשים ביום הולדתם."
-
-#: 
-msgid "Birthday Emails"
-msgstr "דוא\"ל יום הולדת"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "ימי הולדת, יום שנה, מתנדבים וכן רשימות אנשים אחרות עם מסנן סיווג"
 
@@ -18708,10 +18341,6 @@ msgid "Print %d Tax Doc"
 msgstr "הדפס %d מסמך מס"
 
 #: 
-msgid "Queries"
-msgstr "שאילתות"
-
-#: 
 msgid "Recent Friends"
 msgstr "חברים עדכניים"
 
@@ -18794,4 +18423,388 @@ msgstr "לשגיאות סביב הזמן שזה קרה, ולהורדה ולהצ�
 #: 
 msgid "system logs"
 msgstr "רישומי מערכת"
+
+#: 
+msgid "Access Control & Security"
+msgstr "בקרת גישה וביטחון"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "אפשר רישום תשלומים שלא ניתן להפחית מיסים (למשל, מכירת סחורה)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "אפשר גישה ללא הצדקה לאירועים ציבוריים (לשיבוץ לוחות שנה)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "שלח אימיילים ליום הולדת באופן אוטומטי (דורש מתזמן עבודה ברקע)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "אימיילים של ברכות ליום הולדת"
+
+#: 
+msgid "Communication & Email"
+msgstr "תקשורת ודואר אלקטרוני"
+
+#: 
+msgid "Content Security Policy"
+msgstr "מדיניות אבטחת תוכן"
+
+#: 
+msgid "Email System"
+msgstr "מערכת דואר אלקטרוני"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "הפוך לזמין או כבה תכונות לארגון שלך"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "הפוך לזמין/כבה את קטע האירועים בניווט הראשי"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "הפוך לזמין/כבה את תפריט הFinance וכל תכונות הממון (הפקדות, תשלומים, דוחות)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "הפוך לזמין/כבה את תפריט Fundraiser"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "אכוף כותרות CSP קפדניות להגנה מפני התקפות XSS"
+
+#: 
+msgid "Events Module"
+msgstr "מודול אירועים"
+
+#: 
+msgid "Feature Toggles"
+msgstr "החלפות תכונות"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "החלפות תכונות שולטות באילו מודולים ותכונות זמינים ב-ChurchCRM. שינויים נכנסים לתוקף מיד."
+
+#: 
+msgid "Finance Features"
+msgstr "תכונות במימון"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "כלול כתובות בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "כלול אירועי לוח שנה בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "כלול תכונות משפחה מותאמות בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "כלול הפקדות בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "כלול משפחות בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "כלול קבוצות בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "כלול תשלומים בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "כלול אנשים בחיפוש גלובלי מהיר"
+
+#: 
+msgid "Invalid setting"
+msgstr "הגדרה לא חוקית"
+
+#: 
+msgid "Lost Password Link"
+msgstr "קישור סיסמה שנשכחה"
+
+#: 
+msgid "Manage All Features"
+msgstr "נהל את כל התכונות"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "החלפה ראשית לשליחת דואר אלקטרוני. נדרש לאיפוס סיסמה והודעות"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "תשלומים שלא ניתן להפחית"
+
+#: 
+msgid "Primary Modules"
+msgstr "מודולים ראשוניים"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Calendar API ציבורי"
+
+#: 
+msgid "Saved"
+msgstr "נשמר"
+
+#: 
+msgid "Search Families"
+msgstr "משפחות חיפוש"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "חיפוש בתכונות משפחה מותאמות"
+
+#: 
+msgid "Search Settings"
+msgstr "הגדרות חיפוש"
+
+#: 
+msgid "Self-Registration"
+msgstr "הרשמה עצמית"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "הצג אפשרות \"סיסמה שנשכחה\" על מסך הכניסה (מאפשר איפוס עצמי של המשתמש)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "הצג/הסתר את מודול בית ספר ראשון ביום ראשון בסרגל הצד"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "לא ניתן להשביח את המנהל היחיד שיכול להיכנס"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "לא ניתן לסמן את המנהל היחיד שיכול להיכנס כמת"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "מת — לא יכול להיכנס"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "הזן כתובת שנייה לפני סימונה ככתובת דואר"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "לא פעיל — לא יכול להיכנס"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "דואר הולך לכתובת השנייה; הכתובת הראשונה נשארת במיקום הפיזי המשמש למפות והוראות."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "דואר נשלח לכתובת זו במקום לכתובת הראשונה"
+
+#: 
+msgid "Mailing Address"
+msgstr "כתובת דואר"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "כתובת דואר אם שונה"
+
+#: 
+msgid "Primary Address"
+msgstr "כתובת ראשונית"
+
+#: 
+msgid "Receives Mail"
+msgstr "מקבל דואר"
+
+#: 
+msgid "Second Address"
+msgstr "כתובת שנייה"
+
+#: 
+msgid "Second Home"
+msgstr "בית שני"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "האדם המקושר מת או לא פעיל. כניסה, הפעלות ומפתח API חסומים עד שהאדם מופעל שוב."
+
+#: 
+msgid "This is the mailing address"
+msgstr "זו כתובת הדואר"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "האדם הזה מת או לא פעיל, כך שחשבון זה לא יכול להיכנס"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "רק מנהל יכול למחוק אדם שיש לו כניסה."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "לא ניתן למחוק את המנהל האחרון."
+
+#: 
+msgid "Category"
+msgstr "קטגוריה"
+
+#: 
+msgid "Category updated."
+msgstr "הקטגוריה עודכנה."
+
+#: 
+msgid "Delete Category"
+msgstr "מחק קטגוריה"
+
+#: 
+msgid "Failed to delete category"
+msgstr "נכשל מחיקת הקטגוריה"
+
+#: 
+msgid "Failed to rename category"
+msgstr "נכשלה שינוי שם הקטגוריה"
+
+#: 
+msgid "Fund Categories"
+msgstr "קטגוריות קרנות"
+
+#: 
+msgid "Fund activated."
+msgstr "הקרן הופעלה."
+
+#: 
+msgid "Fund deactivated."
+msgstr "הקרן הושבתה."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "הקרנות בקטגוריה זו יהיו ללא קטגוריה. הקרנות עצמן לא נמחקות."
+
+#: 
+msgid "INACTIVE"
+msgstr "לא פעיל"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "שם קטגוריה חדש (שם קיים משלב את השניים)"
+
+#: 
+msgid "Optional"
+msgstr "אופציונלי"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "אופציונלי — בחר או הקלד קטגוריה חדשה"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "שולם מעבר להתחייבות"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "התחייב אך עדיין לא שולם"
+
+#: 
+msgid "Rename Category"
+msgstr "שנה שם קטגוריה"
+
+#: 
+msgid "Still Owed"
+msgstr "עדיין חייב"
+
+#: 
+msgid "Summary by Category"
+msgstr "סיכום לפי קטגוריה"
+
+#: 
+msgid "Total Paid"
+msgstr "סה\"כ שולם"
+
+#: 
+msgid "Uncategorized"
+msgstr "ללא קטגוריה"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "לא ניתן לטעון את ההגדרות הנוכחיות. רענן את הדף כדי לנסות שוב."
+
+#: 
+msgid "This setting must be a number"
+msgstr "הגדרה זו חייבת להיות מספר"
+
+#: 
+msgid "Child Role"
+msgstr "תפקיד ילד"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "ניתן להחליף את ההכללה בספרייה רק עבור רשימת הסיווגים"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "הודעת קבלת פנים 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "הודעת קבלת פנים 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "תפקיד ראש משק הבית"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "הסתר כתובות ללא משפחה"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "הסתר תאריך חברות"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "הסתר מנויים לניוזלטר"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "הסתר תאריך חתונה"
+
+#: 
+msgid "In Directory"
+msgstr "בספרייה"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "כלול פרטים בהתראות"
+
+#: 
+msgid "Notification Recipients"
+msgstr "נמעני התראות"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "אנשים שיקבלו הודעה כאשר נוספת משפחה או אדם חדשים"
+
+#: 
+msgid "Person initials style"
+msgstr "סגנון ראשי התיבות של האדם"
+
+#: 
+msgid "Person name display style"
+msgstr "סגנון הצגת שם האדם"
+
+#: 
+msgid "Spouse Role"
+msgstr "תפקיד בן/בת זוג"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "מיקודים באותיות רישיות"
 

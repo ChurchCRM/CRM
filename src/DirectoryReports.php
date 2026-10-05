@@ -6,12 +6,13 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Directory reports');
 $sPageSubtitle = gettext('Generate directory listings and printed materials');
 $aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Data & Reports'), '/QueryList.php'],
+    [gettext('People Reports'), '/people/reports'],
     [gettext('Directory Reports')],
 ]);
 require_once __DIR__ . '/Include/Header.php';
@@ -39,7 +40,7 @@ $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom
 $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
 
-$aDefaultClasses = explode(',', SystemConfig::getValue('sDirClassifications'));
+$aDefaultClasses = (new ClassificationService())->getDirectoryIds();
 $aDirRoleHead = explode(',', SystemConfig::getValue('sDirRoleHead'));
 $aDirRoleSpouse = explode(',', SystemConfig::getValue('sDirRoleSpouse'));
 $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
@@ -65,7 +66,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
       <div class="mb-3">
         <label class="form-label"><?= gettext('Select classifications to include') ?></label>
         <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
-        <select class="form-select" name="sDirClassifications[]" size="5" multiple>
+        <select class="form-select" name="sDirClassifications[]" size="5" multiple required>
           <option value="0"><?= gettext('Unassigned') ?></option>
           <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
               extract($aRow);

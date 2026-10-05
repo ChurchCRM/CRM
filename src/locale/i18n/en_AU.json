@@ -28,7 +28,6 @@
   "Make user-entered zip/postcodes UPPERCASE when saving to the database.": "Make user-entered postcodes UPPERCASE when saving to the database.",
   "Customizable report with filtering by date, fund, family, and payment method.": "Customisable report with filtering by date, fund, family, and payment method.",
   "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc).": "Customise the text that appears on tax statements (sTaxReport1, sTaxReport2, etc).",
-  "Reports related to member voting eligibility and organization governance.": "Reports related to member voting eligibility and organisation governance.",
   "Require all users to enroll in two-factor authentication": "Require all users to enrol in two-factor authentication",
   "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy.": "Google Analytics collects anonymised usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy.",
   "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM.": "Gravatar (Globally Recognised Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM.",

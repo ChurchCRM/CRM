@@ -38,7 +38,7 @@ describe("CSS Regression — No Auth Style Leakage", () => {
         });
 
         it("Should load the financial reports page", () => {
-            cy.contains("Financial Reports").should("be.visible");
+            cy.get(".page-title").contains("Financial Reports").should("be.visible");
         });
 
         it("Submit button should not have auth-page gradient", () => {

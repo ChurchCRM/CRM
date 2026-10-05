@@ -10,10 +10,10 @@
  * When adding a new shared CSS dependency, add it to skin-core-css.js.
  */
 
-// Import jQuery and expose it globally for legacy code compatibility
-import $ from "jquery";
-
-window.jQuery = window.$ = $;
+// jQuery, moment, Inputmask, date pickers, DataTables, bootbox, i18next, JustValidate.
+import "./vendor-globals";
+import "../src/skin/js/Footer.js";
+import "./locale-loader";
 
 // Import ApexCharts - Tabler-recommended charting library (replacing Chart.js)
 import ApexCharts from "apexcharts";
@@ -48,6 +48,7 @@ import "../src/skin/js/form-utils.js";
 
 // Shared AJAX person-search TomSelect (#9819)
 import { initAllPersonSelects, initPersonSelect } from "./common/person-select";
+import { installPageConfig } from "./crm-bootstrap";
 
 // Import issue reporter (GitHub issue modal)
 import "../src/skin/js/IssueReporter.js";
@@ -61,6 +62,7 @@ if (typeof window !== "undefined") {
 
   // Make photo utilities available globally
   window.CRM = window.CRM || {};
+  installPageConfig();
   window.CRM.showPhotoLightbox = showPhotoLightbox;
   window.CRM.deletePhoto = deletePhoto;
 
@@ -168,7 +170,8 @@ if (typeof window !== "undefined") {
 
         // Dropdown parent (for modals like bootbox)
         if (opts.dropdownParent) {
-          tsOpts.dropdownParent = opts.dropdownParent instanceof $ ? opts.dropdownParent[0] : opts.dropdownParent;
+          tsOpts.dropdownParent =
+            opts.dropdownParent instanceof window.$ ? opts.dropdownParent[0] : opts.dropdownParent;
         }
 
         // Merge any extra TomSelect-native options

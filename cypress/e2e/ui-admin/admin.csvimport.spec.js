@@ -15,23 +15,9 @@ describe(
         // because it only restores the client cookie, not the server-side PHP
         // session. Bypass cy.session() entirely with a direct form login:
         // clearCookies → POST /session/begin → verify we landed past login.
-        const freshAdminLogin = () => {
-            const username = Cypress.env("admin.username");
-            const password = Cypress.env("admin.password");
-            cy.clearCookies();
-            // Match setupLoginSession's canonical path: /login resolves to the
-            // session/begin form but goes through the front-controller, which
-            // is the path the app's session cookie gets minted on.
-            cy.visit("/login");
-            cy.get("input[name=User]", { timeout: 10000 })
-                .should("be.visible")
-                .type(username);
-            cy.get("input[name=Password]").type(`${password}{enter}`);
-            cy.url().should("not.include", "/session/begin");
-        };
 
         beforeEach(() => {
-            freshAdminLogin();
+            cy.freshAdminFormLogin({ path: "/login", visible: true, timeout: 10000 });
         });
 
         // The importer creates real people and families, and nothing used to

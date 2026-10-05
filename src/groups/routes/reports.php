@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -20,11 +21,11 @@ $app->get('/reports', function (Request $request, Response $response) {
         'sPageTitle'   => gettext('Group Reports'),
         'sPageSubtitle' => gettext('Generate reports on group membership and activities'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
-            [gettext('Groups'), '/groups/dashboard'],
-            [gettext('Reports')],
+            [gettext('Group Reports')],
         ]),
         'groups' => $groups,
         'step'   => 1,
+        'sundaySchoolEnabled' => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
     ];
 
     return $renderer->render($response, 'reports.php', $pageArgs);
@@ -58,8 +59,7 @@ $app->post('/reports', function (Request $request, Response $response) {
         'sPageTitle'   => gettext('Group Reports'),
         'sPageSubtitle' => gettext('Generate reports on group membership and activities'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
-            [gettext('Groups'), '/groups/dashboard'],
-            [gettext('Reports'), '/groups/reports'],
+            [gettext('Group Reports'), '/groups/reports'],
             [gettext('Select Fields')],
         ]),
         'step'        => 2,

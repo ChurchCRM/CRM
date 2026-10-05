@@ -64,6 +64,8 @@ test('mark-member-deceased', async ({ page }, testInfo) => {
 
   await captureScreen(page, testInfo, {
     name: 'mark-member-deceased',
+    title: 'Mark a Member Deceased',
+    category: 'Recordings',
     purpose: 'Show recording a deceased date in the Person Editor, ending on the profile with the Deceased badge',
   });
 });

@@ -34,7 +34,7 @@ describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () =>
         it("should display individual fund totals in CSV output (not grouped under Undesignated)", () => {
             // Navigate to Financial Reports
             cy.visit("/FinancialReports.php");
-            cy.contains("Financial Reports").should("be.visible");
+            cy.get(".page-title").contains("Financial Reports").should("be.visible");
 
             // Select Advanced Deposit Report
             cy.get("#FinancialReportTypes").select("Advanced Deposit Report");

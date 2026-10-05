@@ -1653,30 +1653,6 @@ msgid "Properties"
 msgstr "गुण"
 
 #: 
-msgid "Query Listing"
-msgstr "क्वेरी सूची"
-
-#: 
-msgid "Query View"
-msgstr "क्वेरी दृश्य"
-
-#: 
-msgid "This value is required."
-msgstr "यह मान आवश्यक है।"
-
-#: 
-msgid "This value must be numeric."
-msgstr "यह मान संख्यात्मक होना चाहिए।"
-
-#: 
-msgid "Run Query Again"
-msgstr "क्वेरी फिर से चलाएँ"
-
-#: 
-msgid "Execute Query"
-msgstr "क्वेरी निष्पादित करें"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "प्रतिज्ञा अनुस्मारक रिपोर्ट"
 
@@ -2596,10 +2572,6 @@ msgstr "खरीदार देखें"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "खरीदार सूची में दाताओं को जोड़ें"
-
-#: 
-msgid "Data/Reports"
-msgstr "डेटा/रिपोर्ट"
 
 #: 
 msgid "Family Properties"
@@ -4474,10 +4446,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "डेट-पिकर में तिथि परिभाषित करने के लिए, डिफ़ॉल्ट रूप से: Y-m-d।"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "नया परिवार या व्यक्ति जोड़े जाने पर सूचित किए जाने वाले व्यक्तियों की PersonIDs की सूची"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "बाहरी कैलेंडर API से कार्यक्रमों को बिना प्रमाणीकरण के पढ़ने की अनुमति दें"
 
@@ -5037,14 +5005,6 @@ msgstr[1] "%d वर्ष पुराना"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "PHP ZipArchive अनुपलब्ध है"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "परिणामों को कार्ट में जोड़ें"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "परिणामों को कार्ट से हटाएं"
 
 #: 
 msgid "Database Reset Functions"
@@ -6318,10 +6278,6 @@ msgid "Cart"
 msgstr "कार्ट"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "इसे सिस्टम सेटिंग्स में बदलें।"
-
-#: 
 msgid "Church Membership"
 msgstr "चर्च की सदस्यता"
 
@@ -6372,10 +6328,6 @@ msgstr "शुरू करने के लिए जमा बनाएं य
 #: 
 msgid "Current Deposit"
 msgstr "वर्तमान जमा"
-
-#: 
-msgid "Current fiscal year"
-msgstr "वर्तमान वित्तीय वर्ष"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6438,10 +6390,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "विवरण जनरेट करने से पहले सुनिश्चित करें कि कर वर्ष के लिए सभी जमा बंद हैं।"
 
 #: 
-msgid "Export Options"
-msgstr "निर्यात विकल्प"
-
-#: 
 msgid "F"
 msgstr "F"
 
@@ -6456,10 +6404,6 @@ msgstr "परिवार नेविगेशन"
 #: 
 msgid "Feb"
 msgstr "फरवरी"
-
-#: 
-msgid "Filtering"
-msgstr "फ़िल्टरिंग"
 
 #: 
 msgid "Finance"
@@ -6482,16 +6426,8 @@ msgid "Generate Tax Statements"
 msgstr "कर विवरण जनरेट करें"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "दाताओं के लिए वार्षिक दान विवरण जनरेट करें और दान पैटर्न पहचानें।"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "दाताओं के लिए वार्षिक कर-कटौती योग्य दान विवरण जनरेट करें। प्रिंट या ईमेल किया जा सकता है।"
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "व्यक्तिगत जमा या तिथि श्रेणियों के लिए विस्तृत रिपोर्ट जनरेट करें।"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6552,10 +6488,6 @@ msgstr "मार्च"
 #: 
 msgid "Membership Reports"
 msgstr "सदस्यता रिपोर्ट"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "अधिकांश रिपोर्ट प्रिंटिंग के लिए PDF या स्प्रेडशीट विश्लेषण के लिए CSV के रूप में निर्यात की जा सकती हैं।"
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6634,14 +6566,6 @@ msgid "Recording a Pledge"
 msgstr "प्रतिज्ञा रिकॉर्ड करना"
 
 #: 
-msgid "Report Tips"
-msgstr "रिपोर्ट सुझाव"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "सदस्य मतदान योग्यता और संगठन शासन से संबंधित रिपोर्ट।"
-
-#: 
 msgid "Reset"
 msgstr "रीसेट"
 
@@ -6718,20 +6642,12 @@ msgid "Total Amount"
 msgstr "कुल राशि"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "अभियानों और वित्तीय वर्ष बजट के लिए प्रतिज्ञाओं और भुगतान प्रगति को ट्रैक करें।"
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "अपूर्ण पूर्वापेक्षाएं"
 
 #: 
 msgid "Upgrade"
 msgstr "अपग्रेड"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "दाताओं के विशिष्ट समूहों के लिए रिपोर्ट जनरेट करने के लिए वर्गीकरण और परिवार फ़िल्टर का उपयोग करें।"
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6756,10 +6672,6 @@ msgstr "YTD प्रतिज्ञाएं"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "आप अभी परिवार के सदस्य बना सकते हैं या बाद में जोड़ सकते हैं। सभी प्रविष्टियाँ नए व्यक्ति रिकॉर्ड बन जाएंगी।"
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "आपका वित्तीय वर्ष महीने में शुरू होता है"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7316,10 +7228,6 @@ msgstr "यह उपस्थिति गणना हटाएं?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "इस संपत्ति पर लागू होने वाले रिकॉर्ड का प्रकार चुनें"
-
-#: 
-msgid "Total Pledges"
-msgstr "कुल प्रतिज्ञाएं"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -8993,10 +8901,6 @@ msgid "Current person"
 msgstr "वर्तमान व्यक्ति"
 
 #: 
-msgid "Data & Reports"
-msgstr "डेटा और रिपोर्ट"
-
-#: 
 msgid "Database Reset"
 msgstr "डेटाबेस रीसेट"
 
@@ -10015,10 +9919,6 @@ msgid "View and manage system log files for debugging"
 msgstr "डिबगिंग के लिए सिस्टम लॉग फ़ाइलें देखें और प्रबंधित करें"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "सहेजी गई डेटाबेस क्वेरीज़ देखें और चलाएँ"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "क्रेता संख्याएँ और पैडल निर्धारण देखें"
 
@@ -10037,10 +9937,6 @@ msgstr "पारिवारिक प्रतिज्ञा सारां�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "समूह सदस्य, भूमिकाएँ और विशेषताएँ देखें"
-
-#: 
-msgid "View query results"
-msgstr "क्वेरी परिणाम देखें"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10362,10 +10258,6 @@ msgstr "अपडेट उपलब्ध"
 msgid "User must have Notes permission"
 msgstr "उपयोगकर्ता के पास नोट्स अनुमति होनी चाहिए"
 
-#: 
-msgid "Address Defaults"
-msgstr "पता डिफ़ॉल्ट"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10378,16 +10270,6 @@ msgstr "कैलेंडर सेटिंग्स"
 #: 
 msgid "Calendars"
 msgstr "कैलेंडर"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "एक स्वयंसेवक अवसर चुनें"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "व्यक्ति फ़ील्ड चुनें"
 
 #: 
 msgid "Church Identity"
@@ -10409,11 +10291,6 @@ msgstr "ChurchCRM सीधे ईमेल भेज सकता है।"
 msgid "Communication"
 msgstr "संचार"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "दो वित्तीय वर्षों के बीच प्रतिश्रुतियों की तुलना करें"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "सिस्टम से ईमेल भेजने के लिए नीचे दी गई सेटिंग्स में SMTP कॉन्फ़िगर करें।"
@@ -10427,17 +10304,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "न्यूजलेटर और अभियानों के लिए ईमेल सूचियों को सिंक करने के लिए Mailchimp से कनेक्ट करें।"
 
 #: 
-msgid "Copy from church address"
-msgstr "चर्च के पते से कॉपी करें"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "क्लिपबोर्ड में कॉपी करें"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "कस्टम फ़ील्ड"
 
 #: 
 msgid "Default Country"
@@ -10491,16 +10359,6 @@ msgstr "ईमेल पते प्राप्त करने में व�
 msgid "Failed to retrieve phone numbers"
 msgstr "फ़ोन नंबर प्राप्त करने में विफल"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "फ़ील्ड मान"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "उन लोगों को खोजें जिन्होंने एक साल प्रतिज्ञा की लेकिन दूसरे साल नहीं"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10508,33 +10366,8 @@ msgstr "किसी विशेष अवसर के लिए स्वय�
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "उन स्वयंसेवकों को खोजें जो दो विशिष्ट अवसर कोड से मेल खाते हैं"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "पहला वित्तीय वर्ष"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "तुलना के लिए पहला वित्तीय वर्ष"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "पहली स्वयंसेवक अवसर पसंद"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "जो दोस्त पिछले महीनों में साइन अप करे थे"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "अतिथि"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10558,31 +10391,6 @@ msgstr "कार्यक्रमों, जन्मदिनों और �
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "कस्टम फील्ड को इस मान से मेल करें"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "सदस्य, नियमित उपस्थिति आदि"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "जो सदस्य किसी विशेष महीने में शामिल हुए"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "सदस्यता वर्षगांठि"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "लापता प्रतिज्ञाएँ"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "महीना"
 
@@ -10602,16 +10410,6 @@ msgstr "नए सदस्य सूचना ईमेल"
 #: 
 msgid "No cell phone on file"
 msgstr "फाइल में कोई सेल फोन नहीं"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "गैर-उपस्थिति"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "गैर-उपस्थिति (कर्मचारी)"
 
 #: 
 msgid "Not Classified"
@@ -10648,30 +10446,10 @@ msgstr "एसएमएस/टेक्स्ट सूचियों से �
 msgid "Person property used to exclude members from email lists"
 msgstr "ईमेल सूचियों से सदस्यों को बाहर करने के लिए व्यक्ति संपत्ति"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "प्रतिज्ञा तुलना"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "इस साल प्रतिज्ञा"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "संपत्ति"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "हाल के दोस्त"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "नियमित उपस्थिति"
 
 #. Context: query_qry
 #: 
@@ -10693,21 +10471,6 @@ msgstr "SMTP कॉन्फ़िगर"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP कॉन्फ़िगर नहीं है"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "दूसरा वित्तीय वर्ष"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "तुलना के लिए दूसरा वित्तीय वर्ष"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "दूसरी स्वयंसेवक अवसर पसंद"
 
 #: 
 msgid "Send text message"
@@ -10741,25 +10504,6 @@ msgstr "पाठ उपकरण"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "टेक्स्ट मैसेजिंग क्रियाएं समूह और रविवार स्कूल कक्षा दृश्यों से उपलब्ध हैं। फोन नंबर कॉपी करने या समूह के सदस्यों को एसएमएस संदेश भेजने के लिए \"टेक्स्ट\" ड्रॉपडाउन का उपयोग करें।"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "जन्मदिन का महीना जिसके लिए आप रिकॉर्ड लौटाना चाहते हैं।"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "सदस्यता वर्षगांठि का महीना जिसके लिए आप रिकॉर्ड लौटाना चाहते हैं।"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "संपत्ति जिसके लिए आप व्यक्ति रिकॉर्ड लौटाना चाहते हैं।"
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "नए परिवार बनाते समय ये मान पूर्व-भरे होते हैं। मैनुअल प्रविष्टि की आवश्यकता के लिए खाली छोड़ दें।"
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "दूरी मापने के लिए उपयोग की जाने वाली इकाई।"
@@ -10768,11 +10512,6 @@ msgstr "दूरी मापने के लिए उपयोग की ज
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "mailto: लिंक के माध्यम से ईमेल भेजने के लिए उपयोगकर्ता की अनुमति"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "स्वयंसेवक अवसर"
 
 #. Context: query_qry
 #: 
@@ -10790,11 +10529,6 @@ msgstr "Vonage SMS कॉन्फ़िगर नहीं है"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage के बिना, टेक्स्ट क्रियाएं आपके डिवाइस के मूल एसएमएस ऐप को खोलेंगी या फोन नंबर को क्लिपबोर्ड पर कॉपी करेंगी।"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "लेकिन इस साल नहीं"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10905,10 +10639,6 @@ msgstr "सार्वजनिक HTML, ICS और JSON URL के माध�
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "आगंतुकों को स्व-पंजीकरण पृष्ठ के माध्यम से अपना परिवार रिकॉर्ड बनाने की अनुमति दें"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "आगंतुकों को नए परिवार के रूप में स्व-पंजीकरण करने की अनुमति दें।"
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -10992,10 +10722,6 @@ msgstr "जब Gravatar मौजूद न हो तो क्या दिख
 "• रेट्रो - 8-bit आर्केड-शैली पिक्सेल कला\n"
 "• RoboHash - अद्वितीय जनरेट किया गया रोबोट\n"
 "• खाली - पारदर्शी (प्रारंभिक अक्षरों पर वापस)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "वित्त अनुमतियों की आवश्यकता वाली क्वेरी ID (अल्पविराम से अलग)"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11108,10 +10834,6 @@ msgstr "स्कैन किए गए चेक का उपयोग सक
 msgid "Features"
 msgstr "सुविधाएँ"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "वित्त अनुमति क्वेरी ID"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11185,10 +10907,6 @@ msgstr "Gravatar ईमेल पतों को हैश (MD5) में प�
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "अक्षांश/देशांतर छुपाएं"
-
-#: 
-msgid "Hide Person Address"
-msgstr "व्यक्ति का पता छुपाएं"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -14258,11 +13976,6 @@ msgstr "परिवार का नाम कम से कम 2 अक्ष�
 msgid "Fields"
 msgstr "फ़ील्ड"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "वे लोग खोजें जो किसी कार्यक्रम में उपस्थित नहीं थे"
-
 #: 
 msgid "First name is required"
 msgstr "प्रथम नाम आवश्यक है"
@@ -14442,11 +14155,6 @@ msgstr "सदस्य सूची में जोड़े गए।"
 #: 
 msgid "Minimum length is"
 msgstr "न्यूनतम लंबाई है"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "अनुपस्थित सदस्य"
 
 #: 
 msgid "Move"
@@ -14815,11 +14523,6 @@ msgstr "कैलेंडर चुनें..."
 #: 
 msgid "Select event type..."
 msgstr "कार्यक्रम प्रकार चुनें..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "इच्छित कार्यक्रम चुनें"
 
 #: 
 msgid "Sequence"
@@ -16282,10 +15985,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s परिवार के %1$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d रिकॉर्ड वापस मिले"
-
-#: 
 msgid "Assign role to all"
 msgstr "सभी को भूमिका सौंपें"
 
@@ -16456,22 +16155,6 @@ msgstr "सिस्टम कॉन्फ़िगरेशन"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "इस स्वयंसेवी अवसर पर लोग नियुक्त हैं। हटाने पर उनकी नियुक्ति रद्द हो जाएगी"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "यह मान %d अक्षरों से कम नहीं हो सकता"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "यह मान %d अक्षरों से अधिक नहीं हो सकता"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "यह मान %s से अधिक नहीं हो सकता"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "यह मान कम से कम %s होना चाहिए"
 
 #: 
 msgid "Total Deposits"
@@ -16754,24 +16437,12 @@ msgid "Family Delete Confirmation"
 msgstr "परिवार हटाने की पुष्टि"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "व्यक्तिगत (कोई परिवार नहीं)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "नए स्व-पंजीकरण"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "संपत्ति प्रकार हटाने की पुष्टि"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "उन नए परिवारों और व्यक्तियों की समीक्षा करें जिन्होंने आपके सार्वजनिक पंजीकरण फ़ॉर्म पर साइन अप किया"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "नीचे अपने सार्वजनिक पंजीकरण फ़ॉर्म से नए साइन-अप की समीक्षा करें। बिना ईमेल या फ़ोन वाली प्रविष्टियाँ चिह्नित हैं — अनुवर्ती कार्रवाई से पहले संपर्क जानकारी सत्यापित करें।"
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17483,16 +17154,6 @@ msgstr "न्यूनतम बोली %s।"
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "किसी विशेष महीने में जन्मदिन या विवाह वर्षगाँठ वाले लोग"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "वह महीना जिसके लिए आप जन्मदिन और वर्षगाँठें प्राप्त करना चाहते हैं।"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "वह विवाह वर्षगाँठ का महीना जिसके लिए आप रिकॉर्ड प्राप्त करना चाहते हैं।"
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "सभी खरीदों का कुल: %s"
@@ -17712,10 +17373,6 @@ msgid "Selected family"
 msgstr "चुना गया परिवार"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "यह मान एक वैध फ़ील्ड नाम होना चाहिए।"
-
-#: 
 msgid "Could not load data"
 msgstr "डेटा लोड नहीं हो सका"
 
@@ -17724,16 +17381,8 @@ msgid "Please refresh the page or try again later."
 msgstr "कृपया पृष्ठ रीफ़्रेश करें या बाद में पुनः प्रयास करें।"
 
 #: 
-msgid "Add the relevant records first."
-msgstr "पहले संबंधित रिकॉर्ड जोड़ें।"
-
-#: 
 msgid "All Months"
 msgstr "सभी महीने"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "अभी तक कोई \"%s\" विकल्प परिभाषित नहीं है।"
 
 #: 
 msgid "No events found for %s %d."
@@ -17976,10 +17625,6 @@ msgstr "स्व-पंजीकृत प्रविष्टियाँ ल
 #: 
 msgid "Errors"
 msgstr "त्रुटियाँ"
-
-#: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "मुद्रित निर्देशिका और CSV एक्सपोर्ट से दिवंगत सदस्यों को बाहर रखें।"
 
 #: 
 msgid "Failed Files"
@@ -18298,10 +17943,6 @@ msgid "This Person is Inactive"
 msgstr "यह व्यक्ति निष्क्रिय है"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "यह OpenStreetMap का उपयोग करके उन सभी परिवारों के लिए मैप निर्देशांक ढूंढता है जिनके पास ये नहीं हैं। यह 50 के बैचों में परिवारों को संसाधित करता है, प्रति बैच लगभग एक मिनट। चलने के दौरान आप यह पेज खुला रख सकते हैं। जारी रखें?"
-
-#: 
 msgid "This person is deceased"
 msgstr "यह व्यक्ति दिवंगत है"
 
@@ -18510,14 +18151,6 @@ msgid "As an admin, please also review the"
 msgstr "प्रशासक के रूप में, कृपया की भी समीक्षा करें"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "जन्मदिन पर लोगों को स्वचालित रूप से जन्मदिन की बधाई वाला ईमेल भेजें।"
-
-#: 
-msgid "Birthday Emails"
-msgstr "जन्मदिन ईमेल"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "जन्मदिन, वर्षगांठ, स्वयंसेवक और अन्य लोगों की सूची वर्गीकरण फ़िल्टर के साथ"
 
@@ -18674,10 +18307,6 @@ msgid "Print %d Tax Doc"
 msgstr "%d कर दस्तावेज़ प्रिंट करें"
 
 #: 
-msgid "Queries"
-msgstr "क्वेरी"
-
-#: 
 msgid "Recent Friends"
 msgstr "हाल के मित्र"
 
@@ -18760,4 +18389,388 @@ msgstr "इस समय के आसपास त्रुटियों क�
 #: 
 msgid "system logs"
 msgstr "सिस्टम लॉग"
+
+#: 
+msgid "Access Control & Security"
+msgstr "अभिगम नियंत्रण और सुरक्षा"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "कर-कटौती योग्य न होने वाले भुगतान दर्ज करने की अनुमति दें (जैसे, सामग्री की बिक्री)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "सार्वजनिक कार्यक्रमों तक बिना लॉगिन के पहुंच की अनुमति दें (कैलेंडर एम्बेड करने के लिए)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "जन्मदिन के ईमेल स्वचालित रूप से भेजें (बैकग्राउंड जॉब शेड्यूलर आवश्यक है)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "जन्मदिन की शुभकामना ईमेल"
+
+#: 
+msgid "Communication & Email"
+msgstr "संचार और ईमेल"
+
+#: 
+msgid "Content Security Policy"
+msgstr "सामग्री सुरक्षा नीति"
+
+#: 
+msgid "Email System"
+msgstr "ईमेल प्रणाली"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "अपने संगठन के लिए सुविधाएं सक्षम या अक्षम करें"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "मुख्य नेविगेशन में कार्यक्रम अनुभाग सक्षम/अक्षम करें"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "वित्त मेनू और सभी वित्त सुविधाओं (जमा, भुगतान, रिपोर्ट) को सक्षम/अक्षम करें"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "धन-संग्रह मेनू सक्षम/अक्षम करें"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "XSS हमलों से बचाव के लिए सख्त CSP हेडर लागू करें"
+
+#: 
+msgid "Events Module"
+msgstr "कार्यक्रम मॉड्यूल"
+
+#: 
+msgid "Feature Toggles"
+msgstr "सुविधा स्विच"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "सुविधा स्विच नियंत्रित करते हैं कि ChurchCRM में कौन से मॉड्यूल और सुविधाएं उपलब्ध हैं। परिवर्तन तुरंत प्रभावी होते हैं।"
+
+#: 
+msgid "Finance Features"
+msgstr "वित्त सुविधाएं"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "त्वरित वैश्विक खोज में पते शामिल करें"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "त्वरित वैश्विक खोज में कैलेंडर कार्यक्रम शामिल करें"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "त्वरित वैश्विक खोज में कस्टम परिवार गुण शामिल करें"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "त्वरित वैश्विक खोज में जमा शामिल करें"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "त्वरित वैश्विक खोज में परिवार शामिल करें"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "त्वरित वैश्विक खोज में मंत्रालय शामिल करें"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "त्वरित वैश्विक खोज में भुगतान शामिल करें"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "त्वरित वैश्विक खोज में लोग शामिल करें"
+
+#: 
+msgid "Invalid setting"
+msgstr "अमान्य सेटिंग"
+
+#: 
+msgid "Lost Password Link"
+msgstr "पासवर्ड भूल गए लिंक"
+
+#: 
+msgid "Manage All Features"
+msgstr "सभी सुविधाएं प्रबंधित करें"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "ईमेल भेजने का मुख्य स्विच। पासवर्ड रीसेट और सूचनाओं के लिए आवश्यक"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "कर-कटौती योग्य न होने वाले भुगतान"
+
+#: 
+msgid "Primary Modules"
+msgstr "प्रमुख मॉड्यूल"
+
+#: 
+msgid "Public Calendar API"
+msgstr "सार्वजनिक कैलेंडर API"
+
+#: 
+msgid "Saved"
+msgstr "सहेजा गया"
+
+#: 
+msgid "Search Families"
+msgstr "परिवार खोजें"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "परिवार के कस्टम गुण खोजें"
+
+#: 
+msgid "Search Settings"
+msgstr "सेटिंग खोजें"
+
+#: 
+msgid "Self-Registration"
+msgstr "स्व-पंजीकरण"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "लॉगिन स्क्रीन पर \"पासवर्ड भूल गए\" विकल्प दिखाएं (उपयोगकर्ता को स्वयं रीसेट करने देता है)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "साइडबार में रविवारीय पाठशाला मॉड्यूल दिखाएं/छिपाएं"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "एकमात्र ऐसे व्यवस्थापक को निष्क्रिय नहीं किया जा सकता जो साइन इन कर सकता है"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "एकमात्र ऐसे व्यवस्थापक को दिवंगत के रूप में चिह्नित नहीं किया जा सकता जो साइन इन कर सकता है"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "दिवंगत — साइन इन नहीं कर सकते"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "दूसरे पते को डाक पते के रूप में चिह्नित करने से पहले उसे दर्ज करें"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "निष्क्रिय — साइन इन नहीं कर सकते"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "डाक दूसरे पते पर जाती है; प्राथमिक पता वह भौतिक स्थान बना रहता है जो मानचित्र और दिशा-निर्देशों के लिए उपयोग होता है।"
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "डाक प्राथमिक पते के बजाय इस पते पर भेजी जाती है"
+
+#: 
+msgid "Mailing Address"
+msgstr "डाक पता"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "यदि भिन्न हो तो डाक पता"
+
+#: 
+msgid "Primary Address"
+msgstr "प्राथमिक पता"
+
+#: 
+msgid "Receives Mail"
+msgstr "डाक प्राप्त करता है"
+
+#: 
+msgid "Second Address"
+msgstr "दूसरा पता"
+
+#: 
+msgid "Second Home"
+msgstr "दूसरा घर"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "संबद्ध व्यक्ति दिवंगत या निष्क्रिय है। व्यक्ति के पुनः सक्रिय होने तक साइन-इन, सत्र और API कुंजी अवरुद्ध हैं।"
+
+#: 
+msgid "This is the mailing address"
+msgstr "यह डाक पता है"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "यह व्यक्ति दिवंगत या निष्क्रिय है, इसलिए यह खाता साइन इन नहीं कर सकता"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "केवल व्यवस्थापक ही लॉगिन वाले व्यक्ति को हटा सकता है।"
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "अंतिम व्यवस्थापक को हटाया नहीं जा सकता।"
+
+#: 
+msgid "Category"
+msgstr "श्रेणी"
+
+#: 
+msgid "Category updated."
+msgstr "श्रेणी अपडेट की गई।"
+
+#: 
+msgid "Delete Category"
+msgstr "श्रेणी हटाएं"
+
+#: 
+msgid "Failed to delete category"
+msgstr "श्रेणी हटाने में विफल"
+
+#: 
+msgid "Failed to rename category"
+msgstr "श्रेणी का नाम बदलने में विफल"
+
+#: 
+msgid "Fund Categories"
+msgstr "निधि श्रेणियां"
+
+#: 
+msgid "Fund activated."
+msgstr "निधि सक्रिय की गई।"
+
+#: 
+msgid "Fund deactivated."
+msgstr "निधि निष्क्रिय की गई।"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "इस श्रेणी की निधियां अवर्गीकृत हो जाएंगी। निधियां स्वयं हटाई नहीं जाती हैं।"
+
+#: 
+msgid "INACTIVE"
+msgstr "निष्क्रिय"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "नई श्रेणी का नाम (मौजूदा नाम डालने पर दोनों मिल जाएंगी)"
+
+#: 
+msgid "Optional"
+msgstr "वैकल्पिक"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "वैकल्पिक — कोई श्रेणी चुनें या नई लिखें"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "वित्तीय प्रतिबद्धता से अधिक भुगतान"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "वित्तीय प्रतिबद्धता की गई पर अभी भुगतान नहीं हुआ"
+
+#: 
+msgid "Rename Category"
+msgstr "श्रेणी का नाम बदलें"
+
+#: 
+msgid "Still Owed"
+msgstr "अभी देय शेष"
+
+#: 
+msgid "Summary by Category"
+msgstr "श्रेणी के अनुसार सारांश"
+
+#: 
+msgid "Total Paid"
+msgstr "कुल भुगतान"
+
+#: 
+msgid "Uncategorized"
+msgstr "अवर्गीकृत"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "वर्तमान सेटिंग लोड नहीं हो सकीं। पुनः प्रयास करने के लिए पृष्ठ को रीलोड करें।"
+
+#: 
+msgid "This setting must be a number"
+msgstr "यह सेटिंग एक संख्या होनी चाहिए"
+
+#: 
+msgid "Child Role"
+msgstr "बच्चे की भूमिका"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "निर्देशिका में शामिल करना केवल वर्गीकरण सूची के लिए बदला जा सकता है"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "स्वागत संदेश 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "स्वागत संदेश 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "परिवार के मुखिया की भूमिका"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "बिना परिवार वाले पते छिपाएँ"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "मित्रता की तारीख छिपाएँ"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "न्यूज़लेटर सदस्यताएँ छिपाएँ"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "विवाह की तारीख छिपाएँ"
+
+#: 
+msgid "In Directory"
+msgstr "निर्देशिका में"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "सूचनाओं में विवरण शामिल करें"
+
+#: 
+msgid "Notification Recipients"
+msgstr "सूचना प्राप्तकर्ता"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "नया परिवार या व्यक्ति जोड़े जाने पर सूचित किए जाने वाले लोग"
+
+#: 
+msgid "Person initials style"
+msgstr "व्यक्ति के आद्याक्षर की शैली"
+
+#: 
+msgid "Person name display style"
+msgstr "व्यक्ति के नाम की प्रदर्शन शैली"
+
+#: 
+msgid "Spouse Role"
+msgstr "जीवनसाथी की भूमिका"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "पिन कोड बड़े अक्षरों में"
 

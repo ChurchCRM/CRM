@@ -16,6 +16,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - JSON in `<script>`: `InputUtils::jsonEncodeForScript()`
 - Redirects: `RedirectUtils` — not raw `header('Location')`
 - UI: Tabler + Bootstrap 5. Wrap `gettext()` / `i18next.t()`
+- JS: page logic goes in a `webpack/` entry, registered in `webpack.config.js` and loaded with one `<script src="<?= SystemURLs::assetVersioned('/skin/v2/NAME.min.js') ?>">`. No inline `<script>` blocks for page logic; a one-line config handoff with `InputUtils::jsonEncodeForScript()` is fine. Read `window.CRM` at run time (inside `onLocalesReady`), never at module load (`webpack-typescript.md`)
 - Reports: never extend `QueryView.php` / `QueryList.php` or add `query_qry` rows (#9921). Core reports → `src/v2/` route + controller + Twig. One church's needs → a plugin in `src/plugins/` (shareable in `src/plugins/community/`)
 - Tests with behavior changes
 - Comments are rare. Names and tests carry intent. Do not restate the next line. Comment only a *why* that the code cannot say (CI trap, security invariant, deliberate deviation). Do not add paragraph comments in specs.
@@ -28,7 +29,7 @@ Do not `(int)` a string slug getter.
 
 ## SystemConfig Settings (Frozen)
 
-**Do not add new settings to `SystemConfig::buildConfigs()`.** The old-style settings system is frozen. All new admin settings belong in their respective feature area **dashboards** (`settingsPanel` divs like `#peopleSettings`, `#financialSettings`) with explicit `ConfigItem` definitions **omitted** from `buildCategories()`. See `configuration-management.md` and examples: `bEnableSelfRegistration`, `bHideDeceasedFromDirectory`.
+**Do not add new keys to `SystemConfig::buildCategories()`.** The old-style settings page is frozen. Define the `ConfigItem` in `buildConfigs()`, omit it from `buildCategories()`, and surface it in its area admin hub (`/admin/people`). See `settings-placement.md`.
 
 ## Admin Page Headers
 

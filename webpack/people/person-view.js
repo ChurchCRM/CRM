@@ -8,10 +8,9 @@
  * Also handles the "Refresh Coordinates" button shown when the person's family
  * has no stored coordinates (calls POST /family/{id}/geocode).
  *
- * Leaflet is loaded as a global from skin/external/leaflet/leaflet.js
- * (see webpack externals: { leaflet: 'L' }).
+ * Leaflet comes from webpack/leaflet-global.js.
  */
-import L from "leaflet";
+import L from "../leaflet-global";
 import { initAttendanceHistory } from "./attendance-history";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
 import { initGroupManager } from "./person-group-manager";

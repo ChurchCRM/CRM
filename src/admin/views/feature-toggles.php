@@ -36,10 +36,6 @@ $featureGroups = [
         ],
     ],
     gettext('Access Control & Security') => [
-        'bEnableSelfRegistration' => [
-            'label' => gettext('Self-Registration'),
-            'description' => gettext('Allow visitors to create their own family records via public registration page'),
-        ],
         'bEnableLostPassword' => [
             'label' => gettext('Lost Password Link'),
             'description' => gettext('Show "Lost Password" option on login screen (allows user self-reset)'),

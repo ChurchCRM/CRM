@@ -1650,30 +1650,6 @@ msgid "Properties"
 msgstr "സ്വഭാവങ്ങൾ"
 
 #: 
-msgid "Query Listing"
-msgstr "ക്വറി ലിസ്‌റ്റ്"
-
-#: 
-msgid "Query View"
-msgstr "ക്വറി കാഴ്ച"
-
-#: 
-msgid "This value is required."
-msgstr "ഈ മൂല്യം ആവശ്യമാണ്."
-
-#: 
-msgid "This value must be numeric."
-msgstr "ഈ മൂല്യം അക്കത്തിൽ ആയിരിക്കണം."
-
-#: 
-msgid "Run Query Again"
-msgstr "ക്വറി വീണ്ടും പ്രവർത്തിക്കുക"
-
-#: 
-msgid "Execute Query"
-msgstr "ക്വറി എക്സിക്യൂട്ട് ചെയ്യുക"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "സംഭാവന പ്രതിജ്ഞ ഓർമ്മിപ്പിക്കൽ റിപ്പോർട്ട്"
 
@@ -2593,10 +2569,6 @@ msgstr "വാങ്ങുന്നവരെ കാണുക"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "ദാതാക്കളെ വാങ്ങുന്നവരുടെ ലിസ്‌റ്റിൽ ചേർക്കുക"
-
-#: 
-msgid "Data/Reports"
-msgstr "ഡേറ്റ/റിപ്പോർട്ടുകൾ"
 
 #: 
 msgid "Family Properties"
@@ -4471,10 +4443,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "ഡേറ്റ്-പിക്കറിൽ തീയതി നിർവ്വചിക്കാൻ, ഡിഫോൾട്ടായി: Y-m-d, ഉദാഹരണം ഫ്രഞ്ചിൽ: d/m/Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "പുതിയ കുടുംബം അല്ലെങ്കിൽ വ്യക്തി ചേർക്കുമ്പോൾ അറിയിക്കേണ്ടവരുടെ PersonID-കളുടെ കോമ-വേർതിരിച്ച ലിസ്‌റ്റ്"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "ബാഹ്യ കലണ്ടർ API-ൽ നിന്ന് ഇവന്റുകൾ ആധികാരികതയില്ലാതെ വായിക്കാൻ അനുവദിക്കുക"
 
@@ -5038,14 +5006,6 @@ msgstr[1] "%d വയസ്സ്"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "PHP ZipArchive ഇല്ല"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "ഫലങ്ങൾ കാർട്ടിൽ ചേർക്കുക"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "കാർട്ടിൽ നിന്ന് ഫലങ്ങൾ നീക്കം ചെയ്യുക"
 
 #: 
 msgid "Database Reset Functions"
@@ -6319,10 +6279,6 @@ msgid "Cart"
 msgstr "കാർട്ട്"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "ഇത് സിസ്റ്റം ക്രമീകരണങ്ങളിൽ മാറ്റൂ."
-
-#: 
 msgid "Church Membership"
 msgstr "പള്ളി അംഗത്വം"
 
@@ -6373,10 +6329,6 @@ msgstr "ആരംഭിക്കാൻ ഒരു ഡിപ്പോസിറ്�
 #: 
 msgid "Current Deposit"
 msgstr "നിലവിലെ ഡിപ്പോസിറ്റ്"
-
-#: 
-msgid "Current fiscal year"
-msgstr "നിലവിലെ ധനകാര്യ വർഷം"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6439,10 +6391,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "സ്റ്റേറ്റ്‌മെന്റ് ഉണ്ടാക്കുന്നതിന് മുൻപ് നികുതി വർഷത്തിലെ എല്ലാ ഡിപ്പോസിറ്റുകളും അടഞ്ഞതാണെന്ന് ഉറപ്പ് വരുത്തൂ."
 
 #: 
-msgid "Export Options"
-msgstr "കയറ്റുമതി ഓപ്ഷനുകൾ"
-
-#: 
 msgid "F"
 msgstr "പെ"
 
@@ -6457,10 +6405,6 @@ msgstr "കുടുംബ നാവിഗേഷൻ"
 #: 
 msgid "Feb"
 msgstr "ഫെബ്"
-
-#: 
-msgid "Filtering"
-msgstr "ഫിൽട്ടറിംഗ്"
 
 #: 
 msgid "Finance"
@@ -6483,16 +6427,8 @@ msgid "Generate Tax Statements"
 msgstr "നികുതി സ്റ്റേറ്റ്‌മെന്റ് ഉണ്ടാക്കുക"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "ദാതാക്കൾക്ക് വാർഷിക ദക്ഷിണ സ്റ്റേറ്റ്‌മെന്റ് ഉണ്ടാക്കൂ."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "ദാതാക്കൾക്ക് ഇൻകം ടാക്‌സ് ദക്ഷിണ സ്റ്റേറ്റ്‌മെന്റ് ഉണ്ടാക്കൂ. പ്രിന്റ് ചെയ്യാം അല്ലെങ്കിൽ ഇമെയിൽ ചെയ്യാം."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "വ്യക്തിഗത ഡിപ്പോസിറ്റ് അല്ലെങ്കിൽ തീയതി ശ്രേണിക്ക് വിശദ റിപ്പോർട്ട് ഉണ്ടാക്കൂ."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6553,10 +6489,6 @@ msgstr "മാർ"
 #: 
 msgid "Membership Reports"
 msgstr "അംഗത്വ റിപ്പോർട്ടുകൾ"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "മിക്ക റിപ്പോർട്ടുകളും PDF ആയി അല്ലെങ്കിൽ CSV ആയി കയറ്റുമതി ചെയ്യാം."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6635,14 +6567,6 @@ msgid "Recording a Pledge"
 msgstr "ഒരു സംഭാവന പ്രതിജ്ഞ രേഖപ്പെടുത്തൽ"
 
 #: 
-msgid "Report Tips"
-msgstr "റിപ്പോർട്ട് നുറുങ്ങുകൾ"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "അംഗ വോട്ടിംഗ് അർഹതയും ഓർഗനൈസേഷൻ ഭരണവും സംബന്ധിച്ച റിപ്പോർട്ടുകൾ."
-
-#: 
 msgid "Reset"
 msgstr "റീസെറ്റ്"
 
@@ -6719,20 +6643,12 @@ msgid "Total Amount"
 msgstr "ആകെ തുക"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "പ്രചാരണങ്ങൾക്കും ധനകാര്യ വർഷ ബജറ്റിനും സംഭാവന പ്രതിജ്ഞ, പേമെന്റ് പുരോഗതി ട്രാക്ക് ചെയ്യൂ."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "നിറവേറ്റാത്ത ആവശ്യകതകൾ"
 
 #: 
 msgid "Upgrade"
 msgstr "അപ്‌ഗ്രേഡ്"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "ദാതാക്കളുടെ പ്രത്യേക ഗ്രൂപ്പുകൾക്ക് റിപ്പോർട്ട് ഉണ്ടാക്കാൻ വർഗ്ഗീകരണ, കുടുംബ ഫിൽട്ടറുകൾ ഉപയോഗിക്കൂ."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6757,10 +6673,6 @@ msgstr "ഇക്കൊല്ലം (YTD) സംഭാവന പ്രതിജ�
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "ഇപ്പോൾ കുടുംബ അംഗങ്ങളെ ഉണ്ടാക്കൂ അല്ലെങ്കിൽ പിന്നീട് ചേർക്കൂ."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "നിങ്ങളുടെ ധനകാര്യ വർഷം ആരംഭിക്കുന്ന മാസം"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7317,10 +7229,6 @@ msgstr "ഈ ഹാജർ എണ്ണം നീക്കണോ?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ഈ സ്വഭാവം ബാധകമാകുന്ന റെക്കോർഡ് തരം തിരഞ്ഞെടുക്കൂ"
-
-#: 
-msgid "Total Pledges"
-msgstr "ആകെ സംഭാവന പ്രതിജ്ഞകൾ"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -8994,10 +8902,6 @@ msgid "Current person"
 msgstr "നിലവിലെ വ്യക്തി"
 
 #: 
-msgid "Data & Reports"
-msgstr "ഡേറ്റയും റിപ്പോർട്ടുകളും"
-
-#: 
 msgid "Database Reset"
 msgstr "ഡേറ്റാബേസ് പുനഃക്രമീകരണം"
 
@@ -10016,10 +9920,6 @@ msgid "View and manage system log files for debugging"
 msgstr "ഡീബഗ്ഗിംഗിനായി സിസ്റ്റം ലോഗ് ഫയലുകൾ കാണുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "സേവ് ചെയ്ത ഡേറ്റാബേസ് ക്വറികൾ കാണുകയും പ്രവർത്തിക്കുകയും ചെയ്യുക"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "ക്രേതാ നമ്പറുകളും പാഡിൽ നിയോഗങ്ങളും കാണുക"
 
@@ -10038,10 +9938,6 @@ msgstr "കുടുംബ സാമ്പത്തിക പ്രതിബദ�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "ഗ്രൂപ്പ് അംഗങ്ങൾ, റോളുകൾ, ഗുണങ്ങൾ കാണുക"
-
-#: 
-msgid "View query results"
-msgstr "ക്വറി ഫലങ്ങൾ കാണുക"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10363,10 +10259,6 @@ msgstr "അദ്യതനം ലഭ്യം"
 msgid "User must have Notes permission"
 msgstr "ഉപയോക്താവിന് കുറിപ്പ് അനുമതി ഉണ്ടായിരിക്കണം"
 
-#: 
-msgid "Address Defaults"
-msgstr "വിലാസ ഡിഫോൾട്ടുകൾ"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10379,16 +10271,6 @@ msgstr "കലണ്ടർ ക്രമീകരണം"
 #: 
 msgid "Calendars"
 msgstr "കലണ്ടറുകൾ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "ഒരു സ്വമേധാ അവസരം തിരഞ്ഞെടുക്കുക"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "കസ്റ്റമർ വ്യക്തി ഫീൽഡ് തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Church Identity"
@@ -10410,11 +10292,6 @@ msgstr "ChurchCRM നേരിട്ട് ഇമെയിലുകൾ അയക
 msgid "Communication"
 msgstr "ആശയവിനിമയം"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "രണ്ട് സാമ്പത്തിക വർഷങ്ങൾക്കിടയിൽ സാമ്പത്തിക പ്രതിബദ്ധതകൾ താരതമ്യം ചെയ്യുക"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "സിസ്റ്റത്തിൽ നിന്ന് ഇമെയിലുകൾ അയക്കാൻ ചുവടെ ഉള്ള ക്രമീകരണത്തിൽ SMTP ക്രമീകരിക്കുക."
@@ -10428,17 +10305,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "വാർത്താക്കുറിപ്പുകൾക്കും കാമ്പയിനുകൾക്കും ഇമെയിൽ ലിസ്‌റ്റുകൾ സമന്വയിക്കാൻ Mailchimp ബന്ധിപ്പിക്കുക."
 
 #: 
-msgid "Copy from church address"
-msgstr "സഭാ വിലാസത്തിൽ നിന്ന് പകർത്തുക"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "ക്ലിപ്‌ബോർഡിലേക്ക് പകർത്തുക"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "ഇഷ്ടാനുസൃത ഫീൽഡ്"
 
 #: 
 msgid "Default Country"
@@ -10492,16 +10360,6 @@ msgstr "ഇമെയിൽ വിലാസങ്ങൾ ലഭ്യമാക്�
 msgid "Failed to retrieve phone numbers"
 msgstr "ഫോൺ നമ്പറുകൾ ലഭ്യമാക്കൽ പരാജയപ്പെട്ടു"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "ഫീൽഡ് മൂല്യം"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "ഒരു വർഷം സാമ്പത്തിക പ്രതിബദ്ധത ഉണ്ടായിരുന്നെങ്കിലും മറ്റൊരു വർഷം ഇല്ലാത്ത ആളുകളെ കണ്ടെത്തുക"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10509,33 +10367,8 @@ msgstr "ഒരു പ്രത്യേക അവസരത്തിനായി 
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "രണ്ട് നിർദ്ദിഷ്ട അവസര കോഡുകൾ പൊരുത്തപ്പെടുന്ന സ്വമേധാ സേവകരെ കണ്ടെത്തുക"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "ആദ്യ സാമ്പത്തിക വർഷം"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "താരതമ്യത്തിനുള്ള ആദ്യ സാമ്പത്തിക വർഷം"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "ആദ്യ സ്വമേധാ അവസര തിരഞ്ഞെടുപ്പ്"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "മുൻ മാസങ്ങളിൽ ചേർന്ന സ്നേഹിതർ"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "അതിഥി"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10559,31 +10392,6 @@ msgstr "ഇവന്റുകൾ, ജന്മദിനങ്ങൾ, വാർ�
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "ഈ മൂല്യത്തിലേക്ക് ഇഷ്ടാനുസൃത ഫീൽഡ് പൊരുത്തപ്പെടുത്തുക"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "അംഗം, സ്ഥിര ഹാജർക്കാരൻ, മുതലായവ"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "ഒരു പ്രത്യേക മാസത്തിൽ ചേർന്ന അംഗങ്ങൾ"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "അംഗത്വ വാർഷികദിനങ്ങൾ"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "നഷ്ടമായ സാമ്പത്തിക പ്രതിബദ്ധതകൾ"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "മാസം"
 
@@ -10603,16 +10411,6 @@ msgstr "പുതിയ അംഗ അറിയിപ്പ് ഇമെയില
 #: 
 msgid "No cell phone on file"
 msgstr "സെൽ ഫോൺ ഡേറ്റ ഇല്ല"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "ഹാജരില്ലാത്തയാൾ"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "ഹാജരില്ലാത്ത ജീവനക്കാർ"
 
 #: 
 msgid "Not Classified"
@@ -10649,30 +10447,10 @@ msgstr "SMS/ടെക്സ്റ്റ് പട്ടികകളിൽ നി
 msgid "Person property used to exclude members from email lists"
 msgstr "ഇമെയിൽ പട്ടികകളിൽ നിന്ന് അംഗങ്ങളെ ഒഴിവാക്കാൻ ഉപയോഗിക്കുന്ന വ്യക്തി ഗുണം"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "പ്രതിജ്ഞ താരതമ്യം"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "ഈ വർഷം പ്രതിജ്ഞ ചെയ്തത്"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "ഗുണം"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "അടുത്ത കൂട്ടുകാർ"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "പതിവ് ഹാജരാകുന്നയാൾ"
 
 #. Context: query_qry
 #: 
@@ -10694,21 +10472,6 @@ msgstr "SMTP ക്രമീകരിച്ചിരിക്കുന്നു"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP ക്രമീകരിച്ചിട്ടില്ല"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "രണ്ടാം ധനകാര്യ വർഷം"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "താരതമ്യത്തിനുള്ള രണ്ടാം ധനകാര്യ വർഷം"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "രണ്ടാം സ്വയംസേവക അവസര തിരഞ്ഞെടുപ്പ്"
 
 #: 
 msgid "Send text message"
@@ -10742,25 +10505,6 @@ msgstr "ടെക്സ്റ്റ് ഉപകരണങ്ങൾ"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "ഗ്രൂപ്പ്, Sunday School ക്ലാസ് കാഴ്ചകളിൽ ടെക്സ്റ്റ് സന്ദേശ പ്രവർത്തനങ്ങൾ ലഭ്യമാണ്. ഫോൺ നമ്പറുകൾ പകർത്താനോ ഗ്രൂപ്പ് അംഗങ്ങൾക്ക് SMS അയക്കാനോ \"ടെക്സ്റ്റ്\" ഡ്രോപ്ഡൗൺ ഉപയോഗിക്കുക."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "ഏത് ജന്മദിന മാസത്തിലെ ആളുകളുടെ രേഖകൾ വേണ്ടത്."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "അംഗത്വ വാർഷിക മാസം."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "ഏത് ഗുണം ഉള്ള ആളുകളുടെ രേഖകൾ വേണ്ടത്."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "പുതിയ കുടുംബങ്ങൾ ഉണ്ടാക്കുമ്പോൾ ഈ മൂല്യങ്ങൾ മുൻകൂട്ടി നൽകപ്പെടും. മാനുവൽ ഇൻപുട്ട് ആവശ്യമെങ്കിൽ ശൂന്യമായി ഇടുക."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "ദൂരം അളക്കാൻ ഉപയോഗിക്കുന്ന ഘടകം."
@@ -10769,11 +10513,6 @@ msgstr "ദൂരം അളക്കാൻ ഉപയോഗിക്കുന്�
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "mailto: ലിങ്കുകൾ വഴി ഇമെയിൽ അയക്കാൻ ഉപയോക്തൃ അനുമതി"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "സ്വയംസേവക അവസരങ്ങൾ"
 
 #. Context: query_qry
 #: 
@@ -10791,11 +10530,6 @@ msgstr "Vonage SMS ക്രമീകരിച്ചിട്ടില്ല"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage ഇല്ലാതെ, ടെക്സ്റ്റ് പ്രവർത്തനങ്ങൾ ഉപകരണത്തിന്റെ നേറ്റീവ് SMS ആപ്പ് തുറക്കും അല്ലെങ്കിൽ ഫോൺ നമ്പറുകൾ ക്ലിപ്‌ബോർഡിലേക്ക് പകർത്തും."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "എന്നാൽ ഈ വർഷം അല്ല"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10906,10 +10640,6 @@ msgstr "പൊതു HTML, ICS, JSON URLs വഴി കലണ്ടർ ഇവന
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "സ്വയം രജിസ്ട്രേഷൻ പേജ് വഴി സന്ദർശകർ സ്വന്തം കുടുംബ record ഉണ്ടാക്കാൻ അനുവദിക്കുക"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "സന്ദർശകർ പുതിയ കുടുംബങ്ങളായി സ്വയം രജിസ്ട്രേഷൻ ചെയ്യാൻ അനുവദിക്കുക."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -10993,10 +10723,6 @@ msgstr "Gravatar ഇല്ലാത്തപ്പോൾ കാണിക്ക�
 "• Retro - 8-bit arcade-style pixel art\n"
 "• RoboHash - Unique generated robot\n"
 "• Blank - Transparent (initials-ലേക്ക് fallback)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "ഫിനാൻസ് അനുമതി ആവശ്യമുള്ള query ID-കൾ comma-separated ആയി"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11109,10 +10835,6 @@ msgstr "Scanned checks ഉപയോഗം പ്രാപ്തമാക്ക�
 msgid "Features"
 msgstr "ഫീച്ചറുകൾ"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "ഫിനാൻസ് അനുമതി query IDs"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11186,10 +10908,6 @@ msgstr "Gravatar ഇമെയിൽ വിലാസങ്ങൾ hash (MD5) ആ�
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Latitude/Longitude മറയ്ക്കുക"
-
-#: 
-msgid "Hide Person Address"
-msgstr "വ്യക്തി വിലാസം മറയ്ക്കുക"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -14259,11 +13977,6 @@ msgstr "കുടുംബ പേര് കുറഞ്ഞത് 2 അക്ഷ�
 msgid "Fields"
 msgstr "ഫീൽഡുകൾ"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "ഒരു event-ൽ പങ്കെടുക്കാത്ത ആളുകളെ കണ്ടെത്തുക"
-
 #: 
 msgid "First name is required"
 msgstr "പേര് ആവശ്യമാണ്"
@@ -14443,11 +14156,6 @@ msgstr "അംഗങ്ങളെ കാർട്ടിൽ ചേർത്തു.
 #: 
 msgid "Minimum length is"
 msgstr "ഏറ്റവും കുറഞ്ഞ ദൈർഘ്യം"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "കാണ്മാനില്ലാത്ത ആളുകൾ"
 
 #: 
 msgid "Move"
@@ -14816,11 +14524,6 @@ msgstr "കലണ്ടറുകൾ തിരഞ്ഞെടുക്കുക..
 #: 
 msgid "Select event type..."
 msgstr "ഇവന്റ് തരം തിരഞ്ഞെടുക്കുക..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "ആഗ്രഹിക്കുന്ന event തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Sequence"
@@ -16283,10 +15986,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s കുടുംബത്തിലെ %1$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d റെക്കോർഡ്(കൾ) തിരികെ ലഭിച്ചു"
-
-#: 
 msgid "Assign role to all"
 msgstr "എല്ലാവർക്കും റോൾ നൽകുക"
 
@@ -16457,22 +16156,6 @@ msgstr "സിസ്റ്റം കോർണ്‍ഫിഗറേഷൻ"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "ഈ സന്നദ്ധ അവസരത്തിലേക്ക് ആളുകൾ നിയോഗിക്കപ്പെട്ടിരിക്കുന്നു. ഇല്ലാതാക്കൽ നിയോഗം റദ്ദാക്കും"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "ഈ മൂല്യം %d പ്രതീകങ്ങളിൽ കുറവായിരിക്കരുത്"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "ഈ മൂല്യം %d പ്രതീകങ്ങളിൽ കൂടുതലായിരിക്കരുത്"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "ഈ മൂല്യം %s-ല്‍ കൂടുതലായിരിക്കരുത്"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "ഈ മൂല്യം കുറഞ്ഞത് കുറഞ്ഞത് %s ആയിരിക്കണം"
 
 #: 
 msgid "Total Deposits"
@@ -16755,24 +16438,12 @@ msgid "Family Delete Confirmation"
 msgstr "കുടുംബം ഇല്ലാതാക്കൽ സ്ഥിരീകരണം"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "വ്യക്തികൾ (കുടുംബമില്ലാത്ത)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "പുതിയ സ്വയം-രജിസ്‌ട്രേഷനുകൾ"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "പ്രോപ്പർട്ടി തരം ഇല്ലാതാക്കൽ സ്ഥിരീകരണം"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "പൊതു രജിസ്‌ട്രേഷൻ ഫോർമിൽ ചേർന്ന പുതിയ കുടുംബങ്ങളെയും വ്യക്തികളെയും പരിശോധിക്കുക"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "ചുവടെ നിങ്ങളുടെ പൊതു രജിസ്‌ട്രേഷൻ ഫോർമിൽ നിന്നുള്ള പുതിയ സൈൻ-അപ്പുകൾ പരിശോധിക്കുക. ഇ-മെയിലോ ഫോൺോ ഇല്ലാത്ത എൻട്രികൾ ഫ്ലാഗ് ചെയ്‌തിരിക്കുന്നു — തുടർനടപ്പ് എടുക്കുന്നതിന് മുമ്പ് ബന്ധപ്പെടൽ വിവരങ്ങൾ സ്ഥിരീകരിക്കുക."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17484,16 +17155,6 @@ msgstr "കുറഞ്ഞ ലേലം %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "ഒരു പ്രത്യേക മാസത്തിൽ ജന്മദിനമോ വിവാഹ വാർഷികമോ ഉള്ള ആളുകൾ"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "ജന്മദിനങ്ങളും വാർഷികങ്ങളും ലഭിക്കാൻ ആഗ്രഹിക്കുന്ന മാസം."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "വിവാഹ വാർഷിക രേഖകൾ ലഭിക്കാൻ ആഗ്രഹിക്കുന്ന മാസം."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "എല്ലാ വാങ്ങലുകളുടെയും ആകെ: %s"
@@ -17713,10 +17374,6 @@ msgid "Selected family"
 msgstr "തിരഞ്ഞെടുത്ത കുടുംബം"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "ഈ മൂല്യം സാധുവായ ഒരു ഫീൽഡ് നാമം ആയിരിക്കണം."
-
-#: 
 msgid "Could not load data"
 msgstr "ഡാറ്റ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല"
 
@@ -17725,16 +17382,8 @@ msgid "Please refresh the page or try again later."
 msgstr "ദയവായി പേജ് പുതുക്കുക അല്ലെങ്കിൽ പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "ആദ്യം ബന്ധപ്പെട്ട രേഖകൾ ചേർക്കുക."
-
-#: 
 msgid "All Months"
 msgstr "എല്ലാ മാസങ്ങളും"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "\"%s\" ഓപ്ഷനുകൾ ഇതുവരെ നിർവ്വചിച്ചിട്ടില്ല."
 
 #: 
 msgid "No events found for %s %d."
@@ -17977,10 +17626,6 @@ msgstr "സ്വയം-രജിസ്റ്റർ ചെയ്ത എൻട്
 #: 
 msgid "Errors"
 msgstr "പിശകുകൾ"
-
-#: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "മരണപ്പെട്ട അംഗങ്ങളെ പ്രിന്റ് ചെയ്ത ഡയറക്ടറിയിൽ നിന്നും CSV എക്സ്പോർട്ടുകളിൽ നിന്നും ഒഴിവാക്കുക."
 
 #: 
 msgid "Failed Files"
@@ -18299,10 +17944,6 @@ msgid "This Person is Inactive"
 msgstr "ഈ വ്യക്തി നിർജ്ജീവമാണ്"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "OpenStreetMap ഉപയോഗിച്ച് മാപ്പ് കോർഡിനേറ്റുകൾ ഇല്ലാത്ത എല്ലാ കുടുംബങ്ങൾക്കും ഇത് കണ്ടെത്തുന്നു. ഇത് 50 വീതമുള്ള ബാച്ചുകളായി കുടുംബങ്ങളെ പ്രോസസ് ചെയ്യുന്നു, ഓരോ ബാച്ചിനും ഏകദേശം ഒരു മിനിറ്റ്. ഇത് പ്രവർത്തിക്കുമ്പോൾ ഈ പേജ് തുറന്നു തന്നെ വയ്ക്കാം. തുടരണോ?"
-
-#: 
 msgid "This person is deceased"
 msgstr "ഈ വ്യക്തി മരണപ്പെട്ടു"
 
@@ -18511,14 +18152,6 @@ msgid "As an admin, please also review the"
 msgstr "കാര്യനിർവാഹകനെന്ന നിലയിൽ, ദയവായി ഇതും പരിശോധിക്കുക"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "ജന്മദിനത്തിൽ ആളുകൾക്ക് സ്വയമായി ജന്മദിന സുഖാശംസ ഇമെയിൽ അയയ്ക്കുക."
-
-#: 
-msgid "Birthday Emails"
-msgstr "ജന്മദിന ഇമെയിലുകൾ"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "ജന്മദിനങ്ങൾ, വാർഷികങ്ങൾ, സന്നദ്ധപരിചാരകർ, വർഗ്ഗീകരണ ഫിൽറ്ററുമായുള്ള മറ്റ് അംഗങ്ങളുടെ ലിസ്റ്റുകൾ"
 
@@ -18675,10 +18308,6 @@ msgid "Print %d Tax Doc"
 msgstr "%d നികുതി രേഖ പ്രിന്റ് ചെയ്യുക"
 
 #: 
-msgid "Queries"
-msgstr "അന്വേഷണങ്ങൾ"
-
-#: 
 msgid "Recent Friends"
 msgstr "സമീപകാല സുഹൃത്തുക്കൾ"
 
@@ -18773,10 +18402,6 @@ msgstr "നികുതി കിഴിവില്ലാത്ത പേയ്�
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "പൊതു ഇവന്റുകളിലേക്ക് ലോഗിൻ ചെയ്യാതെയുള്ള പ്രവേശനം അനുവദിക്കുക (കലണ്ടറുകൾ എംബെഡ് ചെയ്യാൻ)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "സന്ദർശകരെ പൊതു രജിസ്ട്രേഷൻ പേജിലൂടെ സ്വന്തം കുടുംബ റെക്കോർഡുകൾ സൃഷ്ടിക്കാൻ അനുവദിക്കുക"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
@@ -18993,4 +18618,160 @@ msgstr "ലോഗിൻ കഴിയുന്ന വ്യക്തിയെ ഏ
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "അവസാന ഭരണാധികാരിയെ വെട്ടിപ്പഴിക്കാൻ കഴിയില്ല."
+
+#: 
+msgid "Category"
+msgstr "വിഭാഗം"
+
+#: 
+msgid "Category updated."
+msgstr "വിഭാഗം അപ്‌ഡേറ്റ് ചെയ്തു."
+
+#: 
+msgid "Delete Category"
+msgstr "വിഭാഗം ഇല്ലാതാക്കുക"
+
+#: 
+msgid "Failed to delete category"
+msgstr "വിഭാഗം ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to rename category"
+msgstr "വിഭാഗത്തിന്റെ പേര് മാറ്റുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Fund Categories"
+msgstr "ഫണ്ട് വിഭാഗങ്ങൾ"
+
+#: 
+msgid "Fund activated."
+msgstr "ഫണ്ട് സജീവമാക്കി."
+
+#: 
+msgid "Fund deactivated."
+msgstr "ഫണ്ട് നിർജ്ജീവമാക്കി."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "ഈ വിഭാഗത്തിലെ ഫണ്ടുകൾ വിഭാഗീകരിക്കാത്തവയാകും. ഫണ്ടുകൾ തന്നെ ഇല്ലാതാക്കപ്പെടില്ല."
+
+#: 
+msgid "INACTIVE"
+msgstr "നിഷ്‌ക്രിയം"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "പുതിയ വിഭാഗത്തിന്റെ പേര് (നിലവിലുള്ള പേര് നൽകിയാൽ രണ്ടും ലയിക്കും)"
+
+#: 
+msgid "Optional"
+msgstr "ഓപ്ഷണൽ"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "ഓപ്ഷണൽ — ഒരു വിഭാഗം തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ പുതിയത് ടൈപ്പ് ചെയ്യുക"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "സാമ്പത്തിക പ്രതിബദ്ധതയ്ക്കപ്പുറം അടച്ചത്"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "സാമ്പത്തിക പ്രതിബദ്ധത നൽകി, പക്ഷേ ഇതുവരെ അടച്ചിട്ടില്ല"
+
+#: 
+msgid "Rename Category"
+msgstr "വിഭാഗത്തിന്റെ പേര് മാറ്റുക"
+
+#: 
+msgid "Still Owed"
+msgstr "ഇനിയും നൽകാനുള്ളത്"
+
+#: 
+msgid "Summary by Category"
+msgstr "വിഭാഗം അനുസരിച്ചുള്ള സംഗ്രഹം"
+
+#: 
+msgid "Total Paid"
+msgstr "ആകെ അടച്ചത്"
+
+#: 
+msgid "Uncategorized"
+msgstr "വിഭാഗീകരിക്കാത്തത്"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "നിലവിലെ ക്രമീകരണങ്ങൾ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. വീണ്ടും ശ്രമിക്കാൻ പേജ് റീലോഡ് ചെയ്യുക."
+
+#: 
+msgid "This setting must be a number"
+msgstr "ഈ ക്രമീകരണം ഒരു സംഖ്യ ആയിരിക്കണം"
+
+#: 
+msgid "Child Role"
+msgstr "കുട്ടിയുടെ പങ്ക്"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "ഡയറക്ടറിയിൽ ഉൾപ്പെടുത്തൽ വർഗ്ഗീകരണങ്ങളുടെ പട്ടികയ്ക്ക് മാത്രമേ മാറ്റാൻ കഴിയൂ"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "സ്വാഗത സന്ദേശം 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "സ്വാഗത സന്ദേശം 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "കുടുംബനാഥന്റെ പങ്ക്"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "കുടുംബമില്ലാത്ത വിലാസങ്ങൾ മറയ്ക്കുക"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "സൗഹൃദ തീയതി മറയ്ക്കുക"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "വാർത്താക്കത്ത് സബ്‌സ്‌ക്രിപ്ഷനുകൾ മറയ്ക്കുക"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "വിവാഹ തീയതി മറയ്ക്കുക"
+
+#: 
+msgid "In Directory"
+msgstr "ഡയറക്ടറിയിൽ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "അറിയിപ്പുകളിൽ വിശദാംശങ്ങൾ ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Notification Recipients"
+msgstr "അറിയിപ്പ് സ്വീകർത്താക്കൾ"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "പുതിയ കുടുംബമോ വ്യക്തിയോ ചേർക്കുമ്പോൾ അറിയിക്കേണ്ടവർ"
+
+#: 
+msgid "Person initials style"
+msgstr "വ്യക്തിയുടെ ഇനിഷ്യലുകളുടെ ശൈലി"
+
+#: 
+msgid "Person name display style"
+msgstr "വ്യക്തിയുടെ പേര് പ്രദർശിപ്പിക്കുന്ന ശൈലി"
+
+#: 
+msgid "Spouse Role"
+msgstr "പങ്കാളിയുടെ പങ്ക്"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "പിൻകോഡുകൾ വലിയ അക്ഷരങ്ങളിൽ"
 

@@ -273,7 +273,7 @@ $socialPlaceholders = [
                         && $lngFloat >= -180.0 && $lngFloat <= 180.0;
                     ?>
 
-                    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+
                     <div id="church-location-map" class="mb-2 rounded border<?= $hasCoords ? '' : ' d-none' ?>" style="height:280px;"></div>
                     <div class="alert alert-info mt-3 mb-0<?= $hasCoords ? ' d-none' : '' ?>" id="no-coords-alert">
                         <i class="fa-solid fa-location-dot me-2"></i>
@@ -288,58 +288,7 @@ $socialPlaceholders = [
                             'hasCoords' => $hasCoords,
                         ]) ?>;
                     </script>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Address Defaults -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header d-flex align-items-center">
-                    <h3 class="card-title mb-0"><i class="fa-solid fa-copy me-2"></i><?= gettext('Address Defaults') ?></h3>
-                    <button type="button" class="btn btn-outline-primary btn-sm ms-auto" id="copy-church-address">
-                        <i class="fa-solid fa-copy me-1"></i><?= gettext('Copy from church address') ?>
-                    </button>
-                </div>
-                <div class="card-body">
-                    <p class="text-body-secondary mb-3">
-                        <?= gettext('These values are pre-filled when creating new families. Leave blank to require manual entry.') ?>
-                    </p>
-                    <div class="row">
-                        <div class="mb-3 col-md-4">
-                            <label for="sDefaultCity"><?= gettext('Default City') ?></label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="sDefaultCity"
-                                   name="sDefaultCity"
-                                   value="<?= InputUtils::escapeHTML($churchInfo['sDefaultCity']) ?>"
-                                   maxlength="100">
-                        </div>
-                        <div class="mb-3 col-md-3">
-                            <label for="sDefaultState"><?= gettext('Default State') ?></label>
-                            <div id="sDefaultStateContainer" style="width: 100%;"
-                                 data-user-selected-state="<?= InputUtils::escapeHTML($churchInfo['sDefaultState']) ?>">
-                            </div>
-                        </div>
-                        <div class="mb-3 col-md-2">
-                            <label for="sDefaultZip"><?= gettext('Default Zip') ?></label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="sDefaultZip"
-                                   name="sDefaultZip"
-                                   value="<?= InputUtils::escapeHTML($churchInfo['sDefaultZip']) ?>"
-                                   maxlength="20">
-                        </div>
-                        <div class="mb-3 col-md-3">
-                            <label for="sDefaultCountry"><?= gettext('Default Country') ?></label>
-                            <select class="form-select" id="sDefaultCountry" name="sDefaultCountry" style="width: 100%;"
-                                    data-user-selected="<?= InputUtils::escapeHTML($churchInfo['sDefaultCountry']) ?>">
-                            </select>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

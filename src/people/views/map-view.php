@@ -1,7 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
@@ -18,7 +16,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
      the church has no location configured. -->
 <div id="geocodeAllResults" class="mt-2" aria-live="polite"></div>
 
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+
 
 <?php if (!$mapConfig['hasLocation']): ?>
     <div class="alert alert-danger">
@@ -84,58 +82,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.mapConfig = <?= InputUtils::jsonEncodeForScript($mapConfig) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-map-view.min.js') ?>"></script>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-    $(document).ready(function() {
-        window.CRM.settingsPanel.init({
-            container: '#mapAdminSettings',
-            title: <?= InputUtils::jsonEncodeForScript(gettext('Map Settings')) ?>,
-            icon: 'fa-solid fa-sliders',
-            settings: [
-                {
-                    name: 'iMapZoom',
-                    type: 'choice',
-                    label: <?= InputUtils::jsonEncodeForScript(gettext('Default Map View')) ?>,
-                    choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('iMapZoom')) ?>
-                },
-                {
-                    name: 'bHideLatLon',
-                    type: 'boolean',
-                    label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Latitude/Longitude')) ?>,
-                    tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bHideLatLon')) ?>
-                },
-                {
-                    name: 'bHidePersonAddress',
-                    type: 'boolean',
-                    label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Person Address')) ?>,
-                    tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bHidePersonAddress')) ?>
-                }
-            ],
-            showAllSettingsLink: false,
-            // No reload: map-view.js listens for this and applies the saved default zoom in
-            // place, then the pane collapses just as if the Map Settings button were clicked.
-            onSave: function (savedValues) {
-                document.dispatchEvent(new CustomEvent('crm:mapsettings-saved', { detail: savedValues }));
-                var pane = document.getElementById('mapAdminSettings');
-                var collapse = window.bootstrap.Collapse.getOrCreateInstance(pane, { toggle: false });
-                if (pane.classList.contains('collapsing')) {
-                    // Bootstrap ignores hide() while the open animation is still running
-                    pane.addEventListener('shown.bs.collapse', function () { collapse.hide(); }, { once: true });
-                } else {
-                    collapse.hide();
-                }
-            }
-        });
-    });
-    <?php endif; ?>
-</script>
 
 <style nonce="<?= SystemURLs::getCSPNonce() ?>">
     /* ── Floating map legend (desktop) ──────────────────────────────── */

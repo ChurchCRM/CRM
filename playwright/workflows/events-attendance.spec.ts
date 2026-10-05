@@ -12,6 +12,8 @@ test.describe('Events & Attendance', () => {
 
     await captureScreen(page, testInfo, {
       name: 'events-calendar-overview',
+      title: 'Events Calendar',
+      category: 'Groups & Events',
       purpose: 'Show the event calendar',
     });
   });
@@ -46,6 +48,8 @@ test.describe('Events & Attendance', () => {
 
     await captureScreen(page, testInfo, {
       name: 'events-attendance-overview',
+      title: 'Check-In & Attendance',
+      category: 'Groups & Events',
       purpose: 'Show the event check-in / attendance workflow',
     });
   });

@@ -1679,30 +1679,6 @@ msgid "Properties"
 msgstr "Thuộc tính"
 
 #: 
-msgid "Query Listing"
-msgstr "Danh sách truy vấn"
-
-#: 
-msgid "Query View"
-msgstr "Chế độ xem truy vấn"
-
-#: 
-msgid "This value is required."
-msgstr "Giá trị này là bắt buộc."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Giá trị này phải là số."
-
-#: 
-msgid "Run Query Again"
-msgstr "Chạy lại truy vấn"
-
-#: 
-msgid "Execute Query"
-msgstr "Thực hiện kiểm tra"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Báo cáo cam kết nhắc nhở"
 
@@ -2630,10 +2606,6 @@ msgstr "Xem người mua"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Thêm nhà tài trợ vào danh sách người mua"
-
-#: 
-msgid "Data/Reports"
-msgstr "Dữ liệu/Báo cáo"
 
 #: 
 msgid "Family Properties"
@@ -4511,10 +4483,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Để xác định ngày trong Công cụ chọn ngày, theo mặc định: Ymd, Ví dụ: bằng tiếng Pháp: d / m / Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Được phân tách bằng dấu phẩy Danh sách ID cá nhân của mọi người để thông báo khi một gia đình hoặc người mới được thêm vào"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Cho phép đọc các sự kiện chưa được xác thực từ API lịch bên ngoài"
 
@@ -5074,14 +5042,6 @@ msgstr[0] "%d tuổi"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "Thiếu PHP ZipArchive"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "Thêm kết quả vào giỏ hàng"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Xóa kết quả khỏi giỏ hàng"
 
 #: 
 msgid "Database Reset Functions"
@@ -6354,10 +6314,6 @@ msgid "Cart"
 msgstr "Giỏ chọn"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Thay đổi điều này trong Cài đặt hệ thống."
-
-#: 
 msgid "Church Membership"
 msgstr "Thành viên Giáo hội"
 
@@ -6408,10 +6364,6 @@ msgstr "Tạo hoặc chọn một khoản gửi tiền để bắt đầu."
 #: 
 msgid "Current Deposit"
 msgstr "Đợt đóng góp hiện tại"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Năm tài chính hiện tại"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6474,10 +6426,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Đảm bảo tất cả các khoản gửi tiền trong năm thuế đều đã được đóng."
 
 #: 
-msgid "Export Options"
-msgstr "Tùy chọn xuất dữ liệu"
-
-#: 
 msgid "F"
 msgstr "Nữ"
 
@@ -6492,10 +6440,6 @@ msgstr "Điều hướng gia đình"
 #: 
 msgid "Feb"
 msgstr "Th2"
-
-#: 
-msgid "Filtering"
-msgstr "Đang lọc"
 
 #: 
 msgid "Finance"
@@ -6518,16 +6462,8 @@ msgid "Generate Tax Statements"
 msgstr "Tạo báo cáo thuế"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Tạo báo cáo dâng hiến hàng năm."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Tạo báo cáo dâng hiến khấu trừ thuế hàng năm."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Tạo báo cáo chi tiết cho các khoản gửi."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6588,10 +6524,6 @@ msgstr "Th3"
 #: 
 msgid "Membership Reports"
 msgstr "Báo cáo thành viên"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Hầu hết các báo cáo có thể xuất ra PDF hoặc CSV."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6670,14 +6602,6 @@ msgid "Recording a Pledge"
 msgstr "Ghi nhận một lời hứa dâng hiến"
 
 #: 
-msgid "Report Tips"
-msgstr "Mẹo báo cáo"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Báo cáo liên quan đến quyền bầu cử và quản trị tổ chức."
-
-#: 
 msgid "Reset"
 msgstr "Đặt lại"
 
@@ -6754,20 +6678,12 @@ msgid "Total Amount"
 msgstr "Tổng số tiền"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Theo dõi lời hứa và tiến độ thanh toán cho các chiến dịch."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Điều kiện tiên quyết chưa đáp ứng"
 
 #: 
 msgid "Upgrade"
 msgstr "Nâng cấp"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Sử dụng bộ lọc để tạo báo cáo cho các nhóm người dâng cụ thể."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6792,10 +6708,6 @@ msgstr "Lời hứa từ đầu năm đến nay"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Bạn có thể tạo các thành viên ngay bây giờ hoặc thêm sau."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Năm tài chính của bạn bắt đầu vào tháng"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7350,10 +7262,6 @@ msgstr "Xóa số đếm điểm danh này?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Chọn loại bản ghi mà thuộc tính này áp dụng"
-
-#: 
-msgid "Total Pledges"
-msgstr "Tổng Cam kết"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -9024,10 +8932,6 @@ msgid "Current person"
 msgstr "Nguoi hien tai"
 
 #: 
-msgid "Data & Reports"
-msgstr "Du lieu va bao cao"
-
-#: 
 msgid "Database Reset"
 msgstr "Dat lai co so du lieu"
 
@@ -10046,10 +9950,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Xem va quan ly tep nhat ky he thong de go loi"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Xem va chay cac truy van co so du lieu da luu"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Xem so nguoi mua va gan so bien"
 
@@ -10068,10 +9968,6 @@ msgstr "Xem tom tat cam ket dang hien gia dinh va phan bo quy"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Xem thanh vien nhom, vai tro va thuoc tinh"
-
-#: 
-msgid "View query results"
-msgstr "Xem ket qua truy van"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10393,10 +10289,6 @@ msgstr "Co ban cap nhat"
 msgid "User must have Notes permission"
 msgstr "Nguoi dung phai co quyen Ghi chu"
 
-#: 
-msgid "Address Defaults"
-msgstr "Địa chỉ Mặc định"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10409,16 +10301,6 @@ msgstr "Cài đặt Lịch"
 #: 
 msgid "Calendars"
 msgstr "Lịch"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Chọn cơ hội tình nguyện"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Chọn trường người dùng"
 
 #: 
 msgid "Church Identity"
@@ -10440,11 +10322,6 @@ msgstr "ChurchCRM có thể gửi email trực tiếp."
 msgid "Communication"
 msgstr "Liên lạc"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "So sánh cam kết giữa hai năm tài chính"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Định cấu hình SMTP trong cài đặt dưới đây để gửi email từ hệ thống."
@@ -10458,17 +10335,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Kết nối Mailchimp để đồng bộ hóa danh sách email cho bản tin và chiến dịch."
 
 #: 
-msgid "Copy from church address"
-msgstr "Sao chép từ địa chỉ Nhà thờ"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "Sao chép vào clipboard"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Trường tùy chỉnh"
 
 #: 
 msgid "Default Country"
@@ -10522,16 +10390,6 @@ msgstr "Không thể lấy địa chỉ email"
 msgid "Failed to retrieve phone numbers"
 msgstr "Không thể lấy số điện thoại"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Giá trị trường"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Tìm những người đã cam kết một năm nhưng không phải là năm khác"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10539,33 +10397,8 @@ msgstr "Tìm tình nguyện viên cho một cơ hội cụ thể"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Tìm tình nguyện viên phù hợp với hai mã cơ hội cụ thể"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Năm Tài chính Đầu tiên"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Năm tài chính đầu tiên để so sánh"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Lựa chọn cơ hội tình nguyện đầu tiên"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Bạn bè đã đăng ký trong các tháng trước"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Khách"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10589,31 +10422,6 @@ msgstr "Quản lý sự kiện, sinh nhật và ngày kỷ niệm"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Khớp trường tùy chỉnh với giá trị này"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Thành viên, Người tham dự thường xuyên, v.v."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Các thành viên tham gia trong một tháng cụ thể"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Ngày kỷ niệm thành viên"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Cam kết bị thiếu"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Tháng"
 
@@ -10633,16 +10441,6 @@ msgstr "Email thông báo thành viên mới"
 #: 
 msgid "No cell phone on file"
 msgstr "Không có điện thoại di động trong hồ sơ"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Người không tham dự"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Người không tham dự (nhân viên)"
 
 #: 
 msgid "Not Classified"
@@ -10679,30 +10477,10 @@ msgstr "Tài sản người được sử dụng để loại trừ thành viên
 msgid "Person property used to exclude members from email lists"
 msgstr "Tài sản người được sử dụng để loại trừ thành viên khỏi danh sách email"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "So sánh cam kết"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Cam kết năm nay"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Tài sản"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Bạn bè gần đây"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Người tham dự thường xuyên"
 
 #. Context: query_qry
 #: 
@@ -10724,21 +10502,6 @@ msgstr "SMTP Đã cấu hình"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP Chưa được cấu hình"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Năm Tài chính Thứ hai"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Năm tài chính thứ hai để so sánh"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Lựa chọn cơ hội tình nguyện thứ hai"
 
 #: 
 msgid "Send text message"
@@ -10772,25 +10535,6 @@ msgstr "Công cụ văn bản"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Các hành động nhắn tin văn bản có sẵn từ các chế độ xem Nhóm và lớp Trường Chủ nhật. Sử dụng menu thả xuống \"Văn bản\" để sao chép số điện thoại hoặc gửi tin nhắn SMS cho các thành viên nhóm."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Tháng sinh nhật mà bạn muốn trả lại bản ghi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Tháng kỷ niệm thành viên mà bạn muốn trả lại bản ghi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Tài sản mà bạn muốn trả lại bản ghi người."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Các giá trị này được điền sẵn khi tạo gia đình mới. Để trống để yêu cầu nhập thủ công."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Đơn vị dùng để đo khoảng cách."
@@ -10799,11 +10543,6 @@ msgstr "Đơn vị dùng để đo khoảng cách."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Quyền người dùng gửi email qua liên kết mailto:"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Cơ hội tình nguyện"
 
 #. Context: query_qry
 #: 
@@ -10821,11 +10560,6 @@ msgstr "Vonage SMS Chưa được cấu hình"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Không có Vonage, các hành động văn bản sẽ mở ứng dụng SMS gốc của thiết bị hoặc sao chép số điện thoại vào bộ nhớ tạm."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "nhưng không phải năm nay"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10936,10 +10670,6 @@ msgstr "Cho phép truy cập không xác thực vào các sự kiện lịch qua
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Cho phép khách truy cập tạo hồ sơ gia đình của riêng họ qua trang tự đăng ký"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Cho phép khách truy cập tự đăng ký là gia đình mới."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -11023,10 +10753,6 @@ msgstr "Chọn nội dung hiển thị khi không có Gravatar:\n"
 "• Retro - Nghệ thuật pixel phong cách arcade 8-bit\n"
 "• RoboHash - Robot được tạo ngẫu nhiên\n"
 "• Trống - Trong suốt (dự phòng về chữ cái đầu)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "ID truy vấn phân cách bằng dấu phẩy yêu cầu quyền tài chính để xem"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11139,10 +10865,6 @@ msgstr "Bật sử dụng séc đã quét"
 msgid "Features"
 msgstr "Tính năng"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "ID truy vấn quyền tài chính"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11216,10 +10938,6 @@ msgstr "Gravatar hoạt động bằng cách chuyển đổi địa chỉ email 
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Ẩn vĩ độ/kinh độ"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Ẩn địa chỉ cá nhân"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -14288,11 +14006,6 @@ msgstr "Tên gia đình phải có ít nhất 2 ký tự"
 msgid "Fields"
 msgstr "Các trường"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Tìm giáo dân chưa tham dự một sự kiện"
-
 #: 
 msgid "First name is required"
 msgstr "Yêu cầu tên"
@@ -14472,11 +14185,6 @@ msgstr "Da them thanh vien vao danh sach."
 #: 
 msgid "Minimum length is"
 msgstr "Độ dài tối thiểu là"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Giáo dân vắng mặt"
 
 #: 
 msgid "Move"
@@ -14845,11 +14553,6 @@ msgstr "Chọn lịch..."
 #: 
 msgid "Select event type..."
 msgstr "Chọn loại sự kiện..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Chọn sự kiện mong muốn"
 
 #: 
 msgid "Sequence"
@@ -16309,10 +16012,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s thuộc gia đình %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "Trả về %d bản ghi"
-
-#: 
 msgid "Assign role to all"
 msgstr "Gán vai trò cho tất cả"
 
@@ -16483,22 +16182,6 @@ msgstr "Cấu hình hệ thống"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Có người được phân công cho Cơ hội Tình nguyện này. Xóa sẽ hủy phân công"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Giá trị này không được ít hơn %d ký tự"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Giá trị này không được nhiều hơn %d ký tự"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Giá trị này không được nhiều hơn %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Giá trị này phải ít nhất là %s"
 
 #: 
 msgid "Total Deposits"
@@ -16781,24 +16464,12 @@ msgid "Family Delete Confirmation"
 msgstr "Xác nhận xóa gia đình"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Cá nhân (không có gia đình)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Đăng ký mới tự thực hiện"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Xác nhận xóa loại thuộc tính"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Xem xét các gia đình và cá nhân mới đã đăng ký qua biểu mẫu đăng ký công khai của bạn"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Xem xét các đăng ký mới từ biểu mẫu đăng ký công khai của bạn bên dưới. Các mục không có email hoặc số điện thoại được đánh dấu — hãy xác minh thông tin liên lạc trước khi theo dõi."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17508,16 +17179,6 @@ msgstr "Giá đặt tối thiểu %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Những người có sinh nhật hoặc ngày kỷ niệm hôn nhân trong một tháng cụ thể"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Tháng bạn muốn tra cứu sinh nhật và ngày kỷ niệm."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Tháng kỷ niệm hôn nhân bạn muốn tra cứu hồ sơ."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Tổng tất cả giao dịch mua: %s"
@@ -17737,10 +17398,6 @@ msgid "Selected family"
 msgstr "Gia đình được chọn"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Giá trị này phải là tên trường hợp lệ."
-
-#: 
 msgid "Could not load data"
 msgstr "Không thể tải dữ liệu"
 
@@ -17749,16 +17406,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Vui lòng làm mới trang hoặc thử lại sau."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Trước tiên hãy thêm các bản ghi liên quan."
-
-#: 
 msgid "All Months"
 msgstr "Tất cả các tháng"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Chưa có tùy chọn \"%s\" nào được xác định."
 
 #: 
 msgid "No events found for %s %d."
@@ -18000,10 +17649,6 @@ msgstr "Lỗi khi tải các mục tự đăng ký"
 #: 
 msgid "Errors"
 msgstr "Lỗi"
-
-#: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Loại trừ các thành viên đã qua đời khỏi danh bạ in và tệp xuất CSV."
 
 #: 
 msgid "Failed Files"
@@ -18322,10 +17967,6 @@ msgid "This Person is Inactive"
 msgstr "Người này không hoạt động"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Chức năng này tìm tọa độ bản đồ cho mọi gia đình còn thiếu, sử dụng OpenStreetMap. Nó xử lý các gia đình theo từng đợt 50, khoảng một phút mỗi đợt. Bạn có thể để trang này mở trong khi nó chạy. Tiếp tục?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Người này đã qua đời"
 
@@ -18534,14 +18175,6 @@ msgid "As an admin, please also review the"
 msgstr "Là quản trị viên, vui lòng cũng xem xét"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Tự động gửi email lời chúc sinh nhật đến mọi người vào ngày sinh nhật của họ."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Email Sinh Nhật"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Danh sách sinh nhật, kỷ niệm, tình nguyện viên và những người khác với bộ lọc phân loại"
 
@@ -18698,10 +18331,6 @@ msgid "Print %d Tax Doc"
 msgstr "In %d Tài Liệu Thuế"
 
 #: 
-msgid "Queries"
-msgstr "Truy Vấn"
-
-#: 
 msgid "Recent Friends"
 msgstr "Bạn Gần Đây"
 
@@ -18796,10 +18425,6 @@ msgstr "Cho phép ghi nhận các khoản thanh toán không được khấu tr�
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Cho phép truy cập chưa được xác thực đến các sự kiện công khai (để nhúng lịch)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Cho phép khách truy cập tạo hồ sơ gia đình của riêng họ qua trang đăng ký công khai"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
@@ -19016,4 +18641,160 @@ msgstr "Chỉ quản trị viên mới có thể xóa một người có tên đ
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Quản trị viên cuối cùng không thể bị xóa."
+
+#: 
+msgid "Category"
+msgstr "Danh mục"
+
+#: 
+msgid "Category updated."
+msgstr "Danh mục đã được cập nhật."
+
+#: 
+msgid "Delete Category"
+msgstr "Xóa danh mục"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Không thể xóa danh mục"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Không thể đổi tên danh mục"
+
+#: 
+msgid "Fund Categories"
+msgstr "Danh mục quỹ tài chính"
+
+#: 
+msgid "Fund activated."
+msgstr "Quỹ đã được kích hoạt."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Quỹ đã bị vô hiệu hóa."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Các quỹ trong danh mục này sẽ trở thành không được phân loại. Bản thân các quỹ không bị xóa."
+
+#: 
+msgid "INACTIVE"
+msgstr "Hủy kích hoạt"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Tên danh mục mới (tên hiện có sẽ hợp nhất hai cái)"
+
+#: 
+msgid "Optional"
+msgstr "Tùy chọn"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Tùy chọn — chọn hoặc nhập danh mục mới"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Thanh toán vượt quá lời hứa"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Đã hứa nhưng chưa thanh toán"
+
+#: 
+msgid "Rename Category"
+msgstr "Đổi tên danh mục"
+
+#: 
+msgid "Still Owed"
+msgstr "Vẫn nợ"
+
+#: 
+msgid "Summary by Category"
+msgstr "Tóm tắt theo danh mục"
+
+#: 
+msgid "Total Paid"
+msgstr "Tổng thanh toán"
+
+#: 
+msgid "Uncategorized"
+msgstr "Không được phân loại"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Không thể tải cài đặt hiện tại. Hãy tải lại trang để thử lại."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Cài đặt này phải là một số"
+
+#: 
+msgid "Child Role"
+msgstr "Vai trò con cái"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Việc đưa vào danh bạ chỉ có thể bật/tắt cho danh sách phân loại"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Lời chào 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Lời chào 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Vai trò chủ hộ"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Ẩn địa chỉ không có gia đình"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Ẩn ngày kết bạn"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Ẩn đăng ký bản tin"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Ẩn ngày cưới"
+
+#: 
+msgid "In Directory"
+msgstr "Trong danh bạ"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Bao gồm chi tiết trong thông báo"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Người nhận thông báo"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Những người được thông báo khi có gia đình hoặc cá nhân mới được thêm"
+
+#: 
+msgid "Person initials style"
+msgstr "Kiểu chữ cái đầu của người"
+
+#: 
+msgid "Person name display style"
+msgstr "Kiểu hiển thị tên người"
+
+#: 
+msgid "Spouse Role"
+msgstr "Vai trò vợ/chồng"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Mã bưu chính viết hoa"
 

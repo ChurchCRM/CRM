@@ -70,6 +70,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 }
                 ?>
                 <ul class="list-unstyled mb-0">
+                    <?php if ($person->getNeedsReview()) : ?>
+                    <li class="mb-1">
+                        <a href="<?= SystemURLs::getRootPath() ?>/people/self-register" class="badge bg-warning-lt text-warning text-decoration-none">
+                            <i class="fa-solid fa-user-clock me-1"></i><?= gettext('Pending review') ?>
+                        </a>
+                    </li>
+                    <?php endif; ?>
                     <?php if ($person->isDeceased()) : ?>
                     <li class="mb-1">
                         <span class="badge bg-secondary text-white">
@@ -626,8 +633,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             are all needed regardless of whether the person has a family or address
             (e.g. the admin's own "Church Admin" placeholder person has neither).
         -->
-        <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
-        <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+
         <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
 
         <!-- Tabbed Content -->

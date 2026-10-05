@@ -11,6 +11,12 @@ export interface CaptureOptions {
   /** Must match the test's title — see the note below. */
   name: string;
   purpose: string;
+  /** Title shown in the website gallery. */
+  title: string;
+  /** Gallery group, for example 'Dashboards'. */
+  category: string;
+  /** Name of this capture's dark-mode twin, when there is one. */
+  dark?: string;
 }
 
 /**
@@ -161,6 +167,9 @@ async function captureAtViewport(
   writeMetadata(path.join(metadataDir, `${opts.name}.json`), {
     workflow: opts.name,
     purpose: opts.purpose,
+    title: opts.title,
+    category: opts.category,
+    dark: opts.dark ?? null,
     device,
     viewport: { width: viewport.width, height: viewport.height },
     screenshot: screenshotPath,

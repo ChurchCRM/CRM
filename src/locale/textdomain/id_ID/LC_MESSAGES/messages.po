@@ -1669,30 +1669,6 @@ msgid "Properties"
 msgstr "Properti"
 
 #: 
-msgid "Query Listing"
-msgstr "Daftar Permintaan"
-
-#: 
-msgid "Query View"
-msgstr "Tampilan Pertanyaan"
-
-#: 
-msgid "This value is required."
-msgstr "Nilai ini wajib diisi."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Nilai ini harus berupa angka."
-
-#: 
-msgid "Run Query Again"
-msgstr "Jalankan Query Lagi"
-
-#: 
-msgid "Execute Query"
-msgstr "Jalankan Query"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Laporan Pengingat Janji"
 
@@ -2620,10 +2596,6 @@ msgstr "Lihat Pembeli"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Tambahkan Donor ke Daftar Pembeli"
-
-#: 
-msgid "Data/Reports"
-msgstr "Data / Laporan"
 
 #: 
 msgid "Family Properties"
@@ -4501,10 +4473,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Untuk menentukan tanggal di Date-Picker, per default: Ymd, Dalam Bahasa Perancis: d / m / Y misalnya."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Daftar PersonIDs orang yang terpisah untuk koma untuk memberi tahu ketika keluarga atau orang baru ditambahkan"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Izinkan membaca acara yang tidak diautentikasi dari API kalender eksternal"
 
@@ -5064,14 +5032,6 @@ msgstr[0] "%d tahun"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "ZipArchive PHP yang hilang"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "Tambahkan Hasil ke Troli"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Hapus Hasil dari Keranjang"
 
 #: 
 msgid "Database Reset Functions"
@@ -6344,10 +6304,6 @@ msgid "Cart"
 msgstr "Keranjang"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Ubah ini di Pengaturan Sistem."
-
-#: 
 msgid "Church Membership"
 msgstr "Keanggotaan Gereja"
 
@@ -6398,10 +6354,6 @@ msgstr "Buat atau pilih setoran untuk memulai."
 #: 
 msgid "Current Deposit"
 msgstr "Setoran Saat Ini"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Tahun fiskal saat ini"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6464,10 +6416,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Pastikan semua setoran tahun tersebut telah ditutup sebelum membuat laporan."
 
 #: 
-msgid "Export Options"
-msgstr "Opsi Ekspor"
-
-#: 
 msgid "F"
 msgstr "P"
 
@@ -6482,10 +6430,6 @@ msgstr "Navigasi Keluarga"
 #: 
 msgid "Feb"
 msgstr "Feb"
-
-#: 
-msgid "Filtering"
-msgstr "Pemfilteran"
 
 #: 
 msgid "Finance"
@@ -6508,16 +6452,8 @@ msgid "Generate Tax Statements"
 msgstr "Buat Laporan Donasi"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Buat laporan donasi tahunan dan identifikasi pola pemberian."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Buat laporan donasi tahunan. Dapat dicetak atau dikirim email."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Buat laporan detail untuk setoran tertentu atau rentang tanggal."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6578,10 +6514,6 @@ msgstr "Mar"
 #: 
 msgid "Membership Reports"
 msgstr "Laporan Keanggotaan"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Hampir semua laporan dapat diekspor ke PDF atau CSV."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6660,14 +6592,6 @@ msgid "Recording a Pledge"
 msgstr "Mencatat Janji Iman"
 
 #: 
-msgid "Report Tips"
-msgstr "Tips Laporan"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Laporan terkait hak suara jemaat dan tata kelola gereja."
-
-#: 
 msgid "Reset"
 msgstr "Atur Ulang"
 
@@ -6744,20 +6668,12 @@ msgid "Total Amount"
 msgstr "Jumlah Total"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Pantau progres janji iman dan pembayaran untuk kampanye atau anggaran."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Prasyarat Tidak Terpenuhi"
 
 #: 
 msgid "Upgrade"
 msgstr "Pembaruan"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Gunakan filter untuk membuat laporan bagi grup donatur tertentu."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6782,10 +6698,6 @@ msgstr "Janji Iman Tahun Berjalan"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Anda dapat menambah anggota keluarga sekarang atau nanti."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Tahun fiskal Anda dimulai pada bulan"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7340,10 +7252,6 @@ msgstr "Hapus hitungan kehadiran ini?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Pilih jenis catatan yang berlaku untuk properti ini"
-
-#: 
-msgid "Total Pledges"
-msgstr "Total Janji"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -9014,10 +8922,6 @@ msgid "Current person"
 msgstr "Orang saat ini"
 
 #: 
-msgid "Data & Reports"
-msgstr "Data & Laporan"
-
-#: 
 msgid "Database Reset"
 msgstr "Reset Database"
 
@@ -10036,10 +9940,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Lihat dan kelola file log sistem untuk debugging"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Lihat dan jalankan kueri database yang tersimpan"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Lihat nomor pembeli dan penetapan paddle"
 
@@ -10058,10 +9958,6 @@ msgstr "Lihat ringkasan janji persembahan keluarga dan alokasi dana"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Lihat anggota grup, peran, dan properti"
-
-#: 
-msgid "View query results"
-msgstr "Lihat hasil kueri"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10383,10 +10279,6 @@ msgstr "Pembaruan Tersedia"
 msgid "User must have Notes permission"
 msgstr "Pengguna harus memiliki izin Catatan"
 
-#: 
-msgid "Address Defaults"
-msgstr "Default Alamat"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10399,16 +10291,6 @@ msgstr "Pengaturan Kalender"
 #: 
 msgid "Calendars"
 msgstr "Kalender"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Pilih peluang sukarelawan"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Pilih bidang orang"
 
 #: 
 msgid "Church Identity"
@@ -10430,11 +10312,6 @@ msgstr "ChurchCRM dapat mengirim email langsung."
 msgid "Communication"
 msgstr "Komunikasi"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Bandingkan komitmen antara dua tahun fiskal"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Konfigurasi SMTP di pengaturan di bawah untuk mengirim email dari sistem."
@@ -10448,17 +10325,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Hubungkan Mailchimp untuk menyinkronkan daftar email untuk buletin dan kampanye."
 
 #: 
-msgid "Copy from church address"
-msgstr "Salin dari alamat gereja"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "Salin ke papan klip"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Bidang khusus"
 
 #: 
 msgid "Default Country"
@@ -10512,16 +10380,6 @@ msgstr "Gagal mengambil alamat email"
 msgid "Failed to retrieve phone numbers"
 msgstr "Gagal mengambil nomor telepon"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Nilai bidang"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Temukan orang yang berjanji satu tahun tetapi tidak tahun lain"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10529,33 +10387,8 @@ msgstr "Temukan sukarelawan untuk peluang tertentu"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Temukan sukarelawan yang cocok dengan dua kode peluang spesifik"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Tahun Fiskal Pertama"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Tahun fiskal pertama untuk perbandingan"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Pilihan peluang sukarelawan pertama"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Teman yang mendaftar di bulan sebelumnya"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Tamu"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10579,31 +10412,6 @@ msgstr "Kelola acara, ulang tahun, dan hari jadi"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Cocokkan bidang khusus ke nilai ini"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Anggota, Peserta Biasa, dll"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Anggota yang bergabung di bulan tertentu"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Hari jadi keanggotaan"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Janji yang hilang"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Bulan"
 
@@ -10623,16 +10431,6 @@ msgstr "Email pemberitahuan anggota baru"
 #: 
 msgid "No cell phone on file"
 msgstr "Tidak ada ponsel di file"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Bukan Peserta"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Bukan Peserta (staf)"
 
 #: 
 msgid "Not Classified"
@@ -10669,30 +10467,10 @@ msgstr "Properti orang yang digunakan untuk mengecualikan anggota dari daftar SM
 msgid "Person property used to exclude members from email lists"
 msgstr "Properti orang yang digunakan untuk mengecualikan anggota dari daftar email"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Perbandingan janji"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Berjanji tahun ini"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Properti"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Teman terbaru"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Peserta Biasa"
 
 #. Context: query_qry
 #: 
@@ -10714,21 +10492,6 @@ msgstr "SMTP Dikonfigurasi"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP Tidak Dikonfigurasi"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Tahun Fiskal Kedua"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Tahun fiskal kedua untuk perbandingan"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Pilihan peluang sukarelawan kedua"
 
 #: 
 msgid "Send text message"
@@ -10762,25 +10525,6 @@ msgstr "Alat Teks"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Tindakan pesan teks tersedia dari tampilan Group dan kelas Sunday School. Gunakan menu tarik turun \"Text\" untuk menyalin nomor telepon atau mengirim pesan SMS ke anggota grup."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Bulan ulang tahun tempat Anda ingin catatan dikembalikan."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Bulan hari jadi keanggotaan tempat Anda ingin catatan dikembalikan."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Properti tempat Anda ingin catatan orang dikembalikan."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Nilai-nilai ini diisi sebelumnya saat membuat keluarga baru. Biarkan kosong untuk memerlukan entri manual."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Satuan yang digunakan untuk mengukur jarak."
@@ -10789,11 +10533,6 @@ msgstr "Satuan yang digunakan untuk mengukur jarak."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Izin pengguna untuk mengirim email melalui tautan mailto:"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Peluang sukarelawan"
 
 #. Context: query_qry
 #: 
@@ -10811,11 +10550,6 @@ msgstr "Vonage SMS Tidak Dikonfigurasi"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Tanpa Vonage, tindakan teks akan membuka aplikasi SMS asli perangkat Anda atau menyalin nomor telepon ke papan klip."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "tetapi tidak tahun ini"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10926,10 +10660,6 @@ msgstr "Izinkan akses tidak terautentikasi ke acara kalender melalui URL HTML, I
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Izinkan pengunjung membuat catatan keluarga mereka sendiri melalui halaman pendaftaran mandiri"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Izinkan pengunjung mendaftar sendiri sebagai keluarga baru."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -11013,10 +10743,6 @@ msgstr "Pilih apa yang muncul saat tidak ada Gravatar:\n"
 "• Retro - Seni piksel gaya arkade 8-bit\n"
 "• RoboHash - Robot yang dibuat unik\n"
 "• Kosong - Transparan (kembali ke inisial)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "ID kueri yang dipisahkan koma yang memerlukan izin keuangan untuk dilihat"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11129,10 +10855,6 @@ msgstr "Aktifkan penggunaan cek yang dipindai"
 msgid "Features"
 msgstr "Fitur"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "ID kueri izin keuangan"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11206,10 +10928,6 @@ msgstr "Gravatar bekerja dengan mengonversi alamat email menjadi hash (MD5). Ala
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Sembunyikan Lintang/Bujur"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Sembunyikan Alamat Orang"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -14278,11 +13996,6 @@ msgstr "Nama keluarga minimal 2 karakter"
 msgid "Fields"
 msgstr "Bidang"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Temukan orang yang tidak hadir di suatu acara"
-
 #: 
 msgid "First name is required"
 msgstr "Nama depan wajib diisi"
@@ -14462,11 +14175,6 @@ msgstr "Anggota ditambahkan ke daftar."
 #: 
 msgid "Minimum length is"
 msgstr "Panjang minimal adalah"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Orang yang tidak hadir"
 
 #: 
 msgid "Move"
@@ -14835,11 +14543,6 @@ msgstr "Pilih kalender..."
 #: 
 msgid "Select event type..."
 msgstr "Pilih jenis acara..."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Pilih acara yang diinginkan"
 
 #: 
 msgid "Sequence"
@@ -16299,10 +16002,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s dari keluarga %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d rekaman dikembalikan"
-
-#: 
 msgid "Assign role to all"
 msgstr "Tetapkan peran ke semua"
 
@@ -16473,22 +16172,6 @@ msgstr "Konfigurasi Sistem"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Ada orang yang ditugaskan ke Kesempatan Sukarela ini. Penghapusan akan mencabut penugasan"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Nilai ini tidak boleh kurang dari %d karakter"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Nilai ini tidak boleh lebih dari %d karakter"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Nilai ini tidak boleh lebih dari %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Nilai ini harus minimal %s"
 
 #: 
 msgid "Total Deposits"
@@ -16771,24 +16454,12 @@ msgid "Family Delete Confirmation"
 msgstr "Konfirmasi Penghapusan Keluarga"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Individu (tanpa keluarga)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Pendaftaran Mandiri Baru"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Konfirmasi Penghapusan Jenis Properti"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tinjau keluarga dan individu baru yang mendaftar melalui formulir pendaftaran publik Anda"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Tinjau pendaftaran baru dari formulir pendaftaran publik Anda di bawah ini. Entri tanpa email atau telepon ditandai — verifikasi informasi kontak sebelum menindaklanjuti."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17498,16 +17169,6 @@ msgstr "Penawaran minimum %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Orang-orang yang berulang tahun atau merayakan anniversari pernikahan pada bulan tertentu"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Bulan yang ingin Anda tampilkan ulang tahun dan anniversarinya."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Bulan anniversari pernikahan yang ingin Anda tampilkan catatannya."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Total semua pembelian: %s"
@@ -17727,10 +17388,6 @@ msgid "Selected family"
 msgstr "Keluarga yang dipilih"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Nilai ini harus berupa nama bidang yang valid."
-
-#: 
 msgid "Could not load data"
 msgstr "Tidak dapat memuat data"
 
@@ -17739,16 +17396,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Harap segarkan halaman atau coba lagi nanti."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Tambahkan catatan yang relevan terlebih dahulu."
-
-#: 
 msgid "All Months"
 msgstr "Semua Bulan"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Belum ada pilihan \"%s\" yang ditentukan."
 
 #: 
 msgid "No events found for %s %d."
@@ -17990,10 +17639,6 @@ msgstr "Kesalahan saat memuat entri pendaftaran mandiri"
 #: 
 msgid "Errors"
 msgstr "Kesalahan"
-
-#: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Kecualikan jemaat yang telah meninggal dunia dari direktori cetak dan ekspor CSV."
 
 #: 
 msgid "Failed Files"
@@ -18312,10 +17957,6 @@ msgid "This Person is Inactive"
 msgstr "Orang ini Tidak Aktif"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Ini akan mencari koordinat peta untuk setiap keluarga yang belum memilikinya, menggunakan OpenStreetMap. Prosesnya berjalan per kelompok 50 keluarga, sekitar satu menit per kelompok. Anda dapat membiarkan halaman ini tetap terbuka selama proses berjalan. Lanjutkan?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Orang ini telah meninggal dunia"
 
@@ -18524,14 +18165,6 @@ msgid "As an admin, please also review the"
 msgstr "Sebagai administrator, harap juga tinjau"
 
 #: 
-msgid "Automatically send a birthday greeting email to people on their birthday."
-msgstr "Secara otomatis mengirimkan email ucapan ulang tahun kepada orang-orang di hari ulang tahun mereka."
-
-#: 
-msgid "Birthday Emails"
-msgstr "Email Ulang Tahun"
-
-#: 
 msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
 msgstr "Daftar hari ulang tahun, hari jadi, relawan, dan orang-orang lainnya dengan filter klasifikasi"
 
@@ -18688,10 +18321,6 @@ msgid "Print %d Tax Doc"
 msgstr "Cetak %d Dokumen Pajak"
 
 #: 
-msgid "Queries"
-msgstr "Kueri"
-
-#: 
 msgid "Recent Friends"
 msgstr "Teman Baru"
 
@@ -18786,10 +18415,6 @@ msgstr "Izinkan pencatatan pembayaran tidak dapat dikurangkan dari pajak (misaln
 #: 
 msgid "Allow unauthenticated access to public events (for embedding calendars)"
 msgstr "Izinkan akses tidak terautentikasi ke acara publik (untuk menyematkan kalender)"
-
-#: 
-msgid "Allow visitors to create their own family records via public registration page"
-msgstr "Izinkan pengunjung untuk membuat catatan keluarga mereka sendiri melalui halaman pendaftaran publik"
 
 #: 
 msgid "Automatically send birthday emails (requires background job scheduler)"
@@ -19006,4 +18631,160 @@ msgstr "Hanya administrator yang dapat menghapus orang yang memiliki login."
 #: 
 msgid "The last administrator cannot be deleted."
 msgstr "Administrator terakhir tidak dapat dihapus."
+
+#: 
+msgid "Category"
+msgstr "Kategori"
+
+#: 
+msgid "Category updated."
+msgstr "Kategori telah diperbarui."
+
+#: 
+msgid "Delete Category"
+msgstr "Hapus Kategori"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Gagal menghapus kategori"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Gagal mengganti nama kategori"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategori Persembahan"
+
+#: 
+msgid "Fund activated."
+msgstr "Persembahan telah diaktifkan."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Persembahan telah dinonaktifkan."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Persembahan dalam kategori ini akan menjadi tidak terkategori. Persembahan itu sendiri tidak dihapus."
+
+#: 
+msgid "INACTIVE"
+msgstr "Non-aktif"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nama kategori baru (nama yang ada menggabungkan keduanya)"
+
+#: 
+msgid "Optional"
+msgstr "Opsional"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opsional — pilih atau ketikkan kategori baru"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Dibayar melebihi komitmen keuangan"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Berkomitmen tetapi belum dibayar"
+
+#: 
+msgid "Rename Category"
+msgstr "Ganti Nama Kategori"
+
+#: 
+msgid "Still Owed"
+msgstr "Masih Terhutang"
+
+#: 
+msgid "Summary by Category"
+msgstr "Ringkasan berdasarkan Kategori"
+
+#: 
+msgid "Total Paid"
+msgstr "Total Dibayar"
+
+#: 
+msgid "Uncategorized"
+msgstr "Tidak Terkategori"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Tidak dapat memuat pengaturan saat ini. Muat ulang halaman untuk mencoba lagi."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Pengaturan ini harus berupa angka"
+
+#: 
+msgid "Child Role"
+msgstr "Peran anak"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Penyertaan dalam direktori hanya dapat diubah untuk daftar klasifikasi"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Pesan sambutan 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Pesan sambutan 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Peran kepala keluarga"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Sembunyikan alamat tanpa keluarga"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Sembunyikan tanggal pertemanan"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Sembunyikan langganan buletin"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Sembunyikan tanggal pernikahan"
+
+#: 
+msgid "In Directory"
+msgstr "Dalam direktori"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Sertakan detail dalam notifikasi"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Penerima notifikasi"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Orang yang diberi tahu saat keluarga atau orang baru ditambahkan"
+
+#: 
+msgid "Person initials style"
+msgstr "Gaya inisial orang"
+
+#: 
+msgid "Person name display style"
+msgstr "Gaya tampilan nama orang"
+
+#: 
+msgid "Spouse Role"
+msgstr "Peran pasangan"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Kode pos huruf besar"
 

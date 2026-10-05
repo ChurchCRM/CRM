@@ -20,16 +20,9 @@
  * descending order it emits "Helveticab" rather than "Helvetica Bold".
  */
 describe("Label font selector is populated (#9694)", () => {
-    function freshAdminLogin() {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(Cypress.env("admin.username"));
-        cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-        cy.url().should("not.include", "/session/begin");
-    }
 
     beforeEach(() => {
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
         cy.visit("/LettersAndLabels.php");
     });
 

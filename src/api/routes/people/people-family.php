@@ -8,7 +8,10 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FamilyService;
@@ -20,6 +23,7 @@ use ChurchCRM\Slim\Middleware\Api\FamilyReadMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
@@ -274,7 +278,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family = $request->getAttribute('family');
 
         $familyAddress = $family->getAddress();
-        $familyLatLong = GeoUtils::getLatLong($familyAddress);
+        $familyLatLong = GeoUtils::getLatLong($familyAddress, null, null, null, $family->getCountry());
         $familyDrivingInfo = GeoUtils::drivingDistanceMatrix(
             $familyAddress,
             ChurchMetaData::getChurchAddress()
@@ -419,6 +423,56 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             $family->setDateLastEdited($currentDate);
             $family->setEditedBy($currentUserId);
             $family->saveWithoutUpdateNote();
+        }
+
+        return SlimUtils::renderJSON($response, ['success' => true]);
+    })->add(EditRecordsRoleAuthMiddleware::class);
+
+    /**
+     * @OA\Post(
+     *     path="/family/{familyId}/approve-review",
+     *     summary="Approve a self-registered family, clearing its needs-review flag and its members' flags",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Family and its members approved",
+     *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
+     *     )
+     * )
+     */
+    $group->post('/approve-review', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
+        $family = $request->getAttribute('family');
+
+        if ($family->getEnteredBy() !== Person::SELF_REGISTER || !$family->getNeedsReview()) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('This family is not a pending self-registration'),
+                [],
+                400
+            );
+        }
+
+        $con = Propel::getWriteConnection(FamilyTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+        try {
+            $family->setNeedsReview(false);
+            $family->save($con);
+            PersonQuery::create()
+                ->filterByFamId($family->getId())
+                ->update(['NeedsReview' => false], $con);
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Could not approve this family'),
+                [],
+                500,
+                $e,
+                $request
+            );
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);

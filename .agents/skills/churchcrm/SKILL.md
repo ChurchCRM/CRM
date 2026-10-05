@@ -24,6 +24,7 @@ Load `skill-architecture.md` only when adding or editing a skill.
 |-------|------------|
 | [Slim MVC Skill](./slim-mvc-skill.md) | Slim apps under `src/` |
 | [Configuration Management](./configuration-management.md) | SystemConfig |
+| [Settings Placement](./settings-placement.md) | Where a setting lives, area admin hub |
 
 ## Database
 

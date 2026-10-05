@@ -91,7 +91,7 @@ runs:
 
     - name: Upload debug artifacts
       if: failure()
-      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+      uses: ./.github/actions/upload-artifact
       with:
         name: cypress-artifacts-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}-${{ github.run_id }}
         path: |
@@ -102,15 +102,8 @@ runs:
         if-no-files-found: ignore
 
     - name: Test Report
-      uses: dorny/test-reporter@1cc81a5edf733718d4850df304aaa21c05cd7280 # v3
+      uses: ./.github/actions/test-reporter
       if: always()
       with:
         name: 'PHP ${{ inputs.php-version }}: ${{ inputs.deployment }} (${{ inputs.test-name }})'
         path: cypress/reports/junit-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true

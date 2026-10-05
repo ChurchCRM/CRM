@@ -10,7 +10,12 @@ intent: How agents commit and push on ChurchCRM.
 - Branch from current `master`. `fix/issue-N-short` (or `fix/short`, `ci/short` with no issue) or `feature/short`
 - Link an open issue when the PR changes user-visible behavior (feature or bug fix). CI, docs, tooling, dependency, and trivial PRs need none; say why in the PR body
 - Imperative subject, under 72 chars
+- Milestone for a PR is the `version` in `package.json` (7.8.0 → milestone `7.8.0`). Do not guess from the open milestone list or the latest release. When the PR finishes an issue, the body says `Fixes #N` (not `refs`). On merge, `.github/workflows/pr-milestone-stamp.yml` copies that milestone onto those issues and closes them if they are still open
+- A bug uses the GitHub issue type Bug. Do not add a `bug` label. Other issue labels are one of `enhancement`, `question`, `Documentation`, `Epic`, `refactor`, or `cleanup`, plus the area labels that fit (`Feature: ...`, `UI`, `API`, `Security`, `Platform: ...`). Copy exact names from `gh label list --repo ChurchCRM/CRM`. Never invent a label. Do not use `feature` (use `enhancement`), `volunteer` (use `Feature: Volunteer`), or `translation` (use `Localization`). `Epic` is only for a parent that tracks child issues. Do not add `Stale` by hand. The Monday hygiene workflow asks for a reply after 45 quiet days and closes 14 days later if nobody answers. `Security`, `security-delete-required`, `Epic`, and `good first issue` stay open. `dependencies` is Dependabot only; human dependency work uses `Package Dependencies`
 - `npm run lint` and the matching build before you ask to commit
+- UI change: check the pages in a real browser before you ask to commit, at desktop, tablet (about 820px), and phone width (browsers stop near 500px). Look for column widths, wrapping, horizontal scroll, and working menus. Fix what is off, then look again
+- UI PR: attach screenshots of the important pages (desktop, plus tablet or phone) to the PR description. Take them in that browser pass on seeded data, never real names or emails. State in the PR body that the tablet/mobile pass was done
+- Before you ask to push, run every Cypress spec the change touches (new and existing) against the seeded test stack: `npm run docker:test:reset:db`, then `npx cypress run --config-file cypress/configs/docker.config.ts --spec "a.spec.js,b.spec.js"`. Report the pass counts. Push CI is not where a spec first fails
 - Stage files by explicit path, never `git add -A` / `.`. Before commit, `git status --short` and `git diff --cached --name-status` must list only files the task expects; unstage or delete strays (editor/`sed -i` backups like `*-E`, generated files, symlinks) first
 - Show the diff. Wait for yes before commit
 - Title and body match the current diff
@@ -54,4 +59,6 @@ check cannot run meaningfully before push.
 
 ## After push
 
-Do not approve or merge. Do not close issues unless the maintainer answers yes to a direct question.
+Do not approve or merge. Do not close an issue by hand unless the maintainer answers yes. A finished issue is closed by `Fixes #N` on the merged PR.
+
+A push that fixes review comments is not done until the threads it fixed are resolved. Check each thread against the pushed code first, then resolve it (`resolveReviewThread` in the GraphQL API). Reply with the commit SHA when the fix is not obvious. Leave a thread open, with a reply, when it is not fixed or you disagree. List each unresolved thread when you report back.
