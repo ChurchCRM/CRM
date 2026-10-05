@@ -21,10 +21,10 @@ describe("People Tools", () => {
     it("self-register", () => {
         cy.visit("people/self-register");
         cy.contains("Self Registrations");
-        cy.contains("New Self-Registrations");
-        cy.contains("Families");
-        cy.contains("Individuals (no family)");
-        cy.get("#selfRegistrations tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
+        cy.contains("Pending Registrations");
+        cy.contains("Pending review");
+        cy.contains("Total registrations");
+        cy.get("#selfRegistrations", { timeout: 10000 }).should("exist");
     });
 
     it("Find Neighbors", () => {

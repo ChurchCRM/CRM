@@ -16499,24 +16499,12 @@ msgid "Family Delete Confirmation"
 msgstr "Підтвердження видалення сімʼї"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Особи (без сімʼї)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Нові самостійні реєстрації"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Підтвердження видалення типу властивості"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Перегляньте нові сімʼї та осіб, які зареєструвалися через вашу публічну форму реєстрації"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Перегляньте нові реєстрації з вашої публічної форми нижче. Записи без електронної пошти або телефону позначені — перевірте контактну інформацію перед подальшим звʼязком."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

@@ -70,6 +70,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 }
                 ?>
                 <ul class="list-unstyled mb-0">
+                    <?php if ($person->getNeedsReview()) : ?>
+                    <li class="mb-1">
+                        <a href="<?= SystemURLs::getRootPath() ?>/people/self-register" class="badge bg-warning-lt text-warning text-decoration-none">
+                            <i class="fa-solid fa-user-clock me-1"></i><?= gettext('Pending review') ?>
+                        </a>
+                    </li>
+                    <?php endif; ?>
                     <?php if ($person->isDeceased()) : ?>
                     <li class="mb-1">
                         <span class="badge bg-secondary text-white">

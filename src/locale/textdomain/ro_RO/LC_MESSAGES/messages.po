@@ -16544,24 +16544,12 @@ msgid "Family Delete Confirmation"
 msgstr "Confirmare stergere familie"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Persoane individuale fara familie"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Inregistrari noi pe cont propriu"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Confirmare stergere tip de proprietate"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Examinati familiile si persoanele noi care s-au inregistrat prin formularul public de inregistrare"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Examinati mai jos inregistrarile noi din formularul public. Intrarile fara email sau telefon sunt marcate verificati datele de contact inainte de a lua legatura."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

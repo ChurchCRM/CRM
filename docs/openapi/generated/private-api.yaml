@@ -3016,6 +3016,30 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/family/{familyId}/approve-review':
+    post:
+      tags:
+        - Families
+      summary: "Approve a self-registered family, clearing its needs-review flag and its members' flags"
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Family and its members approved'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
   '/family/{familyId}/geocode':
     post:
       tags:
@@ -3241,10 +3265,10 @@ paths:
     get:
       tags:
         - Families
-      summary: 'Get the last 100 self-registered families'
+      summary: 'Get self-registered families still awaiting review'
       responses:
         '200':
-          description: 'Self-registered families ordered by date entered descending'
+          description: 'Self-registered families awaiting review, ordered by date entered descending'
           content:
             application/json:
               schema:
@@ -3676,6 +3700,32 @@ paths:
           description: 'Cannot deactivate yourself, the only administrator who can sign in, or EditRecords role required'
         '404':
           description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/person/{personId}/approve-review':
+    post:
+      tags:
+        - People
+      summary: 'Approve a self-registered, family-less person, clearing their needs-review flag'
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Person approved'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                type: object
+        '400':
+          description: 'Person belongs to a family — approve via the family instead'
       security:
         -
           ApiKeyAuth: []
@@ -5058,8 +5108,8 @@ paths:
     get:
       tags:
         - People
-      summary: 'List recently self-registered persons'
-      description: 'Returns up to 100 persons who registered via the public self-registration form, newest first.'
+      summary: 'List recently self-registered persons still awaiting review'
+      description: 'Returns family-less persons who registered via the public self-registration form and are still awaiting review, newest first.'
       operationId: getSelfRegisteredPersons
       responses:
         '200':
@@ -5072,6 +5122,57 @@ paths:
                 type: object
         '401':
           description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/self-register/count:
+    get:
+      tags:
+        - People
+      summary: 'Count self-registered families and family-less people awaiting review'
+      responses:
+        '200':
+          description: 'Pending count'
+          content:
+            application/json:
+              schema:
+                properties:
+                  count: { type: integer }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/self-register/approve:
+    post:
+      tags:
+        - People
+      summary: 'Approve several self-registered families and family-less people at once'
+      description: 'Clears the needs-review flag on the listed self-registered families (and their members) and family-less people. Ids that are not pending self-registrations are ignored.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                families:
+                  type: array
+                  items: { type: integer }
+                persons:
+                  type: array
+                  items: { type: integer }
+              type: object
+      responses:
+        '200':
+          description: Approved
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  approved: { type: integer }
+                type: object
+        '403':
+          description: 'EditRecords permission required'
       security:
         -
           ApiKeyAuth: []

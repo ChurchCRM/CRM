@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-03 22:37+0000\n"
+"POT-Creation-Date: 2026-10-04 01:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1029,6 +1029,9 @@ msgstr ""
 msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
 msgstr ""
 
+msgid "An error occurred"
+msgstr ""
+
 msgid "An error occurred during demo data import"
 msgstr ""
 
@@ -1171,6 +1174,15 @@ msgid "Applying System Update..."
 msgstr ""
 
 msgid "Applying..."
+msgstr ""
+
+msgid "Approve"
+msgstr ""
+
+msgid "Approve selected"
+msgstr ""
+
+msgid "Approved"
 msgstr ""
 
 msgid "Approved Community Plugins"
@@ -2162,6 +2174,9 @@ msgstr ""
 msgid "Change Your Locale"
 msgstr ""
 
+msgid "Change in People Settings"
+msgstr ""
+
 msgid "Change required"
 msgstr ""
 
@@ -2933,6 +2948,12 @@ msgstr ""
 
 #. plugin:vonage:section:6:title
 msgid "Costs"
+msgstr ""
+
+msgid "Could not approve the selected registrations"
+msgstr ""
+
+msgid "Could not approve this family"
 msgstr ""
 
 msgid "Could not connect to MailChimp. Please check your API key."
@@ -6646,9 +6667,6 @@ msgstr ""
 msgid "Individual Deposit Report"
 msgstr ""
 
-msgid "Individuals (no family)"
-msgstr ""
-
 #. Context: countries
 msgid "Indonesia"
 msgstr ""
@@ -8239,9 +8257,6 @@ msgstr ""
 msgid "New Role"
 msgstr ""
 
-msgid "New Self-Registrations"
-msgstr ""
-
 msgid "New User"
 msgstr ""
 
@@ -9215,7 +9230,13 @@ msgstr ""
 msgid "Pending"
 msgstr ""
 
+msgid "Pending Registrations"
+msgstr ""
+
 msgid "Pending Self Verify"
+msgstr ""
+
+msgid "Pending review"
 msgstr ""
 
 msgid "People"
@@ -10165,6 +10186,9 @@ msgstr ""
 msgid "Registration Error"
 msgstr ""
 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr ""
+
 msgid "Regular Backups"
 msgstr ""
 
@@ -10420,7 +10444,10 @@ msgstr ""
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr ""
 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
+msgid "Review now"
+msgstr ""
+
+msgid "Review self registrations"
 msgstr ""
 
 msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
@@ -10905,6 +10932,9 @@ msgstr ""
 msgid "Select how do you want to request the family information to be verified"
 msgstr ""
 
+msgid "Select month"
+msgstr ""
+
 msgid "Select none"
 msgstr ""
 
@@ -10945,6 +10975,12 @@ msgid "Self Verify"
 msgstr ""
 
 msgid "Self-Registration"
+msgstr ""
+
+msgid "Self-registration is disabled"
+msgstr ""
+
+msgid "Self-registration is enabled"
 msgstr ""
 
 msgid "Self-service"
@@ -11921,6 +11957,9 @@ msgstr ""
 msgid "The property is successfully unassigned."
 msgstr ""
 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr ""
+
 msgid "The record could not be found."
 msgstr ""
 
@@ -12032,6 +12071,9 @@ msgstr ""
 msgid "This event type is used by"
 msgstr ""
 
+msgid "This family is not a pending self-registration"
+msgstr ""
+
 msgid "This field is required"
 msgstr ""
 
@@ -12080,10 +12122,16 @@ msgstr ""
 msgid "This person already has a user account."
 msgstr ""
 
+msgid "This person belongs to a family — approve the family instead"
+msgstr ""
+
 msgid "This person is deceased"
 msgstr ""
 
 msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr ""
+
+msgid "This person is not a pending self-registration"
 msgstr ""
 
 msgid "This plugin does not support connection testing."
@@ -12114,6 +12162,9 @@ msgid "This report lists every event whose end date has passed but which is stil
 msgstr ""
 
 msgid "This role cannot be deleted."
+msgstr ""
+
+msgid "This self-registered family is pending review"
 msgstr ""
 
 msgid "This setting must be a number"
@@ -12375,6 +12426,9 @@ msgid "Total purchases: %s"
 msgstr ""
 
 msgid "Total raised (no goal set)"
+msgstr ""
+
+msgid "Total registrations"
 msgstr ""
 
 msgid "Totals"
@@ -13208,6 +13262,9 @@ msgstr ""
 msgid "Visit Our Website"
 msgstr ""
 
+msgid "Visitors can sign up on your public registration form."
+msgstr ""
+
 msgid "Volunteer"
 msgstr ""
 
@@ -13596,6 +13653,9 @@ msgstr ""
 msgid "Yes, delete"
 msgstr ""
 
+msgid "Yesterday"
+msgstr ""
+
 msgid "You are about to add a new deposit without a comment"
 msgstr ""
 
@@ -13903,6 +13963,9 @@ msgstr ""
 msgid "days"
 msgstr ""
 
+msgid "days ago"
+msgstr ""
+
 msgid "deceased"
 msgstr ""
 
@@ -14188,6 +14251,9 @@ msgid "select an option"
 msgstr ""
 
 msgid "selected family has no coordinates"
+msgstr ""
+
+msgid "self-registrations are waiting for review"
 msgstr ""
 
 msgid "skip must be zero or a positive integer"

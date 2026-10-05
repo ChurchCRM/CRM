@@ -16516,24 +16516,12 @@ msgid "Family Delete Confirmation"
 msgstr "تأكيد حذف العائلة"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "أفراد (بدون عائلة)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "التسجيلات الذاتية الجديدة"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "تأكيد حذف نوع الخاصية"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "مراجعة العائلات والأفراد الجدد الذين سجّلوا عبر نموذج التسجيل العام"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "راجع التسجيلات الجديدة من نموذج التسجيل العام أدناه. الإدخالات التي لا تحتوي على بريد إلكتروني أو هاتف مؤشرة — تحقق من معلومات الاتصال قبل المتابعة."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"

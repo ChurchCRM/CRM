@@ -103,6 +103,10 @@ class Menu
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'FamilyEditor.php', $isAddRecordsEnabled, 'fa-people-roof'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'people/family', true, 'fa-people-roof'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Map'), 'people/map', true, 'fa-map'));
+        $selfRegisterItem = new MenuItem(gettext('Self Registrations'), 'people/self-register', true, 'fa-user-clock');
+        // Count loads from the API after page load (CRMJSOM.js loadSelfRegisterPendingCount) so the menu adds no query.
+        $selfRegisterItem->addCounter(new MenuCounter('selfRegisterPending', 'bg-warning d-none', 0, gettext('Pending review')));
+        $peopleMenu->addSubMenu($selfRegisterItem);
 
         if ($isAdmin || $isMenuOptions) {
             $adminMenu = new MenuItem(gettext('Admin'), '', true);

@@ -157,6 +157,62 @@ describe("API Private Family", () => {
         });
     });
 
+    describe("POST /api/family/{familyId}/approve-review - Approve Self-Registered Family", () => {
+        it("Rejects a user without EditRecords", () => {
+            cy.makePrivateNoPermAPICall(
+                "POST",
+                "/api/family/23/approve-review",
+                null,
+                403,
+            );
+        });
+
+        it("Clears the family's needs-review flag and cascades to its members", () => {
+            // seed.sql family 23 (Turner) is self-registered (fam_EnteredBy = -1)
+            // with members 115 and 116, all still pending review.
+
+            // First: assert family 23 IS in the pending list
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/families/self-register",
+                null,
+                200,
+            ).then((response) => {
+                const ids = response.body.families.map((f) => f.Id);
+                expect(ids).to.include(23);
+            });
+
+            // Then approve and verify removal
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/family/23/approve-review",
+                null,
+                200,
+            ).then((response) => {
+                expect(response.body).to.have.property("success", true);
+            });
+
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/families/self-register",
+                null,
+                200,
+            ).then((response) => {
+                const ids = response.body.families.map((f) => f.Id);
+                expect(ids).to.not.include(23);
+            });
+
+            cy.makePrivateAdminAPICall("GET", "/api/person/116", null, 200).then((response) => {
+                expect(response.body.NeedsReview).to.equal(false);
+            });
+        });
+
+        it("Rejects approving a family that is not a pending self-registration", () => {
+            // family 1 (Campbell) is staff-created
+            cy.makePrivateAdminAPICall("POST", "/api/family/1/approve-review", null, 400);
+        });
+    });
+
     describe("GET /api/families/self-verify - Self-Verified Families", () => {
         it("Returns 200 with families array", () => {
             cy.makePrivateAdminAPICall(

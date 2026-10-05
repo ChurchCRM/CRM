@@ -94,9 +94,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
-                <a href="<?= $sRootPath ?>/people/self-register" class="btn btn-outline-info">
-                    <i class="fa-solid fa-user-clock me-1"></i><?= gettext('New Self-Registrations') ?>
-                </a>
                 <?php if ($canEmail): ?>
                     <button type="button" class="btn btn-outline-primary"
                             data-email-composer
