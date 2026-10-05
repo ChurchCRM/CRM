@@ -52,8 +52,6 @@ reviews:
     ignore_branches:
       - "locale/.*"
       - "master"
-    ignore_title_keywords:
-      - "chore(marketing): update marketing visuals"
     ignore_usernames:
       - "github-actions[bot]"
       - "dependabot[bot]"
@@ -69,6 +67,7 @@ reviews:
     - "!**/*.min.js"
     - "!**/*.lock"
     - "!src/skin/external/**"
+    - "!playwright/workflows/**"
     - "!playwright/**/*.png"
     - "!**/*.png"
     - "!**/*.jpg"
