@@ -637,7 +637,10 @@ function handleAssignmentAction(action: string, assignmentId: number, personName
   if (action === "cancel") {
     confirmAction(
       i18next.t("Cancel this assignment"),
-      i18next.t("Take {{name}} off this position? They will be told, and the slot reopens.", { name: personName }),
+      i18next.t(
+        "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens.",
+        { name: personName },
+      ),
       () => {
         deleteAssignment(assignmentId)
           .then(() => {

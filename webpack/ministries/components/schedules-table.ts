@@ -206,7 +206,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
           <td class="text-center">${statusBadge(schedule.active)}</td>
           <td class="text-center">
             ${actionMenu([
-              {
+              schedule.active && {
                 type: "button",
                 icon: "fa-solid fa-wand-magic-sparkles",
                 label: i18next.t("Generate occurrences"),

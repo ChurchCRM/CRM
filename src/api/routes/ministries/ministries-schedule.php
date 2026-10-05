@@ -768,6 +768,7 @@ function listVolunteerScheduleEligiblePeople(Request $request, Response $respons
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this schedule, a new default is not qualified, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such schedule, or a default names an unknown person"),
+ *     @OA\Response(response=409, description="The schedule is inactive: reactivate it first"),
  *     @OA\Response(response=200, description="OK",
  *         @OA\JsonContent(
  *             @OA\Property(property="created", type="integer"),
@@ -799,6 +800,10 @@ function generateVolunteerOccurrences(Request $request, Response $response): Res
     /** @var VolunteerSchedule $schedule */
     $schedule = $request->getAttribute('volunteerSchedule');
     $input = (array) $request->getParsedBody();
+
+    if (!$schedule->getActive()) {
+        return SlimUtils::renderErrorJSON($response, gettext('This schedule is inactive. Reactivate it to generate its occurrences.'), [], 409, null, $request);
+    }
 
     $through = null;
     if (isset($input['through']) && $input['through'] !== '') {

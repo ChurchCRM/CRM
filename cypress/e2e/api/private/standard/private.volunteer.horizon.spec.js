@@ -432,6 +432,11 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
             occurrencesOf(schedules.closed).should("have.length", 0);
         });
 
+        it("refuses Generate for a paused schedule (409), as the daily run skips it", () => {
+            api("POST", `${URL}/schedules/${schedules.paused}/generate`, {}, 409).its("body.message").should("contain", "inactive");
+            occurrencesOf(schedules.paused).should("have.length", 0);
+        });
+
         it("records the day and what it made, for Ministry Settings", () => {
             dbOk("SELECT cfg_name AS name, cfg_value AS value FROM config_cfg WHERE cfg_name IN (?, ?)", [TOP_UP_DATE, TOP_UP_RESULT]).then(
                 (rows) => {
