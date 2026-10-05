@@ -135,6 +135,20 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
             throw new HttpNotFoundException($request, gettext('Option not found'));
         }
 
+        $roleGroup = GroupQuery::create()->findOneByRoleListId($listId);
+        if ($roleGroup !== null) {
+            try {
+                (new GroupService())->deleteGroupRole((int) $roleGroup->getId(), $optionId);
+            } catch (\InvalidArgumentException $e) {
+                if ($e->getCode() === 404) {
+                    throw new HttpNotFoundException($request, gettext('Option not found'));
+                }
+                throw new HttpBadRequestException($request, gettext('Cannot delete the only remaining option'));
+            }
+
+            return SlimUtils::renderSuccessJSON($response);
+        }
+
         $deletedSeq = $option->getOptionSequence();
         $option->delete();
 
@@ -172,13 +186,6 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
                 GroupQuery::create()
                     ->filterByType($optionId)
                     ->update(['Type' => 0]);
-                break;
-            default:
-                // Dynamic list — check if it is a group role list and reset affected members
-                $roleGroup = GroupQuery::create()->findOneByRoleListId($listId);
-                if ($roleGroup !== null) {
-                    (new GroupService())->moveMembersOffDeletedRole($roleGroup, $optionId);
-                }
                 break;
         }
 

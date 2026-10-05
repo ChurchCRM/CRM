@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -16,7 +15,6 @@ use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
 
 class GroupService
@@ -215,35 +213,38 @@ class GroupService
     /**
      * Delete one of a group's roles. Role IDs are never renumbered, because memberships and
      * the group's default role hold them; only the display order closes up (#10338).
+     * If the deleted role was the default, the first remaining role becomes the default;
+     * members who had it move to the default.
      *
      * @return array the remaining roles, as getGroupRoles() returns them
      */
     public function deleteGroupRole(int $groupID, int $groupRoleID): array
     {
         AuthService::requireUserGroupMembership('bManageGroups');
-        $group = GroupQuery::create()->findOneById($groupID);
-        if ($group === null) {
-            throw new \InvalidArgumentException('Group not found', 404);
-        }
-        $role = ListOptionQuery::create()
-            ->filterById($group->getRoleListId())
-            ->filterByOptionId($groupRoleID)
-            ->findOne();
-        if ($role === null) {
-            throw new \InvalidArgumentException('Group role not found', 404);
-        }
-        if (ListOptionQuery::create()->filterById($group->getRoleListId())->count() <= 1) {
-            throw new \InvalidArgumentException('A group must keep at least one role', 400);
-        }
 
         $con = Propel::getWriteConnection(GroupTableMap::DATABASE_NAME);
         $con->beginTransaction();
         try {
+            // Locking the group serializes deletes on its roles, so two cannot both pass the
+            // last-role check below.
+            $group = GroupQuery::create()->filterById($groupID)->lockForUpdate()->findOne($con);
+            if ($group === null) {
+                throw new \InvalidArgumentException('Group not found', 404);
+            }
+            $roleListId = $group->getRoleListId();
+            $roles = fn (): ListOptionQuery => ListOptionQuery::create()->filterById($roleListId);
+            $role = $roles()->filterByOptionId($groupRoleID)->findOne($con);
+            if ($role === null) {
+                throw new \InvalidArgumentException('Group role not found', 404);
+            }
+            if ($roles()->count($con) <= 1) {
+                throw new \InvalidArgumentException('A group must keep at least one role', 400);
+            }
+
             $deletedSequence = $role->getOptionSequence();
             $role->delete($con);
 
-            $laterRoles = ListOptionQuery::create()
-                ->filterById($group->getRoleListId())
+            $laterRoles = $roles()
                 ->filterByOptionSequence($deletedSequence, Criteria::GREATER_THAN)
                 ->find($con);
             foreach ($laterRoles as $laterRole) {
@@ -251,7 +252,15 @@ class GroupService
                 $laterRole->save($con);
             }
 
-            $this->moveMembersOffDeletedRole($group, $groupRoleID, $con);
+            if ((int) $group->getDefaultRole() === $groupRoleID) {
+                $group->setDefaultRole($roles()->orderByOptionSequence()->findOne($con)->getOptionId());
+                $group->save($con);
+            }
+            Person2group2roleP2g2rQuery::create()
+                ->filterByGroupId($groupID)
+                ->filterByRoleId($groupRoleID)
+                ->update(['RoleId' => (int) $group->getDefaultRole()], $con);
+
             $con->commit();
         } catch (\Throwable $e) {
             $con->rollBack();
@@ -259,29 +268,6 @@ class GroupService
         }
 
         return $this->getGroupRoles($groupID);
-    }
-
-    /**
-     * Call after a role is removed from a group's role list. If it was the default, the first
-     * remaining role becomes the default; members who had it move to the default.
-     */
-    public function moveMembersOffDeletedRole(Group $group, int $deletedRoleID, ?ConnectionInterface $con = null): void
-    {
-        if ((int) $group->getDefaultRole() === $deletedRoleID) {
-            $firstRole = ListOptionQuery::create()
-                ->filterById($group->getRoleListId())
-                ->orderByOptionSequence()
-                ->findOne($con);
-            if ($firstRole !== null) {
-                $group->setDefaultRole($firstRole->getOptionId());
-                $group->save($con);
-            }
-        }
-
-        Person2group2roleP2g2rQuery::create()
-            ->filterByGroupId($group->getId())
-            ->filterByRoleId($deletedRoleID)
-            ->update(['RoleId' => (int) $group->getDefaultRole()], $con);
     }
 
     public function addGroupRole(string $groupID, string $groupRoleName): array
