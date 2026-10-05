@@ -289,6 +289,7 @@ class PeopleReportService
      * Who gets a mailing label when a report is printed as labels (#10343): person id =>
      * label modes. A row keeps its own LabelMode; other rows get $defaultMode. Someone in
      * the report twice, such as a birthday and an anniversary in the same month, gets both.
+     * An anniversary's household label lists both spouses (heads and spouses of the family).
      * Empty when the report is unknown or a required filter is missing.
      *
      * @param array<string, mixed> $input query-string values, as for resolveParams()
@@ -305,9 +306,26 @@ class PeopleReportService
         }
 
         $entries = [];
+        $anniversaryFamilies = [];
         foreach ($this->run($slug, $values) as $row) {
             $mode = $row['LabelMode'] ?? $defaultMode;
             $entries[(int) $row['Id']][$mode] = $mode;
+            if (($row['LabelMode'] ?? null) === self::LABEL_HOUSEHOLD) {
+                $anniversaryFamilies[(int) $row['FamilyId']] = true;
+            }
+        }
+
+        // The classification filter picks the couples; the label names both spouses even
+        // when the filter matched only one of them.
+        if ($anniversaryFamilies !== []) {
+            $couple = PersonQuery::create()
+                ->filterByFamId(array_keys($anniversaryFamilies), Criteria::IN)
+                ->filterByFmrId([self::FAMILY_ROLE_HEAD, self::FAMILY_ROLE_SPOUSE])
+                ->select(['Id'])
+                ->find();
+            foreach ($couple as $personId) {
+                $entries[(int) $personId][self::LABEL_HOUSEHOLD] = self::LABEL_HOUSEHOLD;
+            }
         }
 
         return array_map('array_values', $entries);

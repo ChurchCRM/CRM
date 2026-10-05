@@ -57,6 +57,13 @@ describe("People Reports: Print Labels (#10343)", () => {
         });
     });
 
+    // Nathan (classification 1) and Vivan Lewis (classification 2) married in February.
+    it("names both spouses when the classification filter matches only one", () => {
+        labelNames("report=wedding-anniversaries&month=2&classification[]=1").then((names) => {
+            expect(names).to.deep.equal(["Nathan & Vivan Lewis"]);
+        });
+    });
+
     it("uses the grouping chosen in the dialog on other reports", () => {
         labelNames("report=birthdays&month=7&classification[]=0&groupbymode=indiv").then((names) => {
             expect(names).to.include.members(["Mr Franklin Beck", "Miss Stella Beck"]);

@@ -12,25 +12,39 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\CsvExporter;
-use Propel\Runtime\Propel;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
- * Rows of a query whose values, including every id list, are bound as parameters.
+ * The person and family columns a label reads, keyed by column name as the
+ * label code below expects.
  */
-function FetchLabelRows(string $sSQL, array $aParams): array
+function LabelRow(Person $person): array
 {
-    $stmt = Propel::getConnection()->prepare($sSQL);
-    $stmt->execute($aParams);
+    $family = $person->getFamily();
 
-    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-}
-
-/**
- * "?, ?, ?" for an IN list of the given ids.
- */
-function IdPlaceholders(array $aIds): string
-{
-    return implode(',', array_fill(0, count($aIds), '?'));
+    return [
+        'per_ID'        => $person->getId(),
+        'per_fam_ID'    => $person->getFamId(),
+        'per_fmr_ID'    => $person->getFmrId(),
+        'per_Title'     => $person->getTitle(),
+        'per_FirstName' => $person->getFirstName(),
+        'per_LastName'  => $person->getLastName(),
+        'per_Suffix'    => $person->getSuffix(),
+        'per_Address1'  => $person->getAddress1(),
+        'per_Address2'  => $person->getAddress2(),
+        'per_City'      => $person->getCity(),
+        'per_State'     => $person->getState(),
+        'per_Zip'       => $person->getZip(),
+        'fam_Address1'  => $family?->getAddress1(),
+        'fam_Address2'  => $family?->getAddress2(),
+        'fam_City'      => $family?->getCity(),
+        'fam_State'     => $family?->getState(),
+        'fam_Zip'       => $family?->getZip(),
+    ];
 }
 
 function GroupBySalutation(string $famID, $aAdultRole, $aChildRole, array $aPersonIds)
@@ -47,18 +61,21 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole, array $aPers
     // such as"All Souls Church"
     // Similar logic is applied if mailing to Sunday School children.
 
-    $aFamRows = FetchLabelRows('SELECT * FROM family_fam WHERE fam_ID = ?', [(int) $famID]);
-    if ($aFamRows === []) {
+    $family = FamilyQuery::create()->findPk((int) $famID);
+    if ($family === null) {
         return 'Invalid Family' . $famID;
     }
-    extract($aFamRows[0]);
+    $fam_Name = $family->getName();
 
     // Only family members who get this household label (exclude deceased)
-    $aMembers = FetchLabelRows(
-        'SELECT * FROM person_per WHERE per_fam_ID = ? AND per_ID IN (' . IdPlaceholders($aPersonIds) . ')'
-        . ' AND per_DateDeceased IS NULL ORDER BY per_LastName, per_FirstName',
-        array_merge([(int) $famID], $aPersonIds)
-    );
+    $aMembers = array_map('LabelRow', PersonQuery::create()
+        ->filterByFamId((int) $famID)
+        ->filterById($aPersonIds, Criteria::IN)
+        ->filterByDateDeceased(null, Criteria::ISNULL)
+        ->orderByLastName()
+        ->orderByFirstName()
+        ->find()
+        ->getData());
 
     // Initialize to"Nothing to return"  If this value is returned
     // the calling program knows to skip this mode and try the next
@@ -617,12 +634,15 @@ function GenerateLabels(&$pdf, array $aEntries, $iBulkMailPresort, $bToParents, 
         return $sLabelList;
     }
 
-    $aRows = FetchLabelRows(
-        'SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID'
-        . ' WHERE per_ID IN (' . IdPlaceholders($aPersonIds) . ') AND per_DateDeceased IS NULL'
-        . ' ORDER BY per_LastName, per_FirstName, fam_Zip',
-        $aPersonIds
-    );
+    $aRows = array_map('LabelRow', PersonQuery::create()
+        ->filterById($aPersonIds, Criteria::IN)
+        ->filterByDateDeceased(null, Criteria::ISNULL)
+        ->leftJoinWithFamily()
+        ->orderByLastName()
+        ->orderByFirstName()
+        ->addAscendingOrderByColumn(FamilyTableMap::COL_FAM_ZIP)
+        ->find()
+        ->getData());
     $didFam = [];
 
     foreach ($aRows as $aRow) {
