@@ -39,10 +39,6 @@ reviews:
   related_prs: true
   assess_linked_issues: true
   enable_prompt_for_ai_agents: true
-  instructions: >-
-    Apply maintainer-review-gates.md. Hard blocks only.
-    Do not ask for locale:build or messages.po.
-
   pre_merge_checks:
     override_requested_reviewers_only: true
     title:
@@ -91,12 +87,6 @@ reviews:
     auto_pause_after_reviewed_commits: 5
     base_branches:
       - ".*"
-    ignore_title_keywords:
-      - "locale: update translations from POEditor"
-      - "Update locale strings"
-      - "chore(marketing): update marketing visuals"
-      - "WIP"
-      - "DO NOT MERGE"
     ignore_usernames:
       - "github-actions[bot]"
       - "dependabot[bot]"
@@ -118,6 +108,10 @@ reviews:
     - "!**/*.jpg"
 
   path_instructions:
+    - path: "**/*"
+      instructions: |
+        Apply maintainer-review-gates.md. Hard blocks only.
+        Do not ask for locale:build or messages.po.
     - path: "src/**/*.php"
       instructions: |
         PHP 8.4. Propel ORM only — flag new RunQuery() or raw SQL.
