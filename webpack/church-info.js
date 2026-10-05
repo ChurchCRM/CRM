@@ -6,6 +6,9 @@
  * - States:    GET /api/public/data/countries/{code}/states
  */
 
+import { buildAdminAPIUrl } from "./api-utils";
+import L from "./leaflet-global";
+
 // Holds the active Leaflet map instance so it can be torn down and recreated
 // when coordinates are regenerated (Leaflet does not support re-centering a
 // destroyed/re-initialized container without a fresh L.map() call).
@@ -65,8 +68,6 @@ function reinitChurchMap() {
 document.addEventListener("DOMContentLoaded", () => {
   const countrySelect = document.getElementById("sChurchCountry");
   const stateContainer = document.getElementById("sChurchStateContainer");
-  const defaultCountrySelect = document.getElementById("sDefaultCountry");
-  const defaultStateContainer = document.getElementById("sDefaultStateContainer");
 
   if (!countrySelect || !stateContainer || !window.TomSelect) {
     return;
@@ -75,8 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const $countrySelect = $(countrySelect);
   const userSelectedCountry = $countrySelect.data("user-selected") || "";
   const userSelectedState = stateContainer.dataset.userSelectedState || "";
-
-  const userSelectedDefaultState = defaultStateContainer ? defaultStateContainer.dataset.userSelectedState || "" : "";
 
   // ── Helpers ──────────────────────────────────────────────────────────────
 
@@ -230,79 +229,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ── Default country → default state ─────────────────────────────────────
-
-  if (defaultCountrySelect && defaultStateContainer) {
-    const $defaultCountrySelect = $(defaultCountrySelect);
-    const userSelectedDefaultCountry = $defaultCountrySelect.data("user-selected") || "";
-
-    populateCountrySelect($defaultCountrySelect, userSelectedDefaultCountry, (preselected) => {
-      if (preselected) {
-        updateStateField(
-          defaultStateContainer,
-          "sDefaultState",
-          "sDefaultState",
-          preselected,
-          userSelectedDefaultState,
-        );
-      } else {
-        defaultStateContainer.innerHTML = "";
-        defaultStateContainer.appendChild(
-          buildStateInput("sDefaultState", "sDefaultState", userSelectedDefaultState)[0],
-        );
-      }
-    });
-
-    $defaultCountrySelect.on("change", function () {
-      updateStateField(defaultStateContainer, "sDefaultState", "sDefaultState", this.value, "");
-    });
-  }
-
   // ── Other TomSelect dropdowns (language, timezone) ──────────────────────────
 
   $(".auto-tomselect").each(function () {
-    if (this.id !== "sChurchCountry" && this.id !== "sDefaultCountry") {
+    if (this.id !== "sChurchCountry") {
       if (!this.tomselect) {
         initTomSelect(this);
       }
     }
   });
-
-  // ── Copy from church address ────────────────────────────────────────────────
-
-  const copyBtn = document.getElementById("copy-church-address");
-  if (copyBtn) {
-    copyBtn.addEventListener("click", () => {
-      // Copy city
-      const cityVal = document.getElementById("sChurchCity");
-      const defaultCity = document.getElementById("sDefaultCity");
-      if (cityVal && defaultCity) {
-        defaultCity.value = cityVal.value;
-      }
-
-      // Copy zip
-      const zipVal = document.getElementById("sChurchZip");
-      const defaultZip = document.getElementById("sDefaultZip");
-      if (zipVal && defaultZip) {
-        defaultZip.value = zipVal.value;
-      }
-
-      // Copy country — set via TomSelect API, then update default state
-      const churchCountryEl = document.getElementById("sChurchCountry");
-      const defaultCountryEl = document.getElementById("sDefaultCountry");
-      if (churchCountryEl && defaultCountryEl?.tomselect) {
-        const countryCode = churchCountryEl.value;
-        defaultCountryEl.tomselect.setValue(countryCode);
-
-        // Reuse shared helper so fetching, UI rebuild, and error handling stay consistent
-        const churchStateEl = document.getElementById("sChurchState");
-        const stateValue = churchStateEl ? churchStateEl.value : "";
-        if (defaultStateContainer) {
-          updateStateField(defaultStateContainer, "sDefaultState", "sDefaultState", countryCode, stateValue);
-        }
-      }
-    });
-  }
 
   // ── Map initialization ────────────────────────────────────────────────────
 
@@ -476,10 +411,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  initChurchLogoUploader();
+
   // ── Live Display Preview ────────────────────────────────────────────────
 
   initChurchInfoPreview();
 });
+
+const CHURCH_LOGO_API_PATH = "system/church-logo";
+
+/**
+ * Church Logo card: the shared photo uploader, used the way the person and
+ * family pages use it. The server renders the logo state, so an upload or a
+ * removal just reloads the page.
+ */
+function initChurchLogoUploader() {
+  const uploadBtn = document.getElementById("church-logo-upload-btn");
+  if (!uploadBtn || typeof window._CRM_createPhotoUploader !== "function") {
+    return;
+  }
+
+  window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+  window.CRM.photoUploader = window.CRM.createPhotoUploader({
+    uploadUrl: buildAdminAPIUrl(CHURCH_LOGO_API_PATH),
+    maxFileSize: window.CRM.maxUploadSizeBytes,
+    aspectRatio: "free",
+    photoWidth: 1200,
+    photoHeight: 400,
+    webcam: false,
+    title: window.i18next ? i18next.t("Church Logo") : "Church Logo",
+    onComplete: () => window.location.reload(),
+  });
+  uploadBtn.addEventListener("click", () => window.CRM.photoUploader.show());
+
+  document.getElementById("church-logo-remove-btn")?.addEventListener("click", () => {
+    window.CRM.AdminAPIRequest({ method: "DELETE", path: CHURCH_LOGO_API_PATH }).done(() => window.location.reload());
+  });
+}
 
 function initChurchInfoPreview() {
   const textFieldIds = [

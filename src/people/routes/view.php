@@ -111,7 +111,8 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $personData = mysqli_fetch_array($rsPerson, MYSQLI_ASSOC);
 
     // ── Custom fields master (definitions) ───────────────────────────────────
-    $customFieldsMaster = PersonCustomMasterQuery::create()->orderByOrder()->find();
+    // Filter custom fields by field-level permissions (GHSA-p6xx-xx98-f323)
+    $visibleCustomFields = $person->getVisibleCustomFieldDefinitions();
 
     $sSQL       = 'SELECT * FROM person_custom WHERE per_ID = ' . $iPersonID;
     $rsCustomData = RunQuery($sSQL);
@@ -237,8 +238,8 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'plaintextMailingAddress' => $plaintextMailingAddress,
         'formattedMailingAddress' => $formattedMailingAddress,
         'bOkToEdit'              => $bOkToEdit,
-        // Custom fields
-        'customFieldsMaster'     => $customFieldsMaster,
+        // Custom fields (filtered by user's field-level permissions)
+        'customFieldsMaster'     => $visibleCustomFields,
         'aCustomData'            => $aCustomData,
         // Groups
         'assignedGroupsData'     => $assignedGroupsData,

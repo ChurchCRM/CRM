@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\dto;
 
+use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Utils\GeoUtils;
 
 /**
@@ -19,6 +20,8 @@ class ChurchMetaData
         ['id' => 'facebook', 'label' => 'Facebook', 'config' => 'sChurchFacebook', 'icon' => 'fa-brands fa-facebook'],
         ['id' => 'instagram', 'label' => 'Instagram', 'config' => 'sChurchInstagram', 'icon' => 'fa-brands fa-instagram'],
     ];
+
+    private const BUNDLED_LOGO = '/Images/churchcrm-logo-ink-blue.svg';
 
     private static function readString(string $key): string
     {
@@ -141,14 +144,31 @@ class ChurchMetaData
         return strtolower((string) $scheme) === 'https' && !empty($host);
     }
 
+    /**
+     * Absolute URL of the church logo for email templates: the uploaded logo,
+     * else a valid `sChurchLogoURL`, else the bundled ChurchCRM logo.
+     */
     public static function getChurchLogoURL(): string
     {
-        $configured = self::readString('sChurchLogoURL');
-        if ($configured !== '' && filter_var($configured, FILTER_VALIDATE_URL) !== false) {
-            return $configured;
+        $uploaded = ChurchLogoService::getUrlPath();
+        if ($uploaded === null) {
+            $configured = self::readString('sChurchLogoURL');
+            if ($configured !== '' && filter_var($configured, FILTER_VALIDATE_URL) !== false) {
+                return $configured;
+            }
         }
 
-        return SystemURLs::getURL() . '/Images/churchcrm-logo-ink-blue.svg';
+        return SystemURLs::getURL() . ($uploaded ?? self::BUNDLED_LOGO);
+    }
+
+    /**
+     * Root-relative URL of the church logo for the application's own pages:
+     * the uploaded logo, else the bundled ChurchCRM logo. Never the remote
+     * `sChurchLogoURL`, which the CSP `img-src 'self'` would block.
+     */
+    public static function getChurchLogoPath(): string
+    {
+        return SystemURLs::getRootPath() . (ChurchLogoService::getUrlPath() ?? self::BUNDLED_LOGO);
     }
 
     public static function getChurchLatitude(): float
@@ -182,7 +202,7 @@ class ChurchMetaData
     private static function updateLatLng(): void
     {
         if (self::getChurchFullAddress() !== '') {
-            $latLng = GeoUtils::getLatLong(self::getChurchFullAddress());
+            $latLng = GeoUtils::getLatLong(self::getChurchFullAddress(), null, null, null, self::readString('sChurchCountry'));
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 SystemConfig::setValue('iChurchLatitude', $latLng['Latitude']);
                 SystemConfig::setValue('iChurchLongitude', $latLng['Longitude']);

@@ -1,0 +1,55 @@
+name: 'Composer install'
+description: 'Set up PHP 8.4 via shivammathur/setup-php and run composer install, with caching and retry.'
+
+inputs:
+  no-dev:
+    description: 'Install without dev dependencies'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    # Pinned to 2.37.2 (patched against GHSA-5wxr-w449-57cm and CVE-2026-46420,
+    # both fixed in 2.37.1+). Neither applies to this usage: we always pass an
+    # explicit php-version (skips the CVE-2026-46420 repo-file resolution path)
+    # and never pin a vulnerable Composer version (GHSA-5wxr-w449-57cm).
+    - name: Setup PHP 8.4
+      uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+      with:
+        php-version: '8.4'
+        extensions: bcmath, curl, fileinfo, filter, gd, gettext, iconv, mbstring, mysqli, session, zip, zlib
+        tools: none
+
+    - name: Cache Composer packages
+      uses: ./.github/actions/cache
+      with:
+        path: src/vendor
+        key: composer-${{ inputs.no-dev }}-${{ hashFiles('src/composer.lock') }}
+        restore-keys: composer-${{ inputs.no-dev }}-
+
+    - name: Install Composer dependencies
+      shell: bash
+      run: |
+        FLAGS="--no-interaction --prefer-dist"
+        if [ "$NO_DEV" = "true" ]; then
+          FLAGS="$FLAGS --no-dev"
+        fi
+
+        # Retry: transient GitHub API 500s on package zipball downloads are
+        # common, and --no-interaction disables composer's own source-fallback
+        # retry.
+        for attempt in 1 2 3; do
+          if (cd src && composer install $FLAGS); then
+            break
+          fi
+          if [ "$attempt" -eq 3 ]; then
+            echo "::error::composer install failed after 3 attempts"
+            exit 1
+          fi
+          echo "::warning::composer install failed (attempt $attempt/3); retrying in 5s"
+          sleep 5
+        done
+      env:
+        COMPOSER_MEMORY_LIMIT: -1
+        NO_DEV: ${{ inputs.no-dev }}

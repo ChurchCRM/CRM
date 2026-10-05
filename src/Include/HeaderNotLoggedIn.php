@@ -30,8 +30,6 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.css') ?>">
     <?php endif; ?>
 
-    <script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment.min.js') ?>"></script>
-
     <title>ChurchCRM: <?= InputUtils::escapeHTML($sPageTitle) ?></title>
 
     <?= PluginManager::getPluginHeadContent() ?>
@@ -39,20 +37,15 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
 </head>
 <body class="antialiased <?= InputUtils::escapeAttribute($sBodyClass ?? 'page-auth') ?>">
 
-  <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
-    // Initialize window.CRM if not already created by webpack bundles
-    if (!window.CRM) {
-        window.CRM = {};
-    }
-    
-    // Extend window.CRM with server-side configuration (preserving existing properties like notify)
-    Object.assign(window.CRM, {
-      root:"<?= SystemURLs::getRootPath() ?>",
-      churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
-      lang:<?= InputUtils::jsonEncodeForScript($localeInfo->getLanguageCode()) ?>,
-      isRTL:<?= $localeInfo->isRTL() ? 'true' : 'false' ?>,
-      systemLocale:<?= InputUtils::jsonEncodeForScript($localeInfo->getSystemLocale()) ?>,
-      locale:<?= InputUtils::jsonEncodeForScript($localeInfo->getLocale()) ?>,
-      shortLocale:<?= InputUtils::jsonEncodeForScript($localeInfo->getShortLocale()) ?>
-    });
+  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    window.CRM.applyPageConfig(<?= InputUtils::jsonEncodeForScript([
+        'root' => SystemURLs::getRootPath(),
+        'churchWebSite' => SystemConfig::getValue('sChurchWebSite'),
+        'lang' => $localeInfo->getLanguageCode(),
+        'isRTL' => $localeInfo->isRTL(),
+        'systemLocale' => $localeInfo->getSystemLocale(),
+        'locale' => $localeInfo->getLocale(),
+        'shortLocale' => $localeInfo->getShortLocale(),
+        'localeConfig' => $localeInfo->getLocaleConfigArray(),
+    ]) ?>);
   </script>

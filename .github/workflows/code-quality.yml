@@ -20,6 +20,9 @@ on:
       - '.gitignore'
       - '.ddev/**'
 
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -30,14 +33,14 @@ jobs:
     timeout-minutes: 15
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 1
       - name: Use Node.js (from .nvmrc)
-        uses: actions/setup-node@v7
+        uses: ./.github/actions/setup-node
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
@@ -49,6 +52,8 @@ jobs:
         run: npx biome format .
       - name: Lint check (biome)
         run: npx biome check webpack/
+      - name: Locale script unit tests
+        run: npm run locale:test
       - name: Seed schema charset check
         run: npm run validate:seed-charsets
       - name: MySQL upgrade script syntax check (no MariaDB-only column IF EXISTS)

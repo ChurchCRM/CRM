@@ -29,10 +29,19 @@ use ChurchCRM\Service\TelemetryService;
 
 $telemetryEnabled = TelemetryService::isEnabled();
 
+// Derive PostHog domains from the configured endpoint (e.g., https://us.i.posthog.com)
+// Assets use -assets subdomain: https://us-assets.i.posthog.com
+$posthogDomain = $telemetryEnabled
+    ? str_replace('://', '://', TelemetryService::POSTHOG_ENDPOINT)  // extract domain from endpoint
+    : '';
+$posthogAssetsDomain = $telemetryEnabled
+    ? preg_replace('/(.i\.posthog\.com)/', '-assets$1', TelemetryService::POSTHOG_ENDPOINT)
+    : '';
+
 $csp = [
     "default-src 'self'",
     "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' 'unsafe-eval' browser-update.org https://www.googletagmanager.com"
-        . ($telemetryEnabled ? ' https://eu-assets.i.posthog.com' : ''),
+        . ($telemetryEnabled ? ' ' . $posthogAssetsDomain : ''),
     "object-src 'none'",
     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
     "img-src 'self' data: https://secure.gravatar.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org",
@@ -40,7 +49,7 @@ $csp = [
     "frame-src 'self'",
     "font-src 'self' data: fonts.gstatic.com",
     "connect-src 'self' https://www.google-analytics.com"
-        . ($telemetryEnabled ? ' https://eu.i.posthog.com https://eu-assets.i.posthog.com' : ''),
+        . ($telemetryEnabled ? ' ' . TelemetryService::POSTHOG_ENDPOINT . ' ' . $posthogAssetsDomain : ''),
     "base-uri 'self'",
     "form-action 'self'",
 ];

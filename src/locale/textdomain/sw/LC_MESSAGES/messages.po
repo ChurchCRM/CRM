@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Picha"
 
 #: 
-msgid "Number of Columns"
-msgstr "Idadi ya safu"
-
-#: 
 msgid "Paper Size"
 msgstr "Ukubwa wa karatasi"
 
@@ -846,10 +842,6 @@ msgstr "Futa picha"
 #: 
 msgid "Timeline"
 msgstr "Rekodi ya matukio"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Ahadi na Malipo"
 
 #: 
 msgid "Value"
@@ -1674,30 +1666,6 @@ msgstr "Darasa"
 #: 
 msgid "Properties"
 msgstr "Mali"
-
-#: 
-msgid "Query Listing"
-msgstr "Uorodheshaji wa Maswali"
-
-#: 
-msgid "Query View"
-msgstr "Muonekano wa Maswali"
-
-#: 
-msgid "This value is required."
-msgstr "Thamani hii inahitajika."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Thamani hii lazima iwe nambari."
-
-#: 
-msgid "Run Query Again"
-msgstr "Endesha Swali Tena"
-
-#: 
-msgid "Execute Query"
-msgstr "Tekeleza Hoja"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -2625,10 +2593,6 @@ msgstr "Tazama Wanunuzi"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Ongeza Wafadhili kwenye Orodha ya Wanunuzi"
-
-#: 
-msgid "Data/Reports"
-msgstr "Data/Ripoti"
 
 #: 
 msgid "Family Properties"
@@ -4506,10 +4470,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Kwa kufafanua tarehe katika Kichagua Tarehe, kwa chaguo-msingi : Y-m-d, Kwa Kifaransa : d/m/Y kwa mfano."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Orodha Iliyotenganishwa na Koma ya Vitambulisho vya Watu vya watu wa kuwaarifu wakati familia mpya au mtu anaongezwa"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Ruhusu usomaji ambao haujaidhinishwa wa matukio kutoka kwa API ya kalenda ya nje"
 
@@ -5077,14 +5037,6 @@ msgstr[1] "Wenye umri wa miaka %d"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "PHP ZipArchive haipo"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "Ongeza Matokeo kwenye Cart"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Ondoa Matokeo kutoka kwa Cart"
 
 #: 
 msgid "Database Reset Functions"
@@ -6358,10 +6310,6 @@ msgid "Cart"
 msgstr "Kigari"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Badilisha hii katika Mipangilio ya Mfumo."
-
-#: 
 msgid "Church Membership"
 msgstr "Uanachama wa Kanisa"
 
@@ -6412,10 +6360,6 @@ msgstr "Unda au chagua amana ili kuanza."
 #: 
 msgid "Current Deposit"
 msgstr "Amana ya Sasa"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Mwaka wa fedha wa sasa"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6478,10 +6422,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Hakikisha amana zote za mwaka wa kodi zimefungwa kabla ya kutengeneza taarifa."
 
 #: 
-msgid "Export Options"
-msgstr "Chaguzi za Kutoa Data"
-
-#: 
 msgid "F"
 msgstr "K"
 
@@ -6496,10 +6436,6 @@ msgstr "Urambazaji wa Familia"
 #: 
 msgid "Feb"
 msgstr "Feb"
-
-#: 
-msgid "Filtering"
-msgstr "Kuchuja"
 
 #: 
 msgid "Finance"
@@ -6522,16 +6458,8 @@ msgid "Generate Tax Statements"
 msgstr "Tengeneza Taarifa za Kodi"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Tengeneza taarifa za utoaji za mwaka kwa wafadhili."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Tengeneza taarifa za utoaji zinazopunguzwa kodi. Zinaweza kuchapwa au kutumwa kwa barua pepe."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Tengeneza ripoti za kina kwa amana moja au muda fulani."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6592,10 +6520,6 @@ msgstr "Mar"
 #: 
 msgid "Membership Reports"
 msgstr "Ripoti za Uanachama"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Ripoti nyingi zinaweza kutolewa kama PDF au CSV."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6674,14 +6598,6 @@ msgid "Recording a Pledge"
 msgstr "Kurekodi Ahadi"
 
 #: 
-msgid "Report Tips"
-msgstr "Vidokezo vya Ripoti"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Ripoti zinazohusiana na haki ya kupiga kura ya wanachama."
-
-#: 
 msgid "Reset"
 msgstr "Anza upya"
 
@@ -6758,20 +6674,12 @@ msgid "Total Amount"
 msgstr "Jumla ya Kiasi"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Fuatilia ahadi na maendeleo ya malipo kwa ajili ya kampeni na bajeti."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Mahitaji Ambayo Hayajafikiwa"
 
 #: 
 msgid "Upgrade"
 msgstr "Sasisha"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Tumia vichujio vya kategoria na familia kutengeneza ripoti za makundi fulani ya wafadhili."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6796,10 +6704,6 @@ msgstr "Ahadi za Mwaka Mpaka Sasa"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Unaweza kuunda wanachama wa familia sasa au baadaye."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Mwaka wako wa fedha unaanza mwezi wa"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7356,10 +7260,6 @@ msgstr "Ondoa hesabu hii ya mahudhurio?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Chagua aina ya rekodi ambayo mali hii inatumika"
-
-#: 
-msgid "Total Pledges"
-msgstr "Jumla ya Ahadi"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -9033,10 +8933,6 @@ msgid "Current person"
 msgstr "Mtu wa sasa"
 
 #: 
-msgid "Data & Reports"
-msgstr "Data na Ripoti"
-
-#: 
 msgid "Database Reset"
 msgstr "Kuweka upya Hifadhidata"
 
@@ -10055,10 +9951,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Tazama na simamia faili za kumbukumbu za mfumo kwa utatuzi"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Tazama na endesha hoja zilizohifadhiwa za hifadhidata"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Tazama nambari za wanunuzi na ugawaji wa vibao"
 
@@ -10077,10 +9969,6 @@ msgstr "Tazama muhtasari wa ahadi za sadaka za familia na mgawanyo wa mifuko"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Tazama washiriki wa kikundi, majukumu, na sifa"
-
-#: 
-msgid "View query results"
-msgstr "Tazama matokeo ya hoja"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10402,10 +10290,6 @@ msgstr "Sasisho Linapatikana"
 msgid "User must have Notes permission"
 msgstr "Mtumiaji lazima awe na ruhusa ya Maelezo"
 
-#: 
-msgid "Address Defaults"
-msgstr "Anwani za Chaguo Msingi"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10418,16 +10302,6 @@ msgstr "Mipangilio ya Kalenda"
 #: 
 msgid "Calendars"
 msgstr "Kalenda"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Chagua Fursa ya Kujitolea"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Chagua Sehemu ya Mtu"
 
 #: 
 msgid "Church Identity"
@@ -10449,11 +10323,6 @@ msgstr "ChurchCRM inaweza kutuma barua pepe moja kwa moja."
 msgid "Communication"
 msgstr "Mawasiliano"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Linganisha ahadi kati ya miaka miwili ya fedha"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Sanidi SMTP katika mipangilio iliyo hapa chini kuutumia barua pepe kutoka kwa mfumo."
@@ -10467,17 +10336,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Unganisha Mailchimp kusambaza orodha ya barua pepe kwa ajili ya jarida na kampeni."
 
 #: 
-msgid "Copy from church address"
-msgstr "Nakili kutoka kwa anwani ya kanisa"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "Nakili kwenye clipboard"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Shamba la kawaida"
 
 #: 
 msgid "Default Country"
@@ -10531,16 +10391,6 @@ msgstr "Imeshindwa kupata anwani za barua pepe"
 msgid "Failed to retrieve phone numbers"
 msgstr "Imeshindwa kupata namba za simu"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Thamani ya Shamba"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Tafuta watu ambao waliamuon kwa mwaka mmoja lakini si mwingine"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10548,33 +10398,8 @@ msgstr "Tafuta watalamuoni kwa furaha fulani"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Tafuta watalamuoni ambao wanambani nambari za furaha mbili maalum"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Mwaka wa Fedha wa Kwanza"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Mwaka wa fedha wa kwanza kwa kulinganisha"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Chaguzi la furaha la mtalamuoni la kwanza"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Rafiki ambao walijisajili miezi iliyopita"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Mgeni"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10598,31 +10423,6 @@ msgstr "Dhibiti matukio, siku za kuzaliwa, na maadhimisho"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Faatanisha sehemu iliyobadilishwa na thamani hii"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Mwanajamii, Mlipukaji wa kawaida, n.k."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Wanajamii ambao walijiunga katika mwezi fulani"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Maadhimisho ya uanachama"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Ahadi zisizofaa"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Mwezi"
 
@@ -10642,16 +10442,6 @@ msgstr "Barua pepe za ujumbe wa wanajamii wapya"
 #: 
 msgid "No cell phone on file"
 msgstr "Hakuna simu ya rununu kwenye faili"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Mlipukaji si wa kawaida"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Mlipukaji si wa kawaida (waajiriwa)"
 
 #: 
 msgid "Not Classified"
@@ -10688,30 +10478,10 @@ msgstr "Umiliki wa mtu unaotumika kuwatenga wanajamii kutoka sehemu za ujumbe wa
 msgid "Person property used to exclude members from email lists"
 msgstr "Umiliki wa mtu unaotumika kuwatenga wanajamii kutoka sehemu za barua pepe"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Kulinganisha ahadi"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Aliamuon mwaka huu"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Umiliki"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Rafiki wa hivi karibuni"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Mlipukaji wa kawaida"
 
 #. Context: query_qry
 #: 
@@ -10733,21 +10503,6 @@ msgstr "SMTP iliyosanidiwa"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP haijasanidiwa"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Mwaka wa Fedha wa Pili"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Mwaka wa fedha wa pili kwa kulinganisha"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Chaguzi la furaha la mtalamuoni la pili"
 
 #: 
 msgid "Send text message"
@@ -10781,25 +10536,6 @@ msgstr "Zana za Ujumbe"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Hatua za ujumbe wa maandishi zipo katika matafsiri ya Kundi na Darasa la Shule ya Jumapili. Tumia kundi la \"Ujumbe\" kwa kunakili nambari za simu au kutuma ujumbe wa SMS kwa wanajamii wa kundi."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Mwezi wa kuzaliwa ambao ungependa kurudisha rekodi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Mwezi wa maadhimisho ya uanachama ambao ungependa kurudisha rekodi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Umiliki ambao ungependa kurudisha rekodi za mtu."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Thamani hizi zinajazwa mapema wakati wa kutengeneza familia mpya. Acha tupu ili kuomba kuingizwa kwa mikono."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Kitengo kinachotumika kupima umbali."
@@ -10808,11 +10544,6 @@ msgstr "Kitengo kinachotumika kupima umbali."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Idhini ya watumiaji kutuma barua pepe kupitia viungo vya mailto:"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Furaha za kuwa mtalamuoni"
 
 #. Context: query_qry
 #: 
@@ -10830,11 +10561,6 @@ msgstr "Vonage SMS haijasanidiwa"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Bila Vonage, hatua za ujumbe zitafungua programu ya SMS ya asili ya kifaa chako au kunakili nambari za simu kwenye ubao la kunakili."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "lakini si mwaka huu"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10945,10 +10671,6 @@ msgstr "Ruhusu ufikiaji usiohitaji uthibitishaji kwa matukio ya kalenda kupitia 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Ruhusu wageni kuunda rekodi yao ya familia kupitia ukurasa wa kujiandikisha"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Ruhusu wageni kujisajili kama familia mpya."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -11032,10 +10754,6 @@ msgstr "Chagua kinachoonekana wakati Gravatar haipo:\n"
 "• Retro - Sanaa ya pikseli ya mchezo wa 8-bit\n"
 "• RoboHash - Roboti iliyozalishwa kwa kipekee\n"
 "• Tupu - Uwazi (inashuka kwa herufi za awali)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "Vitambulisho vya hoja vilivyotenganishwa na koma vinavyohitaji ruhusa za fedha ili kuona"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11148,10 +10866,6 @@ msgstr "Wezesha matumizi ya hundi zilizoskanwa"
 msgid "Features"
 msgstr "Vipengele"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "Vitambulisho vya hoja ya ruhusa ya fedha"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11225,10 +10939,6 @@ msgstr "Gravatar hufanya kazi kwa kubadilisha anwani za barua pepe kuwa hash (MD
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Ficha latitudo/longitudo"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Ficha anwani ya mtu"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -12290,16 +12000,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jinsi Shule ya Jumapili + Matukio + Vioski unavyofanya kazi pamoja"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Tarehe batili kwa %s — inatarajiwa YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Muundo batili wa tarehe kwa rangeStart au rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Tarehe batili; muundo unaotarajiwa YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12530,10 +12232,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds lazima iwe safu isiyokuwa tupu"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "aina batili ya kurudia"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds lazima iwe safu isiyokuwa tupu"
 
@@ -12736,10 +12434,6 @@ msgstr "Jumla ya Kiosk"
 #: 
 msgid "Upcoming Events"
 msgstr "Matukio Yanayokuja"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL kamili ya http(s) ya nembo ya kanisa inayoonyeshwa katika violezo vya barua pepe (na kutumiwa tena mahali pengine siku zijazo). Kwa uonyeshaji bora katika wateja wa barua pepe, tumia picha pana ya bango katika uwiano wa takriban 3.5:1 (kwa mfano 350×100 px), PNG au JPG, inayotolewa kupitia HTTPS. Acha wazi au ingiza thamani batili kurudi kwenye nembo ya ChurchCRM ya kawaida."
 
 #: 
 msgid "An option with that name already exists"
@@ -14314,11 +14008,6 @@ msgstr "Jina la familia lazima liwe na angalau herufi 2"
 msgid "Fields"
 msgstr "Sehemu"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Tafuta watu ambao hawakuhudhuria tukio"
-
 #: 
 msgid "First name is required"
 msgstr "Jina la kwanza linahitajika"
@@ -14498,11 +14187,6 @@ msgstr "Washiriki wameongezwa kwenye orodha."
 #: 
 msgid "Minimum length is"
 msgstr "Urefu wa chini ni"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Watu waliokosekana"
 
 #: 
 msgid "Move"
@@ -14872,11 +14556,6 @@ msgstr "Chagua kalenda..."
 msgid "Select event type..."
 msgstr "Chagua aina ya tukio..."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Chagua tukio unalotaka"
-
 #: 
 msgid "Sequence"
 msgstr "Mfuatano"
@@ -14940,10 +14619,6 @@ msgstr "Ujumbe Wote"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Faili iliyochaguliwa inazidi ukubwa wa juu zaidi wa upakiaji wa seva hizi"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Hakuna matukio yaliyopangwa kwa leo"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -16342,10 +16017,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s wa familia ya %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "Rekodi %d zimerudishwa"
-
-#: 
 msgid "Assign role to all"
 msgstr "Weka jukumu kwa wote"
 
@@ -16516,22 +16187,6 @@ msgstr "Usanidi wa Mfumo"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Kuna watu waliowekwa kwenye Fursa hii ya Kujitolea. Kufuta kutawaacha bila mgawo"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Thamani hii haiwezi kuwa na urefu wa chini ya herufi %d"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Thamani hii haiwezi kuwa na urefu wa zaidi ya herufi %d"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Thamani hii haiwezi kuwa zaidi ya %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Thamani hii lazima iwe angalau %s"
 
 #: 
 msgid "Total Deposits"
@@ -16814,24 +16469,12 @@ msgid "Family Delete Confirmation"
 msgstr "Uthibitisho wa Kufuta Familia"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Watu Binafsi (bila familia)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Usajili Mpya wa Kibinafsi"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Uthibitisho wa Kufuta Aina ya Mali"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Kagua familia na watu binafsi wapya ambao wamejisajili kwenye fomu yako ya usajili ya umma"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Kagua usajili mpya kutoka kwenye fomu yako ya usajili ya umma hapa chini. Maingizo yasiyo na barua pepe au simu yamewekwa alama — thibitisha mawasiliano kabla ya kufuatilia."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -16928,6 +16571,10 @@ msgstr "Kiwango cha ukusanyaji"
 #: 
 msgid "Count unique installs"
 msgstr "Hesabu usakinishaji wa kipekee"
+
+#: 
+msgid "Data"
+msgstr "Data"
 
 #: 
 msgid "Data is processed by PostHog on EU infrastructure."
@@ -17334,6 +16981,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Barua pepe haijasanidiwa. Tafadhali sanidi mipangilio ya SMTP katika Mipangilio ya Mfumo."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Barua pepe imetumwa kwa familia %d."
+msgstr[1] "Barua pepe zimetumwa kwa familia %d."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Ingiza anwani ya mtaa kwanza."
 
@@ -17404,6 +17057,12 @@ msgstr "Hakuna malipo yaliyopatikana kwa amana zilizochaguliwa"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Hakuna vitambulisho sahihi vya amana vilivyotolewa"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF imetumwa kwa mafanikio kwa barua pepe kwa familia %d."
+msgstr[1] "PDF zimetumwa kwa mafanikio kwa barua pepe kwa familia %d."
 
 #: 
 msgid "Partial Send"
@@ -17526,16 +17185,6 @@ msgstr "Zabuni ya chini kabisa %s."
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Watu wenye siku za kuzaliwa au miaadhali ya ndoa katika mwezi fulani"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Mwezi ambao ungependa siku za kuzaliwa na miaadhali urudishwe."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Mwezi wa maadhali ya ndoa ambao ungependa rekodi urudishwe."
 
 #: 
 msgid "Total of all purchases: %s"
@@ -17756,10 +17405,6 @@ msgid "Selected family"
 msgstr "Familia iliyochaguliwa"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Thamani hii lazima iwe jina halali la sehemu."
-
-#: 
 msgid "Could not load data"
 msgstr "Imeshindwa kupakia data"
 
@@ -17768,16 +17413,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Tafadhali onyesha upya ukurasa au jaribu tena baadaye."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Ongeza kwanza rekodi zinazohusiana."
-
-#: 
 msgid "All Months"
 msgstr "Miezi Yote"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Hakuna chaguo za \"%s\" zilizowekwa bado."
 
 #: 
 msgid "No events found for %s %d."
@@ -17836,6 +17473,12 @@ msgid "Set up now"
 msgstr "Sanidi sasa"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Uthibitishaji wa hatua mbili unahitajika. Una siku %d ya kujiandikisha."
+msgstr[1] "Uthibitishaji wa hatua mbili unahitajika. Una siku %d za kujiandikisha."
+
+#: 
 msgid "Unknown family"
 msgstr "Familia isiyojulikana"
 
@@ -17850,4 +17493,1316 @@ msgstr "Sasisha Kuratibu Zote za Familia"
 #: 
 msgid "Update Coordinates"
 msgstr "Sasisha Kuratibu"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s alikuwa Mkuu wa familia hii na amewekwa kama marehemu. Tafadhali mteue Mkuu mpya wa Kaya."
+
+#: 
+msgid "Accept"
+msgstr "Kubali"
+
+#: 
+msgid "Active Now"
+msgstr "Anatumika Sasa"
+
+#: 
+msgid "Adding..."
+msgstr "Inaongeza..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Wanachama wote wa CRM wenye barua pepe wamejiunga na orodha hii!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Waliojisajili wote wa MailChimp wapo katika ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Hitilafu imetokea wakati wa kufuta faili."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Je, una uhakika kabisa? Hatua hii itafuta data zote na kurejesha mipangilio chaguomsingi ya kiwandani."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Je, una uhakika unataka kufuta faili ZOTE za kumbukumbu? Hatua hii haiwezi kutenduliwa."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Je, una uhakika unataka kufuta kiosk"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Je, una uhakika unataka kufuta kiungo"
+
+#: 
+msgid "Assignment"
+msgstr "Mgawo"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Kazi za nyuma (barua pepe za siku za kuzaliwa na kazi zote zilizopangwa za programu-jalizi) hazijawahi kuendeshwa kwenye usakinishaji huu."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Kazi za nyuma (barua pepe za siku za kuzaliwa na kazi zote zilizopangwa za programu-jalizi) ziliendeshwa mara ya mwisho tarehe %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Inahifadhi nakala rudufu..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Nakala rudufu imepakuliwa."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Nakala rudufu imepakiwa kwa mafanikio"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Huwezi kubadilisha hali yako mwenyewe ya kuwa hai"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Uhamishaji wa ChMeetings umekamilika kwa mafanikio"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Mabadiliko yamehifadhiwa kwa mafanikio"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Watoe wote nje na uzime yote"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Je, uwatoe wote nje na uzime tukio hili?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Angalia barua pepe yako kwa kiungo cha kuweka upya nenosiri"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Funga matukio yaliyokwama?"
+
+#: 
+msgid "Comments"
+msgstr "Maoni"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Imeshindwa kupakia hakikisho la barua pepe. Tafadhali funga na ujaribu tena."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Inaunda na kupakia nakala rudufu. Hii inaweza kuchukua dakika kadhaa..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Kuweka upya hifadhidata kumeshindwa."
+
+#: 
+msgid "Deceased"
+msgstr "Marehemu"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Vitambulisho chaguomsingi vya msimamizi"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Futa Kiosk"
+
+#: 
+msgid "Deleted Files"
+msgstr "Faili Zilizofutwa"
+
+#: 
+msgid "Deleting..."
+msgstr "Inafuta..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Upakuaji umerejea bila vichwa vya kiambatisho."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Hitilafu wakati wa kufuta faili la kumbukumbu."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Hitilafu wakati wa kufuta faili za kumbukumbu."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Hitilafu wakati wa kupakua faili la kumbukumbu."
+
+#: 
+msgid "Error initiating download."
+msgstr "Hitilafu wakati wa kuanzisha upakuaji."
+
+#: 
+msgid "Error loading log file."
+msgstr "Hitilafu wakati wa kupakia faili la kumbukumbu."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Hitilafu wakati wa kupakia maingizo yaliyojisajili wenyewe"
+
+#: 
+msgid "Errors"
+msgstr "Hitilafu"
+
+#: 
+msgid "Failed Files"
+msgstr "Faili Zilizoshindwa"
+
+#: 
+msgid "Failed to add link"
+msgstr "Imeshindwa kuongeza kiungo"
+
+#: 
+msgid "Failed to add option"
+msgstr "Imeshindwa kuongeza chaguo"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Imeshindwa kufunga matukio. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to delete"
+msgstr "Imeshindwa kufuta"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Imeshindwa kuwezesha usajili wa kiosk"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Imeshindwa kuhamisha CSV ya ChMeetings"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Imeshindwa kupakia ukaguzi. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Imeshindwa kubadilisha jina la kiosk"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Imeshindwa kuhifadhi mabadiliko"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Imeshindwa kusasisha programu-jalizi"
+
+#: 
+msgid "Family Id"
+msgstr "Kitambulisho cha Familia"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Uthibitisho wa Mwisho"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Inatafuta viwianishi vya kijiografia vya familia… hii inaweza kuchukua dakika chache. Unaweza kuacha ukurasa huu ukiwa wazi."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Inatafuta viwianishi vya kijiografia vya familia… {{done}} kati ya {{total}} zimechakatwa, {{geocoded}} zimepatikana."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Sasisho la Mkuu wa Kaya Linahitajika"
+
+#: 
+msgid "Helpful Links"
+msgstr "Viungo Muhimu"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Ficha Waliofariki kutoka Orodha"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Ficha wanachama waliofariki kutoka kwenye orodha iliyochapishwa na uhamishaji wa CSV."
+
+#: 
+msgid "Identify"
+msgstr "Tambua"
+
+#: 
+msgid "Identify command sent"
+msgstr "Amri ya kutambua imetumwa"
+
+#: 
+msgid "Individual"
+msgstr "Mtu Binafsi"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Ndani: tarehe na saa ya mwisho kazi za muda wa nyuma zilipokamilika (YYYY-MM-DD HH:MM:SS). Usihariri kwa mkono."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Kipengele kimefutwa kwa mafanikio"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Jina la Kiosk"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Kiosk imekubaliwa"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Kiosk imefutwa kwa mafanikio"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Kiosk lazima ikubaliwe"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Jina la kiosk limebadilishwa"
+
+#: 
+msgid "Last seen"
+msgstr "Alionekana Mwisho"
+
+#: 
+msgid "Link"
+msgstr "Kiungo"
+
+#: 
+msgid "Link added successfully"
+msgstr "Kiungo kimeongezwa kwa mafanikio"
+
+#: 
+msgid "Link deleted"
+msgstr "Kiungo kimefutwa"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Jina la kiungo haliwezi kuwa na lebo za HTML"
+
+#: 
+msgid "Living"
+msgstr "Hai"
+
+#: 
+msgid "Log settings saved"
+msgstr "Mipangilio ya kumbukumbu imehifadhiwa"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Jina la Kuingia Linahitajika"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Amemweka Mtu kuwa Anayetumika"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Amemweka Mtu kuwa Asiyetumika"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Idadi ya chini ya dakika kati ya uendeshaji wa kazi za muda wa nyuma zinazoanzishwa na upakiaji wa ukurasa. Huzuia asubuhi ya Jumapili yenye shughuli nyingi kuendesha kazi hizo kila ukurasa unapoonekana. Haitumiki kwa kiendeshaji cha amri (command-line). Weka 0 ili ziendeshwe kila upakiaji wa ukurasa."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Watumiaji wapya hawatapokea barua pepe ya karibu, na nenosiri linalotengenezwa halionyeshwi kamwe. Baada ya kuunda akaunti, weka nenosiri kutoka kwa Watumiaji wa Mfumo kwa kutumia Badilisha Nenosiri — au sanidi barua pepe kwanza."
+
+#: 
+msgid "No changes to save"
+msgstr "Hakuna mabadiliko ya kuhifadhi"
+
+#: 
+msgid "No contact info"
+msgstr "Hakuna taarifa za mawasiliano"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Hakuna viungo maalum vilivyosanidiwa. Ongeza kimoja hapo juu!"
+
+#: 
+msgid "No email"
+msgstr "Hakuna barua pepe"
+
+#: 
+msgid "No files were deleted."
+msgstr "Hakuna faili zilizofutwa."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Hakuna msaada unaopatikana kwa programu-jalizi hii."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Hakuna watu wa kuongeza - wote tayari wapo kwenye kikapu"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Hakuna watu wa kuongeza - kichujio hakikuleta matokeo yoyote"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Sio tarehe sahihi ya kifo"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Idadi ya siku ambazo watumiaji wanapaswa kujiandikisha kwa 2FA baada ya kuamriwa kutumika. Weka 0 ili kutekeleza mara moja. Kupunguza muda wa neema unaoendelea kunaweza kuwafungia watumiaji nje mara moja."
+
+#: 
+msgid "Offline"
+msgstr "Haipo Mtandaoni"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Fanya hivi tu baada ya tatizo la msingi kutatuliwa. Bado utahitaji kubofya Wezesha kabla programu-jalizi haijaanza kufanya kazi tena."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Tafadhali thibitisha uwezeshaji wa mtu"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Tafadhali thibitisha uzimaji wa mtu"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Hali ya programu-jalizi imesasishwa"
+
+#: 
+msgid "Registered"
+msgstr "Imesajiliwa"
+
+#: 
+msgid "Reload"
+msgstr "Pakia Upya"
+
+#: 
+msgid "Reload command sent"
+msgstr "Amri ya kupakia upya imetumwa"
+
+#: 
+msgid "Rename"
+msgstr "Badilisha Jina"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Badilisha Jina la Kiosk"
+
+#: 
+msgid "Reset Complete"
+msgstr "Kuweka Upya Kumekamilika"
+
+#: 
+msgid "Reset Settings"
+msgstr "Weka Upya Mipangilio"
+
+#: 
+msgid "Resetting..."
+msgstr "Inaweka Upya..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Kazi zilizopangwa hazifanyi kazi"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Alama ya usalama haipo. Tafadhali onyesha upya ukurasa."
+
+#: 
+msgid "Select…"
+msgstr "Chagua…"
+
+#: 
+msgid "Sending..."
+msgstr "Inatuma..."
+
+#: 
+msgid "Sending…"
+msgstr "Inatuma…"
+
+#: 
+msgid "Settings reset"
+msgstr "Mipangilio imewekwa upya"
+
+#: 
+msgid "Settings saved"
+msgstr "Mipangilio imehifadhiwa"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Mipangilio imehifadhiwa. Inaonyesha upya taarifa za usasishaji..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Inaonyesha watu wanaotumika pekee."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Inaonyesha watu wasiotumika pekee."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Imefutwa kwa mafanikio"
+
+#: 
+msgid "Testing..."
+msgstr "Inajaribu..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Hifadhidata imefutwa. Mfumo uko tayari kwa mwanzo mpya."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Suluhisho mbadala la upakiaji wa ukurasa linaendelea kufanya kazi wakati huo huo. Badilisha muda ambao ChurchCRM inasubiri kabla ya kuonyesha onyo hili kwa kutumia mpangilio wa %1$s, au weka 0 ili kulificha."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Mtu Huyu Hatumiki"
+
+#: 
+msgid "This person is deceased"
+msgstr "Mtu huyu amefariki"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Hii itafuta thamani zote zilizosanidiwa za programu-jalizi hii. Hatua hii haiwezi kutenduliwa."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Hii itafuta kabisa faili za programu-jalizi kutoka kwenye hifadhi na kufuta mipangilio yake. Hatua hii haiwezi kutenduliwa."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL haiwezi kuwa na lebo za HTML"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Hitilafu isiyotarajiwa. Tafadhali jaribu tena."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Ondoa Programu-jalizi"
+
+#: 
+msgid "Upcoming"
+msgstr "Zinazokuja"
+
+#: 
+msgid "Valid Until"
+msgstr "Sahihi Hadi"
+
+#: 
+msgid "View active only"
+msgstr "Onyesha zinazotumika pekee"
+
+#: 
+msgid "View all"
+msgstr "Onyesha zote"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Onyesha zote (zikiwemo zisizotumika)"
+
+#: 
+msgid "View inactive only"
+msgstr "Onyesha zisizotumika pekee"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Onya kwenye dashibodi ya msimamizi wakati kazi za muda wa nyuma hazijaendeshwa kwa muda wa masaa haya. 26 inaruhusu cron ya kila siku pamoja na mchepuko kidogo. Weka 0 ili kuzima onyo."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Bila kipanga-ratiba, kazi hizi huendeshwa tu wakati mtu anapakia ukurasa, hivyo siku ya wiki yenye shughuli chache haitatuma barua pepe zilizopangwa kabisa. Ongeza kipengele cha cron kinachoendesha kiendeshaji cha kazi kila saa, kama mtumiaji yule yule anayeendesha seva yako ya wavuti"
+
+#: 
+msgid "check-outs"
+msgstr "kuondoka"
+
+#: 
+msgid "deceased"
+msgstr "waliofariki"
+
+#: 
+msgid "event"
+msgstr "tukio"
+
+#: 
+msgid "events?"
+msgstr "matukio?"
+
+#: 
+msgid "files"
+msgstr "faili"
+
+#: 
+msgid "people from cart?"
+msgstr "watu kutoka kwenye kikapu?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip lazima iwe sifuri au nambari kamili chanya"
+
+#: 
+msgid "view families missing an email"
+msgstr "onyesha familia zisizo na barua pepe"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Wanunuzi wa Mwaka huu wa Fedha"
+
+#: 
+msgid "Current"
+msgstr "Ya Sasa"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Vitu Vilivyotolewa (Mwaka huu wa Fedha)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Jina la kuingia lazima liwe na herufi %d au chini!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Kiasi Kilichokusanywa Mwaka huu wa Fedha"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s lazima iwe anwani kamili ya wavuti ya https://, kwa mfano https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Akaunti ina ruhusa chache. Wasiliana na msimamizi."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Hitilafu imetokea wakati wa kuonyesha ukurasa wa hitilafu."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Kila anwani lazima ianze na https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Tengeneza Lebo"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Tengeneza lebo za posta"
+
+#: 
+msgid "Labels"
+msgstr "Lebo"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Lebo za posta kwa watu walio kwenye kikapu chako. Mtu asiye na anwani yake mwenyewe atatumia anwani ya familia yake."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Si lazima. Viungo vya akaunti za kanisa lenyewe, vinavyoonyeshwa kwa wanachama kwenye kurasa kama sehemu ya chini ya lango. Acha sehemu iwe wazi ili kuficha mtandao huo."
+
+#: 
+msgid "Options"
+msgstr "Chaguo"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Kazi Zilizopangwa"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Inaendelea, sekunde zilizobaki: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Muda unaotarajiwa kati ya uendeshaji (masaa): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Familia zilizorukwa (hazina anwani ya barua pepe kwenye rekodi): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Familia ambazo hazikuweza kupatiwa viwianishi vya kijiografia: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Familia zitakazopokea barua pepe za uthibitisho: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Wanachama walionakiliwa: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Haijaorodheshwa hapa: {{total}} zaidi"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Wapokeaji: {{total}} — ni wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Wapokeaji ni wengi mno kwa programu ya barua pepe ({{total}} > {{max}}). Tumia Nakili Anwani badala yake."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "dakika {{minutes}} zimebaki"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "Hati %d ya kodi imetumwa kwa familia kwa mafanikio."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "Taarifa ya Utoaji %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "Uainishaji wote"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Kama msimamizi, tafadhali pia kagua"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Siku za kuzaliwa, maadhimisho, wajitolea na orodha nyingine za watu zenye kichujio cha uainishaji"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Chagua %s ili kuendesha ripoti hii."
+
+#: 
+msgid "Choose events"
+msgstr "Chagua matukio"
+
+#: 
+msgid "Choose..."
+msgstr "Chagua..."
+
+#: 
+msgid "Church Logo"
+msgstr "Nembo ya Kanisa"
+
+#: 
+msgid "Columns per Page"
+msgstr "Safu Wima kwa Ukurasa"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Mpendwa Familia ya %s,\n"
+"\n"
+"Tafadhali pata taarifa yako ya utoaji ya %d kutoka %s iliyoambatishwa kwenye barua pepe hii.\n"
+"\n"
+"Ikiwa una maswali yoyote, tafadhali wasiliana na ofisi ya kanisa.\n"
+"\n"
+"Asante kwa ukarimu wako."
+
+#: 
+msgid "Download CSV"
+msgstr "Pakua CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Tuma Hati ya Kodi %d kwa Barua Pepe"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Washa au zima moduli ya Fedha na menyu ya upau wa pembeni."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Washa au zima moduli ya Uchangishaji."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Imeshindwa kuondoa nembo ya kanisa"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Imeshindwa kupakia nembo ya kanisa"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL ya nembo mbadala kwa violezo vya barua pepe, inayotumika tu wakati hakuna nembo ya kanisa iliyopakiwa kwenye ukurasa wa Taarifa za Kanisa. Kurasa za programu yenyewe hazizingatii mpangilio huu na daima hutumia nembo iliyopakiwa au nembo chaguomsingi ya ChurchCRM. Lazima iwe URL kamili ya http(s). Kwa uonyeshaji bora kwenye wateja wa barua pepe, tumia picha ya bango pana yenye uwiano wa takriban 3.5:1 (kwa mfano 350×100 px), PNG au JPG, inayotolewa kupitia HTTPS. Acha wazi au weka thamani batili ili kurudi kwenye nembo chaguomsingi ya ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Moduli ya Fedha"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Tafuta watu ambao hawakuhudhuria tukio"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Tafuta wajitolea wanaolingana na misimbo miwili maalum ya nafasi"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Nafasi ya Kwanza ya Kujitolea"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Kijitabu Kilichokunjwa"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Moduli ya Uchangishaji"
+
+#: 
+msgid "Giving History"
+msgstr "Historia ya Utoaji"
+
+#: 
+msgid "Last Gift"
+msgstr "Mchango wa Mwisho"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Acha wazi kwa uainishaji wote."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Idadi ya juu zaidi ya hati za mwaka wa kodi za kuonyesha kwa kila wasifu wa familia (0 = bila kikomo)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Idadi ya juu ya miaka ya kodi inayoonyeshwa kwa kila familia"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Maadhimisho ya Uanachama"
+
+#: 
+msgid "Missing People"
+msgstr "Watu Waliokosekana"
+
+#: 
+msgid "No giving history found."
+msgstr "Hakuna historia ya utoaji iliyopatikana."
+
+#: 
+msgid "No people match these filters."
+msgstr "Hakuna watu wanaolingana na vichujio hivi."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Ukurasa mmoja wa saraka kwa kila karatasi, wima."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Miundo ya http na https pekee ndiyo inayoruhusiwa."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF au WebP. Bango pana lenye uwiano wa takriban 3.5:1 (kwa mfano 700x200) linafaa zaidi; PNG yenye uwazi inapendelewa."
+
+#: 
+msgid "Page Layout"
+msgstr "Mpangilio wa Ukurasa"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Watu waliojiunga katika mwezi fulani"
+
+#: 
+msgid "Pledged"
+msgstr "Iliyoahidiwa"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Chapisha Hati ya Kodi %d"
+
+#: 
+msgid "Recent Friends"
+msgstr "Marafiki wa Hivi Karibuni"
+
+#: 
+msgid "Report not found"
+msgstr "Ripoti haijapatikana"
+
+#: 
+msgid "Run Report"
+msgstr "Endesha Ripoti"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Nafasi ya Pili ya Kujitolea"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Huonekana kwenye upau wa pembeni, ukurasa wa kuingia na kwenye barua pepe. Kupakia nembo hubadilisha chapa ya ChurchCRM kila mahali inapoonekana."
+
+#: 
+msgid "Single Pages"
+msgstr "Kurasa Moja Moja"
+
+#: 
+msgid "Tax Documents"
+msgstr "Hati za Kodi"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Barua pepe ya hati ya kodi imeshindwa kutumwa. Tafadhali angalia mipangilio ya seva ya barua pepe."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Kurasa mbili za nusu ukubwa zikiwa kando kwa kando kwenye kila karatasi ya mlalo, kwa mpangilio wa kijitabu. Chapisha pande zote mbili kwa \"kugeuza upande mfupi\", kisha kunja rundo katikati. Safu wima huhesabiwa kwa kila nusu ukurasa."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Haiwezekani kutuma hati ya kodi kwa barua pepe: hakuna data ya malipo iliyopatikana kwa mwaka huo."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Haiwezekani kutuma hati ya kodi kwa barua pepe: familia hii haina anwani ya barua pepe iliyohifadhiwa."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Imeshindwa kutatua jina la mwenyeji wa seva ya OpenLP. Angalia anwani na muunganisho wako wa mtandao."
+
+#: 
+msgid "Upload"
+msgstr "Pakia"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Inatumia nembo chaguomsingi ya ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Tazama Utoaji Kamili wa Familia"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Nafasi ya Kujitolea"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Wajitolea kwa Nafasi Mbili"
+
+#: 
+msgid "YTD"
+msgstr "Tangu Mwanzo wa Mwaka"
+
+#: 
+msgid "YTD Paid"
+msgstr "Yaliyolipwa Tangu Mwanzo wa Mwaka"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "kwa hitilafu karibu na wakati hili lilipotokea, na pakua na uambatishe faili husika ya kumbukumbu kwenye suala lako la GitHub — inatusaidia kurekebisha tatizo bila kuuliza maswali ya ziada."
+
+#: 
+msgid "system logs"
+msgstr "kumbukumbu za mfumo"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Udhibiti wa Ufikiaji na Usalama"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Ruhusu kurekodi malipo yasiyokatwa kodi (k.m., mauzo ya bidhaa)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Ruhusu ufikiaji bila kuingia kwenye matukio ya umma (kwa ajili ya kupachika kalenda)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Tuma barua pepe za siku ya kuzaliwa kiotomatiki (inahitaji kipanga ratiba cha kazi za usuli)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Barua Pepe za Salamu za Siku ya Kuzaliwa"
+
+#: 
+msgid "Communication & Email"
+msgstr "Mawasiliano na Barua Pepe"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Sera ya Usalama wa Maudhui"
+
+#: 
+msgid "Email System"
+msgstr "Mfumo wa Barua Pepe"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Washa au zima vipengele kwa shirika lako"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Washa/zima sehemu ya Matukio kwenye urambazaji mkuu"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Washa/zima menyu ya Fedha na vipengele vyote vya fedha (amana, malipo, ripoti)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Washa/zima menyu ya Uchangishaji"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Lazimisha vichwa vikali vya CSP kulinda dhidi ya mashambulizi ya XSS"
+
+#: 
+msgid "Events Module"
+msgstr "Moduli ya Matukio"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Swichi za Vipengele"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Swichi za vipengele hudhibiti ni moduli na vipengele vipi vinapatikana katika ChurchCRM. Mabadiliko huanza kutumika mara moja."
+
+#: 
+msgid "Finance Features"
+msgstr "Vipengele vya Fedha"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Jumuisha anwani katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Jumuisha matukio ya kalenda katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Jumuisha sifa maalum za familia katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Jumuisha amana katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Jumuisha familia katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Jumuisha huduma katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Jumuisha malipo katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Jumuisha watu katika utafutaji wa haraka wa jumla"
+
+#: 
+msgid "Invalid setting"
+msgstr "Mpangilio batili"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Kiungo cha Nenosiri Lililosahaulika"
+
+#: 
+msgid "Manage All Features"
+msgstr "Simamia Vipengele Vyote"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Swichi kuu ya kutuma barua pepe. INAHITAJIKA kwa kuweka upya nenosiri na arifa"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Malipo Yasiyokatwa Kodi"
+
+#: 
+msgid "Primary Modules"
+msgstr "Moduli Kuu"
+
+#: 
+msgid "Public Calendar API"
+msgstr "API ya Kalenda ya Umma"
+
+#: 
+msgid "Saved"
+msgstr "Imehifadhiwa"
+
+#: 
+msgid "Search Families"
+msgstr "Tafuta Familia"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Tafuta Sifa Maalum za Familia"
+
+#: 
+msgid "Search Settings"
+msgstr "Tafuta Mipangilio"
+
+#: 
+msgid "Self-Registration"
+msgstr "Kujisajili Mwenyewe"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Onyesha chaguo la \"Nenosiri Lililosahaulika\" kwenye skrini ya kuingia (huruhusu mtumiaji kujiwekea upya mwenyewe)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Onyesha/ficha moduli ya Shule ya Jumapili kwenye utepe wa pembeni"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Haiwezekani kuzima msimamizi pekee anayeweza kuingia"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Haiwezekani kumwekea alama ya marehemu msimamizi pekee anayeweza kuingia"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Marehemu — hawezi kuingia"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Weka anwani ya pili kabla ya kuiweka kama anwani ya posta"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Hafanyi kazi — hawezi kuingia"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Barua za posta hutumwa kwa anwani ya pili; anwani ya msingi hubaki kuwa mahali halisi panapotumika kwa ramani na maelekezo."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Barua za posta hutumwa kwa anwani hii badala ya anwani ya msingi"
+
+#: 
+msgid "Mailing Address"
+msgstr "Anwani ya Posta"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Anwani ya Posta kama ni Tofauti"
+
+#: 
+msgid "Primary Address"
+msgstr "Anwani ya Msingi"
+
+#: 
+msgid "Receives Mail"
+msgstr "Hupokea Barua za Posta"
+
+#: 
+msgid "Second Address"
+msgstr "Anwani ya Pili"
+
+#: 
+msgid "Second Home"
+msgstr "Nyumba ya Pili"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Mtu aliyeunganishwa ni marehemu au hafanyi kazi. Kuingia, vipindi na ufunguo wa API vimezuiwa hadi mtu huyo afanywe hai tena."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Hii ndiyo anwani ya posta"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Mtu huyu ni marehemu au hafanyi kazi, kwa hiyo akaunti hii haiwezi kuingia"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Msimamizi pekee ndiye anayeweza kumfuta mtu mwenye akaunti ya kuingia."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Msimamizi wa mwisho hawezi kufutwa."
+
+#: 
+msgid "Category"
+msgstr "Kategoria"
+
+#: 
+msgid "Category updated."
+msgstr "Kategoria imesasishwa."
+
+#: 
+msgid "Delete Category"
+msgstr "Futa Kategoria"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Imeshindwa kufuta kategoria"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Imeshindwa kubadilisha jina la kategoria"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategoria za Mfuko"
+
+#: 
+msgid "Fund activated."
+msgstr "Mfuko umewashwa."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Mfuko umezimwa."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Mifuko iliyo katika kategoria hii itakuwa haina kategoria. Mifuko yenyewe haifutwi."
+
+#: 
+msgid "INACTIVE"
+msgstr "Isiyotumika"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Jina jipya la kategoria (jina lililopo likitumika, hizo mbili huunganishwa)"
+
+#: 
+msgid "Optional"
+msgstr "Hiari"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Hiari — chagua au andika kategoria mpya"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Imelipwa zaidi ya ahadi ya kifedha"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Imeahidiwa lakini bado haijalipwa"
+
+#: 
+msgid "Rename Category"
+msgstr "Badilisha Jina la Kategoria"
+
+#: 
+msgid "Still Owed"
+msgstr "Bado Inadaiwa"
+
+#: 
+msgid "Summary by Category"
+msgstr "Muhtasari kwa Kategoria"
+
+#: 
+msgid "Total Paid"
+msgstr "Jumla Iliyolipwa"
+
+#: 
+msgid "Uncategorized"
+msgstr "Haina Kategoria"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Imeshindwa kupakia mipangilio ya sasa. Pakia upya ukurasa ili ujaribu tena."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Mpangilio huu lazima uwe nambari"
+
+#: 
+msgid "Child Role"
+msgstr "Jukumu la Mtoto"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Kujumuishwa kwenye saraka kunaweza kubadilishwa tu kwa orodha ya madaraja"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Ujumbe wa Karibu 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Ujumbe wa Karibu 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Jukumu la Kichwa cha Kaya"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Ficha Anwani Zisizo na Familia"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Ficha Tarehe ya Urafiki"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Ficha Usajili wa Jarida"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Ficha Tarehe ya Ndoa"
+
+#: 
+msgid "In Directory"
+msgstr "Kwenye Saraka"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Jumuisha Maelezo kwenye Arifa"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Wapokeaji wa Arifa"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Watu wa kuarifiwa familia au mtu mpya anapoongezwa"
+
+#: 
+msgid "Person initials style"
+msgstr "Mtindo wa herufi za kwanza za mtu"
+
+#: 
+msgid "Person name display style"
+msgstr "Mtindo wa kuonyesha jina la mtu"
+
+#: 
+msgid "Spouse Role"
+msgstr "Jukumu la Mwenzi"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Misimbo ya Posta kwa Herufi Kubwa"
 

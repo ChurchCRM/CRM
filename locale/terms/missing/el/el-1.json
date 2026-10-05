@@ -1,51 +1,39 @@
 {
-  "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Απαιτείται έλεγχος ταυτότητας δύο παραγόντων. Έχετε %d ημέρα για εγγραφή.|Απαιτείται έλεγχος ταυτότητας δύο παραγόντων. Έχετε %d ημέρες για εγγραφή.",
-    "other": ""
-  },
-  "They are expected at least once every %d hour.": {
-    "one": "Αναμένεται τουλάχιστον μία φορά κάθε %d ώρα.|Αναμένεται τουλάχιστον μία φορά κάθε %d ώρες.",
-    "other": ""
-  },
-  "Buyers This Fiscal Year": "",
-  "Current": "",
-  "Items Donated (This Fiscal Year)": "",
-  "Login must be %d characters or fewer!": "",
-  "Raised This Fiscal Year": "",
-  "Copied {{count}} members": {
-    "one": "",
-    "other": ""
-  },
-  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} min left": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
-  },
-  "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
-  },
-  "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
-  },
-  "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
-  }
+  "Select at least one classification to include in the directory.": "",
+  "Geocoding services": "",
+  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "",
+  "New Record Defaults": "",
+  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "",
+  "Used for new records and for geocoding when a record has no country.": "",
+  "Copy from Church Info": "",
+  "Could not copy the church address.": "",
+  "Could not match the church country.": "",
+  "Class lists, attendance sheets, and photo books": "",
+  "Group membership lists and Sunday School class reports": "",
+  "Your fiscal year starts in %s.": "",
+  "An error occurred": "",
+  "Approve": "",
+  "Approve selected": "",
+  "Approved": "",
+  "Change in People Settings": "",
+  "Could not approve the selected registrations": "",
+  "Could not approve this family": "",
+  "Pending Registrations": "",
+  "Pending review": "",
+  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "",
+  "Review now": "",
+  "Review self registrations": "",
+  "Select month": "",
+  "Self-registration is disabled": "",
+  "Self-registration is enabled": "",
+  "The public registration form is turned off. Existing registrations are listed below.": "",
+  "This family is not a pending self-registration": "",
+  "This person belongs to a family — approve the family instead": "",
+  "This person is not a pending self-registration": "",
+  "This self-registered family is pending review": "",
+  "Total registrations": "",
+  "Visitors can sign up on your public registration form.": "",
+  "Yesterday": "",
+  "days ago": "",
+  "self-registrations are waiting for review": ""
 }

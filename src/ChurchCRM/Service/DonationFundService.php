@@ -79,10 +79,11 @@ class DonationFundService
      * @param string $name   Fund name (max 30 chars)
      * @param string $desc   Fund description (max 100 chars)
      * @param bool   $active Whether the fund is active (default true)
+     * @param string|null $category Optional category label (max 50 chars)
      * @return DonationFund The newly created fund
-     * @throws \InvalidArgumentException if name is empty or already exists
+     * @throws \InvalidArgumentException if name is empty or already exists, or category is too long
      */
-    public function createFund(string $name, string $desc, bool $active = true): DonationFund
+    public function createFund(string $name, string $desc, bool $active = true, ?string $category = null): DonationFund
     {
         $name = InputUtils::sanitizeText($name);
         if (strlen($name) === 0) {
@@ -103,6 +104,7 @@ class DonationFundService
         $fund->setName($name);
         $fund->setDescription(InputUtils::sanitizeText($desc));
         $fund->setActive($active ? 'true' : 'false');
+        $fund->setCategory($this->normalizeCategory($category));
         $fund->setOrder($nextOrder);
         $fund->save();
 
@@ -112,7 +114,7 @@ class DonationFundService
     /**
      * Update an existing donation fund's editable fields.
      *
-     * Supported keys in $data: 'name', 'description', 'active'.
+     * Supported keys in $data: 'name', 'description', 'active', 'category' (null or '' clears it).
      *
      * @param int   $id   Fund ID
      * @param array $data Associative array of fields to update
@@ -145,6 +147,10 @@ class DonationFundService
 
         if (array_key_exists('active', $data)) {
             $fund->setActive($data['active'] ? 'true' : 'false');
+        }
+
+        if (array_key_exists('category', $data)) {
+            $fund->setCategory($this->normalizeCategory($data['category']));
         }
 
         $fund->save();
@@ -228,5 +234,99 @@ class DonationFundService
                 $nextFund->save();
             }
         }
+    }
+
+    /**
+     * Distinct non-empty category labels, sorted.
+     *
+     * @return string[]
+     */
+    public function getCategories(): array
+    {
+        $funds = DonationFundQuery::create()
+            ->orderByCategory()
+            ->orderByName()
+            ->find();
+
+        $categories = [];
+        foreach ($funds as $fund) {
+            $category = $fund->getCategory();
+            if ($category !== null && $category !== '' && !isset($categories[$category])) {
+                $categories[$category] = true;
+            }
+        }
+
+        return array_keys($categories);
+    }
+
+    /**
+     * Group funds by category: named categories sorted by label, then uncategorized under the '' key.
+     *
+     * @param iterable<DonationFund> $funds
+     * @return array<string, DonationFund[]>
+     */
+    public function groupByCategory(iterable $funds): array
+    {
+        $groups = [];
+        $uncategorized = [];
+        foreach ($funds as $fund) {
+            $category = (string) $fund->getCategory();
+            if ($category === '') {
+                $uncategorized[] = $fund;
+            } else {
+                $groups[$category][] = $fund;
+            }
+        }
+        ksort($groups);
+        if ($uncategorized !== []) {
+            $groups[''] = $uncategorized;
+        }
+
+        return $groups;
+    }
+
+    /**
+     * Rename a category on every fund that uses it. Renaming onto an existing category merges them.
+     *
+     * @return int Number of funds updated
+     * @throws \InvalidArgumentException if either name is empty or the new name is too long
+     */
+    public function renameCategory(string $name, string $newName): int
+    {
+        $name = $this->normalizeCategory($name);
+        $newName = $this->normalizeCategory($newName);
+        if ($name === null || $newName === null) {
+            throw new \InvalidArgumentException('Category name cannot be empty.');
+        }
+
+        return DonationFundQuery::create()->filterByCategory($name)->update(['Category' => $newName]);
+    }
+
+    /**
+     * Remove a category from every fund that uses it; the funds become uncategorized.
+     *
+     * @return int Number of funds updated
+     */
+    public function deleteCategory(string $name): int
+    {
+        $name = $this->normalizeCategory($name);
+        if ($name === null) {
+            throw new \InvalidArgumentException('Category name cannot be empty.');
+        }
+
+        return DonationFundQuery::create()->filterByCategory($name)->update(['Category' => null]);
+    }
+
+    private function normalizeCategory(?string $category): ?string
+    {
+        $category = InputUtils::sanitizeText((string) $category);
+        if ($category === '') {
+            return null;
+        }
+        if (mb_strlen($category) > 50) {
+            throw new \InvalidArgumentException('Category cannot be longer than 50 characters.');
+        }
+
+        return $category;
     }
 }

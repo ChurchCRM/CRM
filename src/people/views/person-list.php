@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PersonDeleteGuard;
 
 /**
  * This will avoid to call the db twice one to check if empty the other one to return the value
@@ -394,6 +395,9 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             if ($person->isDeceased()) {
                                 echo ' <span class="badge bg-secondary-lt text-secondary" title="' . gettext('Deceased') . '"><i class="fa-solid fa-cross"></i></span>';
                             }
+                            if ($person->getNeedsReview()) {
+                                echo ' <span class="badge bg-warning-lt text-warning ms-1" title="' . gettext('Pending review') . '"><i class="fa-solid fa-user-clock"></i> ' . gettext('Pending review') . '</span>';
+                            }
                             // Add role in parentheses
                             $role = $person->getFamilyRoleName();
                             if (!empty($role) && $role !== 'Unassigned') {
@@ -454,7 +458,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         }
                         // Handle Role column (hidden for filter)
                         elseif ($column->displayFunction === 'getFamilyRoleName') {
-                            echo emptyOrUnassigned($columnData);
+                            echo InputUtils::escapeHTML((string) emptyOrUnassigned($columnData));
                         }
                         // Handle Properties column (hidden for filter)
                         elseif ($column->displayFunction === 'getPropertiesString') {
@@ -479,10 +483,10 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             if (is_array($columnData)) {
                                 echo emptyOrUnassignedJSON($columnData);
                             } else {
-                                echo emptyOrUnassigned($columnData);
+                                echo InputUtils::escapeHTML((string) emptyOrUnassigned($columnData));
                             }
                         } else {
-                            echo $columnData;
+                            echo InputUtils::escapeHTML((string) $columnData);
                         }
                     }
                     echo '</td>';
@@ -531,7 +535,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             <button type="button"
                                 class="dropdown-item text-danger delete-person"
                                 data-person_id="<?= $person->getId() ?>"
-                                data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>">
+                                data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>"<?= PersonDeleteGuard::attributes((int) $person->getId()) ?>>
                                 <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                             </button>
                             <?php endif; ?>

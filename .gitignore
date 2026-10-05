@@ -18,6 +18,8 @@ locale/.work
 # Uploaded Images
 src/Images/Family/*
 src/Images/Person/*
+# Uploaded church logo (Admin -> Church Information)
+src/Images/church-logo.png
 # Keep the directories for CI/fresh installs
 !src/Images/Family/.gitkeep
 !src/Images/Person/.gitkeep
@@ -54,7 +56,8 @@ cypress/downloads
 cypress.config.ts
 cypress.env.json
 
-playwright/artifacts/**/*.json
+playwright/artifacts/metadata/**/*.json
+playwright/artifacts/manifest.csv
 playwright/.auth
 playwright/.playwright-output
 playwright-report
@@ -67,8 +70,5 @@ test-results
 .claude/settings.json
 cy.log
 
-# Obsidian machine-local workspace state (not shared config)
-knowledge-vault/.obsidian/workspace.json
-knowledge-vault/.obsidian/workspace-mobile.json
-knowledge-vault/.obsidian/plugins/
 /.obsidian
+.claude/settings.local.json

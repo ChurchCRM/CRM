@@ -1,0 +1,203 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# Single review system for ChurchCRM/CRM.
+# Hard blockers fail a pre-merge check (reviews.pre_merge_checks, mode: error),
+# and request_changes_workflow turns that into a blocking review. Humans merge.
+# request_changes_workflow also lets CodeRabbit approve once it is clean, so
+# branch protection must still require a human (CODEOWNERS) approval.
+#
+# Disable the Docker AI Factory reviewer separately (GitHub App / webhook at
+# ai-factory.docker.team). It is not a workflow in this repo. It posts as
+# DawoudIO with the "pr-reviewer bot" banner and a link to ai-factory.docker.team.
+
+language: en-US
+early_access: false
+
+tone_instructions: >-
+  Concise. Hard blocks only: security, authz, data leak, upgrade breakage,
+  missing tests, unwrapped strings, Query View work, date/money contract. No nits.
+
+reviews:
+  profile: chill
+  request_changes_workflow: true
+  high_level_summary: true
+  high_level_summary_in_walkthrough: true
+  poem: false
+  sequence_diagrams: false
+  collapse_walkthrough: true
+  # No "reviewing…" fortune, progress check, or skipped-review chatter.
+  in_progress_fortune: false
+  review_progress: false
+  review_status: false
+  review_details: true
+  commit_status: true
+  fail_commit_status: true
+  changed_files_summary: true
+  estimate_code_review_effort: false
+  suggested_labels: false
+  suggested_reviewers: false
+  related_issues: true
+  related_prs: true
+  assess_linked_issues: true
+  enable_prompt_for_ai_agents: true
+  pre_merge_checks:
+    override_requested_reviewers_only: true
+    title:
+      mode: warning
+      requirements: Imperative subject under 72 characters.
+    issue_assessment:
+      mode: warning
+    docstrings:
+      mode: "off"
+    custom_checks:
+      - name: Authorization and data exposure
+        mode: error
+        instructions: |
+          Fail if a new or changed route, API endpoint, controller, or query returns
+          or mutates person, family, finance, or admin data without an explicit
+          authorization check (role middleware or permission test), or if a
+          non-Finance user can read finance fields. Pass if no such code changed.
+      - name: Schema upgrade safety
+        mode: error
+        instructions: |
+          Fail if the Propel schema or src/mysql/install SQL changes without a
+          matching script in src/mysql/upgrade/ and an upgrade.json entry, or if a
+          new column is NOT NULL without a default. Pass if no schema changed.
+      - name: Tests for behavior changes
+        mode: error
+        instructions: |
+          Fail if the PR fixes a bug or changes user-visible behavior under src/
+          without adding or updating a spec in cypress/. Pass for CI, docs,
+          tooling, locale, dependency, and refactor-only PRs.
+      - name: No Query View expansion
+        mode: error
+        instructions: |
+          Fail if the PR modifies QueryView.php or QueryList.php, or adds query_qry
+          rows. New reports belong in src/v2/ or a plugin.
+      - name: Injection and escaping
+        mode: error
+        instructions: |
+          Fail if the PR adds RunQuery() or raw SQL, concatenates request input into
+          a query, or prints request or database values into HTML or script without
+          InputUtils escaping.
+
+  auto_review:
+    enabled: true
+    drafts: false
+    auto_incremental_review: true
+    auto_pause_after_reviewed_commits: 5
+    base_branches:
+      - ".*"
+    ignore_usernames:
+      - "github-actions[bot]"
+      - "dependabot[bot]"
+    labels:
+      - "!Localization"
+
+  path_filters:
+    - "!locale/**"
+    - "!**/messages.po"
+    - "!**/vendor/**"
+    - "!**/node_modules/**"
+    - "!**/dist/**"
+    - "!**/*.min.js"
+    - "!**/*.lock"
+    - "!src/skin/external/**"
+    - "!playwright/workflows/**"
+    - "!playwright/**/*.png"
+    - "!**/*.png"
+    - "!**/*.jpg"
+
+  path_instructions:
+    - path: "**/*"
+      instructions: |
+        Apply maintainer-review-gates.md. Hard blocks only.
+        Do not ask for locale:build or messages.po.
+    - path: "src/**/*.php"
+      instructions: |
+        PHP 8.4. Propel ORM only — flag new RunQuery() or raw SQL.
+        Escape with InputUtils. Redirect with RedirectUtils, not header().
+        API errors use SlimUtils::renderErrorJSON(). Authz on protected routes.
+        Services hold business logic. No new Query View features
+        (QueryView.php, QueryList.php, query_qry).
+        Schema changes need src/mysql/upgrade/ plus upgrade.json; new columns nullable or defaulted.
+        User-visible strings in gettext(). Do not ask for locale:build.
+        Dates stored as ISO or naive sTimeZone wall-clock, never parsed with sDateFormat.
+    - path: "src/skin/**/*.{js,php}"
+      instructions: |
+        Tabler + Bootstrap 5 (ms-/me-, data-bs-*, btn-close). No Bootstrap 4 leftovers.
+        No alert()/confirm() — window.CRM.notify() or a Bootstrap modal.
+        Page logic belongs in a webpack/ entry, not a new inline script block.
+        Asset paths use SystemURLs::getRootPath(). UI strings in gettext() or i18next.t().
+    - path: "webpack/**/*.{js,ts,tsx}"
+      instructions: |
+        Web bundle. Match biome.json. No console.log, var, or any.
+        UI strings via i18next.t(). No inline PHP in generated output.
+    - path: "**/*.{js,ts,tsx,css,scss}"
+      instructions: |
+        Web only. Bootstrap 5 / Tabler utilities. No new jQuery where a webpack entry exists.
+        Do not flag Bootstrap 5 class names.
+    - path: "cypress/**/*.{js,ts}"
+      instructions: |
+        No .only or .skip. Do not put optional demo values in Cypress seed.
+        A feature or bug fix needs a spec when that is the project pattern.
+    - path: ".github/workflows/**"
+      instructions: |
+        Pin actions to a commit SHA. No model/LLM calls from Actions.
+        pull_request_target must not checkout or execute the PR head.
+
+  finishing_touches:
+    docstrings:
+      enabled: false
+    unit_tests:
+      enabled: false
+    autofix:
+      enabled: false
+
+  tools:
+    # Web: repo lints with Biome (biome.json). No ESLint config.
+    biome:
+      enabled: true
+    eslint:
+      enabled: false
+    # PHP: no phpstan.neon with paths:, so PHPStan cannot run. PHPMD needs no config.
+    phpstan:
+      enabled: false
+    phpmd:
+      enabled: true
+    actionlint:
+      enabled: true
+    gitleaks:
+      enabled: true
+    semgrep:
+      enabled: true
+
+knowledge_base:
+  opt_out: false
+  learnings:
+    scope: auto
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - files: ".agents/skills/churchcrm/maintainer-review-gates.md"
+        applyTo: "**/*"
+      - files: ".agents/skills/churchcrm/pr-review.md"
+        applyTo: "**/*"
+      - files: ".agents/skills/churchcrm/code-standards.md"
+        applyTo: "**/*.{php,js,ts}"
+      - files: ".agents/skills/churchcrm/security-best-practices.md"
+        applyTo: "**/*.{php,js}"
+      - files: ".agents/skills/churchcrm/authorization-security.md"
+        applyTo: "**/*.php"
+      - files: ".agents/skills/churchcrm/frontend-development.md"
+        applyTo: "**/*.{js,php,css,scss}"
+      - files: ".agents/skills/churchcrm/webpack-typescript.md"
+        applyTo: "webpack/**/*.{js,ts,tsx}"
+      - files: ".agents/skills/churchcrm/i18n-localization.md"
+        applyTo: "**/*.{php,js,ts}"
+      - files: ".agents/skills/churchcrm/timezone-handling.md"
+        applyTo: "**/*.{php,js,ts}"
+      - files: "CLAUDE.md"
+        applyTo: "**/*"
+
+chat:
+  auto_reply: true

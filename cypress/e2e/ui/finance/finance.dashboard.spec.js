@@ -53,7 +53,7 @@ describe("Finance Dashboard", () => {
         cy.visit("/finance/");
 
         // Find and click the Reports button
-        cy.contains("a", "Reports").click();
+        cy.get('.card a.btn[href$="/finance/reports"]').first().click();
         cy.url().should("contain", "/finance/reports");
         cy.contains("Financial Reports");
     });

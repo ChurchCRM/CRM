@@ -1,13 +1,13 @@
 name: "Release: bookkeeping"
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 # Fires automatically when a release is published.
 # Can also be triggered manually to re-sync or back-fill any version.
 #
 # Deterministic bookkeeping only — no model call.
+#
+# Do not put `inputs.*` on workflow-level `env`. GitHub evaluates that on
+# every push of this file; `inputs` is not defined for the `release` trigger,
+# so parse fails and Actions records a 0-second failed `push` run with no jobs.
 
 on:
   release:
@@ -24,28 +24,45 @@ on:
         type: boolean
         default: false
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.release.tag_name || github.event.inputs.tag || github.run_id }}
+  cancel-in-progress: false
+
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     env:
       GH_TOKEN:     ${{ github.token }}
       GH_REPO:      ${{ github.repository }}
       GITHUB_TOKEN: ${{ github.token }}
-      TAG: ${{ github.event.release.tag_name || inputs.tag }}
+      TAG:          ${{ github.event.release.tag_name || github.event.inputs.tag }}
     steps:
-      - uses: actions/checkout@v7
+      - name: Validate release tag
+        run: |
+          # Editing a draft can leave it on GitHub's placeholder tag
+          # (untagged-<hash>); publishing then ships that as the version and
+          # every install's update check reads it. Stop before recording it.
+          if ! [[ "$TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Release tag '$TAG' is not a version. Fix it with: gh release edit '$TAG' -R $GH_REPO --tag <version>, delete the stray tag, then run this workflow manually with tag=<version>."
+            exit 1
+          fi
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: master
 
-      - uses: actions/setup-node@v7
+      - uses: ./.github/actions/setup-node
         with:
           node-version: '22'
 
       - name: Sync changelog file and CHANGELOG.md table
         env:
-          FORCE: ${{ inputs.force == true && '--force' || '' }}
+          FORCE: ${{ github.event.inputs.force == 'true' && '--force' || '' }}
         run: node scripts/release-changelog.js "$TAG" $FORCE
 
       - name: Commit and push
@@ -61,17 +78,18 @@ jobs:
           fi
 
   manage-milestones:
-    if: github.event_name == 'release' && !github.event.release.prerelease
+    if: (github.event_name == 'release' && !github.event.release.prerelease) || github.event_name == 'workflow_dispatch'
     needs: sync
     name: Advance CRM release milestone
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       issues: write
       pull-requests: write
     env:
-      GH_TOKEN: ${{ github.token }}
-      GH_REPO: ${{ github.repository }}
+      GH_TOKEN:     ${{ github.token }}
+      GH_REPO:      ${{ github.repository }}
+      CURRENT_TAG:  ${{ github.event.release.tag_name || github.event.inputs.tag }}
     steps:
       - name: Determine next version from master package.json
         id: next_version
@@ -83,10 +101,19 @@ jobs:
 
       - name: Close current CRM milestone and move pending items
         env:
-          CURRENT_TAG: ${{ env.TAG }}
           NEXT_VERSION: ${{ steps.next_version.outputs.next_version }}
         run: |
           set -euo pipefail
+
+          if [ -z "$CURRENT_TAG" ]; then
+            echo "::error::No release tag. Re-run this workflow with tag=<version>."
+            exit 1
+          fi
+
+          if [ "$NEXT_VERSION" = "$CURRENT_TAG" ]; then
+            echo "::error::master package.json is still $CURRENT_TAG. Merge the 'Start <next> release' PR, then run this workflow manually with tag=$CURRENT_TAG."
+            exit 1
+          fi
 
           current_milestone=$(gh api "repos/$GH_REPO/milestones?state=all&per_page=100" \
             --jq ".[] | select(.title == \"$CURRENT_TAG\") | .number" | head -n 1)
@@ -116,14 +143,16 @@ jobs:
           echo "Closed CRM milestone $CURRENT_TAG"
 
   sync-docs-milestones:
-    if: github.event_name == 'release' && !github.event.release.prerelease
+    if: (github.event_name == 'release' && !github.event.release.prerelease) || github.event_name == 'workflow_dispatch'
     needs: sync
     name: Synchronize docs milestones
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     env:
-      DOCS_REPO: ChurchCRM/docs.churchcrm.io
-      CURRENT_TAG: ${{ github.event.release.tag_name }}
+      DOCS_REPO:    ChurchCRM/docs.churchcrm.io
+      CURRENT_TAG:  ${{ github.event.release.tag_name || github.event.inputs.tag }}
     steps:
       - name: Determine next version from CRM master
         id: next_version
@@ -145,8 +174,8 @@ jobs:
           set -euo pipefail
 
           if [ -z "${GH_TOKEN:-}" ]; then
-            echo "::error::DOCS_RELEASE_TOKEN is required to synchronize docs milestones."
-            exit 1
+            echo "::warning::DOCS_RELEASE_TOKEN is not set; skipping docs milestone sync. See #10097."
+            exit 0
           fi
 
           ensure_milestone() {

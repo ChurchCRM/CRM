@@ -3,13 +3,16 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Directory reports');
 $sPageSubtitle = gettext('Generate directory listings and printed materials');
 $aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Data & Reports'), '/QueryList.php'],
+    [gettext('People Reports'), '/people/reports'],
     [gettext('Directory Reports')],
 ]);
 require_once __DIR__ . '/Include/Header.php';
@@ -37,7 +40,7 @@ $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom
 $rsCustomFields = RunQuery($sSQL);
 $numCustomFields = mysqli_num_rows($rsCustomFields);
 
-$aDefaultClasses = explode(',', SystemConfig::getValue('sDirClassifications'));
+$aDefaultClasses = (new ClassificationService())->getDirectoryIds();
 $aDirRoleHead = explode(',', SystemConfig::getValue('sDirRoleHead'));
 $aDirRoleSpouse = explode(',', SystemConfig::getValue('sDirRoleSpouse'));
 $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
@@ -63,7 +66,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
       <div class="mb-3">
         <label class="form-label"><?= gettext('Select classifications to include') ?></label>
         <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
-        <select class="form-select" name="sDirClassifications[]" size="5" multiple>
+        <select class="form-select" name="sDirClassifications[]" size="5" multiple required>
           <option value="0"><?= gettext('Unassigned') ?></option>
           <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
               extract($aRow);
@@ -141,32 +144,37 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
         <label class="form-label"><?= gettext('Information to Include') ?>:</label>
         <div class="row row-cols-2 row-cols-md-3 g-1">
           <?php
+          // 'checked' is the default state of the option; 'indent' marks a sub-option
+          // of the entry above it. The options flow through a 2/3-column grid, so an
+          // indented entry reads as belonging to its neighbour rather than sitting
+          // underneath it.
           $checkFields = [
-              'bDirAddress'        => gettext('Address'),
-              'bDirWedding'        => gettext('Wedding Date'),
-              'bDirBirthday'       => gettext('Birthday'),
-              'bDirFamilyPhone'    => gettext('Family Home Phone'),
-              'bDirFamilyWork'     => gettext('Family Work Phone'),
-              'bDirFamilyCell'     => gettext('Family Cell Phone'),
-              'bDirFamilyEmail'    => gettext('Family Email'),
-              'bDirPersonalPhone'  => gettext('Personal Home Phone'),
-              'bDirPersonalWork'   => gettext('Personal Work Phone'),
-              'bDirPersonalCell'   => gettext('Personal Cell Phone'),
-              'bDirPersonalEmail'  => gettext('Personal Email'),
-              'bDirPersonalWorkEmail' => gettext('Personal Work/Other Email'),
-              'bDirPhoto'          => gettext('Photos'),
+              'bDirAddress'        => ['label' => gettext('Primary Address'), 'checked' => true],
+              'bDirMailingAddress' => ['label' => gettext('Mailing Address if Different'), 'checked' => false, 'indent' => true],
+              'bDirWedding'        => ['label' => gettext('Wedding Date'), 'checked' => true],
+              'bDirBirthday'       => ['label' => gettext('Birthday'), 'checked' => true],
+              'bDirFamilyPhone'    => ['label' => gettext('Family Home Phone'), 'checked' => true],
+              'bDirFamilyWork'     => ['label' => gettext('Family Work Phone'), 'checked' => true],
+              'bDirFamilyCell'     => ['label' => gettext('Family Cell Phone'), 'checked' => true],
+              'bDirFamilyEmail'    => ['label' => gettext('Family Email'), 'checked' => true],
+              'bDirPersonalPhone'  => ['label' => gettext('Personal Home Phone'), 'checked' => true],
+              'bDirPersonalWork'   => ['label' => gettext('Personal Work Phone'), 'checked' => true],
+              'bDirPersonalCell'   => ['label' => gettext('Personal Cell Phone'), 'checked' => true],
+              'bDirPersonalEmail'  => ['label' => gettext('Personal Email'), 'checked' => true],
+              'bDirPersonalWorkEmail' => ['label' => gettext('Personal Work/Other Email'), 'checked' => true],
+              'bDirPhoto'          => ['label' => gettext('Photos'), 'checked' => true],
           ];
-          foreach ($checkFields as $name => $label) : ?>
+          foreach ($checkFields as $name => $field) : ?>
             <div class="col">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="<?= $name ?>" value="1" id="<?= $name ?>" checked>
-                <label class="form-check-label" for="<?= $name ?>"><?= $label ?></label>
+              <div class="form-check<?= !empty($field['indent']) ? ' ms-4' : '' ?>">
+                <input class="form-check-input" type="checkbox" name="<?= $name ?>" value="1" id="<?= $name ?>" <?= $field['checked'] ? 'checked' : '' ?>>
+                <label class="form-check-label" for="<?= $name ?>"><?= $field['label'] ?></label>
               </div>
             </div>
           <?php endforeach;
           if ($numCustomFields > 0) {
               while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-                  if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]])) {
+                  if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$rowCustomField['custom_FieldSec']])) {
                       $customName = 'bCustom' . $rowCustomField['custom_Order']; ?>
                 <div class="col">
                   <div class="form-check">
@@ -180,9 +188,23 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
         </div>
       </div>
 
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Page Layout') ?>:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sDirLayout" value="pages" id="sDirLayoutPages" checked>
+          <label class="form-check-label" for="sDirLayoutPages"><?= gettext('Single Pages') ?></label>
+          <div class="form-text"><?= gettext('One directory page per sheet, portrait.') ?></div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sDirLayout" value="booklet" id="sDirLayoutBooklet">
+          <label class="form-check-label" for="sDirLayoutBooklet"><?= gettext('Folded Booklet') ?></label>
+          <div class="form-text"><?= gettext('Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with "flip on short edge", then fold the stack in half. Columns are counted per half page.') ?></div>
+        </div>
+      </div>
+
       <div class="row g-3 mb-3">
         <div class="col-md-4">
-          <label class="form-label"><?= gettext('Number of Columns') ?>:</label>
+          <label class="form-label"><?= gettext('Columns per Page') ?>:</label>
           <div class="d-flex gap-3">
             <?php foreach ([1 => '1 col', 2 => '2 cols', 3 => '3 cols'] as $val => $label) : ?>
               <div class="form-check">
@@ -260,5 +282,26 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     </form>
   </div>
 </div>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  // "Mailing Address if Different" prints beneath the primary address, so it only
+  // means something while "Primary Address" is on. Keep the two in step: turning
+  // the primary address off disables and clears the sub-option instead of
+  // silently ignoring it when the report is built.
+  (function () {
+    var primary = document.getElementById("bDirAddress");
+    var mailing = document.getElementById("bDirMailingAddress");
+    if (!primary || !mailing) {
+      return;
+    }
+    var sync = function () {
+      mailing.disabled = !primary.checked;
+      if (!primary.checked) {
+        mailing.checked = false;
+      }
+    };
+    primary.addEventListener("change", sync);
+    sync();
+  })();
+</script>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -60,13 +61,7 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         ->filterByDateDeactivated()
         ->count();
 
-    $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
-    if ($sInactiveClassificationIds === '') {
-        $sInactiveClassificationIds = '-1';
-    }
-    $aInactiveClassificationIds = explode(',', $sInactiveClassificationIds);
-    $dashboardCounts['People'] = PersonQuery::create()
-        ->filterByClsId($aInactiveClassificationIds, Criteria::NOT_IN)
+    $dashboardCounts['People'] = (new ClassificationService())->excludeInactive(PersonQuery::create())
         ->leftJoinWithFamily()
         ->where('Family.DateDeactivated is null')
         ->filterByLiving()
@@ -116,6 +111,7 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         'dashboardCounts'                 => $dashboardCounts,
         'sundaySchoolEnabled'             => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
         'depositEnabled'                  => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),
+        'canReviewSelfRegistrations'      => AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
         'eventsEnabled'                   => SystemConfig::getBooleanValue('bEnabledEvents'),
         'genderDataCheckCount'            => $genderDataCheckCount,
         'roleDataCheckCount'              => $roleDataCheckCount,

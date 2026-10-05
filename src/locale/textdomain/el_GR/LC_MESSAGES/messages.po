@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Φωτογραφίες"
 
 #: 
-msgid "Number of Columns"
-msgstr "Αριθμός στηλών"
-
-#: 
 msgid "Paper Size"
 msgstr "Μέγεθος χαρτιού"
 
@@ -846,10 +842,6 @@ msgstr "Διαγραφή φωτογραφίας"
 #: 
 msgid "Timeline"
 msgstr "Χρονοδιάγραμμα"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Ενέχυρα και πληρωμές"
 
 #: 
 msgid "Value"
@@ -1674,30 +1666,6 @@ msgstr "Τάξη"
 #: 
 msgid "Properties"
 msgstr "Ιδιότητες"
-
-#: 
-msgid "Query Listing"
-msgstr "Καταχώριση ερωτήματος"
-
-#: 
-msgid "Query View"
-msgstr "Προβολή ερωτήματος"
-
-#: 
-msgid "This value is required."
-msgstr "Αυτή η τιμή απαιτείται."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Αυτή η τιμή πρέπει να είναι αριθμητική."
-
-#: 
-msgid "Run Query Again"
-msgstr "Εκτελέστε ξανά το ερώτημα"
-
-#: 
-msgid "Execute Query"
-msgstr "Εκτέλεση ερωτήματος"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -2627,10 +2595,6 @@ msgstr "Προβολή Αγοραστών"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Προσθήκη χορηγών στη λίστα αγοραστών"
-
-#: 
-msgid "Data/Reports"
-msgstr "Δεδομένα/Αναφορές"
 
 #: 
 msgid "Family Properties"
@@ -4508,10 +4472,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Για τον καθορισμό της ημερομηνίας στο Date-Picker, ανά προεπιλογή : Y-m-d, Στα γαλλικά: d/m/Y για παράδειγμα."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Λίστα διαχωρισμένων με κόμματα Προσώπων με άτομα που πρέπει να ειδοποιούνται όταν προστίθεται νέα οικογένεια ή άτομο"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Επιτρέπονται αναγνώσεις γεγονότων χωρίς έλεγχο ταυτότητας από το εξωτερικό API ημερολογίου"
 
@@ -5080,14 +5040,6 @@ msgstr[1] "%d ετών"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "Λείπει το PHP ZipArchive"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "Προσθήκη αποτελεσμάτων στο καλάθι"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Αφαίρεση αποτελεσμάτων από το καλάθι"
 
 #: 
 msgid "Database Reset Functions"
@@ -6362,10 +6314,6 @@ msgid "Cart"
 msgstr "Καλάθι"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Αλλάξτε αυτό στις Ρυθμίσεις Συστήματος."
-
-#: 
 msgid "Church Membership"
 msgstr "Μέλη Εκκλησίας"
 
@@ -6416,10 +6364,6 @@ msgstr "Δημιουργήστε ή επιλέξτε μια κατάθεση γ�
 #: 
 msgid "Current Deposit"
 msgstr "Τρέχουσα κατάθεση"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Τρέχον οικονομικό έτος"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6482,10 +6426,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Βεβαιωθείτε ότι όλες οι καταθέσεις του έτους έχουν κλείσει πριν τη δημιουργία βεβαιώσεων."
 
 #: 
-msgid "Export Options"
-msgstr "Εξαγωγή Options"
-
-#: 
 msgid "F"
 msgstr "Θ"
 
@@ -6500,10 +6440,6 @@ msgstr "Πλοήγηση οικογένειας"
 #: 
 msgid "Feb"
 msgstr "Φεβ"
-
-#: 
-msgid "Filtering"
-msgstr "Φιλτράρισμα"
 
 #: 
 msgid "Finance"
@@ -6526,16 +6462,8 @@ msgid "Generate Tax Statements"
 msgstr "Δημιουργία φορολογικών βεβαιώσεων"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Δημιουργία ετήσιων βεβαιώσεων δωρεών και αναγνώριση προτύπων προσφοράς."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Δημιουργία ετήσιων φορολογικών βεβαιώσεων δωρεών. Μπορούν να εκτυπωθούν ή να σταλούν με email."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Δημιουργία λεπτομερών αναφορών για μεμονωμένες καταθέσεις ή ημερομηνιακά εύρη."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6596,10 +6524,6 @@ msgstr "Μαρ"
 #: 
 msgid "Membership Reports"
 msgstr "Αναφορές Ιδιοκτησίας"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Οι περισσότερες αναφορές εξάγονται ως PDF ή CSV."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6678,14 +6602,6 @@ msgid "Recording a Pledge"
 msgstr "Καταγραφή Υπόσχεσης"
 
 #: 
-msgid "Report Tips"
-msgstr "Συμβουλές Αναφοράς"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Αναφορές για δικαίωμα ψήφου και διακυβέρνηση του οργανισμού."
-
-#: 
 msgid "Reset"
 msgstr "Επαναφορά"
 
@@ -6762,20 +6678,12 @@ msgid "Total Amount"
 msgstr "Συνολικό ποσό"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Παρακολούθηση υποσχέσεων και πληρωμών για εκστρατείες και προϋπολογισμό."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Ανικανοποίητες Προϋποθέσεις"
 
 #: 
 msgid "Upgrade"
 msgstr "Αναβάθμιση"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Χρησιμοποιήστε φίλτρα ταξινόμησης και οικογένειας για δημιουργία αναφορών για συγκεκριμένες ομάδες δοτών."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6800,10 +6708,6 @@ msgstr "Υποσχέσεις έτους έως σήμερα (YTD)"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Μπορείτε να δημιουργήσετε μέλη οικογένειας τώρα ή αργότερα."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Το οικονομικό σας έτος ξεκινά σε μήνα"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7360,10 +7264,6 @@ msgstr "Αφαίρεση αυτής της καταμέτρησης παρουσ
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Επιλέξτε τον τύπο εγγραφής στον οποίο εφαρμόζεται αυτή η ιδιότητα"
-
-#: 
-msgid "Total Pledges"
-msgstr "Συνολικές Υποσχέσεις"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -9037,10 +8937,6 @@ msgid "Current person"
 msgstr "Τρέχον άτομο"
 
 #: 
-msgid "Data & Reports"
-msgstr "Δεδομένα & αναφορές"
-
-#: 
 msgid "Database Reset"
 msgstr "Επαναφορά βάσης δεδομένων"
 
@@ -10059,10 +9955,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Προβολή και διαχείριση αρχείων καταγραφής συστήματος για αποσφαλμάτωση"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Προβολή και εκτέλεση αποθηκευμένων ερωτημάτων βάσης δεδομένων"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Προβολή αριθμών αγοραστών και αναθέσεων αριθμών"
 
@@ -10081,10 +9973,6 @@ msgstr "Προβολή συνόψεων οικονομικών δεσμεύσε�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Προβολή μελών ομάδας, ρόλων και ιδιοτήτων"
-
-#: 
-msgid "View query results"
-msgstr "Προβολή αποτελεσμάτων ερωτήματος"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10406,10 +10294,6 @@ msgstr "Διαθέσιμη ενημέρωση"
 msgid "User must have Notes permission"
 msgstr "Ο χρήστης πρέπει να έχει δικαίωμα σημειώσεων"
 
-#: 
-msgid "Address Defaults"
-msgstr "Προεπιλογές διευθύνσεων"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10422,16 +10306,6 @@ msgstr "Ρυθμίσεις Ημερολογίου"
 #: 
 msgid "Calendars"
 msgstr "Ημερολόγια"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Επιλέξτε μια ευκαιρία εθελοντισμού"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Επιλέξτε πεδίο προσώπου"
 
 #: 
 msgid "Church Identity"
@@ -10453,11 +10327,6 @@ msgstr "Το ChurchCRM μπορεί να στέλνει μηνύματα ηλε�
 msgid "Communication"
 msgstr "Επικοινωνία"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Συγκρίνετε τις υποσχέσεις μεταξύ δύο λογιστικών ετών"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Διαμορφώστε το SMTP στις παρακάτω ρυθμίσεις για να στέλνετε μηνύματα ηλεκτρονικής αλληλογραφίας από το σύστημα."
@@ -10471,17 +10340,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Συνδέστε το Mailchimp για να συγχρονίσετε τις λίστες ηλεκτρονικής αλληλογραφίας για ενημερωτικές δελτία και καμπάνιες."
 
 #: 
-msgid "Copy from church address"
-msgstr "Αντιγραφή από διεύθυνση Εκκλησίας"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "Αντιγράψτε στο πρόχειρο"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Προσαρμοσμένο πεδίο"
 
 #: 
 msgid "Default Country"
@@ -10535,16 +10395,6 @@ msgstr "Αποτυχία ανάκτησης διευθύνσεων ηλεκτρ�
 msgid "Failed to retrieve phone numbers"
 msgstr "Αποτυχία ανάκτησης αριθμών τηλεφώνου"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Τιμή πεδίου"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Βρείτε άτομα που έκαναν υπόσχεση έναν χρόνο αλλά όχι άλλον"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10552,33 +10402,8 @@ msgstr "Βρείτε εθελοντές για μια συγκεκριμένη �
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Εύρεση εθελοντών που ταιριάζουν με δύο συγκεκριμένους κωδικούς ευκαιρίας"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Πρώτο Οικονομικό Έτος"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Πρώτο οικονομικό έτος για σύγκριση"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Πρώτη επιλογή ευκαιρίας εθελοντισμού"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Φίλοι που εγγράφηκαν τους προηγούμενους μήνες"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Επισκέπτης"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10602,31 +10427,6 @@ msgstr "Διαχείριση εκδηλώσεων, γενεθλίων και ε�
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Αντιστοίχιση προσαρμοσμένου πεδίου σε αυτήν την τιμή"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Μέλος, Τακτικός Παρευρισκόμενος κ.λπ."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Μέλη που εντάχθηκαν σε συγκεκριμένο μήνα"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Επέτειοι μελών"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Ελλείπουσες υποσχέσεις"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Μήνας"
 
@@ -10646,16 +10446,6 @@ msgstr "Emails ειδοποίησης νέων μελών"
 #: 
 msgid "No cell phone on file"
 msgstr "Δεν υπάρχει κινητό τηλέφωνο στο αρχείο"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Μη Παρευρισκόμενος"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Μη Παρευρισκόμενος (προσωπικό)"
 
 #: 
 msgid "Not Classified"
@@ -10692,30 +10482,10 @@ msgstr "Ιδιότητα ατόμου που χρησιμοποιείται γι
 msgid "Person property used to exclude members from email lists"
 msgstr "Ιδιότητα ατόμου που χρησιμοποιείται για εξαίρεση μελών από λίστες email"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Σύγκριση υποσχέσεων"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Έδωσε υπόσχεση φέτος"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Ιδιότητα"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Πρόσφατοι φίλοι"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Τακτικός επισκέπτης"
 
 #. Context: query_qry
 #: 
@@ -10737,21 +10507,6 @@ msgstr "SMTP ρυθμισμένο"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP δεν ρυθμίστηκε"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Δεύτερο Λογιστικό Έτος"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Δεύτερο λογιστικό έτος για σύγκριση"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Δεύτερη επιλογή ευκαιρίας εθελοντή"
 
 #: 
 msgid "Send text message"
@@ -10785,25 +10540,6 @@ msgstr "Εργαλεία κειμένου"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Οι ενέργειες ανταλλαγής μηνυμάτων κειμένου είναι διαθέσιμες στις προβολές Group και Sunday School class. Χρησιμοποιήστε το αναπτυσσόμενο μενού \"Κείμενο\" για αντιγραφή αριθμών τηλεφώνου ή αποστολή μηνυμάτων SMS στα μέλη της ομάδας."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Ο μήνας γενεθλίων για τον οποίο θέλετε να επιστραφούν τα αρχεία."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Ο μήνας επετείου μέλους για τον οποίο θέλετε να επιστραφούν τα αρχεία."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Η ιδιοκτησία για την οποία θέλετε να επιστραφούν τα αρχεία ατόμου."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Αυτές οι τιμές προσυμπληρώνονται κατά τη δημιουργία νέων οικογενειών. Αφήστε κενό για να απαιτήσετε χειροκίνητη εισαγωγή."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Μονάδα για τη μέτρηση της απόστασης."
@@ -10812,11 +10548,6 @@ msgstr "Μονάδα για τη μέτρηση της απόστασης."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Άδεια χρήστη για αποστολή ηλεκτρονικού ταχυδρομείου μέσω συνδέσμων mailto:"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Ευκαιρίες εθελοντισμού"
 
 #. Context: query_qry
 #: 
@@ -10834,11 +10565,6 @@ msgstr "Vonage SMS δεν ρυθμίστηκε"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Χωρίς το Vonage, οι ενέργειες κειμένου θα ανοίξουν την εφαρμογή SMS της συσκευής σας ή θα αντιγράψουν αριθμούς τηλεφώνου στο πρόχειρο."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "αλλά όχι φέτος"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10949,10 +10675,6 @@ msgstr "Επιτρέψτε μη πιστοποιημένη πρόσβαση σε
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Επιτρέψτε στους επισκέπτες να δημιουργούν οικογενειακές εγγραφές μέσω της σελίδας αυτοεγγραφής"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Να επιτρέπεται στους επισκέπτες να εγγράφονται ως νέες οικογένειες."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -11036,10 +10758,6 @@ msgstr "Επιλέξτε τι εμφανίζεται όταν δεν υπάρχ�
 "• Retro - Εικονοστοιχεία τύπου 8-bit arcade\n"
 "• RoboHash - Μοναδικό δημιουργημένο ρομπότ\n"
 "• Blank - Διαφανές (εναλλακτικά εμφανίζονται αρχικά)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "Αναγνωριστικά ερωτημάτων διαχωρισμένα με κόμμα που απαιτούν οικονομικά δικαιώματα για προβολή"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11152,10 +10870,6 @@ msgstr "Ενεργοποίηση χρήσης σαρωμένων επιταγώ�
 msgid "Features"
 msgstr "Χαρακτηριστικά"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "Αναγνωριστικά ερωτημάτων οικονομικής άδειας"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11229,10 +10943,6 @@ msgstr "Το Gravatar λειτουργεί μετατρέποντας διευθ
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Απόκρυψη Γεωγρ. Πλάτους/Μήκους"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Απόκρυψη Διεύθυνσης Ατόμου"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -12294,16 +12004,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Πώς συνδέονται το Κατηχητικό + Εκδηλώσεις + Κιόσκια"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Μη έγκυρη ημερομηνία για %s — αναμένεται YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Μη έγκυρη μορφή ημερομηνίας για rangeStart ή rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Μη έγκυρη ημερομηνία· αναμένεται μορφή YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12534,10 +12236,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "Το eventIds πρέπει να είναι μη κενός πίνακας"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "μη έγκυρος τύπος επανάληψης"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "Το personIds πρέπει να είναι μη κενός πίνακας"
 
@@ -12740,10 +12438,6 @@ msgstr "Σύνολο Kiosk"
 #: 
 msgid "Upcoming Events"
 msgstr "Προσεχή συμβάντα"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Απόλυτη http(s) διεύθυνση URL του λογότυπου της εκκλησίας που εμφανίζεται στα πρότυπα email (και θα επαναχρησιμοποιηθεί αλλού στο μέλλον). Για βέλτιστη απόδοση σε προγράμματα email, χρησιμοποιήστε μια πλατιά εικόνα banner με αναλογία περίπου 3,5:1 (π.χ. 350×100 px), PNG ή JPG, που προσφέρεται μέσω HTTPS. Αφήστε κενό ή εισαγάγετε μη έγκυρη τιμή για να επιστρέψετε στο προεπιλεγμένο λογότυπο ChurchCRM."
 
 #: 
 msgid "An option with that name already exists"
@@ -14318,11 +14012,6 @@ msgstr "Το όνομα της οικογένειας πρέπει να έχει
 msgid "Fields"
 msgstr "Πεδία"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Βρείτε άτομα που δεν παρακολούθησαν μια εκδήλωση"
-
 #: 
 msgid "First name is required"
 msgstr "Το όνομα είναι απαραίτητο"
@@ -14502,11 +14191,6 @@ msgstr "Τα μέλη προστέθηκαν στη λίστα."
 #: 
 msgid "Minimum length is"
 msgstr "Η ελάχιστη διάρκεια είναι"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Απόντες ενορίτες"
 
 #: 
 msgid "Move"
@@ -14876,11 +14560,6 @@ msgstr "Επιλέξτε ημερολόγια..."
 msgid "Select event type..."
 msgstr "Επιλέξτε τύπο συμβάντος..."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Επιλέξτε την επιθυμητή εκδήλωση"
-
 #: 
 msgid "Sequence"
 msgstr "Αλληλουχία"
@@ -14944,10 +14623,6 @@ msgstr "Κείμενο Όλα"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Το επιλεγμένο αρχείο υπερβαίνει το μέγιστο μέγεθος μεταφόρτωσης αυτού του διακομιστή"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Δεν υπάρχουν προγραμματισμένες εκδηλώσεις για σήμερα"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -16346,10 +16021,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s από την οικογένεια %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "Επεστράφησαν %d εγγραφές"
-
-#: 
 msgid "Assign role to all"
 msgstr "Ανάθεση ρόλου σε όλους"
 
@@ -16520,22 +16191,6 @@ msgstr "Διαμόρφωση Συστήματος"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Υπάρχουν άτομα ανατεθειμένα σε αυτή τη Θέση Εθελοντισμού. Η διαγραφή θα τα αποδεσμεύσει"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Αυτή η τιμή δεν μπορεί να είναι μικρότερη από %d χαρακτήρες"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Αυτή η τιμή δεν μπορεί να είναι μεγαλύτερη από %d χαρακτήρες"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Αυτή η τιμή δεν μπορεί να είναι μεγαλύτερη από %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Αυτή η τιμή πρέπει να είναι τουλάχιστον %s"
 
 #: 
 msgid "Total Deposits"
@@ -16818,24 +16473,12 @@ msgid "Family Delete Confirmation"
 msgstr "Επιβεβαίωση Διαγραφής Οικογένειας"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Μεμονωμένα Άτομα (χωρίς οικογένεια)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Νέες Αυτο-Εγγραφές"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Επιβεβαίωση Διαγραφής Τύπου Ιδιότητας"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Ελέγξτε νέες οικογένειες και άτομα που εγγράφηκαν μέσω της δημόσιας φόρμας εγγραφής"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Ελέγξτε παρακάτω τις νέες εγγραφές από τη δημόσια φόρμα σας. Οι εγγραφές χωρίς email ή τηλέφωνο επισημαίνονται — επαληθεύστε τα στοιχεία επικοινωνίας πριν από οποιαδήποτε ενέργεια."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17547,16 +17190,6 @@ msgstr "Ελάχιστη προσφορά %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Άτομα με γενέθλια ή επέτειο γάμου σε συγκεκριμένο μήνα"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Ο μήνας για τον οποίο επιθυμείτε να εμφανιστούν γενέθλια και επέτειοι."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Ο μήνας επετείου γάμου για τον οποίο επιθυμείτε να εμφανιστούν εγγραφές."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Σύνολο όλων των αγορών: %s"
@@ -17776,10 +17409,6 @@ msgid "Selected family"
 msgstr "Επιλεγμένη οικογένεια"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Αυτή η τιμή πρέπει να είναι έγκυρο όνομα πεδίου."
-
-#: 
 msgid "Could not load data"
 msgstr "Δεν ήταν δυνατή η φόρτωση δεδομένων"
 
@@ -17788,16 +17417,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Ανανεώστε τη σελίδα ή δοκιμάστε ξανά αργότερα."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Προσθέστε πρώτα τις σχετικές εγγραφές."
-
-#: 
 msgid "All Months"
 msgstr "Όλοι οι μήνες"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Δεν έχουν οριστεί ακόμα επιλογές \"%s\"."
 
 #: 
 msgid "No events found for %s %d."
@@ -17854,6 +17475,12 @@ msgstr "Ανοίξτε μια οικογένεια για να διορθώσε�
 #: 
 msgid "Set up now"
 msgstr "Ρύθμιση τώρα"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Απαιτείται έλεγχος ταυτότητας δύο παραγόντων. Έχετε %d ημέρα για εγγραφή."
+msgstr[1] "Απαιτείται έλεγχος ταυτότητας δύο παραγόντων. Έχετε %d ημέρες για εγγραφή."
 
 #: 
 msgid "Unknown family"
@@ -18034,10 +17661,6 @@ msgstr "Σφάλμα κατά τη φόρτωση εγγραφών αυτοεγ�
 #: 
 msgid "Errors"
 msgstr "Σφάλματα"
-
-#: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Εξαίρεση αποβιωσάντων μελών από τον έντυπο κατάλογο και τις εξαγωγές CSV."
 
 #: 
 msgid "Failed Files"
@@ -18356,10 +17979,6 @@ msgid "This Person is Inactive"
 msgstr "Αυτό το Άτομο είναι Ανενεργό"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Αυτό βρίσκει τις συντεταγμένες χάρτη για κάθε οικογένεια που δεν τις έχει, χρησιμοποιώντας το OpenStreetMap. Επεξεργάζεται τις οικογένειες σε παρτίδες των 50, περίπου ένα λεπτό ανά παρτίδα. Μπορείτε να αφήσετε αυτή τη σελίδα ανοιχτή όσο εκτελείται. Συνέχεια;"
-
-#: 
 msgid "This person is deceased"
 msgstr "Αυτό το άτομο έχει αποβιώσει"
 
@@ -18446,4 +18065,748 @@ msgstr "το skip πρέπει να είναι μηδέν ή θετικός ακ
 #: 
 msgid "view families missing an email"
 msgstr "προβολή οικογενειών χωρίς email"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Αγοραστές Αυτού του Οικονομικού Έτους"
+
+#: 
+msgid "Current"
+msgstr "Τρέχον"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Είδη που Δωρήθηκαν (Αυτό το Οικονομικό Έτος)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Το όνομα χρήστη πρέπει να έχει %d χαρακτήρες ή λιγότερους!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Συγκεντρωθέντα Αυτού του Οικονομικού Έτους"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "Το %s πρέπει να είναι πλήρης διεύθυνση ιστού https://, για παράδειγμα https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Ο λογαριασμός έχει περιορισμένα δικαιώματα. Επικοινωνήστε με έναν διαχειριστή."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Παρουσιάστηκε σφάλμα κατά την εμφάνιση της σελίδας σφάλματος."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Κάθε διεύθυνση πρέπει να ξεκινά με https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Δημιουργία Ετικετών"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Δημιουργία ετικετών αλληλογραφίας"
+
+#: 
+msgid "Labels"
+msgstr "Ετικέτες"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Ετικέτες αλληλογραφίας για τα άτομα στο καλάθι σας. Ένα άτομο χωρίς δική του διεύθυνση απευθύνεται στη διεύθυνση της οικογένειάς του."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Προαιρετικό. Σύνδεσμοι προς τους λογαριασμούς της εκκλησίας σας, οι οποίοι εμφανίζονται στα μέλη σε σελίδες όπως το υποσέλιδο της πύλης. Αφήστε ένα πεδίο κενό για να αποκρύψετε το συγκεκριμένο δίκτυο."
+
+#: 
+msgid "Options"
+msgstr "Επιλογές"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Προγραμματισμένες Εργασίες"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Ενεργό, δευτερόλεπτα που απομένουν: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Αναμενόμενο διάστημα μεταξύ εκτελέσεων (ώρες): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Οικογένειες που παραλείφθηκαν (δεν υπάρχει καταχωρημένη διεύθυνση email): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Οικογένειες που δεν ήταν δυνατό να γεωκωδικοποιηθούν: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Οικογένειες που θα λάβουν emails επιβεβαίωσης: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Μέλη που αντιγράφηκαν: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Δεν αναφέρονται εδώ: {{total}} ακόμη"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Παραλήπτες: {{total}} — πάρα πολλοί για σύνδεσμο mailto:. Χρησιμοποιήστε αντ' αυτού την Αντιγραφή Διευθύνσεων."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Πάρα πολλοί παραλήπτες για τον πελάτη email ({{total}} > {{max}}). Χρησιμοποιήστε αντ' αυτού την Αντιγραφή Διευθύνσεων."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} λεπτά απομένουν"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d έγγραφο φόρου αποστάλθηκε στην οικογένεια με επιτυχία."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Δήλωση Παροχής"
+
+#: 
+msgid "All classifications"
+msgstr "Όλες οι ταξινομήσεις"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Ως διαχειριστής, παρακαλώ επίσης ανασκοπήστε την"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Γενέθλια, επέτειοι, εθελοντές και άλλες λίστες ανθρώπων με φίλτρο ταξινόμησης"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Επιλέξτε %s για να εκτελέσετε αυτήν την αναφορά."
+
+#: 
+msgid "Choose events"
+msgstr "Επιλέξτε συμβάντα"
+
+#: 
+msgid "Choose..."
+msgstr "Επιλέξτε..."
+
+#: 
+msgid "Church Logo"
+msgstr "Λογότυπο Εκκλησίας"
+
+#: 
+msgid "Columns per Page"
+msgstr "Στήλες ανά σελίδα"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Αγαπητή %s Οικογένεια,\n"
+"\n"
+"Parakaloμε βρείτε τη δήλωση παροχής %d από %s που επισυνάπτεται σε αυτό το email.\n"
+"\n"
+"Εάν έχετε οποιεσδήποτε ερωτήσεις, παρακαλώ επικοινωνήστε με το γραφείο της εκκλησίας.\n"
+"\n"
+"Ευχαριστούμε για τη γενναιοδωρία σας."
+
+#: 
+msgid "Download CSV"
+msgstr "Κατεβάστε CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Email %d Έγγραφο Φόρου"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Ενεργοποιήστε ή απενεργοποιήστε τη σύνδεση χρηματοδότησης και το μενού της πλευρικής γραμμής."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Ενεργοποιήστε ή απενεργοποιήστε τη σύνδεση Fundraiser."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Αποτυχία αφαίρεσης λογότυπου εκκλησίας"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Αποτυχία μεταφόρτωσης λογότυπου εκκλησίας"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Διεύθυνση URL λογότυπου εναλλακτικής λύσης για πρότυπα email, χρησιμοποιείται μόνο όταν δεν έχει μεταφορτωθεί λογότυπο εκκλησίας στη σελίδα Church Information. Οι δικές της σελίδες της εφαρμογής αγνοούν αυτήν τη ρύθμιση και χρησιμοποιούν πάντα το μεταφορτωθέν λογότυπο ή το προεπιλεγμένο λογότυπο ChurchCRM. Πρέπει να είναι απόλυτη διεύθυνση URL http(s). Για καλύτερη απόδοση σε όλους τους πελάτες email, χρησιμοποιήστε μια ευρεία εικόνα σάσας περίπου 3,5:1 (για παράδειγμα 350×100 px), PNG ή JPG, που χρησιμεύει μέσω HTTPS. Αφήστε κενό ή εισάγετε ένα άκυρο χαρακτηριστικό για να επιστρέψετε στο προεπιλεγμένο λογότυπο ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Σύνδεση Χρηματοδότησης"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Βρείτε ανθρώπους που δεν παρακολούθησαν ένα συμβάν"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Βρείτε εθελοντές που ταιριάζουν με δύο συγκεκριμένους κωδικούς ευκαιρίας"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Πρώτη Ευκαιρία Εθελοντή"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Διπλωμένο Έντυπο"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Σύνδεση Συγκέντρωσης Κεφαλαίων"
+
+#: 
+msgid "Giving History"
+msgstr "Ιστορία Παροχής"
+
+#: 
+msgid "Last Gift"
+msgstr "Τελευταία Δώρο"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Αφήστε κενό για όλες τις ταξινομήσεις."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Μέγιστος αριθμός εγγράφων φορολογικού έτους που θα εμφανίζονται ανά προφίλ οικογένειας (0 = χωρίς όριο)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Μέγιστα φορολογικά έτη που εμφανίζονται ανά οικογένεια"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Επέτειοι Ιδιότητας Μέλους"
+
+#: 
+msgid "Missing People"
+msgstr "Εξαφανισμένοι Άνθρωποι"
+
+#: 
+msgid "No giving history found."
+msgstr "Δεν βρέθηκε ιστορία παροχής."
+
+#: 
+msgid "No people match these filters."
+msgstr "Κανένα άτομο δεν ταιριάζει με αυτά τα φίλτρα."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Μία σελίδα καταλόγου ανά φύλλο, πορτρέτο."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Επιτρέπονται μόνο τα σχέδια http και https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF ή WebP. Μια ευρεία σάσα περίπου 3,5:1 (για παράδειγμα 700x200) λειτουργεί καλύτερα· προτιμάται διαφανή PNG."
+
+#: 
+msgid "Page Layout"
+msgstr "Διάταξη Σελίδας"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Άνθρωποι που ενημερώθησαν σε έναν συγκεκριμένο μήνα"
+
+#: 
+msgid "Pledged"
+msgstr "Υποσχέθηκε"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Εκτύπωση %d Έγγραφο Φόρου"
+
+#: 
+msgid "Recent Friends"
+msgstr "Πρόσφατοι Φίλοι"
+
+#: 
+msgid "Report not found"
+msgstr "Η αναφορά δεν βρέθηκε"
+
+#: 
+msgid "Run Report"
+msgstr "Εκτέλεση Αναφοράς"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Δεύτερη Ευκαιρία Εθελοντή"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Εμφανίζεται στη πλευρική γραμμή, στη σελίδα σύνδεσης και στα email. Η μεταφόρτωση ενός λογότυπου αντικαθιστά την εμπορική σήμανση ChurchCRM παντού που εμφανίζεται."
+
+#: 
+msgid "Single Pages"
+msgstr "Μεμονωμένες Σελίδες"
+
+#: 
+msgid "Tax Documents"
+msgstr "Έγγραφα Φόρου"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Το email του εγγράφου φόρου δεν κατάφερε να αποσταλεί. Παρακαλώ ελέγξτε τις ρυθμίσεις του διακομιστή email σας."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Δύο σελίδες μισού μεγέθους δίπλα δίπλα σε κάθε φύλλο τοπίου, σε σειρά εκδόσεων. Εκτύπωση διπλής όψης με \"flip on short edge\", στη συνέχεια διπλώστε τη στοίβα στη μέση. Οι στήλες μετρώνται ανά μισή σελίδα."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Δεν είναι δυνατή η αποστολή email του εγγράφου φόρου: δεν βρέθηκαν στοιχεία πληρωμής για εκείνο το έτος."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Δεν είναι δυνατή η αποστολή email του εγγράφου φόρου: αυτή η οικογένεια δεν έχει διεύθυνση email στο αρχείο."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Δεν είναι δυνατή η επίλυση του ονόματος κεντρικού υπολογιστή του διακομιστή OpenLP. Ελέγξτε τη διεύθυνση και τη σύνδεσή σας στο δίκτυο."
+
+#: 
+msgid "Upload"
+msgstr "Μεταφόρτωση"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Χρήση προεπιλεγμένου λογότυπου ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Προβολή Πλήρους Παροχής Οικογένειας"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Ευκαιρία Εθελοντή"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Εθελοντές για Δύο Ευκαιρίες"
+
+#: 
+msgid "YTD"
+msgstr "Από αρχής έτους"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD Πληρώθηκε"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "για σφάλματα γύρω από την ώρα που συνέβη αυτό, και κατεβάστε και επισυνάψτε το σχετικό αρχείο αρχείου καταγραφής στο πρόβλημά σας στο GitHub - μας βοηθά να επιλύσουμε το πρόβλημα χωρίς να κάνουμε ερωτήσεις ακολούθησης."
+
+#: 
+msgid "system logs"
+msgstr "αρχεία καταγραφής συστήματος"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Έλεγχος πρόσβασης και ασφάλεια"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Επιτρέπει την καταγραφή πληρωμών που δεν αφαιρούνται φόρου (π.χ. πώληση εμπορευμάτων)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Επιτρέπει την μη πιστοποιημένη πρόσβαση σε δημόσια γεγονότα (για ενσωμάτωση ημερολογίων)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Αυτόματη αποστολή μηνυμάτων ηλεκτρονικής αλληλογραφίας γενεθλίων (απαιτεί χρονοπρογραμματιστή εργασίας φόντου)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Μηνύματα χαιρετισμού γενεθλίων"
+
+#: 
+msgid "Communication & Email"
+msgstr "Επικοινωνία και ηλεκτρονική αλληλογραφία"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Πολιτική ασφάλειας περιεχομένου"
+
+#: 
+msgid "Email System"
+msgstr "Σύστημα ηλεκτρονικής αλληλογραφίας"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Ενεργοποιήστε ή απενεργοποιήστε τις δυνατότητες για την οργάνωσή σας"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Ενεργοποίηση/απενεργοποίηση της ενότητας Γεγονότα στην κύρια πλοήγηση"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Ενεργοποίηση/απενεργοποίηση του μενού Χρηματοοικονομικά και όλων των χρηματοοικονομικών δυνατοτήτων (καταθέσεις, πληρωμές, αναφορές)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Ενεργοποίηση/απενεργοποίηση του μενού Συγκέντρωσης κεφαλαίων"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Επιβολή αυστηρών κεφαλίδων CSP για προστασία έναντι επιθέσεων XSS"
+
+#: 
+msgid "Events Module"
+msgstr "Ενότητα Γεγονότων"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Διακόπτες δυνατοτήτων"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Οι διακόπτες δυνατοτήτων ελέγχουν ποιες ενότητες και δυνατότητες είναι διαθέσιμες στο ChurchCRM. Οι αλλαγές ισχύουν αμέσως."
+
+#: 
+msgid "Finance Features"
+msgstr "Χρηματοοικονομικές δυνατότητες"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Συμπερίληψη διευθύνσεων στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Συμπερίληψη γεγονότων ημερολογίου στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Συμπερίληψη προσαρμοσμένων ιδιοτήτων οικογένειας στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Συμπερίληψη καταθέσεων στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Συμπερίληψη οικογενειών στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Συμπερίληψη ομάδων στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Συμπερίληψη πληρωμών στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Συμπερίληψη ανθρώπων στη γρήγορη παγκόσμια αναζήτηση"
+
+#: 
+msgid "Invalid setting"
+msgstr "Μη έγκυρη ρύθμιση"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Σύνδεσμος χαμένου κωδικού πρόσβασης"
+
+#: 
+msgid "Manage All Features"
+msgstr "Διαχείριση όλων των δυνατοτήτων"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Κύριος διακόπτης για αποστολή ηλεκτρονικής αλληλογραφίας. ΑΠΑΙΤΕΙΤΑΙ για επαναφορές κωδικού πρόσβασης και ειδοποιήσεις"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Μη εκπεστέα πληρωμές"
+
+#: 
+msgid "Primary Modules"
+msgstr "Κύριες ενότητες"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Δημόσιο API ημερολογίου"
+
+#: 
+msgid "Saved"
+msgstr "Αποθηκεύτηκε"
+
+#: 
+msgid "Search Families"
+msgstr "Αναζήτηση οικογενειών"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Αναζήτηση προσαρμοσμένων ιδιοτήτων οικογένειας"
+
+#: 
+msgid "Search Settings"
+msgstr "Ρυθμίσεις αναζήτησης"
+
+#: 
+msgid "Self-Registration"
+msgstr "Αυτο-εγγραφή"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Εμφάνιση της επιλογής \"Χαμένος κωδικός πρόσβασης\" στην οθόνη σύνδεσης (επιτρέπει την αυτο-επαναφορά του χρήστη)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Εμφάνιση/απόκρυψη της ενότητας Σχολής Κυριακής στη γραμμή πλευράς"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Δεν είναι δυνατή η απενεργοποίηση του μόνου διαχειριστή που μπορεί να συνδεθεί"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Δεν είναι δυνατή η σήμανση του μόνου διαχειριστή που μπορεί να συνδεθεί ως αποθανόντος"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Αποθανόν — δεν μπορεί να συνδεθεί"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Εισαγάγετε μια δεύτερη διεύθυνση πριν την ορίσετε ως διεύθυνση αλληλογραφίας"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Ανενεργό — δεν μπορεί να συνδεθεί"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Το ταχυδρομείο πηγαίνει στη δεύτερη διεύθυνση· η κύρια διεύθυνση παραμένει η φυσική τοποθεσία που χρησιμοποιείται για χάρτες και κατευθύνσεις."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Το ταχυδρομείο αποστέλλεται σε αυτή τη διεύθυνση αντί της κύριας διεύθυνσης"
+
+#: 
+msgid "Mailing Address"
+msgstr "Διεύθυνση αλληλογραφίας"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Διεύθυνση αλληλογραφίας εάν διαφέρει"
+
+#: 
+msgid "Primary Address"
+msgstr "Κύρια διεύθυνση"
+
+#: 
+msgid "Receives Mail"
+msgstr "Λαμβάνει ταχυδρομείο"
+
+#: 
+msgid "Second Address"
+msgstr "Δεύτερη διεύθυνση"
+
+#: 
+msgid "Second Home"
+msgstr "Δεύτερη κατοικία"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Το συνδεδεμένο άτομο είναι αποθανόν ή ανενεργό. Η σύνδεση, οι περίοδοι και το κλειδί API αποκλείονται έως ότου το άτομο ενεργοποιηθεί ξανά."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Αυτή είναι η διεύθυνση αλληλογραφίας"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Αυτό το άτομο είναι αποθανόν ή ανενεργό, οπότε αυτός ο λογαριασμός δεν μπορεί να συνδεθεί"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Μόνο ένας διαχειριστής μπορεί να διαγράψει ένα άτομο που έχει σύνδεση."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Ο τελευταίος διαχειριστής δεν μπορεί να διαγραφεί."
+
+#: 
+msgid "Category"
+msgstr "Κατηγορία"
+
+#: 
+msgid "Category updated."
+msgstr "Η κατηγορία ενημερώθηκε."
+
+#: 
+msgid "Delete Category"
+msgstr "Διαγραφή κατηγορίας"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Η διαγραφή της κατηγορίας απέτυχε"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Η μετονομασία της κατηγορίας απέτυχε"
+
+#: 
+msgid "Fund Categories"
+msgstr "Κατηγορίες Κεφαλαίων"
+
+#: 
+msgid "Fund activated."
+msgstr "Το κεφάλαιο ενεργοποιήθηκε."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Το κεφάλαιο απενεργοποιήθηκε."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Τα κεφάλαια σε αυτήν την κατηγορία θα γίνουν ακατηγοριοποίητα. Τα ίδια τα κεφάλαια δεν διαγράφονται."
+
+#: 
+msgid "INACTIVE"
+msgstr "Αδρανής"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Νέο όνομα κατηγορίας (ένα υπάρχον όνομα συγχωνεύει τα δύο)"
+
+#: 
+msgid "Optional"
+msgstr "Προαιρετικό"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Προαιρετικό — επιλέξτε ή πληκτρολογήστε μια νέα κατηγορία"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Πληρωμένο πέρα από την δέσμευση"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Δεσμευμένο αλλά δεν πληρώθηκε ακόμη"
+
+#: 
+msgid "Rename Category"
+msgstr "Μετονομασία κατηγορίας"
+
+#: 
+msgid "Still Owed"
+msgstr "Εξακολουθεί να οφείλεται"
+
+#: 
+msgid "Summary by Category"
+msgstr "Περίληψη κατά κατηγορία"
+
+#: 
+msgid "Total Paid"
+msgstr "Σύνολο πληρωθέντων"
+
+#: 
+msgid "Uncategorized"
+msgstr "Ακατηγοριοποίητο"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Δεν ήταν δυνατή η φόρτωση των τρεχουσών ρυθμίσεων. Ανανεώστε τη σελίδα και δοκιμάστε ξανά."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Αυτή η ρύθμιση πρέπει να είναι αριθμός"
+
+#: 
+msgid "Child Role"
+msgstr "Ρόλος παιδιού"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Η συμπερίληψη στον κατάλογο μπορεί να εναλλαχθεί μόνο για τη λίστα ταξινομήσεων"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Μήνυμα υποδοχής 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Μήνυμα υποδοχής 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Ρόλος αρχηγού οικογένειας"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Απόκρυψη διευθύνσεων χωρίς οικογένεια"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Απόκρυψη ημερομηνίας φιλίας"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Απόκρυψη συνδρομών στο ενημερωτικό δελτίο"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Απόκρυψη ημερομηνίας γάμου"
+
+#: 
+msgid "In Directory"
+msgstr "Στον κατάλογο"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Συμπερίληψη λεπτομερειών στις ειδοποιήσεις"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Παραλήπτες ειδοποιήσεων"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Άτομα που θα ειδοποιούνται όταν προστίθεται νέα οικογένεια ή νέο άτομο"
+
+#: 
+msgid "Person initials style"
+msgstr "Στυλ αρχικών του ατόμου"
+
+#: 
+msgid "Person name display style"
+msgstr "Στυλ εμφάνισης ονόματος του ατόμου"
+
+#: 
+msgid "Spouse Role"
+msgstr "Ρόλος συζύγου"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Ταχυδρομικοί κώδικες με κεφαλαία"
 

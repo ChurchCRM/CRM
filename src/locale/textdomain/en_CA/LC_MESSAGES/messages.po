@@ -110,3 +110,9 @@ msgstr "Search Neighbours"
 msgid "Select a family and click Find Neighbors to see results."
 msgstr "Select a family and click Find Neighbours to see results."
 
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Two-factor authentication is required. You have %d day to enrol."
+msgstr[1] "Two-factor authentication is required. You have %d days to enrol."
+

@@ -366,6 +366,6 @@ SlimUtils::renderErrorJSON(
 ---
 
 ## Related Knowledge
-- **Routing & Middleware**: See Admin System Pages section in copilot-instructions.md
+- **Routing & Middleware**: See [Admin MVC Migration](./admin-mvc-migration.md) skill
 - **Authorization**: See authorization-security.md skill
 - **API Development**: See api-development.md skill

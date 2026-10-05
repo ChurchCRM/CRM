@@ -131,10 +131,6 @@ msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxRepor
 msgstr "Customise the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 
 #: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Reports related to member voting eligibility and organisation governance."
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Require all users to enrol in two-factor authentication"
 
@@ -240,4 +236,10 @@ msgstr "Search Neighbours"
 #: 
 msgid "Select a family and click Find Neighbors to see results."
 msgstr "Select a family and click Find Neighbours to see results."
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Two-factor authentication is required. You have %d day to enrol."
+msgstr[1] "Two-factor authentication is required. You have %d days to enrol."
 

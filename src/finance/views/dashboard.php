@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
@@ -446,9 +447,15 @@ $sRootPath = SystemURLs::getRootPath();
                 </div>
                 <div class="card-body p-0">
                     <?php if ($activeFunds->count() > 0): ?>
+                    <?php foreach ((new DonationFundService())->groupByCategory($activeFunds) as $category => $funds): ?>
+                    <?php if ($category !== ''): ?>
+                    <div class="px-3 pt-2 pb-1">
+                        <small class="text-muted fw-bold text-uppercase"><?= InputUtils::escapeHTML($category) ?></small>
+                    </div>
+                    <?php endif; ?>
                     <ul class="list-group list-group-flush">
-                        <?php foreach ($activeFunds as $fund): ?>
-                        <li class="list-group-item d-flex justify-content-between align-items-center py-2">
+                        <?php foreach ($funds as $fund): ?>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-2 <?= $category !== '' ? 'ps-4' : '' ?>">
                             <a href="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/fund/<?= (int) $fund->getId() ?>/contributors" class="text-decoration-none">
                                 <?= InputUtils::escapeHTML($fund->getName()) ?>
                             </a>
@@ -458,6 +465,7 @@ $sRootPath = SystemURLs::getRootPath();
                         </li>
                         <?php endforeach; ?>
                     </ul>
+                    <?php endforeach; ?>
                     <?php else: ?>
                     <div class="empty py-3">
                         <p class="empty-title"><?= gettext('No active funds configured.') ?></p>
@@ -480,14 +488,16 @@ $(document).ready(function() {
         title: <?= InputUtils::jsonEncodeForScript(gettext('Financial Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
+            { name: 'bEnabledFinance',    type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Finance Module')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Enable or disable the Finance module and sidebar menu.')) ?> },
+            { name: 'bEnabledFundraiser', type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Fundraiser Module')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Enable or disable the Fundraiser module.')) ?> },
             { name: 'iFYMonth',          type: 'choice', label: <?= InputUtils::jsonEncodeForScript(gettext('First month of the fiscal year')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('iFYMonth')) ?> },
+            { name: 'iMaxTaxYears',      type: 'number', label: <?= InputUtils::jsonEncodeForScript(gettext('Maximum tax years shown per family')) ?>, min: 0, placeholder: '5' },
             { name: 'sDepositSlipType',  type: 'choice', label: <?= InputUtils::jsonEncodeForScript(gettext('Deposit ticket type')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sDepositSlipType')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('sDepositSlipType')) ?> },
             { name: 'iChecksPerDepositForm', type: 'number',  label: <?= InputUtils::jsonEncodeForScript(gettext('Number of checks for Deposit Slip Report')) ?>, min: 1, max: 100 },
             { name: 'bDisplayBillCounts',    type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Display bill counts on deposit slip')) ?> },
             { name: 'bUseScannedChecks',     type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable use of scanned checks')) ?> },
             { name: 'bEnableNonDeductible',  type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable non-deductible payments')) ?> },
             { name: 'bUseDonationEnvelopes', type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable use of donation envelopes')) ?> },
-            { name: 'aFinanceQueries',       type: 'text',    label: <?= InputUtils::jsonEncodeForScript(gettext('Finance permission query IDs')) ?>, placeholder: '30,31,32' }
         ],
         onSave: function() {
             // Reload page after short delay to show updated fiscal year data

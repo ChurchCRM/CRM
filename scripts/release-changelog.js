@@ -89,6 +89,12 @@ async function fetchRelease(tag) {
 // ---------------------------------------------------------------------------
 
 function generateHighlights(body) {
+  // Release notes written with the release-notes skill carry a one-line
+  // "**Theme**: ..." summary; it describes the release better than the
+  // generic section headings every release shares.
+  const theme = body.match(/^\*\*Theme\*\*:\s*(.+)$/m);
+  if (theme) return theme[1].trim();
+
   const h2s = [...body.matchAll(/^## (.+)$/gm)]
     .map(m => m[1].replace(/^\p{Emoji_Presentation}+\s*/u, '').trim())
     .filter(Boolean)
@@ -111,16 +117,20 @@ function writeChangelogFile(tag, title, body, publishedAt, force) {
   const dt          = new Date(publishedAt);
   const releaseDate = dt.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
-  const content = [
-    `# ${title}`,
-    '',
-    `**Release Date**: ${releaseDate}`,
-    '',
-    '---',
-    '',
-    body.trim(),
-    '',
-  ].join('\n');
+  // Skill-written notes already open with their own H1 and release date;
+  // prepending another pair duplicated both (see changelog/7.7.0.md).
+  const content = /^#\s/.test(body.trim())
+    ? `${body.trim()}\n`
+    : [
+        `# ${title}`,
+        '',
+        `**Release Date**: ${releaseDate}`,
+        '',
+        '---',
+        '',
+        body.trim(),
+        '',
+      ].join('\n');
 
   fs.writeFileSync(dest, content); // lgtm[js/file-system-race] Only runs in GitHub Actions; race/symlink risk accepted in trusted CI environment
   console.log(`Wrote changelog/${tag}.md`);

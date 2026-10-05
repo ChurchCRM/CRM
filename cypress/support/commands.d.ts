@@ -20,6 +20,30 @@ declare namespace Cypress {
      * @param password - Credential password
      * @param options - Optional flags (forceLogin bypasses cached session)
      */
+    /**
+     * Read one required Cypress env value. Fails when the key is missing.
+     */
+    readEnv(key: string): Chainable<string>;
+
+    /**
+     * Load env keys for later synchronous reads via Cypress.testEnv().
+     * Optional keys may be undefined; callers apply their own defaults.
+     */
+    rememberTestEnv(keys: string[]): Chainable<Record<string, unknown>>;
+
+    /**
+     * Clear cookies and log in through the admin form. Use after cy.request(),
+     * which replaces the PHP session cy.session() would restore.
+     */
+    freshAdminFormLogin(options?: {
+      clearAll?: boolean;
+      path?: string;
+      timeout?: number;
+      visible?: boolean;
+      enabled?: boolean;
+      sessionCookie?: boolean;
+    }): Chainable<void>;
+
     setupLoginSession(
       sessionName: string,
       username: string,
@@ -126,6 +150,20 @@ declare namespace Cypress {
       expectedStatus?: number | number[],
       timeoutMs?: number
     ): Chainable<any>;
+
+    /**
+     * Effective value of a SystemConfig key, as a string
+     * @param name - Config key, e.g. "bEnableSelfRegistration"
+     */
+    getSystemConfig(name: string): Chainable<string>;
+
+    /**
+     * Restore a SystemConfig key to a value captured with getSystemConfig and verify it.
+     * Does nothing when value is undefined (the capture never ran).
+     * @param name - Config key
+     * @param value - Value captured before the spec changed it
+     */
+    restoreSystemConfig(name: string, value: string | undefined): Chainable<void>;
 
     /**
      * Make API request with user privileges
@@ -462,6 +500,62 @@ declare namespace Cypress {
     clearQuill(editorId: string): Chainable<void>;
 
     // ---------------------------------------------------------------
+    // Test-data cleanup helpers (cypress/support/api-commands.js) and the
+    // row-count drift guard (cypress/support/e2e.js) — issue #9769
+    // ---------------------------------------------------------------
+
+    /**
+     * Deactivate then delete each event id, ignoring ids that are already
+     * gone. Use from an after() hook so a spec removes the events it created
+     * (#9769). Deleting an event cascades its calendar_events, event_attend
+     * and event_audience rows. Any response other than success or 404 fails
+     * the hook, and each id is re-read afterwards to prove it is gone.
+     * @param eventIds - Event ids to remove
+     */
+    cleanupEvents(eventIds: Array<number | string>): Chainable<void>;
+
+    /**
+     * Delete each note id, ignoring ids that are already gone (#9769).
+     * DELETE /api/note/{id} writes a `delete-note` audit row, so this takes
+     * the spec's content off the timeline but does not restore the row count —
+     * pair it with cy.allowRowDrift("note_nte", …). Each id is re-read
+     * afterwards to prove it is gone.
+     * @param noteIds - Note ids to remove
+     */
+    cleanupNotes(noteIds: Array<number | string>): Chainable<void>;
+
+    /**
+     * Declare that this spec file cannot fully restore `table`, so the
+     * row-count drift guard in cypress/support/e2e.js tolerates up to
+     * `maxDelta` extra rows. Call it from the spec's own before() hook.
+     * @param table - Guarded table name, e.g. "note_nte"
+     * @param maxDelta - Maximum number of rows the spec may leave behind
+     * @param reason - Why the rows cannot be removed (required)
+     */
+    allowRowDrift(table: string, maxDelta: number, reason: string): Chainable<void>;
+
+    /**
+     * Delete each person id, ignoring ids that are already gone (#9769).
+     * Each id is re-read afterwards to prove it is gone.
+     * @param personIds - Person ids to remove
+     */
+    cleanupPeople(personIds: Array<number | string>): Chainable<void>;
+
+    /**
+     * Delete each family id together with its members, ignoring ids that are
+     * already gone (#9769). Each id is re-read afterwards to prove it is gone.
+     * @param familyIds - Family ids to remove
+     */
+    cleanupFamilies(familyIds: Array<number | string>): Chainable<void>;
+
+    /**
+     * Read the person id out of the current /people/view/{id} URL and push it
+     * onto `collector` for an after() hook to clean up (#9769).
+     * @param collector - Array the id is appended to
+     */
+    trackPersonFromUrl(collector: number[]): Chainable<number | null>;
+
+    // ---------------------------------------------------------------
     // Misc UI commands (cypress/support/ui-commands.js)
     // ---------------------------------------------------------------
 
@@ -486,4 +580,7 @@ declare namespace Cypress {
      */
     waitForNotification(expectedText: string, options?: { timeout?: number }): Chainable<void>;
   }
+
+  /** Value previously loaded with cy.rememberTestEnv(). */
+  function testEnv(key: string): unknown;
 }

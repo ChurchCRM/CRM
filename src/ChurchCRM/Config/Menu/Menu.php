@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\FundRaiserService;
+use ChurchCRM\Service\ReportCatalog;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
@@ -102,9 +103,14 @@ class Menu
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'FamilyEditor.php', $isAddRecordsEnabled, 'fa-people-roof'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'people/family', true, 'fa-people-roof'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Map'), 'people/map', true, 'fa-map'));
+        $selfRegisterItem = new MenuItem(gettext('Self Registrations'), 'people/self-register', true, 'fa-user-clock');
+        // Count loads from the API after page load (CRMJSOM.js loadSelfRegisterPendingCount) so the menu adds no query.
+        $selfRegisterItem->addCounter(new MenuCounter('selfRegisterPending', 'bg-warning d-none', 0, gettext('Pending review')));
+        $peopleMenu->addSubMenu($selfRegisterItem);
 
         if ($isAdmin || $isMenuOptions) {
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('People Settings'), 'admin/people', $isAdmin, 'fa-sliders'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'admin/system/options?mode=famroles', $isAdmin, 'fa-people-roof'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Properties'), 'PropertyList.php?Type=f', $isMenuOptions, 'fa-people-roof'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Custom Fields'), 'FamilyCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
@@ -176,22 +182,20 @@ class Menu
             $groupMenu->addSubMenu($tmpMenu);
         }
 
-        $canSeeGroupAdmin = $isAdmin || $isMenuOptions || $isManageGroups;
-        if ($canSeeGroupAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-users'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
-
-            $groupMenu->addSubMenu($adminMenu);
-        }
+        // Each entry mirrors its route's permission: PropertyList.php requires MenuOptions,
+        // group types require Admin, the kiosk manager requires ManageGroups.
+        $adminMenu = new MenuItem(gettext('Admin'), '', true);
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isMenuOptions, 'fa-users'));
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
+        $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
+        $groupMenu->addSubMenu($adminMenu);
 
         return $groupMenu;
     }
 
     private static function getSundaySchoolMenu(bool $isAdmin, bool $isManageGroups): MenuItem
     {
-        $isEnabled = $isManageGroups && ($isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'));
+        $isEnabled = SystemConfig::getBooleanValue('bEnabledSundaySchool') && ($isAdmin || $isManageGroups);
         $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isEnabled, 'fa-school');
         if (!$isEnabled) {
             // Sunday School pages live under /groups/sundayschool, behind ManageGroupRoleAuthMiddleware.
@@ -224,13 +228,20 @@ class Menu
      * Plugins can register menu items via getMenuItems() which specify a 'parent' key.
      * This method merges those items into the appropriate parent menu.
      *
+     * An item that declares a non-empty 'permission' is shown only when
+     * User::isEnabledSecurity() grants it to the current user (administrators always pass).
+     * An unrecognized permission name is not granted, so the item is hidden. Items without
+     * a 'permission' are shown to every signed-in user. This controls visibility only; the
+     * plugin's routes must enforce access themselves.
+     *
      * @param array<string, MenuItem> $menus The main menu array to modify
      */
     private static function addPluginMenuItems(array &$menus): void
     {
         try {
             $pluginMenuItems = PluginManager::getPluginMenuItems();
-            
+            $currentUser = AuthenticationManager::getCurrentUser();
+
             foreach ($pluginMenuItems as $parentKey => $items) {
                 // Find the parent menu (case-insensitive match)
                 $parentMenu = null;
@@ -248,6 +259,11 @@ class Menu
                 
                 // Add each plugin menu item as a submenu
                 foreach ($items as $item) {
+                    $permission = $item['permission'] ?? '';
+                    if ($permission !== '' && !(is_string($permission) && $currentUser->isEnabledSecurity($permission))) {
+                        continue;
+                    }
+
                     $label = $item['label'] ?? '';
                     $url = $item['url'] ?? '';
                     $icon = $item['icon'] ?? 'fa-plug';
@@ -295,7 +311,6 @@ class Menu
 
         $depositsMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'finance/', $isFinanceEnabled, 'fa-gauge'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'finance/deposit/search', $isFinanceEnabled, 'fa-list'));
-        $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'finance/reports', $isFinanceEnabled, 'fa-file-invoice'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Pledge Dashboard'), 'finance/pledge/dashboard', $isFinanceEnabled, 'fa-handshake'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'DepositSlipEditor.php?DepositSlipID=' . $_SESSION['iCurrentDeposit'], $isFinanceEnabled, 'fa-pen-to-square'));
 
@@ -331,9 +346,13 @@ class Menu
 
     private static function getReportsMenu(bool $isAdmin): MenuItem
     {
-        // Query Menu is the only entry, so link straight to it rather than nesting a single child.
-        // GHSA-6rgg-mrx3-92w7: QueryList.php now requires isAdmin(); hide from non-admins.
-        return new MenuItem(gettext('Data/Reports'), 'QueryList.php', $isAdmin, 'fa-database');
+        $reports = ReportCatalog::forUser(AuthenticationManager::getCurrentUser());
+        $reportsMenu = new MenuItem(gettext('Reports'), '', $reports !== [], 'fa-database');
+        foreach ($reports as $report) {
+            $reportsMenu->addSubMenu(new MenuItem($report['title'], $report['url'], true, $report['icon']));
+        }
+
+        return $reportsMenu;
     }
 
     private static function addGroupSubMenus($menuName, $groupId, string $viewURl, ?array $groupsByType = null): ?MenuItem
@@ -370,6 +389,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Get Started'), 'admin/get-started', $isAdmin, 'fa-rocket'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-gear'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-gear'));
+        $menu->addSubMenu(new MenuItem(gettext('Feature Toggles'), 'admin/system/feature-toggles', $isAdmin, 'fa-toggle-on'));
         $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins/management', $isAdmin, 'fa-plug'));
         $menu->addSubMenu(new MenuItem(gettext('Export'), 'admin/export', $isAdmin, 'fa-file-export'));
 

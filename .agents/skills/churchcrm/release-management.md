@@ -157,12 +157,13 @@ The workflow:
 2. Uses the ZIP artifact from that build rather than rebuilding a different artifact.
 3. Creates a GitHub draft release.
 4. Starts the next release cycle through `release-prepare.yml` and opens the next-version PR.
+5. Uploads a `release-notes-context-<version>` artifact listing every PR in the release with its full description, for the release-notes skill.
 
 After the workflow completes, verify that the source build SHA is the SHA validated in the readiness gate. If it differs, stop and investigate before publication.
 
 ### Safety warning
 
-The current release workflow contains behavior that can delete and recreate an existing release and tag of the same version. Treat rerunning it for an existing version as a destructive/high-risk operation. Do not intentionally replace an existing release/tag without explicit George approval.
+The workflow stops if the release or tag already exists. The `replace_existing` input deletes and recreates them, which discards the notes. Use it only with George's explicit approval.
 
 ---
 
@@ -170,7 +171,7 @@ The current release workflow contains behavior that can delete and recreate an e
 
 The GitHub-generated draft is the raw source material for user-facing release notes.
 
-Invoke `release-notes.md` after the draft exists.
+Invoke `release-notes.md` after the draft exists. It reads the context artifact and, once George approves the text, writes the notes onto the draft with `gh release edit --notes-file`. No copy and paste is needed.
 
 The release-notes skill should transform and organize the draft, then fact-check the result against the actual shipped changes. It must not manufacture features, performance claims, security claims, localization counts, or user benefits.
 
@@ -202,6 +203,7 @@ Never infer publication approval from approval to create the draft.
 After publication, verify:
 
 - Public GitHub release exists at the expected version.
+- Its tag is exactly the version (`gh release view <version> --json tagName`), never an `untagged-<hash>` placeholder. Installs read their update version from the tag.
 - Tag points to the intended release commit.
 - Release ZIP exists, has the expected version/name, and is non-empty.
 - Release-triggered nightly/post-release automation starts and completes as expected.

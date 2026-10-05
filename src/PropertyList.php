@@ -76,6 +76,9 @@ $aBreadcrumbs = PageHeader::breadcrumbs(array_values(array_filter([
     $breadcrumbParent,
     [$sTypeName . ' ' . gettext('Properties')],
 ])));
+if ($sType === 'p' || $sType === 'f') {
+    $sPageHeaderButtons = PageHeader::peopleSettingsButton();
+}
 require_once __DIR__ . '/Include/Header.php';
 ?>
 

@@ -6,7 +6,7 @@ Thank you for donating time (and often tokens). We try not to nitpick. We will s
 
 ## Before you open the PR
 
-1. Link an open issue.
+1. Link an issue if `CONTRIBUTING.md` requires one.
 2. Run lint and build.
 3. Add or update tests.
 4. Wrap new user-visible strings in `gettext()` / `i18next.t()`. `locale:build` runs on merge to `master`.

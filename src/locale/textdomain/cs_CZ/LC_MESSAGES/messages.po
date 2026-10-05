@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Fotky"
 
 #: 
-msgid "Number of Columns"
-msgstr "Počet sloupců"
-
-#: 
 msgid "Paper Size"
 msgstr "Velikost papíru"
 
@@ -846,10 +842,6 @@ msgstr "Smazat foto"
 #: 
 msgid "Timeline"
 msgstr "Časová osa"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Příspěvky a platby"
 
 #: 
 msgid "Value"
@@ -1674,30 +1666,6 @@ msgstr "Třída"
 #: 
 msgid "Properties"
 msgstr "Vlastnosti"
-
-#: 
-msgid "Query Listing"
-msgstr "Seznam dotazů"
-
-#: 
-msgid "Query View"
-msgstr "Zobrazení dotazu"
-
-#: 
-msgid "This value is required."
-msgstr "Tato hodnota je vyžadována."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Tato hodnota musí být numerická."
-
-#: 
-msgid "Run Query Again"
-msgstr "Proveď dotaz znovu"
-
-#: 
-msgid "Execute Query"
-msgstr "Proveď dotaz"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -2624,10 +2592,6 @@ msgstr "Zobrazit kupující"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Přidání dárců do seznamu kupujících"
-
-#: 
-msgid "Data/Reports"
-msgstr "Data/Sestavy"
 
 #: 
 msgid "Family Properties"
@@ -4502,10 +4466,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Pro definování data v Date-Pickeru, ve výchozím nastavení: Y-m-d, například ve francouzštině: d/m/Y."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Seznam ID osob oddělených čárkou, které mají být upozorněny na přidání nové rodiny nebo osoby"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Povolení neověřeného čtení událostí z rozhraní API externího kalendáře"
 
@@ -5071,14 +5031,6 @@ msgstr[2] "%d let"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "Chybějící PHP ZipArchive"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "Přidat výsledky do košíku"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Odstranit výsledky z košíku"
 
 #: 
 msgid "Database Reset Functions"
@@ -6354,10 +6306,6 @@ msgid "Cart"
 msgstr "Košík"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Změněte to v Nastavení systému."
-
-#: 
 msgid "Church Membership"
 msgstr "Členství ve sboru"
 
@@ -6408,10 +6356,6 @@ msgstr "Vytvořte nebo vyberte vklad, abyste začali."
 #: 
 msgid "Current Deposit"
 msgstr "Aktuální vklad"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Aktuální finanční rok"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6474,10 +6418,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Před vygenerováním výpisů se ujistěte, že jsou všechny vklady za dané daňové období uzavřeny."
 
 #: 
-msgid "Export Options"
-msgstr "Možnosti exportu"
-
-#: 
 msgid "F"
 msgstr "Ž"
 
@@ -6492,10 +6432,6 @@ msgstr "Navigace rodiny"
 #: 
 msgid "Feb"
 msgstr "úno"
-
-#: 
-msgid "Filtering"
-msgstr "Filtrování"
 
 #: 
 msgid "Finance"
@@ -6518,16 +6454,8 @@ msgid "Generate Tax Statements"
 msgstr "Generovat danƮgení výkazy"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Vytvořte roční výkazy darů pro dárce a identifikujte vzorce darování."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Vytvořte pro dárce roční daňově odpočitatelné potvrzení o daru. Lze vytisknout nebo zaslat e-mailem."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Vytvořte podrobné zprávy pro jednotlivé vklady nebo časová období."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6588,10 +6516,6 @@ msgstr "bře"
 #: 
 msgid "Membership Reports"
 msgstr "Zprávy o členství"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Většinu zpráv lze exportovat ve formátu PDF pro tisk nebo CSV pro analýzu v tabulkovém procesoru."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6670,14 +6594,6 @@ msgid "Recording a Pledge"
 msgstr "Záznam sálibu"
 
 #: 
-msgid "Report Tips"
-msgstr "Tipy zprávy"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Zprávy týkající se hlasovacích práv členů a řízení organizace."
-
-#: 
 msgid "Reset"
 msgstr "Resetovat"
 
@@ -6754,20 +6670,12 @@ msgid "Total Amount"
 msgstr "Celková částka"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Sledovat sliby a průběh plateb pro kampaně a rozpočtování fiskálního roku."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Nesplěné předpoklady"
 
 #: 
 msgid "Upgrade"
 msgstr "Aktualizovat"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Pomocí klasifikace a filtrů rodin můžete generovat zprávy pro konkrétní skupiny dárců."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6792,10 +6700,6 @@ msgstr "YTD sáliby"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Členy rodiny můžete vytvořit hned nebo je přidat později. Všechny záznamy se stanou novými záznamy o osobách."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Váš fiskální rok začíná v měsíci"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7354,10 +7258,6 @@ msgstr "Odebrat tento počet účasti?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Vyberte typ záznamu, na který se tato vlastnost vztahuje"
-
-#: 
-msgid "Total Pledges"
-msgstr "Celkové sliby"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -9034,10 +8934,6 @@ msgid "Current person"
 msgstr "Aktuální osoba"
 
 #: 
-msgid "Data & Reports"
-msgstr "Data a sestavy"
-
-#: 
 msgid "Database Reset"
 msgstr "Resetování databáze"
 
@@ -10056,10 +9952,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Zobrazit a spravovat systémové protokoly pro ladění"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Zobrazit a spustit uložené databázové dotazy"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Zobrazit čísla kupujících a přiřazení čísel"
 
@@ -10078,10 +9970,6 @@ msgstr "Zobrazit přehledy závazků rodin a alokace fondů"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Zobrazit členy skupiny, role a vlastnosti"
-
-#: 
-msgid "View query results"
-msgstr "Zobrazit výsledky dotazu"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10403,10 +10291,6 @@ msgstr "Aktualizace k dispozici"
 msgid "User must have Notes permission"
 msgstr "Uživatel musí mít oprávnění pro poznámky"
 
-#: 
-msgid "Address Defaults"
-msgstr "Výchozí hodnoty adresy"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10419,16 +10303,6 @@ msgstr "Nastavení kalendáře"
 #: 
 msgid "Calendars"
 msgstr "Kalendáře"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Vyberte příležitost dobrovolníka"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Zvolte pole osoby"
 
 #: 
 msgid "Church Identity"
@@ -10450,11 +10324,6 @@ msgstr "ChurchCRM může odesílat e-maily přímo."
 msgid "Communication"
 msgstr "Komunikace"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Porovnání závěrů mezi dvěma finančními roky"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Nakonfigurujte SMTP v níže uvedeném nastavení, abyste mohli odesílat e-maily ze systému."
@@ -10468,17 +10337,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Připojte Mailchimp k synchronizaci seznamů e-mailů pro zpravodaje a kampáně."
 
 #: 
-msgid "Copy from church address"
-msgstr "Kopírovat z adresy kostela"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "Kopírovat do schránky"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Vlastní pole"
 
 #: 
 msgid "Default Country"
@@ -10532,16 +10392,6 @@ msgstr "Nepodařilo se načíst e-mailové adresy"
 msgid "Failed to retrieve phone numbers"
 msgstr "Nepodařilo se načíst telefonní čísla"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Hodnota pole"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Najděte členy sboru, kteří se zavázali jeden rok, ale ne druhý"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10549,33 +10399,8 @@ msgstr "Najděte dobrovolníky pro konkrétní příležitost"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Najděte dobrovolníky, kteří odpovídají dvěma konkrétním kódům příležitostí"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "První fiskální rok"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "První fiskální rok pro porovnání"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "První volba příležitosti dobrovolníka"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Přátelé, kteří se zaregistrovali v předchozích měsících"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Host"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10599,31 +10424,6 @@ msgstr "Spravujte akce, narozeniny a výročí"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Spárujte vlastní pole s touto hodnotou"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Člen, běžný účastník atd."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Členové sboru, kteří se připojili v určitém měsíci"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Výročí členství"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Chybějící finanční závazky"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Měsíc"
 
@@ -10643,16 +10443,6 @@ msgstr "E-maily s oznámením o novém členovi"
 #: 
 msgid "No cell phone on file"
 msgstr "Žádný mobilní telefon v souboru"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Neúčastník"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Neúčastník (personál)"
 
 #: 
 msgid "Not Classified"
@@ -10689,30 +10479,10 @@ msgstr "Vlastnost osoby používaná k vyloučení členů sboru ze seznamů SMS
 msgid "Person property used to exclude members from email lists"
 msgstr "Vlastnost osoby používaná k vyloučení členů sboru ze seznamů e-mailů"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Porovnání finančních závazků"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Finanční závazek letos"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Vlastnost"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Nedávní přátelé"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Pravidelný účastník"
 
 #. Context: query_qry
 #: 
@@ -10734,21 +10504,6 @@ msgstr "SMTP nakonfigurován"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP není nakonfigurován"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Druhý účetní rok"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Druhý účetní rok pro srovnání"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Druhá volba příležitosti dobrovolníka"
 
 #: 
 msgid "Send text message"
@@ -10782,25 +10537,6 @@ msgstr "Textové nástroje"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Akce textových zpráv jsou dostupné z zobrazení skupin a tříd nedělní školy. Pomocí rozevíracího seznamu \"Text\" zkopírujte telefonní čísla nebo odešlete SMS zprávy členům skupiny."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Měsíc narozenin, pro který chcete vrátit záznamy."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Měsíc výročí členství, pro který chcete vrátit záznamy."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Vlastnost, pro kterou chcete vrátit záznamy osob."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Tyto hodnoty jsou předvyplněny při vytváření nových rodin. Nechejte prázdné, aby se vyžadoval ruční záznam."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Jednotka používaná k měření vzdálenosti."
@@ -10809,11 +10545,6 @@ msgstr "Jednotka používaná k měření vzdálenosti."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Uživatelské oprávnění k odesílání e-mailu přes mailto: odkazy"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Příležitosti pro dobrovolníky"
 
 #. Context: query_qry
 #: 
@@ -10831,11 +10562,6 @@ msgstr "Vonage SMS není nakonfigurován"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Bez Vonage budou textové akce otevírat nativní aplikaci SMS vašeho zařízení nebo kopírovat telefonní čísla do schránky."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "ale ne letos"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10946,10 +10672,6 @@ msgstr "Umožnit neověřený přístup ke kalendářovým událostem prostředn
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Umožnit návštěvníkům vytvořit vlastní rodinný záznam prostřednictvím stránky pro vlastní registraci"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Povolte návštěvníkům registrovat se jako nové rodiny."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -11033,10 +10755,6 @@ msgstr "Zvolte, co se zobrazí, pokud Gravatar neexistuje:\n"
 "• Retro – pixelová grafika ve stylu 8-bit arcade\n"
 "• RoboHash – jedinečně vygenerovaný robot\n"
 "• Blank – průhledný (nahrazen iniciálami)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "ID dotazů oddělená čárkami, která vyžadují finanční oprávnění k zobrazení"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11149,10 +10867,6 @@ msgstr "Povolit použití skenovaných šeků"
 msgid "Features"
 msgstr "Funkce"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "ID dotazů pro finanční oprávnění"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11226,10 +10940,6 @@ msgstr "Gravatar funguje tak, že převádí e-mailové adresy na hash (MD5). Sk
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Skrýt zeměpisnou šířku/délku"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Skrýt adresu osoby"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -12292,16 +12002,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jak spolu fungují Nedělní škola + Události + Kiosky"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Neplatné datum pro %s — očekáváno RRRR-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Neplatný formát data pro rangeStart nebo rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Neplatné datum; očekávaný formát RRRR-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12532,10 +12234,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds musí být neprázdné pole"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "neplatný typ opakování"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds musí být neprázdné pole"
 
@@ -12738,10 +12436,6 @@ msgstr "Celkem kiosků"
 #: 
 msgid "Upcoming Events"
 msgstr "Nadcházející události"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Absolutní URL http(s) loga sboru zobrazovaného v e-mailových šablonách (a v budoucnu i jinde). Pro nejlepší zobrazení v e-mailových klientech použijte široký bannerový obrázek v poměru stran přibližně 3,5:1 (například 350×100 px), PNG nebo JPG, servírovaný přes HTTPS. Ponechte prázdné nebo zadejte neplatnou hodnotu pro návrat k výchozímu logu ChurchCRM."
 
 #: 
 msgid "An option with that name already exists"
@@ -14316,11 +14010,6 @@ msgstr "Název rodiny musí mít alespoň 2 znaky"
 msgid "Fields"
 msgstr "Pole"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Najít osoby, které se nezúčastnily události"
-
 #: 
 msgid "First name is required"
 msgstr "Je vyžadováno křestní jméno"
@@ -14500,11 +14189,6 @@ msgstr "Členové přidáni do výběru."
 #: 
 msgid "Minimum length is"
 msgstr "Minimální délka je"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Chybějící osoby"
 
 #: 
 msgid "Move"
@@ -14874,11 +14558,6 @@ msgstr "Vyberte kalendáře..."
 msgid "Select event type..."
 msgstr "Vyberte typ akce..."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Vyberte požadovanou událost"
-
 #: 
 msgid "Sequence"
 msgstr "Posloupnost"
@@ -14942,10 +14621,6 @@ msgstr "Textovat vše"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Vybraný soubor přesahuje maximální velikost nahrávání tohoto serveru"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Na dnešek nejsou naplánované žádné události"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -16347,10 +16022,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s z rodiny %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "Vráceno %d záznam(ů)"
-
-#: 
 msgid "Assign role to all"
 msgstr "Přiřadit roli všem"
 
@@ -16521,22 +16192,6 @@ msgstr "Konfigurace systému"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "K této dobrovolnické příležitosti jsou přiřazeny osoby. Smazáním dojde k jejich odebrání"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Tato hodnota nesmí mít méně než %d znaků"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Tato hodnota nesmí mít více než %d znaků"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Tato hodnota nesmí být více než %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Tato hodnota musí být alespoň %s"
 
 #: 
 msgid "Total Deposits"
@@ -16819,24 +16474,12 @@ msgid "Family Delete Confirmation"
 msgstr "Potvrzení smazání rodiny"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Jednotlivci (bez rodiny)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nové vlastní registrace"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Potvrzení smazání typu vlastnosti"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Zkontrolujte nové rodiny a jednotlivce, kteří se zaregistrovali prostřednictvím veřejného registračního formuláře"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Níže zkontrolujte nové přihlášky z veřejného registračního formuláře. Záznamy bez e-mailu nebo telefonu jsou označeny — před dalším kontaktem ověřte kontaktní údaje."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -16933,6 +16576,10 @@ msgstr "Úroveň sběru dat"
 #: 
 msgid "Count unique installs"
 msgstr "Počítat unikátní instalace"
+
+#: 
+msgid "Data"
+msgstr "Data"
 
 #: 
 msgid "Data is processed by PostHog on EU infrastructure."
@@ -17394,6 +17041,10 @@ msgid "Manage Events"
 msgstr "Spravovat udalosti"
 
 #: 
+msgid "N/A"
+msgstr "N/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Novy vklad"
 
@@ -17541,16 +17192,6 @@ msgstr "Minimální nabídka %s."
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Osoby s narozeninami nebo výročím svatby v daném měsíci"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Měsíc, pro který chcete zobrazit narozeniny a výročí."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Měsíc výročí svatby, pro který chcete zobrazit záznamy."
 
 #: 
 msgid "Total of all purchases: %s"
@@ -17771,10 +17412,6 @@ msgid "Selected family"
 msgstr "Vybraná rodina"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Tato hodnota musí být platný název pole."
-
-#: 
 msgid "Could not load data"
 msgstr "Nepodařilo se načíst data"
 
@@ -17783,16 +17420,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Obnovte stránku nebo to zkuste znovu později."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Nejprve přidejte příslušné záznamy."
-
-#: 
 msgid "All Months"
 msgstr "Všechny měsíce"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Zatím nejsou definovány žádné možnosti \"%s\"."
 
 #: 
 msgid "No events found for %s %d."
@@ -17849,6 +17478,13 @@ msgstr "Otevřete rodinu a opravte její adresu, poté akci spusťte znovu."
 #: 
 msgid "Set up now"
 msgstr "Nastavit nyní"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den."
+msgstr[1] "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny."
+msgstr[2] "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní."
 
 #: 
 msgid "Unknown family"
@@ -18029,10 +17665,6 @@ msgstr "Chyba při načítání samoregistrovaných záznamů"
 #: 
 msgid "Errors"
 msgstr "Chyby"
-
-#: 
-msgid "Exclude deceased members from the printed directory and CSV exports."
-msgstr "Vyloučit zesnulé členy z tištěného adresáře a exportů CSV."
 
 #: 
 msgid "Failed Files"
@@ -18239,6 +17871,10 @@ msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0
 msgstr "Počet dní, které mají uživatelé na aktivaci dvoufaktorového ověření poté, co se stane povinným. Nastavením na 0 se vynutí okamžitě. Zkrácení aktivní ochranné lhůty může uživatele okamžitě uzamknout."
 
 #: 
+msgid "Offline"
+msgstr "Offline"
+
+#: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
 msgstr "Proveďte to až po vyřešení základního problému. Před opětovným spuštěním pluginu budete stále muset kliknout na Povolit."
 
@@ -18347,10 +17983,6 @@ msgid "This Person is Inactive"
 msgstr "Tato osoba je neaktivní"
 
 #: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
-msgstr "Tímto se najdou mapové souřadnice pro všechny rodiny, kterým chybí, pomocí OpenStreetMap. Rodiny se zpracovávají po dávkách po 50, přibližně minutu na dávku. Během průběhu můžete nechat tuto stránku otevřenou. Pokračovat?"
-
-#: 
 msgid "This person is deceased"
 msgstr "Tato osoba je zesnulá"
 
@@ -18437,4 +18069,748 @@ msgstr "skip musí být nula nebo kladné celé číslo"
 #: 
 msgid "view families missing an email"
 msgstr "zobrazit rodiny bez e-mailu"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Kupující v tomto fiskálním roce"
+
+#: 
+msgid "Current"
+msgstr "Aktuální"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Darované položky (tento fiskální rok)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Přihlašovací jméno musí mít nejvýše %d znaků!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Vybráno v tomto fiskálním roce"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s musí být úplná webová adresa https://, například https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Účet má omezená oprávnění. Kontaktujte administrátora."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Při vykreslování chybové stránky došlo k chybě."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Každá adresa musí začínat na https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Generovat štítky"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Generovat poštovní štítky"
+
+#: 
+msgid "Labels"
+msgstr "Štítky"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Poštovní štítky pro osoby ve vašem košíku. Osoba bez vlastní adresy je adresována na adresu své rodiny."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Volitelné. Odkazy na účty církve na sociálních sítích, zobrazené členům na stránkách, jako je patička portálu. Ponecháte-li pole prázdné, daná síť se skryje."
+
+#: 
+msgid "Options"
+msgstr "Možnosti"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Naplánované úlohy"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktivní, zbývá sekund: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Očekávaný interval mezi spuštěními (hodiny): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Přeskočené rodiny (bez uvedené e-mailové adresy): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Rodiny, které se nepodařilo geokódovat: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Rodiny, kterým bude odeslán potvrzovací e-mail: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Zkopírovaní členové: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Zde neuvedeno: dalších {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Příjemci: {{total}} — příliš mnoho pro odkaz mailto:. Použijte místo toho Kopírovat adresy."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Příliš mnoho příjemců pro e-mailového klienta ({{total}} > {{max}}). Použijte místo toho Kopírovat adresy."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "zbývá {{minutes}} min"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d daňový dokument byl úspěšně zaslán rodině."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Výpis darů"
+
+#: 
+msgid "All classifications"
+msgstr "Všechny klasifikace"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Jako administrátor si prosím také prohlédněte"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Seznamy narozenin, výročí, dobrovolníků a dalších lidí s filtrem klasifikace"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Vyberte %s pro spuštění této zprávy."
+
+#: 
+msgid "Choose events"
+msgstr "Vyberte události"
+
+#: 
+msgid "Choose..."
+msgstr "Vyberte..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logo kostela"
+
+#: 
+msgid "Columns per Page"
+msgstr "Sloupce na stránku"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Vážená rodino %s,\n"
+"\n"
+"Najdete přiložený výpis darů číslo %d ze dne %s.\n"
+"\n"
+"Pokud máte nějaké otázky, kontaktujte prosím kostol.\n"
+"\n"
+"Děkujeme vám za vaši štědrost."
+
+#: 
+msgid "Download CSV"
+msgstr "Stáhnout CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Poslat email %d daňový dokument"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Povolte nebo zakažte modul Finance a boční menu."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Povolte nebo zakažte modul Fundraiser."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Nepodařilo se odstranit logo kostela"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Nepodařilo se nahrát logo kostela"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Fallback URL loga pro šablony emailů, používáno pouze pokud nebyl na stránce Church Information nahrán žádný logo kostela. Vlastní stránky aplikace ignorují toto nastavení a vždy používají nahráné logo nebo výchozí logo ChurchCRM. Musí být absolutní http(s) URL. Pro nejlepší vykreslování v emailových klientech použijte široký banner zhruba v poměru 3.5:1 (například 350×100 px), PNG nebo JPG, servírované přes HTTPS. Ponechte prázdné nebo zadejte neplatnou hodnotu pro návrat na výchozí logo ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Modul Finanční"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Najděte lidi, kteří se neúčastnili akce"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Najděte dobrovolníky, kteří odpovídají dvěma specifickým kódům příležitostí"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "První příležitost pro dobrovolníka"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Složená brožura"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Modul Fundraiser"
+
+#: 
+msgid "Giving History"
+msgstr "Historie darů"
+
+#: 
+msgid "Last Gift"
+msgstr "Poslední dar"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Ponechte prázdné pro všechny klasifikace."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Maximální počet daňových dokumentů ročníku k zobrazení na profilu rodiny (0 = bez omezení)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Maximálně daňových let zobrazených na rodinu"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Výročí členství"
+
+#: 
+msgid "Missing People"
+msgstr "Chybějící lidé"
+
+#: 
+msgid "No giving history found."
+msgstr "Nebyla nalezena žádná historie darů."
+
+#: 
+msgid "No people match these filters."
+msgstr "Žádní lidé neodpovídají těmto filtrům."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Jedna stránka adresáře na list, na výšku."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Jsou povolena pouze schémata http a https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF nebo WebP. Nejlépe funguje široký banner zhruba 3.5:1 (například 700x200); preferuje se průhledný PNG."
+
+#: 
+msgid "Page Layout"
+msgstr "Rozložení stránky"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Lidé, kteří se připojili v určitém měsíci"
+
+#: 
+msgid "Pledged"
+msgstr "Slíbeno"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Tisk %d daňový dokument"
+
+#: 
+msgid "Recent Friends"
+msgstr "Nedávní přátelé"
+
+#: 
+msgid "Report not found"
+msgstr "Zpráva nebyla nalezena"
+
+#: 
+msgid "Run Report"
+msgstr "Spustit zprávu"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Druhá příležitost pro dobrovolníka"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Zobrazuje se v postranním panelu, na přihlašovací stránce a v e-mailech. Nahráním loga se značka ChurchCRM nahradí všude, kde se zobrazuje."
+
+#: 
+msgid "Single Pages"
+msgstr "Jednotlivé stránky"
+
+#: 
+msgid "Tax Documents"
+msgstr "Daňové doklady"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Odeslání e-mailu s daňovým dokladem se nezdařilo. Zkontrolujte prosím nastavení e-mailového serveru."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Dvě poloviční stránky vedle sebe na každém listu na šířku v pořadí pro brožuru. Tiskněte oboustranně s otáčením podél kratší hrany a poté stoh přeložte napůl. Sloupce se počítají na půlstránku."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Daňový doklad nelze odeslat e-mailem: pro daný rok nebyly nalezeny žádné platební údaje."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Daňový doklad nelze odeslat e-mailem: tato rodina nemá uvedenou e-mailovou adresu."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Nelze přeložit název hostitele serveru OpenLP. Zkontrolujte adresu a síťové připojení."
+
+#: 
+msgid "Upload"
+msgstr "Nahrát"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Používá se výchozí logo ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Zobrazit všechny dary rodiny"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Dobrovolnická příležitost"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Dobrovolníci pro dvě příležitosti"
+
+#: 
+msgid "YTD"
+msgstr "Od začátku roku"
+
+#: 
+msgid "YTD Paid"
+msgstr "Zaplaceno od začátku roku"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "kvůli chybám v době, kdy k tomu došlo, a stáhněte a připojte příslušný soubor protokolu k hlášení na GitHubu – pomůže nám to vyřešit problém bez dalších doplňujících otázek."
+
+#: 
+msgid "system logs"
+msgstr "systémové protokoly"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Přístupová kontrola a bezpečnost"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Umožnit zaznamenávání plateb, které nejsou daňově odečitatelné (např. prodej zboží)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Umožnit přístup bez přihlášení k veřejným událostem (pro vkládání kalendářů)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Automaticky odesílat e-maily k narozeninám (vyžaduje plánovač úloh na pozadí)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "E-maily k narozeninám"
+
+#: 
+msgid "Communication & Email"
+msgstr "Komunikace a e-mail"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Zásada zabezpečení obsahu"
+
+#: 
+msgid "Email System"
+msgstr "Systém e-mailu"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Povolení nebo zakázání funkcí pro vaši organizaci"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Povolení/zakázání sekce Události v hlavní navigaci"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Povolení/zakázání menu Finanční a všech finančních funkcí (vklady, platby, zprávy)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Povolení/zakázání menu Fundraising"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Vynucovat přísné záhlaví CSP pro ochranu před XSS útoky"
+
+#: 
+msgid "Events Module"
+msgstr "Modul Události"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Přepínače funkcí"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Přepínače funkcí řídí, které moduly a funkce jsou v ChurchCRM dostupné. Změny se projeví okamžitě."
+
+#: 
+msgid "Finance Features"
+msgstr "Finanční funkce"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Zahrnout adresy v rychlé globální vyhledávání"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Zahrnout kalendářní události v rychlé globální vyhledávání"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Zahrnout vlastní vlastnosti rodiny v rychlé globální vyhledávání"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Zahrnout vklady v rychlé globální vyhledávání"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Zahrnout rodiny v rychlé globální vyhledávání"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Zahrnout ministerstva v rychlé globální vyhledávání"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Zahrnout platby v rychlé globální vyhledávání"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Zahrnout lidi v rychlé globální vyhledávání"
+
+#: 
+msgid "Invalid setting"
+msgstr "Neplatné nastavení"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Odkaz na zapomenuté heslo"
+
+#: 
+msgid "Manage All Features"
+msgstr "Spravovat všechny funkce"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Hlavní přepínač pro odesílání e-mailů. VYŽADOVÁNO pro obnovení hesla a oznámení"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Platby, které nejsou daňově odečitatelné"
+
+#: 
+msgid "Primary Modules"
+msgstr "Primární moduly"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Veřejné API kalendáře"
+
+#: 
+msgid "Saved"
+msgstr "Uloženo"
+
+#: 
+msgid "Search Families"
+msgstr "Vyhledat rodiny"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Vyhledat vlastní vlastnosti rodiny"
+
+#: 
+msgid "Search Settings"
+msgstr "Nastavení vyhledávání"
+
+#: 
+msgid "Self-Registration"
+msgstr "Vlastní registrace"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Zobrazit možnost \"Zapomenuté heslo\" na přihlašovací obrazovce (umožňuje uživateli vlastní resetování)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Zobrazit/skrýt modul neděliské školy v bočním panelu"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Nelze deaktivovat jediného správce, který se může přihlásit"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Nelze označit jediného správce, který se může přihlásit, jako zemřelého"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Zemřelý — nemůže se přihlásit"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Zadejte druhou adresu před označením jako poštovní adresu"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Neaktivní — nemůže se přihlásit"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Pošta jde na druhou adresu; primární adresa zůstává fyzickým umístěním pro mapy a navigaci."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Pošta je odeslána na tuto adresu místo primární adresy"
+
+#: 
+msgid "Mailing Address"
+msgstr "Poštovní adresa"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Poštovní adresa, pokud se liší"
+
+#: 
+msgid "Primary Address"
+msgstr "Primární adresa"
+
+#: 
+msgid "Receives Mail"
+msgstr "Přijímá poštu"
+
+#: 
+msgid "Second Address"
+msgstr "Druhá adresa"
+
+#: 
+msgid "Second Home"
+msgstr "Druhý dům"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Propojená osoba je zemřelá nebo neaktivní. Přihlášení, relace a klíč API jsou blokovány, dokud osoba není opět aktivní."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Toto je poštovní adresa"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Tato osoba je zemřelá nebo neaktivní, takže se tento účet nemůže přihlásit"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Pouze správce může smazat osobu, která má přihlášení."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Poslední správce nelze smazat."
+
+#: 
+msgid "Category"
+msgstr "Kategorie"
+
+#: 
+msgid "Category updated."
+msgstr "Kategorie aktualizována."
+
+#: 
+msgid "Delete Category"
+msgstr "Smazat kategorii"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Nepodařilo se smazat kategorii"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Nepodařilo se přejmenovat kategorii"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategorie darů"
+
+#: 
+msgid "Fund activated."
+msgstr "Kategorie darů aktivována."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Kategorie darů deaktivována."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Dary v této kategorii budou bez kategorie. Dary samotné nejsou smazány."
+
+#: 
+msgid "INACTIVE"
+msgstr "Neaktivní"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Nový název kategorie (stávající název sloučí obě)"
+
+#: 
+msgid "Optional"
+msgstr "Volitelné"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Volitelné — vyberte nebo zadejte novou kategorii"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Zaplaceno více než příslib"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Přislíbeno, ale ještě nezaplaceno"
+
+#: 
+msgid "Rename Category"
+msgstr "Přejmenovat kategorii"
+
+#: 
+msgid "Still Owed"
+msgstr "Zbývá zaplatit"
+
+#: 
+msgid "Summary by Category"
+msgstr "Souhrn podle kategorie"
+
+#: 
+msgid "Total Paid"
+msgstr "Celkem zaplaceno"
+
+#: 
+msgid "Uncategorized"
+msgstr "Bez kategorie"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Nepodařilo se načíst aktuální nastavení. Znovu načtěte stránku a zkuste to znovu."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Toto nastavení musí být číslo"
+
+#: 
+msgid "Child Role"
+msgstr "Role dítěte"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Zahrnutí do adresáře lze přepínat pouze pro seznam klasifikací"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Uvítací zpráva 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Uvítací zpráva 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Role hlavy rodiny"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Skrýt adresy bez rodiny"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Skrýt datum přátelství"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Skrýt odběry newsletteru"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Skrýt datum svatby"
+
+#: 
+msgid "In Directory"
+msgstr "V adresáři"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Zahrnout podrobnosti do oznámení"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Příjemci oznámení"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Osoby, které se mají upozornit při přidání nové rodiny nebo osoby"
+
+#: 
+msgid "Person initials style"
+msgstr "Styl iniciál osoby"
+
+#: 
+msgid "Person name display style"
+msgstr "Styl zobrazení jména osoby"
+
+#: 
+msgid "Spouse Role"
+msgstr "Role manžela/manželky"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "PSČ velkými písmeny"
 

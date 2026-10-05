@@ -5,6 +5,11 @@
 
 import { buildAPIUrl } from "./api-utils";
 
+async function notifyAPIError(res, fallback) {
+  const body = await res.json().catch(() => ({}));
+  window.CRM.notify(body.message || fallback, { type: "danger", delay: 5000 });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   $(".data-table").DataTable(window.CRM.plugin.dataTable);
 
@@ -16,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const groupName = nameInput.value.trim();
       if (!groupName) return;
 
+      const fallback = i18next.t("Failed to create class. Please try again.");
       try {
         const response = await fetch(buildAPIUrl("groups/"), {
           method: "POST",
@@ -23,12 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify({ groupName, isSundaySchool: true }),
         });
 
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (!response.ok) {
+          await notifyAPIError(response, fallback);
+          return;
+        }
 
         const data = await response.json();
         window.location.href = `${window.CRM.root}/groups/sundayschool/class/${data.Id}`;
       } catch (_error) {
-        window.CRM.notify(i18next.t("Failed to create class. Please try again."), { type: "danger", delay: 5000 });
+        window.CRM.notify(fallback, { type: "danger", delay: 5000 });
       }
     });
   }
@@ -37,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   $(document).on("click", ".add-ss-role-to-cart", async function () {
     const groupId = $(this).data("group-id");
     const roleName = $(this).data("role-name");
+    const fallback = i18next.t("Failed to add members to cart. Please try again.");
 
     try {
       const [rolesRes, membersRes] = await Promise.all([
@@ -44,7 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch(`${window.CRM.root}/api/groups/${groupId}/members`),
       ]);
 
-      if (!rolesRes.ok || !membersRes.ok) throw new Error("Failed to fetch group data");
+      const failedRes = [rolesRes, membersRes].find((res) => !res.ok);
+      if (failedRes) {
+        await notifyAPIError(failedRes, fallback);
+        return;
+      }
 
       const roles = await rolesRes.json();
       const membersData = await membersRes.json();
@@ -69,11 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({ Persons: personIds }),
       });
 
-      if (!cartRes.ok) throw new Error(`HTTP ${cartRes.status}`);
+      if (!cartRes.ok) {
+        await notifyAPIError(cartRes, fallback);
+        return;
+      }
 
       window.CRM.notify(i18next.t("Members added to cart."), { type: "success", delay: 3000 });
     } catch (_error) {
-      window.CRM.notify(i18next.t("Failed to add members to cart. Please try again."), { type: "danger", delay: 5000 });
+      window.CRM.notify(fallback, { type: "danger", delay: 5000 });
     }
   });
 
@@ -140,13 +157,17 @@ document.addEventListener("DOMContentLoaded", () => {
       callback: (result) => {
         if (!result) return;
 
-        fetch(`${window.CRM.root}/api/groups/${groupId}`, { method: "DELETE" })
-          .then((res) => {
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            window.location.reload();
+        const fallback = i18next.t("Failed to delete class. Please try again.");
+        fetch(buildAPIUrl(`groups/${groupId}`), { method: "DELETE" })
+          .then(async (res) => {
+            if (res.ok) {
+              window.location.reload();
+              return;
+            }
+            await notifyAPIError(res, fallback);
           })
-          .catch((_error) => {
-            window.CRM.notify(i18next.t("Failed to delete class. Please try again."), { type: "danger", delay: 5000 });
+          .catch(() => {
+            window.CRM.notify(fallback, { type: "danger", delay: 5000 });
           });
       },
     });

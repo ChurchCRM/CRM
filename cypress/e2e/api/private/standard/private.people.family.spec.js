@@ -87,6 +87,29 @@ describe("API Private Family", () => {
             // AbstractEntityMiddleware returns 404 Not Found for missing entity
             cy.makePrivateAdminAPICall("GET", "/api/family/99999", null, 404);
         });
+
+        // Optional second family address + mailing flag (#9743). Additive keys only —
+        // `Address` must keep meaning the primary/physical address.
+        it("Exposes the second-address keys, resolving MailingAddress to the primary when unflagged", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/family/1", null, 200).then((response) => {
+                expect(response.body).to.have.property("SecondAddress1");
+                expect(response.body).to.have.property("SecondAddress2");
+                expect(response.body).to.have.property("SecondCity");
+                expect(response.body).to.have.property("SecondState");
+                expect(response.body).to.have.property("SecondZip");
+                expect(response.body).to.have.property("SecondCountry");
+                expect(response.body).to.have.property("SecondIsMailing");
+                expect(response.body).to.have.property("HasSecondAddress");
+                expect(response.body).to.have.property("SecondAddressIsMailing");
+                expect(response.body).to.have.property("MailingAddress");
+
+                // Seeded families have no second address, so mailing resolves to the primary.
+                expect(response.body.HasSecondAddress).to.be.false;
+                expect(response.body.SecondAddressIsMailing).to.be.false;
+                expect(response.body.MailingAddress.Address1).to.equal(response.body.Address1);
+                expect(response.body.MailingAddress.City).to.equal(response.body.City);
+            });
+        });
     });
 
     describe("GET /api/family/{id}/nav - Family Navigation", () => {
@@ -131,6 +154,62 @@ describe("API Private Family", () => {
                 expect(family).to.have.property("FamilyString");
                 expect(family).to.have.property("DateEntered");
             });
+        });
+    });
+
+    describe("POST /api/family/{familyId}/approve-review - Approve Self-Registered Family", () => {
+        it("Rejects a user without EditRecords", () => {
+            cy.makePrivateNoPermAPICall(
+                "POST",
+                "/api/family/23/approve-review",
+                null,
+                403,
+            );
+        });
+
+        it("Clears the family's needs-review flag and cascades to its members", () => {
+            // seed.sql family 23 (Turner) is self-registered (fam_EnteredBy = -1)
+            // with members 115 and 116, all still pending review.
+
+            // First: assert family 23 IS in the pending list
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/families/self-register",
+                null,
+                200,
+            ).then((response) => {
+                const ids = response.body.families.map((f) => f.Id);
+                expect(ids).to.include(23);
+            });
+
+            // Then approve and verify removal
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/family/23/approve-review",
+                null,
+                200,
+            ).then((response) => {
+                expect(response.body).to.have.property("success", true);
+            });
+
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/families/self-register",
+                null,
+                200,
+            ).then((response) => {
+                const ids = response.body.families.map((f) => f.Id);
+                expect(ids).to.not.include(23);
+            });
+
+            cy.makePrivateAdminAPICall("GET", "/api/person/116", null, 200).then((response) => {
+                expect(response.body.NeedsReview).to.equal(false);
+            });
+        });
+
+        it("Rejects approving a family that is not a pending self-registration", () => {
+            // family 1 (Campbell) is staff-created
+            cy.makePrivateAdminAPICall("POST", "/api/family/1/approve-review", null, 400);
         });
     });
 

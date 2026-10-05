@@ -14,7 +14,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $sPageTitle = gettext('Tax Report');
 $sPageSubtitle = gettext('Generate tax statement documents for donors');
 $aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Finance'), '/finance/'],
+    [gettext('Financial Reports'), '/finance/reports'],
     [gettext('Tax Report')],
 ]);
 require_once __DIR__ . '/Include/Header.php';

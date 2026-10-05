@@ -24,16 +24,9 @@ describe("Confirmation Reports - MVC Routes", () => {
      * contamination from prior tests.
      * Pattern follows cypress/e2e/ui/people/standard.cart-to-family.spec.js.
      */
-    function freshAdminLogin() {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(Cypress.env("admin.username"));
-        cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-        cy.url().should("not.include", "/session/begin");
-    }
 
     beforeEach(() => {
-        freshAdminLogin();
+        cy.freshAdminFormLogin();
         cy.visit("/LettersAndLabels.php");
     });
 
@@ -264,9 +257,8 @@ describe("Confirmation Reports - MVC Routes", () => {
             cy.get('[data-cy="email-result-alert"]').should("exist");
             // Dismiss the alert with the bootstrap btn-close
             cy.get('[data-cy="email-result-alert"] .btn-close').click();
-            // After clicking close the alert fades out — just assert it no longer has 'show'
-            // (do NOT assert not.exist because of BS5 async fade transition)
-            cy.get('[data-cy="email-result-alert"]').should("not.have.class", "show");
+            // BS5 removes the alert from the DOM after its fade; not.exist retries through it.
+            cy.get('[data-cy="email-result-alert"]').should("not.exist");
         });
 
         it("Retry button is present and triggers the confirmation modal", () => {
@@ -280,7 +272,7 @@ describe("Confirmation Reports - MVC Routes", () => {
     // Part 2: Send Confirmation Preview Modal
     // ================================================================
     describe("People Verify — send confirmation modal", () => {
-        // The outer beforeEach already calls freshAdminLogin(). This inner beforeEach
+        // The outer beforeEach already calls cy.freshAdminFormLogin(). This inner beforeEach
         // only navigates to the verify page — no second login needed.
         beforeEach(() => {
             cy.visit("people/verify");

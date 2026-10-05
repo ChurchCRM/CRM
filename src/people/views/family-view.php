@@ -2,14 +2,15 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\PropertyService;
-use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PersonDeleteGuard;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $sPageTitle = InputUtils::escapeHTML($family->getName());
@@ -77,6 +78,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
     window.CRM.currentActive = <?= $family->isActive() ?"true" :"false" ?>;
     window.CRM.currentFamilyView = 2;
     window.CRM.currentFYId = <?= (int) $currentFYId ?>;
+    window.CRM.currentFY = <?= InputUtils::jsonEncodeForScript($currentFY) ?>;
     window.CRM.familyEmail ="<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
     window.CRM.familyEmailMD5 ="<?= $familyEmailMD5 ?>";
     <?php if ($showFamilyCheckin): ?>
@@ -87,9 +89,46 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
     <?php endif; ?>
 </script>
 
+<?php
+// Tax document email result notifications
+$taxEmailSent  = filter_input(INPUT_GET, 'TaxEmailSent', FILTER_VALIDATE_INT);
+$taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
+?>
+<?php if ($family->getNeedsReview()) : ?>
+<div class="alert alert-warning">
+    <i class="fa-solid fa-user-clock me-1"></i><strong><?= gettext('This self-registered family is pending review') ?></strong>
+    <a href="<?= SystemURLs::getRootPath() ?>/people/self-register" class="ms-2"><?= gettext('Review self registrations') ?></a>
+</div>
+<?php endif; ?>
 <div id="family-deactivated" class="alert alert-warning d-none">
     <strong><?= gettext("This Family is Inactive") ?> </strong>
 </div>
+
+<?php if ($taxEmailSent) { ?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-check-circle me-2"></i>
+    <?= sprintf(gettext('%d tax document emailed to the family successfully.'), (int)$taxEmailSent) ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } elseif ($taxEmailError === 'NoEmail') { ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+    <?= gettext('Unable to email tax document: this family has no email address on file.') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } elseif ($taxEmailError === 'NoData') { ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+    <?= gettext('Unable to email tax document: no payment data found for that year.') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } elseif ($taxEmailError === 'SendFailed') { ?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-circle-xmark me-2"></i>
+    <?= gettext('Tax document email failed to send. Please check your email server settings.') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } ?>
 
 <div class="row">
     <!-- LEFT COLUMN: Actions, Members, Timeline -->
@@ -124,6 +163,23 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/finance/pledge/new?type=Payment&familyId=<?= $family->getId() ?>">
                         <i class="fa-solid fa-money-bill-wave me-2"></i><?= gettext('Add Payment') ?>
                     </a>
+                    <?php if (!empty($taxYears)) { ?>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice-dollar me-1"></i><?= gettext('Tax Documents') ?></h6>
+                    <?php foreach ($taxYears as $taxYear) { ?>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/Reports/TaxReport.php?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>" target="_blank">
+                        <i class="fa-solid fa-print me-2"></i><?= sprintf(gettext('Print %d Tax Doc'), (int)$taxYear) ?>
+                    </a>
+                    <form method="post" action="<?= SystemURLs::getRootPath() ?>/Reports/FamilyTaxReportEmail.php" class="m-0">
+                        <input type="hidden" name="familyId" value="<?= $family->getId() ?>">
+                        <input type="hidden" name="year" value="<?= (int)$taxYear ?>">
+                        <?= CSRFUtils::getTokenInputField('tax_email_' . (int)$taxYear) ?>
+                        <button type="submit" class="dropdown-item border-0 bg-transparent w-100 text-start">
+                            <i class="fa-solid fa-envelope me-2"></i><?= sprintf(gettext('Email %d Tax Doc'), (int)$taxYear) ?>
+                        </button>
+                    </form>
+                    <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
             <?php } ?>
@@ -192,7 +248,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <button class="dropdown-item AddToCart" data-cart-id="<?= $person->getId() ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
                     <div class="dropdown-divider"></div>
-                    <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $person->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                    <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $person->getId() ?>" data-view="family"<?= PersonDeleteGuard::attributes((int) $person->getId()) ?>><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
                     <?php endif; ?>
                 </div>
             </div>
@@ -443,7 +499,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
         <!-- Address Card -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= gettext("Address") ?>
+                <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= $family->hasSecondAddress() ? gettext("Primary Address") : gettext("Address") ?>
                     <?php if ($family->hasLatitudeAndLongitude()): ?>
                     <span class="badge bg-green-lt text-green ms-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
                         <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
@@ -510,6 +566,33 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                         <div id="map1" style="height: 200px;"></div>
                     </div>
                 <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <?php if ($family->hasSecondAddress()) :
+            // Second address (#9743). Map, geocode badge, directions and "Find
+            // Neighbors" stay on the primary card — lat/lng belongs to the
+            // physical address.
+            $secondAddress = $family->getSecondaryAddress();
+            $isMailing = $family->isSecondAddressMailing();
+        ?>
+        <!-- Second Address Card -->
+        <div class="card mb-3" id="second-address-card">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0">
+                    <i class="fa-solid <?= $isMailing ? 'fa-envelope' : 'fa-house-chimney' ?> me-1"></i>
+                    <?= $isMailing ? gettext('Mailing Address') : gettext('Second Home') ?>
+                    <?php if ($isMailing) : ?>
+                    <span class="badge bg-blue-lt text-blue ms-2" title="<?= gettext('Mail is sent to this address instead of the primary address') ?>">
+                        <i class="fa-solid fa-envelope"></i> <?= gettext('Receives Mail') ?>
+                    </span>
+                    <?php endif; ?>
+                </h3>
+            </div>
+            <div class="card-body">
+                <a href="https://maps.google.com/?q=<?= urlencode($secondAddress) ?>"
+                   target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($secondAddress) ?></a>
             </div>
         </div>
         <?php endif; ?>
@@ -650,13 +733,14 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
 
 <?php
 if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
-<!-- Pledges and Payments — full width row -->
-<div class="row">
+<!-- Giving History — full width row -->
+<div class="row" id="giving-history">
     <div class="col-12">
         <div class="card mb-3">
-            <div class="card-header d-flex align-items-center flex-wrap gap-2">
-                <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot me-1"></i> <?= gettext("Pledges and Payments") ?></h3>
-                <div class="ms-auto d-flex align-items-center gap-2">
+            <div class="card-header d-flex align-items-center flex-wrap gap-3">
+                <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot me-1"></i> <?= gettext("Giving History") ?></h3>
+                <span id="ytd-total-badge" class="badge bg-green-lt text-green ms-1 d-none"></span>
+                <div class="ms-auto d-flex align-items-center gap-3">
                     <ul class="nav nav-pills" role="tablist">
                         <li class="nav-item"><a class="nav-link active pledge-type-pill" href="#" data-filter=""><?= gettext("All") ?></a></li>
                         <li class="nav-item"><a class="nav-link pledge-type-pill" href="#" data-filter="Pledge"><?= gettext("Pledges") ?></a></li>
@@ -684,9 +768,19 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     </ul>
                 </div>
             </div>
-            <div style="overflow-x: clip; overflow-y: visible;">
+            <div style="overflow-x: clip; overflow-y: visible;" class="px-3 pt-2">
                 <table id="pledge-payment-v2-table" class="table table-vcenter card-table" style="width: 100%;">
                     <tbody></tbody>
+                    <tfoot>
+                        <tr id="giving-summary-row" class="d-none">
+                            <td colspan="7" class="border-top">
+                                <div class="d-flex gap-4 justify-content-end py-3 pe-2">
+                                    <span><strong><?= gettext("Pledged") ?>:</strong> <span id="giving-total-pledged" class="text-primary fw-bold">—</span></span>
+                                    <span><strong><?= gettext("Paid") ?>:</strong> <span id="giving-total-paid" class="text-success fw-bold">—</span></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
@@ -695,7 +789,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 <?php } ?>
 
 <!-- Leaflet map (loaded only if geocoded) -->
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+
 <?php if ($family->hasAddress() && $family->hasLatitudeAndLongitude()) : ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = window.CRM || {};
@@ -741,7 +835,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 </div>
 <?php endif; ?>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-family-view.min.js') ?>"></script>
 
 <!-- Photo uploader bundle - loaded only on this page -->

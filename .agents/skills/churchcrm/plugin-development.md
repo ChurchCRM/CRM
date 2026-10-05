@@ -103,6 +103,27 @@ src/plugins/core/{plugin-name}/
 }
 ```
 
+### Menu item permission
+
+The navigation menu is built from the PHP `getMenuItems()`; the `menuItems` block in `plugin.json` is metadata and is not read when the menu renders, so keep the two in sync.
+
+`permission` is optional. When set, the item is shown only to users for whom `User::isEnabledSecurity()` passes; administrators always pass. Valid names: `bAdmin`, `bAll`, `bAddRecords`, `bEditRecords`, `bDeleteRecords`, `bManageGroups`, `bFinance`, `bNotes`, or a per-user setting name such as `bEmailMailto`. An unrecognized name hides the item from non-admins (fails closed). No `permission` key means every signed-in user sees it.
+
+A hidden menu item is not access control. The plugin's routes must carry the matching middleware from `ChurchCRM\Slim\Middleware\Request\Auth\*` (`AdminRoleAuthMiddleware`, `FinanceRoleAuthMiddleware`, `EmailRoleAuthMiddleware`, `ManageGroupRoleAuthMiddleware`, `EditRecordsRoleAuthMiddleware`, `DeleteRecordRoleAuthMiddleware`, `NotesRoleAuthMiddleware`). Menu and route must agree.
+
+```php
+[
+    'parent' => 'admin',
+    'label' => gettext('My Plugin'),
+    'url' => 'plugins/my-plugin/dashboard',
+    'permission' => 'bAdmin',
+]
+```
+
+```php
+$app->get('/my-plugin/dashboard', $handler)->add(AdminRoleAuthMiddleware::class);
+```
+
 ## Creating a Plugin
 
 ### 1. Create plugin directory
@@ -167,6 +188,7 @@ class MyPluginPlugin extends AbstractPlugin
                 'label' => gettext('My Plugin'),
                 'url' => 'plugins/my-plugin/dashboard',
                 'icon' => 'fa-plug',
+                'permission' => 'bAdmin', // menu visibility only; guard the route with AdminRoleAuthMiddleware
             ],
         ];
     }
@@ -244,6 +266,7 @@ this list, open an issue before shipping.
 | Inject HTML/JS/CSS into core pages via `getHeadContent()` / `getFooterContent()` | `ui.inject` |
 | Register a cron handler on `Hooks::CRON_RUN` | `cron` |
 | Subscribe to `PERSON_*` or `FAMILY_*` hooks | `hooks.person` / `hooks.family` |
+| Subscribe to `EVENT_*` hooks | `hooks.event` |
 | Subscribe to `DONATION_*` or `DEPOSIT_*` hooks | `hooks.financial` |
 | Subscribe to `EMAIL_*` hooks | `hooks.email` |
 | Send email through ChurchCRM's mailer | `email.send` |
@@ -532,7 +555,16 @@ Are Propel phpName Arrays".
 - `DONATION_RECEIVED`, `DEPOSIT_CLOSED`
 
 **Events**
-- `EVENT_CREATED`, `EVENT_CHECKIN`, `EVENT_CHECKOUT`, `SYSTEM_CALENDARS_REGISTER`
+- `EVENT_CREATED`, `EVENT_UPDATED`, `EVENT_DELETED`, `EVENT_CHECKIN`, `EVENT_CHECKOUT`, `SYSTEM_CALENDARS_REGISTER`
+
+  `EVENT_UPDATED` receives `Event $event, array $oldData`; `EVENT_DELETED` receives
+  `int $eventId, array $eventData`. Both are dispatched from `Event::postUpdate()` /
+  `Event::postDelete()`, so they fire once for every path that edits or removes an
+  event — the events API, the `/event/dashboard` MVC action and the kiosk flows
+  alike. The `$oldData` / `$eventData` snapshot is only taken when a listener is
+  registered, so it is always populated for your callback but costs nothing on
+  installs with no plugins. `EVENT_CREATED` now also fires for the bulk creation
+  paths (`POST /events/repeat`, `POST /events/generate-recurring`) — see #9734.
 
 **Groups**
 - `GROUP_MEMBER_ADDED`, `GROUP_MEMBER_REMOVED`

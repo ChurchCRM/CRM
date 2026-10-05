@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanType } from '../support/human';
+import { humanClick, humanPause, humanType, settle } from '../support/human';
 
 /**
  * A church user looking up who lives near one family: open the Scott
@@ -45,10 +45,12 @@ test('find-neighbors-search', async ({ page }, testInfo) => {
   // Auto-run search populates the table and unhides it from its initial
   // d-none state.
   await expect(page.locator('#neighborsTable')).toBeVisible({ timeout: 15000 });
-  await humanPause(page, 2500);
+  await settle(page, 2500);
 
   await captureScreen(page, testInfo, {
     name: 'find-neighbors-search',
+    title: 'Find Neighbors Search',
+    category: 'Recordings',
     purpose: 'Show finding nearby families from a family profile, with results plotted by distance on the map',
   });
 });

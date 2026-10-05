@@ -4,6 +4,7 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Reports\PdfDirectory;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
@@ -12,13 +13,20 @@ use ChurchCRM\Utils\MiscUtils;
 
 // Get and filter the classifications selected
 $aClasses = [];
-if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] !== '') {
-    foreach ($_POST['sDirClassifications'] as $Cls) {
-        $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
+foreach ((array) ($_POST['sDirClassifications'] ?? []) as $Cls) {
+    // 'int' filtering turns junk into 0, which would quietly select Unassigned.
+    if (!array_key_exists('cartdir', $_POST) && !(is_scalar($Cls) && ctype_digit(trim((string) $Cls)))) {
+        http_response_code(400);
+        exit(gettext('Select at least one classification to include in the directory.'));
     }
-    $sDirClassifications = implode(',', $aClasses);
-} else {
-    $sDirClassifications = '';
+    $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
+}
+$sDirClassifications = implode(',', $aClasses);
+
+// The browser omits an empty multi-select, and no qualifier would print everyone (the cart directory is limited by the cart instead).
+if ($aClasses === [] && !array_key_exists('cartdir', $_POST)) {
+    http_response_code(400);
+    exit(gettext('Select at least one classification to include in the directory.'));
 }
 $aHeads = [];
 foreach ($_POST['sDirRoleHead'] as $Head) {
@@ -42,6 +50,7 @@ $bExcludeInactive = isset($_POST['bExcludeInactive']);
 
 // Get other settings
 $bDirAddress = isset($_POST['bDirAddress']);
+$bDirMailingAddress = isset($_POST['bDirMailingAddress']);
 $bDirWedding = isset($_POST['bDirWedding']);
 $bDirBirthday = isset($_POST['bDirBirthday']);
 $bDirFamilyPhone = isset($_POST['bDirFamilyPhone']);
@@ -67,6 +76,11 @@ $bDirUseTitlePage = isset($_POST['bDirUseTitlePage']);
 
 $bNumberofColumns = InputUtils::legacyFilterInput($_POST['NumCols'] ?? '1', 'int');
 $sPageSize = InputUtils::legacyFilterInput($_POST['PageSize']);
+// Page layout: single portrait pages (default) or a folded booklet (#8958)
+$sDirLayout = InputUtils::legacyFilterInput($_POST['sDirLayout'] ?? 'pages');
+if ($sDirLayout !== 'booklet') {
+    $sDirLayout = 'pages';
+}
 $bFontSz = InputUtils::legacyFilterInput($_POST['FSize'] ?? '8', 'int');
 $bLineSp = $bFontSz / 3;
 
@@ -74,11 +88,11 @@ if ($sPageSize != 'letter' && $sPageSize != 'a4') {
     $sPageSize = 'legal';
 }
 
-LoggerUtils::getAppLogger()->debug("ncols = {$bNumberofColumns} page size = {$sPageSize}");
+LoggerUtils::getAppLogger()->debug("ncols = {$bNumberofColumns} page size = {$sPageSize} layout = {$sDirLayout}");
 
 // Instantiate the directory class and build the report
 LoggerUtils::getAppLogger()->debug("font sz = {$bFontSz} and line sp = {$bLineSp}");
-$pdf = new PdfDirectory($bNumberofColumns, $sPageSize, $bFontSz, $bLineSp);
+$pdf = new PdfDirectory($bNumberofColumns, $sPageSize, $bFontSz, $bLineSp, $sDirLayout === 'booklet');
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
@@ -129,6 +143,9 @@ if (!empty($_POST['GroupID'])) {
 if (SystemConfig::getBooleanValue('bHideDeceasedFromDirectory')) {
     $sWhereExt .= 'AND per_DateDeceased IS NULL ';
 }
+
+// Self-registrations still awaiting review do not go in the printed directory.
+$sWhereExt .= ' AND per_NeedsReview = 0 ';
 
 //Exclude inactive families
 if ($bExcludeInactive) {
@@ -189,7 +206,6 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         $isFamily = true;
 
         $pdf->sRecordName = '';
-        $pdf->sLastName = $per_LastName;
         $OutStr .= $pdf->sGetFamilyString($aRow);
         $bNoRecordName = true;
 
@@ -201,8 +217,11 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
         if (mysqli_num_rows($rsPerson) > 0) {
             $aHead = mysqli_fetch_array($rsPerson);
+            $pdf->sLastName = $aHead['per_LastName'];
             $OutStr .= $pdf->sGetHeadString($rsCustomFields, $aHead);
             $bNoRecordName = false;
+        } else {
+            $pdf->sLastName = $per_LastName;
         }
 
         // Find the Spouse of Household
@@ -271,6 +290,14 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             $OutStr .="\n";
             if (strlen($sCity)) {
                 $OutStr .= $sCity . ', ' . $sState . ' ' . $sZip ."\n";
+            }
+            // The mailing address is a family attribute, so it is printed only when the
+            // family this person belongs to actually mails somewhere else (#9743).
+            if ($bDirMailingAddress) {
+                $family = Family::readOnlyFromRow($aRow);
+                if ($family->hasDistinctMailingAddress()) {
+                    $OutStr .= '   ' . gettext('Mailing Address') . ': ' . str_replace("\n", "\n   ", $family->getMailingAddressLines()) . "\n";
+                }
             }
         }
         if (($bDirFamilyPhone || $bDirPersonalPhone) && strlen($sHomePhone)) {

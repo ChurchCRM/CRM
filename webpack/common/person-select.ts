@@ -82,6 +82,9 @@ export function initPersonSelect(el: HTMLSelectElement, opts: PersonSelectOption
   if (opts.render) {
     settings.render = opts.render;
   }
+  if (opts.plugins) {
+    settings.plugins = opts.plugins;
+  }
   if (opts.onChange) {
     const onChange = opts.onChange;
     settings.onChange = function (this: TomSelectInstance, value: string) {

@@ -33,31 +33,21 @@ jobs:
     if: github.ref != 'refs/heads/master'
     name: Generate and validate OpenAPI specs
     timeout-minutes: 15
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
       - name: Checkout CRM
-        uses: actions/checkout@v7
-      - name: Setup PHP 8.4
-        uses: shivammathur/setup-php@v2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/composer-install
         with:
-          php-version: '8.4'
-          extensions: mbstring, pdo, zip
-      - name: Cache Composer packages
-        uses: actions/cache@v6
-        with:
-          path: src/vendor
-          key: composer-dev-${{ hashFiles('src/composer.lock') }}
-          restore-keys: composer-dev-
-      - name: Install Composer dependencies (including dev)
-        run: cd src && composer install --no-interaction --prefer-dist
+          no-dev: 'false'
       - name: Generate Public API spec
         run: cd src && composer run openapi:public
       - name: Generate Private API spec
         run: cd src && composer run openapi:private
       - name: Upload generated specs as artifacts
-        uses: actions/upload-artifact@v7
+        uses: ./.github/actions/upload-artifact
         with:
           name: openapi-specs-${{ github.run_id }}
           path: docs/openapi/generated/*.yaml
@@ -67,25 +57,15 @@ jobs:
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     name: Generate, validate, and publish OpenAPI specs
     timeout-minutes: 15
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     steps:
       - name: Checkout CRM
-        uses: actions/checkout@v7
-      - name: Setup PHP 8.4
-        uses: shivammathur/setup-php@v2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/composer-install
         with:
-          php-version: '8.4'
-          extensions: mbstring, pdo, zip
-      - name: Cache Composer packages
-        uses: actions/cache@v6
-        with:
-          path: src/vendor
-          key: composer-dev-${{ hashFiles('src/composer.lock') }}
-          restore-keys: composer-dev-
-      - name: Install Composer dependencies (including dev)
-        run: cd src && composer install --no-interaction --prefer-dist
+          no-dev: 'false'
       - name: Generate Public API spec
         run: cd src && composer run openapi:public
       - name: Generate Private API spec
@@ -107,7 +87,7 @@ jobs:
           git commit -m "docs: update OpenAPI specifications"
           git push origin master
       - name: Upload generated specs as artifacts
-        uses: actions/upload-artifact@v7
+        uses: ./.github/actions/upload-artifact
         with:
           name: openapi-specs-${{ github.run_id }}
           path: docs/openapi/generated/*.yaml

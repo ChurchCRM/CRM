@@ -472,10 +472,6 @@ msgid "Photos"
 msgstr "Fotografije"
 
 #: 
-msgid "Number of Columns"
-msgstr "Broj stupaca"
-
-#: 
 msgid "Paper Size"
 msgstr "Veličina papira"
 
@@ -839,10 +835,6 @@ msgstr "Obriši fotografiju"
 #: 
 msgid "Timeline"
 msgstr "Vremenski trak"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Zavjeti i uplate"
 
 #: 
 msgid "Value"
@@ -1656,30 +1648,6 @@ msgstr "Razred"
 #: 
 msgid "Properties"
 msgstr "Svojstva"
-
-#: 
-msgid "Query Listing"
-msgstr "Popis upita"
-
-#: 
-msgid "Query View"
-msgstr "Prikaz upita"
-
-#: 
-msgid "This value is required."
-msgstr "Ova vrijednost je obavezna."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Ova vrijednost mora biti numerička."
-
-#: 
-msgid "Run Query Again"
-msgstr "Pokretni upit ponovo"
-
-#: 
-msgid "Execute Query"
-msgstr "Izvrši upit"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -2601,10 +2569,6 @@ msgstr "Pregledaj kupce"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Dodaj darivatelje na popis kupaca"
-
-#: 
-msgid "Data/Reports"
-msgstr "Podaci/Izvještaji"
 
 #: 
 msgid "Family Properties"
@@ -4478,10 +4442,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "Za definiranje datuma u birač datuma, zadano: G-m-d, Npr. na francuskom: d/m/G."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Popis ID-ova osoba odvojenih zarezom koji se obavještavaju kada se doda nova obitelj ili osoba"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Dopusti neautentificirano čitanje događaja s vanjskog API-ja kalendara"
 
@@ -5046,14 +5006,6 @@ msgstr[2] "%d godina star"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "Nedostaje PHP ZipArchive"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "Dodaj rezultate u košaricu"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Ukloni rezultate iz košarice"
 
 #: 
 msgid "Database Reset Functions"
@@ -6328,10 +6280,6 @@ msgid "Cart"
 msgstr "Košarica"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Promijenite ovo u sistemskim postavkama."
-
-#: 
 msgid "Church Membership"
 msgstr "Župno članstvo"
 
@@ -6382,10 +6330,6 @@ msgstr "Kreirajte ili odaberite uplatu za početak."
 #: 
 msgid "Current Deposit"
 msgstr "Trenutna uplata"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Trenutna fiskalna godina"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6448,10 +6392,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Provjerite da su sve uplate za poreznu godinu zatvorene prije generiranja izjava."
 
 #: 
-msgid "Export Options"
-msgstr "Opcije izvoza"
-
-#: 
 msgid "F"
 msgstr "Ž"
 
@@ -6466,10 +6406,6 @@ msgstr "Navigacija obiteljima"
 #: 
 msgid "Feb"
 msgstr "Velj"
-
-#: 
-msgid "Filtering"
-msgstr "Filtriranje"
 
 #: 
 msgid "Finance"
@@ -6492,16 +6428,8 @@ msgid "Generate Tax Statements"
 msgstr "Generiraj porezne izjave"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Generirajte godišnje izjave o darivanju za darivatelje i identificirajte obrasce darivanja."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Generirajte godišnje porezno odbatljive izjave o darivanju za darivatelje. Mogu se ispisati ili poslati e-poštom."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Generirajte detaljne izvještaje za pojedinačne uplate ili datumske raspone."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6562,10 +6490,6 @@ msgstr "Ožu"
 #: 
 msgid "Membership Reports"
 msgstr "Izvještaji o članstvu"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "Većina izvještaja se može izvesti kao PDF za ispis ili CSV za analizu u tablici."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6644,14 +6568,6 @@ msgid "Recording a Pledge"
 msgstr "Bilježenje zavjeta"
 
 #: 
-msgid "Report Tips"
-msgstr "Savjeti za izvještaje"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "Izvještaji koji se odnose na pravo glasa članova i upravljanje organizacijom."
-
-#: 
 msgid "Reset"
 msgstr "Resetiraj"
 
@@ -6728,20 +6644,12 @@ msgid "Total Amount"
 msgstr "Ukupni iznos"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Pratite napredak zavjeta i plaćanja za kampanje i planiranje fiskalne godine."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Neispunjeni preduvjeti"
 
 #: 
 msgid "Upgrade"
 msgstr "Nadogradnja"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Koristite filtre klasifikacije i obitelji za generiranje izvještaja za specifične skupini darivatelja."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6766,10 +6674,6 @@ msgstr "Zavjeti od početka godine"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "Možete kreirati članove obitelji sada ili ih dodati kasnije. Svi unosi će postati novi zapisi osoba."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "Vaša fiskalna godina počinje u mjesecu"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7328,10 +7232,6 @@ msgstr "Ukloniti ovaj broj prisutnih?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Odaberite vrstu zapisa na koji se ovo svojstvo primjenjuje"
-
-#: 
-msgid "Total Pledges"
-msgstr "Ukupni zavjeti"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -9008,10 +8908,6 @@ msgid "Current person"
 msgstr "Trenutna osoba"
 
 #: 
-msgid "Data & Reports"
-msgstr "Podaci i izvještaji"
-
-#: 
 msgid "Database Reset"
 msgstr "Resetiranje baze podataka"
 
@@ -10030,10 +9926,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Pregledajte i upravljajte sistemskim datotekama dnevnika za otklanjanje grešaka"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Pregledajte i pokrenite pohranjene upite baze podataka"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Pregledajte brojeve kupaca i dodjele lopatica"
 
@@ -10052,10 +9944,6 @@ msgstr "Pregledajte sažetke obiteljskih zavjeta i raspodjele fonda"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Pregledajte članove skupini, uloge i svojstva"
-
-#: 
-msgid "View query results"
-msgstr "Prikaži rezultate upita"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10377,10 +10265,6 @@ msgstr "Dostupno ažuriranje"
 msgid "User must have Notes permission"
 msgstr "Korisnik mora imati dozvolu za bilješke"
 
-#: 
-msgid "Address Defaults"
-msgstr "Zadane postavke adrese"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10393,16 +10277,6 @@ msgstr "Postavke kalendara"
 #: 
 msgid "Calendars"
 msgstr "Kalendari"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Odaberi volontersku mogućnost"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Odaberi prilagođeno osobno polje"
 
 #: 
 msgid "Church Identity"
@@ -10424,11 +10298,6 @@ msgstr "ChurchCRM može slati e-poštu izravno."
 msgid "Communication"
 msgstr "Komunikacija"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Usporedi zavjete između dvije fiskalne godine"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Konfigurirajte SMTP u postavkama u nastavku za slanje e-pošte iz sustava."
@@ -10442,17 +10311,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Povežite Mailchimp za sinkronizaciju popisa e-pošte za biltene i kampanje."
 
 #: 
-msgid "Copy from church address"
-msgstr "Kopiraj s adrese župe"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "Kopiraj u međuspremnik"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Prilagođeno polje"
 
 #: 
 msgid "Default Country"
@@ -10506,16 +10366,6 @@ msgstr "Nije uspjelo dohvaćanje adresa e-pošte"
 msgid "Failed to retrieve phone numbers"
 msgstr "Nije uspjelo dohvaćanje telefonskih brojeva"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Vrijednost polja"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Pronađi vjernike koji su dali zavjet jedne godine ali ne i druge"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10523,33 +10373,8 @@ msgstr "Pronađi volontere za određenu mogućnost"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Pronađi volontere koji odgovaraju dva specifična koda mogućnosti"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Prva fiskalna godina"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Prva fiskalna godina za usporedbu"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Primul izbor volonterske mogućnosti"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Prijatelji koji su se prijavili u prethodnim mjesecima"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Gost"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10573,31 +10398,6 @@ msgstr "Upravljajte događajima, rođendanima i godišnjicama"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Uskladi prilagođeno polje s ovom vrijednosti"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Član, Redoviti posjetitelj, itd."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Članovi koji su se priključili u određenom mjesecu"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Godišnjice članstva"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Nedostajući zavjeti"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Mjesec"
 
@@ -10617,16 +10417,6 @@ msgstr "E-mail obavijesti o novim članovima"
 #: 
 msgid "No cell phone on file"
 msgstr "Nema mobitela u zapisu"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Neposjetitelj"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Neposjetitelj (osoblje)"
 
 #: 
 msgid "Not Classified"
@@ -10663,30 +10453,10 @@ msgstr "Svojstvo osobe za isključivanje članova iz SMS/tekstualnih popisa"
 msgid "Person property used to exclude members from email lists"
 msgstr "Svojstvo osobe za isključivanje članova iz popisa e-pošte"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Usporedba zavjeta"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Zavjetovano ove godine"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Svojstvo"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Nedavni prijatelji"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Redoviti posjetitelj"
 
 #. Context: query_qry
 #: 
@@ -10708,21 +10478,6 @@ msgstr "SMTP konfiguriran"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP nije konfiguriran"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Druga fiskalna godina"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Druga fiskalna godina za usporedbu"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Drugi izbor volonterske mogućnosti"
 
 #: 
 msgid "Send text message"
@@ -10756,25 +10511,6 @@ msgstr "Alati za tekstualne poruke"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Radnje slanja tekstualnih poruka dostupne su iz prikaza skupini i razreda nedjeljne škole. Koristite padajući izbornik \"Tekst\" za kopiranje telefonskih brojeva ili slanje SMS poruka članovima skupini."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Birthdayski mjesec za koji želite vraćene zapise."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Mjesec godišnjice članstva za koji želite vraćene zapise."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Svojstvo za koje želite vraćene zapise osoba."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ove vrijednosti su unaprijed ispunjene pri kreiranju novih obitelji. Ostavite prazno za zahtijevanje ručnog unosa."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "Jedinica za mjerenje udaljenosti."
@@ -10783,11 +10519,6 @@ msgstr "Jedinica za mjerenje udaljenosti."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Korisničko dopuštenje za slanje e-pošte putem mailto: veza"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Volonterske mogućnosti"
 
 #. Context: query_qry
 #: 
@@ -10805,11 +10536,6 @@ msgstr "Vonage SMS nije konfiguriran"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Bez Vonagea, akcije tekstualnih poruka otvorit će izvornu SMS aplikaciju vašeg uređaja ili kopirati telefonske brojeve u međuspremnik."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "ali ne ove godine"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10920,10 +10646,6 @@ msgstr "Dozvoli neautentificirani pristup kalendarskim događajima putem javnih 
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Dozvoli posjetiteljima kreiranje vlastitog obiteljskog zapisa putem stranice za samo-registraciju"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Dozvoli posjetiteljima samo-registraciju kao novih obitelji."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -11007,10 +10729,6 @@ msgstr "Odaberite što se prikazuje kada ne postoji Gravatar:\n"
 "• Retro - 8-bitna pikselna grafika\n"
 "• RoboHash - Jedinstveno generirani robot\n"
 "• Prazno - Transparentno (vraća se na inicijale)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "ID-ovi upita odvojeni zarezom koji zahtijevaju dozvole za financije za pregled"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11123,10 +10841,6 @@ msgstr "Omogući upotrebu skeniranih čekova"
 msgid "Features"
 msgstr "Značajke"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "ID-ovi upita s financijskom dozvolom"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11200,10 +10914,6 @@ msgstr "Gravatar funkcionira tako da pretvara adrese e-pošte u hash (MD5). Stva
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Sakrij geografsku širinu/dužinu"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Sakrij adresu osobe"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -12266,16 +11976,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Kako se Nedjeljna škola + Događaji + Kiosci uklapaju zajedno"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Nevažeći datum za %s — očekivano GGGG-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Nevažeći format datuma za rangeStart ili rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Nevažeći datum; očekivani format GGGG-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12506,10 +12208,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds mora biti neprazan niz"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "nevažeća vrsta ponavljanja"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds mora biti neprazan niz"
 
@@ -12712,10 +12410,6 @@ msgstr "Ukupno kiosaka"
 #: 
 msgid "Upcoming Events"
 msgstr "Nadolazeći događaji"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Apsolutni http(s) URL logotipa župe prikazan u predlošcima e-pošte. Za najbolji prikaz u klijentima e-pošte koristite široku banner sliku u omjeru cca 3,5:1 (npr. 350×100 px), PNG ili JPG, servirana putem HTTPS-a. Ostavite prazno za korištenje zadanog logotipa ChurchCRM-a."
 
 #: 
 msgid "An option with that name already exists"
@@ -14290,11 +13984,6 @@ msgstr "Obiteljsko ime mora imati barem 2 znaka"
 msgid "Fields"
 msgstr "Polja"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Pronađi vjernike koji nisu prisustvovali događaju"
-
 #: 
 msgid "First name is required"
 msgstr "Ime je obavezno"
@@ -14474,11 +14163,6 @@ msgstr "Članovi dodani u košaricu."
 #: 
 msgid "Minimum length is"
 msgstr "Minimalna duljina je"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Nedostajući vjernici"
 
 #: 
 msgid "Move"
@@ -14848,11 +14532,6 @@ msgstr "Odaberi kalendare..."
 msgid "Select event type..."
 msgstr "Odaberi vrstu događaja..."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Odaberi željeni događaj"
-
 #: 
 msgid "Sequence"
 msgstr "Redoslijed"
@@ -14916,10 +14595,6 @@ msgstr "Pošalji tekstualnu poruku svima"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Odabrana datoteka premašuje maksimalnu veličinu učitavanja ovog poslužitelja od"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Nema zakazanih događaja za danas"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -16321,10 +15996,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%1$s iz obitelji %2$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "Vraćeno je %d zapis(a)"
-
-#: 
 msgid "Assign role to all"
 msgstr "Dodijeli ulogu svima"
 
@@ -16495,22 +16166,6 @@ msgstr "Konfiguracija sustava"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Postoje osobe dodijeljene ovoj volonterskoj prilici. Brisanjem će se ukloniti dodjela"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Ova vrijednost ne smije biti kraća od %d znakova"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Ova vrijednost ne smije biti dulja od %d znakova"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Ova vrijednost ne smije biti veća od %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Ova vrijednost mora biti najmanje %s"
 
 #: 
 msgid "Total Deposits"
@@ -16793,24 +16448,12 @@ msgid "Family Delete Confirmation"
 msgstr "Potvrda brisanja obitelji"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Pojedinci (bez obitelji)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Nove samoprijave"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Potvrda brisanja vrste svojstva"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Pregledajte nove obitelji i pojedince koji su se prijavili putem javnog obrasca za registraciju"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Pregledajte nove prijave s vašeg javnog obrasca za registraciju ispod. Unosi bez e-pošte ili telefona su označeni — provjerite kontaktne podatke prije nastavka."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17524,16 +17167,6 @@ msgstr "Minimalna ponuda %s."
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Osobe s rođendanom ili godišnjicom vjenčanja u određenom mjesecu"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Mjesec za koji želite prikazati rođendane i godišnjice."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Mjesec godišnjice vjenčanja za koji želite prikazati zapise."
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "Ukupno svih kupnji: %s"
@@ -17753,10 +17386,6 @@ msgid "Selected family"
 msgstr "Odabrana obitelj"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Ova vrijednost mora biti valjani naziv polja."
-
-#: 
 msgid "Could not load data"
 msgstr "Nije moguće učitati podatke"
 
@@ -17765,16 +17394,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Osvježite stranicu ili pokušajte ponovo kasnije."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Najprije dodajte relevantne zapise."
-
-#: 
 msgid "All Months"
 msgstr "Svi mjeseci"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Još nisu definirane mogućnosti \"%s\"."
 
 #: 
 msgid "No events found for %s %d."
@@ -17833,6 +17454,13 @@ msgid "Set up now"
 msgstr "Postavi sada"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Potrebna je dvofaktorska autentifikacija. Imate %d dan za prijavu."
+msgstr[1] "Potrebna je dvofaktorska autentifikacija. Imate %d dana za prijavu."
+msgstr[2] "Potrebna je dvofaktorska autentifikacija. Imate %d dana za prijavu."
+
+#: 
 msgid "Unknown family"
 msgstr "Nepoznata obitelj"
 
@@ -17847,4 +17475,1316 @@ msgstr "Ažuriraj koordinate svih obitelji"
 #: 
 msgid "Update Coordinates"
 msgstr "Ažuriraj koordinate"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s je bio nositelj kućanstva ove obitelji i označen je kao preminuo. Molimo dodijelite novog nositelja kućanstva."
+
+#: 
+msgid "Accept"
+msgstr "Prihvati"
+
+#: 
+msgid "Active Now"
+msgstr "Trenutno aktivan"
+
+#: 
+msgid "Adding..."
+msgstr "Dodavanje..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Svi članovi CRM-a s e-poštom pretplaćeni su na ovaj popis!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Svi pretplatnici MailChimp-a nalaze se u ChurchCRM-u!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Došlo je do greške prilikom brisanja datoteka."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Jeste li apsolutno sigurni? Ovo će izbrisati sve podatke i vratiti tvorničke postavke."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Jeste li sigurni da želite izbrisati SVE log datoteke? Ova radnja se ne može poništiti."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Jeste li sigurni da želite izbrisati kiosk"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Jeste li sigurni da želite izbrisati poveznicu"
+
+#: 
+msgid "Assignment"
+msgstr "Dodjela"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Pozadinski poslovi (e-poruke za rođendane i svi zakazani zadaci dodataka) nikada nisu pokrenuti na ovoj instalaciji."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Pozadinski poslovi (e-poruke za rođendane i svi zakazani zadaci dodataka) posljednji su put pokrenuti %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Izrada sigurnosne kopije..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Sigurnosna kopija je preuzeta."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Sigurnosna kopija je uspješno prenesena"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Ne možete promijeniti vlastiti status aktivnosti"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Izvoz u ChMeetings uspješno je dovršen"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Promjene su uspješno spremljene"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Odjavi sve i deaktiviraj sve"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Odjaviti sve i deaktivirati ovaj događaj?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Provjerite svoju e-poštu za poveznicu za resetiranje lozinke"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Zatvoriti zaglavljene događaje?"
+
+#: 
+msgid "Comments"
+msgstr "Komentari"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Nije moguće učitati pregled e-poruke. Zatvorite i pokušajte ponovo."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Izrada i prijenos sigurnosne kopije. Ovo može potrajati nekoliko minuta..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Resetiranje baze podataka nije uspjelo."
+
+#: 
+msgid "Deceased"
+msgstr "Preminuo"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Zadane administratorske vjerodajnice"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Izbriši kiosk"
+
+#: 
+msgid "Deleted Files"
+msgstr "Izbrisane datoteke"
+
+#: 
+msgid "Deleting..."
+msgstr "Brisanje..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Preuzimanje je vraćeno bez zaglavlja privitka."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Greška prilikom brisanja log datoteke."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Greška prilikom brisanja log datoteka."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Greška prilikom preuzimanja log datoteke."
+
+#: 
+msgid "Error initiating download."
+msgstr "Greška prilikom pokretanja preuzimanja."
+
+#: 
+msgid "Error loading log file."
+msgstr "Greška prilikom učitavanja log datoteke."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Greška prilikom učitavanja samostalno prijavljenih unosa"
+
+#: 
+msgid "Errors"
+msgstr "Greške"
+
+#: 
+msgid "Failed Files"
+msgstr "Neuspjele datoteke"
+
+#: 
+msgid "Failed to add link"
+msgstr "Dodavanje poveznice nije uspjelo"
+
+#: 
+msgid "Failed to add option"
+msgstr "Dodavanje opcije nije uspjelo"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Zatvaranje događaja nije uspjelo. Molim pokušajte ponovo."
+
+#: 
+msgid "Failed to delete"
+msgstr "Brisanje nije uspjelo"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Omogućavanje registracije kioska nije uspjelo"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Izvoz ChMeetings CSV-a nije uspio"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Učitavanje revizije nije uspjelo. Molim pokušajte ponovo."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Preimenovanje kioska nije uspjelo"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Spremanje promjena nije uspjelo"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Ažuriranje dodatka nije uspjelo"
+
+#: 
+msgid "Family Id"
+msgstr "ID obitelji"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Konačna potvrda"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Geokodiranje obitelji… ovo može potrajati nekoliko minuta. Možete ostaviti ovu stranicu otvorenom."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Geokodiranje obitelji… obrađeno {{done}} od {{total}}, pronađeno {{geocoded}}."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Potrebno je ažurirati nositelja kućanstva"
+
+#: 
+msgid "Helpful Links"
+msgstr "Korisne poveznice"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Sakrij preminule iz imenika"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Sakrij preminule članove iz tiskanog imenika i CSV izvoza."
+
+#: 
+msgid "Identify"
+msgstr "Identificiraj"
+
+#: 
+msgid "Identify command sent"
+msgstr "Naredba za identifikaciju poslana"
+
+#: 
+msgid "Individual"
+msgstr "Pojedinac"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Interno: datum i vrijeme posljednjeg izvršavanja pozadinskih vremenski zadanih poslova (YYYY-MM-DD HH:MM:SS). Ne uređujte ručno."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Stavka je uspješno izbrisana"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Naziv kioska"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Kiosk prihvaćen"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Kiosk je uspješno izbrisan"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Kiosk mora biti prihvaćen"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Kiosk preimenovan"
+
+#: 
+msgid "Last seen"
+msgstr "Zadnji put viđen"
+
+#: 
+msgid "Link"
+msgstr "Poveznica"
+
+#: 
+msgid "Link added successfully"
+msgstr "Poveznica je uspješno dodana"
+
+#: 
+msgid "Link deleted"
+msgstr "Poveznica izbrisana"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Naziv poveznice ne smije sadržavati HTML oznake"
+
+#: 
+msgid "Living"
+msgstr "Živ"
+
+#: 
+msgid "Log settings saved"
+msgstr "Postavke zapisnika spremljene"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Korisničko ime je obavezno"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Osoba je označena kao aktivna"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Osoba je označena kao neaktivna"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Minimalni broj minuta između pokretanja pozadinskih vremenski zadanih poslova pokrenutih učitavanjem stranice. Sprječava da zauzeto nedjeljno jutro pokreće poslove pri svakom prikazu stranice. Ne odnosi se na pokretanje putem naredbenog retka. Postavite na 0 za pokretanje pri svakom učitavanju stranice."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Novi korisnici neće primiti pozdravnu e-poruku, a generirana lozinka nikada se ne prikazuje. Nakon stvaranja računa, postavite lozinku u odjeljku Korisnici sustava putem opcije Promijeni lozinku — ili prvo konfigurirajte e-poštu."
+
+#: 
+msgid "No changes to save"
+msgstr "Nema promjena za spremanje"
+
+#: 
+msgid "No contact info"
+msgstr "Nema kontakt podataka"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Nema konfiguriranih prilagođenih poveznica. Dodajte jednu iznad!"
+
+#: 
+msgid "No email"
+msgstr "Nema e-pošte"
+
+#: 
+msgid "No files were deleted."
+msgstr "Nijedna datoteka nije izbrisana."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Nema dostupne pomoći za ovaj dodatak."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Nema osoba za dodavanje - sve su već u košarici"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Nema osoba za dodavanje - filtar nije vratio rezultate"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Nije valjan datum smrti"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Broj dana koje korisnici imaju za uključivanje 2FA nakon što postane obavezan. Postavite na 0 za trenutnu primjenu. Skraćivanje aktivnog razdoblja odgode može odmah zaključati korisnike."
+
+#: 
+msgid "Offline"
+msgstr "Izvan mreže"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Ovo učinite tek nakon što je osnovni problem riješen. I dalje ćete morati kliknuti Omogući kako bi dodatak ponovno radio."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Molimo potvrdite aktivaciju osobe"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Molimo potvrdite deaktivaciju osobe"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Status dodatka ažuriran"
+
+#: 
+msgid "Registered"
+msgstr "Registriran"
+
+#: 
+msgid "Reload"
+msgstr "Ponovno učitaj"
+
+#: 
+msgid "Reload command sent"
+msgstr "Naredba za ponovno učitavanje poslana"
+
+#: 
+msgid "Rename"
+msgstr "Preimenuj"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Preimenuj kiosk"
+
+#: 
+msgid "Reset Complete"
+msgstr "Resetiranje dovršeno"
+
+#: 
+msgid "Reset Settings"
+msgstr "Resetiraj postavke"
+
+#: 
+msgid "Resetting..."
+msgstr "Resetiranje..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Zakazani zadaci se ne izvršavaju"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Sigurnosni token nedostaje. Molim osvježite stranicu."
+
+#: 
+msgid "Select…"
+msgstr "Odaberi…"
+
+#: 
+msgid "Sending..."
+msgstr "Slanje..."
+
+#: 
+msgid "Sending…"
+msgstr "Slanje…"
+
+#: 
+msgid "Settings reset"
+msgstr "Postavke resetirane"
+
+#: 
+msgid "Settings saved"
+msgstr "Postavke spremljene"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Postavke spremljene. Osvježavanje podataka o nadogradnji..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Prikazane su samo aktivne osobe."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Prikazane su samo neaktivne osobe."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Uspješno izbrisano"
+
+#: 
+msgid "Testing..."
+msgstr "Testiranje..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Baza podataka je očišćena. Sustav je spreman za novi početak."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "U međuvremenu, rezervni mehanizam pri učitavanju stranice i dalje radi. Promijenite koliko dugo ChurchCRM čeka prije prikazivanja ovog upozorenja pomoću postavke %1$s, ili je postavite na 0 kako biste ga sakrili."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Ova osoba je neaktivna"
+
+#: 
+msgid "This person is deceased"
+msgstr "Ova osoba je preminula"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Ovo će obrisati sve konfigurirane vrijednosti za ovaj dodatak. Ova radnja se ne može poništiti."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Ovo će trajno izbrisati datoteke dodatka s diska i obrisati njegove postavke. Ova radnja se ne može poništiti."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL ne smije sadržavati HTML oznake"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Neočekivana greška. Molim pokušajte ponovo."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Deinstaliraj dodatak"
+
+#: 
+msgid "Upcoming"
+msgstr "Nadolazeće"
+
+#: 
+msgid "Valid Until"
+msgstr "Vrijedi do"
+
+#: 
+msgid "View active only"
+msgstr "Prikaži samo aktivne"
+
+#: 
+msgid "View all"
+msgstr "Prikaži sve"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Prikaži sve (uključujući neaktivne)"
+
+#: 
+msgid "View inactive only"
+msgstr "Prikaži samo neaktivne"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Upozori na administratorskoj nadzornoj ploči kada pozadinski vremenski zadani poslovi nisu pokrenuti ovoliko sati. 26 omogućuje dnevni cron uz malo odstupanja. Postavite na 0 za onemogućavanje upozorenja."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Bez planera zadataka ovi poslovi se izvršavaju samo kada netko učita stranicu, pa u mirniji radni dan uopće ne šalje zakazanu poštu. Dodajte cron unos koji pokreće izvršavatelj zadataka svaki sat, pod istim korisnikom pod kojim radi vaš web poslužitelj"
+
+#: 
+msgid "check-outs"
+msgstr "odjave"
+
+#: 
+msgid "deceased"
+msgstr "preminuo"
+
+#: 
+msgid "event"
+msgstr "događaj"
+
+#: 
+msgid "events?"
+msgstr "događaja?"
+
+#: 
+msgid "files"
+msgstr "datoteke"
+
+#: 
+msgid "people from cart?"
+msgstr "osoba iz košarice?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip mora biti nula ili pozitivan cijeli broj"
+
+#: 
+msgid "view families missing an email"
+msgstr "prikaži obitelji bez e-pošte"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Kupci ove fiskalne godine"
+
+#: 
+msgid "Current"
+msgstr "Trenutno"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Donirani predmeti (ova fiskalna godina)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Prijava mora imati %d znakova ili manje!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Prikupljeno ove fiskalne godine"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s mora biti potpuna https:// web adresa, na primjer https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Račun ima ograničena dopuštenja. Obratite se administratoru."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Došlo je do greške prilikom prikazivanja stranice s greškom."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Svaka adresa mora počinjati s https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Generiraj naljepnice"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Generiraj naljepnice za poštu"
+
+#: 
+msgid "Labels"
+msgstr "Naljepnice"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Poštanske naljepnice za osobe u vašoj košarici. Osoba bez vlastite adrese adresira se na adresu svoje obitelji."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Neobavezno. Poveznice na vlastite račune crkve, prikazane članovima na stranicama poput podnožja portala. Ostavite polje prazno kako biste sakrili tu mrežu."
+
+#: 
+msgid "Options"
+msgstr "Opcije"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Zakazani zadaci"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktivno, preostalo sekundi: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Očekivani interval između pokretanja (sati): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Preskočene obitelji (nema zabilježene e-adrese): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Obitelji koje nije bilo moguće geokodirati: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Obitelji koje će primiti e-poruke s potvrdom: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Kopirano članova: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Nije prikazano ovdje: još {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Primatelji: {{total}} — previše za mailto: poveznicu. Umjesto toga koristite Kopiraj adrese."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Previše primatelja za klijent e-pošte ({{total}} > {{max}}). Umjesto toga koristite Kopiraj adrese."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "Preostalo {{minutes}} min"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d porezni dokument uspješno poslan po e-pošti obitelji."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "Izjava o darivanju %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "Sve klasifikacije"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Kao administrator, molimo vas da također pregledajte"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Rođendani, godišnjice, volonteri i drugi popisi ljudí s filtrom klasifikacije"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Odaberite %s da pokrenete ovaj izvještaj."
+
+#: 
+msgid "Choose events"
+msgstr "Odaberite događaje"
+
+#: 
+msgid "Choose..."
+msgstr "Odaberite..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logo crkve"
+
+#: 
+msgid "Columns per Page"
+msgstr "Stupci po stranici"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Poštovana obitelj %s,\n"
+"\n"
+"Molimo vas pronađite vašu izjavu o darivanju %d od %s u prilogu ovog e-maila.\n"
+"\n"
+"Ako imate bilo kakvih pitanja, molimo vas kontaktirajte ured crkve.\n"
+"\n"
+"Hvala vam na vašoj velikodušnosti."
+
+#: 
+msgid "Download CSV"
+msgstr "Preuzmite CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Pošalji e-mail %d porezni dokument"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Omogućite ili onemogućite modul Financije i bočni izbornik."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Omogućite ili onemogućite modul Skupljač sredstava."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Neuspješno uklanjanje loga crkve"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Neuspješan upload loga crkve"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL loga za e-poštu kao zamjena, koristi se samo kada nijedan logo crkve nije učitan na stranici Informacije o crkvi. Vlastite stranice aplikacije zanemaruju ovu postavku i uvijek koriste učitani logo ili standardni logo ChurchCRM. Mora biti apsolutni URL http(s). Za najbolji prikaz u svim e-poštnim klijentima, koristite široku baner sliku s omjerom od oko 3.5:1 (primjerice 350×100 px), PNG ili JPG, dostavljenu preko HTTPS-a. Ostavite prazno ili unesite nevaljanu vrijednost za povratak na standardni logo ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Modul Financije"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Pronađite ljude koji nisu sudjelovali na događaju"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Pronađite volontere koji odgovaraju dvama specifičnim kodovima mogućnosti"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Prva mogućnost volontiranja"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Savijena brošura"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Modul Skupljač sredstava"
+
+#: 
+msgid "Giving History"
+msgstr "Povijest darivanja"
+
+#: 
+msgid "Last Gift"
+msgstr "Zadnji dar"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Ostavite prazno za sve klasifikacije."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Maksimalan broj poreznih dokumenata godišta koji se prikazuju po profilu obitelji (0 = bez ograničenja)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Maksimalne porezne godine prikazane po obitelji"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Godišnjice članstva"
+
+#: 
+msgid "Missing People"
+msgstr "Nedostaju ljudi"
+
+#: 
+msgid "No giving history found."
+msgstr "Nije pronađena povijest darivanja."
+
+#: 
+msgid "No people match these filters."
+msgstr "Nema ljudi koji se podudaraju s ovim filtrima."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Jedna stranica direktorija po listu, portret."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Dozvoljene su samo http i https sheme."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF ili WebP. Široka baner od oko 3.5:1 (primjerice 700x200) radi najbolje; prozirni PNG je poželjniji."
+
+#: 
+msgid "Page Layout"
+msgstr "Izgled stranice"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Ljudi koji su se pridružili u određenom mjesecu"
+
+#: 
+msgid "Pledged"
+msgstr "Obećano"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Ispis %d porezni dokument"
+
+#: 
+msgid "Recent Friends"
+msgstr "Nedavni prijatelji"
+
+#: 
+msgid "Report not found"
+msgstr "Izvještaj nije pronađen"
+
+#: 
+msgid "Run Report"
+msgstr "Pokreni izvještaj"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Druga mogućnost volontiranja"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Prikazano u bočnoj traci, na stranici za prijavu i u e-poštama. Učitavanje loga zamjenjuje branding ChurchCRM-a gdje god se pojavljuje."
+
+#: 
+msgid "Single Pages"
+msgstr "Pojedinostalne stranice"
+
+#: 
+msgid "Tax Documents"
+msgstr "Porezni dokumenti"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Neuspješan prijenos e-pošte s poreznim dokumentom. Molimo provjerite postavke e-poštnog poslužitelja."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Dvije stranice polovične veličine jedna do druge na svakom listu u širokom formatu, redoslijed brošure. Ispis na obje strane s \"prebacivanjem na kratkom rubu\", zatim presavijte grupu na pola. Stupci se broje po pola stranice."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Nemoguće poslati porezni dokument e-poštom: nisu pronađeni podaci o plaćanju za tu godinu."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Nemoguće poslati porezni dokument e-poštom: ova obitelj nema e-mail adresu u datoteci."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Nemoguće razriješiti naziv domaćina OpenLP poslužitelja. Provjerite adresu i vašu mrežnu vezu."
+
+#: 
+msgid "Upload"
+msgstr "Učitaj"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Korištenje standardnog loga ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Pogledaj potpuno obiteljsko darivanje"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Mogućnost volontiranja"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Volonteri za dvije mogućnosti"
+
+#: 
+msgid "YTD"
+msgstr "Od početka godine"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD Plaćeno"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "za greške oko vremena kada se to dogodilo, te preuzmite i priložite odgovarajuću log datoteku na vašu GitHub problemu — pomaže nam da riješimo problem bez postavljanja dodatnih pitanja."
+
+#: 
+msgid "system logs"
+msgstr "sustavi logovi"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Kontrola pristupa i sigurnost"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Dozvoli zabilježavanje plaćanja koja nisu odbitna od poreza (npr. prodaja robe)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "Dozvoli neautentificirani pristup javnim događajima (za ugrađivanje kalendara)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Automatski slanje e-pošte za rođendane (zahtijeva raspoređivač zadataka u pozadini)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Čestitke za e-poštu na rođendan"
+
+#: 
+msgid "Communication & Email"
+msgstr "Komunikacija i e-pošta"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Politika sigurnosti sadržaja"
+
+#: 
+msgid "Email System"
+msgstr "Poštanski sustav"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Omogući ili onemogući značajke za vašu organizaciju"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Omogući/onemogući odjeljak Događaji u glavnoj navigaciji"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "Omogući/onemogući Financijski izbornik i sve financijske značajke (depoziti, plaćanja, izvješća)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Omogući/onemogući izbornik Prikupljanja sredstava"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Provedi stroge CSP zaglavlje za zaštitu od XSS napada"
+
+#: 
+msgid "Events Module"
+msgstr "Modul događaja"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Sklopke značajki"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "Sklopke značajki kontroliraju koje su module i značajke dostupne u ChurchCRM. Promjene stupaju na snagu odmah."
+
+#: 
+msgid "Finance Features"
+msgstr "Financijske značajke"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Uključi adrese u brzo globalno pretraživanje"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Uključi događaje kalendara u brzo globalno pretraživanje"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Uključi svojstva obitelji po mjeri u brzo globalno pretraživanje"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Uključi depozite u brzo globalno pretraživanje"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Uključi obitelji u brzo globalno pretraživanje"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Uključi grupe u brzo globalno pretraživanje"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Uključi plaćanja u brzo globalno pretraživanje"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Uključi ljude u brzo globalno pretraživanje"
+
+#: 
+msgid "Invalid setting"
+msgstr "Nevaljana postavka"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Veza za obnovu lozinke"
+
+#: 
+msgid "Manage All Features"
+msgstr "Upravljaj svim značajkama"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "Glavni sklopka za slanje e-pošte. OBAVEZNO za ponovno postavljanje lozinke i obavijesti"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Plaćanja koja nisu odbitna"
+
+#: 
+msgid "Primary Modules"
+msgstr "Primarni moduli"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Javni API kalendara"
+
+#: 
+msgid "Saved"
+msgstr "Spremljeno"
+
+#: 
+msgid "Search Families"
+msgstr "Pretraživanje obitelji"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Pretraživanje svojstava obitelji po mjeri"
+
+#: 
+msgid "Search Settings"
+msgstr "Pretraživanje postavki"
+
+#: 
+msgid "Self-Registration"
+msgstr "Samoprijava"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "Prikaži opciju \"Zaboravljena lozinka\" na ekranu prijave (omogućava korisniku da sam resetira lozinku)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "Prikaži/sakrij modul Nedjeljske škole u bočnoj traci"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Nije moguće deaktivirati jedinog administratora koji se može prijaviti"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Nije moguće označiti jedinog administratora koji se može prijaviti kao umrlog"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Umro — ne može se prijaviti"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Unesite drugu adresu prije označavanja kao adrese za slanje pošte"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Neaktivan — ne može se prijaviti"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "Pošta ide na drugu adresu; primarna adresa ostaje fizička lokacija korištena za mape i upute."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "Pošta se šalje na ovu adresu umjesto primarne adrese"
+
+#: 
+msgid "Mailing Address"
+msgstr "Adresa za slanje pošte"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Adresa za slanje pošte ako se razlikuje"
+
+#: 
+msgid "Primary Address"
+msgstr "Primarna adresa"
+
+#: 
+msgid "Receives Mail"
+msgstr "Prima poštu"
+
+#: 
+msgid "Second Address"
+msgstr "Druga adresa"
+
+#: 
+msgid "Second Home"
+msgstr "Drugi dom"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "Povezana osoba je umrla ili neaktivna. Prijava, sesije i API ključ su blokirani dok se osoba ne reaktivatira."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Ovo je adresa za slanje pošte"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Ova osoba je umrla ili neaktivna, pa se ovaj račun ne može prijaviti"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Samo administrator može obrisati osobu koja ima prijavu."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Posljednjeg administratora nije moguće obrisati."
+
+#: 
+msgid "Category"
+msgstr "Kategorija"
+
+#: 
+msgid "Category updated."
+msgstr "Kategorija ažurirana."
+
+#: 
+msgid "Delete Category"
+msgstr "Obriši kategoriju"
+
+#: 
+msgid "Failed to delete category"
+msgstr "Greška pri brisanju kategorije"
+
+#: 
+msgid "Failed to rename category"
+msgstr "Greška pri preimenovanju kategorije"
+
+#: 
+msgid "Fund Categories"
+msgstr "Kategorije prinosa"
+
+#: 
+msgid "Fund activated."
+msgstr "Kategorija prinosa aktivirana."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Kategorija prinosa deaktivirana."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Prinosi u ovoj kategoriji će postati bez kategorije. Samo prinosi se neće obrisati."
+
+#: 
+msgid "INACTIVE"
+msgstr "Neaktivan"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Novo ime kategorije (postojeće ime će spojiti oba)"
+
+#: 
+msgid "Optional"
+msgstr "Izbjeglivo"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Izbjeglivo — odaberite ili upišite novu kategoriju"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "Plaćeno više od obaveze"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Obećano, ali još nije plaćeno"
+
+#: 
+msgid "Rename Category"
+msgstr "Preimenuj kategoriju"
+
+#: 
+msgid "Still Owed"
+msgstr "Još duguje"
+
+#: 
+msgid "Summary by Category"
+msgstr "Sažetak po kategoriji"
+
+#: 
+msgid "Total Paid"
+msgstr "Ukupno plaćeno"
+
+#: 
+msgid "Uncategorized"
+msgstr "Bez kategorije"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Trenutačne postavke nije moguće učitati. Ponovno učitajte stranicu i pokušajte opet."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Ova postavka mora biti broj"
+
+#: 
+msgid "Child Role"
+msgstr "Uloga djeteta"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "Uključivanje u imenik može se mijenjati samo za popis klasifikacija"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Poruka dobrodošlice 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Poruka dobrodošlice 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Uloga glave obitelji"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Sakrij adrese bez obitelji"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Sakrij datum prijateljstva"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Sakrij pretplate na bilten"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Sakrij datum vjenčanja"
+
+#: 
+msgid "In Directory"
+msgstr "U imeniku"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Uključi pojedinosti u obavijesti"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Primatelji obavijesti"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Osobe koje treba obavijestiti kada se doda nova obitelj ili osoba"
+
+#: 
+msgid "Person initials style"
+msgstr "Stil inicijala osobe"
+
+#: 
+msgid "Person name display style"
+msgstr "Stil prikaza imena osobe"
+
+#: 
+msgid "Spouse Role"
+msgstr "Uloga supružnika"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Poštanski brojevi velikim slovima"
 

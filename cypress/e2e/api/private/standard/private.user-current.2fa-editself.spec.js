@@ -21,6 +21,9 @@
  * inside this file too.
  */
 describe("Issue #9886 - EditSelf-only users can manage their own 2FA", () => {
+    before(() => {
+        cy.rememberTestEnv(["selfedit.api.key"]);
+    });
     it("GET /api/user/current/2fa-status → 200", () => {
         cy.makePrivateEditSelfAPICall(
             "GET",
@@ -76,7 +79,7 @@ describe("Issue #9886 - EditSelf-only users can manage their own 2FA", () => {
             method,
             url,
             body,
-            headers: { "x-api-key": Cypress.env("selfedit.api.key") },
+            headers: { "x-api-key": Cypress.testEnv("selfedit.api.key") },
             failOnStatusCode: false,
         }).then((resp) => {
             expect(resp.status, `${method} ${url}`).to.not.eq(403);

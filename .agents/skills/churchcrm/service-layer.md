@@ -36,10 +36,10 @@ Located in `src/ChurchCRM/Service/`:
 
 **ChurchCRM has no dependency-injection container.** `src/composer.json` declares no
 container library, `MvcAppFactory::create()`
-(`src/ChurchCRM/Slim/MvcAppFactory.php:35-62`) never calls `AppFactory::setContainer()`, and
+(`src/ChurchCRM/Slim/MvcAppFactory.php:39`) never calls `AppFactory::setContainer()`, and
 `$app->getContainer()` is therefore `null` in every MVC module. The single surviving
 `$container->get(...)` in the tree is inside `SlimUtils::registerCustomErrorHandlers()`
-(`src/ChurchCRM/Slim/SlimUtils.php:80-105`), a method marked `@deprecated Slim 3 only`.
+(`src/ChurchCRM/Slim/SlimUtils.php:180`), a method marked `@deprecated Slim 3 only`.
 
 Instantiate the service where you need it:
 
@@ -65,7 +65,7 @@ $service = $app->getContainer()->get('FinancialService');
 Services are cheap value-less objects — construct one per request where you use it rather
 than threading a shared instance through the call stack. Other real call sites:
 `new PersonService()` / `new SystemService()` (`src/Include/PageInit.php:13-14`),
-`new UserService()` (`src/admin/views/users.php:14`, `src/admin/routes/system.php:944`),
+`new UserService()` (`src/admin/views/users.php:14`, `src/admin/routes/system.php:975,1091`),
 `(new PersonService())->buildDoNotEmailSet(...)` (`src/ChurchCRM/dto/Cart.php:269`).
 
 Some services expose **static** methods only and are never instantiated —
@@ -396,3 +396,30 @@ Recurring events had two independent implementations (issue #9735): `EventServic
 The shared, documented policy lives in the `EventService` class docblock: one cap (`MAX_REPEAT_OCCURRENCES`, expressed in occurrences rather than calendar span so it means something for yearly recurrence too), caller-supplied title/times win and otherwise fall back to the event type's defaults, and `skipExisting` dedups on `(event type, calendar date)`.
 
 Endpoint adapters keep their own request/response shapes — the unification is behavioural, not a URL change.
+
+## Geocoding goes through a provider chain <!-- learned: 2026-09-15 -->
+
+`GeoUtils::getLatLong()` never talks to a geocoding service directly. It asks
+`ChurchCRM\Service\Geocoding\GeocoderChain::fromConfig()`, which reads the
+`sGeocoderProviders` setting ("Nominatim" by default; "Nominatim, US Census" opts in
+to the US Census Bureau; surfaced on the Family Map's Map Settings panel) and
+iterates the `GeocoderProviderInterface`s one by one. `results()` is a lazy
+generator: it yields a `GeocodeResult` (coordinates plus the address the provider
+matched) per provider that found the address, so stopping at the first one never
+calls the rest, and a time budget stops it starting new providers late in a request.
+
+Which providers apply to an address is decided from its country: the record's own
+country, else `sDefaultCountry`, else `sChurchCountry`; when all are blank
+`supports()` receives null and a country-limited provider (US Census) must decline.
+Callers should pass the record's country to `getLatLong()`.
+
+To add a service: extend `AbstractHttpGeocoder`, implement `getName()`/`geocode()`
+(returning a `GeocodeResult`, with the matched address when the service gives one)
+and `supports()` when it only covers some countries, then register the lower-case
+name in `GeocoderChain::PROVIDERS`. Never call a geocoding HTTP endpoint from
+anywhere else: every caller (family save, person, church info, bulk action,
+`/api/geocoder/address`) must keep going through `GeoUtils`.
+
+```php
+$coords = GeoUtils::getLatLong($street, $city, $state, $zip, $country); // ['Latitude' => .., 'Longitude' => ..] or zeros
+```

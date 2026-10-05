@@ -221,15 +221,25 @@ require_once __DIR__ . '/Include/Header.php';
                 echo '<div><strong>' . gettext('Family Members') . ':</strong><ul>';
                 //List Family Members
                 $familyMembers = PersonQuery::create()->filterByFamId((int) $iFamilyID)->find();
+                $deleteMembersBlockedReason = null;
                 foreach ($familyMembers as $person) {
                     echo '<li>' . InputUtils::escapeHTML($person->getFirstName()) . ' ' . InputUtils::escapeHTML($person->getLastName()) . '</li>';
+                    $deleteMembersBlockedReason ??= $person->getLoginDeletionBlockedReason();
                 }
                 echo '</ul></div>';
                 echo '<div class="text-center">';
                 echo '<button id="deleteFamilyOnlyBtn" class="btn btn-danger" onclick="deleteFamily(' . (int)$iFamilyID . ', false)">' . gettext('Delete Family Record ONLY') . '</button> ';
-                echo '<button id="deleteFamilyAndMembersBtn" class="btn btn-danger" onclick="deleteFamily(' . (int)$iFamilyID . ', true)">' . gettext('Delete Family Record AND Family Members') . '</button> ';
+                if ($deleteMembersBlockedReason === null) {
+                    echo '<button id="deleteFamilyAndMembersBtn" class="btn btn-danger" onclick="deleteFamily(' . (int)$iFamilyID . ', true)">' . gettext('Delete Family Record AND Family Members') . '</button> '; // nosemgrep: php.lang.security.injection.echoed-request.echoed-request
+                } else {
+                    echo '<span class="d-inline-block" title="' . InputUtils::escapeAttribute($deleteMembersBlockedReason) . '">'; // nosemgrep: php.lang.security.injection.echoed-request.echoed-request
+                    echo '<button id="deleteFamilyAndMembersBtn" class="btn btn-danger" disabled aria-disabled="true">' . gettext('Delete Family Record AND Family Members') . '</button></span> ';
+                }
                 echo '<a class="btn btn-secondary ms-2" href="people/family/' . (int)$iFamilyID . '">' . gettext('No, cancel this deletion') . '</a>';
                 echo '</div>';
+                if ($deleteMembersBlockedReason !== null) {
+                    echo '<div id="deleteFamilyAndMembersBlockedReason" class="text-center text-secondary mt-2">' . InputUtils::escapeHTML($deleteMembersBlockedReason) . '</div>'; // nosemgrep: php.lang.security.injection.echoed-request.echoed-request
+                }
                 ?>
                 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                 function deleteFamily(familyId, deleteMembers) {

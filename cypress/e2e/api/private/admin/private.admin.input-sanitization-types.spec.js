@@ -32,6 +32,28 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
     // The seeded "Church Service" event type.
     const eventTypeId = 1;
 
+    // Every event this spec creates, removed again in after() (#9769).
+    const createdEventIds = [];
+
+    after(() => {
+        cy.cleanupEvents(createdEventIds);
+    });
+
+    const trackRepeatCreated = (response) => {
+        createdEventIds.push(...(response.body.eventIds ?? []));
+    };
+
+    // quick-create returns `created: false` with the existing event's id when
+    // one already exists for that date and type; that event is not ours.
+    const trackQuickCreated = (response) => {
+        if (
+            response.body.created !== false &&
+            typeof response.body.eventId === "number"
+        ) {
+            createdEventIds.push(response.body.eventId);
+        }
+    };
+
     // Each test claims its own far-future window so a re-run against a database
     // that was not reset still starts from an empty date range.
     let windowSeq = 0;
@@ -71,6 +93,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 }),
                 200,
             ).then((response) => {
+                trackRepeatCreated(response);
                 expect(response.body.success).to.be.true;
                 expect(response.body.eventIds).to.be.an("array");
             });
@@ -122,6 +145,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 repeatBody({ RangeStart: startDate, RangeEnd: endDate }),
                 200,
             ).then((response) => {
+                trackRepeatCreated(response);
                 expect(response.body.success).to.be.true;
                 const ids = response.body.eventIds;
                 expect(ids.length).to.be.greaterThan(0);
@@ -222,6 +246,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 { eventTypeId, date: startDate },
                 200,
             ).then((response) => {
+                trackQuickCreated(response);
                 expect(response.body).to.have.property("eventId");
                 cy.makePrivateAdminAPICall(
                     "GET",
@@ -249,6 +274,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 { eventTypeId },
                 200,
             ).then((response) => {
+                trackQuickCreated(response);
                 expect(response.body).to.have.property("eventId");
                 cy.makePrivateAdminAPICall(
                     "GET",
@@ -277,6 +303,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 { eventTypeId, date: "" },
                 200,
             ).then((response) => {
+                trackQuickCreated(response);
                 expect(response.body).to.have.property("eventId");
             });
         });

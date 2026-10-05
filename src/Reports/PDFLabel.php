@@ -555,6 +555,29 @@ function ZipBundleSort(array $inLabels)
     }
 }
 
+/**
+ * The address block for a label, taken whole from one source: the person's own
+ * address when they have entered a street line, otherwise the family's. The
+ * decision is made once for all five parts so a label never mixes a person's
+ * street with the family's city, or the reverse. Matches Person::getAddress().
+ *
+ * @return array{Address1: string, Address2: string, City: string, State: string, Zip: string}
+ */
+function SelectLabelAddress(array $aRow): array
+{
+    $sPersonAddress1 = trim((string) ($aRow['per_Address1'] ?? ''));
+    $sPersonAddress2 = trim((string) ($aRow['per_Address2'] ?? ''));
+    $sPrefix = ($sPersonAddress1 !== '' || $sPersonAddress2 !== '') ? 'per_' : 'fam_';
+
+    return [
+        'Address1' => trim((string) ($aRow[$sPrefix . 'Address1'] ?? '')),
+        'Address2' => trim((string) ($aRow[$sPrefix . 'Address2'] ?? '')),
+        'City'     => trim((string) ($aRow[$sPrefix . 'City'] ?? '')),
+        'State'    => trim((string) ($aRow[$sPrefix . 'State'] ?? '')),
+        'Zip'      => trim((string) ($aRow[$sPrefix . 'Zip'] ?? '')),
+    ];
+}
+
 function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComplete): string
 {
     // $mode is"indiv" or"fam"
@@ -588,7 +611,9 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
 
 
-        if (($aRow['per_fam_ID'] === 0) && ($mode === 'fam')) {
+        // mysqli returns the column as a string, so compare as an integer;
+        // GroupBySalutation() cannot build a label for family 0.
+        if (((int) $aRow['per_fam_ID'] === 0) && ($mode === 'fam')) {
             // Skip people with no family ID
             continue;
         }
@@ -604,6 +629,18 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
         if ($mode === 'fam') {
             $aName = GroupBySalutation($aRow['per_fam_ID'], $aAdultRole, $aChildRole);
+
+            // One label per household (#9873): the adults' salutation when an
+            // adult of the family is in the cart, else the children's (so a
+            // class list still gets "To the parents of"), else the family
+            // name. Before, a family with adults and children in the cart got
+            // one label for each group.
+            foreach (['adult', 'child', 'other'] as $sGroup) {
+                if ($aName[$sGroup] !== 'Nothing to return') {
+                    $aName = [$sGroup => $aName[$sGroup]];
+                    break;
+                }
+            }
         } else {
             $sName = MiscUtils::formatFullName(
                 $aRow['per_Title'],
@@ -638,12 +675,16 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                 $sName ="To the parents of:\n" . $sName;
             }
 
-            // Use person data only - each person must enter their own information
-            $sAddress1 = $aRow['per_Address1'] ?? '';
-            $sAddress2 = $aRow['per_Address2'] ?? '';
-            $sCity = $aRow['per_City'] ?? '';
-            $sState = $aRow['per_State'] ?? '';
-            $sZip = $aRow['per_Zip'] ?? '';
+            // A person's own address wins; otherwise fall back to the family
+            // address, as Person::getAddress() and the newsletter labels do.
+            // Households normally carry the address on the family record only,
+            // which left these labels blank (#9873).
+            $aAddress = SelectLabelAddress($aRow);
+            $sAddress1 = $aAddress['Address1'];
+            $sAddress2 = $aAddress['Address2'];
+            $sCity = $aAddress['City'];
+            $sState = $aAddress['State'];
+            $sZip = $aAddress['Zip'];
 
             $sAddress = $sAddress1;
             if ($sAddress2 !== '') {

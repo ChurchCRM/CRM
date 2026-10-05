@@ -22,6 +22,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\AddressDefaults;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -270,7 +271,7 @@ $rootPath       = SystemURLs::getRootPath();
                             <div id="stateOptionDiv">
                                 <select id="State" name="State" class="form-select"
                                     data-user-selected="<?= InputUtils::escapeAttribute($formValues['State'] ?? '') ?>"
-                                    data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultState')) ?>">
+                                    data-system-default="<?= InputUtils::escapeAttribute(AddressDefaults::state()) ?>">
                                 </select>
                             </div>
                             <div id="stateInputDiv" class="d-none">
@@ -286,7 +287,7 @@ $rootPath       = SystemURLs::getRootPath();
                             <label for="Country" class="form-label"><?= gettext('Country') ?></label>
                             <select id="Country" name="Country" class="form-select"
                                 data-user-selected="<?= InputUtils::escapeAttribute($formValues['Country'] ?? '') ?>"
-                                data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultCountry')) ?>">
+                                data-system-default="<?= InputUtils::escapeAttribute(AddressDefaults::country()) ?>">
                             </select>
                         </div>
                     </div>

@@ -28,7 +28,7 @@ Answer before reading code:
 
 - What is the stated purpose?
 - Bug fix, feature, refactor, or migration?
-- Is there a linked issue? PRs without an issue are a hard block.
+- Does it meet the issue rule in `git-workflow.md`? Missing it is a hard block.
 - Does the goal belong in this milestone? Passing gates still does not mean merge if maintainers disagree with the goal.
 - Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin (#9995).
 
@@ -95,6 +95,7 @@ Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
 - [ ] UI text wrapped with `gettext()` or `i18next.t()`
 - [ ] No `alert()` / `confirm()` — `window.CRM.notify()` and bootbox or a Bootstrap modal
 - [ ] Server-side initial state where a JS-only flash would show
+- [ ] Page logic is a `webpack/` entry, not an inline `<script>` block in the view
 
 ### i18n
 
@@ -124,7 +125,6 @@ Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
 
 ### Git
 
-- [ ] Linked issue
 - [ ] No commented-out blocks, debug files, or drive-by refactors
 
 ---
@@ -171,13 +171,24 @@ gh pr review <NUMBER> --comment --body "..."
 
 ---
 
+## Phase 6.5 — Resolve addressed review comments
+
+**After posting a review or reviewing an author's fixes:**
+
+- If the author has pushed fixes addressing your comments, **resolve the threads** (GitHub UI or `gh pr` API)
+- Include a comment citing the commit SHA (e.g. "Fixed in abc123d")
+- Only leave threads open if the fix is incomplete or the concern still exists
+- This keeps PR conversations clean and shows progress through the review cycle
+
+---
+
 ## Phase 7 — Addressing review comments (author-side)
 
 When implementing review feedback on a branch you were asked to fix:
 
 1. Confirm each thread is still true on the current HEAD
 2. Fix, show the diff, wait for push approval
-3. Do not resolve threads unless the maintainer asks
+3. After the approved push, resolve the threads that push fixed (`git-workflow.md` → After push)
 
 ---
 

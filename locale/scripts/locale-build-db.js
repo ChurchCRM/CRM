@@ -212,21 +212,6 @@ msgstr ""
         return `
             SELECT DISTINCT ucfg_tooltip AS term, "userconfig_ucfg" AS cntx FROM userconfig_ucfg
             WHERE ucfg_tooltip IS NOT NULL AND ucfg_tooltip != ""
-            UNION ALL
-            SELECT DISTINCT qry_Name AS term, "query_qry" AS cntx FROM query_qry
-            WHERE qry_Name IS NOT NULL AND qry_Name != ""
-            UNION ALL
-            SELECT DISTINCT qry_Description AS term, "query_qry" AS cntx FROM query_qry
-            WHERE qry_Description IS NOT NULL AND qry_Description != ""
-            UNION ALL
-            SELECT DISTINCT qpo_Display AS term, "queryparameteroptions_qpo" AS cntx FROM queryparameteroptions_qpo
-            WHERE qpo_Display IS NOT NULL AND qpo_Display != ""
-            UNION ALL
-            SELECT DISTINCT qrp_Name AS term, "queryparameters_qrp" AS cntx FROM queryparameters_qrp
-            WHERE qrp_Name IS NOT NULL AND qrp_Name != ""
-            UNION ALL
-            SELECT DISTINCT qrp_Description AS term, "queryparameters_qrp" AS cntx FROM queryparameters_qrp
-            WHERE qrp_Description IS NOT NULL AND qrp_Description != ""
         `;
     }
 }

@@ -1,6 +1,15 @@
 /// <reference types="cypress" />
 
 describe("Family Reg", () => {
+    // The family the registration test submits, so after() can remove it and
+    // its five members again (#9769). The id comes off the intercepted
+    // registration response — the UI only shows a confirmation dialog.
+    const registeredFamilyIds = [];
+
+    after(() => {
+        cy.cleanupFamilies(registeredFamilyIds);
+    });
+
     before(() => {
         // Ensure church name is "Main St. Cathedral" regardless of what other tests may have set.
         // admin.church-info.spec.js saves "Test Church" and does not restore it.
@@ -13,6 +22,7 @@ describe("Family Reg", () => {
     });
 
     it("Adam Family Registration", () => {
+        cy.intercept("POST", "**/api/public/register/family").as("registerFamily");
         cy.visit("external/register/");
         cy.contains("Main St. Cathedral");
 
@@ -68,6 +78,13 @@ describe("Family Reg", () => {
 
         // Step 3: Review and Submit
         cy.get("#submit-registration").click();
+
+        cy.wait("@registerFamily").then((interception) => {
+            const familyId = interception.response?.body?.Id;
+            if (familyId) {
+                registeredFamilyIds.push(familyId);
+            }
+        });
 
         // Verify success dialog with updated welcome message
         cy.get(".bootbox-body").should("contain", "We're so glad your family has joined us!");

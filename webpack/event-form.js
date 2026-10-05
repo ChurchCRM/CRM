@@ -799,10 +799,19 @@ export function saveEvent(event, apiRoot) {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
     body,
-  }).then((r) => {
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    return r;
-  });
+  }).then(rejectUnlessOk);
+}
+
+// A failed request rejects with the API's `message` as `serverMessage`, so
+// callers can show why instead of a generic "Please try again".
+function rejectUnlessOk(r) {
+  if (r.ok) return r;
+  return r
+    .json()
+    .catch(() => ({}))
+    .then((body) => {
+      throw Object.assign(new Error(`HTTP ${r.status}`), { serverMessage: body.message });
+    });
 }
 
 // ---------------------------------------------------------------------------
@@ -814,8 +823,5 @@ export function deleteEvent(eventId, apiRoot) {
     credentials: "include",
     method: "DELETE",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
-  }).then((r) => {
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    return r;
-  });
+  }).then(rejectUnlessOk);
 }

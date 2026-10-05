@@ -1,8 +1,20 @@
 const path = require('path');
 const fs = require('fs');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
+
+// DataTables language files used to be copied by Grunt into locale/vendor.
+// The skin bundle no longer runs Grunt, and the table requests these by URL.
+const dtI18nSrc = path.resolve(__dirname, 'node_modules/datatables.net-plugins/i18n');
+const dtI18nDest = path.resolve(__dirname, 'src/locale/vendor/datatables');
+fs.mkdirSync(dtI18nDest, { recursive: true });
+for (const file of fs.readdirSync(dtI18nSrc)) {
+  if (file.endsWith('.json')) {
+    fs.copyFileSync(path.join(dtI18nSrc, file), path.join(dtI18nDest, file));
+  }
+}
 
 // Plugin to fix unquoted URLs in CSS (especially fonts)
 class FixCssUrlQuotesPlugin {
@@ -73,6 +85,7 @@ module.exports = {
     'calendar-event-editor': './webpack/calendar-event-editor.js',
     'two-factor-enrollment': './webpack/two-factor-enrollment.js',
     churchcrm: './webpack/skin-main',
+    theme: './webpack/theme.js',
     'churchcrm-rtl': './webpack/skin-rtl',
     'photo-uploader': './webpack/photo-uploader-entry',
     'root-dashboard': './webpack/root-dashboard',
@@ -91,12 +104,14 @@ module.exports = {
     'system-settings-panel': './webpack/system-settings-panel',
     'kiosk-registration-closed': './webpack/kiosk-registration-closed',
     kiosk: './webpack/kiosk',
+    'people-settings': './webpack/people-settings',
     'people-list': './webpack/people/person-list',
     'people-family-list': './webpack/people/family-list',
     'people-family-view': './webpack/people/family-view',
     'people-person-view': './webpack/people/person-view',
     'people-map-view': './webpack/people/map-view',
     'people-map-neighbors': './webpack/people/map-neighbors',
+    'people-self-register': './webpack/people/self-register',
     'error': './webpack/error',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
@@ -117,16 +132,8 @@ module.exports = {
     filename: '[name].min.js',
     publicPath: 'auto',
   },
-  externals: {
-    // Leaflet is loaded as a global from skin/external/leaflet/leaflet.js (Grunt-copied).
-    // Mapping it here lets webpack entries import 'leaflet' without bundling it.
-    leaflet: 'L',
-  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
-    alias: {
-      jquery: path.resolve(__dirname, 'node_modules/jquery'),
-    },
   },
   cache: {
     type: 'filesystem',
@@ -175,6 +182,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].min.css',
       ignoreOrder: false,
+    }),
+    new webpack.ProvidePlugin({
+      $: path.resolve(__dirname, 'webpack/jquery-shared.js'),
+      jQuery: path.resolve(__dirname, 'webpack/jquery-shared.js'),
     }),
     new FixCssUrlQuotesPlugin(),
   ],

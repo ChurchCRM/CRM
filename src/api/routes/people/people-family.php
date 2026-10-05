@@ -8,7 +8,10 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FamilyService;
@@ -20,6 +23,7 @@ use ChurchCRM\Slim\Middleware\Api\FamilyReadMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
@@ -216,7 +220,38 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Family object"),
+     *     @OA\Response(response=200, description="Family object. `Address` is the primary/physical address.
+     *         The optional second address (#9743) is exposed additively as `SecondAddress1`, `SecondAddress2`,
+     *         `SecondCity`, `SecondState`, `SecondZip`, `SecondCountry` and `SecondIsMailing`, alongside the
+     *         resolved `MailingAddress` object (the flagged second address when set, the primary otherwise).",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="Id", type="integer"),
+     *             @OA\Property(property="Name", type="string"),
+     *             @OA\Property(property="Address", type="string", description="Primary address, one line"),
+     *             @OA\Property(property="SecondAddress1", type="string", nullable=true),
+     *             @OA\Property(property="SecondAddress2", type="string", nullable=true),
+     *             @OA\Property(property="SecondCity", type="string", nullable=true),
+     *             @OA\Property(property="SecondState", type="string", nullable=true),
+     *             @OA\Property(property="SecondZip", type="string", nullable=true),
+     *             @OA\Property(property="SecondCountry", type="string", nullable=true),
+     *             @OA\Property(property="SecondIsMailing", type="boolean"),
+     *             @OA\Property(property="HasSecondAddress", type="boolean"),
+     *             @OA\Property(property="SecondAddressIsMailing", type="boolean"),
+     *             @OA\Property(property="SecondAddress", type="string", description="Second address, one line"),
+     *             @OA\Property(property="MailingAddressLines", type="string", description="Resolved mailing address, one line"),
+     *             @OA\Property(
+     *                 property="MailingAddress",
+     *                 type="object",
+     *                 description="Resolved mailing address parts",
+     *                 @OA\Property(property="Address1", type="string"),
+     *                 @OA\Property(property="Address2", type="string"),
+     *                 @OA\Property(property="City", type="string"),
+     *                 @OA\Property(property="State", type="string"),
+     *                 @OA\Property(property="Zip", type="string"),
+     *                 @OA\Property(property="Country", type="string")
+     *             )
+     *         )
+     *     ),
      *     @OA\Response(response=403, description="Access denied"),
      *     @OA\Response(response=404, description="Family not found")
      * )
@@ -243,7 +278,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family = $request->getAttribute('family');
 
         $familyAddress = $family->getAddress();
-        $familyLatLong = GeoUtils::getLatLong($familyAddress);
+        $familyLatLong = GeoUtils::getLatLong($familyAddress, null, null, null, $family->getCountry());
         $familyDrivingInfo = GeoUtils::drivingDistanceMatrix(
             $familyAddress,
             ChurchMetaData::getChurchAddress()
@@ -395,6 +430,56 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
     /**
      * @OA\Post(
+     *     path="/family/{familyId}/approve-review",
+     *     summary="Approve a self-registered family, clearing its needs-review flag and its members' flags",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Family and its members approved",
+     *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
+     *     )
+     * )
+     */
+    $group->post('/approve-review', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
+        $family = $request->getAttribute('family');
+
+        if ($family->getEnteredBy() !== Person::SELF_REGISTER || !$family->getNeedsReview()) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('This family is not a pending self-registration'),
+                [],
+                400
+            );
+        }
+
+        $con = Propel::getWriteConnection(FamilyTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+        try {
+            $family->setNeedsReview(false);
+            $family->save($con);
+            PersonQuery::create()
+                ->filterByFamId($family->getId())
+                ->update(['NeedsReview' => false], $con);
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Could not approve this family'),
+                [],
+                500,
+                $e,
+                $request
+            );
+        }
+
+        return SlimUtils::renderJSON($response, ['success' => true]);
+    })->add(EditRecordsRoleAuthMiddleware::class);
+
+    /**
+     * @OA\Post(
      *     path="/family/{familyId}/geocode",
      *     summary="Refresh geocoding (latitude/longitude) for a family's address",
      *     tags={"Families"},
@@ -446,7 +531,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Parameter(name="deleteMembers", in="query", required=false, @OA\Schema(type="boolean", default=false),
      *         description="If true, also delete all family members. If false, members are unlinked from the family."),
      *     @OA\Response(response=200, description="Family deleted"),
-     *     @OA\Response(response=403, description="DeleteRecord role required or family has donations"),
+     *     @OA\Response(response=403, description="DeleteRecord role required, family has donations, or a member has a login the current user may not delete"),
      *     @OA\Response(response=404, description="Family not found")
      * )
      */
@@ -463,6 +548,18 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             ->count();
         if ($pledgeCount > 0 && !AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             return SlimUtils::renderErrorJSON($response, gettext('Cannot delete a family with donation records. Contact a finance administrator.'), [], 403);
+        }
+
+        if ($deleteMembers) {
+            $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                ->filterByFamId($familyId)
+                ->find();
+            foreach ($members as $member) {
+                $blockedReason = $member->getLoginDeletionBlockedReason();
+                if ($blockedReason !== null) {
+                    return SlimUtils::renderErrorJSON($response, $blockedReason, [], 403);
+                }
+            }
         }
 
         // Delete associated notes

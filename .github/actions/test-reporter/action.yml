@@ -1,0 +1,53 @@
+name: 'JUnit test report'
+description: 'Single SHA pin for dorny/test-reporter with the repo-wide JUnit defaults. Run actions/checkout first.'
+
+inputs:
+  name:
+    description: 'Check run name'
+    required: true
+  path:
+    description: 'Glob of JUnit XML files'
+    required: true
+  reporter:
+    description: 'Report format'
+    required: false
+    default: 'java-junit'
+  fail-on-error:
+    description: 'Fail the step when the report has failing tests'
+    required: false
+    default: 'true'
+  fail-on-empty:
+    description: 'Fail the step when no report files match'
+    required: false
+    default: 'false'
+  list-suites:
+    description: 'Suites to list: all, failed or none'
+    required: false
+    default: 'all'
+  list-tests:
+    description: 'Tests to list: all, failed or none'
+    required: false
+    default: 'failed'
+  max-annotations:
+    description: 'Maximum annotations per check'
+    required: false
+    default: '50'
+  use-actions-summary:
+    description: 'Write the report to the job summary'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ inputs.path }}
+        reporter: ${{ inputs.reporter }}
+        fail-on-error: ${{ inputs.fail-on-error }}
+        fail-on-empty: ${{ inputs.fail-on-empty }}
+        list-suites: ${{ inputs.list-suites }}
+        list-tests: ${{ inputs.list-tests }}
+        max-annotations: ${{ inputs.max-annotations }}
+        use-actions-summary: ${{ inputs.use-actions-summary }}

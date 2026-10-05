@@ -15,7 +15,7 @@ This directory contains modular, task-focused development skills for AI coding a
 ```
 
 These skills are repo-owned and apply to every agent family
-(Claude, Copilot, Cursor, Grok, Codex, and anything else that
+(Claude, Codex, Grok, and anything else that
 reads `.agents/skills/`). Do not assume a `~/.claude/` layout.
 
 ## ChurchCRM Skills

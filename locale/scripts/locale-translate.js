@@ -3,27 +3,30 @@
 /**
  * ChurchCRM Locale Translation Helper
  *
- * File-operations utility used by the /locale-translate Claude Code skill.
- * This script handles reading and writing batch files; the actual translations
- * are produced by Claude Code (invoke with /locale-translate in the Claude CLI).
+ * Deterministic file operations for the /locale-translate Claude Code skill.
+ * Only the translations themselves come from a model; everything else here
+ * costs no tokens.
  *
- * Standalone usage:
- *   node locale/scripts/locale-translate.js --list
- *     → List all locales that have missing terms and exit
+ *   --list                                  locales that still have untranslated terms
+ *   --prefill [--locale a,b] [--dry-run]    fill terms from the english-ok allowlist and from
+ *                                           existing translations that differ only in case or
+ *                                           trailing punctuation
+ *   --export [--locale a,b]                 one deduplicated payload of what is still missing
+ *   --read-file --file <batch>              untranslated entries of one batch file
+ *   --apply --file <batch> --translations '<json>'
+ *   --apply-bulk --translations-file <path> {"fr": {"term": "..."}, "de": {...}}
  *
- *   node locale/scripts/locale-translate.js --info --locale <code>
- *     → Print locale metadata (language name, country, batch files) for Claude Code
+ * Apply validates every entry (placeholders, script, plural shape, known key), writes the
+ * valid ones, lists the rejected ones with the reason, and records identical-to-English
+ * values in locale/terms/english-ok.json. An empty value leaves the term untranslated.
  *
- *   node locale/scripts/locale-translate.js --apply --locale <code> --file <batchFile> --translations <jsonString>
- *     → Merge a JSON translations string into the specified batch file
- *
- * The /locale-translate Claude Code skill drives this helper automatically.
- * See .claude/commands/locale-translate.md for the full workflow.
+ * See .claude/commands/locale-translate.md for the workflow.
  */
 
 const fs = require('fs');
 const path = require('path');
 const config = require('./locale-config');
+const { validateTranslation, prefill } = require('./lib/translation-checks');
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -117,28 +120,6 @@ function cmdList(localeMap) {
     console.log('  Or translate all at once:         /locale-translate --all\n');
 }
 
-function cmdInfo(localeMap, poEditorCode) {
-    const entry = localeMap[poEditorCode];
-    if (!entry) {
-        console.error(`Unknown locale code: ${poEditorCode}`);
-        process.exit(1);
-    }
-    const files = getBatchFiles(poEditorCode);
-    // Returns metadata + file paths only — NO term content.
-    // Use --read-file to load one batch file at a time during translation.
-    const info = {
-        code: poEditorCode,
-        name: entry.name,
-        locale: entry.locale,
-        countryCode: entry.countryCode,
-        batchFiles: files.map(fp => ({
-            path: path.relative(config.projectRoot, fp),
-            termCount: countUntranslated(loadJSON(fp) || {}),
-        })),
-    };
-    console.log(JSON.stringify(info, null, 2));
-}
-
 function cmdReadFile(filePath) {
     const absPath = path.isAbsolute(filePath)
         ? filePath
@@ -164,30 +145,198 @@ function cmdReadFile(filePath) {
     console.log(JSON.stringify(untranslated, null, 2));
 }
 
-function cmdApply(batchFilePath, translationsJson) {
-    const absPath = path.isAbsolute(batchFilePath)
-        ? batchFilePath
-        : path.join(config.projectRoot, batchFilePath);
+function englishOkFor(code) {
+    const ok = loadJSON(config.terms.englishOk) || {};
+    const terms = new Set();
+    for (const [locale, list] of Object.entries(ok)) {
+        if (locale.toLowerCase() === code.toLowerCase() && Array.isArray(list)) list.forEach(t => terms.add(t));
+    }
+    return terms;
+}
 
+function recordEnglishOk(code, terms) {
+    if (terms.length === 0) return;
+    const ok = loadJSON(config.terms.englishOk) || {};
+    const existing = Object.keys(ok).find(k => k.toLowerCase() === code.toLowerCase()) ?? code.toLowerCase();
+    const list = ok[existing] ?? [];
+    const added = terms.filter(t => !list.includes(t));
+    if (added.length === 0) return;
+    ok[existing] = [...list, ...added];
+    fs.writeFileSync(config.terms.englishOk, `${JSON.stringify(ok, null, 2)}\n`, 'utf8');
+}
+
+function pluralShapeProblems(existing, value) {
+    if (existing && typeof existing === 'object') {
+        if (!value || typeof value !== 'object') return ['this term has plural forms; send an object with every form'];
+        const want = Object.keys(existing).sort().join();
+        return Object.keys(value).sort().join() === want ? [] : [`plural forms must be exactly: ${want}`];
+    }
+    return value && typeof value === 'object' ? ['this term has no plural forms; send a string'] : [];
+}
+
+function scriptsFor(code) {
+    const locales = loadJSON(config.localesJson) || {};
+    return Object.values(locales).find(entry => String(entry.poEditor).toLowerCase() === code.toLowerCase())?.scripts;
+}
+
+function applyToBatch(code, absPath, incoming, { write = true } = {}) {
+    const batch = loadJSON(absPath) || {};
+    const scripts = scriptsFor(code);
+    const result = { applied: [], blank: [], rejected: [], identical: [] };
+    for (const [key, value] of Object.entries(incoming)) {
+        if (!(key in batch)) {
+            result.rejected.push({ key, problems: ['not in this batch file'] });
+        } else if (value === '') {
+            result.blank.push(key);
+        } else {
+            const problems = [...pluralShapeProblems(batch[key], value), ...validateTranslation(scripts, key, value)];
+            if (problems.length > 0) {
+                result.rejected.push({ key, problems });
+            } else {
+                batch[key] = value;
+                result.applied.push(key);
+                if (value === key) result.identical.push(key);
+            }
+        }
+    }
+    if (write && result.applied.length > 0) {
+        saveJSON(absPath, batch);
+        recordEnglishOk(code, result.identical);
+    }
+    return result;
+}
+
+function report(label, result) {
+    const tail = [];
+    if (result.identical.length) tail.push(`${result.identical.length} identical to English, allowlisted`);
+    if (result.blank.length) tail.push(`${result.blank.length} left blank`);
+    console.log(`✅ Applied ${result.applied.length} translations to ${label}${tail.length ? ` (${tail.join(', ')})` : ''}`);
+    for (const { key, problems } of result.rejected) {
+        console.error(`❌ rejected "${key.slice(0, 70)}": ${problems.join('; ')}`);
+        process.exitCode = 1;
+    }
+}
+
+function exitWith(message) {
+    console.error(`❌ ${message}`);
+    process.exit(1);
+}
+
+function parseTranslations(json) {
+    let parsed;
+    try {
+        parsed = JSON.parse(json);
+    } catch (err) {
+        exitWith(`Invalid translations JSON: ${err.message}`);
+    }
+    if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+        exitWith('Translations must be a JSON object of term: translation pairs');
+    }
+    return parsed;
+}
+
+function readTranslationsFile(filePath) {
+    if (!filePath || filePath.startsWith('--')) exitWith('--translations-file needs a path');
+    try {
+        return fs.readFileSync(filePath, 'utf8');
+    } catch (err) {
+        exitWith(`Cannot read translations file: ${err.message}`);
+    }
+}
+
+function resolveBatchPath(filePath) {
+    const absPath = path.isAbsolute(filePath) ? filePath : path.join(config.projectRoot, filePath);
     if (!fs.existsSync(absPath)) {
         console.error(`Batch file not found: ${absPath}`);
         process.exit(1);
     }
+    return absPath;
+}
 
-    let incoming;
-    try {
-        incoming = JSON.parse(translationsJson);
-    } catch (err) {
-        console.error(`Invalid translations JSON: ${err.message}`);
-        process.exit(1);
+function cmdApply(batchFilePath, translationsJson) {
+    const absPath = resolveBatchPath(batchFilePath);
+    const code = path.basename(path.dirname(absPath));
+    report(path.relative(config.projectRoot, absPath), applyToBatch(code, absPath, parseTranslations(translationsJson)));
+}
+
+function cmdApplyBulk(translationsJson) {
+    for (const [code, incoming] of Object.entries(parseTranslations(translationsJson))) {
+        if (incoming === null || typeof incoming !== 'object' || Array.isArray(incoming)) {
+            exitWith(`${code}: expected an object of term: translation pairs`);
+        }
+        const files = getBatchFiles(code);
+        if (files.length === 0) {
+            console.error(`❌ ${code}: no batch files with untranslated terms`);
+            process.exitCode = 1;
+            continue;
+        }
+        const unplaced = new Set(Object.keys(incoming));
+        for (const file of files) {
+            const batch = loadJSON(file) || {};
+            const subset = Object.fromEntries(Object.entries(incoming).filter(([key]) => key in batch));
+            Object.keys(subset).forEach(key => unplaced.delete(key));
+            if (Object.keys(subset).length > 0) report(path.relative(config.projectRoot, file), applyToBatch(code, file, subset));
+        }
+        for (const key of unplaced) {
+            console.error(`❌ ${code}: rejected "${key.slice(0, 70)}": not in any batch file`);
+            process.exitCode = 1;
+        }
     }
+}
 
-    const existing = loadJSON(absPath) || {};
-    const updated = { ...existing, ...incoming };
-    saveJSON(absPath, updated);
+function selectedCodes(localeMap, localeArg) {
+    if (!localeArg) return Object.keys(localeMap);
+    const wanted = localeArg.split(',').map(c => c.trim().toLowerCase());
+    return Object.keys(localeMap).filter(code => wanted.includes(code.toLowerCase()));
+}
 
-    const count = Object.keys(incoming).length;
-    console.log(`✅ Applied ${count} translations to ${path.relative(config.projectRoot, absPath)}`);
+function loadExistingTranslations(localeMap, code) {
+    const candidates = [`${localeMap[code].locale}.json`, `${code}.json`];
+    for (const name of candidates) {
+        const data = loadJSON(path.join(config.i18nDir, name));
+        if (data) return data;
+    }
+    return {};
+}
+
+function cmdPrefill(localeMap, localeArg, dryRun) {
+    let total = 0;
+    for (const code of selectedCodes(localeMap, localeArg)) {
+        const translated = loadExistingTranslations(localeMap, code);
+        const okSet = englishOkFor(code);
+        for (const file of getBatchFiles(code)) {
+            const { filled, fromMemory, fromAllowlist } = prefill(loadJSON(file) || {}, translated, okSet);
+            const result = applyToBatch(code, file, filled, { write: !dryRun });
+            total += result.applied.length;
+            for (const { key, problems } of result.rejected) {
+                console.error(`❌ ${code}: not filled "${key.slice(0, 60)}": ${problems.join('; ')}`);
+                process.exitCode = 1;
+            }
+            if (result.applied.length === 0) continue;
+            const applied = new Set(result.applied);
+            const memoryFilled = fromMemory.filter(key => applied.has(key));
+            console.log(`${dryRun ? '🔍' : '✅'} ${code}: ${fromAllowlist.filter(key => applied.has(key)).length} from english-ok, ${memoryFilled.length} from existing translations`);
+            for (const key of memoryFilled) console.log(`     ${key.slice(0, 60)} → ${String(filled[key]).slice(0, 60)}`);
+        }
+    }
+    console.log(`\n${dryRun ? 'Would fill' : 'Filled'} ${total} terms without a model. Review the existing-translation matches above.`);
+}
+
+function cmdExport(localeMap, localeArg) {
+    const strings = {};
+    const plurals = {};
+    for (const code of selectedCodes(localeMap, localeArg)) {
+        for (const file of getBatchFiles(code)) {
+            for (const [key, value] of Object.entries(loadJSON(file) || {})) {
+                if (value === '') {
+                    (strings[key] ??= []).push(code);
+                } else if (value && typeof value === 'object' && Object.values(value).some(v => v === '')) {
+                    (plurals[code] ??= {})[key] = value;
+                }
+            }
+        }
+    }
+    console.log(JSON.stringify({ strings, plurals }, null, 2));
 }
 
 // ---------------------------------------------------------------------------
@@ -195,14 +344,20 @@ function cmdApply(batchFilePath, translationsJson) {
 // ---------------------------------------------------------------------------
 function parseArgs() {
     const args = process.argv.slice(2);
-    const opts = { command: null, locale: null, file: null, translations: null };
+    const opts = { command: null, locale: null, file: null, translations: null, dryRun: false };
 
     for (let i = 0; i < args.length; i++) {
         switch (args[i]) {
             case '--list':         opts.command = 'list';      break;
-            case '--info':         opts.command = 'info';      break;
             case '--read-file':    opts.command = 'read-file'; break;
             case '--apply':        opts.command = 'apply';     break;
+            case '--apply-bulk':   opts.command = 'apply-bulk'; break;
+            case '--prefill':      opts.command = 'prefill';   break;
+            case '--export':       opts.command = 'export';    break;
+            case '--dry-run':      opts.dryRun = true;         break;
+            case '--translations-file':
+                opts.translations = readTranslationsFile(args[++i]);
+                break;
             case '--locale':       opts.locale       = args[++i]; break;
             case '--file':         opts.file         = args[++i]; break;
             case '--translations': opts.translations = args[++i]; break;
@@ -212,9 +367,11 @@ ChurchCRM Locale Translation Helper
 
 Usage:
   node locale/scripts/locale-translate.js --list
-  node locale/scripts/locale-translate.js --info --locale <code>
+  node locale/scripts/locale-translate.js --prefill [--locale a,b] [--dry-run]
+  node locale/scripts/locale-translate.js --export [--locale a,b]
   node locale/scripts/locale-translate.js --read-file --file <path>
   node locale/scripts/locale-translate.js --apply --file <path> --translations '<json>'
+  node locale/scripts/locale-translate.js --apply-bulk (--translations '<json>' | --translations-file <path>)
 
 This script is driven by the /locale-translate Claude Code skill.
 Run /locale-translate in the Claude Code CLI to translate missing terms.
@@ -233,9 +390,15 @@ function main() {
         case 'list':
             cmdList(localeMap);
             break;
-        case 'info':
-            if (!opts.locale) { console.error('--locale required'); process.exit(1); }
-            cmdInfo(localeMap, opts.locale);
+        case 'prefill':
+            cmdPrefill(localeMap, opts.locale, opts.dryRun);
+            break;
+        case 'export':
+            cmdExport(localeMap, opts.locale);
+            break;
+        case 'apply-bulk':
+            if (!opts.translations) { console.error('--translations or --translations-file required'); process.exit(1); }
+            cmdApplyBulk(opts.translations);
             break;
         case 'apply':
             if (!opts.file || !opts.translations) {
@@ -249,7 +412,7 @@ function main() {
             cmdReadFile(opts.file);
             break;
         default:
-            console.error('Specify --list, --info, --read-file, or --apply. Run --help for usage.');
+            console.error('Specify --list, --prefill, --export, --read-file, --apply, or --apply-bulk. Run --help for usage.');
             process.exit(1);
     }
 }

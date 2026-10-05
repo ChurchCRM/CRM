@@ -15,7 +15,7 @@
  * session data. `cy.setupAdminSession()` afterward is NOT a reliable fix
  * either — its cache validator only checks that a session cookie exists,
  * not that the underlying PHP session is still alive — so contexts that mix
- * an API call with a browser visit use the local freshAdminLogin() helper
+ * an API call with a browser visit use the local cy.freshAdminFormLogin() helper
  * (real clear + form login) AFTER the API call instead, exactly as
  * documented in the skill. The checkin call accepts both 200 (freshly
  * checked in) and 409 (already checked in from a previous test run) so
@@ -28,23 +28,8 @@
  * ChurchCRM is deployed under a subdirectory path.
  */
 
-// Local helper — NOT a cy.* command (see cypress-testing.md). Clears cookies and
-// does a direct form login, discarding any dead PHP session left by a prior
-// cy.request() / makePrivateAdminAPICall() call. Required after any API call
-// that precedes a cy.visit() — cy.setupAdminSession() is not reliable here.
-function freshAdminLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-    // Navigating away from /session/begin alone doesn't prove authentication
-    // succeeded (a 500 or an error page would also satisfy it) — confirm a
-    // real CRM session cookie was actually issued, same check cy.session()'s
-    // own validate() callback uses in cypress/support/ui-commands.js.
-    cy.url().should("not.include", "/session/begin");
-    cy.getCookies().should("satisfy", (cookies) => cookies.some((cookie) => cookie.name.startsWith("CRM-")));
-}
-
+// Direct form login. cy.request() before cy.visit() kills the PHP session, and
+// cy.setupAdminSession() does not recover it. 
 describe("Person Attendance History Tab", () => {
     const PERSON_WITH_ATTENDANCE = 2;
     const PERSON_WITHOUT_ATTENDANCE = 1;
@@ -55,6 +40,15 @@ describe("Person Attendance History Tab", () => {
         // makePrivateAdminAPICall() authenticates via x-api-key alone — it needs no
         // browser session, so no login call here (see file header).
         cy.makePrivateAdminAPICall("POST", `/api/events/${EVENT_ID}/checkout`, { personId: PERSON_WITH_ATTENDANCE }, 200);
+        // Checking out only stamps a checkout date — the event_attend row
+        // stays, which used to leave one behind per run (#9769). This is what
+        // actually removes it.
+        cy.makePrivateAdminAPICall(
+            "DELETE",
+            `/api/events/${EVENT_ID}/attendance/${PERSON_WITH_ATTENDANCE}`,
+            null,
+            [200, 404],
+        );
     });
 
     context("Tab navigation", () => {
@@ -75,7 +69,7 @@ describe("Person Attendance History Tab", () => {
 
     context("Lazy load on tab activation — person with attendance", () => {
         beforeEach(() => {
-            // API setup FIRST, then freshAdminLogin() — NOT cy.setupAdminSession(),
+            // API setup FIRST, then cy.freshAdminFormLogin() — NOT cy.setupAdminSession(),
             // see file header. Accept 200 (fresh checkin) or 409 (already checked
             // in) — tolerate duplicates.
             cy.makePrivateAdminAPICall(
@@ -84,7 +78,7 @@ describe("Person Attendance History Tab", () => {
                 { personId: PERSON_WITH_ATTENDANCE },
                 [200, 409],
             );
-            freshAdminLogin();
+            cy.freshAdminFormLogin({ sessionCookie: true });
             cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
             // Use **/api/** glob so intercepts work under a subdirectory deployment
             cy.intercept("GET", `**/api/attendance/person/${PERSON_WITH_ATTENDANCE}`).as("attendanceApi");
@@ -181,7 +175,7 @@ describe("Person Attendance History Tab", () => {
 
     context("Filter controls", () => {
         beforeEach(() => {
-            // API setup FIRST, then freshAdminLogin() — NOT cy.setupAdminSession(),
+            // API setup FIRST, then cy.freshAdminFormLogin() — NOT cy.setupAdminSession(),
             // see file header.
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -189,7 +183,7 @@ describe("Person Attendance History Tab", () => {
                 { personId: PERSON_WITH_ATTENDANCE },
                 [200, 409],
             );
-            freshAdminLogin();
+            cy.freshAdminFormLogin({ sessionCookie: true });
             cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
             cy.intercept("GET", `**/api/attendance/person/${PERSON_WITH_ATTENDANCE}`).as("attendanceApi");
             cy.get("#nav-item-attendance").click();

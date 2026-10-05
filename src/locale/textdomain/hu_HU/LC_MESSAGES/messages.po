@@ -474,11 +474,6 @@ msgstr "Fotók"
 
 #: 
 #, fuzzy
-msgid "Number of Columns"
-msgstr "Oszlopok száma"
-
-#: 
-#, fuzzy
 msgid "Paper Size"
 msgstr "Papírméret"
 
@@ -849,10 +844,6 @@ msgstr "Törlés Photo"
 #: 
 msgid "Timeline"
 msgstr "Idővonal"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Felajánlások és kifizetések"
 
 #: 
 msgid "Value"
@@ -1691,30 +1682,6 @@ msgstr "Osztály"
 #: 
 msgid "Properties"
 msgstr "Tulajdon"
-
-#: 
-msgid "Query Listing"
-msgstr "Lekérdezés Listing"
-
-#: 
-msgid "Query View"
-msgstr "Lekérdezés megnézése"
-
-#: 
-msgid "This value is required."
-msgstr "Ez az érték szükséges."
-
-#: 
-msgid "This value must be numeric."
-msgstr "Ez a számérték kell legyen."
-
-#: 
-msgid "Run Query Again"
-msgstr "Lekérdezés futtatása Again"
-
-#: 
-msgid "Execute Query"
-msgstr "Execute Query"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -2663,10 +2630,6 @@ msgstr "Vevők megtekintése"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "Adományozók hozzáadása a vevőlistához"
-
-#: 
-msgid "Data/Reports"
-msgstr "Adatok/Jelentések"
 
 #: 
 msgid "Family Properties"
@@ -4541,10 +4504,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "A dátumválasztó formátumának meghatározásához, alapértelmezett: Y-m-d, például magyarul: Y.m.d."
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "Azon személyek azonosítóinak (PersonID) vesszővel elválasztott listája, akiket értesíteni kell új család vagy személy hozzáadásakor"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Események hitelesítés nélküli olvasásának engedélyezése a külső naptár API-ból"
 
@@ -5108,14 +5067,6 @@ msgstr[1] "%d év régi"
 #: 
 msgid "Missing PHP ZipArchive"
 msgstr "Hiányzó PHP ZipArchive"
-
-#: 
-msgid "Add Results to Cart"
-msgstr "Eredmények hozzáadása a kosárba"
-
-#: 
-msgid "Remove Results from Cart"
-msgstr "Eredmények eltávolítása a kosárból"
 
 #: 
 msgid "Database Reset Functions"
@@ -6389,10 +6340,6 @@ msgid "Cart"
 msgstr "Kocsi"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "Ezt a Rendszerbeállítások módosítsa."
-
-#: 
 msgid "Church Membership"
 msgstr "Egyháztagság"
 
@@ -6443,10 +6390,6 @@ msgstr "Hozzon létre vagy válasszon ki egy befizetést a kezdéshez."
 #: 
 msgid "Current Deposit"
 msgstr "Jelenlegi befizetés"
-
-#: 
-msgid "Current fiscal year"
-msgstr "Jelenlegi pénzügyi év"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6509,10 +6452,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Az igazolások generálása előtt győződjön meg arról, hogy az adott adóév minden befizetése le van zárva."
 
 #: 
-msgid "Export Options"
-msgstr "Exportálási opciók"
-
-#: 
 msgid "F"
 msgstr "N"
 
@@ -6527,10 +6466,6 @@ msgstr "Család navigáció"
 #: 
 msgid "Feb"
 msgstr "Febr"
-
-#: 
-msgid "Filtering"
-msgstr "Szűrés"
 
 #: 
 msgid "Finance"
@@ -6553,16 +6488,8 @@ msgid "Generate Tax Statements"
 msgstr "Adóigazolások generálása"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "Éves adományozási igazolások generálása és adományozási minták azonosítása."
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "Éves adómentes adományozási igazolások generálása. Nyomtatható vagy e-mailben küldhető."
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "Részletes jelentések készítése egyedi befizetésekről vagy dátumtartományokról."
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6623,10 +6550,6 @@ msgstr "Már"
 #: 
 msgid "Membership Reports"
 msgstr "Tagsági jelentések"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "A legtöbb jelentés exportálható PDF-be nyomtatáshoz vagy CSV-be táblázatkezelő elemzéshez."
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6705,14 +6628,6 @@ msgid "Recording a Pledge"
 msgstr "Vállalás rögzítése"
 
 #: 
-msgid "Report Tips"
-msgstr "Jelentési tippek"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "A tagok szavazati jogosultságával és a szervezet irányításával kapcsolatos jelentések."
-
-#: 
 msgid "Reset"
 msgstr "Visszaállítás"
 
@@ -6789,20 +6704,12 @@ msgid "Total Amount"
 msgstr "Teljes összeg"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "Vállalások és fizetési folyamatok követése kampányokhoz és a pénzügyi év költségvetéséhez."
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "Nem teljesült előfeltételek"
 
 #: 
 msgid "Upgrade"
 msgstr "Frissítés"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "Használja a besorolási és családi szűrőket jelentések készítéséhez specifikus adományozói csoportokról."
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6827,10 +6734,6 @@ msgstr "Vállalások az év elejétől (YTD)"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "A családtagokat létrehozhatja most, vagy hozzáadhatja őket később is. Minden bejegyzés új személyi rekord lesz."
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "A pénzügyi év kezdő hónapja"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7387,10 +7290,6 @@ msgstr "Eltávolítja ezt a jelenléti számot?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Válassza ki a rekord típusát, amelyre ez a tulajdonság vonatkozik"
-
-#: 
-msgid "Total Pledges"
-msgstr "Összes Ígéret"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -9064,10 +8963,6 @@ msgid "Current person"
 msgstr "Aktuális személy"
 
 #: 
-msgid "Data & Reports"
-msgstr "Adatok és jelentések"
-
-#: 
 msgid "Database Reset"
 msgstr "Adatbázis visszaállítása"
 
@@ -10086,10 +9981,6 @@ msgid "View and manage system log files for debugging"
 msgstr "Rendszernaplófájlok megtekintése és kezelése hibakereséshez"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "Mentett adatbázis-lekérdezések megtekintése és futtatása"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "Vásárlószámok és tábla-hozzárendelések megtekintése"
 
@@ -10108,10 +9999,6 @@ msgstr "Családi felajánlás-összefoglalók és alap-felosztások megtekintés
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Csoporttagok, szerepek és tulajdonságok megtekintése"
-
-#: 
-msgid "View query results"
-msgstr "Lekérdezési eredmények megtekintése"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10433,10 +10320,6 @@ msgstr "Frissítés elérhető"
 msgid "User must have Notes permission"
 msgstr "A felhasználónak megjegyzés-jogosultsággal kell rendelkeznie"
 
-#: 
-msgid "Address Defaults"
-msgstr "Cím alapértelmezett beállítások"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10449,16 +10332,6 @@ msgstr "Naptár beállításai"
 #: 
 msgid "Calendars"
 msgstr "Naptárak"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Válasszon önkéntes lehetőséget"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Válassza ki a személy mező"
 
 #: 
 msgid "Church Identity"
@@ -10480,11 +10353,6 @@ msgstr "A ChurchCRM közvetlenül e-maileket küldhet."
 msgid "Communication"
 msgstr "Kommunikáció"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Összevetés az ígéretek között két pénzügyi év között"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "Állítsa be az SMTP-t az alábbi beállításokban az e-mailek rendszerből való küldéséhez."
@@ -10498,17 +10366,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Csatlakoztassa a Mailchimpet az e-mail listák szinkronizálásához hírleveleknél és kampányoknál."
 
 #: 
-msgid "Copy from church address"
-msgstr "Másolás az egyházi címről"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "Másolás vágólapra"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Egyéni mező"
 
 #: 
 msgid "Default Country"
@@ -10562,16 +10421,6 @@ msgstr "Az e-mail címek lekérése sikertelen"
 msgid "Failed to retrieve phone numbers"
 msgstr "A telefonszámok lekérése sikertelen"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Mező értéke"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Keresse meg azokat az embereket, akik egy évben ígérkeztek, de a másikban nem"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10579,33 +10428,8 @@ msgstr "Keresse meg az önkénteseket egy adott lehetőséghez"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Keresse meg az önkénteseket, akik két konkrét lehetőségi kódot illesztenek"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Első pénzügyi év"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Első pénzügyi év az összehasonlításhoz"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Első önkéntes lehetőség választása"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "Barátok, akik az előző hónapokban regisztráltak"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Vendég"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10629,31 +10453,6 @@ msgstr "Események, születésnapok és évfordulók kezelése"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "Egyéni mező egyeztetése ezzel az értékkel"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Tag, rendszeres látogató stb."
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Tagok, akik egy adott hónapban csatlakoztak"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Tagsági évfordulók"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Hiányzó ígérkezések"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "Hónap"
 
@@ -10673,16 +10472,6 @@ msgstr "Új tag értesítési e-mailek"
 #: 
 msgid "No cell phone on file"
 msgstr "Nincs mobiltelefon az iratra"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Nem-résztvevő"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Nem-résztvevő (dolgozók)"
 
 #: 
 msgid "Not Classified"
@@ -10719,30 +10508,10 @@ msgstr "Személyes tulajdonság, amellyel kizárják a tagokat az SMS / szövege
 msgid "Person property used to exclude members from email lists"
 msgstr "Személyes tulajdonság, amellyel kizárják a tagokat az e-mail listákról"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Ígéret összehasonlítása"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Idén ígérkezve"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Tulajdonság"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Legutóbbi barátok"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Rendszeres látogató"
 
 #. Context: query_qry
 #: 
@@ -10764,21 +10533,6 @@ msgstr "SMTP konfigurálva"
 #: 
 msgid "SMTP Not Configured"
 msgstr "Az SMTP nincs konfigurálva"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Második pénzügyi év"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Második pénzügyi év az összehasonlításhoz"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Második önkéntes lehetőség választása"
 
 #: 
 msgid "Send text message"
@@ -10812,25 +10566,6 @@ msgstr "Szöveges eszközök"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "Az üzenetkezelési műveletek a Csoport és a Vasárnapi Iskola osztály nézeteiből érhetők el. A \"Szöveg\" legördülő menü segítségével másolja a telefonszámokat, vagy küldjön SMS-üzeneteket a csoport tagjaira."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Az a születésnapos hónap, amelyre vissza szeretné adni a nyilvántartásokat."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "A tagsági évfordulós hónap, amelyre vissza szeretné adni a nyilvántartásokat."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Az a tulajdonság, amelyre vissza szeretné adni a személyes nyilvántartásokat."
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "Ezek az értékek automatikusan kitöltésre kerülnek új családok létrehozásakor. Hagyja üresen, ha kézi bevitelre van szükség."
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "A távolság mérésére használt egység."
@@ -10839,11 +10574,6 @@ msgstr "A távolság mérésére használt egység."
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "Felhasználói engedély e-mail küldéséhez mailto: hivatkozásokon keresztül"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Önkéntes lehetőségek"
 
 #. Context: query_qry
 #: 
@@ -10861,11 +10591,6 @@ msgstr "A Vonage SMS nincs konfigurálva"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "Vonage nélkül a szöveges műveletek az eszköz natív SMS-alkalmazást nyitnak meg, vagy másolják a telefonszámokat a vágólapra."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "de nem ebben az évben"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -10976,10 +10701,6 @@ msgstr "Hitelesítés nélküli hozzáférés engedélyezése naptári eseménye
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "Látogatók számára engedélyezze saját család nyilvántartásának létrehozását az önregisztrációs oldalon"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "Engedje meg a látogatóknak, hogy új családként regisztráljanak."
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -11063,10 +10784,6 @@ msgstr "Válassza ki, mi jelenjen meg, ha nem létezik Gravatar:\n"
 "• Retro – 8 bites arkádjáték stílusú pixel art\n"
 "• RoboHash – Egyedi generált robot\n"
 "• Üres – Átlátszó (monogram jelenik meg helyette)"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "Vesszővel elválasztott lekérdezési azonosítók, amelyek megtekintéséhez pénzügyi jogosultságok szükségesek"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11179,10 +10896,6 @@ msgstr "Szkennelt csekkek használatának engedélyezése"
 msgid "Features"
 msgstr "Funkciók"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "Pénzügyi jogosultsági lekérdezési azonosítók"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11256,10 +10969,6 @@ msgstr "A Gravatar úgy működik, hogy az e-mail-címeket hash értékké (MD5)
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "Szélesség/Hosszúság elrejtése"
-
-#: 
-msgid "Hide Person Address"
-msgstr "Személy címének elrejtése"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -12321,16 +12030,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Hogyan illeszkedik össze a Vasárnapi iskola + Események + Kioszkok"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Érvénytelen dátum: %s — várt formátum: ÉÉÉÉ-HH-NN"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Érvénytelen dátumformátum a rangeStart vagy rangeEnd mezőhöz"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Érvénytelen dátum; várt formátum: ÉÉÉÉ-HH-NN"
 
 #: 
 msgid "Invalid event type ID"
@@ -12561,10 +12262,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "Az eventIds nem lehet üres tömb"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "érvénytelen ismétlődési típus"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "A personIds nem lehet üres tömb"
 
@@ -12767,10 +12464,6 @@ msgstr "Összes kioszk"
 #: 
 msgid "Upcoming Events"
 msgstr "Közelgő esemény"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Az e-mail sablonokban megjelenő gyülekezeti logó abszolút http(s) URL-je (a jövőben máshol is újrafelhasználva). A legjobb megjelenítés érdekében az e-mail kliensekben körülbelül 3,5:1 arányú széles szalaghirdetési képet használjon (például 350×100 px), PNG vagy JPG formátumban, HTTPS-en keresztül kiszolgálva. Hagyja üresen vagy adjon meg érvénytelen értéket az alapértelmezett ChurchCRM logóra való visszatéréshez."
 
 #: 
 msgid "An option with that name already exists"
@@ -14345,11 +14038,6 @@ msgstr "A család nevének legalább 2 karakternek kell lennie"
 msgid "Fields"
 msgstr "Mezők"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Azok keresése, akik nem vettek részt egy eseményen"
-
 #: 
 msgid "First name is required"
 msgstr "A keresztnév szükséges"
@@ -14529,11 +14217,6 @@ msgstr "Tagok hozzáadva a listához."
 #: 
 msgid "Minimum length is"
 msgstr "A minimális hossz"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Hiányzó személyek"
 
 #: 
 msgid "Move"
@@ -14903,11 +14586,6 @@ msgstr "Válasszon naptárakat..."
 msgid "Select event type..."
 msgstr "Válassza ki az esemény típusát..."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Válassza ki a kívánt eseményt"
-
 #: 
 msgid "Sequence"
 msgstr "Sorrend"
@@ -14971,10 +14649,6 @@ msgstr "Szöveg Mindegyik"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "A kiválasztott fájl meghaladja a szerver maximális feltöltési korlátját:"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Ma nincs tervezett esemény"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -16373,10 +16047,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s család %1$s tagja"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "%d rekord visszaadva"
-
-#: 
 msgid "Assign role to all"
 msgstr "Szerepkör hozzárendelése mindenkihez"
 
@@ -16547,22 +16217,6 @@ msgstr "Rendszerkonfiguráció"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Ehhez az önkéntes lehetőséghez személyek vannak hozzárendelve. A törlés megszünteti a hozzárendelést"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "Ez az érték nem lehet rövidebb %d karakternél"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "Ez az érték nem lehet hosszabb %d karakternél"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "Ez az érték nem lehet több mint %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "Ez az érték legalább %s kell legyen"
 
 #: 
 msgid "Total Deposits"
@@ -16845,24 +16499,12 @@ msgid "Family Delete Confirmation"
 msgstr "Család törlésének megerősítése"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "Egyének (nincs családjuk)"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "Új önregisztrációk"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Tulajdonságtípus törlésének megerősítése"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "Tekintse át a nyilvános regisztrációs urlapon feliratkozott új családokat és egyéneket"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "Az alábbiakban tekintse át a nyilvános regisztrációs urlap új regisztrációit. Az e-mail vagy telefonszám nélküli bejegyzések meg vannak jelölve — ellenőrizze az adatokat."
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17423,6 +17065,10 @@ msgid "Manage Events"
 msgstr "Esemenyek kezelese"
 
 #: 
+msgid "N/A"
+msgstr "N/A"
+
+#: 
 msgid "New Deposit"
 msgstr "Uj befizetes"
 
@@ -17569,16 +17215,6 @@ msgstr "Minimális licit: %s."
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "Adott hónapban születésnapot vagy házassági évfordulót ünneplő személyek"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "Az a hónap, amelyre a születésnapokat és évfordulókat le kívánja kérdezni."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "Az a hónap, amelyre a házassági évfordulókat le kívánja kérdezni."
 
 #: 
 msgid "Total of all purchases: %s"
@@ -17799,10 +17435,6 @@ msgid "Selected family"
 msgstr "Kiválasztott család"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "Ennek az értéknek érvényes mezőnévnek kell lennie."
-
-#: 
 msgid "Could not load data"
 msgstr "Az adatok nem tölthetők be"
 
@@ -17811,16 +17443,8 @@ msgid "Please refresh the page or try again later."
 msgstr "Kérjük, frissítse az oldalt, vagy próbálja meg később."
 
 #: 
-msgid "Add the relevant records first."
-msgstr "Először adja hozzá a kapcsolódó rekordokat."
-
-#: 
 msgid "All Months"
 msgstr "Minden hónap"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "Még nem lettek megadva \"%s\" lehetőségek."
 
 #: 
 msgid "No events found for %s %d."
@@ -17879,6 +17503,12 @@ msgid "Set up now"
 msgstr "Beállítás most"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Kétfaktoros hitelesítés szükséges. %d napja van a beiratkozásra."
+msgstr[1] "Kétfaktoros hitelesítés szükséges. %d napja van a beiratkozásra."
+
+#: 
 msgid "Unknown family"
 msgstr "Ismeretlen család"
 
@@ -17893,4 +17523,1316 @@ msgstr "Összes családi koordináta frissítése"
 #: 
 msgid "Update Coordinates"
 msgstr "Koordináták frissítése"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s volt a család feje, és elhunytként lett megjelölve. Kérjük, jelöljön ki új családfőt."
+
+#: 
+msgid "Accept"
+msgstr "Elfogadás"
+
+#: 
+msgid "Active Now"
+msgstr "Jelenleg aktív"
+
+#: 
+msgid "Adding..."
+msgstr "Hozzáadás..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Minden e-mail címmel rendelkező CRM-tag fel van iratkozva erre a listára!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Minden MailChimp-feliratkozó szerepel a ChurchCRM-ben!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Hiba történt a fájlok törlése közben."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Teljesen biztos benne? Ez törli az összes adatot, és visszaállítja a gyári alapbeállításokat."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Biztosan törli AZ ÖSSZES naplófájlt? Ez a művelet nem vonható vissza."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Biztosan törli a kioszkot"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Biztosan törli a hivatkozást"
+
+#: 
+msgid "Assignment"
+msgstr "Hozzárendelés"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "A háttérfeladatok (születésnapi e-mailek és minden bővítmény ütemezett feladata) még soha nem futottak ezen a telepítésen."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "A háttérfeladatok (születésnapi e-mailek és minden bővítmény ütemezett feladata) utoljára %s napon futottak."
+
+#: 
+msgid "Backing up..."
+msgstr "Biztonsági mentés készítése..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "A biztonsági mentés letöltve."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "A biztonsági mentés sikeresen feltöltve"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "A saját aktív állapotát nem módosíthatja"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "A ChMeetings-exportálás sikeresen befejeződött"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "A módosítások sikeresen mentve"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Mindenki kijelentkeztetése és az összes deaktiválása"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Kijelentkezteti mindenkit, és deaktiválja ezt az eseményt?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Nézze meg az e-mail fiókját a jelszó-visszaállító hivatkozásért"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Bezárja a beragadt eseményeket?"
+
+#: 
+msgid "Comments"
+msgstr "Megjegyzések"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Az e-mail előnézete nem tölthető be. Kérjük, zárja be, és próbálja újra."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Biztonsági mentés készítése és feltöltése. Ez néhány percet igénybe vehet..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Az adatbázis visszaállítása sikertelen."
+
+#: 
+msgid "Deceased"
+msgstr "Elhunyt"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Alapértelmezett rendszergazdai hitelesítő adatok"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Kioszk törlése"
+
+#: 
+msgid "Deleted Files"
+msgstr "Törölt fájlok"
+
+#: 
+msgid "Deleting..."
+msgstr "Törlés..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "A letöltés melléklet fejlécek nélkül érkezett vissza."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Hiba a naplófájl törlésekor."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Hiba a naplófájlok törlésekor."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Hiba a naplófájl letöltésekor."
+
+#: 
+msgid "Error initiating download."
+msgstr "Hiba a letöltés indításakor."
+
+#: 
+msgid "Error loading log file."
+msgstr "Hiba a naplófájl betöltésekor."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Hiba az önregisztrált bejegyzések betöltésekor"
+
+#: 
+msgid "Errors"
+msgstr "Hibák"
+
+#: 
+msgid "Failed Files"
+msgstr "Sikertelen fájlok"
+
+#: 
+msgid "Failed to add link"
+msgstr "A hivatkozás hozzáadása sikertelen"
+
+#: 
+msgid "Failed to add option"
+msgstr "A beállítás hozzáadása sikertelen"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Az események bezárása sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to delete"
+msgstr "A törlés sikertelen"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "A kioszk-regisztráció engedélyezése sikertelen"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "A ChMeetings CSV exportálása sikertelen"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Az audit betöltése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "A kioszk átnevezése sikertelen"
+
+#: 
+msgid "Failed to save changes"
+msgstr "A módosítások mentése sikertelen"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "A bővítmény frissítése sikertelen"
+
+#: 
+msgid "Family Id"
+msgstr "Család azonosítója"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Végső megerősítés"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Családok geokódolása… ez néhány percet vehet igénybe. Nyugodtan nyitva hagyhatja ezt az oldalt."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Családok geokódolása… {{done}} / {{total}} feldolgozva, {{geocoded}} bemérve."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Családfő-frissítés szükséges"
+
+#: 
+msgid "Helpful Links"
+msgstr "Hasznos hivatkozások"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Elhunytak elrejtése a névjegyzékből"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Az elhunyt tagok elrejtése a nyomtatott névjegyzékből és a CSV-exportokból."
+
+#: 
+msgid "Identify"
+msgstr "Azonosítás"
+
+#: 
+msgid "Identify command sent"
+msgstr "Az azonosítási parancs elküldve"
+
+#: 
+msgid "Individual"
+msgstr "Magánszemély"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Belső: a háttér-időzített feladatok utolsó befejezésének dátuma és ideje (ÉÉÉÉ-HH-NN ÓÓ:PP:MP). Ne módosítsa kézzel."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Az elem sikeresen törölve"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Kioszk neve"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Kioszk elfogadva"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "A kioszk sikeresen törölve"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "A kioszkot el kell fogadni"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "A kioszk átnevezve"
+
+#: 
+msgid "Last seen"
+msgstr "Utoljára látva"
+
+#: 
+msgid "Link"
+msgstr "Hivatkozás"
+
+#: 
+msgid "Link added successfully"
+msgstr "A hivatkozás sikeresen hozzáadva"
+
+#: 
+msgid "Link deleted"
+msgstr "A hivatkozás törölve"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "A hivatkozás neve nem tartalmazhat HTML-címkéket"
+
+#: 
+msgid "Living"
+msgstr "Élő"
+
+#: 
+msgid "Log settings saved"
+msgstr "A naplózási beállítások mentve"
+
+#: 
+msgid "Login Name is Required"
+msgstr "A bejelentkezési név megadása kötelező"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "A személy aktívként megjelölve"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "A személy inaktívként megjelölve"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Az oldalbetöltés által kiváltott háttér-időzített feladatok futtatásai közötti minimális percek száma. Ez megakadályozza, hogy egy forgalmas vasárnap délelőtt minden oldalmegtekintéskor lefussanak a feladatok. A parancssori futtatóra nem vonatkozik. Állítsa 0-ra, hogy minden oldalbetöltéskor lefusson."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Az új felhasználók nem kapnak üdvözlő e-mailt, és a generált jelszó soha nem jelenik meg. A fiók létrehozása után állítson be egyet a Rendszerfelhasználók menüben a Jelszó módosítása funkcióval — vagy állítsa be előbb az e-mailt."
+
+#: 
+msgid "No changes to save"
+msgstr "Nincs menthető módosítás"
+
+#: 
+msgid "No contact info"
+msgstr "Nincs elérhetőségi adat"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Nincs beállítva egyedi hivatkozás. Adjon hozzá egyet fent!"
+
+#: 
+msgid "No email"
+msgstr "Nincs e-mail"
+
+#: 
+msgid "No files were deleted."
+msgstr "Egy fájl sem lett törölve."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Ehhez a bővítményhez nem érhető el súgó."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Nincs hozzáadható személy - mindenki már a kosárban van"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Nincs hozzáadható személy - a szűrő nem adott találatot"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Nem érvényes elhalálozási dátum"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Azoknak a napoknak a száma, amennyi idő a felhasználóknak a kétfaktoros hitelesítés beállítására áll rendelkezésre a kötelezővé tétele után. Állítsa 0-ra az azonnali kikényszerítéshez. Egy aktív türelmi idő lerövidítése azonnal kizárhatja a felhasználókat."
+
+#: 
+msgid "Offline"
+msgstr "Offline"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Ezt csak azután tegye meg, miután az alapproblémát megoldotta. A bővítmény újbóli futtatásához továbbra is rá kell kattintania az Engedélyezés gombra."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Kérjük, erősítse meg a személy aktiválását"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Kérjük, erősítse meg a személy deaktiválását"
+
+#: 
+msgid "Plugin status updated"
+msgstr "A bővítmény állapota frissítve"
+
+#: 
+msgid "Registered"
+msgstr "Regisztrálva"
+
+#: 
+msgid "Reload"
+msgstr "Újratöltés"
+
+#: 
+msgid "Reload command sent"
+msgstr "Az újratöltési parancs elküldve"
+
+#: 
+msgid "Rename"
+msgstr "Átnevezés"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Kioszk átnevezése"
+
+#: 
+msgid "Reset Complete"
+msgstr "Visszaállítás kész"
+
+#: 
+msgid "Reset Settings"
+msgstr "Beállítások visszaállítása"
+
+#: 
+msgid "Resetting..."
+msgstr "Visszaállítás..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Az ütemezett feladatok nem futnak"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Hiányzó biztonsági token. Kérjük, frissítse az oldalt."
+
+#: 
+msgid "Select…"
+msgstr "Válasszon…"
+
+#: 
+msgid "Sending..."
+msgstr "Küldés..."
+
+#: 
+msgid "Sending…"
+msgstr "Küldés…"
+
+#: 
+msgid "Settings reset"
+msgstr "A beállítások visszaállítva"
+
+#: 
+msgid "Settings saved"
+msgstr "A beállítások mentve"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "A beállítások mentve. Frissítési információk frissítése..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Csak az aktív személyek megjelenítése."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Csak az inaktív személyek megjelenítése."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Sikeresen törölve"
+
+#: 
+msgid "Testing..."
+msgstr "Tesztelés..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Az adatbázis törölve lett. A rendszer készen áll az újrakezdésre."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Az oldalbetöltéses tartalék megoldás eközben tovább működik. A %1$s beállítással módosíthatja, hogy a ChurchCRM mennyi ideig várjon ennek a figyelmeztetésnek a megjelenítése előtt, vagy állítsa 0-ra az elrejtéséhez."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Ez a személy inaktív"
+
+#: 
+msgid "This person is deceased"
+msgstr "Ez a személy elhunyt"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Ez törli a bővítményhez beállított összes értéket. Ez a művelet nem vonható vissza."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Ez véglegesen törli a bővítmény fájljait a lemezről, és törli annak beállításait. Ez a művelet nem vonható vissza."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "Az URL nem tartalmazhat HTML-címkéket"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Váratlan hiba történt. Kérjük, próbálja újra."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Bővítmény eltávolítása"
+
+#: 
+msgid "Upcoming"
+msgstr "Közelgő"
+
+#: 
+msgid "Valid Until"
+msgstr "Érvényes eddig"
+
+#: 
+msgid "View active only"
+msgstr "Csak az aktívak megjelenítése"
+
+#: 
+msgid "View all"
+msgstr "Összes megjelenítése"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Összes megjelenítése (inaktívakkal együtt)"
+
+#: 
+msgid "View inactive only"
+msgstr "Csak az inaktívak megjelenítése"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Figyelmeztetés megjelenítése a rendszergazdai irányítópulton, ha a háttér-időzített feladatok ennyi órája nem futottak le. A 26 lehetővé teszi a napi cron futást, valamint némi csúszást. Állítsa 0-ra a figyelmeztetés letiltásához."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Ütemező nélkül ezek a feladatok csak akkor futnak le, ha valaki betölt egy oldalt, így egy csendes hétköznapon egyáltalán nem küld ütemezett levelet. Adjon hozzá egy cron bejegyzést, amely óránként futtatja a feladatfuttatót, ugyanazzal a felhasználóval, amellyel a webszerver fut"
+
+#: 
+msgid "check-outs"
+msgstr "kijelentkezések"
+
+#: 
+msgid "deceased"
+msgstr "elhunyt"
+
+#: 
+msgid "event"
+msgstr "esemény"
+
+#: 
+msgid "events?"
+msgstr "eseményeket?"
+
+#: 
+msgid "files"
+msgstr "fájlok"
+
+#: 
+msgid "people from cart?"
+msgstr "személyt a kosárból?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "a „skip” értékének nullának vagy pozitív egész számnak kell lennie"
+
+#: 
+msgid "view families missing an email"
+msgstr "azon családok megtekintése, amelyeknél hiányzik az e-mail cím"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Vásárlók ebben a pénzügyi évben"
+
+#: 
+msgid "Current"
+msgstr "Jelenlegi"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Adományozott tételek (ebben a pénzügyi évben)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "A bejelentkezési névnek legfeljebb %d karakterből kell állnia!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Gyűjtött összeg ebben a pénzügyi évben"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "A(z) %s teljes https:// webcímnek kell lennie, például: https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "A fiók korlátozott jogosultságokkal rendelkezik. Vegye fel a kapcsolatot egy rendszergazdával."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Hiba történt a hibaoldal megjelenítése közben."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Minden címnek https://-vel kell kezdődnie"
+
+#: 
+msgid "Generate Labels"
+msgstr "Címkék generálása"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Postai címkék generálása"
+
+#: 
+msgid "Labels"
+msgstr "Címkék"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Postai címkék a kosárban lévő személyekhez. Ha egy személynek nincs saját címe, a családja címére kerül megcímezésre."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Nem kötelező. A gyülekezet saját fiókjaira mutató hivatkozások, amelyeket a tagok olyan oldalakon látnak, mint a portál lábléce. Hagyjon üresen egy mezőt az adott közösségi hálózat elrejtéséhez."
+
+#: 
+msgid "Options"
+msgstr "Beállítások"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Ütemezett feladatok"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktív, hátralévő másodpercek: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "A futtatások közötti várt időköz (óra): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Kihagyott családok (nincs rögzített e-mail cím): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Nem geokódolható családok: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Megerősítő e-mailt kapó családok: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Másolt tagok: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Itt nem szerepel: még {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Címzettek: {{total}} — túl sok egy mailto: hivatkozáshoz. Használja inkább a Címek másolása funkciót."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Túl sok címzett az e-mail klienshez ({{total}} > {{max}}). Használja inkább a Címek másolása funkciót."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} perc van hátra"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d adóbevallási dokumentum sikeresen elküldve a családnak."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d adományi kimutatás"
+
+#: 
+msgid "All classifications"
+msgstr "Összes besorolás"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Adminisztrátorként kérjük, tekintse meg a következőket is:"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Születésnapok, évfordulók, önkéntesek és egyéb emberek listája besorolás szűrővel"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Válassza a %s elemet a jelentés futtatásához."
+
+#: 
+msgid "Choose events"
+msgstr "Válassza az eseményeket"
+
+#: 
+msgid "Choose..."
+msgstr "Válasszon..."
+
+#: 
+msgid "Church Logo"
+msgstr "Templomi logó"
+
+#: 
+msgid "Columns per Page"
+msgstr "Oszlopok oldalanként"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Kedves %s család,\n"
+"\n"
+"Kérjük, keresse meg az Ön %d adományi kimutatását a %s dátumból ebben az e-mailben csatolva.\n"
+"\n"
+"Ha bármilyen kérdésे van, kérjük forduljon a templom irodájához.\n"
+"\n"
+"Köszönjük nagylelkűségéért."
+
+#: 
+msgid "Download CSV"
+msgstr "CSV letöltése"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "%d adóbevallási dokumentum elküldése"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "A Pénzügyi modul és az oldalsáv menü engedélyezése vagy letiltása."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Az Adománygyűjtő modul engedélyezése vagy letiltása."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "A templom logójának eltávolítása sikertelen"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "A templom logójának feltöltése sikertelen"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Tartalék logó URL e-mail sablonokhoz, csak akkor használatos, ha a Templomi információ oldalon nem lett feltöltve templom logó. Az alkalmazás saját oldalai figyelmen kívül hagyják ezt a beállítást, és mindig a feltöltött logót vagy az alapértelmezett ChurchCRM logót használják. Abszolút http(s) URL-nek kell lennie. Az e-mail kliensek közötti legjobb megjelenítéshez használjon kb. 3,5:1 képarányú széles banner képet (például 350×100 px), PNG vagy JPG formátumot, HTTPS-en keresztül kiszolgálva. Hagyja üresen vagy adjon meg érvénytelen értéket az alapértelmezett ChurchCRM logóra való visszatéréshez."
+
+#: 
+msgid "Finance Module"
+msgstr "Pénzügyi modul"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Keresse meg azokat az embereket, akik nem vettek részt egy eseményen"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Keresse meg azokat az önkénteseket, akik két meghatározott lehetőségkódnak felelnek meg"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Első önkéntes lehetőség"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Összehajtott füzet"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Adománygyűjtő modul"
+
+#: 
+msgid "Giving History"
+msgstr "Adományi előzmények"
+
+#: 
+msgid "Last Gift"
+msgstr "Utolsó adomány"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Hagyja üresen az összes besorolás esetén."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Az adóévhez kapcsolódó dokumentumok maximális száma családi profil szerint (0 = korlátlan)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Az adóévenek maximális száma családonként"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Tagságnak évfordulói"
+
+#: 
+msgid "Missing People"
+msgstr "Hiányzó emberek"
+
+#: 
+msgid "No giving history found."
+msgstr "Nincs adományi előzmény."
+
+#: 
+msgid "No people match these filters."
+msgstr "Nem találunk olyan embereket, akik megfelnének ezeknek a szűrőknek."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Egy könyvtároldalak egy lapon, álló tájolás."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Csak a http és https schemákat engedélyezzük."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF vagy WebP. Egy kb. 3,5:1 képarányú széles banner (például 700x200) működik a legjobban; transzparens PNG előnyben részesített."
+
+#: 
+msgid "Page Layout"
+msgstr "Oldal elrendezése"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Emberek, akik egy adott hónapban csatlakoztak"
+
+#: 
+msgid "Pledged"
+msgstr "Megígérve"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "%d adóbevallási dokumentum nyomtatása"
+
+#: 
+msgid "Recent Friends"
+msgstr "Közelmúltbeli barátok"
+
+#: 
+msgid "Report not found"
+msgstr "A jelentés nem található"
+
+#: 
+msgid "Run Report"
+msgstr "Jelentés futtatása"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Második önkéntes lehetőség"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Az oldalsávban, a bejelentkezési oldalon és az e-mailekben jelenik meg. A logó feltöltése helyettesíti a ChurchCRM márkákat mindenhol, ahol megjelenik."
+
+#: 
+msgid "Single Pages"
+msgstr "Egyes oldalak"
+
+#: 
+msgid "Tax Documents"
+msgstr "Adóbevallási dokumentumok"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Az adóbevallási dokumentum e-mail küldése sikertelen. Kérjük, ellenőrizze az e-mail kiszolgáló beállításait."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Két fél méretű lap egymás mellett minden fekvő lapon, füzet sorrendben. Kétoldalas nyomtatás \"billen a rövid szélén\", majd hajtsa be az rakást a felére. Az oszlopokat fél oldalanként számoljuk."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Nem lehet e-mailben elküldeni az adóbevallási dokumentumot: nem találtunk kifizetési adatokat erre az évre."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Nem lehet e-mailben elküldeni az adóbevallási dokumentumot: ennek a családnak nincs e-mail cím a fájlban."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Az OpenLP kiszolgáló gazdagépneve nem megoldható. Ellenőrizze a címet és a hálózati kapcsolatot."
+
+#: 
+msgid "Upload"
+msgstr "Feltöltés"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Az alapértelmezett ChurchCRM logó használata"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Teljes családi adományok megtekintése"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Önkéntes lehetőség"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Önkéntesek két lehetőséghez"
+
+#: 
+msgid "YTD"
+msgstr "Év kezdetétől"
+
+#: 
+msgid "YTD Paid"
+msgstr "Év kezdetétől kifizetett"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "hibákat keressen az adott időponti körül, és töltse le valamint csatolja a megfelelő naplófájlt a GitHub problémasorához – segít nekünk a probléma megoldásában anélkül, hogy további kérdéseket tennénk fel."
+
+#: 
+msgid "system logs"
+msgstr "rendszer naplók"
+
+#: 
+msgid "Access Control & Security"
+msgstr "Hozzáférés-vezérlés és biztonság"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "Az adólevonás nélküli kifizetések rögzítésének engedélyezése (pl. árucikkek értékesítése)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "A nem hitelesített hozzáférés engedélyezése nyilvános eseményekhez (naptárak beágyazásához)"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "Születésnapi e-mailek automatikus küldése (háttér-feladat ütemezőre szükséges)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "Születésnapi köszöntő e-mailek"
+
+#: 
+msgid "Communication & Email"
+msgstr "Kommunikáció és e-mail"
+
+#: 
+msgid "Content Security Policy"
+msgstr "Tartalombiztonsági irányelv"
+
+#: 
+msgid "Email System"
+msgstr "E-mail rendszer"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Engedélyezze vagy tiltsa le a szervezet funkcióit"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "Az Események szakasz engedélyezése/letiltása a fő navigációban"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "A Pénzügyek menü és az összes pénzügyi funkció engedélyezése/letiltása (betételek, kifizetések, jelentések)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "Az Adománygyűjtő menü engedélyezése/letiltása"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "Szigorú CSP fejlécek érvényesítése az XSS támadások elleni védelemhez"
+
+#: 
+msgid "Events Module"
+msgstr "Események modul"
+
+#: 
+msgid "Feature Toggles"
+msgstr "Funkciók kapcsolói"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "A funkciókapcsolók szabályozzák, hogy mely modulok és funkciók érhetők el a ChurchCRM-ben. A módosítások azonnal érvénybe lépnek."
+
+#: 
+msgid "Finance Features"
+msgstr "Pénzügyi funkciók"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "Címek belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "Naptáresemények belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "Egyéni családi tulajdonságok belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "Betételek belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "Családok belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "Csoportok belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "Kifizetések belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "Emberek belefoglalása a gyors globális keresésbe"
+
+#: 
+msgid "Invalid setting"
+msgstr "Érvénytelen beállítás"
+
+#: 
+msgid "Lost Password Link"
+msgstr "Elfeledett jelszó link"
+
+#: 
+msgid "Manage All Features"
+msgstr "Az összes funkció kezelése"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "E-mail küldésre vonatkozó fő kapcsoló. SZÜKSÉGES a jelszó-visszaállítások és értesítések számára"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "Nem levonható kifizetések"
+
+#: 
+msgid "Primary Modules"
+msgstr "Fő modulok"
+
+#: 
+msgid "Public Calendar API"
+msgstr "Nyilvános naptár API"
+
+#: 
+msgid "Saved"
+msgstr "Mentve"
+
+#: 
+msgid "Search Families"
+msgstr "Családok keresése"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "Családi egyéni tulajdonságok keresése"
+
+#: 
+msgid "Search Settings"
+msgstr "Keresési beállítások"
+
+#: 
+msgid "Self-Registration"
+msgstr "Önregisztráció"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "A \"Jelszót elfelejtette?\" lehetőség megjelenítése a bejelentkezési képernyőn (lehetővé teszi a felhasználó önálló visszaállítását)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "A vasárnapi iskola modul megjelenítése/elrejtése az oldalsávban"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "Nem lehet deaktiválni az egyetlen bejelentkezési képességgel rendelkező rendszergazdát"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "Nem lehet az egyetlen bejelentkezési képességgel rendelkező rendszergazdát elhunynak jelölni"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "Elhunyt — nem tud bejelentkezni"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "Adjon meg egy másik címet, mielőtt a levelezési címként jelölné meg"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "Inaktív — nem tud bejelentkezni"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "A levél a másik címre megy; az elsődleges cím marad a térképekhez és útvonalkereséshez használt fizikai hely."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "A levél erre a címre kerül az elsődleges cím helyett"
+
+#: 
+msgid "Mailing Address"
+msgstr "Levelezési cím"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "Levelezési cím, ha eltérő"
+
+#: 
+msgid "Primary Address"
+msgstr "Elsődleges cím"
+
+#: 
+msgid "Receives Mail"
+msgstr "Levelet kap"
+
+#: 
+msgid "Second Address"
+msgstr "Másik cím"
+
+#: 
+msgid "Second Home"
+msgstr "Másik otthon"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "A csatolt személy elhunyt vagy inaktív. A bejelentkezés, a munkamenetek és az API-kulcs le van tiltva, amíg a személyt ismét aktívvá nem teszik."
+
+#: 
+msgid "This is the mailing address"
+msgstr "Ez a levelezési cím"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "Ez a személy elhunyt vagy inaktív, ezért ez a fiók nem tud bejelentkezni"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "Csak egy rendszergazda tudja törölni azt a személyt, akinek van bejelentkezése."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "Az utolsó rendszergazda nem törölhető."
+
+#: 
+msgid "Category"
+msgstr "Kategória"
+
+#: 
+msgid "Category updated."
+msgstr "A kategória frissítve."
+
+#: 
+msgid "Delete Category"
+msgstr "Kategória törlése"
+
+#: 
+msgid "Failed to delete category"
+msgstr "A kategória törlése sikertelen"
+
+#: 
+msgid "Failed to rename category"
+msgstr "A kategória átnevezése sikertelen"
+
+#: 
+msgid "Fund Categories"
+msgstr "Alapforrások kategóriái"
+
+#: 
+msgid "Fund activated."
+msgstr "Az alapforrás aktiválva."
+
+#: 
+msgid "Fund deactivated."
+msgstr "Az alapforrás kikapcsolva."
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Az ebben a kategóriában lévő alapforrások kategóriázatlan lesz. Az alapforrások maguk nem törlődnek."
+
+#: 
+msgid "INACTIVE"
+msgstr "Inaktív"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "Új kategória neve (egy meglévő név az osztályat egyesít)"
+
+#: 
+msgid "Optional"
+msgstr "Opcionális"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "Opcionális — válassz vagy írj be egy új kategóriát"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "A megígért összegen túl fizetett"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "Megígért, de még nem fizetett"
+
+#: 
+msgid "Rename Category"
+msgstr "Kategória átnevezése"
+
+#: 
+msgid "Still Owed"
+msgstr "Még mindig esedékes"
+
+#: 
+msgid "Summary by Category"
+msgstr "Összegzés kategória szerint"
+
+#: 
+msgid "Total Paid"
+msgstr "Összesen fizetett"
+
+#: 
+msgid "Uncategorized"
+msgstr "Kategóriázatlan"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "Az aktuális beállításokat nem sikerült betölteni. Töltse újra az oldalt, és próbálja meg újra."
+
+#: 
+msgid "This setting must be a number"
+msgstr "Ennek a beállításnak számnak kell lennie"
+
+#: 
+msgid "Child Role"
+msgstr "Gyermek szerepe"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "A névjegyzékbe való felvétel csak az osztályozások listájánál kapcsolható át"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "Üdvözlő üzenet 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "Üdvözlő üzenet 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "Családfő szerepe"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "Család nélküli címek elrejtése"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "Barátság dátumának elrejtése"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "Hírlevél-feliratkozások elrejtése"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "Esküvő dátumának elrejtése"
+
+#: 
+msgid "In Directory"
+msgstr "A névjegyzékben"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "Részletek belefoglalása az értesítésekbe"
+
+#: 
+msgid "Notification Recipients"
+msgstr "Értesítések címzettjei"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "Értesítendő személyek új család vagy személy hozzáadásakor"
+
+#: 
+msgid "Person initials style"
+msgstr "Személy monogramjának stílusa"
+
+#: 
+msgid "Person name display style"
+msgstr "Személy nevének megjelenítési stílusa"
+
+#: 
+msgid "Spouse Role"
+msgstr "Házastárs szerepe"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Irányítószámok nagybetűvel"
 

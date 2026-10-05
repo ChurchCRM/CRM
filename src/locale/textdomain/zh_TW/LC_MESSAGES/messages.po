@@ -496,11 +496,6 @@ msgstr "圖片"
 
 #: 
 #, fuzzy
-msgid "Number of Columns"
-msgstr "列數"
-
-#: 
-#, fuzzy
 msgid "Paper Size"
 msgstr "紙張大小"
 
@@ -872,10 +867,6 @@ msgstr "刪除照片"
 #: 
 msgid "Timeline"
 msgstr "時間線"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "認捐和實付"
 
 #: 
 msgid "Value"
@@ -1720,30 +1711,6 @@ msgstr "類"
 #: 
 msgid "Properties"
 msgstr "屬性"
-
-#: 
-msgid "Query Listing"
-msgstr "查詢上市"
-
-#: 
-msgid "Query View"
-msgstr "查詢視圖"
-
-#: 
-msgid "This value is required."
-msgstr "此值是必需的。"
-
-#: 
-msgid "This value must be numeric."
-msgstr "此值必須是數字。"
-
-#: 
-msgid "Run Query Again"
-msgstr "再次運行查詢"
-
-#: 
-msgid "Execute Query"
-msgstr "執行查詢"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -2708,10 +2675,6 @@ msgstr "查看買家"
 #: 
 msgid "Add Donors to Buyer List"
 msgstr "將捐贈者添加到買方名單"
-
-#: 
-msgid "Data/Reports"
-msgstr "數據/報告"
 
 #: 
 #, fuzzy
@@ -4596,10 +4559,6 @@ msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/
 msgstr "要在日期選取器中定義日期，默認情況下：Y-m-d，在法國：d/m/Y。"
 
 #: 
-msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
-msgstr "添加新家庭或人員時要通知的人員ID列表用逗號分隔"
-
-#: 
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "允許從外部日曆API中進行未經身份驗證的事件讀取"
 
@@ -5190,16 +5149,6 @@ msgstr[0] "%d歲大\n"
 #, fuzzy
 msgid "Missing PHP ZipArchive"
 msgstr "缺少PHP ZipArchive"
-
-#: 
-#, fuzzy
-msgid "Add Results to Cart"
-msgstr "將結果添加到購物車"
-
-#: 
-#, fuzzy
-msgid "Remove Results from Cart"
-msgstr "從購物車中刪除結果"
 
 #: 
 #, fuzzy
@@ -6505,10 +6454,6 @@ msgid "Cart"
 msgstr "購物車/清單"
 
 #: 
-msgid "Change this in System Settings."
-msgstr "在系統設定中更改此項。"
-
-#: 
 msgid "Church Membership"
 msgstr "教會成員身分"
 
@@ -6559,10 +6504,6 @@ msgstr "建立或選擇一筆存款以開始。"
 #: 
 msgid "Current Deposit"
 msgstr "當前存款"
-
-#: 
-msgid "Current fiscal year"
-msgstr "當前財政年度"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -6625,10 +6566,6 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "在生成聲明之前，確保稅務年度的所有存款都已關閉。"
 
 #: 
-msgid "Export Options"
-msgstr "匯出選項"
-
-#: 
 msgid "F"
 msgstr "女"
 
@@ -6643,10 +6580,6 @@ msgstr "家庭導覽"
 #: 
 msgid "Feb"
 msgstr "二月"
-
-#: 
-msgid "Filtering"
-msgstr "過濾"
 
 #: 
 msgid "Finance"
@@ -6669,16 +6602,8 @@ msgid "Generate Tax Statements"
 msgstr "生成稅務聲明"
 
 #: 
-msgid "Generate annual giving statements for donors and identify giving patterns."
-msgstr "為捐贈者生成年度奉獻聲明並識別奉獻模式。"
-
-#: 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
 msgstr "為捐贈者生成年度免稅奉獻聲明。可以列印或發送電子郵件。"
-
-#: 
-msgid "Generate detailed reports for individual deposits or date ranges."
-msgstr "為個人存款或日期範圍生成詳細報告。"
 
 #: 
 msgid "Generate reminder letters for families with outstanding pledges."
@@ -6739,10 +6664,6 @@ msgstr "三月"
 #: 
 msgid "Membership Reports"
 msgstr "成員報告"
-
-#: 
-msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
-msgstr "大多數報告可以匯出為 PDF 供列印，或匯出為 CSV 供電子表格分析。"
 
 #: 
 msgid "Mr., Mrs., Dr."
@@ -6821,14 +6742,6 @@ msgid "Recording a Pledge"
 msgstr "記錄認獻"
 
 #: 
-msgid "Report Tips"
-msgstr "報告提示"
-
-#: 
-msgid "Reports related to member voting eligibility and organization governance."
-msgstr "與成員投票資格和組織管理相關的報告。"
-
-#: 
 msgid "Reset"
 msgstr "重設"
 
@@ -6905,20 +6818,12 @@ msgid "Total Amount"
 msgstr "總金額"
 
 #: 
-msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
-msgstr "追踪運動和財政年度預算的認獻和付款進度。"
-
-#: 
 msgid "Unmet Prerequisites"
 msgstr "未滿足的先決條件"
 
 #: 
 msgid "Upgrade"
 msgstr "升級"
-
-#: 
-msgid "Use classification and family filters to generate reports for specific groups of donors."
-msgstr "使用分類和家庭過濾器為特定的捐贈者群體生成報告。"
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -6943,10 +6848,6 @@ msgstr "今年以來認獻"
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr "您可以現在建立家庭成員，也可以稍後添加。所有條目都將成為新的個人記錄。"
-
-#: 
-msgid "Your fiscal year starts in month"
-msgstr "您的財政年度開始月份為"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -7501,10 +7402,6 @@ msgstr "移除此出席計數？"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "選擇此屬性適用的記錄類型"
-
-#: 
-msgid "Total Pledges"
-msgstr "認捐總額"
 
 #: 
 msgid "Track and manage pledge commitments by family and fund"
@@ -9175,10 +9072,6 @@ msgid "Current person"
 msgstr "目前人員"
 
 #: 
-msgid "Data & Reports"
-msgstr "資料與報表"
-
-#: 
 msgid "Database Reset"
 msgstr "資料庫重設"
 
@@ -10197,10 +10090,6 @@ msgid "View and manage system log files for debugging"
 msgstr "檢視和管理系統日誌檔案以進行除錯"
 
 #: 
-msgid "View and run saved database queries"
-msgstr "檢視和執行已儲存的資料庫查詢"
-
-#: 
 msgid "View buyer numbers and paddle assignments"
 msgstr "檢視買家編號和競標牌分配"
 
@@ -10219,10 +10108,6 @@ msgstr "檢視家庭奉獻承諾摘要和基金分配"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "檢視小組成員、角色和屬性"
-
-#: 
-msgid "View query results"
-msgstr "檢視查詢結果"
 
 #: 
 msgid "View transaction details for a pledge payment"
@@ -10544,10 +10429,6 @@ msgstr "有可用更新"
 msgid "User must have Notes permission"
 msgstr "使用者必須擁有備註權限"
 
-#: 
-msgid "Address Defaults"
-msgstr "地址預設值"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -10560,16 +10441,6 @@ msgstr "行事曆設定"
 #: 
 msgid "Calendars"
 msgstr "行事曆"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "選擇志工機會"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "選擇人員欄位"
 
 #: 
 msgid "Church Identity"
@@ -10591,11 +10462,6 @@ msgstr "ChurchCRM可以直接傳送電子郵件。"
 msgid "Communication"
 msgstr "通訊"
 
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "比較兩個會計年度之間的承諾"
-
 #: 
 msgid "Configure SMTP in the settings below to send emails from the system."
 msgstr "在下方設定中設定SMTP以從系統傳送電子郵件。"
@@ -10609,17 +10475,8 @@ msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "連接Mailchimp以同步電子報和行銷活動的電子郵件清單。"
 
 #: 
-msgid "Copy from church address"
-msgstr "從教會地址複製"
-
-#: 
 msgid "Copy to clipboard"
 msgstr "複製到剪貼簿"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "自訂欄位"
 
 #: 
 msgid "Default Country"
@@ -10673,16 +10530,6 @@ msgstr "無法擷取電子郵件地址"
 msgid "Failed to retrieve phone numbers"
 msgstr "無法擷取電話號碼"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "欄位值"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "找出有志在某一年但不是另一年的人"
-
 #. Context: query_qry
 #: 
 msgid "Find volunteers for a particular opportunity"
@@ -10690,33 +10537,8 @@ msgstr "為特定機會尋找志願者"
 
 #. Context: query_qry
 #: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "為符合兩個特定機會代碼的志願者提供支持"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "第一個財政年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "用於比較的第一個財政年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "第一個志願者機會選擇"
-
-#. Context: query_qry
-#: 
 msgid "Friends who signed up in previous months"
 msgstr "在前幾個月註冊的朋友"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "訪客"
 
 #: 
 msgid "Kiosk check-in email notifications"
@@ -10740,31 +10562,6 @@ msgstr "管理活動、生日和週年紀念"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Match custom field to this value"
-msgstr "將自訂欄位匹配到此值"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "成員、經常參加者等"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "在特定月份加入的成員"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "會員週年紀念"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "缺少的奉獻承諾"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Month"
 msgstr "月份"
 
@@ -10784,16 +10581,6 @@ msgstr "新成員通知電子郵件"
 #: 
 msgid "No cell phone on file"
 msgstr "檔案中沒有手機"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "非出席者"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "非出席者（工作人員）"
 
 #: 
 msgid "Not Classified"
@@ -10830,30 +10617,10 @@ msgstr "用於將成員從簡訊/文本列表中排除的人員屬性"
 msgid "Person property used to exclude members from email lists"
 msgstr "用於將成員從電子郵件列表中排除的人員屬性"
 
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "奉獻承諾比較"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "今年承諾奉獻"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "屬性"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "最近的朋友"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "經常參加者"
 
 #. Context: query_qry
 #: 
@@ -10875,21 +10642,6 @@ msgstr "SMTP 已配置"
 #: 
 msgid "SMTP Not Configured"
 msgstr "SMTP 未配置"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "第二個財政年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "用於比較的第二個財政年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "第二個志願者機會選擇"
 
 #: 
 msgid "Send text message"
@@ -10923,25 +10675,6 @@ msgstr "文本工具"
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr "文本消息操作可從組和主日學班級視圖中獲得。使用\"文本\"下拉菜單複製電話號碼或向組成員發送簡訊。"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "您想要返回記錄的生日月份。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "您想要返回記錄的會員週年月份。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "您想要返回人員記錄的屬性。"
-
-#: 
-msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
-msgstr "建立新家庭時，這些值會預先填充。留空以要求手動輸入。"
-
 #: 
 msgid "Unit used to measure distance."
 msgstr "用於測量距離的單位。"
@@ -10950,11 +10683,6 @@ msgstr "用於測量距離的單位。"
 #: 
 msgid "User permission to send email via mailto: links"
 msgstr "用戶權限通過 mailto: 鏈接發送電子郵件"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "志願者機會"
 
 #. Context: query_qry
 #: 
@@ -10972,11 +10700,6 @@ msgstr "Vonage 簡訊未配置"
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr "沒有 Vonage，文本操作將打開您設備的原生簡訊應用或將電話號碼複製到剪貼板。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "但今年不是"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -11087,10 +10810,6 @@ msgstr "允許透過公開的 HTML、ICS 和 JSON URL 未經驗證地存取行�
 msgid "Allow visitors to create their own family record via the self-registration page"
 msgstr "允許訪客透過自助登記頁面建立自己的家庭記錄"
 
-#: 
-msgid "Allow visitors to self-register as new families."
-msgstr "允許訪客自助登記為新家庭。"
-
 #. plugin:external-backup:section:5:content
 #: 
 msgid "Any WebDAV-compatible service works with this plugin:\n"
@@ -11174,10 +10893,6 @@ msgstr "選擇當 Gravatar 不存在時顯示的內容：\n"
 "• 復古 - 8-bit 街機風格像素藝術\n"
 "• RoboHash - 唯一生成的機器人\n"
 "• 空白 - 透明（回退到首字母）"
-
-#: 
-msgid "Comma-separated query IDs that require finance permissions to view"
-msgstr "需要財務權限才能查看的查詢 ID（以逗號分隔）"
 
 #. plugin:custom-links:section:4:content
 #: 
@@ -11290,10 +11005,6 @@ msgstr "啟用掃描支票功能"
 msgid "Features"
 msgstr "功能"
 
-#: 
-msgid "Finance permission query IDs"
-msgstr "財務權限查詢 ID"
-
 #. plugin:openlp:section:3:title
 #: 
 msgid "Finding Your Server URL"
@@ -11367,10 +11078,6 @@ msgstr "Gravatar 通過將電子郵件地址轉換為雜湊值（MD5）來運作
 #: 
 msgid "Hide Latitude/Longitude"
 msgstr "隱藏緯度／經度"
-
-#: 
-msgid "Hide Person Address"
-msgstr "隱藏個人地址"
 
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
@@ -12431,16 +12138,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "主日學、活動與簽到台如何協同工作"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "%s 的日期無效，期望格式為 YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart 或 rangeEnd 的日期格式無效"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "日期無效；期望格式為 YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12671,10 +12370,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds 必須是非空陣列"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "無效的重複類型"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds 必須是非空陣列"
 
@@ -12877,10 +12572,6 @@ msgstr "自助服務機總數"
 #: 
 msgid "Upcoming Events"
 msgstr "即將到來的事件"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "電子郵件範本中顯示的教會標誌的絕對 http(s) URL（未來也將在其他地方重複使用）。為在各電子郵件用戶端中獲得最佳顯示效果，請使用寬橫幅圖片，長寬比約為 3.5:1（例如 350×100 像素），格式為 PNG 或 JPG，並透過 HTTPS 提供服務。留空或輸入無效值將回退至預設的 ChurchCRM 標誌。"
 
 #: 
 msgid "An option with that name already exists"
@@ -14455,11 +14146,6 @@ msgstr "家庭姓氏必須至少包含 2 個字元"
 msgid "Fields"
 msgstr "欄位"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "尋找未參加活動的人員"
-
 #: 
 msgid "First name is required"
 msgstr "名字是必填項"
@@ -14639,11 +14325,6 @@ msgstr "成員已加入名單。"
 #: 
 msgid "Minimum length is"
 msgstr "最小長度為"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "缺席人員"
 
 #: 
 msgid "Move"
@@ -15013,11 +14694,6 @@ msgstr "選擇日曆..."
 msgid "Select event type..."
 msgstr "選擇活動類型..."
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "選擇所需活動"
-
 #: 
 msgid "Sequence"
 msgstr "序號"
@@ -15081,10 +14757,6 @@ msgstr "全部文本"
 #: 
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "所選文件超過此服務器的最大上載大小"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "今日沒有安排活動"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -16480,10 +16152,6 @@ msgid "%1$s of the %2$s family"
 msgstr "%2$s 家庭的 %1$s"
 
 #: 
-msgid "%d record(s) returned"
-msgstr "已回傳 %d 筆記錄"
-
-#: 
 msgid "Assign role to all"
 msgstr "指派角色給所有人"
 
@@ -16654,22 +16322,6 @@ msgstr "系統設定"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "此義工機會已有人員指派，刪除將取消指派"
-
-#: 
-msgid "This value cannot be less than %d characters long"
-msgstr "此值不可少於 %d 個字元"
-
-#: 
-msgid "This value cannot be more than %d characters long"
-msgstr "此值不可多於 %d 個字元"
-
-#: 
-msgid "This value cannot be more than %s"
-msgstr "此值不可超過 %s"
-
-#: 
-msgid "This value must be at least %s"
-msgstr "此值必須至少為 %s"
 
 #: 
 msgid "Total Deposits"
@@ -16952,24 +16604,12 @@ msgid "Family Delete Confirmation"
 msgstr "確認刪除家庭"
 
 #: 
-msgid "Individuals (no family)"
-msgstr "個人（無家庭）"
-
-#: 
-msgid "New Self-Registrations"
-msgstr "新自助登記"
-
-#: 
 msgid "Property Type Delete Confirmation"
 msgstr "確認刪除屬性類型"
 
 #: 
 msgid "Review new families and individuals who signed up on your public registration form"
 msgstr "審查透過公開登記表單新登記的家庭與個人"
-
-#: 
-msgid "Review new sign-ups from your public registration form below. Entries with no email or phone are flagged — verify contact info before following up."
-msgstr "請在下方審查來自公開登記表單的新登記資料，沒有電子郵件或電話的項目已被標記，請在後續跟進前確認聯絡資訊。"
 
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -17679,16 +17319,6 @@ msgstr "最低出價 %s。"
 msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr "特定月份有生日或結婚週年紀念日的成員"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "The month for which you would like birthdays and anniversaries returned."
-msgstr "您希望查詢生日與週年紀念日的月份。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The wedding anniversary month for which you would like records returned."
-msgstr "您希望查詢結婚週年紀念日記錄的月份。"
-
 #: 
 msgid "Total of all purchases: %s"
 msgstr "所有購買總計：%s"
@@ -17908,10 +17538,6 @@ msgid "Selected family"
 msgstr "已選家庭"
 
 #: 
-msgid "This value must be a valid field name."
-msgstr "此值必須是有效的欄位名稱。"
-
-#: 
 msgid "Could not load data"
 msgstr "無法載入資料"
 
@@ -17920,16 +17546,8 @@ msgid "Please refresh the page or try again later."
 msgstr "請重新整理頁面或稍後再試。"
 
 #: 
-msgid "Add the relevant records first."
-msgstr "請先新增相關記錄。"
-
-#: 
 msgid "All Months"
 msgstr "所有月份"
-
-#: 
-msgid "No \"%s\" options are defined yet."
-msgstr "尚未定義任何「%s」選項。"
 
 #: 
 msgid "No events found for %s %d."
@@ -18007,4 +17625,1316 @@ msgstr "更新所有家庭座標"
 #: 
 msgid "Update Coordinates"
 msgstr "更新座標"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s 原為此家庭的戶長，現已被標記為已故。請指派新的戶長。"
+
+#: 
+msgid "Accept"
+msgstr "接受"
+
+#: 
+msgid "Active Now"
+msgstr "目前在線"
+
+#: 
+msgid "Adding..."
+msgstr "新增中..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "所有留有電子郵件的會友都已訂閱此名單！"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "所有 MailChimp 訂閱者都已存在於 ChurchCRM 中！"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "刪除檔案時發生錯誤。"
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "您確定要繼續嗎？這將清除所有資料並還原為出廠預設值。"
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "您確定要刪除所有記錄檔嗎？此操作無法復原。"
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "您確定要刪除自助報到機"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "您確定要刪除此連結"
+
+#: 
+msgid "Assignment"
+msgstr "指派"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "背景工作（生日郵件及所有外掛程式排程工作）尚未在此安裝環境中執行過。"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "背景工作（生日郵件及所有外掛程式排程工作）上次執行時間為 %s。"
+
+#: 
+msgid "Backing up..."
+msgstr "備份中..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "備份已下載。"
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "備份上傳成功"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "無法變更自己的啟用狀態"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings 匯出成功完成"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "變更已成功儲存"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "將所有人簽退並停用全部"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "要將所有人簽退並停用此活動嗎？"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "請查看您的電子郵件以取得密碼重設連結"
+
+#: 
+msgid "Close stuck events?"
+msgstr "要關閉卡住的活動嗎？"
+
+#: 
+msgid "Comments"
+msgstr "備註"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "無法載入電子郵件預覽，請關閉後再試一次。"
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "正在建立並上傳備份，這可能需要幾分鐘的時間..."
+
+#: 
+msgid "Database reset failed."
+msgstr "資料庫重設失敗。"
+
+#: 
+msgid "Deceased"
+msgstr "已故"
+
+#: 
+msgid "Default admin credentials"
+msgstr "預設管理員帳號密碼"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "刪除自助報到機"
+
+#: 
+msgid "Deleted Files"
+msgstr "已刪除的檔案"
+
+#: 
+msgid "Deleting..."
+msgstr "刪除中..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "下載回應未包含附件標頭。"
+
+#: 
+msgid "Error deleting log file."
+msgstr "刪除記錄檔時發生錯誤。"
+
+#: 
+msgid "Error deleting log files."
+msgstr "刪除記錄檔時發生錯誤。"
+
+#: 
+msgid "Error downloading log file."
+msgstr "下載記錄檔時發生錯誤。"
+
+#: 
+msgid "Error initiating download."
+msgstr "啟動下載時發生錯誤。"
+
+#: 
+msgid "Error loading log file."
+msgstr "載入記錄檔時發生錯誤。"
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "載入自助登記項目時發生錯誤"
+
+#: 
+msgid "Errors"
+msgstr "錯誤"
+
+#: 
+msgid "Failed Files"
+msgstr "失敗的檔案"
+
+#: 
+msgid "Failed to add link"
+msgstr "新增連結失敗"
+
+#: 
+msgid "Failed to add option"
+msgstr "新增選項失敗"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "關閉活動失敗，請再試一次。"
+
+#: 
+msgid "Failed to delete"
+msgstr "刪除失敗"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "啟用自助報到機登記失敗"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "匯出 ChMeetings CSV 失敗"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "載入稽核紀錄失敗，請再試一次。"
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "重新命名自助報到機失敗"
+
+#: 
+msgid "Failed to save changes"
+msgstr "儲存變更失敗"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "更新外掛程式失敗"
+
+#: 
+msgid "Family Id"
+msgstr "家庭編號"
+
+#: 
+msgid "Final Confirmation"
+msgstr "最終確認"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "正在為家庭進行地理編碼……這可能需要幾分鐘的時間，您可以讓此頁面保持開啟。"
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "正在為家庭進行地理編碼……已處理 {{done}} / {{total}} 筆，已定位 {{geocoded}} 筆。"
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "需要更新戶長"
+
+#: 
+msgid "Helpful Links"
+msgstr "實用連結"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "在通訊錄中隱藏已故會友"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "在列印通訊錄與 CSV 匯出中隱藏已故會友。"
+
+#: 
+msgid "Identify"
+msgstr "識別"
+
+#: 
+msgid "Identify command sent"
+msgstr "識別指令已送出"
+
+#: 
+msgid "Individual"
+msgstr "個人"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "內部使用：背景計時工作上次完成的日期與時間（YYYY-MM-DD HH:MM:SS）。請勿手動編輯。"
+
+#: 
+msgid "Item deleted successfully"
+msgstr "項目已成功刪除"
+
+#: 
+msgid "Kiosk Name"
+msgstr "自助報到機名稱"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "自助報到機已接受"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "自助報到機已成功刪除"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "必須先接受此自助報到機"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "自助報到機已重新命名"
+
+#: 
+msgid "Last seen"
+msgstr "最後上線時間"
+
+#: 
+msgid "Link"
+msgstr "連結"
+
+#: 
+msgid "Link added successfully"
+msgstr "連結已成功新增"
+
+#: 
+msgid "Link deleted"
+msgstr "連結已刪除"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "連結名稱不可包含 HTML 標籤"
+
+#: 
+msgid "Living"
+msgstr "在世"
+
+#: 
+msgid "Log settings saved"
+msgstr "記錄設定已儲存"
+
+#: 
+msgid "Login Name is Required"
+msgstr "登入帳號為必填"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "已將此人標記為啟用"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "已將此人標記為停用"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "由頁面載入所觸發之背景計時工作，兩次執行之間的最短間隔分鐘數。可避免在忙碌的週日早晨，每次頁面瀏覽都執行一次工作。此設定不適用於命令列執行程式。設為 0 表示每次頁面載入都執行。"
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "新使用者不會收到歡迎郵件，系統產生的密碼也不會顯示。建立帳號後，請至系統使用者透過「變更密碼」設定密碼，或先設定好電子郵件功能。"
+
+#: 
+msgid "No changes to save"
+msgstr "沒有變更需要儲存"
+
+#: 
+msgid "No contact info"
+msgstr "無聯絡資訊"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "尚未設定自訂連結，請在上方新增一個！"
+
+#: 
+msgid "No email"
+msgstr "無電子郵件"
+
+#: 
+msgid "No files were deleted."
+msgstr "沒有檔案被刪除。"
+
+#: 
+msgid "No help available for this plugin."
+msgstr "此外掛程式沒有可用的說明。"
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "沒有可新增的人員 - 所有人都已在購物車中"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "沒有可新增的人員 - 篩選條件沒有結果"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "並非有效的過世日期"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "強制啟用兩步驟驗證（2FA）後，使用者可用來完成設定的天數。設為 0 表示立即強制執行。縮短目前生效中的緩衝期，可能導致使用者立即被鎖定而無法登入。"
+
+#: 
+msgid "Offline"
+msgstr "離線"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "請先確認根本問題已修復後再執行此操作。您仍須點選「啟用」，外掛程式才會再次執行。"
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "請確認啟用此人員"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "請確認停用此人員"
+
+#: 
+msgid "Plugin status updated"
+msgstr "外掛程式狀態已更新"
+
+#: 
+msgid "Registered"
+msgstr "已登記"
+
+#: 
+msgid "Reload"
+msgstr "重新載入"
+
+#: 
+msgid "Reload command sent"
+msgstr "重新載入指令已送出"
+
+#: 
+msgid "Rename"
+msgstr "重新命名"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "重新命名自助報到機"
+
+#: 
+msgid "Reset Complete"
+msgstr "重設完成"
+
+#: 
+msgid "Reset Settings"
+msgstr "重設設定"
+
+#: 
+msgid "Resetting..."
+msgstr "重設中..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "排程工作並未執行"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "缺少安全性權杖，請重新整理頁面。"
+
+#: 
+msgid "Select…"
+msgstr "請選擇……"
+
+#: 
+msgid "Sending..."
+msgstr "傳送中..."
+
+#: 
+msgid "Sending…"
+msgstr "傳送中……"
+
+#: 
+msgid "Settings reset"
+msgstr "設定已重設"
+
+#: 
+msgid "Settings saved"
+msgstr "設定已儲存"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "設定已儲存，正在重新整理升級資訊..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "僅顯示啟用中的人員。"
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "僅顯示停用的人員。"
+
+#: 
+msgid "Successfully deleted"
+msgstr "刪除成功"
+
+#: 
+msgid "Testing..."
+msgstr "測試中..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "資料庫已清除，系統已準備好重新開始。"
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "在此期間，頁面載入的備用機制仍會持續運作。您可以透過 %1$s 設定變更 ChurchCRM 顯示此警告前的等待時間，或設為 0 以隱藏此警告。"
+
+#: 
+msgid "This Person is Inactive"
+msgstr "此人已停用"
+
+#: 
+msgid "This person is deceased"
+msgstr "此人已故"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "這將清除此外掛程式的所有設定值，此操作無法復原。"
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "這將從磁碟中永久刪除此外掛程式的檔案並清除其設定，此操作無法復原。"
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL 不可包含 HTML 標籤"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "發生未預期的錯誤，請再試一次。"
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "解除安裝外掛程式"
+
+#: 
+msgid "Upcoming"
+msgstr "即將到來"
+
+#: 
+msgid "Valid Until"
+msgstr "有效期限至"
+
+#: 
+msgid "View active only"
+msgstr "僅檢視啟用中"
+
+#: 
+msgid "View all"
+msgstr "檢視全部"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "檢視全部（包含停用）"
+
+#: 
+msgid "View inactive only"
+msgstr "僅檢視停用"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "當背景計時工作超過此設定的小時數未執行時，在管理儀表板上顯示警告。設為 26 可容許每日執行一次 cron 並保留一些誤差空間。設為 0 則停用此警告。"
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "若沒有排程器，這些工作只會在有人載入頁面時執行，因此在冷清的平日可能完全不會寄出任何排程郵件。請新增一筆 cron 排程，以與您網頁伺服器相同的使用者身分，每小時執行一次工作執行程式"
+
+#: 
+msgid "check-outs"
+msgstr "簽退"
+
+#: 
+msgid "deceased"
+msgstr "已故"
+
+#: 
+msgid "event"
+msgstr "個活動"
+
+#: 
+msgid "events?"
+msgstr "個活動？"
+
+#: 
+msgid "files"
+msgstr "個檔案"
+
+#: 
+msgid "people from cart?"
+msgstr "人從購物車移除？"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip 必須為零或正整數"
+
+#: 
+msgid "view families missing an email"
+msgstr "檢視缺少電子郵件的家庭"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "本會計年度購買人數"
+
+#: 
+msgid "Current"
+msgstr "目前"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "本會計年度捐贈物品"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "登入帳號長度不可超過 %d 個字元！"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "本會計年度募得金額"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s 必須是完整的 https:// 網址，例如 https://example.org/yourchurch。"
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "此帳號權限受限，請聯絡管理員。"
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "轉譯錯誤頁面時發生錯誤。"
+
+#: 
+msgid "Each address must start with https://"
+msgstr "每個網址都必須以 https:// 開頭"
+
+#: 
+msgid "Generate Labels"
+msgstr "產生標籤"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "產生郵寄標籤"
+
+#: 
+msgid "Labels"
+msgstr "標籤"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "為您購物車中的人員產生郵寄標籤。若某人沒有自己的地址，將會使用其家庭地址。"
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "選填。連結至教會自己的社群帳號，會顯示在會友入口網站頁尾等頁面上。將欄位留空即可隱藏該社群平台。"
+
+#: 
+msgid "Options"
+msgstr "選項"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "排程工作"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "進行中，剩餘秒數：{{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "預期執行間隔（小時）：%d。"
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "已略過的家庭（無電子郵件紀錄）：{{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "無法完成地理編碼的家庭：{{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "將收到確認郵件的家庭：{{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "已複製的成員：{{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "此處未列出：還有 {{total}} 筆"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "收件者：{{total}} 位 — 數量過多，無法使用 mailto: 連結，請改用「複製地址」功能。"
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "收件者數量超出電子郵件用戶端上限（{{total}} > {{max}}），請改用「複製地址」功能。"
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "剩餘 {{minutes}} 分鐘"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d 份稅單已成功郵寄給家庭"
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d 捐獻聲明"
+
+#: 
+msgid "All classifications"
+msgstr "所有分類"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "作為管理員，請同時查看"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "生日、紀念日、志願者和其他帶有分類篩選的人員列表"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "選擇 %s 來運行此報告"
+
+#: 
+msgid "Choose events"
+msgstr "選擇事件"
+
+#: 
+msgid "Choose..."
+msgstr "選擇..."
+
+#: 
+msgid "Church Logo"
+msgstr "教堂標誌"
+
+#: 
+msgid "Columns per Page"
+msgstr "每頁列數"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "親愛的 %s 一家，\n"
+"\n"
+"請查收本電郵附件中的 %d 份來自 %s 的捐獻聲明。\n"
+"\n"
+"如有任何問題，請聯絡教堂辦公室。\n"
+"\n"
+"感謝您的慷慨奉獻。"
+
+#: 
+msgid "Download CSV"
+msgstr "下載 CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "郵寄 %d 份稅單"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "啟用或禁用財務模組和側邊欄菜單"
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "啟用或禁用籌款模組"
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "移除教堂標誌失敗"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "上傳教堂標誌失敗"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "電郵模板的備用標誌 URL，僅在教堂信息頁面未上傳教堂標誌時使用。應用程式的自己的頁面忽略此設置，始終使用已上傳的標誌或默認的 ChurchCRM 標誌。必須是絕對的 http(s) URL。為了在電郵客戶端中獲得最佳呈現效果，請使用寬橫幅圖像，寬高比大約為 3.5:1（例如 350×100 px），PNG 或 JPG 格式，通過 HTTPS 提供。留空或輸入無效值以回退到默認的 ChurchCRM 標誌。"
+
+#: 
+msgid "Finance Module"
+msgstr "財務模組"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "查找未參加活動的人員"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "查找與兩個特定機會代碼相匹配的志願者"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "首個志願者機會"
+
+#: 
+msgid "Folded Booklet"
+msgstr "折疊小冊子"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "籌款模組"
+
+#: 
+msgid "Giving History"
+msgstr "捐獻歷史"
+
+#: 
+msgid "Last Gift"
+msgstr "最後的捐獻"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "留空以包含所有分類"
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "每個家庭檔案中顯示的最大稅年文件數（0 = 無限制）"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "每個家庭顯示的最大稅務年度"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "成員紀念日"
+
+#: 
+msgid "Missing People"
+msgstr "缺失人員"
+
+#: 
+msgid "No giving history found."
+msgstr "未發現捐獻歷史"
+
+#: 
+msgid "No people match these filters."
+msgstr "沒有人員符合這些過濾器"
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "每頁一個目錄頁，縱向"
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "僅允許 http 和 https 方案"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG、JPG、GIF 或 WebP。寬度約為 3.5:1 的寬橫幅（例如 700x200）效果最佳；首選透明 PNG"
+
+#: 
+msgid "Page Layout"
+msgstr "頁面佈局"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "在特定月份加入的人員"
+
+#: 
+msgid "Pledged"
+msgstr "承諾"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "打印 %d 份稅單"
+
+#: 
+msgid "Recent Friends"
+msgstr "最近的朋友"
+
+#: 
+msgid "Report not found"
+msgstr "未找到報告"
+
+#: 
+msgid "Run Report"
+msgstr "運行報告"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "第二個志願者機會"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "顯示在側邊欄、登入頁面和電郵中。上傳標誌會在其出現的任何地方替換 ChurchCRM 品牌"
+
+#: 
+msgid "Single Pages"
+msgstr "單個頁面"
+
+#: 
+msgid "Tax Documents"
+msgstr "稅單"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "稅單電郵發送失敗。請檢查您的電郵服務器設置"
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "在每個橫向頁上並排放置兩個半尺寸頁面，按小冊子順序排列。雙面打印，使用 flip on short edge，然後將堆棧對折。每個半頁統計列數"
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "無法郵寄稅單：未發現該年份的付款數據"
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "無法郵寄稅單：該家庭在文件中沒有電郵地址"
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "無法解析 OpenLP 服務器主機名。請檢查地址和您的網絡連接"
+
+#: 
+msgid "Upload"
+msgstr "上傳"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "使用默認的 ChurchCRM 標誌"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "查看完整的家庭捐獻"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "志願者機會"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "兩個機會的志願者"
+
+#: 
+msgid "YTD"
+msgstr "年初至今"
+
+#: 
+msgid "YTD Paid"
+msgstr "年初至今已付"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "查找發生此錯誤時周圍的錯誤，並下載相關日誌文件並將其附加到您的 GitHub 問題中——這有助於我們修復問題，而無需提出後續問題"
+
+#: 
+msgid "system logs"
+msgstr "系統日誌"
+
+#: 
+msgid "Access Control & Security"
+msgstr "存取控制與安全性"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "允許記錄不可抵稅的款項（例如商品銷售）"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "允許未認證存取公開事件（用於嵌入日曆）"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "自動傳送生日電子郵件（需要背景工作排程器）"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "生日問候電子郵件"
+
+#: 
+msgid "Communication & Email"
+msgstr "通訊與電子郵件"
+
+#: 
+msgid "Content Security Policy"
+msgstr "內容安全政策"
+
+#: 
+msgid "Email System"
+msgstr "電子郵件系統"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "為您的組織啟用或停用功能"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "啟用/停用主導覽中的事件區段"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "啟用/停用財務選單和所有財務功能（存款、付款、報告）"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "啟用/停用募款選單"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "強制執行嚴格的CSP標頭以防止XSS攻擊"
+
+#: 
+msgid "Events Module"
+msgstr "事件模組"
+
+#: 
+msgid "Feature Toggles"
+msgstr "功能開關"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "功能開關控制ChurchCRM中哪些模組和功能可用。變更立即生效。"
+
+#: 
+msgid "Finance Features"
+msgstr "財務功能"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "在快速全域搜尋中包含地址"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "在快速全域搜尋中包含行事曆事件"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "在快速全域搜尋中包含自訂家庭屬性"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "在快速全域搜尋中包含存款"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "在快速全域搜尋中包含家庭"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "在快速全域搜尋中包含事工"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "在快速全域搜尋中包含付款"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "在快速全域搜尋中包含人員"
+
+#: 
+msgid "Invalid setting"
+msgstr "無效設定"
+
+#: 
+msgid "Lost Password Link"
+msgstr "遺失密碼連結"
+
+#: 
+msgid "Manage All Features"
+msgstr "管理所有功能"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "電子郵件傳送的主要開關。密碼重設和通知所需。"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "不可抵扣的款項"
+
+#: 
+msgid "Primary Modules"
+msgstr "主要模組"
+
+#: 
+msgid "Public Calendar API"
+msgstr "公開行事曆API"
+
+#: 
+msgid "Saved"
+msgstr "已儲存"
+
+#: 
+msgid "Search Families"
+msgstr "搜尋家庭"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "搜尋家庭自訂屬性"
+
+#: 
+msgid "Search Settings"
+msgstr "搜尋設定"
+
+#: 
+msgid "Self-Registration"
+msgstr "自助註冊"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "在登入畫面上顯示\"忘記密碼\"選項（允許使用者自行重設）"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "在側邊欄中顯示/隱藏主日學模組"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "無法停用唯一可以登入的管理員"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "無法將唯一可以登入的管理員標記為已故"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "已故——無法登入"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "輸入第二個地址後再將其標記為郵寄地址"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "不活躍——無法登入"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "郵件傳送到第二個地址；主地址仍然是用於地圖和方向的實體位置。"
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "郵件傳送到此地址而非主地址"
+
+#: 
+msgid "Mailing Address"
+msgstr "郵寄地址"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "如果不同，郵寄地址"
+
+#: 
+msgid "Primary Address"
+msgstr "主地址"
+
+#: 
+msgid "Receives Mail"
+msgstr "接收郵件"
+
+#: 
+msgid "Second Address"
+msgstr "第二地址"
+
+#: 
+msgid "Second Home"
+msgstr "第二住所"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "關聯的人已故或不活躍。登入、工作階段和API金鑰被封鎖，直到該人重新啟用。"
+
+#: 
+msgid "This is the mailing address"
+msgstr "這是郵寄地址"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "此人已故或不活躍，因此此帳戶無法登入"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "只有管理員可以刪除有登入帳號的人。"
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "最後一個管理員無法刪除。"
+
+#: 
+msgid "Category"
+msgstr "類別"
+
+#: 
+msgid "Category updated."
+msgstr "類別已更新。"
+
+#: 
+msgid "Delete Category"
+msgstr "刪除類別"
+
+#: 
+msgid "Failed to delete category"
+msgstr "刪除類別失敗"
+
+#: 
+msgid "Failed to rename category"
+msgstr "重新命名類別失敗"
+
+#: 
+msgid "Fund Categories"
+msgstr "財務基金類別"
+
+#: 
+msgid "Fund activated."
+msgstr "財務基金已啟用。"
+
+#: 
+msgid "Fund deactivated."
+msgstr "財務基金已停用。"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "此類別中的基金將變為未分類。這些基金本身不會被刪除。"
+
+#: 
+msgid "INACTIVE"
+msgstr "待用"
+
+#: 
+msgid "New category name (an existing name merges the two)"
+msgstr "新類別名稱（現有名稱會合併這兩個）"
+
+#: 
+msgid "Optional"
+msgstr "可選"
+
+#: 
+msgid "Optional — pick or type a new category"
+msgstr "可選 — 選擇或輸入新類別"
+
+#: 
+msgid "Paid beyond the pledge"
+msgstr "超出財務承諾的支付"
+
+#: 
+msgid "Pledged but not yet paid"
+msgstr "已承諾但尚未支付"
+
+#: 
+msgid "Rename Category"
+msgstr "重新命名類別"
+
+#: 
+msgid "Still Owed"
+msgstr "仍欠款"
+
+#: 
+msgid "Summary by Category"
+msgstr "按類別匯總"
+
+#: 
+msgid "Total Paid"
+msgstr "支付總額"
+
+#: 
+msgid "Uncategorized"
+msgstr "未分類"
+
+#: 
+msgid "Could not load the current settings. Reload the page to try again."
+msgstr "無法載入目前的設定。請重新整理頁面後再試一次。"
+
+#: 
+msgid "This setting must be a number"
+msgstr "此設定必須是數字"
+
+#: 
+msgid "Child Role"
+msgstr "子女角色"
+
+#: 
+msgid "Directory inclusion can only be toggled for the classifications list"
+msgstr "僅能針對分類清單切換是否收錄於通訊錄"
+
+#: 
+msgid "Greeter Message 1"
+msgstr "歡迎訊息 1"
+
+#: 
+msgid "Greeter Message 2"
+msgstr "歡迎訊息 2"
+
+#: 
+msgid "Head of House Role"
+msgstr "戶長角色"
+
+#: 
+msgid "Hide Address Without Family"
+msgstr "隱藏沒有家庭的地址"
+
+#: 
+msgid "Hide Friend Date"
+msgstr "隱藏結識日期"
+
+#: 
+msgid "Hide Newsletter Subscriptions"
+msgstr "隱藏電子報訂閱"
+
+#: 
+msgid "Hide Wedding Date"
+msgstr "隱藏結婚日期"
+
+#: 
+msgid "In Directory"
+msgstr "在通訊錄中"
+
+#: 
+msgid "Include Details in Notifications"
+msgstr "在通知中包含詳細資料"
+
+#: 
+msgid "Notification Recipients"
+msgstr "通知收件人"
+
+#: 
+msgid "People to notify when a new family or person is added"
+msgstr "新增家庭或人員時需要通知的人員"
+
+#: 
+msgid "Person initials style"
+msgstr "人員姓名縮寫樣式"
+
+#: 
+msgid "Person name display style"
+msgstr "人員姓名顯示樣式"
+
+#: 
+msgid "Spouse Role"
+msgstr "配偶角色"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "郵遞區號大寫"
 

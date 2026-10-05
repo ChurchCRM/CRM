@@ -10,6 +10,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <?php if ($step === 1): ?>
 
+    <?php if (!empty($sundaySchoolEnabled)) : ?>
+    <div class="card mb-3">
+        <div class="list-group list-group-flush">
+            <div class="list-group-item">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="fw-bold text-body"><?= gettext('Sunday School Reports') ?></a>
+                        <div class="text-secondary"><?= gettext('Class lists, attendance sheets, and photo books') ?></div>
+                    </div>
+                    <div class="col-auto">
+                        <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-sm btn-outline-primary">
+                            <i class="fa-solid fa-play me-1"></i><?= gettext('Run') ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <!-- Step 1: Select Group and (optional) Role -->
     <div class="row">
         <div class="col-lg-8 col-xl-6">

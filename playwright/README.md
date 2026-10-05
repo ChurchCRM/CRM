@@ -45,7 +45,7 @@ npm run docker:ci:new-system:down   # tear down the instance when you're done
 4. `marketing:check` — `scripts/check-marketing-visuals.js` verifies every
    capture produced its artifacts.
 5. `marketing:manifest` — `scripts/generate-marketing-manifest.js` rolls
-   every metadata sidecar (see below) into one `playwright/artifacts/manifest.csv`.
+   every metadata sidecar (see below) into one `playwright/artifacts/manifest.json`.
 
 The instance is left running after a successful (or failed) run so you can
 inspect it — `docker:ci:new-system:down` tears it down explicitly.
@@ -93,9 +93,9 @@ inspect it — `docker:ci:new-system:down` tears it down explicitly.
   `playwright/artifacts/metadata/<device>/<name>.json`, containing the
   workflow name, purpose, product, git commit SHA, locale, device, viewport,
   timestamp, seed version, and artifact filenames. `npm run marketing`
-  rolls every sidecar into one `playwright/artifacts/manifest.csv` for a
-  quick, spreadsheet-friendly look at a whole run (see "How to run" above).
-- **Artifacts**: screenshots, videos, and `manifest.csv` are committed;
+  rolls every sidecar into one `playwright/artifacts/manifest.json` for a
+  quick look at a whole run (see "How to run" above).
+- **Artifacts**: screenshots, videos, and `manifest.json` are committed;
   everything else (the metadata JSON sidecars, `report.json`) is
   gitignored — see `.gitignore`.
 
@@ -181,6 +181,8 @@ Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
 | Giving — deposit entry | `finance-deposit-entry` |
 | Giving — fund/pledge report | `finance-pledge-report` |
 | Settings — user permissions (nice-to-have) | `settings-user-permissions` |
+| Settings — People hub (release notes) | `admin-people-settings` |
+| Settings — classification flags (release notes) | `admin-person-classifications` |
 | Mobile — one panel cropped | any of the above from the `mobile` project |
 
 **Not automated** — pick these from the generated artifacts by hand:
@@ -198,8 +200,8 @@ Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
 - Root-path install only (no subdirectory variant).
 - No content-hash/change-detection field in the metadata sidecars — see
   #9663 for what was deliberately descoped there (closed not-planned).
-  `manifest.csv` (above) is a rollup of the existing sidecars, not that.
-- CI wiring (`.github/workflows/marketing-visuals-check.yml`,
+  `manifest.json` (above) is a rollup of the existing sidecars, not that.
+- CI wiring (`.github/workflows/marketing-capture-assets.yml`,
   `workflow_dispatch`) and its automated update-PR on `master` both exist
   now — this is no longer a gap.
 - Media-quality passes so far only cover what was actually visually

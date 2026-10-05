@@ -6070,6 +6070,197 @@
       "createdAt": "2024-06-20",
       "active": true,
       "verified": false
+    },
+    {
+      "name": "Okafor",
+      "selfRegistered": true,
+      "address": {
+        "line1": "210 Brookside Ave",
+        "line2": null,
+        "city": "Kansas City",
+        "state": "MO",
+        "zip": "64111",
+        "country": "United States"
+      },
+      "contact": {
+        "phone": {
+          "home": "(816) 555-0231",
+          "work": null,
+          "cell": null
+        },
+        "email": "family.okafor@demo.churchcrm.io"
+      },
+      "members": [
+        {
+          "title": "Mr",
+          "firstName": "Chidi",
+          "middleName": null,
+          "lastName": "Okafor",
+          "birthYear": 1985,
+          "birthMonth": 3,
+          "birthDay": 9,
+          "gender": "male",
+          "email": "chidi.okafor@demo.churchcrm.io",
+          "phone": "(816) 555-0232",
+          "notes": [],
+          "createdAt": "2026-08-14T08:00:00.000Z",
+          "classification": "Guest",
+          "familyRole": 1
+        },
+        {
+          "title": "Mrs",
+          "firstName": "Amara",
+          "middleName": null,
+          "lastName": "Okafor",
+          "birthYear": 1987,
+          "birthMonth": 3,
+          "birthDay": 9,
+          "gender": "female",
+          "email": "amara.okafor@demo.churchcrm.io",
+          "phone": null,
+          "notes": [],
+          "createdAt": "2026-08-14T08:00:00.000Z",
+          "classification": "Guest",
+          "familyRole": 2
+        },
+        {
+          "title": "",
+          "firstName": "Zuri",
+          "middleName": null,
+          "lastName": "Okafor",
+          "birthYear": 2015,
+          "birthMonth": 3,
+          "birthDay": 9,
+          "gender": "female",
+          "email": "",
+          "phone": "",
+          "notes": [],
+          "createdAt": "2026-08-14T08:00:00.000Z",
+          "classification": "Guest",
+          "familyRole": 3
+        }
+      ],
+      "notes": [],
+      "createdAt": "2026-08-14",
+      "active": true,
+      "verified": false
+    },
+    {
+      "name": "Nguyen",
+      "selfRegistered": true,
+      "address": {
+        "line1": "88 Hillcrest Rd",
+        "line2": null,
+        "city": "Overland Park",
+        "state": "KS",
+        "zip": "66212",
+        "country": "United States"
+      },
+      "contact": {
+        "phone": {
+          "home": "(913) 555-0144",
+          "work": null,
+          "cell": null
+        },
+        "email": "family.nguyen@demo.churchcrm.io"
+      },
+      "members": [
+        {
+          "title": "Ms",
+          "firstName": "Linh",
+          "middleName": null,
+          "lastName": "Nguyen",
+          "birthYear": 1991,
+          "birthMonth": 3,
+          "birthDay": 9,
+          "gender": "female",
+          "email": "linh.nguyen@demo.churchcrm.io",
+          "phone": "(913) 555-0145",
+          "notes": [],
+          "createdAt": "2026-09-21T08:00:00.000Z",
+          "classification": "Guest",
+          "familyRole": 1
+        },
+        {
+          "title": "",
+          "firstName": "Minh",
+          "middleName": null,
+          "lastName": "Nguyen",
+          "birthYear": 2018,
+          "birthMonth": 3,
+          "birthDay": 9,
+          "gender": "male",
+          "email": "",
+          "phone": "",
+          "notes": [],
+          "createdAt": "2026-09-21T08:00:00.000Z",
+          "classification": "Guest",
+          "familyRole": 3
+        }
+      ],
+      "notes": [],
+      "createdAt": "2026-09-21",
+      "active": true,
+      "verified": false
+    },
+    {
+      "name": "Castillo",
+      "selfRegistered": true,
+      "needsReview": false,
+      "address": {
+        "line1": "402 Maple Grove Ln",
+        "line2": null,
+        "city": "Independence",
+        "state": "MO",
+        "zip": "64050",
+        "country": "United States"
+      },
+      "contact": {
+        "phone": {
+          "home": "(816) 555-0309",
+          "work": null,
+          "cell": null
+        },
+        "email": "family.castillo@demo.churchcrm.io"
+      },
+      "members": [
+        {
+          "title": "Mrs",
+          "firstName": "Rosa",
+          "middleName": null,
+          "lastName": "Castillo",
+          "birthYear": 1979,
+          "birthMonth": 3,
+          "birthDay": 9,
+          "gender": "female",
+          "email": "rosa.castillo@demo.churchcrm.io",
+          "phone": "(816) 555-0310",
+          "notes": [],
+          "createdAt": "2026-07-06T08:00:00.000Z",
+          "classification": "Guest",
+          "familyRole": 1
+        },
+        {
+          "title": "Mr",
+          "firstName": "Luis",
+          "middleName": null,
+          "lastName": "Castillo",
+          "birthYear": 1977,
+          "birthMonth": 3,
+          "birthDay": 9,
+          "gender": "male",
+          "email": "luis.castillo@demo.churchcrm.io",
+          "phone": null,
+          "notes": [],
+          "createdAt": "2026-07-06T08:00:00.000Z",
+          "classification": "Guest",
+          "familyRole": 2
+        }
+      ],
+      "notes": [],
+      "createdAt": "2026-07-06",
+      "active": true,
+      "verified": false
     }
   ],
   "individuals": [

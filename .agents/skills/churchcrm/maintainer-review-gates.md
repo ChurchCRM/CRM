@@ -18,6 +18,27 @@ Do not mention CI status in the review. Failed CI is never merged; branch protec
 
 The author is a volunteer. Be thankful. Be specific. Do not nitpick.
 
+## Comment Resolution
+
+**Always resolve addressed comments as part of PR review.** If a comment's concern is addressed in the current PR code (question answered, bug fixed, design decision made), mark/resolve that comment. This keeps threads clean and shows progress.
+
+## Review Format: No Hard Blocks
+
+When a PR has no hard blocks, use this clear format instead of checkbox lists:
+
+```markdown
+Thanks @author. One short paragraph of what the PR does.
+
+**Verified:**
+- ✓ [specific item]
+- ✓ [specific item]
+- ✓ [specific item]
+
+No hard blocks.
+```
+
+**Why:** Checkboxes with all items checked causes confusion ("are these still open?"). The "Verified" + "No hard blocks" signal is unambiguous and actionable.
+
 ## Hard blocks — Request changes
 
 1. Security — XSS, injection, auth gaps, CSRF, open redirect, data leak, unsafe URL rendered to members.
@@ -27,8 +48,8 @@ The author is a volunteer. Be thankful. Be specific. Do not nitpick.
 5. Localization wrap — new user-visible strings not in `gettext()` / `i18next.t()`. Do not require translations or `locale:build` in the feature PR.
 6. Locale-sensitive values — dates, times, numbers, currency, or timezone that ignore ChurchCRM conventions. See below.
 7. Tests — feature or bug fix with no new or updated tests.
-8. Repo process — no linked issue; title or body that describes different work than the diff.
-9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Raw SQL substitution, not ORM, leak history. Point the author at Slim/Tabler MVC + Propel, or a reports plugin. Security-only patches on Query View need an explicit maintainer exception. See #9995.
+8. Repo process — issue rule in `git-workflow.md` not met; title or body that describes different work than the diff.
+9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Raw SQL substitution, not ORM, leak history. Point the author at Slim/Tabler MVC + Propel (`src/v2/`), or a reports plugin (`src/plugins/`; `src/plugins/community/` to share). See #9921. Security-only patches on Query View need an explicit maintainer exception. See #9995.
 
 Missing comments are not a hard block. Do not ask the author to add more comments. Wrong or essay comments can be deleted; that is not Request changes.
 
@@ -50,6 +71,7 @@ If hard blocks stay open and the author goes quiet, maintainers may close the PR
 
 - Demo-import in `src/admin/demo/config.json`. Never Cypress seed if that would break tests.
 - User manual tracking issue on ChurchCRM/CRM. Docs PRs merge after the release ships.
+- Playwright capture when the PR changes UI that belongs on a marketing or docs page. It ships in the same PR (spec, `en` PNGs, manifest entries); ask the author to add it. If it cannot be taken yet, an issue linked from the PR is enough. Not a blocker.
 - Marketing / blog only on a full end-to-end feature. Ask George. Skip bug/security-only.
 - Member-facing consumer when this PR is storage-only.
 - Extra screenshots. If they have tablet/mobile shots, ask them to attach. Do not Request changes only because shots are missing.
@@ -71,16 +93,34 @@ Write headings and lists. One line at the top for the maintainer only:
 
 Then the body that would go on GitHub:
 
+**When no hard blocks:**
+
 ```markdown
 Thanks @author. One short paragraph of what the PR does.
 
+**Verified:**
+- ✓ [specific item]
+- ✓ [specific item]
+
+No hard blocks.
+```
+
+**When there are issues:**
+
+```markdown
+Thanks @author. One short paragraph of what the PR does.
+
+## Hard blocks
+
+- [specific issue that requires changes]
+
 ## Still open
 
-- [ ] …
+- [ ] [specific item to verify]
 
 ## Not blocking
 
-- …
+- [minor item or note]
 ```
 
-If there is a hard block, say so in a **Hard blocks** heading before **Still open**. Ask George in chat whether to post. Do not approve.
+If there is a hard block, post with "Request changes" event. Ask George in chat whether to post. Do not approve.

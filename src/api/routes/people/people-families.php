@@ -141,10 +141,10 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/families/self-register",
-     *     summary="Get the last 100 self-registered families",
+     *     summary="Get self-registered families still awaiting review",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Response(response=200, description="Self-registered families ordered by date entered descending",
+     *     @OA\Response(response=200, description="Self-registered families awaiting review, ordered by date entered descending",
      *         @OA\JsonContent(@OA\Property(property="families", type="array", @OA\Items(type="object")))
      *     )
      * )
@@ -152,11 +152,43 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
         $families = FamilyQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
+            ->filterByNeedsReview(true)
             ->orderByDateEntered(Criteria::DESC)
-            ->limit(100)
             ->find();
 
-        return SlimUtils::renderJSON($response, ['families' => $families->toArray()]);
+        $rows = $families->toArray();
+        $memberNames = [];
+        $memberEmails = [];
+        $memberPhones = [];
+        if ($rows) {
+            $members = PersonQuery::create()
+                ->filterByFamId(array_column($rows, 'Id'), Criteria::IN)
+                ->orderByFamId()
+                ->orderByFmrId()
+                ->find();
+            foreach ($members as $member) {
+                $famId = $member->getFamId();
+                $memberNames[$famId][] = $member->getFirstName();
+                foreach ([$member->getEmail(), $member->getWorkEmail()] as $email) {
+                    if ($email) {
+                        $memberEmails[$famId][$email] = $email;
+                    }
+                }
+                foreach ([$member->getCellPhone(), $member->getHomePhone(), $member->getWorkPhone()] as $phone) {
+                    if ($phone) {
+                        $memberPhones[$famId][$phone] = $phone;
+                    }
+                }
+            }
+        }
+        foreach ($rows as &$row) {
+            $row['Members'] = $memberNames[$row['Id']] ?? [];
+            $row['MemberEmails'] = array_values($memberEmails[$row['Id']] ?? []);
+            $row['MemberPhones'] = array_values($memberPhones[$row['Id']] ?? []);
+        }
+        unset($row);
+
+        return SlimUtils::renderJSON($response, ['families' => $rows]);
     });
 
     /**

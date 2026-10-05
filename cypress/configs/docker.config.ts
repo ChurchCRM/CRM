@@ -1,5 +1,6 @@
 import { defineConfig } from 'cypress'
 import { verifyDownloadTasks } from 'cy-verify-downloads';
+import { registerRowCountGuard } from './row-count-guard';
 
 import base from './base.config'
 export default defineConfig({
@@ -14,6 +15,7 @@ export default defineConfig({
   viewportHeight: 1080,
   viewportWidth: 1920,
   projectId: 'n4qnyb',
+  allowCypressEnv: false,
   env: {
     'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
     'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',
@@ -33,6 +35,8 @@ export default defineConfig({
     'limited.api.key': 'limitedUserApiKeyForTesting123456789012345678',
     'editrecords.api.key': 'judithMatthewsEditRecordsNoNotesApiKey1234',
     'menuoptions.api.key': 'menuOptionsOnlyApiKeyForTesting12345678901',
+    'deceased.api.key': 'deceasedUserApiKeyForTesting1234567890123',
+    'inactive.api.key': 'inactiveUserApiKeyForTesting1234567890123',
     'noperm.api.key': 'noPermUserApiKeyForTesting123456789012345678',
     'admin.username': 'admin',
     'admin.password': 'changeme',
@@ -71,6 +75,9 @@ export default defineConfig({
         printLogsToFile: 'always'
       });
       on('task', verifyDownloadTasks);
+      // Test-database drift guard (#9769) — read-only row counts, plus the
+      // env flag cypress/support/e2e.js checks before arming the guard.
+      registerRowCountGuard(on, config);
       on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
           launchOptions.args.push('--disable-dev-shm-usage');

@@ -5,6 +5,8 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\DonationFundQuery;
+use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -28,10 +30,13 @@ $sPageSubtitle = gettext('Generate financial statements and giving reports');
 if ($sReportType) {
     $sPageTitle .= ': ' . gettext($sReportType);
 }
-$aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Finance'), '/finance/'],
-    [gettext('Reports')],
-]);
+$reportCrumbs = [
+    [gettext('Financial Reports'), '/finance/reports'],
+];
+if ($sReportType !== '') {
+    $reportCrumbs[] = [gettext($sReportType)];
+}
+$aBreadcrumbs = PageHeader::breadcrumbs($reportCrumbs);
 require_once __DIR__ . '/Include/Header.php';
 // Preserve submitted dates/datetype for both selection and filters views
 $sDateStart = '';
@@ -232,19 +237,22 @@ if ($sReportType === '') {
     <?php endif; ?>
 
     <?php if (in_array($sReportType, ['Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) :
-        $sSQL = 'SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name';
-        $rsFunds = RunQuery($sSQL); ?>
+        $funds = DonationFundQuery::create()
+            ->orderByActive()
+            ->orderByName()
+            ->find();
+        $fundGroups = (new DonationFundService())->groupByCategory($funds);
+        $hasCategories = array_keys($fundGroups) !== ['']; ?>
       <div class="mb-3">
         <label class="form-label" for="fundsList"><?= gettext('Filter by Fund') ?>:</label>
         <select name="funds[]" multiple id="fundsList" class="form-select">
-          <?php while ($aRow = mysqli_fetch_array($rsFunds)) {
-              extract($aRow);
-              echo '<option value="' . (int)$fun_ID . '">' . InputUtils::escapeHTML($fun_Name);
-              if ($fun_Active === 'false') {
-                  echo ' — INACTIVE';
-              }
-              echo '</option>';
-          } ?>
+          <?php foreach ($fundGroups as $catLabel => $catFunds) : ?>
+            <?php if ($hasCategories) : ?><optgroup label="<?= InputUtils::escapeAttribute($catLabel !== '' ? $catLabel : gettext('Uncategorized')) ?>"><?php endif; ?>
+              <?php foreach ($catFunds as $fund) : ?>
+                <option value="<?= (int) $fund->getId() ?>"><?= InputUtils::escapeHTML($fund->getName()) ?><?= $fund->getActive() === 'false' ? ' — ' . gettext('INACTIVE') : '' ?></option>
+              <?php endforeach; ?>
+            <?php if ($hasCategories) : ?></optgroup><?php endif; ?>
+          <?php endforeach; ?>
         </select>
         <div class="d-flex gap-2 mt-2">
           <button type="button" id="addAllFunds" class="btn btn-sm btn-secondary"><?= gettext('Add All Funds') ?></button>
@@ -419,7 +427,7 @@ $(document).ready(function() {
   if (fundsListEl && !fundsListEl.tomselect) new TomSelect(fundsListEl, { plugins: ["remove_button"] });
   $("#addAllFunds").click(function () {
       var all = [];
-      $("#fundsList > option").each(function () { all.push(this.value); });
+      $("#fundsList option").each(function () { all.push(this.value); });
       if (fundsListEl && fundsListEl.tomselect) { fundsListEl.tomselect.setValue(all); }
   });
   $("#clearAllFunds").click(function () {

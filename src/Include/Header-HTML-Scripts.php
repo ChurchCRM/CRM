@@ -25,5 +25,3 @@ use ChurchCRM\Utils\InputUtils;
 
 <!-- Card Widget Handler for Bootstrap 5 -->
 <script src="<?= SystemURLs::assetVersioned('/skin/js/card-widgets.js') ?>"></script>
-
-<script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment.min.js') ?>"></script>

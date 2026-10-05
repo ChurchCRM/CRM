@@ -11,12 +11,14 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Utils\AddressDefaults;
 
 $sPageTitle = gettext('Person Editor');
 $sPageSubtitle = gettext('Add or edit individual person records');
@@ -108,10 +110,10 @@ $sSuffix = '';
 $iGender = 0;
 $sAddress1 = '';
 $sAddress2 = '';
-$sCity = SystemConfig::getValue('sDefaultCity');
-$sState = SystemConfig::getValue('sDefaultState');
-$sZip = SystemConfig::getValue('sDefaultZip');
-$sCountry = SystemConfig::getValue('sDefaultCountry');
+$sCity = AddressDefaults::city();
+$sState = AddressDefaults::state();
+$sZip = AddressDefaults::zip();
+$sCountry = AddressDefaults::country();
 $sHomePhone = '';
 $sWorkPhone = '';
 $sCellPhone = '';
@@ -302,6 +304,12 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $bErrorFlag = true;
             $dDateDeceased = false;
         }
+    }
+
+    if ($bIsDeceased && $iPersonID > 0 && (new UserService())->isLastSignInCapableAdmin($iPersonID)) {
+        $sDateDeceasedError = '<span class="text-danger">'
+            . gettext("Can't mark the only administrator who can sign in as deceased") . '</span>';
+        $bErrorFlag = true;
     }
 
     // Validate Email
@@ -827,14 +835,19 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <?php } else { // Hidden fields when address is hidden ?>
+    <?php } else { // Hidden fields when address is hidden
+        $sHiddenCity = $isNewPerson ? '' : $sCity;
+        $sHiddenState = $isNewPerson ? '' : $sState;
+        $sHiddenZip = $isNewPerson ? '' : $sZip;
+        $sHiddenCountry = $isNewPerson ? '' : $sCountry;
+    ?>
         <input type="hidden" name="Address1" value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>">
         <input type="hidden" name="Address2" value="<?= InputUtils::escapeAttribute(stripslashes($sAddress2)) ?>">
-        <input type="hidden" name="City" value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>">
-        <input type="hidden" name="State" value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>">
-        <input type="hidden" name="StateTextbox" value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>">
-        <input type="hidden" name="Zip" value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>">
-        <input type="hidden" name="Country" value="<?= InputUtils::escapeAttribute(stripslashes($sCountry)) ?>">
+        <input type="hidden" name="City" value="<?= InputUtils::escapeAttribute(stripslashes($sHiddenCity)) ?>">
+        <input type="hidden" name="State" value="<?= InputUtils::escapeAttribute(stripslashes($sHiddenState)) ?>">
+        <input type="hidden" name="StateTextbox" value="<?= InputUtils::escapeAttribute(stripslashes($sHiddenState)) ?>">
+        <input type="hidden" name="Zip" value="<?= InputUtils::escapeAttribute(stripslashes($sHiddenZip)) ?>">
+        <input type="hidden" name="Country" value="<?= InputUtils::escapeAttribute(stripslashes($sHiddenCountry)) ?>">
     <?php } ?>
 
     <!-- Card 3: Contact Information -->

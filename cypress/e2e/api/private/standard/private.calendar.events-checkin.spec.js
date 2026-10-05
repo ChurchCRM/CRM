@@ -15,6 +15,46 @@ describe("API Event Check-in Endpoints", () => {
     // No browser login — these are pure API tests using x-api-key auth
     // (cy.makePrivateAdminAPICall sets the header for us).
 
+    // Every event this spec creates, so after() can remove them again (#9769).
+    // Without this the spec left 7 events and 10 attendance rows in the
+    // database on every run. Deleting an event cascades its event_attend and
+    // calendar_events rows, so the events list is all that needs tracking.
+    const createdEventIds = [];
+
+    // Only events are tracked. Checking a person in or out also writes a note on
+    // that person's timeline (Event::addTimelineNote()), but that note is the
+    // person's attendance history: it deliberately outlives the event and no
+    // API removes it, which is why the row-count guard reports note_nte rather
+    // than failing on it (#9769).
+    after(() => {
+        cy.cleanupEvents(createdEventIds);
+    });
+
+    /**
+     * Record an event for cleanup, but only when the API actually created one:
+     * POST /events/quick-create returns `created: false` and the existing
+     * event's id when one already exists for that date+type, and deleting that
+     * would destroy a row the spec did not create.
+     */
+    const trackQuickCreated = (response) => {
+        if (
+            response?.body?.created !== false &&
+            typeof response?.body?.eventId === "number"
+        ) {
+            createdEventIds.push(response.body.eventId);
+        }
+    };
+
+    // quick-create returns the existing event when one already exists for that
+    // date and type, so tests that write attendance give it a date no other
+    // spec or run uses. Their check-ins then land only on events this run
+    // created, never on a seeded or shared event (#9799).
+    const runDayOffset = Math.floor(Date.now() / 1000) % 3000;
+    const ownEventDate = (slot) => {
+        const d = new Date(Date.UTC(2090, 0, 1 + runDayOffset * 3 + slot));
+        return d.toISOString().slice(0, 10);
+    };
+
     describe("GET /api/events", () => {
         it("Returns the events list wrapped in an Events array", () => {
             // Make sure at least one event exists so the response shape is meaningful
@@ -23,7 +63,7 @@ describe("API Event Check-in Endpoints", () => {
                 "/api/events/quick-create",
                 { eventTypeId: 1 },
                 200,
-            );
+            ).then(trackQuickCreated);
 
             cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((response) => {
                 expect(response.body).to.have.property("Events");
@@ -59,6 +99,7 @@ describe("API Event Check-in Endpoints", () => {
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
                 expect(response.body.eventId).to.be.a("number");
+                trackQuickCreated(response);
                 expect(response.body).to.have.property("title");
                 expect(response.body.title).to.be.a("string");
                 expect(response.body).to.have.property("created");
@@ -82,6 +123,7 @@ describe("API Event Check-in Endpoints", () => {
                     200,
                 ).then((second) => {
                     expect(second.body.eventId).to.equal(first.body.eventId);
+                    trackQuickCreated(first);
                     expect(second.body.created).to.be.false;
                 });
             });
@@ -95,6 +137,7 @@ describe("API Event Check-in Endpoints", () => {
                 200,
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
+                trackQuickCreated(response);
                 // Title uses event type name (not group name) when an event type is auto-detected
                 expect(response.body.title).to.be.a("string").and.not.be.empty;
             });
@@ -138,7 +181,8 @@ describe("API Event Check-in Endpoints", () => {
                 "/api/events/quick-create",
                 { eventTypeId: 1 },
                 200,
-            ).then(() => {
+            ).then((createResponse) => {
+                trackQuickCreated(createResponse);
                 cy.makePrivateAdminAPICall(
                     "GET",
                     "/api/events/today",
@@ -180,11 +224,13 @@ describe("API Event Check-in Endpoints", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
-                { eventTypeId: 2, groupId: 1 },
+                { eventTypeId: 2, groupId: 1, date: ownEventDate(0) },
                 200,
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
+                expect(response.body.created, "event must be new, not a reused one").to.be.true;
                 testEventId = response.body.eventId;
+                trackQuickCreated(response);
             });
         });
 
@@ -376,11 +422,18 @@ describe("API Event Check-in Endpoints", () => {
                 expect(testEventId, "before() must have populated testEventId").to.be.a("number");
 
                 cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/events/${testEventId}/checkin-all`,
+                    null,
+                    200,
+                );
+                cy.makePrivateAdminAPICall(
                     "GET",
                     `/api/events/${testEventId}/roster`,
                     null,
                     200,
                 ).then((response) => {
+                    expect(response.body.members, "group 1 roster").to.have.length.greaterThan(0);
                     const notCheckedIn = response.body.members.filter(
                         (m) => m.status === "not_checked_in",
                     );
@@ -435,6 +488,7 @@ describe("API Event Check-in Endpoints", () => {
                 expect(response.body.events.length).to.equal(
                     response.body.created,
                 );
+                createdEventIds.push(...response.body.events.map((e) => e.id));
 
                 if (response.body.events.length > 0) {
                     const evt = response.body.events[0];
@@ -460,6 +514,7 @@ describe("API Event Check-in Endpoints", () => {
                 { eventTypeId: 1, startDate, endDate, skipExisting: true },
                 200,
             ).then((first) => {
+                createdEventIds.push(...(first.body.events || []).map((e) => e.id));
                 cy.makePrivateAdminAPICall(
                     "POST",
                     "/api/events/generate-recurring",
@@ -561,11 +616,13 @@ describe("API Event Check-in Endpoints", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
-                { eventTypeId: 1 },
+                { eventTypeId: 1, date: ownEventDate(1) },
                 200,
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
+                expect(response.body.created, "event must be new, not a reused one").to.be.true;
                 eventId = response.body.eventId;
+                trackQuickCreated(response);
             });
         });
 
@@ -641,11 +698,13 @@ describe("API Event Check-in Endpoints", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
-                { eventTypeId: 1 },
+                { eventTypeId: 1, date: ownEventDate(2) },
                 200,
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
+                expect(response.body.created, "event must be new, not a reused one").to.be.true;
                 eventId = response.body.eventId;
+                trackQuickCreated(response);
                 // Check someone in so we have an attendance record to delete
                 cy.makePrivateAdminAPICall(
                     "POST",

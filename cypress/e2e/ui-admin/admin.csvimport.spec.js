@@ -15,23 +15,61 @@ describe(
         // because it only restores the client cookie, not the server-side PHP
         // session. Bypass cy.session() entirely with a direct form login:
         // clearCookies → POST /session/begin → verify we landed past login.
-        const freshAdminLogin = () => {
-            const username = Cypress.env("admin.username");
-            const password = Cypress.env("admin.password");
-            cy.clearCookies();
-            // Match setupLoginSession's canonical path: /login resolves to the
-            // session/begin form but goes through the front-controller, which
-            // is the path the app's session cookie gets minted on.
-            cy.visit("/login");
-            cy.get("input[name=User]", { timeout: 10000 })
-                .should("be.visible")
-                .type(username);
-            cy.get("input[name=Password]").type(`${password}{enter}`);
-            cy.url().should("not.include", "/session/begin");
-        };
 
         beforeEach(() => {
-            freshAdminLogin();
+            cy.freshAdminFormLogin({ path: "/login", visible: true, timeout: 10000 });
+        });
+
+        // The importer creates real people and families, and nothing used to
+        // remove them — one pass left 22 people and 8 families behind (#9769).
+        // Every fixture gives its rows a distinctive LastName, so the imported
+        // records can be found again and deleted by family (which takes the
+        // members with it) and then by person for anyone unaffiliated.
+        const IMPORTED_LAST_NAMES = [
+            "ImportTest",
+            "ExtTest",
+            "ExtSfxTest",
+            "BareYrTest",
+            "CountryTest",
+            "ClsRoleTest",
+        ];
+
+        after(() => {
+            const personIds = [];
+
+            IMPORTED_LAST_NAMES.forEach((lastName) => {
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    `/api/persons/search/${lastName}`,
+                    null,
+                    200,
+                ).then((resp) => {
+                    (resp.body || []).forEach((hit) => {
+                        if (hit.objid) {
+                            personIds.push(hit.objid);
+                        }
+                    });
+                });
+            });
+
+            cy.then(() => {
+                const familyIds = [];
+                personIds.forEach((personId) => {
+                    cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, [
+                        200, 404,
+                    ]).then((resp) => {
+                        const familyId = Number(resp.body?.FamId || 0);
+                        if (familyId > 0 && !familyIds.includes(familyId)) {
+                            familyIds.push(familyId);
+                        }
+                    });
+                });
+
+                cy.then(() => {
+                    cy.cleanupFamilies(familyIds);
+                    cy.cleanupPeople(personIds);
+                });
+            });
         });
 
         it("Verify CSV Import", () => {

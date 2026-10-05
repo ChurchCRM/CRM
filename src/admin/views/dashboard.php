@@ -143,7 +143,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <?php else: ?>
                         <?= sprintf(gettext('Background jobs (birthday emails and every plugin scheduled task) last ran on %s.'), InputUtils::escapeHTML($timerJobsLastRun)) ?>
                     <?php endif; ?>
-                    <?= sprintf(ngettext('They are expected at least once every %d hour.', 'They are expected at least once every %d hours.', (int) $timerJobsStaleHours), (int) $timerJobsStaleHours) ?>
+                    <?= sprintf(gettext('Expected interval between runs (hours): %d.'), (int) $timerJobsStaleHours) ?>
                 </p>
                 <p class="mb-2">
                     <?= gettext('Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as') ?>:
@@ -334,6 +334,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                                 </div>
                             </a>
                         </div>
+
                     </div>
 
                     <div class="alert alert-light border mb-0 py-2">
@@ -439,6 +440,38 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
             </div>
 
 
+            <!-- Feature Toggles Card -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-status-top bg-danger"></div>
+                <div class="card-header py-2">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-toggle-on"></i> <?= gettext('Feature Toggles') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <?php foreach ([
+                        'bEnabledFinance'      => gettext('Finance'),
+                        'bEnabledFundraiser'   => gettext('Fundraiser'),
+                        'bEnabledEvents'       => gettext('Events'),
+                        'bEnabledSundaySchool' => gettext('Sunday School'),
+                        'bEnabledEmail'        => gettext('Email'),
+                    ] as $toggleKey => $toggleLabel): ?>
+                        <label class="d-flex justify-content-between align-items-center mb-2">
+                            <span><?= InputUtils::escapeHTML($toggleLabel) ?></span>
+                            <span class="form-check form-switch m-0">
+                                <input class="form-check-input dashboard-feature-toggle" type="checkbox"
+                                       data-setting="<?= InputUtils::escapeAttribute($toggleKey) ?>"
+                                       aria-label="<?= InputUtils::escapeAttribute($toggleLabel) ?>"
+                                       <?= SystemConfig::getBooleanValue($toggleKey) ? 'checked' : '' ?>>
+                            </span>
+                        </label>
+                    <?php endforeach; ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/feature-toggles" class="btn btn-sm btn-outline-danger w-100 mt-2">
+                        <i class="fa-solid fa-sliders"></i><?= gettext('Manage All Features') ?>
+                    </a>
+                </div>
+            </div>
+
             <!-- System Health Card -->
             <div class="card shadow-sm border-0 mb-4">
                 <div class="card-status-top <?= $healthStatus ? 'bg-success' : 'bg-warning' ?>"></div>
@@ -489,5 +522,21 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
 <!-- Load admin dashboard JavaScript -->
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-dashboard.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/importDemoData.js') ?>"></script>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+document.querySelectorAll('.dashboard-feature-toggle').forEach((toggle) => {
+    toggle.addEventListener('change', () => {
+        const checked = toggle.checked;
+        toggle.disabled = true;
+        fetch('<?= SystemURLs::getRootPath() ?>/admin/api/system/feature-toggles', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ [toggle.dataset.setting]: checked ? '1' : '0' }),
+        })
+            .then((r) => { if (!r.ok) throw new Error(r.status); location.reload(); })
+            .catch(() => { toggle.checked = !checked; toggle.disabled = false; window.CRM.notify(i18next.t('Error'), 'danger'); });
+    });
+});
+</script>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
