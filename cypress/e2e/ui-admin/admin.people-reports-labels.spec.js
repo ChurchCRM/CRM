@@ -22,7 +22,7 @@ const submitLabelsDialog = (groupbymode) => {
     cy.get("#labelsForm select[name=filetype]").select("CSV");
     return cy
         .get("#labelsForm")
-        .then(($form) => cy.request(`${$form.attr("action")}?${$form.serialize()}`))
+        .then(($form) => cy.request(`${$form.prop("action")}?${$form.serialize()}`))
         .then((response) => namesIn(response.body));
 };
 
