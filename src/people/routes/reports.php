@@ -87,6 +87,7 @@ function getPeopleReport(Request $request, Response $response, array $args): Res
     }
 
     $rows = $missing === [] ? $service->run($slug, $values) : null;
+    $reportParams = peopleReportQueryParams($report, $values);
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
@@ -104,7 +105,8 @@ function getPeopleReport(Request $request, Response $response, array $args): Res
         'missing' => $missing,
         'options' => $options,
         'rows' => $rows,
-        'csvQuery' => http_build_query(peopleReportQueryParams($report, $values)),
+        'reportParams' => $reportParams,
+        'csvQuery' => http_build_query($reportParams),
     ]);
 }
 
@@ -133,8 +135,8 @@ function getPeopleReportCsv(Request $request, Response $response, array $args): 
 }
 
 /**
- * The resolved parameters as query-string values, so the CSV link runs the
- * same report the page shows.
+ * The resolved parameters as query-string values, so the CSV link and the
+ * labels run the same report the page shows.
  *
  * @return array<string, mixed>
  */

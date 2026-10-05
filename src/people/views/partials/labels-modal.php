@@ -1,17 +1,24 @@
 <?php
 
 /**
- * "Generate Labels" modal for the cart page (#9873).
+ * "Generate Labels" dialog, shared by the cart (#9873) and the People Reports (#10343).
  *
- * Submits a GET to Reports/PDFLabel.php, which builds mailing labels for the
- * people in the cart. The report remembers every choice in cookies, and the
- * defaults below read them back.
+ * Submits a GET to Reports/PDFLabel.php. The report remembers every choice in
+ * cookies, and the defaults below read them back.
+ *
+ * Set before including:
+ *   $labelsIntro         text above the options
+ *   $labelsHiddenFields  extra query values, name => scalar or list (a People Report's slug and filters)
+ *   $labelsGrouping      when set, the source decides the grouping and this text replaces the choice
  */
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 require_once SystemURLs::getDocumentRoot() . '/Include/LabelFunctions.php';
+
+$labelsHiddenFields ??= [];
+$labelsGrouping ??= null;
 
 $bGroupByFamily = getLabelFormCookie('groupbymode') === 'fam';
 $bBulkMailPresort = (bool) getLabelFormCookie('bulkmailpresort');
@@ -21,19 +28,27 @@ $sLabelType = getLabelFormCookie('labeltype');
 $sLabelFont = getLabelFormCookie('labelfont');
 $sLabelFontSize = getLabelFormCookie('labelfontsize');
 ?>
-<div class="modal fade" id="cartLabelsModal" tabindex="-1" aria-labelledby="cartLabelsModalTitle" aria-hidden="true">
+<div class="modal fade" id="labelsModal" tabindex="-1" aria-labelledby="labelsModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
-      <form method="get" action="<?= SystemURLs::getRootPath() ?>/Reports/PDFLabel.php" target="_blank" id="cartLabelsForm">
+      <form method="get" action="<?= SystemURLs::getRootPath() ?>/Reports/PDFLabel.php" target="_blank" id="labelsForm">
+        <?php foreach ($labelsHiddenFields as $name => $value) {
+            foreach (is_array($value) ? $value : [$value] as $item) { ?>
+          <input type="hidden" name="<?= InputUtils::escapeAttribute(is_array($value) ? $name . '[]' : $name) ?>" value="<?= InputUtils::escapeAttribute((string) $item) ?>">
+        <?php }
+        } ?>
         <div class="modal-header">
-          <h5 class="modal-title" id="cartLabelsModalTitle"><?= gettext('Generate Labels') ?></h5>
+          <h5 class="modal-title" id="labelsModalTitle"><?= gettext('Generate Labels') ?></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
         </div>
         <div class="modal-body">
-          <p class="text-secondary"><?= gettext('Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address.') ?></p>
+          <p class="text-secondary"><?= InputUtils::escapeHTML($labelsIntro) ?></p>
           <div class="row g-3">
             <div class="col-md-6">
               <div class="form-label"><?= gettext('Label Grouping') ?></div>
+              <?php if ($labelsGrouping !== null) { ?>
+              <p id="labelsGrouping" class="mb-0"><?= InputUtils::escapeHTML($labelsGrouping) ?></p>
+              <?php } else { ?>
               <label class="form-check">
                 <input class="form-check-input" type="radio" name="groupbymode" value="indiv" <?= $bGroupByFamily ? '' : 'checked' ?>>
                 <span class="form-check-label"><?= gettext('All Individuals') ?></span>
@@ -42,6 +57,7 @@ $sLabelFontSize = getLabelFormCookie('labelfontsize');
                 <input class="form-check-input" type="radio" name="groupbymode" value="fam" <?= $bGroupByFamily ? 'checked' : '' ?>>
                 <span class="form-check-label"><?= gettext('Grouped by Family') ?></span>
               </label>
+              <?php } ?>
             </div>
             <div class="col-md-6">
               <div class="form-label"><?= gettext('Options') ?></div>
@@ -105,33 +121,10 @@ $sLabelFontSize = getLabelFormCookie('labelfontsize');
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-          <button type="submit" class="btn btn-primary" id="cartLabelsSubmit"><i class="fa-solid fa-tags me-2"></i><?= gettext('Generate Labels') ?></button>
+          <button type="submit" class="btn btn-primary" id="labelsSubmit"><i class="fa-solid fa-tags me-2"></i><?= gettext('Generate Labels') ?></button>
         </div>
       </form>
     </div>
   </div>
 </div>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  (function () {
-    const presort = document.getElementById("bulkmailpresort");
-    const quiet = document.getElementById("bulkmailquiet");
-    const form = document.getElementById("cartLabelsForm");
-    const modal = document.getElementById("cartLabelsModal");
-
-    // Quiet presort only means something when presorting.
-    presort.addEventListener("change", function () {
-      quiet.disabled = !presort.checked;
-      if (!presort.checked) {
-        quiet.checked = false;
-      }
-    });
-
-    // The report opens in a new tab; close the dialog so the cart is usable.
-    form.addEventListener("submit", function () {
-      const instance = bootstrap.Modal.getInstance(modal);
-      if (instance) {
-        instance.hide();
-      }
-    });
-  })();
-</script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/people-labels-modal.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
