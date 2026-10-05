@@ -151,9 +151,11 @@ describe("Member Portal e2e — #9869 scenario 4, a church themes the portal", (
 
     it("activates it from the admin page, and EVERY portal page wears it", () => {
         adminLogin();
+        cy.intercept("POST", "**/admin/api/member-portal/theme").as("activate");
         cy.visit("/admin/member-portal");
         cy.get("#portalThemeSelect").select(GOOD_THEME);
         cy.get("#portalThemeActivateButton").click();
+        cy.wait("@activate").its("response.statusCode").should("eq", 200);
 
         readConfig("sMemberPortalTheme").then((resp) => {
             expect(resp.body.value).to.eq(GOOD_THEME);
