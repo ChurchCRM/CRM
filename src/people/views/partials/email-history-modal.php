@@ -27,7 +27,7 @@ use ChurchCRM\dto\SystemURLs;
                 </dl>
                 <div class="alert alert-danger d-none" id="email-history-modal-error"></div>
                 <div class="alert alert-secondary d-none" id="email-history-modal-nobody">
-                    <i class="fa-solid fa-lock me-1"></i><?= gettext('The content of this email is not stored: it contained a password or a one-time link.') ?>
+                    <i class="fa-solid fa-lock me-1"></i><?= gettext('The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only.') ?>
                 </div>
                 <iframe id="email-history-modal-body" class="w-100 border rounded d-none" sandbox="" title="<?= gettext('Email content') ?>" style="min-height: 420px; background: #fff;"></iframe>
             </div>

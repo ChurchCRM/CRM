@@ -46,7 +46,9 @@ describe("Email history on the person view", () => {
             cy.get(`.email-history-open[data-email-log-id='${row.id}']`).click();
         });
         cy.get("#email-history-modal").should("be.visible");
-        cy.get("#email-history-modal-nobody").should("be.visible");
+        cy.get("#email-history-modal-nobody")
+            .should("be.visible")
+            .and("contain.text", "messages written in the email composer and of volunteer emails only");
         cy.get("#email-history-modal-body").should("not.be.visible");
     });
 

@@ -150,11 +150,16 @@ abstract class BaseEmail
 
     /**
      * Short kind stored in the history log (eml_Kind), e.g. composer, birthday,
-     * account.reset. Defaults to the class name without the Email suffix.
+     * account.reset. Defaults to the class name without the Email suffix, or
+     * "email" for an anonymous class, whose name is not stable.
      */
     protected function getLogKind(): string
     {
-        $short = (new \ReflectionClass($this))->getShortName();
+        $class = new \ReflectionClass($this);
+        if ($class->isAnonymous()) {
+            return 'email';
+        }
+        $short = $class->getShortName();
 
         return strtolower((string) preg_replace('/Email$/', '', $short));
     }

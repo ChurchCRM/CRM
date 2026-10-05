@@ -59,6 +59,28 @@ describe("API GET /api/email/log", () => {
         adminGet("/api/email/log/999999", 404);
     });
 
+    it("labels every kind of email it logs, and calls an unknown one Email", () => {
+        const subject = `kind-label-${Date.now()}`;
+        const labels = {
+            volunteerassignment: "Volunteer assignment",
+            volunteerhelpoffer: "Offer to help",
+            email: "Email",
+        };
+        const shown = {};
+        cy.wrap(Object.keys(labels)).each((kind) => {
+            cy.dbQuery(
+                "INSERT INTO email_log_eml (eml_per_ID, eml_Address, eml_Kind, eml_Subject, eml_Status, eml_DateSent) VALUES (3, 'kind@example.com', ?, ?, 'skipped', '2000-01-01 00:00:00')",
+                [kind, subject],
+            ).then(({ rows }) => {
+                adminGet(`/api/email/log/${rows.insertId}`).then((resp) => {
+                    shown[kind] = resp.body.kindLabel;
+                });
+            });
+        });
+        cy.dbQuery("DELETE FROM email_log_eml WHERE eml_Subject = ?", [subject]);
+        cy.wrap(shown).should("deep.equal", labels);
+    });
+
     it("lists a family's rows: the family address plus its current members", () => {
         adminGet("/api/email/log?familyId=1").then((resp) => {
             expect(resp.body.total).to.be.at.least(6);

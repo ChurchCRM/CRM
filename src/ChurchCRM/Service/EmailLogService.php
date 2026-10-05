@@ -218,7 +218,16 @@ class EmailLogService
             'account.unlocked'    => gettext('Account unlocked'),
             'account.deleted'     => gettext('Account deleted'),
             'test'                => gettext('SMTP test'),
-            default               => $kind,
+            // Volunteer v2 messages log the default kind, their class name.
+            'volunteerassignment'   => gettext('Volunteer assignment'),
+            'volunteerreminder'     => gettext('Volunteer reminder'),
+            'volunteerdeclinealert' => gettext('Volunteer declined'),
+            'volunteergapalert'     => gettext('Volunteers needed'),
+            'volunteersignupconfirm' => gettext('Volunteer sign-up'),
+            'volunteerswapproposed' => gettext('Substitute proposed'),
+            'volunteerswapresolved' => gettext('Substitute decision'),
+            'volunteerhelpoffer'    => gettext('Offer to help'),
+            default               => gettext('Email'),
         };
     }
 
