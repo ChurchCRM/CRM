@@ -4,6 +4,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\ClassificationService;
+use ChurchCRM\Service\GroupService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -176,15 +177,7 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
                 // Dynamic list — check if it is a group role list and reset affected members
                 $roleGroup = GroupQuery::create()->findOneByRoleListId($listId);
                 if ($roleGroup !== null) {
-                    if ((int) $roleGroup->getDefaultRole() === $optionId) {
-                        $roleGroup->setDefaultRole(1);
-                        $roleGroup->save();
-                    }
-                    $defaultRole = (int) $roleGroup->getDefaultRole();
-                    \ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery::create()
-                        ->filterByGroupId($roleGroup->getId())
-                        ->filterByRoleId($optionId)
-                        ->update(['RoleId' => $defaultRole]);
+                    (new GroupService())->moveMembersOffDeletedRole($roleGroup, $optionId);
                 }
                 break;
         }
