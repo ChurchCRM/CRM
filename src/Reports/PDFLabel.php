@@ -12,8 +12,28 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\CsvExporter;
+use Propel\Runtime\Propel;
 
-function GroupBySalutation(string $famID, $aAdultRole, $aChildRole, string $sPersonIds)
+/**
+ * Rows of a query whose values, including every id list, are bound as parameters.
+ */
+function FetchLabelRows(string $sSQL, array $aParams): array
+{
+    $stmt = Propel::getConnection()->prepare($sSQL);
+    $stmt->execute($aParams);
+
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+}
+
+/**
+ * "?, ?, ?" for an IN list of the given ids.
+ */
+function IdPlaceholders(array $aIds): string
+{
+    return implode(',', array_fill(0, count($aIds), '?'));
+}
+
+function GroupBySalutation(string $famID, $aAdultRole, $aChildRole, array $aPersonIds)
 {
     // Function to place the name(s) on a label when grouping multiple
     // family members on the same label.
@@ -27,22 +47,18 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole, string $sPer
     // such as"All Souls Church"
     // Similar logic is applied if mailing to Sunday School children.
 
-    $sSQL = 'SELECT * FROM family_fam WHERE fam_ID=' . $famID;
-    $rsFamInfo = RunQuery($sSQL);
-
-    if (mysqli_num_rows($rsFamInfo) === 0) {
+    $aFamRows = FetchLabelRows('SELECT * FROM family_fam WHERE fam_ID = ?', [(int) $famID]);
+    if ($aFamRows === []) {
         return 'Invalid Family' . $famID;
     }
-
-    $aFam = mysqli_fetch_array($rsFamInfo);
-    extract($aFam);
+    extract($aFamRows[0]);
 
     // Only family members who get this household label (exclude deceased)
-    $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID=' . $famID . ' AND per_ID IN ('
-    . $sPersonIds . ') AND per_DateDeceased IS NULL ORDER BY per_LastName, per_FirstName';
-
-    $rsMembers = RunQuery($sSQL);
-    $numMembers = mysqli_num_rows($rsMembers);
+    $aMembers = FetchLabelRows(
+        'SELECT * FROM person_per WHERE per_fam_ID = ? AND per_ID IN (' . IdPlaceholders($aPersonIds) . ')'
+        . ' AND per_DateDeceased IS NULL ORDER BY per_LastName, per_FirstName',
+        array_merge([(int) $famID], $aPersonIds)
+    );
 
     // Initialize to"Nothing to return"  If this value is returned
     // the calling program knows to skip this mode and try the next
@@ -55,8 +71,7 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole, string $sPer
     $numChild = 0;
     $numOther = 0;
 
-    for ($ind = 0; $ind < $numMembers; $ind++) {
-        $member = mysqli_fetch_array($rsMembers);
+    foreach ($aMembers as $member) {
         extract($member);
 
         $bAdult = false;
@@ -94,11 +109,9 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole, string $sPer
         extract($aAdult[0]);
         $sNameAdult = $per_FirstName . ' ' . $per_LastName;
     } elseif ($numAdult == 2) {
-        $firstMember = mysqli_fetch_array($rsMembers);
         extract($aAdult[0]);
         $firstFirstName = $per_FirstName;
         $firstLastName = $per_LastName;
-        $secondMember = mysqli_fetch_array($rsMembers);
         extract($aAdult[1]);
         $secondFirstName = $per_FirstName;
         $secondLastName = $per_LastName;
@@ -117,27 +130,23 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole, string $sPer
 
     // Salutation for children grouped together
     if ($numChild > 0) {
-        $firstMember = mysqli_fetch_array($rsMembers);
         extract($aChild[0]);
         $firstFirstName = $per_FirstName;
         $firstLastName = $per_LastName;
     }
     if ($numChild > 1) {
-        $secondMember = mysqli_fetch_array($rsMembers);
         extract($aChild[1]);
         $secondFirstName = $per_FirstName;
         $secondLastName = $per_LastName;
         $bSameLastNames = $bSameLastNames && ($firstLastName == $secondLastName);
     }
     if ($numChild > 2) {
-        $thirdMember = mysqli_fetch_array($rsMembers);
         extract($aChild[2]);
         $thirdFirstName = $per_FirstName;
         $thirdLastName = $per_LastName;
         $bSameLastNames = $bSameLastNames && ($secondLastName == $thirdLastName);
     }
     if ($numChild > 3) {
-        $fourthMember = mysqli_fetch_array($rsMembers);
         extract($aChild[3]);
         $fourthFirstName = $per_FirstName;
         $fourthLastName = $per_LastName;
@@ -585,7 +594,7 @@ function SelectLabelAddress(array $aRow): array
  *                                       name, "fam" gives their household one label. A person
  *                                       can have both (#10343).
  */
-function GenerateLabels(&$pdf, array $aEntries, $iBulkMailPresort, $bToParents, $bOnlyComplete): string
+function GenerateLabels(&$pdf, array $aEntries, $iBulkMailPresort, $bToParents, $bOnlyComplete): array
 {
     $sAdultRole = SystemConfig::getValue('sDirRoleHead') . ',' . SystemConfig::getValue('sDirRoleSpouse');
     $sAdultRole = trim($sAdultRole," ,\t\n\r\0\x0B");
@@ -599,24 +608,24 @@ function GenerateLabels(&$pdf, array $aEntries, $iBulkMailPresort, $bToParents, 
     sort($aChildRole);
 
     $sLabelList = [];
-    $sPersonIds = implode(',', array_map('intval', array_keys($aEntries)));
-    $sHouseholdIds = implode(',', array_map('intval', array_keys(array_filter(
+    $aPersonIds = array_map('intval', array_keys($aEntries));
+    $aHouseholdIds = array_map('intval', array_keys(array_filter(
         $aEntries,
         static fn (array $aModes): bool => in_array('fam', $aModes, true)
-    ))));
-    if ($sPersonIds === '') {
-        return serialize($sLabelList);
+    )));
+    if ($aPersonIds === []) {
+        return $sLabelList;
     }
 
-    $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ';
-    $sSQL .= 'ON person_per.per_fam_ID = family_fam.fam_ID ';
-    $sSQL .= 'WHERE per_ID IN (' . $sPersonIds . ') ';
-    $sSQL .= 'AND per_DateDeceased IS NULL ';
-    $sSQL .= 'ORDER BY per_LastName, per_FirstName, fam_Zip';
-    $rsCartItems = RunQuery($sSQL);
+    $aRows = FetchLabelRows(
+        'SELECT * FROM person_per LEFT JOIN family_fam ON person_per.per_fam_ID = family_fam.fam_ID'
+        . ' WHERE per_ID IN (' . IdPlaceholders($aPersonIds) . ') AND per_DateDeceased IS NULL'
+        . ' ORDER BY per_LastName, per_FirstName, fam_Zip',
+        $aPersonIds
+    );
     $didFam = [];
 
-    while ($aRow = mysqli_fetch_array($rsCartItems)) {
+    foreach ($aRows as $aRow) {
         foreach ($aEntries[(int) $aRow['per_ID']] as $mode) {
             if ($mode === 'fam') {
                 // mysqli returns the column as a string, so compare as an integer;
@@ -626,7 +635,7 @@ function GenerateLabels(&$pdf, array $aEntries, $iBulkMailPresort, $bToParents, 
                 }
                 $didFam[$aRow['per_fam_ID']] = true;
 
-                $aName = GroupBySalutation($aRow['per_fam_ID'], $aAdultRole, $aChildRole, $sHouseholdIds);
+                $aName = GroupBySalutation((string) $aRow['per_fam_ID'], $aAdultRole, $aChildRole, $aHouseholdIds);
 
                 // One label per household (#9873): the adults' salutation when an
                 // adult of the family is listed, else the children's (so a
@@ -726,11 +735,7 @@ function GenerateLabels(&$pdf, array $aEntries, $iBulkMailPresort, $bToParents, 
         }
     }
 
-    if (isset($zipLabels)) {
-        return serialize($zipLabels);
-    } else {
-        return serialize($sLabelList);
-    }
+    return $zipLabels ?? $sLabelList;
 }
 
 // Labels for a People Report's rows (#10343) instead of the cart. The reports are admin only.
@@ -815,9 +820,7 @@ if ($sReportSlug !== '') {
     $aEntries = array_fill_keys(array_map('intval', array_filter(explode(',', Cart::getCartIdString()))), [$mode]);
 }
 
-$aLabelList = unserialize(
-    GenerateLabels($pdf, $aEntries, $iBulkCode, $bToParents, $bOnlyComplete)
-);
+$aLabelList = GenerateLabels($pdf, $aEntries, $iBulkCode, $bToParents, $bOnlyComplete);
 
 if ($sFileType === 'PDF') {
     if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
