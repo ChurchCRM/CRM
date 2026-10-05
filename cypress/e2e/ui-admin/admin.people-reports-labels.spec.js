@@ -5,11 +5,26 @@
 // The family has no ZIP, so these labels leave "Ignore Incomplete Addresses" off.
 const LABEL_OPTIONS = "labeltype=5160&labelfont=Helvetica&labelfontsize=10&startrow=1&startcol=1&filetype=CSV";
 
+const namesIn = (csv) =>
+    csv
+        .trim()
+        .split(/\r?\n/)
+        .slice(1)
+        .map((line) => line.split(",")[1].replace(/"/g, ""));
+
 const labelNames = (query) =>
-    cy.request(`/Reports/PDFLabel.php?${query}&${LABEL_OPTIONS}`).then((response) => {
-        const lines = response.body.trim().split(/\r?\n/).slice(1);
-        return lines.map((line) => line.split(",")[1].replace(/"/g, ""));
-    });
+    cy.request(`/Reports/PDFLabel.php?${query}&${LABEL_OPTIONS}`).then((response) => namesIn(response.body));
+
+// The dialog opens the labels in a new tab, so request exactly what the form would send.
+const submitLabelsDialog = (groupbymode) => {
+    cy.get(`#labelsForm input[name="groupbymode"][value="${groupbymode}"]`).check();
+    cy.get("#labelsForm input[name=onlyfull]").uncheck();
+    cy.get("#labelsForm select[name=filetype]").select("CSV");
+    return cy
+        .get("#labelsForm")
+        .then(($form) => cy.request(`${$form.attr("action")}?${$form.serialize()}`))
+        .then((response) => namesIn(response.body));
+};
 
 const count = (names, name) => names.filter((label) => label === name).length;
 
@@ -65,10 +80,14 @@ describe("People Reports: Print Labels (#10343)", () => {
     });
 
     it("uses the grouping chosen in the dialog on other reports", () => {
-        labelNames("report=birthdays&month=7&classification[]=0&groupbymode=indiv").then((names) => {
+        cy.visit("/people/reports/birthdays?month=7&classification[]=0");
+        cy.get("#printLabels").click();
+        cy.get("#labelsModal").should("be.visible");
+
+        submitLabelsDialog("indiv").then((names) => {
             expect(names).to.include.members(["Mr Franklin Beck", "Miss Stella Beck"]);
         });
-        labelNames("report=birthdays&month=7&classification[]=0&groupbymode=fam").then((names) => {
+        submitLabelsDialog("fam").then((names) => {
             expect(names.filter((label) => label.endsWith("Beck"))).to.deep.equal(["Franklin Beck"]);
         });
     });
