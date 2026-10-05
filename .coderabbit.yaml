@@ -49,6 +49,9 @@ reviews:
     auto_pause_after_reviewed_commits: 5
     base_branches:
       - ".*"
+    ignore_branches:
+      - "locale/.*"
+      - "master"
     ignore_title_keywords:
       - "locale: update translations from POEditor"
       - "Update locale strings"
