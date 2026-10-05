@@ -91,6 +91,9 @@
                 {% if person.isSelf %}
                 <span class="portal-member-badge">{{ gettext('You') }}</span>
                 {% endif %}
+                {% if person.awaitingReview %}
+                <span class="portal-member-badge portal-member-badge-pending">{{ gettext('Waiting for review') }}</span>
+                {% endif %}
             </li>
             {% endfor %}
         </ul>
@@ -132,7 +135,7 @@
         {{ csrf_field() }}
         <h2 class="portal-card-title" id="portal-add-member-title">{{ gettext('Add a family member') }}</h2>
         <p class="portal-card-text">
-            {{ gettext('This goes to the church office for review. Nobody is added to the church records until a member of staff has looked at it.') }}
+            {{ gettext('This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review.') }}
         </p>
 
         <div class="portal-field">

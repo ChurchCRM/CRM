@@ -159,6 +159,8 @@ describe("Member Portal — My Family", () => {
             cy.get(".portal-flash-success", { timeout: 10000 })
                 .should("be.visible")
                 .and("contain", "The church office will review this");
+            cy.visit("/portal/family");
+            cy.contains("#portal-family-members .portal-member", firstName).should("contain", "Waiting for review");
 
             // The member is pending, not live: it appears on the staff review
             // page, which is the whole point of Person::SELF_REGISTER.
@@ -178,6 +180,10 @@ describe("Member Portal — My Family", () => {
             cy.makePrivateAdminAPICall("GET", "/api/persons/self-register", null, 200).then((response) => {
                 expect(response.body.people.map((person) => person.FirstName)).to.not.include(firstName);
             });
+
+            loginAs(adultUser);
+            cy.visit("/portal/family");
+            cy.contains("#portal-family-members .portal-member", firstName).should("not.contain", "Waiting for review");
         });
     });
 

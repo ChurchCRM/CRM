@@ -92,6 +92,7 @@ toast in the fixed top-right stack that fades away on its own.
 | `.portal-button` / `.portal-button-quiet` | The primary and secondary action buttons |
 | `.portal-avatar` / `.portal-avatar-initials` | A member's photo, and the initials shown when there is none |
 | `.portal-member-list` / `.portal-member` | The family members list; the member's own row also carries `.is-self` |
+| `.portal-member-badge` / `.portal-member-badge-pending` | The "You" badge on a member row, and the "Waiting for review" badge on a proposed member |
 | `.portal-dialog` | A `<dialog>` in the portal's own chrome |
 | `.portal-breadcrumb` | The single "← back" link above a nested page's title (My Teams) |
 | `.portal-team-card` / `.portal-team-ministry` | One team on **My Teams**, and the ministry line under a team's name |
@@ -302,6 +303,7 @@ orders them.
 | `initials` | string | The two-letter stand-in for a missing photo |
 | `isSelf` | bool | `true` for the signed-in member's own row |
 | `isAdult` | bool | `true` for a head or spouse — the roles `sDirRoleHead` and `sDirRoleSpouse` name |
+| `awaitingReview` | bool | `true` for someone a member proposed with "Add a family member" whom staff have not approved yet (People → Self Registrations) |
 
 ### `canEdit`, `canConfirm`, `countries`, `familyRoles`, `familySummary`
 

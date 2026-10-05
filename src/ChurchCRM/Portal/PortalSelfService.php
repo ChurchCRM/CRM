@@ -148,6 +148,7 @@ class PortalSelfService
                 'initials' => self::getInitials($member),
                 'isSelf' => (int) $member->getId() === (int) $actor->getId(),
                 'isAdult' => self::isAdultOf($family, $member),
+                'awaitingReview' => $member->getEnteredBy() === Person::SELF_REGISTER && (bool) $member->getNeedsReview(),
             ];
         }
 

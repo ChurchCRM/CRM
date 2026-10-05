@@ -546,6 +546,11 @@
     font-size: 0.75rem;
 }
 
+.portal-member-badge-pending {
+    background-color: transparent;
+    border: 1px solid var(--portal-warning);
+}
+
 // Forms ----------------------------------------------------------------------
 
 .portal-form .portal-card-text {

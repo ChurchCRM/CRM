@@ -56,6 +56,9 @@
                     <span class="portal-member-fullname">{{ person.fullName }}</span>
                     <span class="portal-member-role">{{ person.role }}</span>
                 </span>
+                {% if person.awaitingReview %}
+                <span class="portal-member-badge portal-member-badge-pending">{{ gettext('Waiting for review') }}</span>
+                {% endif %}
             </li>
             {% endfor %}
         </ul>
