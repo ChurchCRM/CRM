@@ -625,6 +625,18 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
 
         it("allows the same person on two different positions of one occurrence (I7, D16)", () => {
             assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A, {}, 201);
+
+            // The picker reports the clash rather than hiding the person (§5.5).
+            api(
+                COORDINATOR_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posMilk}`,
+            ).then((resp) => {
+                const person = resp.body.people.find((p) => p.personId === POOL_MEMBER_A);
+                expect(person, "an already-serving person stays in the picker").to.not.eq(undefined);
+                expect(person.conflictPositionId).to.eq(posEspresso);
+            });
+
             assign(COORDINATOR_KEY, occurrenceOne, posMilk, POOL_MEMBER_A, {}, 201);
 
             dbOk(
@@ -635,7 +647,6 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
                 expect(Number(rows[0].c)).to.eq(2);
             });
 
-            // The picker reports the clash rather than hiding the person (§5.5).
             api(
                 COORDINATOR_KEY,
                 "GET",
@@ -645,16 +656,6 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
                 // Person A is not qualified for Expeditor, so they are absent —
                 // check the one who IS, and holds Espresso nowhere.
                 expect(clash).to.eq(undefined);
-            });
-
-            api(
-                COORDINATOR_KEY,
-                "GET",
-                `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posMilk}`,
-            ).then((resp) => {
-                const person = resp.body.people.find((p) => p.personId === POOL_MEMBER_A);
-                expect(person, "an already-serving person stays in the picker").to.not.eq(undefined);
-                expect(person.conflictPositionId).to.eq(posEspresso);
             });
         });
 
@@ -1028,6 +1029,16 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
                     );
                 });
             });
+        });
+
+        it("leaves out whoever already holds the position on this occurrence", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+            api(COORDINATOR_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/eligible?positionId=${posEspresso}`)
+                .its("body.people")
+                .then((people) => {
+                    expect(people.map((p) => p.personId)).to.not.include(POOL_MEMBER_A);
+                    expect(people.map((p) => p.personId)).to.include(POOL_MEMBER_B);
+                });
         });
 
         it("filters by ?q=", () => {

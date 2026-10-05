@@ -1631,6 +1631,14 @@ class VolunteerAssignmentService
         $conflicts = $occurrenceId === null
             ? []
             : $this->conflictingPositions($occurrenceId, $qualifiedIds, (int) $position->getId());
+        // Already on this position for this occurrence: assigning them again is a 409 (I1).
+        $alreadyAssigned = $occurrenceId === null ? [] : array_flip(array_map('intval', VolunteerAssignmentQuery::create()
+            ->filterByOccurrenceId($occurrenceId)
+            ->filterByPositionId((int) $position->getId())
+            ->filterByStatus(self::REUSABLE_STATUSES, Criteria::NOT_IN)
+            ->select('PersonId')
+            ->find()
+            ->getData()));
 
         $needle = $query === null ? '' : mb_strtolower(trim($query));
 
@@ -1640,6 +1648,9 @@ class VolunteerAssignmentService
             $personId = (int) $person->getId();
             $displayName = (string) $person->getFullName();
 
+            if (isset($alreadyAssigned[$personId])) {
+                continue;
+            }
             if ($needle !== '' && !str_contains(mb_strtolower($displayName), $needle)) {
                 continue;
             }
