@@ -27,15 +27,15 @@ reviews:
   in_progress_fortune: false
   review_progress: false
   review_status: false
-  review_details: false
-  commit_status: false
-  fail_commit_status: false
-  changed_files_summary: false
+  review_details: true
+  commit_status: true
+  fail_commit_status: true
+  changed_files_summary: true
   estimate_code_review_effort: false
   suggested_labels: false
   suggested_reviewers: false
   related_issues: true
-  related_prs: false
+  related_prs: true
   assess_linked_issues: true
   enable_prompt_for_ai_agents: true
   instructions: >-
