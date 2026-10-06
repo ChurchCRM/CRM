@@ -812,7 +812,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Expose on window.CRM for legacy callers (GroupView.js etc.)
     window.CRM = window.CRM || {};
     window.CRM.emailComposer = { open: openEmailComposer };
   };

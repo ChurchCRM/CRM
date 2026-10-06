@@ -456,12 +456,6 @@ window.CRM.groups = {
     }
     return window.CRM.APIRequest(params);
   },
-  setRole: (GroupID, PersonID, RoleID) =>
-    window.CRM.APIRequest({
-      method: "POST",
-      path: "groups/" + GroupID + "/userRole/" + PersonID,
-      data: JSON.stringify({ roleID: Number(RoleID) }),
-    }),
   removePerson: (GroupID, PersonID) =>
     window.CRM.APIRequest({
       method: "DELETE", // define the type of HTTP verb we want to use (POST for our form)

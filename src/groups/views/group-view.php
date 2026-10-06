@@ -359,7 +359,7 @@ if ($bCanManageGroups) {
     window.CRM.groupEmailExport  = <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>;
     window.CRM.groupPhoneNumbers = <?= InputUtils::jsonEncodeForScript($sPhoneLink) ?>;
 </script>
-<script src="<?= $sRootPath ?>/skin/js/GroupView.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/GroupView.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/groups-group-view.min.js') ?>"></script>
 <?php if ($bEmailEnabled): ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php endif; ?>

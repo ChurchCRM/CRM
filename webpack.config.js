@@ -114,6 +114,7 @@ module.exports = {
     'people-self-register': './webpack/people/self-register',
     'people-labels-modal': './webpack/people/labels-modal',
     'error': './webpack/error',
+    'groups-group-view': './webpack/groups/group-view',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
     'repeat-event-editor': './webpack/repeat-event-editor',
