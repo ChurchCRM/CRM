@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-06 00:25+0000\n"
+"POT-Creation-Date: 2026-10-06 22:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
+#, php-format
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr ""
+
 msgid "\"Why Came\" Notes"
 msgstr ""
 
 #, php-format
 msgid "\"Why Came\" notes for %1$s %2$s"
+msgstr ""
+
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr ""
+
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
 msgstr ""
 
 msgid "# Payments"
@@ -35,7 +47,43 @@ msgid "% Paid"
 msgstr ""
 
 #, php-format
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr ""
+
+#, php-format
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr ""
+
+#, php-format
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr ""
+
+#, php-format
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr ""
+
+#, php-format
+msgid "%1$s is not an event of %2$s"
+msgstr ""
+
+#, php-format
 msgid "%1$s of the %2$s family"
+msgstr ""
+
+#, php-format
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr ""
+
+#, php-format
+msgid "%1$s wants to help with %2$s"
+msgstr ""
+
+#, php-format
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr ""
+
+#, php-format
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
 msgstr ""
 
 #, php-format
@@ -61,10 +109,38 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
 msgid "%d event in %s"
 msgid_plural "%d events in %s"
 msgstr[0] ""
 msgstr[1] ""
+
+#, php-format
+msgid "%d failed"
+msgstr ""
 
 #, php-format
 msgid "%d files have failed integrity validation."
@@ -99,6 +175,18 @@ msgstr ""
 #, php-format
 msgid "%d month old"
 msgid_plural "%d months old"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -141,6 +229,12 @@ msgid "%d tax document emailed to the family successfully."
 msgstr ""
 
 #, php-format
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
 msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] ""
@@ -155,7 +249,45 @@ msgid "%s %d Giving Statement"
 msgstr ""
 
 #, php-format
+msgid "%s Calendar"
+msgstr ""
+
+#, php-format
+msgid "%s Family"
+msgstr ""
+
+#, php-format
 msgid "%s Fundraisers"
+msgstr ""
+
+#, php-format
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr ""
+
+#, php-format
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%s family"
+msgstr ""
+
+#, php-format
+msgid "%s has declined a volunteer assignment."
+msgstr ""
+
+#, php-format
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr ""
+
+#, php-format
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr ""
+
+#, php-format
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
 msgstr ""
 
 #, php-format
@@ -163,8 +295,24 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr ""
 
 #, php-format
+msgid "%s not sent (%s): %s"
+msgstr ""
+
+#, php-format
 msgid "%s of %s goal raised"
 msgstr ""
+
+#, php-format
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] ""
+msgstr[1] ""
 
 #, php-format
 msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
@@ -178,10 +326,17 @@ msgstr ""
 msgid "%s: Please verify your family's information"
 msgstr ""
 
+#, php-format
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr ""
+
 msgid "(No assigned family)"
 msgstr ""
 
 msgid "(PHP default)"
+msgstr ""
+
+msgid "(no subject)"
 msgstr ""
 
 msgid "(none)"
@@ -270,16 +425,61 @@ msgstr ""
 msgid "A ChurchCRM account was created for you"
 msgstr ""
 
+msgid "A birthday cannot be in the future."
+msgstr ""
+
+msgid "A calendar event"
+msgstr ""
+
+msgid "A calendar id must be a number."
+msgstr ""
+
 msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
 msgstr ""
 
+msgid "A class that no longer exists"
+msgstr ""
+
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr ""
+
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr ""
+
+msgid "A class's meetings"
+msgstr ""
+
 msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr ""
+
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr ""
+
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr ""
+
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr ""
+
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr ""
+
+msgid "A day a month does not have falls on its last day."
+msgstr ""
+
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr ""
+
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
 msgstr ""
 
 msgid "A downloadUrl is required to install a plugin."
 msgstr ""
 
 msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr ""
+
+msgid "A from and a to date in YYYY-MM-DD form are required"
 msgstr ""
 
 msgid "A geocoding error occurred — try again later"
@@ -289,6 +489,27 @@ msgid "A household. Stores the shared mailing address and home phone."
 msgstr ""
 
 msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr ""
+
+msgid "A masquerade is already in progress. Exit it before starting another."
+msgstr ""
+
+msgid "A minimum count is required"
+msgstr ""
+
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr ""
+
+msgid "A ministry name is required"
+msgstr ""
+
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr ""
+
+msgid "A ministry with that name already exists"
+msgstr ""
+
+msgid "A ministry's own calendar cannot be opened to other ministries"
 msgstr ""
 
 msgid "A new password has been generated and sent to your email address."
@@ -303,7 +524,67 @@ msgstr ""
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr ""
 
+msgid "A position belongs to a team; choose one"
+msgstr ""
+
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr ""
+
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr ""
+
+msgid "A position is required"
+msgstr ""
+
+msgid "A position name is required"
+msgstr ""
+
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr ""
+
+msgid "A position with that name already exists in this ministry"
+msgstr ""
+
+msgid "A response must be accepted or declined"
+msgstr ""
+
+msgid "A schedule belongs to a team; choose one"
+msgstr ""
+
+msgid "A schedule name is required"
+msgstr ""
+
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr ""
+
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr ""
+
+msgid "A schedule that follows a class must name the class"
+msgstr ""
+
+msgid "A schedule that follows an event type must name the event type"
+msgstr ""
+
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr ""
+
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr ""
+
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr ""
+
+msgid "A square picture of your face works best."
+msgstr ""
+
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr ""
+
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr ""
+
+msgid "A substitute has already been proposed for this assignment"
 msgstr ""
 
 msgid "A system update is available. Please upgrade your installation."
@@ -312,7 +593,37 @@ msgstr ""
 msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
 msgstr ""
 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr ""
+
+msgid "A team name is required"
+msgstr ""
+
+msgid "A team with that name already exists in this ministry"
+msgstr ""
+
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr ""
+
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr ""
+
 msgid "A valid person must be selected."
+msgstr ""
+
+msgid "A volunteer"
+msgstr ""
+
+msgid "A volunteer has declined an assignment"
+msgstr ""
+
+msgid "A volunteer has proposed a substitute"
+msgstr ""
+
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr ""
+
+msgid "A wedding date cannot be in the future."
 msgstr ""
 
 msgid "AM / PM"
@@ -337,6 +648,9 @@ msgid "About WebDAV Backups"
 msgstr ""
 
 msgid "Accept"
+msgstr ""
+
+msgid "Accepted"
 msgstr ""
 
 msgid "Accepted format: .csv"
@@ -382,6 +696,9 @@ msgstr ""
 msgid "Account Unlocked"
 msgstr ""
 
+msgid "Account deleted"
+msgstr ""
+
 msgid "Account has limited permissions. Contact an administrator."
 msgstr ""
 
@@ -395,6 +712,12 @@ msgid "Account options"
 msgstr ""
 
 msgid "Account status"
+msgstr ""
+
+msgid "Account unlocked"
+msgstr ""
+
+msgid "Accounts"
 msgstr ""
 
 msgid "Action"
@@ -424,6 +747,12 @@ msgstr ""
 msgid "Active Users"
 msgstr ""
 
+msgid "Active must be true or false"
+msgstr ""
+
+msgid "Active now"
+msgstr ""
+
 msgid "Active, seconds left: {{seconds}}"
 msgstr ""
 
@@ -431,6 +760,9 @@ msgid "Add"
 msgstr ""
 
 msgid "Add A Group Name"
+msgstr ""
+
+msgid "Add All"
 msgstr ""
 
 msgid "Add All Classes"
@@ -473,6 +805,9 @@ msgid "Add Event"
 msgstr ""
 
 msgid "Add Event Type"
+msgstr ""
+
+msgid "Add Everyone in Cart"
 msgstr ""
 
 msgid "Add Family Member"
@@ -580,6 +915,12 @@ msgstr ""
 msgid "Add User"
 msgstr ""
 
+msgid "Add Volunteer"
+msgstr ""
+
+msgid "Add Volunteers to Cart"
+msgstr ""
+
 msgid "Add Walk-in / Visitor"
 msgstr ""
 
@@ -598,6 +939,15 @@ msgstr ""
 msgid "Add a Person"
 msgstr ""
 
+msgid "Add a family member"
+msgstr ""
+
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr ""
+
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr ""
+
 msgid "Add all cart items to a group"
 msgstr ""
 
@@ -610,7 +960,13 @@ msgstr ""
 msgid "Add any additional notes about this deposit"
 msgstr ""
 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr ""
+
 msgid "Add cart items to a family"
+msgstr ""
+
+msgid "Add coordinator"
 msgstr ""
 
 msgid "Add custom external links to the navigation menu."
@@ -631,6 +987,12 @@ msgstr ""
 msgid "Add first family"
 msgstr ""
 
+msgid "Add from Cart"
+msgstr ""
+
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr ""
+
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr ""
 
@@ -643,6 +1005,9 @@ msgstr ""
 msgid "Add or edit notes for people and families"
 msgstr ""
 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr ""
+
 msgid "Add people to your cart before assigning them to a family."
 msgstr ""
 
@@ -652,13 +1017,34 @@ msgstr ""
 msgid "Add people to your cart first, then come back to check them in to an event."
 msgstr ""
 
+msgid "Add position"
+msgstr ""
+
 msgid "Add records permission"
+msgstr ""
+
+msgid "Add schedule"
 msgstr ""
 
 msgid "Add staff and volunteers"
 msgstr ""
 
 msgid "Add staff or volunteers as system users"
+msgstr ""
+
+msgid "Add team"
+msgstr ""
+
+msgid "Add them on the Calendar tab, then generate again."
+msgstr ""
+
+msgid "Add them on the Calendar tab."
+msgstr ""
+
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr ""
+
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
 msgstr ""
 
 msgid "Add to Buyer List"
@@ -676,10 +1062,17 @@ msgstr ""
 msgid "Added"
 msgstr ""
 
+#, php-format
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr ""
+
 msgid "Added to cart successfully"
 msgstr ""
 
 msgid "Added to group"
+msgstr ""
+
+msgid "Added — now tick the positions they can serve"
 msgstr ""
 
 #. plugin:custom-links:section:1:title
@@ -693,6 +1086,9 @@ msgid "Additional Information"
 msgstr ""
 
 msgid "Address"
+msgstr ""
+
+msgid "Address Line 2"
 msgstr ""
 
 msgid "Address Status"
@@ -720,10 +1116,16 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
+msgid "Admin Console"
+msgstr ""
+
 msgid "Admin Dashboard"
 msgstr ""
 
 msgid "Administrator"
+msgstr ""
+
+msgid "Administrator permission required"
 msgstr ""
 
 msgid "Administrator privileges"
@@ -751,6 +1153,9 @@ msgid "Advanced filtering by group, classification, and role"
 msgstr ""
 
 msgid "Advanced: Install a specific version instead"
+msgstr ""
+
+msgid "Advertise this position on the Member Portal Open Opportunities page."
 msgstr ""
 
 msgid "Affected Files"
@@ -840,6 +1245,9 @@ msgid "All Statuses"
 msgstr ""
 
 msgid "All System Settings"
+msgstr ""
+
+msgid "All Teams"
 msgstr ""
 
 msgid "All Tellers"
@@ -945,6 +1353,9 @@ msgstr ""
 msgid "Allow Self-Signed Certificates"
 msgstr ""
 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr ""
+
 msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
 msgstr ""
 
@@ -980,6 +1391,9 @@ msgid "Already in"
 msgstr ""
 
 msgid "Already in a family"
+msgstr ""
+
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
 msgstr ""
 
 msgid "Also runs automatically via WebDAV based on your configured interval."
@@ -1062,6 +1476,15 @@ msgstr ""
 msgid "An error occurred. Please try again."
 msgstr ""
 
+msgid "An event title is required"
+msgstr ""
+
+msgid "An event type or a ministry is required"
+msgstr ""
+
+msgid "An event type that no longer exists"
+msgstr ""
+
 msgid "An individual church member. Stores name, birthday, personal email, and mobile."
 msgstr ""
 
@@ -1120,6 +1543,9 @@ msgstr ""
 msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
 msgstr ""
 
+msgid "Another ministry"
+msgstr ""
+
 #. Context: countries
 msgid "Antarctica"
 msgstr ""
@@ -1141,6 +1567,12 @@ msgid ""
 "- nginx with WebDAV module\n"
 "\n"
 "Note: Some services require app-specific passwords for WebDAV access."
+msgstr ""
+
+msgid "Any event"
+msgstr ""
+
+msgid "Anything your coordinator should know"
 msgstr ""
 
 msgid "App"
@@ -1180,6 +1612,12 @@ msgid "Approve"
 msgstr ""
 
 msgid "Approve selected"
+msgstr ""
+
+msgid "Approve substitution"
+msgstr ""
+
+msgid "Approve this substitute"
 msgstr ""
 
 msgid "Approved"
@@ -1283,6 +1721,18 @@ msgstr ""
 msgid "Ascension Island"
 msgstr ""
 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr ""
+
+msgid "Ask someone to cover for you"
+msgstr ""
+
+msgid "Ask them"
+msgstr ""
+
+msgid "Asked — your coordinator will confirm it."
+msgstr ""
+
 msgid "Assign"
 msgstr ""
 
@@ -1293,6 +1743,9 @@ msgid "Assign Opportunities"
 msgstr ""
 
 msgid "Assign a New Volunteer Opportunity"
+msgstr ""
+
+msgid "Assign a volunteer"
 msgstr ""
 
 msgid "Assign and manage donation envelope numbers"
@@ -1334,7 +1787,16 @@ msgstr ""
 msgid "Assigned event not found"
 msgstr ""
 
+msgid "Assigned outside the current plan"
+msgstr ""
+
 msgid "Assignment"
+msgstr ""
+
+msgid "Assignment cancelled"
+msgstr ""
+
+msgid "Assignment not found"
 msgstr ""
 
 msgid "Associated Fund"
@@ -1356,6 +1818,13 @@ msgid "At least one fund must have a non-zero amount."
 msgstr ""
 
 msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr ""
+
+msgid "At least one personId or familyId is required"
+msgstr ""
+
+#, php-format
+msgid "At most %d default volunteers can be chosen for one position"
 msgstr ""
 
 msgid "Attendance"
@@ -1413,6 +1882,12 @@ msgstr ""
 msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
 msgstr ""
 
+msgid "Author"
+msgstr ""
+
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr ""
+
 msgid "Auto"
 msgstr ""
 
@@ -1433,6 +1908,9 @@ msgid "Auto-assign paddle numbers to all item donors"
 msgstr ""
 
 msgid "Auto-mapped"
+msgstr ""
+
+msgid "Automatic"
 msgstr ""
 
 msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
@@ -1462,6 +1940,9 @@ msgstr ""
 msgid "Avg Sale Price"
 msgstr ""
 
+msgid "Awaiting reply"
+msgstr ""
+
 #. Context: countries
 msgid "Azerbaijan (Azərbaycan)"
 msgstr ""
@@ -1488,6 +1969,9 @@ msgid "Back to Debug Info"
 msgstr ""
 
 msgid "Back to Deposits"
+msgstr ""
+
+msgid "Back to Email History"
 msgstr ""
 
 msgid "Back to Events"
@@ -1526,7 +2010,16 @@ msgstr ""
 msgid "Back to Menu"
 msgstr ""
 
+msgid "Back to Ministry Dashboard"
+msgstr ""
+
+msgid "Back to Occurrences"
+msgstr ""
+
 msgid "Back to People Dashboard"
+msgstr ""
+
+msgid "Back to Person"
 msgstr ""
 
 msgid "Back to Pledge Dashboard"
@@ -1535,7 +2028,19 @@ msgstr ""
 msgid "Back to Users"
 msgstr ""
 
+msgid "Back to editing"
+msgstr ""
+
 msgid "Back to login"
+msgstr ""
+
+msgid "Back to my schedule"
+msgstr ""
+
+msgid "Back to the Member Portal"
+msgstr ""
+
+msgid "Back to your profile"
 msgstr ""
 
 msgid "Back up modified files before upgrading if you want to keep your changes."
@@ -1549,6 +2054,15 @@ msgstr ""
 
 #, php-format
 msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr ""
+
+msgid "Background jobs and delivery"
+msgstr ""
+
+msgid "Background jobs last ran"
+msgstr ""
+
+msgid "Background jobs ran"
 msgstr ""
 
 msgid "Backing up..."
@@ -1742,6 +2256,9 @@ msgstr ""
 msgid "Birthday Greeting Emails"
 msgstr ""
 
+msgid "Birthday greeting"
+msgstr ""
+
 msgid "Birthdays"
 msgstr ""
 
@@ -1777,7 +2294,16 @@ msgstr ""
 msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
 msgstr ""
 
+msgid "Both"
+msgstr ""
+
+msgid "Both (transition)"
+msgstr ""
+
 msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr ""
+
+msgid "Both — V1 and V2 side by side (transition)"
 msgstr ""
 
 #. Context: countries
@@ -1936,16 +2462,25 @@ msgstr ""
 msgid "Calendar Year"
 msgstr ""
 
+msgid "Calendar address"
+msgstr ""
+
 msgid "Calendar not found"
 msgstr ""
 
 msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
 msgstr ""
 
+msgid "Calendar saved"
+msgstr ""
+
 msgid "Calendar time zone:"
 msgstr ""
 
 msgid "Calendars"
+msgstr ""
+
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
 msgstr ""
 
 msgid "Call"
@@ -1963,6 +2498,9 @@ msgid "Campaigns Sent"
 msgstr ""
 
 msgid "Can only review and verify their own family. No other access."
+msgstr ""
+
+msgid "Can this ministry provide teachers for Sunday School?"
 msgstr ""
 
 msgid "Can't change your own active status"
@@ -1994,7 +2532,16 @@ msgstr ""
 msgid "Cancel and Return to Family View"
 msgstr ""
 
+msgid "Cancel assignment"
+msgstr ""
+
+msgid "Cancel this assignment"
+msgstr ""
+
 msgid "Cancel — wait 1 more minute"
+msgstr ""
+
+msgid "Cancelled"
 msgstr ""
 
 msgid "Cannot Delete Event Type"
@@ -2186,6 +2733,12 @@ msgstr ""
 msgid "Change role"
 msgstr ""
 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr ""
+
+msgid "Change your password"
+msgstr ""
+
 msgid "Changes not saved! Please correct and try again!"
 msgstr ""
 
@@ -2307,11 +2860,21 @@ msgstr ""
 msgid "Checked Out Time"
 msgstr ""
 
+msgid "Checked in"
+msgstr ""
+
 #, php-format
 msgid "Checked in to event: %s"
 msgstr ""
 
 msgid "Checked in {{count}} people."
+msgstr ""
+
+#, php-format
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr ""
+
+msgid "Checked out"
 msgstr ""
 
 #, php-format
@@ -2350,13 +2913,43 @@ msgstr ""
 msgid "Choose %s to run this report."
 msgstr ""
 
+msgid "Choose a class"
+msgstr ""
+
+msgid "Choose a day of the month from 1 to 31"
+msgstr ""
+
 msgid "Choose a group..."
+msgstr ""
+
+msgid "Choose a new photo"
+msgstr ""
+
+msgid "Choose a person"
 msgstr ""
 
 msgid "Choose a property..."
 msgstr ""
 
+msgid "Choose a volunteer"
+msgstr ""
+
+msgid "Choose a volunteer first"
+msgstr ""
+
+msgid "Choose an event"
+msgstr ""
+
+msgid "Choose an event type"
+msgstr ""
+
 msgid "Choose an event..."
+msgstr ""
+
+msgid "Choose an existing event type"
+msgstr ""
+
+msgid "Choose at least one calendar to subscribe to."
 msgstr ""
 
 msgid "Choose events"
@@ -2377,6 +2970,52 @@ msgstr ""
 msgid "Choose specific permissions below."
 msgstr ""
 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr ""
+
+msgid "Choose the date each year as MM-DD"
+msgstr ""
+
+msgid "Choose the date of the event"
+msgstr ""
+
+msgid "Choose the day of the week"
+msgstr ""
+
+msgid "Choose the event this schedule follows"
+msgstr ""
+
+msgid "Choose the event to staff"
+msgstr ""
+
+msgid "Choose the events to delete"
+msgstr ""
+
+msgid "Choose the events to staff"
+msgstr ""
+
+msgid "Choose the first and last date"
+msgstr ""
+
+msgid "Choose the first date"
+msgstr ""
+
+msgid "Choose the last date"
+msgstr ""
+
+#, php-format
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr ""
+
+msgid "Choose the team this position serves on"
+msgstr ""
+
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr ""
+
+msgid "Choose weekly, monthly or yearly"
+msgstr ""
+
 #. plugin:gravatar:section:1:content
 msgid ""
 "Choose what appears when no Gravatar exists:\n"
@@ -2387,6 +3026,18 @@ msgid ""
 "• Retro - 8-bit arcade-style pixel art\n"
 "• RoboHash - Unique generated robot\n"
 "• Blank - Transparent (falls back to initials)"
+msgstr ""
+
+msgid "Choose where the schedule's dates come from"
+msgstr ""
+
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr ""
+
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr ""
+
+msgid "Choose who is covering for you."
 msgstr ""
 
 msgid "Choose..."
@@ -2400,6 +3051,12 @@ msgid "Church"
 msgstr ""
 
 msgid "Church Address"
+msgstr ""
+
+msgid "Church Calendar"
+msgstr ""
+
+msgid "Church Calendars"
 msgstr ""
 
 msgid "Church Checking Account Number"
@@ -2432,11 +3089,20 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
+msgid "Church calendar"
+msgstr ""
+
 msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
 msgstr ""
 
 #, php-format
 msgid "Church email — configured on the %s page."
+msgstr ""
+
+msgid "Church events of a type"
+msgstr ""
+
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
 msgstr ""
 
 msgid "Church information saved successfully"
@@ -2454,6 +3120,9 @@ msgstr ""
 msgid "Church name, address, or contact details"
 msgstr ""
 
+msgid "Church website"
+msgstr ""
+
 msgid "ChurchCRM Test Email"
 msgstr ""
 
@@ -2461,6 +3130,9 @@ msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is m
 msgstr ""
 
 msgid "ChurchCRM can send emails directly."
+msgstr ""
+
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
 msgstr ""
 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -2593,6 +3265,9 @@ msgstr ""
 msgid "Close All Stuck Events"
 msgstr ""
 
+msgid "Close event details"
+msgstr ""
+
 msgid "Close stuck events?"
 msgstr ""
 
@@ -2632,6 +3307,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Colombia"
+msgstr ""
+
+msgid "Colour"
 msgstr ""
 
 msgid "Column was automatically matched to a ChurchCRM field."
@@ -2693,6 +3371,12 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr ""
 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr ""
+
+msgid "Completed"
+msgstr ""
+
+msgid "Compose Message"
 msgstr ""
 
 msgid "Confession"
@@ -2784,6 +3468,9 @@ msgid "Confirm data labels"
 msgstr ""
 
 msgid "Confirm with a code from your authenticator app"
+msgstr ""
+
+msgid "Confirm your family details"
 msgstr ""
 
 msgid "Confirm your new password"
@@ -2903,6 +3590,9 @@ msgstr ""
 msgid "Coordinates Updated"
 msgstr ""
 
+msgid "Coordinator removed"
+msgstr ""
+
 msgid "Copied to clipboard"
 msgstr ""
 
@@ -2928,6 +3618,9 @@ msgid "Copy error message"
 msgstr ""
 
 msgid "Copy from Church Info"
+msgstr ""
+
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
 msgstr ""
 
 msgid "Copy to Group"
@@ -2959,13 +3652,22 @@ msgstr ""
 msgid "Could not approve this family"
 msgstr ""
 
+msgid "Could not build the preview."
+msgstr ""
+
 msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
 msgid "Could not copy the church address."
 msgstr ""
 
+msgid "Could not count the class's events"
+msgstr ""
+
 msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr ""
+
+msgid "Could not grant the scope"
 msgstr ""
 
 msgid "Could not load data"
@@ -2980,13 +3682,49 @@ msgstr ""
 msgid "Could not load release information."
 msgstr ""
 
+msgid "Could not load the Sunday School classes"
+msgstr ""
+
 msgid "Could not load the current settings. Reload the page to try again."
+msgstr ""
+
+msgid "Could not load the dashboard"
+msgstr ""
+
+msgid "Could not load the event choices"
+msgstr ""
+
+msgid "Could not load the occurrences"
+msgstr ""
+
+msgid "Could not load the schedules"
+msgstr ""
+
+msgid "Could not load the upcoming events"
+msgstr ""
+
+msgid "Could not load the volunteers"
+msgstr ""
+
+msgid "Could not load this email."
+msgstr ""
+
+msgid "Could not load this ministry"
+msgstr ""
+
+msgid "Could not load this ministry's events"
+msgstr ""
+
+msgid "Could not load this team"
 msgstr ""
 
 msgid "Could not match the church country."
 msgstr ""
 
 msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr ""
+
+msgid "Could not revoke the scope"
 msgstr ""
 
 msgid "Count"
@@ -2999,6 +3737,9 @@ msgid "Country"
 msgstr ""
 
 msgid "Country is required."
+msgstr ""
+
+msgid "Create"
 msgstr ""
 
 msgid "Create Attendance Sheet"
@@ -3079,6 +3820,12 @@ msgstr ""
 msgid "Create a new user account"
 msgstr ""
 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr ""
+
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr ""
+
 msgid "Create an Audience in MailChimp"
 msgstr ""
 
@@ -3086,6 +3833,12 @@ msgid "Create and edit family information and relationships"
 msgstr ""
 
 msgid "Create and manage church events and activities"
+msgstr ""
+
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr ""
+
+msgid "Create ministry"
 msgstr ""
 
 msgid "Create new family…"
@@ -3113,6 +3866,9 @@ msgid "Created"
 msgstr ""
 
 msgid "Creating Backup..."
+msgstr ""
+
+msgid "Creating a ministry requires volunteer manager access"
 msgstr ""
 
 msgid "Creating and uploading backup. This may take several minutes..."
@@ -3378,13 +4134,31 @@ msgstr ""
 msgid "Date Without Year"
 msgstr ""
 
+msgid "Date and time"
+msgstr ""
+
+msgid "Date each year"
+msgstr ""
+
 msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
 msgstr ""
 
 msgid "Date is required"
 msgstr ""
 
+msgid "Dates"
+msgstr ""
+
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr ""
+
 msgid "Day"
+msgstr ""
+
+msgid "Day of the month"
+msgstr ""
+
+msgid "Day of the week"
 msgstr ""
 
 msgid "Day, 2 digits"
@@ -3394,6 +4168,24 @@ msgid "Day, no leading zero"
 msgstr ""
 
 msgid "Deactivate"
+msgstr ""
+
+msgid "Deactivate ministry"
+msgstr ""
+
+msgid "Deactivate schedule"
+msgstr ""
+
+msgid "Deactivate this ministry before deleting it."
+msgstr ""
+
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr ""
+
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr ""
+
+msgid "Deactivated Ministries"
 msgstr ""
 
 #, php-format
@@ -3429,6 +4221,9 @@ msgid "December"
 msgstr ""
 
 msgid "Decimal Separator"
+msgstr ""
+
+msgid "Declined"
 msgstr ""
 
 msgid "Default"
@@ -3483,10 +4278,19 @@ msgstr ""
 msgid "Default admin credentials"
 msgstr ""
 
+msgid "Default event type for ministry events"
+msgstr ""
+
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr ""
 
 msgid "Default role updated."
+msgstr ""
+
+msgid "Default volunteers"
+msgstr ""
+
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
 msgstr ""
 
 msgid "Default: (999) 999-9999"
@@ -3576,13 +4380,31 @@ msgstr ""
 msgid "Delete check-in record for"
 msgstr ""
 
+msgid "Delete events"
+msgstr ""
+
 msgid "Delete failed"
+msgstr ""
+
+msgid "Delete ministry"
+msgstr ""
+
+msgid "Delete occurrences"
+msgstr ""
+
+msgid "Delete position"
 msgstr ""
 
 msgid "Delete records permission"
 msgstr ""
 
 msgid "Delete role"
+msgstr ""
+
+msgid "Delete schedule"
+msgstr ""
+
+msgid "Delete team"
 msgstr ""
 
 msgid "Delete this event?"
@@ -3600,6 +4422,29 @@ msgstr ""
 msgid "Delete this person?"
 msgstr ""
 
+msgid "Delete those events"
+msgstr ""
+
+msgctxt "one"
+msgid "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr ""
+
+msgctxt "other"
+msgid "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr ""
+
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr ""
+
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr ""
+
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr ""
+
+msgid "Delete {{name}}? This cannot be undone."
+msgstr ""
+
 msgid "Deleted"
 msgstr ""
 
@@ -3614,6 +4459,9 @@ msgid "Deleted from group"
 msgstr ""
 
 msgid "Deleted successfully"
+msgstr ""
+
+msgid "Deleting a ministry requires volunteer manager access"
 msgstr ""
 
 msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
@@ -3739,6 +4587,9 @@ msgid "Detailed breakdown of pledges and payments by family."
 msgstr ""
 
 msgid "Details"
+msgstr ""
+
+msgid "Developer mode"
 msgstr ""
 
 msgid "Did Not Attend"
@@ -3893,6 +4744,9 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
+msgid "Done — you are back on the list."
+msgstr ""
+
 msgid "Donor"
 msgstr ""
 
@@ -3948,6 +4802,12 @@ msgstr ""
 msgid "Drag and drop your backup file here"
 msgstr ""
 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr ""
+
+msgid "Due soon"
+msgstr ""
+
 msgid "Duplicate Emails"
 msgstr ""
 
@@ -3977,8 +4837,14 @@ msgstr ""
 msgid "Each address must start with https://"
 msgstr ""
 
+msgid "Each calendar must be given as a type and an id."
+msgstr ""
+
 #. plugin:holidays:section:2:content
 msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr ""
+
+msgid "Each default volunteer must name a person"
 msgstr ""
 
 msgid "Each person can have their own email and mobile number."
@@ -3988,6 +4854,9 @@ msgid "Each plugin requires a"
 msgstr ""
 
 msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr ""
+
+msgid "Each staffing need must name a position"
 msgstr ""
 
 msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
@@ -4072,13 +4941,47 @@ msgstr ""
 msgid "Edit custom properties for a group member"
 msgstr ""
 
+msgid "Edit event"
+msgstr ""
+
 msgid "Edit existing pledge or payment"
+msgstr ""
+
+msgid "Edit ministry"
+msgstr ""
+
+msgid "Edit position"
 msgstr ""
 
 msgid "Edit records permission"
 msgstr ""
 
+msgid "Edit schedule"
+msgstr ""
+
+msgid "Edit staffing needs"
+msgstr ""
+
+msgid "Edit team"
+msgstr ""
+
+msgid "Edit the schedule and choose another class."
+msgstr ""
+
+msgid "Edit the schedule and choose another event type."
+msgstr ""
+
+msgid "Edit the schedule and choose the event it follows."
+msgstr ""
+
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr ""
+
 msgid "Edited"
+msgstr ""
+
+#, php-format
+msgid "Edited via the Member Portal: %s"
 msgstr ""
 
 msgid "Editing"
@@ -4106,6 +5009,14 @@ msgstr ""
 
 #, php-format
 msgid "Email %d Tax Doc"
+msgstr ""
+
+#, php-format
+msgid "Email %s"
+msgstr ""
+
+#, php-format
+msgid "Email %s Family"
 msgstr ""
 
 msgid "Email Address"
@@ -4138,6 +5049,9 @@ msgstr ""
 msgid "Email Families"
 msgstr ""
 
+msgid "Email History"
+msgstr ""
+
 msgid "Email Integrations"
 msgstr ""
 
@@ -4160,6 +5074,9 @@ msgid "Email address is required."
 msgstr ""
 
 msgid "Email addresses copied to clipboard"
+msgstr ""
+
+msgid "Email content"
 msgstr ""
 
 msgid "Email functionality is currently disabled. The following features will not work until email is enabled"
@@ -4190,12 +5107,39 @@ msgid "Email lists are synced with Mailchimp."
 msgstr ""
 
 #, php-format
+msgid "Email non-attendees: %s"
+msgstr ""
+
+msgid "Email not found"
+msgstr ""
+
+msgid "Email preview"
+msgstr ""
+
+msgid "Email sending is disabled"
+msgstr ""
+
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr ""
+
+#, php-format
 msgid "Email sent to %d family."
 msgid_plural "Emails sent to %d families."
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr ""
+
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr ""
+
 msgid "Email/Username"
+msgstr ""
+
+msgid "Emails"
 msgstr ""
 
 msgid "Emptied into Event"
@@ -4324,6 +5268,9 @@ msgstr ""
 msgid "End date must be on or after the start date"
 msgstr ""
 
+msgid "End time"
+msgstr ""
+
 msgid "End time must be after start time."
 msgstr ""
 
@@ -4396,6 +5343,12 @@ msgstr ""
 msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
 msgstr ""
 
+msgid "Enter counts"
+msgstr ""
+
+msgid "Enter email subject…"
+msgstr ""
+
 msgid "Enter event description..."
 msgstr ""
 
@@ -4438,6 +5391,9 @@ msgstr ""
 msgid "Enter your current password"
 msgstr ""
 
+msgid "Enter your current password, then your new password twice."
+msgstr ""
+
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr ""
 
@@ -4445,6 +5401,9 @@ msgid "Enter your login name"
 msgstr ""
 
 msgid "Enter your login name and we will email you a link to reset your password."
+msgstr ""
+
+msgid "Enter your message…"
 msgstr ""
 
 msgid "Enter your new password"
@@ -4615,7 +5574,16 @@ msgstr ""
 msgid "Event not found"
 msgstr ""
 
+msgid "Event staffed"
+msgstr ""
+
+msgid "Event title"
+msgstr ""
+
 msgid "Event title is required."
+msgstr ""
+
+msgid "Event type"
 msgstr ""
 
 msgid "Event type ID is required"
@@ -4654,10 +5622,16 @@ msgstr ""
 msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
 msgstr ""
 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr ""
+
 msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
 msgstr ""
 
 msgid "Every month on the"
+msgstr ""
+
+msgid "Every position in this window has the people it needs."
 msgstr ""
 
 msgid "Every week on"
@@ -4672,7 +5646,16 @@ msgstr ""
 msgid "Everyone from linked groups checked in!"
 msgstr ""
 
+msgid "Everyone has answered"
+msgstr ""
+
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr ""
+
 msgid "Everyone is checked in!"
+msgstr ""
+
+msgid "Everything is correct"
 msgstr ""
 
 msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
@@ -4706,6 +5689,12 @@ msgid "Existing Volunteer Opportunities"
 msgstr ""
 
 msgid "Exit"
+msgstr ""
+
+msgid "Exit and return to your own account"
+msgstr ""
+
+msgid "Exit to your account"
 msgstr ""
 
 msgid "Expand"
@@ -4818,6 +5807,9 @@ msgid "Failed to add to cart"
 msgstr ""
 
 msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr ""
+
+msgid "Failed to build the preview"
 msgstr ""
 
 msgid "Failed to cancel enrollment. Please try again."
@@ -5012,6 +6004,12 @@ msgstr ""
 msgid "Failed to load cart status."
 msgstr ""
 
+msgid "Failed to load email"
+msgstr ""
+
+msgid "Failed to load email history"
+msgstr ""
+
 msgid "Failed to load email preview"
 msgstr ""
 
@@ -5106,6 +6104,12 @@ msgid "Failed to save settings"
 msgstr ""
 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr ""
+
+msgid "Failed to send email"
+msgstr ""
+
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -5229,6 +6233,9 @@ msgstr ""
 msgid "Family Map"
 msgstr ""
 
+msgid "Family Member"
+msgstr ""
+
 msgid "Family Members"
 msgstr ""
 
@@ -5310,6 +6317,9 @@ msgstr ""
 msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
 msgstr ""
 
+msgid "Family verification"
+msgstr ""
+
 msgid "Family vs Person"
 msgstr ""
 
@@ -5379,6 +6389,9 @@ msgstr ""
 msgid "Fiji"
 msgstr ""
 
+msgid "File"
+msgstr ""
+
 msgid "File Integrity"
 msgstr ""
 
@@ -5415,6 +6428,18 @@ msgstr ""
 
 #. Context: locales
 msgid "Filipino - Philippines"
+msgstr ""
+
+msgid "Fill"
+msgstr ""
+
+msgid "Fill by default with"
+msgstr ""
+
+msgid "Fill this gap"
+msgstr ""
+
+msgid "Filled"
 msgstr ""
 
 msgid "Filter by Class"
@@ -5490,6 +6515,15 @@ msgstr ""
 msgid "Find Neighbors"
 msgstr ""
 
+msgid "Find a sub"
+msgstr ""
+
+msgid "Find a volunteer"
+msgstr ""
+
+msgid "Find an event"
+msgstr ""
+
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
 msgstr ""
 
@@ -5500,6 +6534,12 @@ msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr ""
 
 msgid "Find people who did not attend an event"
+msgstr ""
+
+msgid "Find something to do"
+msgstr ""
+
+msgid "Find something to help with"
 msgstr ""
 
 msgid "Find the line"
@@ -5513,6 +6553,9 @@ msgstr ""
 
 #. plugin:openlp:section:3:title
 msgid "Finding Your Server URL"
+msgstr ""
+
+msgid "Findings"
 msgstr ""
 
 #. Context: countries
@@ -5533,6 +6576,9 @@ msgid "First Sunday"
 msgstr ""
 
 msgid "First Volunteer Opportunity"
+msgstr ""
+
+msgid "First date"
 msgstr ""
 
 msgid "First month of the fiscal year"
@@ -5569,6 +6615,12 @@ msgid "Focus"
 msgstr ""
 
 msgid "Folded Booklet"
+msgstr ""
+
+msgid "Folder"
+msgstr ""
+
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
 msgstr ""
 
 msgid "Follow these two steps to add your church members quickly and correctly."
@@ -5835,6 +6887,9 @@ msgstr ""
 msgid "Generate Tax Statements"
 msgstr ""
 
+msgid "Generate again closer to its first date."
+msgstr ""
+
 msgid "Generate and download confirmation letters"
 msgstr ""
 
@@ -5863,6 +6918,9 @@ msgid "Generate mailing labels and form letters"
 msgstr ""
 
 msgid "Generate new code"
+msgstr ""
+
+msgid "Generate occurrences"
 msgstr ""
 
 msgid "Generate phone directory"
@@ -5940,6 +6998,9 @@ msgstr ""
 msgid "Get Your Data Into ChurchCRM"
 msgstr ""
 
+msgid "Get a new calendar address?"
+msgstr ""
+
 msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
 msgstr ""
 
@@ -5971,6 +7032,18 @@ msgstr ""
 msgid "Girls"
 msgstr ""
 
+msgid "Give the ministry a name"
+msgstr ""
+
+msgid "Give the position a name"
+msgstr ""
+
+msgid "Give the start and end times as HH:MM"
+msgstr ""
+
+msgid "Give the team a name"
+msgstr ""
+
 msgid "Giving History"
 msgstr ""
 
@@ -5995,10 +7068,19 @@ msgstr ""
 msgid "Go to homepage"
 msgstr ""
 
+msgid "Go to my volunteering"
+msgstr ""
+
+msgid "Go to the Member Portal settings"
+msgstr ""
+
 msgid "Goal %"
 msgstr ""
 
 msgid "Goal Amount"
+msgstr ""
+
+msgid "Going"
 msgstr ""
 
 #. plugin:google-analytics:summary
@@ -6014,6 +7096,12 @@ msgid "Google Analytics collects anonymized usage data. No personal information 
 msgstr ""
 
 msgid "Grant individual permissions"
+msgstr ""
+
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr ""
+
+msgid "Granted"
 msgstr ""
 
 msgid "Graphic"
@@ -6227,6 +7315,9 @@ msgstr ""
 msgid "Have Existing Data?"
 msgstr ""
 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr ""
+
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr ""
 
@@ -6239,6 +7330,9 @@ msgstr ""
 msgid "Head of Household Update Needed"
 msgstr ""
 
+msgid "Headcount"
+msgstr ""
+
 #. Context: countries
 msgid "Heard & McDonald Islands"
 msgstr ""
@@ -6247,16 +7341,26 @@ msgstr ""
 msgid "Hebrew"
 msgstr ""
 
+#, php-format
+msgid "Hello %s"
+msgstr ""
+
 msgid "Help"
 msgstr ""
 
 msgid "Help Improve Translations"
 msgstr ""
 
+msgid "Help Wanted"
+msgstr ""
+
 msgid "Help improve ChurchCRM"
 msgstr ""
 
 msgid "Help on types.."
+msgstr ""
+
+msgid "Help wanted could not be saved"
 msgstr ""
 
 msgid "Helpful Links"
@@ -6366,6 +7470,9 @@ msgstr ""
 msgid "How did you learn of the church?"
 msgstr ""
 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr ""
+
 #. plugin:gravatar:section:0:title
 #. plugin:openlp:section:1:title
 msgid "How it works"
@@ -6374,10 +7481,34 @@ msgstr ""
 msgid "How many checks to print per deposit slip page"
 msgstr ""
 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr ""
+
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr ""
+
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr ""
+
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr ""
+
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr ""
+
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr ""
+
+msgid "How often"
+msgstr ""
+
 msgid "How the CSV Import Works"
 msgstr ""
 
 msgid "How to Fix"
+msgstr ""
+
+msgid "How to correct this"
 msgstr ""
 
 #. Context: locales
@@ -6386,6 +7517,15 @@ msgstr ""
 
 #. Context: countries
 msgid "Hungary (Magyarország)"
+msgstr ""
+
+msgid "I can't"
+msgstr ""
+
+msgid "I'd like to help"
+msgstr ""
+
+msgid "I'll be there"
 msgstr ""
 
 msgid "ICS URL"
@@ -6439,6 +7579,9 @@ msgstr ""
 msgid "If deposit is selected, date criteria will be ignored."
 msgstr ""
 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr ""
+
 #. plugin:vonage:section:5:content
 msgid ""
 "If messages are sent but not received:\n"
@@ -6454,6 +7597,9 @@ msgstr ""
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
 msgstr ""
 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr ""
+
 msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
 msgstr ""
 
@@ -6463,7 +7609,7 @@ msgstr ""
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
 msgstr ""
 
-msgid "If you need additional access, please contact your church administrator."
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
 msgstr ""
 
 msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
@@ -6571,6 +7717,12 @@ msgid "In Directory"
 msgstr ""
 
 msgid "In Use"
+msgstr ""
+
+msgid "In the last 15 minutes"
+msgstr ""
+
+msgid "In the volunteer pool"
 msgstr ""
 
 msgid "Inactive"
@@ -6738,6 +7890,12 @@ msgstr ""
 msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
 msgstr ""
 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr ""
+
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr ""
+
 msgid "Internationalization (I18n) support"
 msgstr ""
 
@@ -6886,6 +8044,9 @@ msgstr ""
 msgid "Ireland"
 msgstr ""
 
+msgid "Is this still right?"
+msgstr ""
+
 #. Context: countries
 msgid "Isle of Man"
 msgstr ""
@@ -6924,6 +8085,9 @@ msgid "Items Donated (This Fiscal Year)"
 msgstr ""
 
 msgid "Items Sold"
+msgstr ""
+
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
 msgstr ""
 
 msgid "JS exceptions"
@@ -6992,6 +8156,9 @@ msgstr ""
 msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr ""
 
+msgid "Keep them on {{className}}"
+msgstr ""
+
 #. Context: countries
 msgid "Kenya"
 msgstr ""
@@ -7000,6 +8167,9 @@ msgid "Key People"
 msgstr ""
 
 msgid "Kids"
+msgstr ""
+
+msgid "Kind"
 msgstr ""
 
 msgid "Kiosk"
@@ -7098,6 +8268,15 @@ msgstr ""
 msgid "Last"
 msgstr ""
 
+msgid "Last 24 hours"
+msgstr ""
+
+msgid "Last 30 days"
+msgstr ""
+
+msgid "Last 7 days"
+msgstr ""
+
 msgid "Last Attendance"
 msgstr ""
 
@@ -7128,7 +8307,16 @@ msgstr ""
 msgid "Last Sunday"
 msgstr ""
 
+msgid "Last attempt"
+msgstr ""
+
 msgid "Last campaign"
+msgstr ""
+
+msgid "Last check"
+msgstr ""
+
+msgid "Last date"
 msgstr ""
 
 msgid "Last login"
@@ -7144,6 +8332,12 @@ msgid "Last name must be at least 2 characters"
 msgstr ""
 
 msgid "Last seen"
+msgstr ""
+
+msgid "Last seen in the portal"
+msgstr ""
+
+msgid "Last sign-in"
 msgstr ""
 
 msgid "LastName FirstName"
@@ -7195,6 +8389,12 @@ msgstr ""
 msgid "Leave blank to keep existing password"
 msgstr ""
 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr ""
+
+msgid "Leave open"
+msgstr ""
+
 #. Context: countries
 msgid "Lebanon (‫لبنان‬‎)"
 msgstr ""
@@ -7209,10 +8409,25 @@ msgstr ""
 msgid "Lesotho"
 msgstr ""
 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr ""
+
+msgid "Let members edit birthdays"
+msgstr ""
+
+msgid "Let the church office know whether everything above is still right."
+msgstr ""
+
+msgid "Let them know why (optional)"
+msgstr ""
+
 msgid "Let's get your system set up and ready to use"
 msgstr ""
 
 msgid "Let's restore your previous ChurchCRM data."
+msgstr ""
+
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
 msgstr ""
 
 msgid "Letters"
@@ -7360,6 +8575,9 @@ msgstr ""
 msgid "Loading release information..."
 msgstr ""
 
+msgid "Loading the calendar…"
+msgstr ""
+
 msgid "Loading..."
 msgstr ""
 
@@ -7411,6 +8629,9 @@ msgstr ""
 msgid "Log Settings"
 msgstr ""
 
+msgid "Log in as {{name}}? Everything you do until you exit is done as them and is logged."
+msgstr ""
+
 msgid "Log level + message"
 msgstr ""
 
@@ -7430,6 +8651,9 @@ msgid "Login Name is required"
 msgstr ""
 
 msgid "Login already in use, please select a different login!"
+msgstr ""
+
+msgid "Login as User"
 msgstr ""
 
 #, php-format
@@ -7604,6 +8828,18 @@ msgstr ""
 msgid "Manage Links"
 msgstr ""
 
+msgid "Manage Ministries"
+msgstr ""
+
+msgid "Manage My Ministries"
+msgstr ""
+
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr ""
+
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr ""
+
 msgid "Manage Orphaned Files"
 msgstr ""
 
@@ -7649,6 +8885,9 @@ msgstr ""
 msgid "Manage properties from the"
 msgstr ""
 
+msgid "Manage staffing"
+msgstr ""
+
 msgid "Manage system users, permissions, and two-factor authentication settings"
 msgstr ""
 
@@ -7662,6 +8901,13 @@ msgid "Manage your API key for external integrations"
 msgstr ""
 
 msgid "Manage your personal preferences and account settings"
+msgstr ""
+
+#, php-format
+msgid "Managed from the %s ministry"
+msgstr ""
+
+msgid "Managed from the {{ministry}} ministry"
 msgstr ""
 
 #. plugin:custom-links:section:2:title
@@ -7742,6 +8988,9 @@ msgstr ""
 msgid "Mauritius (Moris)"
 msgstr ""
 
+msgid "Max"
+msgstr ""
+
 msgid "Max Execution Time"
 msgstr ""
 
@@ -7813,6 +9062,9 @@ msgstr ""
 msgid "Member Name"
 msgstr ""
 
+msgid "Member Portal"
+msgstr ""
+
 msgid "Member Properties"
 msgstr ""
 
@@ -7837,7 +9089,13 @@ msgstr ""
 msgid "Members added to cart."
 msgstr ""
 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr ""
+
 msgid "Members copied: {{total}}"
+msgstr ""
+
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
 msgstr ""
 
 msgid "Members, Visitors, Children"
@@ -7882,6 +9140,9 @@ msgstr ""
 msgid "Menu options access"
 msgstr ""
 
+msgid "Message"
+msgstr ""
+
 msgid "Method"
 msgstr ""
 
@@ -7900,6 +9161,9 @@ msgid "Middle"
 msgstr ""
 
 msgid "Middle Name"
+msgstr ""
+
+msgid "Min"
 msgstr ""
 
 msgid "Minimum"
@@ -7927,6 +9191,48 @@ msgid "Minimum length is"
 msgstr ""
 
 msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr ""
+
+msgid "Ministries"
+msgstr ""
+
+msgid "Ministries looking for help"
+msgstr ""
+
+msgid "Ministries that may add events"
+msgstr ""
+
+msgid "Ministry"
+msgstr ""
+
+msgid "Ministry Calendars"
+msgstr ""
+
+msgid "Ministry Coordinators"
+msgstr ""
+
+msgid "Ministry Dashboard"
+msgstr ""
+
+msgid "Ministry Settings"
+msgstr ""
+
+msgid "Ministry calendar"
+msgstr ""
+
+msgid "Ministry created"
+msgstr ""
+
+msgid "Ministry management access"
+msgstr ""
+
+msgid "Ministry management access is required"
+msgstr ""
+
+msgid "Ministry name"
+msgstr ""
+
+msgid "Ministry not found"
 msgstr ""
 
 msgid "Minutes"
@@ -8121,13 +9427,25 @@ msgstr ""
 msgid "My Account"
 msgstr ""
 
-msgid "My Calendars"
+msgid "My Family"
 msgstr ""
 
 msgid "My Settings"
 msgstr ""
 
+msgid "My Teams"
+msgstr ""
+
 msgid "My User Settings"
+msgstr ""
+
+msgid "My ministries and teams"
+msgstr ""
+
+msgid "My schedule"
+msgstr ""
+
+msgid "My volunteering"
 msgstr ""
 
 #. Context: countries
@@ -8171,6 +9489,9 @@ msgstr ""
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
 msgstr ""
 
+msgid "Name this position on the page where members look for something to help with."
+msgstr ""
+
 msgid "Name, address, contact details"
 msgstr ""
 
@@ -8191,6 +9512,12 @@ msgstr ""
 msgid "Needs Configuration"
 msgstr ""
 
+msgid "Needs an answer"
+msgstr ""
+
+msgid "Needs filling"
+msgstr ""
+
 msgid "Neighborhood"
 msgstr ""
 
@@ -8209,6 +9536,9 @@ msgid "Never"
 msgstr ""
 
 msgid "Never sent"
+msgstr ""
+
+msgid "Never signed in"
 msgstr ""
 
 msgid "New"
@@ -8267,7 +9597,13 @@ msgstr ""
 msgid "New Zealand"
 msgstr ""
 
+msgid "New account"
+msgstr ""
+
 msgid "New category name (an existing name merges the two)"
+msgstr ""
+
+msgid "New event"
 msgstr ""
 
 msgid "New family details"
@@ -8279,7 +9615,22 @@ msgstr ""
 msgid "New member notification emails"
 msgstr ""
 
+msgid "New ministry"
+msgstr ""
+
+msgid "New record notification"
+msgstr ""
+
+msgid "New recurring event"
+msgstr ""
+
 msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr ""
+
+msgid "New volunteers needed for the following positions"
+msgstr ""
+
+msgid "Newest first"
 msgstr ""
 
 msgid "Newsletter"
@@ -8292,6 +9643,10 @@ msgid "Next"
 msgstr ""
 
 msgid "Next Member"
+msgstr ""
+
+#, php-format
+msgid "Next on %s"
 msgstr ""
 
 #. Context: countries
@@ -8398,6 +9753,15 @@ msgstr ""
 msgid "No birthdays in the past or next 7 days"
 msgstr ""
 
+msgid "No calendar has been shared with members yet."
+msgstr ""
+
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr ""
+
+msgid "No calendar is shared with members."
+msgstr ""
+
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
 msgstr ""
 
@@ -8407,13 +9771,22 @@ msgstr ""
 msgid "No changes to save"
 msgstr ""
 
+msgid "No class"
+msgstr ""
+
 msgid "No community plugins installed"
+msgstr ""
+
+msgid "No contact details on file yet."
 msgstr ""
 
 msgid "No contact info"
 msgstr ""
 
 msgid "No contributors found for this fund in the selected fiscal year"
+msgstr ""
+
+msgid "No coordinators yet"
 msgstr ""
 
 msgid "No core plugins found"
@@ -8429,6 +9802,9 @@ msgid "No custom links configured. Add one above!"
 msgstr ""
 
 msgid "No custom person fields have been added yet"
+msgstr ""
+
+msgid "No date between the first and last date matches the recurrence"
 msgstr ""
 
 msgid "No deposit / create new deposit"
@@ -8459,6 +9835,12 @@ msgid "No email addresses found."
 msgstr ""
 
 msgid "No email passed in"
+msgstr ""
+
+msgid "No email was sent."
+msgstr ""
+
+msgid "No emails have been sent to this record yet."
 msgstr ""
 
 msgid "No event types defined yet."
@@ -8499,6 +9881,9 @@ msgstr ""
 msgid "No group assignments yet."
 msgstr ""
 
+msgid "No headcount recorded yet"
+msgstr ""
+
 msgid "No help available for this plugin."
 msgstr ""
 
@@ -8514,6 +9899,12 @@ msgstr ""
 msgid "No logged in user"
 msgstr ""
 
+msgid "No longer needed"
+msgstr ""
+
+msgid "No masquerade is in progress."
+msgstr ""
+
 msgid "No match found — check the street address, city, and ZIP"
 msgstr ""
 
@@ -8527,16 +9918,33 @@ msgstr ""
 msgid "No matching entries for the selected filters."
 msgstr ""
 
+msgid "No member has signed in to the Member Portal yet."
+msgstr ""
+
 msgid "No member properties defined."
 msgstr ""
 
 msgid "No members found for this role."
 msgstr ""
 
+msgid "No ministry"
+msgstr ""
+
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr ""
+
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr ""
+
 msgid "No one checked in yet"
 msgstr ""
 
 msgid "No one has been checked in to this event yet."
+msgstr ""
+
+msgid "No past events"
 msgstr ""
 
 msgid "No past events are still marked Active."
@@ -8572,10 +9980,19 @@ msgstr ""
 msgid "No phone numbers available"
 msgstr ""
 
+msgid "No photo has been uploaded for this person."
+msgstr ""
+
+msgid "No photo was sent."
+msgstr ""
+
 msgid "No pledge"
 msgstr ""
 
 msgid "No pledges found for the selected fiscal year"
+msgstr ""
+
+msgid "No positions yet"
 msgstr ""
 
 msgid "No properties assigned."
@@ -8590,6 +10007,9 @@ msgstr ""
 msgid "No property types found"
 msgstr ""
 
+msgid "No qualifications yet."
+msgstr ""
+
 msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
 msgstr ""
 
@@ -8602,13 +10022,50 @@ msgstr ""
 msgid "No results found"
 msgstr ""
 
+msgid "No schedules yet"
+msgstr ""
+
 msgid "No settings provided"
+msgstr ""
+
+msgid "No staffing needs set"
+msgstr ""
+
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr ""
+
+msgid "No substitution requests"
+msgstr ""
+
+msgid "No substitutions to decide"
+msgstr ""
+
+msgid "No such user."
+msgstr ""
+
+msgid "No teams yet"
 msgstr ""
 
 msgid "No thanks"
 msgstr ""
 
 msgid "No timeline events yet."
+msgstr ""
+
+#, php-format
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr ""
+
+msgid "No upcoming event matches"
+msgstr ""
+
+msgid "No upcoming events"
+msgstr ""
+
+msgid "No upcoming events of this type are on the calendar."
+msgstr ""
+
+msgid "No upcoming events to choose from"
 msgstr ""
 
 msgid "No upgrades are available for your current version."
@@ -8624,6 +10081,24 @@ msgid "No volunteer opportunity assignments yet."
 msgstr ""
 
 msgid "No, cancel this deletion"
+msgstr ""
+
+msgid "Nobody assigned yet"
+msgstr ""
+
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr ""
+
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr ""
+
+msgid "Nobody in this window is still deciding."
+msgstr ""
+
+msgid "Nobody is qualified for this position yet"
+msgstr ""
+
+msgid "Nobody is qualified for this position yet, so it stays open."
 msgstr ""
 
 msgid "Non-Deductible"
@@ -8648,6 +10123,12 @@ msgid "None (disabled)"
 msgstr ""
 
 msgid "None (one-time event)"
+msgstr ""
+
+msgid "None of the recipients can be emailed"
+msgstr ""
+
+msgid "None: the event type is chosen for each event"
 msgstr ""
 
 #. Context: countries
@@ -8700,13 +10181,85 @@ msgstr ""
 msgid "Not a valid end date"
 msgstr ""
 
+msgid "Not allowed to view this email"
+msgstr ""
+
+msgid "Not allowed to view this family"
+msgstr ""
+
+msgid "Not allowed to view this person"
+msgstr ""
+
 msgid "Not assigned"
+msgstr ""
+
+msgid "Not authorized for this assignment"
+msgstr ""
+
+msgid "Not authorized for this ministry"
+msgstr ""
+
+msgid "Not authorized for this occurrence"
+msgstr ""
+
+msgid "Not authorized for this position"
+msgstr ""
+
+msgid "Not authorized for this qualification"
+msgstr ""
+
+msgid "Not authorized for this requirement"
+msgstr ""
+
+msgid "Not authorized for this schedule"
+msgstr ""
+
+msgid "Not authorized for this substitution request"
+msgstr ""
+
+msgid "Not authorized for this team"
+msgstr ""
+
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr ""
+
+#, php-format
+msgid "Not authorized to change the event %s"
+msgstr ""
+
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr ""
+
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr ""
+
+msgid "Not authorized to modify this event"
+msgstr ""
+
+#, php-format
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr ""
+
+#, php-format
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr ""
+
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr ""
+
+msgid "Not checked in"
 msgstr ""
 
 msgid "Not configured"
 msgstr ""
 
+msgid "Not found"
+msgstr ""
+
 msgid "Not in CRM"
+msgstr ""
+
+msgid "Not in the pool"
 msgstr ""
 
 msgid "Not included"
@@ -8718,13 +10271,29 @@ msgstr ""
 msgid "Not listed here: {{total}} more"
 msgstr ""
 
+msgid "Not now"
+msgstr ""
+
 msgid "Not pinned to any calendar"
 msgstr ""
 
 msgid "Not ready yet?"
 msgstr ""
 
+msgid "Not sent"
+msgstr ""
+
 msgid "Not set"
+msgstr ""
+
+#, php-format
+msgid "Not set: use \"%s\""
+msgstr ""
+
+msgid "Not staffed"
+msgstr ""
+
+msgid "Not volunteering yet"
 msgstr ""
 
 msgid "Note"
@@ -8755,10 +10324,58 @@ msgstr ""
 msgid "Notes access"
 msgstr ""
 
+msgid "Nothing had changed, so nothing was saved."
+msgstr ""
+
+msgid "Nothing is on the calendar for this period."
+msgstr ""
+
+msgid "Nothing is on the calendar just now."
+msgstr ""
+
+msgid "Nothing is short"
+msgstr ""
+
+msgid "Nothing on your list yet"
+msgstr ""
+
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr ""
+
+msgid "Nothing open right now"
+msgstr ""
+
+msgid "Nothing scheduled yet"
+msgstr ""
+
+msgid "Nothing scheduled."
+msgstr ""
+
+msgid "Nothing set up yet"
+msgstr ""
+
+msgid "Nothing this ministry owns happened in the last year."
+msgstr ""
+
+msgid "Nothing to qualify yet"
+msgstr ""
+
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr ""
+
+msgid "Nothing was saved. Please try again."
+msgstr ""
+
+msgid "Notification"
+msgstr ""
+
 msgid "Notification Recipients"
 msgstr ""
 
 msgid "Notification for"
+msgstr ""
+
+msgid "Notifications"
 msgstr ""
 
 msgid "Nov"
@@ -8800,6 +10417,12 @@ msgstr ""
 msgid "OS family"
 msgstr ""
 
+msgid "Occurrence not found"
+msgstr ""
+
+msgid "Occurrences"
+msgstr ""
+
 msgid "Oct"
 msgstr ""
 
@@ -8807,6 +10430,9 @@ msgid "October"
 msgstr ""
 
 msgid "Off"
+msgstr ""
+
+msgid "Offer to help"
 msgstr ""
 
 msgid "Offline"
@@ -8823,6 +10449,15 @@ msgid "On"
 msgstr ""
 
 msgid "Once"
+msgstr ""
+
+#, php-format
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
 msgstr ""
 
 msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
@@ -8843,10 +10478,28 @@ msgstr ""
 msgid "One label for each couple."
 msgstr ""
 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr ""
+
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr ""
+
+msgid "One of the calendars does not exist"
+msgstr ""
+
+msgid "One of the events does not exist"
+msgstr ""
+
+msgid "One of those calendars is not shared with members."
+msgstr ""
+
 msgid "One or more files failed signature validation"
 msgstr ""
 
 msgid "One-Time Code"
+msgstr ""
+
+msgid "One-time"
 msgstr ""
 
 msgid "Online"
@@ -8864,7 +10517,31 @@ msgstr ""
 msgid "Only Payments with Pledges"
 msgstr ""
 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr ""
+
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr ""
+
+msgid "Only a coordinator of this ministry may create its events"
+msgstr ""
+
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr ""
+
+msgid "Only a volunteer manager can change the team leader"
+msgstr ""
+
+msgid "Only a volunteer manager can change this."
+msgstr ""
+
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr ""
+
 msgid "Only an administrator can delete a person who has a login."
+msgstr ""
+
+msgid "Only an adult of your family can change these details. Please contact the church office."
 msgstr ""
 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
@@ -8873,7 +10550,22 @@ msgstr ""
 msgid "Only http and https schemes are allowed."
 msgstr ""
 
+msgid "Only people trained for this are listed."
+msgstr ""
+
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr ""
+
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr ""
+
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr ""
+
 msgid "Only the note author or an admin may delete this note"
+msgstr ""
+
+msgid "Only the volunteer who proposed a substitute may withdraw it"
 msgstr ""
 
 msgid "Oops! Page not found."
@@ -8900,6 +10592,12 @@ msgstr ""
 msgid "Open a family to fix its address, then run this again."
 msgstr ""
 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr ""
+
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr ""
+
 msgid "Open in Apple Maps"
 msgstr ""
 
@@ -8912,10 +10610,37 @@ msgstr ""
 msgid "Open in New Tab"
 msgstr ""
 
+msgid "Open in calendar app"
+msgstr ""
+
 msgid "Open in new tab"
 msgstr ""
 
+msgid "Open opportunities could not be loaded."
+msgstr ""
+
+msgid "Open recipients in your local email application"
+msgstr ""
+
+msgid "Open the Member Portal"
+msgstr ""
+
+msgid "Open the Ministry Dashboard"
+msgstr ""
+
 msgid "Open the email debug tester"
+msgstr ""
+
+msgid "Open the ministry"
+msgstr ""
+
+msgid "Open the occurrence"
+msgstr ""
+
+msgid "Open the occurrence to assign the people you need."
+msgstr ""
+
+msgid "Open this team"
 msgstr ""
 
 msgid "Open user menu"
@@ -8941,6 +10666,9 @@ msgstr ""
 
 #. plugin:openlp:summary
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr ""
+
+msgid "Opening a calendar to ministries requires Add Events permission"
 msgstr ""
 
 msgid "Opens a 2-minute window for devices to register at"
@@ -8982,7 +10710,13 @@ msgstr ""
 msgid "Optional — sermon notes, materials, or other details copied to every generated event."
 msgstr ""
 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr ""
+
 msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr ""
+
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
 msgstr ""
 
 msgid "Optional. URL for your church website."
@@ -9024,7 +10758,13 @@ msgstr ""
 msgid "Output Method"
 msgstr ""
 
+msgid "Over Max: remove this one or raise Max."
+msgstr ""
+
 msgid "Overpaid"
+msgstr ""
+
+msgid "Overridden templates"
 msgstr ""
 
 msgid "Override the system default locale"
@@ -9081,6 +10821,14 @@ msgid "Paddle"
 msgstr ""
 
 msgid "Page"
+msgstr ""
+
+#, php-format
+msgid "Page %1$s of %2$s"
+msgstr ""
+
+#, php-format
+msgid "Page %d of %d"
 msgstr ""
 
 msgid "Page Layout"
@@ -9176,6 +10924,9 @@ msgstr ""
 msgid "Password change required"
 msgstr ""
 
+msgid "Password reset"
+msgstr ""
+
 msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
 msgstr ""
 
@@ -9186,6 +10937,9 @@ msgid "Password reset for"
 msgstr ""
 
 msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr ""
+
+msgid "Password reset link"
 msgstr ""
 
 msgid "Password reset not available.  Please contact your system administrator"
@@ -9205,6 +10959,12 @@ msgstr ""
 
 msgid "Passwords must be at least"
 msgstr ""
+
+#, php-format
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Past & next 7 days"
 msgstr ""
@@ -9499,6 +11259,12 @@ msgstr ""
 msgid "Pick a path to get started"
 msgstr ""
 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr ""
+
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr ""
+
 msgid "Pickup Request"
 msgstr ""
 
@@ -9537,6 +11303,12 @@ msgid "Please check the backup file and try again."
 msgstr ""
 
 msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr ""
+
+msgid "Please choose calendars from the list."
+msgstr ""
+
+msgid "Please choose whether your details need changing."
 msgstr ""
 
 msgid "Please configure endpoint, username, and password first."
@@ -9590,6 +11362,12 @@ msgstr ""
 msgid "Please confirm your family information"
 msgstr ""
 
+msgid "Please contact the church office so we may correct our records."
+msgstr ""
+
+msgid "Please contact the church office."
+msgstr ""
+
 msgid "Please correct the errors below."
 msgstr ""
 
@@ -9629,10 +11407,16 @@ msgstr ""
 msgid "Please enter a valid phone number"
 msgstr ""
 
+msgid "Please enter at least two characters."
+msgstr ""
+
 msgid "Please enter the following to start your family's verification"
 msgstr ""
 
 msgid "Please fill in all required fields correctly."
+msgstr ""
+
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
 msgstr ""
 
 #, php-format
@@ -9692,6 +11476,9 @@ msgid "Please select at least one buyer to generate statements."
 msgstr ""
 
 msgid "Please select rows to delete"
+msgstr ""
+
+msgid "Please tell us what needs changing."
 msgstr ""
 
 msgid "Please try again"
@@ -9840,6 +11627,12 @@ msgstr ""
 msgid "Populates the fields below without saving. Click Save to apply."
 msgstr ""
 
+msgid "Portal settings"
+msgstr ""
+
+msgid "Portal theme"
+msgstr ""
+
 #. Context: countries
 msgid "Portugal"
 msgstr ""
@@ -9852,7 +11645,31 @@ msgstr ""
 msgid "Portuguese - Portugal"
 msgstr ""
 
+msgid "Position"
+msgstr ""
+
+msgid "Position added"
+msgstr ""
+
+msgid "Position deleted"
+msgstr ""
+
+msgid "Position name"
+msgstr ""
+
+msgid "Position not found"
+msgstr ""
+
 msgid "Position of the currency symbol relative to the amount."
+msgstr ""
+
+msgid "Position saved"
+msgstr ""
+
+msgid "Positions"
+msgstr ""
+
+msgid "Positions still short"
 msgstr ""
 
 msgid "Pre-flight"
@@ -9979,6 +11796,12 @@ msgstr ""
 msgid "Property type not found"
 msgstr ""
 
+msgid "Proposed"
+msgstr ""
+
+msgid "Proposed substitute"
+msgstr ""
+
 msgid "Provide any corrections or additional information here..."
 msgstr ""
 
@@ -10004,8 +11827,32 @@ msgstr ""
 msgid "Purpose"
 msgstr ""
 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr ""
+
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr ""
+
 #. Context: countries
 msgid "Qatar (‫قطر‬‎)"
+msgstr ""
+
+msgid "Qualification not found"
+msgstr ""
+
+msgid "Qualified for"
+msgstr ""
+
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr ""
+
+msgid "Qualify its current teachers for"
+msgstr ""
+
+msgid "Qualify them for a position"
+msgstr ""
+
+msgid "Qualify them for a position."
 msgstr ""
 
 msgid "Quarantined"
@@ -10077,7 +11924,13 @@ msgstr ""
 msgid "Re-install current version"
 msgstr ""
 
+msgid "Reactivate"
+msgstr ""
+
 msgid "Read more"
+msgstr ""
+
+msgid "Read the theme authoring guide"
 msgstr ""
 
 msgid "Ready to back up"
@@ -10092,10 +11945,26 @@ msgstr ""
 msgid "Recent Deposits"
 msgstr ""
 
+msgid "Recent Emails"
+msgstr ""
+
 msgid "Recent Friends"
 msgstr ""
 
+msgid "Recent Sends"
+msgstr ""
+
+msgid "Recipient"
+msgstr ""
+
 msgid "Recipient Naming Method"
+msgstr ""
+
+#, php-format
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr ""
+
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
 msgstr ""
 
 msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
@@ -10110,13 +11979,31 @@ msgstr ""
 msgid "Record"
 msgstr ""
 
+msgid "Record a decline"
+msgstr ""
+
+msgid "Record an acceptance"
+msgstr ""
+
 msgid "Record multiple fundraiser drawing winners at once"
 msgstr ""
 
 msgid "Record new pledges and payments"
 msgstr ""
 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr ""
+
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr ""
+
 msgid "Record why attendees visited your church"
+msgstr ""
+
+msgid "Record: they accepted"
+msgstr ""
+
+msgid "Record: they declined"
 msgstr ""
 
 msgid "Recording a Payment"
@@ -10137,10 +12024,22 @@ msgstr ""
 msgid "Recovery Codes"
 msgstr ""
 
+msgid "Recruit Volunteers"
+msgstr ""
+
+msgid "Recruit Volunteers must be true or false"
+msgstr ""
+
+msgid "Recruiting"
+msgstr ""
+
 msgid "Recurrence"
 msgstr ""
 
 msgid "Recurrence Pattern"
+msgstr ""
+
+msgid "Recurring"
 msgstr ""
 
 msgid "Red"
@@ -10201,6 +12100,15 @@ msgstr ""
 msgid "Regular Backups"
 msgstr ""
 
+msgid "Reject"
+msgstr ""
+
+msgid "Reject substitution"
+msgstr ""
+
+msgid "Reject this substitute"
+msgstr ""
+
 msgid "Release Notes"
 msgstr ""
 
@@ -10211,6 +12119,15 @@ msgid "Reload command sent"
 msgstr ""
 
 msgid "Remaining"
+msgstr ""
+
+msgid "Reminder lead time (hours)"
+msgstr ""
+
+msgid "Reminder: you are scheduled to serve"
+msgstr ""
+
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
 msgstr ""
 
 msgid "Remittance Slip"
@@ -10231,7 +12148,13 @@ msgstr ""
 msgid "Remove Property"
 msgstr ""
 
+msgid "Remove Volunteer"
+msgstr ""
+
 msgid "Remove all from Cart"
+msgstr ""
+
+msgid "Remove coordinator"
 msgstr ""
 
 msgid "Remove from Cart"
@@ -10241,6 +12164,12 @@ msgid "Remove from Class"
 msgstr ""
 
 msgid "Remove from Group"
+msgstr ""
+
+msgid "Remove the class from them"
+msgstr ""
+
+msgid "Remove the team leader"
 msgstr ""
 
 msgid "Remove this attendance count?"
@@ -10255,10 +12184,16 @@ msgstr ""
 msgid "Remove this person from cart?"
 msgstr ""
 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr ""
+
 msgid "Remove {{personName}} from this class?"
 msgstr ""
 
 msgid "Removed from cart successfully"
+msgstr ""
+
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
 msgstr ""
 
 msgid "Rename"
@@ -10268,6 +12203,9 @@ msgid "Rename Category"
 msgstr ""
 
 msgid "Rename Kiosk"
+msgstr ""
+
+msgid "Repeats"
 msgstr ""
 
 msgid "Replicate item"
@@ -10330,6 +12268,9 @@ msgstr ""
 msgid "Required. Used on all reports and communications."
 msgstr ""
 
+msgid "Requirement not found"
+msgstr ""
+
 msgid "Reset"
 msgstr ""
 
@@ -10354,6 +12295,9 @@ msgstr ""
 msgid "Reset Settings"
 msgstr ""
 
+msgid "Reset link"
+msgstr ""
+
 msgid "Reset your password"
 msgstr ""
 
@@ -10361,6 +12305,9 @@ msgid "Resetting will permanently delete"
 msgstr ""
 
 msgid "Resetting..."
+msgstr ""
+
+msgid "Response recorded"
 msgstr ""
 
 msgid "Restore"
@@ -10468,6 +12415,12 @@ msgstr ""
 msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
 msgstr ""
 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr ""
+
+msgid "Review this request"
+msgstr ""
+
 msgid "Role"
 msgstr ""
 
@@ -10519,6 +12472,9 @@ msgid "Run Report"
 msgstr ""
 
 msgid "Run Transactions"
+msgstr ""
+
+msgid "Run background jobs now"
 msgstr ""
 
 msgid "Running Pre-release"
@@ -10601,6 +12557,9 @@ msgid "SMTP configuration test — if this arrived, your setup works."
 msgstr ""
 
 msgid "SMTP server for sending emails"
+msgstr ""
+
+msgid "SMTP test"
 msgstr ""
 
 msgid "SQL Only"
@@ -10702,6 +12661,12 @@ msgstr ""
 msgid "Save and Add New Family"
 msgstr ""
 
+msgid "Save calendars"
+msgstr ""
+
+msgid "Save changes"
+msgstr ""
+
 msgid "Save changes to this category name"
 msgstr ""
 
@@ -10720,6 +12685,15 @@ msgstr ""
 msgid "Saved successfully"
 msgstr ""
 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr ""
+
+msgid "Saved — this ministry is now asking for help"
+msgstr ""
+
+msgid "Saved. Members see the calendars switched on above."
+msgstr ""
+
 msgid "Saving..."
 msgstr ""
 
@@ -10729,13 +12703,67 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
+msgid "Schedule \"{{name}}\" created."
+msgstr ""
+
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr ""
+
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr ""
+
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr ""
+
+msgid "Schedule deactivated"
+msgstr ""
+
+msgid "Schedule deleted"
+msgstr ""
+
+msgid "Schedule name"
+msgstr ""
+
+msgid "Schedule not found"
+msgstr ""
+
+msgid "Schedule reactivated"
+msgstr ""
+
+msgid "Schedule saved"
+msgstr ""
+
+msgid "Scheduled"
+msgstr ""
+
 msgid "Scheduled Tasks"
 msgstr ""
 
 msgid "Scheduled tasks are not running"
 msgstr ""
 
+msgid "Schedules"
+msgstr ""
+
+msgid "Schedules last topped up"
+msgstr ""
+
+#, php-format
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr ""
+
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr ""
+
+msgid "Scheduling horizon (weeks)"
+msgstr ""
+
 msgid "Schema Version"
+msgstr ""
+
+msgid "Scope grant not found"
 msgstr ""
 
 msgid "Search"
@@ -10781,6 +12809,9 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr ""
 
 msgid "Search and manage deposit slip records"
+msgstr ""
+
+msgid "Search by name"
 msgstr ""
 
 msgid "Search by name or email..."
@@ -10837,6 +12868,12 @@ msgid "Security Recommendation"
 msgstr ""
 
 msgid "Security token missing. Please refresh the page."
+msgstr ""
+
+msgid "See the whole calendar"
+msgstr ""
+
+msgid "See what needs filling"
 msgstr ""
 
 msgid "Select"
@@ -10899,6 +12936,9 @@ msgstr ""
 msgid "Select a backup file and click Restore Database."
 msgstr ""
 
+msgid "Select a calendar to hide or show its events."
+msgstr ""
+
 msgid "Select a family"
 msgstr ""
 
@@ -10939,6 +12979,9 @@ msgid "Select event type..."
 msgstr ""
 
 msgid "Select how do you want to request the family information to be verified"
+msgstr ""
+
+msgid "Select ministries..."
 msgstr ""
 
 msgid "Select month"
@@ -10983,7 +13026,16 @@ msgstr ""
 msgid "Self Verify"
 msgstr ""
 
+msgid "Self sign-up"
+msgstr ""
+
 msgid "Self-Registration"
+msgstr ""
+
+msgid "Self-assignable"
+msgstr ""
+
+msgid "Self-assignable must be true or false"
 msgstr ""
 
 msgid "Self-registration is disabled"
@@ -10995,6 +13047,9 @@ msgstr ""
 msgid "Self-service"
 msgstr ""
 
+msgid "Self-service accounts"
+msgstr ""
+
 msgid "Self-service only"
 msgstr ""
 
@@ -11004,7 +13059,13 @@ msgstr ""
 msgid "Sell-through"
 msgstr ""
 
+msgid "Send"
+msgstr ""
+
 msgid "Send Again"
+msgstr ""
+
+msgid "Send Email"
 msgstr ""
 
 msgid "Send Emails"
@@ -11028,13 +13089,36 @@ msgstr ""
 msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
+msgid "Send email from ChurchCRM"
+msgstr ""
+
 msgid "Send email to families"
 msgstr ""
 
 msgid "Send text message"
 msgstr ""
 
+msgid "Send the assignment message again"
+msgstr ""
+
+msgid "Send the calendars to show as a list."
+msgstr ""
+
+msgid "Send to the church office"
+msgstr ""
+
+msgid "Send your answer"
+msgstr ""
+
 msgid "Sending to"
+msgstr ""
+
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr ""
+
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
 msgstr ""
 
 msgid "Sending..."
@@ -11047,8 +13131,14 @@ msgstr ""
 msgid "Senegal (Sénégal)"
 msgstr ""
 
+msgid "Sent"
+msgstr ""
+
 #, php-format
 msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr ""
+
+msgid "Sent by"
 msgstr ""
 
 msgid "Sep"
@@ -11085,6 +13175,9 @@ msgstr ""
 msgid "Server returned an unexpected response. Please try again."
 msgstr ""
 
+msgid "Serving next"
+msgstr ""
+
 msgid "Session Handler"
 msgstr ""
 
@@ -11112,6 +13205,12 @@ msgid "Set Up Authenticator"
 msgstr ""
 
 msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr ""
+
+msgid "Set as Accepted"
+msgstr ""
+
+msgid "Set staffing needs"
 msgstr ""
 
 msgid "Set the accent color used for buttons, links, and active elements"
@@ -11211,6 +13310,10 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
+#, php-format
+msgid "Show \"%s\" in the Member Portal"
+msgstr ""
+
 msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
 msgstr ""
 
@@ -11221,6 +13324,9 @@ msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr ""
 
 msgid "Show all"
+msgstr ""
+
+msgid "Show in Member Portal"
 msgstr ""
 
 msgid "Show in Profile"
@@ -11236,6 +13342,36 @@ msgid "Show or hide the Events section in the main navigation menu"
 msgstr ""
 
 msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr ""
+
+msgid "Show past events"
+msgstr ""
+
+msgid "Show the church calendar"
+msgstr ""
+
+msgid "Show the church calendar in the Member Portal."
+msgstr ""
+
+msgid "Show the church calendar section in the Member Portal."
+msgstr ""
+
+msgid "Show the next"
+msgstr ""
+
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr ""
+
+msgid "Show this ministry on the Open Opportunities page"
+msgstr ""
+
+msgid "Show volunteering"
+msgstr ""
+
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr ""
+
+msgid "Show what I have already done"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
@@ -11264,6 +13400,9 @@ msgstr ""
 msgid "Showing total for selected fund only"
 msgstr ""
 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr ""
+
 msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
 msgstr ""
 
@@ -11278,6 +13417,12 @@ msgid "Sign in"
 msgstr ""
 
 msgid "Sign out"
+msgstr ""
+
+msgid "Sign up"
+msgstr ""
+
+msgid "Sign-in and security"
 msgstr ""
 
 msgid "Signature"
@@ -11296,10 +13441,19 @@ msgstr ""
 msgid "Signature definition file signature failed validation"
 msgstr ""
 
+msgid "Signed in"
+msgstr ""
+
+msgid "Signed up"
+msgstr ""
+
 msgid "Since"
 msgstr ""
 
 msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr ""
+
+msgid "Sincerely"
 msgstr ""
 
 #. Context: countries
@@ -11378,10 +13532,25 @@ msgstr ""
 msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
 msgstr ""
 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr ""
+
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr ""
+
 msgid "Some settings could not be reset"
 msgstr ""
 
 msgid "Some settings could not be saved"
+msgstr ""
+
+msgid "Someone else is covering"
+msgstr ""
+
+msgid "Something needs changing"
+msgstr ""
+
+msgid "Something went wrong"
 msgstr ""
 
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
@@ -11468,6 +13637,33 @@ msgstr ""
 msgid "St. Vincent & Grenadines"
 msgstr ""
 
+msgid "Staff an event"
+msgstr ""
+
+msgid "Staff them"
+msgstr ""
+
+msgid "Staff this event"
+msgstr ""
+
+msgid "Staff this occurrence"
+msgstr ""
+
+msgid "Staffed"
+msgstr ""
+
+msgid "Staffing"
+msgstr ""
+
+msgid "Staffing is set up after the events are created"
+msgstr ""
+
+msgid "Staffing needs"
+msgstr ""
+
+msgid "Staffing needs saved"
+msgstr ""
+
 msgid "Start Check-in"
 msgstr ""
 
@@ -11489,6 +13685,15 @@ msgstr ""
 msgid "Start Time"
 msgstr ""
 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr ""
+
+msgid "Start time"
+msgstr ""
+
+msgid "Start typing a name"
+msgstr ""
+
 msgid "Starts"
 msgstr ""
 
@@ -11502,6 +13707,9 @@ msgid "State (Other)"
 msgstr ""
 
 msgid "State is required."
+msgstr ""
+
+msgid "Statistics"
 msgstr ""
 
 msgid "Status"
@@ -11523,6 +13731,9 @@ msgid "Still Checked In"
 msgstr ""
 
 msgid "Still Owed"
+msgstr ""
+
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
 msgstr ""
 
 msgid "Streak"
@@ -11564,10 +13775,49 @@ msgstr ""
 msgid "Submitting..."
 msgstr ""
 
+msgid "Subscribe"
+msgstr ""
+
+msgid "Subscribe to the calendar"
+msgstr ""
+
 msgid "Subscribers"
 msgstr ""
 
 msgid "Subscribers Not in CRM"
+msgstr ""
+
+msgid "Substitute"
+msgstr ""
+
+msgid "Substitute approved"
+msgstr ""
+
+msgid "Substitute asked"
+msgstr ""
+
+msgid "Substitute decision"
+msgstr ""
+
+msgid "Substitute proposed"
+msgstr ""
+
+msgid "Substitute rejected"
+msgstr ""
+
+msgid "Substituted"
+msgstr ""
+
+msgid "Substitution approved"
+msgstr ""
+
+msgid "Substitution rejected"
+msgstr ""
+
+msgid "Substitution request not found"
+msgstr ""
+
+msgid "Substitution requests"
 msgstr ""
 
 msgid "Successfully deleted"
@@ -11593,6 +13843,9 @@ msgid "Summer"
 msgstr ""
 
 msgid "Sunday School"
+msgstr ""
+
+msgid "Sunday School Class"
 msgstr ""
 
 msgid "Sunday School Classes"
@@ -11709,6 +13962,12 @@ msgstr ""
 msgid "System Users"
 msgstr ""
 
+msgid "System calendar"
+msgstr ""
+
+msgid "System default"
+msgstr ""
+
 msgid "System diagnostic information and configuration"
 msgstr ""
 
@@ -11740,6 +13999,12 @@ msgid "Tajikistan"
 msgstr ""
 
 msgid "Take Attendance"
+msgstr ""
+
+msgid "Take that back"
+msgstr ""
+
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
 msgstr ""
 
 #. Context: locales
@@ -11789,7 +14054,44 @@ msgstr ""
 msgid "Teachers"
 msgstr ""
 
+#, php-format
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr ""
+
 msgid "Teal"
+msgstr ""
+
+msgid "Team"
+msgstr ""
+
+msgid "Team Leader"
+msgstr ""
+
+msgid "Team added"
+msgstr ""
+
+msgid "Team deleted"
+msgstr ""
+
+msgid "Team leader"
+msgstr ""
+
+msgid "Team name"
+msgstr ""
+
+msgid "Team not found"
+msgstr ""
+
+msgid "Team saved"
+msgstr ""
+
+msgid "Teams"
+msgstr ""
+
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr ""
+
+msgid "Teams, positions and the people who fill them"
 msgstr ""
 
 msgid "Technical Details"
@@ -11803,6 +14105,9 @@ msgstr ""
 
 #. Context: locales
 msgid "Telugu - India"
+msgstr ""
+
+msgid "Ten most recent sign-ins"
 msgstr ""
 
 msgid "Test"
@@ -11871,13 +14176,139 @@ msgstr ""
 msgid "Thank You!"
 msgstr ""
 
+msgid "Thank you"
+msgstr ""
+
+msgid "Thank you for signing up to serve"
+msgstr ""
+
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr ""
+
+msgid "Thank you. The church office has your answer."
+msgstr ""
+
+msgid "Thank you. The church office will review this before it is added."
+msgstr ""
+
+msgid "Thanks for letting us know."
+msgstr ""
+
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr ""
+
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr ""
+
+msgid "Thanks — you are on the list."
+msgstr ""
+
+msgid "That Member Portal theme folder does not exist."
+msgstr ""
+
+msgid "That assignment belongs to someone else"
+msgstr ""
+
+msgid "That assignment could not be saved"
+msgstr ""
+
+msgid "That birthday is not a valid date."
+msgstr ""
+
+msgid "That could not be saved."
+msgstr ""
+
+msgid "That could not be sent."
+msgstr ""
+
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr ""
+
 msgid "That field name already exists."
+msgstr ""
+
+msgid "That is not a valid date."
+msgstr ""
+
+msgid "That list could not be loaded."
 msgstr ""
 
 msgid "That name already exists."
 msgstr ""
 
+msgid "That person already holds this position on this occurrence"
+msgstr ""
+
+msgid "That person is already assigned to this position on this occurrence"
+msgstr ""
+
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr ""
+
+msgid "That person is not in this volunteer pool"
+msgstr ""
+
+msgid "That person is not qualified for this position"
+msgstr ""
+
+msgid "That photo could not be saved."
+msgstr ""
+
+msgid "That photo is too large. Please choose a smaller one."
+msgstr ""
+
+msgid "That position belongs to a different ministry"
+msgstr ""
+
+msgid "That position belongs to a different team"
+msgstr ""
+
+msgid "That position is already fully staffed"
+msgstr ""
+
+msgid "That position is not being staffed on this occurrence"
+msgstr ""
+
+msgid "That response could not be recorded"
+msgstr ""
+
 msgid "That role is not one of this group's roles."
+msgstr ""
+
+msgid "That status cannot be set directly"
+msgstr ""
+
+msgid "That substitution request could not be decided"
+msgstr ""
+
+msgid "That team belongs to a different ministry"
+msgstr ""
+
+msgid "That theme could not be activated."
+msgstr ""
+
+msgid "That theme could not be checked."
+msgstr ""
+
+msgid "That theme has errors, so it was not activated."
+msgstr ""
+
+msgid "That volunteer could not be assigned"
+msgstr ""
+
+msgid "That wedding date is not a valid date."
+msgstr ""
+
+#, php-format
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr ""
+
+#, php-format
+msgid "The %s must be a whole number of minutes"
+msgstr ""
+
+#, php-format
+msgid "The %s must be within %d minutes of the event"
 msgstr ""
 
 msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
@@ -11894,13 +14325,99 @@ msgstr ""
 msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
 msgstr ""
 
+msgid "The Member Portal calendars were saved."
+msgstr ""
+
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr ""
+
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr ""
+
+#, php-format
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr ""
+
+msgid "The Member Portal is temporarily unavailable"
+msgstr ""
+
+#, php-format
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr ""
+
+msgid "The Member Portal theme could not be rendered"
+msgstr ""
+
+#, php-format
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr ""
+
+msgid "The Member Portal theme was changed."
+msgstr ""
+
+#, php-format
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr ""
+
+msgid "The active theme folder is missing"
+msgstr ""
+
+msgid "The address is selected — copy it with your keyboard."
+msgstr ""
+
 msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr ""
+
+#, php-format
+msgid "The asset path \"%s\" is not allowed."
+msgstr ""
+
+msgid "The assignment could not be cancelled"
+msgstr ""
+
+msgid "The assignment message will be sent again"
+msgstr ""
+
+msgid "The calendar address was copied."
 msgstr ""
 
 msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
 msgstr ""
 
+msgid "The calendars could not be loaded. Please try again."
+msgstr ""
+
+msgid "The calendars could not be saved."
+msgstr ""
+
+msgid "The cart could not be added"
+msgstr ""
+
 msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr ""
+
+msgid "The church has not emailed you yet."
+msgstr ""
+
+msgid "The church office has been notified. Please try again later."
+msgstr ""
+
+msgid "The class does not exist"
+msgstr ""
+
+msgid "The class this schedule follows no longer exists."
+msgstr ""
+
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr ""
+
+msgid "The content of this email was not kept."
+msgstr ""
+
+msgid "The coordinator could not be added"
+msgstr ""
+
+msgid "The coordinator list could not be loaded"
 msgstr ""
 
 msgid "The database has been cleared."
@@ -11909,8 +14426,74 @@ msgstr ""
 msgid "The database has been cleared. The system is ready for a fresh start."
 msgstr ""
 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr ""
+
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr ""
+
 #. plugin:openlp:section:3:content
 msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr ""
+
+msgid "The default volunteer must be a person"
+msgstr ""
+
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr ""
+
+msgid "The default volunteers must be a list"
+msgstr ""
+
+msgid "The description is too long"
+msgstr ""
+
+msgid "The end of the range is before its start."
+msgstr ""
+
+msgid "The end of the range is not a date."
+msgstr ""
+
+msgid "The event could not be staffed"
+msgstr ""
+
+msgid "The event does not exist"
+msgstr ""
+
+msgid "The event is inactive"
+msgstr ""
+
+msgid "The event must end after it starts"
+msgstr ""
+
+msgid "The event title"
+msgstr ""
+
+msgid "The event title is too long"
+msgstr ""
+
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr ""
+
+msgid "The event type does not exist"
+msgstr ""
+
+msgid "The event type this schedule follows no longer exists."
+msgstr ""
+
+msgid "The events can only be moved to a class the team is linked to"
+msgstr ""
+
+msgid "The events could not be created"
+msgstr ""
+
+msgid "The events could not be deleted"
+msgstr ""
+
+msgid "The events could not be staffed"
+msgstr ""
+
+msgid "The grant could not be removed"
 msgstr ""
 
 msgid "The group could not be found. Please try again."
@@ -11919,16 +14502,64 @@ msgstr ""
 msgid "The last administrator cannot be deleted."
 msgstr ""
 
+msgid "The last date is before the first date"
+msgstr ""
+
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr ""
 
 msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
 msgstr ""
 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr ""
+
+msgid "The maximum count cannot be below the minimum count"
+msgstr ""
+
+msgid "The message could not be queued"
+msgstr ""
+
+msgid "The minimum count cannot be negative"
+msgstr ""
+
+msgid "The ministry could not be created"
+msgstr ""
+
+msgid "The ministry could not be deactivated"
+msgstr ""
+
+msgid "The ministry could not be deleted"
+msgstr ""
+
+msgid "The ministry could not be reactivated"
+msgstr ""
+
+msgid "The ministry could not be saved"
+msgstr ""
+
 msgid "The month that starts your organization's fiscal year"
 msgstr ""
 
 msgid "The note you are trying to edit no longer exists."
+msgstr ""
+
+msgid "The occurrence could not be deleted"
+msgstr ""
+
+msgid "The occurrence has no schedule"
+msgstr ""
+
+msgid "The occurrences could not be generated"
+msgstr ""
+
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr ""
+
+msgid "The original volunteer keeps the position. Both are told."
+msgstr ""
+
+msgid "The page you asked for does not exist. It may have been moved or removed."
 msgstr ""
 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -11943,6 +14574,18 @@ msgid "The password for %s has been updated."
 msgstr ""
 
 msgid "The plugin was automatically disabled after a runtime failure."
+msgstr ""
+
+msgid "The position belongs to a different ministry"
+msgstr ""
+
+msgid "The position could not be deleted"
+msgstr ""
+
+msgid "The position could not be saved"
+msgstr ""
+
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
 msgstr ""
 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -11972,7 +14615,27 @@ msgstr ""
 msgid "The public registration form is turned off. Existing registrations are listed below."
 msgstr ""
 
+msgid "The qualification could not be removed"
+msgstr ""
+
+msgid "The qualification could not be saved"
+msgstr ""
+
+msgid "The qualified volunteers could not be loaded"
+msgstr ""
+
 msgid "The record could not be found."
+msgstr ""
+
+msgid "The recurrence must say how the events repeat"
+msgstr ""
+
+#, php-format
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr ""
+
+#, php-format
+msgid "The request for %1$s to serve in place of %2$s was not approved."
 msgstr ""
 
 msgid "The role could not be assigned."
@@ -11987,6 +14650,30 @@ msgstr ""
 msgid "The role is successfully assigned."
 msgstr ""
 
+msgid "The same position is listed twice in the staffing needs"
+msgstr ""
+
+msgid "The schedule could not be deactivated"
+msgstr ""
+
+msgid "The schedule could not be deleted"
+msgstr ""
+
+msgid "The schedule could not be reactivated"
+msgstr ""
+
+msgid "The schedule could not be saved"
+msgstr ""
+
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr ""
+
+msgid "The schedule window ends before it starts"
+msgstr ""
+
+msgid "The schedule's staffing needs could not be loaded"
+msgstr ""
+
 msgid "The selected family no longer exists. Please refresh the page and try again."
 msgstr ""
 
@@ -11999,10 +14686,50 @@ msgstr ""
 msgid "The selected person was not found."
 msgstr ""
 
+msgid "The staffing needs could not be loaded"
+msgstr ""
+
+msgid "The staffing needs could not be reset"
+msgstr ""
+
+msgid "The staffing needs could not be saved"
+msgstr ""
+
+msgid "The staffing needs must be a list"
+msgstr ""
+
+msgid "The staffing plan could not be loaded"
+msgstr ""
+
+msgid "The start of the range is not a date."
+msgstr ""
+
 msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
 msgstr ""
 
+msgid "The substitution could not be decided"
+msgstr ""
+
+msgid "The substitution requests could not be loaded"
+msgstr ""
+
 msgid "The teacher sent this alert at"
+msgstr ""
+
+msgid "The teachers can only be imported into a position of this team"
+msgstr ""
+
+#, php-format
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr ""
+
+msgid "The team could not be deleted"
+msgstr ""
+
+msgid "The team could not be saved"
+msgstr ""
+
+msgid "The team does not belong to this ministry"
 msgstr ""
 
 msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
@@ -12011,13 +14738,55 @@ msgstr ""
 msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
 msgstr ""
 
+msgid "The theme folder was not found."
+msgstr ""
+
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr ""
+
+msgid "The volunteer assignment could not be saved"
+msgstr ""
+
+#, php-format
+msgid "The volunteer pool of the %s ministry."
+msgstr ""
+
+msgid "The volunteer setup change could not be saved"
+msgstr ""
+
+msgid "The window ends before it starts"
+msgstr ""
+
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr ""
+
+msgid "Theme"
+msgstr ""
+
 msgid "Theme Mode"
+msgstr ""
+
+msgid "Themes"
+msgstr ""
+
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
 msgstr ""
 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr ""
 
+#, php-format
+msgid "There is no church calendar with id %d."
+msgstr ""
+
+#, php-format
+msgid "There is no system calendar with id %d."
+msgstr ""
+
 msgid "There was a problem retrieving the requested object"
+msgstr ""
+
+msgid "These are the details the church has on file for you. Changes are saved straight away."
 msgstr ""
 
 msgid "These are the family role numbers designated as child"
@@ -12027,6 +14796,12 @@ msgid "These are the family role numbers designated as head of house"
 msgstr ""
 
 msgid "These are the family role numbers designated as spouse"
+msgstr ""
+
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr ""
+
+msgid "These events are not one series: they differ in title, type or class"
 msgstr ""
 
 msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
@@ -12041,6 +14816,21 @@ msgstr ""
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr ""
 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr ""
+
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr ""
+
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr ""
+
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr ""
+
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr ""
+
 msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
 msgstr ""
 
@@ -12048,6 +14838,34 @@ msgid "These people exist in ChurchCRM with email addresses but are not subscrib
 msgstr ""
 
 msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr ""
+
+msgid "These scheduled positions still need someone."
+msgstr ""
+
+#, php-format
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr ""
+
+msgid "They could not be added"
+msgstr ""
+
+msgid "They could not be removed from this ministry"
+msgstr ""
+
+#, php-format
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "They were already a volunteer here"
 msgstr ""
 
 msgid "Third-party extensions."
@@ -12071,10 +14889,26 @@ msgstr ""
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr ""
 
+msgid "This action requires an interactive session."
+msgstr ""
+
 msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
 msgstr ""
 
+#, php-format
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr ""
+
+msgid "This assignment is no longer active"
+msgstr ""
+
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr ""
+
+msgid "This email is not in your history."
+msgstr ""
+
+msgid "This event has already happened"
 msgstr ""
 
 msgid "This event is inactive."
@@ -12092,13 +14926,33 @@ msgstr ""
 msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
 msgstr ""
 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr ""
+
 msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr ""
+
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr ""
+
+#, php-format
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr ""
+
+#, php-format
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
 msgstr ""
 
 msgid "This group only has one role."
 msgstr ""
 
+msgid "This installation has no calendars yet."
+msgstr ""
+
 msgid "This is a ChurchCRM test email."
+msgstr ""
+
+msgid "This is a reminder that you are scheduled to serve soon."
 msgstr ""
 
 msgid "This is how dates, currency amounts, and phone numbers will appear throughout the system. Review the current formats here, then edit them in the sections below."
@@ -12107,10 +14961,25 @@ msgstr ""
 msgid "This is how your church information will appear on reports and directories."
 msgstr ""
 
+msgid "This is not a valid theme folder name."
+msgstr ""
+
+msgid "This is not one of your team's dates."
+msgstr ""
+
+msgid "This is not one of your teams."
+msgstr ""
+
 msgid "This is the mailing address"
 msgstr ""
 
 msgid "This is the only role in this group."
+msgstr ""
+
+msgid "This is where the church sends post and who it calls about your household."
+msgstr ""
+
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
 msgstr ""
 
 msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
@@ -12125,10 +14994,53 @@ msgstr ""
 msgid "This may take several minutes."
 msgstr ""
 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr ""
+
+#, php-format
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr ""
+
+msgid "This ministry has no volunteer pool group"
+msgstr ""
+
+msgid "This ministry is not asking for help right now"
+msgstr ""
+
+msgid "This ministry's events"
+msgstr ""
+
+msgid "This ministry's events (no event chosen yet)"
+msgstr ""
+
+msgid "This occurrence follows its schedule again"
+msgstr ""
+
+msgid "This occurrence has already happened"
+msgstr ""
+
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr ""
+
+msgid "This occurrence has been cancelled"
+msgstr ""
+
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr ""
+
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr ""
 
 msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr ""
+
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr ""
+
+msgid "This page was not found"
+msgstr ""
+
+msgid "This part of the Member Portal is for volunteer team leaders."
 msgstr ""
 
 msgid "This person already has a user account."
@@ -12167,6 +15079,9 @@ msgstr ""
 msgid "This plugin will be installed as UNVERIFIED."
 msgstr ""
 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr ""
+
 msgid "This property type is still being used by at least one property."
 msgstr ""
 
@@ -12176,10 +15091,39 @@ msgstr ""
 msgid "This role cannot be deleted."
 msgstr ""
 
+#, php-format
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr ""
+
+msgid "This schedule has no staffing needs yet"
+msgstr ""
+
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr ""
+
 msgid "This self-registered family is pending review"
 msgstr ""
 
 msgid "This setting must be a number"
+msgstr ""
+
+msgid "This substitution request has already been decided"
+msgstr ""
+
+msgid "This team has no positions yet"
+msgstr ""
+
+msgid "This team is already staffing this event"
+msgstr ""
+
+#, php-format
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr ""
+
+msgid "This theme cannot be activated"
+msgstr ""
+
+msgid "This theme has no problems."
 msgstr ""
 
 msgid "This title will be used for all generated events."
@@ -12189,6 +15133,9 @@ msgid "This user can only review and update their own family profile. Individual
 msgstr ""
 
 msgid "This user must set a new password the next time they sign in."
+msgstr ""
+
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
 msgstr ""
 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
@@ -12224,6 +15171,12 @@ msgstr ""
 msgid "Thursdays"
 msgstr ""
 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr ""
+
+msgid "Ticks save as you make them."
+msgstr ""
+
 msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
 msgstr ""
 
@@ -12246,6 +15199,9 @@ msgid "Timeline filters"
 msgstr ""
 
 msgid "Timeout"
+msgstr ""
+
+msgid "Times come from this event"
 msgstr ""
 
 msgid "Times use church time ({{church}}), not your browser ({{browser}})."
@@ -12379,6 +15335,9 @@ msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
 msgstr ""
 
 msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr ""
+
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
 msgstr ""
 
 msgid "Total"
@@ -12529,6 +15488,18 @@ msgstr ""
 msgid "Turks and Caicos Islands"
 msgstr ""
 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr ""
+
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr ""
+
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr ""
+
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr ""
+
 #. Context: countries
 msgid "Tuvalu"
 msgstr ""
@@ -12543,6 +15514,9 @@ msgid "Two half-size pages side by side on each landscape sheet, in booklet orde
 msgstr ""
 
 msgid "Two-Factor Authentication"
+msgstr ""
+
+msgid "Two-factor authentication"
 msgstr ""
 
 msgid "Two-factor authentication has been disabled"
@@ -12679,6 +15653,9 @@ msgstr ""
 msgid "Unexpected error. Please try again."
 msgstr ""
 
+msgid "Unfilled Positions"
+msgstr ""
+
 msgid "Unfocus"
 msgstr ""
 
@@ -12715,10 +15692,22 @@ msgstr ""
 msgid "Unknown Type"
 msgstr ""
 
+msgid "Unknown delivery error"
+msgstr ""
+
 msgid "Unknown error"
 msgstr ""
 
 msgid "Unknown family"
+msgstr ""
+
+msgid "Unknown occurrence status"
+msgstr ""
+
+msgid "Unknown schedule link mode"
+msgstr ""
+
+msgid "Unknown volunteer ministry"
 msgstr ""
 
 msgid "Unmapped"
@@ -12737,6 +15726,9 @@ msgid "Unsubscribed"
 msgstr ""
 
 msgid "Unsuccessful API Key authentication attempt"
+msgstr ""
+
+msgid "Until"
 msgstr ""
 
 msgid "Unverified"
@@ -12758,6 +15750,9 @@ msgid "Upcoming Birthdays"
 msgstr ""
 
 msgid "Upcoming Events"
+msgstr ""
+
+msgid "Upcoming availability"
 msgstr ""
 
 msgid "Update"
@@ -12797,6 +15792,12 @@ msgid "Update it to a valid URL that"
 msgstr ""
 
 msgid "Update package downloaded successfully."
+msgstr ""
+
+msgid "Update your details"
+msgstr ""
+
+msgid "Update your family details"
 msgstr ""
 
 msgid "Updated"
@@ -12885,6 +15886,9 @@ msgstr ""
 msgid "Use Recovery Code"
 msgstr ""
 
+msgid "Use Staff this event to staff a single event"
+msgstr ""
+
 msgid "Use Title Page"
 msgstr ""
 
@@ -12905,6 +15909,9 @@ msgid "Use the Countries picker to choose one or more countries. Each country yo
 msgstr ""
 
 msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr ""
+
+msgid "Use the schedule's needs"
 msgstr ""
 
 msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
@@ -12968,6 +15975,12 @@ msgstr ""
 msgid "User must have Add Event permission and the Events module must be enabled"
 msgstr ""
 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr ""
+
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr ""
+
 msgid "User must have Delete Records permission"
 msgstr ""
 
@@ -13018,6 +16031,21 @@ msgstr ""
 msgid "Uzbekistan (Oʻzbekiston)"
 msgstr ""
 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr ""
+
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr ""
+
+msgid "V2 — Ministries"
+msgstr ""
+
+msgid "V2 — Volunteer Management"
+msgstr ""
+
+msgid "Valid"
+msgstr ""
+
 msgid "Valid Examples"
 msgstr ""
 
@@ -13025,6 +16053,9 @@ msgid "Valid Until"
 msgstr ""
 
 msgid "Valid startDate and endDate are required"
+msgstr ""
+
+msgid "Validation"
 msgstr ""
 
 msgid "Validation Error"
@@ -13110,9 +16141,6 @@ msgid "Verify & Sign In"
 msgstr ""
 
 msgid "Verify Code"
-msgstr ""
-
-msgid "Verify Family Info"
 msgstr ""
 
 msgid "Verify Info"
@@ -13247,6 +16275,9 @@ msgstr ""
 msgid "View class roster, teacher assignments, and contact information"
 msgstr ""
 
+msgid "View event"
+msgstr ""
+
 msgid "View family details, members, and timeline"
 msgstr ""
 
@@ -13262,10 +16293,25 @@ msgstr ""
 msgid "View inactive only"
 msgstr ""
 
+msgid "View my schedule"
+msgstr ""
+
+msgid "View only"
+msgstr ""
+
+msgid "View person"
+msgstr ""
+
 msgid "View pledge or payment details"
 msgstr ""
 
 msgid "View release notes"
+msgstr ""
+
+msgid "View the event"
+msgstr ""
+
+msgid "View this email"
 msgstr ""
 
 msgid "View transaction details for a pledge payment"
@@ -13280,6 +16326,15 @@ msgstr ""
 msgid "Volunteer"
 msgstr ""
 
+msgid "Volunteer (Legacy)"
+msgstr ""
+
+msgid "Volunteer Management V2 is not enabled"
+msgstr ""
+
+msgid "Volunteer Ministry"
+msgstr ""
+
 msgid "Volunteer Opportunities"
 msgstr ""
 
@@ -13292,17 +16347,75 @@ msgstr ""
 msgid "Volunteer Opportunity Editor"
 msgstr ""
 
+msgid "Volunteer assignment"
+msgstr ""
+
+msgid "Volunteer declined"
+msgstr ""
+
+msgid "Volunteer experience"
+msgstr ""
+
 msgid "Volunteer opportunity not found"
+msgstr ""
+
+msgid "Volunteer positions still need to be filled"
+msgstr ""
+
+msgid "Volunteer reminder"
+msgstr ""
+
+msgid "Volunteer sign-up"
+msgstr ""
+
+msgid "Volunteer times"
 msgstr ""
 
 msgid "Volunteer-entered headcounts, broken down by category."
 msgstr ""
 
+msgid "Volunteering"
+msgstr ""
+
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr ""
+
 msgid "Volunteers"
+msgstr ""
+
+msgid "Volunteers assigned: {{total}}"
+msgstr ""
+
+msgid "Volunteers finish"
 msgstr ""
 
 msgid "Volunteers for Two Opportunities"
 msgstr ""
+
+msgid "Volunteers needed"
+msgstr ""
+
+#, php-format
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr ""
+
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr ""
+
+msgid "Volunteers start"
+msgstr ""
+
+#, php-format
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Vonage API Key"
 msgstr ""
@@ -13360,6 +16473,15 @@ msgstr ""
 msgid "WSW"
 msgstr ""
 
+msgid "Waiting for a reply"
+msgstr ""
+
+msgid "Waiting for review"
+msgstr ""
+
+msgid "Waiting for your coordinator to confirm."
+msgstr ""
+
 msgid "Waiting to Check In"
 msgstr ""
 
@@ -13398,6 +16520,12 @@ msgid "We encountered an error processing your verification. Please try again or
 msgstr ""
 
 msgid "We were unable to process your password reset request."
+msgstr ""
+
+msgid "We will email you when something needs filling."
+msgstr ""
+
+msgid "We would love more help on Sunday mornings — no experience needed."
 msgstr ""
 
 msgid "We'll use this to keep in touch and send church updates."
@@ -13460,9 +16588,6 @@ msgstr ""
 msgid "Weekly on"
 msgstr ""
 
-msgid "Welcome"
-msgstr ""
-
 msgid "Welcome Back!"
 msgstr ""
 
@@ -13473,6 +16598,10 @@ msgid "Welcome to"
 msgstr ""
 
 msgid "Welcome to the Family!"
+msgstr ""
+
+#, php-format
+msgid "Welcome, %s"
 msgstr ""
 
 #. Context: countries
@@ -13498,6 +16627,18 @@ msgstr ""
 msgid "What is sent"
 msgstr ""
 
+msgid "What needs changing?"
+msgstr ""
+
+msgid "What needs your attention this week"
+msgstr ""
+
+msgid "What the check found"
+msgstr ""
+
+msgid "What the volunteer experiences are"
+msgstr ""
+
 msgid "What this plugin does"
 msgstr ""
 
@@ -13507,10 +16648,16 @@ msgstr ""
 msgid "What went wrong? What did you expect to happen?"
 msgstr ""
 
+msgid "What you want to say"
+msgstr ""
+
 msgid "What you'll gain"
 msgstr ""
 
 msgid "What's New"
+msgstr ""
+
+msgid "When"
 msgstr ""
 
 #. plugin:mailchimp:section:3:content
@@ -13524,6 +16671,12 @@ msgstr ""
 
 #. plugin:gravatar:section:0:content
 msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr ""
+
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr ""
+
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
 msgstr ""
 
 #. plugin:external-backup:section:2:content
@@ -13549,7 +16702,25 @@ msgstr ""
 msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
 msgstr ""
 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr ""
+
+msgid "Where"
+msgstr ""
+
+msgid "Where the dates come from"
+msgstr ""
+
+msgid "Where we reach you"
+msgstr ""
+
 msgid "Whether the symbol appears before or after the numeric amount. Default: Before amount"
+msgstr ""
+
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr ""
+
+msgid "Which events"
 msgstr ""
 
 msgid "Which role is a child?"
@@ -13561,16 +16732,28 @@ msgstr ""
 msgid "Which role is the spouse?"
 msgstr ""
 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr ""
+
 msgid "Who is bringing in {{name}}?"
 msgstr ""
 
 msgid "Who is bringing them in?"
 msgstr ""
 
+msgid "Who is covering"
+msgstr ""
+
 msgid "Who is in your family?"
 msgstr ""
 
+msgid "Who is needed, who is on, and what is still short"
+msgstr ""
+
 msgid "Who is picking up {{name}}?"
+msgstr ""
+
+msgid "Whoever served least recently is listed first."
 msgstr ""
 
 msgid "Why Came"
@@ -13610,6 +16793,9 @@ msgstr ""
 msgid "Work / Other Email"
 msgstr ""
 
+msgid "Work Email"
+msgstr ""
+
 msgid "Work Email is Not Valid"
 msgstr ""
 
@@ -13643,6 +16829,9 @@ msgstr ""
 msgid "Year, 4 digits"
 msgstr ""
 
+msgid "Yearly"
+msgstr ""
+
 msgid "Yearly on"
 msgstr ""
 
@@ -13668,6 +16857,9 @@ msgstr ""
 msgid "Yesterday"
 msgstr ""
 
+msgid "You"
+msgstr ""
+
 msgid "You are about to add a new deposit without a comment"
 msgstr ""
 
@@ -13675,6 +16867,28 @@ msgid "You are about to delete the profile photo, this procedure is irreversible
 msgstr ""
 
 msgid "You are about to email copy of the family information to the following emails"
+msgstr ""
+
+msgid "You are already helping that day"
+msgstr ""
+
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr ""
+
+#, php-format
+msgid "You are logged in as %s. Actions are recorded as them."
+msgstr ""
+
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr ""
+
+msgid "You are not currently associated with a family"
+msgstr ""
+
+msgid "You are not part of a family record yet."
+msgstr ""
+
+msgid "You are on the list — thank you."
 msgstr ""
 
 msgid "You are running a pre-release version."
@@ -13705,10 +16919,25 @@ msgstr ""
 msgid "You can reset your ChurchCRM password by clicking this link"
 msgstr ""
 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgid "You can review or change this on your volunteer schedule."
 msgstr ""
 
 msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr ""
+
+msgid "You cannot log in as another administrator."
+msgstr ""
+
+msgid "You cannot log in as yourself."
+msgstr ""
+
+msgid "You cannot open this page"
+msgstr ""
+
+msgid "You cannot propose yourself as your own substitute"
+msgstr ""
+
+msgid "You could not be signed up for that."
 msgstr ""
 
 msgid "You do not have permission to add a note for this family."
@@ -13729,10 +16958,28 @@ msgstr ""
 msgid "You do not have permission to view this person"
 msgstr ""
 
+msgid "You do not lead a volunteer team yet."
+msgstr ""
+
+msgid "You have a new calendar address. The old one no longer works."
+msgstr ""
+
+msgid "You have been scheduled to serve"
+msgstr ""
+
+msgid "You have been scheduled to serve."
+msgstr ""
+
 msgid "You have no items in your cart."
 msgstr ""
 
+msgid "You lead this"
+msgstr ""
+
 msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr ""
+
+msgid "You may only create a schedule for a team you lead"
 msgstr ""
 
 msgid "You must enter a Last Name."
@@ -13763,6 +17010,9 @@ msgid "You must specify a date range."
 msgstr ""
 
 msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr ""
+
+msgid "You will be back on the list for this one."
 msgstr ""
 
 msgid "You will be logged out and redirected to the login page."
@@ -13813,6 +17063,9 @@ msgstr ""
 msgid "Your account has no email address on file. Add one to your profile to send a test."
 msgstr ""
 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr ""
+
 msgid "Your account is now protected"
 msgstr ""
 
@@ -13829,6 +17082,9 @@ msgid "Your backup will be automatically upgraded to the latest database schema 
 msgstr ""
 
 msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr ""
+
+msgid "Your calendar subscription was saved."
 msgstr ""
 
 msgid "Your cart contains"
@@ -13849,10 +17105,22 @@ msgstr ""
 msgid "Your current access levels (read-only)"
 msgstr ""
 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr ""
+
 msgid "Your database already contains data"
 msgstr ""
 
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr ""
+
+msgid "Your details"
+msgstr ""
+
+msgid "Your details have been saved."
+msgstr ""
+
+msgid "Your family details have been saved."
 msgstr ""
 
 #, php-format
@@ -13874,6 +17142,12 @@ msgstr ""
 msgid "Your password has been updated successfully."
 msgstr ""
 
+msgid "Your photo"
+msgstr ""
+
+msgid "Your photo has been saved."
+msgstr ""
+
 msgid "Your previous session timed out. Please login again."
 msgstr ""
 
@@ -13881,6 +17155,18 @@ msgid "Your privacy is important. We never share your information with third par
 msgstr ""
 
 msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr ""
+
+msgid "Your schedule could not be loaded."
+msgstr ""
+
+msgid "Your session has expired. Please sign in again."
+msgstr ""
+
+msgid "Your substitute request was approved"
+msgstr ""
+
+msgid "Your substitute request was not approved"
 msgstr ""
 
 msgid "Your verification request has been received. Thank you for keeping your information up to date."
@@ -13936,6 +17222,9 @@ msgstr ""
 msgid "already in cart"
 msgstr ""
 
+msgid "already staffed by this team"
+msgstr ""
+
 msgid "am / pm"
 msgstr ""
 
@@ -13945,7 +17234,13 @@ msgstr ""
 msgid "assigned"
 msgstr ""
 
+msgid "body is required"
+msgstr ""
+
 msgid "by"
+msgstr ""
+
+msgid "calendarIds must be a list of calendar ids"
 msgstr ""
 
 msgid "characters"
@@ -13958,6 +17253,13 @@ msgid "check-outs"
 msgstr ""
 
 msgid "checked in"
+msgstr ""
+
+#, php-format
+msgid "classEvents must be one of: %s"
+msgstr ""
+
+msgid "classGroupId must be a group id or null"
 msgstr ""
 
 msgid "click to expand"
@@ -14008,6 +17310,9 @@ msgstr ""
 msgid "e.g., Visitors, Children"
 msgstr ""
 
+msgid "end offset"
+msgstr ""
+
 msgid "endDate must be after startDate"
 msgstr ""
 
@@ -14020,6 +17325,9 @@ msgstr ""
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr ""
 
+msgid "eventIds must be a list of event ids"
+msgstr ""
+
 msgid "eventIds must be a non-empty array"
 msgstr ""
 
@@ -14027,6 +17335,9 @@ msgid "events"
 msgstr ""
 
 msgid "events?"
+msgstr ""
+
+msgid "every message has been delivered or is still queued"
 msgstr ""
 
 msgid "families"
@@ -14071,10 +17382,19 @@ msgstr ""
 msgid "goalAmount must be non-negative"
 msgstr ""
 
+msgid "has not served yet"
+msgstr ""
+
+msgid "importPositionId must be a position id"
+msgstr ""
+
 msgid "in"
 msgstr ""
 
 msgid "in cart"
+msgstr ""
+
+msgid "inactive family"
 msgstr ""
 
 msgid "invalid calendar pinning"
@@ -14110,10 +17430,17 @@ msgstr ""
 msgid "kilometers"
 msgstr ""
 
+#, php-format
+msgid "line %d"
+msgstr ""
+
 msgid "loading"
 msgstr ""
 
 msgid "manifest."
+msgstr ""
+
+msgid "marked do not email"
 msgstr ""
 
 msgid "member"
@@ -14125,7 +17452,31 @@ msgstr ""
 msgid "members. Already had"
 msgstr ""
 
+msgid "messages could not be delivered"
+msgstr ""
+
+msgid "messages could not be delivered after five attempts"
+msgstr ""
+
+msgid "messages waiting to be sent"
+msgstr ""
+
 msgid "miles"
+msgstr ""
+
+msgid "ministryIds must be a list of ministry ids"
+msgstr ""
+
+msgid "minutes after the event ends"
+msgstr ""
+
+msgid "minutes after the event starts"
+msgstr ""
+
+msgid "minutes before the event ends"
+msgstr ""
+
+msgid "minutes before the event starts"
 msgstr ""
 
 msgid "mismatch detected"
@@ -14141,6 +17492,12 @@ msgid "mos"
 msgstr ""
 
 msgid "needs to be picked up from"
+msgstr ""
+
+msgid "never"
+msgstr ""
+
+msgid "no email address"
 msgstr ""
 
 msgid "not found"
@@ -14220,6 +17577,9 @@ msgid_plural "people"
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr ""
+
 msgid "personIds must be a non-empty array"
 msgstr ""
 
@@ -14233,6 +17593,9 @@ msgid "recipient"
 msgstr ""
 
 msgid "recipients"
+msgstr ""
+
+msgid "record not found"
 msgstr ""
 
 msgid "record(s) successfully added to selected Group."
@@ -14256,6 +17619,9 @@ msgstr ""
 msgid "s"
 msgstr ""
 
+msgid "same address as another recipient"
+msgstr ""
+
 msgid "seconds"
 msgstr ""
 
@@ -14268,10 +17634,28 @@ msgstr ""
 msgid "self-registrations are waiting for review"
 msgstr ""
 
+msgid "single event"
+msgstr ""
+
 msgid "skip must be zero or a positive integer"
 msgstr ""
 
+msgid "start offset"
+msgstr ""
+
+msgid "subject and body are required"
+msgstr ""
+
+msgid "subject is required"
+msgstr ""
+
+msgid "subject must be 255 characters or fewer"
+msgstr ""
+
 msgid "subscribers"
+msgstr ""
+
+msgid "sundaySchool must be true or false"
 msgstr ""
 
 msgid "system logs"
@@ -14320,6 +17704,12 @@ msgstr ""
 msgid "view families missing an email"
 msgstr ""
 
+msgid "window end"
+msgstr ""
+
+msgid "window start"
+msgstr ""
+
 msgid "with at least one"
 msgstr ""
 
@@ -14335,10 +17725,103 @@ msgstr ""
 msgid "yrs"
 msgstr ""
 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr ""
+
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr ""
+
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr ""
+
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr ""
+
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr ""
+
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr ""
+
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr ""
+
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr ""
+
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr ""
+
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr ""
+
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr ""
+
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr ""
+
 msgid "{{hours}}h {{mins}}m left"
 msgstr ""
 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr ""
+
 msgid "{{minutes}} min left"
+msgstr ""
+
+msgid "{{names}} also staff some of them."
+msgstr ""
+
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr ""
+
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr ""
+
+msgid "{{name}} already coordinates this ministry"
+msgstr ""
+
+msgid "{{name}} assigned"
+msgstr ""
+
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr ""
+
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr ""
+
+msgid "{{name}} now coordinates this ministry"
+msgstr ""
+
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr ""
+
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr ""
+
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr ""
+
+msgid "{{position}}: {{name}} qualified"
+msgstr ""
+
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr ""
+
+msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr ""
 
 #. Context: countries
