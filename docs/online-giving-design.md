@@ -94,7 +94,7 @@
 | A23 | Webhook payloads 90 days, encrypted. | Dispute window; payloads hold PII. |
 | A24 | Reconcile in `runTimerJobs()` plus a bounded post-webhook step. | Rare staff logins still catch up. |
 | A25 | Plugin-local `vendor/` (D10); PayPal and BTCPay over REST. | No gateway SDK in core. |
-| A26 | Overridable pages (D8); server-built redirect; host allow-list on server and client; readiness warns about plugin head scripts. | Blocks a rewritten redirect URL. |
+| A26 | Overridable pages (D8); server-built redirect; host allow-list on server and client; in LIVE mode, server and client require HTTPS for the BTCPay `checkoutLink`, and the API client never forwards `apiKey` across an HTTPS-to-HTTP redirect; readiness warns about plugin head scripts. | Blocks a rewritten or downgraded redirect URL. |
 | A27 | One `RecurrenceScheduler` for anchor, first-charge date and UI sentence (D6). | UI and gateway always agree. |
 | A28 | Removed 2026-10-05: no newsletter sign-up (D4). | |
 | A29 | Stable `sGivingInstallId` UUID in metadata; a cloned DB forces test mode. | A URL hash would orphan subscriptions after a domain change. |
@@ -558,7 +558,7 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
 
 ### 5.3 Admin, finance, statements
 - **`/admin/online-giving`** (admin): settings; webhook URLs; plugin settings links; Go live (test purge, F13); QR builder; install-identity prompt.
-  - **Readiness, blocking live:** HTTPS from the configured `$URL`, not `X-Forwarded-Proto` (trusted blindly at `Bootstrapper.php:470`); ISO currency matches `sCurrencySymbol` (`SystemConfig.php:178`) and the gateway account where exposed; ≥ 1 online fund; email enabled (`SystemConfig::isEmailEnabled()`, `:583`); fresh cron; secrets key outside the DB; DB current; install identity confirmed; keys match mode.
+  - **Readiness, blocking live:** HTTPS from the configured `$URL`, not `X-Forwarded-Proto` (trusted blindly at `Bootstrapper.php:470`); HTTPS for the BTCPay `serverUrl`; ISO currency matches `sCurrencySymbol` (`SystemConfig.php:178`) and the gateway account where exposed; ≥ 1 online fund; email enabled (`SystemConfig::isEmailEnabled()`, `:583`); fresh cron; secrets key outside the DB; DB current; install identity confirmed; keys match mode.
   - **Warnings:** plugin head/footer scripts on giving pages (D8); no webhook in 7 days; privacy or refund URL empty.
 - **Admin → Member Portal:** `bPortalShowGiving` [portal branch] (GIV-30).
 - **`/finance/online-giving`** (`FinanceRoleAuthMiddleware`; Finance menu `getDepositsMenu()`, `src/ChurchCRM/Config/Menu/Menu.php:282-310`, shown only when available). Built by GIV-40; later issues add their actions:
@@ -608,7 +608,7 @@ See F2. Framing stays forbidden (`X-Frame-Options: SAMEORIGIN`; cross-site ifram
 | T11 | Insider fraud | I4; original-method refunds; TOTP step-up; audit; alert | GIV-03, 41 |
 | T12 | Deposit delete wipes gifts | Delete guards | GIV-01, 16 |
 | T13 | Wrong year, rounding | UTC → `sTimeZone`; server FY; integer cents | GIV-04, 16 |
-| T14 | No HTTPS | Readiness from `$URL` | GIV-15 |
+| T14 | No HTTPS | Readiness from `$URL` and the BTCPay `serverUrl`; HTTPS check on the live `checkoutLink`; no `apiKey` across an HTTPS-to-HTTP redirect | GIV-15, 24 |
 | T15 | Open or rewritten redirect | Server-built URLs; host allow-list (D8); login location validated by `AuthenticationManager::validateRedirectPath()` | GIV-31, 33 |
 | T16 | Leaky errors | Generic JSON; no bodies logged; `giving` channel | GIV-12 |
 | T17 | Gateway impersonation | `register(owner, gateway)`; core decided by path; no community id may equal a core id | GIV-10 |
