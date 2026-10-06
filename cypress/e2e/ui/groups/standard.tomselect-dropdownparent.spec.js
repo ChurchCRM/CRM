@@ -21,11 +21,6 @@ describe("TomSelect dropdownParent:body — remaining call sites (#9488)", () =>
         cy.on("uncaught:exception", () => false);
     });
 
-    /**
-     * GroupView.js `.personSearch` "Add Member" picker.
-     * This is the NEW call site identified in the audit comment on issue #9488.
-     * Group 9 (Church Board) is always present in seed data.
-     */
     it("GroupView .personSearch (Add Member) TomSelect dropdown renders as a direct child of body", () => {
         cy.visit("/groups/view/9");
 

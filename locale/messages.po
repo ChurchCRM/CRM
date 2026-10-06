@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-04 01:29+0000\n"
+"POT-Creation-Date: 2026-10-05 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11866,6 +11866,9 @@ msgid "That field name already exists."
 msgstr ""
 
 msgid "That name already exists."
+msgstr ""
+
+msgid "That role is not one of this group's roles."
 msgstr ""
 
 msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."

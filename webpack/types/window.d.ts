@@ -311,9 +311,6 @@ interface CRMNamespace {
   renderFamilyActionMenu?: (familyId: number, familyName?: string, options?: CRMFamilyActionMenuOptions) => string;
   renderEventActionMenu?: (eventId: number, eventTitle: string, options?: CRMEventActionMenuOptions) => string;
   emailComposer?: CRMEmailComposer;
-  /** Shared AJAX person-search TomSelect (webpack/common/person-select.ts), re-exported
-   * by skin-core.js for scripts that are not part of a webpack bundle — currently
-   * src/skin/js/GroupView.js, which is loaded as a plain `<script src>`. */
   initPersonSelect?: (el: HTMLSelectElement, opts?: PersonSelectOptions) => TomSelectInstance;
   /** Initialises every not-yet-initialised `.personSearch` / `.person-search` in `root`. */
   initAllPersonSelects?: (opts?: PersonSelectOptions, root?: ParentNode) => TomSelectInstance[];
