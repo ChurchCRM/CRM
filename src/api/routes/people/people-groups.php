@@ -1226,19 +1226,21 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Parameter(name="roleID", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Role deleted successfully"),
+     *     @OA\Response(response=200, description="Role deleted; returns the remaining roles. Members who had it move to the default role (the first remaining role if it was the default)"),
+     *     @OA\Response(response=400, description="The group's only role cannot be deleted"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=404, description="Group or role not found"),
      *     @OA\Response(response=409, description="Deleting the Teacher role of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)"),
      *     @OA\Response(response=500, description="Failed to delete role")
      * )
      */
     $group->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         try {
-            $groupID = $args['groupID'];
-            $roleID = $args['roleID'];
+            $groupID = (int) $args['groupID'];
+            $roleID = (int) $args['roleID'];
             $locked = _renderTeacherRoleConflict(
                 $response,
-                VolunteerClassLinkService::findTeacherRoleLock((int) $groupID, (int) $roleID)
+                VolunteerClassLinkService::findTeacherRoleLock($groupID, $roleID)
             );
             if ($locked !== null) {
                 return $locked;
