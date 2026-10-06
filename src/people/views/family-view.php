@@ -614,10 +614,12 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                         </button>
                     </li>
                     <!-- MailChimp status - populated by JavaScript if plugin is active -->
+                    <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
                     <li class="d-none mb-1" id="mailchimp-status-container">
                         <i class="fa-regular fa-paper-plane me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i>Mailchimp:
                         <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
                     </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>

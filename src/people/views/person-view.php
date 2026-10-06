@@ -661,11 +661,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         </a>
                     </li>
                     <!-- Plugin tabs will be dynamically added here by JavaScript -->
+                    <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) : ?>
                     <li class="nav-item d-none" id="nav-item-mailchimp-container">
                         <a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-bs-toggle="tab">
                             <i class="fa-brands fa-mailchimp me-1"></i>Mailchimp
                         </a>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </div>
             <div class="card-body">
@@ -832,7 +834,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             </div>
                         <?php endif; ?>
                     </div>
-                    <?php if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) : ?>
+                    <?php if (AuthenticationManager::getCurrentUser()->isAdmin() && (!empty($person->getEmail()) || !empty($person->getWorkEmail()))) : ?>
                     <div class="tab-pane d-none" id="mailchimp">
                         <table class="table">
                             <tr>
