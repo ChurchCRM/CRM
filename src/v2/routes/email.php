@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
@@ -38,6 +40,13 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
         'bEmailEnabled' => SystemConfig::getBooleanValue('bEnabledEmail'),
         'bSmtpConfigured' => SystemConfig::hasValidMailServerSettings(),
         'bMailchimpConfigured' => PluginManager::getPlugin('mailchimp')?->isConfigured() ?? false,
+        // Recent sends across everyone (admins only): the first place to look when "nobody got the email".
+        'recentEmails' => AuthenticationManager::getCurrentUser()->isAdmin()
+            ? (new EmailLogService())->getRecent(null, 1, 20)
+            : null,
+        'failedEmailCount' => AuthenticationManager::getCurrentUser()->isAdmin()
+            ? (new EmailLogService())->getRecent(EmailLogService::STATUS_FAILED, 1, 1)['total']
+            : 0,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

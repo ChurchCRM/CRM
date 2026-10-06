@@ -148,7 +148,10 @@ async function loadLocaleFiles(localeConfig) {
       window.moment.locale("en");
     }
 
-    if (localeConfig.datePicker) {
+    // Only where bootstrap-datepicker is on the page: its locale files assign
+    // `$.fn.datepicker.dates[...]` and throw without it, which broke the Member Portal
+    // for French members (#9869).
+    if (localeConfig.datePicker && typeof window.jQuery?.fn?.datepicker === "function") {
       const languageCode = localeConfig.languageCode;
       promises.push(
         import(`bootstrap-datepicker/dist/locales/bootstrap-datepicker.${languageCode}.min.js`).catch((e) =>

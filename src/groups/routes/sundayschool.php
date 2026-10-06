@@ -19,6 +19,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -245,6 +246,8 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'rsTeachers'             => $rsTeachers,
             'thisClassChildren'      => $thisClassChildren,
             'canEmail'               => $currentUser->isEmailEnabled(),
+            // Volunteer v2 (D23): null unless a volunteer team writes this class's teachers.
+            'aTeacherLink'           => VolunteerClassLinkService::describeLink($iGroupId, $currentUser),
         ];
 
         return $renderer->render($response, 'sundayschool/class-view.php', $pageArgs);

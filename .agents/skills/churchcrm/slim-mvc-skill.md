@@ -15,7 +15,7 @@ Two kinds of Slim app
 
 | Kind | Bootstrap | Prefixes |
 |------|-----------|----------|
-| **MVC (HTML) modules** | `MvcAppFactory::create('/<prefix>', [...])` | `/admin`, `/event`, `/finance`, `/fundraiser`, `/groups`, `/people`, `/v2` |
+| **MVC (HTML) modules** | `MvcAppFactory::create('/<prefix>', [...])` | `/admin`, `/event`, `/finance`, `/fundraiser`, `/groups`, `/people`, `/portal`, `/v2` |
 | **Bespoke apps** | `AppFactory::create()` + `SlimUtils::getBasePath()` in their own `index.php` | `/api`, `/external`, `/kiosk`, `/plugins`, `/session`, `/setup`&nbsp;† |
 
 &nbsp;† `/setup` is the exception: it calls `AppFactory::create()` like the rest, but computes its
@@ -58,6 +58,7 @@ Current MVC modules (`MvcAppFactory`)
 | `/finance` | `src/finance/index.php` | `FinanceRoleAuthMiddleware` | `src/finance/routes/` — dashboard, reports, pledges, deposits, funds, plus `routes/api/funds-api.php`. Audit-sensitive. |
 | `/fundraiser` | `src/fundraiser/index.php` | `ManageFundraisersRoleAuthMiddleware` | `src/fundraiser/routes/` — fundraiser, donors, donated items, paddle numbers, batch winner, reports. Routes are additionally wrapped in `CSRFMiddleware` and `FundraiserEnabledMiddleware`. |
 | `/groups` | `src/groups/index.php` | `ManageGroupRoleAuthMiddleware` | `src/groups/routes/` — dashboard, view, editor, properties form, member role/properties, reports, cart, and `sundayschool.php`. |
+| `/portal` | `src/portal/index.php` | none at module level — `PortalAccessMiddleware` gates the page group | `src/portal/routes/` — the Member Portal (#8977). Twig-rendered from `Include/themes/`, not `PhpRenderer`. `GET /portal/theme/{name}/{path}` is public (carved out in `AuthMiddleware::isPublicPath()`); everything else needs a signed-in session and refuses API keys. See [`routing-architecture.md`](./routing-architecture.md) → "Member Portal MVC Module". |
 | `/people` | `src/people/index.php` | none at module level | `src/people/routes/` — dashboard, list, family, person, view, cart, self-register, map. Per-route permission checks. |
 | `/v2` | `src/v2/index.php` | none at module level | `src/v2/routes/` — dashboard/root, search, user, user-current, email, text, cart. Server-rendered initial state for the JS/TS frontend. |
 
@@ -99,4 +100,4 @@ Full worked detail for each step lives in [`routing-architecture.md`](./routing-
 
 ---
 
-Last updated: September 11, 2026
+Last updated: September 16, 2026

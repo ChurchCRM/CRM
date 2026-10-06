@@ -1,0 +1,13 @@
+{# Account emails (new account, password reset, reset link, lock/unlock, deletion): the base
+   layout plus a note that the message was triggered by activity on the reader's account and
+   can be ignored if they did not ask for it. Only these emails carry it. #}
+{% extends "BaseEmail.html.twig" %}
+{% block notice %}
+                <!-- start account notice -->
+                <tr>
+                    <td align="left" bgcolor="#ffffff" style="padding: 0 24px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
+                        <p style="margin: 0;">{{ emailErrorText }}</p>
+                    </td>
+                </tr>
+                <!-- end account notice -->
+{% endblock %}

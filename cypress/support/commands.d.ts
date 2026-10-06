@@ -165,6 +165,12 @@ declare namespace Cypress {
      */
     restoreSystemConfig(name: string, value: string | undefined): Chainable<void>;
 
+    /** Run the browser in the church's time zone (sTimeZone), the zone the server counts days in. */
+    useChurchTimeZone(): Chainable<void>;
+
+    /** Undo useChurchTimeZone. */
+    useHostTimeZone(): Chainable<void>;
+
     /**
      * Make API request with user privileges
      * @param method - HTTP method
@@ -571,6 +577,29 @@ declare namespace Cypress {
      * @param timeout - Maximum time to wait in milliseconds (default: 10000)
      */
     waitForLocales(timeout?: number): Chainable<void>;
+
+    // ---------------------------------------------------------------
+    // Database commands (cypress/support/api-commands.js)
+    // ---------------------------------------------------------------
+
+    /**
+     * Run a SQL statement against the test database through the node-side
+     * `db:query` task (mysql2). Used to assert schema guarantees that have no
+     * HTTP surface — UNIQUE keys, foreign keys, ON DELETE rules, enum domains.
+     *
+     * Resolves with `{ rows, error }`: driver errors are RETURNED, not thrown,
+     * so a spec can assert that a write was rejected.
+     *
+     * @param sql - SQL statement, with `?` placeholders for params
+     * @param params - Values bound to the `?` placeholders
+     */
+    dbQuery(
+      sql: string,
+      params?: unknown[]
+    ): Chainable<{
+      rows: any;
+      error: { code: string; errno: number; sqlState: string; message: string } | null;
+    }>;
 
     /**
      * Wait for a Notyf notification with specific text

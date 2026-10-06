@@ -19,7 +19,54 @@ if ($bCanManageGroups) {
         }
     }
 }
+
+/**
+ * Volunteer v2 (D19): the one attribute-string this file needs more than once.
+ *
+ * `disabled` alone greys a control but still lets a screen reader announce it as
+ * something to press, and neither says WHY — so all three go together everywhere a
+ * managed group's Edit or Delete is rendered.
+ */
+$sManagedTitle = $bIsMinistryPool
+    ? InputUtils::escapeAttribute(sprintf(
+        gettext('Managed from the %s ministry'),
+        $sMinistryName
+    ))
+    : '';
 ?>
+
+<?php if ($bIsMinistryPool): ?>
+<div class="alert alert-info d-flex align-items-center" role="alert" id="group-ministry-pool-note">
+    <i class="fa-solid fa-circle-info me-2"></i>
+    <div>
+        <?= sprintf(
+            gettext('This group is the volunteer pool of %s. It is managed from that ministry.'),
+            '<strong>' . InputUtils::escapeHTML($sMinistryName) . '</strong>'
+        ) ?>
+        <a href="<?= $sRootPath ?>/ministries/<?= (int) $iMinistryId ?>" class="alert-link ms-1">
+            <?= gettext('Open the ministry') ?>
+        </a>
+    </div>
+</div>
+<?php endif; ?>
+
+<?php if ($aTeacherLink !== null): ?>
+<div class="alert alert-info d-flex align-items-center" role="alert" id="class-teachers-managed-note">
+    <i class="fa-solid fa-circle-info me-2"></i>
+    <div>
+        <?= sprintf(
+            gettext('Teachers of this class are managed in Ministries → %1$s → %2$s.'),
+            '<strong>' . InputUtils::escapeHTML($aTeacherLink['ministryName']) . '</strong>',
+            '<strong>' . InputUtils::escapeHTML($aTeacherLink['teamName']) . '</strong>'
+        ) ?>
+        <?php if ($aTeacherLink['canOpenMinistry']): ?>
+        <a href="<?= $sRootPath ?>/ministries/<?= (int) $aTeacherLink['ministryId'] ?>" class="alert-link ms-1">
+            <?= gettext('Open the ministry') ?>
+        </a>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
 
 <!-- Stat Cards Row -->
 <div class="row mb-3">
@@ -106,7 +153,14 @@ if ($bCanManageGroups) {
     <div class="col-lg-8">
         <!-- Action Toolbar (ghost buttons, family-view pattern) -->
         <div id="group-view-toolbar" class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
-            <?php if ($bCanManageGroups): ?>
+            <?php if ($bCanManageGroups && $bIsMinistryPool): ?>
+            <!-- Rendered, not hidden: the control staying where it was is what tells a
+                 returning coordinator the capability moved rather than vanished. -->
+            <span class="btn btn-ghost-primary disabled" aria-disabled="true"
+                  id="group-edit-disabled" title="<?= $sManagedTitle ?>">
+                <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
+            </span>
+            <?php elseif ($bCanManageGroups): ?>
             <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/groups/editor/<?= $iGroupID ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
             </a>
@@ -163,11 +217,15 @@ if ($bCanManageGroups) {
                     <div class="dropdown-divider"></div>
                     <?php endif; ?>
                     <h6 class="dropdown-header"><?= gettext('Copy to Group') ?></h6>
+                    <?php if ($aTeacherLink === null): ?>
                     <a class="dropdown-item copy-role-to-group" data-role-id="" href="#"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
+                    <?php endif; ?>
                     <div id="copyRoleItems"></div>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header"><?= gettext('Move to Group') ?></h6>
+                    <?php if ($aTeacherLink === null): ?>
                     <a class="dropdown-item move-role-to-group" data-role-id="" href="#"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
+                    <?php endif; ?>
                     <div id="moveRoleItems"></div>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header"><?= gettext('Settings') ?></h6>
@@ -178,7 +236,8 @@ if ($bCanManageGroups) {
                         <i class="fa-solid fa-envelope me-2"></i><?= $thisGroup->isIncludeInEmailExport() ? gettext('Exclude from Email Export') : gettext('Include in Email Export') ?>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <button class="dropdown-item text-danger" id="deleteGroupButton">
+                    <button class="dropdown-item text-danger" id="deleteGroupButton"
+                            <?= $bIsMinistryPool ? 'disabled aria-disabled="true" title="' . $sManagedTitle . '"' : '' ?>>
                         <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete Group') ?>
                     </button>
                 </div>
@@ -358,6 +417,7 @@ if ($bCanManageGroups) {
     window.CRM.groupIsActive     = <?= $thisGroup->isActive() ? 'true' : 'false' ?>;
     window.CRM.groupEmailExport  = <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>;
     window.CRM.groupPhoneNumbers = <?= InputUtils::jsonEncodeForScript($sPhoneLink) ?>;
+    window.CRM.groupLockedRoleId = <?= InputUtils::jsonEncodeForScript($aTeacherLink['teacherRoleId'] ?? null) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/groups-group-view.min.js') ?>"></script>
 <?php if ($bEmailEnabled): ?>

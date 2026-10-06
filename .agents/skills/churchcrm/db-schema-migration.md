@@ -111,6 +111,25 @@ Checklist for any `ALTER TABLE` migration:
 | `cypress/data/seed.sql` | Update the `CREATE TABLE` block — **ask user first** |
 | `orm/schema.xml` | Update column/table attributes if Propel schema tracks this |
 
+### Adding a column to `seed.sql` means editing its INSERTs too <!-- learned: 2026-09-12 -->
+
+`cypress/data/seed.sql` is a `mysqldump`, so its `INSERT` statements are **positional** —
+`INSERT INTO \`user_usr\` VALUES (1,'…',0,…)` with no column list. Adding a column to the
+`CREATE TABLE` block alone makes every one of those statements fail with
+`Column count doesn't match value count`, and the whole seed load aborts. You must insert a
+value at the matching ordinal in **every** tuple of **every** `INSERT` for that table
+(`user_usr` has ~17 tuples spread over 6 statements).
+
+Do it mechanically, not by hand: split each tuple on top-level commas while honouring
+single-quoted strings, insert the default at the right index, and verify afterwards that
+the column count in `CREATE TABLE` equals the value count in every tuple. `Install.sql` is
+the opposite case — its `user_usr` insert *does* name its columns, so a new column with a
+`DEFAULT` needs no edit there.
+
+Column ordinal drift is also real: `seed.sql` types the permission booleans `tinyint(3)`
+where `Install.sql` types them `tinyint(1)`. Match each file's local convention rather than
+making them agree; nothing validates the three files against each other.
+
 ### MySQL-Compatible Conditional Column Changes <!-- learned: 2026-07-27, corrected/expanded: 2026-09-16 -->
 
 **Column-level `IF EXISTS` / `IF NOT EXISTS` is a MariaDB-only extension on
@@ -182,3 +201,94 @@ MySQL `utf8` / `utf8mb3` is 3-byte max and silently fails on emoji and other 4-b
 -- ✅ Upgrading existing tables
 ALTER TABLE `note_nte` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
+
+### The Schema Has No Foreign Keys Yet — New Tables Are the First <!-- learned: 2026-09-12 -->
+
+`SELECT COUNT(*) FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_SCHEMA = DATABASE()` returns **0** on a stock install: `orm/schema.xml` declares `<foreign-key>` elements, but `Install.sql` and `cypress/data/seed.sql` contain no `FOREIGN KEY` clause at all, so nothing is enforced at the database level. Consequences when you add a table that *does* declare them (the `volunteer_*` tables in #9705 are the first):
+
+- The constraints are real, so `ON DELETE CASCADE` / `SET NULL` / `RESTRICT` actually fire, and an orphan insert is rejected with `ER_NO_REFERENCED_ROW_2`. That is worth having, but it is new behaviour for this codebase — do not assume existing code is prepared for a `RESTRICT`.
+- `<foreign-key onDelete="cascade|setnull|restrict">` is supported by Propel and was previously unused anywhere in `schema.xml`.
+- **The clauses must be written into `Install.sql` and `seed.sql` by hand**, exactly as in the upgrade script. Mirroring only the columns leaves a fresh install and the Cypress database without the constraints the upgrade path has, and no tooling compares the three files.
+- MariaDB needs an index on every foreign-key column; declare one explicitly (or make the column the leftmost part of a composite key) or the server invents an auto-named one that breaks an `_idx` / `_uidx` naming check.
+- Order matters inside one script: create the parent table before anything references it.
+
+### `npm run build:orm` Works Again <!-- learned: 2026-09-12 -->
+
+`package.json` now runs `cd src/ && composer run orm-gen`; the old broken `./vendor/bin/propel build --config-dir=propel` invocation is gone (#9722). Copy the config first — `orm/propel.php` is gitignored and absent from a fresh checkout:
+
+```bash
+cp orm/propel.php.dist orm/propel.php
+npm run build:orm
+npm run build:php:validate:orm
+```
+
+`src/ChurchCRM/model/ChurchCRM/Base/` and `Map/` are gitignored, so nothing from the regeneration is committed — only the hand-written subclasses. Note that `scripts/validate-orm-base-classes.js` passes silently when `Base/` is absent, so run `composer install` before trusting it.
+
+### Adding a Column Silently Widens Every `fromArray($input)` Write Endpoint <!-- learned: 2026-09-12 -->
+
+Several API write handlers hydrate an entity straight from the request body:
+
+```php
+$Event->fromArray($input);   // src/api/routes/calendar/events.php, updateEvent()
+```
+
+Propel's generated `fromArray()` copies **every** column whose phpName appears in the array.
+So the moment a migration adds a column to that table, the column becomes writable by anyone
+who can reach that endpoint — with no validation, no type check and no authorization — even
+though nothing in the route or the handler was touched. Nothing in the build catches it, and
+the diff that introduces the hole contains no PHP at all.
+
+Before merging a migration on a table an API writes, grep for the entity's `fromArray(` call
+sites. If the new column carries any rule at all (a foreign key that must exist, an
+authorization decision, an enum domain), resolve it explicitly and overwrite whatever
+`fromArray()` copied, on the next line:
+
+```php
+$ministryId = resolveEventMinistryId($response, $input, $currentMinistryId); // validates + authorizes
+if ($ministryId instanceof Response) { return $ministryId; }
+
+$Event->fromArray($input);
+$Event->setId($id);
+$Event->setMinistryId($ministryId);   // authoritative — never what fromArray() copied
+```
+
+Resolve **before** the save, not in a post-save helper: a refused value must leave no row
+behind, which a helper that runs after `save()` cannot guarantee. (#9713 added
+`events_event.event_ministry_id`, which carries a per-row authorization rule; without the
+overwrite above, any caller who could reach `POST /api/events/{id}` could have assigned an
+event to any ministry.)
+
+### A `<foreign-key>` May Point Forward in `schema.xml` — but Not in `Install.sql` / `seed.sql` <!-- learned: 2026-09-12 -->
+
+Propel resolves `<foreign-key foreignTable="…">` across the whole document, so a table
+declared early may reference one declared hundreds of lines later and `npm run build:orm`
+is happy. Raw SQL is not: MySQL rejects a `FOREIGN KEY` whose parent table does not exist
+yet.
+
+When you add an FK from an *old* table to a *new* one, the column goes in the existing
+`CREATE TABLE` (with its `KEY`) and the constraint goes in a trailing `ALTER TABLE`, placed
+after the parent table is created, in **both** `Install.sql` and `cypress/data/seed.sql`:
+
+```sql
+-- inside the existing CREATE TABLE, far above the parent
+  `event_ministry_id` int(11) DEFAULT NULL,
+  ...
+  KEY `event_ministry_idx` (`event_ministry_id`)
+
+-- at the end of the file, after volunteer_ministry_vmin exists
+ALTER TABLE `events_event`
+    ADD CONSTRAINT `events_event_FK_ministry` FOREIGN KEY (`event_ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+```
+
+Verify by loading `Install.sql` into a scratch database and diffing
+`SHOW CREATE TABLE` against the upgrade path's result — that comparison catches a constraint
+present on one path and missing on the other, which nothing else does.
+### Adding a New Table: Generate the Propel Model Too <!-- learned: 2026-09-16 -->
+
+`src/ChurchCRM/model/ChurchCRM/Base/` and `Map/` are git-ignored: after adding a `<table>` to
+`orm/schema.xml`, run `cp -n orm/propel.php.dist orm/propel.php && cd src && composer run orm-gen`
+and commit only the two skeleton subclasses it creates (`<PhpName>.php`, `<PhpName>Query.php`).
+CI regenerates the Base classes. The test DB comes solely from `cypress/data/seed.sql`, so a new
+table must be added there as well (with a few seeded rows if specs read it) or every request
+touching it 500s in Cypress. Reference: `email_log_eml` (#9877).

@@ -332,20 +332,22 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     /**
      * @OA\Post(
      *     path="/person/{personId}/approve-review",
-     *     summary="Approve a self-registered, family-less person, clearing their needs-review flag",
+     *     summary="Approve a self-registered person who is not part of a self-registered family, clearing their needs-review flag",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Person approved",
      *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
      *     ),
-     *     @OA\Response(response=400, description="Person belongs to a family — approve via the family instead")
+     *     @OA\Response(response=400, description="Person belongs to a self-registered family (approve the family instead), or is not a pending self-registration")
      * )
      */
     $group->post('/approve-review', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
 
-        if ($person->getFamId() > 0) {
+        // Someone a member proposed for an existing family (Member Portal, #9865) is
+        // approved on their own; members of a self-registered family go with it.
+        if ($person->getFamily()?->getEnteredBy() === Person::SELF_REGISTER) {
             return SlimUtils::renderErrorJSON(
                 $response,
                 gettext('This person belongs to a family — approve the family instead'),

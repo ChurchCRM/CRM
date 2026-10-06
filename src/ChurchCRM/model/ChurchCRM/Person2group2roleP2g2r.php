@@ -3,7 +3,10 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2r as BasePerson2group2roleP2g2r;
+use ChurchCRM\model\ChurchCRM\Map\Person2group2roleP2g2rTableMap;
 use ChurchCRM\Service\AuthService;
+use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
+use ChurchCRM\Volunteer\Service\VolunteerPoolWriter;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -17,9 +20,74 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
 {
+    /**
+     * The `bManageGroups` gate, plus the one Volunteer v2 exception (D19).
+     *
+     * Same shape and same ordering rule as `Group::assertGroupWritable()`: the V1 answer
+     * is asked first and wins immediately, so a membership row in an ordinary group takes
+     * the path it always took — no ministry lookup, no extra query, the same 401.
+     *
+     * Only when V1 says no is the group loaded to see whether it is a ministry's volunteer
+     * pool. Unlike `Group`, membership writes have NO extra rule for delete: adding and
+     * removing pool members is exactly what a coordinator and the "I'd like to help"
+     * action are allowed to do, and is what the Groups module keeps doing for anyone with
+     * Manage Groups.
+     */
+    private function assertMembershipWritable(): void
+    {
+        if (AuthService::hasUserGroupMembership('bManageGroups')) {
+            return;
+        }
+
+        $group = $this->getGroupId() === null ? null : $this->getGroup();
+        $ministryId = $group === null || $group->getMinistryId() === null
+            ? null
+            : (int) $group->getMinistryId();
+
+        if (VolunteerPoolWriter::mayWriteMinistryGroup($ministryId)) {
+            return;
+        }
+
+        if ($group !== null && VolunteerPoolWriter::mayWriteLinkedClass((int) $group->getId())) {
+            return;
+        }
+
+        // Unchanged V1 behaviour, including the message and the 401 code.
+        AuthService::requireUserGroupMembership('bManageGroups');
+    }
+
+    /**
+     * D23 (c): while V2 is on, the Teacher role of a class linked to a volunteer team
+     * is written by V2 alone — for everyone, Manage Groups or not. Asked after the
+     * permission check, so a caller who may not write the group learns nothing more.
+     */
+    private function assertTeacherRoleUnlocked(?int $fromRoleId, ?int $toRoleId): void
+    {
+        if ($this->getGroupId() === null) {
+            return;
+        }
+
+        $conflict = VolunteerClassLinkService::findTeacherWriteConflict((int) $this->getGroupId(), $fromRoleId, $toRoleId);
+        if ($conflict !== null) {
+            throw $conflict;
+        }
+    }
+
+    /** The role this row holds in the database, before the pending update. */
+    private function storedRoleId(): ?int
+    {
+        $stored = Person2group2roleP2g2rQuery::create()
+            ->filterByPersonId($this->getPersonId())
+            ->filterByGroupId($this->getGroupId())
+            ->select(['RoleId'])
+            ->findOne();
+
+        return $stored === null ? null : (int) $stored;
+    }
+
     public function preSave(ConnectionInterface $con = null): bool
     {
-        AuthService::requireUserGroupMembership('bManageGroups');
+        $this->assertMembershipWritable();
         parent::preSave($con);
 
         return true;
@@ -27,7 +95,10 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
 
     public function preUpdate(ConnectionInterface $con = null): bool
     {
-        AuthService::requireUserGroupMembership('bManageGroups');
+        $this->assertMembershipWritable();
+        if ($this->isColumnModified(Person2group2roleP2g2rTableMap::COL_P2G2R_RLE_ID)) {
+            $this->assertTeacherRoleUnlocked($this->storedRoleId(), (int) $this->getRoleId());
+        }
         parent::preUpdate($con);
 
         return true;
@@ -35,7 +106,8 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
 
     public function preDelete(ConnectionInterface $con = null): bool
     {
-        AuthService::requireUserGroupMembership('bManageGroups');
+        $this->assertMembershipWritable();
+        $this->assertTeacherRoleUnlocked((int) $this->getRoleId(), null);
         parent::preDelete($con);
 
         return true;
@@ -43,7 +115,8 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
 
     public function preInsert(ConnectionInterface $con = null): bool
     {
-        AuthService::requireUserGroupMembership('bManageGroups');
+        $this->assertMembershipWritable();
+        $this->assertTeacherRoleUnlocked(null, (int) $this->getRoleId());
         parent::preInsert($con);
 
         return true;

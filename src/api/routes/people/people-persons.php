@@ -130,7 +130,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      *     path="/persons/self-register",
      *     operationId="getSelfRegisteredPersons",
      *     summary="List recently self-registered persons still awaiting review",
-     *     description="Returns family-less persons who registered via the public self-registration form and are still awaiting review, newest first.",
+     *     description="Returns self-registered persons still awaiting review who are not part of a self-registered family, newest first: individuals from the public form, and people proposed for an existing family in the Member Portal (with FamilyName set).",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Response(response=200, description="List of self-registered persons",
@@ -142,23 +142,28 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
-        // Only standalone individuals (no family) — family members are already
-        // represented via GET /families/self-register and would otherwise be
-        // duplicated in both lists.
-        $people = PersonQuery::create()
-            ->filterByEnteredBy(Person::SELF_REGISTER)
-            ->filterByFamId(0)
+        $people = PersonService::selfRegisteredPersonQuery()
             ->filterByNeedsReview(true)
             ->orderByDateEntered(Criteria::DESC)
             ->find();
 
-        return SlimUtils::renderJSON($response, ['people' => $people->toArray()]);
+        $rows = [];
+        foreach ($people as $person) {
+            $family = $person->getFamily();
+            $rows[] = array_merge($person->toArray(), [
+                // Set for someone proposed for an existing family, so staff see
+                // which family they are about to add them to.
+                'FamilyName' => $family === null ? '' : (string) $family->getName(),
+            ]);
+        }
+
+        return SlimUtils::renderJSON($response, ['people' => $rows]);
     });
 
     /**
      * @OA\Get(
      *     path="/persons/self-register/count",
-     *     summary="Count self-registered families and family-less people awaiting review",
+     *     summary="Count self-registered families and people reviewed on their own that await review",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Response(response=200, description="Pending count",
@@ -168,7 +173,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      */
     $group->get('/self-register/count', function (Request $request, Response $response, array $args): Response {
         $tally = fn (bool $needsReview): int => FamilyQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByNeedsReview($needsReview)->count()
-            + PersonQuery::create()->filterByEnteredBy(Person::SELF_REGISTER)->filterByFamId(0)->filterByNeedsReview($needsReview)->count();
+            + PersonService::selfRegisteredPersonQuery()->filterByNeedsReview($needsReview)->count();
         $pending = $tally(true);
         $approved = $tally(false);
 
@@ -178,8 +183,8 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Post(
      *     path="/persons/self-register/approve",
-     *     summary="Approve several self-registered families and family-less people at once",
-     *     description="Clears the needs-review flag on the listed self-registered families (and their members) and family-less people. Ids that are not pending self-registrations are ignored.",
+     *     summary="Approve several self-registered families and people at once",
+     *     description="Clears the needs-review flag on the listed self-registered families (and their members) and people reviewed on their own (not part of a self-registered family). Ids that are not pending self-registrations are ignored.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\RequestBody(required=true, @OA\JsonContent(
@@ -215,10 +220,8 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
                 }
             }
             if ($personIds) {
-                $approved += PersonQuery::create()
+                $approved += PersonService::selfRegisteredPersonQuery()
                     ->filterById($personIds, Criteria::IN)
-                    ->filterByEnteredBy(Person::SELF_REGISTER)
-                    ->filterByFamId(0)
                     ->filterByNeedsReview(true)
                     ->update(['NeedsReview' => false], $con);
             }
@@ -567,7 +570,13 @@ function buildFormattedPersonList(Collection $people): array
  *                 description="All unique member email addresses (does not include sToEmailAddress)"),
  *             @OA\Property(property="byRole", type="object",
  *                 description="Emails grouped by classification role name",
- *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))
+ *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string"))),
+ *             @OA\Property(property="recipients", type="array", description="The same people with ids, for POST /api/email/send",
+ *                 @OA\Items(type="object",
+ *                     @OA\Property(property="personId", type="integer"),
+ *                     @OA\Property(property="familyId", type="integer", nullable=true),
+ *                     @OA\Property(property="name", type="string"),
+ *                     @OA\Property(property="email", type="string")))
  *         )
  *     ),
  *     @OA\Response(response=401, description="Unauthorized"),

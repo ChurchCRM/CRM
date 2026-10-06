@@ -1,0 +1,33 @@
+{#
+  The portal's notice area: one fixed container in the top-right corner of the
+  viewport holding the toasts.
+
+  Two things fill it. The server's `flash` messages — one-shot, queued by the
+  previous request, and emptied as they are read, so a reload never shows the
+  same message twice — are rendered here. Anything a page bundle has to say
+  after a fetch is appended to the same container by `window.CRM.portalToast()`.
+
+  The container is `position: fixed`, so a notice never takes part in the
+  document flow and nothing on the page moves when one appears.
+
+  A THEME THAT OVERRIDES layout.html.twig MUST KEEP THIS INCLUDE. Without it
+  there is no container, and every "Your details have been saved." in the portal
+  goes unseen.
+#}
+<div class="portal-toasts" id="portal-toasts" role="status" aria-live="polite">
+    {% for message in flash %}
+    {% set type = message.type|default('info') %}
+    <div class="portal-flash portal-flash-{{ type }}" role="status">
+        <i class="fa-solid {{ {
+            'success': 'fa-circle-check',
+            'warning': 'fa-triangle-exclamation',
+            'danger': 'fa-circle-exclamation'
+        }[type]|default('fa-circle-info') }} portal-flash-icon" aria-hidden="true"></i>
+        <span class="portal-flash-text">{{ message.message }}</span>
+        <button class="portal-flash-dismiss" type="button"
+                aria-label="{{ gettext('Dismiss') }}">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+    </div>
+    {% endfor %}
+</div>

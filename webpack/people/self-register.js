@@ -86,9 +86,11 @@ function initializeSelfRegister() {
         needsReview: !!f.NeedsReview,
       }));
       var people = (peopleResp[0].people || []).map((p) => ({
-        type: "individual",
+        // Proposed for an existing family in the Member Portal (#9865): staff need
+        // to see which family before approving.
+        type: p.FamilyName ? "familyMember" : "individual",
         id: p.Id,
-        name: p.FullName,
+        name: p.FamilyName ? `${p.FullName} (${p.FamilyName})` : p.FullName,
         address: formatAddress(p),
         emails: uniqueValues([p.Email, p.WorkEmail]),
         phones: uniqueValues([p.CellPhone, p.HomePhone, p.WorkPhone]),
@@ -124,10 +126,15 @@ function initializeSelfRegister() {
             data: "type",
             responsivePriority: 5,
             width: "10%",
-            render: (data) =>
-              data === "family"
-                ? `<span class="badge bg-secondary-lt text-secondary">${i18next.t("Family")}</span>`
-                : `<span class="badge bg-info-lt text-info">${i18next.t("Individual")}</span>`,
+            render: (data) => {
+              if (data === "family") {
+                return `<span class="badge bg-secondary-lt text-secondary">${i18next.t("Family")}</span>`;
+              }
+              if (data === "familyMember") {
+                return `<span class="badge bg-warning-lt text-warning">${i18next.t("Family Member")}</span>`;
+              }
+              return `<span class="badge bg-info-lt text-info">${i18next.t("Individual")}</span>`;
+            },
           },
           {
             title: i18next.t("Name"),

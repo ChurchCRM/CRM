@@ -25,6 +25,7 @@ App under test: `DEVELOPING.md` (`npm run docker:test:start`).
 - Do not put optional demo values in Cypress seed if that would break the suite. Demo import is `src/admin/demo/config.json`
 - No `.only` / `.skip` in committed specs
 - `allowCypressEnv` is false. Do not call `Cypress.env()`. Secrets go through `cy.readEnv(key)` or `cy.rememberTestEnv(keys)` / `Cypress.testEnv(key)` in `cypress/support/test-env.js`. Public run flags (`rowCountGuard`, `LOCALE_TIER`) use `Cypress.expose()`; select the locale tier with `--expose LOCALE_TIER=full`
+- The server counts days in `sTimeZone`; CI's browser is on UTC, a day ahead every evening. A spec that builds dates from the browser clock calls `cy.useChurchTimeZone()` in a root `before()` and `cy.useHostTimeZone()` in a root `after()` (`cypress/support/church-time-zone.js`). Check it locally with `TZ=UTC npx cypress run ...` between 8 pm and midnight Eastern
 - No narrative comments that repeat the `it()` title. One line only when Cypress or CI would otherwise surprise the next editor.
 
 ## PDF reports
@@ -37,3 +38,11 @@ App under test: `DEVELOPING.md` (`npm run docker:test:start`).
 npx cypress run --config-file cypress/configs/docker.config.ts \
   --spec "cypress/e2e/path/to/spec.js"
 ```
+
+### In UI Specs, Read APIs With the Browser Session, Not an API Key <!-- learned: 2026-09-23 -->
+
+`cy.makePrivateAdminAPICall()` (and the other `makePrivate*APICall` helpers) send `X-API-Key`;
+the server answers with a fresh PHP session cookie, which Cypress stores and which replaces the
+`setupAdminSession()` login. The next `cy.visit()` then lands on the login page and every
+selector times out. Inside a UI spec use `cy.request("/api/…")` (same origin, cookies sent) to
+read data between visits; keep the API-key helpers for API specs.

@@ -200,6 +200,60 @@ function renderTitleFieldInHeader(event) {
     </div>`;
 }
 
+/**
+ * Volunteer v2 (#9713, design §2.16 item 10): fill and reveal the ministry select.
+ *
+ * `GET /api/ministries/ministries` is already scoped to what the caller may administer —
+ * `VolunteerMinistryService::listMinistriesFor()` asks `isGlobalManager()` first and otherwise
+ * filters by the caller's explicit grants — so no `?manageable=1` filter is needed and the
+ * options are exactly the values `POST /api/events` will accept from this caller.
+ *
+ * Any failure (rollout flag off, no coordinator rights, endpoint unavailable) simply leaves
+ * the field hidden. The control is an optional extra on an existing form: a broken fetch must
+ * not stop somebody editing an event.
+ */
+function loadVolunteerMinistries(event, onLoaded = null) {
+  const field = document.getElementById("eventMinistryField");
+  const select = document.getElementById("eventMinistrySelect");
+  if (!field || !select) return;
+
+  const root = window.CRM?.root ?? "";
+
+  fetch(`${root}/api/ministries/ministries?active=1`, { credentials: "include" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      const ministries = data?.ministries ?? [];
+      if (ministries.length === 0) return;
+
+      const current = Number(event.MinistryId || 0);
+      for (const m of ministries) {
+        const option = document.createElement("option");
+        option.value = String(m.id);
+        option.textContent = m.name;
+        if (Number(m.id) === current) option.selected = true;
+        select.appendChild(option);
+      }
+
+      // An event may carry a ministry this caller does not administer (an admin set it).
+      // Say so rather than silently showing "No ministry", which a save would then apply.
+      if (current > 0 && !ministries.some((m) => Number(m.id) === current)) {
+        const option = document.createElement("option");
+        option.value = String(current);
+        option.textContent = event.MinistryName || t("Another ministry");
+        option.disabled = true;
+        option.selected = true;
+        select.appendChild(option);
+      }
+
+      field.classList.remove("d-none");
+
+      if (typeof onLoaded === "function") onLoaded();
+    })
+    .catch(() => {
+      // Field stays hidden — see the docblock.
+    });
+}
+
 function renderAdvancedSection(event, groups) {
   const inactive = Number(event.InActive || 0) === 1;
   const linkedGroupId = Number(event.LinkedGroupId || 0);
@@ -276,6 +330,21 @@ function renderAdvancedSection(event, groups) {
             <small class="form-text text-secondary">${t("Ties this event to a class or ministry roster — used by the Kiosk check-in flow.")}</small>
           </div>
 
+          <!--
+            Volunteer v2 (#9713): the owning volunteer ministry. Rendered hidden and filled in
+            asynchronously by loadVolunteerMinistries() below — the options are the ministries
+            THIS caller may administer, which only the server knows. Stays hidden when the
+            Volunteer v2 rollout flag is off, when the caller coordinates nothing, or when no
+            ministry exists yet, so nobody sees an empty control they cannot use.
+          -->
+          <div class="mb-3 d-none" id="eventMinistryField">
+            <label class="form-label" for="eventMinistrySelect">${t("Volunteer Ministry")}</label>
+            <select id="eventMinistrySelect" class="form-select">
+              <option value="0">${t("No ministry")}</option>
+            </select>
+            <small class="form-text text-secondary">${t("Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself.")}</small>
+          </div>
+
           ${countsMarkup}
         </div>
       </div>
@@ -341,6 +410,7 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
         <div class="form-text text-warning d-none" id="calendarsEmptyHint">
           <i class="fa-solid fa-circle-info me-1"></i>${t('No calendar selected — this event will appear under the "Unpinned Events" system calendar until you pin it.')}
         </div>
+        <div class="form-text d-none" id="calendarsLockedHint"></div>
       </div>
     </div>
     <div class="mb-2">
@@ -600,13 +670,75 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
     plugins: ["remove_button"],
   });
   tsCalendars.on("change", () => {
-    event.PinnedCalendars = tsCalendars.getValue().map((v) => Number.parseInt(v, 10));
-    updateCalendarsEmptyHint();
+    syncPinnedCalendars();
     fireValidity();
   });
 
   // Initial hint state reflects whatever the event came in with.
   updateCalendarsEmptyHint();
+
+  // --- Which calendars this user may pin to (Volunteer v2 D25) ---
+  // `GET /api/calendars/pinnable` answers for the event's ministry with the server's own rule,
+  // so the list is never re-derived here. Pins the user may not change (somebody with Add
+  // Events made them) leave the select and are listed under it, but stay on the event: the API
+  // judges only the pins that change. A failed fetch leaves every calendar offered, as before.
+  let lockedPins = [];
+  let lockedPinsKnown = false;
+  let pinnableRequest = 0;
+
+  function syncPinnedCalendars() {
+    const selected = tsCalendars ? tsCalendars.getValue().map((v) => Number.parseInt(v, 10)) : [];
+    event.PinnedCalendars = [...selected, ...lockedPins.filter((id) => !selected.includes(id))];
+    updateCalendarsEmptyHint();
+
+    const hint = document.getElementById("calendarsLockedHint");
+    if (!hint) return;
+    const names = calendars.filter((c) => lockedPins.includes(Number(c.Id))).map((c) => c.Name);
+    hint.textContent = t(
+      "Also pinned to {{calendars}}, which only someone with Add Events permission can change.",
+    ).replace("{{calendars}}", names.join(", "));
+    hint.classList.toggle("d-none", names.length === 0);
+  }
+
+  function applyPinnableCalendars(calendarIds) {
+    if (!tsCalendars) return;
+    const allowed = new Set(calendarIds.map(Number));
+
+    if (!lockedPinsKnown) {
+      lockedPins = (event.PinnedCalendars || []).map(Number).filter((id) => !allowed.has(id));
+      lockedPinsKnown = true;
+    }
+    const unlocked = lockedPins.filter((id) => allowed.has(id));
+    lockedPins = lockedPins.filter((id) => !allowed.has(id));
+
+    for (const calendar of calendars) {
+      const id = Number(calendar.Id);
+      const value = String(id);
+      if (allowed.has(id)) {
+        if (!tsCalendars.options[value]) tsCalendars.addOption({ value, text: calendar.Name });
+        if (unlocked.includes(id)) tsCalendars.addItem(value, true);
+      } else {
+        if (tsCalendars.items.includes(value)) tsCalendars.removeItem(value, true);
+        if (tsCalendars.options[value]) tsCalendars.removeOption(value, true);
+      }
+    }
+    tsCalendars.refreshOptions(false);
+    syncPinnedCalendars();
+  }
+
+  function loadPinnableCalendars(ministryId) {
+    const request = ++pinnableRequest;
+    const query = ministryId ? `?ministryId=${encodeURIComponent(ministryId)}` : "";
+    return fetch(`${window.CRM?.root ?? ""}/api/calendars/pinnable${query}`, { credentials: "include" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (request !== pinnableRequest || !Array.isArray(data?.calendarIds)) return;
+        applyPinnableCalendars(data.calendarIds);
+      })
+      .catch(() => {});
+  }
+
+  loadPinnableCalendars(Number(event.MinistryId || 0) || null);
 
   // --- Timed / All-Day toggle ---
   const dayTypeRadios = document.querySelectorAll('input[name="eventDayType"]');
@@ -723,6 +855,49 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
       event.LinkedGroupId = Number.parseInt(linkedGroupEl.value, 10) || 0;
     });
   }
+
+  /**
+   * Add the ministry's own calendar to the pinned list (Member Portal design §5.3).
+   *
+   * Every ministry is created with a calendar carrying its id, so choosing a ministry is
+   * almost always also a statement about where the event belongs, and it is the one calendar
+   * every coordinator of the ministry may pin to without Add Events (D25).
+   *
+   * Strictly additive: it never removes a pin the user chose, never replaces the list, and
+   * does nothing when the ministry has no calendar (an upgraded installation) or when the
+   * calendar is already pinned.
+   */
+  function prePinMinistryCalendar(ministryId) {
+    if (!ministryId || !tsCalendars) return;
+
+    const calendar = calendars.find((c) => Number(c.MinistryId || 0) === Number(ministryId));
+    if (!calendar) return;
+
+    const id = String(calendar.Id);
+    if (tsCalendars.getValue().includes(id)) return;
+
+    tsCalendars.addItem(id);
+  }
+
+  // Volunteer v2 (#9713). `null` rather than 0 for "no ministry": the API treats 0, '' and
+  // null alike, but null is what `GET /api/events/:id` returns, so a round-trip through the
+  // editor leaves the payload byte-identical to what it read.
+  const ministryEl = document.getElementById("eventMinistrySelect");
+  if (ministryEl) {
+    ministryEl.addEventListener("change", () => {
+      event.MinistryId = Number.parseInt(ministryEl.value, 10) || null;
+      const ministryId = event.MinistryId;
+      loadPinnableCalendars(ministryId).then(() => prePinMinistryCalendar(ministryId));
+    });
+  }
+  loadVolunteerMinistries(event, () => {
+    // Pre-pin on open only for an event that has no pins yet — a new one. An event that
+    // already carries pins is somebody's decision, and re-opening it must not quietly add
+    // to that decision (Member Portal design §5.3).
+    if (!Array.isArray(event.PinnedCalendars) || event.PinnedCalendars.length === 0) {
+      prePinMinistryCalendar(Number(event.MinistryId || 0) || null);
+    }
+  });
 
   // Attendance counts live on `event.AttendanceCounts[]` — each input
   // rewrites the matching row by data-count-id when changed.

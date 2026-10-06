@@ -25,6 +25,30 @@ ChurchCRM uses a centralized `SystemConfig` class for:
 
 **Do not add a new key to `SystemConfig::buildCategories()`.** `/SystemSettings.php` is frozen and being retired. Define the `ConfigItem` in `buildConfigs()` (that is what persists the value), omit it from `buildCategories()`, and surface it in its area admin hub (`/admin/people` is the reference). Where a setting lives and how to move one: [settings-placement.md](./settings-placement.md).
 
+### Admin → Member Portal owns the portal's settings
+
+The Member Portal (epic #8977) does not use a dashboard `settingsPanel` bolted
+onto an existing page: it has a page of its own, `/admin/member-portal`
+(`src/admin/routes/member-portal.php` + `src/admin/views/member-portal.php`,
+issue #9864), whose **Settings** tab hosts the Settings Panel component. Five
+`ConfigItem`s live there, all declared in `buildConfigs()` and all deliberately
+absent from `buildCategories()`:
+
+| Key | Type | Default | What it does |
+|-----|------|---------|--------------|
+| `sMemberPortalTheme` | text | `default` | folder name of the active theme under `Include/themes/` |
+| `bPortalDeveloperMode` | boolean | `0` | no Twig compile cache; template name in an HTML comment |
+| `bPortalShowCalendar` | boolean | `1` | show the church calendar in the portal |
+| `bPortalShowVolunteer` | boolean | `1` | show volunteering and team pages |
+| `bPortalAllowBirthdayEdit` | boolean | `0` | let members change birthdays |
+
+Four of the five save through the normal
+`POST /admin/api/system/config/{name}`. `sMemberPortalTheme` does **not**: it
+goes through `POST /admin/api/member-portal/theme`, because activation runs
+`ThemeManager::validate()` first and answers 409 with the findings when the
+theme cannot render — a plain config write would happily store a value that
+breaks the portal for every member.
+
 ---
 
 ## SystemConfig Basics
@@ -524,6 +548,23 @@ Last updated: February 16, 2026
 ```
 
 Always pair a ConfigItem removal with a `DELETE FROM config_cfg WHERE cfg_name = '...'` in the upgrade migration.
+
+### Resetting a setting to its default echoes the OLD value in the same request <!-- learned: 2026-09-11 -->
+
+`ConfigItem::setValue()` deletes the `config_cfg` row when the new value equals the
+default, but it does **not** clear the already-populated `$this->value`. So within
+that one request `getValue()` still returns the previous value:
+
+```bash
+POST /admin/api/system/config/sVolunteerVersion {"value":"v2"}  → {"value":"v2"}
+POST /admin/api/system/config/sVolunteerVersion {"value":"v1"}  → {"value":"v2"}   # stale, v1 is the default
+GET  /admin/api/system/config/sVolunteerVersion                 → {"value":"v1"}   # correct on the next request
+```
+
+The stored value is right; only the echo in the same request is stale. Never
+assert on a `POST .../config/{name}` response body when the value being written is
+the item's default — do a separate `GET` instead. (Same reason a settings page
+that re-renders from the POST response shows the old value until reloaded.)
 
 ### Verify buildCategories() After Editing SystemConfig <!-- learned: 2026-03-27 -->
 

@@ -16,9 +16,16 @@ use Propel\Runtime\Collection\ObjectCollection;
 class SystemCalendars
 {
     /**
+     * Every system calendar this installation has, core and plugin-registered.
+     *
+     * Public since #9866: the Member Portal chooses which calendars members
+     * see, and it needs the calendar objects themselves — a name, its colours
+     * and its `getEvents()` — not the Propel stand-ins `getCalendarList()`
+     * returns for the JSON API.
+     *
      * @return SystemCalendar[]
      */
-    private static function getCalendars(): array
+    public static function getCalendars(): array
     {
         $systemCalendarNames = [
             BirthdaysCalendar::class,
