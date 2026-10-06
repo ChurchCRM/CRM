@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Map\GroupTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
@@ -13,6 +14,7 @@ use ChurchCRM\Service\AuthService;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
 
 class GroupService
@@ -208,83 +210,64 @@ class GroupService
         FunctionsUtils::runQuery($sSQL);
     }
 
-    public function getGroupRoleOrder(string $groupID, string $groupRoleID)
-    {
-        $sSQL = 'SELECT list_lst.lst_OptionSequence FROM list_lst
-                INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID
-                 WHERE group_grp.grp_ID = "' . $groupID . '"
-                   AND list_lst.lst_OptionID = ' . $groupRoleID;
-
-        $rsPropList = FunctionsUtils::runQuery($sSQL);
-        $rowOrder = mysqli_fetch_array($rsPropList);
-
-        return $rowOrder[0];
-    }
-
-    public function deleteGroupRole(string $groupID, string $groupRoleID): array
+    /**
+     * Delete one of a group's roles. Role IDs are never renumbered, because memberships and
+     * the group's default role hold them; only the display order closes up (#10338).
+     * If the deleted role was the default, the first remaining role becomes the default;
+     * members who had it move to the default.
+     *
+     * @return array the remaining roles, as getGroupRoles() returns them
+     */
+    public function deleteGroupRole(int $groupID, int $groupRoleID): array
     {
         AuthService::requireUserGroupMembership('bManageGroups');
-        $sSQL = 'SELECT * FROM list_lst
-                INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID
-                 WHERE group_grp.grp_ID = "' . $groupID . '"';
-        $rsPropList = FunctionsUtils::runQuery($sSQL);
-        $numRows = mysqli_num_rows($rsPropList);
-        // Make sure we never delete the only option
-        if ($numRows > 1) {
-            $thisSequence = $this->getGroupRoleOrder($groupID, $groupRoleID);
-            $sSQL = 'DELETE list_lst.* FROM list_lst
-                    INNER JOIN group_grp
-                        ON group_grp.grp_RoleListID = list_lst.lst_ID
-                    WHERE group_grp.grp_ID = "' . $groupID . '"
-                    AND lst_OptionID = ' . $groupRoleID;
 
-            FunctionsUtils::runQuery($sSQL);
+        $con = Propel::getWriteConnection(GroupTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+        try {
+            // Locking the group serializes deletes on its roles, so two cannot both pass the
+            // last-role check below.
+            $group = GroupQuery::create()->filterById($groupID)->lockForUpdate()->findOne($con);
+            if ($group === null) {
+                throw new \InvalidArgumentException('Group not found', 404);
+            }
+            $roleListId = $group->getRoleListId();
+            $roles = fn (): ListOptionQuery => ListOptionQuery::create()->filterById($roleListId);
+            $role = $roles()->filterByOptionId($groupRoleID)->findOne($con);
+            if ($role === null) {
+                throw new \InvalidArgumentException('Group role not found', 404);
+            }
+            if ($roles()->count($con) <= 1) {
+                throw new \InvalidArgumentException('A group must keep at least one role', 400);
+            }
 
-            //check if we've deleted the old group default role.  If so, reset default to role ID 1
-            // Next, if any group members were using the deleted role, reset their role to the group default.
-            // Reset if default role was just removed.
-            $sSQL = "UPDATE group_grp SET grp_DefaultRole = 1 WHERE grp_ID = $groupID AND grp_DefaultRole = $groupRoleID";
-            FunctionsUtils::runQuery($sSQL);
+            $deletedSequence = $role->getOptionSequence();
+            $role->delete($con);
 
-            // Get the current default role and Group ID (so we can update the p2g2r table)
-            // This seems backwards, but grp_RoleListID is unique, having a 1-1 relationship with grp_ID.
-            $sSQL = "SELECT grp_ID,grp_DefaultRole FROM group_grp WHERE grp_ID = $groupID";
-            $rsTemp = FunctionsUtils::runQuery($sSQL);
-            $aTemp = mysqli_fetch_array($rsTemp);
+            $laterRoles = $roles()
+                ->filterByOptionSequence($deletedSequence, Criteria::GREATER_THAN)
+                ->find($con);
+            foreach ($laterRoles as $laterRole) {
+                $laterRole->setOptionSequence($laterRole->getOptionSequence() - 1);
+                $laterRole->save($con);
+            }
 
-            $sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = 1 WHERE p2g2r_grp_ID = $groupID AND p2g2r_rle_ID = $groupRoleID";
-            FunctionsUtils::runQuery($sSQL);
+            if ((int) $group->getDefaultRole() === $groupRoleID) {
+                $group->setDefaultRole($roles()->orderByOptionSequence()->findOne($con)->getOptionId());
+                $group->save($con);
+            }
+            Person2group2roleP2g2rQuery::create()
+                ->filterByGroupId($groupID)
+                ->filterByRoleId($groupRoleID)
+                ->update(['RoleId' => (int) $group->getDefaultRole()], $con);
 
-            //Shift the remaining rows IDs up by one
-
-            $sSQL = 'UPDATE list_lst
-                    INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID
-                    SET list_lst.lst_OptionID = list_lst.lst_OptionID -1
-                    WHERE group_grp.grp_ID = ' . $groupID . '
-                    AND list_lst.lst_OptionID >= ' . $groupRoleID;
-
-            FunctionsUtils::runQuery($sSQL);
-
-            //Shift up the remaining row Sequences by one
-
-            $sSQL = 'UPDATE list_lst
-                    INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID
-                    SET list_lst.lst_OptionSequence = list_lst.lst_OptionSequence -1
-                    WHERE group_grp.grp_ID =' . $groupID . '
-                    AND list_lst.lst_OptionSequence >= ' . $thisSequence;
-
-            //echo $sSQL;
-
-            FunctionsUtils::runQuery($sSQL);
-
-            return $this->getGroupRoles($groupID);
-        } else {
-            throw new \Exception('You cannot delete the only group');
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+            throw $e;
         }
+
+        return $this->getGroupRoles($groupID);
     }
 
     public function addGroupRole(string $groupID, string $groupRoleName): array

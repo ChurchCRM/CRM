@@ -30,7 +30,7 @@ $(document).ready(() => {
   // there is no inline JS string that can be broken out of by a crafted name.
   // Defense-in-depth: userName is also wrapped in window.CRM.escapeHtml()
   // before being placed into bootbox HTML messages (Notyf/bootbox render via
-  // innerHTML), matching the pattern already used in GroupView.js, GroupList.js,
+  // innerHTML), matching the pattern already used in GroupList.js,
   // sundayschool-actions.js, and event-checkin.js.
   // Fixes GHSA-4qpj-3hw2-52g8 (Stored XSS via Person Name, CWE-79/116, CVSS 8.7).
 

@@ -26,7 +26,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
       <a href="<?= SystemURLs::getRootPath() ?>/event/cart-to-event" class="btn btn-outline-info" title="<?= gettext('Check in to an event') ?>"><i class="fa-solid fa-ticket me-2"></i><?= gettext('Check In') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/people/map?groupId=0" class="btn btn-outline-info" title="<?= gettext('Map cart items') ?>"><i class="fa-solid fa-map-marker me-2"></i><?= gettext('Map') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-outline-secondary" title="<?= gettext('Print name tags') ?>"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Tags') ?></a>
-      <button type="button" id="cartLabels" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#cartLabelsModal" title="<?= gettext('Generate mailing labels') ?>"><i class="fa-solid fa-tags me-2"></i><?= gettext('Labels') ?></button>
+      <button type="button" id="cartLabels" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#labelsModal" title="<?= gettext('Generate mailing labels') ?>"><i class="fa-solid fa-tags me-2"></i><?= gettext('Labels') ?></button>
     </div>
     <?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
       <button type="button" class="btn btn-outline-info"
@@ -119,7 +119,10 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
   </div>
 </div>
 
-<?php require __DIR__ . '/generateLabels.php'; ?>
+<?php
+$labelsIntro = gettext('Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address.');
+require __DIR__ . '/../partials/labels-modal.php';
+?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {
