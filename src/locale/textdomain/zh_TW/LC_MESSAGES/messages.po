@@ -18415,10 +18415,6 @@ msgid "Last Gift"
 msgstr "最後的捐獻"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "留空以包含所有分類"
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "每個家庭檔案中顯示的最大稅年文件數（0 = 無限制）"
 

@@ -18265,10 +18265,6 @@ msgid "Last Gift"
 msgstr "Hadiah Terakhir"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "Biarkan kosong untuk semua klasifikasi."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Jumlah maksimum dokumen tahun pajak yang ditampilkan per profil keluarga (0 = tanpa batas)"
 

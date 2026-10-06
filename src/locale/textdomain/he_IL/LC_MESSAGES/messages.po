@@ -18285,10 +18285,6 @@ msgid "Last Gift"
 msgstr "מתנה אחרונה"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "השאר ריק לכל הסיווגים."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "המספר המרבי של מסמכי שנת מס להצגה לכל פרופיל משפחה (0 = ללא מגבלה)"
 

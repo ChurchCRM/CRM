@@ -18256,10 +18256,6 @@ msgid "Last Gift"
 msgstr "Laatste geschenk"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "Laat leeg voor alle classificaties."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Maximum aantal belastingjaar documenten dat per gezinsprofiel moet worden weergegeven (0 = geen limiet)"
 

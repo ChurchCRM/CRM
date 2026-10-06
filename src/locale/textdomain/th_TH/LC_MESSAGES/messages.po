@@ -18248,10 +18248,6 @@ msgid "Last Gift"
 msgstr "การบริจาคครั้งล่าสุด"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "ปล่อยให้ว่างสำหรับการจำแนกทั้งหมด"
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "จำนวนเอกสารปีภาษีสูงสุดที่จะแสดงต่อโปรไฟล์ครอบครัว (0 = ไม่มีขีดจำกัด)"
 

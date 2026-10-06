@@ -18277,10 +18277,6 @@ msgid "Last Gift"
 msgstr "Dhurata e fundit"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "Leni bosh për të gjitha klasifikimet."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Numri maksimal i dokumenteve të vitit tatimor për të shfaqur për profilin familjar (0 = pa limit)"
 

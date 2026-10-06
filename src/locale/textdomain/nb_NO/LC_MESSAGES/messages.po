@@ -18357,10 +18357,6 @@ msgid "Last Gift"
 msgstr "Siste gave"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "La stå tomt for alle klassifiseringer."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Maksimalt antall skatteårdokumenter som skal vises per familiprofil (0 = ingen grense)"
 

@@ -18265,10 +18265,6 @@ msgid "Last Gift"
 msgstr "마지막 기부금"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "모든 분류의 경우 비워둡니다."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "가족 프로필당 표시할 최대 세금 연도 문서 수(0 = 제한 없음)"
 

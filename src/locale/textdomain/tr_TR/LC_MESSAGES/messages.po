@@ -18287,10 +18287,6 @@ msgid "Last Gift"
 msgstr "Son Hediye"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "Tüm sınıflandırmalar için boş bırakın."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Aile profili başına gösterilecek maksimum vergi yılı belge sayısı (0 = sınır yok)"
 

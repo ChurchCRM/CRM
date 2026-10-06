@@ -18313,10 +18313,6 @@ msgid "Last Gift"
 msgstr "Utolsó adomány"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "Hagyja üresen az összes besorolás esetén."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Az adóévhez kapcsolódó dokumentumok maximális száma családi profil szerint (0 = korlátlan)"
 
