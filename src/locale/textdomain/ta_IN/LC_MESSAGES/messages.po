@@ -18299,10 +18299,6 @@ msgid "Last Gift"
 msgstr "கடைசி பரிசு"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "அனைத்து வகைப்பாடுகளுக்கும் வெற்றுவாக விடவும்."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "குடும்ப சுயவிவரத்தில் காட்ட வேண்டிய வரி வருட ஆவணங்களின் அதிகபட்ச எண்ணிக்கை (0 = வரம்பு இல்லை)"
 

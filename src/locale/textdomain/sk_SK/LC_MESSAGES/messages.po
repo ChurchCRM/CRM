@@ -18285,10 +18285,6 @@ msgid "Last Gift"
 msgstr "Posledný dar"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "Ponechajte prázdne pre všetky klasifikácie."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Maximálny počet daňových dokumentov roku na zobrazenie na profil rodiny (0 = bez obmedzenia)"
 

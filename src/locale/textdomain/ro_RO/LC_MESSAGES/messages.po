@@ -18361,10 +18361,6 @@ msgid "Last Gift"
 msgstr "Ultima ofertă"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "Lăsați gol pentru toate clasificările."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Numărul maxim de documente ale anului fiscal de afișat pe profilul familiei (0 = fără limită)"
 

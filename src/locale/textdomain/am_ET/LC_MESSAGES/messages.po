@@ -18295,10 +18295,6 @@ msgid "Last Gift"
 msgstr "የመጨረሻ ሁለት"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "ሁሉም ምድቦች ባዶ ሆኑ።"
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "ከ ቤተሰብ ገፅ እንደገና ያሳውቁ ከፍተኛ ቁጥር የ ግብር ዘመን ሰነዶች (0 = ገደብ አይደለም)"
 

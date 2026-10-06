@@ -18275,10 +18275,6 @@ msgid "Last Gift"
 msgstr "Quà Tặng Cuối cùng"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "Để trống cho tất cả các phân loại."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Số lượng tối đa các tài liệu năm thuế để hiển thị trên mỗi hồ sơ gia đình (0 = không giới hạn)"
 

@@ -18236,10 +18236,6 @@ msgid "Last Gift"
 msgstr "最後の贈り物"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "すべての分類で空白のままにします。"
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "家族プロフィールごとに表示する税務年度文書の最大数（0 =制限なし）"
 

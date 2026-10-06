@@ -18252,10 +18252,6 @@ msgid "Last Gift"
 msgstr "Huling Alay"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "Iwanan ng walang laman para sa lahat ng klasipikasyon."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Maximum na bilang ng mga dokumento ng taon ng buwis na ipapakita bawat profile ng pamilya (0 = walang hanggan)"
 

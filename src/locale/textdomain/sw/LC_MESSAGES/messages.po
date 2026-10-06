@@ -18283,10 +18283,6 @@ msgid "Last Gift"
 msgstr "Mchango wa Mwisho"
 
 #: 
-msgid "Leave empty for all classifications."
-msgstr "Acha wazi kwa uainishaji wote."
-
-#: 
 msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
 msgstr "Idadi ya juu zaidi ya hati za mwaka wa kodi za kuonyesha kwa kila wasifu wa familia (0 = bila kikomo)"
 
