@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-05 19:30+0000\n"
+"POT-Creation-Date: 2026-10-06 01:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1749,6 +1749,9 @@ msgid "Birthdays & Anniversaries"
 msgstr ""
 
 msgid "Birthdays and anniversaries. Default: m/d"
+msgstr ""
+
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
 msgstr ""
 
 msgid "Birthdays by Month"
@@ -7192,9 +7195,6 @@ msgstr ""
 msgid "Leave blank to keep existing password"
 msgstr ""
 
-msgid "Leave empty for all classifications."
-msgstr ""
-
 #. Context: countries
 msgid "Lebanon (‫لبنان‬‎)"
 msgstr ""
@@ -7517,6 +7517,9 @@ msgid "Mailing Address"
 msgstr ""
 
 msgid "Mailing Address if Different"
+msgstr ""
+
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
 msgstr ""
 
 msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
@@ -8837,6 +8840,9 @@ msgstr ""
 msgid "One directory page per sheet, portrait."
 msgstr ""
 
+msgid "One label for each couple."
+msgstr ""
+
 msgid "One or more files failed signature validation"
 msgstr ""
 
@@ -9887,6 +9893,9 @@ msgstr ""
 
 #, php-format
 msgid "Print %d Tax Doc"
+msgstr ""
+
+msgid "Print Labels"
 msgstr ""
 
 msgid "Print name tags"
