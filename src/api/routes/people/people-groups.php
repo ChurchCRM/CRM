@@ -1057,18 +1057,18 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Parameter(name="roleID", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Role deleted successfully"),
+     *     @OA\Response(response=200, description="Role deleted; returns the remaining roles. Members who had it move to the default role (the first remaining role if it was the default)"),
+     *     @OA\Response(response=400, description="The group's only role cannot be deleted"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=404, description="Group or role not found"),
      *     @OA\Response(response=500, description="Failed to delete role")
      * )
      */
     $group->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         try {
-            $groupID = $args['groupID'];
-            $roleID = $args['roleID'];
             $groupService = new GroupService();
 
-            return SlimUtils::renderJSON($response, $groupService->deleteGroupRole($groupID, $roleID));
+            return SlimUtils::renderJSON($response, $groupService->deleteGroupRole((int) $args['groupID'], (int) $args['roleID']));
         } catch (\Throwable $e) {
             $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete role. Please try again.'), [], $status, $e, $request);
