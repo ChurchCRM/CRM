@@ -375,9 +375,14 @@ paths:
                   type: string
                   nullable: true
                 PinnedCalendars:
+                  description: "Without the global AddEvent right: only the event ministry's own calendar and the church calendars opened to that ministry (GET /calendars/pinnable)"
                   type: array
                   items: { type: integer }
                   example: [1]
+                MinistryId:
+                  description: 'Volunteer v2: owning volunteer ministry. Only an administrator, a global volunteer manager or a coordinator of that ministry may set it. A volunteer coordinator without the global AddEvent right MUST supply one they manage.'
+                  type: integer
+                  nullable: true
               type: object
       responses:
         '200':
@@ -389,11 +394,11 @@ paths:
                   success: { type: boolean, example: true }
                 type: object
         '400':
-          description: 'Invalid event type or calendar ID'
+          description: 'Invalid event type, calendar ID or volunteer ministry'
         '401':
           description: Unauthorized
         '403':
-          description: 'AddEvents role required'
+          description: 'AddEvents role required, or the caller may not assign the event to that volunteer ministry or pin it to one of those calendars'
       security:
         -
           ApiKeyAuth: []
@@ -445,6 +450,8 @@ paths:
                   Title: { type: string }
                   Start: { type: string, format: date-time }
                   End: { type: string, format: date-time }
+                  MinistryId: { description: 'Owning volunteer ministry (Volunteer v2), or null', type: integer, nullable: true }
+                  MinistryName: { description: 'Name of the owning volunteer ministry, or null', type: string, nullable: true }
                 type: object
         '401':
           description: Unauthorized
@@ -487,8 +494,13 @@ paths:
                   type: string
                   nullable: true
                 PinnedCalendars:
+                  description: 'Replaces the pins. Omit the key to leave them unchanged. Without the global AddEvent right, only pins that change are checked, against the same calendars POST /events allows'
                   type: array
                   items: { type: integer }
+                MinistryId:
+                  description: 'Volunteer v2: owning volunteer ministry. Omit the key to leave it unchanged; null or 0 clears it (global AddEvent right required to clear).'
+                  type: integer
+                  nullable: true
               type: object
       responses:
         '200':
@@ -499,10 +511,12 @@ paths:
                 properties:
                   success: { type: boolean, example: true }
                 type: object
+        '400':
+          description: 'Unknown volunteer ministry'
         '401':
           description: Unauthorized
         '403':
-          description: 'AddEvents role required'
+          description: "AddEvents role required, the event belongs to a volunteer ministry the caller does not manage, or a pin it adds or removes is not the caller's to change"
         '404':
           description: 'Event not found'
       security:
@@ -1610,6 +1624,112 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /calendars/pinnable:
+    get:
+      tags:
+        - Calendar
+      summary: 'Calendars the caller may pin an event of a ministry to'
+      description: "Volunteer v2 (D25). With the global AddEvent right, every calendar. Without it, the ministry's own calendar and the church calendars an administrator opened to that ministry, when the caller manages the ministry; otherwise none. The event editor offers exactly these."
+      operationId: getPinnableCalendars
+      parameters:
+        -
+          name: ministryId
+          in: query
+          description: "The event's volunteer ministry; omit it for an event with none"
+          required: false
+          schema:
+            type: integer
+            example: 3
+      responses:
+        '200':
+          description: 'The calendar ids'
+          content:
+            application/json:
+              schema:
+                properties:
+                  ministryId: { type: integer, example: 3, nullable: true }
+                  calendarIds: { type: array, items: { type: integer }, example: [7, 12] }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  '/calendars/{id}/ministries':
+    get:
+      tags:
+        - Calendar
+      summary: 'The volunteer ministries a church calendar is opened to'
+      description: "Volunteer v2 (D25). A coordinator of one of these ministries may pin that ministry's events to the calendar without the AddEvent right."
+      operationId: getCalendarMinistryGrants
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The grants'
+          content:
+            application/json:
+              schema:
+                properties:
+                  calendarId: { type: integer, example: 7 }
+                  ministries: { type: array, items: { properties: { id: { type: integer, example: 3 }, name: { type: string, example: "Children's Ministry" }, active: { type: boolean, example: true } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required, or Volunteer Management V2 is not enabled'
+        '404':
+          description: 'Calendar not found'
+      security:
+        -
+          ApiKeyAuth: []
+    put:
+      tags:
+        - Calendar
+      summary: 'Open a church calendar to exactly these volunteer ministries'
+      description: "Volunteer v2 (D25). Replaces the calendar's grants; an empty list closes it to every ministry. Managing the calendar itself (name, colours, public link) is unaffected."
+      operationId: putCalendarMinistryGrants
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - ministryIds
+              properties:
+                ministryIds:
+                  type: array
+                  items: { type: integer }
+                  example: [3, 5]
+              type: object
+      responses:
+        '200':
+          description: 'The grants now in force, shaped like GET /calendars/{id}/ministries'
+        '400':
+          description: 'ministryIds missing or not a list of ids, or an unknown ministry'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required, or Volunteer Management V2 is not enabled'
+        '404':
+          description: 'Calendar not found'
+        '409':
+          description: 'The calendar belongs to a ministry; only church calendars are opened to ministries'
+      security:
+        -
+          ApiKeyAuth: []
   /calendar/events-counters:
     get:
       tags:
@@ -1639,6 +1759,16 @@ paths:
         - System
       summary: 'Trigger background timer jobs (page-load fallback scheduler)'
       description: 'Fallback trigger fired from the page footer on every authenticated page load, for installs that cannot run cron. The jobs are rate limited server-side by iTimerJobsMinIntervalMinutes, so a call inside that window returns ran=false without doing any work. The supported scheduler is the command-line runner (cli/timerjobs.php) driven by cron.'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                force:
+                  description: "Administrators only: run now even inside the minimum interval, and top up the volunteer schedules even if today's top-up has run"
+                  type: boolean
+              type: object
       responses:
         '200':
           description: 'Timer jobs executed, or skipped by the rate limit'
@@ -2450,6 +2580,3523 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /email/send:
+    post:
+      tags:
+        - Email
+      summary: 'Send a composer email, one message per recipient, through the configured SMTP server'
+      description: 'Recipients are given as person and family ids, never as addresses: the server resolves each id to its current email address, applies the do-not-email property, skips deceased people, inactive families and ids without an address, deduplicates addresses, and reports every skipped recipient by name. Each recipient receives their own message.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - subject
+                - body
+              properties:
+                personIds:
+                  description: 'Person ids to email at their primary address (falls back to the family address)'
+                  type: array
+                  items: { type: integer }
+                familyIds:
+                  description: 'Family ids to email at the family address'
+                  type: array
+                  items: { type: integer }
+                subject:
+                  description: 'Subject line (plain text)'
+                  type: string
+                  maxLength: 255
+                body:
+                  description: 'Plain-text body; newlines are preserved'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Per-recipient outcome'
+          content:
+            application/json:
+              schema:
+                properties:
+                  sent: { description: 'Recipients whose message the SMTP server accepted (acceptance is not delivery)', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
+                  skipped: { description: 'Requested recipients that were not emailed', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, reason: { type: string, enum: [not-found, no-email, do-not-email, deceased, inactive, duplicate-address] } }, type: object } }
+                  failed: { description: 'Recipients the SMTP server rejected', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string }, error: { type: string } }, type: object } }
+                  counts: { properties: { sent: { type: integer }, skipped: { type: integer }, failed: { type: integer } }, type: object }
+                type: object
+        '400':
+          description: 'Invalid request: raw addresses, no ids, bad ids, more than 500 ids, or empty subject/body'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Email permission required'
+        '422':
+          description: 'Email sending is disabled or SMTP is not configured'
+      security:
+        -
+          ApiKeyAuth: []
+  /email/preview:
+    post:
+      tags:
+        - Email
+      summary: 'Render a composer message for its first recipient without sending it'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - subject
+                - body
+              properties:
+                personIds:
+                  type: array
+                  items: { type: integer }
+                familyIds:
+                  type: array
+                  items: { type: integer }
+                subject:
+                  type: string
+                body:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'The rendered HTML and who it is addressed to'
+          content:
+            application/json:
+              schema:
+                properties:
+                  html: { type: string }
+                  recipient: { properties: { name: { type: string }, email: { type: string } }, type: object }
+                  recipientCount: { description: 'How many recipients the send would reach', type: integer }
+                type: object
+        '400':
+          description: 'No resolvable recipient, or empty subject/body'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Email permission required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/events':
+    get:
+      tags:
+        - Volunteer
+      summary: 'The events a ministry owns, with their staffing and headcount (D24, D26)'
+      description: 'Events whose event_ministry_id is this ministry, inactive ones included. Upcoming by default (from today, a year ahead, soonest first); past=1 lists the year before today, newest first. from/to override either bound. Each event carries its type, pinned calendars, Linked Groups, headcount total and, per team of this ministry, the staffing of its scheduled occurrences anchored to the event, from the same gap derivation as the occurrence list.'
+      operationId: listVolunteerMinistryEvents
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        -
+          name: to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        -
+          name: past
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  events: { type: array, items: { properties: { id: { type: integer }, title: { type: string }, start: { type: string }, end: { type: string }, eventTypeId: { type: integer }, eventTypeName: { type: string, nullable: true }, inactive: { type: boolean }, calendars: { type: array, items: { type: object } }, linkedGroups: { type: array, items: { type: object } }, headcount: { properties: { recorded: { type: boolean }, total: { type: integer } }, type: object }, otherStaffing: { description: 'D28: other ministries with an occurrence on the event and how many of their volunteers are assigned (pending or accepted)', type: array, items: { properties: { ministryId: { type: integer }, ministryName: { type: string }, assigned: { type: integer } }, type: object } }, staffing: { type: array, items: { properties: { teamId: { type: integer }, teamName: { type: string }, occurrenceIds: { type: array, items: { type: integer } }, needed: { type: integer }, filled: { type: integer }, pending: { type: integer }, gap: { type: integer }, openCount: { description: "D34: room left, summed over the team's positions (each position's max minus its live assignments, never below 0)", type: integer }, capacity: { description: 'D34: the summed maximums; a position with no maximum counts its minimum (a NULL MaxCount means the same as MinCount)', type: integer }, requirementCount: { type: integer }, status: { type: string, enum: [unplanned, gap, pending, filled] } }, type: object } } }, type: object } }
+                  from: { type: string, format: date }
+                  to: { type: string, format: date }
+                  past: { type: boolean }
+                  limit: { type: integer }
+                  capped: { type: boolean }
+                type: object
+        '400':
+          description: 'A malformed or inverted window'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not a coordinator of this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: "Create a ministry's event or event series through core (D24)"
+      description: "One event (date, startTime, endTime) through the same code as POST /events, or a series (recurrence, rangeStart, rangeEnd, startTime, endTime) through the repeat engine, capped at 366 events; rangeEnd is required. Every event carries this ministry's id and the Linked Group when given, and is pinned to calendarIds (default: the ministry's own calendar), each of which must be the ministry's own calendar or a church calendar opened to it unless the caller holds Add Events (D25). Nothing is written when any part is refused. Staffing is a separate step (D33): a staff key is refused; a series is staffed with POST /ministries/ministries/{ministryId}/events/staff, one event with Staff this event. Fires event.created for each event after the commit."
+      operationId: createVolunteerMinistryEvents
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - title
+                - eventTypeId
+                - startTime
+                - endTime
+              properties:
+                title:
+                  type: string
+                  example: Workday
+                eventTypeId:
+                  type: integer
+                  example: 1
+                description:
+                  type: string
+                  nullable: true
+                linkedGroupId:
+                  description: 'The Linked Group, usually a Sunday School class'
+                  type: integer
+                  nullable: true
+                calendarIds:
+                  description: "Omit for the ministry's own calendar"
+                  type: array
+                  items: { type: integer }
+                date:
+                  description: 'One event'
+                  type: string
+                  format: date
+                startTime:
+                  type: string
+                  example: '09:00'
+                endTime:
+                  type: string
+                  example: '12:00'
+                recurrence:
+                  description: 'A series instead of one event'
+                  properties: { type: { type: string, enum: [weekly, monthly, yearly] }, dow: { type: string, example: Sunday }, dom: { type: integer, example: 15 }, doy: { type: string, example: 04-12 } }
+                  type: object
+                rangeStart:
+                  type: string
+                  format: date
+                rangeEnd:
+                  description: 'Required for a series'
+                  type: string
+                  format: date
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                properties:
+                  events: { type: array, items: { properties: { id: { type: integer }, title: { type: string }, start: { type: string }, end: { type: string } }, type: object } }
+                type: object
+        '400':
+          description: 'A missing or malformed field, a staff key (D33), an unknown type, class or calendar, or a recurrence with no date in the range or over the cap'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not a coordinator of this ministry (team leaders and self-service logins included), a calendar the ministry may not pin to, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Delete events this ministry owns (D28)'
+      description: "The Calendar tab's Delete events. Every id must be an event whose event_ministry_id is this ministry, and each is deleted through core's event delete in one transaction - all or none. Refused while another ministry has volunteers assigned (pending or accepted) on any of them unless the caller holds Add Events, and whenever core refuses one (people checked in, a kiosk assigned)."
+      operationId: deleteVolunteerMinistryEvents
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - eventIds
+              properties:
+                eventIds:
+                  type: array
+                  items: { type: integer }
+              type: object
+      responses:
+        '200':
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                properties:
+                  deleted: { type: integer }
+                type: object
+        '400':
+          description: 'eventIds is missing, empty or not a list of ids'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not a coordinator of this ministry, an event another ministry or nobody owns, a self-service login, or V2 is not enabled'
+        '404':
+          description: 'No such ministry or event'
+        '409':
+          description: 'Another ministry has volunteers on one of the events (`ministries` names them), or core refused one (the reason and `eventId`); nothing is deleted'
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/events/staff':
+    post:
+      tags:
+        - Volunteer
+      summary: "Staff new events on the ministry's schedules that already follow them (D33)"
+      description: "The Staff them answer after a series was created. The events must be this ministry's and one series (one title, type and class). Every active schedule of the ministry that is not a Staff this event schedule and follows them - class mode on their class, ministry mode with exactly their title, or event_type mode with their type and exactly their title, titles ignoring case - takes them: its window is widened to cover them (the first date moved back, a set last date moved on, an open end left open), it is generated through the last event but never past the scheduling horizon, and its saved default volunteers are assigned on the occurrences that run created. An empty list means no schedule follows them: nothing was made. Matching is by class and title because core events carry no series id."
+      operationId: staffVolunteerMinistryEvents
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - eventIds
+              properties:
+                eventIds:
+                  type: array
+                  items: { type: integer }
+              type: object
+      responses:
+        '200':
+          description: 'The schedules that took the events, each with its run'
+          content:
+            application/json:
+              schema:
+                properties:
+                  schedules: { type: array, items: { properties: { schedule: { type: object }, widened: { description: 'Its first or last date moved to cover the events', type: boolean }, created: { type: integer }, existing: { type: integer }, from: { type: string, format: date }, through: { type: string, format: date }, assigned: { type: integer }, skipped: { type: integer }, unqualified: { type: integer } }, type: object } }
+                type: object
+        '400':
+          description: 'eventIds is missing, empty or not a list of ids, the events are not one series, or a run would exceed the occurrence cap'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not a coordinator of this ministry (team leaders and self-service logins included), an event the ministry does not own, or V2 is not enabled'
+        '404':
+          description: 'No such ministry or event'
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/positions/{positionId}/eligible':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Who may fill a position on a schedule that is about to be created'
+      description: "The schedule dialog's Default volunteer picker (D32), which may run before the schedule exists: the same rotation-ordered list as /schedules/{id}/eligible, for the position's own team."
+      operationId: listVolunteerPositionEligiblePeople
+      parameters:
+        -
+          name: positionId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: q
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  people: { type: array, items: { type: object } }
+                type: object
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this position, or V2 is not enabled'
+        '404':
+          description: 'No such position'
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/teams/{teamId}/class-events':
+    get:
+      tags:
+        - Volunteer
+      summary: "The events this team's ministry owns for the team's class (D28)"
+      description: "What the team dialog asks about before the class changes or the team is deleted: how many events whose event_ministry_id is the team's ministry have the team's current class as Linked Group, how many of them are today or later, and which other ministries staff them. Events an administrator created are not counted. All zero for a team with no class."
+      operationId: getVolunteerTeamClassEvents
+      parameters:
+        -
+          name: teamId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  teamId: { type: integer }
+                  ministryId: { type: integer }
+                  ministryName: { type: string }
+                  classGroupId: { type: integer, nullable: true }
+                  classGroupName: { type: string, nullable: true }
+                  total: { type: integer }
+                  upcoming: { type: integer }
+                  otherStaffing: { type: array, items: { properties: { ministryId: { type: integer }, ministryName: { type: string }, assigned: { type: integer }, eventCount: { type: integer } }, type: object } }
+                type: object
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this team, or V2 is not enabled'
+        '404':
+          description: 'No such team'
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/schedules':
+    get:
+      tags:
+        - Volunteer
+      summary: "List a ministry's volunteer schedules"
+      operationId: listVolunteerSchedules
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: teamId
+          in: query
+          description: 'Only schedules owned by this team'
+          required: false
+          schema:
+            type: integer
+        -
+          name: active
+          in: query
+          description: 'Only active schedules'
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  schedules: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: 'Create a volunteer schedule: which calendar events a team staffs'
+      description: 'Every occurrence is anchored to a calendar event (D20); the link mode says how the events are found (D22). A schedule follows events that already exist (D31): it is refused unless at least one upcoming active event matches. A new schedule generates its occurrences at once, up to the scheduling horizon, and assigns the default volunteers its staffing needs carry on them (D33, D32); `generated` is that run, shaped as POST /ministries/schedules/{scheduleId}/generate answers, and null for a schedule saved inactive, which makes none. A single event is staffed through POST /ministries/ministries/{ministryId}/staffed-events instead. The removed fields (recurType, recurDow, recurDom, startTime, endTime, generateAheadDays) are refused with 400.'
+      operationId: createVolunteerSchedule
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - name
+                - linkMode
+                - teamId
+                - windowStart
+              properties:
+                name:
+                  type: string
+                linkMode:
+                  description: 'event_type: events of a type with exactly the title titleFilter. class: events whose Linked Group is groupId. ministry: events this ministry owns with exactly the title titleFilter.'
+                  type: string
+                  enum: [event_type, class, ministry]
+                teamId:
+                  description: "Required: a schedule always belongs to one of the ministry's teams. A team leader may only name a team they lead (design section 4.6)."
+                  type: integer
+                eventTypeId:
+                  description: 'Required when linkMode is event_type'
+                  type: integer
+                  nullable: true
+                titleFilter:
+                  description: "Required in the event_type and ministry modes: the events' exact title, compared ignoring case (D31)"
+                  type: string
+                  nullable: true
+                groupId:
+                  description: 'Required when linkMode is class: an existing group'
+                  type: integer
+                  nullable: true
+                startOffsetMinutes:
+                  description: "Added to the event's start to give the volunteers' start; within +/-720. Default 0."
+                  type: integer
+                  example: -45
+                endOffsetMinutes:
+                  description: "Added to the event's end to give the volunteers' end; within +/-720. Default 0."
+                  type: integer
+                  example: 15
+                windowStart:
+                  type: string
+                  format: date
+                windowEnd:
+                  type: string
+                  format: date
+                  nullable: true
+                requirements:
+                  description: "The schedule's whole staffing plan, set in one request. Omit the field to leave the plan alone; send an empty array to clear it. Positions not listed are removed. The schedule row and its plan are written in one transaction."
+                  type: array
+                  items: { required: [positionId, minCount], properties: { positionId: { type: integer }, minCount: { type: integer, example: 1 }, maxCount: { type: integer, example: 1, nullable: true }, notes: { type: string, nullable: true }, defaults: { description: "D32/D35: the position's default volunteers in the order they are assigned. Absent keeps the stored ones, an empty list clears them. At most the position's Max (its Min when Max is blank), never more than 50, each person once; a new one must hold an active qualification, a stored one named again is kept even when it no longer does. The removed defaultPersonId and defaultAccepted fields are refused (400).", type: array, items: { required: [personId], properties: { personId: { type: integer }, accepted: { description: 'Recorded as accepted instead of being asked to respond. Left out: the stored flag, false for a new default', type: boolean } }, type: object } } }, type: object }
+                  nullable: true
+              type: object
+      responses:
+        '400':
+          description: 'A design section 2.8 invariant was violated: a missing or unknown event type or group, a missing title, no upcoming event that matches (D31), an offset outside +/-720, an eventId, or a removed field; or a staffing need with more default volunteers than its Max, or one person twice'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized: you neither administer this ministry nor lead the team named by teamId (design section 4.6), a new default volunteer is not qualified, or V2 is not enabled'
+        '404':
+          description: 'No such ministry, or a default volunteer names an unknown person'
+        '201':
+          description: 'Created, with its occurrences generated'
+          content:
+            application/json:
+              schema:
+                properties:
+                  schedule: { type: object }
+                  generated: { description: 'The run Save made (D33): created, existing, from, through, assigned, skipped, unqualified, noEvents, searched; null when saved inactive', type: object, nullable: true }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/teams/{teamId}/schedules':
+    get:
+      tags:
+        - Volunteer
+      summary: "List one team's volunteer schedules"
+      description: "The team-keyed twin of the ministry list, gated per team so a team leader can see their own schedules without being authorized for the ministry above them (design section 4.4). Added for the Member Portal's My Teams page (#9868)."
+      operationId: listVolunteerTeamSchedules
+      parameters:
+        -
+          name: teamId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: active
+          in: query
+          description: 'Only active schedules'
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this team, or V2 is not enabled'
+        '404':
+          description: 'No such team'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  schedules: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/schedules/{scheduleId}':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Read one volunteer schedule'
+      operationId: getVolunteerSchedule
+      parameters:
+        -
+          name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this schedule, or V2 is not enabled'
+        '404':
+          description: 'No such schedule'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: 'Update a volunteer schedule'
+      operationId: updateVolunteerSchedule
+      parameters:
+        -
+          name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: 'Any subset of the create payload; omitted fields keep their stored value, and the columns the link mode does not use are cleared. A `requirements` array replaces the whole staffing plan — positions not listed are removed, an empty array clears it, and an absent field leaves it untouched. A Staff this event schedule keeps its link mode and its event. Changing what the schedule follows (mode, type, title, class) needs an upcoming event that matches (D31); other edits never do, but a type or ministry schedule with no title must be given one.'
+              type: object
+      responses:
+        '400':
+          description: 'A design section 2.8 invariant was violated, or the new events it would follow have no upcoming date (D31)'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this schedule, or V2 is not enabled'
+        '404':
+          description: 'No such schedule'
+        '200':
+          description: Updated
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Delete a volunteer schedule and its generated occurrences'
+      operationId: deleteVolunteerSchedule
+      parameters:
+        -
+          name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this schedule, or V2 is not enabled'
+        '404':
+          description: 'No such schedule'
+        '409':
+          description: 'Occurrences of this schedule still carry assignments'
+        '200':
+          description: Deleted
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/staffed-events':
+    post:
+      tags:
+        - Volunteer
+      summary: 'Staff this event: one calendar event, one team, one occurrence'
+      description: 'Creates a hidden schedule in the event link mode (never listed on the Schedules tab, deleted together with its occurrence) carrying the team, the staffing needs and the optional offsets, and the one occurrence anchored to the event, in one transaction (D22). Any upcoming active event may be staffed: anchoring is a read-only reference. Same gate as creating a schedule.'
+      operationId: createVolunteerStaffedEvent
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - eventId
+                - teamId
+              properties:
+                eventId:
+                  type: integer
+                teamId:
+                  type: integer
+                name:
+                  description: "Defaults to the event's title"
+                  type: string
+                  nullable: true
+                startOffsetMinutes:
+                  description: 'Within +/-720; default 0'
+                  type: integer
+                  nullable: true
+                endOffsetMinutes:
+                  description: 'Within +/-720; default 0'
+                  type: integer
+                  nullable: true
+                requirements:
+                  type: array
+                  items: { properties: { positionId: { type: integer }, minCount: { type: integer }, maxCount: { type: integer, nullable: true } }, type: object }
+              type: object
+      responses:
+        '400':
+          description: 'Unknown, inactive or past event, a team of another ministry, an offset outside +/-720, or a staffing row naming an unknown position'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not a coordinator of the ministry nor a leader of the team, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '409':
+          description: 'This team is already staffing this event'
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                properties:
+                  occurrence: { type: object }
+                  schedule: { type: object }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/schedules/{scheduleId}/eligible':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Who may fill a position on the occurrences this schedule is about to generate'
+      description: "The Generate Occurrences dialog's 'Fill by default with' picker. The same list as /occurrences/{id}/eligible - actively qualified people, least recently served first, inPool reported rather than filtered on - minus the double-duty annotation, since no occurrence exists yet."
+      operationId: listVolunteerScheduleEligiblePeople
+      parameters:
+        -
+          name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: positionId
+          in: query
+          required: true
+          schema:
+            type: integer
+        -
+          name: q
+          in: query
+          description: 'Case-insensitive name filter'
+          required: false
+          schema:
+            type: string
+      responses:
+        '400':
+          description: 'positionId is missing, unknown, or belongs to another team'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this schedule, or V2 is not enabled'
+        '404':
+          description: 'No such schedule'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  people: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/schedules/{scheduleId}/generate':
+    post:
+      tags:
+        - Volunteer
+      summary: "Materialise this schedule's occurrences up to a date"
+      description: "Idempotent. Attaches one occurrence to each active event the schedule follows (by type, class, ministry or the one event) inside the window, from today up to the scheduling horizon (D31; a Staff this event schedule is not capped by it). No calendar event is ever created or changed. `requirements[].defaults` (D32, D35) is saved on the schedule's staffing needs first — per position, the whole list in the order they are assigned, an empty list clearing it, a position left out keeping its own; the counts are not changed — and then every saved default is assigned, in that order, on the occurrences THIS run creates (never on ones an earlier run made), while its person holds an active qualification; with accepted=true they are recorded as having accepted and are not asked to respond. Without `requirements` the saved ones are assigned unchanged. The old `defaults` key is refused (400)."
+      operationId: generateVolunteerOccurrences
+      parameters:
+        -
+          name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                through:
+                  description: "Defaults to, and may not go past, today plus the scheduling horizon (iVolunteerSchedulingHorizonWeeks); the schedule's last date caps it too"
+                  type: string
+                  format: date
+                  nullable: true
+                requirements:
+                  type: array
+                  items: { required: [positionId], properties: { positionId: { description: "A position this schedule's staffing needs ask for", type: integer }, defaults: { description: "The position's default volunteers in the order they are assigned; at most its Max (its Min when Max is blank), and never more than 50", type: array, items: { required: [personId], properties: { personId: { type: integer }, accepted: { description: 'Left out: the stored flag, false for a new default', type: boolean } }, type: object } } }, type: object }
+              type: object
+      responses:
+        '400':
+          description: "Malformed date, the run would exceed the occurrence cap, the old defaults key, a position this schedule's staffing needs do not ask for, a person named twice, or more defaults than the position's Max"
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this schedule, a new default is not qualified, or V2 is not enabled'
+        '404':
+          description: 'No such schedule, or a default names an unknown person'
+        '409':
+          description: 'The schedule is inactive: reactivate it first'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  created: { type: integer }
+                  existing: { type: integer }
+                  from: { description: 'First date looked at: the later of today and the window start; after through when the window has ended or not started', type: string, format: date }
+                  through: { type: string, format: date }
+                  assigned: { description: 'Default assignments written', type: integer }
+                  skipped: { description: 'Default assignments the assignment rules refused on one occurrence (over, cancelled, no room)', type: integer }
+                  unqualified: { description: 'Default assignments left open because the default no longer holds an active qualification (D32)', type: integer }
+                  noEvents: { description: 'No event at all was found between from and through (D30)', type: boolean }
+                  searched: { description: 'What the schedule looks for, with names (D30)', properties: { linkMode: { type: string, enum: [event_type, class, ministry, event] }, groupId: { type: integer, nullable: true }, groupName: { type: string, nullable: true }, eventTypeId: { type: integer, nullable: true }, eventTypeName: { type: string, nullable: true }, titleFilter: { type: string, nullable: true }, ministryId: { type: integer }, ministryName: { type: string, nullable: true }, eventId: { type: integer, nullable: true }, eventTitle: { type: string, nullable: true } }, type: object }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/schedules/{scheduleId}/requirements':
+    get:
+      tags:
+        - Volunteer
+      summary: "List a schedule's template staffing requirements"
+      operationId: listVolunteerScheduleRequirements
+      parameters:
+        -
+          name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this schedule, or V2 is not enabled'
+        '404':
+          description: 'No such schedule'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  requirements: { type: array, items: { properties: { positionId: { type: integer }, minCount: { type: integer }, maxCount: { type: integer, nullable: true }, defaults: { description: 'D32/D35: the default volunteers, in the order they are assigned', type: array, items: { properties: { personId: { type: integer }, name: { type: string }, accepted: { type: boolean }, setBy: { description: 'Who chose the default; the daily top-up assigns in their name', type: integer, nullable: true }, setByName: { type: string, nullable: true }, qualified: { description: 'False while the qualification is revoked: generation then leaves the slot open', type: boolean } }, type: object } } }, type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: 'Create or update a template staffing requirement on a schedule'
+      description: 'Upsert on the (schedule, position) unique key: re-posting the same position updates the counts on the existing row.'
+      operationId: upsertVolunteerScheduleRequirement
+      parameters:
+        -
+          name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - positionId
+                - minCount
+              properties:
+                positionId:
+                  type: integer
+                minCount:
+                  type: integer
+                  example: 1
+                maxCount:
+                  type: integer
+                  example: 1
+                  nullable: true
+                notes:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '400':
+          description: 'Unknown position, counts out of range, or a Max below the number of default volunteers the need already has (D35)'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this schedule, or V2 is not enabled'
+        '404':
+          description: 'No such schedule'
+        '200':
+          description: 'The requirement already existed and was updated'
+        '201':
+          description: Created
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/occurrences/{occurrenceId}/requirements':
+    get:
+      tags:
+        - Volunteer
+      summary: "This occurrence's effective staffing needs, and the positions it could need"
+      description: "Everything the staffing-needs editor has to draw: the EFFECTIVE requirements from VolunteerScheduleService::getEffectiveRequirements() (each carrying `source`, so the caller can see which are the schedule's and which are this occurrence's own), plus the active positions of the owning team, so a position that has no requirement row can still be offered as an unchecked line. Served under the occurrence's own scope check, so a team leader can edit one week without reaching past their own team."
+      operationId: listVolunteerOccurrenceRequirements
+      parameters:
+        -
+          name: occurrenceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this occurrence, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: 'Override a staffing requirement for one occurrence'
+      description: "'This week we need four, not two.' The override wins over the schedule's template for that position only."
+      operationId: upsertVolunteerOccurrenceRequirement
+      parameters:
+        -
+          name: occurrenceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - positionId
+                - minCount
+              properties:
+                positionId:
+                  type: integer
+                minCount:
+                  type: integer
+                maxCount:
+                  type: integer
+                  nullable: true
+                notes:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '400':
+          description: 'Unknown position, or counts out of range'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this occurrence, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence'
+        '200':
+          description: 'The override already existed and was updated'
+        '201':
+          description: Created
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Volunteer
+      summary: "Drop this occurrence's overrides so it follows the schedule again"
+      description: "The 'use the schedule's needs' reset. Nothing was ever copied from the schedule at generation time — the merge is derived on every read (section 2.10) — so removing the override rows is the whole of the reset, and the occurrence immediately reflects the schedule's current plan, including requirements added long after it was generated."
+      operationId: clearVolunteerOccurrenceRequirements
+      parameters:
+        -
+          name: occurrenceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this occurrence, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/occurrences/{occurrenceId}/requirements/replace':
+    post:
+      tags:
+        - Volunteer
+      summary: "Set this occurrence's whole staffing plan, overriding the schedule's"
+      description: "Writes occurrence-level override rows that match the payload exactly: positions not listed lose their override. An empty array means 'this occurrence needs nobody' and is a real, storable answer — it is NOT the same as having no overrides, which means 'follow the schedule'. Use DELETE on the same path for that."
+      operationId: replaceVolunteerOccurrenceRequirements
+      parameters:
+        -
+          name: occurrenceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - requirements
+              properties:
+                requirements:
+                  type: array
+                  items: { required: [positionId, minCount], properties: { positionId: { type: integer }, minCount: { type: integer }, maxCount: { type: integer, nullable: true }, notes: { type: string, nullable: true } }, type: object }
+              type: object
+      responses:
+        '400':
+          description: 'Unknown position, a duplicate position, or counts out of range'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this occurrence, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/requirements/{requirementId}':
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Remove a staffing requirement'
+      operationId: deleteVolunteerRequirement
+      parameters:
+        -
+          name: requirementId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: "Not authorized for this requirement's schedule, or V2 is not enabled"
+        '404':
+          description: 'No such requirement'
+        '200':
+          description: Deleted
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/occurrences:
+    get:
+      tags:
+        - Volunteer
+      summary: 'List occurrences inside a date window, scoped to the caller'
+      description: '`from` and `to` are mandatory (design M9: no pagination protocol is invented for one module) and the result set is hard-capped.'
+      operationId: listVolunteerOccurrences
+      parameters:
+        -
+          name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        -
+          name: to
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        -
+          name: ministryId
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: teamId
+          in: query
+          description: 'Only the occurrences whose schedule belongs to this team.'
+          required: false
+          schema:
+            type: integer
+        -
+          name: text
+          in: query
+          description: "Case-insensitive substring of the occurrence's schedule name or of its anchored event's title. The narrowing happens in the query; % and _ are escaped so they are matched literally rather than as LIKE wildcards."
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        -
+          name: hasGaps
+          in: query
+          description: 'Return only occurrences that are short of at least one required volunteer (#9709). The filter is applied AFTER the counts are derived, because a gap is derived and there is nothing in the occurrence table to filter on.'
+          required: false
+          schema:
+            type: boolean
+        -
+          name: scheduleId
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - scheduled
+              - cancelled
+      responses:
+        '400':
+          description: 'Missing, malformed or inverted window'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Volunteer coordinator access is required, or V2 is not enabled'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  occurrences: { type: array, items: { properties: { requiredCount: { description: 'The summed minimums', type: integer }, requirementCount: { description: 'How many positions can take someone; 0 = no staffing needs set', type: integer }, liveCount: { type: integer }, gapCount: { description: 'The summed shortfall below each minimum', type: integer }, openCount: { description: 'The summed room left below each maximum', type: integer }, capacity: { description: 'D34: the summed maximums; a NULL MaxCount counts as its MinCount', type: integer }, pendingCount: { type: integer } }, type: object } }
+                  limit: { type: integer }
+                  capped: { type: boolean }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/occurrences/{occurrenceId}':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Read one occurrence with its effective times and effective requirements'
+      description: "The reported start and end are the anchored calendar event's, moved by the schedule's offsets (null once the event was deleted); the requirements are the occurrence's own overrides merged over the schedule's templates."
+      operationId: getVolunteerOccurrence
+      parameters:
+        -
+          name: occurrenceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this occurrence, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  occurrence: { type: object }
+                  requirements: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Delete one occurrence and everything under it'
+      description: "The Occurrences tab's Delete for dates that should not have been generated. Requirement overrides, assignments and their responses, swaps and queued notifications go with it. Scoped like every occurrence route: a coordinator of the ministry or a leader of the schedule's team. A deleted occurrence can be regenerated from its event; cancel it instead to keep the row. Deleting the only occurrence of a Staff this event schedule deletes that hidden schedule too."
+      operationId: deleteVolunteerOccurrence
+      parameters:
+        -
+          name: occurrenceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not in scope, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence'
+        '200':
+          description: Deleted
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/occurrences/{occurrenceId}/status':
+    post:
+      tags:
+        - Volunteer
+      summary: 'Cancel or restore one occurrence without touching its schedule'
+      description: 'Cancelling is not deleting: the row survives so a later generation run does not recreate it.'
+      operationId: setVolunteerOccurrenceStatus
+      parameters:
+        -
+          name: occurrenceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  enum: [scheduled, cancelled]
+              type: object
+      responses:
+        '400':
+          description: 'Unknown status'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this occurrence, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence'
+        '200':
+          description: Updated
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/event-series:
+    get:
+      tags:
+        - Volunteer
+      summary: 'The event titles a schedule may be narrowed to'
+      description: 'The distinct titles of the active events of one event type (event_type mode) or owned by one ministry (ministry mode) from a date (default today) onward, with the next date and how many there are. The schedule dialog offers these so a schedule follows ONE series rather than every event of a type.'
+      operationId: listVolunteerEventSeries
+      parameters:
+        -
+          name: eventTypeId
+          in: query
+          description: 'One of eventTypeId and ministryId is required'
+          required: false
+          schema:
+            type: integer
+        -
+          name: ministryId
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '400':
+          description: 'Neither eventTypeId nor ministryId given'
+        '401':
+          description: 'Not authenticated'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  series: { type: array, items: { properties: { title: { type: string }, nextStart: { type: string }, count: { type: integer } }, type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/event-types:
+    get:
+      tags:
+        - Volunteer
+      summary: 'The active calendar event types a schedule may follow'
+      description: "Served on the ministries surface because a portal team leader (a self-service login) cannot reach /api/events/types. defaultEventTypeId is the type a ministry's new event starts with (D31): the one Admin → Ministry Settings names, else the type named Other, else null."
+      operationId: listVolunteerEventTypes
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'No ministry or team to manage, or V2 is not enabled'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  eventTypes: { type: array, items: { properties: { id: { type: integer }, name: { type: string } }, type: object } }
+                  defaultEventTypeId: { type: integer, nullable: true }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/classes:
+    get:
+      tags:
+        - Volunteer
+      summary: 'The groups a class schedule may follow'
+      description: "Every active Sunday School class (group type 4), and any other group that has an upcoming active event linked to it, alphabetically, with how many upcoming events are linked and the next one's start."
+      operationId: listVolunteerClasses
+      parameters:
+        -
+          name: from
+          in: query
+          description: 'Counts events from this date; default today'
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  classes: { type: array, items: { properties: { groupId: { type: integer }, name: { type: string }, sundaySchool: { type: boolean }, upcomingCount: { type: integer }, nextStart: { type: string, nullable: true } }, type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/upcoming-events:
+    get:
+      tags:
+        - Volunteer
+      summary: 'Search upcoming calendar events to staff'
+      description: "The Staff an event dialog's picker: active events from `from` (default today) up to `to`, whose title contains `q` (case-insensitive, % and _ literal), soonest first, at most 50. With `teamId`, each row says whether that team already has an occurrence anchored to the event."
+      operationId: listVolunteerUpcomingEvents
+      parameters:
+        -
+          name: q
+          in: query
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        -
+          name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        -
+          name: to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        -
+          name: teamId
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: 'A malformed date, or to before from'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'teamId names a team the caller does not manage, or V2 is not enabled'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  events: { type: array, items: { properties: { id: { type: integer }, title: { type: string }, start: { type: string }, end: { type: string }, eventTypeId: { type: integer }, eventTypeName: { type: string, nullable: true }, staffedByTeam: { type: boolean } }, type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/dashboard:
+    get:
+      tags:
+        - Volunteer
+      summary: 'Everything the coordinator dashboard needs, in one call'
+      description: 'The S1 aggregate (design section 5.2): upcoming occurrences, the gaps that need filling, assignments still awaiting a reply, proposed substitutions, and the number of notifications that failed terminally. Scoped to the caller in the query (section 4.4) — a global manager sees every ministry, a coordinator their ministries, a team leader their teams. The scope block additionally names the ministries and teams the caller may navigate to, which is what gives a team-scope-only user an entry point.'
+      operationId: getVolunteerDashboard
+      parameters:
+        -
+          name: days
+          in: query
+          description: 'Window length in days, 1-365, default 28'
+          required: false
+          schema:
+            type: integer
+            maximum: 365
+            minimum: 1
+      responses:
+        '400':
+          description: 'The days parameter is not a number in the supported range'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not a volunteer coordinator, or V2 is not enabled'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  days: { type: integer }
+                  from: { type: string, format: date }
+                  to: { type: string, format: date }
+                  upcoming: { type: array, items: { type: object } }
+                  gaps: { type: array, items: { type: object } }
+                  pendingResponses: { type: array, items: { type: object } }
+                  proposedSwaps: { type: array, items: { type: object } }
+                  failedNotifications: { type: integer }
+                  scope: { type: object }
+                  capped: { type: boolean }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/me/assignments:
+    get:
+      tags:
+        - Volunteer
+      summary: 'My own volunteer commitments'
+      description: 'The acting person comes from the session (AuthenticationManager::getCurrentUser()->getId(), which IS the person id). There is deliberately NO personId parameter - a personId in the query string is ignored, which is what makes substitution structurally impossible (design section 3.3.3). Upcoming only by default; includePast=1 adds what has already happened.'
+      operationId: listMyVolunteerAssignments
+      parameters:
+        -
+          name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        -
+          name: to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        -
+          name: includePast
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'V2 is not enabled'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/me/assignments/{assignmentId}/respond':
+    post:
+      tags:
+        - Volunteer
+      summary: 'Accept or decline my own assignment'
+      description: 'Idempotent (design section 2.12): responding with the status the assignment already has returns 200 with no second response row, so a double tap on a phone is harmless. A decline reopens the gap and enqueues a decline_alert for the coordinators (section 3.6) - which a coordinator-recorded decline on the other surface deliberately does not. Answering for someone else is 403, never 404.'
+      operationId: respondToMyVolunteerAssignment
+      parameters:
+        -
+          name: assignmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - response
+              properties:
+                response:
+                  type: string
+                  enum: [accepted, declined]
+                comment:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '400':
+          description: 'Not a valid response'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not my assignment, or V2 is not enabled'
+        '404':
+          description: 'No such assignment'
+        '409':
+          description: 'This assignment can no longer be answered'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/me/assignments/{assignmentId}/propose-substitute':
+    post:
+      tags:
+        - Volunteer
+      summary: 'Propose a substitute who has already agreed'
+      description: 'The core of D13/UC2. personId here is the SUBSTITUTE, never the actor - the actor is the session. Eligibility is re-checked server-side whatever the UI offered: the substitute must hold an active qualification for the position (I2 applies to the replacement too) and must not already hold that position on that occurrence (I1). At most one proposal may be pending per assignment; a second is 409. The original assignment is not changed - only a substitute_proposed response row is appended.'
+      operationId: proposeMyVolunteerSubstitute
+      parameters:
+        -
+          name: assignmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - personId
+              properties:
+                personId:
+                  description: 'The substitute'
+                  type: integer
+                comment:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '400':
+          description: 'Proposing yourself'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not my assignment, the substitute is not qualified or already holds the position, or V2 is not enabled'
+        '404':
+          description: 'No such assignment or person'
+        '409':
+          description: 'A substitute is already proposed, or the assignment is no longer active'
+        '201':
+          description: Proposed
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/me/swaps/{swapId}/withdraw':
+    post:
+      tags:
+        - Volunteer
+      summary: 'Withdraw my own pending substitution request'
+      description: "Proposer only (design section 2.13) - a coordinator approves or rejects, never withdraws on someone's behalf, so even a coordinator gets 403 here. Appends a substitute_withdrawn response row and changes nothing else: the original assignment stays exactly as it was. 409 unless the request is still proposed."
+      operationId: withdrawMyVolunteerSwap
+      parameters:
+        -
+          name: swapId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                comment:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not the proposer, or V2 is not enabled'
+        '404':
+          description: 'No such substitution request'
+        '409':
+          description: 'Already decided'
+        '200':
+          description: Withdrawn
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/me/opportunities:
+    get:
+      tags:
+        - Volunteer
+      summary: 'Open slots I am qualified for and could sign up to right now'
+      description: "Server-side eligibility, never the client's idea of it: the list is filtered to positions the SESSION person holds an active qualification for, on occurrences that are scheduled, not over, with capacity left. Pool membership is NOT tested - design D19 makes qualification the whole eligibility rule on this surface, and POST /me/signup applies exactly the same rule. Every row it returns is a row POST /me/signup would accept. There is no personId parameter (design section 3.3.3); one in the query string is ignored. Defaults to the next 90 days."
+      operationId: listMyVolunteerOpportunities
+      parameters:
+        -
+          name: from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        -
+          name: to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '400':
+          description: 'The window ends before it starts'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'V2 is not enabled'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/me/signup:
+    post:
+      tags:
+        - Volunteer
+      summary: 'Put myself on an open slot'
+      description: 'Creates an assignment for the SESSION person with status accepted and source self_signup - a volunteer who volunteered has already answered. Qualification AND capacity are re-validated server-side at signup time whatever the list offered: 403 when unqualified (I2), 409 when the requirement is already at MaxCount, when the occurrence is cancelled or past (I5), or when the person already holds that position (I1). A personId in the body names nobody: the actor is the session.'
+      operationId: signUpForMyVolunteerOpportunity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - occurrenceId
+                - positionId
+              properties:
+                occurrenceId:
+                  type: integer
+                positionId:
+                  type: integer
+              type: object
+      responses:
+        '400':
+          description: 'Missing or mismatched ids'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not qualified, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence or position'
+        '409':
+          description: 'Already full, already mine, cancelled or past'
+        '201':
+          description: 'Signed up'
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/me/qualifications:
+    get:
+      tags:
+        - Volunteer
+      summary: 'What I am qualified to do'
+      description: 'Read-only, and read-only on purpose: volunteers cannot grant themselves anything, so there is no write counterpart on this surface. Scoped to the SESSION person - a personId in the query string is ignored (design section 3.3.3).'
+      operationId: listMyVolunteerQualifications
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'V2 is not enabled'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/me/assignments/{assignmentId}/substitutes':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Who I may offer as my substitute'
+      description: "The picker behind section 5.6's Find a sub. Deliberately narrower than the coordinator's /eligible: it excludes the caller and anyone already holding this position on this occurrence - the exact two cases propose-substitute refuses - so the picker can never offer a name the server will then reject. 403, never 404, for someone else's assignment."
+      operationId: listMyVolunteerSubstituteCandidates
+      parameters:
+        -
+          name: assignmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: q
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not my assignment, or V2 is not enabled'
+        '404':
+          description: 'No such assignment'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/me/help-wanted:
+    get:
+      tags:
+        - Volunteer
+      summary: 'Ministries that are asking for help'
+      description: "Every ACTIVE ministry that is advertising, alphabetically. A ministry advertises in either of two ways (design D19 as amended in round four): its own Help wanted switch is on, or it has at least one ACTIVE position with Recruit Volunteers on - either is enough. helpWantedText is the coordinator's own prose and may be empty; recruitingPositions names the positions being recruited for, ordered by team name and then by the position's own order, and is an empty array when there are none. Not filtered by qualification or by pool membership - the whole point of the section is to reach people the ministry does not know yet. inPool says whether the caller is already one of its volunteers, so the page can word the button's result correctly."
+      operationId: listMyVolunteerHelpWanted
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'V2 is not enabled'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ministries: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/me/help-wanted/{ministryId}':
+    post:
+      tags:
+        - Volunteer
+      summary: 'Tell a ministry you would like to help'
+      description: "The acting person comes from the session; there is deliberately NO personId parameter (design section 3.3.3), so nobody can volunteer somebody else. Adds the caller to the ministry's volunteer pool Group if they are not already in it, then enqueues one help_offer message per coordinator per day - a second tap the same day sends nothing. Answers 403 only when the ministry is advertising in NEITHER way - no Help wanted switch and no active recruiting position - so a pool cannot be joined by guessing an id, while every ministry the help-wanted listing returns accepts the offer its rendered button makes."
+      operationId: offerToHelpVolunteerMinistry
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'That ministry is not asking for help in either way, or V2 is not enabled'
+        '404':
+          description: 'No such ministry, or it has no pool group'
+        '200':
+          description: 'Thank you'
+          content:
+            application/json:
+              schema:
+                properties:
+                  joinedPool: { description: 'true when this tap is what put them in the pool', type: boolean }
+                  notified: { type: integer }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/occurrences/{occurrenceId}/staffing':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Requirements, live/gap counts and assignment rows for one occurrence'
+      description: 'The workhorse coordinator read (design section 5.5). Requirements come from VolunteerScheduleService::getEffectiveRequirements(); the counts come from VolunteerAssignmentService::getGaps(), the single gap implementation. Assignments for a position that has no requirement are returned under otherAssignments rather than being hidden.'
+      operationId: getVolunteerOccurrenceStaffing
+      parameters:
+        -
+          name: occurrenceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this occurrence, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/occurrences/{occurrenceId}/eligible':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Who may be assigned to a position on this occurrence'
+      description: 'Actively qualified people, ordered by last served date ascending with never-served first - the rotation (design section 2.17). inPool reports pool membership rather than filtering on it, because an out-of-pool qualified person is assignable with the allowOutsidePool override. conflictPositionId names another position the person already holds on this occurrence (I7/D16) and is an annotation, never a filter.'
+      operationId: listVolunteerEligiblePeople
+      parameters:
+        -
+          name: occurrenceId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: positionId
+          in: query
+          required: true
+          schema:
+            type: integer
+        -
+          name: q
+          in: query
+          description: 'Case-insensitive name filter'
+          required: false
+          schema:
+            type: string
+      responses:
+        '400':
+          description: "positionId is missing or names a position outside this occurrence's ministry"
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this occurrence, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/occurrences/{occurrenceId}/assignments':
+    post:
+      tags:
+        - Volunteer
+      summary: 'Assign a qualified person to a position on this occurrence'
+      description: "Enforces design section 2.11.2: I4 the position belongs to this schedule's ministry (400), I5 the occurrence is neither cancelled nor past (409), I2 an active qualification (403), I3 membership of the ministry's volunteer pool Group unless allowOutsidePool is passed (409) - NOT applied to self sign-up, which tests qualification only (design D19), I1 one row per person per position per occurrence (409). I8 re-uses a declined or cancelled row rather than inserting a second one. I7/D16 - a person already holding ANOTHER position on this occurrence - is allowed unconditionally and returns 201."
+      operationId: createVolunteerAssignment
+      parameters:
+        -
+          name: occurrenceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - positionId
+                - personId
+              properties:
+                positionId:
+                  type: integer
+                personId:
+                  type: integer
+                requirementId:
+                  type: integer
+                  nullable: true
+                allowOutsidePool:
+                  type: boolean
+                notes:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '400':
+          description: "The position does not belong to this occurrence's schedule"
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not qualified, or not authorized, or V2 is not enabled'
+        '404':
+          description: 'No such occurrence, position or person'
+        '409':
+          description: 'Already assigned, outside the pool without the override, or the occurrence is cancelled or past'
+        '201':
+          description: Assigned
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/assignments/{assignmentId}':
+    get:
+      tags:
+        - Volunteer
+      summary: 'One assignment with its full response history'
+      description: 'The history is returned because it is the only way to prove the idempotency rule of design section 2.12 from outside - accepting twice must leave exactly one response row (section 6.6). Swap rows are included for the same reason.'
+      operationId: getVolunteerAssignment
+      parameters:
+        -
+          name: assignmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this assignment, or V2 is not enabled'
+        '404':
+          description: 'No such assignment'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Cancel an assignment (hard-deletes only a pending row with no history)'
+      description: 'Design section 3.3.2: cancel, never hard-delete once responded. A pending row that carries no response, no swap and is not itself a substitution is a mis-click with nothing to preserve and is removed outright along with its pending outbox rows; everything else is cancelled and kept, because the audit trail is what issue 9709 promises.'
+      operationId: deleteVolunteerAssignment
+      parameters:
+        -
+          name: assignmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this assignment, or V2 is not enabled'
+        '404':
+          description: 'No such assignment'
+        '409':
+          description: 'The occurrence has already happened'
+        '200':
+          description: 'Cancelled or deleted'
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/assignments/{assignmentId}/status':
+    post:
+      tags:
+        - Volunteer
+      summary: "Change an assignment's status, or record a response on the volunteer's behalf"
+      description: "accepted and declined write a response row with channel 'coordinator' and the COORDINATOR as vrsp_per_ID, so the audit trail shows who actually recorded it (design section 2.11.1). A coordinator-recorded decline deliberately enqueues no decline_alert - the coordinators already know (section 3.6). cancelled is a coordinator act. An illegal transition is a 409 whose body carries currentStatus."
+      operationId: setVolunteerAssignmentStatus
+      parameters:
+        -
+          name: assignmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - status
+              properties:
+                status:
+                  type: string
+                  enum: [accepted, declined, cancelled]
+                comment:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '400':
+          description: 'Not a status a coordinator may set directly'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this assignment, or V2 is not enabled'
+        '404':
+          description: 'No such assignment'
+        '409':
+          description: 'Illegal transition; the body carries currentStatus'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/assignments/{assignmentId}/notify':
+    post:
+      tags:
+        - Volunteer
+      summary: 'Re-enqueue the assignment message for this volunteer'
+      description: "Idempotent through the dedupe key (design section 2.14): the row assign() already created is returned with created=false and nothing is duplicated. ?force=1 re-arms that SAME row to pending so the next drain sends it again - it never inserts a second one. Nothing is sent here; delivery is issue 9710's."
+      operationId: notifyVolunteerAssignment
+      parameters:
+        -
+          name: assignmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: force
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this assignment, or V2 is not enabled'
+        '404':
+          description: 'No such assignment'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/assignments/{assignmentId}/notifications':
+    get:
+      tags:
+        - Volunteer
+      summary: 'The notification outbox rows for one assignment'
+      description: "Design section 6.6: the only way to prove from outside that a retried operation produced no second message. Newest first. Coordinator surface - the volunteer's own view of what they were sent is not this endpoint."
+      operationId: listVolunteerAssignmentNotifications
+      parameters:
+        -
+          name: assignmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this assignment, or V2 is not enabled'
+        '404':
+          description: 'No such assignment'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/gaps:
+    get:
+      tags:
+        - Volunteer
+      summary: "Unfilled staffing requirements across the caller's scope"
+      description: 'from and to are required, matching GET /ministries/occurrences. Every count comes from VolunteerAssignmentService::getGaps() - there is no gap table (design section 2.11.3).'
+      operationId: listVolunteerGaps
+      parameters:
+        -
+          name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        -
+          name: to
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        -
+          name: ministryId
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: 'from or to missing or malformed'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not a coordinator, or V2 is not enabled'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/swaps:
+    get:
+      tags:
+        - Volunteer
+      summary: "The substitution queue for the caller's scope"
+      operationId: listVolunteerSwaps
+      parameters:
+        -
+          name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - proposed
+              - approved
+              - rejected
+              - withdrawn
+        -
+          name: ministryId
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: occurrenceId
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not a coordinator, or V2 is not enabled'
+        '200':
+          description: OK
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/swaps/{swapId}/approve':
+    post:
+      tags:
+        - Volunteer
+      summary: 'Approve a proposed substitution'
+      description: "ONE transaction (design section 2.13): the original goes accepted to substituted, a new row is inserted for the substitute with source='substitute', status='accepted' and vasg_Replaces_vasg_ID pointing at the original, a response row is appended to both, and both parties get a swap_resolved outbox row. The original is never edited beyond its status, so the audit trail survives."
+      operationId: approveVolunteerSwap
+      parameters:
+        -
+          name: swapId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                comment:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized, the substitute is no longer qualified, or V2 is not enabled'
+        '404':
+          description: 'No such substitution request'
+        '409':
+          description: 'Already decided, the occurrence is cancelled or past, or the substitute already holds the position'
+        '200':
+          description: Approved
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/swaps/{swapId}/reject':
+    post:
+      tags:
+        - Volunteer
+      summary: 'Reject a proposed substitution'
+      description: 'The original assignment stays accepted and both parties are told (design section 2.13). The coordinator may then cancel it and assign someone else, which is the ordinary gap loop.'
+      operationId: rejectVolunteerSwap
+      parameters:
+        -
+          name: swapId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                comment:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized, or V2 is not enabled'
+        '404':
+          description: 'No such substitution request'
+        '409':
+          description: 'Already decided'
+        '200':
+          description: Rejected
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/scopes:
+    get:
+      tags:
+        - Volunteer
+      summary: 'List volunteer coordinator and team-leader scope grants'
+      operationId: listVolunteerScopes
+      parameters:
+        -
+          name: personId
+          in: query
+          description: 'Only grants held by this person'
+          required: false
+          schema:
+            type: integer
+        -
+          name: ministryId
+          in: query
+          description: 'Only ministry-scope grants on this ministry'
+          required: false
+          schema:
+            type: integer
+        -
+          name: teamId
+          in: query
+          description: 'Only team-scope grants on this team'
+          required: false
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Ministry management access is required, or V2 is not enabled'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  scopes: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: 'Grant ministry-coordinator or team-leader authority to a person'
+      operationId: createVolunteerScope
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - personId
+                - scopeType
+                - scopeId
+              properties:
+                personId:
+                  type: integer
+                scopeType:
+                  type: string
+                  enum: [ministry, team]
+                scopeId:
+                  description: 'Ministry id or team id'
+                  type: integer
+              type: object
+      responses:
+        '400':
+          description: 'Missing or invalid field'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Ministry management access is required, or V2 is not enabled'
+        '404':
+          description: 'The person or the scope target does not exist'
+        '200':
+          description: "The grant already existed; the same row is returned. joinedPool says whether this call added the person to the ministry's volunteer pool (a grant always makes them a pool member; revoking never removes them)"
+        '201':
+          description: "Granted, and the person is in the ministry's volunteer pool"
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/scopes/{scopeId}':
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Revoke a volunteer coordinator or team-leader scope grant'
+      operationId: deleteVolunteerScope
+      parameters:
+        -
+          name: scopeId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Ministry management access is required, or V2 is not enabled'
+        '404':
+          description: 'No such grant'
+        '200':
+          description: Revoked
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/me/permissions:
+    get:
+      tags:
+        - Volunteer
+      summary: 'What volunteer structure may the authenticated person manage?'
+      operationId: getMyVolunteerPermissions
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Volunteer Management V2 is not enabled'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  isAdmin: { type: boolean }
+                  isGlobalManager: { type: boolean }
+                  isCoordinator: { type: boolean }
+                  isTeamLeader: { type: boolean }
+                  managedMinistryIds: { type: array, items: { type: integer } }
+                  managedTeamIds: { type: array, items: { type: integer } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/ministries:
+    get:
+      tags:
+        - Volunteer
+      summary: 'List the volunteer ministries the caller may administer'
+      operationId: listVolunteerMinistries
+      parameters:
+        -
+          name: active
+          in: query
+          description: 'Only active (1) or only inactive (0) ministries; omit for both'
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Volunteer coordinator access is required, or V2 is not enabled'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ministries: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: 'Create a volunteer ministry'
+      description: 'Global volunteer managers and administrators only (design §4.6).'
+      operationId: createVolunteerMinistry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                description:
+                  type: string
+                  maxLength: 255
+                sundaySchool:
+                  description: 'D29: the ministry may provide teachers for Sunday School (link teams to classes, schedule class meetings, give its events a class)'
+                  type: boolean
+                  default: false
+              type: object
+      responses:
+        '400':
+          description: 'The name is missing or empty, or sundaySchool is not a boolean'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Ministry management access is required, or V2 is not enabled'
+        '409':
+          description: 'A ministry with that name already exists'
+        '201':
+          description: Created
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}':
+    get:
+      tags:
+        - Volunteer
+      summary: 'One ministry with its teams and positions'
+      operationId: getVolunteerMinistry
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ministry: { type: object }
+                  summary: { description: "The three numbers the overview strip shows, computed with the caller's scope", properties: { teamCount: { type: integer }, volunteerCount: { description: "Members of the ministry's pool Group", type: integer }, unfilledPositionCount: { description: 'Open slots across every future scheduled occurrence the caller may see', type: integer } }, type: object }
+                  teams: { type: array, items: { type: object } }
+                  positions: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: "Update a ministry's name, description or active flag"
+      operationId: updateVolunteerMinistry
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                description:
+                  type: string
+                  maxLength: 255
+                active:
+                  type: boolean
+                helpWanted:
+                  description: 'Advertise this ministry on the Open Opportunities page (design D19)'
+                  type: boolean
+                helpWantedText:
+                  description: 'What the ministry wants to say there; rendered escaped with line breaks preserved'
+                  type: string
+                sundaySchool:
+                  description: 'D29: the ministry may provide teachers for Sunday School. Only a global volunteer manager or an administrator may change it; a coordinator may send the current value'
+                  type: boolean
+              type: object
+      responses:
+        '400':
+          description: 'The name was sent empty, or sundaySchool is not a boolean'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, a coordinator changing sundaySchool, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '409':
+          description: 'A ministry with that name already exists, or sundaySchool was turned off while teams of the ministry are linked to a class (the message and `teams` name them)'
+        '200':
+          description: Updated
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Delete a deactivated ministry and everything under it'
+      description: "Global volunteer managers and administrators only, and only for a ministry whose active flag is off - an active ministry is refused with 409 (deactivate it first, through POST with active:false). The delete then removes the ministry's teams, positions, qualifications, schedules, occurrences and assignments, service history included, together with its scope grants, pool Group and calendar (design §4.6, §5.4 as amended 2026-09-17)."
+      operationId: deleteVolunteerMinistry
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Ministry management access is required, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '409':
+          description: 'The ministry is still active'
+        '200':
+          description: Deleted
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/summary':
+    get:
+      tags:
+        - Volunteer
+      summary: 'The three counts the ministry overview shows'
+      description: "teamCount, volunteerCount (members of the ministry's pool Group) and unfilledPositionCount - the sum of the open slots (required minus live, per effective requirement) across every future, scheduled occurrence the CALLER may see. A ministry coordinator, a global manager and an administrator are counted over the whole ministry; a team leader only over the occurrences whose schedule belongs to a team they lead, unioned across every such team. The same block is embedded in GET /ministries/{ministryId}, which is what the ministry page reads; this route exists for a caller who may see only part of the ministry and is therefore refused that one."
+      operationId: getVolunteerMinistrySummary
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Neither a coordinator of this ministry nor a leader of a team in it, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ministryId: { type: integer }
+                  summary: { properties: { teamCount: { type: integer }, volunteerCount: { type: integer }, unfilledPositionCount: { type: integer }, occurrenceCount: { description: 'All-time, unscoped - for the Delete confirmation', type: integer }, assignmentCount: { description: 'All-time, unscoped - for the Delete confirmation', type: integer } }, type: object }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/teams':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Teams inside a ministry'
+      operationId: listVolunteerTeams
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: active
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  teams: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: 'Create a team inside a ministry'
+      operationId: createVolunteerTeam
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                description:
+                  type: string
+                  maxLength: 255
+                classGroupId:
+                  description: "D23: link the team to this Sunday School class (group type 4); its Teacher role is then written from the team's qualifications"
+                  type: integer
+                  nullable: true
+                importPositionId:
+                  description: "D23: the position of this team the class's current teachers are qualified for when it is linked"
+                  type: integer
+                  nullable: true
+                importPositionName:
+                  description: 'D23: instead of importPositionId, create a position of this name in the team and qualify the teachers for it'
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '400':
+          description: 'The name is missing or empty; the ministry does not provide teachers for Sunday School (D29); the class is not a Sunday School class or has no Teacher role; or the class has teachers and no position to import them into was given'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '409':
+          description: 'A team with that name already exists in this ministry, or the class is linked to another team'
+        '201':
+          description: Created
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/linkable-classes':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Sunday School classes a team of this ministry may be linked to (D23)'
+      description: 'Every group of type 4 not linked to another team, with how many living members hold its Teacher role - the qualifications linking it would import. With teamId, the class that team is linked to is included. Empty, with sundaySchool false, for a ministry that does not provide teachers for Sunday School (D29).'
+      operationId: listVolunteerLinkableClasses
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: teamId
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  classes: { type: array, items: { properties: { id: { type: integer }, name: { type: string }, teacherCount: { type: integer } }, type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/teams/{teamId}':
+    get:
+      tags:
+        - Volunteer
+      summary: 'One team with the positions scoped to it'
+      operationId: getVolunteerTeam
+      parameters:
+        -
+          name: teamId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this team, or V2 is not enabled'
+        '404':
+          description: 'No such team'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  team: { type: object }
+                  positions: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: "Update a team's name, description or active flag"
+      operationId: updateVolunteerTeam
+      parameters:
+        -
+          name: teamId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+                description:
+                  type: string
+                  maxLength: 255
+                active:
+                  type: boolean
+                classGroupId:
+                  description: "D23: link to this Sunday School class, or null to unlink (the class's membership is left as it is). Absent = unchanged"
+                  type: integer
+                  nullable: true
+                importPositionId:
+                  description: 'D23: when linking a class that has teachers, the position of this team they are qualified for'
+                  type: integer
+                  nullable: true
+                importPositionName:
+                  description: 'D23: instead of importPositionId, create a position of this name in the team and qualify the teachers for it'
+                  type: string
+                  nullable: true
+                classEvents:
+                  description: 'D28: when classGroupId changes, what happens to the events this ministry owns whose Linked Group is the old class - kept, the class removed from them, or moved to the new class (move needs a new class). GET /ministries/teams/{teamId}/class-events counts them'
+                  type: string
+                  default: keep
+                  enum: [keep, remove, move]
+              type: object
+      responses:
+        '400':
+          description: 'The name was sent empty; the ministry does not provide teachers for Sunday School (D29); the class is not a Sunday School class or has no Teacher role; the class has teachers and no position of this team to import them into was given; or classEvents is unknown, or move without a new class'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: "Not authorized for this team (a team leader may not edit it) or for one of the class's events, or V2 is not enabled"
+        '404':
+          description: 'No such team'
+        '409':
+          description: 'A team with that name already exists in this ministry, or the class is linked to another team'
+        '200':
+          description: Updated
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Delete a team and everything under it'
+      description: "Removes the team's positions with their qualifications and staffing requirements, its schedules and occurrences, every assignment on them (service history included) and its team-leader grants, in one transaction. Deactivate the team instead to keep its history. Returns 409 when this is the ministry's ONLY team - a ministry always has at least one, so the answer is to rename it. For a team linked to a class, classEvents (D28) says what happens to the events this ministry owns whose Linked Group is that class: kept, the class removed from them, or deleted through core's event delete in the same transaction."
+      operationId: deleteVolunteerTeam
+      parameters:
+        -
+          name: teamId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                classEvents:
+                  type: string
+                  default: keep
+                  enum: [keep, remove, delete]
+              type: object
+      responses:
+        '400':
+          description: 'classEvents is unknown'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: "Not authorized for this team or for one of the class's events, or V2 is not enabled"
+        '404':
+          description: 'No such team'
+        '409':
+          description: "This is the ministry's only team; or classEvents delete while another ministry has volunteers assigned on one of the events (unless the caller holds Add Events), or core refuses to delete one (people checked in, a kiosk) - nothing is deleted"
+        '200':
+          description: Deleted
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/positions':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Positions of a ministry'
+      description: 'A ministry coordinator sees every position; a team leader sees the positions of the teams they lead (design §4.4 - the narrowing happens in the query).'
+      operationId: listVolunteerPositions
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: teamId
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: active
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  positions: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/positions/{positionId}':
+    get:
+      tags:
+        - Volunteer
+      summary: 'One position'
+      operationId: getVolunteerPosition
+      parameters:
+        -
+          name: positionId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this position, or V2 is not enabled'
+        '404':
+          description: 'No such position'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  position: { type: object }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Delete a position and everything that references it'
+      description: "Removes the position's qualifications (revoked ones included), staffing requirements and assignments, service history included, in one transaction. Deactivate the position instead to keep its history (design §2.6). On a team linked to a Sunday School class, anybody left with no active qualification in the team leaves the class's Teacher role (D23)."
+      operationId: deleteVolunteerPosition
+      parameters:
+        -
+          name: positionId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this position, or V2 is not enabled'
+        '404':
+          description: 'No such position'
+        '200':
+          description: Deleted
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/pool':
+    get:
+      tags:
+        - Volunteer
+      summary: "The people in this ministry's volunteer pool"
+      description: "The membership of the ministry's own Group (group_grp.grp_ministry_id), read live from person2group2role_p2g2r - V2 stores no people (design D1, D19). Alphabetical."
+      operationId: listVolunteerPoolMembers
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  groupId: { type: integer, nullable: true }
+                  groupName: { type: string, nullable: true }
+                  members: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/pool/{personId}':
+    post:
+      tags:
+        - Volunteer
+      summary: "Put a person in this ministry's volunteer pool"
+      description: "Writes a person2group2role_p2g2r row on the ministry's own Group with the group's default role, firing the same GROUP_MEMBER_ADDED plugin hook the Groups module fires. A ministry coordinator may do this WITHOUT the global Manage Groups permission (design D19) - the Propel hooks allow it because the group carries this ministry's id. Idempotent: somebody already in the pool is 200, not 409."
+      operationId: addVolunteerPoolMember
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry, person, or pool group'
+        '200':
+          description: 'They were already in the pool'
+        '201':
+          description: Added
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Volunteer
+      summary: "Take a person out of this ministry's volunteer pool"
+      description: 'Deletes the membership row and fires GROUP_MEMBER_REMOVED. Their qualifications are NOT revoked (design D19): the two are independent, and a qualified non-member is still assignable.'
+      operationId: removeVolunteerPoolMember
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry, or that person is not in the pool'
+        '200':
+          description: Removed
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/pool/from-cart':
+    post:
+      tags:
+        - Volunteer
+      summary: "Put everyone in the session cart into this ministry's volunteer pool"
+      description: 'The V2 Cart sink for the pool (design P5/P6, D19): the route reads Cart::getCartPeople() and hands the ids to VolunteerMinistryService::addPoolMembers(), which writes one person2group2role_p2g2r row per person through the managed-write context so the GROUP_MEMBER_ADDED plugin hook fires exactly as it does for the single-person route. Idempotent per person: somebody already in the pool is counted in alreadyMembers rather than failing the batch, so pressing the button twice is safe. No qualification is granted - being in the pool is candidacy, the tick on the grid is eligibility (design section 2.5). The cart is NOT emptied. Takes no request body.'
+      operationId: addVolunteerPoolMembersFromCart
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '400':
+          description: 'The cart is empty'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry, or it has no pool group'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  added: { description: 'How many people were newly put in the pool', type: integer }
+                  alreadyMembers: { description: 'How many were in it already', type: integer }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/volunteers/{personId}':
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Take one person out of a ministry entirely'
+      description: "In one transaction: revokes every active qualification they hold for a position of this ministry (revocation is deactivation, design section 2.7), cancels every live assignment of theirs on a still-to-come occurrence of the ministry through the ordinary cancel path so the outbox rows are cancelled and the response trail is appended, removes them from the ministry's pool Group through the managed-write context, and clears every schedule default of this ministry that names them (D32; revoking one qualification keeps the default). Past assignments are service history and are left alone. Ministry-level authority: a team leader gets 403."
+      operationId: removeVolunteerFromMinistry
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry or person'
+        '200':
+          description: Removed
+          content:
+            application/json:
+              schema:
+                properties:
+                  personId: { type: integer }
+                  qualifications: { description: 'Qualifications revoked', type: integer }
+                  assignments: { description: 'Upcoming assignments cancelled', type: integer }
+                  removedFromPool: { type: boolean }
+                  defaults: { description: 'Schedule default volunteer entries cleared', type: integer }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/members':
+    get:
+      tags:
+        - Volunteer
+      summary: "The rows of this ministry's qualification matrix"
+      description: "Everyone in the ministry's pool Group UNION everyone actively qualified for one of the positions in view (design D19). Each row carries inPool and the position ids that person is qualified for, so the matrix renders from one response (section 5.4)."
+      operationId: listVolunteerMatrixMembers
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: teamId
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  members: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/teams/{teamId}/members':
+    get:
+      tags:
+        - Volunteer
+      summary: "The people in one team's volunteer pools"
+      description: "The team's own pools UNION the parent ministry's pools, because a ministry-wide pool feeds every team under it."
+      operationId: listVolunteerTeamMembers
+      parameters:
+        -
+          name: teamId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this team, or V2 is not enabled'
+        '404':
+          description: 'No such team'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  members: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/ministries/{ministryId}/qualification-matrix':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Everything the qualification matrix needs, in one response'
+      description: "Pool members UNION everyone qualified for a position in view down the side (design D19), active positions across the top, and each person's qualified position ids - section 5.4 requires the matrix to handle 15-200 people without re-fetching per cell. A row's inPool flag says which half it is there for."
+      operationId: getVolunteerQualificationMatrix
+      parameters:
+        -
+          name: ministryId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: teamId
+          in: query
+          description: 'Narrow both the columns and the pool people to one team'
+          required: false
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this ministry, or V2 is not enabled'
+        '404':
+          description: 'No such ministry'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ministryId: { type: integer }
+                  teamId: { type: integer, nullable: true }
+                  positions: { type: array, items: { type: object } }
+                  people: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/teams/{teamId}/qualification-matrix':
+    get:
+      tags:
+        - Volunteer
+      summary: "One team's qualification matrix, in one response"
+      description: "The team-scoped twin of the ministry route: the same document, narrowed to one team, gated per team rather than per ministry so a team leader can open their own grid (design section 4.4). Added for the Member Portal's My Teams page (#9868)."
+      operationId: getVolunteerTeamQualificationMatrix
+      parameters:
+        -
+          name: teamId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this team, or V2 is not enabled'
+        '404':
+          description: 'No such team'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  ministryId: { type: integer }
+                  teamId: { type: integer }
+                  positions: { type: array, items: { type: object } }
+                  people: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/positions/{positionId}/qualifications':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Who is qualified for a position'
+      description: 'Includes revoked rows by default: revocation is deactivation, so the grant history stays readable (design section 2.7). Pass active=1 for the eligibility list.'
+      operationId: listVolunteerQualifications
+      parameters:
+        -
+          name: positionId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: active
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this position, or V2 is not enabled'
+        '404':
+          description: 'No such position'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  qualifications: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Volunteer
+      summary: 'Qualify a person for a position'
+      description: 'Idempotent by UNIQUE (vqal_per_ID, vqal_vpos_ID): 201 when the row is new, 200 when it already existed - a re-grant reactivates a revoked row rather than inserting a second. The person does NOT have to be in a linked pool: the pool is the candidate set, the qualification is the eligibility (design section 2.5).'
+      operationId: grantVolunteerQualification
+      parameters:
+        -
+          name: positionId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - personId
+              properties:
+                personId:
+                  type: integer
+                notes:
+                  type: string
+                  maxLength: 255
+              type: object
+      responses:
+        '400':
+          description: 'personId is missing or not an integer'
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this position, or V2 is not enabled'
+        '404':
+          description: 'No such position or person'
+        '409':
+          description: "The position's team is linked to a Sunday School class and the person is in that class under another role, a Student above all (D23). A grant on a linked team otherwise also gives the class's Teacher role"
+        '200':
+          description: 'The qualification already existed and is active'
+        '201':
+          description: Granted
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/qualifications/{qualificationId}':
+    delete:
+      tags:
+        - Volunteer
+      summary: 'Revoke a qualification by deactivating it'
+      description: "The row is KEPT with active=false (design section 2.7). Historical assignments stay valid because volunteer_assignment_vasg has no foreign key to a qualification - it references the person and the position directly. On a team linked to a Sunday School class, revoking the person's last active qualification in the team also ends their Teacher-role membership of the class (D23)."
+      operationId: revokeVolunteerQualification
+      parameters:
+        -
+          name: qualificationId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Not authorized for this qualification, or V2 is not enabled'
+        '404':
+          description: 'No such qualification'
+        '200':
+          description: 'Revoked; the row is returned with active=false'
+      security:
+        -
+          ApiKeyAuth: []
+  '/ministries/people/{personId}/qualifications':
+    get:
+      tags:
+        - Volunteer
+      summary: 'Everything one person is qualified for, scoped to the caller'
+      description: 'A global manager sees every ministry; a coordinator sees only their own, and the narrowing happens in the query (design section 4.4).'
+      operationId: listVolunteerQualificationsForPerson
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '401':
+          description: 'Not authenticated'
+        '403':
+          description: 'Volunteer coordinator access is required, or V2 is not enabled'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  qualifications: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /ministries/status:
+    get:
+      tags:
+        - Volunteer
+      summary: 'Report the Volunteer Management rollout state'
+      responses:
+        '403':
+          description: 'Volunteer Management V2 is not enabled'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  version: { type: string, enum: [v1, v2, both] }
+                  v1Enabled: { type: boolean }
+                  v2Enabled: { type: boolean }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /email/log:
+    get:
+      tags:
+        - Email
+      summary: 'Page through the email history'
+      description: 'Newest first. With personId or familyId the caller must be allowed to view that record; without either the caller must be an administrator (recent sends across everyone).'
+      parameters:
+        -
+          name: personId
+          in: query
+          schema:
+            type: integer
+        -
+          name: familyId
+          in: query
+          description: 'Rows for the family address and its current members'
+          schema:
+            type: integer
+        -
+          name: status
+          in: query
+          description: 'Only honoured on the unscoped (admin) list'
+          schema:
+            type: string
+            enum:
+              - sent
+              - failed
+              - skipped
+        -
+          name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        -
+          name: limit
+          in: query
+          schema:
+            type: integer
+            default: 25
+            maximum: 100
+      responses:
+        '200':
+          description: 'A page of history rows'
+          content:
+            application/json:
+              schema:
+                properties:
+                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the user who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { type: string, enum: [sent, failed, skipped] }, error: { type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
+                  total: { type: integer }
+                  page: { type: integer }
+                  limit: { type: integer }
+                  pages: { type: integer }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: "Not allowed to view this record's history"
+      security:
+        -
+          ApiKeyAuth: []
+  '/email/log/{id}':
+    get:
+      tags:
+        - Email
+      summary: 'One email history row with its stored body'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The row; body is null when the email class does not store bodies (account emails)'
+        '401':
+          description: Unauthorized
+        '403':
+          description: "Not allowed to view this record's history"
+        '404':
+          description: 'No such row'
+      security:
+        -
+          ApiKeyAuth: []
   /map/families:
     get:
       tags:
@@ -2514,6 +6161,427 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /portal/me/emails:
+    get:
+      tags:
+        - 'Member Portal'
+      summary: "A page of the signed-in member's own email history"
+      description: 'Newest first, in the same envelope GET /email/log answers with, but scoped to the acting member: only rows whose eml_per_ID is this person. There is no person id to pass. Rows never carry the body; GET /portal/me/emails/{id} does. Session only — API keys are refused.'
+      operationId: getPortalMyEmails
+      parameters:
+        -
+          name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        -
+          name: limit
+          in: query
+          schema:
+            type: integer
+            default: 25
+            maximum: 100
+      responses:
+        '200':
+          description: "A page of the member's history"
+          content:
+            application/json:
+              schema:
+                properties:
+                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { type: string, enum: [sent, failed, skipped] }, dateSent: { type: string }, hasBody: { type: boolean } }, type: object } }
+                  total: { type: integer }
+                  page: { type: integer }
+                  limit: { type: integer }
+                  pages: { type: integer }
+                type: object
+        '401':
+          description: 'No signed-in session'
+        '403':
+          description: 'API-key caller, or an account with no person record'
+  '/portal/me/emails/{id}':
+    get:
+      tags:
+        - 'Member Portal'
+      summary: "One email from the signed-in member's own history, with its body"
+      description: "The row is returned only when it was addressed to the acting member. Somebody else's row and an id that does not exist are the same 404, so a member cannot learn that an email exists by asking for it. The body is null for the email classes that never store one (account emails carrying a password or a one-time link)."
+      operationId: getPortalMyEmail
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The row, with its stored body'
+        '401':
+          description: 'No signed-in session'
+        '403':
+          description: 'API-key caller, or an account with no person record'
+        '404':
+          description: "No such email in this member's history"
+  /portal/calendar/subscription:
+    get:
+      tags:
+        - 'Member Portal'
+      summary: "The signed-in member's calendar subscription"
+      description: 'Returns the calendars the church shares with members, which of them this member has subscribed to, and the address their calendar app should use. `url` and `webcalUrl` are null until the member saves a selection for the first time — the token is minted then. Session only; API keys are refused.'
+      operationId: getPortalCalendarSubscription
+      responses:
+        '200':
+          description: "The member's subscription"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortalCalendarSubscription'
+        '403':
+          description: 'Not a signed-in member, or an API key was used'
+    put:
+      tags:
+        - 'Member Portal'
+      summary: "Choose which shared calendars the member's feed carries"
+      description: "Stores the member's selection and mints their feed token the first time. Every id must name a calendar the administrator currently shares with members; anything else is a 400, with the same message whether the calendar does not exist or is simply not shared. At least one calendar is required — a feed of nothing is not a useful thing to hand a calendar app."
+      operationId: putPortalCalendarSubscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                calendars:
+                  description: 'Calendar ids, as GET returns them'
+                  type: array
+                  items: { type: string, example: 'calendar:3' }
+              type: object
+      responses:
+        '200':
+          description: 'The saved subscription'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortalCalendarSubscription'
+        '400':
+          description: 'Empty selection, or a calendar that is not shared with members'
+        '403':
+          description: 'Not a signed-in member, an API key was used, or the CSRF token was missing'
+  /portal/calendar/subscription/reset:
+    post:
+      tags:
+        - 'Member Portal'
+      summary: 'Issue the member a new feed address'
+      description: "Rotates the member's feed token, keeping their calendar selection. The previous address stops answering immediately — this is what a member does when they have shared the old one by accident."
+      operationId: resetPortalCalendarSubscription
+      responses:
+        '200':
+          description: 'The subscription, at its new address'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortalCalendarSubscription'
+        '403':
+          description: 'Not a signed-in member, an API key was used, or the CSRF token was missing'
+  /portal/me:
+    get:
+      tags:
+        - 'Member Portal'
+      summary: "The signed-in member's own profile"
+      description: "Returns the acting member's person record as the Member Portal renders it. The member is taken from the session; there is no person id to pass. Session only — API keys are refused."
+      operationId: getPortalMe
+      responses:
+        '200':
+          description: "The member's profile"
+          content:
+            application/json:
+              schema:
+                properties:
+                  profile: { properties: { id: { type: integer, example: 100 }, firstName: { type: string, example: Lena }, lastName: { type: string, example: Black }, email: { type: string, example: lena@example.com }, cellPhone: { type: string, example: '(206) 555-0100' }, birthday: { description: 'ISO date, empty when unknown', type: string, example: '1971-12-24' }, photoUrl: { type: string }, canEditBirthday: { description: 'Mirrors bPortalAllowBirthdayEdit', type: boolean } }, type: object }
+                type: object
+        '401':
+          description: 'No signed-in session'
+        '403':
+          description: 'API-key caller, or an account with no person record'
+    post:
+      tags:
+        - 'Member Portal'
+      summary: "Update the signed-in member's own profile"
+      description: "Applies the allow-listed fields present in the body to the member's own person record and writes a timeline note naming what changed. Anything else in the body is ignored. Birthday is accepted only when bPortalAllowBirthdayEdit is on."
+      operationId: updatePortalMe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                firstName:
+                  type: string
+                middleName:
+                  type: string
+                lastName:
+                  type: string
+                title:
+                  type: string
+                suffix:
+                  type: string
+                email:
+                  type: string
+                workEmail:
+                  type: string
+                homePhone:
+                  type: string
+                cellPhone:
+                  type: string
+                workPhone:
+                  type: string
+                birthday:
+                  type: string
+                  example: '1971-12-24'
+              type: object
+      responses:
+        '200':
+          description: 'The saved profile'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  profile: { type: object }
+                  updated: { description: 'The fields that actually changed', type: array, items: { type: string } }
+                type: object
+        '400':
+          description: 'Validation error'
+        '403':
+          description: 'API-key caller, or an invalid CSRF token'
+  /portal/me/photo:
+    get:
+      tags:
+        - 'Member Portal'
+      summary: "The signed-in member's own photo (binary image)"
+      description: "Returns the member's uploaded photo bytes. The portal serves its own copy because AuthMiddleware confines a self-service session to /portal and /api/portal, so /api/person/{id}/photo — which the profile used to point at — answers those sessions with 403 and every avatar renders broken. The member is taken from the session; there is no person id to pass. Cached privately for two hours, the same window the person endpoint uses; the URLs the portal hands out carry a ?v=<mtime> cache-buster so a fresh upload is visible at once."
+      operationId: getPortalMyPhoto
+      responses:
+        '200':
+          description: 'The photo'
+          content:
+            'image/*':
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: 'No signed-in session'
+        '403':
+          description: 'API-key caller, or an account with no person record'
+        '404':
+          description: 'This member has not uploaded a photo'
+    post:
+      tags:
+        - 'Member Portal'
+      summary: "Replace the signed-in member's own photo"
+      description: "The /api/person/{id}/photo upload route is behind the EditRecords role, which a self-service login never has, so the portal has its own endpoint for the member's own photo. It calls the same model method and writes the same 'photo' timeline note."
+      operationId: updatePortalMyPhoto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - imgBase64
+              properties:
+                imgBase64:
+                  description: 'Base64-encoded image with its data URI prefix'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Photo stored'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  profile: { type: object }
+                type: object
+        '400':
+          description: 'Missing or unusable image data'
+        '413':
+          description: 'Image larger than the server allows'
+  /portal/family:
+    get:
+      tags:
+        - 'Member Portal'
+      summary: "The signed-in member's own family"
+      description: "Returns the acting member's family, its members, and whether this member is one of the adults who may change it. The family is the member's own; there is no family id to pass."
+      operationId: getPortalFamily
+      responses:
+        '200':
+          description: "The member's family"
+          content:
+            application/json:
+              schema:
+                properties:
+                  family: { type: object, nullable: true }
+                  members: { type: array, items: { type: object } }
+                  canEdit: { description: "True for the family's head or spouse", type: boolean }
+                type: object
+        '403':
+          description: 'API-key caller'
+    post:
+      tags:
+        - 'Member Portal'
+      summary: "Update the signed-in member's own family"
+      description: "Applies the allow-listed fields present in the body to the member's own family and writes a timeline note naming what changed. Only an adult of the family (head or spouse, per sDirRoleHead / sDirRoleSpouse) may call it; every other member gets 403."
+      operationId: updatePortalFamily
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                address1:
+                  type: string
+                address2:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                zip:
+                  type: string
+                country:
+                  type: string
+                homePhone:
+                  type: string
+                email:
+                  type: string
+                weddingDate:
+                  type: string
+                  example: '2004-06-12'
+              type: object
+      responses:
+        '200':
+          description: 'The saved family'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  family: { type: object }
+                  updated: { type: array, items: { type: string } }
+                type: object
+        '400':
+          description: 'Validation error'
+        '403':
+          description: 'Not an adult of this family, an API-key caller, or an invalid CSRF token'
+        '404':
+          description: 'The member has no family record'
+  /portal/family/confirm:
+    post:
+      tags:
+        - 'Member Portal'
+      summary: "Confirm the member's family details are current"
+      description: "Writes exactly the note the emailed verify link writes — type 'verify', entered by SELF_VERIFY, the text 'No Changes' or the member's comment — so a portal confirmation reaches the People → Verify dashboard the same way a token-link one does."
+      operationId: confirmPortalFamily
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - result
+              properties:
+                result:
+                  type: string
+                  enum: [no-change, change-needed]
+                comment:
+                  description: 'Required when result is change-needed'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Confirmation recorded'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '400':
+          description: 'No choice made, or a change requested with no comment'
+        '404':
+          description: 'The member has no family record'
+  '/portal/family/members/{personId}/photo':
+    get:
+      tags:
+        - 'Member Portal'
+      summary: "The photo of somebody in the signed-in member's own family (binary image)"
+      description: "The read side of the portal's own photo serving, for the faces on the My Family page. The id is checked against the members of the acting member's family — the same enumeration GET /portal/family renders — and anything else is 404, never 403: a 403 would confirm that the id names a real person, which a member outside that family must not learn (design P12). This is the only portal route that takes a person id, and it never names the actor."
+      operationId: getPortalFamilyMemberPhoto
+      parameters:
+        -
+          name: personId
+          in: path
+          description: "A person in the acting member's own family"
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The photo'
+          content:
+            'image/*':
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: 'No signed-in session'
+        '403':
+          description: 'API-key caller, or an account with no person record'
+        '404':
+          description: 'Not a member of this family, or that member has no photo'
+  /portal/family/members:
+    post:
+      tags:
+        - 'Member Portal'
+      summary: "Propose a new member of the signed-in member's family"
+      description: "Creates a person in the member's family marked SELF_REGISTER, exactly as the public registration form does, so the entry waits on People → Self Registrations for staff to review. It is never a live member. Only an adult of the family may call it."
+      operationId: addPortalFamilyMember
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - firstName
+                - lastName
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                role:
+                  description: 'A family-role option id; falls back to the configured child role'
+                  type: string
+                birthday:
+                  type: string
+                  example: '2015-03-08'
+              type: object
+      responses:
+        '200':
+          description: 'Pending entry created'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  personId: { type: integer, example: 1234 }
+                type: object
+        '400':
+          description: 'Validation error'
+        '403':
+          description: 'Not an adult of this family'
+        '404':
+          description: 'The member has no family record'
   /issues:
     post:
       tags:
@@ -3707,7 +7775,7 @@ paths:
     post:
       tags:
         - People
-      summary: 'Approve a self-registered, family-less person, clearing their needs-review flag'
+      summary: 'Approve a self-registered person who is not part of a self-registered family, clearing their needs-review flag'
       parameters:
         -
           name: personId
@@ -3725,7 +7793,7 @@ paths:
                   success: { type: boolean }
                 type: object
         '400':
-          description: 'Person belongs to a family — approve via the family instead'
+          description: 'Person belongs to a self-registered family (approve the family instead), or is not a pending self-registration'
       security:
         -
           ApiKeyAuth: []
@@ -4490,6 +8558,8 @@ paths:
           description: 'Updated group object'
         '403':
           description: 'ManageGroupRole role required'
+        '409':
+          description: "The group is a volunteer ministry's pool and is managed from that ministry (Volunteer v2, D19), or is a Sunday School class linked to a volunteer team and would stop being one (D23)"
       security:
         -
           ApiKeyAuth: []
@@ -4497,7 +8567,7 @@ paths:
       tags:
         - Groups
       summary: 'Delete a group (ManageGroupRole role required)'
-      description: 'Deletes a group. Members and custom properties are cascade-deleted. Returns 409 Conflict if the group is the audience for one or more events, or is referenced by an event type — reassign those first.'
+      description: "Deletes a group. Members and custom properties are cascade-deleted. Returns 409 Conflict if the group is the audience for one or more events, is referenced by an event type — reassign those first — or is a volunteer ministry's pool, which is deleted with the ministry."
       parameters:
         -
           name: groupID
@@ -4511,7 +8581,7 @@ paths:
         '403':
           description: 'ManageGroupRole role required'
         '409':
-          description: 'Group is the audience for active events or referenced by event types'
+          description: "Group is the audience for active events, referenced by event types, or is a volunteer ministry's pool (Volunteer v2, D19)"
       security:
         -
           ApiKeyAuth: []
@@ -4703,6 +8773,7 @@ paths:
                 properties:
                   emails: { description: 'All unique member email addresses (does not include sToEmailAddress)', type: array, items: { type: string } }
                   byRole: { description: 'Emails grouped by group role name', type: object, additionalProperties: { type: array, items: { type: string } } }
+                  recipients: { description: 'The same people with ids, for POST /api/email/send', type: array, items: { properties: { personId: { type: integer }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
                 type: object
         '401':
           description: Unauthorized
@@ -4728,6 +8799,18 @@ paths:
       responses:
         '200':
           description: 'Email contact info segmented by role (teachers/parents/kids)'
+          content:
+            application/json:
+              schema:
+                properties:
+                  emails: { description: 'All unique addresses', type: array, items: { type: string } }
+                  byRole: { description: 'Emails grouped by Teachers / Parents / Kids', type: object, additionalProperties: { type: array, items: { type: string } } }
+                  recipients: { description: 'The same people with ids, for POST /api/email/send', type: array, items: { properties: { personId: { type: integer }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
+                  all: { description: 'Legacy CSV of all addresses', type: string }
+                  teachers: { description: 'Legacy CSV', type: string }
+                  parents: { description: 'Legacy CSV', type: string }
+                  kids: { description: 'Legacy CSV', type: string }
+                type: object
         '401':
           description: Unauthorized
         '403':
@@ -4786,6 +8869,8 @@ paths:
           description: 'Person removed from group'
         '403':
           description: 'ManageGroupRole role required'
+        '409':
+          description: 'The person is a teacher of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)'
       security:
         -
           ApiKeyAuth: []
@@ -4822,6 +8907,8 @@ paths:
           description: 'Updated membership records for the person in the group'
         '403':
           description: 'ManageGroupRole role required'
+        '409':
+          description: 'The role is Teacher, or the person is a teacher, of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)'
       security:
         -
           ApiKeyAuth: []
@@ -4861,6 +8948,8 @@ paths:
           description: 'ManageGroupRole role required'
         '404':
           description: 'Group or membership not found'
+        '409':
+          description: 'The change is to or from Teacher in a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)'
       security:
         -
           ApiKeyAuth: []
@@ -4902,6 +8991,8 @@ paths:
           description: 'ManageGroupRole role required'
         '404':
           description: 'Group role not found'
+        '409':
+          description: 'Renaming the Teacher role of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)'
         '500':
           description: 'Failed to update role'
       security:
@@ -4926,9 +9017,15 @@ paths:
             type: integer
       responses:
         '200':
-          description: 'Role deleted successfully'
+          description: 'Role deleted; returns the remaining roles. Members who had it move to the default role (the first remaining role if it was the default)'
+        '400':
+          description: "The group's only role cannot be deleted"
         '403':
           description: 'ManageGroupRole role required'
+        '404':
+          description: 'Group or role not found'
+        '409':
+          description: 'Deleting the Teacher role of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)'
         '500':
           description: 'Failed to delete role'
       security:
@@ -5111,7 +9208,7 @@ paths:
       tags:
         - People
       summary: 'List recently self-registered persons still awaiting review'
-      description: 'Returns family-less persons who registered via the public self-registration form and are still awaiting review, newest first.'
+      description: 'Returns self-registered persons still awaiting review who are not part of a self-registered family, newest first: individuals from the public form, and people proposed for an existing family in the Member Portal (with FamilyName set).'
       operationId: getSelfRegisteredPersons
       responses:
         '200':
@@ -5131,7 +9228,7 @@ paths:
     get:
       tags:
         - People
-      summary: 'Count self-registered families and family-less people awaiting review'
+      summary: 'Count self-registered families and people reviewed on their own that await review'
       responses:
         '200':
           description: 'Pending count'
@@ -5148,8 +9245,8 @@ paths:
     post:
       tags:
         - People
-      summary: 'Approve several self-registered families and family-less people at once'
-      description: 'Clears the needs-review flag on the listed self-registered families (and their members) and family-less people. Ids that are not pending self-registrations are ignored.'
+      summary: 'Approve several self-registered families and people at once'
+      description: 'Clears the needs-review flag on the listed self-registered families (and their members) and people reviewed on their own (not part of a self-registered family). Ids that are not pending self-registrations are ignored.'
       requestBody:
         required: true
         content:
@@ -5295,6 +9392,7 @@ paths:
                 properties:
                   emails: { description: 'All unique member email addresses (does not include sToEmailAddress)', type: array, items: { type: string } }
                   byRole: { description: 'Emails grouped by classification role name', type: object, additionalProperties: { type: array, items: { type: string } } }
+                  recipients: { description: 'The same people with ids, for POST /api/email/send', type: array, items: { properties: { personId: { type: integer }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
                 type: object
         '401':
           description: Unauthorized
@@ -5426,6 +9524,7 @@ paths:
               schema:
                 properties:
                   emails: { description: 'Unique cart member email addresses (does not include sToEmailAddress, which the composer adds from the setting)', type: array, items: { type: string } }
+                  recipients: { description: 'The same people with ids, for POST /api/email/send', type: array, items: { properties: { personId: { type: integer }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
                 type: object
         '401':
           description: Unauthorized
@@ -7296,6 +11395,38 @@ paths:
         -
           ApiKeyAuth: []
 components:
+  schemas:
+    PortalCalendarSubscription:
+      properties:
+        title:
+          description: 'The name a calendar app shows for the feed'
+          type: string
+          example: 'Main St. Cathedral Calendar'
+        url:
+          type: string
+          example: 'https://church.example/api/public/portal-calendar/ab12…/calendar.ics'
+          nullable: true
+        webcalUrl:
+          type: string
+          example: 'webcal://church.example/api/public/portal-calendar/ab12…/calendar.ics'
+          nullable: true
+        choices:
+          type: array
+          items:
+            properties:
+              id:
+                type: string
+                example: 'calendar:3'
+              name:
+                type: string
+                example: 'Public Calendar'
+              color:
+                type: string
+                example: '#2c3e50'
+              selected:
+                type: boolean
+            type: object
+      type: object
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
@@ -7348,6 +11479,15 @@ tags:
   -
     name: Plugins
     description: 'Plugin management (Admin role required)'
+  -
+    name: Volunteer
+    description: 'Volunteer Management v2 (requires the sVolunteerVersion rollout state to include v2)'
+  -
+    name: Email
+    description: Email
+  -
+    name: 'Member Portal'
+    description: 'Member Portal'
   -
     name: Import
     description: Import

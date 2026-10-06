@@ -268,6 +268,32 @@ paths:
                   type: object
         '404':
           description: 'Invalid or expired access token'
+  '/public/portal-calendar/{token}/calendar.ics':
+    get:
+      tags:
+        - 'Member Portal'
+      summary: "A member's Member Portal calendar feed (iCalendar)"
+      description: 'Serves the events of the calendars a member subscribed to in the Member Portal, as an RFC 5545 VCALENDAR covering three months back to eighteen months ahead. No session: the token in the path is the credential, and it grants read access to those calendars and to nothing else. The feed is always narrowed to the calendars the administrator currently shares with members, so un-sharing a calendar removes it from every feed immediately. An unknown or retired token is a bare 404, indistinguishable from an account that has no feed.'
+      operationId: getPortalCalendarFeed
+      parameters:
+        -
+          name: token
+          in: path
+          description: "The member's feed token, 64 hex characters, from the Subscribe dialog on the portal calendar page"
+          required: true
+          schema:
+            type: string
+            example: 4f3c…
+      responses:
+        '200':
+          description: 'An iCalendar document'
+          content:
+            text/calendar:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: 'Unknown token, a token that has been reset, or an account with no feed'
   /public/echo:
     get:
       tags:
@@ -441,3 +467,6 @@ tags:
   -
     name: Lookups
     description: 'Country and state/province reference data'
+  -
+    name: 'Member Portal'
+    description: 'Member Portal'
