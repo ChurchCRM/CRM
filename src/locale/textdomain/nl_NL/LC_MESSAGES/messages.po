@@ -10405,10 +10405,6 @@ msgid "Months"
 msgstr "Maanden"
 
 #: 
-msgid "My Calendars"
-msgstr "Mijn agenda's"
-
-#: 
 msgid "New member notification emails"
 msgstr "E-mailmeldingen voor nieuwe leden"
 
@@ -12343,18 +12339,6 @@ msgstr "Selecteer een doelfamilie."
 #: 
 msgid "Target family not found"
 msgstr "Doelfamilie niet gevonden"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Familiegegevens verifiëren"
-
-#: 
-msgid "Welcome"
-msgstr "Welkom"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "U kunt uw familiegegevens controleren en verifiëren via de onderstaande link. Als u aanvullende toegang nodig heeft, neem dan contact op met uw kerkbeheerder."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15236,10 +15220,6 @@ msgstr "Aangepaste machtigingen"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Volledige toegang — verleent alle bevoegdheden."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Als u extra toegang nodig heeft, neem dan contact op met uw kerkbeheerder."
 
 #: 
 msgid "People &amp; Families"

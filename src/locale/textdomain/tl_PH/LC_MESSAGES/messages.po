@@ -10401,10 +10401,6 @@ msgid "Months"
 msgstr "Mga Buwan"
 
 #: 
-msgid "My Calendars"
-msgstr "Aking mga Kalendaryo"
-
-#: 
 msgid "New member notification emails"
 msgstr "Mga email ng abiso ng bagong miyembro"
 
@@ -12339,18 +12335,6 @@ msgstr "Mangyaring pumili ng target na pamilya."
 #: 
 msgid "Target family not found"
 msgstr "Hindi nahanap ang target na pamilya"
-
-#: 
-msgid "Verify Family Info"
-msgstr "I-verify ang Impormasyon ng Pamilya"
-
-#: 
-msgid "Welcome"
-msgstr "Maligayang pagdating"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Maaari ninyong suriin at i-verify ang inyong impormasyon ng pamilya gamit ang link sa ibaba. Kung kailangan ninyo ng karagdagang access, mangyaring makipag-ugnayan sa inyong administrador ng simbahan."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15232,10 +15216,6 @@ msgstr "Mga pasadyang pahintulot"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Buong access — ibinibigay ang lahat ng pribilehiyo."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Kung kailangan mo ng karagdagang access, makipag-ugnayan sa iyong administrador ng simbahan."
 
 #: 
 msgid "People &amp; Families"

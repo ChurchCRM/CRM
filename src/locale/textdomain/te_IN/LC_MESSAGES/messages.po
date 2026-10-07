@@ -10413,10 +10413,6 @@ msgid "Months"
 msgstr "నెలలు"
 
 #: 
-msgid "My Calendars"
-msgstr "నా క్యాలెండర్లు"
-
-#: 
 msgid "New member notification emails"
 msgstr "కొత్త సభ్యుల నోటిఫికేషన్ ఇమెయిల్‌లు"
 
@@ -12351,18 +12347,6 @@ msgstr "దయచేసి లక్ష్య కుటుంబాన్ని 
 #: 
 msgid "Target family not found"
 msgstr "లక్ష్య కుటుంబం కనుగొనబడలేదు"
-
-#: 
-msgid "Verify Family Info"
-msgstr "కుటుంబ సమాచారాన్ని ధృవీకరించండి"
-
-#: 
-msgid "Welcome"
-msgstr "స్వాగతం"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "మీరు క్రింది లింక్ ఉపయోగించి మీ కుటుంబ సమాచారాన్ని సమీక్షించి ధృవీకరించవచ్చు. మీకు అదనపు యాక్సెస్ అవసరమైతే, దయచేసి మీ చర్చి నిర్వాహకులను సంప్రదించండి."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15244,10 +15228,6 @@ msgstr "అనుకూల అనుమతులు"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "పూర్తి యాక్సెస్ — అన్ని హక్కులను మంజూరు చేస్తుంది."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "మీకు అదనపు యాక్సెస్ అవసరమైతే, దయచేసి మీ చర్చి నిర్వాహకుని సంప్రదించండి."
 
 #: 
 msgid "People &amp; Families"

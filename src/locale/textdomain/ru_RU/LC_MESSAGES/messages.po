@@ -10508,10 +10508,6 @@ msgid "Months"
 msgstr "Месяцы"
 
 #: 
-msgid "My Calendars"
-msgstr "Мои календари"
-
-#: 
 msgid "New member notification emails"
 msgstr "Уведомления по электронной почте о новых членах"
 
@@ -12448,18 +12444,6 @@ msgstr "Пожалуйста, выберите целевую семью."
 #: 
 msgid "Target family not found"
 msgstr "Целевая семья не найдена"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Проверить сведения о семье"
-
-#: 
-msgid "Welcome"
-msgstr "Добро пожаловать"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Вы можете ознакомиться со сведениями о вашей семье и проверить их по ссылке ниже. Если вам нужен дополнительный доступ, обратитесь к администратору вашего прихода."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15343,10 +15327,6 @@ msgstr "Настраиваемые разрешения"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Полный доступ — предоставляет все привилегии."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Если вам необходим дополнительный доступ, пожалуйста, обратитесь к администратору вашего прихода."
 
 #: 
 msgid "People &amp; Families"

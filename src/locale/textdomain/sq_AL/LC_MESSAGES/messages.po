@@ -10426,10 +10426,6 @@ msgid "Months"
 msgstr "Muajt"
 
 #: 
-msgid "My Calendars"
-msgstr "Kalendarët e Mi"
-
-#: 
 msgid "New member notification emails"
 msgstr "Email-et e njoftimit të anëtarit të ri të komunitetit të besimtarëve"
 
@@ -12364,18 +12360,6 @@ msgstr "Ju lutemi zgjidhni një familje cak."
 #: 
 msgid "Target family not found"
 msgstr "Familja cak nuk u gjet"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Verifiko Informacionin e Familjes"
-
-#: 
-msgid "Welcome"
-msgstr "Mirësevini"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Mund të shqyrtoni dhe verifikoni informacionin e familjes suaj duke përdorur lidhjen më poshtë. Nëse keni nevojë për akses shtesë, ju lutemi kontaktoni administratorin e kishës suaj."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15257,10 +15241,6 @@ msgstr "Leje të personalizuara"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Qasje e plotë — jep të gjitha privilegjet."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Nëse keni nevojë për qasje shtesë, ju lutemi kontaktoni administratorin e kishës suaj."
 
 #: 
 msgid "People &amp; Families"

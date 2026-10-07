@@ -10462,10 +10462,6 @@ msgid "Months"
 msgstr "Hónapok"
 
 #: 
-msgid "My Calendars"
-msgstr "Naptárjaim"
-
-#: 
 msgid "New member notification emails"
 msgstr "Új tag értesítési e-mailek"
 
@@ -12400,18 +12396,6 @@ msgstr "Kérjük, válasszon célcsaládot."
 #: 
 msgid "Target family not found"
 msgstr "A célcsalád nem található"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Családi adatok ellenőrzése"
-
-#: 
-msgid "Welcome"
-msgstr "Üdvözöljük"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Az alábbi hivatkozással áttekintheti és megerősítheti családi adatait. Ha további hozzáférésre van szüksége, kérjük, lépjen kapcsolatba az egyháza adminisztrátorával."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15293,10 +15277,6 @@ msgstr "Egyéni jogosultságok"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Teljes hozzáférés – minden jogosultságot megad."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Ha további hozzáférésre van szüksége, forduljon a gyülekezet rendszergazdájához."
 
 #: 
 msgid "People &amp; Families"

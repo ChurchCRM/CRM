@@ -10421,10 +10421,6 @@ msgid "Months"
 msgstr "Bulan-bulan"
 
 #: 
-msgid "My Calendars"
-msgstr "Kalender Saya"
-
-#: 
 msgid "New member notification emails"
 msgstr "Email pemberitahuan anggota baru"
 
@@ -12358,18 +12354,6 @@ msgstr "Silakan pilih keluarga target."
 #: 
 msgid "Target family not found"
 msgstr "Keluarga target tidak ditemukan"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Verifikasi Informasi Keluarga"
-
-#: 
-msgid "Welcome"
-msgstr "Selamat Datang"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Anda dapat meninjau dan memverifikasi informasi keluarga Anda menggunakan tautan di bawah ini. Jika Anda memerlukan akses tambahan, silakan hubungi administrator gereja Anda."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15250,10 +15234,6 @@ msgstr "Izin khusus"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Akses penuh — memberikan semua hak istimewa."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Jika Anda memerlukan akses tambahan, silakan hubungi administrator gereja Anda."
 
 #: 
 msgid "People &amp; Families"
