@@ -76,51 +76,51 @@
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} îi cere lui {{substitute}} să-i ia locul",
   "{{title}} on {{date}} created. Staff it now?": "{{title}} din {{date}} a fost creat. Asigurați-i personal acum?",
   "\"{{name}}\": {{count}} occurrences created": {
-    "one": "",
-    "other": ""
+    "one": "„{{name}}”: {{count}} ocurență creată",
+    "other": "„{{name}}”: {{count}} de ocurențe create"
   },
   "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Ștergeți {{count}} eveniment? Părăsește fiecare calendar, împreună cu prezențele și numărătorile de participanți, iar asigurarea cu personal a acestei slujiri păstrează doar data lui. Aceasta nu poate fi anulată.",
+    "other": "Ștergeți {{count}} de evenimente? Părăsesc fiecare calendar, împreună cu prezențele și numărătorile de participanți, iar asigurarea cu personal a acestei slujiri păstrează doar data lor. Aceasta nu poate fi anulată."
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "",
-    "other": ""
+    "one": "E-mail trimis către {{count}} destinatar.",
+    "other": "E-mail trimis către {{count}} de destinatari."
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "",
-    "other": ""
+    "one": "Nicio ocurență nouă. Singurul eveniment ({{count}}) până la {{through}} are deja una.",
+    "other": "Nicio ocurență nouă. Toate cele {{count}} de evenimente până la {{through}} au deja una."
   },
   "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "",
-    "other": ""
+    "one": "Programul „{{name}}” a fost creat: {{count}} ocurență",
+    "other": "Programul „{{name}}” a fost creat: {{count}} de ocurențe"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "",
-    "other": ""
+    "one": "Se trimite către {{count}} destinatar. Adresele fără fișă de persoană nu sunt incluse: {{list}}",
+    "other": "Se trimite către {{count}} de destinatari. Adresele fără fișă de persoană nu sunt incluse: {{list}}"
   },
   "{{count}} could not be assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} nu a putut fi repartizat",
+    "other": "{{count}} de persoane nu au putut fi repartizate"
   },
   "{{count}} left open because the default is no longer qualified": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} lăsat deschis deoarece implicitul nu mai este calificat",
+    "other": "{{count}} de posturi lăsate deschise deoarece implicitele nu mai sunt calificate"
   },
   "{{count}} volunteers assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} voluntar repartizat",
+    "other": "{{count}} de voluntari repartizați"
   },
   "{{count}} waiting for your answer": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} așteaptă răspunsul dumneavoastră",
+    "other": "{{count}} de persoane așteaptă răspunsul dumneavoastră"
   },
   "{{count}} {{title}} events created. Staff them now?": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} eveniment {{title}} creat. Asigurați-i personal acum?",
+    "other": "{{count}} de evenimente {{title}} create. Asigurați-le personal acum?"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "",
-    "other": ""
+    "one": "{{names}} va asigura personal pentru aceste evenimente. Ocurențele lor sunt create pe măsură ce intră în următoarea {{count}} săptămână.",
+    "other": "{{names}} va asigura personal pentru aceste evenimente. Ocurențele lor sunt create pe măsură ce intră în următoarele {{count}} de săptămâni."
   }
 }
