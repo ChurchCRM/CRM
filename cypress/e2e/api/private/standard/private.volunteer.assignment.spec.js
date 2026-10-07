@@ -1141,40 +1141,37 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
     });
 
     describe("Volunteer v2 — the Serve step: completed once the occurrence is over (§2.11.1)", () => {
-        let event = null;
+        let occurrence = null;
+
+        function setEventTime(start, end) {
+            api(ADMIN_KEY, "POST", `/api/events/${occurrence.eventId}/time`, { startTime: start, endTime: end });
+        }
+
+        function setOccurrenceStatus(status) {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/status`, { status });
+        }
 
         beforeEach(() => {
             resetWorkflow();
-            dbOk(
-                `SELECT e.event_id AS id, DATE_FORMAT(e.event_start, '%Y-%m-%d %H:%i:%s') AS start,
-                        DATE_FORMAT(e.event_end, '%Y-%m-%d %H:%i:%s') AS end
-                   FROM events_event e
-                   JOIN volunteer_occurrence_vocc o ON o.vocc_event_id = e.event_id
-                  WHERE o.vocc_ID = ?`,
-                [occurrenceOne],
-            ).then((rows) => {
-                event = rows[0];
+            api(
+                ADMIN_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
+            ).then((resp) => {
+                occurrence = resp.body.occurrences.find((row) => row.id === occurrenceOne);
             });
         });
 
         afterEach(() => {
-            if (event !== null) {
-                dbOk(`UPDATE events_event SET event_start = ?, event_end = ? WHERE event_id = ?`, [
-                    event.start,
-                    event.end,
-                    event.id,
-                ]);
+            if (occurrence !== null) {
+                setEventTime(`${occurrence.occurrenceDate} 10:30:00`, `${occurrence.occurrenceDate} 11:45:00`);
+                setOccurrenceStatus("scheduled");
             }
-            dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_Status = 'scheduled' WHERE vocc_ID = ?`, [occurrenceOne]);
         });
 
         /** Occurrence one's event (this spec's own series) moved to yesterday. */
         function endOccurrenceOne() {
-            dbOk(`UPDATE events_event SET event_start = ?, event_end = ? WHERE event_id = ?`, [
-                `${isoDate(-1)} 10:30:00`,
-                `${isoDate(-1)} 11:45:00`,
-                event.id,
-            ]);
+            setEventTime(`${isoDate(-1)} 10:30:00`, `${isoDate(-1)} 11:45:00`);
         }
 
         function runTimerJobs() {
@@ -1183,10 +1180,11 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
             });
         }
 
-        function statusOf(assignmentId) {
-            return dbOk(`SELECT vasg_Status FROM volunteer_assignment_vasg WHERE vasg_ID = ?`, [assignmentId]).then(
-                (rows) => rows[0].vasg_Status,
-            );
+        function statusOf(occurrenceId, assignmentId) {
+            return api(COORDINATOR_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceId}/staffing`).then((resp) => {
+                const rows = resp.body.requirements.flatMap((requirement) => requirement.assignments);
+                return rows.find((row) => row.id === assignmentId).status;
+            });
         }
 
         it("completes pending and accepted assignments in the timer jobs, and nothing else", () => {
@@ -1211,25 +1209,25 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
             });
 
             runTimerJobs();
-            cy.then(() => statusOf(ids.pending)).should("eq", "pending");
+            cy.then(() => statusOf(occurrenceOne, ids.pending)).should("eq", "pending");
 
             endOccurrenceOne();
             runTimerJobs();
-            cy.then(() => statusOf(ids.pending)).should("eq", "completed");
-            cy.then(() => statusOf(ids.accepted)).should("eq", "completed");
-            cy.then(() => statusOf(ids.declined)).should("eq", "declined");
-            cy.then(() => statusOf(ids.upcoming)).should("eq", "pending");
+            cy.then(() => statusOf(occurrenceOne, ids.pending)).should("eq", "completed");
+            cy.then(() => statusOf(occurrenceOne, ids.accepted)).should("eq", "completed");
+            cy.then(() => statusOf(occurrenceOne, ids.declined)).should("eq", "declined");
+            cy.then(() => statusOf(occurrenceTwo, ids.upcoming)).should("eq", "pending");
 
             runTimerJobs();
-            cy.then(() => statusOf(ids.pending)).should("eq", "completed");
+            cy.then(() => statusOf(occurrenceOne, ids.pending)).should("eq", "completed");
         });
 
         it("leaves the assignments of a cancelled occurrence alone", () => {
             assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
-                dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_Status = 'cancelled' WHERE vocc_ID = ?`, [occurrenceOne]);
+                setOccurrenceStatus("cancelled");
                 endOccurrenceOne();
                 runTimerJobs();
-                statusOf(resp.body.assignment.id).should("eq", "pending");
+                statusOf(occurrenceOne, resp.body.assignment.id).should("eq", "pending");
             });
         });
     });
