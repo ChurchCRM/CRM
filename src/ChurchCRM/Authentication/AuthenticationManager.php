@@ -11,7 +11,6 @@ use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
@@ -119,25 +118,6 @@ class AuthenticationManager
                 RedirectUtils::redirect(self::getSessionBeginURL());
             }
         }
-    }
-
-    /**
-     * Replace the current session's authentication provider with a local
-     * provider already established as `$user`, without authenticating them.
-     *
-     * This bypasses every credential check, so it is reserved for the admin
-     * masquerade flow: {@see \ChurchCRM\Service\ImpersonationService} performs
-     * the authorization checks and the auth-log bookkeeping, and is the only
-     * supported caller. None of the one-time login side effects run here — no
-     * session id rotation, no `usr_LastLogin` / `usr_LoginCount` update, no
-     * failed-login reset, no update check, no remote notification fetch and no
-     * plugin hooks.
-     */
-    public static function establishSessionAsUser(User $user): void
-    {
-        $authenticationProvider = new LocalAuthentication();
-        self::setAuthenticationProvider($authenticationProvider);
-        $authenticationProvider->establishSessionAsUser($user);
     }
 
     public static function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult
@@ -269,9 +249,7 @@ class AuthenticationManager
     {
         $user = self::getCurrentUser();
         $reason = $user->getSignInBlockedReason();
-        // A masquerading administrator (#9843) may view a deceased or inactive
-        // account; ending the session here would also discard the administrator.
-        if ($reason === null || ImpersonationService::isActive()) {
+        if ($reason === null) {
             return true;
         }
 

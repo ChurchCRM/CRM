@@ -21,7 +21,7 @@ use Psr\Http\Message\ResponseInterface;
  * "Change password" was dropped back into the admin console. The portal now
  * owns both pages at `/portal/profile/password` and `/portal/profile/two-factor`
  * (see `src/portal/routes/profile.php`), and they render the same way for a
- * member, for staff, for an administrator and during a masquerade.
+ * member, for staff and for an administrator.
  *
  * The old `/v2/user/current/*` URLs keep their behaviour exactly: they are what
  * `LocalAuthentication` hands back as `nextStepURL` for a forced password change
