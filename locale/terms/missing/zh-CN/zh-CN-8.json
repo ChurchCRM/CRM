@@ -76,51 +76,51 @@
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} 请 {{substitute}} 代替自己",
   "{{title}} on {{date}} created. Staff it now?": "{{date}} 的 {{title}} 已创建。现在为其安排人员吗？",
   "\"{{name}}\": {{count}} occurrences created": {
-    "one": "",
-    "other": ""
+    "one": "“{{name}}”：已创建 {{count}} 场活动",
+    "other": "“{{name}}”：已创建 {{count}} 场活动"
   },
   "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "删除 {{count}} 场活动？它们会从所有日历中移除，连同其签到和出席人数一并删除，此事工对它们的人员安排只保留日期。此操作无法撤销。",
+    "other": "删除 {{count}} 场活动？它们会从所有日历中移除，连同其签到和出席人数一并删除，此事工对它们的人员安排只保留日期。此操作无法撤销。"
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "",
-    "other": ""
+    "one": "电子邮件已发送给 {{count}} 位收件人。",
+    "other": "电子邮件已发送给 {{count}} 位收件人。"
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "",
-    "other": ""
+    "one": "没有新的活动场次。截至 {{through}} 的全部 {{count}} 场活动都已有活动场次。",
+    "other": "没有新的活动场次。截至 {{through}} 的全部 {{count}} 场活动都已有活动场次。"
   },
   "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "",
-    "other": ""
+    "one": "排班“{{name}}”已创建：{{count}} 场活动",
+    "other": "排班“{{name}}”已创建：{{count}} 场活动"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "",
-    "other": ""
+    "one": "正在发送给 {{count}} 位收件人。没有人员记录的地址不包括在内：{{list}}",
+    "other": "正在发送给 {{count}} 位收件人。没有人员记录的地址不包括在内：{{list}}"
   },
   "{{count}} could not be assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 项无法分配",
+    "other": "{{count}} 项无法分配"
   },
   "{{count}} left open because the default is no longer qualified": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 项因默认志愿者不再具备资格而保持空缺",
+    "other": "{{count}} 项因默认志愿者不再具备资格而保持空缺"
   },
   "{{count}} volunteers assigned": {
-    "one": "",
-    "other": ""
+    "one": "已分配 {{count}} 位志愿者",
+    "other": "已分配 {{count}} 位志愿者"
   },
   "{{count}} waiting for your answer": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 项等待您的回答",
+    "other": "{{count}} 项等待您的回答"
   },
   "{{count}} {{title}} events created. Staff them now?": {
-    "one": "",
-    "other": ""
+    "one": "已创建 {{count}} 场 {{title}} 活动。现在为其安排人员吗？",
+    "other": "已创建 {{count}} 场 {{title}} 活动。现在为其安排人员吗？"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "",
-    "other": ""
+    "one": "{{names}} 将为这些活动安排人员。其活动场次会在进入未来 {{count}} 周内时生成。",
+    "other": "{{names}} 将为这些活动安排人员。其活动场次会在进入未来 {{count}} 周内时生成。"
   }
 }
