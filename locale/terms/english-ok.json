@@ -503,7 +503,16 @@
     "Check-out",
     "Preview",
     "Teller",
-    "Mailing Address"
+    "Mailing Address",
+    "Address Line 2",
+    "Admin Console",
+    "Developer mode",
+    "File",
+    "Folder",
+    "Max",
+    "Min",
+    "Reset link",
+    "SMTP test"
   ],
   "fr": [
     "AM / PM",
