@@ -1140,6 +1140,100 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
         });
     });
 
+    describe("Volunteer v2 — the Serve step: completed once the occurrence is over (§2.11.1)", () => {
+        let event = null;
+
+        beforeEach(() => {
+            resetWorkflow();
+            dbOk(
+                `SELECT e.event_id AS id, DATE_FORMAT(e.event_start, '%Y-%m-%d %H:%i:%s') AS start,
+                        DATE_FORMAT(e.event_end, '%Y-%m-%d %H:%i:%s') AS end
+                   FROM events_event e
+                   JOIN volunteer_occurrence_vocc o ON o.vocc_event_id = e.event_id
+                  WHERE o.vocc_ID = ?`,
+                [occurrenceOne],
+            ).then((rows) => {
+                event = rows[0];
+            });
+        });
+
+        afterEach(() => {
+            if (event !== null) {
+                dbOk(`UPDATE events_event SET event_start = ?, event_end = ? WHERE event_id = ?`, [
+                    event.start,
+                    event.end,
+                    event.id,
+                ]);
+            }
+            dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_Status = 'scheduled' WHERE vocc_ID = ?`, [occurrenceOne]);
+        });
+
+        /** Occurrence one's event (this spec's own series) moved to yesterday. */
+        function endOccurrenceOne() {
+            dbOk(`UPDATE events_event SET event_start = ?, event_end = ? WHERE event_id = ?`, [
+                `${isoDate(-1)} 10:30:00`,
+                `${isoDate(-1)} 11:45:00`,
+                event.id,
+            ]);
+        }
+
+        function runTimerJobs() {
+            return cy.makePrivateAdminAPICall("POST", "/api/background/timerjobs", { force: true }, 200).then((resp) => {
+                expect(resp.body.ran).to.eq(true);
+            });
+        }
+
+        function statusOf(assignmentId) {
+            return dbOk(`SELECT vasg_Status FROM volunteer_assignment_vasg WHERE vasg_ID = ?`, [assignmentId]).then(
+                (rows) => rows[0].vasg_Status,
+            );
+        }
+
+        it("completes pending and accepted assignments in the timer jobs, and nothing else", () => {
+            const ids = {};
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
+                ids.pending = resp.body.assignment.id;
+            });
+            assign(COORDINATOR_KEY, occurrenceOne, posMilk, PERSON_VOLUNTEER).then((resp) => {
+                ids.accepted = resp.body.assignment.id;
+                api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${ids.accepted}/respond`, {
+                    response: "accepted",
+                });
+            });
+            assign(COORDINATOR_KEY, occurrenceOne, posExpeditor, POOL_MEMBER_C).then((resp) => {
+                ids.declined = resp.body.assignment.id;
+                api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${ids.declined}/status`, {
+                    status: "declined",
+                });
+            });
+            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_B).then((resp) => {
+                ids.upcoming = resp.body.assignment.id;
+            });
+
+            runTimerJobs();
+            cy.then(() => statusOf(ids.pending)).should("eq", "pending");
+
+            endOccurrenceOne();
+            runTimerJobs();
+            cy.then(() => statusOf(ids.pending)).should("eq", "completed");
+            cy.then(() => statusOf(ids.accepted)).should("eq", "completed");
+            cy.then(() => statusOf(ids.declined)).should("eq", "declined");
+            cy.then(() => statusOf(ids.upcoming)).should("eq", "pending");
+
+            runTimerJobs();
+            cy.then(() => statusOf(ids.pending)).should("eq", "completed");
+        });
+
+        it("leaves the assignments of a cancelled occurrence alone", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
+                dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_Status = 'cancelled' WHERE vocc_ID = ?`, [occurrenceOne]);
+                endOccurrenceOne();
+                runTimerJobs();
+                statusOf(resp.body.assignment.id).should("eq", "pending");
+            });
+        });
+    });
+
     describe("Volunteer v2 — authorization negatives (§4.8)", () => {
         beforeEach(resetWorkflow);
 
