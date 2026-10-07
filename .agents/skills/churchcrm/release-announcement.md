@@ -72,7 +72,7 @@ Format:
 - Links are **cards with buttons, never bare or markdown URLs** (they render
   as dead text through the bot). Primary button: the install/getting-started
   page with UTM params —
-  `?utm_source=discord&utm_medium=announcement&utm_campaign=release-<tag>`.
+  `?utm_source=discord&utm_medium=social&utm_campaign=release_<tag>` (snake_case, e.g. `release_7_8_0`).
   Second button: the GitHub release (`url`).
 
 Before posting, search the channel for an earlier announcement *from the bot
