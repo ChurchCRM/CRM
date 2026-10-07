@@ -806,6 +806,35 @@ describe("Login as User two-factor rule", () => {
     });
 });
 
+describe("Login as User when the administrator is demoted during it", () => {
+    afterEach(() => {
+        cy.dbQuery("UPDATE user_usr SET usr_Admin = 1 WHERE usr_per_ID = ?", [PEER_ADMIN_USER_ID]);
+    });
+
+    it("ends the whole session on exit and still records the session as exited", () => {
+        setTwoFactorAdminSecret(null);
+        formLogin(TWOFA_ADMIN_LOGIN, TWOFA_ADMIN_PASSWORD);
+        cy.url().should("include", "/v2/dashboard");
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get("#loginAsUser").click();
+        cy.get(".bootbox.modal .btn-warning").click();
+        cy.get("#impersonationBanner").should("be.visible");
+
+        cy.dbQuery("UPDATE user_usr SET usr_Admin = 0 WHERE usr_per_ID = ?", [PEER_ADMIN_USER_ID]).then((r) =>
+            expect(r.error).to.eq(null),
+        );
+        cy.get("#impersonationExit").click();
+        cy.url().should("include", "/session/begin");
+
+        latestMasqueradeSession().then((session) => {
+            expect(session.ums_admin_usr_ID).to.eq(PEER_ADMIN_USER_ID);
+            expect(session.ums_EndReason).to.eq("exit");
+        });
+        cy.visit("/v2/dashboard");
+        cy.url().should("include", "/session/begin");
+    });
+});
+
 describe("Login as User history", () => {
     const createdNoteIds = [];
 
