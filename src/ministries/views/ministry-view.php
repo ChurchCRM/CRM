@@ -42,6 +42,7 @@ use ChurchCRM\Utils\InputUtils;
 /** @var bool $bMinistryActive */
 /** @var bool $bIsManager */
 /** @var bool $bIsMinistryCoordinator */
+/** @var bool $bCanPinAnyCalendar the viewer holds Add Events, so every calendar is offered */
 /** @var string|null $sClassUrlBase where a linked class opens, or null when the viewer cannot open groups */
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
@@ -614,7 +615,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div id="ministry-events-empty-upcoming">
           <p class="empty-title"><?= gettext('No upcoming events') ?></p>
           <p class="empty-subtitle text-body-secondary">
-            <?= gettext('Add this ministry\'s events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.') ?>
+            <?= gettext('Add this ministry\'s events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.') ?>
           </p>
         </div>
         <div class="d-none" id="ministry-events-empty-past">
@@ -1296,7 +1297,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="mb-3">
           <div class="form-label"><?= gettext('Calendars') ?></div>
           <div id="ministry-event-form-calendars"></div>
-          <div class="form-text"><?= gettext('Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with.') ?></div>
+          <div class="form-text" id="ministry-event-form-calendars-hint"><?= $bCanPinAnyCalendar
+              ? gettext('You may add events to every calendar, so all of them are listed. This ministry\'s own calendar is ticked to start with.')
+              : gettext('Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with.') ?></div>
         </div>
         <div class="alert alert-danger d-none mt-3" role="alert" id="ministry-event-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>

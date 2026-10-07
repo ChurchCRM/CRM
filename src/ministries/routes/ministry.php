@@ -74,6 +74,8 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'bMinistryActive' => (bool) $ministry->getActive(),
             'bIsManager'     => $authz->isGlobalManager($currentUser),
             'bIsMinistryCoordinator' => $bIsMinistryCoordinator,
+            // The New event dialog lists every calendar for the Add Events right (D25).
+            'bCanPinAnyCalendar' => $currentUser->canManageEvents(),
             // D23: a team's linked class is a link only for a viewer the Groups module lets in.
             'sClassUrlBase'  => $currentUser->isManageGroupsEnabled()
                 ? (SystemConfig::getBooleanValue('bEnabledSundaySchool') ? '/groups/sundayschool/class/' : '/groups/view/')

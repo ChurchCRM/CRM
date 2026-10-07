@@ -346,7 +346,7 @@ describe("Volunteer v2 — the Sunday School switch (D29) and a class's events (
         tickEvent("Workday 5");
         cy.get("#ministry-events-delete-btn").should("be.enabled").and("contain", "Delete events (2)");
         cy.get("#ministry-events-delete-btn").click();
-        cy.get(".bootbox").should("be.visible").and("contain", "Delete 2 events?").and("contain", OTHER_MINISTRY);
+        cy.get(".bootbox").should("be.visible").and("contain", "Events to delete: 2").and("contain", OTHER_MINISTRY);
         cy.get(".bootbox .btn-danger").click();
         cy.get(".notyf__toast").should("contain", OTHER_MINISTRY);
         eventsTitled("%Workday%").its("length").should("eq", 3);
@@ -359,9 +359,9 @@ describe("Volunteer v2 — the Sunday School switch (D29) and a class's events (
         cy.get("#ministry-events-select-all").first().check();
         cy.get("#volunteerMinistryEventsTable .ministry-event-select:checked").should("have.length", 5);
         cy.get("#ministry-events-delete-btn").should("contain", "Delete events (5)").click();
-        cy.get(".bootbox").should("be.visible").and("contain", "Delete 5 events?");
+        cy.get(".bootbox").should("be.visible").and("contain", "Events to delete: 5");
         cy.get(".bootbox .btn-danger").click();
-        cy.get(".notyf__toast").should("contain", "5 events deleted");
+        cy.get(".notyf__toast").should("contain", "Events deleted: 5");
         cy.get("#ministry-events-empty").should("be.visible");
         eventsTitled("%Workday%").should("deep.eq", []);
     });

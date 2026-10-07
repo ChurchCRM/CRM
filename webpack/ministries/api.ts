@@ -1220,6 +1220,14 @@ export function deleteOccurrence(occurrenceId: number): Promise<{ success: boole
   return request(`/occurrences/${occurrenceId}`, { method: "DELETE" });
 }
 
+/** Cancel or restore one occurrence. Assignments are kept and nobody is emailed. */
+export function setOccurrenceStatus(
+  occurrenceId: number,
+  status: VolunteerOccurrenceSummary["status"],
+): Promise<{ occurrence: VolunteerOccurrenceSummary }> {
+  return request(`/occurrences/${occurrenceId}/status`, { method: "POST", body: JSON.stringify({ status }) });
+}
+
 export interface VolunteerEventSeries {
   title: string;
   nextStart: string;

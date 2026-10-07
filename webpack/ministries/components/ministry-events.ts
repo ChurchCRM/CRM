@@ -276,9 +276,9 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     }
 
     const message = [
+      i18next.t("Events to delete: {{total}}", { total: ids.length }),
       i18next.t(
-        "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.",
-        { count: ids.length },
+        "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.",
       ),
       staffedBy.size > 0
         ? i18next.t(
@@ -298,7 +298,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       }
       deleteMinistryEvents(options.ministryId(), ids)
         .then((result) => {
-          notifySuccess(tText("{{count}} events deleted", { count: result.deleted }));
+          notifySuccess(i18next.t("Events deleted: {{total}}", { total: result.deleted }));
           options.invalidateStaffing();
 
           return load(true);

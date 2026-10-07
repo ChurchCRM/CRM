@@ -190,6 +190,34 @@ describe("Volunteer v2 D25 — calendar grants in the UI", () => {
         setVersion("v2");
     });
 
+    it("says in the New event dialog which calendars it lists, for an administrator and a coordinator (#10374)", () => {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/ministries/scopes",
+            { personId: PERSON_COORDINATOR, scopeType: "ministry", scopeId: ministry.A },
+            [200, 201],
+        );
+        const openNewEvent = () => {
+            cy.visit(`/ministries/${ministry.A}`);
+            cy.get("#nav-item-calendar").click();
+            cy.get("#ministry-event-add-btn").click();
+            cy.get("#ministryEventModal", { timeout: 15000 }).should("be.visible");
+        };
+
+        adminLogin();
+        openNewEvent();
+        cy.get(`#ministry-event-form-calendars .ministry-event-calendar[value="${PUBLIC_CALENDAR}"]`).should("exist");
+        cy.get("#ministry-event-form-calendars-hint").should("contain", "You may add events to every calendar");
+
+        freshLogin(Cypress.testEnv("standard.username"), Cypress.testEnv("standard.password"));
+        openNewEvent();
+        cy.get(`#ministry-event-form-calendars .ministry-event-calendar[value="${ministryCalendar.A}"]`).should("exist");
+        cy.get(`#ministry-event-form-calendars .ministry-event-calendar[value="${PUBLIC_CALENDAR}"]`).should("not.exist");
+        cy.get("#ministry-event-form-calendars-hint")
+            .should("contain", "Only the calendars this ministry may add events to are listed")
+            .and("not.contain", "every calendar");
+    });
+
     it("offers a coordinator only the calendars they may pin to, and keeps a pin they cannot change", () => {
         cy.makePrivateAdminAPICall("PUT", `/api/calendars/${bibleClasses}/ministries`, { ministryIds: [ministry.A] });
         cy.makePrivateAdminAPICall(
