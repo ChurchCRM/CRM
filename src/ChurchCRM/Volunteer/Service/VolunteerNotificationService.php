@@ -630,9 +630,17 @@ class VolunteerNotificationService
     {
         $counts = ['sent' => 0, 'skipped' => 0, 'failed' => 0];
 
+        // A row about a cancelled occurrence is held, not skipped (#10387): restoring the
+        // occurrence sends it as planned, while a skipped row's dedupe key would stop the
+        // reminder scan from ever queuing it again.
         $rows = VolunteerNotificationQuery::create()
             ->filterByStatus(VolunteerNotification::STATUS_PENDING)
             ->filterByScheduledFor(DateTimeUtils::getToday(), Criteria::LESS_EQUAL)
+            ->useOccurrenceQuery(null, Criteria::LEFT_JOIN)
+                ->filterByStatus(VolunteerOccurrence::STATUS_CANCELLED, Criteria::NOT_EQUAL)
+                ->_or()
+                ->filterById(null, Criteria::ISNULL)
+            ->endUse()
             ->orderByScheduledFor(Criteria::ASC)
             ->limit(max(1, $batchSize))
             ->find();
