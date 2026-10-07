@@ -2594,6 +2594,37 @@ INSERT INTO `email_log_eml` VALUES
 (5,2,NULL,1,'mathew.campbell@example.com','composer','Thank you for serving','<p>Dear Mathew,</p><p>Thank you for helping on Sunday.</p>','sent',NULL,'<seed-5@churchcrm.test>','2026-03-10 08:45:00'),
 (6,2,NULL,1,'mathew.campbell@example.com','composer','Oldest message','<p>Dear Mathew,</p><p>This is the sixth and oldest seeded message.</p>','sent',NULL,'<seed-6@churchcrm.test>','2026-02-01 08:00:00'),
 (7,3,NULL,NULL,'tony.wade@example.com','account.reset-token','Reset your ChurchCRM password',NULL,'sent',NULL,'<seed-7@churchcrm.test>','2026-07-04 12:00:00');
+DROP TABLE IF EXISTS `user_masquerade_session_ums`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_masquerade_session_ums` (
+  `ums_ID`            int(10) unsigned      NOT NULL AUTO_INCREMENT,
+  `ums_admin_usr_ID`  mediumint(9) unsigned NOT NULL,
+  `ums_target_usr_ID` mediumint(9) unsigned NOT NULL,
+  `ums_Started`       datetime              NOT NULL,
+  `ums_Ended`         datetime              DEFAULT NULL,
+  `ums_EndReason`     varchar(10)           DEFAULT NULL,
+  PRIMARY KEY (`ums_ID`),
+  KEY `idx_ums_admin_usr_ID`  (`ums_admin_usr_ID`),
+  KEY `idx_ums_target_usr_ID` (`ums_target_usr_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `user_masquerade_action_uma`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_masquerade_action_uma` (
+  `uma_ID`     int(10) unsigned     NOT NULL AUTO_INCREMENT,
+  `uma_ums_ID` int(10) unsigned     NOT NULL,
+  `uma_Method` varchar(10)          NOT NULL,
+  `uma_Path`   varchar(255)         NOT NULL,
+  `uma_Status` smallint(5) unsigned DEFAULT NULL,
+  `uma_Time`   datetime             NOT NULL,
+  PRIMARY KEY (`uma_ID`),
+  KEY `idx_uma_ums_ID` (`uma_ums_ID`),
+  CONSTRAINT `fk_uma_session` FOREIGN KEY (`uma_ums_ID`)
+      REFERENCES `user_masquerade_session_ums` (`ums_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET AUTOCOMMIT=@OLD_AUTOCOMMIT */;

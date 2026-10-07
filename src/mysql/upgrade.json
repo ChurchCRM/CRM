@@ -127,7 +127,8 @@
       "/mysql/upgrade/7.8.0-volunteer-v2-manager-permission.sql",
       "/mysql/upgrade/7.8.0-volunteer-v2-event-ministry.sql",
       "/mysql/upgrade/7.8.0-volunteer-v2-group-ministry.sql",
-      "/mysql/upgrade/7.8.0-member-portal-activity.sql"
+      "/mysql/upgrade/7.8.0-member-portal-activity.sql",
+      "/mysql/upgrade/7.8.0-login-as-user-history.sql"
     ],
     "dbVersion": "7.8.0"
   }
