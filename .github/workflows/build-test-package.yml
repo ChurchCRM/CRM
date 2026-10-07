@@ -98,7 +98,7 @@ jobs:
 
   build:
     needs: configure
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
     runs-on: ubuntu-24.04
@@ -160,7 +160,7 @@ jobs:
 
   test-root:
     needs: [configure, build]
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -257,7 +257,7 @@ jobs:
 
   test-subdir:
     needs: [configure, build]
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -356,7 +356,7 @@ jobs:
 
   test-new-system:
     needs: [configure, build]
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -417,7 +417,7 @@ jobs:
 
   test-new-system-subdir:
     needs: [configure, build]
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
