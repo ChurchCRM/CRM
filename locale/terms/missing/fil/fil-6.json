@@ -52,7 +52,7 @@
   "That wedding date is not a valid date.": "Hindi wastong petsa ang petsa ng kasal na iyon.",
   "The %s must be a date in YYYY-MM-DD form": "Dapat petsa sa anyong YYYY-MM-DD ang %s",
   "The %s must be a whole number of minutes": "Dapat buong bilang ng minuto ang %s",
-  "The %s must be within %d minutes of the event": "",
+  "The %s must be within %d minutes of the event": "Dapat nasa loob ng %2$d minuto ng kaganapan ang %1$s",
   "The Member Portal calendars were saved.": "Na-save ang mga kalendaryo ng Portal ng Miyembro.",
   "The Member Portal could not finish what you asked for. Please try again in a few minutes.": "Hindi natapos ng Portal ng Miyembro ang hiniling mo. Pakisubukan muli pagkalipas ng ilang minuto.",
   "The Member Portal is only available to a signed-in person, not to API clients.": "Available lamang ang Portal ng Miyembro sa taong naka-sign in, hindi sa mga API client.",
