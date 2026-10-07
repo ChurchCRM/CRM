@@ -1218,7 +1218,8 @@ Indexes: `vntf_dedupe_uidx UNIQUE (vntf_DedupeKey)`,
 assignment:{assignmentId}:{personId}
 reminder:{assignmentId}:{personId}
 decline_alert:{assignmentId}:{coordinatorPersonId}
-gap_alert:{occurrenceId}:{coordinatorPersonId}:{yyyy-mm-dd}     ← one per coordinator per occurrence per day
+gap_alert:{occurrenceId}:{coordinatorPersonId}:{yyyy-mm-dd}     ← a decline's gap: one per coordinator per occurrence per day
+gap_alert:{occurrenceId}:{positionId}:{coordinatorPersonId}      ← the daily alert (#10372): one per position per coordinator, no date
 signup_confirm:{assignmentId}:{personId}
 swap_proposed:{swapId}:{coordinatorPersonId}
 swap_resolved:{swapId}:{personId}
@@ -1907,6 +1908,8 @@ final class VolunteerNotificationService
     public function enqueue(string $type, int $recipientPersonId, ?int $assignmentId, ?int $occurrenceId, ?\DateTimeInterface $scheduledFor = null): VolunteerNotification;
     /** From the timer job: a reminder for every live assignment starting within iVolunteerReminderLeadHours. Returns rows enqueued. */
     public function scheduleReminders(): int;
+    /** From the timer job, once a day: a gap_alert per short position of each occurrence starting within the lead (#10372). Returns rows enqueued. */
+    public function scheduleGapAlerts(bool $force = false): int;
     /** Cancel pending outbox rows for an assignment that is no longer live. */
     public function cancelPendingFor(int $assignmentId): int;
     /** Drained by SystemService::runTimerJobs(). Returns ['sent'=>,'failed'=>,'skipped'=>]. */
@@ -1951,7 +1954,8 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 | `selfSignup()` | `signup_confirm` | the volunteer | now |
 | `proposeSubstitute()` | `swap_proposed` | coordinators | now |
 | `approveSwap()` / `rejectSwap()` | `swap_resolved` | proposer **and** substitute | now |
-| daily drain, occurrence within the lead window with `gapCount > 0` | `gap_alert` | coordinators | now (dedupe key includes the date, so at most one per coordinator per occurrence per day) |
+| `respond('declined')`, when the occurrence is left short (`notifyGapOpened()`) | `gap_alert` | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key includes the date, so at most one per coordinator per occurrence per day) |
+| the daily gap alert, a position still short on an occurrence starting within the lead window (#10372) | `gap_alert`, one per position, naming only that position | `getCoordinatorPersonIds(ministry, team)` | now (dedupe key per occurrence, position and coordinator, no date: an open gap is alerted once) |
 
 `cancelPendingFor()` deletes `pending` outbox rows when an assignment stops being live, so a
 cancelled assignment never produces a reminder.
@@ -2030,10 +2034,22 @@ run's drain; an unqualified default is logged and left open. The occurrence uniq
 idempotent. Its result (`{ranAt, schedules, created, failed, assigned, skipped, unqualified}`) is
 stored in `sLastVolunteerTopUpResult`, logged, and shown on Admin → Ministry Settings. A schedule that fails
 (the occurrence cap) is logged and skipped; the others still run. Nothing happens while V2 is off:
-with `sVolunteerVersion` = `v1`, `runTimerJobs()` skips all four V2 jobs (top-up, reminders, drain,
-completion) and the rows wait for V2 to come back (#10373).
+with `sVolunteerVersion` = `v1`, `runTimerJobs()` skips all five V2 jobs (top-up, reminders, gap
+alert, drain, completion) and the rows wait for V2 to come back (#10373).
 **Run background jobs now** on Ministry Settings (`force: true`, administrators only) runs it again
 the same day; the command-line runner and the page-load trigger run it at most once a day.
+
+**The daily gap alert (#10372, built)** runs after the reminders and before the drain:
+`VolunteerNotificationService::scheduleGapAlerts()` claims today the same way
+(`sLastVolunteerGapAlertRunDate`; *Run background jobs now* forces it too), then takes every
+scheduled occurrence of an active ministry whose start (`resolveOccurrenceWindow()`) is after now
+and within `iVolunteerReminderLeadHours` — there is no lead setting of its own, so a lead of 0
+turns it off with the reminders — and enqueues one `gap_alert` per position `getOpenGaps()`
+reports short (D34's *Needs N more*), per coordinator, with `vntf_Context = {"positionId": …}` so
+the message names that position alone. Its dedupe key carries no date, so an open gap is alerted
+once, not every day; a position filled and later reopened by a decline is reported by
+`notifyGapOpened()` under its own dated key. The drain skips one of these rows when its position
+was filled after it was queued, and applies the usual email-off, do-not-email and no-address rules.
 
 **Punctuality.** Because the drain runs on page loads (F9), reminders are best-effort by default.
 Installations that need them on time add a real cron with **no code change**:
@@ -3869,6 +3885,7 @@ public static function getVolunteerVersionChoices(): array
 | `iVolunteerDefaultEventTypeId` | `number` | `''` | D31: the event type a ministry's new event starts with. Unset, inactive or deleted falls back to the active type named "Other", else none (`VolunteerEventService::defaultEventTypeId()`). |
 | `sLastVolunteerTopUpRunDate` | `text` | `''` | D31, internal: the day (`Y-m-d`, in `sTimeZone`) the daily top-up last ran — its once-a-day claim. Not on any settings page. |
 | `sLastVolunteerTopUpResult` | `text` | `''` | D31, internal: JSON `{ranAt, schedules, created, failed, assigned, skipped, unqualified}` of the last top-up (the last three D32's default assignments), which Ministry Settings shows. |
+| `sLastVolunteerGapAlertRunDate` | `text` | `''` | #10372, internal: the day (`Y-m-d`, in `sTimeZone`) the daily gap alert last ran — its once-a-day claim. Not on any settings page. |
 
 **No `bEnabledVolunteer` / `bEnabledVolunteerV2` boolean is added.** `sVolunteerVersion` subsumes
 it, and two flags would inevitably drift. Anywhere a boolean reads better in code, use
@@ -3925,7 +3942,8 @@ subclass in the tree and gain no email-routing logic of their own.
 - the CTA button (the template renders it only when `getFullURL()` is non-empty,
   `BaseEmail::getCommonTokens()`).
 
-Gap and decline alerts additionally carry the number still needed and the list of positions short.
+Gap and decline alerts additionally carry the number still needed and the list of positions short;
+the daily gap alert's list is its one position.
 Swap messages carry both names and the decision.
 
 **Constraints an implementer will hit:**

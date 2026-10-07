@@ -6,9 +6,10 @@ namespace ChurchCRM\Volunteer\Email;
  * Outbox type `gap_alert` — this occurrence is short (design §3.6, Appendix C).
  *
  * Occurrence-scoped, not assignment-scoped: `vntf_vasg_ID` is null, so there is
- * no single volunteer this is about and therefore **no Reply-To at all**. The
- * dedupe key carries the date, so a ministry that loses three people in one
- * afternoon gets one alert per coordinator, not three.
+ * no single volunteer this is about and therefore **no Reply-To at all**. A
+ * decline's alert lists every short position, and its dedupe key carries the
+ * date, so a ministry that loses three people in one afternoon gets one alert per
+ * coordinator, not three. The daily alert (#10372) lists only its own position.
  */
 class VolunteerGapAlertEmail extends BaseVolunteerEmail
 {

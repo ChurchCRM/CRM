@@ -86,6 +86,9 @@ class VolunteerNotificationService
      */
     public const MAX_ATTEMPTS = 5;
 
+    /** The day (Y-m-d) the gap alert last ran (#10372): claimed before it runs, like the top-up. */
+    public const GAP_ALERT_RUN_DATE_CONFIG = 'sLastVolunteerGapAlertRunDate';
+
     private LoggerInterface $logger;
 
     public function __construct()
@@ -251,6 +254,16 @@ class VolunteerNotificationService
             $coordinatorPersonId,
             $day->format('Y-m-d')
         );
+    }
+
+    /**
+     * The daily alert's key (#10372): one per occurrence, position and recipient, with no
+     * date, so a position that stays short is reported once rather than every day. It
+     * cannot meet `gapAlertKey()`, whose last part is a date.
+     */
+    public function unfilledGapAlertKey(int $occurrenceId, int $positionId, int $coordinatorPersonId): string
+    {
+        return sprintf('%s:%d:%d:%d', self::TYPE_GAP_ALERT, $occurrenceId, $positionId, $coordinatorPersonId);
     }
 
     /** Built for #9712's self-signup; nothing in #9709 enqueues one. */
@@ -507,24 +520,7 @@ class VolunteerNotificationService
         $horizon = DateTimeUtils::createDateTime($now->format('Y-m-d H:i:s'))
             ->modify(sprintf('+%d hours', $leadHours));
 
-        // Bound the scan by occurrence DATE first — the precise window question is
-        // answered per row below, but there is no reason to hydrate every occurrence
-        // in the table to find out. A day of slack on each side covers an occurrence
-        // whose event time sits either side of midnight.
-        // Two filters rather than one range: Propel has no Criteria::BETWEEN, and
-        // the generated filterBy*() range form takes an array without a comparison
-        // constant, which reads as an IN to anyone skimming it.
-        $occurrences = VolunteerOccurrenceQuery::create()
-            ->filterByStatus(VolunteerOccurrence::STATUS_SCHEDULED)
-            ->filterByOccurrenceDate(
-                DateTimeUtils::createDateTime($now->format('Y-m-d'))->modify('-1 day'),
-                Criteria::GREATER_EQUAL
-            )
-            ->filterByOccurrenceDate(
-                DateTimeUtils::createDateTime($horizon->format('Y-m-d'))->modify('+1 day'),
-                Criteria::LESS_EQUAL
-            )
-            ->find();
+        $occurrences = $this->scheduledOccurrencesBetween($now, $horizon)->find();
 
         if (count($occurrences) === 0) {
             return 0;
@@ -589,6 +585,135 @@ class VolunteerNotificationService
         }
 
         return $enqueued;
+    }
+
+    /**
+     * The daily gap alert (#10372, §3.6): a `gap_alert` to the coordinators for every
+     * position still short (`getOpenGaps()`, D34's *Needs N more*) on a scheduled
+     * occurrence of an active ministry that starts inside `iVolunteerReminderLeadHours`.
+     * A decline reports the gap it opens (`notifyGapOpened()`); this reports the position
+     * nobody was ever on.
+     *
+     * Once a day, claimed like the schedule top-up, unless an administrator forces the run.
+     * There is no lead setting of its own, so a lead of 0 turns this off with the reminders.
+     *
+     * @return int rows enqueued (existing rows are not counted)
+     */
+    public function scheduleGapAlerts(bool $force = false): int
+    {
+        $leadHours = SystemConfig::getIntValue('iVolunteerReminderLeadHours');
+        if ($leadHours <= 0) {
+            return 0;
+        }
+
+        if (!VolunteerDailyRun::claim(self::GAP_ALERT_RUN_DATE_CONFIG, DateTimeUtils::getTodayDate()) && !$force) {
+            return 0;
+        }
+
+        $now = DateTimeUtils::getToday();
+        $horizon = DateTimeUtils::createDateTime($now->format('Y-m-d H:i:s'))
+            ->modify(sprintf('+%d hours', $leadHours));
+
+        $occurrences = $this->scheduledOccurrencesBetween($now, $horizon)
+            ->useScheduleQuery()
+                ->useMinistryQuery()
+                    ->filterByActive(true)
+                ->endUse()
+            ->endUse()
+            ->find();
+
+        $schedules = new VolunteerScheduleService();
+        $scheduleOf = [];
+        foreach ($occurrences as $occurrence) {
+            $start = $schedules->resolveOccurrenceWindow($occurrence)['start'] ?? null;
+            if ($start !== null && $start > $now && $start <= $horizon) {
+                $scheduleOf[(int) $occurrence->getId()] = (int) $occurrence->getScheduleId();
+            }
+        }
+
+        if ($scheduleOf === []) {
+            return 0;
+        }
+
+        $authz = new VolunteerAuthorizationService();
+        $recipients = [];
+        $enqueued = 0;
+        foreach ((new VolunteerAssignmentService())->getOpenGaps(array_keys($scheduleOf)) as $gap) {
+            $occurrenceId = $gap['occurrenceId'];
+            $scheduleId = $scheduleOf[$occurrenceId];
+            $recipients[$scheduleId] ??= $this->coordinatorsOfSchedule($scheduleId, $authz);
+
+            foreach ($recipients[$scheduleId] as $personId) {
+                $key = $this->unfilledGapAlertKey($occurrenceId, $gap['positionId'], $personId);
+                if ($this->findByDedupeKey($key) !== null) {
+                    continue;
+                }
+
+                $this->enqueue(
+                    self::TYPE_GAP_ALERT,
+                    $personId,
+                    null,
+                    $occurrenceId,
+                    $now,
+                    $key,
+                    ['positionId' => $gap['positionId']]
+                );
+                $enqueued++;
+            }
+        }
+
+        if ($enqueued > 0) {
+            $this->logger->info('Volunteer gap alerts scheduled', [
+                'count' => $enqueued,
+                'leadHours' => $leadHours,
+            ]);
+        }
+
+        return $enqueued;
+    }
+
+    /**
+     * Scheduled occurrences dated around `$from`..`$to`, for a caller to narrow by the
+     * real window.
+     *
+     * Bounded by occurrence DATE first — the precise window question is answered per row
+     * by the caller, but there is no reason to hydrate every occurrence in the table to
+     * find out. A day of slack on each side covers an occurrence whose event time sits
+     * either side of midnight. Two filters rather than one range: Propel has no
+     * Criteria::BETWEEN, and the generated filterBy*() range form takes an array without
+     * a comparison constant, which reads as an IN to anyone skimming it.
+     */
+    private function scheduledOccurrencesBetween(\DateTimeInterface $from, \DateTimeInterface $to): VolunteerOccurrenceQuery
+    {
+        return VolunteerOccurrenceQuery::create()
+            ->filterByStatus(VolunteerOccurrence::STATUS_SCHEDULED)
+            ->filterByOccurrenceDate(
+                DateTimeUtils::createDateTime($from->format('Y-m-d'))->modify('-1 day'),
+                Criteria::GREATER_EQUAL
+            )
+            ->filterByOccurrenceDate(
+                DateTimeUtils::createDateTime($to->format('Y-m-d'))->modify('+1 day'),
+                Criteria::LESS_EQUAL
+            );
+    }
+
+    /**
+     * The same recipients a decline's alert has: the team's leaders, then the ministry's
+     * coordinators.
+     *
+     * @return int[]
+     */
+    private function coordinatorsOfSchedule(int $scheduleId, VolunteerAuthorizationService $authz): array
+    {
+        $schedule = VolunteerScheduleQuery::create()->findPk($scheduleId);
+        if ($schedule === null) {
+            return [];
+        }
+
+        return $authz->getCoordinatorPersonIds(
+            (int) $schedule->getMinistryId(),
+            $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId()
+        );
     }
 
     // ── Drain (§3.6) ───────────────────────────────────────────────────────
@@ -1011,12 +1136,15 @@ class VolunteerNotificationService
                 );
 
             case self::TYPE_GAP_ALERT:
-                return new VolunteerGapAlertEmail(
-                    $to,
-                    $recipientName,
-                    $context,
-                    $this->shortPositions((int) $row->getOccurrenceId())
-                );
+                // The daily alert (#10372) is about one position; filled since, it has
+                // nothing left to say.
+                $positionId = (int) ($this->rowContext($row)['positionId'] ?? 0);
+                $short = $this->shortPositions((int) $row->getOccurrenceId(), $positionId > 0 ? $positionId : null);
+                if ($positionId > 0 && $short === []) {
+                    return null;
+                }
+
+                return new VolunteerGapAlertEmail($to, $recipientName, $context, $short);
 
             case self::TYPE_SWAP_PROPOSED:
                 $swap = $this->swapFor($row, true);
@@ -1100,16 +1228,20 @@ class VolunteerNotificationService
     }
 
     /**
-     * Every position on this occurrence that is genuinely short, name → how many.
+     * Every position on this occurrence that is genuinely short (or only `$positionId`),
+     * name → how many.
      *
      * @return array<string, int>
      */
-    private function shortPositions(int $occurrenceId): array
+    private function shortPositions(int $occurrenceId, ?int $positionId = null): array
     {
         $short = [];
         foreach ((new VolunteerAssignmentService())->getOpenGaps([$occurrenceId]) as $gap) {
             $name = $gap['positionName'] ?? null;
             if ($name === null || (int) $gap['gapCount'] <= 0) {
+                continue;
+            }
+            if ($positionId !== null && (int) $gap['positionId'] !== $positionId) {
                 continue;
             }
             $short[(string) $name] = (int) $gap['gapCount'];

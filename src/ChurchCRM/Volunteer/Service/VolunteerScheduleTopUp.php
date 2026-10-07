@@ -2,14 +2,11 @@
 
 namespace ChurchCRM\Volunteer\Service;
 
-use ChurchCRM\model\ChurchCRM\Config;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use Propel\Runtime\ActiveQuery\Criteria;
-use Propel\Runtime\Exception\PropelException;
 
 /**
  * D31's daily top-up, run from SystemService::runTimerJobs(): every active schedule of an
@@ -38,7 +35,7 @@ final class VolunteerScheduleTopUp
             return null;
         }
 
-        if (!self::claimToday(DateTimeUtils::getTodayDate()) && !$force) {
+        if (!VolunteerDailyRun::claim(self::LAST_RUN_DATE_CONFIG, DateTimeUtils::getTodayDate()) && !$force) {
             return null;
         }
 
@@ -79,7 +76,7 @@ final class VolunteerScheduleTopUp
             }
         }
 
-        self::store(self::LAST_RESULT_CONFIG, json_encode($result));
+        VolunteerDailyRun::store(self::LAST_RESULT_CONFIG, json_encode($result));
         $logger->info('Volunteer schedules topped up to the scheduling horizon', $result + [
             'horizonWeeks' => VolunteerScheduleService::horizonWeeks(),
             'forced' => $force,
@@ -108,50 +105,5 @@ final class VolunteerScheduleTopUp
             'skipped' => (int) ($decoded['skipped'] ?? 0),
             'unqualified' => (int) ($decoded['unqualified'] ?? 0),
         ];
-    }
-
-    /**
-     * True for exactly one caller per day, however many page loads reach the timer jobs
-     * together: both paths are single statements, so the database picks the winner — the
-     * claim BirthdayEmailService::claimRunForToday() makes (#9727), including its NULL case.
-     */
-    private static function claimToday(string $today): bool
-    {
-        $existing = ConfigQuery::create()->findOneByName(self::LAST_RUN_DATE_CONFIG);
-        if ($existing !== null) {
-            if ($existing->getValue() === $today) {
-                return false;
-            }
-
-            return ConfigQuery::create()
-                ->filterByName(self::LAST_RUN_DATE_CONFIG)
-                ->filterByValue($today, Criteria::NOT_EQUAL)
-                ->_or()
-                ->filterByValue(null, Criteria::ISNULL)
-                ->update(['Value' => $today]) > 0;
-        }
-
-        try {
-            self::store(self::LAST_RUN_DATE_CONFIG, $today);
-        } catch (PropelException $e) {
-            if (ConfigQuery::create()->findOneByName(self::LAST_RUN_DATE_CONFIG)?->getValue() === $today) {
-                return false;
-            }
-
-            throw $e;
-        }
-
-        return true;
-    }
-
-    /**
-     * Written straight to `config_cfg` rather than through SystemConfig, whose per-request
-     * cache would not know about a row another request inserted.
-     */
-    private static function store(string $name, string $value): void
-    {
-        $config = ConfigQuery::create()->findOneByName($name) ?? (new Config())->setName($name);
-        $config->setValue($value);
-        $config->save();
     }
 }
