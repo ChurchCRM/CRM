@@ -6,12 +6,16 @@
 import { formatTimeElements } from "./components/ui";
 
 function runJobsNow(button: HTMLButtonElement): void {
-  button.disabled = true;
-  window.CRM?.APIRequest?.({
+  const request = window.CRM?.APIRequest?.({
     method: "POST",
     path: "background/timerjobs",
     data: JSON.stringify({ force: true }),
-  })
+  });
+  if (!request) {
+    return;
+  }
+  button.disabled = true;
+  request
     .done(() => {
       window.CRM?.notify?.(i18next.t("Background jobs ran"), { type: "success" });
       setTimeout(() => window.location.reload(), 1200);

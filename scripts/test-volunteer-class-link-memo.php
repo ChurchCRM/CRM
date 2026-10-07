@@ -11,7 +11,8 @@
  * A request that links, unlinks or deletes must not read the team it remembered before the
  * change. No API request looks the link up again after changing it, so Cypress cannot see a
  * stale memo; this harness primes the memo and calls each hook on an unsaved model instead.
- * It needs `composer install` in src/ but no database: a lookup that reached one would fail.
+ * It runs in the CI build job, before any database exists, so a lookup that goes past the
+ * memo fails to connect, and that failure is how the harness sees it.
  *
  * Exit codes:
  *   0  — every case passed
@@ -82,6 +83,12 @@ foreach ($hooks as $label => $hook) {
         $memo->getValue() === [],
         "{$label} forgets every remembered link",
         'memo still holds group ids ' . implode(', ', array_keys($memo->getValue()))
+    );
+    $found = $lookup(41);
+    $check(
+        is_string($found) && str_starts_with($found, 'queried the database'),
+        "after {$label}, the same request looks the link up again",
+        is_string($found) ? $found : 'answered from the memo'
     );
 }
 
