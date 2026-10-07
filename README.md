@@ -17,7 +17,7 @@ See the real product before you decide:
 
 - **[Try the live demo](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_demo)** — Softaculous creates a private, temporary ChurchCRM instance for you. It expires automatically; use fictional data only.
 - **[Install ChurchCRM](https://churchcrm.io/install.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_install)** — run it on your own hosting with the official installation guidance.
-- **[Read the documentation](https://docs.churchcrm.io/)** — installation, configuration, administration, and user guides.
+- **[Read the documentation](https://docs.churchcrm.io/?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_docs)** — installation, configuration, administration, and user guides.
 
 ## What churches use it for
 
@@ -27,7 +27,7 @@ ChurchCRM supports real church workflows, including:
 
 ## 🚀 Development quick start
 
-If you're new to ChurchCRM, start with our **[Documentation](https://docs.churchcrm.io/)**.
+If you're new to ChurchCRM, start with our **[Documentation](https://docs.churchcrm.io/?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_docs_start)**.
 You'll find step-by-step installation instructions, configuration notes, and user guides there.
 
 Quick start: see the "Quick Start" section in the Documentation for a fast setup.
@@ -55,7 +55,7 @@ We welcome contributions from everyone! Whether it's bug reports, feature reques
 
 ## 📚 Documentation
 
-Our [Documentation](https://docs.churchcrm.io) is your go-to resource for understanding ChurchCRM.
+Our [Documentation](https://docs.churchcrm.io/?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_docs_resource) is your go-to resource for understanding ChurchCRM.
 If you notice anything missing or unclear, feel free to open an issue or submit a pull request.
 
 ## 🤝 Community

@@ -12,7 +12,7 @@ body:
 
         Open an issue when the question should stay searchable for the next person. Please fill in the form below.
 
-        Before opening: please check [the docs](https://docs.churchcrm.io).
+        Before opening: please check [the docs](https://docs.churchcrm.io/?utm_source=github&utm_medium=referral&utm_campaign=github_issue_templates&utm_content=question_docs).
 
   - type: textarea
     id: goal
@@ -62,6 +62,6 @@ body:
       value: |
         ---
         💬 **Urgent or want to chat?** <https://discord.gg/tuWyFzj3Nj>
-        📘 **Diagnostics guide:** <https://docs.churchcrm.io/administration/reporting-issues>
+        📘 **Diagnostics guide:** <https://docs.churchcrm.io/administration/reporting-issues?utm_source=github&utm_medium=referral&utm_campaign=github_issue_templates&utm_content=question_diagnostics>
 
         Thanks for asking! 🙏
