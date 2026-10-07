@@ -292,7 +292,7 @@ $_isImpersonating = ImpersonationService::isActive();
             <i class="fa-solid fa-headphones"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item"
+            <a href="<?= InputUtils::escapeAttribute(SystemURLs::getSupportURL('', (string) ($sPageTitle ?? ''))) ?>" target="help" class="dropdown-item"
                title="<?= gettext('Documentation') ?>">
               <i class="fa-solid fa-book me-2"></i><?= gettext('Documentation') ?>
             </a>

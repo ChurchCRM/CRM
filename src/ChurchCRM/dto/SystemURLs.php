@@ -65,7 +65,7 @@ class SystemURLs
         return $parts[0] . (str_contains($parts[0], '?') ? '&' : '?') . $query . (isset($parts[1]) ? '#' . $parts[1] : '');
     }
 
-    public static function getSupportURL($topic = ''): string
+    public static function getSupportURL($topic = '', string $search = ''): string
     {
         $supportURLs = [
             // User-facing guidance moved to the Documentation site
@@ -78,8 +78,12 @@ class SystemURLs
             'CheckUploadSizeTask'           => 'https://docs.churchcrm.io/installation/system-requirements#file-uploads',
         ];
 
-        // Default to the public user documentation site
-        return self::attributed($supportURLs[$topic] ?? 'https://docs.churchcrm.io', 'support_' . ($topic ?: 'default'));
+        $url = $supportURLs[$topic] ?? 'https://docs.churchcrm.io';
+        if (!isset($supportURLs[$topic]) && $search !== '') {
+            $url .= '/search?' . http_build_query(['q' => $search]);
+        }
+
+        return self::attributed($url, 'support_' . ($topic ?: 'default'));
     }
 
     public static function getURL($index = 0)
