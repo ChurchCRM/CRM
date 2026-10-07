@@ -1,13 +1,15 @@
 <?php
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\InputUtils;
 ?>
 
 <div class="auth-footer">
   <div>
     <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> 
-    <a href="https://churchcrm.io" target="_blank" rel="noopener noreferrer"><b>Church</b>CRM</a></strong>. 
+    <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://churchcrm.io', 'login_footer')) ?>" target="_blank" rel="noopener noreferrer"><b>Church</b>CRM</a></strong>. 
     <?= gettext('All rights reserved') ?>.
   </div>
   <div class="auth-footer-social">
