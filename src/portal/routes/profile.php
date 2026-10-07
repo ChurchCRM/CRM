@@ -61,7 +61,7 @@ $group->get('/profile/edit', function (Request $request, Response $response) use
 });
 
 // The account pages: password and two-factor, owned by the portal so that every
-// role — member, staff, administrator, and a masquerading administrator — stays
+// role — member, staff and administrator — stays
 // inside the portal. The admin console is reached from the staff bar's "Admin
 // Console" control and nowhere else. See PortalAccountPages for why the older
 // /v2/user/current/* URLs still exist alongside these.
