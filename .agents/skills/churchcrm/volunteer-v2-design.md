@@ -1626,7 +1626,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | ~~POST~~ | ~~`/api/ministries/positions/{positionId}/qualifications/from-cart`~~ | **RETIRED.** Bulk-qualifying the cart for one position had no caller left once S3's cart dialog stopped asking for a position; the cart now fills the pool instead (`/pool/from-cart` above) | — | — |
 | DELETE | `/api/ministries/qualifications/{qualificationId}` | revoke (**deactivates**) | Coordinator / Team Leader | `200 {qualification}` with `active:false`. The person's last one on a linked team ends their Teacher role in the class (D23, §2.7) |
 | GET | `/api/ministries/people/{personId}/qualifications` | one person's qualifications | Coordinator+, or self | scoped to the caller's ministries |
-| GET | `/api/ministries/scopes` | list scope grants | **Manager**, or coordinator of the named ministry | `?ministryId=&teamId=&personId=` |
+| GET | `/api/ministries/scopes` | list scope grants | **Manager** (the ministry page gets its leaders from the ministry document) | `?ministryId=&teamId=&personId=` |
 | POST | `/api/ministries/scopes` | grant coordinator / team-leader authority | **Manager** (ministry scope) or coordinator of the ministry (team scope) | `{personId,scopeType,scopeId}` → `201`; idempotent |
 | DELETE | `/api/ministries/scopes/{scopeId}` | revoke | same as grant | `200` |
 
