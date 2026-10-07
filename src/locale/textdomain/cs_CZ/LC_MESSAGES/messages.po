@@ -10433,10 +10433,6 @@ msgid "Months"
 msgstr "Měsíce"
 
 #: 
-msgid "My Calendars"
-msgstr "Moje kalendáře"
-
-#: 
 msgid "New member notification emails"
 msgstr "E-maily s oznámením o novém členovi"
 
@@ -12372,18 +12368,6 @@ msgstr "Vyberte prosím cílovou rodinu."
 #: 
 msgid "Target family not found"
 msgstr "Cílová rodina nebyla nalezena"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Ověřit informace o rodině"
-
-#: 
-msgid "Welcome"
-msgstr "Vítejte"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Níže uvedeným odkazem můžete zkontrolovat a ověřit informace o své rodině. Pokud potřebujete další přístup, kontaktujte prosím správce vaší církve."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15266,10 +15250,6 @@ msgstr "Vlastní oprávnění"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Plný přístup – uděluje všechna oprávnění."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Pokud potřebujete rozšířený přístup, kontaktujte správce vašeho sboru."
 
 #: 
 msgid "People &amp; Families"

@@ -10443,10 +10443,6 @@ msgid "Months"
 msgstr "ወራት"
 
 #: 
-msgid "My Calendars"
-msgstr "የኔ ዓመታዊ"
-
-#: 
 msgid "New member notification emails"
 msgstr "አዲስ አባል ማስታወስ ኢሜይሎች"
 
@@ -12381,18 +12377,6 @@ msgstr "ዒላማ ቤተሰብ ይምረጡ።"
 #: 
 msgid "Target family not found"
 msgstr "ዒላማ ቤተሰቡ አልተገኘም"
-
-#: 
-msgid "Verify Family Info"
-msgstr "የቤተሰብ መረጃ ያረጋግጡ"
-
-#: 
-msgid "Welcome"
-msgstr "እንኳን ደህና መጡ"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "ከዚህ በታች ያለውን ሊንክ በመጠቀም የቤተሰብ መረጃዎን መከለስ እና ማረጋገጥ ይችላሉ። ተጨማሪ መዳረሻ ካስፈለጎ፣ የቤተክርስቲያን አስተዳዳሪዎን ያናግሩ።"
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15275,10 +15259,6 @@ msgstr "ብጁ ፈቃዶች"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "ሙሉ ተደራሽነት — ሁሉንም መብቶች ይሰጣል።"
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "ተጨማሪ ተደራሽነት ከፈለጉ፣ እባክዎ የቤተክርስቲያን አስተዳዳሪዎን ያነጋግሩ።"
 
 #: 
 msgid "People &amp; Families"

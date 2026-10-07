@@ -10401,10 +10401,6 @@ msgid "Months"
 msgstr "മാസങ്ങൾ"
 
 #: 
-msgid "My Calendars"
-msgstr "എന്റെ കലണ്ടറുകൾ"
-
-#: 
 msgid "New member notification emails"
 msgstr "പുതിയ അംഗ അറിയിപ്പ് ഇമെയിലുകൾ"
 
@@ -12339,18 +12335,6 @@ msgstr "ദയവായി ഒരു ലക്ഷ്യ കുടുംബം �
 #: 
 msgid "Target family not found"
 msgstr "ലക്ഷ്യ കുടുംബം കണ്ടെത്തിയില്ല"
-
-#: 
-msgid "Verify Family Info"
-msgstr "കുടുംബ വിവരം സ്ഥിരീകരിക്കുക"
-
-#: 
-msgid "Welcome"
-msgstr "സ്വാഗതം"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "താഴെയുള്ള ലിങ്ക് ഉപയോഗിച്ച് നിങ്ങളുടെ കുടുംബ വിവരം അവലോകനം ചെയ്യുകയും സ്ഥിരീകരിക്കുകയും ചെയ്യാം. അധിക ആക്‌സസ് ആവശ്യമെങ്കിൽ, നിങ്ങളുടെ പള്ളി അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15232,10 +15216,6 @@ msgstr "ഇഷ്ടാനുസൃത അനുമതികൾ"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "പൂർണ്ണ പ്രവേശനം — എല്ലാ പ്രത്യേകാവകാശങ്ങളും നൽകുന്നു."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "നിങ്ങൾക്ക് അധിക പ്രവേശനം ആവശ്യമാണെങ്കിൽ, ദയവായി നിങ്ങളുടെ സഭയുടെ അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക."
 
 #: 
 msgid "People &amp; Families"

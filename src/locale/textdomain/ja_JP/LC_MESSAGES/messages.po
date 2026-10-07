@@ -10392,10 +10392,6 @@ msgid "Months"
 msgstr "月"
 
 #: 
-msgid "My Calendars"
-msgstr "マイカレンダー"
-
-#: 
 msgid "New member notification emails"
 msgstr "新メンバー通知メール"
 
@@ -12329,18 +12325,6 @@ msgstr "ターゲット家族を選択してください。"
 #: 
 msgid "Target family not found"
 msgstr "ターゲット家族が見つかりません"
-
-#: 
-msgid "Verify Family Info"
-msgstr "家族情報を検証"
-
-#: 
-msgid "Welcome"
-msgstr "ようこそ"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "以下のリンクを使用して、家族情報を確認・検証できます。追加のアクセスが必要な場合は、教会の管理者にお問い合わせください。"
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15221,10 +15205,6 @@ msgstr "カスタム権限"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "フルアクセス — すべての権限を付与します。"
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "追加のアクセスが必要な場合は、教会の管理者にお問い合わせください。"
 
 #: 
 msgid "People &amp; Families"

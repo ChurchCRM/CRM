@@ -10442,10 +10442,6 @@ msgid "Months"
 msgstr "மாதங்கள்"
 
 #: 
-msgid "My Calendars"
-msgstr "என் நாட்காட்டிகள்"
-
-#: 
 msgid "New member notification emails"
 msgstr "புதிய உறுப்பினர் அறிவிப்பு மின்னஞ்சல்கள்  "
 
@@ -12384,18 +12380,6 @@ msgstr "இலக்கு குடும்பத்தை தேர்ந்�
 #: 
 msgid "Target family not found"
 msgstr "இலக்கு குடும்பம் கிடைக்கவில்லை"
-
-#: 
-msgid "Verify Family Info"
-msgstr "குடும்ப தகவலை சரிபார்க்கவும்"
-
-#: 
-msgid "Welcome"
-msgstr "வரவேற்கிறோம்"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "கீழே உள்ள இணைப்பைப் பயன்படுத்தி உங்கள் குடும்ப தகவலை மதிப்பாய்வு செய்து சரிபார்க்கலாம். கூடுதல் அணுகல் தேவைப்பட்டால், உங்கள் திருச்சபை நிர்வாகியை தொடர்பு கொள்ளவும்."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15279,10 +15263,6 @@ msgstr "தனிப்பயன் அனுமதிகள்"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "முழு அணுகல் — அனைத்து சலுகைகளையும் வழங்குகிறது."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "உங்களுக்கு கூடுதல் அணுகல் தேவைப்பட்டால், உங்கள் திருச்சபை நிர்வாகியை தொடர்பு கொள்ளுங்கள்."
 
 #: 
 msgid "People &amp; Families"

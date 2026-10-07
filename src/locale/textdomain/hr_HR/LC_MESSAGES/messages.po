@@ -10407,10 +10407,6 @@ msgid "Months"
 msgstr "Mjeseci"
 
 #: 
-msgid "My Calendars"
-msgstr "Moji kalendari"
-
-#: 
 msgid "New member notification emails"
 msgstr "E-mail obavijesti o novim članovima"
 
@@ -12346,18 +12342,6 @@ msgstr "Molim odaberite ciljnu obitelj."
 #: 
 msgid "Target family not found"
 msgstr "Ciljna obitelj nije pronađena"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Provjeri obiteljske informacije"
-
-#: 
-msgid "Welcome"
-msgstr "Dobrodošli"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Možete pregledati i provjeriti obiteljske informacije koristeći vezu u nastavku. Ako trebate dodatni pristup, kontaktirajte administratora župe."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15240,10 +15224,6 @@ msgstr "Prilagođene dozvole"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Puni pristup — dodjeljuje sve ovlasti."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Ako trebate dodatni pristup, obratite se župnom administratoru."
 
 #: 
 msgid "People &amp; Families"

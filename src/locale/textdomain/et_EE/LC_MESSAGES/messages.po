@@ -10435,10 +10435,6 @@ msgid "Months"
 msgstr "Kuud"
 
 #: 
-msgid "My Calendars"
-msgstr "Minu kalendrid"
-
-#: 
 msgid "New member notification emails"
 msgstr "Uute liikmete teatmise e-kirjad"
 
@@ -12373,18 +12369,6 @@ msgstr "Palun valige sihpere."
 #: 
 msgid "Target family not found"
 msgstr "Sihperet ei leitud"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Kontrolli pere andmeid"
-
-#: 
-msgid "Welcome"
-msgstr "Tere tulemast"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Saate oma pere andmeid vaadata ja kinnitada alloleva lingi kaudu. Kui vajate täiendavat juurdepääsu, võtke palun ühendust oma kiriku administraatoriga."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15266,10 +15250,6 @@ msgstr "Kohandatud load"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Täielik juurdepääs — annab kõik õigused."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Kui vajate lisajuurdepääsu, võtke palun ühendust koguduse administraatoriga."
 
 #: 
 msgid "People &amp; Families"

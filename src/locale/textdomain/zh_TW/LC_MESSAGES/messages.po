@@ -10571,10 +10571,6 @@ msgid "Months"
 msgstr "月份"
 
 #: 
-msgid "My Calendars"
-msgstr "我的日曆"
-
-#: 
 msgid "New member notification emails"
 msgstr "新成員通知電子郵件"
 
@@ -12508,18 +12504,6 @@ msgstr "請選擇目標家庭。"
 #: 
 msgid "Target family not found"
 msgstr "找不到目標家庭"
-
-#: 
-msgid "Verify Family Info"
-msgstr "驗證家庭資訊"
-
-#: 
-msgid "Welcome"
-msgstr "歡迎"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "您可以使用以下連結查看和驗證您的家庭資訊。如需更多存取權限，請聯絡您的教會管理員。"
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15400,10 +15384,6 @@ msgstr "自訂權限"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "完整存取權限——授予所有權限。"
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "若需要額外存取權限，請聯繫您的教會管理員。"
 
 #: 
 msgid "People &amp; Families"

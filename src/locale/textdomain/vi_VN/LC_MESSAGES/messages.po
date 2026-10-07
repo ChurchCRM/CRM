@@ -10431,10 +10431,6 @@ msgid "Months"
 msgstr "Tháng"
 
 #: 
-msgid "My Calendars"
-msgstr "Lịch của tôi"
-
-#: 
 msgid "New member notification emails"
 msgstr "Email thông báo thành viên mới"
 
@@ -12368,18 +12364,6 @@ msgstr "Vui lòng chọn một gia đình đích."
 #: 
 msgid "Target family not found"
 msgstr "Không tìm thấy gia đình đích"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Xác minh Thông tin Gia đình"
-
-#: 
-msgid "Welcome"
-msgstr "Chào mừng"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Bạn có thể xem lại và xác minh thông tin gia đình của mình bằng liên kết bên dưới. Nếu bạn cần thêm quyền truy cập, vui lòng liên hệ với quản trị viên giáo xứ của bạn."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15260,10 +15244,6 @@ msgstr "Quyền tùy chỉnh"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Toàn quyền truy cập — cấp tất cả các đặc quyền."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Nếu bạn cần quyền truy cập bổ sung, vui lòng liên hệ quản trị viên hội thánh của bạn."
 
 #: 
 msgid "People &amp; Families"

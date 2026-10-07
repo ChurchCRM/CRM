@@ -10463,10 +10463,6 @@ msgid "Months"
 msgstr "الأشهر"
 
 #: 
-msgid "My Calendars"
-msgstr "تقاويسي"
-
-#: 
 msgid "New member notification emails"
 msgstr "رسائل البريد الإلكتروني لإخطار الأعضاء الجدد"
 
@@ -12405,18 +12401,6 @@ msgstr "يرجى اختيار أسرة مستهدفة."
 #: 
 msgid "Target family not found"
 msgstr "لم يتم العثور على الأسرة المستهدفة"
-
-#: 
-msgid "Verify Family Info"
-msgstr "التحقق من معلومات الأسرة"
-
-#: 
-msgid "Welcome"
-msgstr "مرحباً"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "يمكنك مراجعة والتحقق من معلومات أسرتك باستخدام الرابط أدناه. إذا كنت بحاجة إلى وصول إضافي، يرجى التواصل مع مسؤول كنيستك."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15302,10 +15286,6 @@ msgstr "أذونات مخصصة"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "وصول كامل — يمنح جميع الصلاحيات."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "إذا كنت بحاجة إلى صلاحيات إضافية، يرجى التواصل مع مسؤول كنيستك."
 
 #: 
 msgid "People &amp; Families"

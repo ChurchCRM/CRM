@@ -10404,10 +10404,6 @@ msgid "Months"
 msgstr "เดือน"
 
 #: 
-msgid "My Calendars"
-msgstr "ปฏิทินของฉัน"
-
-#: 
 msgid "New member notification emails"
 msgstr "อีเมลการแจ้งเตือนสมาชิกใหม่"
 
@@ -12341,18 +12337,6 @@ msgstr "โปรดเลือกครอบครัวเป้าหมา
 #: 
 msgid "Target family not found"
 msgstr "ไม่พบครอบครัวเป้าหมาย"
-
-#: 
-msgid "Verify Family Info"
-msgstr "ตรวจสอบข้อมูลครอบครัว"
-
-#: 
-msgid "Welcome"
-msgstr "ยินดีต้อนรับ"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "คุณสามารถตรวจสอบและยืนยันข้อมูลครอบครัวของคุณโดยใช้ลิงก์ด้านล่าง หากต้องการการเข้าถึงเพิ่มเติม โปรดติดต่อผู้ดูแลระบบคริสตจักรของคุณ"
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15233,10 +15217,6 @@ msgstr "สิทธิ์กำหนดเอง"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "การเข้าถึงแบบเต็ม — ให้สิทธิ์ทั้งหมด"
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "หากคุณต้องการสิทธิ์เพิ่มเติม โปรดติดต่อผู้ดูแลระบบคริสตจักรของคุณ"
 
 #: 
 msgid "People &amp; Families"

@@ -10503,10 +10503,6 @@ msgid "Months"
 msgstr "Luni"
 
 #: 
-msgid "My Calendars"
-msgstr "Calendariurile mele"
-
-#: 
 msgid "New member notification emails"
 msgstr "E-mailuri de notificare pentru noi membri"
 
@@ -12442,18 +12438,6 @@ msgstr "Vă rugăm selectați o familie țintă."
 #: 
 msgid "Target family not found"
 msgstr "Familia țintă nu a fost găsită"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Verificați informațiile despre familie"
-
-#: 
-msgid "Welcome"
-msgstr "Bine ați venit"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Puteți revizui și verifica informațiile despre familia dvs. folosind linkul de mai jos. Dacă aveți nevoie de acces suplimentar, contactați administratorul bisericii dvs."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15336,10 +15320,6 @@ msgstr "Permisiuni personalizate"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Acces complet — acordă toate privilegiile."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Dacă aveți nevoie de acces suplimentar, vă rugăm să contactați administratorul parohiei."
 
 #: 
 msgid "People &amp; Families"

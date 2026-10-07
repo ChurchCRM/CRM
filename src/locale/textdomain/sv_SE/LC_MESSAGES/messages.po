@@ -10526,10 +10526,6 @@ msgid "Months"
 msgstr "Månader"
 
 #: 
-msgid "My Calendars"
-msgstr "Mina kalendrar"
-
-#: 
 msgid "New member notification emails"
 msgstr "Meddelanden via e-post för nya medlemmar"
 
@@ -12464,18 +12460,6 @@ msgstr "Välj en målfamilj."
 #: 
 msgid "Target family not found"
 msgstr "Målfamiljen hittades inte"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Verifiera familjeinformation"
-
-#: 
-msgid "Welcome"
-msgstr "Välkommen"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Du kan granska och verifiera din familjeinformation via länken nedan. Om du behöver ytterligare åtkomst, kontakta din kyrkoförvaltare."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15357,10 +15341,6 @@ msgstr "Anpassade behörigheter"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Full åtkomst — ger alla rättigheter."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Om du behöver ytterligare åtkomst, kontakta din kyrkas administratör."
 
 #: 
 msgid "People &amp; Families"
