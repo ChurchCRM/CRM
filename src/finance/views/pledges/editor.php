@@ -376,7 +376,7 @@ $requireCheckNumber = SystemConfig::getBooleanValue('bRequireCheckNumber');
             labelField: 'text',
             searchField: 'text',
             load: function (query, callback) {
-                if (query.length < 2) return callback();
+                if (query.length < 2 && !/^\d+$/.test(query)) return callback();
                 fetch(ROOT + '/api/families/search/' + encodeURIComponent(query))
                     .then(function (res) { return res.json(); })
                     .then(function (data) {
