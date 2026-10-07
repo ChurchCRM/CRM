@@ -741,7 +741,10 @@
     "Vonage Dashboard",
     "Data",
     "Auto",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Min",
+    "Send",
+    "Team"
   ],
   "pl": [
     "4. Kiosk",
@@ -806,7 +809,8 @@
     "Auto",
     "Content Security Policy",
     "Max",
-    "Min"
+    "Min",
+    "Team"
   ],
   "sw": [
     "AM / PM",
