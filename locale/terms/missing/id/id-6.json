@@ -1,11 +1,4 @@
 {
-  "Substitution request not found": "",
-  "Substitution requests": "",
-  "Sunday School Class": "",
-  "System calendar": "",
-  "System default": "",
-  "Take that back": "",
-  "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens.": "",
   "Teachers of this class are managed in Ministries → %1$s → %2$s.": "",
   "Team": "",
   "Team Leader": "",
@@ -148,5 +141,12 @@
   "The staffing needs could not be saved": "",
   "The staffing needs must be a list": "",
   "The staffing plan could not be loaded": "",
-  "The start of the range is not a date.": ""
+  "The start of the range is not a date.": "",
+  "The substitution could not be decided": "",
+  "The substitution requests could not be loaded": "",
+  "The teachers can only be imported into a position of this team": "",
+  "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here.": "",
+  "The team could not be deleted": "",
+  "The team could not be saved": "",
+  "The team does not belong to this ministry": ""
 }

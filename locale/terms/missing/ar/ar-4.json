@@ -1,9 +1,4 @@
 {
-  "My Family": "",
-  "My Teams": "",
-  "My ministries and teams": "",
-  "My schedule": "",
-  "My volunteering": "",
   "Name this position on the page where members look for something to help with.": "",
   "Needs an answer": "",
   "Needs filling": "",
@@ -27,7 +22,6 @@
   "No emails have been sent to this record yet.": "",
   "No headcount recorded yet": "",
   "No longer needed": "",
-  "No masquerade is in progress.": "",
   "No member has signed in to the Member Portal yet.": "",
   "No ministry": "",
   "No past events": "",
@@ -40,7 +34,6 @@
   "No staffing needs: generated occurrences will need nobody.": "",
   "No substitution requests": "",
   "No substitutions to decide": "",
-  "No such user.": "",
   "No teams yet": "",
   "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist.": "",
   "No upcoming event matches": "",
@@ -162,5 +155,12 @@
   "Pick someone who has already agreed to take your place. Your coordinator will confirm it.": "",
   "Please choose calendars from the list.": "",
   "Please choose whether your details need changing.": "",
-  "Please contact the church office so we may correct our records.": ""
+  "Please contact the church office so we may correct our records.": "",
+  "Please contact the church office.": "",
+  "Please enter at least two characters.": "",
+  "Please let us know whether you can make it by accepting or declining on your volunteer schedule.": "",
+  "Please tell us what needs changing.": "",
+  "Portal settings": "",
+  "Portal theme": "",
+  "Position": ""
 }

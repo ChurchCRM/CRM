@@ -118,7 +118,6 @@
   "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "",
   "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "",
   "A from and a to date in YYYY-MM-DD form are required": "",
-  "A masquerade is already in progress. Exit it before starting another.": "",
   "A minimum count is required": "",
   "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "",
   "A ministry name is required": "",
@@ -178,5 +177,6 @@
   "Add team": "",
   "Add them on the Calendar tab, then generate again.": "",
   "Add them on the Calendar tab.": "",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": ""
+  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": ""
 }
