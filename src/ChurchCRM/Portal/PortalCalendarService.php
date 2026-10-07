@@ -233,11 +233,19 @@ class PortalCalendarService
      * The portal is read-only, so no event carries a URL into the admin area
      * and none is editable.
      *
+     * @param array<string, bool>|null $only `"<type>:<id>"` keys to limit to; null for all
+     *
      * @return array<int, array<string, mixed>>
      */
-    public static function eventsBetween(DateTimeInterface $from, DateTimeInterface $to): array
+    public static function eventsBetween(DateTimeInterface $from, DateTimeInterface $to, ?array $only = null): array
     {
         $entries = self::visible();
+        if ($only !== null) {
+            $entries = array_filter(
+                $entries,
+                static fn (array $entry): bool => isset($only[self::key($entry['type'], $entry['id'])])
+            );
+        }
         if ($entries === []) {
             return [];
         }
