@@ -1,11 +1,4 @@
 {
-  "The substitution could not be decided": "",
-  "The substitution requests could not be loaded": "",
-  "The teachers can only be imported into a position of this team": "",
-  "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here.": "",
-  "The team could not be deleted": "",
-  "The team could not be saved": "",
-  "The team does not belong to this ministry": "",
   "The theme folder was not found.": "",
   "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories.": "",
   "The volunteer assignment could not be saved": "",
@@ -39,7 +32,6 @@
     "other": ""
   },
   "They were already a volunteer here": "",
-  "This action requires an interactive session.": "",
   "This assignment is %1$s and cannot be changed to %2$s": "",
   "This assignment is no longer active": "",
   "This email is not in your history.": "",
@@ -160,5 +152,13 @@
   "Where we reach you": "",
   "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration.": "",
   "Which events": "",
-  "Which volunteer experience this church uses. The card on the right explains each choice.": ""
+  "Which volunteer experience this church uses. The card on the right explains each choice.": "",
+  "Who is covering": "",
+  "Who is needed, who is on, and what is still short": "",
+  "Whoever served least recently is listed first.": "",
+  "Work Email": "",
+  "Yearly": "",
+  "You": "",
+  "You are already helping that day": "",
+  "You are already helping that day as {{what}}. Sign up for this as well?": ""
 }

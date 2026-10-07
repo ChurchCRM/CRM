@@ -1,5 +1,4 @@
 {
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "",
   "Added through the Member Portal and waiting for review: %s": "",
   "Added — now tick the positions they can serve": "",
   "Address Line 2": "",
@@ -148,5 +147,6 @@
   "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone.": "",
   "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone.": "",
   "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone.": "",
-  "Delete {{name}}? This cannot be undone.": ""
+  "Delete {{name}}? This cannot be undone.": "",
+  "Deleting a ministry requires volunteer manager access": ""
 }

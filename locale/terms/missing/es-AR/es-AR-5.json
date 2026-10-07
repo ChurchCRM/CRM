@@ -1,11 +1,4 @@
 {
-  "Please contact the church office.": "",
-  "Please enter at least two characters.": "",
-  "Please let us know whether you can make it by accepting or declining on your volunteer schedule.": "",
-  "Please tell us what needs changing.": "",
-  "Portal settings": "",
-  "Portal theme": "",
-  "Position": "",
   "Position added": "",
   "Position deleted": "",
   "Position name": "",
@@ -148,5 +141,12 @@
   "Substitute rejected": "",
   "Substituted": "",
   "Substitution approved": "",
-  "Substitution rejected": ""
+  "Substitution rejected": "",
+  "Substitution request not found": "",
+  "Substitution requests": "",
+  "Sunday School Class": "",
+  "System calendar": "",
+  "System default": "",
+  "Take that back": "",
+  "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens.": ""
 }

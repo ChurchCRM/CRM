@@ -1,5 +1,4 @@
 {
-  "Deleting a ministry requires volunteer manager access": "",
   "Developer mode": "",
   "Done — you are back on the list.": "",
   "Drop this occurrence's own staffing needs and follow its schedule again?": "",
@@ -41,8 +40,6 @@
   "Everyone has answered": "",
   "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards.": "",
   "Everything is correct": "",
-  "Exit and return to your own account": "",
-  "Exit to your account": "",
   "Failed to build the preview": "",
   "Failed to load email": "",
   "Failed to load email history": "",
@@ -120,8 +117,6 @@
   "Let them know why (optional)": "",
   "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself.": "",
   "Loading the calendar…": "",
-  "Log in as {{name}}? Everything you do until you exit is done as them and is logged.": "",
-  "Login as User": "",
   "Manage Ministries": "",
   "Manage My Ministries": "",
   "Manage My Ministries access, with a ministry or team to manage": "",
@@ -148,5 +143,10 @@
   "Ministry management access": "",
   "Ministry management access is required": "",
   "Ministry name": "",
-  "Ministry not found": ""
+  "Ministry not found": "",
+  "My Family": "",
+  "My Teams": "",
+  "My ministries and teams": "",
+  "My schedule": "",
+  "My volunteering": ""
 }
