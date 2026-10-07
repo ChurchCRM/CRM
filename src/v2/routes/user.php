@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
+use ChurchCRM\Slim\Middleware\LoginAsUserEnabledMiddleware;
 use ChurchCRM\Slim\Middleware\NoActiveMasqueradeMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\SessionOnlyMiddleware;
@@ -21,18 +22,21 @@ $app->group('/user', function (RouteCollectorProxy $group): void {
 
     // Admin masquerade (#9843). Middleware executes in reverse of the order it
     // is added (Slim 4 LIFO), so the start route runs
-    // SessionOnly → NoActiveMasquerade → AdminRole → CSRF → handler: an
-    // `x-api-key` caller is turned away before anything else, and a nested
-    // start is answered 409 rather than the 403 the admin gate would produce
-    // for the (usually non-admin) impersonated session.
+    // LoginAsUserEnabled → SessionOnly → NoActiveMasquerade → AdminRole → CSRF → handler:
+    // the routes do not exist while the setting is off, an `x-api-key` caller is
+    // turned away before anything else, and a nested start is answered 409 rather
+    // than the 403 the admin gate would produce for the (usually non-admin)
+    // impersonated session.
     $group->post('/impersonate/exit', 'exitImpersonation')
         ->add(new CSRFMiddleware('user_impersonate'))
-        ->add(new SessionOnlyMiddleware());
+        ->add(new SessionOnlyMiddleware())
+        ->add(new LoginAsUserEnabledMiddleware());
     $group->post('/{id:[0-9]+}/impersonate', 'startImpersonation')
         ->add(new CSRFMiddleware('user_impersonate'))
         ->add(new AdminRoleAuthMiddleware())
         ->add(new NoActiveMasqueradeMiddleware())
-        ->add(new SessionOnlyMiddleware());
+        ->add(new SessionOnlyMiddleware())
+        ->add(new LoginAsUserEnabledMiddleware());
 
     $group->get('/{id}/', 'viewUser');
     $group->get('/{id}', 'viewUser');
@@ -78,12 +82,12 @@ function viewUser(Request $request, Response $response, array $args): Response
 /**
  * POST /v2/user/{id}/impersonate — start an admin masquerade as user {id}.
  *
- * Reachable only from an interactive administrator session with no masquerade
- * already running (SessionOnly + NoActiveMasquerade + AdminRole + CSRF
- * middleware; the last two of those answer 409 and 403 respectively). The
- * handler itself answers 400 when {id} is the caller and 404 for an unknown
- * user. On success the session becomes {id} and the browser goes to the
- * dashboard.
+ * Reachable only while `bAllowLoginAsUser` is on (404 otherwise), from an
+ * interactive administrator session with no masquerade already running
+ * (SessionOnly + NoActiveMasquerade + AdminRole + CSRF middleware). The handler
+ * answers 400 when {id} is the caller, 404 for an unknown user, and 403 for
+ * another administrator or when the two-factor rule refuses. On success the
+ * session becomes {id} and the browser goes to the dashboard.
  */
 function startImpersonation(Request $request, Response $response, array $args): Response
 {
@@ -107,6 +111,11 @@ function startImpersonation(Request $request, Response $response, array $args): 
         return SlimUtils::renderErrorJSON($response, gettext('You cannot log in as another administrator.'), [], 403);
     }
 
+    $refusal = ImpersonationService::getStartRefusal($target);
+    if ($refusal !== null) {
+        return SlimUtils::renderErrorJSON($response, $refusal, [], 403);
+    }
+
     ImpersonationService::start($target);
 
     return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/dashboard');
@@ -115,8 +124,9 @@ function startImpersonation(Request $request, Response $response, array $args): 
 /**
  * POST /v2/user/impersonate/exit — end the masquerade and restore the admin.
  *
- * Allowed for any authenticated session that carries an impersonation record;
- * answers 400 for a genuine login. On success the browser is sent back to the
+ * Allowed for any authenticated session that carries an impersonation record,
+ * even after `bAllowLoginAsUser` was turned off; answers 400 for a genuine login
+ * (404 while the setting is off). On success the browser is sent back to the
  * record of the user that was being impersonated. If the stored administrator
  * has been deleted or demoted, the whole session is ended and the browser goes
  * to the login page instead.

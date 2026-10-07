@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use ChurchCRM\Slim\Middleware\MasqueradeActionMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Slim\Factory\AppFactory;
@@ -27,6 +28,7 @@ $errorMiddleware = $app->addErrorMiddleware(\ChurchCRM\dto\SystemConfig::debugEn
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->add(new CorsMiddleware());
+$app->add(new MasqueradeActionMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
 

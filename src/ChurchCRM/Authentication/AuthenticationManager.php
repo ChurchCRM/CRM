@@ -100,6 +100,8 @@ class AuthenticationManager
         }
         $logCtx = ['username' => $currentSessionUserName];
 
+        ImpersonationService::clear(ImpersonationService::END_SIGNOUT);
+
         try {
             self::getAuthenticationProvider()->endSession();
 
@@ -133,11 +135,26 @@ class AuthenticationManager
      * failed-login reset, no update check, no remote notification fetch and no
      * plugin hooks.
      */
-    public static function establishSessionAsUser(User $user): void
+    public static function establishSessionAsUser(User $user, bool $twoFactorVerified = false): void
     {
         $authenticationProvider = new LocalAuthentication();
         self::setAuthenticationProvider($authenticationProvider);
-        $authenticationProvider->establishSessionAsUser($user);
+        $authenticationProvider->establishSessionAsUser($user, $twoFactorVerified);
+    }
+
+    /**
+     * True when the current browser session was signed in with a two-factor code.
+     * Always false for an API-key request.
+     */
+    public static function isSessionTwoFactorVerified(): bool
+    {
+        try {
+            $provider = self::getAuthenticationProvider();
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return $provider instanceof LocalAuthentication && $provider->isTwoFactorVerified();
     }
 
     public static function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult

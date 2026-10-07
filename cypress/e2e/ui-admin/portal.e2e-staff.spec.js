@@ -154,6 +154,21 @@ describe("Member Portal e2e — #9869 scenario 3, staff in the portal", () => {
     });
 
     describe("an administrator, being somebody else", () => {
+        let savedAllowLoginAsUser;
+
+        before(() => {
+            cy.clearCookies();
+            cy.getSystemConfig("bAllowLoginAsUser").then((value) => {
+                savedAllowLoginAsUser = value;
+            });
+            cy.makePrivateAdminAPICall("POST", "admin/api/system/config/bAllowLoginAsUser", { value: "1" }, 200);
+        });
+
+        after(() => {
+            cy.clearCookies();
+            cy.restoreSystemConfig("bAllowLoginAsUser", savedAllowLoginAsUser);
+        });
+
         beforeEach(() => {
             adminLogin();
             cy.visit(`/v2/user/${MEMBER_USER_ID}`);

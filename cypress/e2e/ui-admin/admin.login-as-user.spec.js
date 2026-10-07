@@ -1,12 +1,14 @@
 /**
- * Issue #9843 — admin-only "Login as User" (masquerade) with an exit banner.
+ * Issue #9843 — admin-only "Login as User" (masquerade) with an exit banner,
+ * behind the Allow Login as User setting, with a per-session and per-action
+ * history and a two-factor rule.
  *
  * Fixtures used (cypress/data/seed.sql):
- *   - admin            : usr_ID 1  (Church Admin)
+ *   - admin            : usr_ID 1  (Church Admin), no 2FA
  *   - tony.wade@example.com / basicjoe : usr_ID 3 (Tony Campbell), non-admin
- *
- * The auth-log assertions read the rotating auth log through the admin-only
- * endpoint GET /admin/api/system/logs/{YYYY-MM-DD}-auth.log.
+ *   - twofa_user       : usr_ID 27, non-admin, 2FA enrolled
+ *   - locale-admin@churchcrm.test : usr_ID 906, a second admin; the two-factor
+ *     tests enrol it with TWOFA_ADMIN_SECRET and remove it again
  */
 
 const TARGET_USER_ID = 3; // tony.wade@example.com
@@ -27,6 +29,73 @@ const MUST_CHANGE_USER_ID = 8;
 const MUST_CHANGE_USER_NAME = "Herminia Hart";
 const MUST_CHANGE_USER_LOGIN = "mustchange.user";
 
+const TWOFA_TARGET_USER_ID = 27;
+const TWOFA_ADMIN_LOGIN = "locale-admin@churchcrm.test";
+const TWOFA_ADMIN_PASSWORD = "changeme";
+// The seeded twofa_user secret is not a valid Google Authenticator key, so it can
+// never produce a code; this one is JBSWY3DPEHPK3PXP encrypted with the seeded sTwoFASecretKey.
+const TWOFA_ADMIN_SECRET = "JBSWY3DPEHPK3PXP";
+const TWOFA_ADMIN_SECRET_ENCRYPTED =
+    "def50200cca1b3bcb6e443a1769db195752f572fdefd6afac1b4921b7a160d4f7bff9c69652af3a1f0e5fc933b6112c8e28135da8159b3d0a2d8dd0c6a9f8762ff8358f391b9261800e3d2c4665a3224b51da5969a38fb9e745c300ffcbae7163f2c119d";
+const TARGET_HAS_2FA_ADMIN_HAS_NONE =
+    "This user signs in with two-factor authentication. Turn on two-factor authentication for your own account and sign in with it to log in as them.";
+const TARGET_HAS_2FA_SESSION_WITHOUT =
+    "This user signs in with two-factor authentication. Sign out, then sign in again with your own two-factor code to log in as them.";
+
+let savedAllowLoginAsUser;
+
+function base32Decode(secret) {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+    const bits = [...secret.replace(/=+$/, "")].map((c) => alphabet.indexOf(c).toString(2).padStart(5, "0")).join("");
+    const bytes = [];
+    for (let i = 0; i + 8 <= bits.length; i += 8) {
+        bytes.push(Number.parseInt(bits.slice(i, i + 8), 2));
+    }
+    return new Uint8Array(bytes);
+}
+
+/** The current RFC 6238 code for a base32 secret (30-second step, 6 digits, SHA-1). */
+async function totp(secret) {
+    const counter = Math.floor(Date.now() / 30000);
+    const message = new DataView(new ArrayBuffer(8));
+    message.setUint32(0, Math.floor(counter / 2 ** 32));
+    message.setUint32(4, counter >>> 0);
+    const key = await crypto.subtle.importKey("raw", base32Decode(secret), { name: "HMAC", hash: "SHA-1" }, false, [
+        "sign",
+    ]);
+    const hash = new Uint8Array(await crypto.subtle.sign("HMAC", key, message.buffer));
+    const offset = hash[hash.length - 1] & 0xf;
+    const binary =
+        ((hash[offset] & 0x7f) << 24) | (hash[offset + 1] << 16) | (hash[offset + 2] << 8) | hash[offset + 3];
+    return String(binary % 1000000).padStart(6, "0");
+}
+
+function formLogin(userName, password) {
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(userName);
+    cy.get("input[name=Password]").type(`${password}{enter}`, { log: false });
+}
+
+function setTwoFactorAdminSecret(encryptedSecret) {
+    cy.dbQuery(
+        "UPDATE user_usr SET usr_TwoFactorAuthSecret = ?, usr_TwoFactorAuthLastKeyTimestamp = NULL, usr_FailedLogins = 0 WHERE usr_UserName = ?",
+        [encryptedSecret, TWOFA_ADMIN_LOGIN],
+    ).then((r) => expect(r.error).to.eq(null));
+}
+
+function setAllowLoginAsUser(value) {
+    cy.clearCookies();
+    cy.makePrivateAdminAPICall("POST", "admin/api/system/config/bAllowLoginAsUser", { value }, 200);
+}
+
+/** The newest Login as User session row. */
+function latestMasqueradeSession() {
+    return cy
+        .dbQuery("SELECT * FROM user_masquerade_session_ums ORDER BY ums_ID DESC LIMIT 1")
+        .then((r) => r.rows[0]);
+}
+
 /** Today's date in the rotating log filename format ({Y-m-d}-auth.log). */
 function authLogFileName() {
     const now = new Date();
@@ -45,10 +114,17 @@ function csrfTokenFromPage() {
 before(() => {
     cy.rememberTestEnv(["admin.api.key", "standard.username", "standard.password"]);
     cy.useChurchTimeZone();
+    cy.clearCookies();
+    cy.getSystemConfig("bAllowLoginAsUser").then((value) => {
+        savedAllowLoginAsUser = value;
+    });
+    setAllowLoginAsUser("1");
 });
 
 after(() => {
     cy.useHostTimeZone();
+    cy.clearCookies();
+    cy.restoreSystemConfig("bAllowLoginAsUser", savedAllowLoginAsUser);
 });
 
 describe("Admin Login as User (masquerade)", () => {
@@ -466,6 +542,10 @@ describe("Masquerade record does not survive its session", () => {
         cy.get("#impersonationBanner").should("not.exist");
         cy.visit("/v2/dashboard");
         cy.url().should("include", "/session/begin");
+        latestMasqueradeSession().then((row) => {
+            expect(row.ums_EndReason).to.eq("signout");
+            expect(row.ums_Ended).to.not.eq(null);
+        });
     });
 
     it("a real login in the same browser discards the record", () => {
@@ -486,6 +566,7 @@ describe("Masquerade record does not survive its session", () => {
         cy.visit("/v2/dashboard");
         cy.get("#impersonationBanner").should("not.exist");
         cy.get("body").should("not.have.class", "impersonating");
+        latestMasqueradeSession().its("ums_EndReason").should("eq", "signout");
 
         // Signing out now ends the session; it must not restore the administrator
         cy.visit("/session/end");
@@ -522,11 +603,246 @@ describe("Masquerade record does not survive its session", () => {
             cy.visit("/session/begin");
             cy.wait(5000);
 
+            cy.visit("/v2/dashboard");
+            cy.url().should("include", "/session/begin");
+            latestMasqueradeSession().its("ums_EndReason").should("eq", "timeout");
+
             cy.visit("/session/end");
             cy.url().should("include", "/session/begin");
             cy.get("#impersonationBanner").should("not.exist");
             cy.visit("/v2/dashboard");
             cy.url().should("include", "/session/begin");
         });
+    });
+});
+
+describe("Allow Login as User setting", () => {
+    after(() => {
+        setAllowLoginAsUser("1");
+    });
+
+    it("is a switch on System Users and only there", () => {
+        cy.setupAdminSession();
+        cy.visit("/admin/system/users");
+        cy.get('[data-bs-target="#userSettingsPanel"]').click();
+        cy.get("#userSettingsPanel").should("contain.text", "Allow Login as User");
+        cy.get('#userSettingsPanel input[name="bAllowLoginAsUser"]').should("have.length", 2);
+
+        cy.visit("/SystemSettings.php");
+        cy.get("body").should("not.contain.text", "Allow Login as User");
+    });
+
+    it("turned off on System Users, hides the button and the routes answer 404", () => {
+        cy.setupAdminSession();
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get('#impersonateForm input[name="csrf_token"]').invoke("val").as("csrfToken");
+
+        cy.intercept("POST", "**/admin/api/system/config/bAllowLoginAsUser").as("saveAllow");
+        cy.visit("/admin/system/users");
+        cy.get('[data-bs-target="#userSettingsPanel"]').click();
+        cy.get("#userSettingsPanel .settings-panel-save").should("not.be.disabled");
+        cy.get('#userSettingsPanel input[name="bAllowLoginAsUser"][value="0"]').check({ force: true });
+        cy.get("#userSettingsPanel .settings-panel-save").click();
+        cy.wait("@saveAllow").its("response.statusCode").should("eq", 200);
+
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get("#loginAsUser").should("not.exist");
+
+        cy.get("@csrfToken").then((token) => {
+            for (const url of [`/v2/user/${TARGET_USER_ID}/impersonate`, "/v2/user/impersonate/exit"]) {
+                cy.request({
+                    method: "POST",
+                    url,
+                    form: true,
+                    body: { csrf_token: token },
+                    headers: { Accept: "application/json" },
+                    failOnStatusCode: false,
+                })
+                    .its("status")
+                    .should("eq", 404);
+            }
+        });
+
+        cy.visit("/admin/system/users");
+        cy.get('[data-bs-target="#userSettingsPanel"]').click();
+        cy.get("#userSettingsPanel .settings-panel-save").should("not.be.disabled");
+        cy.get('#userSettingsPanel input[name="bAllowLoginAsUser"][value="1"]').check({ force: true });
+        cy.get("#userSettingsPanel .settings-panel-save").click();
+        cy.wait("@saveAllow").its("response.statusCode").should("eq", 200);
+
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get("#loginAsUser").should("be.visible").and("not.be.disabled");
+    });
+
+    it("turned off during a masquerade still lets the administrator exit", () => {
+        cy.setupAdminSession();
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get("#loginAsUser").click();
+        cy.get(".bootbox.modal .btn-warning").click();
+        cy.get("#impersonationBanner").should("be.visible");
+
+        cy.dbQuery("UPDATE config_cfg SET cfg_value = '0' WHERE cfg_name = 'bAllowLoginAsUser'").then((r) =>
+            expect(r.error).to.eq(null),
+        );
+        cy.get("#impersonationExit").click();
+        cy.url().should("include", `/v2/user/${TARGET_USER_ID}`);
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.get(".navbar").should("contain.text", "Church Admin");
+        cy.get("#loginAsUser").should("not.exist");
+    });
+});
+
+describe("Login as User two-factor rule", () => {
+    after(() => {
+        setTwoFactorAdminSecret(null);
+    });
+
+    it("refuses a user with 2FA when the administrator has no 2FA", () => {
+        cy.setupAdminSession();
+        cy.visit(`/v2/user/${TWOFA_TARGET_USER_ID}`);
+        cy.get("#loginAsUser").should("be.disabled");
+        cy.get("#loginAsUserRefusal").should("have.text", TARGET_HAS_2FA_ADMIN_HAS_NONE);
+        cy.get("#impersonateForm").should("not.exist");
+
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get('#impersonateForm input[name="csrf_token"]')
+            .invoke("val")
+            .then((token) => {
+                cy.request({
+                    method: "POST",
+                    url: `/v2/user/${TWOFA_TARGET_USER_ID}/impersonate`,
+                    form: true,
+                    body: { csrf_token: token },
+                    headers: { Accept: "application/json" },
+                    failOnStatusCode: false,
+                }).then((response) => {
+                    expect(response.status).to.eq(403);
+                    expect(response.body.message).to.eq(TARGET_HAS_2FA_ADMIN_HAS_NONE);
+                });
+            });
+        cy.visit("/v2/dashboard");
+        cy.get("#impersonationBanner").should("not.exist");
+    });
+
+    it("refuses it when the administrator has 2FA but did not sign in with it", () => {
+        setTwoFactorAdminSecret(null);
+        formLogin(TWOFA_ADMIN_LOGIN, TWOFA_ADMIN_PASSWORD);
+        cy.url().should("include", "/v2/dashboard");
+        setTwoFactorAdminSecret(TWOFA_ADMIN_SECRET_ENCRYPTED);
+
+        cy.visit(`/v2/user/${TWOFA_TARGET_USER_ID}`);
+        cy.get("#loginAsUser").should("be.disabled");
+        cy.get("#loginAsUserRefusal").should("have.text", TARGET_HAS_2FA_SESSION_WITHOUT);
+
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get('#impersonateForm input[name="csrf_token"]')
+            .invoke("val")
+            .then((token) => {
+                cy.request({
+                    method: "POST",
+                    url: `/v2/user/${TWOFA_TARGET_USER_ID}/impersonate`,
+                    form: true,
+                    body: { csrf_token: token },
+                    headers: { Accept: "application/json" },
+                    failOnStatusCode: false,
+                }).then((response) => {
+                    expect(response.status).to.eq(403);
+                    expect(response.body.message).to.eq(TARGET_HAS_2FA_SESSION_WITHOUT);
+                });
+            });
+    });
+
+    it("allows it after the administrator signed in with their own 2FA code, also after an exit", () => {
+        setTwoFactorAdminSecret(TWOFA_ADMIN_SECRET_ENCRYPTED);
+        formLogin(TWOFA_ADMIN_LOGIN, TWOFA_ADMIN_PASSWORD);
+        cy.url().should("include", "/session/two-factor");
+        cy.wrap(null).then(() => totp(TWOFA_ADMIN_SECRET)).then((code) => {
+            cy.get("#TwoFACode").type(`${code}{enter}`);
+        });
+        cy.url().should("include", "/v2/dashboard");
+
+        for (let round = 0; round < 2; round++) {
+            cy.visit(`/v2/user/${TWOFA_TARGET_USER_ID}`);
+            cy.get("#loginAsUserRefusal").should("not.exist");
+            cy.get("#loginAsUser").should("not.be.disabled").click();
+            cy.get(".bootbox.modal .btn-warning").click();
+            cy.get("#impersonationBanner").should("be.visible");
+            cy.get("#impersonationExit").click();
+            cy.url().should("include", `/v2/user/${TWOFA_TARGET_USER_ID}`);
+            cy.get("#impersonationBanner").should("not.exist");
+        }
+    });
+});
+
+describe("Login as User history", () => {
+    const createdNoteIds = [];
+
+    after(() => {
+        cy.clearCookies();
+        cy.cleanupNotes(createdNoteIds);
+    });
+
+    it("records each write with the administrator and lists it on both users' pages", () => {
+        cy.setupAdminSession();
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get("#loginAsUser").click();
+        cy.get(".bootbox.modal .btn-warning").click();
+        cy.get("#impersonationBanner").should("be.visible");
+
+        cy.request({
+            method: "POST",
+            url: "/api/person/2/note",
+            body: { text: "Written during Login as User" },
+        }).then((response) => {
+            expect(response.status).to.eq(201);
+            createdNoteIds.push(response.body.note.id);
+            cy.dbQuery("SELECT nte_EnteredBy FROM note_nte WHERE nte_ID = ?", [response.body.note.id])
+                .its("rows.0.nte_EnteredBy")
+                .should("eq", TARGET_USER_ID);
+        });
+        cy.request({
+            method: "POST",
+            url: "/PersonEditor.php?PersonID=2&token=not-recorded",
+            form: true,
+            body: {},
+        });
+
+        cy.get("#impersonationExit").click();
+        cy.url().should("include", `/v2/user/${TARGET_USER_ID}`);
+
+        latestMasqueradeSession().then((session) => {
+            expect(session.ums_admin_usr_ID).to.eq(ADMIN_USER_ID);
+            expect(session.ums_target_usr_ID).to.eq(TARGET_USER_ID);
+            expect(session.ums_EndReason).to.eq("exit");
+            cy.dbQuery(
+                "SELECT uma_Method, uma_Path, uma_Status FROM user_masquerade_action_uma WHERE uma_ums_ID = ? ORDER BY uma_ID",
+                [session.ums_ID],
+            ).then((r) => {
+                expect(r.rows).to.deep.equal([
+                    { uma_Method: "POST", uma_Path: "/api/person/2/note", uma_Status: 201 },
+                    { uma_Method: "POST", uma_Path: "/PersonEditor.php", uma_Status: 200 },
+                ]);
+            });
+
+            for (const userId of [TARGET_USER_ID, ADMIN_USER_ID]) {
+                cy.visit(`/v2/user/${userId}`);
+                cy.get(`#loginAsUserHistory [data-session-id="${session.ums_ID}"]`).within(() => {
+                    cy.contains(`Church Admin logged in as ${TARGET_USER_NAME}`);
+                    cy.get('[data-cy="login-as-user-end-reason"]').should("have.text", "Exited");
+                    cy.get('[data-cy="login-as-user-action"]').should("have.length", 2);
+                    cy.get('[data-cy="login-as-user-action"]').eq(0).should("contain.text", "POST /api/person/2/note");
+                    cy.get('[data-cy="login-as-user-action"]').eq(0).should("contain.text", "201");
+                    cy.get('[data-cy="login-as-user-action"]').eq(1).should("contain.text", "POST /PersonEditor.php");
+                    cy.root().should("not.contain.text", "not-recorded");
+                });
+            }
+        });
+    });
+
+    it("is not shown to the user themselves", () => {
+        cy.setupStandardSession();
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get("#tab-account").should("exist");
+        cy.get("#loginAsUserHistory").should("not.exist");
     });
 });

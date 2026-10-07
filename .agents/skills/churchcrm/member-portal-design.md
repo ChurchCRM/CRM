@@ -158,7 +158,7 @@ lines off), and every name below is greppable.
 | Team-scoped ministry management | `VolunteerAuthorizationService` (`canManageTeam`, `getManagedTeamIds`), team-level APIs | **Reuse** | The scope model already narrows at query level; only the short-circuit for self-service accounts goes (P17). |
 | Church identity | `ChurchMetaData` | **Reuse** | Exposed to every template as `church`. |
 | Plugins in the portal | `PluginManager::getPluginHeadContent()`, `Hooks` | **Reuse + one new hook** | `Hooks::PORTAL_NAV_BUILDING` lets a plugin add a portal nav item. |
-| Impersonation banner | `Include/ImpersonationBanner.php` (#9843) | **Reuse** | Rendered by the portal layout, so "Login as User" shows the portal exactly as the member sees it. |
+| Impersonation banner | `Include/ImpersonationBanner.php` (#9843) | **Reuse** | Rendered by the portal layout, so "Login as User" shows the portal exactly as the member sees it. Login as User is off unless Admin → System Users → Allow Login as User is on, and every portal write made during it is recorded against the administrator (`MasqueradeActionMiddleware`, applied by `MvcAppFactory`). |
 | Config storage and API | `ConfigItem`, `config_cfg`, `POST /admin/api/system/config/{name}` | **Reuse** | The Member Portal admin page reads and writes through them (P9). |
 | Admin page pattern | `src/admin/` MVC module (`routes/system.php`, `views/*.php`) | **Reuse** | `/admin/member-portal` is one more admin route + view. |
 | i18n | `gettext` in templates, `i18next` in TS, `locale-loader` | **Reuse** | Twig gets `gettext`/`ngettext`; `Include/themes/default/templates/**/*.twig` joins the extraction globs. |

@@ -27,6 +27,7 @@ class LocalAuthentication implements IAuthenticationProvider
     private ?bool $bPendingTwoFactorAuth = null;
     private ?int $tPendingTwoFactorStarted = null;
     private bool $authenticated = false;
+    private bool $twoFactorVerified = false;
     private ?int $tLastOperationTimestamp = null;
 
     public function __serialize(): array
@@ -38,6 +39,7 @@ class LocalAuthentication implements IAuthenticationProvider
             'bPendingTwoFactorAuth' => $this->bPendingTwoFactorAuth,
             'tPendingTwoFactorStarted' => $this->tPendingTwoFactorStarted,
             'authenticated' => $this->authenticated,
+            'twoFactorVerified' => $this->twoFactorVerified,
             'tLastOperationTimestamp' => $this->tLastOperationTimestamp,
         ];
     }
@@ -49,6 +51,7 @@ class LocalAuthentication implements IAuthenticationProvider
         $this->bPendingTwoFactorAuth = $data['bPendingTwoFactorAuth'] ?? null;
         $this->tPendingTwoFactorStarted = $data['tPendingTwoFactorStarted'] ?? null;
         $this->authenticated = $data['authenticated'] ?? false;
+        $this->twoFactorVerified = $data['twoFactorVerified'] ?? false;
         $this->tLastOperationTimestamp = $data['tLastOperationTimestamp'] ?? null;
     }
 
@@ -101,7 +104,18 @@ class LocalAuthentication implements IAuthenticationProvider
         }
         $this->setCurrentUser(null);
         $this->authenticated = false;
+        $this->twoFactorVerified = false;
         $this->bPendingTwoFactorAuth = false;
+    }
+
+    /**
+     * True when this session was signed in with a two-factor code (or a recovery
+     * code). Login as User (#9843) requires it before an administrator may sign in
+     * as a user who has two-factor authentication.
+     */
+    public function isTwoFactorVerified(): bool
+    {
+        return $this->authenticated && $this->twoFactorVerified;
     }
 
     /**
@@ -178,11 +192,12 @@ class LocalAuthentication implements IAuthenticationProvider
      * would be worse: it leaves the *previous* identity reachable on the old
      * id until GC.
      */
-    public function establishSessionAsUser(User $user): void
+    public function establishSessionAsUser(User $user, bool $twoFactorVerified = false): void
     {
         $this->setCurrentUser($user);
         $this->bPendingTwoFactorAuth = false;
         $this->tPendingTwoFactorStarted = null;
+        $this->twoFactorVerified = $twoFactorVerified;
         $this->establishSessionForUser();
     }
 
@@ -199,12 +214,13 @@ class LocalAuthentication implements IAuthenticationProvider
             // A real login starts a new identity in this session: drop any masquerade
             // record left behind by an earlier session (e.g. one that timed out),
             // otherwise exiting it would restore the stored administrator (#9843).
-            ImpersonationService::clear();
+            ImpersonationService::clear(ImpersonationService::END_SIGNOUT);
             // Only a completed login may leave a user on the provider. A failed or
             // pending attempt must not, or validateUserSessionIsActive() could treat
             // the half-authenticated session as a logged-in one.
             $this->setCurrentUser(null);
             $this->authenticated = false;
+            $this->twoFactorVerified = false;
             $this->bPendingTwoFactorAuth = false;
             $user = UserQuery::create()->findOneByUserName($AuthenticationRequest->username);
             if ($user === null) {
@@ -293,11 +309,13 @@ class LocalAuthentication implements IAuthenticationProvider
             if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
+                $this->twoFactorVerified = true;
                 $this->bPendingTwoFactorAuth = false;
                 LoggerUtils::getAuthLogger()->info('User successfully logged in with 2FA', $logCtx);
             } elseif ($this->currentUser->isTwoFaRecoveryCodeValid($AuthenticationRequest->TwoFACode)) {
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
+                $this->twoFactorVerified = true;
                 $this->bPendingTwoFactorAuth = false;
                 LoggerUtils::getAuthLogger()->info('User successfully logged in with 2FA Recovery Code', $logCtx);
             } else {
@@ -368,7 +386,7 @@ class LocalAuthentication implements IAuthenticationProvider
             if ((time() - $this->tLastOperationTimestamp) > SystemConfig::getIntValue('iSessionTimeout')) {
                 LoggerUtils::getAuthLogger()->debug('User session timed out', $logCtx);
                 // A timed-out masquerade must not be resumable as the administrator.
-                ImpersonationService::clear();
+                ImpersonationService::clear(ImpersonationService::END_TIMEOUT);
                 $authenticationResult->isAuthenticated = false;
 
                 return $authenticationResult;

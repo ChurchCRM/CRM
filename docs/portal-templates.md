@@ -204,19 +204,21 @@ Facts about this request and this installation.
 | `locale` | string | e.g. `en_US` |
 | `isRTL` | bool | Right-to-left locale |
 | `colorMode` | string | `auto`, `light` or `dark` — the member's own choice |
-| `impersonating` | bool | `true` while an administrator is signed in as this member |
+| `impersonating` | bool | `true` while an administrator is signed in as this member with Login as User. That only happens when **Admin → System Users → Allow Login as User** is on; each change made during it is listed in the Login as User history on both users' pages |
 | `developerMode` | bool | `true` when the template cache is off |
 | `hasThemeCss` | bool | Whether a `theme.css` is available to link |
 | `hasThemeJs` | bool | Whether a `theme.js` is available to load |
+| `impersonationBanner` | HTML | The Login as User banner with its exit control; empty unless `impersonating` |
 | `pluginHead` | HTML | The `<head>` content enabled plugins inject — print it verbatim |
 | `pluginFooter` | HTML | The footer content enabled plugins inject — print it verbatim |
 | `bootstrapJson` | JSON | The `window.CRM` seed the core bundles expect |
 | `localeConfigJson` | JSON | The argument for `window.CRM.loadLocaleFiles(…)` |
 
-The last four are pre-rendered fragments the layout emits as-is. Print them
+The last five are pre-rendered fragments the layout emits as-is. Print them
 without `|escape` and without `|raw` — they are already marked safe. If you
-override `layout.html.twig`, keep emitting all four, or plugins and translations
-will stop working on your pages.
+override `layout.html.twig`, keep emitting all five, or plugins and translations
+will stop working on your pages, and an administrator signed in as a member
+will have no way back to their own account.
 
 ---
 

@@ -330,6 +330,8 @@ class   SystemConfig
             'i2FAGracePeriodDays'                  => new ConfigItem('i2FAGracePeriodDays', 'number', '7', gettext('Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately.')),
             's2FAApplicationName'                  => new ConfigItem('s2FAApplicationName', 'text', 'ChurchCRM', gettext('Specify the application name to be displayed in authenticator app')),
             'sTwoFASecretKey'                      => new ConfigItem('sTwoFASecretKey', 'password', '', gettext('Encryption key for storing 2FA secret keys in the database')),
+            // Admin → System Users settings panel only (UserService::getUserSettingsConfig()); never in buildCategories().
+            'bAllowLoginAsUser'                    => new ConfigItem('bAllowLoginAsUser', 'boolean', '0', gettext("Allow Login as User\nLet an administrator sign in as a user who is not an administrator, to see ChurchCRM as that user does. Every session and every change made during it is listed on both users' pages.")),
             'bSendUserDeletedEmail'                => new ConfigItem('bSendUserDeletedEmail', 'boolean', '0', gettext('Send an email notifying users when their account has been deleted')),
             'sInactiveClassification'              => new ConfigItem('sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),

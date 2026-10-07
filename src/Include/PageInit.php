@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\FunctionsUtils;
@@ -16,6 +17,7 @@ $systemService = new SystemService();
 // Basic security checks:
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
+    ImpersonationService::recordLegacyRequest();
 
     // Confine EditSelf-only users to the Member Portal — every legacy page is
     // part of the admin shell, which a self-service account never sees (#9863).

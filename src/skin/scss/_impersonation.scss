@@ -9,6 +9,13 @@
     --impersonation-bar-height: 2.5rem;
 }
 
+// The sentence wraps to two lines on a phone.
+@media (max-width: 575.98px) {
+    :root {
+        --impersonation-bar-height: 3rem;
+    }
+}
+
 .impersonation-bar {
     position: fixed;
     top: 0;
@@ -42,9 +49,17 @@ body.impersonating {
     padding-top: var(--impersonation-bar-height);
 }
 
-body.impersonating .navbar.sticky-top,
-body.impersonating .navbar-vertical {
+body.impersonating .navbar.sticky-top {
     top: var(--impersonation-bar-height);
+}
+
+// The sidebar is fixed only where it expands (navbar-expand-xl). Below that it is
+// in the page flow, the body padding already clears the bar, and an extra offset
+// slid it under the sticky topbar.
+@media (min-width: 1200px) {
+    body.impersonating .navbar-vertical {
+        top: var(--impersonation-bar-height);
+    }
 }
 
 // The auth-flow layout (HeaderNotLoggedIn.php — login, password reset, 404, the
