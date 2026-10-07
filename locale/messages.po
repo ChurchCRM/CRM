@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-06 22:44+0000\n"
+"POT-Creation-Date: 2026-10-07 05:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -489,9 +489,6 @@ msgid "A household. Stores the shared mailing address and home phone."
 msgstr ""
 
 msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
-msgstr ""
-
-msgid "A masquerade is already in progress. Exit it before starting another."
 msgstr ""
 
 msgid "A minimum count is required"
@@ -5691,12 +5688,6 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
-msgid "Exit and return to your own account"
-msgstr ""
-
-msgid "Exit to your account"
-msgstr ""
-
 msgid "Expand"
 msgstr ""
 
@@ -8629,9 +8620,6 @@ msgstr ""
 msgid "Log Settings"
 msgstr ""
 
-msgid "Log in as {{name}}? Everything you do until you exit is done as them and is logged."
-msgstr ""
-
 msgid "Log level + message"
 msgstr ""
 
@@ -8651,9 +8639,6 @@ msgid "Login Name is required"
 msgstr ""
 
 msgid "Login already in use, please select a different login!"
-msgstr ""
-
-msgid "Login as User"
 msgstr ""
 
 #, php-format
@@ -9902,9 +9887,6 @@ msgstr ""
 msgid "No longer needed"
 msgstr ""
 
-msgid "No masquerade is in progress."
-msgstr ""
-
 msgid "No match found — check the street address, city, and ZIP"
 msgstr ""
 
@@ -10038,9 +10020,6 @@ msgid "No substitution requests"
 msgstr ""
 
 msgid "No substitutions to decide"
-msgstr ""
-
-msgid "No such user."
 msgstr ""
 
 msgid "No teams yet"
@@ -14889,9 +14868,6 @@ msgstr ""
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr ""
 
-msgid "This action requires an interactive session."
-msgstr ""
-
 msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
 msgstr ""
 
@@ -16875,10 +16851,6 @@ msgstr ""
 msgid "You are already helping that day as {{what}}. Sign up for this as well?"
 msgstr ""
 
-#, php-format
-msgid "You are logged in as %s. Actions are recorded as them."
-msgstr ""
-
 msgid "You are not allowed to change this. Please contact the church office."
 msgstr ""
 
@@ -16923,12 +16895,6 @@ msgid "You can review or change this on your volunteer schedule."
 msgstr ""
 
 msgid "You can still proceed with the upgrade without viewing release notes."
-msgstr ""
-
-msgid "You cannot log in as another administrator."
-msgstr ""
-
-msgid "You cannot log in as yourself."
 msgstr ""
 
 msgid "You cannot open this page"
