@@ -123,6 +123,17 @@ class DropdownManager {
       el.tomselect.destroy();
     }
 
+    if (!countryCode) {
+      stateSelect.empty();
+      if (config.stateOptionDivId) {
+        $(`#${config.stateOptionDivId}`).addClass("d-none");
+      }
+      if (config.stateInputDivId) {
+        $(`#${config.stateInputDivId}`).removeClass("d-none");
+      }
+      return;
+    }
+
     // Fetch and populate states
     $.ajax({
       type: "GET",

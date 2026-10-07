@@ -51,5 +51,8 @@ describe("Address defaults fall back to the church address", () => {
             .first()
             .should("have.value", "");
         cy.get("#Country").should("have.value", "");
+        cy.get("#stateInputDiv").should("not.have.class", "d-none");
+        cy.get("#stateOptionDiv").should("have.class", "d-none");
+        cy.contains("Unable to load state list").should("not.exist");
     });
 });
