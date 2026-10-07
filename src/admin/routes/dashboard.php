@@ -100,7 +100,7 @@ $app->get('/', function (Request $request, Response $response) {
                 'done'  => $hasHttps,
                 'label' => gettext('Enable HTTPS'),
                 'desc'  => gettext('Install a TLS/SSL certificate for secure connections'),
-                'link'  => 'https://docs.churchcrm.io/installation/ssl-https',
+                'link'  => SystemURLs::attributed('https://docs.churchcrm.io/installation/ssl-https', 'admin_checklist_https'),
                 'icon'  => 'fa-lock',
             ],
             [
