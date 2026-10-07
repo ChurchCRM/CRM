@@ -705,4 +705,134 @@ describe("Volunteer v2 — every occurrence anchored to a calendar event (D20), 
             });
         });
     });
+
+    describe("Volunteer v2 — an occurrence's date follows its event (#10371)", () => {
+        const LEAD_HOURS_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
+        let originalLeadHours = null;
+
+        before(() => {
+            cy.makePrivateAdminAPICall("GET", LEAD_HOURS_URL, null, 200).then((resp) => {
+                originalLeadHours = resp.body.value ?? "";
+            });
+        });
+
+        after(() => {
+            if (originalLeadHours !== null) {
+                cy.makePrivateAdminAPICall("POST", LEAD_HOURS_URL, { value: originalLeadHours }, 200);
+            }
+        });
+
+        /** A ministry event `offsetDays` out with a schedule following it; resolves to its one occurrence. */
+        function followedEvent(title, offsetDays) {
+            return makeEvent(title, offsetDays, { ministryId: ministryA }).then((eventId) =>
+                createSchedule(scheduleBody({ name: title, linkMode: "ministry", titleFilter: title })).then((schedule) =>
+                    occurrencesOf(schedule.id).then((rows) => {
+                        expect(rows).to.have.length(1);
+                        expect(rows[0].occurrenceDate).to.eq(isoDate(offsetDays));
+                        return { eventId, schedule, occurrence: rows[0] };
+                    }),
+                ),
+            );
+        }
+
+        function moveEvent(eventId, offsetDays) {
+            return api(ADMIN_KEY, "POST", `/api/events/${eventId}`, {
+                Start: `${isoDate(offsetDays)} 10:30:00`,
+                End: `${isoDate(offsetDays)} 11:45:00`,
+            });
+        }
+
+        function readOccurrence(id) {
+            return api(ADMIN_KEY, "GET", `${URL}/occurrences/${id}`).then((resp) => resp.body.occurrence);
+        }
+
+        function listedIds(scheduleId, fromOffset, toOffset) {
+            return api(
+                ADMIN_KEY,
+                "GET",
+                `${URL}/occurrences?from=${isoDate(fromOffset)}&to=${isoDate(toOffset)}&scheduleId=${scheduleId}`,
+            ).then((resp) => resp.body.occurrences.map((row) => row.id));
+        }
+
+        function runTimerJobs() {
+            return api(ADMIN_KEY, "POST", "/api/background/timerjobs", { force: true }).then((resp) => {
+                expect(resp.body.ran, "the timer jobs ran").to.eq(true);
+            });
+        }
+
+        it("moves the occurrence to the new day when the events API moves its event", () => {
+            followedEvent(`${PREFIX} Moving Day`, 5).then(({ eventId, schedule, occurrence }) => {
+                moveEvent(eventId, 20);
+                readOccurrence(occurrence.id).then((moved) => {
+                    expect(moved.start).to.eq(`${isoDate(20)} 10:30:00`);
+                    expect(moved.occurrenceDate).to.eq(isoDate(20));
+                });
+                listedIds(schedule.id, 18, 22).then((ids) => {
+                    expect(ids, "listed in the event's new week").to.include(occurrence.id);
+                });
+                listedIds(schedule.id, 3, 7).then((ids) => {
+                    expect(ids, "gone from its old week").to.not.include(occurrence.id);
+                });
+            });
+        });
+
+        it("keeps the date of an occurrence that is already history (§2.9)", () => {
+            followedEvent(`${PREFIX} History Day`, 7).then(({ eventId, occurrence }) => {
+                dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_OccurrenceDate = ? WHERE vocc_ID = ?`, [isoDate(-2), occurrence.id]);
+                moveEvent(eventId, 9);
+                readOccurrence(occurrence.id).then((kept) => {
+                    expect(kept.start).to.eq(`${isoDate(9)} 10:30:00`);
+                    expect(kept.occurrenceDate).to.eq(isoDate(-2));
+                });
+            });
+        });
+
+        it("catches a move made outside the API at the next daily top-up", () => {
+            followedEvent(`${PREFIX} Imported Day`, 6).then(({ eventId, occurrence }) => {
+                dbOk(`UPDATE events_event SET event_start = ?, event_end = ? WHERE event_id = ?`, [
+                    `${isoDate(13)} 10:30:00`,
+                    `${isoDate(13)} 11:45:00`,
+                    eventId,
+                ]);
+                readOccurrence(occurrence.id).then((stale) => {
+                    expect(stale.occurrenceDate, "SQL fires no model hook").to.eq(isoDate(6));
+                });
+                runTimerJobs();
+                readOccurrence(occurrence.id).then((healed) => {
+                    expect(healed.occurrenceDate).to.eq(isoDate(13));
+                });
+            });
+        });
+
+        it("reminds the volunteer once the event moves inside the reminder window", () => {
+            followedEvent(`${PREFIX} Reminder Day`, 20).then(({ eventId, occurrence }) => {
+                dbOk(
+                    `INSERT IGNORE INTO volunteer_qualification_vqal (vqal_per_ID, vqal_vpos_ID, vqal_Active, vqal_GrantedDate) VALUES (?, ?, 1, NOW())`,
+                    [PERSON_VOLUNTEER, positionA1],
+                );
+                api(ADMIN_KEY, "POST", `${URL}/occurrences/${occurrence.id}/assignments`, {
+                    positionId: positionA1,
+                    personId: PERSON_VOLUNTEER,
+                    allowOutsidePool: true,
+                }, 201).then((resp) => {
+                    const reminderKey = `reminder:${resp.body.assignment.id}:${PERSON_VOLUNTEER}`;
+                    const reminders = () =>
+                        dbOk(`SELECT vntf_ScheduledFor FROM volunteer_notification_vntf WHERE vntf_DedupeKey = ?`, [reminderKey]);
+
+                    cy.makePrivateAdminAPICall("POST", LEAD_HOURS_URL, { value: "48" }, 200);
+                    runTimerJobs();
+                    reminders().then((rows) => {
+                        expect(rows, "20 days out is outside the window").to.have.length(0);
+                    });
+
+                    moveEvent(eventId, 1);
+                    runTimerJobs();
+                    reminders().then((rows) => {
+                        expect(rows).to.have.length(1);
+                        expect(rows[0].vntf_ScheduledFor).to.eq(shifted(`${isoDate(1)} 10:30:00`, -48 * 60));
+                    });
+                });
+            });
+        });
+    });
 });

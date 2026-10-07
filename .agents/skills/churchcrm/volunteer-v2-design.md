@@ -906,18 +906,20 @@ the row assignments hang off.
 start and end are read **lazily at render time** from the event row plus the schedule's offsets
 (`VolunteerScheduleService::resolveOccurrenceWindow()`: `event_start + vsch_StartOffsetMinutes`,
 `event_end + vsch_EndOffsetMinutes`; a shift whose offsets cross on a short event ends at its start).
-There is deliberately no denormalised copy, so there is no synchronisation problem to solve and no
-`EVENT_UPDATED` hook to add (E11): moving the event, or changing the offsets, moves the shift — and
-the reminder, the emails and every page with it. `vocc_OccurrenceDate` (`DATE`) is copied from the
-event as a cheap sort/filter key; after an event is deleted (E12) it is the only date left, and the
-occurrence has a date and no times.
+There is deliberately no denormalised copy of the times (E11): moving the event, or changing the
+offsets, moves the shift — and the reminder, the emails and every page with it. `vocc_OccurrenceDate`
+(`DATE`) is copied from the event's start as the sort/filter key of every list, gap count and the
+reminder scan, so it follows the event (#10371): `Event::postUpdate()` moves the occurrences of the
+saved event to its new day, and the daily top-up does the same for events moved by SQL or an import.
+An occurrence dated before today keeps its date. After an event is deleted (E12) it is the only date
+left, and the occurrence has a date and no times.
 
 | Column | phpName | Type | Notes |
 |---|---|---|---|
 | `vocc_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vocc_vsch_ID` | `ScheduleId` | `INTEGER` required | FK → schedule, `ON DELETE CASCADE` |
 | `vocc_event_id` | `EventId` | `INTEGER` null | FK → `events_event.event_id`, **`ON DELETE SET NULL`**. Nullable only so a deleted event leaves the service history behind; the service sets it on every insert. |
-| `vocc_OccurrenceDate` | `OccurrenceDate` | `DATE` required | the event's date at generation; see above |
+| `vocc_OccurrenceDate` | `OccurrenceDate` | `DATE` required | the event's start date, kept in step with it until the day passes; see above |
 | `vocc_Status` | `Status` | `enum('scheduled','cancelled')` required default `'scheduled'` | a coordinator may cancel one occurrence without touching the schedule |
 | `vocc_Notes` | `Notes` | `VARCHAR(255)` null | |
 | `vocc_GeneratedDate` | `GeneratedDate` | `DATETIME` required | |
