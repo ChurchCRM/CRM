@@ -12,7 +12,7 @@
   Its items, in order:
     1. Email History — what the church has emailed this member
     2. Change Password
-    3. Admin Console — staff logins only
+    3. Admin Console — staff logins only, never during a masquerade
     4. Sign out
 #}
 <header class="portal-header">
@@ -51,17 +51,32 @@
                         <span>{{ gettext('Change Password') }}</span>
                     </a>
                     {# Every staff login — not only an administrator — needs a way
-                       back to the admin area it came from. #}
-                    {% if member.isStaff %}
+                       back to the admin area it came from. Never during a
+                       masquerade: the impersonated session is the member, and its
+                       way out is the banner's own exit control. #}
+                    {% if member.isStaff and not portal.impersonating %}
                     <a class="portal-account-item" role="menuitem" href="{{ url('/v2/dashboard') }}">
                         <i class="fa-solid fa-gauge" aria-hidden="true"></i>
                         <span>{{ gettext('Admin Console') }}</span>
                     </a>
                     {% endif %}
+                    {# Signing out mid-masquerade returns the administrator to their
+                       own account, as the admin shell's user menu does (#9843);
+                       GET /session/end stays a plain logout. #}
+                    {% if portal.impersonating %}
+                    <form method="post" action="{{ url('/v2/user/impersonate/exit') }}">
+                        {{ csrf_field() }}
+                        <button type="submit" class="portal-account-item portal-account-button" role="menuitem" id="portalAccountSignOut">
+                            <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+                            <span>{{ gettext('Exit to your account') }}</span>
+                        </button>
+                    </form>
+                    {% else %}
                     <a class="portal-account-item" role="menuitem" href="{{ url('/session/end') }}" id="portalAccountSignOut">
                         <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
                         <span>{{ gettext('Sign out') }}</span>
                     </a>
+                    {% endif %}
                 </div>
             </div>
         </div>

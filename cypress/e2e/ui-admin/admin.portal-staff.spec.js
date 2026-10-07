@@ -11,7 +11,8 @@
  *
  * The fixed "You are viewing the Member Portal as yourself." bar was removed on
  * 2026-09-17 (product review): "Admin Console" does the same job without
- * spending a band of every page on it.
+ * spending a band of every page on it. The bar's offset class survives for the
+ * masquerade banner only.
  */
 before(() => {
     cy.rememberTestEnv(["admin.api.key"]);
@@ -52,6 +53,7 @@ describe("Member Portal — staff access", () => {
         cy.get(".portal-account-toggle", { timeout: 10000 }).should("be.visible");
         cy.get(".portal-staff-bar").should("not.exist");
         cy.contains("You are viewing the Member Portal as yourself.").should("not.exist");
+        cy.get("body").should("not.have.class", "portal-body-with-bar");
         cy.get("#sidebar").should("not.exist");
     });
 

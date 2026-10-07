@@ -164,6 +164,7 @@ function assertTouchTargets(label) {
             ".portal-nav-link",
             ".portal-staff-bar-exit",
             ".portal-card-link",
+            "#impersonationExit",
         ].join(",");
 
         const tooSmall = [];

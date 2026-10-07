@@ -4,6 +4,7 @@
 // RTL-flipped twin: a church theme loads on top of this file and must never be
 // flipped twice. Everything it pulls in uses logical properties only.
 @use "../../src/skin/scss/portal";
+@use "../../src/skin/scss/portal-bar";
 @use "../../src/skin/scss/portal-volunteer";
 @use "../../src/skin/scss/portal-teams";
 // The two rules the shared volunteer components depend on — the sideways-scrolling

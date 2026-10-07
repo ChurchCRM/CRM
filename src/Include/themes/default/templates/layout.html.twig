@@ -43,7 +43,22 @@
 
     {% block head_extra %}{% endblock %}
 </head>
-<body class="portal-body">
+{# `portal-body-with-bar` makes room for a bar fixed to the top of the viewport.
+   A staff login used to get one — "You are viewing the Member Portal as
+   yourself." — but the account menu's "Admin Console" entry says the same thing
+   without spending a band of every page on it, so the only bar left is the
+   masquerade banner. #}
+<body class="portal-body{% if portal.impersonating %} portal-body-with-bar{% endif %}">
+
+{% if portal.impersonating %}
+{# The masquerade banner (#9843), rendered by Include/ImpersonationBanner.php —
+   the same include both admin header layouts use, so an administrator sees the
+   same sentence and the same way back wherever they are. A pre-rendered
+   fragment: print it without |escape and without |raw. A theme overriding this
+   layout MUST keep emitting it, or an administrator acting as a member has no
+   visible way out. #}
+{{ portal.impersonationBanner }}
+{% endif %}
 
 <div class="portal-shell">
     {# The toast container. It is `position: fixed`, so it is outside the flow
