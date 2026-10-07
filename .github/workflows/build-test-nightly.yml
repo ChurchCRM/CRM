@@ -65,7 +65,7 @@ jobs:
   # Build the app + PHP 8.4 and 8.5 Docker images; upload as a shared artifact.
   # ═══════════════════════════════════════════════════════════════════════════
   build:
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
     runs-on: ubuntu-24.04
@@ -112,7 +112,7 @@ jobs:
   # ── Root-path tests: api, admin-ui, and ui (3 shards) ───────────────────
   test-root:
     needs: build
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -226,7 +226,7 @@ jobs:
   # ── Subdirectory-path tests: api, admin-ui, and ui (3 shards) ────────────
   test-subdir:
     needs: build
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -342,7 +342,7 @@ jobs:
   # ── New system setup wizard — root path (PHP 8.5) ────────────────────────
   test-new-system:
     needs: build
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -429,7 +429,7 @@ jobs:
   # ── New system setup wizard — subdirectory path (PHP 8.5) ────────────────
   test-new-system-subdir:
     needs: build
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
@@ -715,7 +715,7 @@ jobs:
   test-upgrade:
     needs: build
     name: ${{ matrix.group.name }} / PHP ${{ matrix.php-version }}
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: read
       checks: write
