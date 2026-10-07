@@ -86,7 +86,9 @@
     "Test",
     "risk",
     "Link",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Min",
+    "SMTP test"
   ],
   "fi": [
     "Azure",
@@ -678,7 +680,9 @@
     "ICS URL",
     "Online",
     "SHA1 Hash",
-    "Offline"
+    "Offline",
+    "Max",
+    "Min"
   ],
   "it": [
     "AM / PM",
