@@ -631,9 +631,9 @@
 
     <table name="user_masquerade_session_ums" idMethod="native" phpName="UserMasqueradeSession" description="One row per Login as User session (#9843): the administrator, the user they signed in as, when it started and ended, and how it ended (exit, signout or timeout). Rows are kept indefinitely; the user page lists them.">
         <column name="ums_ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="ums_admin_usr_ID" phpName="AdminUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
-        <column name="ums_target_usr_ID" phpName="TargetUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
-        <column name="ums_Started" phpName="Started" type="TIMESTAMP" required="true"/>
+        <column name="ums_admin_usr_ID" phpName="AdminUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" defaultValue="0"/>
+        <column name="ums_target_usr_ID" phpName="TargetUserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" defaultValue="0"/>
+        <column name="ums_Started" phpName="Started" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
         <column name="ums_Ended" phpName="Ended" type="TIMESTAMP"/>
         <column name="ums_EndReason" phpName="EndReason" type="VARCHAR" size="10"/>
         <index name="idx_ums_admin_usr_ID">
@@ -655,11 +655,11 @@
 
     <table name="user_masquerade_action_uma" idMethod="native" phpName="UserMasqueradeAction" description="One row per write request (any method but GET, HEAD and OPTIONS) made during a Login as User session (#9843): method, path without the query string, response status and time. The session row names the administrator who made it.">
         <column name="uma_ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="uma_ums_ID" phpName="SessionId" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true"/>
-        <column name="uma_Method" phpName="Method" type="VARCHAR" size="10" required="true"/>
-        <column name="uma_Path" phpName="Path" type="VARCHAR" size="255" required="true"/>
+        <column name="uma_ums_ID" phpName="SessionId" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true" defaultValue="0"/>
+        <column name="uma_Method" phpName="Method" type="VARCHAR" size="10" required="true" defaultValue=""/>
+        <column name="uma_Path" phpName="Path" type="VARCHAR" size="255" required="true" defaultValue=""/>
         <column name="uma_Status" phpName="Status" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"/>
-        <column name="uma_Time" phpName="Time" type="TIMESTAMP" required="true"/>
+        <column name="uma_Time" phpName="Time" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
         <index name="idx_uma_ums_ID">
             <index-column name="uma_ums_ID"/>
         </index>
