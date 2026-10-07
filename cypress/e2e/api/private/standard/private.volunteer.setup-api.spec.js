@@ -75,6 +75,15 @@ function setVersion(value) {
     cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
 }
 
+/** `YYYY-MM-DD`, `offsetDays` from today; the root hooks put the browser in the church's time zone. */
+function isoDate(offsetDays) {
+    const d = new Date();
+    d.setHours(12, 0, 0, 0);
+    d.setDate(d.getDate() + offsetDays);
+    const pad = (n) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
 /**
  * Delete every row this spec could have created, children first so no foreign
  * key blocks. Scope rows carry no FK to their target (the column is
@@ -153,6 +162,11 @@ function grantMinistryScope(ministryId) {
 
 before(() => {
     cy.rememberTestEnv(["user.api.key"]);
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
 });
 
 describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
@@ -432,15 +446,15 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 dbOk(
                     `INSERT INTO volunteer_schedule_vsch
                        (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_Active)
-                     VALUES (?, ?, ?, 'ministry', '2026-09-13', 1)`,
-                    [id, teamId, `${PREFIX} Weekly`],
+                     VALUES (?, ?, ?, 'ministry', ?, 1)`,
+                    [id, teamId, `${PREFIX} Weekly`, isoDate(-7)],
                 ).then((scheduleRows) => {
                     const scheduleId = scheduleRows.insertId;
                     dbOk(
                         `INSERT INTO volunteer_occurrence_vocc
                            (vocc_vsch_ID, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
-                         VALUES (?, '2026-09-13', 'scheduled', NOW())`,
-                        [scheduleId],
+                         VALUES (?, ?, 'scheduled', NOW())`,
+                        [scheduleId, isoDate(-7)],
                     ).then((occurrenceRows) => {
                         const occurrenceId = occurrenceRows.insertId;
                         dbOk(
@@ -713,8 +727,8 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 dbOk(
                     `INSERT INTO volunteer_schedule_vsch
                        (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_Active)
-                     VALUES (?, ?, ?, 'ministry', '2026-09-13', 1)`,
-                    [ministryA, teamA, `${PREFIX} Team Weekly`],
+                     VALUES (?, ?, ?, 'ministry', ?, 1)`,
+                    [ministryA, teamA, `${PREFIX} Team Weekly`, isoDate(-7)],
                 ).then((scheduleRows) => {
                     const scheduleId = scheduleRows.insertId;
                     dbOk(
@@ -725,8 +739,8 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                     dbOk(
                         `INSERT INTO volunteer_occurrence_vocc
                            (vocc_vsch_ID, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
-                         VALUES (?, '2026-09-13', 'scheduled', NOW())`,
-                        [scheduleId],
+                         VALUES (?, ?, 'scheduled', NOW())`,
+                        [scheduleId, isoDate(-7)],
                     ).then((occurrenceRows) => {
                         const occurrenceId = occurrenceRows.insertId;
                         // Past service history: the delete removes it on purpose.
@@ -1025,8 +1039,8 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 dbOk(
                     `INSERT INTO volunteer_schedule_vsch
                        (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_Active)
-                     VALUES (?, ?, ?, 'ministry', '2026-09-13', 1)`,
-                    [ministryA, homeTeamId, `${PREFIX} Position Weekly`],
+                     VALUES (?, ?, ?, 'ministry', ?, 1)`,
+                    [ministryA, homeTeamId, `${PREFIX} Position Weekly`, isoDate(-7)],
                 ).then((scheduleRows) => {
                     const scheduleId = scheduleRows.insertId;
                     dbOk(
@@ -1037,8 +1051,8 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                     dbOk(
                         `INSERT INTO volunteer_occurrence_vocc
                            (vocc_vsch_ID, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
-                         VALUES (?, '2026-09-13', 'scheduled', NOW())`,
-                        [scheduleId],
+                         VALUES (?, ?, 'scheduled', NOW())`,
+                        [scheduleId, isoDate(-7)],
                     ).then((occurrenceRows) => {
                         const occurrenceId = occurrenceRows.insertId;
                         dbOk(

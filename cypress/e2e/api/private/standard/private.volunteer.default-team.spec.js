@@ -75,10 +75,17 @@ function cleanupFixtures() {
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${PREFIX}%`]);
 }
 
-function makeUpcomingService() {
+/** `YYYY-MM-DD`, `offsetDays` from today; the root hooks put the browser in the church's time zone. */
+function isoDate(offsetDays) {
     const d = new Date();
-    d.setDate(d.getDate() + 10);
-    const day = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    d.setHours(12, 0, 0, 0);
+    d.setDate(d.getDate() + offsetDays);
+    const pad = (n) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+function makeUpcomingService() {
+    const day = isoDate(10);
     return dbOk(
         `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
          VALUES (?, ?, '', '', ?, ?, 0)`,
@@ -114,7 +121,7 @@ function scheduleBody(teamId, name) {
         linkMode: "event_type",
         eventTypeId: EVENT_TYPE_CHURCH_SERVICE,
         titleFilter: SERVICE_TITLE,
-        windowStart: "2026-09-13",
+        windowStart: isoDate(0),
     };
 }
 
@@ -348,8 +355,8 @@ describe("Volunteer v2 — every ministry has at least one team (#9701)", () => 
                 `INSERT INTO volunteer_schedule_vsch
                     (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_event_type_id,
                      vsch_WindowStart, vsch_Active)
-                 VALUES (?, NULL, ?, 'event_type', ?, '2026-09-13', 1)`,
-                [ministryId, `${PREFIX} Direct Insert`, EVENT_TYPE_CHURCH_SERVICE],
+                 VALUES (?, NULL, ?, 'event_type', ?, ?, 1)`,
+                [ministryId, `${PREFIX} Direct Insert`, EVENT_TYPE_CHURCH_SERVICE, isoDate(0)],
             ).then((result) => {
                 expect(result.error, "vsch_vtem_ID is NOT NULL").to.not.eq(null);
                 expect(result.error.message).to.contain("vsch_vtem_ID");

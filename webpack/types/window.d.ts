@@ -288,7 +288,7 @@ interface CRMNamespace {
   showPhotoLightbox?: (type: string, id: number) => void;
   avatarLoader?: unknown;
   peopleImageLoader?: unknown;
-  APIRequest?: (options: CRMAPIRequestOptions) => { done: (cb: () => void) => unknown };
+  APIRequest?: (options: CRMAPIRequestOptions) => JQuery.jqXHR;
   notify?: (message: string | object, options?: Record<string, unknown>) => void;
   notyf?: unknown;
   /** Member Portal only: show a toast in the portal's fixed top-right stack.

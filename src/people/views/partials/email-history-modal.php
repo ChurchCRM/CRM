@@ -4,10 +4,8 @@ use ChurchCRM\dto\SystemURLs;
 
 /**
  * Modal that shows one email from the history, rendered as it was sent.
- * Include once per page next to email-history-table.php. Clicks on any
- * `.email-history-open[data-email-log-id]` fetch GET /api/email/log/{id} and fill it.
- * The body is shown in a sandboxed iframe so stored HTML cannot run scripts or
- * reach the page.
+ * Include once per page next to email-history-table.php; its behaviour is the
+ * `email-history-modal` bundle (webpack/people/email-history-modal.ts).
  */
 ?>
 <div class="modal fade" id="email-history-modal" tabindex="-1" aria-labelledby="email-history-modal-title" aria-hidden="true">
@@ -37,65 +35,4 @@ use ChurchCRM\dto\SystemURLs;
         </div>
     </div>
 </div>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-(function () {
-    var modalEl = document.getElementById('email-history-modal');
-    if (!modalEl) return;
-    var root = (window.CRM && window.CRM.root) || '';
-    var statusText = {
-        sent: <?= json_encode(gettext('Sent')) ?>,
-        failed: <?= json_encode(gettext('Failed')) ?>,
-        skipped: <?= json_encode(gettext('Skipped')) ?>
-    };
-    var automatic = <?= json_encode(gettext('Automatic')) ?>;
-    var loadFailed = <?= json_encode(gettext('Could not load this email.')) ?>;
-
-    function setField(name, value) {
-        var el = modalEl.querySelector('[data-field="' + name + '"]');
-        if (el) el.textContent = value == null || value === '' ? '—' : String(value);
-    }
-
-    function show(id) {
-        var title = document.getElementById('email-history-modal-title');
-        var errorEl = document.getElementById('email-history-modal-error');
-        var noBodyEl = document.getElementById('email-history-modal-nobody');
-        var frame = document.getElementById('email-history-modal-body');
-        title.textContent = '…';
-        errorEl.classList.add('d-none');
-        noBodyEl.classList.add('d-none');
-        frame.classList.add('d-none');
-        frame.removeAttribute('srcdoc');
-        ['address', 'dateSent', 'kindLabel', 'status', 'sentBy'].forEach(function (f) { setField(f, ''); });
-        var modal = bootstrap.Modal.getOrCreateInstance(modalEl);
-        modal.show();
-
-        fetch(root + '/api/email/log/' + encodeURIComponent(id), { credentials: 'same-origin', headers: { 'Accept': 'application/json' } })
-            .then(function (res) { return res.ok ? res.json() : Promise.reject(new Error(String(res.status))); })
-            .then(function (row) {
-                title.textContent = row.subject || '';
-                setField('address', row.address);
-                setField('dateSent', row.dateSent);
-                setField('kindLabel', row.kindLabel);
-                setField('status', (statusText[row.status] || row.status) + (row.error ? ' — ' + row.error : ''));
-                setField('sentBy', row.sentBy || automatic);
-                if (row.body) {
-                    frame.classList.remove('d-none');
-                    frame.setAttribute('srcdoc', row.body);
-                } else {
-                    noBodyEl.classList.remove('d-none');
-                }
-            })
-            .catch(function () {
-                errorEl.textContent = loadFailed;
-                errorEl.classList.remove('d-none');
-            });
-    }
-
-    document.addEventListener('click', function (e) {
-        var link = e.target && e.target.closest ? e.target.closest('.email-history-open[data-email-log-id]') : null;
-        if (!link) return;
-        e.preventDefault();
-        show(link.getAttribute('data-email-log-id'));
-    });
-})();
-</script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/email-history-modal.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

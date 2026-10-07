@@ -177,23 +177,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-settings.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function () {
-    var runBtn = document.getElementById('ministry-run-jobs-btn');
-    if (runBtn) {
-        runBtn.addEventListener('click', function () {
-            runBtn.disabled = true;
-            window.CRM.APIRequest({
-                method: 'POST',
-                path: 'background/timerjobs',
-                data: JSON.stringify({ force: true })
-            }).done(function () {
-                window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('Background jobs ran')) ?>, { type: 'success' });
-                setTimeout(function () { window.location.reload(); }, 1200);
-            }).fail(function () {
-                runBtn.disabled = false;
-            });
-        });
-    }
-
     window.CRM.settingsPanel.init({
         container: '#ministrySettingsPanel',
         title: <?= InputUtils::jsonEncodeForScript(gettext('Settings')) ?>,
