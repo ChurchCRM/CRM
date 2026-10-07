@@ -527,7 +527,17 @@
     "Code",
     "Signature",
     "Classifications",
-    "Options"
+    "Options",
+    "Dates",
+    "Max",
+    "Message",
+    "Min",
+    "Notification",
+    "Notifications",
+    "Occurrences",
+    "Position",
+    "Positions",
+    "Validation"
   ],
   "hi": [
     "HTML URL",
