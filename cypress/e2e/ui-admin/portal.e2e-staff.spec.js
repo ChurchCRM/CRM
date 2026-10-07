@@ -215,6 +215,17 @@ describe("Member Portal e2e — #9869 scenario 3, staff in the portal", () => {
             assertMasqueradeBanner();
         });
 
+        it("leaves the member's last portal activity alone", () => {
+            cy.dbQuery("UPDATE user_usr SET usr_LastPortalActivity = NULL WHERE usr_per_ID = ?", [MEMBER_USER_ID]).then((r) =>
+                expect(r.error).to.eq(null),
+            );
+            cy.visit("/portal/profile");
+            assertMasqueradeBanner();
+            cy.dbQuery("SELECT usr_LastPortalActivity AS last FROM user_usr WHERE usr_per_ID = ?", [MEMBER_USER_ID]).then((r) =>
+                expect(r.rows[0].last).to.eq(null),
+            );
+        });
+
         it("keeps the banner on every page, because it is the only way back", () => {
             for (const url of MEMBER_PORTAL_PAGES) {
                 cy.visit(url);
