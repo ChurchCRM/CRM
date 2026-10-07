@@ -649,7 +649,8 @@
     "Online",
     "SHA1 Hash",
     "Test",
-    "am / pm"
+    "am / pm",
+    "Min"
   ],
   "tr": [
     "4. Kiosk",
@@ -955,7 +956,9 @@
     "Venezuela",
     "am / pm",
     "manifest.",
-    "s"
+    "s",
+    "Min",
+    "SMTP test"
   ],
   "am": [
     "HTML URL",
@@ -969,6 +972,8 @@
   ],
   "sk": [
     "SHA1 Hash",
-    "Offline"
+    "Offline",
+    "Max",
+    "Min"
   ]
 }
