@@ -747,7 +747,8 @@
     "Test",
     "am / pm",
     "Offline",
-    "Link"
+    "Link",
+    "Folder"
   ],
   "ro": [
     "AM / PM",
@@ -857,7 +858,11 @@
     "in",
     "Code",
     "Offline",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Team",
+    "Teams",
+    "Theme",
+    "Themes"
   ],
   "hr": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
