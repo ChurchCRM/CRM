@@ -157,6 +157,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <h4 class="mt-3"><?= gettext('V1 — Volunteer Opportunities (legacy)') ?></h4>
           <p class="mb-2">
             <?= gettext('A single list of opportunities, such as "Nursery" or "Greeter", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.') ?>
+            <?= gettext('Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.') ?>
           </p>
           <h4 class="mt-3"><?= gettext('V2 — Ministries') ?></h4>
           <p class="mb-2">

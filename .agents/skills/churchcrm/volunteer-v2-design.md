@@ -1238,8 +1238,8 @@ swap_resolved:{swapId}:{personId}
 - `skipped` is written (not `sent`, not `failed`) when the recipient is in the do-not-email set
   (N3) or when `SystemConfig::isEmailEnabled()` is false (N2) — so "we chose not to send" is
   distinguishable from "we tried and could not".
-- Rows for a past occurrence are never re-sent: the drain skips `reminder` rows whose occurrence has
-  already ended.
+- Rows for a past occurrence are never sent late: the drain skips any row whose occurrence has
+  already ended (#10373).
 
 ### 2.15 Scope — `volunteer_scope_vscp`
 
@@ -2008,8 +2008,8 @@ asked not to be mailed at, so the opt-out is honoured here too.
 1. Select up to `$batchSize` rows with `Status = 'pending'` and `ScheduledFor <= now()`, ordered by
    `ScheduledFor`.
 2. For each: if `!SystemConfig::isEmailEnabled()` → `skipped` (N2). If the recipient is in
-   `buildDoNotEmailSet()` → `skipped` (N3). If the person has no email → `skipped`. If the row is a
-   `reminder` whose occurrence has already ended → `skipped`.
+   `buildDoNotEmailSet()` → `skipped` (N3). If the person has no email → `skipped`. If the row is
+   about an occurrence that has already ended → `skipped`.
 3. Otherwise build the `BaseEmail` subclass (Appendix C) and `send()`. On success record `sent`
    and `SentDate`. On failure record `Attempts + 1`, `LastAttemptDate` and `LastError`, and set
    `Status` to `failed` **only if `Attempts` is now 5**; otherwise leave it `pending` so step 1
@@ -2029,7 +2029,9 @@ of an accepted default — so a pending default's `assignment` message is queued
 run's drain; an unqualified default is logged and left open. The occurrence unique key makes it
 idempotent. Its result (`{ranAt, schedules, created, failed, assigned, skipped, unqualified}`) is
 stored in `sLastVolunteerTopUpResult`, logged, and shown on Admin → Ministry Settings. A schedule that fails
-(the occurrence cap) is logged and skipped; the others still run. Nothing happens while V2 is off.
+(the occurrence cap) is logged and skipped; the others still run. Nothing happens while V2 is off:
+with `sVolunteerVersion` = `v1`, `runTimerJobs()` skips all four V2 jobs (top-up, reminders, drain,
+completion) and the rows wait for V2 to come back (#10373).
 **Run background jobs now** on Ministry Settings (`force: true`, administrators only) runs it again
 the same day; the command-line runner and the page-load trigger run it at most once a day.
 
