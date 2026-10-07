@@ -76,51 +76,51 @@
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} ber {{substitute}} att ta deras plats",
   "{{title}} on {{date}} created. Staff it now?": "{{title}} den {{date}} skapad. Bemanna den nu?",
   "\"{{name}}\": {{count}} occurrences created": {
-    "one": "",
-    "other": ""
+    "one": "\"{{name}}\": {{count}} tillfälle skapat",
+    "other": "\"{{name}}\": {{count}} tillfällen skapade"
   },
   "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "Ta bort {{count}} evenemang? Det försvinner från alla kalendrar, med sina incheckningar och antal, och denna verksamhets bemanning av det behåller bara dess datum. Detta kan inte ångras.",
+    "other": "Ta bort {{count}} evenemang? De försvinner från alla kalendrar, med sina incheckningar och antal, och denna verksamhets bemanning av dem behåller bara deras datum. Detta kan inte ångras."
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "",
-    "other": ""
+    "one": "E-post skickat till {{count}} mottagare.",
+    "other": "E-post skickat till {{count}} mottagare."
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "",
-    "other": ""
+    "one": "Inga nya tillfällen. Det {{count}} evenemanget till och med {{through}} har redan ett.",
+    "other": "Inga nya tillfällen. Alla {{count}} evenemang till och med {{through}} har redan ett."
   },
   "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "",
-    "other": ""
+    "one": "Schemat \"{{name}}\" skapat: {{count}} tillfälle",
+    "other": "Schemat \"{{name}}\" skapat: {{count}} tillfällen"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "",
-    "other": ""
+    "one": "Skickar till {{count}} mottagare. Adresser utan personpost ingår inte: {{list}}",
+    "other": "Skickar till {{count}} mottagare. Adresser utan personpost ingår inte: {{list}}"
   },
   "{{count}} could not be assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} kunde inte tilldelas",
+    "other": "{{count}} kunde inte tilldelas"
   },
   "{{count}} left open because the default is no longer qualified": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} lämnades öppen eftersom standardvolontären inte längre är kvalificerad",
+    "other": "{{count}} lämnades öppna eftersom standardvolontärerna inte längre är kvalificerade"
   },
   "{{count}} volunteers assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} volontär tilldelad",
+    "other": "{{count}} volontärer tilldelade"
   },
   "{{count}} waiting for your answer": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} väntar på ditt svar",
+    "other": "{{count}} väntar på ditt svar"
   },
   "{{count}} {{title}} events created. Staff them now?": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} {{title}}-evenemang skapat. Bemanna det nu?",
+    "other": "{{count}} {{title}}-evenemang skapade. Bemanna dem nu?"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "",
-    "other": ""
+    "one": "{{names}} bemannar dessa evenemang. Deras tillfällen skapas när de kommer inom de kommande {{count}} veckan.",
+    "other": "{{names}} bemannar dessa evenemang. Deras tillfällen skapas när de kommer inom de kommande {{count}} veckorna."
   }
 }

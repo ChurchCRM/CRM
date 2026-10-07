@@ -24,12 +24,12 @@
   "They could not be added": "De kunde inte läggas till",
   "They could not be removed from this ministry": "De kunde inte tas bort från denna verksamhet",
   "They finish %d minute after the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "De slutar %d minut efter att evenemanget slutar.",
+    "other": "De slutar %d minuter efter att evenemanget slutar."
   },
   "They finish %d minute before the event ends.": {
-    "one": "",
-    "other": ""
+    "one": "De slutar %d minut innan evenemanget slutar.",
+    "other": "De slutar %d minuter innan evenemanget slutar."
   },
   "They were already a volunteer here": "De var redan volontärer här",
   "This assignment is %1$s and cannot be changed to %2$s": "Denna tilldelning är %1$s och kan inte ändras till %2$s",
@@ -125,12 +125,12 @@
   "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed.": "Volontärer från {{names}} är tilldelade vissa av dem. Om du inte hanterar kalendern avvisas borttagningen tills den bemanningen har tagits bort.",
   "Volunteers start": "Volontärer börjar",
   "Volunteers start %d minute after the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Volontärer börjar %d minut efter att evenemanget börjar.",
+    "other": "Volontärer börjar %d minuter efter att evenemanget börjar."
   },
   "Volunteers start %d minute before the event starts.": {
-    "one": "",
-    "other": ""
+    "one": "Volontärer börjar %d minut innan evenemanget börjar.",
+    "other": "Volontärer börjar %d minuter innan evenemanget börjar."
   },
   "Waiting for a reply": "Väntar på svar",
   "Waiting for review": "Väntar på granskning",

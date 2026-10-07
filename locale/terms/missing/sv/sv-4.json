@@ -96,8 +96,8 @@
   "Occurrences": "Tillfällen",
   "Offer to help": "Erbjud hjälp",
   "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified.": {
-    "one": "",
-    "other": ""
+    "one": "En gång om dagen får varje aktivt schema tillfällen för de evenemang det följer, upp till %d vecka framåt, och varje positions standardvolontär tilldelas de nya så länge de är kvalificerade.",
+    "other": "En gång om dagen får varje aktivt schema tillfällen för de evenemang det följer, upp till %d veckor framåt, och varje positions standardvolontär tilldelas de nya så länge de är kvalificerade."
   },
   "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve.": "När den här personen är kvalificerad för en uppgift visas hen här, tillsammans med de datum hen är schemalagd att tjänstgöra.",
   "One occurrence is made for each calendar event whose Linked Group is this class.": "Ett tillfälle skapas för varje kalenderaktivitet vars Länkade grupp är den här klassen.",
@@ -140,8 +140,8 @@
   "Password reset": "Lösenordsåterställning",
   "Password reset link": "Länk till återställning av lösenord",
   "Passwords must be at least %s character long.": {
-    "one": "",
-    "other": ""
+    "one": "Lösenord måste vara minst %s tecken långa.",
+    "other": "Lösenord måste vara minst %s tecken långa."
   },
   "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead.": "Välj en kommande kalenderaktivitet och ange vem den behöver. Aktiviteten behåller sitt eget datum och sin egen tid; för att bemanna en hel serie, lägg i stället till ett schema.",
   "Pick someone who has already agreed to take your place. Your coordinator will confirm it.": "Välj någon som redan har gått med på att ta din plats. Din koordinator bekräftar det.",

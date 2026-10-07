@@ -52,40 +52,40 @@
   "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s vill hjälpa till med %2$s och har lagts till i dess volontärpool.",
   "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: Max är %2$d men %3$d standardvolontärer är valda. Ta bort en eller höj Max.",
   "%d day": {
-    "one": "",
-    "other": ""
+    "one": "%d dag",
+    "other": "%d dagar"
   },
   "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "",
-    "other": ""
+    "one": "%d standardvolontär hoppades över av annan anledning (tillfället är över, inställt eller fullt)",
+    "other": "%d standardvolontärer hoppades över av annan anledning (tillfället är över, inställt eller fullt)"
   },
   "%d default skipped: qualification revoked": {
-    "one": "",
-    "other": ""
+    "one": "%d standardvolontär hoppades över: behörigheten är återkallad",
+    "other": "%d standardvolontärer hoppades över: behörigheten är återkallad"
   },
   "%d default volunteer assigned": {
-    "one": "",
-    "other": ""
+    "one": "%d standardvolontär tilldelad",
+    "other": "%d standardvolontärer tilldelade"
   },
   "%d failed": "%d misslyckades",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "",
-    "other": ""
+    "one": "Ytterligare %d volontär behövs fortfarande för denna position. Öppna tillfället för att fylla luckan.",
+    "other": "Ytterligare %d volontärer behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
   },
   "%d new occurrence": {
-    "one": "",
-    "other": ""
+    "one": "%d nytt tillfälle",
+    "other": "%d nya tillfällen"
   },
   "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "",
-    "other": ""
+    "one": "%d volontär behövs fortfarande för ett kommande tillfälle.",
+    "other": "%d volontärer behövs fortfarande för ett kommande tillfälle."
   },
   "%s Calendar": "Kalender för %s",
   "%s Family": "Familjen %s",
   "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s tillhandahåller inga lärare till söndagsskolan, så dess team, scheman och aktiviteter kan inte använda en klass. En volontärsamordnare kan ändra det under Redigera tjänsteområde.",
   "%s email from the church": {
-    "one": "",
-    "other": ""
+    "one": "%s e-postmeddelande från kyrkan",
+    "other": "%s e-postmeddelanden från kyrkan"
   },
   "%s family": "Familjen %s",
   "%s has declined a volunteer assignment.": "%s har avböjt en volontäruppgift.",
@@ -94,12 +94,12 @@
   "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s förväntas fortfarande tjänstgöra. Kontakta koordinatorn om det inte är möjligt.",
   "%s not sent (%s): %s": "%s skickades inte (%s): %s",
   "%s person in your household": {
-    "one": "",
-    "other": ""
+    "one": "%s person i ditt hushåll",
+    "other": "%s personer i ditt hushåll"
   },
   "%s position": {
-    "one": "",
-    "other": ""
+    "one": "%s position",
+    "other": "%s positioner"
   },
   "%s: the same person is chosen twice as a default volunteer": "%s: samma person är vald två gånger som standardvolontär",
   "(no subject)": "(inget ämne)",
