@@ -48,6 +48,18 @@ final class VolunteerDailyRun
     }
 
     /**
+     * Give back today's claim after the job failed, so a later timer run tries again. Only a
+     * claim still holding `$today` is cleared.
+     */
+    public static function release(string $configName, string $today): void
+    {
+        ConfigQuery::create()
+            ->filterByName($configName)
+            ->filterByValue($today)
+            ->update(['Value' => '']);
+    }
+
+    /**
      * Written straight to `config_cfg` rather than through SystemConfig, whose per-request
      * cache would not know about a row another request inserted.
      */

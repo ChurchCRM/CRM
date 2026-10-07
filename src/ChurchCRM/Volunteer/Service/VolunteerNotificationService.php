@@ -606,10 +606,27 @@ class VolunteerNotificationService
             return 0;
         }
 
-        if (!VolunteerDailyRun::claim(self::GAP_ALERT_RUN_DATE_CONFIG, DateTimeUtils::getTodayDate()) && !$force) {
+        $today = DateTimeUtils::getTodayDate();
+        $claimed = VolunteerDailyRun::claim(self::GAP_ALERT_RUN_DATE_CONFIG, $today);
+        if (!$claimed && !$force) {
             return 0;
         }
 
+        // A scan that fails part-way gives the day back, so a later timer run enqueues
+        // what it missed; the dedupe keys keep it from repeating what it already sent.
+        try {
+            return $this->enqueueGapAlerts($leadHours);
+        } catch (\Throwable $e) {
+            if ($claimed) {
+                VolunteerDailyRun::release(self::GAP_ALERT_RUN_DATE_CONFIG, $today);
+            }
+
+            throw $e;
+        }
+    }
+
+    private function enqueueGapAlerts(int $leadHours): int
+    {
         $now = DateTimeUtils::getToday();
         $horizon = DateTimeUtils::createDateTime($now->format('Y-m-d H:i:s'))
             ->modify(sprintf('+%d hours', $leadHours));
