@@ -569,11 +569,12 @@ export function listScopes(
 }
 
 /**
- * Grant coordinator or team-leader authority. Manager-only, and idempotent by
- * the `vscp_person_scope_uidx` unique key: a repeat grant answers 200 with the
- * same row rather than 409 (§6.6). The status is not visible through this
- * client, so a caller that needs to tell "granted" from "already there" compares
- * against the list it is holding.
+ * Grant coordinator or team-leader authority. A ministry grant is manager-only;
+ * a team grant may also come from a coordinator of the team's ministry (§4.6).
+ * Idempotent by the `vscp_person_scope_uidx` unique key: a repeat grant answers
+ * 200 with the same row rather than 409 (§6.6). The status is not visible
+ * through this client, so a caller that needs to tell "granted" from "already
+ * there" compares against the list it is holding.
  */
 export function grantScope(
   personId: number,
