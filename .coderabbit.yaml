@@ -21,6 +21,15 @@ reviews:
   request_changes_workflow: true
   high_level_summary: true
   high_level_summary_in_walkthrough: true
+  high_level_summary_instructions: |
+    If the PR adds or changes user-visible behavior (a new or changed screen,
+    setting, menu item, report, or workflow), end the summary with a short,
+    non-blocking "Docs and screenshots after merge" note. It says the docs PR
+    (ChurchCRM/docs.churchcrm.io, held for the release) and the screenshots or
+    video for docs, blog and marketing still need a follow-up PR, and lists which
+    of those this PR already carries and which still need a tracking issue.
+    Skip the note for bug-fix, security, CI, locale, dependency, and
+    refactor-only PRs. Never treat it as a hard block.
   poem: false
   sequence_diagrams: false
   collapse_walkthrough: true
@@ -76,9 +85,11 @@ reviews:
       - name: Injection and escaping
         mode: error
         instructions: |
-          Fail if the PR adds RunQuery() or raw SQL, concatenates request input into
-          a query, or prints request or database values into HTML or script without
-          InputUtils escaping.
+          Fail if the PR adds RunQuery() or raw SQL in application code, concatenates
+          request input into a query, or prints request or database values into HTML
+          or script without InputUtils escaping. SQL under src/mysql/ (install and
+          upgrade scripts) and cypress/ (seed data and cy.dbQuery test fixtures) does
+          not count.
 
   auto_review:
     enabled: true

@@ -38,7 +38,7 @@ Do not wait for a review comment about CI. Failed CI is never merged.
 ## Not merge blockers (Comment + follow-up)
 
 - Demo-import data in `src/admin/demo/config.json` (not Cypress seed if tests would break)
-- User manual issue on ChurchCRM/CRM. Docs PRs merge after that release ships.
+- User manual issue on ChurchCRM/CRM. Docs PRs merge after that release ships. For a PR that adds or changes user-visible behavior, the review ends with a short note that the docs PR and the screenshots or video for docs, blog and marketing still need a follow-up after merge.
 - Blog or marketing (maintainer decides; skip for bug/security-only)
 - A later member-facing consumer for storage-only admin work
 
