@@ -77,8 +77,6 @@ class PortalStatsService
 
     /**
      * Self-service accounts whose last real sign-in is at or after `$since`.
-     * A masquerade does not stamp `usr_LastLogin` (#9843), so these are real
-     * member sign-ins only.
      */
     public static function countSignedInSince(DateTimeInterface $since): int
     {

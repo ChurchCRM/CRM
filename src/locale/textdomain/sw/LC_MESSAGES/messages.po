@@ -10432,10 +10432,6 @@ msgid "Months"
 msgstr "Miezi"
 
 #: 
-msgid "My Calendars"
-msgstr "Kalenda yangu"
-
-#: 
 msgid "New member notification emails"
 msgstr "Barua pepe za ujumbe wa wanajamii wapya"
 
@@ -12370,18 +12366,6 @@ msgstr "Tafadhali chagua familia lengwa."
 #: 
 msgid "Target family not found"
 msgstr "Familia lengwa haikupatikana"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Hakikisha Taarifa za Familia"
-
-#: 
-msgid "Welcome"
-msgstr "Karibu"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Unaweza kukagua na kuthibitisha taarifa za familia yako kwa kutumia kiungo hapa chini. Ikiwa unahitaji ufikiaji zaidi, tafadhali wasiliana na msimamizi wa kanisa lako."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15263,10 +15247,6 @@ msgstr "Ruhusa maalum"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Ufikiaji kamili — hutoa mamlaka yote."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Ikiwa unahitaji ufikiaji zaidi, tafadhali wasiliana na msimamizi wa kanisa lako."
 
 #: 
 msgid "People &amp; Families"

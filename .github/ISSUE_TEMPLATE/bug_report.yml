@@ -142,7 +142,7 @@ body:
       value: |
         ---
 
-        📘 **Full diagnostics guide:** <https://docs.churchcrm.io/administration/reporting-issues>
+        📘 **Full diagnostics guide:** <https://docs.churchcrm.io/administration/reporting-issues?utm_source=github&utm_medium=referral&utm_campaign=github_issue_templates&utm_content=bug_report_diagnostics>
         💬 **Urgent or want to discuss?** Join Discord: <https://discord.gg/tuWyFzj3Nj> — but please keep the issue open here so we can track the fix.
 
         Thank you for reporting this! 🙏

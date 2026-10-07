@@ -10420,10 +10420,6 @@ msgid "Months"
 msgstr "Mesiace"
 
 #: 
-msgid "My Calendars"
-msgstr "Moje kalendáre"
-
-#: 
 msgid "New member notification emails"
 msgstr "E-mailové notifikácie o nových členoch"
 
@@ -12360,18 +12356,6 @@ msgstr "Vyberte cieľovú rodinu."
 #: 
 msgid "Target family not found"
 msgstr "Cieľová rodina nenájdená"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Overiť informácie o rodine"
-
-#: 
-msgid "Welcome"
-msgstr "Vitajte"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Informácie o vašej rodine môžete skontrolovať a overiť pomocou odkazu nižšie. Ak potrebujete ďalší prístup, kontaktujte správcu vašej cirkvi."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15255,10 +15239,6 @@ msgstr "Vlastné oprávnenia"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Úplný prístup — udeľuje všetky privilégiá."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Ak potrebujete ďalší prístup, kontaktujte správcu vašej cirkvi."
 
 #: 
 msgid "People &amp; Families"

@@ -10436,10 +10436,6 @@ msgid "Months"
 msgstr "Aylar"
 
 #: 
-msgid "My Calendars"
-msgstr "Takvimlerim"
-
-#: 
 msgid "New member notification emails"
 msgstr "Yeni üye bildirim e-postaları"
 
@@ -12374,18 +12370,6 @@ msgstr "Lütfen bir hedef aile seçin."
 #: 
 msgid "Target family not found"
 msgstr "Hedef aile bulunamadı"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Aile Bilgilerini Doğrula"
-
-#: 
-msgid "Welcome"
-msgstr "Hoş Geldiniz"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Aşağıdaki bağlantıyı kullanarak aile bilgilerinizi inceleyebilir ve doğrulayabilirsiniz. Ek erişim gerekiyorsa, kilise yöneticinizle iletişime geçin."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15267,10 +15251,6 @@ msgstr "Özel izinler"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Tam erişim — tüm ayrıcalıkları verir."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Ek erişime ihtiyaç duyarsanız lütfen kilise yöneticinizle iletişime geçin."
 
 #: 
 msgid "People &amp; Families"

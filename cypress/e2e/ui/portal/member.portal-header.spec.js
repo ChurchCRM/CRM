@@ -8,8 +8,7 @@
  *     was painting it link-blue and underlining it)
  *   - the member's name and the bare "Sign out" link are replaced by one
  *     "Hello <first name>" button that opens a menu: Email History,
- *     Change Password, Admin Console (staff logins only, never during a
- *     masquerade), Sign out
+ *     Change Password, Admin Console (staff logins only), Sign out
  *
  * Seed persona: user 100, Lena Black (person 100, family 20). usr_EditSelf=1
  * and no admin flag, so she is confined to the portal. The username column is

@@ -10455,10 +10455,6 @@ msgid "Months"
 msgstr "Mesi"
 
 #: 
-msgid "My Calendars"
-msgstr "I miei calendari"
-
-#: 
 msgid "New member notification emails"
 msgstr "E-mail di notifica nuovo membro"
 
@@ -12393,18 +12389,6 @@ msgstr "Seleziona una famiglia di destinazione."
 #: 
 msgid "Target family not found"
 msgstr "Famiglia di destinazione non trovata"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Verifica informazioni famiglia"
-
-#: 
-msgid "Welcome"
-msgstr "Benvenuto"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Puoi rivedere e verificare le informazioni della tua famiglia usando il link qui sotto. Se hai bisogno di ulteriore accesso, contatta il tuo amministratore della chiesa."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15286,10 +15270,6 @@ msgstr "Permessi personalizzati"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Accesso completo — concede tutti i privilegi."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Se hai bisogno di un accesso aggiuntivo, contatta l'amministratore della tua parrocchia."
 
 #: 
 msgid "People &amp; Families"

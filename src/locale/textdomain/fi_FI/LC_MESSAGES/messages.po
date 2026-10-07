@@ -10403,10 +10403,6 @@ msgid "Months"
 msgstr "Kuukaudet"
 
 #: 
-msgid "My Calendars"
-msgstr "Omat kalenterini"
-
-#: 
 msgid "New member notification emails"
 msgstr "Uusien jäsenten ilmoitusten sähköpostit"
 
@@ -12341,18 +12337,6 @@ msgstr "Valitse kohdeperhe."
 #: 
 msgid "Target family not found"
 msgstr "Kohdeperhettä ei löydy"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Vahvista perhetiedot"
-
-#: 
-msgid "Welcome"
-msgstr "Tervetuloa"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Voit tarkastaa ja vahvistaa perhetietosi alla olevan linkin kautta. Jos tarvitset lisää käyttöoikeuksia, ota yhteyttä seurakuntasi ylläpitäjään."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15234,10 +15218,6 @@ msgstr "Mukautetut käyttöoikeudet"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Täysi käyttöoikeus — myöntää kaikki käyttöoikeudet."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Jos tarvitset lisää käyttöoikeuksia, ota yhteyttä seurakunnan järjestelmänvalvojaan."
 
 #: 
 msgid "People &amp; Families"

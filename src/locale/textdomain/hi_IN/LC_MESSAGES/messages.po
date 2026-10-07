@@ -10400,10 +10400,6 @@ msgid "Months"
 msgstr "महीने"
 
 #: 
-msgid "My Calendars"
-msgstr "मेरे कैलेंडर"
-
-#: 
 msgid "New member notification emails"
 msgstr "नए सदस्य सूचना ईमेल"
 
@@ -12338,18 +12334,6 @@ msgstr "कृपया एक लक्षित परिवार चुन�
 #: 
 msgid "Target family not found"
 msgstr "लक्षित परिवार नहीं मिला"
-
-#: 
-msgid "Verify Family Info"
-msgstr "परिवार की जानकारी सत्यापित करें"
-
-#: 
-msgid "Welcome"
-msgstr "स्वागत है"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "आप नीचे दिए गए लिंक का उपयोग करके अपनी पारिवारिक जानकारी की समीक्षा और सत्यापन कर सकते हैं। यदि आपको अतिरिक्त पहुंच की आवश्यकता है, तो कृपया अपने चर्च प्रशासक से संपर्क करें।"
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15231,10 +15215,6 @@ msgstr "कस्टम अनुमतियाँ"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "पूर्ण पहुँच — सभी विशेषाधिकार प्रदान करता है।"
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "यदि आपको अतिरिक्त पहुँच की आवश्यकता है, तो कृपया अपने कलीसिया प्रशासक से संपर्क करें।"
 
 #: 
 msgid "People &amp; Families"

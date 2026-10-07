@@ -10454,10 +10454,6 @@ msgid "Months"
 msgstr "Місяці"
 
 #: 
-msgid "My Calendars"
-msgstr "Мої календарі"
-
-#: 
 msgid "New member notification emails"
 msgstr "Сповіщення електронної пошти для нових членів"
 
@@ -12394,18 +12390,6 @@ msgstr "Будь ласка, оберіть цільову сімʼю."
 #: 
 msgid "Target family not found"
 msgstr "Цільову сімʼю не знайдено"
-
-#: 
-msgid "Verify Family Info"
-msgstr "Перевірити інформацію про сімʼю"
-
-#: 
-msgid "Welcome"
-msgstr "Ласкаво просимо"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "Ви можете переглянути та перевірити інформацію про вашу сімʼю за посиланням нижче. Якщо вам потрібен додатковий доступ, зверніться до адміністратора вашої парафії."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15289,10 +15273,6 @@ msgstr "Індивідуальні дозволи"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "Повний доступ — надає всі привілеї."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "Якщо вам потрібен додатковий доступ, будь ласка, зверніться до адміністратора вашої церкви."
 
 #: 
 msgid "People &amp; Families"

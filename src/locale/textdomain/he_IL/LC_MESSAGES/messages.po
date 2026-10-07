@@ -10434,10 +10434,6 @@ msgid "Months"
 msgstr "חודשים"
 
 #: 
-msgid "My Calendars"
-msgstr "הלוחות השנתיים שלי"
-
-#: 
 msgid "New member notification emails"
 msgstr "הודעות דוא\"ל על חברים חדשים"
 
@@ -12372,18 +12368,6 @@ msgstr "אנא בחר משפחת יעד."
 #: 
 msgid "Target family not found"
 msgstr "משפחת היעד לא נמצאה"
-
-#: 
-msgid "Verify Family Info"
-msgstr "אמת מידע משפחתי"
-
-#: 
-msgid "Welcome"
-msgstr "ברוך הבא"
-
-#: 
-msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
-msgstr "באפשרותך לסקור ולאמת את פרטי משפחתך באמצעות הקישור למטה. אם אתה זקוק לגישה נוספת, אנא פנה אל מנהל הקהילה שלך."
 
 #: 
 msgid "You do not have permission to view this person"
@@ -15265,10 +15249,6 @@ msgstr "הרשאות מותאמות אישית"
 #: 
 msgid "Full access — grants all privileges."
 msgstr "גישה מלאה — מעניקה את כל ההרשאות."
-
-#: 
-msgid "If you need additional access, please contact your church administrator."
-msgstr "אם אתה זקוק לגישה נוספת, אנא צור קשר עם מנהל הכנסייה שלך."
 
 #: 
 msgid "People &amp; Families"
