@@ -559,7 +559,10 @@
     "SHA1 Hash",
     "Server",
     "am / pm",
-    "Data"
+    "Data",
+    "Folder",
+    "Min",
+    "Valid"
   ],
   "ja": [
     "Azure",
@@ -598,7 +601,12 @@
     "Items",
     "Planning",
     "Labels",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Accounts",
+    "Max",
+    "Min",
+    "Team",
+    "Teams"
   ],
   "pt": [
     "AM / PM",
@@ -796,7 +804,9 @@
     "Offline",
     "Data",
     "Auto",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Max",
+    "Min"
   ],
   "sw": [
     "AM / PM",
