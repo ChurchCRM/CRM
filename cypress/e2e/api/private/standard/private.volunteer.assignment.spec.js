@@ -1140,6 +1140,98 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
         });
     });
 
+    describe("Volunteer v2 — the Serve step: completed once the occurrence is over (§2.11.1)", () => {
+        let occurrence = null;
+
+        function setEventTime(start, end) {
+            api(ADMIN_KEY, "POST", `/api/events/${occurrence.eventId}/time`, { startTime: start, endTime: end });
+        }
+
+        function setOccurrenceStatus(status) {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/status`, { status });
+        }
+
+        beforeEach(() => {
+            resetWorkflow();
+            api(
+                ADMIN_KEY,
+                "GET",
+                `${VOLUNTEER_URL}/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
+            ).then((resp) => {
+                occurrence = resp.body.occurrences.find((row) => row.id === occurrenceOne);
+            });
+        });
+
+        afterEach(() => {
+            if (occurrence !== null) {
+                setEventTime(`${occurrence.occurrenceDate} 10:30:00`, `${occurrence.occurrenceDate} 11:45:00`);
+                setOccurrenceStatus("scheduled");
+            }
+        });
+
+        /** Occurrence one's event (this spec's own series) moved to yesterday. */
+        function endOccurrenceOne() {
+            setEventTime(`${isoDate(-1)} 10:30:00`, `${isoDate(-1)} 11:45:00`);
+        }
+
+        function runTimerJobs() {
+            return cy.makePrivateAdminAPICall("POST", "/api/background/timerjobs", { force: true }, 200).then((resp) => {
+                expect(resp.body.ran).to.eq(true);
+            });
+        }
+
+        function statusOf(occurrenceId, assignmentId) {
+            return api(COORDINATOR_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceId}/staffing`).then((resp) => {
+                const rows = resp.body.requirements.flatMap((requirement) => requirement.assignments);
+                return rows.find((row) => row.id === assignmentId).status;
+            });
+        }
+
+        it("completes pending and accepted assignments in the timer jobs, and nothing else", () => {
+            const ids = {};
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
+                ids.pending = resp.body.assignment.id;
+            });
+            assign(COORDINATOR_KEY, occurrenceOne, posMilk, PERSON_VOLUNTEER).then((resp) => {
+                ids.accepted = resp.body.assignment.id;
+                api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${ids.accepted}/respond`, {
+                    response: "accepted",
+                });
+            });
+            assign(COORDINATOR_KEY, occurrenceOne, posExpeditor, POOL_MEMBER_C).then((resp) => {
+                ids.declined = resp.body.assignment.id;
+                api(COORDINATOR_KEY, "POST", `${VOLUNTEER_URL}/assignments/${ids.declined}/status`, {
+                    status: "declined",
+                });
+            });
+            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_B).then((resp) => {
+                ids.upcoming = resp.body.assignment.id;
+            });
+
+            runTimerJobs();
+            cy.then(() => statusOf(occurrenceOne, ids.pending)).should("eq", "pending");
+
+            endOccurrenceOne();
+            runTimerJobs();
+            cy.then(() => statusOf(occurrenceOne, ids.pending)).should("eq", "completed");
+            cy.then(() => statusOf(occurrenceOne, ids.accepted)).should("eq", "completed");
+            cy.then(() => statusOf(occurrenceOne, ids.declined)).should("eq", "declined");
+            cy.then(() => statusOf(occurrenceTwo, ids.upcoming)).should("eq", "pending");
+
+            runTimerJobs();
+            cy.then(() => statusOf(occurrenceOne, ids.pending)).should("eq", "completed");
+        });
+
+        it("leaves the assignments of a cancelled occurrence alone", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((resp) => {
+                setOccurrenceStatus("cancelled");
+                endOccurrenceOne();
+                runTimerJobs();
+                statusOf(occurrenceOne, resp.body.assignment.id).should("eq", "pending");
+            });
+        });
+    });
+
     describe("Volunteer v2 — authorization negatives (§4.8)", () => {
         beforeEach(resetWorkflow);
 

@@ -115,6 +115,7 @@ module.exports = {
     'people-map-neighbors': './webpack/people/map-neighbors',
     'people-self-register': './webpack/people/self-register',
     'people-labels-modal': './webpack/people/labels-modal',
+    'email-history-modal': './webpack/people/email-history-modal',
     'error': './webpack/error',
     'groups-group-view': './webpack/groups/group-view',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
