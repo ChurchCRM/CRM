@@ -772,7 +772,10 @@
     "Individual",
     "Important",
     "Major",
-    "Catalog"
+    "Catalog",
+    "Max",
+    "Min",
+    "Valid"
   ],
   "sv": [
     "4. Kiosk",
