@@ -267,11 +267,8 @@ class ImpersonationService
             return null;
         }
 
-        $rootPath = SystemURLs::getRootPath();
-        foreach (self::UNRECORDED_PATHS as $unrecorded) {
-            if ($path === $rootPath . $unrecorded) {
-                return null;
-            }
+        if (in_array(self::appPath($path), self::UNRECORDED_PATHS, true)) {
+            return null;
         }
 
         return (int) $_SESSION[self::SESSION_KEY]['sessionId'];
@@ -283,7 +280,7 @@ class ImpersonationService
             $action = new UserMasqueradeAction();
             $action->setSessionId($sessionId);
             $action->setMethod(substr(strtoupper($method), 0, 10));
-            $action->setPath(mb_substr($path, 0, 255));
+            $action->setPath(mb_substr(self::appPath($path), 0, 255));
             $action->setStatus($status !== null && $status > 0 ? $status : null);
             $action->setTime(self::now());
             $action->save();
@@ -333,6 +330,17 @@ class ImpersonationService
             ->orderById(Criteria::DESC)
             ->limit($limit)
             ->find();
+    }
+
+    /** `$path` without the install's root path, so a subdirectory install records `/api/...` too. */
+    private static function appPath(string $path): string
+    {
+        $rootPath = SystemURLs::getRootPath();
+        if ($rootPath !== '' && str_starts_with($path, $rootPath . '/')) {
+            return substr($path, strlen($rootPath));
+        }
+
+        return $path;
     }
 
     private static function closeSessionRow(int $sessionId, string $reason): bool
