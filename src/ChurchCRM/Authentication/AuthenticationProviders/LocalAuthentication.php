@@ -385,8 +385,16 @@ class LocalAuthentication implements IAuthenticationProvider
         if (SystemConfig::getIntValue('iSessionTimeout') > 0) {
             if ((time() - $this->tLastOperationTimestamp) > SystemConfig::getIntValue('iSessionTimeout')) {
                 LoggerUtils::getAuthLogger()->debug('User session timed out', $logCtx);
-                // A timed-out masquerade must not be resumable as the administrator.
+                // A timed-out masquerade must not be resumable as the administrator,
+                // nor as the target once a longer timeout is set, with no record left
+                // to tie it to the administrator.
+                $wasMasquerade = isset($_SESSION[ImpersonationService::SESSION_KEY]);
                 ImpersonationService::clear(ImpersonationService::END_TIMEOUT);
+                if ($wasMasquerade) {
+                    $this->setCurrentUser(null);
+                    $this->authenticated = false;
+                    $this->twoFactorVerified = false;
+                }
                 $authenticationResult->isAuthenticated = false;
 
                 return $authenticationResult;

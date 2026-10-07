@@ -613,6 +613,38 @@ describe("Masquerade record does not survive its session", () => {
             cy.visit("/v2/dashboard");
             cy.url().should("include", "/session/begin");
         });
+
+        it("does not come back as the user when the timeout is raised again", () => {
+            cy.setupAdminSession({ forceLogin: true });
+            startMasquerade();
+            cy.visit("/session/begin");
+            cy.wait(5000);
+            cy.visit("/v2/dashboard");
+            cy.url().should("include", "/session/begin");
+
+            // Raise the timeout by API key with this browser's cookies set aside,
+            // so the timed-out session is the one asked about next.
+            cy.getCookies().then((cookies) => {
+                cy.clearCookies();
+                cy.makePrivateAdminAPICall("POST", "admin/api/system/config/iSessionTimeout", { value: "3600" }, 200);
+                cy.clearCookies();
+                for (const cookie of cookies) {
+                    cy.setCookie(cookie.name, cookie.value, {
+                        path: cookie.path,
+                        domain: cookie.domain,
+                        httpOnly: cookie.httpOnly,
+                        secure: cookie.secure,
+                    });
+                }
+            });
+
+            cy.visit("/v2/dashboard");
+            cy.url().should("include", "/session/begin");
+            cy.get("#impersonationBanner").should("not.exist");
+
+            cy.clearCookies();
+            cy.makePrivateAdminAPICall("POST", "admin/api/system/config/iSessionTimeout", { value: "3" }, 200);
+        });
     });
 });
 
