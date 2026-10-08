@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 03:17+0000\n"
+"POT-Creation-Date: 2026-10-08 19:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1041,7 +1041,7 @@ msgstr ""
 msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
 msgstr ""
 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
 msgstr ""
 
 msgid "Add to Buyer List"
@@ -2532,13 +2532,22 @@ msgstr ""
 msgid "Cancel assignment"
 msgstr ""
 
+msgid "Cancel occurrence"
+msgstr ""
+
 msgid "Cancel this assignment"
+msgstr ""
+
+msgid "Cancel this occurrence"
 msgstr ""
 
 msgid "Cancel — wait 1 more minute"
 msgstr ""
 
 msgid "Cancelled"
+msgstr ""
+
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
 msgstr ""
 
 msgid "Cannot Delete Event Type"
@@ -4425,14 +4434,6 @@ msgstr ""
 msgid "Delete those events"
 msgstr ""
 
-msgctxt "one"
-msgid "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
-msgstr ""
-
-msgctxt "other"
-msgid "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
-msgstr ""
-
 msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
 msgstr ""
 
@@ -4453,6 +4454,9 @@ msgid "Deleted %d files, %d failed"
 msgstr ""
 
 msgid "Deleted Files"
+msgstr ""
+
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr ""
 
 msgid "Deleted from group"
@@ -5617,6 +5621,12 @@ msgid "Events This Year"
 msgstr ""
 
 msgid "Events Today"
+msgstr ""
+
+msgid "Events deleted: {{total}}"
+msgstr ""
+
+msgid "Events to delete: {{total}}"
 msgstr ""
 
 msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
@@ -10402,7 +10412,13 @@ msgstr ""
 msgid "OS family"
 msgstr ""
 
+msgid "Occurrence cancelled"
+msgstr ""
+
 msgid "Occurrence not found"
+msgstr ""
+
+msgid "Occurrence restored"
 msgstr ""
 
 msgid "Occurrences"
@@ -11815,6 +11831,9 @@ msgstr ""
 msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
 msgstr ""
 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr ""
+
 msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
 msgstr ""
 
@@ -12329,6 +12348,12 @@ msgid "Restore from the System Backup page"
 msgstr ""
 
 msgid "Restore in progress, please wait..."
+msgstr ""
+
+msgid "Restore occurrence"
+msgstr ""
+
+msgid "Restore this occurrence"
 msgstr ""
 
 msgid "Restore your church database from a backup file"
@@ -14529,7 +14554,13 @@ msgstr ""
 msgid "The note you are trying to edit no longer exists."
 msgstr ""
 
+msgid "The occurrence could not be cancelled"
+msgstr ""
+
 msgid "The occurrence could not be deleted"
+msgstr ""
+
+msgid "The occurrence could not be restored"
 msgstr ""
 
 msgid "The occurrence has no schedule"
@@ -16946,6 +16977,9 @@ msgid "You have no items in your cart."
 msgstr ""
 
 msgid "You lead this"
+msgstr ""
+
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
 msgstr ""
 
 msgid "You may create family members now or add them later. All entries will become new person records."
