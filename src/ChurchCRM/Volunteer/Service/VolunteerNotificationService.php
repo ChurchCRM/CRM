@@ -629,9 +629,21 @@ class VolunteerNotificationService
             return 0;
         }
 
+        $alerted = [];
+        $toldAboutOccurrence = [];
+        $existing = VolunteerNotificationQuery::create()
+            ->filterByType(self::TYPE_GAP_ALERT)
+            ->filterByOccurrenceId(array_keys($scheduleOf), Criteria::IN)
+            ->find();
+        foreach ($existing as $row) {
+            $alerted[(string) $row->getDedupeKey()] = true;
+            if ($row->getContext() === null) {
+                $toldAboutOccurrence[(int) $row->getOccurrenceId()][(int) $row->getPersonId()] = true;
+            }
+        }
+
         $authz = new VolunteerAuthorizationService();
         $recipients = [];
-        $toldAboutOccurrence = [];
         $enqueued = 0;
         foreach ((new VolunteerAssignmentService())->getOpenGaps(array_keys($scheduleOf)) as $gap) {
             $occurrenceId = $gap['occurrenceId'];
@@ -639,9 +651,8 @@ class VolunteerNotificationService
             $recipients[$scheduleId] ??= $this->coordinatorsOfSchedule($scheduleId, $authz);
 
             foreach ($recipients[$scheduleId] as $personId) {
-                $toldAboutOccurrence[$occurrenceId][$personId] ??= $this->hasOccurrenceGapAlert($occurrenceId, $personId);
                 $key = $this->unfilledGapAlertKey($occurrenceId, $gap['positionId'], $personId);
-                if ($toldAboutOccurrence[$occurrenceId][$personId] || $this->findByDedupeKey($key) !== null) {
+                if (isset($alerted[$key]) || isset($toldAboutOccurrence[$occurrenceId][$personId])) {
                     continue;
                 }
 
@@ -691,17 +702,6 @@ class VolunteerNotificationService
                 DateTimeUtils::createDateTime($to->format('Y-m-d'))->modify('+1 day'),
                 Criteria::LESS_EQUAL
             );
-    }
-
-    /** Whether this person has the occurrence-wide `gap_alert` of `notifyGapOpened()`, the one with no position. */
-    private function hasOccurrenceGapAlert(int $occurrenceId, int $personId): bool
-    {
-        return VolunteerNotificationQuery::create()
-            ->filterByType(self::TYPE_GAP_ALERT)
-            ->filterByOccurrenceId($occurrenceId)
-            ->filterByPersonId($personId)
-            ->filterByContext(null, Criteria::ISNULL)
-            ->exists();
     }
 
     /**
