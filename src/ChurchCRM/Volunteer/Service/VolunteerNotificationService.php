@@ -612,7 +612,7 @@ class VolunteerNotificationService
      *
      * 1. up to `$batchSize` `pending` rows due now, oldest `ScheduledFor` first;
      * 2. the four `skipped` rules — email off (N2), do-not-email (N3), no address, and a
-     *    `reminder` for an occurrence that is already over;
+     *    row about an occurrence that is already over;
      * 3. otherwise build the subclass, resolve `Reply-To` **at send time** and send,
      *    recording `sent` or `Attempts + 1`;
      * 4. retry is implicit — a row below the cap is still `pending` and still due, so the
@@ -709,7 +709,9 @@ class VolunteerNotificationService
             return $this->recordSkipped($row, 'the ministry, schedule or occurrence is gone');
         }
 
-        if ($row->getType() === self::TYPE_REMINDER && $context->hasEnded()) {
+        // Not only reminders: a drain that runs late, such as after V1 paused the jobs
+        // (#10373), must not send news about an occurrence that is over.
+        if ($context->hasEnded()) {
             return $this->recordSkipped($row, 'the occurrence has already ended');
         }
 

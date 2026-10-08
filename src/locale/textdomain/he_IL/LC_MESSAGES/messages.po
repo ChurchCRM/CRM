@@ -18784,3 +18784,4535 @@ msgstr "תפקיד בן/בת זוג"
 msgid "Uppercase Zip/Postcodes"
 msgstr "מיקודים באותיות רישיות"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "יש לבחור לפחות סיווג אחד לכלול בספר הכתובות."
+
+#: 
+msgid "Geocoding services"
+msgstr "שירותי איתור קואורדינטות"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "שירותי איתור קואורדינטות לנסות, לפי הסדר שבחרתם. Nominatim (OpenStreetMap) פועל בכל העולם; US Census (US Census Bureau) מכסה כתובות בארצות הברית בלבד. בחרו גם US Census כדי להשתמש בו. אם לא נבחר דבר, ייעשה שימוש ב-Nominatim."
+
+#: 
+msgid "New Record Defaults"
+msgstr "ברירות מחדל לרשומות חדשות"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "פעולה זו מאתרת קואורדינטות מפה לכל משפחה שחסרות לה, באמצעות שירותי האיתור שנבחרו בהגדרות המפה. היא עוברת על המשפחות במנות של 50; מנה אחת אורכת כדקה עם שירות איתור אחד, ויותר עם כמה שירותים. אפשר להשאיר את הדף פתוח בזמן הריצה. להמשיך?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "משמש לרשומות חדשות ולאיתור קואורדינטות כאשר לרשומה אין מדינה."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "העתקה מפרטי הקהילה"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "לא ניתן להעתיק את כתובת הקהילה."
+
+#: 
+msgid "Could not match the church country."
+msgstr "לא ניתן להתאים את מדינת הקהילה."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "רשימות כיתה, דפי נוכחות וספרי תמונות"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "רשימות חברי קבוצות ודוחות כיתות בית הספר של יום ראשון"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "שנת הכספים שלכם מתחילה ב-%s."
+
+#: 
+msgid "An error occurred"
+msgstr "אירעה שגיאה"
+
+#: 
+msgid "Approve"
+msgstr "אישור"
+
+#: 
+msgid "Approve selected"
+msgstr "אישור הנבחרים"
+
+#: 
+msgid "Approved"
+msgstr "אושר"
+
+#: 
+msgid "Change in People Settings"
+msgstr "שינוי בהגדרות אנשים"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "לא ניתן לאשר את ההרשמות שנבחרו"
+
+#: 
+msgid "Could not approve this family"
+msgstr "לא ניתן לאשר משפחה זו"
+
+#: 
+msgid "Pending Registrations"
+msgstr "הרשמות ממתינות"
+
+#: 
+msgid "Pending review"
+msgstr "ממתין לבדיקה"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "הרשמות הממתינות לבדיקה מטופס ההרשמה הציבורי שלכם. רשומות ללא דוא\"ל או טלפון מסומנות — יש לוודא את פרטי הקשר לפני יצירת קשר."
+
+#: 
+msgid "Review now"
+msgstr "לבדיקה עכשיו"
+
+#: 
+msgid "Review self registrations"
+msgstr "בדיקת הרשמות עצמיות"
+
+#: 
+msgid "Select month"
+msgstr "בחירת חודש"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "ההרשמה העצמית מושבתת"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "ההרשמה העצמית מופעלת"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "טופס ההרשמה הציבורי כבוי. ההרשמות הקיימות מוצגות להלן."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "משפחה זו אינה הרשמה עצמית ממתינה"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "אדם זה שייך למשפחה — יש לאשר את המשפחה במקום זאת"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "אדם זה אינו הרשמה עצמית ממתינה"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "משפחה זו, שנרשמה בעצמה, ממתינה לבדיקה"
+
+#: 
+msgid "Total registrations"
+msgstr "סך ההרשמות"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "מבקרים יכולים להירשם בטופס ההרשמה הציבורי שלכם."
+
+#: 
+msgid "Yesterday"
+msgstr "אתמול"
+
+#: 
+msgid "days ago"
+msgstr "ימים לפני כן"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "הרשמות עצמיות ממתינות לבדיקה"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "ימי הולדת מופנים לאדם, ויובלי נישואין לזוג."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "תוויות דואר לאנשים בדוח זה. אדם שאין לו כתובת משלו מקבל את כתובת משפחתו."
+
+#: 
+msgid "One label for each couple."
+msgstr "תווית אחת לכל זוג."
+
+#: 
+msgid "Print Labels"
+msgstr "הדפסת תוויות"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "תפקיד זה אינו אחד מתפקידי הקבוצה."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "\"%s\" אינו סוג לוח שנה שהדף מכיר."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s אינו יכול לשרת והציע את %2$s כמחליף."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s כבר נמצא במאגר המתנדבים של %2$s ורוצה לעזור שוב."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s כבר מקושר ל-%2$s ב-%3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s נמצא ב-%2$s בתפקיד %3$s. יש להסיר אותו תחילה מהכיתה; הסמכתו כאן תהפוך אותו לאחד ממוריה."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s אינו אירוע של %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s נשארת כיתה של בית הספר של יום ראשון בעוד מוריה מנוהלים ב-שירותים ← %2$s ← %3$s. יש לנתק אותה תחילה מהצוות."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s רוצה לעזור ב-%2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s רוצה לעזור ב-%2$s ונוסף למאגר המתנדבים שלו."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: המקסימום הוא %2$d אך נבחרו %3$d מתנדבי ברירת מחדל. יש להסיר אחד או להעלות את המקסימום."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d יום"
+msgstr[1] "%d ימים"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d ברירת מחדל דולגה מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
+msgstr[1] "%d ברירות מחדל דולגו מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d ברירת מחדל דולגה: ההסמכה בוטלה"
+msgstr[1] "%d ברירות מחדל דולגו: ההסמכה בוטלה"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d מתנדב ברירת מחדל שובץ"
+msgstr[1] "%d מתנדבי ברירת מחדל שובצו"
+
+#: 
+msgid "%d failed"
+msgstr "%d נכשלו"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "עדיין נדרש עוד %d מתנדב לתפקיד זה. פתחו את המופע כדי למלא את החסר."
+msgstr[1] "עדיין נדרשים עוד %d מתנדבים לתפקיד זה. פתחו את המופע כדי למלא את החסר."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d מופע חדש"
+msgstr[1] "%d מופעים חדשים"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "עדיין נדרש %d מתנדב למופע קרוב."
+msgstr[1] "עדיין נדרשים %d מתנדבים למופע קרוב."
+
+#: 
+msgid "%s Calendar"
+msgstr "לוח שנה של %s"
+
+#: 
+msgid "%s Family"
+msgstr "משפחת %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s אינו מספק מורים לבית הספר של יום ראשון, ולכן הצוותים, לוחות הזמנים והאירועים שלו אינם יכולים להשתמש בכיתה. מנהל מתנדבים יכול לשנות זאת תחת עריכת השירות."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s דוא\"ל מהקהילה"
+msgstr[1] "%s הודעות דוא\"ל מהקהילה"
+
+#: 
+msgid "%s family"
+msgstr "משפחת %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s דחה שיבוץ להתנדבות."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "ל-%s אין תפקיד בשם מורה, ולכן אי אפשר לנהל את מוריו מצוות"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "ל-%s אין פגישות קרובות בלוח השנה. לוח זמנים עוקב אחר אירועים שכבר קיימים: יש להוסיף תחילה את פגישות הכיתה, באמצעות אירוע חוזר חדש בלשונית לוח השנה של השירות."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s עדיין צפוי לשרת. אם אין אפשרות, יש לפנות לרכז."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s לא נשלח (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s אדם במשק הבית שלכם"
+msgstr[1] "%s אנשים במשק הבית שלכם"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s תפקיד"
+msgstr[1] "%s תפקידים"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: אותו אדם נבחר פעמיים כמתנדב ברירת מחדל"
+
+#: 
+msgid "(no subject)"
+msgstr "(ללא נושא)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "יום הולדת לא יכול להיות בעתיד."
+
+#: 
+msgid "A calendar event"
+msgstr "אירוע בלוח השנה"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "מזהה לוח שנה חייב להיות מספר."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "כיתה שאינה קיימת עוד"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "כיתה ללא פגישות בלוח השנה עדיין אינה ניתנת לבחירה."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "כיתה ללא פגישות בלוח השנה עדיין אינה ניתנת לבחירה. רכז של השירות מוסיף את פגישותיה בלשונית לוח השנה של השירות."
+
+#: 
+msgid "A class's meetings"
+msgstr "פגישות הכיתה"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "רכז יכול לנהל את כל מה שבשירות זה, כולל שינויים שמנהל מתנדבים היה צריך לבצע."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "רכז של השירות יכול להוסיף אותן בלשונית לוח השנה של השירות."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "רכז של השירות יכול להוסיף אותן בלשונית לוח השנה של השירות. לאחר מכן יש ליצור שוב."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "רכז מנהל את כל השירות — הצוותים, התפקידים, לוחות הזמנים וכל שיבוץ בו."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "יום שאין בחודש חל ביומו האחרון."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "מתנדב ברירת מחדל שייך לצורכי האיוש של לוח הזמנים, לא למופע אחד"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "אפשר לבחור מתנדב ברירת מחדל רק לתפקיד שצורכי האיוש של לוח זמנים זה מבקשים"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "נדרשים תאריך התחלה ותאריך סיום בפורמט YYYY-MM-DD"
+
+#: 
+msgid "A minimum count is required"
+msgstr "נדרש מספר מינימום"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "שירות נוצר עם לוח שנה, מאגר מתנדבים וצוות ראשון משלו, ולכן כל מה שצריך להחליט כאן הוא שמו ומה הוא עושה."
+
+#: 
+msgid "A ministry name is required"
+msgstr "נדרש שם לשירות"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "שירות צריך לפחות צוות אחד. יש לשנות את שמו במקום זאת."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "כבר קיים שירות בשם זה"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "אי אפשר לפתוח את לוח השנה של שירות לשירותים אחרים"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "תפקיד שייך לצוות; יש לבחור אחד"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "תפקיד הוא עבודה שאדם עושה בצוות זה, כגון אספרסו או מוביל שירה."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "תפקיד הוא משימה שאדם משרת בה, כגון אספרסו או מוביל שירה."
+
+#: 
+msgid "A position is required"
+msgstr "נדרש תפקיד"
+
+#: 
+msgid "A position name is required"
+msgstr "נדרש שם לתפקיד"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "תפקיד עם מתנדבים מוסמכים אינו יכול לעבור אל צוות המקושר לכיתה של בית הספר של יום ראשון או ממנו, כי הדבר ישנה מי מלמד את הכיתה. יש ליצור את התפקיד בצוות האחר."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "כבר קיים תפקיד בשם זה בשירות זה"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "יש לאשר או לדחות תשובה"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "לוח זמנים שייך לצוות; יש לבחור אחד"
+
+#: 
+msgid "A schedule name is required"
+msgstr "נדרש שם ללוח הזמנים"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "לוח זמנים קובע לאילו אירועי לוח שנה הצוות מאייש: סוג של שירות קהילה, פגישות כיתה, או אירועי השירות עצמו. יש להוסיף אחד וליצור את מופעיו."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "לוח זמנים קובע לאילו אירועי לוח שנה הצוות הזה משרת: סוג של שירות קהילה, פגישות כיתה, או אירועי השירות עצמו. יש להוסיף אחד וליצור את מופעיו."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "לוח זמנים העוקב אחר כיתה חייב לציין את הכיתה"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "לוח זמנים העוקב אחר סוג אירוע חייב לציין את סוג האירוע"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "לוח זמנים המאייש אירוע אחד אינו יכול לעקוב אחר אירועים אחרים; יש למחוק אותו ולהוסיף לוח זמנים במקום זאת"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "רשימה אחת של הזדמנויות, כגון \"משתלה\" או \"קבלת פנים\", המנוהלת תחת אנשים ← ניהול. כל אדם מסומן בהזדמנויות שהוא מוכן לעזור בהן, בלשונית מתנדב ברשומתו. זה כל מה שנרשם: אין צוותים, לוחות זמנים, שיבוץ לתאריך או הודעות תזכורת. התגיות משמשות בדוחות וברשומת האדם."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "תמונה מרובעת של פניכם עובדת הכי טוב."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "צורך איוש מפרט את מתנדבי ברירת המחדל שלו ב-\"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "דרישת איוש שייכת לאחד בלבד: לוח זמנים או מופע"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "כבר הוצע מחליף לשיבוץ זה"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "מנהל צוות יכול לנהל את הצוות שלו — תפקידיו, לוחות הזמנים שלו ומי משרת בהם — ולא דבר אחר בשירות."
+
+#: 
+msgid "A team name is required"
+msgstr "נדרש שם לצוות"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "כבר קיים צוות בשם זה בשירות זה"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "ערכת נושא היא תיקייה שהקהילה שלכם מעלה אל Include/themes/ בשרת. ברירת המחדל של המערכת מגיעה עם ChurchCRM."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "הגדרת מעבר. דפי הזדמנויות ההתנדבות הישנים ודפי השירותים החדשים זמינים שניהם, ורשומת אדם מציגה את שתי לשוניות המתנדבים, מסומנות בבירור. השתמשו בה בזמן שאתם מעבירים קהילה מ-V1 ל-V2, ואז עברו ל-V2 בלבד."
+
+#: 
+msgid "A volunteer"
+msgstr "מתנדב"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "מתנדב דחה שיבוץ"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "מתנדב הציע מחליף"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "מנהל מתנדבים יכול לנהל שירות זה ללא הרשאה מפורשת. הוסיפו רכז כדי לאפשר למישהו אחר לנהל אותו מבלי לתת לו את כל שאר השירותים."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "תאריך נישואין לא יכול להיות בעתיד."
+
+#: 
+msgid "Accepted"
+msgstr "התקבל"
+
+#: 
+msgid "Account deleted"
+msgstr "החשבון נמחק"
+
+#: 
+msgid "Account unlocked"
+msgstr "החשבון שוחרר"
+
+#: 
+msgid "Accounts"
+msgstr "חשבונות"
+
+#: 
+msgid "Active must be true or false"
+msgstr "הערך Active חייב להיות true או false"
+
+#: 
+msgid "Active now"
+msgstr "פעיל כעת"
+
+#: 
+msgid "Add All"
+msgstr "הוספת הכול"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "הוספת כל הנמצאים בבחירה"
+
+#: 
+msgid "Add Volunteer"
+msgstr "הוספת מתנדב"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "הוספת מתנדבים לבחירה"
+
+#: 
+msgid "Add a family member"
+msgstr "הוספת בן משפחה"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "יש להוסיף תחילה תפקיד, ואז לחזור ולומר כמה מהם נדרשים."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "הוסיפו שלב שני להתחברות, כך שהסיסמה לבדה לא תספיק כדי להיכנס לחשבון."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "יש להוסיף לצוות זה לפחות תפקיד אחד, ואז לסמן מי יכול לשרת היכן."
+
+#: 
+msgid "Add coordinator"
+msgstr "הוספת רכז"
+
+#: 
+msgid "Add from Cart"
+msgstr "הוספה מהבחירה"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "יש להוסיף אנשים לבחירה לפני הוספתם כמתנדבים"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "הוספת תפקיד"
+
+#: 
+msgid "Add position"
+msgstr "הוספת לוח זמנים"
+
+#: 
+msgid "Add schedule"
+msgstr "הוספת צוות"
+
+#: 
+msgid "Add team"
+msgstr "יש להוסיף תחילה את פגישותיה באמצעות אירוע חוזר חדש בלשונית לוח השנה"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "יש להוסיף אותן בלשונית לוח השנה, ואז ליצור שוב."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "יש להוסיף אותן בלשונית לוח השנה."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "הוסיפו כתובת זו לאפליקציית לוח השנה שלכם. היא מתעדכנת מעצמה כשלוח השנה של הקהילה משתנה."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "הוסיפו כאן את אירועי השירות: יום עבודה, כיתה שנפגשת כל יום ראשון. הם עולים בלוח השנה של הקהילה, ואפשר לאייש אותם בעת יצירתם."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "נוסף דרך פורטל החברים וממתין לבדיקה: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "נוסף — כעת סמנו את התפקידים שבהם יוכל לשרת"
+
+#: 
+msgid "Address Line 2"
+msgstr "שורת כתובת 2"
+
+#: 
+msgid "Admin Console"
+msgstr "מסוף ניהול"
+
+#: 
+msgid "Administrator permission required"
+msgstr "נדרשת הרשאת מנהל מערכת"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "פרסום תפקיד זה בדף ההזדמנויות הפתוחות בפורטל החברים."
+
+#: 
+msgid "All Teams"
+msgstr "כל הצוותים"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "לאפשר לחברים לשנות את ימי ההולדת שלהם ושל בני משפחתם."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "מוצמד גם אל {{calendars}}, ורק מי שיש לו הרשאת הוספת אירועים יכול לשנות זאת."
+
+#: 
+msgid "An event title is required"
+msgstr "נדרשת כותרת לאירוע"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "נדרש סוג אירוע או שירות"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "סוג אירוע שאינו קיים עוד"
+
+#: 
+msgid "Another ministry"
+msgstr "שירות אחר"
+
+#: 
+msgid "Any event"
+msgstr "כל אירוע"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "כל דבר שהרכז שלכם צריך לדעת"
+
+#: 
+msgid "Approve substitution"
+msgstr "אישור החלפה"
+
+#: 
+msgid "Approve this substitute"
+msgstr "אישור מחליף זה"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "בקשו ממנהל מתנדבים ליצור שירות ולמנות אתכם לרכז שלו."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "בקשו ממישהו לכסות אתכם"
+
+#: 
+msgid "Ask them"
+msgstr "לבקש מהם"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "נשלחה בקשה — הרכז שלכם יאשר אותה."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "שיבוץ מתנדב"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "שובץ מחוץ לתוכנית הנוכחית"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "השיבוץ בוטל"
+
+#: 
+msgid "Assignment not found"
+msgstr "השיבוץ לא נמצא"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "נדרש לפחות personId או familyId אחד"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "אפשר לבחור לכל היותר %d מתנדבי ברירת מחדל לתפקיד אחד"
+
+#: 
+msgid "Author"
+msgstr "מחבר"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "הסמכות ניתנת לאדם, לא לחשבון התחברות, ולכן אפשר להעניק אותה לפני שיש לו חשבון. אדם שחשבונו לשירות עצמי בלבד ימשיך לראות רק את לוח הזמנים שלו עד שמנהל מערכת ירחיב את חשבונו."
+
+#: 
+msgid "Automatic"
+msgstr "אוטומטי"
+
+#: 
+msgid "Awaiting reply"
+msgstr "ממתין לתשובה"
+
+#: 
+msgid "Back to Email History"
+msgstr "חזרה להיסטוריית הדוא\"ל"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "חזרה ללוח הבקרה של השירות"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "חזרה למופעים"
+
+#: 
+msgid "Back to Person"
+msgstr "חזרה לאדם"
+
+#: 
+msgid "Back to editing"
+msgstr "חזרה לעריכה"
+
+#: 
+msgid "Back to my schedule"
+msgstr "חזרה ללוח הזמנים שלי"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "חזרה לפורטל החברים"
+
+#: 
+msgid "Back to your profile"
+msgstr "חזרה לפרופיל שלכם"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "משימות רקע ומשלוח"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "משימות הרקע רצו לאחרונה ב"
+
+#: 
+msgid "Background jobs ran"
+msgstr "משימות הרקע רצו ב"
+
+#: 
+msgid "Birthday greeting"
+msgstr "ברכת יום הולדת"
+
+#: 
+msgid "Both"
+msgstr "שניהם"
+
+#: 
+msgid "Both (transition)"
+msgstr "שניהם (מעבר)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "שניהם — V1 ו-V2 זה לצד זה (מעבר)"
+
+#: 
+msgid "Calendar address"
+msgstr "כתובת לוח השנה"
+
+#: 
+msgid "Calendar saved"
+msgstr "לוח השנה נשמר"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "לוחות השנה שפורטל החברים מציג לחברים, הנבחרים ב-ניהול ← פורטל החברים ← לוחות שנה."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "האם שירות זה יכול לספק מורים לבית הספר של יום ראשון?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "ביטול שיבוץ"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "ביטול שיבוץ זה"
+
+#: 
+msgid "Cancelled"
+msgstr "בוטל"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "שנו את הסיסמה שבה אתם מתחברים, או הוסיפו שלב שני כדי שסיסמה לבדה לא תספיק."
+
+#: 
+msgid "Change your password"
+msgstr "שינוי הסיסמה"
+
+#: 
+msgid "Checked in"
+msgstr "נרשם כנוכח"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "נרשמה נוכחות: %1$d מתוך %2$d ברשימת הכיתה"
+
+#: 
+msgid "Checked out"
+msgstr "נרשם כיוצא"
+
+#: 
+msgid "Choose a class"
+msgstr "בחירת כיתה"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "בחרו יום בחודש מ-1 עד 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "בחירת תמונה חדשה"
+
+#: 
+msgid "Choose a person"
+msgstr "בחירת אדם"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "בחירת מתנדב"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "יש לבחור תחילה מתנדב"
+
+#: 
+msgid "Choose an event"
+msgstr "בחר אירוע..."
+
+#: 
+msgid "Choose an event type"
+msgstr "בחירת סוג אירוע"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "בחירת סוג אירוע קיים"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "יש לבחור לפחות לוח שנה אחד להרשמה."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "בחרו את לוחות השנה שאתם רוצים באפליקציית לוח השנה שלכם."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "בחרו את התאריך בכל שנה בפורמט MM-DD"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "בחרו את תאריך האירוע"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "בחרו את יום השבוע"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "בחרו את האירוע שלוח הזמנים עוקב אחריו"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "בחרו את האירוע לאיוש"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "בחרו את האירועים למחיקה"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "בחרו את האירועים לאיוש"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "בחרו את התאריך הראשון והאחרון"
+
+#: 
+msgid "Choose the first date"
+msgstr "בחרו את התאריך הראשון"
+
+#: 
+msgid "Choose the last date"
+msgstr "בחרו את התאריך האחרון"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "בחרו את התפקיד של %1$s שהמורים של %2$s מוסמכים אליו. מורים: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "בחרו את הצוות שבו התפקיד משרת"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "בחרו את ערכת הנושא שהחברים רואים, הפעילו או כבו חלקים בפורטל, וראו מי משתמש בו."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "בחרו שבועי, חודשי או שנתי"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "בחרו מהיכן מגיעים תאריכי לוח הזמנים"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "בחרו באיזו חוויית התנדבות הקהילה משתמשת, כמה מראש ממלאים לוחות זמנים ומתי נשלחות תזכורות, ובדקו שמשימות הרקע פועלות."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "בחרו מי ממלא כל תפקיד כברירת מחדל. הבחירה נשמרת בלוח הזמנים: הם משובצים בכל מופע שנוצר עכשיו ובאלה שהמילוי היומי יוצר בהמשך, כל עוד הם מוסמכים, ויתבקשו להשיב אלא אם תגדירו אותם כמאושרים. השאירו תפקיד פתוח כדי לשבץ אותו משבוע לשבוע."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "בחרו מי מכסה אתכם."
+
+#: 
+msgid "Church Calendar"
+msgstr "לוח שנה של הקהילה"
+
+#: 
+msgid "Church Calendars"
+msgstr "לוחות שנה של הקהילה"
+
+#: 
+msgid "Church calendar"
+msgstr "לוח שנה של הקהילה"
+
+#: 
+msgid "Church events of a type"
+msgstr "אירועי קהילה מסוג מסוים"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "אירועי קהילה מסוג מסוים מתווספים ללוח השנה של הקהילה. יש לבדוק את סוג האירוע, הכותרת והתאריכים של לוח הזמנים."
+
+#: 
+msgid "Church website"
+msgstr "אתר הקהילה"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ל-ChurchCRM שתי דרכים לנהל מתנדבים. מיועדת לשימוש רק אחת מהן בכל פעם; ההגדרה משמאל קובעת איזו מהן הקהילה רואה. המעבר מסתיר או מציג דפים ופריטי תפריט — הוא לעולם לא מוחק נתונים, ולכן אפשר לחזור."
+
+#: 
+msgid "Close event details"
+msgstr "סגירת פרטי האירוע"
+
+#: 
+msgid "Colour"
+msgstr "צבע"
+
+#: 
+msgid "Completed"
+msgstr "הושלם"
+
+#: 
+msgid "Compose Message"
+msgstr "כתיבת הודעה"
+
+#: 
+msgid "Confirm your family details"
+msgstr "אשרו את פרטי המשפחה שלכם"
+
+#: 
+msgid "Coordinator removed"
+msgstr "הרכז הוסר"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "העתיקו כתובת זו והוסיפו אותה לאפליקציית לוח השנה כהרשמה חדשה ללוח שנה."
+
+#: 
+msgid "Could not build the preview."
+msgstr "לא ניתן לבנות את התצוגה המקדימה."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "לא ניתן לספור את אירועי הכיתה"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "לא ניתן להעניק את ההיקף"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "לא ניתן לטעון את כיתות בית הספר של יום ראשון"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "לא ניתן לטעון את לוח הבקרה"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "לא ניתן לטעון את אפשרויות האירוע"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "לא ניתן לטעון את המופעים"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "לא ניתן לטעון את לוחות הזמנים"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "לא ניתן לטעון את האירועים הקרובים"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "לא ניתן לטעון את המתנדבים"
+
+#: 
+msgid "Could not load this email."
+msgstr "לא ניתן לטעון דוא\"ל זה."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "לא ניתן לטעון שירות זה"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "לא ניתן לטעון את אירועי השירות"
+
+#: 
+msgid "Could not load this team"
+msgstr "לא ניתן לטעון צוות זה"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "לא ניתן לבטל את ההיקף"
+
+#: 
+msgid "Create"
+msgstr "יצירה"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "צרו לוח זמנים ויצרו את מופעיו, והשבועות למילוי יופיעו כאן."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "צרו לוח זמנים ויצרו את מופעיו, והשבועות לאיוש יופיעו כאן."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "יש ליצור לצוות זה לפחות תפקיד אחד, ואז לסמן מי יכול לשרת היכן."
+
+#: 
+msgid "Create ministry"
+msgstr "יצירת שירות"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "יצירת שירות דורשת גישת מנהל מתנדבים"
+
+#: 
+msgid "Date and time"
+msgstr "תאריך ושעה"
+
+#: 
+msgid "Date each year"
+msgstr "תאריך בכל שנה"
+
+#: 
+msgid "Dates"
+msgstr "תאריכים"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "התאריכים חייבים להיות בפורמט YYYY-MM-DD"
+
+#: 
+msgid "Day of the month"
+msgstr "יום בחודש"
+
+#: 
+msgid "Day of the week"
+msgstr "יום בשבוע"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "השבתת השירות"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "השבתת לוח הזמנים"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "יש להשבית שירות זה לפני מחיקתו."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "להשבית את {{name}}? הוא עובר אל שירותים מושבתים בסרגל הצד, שם אפשר להפעילו מחדש או למחוק אותו. דבר אינו נמחק."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "להשבית את {{name}}? לא ייווצרו לו מופעים חדשים, לא בידי היצירה ולא בידי המילוי היומי. המופעים והשיבוצים הקיימים נשארים, ואפשר להפעילו מחדש."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "שירותים מושבתים"
+
+#: 
+msgid "Declined"
+msgstr "סורב"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "סוג אירוע ברירת מחדל לאירועי שירות"
+
+#: 
+msgid "Default volunteers"
+msgstr "מתנדבי ברירת מחדל"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "מתנדבי ברירת מחדל נשלחים כדרישות: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "מחיקת אירועים"
+
+#: 
+msgid "Delete ministry"
+msgstr "מחיקת שירות"
+
+#: 
+msgid "Delete occurrences"
+msgstr "מחיקת מופעים"
+
+#: 
+msgid "Delete position"
+msgstr "מחיקת תפקיד"
+
+#: 
+msgid "Delete schedule"
+msgstr "מחיקת לוח זמנים"
+
+#: 
+msgid "Delete team"
+msgstr "מחיקת צוות"
+
+#: 
+msgid "Delete those events"
+msgstr "מחיקת האירועים האלה"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "למחוק את {{name}} ואת כל מה שבו? התפקידים, ההסמכות, צורכי האיוש, לוחות הזמנים, המופעים והשיבוצים שלו — כולל רישומי שירות מהעבר — והרשאות מנהל הצוות שלו יוסרו. כדי לשמור את ההיסטוריה, יש להשבית את הצוות במקום זאת. אי אפשר לבטל פעולה זו."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "למחוק את {{name}} ואת כל מה שבו? הצוותים, התפקידים, לוחות הזמנים, {{occurrences}} מופעים ו-{{assignments}} שיבוצים שלו — כולל רישומי שירות מהעבר — וכן הרשאות הרכז ומנהלי הצוותים, קבוצת מאגר המתנדבים ולוח השנה יוסרו. אי אפשר לבטל פעולה זו."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "למחוק את {{name}}? ההסמכות, צורכי האיוש והשיבוצים שלו — כולל רישומי שירות מהעבר — יוסרו יחד איתו. כדי לשמור את ההיסטוריה, יש להשבית את התפקיד במקום זאת. אי אפשר לבטל פעולה זו."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "למחוק את {{name}}? אי אפשר לבטל פעולה זו."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "מחיקת שירות דורשת גישת מנהל מתנדבים"
+
+#: 
+msgid "Developer mode"
+msgstr "מצב מפתח"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "בוצע — חזרתם לרשימה."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "להסיר את צורכי האיוש של מופע זה ולעקוב שוב אחר לוח הזמנים שלו?"
+
+#: 
+msgid "Due soon"
+msgstr "בקרוב"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "כל לוח שנה חייב להינתן כסוג וכמזהה."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "כל מתנדב ברירת מחדל חייב לציין אדם"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "כל צורך איוש חייב לציין תפקיד"
+
+#: 
+msgid "Edit event"
+msgstr "ערוך אירוע"
+
+#: 
+msgid "Edit ministry"
+msgstr "עריכת שירות"
+
+#: 
+msgid "Edit position"
+msgstr "עריכת תפקיד"
+
+#: 
+msgid "Edit schedule"
+msgstr "עריכת לוח זמנים"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "עריכת צורכי איוש"
+
+#: 
+msgid "Edit team"
+msgstr "עריכת צוות"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "יש לערוך את לוח הזמנים ולבחור כיתה אחרת."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "יש לערוך את לוח הזמנים ולבחור סוג אירוע אחר."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "יש לערוך את לוח הזמנים ולבחור את האירוע שהוא עוקב אחריו."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "יש לערוך את לוח הזמנים ולהזיז את תאריך הסיום שלו כדי לעקוב אחר יותר אירועים."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "נערך דרך פורטל החברים: %s"
+
+#: 
+msgid "Email %s"
+msgstr "שליחת דוא\"ל אל %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "שליחת דוא\"ל למשפחת %s"
+
+#: 
+msgid "Email History"
+msgstr "היסטוריית דוא\"ל"
+
+#: 
+msgid "Email content"
+msgstr "תוכן הדוא\"ל"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "שליחת דוא\"ל למי שלא נכחו: %s"
+
+#: 
+msgid "Email not found"
+msgstr "הדוא\"ל לא נמצא"
+
+#: 
+msgid "Email preview"
+msgstr "תצוגה מקדימה של הדוא\"ל"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "שליחת דוא\"ל מושבתת"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "שליחת דוא\"ל אינה מופעלת. יש להגדיר את SMTP ולהפעיל דוא\"ל לפני השליחה."
+
+#: 
+msgid "Emails"
+msgstr "הודעות דוא\"ל"
+
+#: 
+msgid "End time"
+msgstr "שעת סיום"
+
+#: 
+msgid "Enter counts"
+msgstr "הזנת ספירות"
+
+#: 
+msgid "Enter email subject…"
+msgstr "הזינו נושא לדוא\"ל…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "הזינו את הסיסמה הנוכחית, ואז את הסיסמה החדשה פעמיים."
+
+#: 
+msgid "Enter your message…"
+msgstr "הזינו את ההודעה שלכם…"
+
+#: 
+msgid "Event staffed"
+msgstr "האירוע אויש"
+
+#: 
+msgid "Event title"
+msgstr "כותרת אירוע"
+
+#: 
+msgid "Event type"
+msgstr "סוג אירוע"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "כל דוא\"ל ש-ChurchCRM שלח, החדש ביותר ראשון. פתחו אדם כדי לראות את ההיסטוריה המלאה שלו."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "לכל תפקיד בחלון זה יש את האנשים הדרושים לו."
+
+#: 
+msgid "Everyone has answered"
+msgstr "כולם ענו"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "כל הנמצאים בבחירה מצטרפים למתנדבי השירות. סמנו את תפקידיהם לאחר מכן."
+
+#: 
+msgid "Everything is correct"
+msgstr "הכול נכון"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "בניית התצוגה המקדימה נכשלה"
+
+#: 
+msgid "Failed to load email"
+msgstr "טעינת הדוא\"ל נכשלה"
+
+#: 
+msgid "Failed to load email history"
+msgstr "טעינת היסטוריית הדוא\"ל נכשלה"
+
+#: 
+msgid "Failed to send email"
+msgstr "שליחת הדוא\"ל נכשלה"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "שליחת הדוא\"ל נכשלה. נסו שוב או השתמשו ב-'פתיחה בתוכנת דוא\"ל'."
+
+#: 
+msgid "Family Member"
+msgstr "בן משפחה"
+
+#: 
+msgid "Family verification"
+msgstr "אימות משפחה"
+
+#: 
+msgid "File"
+msgstr "קובץ"
+
+#: 
+msgid "Fill"
+msgstr "מילוי"
+
+#: 
+msgid "Fill by default with"
+msgstr "מילוי כברירת מחדל באמצעות"
+
+#: 
+msgid "Fill this gap"
+msgstr "מילוי פער זה"
+
+#: 
+msgid "Filled"
+msgstr "מולא"
+
+#: 
+msgid "Find a sub"
+msgstr "מציאת מחליף"
+
+#: 
+msgid "Find a volunteer"
+msgstr "מציאת מתנדב"
+
+#: 
+msgid "Find an event"
+msgstr "מציאת אירוע"
+
+#: 
+msgid "Find something to do"
+msgstr "מצאו משהו לעשות"
+
+#: 
+msgid "Find something to help with"
+msgstr "מצאו במה לעזור"
+
+#: 
+msgid "Findings"
+msgstr "ממצאים"
+
+#: 
+msgid "First date"
+msgstr "תאריך ראשון"
+
+#: 
+msgid "Folder"
+msgstr "תיקייה"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "שם התיקייה של ערכת הנושא של פורטל החברים לשימוש, מתוך Include/themes/. \"default\" היא ערכת הנושא של המערכת שמגיעה עם ChurchCRM."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "יש ליצור שוב קרוב יותר לתאריך הראשון שלו."
+
+#: 
+msgid "Generate occurrences"
+msgstr "יצירת מופעים"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "לקבל כתובת חדשה ללוח השנה?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "תנו שם לשירות"
+
+#: 
+msgid "Give the position a name"
+msgstr "תנו שם לתפקיד"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "ציינו שעות התחלה וסיום בפורמט HH:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "תנו שם לצוות"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "מעבר להתנדבות שלי"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "מעבר להגדרות פורטל החברים"
+
+#: 
+msgid "Going"
+msgstr "מגיע"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "הענקו את ההסמכה בדף השירות, ואז שבצו אותם כאן."
+
+#: 
+msgid "Granted"
+msgstr "הוענק"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "עיינו במה שהקהילה שומרת על משק הבית שלכם, ואז ספרו לנו אם זה עדיין נכון."
+
+#: 
+msgid "Headcount"
+msgstr "ספירת משתתפים"
+
+#: 
+msgid "Hello %s"
+msgstr "שלום %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "דרושה עזרה"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "לא ניתן היה לשמור את בקשת העזרה"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "כמה מראש נוצרים מופעים לאירועים שכל לוח זמנים עוקב אחריהם. משימת רקע יומית ממלאת כל לוח זמנים עד נקודה זו."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "כמה שעות לפני מופע התנדבות נשלח דוא\"ל התזכורת. הגדירו 0 כדי לא לשלוח תזכורות כלל. המשלוח תלוי בהרצת משימות הרקע; ראו את תיעוד המתנדבים להגדרת ה-cron המומלצת."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "כמה שעות לפני מופע נשלח דוא\"ל התזכורת. הגדירו 0 כדי לא לשלוח תזכורות כלל."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "כמה אנשים כל תפקיד צריך, בכל פעם שזה רץ. אפשר לשנות תאריך אחד בנפרד אחר כך. מתנדב ברירת מחדל משובץ בכל מופע חדש כל עוד הוא מוסמך; שינוי אינו משנה לעולם מופעים שכבר קיימים."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "כמה מתנדבים כל מופע של לוח זמנים זה צריך. בטלו סימון של תפקיד שלוח זמנים זה אינו משתמש בו. מתנדב ברירת מחדל משובץ בכל מופע חדש כל עוד הוא מוסמך; שינוי אינו משנה לעולם מופעים שכבר קיימים."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "כמה מתנדבים אירוע זה צריך. בטלו סימון של תפקיד שאינו בשימוש."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "כמה שבועות מראש נוצרים מופעי התנדבות לאירועים שכל לוח זמנים עוקב אחריהם, מ-1 עד 52. משימת רקע יומית ממלאת כל לוח זמנים עד נקודה זו."
+
+#: 
+msgid "How often"
+msgstr "באיזו תדירות"
+
+#: 
+msgid "How to correct this"
+msgstr "איך לתקן זאת"
+
+#: 
+msgid "I can't"
+msgstr "אני לא יכול"
+
+#: 
+msgid "I'd like to help"
+msgstr "אשמח לעזור"
+
+#: 
+msgid "I'll be there"
+msgstr "אהיה שם"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "אם הודעות נכשלות, בקשו ממנהל מערכת לבדוק את הגדרות השירותים."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "אם אינכם יכולים עוד להגיע, אנא דחו בלוח הזמנים שלכם כמה שיותר מהר כדי שאפשר יהיה למלא את התפקיד."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "אם שיתפתם כתובת זו בטעות, קבלו חדשה. הכתובת הישנה תפסיק לעבוד מיד."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "ב-15 הדקות האחרונות"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "במאגר המתנדבים"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "פנימי: התאריך האחרון שבו לוחות זמנים של מתנדבים מולאו עד אופק התזמון (YYYY-MM-DD). אין לערוך ידנית."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "פנימי: מתי מולאו לוחות הזמנים של המתנדבים לאחרונה וכמה מופעים נוצרו. אין לערוך ידנית."
+
+#: 
+msgid "Is this still right?"
+msgstr "האם זה עדיין נכון?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "המופעים שלו ייווצרו ללא תפקידים למילוי. ערכו את לוח הזמנים כדי להוסיף את צורכי האיוש שלו."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "להשאיר אותם ב-{{className}}"
+
+#: 
+msgid "Kind"
+msgstr "סוג"
+
+#: 
+msgid "Last 24 hours"
+msgstr "24 השעות האחרונות"
+
+#: 
+msgid "Last 30 days"
+msgstr "30 הימים האחרונים"
+
+#: 
+msgid "Last 7 days"
+msgstr "7 הימים האחרונים"
+
+#: 
+msgid "Last attempt"
+msgstr "ניסיון אחרון"
+
+#: 
+msgid "Last check"
+msgstr "בדיקה אחרונה"
+
+#: 
+msgid "Last date"
+msgstr "תאריך אחרון"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "נראה לאחרונה בפורטל"
+
+#: 
+msgid "Last sign-in"
+msgstr "התחברות אחרונה"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "השאירו את שניהם על 0 כדי לשרת בדיוק כשהאירוע מתקיים. הזזת האירוע מזיזה גם את המתנדבים."
+
+#: 
+msgid "Leave open"
+msgstr "להשאיר פתוח"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "לאפשר לחברים לשנות בפורטל החברים את ימי ההולדת שלהם ושל בני משפחתם."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "לאפשר לחברים לערוך ימי הולדת"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "הודיעו למשרד הקהילה אם הכול למעלה עדיין נכון."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "ספרו להם למה (לא חובה)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "מאפשר לרכזי אותו שירות לתזמן מתנדבים לאירוע זה — ולערוך את האירוע עצמו."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "טוען את לוח השנה…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "ניהול שירותים"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "ניהול השירותים שלי"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "גישת ניהול השירותים שלי, עם שירות או צוות לניהול"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "נדרשת גישת ניהול השירותים שלי, עם שירות או צוות לניהול"
+
+#: 
+msgid "Manage staffing"
+msgstr "ניהול איוש"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "מנוהל מהשירות %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "מנוהל מהשירות {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "מקס׳"
+
+#: 
+msgid "Member Portal"
+msgstr "פורטל החברים"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "החברים רואים דף \"אינו זמין זמנית\" עד שזה יתוקן. אותם פרטים נכתבו ליומן האפליקציה וליומן השגיאות של שרת האינטרנט."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "החברים רואים רק את לוחות השנה שמופעלים כאן. ימי הולדת ויובלי נישואין מציגים שמות פרטיים ואות ראשונה של שם המשפחה בלבד."
+
+#: 
+msgid "Message"
+msgstr "הודעה"
+
+#: 
+msgid "Min"
+msgstr "מינ׳"
+
+#: 
+msgid "Ministries"
+msgstr "שירותים"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "שירותים המחפשים עזרה"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "שירותים שרשאים להוסיף אירועים"
+
+#: 
+msgid "Ministry"
+msgstr "שירות"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "לוחות שנה של שירותים"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "רכזי שירותים"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "לוח בקרה של השירות"
+
+#: 
+msgid "Ministry Settings"
+msgstr "הגדרות שירותים"
+
+#: 
+msgid "Ministry calendar"
+msgstr "לוח שנה של השירות"
+
+#: 
+msgid "Ministry created"
+msgstr "השירות נוצר"
+
+#: 
+msgid "Ministry management access"
+msgstr "גישת ניהול שירותים"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "נדרשת גישת ניהול שירותים"
+
+#: 
+msgid "Ministry name"
+msgstr "שם השירות"
+
+#: 
+msgid "Ministry not found"
+msgstr "השירות לא נמצא"
+
+#: 
+msgid "My Family"
+msgstr "המשפחה שלי"
+
+#: 
+msgid "My Teams"
+msgstr "הצוותים שלי"
+
+#: 
+msgid "My ministries and teams"
+msgstr "השירותים והצוותים שלי"
+
+#: 
+msgid "My schedule"
+msgstr "לוח הזמנים שלי"
+
+#: 
+msgid "My volunteering"
+msgstr "ההתנדבות שלי"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "תנו שם לתפקיד זה בדף שבו חברים מחפשים במה לעזור."
+
+#: 
+msgid "Needs an answer"
+msgstr "דורש תשובה"
+
+#: 
+msgid "Needs filling"
+msgstr "דורש מילוי"
+
+#: 
+msgid "Never signed in"
+msgstr "מעולם לא התחבר"
+
+#: 
+msgid "New account"
+msgstr "חשבון חדש"
+
+#: 
+msgid "New event"
+msgstr "אירוע חדש"
+
+#: 
+msgid "New ministry"
+msgstr "שירות חדש"
+
+#: 
+msgid "New record notification"
+msgstr "התראה על רשומה חדשה"
+
+#: 
+msgid "New recurring event"
+msgstr "אירוע חוזר חדש"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "דרושים מתנדבים חדשים לתפקידים הבאים"
+
+#: 
+msgid "Newest first"
+msgstr "החדש ביותר ראשון"
+
+#: 
+msgid "Next on %s"
+msgstr "הבא ב-%s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "עדיין לא שותף לוח שנה עם החברים."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "אין לוח שנה הפתוח לשירות זה, ולכן האירועים לא יופיעו באף לוח שנה."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "אין לוח שנה המשותף עם החברים."
+
+#: 
+msgid "No class"
+msgstr "ללא כיתה"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "עדיין אין פרטי קשר."
+
+#: 
+msgid "No coordinators yet"
+msgstr "עדיין אין רכזים"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "אין תאריך בין התאריך הראשון לאחרון שמתאים לחזרתיות"
+
+#: 
+msgid "No email was sent."
+msgstr "לא נשלח דוא\"ל."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "עדיין לא נשלחו הודעות דוא\"ל לרשומה זו."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "עדיין לא נרשמה ספירת משתתפים"
+
+#: 
+msgid "No longer needed"
+msgstr "אינו נדרש עוד"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "אף חבר עדיין לא התחבר לפורטל החברים."
+
+#: 
+msgid "No ministry"
+msgstr "אין שירות"
+
+#: 
+msgid "No past events"
+msgstr "אין אירועים מהעבר"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "לא הועלתה תמונה עבור אדם זה."
+
+#: 
+msgid "No photo was sent."
+msgstr "לא נשלחה תמונה."
+
+#: 
+msgid "No positions yet"
+msgstr "עדיין אין תפקידים"
+
+#: 
+msgid "No qualifications yet."
+msgstr "עדיין אין הסמכות."
+
+#: 
+msgid "No schedules yet"
+msgstr "עדיין אין לוחות זמנים"
+
+#: 
+msgid "No staffing needs set"
+msgstr "לא הוגדרו צורכי איוש"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "אין צורכי איוש: מופעים שייווצרו לא יזדקקו לאיש."
+
+#: 
+msgid "No substitution requests"
+msgstr "אין בקשות החלפה"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "אין החלפות להחלטה"
+
+#: 
+msgid "No teams yet"
+msgstr "עדיין אין צוותים"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "אין אירועי %1$s קרובים בשם \"%2$s\" בלוח השנה. לוח זמנים עוקב אחר אירועים שכבר קיימים."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "אין אירוע קרוב שמתאים"
+
+#: 
+msgid "No upcoming events"
+msgstr "אין אירועים קרובים"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "אין אירועים קרובים מסוג זה בלוח השנה."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "אין אירועים קרובים לבחירה"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "עדיין לא שובץ איש"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "אף אחד אחר עדיין לא הוכשר לכך — ספרו על כך לרכז שלכם במקום."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "איש לא אמר כמה מתנדבים כל תפקיד צריך, ולכן אין מה למלא."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "אף אחד בחלון זה עדיין אינו מתלבט."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "עדיין אין מי שמוסמך לתפקיד זה"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "עדיין אין מי שמוסמך לתפקיד זה, ולכן הוא נשאר פתוח."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "לאף אחד מהנמענים אי אפשר לשלוח דוא\"ל"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "אין: סוג האירוע נבחר לכל אירוע"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "אין הרשאה לצפות בדוא\"ל זה"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "אין הרשאה לצפות במשפחה זו"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "אין הרשאה לצפות באדם זה"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "אין הרשאה לשיבוץ זה"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "אין הרשאה לשירות זה"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "אין הרשאה למופע זה"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "אין הרשאה לתפקיד זה"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "אין הרשאה להסמכה זו"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "אין הרשאה לדרישה זו"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "אין הרשאה ללוח זמנים זה"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "אין הרשאה לבקשת החלפה זו"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "אין הרשאה לצוות זה"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "אין הרשאה להקצות אירועים לשירות מתנדבים זה"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "אין הרשאה לשנות את האירוע %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "אין הרשאה לשנות את שירות המתנדבים של אירוע זה"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "אין הרשאה ליצור אירוע ללא שירות מתנדבים שאתם מנהלים"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "אין הרשאה לשנות אירוע זה"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "אין הרשאה להצמיד אירועים ללוח השנה \"%s\""
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "אין הרשאה להסיר אירועים מלוח השנה \"%s\""
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "אין הרשאה להסיר את שירות המתנדבים מאירוע זה"
+
+#: 
+msgid "Not checked in"
+msgstr "לא נרשמה נוכחות"
+
+#: 
+msgid "Not found"
+msgstr "לא נמצא"
+
+#: 
+msgid "Not in the pool"
+msgstr "לא במאגר"
+
+#: 
+msgid "Not now"
+msgstr "לא עכשיו"
+
+#: 
+msgid "Not sent"
+msgstr "לא נשלח"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "לא הוגדר: שימוש ב-\"%s\""
+
+#: 
+msgid "Not staffed"
+msgstr "לא מאויש"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "עדיין לא מתנדב"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "דבר לא השתנה, ולכן דבר לא נשמר."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "אין דבר בלוח השנה לתקופה זו."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "אין דבר בלוח השנה כרגע."
+
+#: 
+msgid "Nothing is short"
+msgstr "שום דבר לא חסר"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "עדיין אין דבר ברשימה שלכם"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "עדיין אין דבר ברשימה שלכם. עיינו במה שצריך מילוי."
+
+#: 
+msgid "Nothing open right now"
+msgstr "אין דבר פתוח כרגע"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "עדיין לא תוזמן דבר"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "לא תוזמן דבר."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "עדיין לא הוגדר דבר"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "דבר שהשירות הזה הבעלים שלו לא התרחש בשנה האחרונה."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "עדיין אין מה להסמיך"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "דבר לא נשמר. אנא בדקו את השדות המסומנים."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "דבר לא נשמר. אנא נסו שוב."
+
+#: 
+msgid "Notification"
+msgstr "התראה"
+
+#: 
+msgid "Notifications"
+msgstr "התראות"
+
+#: 
+msgid "Occurrence not found"
+msgstr "המופע לא נמצא"
+
+#: 
+msgid "Occurrences"
+msgstr "מופעים"
+
+#: 
+msgid "Offer to help"
+msgstr "הצעת עזרה"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "פעם ביום כל לוח זמנים פעיל מקבל מופעים לאירועים שהוא עוקב אחריהם, עד %d שבוע מראש, ומתנדב ברירת המחדל של כל תפקיד משובץ במופעים החדשים כל עוד הוא מוסמך."
+msgstr[1] "פעם ביום כל לוח זמנים פעיל מקבל מופעים לאירועים שהוא עוקב אחריהם, עד %d שבועות מראש, ומתנדב ברירת המחדל של כל תפקיד משובץ במופעים החדשים כל עוד הוא מוסמך."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "ברגע שאדם זה מוסמך לתפקיד הוא מופיע כאן, יחד עם התאריכים שבהם הוא מתוזמן לשרת."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "נוצר מופע אחד לכל אירוע בלוח השנה שהקבוצה המקושרת שלו היא כיתה זו."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "נוצר מופע אחד לכל תאריך של אירוע זה. אפשר לבחור רק אירועים שכבר בלוח השנה."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "אחד מלוחות השנה אינו קיים"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "אחד מהאירועים אינו קיים"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "אחד מלוחות השנה האלה אינו משותף עם החברים."
+
+#: 
+msgid "One-time"
+msgstr "חד-פעמי"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "רק כיתה של בית הספר של יום ראשון יכולה להיות מקושרת לצוות"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "רק רכז רשאי לרשום תשובה בשם מישהו אחר"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "רק רכז של שירות זה רשאי ליצור את אירועיו"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "רק רכז של שירות זה רשאי לאייש את אירועיו"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "רק מנהל מתנדבים יכול לשנות זאת."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "רק מנהל מתנדבים יכול לשנות אם שירות מספק מורים לבית הספר של יום ראשון"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "רק מבוגר במשפחה שלכם יכול לשנות פרטים אלה. אנא פנו למשרד הקהילה."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "רק מי שהוכשר לכך מופיע ברשימה."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "רק המתנדב המשובץ רשאי להציע מחליף"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "רק לוחות השנה שהשירות רשאי להוסיף להם אירועים מופיעים. לוח השנה שלו מסומן מלכתחילה."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "מוצג רק החלק הראשון של רשימה ארוכה מאוד. צמצמו את החלון כדי לראות את השאר."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "רק המתנדב שהציע מחליף רשאי למשוך את ההצעה"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "פתחו שירות מתפריט השירותים, צרו לוח זמנים ויצרו את תאריכיו, והשבועות לאיוש יופיעו כאן."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "פתחו שירות כדי למנות מישהו לרכז שלו, או למנהל של אחד מצוותיו."
+
+#: 
+msgid "Open in calendar app"
+msgstr "פתיחה באפליקציית לוח השנה"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "לא ניתן היה לטעון הזדמנויות פתוחות."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "פתיחת הנמענים בתוכנת הדוא\"ל המקומית שלכם"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "פתיחת פורטל החברים"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "פתיחת לוח הבקרה של השירות"
+
+#: 
+msgid "Open the ministry"
+msgstr "פתיחת השירות"
+
+#: 
+msgid "Open the occurrence"
+msgstr "פתיחת המופע"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "פתחו את המופע כדי לשבץ את האנשים שאתם צריכים."
+
+#: 
+msgid "Open this team"
+msgstr "פתיחת צוות זה"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "פתיחת לוח שנה לשירותים דורשת הרשאת הוספת אירועים"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "לא חובה. כל מי שמוסמך לתפקיד בצוות זה הופך למורה של הכיתה, ודף הכיתה אינו משנה עוד את מוריה."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "לא חובה. הכיתה הופכת לקבוצה המקושרת: הרשימה שלה היא מי שנרשם לנוכחות, ולוח זמנים לכיתה מוצא אירועים אלה."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "מעל המקסימום: הסירו אחד או העלו את המקסימום."
+
+#: 
+msgid "Overridden templates"
+msgstr "תבניות שנדרסו"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "עמוד %1$s מתוך %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "עמוד %d מתוך %d"
+
+#: 
+msgid "Password reset"
+msgstr "איפוס סיסמה"
+
+#: 
+msgid "Password reset link"
+msgstr "קישור לאיפוס סיסמה"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "סיסמאות חייבות להכיל לפחות %s תו."
+msgstr[1] "סיסמאות חייבות להכיל לפחות %s תווים."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "בחרו אירוע קרוב בלוח השנה וציינו את מי הוא צריך. האירוע שומר על תאריכו ושעתו; כדי לאייש סדרה שלמה, הוסיפו במקום זאת לוח זמנים."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "בחרו מי שכבר הסכים לתפוס את מקומכם. הרכז שלכם יאשר זאת."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "אנא בחרו לוחות שנה מהרשימה."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "אנא בחרו אם הפרטים שלכם צריכים שינוי."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "אנא פנו למשרד הקהילה כדי שנתקן את הרשומות שלנו."
+
+#: 
+msgid "Please contact the church office."
+msgstr "אנא פנו למשרד הקהילה."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "אנא הזינו לפחות שני תווים."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "אנא הודיעו לנו אם תוכלו להגיע, באישור או בדחייה בלוח הזמנים שלכם כמתנדבים."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "אנא ספרו לנו מה צריך להשתנות."
+
+#: 
+msgid "Portal settings"
+msgstr "הגדרות הפורטל"
+
+#: 
+msgid "Portal theme"
+msgstr "ערכת נושא של הפורטל"
+
+#: 
+msgid "Position"
+msgstr "תפקיד"
+
+#: 
+msgid "Position added"
+msgstr "התפקיד נוסף"
+
+#: 
+msgid "Position deleted"
+msgstr "התפקיד נמחק"
+
+#: 
+msgid "Position name"
+msgstr "שם התפקיד"
+
+#: 
+msgid "Position not found"
+msgstr "התפקיד לא נמצא"
+
+#: 
+msgid "Position saved"
+msgstr "התפקיד נשמר"
+
+#: 
+msgid "Positions"
+msgstr "תפקידים"
+
+#: 
+msgid "Positions still short"
+msgstr "תפקידים שעדיין חסרים"
+
+#: 
+msgid "Proposed"
+msgstr "הוצע"
+
+#: 
+msgid "Proposed substitute"
+msgstr "מחליף מוצע"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "הציבו שירות זה בדף ההזדמנויות הפתוחות של פורטל החברים, שם כל מתנדב יכול לראות אותו ולהציע עזרה. הם מצטרפים למאגר המתנדבים ואתם מקבלים דוא\"ל."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "לשבץ את {{name}} במקום זאת? המתנדב המקורי שומר על ההיסטוריה שלו ומקבל הודעה."
+
+#: 
+msgid "Qualification not found"
+msgstr "ההסמכה לא נמצאה"
+
+#: 
+msgid "Qualified for"
+msgstr "מוסמך ל"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "מתנדבים מוסמכים יכולים להירשם בעצמם לתאריכים פתוחים של תפקיד זה. כבו עבור תפקידים שרק מנהל צוות או רכז צריכים לשבץ; פורטל החברים לא יציע אותם."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "הסמכת מוריה הנוכחיים ל"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "הסמכתם לתפקיד"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "הסמכתם לתפקיד."
+
+#: 
+msgid "Reactivate"
+msgstr "הפעלה מחדש"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "קראו את מדריך כתיבת ערכות הנושא"
+
+#: 
+msgid "Recent Emails"
+msgstr "דוא\"ל אחרון"
+
+#: 
+msgid "Recent Sends"
+msgstr "שליחות אחרונות"
+
+#: 
+msgid "Recipient"
+msgstr "נמען"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "מספר הנמענים (%d) חורג מהמקסימום המותר לשליחה (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "יש לתת נמענים כ-personIds ו-familyIds, לא ככתובות דוא\"ל"
+
+#: 
+msgid "Record a decline"
+msgstr "רישום דחייה"
+
+#: 
+msgid "Record an acceptance"
+msgstr "רישום אישור"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "לרשום ש-{{name}} אמר לא? התשובה נשמרת כאילו באה מכם, והמקום נפתח שוב."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "לרשום ש-{{name}} אמר כן? התשובה נשמרת כאילו באה מכם, לא מהם."
+
+#: 
+msgid "Record: they accepted"
+msgstr "רישום: הם אישרו"
+
+#: 
+msgid "Record: they declined"
+msgstr "רישום: הם דחו"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "גיוס מתנדבים"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "הערך גיוס מתנדבים חייב להיות true או false"
+
+#: 
+msgid "Recruiting"
+msgstr "בגיוס"
+
+#: 
+msgid "Recurring"
+msgstr "חוזר"
+
+#: 
+msgid "Reject"
+msgstr "דחייה"
+
+#: 
+msgid "Reject substitution"
+msgstr "דחיית החלפה"
+
+#: 
+msgid "Reject this substitute"
+msgstr "דחיית מחליף זה"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "זמן תזכורת מראש (שעות)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "תזכורת: אתם מתוזמנים לשרת"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "תזכורות והתראות נשלחות רק כשמשימות הרקע רצות. למשלוח בזמן, הריצו את מריץ המשימות המתוזמנות מ-cron כל 15 דקות"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "הסרת מתנדב"
+
+#: 
+msgid "Remove coordinator"
+msgstr "הסרת רכז"
+
+#: 
+msgid "Remove the class from them"
+msgstr "הסרת הכיתה מהם"
+
+#: 
+msgid "Remove the team leader"
+msgstr "הסרת מנהל הצוות"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "להסיר את {{name}} מ-{{ministry}}? פעולה זו מסירה את כל הסמכותיו כאן, מוציאה אותו מכל מופע עתידי, מנקה אותו כמתנדב ברירת מחדל בלוחות הזמנים של השירות, ומסירה אותו ממאגר המתנדבים."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "הוסר. {{qualifications}} הסמכות, {{assignments}} שיבוצים קרובים, {{defaults}} ברירות מחדל בלוחות זמנים."
+
+#: 
+msgid "Repeats"
+msgstr "חוזר"
+
+#: 
+msgid "Requirement not found"
+msgstr "הדרישה לא נמצאה"
+
+#: 
+msgid "Reset link"
+msgstr "קישור איפוס"
+
+#: 
+msgid "Response recorded"
+msgstr "התשובה נרשמה"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "עיינו בבקשה בלוח הבקרה של המתנדבים ואשרו או דחו אותה."
+
+#: 
+msgid "Review this request"
+msgstr "בדיקת בקשה זו"
+
+#: 
+msgid "Run background jobs now"
+msgstr "הרצת משימות הרקע עכשיו"
+
+#: 
+msgid "SMTP test"
+msgstr "בדיקת SMTP"
+
+#: 
+msgid "Save calendars"
+msgstr "שמירת לוחות השנה"
+
+#: 
+msgid "Save changes"
+msgstr "שמור שינויים"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "נשמר — שירות זה אינו מבקש עוד עזרה"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "נשמר — שירות זה מבקש כעת עזרה"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "נשמר. החברים רואים את לוחות השנה שהופעלו למעלה."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "לוח הזמנים \"{{name}}\" נוצר."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "לוח הזמנים \"{{name}}\" נוצר. הוא אינו פעיל, ולכן לא ייווצרו לו מופעים עד שיופעל."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "לוח הזמנים הושבת"
+
+#: 
+msgid "Schedule deleted"
+msgstr "לוח הזמנים נמחק"
+
+#: 
+msgid "Schedule name"
+msgstr "שם לוח הזמנים"
+
+#: 
+msgid "Schedule not found"
+msgstr "לוח הזמנים לא נמצא"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "לוח הזמנים הופעל מחדש"
+
+#: 
+msgid "Schedule saved"
+msgstr "לוח הזמנים נשמר"
+
+#: 
+msgid "Scheduled"
+msgstr "מתוזמן"
+
+#: 
+msgid "Schedules"
+msgstr "לוחות זמנים"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "לוחות הזמנים מולאו לאחרונה"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "לוחות זמנים כבר אינם נושאים חזרתיות או שעות משלהם; כל מופע עוקב אחר אירוע בלוח השנה. יש להסיר: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "לוחות זמנים כבר אינם קובעים כמה מראש נוצרים: אופק התזמון ב-ניהול ← הגדרות שירותים חל על כל לוח זמנים. יש להסיר: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "אופק תזמון (שבועות)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "הענקת ההיקף לא נמצאה"
+
+#: 
+msgid "Search by name"
+msgstr "חיפוש לפי שם"
+
+#: 
+msgid "See the whole calendar"
+msgstr "צפייה בכל לוח השנה"
+
+#: 
+msgid "See what needs filling"
+msgstr "ראו מה צריך מילוי"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "בחרו לוח שנה כדי להסתיר או להציג את אירועיו."
+
+#: 
+msgid "Select ministries..."
+msgstr "בחירת שירותים..."
+
+#: 
+msgid "Self sign-up"
+msgstr "הרשמה עצמית"
+
+#: 
+msgid "Self-assignable"
+msgstr "ניתן לשיבוץ עצמי"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "הערך ניתן לשיבוץ עצמי חייב להיות true או false"
+
+#: 
+msgid "Self-service accounts"
+msgstr "חשבונות שירות עצמי"
+
+#: 
+msgid "Send"
+msgstr "שליחה"
+
+#: 
+msgid "Send Email"
+msgstr "שליחת דוא\"ל"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "שליחת דוא\"ל מ-ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "שליחה חוזרת של הודעת השיבוץ"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "שלחו את לוחות השנה להצגה כרשימה."
+
+#: 
+msgid "Send to the church office"
+msgstr "שליחה למשרד הקהילה"
+
+#: 
+msgid "Send your answer"
+msgstr "שליחת התשובה"
+
+#: 
+msgid "Sent"
+msgstr "נשלח"
+
+#: 
+msgid "Sent by"
+msgstr "נשלח על ידי"
+
+#: 
+msgid "Serving next"
+msgstr "השירות הבא"
+
+#: 
+msgid "Set as Accepted"
+msgstr "הגדרה כמאושר"
+
+#: 
+msgid "Set staffing needs"
+msgstr "הגדרת צורכי איוש"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "הצגת \"%s\" בפורטל החברים"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "הצגה בפורטל החברים"
+
+#: 
+msgid "Show past events"
+msgstr "הצגת אירועי עבר"
+
+#: 
+msgid "Show the church calendar"
+msgstr "הצגת לוח השנה של הקהילה"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "הצגת לוח השנה של הקהילה בפורטל החברים."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "הצגת מדור לוח השנה של הקהילה בפורטל החברים."
+
+#: 
+msgid "Show the next"
+msgstr "הצגת הבאים"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "הצגת מדורי ההתנדבות והצוות בפורטל החברים."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "הצגת שירות זה בדף ההזדמנויות הפתוחות"
+
+#: 
+msgid "Show volunteering"
+msgstr "הצגת התנדבות"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "הצגת דפי ההתנדבות והצוות בפורטל החברים."
+
+#: 
+msgid "Show what I have already done"
+msgstr "הצגת מה שכבר עשיתי"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "מוצג בדיוק כפי שתקלידו. מעברי שורה נשמרים."
+
+#: 
+msgid "Sign up"
+msgstr "הרשמה"
+
+#: 
+msgid "Sign-in and security"
+msgstr "התחברות ואבטחה"
+
+#: 
+msgid "Signed in"
+msgstr "מחובר"
+
+#: 
+msgid "Signed up"
+msgstr "נרשם"
+
+#: 
+msgid "Sincerely"
+msgstr "בכבוד רב"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "לא ניתן היה לשמור חלק מהפרטים שלכם. אנא בדקו את השדות המסומנים."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "לא ניתן היה לשמור חלק מפרטי המשפחה שלכם. אנא בדקו את השדות המסומנים."
+
+#: 
+msgid "Someone else is covering"
+msgstr "מישהו אחר מכסה"
+
+#: 
+msgid "Something needs changing"
+msgstr "משהו צריך להשתנות"
+
+#: 
+msgid "Something went wrong"
+msgstr "משהו השתבש"
+
+#: 
+msgid "Staff an event"
+msgstr "איוש אירוע"
+
+#: 
+msgid "Staff them"
+msgstr "איוש שלהם"
+
+#: 
+msgid "Staff this event"
+msgstr "איוש אירוע זה"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "איוש מופע זה"
+
+#: 
+msgid "Staffed"
+msgstr "מאויש"
+
+#: 
+msgid "Staffing"
+msgstr "איוש"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "האיוש נקבע לאחר יצירת האירועים"
+
+#: 
+msgid "Staffing needs"
+msgstr "צורכי איוש"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "צורכי האיוש נשמרו"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "התחילו ביצירת שירות, ואז הוסיפו את הצוותים והתפקידים המשרתים בו."
+
+#: 
+msgid "Start time"
+msgstr "שעת כניסה"
+
+#: 
+msgid "Start typing a name"
+msgstr "התחילו להקליד שם"
+
+#: 
+msgid "Statistics"
+msgstr "סטטיסטיקה"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "להפסיק את {{name}} לרכז את {{ministry}}? פרטי ההתחברות והשיבוצים שלו עצמו נשארים ללא שינוי."
+
+#: 
+msgid "Subscribe"
+msgstr "הרשמה"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "הרשמה ללוח השנה"
+
+#: 
+msgid "Substitute"
+msgstr "מחליף"
+
+#: 
+msgid "Substitute approved"
+msgstr "המחליף אושר"
+
+#: 
+msgid "Substitute asked"
+msgstr "נתבקש מחליף"
+
+#: 
+msgid "Substitute decision"
+msgstr "החלטה על מחליף"
+
+#: 
+msgid "Substitute proposed"
+msgstr "הוצע מחליף"
+
+#: 
+msgid "Substitute rejected"
+msgstr "המחליף נדחה"
+
+#: 
+msgid "Substituted"
+msgstr "הוחלף"
+
+#: 
+msgid "Substitution approved"
+msgstr "ההחלפה אושרה"
+
+#: 
+msgid "Substitution rejected"
+msgstr "ההחלפה נדחתה"
+
+#: 
+msgid "Substitution request not found"
+msgstr "בקשת ההחלפה לא נמצאה"
+
+#: 
+msgid "Substitution requests"
+msgstr "בקשות החלפה"
+
+#: 
+msgid "Sunday School Class"
+msgstr "כיתה של בית הספר של יום ראשון"
+
+#: 
+msgid "System calendar"
+msgstr "לוח שנה של המערכת"
+
+#: 
+msgid "System default"
+msgstr "ברירת המחדל של המערכת"
+
+#: 
+msgid "Take that back"
+msgstr "ביטול ההצעה"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "להוציא את {{name}} מתפקיד זה? לא נשלח דוא\"ל; לוח הזמנים שלו מציג את התאריך כבלתי נדרש עוד, והמקום נפתח שוב."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "מוריה של כיתה זו מנוהלים ב-שירותים ← %1$s ← %2$s."
+
+#: 
+msgid "Team"
+msgstr "צוות"
+
+#: 
+msgid "Team Leader"
+msgstr "מנהל צוות"
+
+#: 
+msgid "Team added"
+msgstr "הצוות נוסף"
+
+#: 
+msgid "Team deleted"
+msgstr "הצוות נמחק"
+
+#: 
+msgid "Team leader"
+msgstr "מנהל צוות"
+
+#: 
+msgid "Team name"
+msgstr "שם הצוות"
+
+#: 
+msgid "Team not found"
+msgstr "הצוות לא נמצא"
+
+#: 
+msgid "Team saved"
+msgstr "הצוות נשמר"
+
+#: 
+msgid "Teams"
+msgstr "צוותים"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "צוותים הם קבוצות האנשים המשרתים בשירות זה."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "צוותים, תפקידים והאנשים שממלאים אותם"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "עשר ההתחברויות האחרונות"
+
+#: 
+msgid "Thank you"
+msgstr "תודה לך!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "תודה שנרשמתם לשרת"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "תודה שנרשמתם לשרת. אתם בלוח הזמנים."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "תודה. משרד הקהילה קיבל את תשובתכם."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "תודה. משרד הקהילה יבדוק זאת לפני שיתווסף."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "תודה שהודעתם לנו."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "תודה — הרכז קיבל הודעה שתרצו לעזור שוב."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "תודה — הרכז קיבל הודעה שתרצו לעזור."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "תודה — אתם ברשימה."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "תיקיית ערכת הנושא של פורטל החברים אינה קיימת."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "שיבוץ זה שייך למישהו אחר"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "לא ניתן היה לשמור את השיבוץ"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "יום הולדת זה אינו תאריך תקין."
+
+#: 
+msgid "That could not be saved."
+msgstr "לא ניתן היה לשמור זאת."
+
+#: 
+msgid "That could not be sent."
+msgstr "לא ניתן היה לשלוח זאת."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "לא ניתן היה להוסיף את בן המשפחה. אנא בדקו את השדות המסומנים."
+
+#: 
+msgid "That is not a valid date."
+msgstr "זה אינו תאריך תקין."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "לא ניתן היה לטעון את הרשימה."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "אדם זה כבר מחזיק בתפקיד זה במופע זה"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "אדם זה כבר משובץ לתפקיד זה במופע זה"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "אדם זה אינו במאגר מתנדבים של שירות זה. יש לשלוח שוב עם עקיפת מחוץ-למאגר כדי לשבץ אותו בכל זאת."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "אדם זה אינו במאגר המתנדבים הזה"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "אדם זה אינו מוסמך לתפקיד זה"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "לא ניתן היה לשמור את התמונה."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "התמונה גדולה מדי. אנא בחרו קטנה יותר."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "התפקיד שייך לשירות אחר"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "התפקיד שייך לצוות אחר"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "התפקיד כבר מאויש במלואו"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "התפקיד אינו מאויש במופע זה"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "לא ניתן היה לרשום את התשובה"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "אי אפשר להגדיר סטטוס זה ישירות"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "לא ניתן היה להחליט על בקשת ההחלפה"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "הצוות שייך לשירות אחר"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "לא ניתן היה להפעיל את ערכת הנושא."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "לא ניתן היה לבדוק את ערכת הנושא."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "בערכת הנושא יש שגיאות, ולכן היא לא הופעלה."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "לא ניתן היה לשבץ את המתנדב"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "תאריך הנישואין אינו תאריך תקין."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s חייב להיות תאריך בפורמט YYYY-MM-DD"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s חייב להיות מספר שלם של דקות"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s חייב להיות בטווח של %d דקות מהאירוע"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "לוחות השנה של פורטל החברים נשמרו."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "פורטל החברים לא הצליח להשלים את מה שביקשתם. אנא נסו שוב בעוד כמה דקות."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "פורטל החברים זמין רק לאדם מחובר, לא ללקוחות API."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "פורטל החברים מוגדר לערכת הנושא \"%s\", שאינה קיימת עוד בשרת. החברים רואים דף שגיאה עד שתבחרו ערכת נושא קיימת."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "פורטל החברים אינו זמין זמנית"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "ערכת הנושא \"%s\" של פורטל החברים לא הופעלה כי היא מכילה שגיאות."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "לא ניתן היה להציג את ערכת הנושא של פורטל החברים"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "תיקיית ערכת הנושא \"%s\" של פורטל החברים לא נמצאה."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "ערכת הנושא של פורטל החברים שונתה."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "אי אפשר לשנות שם או למחוק את תפקיד המורה של %1$s כל עוד מוריה מנוהלים ב-שירותים ← %2$s ← %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "תיקיית ערכת הנושא הפעילה חסרה"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "הכתובת נבחרה — העתיקו אותה במקלדת."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "נתיב הנכס \"%s\" אינו מותר."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "לא ניתן היה לבטל את השיבוץ"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "הודעת השיבוץ תישלח שוב"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "כתובת לוח השנה הועתקה."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "לא ניתן היה לטעון את לוחות השנה. אנא נסו שוב."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "לא ניתן היה לשמור את לוחות השנה."
+
+#: 
+msgid "The cart could not be added"
+msgstr "לא ניתן היה להוסיף את הבחירה"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "הקהילה עדיין לא שלחה לכם דוא\"ל."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "משרד הקהילה קיבל הודעה. אנא נסו שוב מאוחר יותר."
+
+#: 
+msgid "The class does not exist"
+msgstr "הכיתה אינה קיימת"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "הכיתה שלוח זמנים זה עוקב אחריה אינה קיימת עוד."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "תוכן דוא\"ל זה אינו נשמר. ChurchCRM שומר רק את הטקסט של הודעות שנכתבו בכותב הדוא\"ל ושל הודעות דוא\"ל למתנדבים."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "תוכן דוא\"ל זה לא נשמר."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "לא ניתן היה להוסיף את הרכז"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "לא ניתן היה לטעון את רשימת הרכזים"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "התאריך והשעה של כל מופע מגיעים מאירוע לוח השנה שלו, ולכן הזזת האירוע מזיזה את לוח הזמנים."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "הפרמטר days חייב להיות מספר שלם בין 1 ל-365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "מתנדב ברירת המחדל חייב להיות אדם"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "מתנדבי ברירת המחדל נשמרים בלוח הזמנים ועולים על המופעים שנוצרים מעתה."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "מתנדבי ברירת המחדל חייבים להיות רשימה"
+
+#: 
+msgid "The description is too long"
+msgstr "התיאור ארוך מדי"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "סוף הטווח לפני תחילתו."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "סוף הטווח אינו תאריך."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "לא ניתן היה לאייש את האירוע"
+
+#: 
+msgid "The event does not exist"
+msgstr "האירוע אינו קיים"
+
+#: 
+msgid "The event is inactive"
+msgstr "האירוע אינו פעיל"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "האירוע חייב להסתיים אחרי שהוא מתחיל"
+
+#: 
+msgid "The event title"
+msgstr "כותרת האירוע"
+
+#: 
+msgid "The event title is too long"
+msgstr "כותרת האירוע ארוכה מדי"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "סוג האירוע שאירועים חדשים של שירות מתחילים בו. כשהשדה ריק, או כשהסוג נמחק, משתמשים בסוג \"אחר\" אם קיים."
+
+#: 
+msgid "The event type does not exist"
+msgstr "סוג האירוע אינו קיים"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "סוג האירוע שלוח זמנים זה עוקב אחריו אינו קיים עוד."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "אפשר להעביר את האירועים רק לכיתה שהצוות מקושר אליה"
+
+#: 
+msgid "The events could not be created"
+msgstr "לא ניתן היה ליצור את האירועים"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "לא ניתן היה למחוק את האירועים"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "לא ניתן היה לאייש את האירועים"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "לא ניתן היה להסיר את ההרשאה"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "תאריך הסיום לפני תאריך ההתחלה"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "לא ניתן היה לטעון את רשימת המתנדבים הזכאים"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "הספירה המרבית לא יכולה להיות נמוכה מהספירה המינימלית"
+
+#: 
+msgid "The message could not be queued"
+msgstr "לא ניתן היה להכניס את ההודעה לתור"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "הספירה המינימלית לא יכולה להיות שלילית"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "לא ניתן היה ליצור את השירות"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "לא ניתן היה להשבית את השירות"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "לא ניתן היה למחוק את השירות"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "לא ניתן היה להפעיל מחדש את השירות"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "לא ניתן היה לשמור את השירות"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "לא ניתן היה למחוק את המופע"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "למופע אין לוח זמנים"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "לא ניתן היה ליצור את המופעים"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "המתנדב המקורי משוחרר והמחליף תופס את התפקיד. שניהם מקבלים הודעה."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "המתנדב המקורי שומר על התפקיד. שניהם מקבלים הודעה."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "הדף שביקשתם אינו קיים. ייתכן שהועבר או הוסר."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "התפקיד שייך לשירות אחר"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "לא ניתן היה למחוק את התפקיד"
+
+#: 
+msgid "The position could not be saved"
+msgstr "לא ניתן היה לשמור את התפקיד"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "התפקיד עדיין מכוסה, ולכן אין צורך בפעולה אלא אם ברצונכם להתאים את הסבב."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "לא ניתן היה להסיר את ההסמכה"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "לא ניתן היה לשמור את ההסמכה"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "לא ניתן היה לטעון את המתנדבים המוסמכים"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "החזרתיות חייבת לציין איך האירועים חוזרים"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "הבקשה של %1$s לשרת במקום %2$s אושרה."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "הבקשה של %1$s לשרת במקום %2$s לא אושרה."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "אותו תפקיד מופיע פעמיים בצורכי האיוש"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "לא ניתן היה להשבית את לוח הזמנים"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "לא ניתן היה למחוק את לוח הזמנים"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "לא ניתן היה להפעיל מחדש את לוח הזמנים"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "לא ניתן היה לשמור את לוח הזמנים"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "לוח הזמנים עודכן, ולכן אין מה לעשות נוסף."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "חלון לוח הזמנים מסתיים לפני שהוא מתחיל"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "לא ניתן היה לטעון את צורכי האיוש של לוח הזמנים"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "לא ניתן היה לטעון את צורכי האיוש"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "לא ניתן היה לאפס את צורכי האיוש"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "לא ניתן היה לשמור את צורכי האיוש"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "צורכי האיוש חייבים להיות רשימה"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "לא ניתן היה לטעון את תוכנית האיוש"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "תחילת הטווח אינה תאריך."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "לא ניתן היה להחליט על ההחלפה"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "לא ניתן היה לטעון את בקשות ההחלפה"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "אפשר לייבא מורים רק לתפקיד של צוות זה"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "מוריה של %1$s מנוהלים ב-שירותים ← %2$s ← %3$s. עדיין אפשר לשנות כאן את התלמידים."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "לא ניתן היה למחוק את הצוות"
+
+#: 
+msgid "The team could not be saved"
+msgstr "לא ניתן היה לשמור את הצוות"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "הצוות אינו שייך לשירות זה"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "תיקיית ערכת הנושא לא נמצאה."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "הסוג שאירוע חדש בלשונית לוח השנה של שירות מתחיל בו. עדיין אפשר לשנותו לכל אירוע, למשל לכיתה שצריכה קטגוריות ספירת משתתפים."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "לא ניתן היה לשמור את שיבוץ המתנדב"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "מאגר המתנדבים של השירות %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "לא ניתן היה לשמור את שינוי הגדרות ההתנדבות"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "החלון מסתיים לפני שהוא מתחיל"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "הרכזים שלהם רשאים להצמיד את אירועי השירות שלהם ללוח שנה זה ללא הרשאת הוספת אירועים."
+
+#: 
+msgid "Theme"
+msgstr "ערכת נושא"
+
+#: 
+msgid "Themes"
+msgstr "ערכות נושא"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "ערכות נושא מסופקות על ידי הקהילה שלכם, לא על ידי ChurchCRM, ופרויקט ChurchCRM אינו מאמת אותן."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "אין לוח שנה של קהילה עם המזהה %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "אין לוח שנה של המערכת עם המזהה %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "אלה הפרטים שהקהילה שומרת עליכם. שינויים נשמרים מיד."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "אלה צוותי המתנדבים שאתם מטפלים בהם. פתחו אחד כדי להגדיר את תפקידיו, לומר מי יכול לשרת היכן, ולמלא את השבועות הבאים."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "אירועים אלה אינם סדרה אחת: הם שונים בכותרת, בסוג או בכיתה"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "שירותים אלה היו רוצים עוד אנשים. ספרו להם שאתם מעוניינים ומישהו ייצור קשר."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "צרכים אלה מגיעים מלוח הזמנים. שמירה כאן משנה את המופע הזה בלבד."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "מספרים אלה סופרים חשבונות שירות עצמי בלבד: אנשים שהחשבון שלהם יכול להגיע לפורטל החברים ולא לשום דבר אחר."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "אנשים אלה עדיין משובצים, אך התפקיד שהם מחזיקים אינו עוד חלק מתוכנית האיוש של תאריך זה."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "אנשים אלה עדיין משובצים, אך התפקיד שהם מחזיקים אינו עוד חלק מתוכנית האיוש של מופע זה."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "תפקידים מתוזמנים אלה עדיין צריכים מישהו."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "צוותים אלה של %1$s מקושרים לכיתה של בית הספר של יום ראשון: %2$s. יש לנתק אותם תחילה."
+
+#: 
+msgid "They could not be added"
+msgstr "לא ניתן היה להוסיף אותם"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "לא ניתן היה להסיר אותם משירות זה"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "הם מסיימים %d דקה אחרי סיום האירוע."
+msgstr[1] "הם מסיימים %d דקות אחרי סיום האירוע."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "הם מסיימים %d דקה לפני סיום האירוע."
+msgstr[1] "הם מסיימים %d דקות לפני סיום האירוע."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "הם כבר היו מתנדבים כאן"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "שיבוץ זה הוא %1$s ואי אפשר לשנותו ל-%2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "שיבוץ זה אינו פעיל עוד"
+
+#: 
+msgid "This email is not in your history."
+msgstr "דוא\"ל זה אינו בהיסטוריה שלכם."
+
+#: 
+msgid "This event has already happened"
+msgstr "אירוע זה כבר התרחש"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "זה נשלח למשרד הקהילה לבדיקה. עד שאיש צוות יאשר זאת, בן המשפחה החדש מוצג כאן כממתין לבדיקה."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "קבוצה זו היא מאגר המתנדבים של שירות והיא נמחקת עם השירות"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "קבוצה זו היא מאגר המתנדבים של %s ומנוהלת מאותו שירות."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "קבוצה זו היא מאגר המתנדבים של %s. היא מנוהלת מאותו שירות."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "בהתקנה זו עדיין אין לוחות שנה."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "זוהי תזכורת שאתם מתוזמנים לשרת בקרוב."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "זה אינו שם תקין של תיקיית ערכת נושא."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "זה אינו אחד מתאריכי הצוות שלכם."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "זה אינו אחד מהצוותים שלכם."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "כאן הקהילה שולחת דואר ואל מי היא מתקשרת בנוגע למשק הבית שלכם."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "זהו חשבון הקהילה שלכם. כל מה שאתם יכולים לעשות עבור עצמכם ומשפחתכם נמצא כאן."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "לשירות זה אין אירועים קרובים בלוח השנה."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "לשירות זה אין אירועים קרובים בשם \"%s\". לוח זמנים עוקב אחר אירועים שכבר קיימים: יש להוסיף אותם תחילה בלשונית לוח השנה של השירות."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "לשירות זה אין קבוצת מאגר מתנדבים"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "שירות זה אינו מבקש עזרה כרגע"
+
+#: 
+msgid "This ministry's events"
+msgstr "אירועי שירות זה"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "אירועי שירות זה (עדיין לא נבחר אירוע)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "מופע זה עוקב שוב אחר לוח הזמנים שלו"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "מופע זה כבר התרחש"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "מופע זה כבר התרחש ואי אפשר עוד לשנות את שיבוציו"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "מופע זה בוטל"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "למופע זה יש צורכי איוש משלו, נפרדים מלוח הזמנים שלו."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "דף זה אינו חלק מהחשבון שלכם. אם לדעתכם הוא צריך להיות, שאלו את משרד הקהילה."
+
+#: 
+msgid "This page was not found"
+msgstr "הדף לא נמצא"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "חלק זה של פורטל החברים מיועד למנהלי צוותי מתנדבים."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "תפקיד זה משובץ בידי מנהל הצוות או הרכז שלו, לא בהרשמה עצמית"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "אי אפשר למחוק לוח זמנים זה: %d שיבוצי מתנדבים עדיין מפנים למופעיו."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "ללוח זמנים זה עדיין אין צורכי איוש"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "לוח זמנים זה אינו פעיל. הפעילו אותו מחדש כדי ליצור את מופעיו."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "בקשת החלפה זו כבר הוכרעה"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "לצוות זה עדיין אין תפקידים"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "צוות זה כבר מאייש אירוע זה"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "תבנית זו מבקשת את הקובץ \"%s\", שערכת הנושא אינה מכילה."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "אי אפשר להפעיל ערכת נושא זו"
+
+#: 
+msgid "This theme has no problems."
+msgstr "בערכת נושא זו אין בעיות."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "גרסה זו של ChurchCRM אינה משתמשת בתבנית בנתיב זה, ולכן העקיפה אינה מוצגת לעולם."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "סמנו אותם בלשונית המתנדבים של צוות זה, ואז שבצו אותם כאן."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "הסימונים נשמרים בעת ביצועם."
+
+#: 
+msgid "Times come from this event"
+msgstr "השעות מגיעות מאירוע זה"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "ממלא כל לוח זמנים, שולח את מה שבתור וסוגר מופעים שהסתיימו, בלי להמתין להרצה המתוזמנת הבאה."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "לדחות את {{name}}? המתנדב המקורי נשאר ומקבל הודעה."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "כיבוי מטמון התבניות של פורטל החברים והדפסת שם כל תבנית בהערת HTML. למעצבי ערכות נושא; יש להשאיר כבוי בשימוש רגיל."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "הפעילו עבור שירות שצוותיו מלמדים כיתות של בית הספר של יום ראשון. צוותיו יוכלו אז להיות מקושרים לכיתה, ולוחות הזמנים והאירועים שלו יוכלו להשתמש בה."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "מכבה את מטמון התבניות של הפורטל ומדפיס את שם כל תבנית בהערת HTML. למעצבי ערכות נושא; יש להשאיר כבוי בשימוש רגיל."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "אימות דו-שלבי"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "תפקידים לא מאוישים"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "שגיאת משלוח לא ידועה"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "סטטוס מופע לא ידוע"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "מצב קישור לוח זמנים לא ידוע"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "שירות מתנדבים לא ידוע"
+
+#: 
+msgid "Until"
+msgstr "עד"
+
+#: 
+msgid "Upcoming availability"
+msgstr "זמינות קרובה"
+
+#: 
+msgid "Update your details"
+msgstr "עדכון הפרטים שלכם"
+
+#: 
+msgid "Update your family details"
+msgstr "עדכון פרטי המשפחה שלכם"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "השתמשו באיוש אירוע זה כדי לאייש אירוע בודד"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "שימוש בצורכי לוח הזמנים"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "למשתמש חייבת להיות הרשאת הוספת אירוע, או שהוא מרכז שירות מתנדבים, ומודול האירועים חייב להיות מופעל"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "למשתמש חייבת להיות הרשאת הוספת אירוע, או שהוא מרכז את שירות המתנדבים שלוח שנה זה שייך לו"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — הזדמנויות התנדבות (ישן)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — הזדמנויות התנדבות ישנות"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — שירותים"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — ניהול מתנדבים"
+
+#: 
+msgid "Valid"
+msgstr "תקין"
+
+#: 
+msgid "Validation"
+msgstr "אימות"
+
+#: 
+msgid "View event"
+msgstr "הצג אירוע"
+
+#: 
+msgid "View my schedule"
+msgstr "צפייה בלוח הזמנים שלי"
+
+#: 
+msgid "View only"
+msgstr "צפייה בלבד"
+
+#: 
+msgid "View person"
+msgstr "הצג אדם"
+
+#: 
+msgid "View the event"
+msgstr "צפייה באירוע"
+
+#: 
+msgid "View this email"
+msgstr "צפייה בדוא\"ל זה"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "מתנדב (ישן)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "ניהול מתנדבים V2 אינו מופעל"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "שירות מתנדבים"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "שיבוץ מתנדב"
+
+#: 
+msgid "Volunteer declined"
+msgstr "מתנדב דחה"
+
+#: 
+msgid "Volunteer experience"
+msgstr "חוויית התנדבות"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "תפקידי מתנדבים עדיין צריכים מילוי"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "תזכורת למתנדב"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "הרשמת מתנדבים"
+
+#: 
+msgid "Volunteer times"
+msgstr "שעות מתנדבים"
+
+#: 
+msgid "Volunteering"
+msgstr "התנדבות"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "התנדבות מאורגנת כפי שקהילה מנהלת אותה. לכל שירות יש צוותים ותפקידים; אנשים מוסמכים לתפקידים ושייכים לקבוצת המאגר של השירות; לוחות זמנים עוקבים אחר האירועים בלוח השנה ומפיקים מופעים מתוארכים עם דרישות איוש; רכזים משבצים אנשים, שמאשרים, דוחים או מציעים מחליף; תזכורות והתראות יוצאות בדוא\"ל. מנהלי מערכת ומשתמשים עם הרשאת ניהול שירותים רואים כל שירות ויכולים ליצור, להשבית ולמחוק אותם. רכז שירות מקבל במקום זאת את הרשאת ניהול השירותים שלי: הכותרת שירותים בסרגל הצד מציגה אז רק את השירותים שהוא מרכז. מנהל צוות מנהל את הצוות שלו מפורטל החברים. החברים משתמשים בפורטל החברים כדי לראות את לוח הזמנים שלהם, להשיב, להירשם ולהציע עזרה."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "מתנדבים משובצים: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "המתנדבים מסיימים"
+
+#: 
+msgid "Volunteers needed"
+msgstr "מתנדבים נדרשים"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "מתנדבי %s משובצים לאירועים אלה, ולכן אי אפשר למחוק אותם כאן. בקשו מאותו שירות להסיר את האיוש שלו, או בקשו ממי שמנהל את לוח השנה."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "מתנדבי {{names}} משובצים לחלקם. אלא אם אתם מנהלים את לוח השנה, המחיקה תידחה עד שהאיוש יוסר."
+
+#: 
+msgid "Volunteers start"
+msgstr "המתנדבים מתחילים"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "מתנדבים מתחילים %d דקה אחרי תחילת האירוע."
+msgstr[1] "מתנדבים מתחילים %d דקות אחרי תחילת האירוע."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "מתנדבים מתחילים %d דקה לפני תחילת האירוע."
+msgstr[1] "מתנדבים מתחילים %d דקות לפני תחילת האירוע."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "ממתין לתשובה"
+
+#: 
+msgid "Waiting for review"
+msgstr "ממתין לבדיקה"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "ממתין לאישור הרכז שלכם."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "נשלח לכם דוא\"ל כשמשהו יצטרך מילוי."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "נשמח לעוד עזרה בבקרי יום ראשון — לא נדרש ניסיון."
+
+#: 
+msgid "Welcome, %s"
+msgstr "ברוכים הבאים, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "מה צריך להשתנות?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "מה דורש את תשומת לבכם השבוע"
+
+#: 
+msgid "What the check found"
+msgstr "מה שהבדיקה מצאה"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "מהן חוויות ההתנדבות"
+
+#: 
+msgid "What you want to say"
+msgstr "מה שאתם רוצים לומר"
+
+#: 
+msgid "When"
+msgstr "מתי"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "כשמתנדב מציע מישהו שיתפוס את מקומו, ההצעה מופיעה כאן כדי שתאשרו או תדחו."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "כשמתנדב מציע מישהו שיתפוס את מקומו, ההצעה מופיעה כאן כדי שתאשרו."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "כשמישהו משבץ אתכם לצוות, או כשאתם נרשמים בעצמכם, זה יופיע כאן."
+
+#: 
+msgid "Where"
+msgstr "איפה"
+
+#: 
+msgid "Where the dates come from"
+msgstr "מהיכן מגיעים התאריכים"
+
+#: 
+msgid "Where we reach you"
+msgstr "איך ניתן להשיג אתכם"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "באיזו חוויית ניהול מתנדבים משתמשים. V1 היא תכונת הזדמנויות ההתנדבות הישנה; V2 היא זרימת התזמון והשיבוץ החדשה. \"שניהם\" מציג את שתיהן זו לצד זו בזמן ההעברה."
+
+#: 
+msgid "Which events"
+msgstr "אילו אירועים"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "באיזו חוויית התנדבות הקהילה משתמשת. הכרטיס מימין מסביר כל בחירה."
+
+#: 
+msgid "Who is covering"
+msgstr "מי מכסה"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "מי נדרש, מי משובץ, ומה עדיין חסר"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "מי ששירת הכי מזמן נמצא ראשון ברשימה."
+
+#: 
+msgid "Work Email"
+msgstr "דוא\"ל בעבודה"
+
+#: 
+msgid "Yearly"
+msgstr "שנתי"
+
+#: 
+msgid "You"
+msgstr "אתם"
+
+#: 
+msgid "You are already helping that day"
+msgstr "אתם כבר עוזרים באותו יום"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "אתם כבר עוזרים באותו יום בתפקיד {{what}}. להירשם גם לזה?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "אינכם רשאים לשנות זאת. אנא פנו למשרד הקהילה."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "אינכם משויכים כרגע למשפחה"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "אינכם עדיין חלק מרשומת משפחה."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "אתם ברשימה — תודה."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "אפשר לבדוק או לשנות זאת בלוח הזמנים שלכם כמתנדבים."
+
+#: 
+msgid "You cannot open this page"
+msgstr "אינכם יכולים לפתוח דף זה"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "אי אפשר להציע את עצמכם כמחליף של עצמכם"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "לא ניתן היה לרשום אתכם לכך."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "אתם עדיין לא מובילים צוות מתנדבים."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "יש לכם כתובת חדשה ללוח השנה. הישנה כבר לא עובדת."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "תוזמנתם לשרת"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "תוזמנתם לשרת."
+
+#: 
+msgid "You lead this"
+msgstr "אתם מובילים זאת"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "אפשר ליצור לוח זמנים רק לצוות שאתם מובילים"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "תחזרו לרשימה עבור זה."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "החשבון שלכם אינו מקושר לרשומת אדם. אנא פנו למשרד הקהילה."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "ההרשמה שלכם ללוח השנה נשמרה."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "הכתובת הנוכחית שלכם תפסיק לעבוד מיד. כל מי שנתתם לו אותה יצטרך את החדשה."
+
+#: 
+msgid "Your details"
+msgstr "הפרטים שלכם"
+
+#: 
+msgid "Your details have been saved."
+msgstr "הפרטים שלכם נשמרו."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "פרטי המשפחה שלכם נשמרו."
+
+#: 
+msgid "Your photo"
+msgstr "התמונה שלכם"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "התמונה שלכם נשמרה."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "לא ניתן היה לטעון את לוח הזמנים שלכם."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "פג תוקף ההפעלה שלכם. אנא התחברו שוב."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "בקשת המחליף שלכם אושרה"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "בקשת המחליף שלכם לא אושרה"
+
+#: 
+msgid "already staffed by this team"
+msgstr "כבר מאויש על ידי צוות זה"
+
+#: 
+msgid "body is required"
+msgstr "נדרש body"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds חייב להיות רשימה של מזהי לוחות שנה"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents חייב להיות אחד מ: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId חייב להיות מזהה קבוצה או null"
+
+#: 
+msgid "end offset"
+msgstr "היסט סיום"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds חייב להיות רשימה של מזהי אירועים"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "כל ההודעות נמסרו או שעדיין בתור"
+
+#: 
+msgid "has not served yet"
+msgstr "עדיין לא שירת"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId חייב להיות מזהה תפקיד"
+
+#: 
+msgid "inactive family"
+msgstr "משפחה לא פעילה"
+
+#: 
+msgid "line %d"
+msgstr "שורה %d"
+
+#: 
+msgid "marked do not email"
+msgstr "מסומן לא לשלוח דוא\"ל"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "הודעות שלא ניתן היה למסור"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "הודעות שלא ניתן היה למסור לאחר חמישה ניסיונות"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "הודעות הממתינות לשליחה"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds חייב להיות רשימה של מזהי שירותים"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "דקות אחרי סיום האירוע"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "דקות אחרי תחילת האירוע"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "דקות לפני סיום האירוע"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "דקות לפני תחילת האירוע"
+
+#: 
+msgid "never"
+msgstr "אף פעם"
+
+#: 
+msgid "no email address"
+msgstr "אין כתובת דוא\"ל"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds ו-familyIds חייבים להיות מערכים של מספרים שלמים חיוביים"
+
+#: 
+msgid "record not found"
+msgstr "הרשומה לא נמצאה"
+
+#: 
+msgid "same address as another recipient"
+msgstr "אותה כתובת כמו של נמען אחר"
+
+#: 
+msgid "single event"
+msgstr "אירוע בודד"
+
+#: 
+msgid "start offset"
+msgstr "היסט התחלה"
+
+#: 
+msgid "subject and body are required"
+msgstr "נדרשים subject ו-body"
+
+#: 
+msgid "subject is required"
+msgstr "נדרש subject"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject חייב להיות באורך 255 תווים לכל היותר"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool חייב להיות true או false"
+
+#: 
+msgid "window end"
+msgstr "סוף החלון"
+
+#: 
+msgid "window start"
+msgstr "תחילת החלון"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "נוספו {{added}}, {{alreadyMembers}} כבר היו מתנדבים כאן"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "נוצרו {{created}} מופעים, {{existing}} כבר היו שם"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} יצר {{total}} אירועים עבור {{className}} ({{upcoming}} קרובים)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} מאיישים גם חלק מהם."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} כבר מרכז שירות זה"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} שובץ"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} כבר משרת בתפקיד {{position}} במופע זה. עדיין אפשר לשבץ אותו."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} מוסמך אך אינו במאגר המתנדבים של שירות זה. שיבוצו מוסיף אותו למופע זה בלבד."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} מרכז כעת שירות זה"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: הספירות חייבות להיות בין 0 ל-{{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: המקסימום לא יכול להיות נמוך מהמינימום."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} כבר אינו מוסמך"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} מוסמך"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} מבקש מ-{{substitute}} לתפוס את מקומו"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} ב-{{date}} נוצר. לאייש אותו עכשיו?"
+
