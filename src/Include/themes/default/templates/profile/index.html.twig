@@ -61,10 +61,10 @@
             {% endif %}
 
             <dt>{{ gettext('Email') }}</dt>
-            <dd data-field="email">{{ profile.email|default('—') }}</dd>
+            <dd data-field="email">{{ profile.email|default('—')|email_wrap }}</dd>
 
             <dt>{{ gettext('Work Email') }}</dt>
-            <dd data-field="workEmail">{{ profile.workEmail|default('—') }}</dd>
+            <dd data-field="workEmail">{{ profile.workEmail|default('—')|email_wrap }}</dd>
 
             <dt>{{ gettext('Mobile Phone') }}</dt>
             <dd data-field="cellPhone">{{ profile.cellPhone|default('—') }}</dd>
