@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Map\TableMap;
@@ -95,10 +96,14 @@ class Event extends BaseEvent
      * /event/dashboard MVC action, and the kiosk flows. Propel calls
      * postUpdate() exactly once per save() of an existing row, so dispatching
      * here means every path fires the hook exactly once and no future caller
-     * can forget to.
+     * can forget to. For the same reason the Volunteer v2 occurrences anchored
+     * to this event are moved to its new day here, in the save's transaction,
+     * rather than from a hook listener: core registers no listeners of its own.
      */
     public function postUpdate(?ConnectionInterface $con = null): void
     {
+        (new VolunteerScheduleService())->followEventDates((int) $this->getId(), $con);
+
         HookManager::doAction(Hooks::EVENT_UPDATED, $this, $this->hookDataSnapshot ?? []);
         $this->hookDataSnapshot = null;
     }

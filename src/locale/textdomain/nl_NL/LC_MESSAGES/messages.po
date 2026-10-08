@@ -18755,3 +18755,4535 @@ msgstr "Rol echtgenoot/echtgenote"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Postcodes in hoofdletters"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Selecteer ten minste één indeling om in het adresboek op te nemen."
+
+#: 
+msgid "Geocoding services"
+msgstr "Geocoderingsdiensten"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Geocoderingsdiensten die worden geprobeerd, in de volgorde waarin u ze kiest. Nominatim (OpenStreetMap) werkt wereldwijd; US Census (US Census Bureau) dekt alleen adressen in de Verenigde Staten. Kies ook US Census om die te gebruiken. Als er geen is gekozen, wordt Nominatim gebruikt."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Standaardwaarden voor nieuwe records"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Hiermee worden kaartcoördinaten gezocht voor elke familie die ze mist, met de geocoderingsdiensten die in de Kaartinstellingen zijn gekozen. De families worden in groepen van 50 verwerkt; een groep duurt ongeveer een minuut met één geocoderingsdienst en langer met meer diensten. U kunt deze pagina open laten staan terwijl het bezig is. Doorgaan?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Wordt gebruikt voor nieuwe records en voor geocodering wanneer een record geen land heeft."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Kopiëren uit Kerkgegevens"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Het kerkadres kon niet worden gekopieerd."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Het land van de kerk kon niet worden gevonden."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Klaslijsten, aanwezigheidslijsten en fotoboeken"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Ledenlijsten van bedieningen en rapporten van zondagsschoolklassen"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Uw boekjaar begint in %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Er is een fout opgetreden"
+
+#: 
+msgid "Approve"
+msgstr "Goedkeuren"
+
+#: 
+msgid "Approve selected"
+msgstr "Selectie goedkeuren"
+
+#: 
+msgid "Approved"
+msgstr "Goedgekeurd"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Wijzigen in Instellingen voor personen"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "De geselecteerde registraties konden niet worden goedgekeurd"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Deze familie kon niet worden goedgekeurd"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Openstaande registraties"
+
+#: 
+msgid "Pending review"
+msgstr "In afwachting van beoordeling"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Registraties van uw openbare registratieformulier die op beoordeling wachten. Inzendingen zonder e-mailadres of telefoonnummer zijn gemarkeerd; controleer de contactgegevens voordat u contact opneemt."
+
+#: 
+msgid "Review now"
+msgstr "Nu beoordelen"
+
+#: 
+msgid "Review self registrations"
+msgstr "Zelfregistraties beoordelen"
+
+#: 
+msgid "Select month"
+msgstr "Selecteer maand"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Zelfregistratie is uitgeschakeld"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Zelfregistratie is ingeschakeld"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Het openbare registratieformulier is uitgeschakeld. Bestaande registraties staan hieronder."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Deze familie is geen openstaande zelfregistratie"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Deze persoon hoort bij een familie; keur in plaats daarvan de familie goed"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Deze persoon is geen openstaande zelfregistratie"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Deze zelfgeregistreerde familie wacht op beoordeling"
+
+#: 
+msgid "Total registrations"
+msgstr "Totaal aantal registraties"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Bezoekers kunnen zich aanmelden via uw openbare registratieformulier."
+
+#: 
+msgid "Yesterday"
+msgstr "Gisteren"
+
+#: 
+msgid "days ago"
+msgstr "dagen geleden"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "zelfregistraties wachten op beoordeling"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Verjaardagen worden aan de persoon geadresseerd en trouwdagen aan het echtpaar."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Adresetiketten voor de personen in dit rapport. Een persoon zonder eigen adres wordt op het adres van zijn of haar familie aangeschreven."
+
+#: 
+msgid "One label for each couple."
+msgstr "Eén etiket per echtpaar."
+
+#: 
+msgid "Print Labels"
+msgstr "Etiketten afdrukken"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Die rol is geen rol van deze bediening."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "\"%s\" is geen soort agenda die deze pagina kent."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s kan niet dienen en heeft %2$s als vervanger voorgesteld."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s zit al in de vrijwilligerspool van %2$s en wil weer helpen."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s is al gekoppeld aan %2$s in %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s zit in %2$s als %3$s. Verwijder deze persoon eerst uit de klas; door hier te kwalificeren wordt die persoon een van de leerkrachten."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s is geen activiteit van %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s blijft een zondagsschoolklas zolang de leerkrachten worden beheerd in Bedieningen → %2$s → %3$s. Ontkoppel de klas eerst van het team."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s wil helpen bij %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s wil helpen bij %2$s en is toegevoegd aan de vrijwilligerspool."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: het maximum is %2$d, maar er zijn %3$d standaardvrijwilligers gekozen. Verwijder er een of verhoog het maximum."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d dag"
+msgstr[1] "%d dagen"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d standaard overgeslagen om een andere reden (het moment is voorbij, geannuleerd of vol)"
+msgstr[1] "%d standaardinroosteringen overgeslagen om een andere reden (het moment is voorbij, geannuleerd of vol)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d standaard overgeslagen: kwalificatie ingetrokken"
+msgstr[1] "%d standaardinroosteringen overgeslagen: kwalificatie ingetrokken"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d standaardvrijwilliger ingeroosterd"
+msgstr[1] "%d standaardvrijwilligers ingeroosterd"
+
+#: 
+msgid "%d failed"
+msgstr "%d mislukt"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Er is nog %d vrijwilliger nodig voor deze functie. Open het moment om de leemte op te vullen."
+msgstr[1] "Er zijn nog %d vrijwilligers nodig voor deze functie. Open het moment om de leemte op te vullen."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d nieuw moment"
+msgstr[1] "%d nieuwe momenten"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Er is nog %d vrijwilliger nodig voor een komend moment."
+msgstr[1] "Er zijn nog %d vrijwilligers nodig voor een komend moment."
+
+#: 
+msgid "%s Calendar"
+msgstr "Agenda %s"
+
+#: 
+msgid "%s Family"
+msgstr "Familie %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s levert geen leerkrachten voor de zondagsschool, dus de teams, roosters en activiteiten kunnen geen klas gebruiken. Een vrijwilligersbeheerder kan dat wijzigen onder Bediening bewerken."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s e-mail van de kerk"
+msgstr[1] "%s e-mails van de kerk"
+
+#: 
+msgid "%s family"
+msgstr "Familie %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s heeft een vrijwilligerstaak afgewezen."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s heeft geen rol met de naam Leerkracht, dus de leerkrachten kunnen niet vanuit een team worden beheerd"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s heeft geen komende bijeenkomsten in de agenda. Een rooster volgt activiteiten die al bestaan: voeg eerst de bijeenkomsten van de klas toe met Nieuwe terugkerende activiteit op het tabblad Agenda van de bediening."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s wordt nog steeds verwacht te dienen. Neem contact op met de coördinator als dat niet mogelijk is."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s niet verzonden (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s persoon in uw huishouden"
+msgstr[1] "%s personen in uw huishouden"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s functie"
+msgstr[1] "%s functies"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: dezelfde persoon is twee keer als standaardvrijwilliger gekozen"
+
+#: 
+msgid "(no subject)"
+msgstr "(geen onderwerp)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Een geboortedatum kan niet in de toekomst liggen."
+
+#: 
+msgid "A calendar event"
+msgstr "Een agenda-activiteit"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "Een agenda-id moet een getal zijn."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Een klas die niet meer bestaat"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Een klas zonder bijeenkomsten in de agenda kan nog niet worden gekozen."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Een klas zonder bijeenkomsten in de agenda kan nog niet worden gekozen. Een coördinator van de bediening voegt de bijeenkomsten toe op het tabblad Agenda van de bediening."
+
+#: 
+msgid "A class's meetings"
+msgstr "De bijeenkomsten van een klas"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Een coördinator kan alles in deze bediening beheren, ook wijzigingen die anders een vrijwilligersbeheerder zou moeten doorvoeren."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Een coördinator van de bediening kan ze toevoegen op het tabblad Agenda van de bediening."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Een coördinator van de bediening kan ze toevoegen op het tabblad Agenda van de bediening. Genereer daarna opnieuw."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Een coördinator leidt de hele bediening: de teams, functies, roosters en elke inroostering daarin."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Een dag die een maand niet heeft, valt op de laatste dag."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Een standaardvrijwilliger hoort bij de bezettingsbehoefte van het rooster, niet bij één moment"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Een standaardvrijwilliger kan alleen worden gekozen voor een functie waar de bezettingsbehoefte van dit rooster om vraagt"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Een van-datum en een tot-datum in de vorm JJJJ-MM-DD zijn vereist"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Een minimumaantal is vereist"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Een bediening wordt aangemaakt met een eigen agenda, vrijwilligerspool en eerste team, dus u hoeft hier alleen de naam en het doel te bepalen."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Een naam voor de bediening is vereist"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Een bediening heeft minstens één team nodig. Hernoem het team in plaats daarvan."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Er bestaat al een bediening met die naam"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "De eigen agenda van een bediening kan niet voor andere bedieningen worden opengesteld"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Een functie hoort bij een team; kies er een"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Een functie is een taak die iemand in dit team doet, zoals Espresso of Muziekleider."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Een functie is een rol waarin iemand dient, zoals Espresso of Muziekleider."
+
+#: 
+msgid "A position is required"
+msgstr "Een functie is vereist"
+
+#: 
+msgid "A position name is required"
+msgstr "Een naam voor de functie is vereist"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Een functie met gekwalificeerde vrijwilligers kan niet naar of uit een team verhuizen dat aan een zondagsschoolklas is gekoppeld, omdat dat zou veranderen wie de klas geeft. Maak de functie in plaats daarvan aan in het andere team."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Er bestaat al een functie met die naam in deze bediening"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Een antwoord moet worden aanvaard of afgewezen"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Een rooster hoort bij een team; kies er een"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Een naam voor het rooster is vereist"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Een rooster bepaalt welke agenda-activiteiten een team bezet: een soort kerkdienst, de bijeenkomsten van een klas of de eigen activiteiten van deze bediening. Voeg er een toe en genereer de momenten."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Een rooster bepaalt welke agenda-activiteiten dit team dient: een soort kerkdienst, de bijeenkomsten van een klas of de eigen activiteiten van de bediening. Voeg er een toe en genereer de momenten."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Een rooster dat een klas volgt, moet de klas noemen"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Een rooster dat een soort activiteit volgt, moet het soort activiteit noemen"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Een rooster dat één activiteit bezet, kan geen andere activiteiten volgen; verwijder het en voeg in plaats daarvan een rooster toe"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "Een enkele lijst met mogelijkheden, zoals \"Crèche\" of \"Ontvangst\", bijgehouden onder Personen → Beheer. Elke persoon krijgt de mogelijkheden waarmee hij of zij wil helpen als label op het tabblad Vrijwilliger van zijn of haar record. Meer wordt niet vastgelegd: er zijn geen teams, roosters, inroosteringen op een datum of herinneringsmails. Rapporten en het persoonsrecord zijn waar de labels worden gebruikt."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Een vierkante foto van uw gezicht werkt het best."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Een bezettingsbehoefte vermeldt de standaardvrijwilligers in \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Een bezettingsvereiste hoort bij precies één van een rooster of een moment"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Voor deze inroostering is al een vervanger voorgesteld"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Een teamleider kan zijn of haar eigen team beheren, met de functies, roosters en wie waar dient, en niets anders in de bediening."
+
+#: 
+msgid "A team name is required"
+msgstr "Een naam voor het team is vereist"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Er bestaat al een team met die naam in deze bediening"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Een thema is een map die uw kerk uploadt naar Include/themes/ op de server. Het standaardsysteemthema wordt met ChurchCRM meegeleverd."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Een overgangsinstelling. De oude pagina's voor Vrijwilligersmogelijkheden en de nieuwe pagina's voor Bedieningen zijn beide beschikbaar, en een persoonsrecord toont beide tabbladen Vrijwilliger, duidelijk gelabeld. Gebruik dit terwijl u een kerk van V1 naar V2 overzet, en schakel daarna alleen over op V2."
+
+#: 
+msgid "A volunteer"
+msgstr "Een vrijwilliger"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Een vrijwilliger heeft een taak afgewezen"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Een vrijwilliger heeft een vervanger voorgesteld"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Een vrijwilligersbeheerder kan deze bediening leiden zonder toekenning. Voeg een coördinator toe zodat iemand anders haar kan leiden zonder ook alle andere bedieningen te krijgen."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Een trouwdatum kan niet in de toekomst liggen."
+
+#: 
+msgid "Accepted"
+msgstr "Aanvaard"
+
+#: 
+msgid "Account deleted"
+msgstr "Account verwijderd"
+
+#: 
+msgid "Account unlocked"
+msgstr "Account ontgrendeld"
+
+#: 
+msgid "Accounts"
+msgstr "Accounts"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Actief moet waar of onwaar zijn"
+
+#: 
+msgid "Active now"
+msgstr "Nu actief"
+
+#: 
+msgid "Add All"
+msgstr "Alles toevoegen"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Iedereen in de selectie toevoegen"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Vrijwilliger toevoegen"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Vrijwilligers aan selectie toevoegen"
+
+#: 
+msgid "Add a family member"
+msgstr "Een familielid toevoegen"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Voeg eerst een functie toe en kom dan terug om aan te geven hoeveel er van nodig zijn."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Voeg een tweede stap toe aan uw aanmelding, zodat uw wachtwoord alleen niet genoeg is om bij uw account te komen."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Voeg minstens één functie aan dit team toe en vink dan aan wie waar kan dienen."
+
+#: 
+msgid "Add coordinator"
+msgstr "Coördinator toevoegen"
+
+#: 
+msgid "Add from Cart"
+msgstr "Toevoegen uit selectie"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Voeg eerst de bijeenkomsten toe met Nieuwe terugkerende activiteit op het tabblad Agenda"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Voeg mensen aan de selectie toe voordat u ze als vrijwilliger toevoegt"
+
+#: 
+msgid "Add position"
+msgstr "Functie toevoegen"
+
+#: 
+msgid "Add schedule"
+msgstr "Rooster toevoegen"
+
+#: 
+msgid "Add team"
+msgstr "Team toevoegen"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Voeg ze toe op het tabblad Agenda en genereer daarna opnieuw."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Voeg ze toe op het tabblad Agenda."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Voeg dit adres toe aan uw agenda-app. Het wordt vanzelf bijgewerkt wanneer de kerkagenda verandert."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Voeg hier de activiteiten van deze bediening toe: een werkdag, een klas die elke zondag bijeenkomt. Ze komen in de kerkagenda en u kunt ze bezetten terwijl u ze aanmaakt."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Toegevoegd via het Ledenportaal en wacht op beoordeling: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Toegevoegd; vink nu de functies aan waarin ze kunnen dienen"
+
+#: 
+msgid "Address Line 2"
+msgstr "Adresregel 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Beheerconsole"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Beheerdersrechten vereist"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Maak deze functie zichtbaar op de pagina Openstaande mogelijkheden van het Ledenportaal."
+
+#: 
+msgid "All Teams"
+msgstr "Alle teams"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Sta gemeenteleden toe hun eigen verjaardag en die van hun gezinsleden te wijzigen."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Ook vastgezet op {{calendars}}, wat alleen iemand met het recht Activiteiten toevoegen kan wijzigen."
+
+#: 
+msgid "An event title is required"
+msgstr "Een titel voor de activiteit is vereist"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Een soort activiteit of een bediening is vereist"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Een soort activiteit dat niet meer bestaat"
+
+#: 
+msgid "Another ministry"
+msgstr "Een andere bediening"
+
+#: 
+msgid "Any event"
+msgstr "Elke activiteit"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Alles wat uw coördinator moet weten"
+
+#: 
+msgid "Approve substitution"
+msgstr "Vervanging goedkeuren"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Deze vervanger goedkeuren"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Vraag een vrijwilligersbeheerder een bediening aan te maken en u de coördinator ervan te maken."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Iemand vragen u te vervangen"
+
+#: 
+msgid "Ask them"
+msgstr "Hen vragen"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Gevraagd; uw coördinator bevestigt het."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Een vrijwilliger inroosteren"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Buiten het huidige plan ingeroosterd"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Inroostering geannuleerd"
+
+#: 
+msgid "Assignment not found"
+msgstr "Inroostering niet gevonden"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Minstens één personId of familyId is vereist"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Voor één functie kunnen maximaal %d standaardvrijwilligers worden gekozen"
+
+#: 
+msgid "Author"
+msgstr "Auteur"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Bevoegdheid wordt aan de persoon gegeven, niet aan een login, dus ze kan worden verleend voordat die er een heeft. Iemand wiens login alleen voor zelfbediening is, ziet alleen zijn of haar eigen rooster totdat een beheerder het account uitbreidt."
+
+#: 
+msgid "Automatic"
+msgstr "Automatisch"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Wacht op antwoord"
+
+#: 
+msgid "Back to Email History"
+msgstr "Terug naar E-mailgeschiedenis"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Terug naar het Bedieningsoverzicht"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Terug naar Momenten"
+
+#: 
+msgid "Back to Person"
+msgstr "Terug naar Persoon"
+
+#: 
+msgid "Back to editing"
+msgstr "Terug naar bewerken"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Terug naar mijn rooster"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Terug naar het Ledenportaal"
+
+#: 
+msgid "Back to your profile"
+msgstr "Terug naar uw profiel"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Achtergrondtaken en bezorging"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Achtergrondtaken zijn voor het laatst uitgevoerd"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Achtergrondtaken uitgevoerd"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Verjaardagswens"
+
+#: 
+msgid "Both"
+msgstr "Beide"
+
+#: 
+msgid "Both (transition)"
+msgstr "Beide (overgang)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Beide: V1 en V2 naast elkaar (overgang)"
+
+#: 
+msgid "Calendar address"
+msgstr "Agenda-adres"
+
+#: 
+msgid "Calendar saved"
+msgstr "Agenda opgeslagen"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Agenda's die het Ledenportaal aan gemeenteleden toont, te kiezen via Beheer -> Ledenportaal -> Agenda's."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Kan deze bediening leerkrachten voor de zondagsschool leveren?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Inroostering annuleren"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Deze inroostering annuleren"
+
+#: 
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Wijzig het wachtwoord waarmee u zich aanmeldt, of voeg een tweede stap toe zodat een wachtwoord alleen niet genoeg is."
+
+#: 
+msgid "Change your password"
+msgstr "Uw wachtwoord wijzigen"
+
+#: 
+msgid "Checked in"
+msgstr "Ingecheckt"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Aanwezig: %1$d van %2$d op de klaslijst"
+
+#: 
+msgid "Checked out"
+msgstr "Uitgecheckt"
+
+#: 
+msgid "Choose a class"
+msgstr "Kies een klas"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Kies een dag van de maand van 1 tot 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Kies een nieuwe foto"
+
+#: 
+msgid "Choose a person"
+msgstr "Kies een persoon"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Kies een vrijwilliger"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Kies eerst een vrijwilliger"
+
+#: 
+msgid "Choose an event"
+msgstr "Kies een gebeurtenis..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Kies een soort activiteit"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Kies een bestaand soort activiteit"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Kies minstens één agenda om op te abonneren."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Kies de agenda's die u in uw eigen agenda-app wilt."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Kies de datum elk jaar als MM-DD"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Kies de datum van de activiteit"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Kies de dag van de week"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Kies de activiteit die dit rooster volgt"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Kies de activiteit die moet worden bezet"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Kies de activiteiten die u wilt verwijderen"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Kies de activiteiten die moeten worden bezet"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Kies de eerste en laatste datum"
+
+#: 
+msgid "Choose the first date"
+msgstr "Kies de eerste datum"
+
+#: 
+msgid "Choose the last date"
+msgstr "Kies de laatste datum"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Kies de functie van %1$s waarvoor de leerkrachten van %2$s gekwalificeerd zijn. Leerkrachten: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Kies het team waarin deze functie dient"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Kies het thema dat gemeenteleden zien, schakel onderdelen van het portaal in of uit en bekijk wie het portaal gebruikt."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Kies wekelijks, maandelijks of jaarlijks"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Kies waar de data van het rooster vandaan komen"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Kies welke vrijwilligerservaring deze kerk gebruikt, hoe ver vooruit roosters worden gevuld en wanneer herinneringen worden verstuurd, en controleer of de achtergrondtaken draaien."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Kies wie standaard elke functie vervult. De keuze wordt in het rooster opgeslagen: die personen worden ingeroosterd op elk moment dat nu wordt gemaakt en op die welke de dagelijkse aanvulling later maakt, zolang ze gekwalificeerd blijven, en krijgen het verzoek te antwoorden tenzij u ze als aanvaard instelt. Laat een functie open om hem week na week in te vullen."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Kies wie u vervangt."
+
+#: 
+msgid "Church Calendar"
+msgstr "Kerkagenda"
+
+#: 
+msgid "Church Calendars"
+msgstr "Kerkagenda's"
+
+#: 
+msgid "Church calendar"
+msgstr "Kerkagenda"
+
+#: 
+msgid "Church events of a type"
+msgstr "Kerkactiviteiten van een soort"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Kerkactiviteiten van een soort worden aan de kerkagenda toegevoegd. Controleer het soort activiteit, de titel en de data van het rooster."
+
+#: 
+msgid "Church website"
+msgstr "Website van de kerk"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM heeft twee manieren om vrijwilligers te beheren. Er is maar één bedoeld om tegelijk te gebruiken; de instelling links bepaalt welke deze kerk ziet. Wisselen verbergt of toont pagina's en menu-items, maar verwijdert nooit gegevens, dus u kunt terugschakelen."
+
+#: 
+msgid "Close event details"
+msgstr "Activiteitendetails sluiten"
+
+#: 
+msgid "Colour"
+msgstr "Kleur"
+
+#: 
+msgid "Completed"
+msgstr "Voltooid"
+
+#: 
+msgid "Compose Message"
+msgstr "Bericht opstellen"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Bevestig uw familiegegevens"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Coördinator verwijderd"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Kopieer dit adres en voeg het in uw agenda-app toe als een nieuw agenda-abonnement."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Het voorbeeld kon niet worden opgebouwd."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "De activiteiten van de klas konden niet worden geteld"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "De bevoegdheid kon niet worden verleend"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "De zondagsschoolklassen konden niet worden geladen"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Het overzicht kon niet worden geladen"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "De activiteitenkeuzes konden niet worden geladen"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "De momenten konden niet worden geladen"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "De roosters konden niet worden geladen"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "De komende activiteiten konden niet worden geladen"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "De vrijwilligers konden niet worden geladen"
+
+#: 
+msgid "Could not load this email."
+msgstr "Deze e-mail kon niet worden geladen."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Deze bediening kon niet worden geladen"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "De activiteiten van deze bediening konden niet worden geladen"
+
+#: 
+msgid "Could not load this team"
+msgstr "Dit team kon niet worden geladen"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "De bevoegdheid kon niet worden ingetrokken"
+
+#: 
+msgid "Create"
+msgstr "Aanmaken"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Maak een rooster aan en genereer de momenten, dan verschijnen hier de weken die ingevuld moeten worden."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Maak een rooster aan en genereer de momenten, dan verschijnen hier de weken die bezet moeten worden."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Maak minstens één functie aan voor dit team en vink dan aan wie waar kan dienen."
+
+#: 
+msgid "Create ministry"
+msgstr "Bediening aanmaken"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Voor het aanmaken van een bediening is toegang als vrijwilligersbeheerder vereist"
+
+#: 
+msgid "Date and time"
+msgstr "Datum en tijd"
+
+#: 
+msgid "Date each year"
+msgstr "Datum elk jaar"
+
+#: 
+msgid "Dates"
+msgstr "Data"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Data moeten de vorm JJJJ-MM-DD hebben"
+
+#: 
+msgid "Day of the month"
+msgstr "Dag van de maand"
+
+#: 
+msgid "Day of the week"
+msgstr "Dag van de week"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Bediening deactiveren"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Rooster deactiveren"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Deactiveer deze bediening voordat u haar verwijdert."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "{{name}} deactiveren? De bediening verhuist naar Gedeactiveerde bedieningen in de zijbalk, waar ze opnieuw kan worden geactiveerd of verwijderd. Er wordt niets verwijderd."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "{{name}} deactiveren? Er worden geen nieuwe momenten meer voor aangemaakt, noch door Genereren noch door de dagelijkse aanvulling. De bestaande momenten en inroosteringen blijven en het rooster kan opnieuw worden geactiveerd."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Gedeactiveerde bedieningen"
+
+#: 
+msgid "Declined"
+msgstr "Afgewezen"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Standaardsoort activiteit voor activiteiten van de bediening"
+
+#: 
+msgid "Default volunteers"
+msgstr "Standaardvrijwilligers"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Standaardvrijwilligers worden verzonden als requirements: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Activiteiten verwijderen"
+
+#: 
+msgid "Delete ministry"
+msgstr "Bediening verwijderen"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Momenten verwijderen"
+
+#: 
+msgid "Delete position"
+msgstr "Functie verwijderen"
+
+#: 
+msgid "Delete schedule"
+msgstr "Rooster verwijderen"
+
+#: 
+msgid "Delete team"
+msgstr "Team verwijderen"
+
+#: 
+msgid "Delete those events"
+msgstr "Die activiteiten verwijderen"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "{{name}} en alles daarin verwijderen? De functies, kwalificaties, bezettingsbehoeften, roosters, momenten en inroosteringen, inclusief eerdere dienstregistraties, en de teamleidertoekenningen worden verwijderd. Deactiveer het team in plaats daarvan als u de geschiedenis wilt bewaren. Dit kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "{{name}} en alles daarin verwijderen? De teams, functies, roosters, {{occurrences}} momenten en {{assignments}} inroosteringen, inclusief eerdere dienstregistraties, plus de coördinator- en teamleidertoekenningen, de vrijwilligerspoolgroep en de agenda worden verwijderd. Dit kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "{{name}} verwijderen? De kwalificaties, bezettingsbehoeften en inroosteringen, inclusief eerdere dienstregistraties, worden mee verwijderd. Deactiveer de functie in plaats daarvan als u de geschiedenis wilt bewaren. Dit kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "{{name}} verwijderen? Dit kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Voor het verwijderen van een bediening is toegang als vrijwilligersbeheerder vereist"
+
+#: 
+msgid "Developer mode"
+msgstr "Ontwikkelaarsmodus"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Klaar; u bent terug op de lijst."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "De eigen bezettingsbehoeften van dit moment laten vallen en het rooster weer volgen?"
+
+#: 
+msgid "Due soon"
+msgstr "Binnenkort"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Elke agenda moet worden opgegeven als een type en een id."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Elke standaardvrijwilliger moet een persoon noemen"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Elke bezettingsbehoefte moet een functie noemen"
+
+#: 
+msgid "Edit event"
+msgstr "Evenement Bewerken"
+
+#: 
+msgid "Edit ministry"
+msgstr "Bediening bewerken"
+
+#: 
+msgid "Edit position"
+msgstr "Functie bewerken"
+
+#: 
+msgid "Edit schedule"
+msgstr "Rooster bewerken"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Bezettingsbehoeften bewerken"
+
+#: 
+msgid "Edit team"
+msgstr "Team bewerken"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Bewerk het rooster en kies een andere klas."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Bewerk het rooster en kies een ander soort activiteit."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Bewerk het rooster en kies de activiteit die het volgt."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Bewerk het rooster en verplaats de laatste datum om meer activiteiten te volgen."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Bewerkt via het Ledenportaal: %s"
+
+#: 
+msgid "Email %s"
+msgstr "E-mail %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "E-mail familie %s"
+
+#: 
+msgid "Email History"
+msgstr "E-mailgeschiedenis"
+
+#: 
+msgid "Email content"
+msgstr "E-mailinhoud"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "E-mail niet-aanwezigen: %s"
+
+#: 
+msgid "Email not found"
+msgstr "E-mail niet gevonden"
+
+#: 
+msgid "Email preview"
+msgstr "E-mailvoorbeeld"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "E-mailverzending is uitgeschakeld"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "E-mailverzending is niet ingeschakeld. Configureer de SMTP-instellingen en schakel e-mail in voordat u verstuurt."
+
+#: 
+msgid "Emails"
+msgstr "E-mails"
+
+#: 
+msgid "End time"
+msgstr "Eindtijd"
+
+#: 
+msgid "Enter counts"
+msgstr "Aantallen invoeren"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Voer het onderwerp van de e-mail in…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Voer uw huidige wachtwoord in en daarna tweemaal uw nieuwe wachtwoord."
+
+#: 
+msgid "Enter your message…"
+msgstr "Voer uw bericht in…"
+
+#: 
+msgid "Event staffed"
+msgstr "Activiteit bezet"
+
+#: 
+msgid "Event title"
+msgstr "Naam activiteit"
+
+#: 
+msgid "Event type"
+msgstr "Hoofdactiviteit"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Elke e-mail die ChurchCRM heeft verzonden, nieuwste eerst. Open een persoon om zijn of haar volledige geschiedenis te zien."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Elke functie in dit venster heeft de mensen die nodig zijn."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Iedereen heeft geantwoord"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Iedereen in de selectie wordt vrijwilliger van deze bediening. Vink daarna hun functies aan."
+
+#: 
+msgid "Everything is correct"
+msgstr "Alles klopt"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Het voorbeeld kon niet worden opgebouwd"
+
+#: 
+msgid "Failed to load email"
+msgstr "De e-mail kon niet worden geladen"
+
+#: 
+msgid "Failed to load email history"
+msgstr "De e-mailgeschiedenis kon niet worden geladen"
+
+#: 
+msgid "Failed to send email"
+msgstr "De e-mail kon niet worden verzonden"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "De e-mail kon niet worden verzonden. Probeer het opnieuw of gebruik 'Openen in e-mailprogramma'."
+
+#: 
+msgid "Family Member"
+msgstr "Familielid"
+
+#: 
+msgid "Family verification"
+msgstr "Controleer het gezin"
+
+#: 
+msgid "File"
+msgstr "Bestand"
+
+#: 
+msgid "Fill"
+msgstr "Invullen"
+
+#: 
+msgid "Fill by default with"
+msgstr "Standaard invullen met"
+
+#: 
+msgid "Fill this gap"
+msgstr "Deze leemte opvullen"
+
+#: 
+msgid "Filled"
+msgstr "Ingevuld"
+
+#: 
+msgid "Find a sub"
+msgstr "Een vervanger zoeken"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Een vrijwilliger zoeken"
+
+#: 
+msgid "Find an event"
+msgstr "Een activiteit zoeken"
+
+#: 
+msgid "Find something to do"
+msgstr "Iets te doen vinden"
+
+#: 
+msgid "Find something to help with"
+msgstr "Iets vinden om mee te helpen"
+
+#: 
+msgid "Findings"
+msgstr "Bevindingen"
+
+#: 
+msgid "First date"
+msgstr "Eerste datum"
+
+#: 
+msgid "Folder"
+msgstr "Map"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Mapnaam van het te gebruiken Ledenportaalthema, uit Include/themes/. \"default\" is het systeemthema dat met ChurchCRM wordt meegeleverd."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Genereer opnieuw dichter bij de eerste datum."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Momenten genereren"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Een nieuw agenda-adres aanvragen?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Geef de bediening een naam"
+
+#: 
+msgid "Give the position a name"
+msgstr "Geef de functie een naam"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Geef de begin- en eindtijd op als UU:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "Geef het team een naam"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Naar mijn vrijwilligerswerk"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Naar de instellingen van het Ledenportaal"
+
+#: 
+msgid "Going"
+msgstr "Aanwezig"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Verleen de kwalificatie op de pagina van de bediening en roosters ze daarna hier in."
+
+#: 
+msgid "Granted"
+msgstr "Verleend"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Bekijk wat de kerk over uw huishouden heeft vastgelegd en laat ons weten of het nog klopt."
+
+#: 
+msgid "Headcount"
+msgstr "Aantal aanwezigen"
+
+#: 
+msgid "Hello %s"
+msgstr "Hallo %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Hulp gevraagd"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Hulp gevraagd kon niet worden opgeslagen"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Hoe ver vooruit momenten worden aangemaakt voor de activiteiten die elk rooster volgt. Een dagelijkse achtergrondtaak houdt elk rooster tot dit punt gevuld."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Hoeveel uur vóór een vrijwilligersmoment de herinneringsmail wordt verstuurd. Stel in op 0 om helemaal geen herinneringen te versturen. De bezorging hangt af van draaiende achtergrondtaken; zie de Vrijwilligersdocumentatie voor de aanbevolen cron-instelling."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Hoeveel uur vóór een moment de herinneringsmail wordt verstuurd. Stel in op 0 om helemaal geen herinneringen te versturen."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Hoeveel mensen elke functie nodig heeft, elke keer dat dit plaatsvindt. Eén datum kan later apart worden gewijzigd. Een standaardvrijwilliger wordt op elk nieuw moment ingeroosterd zolang hij of zij gekwalificeerd blijft; een wijziging verandert nooit momenten die al bestaan."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Hoeveel vrijwilligers elk moment van dit rooster nodig heeft. Vink een functie uit die dit rooster nooit gebruikt. Een standaardvrijwilliger wordt op elk nieuw moment ingeroosterd zolang hij of zij gekwalificeerd blijft; een wijziging verandert nooit momenten die al bestaan."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Hoeveel vrijwilligers deze activiteit nodig heeft. Vink een functie uit die ze niet gebruikt."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Hoeveel weken vooruit vrijwilligersmomenten worden aangemaakt voor de activiteiten die elk rooster volgt, van 1 tot 52. Een dagelijkse achtergrondtaak houdt elk rooster tot dit punt gevuld."
+
+#: 
+msgid "How often"
+msgstr "Hoe vaak"
+
+#: 
+msgid "How to correct this"
+msgstr "Zo corrigeert u dit"
+
+#: 
+msgid "I can't"
+msgstr "Ik kan niet"
+
+#: 
+msgid "I'd like to help"
+msgstr "Ik wil graag helpen"
+
+#: 
+msgid "I'll be there"
+msgstr "Ik ben er"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Als berichten mislukken, vraag dan een beheerder de Bedieningsinstellingen te controleren."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Als u niet meer kunt komen, wijs dan zo snel mogelijk af in uw vrijwilligersrooster zodat de functie kan worden ingevuld."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Als u dit adres per ongeluk hebt gedeeld, vraag dan een nieuw aan. Het oude adres werkt direct niet meer."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "In de afgelopen 15 minuten"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "In de vrijwilligerspool"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Intern: laatste datum waarop de vrijwilligersroosters zijn aangevuld tot de roosterhorizon (JJJJ-MM-DD). Niet handmatig bewerken."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Intern: wanneer de vrijwilligersroosters voor het laatst zijn aangevuld en hoeveel momenten dat opleverde. Niet handmatig bewerken."
+
+#: 
+msgid "Is this still right?"
+msgstr "Klopt dit nog?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "De momenten worden gemaakt zonder functies om in te vullen. Bewerk het rooster om de bezettingsbehoeften toe te voegen."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Houd ze bij {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Soort"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Laatste 24 uur"
+
+#: 
+msgid "Last 30 days"
+msgstr "Laatste 30 dagen"
+
+#: 
+msgid "Last 7 days"
+msgstr "Laatste 7 dagen"
+
+#: 
+msgid "Last attempt"
+msgstr "Laatste poging"
+
+#: 
+msgid "Last check"
+msgstr "Laatste controle"
+
+#: 
+msgid "Last date"
+msgstr "Laatste datum"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Laatst gezien in het portaal"
+
+#: 
+msgid "Last sign-in"
+msgstr "Laatste aanmelding"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Laat beide op 0 om precies te dienen wanneer de activiteit plaatsvindt. Als de activiteit verschuift, verschuiven de vrijwilligers mee."
+
+#: 
+msgid "Leave open"
+msgstr "Laat open"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Laat gemeenteleden hun eigen verjaardag en die van hun gezinsleden wijzigen in het Ledenportaal."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Laat gemeenteleden verjaardagen bewerken"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Laat het kerkkantoor weten of alles hierboven nog klopt."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Laat hen weten waarom (optioneel)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Laat de coördinatoren van die bediening vrijwilligers voor deze activiteit inroosteren en de activiteit zelf bewerken."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "De agenda wordt geladen…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Bedieningen beheren"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Mijn bedieningen beheren"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Toegang tot Mijn bedieningen beheren, met een bediening of team om te beheren"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Toegang tot Mijn bedieningen beheren, met een bediening of team om te beheren, is vereist"
+
+#: 
+msgid "Manage staffing"
+msgstr "Bezetting beheren"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Beheerd vanuit de bediening %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Beheerd vanuit de bediening {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Max"
+
+#: 
+msgid "Member Portal"
+msgstr "Ledenportaal"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Gemeenteleden zien een pagina \"tijdelijk niet beschikbaar\" totdat dit is opgelost. Dezelfde details zijn naar het toepassingslogboek en het foutenlogboek van de webserver geschreven."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Gemeenteleden zien alleen de agenda's die hier zijn ingeschakeld. Verjaardagen en trouwdagen tonen alleen voornamen en de beginletter van de achternaam."
+
+#: 
+msgid "Message"
+msgstr "Bericht"
+
+#: 
+msgid "Min"
+msgstr "Min"
+
+#: 
+msgid "Ministries"
+msgstr "Bedieningen"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Bedieningen die hulp zoeken"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Bedieningen die activiteiten mogen toevoegen"
+
+#: 
+msgid "Ministry"
+msgstr "Bediening"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Bedieningsagenda's"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Bedieningscoördinatoren"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Bedieningsoverzicht"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Bedieningsinstellingen"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Bedieningsagenda"
+
+#: 
+msgid "Ministry created"
+msgstr "Bediening aangemaakt"
+
+#: 
+msgid "Ministry management access"
+msgstr "Toegang tot bedieningsbeheer"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Toegang tot bedieningsbeheer is vereist"
+
+#: 
+msgid "Ministry name"
+msgstr "Naam van de bediening"
+
+#: 
+msgid "Ministry not found"
+msgstr "Bediening niet gevonden"
+
+#: 
+msgid "My Family"
+msgstr "Mijn familie"
+
+#: 
+msgid "My Teams"
+msgstr "Mijn teams"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Mijn bedieningen en teams"
+
+#: 
+msgid "My schedule"
+msgstr "Mijn rooster"
+
+#: 
+msgid "My volunteering"
+msgstr "Mijn vrijwilligerswerk"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Geef deze functie een naam op de pagina waar gemeenteleden iets zoeken om mee te helpen."
+
+#: 
+msgid "Needs an answer"
+msgstr "Heeft een antwoord nodig"
+
+#: 
+msgid "Needs filling"
+msgstr "Moet worden ingevuld"
+
+#: 
+msgid "Never signed in"
+msgstr "Nooit aangemeld"
+
+#: 
+msgid "New account"
+msgstr "Nieuw account"
+
+#: 
+msgid "New event"
+msgstr "Nieuwe activiteit"
+
+#: 
+msgid "New ministry"
+msgstr "Nieuwe bediening"
+
+#: 
+msgid "New record notification"
+msgstr "Melding bij nieuw record"
+
+#: 
+msgid "New recurring event"
+msgstr "Nieuwe terugkerende activiteit"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Er zijn nieuwe vrijwilligers nodig voor de volgende functies"
+
+#: 
+msgid "Newest first"
+msgstr "Nieuwste eerst"
+
+#: 
+msgid "Next on %s"
+msgstr "Hierna op %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Er is nog geen agenda met gemeenteleden gedeeld."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Er is geen agenda voor deze bediening opengesteld, dus de activiteiten verschijnen in geen enkele agenda."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Er is geen agenda met gemeenteleden gedeeld."
+
+#: 
+msgid "No class"
+msgstr "Geen klas"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Nog geen contactgegevens vastgelegd."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Nog geen coördinatoren"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Geen enkele datum tussen de eerste en laatste datum komt overeen met de herhaling"
+
+#: 
+msgid "No email was sent."
+msgstr "Er is geen e-mail verzonden."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Er zijn nog geen e-mails naar dit record verzonden."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Nog geen aantal aanwezigen vastgelegd"
+
+#: 
+msgid "No longer needed"
+msgstr "Niet meer nodig"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Nog geen gemeentelid heeft zich bij het Ledenportaal aangemeld."
+
+#: 
+msgid "No ministry"
+msgstr "Geen bediening"
+
+#: 
+msgid "No past events"
+msgstr "Geen eerdere activiteiten"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Voor deze persoon is geen foto geüpload."
+
+#: 
+msgid "No photo was sent."
+msgstr "Er is geen foto verzonden."
+
+#: 
+msgid "No positions yet"
+msgstr "Nog geen functies"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Nog geen kwalificaties."
+
+#: 
+msgid "No schedules yet"
+msgstr "Nog geen roosters"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Geen bezettingsbehoeften ingesteld"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Geen bezettingsbehoeften: gegenereerde momenten hebben niemand nodig."
+
+#: 
+msgid "No substitution requests"
+msgstr "Geen vervangingsverzoeken"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Geen vervangingen om te beslissen"
+
+#: 
+msgid "No teams yet"
+msgstr "Nog geen teams"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "Er staan geen komende %1$s-activiteiten met de titel \"%2$s\" in de agenda. Een rooster volgt activiteiten die al bestaan."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Geen komende activiteit komt overeen"
+
+#: 
+msgid "No upcoming events"
+msgstr "Geen komende activiteiten"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "Er staan geen komende activiteiten van dit soort in de agenda."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Geen komende activiteiten om uit te kiezen"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Nog niemand ingeroosterd"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Niemand anders is hiervoor al opgeleid; zeg het in plaats daarvan tegen uw coördinator."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Niemand heeft aangegeven hoeveel vrijwilligers elke functie nodig heeft, dus er is niets in te vullen."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Niemand in dit venster beslist nog."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Nog niemand is gekwalificeerd voor deze functie"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Nog niemand is gekwalificeerd voor deze functie, dus ze blijft open."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Geen van de ontvangers kan worden gemaild"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Geen: het soort activiteit wordt per activiteit gekozen"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "U mag deze e-mail niet bekijken"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "U mag deze familie niet bekijken"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "U mag deze persoon niet bekijken"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Niet gemachtigd voor deze inroostering"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Niet gemachtigd voor deze bediening"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Niet gemachtigd voor dit moment"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Niet gemachtigd voor deze functie"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Niet gemachtigd voor deze kwalificatie"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Niet gemachtigd voor deze vereiste"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Niet gemachtigd voor dit rooster"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Niet gemachtigd voor dit vervangingsverzoek"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Niet gemachtigd voor dit team"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Niet gemachtigd om activiteiten aan die vrijwilligersbediening toe te wijzen"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Niet gemachtigd om de activiteit %s te wijzigen"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Niet gemachtigd om de vrijwilligersbediening van deze activiteit te wijzigen"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Niet gemachtigd om een activiteit aan te maken zonder een vrijwilligersbediening die u beheert"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Niet gemachtigd om deze activiteit te wijzigen"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Niet gemachtigd om activiteiten vast te zetten op de agenda \"%s\""
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Niet gemachtigd om activiteiten van de agenda \"%s\" te verwijderen"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Niet gemachtigd om de vrijwilligersbediening van deze activiteit te verwijderen"
+
+#: 
+msgid "Not checked in"
+msgstr "Niet aanwezig gemeld"
+
+#: 
+msgid "Not found"
+msgstr "Niet gevonden"
+
+#: 
+msgid "Not in the pool"
+msgstr "Niet in de pool"
+
+#: 
+msgid "Not now"
+msgstr "Nu niet"
+
+#: 
+msgid "Not sent"
+msgstr "Niet verzonden"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Niet ingesteld: gebruik \"%s\""
+
+#: 
+msgid "Not staffed"
+msgstr "Niet bezet"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Nog geen vrijwilliger"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Er was niets gewijzigd, dus er is niets opgeslagen."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "Er staat niets in de agenda voor deze periode."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "Er staat op dit moment niets in de agenda."
+
+#: 
+msgid "Nothing is short"
+msgstr "Er is niets tekort"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Nog niets op uw lijst"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Nog niets op uw lijst. Bekijk wat er ingevuld moet worden."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Nu niets open"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Nog niets gepland"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Niets gepland."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Nog niets ingesteld"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "In het afgelopen jaar is er niets gebeurd wat bij deze bediening hoort."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Nog niets om te kwalificeren"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Er is niets opgeslagen. Controleer de gemarkeerde velden."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Er is niets opgeslagen. Probeer het opnieuw."
+
+#: 
+msgid "Notification"
+msgstr "Melding"
+
+#: 
+msgid "Notifications"
+msgstr "Meldingen"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Moment niet gevonden"
+
+#: 
+msgid "Occurrences"
+msgstr "Momenten"
+
+#: 
+msgid "Offer to help"
+msgstr "Hulp aanbieden"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Eén keer per dag krijgt elk actief rooster momenten voor de activiteiten die het volgt, tot %d week vooruit, en de standaardvrijwilliger van elke functie wordt op de nieuwe ingeroosterd zolang hij of zij gekwalificeerd blijft."
+msgstr[1] "Eén keer per dag krijgt elk actief rooster momenten voor de activiteiten die het volgt, tot %d weken vooruit, en de standaardvrijwilliger van elke functie wordt op de nieuwe ingeroosterd zolang hij of zij gekwalificeerd blijft."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Zodra deze persoon voor een functie is gekwalificeerd, verschijnt hij of zij hier, samen met de data waarop hij of zij is ingeroosterd."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Er wordt één moment gemaakt voor elke agenda-activiteit waarvan de Gekoppelde groep deze klas is."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Er wordt één moment gemaakt voor elke datum van deze activiteit. Alleen activiteiten die al in de agenda staan, kunnen worden gekozen."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Een van de agenda's bestaat niet"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Een van de activiteiten bestaat niet"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Een van die agenda's is niet met gemeenteleden gedeeld."
+
+#: 
+msgid "One-time"
+msgstr "Eenmalig"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Alleen een zondagsschoolklas kan aan een team worden gekoppeld"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Alleen een coördinator mag een antwoord namens iemand anders vastleggen"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Alleen een coördinator van deze bediening mag haar activiteiten aanmaken"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Alleen een coördinator van deze bediening mag haar activiteiten bezetten"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Alleen een vrijwilligersbeheerder kan dit wijzigen."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Alleen een vrijwilligersbeheerder kan wijzigen of een bediening leerkrachten voor de zondagsschool levert"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Alleen een volwassene van uw familie kan deze gegevens wijzigen. Neem contact op met het kerkkantoor."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Alleen mensen die hiervoor zijn opgeleid, staan in de lijst."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Alleen de ingeroosterde vrijwilliger mag een vervanger voorstellen"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Alleen de agenda's waaraan deze bediening activiteiten mag toevoegen, staan in de lijst. De eigen agenda staat er om te beginnen al aangevinkt."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Alleen het eerste deel van een zeer lange lijst wordt getoond. Verklein het venster om de rest te zien."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Alleen de vrijwilliger die een vervanger heeft voorgesteld, mag die intrekken"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Open een bediening via het menu Bedieningen, maak een rooster aan en genereer de data, dan verschijnen hier de weken die bezet moeten worden."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Open een bediening om iemand haar coördinator te maken, of leider van een van haar teams."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Openen in agenda-app"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "De openstaande mogelijkheden konden niet worden geladen."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Ontvangers openen in uw lokale e-mailprogramma"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Het Ledenportaal openen"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Het Bedieningsoverzicht openen"
+
+#: 
+msgid "Open the ministry"
+msgstr "De bediening openen"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Het moment openen"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Open het moment om de mensen in te roosteren die u nodig hebt."
+
+#: 
+msgid "Open this team"
+msgstr "Dit team openen"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Voor het openstellen van een agenda voor bedieningen is het recht Activiteiten toevoegen vereist"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Optioneel. Iedereen die voor een functie van dit team gekwalificeerd is, wordt leerkracht van de klas, en de klaspagina wijzigt haar leerkrachten niet meer."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Optioneel. De klas wordt de Gekoppelde groep: de klaslijst bepaalt wie incheckt, en een rooster voor de klas vindt deze activiteiten."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Boven het maximum: verwijder deze of verhoog het maximum."
+
+#: 
+msgid "Overridden templates"
+msgstr "Overschreven sjablonen"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Pagina %1$s van %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Pagina %d van %d"
+
+#: 
+msgid "Password reset"
+msgstr "Wachtwoord reset"
+
+#: 
+msgid "Password reset link"
+msgstr "Password Reset Link"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Wachtwoorden moeten minstens %s teken lang zijn."
+msgstr[1] "Wachtwoorden moeten minstens %s tekens lang zijn."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Kies een komende agenda-activiteit en geef aan wie ze nodig heeft. De activiteit behoudt haar eigen datum en tijd; voeg in plaats daarvan een rooster toe om een hele reeks te bezetten."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Kies iemand die al heeft toegezegd uw plaats in te nemen. Uw coördinator bevestigt het."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Kies agenda's uit de lijst."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Kies of uw gegevens gewijzigd moeten worden."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Neem contact op met het kerkkantoor zodat we onze gegevens kunnen corrigeren."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Neem contact op met het kerkkantoor."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Voer minstens twee tekens in."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Laat ons weten of u erbij kunt zijn door te aanvaarden of af te wijzen in uw vrijwilligersrooster."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Vertel ons wat er gewijzigd moet worden."
+
+#: 
+msgid "Portal settings"
+msgstr "Portaalinstellingen"
+
+#: 
+msgid "Portal theme"
+msgstr "Portaalthema"
+
+#: 
+msgid "Position"
+msgstr "Functie"
+
+#: 
+msgid "Position added"
+msgstr "Functie toegevoegd"
+
+#: 
+msgid "Position deleted"
+msgstr "Functie verwijderd"
+
+#: 
+msgid "Position name"
+msgstr "Naam van de functie"
+
+#: 
+msgid "Position not found"
+msgstr "Functie niet gevonden"
+
+#: 
+msgid "Position saved"
+msgstr "Functie opgeslagen"
+
+#: 
+msgid "Positions"
+msgstr "Functies"
+
+#: 
+msgid "Positions still short"
+msgstr "Functies die nog tekortkomen"
+
+#: 
+msgid "Proposed"
+msgstr "Voorgesteld"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Voorgestelde vervanger"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Zet deze bediening op de pagina Openstaande mogelijkheden van het Ledenportaal, waar elke vrijwilliger haar kan zien en hulp kan aanbieden. Ze komen in de vrijwilligerspool en u krijgt een e-mail."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "{{name}} in plaats daarvan inzetten? De oorspronkelijke vrijwilliger behoudt zijn of haar geschiedenis en wordt op de hoogte gebracht."
+
+#: 
+msgid "Qualification not found"
+msgstr "Kwalificatie niet gevonden"
+
+#: 
+msgid "Qualified for"
+msgstr "Gekwalificeerd voor"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Gekwalificeerde vrijwilligers kunnen zichzelf aanmelden voor open data van deze functie. Schakel uit voor functies die alleen een teamleider of coördinator mag toewijzen; het Ledenportaal biedt ze dan niet aan."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "De huidige leerkrachten kwalificeren voor"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Kwalificeer ze voor een functie"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Kwalificeer ze voor een functie."
+
+#: 
+msgid "Reactivate"
+msgstr "Heractiveren"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Lees de handleiding voor het schrijven van thema's"
+
+#: 
+msgid "Recent Emails"
+msgstr "Recente e-mails"
+
+#: 
+msgid "Recent Sends"
+msgstr "Recente verzendingen"
+
+#: 
+msgid "Recipient"
+msgstr "Ontvanger"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Het aantal ontvangers (%d) is hoger dan het maximum per verzending (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Ontvangers moeten worden opgegeven als personIds en familyIds, niet als e-mailadressen"
+
+#: 
+msgid "Record a decline"
+msgstr "Een afwijzing vastleggen"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Een aanvaarding vastleggen"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Vastleggen dat {{name}} nee heeft gezegd? Het antwoord wordt opgeslagen als afkomstig van u en de plek komt weer vrij."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Vastleggen dat {{name}} ja heeft gezegd? Het antwoord wordt opgeslagen als afkomstig van u, niet van hen."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Vastleggen: zij hebben aanvaard"
+
+#: 
+msgid "Record: they declined"
+msgstr "Vastleggen: zij hebben afgewezen"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Vrijwilligers werven"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Vrijwilligers werven moet waar of onwaar zijn"
+
+#: 
+msgid "Recruiting"
+msgstr "Werving"
+
+#: 
+msgid "Recurring"
+msgstr "Terugkerend"
+
+#: 
+msgid "Reject"
+msgstr "Afwijzen"
+
+#: 
+msgid "Reject substitution"
+msgstr "Vervanging afwijzen"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Deze vervanger afwijzen"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Aanlooptijd herinnering (uren)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Herinnering: u bent ingeroosterd om te dienen"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Herinneringen en meldingen worden alleen bezorgd wanneer de achtergrondtaken draaien. Voor tijdige bezorging laat u de planner elke 15 minuten via cron draaien"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Vrijwilliger verwijderen"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Coördinator verwijderen"
+
+#: 
+msgid "Remove the class from them"
+msgstr "De klas bij hen verwijderen"
+
+#: 
+msgid "Remove the team leader"
+msgstr "De teamleider verwijderen"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "{{name}} verwijderen uit {{ministry}}? Daarmee vervallen alle kwalificaties hier, wordt deze persoon van elk toekomstig moment gehaald, als standaardvrijwilliger gewist op de roosters van deze bediening en uit de vrijwilligerspool verwijderd."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Verwijderd. {{qualifications}} kwalificaties, {{assignments}} komende inroosteringen, {{defaults}} roosterstandaarden."
+
+#: 
+msgid "Repeats"
+msgstr "Herhaalt"
+
+#: 
+msgid "Requirement not found"
+msgstr "Vereiste niet gevonden"
+
+#: 
+msgid "Reset link"
+msgstr "Herstellink"
+
+#: 
+msgid "Response recorded"
+msgstr "Antwoord vastgelegd"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Bekijk het verzoek op het vrijwilligersoverzicht en keur het goed of wijs het af."
+
+#: 
+msgid "Review this request"
+msgstr "Dit verzoek beoordelen"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Achtergrondtaken nu uitvoeren"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTP-test"
+
+#: 
+msgid "Save calendars"
+msgstr "Agenda's opslaan"
+
+#: 
+msgid "Save changes"
+msgstr "Wijziging opslaan"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Opgeslagen; deze bediening vraagt niet langer om hulp"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Opgeslagen; deze bediening vraagt nu om hulp"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Opgeslagen. Gemeenteleden zien de hierboven ingeschakelde agenda's."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Rooster \"{{name}}\" aangemaakt."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Rooster \"{{name}}\" aangemaakt. Het is inactief en maakt dus geen momenten aan totdat het actief is."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Rooster gedeactiveerd"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Rooster verwijderd"
+
+#: 
+msgid "Schedule name"
+msgstr "Naam van het rooster"
+
+#: 
+msgid "Schedule not found"
+msgstr "Rooster niet gevonden"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Rooster geheractiveerd"
+
+#: 
+msgid "Schedule saved"
+msgstr "Rooster opgeslagen"
+
+#: 
+msgid "Scheduled"
+msgstr "Gepland"
+
+#: 
+msgid "Schedules"
+msgstr "Roosters"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Roosters het laatst aangevuld"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Roosters hebben geen eigen herhaling of tijden meer; elk moment volgt een agenda-activiteit. Verwijder: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Roosters bepalen niet meer hoe ver vooruit ze worden gegenereerd: de roosterhorizon onder Beheer → Bedieningsinstellingen geldt voor elk rooster. Verwijder: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Roosterhorizon (weken)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Bevoegdheidstoekenning niet gevonden"
+
+#: 
+msgid "Search by name"
+msgstr "Zoeken op naam"
+
+#: 
+msgid "See the whole calendar"
+msgstr "De hele agenda bekijken"
+
+#: 
+msgid "See what needs filling"
+msgstr "Bekijk wat er ingevuld moet worden"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Selecteer een agenda om de activiteiten ervan te verbergen of te tonen."
+
+#: 
+msgid "Select ministries..."
+msgstr "Selecteer bedieningen..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Zelf aanmelden"
+
+#: 
+msgid "Self-assignable"
+msgstr "Zelf in te roosteren"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Zelf in te roosteren moet waar of onwaar zijn"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Zelfbedieningsaccounts"
+
+#: 
+msgid "Send"
+msgstr "Verzenden"
+
+#: 
+msgid "Send Email"
+msgstr "E-mail verzenden"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "E-mail verzenden vanuit ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Het inroosterbericht opnieuw verzenden"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Stuur de te tonen agenda's als een lijst."
+
+#: 
+msgid "Send to the church office"
+msgstr "Naar het kerkkantoor verzenden"
+
+#: 
+msgid "Send your answer"
+msgstr "Uw antwoord verzenden"
+
+#: 
+msgid "Sent"
+msgstr "Verzonden"
+
+#: 
+msgid "Sent by"
+msgstr "Verzonden door"
+
+#: 
+msgid "Serving next"
+msgstr "Hierna dienend"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Instellen als aanvaard"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Bezettingsbehoeften instellen"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "\"%s\" tonen in het Ledenportaal"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Tonen in het Ledenportaal"
+
+#: 
+msgid "Show past events"
+msgstr "Eerdere activiteiten tonen"
+
+#: 
+msgid "Show the church calendar"
+msgstr "De kerkagenda tonen"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "De kerkagenda tonen in het Ledenportaal."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Het onderdeel kerkagenda tonen in het Ledenportaal."
+
+#: 
+msgid "Show the next"
+msgstr "De volgende tonen"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "De onderdelen vrijwilligerswerk en team tonen in het Ledenportaal."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Deze bediening tonen op de pagina Openstaande mogelijkheden"
+
+#: 
+msgid "Show volunteering"
+msgstr "Vrijwilligerswerk tonen"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "De pagina's voor vrijwilligerswerk en team tonen in het Ledenportaal."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Tonen wat ik al gedaan heb"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Wordt getoond precies zoals u het typt. Regeleinden blijven behouden."
+
+#: 
+msgid "Sign up"
+msgstr "Aanmelden"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Aanmelding en beveiliging"
+
+#: 
+msgid "Signed in"
+msgstr "Aangemeld"
+
+#: 
+msgid "Signed up"
+msgstr "Aangemeld om te dienen"
+
+#: 
+msgid "Sincerely"
+msgstr "Met vriendelijke groet"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Sommige van uw gegevens konden niet worden opgeslagen. Controleer de gemarkeerde velden."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Sommige van uw familiegegevens konden niet worden opgeslagen. Controleer de gemarkeerde velden."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Iemand anders vervangt"
+
+#: 
+msgid "Something needs changing"
+msgstr "Er moet iets gewijzigd worden"
+
+#: 
+msgid "Something went wrong"
+msgstr "Er is iets misgegaan"
+
+#: 
+msgid "Staff an event"
+msgstr "Een activiteit bezetten"
+
+#: 
+msgid "Staff them"
+msgstr "Ze bezetten"
+
+#: 
+msgid "Staff this event"
+msgstr "Deze activiteit bezetten"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Dit moment bezetten"
+
+#: 
+msgid "Staffed"
+msgstr "Bezet"
+
+#: 
+msgid "Staffing"
+msgstr "Bezetting"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "De bezetting wordt ingesteld nadat de activiteiten zijn aangemaakt"
+
+#: 
+msgid "Staffing needs"
+msgstr "Bezettingsbehoeften"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Bezettingsbehoeften opgeslagen"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Begin met het aanmaken van een bediening en voeg daarna de teams en functies toe die erin dienen."
+
+#: 
+msgid "Start time"
+msgstr "Start datum"
+
+#: 
+msgid "Start typing a name"
+msgstr "Begin een naam te typen"
+
+#: 
+msgid "Statistics"
+msgstr "Statistieken"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Moet {{name}} stoppen met het coördineren van {{ministry}}? Hun login en hun eigen inroosteringen blijven ongewijzigd."
+
+#: 
+msgid "Subscribe"
+msgstr "Abonneren"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Op de agenda abonneren"
+
+#: 
+msgid "Substitute"
+msgstr "Vervanger"
+
+#: 
+msgid "Substitute approved"
+msgstr "Vervanger goedgekeurd"
+
+#: 
+msgid "Substitute asked"
+msgstr "Vervanger gevraagd"
+
+#: 
+msgid "Substitute decision"
+msgstr "Beslissing over vervanger"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Vervanger voorgesteld"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Vervanger afgewezen"
+
+#: 
+msgid "Substituted"
+msgstr "Vervangen"
+
+#: 
+msgid "Substitution approved"
+msgstr "Vervanging goedgekeurd"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Vervanging afgewezen"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Vervangingsverzoek niet gevonden"
+
+#: 
+msgid "Substitution requests"
+msgstr "Vervangingsverzoeken"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Zondagsschoolklas"
+
+#: 
+msgid "System calendar"
+msgstr "Systeemagenda"
+
+#: 
+msgid "System default"
+msgstr "Systeemstandaard"
+
+#: 
+msgid "Take that back"
+msgstr "Terugnemen"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "{{name}} van deze functie halen? Er wordt geen e-mail verstuurd; in het rooster staat de datum als niet meer nodig en de plek komt weer vrij."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "De leerkrachten van deze klas worden beheerd in Bedieningen → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Team"
+
+#: 
+msgid "Team Leader"
+msgstr "Teamleider"
+
+#: 
+msgid "Team added"
+msgstr "Team toegevoegd"
+
+#: 
+msgid "Team deleted"
+msgstr "Team verwijderd"
+
+#: 
+msgid "Team leader"
+msgstr "Teamleider"
+
+#: 
+msgid "Team name"
+msgstr "Naam van het team"
+
+#: 
+msgid "Team not found"
+msgstr "Team niet gevonden"
+
+#: 
+msgid "Team saved"
+msgstr "Team opgeslagen"
+
+#: 
+msgid "Teams"
+msgstr "Teams"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Teams zijn de groepen mensen die in deze bediening dienen."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Teams, functies en de mensen die ze vervullen"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Tien meest recente aanmeldingen"
+
+#: 
+msgid "Thank you"
+msgstr "Dank u!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Bedankt voor uw aanmelding om te dienen"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Bedankt voor uw aanmelding om te dienen. U staat in het rooster."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Dank u. Het kerkkantoor heeft uw antwoord."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Dank u. Het kerkkantoor beoordeelt dit voordat het wordt toegevoegd."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Bedankt dat u het ons liet weten."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Bedankt; de coördinator weet dat u weer wilt helpen."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Bedankt; de coördinator weet dat u wilt helpen."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Bedankt; u staat op de lijst."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Die thememap voor het Ledenportaal bestaat niet."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Die inroostering is van iemand anders"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Die inroostering kon niet worden opgeslagen"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Die geboortedatum is geen geldige datum."
+
+#: 
+msgid "That could not be saved."
+msgstr "Dat kon niet worden opgeslagen."
+
+#: 
+msgid "That could not be sent."
+msgstr "Dat kon niet worden verzonden."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Dat familielid kon niet worden toegevoegd. Controleer de gemarkeerde velden."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Dat is geen geldige datum."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Die lijst kon niet worden geladen."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Die persoon heeft deze functie op dit moment al"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Die persoon is al voor deze functie ingeroosterd op dit moment"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Die persoon zit niet in een vrijwilligerspool van deze bediening. Verzend opnieuw met de override voor buiten de pool om hem of haar toch in te roosteren."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Die persoon zit niet in deze vrijwilligerspool"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Die persoon is niet gekwalificeerd voor deze functie"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Die foto kon niet worden opgeslagen."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Die foto is te groot. Kies een kleinere."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Die functie hoort bij een andere bediening"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Die functie hoort bij een ander team"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Die functie is al volledig bezet"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Die functie wordt op dit moment niet bezet"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Dat antwoord kon niet worden vastgelegd"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Die status kan niet rechtstreeks worden ingesteld"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Over dat vervangingsverzoek kon niet worden beslist"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Dat team hoort bij een andere bediening"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Dat thema kon niet worden geactiveerd."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Dat thema kon niet worden gecontroleerd."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Dat thema bevat fouten en is daarom niet geactiveerd."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Die vrijwilliger kon niet worden ingeroosterd"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Die trouwdatum is geen geldige datum."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "De %s moet een datum in de vorm JJJJ-MM-DD zijn"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "De %s moet een heel aantal minuten zijn"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "De %s moet binnen %d minuten van de activiteit liggen"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "De agenda's van het Ledenportaal zijn opgeslagen."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Het Ledenportaal kon niet afmaken wat u vroeg. Probeer het over enkele minuten opnieuw."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Het Ledenportaal is alleen beschikbaar voor een aangemelde persoon, niet voor API-clients."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Het Ledenportaal is ingesteld op het thema \"%s\", dat niet meer op de server staat. Gemeenteleden zien een foutpagina totdat u een bestaand thema kiest."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Het Ledenportaal is tijdelijk niet beschikbaar"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Het Ledenportaalthema \"%s\" kon niet worden geactiveerd omdat het fouten bevat."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Het Ledenportaalthema kon niet worden weergegeven"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "De thememap \"%s\" van het Ledenportaal is niet gevonden."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Het thema van het Ledenportaal is gewijzigd."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "De rol Leerkracht van %1$s kan niet worden hernoemd of verwijderd zolang de leerkrachten worden beheerd in Bedieningen → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "De map van het actieve thema ontbreekt"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Het adres is geselecteerd; kopieer het met uw toetsenbord."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Het assetpad \"%s\" is niet toegestaan."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "De inroostering kon niet worden geannuleerd"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Het inroosterbericht wordt opnieuw verzonden"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Het agenda-adres is gekopieerd."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "De agenda's konden niet worden geladen. Probeer het opnieuw."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "De agenda's konden niet worden opgeslagen."
+
+#: 
+msgid "The cart could not be added"
+msgstr "De selectie kon niet worden toegevoegd"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "De kerk heeft u nog niet gemaild."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Het kerkkantoor is op de hoogte gebracht. Probeer het later opnieuw."
+
+#: 
+msgid "The class does not exist"
+msgstr "De klas bestaat niet"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "De klas die dit rooster volgt, bestaat niet meer."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "De inhoud van deze e-mail wordt niet bewaard. ChurchCRM bewaart alleen de tekst van berichten die in de e-mailcomposer zijn geschreven en van vrijwilligersmails."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "De inhoud van deze e-mail is niet bewaard."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "De coördinator kon niet worden toegevoegd"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "De coördinatorenlijst kon niet worden geladen"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "De datum en tijd van elk moment komen uit de bijbehorende agenda-activiteit, dus als de activiteit verschuift, verschuift het rooster mee."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "De parameter days moet een geheel getal tussen 1 en 365 zijn"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "De standaardvrijwilliger moet een persoon zijn"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "De standaardvrijwilligers worden in het rooster opgeslagen en komen op de momenten die vanaf nu worden gemaakt."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "De standaardvrijwilligers moeten een lijst zijn"
+
+#: 
+msgid "The description is too long"
+msgstr "De beschrijving is te lang"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Het einde van het bereik ligt vóór het begin."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Het einde van het bereik is geen datum."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "De activiteit kon niet worden bezet"
+
+#: 
+msgid "The event does not exist"
+msgstr "De activiteit bestaat niet"
+
+#: 
+msgid "The event is inactive"
+msgstr "De activiteit is inactief"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "De activiteit moet eindigen nadat ze begint"
+
+#: 
+msgid "The event title"
+msgstr "De titel van de activiteit"
+
+#: 
+msgid "The event title is too long"
+msgstr "De titel van de activiteit is te lang"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Het soort activiteit waarmee nieuwe activiteiten van een bediening beginnen. Als het leeg is, of als het soort is verwijderd, wordt het soort \"Overig\" gebruikt als dat bestaat."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Het soort activiteit bestaat niet"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Het soort activiteit dat dit rooster volgt, bestaat niet meer."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "De activiteiten kunnen alleen worden verplaatst naar een klas waaraan het team is gekoppeld"
+
+#: 
+msgid "The events could not be created"
+msgstr "De activiteiten konden niet worden aangemaakt"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "De activiteiten konden niet worden verwijderd"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "De activiteiten konden niet worden bezet"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "De toekenning kon niet worden verwijderd"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "De laatste datum ligt vóór de eerste datum"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "De lijst met beschikbare vrijwilligers kon niet worden geladen"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Het maximumaantal mag niet lager zijn dan het minimumaantal"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Het bericht kon niet in de wachtrij worden gezet"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Het minimumaantal mag niet negatief zijn"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "De bediening kon niet worden aangemaakt"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "De bediening kon niet worden gedeactiveerd"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "De bediening kon niet worden verwijderd"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "De bediening kon niet worden geheractiveerd"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "De bediening kon niet worden opgeslagen"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Het moment kon niet worden verwijderd"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Het moment heeft geen rooster"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "De momenten konden niet worden gegenereerd"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "De oorspronkelijke vrijwilliger wordt vrijgegeven en de vervanger neemt de functie over. Beiden worden op de hoogte gebracht."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "De oorspronkelijke vrijwilliger behoudt de functie. Beiden worden op de hoogte gebracht."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "De pagina die u opvroeg, bestaat niet. Ze is mogelijk verplaatst of verwijderd."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "De functie hoort bij een andere bediening"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "De functie kon niet worden verwijderd"
+
+#: 
+msgid "The position could not be saved"
+msgstr "De functie kon niet worden opgeslagen"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "De functie is nog gedekt, dus er is geen actie nodig tenzij u de bezetting wilt aanpassen."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "De kwalificatie kon niet worden verwijderd"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "De kwalificatie kon niet worden opgeslagen"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "De gekwalificeerde vrijwilligers konden niet worden geladen"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "De herhaling moet aangeven hoe de activiteiten zich herhalen"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Het verzoek dat %1$s in de plaats van %2$s dient, is goedgekeurd."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Het verzoek dat %1$s in de plaats van %2$s dient, is niet goedgekeurd."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Dezelfde functie staat twee keer in de bezettingsbehoeften"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Het rooster kon niet worden gedeactiveerd"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Het rooster kon niet worden verwijderd"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Het rooster kon niet worden geheractiveerd"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Het rooster kon niet worden opgeslagen"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Het rooster is bijgewerkt, dus er is verder niets te doen."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Het roostervenster eindigt vóór het begin"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "De bezettingsbehoeften van het rooster konden niet worden geladen"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "De bezettingsbehoeften konden niet worden geladen"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "De bezettingsbehoeften konden niet worden hersteld"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "De bezettingsbehoeften konden niet worden opgeslagen"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "De bezettingsbehoeften moeten een lijst zijn"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Het bezettingsplan kon niet worden geladen"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Het begin van het bereik is geen datum."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Over de vervanging kon niet worden beslist"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "De vervangingsverzoeken konden niet worden geladen"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "De leerkrachten kunnen alleen worden geïmporteerd in een functie van dit team"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "De leerkrachten van %1$s worden beheerd in Bedieningen → %2$s → %3$s. Leerlingen kunnen hier nog wel worden gewijzigd."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Het team kon niet worden verwijderd"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Het team kon niet worden opgeslagen"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Het team hoort niet bij deze bediening"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "De thememap is niet gevonden."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Het soort waarmee een nieuwe activiteit op het tabblad Agenda van een bediening begint. Het kan per activiteit nog worden gewijzigd, bijvoorbeeld voor een klas die categorieën voor het aantal aanwezigen nodig heeft."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "De vrijwilligersinroostering kon niet worden opgeslagen"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "De vrijwilligerspool van de bediening %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "De wijziging in de vrijwilligersinrichting kon niet worden opgeslagen"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Het venster eindigt vóór het begin"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Hun coördinatoren mogen de activiteiten van hun bediening op deze agenda vastzetten zonder het recht Activiteiten toevoegen."
+
+#: 
+msgid "Theme"
+msgstr "Thema"
+
+#: 
+msgid "Themes"
+msgstr "Thema's"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Thema's worden door uw kerk geleverd, niet door ChurchCRM, en worden niet door het ChurchCRM-project geverifieerd."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Er is geen kerkagenda met id %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Er is geen systeemagenda met id %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Dit zijn de gegevens die de kerk van u heeft vastgelegd. Wijzigingen worden direct opgeslagen."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Dit zijn de vrijwilligersteams waar u op let. Open er een om de functies in te stellen, aan te geven wie waar kan dienen en de komende weken in te vullen."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Deze activiteiten vormen geen reeks: ze verschillen in titel, soort of klas"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Deze bedieningen willen graag meer mensen. Laat weten dat u geïnteresseerd bent en iemand neemt contact met u op."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Deze behoeften komen uit het rooster. Hier opslaan wijzigt alleen dit moment."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Deze cijfers tellen alleen zelfbedieningsaccounts: mensen wier login alleen het Ledenportaal kan bereiken."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Deze mensen zijn nog ingeroosterd, maar de functie die ze hebben maakt geen deel meer uit van het bezettingsplan van deze datum."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Deze mensen zijn nog ingeroosterd, maar de functie die ze hebben maakt geen deel meer uit van het bezettingsplan van dit moment."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Voor deze ingeroosterde functies is nog iemand nodig."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Deze teams van %1$s zijn gekoppeld aan een zondagsschoolklas: %2$s. Ontkoppel ze eerst."
+
+#: 
+msgid "They could not be added"
+msgstr "Ze konden niet worden toegevoegd"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Ze konden niet uit deze bediening worden verwijderd"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Ze eindigen %d minuut nadat de activiteit eindigt."
+msgstr[1] "Ze eindigen %d minuten nadat de activiteit eindigt."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Ze eindigen %d minuut voordat de activiteit eindigt."
+msgstr[1] "Ze eindigen %d minuten voordat de activiteit eindigt."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Ze waren hier al vrijwilliger"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Deze inroostering is %1$s en kan niet worden gewijzigd in %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Deze inroostering is niet meer actief"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Deze e-mail staat niet in uw geschiedenis."
+
+#: 
+msgid "This event has already happened"
+msgstr "Deze activiteit heeft al plaatsgevonden"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Dit gaat ter beoordeling naar het kerkkantoor. Totdat een medewerker het goedkeurt, staat het nieuwe familielid hier als wachtend op beoordeling."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Deze groep is de pool van een vrijwilligersbediening en wordt samen met de bediening verwijderd"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Deze groep is de vrijwilligerspool van %s en wordt vanuit die bediening beheerd."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Deze groep is de vrijwilligerspool van %s. Ze wordt vanuit die bediening beheerd."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Deze installatie heeft nog geen agenda's."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Dit is een herinnering dat u binnenkort bent ingeroosterd om te dienen."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Dit is geen geldige naam voor een thememap."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Dit is niet een van de data van uw team."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Dit is niet een van uw teams."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Hier stuurt de kerk post naartoe en wie ze over uw huishouden belt."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Dit is uw kerkaccount. Alles wat u voor uzelf en uw gezin kunt doen, vindt u hier."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Deze bediening heeft geen komende activiteiten in de agenda."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Deze bediening heeft geen komende activiteiten met de titel \"%s\". Een rooster volgt activiteiten die al bestaan: voeg ze eerst toe op het tabblad Agenda van de bediening."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Deze bediening heeft geen vrijwilligerspoolgroep"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Deze bediening vraagt op dit moment niet om hulp"
+
+#: 
+msgid "This ministry's events"
+msgstr "De activiteiten van deze bediening"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "De activiteiten van deze bediening (nog geen activiteit gekozen)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Dit moment volgt weer zijn rooster"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Dit moment heeft al plaatsgevonden"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Dit moment heeft al plaatsgevonden en de inroosteringen ervan kunnen niet meer worden gewijzigd"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Dit moment is geannuleerd"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Dit moment heeft eigen bezettingsbehoeften, los van het rooster."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Deze pagina hoort niet bij uw account. Als u denkt dat dat wel zo zou moeten zijn, vraag het dan aan het kerkkantoor."
+
+#: 
+msgid "This page was not found"
+msgstr "Deze pagina is niet gevonden"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Dit deel van het Ledenportaal is voor vrijwilligersteamleiders."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Deze functie wordt toegewezen door de teamleider of coördinator, niet door zelf aan te melden"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Dit rooster kan niet worden verwijderd: er verwijzen nog %d vrijwilligersinroosteringen naar de momenten ervan."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Dit rooster heeft nog geen bezettingsbehoeften"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Dit rooster is inactief. Activeer het opnieuw om de momenten te genereren."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "Over dit vervangingsverzoek is al beslist"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Dit team heeft nog geen functies"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Dit team bezet deze activiteit al"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Dit sjabloon vraagt om het bestand \"%s\", dat het thema niet bevat."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Dit thema kan niet worden geactiveerd"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Dit thema heeft geen problemen."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Deze versie van ChurchCRM gebruikt op dit pad geen sjabloon, dus de override wordt nooit weergegeven."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Vink ze aan op het tabblad Vrijwilligers van dit team en roosters ze daarna hier in."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Vinkjes worden opgeslagen zodra u ze zet."
+
+#: 
+msgid "Times come from this event"
+msgstr "Tijden komen van deze activiteit"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Vult elk rooster aan, verstuurt wat in de wachtrij staat en sluit afgelopen momenten af, zonder op de volgende geplande uitvoering te wachten."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "{{name}} afwijzen? De oorspronkelijke vrijwilliger blijft staan en wordt op de hoogte gebracht."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Schakel de sjablooncache van het Ledenportaal uit en druk de naam van elk sjabloon af in een HTML-opmerking. Voor themaontwerpers; laat uit bij normaal gebruik."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Schakel dit in voor een bediening waarvan de teams zondagsschoolklassen geven. Haar teams kunnen dan aan een klas worden gekoppeld en haar roosters en activiteiten kunnen er een gebruiken."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Schakelt de sjablooncache van het portaal uit en drukt de naam van elk sjabloon af in een HTML-opmerking. Voor themaontwerpers; laat dit uit bij normaal gebruik."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Twee-Factor-Authenticatie"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Onbezette functies"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Onbekende bezorgfout"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Onbekende momentstatus"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Onbekende roosterkoppelingsmodus"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Onbekende vrijwilligersbediening"
+
+#: 
+msgid "Until"
+msgstr "Tot"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Komende beschikbaarheid"
+
+#: 
+msgid "Update your details"
+msgstr "Uw gegevens bijwerken"
+
+#: 
+msgid "Update your family details"
+msgstr "Uw familiegegevens bijwerken"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Gebruik Deze activiteit bezetten om één enkele activiteit te bezetten"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "De behoeften van het rooster gebruiken"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "De gebruiker moet het recht Activiteit toevoegen hebben, of een vrijwilligersbediening coördineren, en de module Activiteiten moet zijn ingeschakeld"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "De gebruiker moet het recht Activiteit toevoegen hebben, of de vrijwilligersbediening coördineren waartoe deze agenda behoort"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1: Vrijwilligersmogelijkheden (verouderd)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1: verouderde Vrijwilligersmogelijkheden"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2: Bedieningen"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2: Vrijwilligersbeheer"
+
+#: 
+msgid "Valid"
+msgstr "Geldig"
+
+#: 
+msgid "Validation"
+msgstr "Validatie"
+
+#: 
+msgid "View event"
+msgstr "Evenement bekijken"
+
+#: 
+msgid "View my schedule"
+msgstr "Mijn rooster bekijken"
+
+#: 
+msgid "View only"
+msgstr "Alleen bekijken"
+
+#: 
+msgid "View person"
+msgstr "Persoon bekijken"
+
+#: 
+msgid "View the event"
+msgstr "De activiteit bekijken"
+
+#: 
+msgid "View this email"
+msgstr "Deze e-mail bekijken"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Vrijwilliger (verouderd)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Vrijwilligersbeheer V2 is niet ingeschakeld"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Vrijwilligersbediening"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Vrijwilligersinroostering"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Vrijwilliger heeft afgewezen"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Vrijwilligerservaring"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Er moeten nog vrijwilligersfuncties worden ingevuld"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Vrijwilligersherinnering"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Vrijwilligersaanmelding"
+
+#: 
+msgid "Volunteer times"
+msgstr "Vrijwilligerstijden"
+
+#: 
+msgid "Volunteering"
+msgstr "Vrijwilligerswerk"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Vrijwilligerswerk georganiseerd zoals een kerk het doet. Elke bediening heeft teams en functies; mensen zijn gekwalificeerd voor functies en horen bij de poolgroep van de bediening; roosters volgen de activiteiten in de agenda en leveren gedateerde momenten met bezettingsvereisten op; coördinatoren roosteren mensen in, die aanvaarden, afwijzen of een vervanger voorstellen; herinneringen en meldingen gaan per e-mail. Beheerders en gebruikers met het recht Bedieningen beheren zien elke bediening en mogen ze aanmaken, deactiveren en verwijderen. Een bedieningscoördinator krijgt in plaats daarvan het recht Mijn bedieningen beheren: de kop Bedieningen in de zijbalk toont dan alleen de bedieningen die hij of zij coördineert. Een teamleider leidt zijn of haar team vanuit het Ledenportaal. Gemeenteleden gebruiken het Ledenportaal om hun rooster te zien, te antwoorden, zich aan te melden en hulp aan te bieden."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Ingeroosterde vrijwilligers: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Vrijwilligers eindigen"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Vrijwilligers nodig"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Vrijwilligers van %s zijn aan deze activiteiten toegewezen, dus ze kunnen hier niet worden verwijderd. Vraag die bediening haar bezetting te verwijderen, of vraag iemand die de agenda beheert."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Vrijwilligers van {{names}} zijn aan sommige ervan toegewezen. Tenzij u de agenda beheert, wordt het verwijderen geweigerd totdat die bezetting is verwijderd."
+
+#: 
+msgid "Volunteers start"
+msgstr "Vrijwilligers beginnen"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Vrijwilligers beginnen %d minuut nadat de activiteit begint."
+msgstr[1] "Vrijwilligers beginnen %d minuten nadat de activiteit begint."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Vrijwilligers beginnen %d minuut voordat de activiteit begint."
+msgstr[1] "Vrijwilligers beginnen %d minuten voordat de activiteit begint."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Wacht op antwoord"
+
+#: 
+msgid "Waiting for review"
+msgstr "Wacht op beoordeling"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Wacht op bevestiging van uw coördinator."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "We e-mailen u wanneer er iets ingevuld moet worden."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "We kunnen zondagochtend wel meer hulp gebruiken; ervaring is niet nodig."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Welkom, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Wat moet er gewijzigd worden?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Waar uw aandacht deze week naar uitgaat"
+
+#: 
+msgid "What the check found"
+msgstr "Wat de controle heeft gevonden"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Wat de vrijwilligerservaringen zijn"
+
+#: 
+msgid "What you want to say"
+msgstr "Wat u wilt zeggen"
+
+#: 
+msgid "When"
+msgstr "Wanneer"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Wanneer een vrijwilliger iemand voorstelt om zijn of haar plaats in te nemen, verschijnt dat hier zodat u het kunt goedkeuren of afwijzen."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Wanneer een vrijwilliger iemand voorstelt om zijn of haar plaats in te nemen, verschijnt dat hier zodat u het kunt goedkeuren."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Wanneer iemand u in een team zet, of u zich zelf aanmeldt, verschijnt het hier."
+
+#: 
+msgid "Where"
+msgstr "Waar"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Waar de data vandaan komen"
+
+#: 
+msgid "Where we reach you"
+msgstr "Waar we u bereiken"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Welke ervaring van Vrijwilligersbeheer actief is. V1 is de verouderde functie Vrijwilligersmogelijkheden; V2 is de nieuwe werkwijze voor roosteren en inroosteren. \"Beide\" toont ze naast elkaar tijdens de migratie."
+
+#: 
+msgid "Which events"
+msgstr "Welke activiteiten"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Welke vrijwilligerservaring deze kerk gebruikt. De kaart rechts legt elke keuze uit."
+
+#: 
+msgid "Who is covering"
+msgstr "Wie vervangt"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Wie nodig is, wie er staat en wat nog tekortkomt"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Wie het langst geleden heeft gediend, staat bovenaan."
+
+#: 
+msgid "Work Email"
+msgstr "E-mailadres werk"
+
+#: 
+msgid "Yearly"
+msgstr "Jaarlijks"
+
+#: 
+msgid "You"
+msgstr "U"
+
+#: 
+msgid "You are already helping that day"
+msgstr "U helpt die dag al"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "U helpt die dag al als {{what}}. Ook hiervoor aanmelden?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "U mag dit niet wijzigen. Neem contact op met het kerkkantoor."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "U bent momenteel niet aan een familie gekoppeld"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "U maakt nog geen deel uit van een familierecord."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "U staat op de lijst; dank u."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "U kunt dit bekijken of wijzigen in uw vrijwilligersrooster."
+
+#: 
+msgid "You cannot open this page"
+msgstr "U kunt deze pagina niet openen"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "U kunt uzelf niet als uw eigen vervanger voorstellen"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "U kon niet voor dat worden aangemeld."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "U leidt nog geen vrijwilligersteam."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "U hebt een nieuw agenda-adres. Het oude werkt niet meer."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "U bent ingeroosterd om te dienen"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "U bent ingeroosterd om te dienen."
+
+#: 
+msgid "You lead this"
+msgstr "U leidt dit"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "U mag alleen een rooster aanmaken voor een team dat u leidt"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "U staat hiervoor weer op de lijst."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Uw account is niet aan een persoonsrecord gekoppeld. Neem contact op met het kerkkantoor."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Uw agenda-abonnement is opgeslagen."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Uw huidige adres werkt direct niet meer. Iedereen aan wie u het hebt gegeven, heeft het nieuwe nodig."
+
+#: 
+msgid "Your details"
+msgstr "Uw gegevens"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Uw gegevens zijn opgeslagen."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Uw familiegegevens zijn opgeslagen."
+
+#: 
+msgid "Your photo"
+msgstr "Uw foto"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Uw foto is opgeslagen."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Uw rooster kon niet worden geladen."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Uw sessie is verlopen. Meld u opnieuw aan."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Uw verzoek om een vervanger is goedgekeurd"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Uw verzoek om een vervanger is niet goedgekeurd"
+
+#: 
+msgid "already staffed by this team"
+msgstr "al bezet door dit team"
+
+#: 
+msgid "body is required"
+msgstr "body is vereist"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds moet een lijst met agenda-id's zijn"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents moet een van de volgende zijn: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId moet een groeps-id of null zijn"
+
+#: 
+msgid "end offset"
+msgstr "eindverschuiving"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds moet een lijst met activiteit-id's zijn"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "elk bericht is bezorgd of staat nog in de wachtrij"
+
+#: 
+msgid "has not served yet"
+msgstr "heeft nog niet gediend"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId moet een functie-id zijn"
+
+#: 
+msgid "inactive family"
+msgstr "inactieve familie"
+
+#: 
+msgid "line %d"
+msgstr "regel %d"
+
+#: 
+msgid "marked do not email"
+msgstr "gemarkeerd als niet e-mailen"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "berichten konden niet worden bezorgd"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "berichten konden na vijf pogingen niet worden bezorgd"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "berichten wachten om te worden verzonden"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds moet een lijst met bedienings-id's zijn"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "minuten na het einde van de activiteit"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "minuten na het begin van de activiteit"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "minuten vóór het einde van de activiteit"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "minuten vóór het begin van de activiteit"
+
+#: 
+msgid "never"
+msgstr "nooit"
+
+#: 
+msgid "no email address"
+msgstr "geen e-mailadres"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds en familyIds moeten arrays van positieve gehele getallen zijn"
+
+#: 
+msgid "record not found"
+msgstr "record niet gevonden"
+
+#: 
+msgid "same address as another recipient"
+msgstr "zelfde adres als een andere ontvanger"
+
+#: 
+msgid "single event"
+msgstr "enkele activiteit"
+
+#: 
+msgid "start offset"
+msgstr "beginverschuiving"
+
+#: 
+msgid "subject and body are required"
+msgstr "subject en body zijn vereist"
+
+#: 
+msgid "subject is required"
+msgstr "subject is vereist"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject mag maximaal 255 tekens bevatten"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool moet waar of onwaar zijn"
+
+#: 
+msgid "window end"
+msgstr "venstereinde"
+
+#: 
+msgid "window start"
+msgstr "vensterbegin"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} toegevoegd, {{alreadyMembers}} waren hier al vrijwilliger"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} momenten aangemaakt, {{existing}} waren er al"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} heeft {{total}} activiteiten aangemaakt voor {{className}} ({{upcoming}} komend)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} bezetten er ook een aantal van."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} coördineert deze bediening al"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} ingeroosterd"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} dient al als {{position}} op dit moment. U kunt hem of haar nog steeds inroosteren."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} is gekwalificeerd maar zit niet in de vrijwilligerspool van deze bediening. Inroosteren voegt hem of haar alleen aan dit moment toe."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} coördineert deze bediening nu"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: de aantallen moeten tussen 0 en {{max}} liggen."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: het maximum mag niet lager zijn dan het minimum."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} niet meer gekwalificeerd"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} gekwalificeerd"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} vraagt {{substitute}} zijn of haar plaats in te nemen"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} op {{date}} aangemaakt. Nu bezetten?"
+

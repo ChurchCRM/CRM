@@ -172,6 +172,7 @@ require __DIR__ . '/partials/labels-modal.php';
             new window.TomSelect(select, {
                 plugins: ['remove_button'],
                 hideSelected: true,
+                hidePlaceholder: true,
                 placeholder: select.dataset.placeholder
             });
         });
