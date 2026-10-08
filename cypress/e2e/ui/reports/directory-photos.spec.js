@@ -22,28 +22,30 @@ describe("Directory report - photos (#10416)", () => {
             body: JSON.stringify(body),
         });
 
-    const cartDirectory = (layout) =>
+    const directory = (layout, extra = []) =>
         cy.request({
             method: "POST",
             url: "Reports/DirectoryReport.php",
             form: true,
             encoding: "binary",
-            body: {
-                cartdir: "M",
-                "sDirRoleHead[]": "1",
-                "sDirRoleSpouse[]": "2",
-                "sDirRoleChild[]": "3",
-                bDirAddress: "1",
-                bDirFamilyPhone: "1",
-                bDirPersonalPhone: "1",
-                bDirPhoto: "1",
-                sDirLayout: layout,
-                NumCols: "1",
-                PageSize: "letter",
-                FSize: String(fontSize),
-                Submit: "Create Directory",
-            },
+            body: new URLSearchParams([
+                ...extra,
+                ["sDirRoleHead[]", "1"],
+                ["sDirRoleSpouse[]", "2"],
+                ["sDirRoleChild[]", "3"],
+                ["bDirAddress", "1"],
+                ["bDirFamilyPhone", "1"],
+                ["bDirPersonalPhone", "1"],
+                ["bDirPhoto", "1"],
+                ["sDirLayout", layout],
+                ["NumCols", "1"],
+                ["PageSize", "letter"],
+                ["FSize", String(fontSize)],
+                ["Submit", "Create Directory"],
+            ]).toString(),
         });
+
+    const cartDirectory = (layout) => directory(layout, [["cartdir", "M"]]);
 
     const pageCount = (pdf) => Number(/\/Type \/Pages[\s\S]*?\/Count (\d+)/.exec(pdf)[1]);
 
@@ -89,5 +91,14 @@ describe("Directory report - photos (#10416)", () => {
             expect(response.headers["content-type"]).to.include("application/pdf");
             expect(pageCount(response.body)).to.equal(1);
         });
+    });
+    it("keeps every entry above the bottom margin", () => {
+        const bottomMargin = (27 * 72) / 25.4;
+        directory("pages", ["0", "1", "2", "3", "4", "5", "6"].map((id) => ["sDirClassifications[]", id]))
+            .then((response) => pdfDrawing(response.body))
+            .then((drawing) => {
+                const low = drawing.filter((item) => item.text && !item.text.startsWith("Page ") && item.y < bottomMargin);
+                expect(low.map((item) => item.text), "lines below the 27 mm bottom margin").to.deep.equal([]);
+            });
     });
 });
