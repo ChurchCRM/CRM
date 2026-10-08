@@ -10,6 +10,7 @@ use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Volunteer\Middleware\ManageMinistriesRoleAuthMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerAdminAreaRoleAuthMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -22,9 +23,13 @@ use Slim\Routing\RouteCollectorProxy;
  *
  * Two surfaces in one file because they share the rollout gate and nothing else:
  *
- *   /api/ministries/scopes           who coordinates what. Manager-only (design §3.2):
- *                                   granting authority is the one thing a coordinator
- *                                   must not be able to do for themselves.
+ *   /api/ministries/scopes           who coordinates what (design §3.2, §4.6). The
+ *                                   listing and every ministry grant are manager-only:
+ *                                   making a coordinator is the one thing a coordinator
+ *                                   must not be able to do. A team grant — a team
+ *                                   leader — may also come from a coordinator of the
+ *                                   team's ministry, decided per target by
+ *                                   VolunteerAuthorizationService::canGrantScope().
  *   /api/ministries/me/permissions   "what may I manage?". Every authenticated person is
  *                                   potentially a volunteer, so this carries no role gate
  *                                   and derives the acting person from the session — it
@@ -34,13 +39,14 @@ use Slim\Routing\RouteCollectorProxy;
  * RouteCollectorProxy it is chained on, so nothing propagates from the group in
  * ministries-status.php; an ungated group would be reachable in every rollout state.
  *
- * Middleware order is LIFO — the last ->add() runs first — so on the scope group the
- * rollout gate answers before the role gate, and the sanitizer runs last, once the caller
- * is known to be allowed in at all.
+ * Middleware order is LIFO — the last ->add() runs first — so the rollout gate answers
+ * before the role gate, and the sanitizer runs last, once the caller is known to be
+ * allowed in at all.
  */
 $app->group('/ministries', function (RouteCollectorProxy $group): void {
     $group->group('/scopes', function (RouteCollectorProxy $scopes): void {
-        $scopes->get('', 'listVolunteerScopes');
+        $scopes->get('', 'listVolunteerScopes')
+            ->add(ManageMinistriesRoleAuthMiddleware::class);
         $scopes->post('', 'createVolunteerScope')
             ->add(new InputSanitizationMiddleware([
                 'personId' => 'int',
@@ -48,9 +54,11 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
                 // enum() accepts, so an unknown scope type never reaches a query.
                 'scopeType' => 'enum:' . VolunteerScope::TYPE_MINISTRY . ',' . VolunteerScope::TYPE_TEAM,
                 'scopeId' => 'int',
-            ]));
-        $scopes->delete('/{scopeId:[0-9]+}', 'deleteVolunteerScope');
-    })->add(ManageMinistriesRoleAuthMiddleware::class);
+            ]))
+            ->add(VolunteerAdminAreaRoleAuthMiddleware::class);
+        $scopes->delete('/{scopeId:[0-9]+}', 'deleteVolunteerScope')
+            ->add(VolunteerAdminAreaRoleAuthMiddleware::class);
+    });
 
     $group->get('/me/permissions', 'getMyVolunteerPermissions');
 })->add(new VolunteerV2EnabledMiddleware());
@@ -82,6 +90,16 @@ function volunteerScopeToArray(VolunteerScope $scope): array
             ? null
             : (int) $scope->getGrantedByPersonId(),
     ];
+}
+
+/** Revoking answers to the same rule as granting, so both refuse with the same words. */
+function volunteerScopeForbidden(Request $request, Response $response, string $scopeType): Response
+{
+    $message = $scopeType === VolunteerScope::TYPE_TEAM
+        ? gettext('Not authorized for this team')
+        : gettext('Only a volunteer manager can change who coordinates a ministry');
+
+    return SlimUtils::renderErrorJSON($response, $message, [], 403, null, $request);
 }
 
 /**
@@ -134,7 +152,7 @@ function listVolunteerScopes(Request $request, Response $response): Response
  *     )),
  *     @OA\Response(response=400, description="Missing or invalid field"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Ministry management access is required, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="A ministry grant needs ministry management access; a team grant needs that or coordinating the team's ministry. Also when V2 is not enabled"),
  *     @OA\Response(response=404, description="The person or the scope target does not exist"),
  *     @OA\Response(response=200, description="The grant already existed; the same row is returned. joinedPool says whether this call added the person to the ministry's volunteer pool (a grant always makes them a pool member; revoking never removes them)"),
  *     @OA\Response(response=201, description="Granted, and the person is in the ministry's volunteer pool")
@@ -148,10 +166,7 @@ function createVolunteerScope(Request $request, Response $response): Response
     $scopeId = (int) $input['scopeId'];
 
     $authz = new VolunteerAuthorizationService();
-
-    if (!$authz->personExists($personId)) {
-        return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404, null, $request);
-    }
+    $currentUser = AuthenticationManager::getCurrentUser();
 
     // The scope target column is polymorphic and therefore carries no foreign key
     // (§2.15), so this check is the only referential integrity there is.
@@ -163,13 +178,21 @@ function createVolunteerScope(Request $request, Response $response): Response
         return SlimUtils::renderErrorJSON($response, $message, [], 404, null, $request);
     }
 
+    if (!$authz->canGrantScope($currentUser, $scopeType, $scopeId)) {
+        return volunteerScopeForbidden($request, $response, $scopeType);
+    }
+
+    if (!$authz->personExists($personId)) {
+        return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404, null, $request);
+    }
+
     $existing = VolunteerScopeQuery::create()
         ->filterByPersonId($personId)
         ->filterByScopeType($scopeType)
         ->filterByScopeId($scopeId)
         ->findOne();
 
-    $grantedBy = (int) AuthenticationManager::getCurrentUser()->getId();
+    $grantedBy = (int) $currentUser->getId();
 
     try {
         $scope = $authz->grantScope($personId, $scopeType, $scopeId, $grantedBy);
@@ -207,7 +230,7 @@ function createVolunteerScope(Request $request, Response $response): Response
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="scopeId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Ministry management access is required, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="The caller may not grant this scope (the same rule as granting it), or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such grant"),
  *     @OA\Response(response=200, description="Revoked")
  * )
@@ -219,8 +242,14 @@ function deleteVolunteerScope(Request $request, Response $response, array $args)
         return SlimUtils::renderErrorJSON($response, gettext('Scope grant not found'), [], 404, null, $request);
     }
 
+    $authz = new VolunteerAuthorizationService();
+    $scopeType = (string) $scope->getScopeType();
+    if (!$authz->canGrantScope(AuthenticationManager::getCurrentUser(), $scopeType, (int) $scope->getScopeId())) {
+        return volunteerScopeForbidden($request, $response, $scopeType);
+    }
+
     try {
-        (new VolunteerAuthorizationService())->revokeScope($scope);
+        $authz->revokeScope($scope);
     } catch (\Throwable $e) {
         return SlimUtils::renderErrorJSON($response, gettext('Could not revoke the scope'), [], 500, $e, $request);
     }

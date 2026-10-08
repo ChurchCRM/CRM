@@ -11,17 +11,15 @@
  * ministry.ts is already six tabs, and this surface has nothing to do with any of
  * them. `ministry.ts` imports one function and calls it once.
  *
- * **Team leaders are not here.** A leader leads a team, so the grant belongs on
- * the team's own row in the Teams card on Overview — which is where it now is
- * (ministry.ts, "Set Team Leader" / "Remove Team Leader"). This card is
- * ministry-coordinator grants and nothing else: no team-leader table, no team
- * select, no copy about them.
+ * **Team leaders are not here.** A leader leads a team, so the grant belongs to
+ * the team — the Team leader field of the Add/Edit team dialog (ministry.ts),
+ * which a coordinator gets too (§4.6). This card is ministry-coordinator grants
+ * and nothing else: no team-leader table, no team select, no copy about them.
  *
- * **Who sees it.** Granting authority is manager-only — §3.2 is explicit that it
- * is the one thing a coordinator must not be able to do for themselves — so the
- * view renders the markup only for a global manager and `init()` returns early
- * when `window.CRM.volunteerMinistry.isManager` is false. Neither is the
- * decision: the API is, and it is manager-gated by
+ * **Who sees it.** Making a coordinator is manager-only — §3.2 keeps it from a
+ * coordinator — so the view renders the markup only for a global manager and
+ * `init()` returns early when `window.CRM.volunteerMinistry.isManager` is false.
+ * Neither is the decision: the API is, and the listing is manager-gated by
  * `ManageMinistriesRoleAuthMiddleware`. A 403 from the listing hides the whole
  * card rather than showing a broken one, so a stale flag degrades to "not
  * offered" instead of "offered and then refused".
