@@ -18859,3 +18859,4551 @@ msgstr "Rola małżonka"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Kody pocztowe wielkimi literami"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Wybierz co najmniej jedną klasyfikację, która ma być uwzględniona w spisie."
+
+#: 
+msgid "Geocoding services"
+msgstr "Usługi geokodowania"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Usługi geokodowania do wypróbowania, w kolejności wyboru. Nominatim (OpenStreetMap) działa na całym świecie; US Census (US Census Bureau) obejmuje tylko adresy w Stanach Zjednoczonych. Wybierz także US Census, aby go użyć. Jeśli nic nie wybrano, używany jest Nominatim."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Domyślne wartości nowych rekordów"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Ta operacja ustala współrzędne na mapie dla każdej rodziny, której ich brakuje, przy użyciu usług geokodowania wybranych w ustawieniach mapy. Rodziny są przetwarzane w partiach po 50; jedna partia trwa około minuty przy jednej usłudze geokodowania i dłużej przy większej liczbie. Możesz zostawić tę stronę otwartą podczas działania. Kontynuować?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Używane dla nowych rekordów oraz do geokodowania, gdy rekord nie ma kraju."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Skopiuj z danych parafii"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Nie można skopiować adresu parafii."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Nie można dopasować kraju parafii."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Listy klas, listy obecności i albumy ze zdjęciami"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Listy członków wspólnot oraz sprawozdania z klas szkółki niedzielnej"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Twój rok obrachunkowy zaczyna się w %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Wystąpił błąd"
+
+#: 
+msgid "Approve"
+msgstr "Zatwierdź"
+
+#: 
+msgid "Approve selected"
+msgstr "Zatwierdź zaznaczone"
+
+#: 
+msgid "Approved"
+msgstr "Zatwierdzono"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Zmień w ustawieniach osób"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Nie można zatwierdzić zaznaczonych rejestracji"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Nie można zatwierdzić tej rodziny"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Oczekujące rejestracje"
+
+#: 
+msgid "Pending review"
+msgstr "Oczekuje na przegląd"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Rejestracje z publicznego formularza rejestracyjnego oczekujące na przegląd. Wpisy bez adresu e-mail i telefonu są oznaczone — sprawdź dane kontaktowe, zanim się z nimi skontaktujesz."
+
+#: 
+msgid "Review now"
+msgstr "Przejrzyj teraz"
+
+#: 
+msgid "Review self registrations"
+msgstr "Przejrzyj samodzielne rejestracje"
+
+#: 
+msgid "Select month"
+msgstr "Wybierz miesiąc"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Samodzielna rejestracja jest wyłączona"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Samodzielna rejestracja jest włączona"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Publiczny formularz rejestracyjny jest wyłączony. Istniejące rejestracje są wymienione poniżej."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Ta rodzina nie jest oczekującą samodzielną rejestracją"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Ta osoba należy do rodziny — zatwierdź zamiast tego rodzinę"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Ta osoba nie jest oczekującą samodzielną rejestracją"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Ta samodzielnie zarejestrowana rodzina oczekuje na przegląd"
+
+#: 
+msgid "Total registrations"
+msgstr "Wszystkie rejestracje"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Odwiedzający mogą zapisać się w publicznym formularzu rejestracyjnym."
+
+#: 
+msgid "Yesterday"
+msgstr "Wczoraj"
+
+#: 
+msgid "days ago"
+msgstr "dni temu"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "samodzielnych rejestracji czeka na przegląd"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Życzenia urodzinowe są adresowane do osoby, a życzenia rocznicowe do małżonków."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Etykiety adresowe dla osób z tego raportu. Osoba bez własnego adresu jest adresowana na adres swojej rodziny."
+
+#: 
+msgid "One label for each couple."
+msgstr "Jedna etykieta dla każdej pary małżeńskiej."
+
+#: 
+msgid "Print Labels"
+msgstr "Drukuj etykiety"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Ta rola nie należy do ról tej wspólnoty."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "„%s” nie jest rodzajem kalendarza znanym tej stronie."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s nie może pełnić posługi i zaproponował(a) %2$s jako zastępstwo."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s należy już do puli wolontariuszy %2$s i chce pomagać ponownie."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s jest już powiązany(-a) z %2$s w %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s jest w %2$s jako %3$s. Najpierw usuń tę osobę z klasy; przyznanie jej tu kwalifikacji uczyni ją jednym z nauczycieli tej klasy."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s nie jest wydarzeniem %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s pozostaje klasą szkółki niedzielnej, a jej nauczyciele są zarządzani w Posługi → %2$s → %3$s. Najpierw odłącz ją od zespołu."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s chce pomóc w %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s chce pomóc w %2$s i został(a) dodany(-a) do puli wolontariuszy."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: maksimum to %2$d, ale wybrano %3$d domyślnych wolontariuszy. Usuń jednego lub zwiększ maksimum."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d dzień"
+msgstr[1] "%d dni"
+msgstr[2] "%d dni"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "Pominięto %d domyślny przydział z innego powodu (termin się odbył, został odwołany lub jest pełny)"
+msgstr[1] "Pominięto %d domyślne przydziały z innego powodu (termin się odbył, został odwołany lub jest pełny)"
+msgstr[2] "Pominięto %d domyślnych przydziałów z innego powodu (termin się odbył, został odwołany lub jest pełny)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "Pominięto %d domyślny przydział: cofnięto kwalifikację"
+msgstr[1] "Pominięto %d domyślne przydziały: cofnięto kwalifikację"
+msgstr[2] "Pominięto %d domyślnych przydziałów: cofnięto kwalifikację"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "Przydzielono %d domyślnego wolontariusza"
+msgstr[1] "Przydzielono %d domyślnych wolontariuszy"
+msgstr[2] "Przydzielono %d domyślnych wolontariuszy"
+
+#: 
+msgid "%d failed"
+msgstr "Niepowodzeń: %d"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Do tej funkcji nadal potrzeba %d wolontariusza. Otwórz termin, aby uzupełnić lukę."
+msgstr[1] "Do tej funkcji nadal potrzeba %d wolontariuszy. Otwórz termin, aby uzupełnić lukę."
+msgstr[2] "Do tej funkcji nadal potrzeba %d wolontariuszy. Otwórz termin, aby uzupełnić lukę."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d nowy termin"
+msgstr[1] "%d nowe terminy"
+msgstr[2] "%d nowych terminów"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Na nadchodzący termin nadal potrzeba %d wolontariusza."
+msgstr[1] "Na nadchodzący termin nadal potrzeba %d wolontariuszy."
+msgstr[2] "Na nadchodzący termin nadal potrzeba %d wolontariuszy."
+
+#: 
+msgid "%s Calendar"
+msgstr "Kalendarz: %s"
+
+#: 
+msgid "%s Family"
+msgstr "Rodzina %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s nie zapewnia nauczycieli szkółki niedzielnej, więc jej zespoły, harmonogramy i wydarzenia nie mogą korzystać z klasy. Koordynator wolontariuszy może to zmienić w opcji Edytuj posługę."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s e-mail od parafii"
+msgstr[1] "%s e-maile od parafii"
+msgstr[2] "%s e-maili od parafii"
+
+#: 
+msgid "%s family"
+msgstr "rodzina %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s odmówił(a) przyjęcia przydziału wolontariackiego."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s nie ma roli o nazwie Nauczyciel, więc jej nauczycieli nie można zarządzać z poziomu zespołu"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s nie ma nadchodzących spotkań w kalendarzu. Harmonogram obejmuje wydarzenia, które już istnieją: najpierw dodaj spotkania klasy, używając opcji Nowe wydarzenie cykliczne na karcie Kalendarz posługi."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s nadal ma pełnić posługę. Jeśli to niemożliwe, skontaktuj się z koordynatorem."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "Nie wysłano %s (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s osoba w Twoim gospodarstwie domowym"
+msgstr[1] "%s osoby w Twoim gospodarstwie domowym"
+msgstr[2] "%s osób w Twoim gospodarstwie domowym"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s funkcja"
+msgstr[1] "%s funkcje"
+msgstr[2] "%s funkcji"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: ta sama osoba jest wybrana dwukrotnie jako domyślny wolontariusz"
+
+#: 
+msgid "(no subject)"
+msgstr "(brak tematu)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Data urodzenia nie może być w przyszłości."
+
+#: 
+msgid "A calendar event"
+msgstr "Wydarzenie z kalendarza"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "Identyfikator kalendarza musi być liczbą."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Klasa, która już nie istnieje"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Klasy bez spotkań w kalendarzu nie można jeszcze wybrać."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Klasy bez spotkań w kalendarzu nie można jeszcze wybrać. Koordynator posługi dodaje jej spotkania na karcie Kalendarz posługi."
+
+#: 
+msgid "A class's meetings"
+msgstr "Spotkania klasy"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Koordynator może zarządzać wszystkim w tej posłudze, także wprowadzać zmiany, które w przeciwnym razie musiałby wprowadzić koordynator wolontariuszy."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Koordynator posługi może je dodać na karcie Kalendarz posługi."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Koordynator posługi może je dodać na karcie Kalendarz posługi. Następnie wygeneruj ponownie."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Koordynator prowadzi całą posługę — jej zespoły, funkcje, harmonogramy i wszystkie przydziały w niej."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Dzień, którego miesiąc nie ma, przypada na ostatni dzień miesiąca."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Domyślny wolontariusz należy do potrzeb kadrowych harmonogramu, a nie do jednego terminu"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Domyślnego wolontariusza można wybrać tylko dla funkcji, o którą proszą potrzeby kadrowe tego harmonogramu"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Wymagane są daty od i do w formacie RRRR-MM-DD"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Wymagana jest minimalna liczba"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Posługa jest tworzona z własnym kalendarzem, pulą wolontariuszy i pierwszym zespołem, więc tutaj trzeba zdecydować tylko o jej nazwie i działalności."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Nazwa posługi jest wymagana"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Posługa potrzebuje co najmniej jednego zespołu. Zamiast tego zmień jego nazwę."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Posługa o tej nazwie już istnieje"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Własnego kalendarza posługi nie można udostępnić innym posługom"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Funkcja należy do zespołu; wybierz go"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Funkcja to zadanie wykonywane w tym zespole, na przykład Espresso lub Prowadzący śpiew."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Funkcja to rola pełniona w posłudze, na przykład Espresso lub Prowadzący śpiew."
+
+#: 
+msgid "A position is required"
+msgstr "Funkcja jest wymagana"
+
+#: 
+msgid "A position name is required"
+msgstr "Nazwa funkcji jest wymagana"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Funkcji z wykwalifikowanymi wolontariuszami nie można przenieść do zespołu powiązanego z klasą szkółki niedzielnej ani z niego, ponieważ zmieniłoby to, kto uczy klasę. Utwórz funkcję w drugim zespole."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Funkcja o tej nazwie już istnieje w tej posłudze"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Odpowiedź musi być przyjęciem lub odmową"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Harmonogram należy do zespołu; wybierz go"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Nazwa harmonogramu jest wymagana"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Harmonogram określa, które wydarzenia z kalendarza obsługuje zespół: rodzaj nabożeństwa, spotkania klasy lub własne wydarzenia posługi. Dodaj go i wygeneruj jego terminy."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Harmonogram określa, którym wydarzeniom z kalendarza służy ten zespół: rodzaj nabożeństwa, spotkania klasy lub wydarzenia jego posługi. Dodaj go i wygeneruj jego terminy."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Harmonogram obejmujący klasę musi wskazywać klasę"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Harmonogram obejmujący rodzaj wydarzenia musi wskazywać rodzaj wydarzenia"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Harmonogram obsługujący jedno wydarzenie nie może obejmować innych wydarzeń; usuń go i dodaj zamiast tego harmonogram"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "Jedna lista możliwości służby, takich jak „Opieka nad dziećmi” czy „Witanie wiernych”, prowadzona w Osoby → Administracja. Każda osoba jest oznaczana możliwościami, w których chce pomagać, na karcie Wolontariat jej rekordu. Na tym zapis się kończy: nie ma zespołów, harmonogramów, przydziałów na daty ani e-maili z przypomnieniami. Znaczniki są wykorzystywane w raportach i w rekordzie osoby."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Najlepiej sprawdza się kwadratowe zdjęcie Twojej twarzy."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Potrzeba kadrowa wymienia swoich domyślnych wolontariuszy w „defaults”: [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Wymaganie kadrowe należy dokładnie do jednego z dwóch: harmonogramu albo terminu"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Dla tego przydziału zaproponowano już zastępstwo"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Lider zespołu może zarządzać własnym zespołem — jego funkcjami, harmonogramami i tym, kto w nich służy — i niczym więcej w posłudze."
+
+#: 
+msgid "A team name is required"
+msgstr "Nazwa zespołu jest wymagana"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Zespół o tej nazwie już istnieje w tej posłudze"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Motyw to folder przesyłany przez Twoją parafię do Include/themes/ na serwerze. Domyślny motyw systemowy jest dołączony do ChurchCRM."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Ustawienie przejściowe. Zarówno dawne strony Możliwości wolontariatu, jak i nowe strony Posług są dostępne, a rekord osoby pokazuje obie karty Wolontariat, wyraźnie oznaczone. Używaj go podczas przenoszenia parafii z V1 na V2, a potem przełącz tylko na V2."
+
+#: 
+msgid "A volunteer"
+msgstr "Wolontariusz"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Wolontariusz odmówił przydziału"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Wolontariusz zaproponował zastępstwo"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Koordynator wolontariuszy może prowadzić tę posługę bez nadania uprawnień. Dodaj koordynatora, aby ktoś inny mógł ją prowadzić, bez dawania mu dostępu do wszystkich pozostałych posług."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Data ślubu nie może być w przyszłości."
+
+#: 
+msgid "Accepted"
+msgstr "Przyjęto"
+
+#: 
+msgid "Account deleted"
+msgstr "Konto usunięte"
+
+#: 
+msgid "Account unlocked"
+msgstr "Konto odblokowane"
+
+#: 
+msgid "Accounts"
+msgstr "Konta"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Wartość Aktywne musi być prawdą lub fałszem"
+
+#: 
+msgid "Active now"
+msgstr "Aktywny teraz"
+
+#: 
+msgid "Add All"
+msgstr "Dodaj wszystkich"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Dodaj wszystkich z zestawu Wybrane"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Dodaj wolontariusza"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Dodaj wolontariuszy do zestawu Wybrane"
+
+#: 
+msgid "Add a family member"
+msgstr "Dodaj członka rodziny"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Najpierw dodaj funkcję, a potem wróć i określ, ilu osób do niej potrzeba."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Dodaj drugi krok logowania, aby samo hasło nie wystarczało do uzyskania dostępu do Twojego konta."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Dodaj do tego zespołu co najmniej jedną funkcję, a następnie zaznacz, kto może gdzie służyć."
+
+#: 
+msgid "Add coordinator"
+msgstr "Dodaj koordynatora"
+
+#: 
+msgid "Add from Cart"
+msgstr "Dodaj z zestawu Wybrane"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Najpierw dodaj jej spotkania, używając opcji Nowe wydarzenie cykliczne na karcie Kalendarz"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Przed dodaniem osób jako wolontariuszy dodaj je do zestawu Wybrane"
+
+#: 
+msgid "Add position"
+msgstr "Dodaj funkcję"
+
+#: 
+msgid "Add schedule"
+msgstr "Dodaj harmonogram"
+
+#: 
+msgid "Add team"
+msgstr "Dodaj zespół"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Dodaj je na karcie Kalendarz, a następnie wygeneruj ponownie."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Dodaj je na karcie Kalendarz."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Dodaj ten adres do swojej aplikacji kalendarza. Aktualizuje się automatycznie, gdy zmieni się kalendarz parafii."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Dodawaj tu wydarzenia tej posługi: dzień pracy, klasę spotykającą się w każdą niedzielę. Trafiają do kalendarza parafii i można je obsadzić od razu przy tworzeniu."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Dodane przez Portal wspólnoty i oczekujące na przegląd: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Dodano — teraz zaznacz funkcje, w których może służyć"
+
+#: 
+msgid "Address Line 2"
+msgstr "Adres, linia 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Konsola administratora"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Wymagane uprawnienie administratora"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Ogłoś tę funkcję na stronie Otwarte możliwości Portalu wspólnoty."
+
+#: 
+msgid "All Teams"
+msgstr "Wszystkie zespoły"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Zezwól członkom na zmianę własnych dat urodzenia i dat urodzenia członków ich rodziny."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Przypięte także do: {{calendars}}, co może zmienić tylko osoba z uprawnieniem Dodawanie wydarzeń."
+
+#: 
+msgid "An event title is required"
+msgstr "Tytuł wydarzenia jest wymagany"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Wymagany jest rodzaj wydarzenia lub posługa"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Rodzaj wydarzenia, który już nie istnieje"
+
+#: 
+msgid "Another ministry"
+msgstr "Inna posługa"
+
+#: 
+msgid "Any event"
+msgstr "Dowolne wydarzenie"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Wszystko, co powinien wiedzieć Twój koordynator"
+
+#: 
+msgid "Approve substitution"
+msgstr "Zatwierdź zastępstwo"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Zatwierdź tego zastępcę"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Poproś koordynatora wolontariuszy o utworzenie posługi i ustanowienie Ciebie jej koordynatorem."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Poproś kogoś o zastępstwo"
+
+#: 
+msgid "Ask them"
+msgstr "Poproś ich"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Wysłano prośbę — Twój koordynator ją potwierdzi."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Przydziel wolontariusza"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Przydzielono poza obecnym planem"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Przydział anulowany"
+
+#: 
+msgid "Assignment not found"
+msgstr "Nie znaleziono przydziału"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Wymagany jest co najmniej jeden personId lub familyId"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Dla jednej funkcji można wybrać co najwyżej %d domyślnych wolontariuszy"
+
+#: 
+msgid "Author"
+msgstr "Autor"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Uprawnienia są nadawane osobie, a nie loginowi, więc można je nadać, zanim osoba będzie miała login. Osoba, której login służy wyłącznie do samoobsługi, nadal widzi tylko własny harmonogram, dopóki administrator nie rozszerzy jej konta."
+
+#: 
+msgid "Automatic"
+msgstr "Automatycznie"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Oczekuje na odpowiedź"
+
+#: 
+msgid "Back to Email History"
+msgstr "Wróć do historii e-maili"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Wróć do panelu posługi"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Wróć do terminów"
+
+#: 
+msgid "Back to Person"
+msgstr "Wróć do osoby"
+
+#: 
+msgid "Back to editing"
+msgstr "Wróć do edycji"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Wróć do mojego harmonogramu"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Wróć do Portalu wspólnoty"
+
+#: 
+msgid "Back to your profile"
+msgstr "Wróć do swojego profilu"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Zadania w tle i dostarczanie"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Zadania w tle ostatnio uruchomiono"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Zadania w tle uruchomiono"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Życzenia urodzinowe"
+
+#: 
+msgid "Both"
+msgstr "Oba"
+
+#: 
+msgid "Both (transition)"
+msgstr "Oba (przejściowo)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Oba — V1 i V2 obok siebie (przejściowo)"
+
+#: 
+msgid "Calendar address"
+msgstr "Adres kalendarza"
+
+#: 
+msgid "Calendar saved"
+msgstr "Kalendarz zapisany"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Kalendarze pokazywane członkom w Portalu wspólnoty, wybierane w Administracja -> Portal wspólnoty -> Kalendarze."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Czy ta posługa może zapewniać nauczycieli szkółki niedzielnej?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Anuluj przydział"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Anuluj ten przydział"
+
+#: 
+msgid "Cancelled"
+msgstr "Anulowano"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Zmień hasło, którym się logujesz, lub dodaj drugi krok, aby samo hasło nie wystarczało."
+
+#: 
+msgid "Change your password"
+msgstr "Zmień hasło"
+
+#: 
+msgid "Checked in"
+msgstr "Zameldowany"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Zameldowano: %1$d z %2$d na liście klasy"
+
+#: 
+msgid "Checked out"
+msgstr "Wymeldowany"
+
+#: 
+msgid "Choose a class"
+msgstr "Wybierz klasę"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Wybierz dzień miesiąca od 1 do 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Wybierz nowe zdjęcie"
+
+#: 
+msgid "Choose a person"
+msgstr "Wybierz osobę"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Wybierz wolontariusza"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Najpierw wybierz wolontariusza"
+
+#: 
+msgid "Choose an event"
+msgstr "Wybierz wydarzenie..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Wybierz rodzaj wydarzenia"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Wybierz istniejący rodzaj wydarzenia"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Wybierz co najmniej jeden kalendarz do subskrypcji."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Wybierz kalendarze, które chcesz mieć we własnej aplikacji kalendarza."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Wybierz datę każdego roku jako MM-DD"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Wybierz datę wydarzenia"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Wybierz dzień tygodnia"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Wybierz wydarzenie, którym zajmuje się ten harmonogram"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Wybierz wydarzenie do obsadzenia"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Wybierz wydarzenia do usunięcia"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Wybierz wydarzenia do obsadzenia"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Wybierz pierwszą i ostatnią datę"
+
+#: 
+msgid "Choose the first date"
+msgstr "Wybierz pierwszą datę"
+
+#: 
+msgid "Choose the last date"
+msgstr "Wybierz ostatnią datę"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Wybierz funkcję %1$s, do której kwalifikują się nauczyciele klasy %2$s. Nauczyciele: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Wybierz zespół, w którym ta funkcja służy"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Wybierz motyw widoczny dla członków, włącz lub wyłącz sekcje portalu i sprawdź, kto korzysta z portalu."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Wybierz cotygodniowo, comiesięcznie lub corocznie"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Wybierz, skąd pochodzą daty harmonogramu"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Wybierz, z jakiego modelu wolontariatu korzysta ta parafia, z jakim wyprzedzeniem wypełniane są harmonogramy, kiedy wysyłane są przypomnienia, i sprawdź, czy zadania w tle działają."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Wybierz, kto domyślnie obsadza każdą funkcję. Wybór jest zapisywany w harmonogramie: osoby te są przydzielane do każdego terminu utworzonego teraz oraz do tych, które codzienne uzupełnianie utworzy później, dopóki mają kwalifikacje, i są proszone o odpowiedź, chyba że ustawisz je jako przyjęte. Zostaw funkcję otwartą, aby przydzielać ją tydzień po tygodniu."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Wybierz, kto Cię zastępuje."
+
+#: 
+msgid "Church Calendar"
+msgstr "Kalendarz parafii"
+
+#: 
+msgid "Church Calendars"
+msgstr "Kalendarze parafii"
+
+#: 
+msgid "Church calendar"
+msgstr "Kalendarz parafii"
+
+#: 
+msgid "Church events of a type"
+msgstr "Wydarzenia parafialne danego rodzaju"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Wydarzenia parafialne danego rodzaju są dodawane do kalendarza parafii. Sprawdź rodzaj wydarzenia, tytuł i daty harmonogramu."
+
+#: 
+msgid "Church website"
+msgstr "Strona internetowa parafii"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM oferuje dwa sposoby zarządzania wolontariuszami. Tylko jeden ma być używany naraz; ustawienie po lewej decyduje, który widzi ta parafia. Przełączenie ukrywa lub pokazuje strony i pozycje menu — nigdy nie usuwa danych, więc można wrócić."
+
+#: 
+msgid "Close event details"
+msgstr "Zamknij szczegóły wydarzenia"
+
+#: 
+msgid "Colour"
+msgstr "Kolor"
+
+#: 
+msgid "Completed"
+msgstr "Zakończono"
+
+#: 
+msgid "Compose Message"
+msgstr "Napisz wiadomość"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Potwierdź dane swojej rodziny"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Koordynator usunięty"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Skopiuj ten adres i dodaj go w aplikacji kalendarza jako nową subskrypcję kalendarza."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Nie można zbudować podglądu."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Nie można policzyć wydarzeń klasy"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Nie można nadać zakresu uprawnień"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Nie można wczytać klas szkółki niedzielnej"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Nie można wczytać panelu"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Nie można wczytać wyborów wydarzeń"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Nie można wczytać terminów"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Nie można wczytać harmonogramów"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Nie można wczytać nadchodzących wydarzeń"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Nie można wczytać wolontariuszy"
+
+#: 
+msgid "Could not load this email."
+msgstr "Nie można wczytać tego e-maila."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Nie można wczytać tej posługi"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Nie można wczytać wydarzeń tej posługi"
+
+#: 
+msgid "Could not load this team"
+msgstr "Nie można wczytać tego zespołu"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Nie można cofnąć zakresu uprawnień"
+
+#: 
+msgid "Create"
+msgstr "Utwórz"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Utwórz harmonogram i wygeneruj jego terminy, a tygodnie do obsadzenia pojawią się tutaj."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Utwórz harmonogram i wygeneruj jego terminy, a tygodnie do obsadzenia pojawią się tutaj."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Utwórz dla tego zespołu co najmniej jedną funkcję, a następnie zaznacz, kto może gdzie służyć."
+
+#: 
+msgid "Create ministry"
+msgstr "Utwórz posługę"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Utworzenie posługi wymaga uprawnień koordynatora wolontariuszy"
+
+#: 
+msgid "Date and time"
+msgstr "Data i godzina"
+
+#: 
+msgid "Date each year"
+msgstr "Data każdego roku"
+
+#: 
+msgid "Dates"
+msgstr "Daty"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Daty muszą mieć format RRRR-MM-DD"
+
+#: 
+msgid "Day of the month"
+msgstr "Dzień miesiąca"
+
+#: 
+msgid "Day of the week"
+msgstr "Dzień tygodnia"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Dezaktywuj posługę"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Dezaktywuj harmonogram"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Zdezaktywuj tę posługę przed jej usunięciem."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Zdezaktywować {{name}}? Zostanie przeniesiona do Nieaktywnych posług na pasku bocznym, gdzie można ją ponownie aktywować lub usunąć. Nic nie zostanie usunięte."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Zdezaktywować {{name}}? Nie będą dla niej tworzone nowe terminy, ani przez Generuj, ani przez codzienne uzupełnianie. Istniejące terminy i przydziały pozostają, a posługę można ponownie aktywować."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Nieaktywne posługi"
+
+#: 
+msgid "Declined"
+msgstr "Odrzucono"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Domyślny rodzaj wydarzenia dla wydarzeń posługi"
+
+#: 
+msgid "Default volunteers"
+msgstr "Domyślni wolontariusze"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Domyślni wolontariusze są wysyłani jako wymagania: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Usuń wydarzenia"
+
+#: 
+msgid "Delete ministry"
+msgstr "Usuń posługę"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Usuń terminy"
+
+#: 
+msgid "Delete position"
+msgstr "Usuń funkcję"
+
+#: 
+msgid "Delete schedule"
+msgstr "Usuń harmonogram"
+
+#: 
+msgid "Delete team"
+msgstr "Usuń zespół"
+
+#: 
+msgid "Delete those events"
+msgstr "Usuń te wydarzenia"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Usunąć {{name}} wraz ze wszystkim, co zawiera? Zostaną usunięte jego funkcje, kwalifikacje, potrzeby kadrowe, harmonogramy, terminy i przydziały — łącznie z zapisami dawnej służby — oraz uprawnienia lidera zespołu. Aby zachować historię, zamiast tego zdezaktywuj zespół. Tej operacji nie można cofnąć."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Usunąć {{name}} wraz ze wszystkim, co zawiera? Zostaną usunięte jej zespoły, funkcje, harmonogramy, terminy ({{occurrences}}) i przydziały ({{assignments}}) — łącznie z zapisami dawnej służby — a także uprawnienia koordynatora i liderów zespołów, grupa puli wolontariuszy oraz kalendarz. Tej operacji nie można cofnąć."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Usunąć {{name}}? Zostaną z nią usunięte jej kwalifikacje, potrzeby kadrowe i przydziały — łącznie z zapisami dawnej służby. Aby zachować historię, zamiast tego zdezaktywuj funkcję. Tej operacji nie można cofnąć."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Usunąć {{name}}? Tej operacji nie można cofnąć."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Usunięcie posługi wymaga uprawnień koordynatora wolontariuszy"
+
+#: 
+msgid "Developer mode"
+msgstr "Tryb dewelopera"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Gotowe — wróciłeś(-aś) do listy."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Odrzucić własne potrzeby kadrowe tego terminu i ponownie podążać za harmonogramem?"
+
+#: 
+msgid "Due soon"
+msgstr "Wkrótce termin"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Każdy kalendarz musi być podany jako typ i identyfikator."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Każdy domyślny wolontariusz musi wskazywać osobę"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Każda potrzeba kadrowa musi wskazywać funkcję"
+
+#: 
+msgid "Edit event"
+msgstr "Edytuj wydarzenie"
+
+#: 
+msgid "Edit ministry"
+msgstr "Edytuj posługę"
+
+#: 
+msgid "Edit position"
+msgstr "Edytuj funkcję"
+
+#: 
+msgid "Edit schedule"
+msgstr "Edytuj harmonogram"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Edytuj potrzeby kadrowe"
+
+#: 
+msgid "Edit team"
+msgstr "Edytuj zespół"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Edytuj harmonogram i wybierz inną klasę."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Edytuj harmonogram i wybierz inny rodzaj wydarzenia."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Edytuj harmonogram i wybierz wydarzenie, którym się zajmuje."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Edytuj harmonogram i przesuń jego ostatnią datę, aby objął więcej wydarzeń."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Edytowane przez Portal wspólnoty: %s"
+
+#: 
+msgid "Email %s"
+msgstr "Napisz e-mail do: %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "Napisz e-mail do rodziny %s"
+
+#: 
+msgid "Email History"
+msgstr "Historia e-maili"
+
+#: 
+msgid "Email content"
+msgstr "Treść e-maila"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Napisz e-mail do nieobecnych: %s"
+
+#: 
+msgid "Email not found"
+msgstr "Nie znaleziono e-maila"
+
+#: 
+msgid "Email preview"
+msgstr "Podgląd e-maila"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "Wysyłanie e-maili jest wyłączone"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "Wysyłanie e-maili nie jest włączone. Przed wysłaniem skonfiguruj ustawienia SMTP i włącz e-maile."
+
+#: 
+msgid "Emails"
+msgstr "E-maile"
+
+#: 
+msgid "End time"
+msgstr "Godzina zakończenia"
+
+#: 
+msgid "Enter counts"
+msgstr "Wpisz liczby"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Wpisz temat e-maila…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Wpisz swoje obecne hasło, a potem dwukrotnie nowe hasło."
+
+#: 
+msgid "Enter your message…"
+msgstr "Wpisz swoją wiadomość…"
+
+#: 
+msgid "Event staffed"
+msgstr "Wydarzenie obsadzone"
+
+#: 
+msgid "Event title"
+msgstr "Tytuł Wydarzenia"
+
+#: 
+msgid "Event type"
+msgstr "Rodzaj Wydarzenia"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Każdy e-mail wysłany przez ChurchCRM, od najnowszego. Otwórz osobę, aby zobaczyć jej pełną historię."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Każda funkcja w tym okresie ma potrzebne osoby."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Wszyscy odpowiedzieli"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Wszyscy z zestawu Wybrane dołączą do wolontariuszy tej posługi. Potem zaznacz ich funkcje."
+
+#: 
+msgid "Everything is correct"
+msgstr "Wszystko się zgadza"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Nie udało się zbudować podglądu"
+
+#: 
+msgid "Failed to load email"
+msgstr "Nie udało się wczytać e-maila"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Nie udało się wczytać historii e-maili"
+
+#: 
+msgid "Failed to send email"
+msgstr "Nie udało się wysłać e-maila"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "Nie udało się wysłać e-maila. Spróbuj ponownie lub użyj opcji „Otwórz w programie pocztowym”."
+
+#: 
+msgid "Family Member"
+msgstr "Członek rodziny"
+
+#: 
+msgid "Family verification"
+msgstr "Weryfikacja rodziny"
+
+#: 
+msgid "File"
+msgstr "Plik"
+
+#: 
+msgid "Fill"
+msgstr "Obsadź"
+
+#: 
+msgid "Fill by default with"
+msgstr "Domyślnie obsadź osobą"
+
+#: 
+msgid "Fill this gap"
+msgstr "Uzupełnij tę lukę"
+
+#: 
+msgid "Filled"
+msgstr "Obsadzono"
+
+#: 
+msgid "Find a sub"
+msgstr "Znajdź zastępcę"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Znajdź wolontariusza"
+
+#: 
+msgid "Find an event"
+msgstr "Znajdź wydarzenie"
+
+#: 
+msgid "Find something to do"
+msgstr "Znajdź coś do zrobienia"
+
+#: 
+msgid "Find something to help with"
+msgstr "Znajdź coś, w czym możesz pomóc"
+
+#: 
+msgid "Findings"
+msgstr "Ustalenia"
+
+#: 
+msgid "First date"
+msgstr "Pierwsza data"
+
+#: 
+msgid "Folder"
+msgstr "Folder"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Nazwa folderu motywu Portalu wspólnoty z Include/themes/. „default” to motyw systemowy dołączony do ChurchCRM."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Wygeneruj ponownie bliżej pierwszej daty."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Generuj terminy"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Uzyskać nowy adres kalendarza?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Nadaj posłudze nazwę"
+
+#: 
+msgid "Give the position a name"
+msgstr "Nadaj funkcji nazwę"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Podaj godziny rozpoczęcia i zakończenia w formacie GG:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "Nadaj zespołowi nazwę"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Przejdź do mojego wolontariatu"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Przejdź do ustawień Portalu wspólnoty"
+
+#: 
+msgid "Going"
+msgstr "Idę"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Nadaj kwalifikację na stronie posługi, a potem przydziel tutaj."
+
+#: 
+msgid "Granted"
+msgstr "Nadano"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Zobacz, jakie dane parafia ma zapisane o Twoim gospodarstwie domowym, i powiedz nam, czy nadal są aktualne."
+
+#: 
+msgid "Headcount"
+msgstr "Liczba obecnych"
+
+#: 
+msgid "Hello %s"
+msgstr "Witaj, %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Szukamy pomocy"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Nie udało się zapisać prośby o pomoc"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Z jakim wyprzedzeniem tworzone są terminy dla wydarzeń, którymi zajmuje się każdy harmonogram. Codzienne zadanie w tle utrzymuje każdy harmonogram wypełniony do tego momentu."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Ile godzin przed terminem wolontariatu wysyłany jest e-mail z przypomnieniem. Ustaw 0, aby w ogóle nie wysyłać przypomnień. Dostarczanie zależy od działania zadań w tle; zalecaną konfigurację crona znajdziesz w dokumentacji wolontariatu."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Ile godzin przed terminem wysyłany jest e-mail z przypomnieniem. Ustaw 0, aby w ogóle nie wysyłać przypomnień."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Ile osób potrzeba do każdej funkcji przy każdym uruchomieniu. Jedną datę można później zmienić osobno. Domyślny wolontariusz jest przydzielany do każdego nowego terminu, dopóki ma kwalifikacje; zmiana nigdy nie zmienia już istniejących terminów."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Ilu wolontariuszy potrzeba na każdy termin tego harmonogramu. Odznacz funkcję, której ten harmonogram nigdy nie używa. Domyślny wolontariusz jest przydzielany do każdego nowego terminu, dopóki ma kwalifikacje; zmiana nigdy nie zmienia już istniejących terminów."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Ilu wolontariuszy potrzeba na to wydarzenie. Odznacz funkcję, której nie używa."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Z jakim wyprzedzeniem, od 1 do 52 tygodni, tworzone są terminy wolontariatu dla wydarzeń, którymi zajmuje się każdy harmonogram. Codzienne zadanie w tle utrzymuje każdy harmonogram wypełniony do tego momentu."
+
+#: 
+msgid "How often"
+msgstr "Jak często"
+
+#: 
+msgid "How to correct this"
+msgstr "Jak to poprawić"
+
+#: 
+msgid "I can't"
+msgstr "Nie mogę"
+
+#: 
+msgid "I'd like to help"
+msgstr "Chciał(a)bym pomóc"
+
+#: 
+msgid "I'll be there"
+msgstr "Będę"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Jeśli wiadomości nie są wysyłane, poproś administratora o sprawdzenie ustawień posług."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Jeśli nie możesz już przyjść, odrzuć przydział w swoim harmonogramie wolontariatu tak szybko, jak to możliwe, aby można było obsadzić funkcję."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Jeśli ten adres został udostępniony przez pomyłkę, uzyskaj nowy. Stary adres przestanie działać natychmiast."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "W ciągu ostatnich 15 minut"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "W puli wolontariuszy"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Wewnętrzne: ostatnia data, do której uzupełniono harmonogramy wolontariuszy w ramach horyzontu planowania (RRRR-MM-DD). Nie edytuj ręcznie."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Wewnętrzne: kiedy harmonogramy wolontariuszy ostatnio uzupełniono i ile terminów to utworzyło. Nie edytuj ręcznie."
+
+#: 
+msgid "Is this still right?"
+msgstr "Czy to nadal się zgadza?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Jego terminy zostaną utworzone bez funkcji do obsadzenia. Edytuj harmonogram, aby dodać jego potrzeby kadrowe."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Zostaw ich w {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Rodzaj"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Ostatnie 24 godziny"
+
+#: 
+msgid "Last 30 days"
+msgstr "Ostatnie 30 dni"
+
+#: 
+msgid "Last 7 days"
+msgstr "Ostatnie 7 dni"
+
+#: 
+msgid "Last attempt"
+msgstr "Ostatnia próba"
+
+#: 
+msgid "Last check"
+msgstr "Ostatnie sprawdzenie"
+
+#: 
+msgid "Last date"
+msgstr "Ostatnia data"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Ostatnio widziany(-a) w portalu"
+
+#: 
+msgid "Last sign-in"
+msgstr "Ostatnie logowanie"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Zostaw oba na 0, aby służyć dokładnie wtedy, gdy odbywa się wydarzenie. Przesunięcie wydarzenia przesuwa też wolontariuszy."
+
+#: 
+msgid "Leave open"
+msgstr "Zostaw otwarte"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Pozwól członkom zmieniać własne daty urodzenia i daty urodzenia członków ich rodziny w Portalu wspólnoty."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Pozwól członkom edytować daty urodzenia"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Daj parafii znać, czy wszystko powyżej nadal się zgadza."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Powiedz im dlaczego (opcjonalnie)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Pozwala koordynatorom tej posługi planować wolontariuszy do tego wydarzenia — i edytować samo wydarzenie."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Wczytywanie kalendarza…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Zarządzaj posługami"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Zarządzaj moimi posługami"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Dostęp do zarządzania moimi posługami, z posługą lub zespołem do zarządzania"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Wymagany jest dostęp do zarządzania moimi posługami, z posługą lub zespołem do zarządzania"
+
+#: 
+msgid "Manage staffing"
+msgstr "Zarządzaj obsadą"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Zarządzane z posługi %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Zarządzane z posługi {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Maks."
+
+#: 
+msgid "Member Portal"
+msgstr "Portal wspólnoty"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Członkowie widzą stronę „tymczasowo niedostępna”, dopóki nie zostanie to naprawione. Te same szczegóły zapisano w dzienniku aplikacji i w dzienniku błędów serwera WWW."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Członkowie widzą tylko kalendarze włączone tutaj. Urodziny i rocznice pokazują tylko imiona i inicjały nazwisk."
+
+#: 
+msgid "Message"
+msgstr "Wiadomość"
+
+#: 
+msgid "Min"
+msgstr "Min."
+
+#: 
+msgid "Ministries"
+msgstr "Posługi"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Posługi poszukujące pomocy"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Posługi, które mogą dodawać wydarzenia"
+
+#: 
+msgid "Ministry"
+msgstr "Posługa"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Kalendarze posług"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Koordynatorzy posług"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Panel posługi"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Ustawienia posług"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Kalendarz posługi"
+
+#: 
+msgid "Ministry created"
+msgstr "Posługa utworzona"
+
+#: 
+msgid "Ministry management access"
+msgstr "Dostęp do zarządzania posługami"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Wymagany jest dostęp do zarządzania posługami"
+
+#: 
+msgid "Ministry name"
+msgstr "Nazwa posługi"
+
+#: 
+msgid "Ministry not found"
+msgstr "Nie znaleziono posługi"
+
+#: 
+msgid "My Family"
+msgstr "Moja rodzina"
+
+#: 
+msgid "My Teams"
+msgstr "Moje zespoły"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Moje posługi i zespoły"
+
+#: 
+msgid "My schedule"
+msgstr "Mój harmonogram"
+
+#: 
+msgid "My volunteering"
+msgstr "Mój wolontariat"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Nazwij tę funkcję na stronie, na której członkowie szukają, w czym mogą pomóc."
+
+#: 
+msgid "Needs an answer"
+msgstr "Wymaga odpowiedzi"
+
+#: 
+msgid "Needs filling"
+msgstr "Wymaga obsadzenia"
+
+#: 
+msgid "Never signed in"
+msgstr "Nigdy się nie logował(a)"
+
+#: 
+msgid "New account"
+msgstr "Nowe konto"
+
+#: 
+msgid "New event"
+msgstr "Nowe wydarzenie"
+
+#: 
+msgid "New ministry"
+msgstr "Nowa posługa"
+
+#: 
+msgid "New record notification"
+msgstr "Powiadomienie o nowym rekordzie"
+
+#: 
+msgid "New recurring event"
+msgstr "Nowe wydarzenie cykliczne"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Potrzebni nowi wolontariusze do następujących funkcji"
+
+#: 
+msgid "Newest first"
+msgstr "Od najnowszych"
+
+#: 
+msgid "Next on %s"
+msgstr "Następne w %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Żaden kalendarz nie został jeszcze udostępniony członkom."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Żaden kalendarz nie jest otwarty dla tej posługi, więc wydarzenia nie pojawią się w żadnym kalendarzu."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Żaden kalendarz nie jest udostępniony członkom."
+
+#: 
+msgid "No class"
+msgstr "Bez klasy"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Brak zapisanych danych kontaktowych."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Brak koordynatorów"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Żadna data między pierwszą a ostatnią nie pasuje do powtarzania"
+
+#: 
+msgid "No email was sent."
+msgstr "Nie wysłano żadnego e-maila."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Do tego rekordu nie wysłano jeszcze żadnych e-maili."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Nie zapisano jeszcze liczby obecnych"
+
+#: 
+msgid "No longer needed"
+msgstr "Już niepotrzebne"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Żaden członek nie logował się jeszcze do Portalu wspólnoty."
+
+#: 
+msgid "No ministry"
+msgstr "Bez posługi"
+
+#: 
+msgid "No past events"
+msgstr "Brak minionych wydarzeń"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Dla tej osoby nie przesłano zdjęcia."
+
+#: 
+msgid "No photo was sent."
+msgstr "Nie przesłano zdjęcia."
+
+#: 
+msgid "No positions yet"
+msgstr "Brak funkcji"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Brak kwalifikacji."
+
+#: 
+msgid "No schedules yet"
+msgstr "Brak harmonogramów"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Nie ustawiono potrzeb kadrowych"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Brak potrzeb kadrowych: wygenerowane terminy nie będą wymagać nikogo."
+
+#: 
+msgid "No substitution requests"
+msgstr "Brak próśb o zastępstwo"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Brak zastępstw do rozstrzygnięcia"
+
+#: 
+msgid "No teams yet"
+msgstr "Brak zespołów"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "W kalendarzu nie ma nadchodzących wydarzeń %1$s o tytule „%2$s”. Harmonogram obejmuje wydarzenia, które już istnieją."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Żadne nadchodzące wydarzenie nie pasuje"
+
+#: 
+msgid "No upcoming events"
+msgstr "Brak nadchodzących wydarzeń"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "W kalendarzu nie ma nadchodzących wydarzeń tego rodzaju."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Brak nadchodzących wydarzeń do wyboru"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Nikt jeszcze nie został przydzielony"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Nikt inny nie jest jeszcze do tego przeszkolony — powiedz o tym swojemu koordynatorowi."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Nikt nie podał, ilu wolontariuszy potrzeba do każdej funkcji, więc nie ma czego obsadzać."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Nikt w tym okresie nie jest już niezdecydowany."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Nikt nie ma jeszcze kwalifikacji do tej funkcji"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Nikt nie ma jeszcze kwalifikacji do tej funkcji, więc pozostaje otwarta."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Żadnemu z adresatów nie można wysłać e-maila"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Brak: rodzaj wydarzenia wybiera się dla każdego wydarzenia"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Brak uprawnień do wyświetlenia tego e-maila"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Brak uprawnień do wyświetlenia tej rodziny"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Brak uprawnień do wyświetlenia tej osoby"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Brak uprawnień do tego przydziału"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Brak uprawnień do tej posługi"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Brak uprawnień do tego terminu"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Brak uprawnień do tej funkcji"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Brak uprawnień do tej kwalifikacji"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Brak uprawnień do tego wymagania"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Brak uprawnień do tego harmonogramu"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Brak uprawnień do tej prośby o zastępstwo"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Brak uprawnień do tego zespołu"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Brak uprawnień do przypisywania wydarzeń do tej posługi wolontariackiej"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Brak uprawnień do zmiany wydarzenia %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Brak uprawnień do zmiany posługi wolontariackiej tego wydarzenia"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Brak uprawnień do utworzenia wydarzenia bez posługi wolontariackiej, którą zarządzasz"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Brak uprawnień do zmiany tego wydarzenia"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Brak uprawnień do przypinania wydarzeń do kalendarza „%s”"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Brak uprawnień do usuwania wydarzeń z kalendarza „%s”"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Brak uprawnień do usunięcia posługi wolontariackiej z tego wydarzenia"
+
+#: 
+msgid "Not checked in"
+msgstr "Nie zameldowano"
+
+#: 
+msgid "Not found"
+msgstr "Nie znaleziono"
+
+#: 
+msgid "Not in the pool"
+msgstr "Poza pulą"
+
+#: 
+msgid "Not now"
+msgstr "Nie teraz"
+
+#: 
+msgid "Not sent"
+msgstr "Nie wysłano"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Nie ustawiono: użyj „%s”"
+
+#: 
+msgid "Not staffed"
+msgstr "Nieobsadzone"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Jeszcze nie jest wolontariuszem"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Nic się nie zmieniło, więc nic nie zapisano."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "W kalendarzu nie ma nic w tym okresie."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "W kalendarzu nic teraz nie ma."
+
+#: 
+msgid "Nothing is short"
+msgstr "Niczego nie brakuje"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Na Twojej liście jeszcze nic nie ma"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Na Twojej liście jeszcze nic nie ma. Zobacz, co wymaga obsadzenia."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Teraz nic nie jest otwarte"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Jeszcze nic nie zaplanowano"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Nic nie zaplanowano."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Jeszcze nic nie skonfigurowano"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "W ostatnim roku nic, co należy do tej posługi, się nie wydarzyło."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Nie ma jeszcze czego kwalifikować"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Nic nie zapisano. Sprawdź wyróżnione pola."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Nic nie zapisano. Spróbuj ponownie."
+
+#: 
+msgid "Notification"
+msgstr "Powiadomienie"
+
+#: 
+msgid "Notifications"
+msgstr "Powiadomienia"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Nie znaleziono terminu"
+
+#: 
+msgid "Occurrences"
+msgstr "Terminy"
+
+#: 
+msgid "Offer to help"
+msgstr "Zaproponuj pomoc"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Raz dziennie każdy aktywny harmonogram otrzymuje terminy dla wydarzeń, którymi się zajmuje, do %d tygodnia naprzód, a domyślny wolontariusz każdej funkcji jest przydzielany do nowych, dopóki ma kwalifikacje."
+msgstr[1] "Raz dziennie każdy aktywny harmonogram otrzymuje terminy dla wydarzeń, którymi się zajmuje, do %d tygodni naprzód, a domyślny wolontariusz każdej funkcji jest przydzielany do nowych, dopóki ma kwalifikacje."
+msgstr[2] "Raz dziennie każdy aktywny harmonogram otrzymuje terminy dla wydarzeń, którymi się zajmuje, do %d tygodni naprzód, a domyślny wolontariusz każdej funkcji jest przydzielany do nowych, dopóki ma kwalifikacje."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Gdy ta osoba uzyska kwalifikacje do funkcji, pojawi się tutaj wraz z datami, w których ma służyć."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Jeden termin jest tworzony dla każdego wydarzenia z kalendarza, którego Powiązaną grupą jest ta klasa."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Jeden termin jest tworzony dla każdej daty tego wydarzenia. Można wybierać tylko wydarzenia już znajdujące się w kalendarzu."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Jeden z kalendarzy nie istnieje"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Jedno z wydarzeń nie istnieje"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Jeden z tych kalendarzy nie jest udostępniony członkom."
+
+#: 
+msgid "One-time"
+msgstr "Jednorazowo"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Do zespołu można powiązać tylko klasę szkółki niedzielnej"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Tylko koordynator może zapisać odpowiedź w czyimś imieniu"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Tylko koordynator tej posługi może tworzyć jej wydarzenia"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Tylko koordynator tej posługi może obsadzać jej wydarzenia"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Tylko koordynator wolontariuszy może to zmienić."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Tylko koordynator wolontariuszy może zmienić, czy posługa zapewnia nauczycieli szkółki niedzielnej"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Te dane może zmienić tylko dorosła osoba z Twojej rodziny. Skontaktuj się z biurem parafialnym."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Wymienione są tylko osoby przeszkolone do tego."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Zastępcę może zaproponować tylko przydzielony wolontariusz"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Wymienione są tylko kalendarze, do których ta posługa może dodawać wydarzenia. Jej własny kalendarz jest na początku zaznaczony."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Pokazano tylko początek bardzo długiej listy. Zawęź okres, aby zobaczyć resztę."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Zastępstwo może wycofać tylko wolontariusz, który je zaproponował"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Otwórz posługę z menu Posługi, utwórz harmonogram i wygeneruj jego daty, a tygodnie do obsadzenia pojawią się tutaj."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Otwórz posługę, aby ustanowić kogoś jej koordynatorem albo liderem jednego z jej zespołów."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Otwórz w aplikacji kalendarza"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Nie można wczytać otwartych możliwości."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Otwórz adresatów w lokalnym programie pocztowym"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Otwórz Portal wspólnoty"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Otwórz panel posługi"
+
+#: 
+msgid "Open the ministry"
+msgstr "Otwórz posługę"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Otwórz termin"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Otwórz termin, aby przydzielić potrzebne osoby."
+
+#: 
+msgid "Open this team"
+msgstr "Otwórz ten zespół"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Otwarcie kalendarza dla posług wymaga uprawnienia Dodawanie wydarzeń"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Opcjonalnie. Każdy z kwalifikacjami do funkcji tego zespołu zostaje nauczycielem klasy, a strona klasy przestaje zmieniać jej nauczycieli."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Opcjonalnie. Klasa staje się Powiązaną grupą: jej lista decyduje, kto się melduje, a harmonogram klasy znajduje te wydarzenia."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Powyżej maksimum: usuń tę osobę lub zwiększ maksimum."
+
+#: 
+msgid "Overridden templates"
+msgstr "Nadpisane szablony"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Strona %1$s z %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Strona %d z %d"
+
+#: 
+msgid "Password reset"
+msgstr "Resetowanie hasła"
+
+#: 
+msgid "Password reset link"
+msgstr "Link do resetowania hasła"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Hasło musi mieć co najmniej %s znak."
+msgstr[1] "Hasło musi mieć co najmniej %s znaki."
+msgstr[2] "Hasło musi mieć co najmniej %s znaków."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Wybierz nadchodzące wydarzenie z kalendarza i podaj, kogo potrzebuje. Wydarzenie zachowuje własną datę i godzinę; aby obsadzić całą serię, dodaj zamiast tego harmonogram."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Wybierz kogoś, kto już zgodził się Cię zastąpić. Twój koordynator to potwierdzi."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Wybierz kalendarze z listy."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Wybierz, czy Twoje dane wymagają zmiany."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Skontaktuj się z biurem parafialnym, abyśmy mogli poprawić nasze zapisy."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Skontaktuj się z biurem parafialnym."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Wpisz co najmniej dwa znaki."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Daj nam znać, czy możesz przyjść, przyjmując lub odrzucając przydział w swoim harmonogramie wolontariatu."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Napisz, co wymaga zmiany."
+
+#: 
+msgid "Portal settings"
+msgstr "Ustawienia portalu"
+
+#: 
+msgid "Portal theme"
+msgstr "Motyw portalu"
+
+#: 
+msgid "Position"
+msgstr "Funkcja"
+
+#: 
+msgid "Position added"
+msgstr "Funkcję dodano"
+
+#: 
+msgid "Position deleted"
+msgstr "Funkcję usunięto"
+
+#: 
+msgid "Position name"
+msgstr "Nazwa funkcji"
+
+#: 
+msgid "Position not found"
+msgstr "Nie znaleziono funkcji"
+
+#: 
+msgid "Position saved"
+msgstr "Funkcję zapisano"
+
+#: 
+msgid "Positions"
+msgstr "Funkcje"
+
+#: 
+msgid "Positions still short"
+msgstr "Funkcje nadal nieobsadzone"
+
+#: 
+msgid "Proposed"
+msgstr "Zaproponowano"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Zaproponowany zastępca"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Umieść tę posługę na stronie Otwarte możliwości Portalu wspólnoty, gdzie każdy wolontariusz może ją zobaczyć i zaproponować pomoc. Dołączy do puli wolontariuszy, a Ty dostaniesz e-mail."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Wstawić zamiast tego {{name}}? Pierwotny wolontariusz zachowuje swoją historię i zostaje powiadomiony."
+
+#: 
+msgid "Qualification not found"
+msgstr "Nie znaleziono kwalifikacji"
+
+#: 
+msgid "Qualified for"
+msgstr "Kwalifikacje do"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Wykwalifikowani wolontariusze mogą sami zapisywać się na otwarte terminy tej funkcji. Wyłącz dla funkcji, które powinien przydzielać tylko lider zespołu lub koordynator; Portal wspólnoty nie będzie ich oferować."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Nadaj obecnym nauczycielom kwalifikacje do"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Nadaj im kwalifikacje do funkcji"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Nadaj im kwalifikacje do funkcji."
+
+#: 
+msgid "Reactivate"
+msgstr "Aktywuj ponownie"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Przeczytaj poradnik tworzenia motywów"
+
+#: 
+msgid "Recent Emails"
+msgstr "Ostatnie e-maile"
+
+#: 
+msgid "Recent Sends"
+msgstr "Ostatnie wysyłki"
+
+#: 
+msgid "Recipient"
+msgstr "Adresat"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Liczba adresatów (%d) przekracza maksimum dozwolone na jedną wysyłkę (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Adresaci muszą być podani jako personId i familyId, a nie jako adresy e-mail"
+
+#: 
+msgid "Record a decline"
+msgstr "Zapisz odmowę"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Zapisz przyjęcie"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Zapisać, że {{name}} odmówił(a)? Odpowiedź zostanie zapisana jako pochodząca od Ciebie, a miejsce znów będzie wolne."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Zapisać, że {{name}} się zgodził(a)? Odpowiedź zostanie zapisana jako pochodząca od Ciebie, a nie od tej osoby."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Zapisz: przyjął(-ęła)"
+
+#: 
+msgid "Record: they declined"
+msgstr "Zapisz: odmówił(a)"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Rekrutuj wolontariuszy"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Rekrutuj wolontariuszy musi być prawdą lub fałszem"
+
+#: 
+msgid "Recruiting"
+msgstr "Rekrutacja"
+
+#: 
+msgid "Recurring"
+msgstr "Cyklicznie"
+
+#: 
+msgid "Reject"
+msgstr "Odrzuć"
+
+#: 
+msgid "Reject substitution"
+msgstr "Odrzuć zastępstwo"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Odrzuć tego zastępcę"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Wyprzedzenie przypomnienia (godziny)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Przypomnienie: masz zaplanowaną służbę"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Przypomnienia i alerty są dostarczane tylko wtedy, gdy działają zadania w tle. Aby dostarczać je na czas, uruchamiaj program wykonujący zaplanowane zadania z crona co 15 minut"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Usuń wolontariusza"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Usuń koordynatora"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Usuń z nich klasę"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Usuń lidera zespołu"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Usunąć {{name}} z {{ministry}}? Usunie to wszystkie jej kwalifikacje tutaj, zdejmie ją ze wszystkich przyszłych terminów, wyczyści ją jako domyślnego wolontariusza w harmonogramach tej posługi i usunie z puli wolontariuszy."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Usunięto. Kwalifikacje: {{qualifications}}, nadchodzące przydziały: {{assignments}}, domyślne w harmonogramach: {{defaults}}."
+
+#: 
+msgid "Repeats"
+msgstr "Powtarza się"
+
+#: 
+msgid "Requirement not found"
+msgstr "Nie znaleziono wymagania"
+
+#: 
+msgid "Reset link"
+msgstr "Zresetuj link"
+
+#: 
+msgid "Response recorded"
+msgstr "Odpowiedź zapisana"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Przejrzyj prośbę w panelu wolontariatu i zatwierdź ją lub odrzuć."
+
+#: 
+msgid "Review this request"
+msgstr "Przejrzyj tę prośbę"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Uruchom zadania w tle teraz"
+
+#: 
+msgid "SMTP test"
+msgstr "Test SMTP"
+
+#: 
+msgid "Save calendars"
+msgstr "Zapisz kalendarze"
+
+#: 
+msgid "Save changes"
+msgstr "Zapisz Zmiany"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Zapisano — ta posługa nie prosi już o pomoc"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Zapisano — ta posługa prosi teraz o pomoc"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Zapisano. Członkowie widzą kalendarze włączone powyżej."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Harmonogram „{{name}}” utworzony."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Harmonogram „{{name}}” utworzony. Jest nieaktywny, więc nie tworzy terminów, dopóki nie zostanie aktywowany."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Harmonogram zdezaktywowany"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Harmonogram usunięty"
+
+#: 
+msgid "Schedule name"
+msgstr "Nazwa harmonogramu"
+
+#: 
+msgid "Schedule not found"
+msgstr "Nie znaleziono harmonogramu"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Harmonogram aktywowany ponownie"
+
+#: 
+msgid "Schedule saved"
+msgstr "Harmonogram zapisany"
+
+#: 
+msgid "Scheduled"
+msgstr "Zaplanowano"
+
+#: 
+msgid "Schedules"
+msgstr "Harmonogramy"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Harmonogramy ostatnio uzupełniono"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Harmonogramy nie mają już własnego powtarzania ani godzin; każdy termin podąża za wydarzeniem z kalendarza. Usuń: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Harmonogramy nie określają już, z jakim wyprzedzeniem są generowane: horyzont planowania w Administracja → Ustawienia posług dotyczy każdego harmonogramu. Usuń: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Horyzont planowania (tygodnie)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Nie znaleziono nadania zakresu uprawnień"
+
+#: 
+msgid "Search by name"
+msgstr "Szukaj według nazwy"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Zobacz cały kalendarz"
+
+#: 
+msgid "See what needs filling"
+msgstr "Zobacz, co wymaga obsadzenia"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Wybierz kalendarz, aby ukryć lub pokazać jego wydarzenia."
+
+#: 
+msgid "Select ministries..."
+msgstr "Wybierz posługi..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Samodzielny zapis"
+
+#: 
+msgid "Self-assignable"
+msgstr "Do samodzielnego przydziału"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Do samodzielnego przydziału musi być prawdą lub fałszem"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Konta samoobsługowe"
+
+#: 
+msgid "Send"
+msgstr "Wyślij"
+
+#: 
+msgid "Send Email"
+msgstr "Wyślij e-mail"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Wyślij e-mail z ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Wyślij wiadomość o przydziale ponownie"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Wyślij kalendarze do pokazania jako listę."
+
+#: 
+msgid "Send to the church office"
+msgstr "Wyślij do biura parafialnego"
+
+#: 
+msgid "Send your answer"
+msgstr "Wyślij odpowiedź"
+
+#: 
+msgid "Sent"
+msgstr "Wysłano"
+
+#: 
+msgid "Sent by"
+msgstr "Wysłał(a)"
+
+#: 
+msgid "Serving next"
+msgstr "Następna służba"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Ustaw jako przyjęte"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Ustaw potrzeby kadrowe"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Pokaż „%s” w Portalu wspólnoty"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Pokaż w Portalu wspólnoty"
+
+#: 
+msgid "Show past events"
+msgstr "Pokaż minione wydarzenia"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Pokaż kalendarz parafii"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Pokaż kalendarz parafii w Portalu wspólnoty."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Pokaż sekcję kalendarza parafii w Portalu wspólnoty."
+
+#: 
+msgid "Show the next"
+msgstr "Pokaż następne"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Pokaż sekcje wolontariatu i zespołów w Portalu wspólnoty."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Pokaż tę posługę na stronie Otwarte możliwości"
+
+#: 
+msgid "Show volunteering"
+msgstr "Pokaż wolontariat"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Pokaż strony wolontariatu i zespołów w Portalu wspólnoty."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Pokaż, co już zrobiłem(-am)"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Wyświetlane dokładnie tak, jak wpisano. Podziały wierszy są zachowane."
+
+#: 
+msgid "Sign up"
+msgstr "Zapisz się"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Logowanie i bezpieczeństwo"
+
+#: 
+msgid "Signed in"
+msgstr "Zalogowano"
+
+#: 
+msgid "Signed up"
+msgstr "Zapisano"
+
+#: 
+msgid "Sincerely"
+msgstr "Z poważaniem"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Nie udało się zapisać niektórych Twoich danych. Sprawdź wyróżnione pola."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Nie udało się zapisać niektórych danych Twojej rodziny. Sprawdź wyróżnione pola."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Ktoś inny zastępuje"
+
+#: 
+msgid "Something needs changing"
+msgstr "Coś wymaga zmiany"
+
+#: 
+msgid "Something went wrong"
+msgstr "Coś poszło nie tak"
+
+#: 
+msgid "Staff an event"
+msgstr "Obsadź wydarzenie"
+
+#: 
+msgid "Staff them"
+msgstr "Obsadź je"
+
+#: 
+msgid "Staff this event"
+msgstr "Obsadź to wydarzenie"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Obsadź ten termin"
+
+#: 
+msgid "Staffed"
+msgstr "Obsadzone"
+
+#: 
+msgid "Staffing"
+msgstr "Obsada"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Obsadę ustawia się po utworzeniu wydarzeń"
+
+#: 
+msgid "Staffing needs"
+msgstr "Potrzeby kadrowe"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Potrzeby kadrowe zapisane"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Zacznij od utworzenia posługi, a potem dodaj zespoły i funkcje, które w niej służą."
+
+#: 
+msgid "Start time"
+msgstr "Czas rozpoczęcia"
+
+#: 
+msgid "Start typing a name"
+msgstr "Zacznij wpisywać nazwę"
+
+#: 
+msgid "Statistics"
+msgstr "Statystyki"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Zakończyć koordynowanie {{ministry}} przez {{name}}? Jej login i jej własne przydziały pozostają nienaruszone."
+
+#: 
+msgid "Subscribe"
+msgstr "Subskrybuj"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Subskrybuj kalendarz"
+
+#: 
+msgid "Substitute"
+msgstr "Zastępca"
+
+#: 
+msgid "Substitute approved"
+msgstr "Zastępca zatwierdzony"
+
+#: 
+msgid "Substitute asked"
+msgstr "Poproszono zastępcę"
+
+#: 
+msgid "Substitute decision"
+msgstr "Decyzja o zastępstwie"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Zaproponowano zastępcę"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Zastępca odrzucony"
+
+#: 
+msgid "Substituted"
+msgstr "Zastąpiono"
+
+#: 
+msgid "Substitution approved"
+msgstr "Zastępstwo zatwierdzone"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Zastępstwo odrzucone"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Nie znaleziono prośby o zastępstwo"
+
+#: 
+msgid "Substitution requests"
+msgstr "Prośby o zastępstwo"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Klasa szkółki niedzielnej"
+
+#: 
+msgid "System calendar"
+msgstr "Kalendarz systemowy"
+
+#: 
+msgid "System default"
+msgstr "Domyślne ustawienie systemu"
+
+#: 
+msgid "Take that back"
+msgstr "Cofnij to"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Zdjąć {{name}} z tej funkcji? E-mail nie zostanie wysłany; w jej harmonogramie data pojawi się jako już niepotrzebna, a miejsce znów będzie wolne."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Nauczyciele tej klasy są zarządzani w Posługi → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Zespół"
+
+#: 
+msgid "Team Leader"
+msgstr "Lider zespołu"
+
+#: 
+msgid "Team added"
+msgstr "Zespół dodany"
+
+#: 
+msgid "Team deleted"
+msgstr "Zespół usunięty"
+
+#: 
+msgid "Team leader"
+msgstr "Lider zespołu"
+
+#: 
+msgid "Team name"
+msgstr "Nazwa zespołu"
+
+#: 
+msgid "Team not found"
+msgstr "Nie znaleziono zespołu"
+
+#: 
+msgid "Team saved"
+msgstr "Zespół zapisany"
+
+#: 
+msgid "Teams"
+msgstr "Zespoły"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Zespoły to grupy osób, które służą w tej posłudze."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Zespoły, funkcje i osoby, które je obsadzają"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Dziesięć ostatnich logowań"
+
+#: 
+msgid "Thank you"
+msgstr "Dziękujemy!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Dziękujemy za zapisanie się do służby"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Dziękujemy za zapisanie się do służby. Jesteś w harmonogramie."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Dziękujemy. Biuro parafialne ma Twoją odpowiedź."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Dziękujemy. Biuro parafialne sprawdzi to, zanim zostanie dodane."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Dziękujemy za informację."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Dziękujemy — koordynator został poinformowany, że chcesz znów pomóc."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Dziękujemy — koordynator został poinformowany, że chcesz pomóc."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Dziękujemy — jesteś na liście."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Folder tego motywu Portalu wspólnoty nie istnieje."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Ten przydział należy do kogoś innego"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Nie udało się zapisać tego przydziału"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Ta data urodzenia nie jest prawidłową datą."
+
+#: 
+msgid "That could not be saved."
+msgstr "Nie udało się tego zapisać."
+
+#: 
+msgid "That could not be sent."
+msgstr "Nie udało się tego wysłać."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Nie udało się dodać tego członka rodziny. Sprawdź wyróżnione pola."
+
+#: 
+msgid "That is not a valid date."
+msgstr "To nie jest prawidłowa data."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Nie udało się wczytać tej listy."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Ta osoba już pełni tę funkcję w tym terminie"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Ta osoba jest już przydzielona do tej funkcji w tym terminie"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Ta osoba nie należy do puli wolontariuszy tej posługi. Wyślij ponownie z opcją pominięcia puli, aby mimo to ją przydzielić."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Ta osoba nie należy do tej puli wolontariuszy"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Ta osoba nie ma kwalifikacji do tej funkcji"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Nie udało się zapisać tego zdjęcia."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "To zdjęcie jest za duże. Wybierz mniejsze."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Ta funkcja należy do innej posługi"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Ta funkcja należy do innego zespołu"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Ta funkcja jest już w pełni obsadzona"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Ta funkcja nie jest obsadzana w tym terminie"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Nie udało się zapisać tej odpowiedzi"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Tego statusu nie można ustawić bezpośrednio"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Nie udało się rozstrzygnąć tej prośby o zastępstwo"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Ten zespół należy do innej posługi"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Nie udało się aktywować tego motywu."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Nie udało się sprawdzić tego motywu."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Ten motyw zawiera błędy, więc nie został aktywowany."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Nie udało się przydzielić tego wolontariusza"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Ta data ślubu nie jest prawidłową datą."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "Pole %s musi być datą w formacie RRRR-MM-DD"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "Pole %s musi być całkowitą liczbą minut"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "Pole %s musi mieścić się w granicach %d minut od wydarzenia"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Kalendarze Portalu wspólnoty zostały zapisane."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Portal wspólnoty nie mógł wykonać tego, o co prosisz. Spróbuj ponownie za kilka minut."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Portal wspólnoty jest dostępny tylko dla zalogowanej osoby, a nie dla klientów API."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Portal wspólnoty ma ustawiony motyw „%s”, którego nie ma już na serwerze. Członkowie widzą stronę błędu, dopóki nie wybierzesz istniejącego motywu."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Portal wspólnoty jest tymczasowo niedostępny"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Nie udało się aktywować motywu „%s” Portalu wspólnoty, ponieważ zawiera błędy."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Nie udało się wyświetlić motywu Portalu wspólnoty"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Nie znaleziono folderu motywu „%s” Portalu wspólnoty."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Motyw Portalu wspólnoty został zmieniony."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Roli Nauczyciel w %1$s nie można zmienić ani usunąć, dopóki jej nauczyciele są zarządzani w Posługi → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Brakuje folderu aktywnego motywu"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Adres jest zaznaczony — skopiuj go klawiaturą."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Ścieżka zasobu „%s” jest niedozwolona."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Nie udało się anulować przydziału"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Wiadomość o przydziale zostanie wysłana ponownie"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Adres kalendarza został skopiowany."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Nie udało się wczytać kalendarzy. Spróbuj ponownie."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Nie udało się zapisać kalendarzy."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Nie udało się dodać zestawu Wybrane"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Parafia nie wysłała Ci jeszcze żadnego e-maila."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Biuro parafialne zostało powiadomione. Spróbuj ponownie później."
+
+#: 
+msgid "The class does not exist"
+msgstr "Klasa nie istnieje"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Klasa, za którą podąża ten harmonogram, już nie istnieje."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Treść tego e-maila nie jest przechowywana. ChurchCRM zachowuje tylko tekst wiadomości napisanych w edytorze e-maili oraz e-maili do wolontariuszy."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Treść tego e-maila nie została zachowana."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Nie udało się dodać koordynatora"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Nie udało się wczytać listy koordynatorów"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Data i godzina każdego terminu pochodzą z jego wydarzenia w kalendarzu, więc przesunięcie wydarzenia przesuwa harmonogram."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Parametr days musi być liczbą całkowitą od 1 do 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Domyślny wolontariusz musi być osobą"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Domyślni wolontariusze są zapisywani w harmonogramie i trafiają do terminów tworzonych od teraz."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Domyślni wolontariusze muszą być listą"
+
+#: 
+msgid "The description is too long"
+msgstr "Opis jest za długi"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Koniec zakresu jest przed jego początkiem."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Koniec zakresu nie jest datą."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Nie udało się obsadzić wydarzenia"
+
+#: 
+msgid "The event does not exist"
+msgstr "Wydarzenie nie istnieje"
+
+#: 
+msgid "The event is inactive"
+msgstr "Wydarzenie jest nieaktywne"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Wydarzenie musi kończyć się po rozpoczęciu"
+
+#: 
+msgid "The event title"
+msgstr "Tytuł wydarzenia"
+
+#: 
+msgid "The event title is too long"
+msgstr "Tytuł wydarzenia jest za długi"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Rodzaj wydarzenia, od którego zaczynają się nowe wydarzenia posługi. Gdy pusty lub gdy rodzaj usunięto, używany jest rodzaj „Inne”, jeśli istnieje."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Rodzaj wydarzenia nie istnieje"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Rodzaj wydarzenia, za którym podąża ten harmonogram, już nie istnieje."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Wydarzenia można przenieść tylko do klasy, z którą zespół jest powiązany"
+
+#: 
+msgid "The events could not be created"
+msgstr "Nie udało się utworzyć wydarzeń"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Nie udało się usunąć wydarzeń"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Nie udało się obsadzić wydarzeń"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Nie udało się usunąć uprawnienia"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Ostatnia data jest przed pierwszą datą"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Nie udało się wczytać listy uprawnionych wolontariuszy"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Maksymalna liczba nie może być mniejsza od minimalnej"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Nie udało się umieścić wiadomości w kolejce"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Minimalna liczba nie może być ujemna"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Nie udało się utworzyć posługi"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Nie udało się zdezaktywować posługi"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Nie udało się usunąć posługi"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Nie udało się ponownie aktywować posługi"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Nie udało się zapisać posługi"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Nie udało się usunąć terminu"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Termin nie ma harmonogramu"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Nie udało się wygenerować terminów"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Pierwotny wolontariusz zostaje zwolniony, a zastępca zajmuje funkcję. Obaj zostają powiadomieni."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Pierwotny wolontariusz zachowuje funkcję. Obaj zostają powiadomieni."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Strona, o którą prosisz, nie istnieje. Mogła zostać przeniesiona lub usunięta."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Funkcja należy do innej posługi"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Nie udało się usunąć funkcji"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Nie udało się zapisać funkcji"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Funkcja nadal jest obsadzona, więc żadne działanie nie jest potrzebne, chyba że chcesz zmienić grafik."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Nie udało się usunąć kwalifikacji"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Nie udało się zapisać kwalifikacji"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Nie udało się wczytać wykwalifikowanych wolontariuszy"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Powtarzanie musi określać, jak wydarzenia się powtarzają"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Prośba, aby %1$s służył(a) zamiast %2$s, została zatwierdzona."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Prośba, aby %1$s służył(a) zamiast %2$s, nie została zatwierdzona."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Ta sama funkcja jest wymieniona dwa razy w potrzebach kadrowych"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Nie udało się zdezaktywować harmonogramu"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Nie udało się usunąć harmonogramu"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Nie udało się ponownie aktywować harmonogramu"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Nie udało się zapisać harmonogramu"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Harmonogram został zaktualizowany, więc nie ma nic więcej do zrobienia."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Okno harmonogramu kończy się przed jego początkiem"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Nie udało się wczytać potrzeb kadrowych harmonogramu"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Nie udało się wczytać potrzeb kadrowych"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Nie udało się zresetować potrzeb kadrowych"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Nie udało się zapisać potrzeb kadrowych"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Potrzeby kadrowe muszą być listą"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Nie udało się wczytać planu obsady"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Początek zakresu nie jest datą."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Nie udało się rozstrzygnąć zastępstwa"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Nie udało się wczytać próśb o zastępstwo"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Nauczycieli można zaimportować tylko do funkcji tego zespołu"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Nauczyciele klasy %1$s są zarządzani w Posługi → %2$s → %3$s. Uczniów nadal można tu zmieniać."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Nie udało się usunąć zespołu"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Nie udało się zapisać zespołu"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Zespół nie należy do tej posługi"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Nie znaleziono folderu motywu."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Rodzaj, od którego zaczyna się nowe wydarzenie na karcie Kalendarz posługi. Można go nadal zmienić dla każdego wydarzenia, na przykład dla klasy, która potrzebuje kategorii liczby obecnych."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Nie udało się zapisać przydziału wolontariusza"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Pula wolontariuszy posługi %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Nie udało się zapisać zmiany konfiguracji wolontariatu"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Okno kończy się przed swoim początkiem"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Ich koordynatorzy mogą przypinać wydarzenia swojej posługi do tego kalendarza bez uprawnienia Dodawanie wydarzeń."
+
+#: 
+msgid "Theme"
+msgstr "Motyw"
+
+#: 
+msgid "Themes"
+msgstr "Motywy"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Motywy są dostarczane przez Twoją parafię, a nie przez ChurchCRM, i nie są weryfikowane przez projekt ChurchCRM."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Nie ma kalendarza parafii o identyfikatorze %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Nie ma kalendarza systemowego o identyfikatorze %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "To dane, które parafia ma o Tobie zapisane. Zmiany są zapisywane od razu."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "To zespoły wolontariuszy, którymi się opiekujesz. Otwórz jeden, aby ustawić jego funkcje, wskazać, kto może gdzie służyć, i obsadzić nadchodzące tygodnie."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Te wydarzenia nie tworzą jednej serii: różnią się tytułem, rodzajem lub klasą"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Te posługi chciałyby mieć więcej osób. Daj im znać, że jesteś zainteresowany(-a), a ktoś się z Tobą skontaktuje."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Te potrzeby pochodzą z harmonogramu. Zapis tutaj zmienia tylko ten termin."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Te liczby dotyczą tylko kont samoobsługowych: osób, których login daje dostęp do Portalu wspólnoty i do niczego więcej."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Te osoby nadal są przydzielone, ale funkcja, którą pełnią, nie należy już do planu obsady tej daty."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Te osoby nadal są przydzielone, ale funkcja, którą pełnią, nie należy już do planu obsady tego terminu."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Te zaplanowane funkcje nadal potrzebują kogoś."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Te zespoły posługi %1$s są powiązane z klasą szkółki niedzielnej: %2$s. Najpierw je odłącz."
+
+#: 
+msgid "They could not be added"
+msgstr "Nie udało się ich dodać"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Nie udało się ich usunąć z tej posługi"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Kończą się %d minutę po zakończeniu wydarzenia."
+msgstr[1] "Kończą się %d minuty po zakończeniu wydarzenia."
+msgstr[2] "Kończą się %d minut po zakończeniu wydarzenia."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Kończą się %d minutę przed zakończeniem wydarzenia."
+msgstr[1] "Kończą się %d minuty przed zakończeniem wydarzenia."
+msgstr[2] "Kończą się %d minut przed zakończeniem wydarzenia."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Już byli tu wolontariuszami"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Ten przydział to %1$s i nie można go zmienić na %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Ten przydział nie jest już aktywny"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Tego e-maila nie ma w Twojej historii."
+
+#: 
+msgid "This event has already happened"
+msgstr "To wydarzenie już się odbyło"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "To trafia do biura parafialnego do sprawdzenia. Dopóki pracownik tego nie zatwierdzi, nowy członek rodziny jest tu pokazany jako oczekujący na przegląd."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Ta grupa jest pulą posługi wolontariackiej i jest usuwana wraz z posługą"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Ta grupa jest pulą wolontariuszy posługi %s i jest zarządzana z tej posługi."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Ta grupa jest pulą wolontariuszy posługi %s. Jest zarządzana z tej posługi."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Ta instalacja nie ma jeszcze kalendarzy."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "To przypomnienie, że wkrótce masz służbę."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "To nie jest prawidłowa nazwa folderu motywu."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "To nie jest jeden z terminów Twojego zespołu."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "To nie jest jeden z Twoich zespołów."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Tu parafia wysyła pocztę i dzwoni w sprawie Waszego gospodarstwa domowego."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "To Twoje konto parafialne. Znajdziesz tu wszystko, co możesz zrobić dla siebie i swojej rodziny."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Ta posługa nie ma nadchodzących wydarzeń w kalendarzu."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Ta posługa nie ma nadchodzących wydarzeń o tytule „%s”. Harmonogram obejmuje wydarzenia, które już istnieją: najpierw dodaj je na karcie Kalendarz posługi."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Ta posługa nie ma grupy puli wolontariuszy"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Ta posługa nie prosi teraz o pomoc"
+
+#: 
+msgid "This ministry's events"
+msgstr "Wydarzenia tej posługi"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Wydarzenia tej posługi (jeszcze nie wybrano wydarzenia)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Ten termin znów podąża za swoim harmonogramem"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Ten termin już się odbył"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Ten termin już się odbył i jego przydziałów nie można już zmieniać"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Ten termin został odwołany"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Ten termin ma własne potrzeby kadrowe, odrębne od jego harmonogramu."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Ta strona nie jest częścią Twojego konta. Jeśli uważasz, że powinna być, zapytaj biuro parafialne."
+
+#: 
+msgid "This page was not found"
+msgstr "Nie znaleziono tej strony"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Ta część Portalu wspólnoty jest przeznaczona dla liderów zespołów wolontariuszy."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Tę funkcję przydziela lider zespołu lub koordynator, nie można się na nią zapisać samodzielnie"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Nie można usunąć tego harmonogramu: %d przydziałów wolontariuszy nadal odwołuje się do jego terminów."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Ten harmonogram nie ma jeszcze potrzeb kadrowych"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Ten harmonogram jest nieaktywny. Aktywuj go ponownie, aby wygenerować jego terminy."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "O tej prośbie o zastępstwo już rozstrzygnięto"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Ten zespół nie ma jeszcze funkcji"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Ten zespół już obsadza to wydarzenie"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Ten szablon wymaga pliku „%s”, którego motyw nie zawiera."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Tego motywu nie można aktywować"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Ten motyw nie ma problemów."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Ta wersja ChurchCRM nie używa szablonu pod tą ścieżką, więc nadpisanie nigdy nie jest wyświetlane."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Zaznacz je na karcie Wolontariusze tego zespołu, a potem przydziel tutaj."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Zaznaczenia zapisują się od razu."
+
+#: 
+msgid "Times come from this event"
+msgstr "Godziny pochodzą z tego wydarzenia"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Uzupełnia każdy harmonogram, wysyła wszystko, co czeka w kolejce, i zamyka zakończone terminy, nie czekając na następne zaplanowane uruchomienie."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Odrzucić {{name}}? Pierwotny wolontariusz pozostaje i zostaje powiadomiony."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Wyłącz pamięć podręczną szablonów Portalu wspólnoty i wypisuj nazwę każdego szablonu w komentarzu HTML. Dla projektantów motywów; w zwykłym użyciu zostaw wyłączone."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Włącz to dla posługi, której zespoły uczą klasy szkółki niedzielnej. Jej zespoły można wtedy powiązać z klasą, a jej harmonogramy i wydarzenia mogą jej używać."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Wyłącza pamięć podręczną szablonów portalu i wypisuje nazwę każdego szablonu w komentarzu HTML. Dla projektantów motywów; w zwykłym użyciu zostaw wyłączone."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Uwierzytelnianie dwuskładnikowe"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Nieobsadzone funkcje"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Nieznany błąd dostarczenia"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Nieznany status terminu"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Nieznany tryb powiązania harmonogramu"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Nieznana posługa wolontariacka"
+
+#: 
+msgid "Until"
+msgstr "Do"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Nadchodząca dostępność"
+
+#: 
+msgid "Update your details"
+msgstr "Zaktualizuj swoje dane"
+
+#: 
+msgid "Update your family details"
+msgstr "Zaktualizuj dane swojej rodziny"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Użyj opcji Obsadź to wydarzenie, aby obsadzić pojedyncze wydarzenie"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Użyj potrzeb harmonogramu"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Użytkownik musi mieć uprawnienie Dodawanie wydarzeń lub koordynować posługę wolontariacką, a moduł Wydarzenia musi być włączony"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Użytkownik musi mieć uprawnienie Dodawanie wydarzeń lub koordynować posługę wolontariacką, do której należy ten kalendarz"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — Możliwości wolontariatu (stare)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — stare Możliwości wolontariatu"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — Posługi"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — Zarządzanie wolontariatem"
+
+#: 
+msgid "Valid"
+msgstr "Prawidłowe"
+
+#: 
+msgid "Validation"
+msgstr "Weryfikacja"
+
+#: 
+msgid "View event"
+msgstr "Wyświetl wydarzenie"
+
+#: 
+msgid "View my schedule"
+msgstr "Zobacz mój harmonogram"
+
+#: 
+msgid "View only"
+msgstr "Tylko do odczytu"
+
+#: 
+msgid "View person"
+msgstr "Podgląd osoby"
+
+#: 
+msgid "View the event"
+msgstr "Zobacz wydarzenie"
+
+#: 
+msgid "View this email"
+msgstr "Zobacz ten e-mail"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Wolontariat (stary)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Zarządzanie wolontariatem V2 nie jest włączone"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Posługa wolontariacka"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Przydział wolontariusza"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Wolontariusz odmówił"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Model wolontariatu"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Funkcje wolontariackie nadal wymagają obsadzenia"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Przypomnienie dla wolontariusza"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Zapis na wolontariat"
+
+#: 
+msgid "Volunteer times"
+msgstr "Godziny wolontariatu"
+
+#: 
+msgid "Volunteering"
+msgstr "Wolontariat"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Wolontariat zorganizowany tak, jak prowadzi go parafia. Każda posługa ma zespoły i funkcje; osoby mają kwalifikacje do funkcji i należą do grupy puli posługi; harmonogramy podążają za wydarzeniami w kalendarzu i tworzą opatrzone datami terminy z wymaganiami kadrowymi; koordynatorzy przydzielają osoby, które przyjmują, odmawiają lub proponują zastępcę; przypomnienia i alerty są wysyłane e-mailem. Administratorzy i użytkownicy z uprawnieniem Zarządzanie posługami widzą wszystkie posługi i mogą je tworzyć, dezaktywować i usuwać. Koordynator posługi otrzymuje zamiast tego uprawnienie Zarządzanie moimi posługami: nagłówek Posługi na pasku bocznym pokazuje wtedy tylko posługi, które koordynuje. Lider zespołu prowadzi swój zespół z Portalu wspólnoty. Członkowie korzystają z Portalu wspólnoty, aby zobaczyć swój harmonogram, odpowiadać, zapisywać się i oferować pomoc."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Przydzielonych wolontariuszy: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Wolontariusze kończą"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Potrzebni wolontariusze"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Wolontariusze posługi %s są przydzieleni do tych wydarzeń, więc nie można ich tu usunąć. Poproś tę posługę o usunięcie obsady albo poproś osobę zarządzającą kalendarzem."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Wolontariusze posług {{names}} są przydzieleni do niektórych z nich. Jeśli nie zarządzasz kalendarzem, usunięcie zostanie odrzucone, dopóki ta obsada nie zostanie usunięta."
+
+#: 
+msgid "Volunteers start"
+msgstr "Wolontariusze zaczynają"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Wolontariusze zaczynają %d minutę po rozpoczęciu wydarzenia."
+msgstr[1] "Wolontariusze zaczynają %d minuty po rozpoczęciu wydarzenia."
+msgstr[2] "Wolontariusze zaczynają %d minut po rozpoczęciu wydarzenia."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Wolontariusze zaczynają %d minutę przed rozpoczęciem wydarzenia."
+msgstr[1] "Wolontariusze zaczynają %d minuty przed rozpoczęciem wydarzenia."
+msgstr[2] "Wolontariusze zaczynają %d minut przed rozpoczęciem wydarzenia."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Oczekuje na odpowiedź"
+
+#: 
+msgid "Waiting for review"
+msgstr "Oczekuje na przegląd"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Oczekuje na potwierdzenie przez Twojego koordynatora."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Wyślemy Ci e-mail, gdy coś będzie wymagało obsadzenia."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Chętnie przyjmiemy więcej pomocy w niedzielne poranki — doświadczenie nie jest potrzebne."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Witaj, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Co wymaga zmiany?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Co wymaga Twojej uwagi w tym tygodniu"
+
+#: 
+msgid "What the check found"
+msgstr "Co wykazało sprawdzenie"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Czym są modele wolontariatu"
+
+#: 
+msgid "What you want to say"
+msgstr "To, co chcesz powiedzieć"
+
+#: 
+msgid "When"
+msgstr "Kiedy"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Gdy wolontariusz zaproponuje kogoś na swoje miejsce, pojawi się to tutaj do zatwierdzenia lub odrzucenia."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Gdy wolontariusz zaproponuje kogoś na swoje miejsce, pojawi się to tutaj do zatwierdzenia."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Gdy ktoś doda Cię do zespołu albo sam się zapiszesz, pojawi się to tutaj."
+
+#: 
+msgid "Where"
+msgstr "Gdzie"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Skąd pochodzą daty"
+
+#: 
+msgid "Where we reach you"
+msgstr "Jak się z Tobą skontaktować"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Który model zarządzania wolontariatem jest aktywny. V1 to dawna funkcja Możliwości wolontariatu; V2 to nowy przebieg planowania i przydziałów. „Oba” pokazuje obie strony obok siebie na czas migracji."
+
+#: 
+msgid "Which events"
+msgstr "Które wydarzenia"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Z którego modelu wolontariatu korzysta ta parafia. Karta po prawej wyjaśnia każdy wybór."
+
+#: 
+msgid "Who is covering"
+msgstr "Kto zastępuje"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Kto jest potrzebny, kto służy i czego jeszcze brakuje"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Najpierw wymieniona jest osoba, która służyła najdawniej."
+
+#: 
+msgid "Work Email"
+msgstr "E-mail służbowy"
+
+#: 
+msgid "Yearly"
+msgstr "Corocznie"
+
+#: 
+msgid "You"
+msgstr "Ty"
+
+#: 
+msgid "You are already helping that day"
+msgstr "W tym dniu już pomagasz"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "W tym dniu już pomagasz jako {{what}}. Zapisać się także na to?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Nie możesz tego zmienić. Skontaktuj się z biurem parafialnym."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Nie jesteś obecnie powiązany(-a) z rodziną"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Nie należysz jeszcze do żadnego rekordu rodziny."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Jesteś na liście — dziękujemy."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Możesz to sprawdzić lub zmienić w swoim harmonogramie wolontariatu."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Nie możesz otworzyć tej strony"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Nie możesz zaproponować siebie jako własnego zastępcy"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Nie udało się zapisać Cię na to."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Nie prowadzisz jeszcze żadnego zespołu wolontariuszy."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Masz nowy adres kalendarza. Stary już nie działa."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Zostałeś(-aś) zaplanowany(-a) do służby"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Zostałeś(-aś) zaplanowany(-a) do służby."
+
+#: 
+msgid "You lead this"
+msgstr "Prowadzisz to"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Możesz utworzyć harmonogram tylko dla zespołu, który prowadzisz"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Wrócisz na listę dla tego terminu."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Twoje konto nie jest powiązane z rekordem osoby. Skontaktuj się z biurem parafialnym."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Twoja subskrypcja kalendarza została zapisana."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Twój obecny adres natychmiast przestanie działać. Każdy, komu go podałeś(-aś), będzie potrzebował nowego."
+
+#: 
+msgid "Your details"
+msgstr "Twoje dane"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Twoje dane zostały zapisane."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Dane Twojej rodziny zostały zapisane."
+
+#: 
+msgid "Your photo"
+msgstr "Twoje zdjęcie"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Twoje zdjęcie zostało zapisane."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Nie udało się wczytać Twojego harmonogramu."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Twoja sesja wygasła. Zaloguj się ponownie."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Twoja prośba o zastępstwo została zatwierdzona"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Twoja prośba o zastępstwo nie została zatwierdzona"
+
+#: 
+msgid "already staffed by this team"
+msgstr "już obsadzone przez ten zespół"
+
+#: 
+msgid "body is required"
+msgstr "treść jest wymagana"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds musi być listą identyfikatorów kalendarzy"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents musi być jednym z: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId musi być identyfikatorem grupy lub null"
+
+#: 
+msgid "end offset"
+msgstr "przesunięcie końca"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds musi być listą identyfikatorów wydarzeń"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "każda wiadomość została dostarczona lub nadal czeka w kolejce"
+
+#: 
+msgid "has not served yet"
+msgstr "jeszcze nie służył(a)"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId musi być identyfikatorem funkcji"
+
+#: 
+msgid "inactive family"
+msgstr "nieaktywna rodzina"
+
+#: 
+msgid "line %d"
+msgstr "wiersz %d"
+
+#: 
+msgid "marked do not email"
+msgstr "oznaczono: nie wysyłać e-maili"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "nie udało się dostarczyć wiadomości"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "nie udało się dostarczyć wiadomości po pięciu próbach"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "wiadomości czekające na wysłanie"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds musi być listą identyfikatorów posług"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "minut po zakończeniu wydarzenia"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "minut po rozpoczęciu wydarzenia"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "minut przed zakończeniem wydarzenia"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "minut przed rozpoczęciem wydarzenia"
+
+#: 
+msgid "never"
+msgstr "nigdy"
+
+#: 
+msgid "no email address"
+msgstr "brak adresu e-mail"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds i familyIds muszą być tablicami dodatnich liczb całkowitych"
+
+#: 
+msgid "record not found"
+msgstr "nie znaleziono rekordu"
+
+#: 
+msgid "same address as another recipient"
+msgstr "ten sam adres co inny adresat"
+
+#: 
+msgid "single event"
+msgstr "pojedyncze wydarzenie"
+
+#: 
+msgid "start offset"
+msgstr "przesunięcie początku"
+
+#: 
+msgid "subject and body are required"
+msgstr "temat i treść są wymagane"
+
+#: 
+msgid "subject is required"
+msgstr "temat jest wymagany"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "temat może mieć co najwyżej 255 znaków"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool musi być prawdą lub fałszem"
+
+#: 
+msgid "window end"
+msgstr "koniec okna"
+
+#: 
+msgid "window start"
+msgstr "początek okna"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "Dodano: {{added}}, już byli tu wolontariuszami: {{alreadyMembers}}"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "Utworzono terminów: {{created}}, już istniało: {{existing}}"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} utworzyła wydarzeń: {{total}} dla {{className}} (nadchodzących: {{upcoming}})."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} obsadzają także niektóre z nich."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} już koordynuje tę posługę"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "Przydzielono: {{name}}"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} już pełni funkcję {{position}} w tym terminie. Nadal możesz ją przydzielić."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} ma kwalifikacje, ale nie należy do puli wolontariuszy tej posługi. Przydzielenie dodaje ją tylko do tego terminu."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} koordynuje teraz tę posługę"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: liczby muszą mieścić się między 0 a {{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: maksimum nie może być mniejsze od minimum."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} utracił(a) kwalifikacje"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} uzyskał(a) kwalifikacje"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} prosi {{substitute}} o zastępstwo"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "Utworzono {{title}} w dniu {{date}}. Obsadzić teraz?"
+
