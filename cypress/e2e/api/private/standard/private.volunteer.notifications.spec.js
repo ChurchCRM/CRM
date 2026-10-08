@@ -170,6 +170,24 @@ function drain() {
         });
 }
 
+/** The administrator's "Run background jobs now": past the rate limit and today's daily runs. */
+function runJobsNow() {
+    return cy
+        .makePrivateAdminAPICall("POST", "/api/background/timerjobs", { force: true }, 200)
+        .then((resp) => {
+            expect(resp.body.ran).to.be.true;
+        });
+}
+
+/** Hours from now to a church wall-clock time; the browser runs in the church's zone. */
+function hoursUntil(wallClock) {
+    const [datePart, timePart] = wallClock.split(" ");
+    const [y, mo, d] = datePart.split("-").map(Number);
+    const [h, mi, s] = timePart.split(":").map(Number);
+
+    return (new Date(y, mo - 1, d, h, mi, s).getTime() - Date.now()) / 3600000;
+}
+
 /** `YYYY-MM-DD`, `offsetDays` from today. */
 function isoDate(offsetDays) {
     const d = new Date();
@@ -1419,6 +1437,228 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                 });
                 assignmentStatus(assignment.id).then((status) => {
                     expect(status).to.eq("completed");
+                });
+            });
+        });
+    });
+
+    describe("Volunteer v2 — the alert about positions never filled (#10372, §3.6)", () => {
+        beforeEach(resetWorkflow);
+
+        afterEach(() => {
+            setConfig(SETTING_URL, "v2");
+            setConfig(EMAIL_ENABLED_URL, "1");
+            setConfig(LEAD_HOURS_URL, "0");
+            restoreConfig(SMTP_HOST_URL, originalSmtpHost);
+            dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_Status = 'scheduled' WHERE vocc_ID = ?`, [occurrenceOne]);
+            dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [ESPRESSO_NAME, posEspresso]);
+        });
+
+        function gapAlerts(occurrenceId) {
+            return dbOk(
+                `SELECT vntf_DedupeKey AS dedupeKey, vntf_per_ID AS personId, vntf_vasg_ID AS assignmentId,
+                        vntf_Status AS status, vntf_Attempts AS attempts
+                   FROM volunteer_notification_vntf
+                  WHERE vntf_Type = 'gap_alert' AND vntf_vocc_ID = ?`,
+                [occurrenceId],
+            );
+        }
+
+        function alertKey(occurrenceId, positionId) {
+            return `gap_alert:${occurrenceId}:${positionId}:${PERSON_COORDINATOR}`;
+        }
+
+        /** A lead that reaches the first Sunday and stops a week short of the second. */
+        function leadToOccurrenceOne() {
+            return cy.then(() => setConfig(LEAD_HOURS_URL, String(Math.ceil(hoursUntil(occurrenceOneStart)) + 1)));
+        }
+
+        it("queues one alert per unfilled position inside the lead window, and a second run adds none", () => {
+            leadToOccurrenceOne();
+            runJobsNow();
+
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows.map((row) => row.dedupeKey)).to.have.members([
+                    alertKey(occurrenceOne, posEspresso),
+                    alertKey(occurrenceOne, posMilk),
+                ]);
+                for (const row of rows) {
+                    expect(Number(row.personId)).to.eq(PERSON_COORDINATOR);
+                    expect(row.assignmentId).to.be.null;
+                }
+            });
+            gapAlerts(occurrenceTwo).then((rows) => {
+                expect(rows, "outside the lead window").to.have.length(0);
+            });
+
+            runJobsNow();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows, "a gap that stays open is alerted once").to.have.length(2);
+            });
+        });
+
+        it("alerts only the position still short, and nothing for a fully staffed occurrence", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+            leadToOccurrenceOne();
+            runJobsNow();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows.map((row) => row.dedupeKey)).to.deep.eq([alertKey(occurrenceOne, posMilk)]);
+            });
+
+            cy.then(resetWorkflow);
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A);
+            assign(COORDINATOR_KEY, occurrenceOne, posMilk, POOL_MEMBER_B);
+            runJobsNow();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows).to.have.length(0);
+            });
+        });
+
+        it("skips a cancelled occurrence", () => {
+            dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_Status = 'cancelled' WHERE vocc_ID = ?`, [occurrenceOne]);
+            leadToOccurrenceOne();
+            runJobsNow();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows).to.have.length(0);
+            });
+        });
+
+        it("alerts a gap at the next ordinary run once it comes inside the window", () => {
+            setConfig(LEAD_HOURS_URL, "1");
+            drain();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows, "outside a one-hour window").to.have.length(0);
+            });
+
+            leadToOccurrenceOne();
+            drain();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows).to.have.length(2);
+            });
+
+            drain();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows, "a later run repeats nothing").to.have.length(2);
+            });
+        });
+
+        it("does not repeat the positions a decline's alert already listed", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then((assignment) => {
+                api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`, {
+                    response: "declined",
+                });
+            });
+            leadToOccurrenceOne();
+            drain();
+
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows, "only the decline's occurrence-wide alert").to.have.length(1);
+                expect(rows[0].dedupeKey).to.match(
+                    new RegExp(`^gap_alert:${occurrenceOne}:${PERSON_COORDINATOR}:\\d{4}-\\d{2}-\\d{2}$`),
+                );
+            });
+        });
+
+        it("queues nothing while V1 is on", () => {
+            setConfig(SETTING_URL, "v1");
+            leadToOccurrenceOne();
+            runJobsNow();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows).to.have.length(0);
+            });
+        });
+
+        it("records the alerts as skipped, without an attempt, while email is switched off", () => {
+            setConfig(EMAIL_ENABLED_URL, "0");
+            leadToOccurrenceOne();
+            runJobsNow();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows).to.have.length(2);
+                for (const row of rows) {
+                    expect(row.status).to.eq("skipped");
+                    expect(row.attempts).to.eq(0);
+                }
+            });
+        });
+
+        it("drops an alert whose position was filled before it could be sent", () => {
+            setConfig(SMTP_HOST_URL, "127.0.0.1:2");
+            leadToOccurrenceOne();
+            runJobsNow();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows.map((row) => row.status)).to.deep.eq(["pending", "pending"]);
+            });
+
+            assign(COORDINATOR_KEY, occurrenceOne, posMilk, POOL_MEMBER_B);
+            cy.then(() => restoreConfig(SMTP_HOST_URL, originalSmtpHost));
+            drain();
+            outboxRow(alertKey(occurrenceOne, posMilk)).then((row) => {
+                expect(row.vntf_Status).to.eq("skipped");
+                expect(row.vntf_Attempts, "the failed attempt before it was filled").to.eq(1);
+            });
+            outboxRow(alertKey(occurrenceOne, posEspresso)).then((row) => {
+                expect(row.vntf_Status, "still short, so still sent").to.not.eq("skipped");
+            });
+        });
+
+        it("mails each alert naming only its own position, with no Reply-To", function () {
+            requireMailpit(this);
+
+            leadToOccurrenceOne();
+            runJobsNow();
+
+            listMail().then((messages) => {
+                const alerts = messages.filter(
+                    (message) =>
+                        (message.To || []).some((to) => (to.Address || "").toLowerCase() === COORDINATOR_EMAIL) &&
+                        (message.Subject || "").toLowerCase().includes("still need to be filled"),
+                );
+                expect(alerts).to.have.length(2);
+
+                const bodies = [];
+                for (const alert of alerts) {
+                    cy.task("mail:get", { id: alert.ID }).then((result) => {
+                        expect(result.body.ReplyTo || []).to.have.length(0);
+                        bodies.push(`${result.body.Text || ""}\n${result.body.HTML || ""}`);
+                    });
+                }
+                cy.then(() => {
+                    const espresso = bodies.filter((body) => body.includes(ESPRESSO_NAME));
+                    const milk = bodies.filter((body) => body.includes(`${FIXTURE_PREFIX} Milk Station`));
+                    expect(espresso, "one message names Espresso").to.have.length(1);
+                    expect(milk, "the other names Milk Station").to.have.length(1);
+                    expect(espresso[0]).to.not.contain(`${FIXTURE_PREFIX} Milk Station`);
+                });
+            });
+        });
+
+        it("escapes the position name in the mailed alert", function () {
+            requireMailpit(this);
+            dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [
+                `${FIXTURE_PREFIX} <b>Espresso</b>`,
+                posEspresso,
+            ]);
+
+            leadToOccurrenceOne();
+            runJobsNow();
+
+            listMail().then((messages) => {
+                const alerts = messages.filter(
+                    (message) =>
+                        (message.To || []).some((to) => (to.Address || "").toLowerCase() === COORDINATOR_EMAIL) &&
+                        (message.Subject || "").toLowerCase().includes("still need to be filled"),
+                );
+                expect(alerts).to.have.length(2);
+
+                const htmls = [];
+                for (const alert of alerts) {
+                    cy.task("mail:get", { id: alert.ID }).then((result) => htmls.push(result.body.HTML || ""));
+                }
+                cy.then(() => {
+                    const espresso = htmls.filter((html) => html.includes("Espresso"));
+                    expect(espresso, "the Espresso alert").to.have.length(1);
+                    expect(espresso[0]).to.contain("&lt;b&gt;Espresso&lt;/b&gt;");
+                    expect(espresso[0]).to.not.contain("<b>Espresso</b>");
                 });
             });
         });
