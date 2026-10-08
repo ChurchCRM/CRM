@@ -32,6 +32,7 @@ class PdfDirectory extends ChurchInfoReport
     private string $sChurchAddressEncoded;
     private string $sChurchCityEncoded;
     private string $sChurchStateEncoded;
+    private ?string $sPendingHeader = null;
 
     /**
      * @param int    $nc      columns per page
@@ -247,11 +248,15 @@ class PdfDirectory extends ChurchInfoReport
         }
     }
 
-    // This function prints out the heading when a letter
-    // changes.
+    // Queues the heading for a new letter. addRecord() prints it together
+    // with the first entry under it, so the two always share a column.
     public function addHeader($sLetter): void
     {
-        $this->checkLines(2, null);
+        $this->sPendingHeader = $sLetter;
+    }
+
+    private function printHeader(string $sLetter): void
+    {
         $this->SetTextColor(255);
         $this->SetFont($this->_Font, 'B', $this->_Char_Size);
 //        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
@@ -523,7 +528,13 @@ class PdfDirectory extends ChurchInfoReport
                 $dirimg = $person->getPhoto()->getPhotoURI();
             }
         }
-        $this->checkLines($numlines, $dirimg);
+        if ($this->sPendingHeader === null) {
+            $this->checkLines($numlines, $dirimg);
+        } else {
+            $this->checkLines($numlines + 2, $dirimg);
+            $this->printHeader($this->sPendingHeader);
+            $this->sPendingHeader = null;
+        }
 
         $this->printName(self::convertToLatin1($sName));
 
