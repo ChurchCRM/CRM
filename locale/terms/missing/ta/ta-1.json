@@ -1,182 +1,50 @@
 {
-  "Select at least one classification to include in the directory.": "கோப்பகத்தில் சேர்க்க குறைந்தது ஒரு வகைப்பாட்டைத் தேர்ந்தெடுக்கவும்.",
-  "Geocoding services": "புவிக்குறியீட்டு சேவைகள்",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "நீங்கள் தேர்ந்தெடுக்கும் வரிசையில் முயற்சிக்க வேண்டிய புவிக்குறியீட்டு சேவைகள். Nominatim (OpenStreetMap) உலகம் முழுவதும் செயல்படும்; US Census (US Census Bureau) அமெரிக்க ஐக்கிய நாடுகளின் முகவரிகளை மட்டுமே உள்ளடக்கும். அதைப் பயன்படுத்த US Census ஐயும் தேர்ந்தெடுக்கவும். எதுவும் தேர்ந்தெடுக்கப்படாவிட்டால் Nominatim பயன்படுத்தப்படும்.",
-  "New Record Defaults": "புதிய பதிவு இயல்புநிலைகள்",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "வரைபட அமைப்புகளில் தேர்ந்தெடுத்த புவிக்குறியீட்டு சேவைகளைப் பயன்படுத்தி, வரைபட ஆயங்கள் இல்லாத ஒவ்வொரு குடும்பத்திற்கும் இது அவற்றைக் கண்டறியும். இது குடும்பங்களை 50 வீதம் தொகுதிகளாகச் செயலாக்கும்; ஒரு புவிக்குறியீட்டு சேவையுடன் ஒரு தொகுதிக்கு சுமார் ஒரு நிமிடமும், அதிக சேவைகளுடன் அதிக நேரமும் ஆகும். இது இயங்கும்போது இந்தப் பக்கத்தைத் திறந்தே வைத்திருக்கலாம். தொடரவா?",
-  "Used for new records and for geocoding when a record has no country.": "புதிய பதிவுகளுக்கும், ஒரு பதிவில் நாடு இல்லாதபோது புவிக்குறியீட்டுக்கும் பயன்படுத்தப்படும்.",
-  "Copy from Church Info": "திருச்சபை தகவலிலிருந்து நகலெடு",
-  "Could not copy the church address.": "திருச்சபையின் முகவரியை நகலெடுக்க முடியவில்லை.",
-  "Could not match the church country.": "திருச்சபையின் நாட்டைப் பொருத்த முடியவில்லை.",
-  "Class lists, attendance sheets, and photo books": "வகுப்புப் பட்டியல்கள், வருகைத் தாள்கள் மற்றும் புகைப்பட நூல்கள்",
-  "Group membership lists and Sunday School class reports": "ஊழிய உறுப்பினர் பட்டியல்கள் மற்றும் ஞாயிறு பள்ளி வகுப்பு அறிக்கைகள்",
-  "Your fiscal year starts in %s.": "உங்கள் நிதியாண்டு %s இல் தொடங்குகிறது.",
-  "An error occurred": "ஒரு பிழை ஏற்பட்டது",
-  "Approve": "அங்கீகரி",
-  "Approve selected": "தேர்ந்தெடுத்தவற்றை அங்கீகரி",
-  "Approved": "அங்கீகரிக்கப்பட்டது",
-  "Change in People Settings": "நபர்கள் அமைப்புகளில் மாற்றவும்",
-  "Could not approve the selected registrations": "தேர்ந்தெடுத்த பதிவுகளை அங்கீகரிக்க முடியவில்லை",
-  "Could not approve this family": "இந்தக் குடும்பத்தை அங்கீகரிக்க முடியவில்லை",
-  "Pending Registrations": "நிலுவையிலுள்ள பதிவுகள்",
-  "Pending review": "மதிப்பாய்வு நிலுவையில் உள்ளது",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "உங்கள் பொதுப் பதிவுப் படிவத்திலிருந்து மதிப்பாய்வுக்காகக் காத்திருக்கும் பதிவுகள். மின்னஞ்சல் அல்லது தொலைபேசி இல்லாத உள்ளீடுகள் குறிக்கப்பட்டுள்ளன — பின்தொடர்வதற்கு முன் தொடர்புத் தகவலைச் சரிபார்க்கவும்.",
-  "Review now": "இப்போதே மதிப்பாய்வு செய்",
-  "Review self registrations": "சுயபதிவுகளை மதிப்பாய்வு செய்",
-  "Select month": "மாதத்தைத் தேர்ந்தெடுக்கவும்",
-  "Self-registration is disabled": "சுயபதிவு முடக்கப்பட்டுள்ளது",
-  "Self-registration is enabled": "சுயபதிவு இயக்கப்பட்டுள்ளது",
-  "The public registration form is turned off. Existing registrations are listed below.": "பொதுப் பதிவுப் படிவம் அணைக்கப்பட்டுள்ளது. ஏற்கெனவே உள்ள பதிவுகள் கீழே பட்டியலிடப்பட்டுள்ளன.",
-  "This family is not a pending self-registration": "இந்தக் குடும்பம் நிலுவையிலுள்ள சுயபதிவு அல்ல",
-  "This person belongs to a family — approve the family instead": "இந்த நபர் ஒரு குடும்பத்தைச் சேர்ந்தவர் — அதற்குப் பதிலாக குடும்பத்தை அங்கீகரிக்கவும்",
-  "This person is not a pending self-registration": "இந்த நபர் நிலுவையிலுள்ள சுயபதிவு அல்ல",
-  "This self-registered family is pending review": "சுயமாகப் பதிவு செய்த இந்தக் குடும்பம் மதிப்பாய்வுக்காக நிலுவையில் உள்ளது",
-  "Total registrations": "மொத்தப் பதிவுகள்",
-  "Visitors can sign up on your public registration form.": "பார்வையாளர்கள் உங்கள் பொதுப் பதிவுப் படிவத்தில் பதிவு செய்யலாம்.",
-  "Yesterday": "நேற்று",
-  "days ago": "நாட்களுக்கு முன்",
-  "self-registrations are waiting for review": "சுயபதிவுகள் மதிப்பாய்வுக்காகக் காத்திருக்கின்றன",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "பிறந்தநாள் லேபிள்கள் நபரின் பெயரிலும், திருமண நாள் லேபிள்கள் தம்பதியின் பெயரிலும் முகவரியிடப்படும்.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "இந்த அறிக்கையிலுள்ள நபர்களுக்கான அஞ்சல் லேபிள்கள். சொந்த முகவரி இல்லாத நபருக்கு அவரது குடும்ப முகவரிக்கு முகவரியிடப்படும்.",
-  "One label for each couple.": "ஒவ்வொரு தம்பதிக்கும் ஒரு லேபிள்.",
-  "Print Labels": "லேபிள்களை அச்சிடு",
-  "That role is not one of this group's roles.": "அந்தப் பங்கு இந்த ஊழியத்தின் பங்குகளில் ஒன்றல்ல.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" என்பது இந்தப் பக்கத்திற்குத் தெரிந்த நாட்காட்டி வகை அல்ல.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s ஆல் பணியாற்ற முடியாது, மேலும் %2$s ஐ மாற்றாக முன்மொழிந்துள்ளார்.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s ஏற்கெனவே %2$s தன்னார்வலர் தொகுப்பில் இருக்கிறார், மீண்டும் உதவ விரும்புகிறார்.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s ஏற்கெனவே %3$s இல் %2$s உடன் இணைக்கப்பட்டுள்ளார்",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s %2$s இல் %3$s ஆக இருக்கிறார். முதலில் அவரை வகுப்பிலிருந்து நீக்கவும்; இங்கே அவரைத் தகுதிப்படுத்தினால் அவர் அதன் ஆசிரியர்களில் ஒருவராவார்.",
-  "%1$s is not an event of %2$s": "%1$s என்பது %2$s இன் நிகழ்ச்சி அல்ல",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s ஞாயிறு பள்ளி வகுப்பாகவே இருக்கும், அதன் ஆசிரியர்கள் ஊழியங்கள் → %2$s → %3$s இல் நிர்வகிக்கப்படுகிறார்கள். முதலில் அதைக் குழுவிலிருந்து துண்டிக்கவும்.",
-  "%1$s wants to help with %2$s": "%1$s %2$s இல் உதவ விரும்புகிறார்",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s %2$s இல் உதவ விரும்புகிறார், மேலும் அதன் தன்னார்வலர் தொகுப்பில் சேர்க்கப்பட்டுள்ளார்.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: அதிகபட்சம் %2$d ஆனால் %3$d இயல்புநிலை தன்னார்வலர்கள் தேர்ந்தெடுக்கப்பட்டுள்ளனர். ஒருவரை நீக்கவும் அல்லது அதிகபட்சத்தை உயர்த்தவும்.",
-  "%d day": {
-    "one": "%d நாள்",
-    "other": "%d நாட்கள்"
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d இயல்புநிலை வேறொரு காரணத்தால் தவிர்க்கப்பட்டது (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)",
-    "other": "%d இயல்புநிலைகள் வேறொரு காரணத்தால் தவிர்க்கப்பட்டன (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d இயல்புநிலை தவிர்க்கப்பட்டது: தகுதி திரும்பப் பெறப்பட்டது",
-    "other": "%d இயல்புநிலைகள் தவிர்க்கப்பட்டன: தகுதி திரும்பப் பெறப்பட்டது"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d இயல்புநிலை தன்னார்வலர் நியமிக்கப்பட்டார்",
-    "other": "%d இயல்புநிலை தன்னார்வலர்கள் நியமிக்கப்பட்டனர்"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d தோல்வியடைந்தன",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்.",
-    "other": "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர்கள் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d புதிய நிகழ்வு",
-    "other": "%d புதிய நிகழ்வுகள்"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "வரவிருக்கும் நிகழ்வுக்கு இன்னும் %d தன்னார்வலர் தேவை.",
-    "other": "வரவிருக்கும் நிகழ்வுக்கு இன்னும் %d தன்னார்வலர்கள் தேவை."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "%s நாட்காட்டி",
-  "%s Family": "%s குடும்பம்",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s ஞாயிறு பள்ளிக்கு ஆசிரியர்களை வழங்குவதில்லை, எனவே அதன் குழுக்கள், அட்டவணைகள் மற்றும் நிகழ்ச்சிகள் வகுப்பைப் பயன்படுத்த முடியாது. தன்னார்வ மேலாளர் இதை ஊழியத்தைத் திருத்து என்பதன் கீழ் மாற்றலாம்.",
-  "%s email from the church": {
-    "one": "திருச்சபையிடமிருந்து %s மின்னஞ்சல்",
-    "other": "திருச்சபையிடமிருந்து %s மின்னஞ்சல்கள்"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "%s குடும்பம்",
-  "%s has declined a volunteer assignment.": "%s ஒரு தன்னார்வப் பணி நியமனத்தை நிராகரித்துள்ளார்.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s இல் ஆசிரியர் என்ற பெயரில் எந்தப் பங்கும் இல்லை, எனவே அதன் ஆசிரியர்களைக் குழுவிலிருந்து நிர்வகிக்க முடியாது",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s க்கு நாட்காட்டியில் வரவிருக்கும் கூட்டங்கள் இல்லை. அட்டவணை ஏற்கெனவே உள்ள நிகழ்ச்சிகளைப் பின்தொடரும்: முதலில் ஊழியத்தின் நாட்காட்டி தாவலில் புதிய மீண்டும் நிகழும் நிகழ்ச்சி மூலம் வகுப்பின் கூட்டங்களைச் சேர்க்கவும்.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s இன்னும் பணியாற்ற எதிர்பார்க்கப்படுகிறார். அது முடியாவிட்டால் ஒருங்கிணைப்பாளரைத் தொடர்புகொள்ளவும்.",
-  "%s not sent (%s): %s": "%s அனுப்பப்படவில்லை (%s): %s",
-  "%s person in your household": {
-    "one": "உங்கள் குடும்பத்தில் %s நபர்",
-    "other": "உங்கள் குடும்பத்தில் %s நபர்கள்"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s பொறுப்பு",
-    "other": "%s பொறுப்புகள்"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: ஒரே நபர் இரண்டு முறை இயல்புநிலை தன்னார்வலராகத் தேர்ந்தெடுக்கப்பட்டுள்ளார்",
-  "(no subject)": "(பொருள் இல்லை)",
-  "A birthday cannot be in the future.": "பிறந்தநாள் எதிர்காலத்தில் இருக்கக்கூடாது.",
-  "A calendar event": "ஒரு நாட்காட்டி நிகழ்ச்சி",
-  "A calendar id must be a number.": "நாட்காட்டி ஐடி ஒரு எண்ணாக இருக்க வேண்டும்.",
-  "A class that no longer exists": "இனி இல்லாத ஒரு வகுப்பு",
-  "A class with no meetings on the calendar cannot be chosen yet.": "நாட்காட்டியில் கூட்டங்கள் இல்லாத வகுப்பை இன்னும் தேர்ந்தெடுக்க முடியாது.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "நாட்காட்டியில் கூட்டங்கள் இல்லாத வகுப்பை இன்னும் தேர்ந்தெடுக்க முடியாது. ஊழியத்தின் ஒருங்கிணைப்பாளர் ஊழியத்தின் நாட்காட்டி தாவலில் அதன் கூட்டங்களைச் சேர்ப்பார்.",
-  "A class's meetings": "ஒரு வகுப்பின் கூட்டங்கள்",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "ஒருங்கிணைப்பாளர் இந்த ஊழியத்தில் உள்ள அனைத்தையும் நிர்வகிக்கலாம், தன்னார்வ மேலாளர் செய்ய வேண்டிய மாற்றங்கள் உட்பட.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "ஊழியத்தின் ஒருங்கிணைப்பாளர் அவற்றை ஊழியத்தின் நாட்காட்டி தாவலில் சேர்க்கலாம்.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "ஊழியத்தின் ஒருங்கிணைப்பாளர் அவற்றை ஊழியத்தின் நாட்காட்டி தாவலில் சேர்க்கலாம். பிறகு மீண்டும் உருவாக்கவும்.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "ஒருங்கிணைப்பாளர் முழு ஊழியத்தையும் நடத்துகிறார் — அதன் குழுக்கள், பொறுப்புகள், அட்டவணைகள் மற்றும் அதிலுள்ள ஒவ்வொரு நியமனமும்.",
-  "A day a month does not have falls on its last day.": "ஒரு மாதத்தில் இல்லாத நாள் அந்த மாதத்தின் கடைசி நாளில் வரும்.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "இயல்புநிலை தன்னார்வலர் அட்டவணையின் ஆட்கள் தேவைக்குரியவர், ஒரு நிகழ்வுக்குரியவர் அல்ல",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "இந்த அட்டவணையின் ஆட்கள் தேவை கோரும் பொறுப்புக்கு மட்டுமே இயல்புநிலை தன்னார்வலரைத் தேர்ந்தெடுக்க முடியும்",
-  "A from and a to date in YYYY-MM-DD form are required": "YYYY-MM-DD வடிவில் தொடக்க மற்றும் முடிவு தேதி தேவை",
-  "A minimum count is required": "குறைந்தபட்ச எண்ணிக்கை தேவை",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "ஒரு ஊழியம் அதன் சொந்த நாட்காட்டி, தன்னார்வலர் தொகுப்பு மற்றும் முதல் குழுவுடன் உருவாக்கப்படுகிறது, எனவே இங்கே முடிவு செய்ய வேண்டியவை அதன் பெயரும் அது செய்யும் பணியும் மட்டுமே.",
-  "A ministry name is required": "ஊழியத்தின் பெயர் தேவை",
-  "A ministry needs at least one team. Rename it instead.": "ஒரு ஊழியத்திற்கு குறைந்தது ஒரு குழு தேவை. அதற்குப் பதிலாக அதன் பெயரை மாற்றவும்.",
-  "A ministry with that name already exists": "அந்தப் பெயரில் ஒரு ஊழியம் ஏற்கெனவே உள்ளது",
-  "A ministry's own calendar cannot be opened to other ministries": "ஒரு ஊழியத்தின் சொந்த நாட்காட்டியை மற்ற ஊழியங்களுக்குத் திறக்க முடியாது",
-  "A position belongs to a team; choose one": "ஒரு பொறுப்பு ஒரு குழுவைச் சேர்ந்தது; ஒன்றைத் தேர்ந்தெடுக்கவும்",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "பொறுப்பு என்பது இந்தக் குழுவில் ஒருவர் செய்யும் பணி, எடுத்துக்காட்டாக எஸ்பிரெசோ அல்லது பாடல் தலைவர்.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "பொறுப்பு என்பது ஒருவர் பணியாற்றும் பங்கு, எடுத்துக்காட்டாக எஸ்பிரெசோ அல்லது பாடல் தலைவர்.",
-  "A position is required": "ஒரு பொறுப்பு தேவை",
-  "A position name is required": "பொறுப்பின் பெயர் தேவை",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "தகுதிபெற்ற தன்னார்வலர்கள் உள்ள பொறுப்பை ஞாயிறு பள்ளி வகுப்புடன் இணைக்கப்பட்ட குழுவுக்குள் அல்லது அதிலிருந்து வெளியே நகர்த்த முடியாது, ஏனெனில் அது வகுப்பை யார் கற்பிக்கிறார்கள் என்பதை மாற்றிவிடும். அதற்குப் பதிலாக மற்றொரு குழுவில் பொறுப்பை உருவாக்கவும்.",
-  "A position with that name already exists in this ministry": "இந்த ஊழியத்தில் அந்தப் பெயரில் ஒரு பொறுப்பு ஏற்கெனவே உள்ளது",
-  "A response must be accepted or declined": "ஒரு பதில் ஏற்கப்பட வேண்டும் அல்லது நிராகரிக்கப்பட வேண்டும்",
-  "A schedule belongs to a team; choose one": "ஒரு அட்டவணை ஒரு குழுவைச் சேர்ந்தது; ஒன்றைத் தேர்ந்தெடுக்கவும்",
-  "A schedule name is required": "அட்டவணையின் பெயர் தேவை",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "ஒரு குழு எந்த நாட்காட்டி நிகழ்ச்சிகளுக்கு ஆட்களை வழங்குகிறது என்பதை அட்டவணை கூறுகிறது: ஒரு வகை திருச்சபை ஆராதனை, ஒரு வகுப்பின் கூட்டங்கள், அல்லது இந்த ஊழியத்தின் சொந்த நிகழ்ச்சிகள். ஒன்றைச் சேர்த்து அதன் நிகழ்வுகளை உருவாக்கவும்.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "இந்தக் குழு எந்த நாட்காட்டி நிகழ்ச்சிகளுக்குப் பணியாற்றுகிறது என்பதை அட்டவணை கூறுகிறது: ஒரு வகை திருச்சபை ஆராதனை, ஒரு வகுப்பின் கூட்டங்கள், அல்லது அதன் ஊழியத்தின் சொந்த நிகழ்ச்சிகள். ஒன்றைச் சேர்த்து அதன் நிகழ்வுகளை உருவாக்கவும்.",
-  "A schedule that follows a class must name the class": "ஒரு வகுப்பைப் பின்தொடரும் அட்டவணை அந்த வகுப்பைக் குறிப்பிட வேண்டும்",
-  "A schedule that follows an event type must name the event type": "ஒரு நிகழ்ச்சி வகையைப் பின்தொடரும் அட்டவணை அந்த நிகழ்ச்சி வகையைக் குறிப்பிட வேண்டும்",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "ஒரே நிகழ்ச்சிக்கு ஆட்களை அமர்த்தும் அட்டவணை மற்ற நிகழ்ச்சிகளைப் பின்தொடர முடியாது; அதை நீக்கிவிட்டு அதற்குப் பதிலாக ஒரு அட்டவணையைச் சேர்க்கவும்",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "\"நர்சரி\" அல்லது \"வரவேற்பாளர்\" போன்ற வாய்ப்புகளின் ஒரே பட்டியல், நபர்கள் → நிர்வாகம் என்பதன் கீழ் வைக்கப்படுகிறது. ஒவ்வொரு நபரின் பதிவின் தன்னார்வப் பணி தாவலில் அவர் உதவ விரும்பும் வாய்ப்புகளால் குறிக்கப்படுகிறார். இது மட்டுமே பதிவு செய்யப்படுகிறது: குழுக்கள், அட்டவணைகள், தேதிக்கான நியமனங்கள், நினைவூட்டல் மின்னஞ்சல்கள் இல்லை. குறிச்சொற்கள் அறிக்கைகளிலும் நபர் பதிவிலும் பயன்படுத்தப்படுகின்றன.",
-  "A square picture of your face works best.": "உங்கள் முகத்தின் சதுரப் படம் சிறப்பாக இருக்கும்.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "ஆட்கள் தேவை தனது இயல்புநிலை தன்னார்வலர்களை \"defaults\": [{personId, accepted}] இல் பட்டியலிடுகிறது",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "ஆட்கள் தேவை என்பது ஒரு அட்டவணை அல்லது ஒரு நிகழ்வு இவற்றில் சரியாக ஒன்றைச் சேர்ந்தது",
-  "A substitute has already been proposed for this assignment": "இந்த நியமனத்திற்கு ஏற்கெனவே ஒரு மாற்று நபர் முன்மொழியப்பட்டுள்ளார்",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "குழுத் தலைவர் தனது சொந்தக் குழுவை — அதன் பொறுப்புகள், அட்டவணைகள் மற்றும் அவற்றில் யார் பணியாற்றுகிறார்கள் என்பதை — நிர்வகிக்கலாம், ஊழியத்தில் வேறு எதையும் அல்ல.",
-  "A team name is required": "குழுவின் பெயர் தேவை",
-  "A team with that name already exists in this ministry": "இந்த ஊழியத்தில் அந்தப் பெயரில் ஒரு குழு ஏற்கெனவே உள்ளது",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "தீம் என்பது உங்கள் திருச்சபை சேவையகத்தில் Include/themes/ க்குப் பதிவேற்றும் ஒரு கோப்புறை. கணினி இயல்புநிலை ChurchCRM உடன் வருகிறது.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "ஒரு மாற்றநிலை அமைப்பு. பழைய தன்னார்வ வாய்ப்புகள் பக்கங்களும் புதிய ஊழியங்கள் பக்கங்களும் இரண்டும் கிடைக்கும், மேலும் நபர் பதிவு இரண்டு தன்னார்வப் பணி தாவல்களையும் தெளிவாக லேபிளிட்டுக் காட்டும். ஒரு திருச்சபையை V1 இலிருந்து V2 க்கு மாற்றும்போது இதைப் பயன்படுத்தவும், பிறகு V2 க்கு மட்டும் மாறவும்.",
-  "A volunteer": "ஒரு தன்னார்வலர்",
-  "A volunteer has declined an assignment": "ஒரு தன்னார்வலர் நியமனத்தை நிராகரித்துள்ளார்",
-  "A volunteer has proposed a substitute": "ஒரு தன்னார்வலர் மாற்று நபரை முன்மொழிந்துள்ளார்",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "தன்னார்வ மேலாளர் அனுமதி இல்லாமலேயே இந்த ஊழியத்தை நடத்தலாம். மற்ற ஒவ்வொரு ஊழியத்தையும் கொடுக்காமல் வேறொருவர் இதை நடத்த ஒரு ஒருங்கிணைப்பாளரைச் சேர்க்கவும்.",
-  "A wedding date cannot be in the future.": "திருமண தேதி எதிர்காலத்தில் இருக்கக்கூடாது.",
-  "Accepted": "ஏற்கப்பட்டது",
-  "Account deleted": "கணக்கு நீக்கப்பட்டது",
-  "Account unlocked": "கணக்கு திறக்கப்பட்டது",
-  "Accounts": "கணக்குகள்",
-  "Active must be true or false": "செயலில் என்பது சரி அல்லது தவறு ஆக இருக்க வேண்டும்",
-  "Active now": "தற்போது செயலில்",
-  "Add All": "அனைத்தையும் சேர்",
-  "Add Everyone in Cart": "தேர்வில் உள்ள அனைவரையும் சேர்",
-  "Add Volunteer": "தன்னார்வலரைச் சேர்",
-  "Add Volunteers to Cart": "தன்னார்வலர்களைத் தேர்வில் சேர்",
-  "Add a family member": "குடும்ப உறுப்பினரைச் சேர்",
-  "Add a position first, then come back and say how many of them are needed.": "முதலில் ஒரு பொறுப்பைச் சேர்க்கவும், பிறகு திரும்பி வந்து அவர்களில் எத்தனை பேர் தேவை என்று கூறவும்.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "உங்கள் உள்நுழைவில் இரண்டாவது படியைச் சேர்க்கவும், அப்போது கடவுச்சொல் மட்டும் உங்கள் கணக்கை அணுக போதாது.",
-  "Add at least one position to this team, then tick who can serve where.": "இந்தக் குழுவில் குறைந்தது ஒரு பொறுப்பைச் சேர்க்கவும், பிறகு யார் எங்கு பணியாற்றலாம் என்பதைத் தேர்வுக்குறியிடவும்.",
-  "Add coordinator": "ஒருங்கிணைப்பாளரைச் சேர்",
-  "Add from Cart": "தேர்விலிருந்து சேர்",
-  "Add its meetings first with New recurring event on the Calendar tab": "முதலில் நாட்காட்டி தாவலில் புதிய மீண்டும் நிகழும் நிகழ்ச்சி மூலம் அதன் கூட்டங்களைச் சேர்க்கவும்",
-  "Add people to the cart before adding them as volunteers": "தன்னார்வலர்களாகச் சேர்க்கும் முன் நபர்களைத் தேர்வில் சேர்க்கவும்",
-  "Add position": "பொறுப்பைச் சேர்",
-  "Add schedule": "அட்டவணையைச் சேர்",
-  "Add team": "குழுவைச் சேர்",
-  "Add them on the Calendar tab, then generate again.": "அவற்றை நாட்காட்டி தாவலில் சேர்க்கவும், பிறகு மீண்டும் உருவாக்கவும்.",
-  "Add them on the Calendar tab.": "அவற்றை நாட்காட்டி தாவலில் சேர்க்கவும்.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "இந்த முகவரியை உங்கள் நாட்காட்டி செயலியில் சேர்க்கவும். திருச்சபை நாட்காட்டி மாறும்போது இது தானாகப் புதுப்பிக்கப்படும்.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "இந்த ஊழியத்தின் நிகழ்ச்சிகளை இங்கே சேர்க்கவும்: ஒரு வேலை நாள், ஒவ்வொரு ஞாயிறும் கூடும் வகுப்பு. அவை திருச்சபை நாட்காட்டியில் இடம்பெறும், அவற்றை உருவாக்கும்போதே ஆட்களை அமர்த்தலாம்."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

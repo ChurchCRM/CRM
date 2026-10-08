@@ -1,182 +1,50 @@
 {
-  "Select at least one classification to include in the directory.": "Kies ten minste een klassifikasie om in die gids in te sluit.",
-  "Geocoding services": "Geokodeerdienste",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Geokodeerdienste wat probeer moet word, in die volgorde wat jy hulle kies. Nominatim (OpenStreetMap) werk wêreldwyd; US Census (US Census Bureau) dek slegs adresse in die Verenigde State. Kies ook US Census om dit te gebruik. As niks gekies is nie, word Nominatim gebruik.",
-  "New Record Defaults": "Verstekwaardes vir nuwe rekords",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Dit vind kaartkoördinate vir elke gesin wat dit mis, deur die geokodeerdienste te gebruik wat in Kaartinstellings gekies is. Dit werk die gesinne in bondels van 50 deur; 'n bondel neem ongeveer 'n minuut met een geokodeerdiens en langer met meer. Jy kan hierdie bladsy oop laat terwyl dit loop. Gaan voort?",
-  "Used for new records and for geocoding when a record has no country.": "Word gebruik vir nuwe rekords en vir geokodering wanneer 'n rekord geen land het nie.",
-  "Copy from Church Info": "Kopieer vanaf kerkinligting",
-  "Could not copy the church address.": "Kon nie die kerk se adres kopieer nie.",
-  "Could not match the church country.": "Kon nie die kerk se land pas nie.",
-  "Class lists, attendance sheets, and photo books": "Klaslyste, bywoningsstate en foto-albums",
-  "Group membership lists and Sunday School class reports": "Groeplidmaatskaplyste en Sondagskoolklasverslae",
-  "Your fiscal year starts in %s.": "Jou boekjaar begin in %s.",
-  "An error occurred": "'n Fout het voorgekom",
-  "Approve": "Keur goed",
-  "Approve selected": "Keur geselekteerde goed",
-  "Approved": "Goedgekeur",
-  "Change in People Settings": "Verander in Mense-instellings",
-  "Could not approve the selected registrations": "Kon nie die geselekteerde registrasies goedkeur nie",
-  "Could not approve this family": "Kon nie hierdie gesin goedkeur nie",
-  "Pending Registrations": "Hangende registrasies",
-  "Pending review": "Hangende hersiening",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Registrasies wat op hersiening wag vanaf jou openbare registrasievorm. Inskrywings sonder e-pos of foon is gemerk — verifieer kontakbesonderhede voordat jy opvolg.",
-  "Review now": "Hersien nou",
-  "Review self registrations": "Hersien selfregistrasies",
-  "Select month": "Kies maand",
-  "Self-registration is disabled": "Selfregistrasie is gedeaktiveer",
-  "Self-registration is enabled": "Selfregistrasie is geaktiveer",
-  "The public registration form is turned off. Existing registrations are listed below.": "Die openbare registrasievorm is afgeskakel. Bestaande registrasies word hieronder gelys.",
-  "This family is not a pending self-registration": "Hierdie gesin is nie 'n hangende selfregistrasie nie",
-  "This person belongs to a family — approve the family instead": "Hierdie persoon behoort aan 'n gesin — keur eerder die gesin goed",
-  "This person is not a pending self-registration": "Hierdie persoon is nie 'n hangende selfregistrasie nie",
-  "This self-registered family is pending review": "Hierdie selfgeregistreerde gesin wag op hersiening",
-  "Total registrations": "Totale registrasies",
-  "Visitors can sign up on your public registration form.": "Besoekers kan op jou openbare registrasievorm inskryf.",
-  "Yesterday": "Gister",
-  "days ago": "dae gelede",
-  "self-registrations are waiting for review": "selfregistrasies wag op hersiening",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Verjaarsdae word aan die persoon gerig en huweliksherdenkings aan die egpaar.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Posadresetikette vir die mense in hierdie verslag. 'n Persoon sonder 'n eie adres word by sy of haar gesinsadres geadresseer.",
-  "One label for each couple.": "Een etiket vir elke egpaar.",
-  "Print Labels": "Druk etikette",
-  "That role is not one of this group's roles.": "Daardie rol is nie een van hierdie groep se rolle nie.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" is nie 'n soort kalender wat hierdie bladsy ken nie.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s kan nie dien nie en het %2$s as plaasvervanger voorgestel.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s is reeds in die vrywilligerspoel van %2$s en wil weer help.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s is reeds aan %2$s in %3$s gekoppel",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s is in %2$s as %3$s. Verwyder hulle eers uit die klas; as hulle hier gekwalifiseer word, word hulle een van die klas se onderwysers.",
-  "%1$s is not an event of %2$s": "%1$s is nie 'n geleentheid van %2$s nie",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s bly 'n Sondagskoolklas terwyl sy onderwysers in Bedieninge → %2$s → %3$s bestuur word. Ontkoppel dit eers van die span.",
-  "%1$s wants to help with %2$s": "%1$s wil help met %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s wil help met %2$s en is by sy vrywilligerspoel gevoeg.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: Maks is %2$d, maar %3$d verstekvrywilligers is gekies. Verwyder een of verhoog Maks.",
-  "%d day": {
-    "one": "%d dag",
-    "other": "%d dae"
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d verstek oorgeslaan om 'n ander rede (die geval is verby, gekanselleer of vol)",
-    "other": "%d verstekke oorgeslaan om 'n ander rede (die geval is verby, gekanselleer of vol)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d verstek oorgeslaan: kwalifikasie ingetrek",
-    "other": "%d verstekke oorgeslaan: kwalifikasie ingetrek"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d verstekvrywilliger toegewys",
-    "other": "%d verstekvrywilligers toegewys"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d het misluk",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Nog %d vrywilliger word steeds vir hierdie posisie benodig. Maak die geval oop om die gaping te vul.",
-    "other": "Nog %d vrywilligers word steeds vir hierdie posisie benodig. Maak die geval oop om die gaping te vul."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d nuwe geval",
-    "other": "%d nuwe gevalle"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "%d vrywilliger word steeds vir 'n komende geval benodig.",
-    "other": "%d vrywilligers word steeds vir 'n komende geval benodig."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "%s-kalender",
-  "%s Family": "%s-gesin",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s verskaf nie onderwysers vir Sondagskool nie, so sy spanne, roosters en geleenthede kan nie 'n klas gebruik nie. 'n Vrywilligerbestuurder kan dit onder Wysig bediening verander.",
-  "%s email from the church": {
-    "one": "%s e-pos van die kerk",
-    "other": "%s e-posse van die kerk"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "%s-gesin",
-  "%s has declined a volunteer assignment.": "%s het 'n vrywilligertoewysing van die hand gewys.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s het geen rol met die naam Onderwyser nie, so sy onderwysers kan nie vanuit 'n span bestuur word nie",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s het geen komende vergaderings op die kalender nie. 'n Rooster volg geleenthede wat reeds bestaan: voeg eers die klas se vergaderings by, met Nuwe herhalende geleentheid op die bediening se Kalender-oortjie.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "Daar word steeds van %s verwag om te dien. Kontak asseblief die koördineerder as dit nie moontlik is nie.",
-  "%s not sent (%s): %s": "%s nie gestuur nie (%s): %s",
-  "%s person in your household": {
-    "one": "%s persoon in jou huishouding",
-    "other": "%s mense in jou huishouding"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s posisie",
-    "other": "%s posisies"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: dieselfde persoon is twee keer as verstekvrywilliger gekies",
-  "(no subject)": "(geen onderwerp)",
-  "A birthday cannot be in the future.": "'n Verjaarsdag kan nie in die toekoms wees nie.",
-  "A calendar event": "'n Kalendergeleentheid",
-  "A calendar id must be a number.": "'n Kalender-id moet 'n nommer wees.",
-  "A class that no longer exists": "'n Klas wat nie meer bestaan nie",
-  "A class with no meetings on the calendar cannot be chosen yet.": "'n Klas sonder vergaderings op die kalender kan nog nie gekies word nie.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "'n Klas sonder vergaderings op die kalender kan nog nie gekies word nie. 'n Koördineerder van die bediening voeg sy vergaderings by op die bediening se Kalender-oortjie.",
-  "A class's meetings": "'n Klas se vergaderings",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "'n Koördineerder kan alles in hierdie bediening bestuur, insluitend veranderings wat 'n vrywilligerbestuurder andersins sou moes maak.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "'n Koördineerder van die bediening kan hulle byvoeg op die bediening se Kalender-oortjie.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "'n Koördineerder van die bediening kan hulle byvoeg op die bediening se Kalender-oortjie. Genereer dan weer.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "'n Koördineerder bestuur die hele bediening — sy spanne, posisies, roosters en elke toewysing daarin.",
-  "A day a month does not have falls on its last day.": "'n Dag wat 'n maand nie het nie, val op sy laaste dag.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "'n Verstekvrywilliger behoort aan die rooster se bemanningsbehoeftes, nie aan een geval nie",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "'n Verstekvrywilliger kan net gekies word vir 'n posisie waarvoor hierdie rooster se bemanningsbehoeftes vra",
-  "A from and a to date in YYYY-MM-DD form are required": "'n Van- en 'n tot-datum in die vorm JJJJ-MM-DD word vereis",
-  "A minimum count is required": "'n Minimum getal word vereis",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "'n Bediening word geskep met sy eie kalender, vrywilligerspoel en eerste span, so die enigste dinge om hier te besluit is sy naam en wat dit doen.",
-  "A ministry name is required": "'n Bedieningnaam word vereis",
-  "A ministry needs at least one team. Rename it instead.": "'n Bediening het ten minste een span nodig. Hernoem dit eerder.",
-  "A ministry with that name already exists": "'n Bediening met daardie naam bestaan reeds",
-  "A ministry's own calendar cannot be opened to other ministries": "'n Bediening se eie kalender kan nie vir ander bedieninge oopgestel word nie",
-  "A position belongs to a team; choose one": "'n Posisie behoort aan 'n span; kies een",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "'n Posisie is 'n taak wat iemand in hierdie span doen, soos Espresso of Sangleier.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "'n Posisie is 'n rol waarin iemand dien, soos Espresso of Sangleier.",
-  "A position is required": "'n Posisie word vereis",
-  "A position name is required": "'n Posisienaam word vereis",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "'n Posisie met gekwalifiseerde vrywilligers kan nie in of uit 'n span beweeg wat aan 'n Sondagskoolklas gekoppel is nie, want dit sou verander wie die klas onderrig. Skep die posisie eerder in die ander span.",
-  "A position with that name already exists in this ministry": "'n Posisie met daardie naam bestaan reeds in hierdie bediening",
-  "A response must be accepted or declined": "'n Antwoord moet aanvaar of van die hand gewys word",
-  "A schedule belongs to a team; choose one": "'n Rooster behoort aan 'n span; kies een",
-  "A schedule name is required": "'n Roosternaam word vereis",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "'n Rooster sê watter kalendergeleenthede 'n span beman: 'n soort kerkdiens, 'n klas se vergaderings, of hierdie bediening se eie geleenthede. Voeg een by en genereer sy gevalle.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "'n Rooster sê watter kalendergeleenthede hierdie span dien: 'n soort kerkdiens, 'n klas se vergaderings, of sy bediening se eie geleenthede. Voeg een by en genereer sy gevalle.",
-  "A schedule that follows a class must name the class": "'n Rooster wat 'n klas volg, moet die klas noem",
-  "A schedule that follows an event type must name the event type": "'n Rooster wat 'n geleentheidsoort volg, moet die geleentheidsoort noem",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "'n Rooster wat een geleentheid beman, kan nie ander geleenthede volg nie; vee dit uit en voeg eerder 'n rooster by",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "'n Enkele lys van geleenthede, soos \"Kleuterkamer\" of \"Verwelkomer\", gehou onder Mense → Admin. Elke persoon word gemerk met die geleenthede waarmee hulle bereid is om te help, op die Vrywilliger-oortjie van hul rekord. Dit is al wat dit aanteken: daar is geen spanne, geen roosters, geen toewysings aan 'n datum en geen herinnerings-e-posse nie. Verslae en die persoonrekord is waar die merkers gebruik word.",
-  "A square picture of your face works best.": "'n Vierkantige foto van jou gesig werk die beste.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "'n Bemanningsbehoefte lys sy verstekvrywilligers in \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "'n Bemanningsvereiste behoort aan presies een van 'n rooster of 'n geval",
-  "A substitute has already been proposed for this assignment": "'n Plaasvervanger is reeds vir hierdie toewysing voorgestel",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "'n Spanleier kan hul eie span bestuur — sy posisies, sy roosters en wie daarin dien — en niks anders in die bediening nie.",
-  "A team name is required": "'n Spannaam word vereis",
-  "A team with that name already exists in this ministry": "'n Span met daardie naam bestaan reeds in hierdie bediening",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "'n Tema is 'n gids wat jou kerk na Include/themes/ op die bediener oplaai. Die stelselverstek word saam met ChurchCRM gelewer.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "'n Oorgangsinstelling. Die ou Vrywilligergeleenthede-bladsye en die nuwe Bedieninge-bladsye is albei beskikbaar, en 'n persoonrekord toon albei Vrywilliger-oortjies, duidelik benoem. Gebruik dit terwyl jy 'n kerk van V1 na V2 skuif, en skakel dan oor na net V2.",
-  "A volunteer": "'n Vrywilliger",
-  "A volunteer has declined an assignment": "'n Vrywilliger het 'n toewysing van die hand gewys",
-  "A volunteer has proposed a substitute": "'n Vrywilliger het 'n plaasvervanger voorgestel",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "'n Vrywilligerbestuurder kan hierdie bediening sonder 'n toekenning bestuur. Voeg 'n koördineerder by sodat iemand anders dit kan bestuur sonder om ook elke ander bediening aan hulle te gee.",
-  "A wedding date cannot be in the future.": "'n Troudatum kan nie in die toekoms wees nie.",
-  "Accepted": "Aanvaar",
-  "Account deleted": "Rekening uitgevee",
-  "Account unlocked": "Rekening ontsluit",
-  "Accounts": "Rekeninge",
-  "Active must be true or false": "Aktief moet waar of onwaar wees",
-  "Active now": "Nou Aktief",
-  "Add All": "Voeg almal by",
-  "Add Everyone in Cart": "Voeg almal in die keuse by",
-  "Add Volunteer": "Voeg vrywilliger by",
-  "Add Volunteers to Cart": "Voeg vrywilligers by die keuse",
-  "Add a family member": "Voeg 'n gesinslid by",
-  "Add a position first, then come back and say how many of them are needed.": "Voeg eers 'n posisie by, kom dan terug en sê hoeveel van hulle nodig is.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Voeg 'n tweede stap by jou aanmelding, sodat jou wagwoord alleen nie genoeg is om by jou rekening uit te kom nie.",
-  "Add at least one position to this team, then tick who can serve where.": "Voeg ten minste een posisie by hierdie span, merk dan wie waar kan dien.",
-  "Add coordinator": "Voeg koördineerder by",
-  "Add from Cart": "Voeg by vanaf keuse",
-  "Add its meetings first with New recurring event on the Calendar tab": "Voeg eers sy vergaderings by met Nuwe herhalende geleentheid op die Kalender-oortjie",
-  "Add people to the cart before adding them as volunteers": "Voeg mense by die keuse voordat jy hulle as vrywilligers byvoeg",
-  "Add position": "Voeg posisie by",
-  "Add schedule": "Voeg rooster by",
-  "Add team": "Voeg span by",
-  "Add them on the Calendar tab, then generate again.": "Voeg hulle by op die Kalender-oortjie, genereer dan weer.",
-  "Add them on the Calendar tab.": "Voeg hulle by op die Kalender-oortjie.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Voeg hierdie adres by jou kalenderprogram. Dit werk vanself op wanneer die kerkkalender verander.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Voeg hierdie bediening se geleenthede hier by: 'n werksdag, 'n klas wat elke Sondag vergader. Hulle kom op die kerkkalender, en jy kan hulle beman terwyl jy hulle skep."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

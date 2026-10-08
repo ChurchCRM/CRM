@@ -1,182 +1,50 @@
 {
-  "Select at least one classification to include in the directory.": "Dizine eklenecek en az bir sınıflandırma seçin.",
-  "Geocoding services": "Coğrafi kodlama hizmetleri",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Seçtiğiniz sırayla denenecek coğrafi kodlama hizmetleri. Nominatim (OpenStreetMap) dünya genelinde çalışır; US Census (US Census Bureau) yalnızca Amerika Birleşik Devletleri adreslerini kapsar. Kullanmak için US Census'ı da seçin. Hiçbiri seçilmezse Nominatim kullanılır.",
-  "New Record Defaults": "Yeni Kayıt Varsayılanları",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Bu işlem, Harita Ayarları'nda seçilen coğrafi kodlama hizmetlerini kullanarak harita koordinatı eksik olan her aile için koordinat bulur. Aileleri 50'şerli gruplar halinde işler; bir grup, tek bir coğrafi kodlama hizmetiyle yaklaşık bir dakika, daha fazla hizmetle daha uzun sürer. İşlem sürerken bu sayfayı açık bırakabilirsiniz. Devam edilsin mi?",
-  "Used for new records and for geocoding when a record has no country.": "Yeni kayıtlar ve ülkesi olmayan kayıtların coğrafi kodlaması için kullanılır.",
-  "Copy from Church Info": "Kilise Bilgilerinden Kopyala",
-  "Could not copy the church address.": "Kilise adresi kopyalanamadı.",
-  "Could not match the church country.": "Kilise ülkesi eşleştirilemedi.",
-  "Class lists, attendance sheets, and photo books": "Sınıf listeleri, yoklama çizelgeleri ve fotoğraf albümleri",
-  "Group membership lists and Sunday School class reports": "Hizmet üyelik listeleri ve Pazar Okulu sınıf raporları",
-  "Your fiscal year starts in %s.": "Mali yılınız %s ayında başlıyor.",
-  "An error occurred": "Bir hata oluştu",
-  "Approve": "Onayla",
-  "Approve selected": "Seçilenleri onayla",
-  "Approved": "Onaylandı",
-  "Change in People Settings": "Kişi Ayarları'nda değiştir",
-  "Could not approve the selected registrations": "Seçilen kayıtlar onaylanamadı",
-  "Could not approve this family": "Bu aile onaylanamadı",
-  "Pending Registrations": "Bekleyen Kayıtlar",
-  "Pending review": "İnceleme bekliyor",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Herkese açık kayıt formunuzdan gelen, inceleme bekleyen kayıtlar. E-postası veya telefonu olmayan kayıtlar işaretlenir; iletişime geçmeden önce iletişim bilgilerini doğrulayın.",
-  "Review now": "Şimdi incele",
-  "Review self registrations": "Kendi kendine kayıtları incele",
-  "Select month": "Ay seçin",
-  "Self-registration is disabled": "Kendi kendine kayıt devre dışı",
-  "Self-registration is enabled": "Kendi kendine kayıt etkin",
-  "The public registration form is turned off. Existing registrations are listed below.": "Herkese açık kayıt formu kapalı. Mevcut kayıtlar aşağıda listelenmiştir.",
-  "This family is not a pending self-registration": "Bu aile bekleyen bir kendi kendine kayıt değil",
-  "This person belongs to a family — approve the family instead": "Bu kişi bir aileye ait — bunun yerine aileyi onaylayın",
-  "This person is not a pending self-registration": "Bu kişi bekleyen bir kendi kendine kayıt değil",
-  "This self-registered family is pending review": "Kendi kendine kayıt olan bu aile inceleme bekliyor",
-  "Total registrations": "Toplam kayıt",
-  "Visitors can sign up on your public registration form.": "Ziyaretçiler herkese açık kayıt formunuzdan kaydolabilir.",
-  "Yesterday": "Dün",
-  "days ago": "gün önce",
-  "self-registrations are waiting for review": "kendi kendine kayıt inceleme bekliyor",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Doğum günleri kişiye, evlilik yıl dönümleri çifte hitap eder.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Bu rapordaki kişiler için posta etiketleri. Kendi adresi olmayan bir kişinin etiketi aile adresine yazılır.",
-  "One label for each couple.": "Her çift için bir etiket.",
-  "Print Labels": "Etiketleri Yazdır",
-  "That role is not one of this group's roles.": "Bu rol, bu grubun rollerinden biri değil.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" bu sayfanın tanıdığı bir takvim türü değil.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s hizmet edemiyor ve yerine %2$s kişisini önerdi.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s zaten %2$s gönüllü havuzunda ve yeniden yardım etmek istiyor.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s zaten %3$s içinde %2$s ile bağlantılı",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s, %2$s içinde %3$s olarak yer alıyor. Önce onu sınıftan çıkarın; burada yetkilendirmek onu sınıfın öğretmenlerinden biri yapar.",
-  "%1$s is not an event of %2$s": "%1$s, %2$s etkinliklerinden biri değil",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s bir Pazar Okulu sınıfı olarak kalır; öğretmenleri Hizmetler → %2$s → %3$s altında yönetilir. Önce ekiple bağlantısını kaldırın.",
-  "%1$s wants to help with %2$s": "%1$s, %2$s için yardım etmek istiyor",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s, %2$s için yardım etmek istiyor ve gönüllü havuzuna eklendi.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: En fazla %2$d, ancak %3$d varsayılan gönüllü seçildi. Birini kaldırın veya en fazla değerini artırın.",
-  "%d day": {
-    "one": "%d gün",
-    "other": "%d gün"
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d varsayılan başka bir nedenle atlandı (oluşum bitti, iptal edildi veya doldu)",
-    "other": "%d varsayılan başka bir nedenle atlandı (oluşum bitti, iptal edildi veya doldu)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d varsayılan atlandı: yetkilendirme iptal edildi",
-    "other": "%d varsayılan atlandı: yetkilendirme iptal edildi"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d varsayılan gönüllü atandı",
-    "other": "%d varsayılan gönüllü atandı"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d başarısız oldu",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın.",
-    "other": "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d yeni oluşum",
-    "other": "%d yeni oluşum"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Yaklaşan bir oluşum için hâlâ %d gönüllü gerekiyor.",
-    "other": "Yaklaşan bir oluşum için hâlâ %d gönüllü gerekiyor."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "%s Takvimi",
-  "%s Family": "%s Ailesi",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s, Pazar Okulu için öğretmen sağlamaz; bu nedenle ekipleri, programları ve etkinlikleri bir sınıf kullanamaz. Bir gönüllü yöneticisi bunu Hizmeti düzenle altından değiştirebilir.",
-  "%s email from the church": {
-    "one": "Kiliseden %s e-posta",
-    "other": "Kiliseden %s e-posta"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "%s ailesi",
-  "%s has declined a volunteer assignment.": "%s bir gönüllü görevini reddetti.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s hizmetinde Öğretmen adlı bir rol yok; bu nedenle öğretmenleri bir ekipten yönetilemez",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s için takvimde yaklaşan toplantı yok. Bir program, mevcut etkinlikleri izler: önce sınıfın toplantılarını, hizmetin Takvim sekmesindeki Yeni yinelenen etkinlik ile ekleyin.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s hâlâ hizmet etmesi bekleniyor. Mümkün değilse lütfen koordinatörle iletişime geçin.",
-  "%s not sent (%s): %s": "%s gönderilmedi (%s): %s",
-  "%s person in your household": {
-    "one": "Hanenizde %s kişi",
-    "other": "Hanenizde %s kişi"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s pozisyon",
-    "other": "%s pozisyon"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: aynı kişi iki kez varsayılan gönüllü olarak seçildi",
-  "(no subject)": "(konu yok)",
-  "A birthday cannot be in the future.": "Doğum tarihi gelecekte olamaz.",
-  "A calendar event": "Bir takvim etkinliği",
-  "A calendar id must be a number.": "Takvim kimliği bir sayı olmalıdır.",
-  "A class that no longer exists": "Artık var olmayan bir sınıf",
-  "A class with no meetings on the calendar cannot be chosen yet.": "Takvimde toplantısı olmayan bir sınıf henüz seçilemez.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "Takvimde toplantısı olmayan bir sınıf henüz seçilemez. Hizmetin koordinatörü, toplantıları hizmetin Takvim sekmesine ekler.",
-  "A class's meetings": "Bir sınıfın toplantıları",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "Bir koordinatör, normalde gönüllü yöneticisinin yapması gereken değişiklikler dahil bu hizmetteki her şeyi yönetebilir.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "Hizmetin koordinatörü bunları hizmetin Takvim sekmesine ekleyebilir.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "Hizmetin koordinatörü bunları hizmetin Takvim sekmesine ekleyebilir. Ardından yeniden oluşturun.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "Bir koordinatör tüm hizmeti yönetir — ekiplerini, pozisyonlarını, programlarını ve içindeki her görevlendirmeyi.",
-  "A day a month does not have falls on its last day.": "Bir ayda olmayan bir gün, o ayın son gününe denk gelir.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "Varsayılan gönüllü, tek bir oluşuma değil programın kadro ihtiyaçlarına aittir",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "Varsayılan gönüllü yalnızca bu programın kadro ihtiyaçlarının istediği bir pozisyon için seçilebilir",
-  "A from and a to date in YYYY-MM-DD form are required": "YYYY-AA-GG biçiminde bir başlangıç ve bitiş tarihi gereklidir",
-  "A minimum count is required": "Bir asgari sayı gereklidir",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "Bir hizmet kendi takvimi, gönüllü havuzu ve ilk ekibiyle oluşturulur; bu nedenle burada yalnızca adına ve ne yaptığına karar vermeniz yeterlidir.",
-  "A ministry name is required": "Hizmet adı gereklidir",
-  "A ministry needs at least one team. Rename it instead.": "Bir hizmetin en az bir ekibi olmalıdır. Bunun yerine yeniden adlandırın.",
-  "A ministry with that name already exists": "Bu adla bir hizmet zaten var",
-  "A ministry's own calendar cannot be opened to other ministries": "Bir hizmetin kendi takvimi diğer hizmetlere açılamaz",
-  "A position belongs to a team; choose one": "Bir pozisyon bir ekibe aittir; birini seçin",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "Pozisyon, bu ekipte birinin yaptığı bir iştir; örneğin Espresso veya Ezgi Lideri.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "Pozisyon, birinin hizmet ettiği bir roldür; örneğin Espresso veya Ezgi Lideri.",
-  "A position is required": "Pozisyon gereklidir",
-  "A position name is required": "Pozisyon adı gereklidir",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "Yetkili gönüllüleri olan bir pozisyon, bir Pazar Okulu sınıfına bağlı ekibe veya ekipten taşınamaz, çünkü bu sınıfı kimin öğrettiğini değiştirir. Bunun yerine pozisyonu diğer ekipte oluşturun.",
-  "A position with that name already exists in this ministry": "Bu hizmette bu adla bir pozisyon zaten var",
-  "A response must be accepted or declined": "Yanıt kabul veya ret olmalıdır",
-  "A schedule belongs to a team; choose one": "Bir program bir ekibe aittir; birini seçin",
-  "A schedule name is required": "Program adı gereklidir",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Program, bir ekibin hangi takvim etkinliklerinde görev alacağını belirler: bir ayin türü, bir sınıfın toplantıları veya hizmetin kendi etkinlikleri. Bir tane ekleyin ve oluşumlarını üretin.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Program, bu ekibin hangi takvim etkinliklerine hizmet edeceğini belirler: bir ayin türü, bir sınıfın toplantıları veya hizmetinin kendi etkinlikleri. Bir tane ekleyin ve oluşumlarını üretin.",
-  "A schedule that follows a class must name the class": "Bir sınıfı izleyen program, sınıfı belirtmelidir",
-  "A schedule that follows an event type must name the event type": "Bir etkinlik türünü izleyen program, etkinlik türünü belirtmelidir",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Tek bir etkinliğe görev veren program başka etkinlikleri izleyemez; silin ve bunun yerine bir program ekleyin",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "\"Kreş\" veya \"Karşılama\" gibi fırsatların tek bir listesi; Kişiler → Yönetim altında tutulur. Her kişi, kaydının Gönüllü sekmesinde yardım etmeye istekli olduğu fırsatlarla etiketlenir. Kaydedilen tek şey budur: ekip, program, tarihe görevlendirme veya hatırlatma e-postası yoktur. Etiketler raporlarda ve kişi kaydında kullanılır.",
-  "A square picture of your face works best.": "Yüzünüzün kare bir fotoğrafı en iyi sonucu verir.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Bir kadro ihtiyacı, varsayılan gönüllülerini \"defaults\": [{personId, accepted}] içinde listeler",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Bir kadro gereksinimi tam olarak bir programa veya bir oluşuma aittir",
-  "A substitute has already been proposed for this assignment": "Bu görevlendirme için zaten bir yedek önerildi",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "Bir ekip lideri yalnızca kendi ekibini — pozisyonlarını, programlarını ve bunlarda kimin hizmet ettiğini — yönetebilir, hizmetteki başka hiçbir şeyi yönetemez.",
-  "A team name is required": "Ekip adı gereklidir",
-  "A team with that name already exists in this ministry": "Bu hizmette bu adla bir ekip zaten var",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Tema, kilisenizin sunucudaki Include/themes/ klasörüne yüklediği bir klasördür. Sistem varsayılanı ChurchCRM ile birlikte gelir.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "Bir geçiş ayarı. Eski Gönüllü Fırsatları sayfaları ve yeni Hizmetler sayfaları birlikte kullanılabilir ve bir kişi kaydında her iki Gönüllü sekmesi de açıkça etiketlenmiş olarak görünür. Bir kiliseyi V1'den V2'ye taşırken kullanın, ardından yalnızca V2'ye geçin.",
-  "A volunteer": "Bir gönüllü",
-  "A volunteer has declined an assignment": "Bir gönüllü bir görevlendirmeyi reddetti",
-  "A volunteer has proposed a substitute": "Bir gönüllü yedek önerdi",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "Gönüllü yöneticisi, yetki verilmeden bu hizmeti yönetebilir. Başka birinin diğer tüm hizmetlere de erişmeden bunu yönetmesi için bir koordinatör ekleyin.",
-  "A wedding date cannot be in the future.": "Evlilik tarihi gelecekte olamaz.",
-  "Accepted": "Kabul edildi",
-  "Account deleted": "Hesap silindi",
-  "Account unlocked": "Hesap Kilidi",
-  "Accounts": "Hesaplar",
-  "Active must be true or false": "Etkin değeri doğru veya yanlış olmalıdır",
-  "Active now": "Şu Anda Aktif",
-  "Add All": "Tümünü Ekle",
-  "Add Everyone in Cart": "Seçimdeki Herkesi Ekle",
-  "Add Volunteer": "Gönüllü Ekle",
-  "Add Volunteers to Cart": "Gönüllüleri Seçime Ekle",
-  "Add a family member": "Aile üyesi ekle",
-  "Add a position first, then come back and say how many of them are needed.": "Önce bir pozisyon ekleyin, sonra geri gelip kaçına ihtiyaç olduğunu belirtin.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Girişinize ikinci bir adım ekleyin; böylece hesabınıza ulaşmak için yalnızca parolanız yeterli olmaz.",
-  "Add at least one position to this team, then tick who can serve where.": "Bu ekibe en az bir pozisyon ekleyin, ardından kimin nerede hizmet edebileceğini işaretleyin.",
-  "Add coordinator": "Koordinatör ekle",
-  "Add from Cart": "Seçimden ekle",
-  "Add its meetings first with New recurring event on the Calendar tab": "Önce Takvim sekmesindeki Yeni yinelenen etkinlik ile toplantılarını ekleyin",
-  "Add people to the cart before adding them as volunteers": "Gönüllü olarak eklemeden önce kişileri seçime ekleyin",
-  "Add position": "Pozisyon ekle",
-  "Add schedule": "Program ekle",
-  "Add team": "Ekip ekle",
-  "Add them on the Calendar tab, then generate again.": "Bunları Takvim sekmesinde ekleyin, sonra yeniden oluşturun.",
-  "Add them on the Calendar tab.": "Bunları Takvim sekmesinde ekleyin.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Bu adresi takvim uygulamanıza ekleyin. Kilise takvimi değiştiğinde kendiliğinden güncellenir.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Bu hizmetin etkinliklerini buraya ekleyin: bir çalışma günü, her Pazar toplanan bir sınıf. Kilise takvimine eklenir ve oluştururken kadrosunu belirleyebilirsiniz."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

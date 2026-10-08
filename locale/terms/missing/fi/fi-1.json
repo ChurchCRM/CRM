@@ -1,182 +1,50 @@
 {
-  "Select at least one classification to include in the directory.": "Valitse vähintään yksi luokitus sisällytettäväksi hakemistoon.",
-  "Geocoding services": "Geokoodauspalvelut",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Geokoodauspalvelut, joita kokeillaan valitsemassasi järjestyksessä. Nominatim (OpenStreetMap) toimii maailmanlaajuisesti; US Census (US Census Bureau) kattaa vain Yhdysvaltojen osoitteet. Valitse myös US Census, jos haluat käyttää sitä. Jos mitään ei ole valittu, käytetään Nominatimia.",
-  "New Record Defaults": "Uusien tietueiden oletusarvot",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Tämä hakee karttakoordinaatit jokaiselle perheelle, jolta ne puuttuvat, käyttäen karttaasetuksissa valittuja geokoodauspalveluita. Perheet käsitellään 50 perheen erissä; yksi erä kestää noin minuutin yhdellä geokoodauspalvelulla ja pidempään useammalla. Voit pitää tämän sivun auki ajon aikana. Jatketaanko?",
-  "Used for new records and for geocoding when a record has no country.": "Käytetään uusille tietueille ja geokoodaukseen, kun tietueella ei ole maata.",
-  "Copy from Church Info": "Kopioi seurakunnan tiedoista",
-  "Could not copy the church address.": "Seurakunnan osoitetta ei voitu kopioida.",
-  "Could not match the church country.": "Seurakunnan maata ei voitu täsmäyttää.",
-  "Class lists, attendance sheets, and photo books": "Luokkaluettelot, osallistumislistat ja valokuvakirjat",
-  "Group membership lists and Sunday School class reports": "Ryhmien jäsenluettelot ja pyhäkoululuokkien raportit",
-  "Your fiscal year starts in %s.": "Tilikautesi alkaa %s.",
-  "An error occurred": "Tapahtui virhe",
-  "Approve": "Hyväksy",
-  "Approve selected": "Hyväksy valitut",
-  "Approved": "Hyväksytty",
-  "Change in People Settings": "Muuta henkilöasetuksissa",
-  "Could not approve the selected registrations": "Valittuja ilmoittautumisia ei voitu hyväksyä",
-  "Could not approve this family": "Tätä perhettä ei voitu hyväksyä",
-  "Pending Registrations": "Odottavat ilmoittautumiset",
-  "Pending review": "Odottaa tarkistusta",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Julkisen ilmoittautumislomakkeen kautta tulleet ilmoittautumiset odottavat tarkistusta. Merkinnät, joilla ei ole sähköpostia tai puhelinnumeroa, on merkitty – tarkista yhteystiedot ennen yhteydenottoa.",
-  "Review now": "Tarkista nyt",
-  "Review self registrations": "Tarkista itseilmoittautumiset",
-  "Select month": "Valitse kuukausi",
-  "Self-registration is disabled": "Itseilmoittautuminen ei ole käytössä",
-  "Self-registration is enabled": "Itseilmoittautuminen on käytössä",
-  "The public registration form is turned off. Existing registrations are listed below.": "Julkinen ilmoittautumislomake on suljettu. Aiemmat ilmoittautumiset on lueteltu alla.",
-  "This family is not a pending self-registration": "Tämä perhe ei ole odottava itseilmoittautuminen",
-  "This person belongs to a family — approve the family instead": "Tämä henkilö kuuluu perheeseen – hyväksy sen sijaan perhe",
-  "This person is not a pending self-registration": "Tämä henkilö ei ole odottava itseilmoittautuminen",
-  "This self-registered family is pending review": "Tämä itse ilmoittautunut perhe odottaa tarkistusta",
-  "Total registrations": "Ilmoittautumisia yhteensä",
-  "Visitors can sign up on your public registration form.": "Vierailijat voivat ilmoittautua julkisella ilmoittautumislomakkeellasi.",
-  "Yesterday": "Eilen",
-  "days ago": "päivää sitten",
-  "self-registrations are waiting for review": "itseilmoittautumista odottaa tarkistusta",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Syntymäpäiväkortit osoitetaan henkilölle ja hääpäiväkortit pariskunnalle.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Postitustarrat tämän raportin henkilöille. Henkilö, jolla ei ole omaa osoitetta, osoitetaan perheen osoitteeseen.",
-  "One label for each couple.": "Yksi tarra kutakin paria kohti.",
-  "Print Labels": "Tulosta tarrat",
-  "That role is not one of this group's roles.": "Tämä rooli ei ole tämän ryhmän rooleja.",
-  "\"%s\" is not a kind of calendar this page knows about.": "”%s” ei ole kalenterityyppi, jonka tämä sivu tuntee.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s ei voi palvella ja on ehdottanut sijaiseksi henkilöä %2$s.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s on jo vapaaehtoisjoukossa %2$s ja haluaa auttaa uudelleen.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s on jo linkitetty kohteeseen %2$s kohteessa %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s on luokassa %2$s roolissa %3$s. Poista hänet ensin luokasta; tässä kelpuuttaminen tekee hänestä sitten yhden sen opettajista.",
-  "%1$s is not an event of %2$s": "%1$s ei ole tapahtuma kohteessa %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s pysyy pyhäkoululuokkana, kun sen opettajia hallitaan kohdassa Työalat → %2$s → %3$s. Irrota se ensin tiimistä.",
-  "%1$s wants to help with %2$s": "%1$s haluaa auttaa tehtävässä %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s haluaa auttaa tehtävässä %2$s ja on lisätty sen vapaaehtoisjoukkoon.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: enimmäismäärä on %2$d, mutta oletusvapaaehtoisia on valittu %3$d. Poista yksi tai nosta enimmäismäärää.",
-  "%d day": {
-    "one": "%d päivä",
-    "other": "%d päivää"
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d oletus ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu tai täynnä)",
-    "other": "%d oletusta ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu tai täynnä)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d oletus ohitettu: kelpuutus peruttu",
-    "other": "%d oletusta ohitettu: kelpuutus peruttu"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d oletusvapaaehtoinen määrätty",
-    "other": "%d oletusvapaaehtoista määrätty"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d epäonnistui",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Tähän tehtävään tarvitaan vielä %d vapaaehtoinen lisää. Avaa tapahtumakerta täyttääksesi aukon.",
-    "other": "Tähän tehtävään tarvitaan vielä %d vapaaehtoista lisää. Avaa tapahtumakerta täyttääksesi aukon."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d uusi tapahtumakerta",
-    "other": "%d uutta tapahtumakertaa"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Tulevalle tapahtumakerralle tarvitaan vielä %d vapaaehtoinen.",
-    "other": "Tuleville tapahtumakerroille tarvitaan vielä %d vapaaehtoista."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "%s-kalenteri",
-  "%s Family": "Perhe %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s ei tarjoa opettajia pyhäkouluun, joten sen tiimit, aikataulut ja tapahtumat eivät voi käyttää luokkaa. Vapaaehtoisvastaava voi muuttaa tämän kohdassa Muokkaa työalaa.",
-  "%s email from the church": {
-    "one": "%s sähköposti seurakunnalta",
-    "other": "%s sähköpostia seurakunnalta"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "Perhe %s",
-  "%s has declined a volunteer assignment.": "%s on kieltäytynyt vapaaehtoistehtävästä.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "Työalalla %s ei ole roolia nimeltä Opettaja, joten sen opettajia ei voi hallita tiimistä",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "Kalenterissa ei ole tulevia kokoontumisia työalalle %s. Aikataulu seuraa jo olemassa olevia tapahtumia: lisää ensin luokan kokoontumiset työalan Kalenteri-välilehdellä kohdasta Uusi toistuva tapahtuma.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s odotetaan edelleen palvelemaan. Ota yhteyttä koordinaattoriin, jos se ei ole mahdollista.",
-  "%s not sent (%s): %s": "%s ei lähetetty (%s): %s",
-  "%s person in your household": {
-    "one": "%s henkilö taloudessasi",
-    "other": "%s henkilöä taloudessasi"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s tehtävä",
-    "other": "%s tehtävää"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: sama henkilö on valittu kahdesti oletusvapaaehtoiseksi",
-  "(no subject)": "(ei aihetta)",
-  "A birthday cannot be in the future.": "Syntymäpäivä ei voi olla tulevaisuudessa.",
-  "A calendar event": "Kalenteritapahtuma",
-  "A calendar id must be a number.": "Kalenteritunnuksen on oltava luku.",
-  "A class that no longer exists": "Luokka, jota ei enää ole",
-  "A class with no meetings on the calendar cannot be chosen yet.": "Luokkaa, jolla ei ole kokoontumisia kalenterissa, ei voi vielä valita.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "Luokkaa, jolla ei ole kokoontumisia kalenterissa, ei voi vielä valita. Työalan koordinaattori lisää sen kokoontumiset työalan Kalenteri-välilehdellä.",
-  "A class's meetings": "Luokan kokoontumiset",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "Koordinaattori voi hallita kaikkea tällä työalalla, myös tekemällä muutoksia, jotka muuten kuuluisivat vapaaehtoisvastaavalle.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "Työalan koordinaattori voi lisätä ne työalan Kalenteri-välilehdellä.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "Työalan koordinaattori voi lisätä ne työalan Kalenteri-välilehdellä. Luo sitten uudelleen.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "Koordinaattori johtaa koko työalaa – sen tiimejä, tehtäviä, aikatauluja ja kaikkia tehtävämäärityksiä.",
-  "A day a month does not have falls on its last day.": "Päivä, jota kuukaudessa ei ole, osuu kuukauden viimeiselle päivälle.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "Oletusvapaaehtoinen kuuluu aikataulun miehitystarpeisiin, ei yhteen tapahtumakertaan",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "Oletusvapaaehtoisen voi valita vain tehtävään, jota tämän aikataulun miehitystarpeet edellyttävät",
-  "A from and a to date in YYYY-MM-DD form are required": "Alku- ja loppupäivämäärä muodossa VVVV-KK-PP vaaditaan",
-  "A minimum count is required": "Vähimmäismäärä vaaditaan",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "Työala luodaan omalla kalenterillaan, vapaaehtoisjoukollaan ja ensimmäisellä tiimillään, joten tässä tarvitsee päättää vain sen nimi ja tarkoitus.",
-  "A ministry name is required": "Työalan nimi vaaditaan",
-  "A ministry needs at least one team. Rename it instead.": "Työalalla on oltava vähintään yksi tiimi. Nimeä se uudelleen.",
-  "A ministry with that name already exists": "Tämänniminen työala on jo olemassa",
-  "A ministry's own calendar cannot be opened to other ministries": "Työalan omaa kalenteria ei voi avata muille työaloille",
-  "A position belongs to a team; choose one": "Tehtävä kuuluu tiimiin; valitse yksi",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "Tehtävä on työ, jota joku tekee tässä tiimissä, kuten Espresso tai Laulunjohtaja.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "Tehtävä on rooli, jossa joku palvelee, kuten Espresso tai Laulunjohtaja.",
-  "A position is required": "Tehtävä vaaditaan",
-  "A position name is required": "Tehtävän nimi vaaditaan",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "Tehtävää, jolla on kelpuutettuja vapaaehtoisia, ei voi siirtää pyhäkoululuokkaan linkitettyyn tiimiin tai sieltä pois, koska se muuttaisi luokan opettajia. Luo tehtävä sen sijaan toiseen tiimiin.",
-  "A position with that name already exists in this ministry": "Tämännimisen tehtävä on jo tällä työalalla",
-  "A response must be accepted or declined": "Vastaus on joko hyväksyttävä tai hylättävä",
-  "A schedule belongs to a team; choose one": "Aikataulu kuuluu tiimiin; valitse yksi",
-  "A schedule name is required": "Aikataulun nimi vaaditaan",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Aikataulu kertoo, mitkä kalenteritapahtumat tiimi miehittää: jumalanpalveluksen tyyppi, luokan kokoontumiset tai työalan omat tapahtumat. Lisää yksi ja luo sen tapahtumakerrat.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Aikataulu kertoo, mitkä kalenteritapahtumat tämä tiimi palvelee: jumalanpalveluksen tyyppi, luokan kokoontumiset tai työalan omat tapahtumat. Lisää yksi ja luo sen tapahtumakerrat.",
-  "A schedule that follows a class must name the class": "Luokkaa seuraavalle aikataululle on annettava luokka",
-  "A schedule that follows an event type must name the event type": "Tapahtumatyyppiä seuraavalle aikataululle on annettava tapahtumatyyppi",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Aikataulu, joka miehittää yhden tapahtuman, ei voi seurata muita tapahtumia; poista se ja lisää sen sijaan aikataulu",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "Yksinkertainen luettelo tehtävistä, kuten ”Lastenhoito” tai ”Vastaanottaja”, ylläpidetään kohdassa Ihmiset → Ylläpito. Kullekin henkilölle merkitään tehtävät, joihin hän on valmis auttamaan, hänen tietueensa Vapaaehtoinen-välilehdellä. Se on kaikki, mitä tallennetaan: tiimejä, aikatauluja, päivämääriin määrityksiä tai muistutussähköposteja ei ole. Merkintöjä käytetään raporteissa ja henkilön tietueessa.",
-  "A square picture of your face works best.": "Neliönmuotoinen kasvokuva toimii parhaiten.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Miehitystarve luettelee oletusvapaaehtoisensa kohdassa \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Miehitysvaatimus kuuluu täsmälleen yhdelle: aikataululle tai tapahtumakerralle",
-  "A substitute has already been proposed for this assignment": "Tähän tehtävämääritykseen on jo ehdotettu sijaista",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "Tiimin vetäjä voi hallita omaa tiimiään – sen tehtäviä, aikatauluja ja sitä, kuka niissä palvelee – mutta ei mitään muuta työalalla.",
-  "A team name is required": "Tiimin nimi vaaditaan",
-  "A team with that name already exists in this ministry": "Tämännimisen tiimi on jo tällä työalalla",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Teema on kansio, jonka seurakuntasi lataa palvelimelle hakemistoon Include/themes/. Järjestelmän oletusteema tulee ChurchCRM:n mukana.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "Siirtymäasetus. Vanhat Vapaaehtoistehtävät-sivut ja uudet Työalat-sivut ovat molemmat käytettävissä, ja henkilön tietueessa näkyy molemmat Vapaaehtoinen-välilehdet selkeästi nimettyinä. Käytä tätä, kun siirrät seurakuntaa V1:stä V2:een, ja vaihda sitten pelkkään V2:een.",
-  "A volunteer": "Vapaaehtoinen",
-  "A volunteer has declined an assignment": "Vapaaehtoinen on kieltäytynyt tehtävästä",
-  "A volunteer has proposed a substitute": "Vapaaehtoinen on ehdottanut sijaista",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "Vapaaehtoisvastaava voi johtaa tätä työalaa ilman erillistä oikeutta. Lisää koordinaattori, jotta joku muu voi johtaa sitä ilman, että hän saa kaikki muutkin työalat.",
-  "A wedding date cannot be in the future.": "Hääpäivä ei voi olla tulevaisuudessa.",
-  "Accepted": "Hyväksytty",
-  "Account deleted": "Tili poistettu",
-  "Account unlocked": "Tilin lukitus avattu",
-  "Accounts": "Tilit",
-  "Active must be true or false": "Aktiivisen on oltava tosi tai epätosi",
-  "Active now": "Aktiivinen nyt",
-  "Add All": "Lisää kaikki",
-  "Add Everyone in Cart": "Lisää kaikki valinnassa olevat",
-  "Add Volunteer": "Lisää vapaaehtoinen",
-  "Add Volunteers to Cart": "Lisää vapaaehtoiset valintaan",
-  "Add a family member": "Lisää perheenjäsen",
-  "Add a position first, then come back and say how many of them are needed.": "Lisää ensin tehtävä ja palaa sitten kertomaan, kuinka monta heitä tarvitaan.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Lisää kirjautumiseesi toinen vaihe, jotta pelkkä salasana ei riitä tilillesi pääsyyn.",
-  "Add at least one position to this team, then tick who can serve where.": "Lisää tähän tiimiin vähintään yksi tehtävä ja merkitse sitten, kuka voi palvella missäkin.",
-  "Add coordinator": "Lisää koordinaattori",
-  "Add from Cart": "Lisää valinnasta",
-  "Add its meetings first with New recurring event on the Calendar tab": "Lisää ensin sen kokoontumiset Kalenteri-välilehdellä kohdasta Uusi toistuva tapahtuma",
-  "Add people to the cart before adding them as volunteers": "Lisää henkilöt valintaan ennen kuin lisäät heidät vapaaehtoisiksi",
-  "Add position": "Lisää tehtävä",
-  "Add schedule": "Lisää aikataulu",
-  "Add team": "Lisää tiimi",
-  "Add them on the Calendar tab, then generate again.": "Lisää ne Kalenteri-välilehdellä ja luo sitten uudelleen.",
-  "Add them on the Calendar tab.": "Lisää ne Kalenteri-välilehdellä.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Lisää tämä osoite kalenterisovellukseesi. Se päivittyy itsestään, kun seurakunnan kalenteri muuttuu.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Lisää tämän työalan tapahtumat tähän: työpäivä, luokka joka kokoontuu joka sunnuntai. Ne tulevat seurakunnan kalenteriin, ja voit miehittää ne samalla kun luot ne."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

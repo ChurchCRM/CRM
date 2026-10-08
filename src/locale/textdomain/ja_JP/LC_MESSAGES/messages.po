@@ -18735,3 +18735,4443 @@ msgstr "配偶者の役割"
 msgid "Uppercase Zip/Postcodes"
 msgstr "郵便番号を大文字にする"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "ディレクトリに含める分類を少なくとも1つ選択してください。"
+
+#: 
+msgid "Geocoding services"
+msgstr "ジオコーディングサービス"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "試すジオコーディングサービスを、選択した順に指定します。Nominatim（OpenStreetMap）は世界中で利用できます。US Census（米国国勢調査局）は米国の住所のみ対象です。US Census を使うには、これも選択してください。何も選択しない場合は Nominatim が使用されます。"
+
+#: 
+msgid "New Record Defaults"
+msgstr "新規レコードの初期値"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "地図設定で選択したジオコーディングサービスを使い、座標が未設定のすべての家族の地図座標を検索します。家族を50件ずつのバッチで処理し、1つのジオコーディングサービスでは1バッチに約1分、サービスが増えるとさらに時間がかかります。実行中もこのページを開いたままにできます。続行しますか？"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "新規レコードや、国が未設定のレコードのジオコーディングに使用されます。"
+
+#: 
+msgid "Copy from Church Info"
+msgstr "教会情報からコピー"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "教会の住所をコピーできませんでした。"
+
+#: 
+msgid "Could not match the church country."
+msgstr "教会の国を一致させることができませんでした。"
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "クラス名簿、出席表、フォトブック"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "グループの会員名簿と教会学校クラスのレポート"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "会計年度は %s に始まります。"
+
+#: 
+msgid "An error occurred"
+msgstr "エラーが発生しました"
+
+#: 
+msgid "Approve"
+msgstr "承認"
+
+#: 
+msgid "Approve selected"
+msgstr "選択した項目を承認"
+
+#: 
+msgid "Approved"
+msgstr "承認済み"
+
+#: 
+msgid "Change in People Settings"
+msgstr "人々設定で変更"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "選択した登録を承認できませんでした"
+
+#: 
+msgid "Could not approve this family"
+msgstr "この家族を承認できませんでした"
+
+#: 
+msgid "Pending Registrations"
+msgstr "保留中の登録"
+
+#: 
+msgid "Pending review"
+msgstr "審査待ち"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "公開登録フォームから届いた、審査待ちの登録です。メールアドレスも電話番号もない登録にはフラグが付いています。連絡する前に連絡先を確認してください。"
+
+#: 
+msgid "Review now"
+msgstr "今すぐ審査"
+
+#: 
+msgid "Review self registrations"
+msgstr "自己登録を審査"
+
+#: 
+msgid "Select month"
+msgstr "月を選択"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "自己登録は無効です"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "自己登録は有効です"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "公開登録フォームはオフになっています。既存の登録は以下に表示されています。"
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "この家族は保留中の自己登録ではありません"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "この人は家族に所属しています。代わりに家族を承認してください"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "この人は保留中の自己登録ではありません"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "この自己登録の家族は審査待ちです"
+
+#: 
+msgid "Total registrations"
+msgstr "登録の合計"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "訪問者は公開登録フォームから登録できます。"
+
+#: 
+msgid "Yesterday"
+msgstr "昨日"
+
+#: 
+msgid "days ago"
+msgstr "日前"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "件の自己登録が審査待ちです"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "誕生日は本人宛て、結婚記念日は夫婦宛てになります。"
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "このレポートの対象者の宛名ラベルです。本人の住所がない人は、家族の住所宛てになります。"
+
+#: 
+msgid "One label for each couple."
+msgstr "夫婦ごとに1枚のラベル。"
+
+#: 
+msgid "Print Labels"
+msgstr "ラベルを印刷"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "その役割は、このグループの役割ではありません。"
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "「%s」は、このページが扱うカレンダーの種類ではありません。"
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s は奉仕できないため、代わりに %2$s を提案しました。"
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s はすでに %2$s の奉仕者プールに入っており、再び奉仕を希望しています。"
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s はすでに %3$s の %2$s にリンクされています"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s は %2$s に %3$s として所属しています。先にクラスから外してください。ここで資格を付与すると、クラスの教師の一人になります。"
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s は %2$s の行事ではありません"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s は教会学校のクラスのままで、その教師はミニストリー → %2$s → %3$s で管理されます。先にチームとのリンクを解除してください。"
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s は %2$s の奉仕を希望しています"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s は %2$s の奉仕を希望しており、その奉仕者プールに追加されました。"
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s：最大は %2$d ですが、既定の奉仕者が %3$d 人選ばれています。1人外すか、最大を増やしてください。"
+
+#: 
+msgid "%d failed"
+msgstr "%d 件失敗しました"
+
+#: 
+msgid "%s Calendar"
+msgstr "%s カレンダー"
+
+#: 
+msgid "%s Family"
+msgstr "%s 家族"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s は教会学校の教師を提供しないため、そのチーム、スケジュール、行事ではクラスを使用できません。奉仕者マネージャーがミニストリーの編集で変更できます。"
+
+#: 
+msgid "%s family"
+msgstr "%s 家族"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s が奉仕の割り当てを辞退しました。"
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s には「教師」という名前の役割がないため、教師をチームから管理できません"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s のカレンダーには今後の集会がありません。スケジュールは既存の行事に従います。先に、ミニストリーのカレンダータブにある「新しい定期行事」でクラスの集会を追加してください。"
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s は引き続き奉仕する予定です。できない場合は、コーディネーターに連絡してください。"
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s を送信できませんでした（%s）：%s"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s：同じ人が既定の奉仕者として2回選ばれています"
+
+#: 
+msgid "(no subject)"
+msgstr "（件名なし）"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "誕生日は未来の日付にできません。"
+
+#: 
+msgid "A calendar event"
+msgstr "カレンダーの行事"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "カレンダーIDは数値でなければなりません。"
+
+#: 
+msgid "A class that no longer exists"
+msgstr "存在しなくなったクラス"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "カレンダーに集会がないクラスは、まだ選択できません。"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "カレンダーに集会がないクラスは、まだ選択できません。ミニストリーのコーディネーターが、ミニストリーのカレンダータブで集会を追加できます。"
+
+#: 
+msgid "A class's meetings"
+msgstr "クラスの集会"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "コーディネーターは、このミニストリーのすべてを管理できます。奉仕者マネージャーが行うはずの変更も含まれます。"
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "ミニストリーのコーディネーターが、ミニストリーのカレンダータブで追加できます。"
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "ミニストリーのコーディネーターが、ミニストリーのカレンダータブで追加できます。その後、もう一度生成してください。"
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "コーディネーターはミニストリー全体（チーム、役割、スケジュール、すべての割り当て）を運営します。"
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "その月にない日は、月の最終日になります。"
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "既定の奉仕者は、1回ごとの開催ではなく、スケジュールの必要人員に属します"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "既定の奉仕者は、このスケジュールの必要人員が求める役割にのみ選択できます"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "開始日と終了日を YYYY-MM-DD 形式で指定してください"
+
+#: 
+msgid "A minimum count is required"
+msgstr "最小人数が必要です"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "ミニストリーは、専用のカレンダー、奉仕者プール、最初のチームとともに作成されるため、ここで決めるのは名前と活動内容だけです。"
+
+#: 
+msgid "A ministry name is required"
+msgstr "ミニストリー名が必要です"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "ミニストリーには少なくとも1つのチームが必要です。代わりに名前を変更してください。"
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "その名前のミニストリーはすでに存在します"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "ミニストリー専用のカレンダーを他のミニストリーに公開することはできません"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "役割はチームに属します。チームを選択してください"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "役割とは、このチームで誰かが担当する仕事です（例：エスプレッソ、賛美リーダー）。"
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "役割とは、誰かが奉仕する担当です（例：エスプレッソ、賛美リーダー）。"
+
+#: 
+msgid "A position is required"
+msgstr "役割が必要です"
+
+#: 
+msgid "A position name is required"
+msgstr "役割名が必要です"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "資格のある奉仕者がいる役割は、教会学校のクラスにリンクされたチームへの移動や、そこからの移動はできません。クラスの教師が変わってしまうためです。代わりに、もう一方のチームで役割を作成してください。"
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "その名前の役割は、このミニストリーにすでに存在します"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "応答は承諾または辞退のいずれかでなければなりません"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "スケジュールはチームに属します。チームを選択してください"
+
+#: 
+msgid "A schedule name is required"
+msgstr "スケジュール名が必要です"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "スケジュールは、チームが担当するカレンダーの行事（礼拝の種類、クラスの集会、またはこのミニストリー独自の行事）を定めます。スケジュールを追加して、開催回を生成してください。"
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "スケジュールは、このチームが奉仕するカレンダーの行事（礼拝の種類、クラスの集会、またはミニストリー独自の行事）を定めます。スケジュールを追加して、開催回を生成してください。"
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "クラスに従うスケジュールには、クラスを指定する必要があります"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "行事の種類に従うスケジュールには、行事の種類を指定する必要があります"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "1つの行事を担当するスケジュールは、他の行事に従うことができません。削除して、代わりにスケジュールを追加してください"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "「保育」や「受付係」のような奉仕の機会を1つにまとめた一覧で、人々 → 管理の下で管理されます。各人には、その人の記録のボランティアタブで、手伝ってもよい奉仕の機会がタグ付けされます。記録されるのはそれだけで、チーム、日付への割り当て、リマインダーメールはありません。タグはレポートと個人の記録で使われます。"
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "正方形の顔写真が最適です。"
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "必要人員の既定の奉仕者は「defaults」に指定します：[{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "必要人員は、スケジュールまたは開催回のどちらか1つにのみ属します"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "この割り当てには、すでに代理が提案されています"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "チームリーダーは、自分のチーム（その役割、スケジュール、奉仕する人）を管理できますが、ミニストリー内の他のことは管理できません。"
+
+#: 
+msgid "A team name is required"
+msgstr "チーム名が必要です"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "その名前のチームは、このミニストリーにすでに存在します"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "テーマは、教会がサーバー上の Include/themes/ にアップロードするフォルダーです。システム既定のテーマは ChurchCRM に付属しています。"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "移行用の設定です。従来のボランティア機会のページと新しいミニストリーのページの両方が利用でき、個人の記録には2つのボランティアタブが明記されて表示されます。教会を V1 から V2 に移行する間に使用し、その後は V2 のみに切り替えてください。"
+
+#: 
+msgid "A volunteer"
+msgstr "奉仕者"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "奉仕者が割り当てを辞退しました"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "奉仕者が代理を提案しました"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "奉仕者マネージャーは、権限の付与なしでこのミニストリーを運営できます。他のミニストリーまですべて任せることなく、別の人に運営を任せたい場合は、コーディネーターを追加してください。"
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "結婚記念日は未来の日付にできません。"
+
+#: 
+msgid "Accepted"
+msgstr "承諾済み"
+
+#: 
+msgid "Account deleted"
+msgstr "アカウントを削除しました"
+
+#: 
+msgid "Account unlocked"
+msgstr "アカウントがロック解除"
+
+#: 
+msgid "Accounts"
+msgstr "アカウント"
+
+#: 
+msgid "Active must be true or false"
+msgstr "有効は true または false でなければなりません"
+
+#: 
+msgid "Active now"
+msgstr "現在アクティブ"
+
+#: 
+msgid "Add All"
+msgstr "すべて追加"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "カートの全員を追加"
+
+#: 
+msgid "Add Volunteer"
+msgstr "奉仕者を追加"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "奉仕者を選択に追加"
+
+#: 
+msgid "Add a family member"
+msgstr "家族を追加"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "先に役割を追加してから、それぞれ何人必要かを指定してください。"
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "サインインに第2のステップを追加して、パスワードだけではアカウントにアクセスできないようにします。"
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "このチームに役割を少なくとも1つ追加し、誰がどこで奉仕できるかにチェックを入れてください。"
+
+#: 
+msgid "Add coordinator"
+msgstr "コーディネーターを追加"
+
+#: 
+msgid "Add from Cart"
+msgstr "選択から追加"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "先にカレンダータブの「新しい定期行事」で集会を追加してください"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "奉仕者として追加する前に、人を選択に追加してください"
+
+#: 
+msgid "Add position"
+msgstr "役割を追加"
+
+#: 
+msgid "Add schedule"
+msgstr "スケジュールを追加"
+
+#: 
+msgid "Add team"
+msgstr "チームを追加"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "カレンダータブで追加してから、もう一度生成してください。"
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "カレンダータブで追加してください。"
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "このアドレスをカレンダーアプリに追加してください。教会のカレンダーが変更されると自動的に更新されます。"
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "このミニストリーの行事（作業の日、毎週日曜に集まるクラスなど）をここに追加します。教会のカレンダーに載り、作成と同時に奉仕者を割り当てることもできます。"
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "メンバーポータル経由で追加され、審査待ちです：%s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "追加しました。奉仕できる役割にチェックを入れてください"
+
+#: 
+msgid "Address Line 2"
+msgstr "住所2行目"
+
+#: 
+msgid "Admin Console"
+msgstr "管理コンソール"
+
+#: 
+msgid "Administrator permission required"
+msgstr "管理者権限が必要です"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "この役割をメンバーポータルの「募集中の奉仕」ページに掲載します。"
+
+#: 
+msgid "All Teams"
+msgstr "すべてのチーム"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "会員が自分自身と家族の誕生日を変更できるようにします。"
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "{{calendars}} にも固定されており、行事追加権限を持つ人だけが変更できます。"
+
+#: 
+msgid "An event title is required"
+msgstr "行事のタイトルが必要です"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "行事の種類またはミニストリーが必要です"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "存在しなくなった行事の種類"
+
+#: 
+msgid "Another ministry"
+msgstr "別のミニストリー"
+
+#: 
+msgid "Any event"
+msgstr "すべての行事"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "コーディネーターに知らせておきたいこと"
+
+#: 
+msgid "Approve substitution"
+msgstr "代理を承認"
+
+#: 
+msgid "Approve this substitute"
+msgstr "この代理を承認"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "奉仕者マネージャーにミニストリーの作成とあなたをそのコーディネーターにすることを依頼してください。"
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "代わりを誰かに依頼"
+
+#: 
+msgid "Ask them"
+msgstr "依頼する"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "依頼しました。コーディネーターが確認します。"
+
+#: 
+msgid "Assign a volunteer"
+msgstr "奉仕者を割り当て"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "現在の計画外で割り当て済み"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "割り当てをキャンセルしました"
+
+#: 
+msgid "Assignment not found"
+msgstr "割り当てが見つかりません"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "personId または familyId が少なくとも1つ必要です"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "1つの役割に選べる既定の奉仕者は最大 %d 人です"
+
+#: 
+msgid "Author"
+msgstr "作成者"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "権限はログインではなく人に付与されるため、ログインを持つ前に付与できます。セルフサービス専用のログインを持つ人は、管理者がアカウントの範囲を広げるまで、自分のスケジュールだけが表示されます。"
+
+#: 
+msgid "Automatic"
+msgstr "自動"
+
+#: 
+msgid "Awaiting reply"
+msgstr "返信待ち"
+
+#: 
+msgid "Back to Email History"
+msgstr "メール履歴に戻る"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "ミニストリーダッシュボードに戻る"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "開催回に戻る"
+
+#: 
+msgid "Back to Person"
+msgstr "個人に戻る"
+
+#: 
+msgid "Back to editing"
+msgstr "編集に戻る"
+
+#: 
+msgid "Back to my schedule"
+msgstr "自分のスケジュールに戻る"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "メンバーポータルに戻る"
+
+#: 
+msgid "Back to your profile"
+msgstr "プロフィールに戻る"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "バックグラウンドジョブと配信"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "バックグラウンドジョブの前回実行"
+
+#: 
+msgid "Background jobs ran"
+msgstr "バックグラウンドジョブの実行"
+
+#: 
+msgid "Birthday greeting"
+msgstr "誕生日のあいさつ"
+
+#: 
+msgid "Both"
+msgstr "両方"
+
+#: 
+msgid "Both (transition)"
+msgstr "両方（移行用）"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "両方：V1 と V2 を並行（移行用）"
+
+#: 
+msgid "Calendar address"
+msgstr "カレンダーのアドレス"
+
+#: 
+msgid "Calendar saved"
+msgstr "カレンダーを保存しました"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "メンバーポータルで会員に表示するカレンダーです。管理 → メンバーポータル → カレンダーで選択します。"
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "このミニストリーは教会学校の教師を提供できますか？"
+
+#: 
+msgid "Cancel assignment"
+msgstr "割り当てをキャンセル"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "この割り当てをキャンセル"
+
+#: 
+msgid "Cancelled"
+msgstr "キャンセル済み"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "サインインに使うパスワードを変更するか、第2のステップを追加して、パスワードだけでは入れないようにします。"
+
+#: 
+msgid "Change your password"
+msgstr "パスワードを変更"
+
+#: 
+msgid "Checked in"
+msgstr "チェックイン済み"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "チェックイン：クラス名簿の %2$d 人中 %1$d 人"
+
+#: 
+msgid "Checked out"
+msgstr "チェックアウト済み"
+
+#: 
+msgid "Choose a class"
+msgstr "クラスを選択"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "1から31までの月の日を選択してください"
+
+#: 
+msgid "Choose a new photo"
+msgstr "新しい写真を選択"
+
+#: 
+msgid "Choose a person"
+msgstr "人を選択"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "奉仕者を選択"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "先に奉仕者を選択してください"
+
+#: 
+msgid "Choose an event"
+msgstr "イベントを選択..."
+
+#: 
+msgid "Choose an event type"
+msgstr "行事の種類を選択"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "既存の行事の種類を選択"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "購読するカレンダーを少なくとも1つ選択してください。"
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "ご自分のカレンダーアプリに追加したいカレンダーを選択してください。"
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "毎年の日付を MM-DD で選択してください"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "行事の日付を選択してください"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "曜日を選択してください"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "このスケジュールが従う行事を選択してください"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "奉仕者を割り当てる行事を選択してください"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "削除する行事を選択してください"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "奉仕者を割り当てる行事を選択してください"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "最初の日付と最後の日付を選択してください"
+
+#: 
+msgid "Choose the first date"
+msgstr "最初の日付を選択してください"
+
+#: 
+msgid "Choose the last date"
+msgstr "最後の日付を選択してください"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "%2$s の教師が資格を持つ %1$s の役割を選択してください。教師：%3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "この役割が属するチームを選択してください"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "会員に表示するテーマを選び、ポータルの各セクションのオン・オフを切り替え、ポータルを利用している人を確認します。"
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "毎週、毎月、毎年のいずれかを選択してください"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "スケジュールの日付の基準を選択してください"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "このミニストリーで使用するボランティア体験、スケジュールを何週間先まで埋めるか、リマインダーを送る時期を選び、バックグラウンドジョブが動いているか確認します。"
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "各役割の既定の担当者を選びます。この選択はスケジュールに保存され、今作られるすべての開催回と、のちに毎日の補充で作られる開催回に、資格が続く限り割り当てられます。承諾済みに設定しない限り、本人に応答が求められます。役割を空けておけば、週ごとに割り当てられます。"
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "代わりに奉仕してくれる人を選択してください。"
+
+#: 
+msgid "Church Calendar"
+msgstr "教会カレンダー"
+
+#: 
+msgid "Church Calendars"
+msgstr "教会カレンダー"
+
+#: 
+msgid "Church calendar"
+msgstr "教会カレンダー"
+
+#: 
+msgid "Church events of a type"
+msgstr "種類別の教会行事"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "種類別の教会行事は、教会カレンダーに追加されます。スケジュールの行事の種類、タイトル、日付を確認してください。"
+
+#: 
+msgid "Church website"
+msgstr "教会のウェブサイト"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM には奉仕者を管理する方法が2つあります。同時に使うのは1つだけで、左の設定でこの教会に表示される方が決まります。切り替えるとページやメニュー項目が非表示・表示になるだけで、データは削除されないため、いつでも元に戻せます。"
+
+#: 
+msgid "Close event details"
+msgstr "行事の詳細を閉じる"
+
+#: 
+msgid "Colour"
+msgstr "色"
+
+#: 
+msgid "Completed"
+msgstr "完了"
+
+#: 
+msgid "Compose Message"
+msgstr "メッセージを作成"
+
+#: 
+msgid "Confirm your family details"
+msgstr "家族の情報を確認してください"
+
+#: 
+msgid "Coordinator removed"
+msgstr "コーディネーターを削除しました"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "このアドレスをコピーし、新しいカレンダー購読としてカレンダーアプリに追加してください。"
+
+#: 
+msgid "Could not build the preview."
+msgstr "プレビューを作成できませんでした。"
+
+#: 
+msgid "Could not count the class's events"
+msgstr "クラスの行事を数えることができませんでした"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "権限を付与できませんでした"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "教会学校のクラスを読み込めませんでした"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "ダッシュボードを読み込めませんでした"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "行事の選択肢を読み込めませんでした"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "開催回を読み込めませんでした"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "スケジュールを読み込めませんでした"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "今後の行事を読み込めませんでした"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "奉仕者を読み込めませんでした"
+
+#: 
+msgid "Could not load this email."
+msgstr "このメールを読み込めませんでした。"
+
+#: 
+msgid "Could not load this ministry"
+msgstr "このミニストリーを読み込めませんでした"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "このミニストリーの行事を読み込めませんでした"
+
+#: 
+msgid "Could not load this team"
+msgstr "このチームを読み込めませんでした"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "権限を取り消せませんでした"
+
+#: 
+msgid "Create"
+msgstr "作成"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "スケジュールを作成して開催回を生成すると、埋めるべき週がここに表示されます。"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "スケジュールを作成して開催回を生成すると、奉仕者を割り当てる週がここに表示されます。"
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "このチームに役割を少なくとも1つ作成し、誰がどこで奉仕できるかにチェックを入れてください。"
+
+#: 
+msgid "Create ministry"
+msgstr "ミニストリーを作成"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "ミニストリーの作成には奉仕者マネージャー権限が必要です"
+
+#: 
+msgid "Date and time"
+msgstr "日付と時刻"
+
+#: 
+msgid "Date each year"
+msgstr "毎年の日付"
+
+#: 
+msgid "Dates"
+msgstr "日付"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "日付は YYYY-MM-DD 形式でなければなりません"
+
+#: 
+msgid "Day of the month"
+msgstr "月の日"
+
+#: 
+msgid "Day of the week"
+msgstr "曜日"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "ミニストリーを無効化"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "スケジュールを無効化"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "削除する前に、このミニストリーを無効化してください。"
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "{{name}} を無効化しますか？サイドバーの「無効なミニストリー」に移動し、そこから再有効化または削除できます。何も削除されません。"
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "{{name}} を無効化しますか？「生成」や毎日の補充で新しい開催回は作られなくなります。既存の開催回と割り当ては残り、再有効化できます。"
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "無効なミニストリー"
+
+#: 
+msgid "Declined"
+msgstr "辞退済み"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "ミニストリー行事の既定の行事の種類"
+
+#: 
+msgid "Default volunteers"
+msgstr "既定の奉仕者"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "既定の奉仕者は requirements として送信します：[{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "行事を削除"
+
+#: 
+msgid "Delete ministry"
+msgstr "ミニストリーを削除"
+
+#: 
+msgid "Delete occurrences"
+msgstr "開催回を削除"
+
+#: 
+msgid "Delete position"
+msgstr "役割を削除"
+
+#: 
+msgid "Delete schedule"
+msgstr "スケジュールを削除"
+
+#: 
+msgid "Delete team"
+msgstr "チームを削除"
+
+#: 
+msgid "Delete those events"
+msgstr "それらの行事を削除"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "{{name}} とその中のすべてを削除しますか？その役割、資格、必要人員、スケジュール、開催回、割り当て（過去の奉仕記録を含む）、およびチームリーダー権限が削除されます。履歴を残すには、代わりにチームを無効化してください。この操作は元に戻せません。"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "{{name}} とその中のすべてを削除しますか？そのチーム、役割、スケジュール、{{occurrences}} 件の開催回、{{assignments}} 件の割り当て（過去の奉仕記録を含む）に加え、コーディネーターとチームリーダーの権限、奉仕者プールのグループ、カレンダーが削除されます。この操作は元に戻せません。"
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "{{name}} を削除しますか？その資格、必要人員、割り当て（過去の奉仕記録を含む）も一緒に削除されます。履歴を残すには、代わりに役割を無効化してください。この操作は元に戻せません。"
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "{{name}} を削除しますか？この操作は元に戻せません。"
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "ミニストリーの削除には奉仕者マネージャー権限が必要です"
+
+#: 
+msgid "Developer mode"
+msgstr "開発者モード"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "完了しました。一覧に戻りました。"
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "この開催回独自の必要人員を破棄して、再びスケジュールに従いますか？"
+
+#: 
+msgid "Due soon"
+msgstr "もうすぐ期限"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "各カレンダーは、種類とIDで指定する必要があります。"
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "各既定の奉仕者には人を指定する必要があります"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "各必要人員には役割を指定する必要があります"
+
+#: 
+msgid "Edit event"
+msgstr "イベントを編集"
+
+#: 
+msgid "Edit ministry"
+msgstr "ミニストリーを編集"
+
+#: 
+msgid "Edit position"
+msgstr "役割を編集"
+
+#: 
+msgid "Edit schedule"
+msgstr "スケジュールを編集"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "必要人員を編集"
+
+#: 
+msgid "Edit team"
+msgstr "チームを編集"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "スケジュールを編集して、別のクラスを選択してください。"
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "スケジュールを編集して、別の行事の種類を選択してください。"
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "スケジュールを編集して、従う行事を選択してください。"
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "スケジュールを編集して、最終日を後ろにずらし、より多くの行事に従うようにしてください。"
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "メンバーポータルで編集：%s"
+
+#: 
+msgid "Email %s"
+msgstr "%s にメール"
+
+#: 
+msgid "Email %s Family"
+msgstr "%s 家族にメール"
+
+#: 
+msgid "Email History"
+msgstr "メール履歴"
+
+#: 
+msgid "Email content"
+msgstr "メールの内容"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "欠席者にメール：%s"
+
+#: 
+msgid "Email not found"
+msgstr "メールが見つかりません"
+
+#: 
+msgid "Email preview"
+msgstr "メールのプレビュー"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "メール送信は無効です"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "メール送信が有効になっていません。送信する前に、SMTP設定を行ってメールを有効にしてください。"
+
+#: 
+msgid "Emails"
+msgstr "メール"
+
+#: 
+msgid "End time"
+msgstr "終了時刻"
+
+#: 
+msgid "Enter counts"
+msgstr "人数を入力"
+
+#: 
+msgid "Enter email subject…"
+msgstr "メールの件名を入力…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "現在のパスワードを入力し、続けて新しいパスワードを2回入力してください。"
+
+#: 
+msgid "Enter your message…"
+msgstr "メッセージを入力…"
+
+#: 
+msgid "Event staffed"
+msgstr "行事に奉仕者を割り当てました"
+
+#: 
+msgid "Event title"
+msgstr "イベントタイトル"
+
+#: 
+msgid "Event type"
+msgstr "イベントタイプ"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "ChurchCRM が送信したすべてのメールを新しい順に表示します。個人を開くと、その人の履歴全体が表示されます。"
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "この期間のすべての役割に、必要な人員がそろっています。"
+
+#: 
+msgid "Everyone has answered"
+msgstr "全員が応答しました"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "選択に入っている全員がこのミニストリーの奉仕者になります。その後で、それぞれの役割にチェックを入れてください。"
+
+#: 
+msgid "Everything is correct"
+msgstr "すべて正しい"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "プレビューを作成できませんでした"
+
+#: 
+msgid "Failed to load email"
+msgstr "メールを読み込めませんでした"
+
+#: 
+msgid "Failed to load email history"
+msgstr "メール履歴を読み込めませんでした"
+
+#: 
+msgid "Failed to send email"
+msgstr "メールを送信できませんでした"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "メールを送信できませんでした。もう一度お試しいただくか、「メールクライアントで開く」を使用してください。"
+
+#: 
+msgid "Family Member"
+msgstr "家族メンバー"
+
+#: 
+msgid "Family verification"
+msgstr "ファミリー確認"
+
+#: 
+msgid "File"
+msgstr "ファイル"
+
+#: 
+msgid "Fill"
+msgstr "埋める"
+
+#: 
+msgid "Fill by default with"
+msgstr "既定で割り当てる人"
+
+#: 
+msgid "Fill this gap"
+msgstr "この空きを埋める"
+
+#: 
+msgid "Filled"
+msgstr "充足済み"
+
+#: 
+msgid "Find a sub"
+msgstr "代理を探す"
+
+#: 
+msgid "Find a volunteer"
+msgstr "奉仕者を探す"
+
+#: 
+msgid "Find an event"
+msgstr "行事を探す"
+
+#: 
+msgid "Find something to do"
+msgstr "できることを探す"
+
+#: 
+msgid "Find something to help with"
+msgstr "お手伝いできることを探す"
+
+#: 
+msgid "Findings"
+msgstr "調査結果"
+
+#: 
+msgid "First date"
+msgstr "最初の日付"
+
+#: 
+msgid "Folder"
+msgstr "フォルダー"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "使用するメンバーポータルのテーマのフォルダー名（Include/themes/ 内）。「default」は ChurchCRM に付属するシステムテーマです。"
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "最初の日付に近くなってから、もう一度生成してください。"
+
+#: 
+msgid "Generate occurrences"
+msgstr "開催回を生成"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "新しいカレンダーのアドレスを取得しますか？"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "ミニストリーに名前を付けてください"
+
+#: 
+msgid "Give the position a name"
+msgstr "役割に名前を付けてください"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "開始時刻と終了時刻を HH:MM 形式で指定してください"
+
+#: 
+msgid "Give the team a name"
+msgstr "チームに名前を付けてください"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "自分の奉仕へ移動"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "メンバーポータルの設定へ移動"
+
+#: 
+msgid "Going"
+msgstr "出席します"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "ミニストリーのページで資格を付与してから、ここで割り当ててください。"
+
+#: 
+msgid "Granted"
+msgstr "付与済み"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "教会があなたの世帯について保管している情報をご覧になり、今も正しいかどうかお知らせください。"
+
+#: 
+msgid "Headcount"
+msgstr "出席人数"
+
+#: 
+msgid "Hello %s"
+msgstr "こんにちは、%s さん"
+
+#: 
+msgid "Help Wanted"
+msgstr "奉仕者募集"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "奉仕者募集を保存できませんでした"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "各スケジュールが従う行事に対して、何週間先まで開催回を作成するかを指定します。毎日のバックグラウンドジョブが、すべてのスケジュールをここまで埋めておきます。"
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "奉仕者の開催回の何時間前にリマインダーメールを送るかを指定します。0 にするとリマインダーを一切送りません。配信にはバックグラウンドジョブの実行が必要です。推奨される cron の設定は、ボランティアのドキュメントをご覧ください。"
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "開催回の何時間前にリマインダーメールを送るかを指定します。0 にするとリマインダーを一切送りません。"
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "これが実行されるたびに、各役割に何人必要かを指定します。特定の1日だけを後から変更することもできます。既定の奉仕者は、資格が続く限り、新しい開催回すべてに割り当てられます。変更しても、すでにある開催回は変わりません。"
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "このスケジュールの各開催回に必要な奉仕者の人数を指定します。このスケジュールで使わない役割はチェックを外してください。既定の奉仕者は、資格が続く限り、新しい開催回すべてに割り当てられます。変更しても、すでにある開催回は変わりません。"
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "この行事に必要な奉仕者の人数を指定します。使わない役割はチェックを外してください。"
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "各スケジュールが従う行事に対して、何週間先まで奉仕者の開催回を作成するかを、1から52で指定します。毎日のバックグラウンドジョブが、すべてのスケジュールをここまで埋めておきます。"
+
+#: 
+msgid "How often"
+msgstr "頻度"
+
+#: 
+msgid "How to correct this"
+msgstr "修正方法"
+
+#: 
+msgid "I can't"
+msgstr "参加できません"
+
+#: 
+msgid "I'd like to help"
+msgstr "お手伝いしたいです"
+
+#: 
+msgid "I'll be there"
+msgstr "参加します"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "メッセージの送信に失敗している場合は、管理者にミニストリー設定の確認を依頼してください。"
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "もし参加できなくなった場合は、役割を埋められるよう、できるだけ早く自分の奉仕スケジュールで辞退してください。"
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "このアドレスを誤って共有してしまった場合は、新しいアドレスを取得してください。古いアドレスはすぐに使えなくなります。"
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "過去15分以内"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "奉仕者プール内"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "内部用：奉仕者スケジュールがスケジュール範囲まで補充された最終日（YYYY-MM-DD）。手動で編集しないでください。"
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "内部用：奉仕者スケジュールが最後に補充された日時と、作成された開催回の数。手動で編集しないでください。"
+
+#: 
+msgid "Is this still right?"
+msgstr "今も正しいですか？"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "その開催回は、埋めるべき役割なしで作られます。スケジュールを編集して、必要人員を追加してください。"
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "{{className}} に残す"
+
+#: 
+msgid "Kind"
+msgstr "種類"
+
+#: 
+msgid "Last 24 hours"
+msgstr "過去24時間"
+
+#: 
+msgid "Last 30 days"
+msgstr "過去30日間"
+
+#: 
+msgid "Last 7 days"
+msgstr "過去7日間"
+
+#: 
+msgid "Last attempt"
+msgstr "最後の試行"
+
+#: 
+msgid "Last check"
+msgstr "最終確認"
+
+#: 
+msgid "Last date"
+msgstr "最終日"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "ポータルで最後に見た日時"
+
+#: 
+msgid "Last sign-in"
+msgstr "最終サインイン"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "両方を0にすると、行事が行われるちょうどその時に奉仕します。行事を移動すると、奉仕者も一緒に移動します。"
+
+#: 
+msgid "Leave open"
+msgstr "空けておく"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "メンバーポータルで、会員が自分自身と家族の誕生日を変更できるようにします。"
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "会員による誕生日の編集を許可"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "上記の内容が今も正しいかどうかを、教会の事務局にお知らせください。"
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "理由を伝える（任意）"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "そのミニストリーのコーディネーターが、この行事の奉仕者をスケジュールし、行事そのものも編集できるようになります。"
+
+#: 
+msgid "Loading the calendar…"
+msgstr "カレンダーを読み込み中…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "ミニストリーを管理"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "自分のミニストリーを管理"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "自分のミニストリーの管理権限（管理するミニストリーまたはチームを含む）"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "自分のミニストリーの管理権限（管理するミニストリーまたはチームを含む）が必要です"
+
+#: 
+msgid "Manage staffing"
+msgstr "人員配置を管理"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "%s ミニストリーで管理"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "{{ministry}} ミニストリーで管理"
+
+#: 
+msgid "Max"
+msgstr "最大"
+
+#: 
+msgid "Member Portal"
+msgstr "メンバーポータル"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "これが修正されるまで、会員には「一時的に利用できません」というページが表示されます。同じ詳細情報がアプリケーションログとWebサーバーのエラーログに書き込まれています。"
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "会員には、ここでオンにしたカレンダーだけが表示されます。誕生日と結婚記念日には、名と姓の頭文字のみが表示されます。"
+
+#: 
+msgid "Message"
+msgstr "メッセージ"
+
+#: 
+msgid "Min"
+msgstr "最小"
+
+#: 
+msgid "Ministries"
+msgstr "ミニストリー"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "奉仕者を募集しているミニストリー"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "行事を追加できるミニストリー"
+
+#: 
+msgid "Ministry"
+msgstr "ミニストリー"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "ミニストリーカレンダー"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "ミニストリーのコーディネーター"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "ミニストリーダッシュボード"
+
+#: 
+msgid "Ministry Settings"
+msgstr "ミニストリー設定"
+
+#: 
+msgid "Ministry calendar"
+msgstr "ミニストリーカレンダー"
+
+#: 
+msgid "Ministry created"
+msgstr "ミニストリーを作成しました"
+
+#: 
+msgid "Ministry management access"
+msgstr "ミニストリーの管理権限"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "ミニストリーの管理権限が必要です"
+
+#: 
+msgid "Ministry name"
+msgstr "ミニストリー名"
+
+#: 
+msgid "Ministry not found"
+msgstr "ミニストリーが見つかりません"
+
+#: 
+msgid "My Family"
+msgstr "自分の家族"
+
+#: 
+msgid "My Teams"
+msgstr "自分のチーム"
+
+#: 
+msgid "My ministries and teams"
+msgstr "自分のミニストリーとチーム"
+
+#: 
+msgid "My schedule"
+msgstr "自分のスケジュール"
+
+#: 
+msgid "My volunteering"
+msgstr "自分の奉仕"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "会員がお手伝いできることを探すページに表示される、この役割の名前を付けてください。"
+
+#: 
+msgid "Needs an answer"
+msgstr "回答が必要"
+
+#: 
+msgid "Needs filling"
+msgstr "埋める必要あり"
+
+#: 
+msgid "Never signed in"
+msgstr "一度もサインインしていません"
+
+#: 
+msgid "New account"
+msgstr "新しいアカウント"
+
+#: 
+msgid "New event"
+msgstr "新しい行事"
+
+#: 
+msgid "New ministry"
+msgstr "新しいミニストリー"
+
+#: 
+msgid "New record notification"
+msgstr "新規レコードの通知"
+
+#: 
+msgid "New recurring event"
+msgstr "新しい定期行事"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "次の役割で新しい奉仕者が必要です"
+
+#: 
+msgid "Newest first"
+msgstr "新しい順"
+
+#: 
+msgid "Next on %s"
+msgstr "%s の次回"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "会員と共有されているカレンダーはまだありません。"
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "このミニストリーに公開されているカレンダーがないため、行事はどのカレンダーにも表示されません。"
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "会員と共有されているカレンダーはありません。"
+
+#: 
+msgid "No class"
+msgstr "クラスなし"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "連絡先はまだ登録されていません。"
+
+#: 
+msgid "No coordinators yet"
+msgstr "コーディネーターはまだいません"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "最初の日付と最後の日付の間に、繰り返しに一致する日付がありません"
+
+#: 
+msgid "No email was sent."
+msgstr "メールは送信されませんでした。"
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "このレコードにはまだメールが送信されていません。"
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "出席人数はまだ記録されていません"
+
+#: 
+msgid "No longer needed"
+msgstr "不要になりました"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "メンバーポータルにサインインした会員はまだいません。"
+
+#: 
+msgid "No ministry"
+msgstr "ミニストリーなし"
+
+#: 
+msgid "No past events"
+msgstr "過去の行事はありません"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "この人の写真はアップロードされていません。"
+
+#: 
+msgid "No photo was sent."
+msgstr "写真が送信されませんでした。"
+
+#: 
+msgid "No positions yet"
+msgstr "役割はまだありません"
+
+#: 
+msgid "No qualifications yet."
+msgstr "資格はまだありません。"
+
+#: 
+msgid "No schedules yet"
+msgstr "スケジュールはまだありません"
+
+#: 
+msgid "No staffing needs set"
+msgstr "必要人員が設定されていません"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "必要人員なし：生成された開催回には誰も必要ありません。"
+
+#: 
+msgid "No substitution requests"
+msgstr "代理の依頼はありません"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "判断すべき代理はありません"
+
+#: 
+msgid "No teams yet"
+msgstr "チームはまだありません"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "カレンダーに「%2$s」というタイトルの今後の %1$s 行事はありません。スケジュールは既存の行事に従います。"
+
+#: 
+msgid "No upcoming event matches"
+msgstr "一致する今後の行事はありません"
+
+#: 
+msgid "No upcoming events"
+msgstr "今後の行事はありません"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "この種類の今後の行事はカレンダーにありません。"
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "選択できる今後の行事はありません"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "まだ誰も割り当てられていません"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "他にこの役割の訓練を受けた人はいません。代わりにコーディネーターに伝えてください。"
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "各役割に何人の奉仕者が必要か、まだ誰も指定していないため、埋めるものがありません。"
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "この期間に、まだ決めかねている人はいません。"
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "この役割の資格を持つ人はまだいません"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "この役割の資格を持つ人はまだいないため、空いたままです。"
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "メールを送信できる宛先がありません"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "なし：行事ごとに行事の種類を選択します"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "このメールを閲覧する権限がありません"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "この家族を閲覧する権限がありません"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "この人を閲覧する権限がありません"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "この割り当てに対する権限がありません"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "このミニストリーに対する権限がありません"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "この開催回に対する権限がありません"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "この役割に対する権限がありません"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "この資格に対する権限がありません"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "この必要人員に対する権限がありません"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "このスケジュールに対する権限がありません"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "この代理の依頼に対する権限がありません"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "このチームに対する権限がありません"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "その奉仕ミニストリーに行事を割り当てる権限がありません"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "行事 %s を変更する権限がありません"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "この行事の奉仕ミニストリーを変更する権限がありません"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "自分が管理する奉仕ミニストリーなしで行事を作成する権限がありません"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "この行事を変更する権限がありません"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "カレンダー「%s」に行事を固定する権限がありません"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "カレンダー「%s」から行事を削除する権限がありません"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "この行事から奉仕ミニストリーを外す権限がありません"
+
+#: 
+msgid "Not checked in"
+msgstr "チェックインしていません"
+
+#: 
+msgid "Not found"
+msgstr "見つかりません"
+
+#: 
+msgid "Not in the pool"
+msgstr "プールにいません"
+
+#: 
+msgid "Not now"
+msgstr "今はしない"
+
+#: 
+msgid "Not sent"
+msgstr "未送信"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "未設定：「%s」を使用"
+
+#: 
+msgid "Not staffed"
+msgstr "奉仕者未割り当て"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "まだ奉仕していません"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "変更がなかったため、何も保存されませんでした。"
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "この期間のカレンダーには何もありません。"
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "今のところ、カレンダーには何もありません。"
+
+#: 
+msgid "Nothing is short"
+msgstr "不足はありません"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "あなたのリストにはまだ何もありません"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "あなたのリストにはまだ何もありません。埋める必要のあるものを見てみましょう。"
+
+#: 
+msgid "Nothing open right now"
+msgstr "現在、募集中のものはありません"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "まだ何もスケジュールされていません"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "スケジュールされているものはありません。"
+
+#: 
+msgid "Nothing set up yet"
+msgstr "まだ何も設定されていません"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "過去1年間に、このミニストリーに属するものは何もありませんでした。"
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "まだ資格を付与するものはありません"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "何も保存されませんでした。強調表示された項目を確認してください。"
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "何も保存されませんでした。もう一度お試しください。"
+
+#: 
+msgid "Notification"
+msgstr "通知"
+
+#: 
+msgid "Notifications"
+msgstr "通知"
+
+#: 
+msgid "Occurrence not found"
+msgstr "開催回が見つかりません"
+
+#: 
+msgid "Occurrences"
+msgstr "開催回"
+
+#: 
+msgid "Offer to help"
+msgstr "お手伝いを申し出る"
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "この人が役割の資格を得ると、ここに表示され、奉仕する予定の日付も表示されます。"
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "リンクされたグループがこのクラスである各カレンダー行事に、開催回が1つずつ作られます。"
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "この行事の各日付に、開催回が1つずつ作られます。選択できるのは、すでにカレンダーにある行事だけです。"
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "カレンダーの1つが存在しません"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "行事の1つが存在しません"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "それらのカレンダーの1つは、会員と共有されていません。"
+
+#: 
+msgid "One-time"
+msgstr "1回のみ"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "チームにリンクできるのは教会学校のクラスだけです"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "他の人に代わって応答を記録できるのはコーディネーターだけです"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "このミニストリーの行事を作成できるのは、このミニストリーのコーディネーターだけです"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "このミニストリーの行事に奉仕者を割り当てられるのは、このミニストリーのコーディネーターだけです"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "チームリーダーを変更できるのは奉仕者マネージャーだけです"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "これを変更できるのは奉仕者マネージャーだけです。"
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "ミニストリーが教会学校の教師を提供するかどうかを変更できるのは、奉仕者マネージャーだけです"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "これらの情報を変更できるのは、家族の成人だけです。教会の事務局にご連絡ください。"
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "これについて訓練を受けた人だけが表示されています。"
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "代理を提案できるのは、割り当てられた奉仕者本人だけです"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "このミニストリーが行事を追加できるカレンダーだけが表示されます。最初は、このミニストリー独自のカレンダーにチェックが入っています。"
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "非常に長い一覧は、先頭部分のみ表示されます。残りを見るには期間を絞り込んでください。"
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "代理を撤回できるのは、代理を提案した奉仕者本人だけです"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "ミニストリーメニューからミニストリーを開き、スケジュールを作成して日付を生成すると、奉仕者を割り当てる週がここに表示されます。"
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "ミニストリーを開いて、誰かをそのコーディネーターまたはチームリーダーにしてください。"
+
+#: 
+msgid "Open in calendar app"
+msgstr "カレンダーアプリで開く"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "募集中の奉仕を読み込めませんでした。"
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "宛先をローカルのメールアプリで開く"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "メンバーポータルを開く"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "ミニストリーダッシュボードを開く"
+
+#: 
+msgid "Open the ministry"
+msgstr "ミニストリーを開く"
+
+#: 
+msgid "Open the occurrence"
+msgstr "開催回を開く"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "開催回を開いて、必要な人を割り当ててください。"
+
+#: 
+msgid "Open this team"
+msgstr "このチームを開く"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "カレンダーをミニストリーに公開するには、行事追加権限が必要です"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "任意。このチームの役割の資格を持つ全員が、クラスの教師になり、クラスのページでは教師を変更できなくなります。"
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "任意。クラスがリンクされたグループになります。その名簿がチェックインする人となり、クラスのスケジュールがこれらの行事を見つけます。"
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "最大を超えています：この人を外すか、最大を増やしてください。"
+
+#: 
+msgid "Overridden templates"
+msgstr "上書きされたテンプレート"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "%2$s ページ中 %1$s ページ"
+
+#: 
+msgid "Page %d of %d"
+msgstr "%d / %d ページ"
+
+#: 
+msgid "Password reset"
+msgstr "パスワードリセット"
+
+#: 
+msgid "Password reset link"
+msgstr "パスワードリセットリンク"
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "今後のカレンダー行事を選び、必要な人を指定してください。行事の日付と時刻はそのままです。シリーズ全体に奉仕者を割り当てるには、代わりにスケジュールを追加してください。"
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "あなたの代わりを引き受けることにすでに同意した人を選んでください。コーディネーターが確認します。"
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "一覧からカレンダーを選択してください。"
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "情報の変更が必要かどうかを選択してください。"
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "記録を訂正できるよう、教会の事務局にご連絡ください。"
+
+#: 
+msgid "Please contact the church office."
+msgstr "教会の事務局にご連絡ください。"
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "2文字以上入力してください。"
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "奉仕スケジュールで承諾または辞退して、参加できるかどうかお知らせください。"
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "変更が必要な点をお知らせください。"
+
+#: 
+msgid "Portal settings"
+msgstr "ポータル設定"
+
+#: 
+msgid "Portal theme"
+msgstr "ポータルのテーマ"
+
+#: 
+msgid "Position"
+msgstr "役割"
+
+#: 
+msgid "Position added"
+msgstr "役割を追加しました"
+
+#: 
+msgid "Position deleted"
+msgstr "役割を削除しました"
+
+#: 
+msgid "Position name"
+msgstr "役割名"
+
+#: 
+msgid "Position not found"
+msgstr "役割が見つかりません"
+
+#: 
+msgid "Position saved"
+msgstr "役割を保存しました"
+
+#: 
+msgid "Positions"
+msgstr "役割"
+
+#: 
+msgid "Positions still short"
+msgstr "まだ不足している役割"
+
+#: 
+msgid "Proposed"
+msgstr "提案済み"
+
+#: 
+msgid "Proposed substitute"
+msgstr "提案された代理"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "このミニストリーをメンバーポータルの「募集中の奉仕」ページに掲載すると、すべての奉仕者が見つけて、お手伝いを申し出られるようになります。申し出た人は奉仕者プールに加わり、あなたにメールが届きます。"
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "代わりに {{name}} を割り当てますか？元の奉仕者の履歴は残り、本人に通知されます。"
+
+#: 
+msgid "Qualification not found"
+msgstr "資格が見つかりません"
+
+#: 
+msgid "Qualified for"
+msgstr "資格のある役割"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "資格のある奉仕者は、この役割の空いている日付に自分で申し込めます。チームリーダーやコーディネーターだけが割り当てるべき役割はオフにしてください。メンバーポータルには表示されません。"
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "現在の教師に次の資格を付与"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "役割の資格を付与"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "役割の資格を付与してください。"
+
+#: 
+msgid "Reactivate"
+msgstr "再有効化"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "テーマ作成ガイドを読む"
+
+#: 
+msgid "Recent Emails"
+msgstr "最近のメール"
+
+#: 
+msgid "Recent Sends"
+msgstr "最近の送信"
+
+#: 
+msgid "Recipient"
+msgstr "宛先"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "宛先の数（%d）が、1回の送信で許可される最大数（%d）を超えています"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "宛先は、メールアドレスではなく personIds と familyIds で指定する必要があります"
+
+#: 
+msgid "Record a decline"
+msgstr "辞退を記録"
+
+#: 
+msgid "Record an acceptance"
+msgstr "承諾を記録"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "{{name}} さんが断ったことを記録しますか？この応答はあなたからのものとして保存され、枠が再び空きます。"
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "{{name}} さんが了承したことを記録しますか？この応答は本人ではなく、あなたからのものとして保存されます。"
+
+#: 
+msgid "Record: they accepted"
+msgstr "記録：承諾しました"
+
+#: 
+msgid "Record: they declined"
+msgstr "記録：辞退しました"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "奉仕者を募集"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "奉仕者募集は true または false でなければなりません"
+
+#: 
+msgid "Recruiting"
+msgstr "募集中"
+
+#: 
+msgid "Recurring"
+msgstr "定期"
+
+#: 
+msgid "Reject"
+msgstr "却下"
+
+#: 
+msgid "Reject substitution"
+msgstr "代理を却下"
+
+#: 
+msgid "Reject this substitute"
+msgstr "この代理を却下"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "リマインダーの事前時間（時間）"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "リマインダー：奉仕の予定があります"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "リマインダーと通知は、バックグラウンドジョブが実行されたときにのみ配信されます。時間どおりに配信するには、cron から15分ごとにスケジュールタスクランナーを実行してください"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "奉仕者を削除"
+
+#: 
+msgid "Remove coordinator"
+msgstr "コーディネーターを削除"
+
+#: 
+msgid "Remove the class from them"
+msgstr "クラスを外す"
+
+#: 
+msgid "Remove the team leader"
+msgstr "チームリーダーを外す"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "{{ministry}} から {{name}} を外しますか？ここでのすべての資格が削除され、今後のすべての開催回から外れ、このミニストリーのスケジュールの既定の奉仕者から解除され、奉仕者プールからも外れます。"
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "削除しました。資格 {{qualifications}} 件、今後の割り当て {{assignments}} 件、スケジュールの既定 {{defaults}} 件。"
+
+#: 
+msgid "Repeats"
+msgstr "繰り返し"
+
+#: 
+msgid "Requirement not found"
+msgstr "必要人員が見つかりません"
+
+#: 
+msgid "Reset link"
+msgstr "リセットリンク"
+
+#: 
+msgid "Response recorded"
+msgstr "応答を記録しました"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "奉仕者ダッシュボードで依頼を確認し、承認または却下してください。"
+
+#: 
+msgid "Review this request"
+msgstr "この依頼を確認"
+
+#: 
+msgid "Run background jobs now"
+msgstr "バックグラウンドジョブを今すぐ実行"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTPテスト"
+
+#: 
+msgid "Save calendars"
+msgstr "カレンダーを保存"
+
+#: 
+msgid "Save changes"
+msgstr "変更内容を保存"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "保存しました。このミニストリーは奉仕者を募集しなくなりました"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "保存しました。このミニストリーは奉仕者を募集しています"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "保存しました。会員には、上でオンにしたカレンダーが表示されます。"
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "スケジュール「{{name}}」を作成しました。"
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "スケジュール「{{name}}」を作成しました。無効状態のため、有効にするまで開催回は作られません。"
+
+#: 
+msgid "Schedule deactivated"
+msgstr "スケジュールを無効化しました"
+
+#: 
+msgid "Schedule deleted"
+msgstr "スケジュールを削除しました"
+
+#: 
+msgid "Schedule name"
+msgstr "スケジュール名"
+
+#: 
+msgid "Schedule not found"
+msgstr "スケジュールが見つかりません"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "スケジュールを再有効化しました"
+
+#: 
+msgid "Schedule saved"
+msgstr "スケジュールを保存しました"
+
+#: 
+msgid "Scheduled"
+msgstr "スケジュール済み"
+
+#: 
+msgid "Schedules"
+msgstr "スケジュール"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "スケジュールを最後に補充した日時"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "スケジュールは、独自の繰り返しや時刻を持たなくなりました。すべての開催回はカレンダーの行事に従います。削除してください：%s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "スケジュールは、何日先まで生成するかを設定しなくなりました。管理 → ミニストリー設定のスケジュール範囲が、すべてのスケジュールに適用されます。削除してください：generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "スケジュール範囲（週）"
+
+#: 
+msgid "Scope grant not found"
+msgstr "権限の付与が見つかりません"
+
+#: 
+msgid "Search by name"
+msgstr "名前で検索"
+
+#: 
+msgid "See the whole calendar"
+msgstr "カレンダー全体を見る"
+
+#: 
+msgid "See what needs filling"
+msgstr "埋める必要のあるものを見る"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "カレンダーを選択すると、その行事を非表示・表示できます。"
+
+#: 
+msgid "Select ministries..."
+msgstr "ミニストリーを選択..."
+
+#: 
+msgid "Self sign-up"
+msgstr "自己申込"
+
+#: 
+msgid "Self-assignable"
+msgstr "自分で割り当て可能"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "自分で割り当て可能は true または false でなければなりません"
+
+#: 
+msgid "Self-service accounts"
+msgstr "セルフサービスアカウント"
+
+#: 
+msgid "Send"
+msgstr "送信"
+
+#: 
+msgid "Send Email"
+msgstr "メールを送信"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "ChurchCRM からメールを送信"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "割り当てのメッセージを再送信"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "表示するカレンダーを一覧で送信してください。"
+
+#: 
+msgid "Send to the church office"
+msgstr "教会の事務局に送信"
+
+#: 
+msgid "Send your answer"
+msgstr "回答を送信"
+
+#: 
+msgid "Sent"
+msgstr "送信済み"
+
+#: 
+msgid "Sent by"
+msgstr "送信者"
+
+#: 
+msgid "Serving next"
+msgstr "次の奉仕"
+
+#: 
+msgid "Set as Accepted"
+msgstr "承諾済みに設定"
+
+#: 
+msgid "Set staffing needs"
+msgstr "必要人員を設定"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "メンバーポータルに「%s」を表示"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "メンバーポータルに表示"
+
+#: 
+msgid "Show past events"
+msgstr "過去の行事を表示"
+
+#: 
+msgid "Show the church calendar"
+msgstr "教会カレンダーを表示"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "メンバーポータルに教会カレンダーを表示します。"
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "メンバーポータルに教会カレンダーのセクションを表示します。"
+
+#: 
+msgid "Show the next"
+msgstr "次の期間を表示"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "メンバーポータルに奉仕とチームのセクションを表示します。"
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "このミニストリーを「募集中の奉仕」ページに表示"
+
+#: 
+msgid "Show volunteering"
+msgstr "奉仕を表示"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "メンバーポータルに奉仕とチームのページを表示します。"
+
+#: 
+msgid "Show what I have already done"
+msgstr "すでに行ったことを表示"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "入力したとおりに表示されます。改行は保持されます。"
+
+#: 
+msgid "Sign up"
+msgstr "申し込む"
+
+#: 
+msgid "Sign-in and security"
+msgstr "サインインとセキュリティ"
+
+#: 
+msgid "Signed in"
+msgstr "サインイン済み"
+
+#: 
+msgid "Signed up"
+msgstr "申込済み"
+
+#: 
+msgid "Sincerely"
+msgstr "敬具"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "一部の情報を保存できませんでした。強調表示された項目を確認してください。"
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "家族の情報の一部を保存できませんでした。強調表示された項目を確認してください。"
+
+#: 
+msgid "Someone else is covering"
+msgstr "他の人が代わりを務めます"
+
+#: 
+msgid "Something needs changing"
+msgstr "変更が必要な点があります"
+
+#: 
+msgid "Something went wrong"
+msgstr "問題が発生しました"
+
+#: 
+msgid "Staff an event"
+msgstr "行事に奉仕者を割り当てる"
+
+#: 
+msgid "Staff them"
+msgstr "奉仕者を割り当てる"
+
+#: 
+msgid "Staff this event"
+msgstr "この行事に奉仕者を割り当てる"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "この開催回に奉仕者を割り当てる"
+
+#: 
+msgid "Staffed"
+msgstr "奉仕者割り当て済み"
+
+#: 
+msgid "Staffing"
+msgstr "人員配置"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "人員配置は、行事を作成した後に設定します"
+
+#: 
+msgid "Staffing needs"
+msgstr "必要人員"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "必要人員を保存しました"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "まずミニストリーを作成し、そこで奉仕するチームと役割を追加してください。"
+
+#: 
+msgid "Start time"
+msgstr "開始時刻"
+
+#: 
+msgid "Start typing a name"
+msgstr "名前を入力してください"
+
+#: 
+msgid "Statistics"
+msgstr "統計"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "{{ministry}} での {{name}} さんのコーディネーターを終了しますか？ログインと本人の割り当てには影響しません。"
+
+#: 
+msgid "Subscribe"
+msgstr "購読"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "カレンダーを購読"
+
+#: 
+msgid "Substitute"
+msgstr "代理"
+
+#: 
+msgid "Substitute approved"
+msgstr "代理を承認しました"
+
+#: 
+msgid "Substitute asked"
+msgstr "代理を依頼しました"
+
+#: 
+msgid "Substitute decision"
+msgstr "代理の判断"
+
+#: 
+msgid "Substitute proposed"
+msgstr "代理を提案しました"
+
+#: 
+msgid "Substitute rejected"
+msgstr "代理を却下しました"
+
+#: 
+msgid "Substituted"
+msgstr "代理済み"
+
+#: 
+msgid "Substitution approved"
+msgstr "代理を承認しました"
+
+#: 
+msgid "Substitution rejected"
+msgstr "代理を却下しました"
+
+#: 
+msgid "Substitution request not found"
+msgstr "代理の依頼が見つかりません"
+
+#: 
+msgid "Substitution requests"
+msgstr "代理の依頼"
+
+#: 
+msgid "Sunday School Class"
+msgstr "教会学校クラス"
+
+#: 
+msgid "System calendar"
+msgstr "システムカレンダー"
+
+#: 
+msgid "System default"
+msgstr "システム既定"
+
+#: 
+msgid "Take that back"
+msgstr "取り消す"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "{{name}} さんをこの役割から外しますか？メールは送信されません。本人のスケジュールには、その日付が不要になったと表示され、枠が再び空きます。"
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "このクラスの教師は、ミニストリー → %1$s → %2$s で管理されます。"
+
+#: 
+msgid "Team"
+msgstr "チーム"
+
+#: 
+msgid "Team Leader"
+msgstr "チームリーダー"
+
+#: 
+msgid "Team added"
+msgstr "チームを追加しました"
+
+#: 
+msgid "Team deleted"
+msgstr "チームを削除しました"
+
+#: 
+msgid "Team leader"
+msgstr "チームリーダー"
+
+#: 
+msgid "Team name"
+msgstr "チーム名"
+
+#: 
+msgid "Team not found"
+msgstr "チームが見つかりません"
+
+#: 
+msgid "Team saved"
+msgstr "チームを保存しました"
+
+#: 
+msgid "Teams"
+msgstr "チーム"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "チームは、このミニストリーで奉仕する人々のグループです。"
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "チーム、役割、そしてそれを担う人々"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "直近10件のサインイン"
+
+#: 
+msgid "Thank you"
+msgstr "ありがとうございます！"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "奉仕に申し込んでくださり、ありがとうございます"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "奉仕に申し込んでくださり、ありがとうございます。スケジュールに登録されました。"
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "ありがとうございます。教会の事務局がお答えを受け取りました。"
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "ありがとうございます。追加する前に、教会の事務局が確認します。"
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "お知らせいただきありがとうございます。"
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "ありがとうございます。再びお手伝いしたいことをコーディネーターに伝えました。"
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "ありがとうございます。お手伝いしたいことをコーディネーターに伝えました。"
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "ありがとうございます。リストに登録されました。"
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "そのメンバーポータルのテーマフォルダーは存在しません。"
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "その割り当ては他の人のものです"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "その割り当てを保存できませんでした"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "その誕生日は有効な日付ではありません。"
+
+#: 
+msgid "That could not be saved."
+msgstr "保存できませんでした。"
+
+#: 
+msgid "That could not be sent."
+msgstr "送信できませんでした。"
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "その家族を追加できませんでした。強調表示された項目を確認してください。"
+
+#: 
+msgid "That is not a valid date."
+msgstr "有効な日付ではありません。"
+
+#: 
+msgid "That list could not be loaded."
+msgstr "その一覧を読み込めませんでした。"
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "その人は、この開催回ですでにこの役割を担っています"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "その人は、この開催回ですでにこの役割に割り当てられています"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "その人は、このミニストリーの奉仕者プールにいません。それでも割り当てる場合は、プール外の上書きを指定して再送信してください。"
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "その人は、この奉仕者プールにいません"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "その人は、この役割の資格がありません"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "その写真を保存できませんでした。"
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "その写真は大きすぎます。小さいものを選択してください。"
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "その役割は別のミニストリーに属しています"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "その役割は別のチームに属しています"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "その役割はすでに人員が充足しています"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "その役割は、この開催回では人員を割り当てていません"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "その応答を記録できませんでした"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "そのステータスは直接設定できません"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "その代理の依頼を判断できませんでした"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "そのチームは別のミニストリーに属しています"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "そのテーマを有効化できませんでした。"
+
+#: 
+msgid "That theme could not be checked."
+msgstr "そのテーマを確認できませんでした。"
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "そのテーマにはエラーがあるため、有効化されませんでした。"
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "その奉仕者を割り当てできませんでした"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "その結婚記念日は有効な日付ではありません。"
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s は YYYY-MM-DD 形式の日付でなければなりません"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s は分単位の整数でなければなりません"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s は行事から %d 分以内でなければなりません"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "メンバーポータルのカレンダーを保存しました。"
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "メンバーポータルは、ご依頼の処理を完了できませんでした。数分後にもう一度お試しください。"
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "メンバーポータルは、サインインした人だけが利用でき、APIクライアントからは利用できません。"
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "メンバーポータルのテーマが「%s」に設定されていますが、サーバー上に存在しません。存在するテーマを選ぶまで、会員にはエラーページが表示されます。"
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "メンバーポータルは一時的に利用できません"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "メンバーポータルのテーマ「%s」にはエラーが含まれているため、有効化できませんでした。"
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "メンバーポータルのテーマを表示できませんでした"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "メンバーポータルのテーマフォルダー「%s」が見つかりませんでした。"
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "メンバーポータルのテーマを変更しました。"
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "%1$s の教師の役割は、その教師がミニストリー → %2$s → %3$s で管理されている間は、名前の変更も削除もできません。"
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "有効なテーマフォルダーが見つかりません"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "アドレスが選択されています。キーボードでコピーしてください。"
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "アセットのパス「%s」は許可されていません。"
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "割り当てをキャンセルできませんでした"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "割り当てのメッセージが再送信されます"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "カレンダーのアドレスをコピーしました。"
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "カレンダーを読み込めませんでした。もう一度お試しください。"
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "カレンダーを保存できませんでした。"
+
+#: 
+msgid "The cart could not be added"
+msgstr "選択を追加できませんでした"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "教会からはまだメールが届いていません。"
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "教会の事務局に通知しました。後でもう一度お試しください。"
+
+#: 
+msgid "The class does not exist"
+msgstr "そのクラスは存在しません"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "このスケジュールが従うクラスは、もう存在しません。"
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "このメールの内容は保存されていません。ChurchCRM が保存するのは、メール作成画面で書いたメッセージと奉仕者メールの本文のみです。"
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "このメールの内容は保存されませんでした。"
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "コーディネーターを追加できませんでした"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "コーディネーターの一覧を読み込めませんでした"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "各開催回の日付と時刻はカレンダーの行事から決まるため、行事を移動するとスケジュールも移動します。"
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "days パラメータは、1から365までの整数でなければなりません"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "既定の奉仕者は人でなければなりません"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "既定の奉仕者はスケジュールに保存され、今後作られる開催回に割り当てられます。"
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "既定の奉仕者は一覧でなければなりません"
+
+#: 
+msgid "The description is too long"
+msgstr "説明が長すぎます"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "範囲の終了が開始より前になっています。"
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "範囲の終了が日付ではありません。"
+
+#: 
+msgid "The event could not be staffed"
+msgstr "行事に奉仕者を割り当てできませんでした"
+
+#: 
+msgid "The event does not exist"
+msgstr "その行事は存在しません"
+
+#: 
+msgid "The event is inactive"
+msgstr "その行事は無効です"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "行事は開始後に終了する必要があります"
+
+#: 
+msgid "The event title"
+msgstr "行事のタイトル"
+
+#: 
+msgid "The event title is too long"
+msgstr "行事のタイトルが長すぎます"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "ミニストリーの新しい行事が最初に使う行事の種類です。空の場合、または種類が削除された場合は、「その他」という種類があればそれが使われます。"
+
+#: 
+msgid "The event type does not exist"
+msgstr "その行事の種類は存在しません"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "このスケジュールが従う行事の種類は、もう存在しません。"
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "行事を移動できるのは、チームがリンクされているクラスだけです"
+
+#: 
+msgid "The events could not be created"
+msgstr "行事を作成できませんでした"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "行事を削除できませんでした"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "行事に奉仕者を割り当てできませんでした"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "権限を削除できませんでした"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "最終日が最初の日付より前になっています"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "対象となる奉仕者の一覧を読み込めませんでした"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "最大人数を最小人数より少なくすることはできません"
+
+#: 
+msgid "The message could not be queued"
+msgstr "メッセージをキューに入れられませんでした"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "最小人数をマイナスにすることはできません"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "ミニストリーを作成できませんでした"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "ミニストリーを無効化できませんでした"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "ミニストリーを削除できませんでした"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "ミニストリーを再有効化できませんでした"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "ミニストリーを保存できませんでした"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "開催回を削除できませんでした"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "その開催回にはスケジュールがありません"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "開催回を生成できませんでした"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "元の奉仕者は解除され、代理がその役割に就きます。両方に通知されます。"
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "元の奉仕者がその役割に残ります。両方に通知されます。"
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "お探しのページは存在しません。移動または削除された可能性があります。"
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "その役割は別のミニストリーに属しています"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "役割を削除できませんでした"
+
+#: 
+msgid "The position could not be saved"
+msgstr "役割を保存できませんでした"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "その役割はまだ埋まっているため、名簿を調整したい場合を除き、対応は不要です。"
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "資格を削除できませんでした"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "資格を保存できませんでした"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "資格のある奉仕者を読み込めませんでした"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "繰り返しには、行事がどのように繰り返されるかを指定する必要があります"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "%2$s の代わりに %1$s が奉仕する依頼が承認されました。"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "%2$s の代わりに %1$s が奉仕する依頼は承認されませんでした。"
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "必要人員に同じ役割が2回記載されています"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "スケジュールを無効化できませんでした"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "スケジュールを削除できませんでした"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "スケジュールを再有効化できませんでした"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "スケジュールを保存できませんでした"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "スケジュールが更新されたため、これ以上の対応は不要です。"
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "スケジュールの期間が、開始より前に終了しています"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "スケジュールの必要人員を読み込めませんでした"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "必要人員を読み込めませんでした"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "必要人員をリセットできませんでした"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "必要人員を保存できませんでした"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "必要人員は一覧でなければなりません"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "人員配置計画を読み込めませんでした"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "範囲の開始が日付ではありません。"
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "代理を判断できませんでした"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "代理の依頼を読み込めませんでした"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "教師をインポートできるのは、このチームの役割だけです"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "%1$s の教師はミニストリー → %2$s → %3$s で管理されます。生徒はここで引き続き変更できます。"
+
+#: 
+msgid "The team could not be deleted"
+msgstr "チームを削除できませんでした"
+
+#: 
+msgid "The team could not be saved"
+msgstr "チームを保存できませんでした"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "そのチームはこのミニストリーに属していません"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "テーマフォルダーが見つかりませんでした。"
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "ミニストリーのカレンダータブで新しい行事が最初に使う種類です。たとえば出席人数のカテゴリーが必要なクラスなど、行事ごとに変更することもできます。"
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "奉仕者の割り当てを保存できませんでした"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "%s ミニストリーの奉仕者プールです。"
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "奉仕者の設定変更を保存できませんでした"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "期間が、開始より前に終了しています"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "そのコーディネーターは、行事追加権限がなくても、自分のミニストリーの行事をこのカレンダーに固定できます。"
+
+#: 
+msgid "Theme"
+msgstr "テーマ"
+
+#: 
+msgid "Themes"
+msgstr "テーマ"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "テーマは ChurchCRM ではなく教会が提供するもので、ChurchCRM プロジェクトによる検証は行われていません。"
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "ID %d の教会カレンダーはありません。"
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "ID %d のシステムカレンダーはありません。"
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "教会があなたについて保管している情報です。変更はすぐに保存されます。"
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "あなたが担当している奉仕チームです。開くと、役割の設定、誰がどこで奉仕できるかの指定、これからの週の割り当てができます。"
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "これらの行事は1つのシリーズではありません。タイトル、種類、またはクラスが異なります"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "これらのミニストリーは、より多くの人を求めています。関心があることを伝えると、担当者から連絡があります。"
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "この必要人員はスケジュールから来ています。ここで保存すると、この開催回のみが変わります。"
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "これらの数字は、セルフサービスアカウント（ログインでメンバーポータルにのみアクセスできる人）のみを数えています。"
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "これらの人は引き続き割り当てられていますが、担当している役割は、この日付の人員配置計画に含まれなくなりました。"
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "これらの人は引き続き割り当てられていますが、担当している役割は、この開催回の人員配置計画に含まれなくなりました。"
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "これらのスケジュール済みの役割は、まだ人員が必要です。"
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "%1$s の次のチームは教会学校のクラスにリンクされています：%2$s。先にリンクを解除してください。"
+
+#: 
+msgid "They could not be added"
+msgstr "追加できませんでした"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "このミニストリーから外せませんでした"
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "すでにここの奉仕者でした"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "この割り当ては %1$s のため、%2$s に変更できません"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "この割り当ては有効ではなくなりました"
+
+#: 
+msgid "This email is not in your history."
+msgstr "このメールはあなたの履歴にありません。"
+
+#: 
+msgid "This event has already happened"
+msgstr "この行事はすでに終了しています"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "これは審査のため教会の事務局に送られます。スタッフが承認するまで、新しい家族メンバーはここに審査待ちとして表示されます。"
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "このグループは奉仕ミニストリーの奉仕者プールで、ミニストリーとともに削除されます"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "このグループは %s の奉仕者プールで、そのミニストリーから管理されます。"
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "このグループは %s の奉仕者プールです。そのミニストリーから管理されます。"
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "この環境には、まだカレンダーがありません。"
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "まもなく奉仕の予定があることをお知らせします。"
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "有効なテーマフォルダー名ではありません。"
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "これはあなたのチームの日付ではありません。"
+
+#: 
+msgid "This is not one of your teams."
+msgstr "これはあなたのチームではありません。"
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "教会が郵便を送る先と、あなたの世帯について電話をかける相手です。"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "これはあなたの教会アカウントです。ご自身とご家族のためにできることは、すべてここにあります。"
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "このミニストリーには、カレンダーに今後の行事がありません。"
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "このミニストリーには、「%s」というタイトルの今後の行事がありません。スケジュールは既存の行事に従います。先にミニストリーのカレンダータブで追加してください。"
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "このミニストリーには奉仕者プールのグループがありません"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "このミニストリーは、現在奉仕者を募集していません"
+
+#: 
+msgid "This ministry's events"
+msgstr "このミニストリーの行事"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "このミニストリーの行事（行事は未選択）"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "この開催回は、再びスケジュールに従います"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "この開催回はすでに終了しています"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "この開催回はすでに終了しており、割り当てはもう変更できません"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "この開催回はキャンセルされました"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "この開催回には、スケジュールとは別に設定された独自の必要人員があります。"
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "このページはあなたのアカウントに含まれていません。含まれるべきだと思われる場合は、教会の事務局にお尋ねください。"
+
+#: 
+msgid "This page was not found"
+msgstr "このページが見つかりません"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "メンバーポータルのこの部分は、奉仕チームのリーダー用です。"
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "この役割は、申し込みではなく、チームリーダーまたはコーディネーターが割り当てます"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "このスケジュールは削除できません：%d 件の奉仕者の割り当てが、その開催回をまだ参照しています。"
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "このスケジュールには、まだ必要人員がありません"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "このスケジュールは無効です。開催回を生成するには再有効化してください。"
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "この代理の依頼はすでに判断されています"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "このチームには、まだ役割がありません"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "このチームは、すでにこの行事を担当しています"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "このテンプレートはファイル「%s」を求めていますが、テーマに含まれていません。"
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "このテーマは有効化できません"
+
+#: 
+msgid "This theme has no problems."
+msgstr "このテーマに問題はありません。"
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "このバージョンの ChurchCRM は、このパスのテンプレートを使用しないため、上書きは表示されません。"
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "このチームのボランティアタブでチェックを入れてから、ここで割り当ててください。"
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "チェックは入れるとすぐに保存されます。"
+
+#: 
+msgid "Times come from this event"
+msgstr "時刻はこの行事から決まります"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "次回の定期実行を待たずに、すべてのスケジュールを補充し、キューにあるものを送信して、終了した開催回を締めます。"
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "{{name}} を辞退させますか？元の奉仕者は引き続き割り当てられ、通知されます。"
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "メンバーポータルのテンプレートキャッシュをオフにし、各テンプレートの名前をHTMLコメントに出力します。テーマ設計者向けです。通常の使用ではオフのままにしてください。"
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "チームが教会学校のクラスを教えているミニストリーでオンにします。そのチームをクラスにリンクでき、スケジュールや行事でもクラスを使用できます。"
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "ポータルのテンプレートキャッシュをオフにし、各テンプレートの名前をHTMLコメントに出力します。テーマ設計者向けです。通常の使用ではオフのままにしてください。"
+
+#: 
+msgid "Two-factor authentication"
+msgstr "二要素認証"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "未充足の役割"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "不明な配信エラー"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "不明な開催回ステータス"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "不明なスケジュールのリンクモード"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "不明な奉仕ミニストリー"
+
+#: 
+msgid "Until"
+msgstr "終了日"
+
+#: 
+msgid "Upcoming availability"
+msgstr "今後の空き状況"
+
+#: 
+msgid "Update your details"
+msgstr "情報を更新"
+
+#: 
+msgid "Update your family details"
+msgstr "家族の情報を更新"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "1つの行事に奉仕者を割り当てるには「この行事に奉仕者を割り当てる」を使用してください"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "スケジュールの必要人員を使用"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "ユーザーには行事追加権限があるか、奉仕ミニストリーのコーディネーターである必要があり、行事モジュールが有効でなければなりません"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "ユーザーには行事追加権限があるか、このカレンダーが属する奉仕ミニストリーのコーディネーターである必要があります"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1：ボランティア機会（従来）"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1：従来のボランティア機会"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2：ミニストリー"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2：ボランティア管理"
+
+#: 
+msgid "Valid"
+msgstr "有効"
+
+#: 
+msgid "Validation"
+msgstr "検証"
+
+#: 
+msgid "View event"
+msgstr "イベントを表示"
+
+#: 
+msgid "View my schedule"
+msgstr "自分のスケジュールを見る"
+
+#: 
+msgid "View only"
+msgstr "閲覧のみ"
+
+#: 
+msgid "View person"
+msgstr "人物を表示"
+
+#: 
+msgid "View the event"
+msgstr "行事を見る"
+
+#: 
+msgid "View this email"
+msgstr "このメールを見る"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "ボランティア（従来）"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "ボランティア管理 V2 は有効になっていません"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "奉仕ミニストリー"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "奉仕者の割り当て"
+
+#: 
+msgid "Volunteer declined"
+msgstr "奉仕者が辞退しました"
+
+#: 
+msgid "Volunteer experience"
+msgstr "ボランティア体験"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "奉仕者の役割にはまだ空きがあります"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "奉仕者へのリマインダー"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "奉仕者の申込"
+
+#: 
+msgid "Volunteer times"
+msgstr "奉仕者の時間"
+
+#: 
+msgid "Volunteering"
+msgstr "奉仕"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "教会の運営の仕方に沿って組み立てた奉仕の管理です。各ミニストリーにはチームと役割があり、人は役割の資格を持ち、ミニストリーの奉仕者プールのグループに所属します。スケジュールはカレンダーの行事に従い、必要人員を伴う日付付きの開催回を生成します。コーディネーターが人を割り当て、割り当てられた人は承諾、辞退、または代理の提案を行います。リマインダーと通知はメールで送られます。管理者とミニストリー管理権限を持つユーザーは、すべてのミニストリーを見ることができ、作成、無効化、削除ができます。ミニストリーのコーディネーターには代わりに「自分のミニストリーの管理」権限が付与され、サイドバーのミニストリー見出しには、担当するミニストリーだけが表示されます。チームリーダーは、メンバーポータルからチームを運営します。会員はメンバーポータルで、自分のスケジュールの確認、応答、申し込み、お手伝いの申し出ができます。"
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "割り当て済みの奉仕者：{{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "奉仕の終了"
+
+#: 
+msgid "Volunteers needed"
+msgstr "必要な奉仕者"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "%s の奉仕者がこれらの行事に割り当てられているため、ここでは削除できません。そのミニストリーに人員配置の削除を依頼するか、カレンダーを管理する人に依頼してください。"
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "{{names}} の奉仕者がその一部に割り当てられています。カレンダーを管理する人でない限り、その人員配置が削除されるまで、削除は拒否されます。"
+
+#: 
+msgid "Volunteers start"
+msgstr "奉仕の開始"
+
+#: 
+msgid "Waiting for a reply"
+msgstr "返信待ち"
+
+#: 
+msgid "Waiting for review"
+msgstr "審査待ち"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "コーディネーターの確認待ちです。"
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "埋める必要のあるものが出たら、メールでお知らせします。"
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "日曜の朝に、もっとお手伝いいただけると嬉しいです。経験は必要ありません。"
+
+#: 
+msgid "Welcome, %s"
+msgstr "ようこそ、%s さん"
+
+#: 
+msgid "What needs changing?"
+msgstr "何を変更する必要がありますか？"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "今週対応が必要なこと"
+
+#: 
+msgid "What the check found"
+msgstr "チェックで見つかったこと"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "ボランティア体験とは"
+
+#: 
+msgid "What you want to say"
+msgstr "お伝えしたいこと"
+
+#: 
+msgid "When"
+msgstr "いつ"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "奉仕者が代わりを務める人を提案すると、承認または却下できるよう、ここに表示されます。"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "奉仕者が代わりを務める人を提案すると、承認できるよう、ここに表示されます。"
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "誰かがあなたをチームに加えたとき、またはご自分で申し込んだとき、ここに表示されます。"
+
+#: 
+msgid "Where"
+msgstr "どこで"
+
+#: 
+msgid "Where the dates come from"
+msgstr "日付の基準"
+
+#: 
+msgid "Where we reach you"
+msgstr "連絡先"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "有効なボランティア管理の体験を選びます。V1 は従来のボランティア機会の機能、V2 は新しいスケジュールと割り当てのワークフローです。「両方」を選ぶと、移行中に両方が並んで表示されます。"
+
+#: 
+msgid "Which events"
+msgstr "対象の行事"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "この教会が使うボランティア体験を選びます。右のカードで各選択肢を説明しています。"
+
+#: 
+msgid "Who is covering"
+msgstr "代わりを務める人"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "誰が必要で、誰が入っていて、まだ何が不足しているか"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "最後に奉仕してから最も時間が経った人が先に表示されます。"
+
+#: 
+msgid "Work Email"
+msgstr "勤務先メール"
+
+#: 
+msgid "Yearly"
+msgstr "毎年"
+
+#: 
+msgid "You"
+msgstr "あなた"
+
+#: 
+msgid "You are already helping that day"
+msgstr "その日はすでにお手伝いしています"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "その日はすでに {{what}} としてお手伝いしています。こちらにも申し込みますか？"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "これを変更する権限がありません。教会の事務局にご連絡ください。"
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "現在、家族に関連付けられていません"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "まだ家族の記録に含まれていません。"
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "リストに登録されました。ありがとうございます。"
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "自分の奉仕スケジュールで確認または変更できます。"
+
+#: 
+msgid "You cannot open this page"
+msgstr "このページを開くことはできません"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "自分自身を自分の代理として提案することはできません"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "その申し込みはできませんでした。"
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "まだ奉仕チームのリーダーではありません。"
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "新しいカレンダーのアドレスが発行されました。古いアドレスは使えなくなりました。"
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "奉仕の予定が入りました"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "奉仕の予定が入りました。"
+
+#: 
+msgid "You lead this"
+msgstr "あなたがリーダーです"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "リーダーを務めているチームに対してのみ、スケジュールを作成できます"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "この件については、再びリストに戻ります。"
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "アカウントが個人の記録にリンクされていません。教会の事務局にご連絡ください。"
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "カレンダーの購読を保存しました。"
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "現在のアドレスはすぐに使えなくなります。お渡しした相手には、新しいアドレスが必要になります。"
+
+#: 
+msgid "Your details"
+msgstr "あなたの情報"
+
+#: 
+msgid "Your details have been saved."
+msgstr "情報を保存しました。"
+
+#: 
+msgid "Your family details have been saved."
+msgstr "家族の情報を保存しました。"
+
+#: 
+msgid "Your photo"
+msgstr "あなたの写真"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "写真を保存しました。"
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "スケジュールを読み込めませんでした。"
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "セッションの有効期限が切れました。もう一度サインインしてください。"
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "代理の依頼が承認されました"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "代理の依頼は承認されませんでした"
+
+#: 
+msgid "already staffed by this team"
+msgstr "すでにこのチームが担当しています"
+
+#: 
+msgid "body is required"
+msgstr "本文は必須です"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds はカレンダーIDの一覧でなければなりません"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents は次のいずれかでなければなりません：%s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId はグループIDまたは null でなければなりません"
+
+#: 
+msgid "end offset"
+msgstr "終了オフセット"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds は行事IDの一覧でなければなりません"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "すべてのメッセージが配信済みか、まだキューにあります"
+
+#: 
+msgid "has not served yet"
+msgstr "まだ奉仕していません"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId は役割IDでなければなりません"
+
+#: 
+msgid "inactive family"
+msgstr "無効な家族"
+
+#: 
+msgid "line %d"
+msgstr "%d 行目"
+
+#: 
+msgid "marked do not email"
+msgstr "メール配信拒否に設定済み"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "件のメッセージを配信できませんでした"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "件のメッセージが、5回試行しても配信できませんでした"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "件のメッセージが送信待ちです"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds はミニストリーIDの一覧でなければなりません"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "行事の終了後（分）"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "行事の開始後（分）"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "行事の終了前（分）"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "行事の開始前（分）"
+
+#: 
+msgid "never"
+msgstr "なし"
+
+#: 
+msgid "no email address"
+msgstr "メールアドレスなし"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds と familyIds は正の整数の配列でなければなりません"
+
+#: 
+msgid "record not found"
+msgstr "レコードが見つかりません"
+
+#: 
+msgid "same address as another recipient"
+msgstr "他の宛先と同じアドレス"
+
+#: 
+msgid "single event"
+msgstr "単発の行事"
+
+#: 
+msgid "start offset"
+msgstr "開始オフセット"
+
+#: 
+msgid "subject and body are required"
+msgstr "件名と本文は必須です"
+
+#: 
+msgid "subject is required"
+msgstr "件名は必須です"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "件名は255文字以内でなければなりません"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool は true または false でなければなりません"
+
+#: 
+msgid "window end"
+msgstr "期間の終了"
+
+#: 
+msgid "window start"
+msgstr "期間の開始"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} 人を追加しました。{{alreadyMembers}} 人はすでにここの奉仕者でした"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} 件の開催回を作成しました。{{existing}} 件はすでにありました"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} が {{className}} の行事を {{total}} 件作成しました（今後 {{upcoming}} 件）。"
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} も、その一部に奉仕者を割り当てています。"
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} さんはすでにこのミニストリーのコーディネーターです"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} さんを割り当てました"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} さんは、この開催回ですでに {{position}} として奉仕しています。それでも割り当てることができます。"
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} さんは資格がありますが、このミニストリーの奉仕者プールにいません。割り当てると、この開催回のみに追加されます。"
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} さんが、このミニストリーのコーディネーターになりました"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}：人数は 0 から {{max}} の間でなければなりません。"
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}：最大を最小より少なくすることはできません。"
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}：{{name}} さんは資格がなくなりました"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}：{{name}} さんに資格が付与されました"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} さんが {{substitute}} さんに代わりを依頼しています"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{date}} の {{title}} を作成しました。今すぐ奉仕者を割り当てますか？"
+

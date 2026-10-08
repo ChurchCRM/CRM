@@ -1,172 +1,98 @@
 {
-  "Select at least one classification to include in the directory.": "ディレクトリに含める分類を少なくとも1つ選択してください。",
-  "Geocoding services": "ジオコーディングサービス",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "試すジオコーディングサービスを、選択した順に指定します。Nominatim（OpenStreetMap）は世界中で利用できます。US Census（米国国勢調査局）は米国の住所のみ対象です。US Census を使うには、これも選択してください。何も選択しない場合は Nominatim が使用されます。",
-  "New Record Defaults": "新規レコードの初期値",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "地図設定で選択したジオコーディングサービスを使い、座標が未設定のすべての家族の地図座標を検索します。家族を50件ずつのバッチで処理し、1つのジオコーディングサービスでは1バッチに約1分、サービスが増えるとさらに時間がかかります。実行中もこのページを開いたままにできます。続行しますか？",
-  "Used for new records and for geocoding when a record has no country.": "新規レコードや、国が未設定のレコードのジオコーディングに使用されます。",
-  "Copy from Church Info": "教会情報からコピー",
-  "Could not copy the church address.": "教会の住所をコピーできませんでした。",
-  "Could not match the church country.": "教会の国を一致させることができませんでした。",
-  "Class lists, attendance sheets, and photo books": "クラス名簿、出席表、フォトブック",
-  "Group membership lists and Sunday School class reports": "グループの会員名簿と教会学校クラスのレポート",
-  "Your fiscal year starts in %s.": "会計年度は %s に始まります。",
-  "An error occurred": "エラーが発生しました",
-  "Approve": "承認",
-  "Approve selected": "選択した項目を承認",
-  "Approved": "承認済み",
-  "Change in People Settings": "人々設定で変更",
-  "Could not approve the selected registrations": "選択した登録を承認できませんでした",
-  "Could not approve this family": "この家族を承認できませんでした",
-  "Pending Registrations": "保留中の登録",
-  "Pending review": "審査待ち",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "公開登録フォームから届いた、審査待ちの登録です。メールアドレスも電話番号もない登録にはフラグが付いています。連絡する前に連絡先を確認してください。",
-  "Review now": "今すぐ審査",
-  "Review self registrations": "自己登録を審査",
-  "Select month": "月を選択",
-  "Self-registration is disabled": "自己登録は無効です",
-  "Self-registration is enabled": "自己登録は有効です",
-  "The public registration form is turned off. Existing registrations are listed below.": "公開登録フォームはオフになっています。既存の登録は以下に表示されています。",
-  "This family is not a pending self-registration": "この家族は保留中の自己登録ではありません",
-  "This person belongs to a family — approve the family instead": "この人は家族に所属しています。代わりに家族を承認してください",
-  "This person is not a pending self-registration": "この人は保留中の自己登録ではありません",
-  "This self-registered family is pending review": "この自己登録の家族は審査待ちです",
-  "Total registrations": "登録の合計",
-  "Visitors can sign up on your public registration form.": "訪問者は公開登録フォームから登録できます。",
-  "Yesterday": "昨日",
-  "days ago": "日前",
-  "self-registrations are waiting for review": "件の自己登録が審査待ちです",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "誕生日は本人宛て、結婚記念日は夫婦宛てになります。",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "このレポートの対象者の宛名ラベルです。本人の住所がない人は、家族の住所宛てになります。",
-  "One label for each couple.": "夫婦ごとに1枚のラベル。",
-  "Print Labels": "ラベルを印刷",
-  "That role is not one of this group's roles.": "その役割は、このグループの役割ではありません。",
-  "\"%s\" is not a kind of calendar this page knows about.": "「%s」は、このページが扱うカレンダーの種類ではありません。",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s は奉仕できないため、代わりに %2$s を提案しました。",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s はすでに %2$s の奉仕者プールに入っており、再び奉仕を希望しています。",
-  "%1$s is already linked to %2$s in %3$s": "%1$s はすでに %3$s の %2$s にリンクされています",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s は %2$s に %3$s として所属しています。先にクラスから外してください。ここで資格を付与すると、クラスの教師の一人になります。",
-  "%1$s is not an event of %2$s": "%1$s は %2$s の行事ではありません",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s は教会学校のクラスのままで、その教師はミニストリー → %2$s → %3$s で管理されます。先にチームとのリンクを解除してください。",
-  "%1$s wants to help with %2$s": "%1$s は %2$s の奉仕を希望しています",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s は %2$s の奉仕を希望しており、その奉仕者プールに追加されました。",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s：最大は %2$d ですが、既定の奉仕者が %3$d 人選ばれています。1人外すか、最大を増やしてください。",
   "%d day": {
-    "other": "%d 日"
+    "other": ""
   },
   "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "other": "既定の奉仕者 %d 人は別の理由でスキップされました（開催回が終了、キャンセル、または満員）"
+    "other": ""
   },
   "%d default skipped: qualification revoked": {
-    "other": "既定の奉仕者 %d 人をスキップ：資格が取り消されました"
+    "other": ""
   },
   "%d default volunteer assigned": {
-    "other": "既定の奉仕者 %d 人を割り当てました"
+    "other": ""
   },
-  "%d failed": "%d 件失敗しました",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "other": "この役割には、あと %d 人の奉仕者が必要です。開催回を開いて空きを埋めてください。"
+    "other": ""
   },
   "%d new occurrence": {
-    "other": "新しい開催回 %d 件"
+    "other": ""
   },
   "%d volunteer is still needed for an upcoming occurrence.": {
-    "other": "今後の開催回に、あと %d 人の奉仕者が必要です。"
+    "other": ""
   },
-  "%s Calendar": "%s カレンダー",
-  "%s Family": "%s 家族",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s は教会学校の教師を提供しないため、そのチーム、スケジュール、行事ではクラスを使用できません。奉仕者マネージャーがミニストリーの編集で変更できます。",
   "%s email from the church": {
-    "other": "教会からの %s 通のメール"
+    "other": ""
   },
-  "%s family": "%s 家族",
-  "%s has declined a volunteer assignment.": "%s が奉仕の割り当てを辞退しました。",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s には「教師」という名前の役割がないため、教師をチームから管理できません",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s のカレンダーには今後の集会がありません。スケジュールは既存の行事に従います。先に、ミニストリーのカレンダータブにある「新しい定期行事」でクラスの集会を追加してください。",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s は引き続き奉仕する予定です。できない場合は、コーディネーターに連絡してください。",
-  "%s not sent (%s): %s": "%s を送信できませんでした（%s）：%s",
   "%s person in your household": {
-    "other": "あなたの世帯の %s 人"
+    "other": ""
   },
   "%s position": {
-    "other": "%s 件の役割"
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s：同じ人が既定の奉仕者として2回選ばれています",
-  "(no subject)": "（件名なし）",
-  "A birthday cannot be in the future.": "誕生日は未来の日付にできません。",
-  "A calendar event": "カレンダーの行事",
-  "A calendar id must be a number.": "カレンダーIDは数値でなければなりません。",
-  "A class that no longer exists": "存在しなくなったクラス",
-  "A class with no meetings on the calendar cannot be chosen yet.": "カレンダーに集会がないクラスは、まだ選択できません。",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "カレンダーに集会がないクラスは、まだ選択できません。ミニストリーのコーディネーターが、ミニストリーのカレンダータブで集会を追加できます。",
-  "A class's meetings": "クラスの集会",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "コーディネーターは、このミニストリーのすべてを管理できます。奉仕者マネージャーが行うはずの変更も含まれます。",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "ミニストリーのコーディネーターが、ミニストリーのカレンダータブで追加できます。",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "ミニストリーのコーディネーターが、ミニストリーのカレンダータブで追加できます。その後、もう一度生成してください。",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "コーディネーターはミニストリー全体（チーム、役割、スケジュール、すべての割り当て）を運営します。",
-  "A day a month does not have falls on its last day.": "その月にない日は、月の最終日になります。",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "既定の奉仕者は、1回ごとの開催ではなく、スケジュールの必要人員に属します",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "既定の奉仕者は、このスケジュールの必要人員が求める役割にのみ選択できます",
-  "A from and a to date in YYYY-MM-DD form are required": "開始日と終了日を YYYY-MM-DD 形式で指定してください",
-  "A minimum count is required": "最小人数が必要です",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "ミニストリーは、専用のカレンダー、奉仕者プール、最初のチームとともに作成されるため、ここで決めるのは名前と活動内容だけです。",
-  "A ministry name is required": "ミニストリー名が必要です",
-  "A ministry needs at least one team. Rename it instead.": "ミニストリーには少なくとも1つのチームが必要です。代わりに名前を変更してください。",
-  "A ministry with that name already exists": "その名前のミニストリーはすでに存在します",
-  "A ministry's own calendar cannot be opened to other ministries": "ミニストリー専用のカレンダーを他のミニストリーに公開することはできません",
-  "A position belongs to a team; choose one": "役割はチームに属します。チームを選択してください",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "役割とは、このチームで誰かが担当する仕事です（例：エスプレッソ、賛美リーダー）。",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "役割とは、誰かが奉仕する担当です（例：エスプレッソ、賛美リーダー）。",
-  "A position is required": "役割が必要です",
-  "A position name is required": "役割名が必要です",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "資格のある奉仕者がいる役割は、教会学校のクラスにリンクされたチームへの移動や、そこからの移動はできません。クラスの教師が変わってしまうためです。代わりに、もう一方のチームで役割を作成してください。",
-  "A position with that name already exists in this ministry": "その名前の役割は、このミニストリーにすでに存在します",
-  "A response must be accepted or declined": "応答は承諾または辞退のいずれかでなければなりません",
-  "A schedule belongs to a team; choose one": "スケジュールはチームに属します。チームを選択してください",
-  "A schedule name is required": "スケジュール名が必要です",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "スケジュールは、チームが担当するカレンダーの行事（礼拝の種類、クラスの集会、またはこのミニストリー独自の行事）を定めます。スケジュールを追加して、開催回を生成してください。",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "スケジュールは、このチームが奉仕するカレンダーの行事（礼拝の種類、クラスの集会、またはミニストリー独自の行事）を定めます。スケジュールを追加して、開催回を生成してください。",
-  "A schedule that follows a class must name the class": "クラスに従うスケジュールには、クラスを指定する必要があります",
-  "A schedule that follows an event type must name the event type": "行事の種類に従うスケジュールには、行事の種類を指定する必要があります",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "1つの行事を担当するスケジュールは、他の行事に従うことができません。削除して、代わりにスケジュールを追加してください",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "「保育」や「受付係」のような奉仕の機会を1つにまとめた一覧で、人々 → 管理の下で管理されます。各人には、その人の記録のボランティアタブで、手伝ってもよい奉仕の機会がタグ付けされます。記録されるのはそれだけで、チーム、日付への割り当て、リマインダーメールはありません。タグはレポートと個人の記録で使われます。",
-  "A square picture of your face works best.": "正方形の顔写真が最適です。",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "必要人員の既定の奉仕者は「defaults」に指定します：[{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "必要人員は、スケジュールまたは開催回のどちらか1つにのみ属します",
-  "A substitute has already been proposed for this assignment": "この割り当てには、すでに代理が提案されています",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "チームリーダーは、自分のチーム（その役割、スケジュール、奉仕する人）を管理できますが、ミニストリー内の他のことは管理できません。",
-  "A team name is required": "チーム名が必要です",
-  "A team with that name already exists in this ministry": "その名前のチームは、このミニストリーにすでに存在します",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "テーマは、教会がサーバー上の Include/themes/ にアップロードするフォルダーです。システム既定のテーマは ChurchCRM に付属しています。",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "移行用の設定です。従来のボランティア機会のページと新しいミニストリーのページの両方が利用でき、個人の記録には2つのボランティアタブが明記されて表示されます。教会を V1 から V2 に移行する間に使用し、その後は V2 のみに切り替えてください。",
-  "A volunteer": "奉仕者",
-  "A volunteer has declined an assignment": "奉仕者が割り当てを辞退しました",
-  "A volunteer has proposed a substitute": "奉仕者が代理を提案しました",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "奉仕者マネージャーは、権限の付与なしでこのミニストリーを運営できます。他のミニストリーまですべて任せることなく、別の人に運営を任せたい場合は、コーディネーターを追加してください。",
-  "A wedding date cannot be in the future.": "結婚記念日は未来の日付にできません。",
-  "Accepted": "承諾済み",
-  "Account deleted": "アカウントを削除しました",
-  "Account unlocked": "アカウントがロック解除",
-  "Accounts": "アカウント",
-  "Active must be true or false": "有効は true または false でなければなりません",
-  "Active now": "現在アクティブ",
-  "Add All": "すべて追加",
-  "Add Everyone in Cart": "カートの全員を追加",
-  "Add Volunteer": "奉仕者を追加",
-  "Add Volunteers to Cart": "奉仕者を選択に追加",
-  "Add a family member": "家族を追加",
-  "Add a position first, then come back and say how many of them are needed.": "先に役割を追加してから、それぞれ何人必要かを指定してください。",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "サインインに第2のステップを追加して、パスワードだけではアカウントにアクセスできないようにします。",
-  "Add at least one position to this team, then tick who can serve where.": "このチームに役割を少なくとも1つ追加し、誰がどこで奉仕できるかにチェックを入れてください。",
-  "Add coordinator": "コーディネーターを追加",
-  "Add from Cart": "選択から追加",
-  "Add its meetings first with New recurring event on the Calendar tab": "先にカレンダータブの「新しい定期行事」で集会を追加してください",
-  "Add people to the cart before adding them as volunteers": "奉仕者として追加する前に、人を選択に追加してください",
-  "Add position": "役割を追加",
-  "Add schedule": "スケジュールを追加",
-  "Add team": "チームを追加",
-  "Add them on the Calendar tab, then generate again.": "カレンダータブで追加してから、もう一度生成してください。",
-  "Add them on the Calendar tab.": "カレンダータブで追加してください。",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "このアドレスをカレンダーアプリに追加してください。教会のカレンダーが変更されると自動的に更新されます。",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "このミニストリーの行事（作業の日、毎週日曜に集まるクラスなど）をここに追加します。教会のカレンダーに載り、作成と同時に奉仕者を割り当てることもできます。"
+  "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified.": {
+    "other": ""
+  },
+  "Passwords must be at least %s character long.": {
+    "other": ""
+  },
+  "They finish %d minute after the event ends.": {
+    "other": ""
+  },
+  "They finish %d minute before the event ends.": {
+    "other": ""
+  },
+  "Volunteers start %d minute after the event starts.": {
+    "other": ""
+  },
+  "Volunteers start %d minute before the event starts.": {
+    "other": ""
+  },
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
+  },
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

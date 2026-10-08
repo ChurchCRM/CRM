@@ -18818,3 +18818,4571 @@ msgstr "Роль подружжя"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Поштові індекси великими літерами"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Виберіть принаймні одну класифікацію для включення до довідника."
+
+#: 
+msgid "Geocoding services"
+msgstr "Служби геокодування"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Служби геокодування, які буде випробувано в порядку вибору. Nominatim (OpenStreetMap) працює в усьому світі; US Census (Бюро перепису населення США) охоплює лише адреси в США. Виберіть також US Census, щоб його використовувати. Якщо нічого не вибрано, використовується Nominatim."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Типові значення для нових записів"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Це знаходить координати на карті для кожної родини, у якої їх немає, за допомогою служб геокодування, вибраних у налаштуваннях карти. Родини обробляються пакетами по 50; пакет займає близько хвилини при одній службі геокодування і довше при кількох. Цю сторінку можна тримати відкритою під час роботи. Продовжити?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Використовується для нових записів і для геокодування, коли в записі не вказано країну."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Скопіювати з відомостей про церкву"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Не вдалося скопіювати адресу церкви."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Не вдалося визначити країну церкви."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Списки класів, аркуші відвідуваності та фотоальбоми"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Списки учасників служінь і звіти за класами недільної школи"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Ваш фінансовий рік починається в %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Сталася помилка"
+
+#: 
+msgid "Approve"
+msgstr "Схвалити"
+
+#: 
+msgid "Approve selected"
+msgstr "Схвалити вибране"
+
+#: 
+msgid "Approved"
+msgstr "Схвалено"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Змінити в налаштуваннях людей"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Не вдалося схвалити вибрані реєстрації"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Не вдалося схвалити цю родину"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Реєстрації, що очікують"
+
+#: 
+msgid "Pending review"
+msgstr "Очікує перевірки"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Реєстрації з вашої загальнодоступної форми, що очікують перевірки. Записи без ел. пошти чи телефону позначено — перевірте контактні дані, перш ніж зв’язуватися."
+
+#: 
+msgid "Review now"
+msgstr "Перевірити зараз"
+
+#: 
+msgid "Review self registrations"
+msgstr "Перевірити саморєстрації"
+
+#: 
+msgid "Select month"
+msgstr "Виберіть місяць"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Саморєстрацію вимкнено"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Саморєстрацію ввімкнено"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Загальнодоступну форму реєстрації вимкнено. Наявні реєстрації наведено нижче."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Ця родина не очікує перевірки саморєстрації"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Ця особа належить до родини — схваліть натомість усю родину"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Ця особа не очікує перевірки саморєстрації"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Ця саморєстрована родина очікує перевірки"
+
+#: 
+msgid "Total registrations"
+msgstr "Усього реєстрацій"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Відвідувачі можуть зареєструватися через вашу загальнодоступну форму реєстрації."
+
+#: 
+msgid "Yesterday"
+msgstr "Учора"
+
+#: 
+msgid "days ago"
+msgstr "дн. тому"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "саморєстрацій очікують перевірки"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Вітання з днем народження адресуються особі, а з річницею — подружжю."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Поштові наклейки для людей із цього звіту. Якщо в особи немає власної адреси, використовується адреса її родини."
+
+#: 
+msgid "One label for each couple."
+msgstr "Одна наклейка на кожну пару."
+
+#: 
+msgid "Print Labels"
+msgstr "Друк наклейок"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Ця роль не входить до ролей цієї групи."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "«%s» — невідомий цій сторінці вид календаря."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s не може служити і запропонував(ла) %2$s як заміну."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s уже в резерві волонтерів «%2$s» і хоче допомагати знову."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s уже пов’язаний(а) з %2$s у %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s перебуває в %2$s як %3$s. Спершу вилучіть особу з класу; після надання кваліфікації тут вона стане одним із його вчителів."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s не є подією %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s залишається класом недільної школи, доки його вчителями керують у розділі «Служіння» → %2$s → %3$s. Спершу відв’яжіть його від команди."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s хоче допомагати в «%2$s»"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s хоче допомагати в «%2$s» і доданий(а) до його резерву волонтерів."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: максимум %2$d, але вибрано волонтерів за замовчуванням: %3$d. Приберіть зайвих або збільште максимум."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d день"
+msgstr[1] "%d дні"
+msgstr[2] "%d днів"
+msgstr[3] "%d дня"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d призначення за замовчуванням пропущено з іншої причини (проведення завершено, скасовано або заповнено)"
+msgstr[1] "%d призначення за замовчуванням пропущено з іншої причини (проведення завершено, скасовано або заповнено)"
+msgstr[2] "%d призначень за замовчуванням пропущено з іншої причини (проведення завершено, скасовано або заповнено)"
+msgstr[3] "%d призначення за замовчуванням пропущено з іншої причини (проведення завершено, скасовано або заповнено)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d призначення за замовчуванням пропущено: кваліфікацію скасовано"
+msgstr[1] "%d призначення за замовчуванням пропущено: кваліфікацію скасовано"
+msgstr[2] "%d призначень за замовчуванням пропущено: кваліфікацію скасовано"
+msgstr[3] "%d призначення за замовчуванням пропущено: кваліфікацію скасовано"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "Призначено %d волонтера за замовчуванням"
+msgstr[1] "Призначено %d волонтерів за замовчуванням"
+msgstr[2] "Призначено %d волонтерів за замовчуванням"
+msgstr[3] "Призначено %d волонтера за замовчуванням"
+
+#: 
+msgid "%d failed"
+msgstr "Не вдалося: %d"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Для цієї позиції все ще потрібен ще %d волонтер. Відкрийте проведення, щоб закрити прогалину."
+msgstr[1] "Для цієї позиції все ще потрібні ще %d волонтери. Відкрийте проведення, щоб закрити прогалину."
+msgstr[2] "Для цієї позиції все ще потрібно ще %d волонтерів. Відкрийте проведення, щоб закрити прогалину."
+msgstr[3] "Для цієї позиції все ще потрібно ще %d волонтера. Відкрийте проведення, щоб закрити прогалину."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d нове проведення"
+msgstr[1] "%d нові проведення"
+msgstr[2] "%d нових проведень"
+msgstr[3] "%d нового проведення"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Для майбутнього проведення все ще потрібен %d волонтер."
+msgstr[1] "Для майбутнього проведення все ще потрібні %d волонтери."
+msgstr[2] "Для майбутнього проведення все ще потрібно %d волонтерів."
+msgstr[3] "Для майбутнього проведення все ще потрібно %d волонтера."
+
+#: 
+msgid "%s Calendar"
+msgstr "Календар «%s»"
+
+#: 
+msgid "%s Family"
+msgstr "Родина %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "«%s» не надає вчителів для недільної школи, тому його команди, розклади та події не можуть використовувати клас. Менеджер волонтерів може змінити це в розділі «Редагувати служіння»."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s лист від церкви"
+msgstr[1] "%s листи від церкви"
+msgstr[2] "%s листів від церкви"
+msgstr[3] "%s листа від церкви"
+
+#: 
+msgid "%s family"
+msgstr "родина %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s відмовився (відмовилася) від волонтерського призначення."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "У «%s» немає ролі «Вчитель», тому вчителями не можна керувати з команди"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "У календарі «%s» немає майбутніх зустрічей. Розклад слідує за вже наявними подіями: спершу додайте зустрічі класу через «Нова повторювана подія» на вкладці «Календар» служіння."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "Від %s і далі очікується служіння. Якщо це неможливо, зверніться до координатора."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s не надіслано (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s особа у вашій родині"
+msgstr[1] "%s особи у вашій родині"
+msgstr[2] "%s осіб у вашій родині"
+msgstr[3] "%s особи у вашій родині"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s позиція"
+msgstr[1] "%s позиції"
+msgstr[2] "%s позицій"
+msgstr[3] "%s позиції"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: одну й ту саму особу вибрано двічі як волонтера за замовчуванням"
+
+#: 
+msgid "(no subject)"
+msgstr "(без теми)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Дата народження не може бути в майбутньому."
+
+#: 
+msgid "A calendar event"
+msgstr "Подія календаря"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "Ідентифікатор календаря має бути числом."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Клас, якого вже немає"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Клас без зустрічей у календарі поки що не можна вибрати."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Клас без зустрічей у календарі поки що не можна вибрати. Координатор служіння додає зустрічі на вкладці «Календар» служіння."
+
+#: 
+msgid "A class's meetings"
+msgstr "Зустрічі класу"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Координатор може керувати всім у цьому служінні, зокрема вносити зміни, які інакше довелося б робити менеджеру волонтерів."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Координатор служіння може додати їх на вкладці «Календар» служіння."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Координатор служіння може додати їх на вкладці «Календар» служіння. Потім створіть знову."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Координатор керує всім служінням — його командами, позиціями, розкладами та всіма призначеннями."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "День, якого немає в місяці, переноситься на останній день місяця."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Волонтер за замовчуванням належить до потреб розкладу в людях, а не до одного проведення"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Волонтера за замовчуванням можна вибрати лише для позиції, яку вказано в потребах розкладу в людях"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Потрібні дати «від» і «до» у форматі РРРР-ММ-ДД"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Потрібна мінімальна кількість"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Служіння створюється з власним календарем, резервом волонтерів і першою командою, тому тут потрібно вирішити лише його назву та чим воно займається."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Потрібна назва служіння"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Служінню потрібна принаймні одна команда. Краще перейменуйте її."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Служіння з такою назвою вже існує"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Власний календар служіння не можна відкрити для інших служінь"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Позиція належить команді; виберіть команду"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Позиція — це завдання, яке людина виконує в цій команді, наприклад «Еспресо» або «Регент»."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Позиція — це роль, у якій людина служить, наприклад «Еспресо» або «Регент»."
+
+#: 
+msgid "A position is required"
+msgstr "Потрібна позиція"
+
+#: 
+msgid "A position name is required"
+msgstr "Потрібна назва позиції"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Позицію з кваліфікованими волонтерами не можна перемістити до команди, пов’язаної з класом недільної школи, або з неї, бо це змінило б склад учителів класу. Створіть позицію в іншій команді."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Позиція з такою назвою вже існує в цьому служінні"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Відповідь має бути «прийнято» або «відхилено»"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Розклад належить команді; виберіть команду"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Потрібна назва розкладу"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Розклад визначає, які події календаря обслуговує команда: тип богослужіння, зустрічі класу або власні події служіння. Додайте розклад і створіть його проведення."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Розклад визначає, які події календаря обслуговує ця команда: тип богослужіння, зустрічі класу або власні події служіння. Додайте розклад і створіть його проведення."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Розклад, що слідує за класом, має вказувати клас"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Розклад, що слідує за типом події, має вказувати тип події"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Розклад, що обслуговує одну подію, не може слідувати за іншими подіями; видаліть його та додайте новий розклад"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "Єдиний список можливостей служіння, наприклад «Дитяча кімната» або «Той, хто зустрічає», який ведеться в розділі «Люди» → «Адміністрування». Кожній особі присвоюються мітки можливостей, у яких вона готова допомагати, на вкладці «Волонтер» її картки. Це все, що записується: немає команд, розкладів, призначень на дату та нагадувань ел. поштою. Мітки використовуються у звітах і в картці особи."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Найкраще підходить квадратне фото обличчя."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Потреба в людях указує волонтерів за замовчуванням у \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Потреба в людях належить рівно одному: розкладу або проведенню"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Для цього призначення вже запропоновано заміну"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Керівник команди може керувати своєю командою — її позиціями, розкладами та тим, хто в них служить, — і нічим іншим у служінні."
+
+#: 
+msgid "A team name is required"
+msgstr "Потрібна назва команди"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Команда з такою назвою вже існує в цьому служінні"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Тема — це тека, яку ваша церква завантажує до Include/themes/ на сервері. Типова тема постачається з ChurchCRM."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Перехідне налаштування. Доступні і колишні сторінки «Можливості для волонтерів», і нові сторінки «Служіння», а в картці особи показано обидві вкладки «Волонтер» зі зрозумілими підписами. Використовуйте його на час переходу церкви з V1 на V2, потім перемкніться лише на V2."
+
+#: 
+msgid "A volunteer"
+msgstr "Волонтер"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Волонтер відмовився від призначення"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Волонтер запропонував заміну"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Менеджер волонтерів може керувати цим служінням без окремого дозволу. Додайте координатора, щоб доручити служіння комусь іншому, не надаючи йому доступу до всіх інших служінь."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Дата вінчання не може бути в майбутньому."
+
+#: 
+msgid "Accepted"
+msgstr "Прийнято"
+
+#: 
+msgid "Account deleted"
+msgstr "Обліковий запис видалено"
+
+#: 
+msgid "Account unlocked"
+msgstr "Обліковий запис розблоковано"
+
+#: 
+msgid "Accounts"
+msgstr "Облікові записи"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Значення «Активно» має бути істиною або хибністю"
+
+#: 
+msgid "Active now"
+msgstr "Активний зараз"
+
+#: 
+msgid "Add All"
+msgstr "Додати всіх"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Додати всіх із добірки"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Додати волонтера"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Додати волонтерів до добірки"
+
+#: 
+msgid "Add a family member"
+msgstr "Додати члена родини"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Спершу додайте позицію, потім поверніться й вкажіть, скільки людей потрібно."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Додайте другий крок до входу, щоб самого пароля було недостатньо для доступу до вашого облікового запису."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Додайте до цієї команди принаймні одну позицію, потім позначте, хто де може служити."
+
+#: 
+msgid "Add coordinator"
+msgstr "Додати координатора"
+
+#: 
+msgid "Add from Cart"
+msgstr "Додати з добірки"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Спершу додайте його зустрічі через «Нова повторювана подія» на вкладці «Календар»"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Додайте людей до добірки, перш ніж додавати їх як волонтерів"
+
+#: 
+msgid "Add position"
+msgstr "Додати позицію"
+
+#: 
+msgid "Add schedule"
+msgstr "Додати розклад"
+
+#: 
+msgid "Add team"
+msgstr "Додати команду"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Додайте їх на вкладці «Календар», потім створіть знову."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Додайте їх на вкладці «Календар»."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Додайте цю адресу до свого застосунку-календаря. Вона оновлюється автоматично, коли змінюється церковний календар."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Додавайте сюди події цього служіння: робочий день, клас, що збирається щонеділі. Вони потраплять до церковного календаря, і ви зможете призначити людей одразу під час створення."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Додано через портал парафії та очікує перевірки: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Додано — тепер позначте позиції, де вони можуть служити"
+
+#: 
+msgid "Address Line 2"
+msgstr "Адреса, рядок 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Консоль адміністратора"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Потрібні права адміністратора"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Показувати цю позицію на сторінці відкритих можливостей порталу парафії."
+
+#: 
+msgid "All Teams"
+msgstr "Усі команди"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Дозволити членам парафії змінювати власні дати народження та дати народження членів своєї родини."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Також закріплено в {{calendars}}; змінити це може лише той, хто має право додавати події."
+
+#: 
+msgid "An event title is required"
+msgstr "Потрібна назва події"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Потрібен тип події або служіння"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Тип події, якого вже немає"
+
+#: 
+msgid "Another ministry"
+msgstr "Інше служіння"
+
+#: 
+msgid "Any event"
+msgstr "Будь-яка подія"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Усе, що має знати ваш координатор"
+
+#: 
+msgid "Approve substitution"
+msgstr "Схвалити заміну"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Схвалити цю заміну"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Попросіть менеджера волонтерів створити служіння й зробити вас його координатором."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Попросіть когось вас замінити"
+
+#: 
+msgid "Ask them"
+msgstr "Запитати їх"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Запит надіслано — ваш координатор його підтвердить."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Призначити волонтера"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Призначено поза поточним планом"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Призначення скасовано"
+
+#: 
+msgid "Assignment not found"
+msgstr "Призначення не знайдено"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Потрібен принаймні один personId або familyId"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Для однієї позиції можна вибрати не більше %d волонтерів за замовчуванням"
+
+#: 
+msgid "Author"
+msgstr "Автор"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Повноваження надаються особі, а не логіну, тож їх можна надати до появи логіну. Особа, чий логін призначено лише для самообслуговування, бачить тільки власний розклад, доки адміністратор не розширить її обліковий запис."
+
+#: 
+msgid "Automatic"
+msgstr "Автоматично"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Очікує відповіді"
+
+#: 
+msgid "Back to Email History"
+msgstr "Назад до історії листів"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Назад до панелі служіння"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Назад до проведень"
+
+#: 
+msgid "Back to Person"
+msgstr "Назад до особи"
+
+#: 
+msgid "Back to editing"
+msgstr "Назад до редагування"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Назад до мого розкладу"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Назад до порталу парафії"
+
+#: 
+msgid "Back to your profile"
+msgstr "Назад до вашого профілю"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Фонові завдання та доставка"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Фонові завдання востаннє виконувалися"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Фонові завдання виконано"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Вітання з днем народження"
+
+#: 
+msgid "Both"
+msgstr "Обидва"
+
+#: 
+msgid "Both (transition)"
+msgstr "Обидва (перехід)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Обидва — V1 і V2 поряд (перехід)"
+
+#: 
+msgid "Calendar address"
+msgstr "Адреса календаря"
+
+#: 
+msgid "Calendar saved"
+msgstr "Календар збережено"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Календарі, які портал парафії показує членам парафії; вибираються в розділі «Адміністрування» → «Портал парафії» → «Календарі»."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Чи може це служіння надавати вчителів для недільної школи?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Скасувати призначення"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Скасувати це призначення"
+
+#: 
+msgid "Cancelled"
+msgstr "Скасовано"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Змініть пароль для входу або додайте другий крок, щоб самого пароля було недостатньо."
+
+#: 
+msgid "Change your password"
+msgstr "Змінити пароль"
+
+#: 
+msgid "Checked in"
+msgstr "Зареєстровано вхід"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Відмічено: %1$d із %2$d у списку класу"
+
+#: 
+msgid "Checked out"
+msgstr "Зареєстровано вихід"
+
+#: 
+msgid "Choose a class"
+msgstr "Виберіть клас"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Виберіть день місяця від 1 до 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Виберіть нове фото"
+
+#: 
+msgid "Choose a person"
+msgstr "Виберіть особу"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Виберіть волонтера"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Спершу виберіть волонтера"
+
+#: 
+msgid "Choose an event"
+msgstr "Виберіть подію..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Виберіть тип події"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Виберіть наявний тип події"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Виберіть принаймні один календар для підписки."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Виберіть календарі, які хочете бачити у своєму застосунку-календарі."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Виберіть дату кожного року у форматі ММ-ДД"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Виберіть дату події"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Виберіть день тижня"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Виберіть подію, за якою слідує цей розклад"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Виберіть подію, для якої потрібні люди"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Виберіть події для видалення"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Виберіть події, для яких потрібні люди"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Виберіть першу й останню дату"
+
+#: 
+msgid "Choose the first date"
+msgstr "Виберіть першу дату"
+
+#: 
+msgid "Choose the last date"
+msgstr "Виберіть останню дату"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Виберіть позицію в «%1$s», для якої кваліфіковані вчителі «%2$s». Учителів: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Виберіть команду, у якій діє ця позиція"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Виберіть тему, яку бачать члени парафії, вмикайте й вимикайте розділи порталу та дивіться, хто ним користується."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Виберіть: щотижня, щомісяця або щороку"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Виберіть, звідки беруться дати розкладу"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Виберіть, який режим роботи з волонтерами використовує церква, наскільки наперед заповнюються розклади та коли надсилаються нагадування, а також перевірте, що фонові завдання працюють."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Виберіть, хто за замовчуванням обіймає кожну позицію. Вибір зберігається в розкладі: цих людей призначають на кожне проведення, створене зараз, і на ті, що щоденне поповнення створить пізніше, доки вони залишаються кваліфікованими, і просять відповісти, якщо ви не позначили їх як тих, що прийняли. Залиште позицію вільною, щоб призначати на неї щотижня окремо."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Виберіть, хто вас замінює."
+
+#: 
+msgid "Church Calendar"
+msgstr "Церковний календар"
+
+#: 
+msgid "Church Calendars"
+msgstr "Церковні календарі"
+
+#: 
+msgid "Church calendar"
+msgstr "Церковний календар"
+
+#: 
+msgid "Church events of a type"
+msgstr "Церковні події певного типу"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Церковні події певного типу додаються до церковного календаря. Перевірте тип події, назву та дати розкладу."
+
+#: 
+msgid "Church website"
+msgstr "Сайт церкви"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "У ChurchCRM є два способи керування волонтерами. Одночасно передбачається використовувати лише один; налаштування ліворуч визначає, який із них бачить ця церква. Перемикання приховує або показує сторінки та пункти меню — дані ніколи не видаляються, тож можна перемкнутися назад."
+
+#: 
+msgid "Close event details"
+msgstr "Закрити відомості про подію"
+
+#: 
+msgid "Colour"
+msgstr "Колір"
+
+#: 
+msgid "Completed"
+msgstr "Завершено"
+
+#: 
+msgid "Compose Message"
+msgstr "Написати повідомлення"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Підтвердіть відомості про вашу родину"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Координатора вилучено"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Скопіюйте цю адресу й додайте її до застосунку-календаря як нову підписку на календар."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Не вдалося створити попередній перегляд."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Не вдалося підрахувати події класу"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Не вдалося надати повноваження"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Не вдалося завантажити класи недільної школи"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Не вдалося завантажити панель"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Не вдалося завантажити варіанти подій"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Не вдалося завантажити проведення"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Не вдалося завантажити розклади"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Не вдалося завантажити майбутні події"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Не вдалося завантажити волонтерів"
+
+#: 
+msgid "Could not load this email."
+msgstr "Не вдалося завантажити цей лист."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Не вдалося завантажити це служіння"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Не вдалося завантажити події цього служіння"
+
+#: 
+msgid "Could not load this team"
+msgstr "Не вдалося завантажити цю команду"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Не вдалося скасувати повноваження"
+
+#: 
+msgid "Create"
+msgstr "Створити"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Створіть розклад і його проведення, і тижні, які потрібно заповнити, з’являться тут."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Створіть розклад і його проведення, і тижні, на які потрібні люди, з’являться тут."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Створіть для цієї команди принаймні одну позицію, потім позначте, хто де може служити."
+
+#: 
+msgid "Create ministry"
+msgstr "Створити служіння"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Для створення служіння потрібен доступ менеджера волонтерів"
+
+#: 
+msgid "Date and time"
+msgstr "Дата й час"
+
+#: 
+msgid "Date each year"
+msgstr "Дата щороку"
+
+#: 
+msgid "Dates"
+msgstr "Дати"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Дати мають бути у форматі РРРР-ММ-ДД"
+
+#: 
+msgid "Day of the month"
+msgstr "День місяця"
+
+#: 
+msgid "Day of the week"
+msgstr "День тижня"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Деактивувати служіння"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Деактивувати розклад"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Деактивуйте це служіння, перш ніж видаляти його."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Деактивувати «{{name}}»? Воно переміститься до «Деактивовані служіння» на бічній панелі, де його можна знову активувати або видалити. Нічого не видаляється."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Деактивувати «{{name}}»? Для нього не створюватимуться нові проведення ні кнопкою «Створити», ні щоденним поповненням. Наявні проведення та призначення збережуться, і його можна активувати знову."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Деактивовані служіння"
+
+#: 
+msgid "Declined"
+msgstr "Відхилено"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Тип події за замовчуванням для подій служіння"
+
+#: 
+msgid "Default volunteers"
+msgstr "Волонтери за замовчуванням"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Волонтери за замовчуванням передаються як requirements: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Видалити події"
+
+#: 
+msgid "Delete ministry"
+msgstr "Видалити служіння"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Видалити проведення"
+
+#: 
+msgid "Delete position"
+msgstr "Видалити позицію"
+
+#: 
+msgid "Delete schedule"
+msgstr "Видалити розклад"
+
+#: 
+msgid "Delete team"
+msgstr "Видалити команду"
+
+#: 
+msgid "Delete those events"
+msgstr "Видалити ці події"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Видалити «{{name}}» і все, що в ньому? Його позиції, кваліфікації, потреби в людях, розклади, проведення та призначення, зокрема записи про минуле служіння, а також права керівників команди буде видалено. Щоб зберегти історію, краще деактивуйте команду. Цю дію не можна скасувати."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Видалити «{{name}}» і все, що в ньому? Його команди, позиції, розклади, проведення ({{occurrences}}) та призначення ({{assignments}}), зокрема записи про минуле служіння, а також права координаторів і керівників команд, групу резерву волонтерів і календар буде видалено. Цю дію не можна скасувати."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Видалити «{{name}}»? Разом із ним буде видалено його кваліфікації, потреби в людях і призначення, зокрема записи про минуле служіння. Щоб зберегти історію, краще деактивуйте позицію. Цю дію не можна скасувати."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Видалити «{{name}}»? Цю дію не можна скасувати."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Для видалення служіння потрібен доступ менеджера волонтерів"
+
+#: 
+msgid "Developer mode"
+msgstr "Режим розробника"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Готово — ви знову в списку."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Відмовитися від власних потреб цього проведення в людях і знову слідувати його розкладу?"
+
+#: 
+msgid "Due soon"
+msgstr "Незабаром термін"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Кожен календар має задаватися типом та ідентифікатором."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Для кожного волонтера за замовчуванням має бути вказана особа"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Для кожної потреби в людях має бути вказана позиція"
+
+#: 
+msgid "Edit event"
+msgstr "Редагувати подію"
+
+#: 
+msgid "Edit ministry"
+msgstr "Редагувати служіння"
+
+#: 
+msgid "Edit position"
+msgstr "Редагувати позицію"
+
+#: 
+msgid "Edit schedule"
+msgstr "Редагувати розклад"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Редагувати потреби в людях"
+
+#: 
+msgid "Edit team"
+msgstr "Редагувати команду"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Відредагуйте розклад і виберіть інший клас."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Відредагуйте розклад і виберіть інший тип події."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Відредагуйте розклад і виберіть подію, за якою він слідує."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Відредагуйте розклад і посуньте його останню дату, щоб охопити більше подій."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Змінено через портал парафії: %s"
+
+#: 
+msgid "Email %s"
+msgstr "Написати %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "Написати родині %s"
+
+#: 
+msgid "Email History"
+msgstr "Історія листів"
+
+#: 
+msgid "Email content"
+msgstr "Вміст листа"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Написати відсутнім: %s"
+
+#: 
+msgid "Email not found"
+msgstr "Лист не знайдено"
+
+#: 
+msgid "Email preview"
+msgstr "Попередній перегляд листа"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "Надсилання листів вимкнено"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "Надсилання листів не ввімкнено. Налаштуйте параметри SMTP і ввімкніть пошту перед надсиланням."
+
+#: 
+msgid "Emails"
+msgstr "Листи"
+
+#: 
+msgid "End time"
+msgstr "Час завершення"
+
+#: 
+msgid "Enter counts"
+msgstr "Ввести кількість"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Введіть тему листа…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Введіть поточний пароль, потім новий пароль двічі."
+
+#: 
+msgid "Enter your message…"
+msgstr "Введіть ваше повідомлення…"
+
+#: 
+msgid "Event staffed"
+msgstr "Людей на подію призначено"
+
+#: 
+msgid "Event title"
+msgstr "Назва події"
+
+#: 
+msgid "Event type"
+msgstr "Тип подій"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Усі листи, надіслані ChurchCRM, спершу новіші. Відкрийте картку особи, щоб побачити всю її історію."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Для кожної позиції в цьому періоді є потрібні люди."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Усі відповіли"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Усі з добірки стануть волонтерами цього служіння. Позиції позначте потім."
+
+#: 
+msgid "Everything is correct"
+msgstr "Усе правильно"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Не вдалося створити попередній перегляд"
+
+#: 
+msgid "Failed to load email"
+msgstr "Не вдалося завантажити лист"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Не вдалося завантажити історію листів"
+
+#: 
+msgid "Failed to send email"
+msgstr "Не вдалося надіслати лист"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "Не вдалося надіслати лист. Спробуйте ще раз або скористайтеся «Відкрити в поштовій програмі»."
+
+#: 
+msgid "Family Member"
+msgstr "Член родини"
+
+#: 
+msgid "Family verification"
+msgstr "Перевірка сім’ї"
+
+#: 
+msgid "File"
+msgstr "Файл"
+
+#: 
+msgid "Fill"
+msgstr "Заповнити"
+
+#: 
+msgid "Fill by default with"
+msgstr "За замовчуванням призначати"
+
+#: 
+msgid "Fill this gap"
+msgstr "Закрити цю прогалину"
+
+#: 
+msgid "Filled"
+msgstr "Заповнено"
+
+#: 
+msgid "Find a sub"
+msgstr "Знайти заміну"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Знайти волонтера"
+
+#: 
+msgid "Find an event"
+msgstr "Знайти подію"
+
+#: 
+msgid "Find something to do"
+msgstr "Знайти, чим зайнятися"
+
+#: 
+msgid "Find something to help with"
+msgstr "Знайти, чим допомогти"
+
+#: 
+msgid "Findings"
+msgstr "Результати"
+
+#: 
+msgid "First date"
+msgstr "Перша дата"
+
+#: 
+msgid "Folder"
+msgstr "Тека"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Назва теки теми порталу парафії з Include/themes/. «default» — системна тема, що постачається з ChurchCRM."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Створіть знову ближче до його першої дати."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Створити проведення"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Отримати нову адресу календаря?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Дайте служінню назву"
+
+#: 
+msgid "Give the position a name"
+msgstr "Дайте позиції назву"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Вкажіть час початку й завершення у форматі ГГ:ХХ"
+
+#: 
+msgid "Give the team a name"
+msgstr "Дайте команді назву"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Перейти до мого волонтерства"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Перейти до налаштувань порталу парафії"
+
+#: 
+msgid "Going"
+msgstr "Іду"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Надайте кваліфікацію на сторінці служіння, потім призначте їх тут."
+
+#: 
+msgid "Granted"
+msgstr "Надано"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Подивіться, які відомості про вашу родину є в церкві, і повідомте нам, чи вони й надалі правильні."
+
+#: 
+msgid "Headcount"
+msgstr "Кількість присутніх"
+
+#: 
+msgid "Hello %s"
+msgstr "Вітаємо, %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Потрібна допомога"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Не вдалося зберегти позначку «Потрібна допомога»"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "На який строк наперед створюються проведення для подій, за якими слідує кожен розклад. Щоденне фонове завдання підтримує заповнення кожного розкладу до цього моменту."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "За скільки годин до волонтерського проведення надсилається лист-нагадування. Встановіть 0, щоб узагалі не надсилати нагадувань. Доставка залежить від роботи фонових завдань; рекомендоване налаштування cron див. у документації з волонтерів."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "За скільки годин до проведення надсилається лист-нагадування. Встановіть 0, щоб узагалі не надсилати нагадувань."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Скільки людей потрібно для кожної позиції під час кожного проведення. Одну дату можна пізніше змінити окремо. Волонтер за замовчуванням призначається на кожне нове проведення, доки залишається кваліфікованим; зміна ніколи не зачіпає вже наявні проведення."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Скільки волонтерів потрібно для кожного проведення цього розкладу. Зніміть позначку з позиції, яку цей розклад не використовує. Волонтер за замовчуванням призначається на кожне нове проведення, доки залишається кваліфікованим; зміна ніколи не зачіпає вже наявні проведення."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Скільки волонтерів потрібно для цієї події. Зніміть позначку з позиції, яку вона не використовує."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "На скільки тижнів наперед (від 1 до 52) створюються волонтерські проведення для подій, за якими слідує кожен розклад. Щоденне фонове завдання підтримує заповнення кожного розкладу до цього моменту."
+
+#: 
+msgid "How often"
+msgstr "Як часто"
+
+#: 
+msgid "How to correct this"
+msgstr "Як це виправити"
+
+#: 
+msgid "I can't"
+msgstr "Не зможу"
+
+#: 
+msgid "I'd like to help"
+msgstr "Хочу допомогти"
+
+#: 
+msgid "I'll be there"
+msgstr "Буду"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Якщо повідомлення не надсилаються, попросіть адміністратора перевірити налаштування служінь."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Якщо ви більше не можете прийти, будь ласка, відмовтеся у своєму волонтерському розкладі якнайшвидше, щоб позицію можна було зайняти."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Якщо ви помилково поділилися цією адресою, отримайте нову. Стара адреса одразу перестане працювати."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "За останні 15 хвилин"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "У резерві волонтерів"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Службове: остання дата, до якої волонтерські розклади було поповнено до горизонту планування (РРРР-ММ-ДД). Не редагуйте вручну."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Службове: коли волонтерські розклади поповнювалися востаннє і скільки проведень було створено. Не редагуйте вручну."
+
+#: 
+msgid "Is this still right?"
+msgstr "Це й надалі правильно?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Його проведення буде створено без позицій для заповнення. Відредагуйте розклад, щоб додати потреби в людях."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Залишити їх у класі «{{className}}»"
+
+#: 
+msgid "Kind"
+msgstr "Вид"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Останні 24 години"
+
+#: 
+msgid "Last 30 days"
+msgstr "Останні 30 днів"
+
+#: 
+msgid "Last 7 days"
+msgstr "Останні 7 днів"
+
+#: 
+msgid "Last attempt"
+msgstr "Остання спроба"
+
+#: 
+msgid "Last check"
+msgstr "Остання перевірка"
+
+#: 
+msgid "Last date"
+msgstr "Остання дата"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Останній візит на портал"
+
+#: 
+msgid "Last sign-in"
+msgstr "Останній вхід"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Залиште обидва значення рівними 0, щоб служити саме під час події. Під час перенесення події переносяться й волонтери."
+
+#: 
+msgid "Leave open"
+msgstr "Залишити вільним"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Дозволити членам парафії змінювати на порталі власні дати народження та дати народження членів своєї родини."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Дозволити членам парафії редагувати дати народження"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Повідомте церковну канцелярію, чи все вищевказане й надалі правильне."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Повідомте їм причину (необов’язково)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Дозволяє координаторам цього служіння призначати волонтерів на цю подію — і редагувати саму подію."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Завантаження календаря…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Керування служіннями"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Керування моїми служіннями"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Доступ «Керування моїми служіннями» із зазначенням служіння або команди для керування"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Потрібен доступ «Керування моїми служіннями» із зазначенням служіння або команди для керування"
+
+#: 
+msgid "Manage staffing"
+msgstr "Керування призначеннями людей"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Керується зі служіння «%s»"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Керується зі служіння «{{ministry}}»"
+
+#: 
+msgid "Max"
+msgstr "Макс."
+
+#: 
+msgid "Member Portal"
+msgstr "Портал парафії"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Члени парафії бачать сторінку «тимчасово недоступно», доки це не буде виправлено. Ті самі відомості записано до журналу застосунку та до журналу помилок вебсервера."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Члени парафії бачать лише календарі, увімкнені тут. Дні народження та річниці показують лише імена й першу літеру прізвища."
+
+#: 
+msgid "Message"
+msgstr "Повідомлення"
+
+#: 
+msgid "Min"
+msgstr "Мін."
+
+#: 
+msgid "Ministries"
+msgstr "Служіння"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Служіння, яким потрібна допомога"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Служіння, які можуть додавати події"
+
+#: 
+msgid "Ministry"
+msgstr "Служіння"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Календарі служінь"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Координатори служінь"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Панель служіння"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Налаштування служінь"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Календар служіння"
+
+#: 
+msgid "Ministry created"
+msgstr "Служіння створено"
+
+#: 
+msgid "Ministry management access"
+msgstr "Доступ до керування служіннями"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Потрібен доступ до керування служіннями"
+
+#: 
+msgid "Ministry name"
+msgstr "Назва служіння"
+
+#: 
+msgid "Ministry not found"
+msgstr "Служіння не знайдено"
+
+#: 
+msgid "My Family"
+msgstr "Моя родина"
+
+#: 
+msgid "My Teams"
+msgstr "Мої команди"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Мої служіння та команди"
+
+#: 
+msgid "My schedule"
+msgstr "Мій розклад"
+
+#: 
+msgid "My volunteering"
+msgstr "Моє волонтерство"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Назва цієї позиції на сторінці, де члени парафії шукають, чим допомогти."
+
+#: 
+msgid "Needs an answer"
+msgstr "Потрібна відповідь"
+
+#: 
+msgid "Needs filling"
+msgstr "Потрібно заповнити"
+
+#: 
+msgid "Never signed in"
+msgstr "Жодного разу не входив"
+
+#: 
+msgid "New account"
+msgstr "Новий обліковий запис"
+
+#: 
+msgid "New event"
+msgstr "Нова подія"
+
+#: 
+msgid "New ministry"
+msgstr "Нове служіння"
+
+#: 
+msgid "New record notification"
+msgstr "Сповіщення про новий запис"
+
+#: 
+msgid "New recurring event"
+msgstr "Нова повторювана подія"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Потрібні нові волонтери на такі позиції"
+
+#: 
+msgid "Newest first"
+msgstr "Спершу нові"
+
+#: 
+msgid "Next on %s"
+msgstr "Наступне: %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Жоден календар поки що не відкрито для членів парафії."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Жоден календар не відкрито для цього служіння, тому події не відображатимуться в жодному календарі."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Жоден календар не відкрито для членів парафії."
+
+#: 
+msgid "No class"
+msgstr "Немає класу"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Контактних даних поки немає."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Координаторів поки немає"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Жодна дата між першою й останньою датою не відповідає повторенню"
+
+#: 
+msgid "No email was sent."
+msgstr "Лист не було надіслано."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Цьому запису поки не надсилали листів."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Кількість присутніх поки не записано"
+
+#: 
+msgid "No longer needed"
+msgstr "Більше не потрібно"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Жоден член парафії ще не входив до порталу парафії."
+
+#: 
+msgid "No ministry"
+msgstr "Немає служіння"
+
+#: 
+msgid "No past events"
+msgstr "Минулих подій немає"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Для цієї особи не завантажено фото."
+
+#: 
+msgid "No photo was sent."
+msgstr "Фото не було надіслано."
+
+#: 
+msgid "No positions yet"
+msgstr "Позицій поки немає"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Кваліфікацій поки немає."
+
+#: 
+msgid "No schedules yet"
+msgstr "Розкладів поки немає"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Потреби в людях не задано"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Потреб у людях немає: створеним проведенням ніхто не буде потрібен."
+
+#: 
+msgid "No substitution requests"
+msgstr "Запитів на заміну немає"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Замін для вирішення немає"
+
+#: 
+msgid "No teams yet"
+msgstr "Команд поки немає"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "У календарі немає майбутніх подій типу «%1$s» з назвою «%2$s». Розклад слідує за вже наявними подіями."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Відповідних майбутніх подій немає"
+
+#: 
+msgid "No upcoming events"
+msgstr "Майбутніх подій немає"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "У календарі немає майбутніх подій цього типу."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Немає майбутніх подій для вибору"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Нікого ще не призначено"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Більше ніхто поки не навчений цього — повідомте натомість свого координатора."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Ніхто не вказав, скільки волонтерів потрібно для кожної позиції, тому заповнювати нічого."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "У цьому періоді ніхто більше не вагається."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Поки що ніхто не кваліфікований для цієї позиції"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Поки що ніхто не кваліфікований для цієї позиції, тому вона залишається вільною."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Жодному з отримувачів не можна надіслати лист"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Немає: тип події вибирається для кожної події"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Немає права переглядати цей лист"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Немає права переглядати цю родину"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Немає права переглядати цю особу"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Немає повноважень для цього призначення"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Немає повноважень для цього служіння"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Немає повноважень для цього проведення"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Немає повноважень для цієї позиції"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Немає повноважень для цієї кваліфікації"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Немає повноважень для цієї потреби"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Немає повноважень для цього розкладу"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Немає повноважень для цього запиту на заміну"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Немає повноважень для цієї команди"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Немає повноважень призначати події цьому волонтерському служінню"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Немає повноважень змінювати подію %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Немає повноважень змінювати волонтерське служіння цієї події"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Немає повноважень створювати подію без волонтерського служіння, яким ви керуєте"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Немає повноважень змінювати цю подію"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Немає повноважень закріплювати події в календарі «%s»"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Немає повноважень видаляти події з календаря «%s»"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Немає повноважень прибирати волонтерське служіння з цієї події"
+
+#: 
+msgid "Not checked in"
+msgstr "Не відмічено"
+
+#: 
+msgid "Not found"
+msgstr "Не знайдено"
+
+#: 
+msgid "Not in the pool"
+msgstr "Не в резерві"
+
+#: 
+msgid "Not now"
+msgstr "Не зараз"
+
+#: 
+msgid "Not sent"
+msgstr "Не надіслано"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Не задано: використовується «%s»"
+
+#: 
+msgid "Not staffed"
+msgstr "Людей не призначено"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Поки не волонтер"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Нічого не змінилося, тому нічого не збережено."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "У календарі на цей період нічого немає."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "У календарі зараз нічого немає."
+
+#: 
+msgid "Nothing is short"
+msgstr "Нестачі немає"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "У вашому списку поки нічого немає"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "У вашому списку поки нічого немає. Подивіться, що потрібно заповнити."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Зараз немає відкритих можливостей"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Поки нічого не заплановано"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Нічого не заплановано."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Поки нічого не налаштовано"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "За останній рік не було жодної події цього служіння."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Поки нікого кваліфікувати"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Нічого не збережено. Перевірте виділені поля."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Нічого не збережено. Спробуйте ще раз."
+
+#: 
+msgid "Notification"
+msgstr "Сповіщення"
+
+#: 
+msgid "Notifications"
+msgstr "Сповіщення"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Проведення не знайдено"
+
+#: 
+msgid "Occurrences"
+msgstr "Проведення"
+
+#: 
+msgid "Offer to help"
+msgstr "Запропонувати допомогу"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Раз на день кожен активний розклад отримує проведення для подій, за якими слідує, на строк до %d тижня наперед, а волонтер за замовчуванням кожної позиції призначається на нові проведення, доки залишається кваліфікованим."
+msgstr[1] "Раз на день кожен активний розклад отримує проведення для подій, за якими слідує, на строк до %d тижнів наперед, а волонтер за замовчуванням кожної позиції призначається на нові проведення, доки залишається кваліфікованим."
+msgstr[2] "Раз на день кожен активний розклад отримує проведення для подій, за якими слідує, на строк до %d тижнів наперед, а волонтер за замовчуванням кожної позиції призначається на нові проведення, доки залишається кваліфікованим."
+msgstr[3] "Раз на день кожен активний розклад отримує проведення для подій, за якими слідує, на строк до %d тижня наперед, а волонтер за замовчуванням кожної позиції призначається на нові проведення, доки залишається кваліфікованим."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Коли ця особа отримає кваліфікацію для позиції, вона з’явиться тут разом із датами, на які її призначено служити."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Одне проведення створюється для кожної події календаря, у якої пов’язана група — цей клас."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Одне проведення створюється для кожної дати цієї події. Можна вибрати лише події, що вже є в календарі."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Один із календарів не існує"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Одна з подій не існує"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Один із цих календарів не відкрито для членів парафії."
+
+#: 
+msgid "One-time"
+msgstr "Одноразово"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "До команди можна прив’язати лише клас недільної школи"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Лише координатор може записати відповідь від імені іншої особи"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Лише координатор цього служіння може створювати його події"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Лише координатор цього служіння може призначати людей на його події"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "Лише менеджер волонтерів може змінити керівника команди"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Змінити це може лише менеджер волонтерів."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Лише менеджер волонтерів може змінити, чи надає служіння вчителів для недільної школи"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Змінити ці відомості може лише дорослий член вашої родини. Будь ласка, зверніться до церковної канцелярії."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Показано лише навчених цього людей."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Запропонувати заміну може лише призначений волонтер"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Показано лише календарі, до яких це служіння може додавати події. Його власний календар позначено спочатку."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Показано лише першу частину дуже довгого списку. Звузьте період, щоб побачити решту."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Відкликати заміну може лише волонтер, який її запропонував"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Відкрийте служіння в меню «Служіння», створіть розклад і його дати, і тижні, на які потрібні люди, з’являться тут."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Відкрийте служіння, щоб зробити когось його координатором або керівником однієї з його команд."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Відкрити в застосунку-календарі"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Не вдалося завантажити відкриті можливості."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Відкрити отримувачів у вашій поштовій програмі"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Відкрити портал парафії"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Відкрити панель служіння"
+
+#: 
+msgid "Open the ministry"
+msgstr "Відкрити служіння"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Відкрити проведення"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Відкрийте проведення, щоб призначити потрібних людей."
+
+#: 
+msgid "Open this team"
+msgstr "Відкрити цю команду"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Для відкриття календаря служінням потрібне право додавати події"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Необов’язково. Усі, хто кваліфікований для позиції цієї команди, стають учителями класу, а сторінка класу більше не змінює його вчителів."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Необов’язково. Клас стає пов’язаною групою: його список визначає, кого відмічати, а розклад класу знаходить ці події."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Перевищено максимум: приберіть цю особу або збільште максимум."
+
+#: 
+msgid "Overridden templates"
+msgstr "Перевизначені шаблони"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Сторінка %1$s з %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Сторінка %d з %d"
+
+#: 
+msgid "Password reset"
+msgstr "Скидання пароля"
+
+#: 
+msgid "Password reset link"
+msgstr "Посилання для скидання пароля"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Пароль має містити щонайменше %s символ."
+msgstr[1] "Пароль має містити щонайменше %s символи."
+msgstr[2] "Пароль має містити щонайменше %s символів."
+msgstr[3] "Пароль має містити щонайменше %s символа."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Виберіть майбутню подію календаря й вкажіть, хто для неї потрібен. Подія зберігає власні дату й час; щоб призначити людей на всю серію, додайте розклад."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Виберіть того, хто вже погодився вас замінити. Ваш координатор підтвердить це."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Будь ласка, виберіть календарі зі списку."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Будь ласка, вкажіть, чи потрібно змінити ваші відомості."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Будь ласка, зверніться до церковної канцелярії, щоб ми виправили наші записи."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Будь ласка, зверніться до церковної канцелярії."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Будь ласка, введіть принаймні два символи."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Будь ласка, повідомте, чи зможете ви прийти, прийнявши або відхиливши призначення у своєму волонтерському розкладі."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Будь ласка, розкажіть, що потрібно змінити."
+
+#: 
+msgid "Portal settings"
+msgstr "Налаштування порталу"
+
+#: 
+msgid "Portal theme"
+msgstr "Тема порталу"
+
+#: 
+msgid "Position"
+msgstr "Позиція"
+
+#: 
+msgid "Position added"
+msgstr "Позицію додано"
+
+#: 
+msgid "Position deleted"
+msgstr "Позицію видалено"
+
+#: 
+msgid "Position name"
+msgstr "Назва позиції"
+
+#: 
+msgid "Position not found"
+msgstr "Позицію не знайдено"
+
+#: 
+msgid "Position saved"
+msgstr "Позицію збережено"
+
+#: 
+msgid "Positions"
+msgstr "Позиції"
+
+#: 
+msgid "Positions still short"
+msgstr "Позиції, де ще бракує людей"
+
+#: 
+msgid "Proposed"
+msgstr "Запропоновано"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Запропонована заміна"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Розмістити це служіння на сторінці відкритих можливостей порталу парафії, де будь-який волонтер зможе його побачити й запропонувати допомогу. Він потрапить до резерву волонтерів, а вам надійде лист."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Призначити замість нього «{{name}}»? У початкового волонтера збережеться його історія, і його повідомлять."
+
+#: 
+msgid "Qualification not found"
+msgstr "Кваліфікацію не знайдено"
+
+#: 
+msgid "Qualified for"
+msgstr "Кваліфікований для"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Кваліфіковані волонтери можуть самі записуватися на вільні дати цієї позиції. Вимкніть для позицій, які має призначати лише керівник команди або координатор; портал парафії їх не пропонуватиме."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Кваліфікувати його нинішніх учителів для"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Надати їм кваліфікацію для позиції"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Надайте їм кваліфікацію для позиції."
+
+#: 
+msgid "Reactivate"
+msgstr "Активувати знову"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Прочитати посібник зі створення тем"
+
+#: 
+msgid "Recent Emails"
+msgstr "Нещодавні листи"
+
+#: 
+msgid "Recent Sends"
+msgstr "Нещодавні надсилання"
+
+#: 
+msgid "Recipient"
+msgstr "Отримувач"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Кількість отримувачів (%d) перевищує максимум на одне розсилання (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Отримувачі мають задаватися як personIds і familyIds, а не як адреси ел. пошти"
+
+#: 
+msgid "Record a decline"
+msgstr "Записати відмову"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Записати згоду"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Записати, що «{{name}}» відповів(ла) відмовою? Відповідь буде збережено як надану вами, і місце знову звільниться."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Записати, що «{{name}}» відповів(ла) згодою? Відповідь буде збережено як надану вами, а не цією особою."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Записати: погодилися"
+
+#: 
+msgid "Record: they declined"
+msgstr "Записати: відмовилися"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Набір волонтерів"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Значення «Набір волонтерів» має бути істиною або хибністю"
+
+#: 
+msgid "Recruiting"
+msgstr "Триває набір"
+
+#: 
+msgid "Recurring"
+msgstr "Повторюване"
+
+#: 
+msgid "Reject"
+msgstr "Відхилити"
+
+#: 
+msgid "Reject substitution"
+msgstr "Відхилити заміну"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Відхилити цю заміну"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "За скільки годин нагадувати"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Нагадування: вас призначено на служіння"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Нагадування та сповіщення доставляються лише під час роботи фонових завдань. Для своєчасної доставки запускайте виконавця планових завдань із cron кожні 15 хвилин"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Видалити волонтера"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Видалити координатора"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Прибрати в них клас"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Прибрати керівника команди"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Видалити «{{name}}» зі служіння «{{ministry}}»? Буде видалено всі його кваліфікації тут, його буде знято з усіх майбутніх проведень, він перестане бути волонтером за замовчуванням у розкладах цього служіння й буде видалений з резерву волонтерів."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Видалено. Кваліфікацій: {{qualifications}}, майбутніх призначень: {{assignments}}, призначень за замовчуванням у розкладах: {{defaults}}."
+
+#: 
+msgid "Repeats"
+msgstr "Повторюється"
+
+#: 
+msgid "Requirement not found"
+msgstr "Потребу не знайдено"
+
+#: 
+msgid "Reset link"
+msgstr "Посилання для скидання"
+
+#: 
+msgid "Response recorded"
+msgstr "Відповідь записано"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Перегляньте запит на панелі волонтерів і схваліть або відхиліть його."
+
+#: 
+msgid "Review this request"
+msgstr "Переглянути цей запит"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Запустити фонові завдання зараз"
+
+#: 
+msgid "SMTP test"
+msgstr "Перевірка SMTP"
+
+#: 
+msgid "Save calendars"
+msgstr "Зберегти календарі"
+
+#: 
+msgid "Save changes"
+msgstr "Зберегти зміни"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Збережено — це служіння більше не просить про допомогу"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Збережено — це служіння тепер просить про допомогу"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Збережено. Члени парафії бачать календарі, увімкнені вище."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Розклад «{{name}}» створено."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Розклад «{{name}}» створено. Він неактивний, тому не створює проведень, доки не стане активним."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Розклад деактивовано"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Розклад видалено"
+
+#: 
+msgid "Schedule name"
+msgstr "Назва розкладу"
+
+#: 
+msgid "Schedule not found"
+msgstr "Розклад не знайдено"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Розклад знову активовано"
+
+#: 
+msgid "Schedule saved"
+msgstr "Розклад збережено"
+
+#: 
+msgid "Scheduled"
+msgstr "Заплановано"
+
+#: 
+msgid "Schedules"
+msgstr "Розклади"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Розклади востаннє поповнювалися"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Розклади більше не зберігають власне повторення чи час; кожне проведення слідує за подією календаря. Приберіть: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Розклади більше не задають, наскільки наперед вони створюються: горизонт планування в розділі «Адміністрування» → «Налаштування служінь» діє для кожного розкладу. Приберіть: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Горизонт планування (тижні)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Надання повноважень не знайдено"
+
+#: 
+msgid "Search by name"
+msgstr "Пошук за іменем"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Дивитися весь календар"
+
+#: 
+msgid "See what needs filling"
+msgstr "Подивитися, що потрібно заповнити"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Виберіть календар, щоб приховати або показати його події."
+
+#: 
+msgid "Select ministries..."
+msgstr "Виберіть служіння..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Самозапис"
+
+#: 
+msgid "Self-assignable"
+msgstr "Можна записатися самому"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Значення «Можна записатися самому» має бути істиною або хибністю"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Облікові записи самообслуговування"
+
+#: 
+msgid "Send"
+msgstr "Надіслати"
+
+#: 
+msgid "Send Email"
+msgstr "Надіслати лист"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Надіслати лист із ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Надіслати повідомлення про призначення ще раз"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Передайте календарі для показу у вигляді списку."
+
+#: 
+msgid "Send to the church office"
+msgstr "Надіслати до церковної канцелярії"
+
+#: 
+msgid "Send your answer"
+msgstr "Надіслати відповідь"
+
+#: 
+msgid "Sent"
+msgstr "Надіслано"
+
+#: 
+msgid "Sent by"
+msgstr "Надіслав(ла)"
+
+#: 
+msgid "Serving next"
+msgstr "Наступне служіння"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Позначити як прийняв(ла)"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Задати потреби в людях"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Показувати «%s» на порталі парафії"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Показувати на порталі парафії"
+
+#: 
+msgid "Show past events"
+msgstr "Показати минулі події"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Показувати церковний календар"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Показувати церковний календар на порталі парафії."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Показувати розділ церковного календаря на порталі парафії."
+
+#: 
+msgid "Show the next"
+msgstr "Показати наступні"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Показувати розділи волонтерства та команд на порталі парафії."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Показувати це служіння на сторінці відкритих можливостей"
+
+#: 
+msgid "Show volunteering"
+msgstr "Показувати волонтерство"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Показувати сторінки волонтерства та команд на порталі парафії."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Показати, що я вже зробив(ла)"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Показується саме так, як ви це вводите. Розриви рядків зберігаються."
+
+#: 
+msgid "Sign up"
+msgstr "Записатися"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Вхід і безпека"
+
+#: 
+msgid "Signed in"
+msgstr "Вхід виконано"
+
+#: 
+msgid "Signed up"
+msgstr "Записано"
+
+#: 
+msgid "Sincerely"
+msgstr "З повагою"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Не вдалося зберегти деякі ваші відомості. Перевірте виділені поля."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Не вдалося зберегти деякі відомості про вашу родину. Перевірте виділені поля."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Хтось інший замінює"
+
+#: 
+msgid "Something needs changing"
+msgstr "Щось потрібно змінити"
+
+#: 
+msgid "Something went wrong"
+msgstr "Щось пішло не так"
+
+#: 
+msgid "Staff an event"
+msgstr "Призначити людей на подію"
+
+#: 
+msgid "Staff them"
+msgstr "Призначити на них людей"
+
+#: 
+msgid "Staff this event"
+msgstr "Призначити людей на цю подію"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Призначити людей на це проведення"
+
+#: 
+msgid "Staffed"
+msgstr "Людей призначено"
+
+#: 
+msgid "Staffing"
+msgstr "Призначення людей"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Призначення людей налаштовується після створення подій"
+
+#: 
+msgid "Staffing needs"
+msgstr "Потреби в людях"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Потреби в людях збережено"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Почніть зі створення служіння, потім додайте команди та позиції, які в ньому служать."
+
+#: 
+msgid "Start time"
+msgstr "Час початку"
+
+#: 
+msgid "Start typing a name"
+msgstr "Почніть вводити ім’я"
+
+#: 
+msgid "Statistics"
+msgstr "Статистика"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Припинити координацію «{{ministry}}» користувачем «{{name}}»? Його логін і власні призначення не зачіпаються."
+
+#: 
+msgid "Subscribe"
+msgstr "Підписатися"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Підписатися на календар"
+
+#: 
+msgid "Substitute"
+msgstr "Заміна"
+
+#: 
+msgid "Substitute approved"
+msgstr "Заміну схвалено"
+
+#: 
+msgid "Substitute asked"
+msgstr "Заміну запитано"
+
+#: 
+msgid "Substitute decision"
+msgstr "Рішення щодо заміни"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Заміну запропоновано"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Заміну відхилено"
+
+#: 
+msgid "Substituted"
+msgstr "Замінено"
+
+#: 
+msgid "Substitution approved"
+msgstr "Заміну схвалено"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Заміну відхилено"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Запит на заміну не знайдено"
+
+#: 
+msgid "Substitution requests"
+msgstr "Запити на заміну"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Клас недільної школи"
+
+#: 
+msgid "System calendar"
+msgstr "Системний календар"
+
+#: 
+msgid "System default"
+msgstr "Системна за замовчуванням"
+
+#: 
+msgid "Take that back"
+msgstr "Відкликати"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Зняти «{{name}}» з цієї позиції? Лист не надсилається; у розкладі особи ця дата відображається як така, що більше не потрібна, і місце звільняється."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Вчителями цього класу керують у розділі «Служіння» → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Команда"
+
+#: 
+msgid "Team Leader"
+msgstr "Керівник команди"
+
+#: 
+msgid "Team added"
+msgstr "Команду додано"
+
+#: 
+msgid "Team deleted"
+msgstr "Команду видалено"
+
+#: 
+msgid "Team leader"
+msgstr "Керівник команди"
+
+#: 
+msgid "Team name"
+msgstr "Назва команди"
+
+#: 
+msgid "Team not found"
+msgstr "Команду не знайдено"
+
+#: 
+msgid "Team saved"
+msgstr "Команду збережено"
+
+#: 
+msgid "Teams"
+msgstr "Команди"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Команди — це групи людей, які служать у цьому служінні."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Команди, позиції та люди, які їх обіймають"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Десять останніх входів"
+
+#: 
+msgid "Thank you"
+msgstr "Дякуємо!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Дякуємо, що записалися на служіння"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Дякуємо, що записалися на служіння. Ви в розкладі."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Дякуємо. Церковна канцелярія отримала вашу відповідь."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Дякуємо. Церковна канцелярія перевірить це, перш ніж додати."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Дякуємо, що повідомили нам."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Дякуємо — координатору повідомили, що ви хочете допомагати знову."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Дякуємо — координатору повідомили, що ви хочете допомогти."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Дякуємо — ви у списку."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Такої теки теми порталу парафії не існує."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Це призначення належить іншій особі"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Не вдалося зберегти це призначення"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Ця дата народження недійсна."
+
+#: 
+msgid "That could not be saved."
+msgstr "Не вдалося зберегти."
+
+#: 
+msgid "That could not be sent."
+msgstr "Не вдалося надіслати."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Не вдалося додати цього члена родини. Перевірте виділені поля."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Це недійсна дата."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Не вдалося завантажити цей список."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Ця особа вже обіймає цю позицію в цьому проведенні"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Цю особу вже призначено на цю позицію в цьому проведенні"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Цієї особи немає в резерві волонтерів цього служіння. Надішліть повторно з перевизначенням «поза резервом», щоб усе одно призначити її."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Цієї особи немає в цьому резерві волонтерів"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Ця особа не кваліфікована для цієї позиції"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Не вдалося зберегти це фото."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Це фото завелике. Виберіть фото меншого розміру."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Ця позиція належить іншому служінню"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Ця позиція належить іншій команді"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "На цю позицію вже призначено достатньо людей"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "На цю позицію в цьому проведенні люди не призначаються"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Не вдалося записати цю відповідь"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Цей статус не можна задати безпосередньо"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Не вдалося ухвалити рішення за цим запитом на заміну"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Ця команда належить іншому служінню"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Не вдалося активувати цю тему."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Не вдалося перевірити цю тему."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "У цій темі є помилки, тому її не було активовано."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Не вдалося призначити цього волонтера"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Ця дата вінчання недійсна."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "Значення «%s» має бути датою у форматі РРРР-ММ-ДД"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "Значення «%s» має бути цілим числом хвилин"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "Значення «%s» має бути в межах %d хвилин від події"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Календарі порталу парафії збережено."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Портал парафії не зміг виконати ваш запит. Будь ласка, повторіть спробу за кілька хвилин."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Портал парафії доступний лише особі, яка ввійшла в систему, але не клієнтам API."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Для порталу парафії задано тему «%s», якої вже немає на сервері. Члени парафії бачать сторінку з помилкою, доки ви не виберете наявну тему."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Портал парафії тимчасово недоступний"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Тему порталу парафії «%s» не вдалося активувати, бо вона містить помилки."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Не вдалося відобразити тему порталу парафії"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Теку теми порталу парафії «%s» не знайдено."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Тему порталу парафії змінено."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Роль «Вчитель» у «%1$s» не можна перейменувати чи видалити, доки її вчителями керують у розділі «Служіння» → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Теки активної теми немає"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Адресу виділено — скопіюйте її з клавіатури."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Шлях до ресурсу «%s» не дозволено."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Не вдалося скасувати призначення"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Повідомлення про призначення буде надіслано ще раз"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Адресу календаря скопійовано."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Не вдалося завантажити календарі. Спробуйте ще раз."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Не вдалося зберегти календарі."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Не вдалося додати добірку"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Церква поки що не надсилала вам листів."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Церковну канцелярію сповіщено. Будь ласка, повторіть спробу пізніше."
+
+#: 
+msgid "The class does not exist"
+msgstr "Клас не існує"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Класу, за яким слідує цей розклад, більше не існує."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Вміст цього листа не зберігається. ChurchCRM зберігає лише текст повідомлень, написаних у редакторі листів, і листів волонтерам."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Вміст цього листа не збережено."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Не вдалося додати координатора"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Не вдалося завантажити список координаторів"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Дата й час кожного проведення беруться з його події календаря, тому під час перенесення події переноситься й розклад."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Параметр «days» має бути цілим числом від 1 до 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Волонтер за замовчуванням має бути особою"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Волонтери за замовчуванням зберігаються в розкладі та потрапляють до проведень, створених відтепер."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Волонтери за замовчуванням мають бути списком"
+
+#: 
+msgid "The description is too long"
+msgstr "Опис занадто довгий"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Кінець діапазону раніший за його початок."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Кінець діапазону не є датою."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Не вдалося призначити людей на подію"
+
+#: 
+msgid "The event does not exist"
+msgstr "Подія не існує"
+
+#: 
+msgid "The event is inactive"
+msgstr "Подія неактивна"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Подія має закінчуватися після початку"
+
+#: 
+msgid "The event title"
+msgstr "Назва події"
+
+#: 
+msgid "The event title is too long"
+msgstr "Назва події занадто довга"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Тип, з якого починаються нові події служіння. Якщо не задано або тип було видалено, використовується тип «Інше», якщо він є."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Тип події не існує"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Типу події, за яким слідує цей розклад, більше не існує."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Події можна перемістити лише до класу, з яким пов’язана команда"
+
+#: 
+msgid "The events could not be created"
+msgstr "Не вдалося створити події"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Не вдалося видалити події"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Не вдалося призначити людей на події"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Не вдалося скасувати надані повноваження"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Остання дата раніша за першу дату"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Не вдалося завантажити список придатних волонтерів"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Максимальна кількість не може бути меншою за мінімальну"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Не вдалося поставити повідомлення в чергу"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Мінімальна кількість не може бути від’ємною"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Не вдалося створити служіння"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Не вдалося деактивувати служіння"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Не вдалося видалити служіння"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Не вдалося знову активувати служіння"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Не вдалося зберегти служіння"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Не вдалося видалити проведення"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "У проведення немає розкладу"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Не вдалося створити проведення"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Початковий волонтер звільняється, а заміна обіймає позицію. Обох повідомляють."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Початковий волонтер зберігає позицію. Обох повідомляють."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Запитаної сторінки не існує. Можливо, її було переміщено або видалено."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Позиція належить іншому служінню"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Не вдалося видалити позицію"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Не вдалося зберегти позицію"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Позиція й надалі закрита, тому дій не потрібно, хіба що ви хочете змінити склад."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Не вдалося видалити кваліфікацію"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Не вдалося зберегти кваліфікацію"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Не вдалося завантажити кваліфікованих волонтерів"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Повторення має вказувати, як повторюються події"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Запит про те, щоб %1$s служив(ла) замість %2$s, схвалено."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Запит про те, щоб %1$s служив(ла) замість %2$s, не було схвалено."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Одну й ту саму позицію вказано в потребах у людях двічі"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Не вдалося деактивувати розклад"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Не вдалося видалити розклад"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Не вдалося знову активувати розклад"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Не вдалося зберегти розклад"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Розклад оновлено, тому більше нічого робити не потрібно."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Період розкладу закінчується раніше, ніж починається"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Не вдалося завантажити потреби розкладу в людях"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Не вдалося завантажити потреби в людях"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Не вдалося скинути потреби в людях"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Не вдалося зберегти потреби в людях"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Потреби в людях мають бути списком"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Не вдалося завантажити план призначень"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Початок діапазону не є датою."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Не вдалося ухвалити рішення щодо заміни"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Не вдалося завантажити запити на заміну"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Вчителів можна імпортувати лише до позиції цієї команди"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Вчителями «%1$s» керують у розділі «Служіння» → %2$s → %3$s. Учнів і надалі можна змінювати тут."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Не вдалося видалити команду"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Не вдалося зберегти команду"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Команда не належить цьому служінню"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Теку теми не знайдено."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Тип, з якого починається нова подія на вкладці «Календар» служіння. Його й надалі можна змінити для кожної події, наприклад для класу, якому потрібні категорії підрахунку присутніх."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Не вдалося зберегти волонтерське призначення"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Резерв волонтерів служіння «%s»."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Не вдалося зберегти зміну налаштування роботи з волонтерами"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Період закінчується раніше, ніж починається"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Їхні координатори можуть закріплювати події свого служіння в цьому календарі без права додавати події."
+
+#: 
+msgid "Theme"
+msgstr "Тема"
+
+#: 
+msgid "Themes"
+msgstr "Теми"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Теми надаються вашою церквою, а не ChurchCRM, і не перевіряються проєктом ChurchCRM."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Церковного календаря з ідентифікатором %d не існує."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Системного календаря з ідентифікатором %d не існує."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Це відомості про вас, які є в церкві. Зміни зберігаються одразу."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Це волонтерські команди, про які ви дбаєте. Відкрийте команду, щоб налаштувати її позиції, вказати, хто де може служити, і заповнити наступні тижні."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Ці події не є однією серією: вони різняться назвою, типом або класом"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Цим служінням потрібно більше людей. Повідомте їм про свою зацікавленість, і з вами зв’яжуться."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Ці потреби беруться з розкладу. Збереження тут змінює лише це проведення."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Ці числа враховують лише облікові записи самообслуговування: людей, чий логін дає доступ лише до порталу парафії і ні до чого іншого."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Ці люди й надалі призначені, але їхня позиція більше не входить до плану призначень на цю дату."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Ці люди й надалі призначені, але їхня позиція більше не входить до плану призначень цього проведення."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Для цих запланованих позицій усе ще потрібні люди."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Ці команди «%1$s» пов’язані з класом недільної школи: %2$s. Спершу відв’яжіть їх."
+
+#: 
+msgid "They could not be added"
+msgstr "Не вдалося додати їх"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Не вдалося видалити їх із цього служіння"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Вони завершують через %d хвилину після завершення події."
+msgstr[1] "Вони завершують через %d хвилини після завершення події."
+msgstr[2] "Вони завершують через %d хвилин після завершення події."
+msgstr[3] "Вони завершують через %d хвилини після завершення події."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Вони завершують за %d хвилину до завершення події."
+msgstr[1] "Вони завершують за %d хвилини до завершення події."
+msgstr[2] "Вони завершують за %d хвилин до завершення події."
+msgstr[3] "Вони завершують за %d хвилини до завершення події."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Вони вже були волонтерами тут"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Це призначення має статус «%1$s» і не може бути змінене на «%2$s»"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Це призначення більше не діє"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Цього листа немає у вашій історії."
+
+#: 
+msgid "This event has already happened"
+msgstr "Ця подія вже відбулася"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Це надходить до церковної канцелярії на перевірку. Доки співробітник не схвалить, новий член родини відображається тут як такий, що очікує перевірки."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Ця група — резерв волонтерського служіння і видаляється разом зі служінням"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Ця група — резерв волонтерів служіння «%s», і нею керують із цього служіння."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Ця група — резерв волонтерів служіння «%s». Нею керують із цього служіння."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "У цьому встановленні поки немає календарів."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Це нагадування про те, що вас незабаром призначено на служіння."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Це недопустима назва теки теми."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Це не одна з дат вашої команди."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Це не одна з ваших команд."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Сюди церква надсилає пошту, і цій особі вона телефонує щодо вашої родини."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Це ваш церковний обліковий запис. Тут зібрано все, що ви можете зробити для себе та своєї родини."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "У цього служіння немає майбутніх подій у календарі."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "У цього служіння немає майбутніх подій із назвою «%s». Розклад слідує за вже наявними подіями: спершу додайте їх на вкладці «Календар» служіння."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "У цього служіння немає групи резерву волонтерів"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Це служіння зараз не просить про допомогу"
+
+#: 
+msgid "This ministry's events"
+msgstr "Події цього служіння"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Події цього служіння (подію ще не вибрано)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Це проведення знову слідує своєму розкладу"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Це проведення вже відбулося"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Це проведення вже відбулося, і його призначення більше не можна змінити"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Це проведення скасовано"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "У цього проведення власні потреби в людях, окремі від його розкладу."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Ця сторінка не входить до вашого облікового запису. Якщо ви вважаєте, що має, зверніться до церковної канцелярії."
+
+#: 
+msgid "This page was not found"
+msgstr "Цю сторінку не знайдено"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Ця частина порталу парафії призначена для керівників волонтерських команд."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Цю позицію призначає керівник команди або координатор, на неї не можна записатися самому"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Цей розклад не можна видалити: на його проведення все ще посилаються волонтерські призначення (%d)."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "У цього розкладу поки немає потреб у людях"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Цей розклад неактивний. Активуйте його знову, щоб створювати проведення."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "За цим запитом на заміну вже ухвалено рішення"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "У цій команді поки немає позицій"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Ця команда вже обслуговує цю подію"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Цей шаблон запитує файл «%s», якого немає в темі."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Цю тему не можна активувати"
+
+#: 
+msgid "This theme has no problems."
+msgstr "У цій темі немає проблем."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Ця версія ChurchCRM не використовує шаблон за цим шляхом, тому перевизначення ніколи не відображається."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Позначте їх на вкладці «Волонтери» цієї команди, потім призначте тут."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Позначки зберігаються одразу під час встановлення."
+
+#: 
+msgid "Times come from this event"
+msgstr "Час береться з цієї події"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Поповнює кожен розклад, надсилає все, що в черзі, і закриває завершені проведення, не чекаючи наступного планового запуску."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Відхилити «{{name}}»? Початковий волонтер залишається призначеним, і його повідомлять."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Вимкнути кеш шаблонів порталу парафії та виводити назву кожного шаблону в HTML-коментарі. Для розробників тем; у звичайному використанні залиште вимкненим."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Увімкніть для служіння, команди якого ведуть класи недільної школи. Тоді його команди можна пов’язувати з класом, а його розклади та події зможуть використовувати клас."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Вимикає кеш шаблонів порталу та виводить назву кожного шаблону в HTML-коментарі. Для розробників тем; у звичайному використанні залиште вимкненим."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Двофакторна автентифікація"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Незаповнені позиції"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Невідома помилка доставки"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Невідомий статус проведення"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Невідомий режим прив’язки розкладу"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Невідоме волонтерське служіння"
+
+#: 
+msgid "Until"
+msgstr "До"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Майбутня доступність"
+
+#: 
+msgid "Update your details"
+msgstr "Оновити ваші відомості"
+
+#: 
+msgid "Update your family details"
+msgstr "Оновити відомості про вашу родину"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Використовуйте «Призначити людей на цю подію», щоб призначити людей на одну подію"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Використати потреби розкладу"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Користувач має мати право додавати події або координувати волонтерське служіння, а модуль подій має бути ввімкнено"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Користувач має мати право додавати події або координувати волонтерське служіння, якому належить цей календар"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — Можливості для волонтерів (колишня версія)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — колишні Можливості для волонтерів"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — Служіння"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — Керування волонтерами"
+
+#: 
+msgid "Valid"
+msgstr "Дійсно"
+
+#: 
+msgid "Validation"
+msgstr "Перевірка"
+
+#: 
+msgid "View event"
+msgstr "Переглянути подію"
+
+#: 
+msgid "View my schedule"
+msgstr "Переглянути мій розклад"
+
+#: 
+msgid "View only"
+msgstr "Лише перегляд"
+
+#: 
+msgid "View person"
+msgstr "Переглянути особу"
+
+#: 
+msgid "View the event"
+msgstr "Переглянути подію"
+
+#: 
+msgid "View this email"
+msgstr "Переглянути цей лист"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Волонтер (колишня версія)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Керування волонтерами V2 не ввімкнено"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Волонтерське служіння"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Волонтерське призначення"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Волонтер відмовився"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Режим роботи з волонтерами"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Волонтерські позиції все ще потрібно заповнити"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Нагадування волонтеру"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Запис волонтерів"
+
+#: 
+msgid "Volunteer times"
+msgstr "Час волонтерів"
+
+#: 
+msgid "Volunteering"
+msgstr "Волонтерство"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Волонтерство, організоване так, як це заведено в церкві. Кожне служіння має команди та позиції; люди отримують кваліфікацію для позицій і входять до групи резерву служіння; розклади слідують за подіями календаря та створюють проведення з датами й потребами в людях; координатори призначають людей, які приймають призначення, відмовляються або пропонують заміну; нагадування та сповіщення надсилаються ел. поштою. Адміністратори та користувачі з правом «Керування служіннями» бачать усі служіння та можуть створювати, деактивувати й видаляти їх. Координатору служіння натомість надається право «Керування моїми служіннями»: тоді розділ «Служіння» на бічній панелі показує лише ті служіння, які він координує. Керівник команди керує своєю командою через портал парафії. Члени парафії користуються порталом парафії, щоб бачити свій розклад, відповідати, записуватися та пропонувати допомогу."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Призначено волонтерів: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Волонтери закінчують"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Потрібні волонтери"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Волонтери служіння «%s» призначені на ці події, тому їх не можна видалити тут. Попросіть це служіння зняти свої призначення або зверніться до того, хто керує календарем."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Волонтери {{names}} призначені на деякі з них. Якщо ви не керуєте календарем, видалення буде відхилено, доки ці призначення не буде знято."
+
+#: 
+msgid "Volunteers start"
+msgstr "Волонтери починають"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Волонтери починають через %d хвилину після початку події."
+msgstr[1] "Волонтери починають через %d хвилини після початку події."
+msgstr[2] "Волонтери починають через %d хвилин після початку події."
+msgstr[3] "Волонтери починають через %d хвилини після початку події."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Волонтери починають за %d хвилину до початку події."
+msgstr[1] "Волонтери починають за %d хвилини до початку події."
+msgstr[2] "Волонтери починають за %d хвилин до початку події."
+msgstr[3] "Волонтери починають за %d хвилини до початку події."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Очікує відповіді"
+
+#: 
+msgid "Waiting for review"
+msgstr "Очікує перевірки"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Очікує підтвердження вашого координатора."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Ми напишемо вам, коли щось потрібно буде заповнити."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Нам дуже потрібна допомога щонеділі вранці — досвід не потрібен."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Ласкаво просимо, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Що потрібно змінити?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Що потребує вашої уваги цього тижня"
+
+#: 
+msgid "What the check found"
+msgstr "Що виявила перевірка"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Що являють собою режими роботи з волонтерами"
+
+#: 
+msgid "What you want to say"
+msgstr "Що ви хочете сказати"
+
+#: 
+msgid "When"
+msgstr "Коли"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Коли волонтер пропонує когось замість себе, це з’являється тут, щоб ви схвалили або відхилили."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Коли волонтер пропонує когось замість себе, це з’являється тут, щоб ви схвалили."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Коли вас призначать до команди або ви запишетеся самі, це з’явиться тут."
+
+#: 
+msgid "Where"
+msgstr "Де"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Звідки беруться дати"
+
+#: 
+msgid "Where we reach you"
+msgstr "Як ми з вами зв’язуємося"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Який режим керування волонтерами активний. V1 — колишня функція «Можливості для волонтерів»; V2 — новий процес планування та призначень. «Обидва» показує їх поряд на час переходу."
+
+#: 
+msgid "Which events"
+msgstr "Які події"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Який режим роботи з волонтерами використовує ця церква. Картка праворуч пояснює кожен варіант."
+
+#: 
+msgid "Who is covering"
+msgstr "Хто замінює"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Хто потрібен, хто призначений і чого ще бракує"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Першим у списку той, хто служив найдавніше."
+
+#: 
+msgid "Work Email"
+msgstr "Робоча ел. пошта"
+
+#: 
+msgid "Yearly"
+msgstr "Щороку"
+
+#: 
+msgid "You"
+msgstr "Ви"
+
+#: 
+msgid "You are already helping that day"
+msgstr "Ви вже допомагаєте цього дня"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "Ви вже допомагаєте цього дня як «{{what}}». Записатися й на це також?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Вам не дозволено це змінювати. Будь ласка, зверніться до церковної канцелярії."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Наразі ви не пов’язані з жодною родиною"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Ви поки не входите до жодного родинного запису."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Ви у списку — дякуємо."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Ви можете переглянути або змінити це у своєму волонтерському розкладі."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Ви не можете відкрити цю сторінку"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Ви не можете запропонувати себе як власну заміну"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Не вдалося записати вас на це."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Ви поки не керуєте волонтерською командою."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "У вас нова адреса календаря. Стара більше не працює."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Вас призначено на служіння"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Вас призначено на служіння."
+
+#: 
+msgid "You lead this"
+msgstr "Ви керуєте цим"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Ви можете створювати розклад лише для команди, якою керуєте"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Ви знову будете у списку на це."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Ваш обліковий запис не пов’язано з карткою особи. Будь ласка, зверніться до церковної канцелярії."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Вашу підписку на календар збережено."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Ваша поточна адреса одразу перестане працювати. Усім, кому ви її давали, знадобиться нова."
+
+#: 
+msgid "Your details"
+msgstr "Ваші відомості"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Ваші відомості збережено."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Відомості про вашу родину збережено."
+
+#: 
+msgid "Your photo"
+msgstr "Ваше фото"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Ваше фото збережено."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Не вдалося завантажити ваш розклад."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Ваш сеанс завершився. Будь ласка, увійдіть знову."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Ваш запит на заміну схвалено"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Ваш запит на заміну не схвалено"
+
+#: 
+msgid "already staffed by this team"
+msgstr "уже обслуговується цією командою"
+
+#: 
+msgid "body is required"
+msgstr "потрібен текст повідомлення"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds має бути списком ідентифікаторів календарів"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents має бути одним із: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId має бути ідентифікатором групи або null"
+
+#: 
+msgid "end offset"
+msgstr "зсув завершення"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds має бути списком ідентифікаторів подій"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "усі повідомлення доставлено або вони ще в черзі"
+
+#: 
+msgid "has not served yet"
+msgstr "ще не служив(ла)"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId має бути ідентифікатором позиції"
+
+#: 
+msgid "inactive family"
+msgstr "неактивна родина"
+
+#: 
+msgid "line %d"
+msgstr "рядок %d"
+
+#: 
+msgid "marked do not email"
+msgstr "позначено «не писати»"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "повідомлень не вдалося доставити"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "повідомлень не вдалося доставити після п’яти спроб"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "повідомлень очікують надсилання"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds має бути списком ідентифікаторів служінь"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "хвилин після завершення події"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "хвилин після початку події"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "хвилин до завершення події"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "хвилин до початку події"
+
+#: 
+msgid "never"
+msgstr "ніколи"
+
+#: 
+msgid "no email address"
+msgstr "немає адреси ел. пошти"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds і familyIds мають бути масивами додатних цілих чисел"
+
+#: 
+msgid "record not found"
+msgstr "запис не знайдено"
+
+#: 
+msgid "same address as another recipient"
+msgstr "та сама адреса, що й в іншого отримувача"
+
+#: 
+msgid "single event"
+msgstr "одна подія"
+
+#: 
+msgid "start offset"
+msgstr "зсув початку"
+
+#: 
+msgid "subject and body are required"
+msgstr "потрібні тема й текст повідомлення"
+
+#: 
+msgid "subject is required"
+msgstr "потрібна тема"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "тема не повинна перевищувати 255 символів"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool має бути істиною або хибністю"
+
+#: 
+msgid "window end"
+msgstr "кінець періоду"
+
+#: 
+msgid "window start"
+msgstr "початок періоду"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "Додано: {{added}}, уже були волонтерами тут: {{alreadyMembers}}"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "Створено проведень: {{created}}, уже існувало: {{existing}}"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "Служіння «{{ministry}}» створило подій для «{{className}}»: {{total}} (майбутніх: {{upcoming}})."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} також обслуговують деякі з них."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "«{{name}}» уже координує це служіння"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "«{{name}}» призначено"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "«{{name}}» уже служить як «{{position}}» у цьому проведенні. Ви все одно можете призначити цю особу."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "«{{name}}» кваліфікований(а), але не входить до резерву волонтерів цього служіння. Призначення додасть цю особу лише до цього проведення."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "«{{name}}» тепер координує це служіння"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: кількості мають бути від 0 до {{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: максимум не може бути меншим за мінімум."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: «{{name}}» більше не кваліфікований(а)"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: «{{name}}» кваліфікований(а)"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} просить {{substitute}} посісти своє місце"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "Подію «{{title}}» на {{date}} створено. Призначити людей зараз?"
+
