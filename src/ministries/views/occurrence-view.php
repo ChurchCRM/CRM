@@ -79,9 +79,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
       </div>
       <div class="text-end">
-        <span class="badge <?= $sOccurrenceStatus === 'cancelled' ? 'bg-red-lt text-red' : 'bg-green-lt text-green' ?>" id="occurrence-status">
-          <?= $sOccurrenceStatus === 'cancelled' ? gettext('Cancelled') : gettext('Scheduled') ?>
-        </span>
+        <div class="d-flex align-items-center justify-content-end gap-1">
+          <span class="badge <?= $sOccurrenceStatus === 'cancelled' ? 'bg-red-lt text-red' : 'bg-green-lt text-green' ?>" id="occurrence-status">
+            <?= $sOccurrenceStatus === 'cancelled' ? gettext('Cancelled') : gettext('Scheduled') ?>
+          </span>
+          <div id="occurrence-actions"></div>
+        </div>
         <?php if ($iEventId > 0): ?>
           <!--
             D20 made visible: an occurrence keeps NO times of its own, so the
@@ -371,7 +374,8 @@ window.CRM = window.CRM || {};
 window.CRM.volunteerOccurrence = {
   occurrenceId: <?= (int) $iOccurrenceId ?>,
   ministryId: <?= (int) $iMinistryId ?>,
-  eventId: <?= (int) $iEventId ?>
+  eventId: <?= (int) $iEventId ?>,
+  status: <?= InputUtils::jsonEncodeForScript($sOccurrenceStatus) ?>
 };
 </script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-occurrence.min.js') ?>"></script>

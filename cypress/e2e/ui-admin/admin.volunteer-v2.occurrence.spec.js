@@ -78,9 +78,9 @@ function occurrenceUrl() {
  * Open the assign modal for a position, with its picker's dropdown showing.
  *
  * The picker is built when the eligible list arrives, and the modal focuses it, which
- * opens it, once its fade ends. A click on the control after that closes it again
- * (TomSelect toggles), so the control is clicked only when both have happened and the
- * dropdown is still shut.
+ * opens it a task after `shown.bs.modal`. Clicking the control would toggle it shut if
+ * that open lands first, so the dropdown is opened with TomSelect's own `open()`,
+ * which does nothing when it is already open.
  */
 function openAssignPicker(positionId) {
     cy.intercept("GET", "**/api/ministries/occurrences/*/eligible*").as("eligible");
@@ -103,10 +103,9 @@ function openAssignPicker(positionId) {
             expect($select[0].tomselect, "the picker is built").to.exist;
         })
         .then(($select) => {
-            if (!$select[0].tomselect.isOpen) {
-                cy.get("#volunteer-assign-modal .ts-control").click();
-            }
+            $select[0].tomselect.open();
         });
+    cy.get(".ts-dropdown:visible").should("have.length", 1);
 }
 
 /**
@@ -628,6 +627,104 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
             cy.get(`.volunteer-requirement[data-position-id="${posEspresso}"] .card-footer button`)
                 .should("have.length", 1)
                 .and("contain", "Assign");
+        });
+    });
+
+    describe("cancelling and restoring the occurrence (#10374)", () => {
+        function setStatus(status) {
+            cy.makePrivateAdminAPICall("POST", `${VOLUNTEER_URL}/occurrences/${occurrenceId}/status`, { status }, 200);
+        }
+
+        function outboxRows() {
+            return cy
+                .dbQuery("SELECT COUNT(*) AS n FROM volunteer_notification_vntf WHERE vntf_vocc_ID = ?", [occurrenceId])
+                .then((result) => Number(result.rows[0].n));
+        }
+
+        function openMenu() {
+            cy.get("#occurrence-actions .dropdown > button").should("have.attr", "data-bs-display", "static").click();
+        }
+
+        beforeEach(() => {
+            clearAssignments();
+            setStatus("scheduled");
+        });
+
+        after(() => {
+            setStatus("scheduled");
+        });
+
+        it("cancels behind a confirm that names who is assigned and says nobody is told, then restores", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
+                { positionId: posEspresso, personId: POOL_MEMBER_A },
+                201,
+            );
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
+                { positionId: posMilk, personId: POOL_MEMBER_A },
+                201,
+            );
+            freshAdminLogin();
+            cy.intercept("POST", `**/api/ministries/occurrences/${occurrenceId}/status`).as("status");
+            cy.visit(occurrenceUrl());
+
+            cy.get("#occurrence-status").should("contain", "Scheduled");
+            openMenu();
+            cy.get('#occurrence-actions .dropdown-item[data-action="occurrence-restore"]').should("not.exist");
+            cy.get('#occurrence-actions .dropdown-item[data-action="occurrence-cancel"]').should("be.visible").click();
+
+            cy.get(".bootbox.modal")
+                .should("be.visible")
+                .and("contain", "Cancel this occurrence")
+                .and("contain", "Volunteers assigned: 1")
+                .and("contain", "Cancelling tells nobody: no email is sent.");
+            cy.get("#occurrence-cancel-people li")
+                .should("have.length", 1)
+                .and("contain", "Herminia")
+                .and("contain", POSITION_ESPRESSO)
+                .and("contain", POSITION_MILK);
+
+            outboxRows().then((before) => {
+                cy.get(".bootbox .btn-danger").click();
+                cy.wait("@status").its("request.body").should("deep.eq", { status: "cancelled" });
+                cy.get("#occurrence-status").should("contain", "Cancelled").and("have.class", "bg-red-lt");
+                outboxRows().should("eq", before);
+            });
+            cy.get(`.volunteer-assign-btn[data-position-id="${posEspresso}"]`).should("be.disabled");
+            cy.get(`.volunteer-requirement[data-position-id="${posEspresso}"] .volunteer-assignment-row[data-status="pending"]`)
+                .should("have.length", 1);
+
+            cy.reload();
+            cy.get("#occurrence-status").should("contain", "Cancelled");
+            openMenu();
+            cy.get('#occurrence-actions .dropdown-item[data-action="occurrence-cancel"]').should("not.exist");
+            cy.get('#occurrence-actions .dropdown-item[data-action="occurrence-restore"]').should("be.visible").click();
+            cy.get(".bootbox.modal").should("be.visible").and("contain", "Nobody is told: no email is sent.");
+            cy.get(".bootbox .btn-primary").click();
+
+            cy.wait("@status").its("request.body").should("deep.eq", { status: "scheduled" });
+            cy.get("#occurrence-status").should("contain", "Scheduled").and("have.class", "bg-green-lt");
+            cy.get(`.volunteer-assign-btn[data-position-id="${posEspresso}"]`).should("not.be.disabled");
+        });
+
+        it("says nobody is assigned, and changes nothing when the confirm is declined", () => {
+            freshAdminLogin();
+            cy.intercept("POST", `**/api/ministries/occurrences/${occurrenceId}/status`).as("status");
+            cy.visit(occurrenceUrl());
+
+            openMenu();
+            cy.get('#occurrence-actions .dropdown-item[data-action="occurrence-cancel"]').click();
+            cy.get(".bootbox.modal").should("be.visible").and("contain", "Nobody assigned yet");
+            cy.get("#occurrence-cancel-people").should("not.exist");
+            cy.get(".bootbox .btn-default").click();
+            cy.get("#occurrence-status").should("contain", "Scheduled");
+            cy.get("@status.all").should("have.length", 0);
+            cy.makePrivateAdminAPICall("GET", `${VOLUNTEER_URL}/occurrences/${occurrenceId}`, null, 200)
+                .its("body.occurrence.status")
+                .should("eq", "scheduled");
         });
     });
 

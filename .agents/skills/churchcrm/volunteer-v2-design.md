@@ -3058,6 +3058,11 @@ The single most important coordinator screen.
   "Times come from this event" note and, when the schedule has offsets, the sentence that says how
   they move the shift (*"Volunteers start 45 minutes before the event starts."*) — which is how
   D20/D21 are made visible. An occurrence whose event was deleted shows its date and no link.
+- **Cancel / Restore** (#10374) in the header's action menu beside the status badge, through
+  `POST /occurrences/{id}/status`. The cancel confirm names everyone still assigned (pending or
+  accepted) and says it tells nobody: no email is sent, assignments are kept, no reminders are
+  scheduled while it is cancelled, and nobody can be assigned until it is restored (I5). The API
+  does not refuse a past occurrence, so the menu is offered there too.
 - **Headcount card (D26)**, below the staffing, for an occurrence with an event, read-only and
   server-rendered by `VolunteerEventService::headcount()`: the event type's count categories with
   the event's values and the **Total** (the core event view's sum), or *"No headcount recorded
