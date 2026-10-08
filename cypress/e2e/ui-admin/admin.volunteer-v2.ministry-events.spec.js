@@ -22,6 +22,7 @@ const SERIES = `${PREFIX} Breakfast`;
 const LATE_SERIES = `${PREFIX} Late Breakfast`;
 const PICNIC = `${PREFIX} Picnic`;
 const PAST = `${PREFIX} Spring Cleanup`;
+const RAKING = `${PREFIX} Leaf Raking`;
 const POOL_MEMBER = 8;
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -227,7 +228,10 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         });
         cy.get("#nav-item-calendar").click();
         cy.get("#ministry-events-empty").should("be.visible");
-        cy.get("#ministry-events-empty-upcoming").should("be.visible");
+        cy.get("#ministry-events-empty-upcoming")
+            .should("be.visible")
+            .and("contain", "once they are created you are asked whether to staff them")
+            .and("not.contain", "as you create them");
         cy.get("#ministry-events-past").should("not.be.checked");
     });
 
@@ -242,6 +246,7 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         cy.get("#ministry-event-form-start-time").clear().type("09:00");
         cy.get("#ministry-event-form-end-time").clear().type("12:00");
         cy.get(`#ministry-event-form-calendars .ministry-event-calendar[value="${calendarId}"]`).should("be.checked");
+        cy.get("#ministry-event-form-calendars-hint").should("contain", "You may add events to every calendar");
         cy.get("#ministry-event-form-series-fields").should("not.be.visible");
         cy.get("#ministryEventModal").should("not.contain", "Staff these events");
         cy.get("#ministry-event-form-staff-toggle, #ministry-event-form-team, #ministry-event-form-needs").should("not.exist");
@@ -466,6 +471,23 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         cy.contains("#volunteerMinistryEventsTable tbody tr", ONE_OFF).find(".ministry-event-staffing").click();
         cy.get("#occurrence-headcount-empty").should("contain", "No headcount recorded yet");
         cy.get("#occurrence-headcount-checkins").should("not.exist");
+    });
+
+    it("counts a one-event delete without a plural (#10374)", () => {
+        admin(
+            "POST",
+            `${MINISTRIES_URL}/${ministryId}/events`,
+            { title: RAKING, eventTypeId: 1, date: isoDate(6), startTime: "08:00", endTime: "10:00" },
+            201,
+        );
+        freshAdminLogin();
+        openCalendarTab();
+        cy.contains("#volunteerMinistryEventsTable tbody tr", RAKING).find(".ministry-event-select").check();
+        cy.get("#ministry-events-delete-btn").should("contain", "Delete events (1)").click();
+        cy.get(".bootbox").should("be.visible").and("contain", "Events to delete: 1").and("not.contain", "1 events");
+        cy.get(".bootbox .btn-danger").click();
+        cy.get(".notyf__toast").should("contain", "Events deleted: 1").and("not.contain", "1 events");
+        cy.get("#volunteerMinistryEventsTable tbody").should("not.contain", RAKING);
     });
 
     it("starts a new schedule for the class-linked team on its class (D23 d)", () => {

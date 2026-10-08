@@ -54,8 +54,10 @@ import {
   rejectSwap,
   replaceOccurrenceRequirements,
   setAssignmentStatus,
+  setOccurrenceStatus,
   type VolunteerAssignment,
   type VolunteerEligiblePerson,
+  type VolunteerOccurrenceSummary,
   type VolunteerRequirementInput,
   type VolunteerStaffedRequirement,
   type VolunteerStaffing,
@@ -69,9 +71,11 @@ interface OccurrenceConfig {
   occurrenceId: number;
   ministryId: number;
   eventId: number;
+  status: VolunteerOccurrenceSummary["status"];
 }
 
 let occurrenceId = 0;
+let occurrenceStatus: VolunteerOccurrenceSummary["status"] = "scheduled";
 let staffing: VolunteerStaffing | null = null;
 let eligible: VolunteerEligiblePerson[] = [];
 /** The position the assign modal is currently filling; 0 when it is closed. */
@@ -406,6 +410,37 @@ function renderSwaps(swaps: VolunteerSwap[]): void {
   renderState("swaps", "loaded");
 }
 
+/** The header's status badge and the page menu: Cancel while scheduled, Restore once cancelled. */
+function renderOccurrenceStatus(): void {
+  const cancelled = occurrenceStatus === "cancelled";
+
+  const badge = byId("occurrence-status");
+  if (badge) {
+    badge.className = `badge ${cancelled ? "bg-red-lt text-red" : "bg-green-lt text-green"}`;
+    badge.textContent = cancelled ? i18next.t("Cancelled") : i18next.t("Scheduled");
+  }
+
+  const holder = byId("occurrence-actions");
+  if (holder) {
+    holder.innerHTML = actionMenu([
+      cancelled
+        ? {
+            type: "button",
+            icon: "fa-solid fa-rotate-left",
+            label: i18next.t("Restore occurrence"),
+            data: { action: "occurrence-restore" },
+          }
+        : {
+            type: "button",
+            icon: "fa-solid fa-ban",
+            label: i18next.t("Cancel occurrence"),
+            danger: true,
+            data: { action: "occurrence-cancel" },
+          },
+    ]);
+  }
+}
+
 // ─── Loading ─────────────────────────────────────────────────────────────────
 
 function loadStaffing(): Promise<void> {
@@ -414,6 +449,11 @@ function loadStaffing(): Promise<void> {
   return getStaffing(occurrenceId)
     .then((data) => {
       staffing = data;
+      // Redrawing the menu would close it if it is open, so only when the status moved.
+      if (data.occurrence.status !== occurrenceStatus) {
+        occurrenceStatus = data.occurrence.status;
+        renderOccurrenceStatus();
+      }
       renderStaffing(data);
     })
     .catch((error: unknown) => {
@@ -727,6 +767,97 @@ function handleSwapAction(action: string, swapId: number, personName: string): v
   );
 }
 
+/** One line per person still on the occurrence (pending or accepted), with every position they hold. */
+function assignedPeople(data: VolunteerStaffing): Array<{ name: string; positions: string[] }> {
+  const people = new Map<number, { name: string; positions: string[] }>();
+  for (const assignment of [...data.requirements.flatMap((r) => r.assignments), ...data.otherAssignments]) {
+    if (assignment.status !== "pending" && assignment.status !== "accepted") {
+      continue;
+    }
+    const person = people.get(assignment.personId) ?? {
+      name: assignment.displayName ?? String(assignment.personId),
+      positions: [],
+    };
+    if (assignment.positionName) {
+      person.positions.push(assignment.positionName);
+    }
+    people.set(assignment.personId, person);
+  }
+
+  return [...people.values()];
+}
+
+function changeOccurrenceStatus(status: VolunteerOccurrenceSummary["status"]): void {
+  const cancelling = status === "cancelled";
+
+  setOccurrenceStatus(occurrenceId, status)
+    .then((data) => {
+      occurrenceStatus = data.occurrence.status;
+      renderOccurrenceStatus();
+      notifySuccess(cancelling ? i18next.t("Occurrence cancelled") : i18next.t("Occurrence restored"));
+
+      return loadStaffing();
+    })
+    .catch((error: unknown) => {
+      notifyError(
+        errorMessage(
+          error,
+          cancelling
+            ? i18next.t("The occurrence could not be cancelled")
+            : i18next.t("The occurrence could not be restored"),
+        ),
+      );
+    });
+}
+
+/** Read the roster fresh, so the confirm names everyone assigned right now. */
+function confirmCancelOccurrence(): void {
+  getStaffing(occurrenceId)
+    .then((data) => {
+      const people = assignedPeople(data);
+      const who =
+        people.length === 0
+          ? `<p>${escapeHtml(i18next.t("Nobody assigned yet"))}</p>`
+          : `<p class="mb-1">${escapeHtml(i18next.t("Volunteers assigned: {{total}}", { total: people.length }))}</p>` +
+            `<ul id="occurrence-cancel-people">${people
+              .map(
+                (person) =>
+                  `<li>${escapeHtml(person.name)}${
+                    person.positions.length === 0
+                      ? ""
+                      : ` <span class="text-body-secondary">&middot; ${escapeHtml(person.positions.join(", "))}</span>`
+                  }</li>`,
+              )
+              .join("")}</ul>`;
+
+      confirmAction(
+        i18next.t("Cancel this occurrence"),
+        `${who}<p class="mb-0">${escapeHtml(
+          i18next.t(
+            "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.",
+          ),
+        )}</p>`,
+        () => changeOccurrenceStatus("cancelled"),
+      );
+    })
+    .catch((error: unknown) => {
+      notifyError(errorMessage(error, i18next.t("The staffing plan could not be loaded")));
+    });
+}
+
+function confirmRestoreOccurrence(): void {
+  confirmAction(
+    i18next.t("Restore this occurrence"),
+    escapeHtml(
+      i18next.t(
+        "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.",
+      ),
+    ),
+    () => changeOccurrenceStatus("scheduled"),
+    false,
+  );
+}
+
 // ─── The staffing-needs editor (§2.10) ───────────────────────────────────────
 
 /**
@@ -961,6 +1092,17 @@ function wire(): void {
     const action = target.dataset.action ?? "";
     const personName = target.dataset.personName ?? "";
 
+    if (action === "occurrence-cancel") {
+      confirmCancelOccurrence();
+
+      return;
+    }
+    if (action === "occurrence-restore") {
+      confirmRestoreOccurrence();
+
+      return;
+    }
+
     if (action.startsWith("swap-")) {
       handleSwapAction(action, Number(target.dataset.swapId), personName);
 
@@ -978,13 +1120,16 @@ function init(): void {
     occurrenceId: 0,
     ministryId: 0,
     eventId: 0,
+    status: "scheduled",
   }) as OccurrenceConfig;
   occurrenceId = config.occurrenceId;
+  occurrenceStatus = config.status === "cancelled" ? "cancelled" : "scheduled";
 
   if (occurrenceId === 0) {
     return;
   }
 
+  renderOccurrenceStatus();
   wire();
   void loadStaffing();
   void loadSwaps();

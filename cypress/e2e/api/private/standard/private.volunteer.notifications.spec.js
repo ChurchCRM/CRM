@@ -1125,6 +1125,39 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                 },
             );
         });
+
+        describe("a cancelled occurrence (#10387)", () => {
+            const setStatus = (status) =>
+                api(ADMIN_KEY, "POST", `/api/ministries/occurrences/${occurrenceTwo}/status`, { status });
+
+            afterEach(() => setStatus("scheduled"));
+
+            it("holds a queued reminder while its occurrence is cancelled and sends it once restored", () => {
+                assign(COORDINATOR_KEY, occurrenceTwo, posMilk, POOL_MEMBER_B).then((assignment) => {
+                    const key = `reminder:${assignment.id}:${POOL_MEMBER_B}`;
+                    dbOk(
+                        `INSERT INTO volunteer_notification_vntf
+                            (vntf_Type, vntf_Channel, vntf_per_ID, vntf_vasg_ID, vntf_vocc_ID,
+                             vntf_DedupeKey, vntf_ScheduledFor, vntf_Status, vntf_Attempts)
+                         VALUES ('reminder', 'email', ?, ?, ?, ?, DATE_SUB(NOW(), INTERVAL 1 DAY), 'pending', 0)`,
+                        [POOL_MEMBER_B, assignment.id, occurrenceTwo, key],
+                    );
+
+                    setStatus("cancelled");
+                    drain();
+                    outboxRow(key).then((row) => {
+                        expect(row.vntf_Status, "held while cancelled").to.eq("pending");
+                        expect(row.vntf_Attempts).to.eq(0);
+                    });
+
+                    setStatus("scheduled");
+                    drain();
+                    outboxRow(key).then((row) => {
+                        expect(row.vntf_Status, "sent once restored").to.eq("sent");
+                    });
+                });
+            });
+        });
     });
 
     describe("Volunteer v2 — the retry rule (§2.14, amended)", () => {
