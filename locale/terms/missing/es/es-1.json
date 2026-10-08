@@ -1,4 +1,7 @@
 {
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "",
     "other": ""

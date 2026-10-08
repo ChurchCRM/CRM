@@ -46,7 +46,7 @@
             <dd>{{ family.homePhone|default('—') }}</dd>
 
             <dt>{{ gettext('Email') }}</dt>
-            <dd>{{ family.email|default('—') }}</dd>
+            <dd>{{ family.email|default('—')|email_wrap }}</dd>
         </dl>
 
         <ul class="portal-member-list">

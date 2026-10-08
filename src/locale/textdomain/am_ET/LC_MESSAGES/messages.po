@@ -21049,10 +21049,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "የዚህ አገልግሎት ዝግጅቶችን በበጎ ፈቃደኞች ማስያዝ የሚችለው የዚህ አገልግሎት አስተባባሪ ብቻ ነው"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "የቡድን መሪን መቀየር የሚችለው የበጎ ፈቃደኞች አስተዳዳሪ ብቻ ነው"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "ይህን መቀየር የሚችለው የበጎ ፈቃደኞች አስተዳዳሪ ብቻ ነው።"
 

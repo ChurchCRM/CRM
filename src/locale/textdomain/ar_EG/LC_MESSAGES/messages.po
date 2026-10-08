@@ -21140,10 +21140,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "لا يجوز إلا لمنسق هذه الخدمة تكليف الخدام في فعالياتها"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "لا يستطيع تغيير قائد الفريق إلا مدير المتطوعين"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "لا يستطيع تغيير هذا إلا مدير المتطوعين."
 

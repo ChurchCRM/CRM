@@ -32,6 +32,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Volunteer\VolunteerException;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
 use Psr\Log\LoggerInterface;
 
@@ -55,7 +56,8 @@ use Psr\Log\LoggerInterface;
  * scheduling horizon, which a daily timer job keeps every schedule filled up to.
  *
  * The occurrence stores no times. resolveOccurrenceWindow() reads them lazily from the
- * event and adds the schedule's offsets (D21), so moving the event moves the shift.
+ * event and adds the schedule's offsets (D21), so moving the event moves the shift. Its
+ * date is a copy kept on the event's day by followEventDates().
  *
  * Idempotency is a *database* property: `vocc_schedule_event_uidx` dedupes, and generation
  * uses findOneOrCreate() inside one transaction — the same idiom Event::checkInPerson()
@@ -1023,6 +1025,47 @@ class VolunteerScheduleService
         }
 
         return ['created' => $created, 'existing' => $existing, 'createdIds' => $createdIds];
+    }
+
+    /**
+     * Move occurrences to their event's new day (#10371). The times are read from the
+     * event, but lists, gap counts and the reminder scan filter on `vocc_OccurrenceDate`.
+     * Event::postUpdate() runs this for the event it saved; the daily top-up runs it for
+     * every event, so a move made by SQL or an import is caught the next day. An
+     * occurrence dated before today is history and keeps its date (§2.9).
+     *
+     * @return int occurrences moved
+     */
+    public function followEventDates(?int $eventId = null, ?ConnectionInterface $con = null): int
+    {
+        $query = VolunteerOccurrenceQuery::create()
+            ->filterByOccurrenceDate(DateTimeUtils::getTodayDate(), Criteria::GREATER_EQUAL)
+            ->joinWithEvent();
+        if ($eventId !== null) {
+            $query->filterByEventId($eventId);
+        }
+
+        $moved = 0;
+        foreach ($query->find($con) as $occurrence) {
+            $from = $occurrence->getOccurrenceDate('Y-m-d');
+            $to = $occurrence->getEvent($con)?->getStart('Y-m-d');
+            if ($to === null || $to === $from) {
+                continue;
+            }
+
+            $occurrence->setOccurrenceDate($to);
+            $occurrence->save($con);
+            $moved++;
+
+            $this->logger->info('Volunteer occurrence moved with its event', [
+                'occurrenceId' => $occurrence->getId(),
+                'eventId' => $occurrence->getEventId(),
+                'from' => $from,
+                'to' => $to,
+            ]);
+        }
+
+        return $moved;
     }
 
     /**

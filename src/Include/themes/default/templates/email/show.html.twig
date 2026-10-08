@@ -41,7 +41,7 @@
             </dd>
 
             <dt>{{ gettext('To') }}</dt>
-            <dd data-field="address">{{ email.address }}</dd>
+            <dd data-field="address">{{ email.address|email_wrap }}</dd>
         </dl>
     </section>
 
