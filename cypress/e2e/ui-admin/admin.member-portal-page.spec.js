@@ -20,6 +20,8 @@ const GOOD_THEME = "cypressadmingood";
 const BROKEN_THEME = "cypressadminbroken";
 const GOOD_DIR = `src/Include/themes/${GOOD_THEME}`;
 const BROKEN_DIR = `src/Include/themes/${BROKEN_THEME}`;
+const WARNING_THEME = "cypressadminwarning";
+const WARNING_DIR = `src/Include/themes/${WARNING_THEME}`;
 const HEADER_PURPLE = "rgb(75, 0, 130)";
 
 const MEMBER_USER = "lena.black.editself.notes@example.com";
@@ -62,6 +64,32 @@ const loginAsMember = () => {
     cy.url({ timeout: 10000 }).should("include", "/portal");
 };
 
+// Tabler's own white-on-success pairing measures 2.7:1; the unstyled grey badge text measured 1.0-1.8:1.
+const MIN_BADGE_CONTRAST = 2.5;
+
+const relativeLuminance = (cssColor) => {
+    const channels = cssColor.match(/[\d.]+/g).slice(0, 3).map(Number);
+    const srgb = cssColor.startsWith("color(") ? channels : channels.map((value) => value / 255);
+    const [r, g, b] = srgb.map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+
+const contrastRatio = (first, second) => {
+    const [lighter, darker] = [relativeLuminance(first), relativeLuminance(second)].sort((a, b) => b - a);
+    return (lighter + 0.05) / (darker + 0.05);
+};
+
+const expectReadableBadges = () =>
+    cy.get("#memberPortalPage .badge").should(($badges) => {
+        $badges.each((_, badge) => {
+            const $badge = Cypress.$(badge);
+            expect(
+                contrastRatio($badge.css("color"), $badge.css("background-color")),
+                `"${$badge.text().trim()}" badge contrast`
+            ).to.be.at.least(MIN_BADGE_CONTRAST);
+        });
+    });
+
 before(() => {
     cy.rememberTestEnv(["admin.api.key"]);
 });
@@ -79,6 +107,8 @@ describe("Admin → Member Portal page", () => {
             `${BROKEN_DIR}/templates/home.html.twig`,
             '{% extends "@default/layout.html.twig" %}\n{% block content %}\n'
         );
+        // A theme that overrides a template ChurchCRM does not have: warnings only.
+        cy.writeFile(`${WARNING_DIR}/templates/no-such-page.html.twig`, "{# never rendered #}\n");
     });
 
     before(() => {
@@ -102,7 +132,7 @@ describe("Admin → Member Portal page", () => {
         setConfig("bPortalShowCalendar", "1");
         setConfig("bPortalShowVolunteer", "1");
         setConfig("sVolunteerVersion", originalVolunteerVersion);
-        cy.exec(`rm -rf ${GOOD_DIR} ${BROKEN_DIR}`, { failOnNonZeroExit: false });
+        cy.exec(`rm -rf ${GOOD_DIR} ${BROKEN_DIR} ${WARNING_DIR}`, { failOnNonZeroExit: false });
     });
 
     describe("Access", () => {
@@ -177,6 +207,22 @@ describe("Admin → Member Portal page", () => {
             cy.request("/admin/api/system/config/sMemberPortalTheme").then((resp) => {
                 expect(resp.body.value).to.eq("default");
             });
+        });
+
+        it("Every badge has readable text", () => {
+            cy.visit("/admin/member-portal");
+            cy.get(`#portalThemesTable tr[data-theme="${WARNING_THEME}"]`).should("contain.text", "Warnings");
+            expectReadableBadges();
+
+            for (const [theme, template] of [
+                [BROKEN_THEME, "home.html.twig"],
+                [WARNING_THEME, "no-such-page.html.twig"],
+            ]) {
+                cy.get("#portalThemeSelect").select(theme);
+                cy.get("#portalThemeCheckButton").click();
+                cy.get("#portalThemeFindings", { timeout: 10000 }).should("contain.text", template);
+                expectReadableBadges();
+            }
         });
 
         it("The Check button re-runs the validator for the selected theme", () => {
