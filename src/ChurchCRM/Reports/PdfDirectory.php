@@ -12,6 +12,8 @@ use ChurchCRM\Utils\MiscUtils;
 
 class PdfDirectory extends ChurchInfoReport
 {
+    private const PHOTO_WIDTH = 20;
+
     // Private properties
     public $_Margin_Left = 13;        // Left Margin
     public $_Margin_Top = 13;         // Top margin
@@ -221,20 +223,27 @@ class PdfDirectory extends ChurchInfoReport
         return $nl;
     }
 
+    /**
+     * Height an entry's photo takes: drawn PHOTO_WIDTH wide at its own aspect
+     * ratio, never less than PHOTO_WIDTH tall, with 2 mm above and below.
+     */
+    private function photoHeight(?string $img): float
+    {
+        if ($img === null || !file_exists($img)) {
+            return 0;
+        }
+        [$width, $height] = getimagesize($img);
+
+        return max(self::PHOTO_WIDTH, self::PHOTO_WIDTH * $height / $width) + 4;
+    }
+
     public function checkLines($numlines, $img): void
     {
         // Need to determine if we will extend beyoned 17mm from the bottom of
         // the page.
 
-        $h = 0; // check image height.  id will be zero if not included
-
-        if (file_exists($img)) {
-            $s = getimagesize($img);
-            $h = ($this->_ColWidth / $s[0]) * $s[1];
-        }
-
 //      if ($this->GetY() + $h + $numlines * 5 > $this->h - 27)
-        if ($this->GetY() + $h + $numlines * $this->_LS > $this->h - 27) {
+        if ($this->GetY() + $this->photoHeight($img) + $numlines * $this->_LS > $this->h - 27) {
             // Next Column or Page
             if ($this->_Column == $this->_NCols - 1) {
                 $this->_Column = 0;
@@ -533,10 +542,8 @@ class PdfDirectory extends ChurchInfoReport
         $this->SetXY($_PosX, $_PosY);
 
         if ($dirimg !== '') {
-            $h = 20;
-            $_PosY += 2;
-            $this->Image($dirimg, $_PosX, $_PosY, $h);
-            $this->SetXY($_PosX, $_PosY + $h + 2);
+            $this->Image($dirimg, $_PosX, $_PosY + 2, self::PHOTO_WIDTH);
+            $this->SetXY($_PosX, $_PosY + $this->photoHeight($dirimg));
         }
 
         $this->MultiCell($this->_ColWidth, $this->_LS, self::convertToLatin1($text), 0, 'L');
