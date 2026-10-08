@@ -1,182 +1,52 @@
 {
-  "Select at least one classification to include in the directory.": "Seleziona almeno una classificazione da includere nell'elenco.",
-  "Geocoding services": "Servizi di geocodifica",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Servizi di geocodifica da provare, nell'ordine in cui li scegli. Nominatim (OpenStreetMap) funziona in tutto il mondo; US Census (US Census Bureau) copre solo gli indirizzi degli Stati Uniti. Seleziona anche US Census per usarlo. Se non ne selezioni nessuno, viene usato Nominatim.",
-  "New Record Defaults": "Valori predefiniti per i nuovi record",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Questa operazione trova le coordinate sulla mappa per ogni famiglia che ne è priva, usando i servizi di geocodifica scelti nelle Impostazioni mappa. Elabora le famiglie a gruppi di 50; un gruppo richiede circa un minuto con un servizio di geocodifica e di più con più servizi. Puoi lasciare aperta questa pagina durante l'elaborazione. Continuare?",
-  "Used for new records and for geocoding when a record has no country.": "Usato per i nuovi record e per la geocodifica quando un record non ha un paese.",
-  "Copy from Church Info": "Copia dalle informazioni della parrocchia",
-  "Could not copy the church address.": "Impossibile copiare l'indirizzo della parrocchia.",
-  "Could not match the church country.": "Impossibile abbinare il paese della parrocchia.",
-  "Class lists, attendance sheets, and photo books": "Elenchi di classe, fogli presenze e album fotografici",
-  "Group membership lists and Sunday School class reports": "Elenchi dei partecipanti ai ministeri e rapporti delle classi di catechismo",
-  "Your fiscal year starts in %s.": "Il tuo anno fiscale inizia a %s.",
-  "An error occurred": "Si è verificato un errore",
-  "Approve": "Approva",
-  "Approve selected": "Approva selezionati",
-  "Approved": "Approvato",
-  "Change in People Settings": "Modifica nelle Impostazioni persone",
-  "Could not approve the selected registrations": "Impossibile approvare le registrazioni selezionate",
-  "Could not approve this family": "Impossibile approvare questa famiglia",
-  "Pending Registrations": "Registrazioni in attesa",
-  "Pending review": "In attesa di revisione",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Registrazioni in attesa di revisione dal tuo modulo di registrazione pubblico. Le voci senza email o telefono sono contrassegnate: verifica i contatti prima di procedere.",
-  "Review now": "Rivedi ora",
-  "Review self registrations": "Rivedi le autoregistrazioni",
-  "Select month": "Seleziona mese",
-  "Self-registration is disabled": "L'autoregistrazione è disattivata",
-  "Self-registration is enabled": "L'autoregistrazione è attiva",
-  "The public registration form is turned off. Existing registrations are listed below.": "Il modulo di registrazione pubblico è disattivato. Le registrazioni esistenti sono elencate di seguito.",
-  "This family is not a pending self-registration": "Questa famiglia non è un'autoregistrazione in attesa",
-  "This person belongs to a family — approve the family instead": "Questa persona appartiene a una famiglia: approva invece la famiglia",
-  "This person is not a pending self-registration": "Questa persona non è un'autoregistrazione in attesa",
-  "This self-registered family is pending review": "Questa famiglia autoregistrata è in attesa di revisione",
-  "Total registrations": "Registrazioni totali",
-  "Visitors can sign up on your public registration form.": "I visitatori possono iscriversi tramite il tuo modulo di registrazione pubblico.",
-  "Yesterday": "Ieri",
-  "days ago": "giorni fa",
-  "self-registrations are waiting for review": "autoregistrazioni sono in attesa di revisione",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "I compleanni sono indirizzati alla persona e gli anniversari alla coppia.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Etichette postali per le persone di questo rapporto. Una persona senza un proprio indirizzo viene indirizzata all'indirizzo della sua famiglia.",
-  "One label for each couple.": "Un'etichetta per ogni coppia.",
-  "Print Labels": "Stampa etichette",
-  "That role is not one of this group's roles.": "Quel ruolo non è tra i ruoli di questo ministero.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" non è un tipo di calendario riconosciuto da questa pagina.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s non può prestare servizio e ha proposto %2$s come sostituto.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s è già nel gruppo di volontari di %2$s e vuole aiutare di nuovo.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s è già collegato a %2$s in %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s è in %2$s come %3$s. Rimuovilo prima dalla classe; qualificarlo qui lo renderà poi uno dei suoi insegnanti.",
-  "%1$s is not an event of %2$s": "%1$s non è un evento di %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s resta una classe di catechismo mentre i suoi insegnanti sono gestiti in Ministeri → %2$s → %3$s. Scollegala prima dalla squadra.",
-  "%1$s wants to help with %2$s": "%1$s vuole aiutare con %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s vuole aiutare con %2$s ed è stato aggiunto al suo gruppo di volontari.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: il massimo è %2$d ma sono scelti %3$d volontari predefiniti. Rimuovine uno o aumenta il massimo.",
-  "%d day": {
-    "one": "%d giorno",
-    "other": "%d giorni"
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d predefinito saltato per un altro motivo (l'occorrenza è conclusa, annullata o al completo)",
-    "other": "%d predefiniti saltati per un altro motivo (l'occorrenza è conclusa, annullata o al completo)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d predefinito saltato: qualifica revocata",
-    "other": "%d predefiniti saltati: qualifica revocata"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d volontario predefinito assegnato",
-    "other": "%d volontari predefiniti assegnati"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d non riusciti",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Serve ancora %d volontario in più per questo incarico. Apri l'occorrenza per colmare la lacuna.",
-    "other": "Servono ancora %d volontari in più per questo incarico. Apri l'occorrenza per colmare la lacuna."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d nuova occorrenza",
-    "other": "%d nuove occorrenze"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Serve ancora %d volontario per una prossima occorrenza.",
-    "other": "Servono ancora %d volontari per una prossima occorrenza."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "Calendario di %s",
-  "%s Family": "Famiglia %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s non fornisce insegnanti per il catechismo, quindi le sue squadre, i suoi turni e i suoi eventi non possono usare una classe. Un responsabile dei volontari può cambiarlo in Modifica ministero.",
-  "%s email from the church": {
-    "one": "%s email dalla parrocchia",
-    "other": "%s email dalla parrocchia"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "famiglia %s",
-  "%s has declined a volunteer assignment.": "%s ha rifiutato un incarico di volontariato.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s non ha un ruolo chiamato Insegnante, quindi i suoi insegnanti non possono essere gestiti da una squadra",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s non ha incontri in programma nel calendario. Un turno segue eventi già esistenti: aggiungi prima gli incontri della classe, con Nuovo evento ricorrente nella scheda Calendario del ministero.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "Da %s ci si aspetta ancora che presti servizio. Contatta il coordinatore se non è possibile.",
-  "%s not sent (%s): %s": "%s non inviato (%s): %s",
-  "%s person in your household": {
-    "one": "%s persona nella tua famiglia",
-    "other": "%s persone nella tua famiglia"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s incarico",
-    "other": "%s incarichi"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: la stessa persona è scelta due volte come volontario predefinito",
-  "(no subject)": "(nessun oggetto)",
-  "A birthday cannot be in the future.": "Un compleanno non può essere nel futuro.",
-  "A calendar event": "Un evento del calendario",
-  "A calendar id must be a number.": "L'id di un calendario deve essere un numero.",
-  "A class that no longer exists": "Una classe che non esiste più",
-  "A class with no meetings on the calendar cannot be chosen yet.": "Una classe senza incontri nel calendario non può ancora essere scelta.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "Una classe senza incontri nel calendario non può ancora essere scelta. Un coordinatore del ministero aggiunge i suoi incontri nella scheda Calendario del ministero.",
-  "A class's meetings": "Gli incontri di una classe",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "Un coordinatore può gestire tutto in questo ministero, comprese le modifiche che altrimenti dovrebbe fare un responsabile dei volontari.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "Un coordinatore del ministero può aggiungerli nella scheda Calendario del ministero.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "Un coordinatore del ministero può aggiungerli nella scheda Calendario del ministero. Poi genera di nuovo.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "Un coordinatore guida l'intero ministero: le sue squadre, i suoi incarichi, i suoi turni e ogni assegnazione al suo interno.",
-  "A day a month does not have falls on its last day.": "Un giorno che un mese non ha cade nel suo ultimo giorno.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "Un volontario predefinito appartiene al fabbisogno di personale del turno, non a una singola occorrenza",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "Un volontario predefinito può essere scelto solo per un incarico richiesto dal fabbisogno di personale di questo turno",
-  "A from and a to date in YYYY-MM-DD form are required": "Sono richieste una data iniziale e una data finale nel formato AAAA-MM-GG",
-  "A minimum count is required": "È richiesto un numero minimo",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "Un ministero viene creato con il proprio calendario, il proprio gruppo di volontari e la prima squadra, quindi qui bisogna decidere solo il nome e che cosa fa.",
-  "A ministry name is required": "Il nome del ministero è obbligatorio",
-  "A ministry needs at least one team. Rename it instead.": "Un ministero ha bisogno di almeno una squadra. Rinominala invece.",
-  "A ministry with that name already exists": "Esiste già un ministero con quel nome",
-  "A ministry's own calendar cannot be opened to other ministries": "Il calendario proprio di un ministero non può essere aperto ad altri ministeri",
-  "A position belongs to a team; choose one": "Un incarico appartiene a una squadra; sceglierne una",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "Un incarico è un compito che qualcuno svolge in questa squadra, come Caffè o Guida del canto.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "Un incarico è un ruolo in cui qualcuno presta servizio, come Caffè o Guida del canto.",
-  "A position is required": "È richiesto un incarico",
-  "A position name is required": "Il nome dell'incarico è obbligatorio",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "Un incarico con volontari qualificati non può spostarsi in o da una squadra collegata a una classe di catechismo, perché cambierebbe chi insegna nella classe. Crea invece l'incarico nell'altra squadra.",
-  "A position with that name already exists in this ministry": "Esiste già un incarico con quel nome in questo ministero",
-  "A response must be accepted or declined": "Una risposta deve essere accettata o rifiutata",
-  "A schedule belongs to a team; choose one": "Un turno appartiene a una squadra; sceglierne una",
-  "A schedule name is required": "Il nome del turno è obbligatorio",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Un turno indica quali eventi del calendario una squadra copre: un tipo di celebrazione, gli incontri di una classe o gli eventi propri di questo ministero. Aggiungine uno e genera le sue occorrenze.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Un turno indica quali eventi del calendario questa squadra serve: un tipo di celebrazione, gli incontri di una classe o gli eventi propri del suo ministero. Aggiungine uno e genera le sue occorrenze.",
-  "A schedule that follows a class must name the class": "Un turno che segue una classe deve indicare la classe",
-  "A schedule that follows an event type must name the event type": "Un turno che segue un tipo di evento deve indicare il tipo di evento",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Un turno che copre un solo evento non può seguire altri eventi; eliminalo e aggiungi invece un turno",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "Un unico elenco di opportunità, come \"Asilo nido\" o \"Accoglienza\", gestito in Persone → Amministrazione. Ogni persona viene contrassegnata con le opportunità per cui è disponibile ad aiutare, nella scheda Volontario della sua scheda. Questo è tutto ciò che registra: non ci sono squadre, turni, assegnazioni a una data né email di promemoria. I contrassegni vengono usati nei rapporti e nella scheda della persona.",
-  "A square picture of your face works best.": "Una foto quadrata del tuo viso funziona meglio.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Un fabbisogno di personale elenca i suoi volontari predefiniti in \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Un fabbisogno di personale appartiene esattamente a un turno oppure a un'occorrenza",
-  "A substitute has already been proposed for this assignment": "Per questa assegnazione è già stato proposto un sostituto",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "Un capo squadra può gestire la propria squadra (i suoi incarichi, i suoi turni e chi vi presta servizio) e nient'altro nel ministero.",
-  "A team name is required": "Il nome della squadra è obbligatorio",
-  "A team with that name already exists in this ministry": "Esiste già una squadra con quel nome in questo ministero",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Un tema è una cartella che la tua parrocchia carica in Include/themes/ sul server. Il tema predefinito del sistema è incluso in ChurchCRM.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "Un'impostazione di transizione. Sono disponibili sia le vecchie pagine Opportunità di volontariato sia le nuove pagine Ministeri, e la scheda di una persona mostra entrambe le schede Volontario, chiaramente etichettate. Usala mentre passi una parrocchia dalla V1 alla V2, poi passa solo alla V2.",
-  "A volunteer": "Un volontario",
-  "A volunteer has declined an assignment": "Un volontario ha rifiutato un incarico",
-  "A volunteer has proposed a substitute": "Un volontario ha proposto un sostituto",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "Un responsabile dei volontari può guidare questo ministero senza un'autorizzazione specifica. Aggiungi un coordinatore per permettere a un'altra persona di guidarlo senza dargli accesso anche a tutti gli altri ministeri.",
-  "A wedding date cannot be in the future.": "La data di matrimonio non può essere nel futuro.",
-  "Accepted": "Accettato",
-  "Account deleted": "Account eliminato",
-  "Account unlocked": "Account sbloccato",
-  "Accounts": "Account",
-  "Active must be true or false": "Attivo deve essere vero o falso",
-  "Active now": "Attivo ora",
-  "Add All": "Aggiungi tutti",
-  "Add Everyone in Cart": "Aggiungi tutti nella selezione",
-  "Add Volunteer": "Aggiungi volontario",
-  "Add Volunteers to Cart": "Aggiungi volontari alla selezione",
-  "Add a family member": "Aggiungi un membro della famiglia",
-  "Add a position first, then come back and say how many of them are needed.": "Aggiungi prima un incarico, poi torna e indica quante persone servono.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Aggiungi un secondo passaggio all'accesso, così la sola password non basta per entrare nel tuo account.",
-  "Add at least one position to this team, then tick who can serve where.": "Aggiungi almeno un incarico a questa squadra, poi spunta chi può servire dove.",
-  "Add coordinator": "Aggiungi coordinatore",
-  "Add from Cart": "Aggiungi dalla selezione",
-  "Add its meetings first with New recurring event on the Calendar tab": "Aggiungi prima i suoi incontri con Nuovo evento ricorrente nella scheda Calendario",
-  "Add people to the cart before adding them as volunteers": "Aggiungi le persone alla selezione prima di aggiungerle come volontari",
-  "Add position": "Aggiungi incarico",
-  "Add schedule": "Aggiungi turno",
-  "Add team": "Aggiungi squadra",
-  "Add them on the Calendar tab, then generate again.": "Aggiungili nella scheda Calendario, poi genera di nuovo.",
-  "Add them on the Calendar tab.": "Aggiungili nella scheda Calendario.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Aggiungi questo indirizzo alla tua app di calendario. Si aggiorna da solo quando cambia il calendario della parrocchia.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Aggiungi qui gli eventi di questo ministero: una giornata di lavoro, una classe che si incontra ogni domenica. Vanno nel calendario della parrocchia e puoi assegnare il personale mentre li crei."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }
