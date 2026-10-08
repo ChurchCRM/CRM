@@ -930,7 +930,10 @@ function wire(): void {
       return;
     }
 
-    assignSelect?.focus();
+    // Focusing reopens the list, which would cover a choice made during the fade.
+    if (assignSelect?.getValue() === "") {
+      assignSelect.focus();
+    }
   });
   byId("volunteer-assign-modal")?.addEventListener("hidden.bs.modal", () => {
     assignModalShown = false;

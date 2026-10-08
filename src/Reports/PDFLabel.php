@@ -25,6 +25,8 @@ use Propel\Runtime\ActiveQuery\Criteria;
 function LabelRow(Person $person): array
 {
     $family = $person->getFamily();
+    // The flagged second address when the family has one, the primary otherwise (#10405).
+    $familyAddress = $family?->getMailingAddressParts() ?? [];
 
     return [
         'per_ID'        => $person->getId(),
@@ -39,11 +41,11 @@ function LabelRow(Person $person): array
         'per_City'      => $person->getCity(),
         'per_State'     => $person->getState(),
         'per_Zip'       => $person->getZip(),
-        'fam_Address1'  => $family?->getAddress1(),
-        'fam_Address2'  => $family?->getAddress2(),
-        'fam_City'      => $family?->getCity(),
-        'fam_State'     => $family?->getState(),
-        'fam_Zip'       => $family?->getZip(),
+        'fam_Address1'  => $familyAddress['Address1'] ?? null,
+        'fam_Address2'  => $familyAddress['Address2'] ?? null,
+        'fam_City'      => $familyAddress['City'] ?? null,
+        'fam_State'     => $familyAddress['State'] ?? null,
+        'fam_Zip'       => $familyAddress['Zip'] ?? null,
     ];
 }
 
@@ -585,9 +587,10 @@ function ZipBundleSort(array $inLabels)
 
 /**
  * The address block for a label, taken whole from one source: the person's own
- * address when they have entered a street line, otherwise the family's. The
- * decision is made once for all five parts so a label never mixes a person's
- * street with the family's city, or the reverse. Matches Person::getAddress().
+ * address when they have entered a street line, otherwise the family's mailing
+ * address (see LabelRow()). The decision is made once for all five parts so a
+ * label never mixes a person's street with the family's city, or the reverse.
+ * Matches Person::getAddress().
  *
  * @return array{Address1: string, Address2: string, City: string, State: string, Zip: string}
  */

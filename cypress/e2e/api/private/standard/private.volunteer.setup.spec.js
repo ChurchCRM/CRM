@@ -279,6 +279,15 @@ function insertReturningId(sql, params = []) {
     return dbOk(sql, params).then((rows) => rows.insertId);
 }
 
+/** `YYYY-MM-DD`, `offsetDays` from today; the root hooks put the browser in the church's time zone. */
+function isoDate(offsetDays) {
+    const d = new Date();
+    d.setHours(12, 0, 0, 0);
+    d.setDate(d.getDate() + offsetDays);
+    const pad = (n) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
 /** Delete every V2 row, children first. Tolerant: used before the schema exists. */
 function cleanupV2Rows() {
     V2_TABLES_CHILD_FIRST.forEach((table) => {
@@ -291,6 +300,14 @@ function countRows(table) {
         .dbQuery(`SELECT COUNT(*) AS c FROM \`${table}\``)
         .then((result) => (result.error === null ? result.rows[0].c : -1));
 }
+
+before(() => {
+    cy.useChurchTimeZone();
+});
+
+after(() => {
+    cy.useHostTimeZone();
+});
 
 describe("API Private Volunteer v2 core schema", () => {
     // D7: the V1 tables must be untouched by anything in this issue.
@@ -603,8 +620,8 @@ describe("API Private Volunteer v2 core schema", () => {
                     `INSERT INTO volunteer_schedule_vsch
                         (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_event_type_id,
                          vsch_WindowStart, vsch_Active)
-                     VALUES (?, ?, 'Coffee Bar — Sunday', 'event_type', ?, '2026-09-13', 1)`,
-                    [f.ministryCoffee, f.teamCoffee, EVENT_TYPE_CHURCH_SERVICE],
+                     VALUES (?, ?, 'Coffee Bar — Sunday', 'event_type', ?, ?, 1)`,
+                    [f.ministryCoffee, f.teamCoffee, EVENT_TYPE_CHURCH_SERVICE, isoDate(7)],
                 ).then((id) => {
                     f.schedCoffee = id;
                 }),
@@ -625,8 +642,8 @@ describe("API Private Volunteer v2 core schema", () => {
                 insertReturningId(
                     `INSERT INTO volunteer_occurrence_vocc
                         (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
-                     VALUES (?, ?, '2026-09-13', 'scheduled', NOW())`,
-                    [f.schedCoffee, EVENT_SUNDAY_SCHOOL],
+                     VALUES (?, ?, ?, 'scheduled', NOW())`,
+                    [f.schedCoffee, EVENT_SUNDAY_SCHOOL, isoDate(7)],
                 ).then((id) => {
                     f.occCoffee = id;
                 }),
@@ -707,11 +724,12 @@ describe("API Private Volunteer v2 core schema", () => {
                     `INSERT INTO volunteer_schedule_vsch
                         (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_event_type_id,
                          vsch_WindowStart, vsch_Active)
-                     VALUES (?, ?, 'Sunday Morning Worship', 'event_type', ?, '2026-09-13', 1)`,
+                     VALUES (?, ?, 'Sunday Morning Worship', 'event_type', ?, ?, 1)`,
                     [
                         f.ministryWorship,
                         f.teamWorship,
                         EVENT_TYPE_CHURCH_SERVICE,
+                        isoDate(7),
                     ],
                 ).then((id) => {
                     f.schedWorship = id;
@@ -722,8 +740,8 @@ describe("API Private Volunteer v2 core schema", () => {
                 insertReturningId(
                     `INSERT INTO volunteer_occurrence_vocc
                         (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
-                     VALUES (?, ?, '2026-09-13', 'scheduled', NOW())`,
-                    [f.schedWorship, EVENT_SUNDAY_SCHOOL],
+                     VALUES (?, ?, ?, 'scheduled', NOW())`,
+                    [f.schedWorship, EVENT_SUNDAY_SCHOOL, isoDate(7)],
                 ).then((id) => {
                     f.occWorship = id;
                 }),
@@ -898,8 +916,8 @@ describe("API Private Volunteer v2 core schema", () => {
                 dbRejects(
                     `INSERT INTO volunteer_occurrence_vocc
                         (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
-                     VALUES (?, ?, '2026-09-13', 'scheduled', NOW())`,
-                    [f.schedCoffee, EVENT_SUNDAY_SCHOOL],
+                     VALUES (?, ?, ?, 'scheduled', NOW())`,
+                    [f.schedCoffee, EVENT_SUNDAY_SCHOOL, isoDate(7)],
                 ).then((err) => {
                     expect(err.code).to.equal(DUP_ENTRY);
                 });
@@ -923,8 +941,8 @@ describe("API Private Volunteer v2 core schema", () => {
                 dbOk(
                     `INSERT INTO volunteer_occurrence_vocc
                         (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
-                     VALUES (?, NULL, '2026-09-20', 'scheduled', NOW())`,
-                    [f.schedCoffee],
+                     VALUES (?, NULL, ?, 'scheduled', NOW())`,
+                    [f.schedCoffee, isoDate(14)],
                 ).then((res) => {
                     expect(res.insertId).to.be.greaterThan(0);
                     return dbOk(`DELETE FROM volunteer_occurrence_vocc WHERE vocc_ID = ?`, [res.insertId]);
@@ -1096,8 +1114,8 @@ describe("API Private Volunteer v2 core schema", () => {
                 insertReturningId(
                     `INSERT INTO volunteer_occurrence_vocc
                         (vocc_vsch_ID, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
-                     VALUES (?, '2026-10-04', 'scheduled', NOW())`,
-                    [f.schedCoffee],
+                     VALUES (?, ?, 'scheduled', NOW())`,
+                    [f.schedCoffee, isoDate(28)],
                 )
                     .then((id) => {
                         occId = id;

@@ -5,7 +5,7 @@
 -- owning ministry, which is exactly what "ministry_id IS NULL" means.
 --
 -- No foreign key here on purpose. `volunteer_ministry_vmin` is created by the
--- Volunteer v2 schema (epic #9701), which lands after this release; the
+-- Volunteer v2 schema (epic #9701), which runs after this script; the
 -- constraint `calendars_ministry_fk` REFERENCES `volunteer_ministry_vmin`
 -- (`vmin_ID`) ON DELETE SET NULL is added by that schema, once the table it
 -- points at exists. The index below is what makes the later ALTER cheap and

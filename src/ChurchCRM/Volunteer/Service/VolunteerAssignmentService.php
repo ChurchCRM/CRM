@@ -1945,8 +1945,19 @@ class VolunteerAssignmentService
             ->filterByStatus(self::LIVE_STATUSES, Criteria::IN)
             ->find();
 
+        $occurrenceIds = [];
         foreach ($candidates as $assignment) {
-            $occurrence = VolunteerOccurrenceQuery::create()->findPk((int) $assignment->getOccurrenceId());
+            $occurrenceIds[(int) $assignment->getOccurrenceId()] = true;
+        }
+        $occurrences = [];
+        if ($occurrenceIds !== []) {
+            foreach (VolunteerOccurrenceQuery::create()->filterById(array_keys($occurrenceIds), Criteria::IN)->find() as $occurrence) {
+                $occurrences[(int) $occurrence->getId()] = $occurrence;
+            }
+        }
+
+        foreach ($candidates as $assignment) {
+            $occurrence = $occurrences[(int) $assignment->getOccurrenceId()] ?? null;
             if ($occurrence === null || $occurrence->getStatus() === VolunteerOccurrence::STATUS_CANCELLED) {
                 continue;
             }

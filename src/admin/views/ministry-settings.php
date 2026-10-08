@@ -157,6 +157,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <h4 class="mt-3"><?= gettext('V1 — Volunteer Opportunities (legacy)') ?></h4>
           <p class="mb-2">
             <?= gettext('A single list of opportunities, such as "Nursery" or "Greeter", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.') ?>
+            <?= gettext('Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.') ?>
           </p>
           <h4 class="mt-3"><?= gettext('V2 — Ministries') ?></h4>
           <p class="mb-2">
@@ -177,23 +178,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-settings.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function () {
-    var runBtn = document.getElementById('ministry-run-jobs-btn');
-    if (runBtn) {
-        runBtn.addEventListener('click', function () {
-            runBtn.disabled = true;
-            window.CRM.APIRequest({
-                method: 'POST',
-                path: 'background/timerjobs',
-                data: JSON.stringify({ force: true })
-            }).done(function () {
-                window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('Background jobs ran')) ?>, { type: 'success' });
-                setTimeout(function () { window.location.reload(); }, 1200);
-            }).fail(function () {
-                runBtn.disabled = false;
-            });
-        });
-    }
-
     window.CRM.settingsPanel.init({
         container: '#ministrySettingsPanel',
         title: <?= InputUtils::jsonEncodeForScript(gettext('Settings')) ?>,

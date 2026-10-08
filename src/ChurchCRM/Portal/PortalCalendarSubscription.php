@@ -209,16 +209,7 @@ class PortalCalendarSubscription
         $from = $today->modify('-' . self::WINDOW_MONTHS_BACK . ' months');
         $to = $today->modify('+' . self::WINDOW_MONTHS_AHEAD . ' months');
 
-        $events = [];
-        foreach (PortalCalendarService::eventsBetween($from, $to) as $event) {
-            $props = is_array($event['extendedProps'] ?? null) ? $event['extendedProps'] : [];
-            $id = self::id((string) ($props['calendarType'] ?? ''), (int) ($props['calendarId'] ?? -1));
-            if (isset($wanted[$id])) {
-                $events[] = $event;
-            }
-        }
-
-        return $events;
+        return PortalCalendarService::eventsBetween($from, $to, $wanted);
     }
 
     /**

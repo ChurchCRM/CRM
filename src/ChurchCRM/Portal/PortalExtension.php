@@ -18,6 +18,7 @@ use Throwable;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 use Twig\Markup;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 /**
@@ -60,6 +61,13 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
         ];
     }
 
+    public function getFilters(): array
+    {
+        return [
+            new TwigFilter('email_wrap', [$this, 'emailWrap'], ['pre_escape' => 'html', 'is_safe' => ['html']]),
+        ];
+    }
+
     /**
      * A path inside this installation, root-path aware so a subdirectory
      * install works unchanged.
@@ -94,6 +102,16 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
     public function csrfField(): Markup
     {
         return new Markup(CSRFUtils::getTokenInputField(), 'UTF-8');
+    }
+
+    /**
+     * An escaped email address with a line-break opportunity after the "@" and
+     * before every ".", so a long address wraps at a readable point instead of
+     * mid-word.
+     */
+    public function emailWrap(string $escapedEmail): string
+    {
+        return str_replace(['@', '.'], ['@<wbr>', '<wbr>.'], $escapedEmail);
     }
 
     /**

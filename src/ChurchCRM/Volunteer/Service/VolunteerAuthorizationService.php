@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Volunteer\Service;
 
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\UserTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
@@ -139,6 +140,30 @@ class VolunteerAuthorizationService
     }
 
     /**
+     * May this user grant or revoke a scope of this type on this target (§4.6)?
+     *
+     * Making a coordinator stays a global manager's decision. Making a team leader is
+     * also the decision of a coordinator of the team's ministry — never of a team
+     * leader, whose own team scope is not authority over who leads it. The coordinator
+     * tier is asked of the User model so a self-service login holding a ministry
+     * scope is refused here too, not only by the route's role middleware.
+     */
+    public function canGrantScope(User $user, string $scopeType, int $scopeId): bool
+    {
+        if ($this->isGlobalManager($user)) {
+            return true;
+        }
+
+        if ($scopeType !== self::SCOPE_TEAM || !$user->isVolunteerCoordinatorEnabled()) {
+            return false;
+        }
+
+        $team = VolunteerTeamQuery::create()->findPk($scopeId);
+
+        return $team !== null && $this->canManageMinistry($user, (int) $team->getMinistryId());
+    }
+
+    /**
      * May this user write a calendar event whose ministry is `$eventMinistryId` (§4.6
      * "Ministry-linked events")? The global AddEvent right, or — with the rollout on — the
      * coordinators of the event's ministry. An event with no ministry stays AddEvent-only.
@@ -154,6 +179,60 @@ class VolunteerAuthorizationService
         }
 
         return $this->canManageMinistry($user, $eventMinistryId);
+    }
+
+    /**
+     * May this user attach (or detach) `$groupId` as the audience of an event whose ministry is
+     * `$eventMinistryId`?
+     *
+     * An event's audience decides whose names `/event/view` lists as non-attendees once the event
+     * has ended, and `/groups/*` needs Manage Groups, so choosing an audience is choosing whose
+     * membership is shown. The global AddEvent right keeps any group, as it always has. A
+     * coordinator is limited to the groups their event's own ministry already owns: its pool
+     * Group and the Sunday School classes linked to its teams.
+     */
+    public function canLinkEventAudience(User $user, ?int $eventMinistryId, int $groupId): bool
+    {
+        if ($user->canManageEvents()) {
+            return true;
+        }
+
+        if (!User::isVolunteerV2Enabled() || $eventMinistryId === null || $groupId <= 0) {
+            return false;
+        }
+
+        if (!$this->canManageMinistry($user, $eventMinistryId)) {
+            return false;
+        }
+
+        return in_array($groupId, $this->getMinistryGroupIds($eventMinistryId), true);
+    }
+
+    /**
+     * The groups a ministry owns: its pool Group and the classes linked to its teams.
+     *
+     * @return array<int, int>
+     */
+    private function getMinistryGroupIds(int $ministryId): array
+    {
+        $groupIds = [];
+
+        $pool = GroupQuery::create()->findOneByMinistryId($ministryId);
+        if ($pool !== null) {
+            $groupIds[] = (int) $pool->getId();
+        }
+
+        $classGroupIds = VolunteerTeamQuery::create()
+            ->filterByMinistryId($ministryId)
+            ->filterByClassGroupId(null, Criteria::ISNOTNULL)
+            ->select('ClassGroupId')
+            ->find()
+            ->toArray();
+        foreach ($classGroupIds as $classGroupId) {
+            $groupIds[] = (int) $classGroupId;
+        }
+
+        return $groupIds;
     }
 
     /**

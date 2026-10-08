@@ -122,8 +122,6 @@ abstract class BaseEmail
             return false;
         }
 
-        $this->applyReplyTo();
-
         $sent = false;
         try {
             $this->applyReplyTo();

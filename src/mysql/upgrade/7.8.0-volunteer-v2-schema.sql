@@ -453,12 +453,3 @@ UPDATE `volunteer_ministry_vmin`
  WHERE `vmin_SundaySchool` = 0
    AND (`vmin_ID` IN (SELECT `vtem_vmin_ID` FROM `volunteer_team_vtem` WHERE `vtem_grp_ID` IS NOT NULL)
         OR `vmin_ID` IN (SELECT `vsch_vmin_ID` FROM `volunteer_schedule_vsch` WHERE `vsch_LinkMode` = 'class'));
-
---
--- D31: an event type with no recurrence defaults, the default type of a ministry's own events
--- (a workday, a planning meeting) — Admin → Ministry Settings may name another. Only when the
--- church has no type called "Other" already, so a re-run adds nothing.
---
-INSERT INTO `event_types` (`type_name`, `type_defrecurtype`, `type_defrecurDOM`, `type_active`) SELECT 'Other', 'none', '', 1
-  FROM DUAL
- WHERE NOT EXISTS (SELECT 1 FROM `event_types` WHERE `type_name` = 'Other');
