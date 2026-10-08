@@ -21041,10 +21041,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "Μόνο ένας συντονιστής αυτής της διακονίας μπορεί να στελεχώνει τις εκδηλώσεις της"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "Μόνο ένας διαχειριστής εθελοντών μπορεί να αλλάξει τον υπεύθυνο ομάδας"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "Μόνο ένας διαχειριστής εθελοντών μπορεί να το αλλάξει αυτό."
 

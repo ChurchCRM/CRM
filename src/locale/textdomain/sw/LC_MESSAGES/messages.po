@@ -21037,10 +21037,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "Mratibu wa huduma hii pekee ndiye anayeweza kuyawekea matukio yake watumishi"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "Msimamizi wa watu wa kujitolea pekee ndiye anayeweza kubadilisha kiongozi wa timu"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "Msimamizi wa watu wa kujitolea pekee ndiye anayeweza kubadilisha hili."
 

@@ -21010,10 +21010,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "Alleen een coördinator van deze bediening mag haar activiteiten bezetten"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "Alleen een vrijwilligersbeheerder kan de teamleider wijzigen"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "Alleen een vrijwilligersbeheerder kan dit wijzigen."
 

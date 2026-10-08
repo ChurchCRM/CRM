@@ -21041,10 +21041,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "Slegs 'n koördineerder van hierdie bediening mag sy geleenthede beman"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "Slegs 'n vrywilligerbestuurder kan die spanleier verander"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "Slegs 'n vrywilligerbestuurder kan dit verander."
 

@@ -20953,10 +20953,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "Hanya koordinator pelayanan ini yang boleh menugaskan petugas untuk acaranya"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "Hanya manajer relawan yang dapat mengubah pemimpin tim"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "Hanya manajer relawan yang dapat mengubah ini."
 

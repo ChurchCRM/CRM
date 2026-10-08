@@ -21008,10 +21008,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "Vain tämän työalan koordinaattori voi miehittää sen tapahtumia"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "Vain vapaaehtoisvastaava voi vaihtaa tiimin vetäjän"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "Vain vapaaehtoisvastaava voi muuttaa tätä."
 
