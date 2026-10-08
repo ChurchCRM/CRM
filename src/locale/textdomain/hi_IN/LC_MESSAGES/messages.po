@@ -18750,3 +18750,4535 @@ msgstr "जीवनसाथी की भूमिका"
 msgid "Uppercase Zip/Postcodes"
 msgstr "पिन कोड बड़े अक्षरों में"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "निर्देशिका में शामिल करने के लिए कम से कम एक वर्गीकरण चुनें।"
+
+#: 
+msgid "Geocoding services"
+msgstr "जियोकोडिंग सेवाएँ"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "आज़माने के लिए जियोकोडिंग सेवाएँ, उसी क्रम में जिसमें आप उन्हें चुनते हैं। Nominatim (OpenStreetMap) पूरी दुनिया में काम करती है; US Census (अमेरिकी जनगणना ब्यूरो) केवल संयुक्त राज्य के पते कवर करती है। इसका उपयोग करने के लिए US Census भी चुनें। कुछ न चुनने पर Nominatim का उपयोग होता है।"
+
+#: 
+msgid "New Record Defaults"
+msgstr "नए रिकॉर्ड की डिफ़ॉल्ट सेटिंग"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "यह उन सभी परिवारों के मानचित्र निर्देशांक खोजता है जिनके नहीं हैं, मानचित्र सेटिंग में चुनी गई जियोकोडिंग सेवाओं का उपयोग करके। यह परिवारों को 50 के बैचों में संसाधित करता है; एक बैच में एक जियोकोडिंग सेवा के साथ लगभग एक मिनट लगता है और अधिक सेवाओं के साथ अधिक। चलते समय आप यह पृष्ठ खुला रख सकते हैं। जारी रखें?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "नए रिकॉर्ड के लिए और तब जियोकोडिंग के लिए उपयोग होता है जब रिकॉर्ड में कोई देश न हो।"
+
+#: 
+msgid "Copy from Church Info"
+msgstr "कलीसिया की जानकारी से कॉपी करें"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "कलीसिया का पता कॉपी नहीं किया जा सका।"
+
+#: 
+msgid "Could not match the church country."
+msgstr "कलीसिया का देश मिलान नहीं किया जा सका।"
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "कक्षा सूचियाँ, उपस्थिति पत्रक और फ़ोटो पुस्तकें"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "सेवकाई सदस्यता सूचियाँ और रविवार स्कूल कक्षा रिपोर्ट"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "आपका वित्तीय वर्ष %s में शुरू होता है।"
+
+#: 
+msgid "An error occurred"
+msgstr "एक त्रुटि हुई"
+
+#: 
+msgid "Approve"
+msgstr "स्वीकृत करें"
+
+#: 
+msgid "Approve selected"
+msgstr "चयनित को स्वीकृत करें"
+
+#: 
+msgid "Approved"
+msgstr "स्वीकृत"
+
+#: 
+msgid "Change in People Settings"
+msgstr "लोग सेटिंग में बदलें"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "चयनित पंजीकरण स्वीकृत नहीं किए जा सके"
+
+#: 
+msgid "Could not approve this family"
+msgstr "यह परिवार स्वीकृत नहीं किया जा सका"
+
+#: 
+msgid "Pending Registrations"
+msgstr "लंबित पंजीकरण"
+
+#: 
+msgid "Pending review"
+msgstr "समीक्षा लंबित"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "आपके सार्वजनिक पंजीकरण फ़ॉर्म से समीक्षा की प्रतीक्षा में पंजीकरण। जिन प्रविष्टियों में ईमेल या फ़ोन नहीं है उन्हें चिह्नित किया गया है — आगे बढ़ने से पहले संपर्क जानकारी जाँच लें।"
+
+#: 
+msgid "Review now"
+msgstr "अभी समीक्षा करें"
+
+#: 
+msgid "Review self registrations"
+msgstr "स्वयं-पंजीकरण की समीक्षा करें"
+
+#: 
+msgid "Select month"
+msgstr "माह चुनें"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "स्वयं-पंजीकरण अक्षम है"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "स्वयं-पंजीकरण सक्षम है"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "सार्वजनिक पंजीकरण फ़ॉर्म बंद है। मौजूदा पंजीकरण नीचे सूचीबद्ध हैं।"
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "यह परिवार लंबित स्वयं-पंजीकरण नहीं है"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "यह व्यक्ति एक परिवार का सदस्य है — इसके बजाय परिवार को स्वीकृत करें"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "यह व्यक्ति लंबित स्वयं-पंजीकरण नहीं है"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "यह स्वयं-पंजीकृत परिवार समीक्षा के लिए लंबित है"
+
+#: 
+msgid "Total registrations"
+msgstr "कुल पंजीकरण"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "आगंतुक आपके सार्वजनिक पंजीकरण फ़ॉर्म पर पंजीकरण कर सकते हैं।"
+
+#: 
+msgid "Yesterday"
+msgstr "कल"
+
+#: 
+msgid "days ago"
+msgstr "दिन पहले"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "स्वयं-पंजीकरण समीक्षा की प्रतीक्षा में हैं"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "जन्मदिन व्यक्ति के नाम और वर्षगाँठ दंपति के नाम संबोधित होती हैं।"
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "इस रिपोर्ट के लोगों के लिए डाक लेबल। जिस व्यक्ति का अपना पता नहीं है उसे उसके परिवार के पते पर संबोधित किया जाता है।"
+
+#: 
+msgid "One label for each couple."
+msgstr "प्रत्येक दंपति के लिए एक लेबल।"
+
+#: 
+msgid "Print Labels"
+msgstr "लेबल प्रिंट करें"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "वह भूमिका इस सेवकाई की भूमिकाओं में से नहीं है।"
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "\"%s\" ऐसा कैलेंडर प्रकार नहीं है जिसे यह पृष्ठ जानता हो।"
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s सेवा नहीं कर सकते और उन्होंने %2$s को विकल्प के रूप में प्रस्तावित किया है।"
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s पहले से %2$s स्वयंसेवक पूल में हैं और फिर से सहायता करना चाहते हैं।"
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s पहले से %3$s में %2$s से जुड़े हैं"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s, %2$s में %3$s के रूप में हैं। पहले उन्हें कक्षा से हटाएँ; यहाँ उन्हें योग्य बनाने पर वे उसके शिक्षकों में से एक बन जाते हैं।"
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s, %2$s का आयोजन नहीं है"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s रविवार स्कूल कक्षा बनी रहती है जबकि उसके शिक्षक सेवकाई → %2$s → %3$s में प्रबंधित होते हैं। पहले उसे टीम से अलग करें।"
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s, %2$s में सहायता करना चाहते हैं"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s, %2$s में सहायता करना चाहते हैं और उन्हें इसके स्वयंसेवक पूल में जोड़ दिया गया है।"
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: अधिकतम %2$d है लेकिन %3$d डिफ़ॉल्ट स्वयंसेवक चुने गए हैं। एक हटाएँ या अधिकतम बढ़ाएँ।"
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d दिन"
+msgstr[1] "%d दिन"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d डिफ़ॉल्ट किसी अन्य कारण से छोड़ा गया (अवसर समाप्त हो गया, रद्द हुआ या भर गया)"
+msgstr[1] "%d डिफ़ॉल्ट किसी अन्य कारण से छोड़े गए (अवसर समाप्त हो गया, रद्द हुआ या भर गया)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d डिफ़ॉल्ट छोड़ा गया: योग्यता रद्द की गई"
+msgstr[1] "%d डिफ़ॉल्ट छोड़े गए: योग्यता रद्द की गई"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किया गया"
+msgstr[1] "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किए गए"
+
+#: 
+msgid "%d failed"
+msgstr "%d विफल"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "इस पद के लिए अभी %d और स्वयंसेवक की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
+msgstr[1] "इस पद के लिए अभी %d और स्वयंसेवकों की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d नया अवसर"
+msgstr[1] "%d नए अवसर"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "आगामी अवसर के लिए अभी %d स्वयंसेवक की आवश्यकता है।"
+msgstr[1] "आगामी अवसर के लिए अभी %d स्वयंसेवकों की आवश्यकता है।"
+
+#: 
+msgid "%s Calendar"
+msgstr "%s कैलेंडर"
+
+#: 
+msgid "%s Family"
+msgstr "%s परिवार"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s रविवार स्कूल के लिए शिक्षक उपलब्ध नहीं कराता, इसलिए इसकी टीमें, अनुसूचियाँ और आयोजन कक्षा का उपयोग नहीं कर सकते। स्वयंसेवक प्रबंधक इसे सेवकाई संपादित करें में बदल सकता है।"
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "कलीसिया से %s ईमेल"
+msgstr[1] "कलीसिया से %s ईमेल"
+
+#: 
+msgid "%s family"
+msgstr "%s परिवार"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s ने स्वयंसेवक नियुक्ति अस्वीकार कर दी है।"
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s में शिक्षक नाम की कोई भूमिका नहीं है, इसलिए इसके शिक्षकों को टीम से प्रबंधित नहीं किया जा सकता"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "कैलेंडर में %s की कोई आगामी बैठक नहीं है। अनुसूची पहले से मौजूद आयोजनों का अनुसरण करती है: पहले सेवकाई के कैलेंडर टैब पर नया आवर्ती आयोजन से कक्षा की बैठकें जोड़ें।"
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s से अब भी सेवा की अपेक्षा है। यदि यह संभव न हो तो कृपया समन्वयक से संपर्क करें।"
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s नहीं भेजा गया (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "आपके परिवार में %s व्यक्ति"
+msgstr[1] "आपके परिवार में %s व्यक्ति"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s पद"
+msgstr[1] "%s पद"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: एक ही व्यक्ति दो बार डिफ़ॉल्ट स्वयंसेवक चुना गया है"
+
+#: 
+msgid "(no subject)"
+msgstr "(कोई विषय नहीं)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "जन्मदिन भविष्य में नहीं हो सकता।"
+
+#: 
+msgid "A calendar event"
+msgstr "एक कैलेंडर आयोजन"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "कैलेंडर आईडी एक संख्या होनी चाहिए।"
+
+#: 
+msgid "A class that no longer exists"
+msgstr "एक कक्षा जो अब मौजूद नहीं है"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "जिस कक्षा की कैलेंडर में कोई बैठक नहीं है उसे अभी चुना नहीं जा सकता।"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "जिस कक्षा की कैलेंडर में कोई बैठक नहीं है उसे अभी चुना नहीं जा सकता। सेवकाई का समन्वयक उसकी बैठकें सेवकाई के कैलेंडर टैब पर जोड़ता है।"
+
+#: 
+msgid "A class's meetings"
+msgstr "एक कक्षा की बैठकें"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "समन्वयक इस सेवकाई में सब कुछ प्रबंधित कर सकता है, उन बदलावों सहित जो अन्यथा स्वयंसेवक प्रबंधक को करने पड़ते।"
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "सेवकाई का समन्वयक उन्हें सेवकाई के कैलेंडर टैब पर जोड़ सकता है।"
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "सेवकाई का समन्वयक उन्हें सेवकाई के कैलेंडर टैब पर जोड़ सकता है। फिर दोबारा बनाएँ।"
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "समन्वयक पूरी सेवकाई चलाता है — इसकी टीमें, पद, अनुसूचियाँ और इसकी हर नियुक्ति।"
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "जो दिन किसी माह में नहीं होता वह उसके अंतिम दिन पर पड़ता है।"
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "डिफ़ॉल्ट स्वयंसेवक अनुसूची की नियुक्ति आवश्यकताओं का हिस्सा है, किसी एक अवसर का नहीं"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "डिफ़ॉल्ट स्वयंसेवक केवल उसी पद के लिए चुना जा सकता है जो इस अनुसूची की नियुक्ति आवश्यकताओं में माँगा गया हो"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "YYYY-MM-DD रूप में आरंभ और समाप्ति तिथि आवश्यक है"
+
+#: 
+msgid "A minimum count is required"
+msgstr "न्यूनतम संख्या आवश्यक है"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "सेवकाई अपने कैलेंडर, स्वयंसेवक पूल और पहली टीम के साथ बनाई जाती है, इसलिए यहाँ केवल उसका नाम और वह क्या करती है यही तय करना है।"
+
+#: 
+msgid "A ministry name is required"
+msgstr "सेवकाई का नाम आवश्यक है"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "सेवकाई में कम से कम एक टीम होना आवश्यक है। इसके बजाय उसका नाम बदलें।"
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "उस नाम की सेवकाई पहले से मौजूद है"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "सेवकाई का अपना कैलेंडर अन्य सेवकाइयों के लिए खोला नहीं जा सकता"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "पद एक टीम का होता है; एक चुनें"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "पद वह कार्य है जो कोई इस टीम में करता है, जैसे एस्प्रेसो या गीत-संचालक।"
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "पद वह भूमिका है जिसमें कोई सेवा करता है, जैसे एस्प्रेसो या गीत-संचालक।"
+
+#: 
+msgid "A position is required"
+msgstr "पद आवश्यक है"
+
+#: 
+msgid "A position name is required"
+msgstr "पद का नाम आवश्यक है"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "योग्य स्वयंसेवकों वाला पद रविवार स्कूल कक्षा से जुड़ी टीम में या उससे बाहर नहीं जा सकता, क्योंकि इससे कक्षा को कौन पढ़ाता है यह बदल जाएगा। इसके बजाय पद को दूसरी टीम में बनाएँ।"
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "उस नाम का पद इस सेवकाई में पहले से मौजूद है"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "उत्तर को स्वीकार या अस्वीकार किया जाना चाहिए"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "अनुसूची एक टीम की होती है; एक चुनें"
+
+#: 
+msgid "A schedule name is required"
+msgstr "अनुसूची का नाम आवश्यक है"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "अनुसूची बताती है कि टीम किन कैलेंडर आयोजनों में सेवा करती है: एक प्रकार की कलीसिया आराधना, किसी कक्षा की बैठकें, या इस सेवकाई के अपने आयोजन। एक जोड़ें और उसके अवसर बनाएँ।"
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "अनुसूची बताती है कि यह टीम किन कैलेंडर आयोजनों में सेवा करती है: एक प्रकार की कलीसिया आराधना, किसी कक्षा की बैठकें, या इसकी सेवकाई के अपने आयोजन। एक जोड़ें और उसके अवसर बनाएँ।"
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "जो अनुसूची किसी कक्षा का अनुसरण करती है उसमें कक्षा का नाम होना चाहिए"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "जो अनुसूची किसी आयोजन-प्रकार का अनुसरण करती है उसमें आयोजन-प्रकार का नाम होना चाहिए"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "जो अनुसूची एक आयोजन में नियुक्ति करती है वह अन्य आयोजनों का अनुसरण नहीं कर सकती; उसे हटाएँ और इसके बजाय अनुसूची जोड़ें"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "अवसरों की एक अकेली सूची, जैसे \"शिशु-कक्ष\" या \"स्वागतकर्ता\", जो लोग → व्यवस्थापन के अंतर्गत रखी जाती है। हर व्यक्ति को उन अवसरों से टैग किया जाता है जिनमें वह सहायता करने को तैयार है, उसके रिकॉर्ड के स्वयंसेवक टैब पर। बस इतना ही दर्ज होता है: कोई टीम, अनुसूची, तारीख़ पर नियुक्ति या अनुस्मारक ईमेल नहीं। टैग रिपोर्टों और व्यक्ति के रिकॉर्ड में उपयोग होते हैं।"
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "आपके चेहरे की चौकोर तस्वीर सबसे अच्छी रहती है।"
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "नियुक्ति आवश्यकता अपने डिफ़ॉल्ट स्वयंसेवकों को \"defaults\": [{personId, accepted}] में सूचीबद्ध करती है"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "नियुक्ति आवश्यकता किसी अनुसूची या किसी अवसर में से ठीक एक की होती है"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "इस नियुक्ति के लिए पहले ही एक विकल्प प्रस्तावित किया जा चुका है"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "टीम का अगुआ अपनी टीम प्रबंधित कर सकता है — उसके पद, अनुसूचियाँ और उनमें कौन सेवा करता है — और सेवकाई में इसके अलावा कुछ नहीं।"
+
+#: 
+msgid "A team name is required"
+msgstr "टीम का नाम आवश्यक है"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "उस नाम की टीम इस सेवकाई में पहले से मौजूद है"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "थीम एक फ़ोल्डर है जिसे आपकी कलीसिया सर्वर पर Include/themes/ में अपलोड करती है। सिस्टम डिफ़ॉल्ट ChurchCRM के साथ आता है।"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "एक संक्रमण सेटिंग। पुराने स्वयंसेवक अवसर पृष्ठ और नए सेवकाई पृष्ठ दोनों उपलब्ध हैं, और व्यक्ति के रिकॉर्ड में दोनों स्वयंसेवक टैब स्पष्ट लेबल के साथ दिखते हैं। कलीसिया को V1 से V2 पर ले जाते समय इसका उपयोग करें, फिर केवल V2 पर स्विच करें।"
+
+#: 
+msgid "A volunteer"
+msgstr "एक स्वयंसेवक"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "एक स्वयंसेवक ने नियुक्ति अस्वीकार कर दी है"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "एक स्वयंसेवक ने विकल्प प्रस्तावित किया है"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "स्वयंसेवक प्रबंधक बिना अनुदान के इस सेवकाई को चला सकता है। किसी और को बाकी सभी सेवकाइयाँ दिए बिना इसे चलाने देने के लिए समन्वयक जोड़ें।"
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "विवाह की तारीख़ भविष्य में नहीं हो सकती।"
+
+#: 
+msgid "Accepted"
+msgstr "स्वीकार किया"
+
+#: 
+msgid "Account deleted"
+msgstr "खाता हटा दिया गया"
+
+#: 
+msgid "Account unlocked"
+msgstr "खाता अनलॉक किया गया"
+
+#: 
+msgid "Accounts"
+msgstr "खाते"
+
+#: 
+msgid "Active must be true or false"
+msgstr "सक्रिय सत्य या असत्य होना चाहिए"
+
+#: 
+msgid "Active now"
+msgstr "अभी सक्रिय"
+
+#: 
+msgid "Add All"
+msgstr "सभी जोड़ें"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "चयन में सभी को जोड़ें"
+
+#: 
+msgid "Add Volunteer"
+msgstr "स्वयंसेवक जोड़ें"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "स्वयंसेवकों को चयन में जोड़ें"
+
+#: 
+msgid "Add a family member"
+msgstr "परिवार का सदस्य जोड़ें"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "पहले एक पद जोड़ें, फिर लौटकर बताएँ कि उनमें से कितने चाहिए।"
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "अपने साइन-इन में दूसरा चरण जोड़ें, ताकि आपके खाते तक पहुँचने के लिए केवल पासवर्ड पर्याप्त न हो।"
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "इस टीम में कम से कम एक पद जोड़ें, फिर चुनें कि कौन कहाँ सेवा कर सकता है।"
+
+#: 
+msgid "Add coordinator"
+msgstr "समन्वयक जोड़ें"
+
+#: 
+msgid "Add from Cart"
+msgstr "चयन से जोड़ें"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "पहले कैलेंडर टैब पर नया आवर्ती आयोजन से इसकी बैठकें जोड़ें"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "स्वयंसेवक के रूप में जोड़ने से पहले लोगों को चयन में जोड़ें"
+
+#: 
+msgid "Add position"
+msgstr "पद जोड़ें"
+
+#: 
+msgid "Add schedule"
+msgstr "अनुसूची जोड़ें"
+
+#: 
+msgid "Add team"
+msgstr "टीम जोड़ें"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "उन्हें कैलेंडर टैब पर जोड़ें, फिर दोबारा बनाएँ।"
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "उन्हें कैलेंडर टैब पर जोड़ें।"
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "इस पते को अपने कैलेंडर ऐप में जोड़ें। कलीसिया का कैलेंडर बदलने पर यह अपने आप अपडेट हो जाता है।"
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "इस सेवकाई के आयोजन यहाँ जोड़ें: कार्य-दिवस, हर रविवार मिलने वाली कक्षा। वे कलीसिया के कैलेंडर में जाते हैं, और बनाते समय आप उनमें नियुक्ति कर सकते हैं।"
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "सदस्य पोर्टल के माध्यम से जोड़ा गया और समीक्षा की प्रतीक्षा में: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "जोड़ दिया गया — अब वे पद चुनें जिनमें वे सेवा कर सकते हैं"
+
+#: 
+msgid "Address Line 2"
+msgstr "पता पंक्ति 2"
+
+#: 
+msgid "Admin Console"
+msgstr "व्यवस्थापक कंसोल"
+
+#: 
+msgid "Administrator permission required"
+msgstr "व्यवस्थापक अनुमति आवश्यक है"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "इस पद का विज्ञापन सदस्य पोर्टल के खुले अवसर पृष्ठ पर करें।"
+
+#: 
+msgid "All Teams"
+msgstr "सभी टीमें"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "सदस्यों को अपने और अपने परिवार के सदस्यों के जन्मदिन बदलने दें।"
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "{{calendars}} में भी पिन किया गया है, जिसे केवल आयोजन जोड़ने की अनुमति वाला व्यक्ति ही बदल सकता है।"
+
+#: 
+msgid "An event title is required"
+msgstr "आयोजन का शीर्षक आवश्यक है"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "आयोजन-प्रकार या सेवकाई आवश्यक है"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "एक आयोजन-प्रकार जो अब मौजूद नहीं है"
+
+#: 
+msgid "Another ministry"
+msgstr "दूसरी सेवकाई"
+
+#: 
+msgid "Any event"
+msgstr "कोई भी आयोजन"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "कुछ भी जो आपके समन्वयक को पता होना चाहिए"
+
+#: 
+msgid "Approve substitution"
+msgstr "विकल्प को स्वीकृत करें"
+
+#: 
+msgid "Approve this substitute"
+msgstr "इस विकल्प को स्वीकृत करें"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "स्वयंसेवक प्रबंधक से सेवकाई बनाने और आपको उसका समन्वयक बनाने को कहें।"
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "किसी से अपनी जगह सेवा करने को कहें"
+
+#: 
+msgid "Ask them"
+msgstr "उनसे पूछें"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "पूछ लिया गया — आपका समन्वयक इसकी पुष्टि करेगा।"
+
+#: 
+msgid "Assign a volunteer"
+msgstr "स्वयंसेवक नियुक्त करें"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "वर्तमान योजना से बाहर नियुक्त"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "नियुक्ति रद्द की गई"
+
+#: 
+msgid "Assignment not found"
+msgstr "नियुक्ति नहीं मिली"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "कम से कम एक personId या familyId आवश्यक है"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "एक पद के लिए अधिकतम %d डिफ़ॉल्ट स्वयंसेवक चुने जा सकते हैं"
+
+#: 
+msgid "Author"
+msgstr "लेखक"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "अधिकार व्यक्ति को दिया जाता है, लॉगिन को नहीं, इसलिए यह लॉगिन होने से पहले भी दिया जा सकता है। जिस व्यक्ति का लॉगिन केवल स्व-सेवा का है वह तब तक केवल अपनी अनुसूची देखता रहता है जब तक व्यवस्थापक उसका खाता विस्तृत नहीं करता।"
+
+#: 
+msgid "Automatic"
+msgstr "स्वचालित"
+
+#: 
+msgid "Awaiting reply"
+msgstr "उत्तर की प्रतीक्षा"
+
+#: 
+msgid "Back to Email History"
+msgstr "ईमेल इतिहास पर लौटें"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "सेवकाई डैशबोर्ड पर लौटें"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "अवसरों पर लौटें"
+
+#: 
+msgid "Back to Person"
+msgstr "व्यक्ति पर लौटें"
+
+#: 
+msgid "Back to editing"
+msgstr "संपादन पर लौटें"
+
+#: 
+msgid "Back to my schedule"
+msgstr "मेरी अनुसूची पर लौटें"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "सदस्य पोर्टल पर लौटें"
+
+#: 
+msgid "Back to your profile"
+msgstr "अपनी प्रोफ़ाइल पर लौटें"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "पृष्ठभूमि कार्य और वितरण"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "पृष्ठभूमि कार्य पिछली बार चले"
+
+#: 
+msgid "Background jobs ran"
+msgstr "पृष्ठभूमि कार्य चले"
+
+#: 
+msgid "Birthday greeting"
+msgstr "जन्मदिन की शुभकामना"
+
+#: 
+msgid "Both"
+msgstr "दोनों"
+
+#: 
+msgid "Both (transition)"
+msgstr "दोनों (संक्रमण)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "दोनों — V1 और V2 साथ-साथ (संक्रमण)"
+
+#: 
+msgid "Calendar address"
+msgstr "कैलेंडर का पता"
+
+#: 
+msgid "Calendar saved"
+msgstr "कैलेंडर सहेजा गया"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "वे कैलेंडर जो सदस्य पोर्टल सदस्यों को दिखाता है, जिन्हें व्यवस्थापन -> सदस्य पोर्टल -> कैलेंडर में चुना जाता है।"
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "क्या यह सेवकाई रविवार स्कूल के लिए शिक्षक उपलब्ध करा सकती है?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "नियुक्ति रद्द करें"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "यह नियुक्ति रद्द करें"
+
+#: 
+msgid "Cancelled"
+msgstr "रद्द किया गया"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "जिस पासवर्ड से आप साइन इन करते हैं उसे बदलें, या दूसरा चरण जोड़ें ताकि केवल पासवर्ड पर्याप्त न हो।"
+
+#: 
+msgid "Change your password"
+msgstr "अपना पासवर्ड बदलें"
+
+#: 
+msgid "Checked in"
+msgstr "चेक-इन किया"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "चेक-इन: कक्षा सूची में %2$d में से %1$d"
+
+#: 
+msgid "Checked out"
+msgstr "चेक-आउट किया"
+
+#: 
+msgid "Choose a class"
+msgstr "कक्षा चुनें"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "माह का एक दिन 1 से 31 के बीच चुनें"
+
+#: 
+msgid "Choose a new photo"
+msgstr "नई फ़ोटो चुनें"
+
+#: 
+msgid "Choose a person"
+msgstr "व्यक्ति चुनें"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "स्वयंसेवक चुनें"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "पहले स्वयंसेवक चुनें"
+
+#: 
+msgid "Choose an event"
+msgstr "एक कार्यक्रम चुनें..."
+
+#: 
+msgid "Choose an event type"
+msgstr "आयोजन-प्रकार चुनें"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "मौजूदा आयोजन-प्रकार चुनें"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "सदस्यता लेने के लिए कम से कम एक कैलेंडर चुनें।"
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "वे कैलेंडर चुनें जो आप अपने कैलेंडर ऐप में चाहते हैं।"
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "हर वर्ष की तारीख़ MM-DD रूप में चुनें"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "आयोजन की तारीख़ चुनें"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "सप्ताह का दिन चुनें"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "वह आयोजन चुनें जिसका यह अनुसूची अनुसरण करती है"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "नियुक्ति के लिए आयोजन चुनें"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "हटाने के लिए आयोजन चुनें"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "नियुक्ति के लिए आयोजन चुनें"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "पहली और अंतिम तारीख़ चुनें"
+
+#: 
+msgid "Choose the first date"
+msgstr "पहली तारीख़ चुनें"
+
+#: 
+msgid "Choose the last date"
+msgstr "अंतिम तारीख़ चुनें"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "%1$s का वह पद चुनें जिसके लिए %2$s के शिक्षक योग्य हैं। शिक्षक: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "वह टीम चुनें जिसमें यह पद सेवा करता है"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "वह थीम चुनें जो सदस्य देखते हैं, पोर्टल के भाग चालू या बंद करें, और देखें कि पोर्टल का उपयोग कौन कर रहा है।"
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "साप्ताहिक, मासिक या वार्षिक चुनें"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "चुनें कि अनुसूची की तारीख़ें कहाँ से आती हैं"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "चुनें कि यह कलीसिया कौन-सा स्वयंसेवक अनुभव उपयोग करती है, अनुसूचियाँ कितने आगे तक भरी जाती हैं और अनुस्मारक कब जाते हैं, और जाँचें कि पृष्ठभूमि कार्य चल रहे हैं।"
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "चुनें कि हर पद को डिफ़ॉल्ट रूप से कौन भरता है। चयन अनुसूची में सहेजा जाता है: वे अभी बने हर अवसर पर और दैनिक पूर्ति द्वारा बाद में बने अवसरों पर नियुक्त होते हैं, जब तक वे योग्य रहें, और उनसे उत्तर माँगा जाता है जब तक आप उन्हें स्वीकृत न मानें। किसी पद को सप्ताह-दर-सप्ताह नियुक्त करने के लिए उसे खुला छोड़ें।"
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "चुनें कि आपकी जगह कौन सेवा कर रहा है।"
+
+#: 
+msgid "Church Calendar"
+msgstr "कलीसिया कैलेंडर"
+
+#: 
+msgid "Church Calendars"
+msgstr "कलीसिया कैलेंडर"
+
+#: 
+msgid "Church calendar"
+msgstr "कलीसिया कैलेंडर"
+
+#: 
+msgid "Church events of a type"
+msgstr "किसी प्रकार के कलीसिया आयोजन"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "किसी प्रकार के कलीसिया आयोजन कलीसिया कैलेंडर में जोड़े जाते हैं। अनुसूची का आयोजन-प्रकार, शीर्षक और तारीख़ें जाँचें।"
+
+#: 
+msgid "Church website"
+msgstr "कलीसिया की वेबसाइट"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM में स्वयंसेवकों को प्रबंधित करने के दो तरीके हैं। एक समय में केवल एक का उपयोग अपेक्षित है; बाईं ओर की सेटिंग तय करती है कि यह कलीसिया कौन-सा देखती है। बदलने से पृष्ठ और मेनू प्रविष्टियाँ छिप या दिख जाती हैं — यह कभी डेटा नहीं हटाता, इसलिए आप वापस जा सकते हैं।"
+
+#: 
+msgid "Close event details"
+msgstr "आयोजन विवरण बंद करें"
+
+#: 
+msgid "Colour"
+msgstr "रंग"
+
+#: 
+msgid "Completed"
+msgstr "पूर्ण"
+
+#: 
+msgid "Compose Message"
+msgstr "संदेश लिखें"
+
+#: 
+msgid "Confirm your family details"
+msgstr "अपने परिवार का विवरण पुष्ट करें"
+
+#: 
+msgid "Coordinator removed"
+msgstr "समन्वयक हटा दिया गया"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "इस पते को कॉपी करें और अपने कैलेंडर ऐप में नई कैलेंडर सदस्यता के रूप में जोड़ें।"
+
+#: 
+msgid "Could not build the preview."
+msgstr "पूर्वावलोकन नहीं बनाया जा सका।"
+
+#: 
+msgid "Could not count the class's events"
+msgstr "कक्षा के आयोजनों की गिनती नहीं की जा सकी"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "दायरा नहीं दिया जा सका"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "रविवार स्कूल कक्षाएँ लोड नहीं की जा सकीं"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "डैशबोर्ड लोड नहीं किया जा सका"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "आयोजन विकल्प लोड नहीं किए जा सके"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "अवसर लोड नहीं किए जा सके"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "अनुसूचियाँ लोड नहीं की जा सकीं"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "आगामी आयोजन लोड नहीं किए जा सके"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "स्वयंसेवक लोड नहीं किए जा सके"
+
+#: 
+msgid "Could not load this email."
+msgstr "यह ईमेल लोड नहीं किया जा सका।"
+
+#: 
+msgid "Could not load this ministry"
+msgstr "यह सेवकाई लोड नहीं की जा सकी"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "इस सेवकाई के आयोजन लोड नहीं किए जा सके"
+
+#: 
+msgid "Could not load this team"
+msgstr "यह टीम लोड नहीं की जा सकी"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "दायरा वापस नहीं लिया जा सका"
+
+#: 
+msgid "Create"
+msgstr "बनाएँ"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "अनुसूची बनाएँ और उसके अवसर तैयार करें, और भरने वाले सप्ताह यहाँ दिखेंगे।"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "अनुसूची बनाएँ और उसके अवसर तैयार करें, और नियुक्ति वाले सप्ताह यहाँ दिखेंगे।"
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "इस टीम के लिए कम से कम एक पद बनाएँ, फिर चुनें कि कौन कहाँ सेवा कर सकता है।"
+
+#: 
+msgid "Create ministry"
+msgstr "सेवकाई बनाएँ"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "सेवकाई बनाने के लिए स्वयंसेवक प्रबंधक की पहुँच आवश्यक है"
+
+#: 
+msgid "Date and time"
+msgstr "तारीख़ और समय"
+
+#: 
+msgid "Date each year"
+msgstr "हर वर्ष की तारीख़"
+
+#: 
+msgid "Dates"
+msgstr "तारीख़ें"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "तारीख़ें YYYY-MM-DD रूप में होनी चाहिए"
+
+#: 
+msgid "Day of the month"
+msgstr "माह का दिन"
+
+#: 
+msgid "Day of the week"
+msgstr "सप्ताह का दिन"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "सेवकाई निष्क्रिय करें"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "अनुसूची निष्क्रिय करें"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "हटाने से पहले इस सेवकाई को निष्क्रिय करें।"
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "{{name}} को निष्क्रिय करें? यह साइडबार में निष्क्रिय सेवकाइयाँ में चली जाती है, जहाँ इसे फिर सक्रिय किया या हटाया जा सकता है। कुछ नहीं हटता।"
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "{{name}} को निष्क्रिय करें? इसके लिए कोई नया अवसर नहीं बनेगा, न बनाएँ से और न दैनिक पूर्ति से। इसके मौजूदा अवसर और नियुक्तियाँ बनी रहती हैं, और इसे फिर सक्रिय किया जा सकता है।"
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "निष्क्रिय सेवकाइयाँ"
+
+#: 
+msgid "Declined"
+msgstr "अस्वीकार किया"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "सेवकाई आयोजनों के लिए डिफ़ॉल्ट आयोजन-प्रकार"
+
+#: 
+msgid "Default volunteers"
+msgstr "डिफ़ॉल्ट स्वयंसेवक"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "डिफ़ॉल्ट स्वयंसेवक आवश्यकताओं के रूप में भेजे जाते हैं: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "आयोजन हटाएँ"
+
+#: 
+msgid "Delete ministry"
+msgstr "सेवकाई हटाएँ"
+
+#: 
+msgid "Delete occurrences"
+msgstr "अवसर हटाएँ"
+
+#: 
+msgid "Delete position"
+msgstr "पद हटाएँ"
+
+#: 
+msgid "Delete schedule"
+msgstr "अनुसूची हटाएँ"
+
+#: 
+msgid "Delete team"
+msgstr "टीम हटाएँ"
+
+#: 
+msgid "Delete those events"
+msgstr "उन आयोजनों को हटाएँ"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "{{name}} और इसमें जो कुछ है उसे हटाएँ? इसके पद, योग्यताएँ, नियुक्ति आवश्यकताएँ, अनुसूचियाँ, अवसर और नियुक्तियाँ — पिछले सेवा रिकॉर्ड सहित — और इसके टीम-अगुआ अनुदान हटा दिए जाते हैं। इतिहास रखने के लिए इसके बजाय टीम को निष्क्रिय करें। इसे पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "{{name}} और इसमें जो कुछ है उसे हटाएँ? इसकी टीमें, पद, अनुसूचियाँ, {{occurrences}} अवसर और {{assignments}} नियुक्तियाँ — पिछले सेवा रिकॉर्ड सहित — साथ ही इसके समन्वयक और टीम-अगुआ अनुदान, स्वयंसेवक पूल समूह और कैलेंडर हटा दिए जाते हैं। इसे पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "{{name}} को हटाएँ? इसकी योग्यताएँ, नियुक्ति आवश्यकताएँ और नियुक्तियाँ — पिछले सेवा रिकॉर्ड सहित — इसके साथ हट जाती हैं। इतिहास रखने के लिए इसके बजाय पद को निष्क्रिय करें। इसे पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "{{name}} को हटाएँ? इसे पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "सेवकाई हटाने के लिए स्वयंसेवक प्रबंधक की पहुँच आवश्यक है"
+
+#: 
+msgid "Developer mode"
+msgstr "डेवलपर मोड"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "हो गया — आप सूची पर लौट आए हैं।"
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "इस अवसर की अपनी नियुक्ति आवश्यकताएँ हटाकर फिर से इसकी अनुसूची का अनुसरण करें?"
+
+#: 
+msgid "Due soon"
+msgstr "जल्द देय"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "हर कैलेंडर को प्रकार और आईडी के रूप में दिया जाना चाहिए।"
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "हर डिफ़ॉल्ट स्वयंसेवक में एक व्यक्ति का नाम होना चाहिए"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "हर नियुक्ति आवश्यकता में एक पद का नाम होना चाहिए"
+
+#: 
+msgid "Edit event"
+msgstr "इवेंट संपादित करें"
+
+#: 
+msgid "Edit ministry"
+msgstr "सेवकाई संपादित करें"
+
+#: 
+msgid "Edit position"
+msgstr "पद संपादित करें"
+
+#: 
+msgid "Edit schedule"
+msgstr "अनुसूची संपादित करें"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "नियुक्ति आवश्यकताएँ संपादित करें"
+
+#: 
+msgid "Edit team"
+msgstr "टीम संपादित करें"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "अनुसूची संपादित करें और दूसरी कक्षा चुनें।"
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "अनुसूची संपादित करें और दूसरा आयोजन-प्रकार चुनें।"
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "अनुसूची संपादित करें और वह आयोजन चुनें जिसका यह अनुसरण करती है।"
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "अनुसूची संपादित करें और अधिक आयोजनों का अनुसरण करने के लिए उसकी अंतिम तारीख़ आगे बढ़ाएँ।"
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "सदस्य पोर्टल के माध्यम से संपादित: %s"
+
+#: 
+msgid "Email %s"
+msgstr "%s को ईमेल करें"
+
+#: 
+msgid "Email %s Family"
+msgstr "%s परिवार को ईमेल करें"
+
+#: 
+msgid "Email History"
+msgstr "ईमेल इतिहास"
+
+#: 
+msgid "Email content"
+msgstr "ईमेल की सामग्री"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "अनुपस्थित लोगों को ईमेल करें: %s"
+
+#: 
+msgid "Email not found"
+msgstr "ईमेल नहीं मिला"
+
+#: 
+msgid "Email preview"
+msgstr "ईमेल पूर्वावलोकन"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "ईमेल भेजना अक्षम है"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "ईमेल भेजना सक्षम नहीं है। भेजने से पहले SMTP सेटिंग कॉन्फ़िगर करें और ईमेल सक्षम करें।"
+
+#: 
+msgid "Emails"
+msgstr "ईमेल"
+
+#: 
+msgid "End time"
+msgstr "समाप्ति समय"
+
+#: 
+msgid "Enter counts"
+msgstr "संख्याएँ दर्ज करें"
+
+#: 
+msgid "Enter email subject…"
+msgstr "ईमेल का विषय दर्ज करें…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "अपना वर्तमान पासवर्ड दर्ज करें, फिर नया पासवर्ड दो बार।"
+
+#: 
+msgid "Enter your message…"
+msgstr "अपना संदेश दर्ज करें…"
+
+#: 
+msgid "Event staffed"
+msgstr "आयोजन में नियुक्ति हो गई"
+
+#: 
+msgid "Event title"
+msgstr "इवेंट का शीर्षक"
+
+#: 
+msgid "Event type"
+msgstr "इवेंट प्रकार"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "ChurchCRM द्वारा भेजा गया हर ईमेल, नवीनतम पहले। पूरा इतिहास देखने के लिए किसी व्यक्ति को खोलें।"
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "इस अवधि के हर पद के लिए आवश्यक लोग हैं।"
+
+#: 
+msgid "Everyone has answered"
+msgstr "सभी ने उत्तर दे दिया है"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "चयन में सभी लोग इस सेवकाई के स्वयंसेवकों में शामिल होते हैं। बाद में उनके पद चुनें।"
+
+#: 
+msgid "Everything is correct"
+msgstr "सब कुछ सही है"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "पूर्वावलोकन बनाने में विफल"
+
+#: 
+msgid "Failed to load email"
+msgstr "ईमेल लोड करने में विफल"
+
+#: 
+msgid "Failed to load email history"
+msgstr "ईमेल इतिहास लोड करने में विफल"
+
+#: 
+msgid "Failed to send email"
+msgstr "ईमेल भेजने में विफल"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "ईमेल भेजने में विफल। कृपया फिर प्रयास करें या 'ईमेल क्लाइंट में खोलें' का उपयोग करें।"
+
+#: 
+msgid "Family Member"
+msgstr "परिवार का सदस्य"
+
+#: 
+msgid "Family verification"
+msgstr "परिवार सत्यापन"
+
+#: 
+msgid "File"
+msgstr "फ़ाइल"
+
+#: 
+msgid "Fill"
+msgstr "भरें"
+
+#: 
+msgid "Fill by default with"
+msgstr "डिफ़ॉल्ट रूप से इनसे भरें"
+
+#: 
+msgid "Fill this gap"
+msgstr "इस रिक्ति को भरें"
+
+#: 
+msgid "Filled"
+msgstr "भरा हुआ"
+
+#: 
+msgid "Find a sub"
+msgstr "विकल्प खोजें"
+
+#: 
+msgid "Find a volunteer"
+msgstr "स्वयंसेवक खोजें"
+
+#: 
+msgid "Find an event"
+msgstr "आयोजन खोजें"
+
+#: 
+msgid "Find something to do"
+msgstr "करने के लिए कुछ खोजें"
+
+#: 
+msgid "Find something to help with"
+msgstr "सहायता करने के लिए कुछ खोजें"
+
+#: 
+msgid "Findings"
+msgstr "निष्कर्ष"
+
+#: 
+msgid "First date"
+msgstr "पहली तारीख़"
+
+#: 
+msgid "Folder"
+msgstr "फ़ोल्डर"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "उपयोग की जाने वाली सदस्य पोर्टल थीम का फ़ोल्डर नाम, Include/themes/ से। \"default\" वह सिस्टम थीम है जो ChurchCRM के साथ आती है।"
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "इसकी पहली तारीख़ के और निकट दोबारा बनाएँ।"
+
+#: 
+msgid "Generate occurrences"
+msgstr "अवसर बनाएँ"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "नया कैलेंडर पता प्राप्त करें?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "सेवकाई को एक नाम दें"
+
+#: 
+msgid "Give the position a name"
+msgstr "पद को एक नाम दें"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "आरंभ और समाप्ति समय HH:MM रूप में दें"
+
+#: 
+msgid "Give the team a name"
+msgstr "टीम को एक नाम दें"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "मेरी स्वयंसेवा पर जाएँ"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "सदस्य पोर्टल सेटिंग पर जाएँ"
+
+#: 
+msgid "Going"
+msgstr "जा रहे हैं"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "सेवकाई पृष्ठ पर योग्यता दें, फिर उन्हें यहाँ नियुक्त करें।"
+
+#: 
+msgid "Granted"
+msgstr "दिया गया"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "देखें कि कलीसिया के पास आपके परिवार के बारे में क्या दर्ज है, फिर हमें बताएँ कि क्या यह अब भी सही है।"
+
+#: 
+msgid "Headcount"
+msgstr "उपस्थिति गणना"
+
+#: 
+msgid "Hello %s"
+msgstr "नमस्कार %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "सहायता चाहिए"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "सहायता की आवश्यकता सहेजी नहीं जा सकी"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "हर अनुसूची जिन आयोजनों का अनुसरण करती है उनके लिए अवसर कितने आगे तक बनाए जाते हैं। एक दैनिक पृष्ठभूमि कार्य हर अनुसूची को इस बिंदु तक भरा रखता है।"
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "स्वयंसेवक अवसर से कितने घंटे पहले अनुस्मारक ईमेल भेजा जाता है। कोई अनुस्मारक न भेजने के लिए 0 रखें। वितरण पृष्ठभूमि कार्य चलने पर निर्भर है; अनुशंसित cron सेटअप के लिए स्वयंसेवक दस्तावेज़ देखें।"
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "अवसर से कितने घंटे पहले अनुस्मारक ईमेल भेजा जाता है। कोई अनुस्मारक न भेजने के लिए 0 रखें।"
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "हर बार जब यह चलता है, हर पद को कितने लोग चाहिए। एक तारीख़ को बाद में अलग से बदला जा सकता है। डिफ़ॉल्ट स्वयंसेवक हर नए अवसर पर तब तक नियुक्त होता है जब तक वह योग्य रहे; किसी को बदलने से पहले से मौजूद अवसर कभी नहीं बदलते।"
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "इस अनुसूची के हर अवसर को कितने स्वयंसेवक चाहिए। जिस पद का यह अनुसूची कभी उपयोग नहीं करती उसका चयन हटाएँ। डिफ़ॉल्ट स्वयंसेवक हर नए अवसर पर तब तक नियुक्त होता है जब तक वह योग्य रहे; किसी को बदलने से पहले से मौजूद अवसर कभी नहीं बदलते।"
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "इस आयोजन को कितने स्वयंसेवक चाहिए। जिस पद का यह उपयोग नहीं करता उसका चयन हटाएँ।"
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "हर अनुसूची जिन आयोजनों का अनुसरण करती है उनके लिए स्वयंसेवक अवसर कितने सप्ताह आगे तक बनाए जाते हैं, 1 से 52 तक। एक दैनिक पृष्ठभूमि कार्य हर अनुसूची को इस बिंदु तक भरा रखता है।"
+
+#: 
+msgid "How often"
+msgstr "कितनी बार"
+
+#: 
+msgid "How to correct this"
+msgstr "इसे कैसे सुधारें"
+
+#: 
+msgid "I can't"
+msgstr "मैं नहीं आ सकता"
+
+#: 
+msgid "I'd like to help"
+msgstr "मैं सहायता करना चाहूँगा"
+
+#: 
+msgid "I'll be there"
+msgstr "मैं वहाँ रहूँगा"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "यदि संदेश विफल हो रहे हैं, तो व्यवस्थापक से सेवकाई सेटिंग जाँचने को कहें।"
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "यदि आप अब नहीं आ सकते, तो कृपया जितनी जल्दी हो सके अपनी स्वयंसेवक अनुसूची में अस्वीकार करें ताकि पद भरा जा सके।"
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "यदि आपने यह पता गलती से साझा कर दिया है, तो नया पता लें। पुराना पता तुरंत काम करना बंद कर देता है।"
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "पिछले 15 मिनट में"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "स्वयंसेवक पूल में"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "आंतरिक: वह अंतिम तारीख़ जिस तक स्वयंसेवक अनुसूचियाँ अनुसूचन सीमा तक भरी गईं (YYYY-MM-DD)। हाथ से संपादित न करें।"
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "आंतरिक: स्वयंसेवक अनुसूचियाँ अंतिम बार कब भरी गईं और उससे कितने अवसर बने। हाथ से संपादित न करें।"
+
+#: 
+msgid "Is this still right?"
+msgstr "क्या यह अब भी सही है?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "इसके अवसर बिना भरे जाने वाले पदों के बनेंगे। इसकी नियुक्ति आवश्यकताएँ जोड़ने के लिए अनुसूची संपादित करें।"
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "उन्हें {{className}} में रखें"
+
+#: 
+msgid "Kind"
+msgstr "प्रकार"
+
+#: 
+msgid "Last 24 hours"
+msgstr "पिछले 24 घंटे"
+
+#: 
+msgid "Last 30 days"
+msgstr "पिछले 30 दिन"
+
+#: 
+msgid "Last 7 days"
+msgstr "पिछले 7 दिन"
+
+#: 
+msgid "Last attempt"
+msgstr "अंतिम प्रयास"
+
+#: 
+msgid "Last check"
+msgstr "अंतिम जाँच"
+
+#: 
+msgid "Last date"
+msgstr "अंतिम तारीख़"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "पोर्टल में अंतिम बार देखा गया"
+
+#: 
+msgid "Last sign-in"
+msgstr "अंतिम साइन-इन"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "ठीक आयोजन के समय सेवा करने के लिए दोनों को 0 रखें। आयोजन को खिसकाने से स्वयंसेवक भी खिसक जाते हैं।"
+
+#: 
+msgid "Leave open"
+msgstr "खुला छोड़ें"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "सदस्यों को सदस्य पोर्टल में अपने और अपने परिवार के सदस्यों के जन्मदिन बदलने दें।"
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "सदस्यों को जन्मदिन संपादित करने दें"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "कलीसिया कार्यालय को बताएँ कि ऊपर सब कुछ अब भी सही है या नहीं।"
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "उन्हें कारण बताएँ (वैकल्पिक)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "उस सेवकाई के समन्वयकों को इस आयोजन के लिए स्वयंसेवक निर्धारित करने — और आयोजन को स्वयं संपादित करने — देता है।"
+
+#: 
+msgid "Loading the calendar…"
+msgstr "कैलेंडर लोड हो रहा है…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "सेवकाइयाँ प्रबंधित करें"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "मेरी सेवकाइयाँ प्रबंधित करें"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "मेरी सेवकाइयाँ प्रबंधित करने की पहुँच, प्रबंधित करने के लिए एक सेवकाई या टीम के साथ"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "मेरी सेवकाइयाँ प्रबंधित करने की पहुँच, प्रबंधित करने के लिए एक सेवकाई या टीम के साथ, आवश्यक है"
+
+#: 
+msgid "Manage staffing"
+msgstr "नियुक्ति प्रबंधित करें"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "%s सेवकाई से प्रबंधित"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "{{ministry}} सेवकाई से प्रबंधित"
+
+#: 
+msgid "Max"
+msgstr "अधिकतम"
+
+#: 
+msgid "Member Portal"
+msgstr "सदस्य पोर्टल"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "इसे ठीक किए जाने तक सदस्यों को \"अस्थायी रूप से अनुपलब्ध\" पृष्ठ दिख रहा है। यही विवरण एप्लिकेशन लॉग और वेब सर्वर त्रुटि लॉग में लिखे गए थे।"
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "सदस्य केवल वही कैलेंडर देखते हैं जो यहाँ चालू हैं। जन्मदिन और वर्षगाँठ में केवल पहले नाम और उपनाम का पहला अक्षर दिखता है।"
+
+#: 
+msgid "Message"
+msgstr "संदेश"
+
+#: 
+msgid "Min"
+msgstr "न्यूनतम"
+
+#: 
+msgid "Ministries"
+msgstr "सेवकाइयाँ"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "सहायता खोजती सेवकाइयाँ"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "वे सेवकाइयाँ जो आयोजन जोड़ सकती हैं"
+
+#: 
+msgid "Ministry"
+msgstr "सेवकाई"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "सेवकाई कैलेंडर"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "सेवकाई समन्वयक"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "सेवकाई डैशबोर्ड"
+
+#: 
+msgid "Ministry Settings"
+msgstr "सेवकाई सेटिंग"
+
+#: 
+msgid "Ministry calendar"
+msgstr "सेवकाई कैलेंडर"
+
+#: 
+msgid "Ministry created"
+msgstr "सेवकाई बनाई गई"
+
+#: 
+msgid "Ministry management access"
+msgstr "सेवकाई प्रबंधन पहुँच"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "सेवकाई प्रबंधन पहुँच आवश्यक है"
+
+#: 
+msgid "Ministry name"
+msgstr "सेवकाई का नाम"
+
+#: 
+msgid "Ministry not found"
+msgstr "सेवकाई नहीं मिली"
+
+#: 
+msgid "My Family"
+msgstr "मेरा परिवार"
+
+#: 
+msgid "My Teams"
+msgstr "मेरी टीमें"
+
+#: 
+msgid "My ministries and teams"
+msgstr "मेरी सेवकाइयाँ और टीमें"
+
+#: 
+msgid "My schedule"
+msgstr "मेरी अनुसूची"
+
+#: 
+msgid "My volunteering"
+msgstr "मेरी स्वयंसेवा"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "इस पद का नाम उस पृष्ठ पर रखें जहाँ सदस्य सहायता के लिए कुछ खोजते हैं।"
+
+#: 
+msgid "Needs an answer"
+msgstr "उत्तर चाहिए"
+
+#: 
+msgid "Needs filling"
+msgstr "भरना आवश्यक है"
+
+#: 
+msgid "Never signed in"
+msgstr "कभी साइन इन नहीं किया"
+
+#: 
+msgid "New account"
+msgstr "नया खाता"
+
+#: 
+msgid "New event"
+msgstr "नया आयोजन"
+
+#: 
+msgid "New ministry"
+msgstr "नई सेवकाई"
+
+#: 
+msgid "New record notification"
+msgstr "नए रिकॉर्ड की सूचना"
+
+#: 
+msgid "New recurring event"
+msgstr "नया आवर्ती आयोजन"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "निम्न पदों के लिए नए स्वयंसेवक चाहिए"
+
+#: 
+msgid "Newest first"
+msgstr "नवीनतम पहले"
+
+#: 
+msgid "Next on %s"
+msgstr "%s पर अगला"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "अभी तक सदस्यों के साथ कोई कैलेंडर साझा नहीं किया गया है।"
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "इस सेवकाई के लिए कोई कैलेंडर खुला नहीं है, इसलिए आयोजन किसी कैलेंडर पर नहीं दिखेंगे।"
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "सदस्यों के साथ कोई कैलेंडर साझा नहीं है।"
+
+#: 
+msgid "No class"
+msgstr "कोई कक्षा नहीं"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "अभी तक कोई संपर्क विवरण दर्ज नहीं है।"
+
+#: 
+msgid "No coordinators yet"
+msgstr "अभी कोई समन्वयक नहीं"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "पहली और अंतिम तारीख़ के बीच कोई तारीख़ आवृत्ति से मेल नहीं खाती"
+
+#: 
+msgid "No email was sent."
+msgstr "कोई ईमेल नहीं भेजा गया।"
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "इस रिकॉर्ड को अभी तक कोई ईमेल नहीं भेजा गया है।"
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "अभी तक कोई उपस्थिति गणना दर्ज नहीं है"
+
+#: 
+msgid "No longer needed"
+msgstr "अब आवश्यक नहीं"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "अभी तक किसी सदस्य ने सदस्य पोर्टल में साइन इन नहीं किया है।"
+
+#: 
+msgid "No ministry"
+msgstr "कोई सेवकाई नहीं"
+
+#: 
+msgid "No past events"
+msgstr "कोई पिछले आयोजन नहीं"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "इस व्यक्ति की कोई फ़ोटो अपलोड नहीं की गई है।"
+
+#: 
+msgid "No photo was sent."
+msgstr "कोई फ़ोटो नहीं भेजी गई।"
+
+#: 
+msgid "No positions yet"
+msgstr "अभी कोई पद नहीं"
+
+#: 
+msgid "No qualifications yet."
+msgstr "अभी कोई योग्यता नहीं।"
+
+#: 
+msgid "No schedules yet"
+msgstr "अभी कोई अनुसूची नहीं"
+
+#: 
+msgid "No staffing needs set"
+msgstr "कोई नियुक्ति आवश्यकता तय नहीं"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "कोई नियुक्ति आवश्यकता नहीं: बनाए गए अवसरों को किसी की आवश्यकता नहीं होगी।"
+
+#: 
+msgid "No substitution requests"
+msgstr "कोई विकल्प अनुरोध नहीं"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "निर्णय के लिए कोई विकल्प नहीं"
+
+#: 
+msgid "No teams yet"
+msgstr "अभी कोई टीम नहीं"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "कैलेंडर में \"%2$s\" शीर्षक का कोई आगामी %1$s आयोजन नहीं है। अनुसूची पहले से मौजूद आयोजनों का अनुसरण करती है।"
+
+#: 
+msgid "No upcoming event matches"
+msgstr "कोई आगामी आयोजन मेल नहीं खाता"
+
+#: 
+msgid "No upcoming events"
+msgstr "कोई आगामी आयोजन नहीं"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "कैलेंडर में इस प्रकार का कोई आगामी आयोजन नहीं है।"
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "चुनने के लिए कोई आगामी आयोजन नहीं"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "अभी तक किसी को नियुक्त नहीं किया गया"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "अभी इसके लिए कोई और प्रशिक्षित नहीं है — इसके बजाय अपने समन्वयक को बताएँ।"
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "किसी ने नहीं बताया कि हर पद को कितने स्वयंसेवक चाहिए, इसलिए भरने को कुछ नहीं है।"
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "इस अवधि में कोई अब भी निर्णय नहीं ले रहा है।"
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "अभी इस पद के लिए कोई योग्य नहीं है"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "अभी इस पद के लिए कोई योग्य नहीं है, इसलिए यह खुला रहता है।"
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "किसी भी प्राप्तकर्ता को ईमेल नहीं किया जा सकता"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "कोई नहीं: हर आयोजन के लिए आयोजन-प्रकार चुना जाता है"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "इस ईमेल को देखने की अनुमति नहीं है"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "इस परिवार को देखने की अनुमति नहीं है"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "इस व्यक्ति को देखने की अनुमति नहीं है"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "इस नियुक्ति के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "इस सेवकाई के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "इस अवसर के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "इस पद के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "इस योग्यता के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "इस आवश्यकता के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "इस अनुसूची के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "इस विकल्प अनुरोध के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "इस टीम के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "उस स्वयंसेवक सेवकाई को आयोजन सौंपने के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "आयोजन %s को बदलने के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "इस आयोजन की स्वयंसेवक सेवकाई बदलने के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "आपके द्वारा प्रबंधित स्वयंसेवक सेवकाई के बिना आयोजन बनाने के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "इस आयोजन को संशोधित करने के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "कैलेंडर \"%s\" में आयोजन पिन करने के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "कैलेंडर \"%s\" से आयोजन हटाने के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "इस आयोजन से स्वयंसेवक सेवकाई हटाने के लिए अधिकृत नहीं"
+
+#: 
+msgid "Not checked in"
+msgstr "चेक-इन नहीं किया"
+
+#: 
+msgid "Not found"
+msgstr "नहीं मिला"
+
+#: 
+msgid "Not in the pool"
+msgstr "पूल में नहीं"
+
+#: 
+msgid "Not now"
+msgstr "अभी नहीं"
+
+#: 
+msgid "Not sent"
+msgstr "नहीं भेजा गया"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "तय नहीं: \"%s\" का उपयोग करें"
+
+#: 
+msgid "Not staffed"
+msgstr "नियुक्ति नहीं हुई"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "अभी स्वयंसेवा नहीं कर रहे"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "कुछ बदला नहीं था, इसलिए कुछ सहेजा नहीं गया।"
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "इस अवधि के लिए कैलेंडर में कुछ नहीं है।"
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "अभी कैलेंडर में कुछ नहीं है।"
+
+#: 
+msgid "Nothing is short"
+msgstr "कुछ भी कम नहीं है"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "अभी आपकी सूची में कुछ नहीं है"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "अभी आपकी सूची में कुछ नहीं है। देखें कि क्या भरना है।"
+
+#: 
+msgid "Nothing open right now"
+msgstr "अभी कुछ खुला नहीं है"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "अभी कुछ निर्धारित नहीं है"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "कुछ निर्धारित नहीं।"
+
+#: 
+msgid "Nothing set up yet"
+msgstr "अभी कुछ सेट नहीं है"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "पिछले वर्ष में इस सेवकाई के स्वामित्व वाला कुछ नहीं हुआ।"
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "अभी योग्य बनाने को कुछ नहीं"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "कुछ सहेजा नहीं गया। कृपया हाइलाइट किए गए फ़ील्ड जाँचें।"
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "कुछ सहेजा नहीं गया। कृपया फिर प्रयास करें।"
+
+#: 
+msgid "Notification"
+msgstr "सूचना"
+
+#: 
+msgid "Notifications"
+msgstr "सूचनाएँ"
+
+#: 
+msgid "Occurrence not found"
+msgstr "अवसर नहीं मिला"
+
+#: 
+msgid "Occurrences"
+msgstr "अवसर"
+
+#: 
+msgid "Offer to help"
+msgstr "सहायता का प्रस्ताव दें"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "दिन में एक बार हर सक्रिय अनुसूची को उसकी अनुसरण की जा रही घटनाओं के लिए %d सप्ताह आगे तक अवसर मिलते हैं, और हर पद का डिफ़ॉल्ट स्वयंसेवक नए अवसरों पर तब तक नियुक्त होता है जब तक वह योग्य रहता है।"
+msgstr[1] "दिन में एक बार हर सक्रिय अनुसूची को उसकी अनुसरण की जा रही घटनाओं के लिए %d सप्ताह आगे तक अवसर मिलते हैं, और हर पद का डिफ़ॉल्ट स्वयंसेवक नए अवसरों पर तब तक नियुक्त होता है जब तक वह योग्य रहता है।"
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "एक बार यह व्यक्ति किसी पद के लिए योग्य हो जाए तो वह यहाँ दिखता है, साथ ही वे तारीख़ें जिन पर उसकी सेवा निर्धारित है।"
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "हर उस कैलेंडर आयोजन के लिए एक अवसर बनता है जिसका जुड़ा समूह यह कक्षा है।"
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "इस आयोजन की हर तारीख़ के लिए एक अवसर बनता है। केवल वे आयोजन चुने जा सकते हैं जो पहले से कैलेंडर में हैं।"
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "इनमें से एक कैलेंडर मौजूद नहीं है"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "इनमें से एक आयोजन मौजूद नहीं है"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "उन कैलेंडरों में से एक सदस्यों के साथ साझा नहीं है।"
+
+#: 
+msgid "One-time"
+msgstr "एक बार"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "केवल रविवार स्कूल कक्षा को टीम से जोड़ा जा सकता है"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "केवल समन्वयक ही किसी और की ओर से उत्तर दर्ज कर सकता है"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "केवल इस सेवकाई का समन्वयक इसके आयोजन बना सकता है"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "केवल इस सेवकाई का समन्वयक इसके आयोजनों में नियुक्ति कर सकता है"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "केवल स्वयंसेवक प्रबंधक इसे बदल सकता है।"
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "केवल स्वयंसेवक प्रबंधक यह बदल सकता है कि सेवकाई रविवार स्कूल के लिए शिक्षक उपलब्ध कराती है या नहीं"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "केवल आपके परिवार का कोई वयस्क ये विवरण बदल सकता है। कृपया कलीसिया कार्यालय से संपर्क करें।"
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "केवल इसके लिए प्रशिक्षित लोग सूचीबद्ध हैं।"
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "केवल नियुक्त स्वयंसेवक ही विकल्प प्रस्तावित कर सकता है"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "केवल वे कैलेंडर सूचीबद्ध हैं जिनमें यह सेवकाई आयोजन जोड़ सकती है। शुरू में इसका अपना कैलेंडर चुना होता है।"
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "बहुत लंबी सूची का केवल पहला भाग दिखाया गया है। शेष देखने के लिए अवधि सीमित करें।"
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "केवल वही स्वयंसेवक जिसने विकल्प प्रस्तावित किया था उसे वापस ले सकता है"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "सेवकाइयाँ मेनू से कोई सेवकाई खोलें, अनुसूची बनाएँ और उसकी तारीख़ें तैयार करें, और नियुक्ति वाले सप्ताह यहाँ दिखेंगे।"
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "किसी व्यक्ति को उसका समन्वयक, या उसकी किसी टीम का अगुआ बनाने के लिए सेवकाई खोलें।"
+
+#: 
+msgid "Open in calendar app"
+msgstr "कैलेंडर ऐप में खोलें"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "खुले अवसर लोड नहीं किए जा सके।"
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "प्राप्तकर्ताओं को अपने स्थानीय ईमेल एप्लिकेशन में खोलें"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "सदस्य पोर्टल खोलें"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "सेवकाई डैशबोर्ड खोलें"
+
+#: 
+msgid "Open the ministry"
+msgstr "सेवकाई खोलें"
+
+#: 
+msgid "Open the occurrence"
+msgstr "अवसर खोलें"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "जिन लोगों की आपको आवश्यकता है उन्हें नियुक्त करने के लिए अवसर खोलें।"
+
+#: 
+msgid "Open this team"
+msgstr "यह टीम खोलें"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "कैलेंडर को सेवकाइयों के लिए खोलने हेतु आयोजन जोड़ने की अनुमति आवश्यक है"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "वैकल्पिक। इस टीम के किसी पद के लिए योग्य हर व्यक्ति कक्षा का शिक्षक बन जाता है, और कक्षा का पृष्ठ अब उसके शिक्षकों को नहीं बदलता।"
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "वैकल्पिक। कक्षा जुड़ा समूह बन जाती है: उसकी सूची के लोग चेक-इन करते हैं, और कक्षा की अनुसूची ये आयोजन खोज लेती है।"
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "अधिकतम से अधिक: इसे हटाएँ या अधिकतम बढ़ाएँ।"
+
+#: 
+msgid "Overridden templates"
+msgstr "अधिलेखित टेम्पलेट"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "पृष्ठ %1$s / %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "पृष्ठ %d / %d"
+
+#: 
+msgid "Password reset"
+msgstr "पासवर्ड रीसेट"
+
+#: 
+msgid "Password reset link"
+msgstr "पासवर्ड रीसेट लिंक"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "पासवर्ड में कम से कम %s अक्षर होना आवश्यक है।"
+msgstr[1] "पासवर्ड में कम से कम %s अक्षर होना आवश्यक है।"
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "कोई आगामी कैलेंडर आयोजन चुनें और बताएँ कि उसे किसकी आवश्यकता है। आयोजन अपनी तारीख़ और समय रखता है; पूरी श्रृंखला में नियुक्ति के लिए इसके बजाय अनुसूची जोड़ें।"
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "ऐसे व्यक्ति को चुनें जो आपकी जगह लेने के लिए पहले ही सहमत हो चुका है। आपका समन्वयक इसकी पुष्टि करेगा।"
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "कृपया सूची में से कैलेंडर चुनें।"
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "कृपया चुनें कि आपके विवरण में बदलाव की आवश्यकता है या नहीं।"
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "कृपया कलीसिया कार्यालय से संपर्क करें ताकि हम अपने रिकॉर्ड सुधार सकें।"
+
+#: 
+msgid "Please contact the church office."
+msgstr "कृपया कलीसिया कार्यालय से संपर्क करें।"
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "कृपया कम से कम दो अक्षर दर्ज करें।"
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "कृपया अपनी स्वयंसेवक अनुसूची में स्वीकार या अस्वीकार करके बताएँ कि आप आ सकते हैं या नहीं।"
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "कृपया बताएँ कि क्या बदलना है।"
+
+#: 
+msgid "Portal settings"
+msgstr "पोर्टल सेटिंग"
+
+#: 
+msgid "Portal theme"
+msgstr "पोर्टल थीम"
+
+#: 
+msgid "Position"
+msgstr "पद"
+
+#: 
+msgid "Position added"
+msgstr "पद जोड़ा गया"
+
+#: 
+msgid "Position deleted"
+msgstr "पद हटा दिया गया"
+
+#: 
+msgid "Position name"
+msgstr "पद का नाम"
+
+#: 
+msgid "Position not found"
+msgstr "पद नहीं मिला"
+
+#: 
+msgid "Position saved"
+msgstr "पद सहेजा गया"
+
+#: 
+msgid "Positions"
+msgstr "पद"
+
+#: 
+msgid "Positions still short"
+msgstr "पद जिनमें अब भी कमी है"
+
+#: 
+msgid "Proposed"
+msgstr "प्रस्तावित"
+
+#: 
+msgid "Proposed substitute"
+msgstr "प्रस्तावित विकल्प"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "इस सेवकाई को सदस्य पोर्टल के खुले अवसर पृष्ठ पर रखें, जहाँ कोई भी स्वयंसेवक इसे देख सकता है और सहायता का प्रस्ताव दे सकता है। वे स्वयंसेवक पूल में शामिल होते हैं और आपको ईमेल मिलता है।"
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "इसके बजाय {{name}} को रखें? मूल स्वयंसेवक अपना इतिहास रखता है और उसे सूचित किया जाता है।"
+
+#: 
+msgid "Qualification not found"
+msgstr "योग्यता नहीं मिली"
+
+#: 
+msgid "Qualified for"
+msgstr "इनके लिए योग्य"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "योग्य स्वयंसेवक इस पद की खुली तारीख़ों के लिए स्वयं को पंजीकृत कर सकते हैं। उन पदों के लिए बंद करें जिन्हें केवल टीम का अगुआ या समन्वयक नियुक्त करे; सदस्य पोर्टल उन्हें नहीं दिखाएगा।"
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "इसके वर्तमान शिक्षकों को इसके लिए योग्य बनाएँ"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "उन्हें किसी पद के लिए योग्य बनाएँ"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "उन्हें किसी पद के लिए योग्य बनाएँ।"
+
+#: 
+msgid "Reactivate"
+msgstr "फिर सक्रिय करें"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "थीम बनाने की मार्गदर्शिका पढ़ें"
+
+#: 
+msgid "Recent Emails"
+msgstr "हाल के ईमेल"
+
+#: 
+msgid "Recent Sends"
+msgstr "हाल में भेजे गए"
+
+#: 
+msgid "Recipient"
+msgstr "प्राप्तकर्ता"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "प्राप्तकर्ताओं की संख्या (%d) प्रति भेजने की अधिकतम अनुमत संख्या (%d) से अधिक है"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "प्राप्तकर्ता personIds और familyIds के रूप में दिए जाने चाहिए, ईमेल पतों के रूप में नहीं"
+
+#: 
+msgid "Record a decline"
+msgstr "अस्वीकृति दर्ज करें"
+
+#: 
+msgid "Record an acceptance"
+msgstr "स्वीकृति दर्ज करें"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "दर्ज करें कि {{name}} ने ना कहा? उत्तर आपकी ओर से आया हुआ सहेजा जाता है, और स्थान फिर खुल जाता है।"
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "दर्ज करें कि {{name}} ने हाँ कहा? उत्तर आपकी ओर से सहेजा जाता है, उनकी ओर से नहीं।"
+
+#: 
+msgid "Record: they accepted"
+msgstr "दर्ज करें: उन्होंने स्वीकार किया"
+
+#: 
+msgid "Record: they declined"
+msgstr "दर्ज करें: उन्होंने अस्वीकार किया"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "स्वयंसेवक जुटाएँ"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "स्वयंसेवक जुटाएँ सत्य या असत्य होना चाहिए"
+
+#: 
+msgid "Recruiting"
+msgstr "जुटाया जा रहा है"
+
+#: 
+msgid "Recurring"
+msgstr "आवर्ती"
+
+#: 
+msgid "Reject"
+msgstr "अस्वीकार करें"
+
+#: 
+msgid "Reject substitution"
+msgstr "विकल्प अस्वीकार करें"
+
+#: 
+msgid "Reject this substitute"
+msgstr "इस विकल्प को अस्वीकार करें"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "अनुस्मारक की पूर्व-अवधि (घंटे)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "अनुस्मारक: आपकी सेवा निर्धारित है"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "अनुस्मारक और अलर्ट केवल तभी पहुँचाए जाते हैं जब पृष्ठभूमि कार्य चलते हैं। समय पर वितरण के लिए, निर्धारित-कार्य रनर को cron से हर 15 मिनट पर चलाएँ"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "स्वयंसेवक हटाएँ"
+
+#: 
+msgid "Remove coordinator"
+msgstr "समन्वयक हटाएँ"
+
+#: 
+msgid "Remove the class from them"
+msgstr "उनसे कक्षा हटाएँ"
+
+#: 
+msgid "Remove the team leader"
+msgstr "टीम का अगुआ हटाएँ"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "{{name}} को {{ministry}} से हटाएँ? इससे यहाँ उनकी सभी योग्यताएँ हट जाती हैं, वे हर आगामी अवसर से हट जाते हैं, इस सेवकाई की अनुसूचियों में डिफ़ॉल्ट स्वयंसेवक के रूप में हट जाते हैं, और स्वयंसेवक पूल से भी हट जाते हैं।"
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "हटाया गया। {{qualifications}} योग्यताएँ, {{assignments}} आगामी नियुक्तियाँ, {{defaults}} अनुसूची डिफ़ॉल्ट।"
+
+#: 
+msgid "Repeats"
+msgstr "दोहराता है"
+
+#: 
+msgid "Requirement not found"
+msgstr "आवश्यकता नहीं मिली"
+
+#: 
+msgid "Reset link"
+msgstr "रीसेट लिंक"
+
+#: 
+msgid "Response recorded"
+msgstr "उत्तर दर्ज किया गया"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "स्वयंसेवक डैशबोर्ड पर अनुरोध की समीक्षा करें और उसे स्वीकृत या अस्वीकार करें।"
+
+#: 
+msgid "Review this request"
+msgstr "इस अनुरोध की समीक्षा करें"
+
+#: 
+msgid "Run background jobs now"
+msgstr "अभी पृष्ठभूमि कार्य चलाएँ"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTP परीक्षण"
+
+#: 
+msgid "Save calendars"
+msgstr "कैलेंडर सहेजें"
+
+#: 
+msgid "Save changes"
+msgstr "परिवर्तन सहेजें"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "सहेजा गया — यह सेवकाई अब सहायता नहीं माँग रही"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "सहेजा गया — यह सेवकाई अब सहायता माँग रही है"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "सहेजा गया। सदस्य ऊपर चालू किए गए कैलेंडर देखते हैं।"
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "अनुसूची \"{{name}}\" बनाई गई।"
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "अनुसूची \"{{name}}\" बनाई गई। यह निष्क्रिय है, इसलिए सक्रिय होने तक कोई अवसर नहीं बनाती।"
+
+#: 
+msgid "Schedule deactivated"
+msgstr "अनुसूची निष्क्रिय की गई"
+
+#: 
+msgid "Schedule deleted"
+msgstr "अनुसूची हटा दी गई"
+
+#: 
+msgid "Schedule name"
+msgstr "अनुसूची का नाम"
+
+#: 
+msgid "Schedule not found"
+msgstr "अनुसूची नहीं मिली"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "अनुसूची फिर सक्रिय की गई"
+
+#: 
+msgid "Schedule saved"
+msgstr "अनुसूची सहेजी गई"
+
+#: 
+msgid "Scheduled"
+msgstr "निर्धारित"
+
+#: 
+msgid "Schedules"
+msgstr "अनुसूचियाँ"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "अनुसूचियाँ अंतिम बार भरी गईं"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "अनुसूचियाँ अब अपनी आवृत्ति या समय नहीं रखतीं; हर अवसर किसी कैलेंडर आयोजन का अनुसरण करता है। हटाएँ: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "अनुसूचियाँ अब तय नहीं करतीं कि वे कितने आगे तक बनाई जाएँ: व्यवस्थापन → सेवकाई सेटिंग की अनुसूचन सीमा हर अनुसूची पर लागू होती है। हटाएँ: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "अनुसूचन सीमा (सप्ताह)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "दायरा अनुदान नहीं मिला"
+
+#: 
+msgid "Search by name"
+msgstr "नाम से खोजें"
+
+#: 
+msgid "See the whole calendar"
+msgstr "पूरा कैलेंडर देखें"
+
+#: 
+msgid "See what needs filling"
+msgstr "देखें कि क्या भरना है"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "किसी कैलेंडर के आयोजन छिपाने या दिखाने के लिए उसे चुनें।"
+
+#: 
+msgid "Select ministries..."
+msgstr "सेवकाइयाँ चुनें..."
+
+#: 
+msgid "Self sign-up"
+msgstr "स्वयं पंजीकरण"
+
+#: 
+msgid "Self-assignable"
+msgstr "स्वयं नियुक्त होने योग्य"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "स्वयं नियुक्त होने योग्य सत्य या असत्य होना चाहिए"
+
+#: 
+msgid "Self-service accounts"
+msgstr "स्व-सेवा खाते"
+
+#: 
+msgid "Send"
+msgstr "भेजें"
+
+#: 
+msgid "Send Email"
+msgstr "ईमेल भेजें"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "ChurchCRM से ईमेल भेजें"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "नियुक्ति संदेश फिर से भेजें"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "दिखाने के लिए कैलेंडर सूची के रूप में भेजें।"
+
+#: 
+msgid "Send to the church office"
+msgstr "कलीसिया कार्यालय को भेजें"
+
+#: 
+msgid "Send your answer"
+msgstr "अपना उत्तर भेजें"
+
+#: 
+msgid "Sent"
+msgstr "भेजा गया"
+
+#: 
+msgid "Sent by"
+msgstr "भेजने वाला"
+
+#: 
+msgid "Serving next"
+msgstr "अगली सेवा"
+
+#: 
+msgid "Set as Accepted"
+msgstr "स्वीकृत के रूप में सेट करें"
+
+#: 
+msgid "Set staffing needs"
+msgstr "नियुक्ति आवश्यकताएँ तय करें"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "सदस्य पोर्टल में \"%s\" दिखाएँ"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "सदस्य पोर्टल में दिखाएँ"
+
+#: 
+msgid "Show past events"
+msgstr "पिछले आयोजन दिखाएँ"
+
+#: 
+msgid "Show the church calendar"
+msgstr "कलीसिया कैलेंडर दिखाएँ"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "सदस्य पोर्टल में कलीसिया कैलेंडर दिखाएँ।"
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "सदस्य पोर्टल में कलीसिया कैलेंडर अनुभाग दिखाएँ।"
+
+#: 
+msgid "Show the next"
+msgstr "अगले दिखाएँ"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "सदस्य पोर्टल में स्वयंसेवा और टीम अनुभाग दिखाएँ।"
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "इस सेवकाई को खुले अवसर पृष्ठ पर दिखाएँ"
+
+#: 
+msgid "Show volunteering"
+msgstr "स्वयंसेवा दिखाएँ"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "सदस्य पोर्टल में स्वयंसेवा और टीम पृष्ठ दिखाएँ।"
+
+#: 
+msgid "Show what I have already done"
+msgstr "जो मैं पहले कर चुका हूँ वह दिखाएँ"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "जैसा आप टाइप करते हैं ठीक वैसा ही दिखाया जाता है। पंक्ति विराम रखे जाते हैं।"
+
+#: 
+msgid "Sign up"
+msgstr "पंजीकरण करें"
+
+#: 
+msgid "Sign-in and security"
+msgstr "साइन-इन और सुरक्षा"
+
+#: 
+msgid "Signed in"
+msgstr "साइन इन किया"
+
+#: 
+msgid "Signed up"
+msgstr "पंजीकृत"
+
+#: 
+msgid "Sincerely"
+msgstr "सादर"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "आपके कुछ विवरण सहेजे नहीं जा सके। कृपया हाइलाइट किए गए फ़ील्ड जाँचें।"
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "आपके परिवार के कुछ विवरण सहेजे नहीं जा सके। कृपया हाइलाइट किए गए फ़ील्ड जाँचें।"
+
+#: 
+msgid "Someone else is covering"
+msgstr "कोई और सेवा कर रहा है"
+
+#: 
+msgid "Something needs changing"
+msgstr "कुछ बदलना है"
+
+#: 
+msgid "Something went wrong"
+msgstr "कुछ गड़बड़ हो गई"
+
+#: 
+msgid "Staff an event"
+msgstr "आयोजन में नियुक्ति करें"
+
+#: 
+msgid "Staff them"
+msgstr "उन्हें नियुक्त करें"
+
+#: 
+msgid "Staff this event"
+msgstr "इस आयोजन में नियुक्ति करें"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "इस अवसर में नियुक्ति करें"
+
+#: 
+msgid "Staffed"
+msgstr "नियुक्ति हो गई"
+
+#: 
+msgid "Staffing"
+msgstr "नियुक्ति"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "आयोजन बनने के बाद नियुक्ति सेट की जाती है"
+
+#: 
+msgid "Staffing needs"
+msgstr "नियुक्ति आवश्यकताएँ"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "नियुक्ति आवश्यकताएँ सहेजी गईं"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "पहले एक सेवकाई बनाकर शुरू करें, फिर उसमें सेवा करने वाली टीमें और पद जोड़ें।"
+
+#: 
+msgid "Start time"
+msgstr "प्रारंभ समय"
+
+#: 
+msgid "Start typing a name"
+msgstr "नाम टाइप करना शुरू करें"
+
+#: 
+msgid "Statistics"
+msgstr "आँकड़े"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "{{name}} को {{ministry}} का समन्वय करने से रोकें? उनका लॉगिन और उनकी अपनी नियुक्तियाँ अप्रभावित रहती हैं।"
+
+#: 
+msgid "Subscribe"
+msgstr "सदस्यता लें"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "कैलेंडर की सदस्यता लें"
+
+#: 
+msgid "Substitute"
+msgstr "विकल्प"
+
+#: 
+msgid "Substitute approved"
+msgstr "विकल्प स्वीकृत"
+
+#: 
+msgid "Substitute asked"
+msgstr "विकल्प माँगा गया"
+
+#: 
+msgid "Substitute decision"
+msgstr "विकल्प का निर्णय"
+
+#: 
+msgid "Substitute proposed"
+msgstr "विकल्प प्रस्तावित"
+
+#: 
+msgid "Substitute rejected"
+msgstr "विकल्प अस्वीकृत"
+
+#: 
+msgid "Substituted"
+msgstr "बदला गया"
+
+#: 
+msgid "Substitution approved"
+msgstr "विकल्प स्वीकृत"
+
+#: 
+msgid "Substitution rejected"
+msgstr "विकल्प अस्वीकृत"
+
+#: 
+msgid "Substitution request not found"
+msgstr "विकल्प अनुरोध नहीं मिला"
+
+#: 
+msgid "Substitution requests"
+msgstr "विकल्प अनुरोध"
+
+#: 
+msgid "Sunday School Class"
+msgstr "रविवार स्कूल कक्षा"
+
+#: 
+msgid "System calendar"
+msgstr "सिस्टम कैलेंडर"
+
+#: 
+msgid "System default"
+msgstr "सिस्टम डिफ़ॉल्ट"
+
+#: 
+msgid "Take that back"
+msgstr "उसे वापस लें"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "{{name}} को इस पद से हटाएँ? कोई ईमेल नहीं भेजा जाता; उनकी अनुसूची में तारीख़ अब आवश्यक नहीं दिखती है, और स्थान फिर खुल जाता है।"
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "इस कक्षा के शिक्षक सेवकाई → %1$s → %2$s में प्रबंधित होते हैं।"
+
+#: 
+msgid "Team"
+msgstr "टीम"
+
+#: 
+msgid "Team Leader"
+msgstr "टीम अगुआ"
+
+#: 
+msgid "Team added"
+msgstr "टीम जोड़ी गई"
+
+#: 
+msgid "Team deleted"
+msgstr "टीम हटा दी गई"
+
+#: 
+msgid "Team leader"
+msgstr "टीम का अगुआ"
+
+#: 
+msgid "Team name"
+msgstr "टीम का नाम"
+
+#: 
+msgid "Team not found"
+msgstr "टीम नहीं मिली"
+
+#: 
+msgid "Team saved"
+msgstr "टीम सहेजी गई"
+
+#: 
+msgid "Teams"
+msgstr "टीमें"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "टीमें लोगों के वे समूह हैं जो इस सेवकाई में सेवा करते हैं।"
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "टीमें, पद और उन्हें भरने वाले लोग"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "दस सबसे हाल के साइन-इन"
+
+#: 
+msgid "Thank you"
+msgstr "धन्यवाद!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "सेवा के लिए पंजीकरण करने के लिए धन्यवाद"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "सेवा के लिए पंजीकरण करने के लिए धन्यवाद। आप अनुसूची में हैं।"
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "धन्यवाद। कलीसिया कार्यालय को आपका उत्तर मिल गया है।"
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "धन्यवाद। जोड़े जाने से पहले कलीसिया कार्यालय इसकी समीक्षा करेगा।"
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "हमें बताने के लिए धन्यवाद।"
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "धन्यवाद — समन्वयक को बता दिया गया है कि आप फिर सहायता करना चाहेंगे।"
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "धन्यवाद — समन्वयक को बता दिया गया है कि आप सहायता करना चाहेंगे।"
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "धन्यवाद — आप सूची में हैं।"
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "वह सदस्य पोर्टल थीम फ़ोल्डर मौजूद नहीं है।"
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "वह नियुक्ति किसी और की है"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "वह नियुक्ति सहेजी नहीं जा सकी"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "वह जन्मदिन मान्य तारीख़ नहीं है।"
+
+#: 
+msgid "That could not be saved."
+msgstr "वह सहेजा नहीं जा सका।"
+
+#: 
+msgid "That could not be sent."
+msgstr "वह भेजा नहीं जा सका।"
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "उस परिवार के सदस्य को जोड़ा नहीं जा सका। कृपया हाइलाइट किए गए फ़ील्ड जाँचें।"
+
+#: 
+msgid "That is not a valid date."
+msgstr "यह मान्य तारीख़ नहीं है।"
+
+#: 
+msgid "That list could not be loaded."
+msgstr "वह सूची लोड नहीं की जा सकी।"
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "वह व्यक्ति इस अवसर में पहले से यह पद संभाल रहा है"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "वह व्यक्ति इस अवसर में इस पद पर पहले से नियुक्त है"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "वह व्यक्ति इस सेवकाई के किसी स्वयंसेवक पूल में नहीं है। फिर भी नियुक्त करने के लिए पूल-से-बाहर ओवरराइड के साथ दोबारा भेजें।"
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "वह व्यक्ति इस स्वयंसेवक पूल में नहीं है"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "वह व्यक्ति इस पद के लिए योग्य नहीं है"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "वह फ़ोटो सहेजी नहीं जा सकी।"
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "वह फ़ोटो बहुत बड़ी है। कृपया छोटी चुनें।"
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "वह पद किसी दूसरी सेवकाई का है"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "वह पद किसी दूसरी टीम का है"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "उस पद पर पहले से पूरी नियुक्ति है"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "इस अवसर में उस पद पर नियुक्ति नहीं की जा रही"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "वह उत्तर दर्ज नहीं किया जा सका"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "वह स्थिति सीधे सेट नहीं की जा सकती"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "उस विकल्प अनुरोध पर निर्णय नहीं लिया जा सका"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "वह टीम किसी दूसरी सेवकाई की है"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "वह थीम सक्रिय नहीं की जा सकी।"
+
+#: 
+msgid "That theme could not be checked."
+msgstr "वह थीम जाँची नहीं जा सकी।"
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "उस थीम में त्रुटियाँ हैं, इसलिए उसे सक्रिय नहीं किया गया।"
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "वह स्वयंसेवक नियुक्त नहीं किया जा सका"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "वह विवाह की तारीख़ मान्य तारीख़ नहीं है।"
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s YYYY-MM-DD रूप की तारीख़ होनी चाहिए"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s मिनटों की पूर्ण संख्या होनी चाहिए"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s आयोजन के %d मिनट के भीतर होना चाहिए"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "सदस्य पोर्टल कैलेंडर सहेजे गए।"
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "सदस्य पोर्टल आपका अनुरोध पूरा नहीं कर सका। कृपया कुछ मिनट बाद फिर प्रयास करें।"
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "सदस्य पोर्टल केवल साइन इन किए हुए व्यक्ति के लिए उपलब्ध है, API क्लाइंट के लिए नहीं।"
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "सदस्य पोर्टल थीम \"%s\" पर सेट है, जो अब सर्वर पर नहीं है। जब तक आप कोई मौजूदा थीम नहीं चुनते, सदस्यों को त्रुटि पृष्ठ दिख रहा है।"
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "सदस्य पोर्टल अस्थायी रूप से अनुपलब्ध है"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "सदस्य पोर्टल थीम \"%s\" सक्रिय नहीं की जा सकी क्योंकि उसमें त्रुटियाँ हैं।"
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "सदस्य पोर्टल थीम प्रदर्शित नहीं की जा सकी"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "सदस्य पोर्टल थीम फ़ोल्डर \"%s\" नहीं मिला।"
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "सदस्य पोर्टल थीम बदल दी गई।"
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "%1$s की शिक्षक भूमिका का नाम नहीं बदला या उसे हटाया नहीं जा सकता जब तक उसके शिक्षक सेवकाई → %2$s → %3$s में प्रबंधित होते हैं।"
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "सक्रिय थीम फ़ोल्डर गायब है"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "पता चुना हुआ है — अपने कीबोर्ड से कॉपी करें।"
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "एसेट पथ \"%s\" की अनुमति नहीं है।"
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "नियुक्ति रद्द नहीं की जा सकी"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "नियुक्ति संदेश फिर से भेजा जाएगा"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "कैलेंडर का पता कॉपी कर लिया गया।"
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "कैलेंडर लोड नहीं किए जा सके। कृपया फिर प्रयास करें।"
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "कैलेंडर सहेजे नहीं जा सके।"
+
+#: 
+msgid "The cart could not be added"
+msgstr "चयन जोड़ा नहीं जा सका"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "कलीसिया ने अभी तक आपको ईमेल नहीं किया है।"
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "कलीसिया कार्यालय को सूचित कर दिया गया है। कृपया बाद में फिर प्रयास करें।"
+
+#: 
+msgid "The class does not exist"
+msgstr "कक्षा मौजूद नहीं है"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "यह अनुसूची जिस कक्षा का अनुसरण करती है वह अब मौजूद नहीं है।"
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "इस ईमेल की सामग्री संग्रहीत नहीं है। ChurchCRM केवल ईमेल संपादक में लिखे संदेशों और स्वयंसेवक ईमेल का पाठ रखता है।"
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "इस ईमेल की सामग्री नहीं रखी गई थी।"
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "समन्वयक जोड़ा नहीं जा सका"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "समन्वयक सूची लोड नहीं की जा सकी"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "हर अवसर की तारीख़ और समय उसके कैलेंडर आयोजन से आते हैं, इसलिए आयोजन को खिसकाने से अनुसूची खिसक जाती है।"
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "days पैरामीटर 1 और 365 के बीच की पूर्ण संख्या होनी चाहिए"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "डिफ़ॉल्ट स्वयंसेवक एक व्यक्ति होना चाहिए"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "डिफ़ॉल्ट स्वयंसेवक अनुसूची में सहेजे जाते हैं और अब से बनाए गए अवसरों पर लगते हैं।"
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "डिफ़ॉल्ट स्वयंसेवक एक सूची होने चाहिए"
+
+#: 
+msgid "The description is too long"
+msgstr "विवरण बहुत लंबा है"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "सीमा का अंत उसके आरंभ से पहले है।"
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "सीमा का अंत तारीख़ नहीं है।"
+
+#: 
+msgid "The event could not be staffed"
+msgstr "आयोजन में नियुक्ति नहीं की जा सकी"
+
+#: 
+msgid "The event does not exist"
+msgstr "आयोजन मौजूद नहीं है"
+
+#: 
+msgid "The event is inactive"
+msgstr "आयोजन निष्क्रिय है"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "आयोजन अपने आरंभ के बाद समाप्त होना चाहिए"
+
+#: 
+msgid "The event title"
+msgstr "आयोजन का शीर्षक"
+
+#: 
+msgid "The event title is too long"
+msgstr "आयोजन का शीर्षक बहुत लंबा है"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "वह आयोजन-प्रकार जिससे सेवकाई के नए आयोजन शुरू होते हैं। खाली होने पर, या प्रकार हटा दिए जाने पर, यदि \"Other\" नाम का प्रकार है तो वही उपयोग होता है।"
+
+#: 
+msgid "The event type does not exist"
+msgstr "आयोजन-प्रकार मौजूद नहीं है"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "यह अनुसूची जिस आयोजन-प्रकार का अनुसरण करती है वह अब मौजूद नहीं है।"
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "आयोजन केवल उस कक्षा में ले जाए जा सकते हैं जिससे टीम जुड़ी है"
+
+#: 
+msgid "The events could not be created"
+msgstr "आयोजन बनाए नहीं जा सके"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "आयोजन हटाए नहीं जा सके"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "आयोजनों में नियुक्ति नहीं की जा सकी"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "अनुदान हटाया नहीं जा सका"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "अंतिम तारीख़ पहली तारीख़ से पहले है"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "पात्र स्वयंसेवकों की सूची लोड नहीं की जा सकी"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "अधिकतम संख्या न्यूनतम संख्या से कम नहीं हो सकती"
+
+#: 
+msgid "The message could not be queued"
+msgstr "संदेश कतार में नहीं डाला जा सका"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "न्यूनतम संख्या ऋणात्मक नहीं हो सकती"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "सेवकाई बनाई नहीं जा सकी"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "सेवकाई निष्क्रिय नहीं की जा सकी"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "सेवकाई हटाई नहीं जा सकी"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "सेवकाई फिर सक्रिय नहीं की जा सकी"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "सेवकाई सहेजी नहीं जा सकी"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "अवसर हटाया नहीं जा सका"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "अवसर की कोई अनुसूची नहीं है"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "अवसर बनाए नहीं जा सके"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "मूल स्वयंसेवक मुक्त हो जाता है और विकल्प पद संभालता है। दोनों को सूचित किया जाता है।"
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "मूल स्वयंसेवक पद पर बना रहता है। दोनों को सूचित किया जाता है।"
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "आपके द्वारा माँगा गया पृष्ठ मौजूद नहीं है। हो सकता है उसे स्थानांतरित या हटा दिया गया हो।"
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "पद किसी दूसरी सेवकाई का है"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "पद हटाया नहीं जा सका"
+
+#: 
+msgid "The position could not be saved"
+msgstr "पद सहेजा नहीं जा सका"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "पद अब भी भरा है, इसलिए कार्रवाई की आवश्यकता नहीं है जब तक आप सूची समायोजित न करना चाहें।"
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "योग्यता हटाई नहीं जा सकी"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "योग्यता सहेजी नहीं जा सकी"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "योग्य स्वयंसेवक लोड नहीं किए जा सके"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "आवृत्ति में बताया जाना चाहिए कि आयोजन कैसे दोहराए जाते हैं"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "%2$s की जगह %1$s को सेवा देने का अनुरोध स्वीकृत कर दिया गया है।"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "%2$s की जगह %1$s को सेवा देने का अनुरोध स्वीकृत नहीं किया गया।"
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "नियुक्ति आवश्यकताओं में एक ही पद दो बार सूचीबद्ध है"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "अनुसूची निष्क्रिय नहीं की जा सकी"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "अनुसूची हटाई नहीं जा सकी"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "अनुसूची फिर सक्रिय नहीं की जा सकी"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "अनुसूची सहेजी नहीं जा सकी"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "अनुसूची अपडेट हो चुकी है, इसलिए आगे कुछ करने की आवश्यकता नहीं है।"
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "अनुसूची की अवधि अपने आरंभ से पहले समाप्त होती है"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "अनुसूची की नियुक्ति आवश्यकताएँ लोड नहीं की जा सकीं"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "नियुक्ति आवश्यकताएँ लोड नहीं की जा सकीं"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "नियुक्ति आवश्यकताएँ रीसेट नहीं की जा सकीं"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "नियुक्ति आवश्यकताएँ सहेजी नहीं जा सकीं"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "नियुक्ति आवश्यकताएँ एक सूची होनी चाहिए"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "नियुक्ति योजना लोड नहीं की जा सकी"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "सीमा का आरंभ तारीख़ नहीं है।"
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "विकल्प पर निर्णय नहीं लिया जा सका"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "विकल्प अनुरोध लोड नहीं किए जा सके"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "शिक्षक केवल इस टीम के किसी पद में आयात किए जा सकते हैं"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "%1$s के शिक्षक सेवकाई → %2$s → %3$s में प्रबंधित होते हैं। विद्यार्थियों को यहाँ अब भी बदला जा सकता है।"
+
+#: 
+msgid "The team could not be deleted"
+msgstr "टीम हटाई नहीं जा सकी"
+
+#: 
+msgid "The team could not be saved"
+msgstr "टीम सहेजी नहीं जा सकी"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "टीम इस सेवकाई की नहीं है"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "थीम फ़ोल्डर नहीं मिला।"
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "वह प्रकार जिससे सेवकाई के कैलेंडर टैब पर नया आयोजन शुरू होता है। इसे हर आयोजन के लिए अब भी बदला जा सकता है, उदाहरण के लिए ऐसी कक्षा के लिए जिसे उपस्थिति गणना की श्रेणियाँ चाहिए।"
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "स्वयंसेवक नियुक्ति सहेजी नहीं जा सकी"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "%s सेवकाई का स्वयंसेवक पूल।"
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "स्वयंसेवक सेटअप बदलाव सहेजा नहीं जा सका"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "अवधि अपने आरंभ से पहले समाप्त होती है"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "इसके समन्वयक आयोजन जोड़ने की अनुमति के बिना अपनी सेवकाई के आयोजन इस कैलेंडर पर पिन कर सकते हैं।"
+
+#: 
+msgid "Theme"
+msgstr "थीम"
+
+#: 
+msgid "Themes"
+msgstr "थीम"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "थीम आपकी कलीसिया द्वारा उपलब्ध कराई जाती हैं, ChurchCRM द्वारा नहीं, और ChurchCRM परियोजना द्वारा सत्यापित नहीं हैं।"
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "आईडी %d वाला कोई कलीसिया कैलेंडर नहीं है।"
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "आईडी %d वाला कोई सिस्टम कैलेंडर नहीं है।"
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "ये वे विवरण हैं जो कलीसिया के पास आपके लिए दर्ज हैं। परिवर्तन तुरंत सहेज लिए जाते हैं।"
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "ये वे स्वयंसेवक टीमें हैं जिनकी आप देखभाल करते हैं। इसके पद सेट करने, यह बताने कि कौन कहाँ सेवा कर सकता है, और आगे के सप्ताह भरने के लिए एक खोलें।"
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "ये आयोजन एक श्रृंखला नहीं हैं: ये शीर्षक, प्रकार या कक्षा में भिन्न हैं"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "ये सेवकाइयाँ और लोग चाहती हैं। उन्हें अपनी रुचि बताएँ और कोई आपसे संपर्क करेगा।"
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "ये आवश्यकताएँ अनुसूची से आती हैं। यहाँ सहेजने से केवल यह अवसर बदलता है।"
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "ये संख्याएँ केवल स्व-सेवा खातों को गिनती हैं: वे लोग जिनका लॉगिन केवल सदस्य पोर्टल तक पहुँच सकता है और कहीं नहीं।"
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "ये लोग अब भी नियुक्त हैं, लेकिन जो पद वे संभालते हैं वह अब इस तारीख़ की नियुक्ति योजना का हिस्सा नहीं है।"
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "ये लोग अब भी नियुक्त हैं, लेकिन जो पद वे संभालते हैं वह अब इस अवसर की नियुक्ति योजना का हिस्सा नहीं है।"
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "इन निर्धारित पदों को अब भी किसी की आवश्यकता है।"
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "%1$s की ये टीमें रविवार स्कूल कक्षा से जुड़ी हैं: %2$s। पहले उन्हें अलग करें।"
+
+#: 
+msgid "They could not be added"
+msgstr "उन्हें जोड़ा नहीं जा सका"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "उन्हें इस सेवकाई से हटाया नहीं जा सका"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "वे आयोजन समाप्त होने के %d मिनट बाद समाप्त करते हैं।"
+msgstr[1] "वे आयोजन समाप्त होने के %d मिनट बाद समाप्त करते हैं।"
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "वे आयोजन समाप्त होने से %d मिनट पहले समाप्त करते हैं।"
+msgstr[1] "वे आयोजन समाप्त होने से %d मिनट पहले समाप्त करते हैं।"
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "वे यहाँ पहले से स्वयंसेवक थे"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "यह नियुक्ति %1$s है और इसे %2$s में नहीं बदला जा सकता"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "यह नियुक्ति अब सक्रिय नहीं है"
+
+#: 
+msgid "This email is not in your history."
+msgstr "यह ईमेल आपके इतिहास में नहीं है।"
+
+#: 
+msgid "This event has already happened"
+msgstr "यह आयोजन हो चुका है"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "यह समीक्षा के लिए कलीसिया कार्यालय को जाता है। कर्मचारी के स्वीकृत करने तक, नया पारिवारिक सदस्य यहाँ समीक्षा की प्रतीक्षा में दिखता है।"
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "यह समूह किसी स्वयंसेवक सेवकाई का पूल है और सेवकाई के साथ हटा दिया जाता है"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "यह समूह %s का स्वयंसेवक पूल है और उसी सेवकाई से प्रबंधित होता है।"
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "यह समूह %s का स्वयंसेवक पूल है। इसे उसी सेवकाई से प्रबंधित किया जाता है।"
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "इस इंस्टॉलेशन में अभी कोई कैलेंडर नहीं है।"
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "यह एक अनुस्मारक है कि आपकी सेवा जल्द निर्धारित है।"
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "यह मान्य थीम फ़ोल्डर नाम नहीं है।"
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "यह आपकी टीम की तारीख़ों में से नहीं है।"
+
+#: 
+msgid "This is not one of your teams."
+msgstr "यह आपकी टीमों में से नहीं है।"
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "यहीं कलीसिया डाक भेजती है और आपके घराने के बारे में किसे फ़ोन करती है।"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "यह आपका कलीसिया खाता है। आप अपने और अपने परिवार के लिए जो कुछ कर सकते हैं वह सब यहीं है।"
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "इस सेवकाई का कैलेंडर में कोई आगामी आयोजन नहीं है।"
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "इस सेवकाई का \"%s\" शीर्षक का कोई आगामी आयोजन नहीं है। अनुसूची पहले से मौजूद आयोजनों का अनुसरण करती है: पहले उन्हें सेवकाई के कैलेंडर टैब पर जोड़ें।"
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "इस सेवकाई का कोई स्वयंसेवक पूल समूह नहीं है"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "यह सेवकाई अभी सहायता नहीं माँग रही"
+
+#: 
+msgid "This ministry's events"
+msgstr "इस सेवकाई के आयोजन"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "इस सेवकाई के आयोजन (अभी कोई आयोजन नहीं चुना गया)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "यह अवसर फिर अपनी अनुसूची का अनुसरण करता है"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "यह अवसर हो चुका है"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "यह अवसर हो चुका है और इसकी नियुक्तियाँ अब बदली नहीं जा सकतीं"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "यह अवसर रद्द कर दिया गया है"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "इस अवसर की अपनी नियुक्ति आवश्यकताएँ हैं, जो इसकी अनुसूची से अलग हैं।"
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "यह पृष्ठ आपके खाते का हिस्सा नहीं है। यदि आपको लगता है कि होना चाहिए, तो कलीसिया कार्यालय से पूछें।"
+
+#: 
+msgid "This page was not found"
+msgstr "यह पृष्ठ नहीं मिला"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "सदस्य पोर्टल का यह भाग स्वयंसेवक टीम अगुआओं के लिए है।"
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "इस पद पर नियुक्ति इसका टीम अगुआ या समन्वयक करता है, पंजीकरण से नहीं"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "यह अनुसूची हटाई नहीं जा सकती: %d स्वयंसेवक नियुक्तियाँ अब भी इसके अवसरों का संदर्भ देती हैं।"
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "इस अनुसूची की अभी कोई नियुक्ति आवश्यकता नहीं है"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "यह अनुसूची निष्क्रिय है। इसके अवसर बनाने के लिए इसे फिर सक्रिय करें।"
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "इस विकल्प अनुरोध पर पहले ही निर्णय हो चुका है"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "इस टीम का अभी कोई पद नहीं है"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "यह टीम इस आयोजन में पहले से नियुक्ति कर रही है"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "यह टेम्पलेट फ़ाइल \"%s\" माँगता है, जो थीम में नहीं है।"
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "यह थीम सक्रिय नहीं की जा सकती"
+
+#: 
+msgid "This theme has no problems."
+msgstr "इस थीम में कोई समस्या नहीं है।"
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "ChurchCRM का यह संस्करण इस पथ पर टेम्पलेट का उपयोग नहीं करता, इसलिए अधिलेखन कभी प्रदर्शित नहीं होता।"
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "उन्हें इस टीम के स्वयंसेवक टैब पर चुनें, फिर उन्हें यहाँ नियुक्त करें।"
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "चयन आपके करते ही सहेज लिए जाते हैं।"
+
+#: 
+msgid "Times come from this event"
+msgstr "समय इस आयोजन से आते हैं"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "हर अनुसूची भरता है, कतार में जो है उसे भेजता है और पूर्ण अवसर बंद करता है, अगले निर्धारित रन की प्रतीक्षा किए बिना।"
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "{{name}} को मना करें? मूल स्वयंसेवक बना रहता है और उसे सूचित किया जाता है।"
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "सदस्य पोर्टल टेम्पलेट कैश बंद करें और हर टेम्पलेट का नाम HTML टिप्पणी में प्रिंट करें। थीम डिज़ाइनरों के लिए; सामान्य उपयोग में बंद रखें।"
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "इसे उस सेवकाई के लिए चालू करें जिसकी टीमें रविवार स्कूल कक्षाएँ पढ़ाती हैं। तब इसकी टीमें किसी कक्षा से जोड़ी जा सकती हैं, और इसकी अनुसूचियाँ और आयोजन एक कक्षा का उपयोग कर सकते हैं।"
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "पोर्टल टेम्पलेट कैश बंद करता है और हर टेम्पलेट का नाम HTML टिप्पणी में प्रिंट करता है। थीम डिज़ाइनरों के लिए; सामान्य उपयोग में इसे बंद रखें।"
+
+#: 
+msgid "Two-factor authentication"
+msgstr "टू-फैक्टर ऑथेंटिकेशन"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "न भरे पद"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "अज्ञात वितरण त्रुटि"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "अज्ञात अवसर स्थिति"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "अज्ञात अनुसूची लिंक मोड"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "अज्ञात स्वयंसेवक सेवकाई"
+
+#: 
+msgid "Until"
+msgstr "तक"
+
+#: 
+msgid "Upcoming availability"
+msgstr "आगामी उपलब्धता"
+
+#: 
+msgid "Update your details"
+msgstr "अपना विवरण अपडेट करें"
+
+#: 
+msgid "Update your family details"
+msgstr "अपने परिवार का विवरण अपडेट करें"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "एकल आयोजन में नियुक्ति के लिए इस आयोजन में नियुक्ति करें का उपयोग करें"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "अनुसूची की आवश्यकताओं का उपयोग करें"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "उपयोगकर्ता के पास आयोजन जोड़ने की अनुमति होनी चाहिए, या वह स्वयंसेवक सेवकाई का समन्वयक हो, और आयोजन मॉड्यूल सक्षम होना चाहिए"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "उपयोगकर्ता के पास आयोजन जोड़ने की अनुमति होनी चाहिए, या वह उस स्वयंसेवक सेवकाई का समन्वयक हो जिसका यह कैलेंडर है"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — स्वयंसेवक अवसर (पुराना)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — पुराने स्वयंसेवक अवसर"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — सेवकाइयाँ"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — स्वयंसेवक प्रबंधन"
+
+#: 
+msgid "Valid"
+msgstr "मान्य"
+
+#: 
+msgid "Validation"
+msgstr "सत्यापन"
+
+#: 
+msgid "View event"
+msgstr "कार्यक्रम देखें"
+
+#: 
+msgid "View my schedule"
+msgstr "मेरी अनुसूची देखें"
+
+#: 
+msgid "View only"
+msgstr "केवल देखें"
+
+#: 
+msgid "View person"
+msgstr "व्यक्ति देखें"
+
+#: 
+msgid "View the event"
+msgstr "आयोजन देखें"
+
+#: 
+msgid "View this email"
+msgstr "यह ईमेल देखें"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "स्वयंसेवक (पुराना)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "स्वयंसेवक प्रबंधन V2 सक्षम नहीं है"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "स्वयंसेवक सेवकाई"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "स्वयंसेवक नियुक्ति"
+
+#: 
+msgid "Volunteer declined"
+msgstr "स्वयंसेवक ने अस्वीकार किया"
+
+#: 
+msgid "Volunteer experience"
+msgstr "स्वयंसेवक अनुभव"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "स्वयंसेवक पद अब भी भरे जाने हैं"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "स्वयंसेवक अनुस्मारक"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "स्वयंसेवक पंजीकरण"
+
+#: 
+msgid "Volunteer times"
+msgstr "स्वयंसेवक समय"
+
+#: 
+msgid "Volunteering"
+msgstr "स्वयंसेवा"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "स्वयंसेवा उसी तरह संगठित जैसे कलीसिया उसे चलाती है। हर सेवकाई की टीमें और पद होते हैं; लोग पदों के लिए योग्य बनाए जाते हैं और सेवकाई के पूल समूह के सदस्य होते हैं; अनुसूचियाँ कैलेंडर के आयोजनों का अनुसरण करती हैं और नियुक्ति आवश्यकताओं के साथ तारीख़ वाले अवसर बनाती हैं; समन्वयक लोगों को नियुक्त करते हैं, जो स्वीकार करते हैं, अस्वीकार करते हैं या विकल्प प्रस्तावित करते हैं; अनुस्मारक और अलर्ट ईमेल से जाते हैं। व्यवस्थापक और सेवकाइयाँ प्रबंधित करें अनुमति वाले उपयोगकर्ता हर सेवकाई देखते हैं और उन्हें बना, निष्क्रिय और हटा सकते हैं। सेवकाई के समन्वयक को इसके बजाय मेरी सेवकाइयाँ प्रबंधित करें अनुमति दी जाती है: तब साइडबार में सेवकाइयाँ शीर्षक केवल वही सेवकाइयाँ दिखाता है जिनका वे समन्वय करते हैं। टीम का अगुआ अपनी टीम सदस्य पोर्टल से चलाता है। सदस्य अपनी अनुसूची देखने, उत्तर देने, पंजीकरण करने और सहायता का प्रस्ताव देने के लिए सदस्य पोर्टल का उपयोग करते हैं।"
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "नियुक्त स्वयंसेवक: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "स्वयंसेवक समाप्त करते हैं"
+
+#: 
+msgid "Volunteers needed"
+msgstr "स्वयंसेवक चाहिए"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "%s के स्वयंसेवक इन आयोजनों में नियुक्त हैं, इसलिए उन्हें यहाँ हटाया नहीं जा सकता। उस सेवकाई से अपनी नियुक्ति हटाने को कहें, या कैलेंडर प्रबंधित करने वाले किसी से कहें।"
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "{{names}} के स्वयंसेवक उनमें से कुछ में नियुक्त हैं। जब तक आप कैलेंडर प्रबंधित नहीं करते, वह नियुक्ति हटाए जाने तक हटाना अस्वीकार किया जाता है।"
+
+#: 
+msgid "Volunteers start"
+msgstr "स्वयंसेवक शुरू करते हैं"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "स्वयंसेवक आयोजन शुरू होने के %d मिनट बाद शुरू करते हैं।"
+msgstr[1] "स्वयंसेवक आयोजन शुरू होने के %d मिनट बाद शुरू करते हैं।"
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "स्वयंसेवक आयोजन शुरू होने से %d मिनट पहले शुरू करते हैं।"
+msgstr[1] "स्वयंसेवक आयोजन शुरू होने से %d मिनट पहले शुरू करते हैं।"
+
+#: 
+msgid "Waiting for a reply"
+msgstr "उत्तर की प्रतीक्षा"
+
+#: 
+msgid "Waiting for review"
+msgstr "समीक्षा की प्रतीक्षा"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "आपके समन्वयक की पुष्टि की प्रतीक्षा।"
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "जब कुछ भरने की आवश्यकता होगी तो हम आपको ईमेल करेंगे।"
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "रविवार की सुबह हमें और सहायता चाहिए — किसी अनुभव की आवश्यकता नहीं।"
+
+#: 
+msgid "Welcome, %s"
+msgstr "स्वागत है, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "क्या बदलना है?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "इस सप्ताह किस पर आपका ध्यान चाहिए"
+
+#: 
+msgid "What the check found"
+msgstr "जाँच में क्या मिला"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "स्वयंसेवक अनुभव क्या हैं"
+
+#: 
+msgid "What you want to say"
+msgstr "आप क्या कहना चाहते हैं"
+
+#: 
+msgid "When"
+msgstr "कब"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "जब कोई स्वयंसेवक अपनी जगह किसी को प्रस्तावित करता है, तो वह आपके स्वीकृत या अस्वीकार करने के लिए यहाँ दिखता है।"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "जब कोई स्वयंसेवक अपनी जगह किसी को प्रस्तावित करता है, तो वह आपके स्वीकृत करने के लिए यहाँ दिखता है।"
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "जब कोई आपको किसी टीम में रखता है, या आप स्वयं पंजीकरण करते हैं, तो वह यहाँ दिखेगा।"
+
+#: 
+msgid "Where"
+msgstr "कहाँ"
+
+#: 
+msgid "Where the dates come from"
+msgstr "तारीख़ें कहाँ से आती हैं"
+
+#: 
+msgid "Where we reach you"
+msgstr "हम आपसे कहाँ संपर्क करें"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "कौन-सा स्वयंसेवक प्रबंधन अनुभव सक्रिय है। V1 पुरानी स्वयंसेवक अवसर सुविधा है; V2 नया अनुसूचन और नियुक्ति कार्यप्रवाह है। \"दोनों\" माइग्रेशन के दौरान दोनों को साथ-साथ दिखाता है।"
+
+#: 
+msgid "Which events"
+msgstr "कौन-से आयोजन"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "यह कलीसिया कौन-सा स्वयंसेवक अनुभव उपयोग करती है। दाईं ओर का कार्ड हर विकल्प समझाता है।"
+
+#: 
+msgid "Who is covering"
+msgstr "कौन सेवा कर रहा है"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "किसकी आवश्यकता है, कौन लगा है, और क्या अब भी कम है"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "जिसने सबसे पहले सेवा की थी वह पहले सूचीबद्ध है।"
+
+#: 
+msgid "Work Email"
+msgstr "कार्य ईमेल"
+
+#: 
+msgid "Yearly"
+msgstr "वार्षिक"
+
+#: 
+msgid "You"
+msgstr "आप"
+
+#: 
+msgid "You are already helping that day"
+msgstr "आप उस दिन पहले से सहायता कर रहे हैं"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "आप उस दिन पहले से {{what}} के रूप में सहायता कर रहे हैं। इसके लिए भी पंजीकरण करें?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "आपको इसे बदलने की अनुमति नहीं है। कृपया कलीसिया कार्यालय से संपर्क करें।"
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "आप अभी किसी परिवार से संबद्ध नहीं हैं"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "आप अभी किसी परिवार रिकॉर्ड का हिस्सा नहीं हैं।"
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "आप सूची में हैं — धन्यवाद।"
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "आप इसे अपनी स्वयंसेवक अनुसूची में देख या बदल सकते हैं।"
+
+#: 
+msgid "You cannot open this page"
+msgstr "आप यह पृष्ठ नहीं खोल सकते"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "आप स्वयं को अपना विकल्प प्रस्तावित नहीं कर सकते"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "आपको उसके लिए पंजीकृत नहीं किया जा सका।"
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "आप अभी किसी स्वयंसेवक टीम का नेतृत्व नहीं करते।"
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "आपके पास नया कैलेंडर पता है। पुराना अब काम नहीं करता।"
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "आपकी सेवा निर्धारित की गई है"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "आपकी सेवा निर्धारित की गई है।"
+
+#: 
+msgid "You lead this"
+msgstr "आप इसका नेतृत्व करते हैं"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "आप केवल उसी टीम की अनुसूची बना सकते हैं जिसका आप नेतृत्व करते हैं"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "आप इसके लिए सूची में वापस आ जाएँगे।"
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "आपका खाता किसी व्यक्ति रिकॉर्ड से जुड़ा नहीं है। कृपया कलीसिया कार्यालय से संपर्क करें।"
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "आपकी कैलेंडर सदस्यता सहेजी गई।"
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "आपका वर्तमान पता तुरंत काम करना बंद कर देगा। जिन्हें आपने दिया है उन्हें नए पते की आवश्यकता होगी।"
+
+#: 
+msgid "Your details"
+msgstr "आपका विवरण"
+
+#: 
+msgid "Your details have been saved."
+msgstr "आपका विवरण सहेज लिया गया है।"
+
+#: 
+msgid "Your family details have been saved."
+msgstr "आपके परिवार का विवरण सहेज लिया गया है।"
+
+#: 
+msgid "Your photo"
+msgstr "आपकी फ़ोटो"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "आपकी फ़ोटो सहेज ली गई है।"
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "आपकी अनुसूची लोड नहीं की जा सकी।"
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "आपका सत्र समाप्त हो गया है। कृपया फिर साइन इन करें।"
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "आपका विकल्प अनुरोध स्वीकृत हो गया"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "आपका विकल्प अनुरोध स्वीकृत नहीं हुआ"
+
+#: 
+msgid "already staffed by this team"
+msgstr "इस टीम द्वारा पहले से नियुक्त"
+
+#: 
+msgid "body is required"
+msgstr "body आवश्यक है"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds कैलेंडर आईडी की सूची होनी चाहिए"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents इनमें से एक होना चाहिए: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId समूह आईडी या null होना चाहिए"
+
+#: 
+msgid "end offset"
+msgstr "समाप्ति ऑफ़सेट"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds आयोजन आईडी की सूची होनी चाहिए"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "हर संदेश भेजा जा चुका है या अब भी कतार में है"
+
+#: 
+msgid "has not served yet"
+msgstr "ने अभी सेवा नहीं की"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId पद आईडी होनी चाहिए"
+
+#: 
+msgid "inactive family"
+msgstr "निष्क्रिय परिवार"
+
+#: 
+msgid "line %d"
+msgstr "पंक्ति %d"
+
+#: 
+msgid "marked do not email"
+msgstr "ईमेल न करें चिह्नित"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "संदेश भेजे नहीं जा सके"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "पाँच प्रयासों के बाद भी संदेश भेजे नहीं जा सके"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "संदेश भेजे जाने की प्रतीक्षा में"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds सेवकाई आईडी की सूची होनी चाहिए"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "आयोजन समाप्त होने के मिनट बाद"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "आयोजन शुरू होने के मिनट बाद"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "आयोजन समाप्त होने से मिनट पहले"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "आयोजन शुरू होने से मिनट पहले"
+
+#: 
+msgid "never"
+msgstr "कभी नहीं"
+
+#: 
+msgid "no email address"
+msgstr "कोई ईमेल पता नहीं"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds और familyIds धनात्मक पूर्णांकों की ऐरे होनी चाहिए"
+
+#: 
+msgid "record not found"
+msgstr "रिकॉर्ड नहीं मिला"
+
+#: 
+msgid "same address as another recipient"
+msgstr "किसी अन्य प्राप्तकर्ता जैसा ही पता"
+
+#: 
+msgid "single event"
+msgstr "एकल आयोजन"
+
+#: 
+msgid "start offset"
+msgstr "आरंभ ऑफ़सेट"
+
+#: 
+msgid "subject and body are required"
+msgstr "subject और body आवश्यक हैं"
+
+#: 
+msgid "subject is required"
+msgstr "subject आवश्यक है"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject 255 अक्षरों या उससे कम का होना चाहिए"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool सत्य या असत्य होना चाहिए"
+
+#: 
+msgid "window end"
+msgstr "अवधि का अंत"
+
+#: 
+msgid "window start"
+msgstr "अवधि का आरंभ"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} जोड़े गए, {{alreadyMembers}} यहाँ पहले से स्वयंसेवक थे"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} अवसर बनाए गए, {{existing}} पहले से थे"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} ने {{className}} के लिए {{total}} आयोजन बनाए ({{upcoming}} आगामी)।"
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} भी उनमें से कुछ में सेवा करते हैं।"
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} पहले से इस सेवकाई का समन्वय करते हैं"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} नियुक्त किए गए"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} इस अवसर में पहले से {{position}} के रूप में सेवा कर रहे हैं। आप फिर भी उन्हें नियुक्त कर सकते हैं।"
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} योग्य हैं लेकिन इस सेवकाई के स्वयंसेवक पूल में नहीं हैं। उन्हें नियुक्त करने से वे केवल इस अवसर में जुड़ते हैं।"
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} अब इस सेवकाई का समन्वय करते हैं"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: संख्याएँ 0 और {{max}} के बीच होनी चाहिए।"
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: अधिकतम न्यूनतम से कम नहीं हो सकता।"
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} अब योग्य नहीं"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} योग्य"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} {{substitute}} से अपनी जगह लेने को कहते हैं"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{date}} को {{title}} बनाया गया। अभी नियुक्ति करें?"
+

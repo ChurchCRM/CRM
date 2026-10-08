@@ -1,182 +1,52 @@
 {
-  "Select at least one classification to include in the directory.": "Válassz legalább egy besorolást, hogy szerepeljen a névjegyzékben.",
-  "Geocoding services": "Geokódoló szolgáltatások",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "A kipróbálandó geokódoló szolgáltatások, a kiválasztott sorrendben. A Nominatim (OpenStreetMap) világszerte működik; a US Census (US Census Bureau) csak amerikai címeket fed le. A használatához válaszd ki a US Census-t is. Ha egyik sincs kiválasztva, a Nominatim lesz használva.",
-  "New Record Defaults": "Új rekordok alapértelmezései",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Ez megkeresi a térképkoordinátákat minden olyan családhoz, amelyből hiányzik, a Térképbeállításokban kiválasztott geokódoló szolgáltatásokkal. A családokat 50-es csoportokban dolgozza fel; egy csoport egy geokódoló szolgáltatással nagyjából egy percig tart, többel tovább. Futás közben nyitva hagyhatod ezt az oldalt. Folytatod?",
-  "Used for new records and for geocoding when a record has no country.": "Új rekordokhoz és geokódoláshoz használatos, ha a rekordnak nincs országa.",
-  "Copy from Church Info": "Másolás a gyülekezet adataiból",
-  "Could not copy the church address.": "A gyülekezet címét nem sikerült átmásolni.",
-  "Could not match the church country.": "A gyülekezet országát nem sikerült megfeleltetni.",
-  "Class lists, attendance sheets, and photo books": "Osztálylisták, jelenléti ívek és fotókönyvek",
-  "Group membership lists and Sunday School class reports": "Csoporttag-listák és vasárnapi iskolai osztályjelentések",
-  "Your fiscal year starts in %s.": "A pénzügyi éved kezdete: %s.",
-  "An error occurred": "Hiba történt",
-  "Approve": "Jóváhagyás",
-  "Approve selected": "Kijelöltek jóváhagyása",
-  "Approved": "Jóváhagyva",
-  "Change in People Settings": "Módosítás a Személy-beállításokban",
-  "Could not approve the selected registrations": "A kijelölt regisztrációkat nem sikerült jóváhagyni",
-  "Could not approve this family": "Ezt a családot nem sikerült jóváhagyni",
-  "Pending Registrations": "Függő regisztrációk",
-  "Pending review": "Áttekintésre vár",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "A nyilvános regisztrációs űrlapon beérkezett regisztrációk áttekintésre várnak. Az e-mail vagy telefon nélküli bejegyzések meg vannak jelölve – a kapcsolatfelvétel előtt ellenőrizd az elérhetőségeket.",
-  "Review now": "Áttekintés most",
-  "Review self registrations": "Önregisztrációk áttekintése",
-  "Select month": "Hónap kiválasztása",
-  "Self-registration is disabled": "Az önregisztráció ki van kapcsolva",
-  "Self-registration is enabled": "Az önregisztráció be van kapcsolva",
-  "The public registration form is turned off. Existing registrations are listed below.": "A nyilvános regisztrációs űrlap ki van kapcsolva. A meglévő regisztrációk alább láthatók.",
-  "This family is not a pending self-registration": "Ez a család nem függőben lévő önregisztráció",
-  "This person belongs to a family — approve the family instead": "Ez a személy családhoz tartozik – inkább a családot hagyd jóvá",
-  "This person is not a pending self-registration": "Ez a személy nem függőben lévő önregisztráció",
-  "This self-registered family is pending review": "Ez az önregisztrált család áttekintésre vár",
-  "Total registrations": "Összes regisztráció",
-  "Visitors can sign up on your public registration form.": "A látogatók regisztrálhatnak a nyilvános regisztrációs űrlapon.",
-  "Yesterday": "Tegnap",
-  "days ago": "napja",
-  "self-registrations are waiting for review": "önregisztráció vár áttekintésre",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "A születésnapi lapokat a személynek, a házassági évfordulósakat a párnak címezzük.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Postai címkék a jelentésben szereplő személyeknek. Az önálló cím nélküli személy a családi címére kapja.",
-  "One label for each couple.": "Egy címke minden párnak.",
-  "Print Labels": "Címkék nyomtatása",
-  "That role is not one of this group's roles.": "Ez a szerep nem tartozik a csoport szerepei közé.",
-  "\"%s\" is not a kind of calendar this page knows about.": "A(z) „%s” nem olyan naptártípus, amelyet ez az oldal ismer.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s nem tud szolgálni, és helyettesként %2$s személyt javasolta.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s már szerepel a(z) %2$s önkéntes-készletben, és újra segíteni szeretne.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s már kapcsolódik ehhez: %2$s, itt: %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s a(z) %2$s osztályban van, mint %3$s. Először távolítsd el az osztályból; az itteni képesítés ezután az egyik tanárává teszi.",
-  "%1$s is not an event of %2$s": "%1$s nem esemény itt: %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s vasárnapi iskolai osztály marad, amíg a tanárait a Szolgálati területek → %2$s → %3$s alatt kezelik. Előbb válaszd le a csapatról.",
-  "%1$s wants to help with %2$s": "%1$s segíteni szeretne itt: %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s segíteni szeretne itt: %2$s, és fel lett véve az önkéntes-készletébe.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: a maximum %2$d, de %3$d alapértelmezett önkéntes van kiválasztva. Távolíts el egyet, vagy emeld a maximumot.",
-  "%d day": {
-    "one": "%d nap",
-    "other": "%d nap"
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)",
-    "other": "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d alapértelmezés kihagyva: a képesítés visszavonva",
-    "other": "%d alapértelmezés kihagyva: a képesítés visszavonva"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d alapértelmezett önkéntes beosztva",
-    "other": "%d alapértelmezett önkéntes beosztva"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d sikertelen",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Ehhez a pozícióhoz még %d önkéntesre van szükség. Nyisd meg az alkalmat a hiány pótlásához.",
-    "other": "Ehhez a pozícióhoz még %d önkéntesre van szükség. Nyisd meg az alkalmat a hiány pótlásához."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d új alkalom",
-    "other": "%d új alkalom"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Egy közelgő alkalomhoz még %d önkéntesre van szükség.",
-    "other": "Közelgő alkalmakhoz még %d önkéntesre van szükség."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "%s naptár",
-  "%s Family": "%s család",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "A(z) %s nem biztosít tanárokat a vasárnapi iskolához, így csapatai, ütemezései és eseményei nem használhatnak osztályt. Az önkéntes-felelős ezt a Szolgálati terület szerkesztése alatt módosíthatja.",
-  "%s email from the church": {
-    "one": "%s e-mail a gyülekezettől",
-    "other": "%s e-mail a gyülekezettől"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "%s család",
-  "%s has declined a volunteer assignment.": "%s elutasított egy önkéntes beosztást.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "A(z) %s területnek nincs Tanár nevű szerepe, így tanárai nem kezelhetők csapatból",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "A(z) %s területnek nincsenek közelgő alkalmai a naptárban. Az ütemezés már meglévő eseményeket követ: előbb add hozzá az osztály alkalmait a terület Naptár lapján az Új ismétlődő esemény gombbal.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s továbbra is szolgálatra számít. Ha ez nem lehetséges, kérjük, vedd fel a kapcsolatot a koordinátorral.",
-  "%s not sent (%s): %s": "%s nem lett elküldve (%s): %s",
-  "%s person in your household": {
-    "one": "%s személy a háztartásodban",
-    "other": "%s személy a háztartásodban"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s pozíció",
-    "other": "%s pozíció"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: ugyanaz a személy kétszer van kiválasztva alapértelmezett önkéntesnek",
-  "(no subject)": "(nincs tárgy)",
-  "A birthday cannot be in the future.": "A születésnap nem lehet a jövőben.",
-  "A calendar event": "Naptáresemény",
-  "A calendar id must be a number.": "A naptár azonosítójának számnak kell lennie.",
-  "A class that no longer exists": "Egy már nem létező osztály",
-  "A class with no meetings on the calendar cannot be chosen yet.": "Olyan osztály, amelynek nincsenek alkalmai a naptárban, még nem választható.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "Olyan osztály, amelynek nincsenek alkalmai a naptárban, még nem választható. A terület koordinátora felveheti az alkalmakat a terület Naptár lapján.",
-  "A class's meetings": "Egy osztály alkalmai",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "A koordinátor mindent kezelhet ebben a szolgálati területben, beleértve azokat a módosításokat is, amelyeket egyébként az önkéntes-felelősnek kellene elvégeznie.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "A terület koordinátora felveheti őket a terület Naptár lapján.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "A terület koordinátora felveheti őket a terület Naptár lapján. Utána generáld újra.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "A koordinátor vezeti az egész szolgálati területet – csapatait, pozícióit, ütemezéseit és minden beosztást.",
-  "A day a month does not have falls on its last day.": "Ha a hónapban nincs ilyen nap, az a hónap utolsó napjára esik.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "Az alapértelmezett önkéntes az ütemezés létszámigényéhez tartozik, nem egyetlen alkalomhoz",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "Alapértelmezett önkéntes csak olyan pozícióhoz választható, amelyet az ütemezés létszámigénye kér",
-  "A from and a to date in YYYY-MM-DD form are required": "Kezdő és záró dátum szükséges ÉÉÉÉ-HH-NN formában",
-  "A minimum count is required": "Minimális létszám megadása kötelező",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "A szolgálati terület saját naptárral, önkéntes-készlettel és első csapattal jön létre, így itt csak a nevét és a feladatát kell eldönteni.",
-  "A ministry name is required": "A szolgálati terület neve kötelező",
-  "A ministry needs at least one team. Rename it instead.": "A szolgálati területnek legalább egy csapata kell legyen. Inkább nevezd át.",
-  "A ministry with that name already exists": "Ilyen nevű szolgálati terület már létezik",
-  "A ministry's own calendar cannot be opened to other ministries": "A szolgálati terület saját naptára nem nyitható meg más területek számára",
-  "A position belongs to a team; choose one": "A pozíció csapathoz tartozik; válassz egyet",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "A pozíció egy munka, amelyet valaki ebben a csapatban végez, például Eszpresszó vagy Énekvezető.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "A pozíció egy szerep, amelyben valaki szolgál, például Eszpresszó vagy Énekvezető.",
-  "A position is required": "Pozíció megadása kötelező",
-  "A position name is required": "A pozíció neve kötelező",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "Képesített önkéntesekkel rendelkező pozíció nem helyezhető át vasárnapi iskolai osztályhoz kapcsolt csapatba vagy onnan ki, mert ez megváltoztatná, ki tanítja az osztályt. Hozd létre a pozíciót inkább a másik csapatban.",
-  "A position with that name already exists in this ministry": "Ilyen nevű pozíció már létezik ebben a szolgálati területben",
-  "A response must be accepted or declined": "A válasznak elfogadásnak vagy elutasításnak kell lennie",
-  "A schedule belongs to a team; choose one": "Az ütemezés csapathoz tartozik; válassz egyet",
-  "A schedule name is required": "Az ütemezés neve kötelező",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Az ütemezés megmondja, mely naptáresemények kapnak létszámot a csapattól: egy istentisztelet-típus, egy osztály alkalmai vagy a szolgálati terület saját eseményei. Adj hozzá egyet, és generáld az alkalmait.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Az ütemezés megmondja, mely naptáreseményeken szolgál ez a csapat: egy istentisztelet-típus, egy osztály alkalmai vagy a szolgálati terület saját eseményei. Adj hozzá egyet, és generáld az alkalmait.",
-  "A schedule that follows a class must name the class": "Osztályt követő ütemezésnek meg kell neveznie az osztályt",
-  "A schedule that follows an event type must name the event type": "Eseménytípust követő ütemezésnek meg kell neveznie az eseménytípust",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Egyetlen eseményre létszámot adó ütemezés nem követhet más eseményeket; töröld, és adj hozzá inkább ütemezést",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "A lehetőségek egyetlen listája, például „Gyermekfelügyelet” vagy „Fogadó”, amelyet a Személyek → Adminisztráció alatt vezetnek. Minden személy meg van jelölve azokkal a lehetőségekkel, amelyekben segíteni hajlandó, a rekordja Önkéntes lapján. Ennyit rögzít: nincsenek csapatok, ütemezések, dátumhoz rendelt beosztások vagy emlékeztető e-mailek. A címkéket a jelentések és a személyrekord használja.",
-  "A square picture of your face works best.": "Egy négyzet alakú arcfotó működik a legjobban.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "A létszámigény az alapértelmezett önkénteseit a \"defaults\" mezőben sorolja fel: [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "A létszámkövetelmény pontosan egy ütemezéshez vagy alkalomhoz tartozik",
-  "A substitute has already been proposed for this assignment": "Ehhez a beosztáshoz már javasoltak helyettest",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "A csapatvezető kezelheti a saját csapatát – pozícióit, ütemezéseit és azt, ki hol szolgál –, de a szolgálati területben semmi mást.",
-  "A team name is required": "A csapat neve kötelező",
-  "A team with that name already exists in this ministry": "Ilyen nevű csapat már létezik ebben a szolgálati területben",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "A téma egy mappa, amelyet a gyülekezeted tölt fel a szerver Include/themes/ könyvtárába. A rendszer alapértelmezett témája a ChurchCRM-mel érkezik.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "Átmeneti beállítás. A régi Önkéntes lehetőségek oldalak és az új Szolgálati területek oldalak egyaránt elérhetők, és a személyrekord mindkét Önkéntes lapot megjeleníti, egyértelműen megjelölve. Használd, amíg a gyülekezetet V1-ről V2-re viszed át, majd válts csak V2-re.",
-  "A volunteer": "Egy önkéntes",
-  "A volunteer has declined an assignment": "Egy önkéntes elutasított egy beosztást",
-  "A volunteer has proposed a substitute": "Egy önkéntes helyettest javasolt",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "Az önkéntes-felelős külön jogosultság nélkül is vezetheti ezt a szolgálati területet. Adj hozzá koordinátort, hogy valaki más vezethesse anélkül, hogy az összes többi területet is megkapná.",
-  "A wedding date cannot be in the future.": "Az esküvő dátuma nem lehet a jövőben.",
-  "Accepted": "Elfogadva",
-  "Account deleted": "Fiók törölve",
-  "Account unlocked": "Fiók feloldva",
-  "Accounts": "Fiókok",
-  "Active must be true or false": "Az aktív értéke igaz vagy hamis lehet",
-  "Active now": "Jelenleg aktív",
-  "Add All": "Mindegyik hozzáadása",
-  "Add Everyone in Cart": "Mindenki hozzáadása a kijelölésből",
-  "Add Volunteer": "Önkéntes hozzáadása",
-  "Add Volunteers to Cart": "Önkéntesek hozzáadása a kijelöléshez",
-  "Add a family member": "Családtag hozzáadása",
-  "Add a position first, then come back and say how many of them are needed.": "Előbb adj hozzá egy pozíciót, aztán gyere vissza, és add meg, hányan kellenek.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Adj a bejelentkezésedhez egy második lépést, hogy a jelszó önmagában ne legyen elég a fiókodhoz.",
-  "Add at least one position to this team, then tick who can serve where.": "Adj hozzá legalább egy pozíciót ehhez a csapathoz, majd jelöld, ki hol szolgálhat.",
-  "Add coordinator": "Koordinátor hozzáadása",
-  "Add from Cart": "Hozzáadás a kijelölésből",
-  "Add its meetings first with New recurring event on the Calendar tab": "Előbb add hozzá az alkalmait a Naptár lapon az Új ismétlődő esemény gombbal",
-  "Add people to the cart before adding them as volunteers": "Add hozzá az embereket a kijelöléshez, mielőtt önkéntesként felveszed őket",
-  "Add position": "Pozíció hozzáadása",
-  "Add schedule": "Ütemezés hozzáadása",
-  "Add team": "Csapat hozzáadása",
-  "Add them on the Calendar tab, then generate again.": "Add hozzá őket a Naptár lapon, majd generáld újra.",
-  "Add them on the Calendar tab.": "Add hozzá őket a Naptár lapon.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Add hozzá ezt a címet a naptáralkalmazásodhoz. Magától frissül, ha a gyülekezeti naptár változik.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Add itt hozzá a szolgálati terület eseményeit: egy munkanapot, egy osztályt, amely minden vasárnap találkozik. Felkerülnek a gyülekezeti naptárra, és létrehozásukkor rögtön beoszthatod rájuk az önkénteseket."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

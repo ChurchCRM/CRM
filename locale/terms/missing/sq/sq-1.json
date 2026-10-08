@@ -1,182 +1,52 @@
 {
-  "Select at least one classification to include in the directory.": "Zgjidhni të paktën një klasifikim për t'u përfshirë në drejtori.",
-  "Geocoding services": "Shërbimet e gjeokodimit",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Shërbimet e gjeokodimit që do të provohen sipas renditjes që i zgjidhni. Nominatim (OpenStreetMap) funksionon në të gjithë botën; US Census (Byroja e Regjistrimit e SHBA-së) mbulon vetëm adresat në Shtetet e Bashkuara. Zgjidhni edhe US Census për ta përdorur. Nëse nuk zgjidhet asnjë, përdoret Nominatim.",
-  "New Record Defaults": "Vlerat e parazgjedhura për regjistrimet e reja",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Kjo gjen koordinatat e hartës për çdo familje që i ka të munguara, duke përdorur shërbimet e gjeokodimit të zgjedhura te Cilësimet e hartës. Familjet i përpunon në grupe me nga 50; një grup zgjat rreth një minutë me një shërbim gjeokodimi dhe më shumë me më tepër. Mund ta mbani këtë faqe të hapur ndërsa ekzekutohet. Të vazhdohet?",
-  "Used for new records and for geocoding when a record has no country.": "Përdoret për regjistrimet e reja dhe për gjeokodim kur një regjistrim nuk ka shtet.",
-  "Copy from Church Info": "Kopjo nga të dhënat e kishës",
-  "Could not copy the church address.": "Adresa e kishës nuk u kopjua dot.",
-  "Could not match the church country.": "Shteti i kishës nuk u përputh dot.",
-  "Class lists, attendance sheets, and photo books": "Listat e klasave, fletët e pjesëmarrjes dhe librat me foto",
-  "Group membership lists and Sunday School class reports": "Listat e anëtarëve të shërbesave dhe raportet e klasave të Shkollës së së Dielës",
-  "Your fiscal year starts in %s.": "Viti juaj fiskal fillon në %s.",
-  "An error occurred": "Ndodhi një gabim",
-  "Approve": "Miratoje",
-  "Approve selected": "Miratoji të zgjedhurit",
-  "Approved": "Miratuar",
-  "Change in People Settings": "Ndryshoje te Cilësimet e personave",
-  "Could not approve the selected registrations": "Regjistrimet e zgjedhura nuk u miratuan dot",
-  "Could not approve this family": "Kjo familje nuk u miratua dot",
-  "Pending Registrations": "Regjistrime në pritje",
-  "Pending review": "Në pritje të shqyrtimit",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Regjistrime që presin shqyrtim nga formulari juaj publik i regjistrimit. Hyrjet pa email ose telefon janë shënuar – verifikoni të dhënat e kontaktit përpara se t'i kontaktoni.",
-  "Review now": "Shqyrtoje tani",
-  "Review self registrations": "Shqyrto vetëregjistrimet",
-  "Select month": "Zgjidhni muajin",
-  "Self-registration is disabled": "Vetëregjistrimi është çaktivizuar",
-  "Self-registration is enabled": "Vetëregjistrimi është aktivizuar",
-  "The public registration form is turned off. Existing registrations are listed below.": "Formulari publik i regjistrimit është i fikur. Regjistrimet ekzistuese janë listuar më poshtë.",
-  "This family is not a pending self-registration": "Kjo familje nuk është vetëregjistrim në pritje",
-  "This person belongs to a family — approve the family instead": "Ky person i përket një familjeje – miratoni familjen në vend të tij",
-  "This person is not a pending self-registration": "Ky person nuk është vetëregjistrim në pritje",
-  "This self-registered family is pending review": "Kjo familje e vetëregjistruar është në pritje të shqyrtimit",
-  "Total registrations": "Regjistrime gjithsej",
-  "Visitors can sign up on your public registration form.": "Vizitorët mund të regjistrohen te formulari juaj publik i regjistrimit.",
-  "Yesterday": "Dje",
-  "days ago": "ditë më parë",
-  "self-registrations are waiting for review": "vetëregjistrime janë në pritje të shqyrtimit",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Ditëlindjet i adresohen personit dhe përvjetorët çiftit.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Etiketa postare për personat në këtë raport. Një personi pa adresë të vetën i adresohet në adresën e familjes së tij.",
-  "One label for each couple.": "Një etiketë për çdo çift.",
-  "Print Labels": "Printo etiketat",
-  "That role is not one of this group's roles.": "Ky rol nuk është një nga rolet e kësaj shërbese.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" nuk është lloj kalendari që e njeh kjo faqe.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s nuk mund të shërbejë dhe ka propozuar %2$s si zëvendësues.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s është tashmë në grupin e vullnetarëve të %2$s dhe dëshiron të ndihmojë sërish.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s është tashmë i lidhur me %2$s në %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s është në %2$s si %3$s. Hiqeni fillimisht nga klasa; kualifikimi i tij këtu e bën atë një nga mësuesit e saj.",
-  "%1$s is not an event of %2$s": "%1$s nuk është ngjarje e %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s mbetet klasë e Shkollës së së Dielës ndërsa mësuesit e saj menaxhohen te Shërbesat → %2$s → %3$s. Shkëputeni fillimisht nga ekipi.",
-  "%1$s wants to help with %2$s": "%1$s dëshiron të ndihmojë me %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s dëshiron të ndihmojë me %2$s dhe është shtuar në grupin e vullnetarëve të saj.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: Maksimumi është %2$d, por janë zgjedhur %3$d vullnetarë të parazgjedhur. Hiqni një ose rrisni maksimumin.",
-  "%d day": {
-    "one": "%d ditë",
-    "other": "%d ditë"
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d i parazgjedhur u anashkalua për një arsye tjetër (zhvillimi ka mbaruar, është anuluar ose është plot)",
-    "other": "%d të parazgjedhur u anashkaluan për një arsye tjetër (zhvillimi ka mbaruar, është anuluar ose është plot)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d i parazgjedhur u anashkalua: kualifikimi u revokua",
-    "other": "%d të parazgjedhur u anashkaluan: kualifikimi u revokua"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d vullnetar i parazgjedhur u caktua",
-    "other": "%d vullnetarë të parazgjedhur u caktuan"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d dështuan",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Për këtë pozicion nevojitet ende %d vullnetar tjetër. Hapni zhvillimin për të mbushur boshllëkun.",
-    "other": "Për këtë pozicion nevojiten ende %d vullnetarë të tjerë. Hapni zhvillimin për të mbushur boshllëkun."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d zhvillim i ri",
-    "other": "%d zhvillime të reja"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Për një zhvillim të ardhshëm nevojitet ende %d vullnetar.",
-    "other": "Për një zhvillim të ardhshëm nevojiten ende %d vullnetarë."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "Kalendari %s",
-  "%s Family": "Familja %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s nuk ofron mësues për Shkollën e së Dielës, ndaj ekipet, orarët dhe ngjarjet e saj nuk mund të përdorin një klasë. Një menaxher vullnetarësh mund ta ndryshojë këtë te Redakto shërbesën.",
-  "%s email from the church": {
-    "one": "%s email nga kisha",
-    "other": "%s email-e nga kisha"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "Familja %s",
-  "%s has declined a volunteer assignment.": "%s ka refuzuar një caktim vullnetari.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s nuk ka rol me emrin Mësues, ndaj mësuesit e saj nuk mund të menaxhohen nga një ekip",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s nuk ka takime të ardhshme në kalendar. Një orar ndjek ngjarje që ekzistojnë tashmë: shtoni fillimisht takimet e klasës me Ngjarje e re periodike te skeda Kalendari e shërbesës.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s pritet ende të shërbejë. Nëse kjo nuk është e mundur, kontaktoni koordinatorin.",
-  "%s not sent (%s): %s": "%s nuk u dërgua (%s): %s",
-  "%s person in your household": {
-    "one": "%s person në familjen tuaj",
-    "other": "%s persona në familjen tuaj"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s pozicion",
-    "other": "%s pozicione"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: i njëjti person është zgjedhur dy herë si vullnetar i parazgjedhur",
-  "(no subject)": "(pa subjekt)",
-  "A birthday cannot be in the future.": "Ditëlindja nuk mund të jetë në të ardhmen.",
-  "A calendar event": "Një ngjarje në kalendar",
-  "A calendar id must be a number.": "ID e kalendarit duhet të jetë numër.",
-  "A class that no longer exists": "Një klasë që nuk ekziston më",
-  "A class with no meetings on the calendar cannot be chosen yet.": "Një klasë pa takime në kalendar nuk mund të zgjidhet ende.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "Një klasë pa takime në kalendar nuk mund të zgjidhet ende. Një koordinator i shërbesës i shton takimet e saj te skeda Kalendari e shërbesës.",
-  "A class's meetings": "Takimet e një klase",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "Një koordinator mund të menaxhojë gjithçka në këtë shërbesë, përfshirë ndryshimet që përndryshe do t'i bënte një menaxher vullnetarësh.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "Një koordinator i shërbesës mund t'i shtojë te skeda Kalendari e shërbesës.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "Një koordinator i shërbesës mund t'i shtojë te skeda Kalendari e shërbesës. Pastaj gjenerojeni sërish.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "Një koordinator drejton gjithë shërbesën – ekipet, pozicionet, orarët dhe çdo caktim në të.",
-  "A day a month does not have falls on its last day.": "Një ditë që muaji nuk e ka bie në ditën e tij të fundit.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "Një vullnetar i parazgjedhur i përket nevojave të stafimit të orarit, jo një zhvillimi të vetëm",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "Një vullnetar i parazgjedhur mund të zgjidhet vetëm për një pozicion që e kërkojnë nevojat e stafimit të këtij orari",
-  "A from and a to date in YYYY-MM-DD form are required": "Kërkohet një datë fillimi dhe një datë mbarimi në formën VVVV-MM-DD",
-  "A minimum count is required": "Kërkohet një numër minimal",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "Një shërbesë krijohet me kalendarin e vet, grupin e vullnetarëve dhe ekipin e parë, ndaj këtu duhet të vendosni vetëm emrin dhe çfarë bën.",
-  "A ministry name is required": "Kërkohet emri i shërbesës",
-  "A ministry needs at least one team. Rename it instead.": "Një shërbesë ka nevojë për të paktën një ekip. Riemërtojeni në vend të kësaj.",
-  "A ministry with that name already exists": "Një shërbesë me këtë emër ekziston tashmë",
-  "A ministry's own calendar cannot be opened to other ministries": "Kalendari i vetë i një shërbese nuk mund t'u hapet shërbesave të tjera",
-  "A position belongs to a team; choose one": "Një pozicion i përket një ekipi; zgjidhni një",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "Një pozicion është një punë që dikush bën në këtë ekip, si Espreso ose Udhëheqës i këngëve.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "Një pozicion është një rol në të cilin dikush shërben, si Espreso ose Udhëheqës i këngëve.",
-  "A position is required": "Kërkohet një pozicion",
-  "A position name is required": "Kërkohet emri i pozicionit",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "Një pozicion me vullnetarë të kualifikuar nuk mund të zhvendoset në ose nga një ekip i lidhur me një klasë të Shkollës së së Dielës, sepse kjo do të ndryshonte kush e jep mësimin e klasës. Krijoni pozicionin në ekipin tjetër.",
-  "A position with that name already exists in this ministry": "Një pozicion me këtë emër ekziston tashmë në këtë shërbesë",
-  "A response must be accepted or declined": "Përgjigjja duhet të pranohet ose të refuzohet",
-  "A schedule belongs to a team; choose one": "Një orar i përket një ekipi; zgjidhni një",
-  "A schedule name is required": "Kërkohet emri i orarit",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Një orar tregon cilat ngjarje të kalendarit i stafon një ekip: një lloj shërbese kishtare, takimet e një klase ose ngjarjet e vetë kësaj shërbese. Shtoni një dhe gjeneroni zhvillimet e tij.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Një orar tregon cilat ngjarje të kalendarit i shërben ky ekip: një lloj shërbese kishtare, takimet e një klase ose ngjarjet e vetë shërbesës së tij. Shtoni një dhe gjeneroni zhvillimet e tij.",
-  "A schedule that follows a class must name the class": "Një orar që ndjek një klasë duhet të caktojë klasën",
-  "A schedule that follows an event type must name the event type": "Një orar që ndjek një lloj ngjarjeje duhet të caktojë llojin e ngjarjes",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Një orar që stafon një ngjarje të vetme nuk mund të ndjekë ngjarje të tjera; fshijeni dhe shtoni një orar në vend të tij",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "Një listë e vetme mundësish, si \"Çerdhja\" ose \"Pritësi\", mbahet te Njerëzit → Administrimi. Çdo person etiketohet me mundësitë me të cilat është i gatshëm të ndihmojë, te skeda Vullnetar e regjistrimit të tij. Kjo është gjithçka që regjistrohet: nuk ka ekipe, orare, caktime për një datë dhe as email-e kujtese. Etiketat përdoren te raportet dhe te regjistrimi i personit.",
-  "A square picture of your face works best.": "Funksionon më mirë një foto katrore e fytyrës suaj.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Një nevojë stafimi i rendit vullnetarët e parazgjedhur te \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Një kërkesë stafimi i përket saktësisht njërit prej një orari ose një zhvillimi",
-  "A substitute has already been proposed for this assignment": "Për këtë caktim është propozuar tashmë një zëvendësues",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "Një udhëheqës ekipi mund të menaxhojë ekipin e vet – pozicionet, orarët dhe kush shërben në to – dhe asgjë tjetër në shërbesë.",
-  "A team name is required": "Kërkohet emri i ekipit",
-  "A team with that name already exists in this ministry": "Një ekip me këtë emër ekziston tashmë në këtë shërbesë",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Tema është një dosje që kisha juaj e ngarkon në server te Include/themes/. Tema e parazgjedhur e sistemit vjen me ChurchCRM.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "Një cilësim kalimtar. Si faqet e vjetra të Mundësive për vullnetarët, ashtu edhe faqet e reja të Shërbesave janë të disponueshme, dhe regjistrimi i një personi shfaq të dyja skedat Vullnetar, të shënuara qartë. Përdoreni gjatë kalimit të një kishe nga V1 në V2, pastaj kaloni vetëm te V2.",
-  "A volunteer": "Një vullnetar",
-  "A volunteer has declined an assignment": "Një vullnetar ka refuzuar një caktim",
-  "A volunteer has proposed a substitute": "Një vullnetar ka propozuar një zëvendësues",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "Një menaxher vullnetarësh mund ta drejtojë këtë shërbesë pa një leje të dhënë. Shtoni një koordinator që ta drejtojë dikush tjetër pa i dhënë edhe të gjitha shërbesat e tjera.",
-  "A wedding date cannot be in the future.": "Data e dasmës nuk mund të jetë në të ardhmen.",
-  "Accepted": "Pranuar",
-  "Account deleted": "Llogaria u fshi",
-  "Account unlocked": "Llogaria u zhbllokua",
-  "Accounts": "Llogaritë",
-  "Active must be true or false": "Aktiv duhet të jetë e vërtetë ose e gabuar",
-  "Active now": "Aktiv Tani",
-  "Add All": "Shtoji të gjithë",
-  "Add Everyone in Cart": "Shtoji të gjithë nga përzgjedhja",
-  "Add Volunteer": "Shto vullnetar",
-  "Add Volunteers to Cart": "Shtoji vullnetarët te përzgjedhja",
-  "Add a family member": "Shto anëtar të familjes",
-  "Add a position first, then come back and say how many of them are needed.": "Shtoni fillimisht një pozicion, pastaj ktheheni dhe tregoni sa prej tyre nevojiten.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Shtoni një hap të dytë te hyrja juaj, që fjalëkalimi vetëm të mos mjaftojë për të hyrë në llogarinë tuaj.",
-  "Add at least one position to this team, then tick who can serve where.": "Shtoni të paktën një pozicion në këtë ekip, pastaj shënoni kush mund të shërbejë ku.",
-  "Add coordinator": "Shto koordinator",
-  "Add from Cart": "Shto nga përzgjedhja",
-  "Add its meetings first with New recurring event on the Calendar tab": "Shtoni fillimisht takimet e saj me Ngjarje e re periodike te skeda Kalendari",
-  "Add people to the cart before adding them as volunteers": "Shtoni persona te përzgjedhja përpara se t'i shtoni si vullnetarë",
-  "Add position": "Shto pozicion",
-  "Add schedule": "Shto orar",
-  "Add team": "Shto ekip",
-  "Add them on the Calendar tab, then generate again.": "Shtoni ato te skeda Kalendari, pastaj gjenerojeni sërish.",
-  "Add them on the Calendar tab.": "Shtoni ato te skeda Kalendari.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Shtojeni këtë adresë te aplikacioni juaj i kalendarit. Përditësohet vetë kur ndryshon kalendari i kishës.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Shtoni këtu ngjarjet e kësaj shërbese: një ditë pune, një klasë që mblidhet çdo të Diel. Shkojnë te kalendari i kishës dhe mund t'i stafoni teksa i krijoni."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }
