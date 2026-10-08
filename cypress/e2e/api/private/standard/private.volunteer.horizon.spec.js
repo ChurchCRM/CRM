@@ -20,6 +20,7 @@ const RATE_LIMIT = "iTimerJobsMinIntervalMinutes";
 const TOP_UP_DATE = "sLastVolunteerTopUpRunDate";
 const TOP_UP_RESULT = "sLastVolunteerTopUpResult";
 const UPGRADE_SCRIPT = "src/mysql/upgrade/7.8.0-volunteer-v2-schema.sql";
+const INSTALL_SCRIPT = "src/mysql/install/Install.sql";
 
 const CHURCH_SERVICE_TYPE = 1;
 const OTHER_TYPE = 3;
@@ -498,14 +499,6 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
             dbOk("UPDATE event_types SET type_name = 'Other', type_active = 1 WHERE type_id = ?", [OTHER_TYPE]);
         });
 
-        it("seeds an active \"Other\" type with no recurrence defaults", () => {
-            dbOk("SELECT type_name AS name, type_defrecurtype AS recur, type_active AS active FROM event_types WHERE type_id = ?", [
-                OTHER_TYPE,
-            ]).then((rows) => {
-                expect(rows[0]).to.deep.eq({ name: "Other", recur: "none", active: 1 });
-            });
-        });
-
         it("offers \"Other\" while no default is chosen, and the chosen type once one is", () => {
             api("GET", `${URL}/event-types`).then((resp) => {
                 expect(resp.body.eventTypes).to.deep.include({ id: OTHER_TYPE, name: "Other" });
@@ -538,25 +531,11 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
             defaultEventType().should("eq", OTHER_TYPE);
         });
 
-        it("is added by the 7.8.0 script only when the church has no type named \"Other\"", () => {
-            cy.readFile(UPGRADE_SCRIPT).then((script) => {
-                const start = script.lastIndexOf("INSERT INTO `event_types`");
-                const insert = script.slice(start, script.indexOf(";", start)).trim();
-                const others = () => count("SELECT COUNT(*) AS n FROM event_types WHERE type_name = 'Other'");
-
-                dbOk(insert);
-                others().should("eq", 1);
-
-                dbOk("UPDATE event_types SET type_name = ? WHERE type_id = ?", [`${PREFIX} Misc`, OTHER_TYPE]);
-                dbOk(insert);
-                dbOk(insert);
-                dbOk("SELECT type_id AS id, type_defrecurtype AS recur, type_active AS active FROM event_types WHERE type_name = 'Other'").then(
-                    (rows) => {
-                        expect(rows, "added once, however often it runs").to.have.length(1);
-                        expect(rows[0]).to.include({ recur: "none", active: 1 });
-                        dbOk("DELETE FROM event_types WHERE type_id = ?", [rows[0].id]);
-                    },
-                );
+        it("is not added by the 7.8.0 script or a fresh install (#10357)", () => {
+            cy.readFile(UPGRADE_SCRIPT).should("not.contain", "INSERT INTO `event_types`");
+            cy.readFile(INSTALL_SCRIPT).then((script) => {
+                const start = script.indexOf("INSERT INTO `event_types`");
+                expect(script.slice(start, script.indexOf(";", start))).not.to.contain("'Other'");
             });
         });
     });

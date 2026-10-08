@@ -139,6 +139,30 @@ class VolunteerAuthorizationService
     }
 
     /**
+     * May this user grant or revoke a scope of this type on this target (§4.6)?
+     *
+     * Making a coordinator stays a global manager's decision. Making a team leader is
+     * also the decision of a coordinator of the team's ministry — never of a team
+     * leader, whose own team scope is not authority over who leads it. The coordinator
+     * tier is asked of the User model so a self-service login holding a ministry
+     * scope is refused here too, not only by the route's role middleware.
+     */
+    public function canGrantScope(User $user, string $scopeType, int $scopeId): bool
+    {
+        if ($this->isGlobalManager($user)) {
+            return true;
+        }
+
+        if ($scopeType !== self::SCOPE_TEAM || !$user->isVolunteerCoordinatorEnabled()) {
+            return false;
+        }
+
+        $team = VolunteerTeamQuery::create()->findPk($scopeId);
+
+        return $team !== null && $this->canManageMinistry($user, (int) $team->getMinistryId());
+    }
+
+    /**
      * May this user write a calendar event whose ministry is `$eventMinistryId` (§4.6
      * "Ministry-linked events")? The global AddEvent right, or — with the rollout on — the
      * coordinators of the event's ministry. An event with no ministry stays AddEvent-only.
