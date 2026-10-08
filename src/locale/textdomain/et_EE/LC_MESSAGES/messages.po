@@ -21040,10 +21040,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "Ainult selle valdkonna koordinaator võib selle sündmusi komplekteerida"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "Ainult vabatahtlike haldur saab meeskonnajuhti muuta"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "Seda saab muuta ainult vabatahtlike haldur."
 

@@ -21006,10 +21006,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "Koordineytor lamang ng ministeryong ito ang maaaring maglagay ng boluntaryo sa mga kaganapan nito"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "Tagapamahala lamang ng mga boluntaryo ang maaaring magpalit ng pinuno ng pangkat"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "Tagapamahala lamang ng mga boluntaryo ang maaaring magbago nito."
 
