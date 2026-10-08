@@ -318,10 +318,8 @@ function teamClassLine(team: VolunteerTeam): string {
  *
  * The row menu no longer sets or clears the leader: a leader is a property of the
  * team, so it is a field of the Add/Edit team dialog and the menu is Edit and
- * Delete again. The Team Leader COLUMN stays, and stays visible to anyone who can
- * open the page — the names ride on the ministry document rather than on the
- * manager-only `/scopes` listing, so a ministry coordinator sees who leads what
- * without being able to change it.
+ * Delete again. The names ride on the ministry document rather than on the
+ * manager-only `/scopes` listing, so the column needs no second request.
  */
 function renderTeams(data: MinistryDetail): void {
   const body = document.querySelector("#volunteerTeamsTable tbody");
@@ -502,7 +500,7 @@ function activate(tab: TabName): void {
 // ─── Editors ─────────────────────────────────────────────────────────────────
 
 /**
- * The team dialog's person picker, or null for a viewer who may not use one.
+ * The team dialog's person picker, or null until the dialog has been wired.
  *
  * The shared selector (CR1/#9819) initialises on `shown.bs.modal`, so the leader
  * the dialog was opened with is handed to it through `teamLeadersOnOpen` rather
@@ -532,14 +530,6 @@ function openTeamModal(team?: VolunteerTeam): void {
   }
   if (title) {
     title.textContent = team ? i18next.t("Edit team") : i18next.t("Add team");
-  }
-
-  // A viewer who may not grant sees the leader as text, because the scope API is
-  // manager-only and offering a control it will refuse is worse than not offering
-  // one. The hint beside it says who can.
-  const readOnly = byId<HTMLInputElement>("team-form-leader-readonly");
-  if (readOnly) {
-    readOnly.value = teamLeadersOnOpen.map((leader) => leader.personName).join(", ");
   }
 
   teamClassOnOpen = team?.classGroupId ?? 0;
@@ -715,15 +705,10 @@ function teamClassLink(): TeamClassLink {
 /**
  * Bring the team's scope rows into line with what the dialog was left holding.
  *
- * Only a manager reaches this: the field is read-only for everyone else, and the
- * `/api/ministries/scopes` endpoints refuse them anyway. The grant goes first so a
- * failure leaves the existing leader in place rather than a team with nobody.
+ * The grant goes first so a failure leaves the existing leader in place rather
+ * than a team with nobody.
  */
 function syncTeamLeader(teamId: number, chosenPersonId: number): Promise<void> {
-  if (!isManager) {
-    return Promise.resolve();
-  }
-
   const stale = teamLeadersOnOpen.filter((leader) => leader.personId !== chosenPersonId);
   const alreadyGranted = teamLeadersOnOpen.some((leader) => leader.personId === chosenPersonId);
 
@@ -744,7 +729,7 @@ function saveTeam(): void {
   const name = byId<HTMLInputElement>("team-form-name")?.value.trim() ?? "";
   const description = byId<HTMLInputElement>("team-form-description")?.value.trim() ?? "";
   const active = byId<HTMLInputElement>("team-form-active")?.checked ?? true;
-  const leaderPersonId = isManager ? Number(teamLeaderPicker?.getInstance()?.getValue() ?? 0) || 0 : 0;
+  const leaderPersonId = Number(teamLeaderPicker?.getInstance()?.getValue() ?? 0) || 0;
 
   if (name === "") {
     showModalError("team", i18next.t("Give the team a name"), notifyError);
@@ -976,14 +961,10 @@ function findTeam(id: number): VolunteerTeam | undefined {
  * with whoever currently leads the team. The option is added by hand rather than
  * searched for: the picker's `load()` only runs on typing, and a pre-selected
  * value with no matching option renders as a blank control.
- *
- * Only a manager gets a picker at all — the markup renders a read-only field for
- * everybody else, so `#team-form-leader` is simply not in the document and
- * `attachToModal` has nothing to wrap.
  */
 function wireTeamLeaderField(): void {
   const modalEl = byId("teamModal");
-  if (!modalEl || !isManager) {
+  if (!modalEl) {
     return;
   }
 
