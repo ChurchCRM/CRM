@@ -23,7 +23,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $statusBadge = static function (string $status): array {
     return match ($status) {
         ThemeValidator::LEVEL_ERROR => ['bg-danger text-white', 'fa-circle-xmark', gettext('Errors')],
-        ThemeValidator::LEVEL_WARNING => ['bg-warning text-dark', 'fa-triangle-exclamation', gettext('Warnings')],
+        ThemeValidator::LEVEL_WARNING => ['bg-warning text-white', 'fa-triangle-exclamation', gettext('Warnings')],
         default => ['bg-success text-white', 'fa-circle-check', gettext('Valid')],
     };
 };
@@ -234,7 +234,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                             <ul class="list-unstyled mb-0">
                                                 <?php foreach ($theme['findings'] as $finding): ?>
                                                     <li class="py-1">
-                                                        <span class="badge <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? 'bg-danger text-white' : 'bg-warning text-dark' ?> me-2">
+                                                        <span class="badge <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? 'bg-danger text-white' : 'bg-warning text-white' ?> me-2">
                                                             <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? gettext('Error') : gettext('Warning') ?>
                                                         </span>
                                                         <?php if ($finding['file'] !== ''): ?>
