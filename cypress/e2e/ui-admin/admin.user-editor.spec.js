@@ -219,3 +219,54 @@ describe("User Editor - Person picker (no ?personId)", () => {
         cy.get("#SaveButton").should("exist");
     });
 });
+
+describe("User Editor - Manage My Ministries on an existing user (#10370)", () => {
+    const personId = 901; // noperm.user: Custom access, every permission off
+
+    const storedManageMyMinistries = () =>
+        cy
+            .dbQuery("SELECT usr_ManageMyMinistries AS v FROM user_usr WHERE usr_per_ID = ?", [personId])
+            .then(({ rows }) => Number(rows[0].v));
+
+    const saveAndReopen = () => {
+        cy.intercept("POST", `**/admin/system/users/${personId}/edit*`).as("editUser");
+        cy.get("#SaveButton").click();
+        cy.wait("@editUser").its("response.statusCode").should("eq", 302);
+        cy.visit(`/admin/system/users/${personId}/edit`);
+        cy.contains("User Editor");
+    };
+
+    before(() => {
+        storedManageMyMinistries().should("eq", 0);
+        cy.dbQuery("SELECT COUNT(*) AS n FROM userconfig_ucfg WHERE ucfg_per_id = ?", [personId])
+            .then(({ rows }) => Number(rows[0].n))
+            .should("eq", 0);
+    });
+
+    after(() => {
+        cy.dbQuery("UPDATE user_usr SET usr_ManageMyMinistries = 0 WHERE usr_per_ID = ?", [personId]);
+        cy.dbQuery("DELETE FROM userconfig_ucfg WHERE ucfg_per_id = ?", [personId]);
+    });
+
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
+    it("grants and then revokes Manage My Ministries", () => {
+        cy.visit(`/admin/system/users/${personId}/edit`);
+        cy.contains("User Editor");
+        cy.get('input[name="accessMode"][value="custom"]').check({ force: true });
+        cy.get("#customPermissions").should("be.visible");
+        cy.get("#ManageMyMinistries").should("not.be.checked").check();
+        saveAndReopen();
+        cy.get("#ManageMyMinistries").should("be.checked");
+        cy.get("#ManageMinistries").should("not.be.checked");
+        storedManageMyMinistries().should("eq", 1);
+
+        cy.get('input[name="accessMode"][value="custom"]').should("be.checked");
+        cy.get("#ManageMyMinistries").uncheck();
+        saveAndReopen();
+        cy.get("#ManageMyMinistries").should("not.be.checked");
+        storedManageMyMinistries().should("eq", 0);
+    });
+});
