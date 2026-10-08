@@ -18798,3 +18798,4539 @@ msgstr "துணைவரின் பங்கு"
 msgid "Uppercase Zip/Postcodes"
 msgstr "அஞ்சல் குறியீடுகளைப் பெரிய எழுத்தில் காட்டு"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "கோப்பகத்தில் சேர்க்க குறைந்தது ஒரு வகைப்பாட்டைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Geocoding services"
+msgstr "புவிக்குறியீட்டு சேவைகள்"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "நீங்கள் தேர்ந்தெடுக்கும் வரிசையில் முயற்சிக்க வேண்டிய புவிக்குறியீட்டு சேவைகள். Nominatim (OpenStreetMap) உலகம் முழுவதும் செயல்படும்; US Census (US Census Bureau) அமெரிக்க ஐக்கிய நாடுகளின் முகவரிகளை மட்டுமே உள்ளடக்கும். அதைப் பயன்படுத்த US Census ஐயும் தேர்ந்தெடுக்கவும். எதுவும் தேர்ந்தெடுக்கப்படாவிட்டால் Nominatim பயன்படுத்தப்படும்."
+
+#: 
+msgid "New Record Defaults"
+msgstr "புதிய பதிவு இயல்புநிலைகள்"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "வரைபட அமைப்புகளில் தேர்ந்தெடுத்த புவிக்குறியீட்டு சேவைகளைப் பயன்படுத்தி, வரைபட ஆயங்கள் இல்லாத ஒவ்வொரு குடும்பத்திற்கும் இது அவற்றைக் கண்டறியும். இது குடும்பங்களை 50 வீதம் தொகுதிகளாகச் செயலாக்கும்; ஒரு புவிக்குறியீட்டு சேவையுடன் ஒரு தொகுதிக்கு சுமார் ஒரு நிமிடமும், அதிக சேவைகளுடன் அதிக நேரமும் ஆகும். இது இயங்கும்போது இந்தப் பக்கத்தைத் திறந்தே வைத்திருக்கலாம். தொடரவா?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "புதிய பதிவுகளுக்கும், ஒரு பதிவில் நாடு இல்லாதபோது புவிக்குறியீட்டுக்கும் பயன்படுத்தப்படும்."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "திருச்சபை தகவலிலிருந்து நகலெடு"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "திருச்சபையின் முகவரியை நகலெடுக்க முடியவில்லை."
+
+#: 
+msgid "Could not match the church country."
+msgstr "திருச்சபையின் நாட்டைப் பொருத்த முடியவில்லை."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "வகுப்புப் பட்டியல்கள், வருகைத் தாள்கள் மற்றும் புகைப்பட நூல்கள்"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "ஊழிய உறுப்பினர் பட்டியல்கள் மற்றும் ஞாயிறு பள்ளி வகுப்பு அறிக்கைகள்"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "உங்கள் நிதியாண்டு %s இல் தொடங்குகிறது."
+
+#: 
+msgid "An error occurred"
+msgstr "ஒரு பிழை ஏற்பட்டது"
+
+#: 
+msgid "Approve"
+msgstr "அங்கீகரி"
+
+#: 
+msgid "Approve selected"
+msgstr "தேர்ந்தெடுத்தவற்றை அங்கீகரி"
+
+#: 
+msgid "Approved"
+msgstr "அங்கீகரிக்கப்பட்டது"
+
+#: 
+msgid "Change in People Settings"
+msgstr "நபர்கள் அமைப்புகளில் மாற்றவும்"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "தேர்ந்தெடுத்த பதிவுகளை அங்கீகரிக்க முடியவில்லை"
+
+#: 
+msgid "Could not approve this family"
+msgstr "இந்தக் குடும்பத்தை அங்கீகரிக்க முடியவில்லை"
+
+#: 
+msgid "Pending Registrations"
+msgstr "நிலுவையிலுள்ள பதிவுகள்"
+
+#: 
+msgid "Pending review"
+msgstr "மதிப்பாய்வு நிலுவையில் உள்ளது"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "உங்கள் பொதுப் பதிவுப் படிவத்திலிருந்து மதிப்பாய்வுக்காகக் காத்திருக்கும் பதிவுகள். மின்னஞ்சல் அல்லது தொலைபேசி இல்லாத உள்ளீடுகள் குறிக்கப்பட்டுள்ளன — பின்தொடர்வதற்கு முன் தொடர்புத் தகவலைச் சரிபார்க்கவும்."
+
+#: 
+msgid "Review now"
+msgstr "இப்போதே மதிப்பாய்வு செய்"
+
+#: 
+msgid "Review self registrations"
+msgstr "சுயபதிவுகளை மதிப்பாய்வு செய்"
+
+#: 
+msgid "Select month"
+msgstr "மாதத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "சுயபதிவு முடக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "சுயபதிவு இயக்கப்பட்டுள்ளது"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "பொதுப் பதிவுப் படிவம் அணைக்கப்பட்டுள்ளது. ஏற்கெனவே உள்ள பதிவுகள் கீழே பட்டியலிடப்பட்டுள்ளன."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "இந்தக் குடும்பம் நிலுவையிலுள்ள சுயபதிவு அல்ல"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "இந்த நபர் ஒரு குடும்பத்தைச் சேர்ந்தவர் — அதற்குப் பதிலாக குடும்பத்தை அங்கீகரிக்கவும்"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "இந்த நபர் நிலுவையிலுள்ள சுயபதிவு அல்ல"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "சுயமாகப் பதிவு செய்த இந்தக் குடும்பம் மதிப்பாய்வுக்காக நிலுவையில் உள்ளது"
+
+#: 
+msgid "Total registrations"
+msgstr "மொத்தப் பதிவுகள்"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "பார்வையாளர்கள் உங்கள் பொதுப் பதிவுப் படிவத்தில் பதிவு செய்யலாம்."
+
+#: 
+msgid "Yesterday"
+msgstr "நேற்று"
+
+#: 
+msgid "days ago"
+msgstr "நாட்களுக்கு முன்"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "சுயபதிவுகள் மதிப்பாய்வுக்காகக் காத்திருக்கின்றன"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "பிறந்தநாள் லேபிள்கள் நபரின் பெயரிலும், திருமண நாள் லேபிள்கள் தம்பதியின் பெயரிலும் முகவரியிடப்படும்."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "இந்த அறிக்கையிலுள்ள நபர்களுக்கான அஞ்சல் லேபிள்கள். சொந்த முகவரி இல்லாத நபருக்கு அவரது குடும்ப முகவரிக்கு முகவரியிடப்படும்."
+
+#: 
+msgid "One label for each couple."
+msgstr "ஒவ்வொரு தம்பதிக்கும் ஒரு லேபிள்."
+
+#: 
+msgid "Print Labels"
+msgstr "லேபிள்களை அச்சிடு"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "அந்தப் பங்கு இந்த ஊழியத்தின் பங்குகளில் ஒன்றல்ல."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "\"%s\" என்பது இந்தப் பக்கத்திற்குத் தெரிந்த நாட்காட்டி வகை அல்ல."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s ஆல் பணியாற்ற முடியாது, மேலும் %2$s ஐ மாற்றாக முன்மொழிந்துள்ளார்."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s ஏற்கெனவே %2$s தன்னார்வலர் தொகுப்பில் இருக்கிறார், மீண்டும் உதவ விரும்புகிறார்."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s ஏற்கெனவே %3$s இல் %2$s உடன் இணைக்கப்பட்டுள்ளார்"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s %2$s இல் %3$s ஆக இருக்கிறார். முதலில் அவரை வகுப்பிலிருந்து நீக்கவும்; இங்கே அவரைத் தகுதிப்படுத்தினால் அவர் அதன் ஆசிரியர்களில் ஒருவராவார்."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s என்பது %2$s இன் நிகழ்ச்சி அல்ல"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s ஞாயிறு பள்ளி வகுப்பாகவே இருக்கும், அதன் ஆசிரியர்கள் ஊழியங்கள் → %2$s → %3$s இல் நிர்வகிக்கப்படுகிறார்கள். முதலில் அதைக் குழுவிலிருந்து துண்டிக்கவும்."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s %2$s இல் உதவ விரும்புகிறார்"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s %2$s இல் உதவ விரும்புகிறார், மேலும் அதன் தன்னார்வலர் தொகுப்பில் சேர்க்கப்பட்டுள்ளார்."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: அதிகபட்சம் %2$d ஆனால் %3$d இயல்புநிலை தன்னார்வலர்கள் தேர்ந்தெடுக்கப்பட்டுள்ளனர். ஒருவரை நீக்கவும் அல்லது அதிகபட்சத்தை உயர்த்தவும்."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d நாள்"
+msgstr[1] "%d நாட்கள்"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d இயல்புநிலை வேறொரு காரணத்தால் தவிர்க்கப்பட்டது (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)"
+msgstr[1] "%d இயல்புநிலைகள் வேறொரு காரணத்தால் தவிர்க்கப்பட்டன (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d இயல்புநிலை தவிர்க்கப்பட்டது: தகுதி திரும்பப் பெறப்பட்டது"
+msgstr[1] "%d இயல்புநிலைகள் தவிர்க்கப்பட்டன: தகுதி திரும்பப் பெறப்பட்டது"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d இயல்புநிலை தன்னார்வலர் நியமிக்கப்பட்டார்"
+msgstr[1] "%d இயல்புநிலை தன்னார்வலர்கள் நியமிக்கப்பட்டனர்"
+
+#: 
+msgid "%d failed"
+msgstr "%d தோல்வியடைந்தன"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்."
+msgstr[1] "இந்தப் பொறுப்புக்கு இன்னும் %d தன்னார்வலர்கள் தேவை. இடைவெளியை நிரப்ப நிகழ்வைத் திறக்கவும்."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d புதிய நிகழ்வு"
+msgstr[1] "%d புதிய நிகழ்வுகள்"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "வரவிருக்கும் நிகழ்வுக்கு இன்னும் %d தன்னார்வலர் தேவை."
+msgstr[1] "வரவிருக்கும் நிகழ்வுக்கு இன்னும் %d தன்னார்வலர்கள் தேவை."
+
+#: 
+msgid "%s Calendar"
+msgstr "%s நாட்காட்டி"
+
+#: 
+msgid "%s Family"
+msgstr "%s குடும்பம்"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s ஞாயிறு பள்ளிக்கு ஆசிரியர்களை வழங்குவதில்லை, எனவே அதன் குழுக்கள், அட்டவணைகள் மற்றும் நிகழ்ச்சிகள் வகுப்பைப் பயன்படுத்த முடியாது. தன்னார்வ மேலாளர் இதை ஊழியத்தைத் திருத்து என்பதன் கீழ் மாற்றலாம்."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "திருச்சபையிடமிருந்து %s மின்னஞ்சல்"
+msgstr[1] "திருச்சபையிடமிருந்து %s மின்னஞ்சல்கள்"
+
+#: 
+msgid "%s family"
+msgstr "%s குடும்பம்"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s ஒரு தன்னார்வப் பணி நியமனத்தை நிராகரித்துள்ளார்."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s இல் ஆசிரியர் என்ற பெயரில் எந்தப் பங்கும் இல்லை, எனவே அதன் ஆசிரியர்களைக் குழுவிலிருந்து நிர்வகிக்க முடியாது"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s க்கு நாட்காட்டியில் வரவிருக்கும் கூட்டங்கள் இல்லை. அட்டவணை ஏற்கெனவே உள்ள நிகழ்ச்சிகளைப் பின்தொடரும்: முதலில் ஊழியத்தின் நாட்காட்டி தாவலில் புதிய மீண்டும் நிகழும் நிகழ்ச்சி மூலம் வகுப்பின் கூட்டங்களைச் சேர்க்கவும்."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s இன்னும் பணியாற்ற எதிர்பார்க்கப்படுகிறார். அது முடியாவிட்டால் ஒருங்கிணைப்பாளரைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s அனுப்பப்படவில்லை (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "உங்கள் குடும்பத்தில் %s நபர்"
+msgstr[1] "உங்கள் குடும்பத்தில் %s நபர்கள்"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s பொறுப்பு"
+msgstr[1] "%s பொறுப்புகள்"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: ஒரே நபர் இரண்டு முறை இயல்புநிலை தன்னார்வலராகத் தேர்ந்தெடுக்கப்பட்டுள்ளார்"
+
+#: 
+msgid "(no subject)"
+msgstr "(பொருள் இல்லை)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "பிறந்தநாள் எதிர்காலத்தில் இருக்கக்கூடாது."
+
+#: 
+msgid "A calendar event"
+msgstr "ஒரு நாட்காட்டி நிகழ்ச்சி"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "நாட்காட்டி ஐடி ஒரு எண்ணாக இருக்க வேண்டும்."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "இனி இல்லாத ஒரு வகுப்பு"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "நாட்காட்டியில் கூட்டங்கள் இல்லாத வகுப்பை இன்னும் தேர்ந்தெடுக்க முடியாது."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "நாட்காட்டியில் கூட்டங்கள் இல்லாத வகுப்பை இன்னும் தேர்ந்தெடுக்க முடியாது. ஊழியத்தின் ஒருங்கிணைப்பாளர் ஊழியத்தின் நாட்காட்டி தாவலில் அதன் கூட்டங்களைச் சேர்ப்பார்."
+
+#: 
+msgid "A class's meetings"
+msgstr "ஒரு வகுப்பின் கூட்டங்கள்"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "ஒருங்கிணைப்பாளர் இந்த ஊழியத்தில் உள்ள அனைத்தையும் நிர்வகிக்கலாம், தன்னார்வ மேலாளர் செய்ய வேண்டிய மாற்றங்கள் உட்பட."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "ஊழியத்தின் ஒருங்கிணைப்பாளர் அவற்றை ஊழியத்தின் நாட்காட்டி தாவலில் சேர்க்கலாம்."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "ஊழியத்தின் ஒருங்கிணைப்பாளர் அவற்றை ஊழியத்தின் நாட்காட்டி தாவலில் சேர்க்கலாம். பிறகு மீண்டும் உருவாக்கவும்."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "ஒருங்கிணைப்பாளர் முழு ஊழியத்தையும் நடத்துகிறார் — அதன் குழுக்கள், பொறுப்புகள், அட்டவணைகள் மற்றும் அதிலுள்ள ஒவ்வொரு நியமனமும்."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "ஒரு மாதத்தில் இல்லாத நாள் அந்த மாதத்தின் கடைசி நாளில் வரும்."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "இயல்புநிலை தன்னார்வலர் அட்டவணையின் ஆட்கள் தேவைக்குரியவர், ஒரு நிகழ்வுக்குரியவர் அல்ல"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "இந்த அட்டவணையின் ஆட்கள் தேவை கோரும் பொறுப்புக்கு மட்டுமே இயல்புநிலை தன்னார்வலரைத் தேர்ந்தெடுக்க முடியும்"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "YYYY-MM-DD வடிவில் தொடக்க மற்றும் முடிவு தேதி தேவை"
+
+#: 
+msgid "A minimum count is required"
+msgstr "குறைந்தபட்ச எண்ணிக்கை தேவை"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "ஒரு ஊழியம் அதன் சொந்த நாட்காட்டி, தன்னார்வலர் தொகுப்பு மற்றும் முதல் குழுவுடன் உருவாக்கப்படுகிறது, எனவே இங்கே முடிவு செய்ய வேண்டியவை அதன் பெயரும் அது செய்யும் பணியும் மட்டுமே."
+
+#: 
+msgid "A ministry name is required"
+msgstr "ஊழியத்தின் பெயர் தேவை"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "ஒரு ஊழியத்திற்கு குறைந்தது ஒரு குழு தேவை. அதற்குப் பதிலாக அதன் பெயரை மாற்றவும்."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "அந்தப் பெயரில் ஒரு ஊழியம் ஏற்கெனவே உள்ளது"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "ஒரு ஊழியத்தின் சொந்த நாட்காட்டியை மற்ற ஊழியங்களுக்குத் திறக்க முடியாது"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "ஒரு பொறுப்பு ஒரு குழுவைச் சேர்ந்தது; ஒன்றைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "பொறுப்பு என்பது இந்தக் குழுவில் ஒருவர் செய்யும் பணி, எடுத்துக்காட்டாக எஸ்பிரெசோ அல்லது பாடல் தலைவர்."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "பொறுப்பு என்பது ஒருவர் பணியாற்றும் பங்கு, எடுத்துக்காட்டாக எஸ்பிரெசோ அல்லது பாடல் தலைவர்."
+
+#: 
+msgid "A position is required"
+msgstr "ஒரு பொறுப்பு தேவை"
+
+#: 
+msgid "A position name is required"
+msgstr "பொறுப்பின் பெயர் தேவை"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "தகுதிபெற்ற தன்னார்வலர்கள் உள்ள பொறுப்பை ஞாயிறு பள்ளி வகுப்புடன் இணைக்கப்பட்ட குழுவுக்குள் அல்லது அதிலிருந்து வெளியே நகர்த்த முடியாது, ஏனெனில் அது வகுப்பை யார் கற்பிக்கிறார்கள் என்பதை மாற்றிவிடும். அதற்குப் பதிலாக மற்றொரு குழுவில் பொறுப்பை உருவாக்கவும்."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "இந்த ஊழியத்தில் அந்தப் பெயரில் ஒரு பொறுப்பு ஏற்கெனவே உள்ளது"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "ஒரு பதில் ஏற்கப்பட வேண்டும் அல்லது நிராகரிக்கப்பட வேண்டும்"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "ஒரு அட்டவணை ஒரு குழுவைச் சேர்ந்தது; ஒன்றைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "A schedule name is required"
+msgstr "அட்டவணையின் பெயர் தேவை"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "ஒரு குழு எந்த நாட்காட்டி நிகழ்ச்சிகளுக்கு ஆட்களை வழங்குகிறது என்பதை அட்டவணை கூறுகிறது: ஒரு வகை திருச்சபை ஆராதனை, ஒரு வகுப்பின் கூட்டங்கள், அல்லது இந்த ஊழியத்தின் சொந்த நிகழ்ச்சிகள். ஒன்றைச் சேர்த்து அதன் நிகழ்வுகளை உருவாக்கவும்."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "இந்தக் குழு எந்த நாட்காட்டி நிகழ்ச்சிகளுக்குப் பணியாற்றுகிறது என்பதை அட்டவணை கூறுகிறது: ஒரு வகை திருச்சபை ஆராதனை, ஒரு வகுப்பின் கூட்டங்கள், அல்லது அதன் ஊழியத்தின் சொந்த நிகழ்ச்சிகள். ஒன்றைச் சேர்த்து அதன் நிகழ்வுகளை உருவாக்கவும்."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "ஒரு வகுப்பைப் பின்தொடரும் அட்டவணை அந்த வகுப்பைக் குறிப்பிட வேண்டும்"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "ஒரு நிகழ்ச்சி வகையைப் பின்தொடரும் அட்டவணை அந்த நிகழ்ச்சி வகையைக் குறிப்பிட வேண்டும்"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "ஒரே நிகழ்ச்சிக்கு ஆட்களை அமர்த்தும் அட்டவணை மற்ற நிகழ்ச்சிகளைப் பின்தொடர முடியாது; அதை நீக்கிவிட்டு அதற்குப் பதிலாக ஒரு அட்டவணையைச் சேர்க்கவும்"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "\"நர்சரி\" அல்லது \"வரவேற்பாளர்\" போன்ற வாய்ப்புகளின் ஒரே பட்டியல், நபர்கள் → நிர்வாகம் என்பதன் கீழ் வைக்கப்படுகிறது. ஒவ்வொரு நபரின் பதிவின் தன்னார்வப் பணி தாவலில் அவர் உதவ விரும்பும் வாய்ப்புகளால் குறிக்கப்படுகிறார். இது மட்டுமே பதிவு செய்யப்படுகிறது: குழுக்கள், அட்டவணைகள், தேதிக்கான நியமனங்கள், நினைவூட்டல் மின்னஞ்சல்கள் இல்லை. குறிச்சொற்கள் அறிக்கைகளிலும் நபர் பதிவிலும் பயன்படுத்தப்படுகின்றன."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "உங்கள் முகத்தின் சதுரப் படம் சிறப்பாக இருக்கும்."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "ஆட்கள் தேவை தனது இயல்புநிலை தன்னார்வலர்களை \"defaults\": [{personId, accepted}] இல் பட்டியலிடுகிறது"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "ஆட்கள் தேவை என்பது ஒரு அட்டவணை அல்லது ஒரு நிகழ்வு இவற்றில் சரியாக ஒன்றைச் சேர்ந்தது"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "இந்த நியமனத்திற்கு ஏற்கெனவே ஒரு மாற்று நபர் முன்மொழியப்பட்டுள்ளார்"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "குழுத் தலைவர் தனது சொந்தக் குழுவை — அதன் பொறுப்புகள், அட்டவணைகள் மற்றும் அவற்றில் யார் பணியாற்றுகிறார்கள் என்பதை — நிர்வகிக்கலாம், ஊழியத்தில் வேறு எதையும் அல்ல."
+
+#: 
+msgid "A team name is required"
+msgstr "குழுவின் பெயர் தேவை"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "இந்த ஊழியத்தில் அந்தப் பெயரில் ஒரு குழு ஏற்கெனவே உள்ளது"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "தீம் என்பது உங்கள் திருச்சபை சேவையகத்தில் Include/themes/ க்குப் பதிவேற்றும் ஒரு கோப்புறை. கணினி இயல்புநிலை ChurchCRM உடன் வருகிறது."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "ஒரு மாற்றநிலை அமைப்பு. பழைய தன்னார்வ வாய்ப்புகள் பக்கங்களும் புதிய ஊழியங்கள் பக்கங்களும் இரண்டும் கிடைக்கும், மேலும் நபர் பதிவு இரண்டு தன்னார்வப் பணி தாவல்களையும் தெளிவாக லேபிளிட்டுக் காட்டும். ஒரு திருச்சபையை V1 இலிருந்து V2 க்கு மாற்றும்போது இதைப் பயன்படுத்தவும், பிறகு V2 க்கு மட்டும் மாறவும்."
+
+#: 
+msgid "A volunteer"
+msgstr "ஒரு தன்னார்வலர்"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "ஒரு தன்னார்வலர் நியமனத்தை நிராகரித்துள்ளார்"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "ஒரு தன்னார்வலர் மாற்று நபரை முன்மொழிந்துள்ளார்"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "தன்னார்வ மேலாளர் அனுமதி இல்லாமலேயே இந்த ஊழியத்தை நடத்தலாம். மற்ற ஒவ்வொரு ஊழியத்தையும் கொடுக்காமல் வேறொருவர் இதை நடத்த ஒரு ஒருங்கிணைப்பாளரைச் சேர்க்கவும்."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "திருமண தேதி எதிர்காலத்தில் இருக்கக்கூடாது."
+
+#: 
+msgid "Accepted"
+msgstr "ஏற்கப்பட்டது"
+
+#: 
+msgid "Account deleted"
+msgstr "கணக்கு நீக்கப்பட்டது"
+
+#: 
+msgid "Account unlocked"
+msgstr "கணக்கு திறக்கப்பட்டது"
+
+#: 
+msgid "Accounts"
+msgstr "கணக்குகள்"
+
+#: 
+msgid "Active must be true or false"
+msgstr "செயலில் என்பது சரி அல்லது தவறு ஆக இருக்க வேண்டும்"
+
+#: 
+msgid "Active now"
+msgstr "தற்போது செயலில்"
+
+#: 
+msgid "Add All"
+msgstr "அனைத்தையும் சேர்"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "தேர்வில் உள்ள அனைவரையும் சேர்"
+
+#: 
+msgid "Add Volunteer"
+msgstr "தன்னார்வலரைச் சேர்"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "தன்னார்வலர்களைத் தேர்வில் சேர்"
+
+#: 
+msgid "Add a family member"
+msgstr "குடும்ப உறுப்பினரைச் சேர்"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "முதலில் ஒரு பொறுப்பைச் சேர்க்கவும், பிறகு திரும்பி வந்து அவர்களில் எத்தனை பேர் தேவை என்று கூறவும்."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "உங்கள் உள்நுழைவில் இரண்டாவது படியைச் சேர்க்கவும், அப்போது கடவுச்சொல் மட்டும் உங்கள் கணக்கை அணுக போதாது."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "இந்தக் குழுவில் குறைந்தது ஒரு பொறுப்பைச் சேர்க்கவும், பிறகு யார் எங்கு பணியாற்றலாம் என்பதைத் தேர்வுக்குறியிடவும்."
+
+#: 
+msgid "Add coordinator"
+msgstr "ஒருங்கிணைப்பாளரைச் சேர்"
+
+#: 
+msgid "Add from Cart"
+msgstr "தேர்விலிருந்து சேர்"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "முதலில் நாட்காட்டி தாவலில் புதிய மீண்டும் நிகழும் நிகழ்ச்சி மூலம் அதன் கூட்டங்களைச் சேர்க்கவும்"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "தன்னார்வலர்களாகச் சேர்க்கும் முன் நபர்களைத் தேர்வில் சேர்க்கவும்"
+
+#: 
+msgid "Add position"
+msgstr "பொறுப்பைச் சேர்"
+
+#: 
+msgid "Add schedule"
+msgstr "அட்டவணையைச் சேர்"
+
+#: 
+msgid "Add team"
+msgstr "குழுவைச் சேர்"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "அவற்றை நாட்காட்டி தாவலில் சேர்க்கவும், பிறகு மீண்டும் உருவாக்கவும்."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "அவற்றை நாட்காட்டி தாவலில் சேர்க்கவும்."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "இந்த முகவரியை உங்கள் நாட்காட்டி செயலியில் சேர்க்கவும். திருச்சபை நாட்காட்டி மாறும்போது இது தானாகப் புதுப்பிக்கப்படும்."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "இந்த ஊழியத்தின் நிகழ்ச்சிகளை இங்கே சேர்க்கவும்: ஒரு வேலை நாள், ஒவ்வொரு ஞாயிறும் கூடும் வகுப்பு. அவை திருச்சபை நாட்காட்டியில் இடம்பெறும், அவற்றை உருவாக்கும்போதே ஆட்களை அமர்த்தலாம்."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "உறுப்பினர் போர்ட்டல் வழியாகச் சேர்க்கப்பட்டு மதிப்பாய்வுக்காகக் காத்திருப்பவர்: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "சேர்க்கப்பட்டது — இப்போது அவர்கள் பணியாற்றக்கூடிய பொறுப்புகளைத் தேர்வுக்குறியிடவும்"
+
+#: 
+msgid "Address Line 2"
+msgstr "முகவரி வரி 2"
+
+#: 
+msgid "Admin Console"
+msgstr "நிர்வாகக் கட்டுப்பாட்டகம்"
+
+#: 
+msgid "Administrator permission required"
+msgstr "நிர்வாகி அனுமதி தேவை"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "இந்தப் பொறுப்பை உறுப்பினர் போர்ட்டலின் திறந்த வாய்ப்புகள் பக்கத்தில் விளம்பரப்படுத்தவும்."
+
+#: 
+msgid "All Teams"
+msgstr "அனைத்துக் குழுக்கள்"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "உறுப்பினர்கள் தங்கள் சொந்த மற்றும் தங்கள் குடும்ப உறுப்பினர்களின் பிறந்தநாட்களை மாற்ற அனுமதிக்கவும்."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "{{calendars}} இலும் பின் செய்யப்பட்டுள்ளது, இதை நிகழ்ச்சிகளைச் சேர்க்கும் அனுமதி உள்ளவர் மட்டுமே மாற்ற முடியும்."
+
+#: 
+msgid "An event title is required"
+msgstr "நிகழ்ச்சியின் தலைப்பு தேவை"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "ஒரு நிகழ்ச்சி வகை அல்லது ஒரு ஊழியம் தேவை"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "இனி இல்லாத ஒரு நிகழ்ச்சி வகை"
+
+#: 
+msgid "Another ministry"
+msgstr "மற்றொரு ஊழியம்"
+
+#: 
+msgid "Any event"
+msgstr "எந்த நிகழ்ச்சியும்"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "உங்கள் ஒருங்கிணைப்பாளர் தெரிந்துகொள்ள வேண்டிய எதுவும்"
+
+#: 
+msgid "Approve substitution"
+msgstr "மாற்றை அங்கீகரி"
+
+#: 
+msgid "Approve this substitute"
+msgstr "இந்த மாற்று நபரை அங்கீகரி"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "ஒரு ஊழியத்தை உருவாக்கி உங்களை அதன் ஒருங்கிணைப்பாளராக்குமாறு தன்னார்வ மேலாளரிடம் கேளுங்கள்."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "உங்களுக்குப் பதிலாகப் பணியாற்ற ஒருவரிடம் கேளுங்கள்"
+
+#: 
+msgid "Ask them"
+msgstr "அவர்களிடம் கேளுங்கள்"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "கேட்கப்பட்டது — உங்கள் ஒருங்கிணைப்பாளர் அதை உறுதிப்படுத்துவார்."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "ஒரு தன்னார்வலரை நியமி"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "தற்போதைய திட்டத்திற்கு வெளியே நியமிக்கப்பட்டது"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "நியமனம் ரத்து செய்யப்பட்டது"
+
+#: 
+msgid "Assignment not found"
+msgstr "நியமனம் கிடைக்கவில்லை"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "குறைந்தது ஒரு personId அல்லது familyId தேவை"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "ஒரு பொறுப்புக்கு அதிகபட்சம் %d இயல்புநிலை தன்னார்வலர்களைத் தேர்ந்தெடுக்கலாம்"
+
+#: 
+msgid "Author"
+msgstr "ஆசிரியர்"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "அதிகாரம் நபருக்கு வழங்கப்படுகிறது, உள்நுழைவுக்கு அல்ல, எனவே அவருக்கு உள்நுழைவு வருவதற்கு முன்பே அதை வழங்கலாம். உள்நுழைவு சுயசேவை மட்டும் உள்ள நபர், நிர்வாகி அவரது கணக்கை விரிவாக்கும் வரை தனது சொந்த அட்டவணையை மட்டுமே தொடர்ந்து காண்பார்."
+
+#: 
+msgid "Automatic"
+msgstr "தானியங்கி"
+
+#: 
+msgid "Awaiting reply"
+msgstr "பதிலுக்காகக் காத்திருக்கிறது"
+
+#: 
+msgid "Back to Email History"
+msgstr "மின்னஞ்சல் வரலாற்றுக்குத் திரும்பு"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "ஊழிய டாஷ்போர்டுக்குத் திரும்பு"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "நிகழ்வுகளுக்குத் திரும்பு"
+
+#: 
+msgid "Back to Person"
+msgstr "நபருக்குத் திரும்பு"
+
+#: 
+msgid "Back to editing"
+msgstr "திருத்தத்துக்குத் திரும்பு"
+
+#: 
+msgid "Back to my schedule"
+msgstr "எனது அட்டவணைக்குத் திரும்பு"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "உறுப்பினர் போர்ட்டலுக்குத் திரும்பு"
+
+#: 
+msgid "Back to your profile"
+msgstr "உங்கள் சுயவிவரத்துக்குத் திரும்பு"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "பின்னணிப் பணிகள் மற்றும் விநியோகம்"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "பின்னணிப் பணிகள் கடைசியாக இயங்கியது"
+
+#: 
+msgid "Background jobs ran"
+msgstr "பின்னணிப் பணிகள் இயங்கின"
+
+#: 
+msgid "Birthday greeting"
+msgstr "பிறந்தநாள் வாழ்த்து"
+
+#: 
+msgid "Both"
+msgstr "இரண்டும்"
+
+#: 
+msgid "Both (transition)"
+msgstr "இரண்டும் (மாற்றநிலை)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "இரண்டும் — V1 மற்றும் V2 அருகருகே (மாற்றநிலை)"
+
+#: 
+msgid "Calendar address"
+msgstr "நாட்காட்டி முகவரி"
+
+#: 
+msgid "Calendar saved"
+msgstr "நாட்காட்டி சேமிக்கப்பட்டது"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "உறுப்பினர்களுக்கு உறுப்பினர் போர்ட்டல் காட்டும் நாட்காட்டிகள், நிர்வாகம் -> உறுப்பினர் போர்ட்டல் -> நாட்காட்டிகளில் தேர்ந்தெடுக்கப்படுகின்றன."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "இந்த ஊழியம் ஞாயிறு பள்ளிக்கு ஆசிரியர்களை வழங்க முடியுமா?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "நியமனத்தை ரத்து செய்"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "இந்த நியமனத்தை ரத்து செய்"
+
+#: 
+msgid "Cancelled"
+msgstr "ரத்து செய்யப்பட்டது"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "நீங்கள் உள்நுழையப் பயன்படுத்தும் கடவுச்சொல்லை மாற்றவும், அல்லது கடவுச்சொல் மட்டும் போதாதவாறு இரண்டாவது படியைச் சேர்க்கவும்."
+
+#: 
+msgid "Change your password"
+msgstr "உங்கள் கடவுச்சொல்லை மாற்றவும்"
+
+#: 
+msgid "Checked in"
+msgstr "உள்ளே வந்தவர்கள்"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "வருகை பதிவு: வகுப்புப் பட்டியலில் %2$d பேரில் %1$d"
+
+#: 
+msgid "Checked out"
+msgstr "வெளியே சென்றவர்கள்"
+
+#: 
+msgid "Choose a class"
+msgstr "ஒரு வகுப்பைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "மாதத்தின் 1 முதல் 31 வரை ஒரு நாளைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose a new photo"
+msgstr "புதிய புகைப்படத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose a person"
+msgstr "ஒரு நபரைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "ஒரு தன்னார்வலரைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "முதலில் ஒரு தன்னார்வலரைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose an event"
+msgstr "ஒரு நிகழ்வைத் தேர்வுசெய்யவும்..."
+
+#: 
+msgid "Choose an event type"
+msgstr "ஒரு நிகழ்ச்சி வகையைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "ஏற்கெனவே உள்ள நிகழ்ச்சி வகையைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "சந்தா பெற குறைந்தது ஒரு நாட்காட்டியைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "உங்கள் சொந்த நாட்காட்டி செயலியில் உங்களுக்கு வேண்டிய நாட்காட்டிகளைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "ஒவ்வொரு ஆண்டும் தேதியை MM-DD ஆகத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "நிகழ்ச்சியின் தேதியைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "வாரத்தின் நாளைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "இந்த அட்டவணை பின்தொடரும் நிகழ்ச்சியைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "ஆட்களை அமர்த்த வேண்டிய நிகழ்ச்சியைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "நீக்க வேண்டிய நிகழ்ச்சிகளைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "ஆட்களை அமர்த்த வேண்டிய நிகழ்ச்சிகளைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "முதல் மற்றும் கடைசி தேதியைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the first date"
+msgstr "முதல் தேதியைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the last date"
+msgstr "கடைசி தேதியைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "%2$s இன் ஆசிரியர்கள் தகுதி பெற்றுள்ள %1$s இன் பொறுப்பைத் தேர்ந்தெடுக்கவும். ஆசிரியர்கள்: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "இந்தப் பொறுப்பு பணியாற்றும் குழுவைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "உறுப்பினர்கள் காணும் தீமைத் தேர்ந்தெடுக்கவும், போர்ட்டல் பிரிவுகளை இயக்கவும் அல்லது அணைக்கவும், போர்ட்டலை யார் பயன்படுத்துகிறார்கள் என்று பார்க்கவும்."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "வாராந்திரம், மாதாந்திரம் அல்லது ஆண்டுதோறும் என்பதைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "அட்டவணையின் தேதிகள் எங்கிருந்து வருகின்றன என்பதைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "இந்தத் திருச்சபை எந்தத் தன்னார்வப் பணி முறையைப் பயன்படுத்துகிறது, அட்டவணைகள் எவ்வளவு முன்கூட்டியே நிரப்பப்படுகின்றன, நினைவூட்டல்கள் எப்போது செல்கின்றன என்பதைத் தேர்ந்தெடுக்கவும், பின்னணிப் பணிகள் இயங்குகின்றனவா என்று சரிபார்க்கவும்."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "ஒவ்வொரு பொறுப்பையும் இயல்பாக யார் நிரப்புவார்கள் என்பதைத் தேர்ந்தெடுக்கவும். இந்தத் தேர்வு அட்டவணையில் சேமிக்கப்படும்: அவர்கள் தகுதியுடன் இருக்கும் வரை, இப்போது உருவாக்கப்பட்ட ஒவ்வொரு நிகழ்வுக்கும் தினசரி கூடுதல் நிரப்பல் பின்னர் உருவாக்குபவற்றுக்கும் நியமிக்கப்படுவார்கள், நீங்கள் அவர்களை ஏற்றுக்கொண்டவராக அமைத்தாலன்றி பதிலளிக்கக் கேட்கப்படுவார்கள். வாரந்தோறும் நியமிக்க பொறுப்பைத் திறந்தே விடவும்."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "உங்களுக்குப் பதிலாக யார் பணியாற்றுகிறார் என்பதைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Church Calendar"
+msgstr "திருச்சபை நாட்காட்டி"
+
+#: 
+msgid "Church Calendars"
+msgstr "திருச்சபை நாட்காட்டிகள்"
+
+#: 
+msgid "Church calendar"
+msgstr "திருச்சபை நாட்காட்டி"
+
+#: 
+msgid "Church events of a type"
+msgstr "ஒரு வகை திருச்சபை நிகழ்ச்சிகள்"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "ஒரு வகை திருச்சபை நிகழ்ச்சிகள் திருச்சபை நாட்காட்டியில் சேர்க்கப்படுகின்றன. அட்டவணையின் நிகழ்ச்சி வகை, தலைப்பு மற்றும் தேதிகளைச் சரிபார்க்கவும்."
+
+#: 
+msgid "Church website"
+msgstr "திருச்சபை இணையதளம்"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "தன்னார்வலர்களை நிர்வகிக்க ChurchCRM இல் இரண்டு வழிகள் உள்ளன. ஒரே நேரத்தில் ஒன்று மட்டுமே பயன்பாட்டில் இருக்க வேண்டும்; இடதுபுறத்திலுள்ள அமைப்பு இந்தத் திருச்சபை எதைக் காண்கிறது என்பதைத் தீர்மானிக்கிறது. மாற்றுவது பக்கங்களையும் மெனு உள்ளீடுகளையும் மறைக்கும் அல்லது காட்டும் — தரவை ஒருபோதும் நீக்காது, எனவே நீங்கள் திரும்ப மாறலாம்."
+
+#: 
+msgid "Close event details"
+msgstr "நிகழ்ச்சி விவரங்களை மூடு"
+
+#: 
+msgid "Colour"
+msgstr "நிறம்"
+
+#: 
+msgid "Completed"
+msgstr "முடிந்தது"
+
+#: 
+msgid "Compose Message"
+msgstr "செய்தியை எழுது"
+
+#: 
+msgid "Confirm your family details"
+msgstr "உங்கள் குடும்ப விவரங்களை உறுதிப்படுத்தவும்"
+
+#: 
+msgid "Coordinator removed"
+msgstr "ஒருங்கிணைப்பாளர் நீக்கப்பட்டார்"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "இந்த முகவரியை நகலெடுத்து, புதிய நாட்காட்டிச் சந்தாவாக உங்கள் நாட்காட்டி செயலியில் சேர்க்கவும்."
+
+#: 
+msgid "Could not build the preview."
+msgstr "முன்னோட்டத்தை உருவாக்க முடியவில்லை."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "வகுப்பின் நிகழ்ச்சிகளை எண்ண முடியவில்லை"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "நோக்கத்தை வழங்க முடியவில்லை"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "ஞாயிறு பள்ளி வகுப்புகளை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "டாஷ்போர்டை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "நிகழ்ச்சித் தேர்வுகளை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "நிகழ்வுகளை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "அட்டவணைகளை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "வரவிருக்கும் நிகழ்ச்சிகளை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "தன்னார்வலர்களை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Could not load this email."
+msgstr "இந்த மின்னஞ்சலை ஏற்ற முடியவில்லை."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "இந்த ஊழியத்தை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "இந்த ஊழியத்தின் நிகழ்ச்சிகளை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Could not load this team"
+msgstr "இந்தக் குழுவை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "நோக்கத்தைத் திரும்பப் பெற முடியவில்லை"
+
+#: 
+msgid "Create"
+msgstr "உருவாக்கு"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "ஒரு அட்டவணையை உருவாக்கி அதன் நிகழ்வுகளை உருவாக்கவும், நிரப்ப வேண்டிய வாரங்கள் இங்கே தோன்றும்."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "ஒரு அட்டவணையை உருவாக்கி அதன் நிகழ்வுகளை உருவாக்கவும், ஆட்களை அமர்த்த வேண்டிய வாரங்கள் இங்கே தோன்றும்."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "இந்தக் குழுவுக்கு குறைந்தது ஒரு பொறுப்பை உருவாக்கவும், பிறகு யார் எங்கு பணியாற்றலாம் என்பதைத் தேர்வுக்குறியிடவும்."
+
+#: 
+msgid "Create ministry"
+msgstr "ஊழியத்தை உருவாக்கு"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "ஊழியத்தை உருவாக்க தன்னார்வ மேலாளர் அணுகல் தேவை"
+
+#: 
+msgid "Date and time"
+msgstr "தேதி மற்றும் நேரம்"
+
+#: 
+msgid "Date each year"
+msgstr "ஒவ்வொரு ஆண்டும் தேதி"
+
+#: 
+msgid "Dates"
+msgstr "தேதிகள்"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "தேதிகள் YYYY-MM-DD வடிவில் இருக்க வேண்டும்"
+
+#: 
+msgid "Day of the month"
+msgstr "மாதத்தின் நாள்"
+
+#: 
+msgid "Day of the week"
+msgstr "வாரத்தின் நாள்"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "ஊழியத்தைச் செயலிழக்கச் செய்"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "அட்டவணையைச் செயலிழக்கச் செய்"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "நீக்கும் முன் இந்த ஊழியத்தைச் செயலிழக்கச் செய்யவும்."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "{{name}} ஐச் செயலிழக்கச் செய்யவா? அது பக்கப்பட்டியிலுள்ள செயலிழந்த ஊழியங்களுக்குச் செல்லும், அங்கே அதை மீண்டும் செயல்படுத்தலாம் அல்லது நீக்கலாம். எதுவும் அகற்றப்படாது."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "{{name}} ஐச் செயலிழக்கச் செய்யவா? உருவாக்குதல் மூலமாகவோ தினசரி கூடுதல் நிரப்பல் மூலமாகவோ அதற்குப் புதிய நிகழ்வுகள் உருவாக்கப்படாது. ஏற்கெனவே உள்ள நிகழ்வுகளும் நியமனங்களும் அப்படியே இருக்கும், அதை மீண்டும் செயல்படுத்தலாம்."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "செயலிழந்த ஊழியங்கள்"
+
+#: 
+msgid "Declined"
+msgstr "நிராகரிக்கப்பட்டது"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "ஊழிய நிகழ்ச்சிகளுக்கான இயல்புநிலை நிகழ்ச்சி வகை"
+
+#: 
+msgid "Default volunteers"
+msgstr "இயல்புநிலை தன்னார்வலர்கள்"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "இயல்புநிலை தன்னார்வலர்கள் requirements: [{positionId, defaults: [{personId, accepted}]}] ஆக அனுப்பப்படுகிறார்கள்"
+
+#: 
+msgid "Delete events"
+msgstr "நிகழ்ச்சிகளை நீக்கு"
+
+#: 
+msgid "Delete ministry"
+msgstr "ஊழியத்தை நீக்கு"
+
+#: 
+msgid "Delete occurrences"
+msgstr "நிகழ்வுகளை நீக்கு"
+
+#: 
+msgid "Delete position"
+msgstr "பொறுப்பை நீக்கு"
+
+#: 
+msgid "Delete schedule"
+msgstr "அட்டவணையை நீக்கு"
+
+#: 
+msgid "Delete team"
+msgstr "குழுவை நீக்கு"
+
+#: 
+msgid "Delete those events"
+msgstr "அந்த நிகழ்ச்சிகளை நீக்கு"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "{{name}} ஐயும் அதிலுள்ள அனைத்தையும் நீக்கவா? அதன் பொறுப்புகள், தகுதிகள், ஆட்கள் தேவைகள், அட்டவணைகள், நிகழ்வுகள் மற்றும் நியமனங்கள் — கடந்தகால பணிப் பதிவுகள் உட்பட — மற்றும் அதன் குழுத் தலைவர் அனுமதிகள் அகற்றப்படும். வரலாற்றை வைத்திருக்க, அதற்குப் பதிலாக குழுவைச் செயலிழக்கச் செய்யவும். இதைச் செயல்தவிர்க்க முடியாது."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "{{name}} ஐயும் அதிலுள்ள அனைத்தையும் நீக்கவா? அதன் குழுக்கள், பொறுப்புகள், அட்டவணைகள், {{occurrences}} நிகழ்வுகள் மற்றும் {{assignments}} நியமனங்கள் — கடந்தகால பணிப் பதிவுகள் உட்பட — மேலும் அதன் ஒருங்கிணைப்பாளர் மற்றும் குழுத் தலைவர் அனுமதிகள், தன்னார்வலர் தொகுப்புக் குழு மற்றும் நாட்காட்டி அகற்றப்படும். இதைச் செயல்தவிர்க்க முடியாது."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "{{name}} ஐ நீக்கவா? அதன் தகுதிகள், ஆட்கள் தேவைகள் மற்றும் நியமனங்கள் — கடந்தகால பணிப் பதிவுகள் உட்பட — அதனுடன் அகற்றப்படும். வரலாற்றை வைத்திருக்க, அதற்குப் பதிலாக பொறுப்பைச் செயலிழக்கச் செய்யவும். இதைச் செயல்தவிர்க்க முடியாது."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "{{name}} ஐ நீக்கவா? இதைச் செயல்தவிர்க்க முடியாது."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "ஊழியத்தை நீக்க தன்னார்வ மேலாளர் அணுகல் தேவை"
+
+#: 
+msgid "Developer mode"
+msgstr "உருவாக்குநர் பயன்முறை"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "முடிந்தது — நீங்கள் மீண்டும் பட்டியலில் இருக்கிறீர்கள்."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "இந்த நிகழ்வின் சொந்த ஆட்கள் தேவைகளை நீக்கிவிட்டு மீண்டும் அதன் அட்டவணையைப் பின்தொடரவா?"
+
+#: 
+msgid "Due soon"
+msgstr "விரைவில் நிறைவடையும்"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "ஒவ்வொரு நாட்காட்டியும் ஒரு வகையாகவும் ஒரு ஐடியாகவும் கொடுக்கப்பட வேண்டும்."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "ஒவ்வொரு இயல்புநிலை தன்னார்வலரும் ஒரு நபரைக் குறிப்பிட வேண்டும்"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "ஒவ்வொரு ஆட்கள் தேவையும் ஒரு பொறுப்பைக் குறிப்பிட வேண்டும்"
+
+#: 
+msgid "Edit event"
+msgstr "நிகழ்வைத் திருத்து"
+
+#: 
+msgid "Edit ministry"
+msgstr "ஊழியத்தைத் திருத்து"
+
+#: 
+msgid "Edit position"
+msgstr "பொறுப்பைத் திருத்து"
+
+#: 
+msgid "Edit schedule"
+msgstr "அட்டவணையைத் திருத்து"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "ஆட்கள் தேவைகளைத் திருத்து"
+
+#: 
+msgid "Edit team"
+msgstr "குழுவைத் திருத்து"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "அட்டவணையைத் திருத்தி மற்றொரு வகுப்பைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "அட்டவணையைத் திருத்தி மற்றொரு நிகழ்ச்சி வகையைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "அட்டவணையைத் திருத்தி அது பின்தொடரும் நிகழ்ச்சியைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "அட்டவணையைத் திருத்தி, மேலும் நிகழ்ச்சிகளைப் பின்தொடர அதன் கடைசி தேதியை நகர்த்தவும்."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "உறுப்பினர் போர்ட்டல் வழியாகத் திருத்தப்பட்டது: %s"
+
+#: 
+msgid "Email %s"
+msgstr "%s க்கு மின்னஞ்சல் அனுப்பு"
+
+#: 
+msgid "Email %s Family"
+msgstr "%s குடும்பத்துக்கு மின்னஞ்சல் அனுப்பு"
+
+#: 
+msgid "Email History"
+msgstr "மின்னஞ்சல் வரலாறு"
+
+#: 
+msgid "Email content"
+msgstr "மின்னஞ்சல் உள்ளடக்கம்"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "வருகை தராதவர்களுக்கு மின்னஞ்சல் அனுப்பு: %s"
+
+#: 
+msgid "Email not found"
+msgstr "மின்னஞ்சல் கிடைக்கவில்லை"
+
+#: 
+msgid "Email preview"
+msgstr "மின்னஞ்சல் முன்னோட்டம்"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "மின்னஞ்சல் அனுப்புதல் முடக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "மின்னஞ்சல் அனுப்புதல் இயக்கப்படவில்லை. அனுப்பும் முன் SMTP அமைப்புகளை உள்ளமைத்து மின்னஞ்சலை இயக்கவும்."
+
+#: 
+msgid "Emails"
+msgstr "மின்னஞ்சல்கள்"
+
+#: 
+msgid "End time"
+msgstr "முடிவு நேரம்"
+
+#: 
+msgid "Enter counts"
+msgstr "எண்ணிக்கைகளை உள்ளிடவும்"
+
+#: 
+msgid "Enter email subject…"
+msgstr "மின்னஞ்சல் பொருளை உள்ளிடவும்…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "உங்கள் தற்போதைய கடவுச்சொல்லையும், பிறகு உங்கள் புதிய கடவுச்சொல்லை இரண்டு முறையும் உள்ளிடவும்."
+
+#: 
+msgid "Enter your message…"
+msgstr "உங்கள் செய்தியை உள்ளிடவும்…"
+
+#: 
+msgid "Event staffed"
+msgstr "நிகழ்ச்சிக்கு ஆட்கள் அமர்த்தப்பட்டனர்"
+
+#: 
+msgid "Event title"
+msgstr "நிகழ்வு தலைப்பு"
+
+#: 
+msgid "Event type"
+msgstr "நிகழ்வு வகை"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "ChurchCRM அனுப்பிய ஒவ்வொரு மின்னஞ்சலும், புதியவை முதலில். முழு வரலாற்றைக் காண ஒரு நபரைத் திறக்கவும்."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "இந்தக் காலத்திலுள்ள ஒவ்வொரு பொறுப்புக்கும் தேவையான நபர்கள் உள்ளனர்."
+
+#: 
+msgid "Everyone has answered"
+msgstr "அனைவரும் பதிலளித்துவிட்டனர்"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "தேர்வில் உள்ள அனைவரும் இந்த ஊழியத்தின் தன்னார்வலர்களாகச் சேர்கிறார்கள். பிறகு அவர்களின் பொறுப்புகளைத் தேர்வுக்குறியிடவும்."
+
+#: 
+msgid "Everything is correct"
+msgstr "எல்லாம் சரியாக உள்ளது"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "முன்னோட்டத்தை உருவாக்குவதில் தோல்வி"
+
+#: 
+msgid "Failed to load email"
+msgstr "மின்னஞ்சலை ஏற்றுவதில் தோல்வி"
+
+#: 
+msgid "Failed to load email history"
+msgstr "மின்னஞ்சல் வரலாற்றை ஏற்றுவதில் தோல்வி"
+
+#: 
+msgid "Failed to send email"
+msgstr "மின்னஞ்சல் அனுப்புவதில் தோல்வி"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "மின்னஞ்சல் அனுப்புவதில் தோல்வி. மீண்டும் முயற்சிக்கவும் அல்லது 'மின்னஞ்சல் கிளையண்டில் திற' என்பதைப் பயன்படுத்தவும்."
+
+#: 
+msgid "Family Member"
+msgstr "குடும்ப உறுப்பினர்"
+
+#: 
+msgid "Family verification"
+msgstr "குடும்ப சரிபார்ப்பு"
+
+#: 
+msgid "File"
+msgstr "கோப்பு"
+
+#: 
+msgid "Fill"
+msgstr "நிரப்பு"
+
+#: 
+msgid "Fill by default with"
+msgstr "இயல்பாக இவர்களுடன் நிரப்பு"
+
+#: 
+msgid "Fill this gap"
+msgstr "இந்த இடைவெளியை நிரப்பு"
+
+#: 
+msgid "Filled"
+msgstr "நிரப்பப்பட்டது"
+
+#: 
+msgid "Find a sub"
+msgstr "மாற்று நபரைத் தேடு"
+
+#: 
+msgid "Find a volunteer"
+msgstr "தன்னார்வலரைத் தேடு"
+
+#: 
+msgid "Find an event"
+msgstr "ஒரு நிகழ்ச்சியைத் தேடு"
+
+#: 
+msgid "Find something to do"
+msgstr "செய்ய ஏதேனும் தேடு"
+
+#: 
+msgid "Find something to help with"
+msgstr "உதவ ஏதேனும் தேடு"
+
+#: 
+msgid "Findings"
+msgstr "கண்டறிந்தவை"
+
+#: 
+msgid "First date"
+msgstr "முதல் தேதி"
+
+#: 
+msgid "Folder"
+msgstr "கோப்புறை"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Include/themes/ இலிருந்து பயன்படுத்த வேண்டிய உறுப்பினர் போர்ட்டல் தீமின் கோப்புறைப் பெயர். \"default\" என்பது ChurchCRM உடன் வரும் கணினி தீம்."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "அதன் முதல் தேதிக்கு நெருக்கமாக மீண்டும் உருவாக்கவும்."
+
+#: 
+msgid "Generate occurrences"
+msgstr "நிகழ்வுகளை உருவாக்கு"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "புதிய நாட்காட்டி முகவரி வேண்டுமா?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "ஊழியத்துக்கு ஒரு பெயர் கொடுக்கவும்"
+
+#: 
+msgid "Give the position a name"
+msgstr "பொறுப்புக்கு ஒரு பெயர் கொடுக்கவும்"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "தொடக்க மற்றும் முடிவு நேரங்களை HH:MM ஆகக் கொடுக்கவும்"
+
+#: 
+msgid "Give the team a name"
+msgstr "குழுவுக்கு ஒரு பெயர் கொடுக்கவும்"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "எனது தன்னார்வப் பணிக்குச் செல்"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "உறுப்பினர் போர்ட்டல் அமைப்புகளுக்குச் செல்"
+
+#: 
+msgid "Going"
+msgstr "வருகிறேன்"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "ஊழிய பக்கத்தில் தகுதியை வழங்கவும், பிறகு அவர்களை இங்கே நியமிக்கவும்."
+
+#: 
+msgid "Granted"
+msgstr "வழங்கப்பட்டது"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "உங்கள் குடும்பத்துக்காக திருச்சபையிடம் உள்ள தகவலைப் பார்த்து, அது இன்னும் சரியாக உள்ளதா என்று எங்களுக்குத் தெரிவிக்கவும்."
+
+#: 
+msgid "Headcount"
+msgstr "வருகை எண்ணிக்கை"
+
+#: 
+msgid "Hello %s"
+msgstr "வணக்கம் %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "உதவி தேவை"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "உதவி தேவையைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "ஒவ்வொரு அட்டவணையும் பின்தொடரும் நிகழ்ச்சிகளுக்கு நிகழ்வுகள் எவ்வளவு முன்கூட்டியே உருவாக்கப்படுகின்றன. தினசரி பின்னணிப் பணி ஒவ்வொரு அட்டவணையையும் இந்த அளவு வரை நிரப்பி வைத்திருக்கும்."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "தன்னார்வப் பணி நிகழ்வுக்கு எத்தனை மணி நேரம் முன்பு நினைவூட்டல் மின்னஞ்சல் அனுப்பப்படுகிறது. நினைவூட்டல்களே அனுப்பக்கூடாது என்றால் 0 ஆக அமைக்கவும். விநியோகம் பின்னணிப் பணிகள் இயங்குவதைப் பொறுத்தது; பரிந்துரைக்கப்பட்ட cron அமைப்புக்கு தன்னார்வப் பணி ஆவணத்தைப் பார்க்கவும்."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "நிகழ்வுக்கு எத்தனை மணி நேரம் முன்பு நினைவூட்டல் மின்னஞ்சல் அனுப்பப்படுகிறது. நினைவூட்டல்களே அனுப்பக்கூடாது என்றால் 0 ஆக அமைக்கவும்."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "இது இயங்கும் ஒவ்வொரு முறையும் ஒவ்வொரு பொறுப்புக்கும் எத்தனை பேர் தேவை. ஒரு தேதியை பின்னர் தனியாக மாற்றலாம். இயல்புநிலை தன்னார்வலர் தகுதியுடன் இருக்கும் வரை ஒவ்வொரு புதிய நிகழ்வுக்கும் நியமிக்கப்படுவார்; ஒருவரை மாற்றுவது ஏற்கெனவே உள்ள நிகழ்வுகளை ஒருபோதும் மாற்றாது."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "இந்த அட்டவணையின் ஒவ்வொரு நிகழ்வுக்கும் எத்தனை தன்னார்வலர்கள் தேவை. இந்த அட்டவணை ஒருபோதும் பயன்படுத்தாத பொறுப்பின் தேர்வை நீக்கவும். இயல்புநிலை தன்னார்வலர் தகுதியுடன் இருக்கும் வரை ஒவ்வொரு புதிய நிகழ்வுக்கும் நியமிக்கப்படுவார்; ஒருவரை மாற்றுவது ஏற்கெனவே உள்ள நிகழ்வுகளை ஒருபோதும் மாற்றாது."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "இந்த நிகழ்ச்சிக்கு எத்தனை தன்னார்வலர்கள் தேவை. அது பயன்படுத்தாத பொறுப்பின் தேர்வை நீக்கவும்."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "ஒவ்வொரு அட்டவணையும் பின்தொடரும் நிகழ்ச்சிகளுக்கு தன்னார்வப் பணி நிகழ்வுகள் எத்தனை வாரங்கள் முன்கூட்டியே உருவாக்கப்படுகின்றன, 1 முதல் 52 வரை. தினசரி பின்னணிப் பணி ஒவ்வொரு அட்டவணையையும் இந்த அளவு வரை நிரப்பி வைத்திருக்கும்."
+
+#: 
+msgid "How often"
+msgstr "எவ்வளவு அடிக்கடி"
+
+#: 
+msgid "How to correct this"
+msgstr "இதை எப்படிச் சரிசெய்வது"
+
+#: 
+msgid "I can't"
+msgstr "என்னால் முடியாது"
+
+#: 
+msgid "I'd like to help"
+msgstr "நான் உதவ விரும்புகிறேன்"
+
+#: 
+msgid "I'll be there"
+msgstr "நான் அங்கே இருப்பேன்"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "செய்திகள் தோல்வியடைந்தால், ஊழிய அமைப்புகளைச் சரிபார்க்குமாறு நிர்வாகியிடம் கேளுங்கள்."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "உங்களால் இனி வர முடியாவிட்டால், பொறுப்பை நிரப்ப முடியும்படி, உங்கள் தன்னார்வப் பணி அட்டவணையில் முடிந்தவரை விரைவாக நிராகரிக்கவும்."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "இந்த முகவரியை நீங்கள் தவறுதலாகப் பகிர்ந்திருந்தால், புதியதைப் பெறுங்கள். பழைய முகவரி உடனே செயல்படாது."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "கடந்த 15 நிமிடங்களில்"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "தன்னார்வலர் தொகுப்பில்"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "உள்ளமைவு: தன்னார்வலர் அட்டவணைகள் அட்டவணைப்படுத்தல் எல்லை வரை கடைசியாக நிரப்பப்பட்ட தேதி (YYYY-MM-DD). கைமுறையாகத் திருத்த வேண்டாம்."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "உள்ளமைவு: தன்னார்வலர் அட்டவணைகள் கடைசியாக எப்போது நிரப்பப்பட்டன, அது எத்தனை நிகழ்வுகளை உருவாக்கியது. கைமுறையாகத் திருத்த வேண்டாம்."
+
+#: 
+msgid "Is this still right?"
+msgstr "இது இன்னும் சரியாக உள்ளதா?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "அதன் நிகழ்வுகள் நிரப்ப வேண்டிய பொறுப்புகள் இல்லாமல் உருவாக்கப்படும். அதன் ஆட்கள் தேவைகளைச் சேர்க்க அட்டவணையைத் திருத்தவும்."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "அவர்களை {{className}} இல் வைத்திரு"
+
+#: 
+msgid "Kind"
+msgstr "வகை"
+
+#: 
+msgid "Last 24 hours"
+msgstr "கடந்த 24 மணி நேரம்"
+
+#: 
+msgid "Last 30 days"
+msgstr "கடந்த 30 நாட்கள்"
+
+#: 
+msgid "Last 7 days"
+msgstr "கடந்த 7 நாட்கள்"
+
+#: 
+msgid "Last attempt"
+msgstr "கடைசி முயற்சி"
+
+#: 
+msgid "Last check"
+msgstr "கடைசிச் சோதனை"
+
+#: 
+msgid "Last date"
+msgstr "கடைசி தேதி"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "போர்ட்டலில் கடைசியாகக் காணப்பட்டது"
+
+#: 
+msgid "Last sign-in"
+msgstr "கடைசி உள்நுழைவு"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "நிகழ்ச்சி நடக்கும் நேரத்திலேயே பணியாற்ற இரண்டையும் 0 இல் வைக்கவும். நிகழ்ச்சியை நகர்த்தினால் தன்னார்வலர்களும் நகர்வார்கள்."
+
+#: 
+msgid "Leave open"
+msgstr "திறந்தே விடு"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "உறுப்பினர் போர்ட்டலில் உறுப்பினர்கள் தங்கள் சொந்த மற்றும் தங்கள் குடும்ப உறுப்பினர்களின் பிறந்தநாட்களை மாற்ற அனுமதிக்கவும்."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "உறுப்பினர்கள் பிறந்தநாட்களைத் திருத்த அனுமதி"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "மேலே உள்ளவை அனைத்தும் இன்னும் சரியாக உள்ளனவா என்று திருச்சபை அலுவலகத்திற்குத் தெரிவிக்கவும்."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "ஏன் என்று அவர்களுக்குத் தெரிவிக்கவும் (விருப்பத்தேர்வு)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "அந்த ஊழியத்தின் ஒருங்கிணைப்பாளர்கள் இந்த நிகழ்ச்சிக்குத் தன்னார்வலர்களை அட்டவணையிடவும் — நிகழ்ச்சியையே திருத்தவும் — அனுமதிக்கிறது."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "நாட்காட்டி ஏற்றப்படுகிறது…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "ஊழியங்களை நிர்வகி"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "எனது ஊழியங்களை நிர்வகி"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "எனது ஊழியங்களை நிர்வகிக்கும் அணுகல், நிர்வகிக்க ஒரு ஊழியம் அல்லது குழுவுடன்"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "எனது ஊழியங்களை நிர்வகிக்கும் அணுகல், நிர்வகிக்க ஒரு ஊழியம் அல்லது குழுவுடன், தேவை"
+
+#: 
+msgid "Manage staffing"
+msgstr "ஆட்கள் அமர்த்தலை நிர்வகி"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "%s ஊழியத்திலிருந்து நிர்வகிக்கப்படுகிறது"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "{{ministry}} ஊழியத்திலிருந்து நிர்வகிக்கப்படுகிறது"
+
+#: 
+msgid "Max"
+msgstr "அதிகபட்சம்"
+
+#: 
+msgid "Member Portal"
+msgstr "உறுப்பினர் போர்ட்டல்"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "இது சரிசெய்யப்படும் வரை உறுப்பினர்களுக்கு \"தற்காலிகமாகக் கிடைக்கவில்லை\" பக்கம் காட்டப்படுகிறது. அதே விவரங்கள் பயன்பாட்டுப் பதிவிலும் வலை சேவையகப் பிழைப் பதிவிலும் எழுதப்பட்டன."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "இங்கே இயக்கப்பட்ட நாட்காட்டிகளை மட்டுமே உறுப்பினர்கள் காண்பார்கள். பிறந்தநாட்களும் திருமண நாட்களும் முதல் பெயர்களையும் குடும்பப் பெயரின் முதல் எழுத்தையும் மட்டுமே காட்டும்."
+
+#: 
+msgid "Message"
+msgstr "செய்தி"
+
+#: 
+msgid "Min"
+msgstr "குறைந்தபட்சம்"
+
+#: 
+msgid "Ministries"
+msgstr "ஊழியங்கள்"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "உதவி தேடும் ஊழியங்கள்"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "நிகழ்ச்சிகளைச் சேர்க்கக்கூடிய ஊழியங்கள்"
+
+#: 
+msgid "Ministry"
+msgstr "ஊழியம்"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "ஊழிய நாட்காட்டிகள்"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "ஊழிய ஒருங்கிணைப்பாளர்கள்"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "ஊழிய டாஷ்போர்டு"
+
+#: 
+msgid "Ministry Settings"
+msgstr "ஊழிய அமைப்புகள்"
+
+#: 
+msgid "Ministry calendar"
+msgstr "ஊழிய நாட்காட்டி"
+
+#: 
+msgid "Ministry created"
+msgstr "ஊழியம் உருவாக்கப்பட்டது"
+
+#: 
+msgid "Ministry management access"
+msgstr "ஊழிய நிர்வாக அணுகல்"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "ஊழிய நிர்வாக அணுகல் தேவை"
+
+#: 
+msgid "Ministry name"
+msgstr "ஊழியத்தின் பெயர்"
+
+#: 
+msgid "Ministry not found"
+msgstr "ஊழியம் கிடைக்கவில்லை"
+
+#: 
+msgid "My Family"
+msgstr "எனது குடும்பம்"
+
+#: 
+msgid "My Teams"
+msgstr "எனது குழுக்கள்"
+
+#: 
+msgid "My ministries and teams"
+msgstr "எனது ஊழியங்களும் குழுக்களும்"
+
+#: 
+msgid "My schedule"
+msgstr "எனது அட்டவணை"
+
+#: 
+msgid "My volunteering"
+msgstr "எனது தன்னார்வப் பணி"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "உறுப்பினர்கள் உதவ ஏதேனும் தேடும் பக்கத்தில் இந்தப் பொறுப்புக்கு ஒரு பெயர் இடுங்கள்."
+
+#: 
+msgid "Needs an answer"
+msgstr "பதில் தேவை"
+
+#: 
+msgid "Needs filling"
+msgstr "நிரப்ப வேண்டும்"
+
+#: 
+msgid "Never signed in"
+msgstr "ஒருபோதும் உள்நுழையவில்லை"
+
+#: 
+msgid "New account"
+msgstr "புதிய கணக்கு"
+
+#: 
+msgid "New event"
+msgstr "புதிய நிகழ்ச்சி"
+
+#: 
+msgid "New ministry"
+msgstr "புதிய ஊழியம்"
+
+#: 
+msgid "New record notification"
+msgstr "புதிய பதிவு அறிவிப்பு"
+
+#: 
+msgid "New recurring event"
+msgstr "புதிய மீண்டும் நிகழும் நிகழ்ச்சி"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "பின்வரும் பொறுப்புகளுக்குப் புதிய தன்னார்வலர்கள் தேவை"
+
+#: 
+msgid "Newest first"
+msgstr "புதியவை முதலில்"
+
+#: 
+msgid "Next on %s"
+msgstr "%s இல் அடுத்தது"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "உறுப்பினர்களுடன் இன்னும் எந்த நாட்காட்டியும் பகிரப்படவில்லை."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "இந்த ஊழியத்துக்கு எந்த நாட்காட்டியும் திறக்கப்படவில்லை, எனவே நிகழ்ச்சிகள் எந்த நாட்காட்டியிலும் தோன்றாது."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "உறுப்பினர்களுடன் எந்த நாட்காட்டியும் பகிரப்படவில்லை."
+
+#: 
+msgid "No class"
+msgstr "வகுப்பு இல்லை"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "இன்னும் தொடர்புத் தகவல் பதிவு செய்யப்படவில்லை."
+
+#: 
+msgid "No coordinators yet"
+msgstr "இன்னும் ஒருங்கிணைப்பாளர்கள் இல்லை"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "முதல் மற்றும் கடைசி தேதிக்கு இடையில் எந்தத் தேதியும் மீண்டும் நிகழ்வுக்குப் பொருந்தவில்லை"
+
+#: 
+msgid "No email was sent."
+msgstr "எந்த மின்னஞ்சலும் அனுப்பப்படவில்லை."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "இந்தப் பதிவுக்கு இன்னும் எந்த மின்னஞ்சலும் அனுப்பப்படவில்லை."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "இன்னும் வருகை எண்ணிக்கை பதிவு செய்யப்படவில்லை"
+
+#: 
+msgid "No longer needed"
+msgstr "இனி தேவையில்லை"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "இன்னும் எந்த உறுப்பினரும் உறுப்பினர் போர்ட்டலில் உள்நுழையவில்லை."
+
+#: 
+msgid "No ministry"
+msgstr "ஊழியம் இல்லை"
+
+#: 
+msgid "No past events"
+msgstr "கடந்த நிகழ்ச்சிகள் இல்லை"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "இந்த நபருக்கு புகைப்படம் பதிவேற்றப்படவில்லை."
+
+#: 
+msgid "No photo was sent."
+msgstr "புகைப்படம் அனுப்பப்படவில்லை."
+
+#: 
+msgid "No positions yet"
+msgstr "இன்னும் பொறுப்புகள் இல்லை"
+
+#: 
+msgid "No qualifications yet."
+msgstr "இன்னும் தகுதிகள் இல்லை."
+
+#: 
+msgid "No schedules yet"
+msgstr "இன்னும் அட்டவணைகள் இல்லை"
+
+#: 
+msgid "No staffing needs set"
+msgstr "ஆட்கள் தேவைகள் அமைக்கப்படவில்லை"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "ஆட்கள் தேவைகள் இல்லை: உருவாக்கப்பட்ட நிகழ்வுகளுக்கு யாரும் தேவைப்பட மாட்டார்கள்."
+
+#: 
+msgid "No substitution requests"
+msgstr "மாற்று நபர் கோரிக்கைகள் இல்லை"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "முடிவு செய்ய வேண்டிய மாற்றுகள் இல்லை"
+
+#: 
+msgid "No teams yet"
+msgstr "இன்னும் குழுக்கள் இல்லை"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "\"%2$s\" என்ற தலைப்பில் வரவிருக்கும் %1$s நிகழ்ச்சிகள் நாட்காட்டியில் இல்லை. அட்டவணை ஏற்கெனவே உள்ள நிகழ்ச்சிகளைப் பின்தொடரும்."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "பொருந்தும் வரவிருக்கும் நிகழ்ச்சி இல்லை"
+
+#: 
+msgid "No upcoming events"
+msgstr "வரவிருக்கும் நிகழ்ச்சிகள் இல்லை"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "இந்த வகையின் வரவிருக்கும் நிகழ்ச்சிகள் நாட்காட்டியில் இல்லை."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "தேர்ந்தெடுக்க வரவிருக்கும் நிகழ்ச்சிகள் இல்லை"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "இன்னும் யாரும் நியமிக்கப்படவில்லை"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "இதற்கு வேறு யாரும் இன்னும் பயிற்சி பெறவில்லை — அதற்குப் பதிலாக உங்கள் ஒருங்கிணைப்பாளரிடம் கூறுங்கள்."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "ஒவ்வொரு பொறுப்புக்கும் எத்தனை தன்னார்வலர்கள் தேவை என்று யாரும் கூறவில்லை, எனவே நிரப்ப எதுவும் இல்லை."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "இந்தக் காலத்தில் இன்னும் முடிவெடுக்காதவர் யாரும் இல்லை."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "இந்தப் பொறுப்புக்கு இன்னும் யாரும் தகுதி பெறவில்லை"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "இந்தப் பொறுப்புக்கு இன்னும் யாரும் தகுதி பெறவில்லை, எனவே அது திறந்தே இருக்கும்."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "பெறுநர்களில் யாருக்கும் மின்னஞ்சல் அனுப்ப முடியாது"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "எதுவுமில்லை: ஒவ்வொரு நிகழ்ச்சிக்கும் நிகழ்ச்சி வகை தேர்ந்தெடுக்கப்படுகிறது"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "இந்த மின்னஞ்சலைக் காண அனுமதி இல்லை"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "இந்தக் குடும்பத்தைக் காண அனுமதி இல்லை"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "இந்த நபரைக் காண அனுமதி இல்லை"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "இந்த நியமனத்துக்கு அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "இந்த ஊழியத்துக்கு அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "இந்த நிகழ்வுக்கு அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "இந்தப் பொறுப்புக்கு அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "இந்தத் தகுதிக்கு அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "இந்தத் தேவைக்கு அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "இந்த அட்டவணைக்கு அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "இந்த மாற்று நபர் கோரிக்கைக்கு அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "இந்தக் குழுவுக்கு அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "நிகழ்ச்சிகளை அந்தத் தன்னார்வ ஊழியத்துக்கு ஒதுக்க அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "%s நிகழ்ச்சியை மாற்ற அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "இந்த நிகழ்ச்சியின் தன்னார்வ ஊழியத்தை மாற்ற அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "நீங்கள் நிர்வகிக்கும் தன்னார்வ ஊழியம் இல்லாமல் நிகழ்ச்சியை உருவாக்க அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "இந்த நிகழ்ச்சியை மாற்ற அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "\"%s\" நாட்காட்டியில் நிகழ்ச்சிகளை பின் செய்ய அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "\"%s\" நாட்காட்டியிலிருந்து நிகழ்ச்சிகளை அகற்ற அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "இந்த நிகழ்ச்சியிலிருந்து தன்னார்வ ஊழியத்தை அகற்ற அங்கீகாரம் இல்லை"
+
+#: 
+msgid "Not checked in"
+msgstr "வருகை பதிவு செய்யப்படவில்லை"
+
+#: 
+msgid "Not found"
+msgstr "கிடைக்கவில்லை"
+
+#: 
+msgid "Not in the pool"
+msgstr "தொகுப்பில் இல்லை"
+
+#: 
+msgid "Not now"
+msgstr "இப்போது வேண்டாம்"
+
+#: 
+msgid "Not sent"
+msgstr "அனுப்பப்படவில்லை"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "அமைக்கப்படவில்லை: \"%s\" ஐப் பயன்படுத்தவும்"
+
+#: 
+msgid "Not staffed"
+msgstr "ஆட்கள் அமர்த்தப்படவில்லை"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "இன்னும் தன்னார்வப் பணி செய்யவில்லை"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "எதுவும் மாறவில்லை, எனவே எதுவும் சேமிக்கப்படவில்லை."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "இந்தக் காலத்துக்கு நாட்காட்டியில் எதுவும் இல்லை."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "இப்போது நாட்காட்டியில் எதுவும் இல்லை."
+
+#: 
+msgid "Nothing is short"
+msgstr "எதுவும் குறைவாக இல்லை"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "உங்கள் பட்டியலில் இன்னும் எதுவும் இல்லை"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "உங்கள் பட்டியலில் இன்னும் எதுவும் இல்லை. நிரப்ப வேண்டியவை என்ன என்று பாருங்கள்."
+
+#: 
+msgid "Nothing open right now"
+msgstr "இப்போது எதுவும் திறந்திருக்கவில்லை"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "இன்னும் எதுவும் அட்டவணையிடப்படவில்லை"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "எதுவும் அட்டவணையிடப்படவில்லை."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "இன்னும் எதுவும் அமைக்கப்படவில்லை"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "கடந்த ஆண்டில் இந்த ஊழியத்துக்குச் சொந்தமான எதுவும் நடக்கவில்லை."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "தகுதிப்படுத்த இன்னும் எதுவும் இல்லை"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "எதுவும் சேமிக்கப்படவில்லை. சிறப்பிக்கப்பட்ட புலங்களைச் சரிபார்க்கவும்."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "எதுவும் சேமிக்கப்படவில்லை. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Notification"
+msgstr "அறிவிப்பு"
+
+#: 
+msgid "Notifications"
+msgstr "அறிவிப்புகள்"
+
+#: 
+msgid "Occurrence not found"
+msgstr "நிகழ்வு கிடைக்கவில்லை"
+
+#: 
+msgid "Occurrences"
+msgstr "நிகழ்வுகள்"
+
+#: 
+msgid "Offer to help"
+msgstr "உதவ முன்வாருங்கள்"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "ஒரு நாளுக்கு ஒரு முறை ஒவ்வொரு செயலில் உள்ள அட்டவணையும் தான் பின்தொடரும் நிகழ்ச்சிகளுக்கு %d வாரம் முன்பு வரை நிகழ்வுகளைப் பெறுகிறது, ஒவ்வொரு பொறுப்பின் இயல்புநிலை தன்னார்வலர் தகுதியுடன் இருக்கும் வரை புதியவற்றில் நியமிக்கப்படுகிறார்."
+msgstr[1] "ஒரு நாளுக்கு ஒரு முறை ஒவ்வொரு செயலில் உள்ள அட்டவணையும் தான் பின்தொடரும் நிகழ்ச்சிகளுக்கு %d வாரங்கள் முன்பு வரை நிகழ்வுகளைப் பெறுகிறது, ஒவ்வொரு பொறுப்பின் இயல்புநிலை தன்னார்வலர் தகுதியுடன் இருக்கும் வரை புதியவற்றில் நியமிக்கப்படுகிறார்."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "இந்த நபர் ஒரு பொறுப்புக்குத் தகுதி பெற்றதும் அவர் இங்கே தோன்றுவார், அவர் பணியாற்ற அட்டவணையிடப்பட்ட தேதிகளுடன்."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "இணைக்கப்பட்ட குழு இந்த வகுப்பாக உள்ள ஒவ்வொரு நாட்காட்டி நிகழ்ச்சிக்கும் ஒரு நிகழ்வு உருவாக்கப்படுகிறது."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "இந்த நிகழ்ச்சியின் ஒவ்வொரு தேதிக்கும் ஒரு நிகழ்வு உருவாக்கப்படுகிறது. ஏற்கெனவே நாட்காட்டியில் உள்ள நிகழ்ச்சிகளை மட்டுமே தேர்ந்தெடுக்க முடியும்."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "நாட்காட்டிகளில் ஒன்று இல்லை"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "நிகழ்ச்சிகளில் ஒன்று இல்லை"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "அந்த நாட்காட்டிகளில் ஒன்று உறுப்பினர்களுடன் பகிரப்படவில்லை."
+
+#: 
+msgid "One-time"
+msgstr "ஒருமுறை மட்டும்"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "ஞாயிறு பள்ளி வகுப்பை மட்டுமே குழுவுடன் இணைக்க முடியும்"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "வேறொருவர் சார்பாக பதிலைப் பதிவு செய்ய ஒருங்கிணைப்பாளர் மட்டுமே முடியும்"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "இந்த ஊழியத்தின் நிகழ்ச்சிகளை இந்த ஊழியத்தின் ஒருங்கிணைப்பாளர் மட்டுமே உருவாக்கலாம்"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "இந்த ஊழியத்தின் நிகழ்ச்சிகளுக்கு இந்த ஊழியத்தின் ஒருங்கிணைப்பாளர் மட்டுமே ஆட்களை அமர்த்தலாம்"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "குழுத் தலைவரை தன்னார்வ மேலாளர் மட்டுமே மாற்ற முடியும்"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "இதை தன்னார்வ மேலாளர் மட்டுமே மாற்ற முடியும்."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "ஒரு ஊழியம் ஞாயிறு பள்ளிக்கு ஆசிரியர்களை வழங்குகிறதா என்பதை தன்னார்வ மேலாளர் மட்டுமே மாற்ற முடியும்"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "இந்த விவரங்களை உங்கள் குடும்பத்தின் வயது வந்தவர் மட்டுமே மாற்ற முடியும். திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "இதற்குப் பயிற்சி பெற்றவர்கள் மட்டுமே பட்டியலிடப்பட்டுள்ளனர்."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "நியமிக்கப்பட்ட தன்னார்வலர் மட்டுமே மாற்று நபரை முன்மொழிய முடியும்"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "இந்த ஊழியம் நிகழ்ச்சிகளைச் சேர்க்கக்கூடிய நாட்காட்டிகள் மட்டுமே பட்டியலிடப்பட்டுள்ளன. அதன் சொந்த நாட்காட்டி தொடக்கத்தில் தேர்வுக்குறியிடப்பட்டிருக்கும்."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "மிக நீண்ட பட்டியலின் முதல் பகுதி மட்டுமே காட்டப்படுகிறது. மீதத்தைக் காண காலத்தைக் குறைக்கவும்."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "மாற்று நபரை முன்மொழிந்த தன்னார்வலர் மட்டுமே அதைத் திரும்பப் பெற முடியும்"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "ஊழியங்கள் மெனுவிலிருந்து ஒரு ஊழியத்தைத் திறந்து, ஒரு அட்டவணையை உருவாக்கி அதன் தேதிகளை உருவாக்கவும், ஆட்களை அமர்த்த வேண்டிய வாரங்கள் இங்கே தோன்றும்."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "ஒரு ஊழியத்தைத் திறந்து யாரையாவது அதன் ஒருங்கிணைப்பாளராக, அல்லது அதன் குழுக்களில் ஒன்றின் தலைவராக்கவும்."
+
+#: 
+msgid "Open in calendar app"
+msgstr "நாட்காட்டி செயலியில் திற"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "திறந்த வாய்ப்புகளை ஏற்ற முடியவில்லை."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "பெறுநர்களை உங்கள் உள்ளூர் மின்னஞ்சல் செயலியில் திற"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "உறுப்பினர் போர்ட்டலைத் திற"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "ஊழிய டாஷ்போர்டைத் திற"
+
+#: 
+msgid "Open the ministry"
+msgstr "ஊழியத்தைத் திற"
+
+#: 
+msgid "Open the occurrence"
+msgstr "நிகழ்வைத் திற"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "உங்களுக்குத் தேவையான நபர்களை நியமிக்க நிகழ்வைத் திறக்கவும்."
+
+#: 
+msgid "Open this team"
+msgstr "இந்தக் குழுவைத் திற"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "நாட்காட்டியை ஊழியங்களுக்குத் திறக்க நிகழ்ச்சிகளைச் சேர்க்கும் அனுமதி தேவை"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "விருப்பத்தேர்வு. இந்தக் குழுவின் ஒரு பொறுப்புக்குத் தகுதி பெற்ற ஒவ்வொருவரும் வகுப்பின் ஆசிரியர் ஆவார், வகுப்புப் பக்கம் இனி அதன் ஆசிரியர்களை மாற்றாது."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "விருப்பத்தேர்வு. வகுப்பு இணைக்கப்பட்ட குழுவாகிறது: அதன் பட்டியலிலுள்ளவர்களே வருகை பதிவு செய்கிறார்கள், வகுப்புக்கான அட்டவணை இந்த நிகழ்ச்சிகளைக் கண்டறியும்."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "அதிகபட்சத்தை மீறியது: இதை நீக்கவும் அல்லது அதிகபட்சத்தை உயர்த்தவும்."
+
+#: 
+msgid "Overridden templates"
+msgstr "மேலெழுதப்பட்ட வார்ப்புருக்கள்"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "பக்கம் %1$s / %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "பக்கம் %d / %d"
+
+#: 
+msgid "Password reset"
+msgstr "கடவுச்சொல் மீட்டமைப்பு"
+
+#: 
+msgid "Password reset link"
+msgstr "கடவுச்சொல் மீட்டமைப்பு இணைப்பு"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "கடவுச்சொற்கள் குறைந்தது %s எழுத்து நீளமாக இருக்க வேண்டும்."
+msgstr[1] "கடவுச்சொற்கள் குறைந்தது %s எழுத்துகள் நீளமாக இருக்க வேண்டும்."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "வரவிருக்கும் நாட்காட்டி நிகழ்ச்சியைத் தேர்ந்தெடுத்து யார் தேவை என்று கூறவும். நிகழ்ச்சி தனது சொந்த தேதியையும் நேரத்தையும் வைத்திருக்கும்; முழுத் தொடருக்கும் ஆட்களை அமர்த்த, அதற்குப் பதிலாக ஒரு அட்டவணையைச் சேர்க்கவும்."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "உங்களுக்குப் பதிலாகப் பணியாற்ற ஏற்கெனவே ஒப்புக்கொண்டவரைத் தேர்ந்தெடுக்கவும். உங்கள் ஒருங்கிணைப்பாளர் அதை உறுதிப்படுத்துவார்."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "பட்டியலிலிருந்து நாட்காட்டிகளைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "உங்கள் விவரங்களை மாற்ற வேண்டுமா என்பதைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "எங்கள் பதிவுகளைத் திருத்த திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Please contact the church office."
+msgstr "திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "குறைந்தது இரண்டு எழுத்துகளை உள்ளிடவும்."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "உங்கள் தன்னார்வப் பணி அட்டவணையில் ஏற்றுக்கொள்வதன் அல்லது நிராகரிப்பதன் மூலம் உங்களால் வர முடியுமா என்று எங்களுக்குத் தெரிவிக்கவும்."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "எதை மாற்ற வேண்டும் என்று எங்களுக்குக் கூறவும்."
+
+#: 
+msgid "Portal settings"
+msgstr "போர்ட்டல் அமைப்புகள்"
+
+#: 
+msgid "Portal theme"
+msgstr "போர்ட்டல் தீம்"
+
+#: 
+msgid "Position"
+msgstr "பொறுப்பு"
+
+#: 
+msgid "Position added"
+msgstr "பொறுப்பு சேர்க்கப்பட்டது"
+
+#: 
+msgid "Position deleted"
+msgstr "பொறுப்பு நீக்கப்பட்டது"
+
+#: 
+msgid "Position name"
+msgstr "பொறுப்பின் பெயர்"
+
+#: 
+msgid "Position not found"
+msgstr "பொறுப்பு கிடைக்கவில்லை"
+
+#: 
+msgid "Position saved"
+msgstr "பொறுப்பு சேமிக்கப்பட்டது"
+
+#: 
+msgid "Positions"
+msgstr "பொறுப்புகள்"
+
+#: 
+msgid "Positions still short"
+msgstr "இன்னும் குறைவாக உள்ள பொறுப்புகள்"
+
+#: 
+msgid "Proposed"
+msgstr "முன்மொழியப்பட்டது"
+
+#: 
+msgid "Proposed substitute"
+msgstr "முன்மொழியப்பட்ட மாற்று நபர்"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "இந்த ஊழியத்தை உறுப்பினர் போர்ட்டலின் திறந்த வாய்ப்புகள் பக்கத்தில் வைக்கவும், அங்கே எந்தத் தன்னார்வலரும் அதைக் கண்டு உதவ முன்வரலாம். அவர்கள் தன்னார்வலர் தொகுப்பில் சேர்வார்கள், உங்களுக்கு மின்னஞ்சல் வரும்."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "அதற்குப் பதிலாக {{name}} ஐ வைக்கவா? அசல் தன்னார்வலரின் வரலாறு அப்படியே இருக்கும், அவருக்குத் தெரிவிக்கப்படும்."
+
+#: 
+msgid "Qualification not found"
+msgstr "தகுதி கிடைக்கவில்லை"
+
+#: 
+msgid "Qualified for"
+msgstr "தகுதி பெற்றது"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "தகுதி பெற்ற தன்னார்வலர்கள் இந்தப் பொறுப்பின் திறந்த தேதிகளுக்குத் தாங்களாகவே பதிவு செய்யலாம். குழுத் தலைவர் அல்லது ஒருங்கிணைப்பாளர் மட்டுமே நியமிக்க வேண்டிய பொறுப்புகளுக்கு இதை அணைக்கவும்; உறுப்பினர் போர்ட்டல் அவற்றை வழங்காது."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "இதன் தற்போதைய ஆசிரியர்களை இதற்குத் தகுதிப்படுத்து"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "அவர்களை ஒரு பொறுப்புக்குத் தகுதிப்படுத்து"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "அவர்களை ஒரு பொறுப்புக்குத் தகுதிப்படுத்து."
+
+#: 
+msgid "Reactivate"
+msgstr "மீண்டும் செயல்படுத்து"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "தீம் உருவாக்க வழிகாட்டியைப் படிக்கவும்"
+
+#: 
+msgid "Recent Emails"
+msgstr "சமீபத்திய மின்னஞ்சல்கள்"
+
+#: 
+msgid "Recent Sends"
+msgstr "சமீபத்திய அனுப்புதல்கள்"
+
+#: 
+msgid "Recipient"
+msgstr "பெறுநர்"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "பெறுநர் எண்ணிக்கை (%d) ஒரு அனுப்புதலுக்கு அனுமதிக்கப்பட்ட அதிகபட்சத்தை (%d) மீறுகிறது"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "பெறுநர்கள் மின்னஞ்சல் முகவரிகளாக அல்லாமல் personIds மற்றும் familyIds ஆகக் கொடுக்கப்பட வேண்டும்"
+
+#: 
+msgid "Record a decline"
+msgstr "நிராகரிப்பைப் பதிவு செய்"
+
+#: 
+msgid "Record an acceptance"
+msgstr "ஏற்புதலைப் பதிவு செய்"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "{{name}} மறுத்ததாகப் பதிவு செய்யவா? பதில் உங்களிடமிருந்து வந்ததாகச் சேமிக்கப்படும், இடம் மீண்டும் திறக்கும்."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "{{name}} ஒப்புக்கொண்டதாகப் பதிவு செய்யவா? பதில் அவர்களிடமிருந்து அல்லாமல் உங்களிடமிருந்து வந்ததாகச் சேமிக்கப்படும்."
+
+#: 
+msgid "Record: they accepted"
+msgstr "பதிவு: அவர்கள் ஏற்றுக்கொண்டனர்"
+
+#: 
+msgid "Record: they declined"
+msgstr "பதிவு: அவர்கள் நிராகரித்தனர்"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "தன்னார்வலர்களைத் திரட்டு"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "தன்னார்வலர்களைத் திரட்டுதல் சரி அல்லது தவறு ஆக இருக்க வேண்டும்"
+
+#: 
+msgid "Recruiting"
+msgstr "திரட்டுதல்"
+
+#: 
+msgid "Recurring"
+msgstr "மீண்டும் நிகழும்"
+
+#: 
+msgid "Reject"
+msgstr "நிராகரி"
+
+#: 
+msgid "Reject substitution"
+msgstr "மாற்றை நிராகரி"
+
+#: 
+msgid "Reject this substitute"
+msgstr "இந்த மாற்று நபரை நிராகரி"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "நினைவூட்டல் முன்னேற்பாட்டு நேரம் (மணி)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "நினைவூட்டல்: நீங்கள் பணியாற்ற அட்டவணையிடப்பட்டுள்ளீர்கள்"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "பின்னணிப் பணிகள் இயங்கும்போது மட்டுமே நினைவூட்டல்களும் எச்சரிக்கைகளும் வழங்கப்படும். சரியான நேரத்தில் வழங்க, திட்டமிட்ட-பணி இயக்கியை cron இலிருந்து ஒவ்வொரு 15 நிமிடங்களுக்கும் இயக்கவும்"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "தன்னார்வலரை அகற்று"
+
+#: 
+msgid "Remove coordinator"
+msgstr "ஒருங்கிணைப்பாளரை அகற்று"
+
+#: 
+msgid "Remove the class from them"
+msgstr "அவர்களிடமிருந்து வகுப்பை அகற்று"
+
+#: 
+msgid "Remove the team leader"
+msgstr "குழுத் தலைவரை அகற்று"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "{{name}} ஐ {{ministry}} இலிருந்து அகற்றவா? இது இங்கே அவரது அனைத்துத் தகுதிகளையும் அகற்றும், ஒவ்வொரு எதிர்கால நிகழ்விலிருந்தும் அவரை நீக்கும், இந்த ஊழியத்தின் அட்டவணைகளில் இயல்புநிலை தன்னார்வலராக இருந்து அவரை நீக்கும், தன்னார்வலர் தொகுப்பிலிருந்தும் அகற்றும்."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "அகற்றப்பட்டது. {{qualifications}} தகுதிகள், {{assignments}} வரவிருக்கும் நியமனங்கள், {{defaults}} அட்டவணை இயல்புநிலைகள்."
+
+#: 
+msgid "Repeats"
+msgstr "மீண்டும் நிகழும்"
+
+#: 
+msgid "Requirement not found"
+msgstr "தேவை கிடைக்கவில்லை"
+
+#: 
+msgid "Reset link"
+msgstr "மீட்டமை இணைப்பு"
+
+#: 
+msgid "Response recorded"
+msgstr "பதில் பதிவு செய்யப்பட்டது"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "தன்னார்வப் பணி டாஷ்போர்டில் கோரிக்கையை மதிப்பாய்வு செய்து அதை அங்கீகரிக்கவும் அல்லது நிராகரிக்கவும்."
+
+#: 
+msgid "Review this request"
+msgstr "இந்தக் கோரிக்கையை மதிப்பாய்வு செய்"
+
+#: 
+msgid "Run background jobs now"
+msgstr "பின்னணிப் பணிகளை இப்போதே இயக்கு"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTP சோதனை"
+
+#: 
+msgid "Save calendars"
+msgstr "நாட்காட்டிகளைச் சேமி"
+
+#: 
+msgid "Save changes"
+msgstr "மாற்றங்களை சேமியுங்கள்"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "சேமிக்கப்பட்டது — இந்த ஊழியம் இனி உதவி கேட்கவில்லை"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "சேமிக்கப்பட்டது — இந்த ஊழியம் இப்போது உதவி கேட்கிறது"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "சேமிக்கப்பட்டது. மேலே இயக்கப்பட்ட நாட்காட்டிகளை உறுப்பினர்கள் காண்பார்கள்."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "அட்டவணை \"{{name}}\" உருவாக்கப்பட்டது."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "அட்டவணை \"{{name}}\" உருவாக்கப்பட்டது. இது செயலிழந்துள்ளது, எனவே செயல்படுத்தப்படும் வரை நிகழ்வுகளை உருவாக்காது."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "அட்டவணை செயலிழக்கச் செய்யப்பட்டது"
+
+#: 
+msgid "Schedule deleted"
+msgstr "அட்டவணை நீக்கப்பட்டது"
+
+#: 
+msgid "Schedule name"
+msgstr "அட்டவணையின் பெயர்"
+
+#: 
+msgid "Schedule not found"
+msgstr "அட்டவணை கிடைக்கவில்லை"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "அட்டவணை மீண்டும் செயல்படுத்தப்பட்டது"
+
+#: 
+msgid "Schedule saved"
+msgstr "அட்டவணை சேமிக்கப்பட்டது"
+
+#: 
+msgid "Scheduled"
+msgstr "அட்டவணையிடப்பட்டது"
+
+#: 
+msgid "Schedules"
+msgstr "அட்டவணைகள்"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "அட்டவணைகள் கடைசியாக நிரப்பப்பட்டது"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "அட்டவணைகள் இனி தங்கள் சொந்த மீள்நிகழ்வு அல்லது நேரங்களைக் கொண்டிருக்காது; ஒவ்வொரு நிகழ்வும் ஒரு நாட்காட்டி நிகழ்ச்சியைப் பின்தொடர்கிறது. அகற்றவும்: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "அட்டவணைகள் இனி எவ்வளவு முன்கூட்டியே உருவாக்கப்படுகின்றன என்பதை அமைக்காது: நிர்வாகம் → ஊழிய அமைப்புகளிலுள்ள அட்டவணைப்படுத்தல் எல்லை ஒவ்வொரு அட்டவணைக்கும் பொருந்தும். அகற்றவும்: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "அட்டவணைப்படுத்தல் எல்லை (வாரங்கள்)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "நோக்க வழங்கல் கிடைக்கவில்லை"
+
+#: 
+msgid "Search by name"
+msgstr "பெயர் மூலம் தேடு"
+
+#: 
+msgid "See the whole calendar"
+msgstr "முழு நாட்காட்டியையும் காண்க"
+
+#: 
+msgid "See what needs filling"
+msgstr "நிரப்ப வேண்டியவை என்ன என்று காண்க"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "நாட்காட்டியின் நிகழ்ச்சிகளை மறைக்க அல்லது காட்ட அதைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Select ministries..."
+msgstr "ஊழியங்களைத் தேர்ந்தெடுக்கவும்..."
+
+#: 
+msgid "Self sign-up"
+msgstr "சுயப் பதிவு"
+
+#: 
+msgid "Self-assignable"
+msgstr "தானாக ஏற்கத்தக்க"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "தானாக ஏற்கத்தக்கது சரி அல்லது தவறு ஆக இருக்க வேண்டும்"
+
+#: 
+msgid "Self-service accounts"
+msgstr "சுயசேவைக் கணக்குகள்"
+
+#: 
+msgid "Send"
+msgstr "அனுப்பு"
+
+#: 
+msgid "Send Email"
+msgstr "மின்னஞ்சல் அனுப்பு"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "ChurchCRM இலிருந்து மின்னஞ்சல் அனுப்பு"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "நியமனச் செய்தியை மீண்டும் அனுப்பு"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "காட்ட வேண்டிய நாட்காட்டிகளைப் பட்டியலாக அனுப்பவும்."
+
+#: 
+msgid "Send to the church office"
+msgstr "திருச்சபை அலுவலகத்துக்கு அனுப்பு"
+
+#: 
+msgid "Send your answer"
+msgstr "உங்கள் பதிலை அனுப்பு"
+
+#: 
+msgid "Sent"
+msgstr "அனுப்பப்பட்டது"
+
+#: 
+msgid "Sent by"
+msgstr "அனுப்பியவர்"
+
+#: 
+msgid "Serving next"
+msgstr "அடுத்த பணி"
+
+#: 
+msgid "Set as Accepted"
+msgstr "ஏற்கப்பட்டதாக அமை"
+
+#: 
+msgid "Set staffing needs"
+msgstr "ஆட்கள் தேவைகளை அமை"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "உறுப்பினர் போர்ட்டலில் \"%s\" ஐக் காட்டு"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "உறுப்பினர் போர்ட்டலில் காட்டு"
+
+#: 
+msgid "Show past events"
+msgstr "கடந்த நிகழ்ச்சிகளைக் காட்டு"
+
+#: 
+msgid "Show the church calendar"
+msgstr "திருச்சபை நாட்காட்டியைக் காட்டு"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "உறுப்பினர் போர்ட்டலில் திருச்சபை நாட்காட்டியைக் காட்டு."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "உறுப்பினர் போர்ட்டலில் திருச்சபை நாட்காட்டிப் பிரிவைக் காட்டு."
+
+#: 
+msgid "Show the next"
+msgstr "அடுத்தவற்றைக் காட்டு"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "உறுப்பினர் போர்ட்டலில் தன்னார்வப் பணி மற்றும் குழுப் பிரிவுகளைக் காட்டு."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "இந்த ஊழியத்தைத் திறந்த வாய்ப்புகள் பக்கத்தில் காட்டு"
+
+#: 
+msgid "Show volunteering"
+msgstr "தன்னார்வப் பணியைக் காட்டு"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "உறுப்பினர் போர்ட்டலில் தன்னார்வப் பணி மற்றும் குழுப் பக்கங்களைக் காட்டு."
+
+#: 
+msgid "Show what I have already done"
+msgstr "நான் ஏற்கெனவே செய்தவற்றைக் காட்டு"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "நீங்கள் தட்டச்சு செய்தபடியே காட்டப்படும். வரி முறிவுகள் வைக்கப்படும்."
+
+#: 
+msgid "Sign up"
+msgstr "பதிவு செய்"
+
+#: 
+msgid "Sign-in and security"
+msgstr "உள்நுழைவும் பாதுகாப்பும்"
+
+#: 
+msgid "Signed in"
+msgstr "உள்நுழைந்தார்"
+
+#: 
+msgid "Signed up"
+msgstr "பதிவு செய்தார்"
+
+#: 
+msgid "Sincerely"
+msgstr "இப்படிக்கு"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "உங்கள் விவரங்களில் சில சேமிக்கப்படவில்லை. சிறப்பிக்கப்பட்ட புலங்களைச் சரிபார்க்கவும்."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "உங்கள் குடும்ப விவரங்களில் சில சேமிக்கப்படவில்லை. சிறப்பிக்கப்பட்ட புலங்களைச் சரிபார்க்கவும்."
+
+#: 
+msgid "Someone else is covering"
+msgstr "வேறொருவர் பணியாற்றுகிறார்"
+
+#: 
+msgid "Something needs changing"
+msgstr "ஏதோ மாற்றப்பட வேண்டும்"
+
+#: 
+msgid "Something went wrong"
+msgstr "ஏதோ தவறாகிவிட்டது"
+
+#: 
+msgid "Staff an event"
+msgstr "ஒரு நிகழ்ச்சிக்கு ஆட்களை அமர்த்து"
+
+#: 
+msgid "Staff them"
+msgstr "அவர்களை அமர்த்து"
+
+#: 
+msgid "Staff this event"
+msgstr "இந்த நிகழ்ச்சிக்கு ஆட்களை அமர்த்து"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "இந்த நிகழ்வுக்கு ஆட்களை அமர்த்து"
+
+#: 
+msgid "Staffed"
+msgstr "ஆட்கள் அமர்த்தப்பட்டது"
+
+#: 
+msgid "Staffing"
+msgstr "ஆட்கள் அமர்த்தல்"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "நிகழ்ச்சிகள் உருவாக்கப்பட்ட பிறகு ஆட்கள் அமர்த்தல் அமைக்கப்படுகிறது"
+
+#: 
+msgid "Staffing needs"
+msgstr "ஆட்கள் தேவைகள்"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "ஆட்கள் தேவைகள் சேமிக்கப்பட்டன"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "முதலில் ஒரு ஊழியத்தை உருவாக்கவும், பிறகு அதில் பணியாற்றும் குழுக்களையும் பொறுப்புகளையும் சேர்க்கவும்."
+
+#: 
+msgid "Start time"
+msgstr "தொடக்க நேரம்"
+
+#: 
+msgid "Start typing a name"
+msgstr "ஒரு பெயரைத் தட்டச்சு செய்யத் தொடங்குங்கள்"
+
+#: 
+msgid "Statistics"
+msgstr "புள்ளிவிவரங்கள்"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "{{name}} {{ministry}} ஐ ஒருங்கிணைப்பதை நிறுத்தவா? அவரது உள்நுழைவும் அவரது சொந்த நியமனங்களும் மாறாது."
+
+#: 
+msgid "Subscribe"
+msgstr "சந்தா பெறு"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "நாட்காட்டிக்குச் சந்தா பெறு"
+
+#: 
+msgid "Substitute"
+msgstr "மாற்று நபர்"
+
+#: 
+msgid "Substitute approved"
+msgstr "மாற்று நபர் அங்கீகரிக்கப்பட்டார்"
+
+#: 
+msgid "Substitute asked"
+msgstr "மாற்று நபர் கேட்கப்பட்டார்"
+
+#: 
+msgid "Substitute decision"
+msgstr "மாற்று நபர் முடிவு"
+
+#: 
+msgid "Substitute proposed"
+msgstr "மாற்று நபர் முன்மொழியப்பட்டார்"
+
+#: 
+msgid "Substitute rejected"
+msgstr "மாற்று நபர் நிராகரிக்கப்பட்டார்"
+
+#: 
+msgid "Substituted"
+msgstr "மாற்றப்பட்டது"
+
+#: 
+msgid "Substitution approved"
+msgstr "மாற்று ஏற்பாடு அங்கீகரிக்கப்பட்டது"
+
+#: 
+msgid "Substitution rejected"
+msgstr "மாற்று ஏற்பாடு நிராகரிக்கப்பட்டது"
+
+#: 
+msgid "Substitution request not found"
+msgstr "மாற்று நபர் கோரிக்கை கிடைக்கவில்லை"
+
+#: 
+msgid "Substitution requests"
+msgstr "மாற்று நபர் கோரிக்கைகள்"
+
+#: 
+msgid "Sunday School Class"
+msgstr "ஞாயிறு பள்ளி வகுப்பு"
+
+#: 
+msgid "System calendar"
+msgstr "கணினி நாட்காட்டி"
+
+#: 
+msgid "System default"
+msgstr "கணினி இயல்புநிலை"
+
+#: 
+msgid "Take that back"
+msgstr "அதைத் திரும்பப் பெறு"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "{{name}} ஐ இந்தப் பொறுப்பிலிருந்து நீக்கவா? மின்னஞ்சல் எதுவும் அனுப்பப்படாது; அவரது அட்டவணை அந்தத் தேதியை இனி தேவையில்லை என்று காட்டும், இடம் மீண்டும் திறக்கும்."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "இந்த வகுப்பின் ஆசிரியர்கள் ஊழியங்கள் → %1$s → %2$s இல் நிர்வகிக்கப்படுகிறார்கள்."
+
+#: 
+msgid "Team"
+msgstr "குழு"
+
+#: 
+msgid "Team Leader"
+msgstr "குழுத் தலைவர்"
+
+#: 
+msgid "Team added"
+msgstr "குழு சேர்க்கப்பட்டது"
+
+#: 
+msgid "Team deleted"
+msgstr "குழு நீக்கப்பட்டது"
+
+#: 
+msgid "Team leader"
+msgstr "குழுத் தலைவர்"
+
+#: 
+msgid "Team name"
+msgstr "குழுவின் பெயர்"
+
+#: 
+msgid "Team not found"
+msgstr "குழு கிடைக்கவில்லை"
+
+#: 
+msgid "Team saved"
+msgstr "குழு சேமிக்கப்பட்டது"
+
+#: 
+msgid "Teams"
+msgstr "குழுக்கள்"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "குழுக்கள் என்பவை இந்த ஊழியத்தில் பணியாற்றும் நபர்களின் தொகுப்புகள்."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "குழுக்கள், பொறுப்புகள் மற்றும் அவற்றை நிரப்பும் நபர்கள்"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "சமீபத்திய பத்து உள்நுழைவுகள்"
+
+#: 
+msgid "Thank you"
+msgstr "நன்றி!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "பணியாற்றப் பதிவு செய்ததற்கு நன்றி"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "பணியாற்றப் பதிவு செய்ததற்கு நன்றி. நீங்கள் அட்டவணையில் இருக்கிறீர்கள்."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "நன்றி. திருச்சபை அலுவலகத்துக்கு உங்கள் பதில் கிடைத்தது."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "நன்றி. சேர்ப்பதற்கு முன் திருச்சபை அலுவலகம் இதை மதிப்பாய்வு செய்யும்."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "தெரிவித்ததற்கு நன்றி."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "நன்றி — நீங்கள் மீண்டும் உதவ விரும்புவதாக ஒருங்கிணைப்பாளருக்குத் தெரிவிக்கப்பட்டது."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "நன்றி — நீங்கள் உதவ விரும்புவதாக ஒருங்கிணைப்பாளருக்குத் தெரிவிக்கப்பட்டது."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "நன்றி — நீங்கள் பட்டியலில் இருக்கிறீர்கள்."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "அந்த உறுப்பினர் போர்ட்டல் தீம் கோப்புறை இல்லை."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "அந்த நியமனம் வேறொருவருக்குரியது"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "அந்த நியமனத்தைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "அந்தப் பிறந்தநாள் சரியான தேதி அல்ல."
+
+#: 
+msgid "That could not be saved."
+msgstr "அதைச் சேமிக்க முடியவில்லை."
+
+#: 
+msgid "That could not be sent."
+msgstr "அதை அனுப்ப முடியவில்லை."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "அந்தக் குடும்ப உறுப்பினரைச் சேர்க்க முடியவில்லை. சிறப்பிக்கப்பட்ட புலங்களைச் சரிபார்க்கவும்."
+
+#: 
+msgid "That is not a valid date."
+msgstr "அது சரியான தேதி அல்ல."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "அந்தப் பட்டியலை ஏற்ற முடியவில்லை."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "அந்த நபர் ஏற்கெனவே இந்த நிகழ்வில் இந்தப் பொறுப்பில் இருக்கிறார்"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "அந்த நபர் ஏற்கெனவே இந்த நிகழ்வில் இந்தப் பொறுப்புக்கு நியமிக்கப்பட்டுள்ளார்"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "அந்த நபர் இந்த ஊழியத்தின் தன்னார்வலர் தொகுப்பில் இல்லை. அப்படியும் அவரை நியமிக்க, தொகுப்புக்கு வெளியே என்ற மேலெழுதலுடன் மீண்டும் அனுப்பவும்."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "அந்த நபர் இந்தத் தன்னார்வலர் தொகுப்பில் இல்லை"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "அந்த நபர் இந்தப் பொறுப்புக்குத் தகுதி பெறவில்லை"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "அந்தப் புகைப்படத்தைச் சேமிக்க முடியவில்லை."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "அந்தப் புகைப்படம் மிகப் பெரியது. சிறியதைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "அந்தப் பொறுப்பு வேறு ஊழியத்தைச் சேர்ந்தது"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "அந்தப் பொறுப்பு வேறு குழுவைச் சேர்ந்தது"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "அந்தப் பொறுப்புக்கு ஏற்கெனவே முழுமையாக ஆட்கள் உள்ளனர்"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "அந்தப் பொறுப்புக்கு இந்த நிகழ்வில் ஆட்கள் அமர்த்தப்படவில்லை"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "அந்தப் பதிலைப் பதிவு செய்ய முடியவில்லை"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "அந்த நிலையை நேரடியாக அமைக்க முடியாது"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "அந்த மாற்று நபர் கோரிக்கையின் மீது முடிவெடுக்க முடியவில்லை"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "அந்தக் குழு வேறு ஊழியத்தைச் சேர்ந்தது"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "அந்த தீமைச் செயல்படுத்த முடியவில்லை."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "அந்த தீமைச் சரிபார்க்க முடியவில்லை."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "அந்த தீமில் பிழைகள் உள்ளன, எனவே அது செயல்படுத்தப்படவில்லை."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "அந்தத் தன்னார்வலரை நியமிக்க முடியவில்லை"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "அந்தத் திருமண தேதி சரியான தேதி அல்ல."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s YYYY-MM-DD வடிவில் தேதியாக இருக்க வேண்டும்"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s முழு எண் நிமிடங்களாக இருக்க வேண்டும்"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s நிகழ்ச்சியிலிருந்து %d நிமிடங்களுக்குள் இருக்க வேண்டும்"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "உறுப்பினர் போர்ட்டல் நாட்காட்டிகள் சேமிக்கப்பட்டன."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "நீங்கள் கேட்டதை உறுப்பினர் போர்ட்டலால் முடிக்க முடியவில்லை. சில நிமிடங்களில் மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "உறுப்பினர் போர்ட்டல் உள்நுழைந்த நபருக்கு மட்டுமே கிடைக்கும், API கிளையண்டுகளுக்கு அல்ல."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "உறுப்பினர் போர்ட்டல் \"%s\" தீமுக்கு அமைக்கப்பட்டுள்ளது, அது இப்போது சேவையகத்தில் இல்லை. நீங்கள் இருக்கும் தீமைத் தேர்ந்தெடுக்கும் வரை உறுப்பினர்களுக்குப் பிழைப் பக்கம் காட்டப்படுகிறது."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "உறுப்பினர் போர்ட்டல் தற்காலிகமாகக் கிடைக்கவில்லை"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "உறுப்பினர் போர்ட்டல் தீம் \"%s\" இல் பிழைகள் இருப்பதால் அதைச் செயல்படுத்த முடியவில்லை."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "உறுப்பினர் போர்ட்டல் தீமை ரெண்டர் செய்ய முடியவில்லை"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "உறுப்பினர் போர்ட்டல் தீம் கோப்புறை \"%s\" கிடைக்கவில்லை."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "உறுப்பினர் போர்ட்டல் தீம் மாற்றப்பட்டது."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "%1$s இன் ஆசிரியர்கள் ஊழியங்கள் → %2$s → %3$s இல் நிர்வகிக்கப்படும்போது அதன் ஆசிரியர் பங்கின் பெயரை மாற்றவோ நீக்கவோ முடியாது."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "செயலில் உள்ள தீம் கோப்புறை இல்லை"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "முகவரி தேர்ந்தெடுக்கப்பட்டுள்ளது — உங்கள் விசைப்பலகையால் நகலெடுக்கவும்."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "சொத்துப் பாதை \"%s\" அனுமதிக்கப்படவில்லை."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "நியமனத்தை ரத்து செய்ய முடியவில்லை"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "நியமனச் செய்தி மீண்டும் அனுப்பப்படும்"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "நாட்காட்டி முகவரி நகலெடுக்கப்பட்டது."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "நாட்காட்டிகளை ஏற்ற முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "நாட்காட்டிகளைச் சேமிக்க முடியவில்லை."
+
+#: 
+msgid "The cart could not be added"
+msgstr "தேர்வைச் சேர்க்க முடியவில்லை"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "திருச்சபை உங்களுக்கு இன்னும் மின்னஞ்சல் அனுப்பவில்லை."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "திருச்சபை அலுவலகத்துக்குத் தெரிவிக்கப்பட்டது. பிறகு மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "The class does not exist"
+msgstr "அந்த வகுப்பு இல்லை"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "இந்த அட்டவணை பின்தொடரும் வகுப்பு இனி இல்லை."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "இந்த மின்னஞ்சலின் உள்ளடக்கம் சேமிக்கப்படவில்லை. மின்னஞ்சல் எழுதுபொறியில் எழுதிய செய்திகளின் மற்றும் தன்னார்வலர் மின்னஞ்சல்களின் உரையை மட்டுமே ChurchCRM வைத்திருக்கும்."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "இந்த மின்னஞ்சலின் உள்ளடக்கம் வைக்கப்படவில்லை."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "ஒருங்கிணைப்பாளரைச் சேர்க்க முடியவில்லை"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "ஒருங்கிணைப்பாளர் பட்டியலை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "ஒவ்வொரு நிகழ்வின் தேதியும் நேரமும் அதன் நாட்காட்டி நிகழ்ச்சியிலிருந்து வருகின்றன, எனவே நிகழ்ச்சியை நகர்த்தினால் அட்டவணையும் நகரும்."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "days அளவுரு 1 முதல் 365 வரையிலான முழு எண்ணாக இருக்க வேண்டும்"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "இயல்புநிலை தன்னார்வலர் ஒரு நபராக இருக்க வேண்டும்"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "இயல்புநிலை தன்னார்வலர்கள் அட்டவணையில் சேமிக்கப்பட்டு, இனிமேல் உருவாக்கப்படும் நிகழ்வுகளுக்குச் செல்கிறார்கள்."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "இயல்புநிலை தன்னார்வலர்கள் ஒரு பட்டியலாக இருக்க வேண்டும்"
+
+#: 
+msgid "The description is too long"
+msgstr "விளக்கம் மிக நீளமாக உள்ளது"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "வரம்பின் முடிவு அதன் தொடக்கத்துக்கு முன்பு உள்ளது."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "வரம்பின் முடிவு ஒரு தேதி அல்ல."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "நிகழ்ச்சிக்கு ஆட்களை அமர்த்த முடியவில்லை"
+
+#: 
+msgid "The event does not exist"
+msgstr "நிகழ்ச்சி இல்லை"
+
+#: 
+msgid "The event is inactive"
+msgstr "நிகழ்ச்சி செயலிழந்துள்ளது"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "நிகழ்ச்சி தொடங்கிய பிறகே முடிய வேண்டும்"
+
+#: 
+msgid "The event title"
+msgstr "நிகழ்ச்சியின் தலைப்பு"
+
+#: 
+msgid "The event title is too long"
+msgstr "நிகழ்ச்சியின் தலைப்பு மிக நீளமாக உள்ளது"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "ஒரு ஊழியத்தின் புதிய நிகழ்ச்சிகள் தொடங்கும் நிகழ்ச்சி வகை. காலியாக இருக்கும்போது, அல்லது அந்த வகை நீக்கப்பட்டிருக்கும்போது, \"Other\" என்ற வகை இருந்தால் அது பயன்படுத்தப்படும்."
+
+#: 
+msgid "The event type does not exist"
+msgstr "நிகழ்ச்சி வகை இல்லை"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "இந்த அட்டவணை பின்தொடரும் நிகழ்ச்சி வகை இனி இல்லை."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "நிகழ்ச்சிகளை குழு இணைக்கப்பட்டுள்ள வகுப்புக்கு மட்டுமே நகர்த்த முடியும்"
+
+#: 
+msgid "The events could not be created"
+msgstr "நிகழ்ச்சிகளை உருவாக்க முடியவில்லை"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "நிகழ்ச்சிகளை நீக்க முடியவில்லை"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "நிகழ்ச்சிகளுக்கு ஆட்களை அமர்த்த முடியவில்லை"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "அனுமதியை அகற்ற முடியவில்லை"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "கடைசி தேதி முதல் தேதிக்கு முன்பு உள்ளது"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "தகுதியான தன்னார்வலர்களின் பட்டியலை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "அதிகபட்ச எண்ணிக்கை குறைந்தபட்ச எண்ணிக்கைக்குக் கீழே இருக்கக்கூடாது"
+
+#: 
+msgid "The message could not be queued"
+msgstr "செய்தியை வரிசையில் சேர்க்க முடியவில்லை"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "குறைந்தபட்ச எண்ணிக்கை எதிர்மறையாக இருக்கக்கூடாது"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "ஊழியத்தை உருவாக்க முடியவில்லை"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "ஊழியத்தைச் செயலிழக்கச் செய்ய முடியவில்லை"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "ஊழியத்தை நீக்க முடியவில்லை"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "ஊழியத்தை மீண்டும் செயல்படுத்த முடியவில்லை"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "ஊழியத்தைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "நிகழ்வை நீக்க முடியவில்லை"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "நிகழ்வுக்கு அட்டவணை இல்லை"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "நிகழ்வுகளை உருவாக்க முடியவில்லை"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "அசல் தன்னார்வலர் விடுவிக்கப்படுகிறார், மாற்று நபர் அந்தப் பொறுப்பை ஏற்கிறார். இருவருக்கும் தெரிவிக்கப்படும்."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "அசல் தன்னார்வலர் அந்தப் பொறுப்பை வைத்திருக்கிறார். இருவருக்கும் தெரிவிக்கப்படும்."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "நீங்கள் கேட்ட பக்கம் இல்லை. அது நகர்த்தப்பட்டிருக்கலாம் அல்லது அகற்றப்பட்டிருக்கலாம்."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "பொறுப்பு வேறு ஊழியத்தைச் சேர்ந்தது"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "பொறுப்பை நீக்க முடியவில்லை"
+
+#: 
+msgid "The position could not be saved"
+msgstr "பொறுப்பைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "பொறுப்புக்கு இன்னும் ஆட்கள் உள்ளனர், எனவே பட்டியலைச் சரிசெய்ய விரும்பினாலன்றி எந்த நடவடிக்கையும் தேவையில்லை."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "தகுதியை அகற்ற முடியவில்லை"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "தகுதியைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "தகுதி பெற்ற தன்னார்வலர்களை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "நிகழ்ச்சிகள் எப்படி மீண்டும் நிகழ்கின்றன என்பதை மீள்நிகழ்வு கூற வேண்டும்"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "%2$s க்குப் பதிலாக %1$s பணியாற்ற வேண்டும் என்ற கோரிக்கை அங்கீகரிக்கப்பட்டது."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "%2$s க்குப் பதிலாக %1$s பணியாற்ற வேண்டும் என்ற கோரிக்கை அங்கீகரிக்கப்படவில்லை."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "ஆட்கள் தேவைகளில் ஒரே பொறுப்பு இரண்டு முறை பட்டியலிடப்பட்டுள்ளது"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "அட்டவணையைச் செயலிழக்கச் செய்ய முடியவில்லை"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "அட்டவணையை நீக்க முடியவில்லை"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "அட்டவணையை மீண்டும் செயல்படுத்த முடியவில்லை"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "அட்டவணையைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "அட்டவணை புதுப்பிக்கப்பட்டது, எனவே மேற்கொண்டு செய்ய எதுவும் இல்லை."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "அட்டவணைக் காலம் தொடங்குவதற்கு முன்பே முடிகிறது"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "அட்டவணையின் ஆட்கள் தேவைகளை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "ஆட்கள் தேவைகளை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "ஆட்கள் தேவைகளை மீட்டமைக்க முடியவில்லை"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "ஆட்கள் தேவைகளைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "ஆட்கள் தேவைகள் ஒரு பட்டியலாக இருக்க வேண்டும்"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "ஆட்கள் அமர்த்தல் திட்டத்தை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "வரம்பின் தொடக்கம் ஒரு தேதி அல்ல."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "மாற்று நபர் குறித்து முடிவெடுக்க முடியவில்லை"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "மாற்று நபர் கோரிக்கைகளை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "ஆசிரியர்களை இந்தக் குழுவின் பொறுப்புக்கு மட்டுமே இறக்குமதி செய்ய முடியும்"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "%1$s இன் ஆசிரியர்கள் ஊழியங்கள் → %2$s → %3$s இல் நிர்வகிக்கப்படுகிறார்கள். மாணவர்களை இங்கே இன்னும் மாற்றலாம்."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "குழுவை நீக்க முடியவில்லை"
+
+#: 
+msgid "The team could not be saved"
+msgstr "குழுவைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "குழு இந்த ஊழியத்தைச் சேர்ந்தது அல்ல"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "தீம் கோப்புறை கிடைக்கவில்லை."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "ஒரு ஊழியத்தின் நாட்காட்டி தாவலில் புதிய நிகழ்ச்சி தொடங்கும் வகை. வருகை எண்ணிக்கை வகைகள் தேவைப்படும் வகுப்பு போன்றவற்றுக்கு, ஒவ்வொரு நிகழ்ச்சிக்கும் இதை இன்னும் மாற்றலாம்."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "தன்னார்வப் பணி நியமனத்தைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "%s ஊழியத்தின் தன்னார்வலர் தொகுப்பு."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "தன்னார்வப் பணி அமைப்பு மாற்றத்தைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "காலம் தொடங்குவதற்கு முன்பே முடிகிறது"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "அவர்களின் ஒருங்கிணைப்பாளர்கள் நிகழ்ச்சிகளைச் சேர்க்கும் அனுமதி இல்லாமலேயே தங்கள் ஊழியத்தின் நிகழ்ச்சிகளை இந்த நாட்காட்டியில் பின் செய்யலாம்."
+
+#: 
+msgid "Theme"
+msgstr "தீம்"
+
+#: 
+msgid "Themes"
+msgstr "தீம்கள்"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "தீம்களை உங்கள் திருச்சபை வழங்குகிறது, ChurchCRM அல்ல, மேலும் அவற்றை ChurchCRM திட்டம் சரிபார்ப்பதில்லை."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "ஐடி %d கொண்ட திருச்சபை நாட்காட்டி இல்லை."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "ஐடி %d கொண்ட கணினி நாட்காட்டி இல்லை."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "இவை திருச்சபையிடம் உங்களுக்காகப் பதிவு செய்யப்பட்டுள்ள விவரங்கள். மாற்றங்கள் உடனே சேமிக்கப்படும்."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "இவை நீங்கள் கவனிக்கும் தன்னார்வக் குழுக்கள். அதன் பொறுப்புகளை அமைக்கவும், யார் எங்கு பணியாற்றலாம் என்று கூறவும், வரவிருக்கும் வாரங்களை நிரப்பவும் ஒன்றைத் திறக்கவும்."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "இந்த நிகழ்ச்சிகள் ஒரே தொடர் அல்ல: அவை தலைப்பு, வகை அல்லது வகுப்பில் வேறுபடுகின்றன"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "இந்த ஊழியங்களுக்கு மேலும் நபர்கள் தேவை. உங்களுக்கு ஆர்வம் உள்ளது என்று அவர்களிடம் கூறுங்கள், யாராவது உங்களைத் தொடர்புகொள்வார்கள்."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "இந்தத் தேவைகள் அட்டவணையிலிருந்து வருகின்றன. இங்கே சேமித்தால் இந்த நிகழ்வு மட்டுமே மாறும்."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "இந்த எண்ணிக்கைகள் சுயசேவைக் கணக்குகளை மட்டுமே கணக்கிடுகின்றன: உள்நுழைவு மூலம் உறுப்பினர் போர்ட்டலை மட்டுமே அணுக முடிந்து வேறு எதையும் அணுக முடியாத நபர்கள்."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "இந்த நபர்கள் இன்னும் நியமிக்கப்பட்டுள்ளனர், ஆனால் அவர்கள் வகிக்கும் பொறுப்பு இப்போது இந்தத் தேதியின் ஆட்கள் அமர்த்தல் திட்டத்தின் பகுதி அல்ல."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "இந்த நபர்கள் இன்னும் நியமிக்கப்பட்டுள்ளனர், ஆனால் அவர்கள் வகிக்கும் பொறுப்பு இப்போது இந்த நிகழ்வின் ஆட்கள் அமர்த்தல் திட்டத்தின் பகுதி அல்ல."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "அட்டவணையிடப்பட்ட இந்தப் பொறுப்புகளுக்கு இன்னும் ஆள் தேவை."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "%1$s இன் இந்தக் குழுக்கள் ஒரு ஞாயிறு பள்ளி வகுப்புடன் இணைக்கப்பட்டுள்ளன: %2$s. முதலில் அவற்றைத் துண்டிக்கவும்."
+
+#: 
+msgid "They could not be added"
+msgstr "அவர்களைச் சேர்க்க முடியவில்லை"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "அவர்களை இந்த ஊழியத்திலிருந்து அகற்ற முடியவில்லை"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "நிகழ்ச்சி முடிந்து %d நிமிடம் கழித்து அவர்கள் முடிக்கிறார்கள்."
+msgstr[1] "நிகழ்ச்சி முடிந்து %d நிமிடங்கள் கழித்து அவர்கள் முடிக்கிறார்கள்."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "நிகழ்ச்சி முடிவதற்கு %d நிமிடம் முன்பு அவர்கள் முடிக்கிறார்கள்."
+msgstr[1] "நிகழ்ச்சி முடிவதற்கு %d நிமிடங்கள் முன்பு அவர்கள் முடிக்கிறார்கள்."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "அவர்கள் ஏற்கெனவே இங்கே தன்னார்வலர்கள்"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "இந்த நியமனம் %1$s நிலையில் உள்ளது, அதை %2$s ஆக மாற்ற முடியாது"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "இந்த நியமனம் இனி செயலில் இல்லை"
+
+#: 
+msgid "This email is not in your history."
+msgstr "இந்த மின்னஞ்சல் உங்கள் வரலாற்றில் இல்லை."
+
+#: 
+msgid "This event has already happened"
+msgstr "இந்த நிகழ்ச்சி ஏற்கெனவே நடந்துவிட்டது"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "இது மதிப்பாய்வுக்காகத் திருச்சபை அலுவலகத்துக்குச் செல்கிறது. பணியாளர் ஒருவர் இதை அங்கீகரிக்கும் வரை, புதிய குடும்ப உறுப்பினர் இங்கே மதிப்பாய்வுக்காகக் காத்திருப்பவராகக் காட்டப்படுவார்."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "இந்தக் குழு ஒரு தன்னார்வ ஊழியத்தின் தொகுப்பு, ஊழியத்துடன் சேர்ந்து நீக்கப்படும்"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "இந்தக் குழு %s இன் தன்னார்வலர் தொகுப்பு, அந்த ஊழியத்திலிருந்து நிர்வகிக்கப்படுகிறது."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "இந்தக் குழு %s இன் தன்னார்வலர் தொகுப்பு. இது அந்த ஊழியத்திலிருந்து நிர்வகிக்கப்படுகிறது."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "இந்த நிறுவலில் இன்னும் நாட்காட்டிகள் இல்லை."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "நீங்கள் விரைவில் பணியாற்ற அட்டவணையிடப்பட்டுள்ளீர்கள் என்பதற்கான நினைவூட்டல் இது."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "இது சரியான தீம் கோப்புறைப் பெயர் அல்ல."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "இது உங்கள் குழுவின் தேதிகளில் ஒன்றல்ல."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "இது உங்கள் குழுக்களில் ஒன்றல்ல."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "இங்கேதான் திருச்சபை அஞ்சல் அனுப்புகிறது, உங்கள் குடும்பம் குறித்து யாரைத் தொடர்புகொள்கிறது என்பதும்."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "இது உங்கள் திருச்சபைக் கணக்கு. உங்களுக்காகவும் உங்கள் குடும்பத்துக்காகவும் நீங்கள் செய்யக்கூடிய அனைத்தும் இங்கே உள்ளன."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "இந்த ஊழியத்துக்கு நாட்காட்டியில் வரவிருக்கும் நிகழ்ச்சிகள் இல்லை."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "இந்த ஊழியத்துக்கு \"%s\" என்ற தலைப்பில் வரவிருக்கும் நிகழ்ச்சிகள் இல்லை. அட்டவணை ஏற்கெனவே உள்ள நிகழ்ச்சிகளைப் பின்தொடரும்: முதலில் ஊழியத்தின் நாட்காட்டி தாவலில் அவற்றைச் சேர்க்கவும்."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "இந்த ஊழியத்துக்கு தன்னார்வலர் தொகுப்புக் குழு இல்லை"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "இந்த ஊழியம் இப்போது உதவி கேட்கவில்லை"
+
+#: 
+msgid "This ministry's events"
+msgstr "இந்த ஊழியத்தின் நிகழ்ச்சிகள்"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "இந்த ஊழியத்தின் நிகழ்ச்சிகள் (இன்னும் நிகழ்ச்சி தேர்ந்தெடுக்கப்படவில்லை)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "இந்த நிகழ்வு மீண்டும் அதன் அட்டவணையைப் பின்தொடர்கிறது"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "இந்த நிகழ்வு ஏற்கெனவே நடந்துவிட்டது"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "இந்த நிகழ்வு ஏற்கெனவே நடந்துவிட்டது, அதன் நியமனங்களை இனி மாற்ற முடியாது"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "இந்த நிகழ்வு ரத்து செய்யப்பட்டுள்ளது"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "இந்த நிகழ்வுக்கு அதன் அட்டவணையிலிருந்து தனியாக, சொந்த ஆட்கள் தேவைகள் உள்ளன."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "இந்தப் பக்கம் உங்கள் கணக்கின் பகுதி அல்ல. இருக்க வேண்டும் என்று நினைத்தால், திருச்சபை அலுவலகத்தைக் கேளுங்கள்."
+
+#: 
+msgid "This page was not found"
+msgstr "இந்தப் பக்கம் கிடைக்கவில்லை"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "உறுப்பினர் போர்ட்டலின் இந்தப் பகுதி தன்னார்வக் குழுத் தலைவர்களுக்கானது."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "இந்தப் பொறுப்பை அதன் குழுத் தலைவர் அல்லது ஒருங்கிணைப்பாளர் நியமிக்கிறார், பதிவு செய்வதன் மூலம் அல்ல"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "இந்த அட்டவணையை நீக்க முடியாது: %d தன்னார்வப் பணி நியமனங்கள் இன்னும் அதன் நிகழ்வுகளைச் சுட்டுகின்றன."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "இந்த அட்டவணைக்கு இன்னும் ஆட்கள் தேவைகள் இல்லை"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "இந்த அட்டவணை செயலிழந்துள்ளது. அதன் நிகழ்வுகளை உருவாக்க மீண்டும் செயல்படுத்தவும்."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "இந்த மாற்று நபர் கோரிக்கையின் மீது ஏற்கெனவே முடிவெடுக்கப்பட்டுவிட்டது"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "இந்தக் குழுவுக்கு இன்னும் பொறுப்புகள் இல்லை"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "இந்தக் குழு ஏற்கெனவே இந்த நிகழ்ச்சிக்கு ஆட்களை வழங்குகிறது"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "இந்த வார்ப்புரு தீமில் இல்லாத \"%s\" கோப்பைக் கேட்கிறது."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "இந்த தீமைச் செயல்படுத்த முடியாது"
+
+#: 
+msgid "This theme has no problems."
+msgstr "இந்த தீமில் சிக்கல்கள் இல்லை."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "ChurchCRM இன் இந்தப் பதிப்பு இந்தப் பாதையில் வார்ப்புருவைப் பயன்படுத்துவதில்லை, எனவே மேலெழுதல் ஒருபோதும் ரெண்டர் செய்யப்படாது."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "இந்தக் குழுவின் தன்னார்வலர்கள் தாவலில் அவர்களைத் தேர்வுக்குறியிடவும், பிறகு இங்கே நியமிக்கவும்."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "நீங்கள் குறியிடும்போதே தேர்வுகள் சேமிக்கப்படும்."
+
+#: 
+msgid "Times come from this event"
+msgstr "நேரங்கள் இந்த நிகழ்ச்சியிலிருந்து வருகின்றன"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "அடுத்த திட்டமிட்ட இயக்கத்துக்குக் காத்திருக்காமல், ஒவ்வொரு அட்டவணையையும் நிரப்புகிறது, வரிசையில் உள்ளவற்றை அனுப்புகிறது, முடிந்த நிகழ்வுகளை முடிக்கிறது."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "{{name}} ஐ நிராகரிக்கவா? அசல் தன்னார்வலர் தொடர்வார், அவருக்குத் தெரிவிக்கப்படும்."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "உறுப்பினர் போர்ட்டல் வார்ப்புரு தற்காலிகச் சேமிப்பை அணைத்து, ஒவ்வொரு வார்ப்புருவின் பெயரையும் HTML கருத்தில் அச்சிடு. தீம் வடிவமைப்பாளர்களுக்கு; இயல்பான பயன்பாட்டில் அணைத்தே வைக்கவும்."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "தங்கள் குழுக்கள் ஞாயிறு பள்ளி வகுப்புகளைக் கற்பிக்கும் ஊழியத்துக்கு இதை இயக்கவும். அப்போது அதன் குழுக்களை ஒரு வகுப்புடன் இணைக்கலாம், அதன் அட்டவணைகளும் நிகழ்ச்சிகளும் ஒன்றைப் பயன்படுத்தலாம்."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "போர்ட்டல் வார்ப்புரு தற்காலிகச் சேமிப்பை அணைத்து, ஒவ்வொரு வார்ப்புருவின் பெயரையும் HTML கருத்தில் அச்சிடுகிறது. தீம் வடிவமைப்பாளர்களுக்கு; இயல்பான பயன்பாட்டில் இதை அணைத்தே வைக்கவும்."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "இரண்டு-காரணி அங்கீகாரம்"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "நிரப்பப்படாத பொறுப்புகள்"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "தெரியாத விநியோகப் பிழை"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "தெரியாத நிகழ்வு நிலை"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "தெரியாத அட்டவணை இணைப்புப் பயன்முறை"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "தெரியாத தன்னார்வ ஊழியம்"
+
+#: 
+msgid "Until"
+msgstr "வரை"
+
+#: 
+msgid "Upcoming availability"
+msgstr "வரவிருக்கும் கிடைக்கும் நிலை"
+
+#: 
+msgid "Update your details"
+msgstr "உங்கள் விவரங்களைப் புதுப்பிக்கவும்"
+
+#: 
+msgid "Update your family details"
+msgstr "உங்கள் குடும்ப விவரங்களைப் புதுப்பிக்கவும்"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "ஒரே நிகழ்ச்சிக்கு ஆட்களை அமர்த்த இந்த நிகழ்ச்சிக்கு ஆட்களை அமர்த்து என்பதைப் பயன்படுத்தவும்"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "அட்டவணையின் தேவைகளைப் பயன்படுத்து"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "பயனருக்கு நிகழ்ச்சிகளைச் சேர்க்கும் அனுமதி இருக்க வேண்டும், அல்லது ஒரு தன்னார்வ ஊழியத்தை ஒருங்கிணைக்க வேண்டும், மேலும் நிகழ்ச்சிகள் தொகுதி இயக்கப்பட்டிருக்க வேண்டும்"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "பயனருக்கு நிகழ்ச்சிகளைச் சேர்க்கும் அனுமதி இருக்க வேண்டும், அல்லது இந்த நாட்காட்டி சேர்ந்த தன்னார்வ ஊழியத்தை ஒருங்கிணைக்க வேண்டும்"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — தன்னார்வ வாய்ப்புகள் (பழையது)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — பழைய தன்னார்வ வாய்ப்புகள்"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — ஊழியங்கள்"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — தன்னார்வப் பணி மேலாண்மை"
+
+#: 
+msgid "Valid"
+msgstr "செல்லுபடியாகும்"
+
+#: 
+msgid "Validation"
+msgstr "சரிபார்ப்பு"
+
+#: 
+msgid "View event"
+msgstr "நிகழ்வை பார்"
+
+#: 
+msgid "View my schedule"
+msgstr "எனது அட்டவணையைக் காண்க"
+
+#: 
+msgid "View only"
+msgstr "பார்க்க மட்டும்"
+
+#: 
+msgid "View person"
+msgstr "நபரைப் பார்க்கவும்"
+
+#: 
+msgid "View the event"
+msgstr "நிகழ்ச்சியைக் காண்க"
+
+#: 
+msgid "View this email"
+msgstr "இந்த மின்னஞ்சலைக் காண்க"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "தன்னார்வப் பணி (பழையது)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "தன்னார்வப் பணி மேலாண்மை V2 இயக்கப்படவில்லை"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "தன்னார்வ ஊழியம்"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "தன்னார்வப் பணி நியமனம்"
+
+#: 
+msgid "Volunteer declined"
+msgstr "தன்னார்வலர் நிராகரித்தார்"
+
+#: 
+msgid "Volunteer experience"
+msgstr "தன்னார்வப் பணி முறை"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "தன்னார்வப் பணி பொறுப்புகள் இன்னும் நிரப்பப்பட வேண்டும்"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "தன்னார்வலர் நினைவூட்டல்"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "தன்னார்வப் பணிப் பதிவு"
+
+#: 
+msgid "Volunteer times"
+msgstr "தன்னார்வப் பணி நேரங்கள்"
+
+#: 
+msgid "Volunteering"
+msgstr "தன்னார்வப் பணி"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "ஒரு திருச்சபை நடத்தும் விதத்தில் ஒழுங்கமைக்கப்பட்ட தன்னார்வப் பணி. ஒவ்வொரு ஊழியத்துக்கும் குழுக்களும் பொறுப்புகளும் உண்டு; நபர்கள் பொறுப்புகளுக்குத் தகுதி பெற்று ஊழியத்தின் தொகுப்புக் குழுவைச் சேர்கிறார்கள்; அட்டவணைகள் நாட்காட்டியிலுள்ள நிகழ்ச்சிகளைப் பின்தொடர்ந்து ஆட்கள் தேவைகளுடன் தேதியிட்ட நிகழ்வுகளை உருவாக்குகின்றன; ஒருங்கிணைப்பாளர்கள் நபர்களை நியமிக்கிறார்கள், அவர்கள் ஏற்கிறார்கள், நிராகரிக்கிறார்கள் அல்லது மாற்று நபரை முன்மொழிகிறார்கள்; நினைவூட்டல்களும் எச்சரிக்கைகளும் மின்னஞ்சல் மூலம் செல்கின்றன. நிர்வாகிகளும் ஊழியங்களை நிர்வகிக்கும் அனுமதி உள்ள பயனர்களும் ஒவ்வொரு ஊழியத்தையும் பார்த்து அவற்றை உருவாக்கலாம், செயலிழக்கச் செய்யலாம், நீக்கலாம். ஊழிய ஒருங்கிணைப்பாளருக்கு அதற்குப் பதிலாக எனது ஊழியங்களை நிர்வகிக்கும் அனுமதி வழங்கப்படுகிறது: அப்போது பக்கப்பட்டியிலுள்ள ஊழியங்கள் தலைப்பு அவர் ஒருங்கிணைக்கும் ஊழியங்களை மட்டுமே காட்டும். குழுத் தலைவர் உறுப்பினர் போர்ட்டலிலிருந்து தனது குழுவை நடத்துகிறார். உறுப்பினர்கள் தங்கள் அட்டவணையைக் காணவும், பதிலளிக்கவும், பதிவு செய்யவும், உதவ முன்வரவும் உறுப்பினர் போர்ட்டலைப் பயன்படுத்துகிறார்கள்."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "நியமிக்கப்பட்ட தன்னார்வலர்கள்: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "தன்னார்வலர்கள் முடிக்கிறார்கள்"
+
+#: 
+msgid "Volunteers needed"
+msgstr "தன்னார்வலர்கள் தேவை"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "%s இன் தன்னார்வலர்கள் இந்த நிகழ்ச்சிகளுக்கு நியமிக்கப்பட்டுள்ளனர், எனவே அவற்றை இங்கே நீக்க முடியாது. அந்த ஊழியம் தனது ஆட்கள் அமர்த்தலை அகற்றும்படி கேளுங்கள், அல்லது நாட்காட்டியை நிர்வகிப்பவரைக் கேளுங்கள்."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "{{names}} இன் தன்னார்வலர்கள் அவற்றில் சிலவற்றுக்கு நியமிக்கப்பட்டுள்ளனர். நீங்கள் நாட்காட்டியை நிர்வகிக்காவிட்டால், அந்த ஆட்கள் அமர்த்தல் அகற்றப்படும் வரை நீக்குதல் மறுக்கப்படும்."
+
+#: 
+msgid "Volunteers start"
+msgstr "தன்னார்வலர்கள் தொடங்குகிறார்கள்"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "நிகழ்ச்சி தொடங்கி %d நிமிடம் கழித்து தன்னார்வலர்கள் தொடங்குகிறார்கள்."
+msgstr[1] "நிகழ்ச்சி தொடங்கி %d நிமிடங்கள் கழித்து தன்னார்வலர்கள் தொடங்குகிறார்கள்."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "நிகழ்ச்சி தொடங்குவதற்கு %d நிமிடம் முன்பு தன்னார்வலர்கள் தொடங்குகிறார்கள்."
+msgstr[1] "நிகழ்ச்சி தொடங்குவதற்கு %d நிமிடங்கள் முன்பு தன்னார்வலர்கள் தொடங்குகிறார்கள்."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "பதிலுக்காகக் காத்திருக்கிறது"
+
+#: 
+msgid "Waiting for review"
+msgstr "மதிப்பாய்வுக்காகக் காத்திருக்கிறது"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "உங்கள் ஒருங்கிணைப்பாளர் உறுதிப்படுத்தக் காத்திருக்கிறது."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "ஏதாவது நிரப்பப்பட வேண்டியிருக்கும்போது நாங்கள் உங்களுக்கு மின்னஞ்சல் அனுப்புவோம்."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "ஞாயிறு காலைகளில் எங்களுக்கு மேலும் உதவி தேவை — அனுபவம் தேவையில்லை."
+
+#: 
+msgid "Welcome, %s"
+msgstr "வரவேற்கிறோம், %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "எதை மாற்ற வேண்டும்?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "இந்த வாரம் உங்கள் கவனம் தேவைப்படுபவை"
+
+#: 
+msgid "What the check found"
+msgstr "சோதனையில் கண்டறிந்தவை"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "தன்னார்வப் பணி முறைகள் என்னென்ன"
+
+#: 
+msgid "What you want to say"
+msgstr "நீங்கள் சொல்ல விரும்புவது"
+
+#: 
+msgid "When"
+msgstr "எப்போது"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "ஒரு தன்னார்வலர் தனக்குப் பதிலாக ஒருவரை முன்மொழியும்போது, நீங்கள் அங்கீகரிக்க அல்லது நிராகரிக்க அது இங்கே தோன்றும்."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "ஒரு தன்னார்வலர் தனக்குப் பதிலாக ஒருவரை முன்மொழியும்போது, நீங்கள் அங்கீகரிக்க அது இங்கே தோன்றும்."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "யாராவது உங்களைக் குழுவில் சேர்க்கும்போது, அல்லது நீங்களே பதிவு செய்யும்போது, அது இங்கே தோன்றும்."
+
+#: 
+msgid "Where"
+msgstr "எங்கே"
+
+#: 
+msgid "Where the dates come from"
+msgstr "தேதிகள் எங்கிருந்து வருகின்றன"
+
+#: 
+msgid "Where we reach you"
+msgstr "உங்களை எப்படித் தொடர்புகொள்வது"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "தன்னார்வப் பணி மேலாண்மையின் எந்த முறை செயலில் உள்ளது. V1 என்பது பழைய தன்னார்வ வாய்ப்புகள் அம்சம்; V2 என்பது புதிய அட்டவணையிடல் மற்றும் நியமன பணிப்பாய்வு. \"இரண்டும்\" இடமாற்றத்தின்போது ஒவ்வொன்றையும் அருகருகே காட்டும்."
+
+#: 
+msgid "Which events"
+msgstr "எந்த நிகழ்ச்சிகள்"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "இந்தத் திருச்சபை எந்தத் தன்னார்வப் பணி முறையைப் பயன்படுத்துகிறது. வலதுபுறத்திலுள்ள அட்டை ஒவ்வொரு தேர்வையும் விளக்குகிறது."
+
+#: 
+msgid "Who is covering"
+msgstr "யார் பணியாற்றுகிறார்"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "யார் தேவை, யார் இருக்கிறார், இன்னும் எது குறைவாக உள்ளது"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "மிகச் சமீபத்தில் குறைவாகப் பணியாற்றியவர் முதலில் பட்டியலிடப்படுவார்."
+
+#: 
+msgid "Work Email"
+msgstr "அலுவலக மின்னஞ்சல்"
+
+#: 
+msgid "Yearly"
+msgstr "ஆண்டுதோறும்"
+
+#: 
+msgid "You"
+msgstr "நீங்கள்"
+
+#: 
+msgid "You are already helping that day"
+msgstr "அந்த நாளில் நீங்கள் ஏற்கெனவே உதவுகிறீர்கள்"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "அந்த நாளில் நீங்கள் ஏற்கெனவே {{what}} ஆக உதவுகிறீர்கள். இதற்கும் பதிவு செய்யவா?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "இதை மாற்ற உங்களுக்கு அனுமதி இல்லை. திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "நீங்கள் தற்போது எந்தக் குடும்பத்துடனும் தொடர்புடையவராக இல்லை"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "நீங்கள் இன்னும் குடும்பப் பதிவின் பகுதி அல்ல."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "நீங்கள் பட்டியலில் இருக்கிறீர்கள் — நன்றி."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "இதை உங்கள் தன்னார்வப் பணி அட்டவணையில் மதிப்பாய்வு செய்யலாம் அல்லது மாற்றலாம்."
+
+#: 
+msgid "You cannot open this page"
+msgstr "நீங்கள் இந்தப் பக்கத்தைத் திறக்க முடியாது"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "உங்களையே உங்கள் மாற்று நபராக முன்மொழிய முடியாது"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "அதற்கு உங்களைப் பதிவு செய்ய முடியவில்லை."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "நீங்கள் இன்னும் எந்தத் தன்னார்வக் குழுவுக்கும் தலைமை தாங்கவில்லை."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "உங்களுக்குப் புதிய நாட்காட்டி முகவரி உள்ளது. பழையது இனி செயல்படாது."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "நீங்கள் பணியாற்ற அட்டவணையிடப்பட்டுள்ளீர்கள்"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "நீங்கள் பணியாற்ற அட்டவணையிடப்பட்டுள்ளீர்கள்."
+
+#: 
+msgid "You lead this"
+msgstr "நீங்கள் இதற்குத் தலைமை தாங்குகிறீர்கள்"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "நீங்கள் தலைமை தாங்கும் குழுவுக்கு மட்டுமே அட்டவணையை உருவாக்கலாம்"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "இதற்காக நீங்கள் மீண்டும் பட்டியலில் இருப்பீர்கள்."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "உங்கள் கணக்கு எந்த நபர் பதிவுடனும் இணைக்கப்படவில்லை. திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "உங்கள் நாட்காட்டிச் சந்தா சேமிக்கப்பட்டது."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "உங்கள் தற்போதைய முகவரி உடனே செயல்படாது. நீங்கள் யாருக்குக் கொடுத்தீர்களோ அவர்களுக்குப் புதியது தேவைப்படும்."
+
+#: 
+msgid "Your details"
+msgstr "உங்கள் விவரங்கள்"
+
+#: 
+msgid "Your details have been saved."
+msgstr "உங்கள் விவரங்கள் சேமிக்கப்பட்டன."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "உங்கள் குடும்ப விவரங்கள் சேமிக்கப்பட்டன."
+
+#: 
+msgid "Your photo"
+msgstr "உங்கள் புகைப்படம்"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "உங்கள் புகைப்படம் சேமிக்கப்பட்டது."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "உங்கள் அட்டவணையை ஏற்ற முடியவில்லை."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "உங்கள் அமர்வு காலாவதியாகிவிட்டது. மீண்டும் உள்நுழையவும்."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "உங்கள் மாற்று நபர் கோரிக்கை அங்கீகரிக்கப்பட்டது"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "உங்கள் மாற்று நபர் கோரிக்கை அங்கீகரிக்கப்படவில்லை"
+
+#: 
+msgid "already staffed by this team"
+msgstr "இந்தக் குழுவால் ஏற்கெனவே ஆட்கள் அமர்த்தப்பட்டுள்ளனர்"
+
+#: 
+msgid "body is required"
+msgstr "body தேவை"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds நாட்காட்டி ஐடிகளின் பட்டியலாக இருக்க வேண்டும்"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents இவற்றில் ஒன்றாக இருக்க வேண்டும்: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId ஒரு குழு ஐடி அல்லது null ஆக இருக்க வேண்டும்"
+
+#: 
+msgid "end offset"
+msgstr "முடிவு ஆஃப்செட்"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds நிகழ்ச்சி ஐடிகளின் பட்டியலாக இருக்க வேண்டும்"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "ஒவ்வொரு செய்தியும் வழங்கப்பட்டது அல்லது இன்னும் வரிசையில் உள்ளது"
+
+#: 
+msgid "has not served yet"
+msgstr "இன்னும் பணியாற்றவில்லை"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId ஒரு பொறுப்பு ஐடியாக இருக்க வேண்டும்"
+
+#: 
+msgid "inactive family"
+msgstr "செயலற்ற குடும்பம்"
+
+#: 
+msgid "line %d"
+msgstr "வரி %d"
+
+#: 
+msgid "marked do not email"
+msgstr "மின்னஞ்சல் அனுப்ப வேண்டாம் எனக் குறிக்கப்பட்டது"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "செய்திகள் வழங்கப்படவில்லை"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "ஐந்து முயற்சிகளுக்குப் பிறகும் செய்திகள் வழங்கப்படவில்லை"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "அனுப்பக் காத்திருக்கும் செய்திகள்"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds ஊழிய ஐடிகளின் பட்டியலாக இருக்க வேண்டும்"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "நிகழ்ச்சி முடிந்த நிமிடங்களுக்குப் பிறகு"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "நிகழ்ச்சி தொடங்கிய நிமிடங்களுக்குப் பிறகு"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "நிகழ்ச்சி முடிவதற்கு நிமிடங்களுக்கு முன்"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "நிகழ்ச்சி தொடங்குவதற்கு நிமிடங்களுக்கு முன்"
+
+#: 
+msgid "never"
+msgstr "ஒருபோதும் இல்லை"
+
+#: 
+msgid "no email address"
+msgstr "மின்னஞ்சல் முகவரி இல்லை"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds மற்றும் familyIds நேர்மறை முழு எண்களின் வரிசைகளாக இருக்க வேண்டும்"
+
+#: 
+msgid "record not found"
+msgstr "பதிவு கிடைக்கவில்லை"
+
+#: 
+msgid "same address as another recipient"
+msgstr "மற்றொரு பெறுநரின் அதே முகவரி"
+
+#: 
+msgid "single event"
+msgstr "ஒற்றை நிகழ்ச்சி"
+
+#: 
+msgid "start offset"
+msgstr "தொடக்க ஆஃப்செட்"
+
+#: 
+msgid "subject and body are required"
+msgstr "subject மற்றும் body தேவை"
+
+#: 
+msgid "subject is required"
+msgstr "subject தேவை"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject 255 எழுத்துகள் அல்லது அதற்குக் குறைவாக இருக்க வேண்டும்"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool சரி அல்லது தவறு ஆக இருக்க வேண்டும்"
+
+#: 
+msgid "window end"
+msgstr "காலத்தின் முடிவு"
+
+#: 
+msgid "window start"
+msgstr "காலத்தின் தொடக்கம்"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} சேர்க்கப்பட்டனர், {{alreadyMembers}} பேர் ஏற்கெனவே இங்கே தன்னார்வலர்கள்"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} நிகழ்வுகள் உருவாக்கப்பட்டன, {{existing}} ஏற்கெனவே இருந்தன"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} {{className}} க்காக {{total}} நிகழ்ச்சிகளை உருவாக்கியது ({{upcoming}} வரவிருப்பவை)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} உம் அவற்றில் சிலவற்றுக்கு ஆட்களை வழங்குகிறார்கள்."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} ஏற்கெனவே இந்த ஊழியத்தை ஒருங்கிணைக்கிறார்"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} நியமிக்கப்பட்டார்"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} ஏற்கெனவே இந்த நிகழ்வில் {{position}} ஆகப் பணியாற்றுகிறார். நீங்கள் இன்னும் அவரை நியமிக்கலாம்."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} தகுதி பெற்றவர், ஆனால் இந்த ஊழியத்தின் தன்னார்வலர் தொகுப்பில் இல்லை. அவரை நியமித்தால் அவர் இந்த நிகழ்வில் மட்டுமே சேர்க்கப்படுவார்."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} இப்போது இந்த ஊழியத்தை ஒருங்கிணைக்கிறார்"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: எண்ணிக்கைகள் 0 முதல் {{max}} வரை இருக்க வேண்டும்."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: அதிகபட்சம் குறைந்தபட்சத்தை விடக் குறைவாக இருக்கக்கூடாது."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} இனி தகுதி பெறவில்லை"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} தகுதி பெற்றார்"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} தனக்குப் பதிலாக {{substitute}} ஐப் பணியாற்றக் கேட்கிறார்"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{date}} அன்று {{title}} உருவாக்கப்பட்டது. இப்போது ஆட்களை அமர்த்தவா?"
+

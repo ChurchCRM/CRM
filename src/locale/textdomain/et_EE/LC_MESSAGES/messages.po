@@ -18785,3 +18785,4539 @@ msgstr "Abikaasa roll"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Sihtnumbrid suurtähtedega"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Vali kataloogi kaasamiseks vähemalt üks klassifikatsioon."
+
+#: 
+msgid "Geocoding services"
+msgstr "Geokodeerimisteenused"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Geokodeerimisteenused, mida proovitakse sinu valitud järjekorras. Nominatim (OpenStreetMap) töötab kogu maailmas; US Census (US Census Bureau) katab ainult Ameerika Ühendriikide aadresse. Selle kasutamiseks vali ka US Census. Kui midagi pole valitud, kasutatakse Nominatimi."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Uute kirjete vaikeväärtused"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "See leiab kaardikoordinaadid iga perekonna jaoks, kellel need puuduvad, kasutades kaardiseadetes valitud geokodeerimisteenuseid. Perekondi töödeldakse 50 kaupa; üks partii võtab ühe geokodeerimisteenusega umbes minuti ja rohkem teenustega kauem. Võid selle lehe töö ajal avatuna hoida. Kas jätkata?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Kasutatakse uute kirjete ja geokodeerimise jaoks, kui kirjel pole riiki."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Kopeeri koguduse andmetest"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Koguduse aadressi ei õnnestunud kopeerida."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Koguduse riiki ei õnnestunud sobitada."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Klassinimekirjad, kohaloleku lehed ja fotoraamatud"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Rühmade liikmete nimekirjad ja pühapäevakooli klasside aruanded"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Sinu eelarveaasta algab: %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Tekkis viga"
+
+#: 
+msgid "Approve"
+msgstr "Kinnita"
+
+#: 
+msgid "Approve selected"
+msgstr "Kinnita valitud"
+
+#: 
+msgid "Approved"
+msgstr "Kinnitatud"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Muuda isikute seadetes"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Valitud registreeringuid ei õnnestunud kinnitada"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Seda perekonda ei õnnestunud kinnitada"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Ootel registreeringud"
+
+#: 
+msgid "Pending review"
+msgstr "Ülevaatamise ootel"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Avaliku registreerimisvormi kaudu saabunud registreeringud ootavad ülevaatamist. E-posti ja telefonita kirjed on märgitud – kontrolli kontaktandmeid enne ühenduse võtmist."
+
+#: 
+msgid "Review now"
+msgstr "Vaata üle"
+
+#: 
+msgid "Review self registrations"
+msgstr "Vaata üle eneseregistreeringud"
+
+#: 
+msgid "Select month"
+msgstr "Vali kuu"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Eneseregistreerimine on keelatud"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Eneseregistreerimine on lubatud"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Avalik registreerimisvorm on välja lülitatud. Olemasolevad registreeringud on allpool."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "See perekond ei ole ootel eneseregistreering"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "See isik kuulub perekonda – kinnita hoopis perekond"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "See isik ei ole ootel eneseregistreering"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "See ise registreerunud perekond ootab ülevaatamist"
+
+#: 
+msgid "Total registrations"
+msgstr "Registreeringuid kokku"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Külalised saavad registreeruda sinu avalikus registreerimisvormis."
+
+#: 
+msgid "Yesterday"
+msgstr "Eile"
+
+#: 
+msgid "days ago"
+msgstr "päeva tagasi"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "eneseregistreeringut ootab ülevaatamist"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Sünnipäevakirjad adresseeritakse isikule ja pulma-aastapäevad paarile."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Postisildid selle aruande isikutele. Isik, kellel pole oma aadressi, adresseeritakse perekonna aadressile."
+
+#: 
+msgid "One label for each couple."
+msgstr "Üks silt iga paari kohta."
+
+#: 
+msgid "Print Labels"
+msgstr "Prindi sildid"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "See roll ei ole selle rühma rollide hulgas."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "„%s” ei ole kalendri liik, mida see leht tunneb."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s ei saa teenida ja on pakkunud asendajaks %2$s."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s on juba vabatahtlike kogumis %2$s ja soovib uuesti aidata."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s on juba seotud: %2$s, %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s on klassis %2$s rollis %3$s. Eemalda ta esmalt klassist; siin kvalifitseerimine teeb temast siis ühe selle õpetaja."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s ei ole sündmus: %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s jääb pühapäevakooli klassiks, kuni selle õpetajaid hallatakse kohas Valdkonnad → %2$s → %3$s. Eralda see esmalt meeskonnast."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s soovib aidata: %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s soovib aidata: %2$s, ja on lisatud selle vabatahtlike kogumisse."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: maksimum on %2$d, kuid vaikimisi vabatahtlikke on valitud %3$d. Eemalda üks või tõsta maksimumi."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d päev"
+msgstr[1] "%d päeva"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d vaikeväärtus jäeti muul põhjusel vahele (toimumiskord on läbi, tühistatud või täis)"
+msgstr[1] "%d vaikeväärtust jäeti muul põhjusel vahele (toimumiskord on läbi, tühistatud või täis)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d vaikeväärtus jäeti vahele: kvalifikatsioon tühistatud"
+msgstr[1] "%d vaikeväärtust jäeti vahele: kvalifikatsioon tühistatud"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d vaikimisi vabatahtlik määratud"
+msgstr[1] "%d vaikimisi vabatahtlikku määratud"
+
+#: 
+msgid "%d failed"
+msgstr "%d ebaõnnestus"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Sellele ülesandele on veel vaja %d vabatahtlikku. Ava toimumiskord, et lünk täita."
+msgstr[1] "Sellele ülesandele on veel vaja %d vabatahtlikku. Ava toimumiskord, et lünk täita."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d uus toimumiskord"
+msgstr[1] "%d uut toimumiskorda"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Eesolevale toimumiskorrale on veel vaja %d vabatahtlikku."
+msgstr[1] "Eesolevatele toimumiskordadele on veel vaja %d vabatahtlikku."
+
+#: 
+msgid "%s Calendar"
+msgstr "%s kalender"
+
+#: 
+msgid "%s Family"
+msgstr "Perekond %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s ei paku pühapäevakooli õpetajaid, seega ei saa selle meeskonnad, ajakavad ja sündmused klassi kasutada. Vabatahtlike haldur saab seda muuta valikus Muuda valdkonda."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s e-kiri kogudusest"
+msgstr[1] "%s e-kirja kogudusest"
+
+#: 
+msgid "%s family"
+msgstr "Perekond %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s on vabatahtliku ülesandest keeldunud."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "Valdkonnal %s pole rolli nimega Õpetaja, seega ei saa selle õpetajaid meeskonnast hallata"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "Valdkonnal %s pole kalendris tulevasi kohtumisi. Ajakava järgib juba olemasolevaid sündmusi: lisa esmalt klassi kohtumised valdkonna Kalender-sakil valikuga Uus korduv sündmus."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s peab endiselt teenima. Kui see pole võimalik, võta ühendust koordinaatoriga."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s saatmata (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s inimene sinu leibkonnas"
+msgstr[1] "%s inimest sinu leibkonnas"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s ülesanne"
+msgstr[1] "%s ülesannet"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: sama isik on valitud kaks korda vaikimisi vabatahtlikuks"
+
+#: 
+msgid "(no subject)"
+msgstr "(teema puudub)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Sünnipäev ei saa olla tulevikus."
+
+#: 
+msgid "A calendar event"
+msgstr "Kalendrisündmus"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "Kalendri ID peab olema number."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Klass, mida enam pole"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Klassi, millel pole kalendris kohtumisi, ei saa veel valida."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Klassi, millel pole kalendris kohtumisi, ei saa veel valida. Valdkonna koordinaator lisab selle kohtumised valdkonna Kalender-sakil."
+
+#: 
+msgid "A class's meetings"
+msgstr "Klassi kohtumised"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Koordinaator saab hallata kõike selles valdkonnas, sealhulgas teha muudatusi, mille muidu peaks tegema vabatahtlike haldur."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Valdkonna koordinaator saab need lisada valdkonna Kalender-sakil."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Valdkonna koordinaator saab need lisada valdkonna Kalender-sakil. Seejärel genereeri uuesti."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Koordinaator juhib kogu valdkonda – selle meeskondi, ülesandeid, ajakavasid ja kõiki määramisi."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Päev, mida kuus pole, langeb kuu viimasele päevale."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Vaikimisi vabatahtlik kuulub ajakava komplekteerimisvajaduste, mitte ühe toimumiskorra juurde"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Vaikimisi vabatahtliku saab valida ainult ülesandele, mida selle ajakava komplekteerimisvajadused nõuavad"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Vaja on algus- ja lõppkuupäeva kujul AAAA-KK-PP"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Minimaalne arv on nõutav"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Valdkond luuakse oma kalendri, vabatahtlike kogumi ja esimese meeskonnaga, seega tuleb siin otsustada vaid selle nimi ja tegevus."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Valdkonna nimi on nõutav"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Valdkonnal peab olema vähemalt üks meeskond. Nimeta see hoopis ümber."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Selle nimega valdkond on juba olemas"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Valdkonna oma kalendrit ei saa teistele valdkondadele avada"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Ülesanne kuulub meeskonda; vali üks"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Ülesanne on töö, mida keegi selles meeskonnas teeb, näiteks Espresso või Laulujuht."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Ülesanne on roll, milles keegi teenib, näiteks Espresso või Laulujuht."
+
+#: 
+msgid "A position is required"
+msgstr "Ülesanne on nõutav"
+
+#: 
+msgid "A position name is required"
+msgstr "Ülesande nimi on nõutav"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Kvalifitseeritud vabatahtlikega ülesannet ei saa viia pühapäevakooli klassiga seotud meeskonda ega sealt välja, sest see muudaks klassi õpetajaid. Loo ülesanne hoopis teises meeskonnas."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Selle nimega ülesanne on selles valdkonnas juba olemas"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Vastus peab olema kas nõustumine või keeldumine"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Ajakava kuulub meeskonda; vali üks"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Ajakava nimi on nõutav"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Ajakava ütleb, milliseid kalendrisündmusi meeskond komplekteerib: jumalateenistuse liik, klassi kohtumised või selle valdkonna enda sündmused. Lisa üks ja genereeri selle toimumiskorrad."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Ajakava ütleb, milliseid kalendrisündmusi see meeskond teenib: jumalateenistuse liik, klassi kohtumised või selle valdkonna enda sündmused. Lisa üks ja genereeri selle toimumiskorrad."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Klassi järgiv ajakava peab klassi nimetama"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Sündmuseliiki järgiv ajakava peab sündmuseliigi nimetama"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Ühte sündmust komplekteeriv ajakava ei saa teisi sündmusi järgida; kustuta see ja lisa hoopis ajakava"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "Üks nimekiri võimalustest, nagu „Lastehoid” või „Vastuvõtja”, mida hoitakse jaotises Inimesed → Haldus. Iga isik märgitakse võimalustega, millega ta on valmis aitama, tema kirje Vabatahtlik-sakil. See on kõik, mida salvestatakse: meeskondi, ajakavasid, kuupäevadele määramisi ega meeldetuletuskirju pole. Märgendeid kasutatakse aruannetes ja isiku kirjel."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Ruudukujuline pilt su näost sobib kõige paremini."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Komplekteerimisvajadus loetleb oma vaikimisi vabatahtlikud väljal \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Komplekteerimisnõue kuulub täpselt ühele: ajakavale või toimumiskorrale"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Sellele määramisele on asendaja juba pakutud"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Meeskonnajuht saab hallata oma meeskonda – selle ülesandeid, ajakavasid ja seda, kes neis teenib – ja mitte midagi muud valdkonnas."
+
+#: 
+msgid "A team name is required"
+msgstr "Meeskonna nimi on nõutav"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Selle nimega meeskond on selles valdkonnas juba olemas"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Teema on kaust, mille sinu kogudus serverisse kataloogi Include/themes/ laeb. Süsteemi vaiketeema tuleb ChurchCRM-iga kaasa."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Üleminekuseade. Vanad Vabatahtlike võimaluste lehed ja uued Valdkondade lehed on mõlemad saadaval ning isiku kirjel on näha mõlemad Vabatahtlik-saki selgelt tähistatuna. Kasuta seda, kui viid kogudust üle V1-lt V2-le, ja lülitu siis ainult V2-le."
+
+#: 
+msgid "A volunteer"
+msgstr "Vabatahtlik"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Vabatahtlik on määramisest keeldunud"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Vabatahtlik on pakkunud asendajat"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Vabatahtlike haldur saab seda valdkonda juhtida ilma eraldi õiguseta. Lisa koordinaator, et keegi teine saaks seda juhtida, andmata talle kõiki teisi valdkondi."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Pulmakuupäev ei saa olla tulevikus."
+
+#: 
+msgid "Accepted"
+msgstr "Nõustunud"
+
+#: 
+msgid "Account deleted"
+msgstr "Konto kustutatud"
+
+#: 
+msgid "Account unlocked"
+msgstr "Konto on lukust lahti"
+
+#: 
+msgid "Accounts"
+msgstr "Kontod"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Aktiivne peab olema tõene või väär"
+
+#: 
+msgid "Active now"
+msgstr "Praegu aktiivne"
+
+#: 
+msgid "Add All"
+msgstr "Lisa kõik"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Lisa kõik valikus olevad"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Lisa vabatahtlik"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Lisa vabatahtlikud valikusse"
+
+#: 
+msgid "Add a family member"
+msgstr "Lisa pereliige"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Lisa esmalt ülesanne ja tule siis tagasi ning ütle, mitu neid vaja on."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Lisa oma sisselogimisele teine samm, et ainult parool ei piisaks kontole ligipääsuks."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Lisa sellesse meeskonda vähemalt üks ülesanne ja märgi siis, kes kus teenida saab."
+
+#: 
+msgid "Add coordinator"
+msgstr "Lisa koordinaator"
+
+#: 
+msgid "Add from Cart"
+msgstr "Lisa valikust"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Lisa esmalt selle kohtumised Kalender-sakil valikuga Uus korduv sündmus"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Lisa inimesed valikusse enne nende vabatahtlikeks lisamist"
+
+#: 
+msgid "Add position"
+msgstr "Lisa ülesanne"
+
+#: 
+msgid "Add schedule"
+msgstr "Lisa ajakava"
+
+#: 
+msgid "Add team"
+msgstr "Lisa meeskond"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Lisa need Kalender-sakil ja genereeri seejärel uuesti."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Lisa need Kalender-sakil."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Lisa see aadress oma kalendrirakendusse. See uueneb ise, kui koguduse kalender muutub."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Lisa siia selle valdkonna sündmused: tööpäev, klass, mis kohtub igal pühapäeval. Need lähevad koguduse kalendrisse ja saad need komplekteerida juba loomise ajal."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Lisatud Liikmeportaali kaudu ja ootab ülevaatamist: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Lisatud – märgi nüüd ülesanded, milles ta teenida saab"
+
+#: 
+msgid "Address Line 2"
+msgstr "Aadressi rida 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Halduskonsool"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Nõutav on administraatori õigus"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Reklaami seda ülesannet Liikmeportaali lehel Avatud võimalused."
+
+#: 
+msgid "All Teams"
+msgstr "Kõik meeskonnad"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Luba liikmetel muuta oma ja oma pereliikmete sünnipäevi."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Kinnitatud ka kalendrisse {{calendars}}, mida saab muuta vaid Lisa sündmusi -õigusega isik."
+
+#: 
+msgid "An event title is required"
+msgstr "Sündmuse pealkiri on nõutav"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Nõutav on sündmuseliik või valdkond"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Sündmuseliik, mida enam pole"
+
+#: 
+msgid "Another ministry"
+msgstr "Teine valdkond"
+
+#: 
+msgid "Any event"
+msgstr "Iga sündmus"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Kõik, mida su koordinaator peaks teadma"
+
+#: 
+msgid "Approve substitution"
+msgstr "Kinnita asendamine"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Kinnita see asendaja"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Palu vabatahtlike haldurit luua valdkond ja määrata sind selle koordinaatoriks."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Palu kedagi sind asendada"
+
+#: 
+msgid "Ask them"
+msgstr "Küsi neilt"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Küsitud – su koordinaator kinnitab selle."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Määra vabatahtlik"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Määratud väljaspool praegust plaani"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Määramine tühistatud"
+
+#: 
+msgid "Assignment not found"
+msgstr "Määramist ei leitud"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Vaja on vähemalt üht personId või familyId"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Ühele ülesandele saab valida kuni %d vaikimisi vabatahtlikku"
+
+#: 
+msgid "Author"
+msgstr "Autor"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Volitus antakse isikule, mitte sisselogimisele, seega saab seda anda enne, kui tal see on. Isik, kelle sisselogimine on ainult iseteenindus, näeb jätkuvalt vaid oma ajakava, kuni administraator tema kontot laiendab."
+
+#: 
+msgid "Automatic"
+msgstr "Automaatne"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Ootab vastust"
+
+#: 
+msgid "Back to Email History"
+msgstr "Tagasi e-kirjade ajalukku"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Tagasi valdkonna ülevaatesse"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Tagasi toimumiskordade juurde"
+
+#: 
+msgid "Back to Person"
+msgstr "Tagasi isiku juurde"
+
+#: 
+msgid "Back to editing"
+msgstr "Tagasi muutmise juurde"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Tagasi minu ajakava juurde"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Tagasi Liikmeportaali"
+
+#: 
+msgid "Back to your profile"
+msgstr "Tagasi oma profiili juurde"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Taustatööd ja edastamine"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Taustatööd käisid viimati"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Taustatööd käisid"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Sünnipäevatervitus"
+
+#: 
+msgid "Both"
+msgstr "Mõlemad"
+
+#: 
+msgid "Both (transition)"
+msgstr "Mõlemad (üleminek)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Mõlemad – V1 ja V2 kõrvuti (üleminek)"
+
+#: 
+msgid "Calendar address"
+msgstr "Kalendri aadress"
+
+#: 
+msgid "Calendar saved"
+msgstr "Kalender salvestatud"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Kalendrid, mida Liikmeportaal liikmetele näitab, valitakse jaotises Haldus → Liikmeportaal → Kalendrid."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Kas see valdkond saab pakkuda pühapäevakooli õpetajaid?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Tühista määramine"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Tühista see määramine"
+
+#: 
+msgid "Cancelled"
+msgstr "Tühistatud"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Muuda parooli, millega sisse logid, või lisa teine samm, et ainult parool ei piisaks."
+
+#: 
+msgid "Change your password"
+msgstr "Muuda oma parooli"
+
+#: 
+msgid "Checked in"
+msgstr "Sisse registreeritud"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Kohal: %1$d / %2$d klassi nimekirjast"
+
+#: 
+msgid "Checked out"
+msgstr "Välja registreeritud"
+
+#: 
+msgid "Choose a class"
+msgstr "Vali klass"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Vali kuupäev kuus vahemikus 1 kuni 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Vali uus foto"
+
+#: 
+msgid "Choose a person"
+msgstr "Vali isik"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Vali vabatahtlik"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Vali esmalt vabatahtlik"
+
+#: 
+msgid "Choose an event"
+msgstr "Valige sündmus..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Vali sündmuseliik"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Vali olemasolev sündmuseliik"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Vali tellimiseks vähemalt üks kalender."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Vali kalendrid, mida soovid oma kalendrirakenduses."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Vali iga-aastane kuupäev kujul KK-PP"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Vali sündmuse kuupäev"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Vali nädalapäev"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Vali sündmus, mida see ajakava järgib"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Vali komplekteeritav sündmus"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Vali kustutatavad sündmused"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Vali komplekteeritavad sündmused"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Vali esimene ja viimane kuupäev"
+
+#: 
+msgid "Choose the first date"
+msgstr "Vali esimene kuupäev"
+
+#: 
+msgid "Choose the last date"
+msgstr "Vali viimane kuupäev"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Vali valdkonna %1$s ülesanne, milleks klassi %2$s õpetajad kvalifitseeritakse. Õpetajaid: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Vali meeskond, kus see ülesanne teenib"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Vali teema, mida liikmed näevad, lülita portaali jaotisi sisse või välja ja vaata, kes portaali kasutab."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Vali iganädalane, igakuine või iga-aastane"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Vali, kust ajakava kuupäevad tulevad"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Vali, millist vabatahtlike kogemust see kogudus kasutab, kui kaugele ajakavad täidetakse ja millal meeldetuletused lähevad, ning kontrolli, et taustatööd käivad."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Vali, kes iga ülesande vaikimisi täidab. Valik salvestatakse ajakavale: nad määratakse igale praegu loodud toimumiskorrale ja neile, mille päevane täiendus hiljem loob, kuni nad on kvalifitseeritud, ning neilt küsitakse vastust, kui sa ei sea neid nõustunuks. Jäta ülesanne lahtiseks, kui soovid seda nädal-nädalalt määrata."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Vali, kes sind asendab."
+
+#: 
+msgid "Church Calendar"
+msgstr "Koguduse kalender"
+
+#: 
+msgid "Church Calendars"
+msgstr "Koguduse kalendrid"
+
+#: 
+msgid "Church calendar"
+msgstr "Koguduse kalender"
+
+#: 
+msgid "Church events of a type"
+msgstr "Liigi järgi koguduse sündmused"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Liigi järgi koguduse sündmused lisatakse koguduse kalendrisse. Kontrolli ajakava sündmuseliiki, pealkirja ja kuupäevi."
+
+#: 
+msgid "Church website"
+msgstr "Koguduse veebileht"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM-is on kaks viisi vabatahtlike haldamiseks. Korraga on mõeldud kasutada ainult ühte; vasakpoolne seade otsustab, kumba see kogudus näeb. Lülitamine peidab või näitab lehti ja menüükirjeid – see ei kustuta kunagi andmeid, nii et saad tagasi lülitada."
+
+#: 
+msgid "Close event details"
+msgstr "Sule sündmuse üksikasjad"
+
+#: 
+msgid "Colour"
+msgstr "Värv"
+
+#: 
+msgid "Completed"
+msgstr "Lõpetatud"
+
+#: 
+msgid "Compose Message"
+msgstr "Koosta sõnum"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Kinnita oma perekonna andmed"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Koordinaator eemaldatud"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Kopeeri see aadress ja lisa see oma kalendrirakendusse uue kalendritellimusena."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Eelvaadet ei õnnestunud koostada."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Klassi sündmusi ei õnnestunud kokku lugeda"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Volitust ei õnnestunud anda"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Pühapäevakooli klasse ei õnnestunud laadida"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Ülevaadet ei õnnestunud laadida"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Sündmuste valikuid ei õnnestunud laadida"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Toimumiskordi ei õnnestunud laadida"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Ajakavasid ei õnnestunud laadida"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Tulevasi sündmusi ei õnnestunud laadida"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Vabatahtlikke ei õnnestunud laadida"
+
+#: 
+msgid "Could not load this email."
+msgstr "Seda e-kirja ei õnnestunud laadida."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Seda valdkonda ei õnnestunud laadida"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Selle valdkonna sündmusi ei õnnestunud laadida"
+
+#: 
+msgid "Could not load this team"
+msgstr "Seda meeskonda ei õnnestunud laadida"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Volitust ei õnnestunud tühistada"
+
+#: 
+msgid "Create"
+msgstr "Loo"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Loo ajakava ja genereeri selle toimumiskorrad, siis ilmuvad siia täitmist vajavad nädalad."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Loo ajakava ja genereeri selle toimumiskorrad, siis ilmuvad siia komplekteerimist vajavad nädalad."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Loo sellesse meeskonda vähemalt üks ülesanne ja märgi siis, kes kus teenida saab."
+
+#: 
+msgid "Create ministry"
+msgstr "Loo valdkond"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Valdkonna loomine nõuab vabatahtlike halduri ligipääsu"
+
+#: 
+msgid "Date and time"
+msgstr "Kuupäev ja kellaaeg"
+
+#: 
+msgid "Date each year"
+msgstr "Iga-aastane kuupäev"
+
+#: 
+msgid "Dates"
+msgstr "Kuupäevad"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Kuupäevad peavad olema kujul AAAA-KK-PP"
+
+#: 
+msgid "Day of the month"
+msgstr "Kuupäev kuus"
+
+#: 
+msgid "Day of the week"
+msgstr "Nädalapäev"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Deaktiveeri valdkond"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Deaktiveeri ajakava"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Deaktiveeri see valdkond enne selle kustutamist."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Kas deaktiveerida {{name}}? See liigub külgribal jaotisse Deaktiveeritud valdkonnad, kus selle saab uuesti aktiveerida või kustutada. Midagi ei eemaldata."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Kas deaktiveerida {{name}}? Sellele ei looda uusi toimumiskordi, ei Genereeri-nupuga ega päevase täiendusega. Selle olemasolevad toimumiskorrad ja määramised jäävad alles ning selle saab uuesti aktiveerida."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Deaktiveeritud valdkonnad"
+
+#: 
+msgid "Declined"
+msgstr "Keeldunud"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Valdkonna sündmuste vaikimisi sündmuseliik"
+
+#: 
+msgid "Default volunteers"
+msgstr "Vaikimisi vabatahtlikud"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Vaikimisi vabatahtlikud saadetakse nõuetena: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Kustuta sündmused"
+
+#: 
+msgid "Delete ministry"
+msgstr "Kustuta valdkond"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Kustuta toimumiskorrad"
+
+#: 
+msgid "Delete position"
+msgstr "Kustuta ülesanne"
+
+#: 
+msgid "Delete schedule"
+msgstr "Kustuta ajakava"
+
+#: 
+msgid "Delete team"
+msgstr "Kustuta meeskond"
+
+#: 
+msgid "Delete those events"
+msgstr "Kustuta need sündmused"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Kas kustutada {{name}} ja kõik selle sisu? Selle ülesanded, kvalifikatsioonid, komplekteerimisvajadused, ajakavad, toimumiskorrad ja määramised – ka varasemad teenimiskirjed – ning selle meeskonnajuhi õigused eemaldatakse. Ajaloo säilitamiseks deaktiveeri meeskond hoopis. Seda ei saa tagasi võtta."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Kas kustutada {{name}} ja kõik selle sisu? Selle meeskonnad, ülesanded, ajakavad, {{occurrences}} toimumiskorda ja {{assignments}} määramist – ka varasemad teenimiskirjed – ning selle koordinaatori ja meeskonnajuhtide õigused, vabatahtlike kogumi rühm ja kalender eemaldatakse. Seda ei saa tagasi võtta."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Kas kustutada {{name}}? Selle kvalifikatsioonid, komplekteerimisvajadused ja määramised – ka varasemad teenimiskirjed – eemaldatakse koos sellega. Ajaloo säilitamiseks deaktiveeri ülesanne hoopis. Seda ei saa tagasi võtta."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Kas kustutada {{name}}? Seda ei saa tagasi võtta."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Valdkonna kustutamine nõuab vabatahtlike halduri ligipääsu"
+
+#: 
+msgid "Developer mode"
+msgstr "Arendajarežiim"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Valmis – oled tagasi nimekirjas."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Kas loobuda selle toimumiskorra oma komplekteerimisvajadustest ja järgida taas selle ajakava?"
+
+#: 
+msgid "Due soon"
+msgstr "Peagi tähtaeg"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Iga kalender tuleb anda liigi ja ID-na."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Iga vaikimisi vabatahtlik peab nimetama isiku"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Iga komplekteerimisvajadus peab nimetama ülesande"
+
+#: 
+msgid "Edit event"
+msgstr "Muuda sündmust"
+
+#: 
+msgid "Edit ministry"
+msgstr "Muuda valdkonda"
+
+#: 
+msgid "Edit position"
+msgstr "Muuda ülesannet"
+
+#: 
+msgid "Edit schedule"
+msgstr "Muuda ajakava"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Muuda komplekteerimisvajadusi"
+
+#: 
+msgid "Edit team"
+msgstr "Muuda meeskonda"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Muuda ajakava ja vali teine klass."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Muuda ajakava ja vali teine sündmuseliik."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Muuda ajakava ja vali sündmus, mida see järgib."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Muuda ajakava ja lükka selle viimast kuupäeva edasi, et järgida rohkem sündmusi."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Muudetud Liikmeportaali kaudu: %s"
+
+#: 
+msgid "Email %s"
+msgstr "Saada e-kiri: %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "Saada e-kiri perekonnale %s"
+
+#: 
+msgid "Email History"
+msgstr "E-kirjade ajalugu"
+
+#: 
+msgid "Email content"
+msgstr "E-kirja sisu"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Saada e-kiri mitteosalenutele: %s"
+
+#: 
+msgid "Email not found"
+msgstr "E-kirja ei leitud"
+
+#: 
+msgid "Email preview"
+msgstr "E-kirja eelvaade"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "E-kirjade saatmine on keelatud"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "E-kirjade saatmine pole lubatud. Seadista enne saatmist SMTP-seaded ja luba e-post."
+
+#: 
+msgid "Emails"
+msgstr "E-kirjad"
+
+#: 
+msgid "End time"
+msgstr "Lõpuaeg"
+
+#: 
+msgid "Enter counts"
+msgstr "Sisesta arvud"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Sisesta e-kirja teema…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Sisesta oma praegune parool ja seejärel uus parool kaks korda."
+
+#: 
+msgid "Enter your message…"
+msgstr "Sisesta oma sõnum…"
+
+#: 
+msgid "Event staffed"
+msgstr "Sündmus komplekteeritud"
+
+#: 
+msgid "Event title"
+msgstr "Ürituse pealkiri"
+
+#: 
+msgid "Event type"
+msgstr "Sündmuste tüüp"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Iga ChurchCRM-i saadetud e-kiri, uuemad enne. Täieliku ajaloo nägemiseks ava isik."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Igal selle perioodi ülesandel on vajalikud inimesed."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Kõik on vastanud"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Kõik valikus olevad liituvad selle valdkonna vabatahtlikega. Märgi seejärel nende ülesanded."
+
+#: 
+msgid "Everything is correct"
+msgstr "Kõik on õige"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Eelvaate koostamine ebaõnnestus"
+
+#: 
+msgid "Failed to load email"
+msgstr "E-kirja laadimine ebaõnnestus"
+
+#: 
+msgid "Failed to load email history"
+msgstr "E-kirjade ajaloo laadimine ebaõnnestus"
+
+#: 
+msgid "Failed to send email"
+msgstr "E-kirja saatmine ebaõnnestus"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "E-kirja saatmine ebaõnnestus. Proovi uuesti või kasuta valikut „Ava e-posti kliendis”."
+
+#: 
+msgid "Family Member"
+msgstr "Pereliige"
+
+#: 
+msgid "Family verification"
+msgstr "Perekonna kinnitamine"
+
+#: 
+msgid "File"
+msgstr "Fail"
+
+#: 
+msgid "Fill"
+msgstr "Täida"
+
+#: 
+msgid "Fill by default with"
+msgstr "Täida vaikimisi isikuga"
+
+#: 
+msgid "Fill this gap"
+msgstr "Täida see lünk"
+
+#: 
+msgid "Filled"
+msgstr "Täidetud"
+
+#: 
+msgid "Find a sub"
+msgstr "Leia asendaja"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Leia vabatahtlik"
+
+#: 
+msgid "Find an event"
+msgstr "Leia sündmus"
+
+#: 
+msgid "Find something to do"
+msgstr "Leia midagi teha"
+
+#: 
+msgid "Find something to help with"
+msgstr "Leia, millega aidata"
+
+#: 
+msgid "Findings"
+msgstr "Tulemused"
+
+#: 
+msgid "First date"
+msgstr "Esimene kuupäev"
+
+#: 
+msgid "Folder"
+msgstr "Kaust"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Kasutatava Liikmeportaali teema kausta nimi kataloogist Include/themes/. „default” on süsteemi teema, mis tuleb ChurchCRM-iga kaasa."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Genereeri uuesti esimesele kuupäevale lähemal."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Genereeri toimumiskorrad"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Kas hankida uus kalendri aadress?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Pane valdkonnale nimi"
+
+#: 
+msgid "Give the position a name"
+msgstr "Pane ülesandele nimi"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Anna algus- ja lõppaeg kujul TT:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "Pane meeskonnale nimi"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Mine minu vabatahtlikutööle"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Mine Liikmeportaali seadetesse"
+
+#: 
+msgid "Going"
+msgstr "Tulemas"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Anna kvalifikatsioon valdkonna lehel ja määra ta siis siin."
+
+#: 
+msgid "Granted"
+msgstr "Antud"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Vaata, mis andmed kogudusel su leibkonna kohta on, ja ütle siis, kas need on endiselt õiged."
+
+#: 
+msgid "Headcount"
+msgstr "Osalejate arv"
+
+#: 
+msgid "Hello %s"
+msgstr "Tere, %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Abi vajatakse"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Abi vajaduse salvestamine ebaõnnestus"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Kui kaugele ette luuakse toimumiskorrad iga ajakava järgitavatele sündmustele. Päevane taustatöö hoiab iga ajakava selleni täidetuna."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Mitu tundi enne vabatahtliku toimumiskorda meeldetuletuskiri saadetakse. Määra 0, et meeldetuletusi üldse mitte saata. Edastamine sõltub taustatööde käimisest; soovitatud cron-seadistust vaata Vabatahtlike dokumentatsioonist."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Mitu tundi enne toimumiskorda meeldetuletuskiri saadetakse. Määra 0, et meeldetuletusi üldse mitte saata."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Mitu inimest iga ülesanne vajab iga kord, kui see toimub. Üht kuupäeva saab hiljem eraldi muuta. Vaikimisi vabatahtlik määratakse igale uuele toimumiskorrale, kuni ta on kvalifitseeritud; ühe muutmine ei muuda kunagi juba olemasolevaid toimumiskordi."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Mitu vabatahtlikku selle ajakava iga toimumiskord vajab. Eemalda märge ülesandelt, mida see ajakava kunagi ei kasuta. Vaikimisi vabatahtlik määratakse igale uuele toimumiskorrale, kuni ta on kvalifitseeritud; ühe muutmine ei muuda kunagi juba olemasolevaid toimumiskordi."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Mitu vabatahtlikku see sündmus vajab. Eemalda märge ülesandelt, mida see ei kasuta."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Mitu nädalat ette luuakse vabatahtlike toimumiskorrad iga ajakava järgitavatele sündmustele, vahemikus 1 kuni 52. Päevane taustatöö hoiab iga ajakava selleni täidetuna."
+
+#: 
+msgid "How often"
+msgstr "Kui tihti"
+
+#: 
+msgid "How to correct this"
+msgstr "Kuidas seda parandada"
+
+#: 
+msgid "I can't"
+msgstr "Ma ei saa"
+
+#: 
+msgid "I'd like to help"
+msgstr "Tahaksin aidata"
+
+#: 
+msgid "I'll be there"
+msgstr "Ma tulen"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Kui sõnumid ebaõnnestuvad, palu administraatoril kontrollida valdkonna seadeid."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Kui sa enam kohale ei saa, keeldu oma vabatahtliku ajakavas niipea kui võimalik, et ülesande saaks täita."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Kui jagasid seda aadressi kogemata, hangi uus. Vana aadress lakkab kohe töötamast."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "Viimase 15 minuti jooksul"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "Vabatahtlike kogumis"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Sisemine: viimane kuupäev, milleni vabatahtlike ajakavad ajakavahorisondini täiendati (AAAA-KK-PP). Ära muuda käsitsi."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Sisemine: millal vabatahtlike ajakavad viimati täiendati ja mitu toimumiskorda see lõi. Ära muuda käsitsi."
+
+#: 
+msgid "Is this still right?"
+msgstr "Kas see on endiselt õige?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Selle toimumiskorrad luuakse ilma täidetavate ülesanneteta. Muuda ajakava, et lisada selle komplekteerimisvajadused."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Jäta nad klassi {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Liik"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Viimased 24 tundi"
+
+#: 
+msgid "Last 30 days"
+msgstr "Viimased 30 päeva"
+
+#: 
+msgid "Last 7 days"
+msgstr "Viimased 7 päeva"
+
+#: 
+msgid "Last attempt"
+msgstr "Viimane katse"
+
+#: 
+msgid "Last check"
+msgstr "Viimane kontroll"
+
+#: 
+msgid "Last date"
+msgstr "Viimane kuupäev"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Portaalis viimati nähtud"
+
+#: 
+msgid "Last sign-in"
+msgstr "Viimane sisselogimine"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Jäta mõlemad 0-ks, et teenida täpselt sündmuse ajal. Sündmuse liigutamine liigutab ka vabatahtlikke."
+
+#: 
+msgid "Leave open"
+msgstr "Jäta lahtiseks"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Luba liikmetel Liikmeportaalis muuta oma ja oma pereliikmete sünnipäevi."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Luba liikmetel sünnipäevi muuta"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Anna koguduse kontorile teada, kas kõik ülaltoodu on endiselt õige."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Anna neile teada, miks (valikuline)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Lubab selle valdkonna koordinaatoritel vabatahtlikke sellele sündmusele ajastada – ja sündmust ennast muuta."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Kalendri laadimine…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Halda valdkondi"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Halda minu valdkondi"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Minu valdkondade haldamise õigus, hallatava valdkonna või meeskonnaga"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Minu valdkondade haldamise õigus, hallatava valdkonna või meeskonnaga, on nõutav"
+
+#: 
+msgid "Manage staffing"
+msgstr "Halda komplekteerimist"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Hallatakse valdkonnast %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Hallatakse valdkonnast {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Maks"
+
+#: 
+msgid "Member Portal"
+msgstr "Liikmeportaal"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Liikmed näevad lehte „ajutiselt kättesaamatu”, kuni see on parandatud. Samad üksikasjad kirjutati rakenduse logisse ja veebiserveri vealogisse."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Liikmed näevad ainult siin sisse lülitatud kalendreid. Sünnipäevadel ja aastapäevadel näidatakse ainult eesnimesid ja perekonnanime esitähte."
+
+#: 
+msgid "Message"
+msgstr "Sõnum"
+
+#: 
+msgid "Min"
+msgstr "Min"
+
+#: 
+msgid "Ministries"
+msgstr "Valdkonnad"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Abi otsivad valdkonnad"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Valdkonnad, mis võivad sündmusi lisada"
+
+#: 
+msgid "Ministry"
+msgstr "Valdkond"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Valdkondade kalendrid"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Valdkondade koordinaatorid"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Valdkonna ülevaade"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Valdkonna seaded"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Valdkonna kalender"
+
+#: 
+msgid "Ministry created"
+msgstr "Valdkond loodud"
+
+#: 
+msgid "Ministry management access"
+msgstr "Valdkonna haldamise õigus"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Valdkonna haldamise õigus on nõutav"
+
+#: 
+msgid "Ministry name"
+msgstr "Valdkonna nimi"
+
+#: 
+msgid "Ministry not found"
+msgstr "Valdkonda ei leitud"
+
+#: 
+msgid "My Family"
+msgstr "Minu perekond"
+
+#: 
+msgid "My Teams"
+msgstr "Minu meeskonnad"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Minu valdkonnad ja meeskonnad"
+
+#: 
+msgid "My schedule"
+msgstr "Minu ajakava"
+
+#: 
+msgid "My volunteering"
+msgstr "Minu vabatahtlikutöö"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Pane see ülesanne nimeks lehel, kus liikmed otsivad, millega aidata."
+
+#: 
+msgid "Needs an answer"
+msgstr "Vajab vastust"
+
+#: 
+msgid "Needs filling"
+msgstr "Vajab täitmist"
+
+#: 
+msgid "Never signed in"
+msgstr "Pole kunagi sisse loginud"
+
+#: 
+msgid "New account"
+msgstr "Uus konto"
+
+#: 
+msgid "New event"
+msgstr "Uus sündmus"
+
+#: 
+msgid "New ministry"
+msgstr "Uus valdkond"
+
+#: 
+msgid "New record notification"
+msgstr "Uue kirje teavitus"
+
+#: 
+msgid "New recurring event"
+msgstr "Uus korduv sündmus"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Uusi vabatahtlikke on vaja järgmistele ülesannetele"
+
+#: 
+msgid "Newest first"
+msgstr "Uuemad enne"
+
+#: 
+msgid "Next on %s"
+msgstr "Järgmine: %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Liikmetega pole veel ühtegi kalendrit jagatud."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Selle valdkonna jaoks pole ühtegi kalendrit avatud, seega sündmused ei ilmu üheski kalendris."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Liikmetega pole ühtegi kalendrit jagatud."
+
+#: 
+msgid "No class"
+msgstr "Klassi pole"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Kontaktandmeid pole veel salvestatud."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Koordinaatoreid veel pole"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Esimese ja viimase kuupäeva vahel pole ühtegi kuupäeva, mis kordusele sobiks"
+
+#: 
+msgid "No email was sent."
+msgstr "E-kirja ei saadetud."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Sellele kirjele pole veel e-kirju saadetud."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Osalejate arvu pole veel registreeritud"
+
+#: 
+msgid "No longer needed"
+msgstr "Pole enam vaja"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Ükski liige pole veel Liikmeportaali sisse loginud."
+
+#: 
+msgid "No ministry"
+msgstr "Valdkonda pole"
+
+#: 
+msgid "No past events"
+msgstr "Möödunud sündmusi pole"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Sellele isikule pole fotot üles laaditud."
+
+#: 
+msgid "No photo was sent."
+msgstr "Fotot ei saadetud."
+
+#: 
+msgid "No positions yet"
+msgstr "Ülesandeid veel pole"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Kvalifikatsioone veel pole."
+
+#: 
+msgid "No schedules yet"
+msgstr "Ajakavasid veel pole"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Komplekteerimisvajadusi pole seatud"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Komplekteerimisvajadusi pole: genereeritud toimumiskorrad ei vaja kedagi."
+
+#: 
+msgid "No substitution requests"
+msgstr "Asendustaotlusi pole"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Otsustatavaid asendusi pole"
+
+#: 
+msgid "No teams yet"
+msgstr "Meeskondi veel pole"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "Kalendris pole tulevasi %1$s-sündmusi pealkirjaga „%2$s”. Ajakava järgib juba olemasolevaid sündmusi."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Ükski tulevane sündmus ei sobi"
+
+#: 
+msgid "No upcoming events"
+msgstr "Tulevasi sündmusi pole"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "Kalendris pole selle liigi tulevasi sündmusi."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Valimiseks pole tulevasi sündmusi"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Keegi pole veel määratud"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Keegi teine pole selleks veel koolitatud – anna hoopis oma koordinaatorile teada."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Keegi pole öelnud, mitu vabatahtlikku iga ülesanne vajab, seega pole midagi täita."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Keegi selles ajaaknas pole veel otsustamas."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Keegi pole sellele ülesandele veel kvalifitseeritud"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Keegi pole sellele ülesandele veel kvalifitseeritud, seega jääb see lahtiseks."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Ühtegi saajat ei saa e-kirjaga kätte"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Mitte ühtegi: sündmuseliik valitakse iga sündmuse jaoks eraldi"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Pole lubatud seda e-kirja vaadata"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Pole lubatud seda perekonda vaadata"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Pole lubatud seda isikut vaadata"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Pole volitatud selle määramise jaoks"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Pole volitatud selle valdkonna jaoks"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Pole volitatud selle toimumiskorra jaoks"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Pole volitatud selle ülesande jaoks"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Pole volitatud selle kvalifikatsiooni jaoks"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Pole volitatud selle nõude jaoks"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Pole volitatud selle ajakava jaoks"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Pole volitatud selle asendustaotluse jaoks"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Pole volitatud selle meeskonna jaoks"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Pole volitatud määrama sündmusi sellele vabatahtlike valdkonnale"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Pole volitatud sündmust %s muutma"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Pole volitatud selle sündmuse vabatahtlike valdkonda muutma"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Pole volitatud looma sündmust ilma vabatahtlike valdkonnata, mida sa haldad"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Pole volitatud seda sündmust muutma"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Pole volitatud sündmusi kalendrisse „%s” kinnitama"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Pole volitatud sündmusi kalendrist „%s” eemaldama"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Pole volitatud sellelt sündmuselt vabatahtlike valdkonda eemaldama"
+
+#: 
+msgid "Not checked in"
+msgstr "Pole sisse registreeritud"
+
+#: 
+msgid "Not found"
+msgstr "Ei leitud"
+
+#: 
+msgid "Not in the pool"
+msgstr "Pole kogumis"
+
+#: 
+msgid "Not now"
+msgstr "Mitte praegu"
+
+#: 
+msgid "Not sent"
+msgstr "Saatmata"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Pole seatud: kasuta väärtust „%s”"
+
+#: 
+msgid "Not staffed"
+msgstr "Pole komplekteeritud"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Pole veel vabatahtlik"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Midagi polnud muutunud, seega midagi ei salvestatud."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "Selleks perioodiks pole kalendris midagi."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "Kalendris pole praegu midagi."
+
+#: 
+msgid "Nothing is short"
+msgstr "Midagi ei jää puudu"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Sinu nimekirjas pole veel midagi"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Sinu nimekirjas pole veel midagi. Vaata, mida on vaja täita."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Praegu pole midagi avatud"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Midagi pole veel ajastatud"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Midagi pole ajastatud."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Midagi pole veel seadistatud"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "Midagi, mida see valdkond omab, ei toimunud viimase aasta jooksul."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Veel pole midagi kvalifitseerida"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Midagi ei salvestatud. Kontrolli esiletõstetud välju."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Midagi ei salvestatud. Proovi uuesti."
+
+#: 
+msgid "Notification"
+msgstr "Teavitus"
+
+#: 
+msgid "Notifications"
+msgstr "Teavitused"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Toimumiskorda ei leitud"
+
+#: 
+msgid "Occurrences"
+msgstr "Toimumiskorrad"
+
+#: 
+msgid "Offer to help"
+msgstr "Paku abi"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Kord päevas saab iga aktiivne ajakava toimumiskorrad sündmustele, mida see järgib, kuni %d nädala ette, ja iga ülesande vaikimisi vabatahtlik määratakse uutele, kuni nad on kvalifitseeritud."
+msgstr[1] "Kord päevas saab iga aktiivne ajakava toimumiskorrad sündmustele, mida see järgib, kuni %d nädala ette, ja iga ülesande vaikimisi vabatahtlik määratakse uutele, kuni nad on kvalifitseeritud."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Kui see isik on ülesandele kvalifitseeritud, ilmub ta siia koos kuupäevadega, mil ta teenima peab."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Iga kalendrisündmuse kohta, mille Seotud rühm on see klass, luuakse üks toimumiskord."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Selle sündmuse iga kuupäeva kohta luuakse üks toimumiskord. Valida saab vaid kalendris juba olemasolevaid sündmusi."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Üht kalendritest pole olemas"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Üht sündmustest pole olemas"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Üht neist kalendritest ei jagata liikmetega."
+
+#: 
+msgid "One-time"
+msgstr "Ühekordne"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Meeskonnaga saab siduda ainult pühapäevakooli klassi"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Ainult koordinaator võib teise isiku nimel vastuse salvestada"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Ainult selle valdkonna koordinaator võib selle sündmusi luua"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Ainult selle valdkonna koordinaator võib selle sündmusi komplekteerida"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "Ainult vabatahtlike haldur saab meeskonnajuhti muuta"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Seda saab muuta ainult vabatahtlike haldur."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Ainult vabatahtlike haldur saab muuta, kas valdkond pakub pühapäevakooli õpetajaid"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Neid andmeid saab muuta ainult su perekonna täiskasvanu. Võta ühendust koguduse kontoriga."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Loetletud on ainult selleks koolitatud inimesed."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Asendajat võib pakkuda ainult määratud vabatahtlik"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Loetletud on ainult kalendrid, millele see valdkond tohib sündmusi lisada. Selle oma kalender on alguses märgitud."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Näidatakse ainult väga pika nimekirja algust. Ülejäänu nägemiseks kitsenda ajaakent."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Asendaja pakkumise saab tagasi võtta ainult seda pakkunud vabatahtlik"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Ava valdkond menüüst Valdkonnad, loo ajakava ja genereeri selle kuupäevad, siis ilmuvad siia komplekteerimist vajavad nädalad."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Ava valdkond, et teha keegi selle koordinaatoriks või selle meeskonna juhiks."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Ava kalendrirakenduses"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Avatud võimalusi ei õnnestunud laadida."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Ava saajad oma kohalikus e-posti rakenduses"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Ava Liikmeportaal"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Ava valdkonna ülevaade"
+
+#: 
+msgid "Open the ministry"
+msgstr "Ava valdkond"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Ava toimumiskord"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Ava toimumiskord, et määrata vajalikud inimesed."
+
+#: 
+msgid "Open this team"
+msgstr "Ava see meeskond"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Kalendri avamine valdkondadele nõuab Lisa sündmusi -õigust"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Valikuline. Igaüks, kes on selle meeskonna ülesandele kvalifitseeritud, saab klassi õpetajaks ning klassi leht ei muuda enam selle õpetajaid."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Valikuline. Klassist saab Seotud rühm: selle nimekiri määrab, kes sisse registreerib, ja klassi ajakava leiab need sündmused."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Üle maksimumi: eemalda see või tõsta maksimumi."
+
+#: 
+msgid "Overridden templates"
+msgstr "Üle kirjutatud mallid"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Leht %1$s / %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Leht %d / %d"
+
+#: 
+msgid "Password reset"
+msgstr "Parooli lähtestamine"
+
+#: 
+msgid "Password reset link"
+msgstr "Parooli lähtestamise link"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Paroolis peab olema vähemalt %s märk."
+msgstr[1] "Paroolis peab olema vähemalt %s märki."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Vali tulevane kalendrisündmus ja ütle, keda see vajab. Sündmus säilitab oma kuupäeva ja kellaaja; terve seeria komplekteerimiseks lisa hoopis ajakava."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Vali keegi, kes on juba nõustunud sinu asemele tulema. Sinu koordinaator kinnitab selle."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Vali kalendrid loendist."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Vali, kas sinu andmeid on vaja muuta."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Meie andmete parandamiseks võta ühendust koguduse kontoriga."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Võta ühendust koguduse kontoriga."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Sisesta vähemalt kaks märki."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Anna meile teada, kas saad tulla, nõustudes või keeldudes oma vabatahtliku ajakavas."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Ütle meile, mida on vaja muuta."
+
+#: 
+msgid "Portal settings"
+msgstr "Portaali seaded"
+
+#: 
+msgid "Portal theme"
+msgstr "Portaali teema"
+
+#: 
+msgid "Position"
+msgstr "Ülesanne"
+
+#: 
+msgid "Position added"
+msgstr "Ülesanne lisatud"
+
+#: 
+msgid "Position deleted"
+msgstr "Ülesanne kustutatud"
+
+#: 
+msgid "Position name"
+msgstr "Ülesande nimi"
+
+#: 
+msgid "Position not found"
+msgstr "Ülesannet ei leitud"
+
+#: 
+msgid "Position saved"
+msgstr "Ülesanne salvestatud"
+
+#: 
+msgid "Positions"
+msgstr "Ülesanded"
+
+#: 
+msgid "Positions still short"
+msgstr "Ülesanded, mis on veel poolikud"
+
+#: 
+msgid "Proposed"
+msgstr "Pakutud"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Pakutud asendaja"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Pane see valdkond Liikmeportaali lehele Avatud võimalused, kus iga vabatahtlik saab seda näha ja abi pakkuda. Nad liituvad vabatahtlike kogumiga ja sulle saadetakse e-kiri."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Kas panna {{name}} asemele? Algne vabatahtlik säilitab oma ajaloo ja saab teate."
+
+#: 
+msgid "Qualification not found"
+msgstr "Kvalifikatsiooni ei leitud"
+
+#: 
+msgid "Qualified for"
+msgstr "Kvalifitseeritud ülesandele"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Kvalifitseeritud vabatahtlikud võivad ennast selle ülesande avatud kuupäevadele ise kirja panna. Lülita välja ülesannetel, mida peaks määrama ainult meeskonnajuht või koordinaator; Liikmeportaal neid ei paku."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Kvalifitseeri selle praegused õpetajad ülesandele"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Kvalifitseeri nad ülesandele"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Kvalifitseeri nad ülesandele."
+
+#: 
+msgid "Reactivate"
+msgstr "Aktiveeri uuesti"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Loe teemade koostamise juhendit"
+
+#: 
+msgid "Recent Emails"
+msgstr "Hiljutised e-kirjad"
+
+#: 
+msgid "Recent Sends"
+msgstr "Hiljutised saatmised"
+
+#: 
+msgid "Recipient"
+msgstr "Saaja"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Saajate arv (%d) ületab ühe saatmise lubatud maksimumi (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Saajad tuleb anda personId ja familyId väärtustena, mitte e-posti aadressidena"
+
+#: 
+msgid "Record a decline"
+msgstr "Salvesta keeldumine"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Salvesta nõustumine"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Kas salvestada, et {{name}} ütles ei? Vastus salvestatakse sinu poolt tulnuna ja koht vabaneb."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Kas salvestada, et {{name}} ütles jah? Vastus salvestatakse sinu poolt tulnuna, mitte tema poolt."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Salvesta: ta nõustus"
+
+#: 
+msgid "Record: they declined"
+msgstr "Salvesta: ta keeldus"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Värba vabatahtlikke"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Värba vabatahtlikke peab olema tõene või väär"
+
+#: 
+msgid "Recruiting"
+msgstr "Värbamine"
+
+#: 
+msgid "Recurring"
+msgstr "Korduv"
+
+#: 
+msgid "Reject"
+msgstr "Lükka tagasi"
+
+#: 
+msgid "Reject substitution"
+msgstr "Lükka asendamine tagasi"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Lükka see asendaja tagasi"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Meeldetuletuse ettenähtud aeg (tundides)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Meeldetuletus: sa oled määratud teenima"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Meeldetuletused ja hoiatused edastatakse ainult siis, kui taustatööd käivad. Õigeaegseks edastamiseks käivita ajastatud ülesannete käitaja cronist iga 15 minuti järel"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Eemalda vabatahtlik"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Eemalda koordinaator"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Eemalda neilt klass"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Eemalda meeskonnajuht"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Kas eemaldada {{name}} valdkonnast {{ministry}}? See eemaldab kõik tema kvalifikatsioonid siin, võtab ta maha kõigilt tulevastelt toimumiskordadelt, eemaldab ta selle valdkonna ajakavade vaikimisi vabatahtlikuna ja eemaldab ta vabatahtlike kogumist."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Eemaldatud. {{qualifications}} kvalifikatsiooni, {{assignments}} tulevast määramist, {{defaults}} ajakava vaikeväärtust."
+
+#: 
+msgid "Repeats"
+msgstr "Kordub"
+
+#: 
+msgid "Requirement not found"
+msgstr "Nõuet ei leitud"
+
+#: 
+msgid "Reset link"
+msgstr "Lähtestuslink"
+
+#: 
+msgid "Response recorded"
+msgstr "Vastus salvestatud"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Vaata taotlus vabatahtlike ülevaates üle ning kinnita või lükka tagasi."
+
+#: 
+msgid "Review this request"
+msgstr "Vaata see taotlus üle"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Käivita taustatööd kohe"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTP test"
+
+#: 
+msgid "Save calendars"
+msgstr "Salvesta kalendrid"
+
+#: 
+msgid "Save changes"
+msgstr "Salvesta muudatused"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Salvestatud – see valdkond enam abi ei küsi"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Salvestatud – see valdkond küsib nüüd abi"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Salvestatud. Liikmed näevad ülal sisse lülitatud kalendreid."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Ajakava „{{name}}” loodud."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Ajakava „{{name}}” loodud. See on mitteaktiivne, seega ei loo see toimumiskordi enne aktiveerimist."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Ajakava deaktiveeritud"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Ajakava kustutatud"
+
+#: 
+msgid "Schedule name"
+msgstr "Ajakava nimi"
+
+#: 
+msgid "Schedule not found"
+msgstr "Ajakava ei leitud"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Ajakava uuesti aktiveeritud"
+
+#: 
+msgid "Schedule saved"
+msgstr "Ajakava salvestatud"
+
+#: 
+msgid "Scheduled"
+msgstr "Ajastatud"
+
+#: 
+msgid "Schedules"
+msgstr "Ajakavad"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Ajakavad viimati täiendatud"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Ajakavad ei määra enam oma kordust ega aegu; iga toimumiskord järgib kalendrisündmust. Eemalda: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Ajakavad ei määra enam, kui kaugele ette neid genereeritakse: jaotise Haldus → Valdkonna seaded ajakavahorisont kehtib iga ajakava kohta. Eemalda: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Ajakavahorisont (nädalat)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Volituse andmist ei leitud"
+
+#: 
+msgid "Search by name"
+msgstr "Otsi nime järgi"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Vaata kogu kalendrit"
+
+#: 
+msgid "See what needs filling"
+msgstr "Vaata, mida on vaja täita"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Vali kalender, et selle sündmusi peita või näidata."
+
+#: 
+msgid "Select ministries..."
+msgstr "Vali valdkonnad..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Ise registreerumine"
+
+#: 
+msgid "Self-assignable"
+msgstr "Ise määratav"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Ise määratav peab olema tõene või väär"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Iseteeninduskontod"
+
+#: 
+msgid "Send"
+msgstr "Saada"
+
+#: 
+msgid "Send Email"
+msgstr "Saada e-kiri"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Saada e-kiri ChurchCRM-ist"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Saada määramissõnum uuesti"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Saada näidatavad kalendrid loendina."
+
+#: 
+msgid "Send to the church office"
+msgstr "Saada koguduse kontorile"
+
+#: 
+msgid "Send your answer"
+msgstr "Saada oma vastus"
+
+#: 
+msgid "Sent"
+msgstr "Saadetud"
+
+#: 
+msgid "Sent by"
+msgstr "Saatja"
+
+#: 
+msgid "Serving next"
+msgstr "Järgmisena teenid"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Sea nõustunuks"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Sea komplekteerimisvajadused"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Näita „%s” Liikmeportaalis"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Näita Liikmeportaalis"
+
+#: 
+msgid "Show past events"
+msgstr "Näita möödunud sündmusi"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Näita koguduse kalendrit"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Näita koguduse kalendrit Liikmeportaalis."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Näita koguduse kalendri jaotist Liikmeportaalis."
+
+#: 
+msgid "Show the next"
+msgstr "Näita järgmisi"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Näita vabatahtlikutöö ja meeskonna jaotisi Liikmeportaalis."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Näita seda valdkonda lehel Avatud võimalused"
+
+#: 
+msgid "Show volunteering"
+msgstr "Näita vabatahtlikutööd"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Näita vabatahtlikutöö ja meeskonna lehti Liikmeportaalis."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Näita, mis ma olen juba teinud"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Näidatakse täpselt nii, nagu sisestad. Reavahetused säilivad."
+
+#: 
+msgid "Sign up"
+msgstr "Registreeru"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Sisselogimine ja turvalisus"
+
+#: 
+msgid "Signed in"
+msgstr "Sisse logitud"
+
+#: 
+msgid "Signed up"
+msgstr "Registreerunud"
+
+#: 
+msgid "Sincerely"
+msgstr "Lugupidamisega"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Mõnda su andmetest ei õnnestunud salvestada. Kontrolli esiletõstetud välju."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Mõnda su perekonna andmetest ei õnnestunud salvestada. Kontrolli esiletõstetud välju."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Keegi teine asendab"
+
+#: 
+msgid "Something needs changing"
+msgstr "Midagi tuleb muuta"
+
+#: 
+msgid "Something went wrong"
+msgstr "Midagi läks valesti"
+
+#: 
+msgid "Staff an event"
+msgstr "Komplekteeri sündmus"
+
+#: 
+msgid "Staff them"
+msgstr "Komplekteeri need"
+
+#: 
+msgid "Staff this event"
+msgstr "Komplekteeri see sündmus"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Komplekteeri see toimumiskord"
+
+#: 
+msgid "Staffed"
+msgstr "Komplekteeritud"
+
+#: 
+msgid "Staffing"
+msgstr "Komplekteerimine"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Komplekteerimine seadistatakse pärast sündmuste loomist"
+
+#: 
+msgid "Staffing needs"
+msgstr "Komplekteerimisvajadused"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Komplekteerimisvajadused salvestatud"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Alusta valdkonna loomisest ja lisa siis meeskonnad ja ülesanded, mis selles teenivad."
+
+#: 
+msgid "Start time"
+msgstr "Algusaeg"
+
+#: 
+msgid "Start typing a name"
+msgstr "Hakka nime sisestama"
+
+#: 
+msgid "Statistics"
+msgstr "Statistika"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Kas lõpetada {{name}} valdkonna {{ministry}} koordineerimine? Tema sisselogimine ja tema enda määramised jäävad puutumata."
+
+#: 
+msgid "Subscribe"
+msgstr "Telli"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Telli kalender"
+
+#: 
+msgid "Substitute"
+msgstr "Asendaja"
+
+#: 
+msgid "Substitute approved"
+msgstr "Asendaja kinnitatud"
+
+#: 
+msgid "Substitute asked"
+msgstr "Asendajat küsitud"
+
+#: 
+msgid "Substitute decision"
+msgstr "Asendaja otsus"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Asendaja pakutud"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Asendaja tagasi lükatud"
+
+#: 
+msgid "Substituted"
+msgstr "Asendatud"
+
+#: 
+msgid "Substitution approved"
+msgstr "Asendamine kinnitatud"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Asendamine tagasi lükatud"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Asendustaotlust ei leitud"
+
+#: 
+msgid "Substitution requests"
+msgstr "Asendustaotlused"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Pühapäevakooli klass"
+
+#: 
+msgid "System calendar"
+msgstr "Süsteemi kalender"
+
+#: 
+msgid "System default"
+msgstr "Süsteemi vaikeväärtus"
+
+#: 
+msgid "Take that back"
+msgstr "Võta tagasi"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Kas võtta {{name}} sellelt ülesandelt maha? E-kirja ei saadeta; tema ajakavas kuvatakse kuupäev kui enam mittevajalik ja koht vabaneb."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Selle klassi õpetajaid hallatakse kohas Valdkonnad → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Meeskond"
+
+#: 
+msgid "Team Leader"
+msgstr "Meeskonnajuht"
+
+#: 
+msgid "Team added"
+msgstr "Meeskond lisatud"
+
+#: 
+msgid "Team deleted"
+msgstr "Meeskond kustutatud"
+
+#: 
+msgid "Team leader"
+msgstr "Meeskonnajuht"
+
+#: 
+msgid "Team name"
+msgstr "Meeskonna nimi"
+
+#: 
+msgid "Team not found"
+msgstr "Meeskonda ei leitud"
+
+#: 
+msgid "Team saved"
+msgstr "Meeskond salvestatud"
+
+#: 
+msgid "Teams"
+msgstr "Meeskonnad"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Meeskonnad on inimeste rühmad, kes selles valdkonnas teenivad."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Meeskonnad, ülesanded ja inimesed, kes neid täidavad"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Kümme viimast sisselogimist"
+
+#: 
+msgid "Thank you"
+msgstr "Täname!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Aitäh, et registreerusid teenima"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Aitäh, et registreerusid teenima. Oled ajakavas."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Aitäh. Koguduse kontoril on su vastus."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Aitäh. Koguduse kontor vaatab selle üle enne lisamist."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Aitäh, et andsid teada."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Aitäh – koordinaatorile on öeldud, et sooviksid uuesti aidata."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Aitäh – koordinaatorile on öeldud, et sooviksid aidata."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Aitäh – oled nimekirjas."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Seda Liikmeportaali teema kausta pole olemas"
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "See määramine kuulub kellelegi teisele"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Seda määramist ei õnnestunud salvestada"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "See sünnipäev ei ole kehtiv kuupäev."
+
+#: 
+msgid "That could not be saved."
+msgstr "Seda ei õnnestunud salvestada."
+
+#: 
+msgid "That could not be sent."
+msgstr "Seda ei õnnestunud saata."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Seda pereliiget ei õnnestunud lisada. Kontrolli esiletõstetud välju."
+
+#: 
+msgid "That is not a valid date."
+msgstr "See ei ole kehtiv kuupäev."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Seda nimekirja ei õnnestunud laadida."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "See isik on sellel toimumiskorral selles ülesandes juba"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "See isik on sellel toimumiskorral sellele ülesandele juba määratud"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "See isik ei ole selle valdkonna vabatahtlike kogumis. Saada uuesti kogumivälise määramise ülekirjutusega, et ta siiski määrata."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "See isik ei ole selles vabatahtlike kogumis"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "See isik ei ole sellele ülesandele kvalifitseeritud"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Seda fotot ei õnnestunud salvestada."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "See foto on liiga suur. Vali väiksem."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "See ülesanne kuulub teisele valdkonnale"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "See ülesanne kuulub teisele meeskonnale"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "See ülesanne on juba täielikult komplekteeritud"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Seda ülesannet ei komplekteerita sellel toimumiskorral"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Seda vastust ei õnnestunud salvestada"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Seda olekut ei saa otse seada"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Seda asendustaotlust ei õnnestunud otsustada"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "See meeskond kuulub teisele valdkonnale"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Seda teemat ei õnnestunud aktiveerida."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Seda teemat ei õnnestunud kontrollida."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Selles teemas on vigu, seega seda ei aktiveeritud."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Seda vabatahtlikku ei õnnestunud määrata"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "See pulmakuupäev ei ole kehtiv kuupäev."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "Väli %s peab olema kuupäev kujul AAAA-KK-PP"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "Väli %s peab olema täisarv minuteid"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "Väli %s peab olema sündmusest %d minuti piires"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Liikmeportaali kalendrid salvestati."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Liikmeportaal ei suutnud palutut lõpule viia. Proovi mõne minuti pärast uuesti."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Liikmeportaal on kättesaadav ainult sisselogitud isikule, mitte API klientidele."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Liikmeportaali teemaks on seatud „%s”, mida serveris enam pole. Liikmed näevad vealehte, kuni valid olemasoleva teema."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Liikmeportaal on ajutiselt kättesaamatu"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Liikmeportaali teemat „%s” ei õnnestunud aktiveerida, sest see sisaldab vigu."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Liikmeportaali teemat ei õnnestunud renderdada"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Liikmeportaali teema kausta „%s” ei leitud."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Liikmeportaali teemat muudeti."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Klassi %1$s Õpetaja rolli ei saa ümber nimetada ega kustutada, kuni selle õpetajaid hallatakse kohas Valdkonnad → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Aktiivse teema kaust puudub"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Aadress on valitud – kopeeri see klaviatuuriga."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Varade tee „%s” pole lubatud."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Määramist ei õnnestunud tühistada"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Määramissõnum saadetakse uuesti"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Kalendri aadress kopeeriti."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Kalendreid ei õnnestunud laadida. Proovi uuesti."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Kalendreid ei õnnestunud salvestada."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Valikut ei õnnestunud lisada"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Kogudus pole sulle veel e-kirja saatnud."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Koguduse kontorit on teavitatud. Proovi hiljem uuesti."
+
+#: 
+msgid "The class does not exist"
+msgstr "Klassi pole olemas"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Klassi, mida see ajakava järgib, enam pole."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Selle e-kirja sisu ei salvestata. ChurchCRM säilitab ainult e-kirja koostajas kirjutatud sõnumite ja vabatahtlike e-kirjade teksti."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Selle e-kirja sisu ei säilitatud."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Koordinaatorit ei õnnestunud lisada"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Koordinaatorite nimekirja ei õnnestunud laadida"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Iga toimumiskorra kuupäev ja kellaaeg tulevad selle kalendrisündmusest, seega sündmuse liigutamine liigutab ajakava."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Parameeter days peab olema täisarv vahemikus 1 kuni 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Vaikimisi vabatahtlik peab olema isik"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Vaikimisi vabatahtlikud salvestatakse ajakavale ja nad lähevad edaspidi loodavatele toimumiskordadele."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Vaikimisi vabatahtlikud peavad olema loend"
+
+#: 
+msgid "The description is too long"
+msgstr "Kirjeldus on liiga pikk"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Vahemiku lõpp on enne selle algust."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Vahemiku lõpp ei ole kuupäev."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Sündmust ei õnnestunud komplekteerida"
+
+#: 
+msgid "The event does not exist"
+msgstr "Sündmust pole olemas"
+
+#: 
+msgid "The event is inactive"
+msgstr "Sündmus on mitteaktiivne"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Sündmus peab lõppema pärast algust"
+
+#: 
+msgid "The event title"
+msgstr "Sündmuse pealkiri"
+
+#: 
+msgid "The event title is too long"
+msgstr "Sündmuse pealkiri on liiga pikk"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Sündmuseliik, millega valdkonna uued sündmused algavad. Kui tühi või liik on kustutatud, kasutatakse liiki „Muu”, kui selline on olemas."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Sündmuseliiki pole olemas"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Sündmuseliiki, mida see ajakava järgib, enam pole."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Sündmusi saab viia ainult klassi, millega meeskond on seotud"
+
+#: 
+msgid "The events could not be created"
+msgstr "Sündmusi ei õnnestunud luua"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Sündmusi ei õnnestunud kustutada"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Sündmusi ei õnnestunud komplekteerida"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Volitust ei õnnestunud eemaldada"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Viimane kuupäev on enne esimest kuupäeva"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Sobivate vabatahtlike nimekirja ei õnnestunud laadida"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Maksimaalne arv ei saa olla väiksem kui minimaalne arv"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Sõnumit ei õnnestunud järjekorda panna"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Minimaalne arv ei saa olla negatiivne"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Valdkonda ei õnnestunud luua"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Valdkonda ei õnnestunud deaktiveerida"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Valdkonda ei õnnestunud kustutada"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Valdkonda ei õnnestunud uuesti aktiveerida"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Valdkonda ei õnnestunud salvestada"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Toimumiskorda ei õnnestunud kustutada"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Toimumiskorral pole ajakava"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Toimumiskordi ei õnnestunud genereerida"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Algne vabatahtlik vabastatakse ja asendaja võtab ülesande. Mõlemad saavad teate."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Algne vabatahtlik jätkab ülesandes. Mõlemad saavad teate."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Lehte, mida küsisid, pole olemas. See võib olla teisaldatud või eemaldatud."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Ülesanne kuulub teisele valdkonnale"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Ülesannet ei õnnestunud kustutada"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Ülesannet ei õnnestunud salvestada"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Ülesanne on endiselt kaetud, seega pole tegevust vaja, kui sa ei soovi nimekirja kohandada."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Kvalifikatsiooni ei õnnestunud eemaldada"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Kvalifikatsiooni ei õnnestunud salvestada"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Kvalifitseeritud vabatahtlikke ei õnnestunud laadida"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Kordus peab ütlema, kuidas sündmused korduvad"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Taotlus, et %1$s teeniks isiku %2$s asemel, on kinnitatud."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Taotlust, et %1$s teeniks isiku %2$s asemel, ei kinnitatud."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Sama ülesanne on komplekteerimisvajadustes loetletud kaks korda"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Ajakava ei õnnestunud deaktiveerida"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Ajakava ei õnnestunud kustutada"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Ajakava ei õnnestunud uuesti aktiveerida"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Ajakava ei õnnestunud salvestada"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Ajakava on uuendatud, seega pole enam midagi teha."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Ajakava aken lõpeb enne algust"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Ajakava komplekteerimisvajadusi ei õnnestunud laadida"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Komplekteerimisvajadusi ei õnnestunud laadida"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Komplekteerimisvajadusi ei õnnestunud lähtestada"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Komplekteerimisvajadusi ei õnnestunud salvestada"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Komplekteerimisvajadused peavad olema loend"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Komplekteerimisplaani ei õnnestunud laadida"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Vahemiku algus ei ole kuupäev."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Asendamist ei õnnestunud otsustada"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Asendustaotlusi ei õnnestunud laadida"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Õpetajaid saab importida ainult selle meeskonna ülesandele"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Klassi %1$s õpetajaid hallatakse kohas Valdkonnad → %2$s → %3$s. Õpilasi saab siiski siin muuta."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Meeskonda ei õnnestunud kustutada"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Meeskonda ei õnnestunud salvestada"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Meeskond ei kuulu sellesse valdkonda"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Teema kausta ei leitud."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Liik, millega uus sündmus valdkonna Kalender-sakil algab. Seda saab siiski iga sündmuse jaoks muuta, näiteks klassi jaoks, mis vajab osalejate arvu kategooriaid."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Vabatahtliku määramist ei õnnestunud salvestada"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Valdkonna %s vabatahtlike kogum."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Vabatahtlike seadistuse muudatust ei õnnestunud salvestada"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Aken lõpeb enne algust"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Nende koordinaatorid võivad oma valdkonna sündmusi sellesse kalendrisse kinnitada ilma Lisa sündmusi -õiguseta."
+
+#: 
+msgid "Theme"
+msgstr "Teema"
+
+#: 
+msgid "Themes"
+msgstr "Teemad"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Teemad pärinevad sinu kogudusest, mitte ChurchCRM-ist, ja ChurchCRM-i projekt ei ole neid kontrollinud."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "ID-ga %d koguduse kalendrit pole."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "ID-ga %d süsteemi kalendrit pole."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Need on andmed, mis kogudusel sinu kohta on. Muudatused salvestatakse kohe."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Need on vabatahtlike meeskonnad, mille eest sa hoolitsed. Ava üks, et seadistada selle ülesanded, öelda, kes kus teenida saab, ja täita eesolevad nädalad."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Need sündmused ei ole üks seeria: nad erinevad pealkirja, liigi või klassi poolest"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Need valdkonnad sooviksid rohkem inimesi. Anna teada, et oled huvitatud, ja keegi võtab ühendust."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Need vajadused tulevad ajakavast. Siin salvestamine muudab ainult seda toimumiskorda."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Need arvud loevad ainult iseteeninduskontosid: inimesi, kelle sisselogimisega pääseb Liikmeportaali ja mitte kuhugi mujale."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Need inimesed on endiselt määratud, kuid nende ülesanne ei kuulu enam selle kuupäeva komplekteerimisplaani."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Need inimesed on endiselt määratud, kuid nende ülesanne ei kuulu enam selle toimumiskorra komplekteerimisplaani."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Need ajastatud ülesanded vajavad veel kedagi."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Valdkonna %1$s need meeskonnad on seotud pühapäevakooli klassiga: %2$s. Eralda need esmalt."
+
+#: 
+msgid "They could not be added"
+msgstr "Neid ei õnnestunud lisada"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Neid ei õnnestunud sellest valdkonnast eemaldada"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Nad lõpetavad %d minut pärast sündmuse lõppu."
+msgstr[1] "Nad lõpetavad %d minutit pärast sündmuse lõppu."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Nad lõpetavad %d minut enne sündmuse lõppu."
+msgstr[1] "Nad lõpetavad %d minutit enne sündmuse lõppu."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Nad olid siin juba vabatahtlikud"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "See määramine on %1$s ja seda ei saa muuta olekusse %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "See määramine ei ole enam aktiivne"
+
+#: 
+msgid "This email is not in your history."
+msgstr "See e-kiri ei ole sinu ajaloos."
+
+#: 
+msgid "This event has already happened"
+msgstr "See sündmus on juba toimunud"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "See läheb ülevaatamiseks koguduse kontorisse. Kuni töötaja selle kinnitab, kuvatakse uus pereliige siin ülevaatamist ootavana."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "See rühm on vabatahtlike valdkonna kogum ja kustutatakse koos valdkonnaga"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "See rühm on valdkonna %s vabatahtlike kogum ja seda hallatakse sellest valdkonnast."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "See rühm on valdkonna %s vabatahtlike kogum. Seda hallatakse sellest valdkonnast."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Selles paigalduses pole veel kalendreid."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "See on meeldetuletus, et sa oled peagi määratud teenima."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "See ei ole kehtiv teema kausta nimi."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "See ei ole ükski su meeskonna kuupäev."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "See ei ole ükski su meeskondadest."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Siia saadab kogudus posti ja siin on näha, kellele su leibkonna asjus helistatakse."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "See on su koguduse konto. Kõik, mida saad enda ja oma perekonna heaks teha, asub siin."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Sellel valdkonnal pole kalendris tulevasi sündmusi."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Sellel valdkonnal pole tulevasi sündmusi pealkirjaga „%s”. Ajakava järgib juba olemasolevaid sündmusi: lisa need esmalt valdkonna Kalender-sakil."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Sellel valdkonnal pole vabatahtlike kogumi rühma"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "See valdkond ei küsi praegu abi"
+
+#: 
+msgid "This ministry's events"
+msgstr "Selle valdkonna sündmused"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Selle valdkonna sündmused (sündmust pole veel valitud)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "See toimumiskord järgib taas oma ajakava"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "See toimumiskord on juba toimunud"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "See toimumiskord on juba toimunud ja selle määramisi ei saa enam muuta"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "See toimumiskord on tühistatud"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Sellel toimumiskorral on oma komplekteerimisvajadused, ajakavast eraldi."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "See leht ei kuulu sinu kontole. Kui arvad, et peaks, küsi koguduse kontorist."
+
+#: 
+msgid "This page was not found"
+msgstr "Seda lehte ei leitud"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "See Liikmeportaali osa on vabatahtlike meeskonnajuhtidele."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Selle ülesande määrab meeskonnajuht või koordinaator, mitte registreerumine"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Seda ajakava ei saa kustutada: %d vabatahtliku määramist viitab veel selle toimumiskordadele."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Sellel ajakaval pole veel komplekteerimisvajadusi"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "See ajakava on mitteaktiivne. Aktiveeri see uuesti, et selle toimumiskorrad genereerida."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "See asendustaotlus on juba otsustatud"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Sellel meeskonnal pole veel ülesandeid"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "See meeskond komplekteerib seda sündmust juba"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "See mall küsib faili „%s”, mida teema ei sisalda."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Seda teemat ei saa aktiveerida"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Selles teemas pole probleeme."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "See ChurchCRM-i versioon ei kasuta sellel teel malli, seega ülekirjutust ei renderdata kunagi."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Märgi nad selle meeskonna Vabatahtlikud-sakil ja määra nad siis siin."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Märked salvestuvad, kui neid teed."
+
+#: 
+msgid "Times come from this event"
+msgstr "Ajad tulevad sellest sündmusest"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Täiendab kõik ajakavad, saadab kõik järjekorras oleva ja sulgeb lõppenud toimumiskorrad, ootamata järgmist ajastatud käivitust."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Kas lükata {{name}} tagasi? Algne vabatahtlik jääb alles ja saab teate."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Lülita Liikmeportaali mallide vahemälu välja ja trüki iga malli nimi HTML-kommentaari. Teemakujundajatele; tavakasutuses jäta välja lülitatuks."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Lülita see sisse valdkonnale, mille meeskonnad õpetavad pühapäevakooli klasse. Selle meeskondi saab siis klassiga siduda ning selle ajakavad ja sündmused saavad klassi kasutada."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Lülitab portaali mallide vahemälu välja ja trükib iga malli nimi HTML-kommentaari. Teemakujundajatele; tavakasutuses jäta see välja lülitatuks."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Kahe faktori autentimine"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Täitmata ülesanded"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Tundmatu edastusviga"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Tundmatu toimumiskorra olek"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Tundmatu ajakava sidumisrežiim"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Tundmatu vabatahtlike valdkond"
+
+#: 
+msgid "Until"
+msgstr "Kuni"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Tulev saadavus"
+
+#: 
+msgid "Update your details"
+msgstr "Uuenda oma andmeid"
+
+#: 
+msgid "Update your family details"
+msgstr "Uuenda oma perekonna andmeid"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Ühe sündmuse komplekteerimiseks kasuta valikut Komplekteeri see sündmus"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Kasuta ajakava vajadusi"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Kasutajal peab olema Lisa sündmus -õigus või ta peab koordineerima vabatahtlike valdkonda ning Sündmuste moodul peab olema lubatud"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Kasutajal peab olema Lisa sündmus -õigus või ta peab koordineerima vabatahtlike valdkonda, kuhu see kalender kuulub"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 – Vabatahtlike võimalused (vana)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 – vanad Vabatahtlike võimalused"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 – Valdkonnad"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 – Vabatahtlike haldus"
+
+#: 
+msgid "Valid"
+msgstr "Kehtiv"
+
+#: 
+msgid "Validation"
+msgstr "Valideerimine"
+
+#: 
+msgid "View event"
+msgstr "Vaata sündmust"
+
+#: 
+msgid "View my schedule"
+msgstr "Vaata minu ajakava"
+
+#: 
+msgid "View only"
+msgstr "Ainult vaatamine"
+
+#: 
+msgid "View person"
+msgstr "Vaata isikut"
+
+#: 
+msgid "View the event"
+msgstr "Vaata sündmust"
+
+#: 
+msgid "View this email"
+msgstr "Vaata seda e-kirja"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Vabatahtlik (vana)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Vabatahtlike haldus V2 ei ole lubatud"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Vabatahtlike valdkond"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Vabatahtliku määramine"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Vabatahtlik keeldus"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Vabatahtliku kogemus"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Vabatahtlike ülesandeid on veel vaja täita"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Vabatahtliku meeldetuletus"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Vabatahtlikuks registreerumine"
+
+#: 
+msgid "Volunteer times"
+msgstr "Vabatahtlike ajad"
+
+#: 
+msgid "Volunteering"
+msgstr "Vabatahtlikutöö"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Vabatahtlikutöö korraldatud nii, nagu kogudus seda peab. Igal valdkonnal on meeskonnad ja ülesanded; inimesed kvalifitseeritakse ülesannetele ja kuuluvad valdkonna kogumirühma; ajakavad järgivad kalendri sündmusi ja loovad kuupäevastatud toimumiskorrad koos komplekteerimisnõuetega; koordinaatorid määravad inimesi, kes nõustuvad, keelduvad või pakuvad asendajat; meeldetuletused ja hoiatused saadetakse e-kirjaga. Administraatorid ja kasutajad, kellel on Halda valdkondi -õigus, näevad kõiki valdkondi ning võivad neid luua, deaktiveerida ja kustutada. Valdkonna koordinaatorile antakse selle asemel õigus Halda minu valdkondi: külgriba pealkirja Valdkonnad all on siis näha ainult valdkonnad, mida ta koordineerib. Meeskonnajuht juhib oma meeskonda Liikmeportaalist. Liikmed kasutavad Liikmeportaali oma ajakava nägemiseks, vastamiseks, registreerumiseks ja abi pakkumiseks."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Määratud vabatahtlikke: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Vabatahtlikud lõpetavad"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Vajalikud vabatahtlikud"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Valdkonna %s vabatahtlikud on nendele sündmustele määratud, seega ei saa neid siin kustutada. Palu sellel valdkonnal oma komplekteerimine eemaldada või küsi kalendri haldajalt."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Valdkondade {{names}} vabatahtlikud on osadele neist määratud. Kui sa kalendrit ei halda, lükatakse kustutamine tagasi, kuni see komplekteerimine on eemaldatud."
+
+#: 
+msgid "Volunteers start"
+msgstr "Vabatahtlikud alustavad"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Vabatahtlikud alustavad %d minut pärast sündmuse algust."
+msgstr[1] "Vabatahtlikud alustavad %d minutit pärast sündmuse algust."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Vabatahtlikud alustavad %d minut enne sündmuse algust."
+msgstr[1] "Vabatahtlikud alustavad %d minutit enne sündmuse algust."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Ootab vastust"
+
+#: 
+msgid "Waiting for review"
+msgstr "Ootab ülevaatamist"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Ootab sinu koordinaatori kinnitust."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Saadame sulle e-kirja, kui midagi on vaja täita."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Sooviksime pühapäeva hommikuti rohkem abi – kogemust pole vaja."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Tere tulemast, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Mida on vaja muuta?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Mis vajab sel nädalal sinu tähelepanu"
+
+#: 
+msgid "What the check found"
+msgstr "Mida kontroll leidis"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Millised on vabatahtlike kogemused"
+
+#: 
+msgid "What you want to say"
+msgstr "Mida tahad öelda"
+
+#: 
+msgid "When"
+msgstr "Millal"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Kui vabatahtlik pakub enda asemele kedagi, ilmub see siia kinnitamiseks või tagasilükkamiseks."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Kui vabatahtlik pakub enda asemele kedagi, ilmub see siia kinnitamiseks."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Kui keegi paneb su meeskonda või registreerud ise, ilmub see siia."
+
+#: 
+msgid "Where"
+msgstr "Kus"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Kust kuupäevad tulevad"
+
+#: 
+msgid "Where we reach you"
+msgstr "Kust sind kätte saame"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Milline Vabatahtlike halduse kogemus on aktiivne. V1 on vana Vabatahtlike võimaluste funktsioon; V2 on uus ajastamise ja määramise töövoog. „Mõlemad” näitab neid ülemineku ajal kõrvuti."
+
+#: 
+msgid "Which events"
+msgstr "Millised sündmused"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Millist vabatahtlike kogemust see kogudus kasutab. Parempoolne kaart selgitab iga valikut."
+
+#: 
+msgid "Who is covering"
+msgstr "Kes asendab"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Keda on vaja, kes on ametis ja mis veel puudu jääb"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Kes on kõige kauem tagasi teeninud, on nimekirjas esimene."
+
+#: 
+msgid "Work Email"
+msgstr "Töö e-post"
+
+#: 
+msgid "Yearly"
+msgstr "Iga-aastane"
+
+#: 
+msgid "You"
+msgstr "Sina"
+
+#: 
+msgid "You are already helping that day"
+msgstr "Aitad sel päeval juba"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "Aitad sel päeval juba rollis {{what}}. Kas registreeruda ka selle jaoks?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Sul pole luba seda muuta. Võta ühendust koguduse kontoriga."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Sa ei ole praegu perekonnaga seotud"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Sa ei ole veel perekonnakirje osa."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Oled nimekirjas – aitäh."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Saad seda oma vabatahtliku ajakavas üle vaadata või muuta."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Sa ei saa seda lehte avada"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Sa ei saa end enda asendajaks pakkuda"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Sind ei õnnestunud selleks registreerida."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Sa ei juhi veel ühtegi vabatahtlike meeskonda."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Sul on uus kalendri aadress. Vana ei tööta enam."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Sind on määratud teenima"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Sind on määratud teenima."
+
+#: 
+msgid "You lead this"
+msgstr "Sa juhid seda"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Ajakava saad luua ainult meeskonnale, mida juhid"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Sa oled selle puhul taas nimekirjas."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Su konto ei ole isikukirjega seotud. Võta ühendust koguduse kontoriga."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Su kalendritellimus salvestati."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Su praegune aadress lakkab kohe töötamast. Kõik, kellele selle andsid, vajavad uut."
+
+#: 
+msgid "Your details"
+msgstr "Sinu andmed"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Su andmed on salvestatud."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Su perekonna andmed on salvestatud."
+
+#: 
+msgid "Your photo"
+msgstr "Sinu foto"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Su foto on salvestatud."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Sinu ajakava ei õnnestunud laadida."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Su seanss on aegunud. Logi uuesti sisse."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Su asendustaotlus kinnitati"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Su asendustaotlust ei kinnitatud"
+
+#: 
+msgid "already staffed by this team"
+msgstr "selle meeskonna poolt juba komplekteeritud"
+
+#: 
+msgid "body is required"
+msgstr "sisu on nõutav"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds peab olema kalendri ID-de loend"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents peab olema üks järgmistest: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId peab olema rühma ID või null"
+
+#: 
+msgid "end offset"
+msgstr "lõpu nihe"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds peab olema sündmuste ID-de loend"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "iga sõnum on edastatud või on veel järjekorras"
+
+#: 
+msgid "has not served yet"
+msgstr "pole veel teeninud"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId peab olema ülesande ID"
+
+#: 
+msgid "inactive family"
+msgstr "mitteaktiivne perekond"
+
+#: 
+msgid "line %d"
+msgstr "rida %d"
+
+#: 
+msgid "marked do not email"
+msgstr "märgitud ära saada e-kirju"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "sõnumeid ei õnnestunud edastada"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "sõnumeid ei õnnestunud viie katsega edastada"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "saatmist ootavad sõnumid"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds peab olema valdkondade ID-de loend"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "minutit pärast sündmuse lõppu"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "minutit pärast sündmuse algust"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "minutit enne sündmuse lõppu"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "minutit enne sündmuse algust"
+
+#: 
+msgid "never"
+msgstr "mitte kunagi"
+
+#: 
+msgid "no email address"
+msgstr "e-posti aadress puudub"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds ja familyIds peavad olema positiivsete täisarvude massiivid"
+
+#: 
+msgid "record not found"
+msgstr "kirjet ei leitud"
+
+#: 
+msgid "same address as another recipient"
+msgstr "sama aadress mis teisel saajal"
+
+#: 
+msgid "single event"
+msgstr "üksik sündmus"
+
+#: 
+msgid "start offset"
+msgstr "alguse nihe"
+
+#: 
+msgid "subject and body are required"
+msgstr "teema ja sisu on nõutavad"
+
+#: 
+msgid "subject is required"
+msgstr "teema on nõutav"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "teema võib olla kuni 255 tähemärki"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool peab olema tõene või väär"
+
+#: 
+msgid "window end"
+msgstr "ajaakna lõpp"
+
+#: 
+msgid "window start"
+msgstr "ajaakna algus"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} lisatud, {{alreadyMembers}} olid siin juba vabatahtlikud"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} toimumiskorda loodud, {{existing}} oli juba olemas"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} lõi {{total}} sündmust klassile {{className}} ({{upcoming}} tulevast)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} komplekteerivad ka mõnda neist."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} koordineerib seda valdkonda juba"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} määratud"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} teenib sellel toimumiskorral juba rollis {{position}}. Saad ta siiski määrata."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} on kvalifitseeritud, kuid ei ole selle valdkonna vabatahtlike kogumis. Määramine lisab ta ainult sellele toimumiskorrale."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} koordineerib nüüd seda valdkonda"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: arvud peavad olema vahemikus 0 kuni {{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: maksimum ei saa olla väiksem kui miinimum."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} ei ole enam kvalifitseeritud"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} kvalifitseeritud"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} palub isikul {{substitute}} enda asemele tulla"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} kuupäeval {{date}} loodud. Kas komplekteerida see nüüd?"
+

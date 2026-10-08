@@ -18764,3 +18764,4555 @@ msgstr "Uloga supružnika"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Poštanski brojevi velikim slovima"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Odaberite barem jednu klasifikaciju koja će biti uključena u imenik."
+
+#: 
+msgid "Geocoding services"
+msgstr "Usluge geokodiranja"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Usluge geokodiranja koje će se isprobati redoslijedom kojim ih odaberete. Nominatim (OpenStreetMap) radi diljem svijeta; US Census (Američki ured za popis stanovništva) pokriva samo adrese u Sjedinjenim Državama. Odaberite i US Census da biste ga koristili. Ako ništa nije odabrano, koristi se Nominatim."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Zadane vrijednosti za nove zapise"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Ovo pronalazi koordinate na karti za svaku obitelj kojoj nedostaju, koristeći usluge geokodiranja odabrane u postavkama karte. Obitelji obrađuje u serijama od 50; jedna serija traje otprilike minutu s jednom uslugom geokodiranja, a dulje s više njih. Tijekom rada možete ostaviti ovu stranicu otvorenom. Nastaviti?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Koristi se za nove zapise i za geokodiranje kada zapis nema državu."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Kopiraj iz podataka o crkvi"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Nije moguće kopirati adresu crkve."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Nije moguće uskladiti državu crkve."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Popisi razreda, liste prisutnosti i foto knjige"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Popisi članova službi i izvještaji o razredima nedjeljne škole"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Vaša fiskalna godina počinje u %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Došlo je do pogreške"
+
+#: 
+msgid "Approve"
+msgstr "Odobri"
+
+#: 
+msgid "Approve selected"
+msgstr "Odobri odabrano"
+
+#: 
+msgid "Approved"
+msgstr "Odobreno"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Promijeni u postavkama osoba"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Nije moguće odobriti odabrane registracije"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Nije moguće odobriti ovu obitelj"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Registracije na čekanju"
+
+#: 
+msgid "Pending review"
+msgstr "Čeka pregled"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Registracije koje čekaju pregled s vašeg javnog registracijskog obrasca. Unosi bez e-pošte ili telefona označeni su – prije kontaktiranja provjerite kontaktne podatke."
+
+#: 
+msgid "Review now"
+msgstr "Pregledaj sada"
+
+#: 
+msgid "Review self registrations"
+msgstr "Pregledaj samoregistracije"
+
+#: 
+msgid "Select month"
+msgstr "Odaberite mjesec"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Samoregistracija je onemogućena"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Samoregistracija je omogućena"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Javni registracijski obrazac je isključen. Postojeće registracije navedene su u nastavku."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Ova obitelj nije samoregistracija na čekanju"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Ova osoba pripada obitelji – umjesto toga odobrite obitelj"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Ova osoba nije samoregistracija na čekanju"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Ova samoregistrirana obitelj čeka pregled"
+
+#: 
+msgid "Total registrations"
+msgstr "Ukupno registracija"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Posjetitelji se mogu prijaviti putem vašeg javnog registracijskog obrasca."
+
+#: 
+msgid "Yesterday"
+msgstr "Jučer"
+
+#: 
+msgid "days ago"
+msgstr "dana prije"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "samoregistracija čeka pregled"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Rođendani se adresiraju na osobu, a godišnjice na par."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Poštanske naljepnice za osobe u ovom izvještaju. Osoba bez vlastite adrese adresira se na adresu svoje obitelji."
+
+#: 
+msgid "One label for each couple."
+msgstr "Jedna naljepnica za svaki par."
+
+#: 
+msgid "Print Labels"
+msgstr "Ispiši naljepnice"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Ta uloga nije jedna od uloga ove službe."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "„%s“ nije vrsta kalendara koju ova stranica poznaje."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s ne može služiti i kao zamjenu je predložio/la %2$s."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s je već u skupini volontera službe %2$s i želi ponovno pomoći."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s je već povezan s %2$s u %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s je u %2$s kao %3$s. Najprije ga/je uklonite iz razreda; kvalificiranjem ovdje postaje jedan od njegovih učitelja."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s nije događaj službe %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s ostaje razred nedjeljne škole dok se njegovim učiteljima upravlja u Službe → %2$s → %3$s. Najprije ga odvojite od tima."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s želi pomoći u %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s želi pomoći u %2$s i dodan/a je u njegovu skupinu volontera."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: Maksimum je %2$d, a odabrano je %3$d zadanih volontera. Uklonite jednog ili povećajte maksimum."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d dan"
+msgstr[1] "%d dana"
+msgstr[2] "%d dana"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d zadani preskočen iz drugog razloga (termin je završen, otkazan ili pun)"
+msgstr[1] "%d zadana preskočena iz drugog razloga (termin je završen, otkazan ili pun)"
+msgstr[2] "%d zadanih preskočeno iz drugog razloga (termin je završen, otkazan ili pun)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d zadani preskočen: kvalifikacija oduzeta"
+msgstr[1] "%d zadana preskočena: kvalifikacija oduzeta"
+msgstr[2] "%d zadanih preskočeno: kvalifikacija oduzeta"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d zadani volonter dodijeljen"
+msgstr[1] "%d zadana volontera dodijeljena"
+msgstr[2] "%d zadanih volontera dodijeljeno"
+
+#: 
+msgid "%d failed"
+msgstr "%d nije uspjelo"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Za ovu poziciju još je potreban %d volonter. Otvorite termin da popunite prazninu."
+msgstr[1] "Za ovu poziciju još su potrebna %d volontera. Otvorite termin da popunite prazninu."
+msgstr[2] "Za ovu poziciju još je potrebno %d volontera. Otvorite termin da popunite prazninu."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d novi termin"
+msgstr[1] "%d nova termina"
+msgstr[2] "%d novih termina"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Za nadolazeći termin još je potreban %d volonter."
+msgstr[1] "Za nadolazeći termin još su potrebna %d volontera."
+msgstr[2] "Za nadolazeći termin još je potrebno %d volontera."
+
+#: 
+msgid "%s Calendar"
+msgstr "Kalendar %s"
+
+#: 
+msgid "%s Family"
+msgstr "Obitelj %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s ne osigurava učitelje za nedjeljnu školu pa njegovi timovi, rasporedi i događaji ne mogu koristiti razred. Voditelj volontera to može promijeniti pod Uredi službu."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s e-poruka od crkve"
+msgstr[1] "%s e-poruke od crkve"
+msgstr[2] "%s e-poruka od crkve"
+
+#: 
+msgid "%s family"
+msgstr "Obitelj %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s je odbio/la dodjelu volontera."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s nema ulogu pod nazivom Učitelj pa se njegovim učiteljima ne može upravljati iz tima"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s nema nadolazećih sastanaka u kalendaru. Raspored prati već postojeće događaje: najprije dodajte sastanke razreda pomoću Novi ponavljajući događaj na kartici Kalendar službe."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "Od %s se i dalje očekuje da služi. Ako to nije moguće, obratite se koordinatoru."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s nije poslano (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s osoba u vašem kućanstvu"
+msgstr[1] "%s osobe u vašem kućanstvu"
+msgstr[2] "%s osoba u vašem kućanstvu"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s pozicija"
+msgstr[1] "%s pozicije"
+msgstr[2] "%s pozicija"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: ista osoba odabrana je dvaput kao zadani volonter"
+
+#: 
+msgid "(no subject)"
+msgstr "(bez predmeta)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Rođendan ne može biti u budućnosti."
+
+#: 
+msgid "A calendar event"
+msgstr "Događaj u kalendaru"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "ID kalendara mora biti broj."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Razred koji više ne postoji"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Razred bez sastanaka u kalendaru za sada se ne može odabrati."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Razred bez sastanaka u kalendaru za sada se ne može odabrati. Koordinator službe dodaje njegove sastanke na kartici Kalendar službe."
+
+#: 
+msgid "A class's meetings"
+msgstr "Sastanci razreda"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Koordinator može upravljati svime u ovoj službi, uključujući promjene koje bi inače morao napraviti voditelj volontera."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Koordinator službe može ih dodati na kartici Kalendar službe."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Koordinator službe može ih dodati na kartici Kalendar službe. Zatim ponovno generirajte."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Koordinator vodi cijelu službu – njezine timove, pozicije, rasporede i svaku dodjelu u njoj."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Dan kojega mjesec nema pada na njegov posljednji dan."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Zadani volonter pripada potrebama popune rasporeda, a ne jednom terminu"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Zadani volonter može se odabrati samo za poziciju koju traže potrebe popune ovog rasporeda"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Potrebni su datum od i datum do u obliku GGGG-MM-DD"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Potreban je minimalni broj"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Služba se stvara s vlastitim kalendarom, skupinom volontera i prvim timom, pa ovdje treba odlučiti samo o njezinu nazivu i što radi."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Naziv službe je obavezan"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Služba treba barem jedan tim. Umjesto toga preimenujte ga."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Služba s tim nazivom već postoji"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Vlastiti kalendar službe ne može se otvoriti drugim službama"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Pozicija pripada timu; odaberite jedan"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Pozicija je posao koji netko radi u ovom timu, na primjer Espresso ili Voditelj pjevanja."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Pozicija je uloga u kojoj netko služi, na primjer Espresso ili Voditelj pjevanja."
+
+#: 
+msgid "A position is required"
+msgstr "Pozicija je obavezna"
+
+#: 
+msgid "A position name is required"
+msgstr "Naziv pozicije je obavezan"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Pozicija s kvalificiranim volonterima ne može se premjestiti u tim povezan s razredom nedjeljne škole niti iz njega, jer bi to promijenilo tko drži nastavu u razredu. Umjesto toga stvorite poziciju u drugom timu."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Pozicija s tim nazivom već postoji u ovoj službi"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Odgovor mora biti prihvaćen ili odbijen"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Raspored pripada timu; odaberite jedan"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Naziv rasporeda je obavezan"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Raspored određuje koje događaje u kalendaru tim popunjava: vrstu bogoslužja, sastanke razreda ili vlastite događaje ove službe. Dodajte jedan i generirajte njegove termine."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Raspored određuje kojim događajima u kalendaru ovaj tim služi: vrsti bogoslužja, sastancima razreda ili vlastitim događajima svoje službe. Dodajte jedan i generirajte njegove termine."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Raspored koji prati razred mora navesti razred"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Raspored koji prati vrstu događaja mora navesti vrstu događaja"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Raspored koji popunjava jedan događaj ne može pratiti druge događaje; izbrišite ga i umjesto toga dodajte raspored"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "Jedan popis prilika, poput „Jaslice“ ili „Dočekivač“, vodi se pod Osobe → Administracija. Svaka osoba označena je prilikama u kojima je spremna pomoći, na kartici Volonter u svom zapisu. To je sve što se bilježi: nema timova, rasporeda, dodjela na datum ni podsjetnika e-poštom. Oznake se koriste u izvještajima i u zapisu osobe."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Najbolje djeluje kvadratna slika vašeg lica."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Potreba popune navodi svoje zadane volontere u \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Zahtjev za popunu pripada točno jednom od rasporeda ili termina"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Za ovu dodjelu već je predložena zamjena"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Voditelj tima može upravljati vlastitim timom – njegovim pozicijama, rasporedima i time tko u njima služi – i ničim drugim u službi."
+
+#: 
+msgid "A team name is required"
+msgstr "Naziv tima je obavezan"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Tim s tim nazivom već postoji u ovoj službi"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Tema je mapa koju vaša crkva učitava na poslužitelj u Include/themes/. Zadana tema sustava isporučuje se s ChurchCRM-om."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Prijelazna postavka. Stare stranice Prilika za volontere i nove stranice Službi obje su dostupne, a zapis osobe prikazuje obje kartice Volonter, jasno označene. Koristite je dok crkvu prebacujete s V1 na V2, a zatim prijeđite samo na V2."
+
+#: 
+msgid "A volunteer"
+msgstr "Volonter"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Volonter je odbio dodjelu"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Volonter je predložio zamjenu"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Voditelj volontera može voditi ovu službu bez dodijeljenog ovlaštenja. Dodajte koordinatora da je netko drugi može voditi, a da mu ne date i sve ostale službe."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Datum vjenčanja ne može biti u budućnosti."
+
+#: 
+msgid "Accepted"
+msgstr "Prihvaćeno"
+
+#: 
+msgid "Account deleted"
+msgstr "Račun je izbrisan"
+
+#: 
+msgid "Account unlocked"
+msgstr "Račun otključan"
+
+#: 
+msgid "Accounts"
+msgstr "Računi"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Aktivno mora biti istina ili laž"
+
+#: 
+msgid "Active now"
+msgstr "Trenutno aktivan"
+
+#: 
+msgid "Add All"
+msgstr "Dodaj sve"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Dodaj sve iz odabira"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Dodaj volontera"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Dodaj volontere u odabir"
+
+#: 
+msgid "Add a family member"
+msgstr "Dodaj člana obitelji"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Najprije dodajte poziciju, zatim se vratite i odredite koliko ih je potrebno."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Dodajte drugi korak prijavi kako sama zaporka ne bi bila dovoljna za pristup vašem računu."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Dodajte ovom timu barem jednu poziciju, zatim označite tko gdje može služiti."
+
+#: 
+msgid "Add coordinator"
+msgstr "Dodaj koordinatora"
+
+#: 
+msgid "Add from Cart"
+msgstr "Dodaj iz odabira"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Najprije dodajte njezine sastanke pomoću Novi ponavljajući događaj na kartici Kalendar"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Dodajte osobe u odabir prije dodavanja kao volontera"
+
+#: 
+msgid "Add position"
+msgstr "Dodaj poziciju"
+
+#: 
+msgid "Add schedule"
+msgstr "Dodaj raspored"
+
+#: 
+msgid "Add team"
+msgstr "Dodaj tim"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Dodajte ih na kartici Kalendar, zatim ponovno generirajte."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Dodajte ih na kartici Kalendar."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Dodajte ovu adresu u svoju aplikaciju kalendara. Ažurira se sama kad se promijeni kalendar crkve."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Ovdje dodajte događaje ove službe: radni dan, razred koji se sastaje svake nedjelje. Idu u kalendar crkve, a možete ih popuniti odmah pri stvaranju."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Dodano putem Portala članova i čeka pregled: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Dodano – sada označite pozicije u kojima može služiti"
+
+#: 
+msgid "Address Line 2"
+msgstr "Adresa, redak 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Administratorska konzola"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Potrebno je administratorsko ovlaštenje"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Objavite ovu poziciju na stranici Otvorene prilike Portala članova."
+
+#: 
+msgid "All Teams"
+msgstr "Svi timovi"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Dopustite članovima da mijenjaju rođendane svoje i članova svoje obitelji."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Prikvačeno i u {{calendars}}, što može promijeniti samo netko s ovlaštenjem Dodavanje događaja."
+
+#: 
+msgid "An event title is required"
+msgstr "Naziv događaja je obavezan"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Potrebna je vrsta događaja ili služba"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Vrsta događaja koja više ne postoji"
+
+#: 
+msgid "Another ministry"
+msgstr "Druga služba"
+
+#: 
+msgid "Any event"
+msgstr "Bilo koji događaj"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Sve što bi vaš koordinator trebao znati"
+
+#: 
+msgid "Approve substitution"
+msgstr "Odobri zamjenu"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Odobri ovu zamjenu"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Zamolite voditelja volontera da stvori službu i postavi vas za njezina koordinatora."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Zamolite nekoga da vas zamijeni"
+
+#: 
+msgid "Ask them"
+msgstr "Pitaj ih"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Zatraženo – vaš koordinator će to potvrditi."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Dodijeli volontera"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Dodijeljeno izvan trenutačnog plana"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Dodjela je otkazana"
+
+#: 
+msgid "Assignment not found"
+msgstr "Dodjela nije pronađena"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Potreban je barem jedan personId ili familyId"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Za jednu poziciju može se odabrati najviše %d zadanih volontera"
+
+#: 
+msgid "Author"
+msgstr "Autor"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Ovlaštenje se dodjeljuje osobi, a ne prijavi, pa se može dodijeliti prije nego što osoba ima prijavu. Osoba čija je prijava samo za samoposluživanje i dalje vidi samo vlastiti raspored dok administrator ne proširi njezin račun."
+
+#: 
+msgid "Automatic"
+msgstr "Automatski"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Čeka odgovor"
+
+#: 
+msgid "Back to Email History"
+msgstr "Natrag na povijest e-pošte"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Natrag na nadzornu ploču službe"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Natrag na termine"
+
+#: 
+msgid "Back to Person"
+msgstr "Natrag na osobu"
+
+#: 
+msgid "Back to editing"
+msgstr "Natrag na uređivanje"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Natrag na moj raspored"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Natrag na Portal članova"
+
+#: 
+msgid "Back to your profile"
+msgstr "Natrag na vaš profil"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Pozadinski poslovi i isporuka"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Pozadinski poslovi zadnji su put radili"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Pozadinski poslovi radili su"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Rođendanska čestitka"
+
+#: 
+msgid "Both"
+msgstr "Oboje"
+
+#: 
+msgid "Both (transition)"
+msgstr "Oboje (prijelaz)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Oboje – V1 i V2 zajedno (prijelaz)"
+
+#: 
+msgid "Calendar address"
+msgstr "Adresa kalendara"
+
+#: 
+msgid "Calendar saved"
+msgstr "Kalendar spremljen"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Kalendari koje Portal članova prikazuje članovima, odabrani u Administracija → Portal članova → Kalendari."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Može li ova služba osigurati učitelje za nedjeljnu školu?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Otkaži dodjelu"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Otkaži ovu dodjelu"
+
+#: 
+msgid "Cancelled"
+msgstr "Otkazano"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Promijenite zaporku kojom se prijavljujete ili dodajte drugi korak kako sama zaporka ne bi bila dovoljna."
+
+#: 
+msgid "Change your password"
+msgstr "Promijeni zaporku"
+
+#: 
+msgid "Checked in"
+msgstr "Prijavljen"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Prijavljeno: %1$d od %2$d na popisu razreda"
+
+#: 
+msgid "Checked out"
+msgstr "Odjavljen"
+
+#: 
+msgid "Choose a class"
+msgstr "Odaberite razred"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Odaberite dan u mjesecu od 1 do 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Odaberite novu fotografiju"
+
+#: 
+msgid "Choose a person"
+msgstr "Odaberite osobu"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Odaberite volontera"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Najprije odaberite volontera"
+
+#: 
+msgid "Choose an event"
+msgstr "Odaberi događaj..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Odaberite vrstu događaja"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Odaberite postojeću vrstu događaja"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Odaberite barem jedan kalendar za pretplatu."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Odaberite kalendare koje želite imati u svojoj aplikaciji kalendara."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Odaberite datum svake godine kao MM-DD"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Odaberite datum događaja"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Odaberite dan u tjednu"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Odaberite događaj koji ovaj raspored prati"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Odaberite događaj za popunu"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Odaberite događaje za brisanje"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Odaberite događaje za popunu"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Odaberite prvi i posljednji datum"
+
+#: 
+msgid "Choose the first date"
+msgstr "Odaberite prvi datum"
+
+#: 
+msgid "Choose the last date"
+msgstr "Odaberite posljednji datum"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Odaberite poziciju službe %1$s za koju su učitelji razreda %2$s kvalificirani. Učitelji: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Odaberite tim u kojem ova pozicija služi"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Odaberite temu koju članovi vide, uključite ili isključite odjeljke portala i pogledajte tko koristi portal."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Odaberite tjedno, mjesečno ili godišnje"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Odaberite odakle dolaze datumi rasporeda"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Odaberite koju verziju volonterskog iskustva ova crkva koristi, koliko se unaprijed popunjavaju rasporedi i kada se šalju podsjetnici te provjerite rade li pozadinski poslovi."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Odaberite tko prema zadanim postavkama popunjava svaku poziciju. Izbor se sprema u rasporedu: oni su dodijeljeni na svaki termin stvoren sada i na one koje dnevno nadopunjavanje stvori kasnije, dok su kvalificirani, te se od njih traži odgovor osim ako ih postavite kao prihvaćene. Ostavite poziciju otvorenom da je dodjeljujete iz tjedna u tjedan."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Odaberite tko vas zamjenjuje."
+
+#: 
+msgid "Church Calendar"
+msgstr "Kalendar crkve"
+
+#: 
+msgid "Church Calendars"
+msgstr "Kalendari crkve"
+
+#: 
+msgid "Church calendar"
+msgstr "Kalendar crkve"
+
+#: 
+msgid "Church events of a type"
+msgstr "Crkveni događaji određene vrste"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Crkveni događaji određene vrste dodaju se u kalendar crkve. Provjerite vrstu događaja, naslov i datume rasporeda."
+
+#: 
+msgid "Church website"
+msgstr "Web-stranica crkve"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM ima dva načina upravljanja volonterima. Treba koristiti samo jedan odjednom; postavka s lijeve strane određuje koji će vidjeti ova crkva. Prebacivanje skriva ili prikazuje stranice i stavke izbornika – podaci se nikada ne brišu pa se možete vratiti."
+
+#: 
+msgid "Close event details"
+msgstr "Zatvori pojedinosti događaja"
+
+#: 
+msgid "Colour"
+msgstr "Boja"
+
+#: 
+msgid "Completed"
+msgstr "Dovršeno"
+
+#: 
+msgid "Compose Message"
+msgstr "Napiši poruku"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Potvrdite podatke o svojoj obitelji"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Koordinator uklonjen"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Kopirajte ovu adresu i dodajte je u svoju aplikaciju kalendara kao novu pretplatu na kalendar."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Nije moguće izraditi pregled."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Nije moguće prebrojiti događaje razreda"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Nije moguće dodijeliti opseg"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Nije moguće učitati razrede nedjeljne škole"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Nije moguće učitati nadzornu ploču"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Nije moguće učitati mogućnosti događaja"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Nije moguće učitati termine"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Nije moguće učitati rasporede"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Nije moguće učitati nadolazeće događaje"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Nije moguće učitati volontere"
+
+#: 
+msgid "Could not load this email."
+msgstr "Nije moguće učitati ovu e-poštu."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Nije moguće učitati ovu službu"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Nije moguće učitati događaje ove službe"
+
+#: 
+msgid "Could not load this team"
+msgstr "Nije moguće učitati ovaj tim"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Nije moguće oduzeti opseg"
+
+#: 
+msgid "Create"
+msgstr "Stvori"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Stvorite raspored i generirajte njegove termine, a tjedni za popunu pojavit će se ovdje."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Stvorite raspored i generirajte njegove termine, a tjedni za popunu pojavit će se ovdje."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Stvorite za ovaj tim barem jednu poziciju, zatim označite tko gdje može služiti."
+
+#: 
+msgid "Create ministry"
+msgstr "Stvori službu"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Stvaranje službe zahtijeva pristup voditelja volontera"
+
+#: 
+msgid "Date and time"
+msgstr "Datum i vrijeme"
+
+#: 
+msgid "Date each year"
+msgstr "Datum svake godine"
+
+#: 
+msgid "Dates"
+msgstr "Datumi"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Datumi moraju biti u obliku GGGG-MM-DD"
+
+#: 
+msgid "Day of the month"
+msgstr "Dan u mjesecu"
+
+#: 
+msgid "Day of the week"
+msgstr "Dan u tjednu"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Deaktiviraj službu"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Deaktiviraj raspored"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Prije brisanja deaktivirajte ovu službu."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Deaktivirati {{name}}? Premješta se u Deaktivirane službe na bočnoj traci, odakle se može ponovno aktivirati ili izbrisati. Ništa se ne uklanja."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Deaktivirati {{name}}? Za njega se neće stvarati novi termini, ni naredbom Generiraj ni dnevnim nadopunjavanjem. Postojeći termini i dodjele ostaju, a može se ponovno aktivirati."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Deaktivirane službe"
+
+#: 
+msgid "Declined"
+msgstr "Odbijeno"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Zadana vrsta događaja za događaje službe"
+
+#: 
+msgid "Default volunteers"
+msgstr "Zadani volonteri"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Zadani volonteri šalju se kao requirements: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Izbriši događaje"
+
+#: 
+msgid "Delete ministry"
+msgstr "Izbriši službu"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Izbriši termine"
+
+#: 
+msgid "Delete position"
+msgstr "Izbriši poziciju"
+
+#: 
+msgid "Delete schedule"
+msgstr "Izbriši raspored"
+
+#: 
+msgid "Delete team"
+msgstr "Izbriši tim"
+
+#: 
+msgid "Delete those events"
+msgstr "Izbriši te događaje"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Izbrisati {{name}} i sve u njemu? Uklanjaju se njegove pozicije, kvalifikacije, potrebe popune, rasporedi, termini i dodjele – uključujući zapise o prošloj službi – te ovlaštenja voditelja tima. Za očuvanje povijesti radije deaktivirajte tim. Ovo se ne može poništiti."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Izbrisati {{name}} i sve u njemu? Uklanjaju se njegovi timovi, pozicije, rasporedi, {{occurrences}} termina i {{assignments}} dodjela – uključujući zapise o prošloj službi – zajedno s ovlaštenjima koordinatora i voditelja tima, skupinom volontera i kalendarom. Ovo se ne može poništiti."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Izbrisati {{name}}? S njim se uklanjaju njegove kvalifikacije, potrebe popune i dodjele – uključujući zapise o prošloj službi. Za očuvanje povijesti radije deaktivirajte poziciju. Ovo se ne može poništiti."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Izbrisati {{name}}? Ovo se ne može poništiti."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Brisanje službe zahtijeva pristup voditelja volontera"
+
+#: 
+msgid "Developer mode"
+msgstr "Način rada za programere"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Gotovo – vratili ste se na popis."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Odbaciti vlastite potrebe popune ovog termina i ponovno pratiti njegov raspored?"
+
+#: 
+msgid "Due soon"
+msgstr "Uskoro dospijeva"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Svaki kalendar mora biti naveden kao vrsta i id."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Svaki zadani volonter mora navesti osobu"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Svaka potreba popune mora navesti poziciju"
+
+#: 
+msgid "Edit event"
+msgstr "Uredi događaj"
+
+#: 
+msgid "Edit ministry"
+msgstr "Uredi službu"
+
+#: 
+msgid "Edit position"
+msgstr "Uredi poziciju"
+
+#: 
+msgid "Edit schedule"
+msgstr "Uredi raspored"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Uredi potrebe popune"
+
+#: 
+msgid "Edit team"
+msgstr "Uredi tim"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Uredite raspored i odaberite drugi razred."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Uredite raspored i odaberite drugu vrstu događaja."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Uredite raspored i odaberite događaj koji prati."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Uredite raspored i pomaknite njegov posljednji datum da prati više događaja."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Uređeno putem Portala članova: %s"
+
+#: 
+msgid "Email %s"
+msgstr "Pošalji e-poštu: %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "Pošalji e-poštu obitelji %s"
+
+#: 
+msgid "Email History"
+msgstr "Povijest e-pošte"
+
+#: 
+msgid "Email content"
+msgstr "Sadržaj e-pošte"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Pošalji e-poštu nenazočnima: %s"
+
+#: 
+msgid "Email not found"
+msgstr "E-pošta nije pronađena"
+
+#: 
+msgid "Email preview"
+msgstr "Pregled e-pošte"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "Slanje e-pošte je onemogućeno"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "Slanje e-pošte nije omogućeno. Prije slanja konfigurirajte SMTP postavke i omogućite e-poštu."
+
+#: 
+msgid "Emails"
+msgstr "E-pošta"
+
+#: 
+msgid "End time"
+msgstr "Vrijeme završetka"
+
+#: 
+msgid "Enter counts"
+msgstr "Unesi brojeve"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Unesite predmet e-pošte…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Unesite svoju trenutačnu zaporku, zatim dvaput novu zaporku."
+
+#: 
+msgid "Enter your message…"
+msgstr "Unesite svoju poruku…"
+
+#: 
+msgid "Event staffed"
+msgstr "Događaj popunjen"
+
+#: 
+msgid "Event title"
+msgstr "Naslov događaja"
+
+#: 
+msgid "Event type"
+msgstr "Vrsta događaja"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Svaka e-pošta koju je ChurchCRM poslao, od najnovije. Otvorite osobu da vidite njezinu cjelovitu povijest."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Svaka pozicija u ovom razdoblju ima ljude koji su joj potrebni."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Svi su odgovorili"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Svi u odabiru pridružuju se volonterima ove službe. Zatim označite njihove pozicije."
+
+#: 
+msgid "Everything is correct"
+msgstr "Sve je točno"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Izrada pregleda nije uspjela"
+
+#: 
+msgid "Failed to load email"
+msgstr "Učitavanje e-pošte nije uspjelo"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Učitavanje povijesti e-pošte nije uspjelo"
+
+#: 
+msgid "Failed to send email"
+msgstr "Slanje e-pošte nije uspjelo"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "Slanje e-pošte nije uspjelo. Pokušajte ponovno ili upotrijebite „Otvori u klijentu e-pošte“."
+
+#: 
+msgid "Family Member"
+msgstr "Član obitelji"
+
+#: 
+msgid "Family verification"
+msgstr "Provjera obitelji"
+
+#: 
+msgid "File"
+msgstr "Datoteka"
+
+#: 
+msgid "Fill"
+msgstr "Popuni"
+
+#: 
+msgid "Fill by default with"
+msgstr "Popuni prema zadanim postavkama"
+
+#: 
+msgid "Fill this gap"
+msgstr "Popuni ovu prazninu"
+
+#: 
+msgid "Filled"
+msgstr "Popunjeno"
+
+#: 
+msgid "Find a sub"
+msgstr "Pronađi zamjenu"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Pronađi volontera"
+
+#: 
+msgid "Find an event"
+msgstr "Pronađi događaj"
+
+#: 
+msgid "Find something to do"
+msgstr "Pronađi što raditi"
+
+#: 
+msgid "Find something to help with"
+msgstr "Pronađi s čime pomoći"
+
+#: 
+msgid "Findings"
+msgstr "Nalazi"
+
+#: 
+msgid "First date"
+msgstr "Prvi datum"
+
+#: 
+msgid "Folder"
+msgstr "Mapa"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Naziv mape teme Portala članova koja će se koristiti, iz Include/themes/. „default“ je sistemska tema koja se isporučuje s ChurchCRM-om."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Generirajte ponovno bliže njegovu prvom datumu."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Generiraj termine"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Dobiti novu adresu kalendara?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Dajte službi naziv"
+
+#: 
+msgid "Give the position a name"
+msgstr "Dajte poziciji naziv"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Unesite vrijeme početka i završetka u obliku HH:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "Dajte timu naziv"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Idi na moje volontiranje"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Idi na postavke Portala članova"
+
+#: 
+msgid "Going"
+msgstr "Dolazim"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Dodijelite kvalifikaciju na stranici službe, zatim ga dodijelite ovdje."
+
+#: 
+msgid "Granted"
+msgstr "Dodijeljeno"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Pogledajte što crkva ima zabilježeno o vašem kućanstvu i javite nam je li to još uvijek točno."
+
+#: 
+msgid "Headcount"
+msgstr "Broj prisutnih"
+
+#: 
+msgid "Hello %s"
+msgstr "Pozdrav, %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Potrebna pomoć"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Nije moguće spremiti potrebnu pomoć"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Koliko se unaprijed stvaraju termini za događaje koje svaki raspored prati. Dnevni pozadinski posao održava svaki raspored popunjenim do ove točke."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Koliko sati prije volonterskog termina se šalje e-pošta s podsjetnikom. Postavite na 0 da se podsjetnici uopće ne šalju. Isporuka ovisi o radu pozadinskih poslova; preporučeno cron podešavanje potražite u dokumentaciji Volonteri."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Koliko sati prije termina se šalje e-pošta s podsjetnikom. Postavite na 0 da se podsjetnici uopće ne šalju."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Koliko ljudi treba svakoj poziciji pri svakom izvođenju. Jedan se datum kasnije može zasebno promijeniti. Zadani volonter dodjeljuje se na svaki novi termin dok je kvalificiran; promjena jednog nikada ne mijenja već postojeće termine."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Koliko volontera treba svakom terminu ovog rasporeda. Isključite poziciju koju ovaj raspored nikada ne koristi. Zadani volonter dodjeljuje se na svaki novi termin dok je kvalificiran; promjena jednog nikada ne mijenja već postojeće termine."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Koliko volontera treba ovom događaju. Isključite poziciju koju ne koristi."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Koliko se tjedana unaprijed stvaraju volonterski termini za događaje koje svaki raspored prati, od 1 do 52. Dnevni pozadinski posao održava svaki raspored popunjenim do ove točke."
+
+#: 
+msgid "How often"
+msgstr "Koliko često"
+
+#: 
+msgid "How to correct this"
+msgstr "Kako to ispraviti"
+
+#: 
+msgid "I can't"
+msgstr "Ne mogu"
+
+#: 
+msgid "I'd like to help"
+msgstr "Želio/željela bih pomoći"
+
+#: 
+msgid "I'll be there"
+msgstr "Bit ću tamo"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Ako poruke ne uspijevaju, zamolite administratora da provjeri Postavke službi."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Ako više ne možete doći, što prije odbijte u svom volonterskom rasporedu kako bi se pozicija mogla popuniti."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Ako ste ovu adresu podijelili greškom, dobijte novu. Stara adresa odmah prestaje raditi."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "U posljednjih 15 minuta"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "U skupini volontera"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Interno: posljednji datum do kojeg su volonterski rasporedi nadopunjeni do horizonta planiranja (GGGG-MM-DD). Ne uređujte ručno."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Interno: kada su volonterski rasporedi zadnji put nadopunjeni i koliko je termina time stvoreno. Ne uređujte ručno."
+
+#: 
+msgid "Is this still right?"
+msgstr "Je li ovo još uvijek točno?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Njegovi termini bit će stvoreni bez pozicija za popunu. Uredite raspored da dodate njegove potrebe popune."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Zadrži ih u {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Vrsta"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Posljednja 24 sata"
+
+#: 
+msgid "Last 30 days"
+msgstr "Posljednjih 30 dana"
+
+#: 
+msgid "Last 7 days"
+msgstr "Posljednjih 7 dana"
+
+#: 
+msgid "Last attempt"
+msgstr "Posljednji pokušaj"
+
+#: 
+msgid "Last check"
+msgstr "Posljednja provjera"
+
+#: 
+msgid "Last date"
+msgstr "Posljednji datum"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Zadnji put viđen u portalu"
+
+#: 
+msgid "Last sign-in"
+msgstr "Posljednja prijava"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Ostavite oba na 0 da se služi točno kad se događaj odvija. Pomicanjem događaja pomiču se i volonteri."
+
+#: 
+msgid "Leave open"
+msgstr "Ostavi otvoreno"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Dopustite članovima da u Portalu članova mijenjaju rođendane svoje i članova svoje obitelji."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Dopusti članovima uređivanje rođendana"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Javite crkvenom uredu je li sve gore navedeno još uvijek točno."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Javite im zašto (nije obavezno)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Omogućuje koordinatorima te službe da raspoređuju volontere za ovaj događaj – i da uređuju sam događaj."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Učitavanje kalendara…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Upravljaj službama"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Upravljaj mojim službama"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Pristup Upravljanje mojim službama sa službom ili timom za upravljanje"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Potreban je pristup Upravljanje mojim službama sa službom ili timom za upravljanje"
+
+#: 
+msgid "Manage staffing"
+msgstr "Upravljaj popunom"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Upravlja se iz službe %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Upravlja se iz službe {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Maks"
+
+#: 
+msgid "Member Portal"
+msgstr "Portal članova"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Članovi vide stranicu „privremeno nedostupno“ dok se to ne popravi. Isti su podaci zapisani u zapisnik aplikacije i u zapisnik pogrešaka web-poslužitelja."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Članovi vide samo ovdje uključene kalendare. Rođendani i godišnjice prikazuju samo imena i inicijale prezimena."
+
+#: 
+msgid "Message"
+msgstr "Poruka"
+
+#: 
+msgid "Min"
+msgstr "Min"
+
+#: 
+msgid "Ministries"
+msgstr "Službe"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Službe koje traže pomoć"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Službe koje smiju dodavati događaje"
+
+#: 
+msgid "Ministry"
+msgstr "Služba"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Kalendari službi"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Koordinatori službi"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Nadzorna ploča službe"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Postavke službi"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Kalendar službe"
+
+#: 
+msgid "Ministry created"
+msgstr "Služba stvorena"
+
+#: 
+msgid "Ministry management access"
+msgstr "Pristup upravljanju službama"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Potreban je pristup upravljanju službama"
+
+#: 
+msgid "Ministry name"
+msgstr "Naziv službe"
+
+#: 
+msgid "Ministry not found"
+msgstr "Služba nije pronađena"
+
+#: 
+msgid "My Family"
+msgstr "Moja obitelj"
+
+#: 
+msgid "My Teams"
+msgstr "Moji timovi"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Moje službe i timovi"
+
+#: 
+msgid "My schedule"
+msgstr "Moj raspored"
+
+#: 
+msgid "My volunteering"
+msgstr "Moje volontiranje"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Imenujte ovu poziciju na stranici na kojoj članovi traže s čime bi mogli pomoći."
+
+#: 
+msgid "Needs an answer"
+msgstr "Treba odgovor"
+
+#: 
+msgid "Needs filling"
+msgstr "Treba popuniti"
+
+#: 
+msgid "Never signed in"
+msgstr "Nikada se nije prijavio/la"
+
+#: 
+msgid "New account"
+msgstr "Novi račun"
+
+#: 
+msgid "New event"
+msgstr "Novi događaj"
+
+#: 
+msgid "New ministry"
+msgstr "Nova služba"
+
+#: 
+msgid "New record notification"
+msgstr "Obavijest o novom zapisu"
+
+#: 
+msgid "New recurring event"
+msgstr "Novi ponavljajući događaj"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Potrebni su novi volonteri za sljedeće pozicije"
+
+#: 
+msgid "Newest first"
+msgstr "Najnovije prvo"
+
+#: 
+msgid "Next on %s"
+msgstr "Sljedeće: %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Članovima još nije podijeljen nijedan kalendar."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Nijedan kalendar nije otvoren za ovu službu pa se događaji neće prikazati ni u jednom kalendaru."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Nijedan kalendar nije podijeljen s članovima."
+
+#: 
+msgid "No class"
+msgstr "Nema razreda"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Još nema pohranjenih kontaktnih podataka."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Još nema koordinatora"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Nijedan datum između prvog i posljednjeg datuma ne odgovara ponavljanju"
+
+#: 
+msgid "No email was sent."
+msgstr "Nijedna e-pošta nije poslana."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Ovom zapisu još nisu poslane e-poruke."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Broj prisutnih još nije zabilježen"
+
+#: 
+msgid "No longer needed"
+msgstr "Više nije potrebno"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "U Portal članova još se nije prijavio nijedan član."
+
+#: 
+msgid "No ministry"
+msgstr "Nema službe"
+
+#: 
+msgid "No past events"
+msgstr "Nema prošlih događaja"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Za ovu osobu nije učitana nijedna fotografija."
+
+#: 
+msgid "No photo was sent."
+msgstr "Nijedna fotografija nije poslana."
+
+#: 
+msgid "No positions yet"
+msgstr "Još nema pozicija"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Još nema kvalifikacija."
+
+#: 
+msgid "No schedules yet"
+msgstr "Još nema rasporeda"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Nisu postavljene potrebe popune"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Nema potreba popune: generirani termini neće trebati nikoga."
+
+#: 
+msgid "No substitution requests"
+msgstr "Nema zahtjeva za zamjenu"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Nema zamjena za odlučivanje"
+
+#: 
+msgid "No teams yet"
+msgstr "Još nema timova"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "U kalendaru nema nadolazećih događaja %1$s pod nazivom „%2$s“. Raspored prati već postojeće događaje."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Nijedan nadolazeći događaj ne odgovara"
+
+#: 
+msgid "No upcoming events"
+msgstr "Nema nadolazećih događaja"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "U kalendaru nema nadolazećih događaja ove vrste."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Nema nadolazećih događaja za odabir"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Još nitko nije dodijeljen"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Nitko drugi za ovo još nije obučen – umjesto toga recite svom koordinatoru."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Nitko nije rekao koliko volontera treba svakoj poziciji pa nema što popunjavati."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Nitko u ovom razdoblju još ne odlučuje."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Za ovu poziciju još nitko nije kvalificiran"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Za ovu poziciju još nitko nije kvalificiran pa ostaje otvorena."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Nijednom primatelju ne može se poslati e-pošta"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Nijedna: vrsta događaja bira se za svaki događaj"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Nemate dopuštenje za pregled ove e-pošte"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Nemate dopuštenje za pregled ove obitelji"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Nemate dopuštenje za pregled ove osobe"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Nemate ovlaštenje za ovu dodjelu"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Nemate ovlaštenje za ovu službu"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Nemate ovlaštenje za ovaj termin"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Nemate ovlaštenje za ovu poziciju"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Nemate ovlaštenje za ovu kvalifikaciju"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Nemate ovlaštenje za ovaj zahtjev"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Nemate ovlaštenje za ovaj raspored"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Nemate ovlaštenje za ovaj zahtjev za zamjenu"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Nemate ovlaštenje za ovaj tim"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Nemate ovlaštenje dodjeljivati događaje toj volonterskoj službi"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Nemate ovlaštenje mijenjati događaj %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Nemate ovlaštenje mijenjati volontersku službu ovog događaja"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Nemate ovlaštenje stvoriti događaj bez volonterske službe kojom upravljate"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Nemate ovlaštenje mijenjati ovaj događaj"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Nemate ovlaštenje prikvačivati događaje u kalendar „%s“"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Nemate ovlaštenje uklanjati događaje iz kalendara „%s“"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Nemate ovlaštenje ukloniti volontersku službu s ovog događaja"
+
+#: 
+msgid "Not checked in"
+msgstr "Nije prijavljen"
+
+#: 
+msgid "Not found"
+msgstr "Nije pronađeno"
+
+#: 
+msgid "Not in the pool"
+msgstr "Nije u skupini"
+
+#: 
+msgid "Not now"
+msgstr "Ne sada"
+
+#: 
+msgid "Not sent"
+msgstr "Nije poslano"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Nije postavljeno: koristite „%s“"
+
+#: 
+msgid "Not staffed"
+msgstr "Nije popunjeno"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Još ne volontirate"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Ništa se nije promijenilo pa ništa nije spremljeno."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "U kalendaru za ovo razdoblje nema ničega."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "U kalendaru trenutačno nema ničega."
+
+#: 
+msgid "Nothing is short"
+msgstr "Ničega ne nedostaje"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Na vašem popisu još nema ničega"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Na vašem popisu još nema ničega. Pogledajte što treba popuniti."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Trenutačno ništa nije otvoreno"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Još ništa nije planirano"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Ništa nije planirano."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Još ništa nije postavljeno"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "U posljednjoj godini nije se dogodilo ništa što ova služba posjeduje."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Još nema što kvalificirati"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Ništa nije spremljeno. Provjerite označena polja."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Ništa nije spremljeno. Pokušajte ponovno."
+
+#: 
+msgid "Notification"
+msgstr "Obavijest"
+
+#: 
+msgid "Notifications"
+msgstr "Obavijesti"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Termin nije pronađen"
+
+#: 
+msgid "Occurrences"
+msgstr "Termini"
+
+#: 
+msgid "Offer to help"
+msgstr "Ponudi pomoć"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Jednom dnevno svaki aktivni raspored dobiva termine za događaje koje prati, do %d tjedan unaprijed, a zadani volonter svake pozicije dodjeljuje se na nove termine dok je kvalificiran."
+msgstr[1] "Jednom dnevno svaki aktivni raspored dobiva termine za događaje koje prati, do %d tjedna unaprijed, a zadani volonter svake pozicije dodjeljuje se na nove termine dok je kvalificiran."
+msgstr[2] "Jednom dnevno svaki aktivni raspored dobiva termine za događaje koje prati, do %d tjedana unaprijed, a zadani volonter svake pozicije dodjeljuje se na nove termine dok je kvalificiran."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Kad je ova osoba kvalificirana za poziciju, pojavljuje se ovdje zajedno s datumima kad je planirana služiti."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Jedan termin stvara se za svaki događaj u kalendaru čija je Povezana skupina ovaj razred."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Jedan termin stvara se za svaki datum ovog događaja. Mogu se odabrati samo događaji koji su već u kalendaru."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Jedan od kalendara ne postoji"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Jedan od događaja ne postoji"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Jedan od tih kalendara nije podijeljen s članovima."
+
+#: 
+msgid "One-time"
+msgstr "Jednokratno"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "S timom se može povezati samo razred nedjeljne škole"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Odgovor u ime nekoga drugog može zabilježiti samo koordinator"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Događaje ove službe može stvarati samo njezin koordinator"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Događaje ove službe može popunjavati samo njezin koordinator"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "Voditelja tima može promijeniti samo voditelj volontera"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Ovo može promijeniti samo voditelj volontera."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Samo voditelj volontera može promijeniti osigurava li služba učitelje za nedjeljnu školu"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Ove podatke može promijeniti samo odrasla osoba iz vaše obitelji. Obratite se crkvenom uredu."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Navedeni su samo ljudi obučeni za ovo."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Zamjenu može predložiti samo dodijeljeni volonter"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Navedeni su samo kalendari u koje ova služba smije dodavati događaje. Njezin vlastiti kalendar isprva je označen."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Prikazuje se samo prvi dio vrlo dugog popisa. Suzite razdoblje da vidite ostatak."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Zamjenu može povući samo volonter koji ju je predložio"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Otvorite službu iz izbornika Službe, stvorite raspored i generirajte njegove datume, a tjedni za popunu pojavit će se ovdje."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Otvorite službu da nekoga učinite njezinim koordinatorom ili voditeljem jednog od njezinih timova."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Otvori u aplikaciji kalendara"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Nije moguće učitati otvorene prilike."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Otvori primatelje u vašoj lokalnoj aplikaciji e-pošte"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Otvori Portal članova"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Otvori nadzornu ploču službe"
+
+#: 
+msgid "Open the ministry"
+msgstr "Otvori službu"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Otvori termin"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Otvorite termin i dodijelite ljude koji su vam potrebni."
+
+#: 
+msgid "Open this team"
+msgstr "Otvori ovaj tim"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Otvaranje kalendara službama zahtijeva ovlaštenje Dodavanje događaja"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Neobavezno. Svatko kvalificiran za poziciju ovog tima postaje učitelj razreda, a stranica razreda više ne mijenja njegove učitelje."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Neobavezno. Razred postaje Povezana skupina: njegov popis određuje tko se prijavljuje, a raspored za razred pronalazi ove događaje."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Iznad maksimuma: uklonite ovog ili povećajte maksimum."
+
+#: 
+msgid "Overridden templates"
+msgstr "Nadjačani predlošci"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Stranica %1$s od %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Stranica %d od %d"
+
+#: 
+msgid "Password reset"
+msgstr "Resetiranje lozinke"
+
+#: 
+msgid "Password reset link"
+msgstr "Veza za resetiranje lozinke"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Zaporke moraju imati najmanje %s znak."
+msgstr[1] "Zaporke moraju imati najmanje %s znaka."
+msgstr[2] "Zaporke moraju imati najmanje %s znakova."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Odaberite nadolazeći događaj u kalendaru i navedite koga treba. Događaj zadržava vlastiti datum i vrijeme; za popunu cijele serije umjesto toga dodajte raspored."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Odaberite nekoga tko se već složio zamijeniti vas. Vaš koordinator će to potvrditi."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Odaberite kalendare s popisa."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Odaberite trebaju li se vaši podaci promijeniti."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Obratite se crkvenom uredu kako bismo mogli ispraviti naše zapise."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Obratite se crkvenom uredu."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Unesite barem dva znaka."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Javite nam možete li doći prihvaćanjem ili odbijanjem u svom volonterskom rasporedu."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Recite nam što treba promijeniti."
+
+#: 
+msgid "Portal settings"
+msgstr "Postavke portala"
+
+#: 
+msgid "Portal theme"
+msgstr "Tema portala"
+
+#: 
+msgid "Position"
+msgstr "Pozicija"
+
+#: 
+msgid "Position added"
+msgstr "Pozicija dodana"
+
+#: 
+msgid "Position deleted"
+msgstr "Pozicija izbrisana"
+
+#: 
+msgid "Position name"
+msgstr "Naziv pozicije"
+
+#: 
+msgid "Position not found"
+msgstr "Pozicija nije pronađena"
+
+#: 
+msgid "Position saved"
+msgstr "Pozicija spremljena"
+
+#: 
+msgid "Positions"
+msgstr "Pozicije"
+
+#: 
+msgid "Positions still short"
+msgstr "Pozicije koje još nedostaju"
+
+#: 
+msgid "Proposed"
+msgstr "Predloženo"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Predložena zamjena"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Objavite ovu službu na stranici Otvorene prilike Portala članova, gdje je svaki volonter može vidjeti i ponuditi pomoć. Pridružuju se skupini volontera, a vi dobivate e-poštu."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Postaviti umjesto toga {{name}}? Izvorni volonter zadržava svoju povijest i bit će obaviješten."
+
+#: 
+msgid "Qualification not found"
+msgstr "Kvalifikacija nije pronađena"
+
+#: 
+msgid "Qualified for"
+msgstr "Kvalificiran za"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Kvalificirani volonteri mogu se sami prijaviti za otvorene datume ove pozicije. Isključite za pozicije koje smije dodjeljivati samo voditelj tima ili koordinator; Portal članova ih neće nuditi."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Kvalificiraj njegove sadašnje učitelje za"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Kvalificiraj ga za poziciju"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Kvalificiraj ga za poziciju."
+
+#: 
+msgid "Reactivate"
+msgstr "Ponovno aktiviraj"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Pročitajte vodič za izradu tema"
+
+#: 
+msgid "Recent Emails"
+msgstr "Nedavna e-pošta"
+
+#: 
+msgid "Recent Sends"
+msgstr "Nedavna slanja"
+
+#: 
+msgid "Recipient"
+msgstr "Primatelj"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Broj primatelja (%d) premašuje najveći dopušteni broj po slanju (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Primatelji moraju biti navedeni kao personId i familyId, a ne kao adrese e-pošte"
+
+#: 
+msgid "Record a decline"
+msgstr "Zabilježi odbijanje"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Zabilježi prihvaćanje"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Zabilježiti da je {{name}} rekao/la ne? Odgovor se sprema kao da dolazi od vas, a mjesto se ponovno oslobađa."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Zabilježiti da je {{name}} rekao/la da? Odgovor se sprema kao da dolazi od vas, a ne od njih."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Zabilježi: prihvatili su"
+
+#: 
+msgid "Record: they declined"
+msgstr "Zabilježi: odbili su"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Regrutiraj volontere"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Regrutiranje volontera mora biti istina ili laž"
+
+#: 
+msgid "Recruiting"
+msgstr "Regrutiranje"
+
+#: 
+msgid "Recurring"
+msgstr "Ponavljajuće"
+
+#: 
+msgid "Reject"
+msgstr "Odbij"
+
+#: 
+msgid "Reject substitution"
+msgstr "Odbij zamjenu"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Odbij ovu zamjenu"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Vrijeme podsjetnika unaprijed (sati)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Podsjetnik: planirani ste za službu"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Podsjetnici i obavijesti isporučuju se samo kad rade pozadinski poslovi. Za pravodobnu isporuku pokrećite izvršitelj zakazanih zadataka iz crona svakih 15 minuta"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Ukloni volontera"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Ukloni koordinatora"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Ukloni im razred"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Ukloni voditelja tima"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Ukloniti {{name}} iz službe {{ministry}}? Time se uklanjaju sve njegove kvalifikacije ovdje, skida ga se sa svih budućih termina, briše ga se kao zadanog volontera u rasporedima ove službe i uklanja iz skupine volontera."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Uklonjeno. Kvalifikacije: {{qualifications}}, nadolazeće dodjele: {{assignments}}, zadane vrijednosti rasporeda: {{defaults}}."
+
+#: 
+msgid "Repeats"
+msgstr "Ponavlja se"
+
+#: 
+msgid "Requirement not found"
+msgstr "Zahtjev nije pronađen"
+
+#: 
+msgid "Reset link"
+msgstr "Poveznica za ponovno postavljanje"
+
+#: 
+msgid "Response recorded"
+msgstr "Odgovor zabilježen"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Pregledajte zahtjev na nadzornoj ploči volontera i odobrite ga ili odbijte."
+
+#: 
+msgid "Review this request"
+msgstr "Pregledaj ovaj zahtjev"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Pokreni pozadinske poslove sada"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTP test"
+
+#: 
+msgid "Save calendars"
+msgstr "Spremi kalendare"
+
+#: 
+msgid "Save changes"
+msgstr "Spremi promjene"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Spremljeno – ova služba više ne traži pomoć"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Spremljeno – ova služba sada traži pomoć"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Spremljeno. Članovi vide kalendare uključene gore."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Raspored „{{name}}“ je stvoren."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Raspored „{{name}}“ je stvoren. Neaktivan je pa ne stvara termine dok ne postane aktivan."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Raspored deaktiviran"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Raspored izbrisan"
+
+#: 
+msgid "Schedule name"
+msgstr "Naziv rasporeda"
+
+#: 
+msgid "Schedule not found"
+msgstr "Raspored nije pronađen"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Raspored ponovno aktiviran"
+
+#: 
+msgid "Schedule saved"
+msgstr "Raspored spremljen"
+
+#: 
+msgid "Scheduled"
+msgstr "Planirano"
+
+#: 
+msgid "Schedules"
+msgstr "Rasporedi"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Rasporedi zadnji put nadopunjeni"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Rasporedi više nemaju vlastito ponavljanje ni vremena; svaki termin prati događaj u kalendaru. Uklonite: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Rasporedi više ne određuju koliko se unaprijed generiraju: horizont planiranja u Administracija → Postavke službi vrijedi za svaki raspored. Uklonite: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Horizont planiranja (tjedni)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Dodjela opsega nije pronađena"
+
+#: 
+msgid "Search by name"
+msgstr "Traži po imenu"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Prikaži cijeli kalendar"
+
+#: 
+msgid "See what needs filling"
+msgstr "Pogledaj što treba popuniti"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Odaberite kalendar da sakrijete ili prikažete njegove događaje."
+
+#: 
+msgid "Select ministries..."
+msgstr "Odaberite službe..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Samoprijava"
+
+#: 
+msgid "Self-assignable"
+msgstr "Mogu se sami dodijeliti"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Samododjela mora biti istina ili laž"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Računi za samoposluživanje"
+
+#: 
+msgid "Send"
+msgstr "Pošalji"
+
+#: 
+msgid "Send Email"
+msgstr "Pošalji e-poštu"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Pošalji e-poštu iz ChurchCRM-a"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Ponovno pošalji poruku o dodjeli"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Pošaljite kalendare za prikaz kao popis."
+
+#: 
+msgid "Send to the church office"
+msgstr "Pošalji crkvenom uredu"
+
+#: 
+msgid "Send your answer"
+msgstr "Pošalji svoj odgovor"
+
+#: 
+msgid "Sent"
+msgstr "Poslano"
+
+#: 
+msgid "Sent by"
+msgstr "Poslao/la"
+
+#: 
+msgid "Serving next"
+msgstr "Sljedeća služba"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Postavi kao prihvaćeno"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Postavi potrebe popune"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Prikaži „%s“ u Portalu članova"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Prikaži u Portalu članova"
+
+#: 
+msgid "Show past events"
+msgstr "Prikaži prošle događaje"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Prikaži kalendar crkve"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Prikaži kalendar crkve u Portalu članova."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Prikaži odjeljak kalendara crkve u Portalu članova."
+
+#: 
+msgid "Show the next"
+msgstr "Prikaži sljedećih"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Prikaži odjeljke volontiranja i timova u Portalu članova."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Prikaži ovu službu na stranici Otvorene prilike"
+
+#: 
+msgid "Show volunteering"
+msgstr "Prikaži volontiranje"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Prikaži stranice volontiranja i timova u Portalu članova."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Prikaži što sam već učinio/la"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Prikazuje se točno onako kako upišete. Prijelomi redaka se zadržavaju."
+
+#: 
+msgid "Sign up"
+msgstr "Prijavi se"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Prijava i sigurnost"
+
+#: 
+msgid "Signed in"
+msgstr "Prijavljen"
+
+#: 
+msgid "Signed up"
+msgstr "Prijavljen/a"
+
+#: 
+msgid "Sincerely"
+msgstr "S poštovanjem"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Neki vaši podaci nisu mogli biti spremljeni. Provjerite označena polja."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Neki podaci o vašoj obitelji nisu mogli biti spremljeni. Provjerite označena polja."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Netko drugi zamjenjuje"
+
+#: 
+msgid "Something needs changing"
+msgstr "Nešto treba promijeniti"
+
+#: 
+msgid "Something went wrong"
+msgstr "Nešto je pošlo po zlu"
+
+#: 
+msgid "Staff an event"
+msgstr "Popuni događaj"
+
+#: 
+msgid "Staff them"
+msgstr "Popuni ih"
+
+#: 
+msgid "Staff this event"
+msgstr "Popuni ovaj događaj"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Popuni ovaj termin"
+
+#: 
+msgid "Staffed"
+msgstr "Popunjeno"
+
+#: 
+msgid "Staffing"
+msgstr "Popuna"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Popuna se postavlja nakon što se događaji stvore"
+
+#: 
+msgid "Staffing needs"
+msgstr "Potrebe popune"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Potrebe popune spremljene"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Počnite stvaranjem službe, zatim dodajte timove i pozicije koji u njoj služe."
+
+#: 
+msgid "Start time"
+msgstr "Vrijeme početka"
+
+#: 
+msgid "Start typing a name"
+msgstr "Počnite upisivati ime"
+
+#: 
+msgid "Statistics"
+msgstr "Statistika"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Prekinuti da {{name}} koordinira službu {{ministry}}? Njegova prijava i vlastite dodjele ostaju nedirnuti."
+
+#: 
+msgid "Subscribe"
+msgstr "Pretplati se"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Pretplati se na kalendar"
+
+#: 
+msgid "Substitute"
+msgstr "Zamjena"
+
+#: 
+msgid "Substitute approved"
+msgstr "Zamjena odobrena"
+
+#: 
+msgid "Substitute asked"
+msgstr "Zamjena zatražena"
+
+#: 
+msgid "Substitute decision"
+msgstr "Odluka o zamjeni"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Zamjena predložena"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Zamjena odbijena"
+
+#: 
+msgid "Substituted"
+msgstr "Zamijenjeno"
+
+#: 
+msgid "Substitution approved"
+msgstr "Zamjena odobrena"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Zamjena odbijena"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Zahtjev za zamjenu nije pronađen"
+
+#: 
+msgid "Substitution requests"
+msgstr "Zahtjevi za zamjenu"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Razred nedjeljne škole"
+
+#: 
+msgid "System calendar"
+msgstr "Sistemski kalendar"
+
+#: 
+msgid "System default"
+msgstr "Zadano postavka sustava"
+
+#: 
+msgid "Take that back"
+msgstr "Povuci"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Ukloniti {{name}} s ove pozicije? E-pošta se ne šalje; u njegovu rasporedu datum se prikazuje kao više nepotreban, a mjesto se ponovno oslobađa."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Učitelji ovog razreda uređuju se u Službe → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Tim"
+
+#: 
+msgid "Team Leader"
+msgstr "Voditelj tima"
+
+#: 
+msgid "Team added"
+msgstr "Tim dodan"
+
+#: 
+msgid "Team deleted"
+msgstr "Tim izbrisan"
+
+#: 
+msgid "Team leader"
+msgstr "Voditelj tima"
+
+#: 
+msgid "Team name"
+msgstr "Naziv tima"
+
+#: 
+msgid "Team not found"
+msgstr "Tim nije pronađen"
+
+#: 
+msgid "Team saved"
+msgstr "Tim spremljen"
+
+#: 
+msgid "Teams"
+msgstr "Timovi"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Timovi su skupine ljudi koji služe u ovoj službi."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Timovi, pozicije i ljudi koji ih popunjavaju"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Deset posljednjih prijava"
+
+#: 
+msgid "Thank you"
+msgstr "Hvala vam!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Hvala što ste se prijavili za služenje"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Hvala što ste se prijavili za služenje. Nalazite se u rasporedu."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Hvala. Crkveni ured ima vaš odgovor."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Hvala. Crkveni ured pregledat će ovo prije nego se doda."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Hvala što ste nam javili."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Hvala – koordinator je obaviješten da biste željeli ponovno pomoći."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Hvala – koordinator je obaviješten da biste željeli pomoći."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Hvala – nalazite se na popisu."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Ta mapa teme Portala članova ne postoji."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Ta dodjela pripada nekom drugom"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Nije moguće spremiti tu dodjelu"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Taj rođendan nije valjan datum."
+
+#: 
+msgid "That could not be saved."
+msgstr "Ovo nije moguće spremiti."
+
+#: 
+msgid "That could not be sent."
+msgstr "Ovo nije moguće poslati."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Tog člana obitelji nije moguće dodati. Provjerite označena polja."
+
+#: 
+msgid "That is not a valid date."
+msgstr "To nije valjan datum."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Taj popis nije moguće učitati."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Ta osoba već obnaša ovu poziciju na ovom terminu"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Ta je osoba već dodijeljena ovoj poziciji na ovom terminu"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Ta osoba nije u skupini volontera ove službe. Pošaljite ponovno s nadjačavanjem izvan skupine ako je ipak želite dodijeliti."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Ta osoba nije u ovoj skupini volontera"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Ta osoba nije kvalificirana za ovu poziciju"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Tu fotografiju nije moguće spremiti."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Ta je fotografija prevelika. Odaberite manju."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Ta pozicija pripada drugoj službi"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Ta pozicija pripada drugom timu"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Ta je pozicija već u potpunosti popunjena"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Ta se pozicija na ovom terminu ne popunjava"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Taj odgovor nije moguće zabilježiti"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Taj status ne može se postaviti izravno"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "O tom zahtjevu za zamjenu nije moguće odlučiti"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Taj tim pripada drugoj službi"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Tu temu nije moguće aktivirati."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Tu temu nije moguće provjeriti."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Ta tema ima pogreške pa nije aktivirana."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Tog volontera nije moguće dodijeliti"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Taj datum vjenčanja nije valjan datum."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "Polje %s mora biti datum u obliku GGGG-MM-DD"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "Polje %s mora biti cijeli broj minuta"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "Polje %s mora biti unutar %d minuta od događaja"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Kalendari Portala članova su spremljeni."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Portal članova nije mogao dovršiti ono što ste tražili. Pokušajte ponovno za nekoliko minuta."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Portal članova dostupan je samo prijavljenoj osobi, a ne API klijentima."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Portal članova postavljen je na temu „%s“ koje više nema na poslužitelju. Članovi vide stranicu s pogreškom dok ne odaberete temu koja postoji."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Portal članova privremeno je nedostupan"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Temu Portala članova „%s“ nije moguće aktivirati jer sadrži pogreške."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Temu Portala članova nije moguće prikazati"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Mapa teme Portala članova „%s“ nije pronađena."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Tema Portala članova promijenjena je."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Ulogu Učitelj službe %1$s ne može se preimenovati ni izbrisati dok se njezinim učiteljima upravlja u Službe → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Mapa aktivne teme nedostaje"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Adresa je odabrana – kopirajte je tipkovnicom."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Putanja resursa „%s“ nije dopuštena."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Dodjelu nije moguće otkazati"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Poruka o dodjeli bit će ponovno poslana"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Adresa kalendara je kopirana."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Kalendare nije moguće učitati. Pokušajte ponovno."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Kalendare nije moguće spremiti."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Odabir nije moguće dodati"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Crkva vam još nije poslala e-poštu."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Crkveni ured je obaviješten. Pokušajte ponovno kasnije."
+
+#: 
+msgid "The class does not exist"
+msgstr "Razred ne postoji"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Razred koji ovaj raspored prati više ne postoji."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Sadržaj ove e-pošte nije pohranjen. ChurchCRM čuva samo tekst poruka napisanih u uredniku e-pošte i e-pošte volonterima."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Sadržaj ove e-pošte nije pohranjen."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Koordinatora nije moguće dodati"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Popis koordinatora nije moguće učitati"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Datum i vrijeme svakog termina dolaze iz njegova događaja u kalendaru, pa pomicanjem događaja se pomiče i raspored."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Parametar days mora biti cijeli broj od 1 do 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Zadani volonter mora biti osoba"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Zadani volonteri spremaju se u rasporedu i primjenjuju se na termine stvorene od sada."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Zadani volonteri moraju biti popis"
+
+#: 
+msgid "The description is too long"
+msgstr "Opis je predug"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Kraj raspona prije je njegova početka."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Kraj raspona nije datum."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Događaj nije moguće popuniti"
+
+#: 
+msgid "The event does not exist"
+msgstr "Događaj ne postoji"
+
+#: 
+msgid "The event is inactive"
+msgstr "Događaj je neaktivan"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Događaj mora završiti nakon početka"
+
+#: 
+msgid "The event title"
+msgstr "Naslov događaja"
+
+#: 
+msgid "The event title is too long"
+msgstr "Naslov događaja je predug"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Vrsta događaja s kojom počinju novi događaji službe. Ako je prazno ili je vrsta izbrisana, koristi se vrsta pod nazivom „Ostalo“ ako postoji."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Vrsta događaja ne postoji"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Vrsta događaja koju ovaj raspored prati više ne postoji."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Događaji se mogu premjestiti samo u razred s kojim je tim povezan"
+
+#: 
+msgid "The events could not be created"
+msgstr "Događaje nije moguće stvoriti"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Događaje nije moguće izbrisati"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Događaje nije moguće popuniti"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Ovlaštenje nije moguće ukloniti"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Posljednji datum prije je prvog datuma"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Popis podobnih volontera nije moguće učitati"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Najveći broj ne može biti manji od najmanjeg broja"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Poruku nije moguće staviti u red"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Najmanji broj ne može biti negativan"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Službu nije moguće stvoriti"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Službu nije moguće deaktivirati"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Službu nije moguće izbrisati"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Službu nije moguće ponovno aktivirati"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Službu nije moguće spremiti"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Termin nije moguće izbrisati"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Termin nema raspored"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Termine nije moguće generirati"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Izvorni volonter je oslobođen, a zamjena preuzima poziciju. Obojica će biti obaviješteni."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Izvorni volonter zadržava poziciju. Obojica će biti obaviješteni."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Stranica koju ste tražili ne postoji. Možda je premještena ili uklonjena."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Pozicija pripada drugoj službi"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Poziciju nije moguće izbrisati"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Poziciju nije moguće spremiti"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Pozicija je još uvijek pokrivena pa nije potrebna nikakva radnja osim ako ne želite prilagoditi popis."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Kvalifikaciju nije moguće ukloniti"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Kvalifikaciju nije moguće spremiti"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Kvalificirane volontere nije moguće učitati"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Ponavljanje mora određivati kako se događaji ponavljaju"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Zahtjev da %1$s služi umjesto %2$s odobren je."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Zahtjev da %1$s služi umjesto %2$s nije odobren."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Ista pozicija navedena je dvaput u potrebama popune"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Raspored nije moguće deaktivirati"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Raspored nije moguće izbrisati"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Raspored nije moguće ponovno aktivirati"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Raspored nije moguće spremiti"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Raspored je ažuriran pa nema više ništa za učiniti."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Razdoblje rasporeda završava prije početka"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Potrebe popune rasporeda nije moguće učitati"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Potrebe popune nije moguće učitati"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Potrebe popune nije moguće vratiti na početno"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Potrebe popune nije moguće spremiti"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Potrebe popune moraju biti popis"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Plan popune nije moguće učitati"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Početak raspona nije datum."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "O zamjeni nije moguće odlučiti"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Zahtjeve za zamjenu nije moguće učitati"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Učitelji se mogu uvesti samo u poziciju ovog tima"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Učitelji službe %1$s uređuju se u Službe → %2$s → %3$s. Učenici se i dalje mogu mijenjati ovdje."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Tim nije moguće izbrisati"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Tim nije moguće spremiti"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Tim ne pripada ovoj službi"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Mapa teme nije pronađena."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Vrsta s kojom počinje novi događaj na kartici Kalendar službe. Za svaki se događaj i dalje može promijeniti, na primjer za razred kojem trebaju kategorije broja prisutnih."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Dodjelu volontera nije moguće spremiti"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Skupina volontera službe %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Promjenu postavki volontera nije moguće spremiti"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Razdoblje završava prije početka"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Njihovi koordinatori mogu prikvačiti događaje svoje službe u ovaj kalendar bez ovlaštenja Dodavanje događaja."
+
+#: 
+msgid "Theme"
+msgstr "Tema"
+
+#: 
+msgid "Themes"
+msgstr "Teme"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Teme osigurava vaša crkva, a ne ChurchCRM, i projekt ChurchCRM ih ne provjerava."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Ne postoji kalendar crkve s id-om %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Ne postoji sistemski kalendar s id-om %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Ovo su podaci koje crkva ima o vama. Promjene se spremaju odmah."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Ovo su volonterski timovi o kojima se brinete. Otvorite jedan da postavite njegove pozicije, odredite tko gdje može služiti i popunite predstojeće tjedne."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Ti događaji nisu jedna serija: razlikuju se u naslovu, vrsti ili razredu"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Ove službe željele bi više ljudi. Javite im da ste zainteresirani i netko će vam se javiti."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Te potrebe dolaze iz rasporeda. Spremanje ovdje mijenja samo ovaj termin."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Ovi brojevi uključuju samo račune za samoposluživanje: osobe čija se prijava može koristiti samo za Portal članova i ništa drugo."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Ti su ljudi još uvijek dodijeljeni, ali pozicija koju obnašaju više nije dio plana popune za ovaj datum."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Ti su ljudi još uvijek dodijeljeni, ali pozicija koju obnašaju više nije dio plana popune za ovaj termin."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Te planirane pozicije još trebaju nekoga."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Ovi timovi službe %1$s povezani su s razredom nedjeljne škole: %2$s. Najprije ih odvojite."
+
+#: 
+msgid "They could not be added"
+msgstr "Nije ih moguće dodati"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Nije ih moguće ukloniti iz ove službe"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Završavaju %d minutu nakon završetka događaja."
+msgstr[1] "Završavaju %d minute nakon završetka događaja."
+msgstr[2] "Završavaju %d minuta nakon završetka događaja."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Završavaju %d minutu prije završetka događaja."
+msgstr[1] "Završavaju %d minute prije završetka događaja."
+msgstr[2] "Završavaju %d minuta prije završetka događaja."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Već su bili volonteri ovdje"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Ta je dodjela %1$s i ne može se promijeniti u %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Ta dodjela više nije aktivna"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Ta e-pošta nije u vašoj povijesti."
+
+#: 
+msgid "This event has already happened"
+msgstr "Taj se događaj već dogodio"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Ovo ide crkvenom uredu na pregled. Dok djelatnik to ne odobri, novi član obitelji ovdje se prikazuje kao da čeka pregled."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Ova je skupina skupina volontera neke službe i briše se zajedno sa službom"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Ova je skupina skupina volontera službe %s i njome se upravlja iz te službe."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Ova je skupina skupina volontera službe %s. Njome se upravlja iz te službe."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Ova instalacija još nema kalendara."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Ovo je podsjetnik da ste uskoro planirani za službu."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Ovo nije valjan naziv mape teme."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Ovo nije jedan od datuma vašeg tima."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Ovo nije jedan od vaših timova."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Ovdje crkva šalje poštu i koga zove u vezi s vašim kućanstvom."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Ovo je vaš crkveni račun. Sve što možete učiniti za sebe i svoju obitelj nalazi se ovdje."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Ova služba nema nadolazećih događaja u kalendaru."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Ova služba nema nadolazećih događaja pod nazivom „%s“. Raspored prati već postojeće događaje: najprije ih dodajte na kartici Kalendar službe."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Ova služba nema skupinu volontera"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Ova služba trenutačno ne traži pomoć"
+
+#: 
+msgid "This ministry's events"
+msgstr "Događaji ove službe"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Događaji ove službe (događaj još nije odabran)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Ovaj termin ponovno prati svoj raspored"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Taj se termin već dogodio"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Taj se termin već dogodio i njegove se dodjele više ne mogu mijenjati"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Taj je termin otkazan"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Taj termin ima vlastite potrebe popune, odvojene od svog rasporeda."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Ova stranica nije dio vašeg računa. Ako mislite da bi trebala biti, obratite se crkvenom uredu."
+
+#: 
+msgid "This page was not found"
+msgstr "Ova stranica nije pronađena"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Ovaj dio Portala članova namijenjen je voditeljima volonterskih timova."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Ovu poziciju dodjeljuje voditelj tima ili koordinator, a ne prijava"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Ovaj raspored nije moguće izbrisati: na njegove termine još se poziva %d dodjela volontera."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Ovaj raspored još nema potrebe popune"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Ovaj raspored je neaktivan. Ponovno ga aktivirajte da generirate njegove termine."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "O ovom zahtjevu za zamjenu već je odlučeno"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Ovaj tim još nema pozicija"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Ovaj tim već popunjava ovaj događaj"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Ovaj predložak traži datoteku „%s“ koju tema ne sadrži."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Ovu temu nije moguće aktivirati"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Ova tema nema problema."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Ova verzija ChurchCRM-a ne koristi predložak na ovoj putanji pa se nadjačavanje nikada ne prikazuje."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Označite ih na kartici Volonteri ovog tima, zatim ih dodijelite ovdje."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Oznake se spremaju odmah."
+
+#: 
+msgid "Times come from this event"
+msgstr "Vremena dolaze iz ovog događaja"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Nadopunjuje svaki raspored, šalje sve što čeka u redu i zatvara završene termine bez čekanja na sljedeće planirano pokretanje."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Odbiti {{name}}? Izvorni volonter ostaje i bit će obaviješten."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Isključite predmemoriju predložaka Portala članova i ispišite naziv svakog predloška u HTML komentar. Za dizajnere tema; pri uobičajenoj uporabi neka bude isključeno."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Uključite ovo za službu čiji timovi drže razrede nedjeljne škole. Njezini se timovi tada mogu povezati s razredom, a njezini rasporedi i događaji mogu ga koristiti."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Isključuje predmemoriju predložaka portala i ispisuje naziv svakog predloška u HTML komentar. Za dizajnere tema; pri uobičajenoj uporabi neka bude isključeno."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Dvofaktorska autentifikacija"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Nepopunjene pozicije"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Nepoznata pogreška isporuke"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Nepoznat status termina"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Nepoznat način povezivanja rasporeda"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Nepoznata volonterska služba"
+
+#: 
+msgid "Until"
+msgstr "Do"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Nadolazeća dostupnost"
+
+#: 
+msgid "Update your details"
+msgstr "Ažurirajte svoje podatke"
+
+#: 
+msgid "Update your family details"
+msgstr "Ažurirajte podatke o svojoj obitelji"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Za popunu jednog događaja koristite Popuni događaj"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Koristi potrebe rasporeda"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Korisnik mora imati ovlaštenje Dodavanje događaja ili koordinirati volontersku službu, a modul Događaji mora biti omogućen"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Korisnik mora imati ovlaštenje Dodavanje događaja ili koordinirati volontersku službu kojoj ovaj kalendar pripada"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 – Prilike za volontere (staro)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 – stare Prilike za volontere"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 – Službe"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 – Upravljanje volonterima"
+
+#: 
+msgid "Valid"
+msgstr "Valjano"
+
+#: 
+msgid "Validation"
+msgstr "Provjera valjanosti"
+
+#: 
+msgid "View event"
+msgstr "Prikaži događaj"
+
+#: 
+msgid "View my schedule"
+msgstr "Prikaži moj raspored"
+
+#: 
+msgid "View only"
+msgstr "Samo pregled"
+
+#: 
+msgid "View person"
+msgstr "Pregled osobe"
+
+#: 
+msgid "View the event"
+msgstr "Prikaži događaj"
+
+#: 
+msgid "View this email"
+msgstr "Prikaži ovu e-poštu"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Volonter (staro)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Upravljanje volonterima V2 nije omogućeno"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Volonterska služba"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Dodjela volontera"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Volonter je odbio"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Volontersko iskustvo"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Volonterske pozicije još treba popuniti"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Podsjetnik za volontera"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Prijava volontera"
+
+#: 
+msgid "Volunteer times"
+msgstr "Vremena volontera"
+
+#: 
+msgid "Volunteering"
+msgstr "Volontiranje"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Volontiranje organizirano onako kako ga crkva vodi. Svaka služba ima timove i pozicije; ljudi su kvalificirani za pozicije i pripadaju skupini volontera službe; rasporedi prate događaje u kalendaru i stvaraju datirane termine sa zahtjevima popune; koordinatori dodjeljuju ljude, koji prihvaćaju, odbijaju ili predlažu zamjenu; podsjetnici i obavijesti šalju se e-poštom. Administratori i korisnici s ovlaštenjem Upravljanje službama vide svaku službu i mogu ih stvarati, deaktivirati i brisati. Koordinator službe umjesto toga dobiva ovlaštenje Upravljanje mojim službama: naslov Službe na bočnoj traci tada prikazuje samo službe koje koordinira. Voditelj tima vodi svoj tim iz Portala članova. Članovi koriste Portal članova za pregled svog rasporeda, odgovaranje, prijavu i nuđenje pomoći."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Dodijeljeni volonteri: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Volonteri završavaju"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Potrebni volonteri"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Volonteri službe %s dodijeljeni su ovim događajima pa se ovdje ne mogu izbrisati. Zamolite tu službu da ukloni svoju popunu ili nekoga tko upravlja kalendarom."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Volonteri službi {{names}} dodijeljeni su nekima od njih. Ako ne upravljate kalendarom, brisanje se odbija dok se ta popuna ne ukloni."
+
+#: 
+msgid "Volunteers start"
+msgstr "Volonteri počinju"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Volonteri počinju %d minutu nakon početka događaja."
+msgstr[1] "Volonteri počinju %d minute nakon početka događaja."
+msgstr[2] "Volonteri počinju %d minuta nakon početka događaja."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Volonteri počinju %d minutu prije početka događaja."
+msgstr[1] "Volonteri počinju %d minute prije početka događaja."
+msgstr[2] "Volonteri počinju %d minuta prije početka događaja."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Čeka odgovor"
+
+#: 
+msgid "Waiting for review"
+msgstr "Čeka pregled"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Čeka potvrdu vašeg koordinatora."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Poslat ćemo vam e-poštu kad bude nešto trebalo popuniti."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Rado bismo imali više pomoći nedjeljom ujutro – iskustvo nije potrebno."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Dobro došli, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Što treba promijeniti?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Što ovaj tjedan zahtijeva vašu pozornost"
+
+#: 
+msgid "What the check found"
+msgstr "Što je provjera otkrila"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Koja su volonterska iskustva"
+
+#: 
+msgid "What you want to say"
+msgstr "Što želite reći"
+
+#: 
+msgid "When"
+msgstr "Kada"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Kad volonter predloži nekoga tko će ga zamijeniti, to se pojavljuje ovdje da ga odobrite ili odbijete."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Kad volonter predloži nekoga tko će ga zamijeniti, to se pojavljuje ovdje da ga odobrite."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Kad vas netko stavi u tim ili se sami prijavite, to će se pojaviti ovdje."
+
+#: 
+msgid "Where"
+msgstr "Gdje"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Odakle dolaze datumi"
+
+#: 
+msgid "Where we reach you"
+msgstr "Gdje vas možemo dobiti"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Koje je iskustvo upravljanja volonterima aktivno. V1 je stara značajka Prilike za volontere; V2 je novi tijek rada planiranja i dodjele. „Oboje“ prikazuje oboje zajedno tijekom migracije."
+
+#: 
+msgid "Which events"
+msgstr "Koji događaji"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Koje volontersko iskustvo ova crkva koristi. Kartica s desne objašnjava svaku mogućnost."
+
+#: 
+msgid "Who is covering"
+msgstr "Tko zamjenjuje"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Tko je potreban, tko je na rasporedu i što još nedostaje"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Prvi je naveden onaj tko je najdavnije služio."
+
+#: 
+msgid "Work Email"
+msgstr "Poslovna e-pošta"
+
+#: 
+msgid "Yearly"
+msgstr "Godišnje"
+
+#: 
+msgid "You"
+msgstr "Vi"
+
+#: 
+msgid "You are already helping that day"
+msgstr "Tog dana već pomažete"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "Tog dana već pomažete kao {{what}}. Prijaviti se i za ovo?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Nemate dopuštenje to mijenjati. Obratite se crkvenom uredu."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Trenutačno niste povezani ni s jednom obitelji"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Još niste dio zapisa obitelji."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Nalazite se na popisu – hvala."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "To možete pregledati ili promijeniti u svom volonterskom rasporedu."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Ne možete otvoriti ovu stranicu"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Ne možete predložiti samog sebe kao vlastitu zamjenu"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Nije vas bilo moguće prijaviti za to."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Još ne vodite nijedan volonterski tim."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Imate novu adresu kalendara. Stara više ne radi."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Planirani ste za službu"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Planirani ste za službu."
+
+#: 
+msgid "You lead this"
+msgstr "Vi ovo vodite"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Raspored možete stvoriti samo za tim koji vodite"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Za ovo ćete ponovno biti na popisu."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Vaš račun nije povezan sa zapisom osobe. Obratite se crkvenom uredu."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Vaša pretplata na kalendar je spremljena."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Vaša trenutačna adresa odmah prestaje raditi. Svatko kome ste je dali trebat će novu."
+
+#: 
+msgid "Your details"
+msgstr "Vaši podaci"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Vaši podaci su spremljeni."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Podaci o vašoj obitelji su spremljeni."
+
+#: 
+msgid "Your photo"
+msgstr "Vaša fotografija"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Vaša fotografija je spremljena."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Vaš raspored nije moguće učitati."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Vaša je sesija istekla. Prijavite se ponovno."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Vaš zahtjev za zamjenu odobren je"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Vaš zahtjev za zamjenu nije odobren"
+
+#: 
+msgid "already staffed by this team"
+msgstr "već popunjeno od strane ovog tima"
+
+#: 
+msgid "body is required"
+msgstr "body je obavezan"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds mora biti popis id-ova kalendara"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents mora biti jedno od: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId mora biti id skupine ili null"
+
+#: 
+msgid "end offset"
+msgstr "pomak završetka"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds mora biti popis id-ova događaja"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "svaka je poruka isporučena ili još čeka u redu"
+
+#: 
+msgid "has not served yet"
+msgstr "još nije služio/la"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId mora biti id pozicije"
+
+#: 
+msgid "inactive family"
+msgstr "neaktivna obitelj"
+
+#: 
+msgid "line %d"
+msgstr "redak %d"
+
+#: 
+msgid "marked do not email"
+msgstr "označeno „ne šalji e-poštu“"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "poruke nije moguće isporučiti"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "poruke nije moguće isporučiti ni nakon pet pokušaja"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "poruke koje čekaju slanje"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds mora biti popis id-ova službi"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "minuta nakon završetka događaja"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "minuta nakon početka događaja"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "minuta prije završetka događaja"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "minuta prije početka događaja"
+
+#: 
+msgid "never"
+msgstr "nikada"
+
+#: 
+msgid "no email address"
+msgstr "nema adrese e-pošte"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds i familyIds moraju biti nizovi pozitivnih cijelih brojeva"
+
+#: 
+msgid "record not found"
+msgstr "zapis nije pronađen"
+
+#: 
+msgid "same address as another recipient"
+msgstr "ista adresa kao drugi primatelj"
+
+#: 
+msgid "single event"
+msgstr "jedan događaj"
+
+#: 
+msgid "start offset"
+msgstr "pomak početka"
+
+#: 
+msgid "subject and body are required"
+msgstr "subject i body su obavezni"
+
+#: 
+msgid "subject is required"
+msgstr "subject je obavezan"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject smije imati najviše 255 znakova"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool mora biti istina ili laž"
+
+#: 
+msgid "window end"
+msgstr "kraj razdoblja"
+
+#: 
+msgid "window start"
+msgstr "početak razdoblja"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} dodano, {{alreadyMembers}} već su bili volonteri ovdje"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} termina stvoreno, {{existing}} ih je već bilo"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "Služba {{ministry}} stvorila je {{total}} događaja za {{className}} (nadolazećih: {{upcoming}})."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} također popunjavaju neke od njih."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} već koordinira ovu službu"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} dodijeljen/a"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} već služi kao {{position}} na ovom terminu. I dalje ga/je možete dodijeliti."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} je kvalificiran/a, ali nije u skupini volontera ove službe. Dodjelom se dodaje samo na ovaj termin."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} sada koordinira ovu službu"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: brojevi moraju biti između 0 i {{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: maksimum ne može biti manji od minimuma."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} više nije kvalificiran/a"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} kvalificiran/a"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} traži od {{substitute}} da ga/je zamijeni"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} dana {{date}} je stvoreno. Popuniti sada?"
+

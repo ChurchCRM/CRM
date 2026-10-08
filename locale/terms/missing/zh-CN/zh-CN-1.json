@@ -1,172 +1,98 @@
 {
-  "Select at least one classification to include in the directory.": "请至少选择一个分类以纳入通讯录。",
-  "Geocoding services": "地理编码服务",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "按您选择的顺序依次尝试的地理编码服务。Nominatim（OpenStreetMap）适用于全球；US Census（美国人口普查局）仅涵盖美国地址。如需使用，请同时选择 US Census。若未选择任何服务，则使用 Nominatim。",
-  "New Record Defaults": "新记录默认值",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "这将使用地图设置中所选的地理编码服务，为每个缺少地图坐标的家庭查找坐标。系统每批处理 50 个家庭；使用一个地理编码服务时每批约需一分钟，服务越多耗时越长。运行期间您可以保持此页面开启。是否继续？",
-  "Used for new records and for geocoding when a record has no country.": "用于新记录，以及记录没有国家时的地理编码。",
-  "Copy from Church Info": "从教会信息复制",
-  "Could not copy the church address.": "无法复制教会地址。",
-  "Could not match the church country.": "无法匹配教会所在国家。",
-  "Class lists, attendance sheets, and photo books": "班级名单、点名表和相册",
-  "Group membership lists and Sunday School class reports": "小组成员名单和主日学班级报告",
-  "Your fiscal year starts in %s.": "您的财政年度从 %s 开始。",
-  "An error occurred": "发生错误",
-  "Approve": "批准",
-  "Approve selected": "批准所选项",
-  "Approved": "已批准",
-  "Change in People Settings": "在人员设置中更改",
-  "Could not approve the selected registrations": "无法批准所选的登记",
-  "Could not approve this family": "无法批准此家庭",
-  "Pending Registrations": "待处理的登记",
-  "Pending review": "待审核",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "来自您公开登记表单的登记正等待审核。没有电子邮件或电话的条目已被标记，请在跟进前核实联系方式。",
-  "Review now": "立即审核",
-  "Review self registrations": "审核自助登记",
-  "Select month": "选择月份",
-  "Self-registration is disabled": "自助登记已停用",
-  "Self-registration is enabled": "自助登记已启用",
-  "The public registration form is turned off. Existing registrations are listed below.": "公开登记表单已关闭。现有登记列于下方。",
-  "This family is not a pending self-registration": "此家庭不是待处理的自助登记",
-  "This person belongs to a family — approve the family instead": "此人属于某个家庭，请改为批准该家庭",
-  "This person is not a pending self-registration": "此人不是待处理的自助登记",
-  "This self-registered family is pending review": "此自助登记的家庭正等待审核",
-  "Total registrations": "登记总数",
-  "Visitors can sign up on your public registration form.": "访客可以通过您的公开登记表单报名。",
-  "Yesterday": "昨天",
-  "days ago": "天前",
-  "self-registrations are waiting for review": "笔自助登记等待审核",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "生日问候寄给个人，纪念日问候寄给夫妇。",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "本报告所含人员的邮寄标签。没有个人地址的人，将寄往其家庭地址。",
-  "One label for each couple.": "每对夫妇一张标签。",
-  "Print Labels": "打印标签",
-  "That role is not one of this group's roles.": "该角色不属于此小组的角色。",
-  "\"%s\" is not a kind of calendar this page knows about.": "本页面不认识“%s”这种日历类型。",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s 无法服事，并已提议由 %2$s 代替。",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s 已在 %2$s 的志愿者库中，并希望再次参与服事。",
-  "%1$s is already linked to %2$s in %3$s": "%1$s 已在 %3$s 中关联到 %2$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s 在 %2$s 中的角色是 %3$s。请先将其从班级中移除；之后在此处为其授予资格，才会使其成为该班的教师。",
-  "%1$s is not an event of %2$s": "%1$s 不是 %2$s 的活动",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s 仍是主日学班级，其教师在“事工 → %2$s → %3$s”中管理。请先将其与团队取消关联。",
-  "%1$s wants to help with %2$s": "%1$s 希望参与 %2$s 的服事",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s 希望参与 %2$s 的服事，并已加入其志愿者库。",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s：最大人数为 %2$d，但已选择 %3$d 位默认志愿者。请移除一位或提高最大人数。",
   "%d day": {
-    "other": "%d 天"
+    "other": ""
   },
   "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "other": "另有 %d 项默认因其他原因被跳过（该场活动已结束、已取消或已满）"
+    "other": ""
   },
   "%d default skipped: qualification revoked": {
-    "other": "%d 项默认被跳过：资格已被撤销"
+    "other": ""
   },
   "%d default volunteer assigned": {
-    "other": "已分配 %d 位默认志愿者"
+    "other": ""
   },
-  "%d failed": "%d 项失败",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "other": "此职位还需要 %d 位志愿者。请打开该活动场次填补空缺。"
+    "other": ""
   },
   "%d new occurrence": {
-    "other": "%d 场新活动"
+    "other": ""
   },
   "%d volunteer is still needed for an upcoming occurrence.": {
-    "other": "即将举行的活动场次还需要 %d 位志愿者。"
+    "other": ""
   },
-  "%s Calendar": "%s 日历",
-  "%s Family": "%s 家庭",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s 不为主日学提供教师，因此其团队、排班和活动无法使用班级。志愿者管理员可在“编辑事工”下更改此设置。",
   "%s email from the church": {
-    "other": "%s 封来自教会的电子邮件"
+    "other": ""
   },
-  "%s family": "%s 家庭",
-  "%s has declined a volunteer assignment.": "%s 已拒绝一项志愿者分配。",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s 没有名为“教师”的角色，因此无法从团队管理其教师",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s 的日历上没有即将举行的聚会。排班会跟随已存在的活动：请先在事工的“日历”标签页中通过“新增重复活动”添加该班的聚会。",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s 仍需服事。如无法参与，请联系协调员。",
-  "%s not sent (%s): %s": "%s 未发送（%s）：%s",
   "%s person in your household": {
-    "other": "您家庭中有 %s 人"
+    "other": ""
   },
   "%s position": {
-    "other": "%s 个职位"
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s：同一个人被重复选为默认志愿者",
-  "(no subject)": "（无主题）",
-  "A birthday cannot be in the future.": "生日不能在未来。",
-  "A calendar event": "一个日历活动",
-  "A calendar id must be a number.": "日历 ID 必须是数字。",
-  "A class that no longer exists": "已不存在的班级",
-  "A class with no meetings on the calendar cannot be chosen yet.": "日历上没有聚会的班级暂时无法选择。",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "日历上没有聚会的班级暂时无法选择。事工协调员可在事工的“日历”标签页中添加其聚会。",
-  "A class's meetings": "班级的聚会",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "协调员可以管理此事工中的一切，包括本应由志愿者管理员进行的更改。",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "事工协调员可在事工的“日历”标签页中添加它们。",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "事工协调员可在事工的“日历”标签页中添加它们。然后再次生成。",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "协调员负责整个事工，包括其团队、职位、排班以及其中的每项分配。",
-  "A day a month does not have falls on its last day.": "某个月没有的日期，将顺延到该月最后一天。",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "默认志愿者属于排班的人员需求，而不是某一次活动",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "只能为本排班人员需求所要求的职位选择默认志愿者",
-  "A from and a to date in YYYY-MM-DD form are required": "需要提供格式为 YYYY-MM-DD 的起始日期和结束日期",
-  "A minimum count is required": "需要提供最少人数",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "创建事工时会同时创建其专属日历、志愿者库和第一个团队，因此这里只需决定它的名称和职责。",
-  "A ministry name is required": "需要提供事工名称",
-  "A ministry needs at least one team. Rename it instead.": "一个事工至少需要一个团队。请改为重命名。",
-  "A ministry with that name already exists": "已有同名事工",
-  "A ministry's own calendar cannot be opened to other ministries": "事工自己的日历不能向其他事工开放",
-  "A position belongs to a team; choose one": "职位属于某个团队，请选择一个",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "职位是某人在此团队中承担的工作，例如“咖啡”或“领诗”。",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "职位是某人所服事的角色，例如“咖啡”或“领诗”。",
-  "A position is required": "需要提供职位",
-  "A position name is required": "需要提供职位名称",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "有合格志愿者的职位，不能移入或移出与主日学班级关联的团队，因为这会改变谁来教该班。请改为在另一个团队中创建该职位。",
-  "A position with that name already exists in this ministry": "此事工中已有同名职位",
-  "A response must be accepted or declined": "回应必须是接受或拒绝",
-  "A schedule belongs to a team; choose one": "排班属于某个团队，请选择一个",
-  "A schedule name is required": "需要提供排班名称",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "排班用于指明团队负责哪些日历活动：某一类崇拜聚会、某个班级的聚会，或本事工自己的活动。添加一个排班并生成其活动场次。",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "排班用于指明此团队服事哪些日历活动：某一类崇拜聚会、某个班级的聚会，或其事工自己的活动。添加一个排班并生成其活动场次。",
-  "A schedule that follows a class must name the class": "跟随班级的排班必须指定班级",
-  "A schedule that follows an event type must name the event type": "跟随活动类型的排班必须指定活动类型",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "只负责一场活动的排班不能跟随其他活动；请删除它并改为添加一个排班",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "一份服事机会清单，例如“托儿”或“接待”，保存在“人员 → 管理”下。每个人在其记录的“志愿者”标签页中，会标记其愿意协助的服事机会。仅此而已：没有团队、没有排班、没有按日期分配，也没有提醒邮件。报告和人员记录是使用这些标记的地方。",
-  "A square picture of your face works best.": "最好使用正脸的方形照片。",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "人员需求在“defaults”中列出其默认志愿者：[{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "人员需求只能属于一个排班或一场活动，二者择一",
-  "A substitute has already been proposed for this assignment": "此项分配已提议过代替人选",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "团队负责人可以管理自己的团队，包括其职位、排班以及谁在其中服事，但不能管理事工中的其他内容。",
-  "A team name is required": "需要提供团队名称",
-  "A team with that name already exists in this ministry": "此事工中已有同名团队",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "主题是教会上传到服务器 Include/themes/ 的文件夹。系统默认主题随 ChurchCRM 提供。",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "过渡设置。旧版志愿者机会页面与新的事工页面同时可用，人员记录会显示两个志愿者标签页，并有清楚标示。用于教会从 V1 迁移到 V2 期间，之后再切换为仅 V2。",
-  "A volunteer": "一位志愿者",
-  "A volunteer has declined an assignment": "有志愿者拒绝了一项分配",
-  "A volunteer has proposed a substitute": "有志愿者提议了代替人选",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "志愿者管理员无需授权即可管理此事工。添加一位协调员，可让其他人管理它，而不必同时授予其所有其他事工的权限。",
-  "A wedding date cannot be in the future.": "结婚日期不能在未来。",
-  "Accepted": "已接受",
-  "Account deleted": "账户已删除",
-  "Account unlocked": "账户已解锁",
-  "Accounts": "账户",
-  "Active must be true or false": "“启用”必须为真或假",
-  "Active now": "当前在线",
-  "Add All": "全部添加",
-  "Add Everyone in Cart": "添加已选中的所有人",
-  "Add Volunteer": "添加志愿者",
-  "Add Volunteers to Cart": "将志愿者加入已选",
-  "Add a family member": "添加家庭成员",
-  "Add a position first, then come back and say how many of them are needed.": "请先添加一个职位，再回来设置各需要多少人。",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "为您的登录添加第二步验证，这样仅凭密码无法进入您的账户。",
-  "Add at least one position to this team, then tick who can serve where.": "请至少为此团队添加一个职位，然后勾选谁可以在哪里服事。",
-  "Add coordinator": "添加协调员",
-  "Add from Cart": "从已选添加",
-  "Add its meetings first with New recurring event on the Calendar tab": "请先在“日历”标签页中通过“新增重复活动”添加其聚会",
-  "Add people to the cart before adding them as volunteers": "将人员加入已选之后，才能将其添加为志愿者",
-  "Add position": "添加职位",
-  "Add schedule": "添加排班",
-  "Add team": "添加团队",
-  "Add them on the Calendar tab, then generate again.": "请在“日历”标签页中添加，然后再次生成。",
-  "Add them on the Calendar tab.": "请在“日历”标签页中添加。",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "将此地址添加到您的日历应用。教会日历变动时，它会自动更新。",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "在此添加本事工的活动，例如一次工作日、每周日举行的班级。它们会进入教会日历，创建时即可为其安排人员。"
+  "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified.": {
+    "other": ""
+  },
+  "Passwords must be at least %s character long.": {
+    "other": ""
+  },
+  "They finish %d minute after the event ends.": {
+    "other": ""
+  },
+  "They finish %d minute before the event ends.": {
+    "other": ""
+  },
+  "Volunteers start %d minute after the event starts.": {
+    "other": ""
+  },
+  "Volunteers start %d minute before the event starts.": {
+    "other": ""
+  },
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
+  },
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

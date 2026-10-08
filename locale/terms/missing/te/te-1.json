@@ -1,182 +1,50 @@
 {
-  "Select at least one classification to include in the directory.": "డైరెక్టరీలో చేర్చడానికి కనీసం ఒక వర్గీకరణను ఎంచుకోండి.",
-  "Geocoding services": "జియోకోడింగ్ సేవలు",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "మీరు ఎంచుకున్న క్రమంలో ప్రయత్నించాల్సిన జియోకోడింగ్ సేవలు. Nominatim (OpenStreetMap) ప్రపంచవ్యాప్తంగా పని చేస్తుంది; US Census (US Census Bureau) యునైటెడ్ స్టేట్స్ చిరునామాలను మాత్రమే కవర్ చేస్తుంది. దాన్ని ఉపయోగించడానికి US Census ను కూడా ఎంచుకోండి. ఏదీ ఎంచుకోకపోతే Nominatim ఉపయోగించబడుతుంది.",
-  "New Record Defaults": "కొత్త రికార్డు డిఫాల్ట్‌లు",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "మ్యాప్ సెట్టింగ్‌లలో ఎంచుకున్న జియోకోడింగ్ సేవలను ఉపయోగించి, మ్యాప్ కోఆర్డినేట్‌లు లేని ప్రతి కుటుంబానికి వాటిని ఇది కనుగొంటుంది. ఇది కుటుంబాలను 50 చొప్పున బ్యాచ్‌లుగా ప్రాసెస్ చేస్తుంది; ఒక జియోకోడింగ్ సేవతో ఒక బ్యాచ్‌కు సుమారు ఒక నిమిషం పడుతుంది, ఎక్కువ సేవలతో ఇంకా ఎక్కువ సమయం పడుతుంది. ఇది నడుస్తున్నప్పుడు మీరు ఈ పేజీని తెరిచే ఉంచవచ్చు. కొనసాగించాలా?",
-  "Used for new records and for geocoding when a record has no country.": "కొత్త రికార్డుల కోసం, మరియు రికార్డులో దేశం లేనప్పుడు జియోకోడింగ్ కోసం ఉపయోగించబడుతుంది.",
-  "Copy from Church Info": "చర్చి సమాచారం నుండి కాపీ చేయండి",
-  "Could not copy the church address.": "చర్చి చిరునామాను కాపీ చేయలేకపోయింది.",
-  "Could not match the church country.": "చర్చి దేశాన్ని సరిపోల్చలేకపోయింది.",
-  "Class lists, attendance sheets, and photo books": "తరగతి జాబితాలు, హాజరు పత్రాలు మరియు ఫోటో పుస్తకాలు",
-  "Group membership lists and Sunday School class reports": "పరిచర్య సభ్యుల జాబితాలు మరియు ఆదివారపు బడి తరగతి నివేదికలు",
-  "Your fiscal year starts in %s.": "మీ ఆర్థిక సంవత్సరం %s లో ప్రారంభమవుతుంది.",
-  "An error occurred": "ఒక లోపం సంభవించింది",
-  "Approve": "ఆమోదించండి",
-  "Approve selected": "ఎంచుకున్నవాటిని ఆమోదించండి",
-  "Approved": "ఆమోదించబడింది",
-  "Change in People Settings": "వ్యక్తుల సెట్టింగ్‌లలో మార్చండి",
-  "Could not approve the selected registrations": "ఎంచుకున్న నమోదులను ఆమోదించలేకపోయింది",
-  "Could not approve this family": "ఈ కుటుంబాన్ని ఆమోదించలేకపోయింది",
-  "Pending Registrations": "పెండింగ్‌లో ఉన్న నమోదులు",
-  "Pending review": "సమీక్ష పెండింగ్‌లో ఉంది",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "మీ పబ్లిక్ నమోదు ఫారమ్ నుండి సమీక్ష కోసం వేచి ఉన్న నమోదులు. ఇమెయిల్ లేదా ఫోన్ లేని ఎంట్రీలకు గుర్తు పెట్టబడింది — తదుపరి సంప్రదింపుకు ముందు సంప్రదింపు వివరాలను నిర్ధారించుకోండి.",
-  "Review now": "ఇప్పుడే సమీక్షించండి",
-  "Review self registrations": "స్వీయ నమోదులను సమీక్షించండి",
-  "Select month": "నెలను ఎంచుకోండి",
-  "Self-registration is disabled": "స్వీయ నమోదు నిలిపివేయబడింది",
-  "Self-registration is enabled": "స్వీయ నమోదు ప్రారంభించబడింది",
-  "The public registration form is turned off. Existing registrations are listed below.": "పబ్లిక్ నమోదు ఫారమ్ ఆఫ్ చేయబడింది. ఇప్పటికే ఉన్న నమోదులు క్రింద జాబితా చేయబడ్డాయి.",
-  "This family is not a pending self-registration": "ఈ కుటుంబం పెండింగ్‌లో ఉన్న స్వీయ నమోదు కాదు",
-  "This person belongs to a family — approve the family instead": "ఈ వ్యక్తి ఒక కుటుంబానికి చెందినవారు — బదులుగా ఆ కుటుంబాన్ని ఆమోదించండి",
-  "This person is not a pending self-registration": "ఈ వ్యక్తి పెండింగ్‌లో ఉన్న స్వీయ నమోదు కాదు",
-  "This self-registered family is pending review": "స్వీయ నమోదు చేసుకున్న ఈ కుటుంబం సమీక్ష కోసం పెండింగ్‌లో ఉంది",
-  "Total registrations": "మొత్తం నమోదులు",
-  "Visitors can sign up on your public registration form.": "సందర్శకులు మీ పబ్లిక్ నమోదు ఫారమ్‌లో సైన్ అప్ చేయవచ్చు.",
-  "Yesterday": "నిన్న",
-  "days ago": "రోజుల క్రితం",
-  "self-registrations are waiting for review": "స్వీయ నమోదులు సమీక్ష కోసం వేచి ఉన్నాయి",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "పుట్టినరోజు లేబుల్‌లు వ్యక్తి పేరుతో, వివాహ వార్షికోత్సవ లేబుల్‌లు దంపతుల పేరుతో చిరునామా చేయబడతాయి.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "ఈ నివేదికలోని వ్యక్తుల కోసం పోస్టల్ లేబుల్‌లు. సొంత చిరునామా లేని వ్యక్తికి వారి కుటుంబ చిరునామాకు చిరునామా చేయబడుతుంది.",
-  "One label for each couple.": "ప్రతి దంపతులకు ఒక లేబుల్.",
-  "Print Labels": "లేబుల్‌లను ముద్రించండి",
-  "That role is not one of this group's roles.": "ఆ పాత్ర ఈ పరిచర్య పాత్రలలో ఒకటి కాదు.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" అనేది ఈ పేజీకి తెలిసిన క్యాలెండర్ రకం కాదు.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s సేవ చేయలేరు మరియు %2$s ను ప్రత్యామ్నాయంగా ప్రతిపాదించారు.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s ఇప్పటికే %2$s స్వచ్ఛంద సేవకుల సమూహంలో ఉన్నారు మరియు మళ్ళీ సహాయం చేయాలనుకుంటున్నారు.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s ఇప్పటికే %3$s లో %2$s తో లింక్ చేయబడ్డారు",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s %2$s లో %3$s గా ఉన్నారు. ముందు వారిని తరగతి నుండి తొలగించండి; ఇక్కడ వారిని అర్హులుగా చేస్తే వారు దాని ఉపాధ్యాయులలో ఒకరు అవుతారు.",
-  "%1$s is not an event of %2$s": "%1$s అనేది %2$s యొక్క కార్యక్రమం కాదు",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s ఆదివారపు బడి తరగతిగానే ఉంటుంది, దాని ఉపాధ్యాయులు పరిచర్యలు → %2$s → %3$s లో నిర్వహించబడతారు. ముందు దాన్ని బృందం నుండి అన్‌లింక్ చేయండి.",
-  "%1$s wants to help with %2$s": "%1$s %2$s తో సహాయం చేయాలనుకుంటున్నారు",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s %2$s తో సహాయం చేయాలనుకుంటున్నారు మరియు దాని స్వచ్ఛంద సేవకుల సమూహంలో చేర్చబడ్డారు.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: గరిష్టం %2$d కానీ %3$d డిఫాల్ట్ స్వచ్ఛంద సేవకులు ఎంచుకోబడ్డారు. ఒకరిని తొలగించండి లేదా గరిష్టాన్ని పెంచండి.",
-  "%d day": {
-    "one": "%d రోజు",
-    "other": "%d రోజులు"
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d డిఫాల్ట్ మరొక కారణంతో దాటవేయబడింది (సందర్భం ముగిసింది, రద్దయింది లేదా నిండింది)",
-    "other": "%d డిఫాల్ట్‌లు మరొక కారణంతో దాటవేయబడ్డాయి (సందర్భం ముగిసింది, రద్దయింది లేదా నిండింది)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d డిఫాల్ట్ దాటవేయబడింది: అర్హత రద్దు చేయబడింది",
-    "other": "%d డిఫాల్ట్‌లు దాటవేయబడ్డాయి: అర్హత రద్దు చేయబడింది"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d డిఫాల్ట్ స్వచ్ఛంద సేవకుడు నియమించబడ్డారు",
-    "other": "%d డిఫాల్ట్ స్వచ్ఛంద సేవకులు నియమించబడ్డారు"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d విఫలమయ్యాయి",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "ఈ స్థానానికి ఇంకా %d మరో స్వచ్ఛంద సేవకుడు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి.",
-    "other": "ఈ స్థానానికి ఇంకా %d మంది మరో స్వచ్ఛంద సేవకులు అవసరం. ఖాళీని నింపడానికి సందర్భాన్ని తెరవండి."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d కొత్త సందర్భం",
-    "other": "%d కొత్త సందర్భాలు"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "రాబోయే సందర్భానికి ఇంకా %d స్వచ్ఛంద సేవకుడు అవసరం.",
-    "other": "రాబోయే సందర్భానికి ఇంకా %d మంది స్వచ్ఛంద సేవకులు అవసరం."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "%s క్యాలెండర్",
-  "%s Family": "%s కుటుంబం",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s ఆదివారపు బడికి ఉపాధ్యాయులను అందించదు, కాబట్టి దాని బృందాలు, షెడ్యూల్‌లు మరియు కార్యక్రమాలు తరగతిని ఉపయోగించలేవు. స్వచ్ఛంద సేవల నిర్వాహకుడు దీన్ని పరిచర్యను సవరించు క్రింద మార్చవచ్చు.",
-  "%s email from the church": {
-    "one": "చర్చి నుండి %s ఇమెయిల్",
-    "other": "చర్చి నుండి %s ఇమెయిల్‌లు"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "%s కుటుంబం",
-  "%s has declined a volunteer assignment.": "%s ఒక స్వచ్ఛంద సేవా నియామకాన్ని తిరస్కరించారు.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s లో ఉపాధ్యాయుడు అనే పేరుతో ఏ పాత్రా లేదు, కాబట్టి దాని ఉపాధ్యాయులను బృందం నుండి నిర్వహించలేరు",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s కు క్యాలెండర్‌లో రాబోయే సమావేశాలు లేవు. షెడ్యూల్ ఇప్పటికే ఉన్న కార్యక్రమాలను అనుసరిస్తుంది: ముందు పరిచర్య క్యాలెండర్ ట్యాబ్‌లోని కొత్త పునరావృత కార్యక్రమం ద్వారా తరగతి సమావేశాలను జోడించండి.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s ఇంకా సేవ చేయాల్సి ఉంది. అది సాధ్యం కాకపోతే దయచేసి సమన్వయకర్తను సంప్రదించండి.",
-  "%s not sent (%s): %s": "%s పంపబడలేదు (%s): %s",
-  "%s person in your household": {
-    "one": "మీ కుటుంబంలో %s వ్యక్తి",
-    "other": "మీ కుటుంబంలో %s మంది వ్యక్తులు"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s స్థానం",
-    "other": "%s స్థానాలు"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: ఒకే వ్యక్తి రెండుసార్లు డిఫాల్ట్ స్వచ్ఛంద సేవకుడిగా ఎంచుకోబడ్డారు",
-  "(no subject)": "(విషయం లేదు)",
-  "A birthday cannot be in the future.": "పుట్టినరోజు భవిష్యత్తులో ఉండకూడదు.",
-  "A calendar event": "ఒక క్యాలెండర్ కార్యక్రమం",
-  "A calendar id must be a number.": "క్యాలెండర్ ఐడి ఒక సంఖ్య అయి ఉండాలి.",
-  "A class that no longer exists": "ఇప్పుడు లేని ఒక తరగతి",
-  "A class with no meetings on the calendar cannot be chosen yet.": "క్యాలెండర్‌లో సమావేశాలు లేని తరగతిని ఇంకా ఎంచుకోలేరు.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "క్యాలెండర్‌లో సమావేశాలు లేని తరగతిని ఇంకా ఎంచుకోలేరు. పరిచర్య సమన్వయకర్త పరిచర్య క్యాలెండర్ ట్యాబ్‌లో దాని సమావేశాలను జోడిస్తారు.",
-  "A class's meetings": "ఒక తరగతి సమావేశాలు",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "సమన్వయకర్త ఈ పరిచర్యలోని ప్రతిదాన్ని నిర్వహించవచ్చు, స్వచ్ఛంద సేవల నిర్వాహకుడు చేయవలసిన మార్పులతో సహా.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "పరిచర్య సమన్వయకర్త వాటిని పరిచర్య క్యాలెండర్ ట్యాబ్‌లో జోడించవచ్చు.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "పరిచర్య సమన్వయకర్త వాటిని పరిచర్య క్యాలెండర్ ట్యాబ్‌లో జోడించవచ్చు. తరువాత మళ్ళీ రూపొందించండి.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "సమన్వయకర్త మొత్తం పరిచర్యను నడుపుతారు — దాని బృందాలు, స్థానాలు, షెడ్యూల్‌లు మరియు దానిలోని ప్రతి నియామకం.",
-  "A day a month does not have falls on its last day.": "ఒక నెలలో లేని రోజు ఆ నెల చివరి రోజున వస్తుంది.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "డిఫాల్ట్ స్వచ్ఛంద సేవకుడు షెడ్యూల్ యొక్క సిబ్బంది అవసరాలకు చెందుతారు, ఒక్క సందర్భానికి కాదు",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "ఈ షెడ్యూల్ యొక్క సిబ్బంది అవసరాలు కోరే స్థానానికి మాత్రమే డిఫాల్ట్ స్వచ్ఛంద సేవకుడిని ఎంచుకోవచ్చు",
-  "A from and a to date in YYYY-MM-DD form are required": "YYYY-MM-DD రూపంలో ప్రారంభ మరియు ముగింపు తేదీ అవసరం",
-  "A minimum count is required": "కనీస సంఖ్య అవసరం",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "పరిచర్య దాని సొంత క్యాలెండర్, స్వచ్ఛంద సేవకుల సమూహం మరియు మొదటి బృందంతో సృష్టించబడుతుంది, కాబట్టి ఇక్కడ నిర్ణయించవలసినవి దాని పేరు మరియు అది చేసే పని మాత్రమే.",
-  "A ministry name is required": "పరిచర్య పేరు అవసరం",
-  "A ministry needs at least one team. Rename it instead.": "పరిచర్యకు కనీసం ఒక బృందం అవసరం. బదులుగా దాని పేరు మార్చండి.",
-  "A ministry with that name already exists": "ఆ పేరుతో పరిచర్య ఇప్పటికే ఉంది",
-  "A ministry's own calendar cannot be opened to other ministries": "పరిచర్య యొక్క సొంత క్యాలెండర్‌ను ఇతర పరిచర్యలకు తెరవలేరు",
-  "A position belongs to a team; choose one": "స్థానం ఒక బృందానికి చెందుతుంది; ఒకదాన్ని ఎంచుకోండి",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "స్థానం అంటే ఈ బృందంలో ఒకరు చేసే పని, ఉదాహరణకు ఎస్ప్రెస్సో లేదా పాటల నాయకుడు.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "స్థానం అంటే ఒకరు సేవ చేసే పాత్ర, ఉదాహరణకు ఎస్ప్రెస్సో లేదా పాటల నాయకుడు.",
-  "A position is required": "స్థానం అవసరం",
-  "A position name is required": "స్థానం పేరు అవసరం",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "అర్హులైన స్వచ్ఛంద సేవకులు ఉన్న స్థానాన్ని ఆదివారపు బడి తరగతికి లింక్ చేయబడిన బృందంలోకి లేదా దాని నుండి తరలించలేరు, ఎందుకంటే అది తరగతిని ఎవరు బోధిస్తారో మార్చేస్తుంది. బదులుగా మరొక బృందంలో స్థానాన్ని సృష్టించండి.",
-  "A position with that name already exists in this ministry": "ఈ పరిచర్యలో ఆ పేరుతో స్థానం ఇప్పటికే ఉంది",
-  "A response must be accepted or declined": "ప్రతిస్పందనను ఆమోదించాలి లేదా తిరస్కరించాలి",
-  "A schedule belongs to a team; choose one": "షెడ్యూల్ ఒక బృందానికి చెందుతుంది; ఒకదాన్ని ఎంచుకోండి",
-  "A schedule name is required": "షెడ్యూల్ పేరు అవసరం",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "షెడ్యూల్ ఒక బృందం ఏ క్యాలెండర్ కార్యక్రమాలకు సేవకులను అందిస్తుందో చెబుతుంది: ఒక రకమైన చర్చి ఆరాధన, ఒక తరగతి సమావేశాలు, లేదా ఈ పరిచర్య యొక్క సొంత కార్యక్రమాలు. ఒకటి జోడించి దాని సందర్భాలను రూపొందించండి.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "షెడ్యూల్ ఈ బృందం ఏ క్యాలెండర్ కార్యక్రమాలకు సేవ చేస్తుందో చెబుతుంది: ఒక రకమైన చర్చి ఆరాధన, ఒక తరగతి సమావేశాలు, లేదా దాని పరిచర్య యొక్క సొంత కార్యక్రమాలు. ఒకటి జోడించి దాని సందర్భాలను రూపొందించండి.",
-  "A schedule that follows a class must name the class": "తరగతిని అనుసరించే షెడ్యూల్ ఆ తరగతి పేరును తెలపాలి",
-  "A schedule that follows an event type must name the event type": "కార్యక్రమ రకాన్ని అనుసరించే షెడ్యూల్ ఆ కార్యక్రమ రకం పేరును తెలపాలి",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "ఒక్క కార్యక్రమానికి సేవకులను ఏర్పాటు చేసే షెడ్యూల్ ఇతర కార్యక్రమాలను అనుసరించలేదు; దాన్ని తొలగించి బదులుగా ఒక షెడ్యూల్‌ను జోడించండి",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "\"నర్సరీ\" లేదా \"స్వాగతకర్త\" వంటి అవకాశాల ఒకే జాబితా, ప్రజలు → అడ్మిన్ క్రింద ఉంచబడుతుంది. ప్రతి వ్యక్తికి వారి రికార్డులోని స్వచ్ఛంద సేవ ట్యాబ్‌లో వారు సహాయం చేయడానికి సిద్ధంగా ఉన్న అవకాశాలతో ట్యాగ్ చేయబడుతుంది. ఇది మాత్రమే నమోదు చేస్తుంది: బృందాలు, షెడ్యూల్‌లు, తేదీకి నియామకాలు, రిమైండర్ ఇమెయిల్‌లు ఉండవు. ట్యాగ్‌లు నివేదికలలో మరియు వ్యక్తి రికార్డులో ఉపయోగించబడతాయి.",
-  "A square picture of your face works best.": "మీ ముఖం యొక్క చతురస్ర చిత్రం ఉత్తమంగా ఉంటుంది.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "సిబ్బంది అవసరం తన డిఫాల్ట్ స్వచ్ఛంద సేవకులను \"defaults\": [{personId, accepted}] లో జాబితా చేస్తుంది",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "సిబ్బంది అవసరం ఒక షెడ్యూల్‌కు లేదా ఒక సందర్భానికి ఖచ్చితంగా ఒకదానికి చెందుతుంది",
-  "A substitute has already been proposed for this assignment": "ఈ నియామకానికి ప్రత్యామ్నాయం ఇప్పటికే ప్రతిపాదించబడింది",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "బృంద నాయకుడు తన సొంత బృందాన్ని — దాని స్థానాలు, షెడ్యూల్‌లు మరియు వాటిలో ఎవరు సేవ చేస్తారో — నిర్వహించవచ్చు, పరిచర్యలో మరేదీ కాదు.",
-  "A team name is required": "బృందం పేరు అవసరం",
-  "A team with that name already exists in this ministry": "ఈ పరిచర్యలో ఆ పేరుతో బృందం ఇప్పటికే ఉంది",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "థీమ్ అంటే మీ చర్చి సర్వర్‌లోని Include/themes/ కు అప్‌లోడ్ చేసే ఫోల్డర్. సిస్టమ్ డిఫాల్ట్ ChurchCRM తో వస్తుంది.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "ఒక పరివర్తన సెట్టింగ్. పాత స్వచ్ఛంద అవకాశాల పేజీలు మరియు కొత్త పరిచర్యల పేజీలు రెండూ అందుబాటులో ఉంటాయి, మరియు వ్యక్తి రికార్డు రెండు స్వచ్ఛంద సేవ ట్యాబ్‌లను స్పష్టంగా లేబుల్ చేసి చూపుతుంది. చర్చిని V1 నుండి V2 కు మార్చేటప్పుడు దీన్ని ఉపయోగించండి, ఆ తరువాత V2 కు మాత్రమే మారండి.",
-  "A volunteer": "ఒక స్వచ్ఛంద సేవకుడు",
-  "A volunteer has declined an assignment": "ఒక స్వచ్ఛంద సేవకుడు నియామకాన్ని తిరస్కరించారు",
-  "A volunteer has proposed a substitute": "ఒక స్వచ్ఛంద సేవకుడు ప్రత్యామ్నాయాన్ని ప్రతిపాదించారు",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "స్వచ్ఛంద సేవల నిర్వాహకుడు అనుమతి లేకుండానే ఈ పరిచర్యను నడపవచ్చు. మిగతా ప్రతి పరిచర్యను ఇవ్వకుండా మరొకరు దీన్ని నడపడానికి ఒక సమన్వయకర్తను జోడించండి.",
-  "A wedding date cannot be in the future.": "వివాహ తేదీ భవిష్యత్తులో ఉండకూడదు.",
-  "Accepted": "అంగీకరించబడింది",
-  "Account deleted": "ఖాతా తొలగించబడింది",
-  "Account unlocked": "ఖాతా అన్‌లాక్ చేయబడింది",
-  "Accounts": "ఖాతాలు",
-  "Active must be true or false": "యాక్టివ్ అనేది ఒప్పు లేదా తప్పు అయి ఉండాలి",
-  "Active now": "ప్రస్తుతం క్రియాశీలం",
-  "Add All": "అందరినీ జోడించండి",
-  "Add Everyone in Cart": "ఎంపికలో ఉన్న ప్రతి ఒక్కరినీ జోడించండి",
-  "Add Volunteer": "స్వచ్ఛంద సేవకుడిని జోడించండి",
-  "Add Volunteers to Cart": "స్వచ్ఛంద సేవకులను ఎంపికకు జోడించండి",
-  "Add a family member": "కుటుంబ సభ్యుడిని జోడించండి",
-  "Add a position first, then come back and say how many of them are needed.": "ముందు ఒక స్థానాన్ని జోడించండి, ఆ తరువాత తిరిగి వచ్చి వారిలో ఎంతమంది అవసరమో చెప్పండి.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "మీ సైన్-ఇన్‌కు రెండవ దశను జోడించండి, తద్వారా మీ ఖాతాకు చేరుకోవడానికి పాస్‌వర్డ్ ఒక్కటే సరిపోదు.",
-  "Add at least one position to this team, then tick who can serve where.": "ఈ బృందానికి కనీసం ఒక స్థానాన్ని జోడించండి, ఆ తరువాత ఎవరు ఎక్కడ సేవ చేయగలరో టిక్ చేయండి.",
-  "Add coordinator": "సమన్వయకర్తను జోడించండి",
-  "Add from Cart": "ఎంపిక నుండి జోడించండి",
-  "Add its meetings first with New recurring event on the Calendar tab": "ముందు క్యాలెండర్ ట్యాబ్‌లో కొత్త పునరావృత కార్యక్రమం ద్వారా దాని సమావేశాలను జోడించండి",
-  "Add people to the cart before adding them as volunteers": "స్వచ్ఛంద సేవకులుగా జోడించే ముందు ప్రజలను ఎంపికకు జోడించండి",
-  "Add position": "స్థానాన్ని జోడించండి",
-  "Add schedule": "షెడ్యూల్‌ను జోడించండి",
-  "Add team": "బృందాన్ని జోడించండి",
-  "Add them on the Calendar tab, then generate again.": "వాటిని క్యాలెండర్ ట్యాబ్‌లో జోడించండి, ఆ తరువాత మళ్ళీ రూపొందించండి.",
-  "Add them on the Calendar tab.": "వాటిని క్యాలెండర్ ట్యాబ్‌లో జోడించండి.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "ఈ చిరునామాను మీ క్యాలెండర్ యాప్‌కు జోడించండి. చర్చి క్యాలెండర్ మారినప్పుడు ఇది దానంతట అదే నవీకరించబడుతుంది.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "ఈ పరిచర్య కార్యక్రమాలను ఇక్కడ జోడించండి: ఒక పని దినం, ప్రతి ఆదివారం జరిగే తరగతి. అవి చర్చి క్యాలెండర్‌లోకి వెళ్తాయి, మరియు వాటిని సృష్టించేటప్పుడే సేవకులను ఏర్పాటు చేయవచ్చు."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

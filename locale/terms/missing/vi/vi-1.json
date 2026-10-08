@@ -1,172 +1,98 @@
 {
-  "Select at least one classification to include in the directory.": "Chọn ít nhất một phân loại để đưa vào danh bạ.",
-  "Geocoding services": "Dịch vụ định vị địa lý",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Các dịch vụ định vị địa lý sẽ thử, theo thứ tự bạn chọn. Nominatim (OpenStreetMap) hoạt động trên toàn thế giới; US Census (US Census Bureau) chỉ bao gồm địa chỉ tại Hoa Kỳ. Hãy chọn thêm US Census để sử dụng. Nếu không chọn dịch vụ nào, Nominatim sẽ được dùng.",
-  "New Record Defaults": "Mặc định cho hồ sơ mới",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Chức năng này tìm tọa độ bản đồ cho mọi gia đình chưa có, bằng các dịch vụ định vị địa lý đã chọn trong Cài đặt bản đồ. Hệ thống xử lý theo từng đợt 50 gia đình; mỗi đợt mất khoảng một phút với một dịch vụ và lâu hơn nếu dùng nhiều dịch vụ. Bạn có thể để trang này mở trong khi chạy. Tiếp tục?",
-  "Used for new records and for geocoding when a record has no country.": "Dùng cho hồ sơ mới và cho việc định vị địa lý khi hồ sơ không có quốc gia.",
-  "Copy from Church Info": "Sao chép từ Thông tin Hội thánh",
-  "Could not copy the church address.": "Không thể sao chép địa chỉ Hội thánh.",
-  "Could not match the church country.": "Không thể khớp quốc gia của Hội thánh.",
-  "Class lists, attendance sheets, and photo books": "Danh sách lớp, bảng điểm danh và sách ảnh",
-  "Group membership lists and Sunday School class reports": "Danh sách thành viên nhóm và báo cáo lớp Trường Chúa nhật",
-  "Your fiscal year starts in %s.": "Năm tài chính của bạn bắt đầu vào %s.",
-  "An error occurred": "Đã xảy ra lỗi",
-  "Approve": "Phê duyệt",
-  "Approve selected": "Phê duyệt mục đã chọn",
-  "Approved": "Đã phê duyệt",
-  "Change in People Settings": "Thay đổi trong Cài đặt Hội thánh",
-  "Could not approve the selected registrations": "Không thể phê duyệt các đăng ký đã chọn",
-  "Could not approve this family": "Không thể phê duyệt gia đình này",
-  "Pending Registrations": "Đăng ký đang chờ",
-  "Pending review": "Đang chờ xem xét",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Các đăng ký đang chờ xem xét từ biểu mẫu đăng ký công khai của bạn. Những mục không có email hoặc điện thoại được đánh dấu — hãy xác minh thông tin liên lạc trước khi liên hệ.",
-  "Review now": "Xem xét ngay",
-  "Review self registrations": "Xem xét các đăng ký tự phục vụ",
-  "Select month": "Chọn tháng",
-  "Self-registration is disabled": "Tự đăng ký đã bị tắt",
-  "Self-registration is enabled": "Tự đăng ký đã được bật",
-  "The public registration form is turned off. Existing registrations are listed below.": "Biểu mẫu đăng ký công khai đang tắt. Các đăng ký hiện có được liệt kê bên dưới.",
-  "This family is not a pending self-registration": "Gia đình này không phải là đăng ký tự phục vụ đang chờ",
-  "This person belongs to a family — approve the family instead": "Người này thuộc một gia đình — hãy phê duyệt gia đình",
-  "This person is not a pending self-registration": "Người này không phải là đăng ký tự phục vụ đang chờ",
-  "This self-registered family is pending review": "Gia đình tự đăng ký này đang chờ xem xét",
-  "Total registrations": "Tổng số đăng ký",
-  "Visitors can sign up on your public registration form.": "Khách có thể đăng ký trên biểu mẫu đăng ký công khai của bạn.",
-  "Yesterday": "Hôm qua",
-  "days ago": "ngày trước",
-  "self-registrations are waiting for review": "đăng ký tự phục vụ đang chờ xem xét",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Thiệp sinh nhật gửi cho cá nhân và thiệp kỷ niệm ngày cưới gửi cho cặp vợ chồng.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Nhãn thư cho những người trong báo cáo này. Người không có địa chỉ riêng sẽ được gửi đến địa chỉ gia đình.",
-  "One label for each couple.": "Một nhãn cho mỗi cặp vợ chồng.",
-  "Print Labels": "In nhãn",
-  "That role is not one of this group's roles.": "Vai trò đó không phải là một vai trò của nhóm này.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" không phải là loại lịch mà trang này biết.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s không thể phục vụ và đã đề xuất %2$s thay thế.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s đã có trong nhóm tình nguyện viên của %2$s và muốn giúp lần nữa.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s đã được liên kết với %2$s trong %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s đang ở %2$s với vai trò %3$s. Hãy xóa họ khỏi lớp trước; khi đủ điều kiện tại đây, họ sẽ trở thành một giáo viên của lớp.",
-  "%1$s is not an event of %2$s": "%1$s không phải là sự kiện của %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s vẫn là một lớp Trường Chúa nhật trong khi giáo viên của lớp được quản lý tại Mục vụ → %2$s → %3$s. Hãy hủy liên kết với đội trước.",
-  "%1$s wants to help with %2$s": "%1$s muốn giúp đỡ %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s muốn giúp đỡ %2$s và đã được thêm vào nhóm tình nguyện viên của mục vụ này.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: Tối đa là %2$d nhưng có %3$d tình nguyện viên mặc định được chọn. Hãy bỏ bớt một người hoặc tăng Tối đa.",
   "%d day": {
-    "other": "%d ngày"
+    "other": ""
   },
   "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "other": "%d mặc định bị bỏ qua vì lý do khác (lần diễn ra đã kết thúc, bị hủy hoặc đã đầy)"
+    "other": ""
   },
   "%d default skipped: qualification revoked": {
-    "other": "%d mặc định bị bỏ qua: điều kiện bị thu hồi"
+    "other": ""
   },
   "%d default volunteer assigned": {
-    "other": "%d tình nguyện viên mặc định được phân công"
+    "other": ""
   },
-  "%d failed": "%d thất bại",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "other": "Vị trí này vẫn cần thêm %d tình nguyện viên. Hãy mở lần diễn ra để lấp chỗ trống."
+    "other": ""
   },
   "%d new occurrence": {
-    "other": "%d lần diễn ra mới"
+    "other": ""
   },
   "%d volunteer is still needed for an upcoming occurrence.": {
-    "other": "%d tình nguyện viên vẫn cần cho một lần diễn ra sắp tới."
+    "other": ""
   },
-  "%s Calendar": "Lịch %s",
-  "%s Family": "Gia đình %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s không cung cấp giáo viên cho Trường Chúa nhật, nên các đội, lịch phục vụ và sự kiện của mục vụ không thể dùng lớp. Người quản lý tình nguyện viên có thể thay đổi trong Sửa mục vụ.",
   "%s email from the church": {
-    "other": "%s email từ Hội thánh"
+    "other": ""
   },
-  "%s family": "gia đình %s",
-  "%s has declined a volunteer assignment.": "%s đã từ chối một nhiệm vụ tình nguyện.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s không có vai trò nào tên là Giáo viên, nên giáo viên không thể được quản lý từ một đội",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s không có buổi họp sắp tới nào trên lịch. Lịch phục vụ theo các sự kiện đã có: hãy thêm các buổi họp của lớp trước, bằng Sự kiện lặp lại mới trong thẻ Lịch của mục vụ.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s vẫn được mong đợi phục vụ. Vui lòng liên hệ điều phối viên nếu không thể.",
-  "%s not sent (%s): %s": "%s chưa được gửi (%s): %s",
   "%s person in your household": {
-    "other": "%s người trong gia đình bạn"
+    "other": ""
   },
   "%s position": {
-    "other": "%s vị trí"
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: cùng một người được chọn hai lần làm tình nguyện viên mặc định",
-  "(no subject)": "(không có tiêu đề)",
-  "A birthday cannot be in the future.": "Ngày sinh không thể ở tương lai.",
-  "A calendar event": "Một sự kiện lịch",
-  "A calendar id must be a number.": "Mã lịch phải là một số.",
-  "A class that no longer exists": "Một lớp không còn tồn tại",
-  "A class with no meetings on the calendar cannot be chosen yet.": "Lớp không có buổi họp nào trên lịch thì chưa thể được chọn.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "Lớp không có buổi họp nào trên lịch thì chưa thể được chọn. Điều phối viên của mục vụ thêm các buổi họp trong thẻ Lịch của mục vụ.",
-  "A class's meetings": "Các buổi họp của một lớp",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "Điều phối viên có thể quản lý mọi thứ trong mục vụ này, kể cả những thay đổi mà người quản lý tình nguyện viên lẽ ra phải thực hiện.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "Điều phối viên của mục vụ có thể thêm chúng trong thẻ Lịch của mục vụ.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "Điều phối viên của mục vụ có thể thêm chúng trong thẻ Lịch của mục vụ. Sau đó hãy tạo lại.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "Điều phối viên điều hành toàn bộ mục vụ — các đội, vị trí, lịch phục vụ và mọi phân công trong đó.",
-  "A day a month does not have falls on its last day.": "Ngày mà tháng không có sẽ rơi vào ngày cuối cùng của tháng.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "Tình nguyện viên mặc định thuộc về nhu cầu nhân sự của lịch phục vụ, không thuộc về một lần diễn ra",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "Tình nguyện viên mặc định chỉ có thể được chọn cho vị trí mà nhu cầu nhân sự của lịch phục vụ này yêu cầu",
-  "A from and a to date in YYYY-MM-DD form are required": "Cần ngày bắt đầu và ngày kết thúc theo dạng YYYY-MM-DD",
-  "A minimum count is required": "Cần số lượng tối thiểu",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "Một mục vụ được tạo với lịch, nhóm tình nguyện viên và đội đầu tiên của riêng nó, nên ở đây chỉ cần quyết định tên và công việc của mục vụ.",
-  "A ministry name is required": "Cần có tên mục vụ",
-  "A ministry needs at least one team. Rename it instead.": "Một mục vụ cần ít nhất một đội. Hãy đổi tên đội thay vì xóa.",
-  "A ministry with that name already exists": "Đã có mục vụ với tên đó",
-  "A ministry's own calendar cannot be opened to other ministries": "Lịch riêng của một mục vụ không thể mở cho các mục vụ khác",
-  "A position belongs to a team; choose one": "Một vị trí thuộc về một đội; hãy chọn một đội",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "Vị trí là một công việc ai đó đảm nhận trong đội này, chẳng hạn Pha cà phê hoặc Trưởng ban hát.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "Vị trí là một vai trò ai đó phục vụ, chẳng hạn Pha cà phê hoặc Trưởng ban hát.",
-  "A position is required": "Cần có vị trí",
-  "A position name is required": "Cần có tên vị trí",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "Vị trí có tình nguyện viên đủ điều kiện không thể chuyển vào hoặc ra khỏi đội đã liên kết với lớp Trường Chúa nhật, vì điều đó sẽ thay đổi người dạy lớp. Hãy tạo vị trí trong đội kia.",
-  "A position with that name already exists in this ministry": "Đã có vị trí với tên đó trong mục vụ này",
-  "A response must be accepted or declined": "Phản hồi phải là chấp nhận hoặc từ chối",
-  "A schedule belongs to a team; choose one": "Một lịch phục vụ thuộc về một đội; hãy chọn một đội",
-  "A schedule name is required": "Cần có tên lịch phục vụ",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Lịch phục vụ cho biết đội phụ trách những sự kiện lịch nào: một loại buổi thờ phượng, các buổi họp của một lớp, hoặc sự kiện riêng của mục vụ này. Hãy thêm một lịch và tạo các lần diễn ra.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Lịch phục vụ cho biết đội này phục vụ những sự kiện lịch nào: một loại buổi thờ phượng, các buổi họp của một lớp, hoặc sự kiện riêng của mục vụ. Hãy thêm một lịch và tạo các lần diễn ra.",
-  "A schedule that follows a class must name the class": "Lịch phục vụ theo một lớp phải nêu tên lớp",
-  "A schedule that follows an event type must name the event type": "Lịch phục vụ theo một loại sự kiện phải nêu loại sự kiện",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Lịch phục vụ cho một sự kiện không thể theo các sự kiện khác; hãy xóa nó và thêm một lịch phục vụ mới",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "Một danh sách duy nhất các cơ hội phục vụ, chẳng hạn \"Trông trẻ\" hoặc \"Đón tiếp\", lưu trong Hội thánh → Quản trị. Mỗi người được gắn thẻ các cơ hội họ sẵn lòng giúp, trong thẻ Tình nguyện viên của hồ sơ. Chỉ có vậy: không có đội, lịch phục vụ, phân công theo ngày hay email nhắc nhở. Báo cáo và hồ sơ cá nhân là nơi dùng các thẻ này.",
-  "A square picture of your face works best.": "Ảnh vuông chụp khuôn mặt của bạn là tốt nhất.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Một nhu cầu nhân sự liệt kê các tình nguyện viên mặc định trong \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Một yêu cầu nhân sự thuộc về đúng một lịch phục vụ hoặc một lần diễn ra",
-  "A substitute has already been proposed for this assignment": "Đã có người thay thế được đề xuất cho phân công này",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "Trưởng đội có thể quản lý đội của mình — các vị trí, lịch phục vụ và ai phục vụ ở đó — và không gì khác trong mục vụ.",
-  "A team name is required": "Cần có tên đội",
-  "A team with that name already exists in this ministry": "Đã có đội với tên đó trong mục vụ này",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Giao diện là một thư mục mà Hội thánh của bạn tải lên Include/themes/ trên máy chủ. Giao diện mặc định của hệ thống đi kèm ChurchCRM.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "Một cài đặt chuyển tiếp. Cả các trang Cơ hội Tình nguyện cũ và các trang Mục vụ mới đều có sẵn, và hồ sơ cá nhân hiển thị cả hai thẻ Tình nguyện viên, được ghi nhãn rõ ràng. Dùng khi chuyển Hội thánh từ V1 sang V2, rồi chỉ chuyển sang V2.",
-  "A volunteer": "Một tình nguyện viên",
-  "A volunteer has declined an assignment": "Một tình nguyện viên đã từ chối một phân công",
-  "A volunteer has proposed a substitute": "Một tình nguyện viên đã đề xuất người thay thế",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "Người quản lý tình nguyện viên có thể điều hành mục vụ này mà không cần cấp quyền. Hãy thêm một điều phối viên để người khác điều hành mà không phải cấp cho họ mọi mục vụ khác.",
-  "A wedding date cannot be in the future.": "Ngày cưới không thể ở tương lai.",
-  "Accepted": "Đã chấp nhận",
-  "Account deleted": "Đã xóa tài khoản",
-  "Account unlocked": "Tài khoản được mở khóa",
-  "Accounts": "Tài khoản",
-  "Active must be true or false": "Hoạt động phải là đúng hoặc sai",
-  "Active now": "Đang hoạt động",
-  "Add All": "Thêm tất cả",
-  "Add Everyone in Cart": "Thêm tất cả người trong Lựa chọn",
-  "Add Volunteer": "Thêm tình nguyện viên",
-  "Add Volunteers to Cart": "Thêm tình nguyện viên vào Lựa chọn",
-  "Add a family member": "Thêm thành viên gia đình",
-  "Add a position first, then come back and say how many of them are needed.": "Hãy thêm một vị trí trước, rồi quay lại và cho biết cần bao nhiêu người.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Thêm bước thứ hai khi đăng nhập để chỉ mật khẩu thôi thì chưa đủ truy cập tài khoản của bạn.",
-  "Add at least one position to this team, then tick who can serve where.": "Hãy thêm ít nhất một vị trí vào đội này, rồi đánh dấu ai có thể phục vụ ở đâu.",
-  "Add coordinator": "Thêm điều phối viên",
-  "Add from Cart": "Thêm từ Lựa chọn",
-  "Add its meetings first with New recurring event on the Calendar tab": "Hãy thêm các buổi họp của lớp trước bằng Sự kiện lặp lại mới trong thẻ Lịch",
-  "Add people to the cart before adding them as volunteers": "Hãy thêm người vào Lựa chọn trước khi thêm họ làm tình nguyện viên",
-  "Add position": "Thêm vị trí",
-  "Add schedule": "Thêm lịch phục vụ",
-  "Add team": "Thêm đội",
-  "Add them on the Calendar tab, then generate again.": "Hãy thêm chúng trong thẻ Lịch, rồi tạo lại.",
-  "Add them on the Calendar tab.": "Hãy thêm chúng trong thẻ Lịch.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Thêm địa chỉ này vào ứng dụng lịch của bạn. Địa chỉ tự cập nhật khi lịch Hội thánh thay đổi.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Thêm các sự kiện của mục vụ này tại đây: một ngày làm việc, một lớp họp mỗi Chúa nhật. Chúng sẽ vào lịch Hội thánh, và bạn có thể bố trí nhân sự ngay khi tạo."
+  "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified.": {
+    "other": ""
+  },
+  "Passwords must be at least %s character long.": {
+    "other": ""
+  },
+  "They finish %d minute after the event ends.": {
+    "other": ""
+  },
+  "They finish %d minute before the event ends.": {
+    "other": ""
+  },
+  "Volunteers start %d minute after the event starts.": {
+    "other": ""
+  },
+  "Volunteers start %d minute before the event starts.": {
+    "other": ""
+  },
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
+  },
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

@@ -18786,3 +18786,4539 @@ msgstr "Ρόλος συζύγου"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Ταχυδρομικοί κώδικες με κεφαλαία"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Επιλέξτε τουλάχιστον μία κατηγορία για να συμπεριληφθεί στον κατάλογο."
+
+#: 
+msgid "Geocoding services"
+msgstr "Υπηρεσίες γεωκωδικοποίησης"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Υπηρεσίες γεωκωδικοποίησης που θα δοκιμαστούν, με τη σειρά που τις επιλέγετε. Το Nominatim (OpenStreetMap) λειτουργεί παγκοσμίως· το US Census (US Census Bureau) καλύπτει μόνο διευθύνσεις των Ηνωμένων Πολιτειών. Επιλέξτε και το US Census για να το χρησιμοποιήσετε. Αν δεν επιλεγεί καμία, χρησιμοποιείται το Nominatim."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Προεπιλογές νέων εγγραφών"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Εδώ βρίσκονται οι συντεταγμένες χάρτη για κάθε οικογένεια που δεν τις έχει, με τις υπηρεσίες γεωκωδικοποίησης που επιλέχθηκαν στις Ρυθμίσεις χάρτη. Η εργασία γίνεται ανά παρτίδες των 50 οικογενειών· μια παρτίδα διαρκεί περίπου ένα λεπτό με μία υπηρεσία γεωκωδικοποίησης και περισσότερο με περισσότερες. Μπορείτε να αφήσετε αυτή τη σελίδα ανοιχτή όσο εκτελείται. Συνέχεια;"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Χρησιμοποιείται για νέες εγγραφές και για γεωκωδικοποίηση όταν μια εγγραφή δεν έχει χώρα."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Αντιγραφή από τα Στοιχεία εκκλησίας"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Δεν ήταν δυνατή η αντιγραφή της διεύθυνσης της εκκλησίας."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Δεν ήταν δυνατή η αντιστοίχιση της χώρας της εκκλησίας."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Λίστες τάξεων, φύλλα παρουσιών και φωτογραφικά λευκώματα"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Λίστες μελών διακονιών και αναφορές τάξεων Κατηχητικού"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Το οικονομικό σας έτος ξεκινά τον %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Παρουσιάστηκε σφάλμα"
+
+#: 
+msgid "Approve"
+msgstr "Έγκριση"
+
+#: 
+msgid "Approve selected"
+msgstr "Έγκριση επιλεγμένων"
+
+#: 
+msgid "Approved"
+msgstr "Εγκρίθηκε"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Αλλαγή στις Ρυθμίσεις ατόμων"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Δεν ήταν δυνατή η έγκριση των επιλεγμένων εγγραφών"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Δεν ήταν δυνατή η έγκριση αυτής της οικογένειας"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Εκκρεμείς εγγραφές"
+
+#: 
+msgid "Pending review"
+msgstr "Σε αναμονή ελέγχου"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Εγγραφές που περιμένουν έλεγχο από τη δημόσια φόρμα εγγραφής. Οι καταχωρίσεις χωρίς email ή τηλέφωνο επισημαίνονται· επαληθεύστε τα στοιχεία επικοινωνίας πριν επικοινωνήσετε."
+
+#: 
+msgid "Review now"
+msgstr "Έλεγχος τώρα"
+
+#: 
+msgid "Review self registrations"
+msgstr "Έλεγχος αυτοεγγραφών"
+
+#: 
+msgid "Select month"
+msgstr "Επιλέξτε μήνα"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Η αυτοεγγραφή είναι απενεργοποιημένη"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Η αυτοεγγραφή είναι ενεργοποιημένη"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Η δημόσια φόρμα εγγραφής είναι απενεργοποιημένη. Οι υπάρχουσες εγγραφές παρατίθενται παρακάτω."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Αυτή η οικογένεια δεν είναι εκκρεμής αυτοεγγραφή"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Αυτό το άτομο ανήκει σε οικογένεια — εγκρίνετε την οικογένεια"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Αυτό το άτομο δεν είναι εκκρεμής αυτοεγγραφή"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Αυτή η οικογένεια που αυτοεγγράφηκε περιμένει έλεγχο"
+
+#: 
+msgid "Total registrations"
+msgstr "Σύνολο εγγραφών"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Οι επισκέπτες μπορούν να εγγραφούν στη δημόσια φόρμα εγγραφής σας."
+
+#: 
+msgid "Yesterday"
+msgstr "Χθες"
+
+#: 
+msgid "days ago"
+msgstr "ημέρες πριν"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "αυτοεγγραφές περιμένουν έλεγχο"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Τα γενέθλια απευθύνονται στο άτομο και οι επέτειοι στο ζευγάρι."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Ετικέτες ταχυδρομικής αποστολής για τα άτομα αυτής της αναφοράς. Ένα άτομο χωρίς δική του διεύθυνση απευθύνεται στη διεύθυνση της οικογένειάς του."
+
+#: 
+msgid "One label for each couple."
+msgstr "Μία ετικέτα για κάθε ζευγάρι."
+
+#: 
+msgid "Print Labels"
+msgstr "Εκτύπωση ετικετών"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Αυτός ο ρόλος δεν είναι ένας από τους ρόλους αυτής της διακονίας."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "Το «%s» δεν είναι είδος ημερολογίου που αναγνωρίζει αυτή η σελίδα."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "Ο/Η %1$s δεν μπορεί να υπηρετήσει και πρότεινε τον/την %2$s ως αντικαταστάτη."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "Ο/Η %1$s ανήκει ήδη στη δεξαμενή εθελοντών %2$s και θέλει να βοηθήσει ξανά."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "Ο/Η %1$s είναι ήδη συνδεδεμένος/η με το %2$s στο %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "Ο/Η %1$s είναι στο %2$s ως %3$s. Αφαιρέστε τον/την πρώτα από την τάξη· αν τον/την καταστήσετε κατάλληλο/η εδώ, θα γίνει ένας από τους δασκάλους της."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "Το %1$s δεν είναι εκδήλωση του %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "Το %1$s παραμένει τάξη Κατηχητικού ενώ οι δάσκαλοί του διαχειρίζονται στις Διακονίες → %2$s → %3$s. Αποσυνδέστε το πρώτα από την ομάδα."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "Ο/Η %1$s θέλει να βοηθήσει στο %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "Ο/Η %1$s θέλει να βοηθήσει στο %2$s και προστέθηκε στη δεξαμενή εθελοντών του."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: Το μέγιστο είναι %2$d αλλά επιλέγονται %3$d προεπιλεγμένοι εθελοντές. Αφαιρέστε έναν ή αυξήστε το μέγιστο."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d ημέρα"
+msgstr[1] "%d ημέρες"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d προεπιλογή παραλείφθηκε για άλλο λόγο (η πραγματοποίηση έχει τελειώσει, ακυρωθεί ή γεμίσει)"
+msgstr[1] "%d προεπιλογές παραλείφθηκαν για άλλο λόγο (η πραγματοποίηση έχει τελειώσει, ακυρωθεί ή γεμίσει)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d προεπιλογή παραλείφθηκε: η εξουσιοδότηση ανακλήθηκε"
+msgstr[1] "%d προεπιλογές παραλείφθηκαν: η εξουσιοδότηση ανακλήθηκε"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d προεπιλεγμένος εθελοντής ανατέθηκε"
+msgstr[1] "%d προεπιλεγμένοι εθελοντές ανατέθηκαν"
+
+#: 
+msgid "%d failed"
+msgstr "%d απέτυχαν"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Χρειάζεται ακόμη %d εθελοντής για αυτή τη θέση. Ανοίξτε την πραγματοποίηση για να καλύψετε το κενό."
+msgstr[1] "Χρειάζονται ακόμη %d εθελοντές για αυτή τη θέση. Ανοίξτε την πραγματοποίηση για να καλύψετε το κενό."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d νέα πραγματοποίηση"
+msgstr[1] "%d νέες πραγματοποιήσεις"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Χρειάζεται ακόμη %d εθελοντής για μια προσεχή πραγματοποίηση."
+msgstr[1] "Χρειάζονται ακόμη %d εθελοντές για μια προσεχή πραγματοποίηση."
+
+#: 
+msgid "%s Calendar"
+msgstr "Ημερολόγιο %s"
+
+#: 
+msgid "%s Family"
+msgstr "Οικογένεια %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "Η διακονία %s δεν παρέχει δασκάλους για το Κατηχητικό, επομένως οι ομάδες, τα προγράμματα και οι εκδηλώσεις της δεν μπορούν να χρησιμοποιήσουν τάξη. Ένας διαχειριστής εθελοντών μπορεί να το αλλάξει στην επιλογή Επεξεργασία διακονίας."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s email από την εκκλησία"
+msgstr[1] "%s email από την εκκλησία"
+
+#: 
+msgid "%s family"
+msgstr "Οικογένεια %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "Ο/Η %s αρνήθηκε μια ανάθεση εθελοντή."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "Η διακονία %s δεν έχει ρόλο με όνομα Δάσκαλος, επομένως οι δάσκαλοί της δεν μπορούν να διαχειριστούν από ομάδα"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "Η διακονία %s δεν έχει προσεχείς συναντήσεις στο ημερολόγιο. Ένα πρόγραμμα ακολουθεί εκδηλώσεις που υπάρχουν ήδη: προσθέστε πρώτα τις συναντήσεις της τάξης, με το Νέα επαναλαμβανόμενη εκδήλωση στην καρτέλα Ημερολόγιο της διακονίας."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "Ο/Η %s αναμένεται ακόμη να υπηρετήσει. Επικοινωνήστε με τον συντονιστή αν αυτό δεν είναι δυνατό."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "Δεν στάλθηκε σε %s (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s άτομο στο νοικοκυριό σας"
+msgstr[1] "%s άτομα στο νοικοκυριό σας"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s θέση"
+msgstr[1] "%s θέσεις"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: το ίδιο άτομο έχει επιλεγεί δύο φορές ως προεπιλεγμένος εθελοντής"
+
+#: 
+msgid "(no subject)"
+msgstr "(χωρίς θέμα)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Τα γενέθλια δεν μπορούν να είναι στο μέλλον."
+
+#: 
+msgid "A calendar event"
+msgstr "Μια εκδήλωση ημερολογίου"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "Το αναγνωριστικό ημερολογίου πρέπει να είναι αριθμός."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Μια τάξη που δεν υπάρχει πια"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Μια τάξη χωρίς συναντήσεις στο ημερολόγιο δεν μπορεί να επιλεγεί ακόμη."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Μια τάξη χωρίς συναντήσεις στο ημερολόγιο δεν μπορεί να επιλεγεί ακόμη. Ένας συντονιστής της διακονίας προσθέτει τις συναντήσεις της στην καρτέλα Ημερολόγιο της διακονίας."
+
+#: 
+msgid "A class's meetings"
+msgstr "Οι συναντήσεις μιας τάξης"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Ένας συντονιστής μπορεί να διαχειρίζεται τα πάντα σε αυτή τη διακονία, συμπεριλαμβανομένων αλλαγών που αλλιώς θα έπρεπε να κάνει ένας διαχειριστής εθελοντών."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Ένας συντονιστής της διακονίας μπορεί να τις προσθέσει στην καρτέλα Ημερολόγιο της διακονίας."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Ένας συντονιστής της διακονίας μπορεί να τις προσθέσει στην καρτέλα Ημερολόγιο της διακονίας. Έπειτα δημιουργήστε ξανά."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Ένας συντονιστής διευθύνει ολόκληρη τη διακονία — τις ομάδες, τις θέσεις, τα προγράμματα και κάθε ανάθεση σε αυτήν."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Μια ημέρα που δεν υπάρχει σε έναν μήνα πέφτει στην τελευταία ημέρα του."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Ένας προεπιλεγμένος εθελοντής ανήκει στις ανάγκες στελέχωσης του προγράμματος, όχι σε μία πραγματοποίηση"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Ένας προεπιλεγμένος εθελοντής μπορεί να επιλεγεί μόνο για θέση που ζητούν οι ανάγκες στελέχωσης αυτού του προγράμματος"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Απαιτούνται ημερομηνία από και έως σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Απαιτείται ελάχιστος αριθμός"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Μια διακονία δημιουργείται με το δικό της ημερολόγιο, τη δική της δεξαμενή εθελοντών και την πρώτη της ομάδα, οπότε εδώ αποφασίζετε μόνο το όνομά της και τι κάνει."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Απαιτείται όνομα διακονίας"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Μια διακονία χρειάζεται τουλάχιστον μία ομάδα. Μετονομάστε την."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Υπάρχει ήδη διακονία με αυτό το όνομα"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Το ίδιο το ημερολόγιο μιας διακονίας δεν μπορεί να ανοιχτεί σε άλλες διακονίες"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Μια θέση ανήκει σε ομάδα· επιλέξτε μία"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Θέση είναι μια εργασία που κάνει κάποιος σε αυτή την ομάδα, όπως Εσπρέσο ή Ψάλτης."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Θέση είναι ένας ρόλος στον οποίο υπηρετεί κάποιος, όπως Εσπρέσο ή Ψάλτης."
+
+#: 
+msgid "A position is required"
+msgstr "Απαιτείται θέση"
+
+#: 
+msgid "A position name is required"
+msgstr "Απαιτείται όνομα θέσης"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Μια θέση με κατάλληλους εθελοντές δεν μπορεί να μετακινηθεί προς ή από ομάδα συνδεδεμένη με τάξη Κατηχητικού, επειδή αυτό θα άλλαζε ποιος διδάσκει την τάξη. Δημιουργήστε τη θέση στην άλλη ομάδα."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Υπάρχει ήδη θέση με αυτό το όνομα σε αυτή τη διακονία"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Η απάντηση πρέπει να είναι αποδοχή ή άρνηση"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Ένα πρόγραμμα ανήκει σε ομάδα· επιλέξτε μία"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Απαιτείται όνομα προγράμματος"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Ένα πρόγραμμα ορίζει ποιες εκδηλώσεις ημερολογίου στελεχώνει μια ομάδα: ένα είδος λειτουργίας, τις συναντήσεις μιας τάξης ή τις δικές της εκδηλώσεις της διακονίας. Προσθέστε ένα και δημιουργήστε τις πραγματοποιήσεις του."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Ένα πρόγραμμα ορίζει ποιες εκδηλώσεις ημερολογίου υπηρετεί αυτή η ομάδα: ένα είδος λειτουργίας, τις συναντήσεις μιας τάξης ή τις δικές της εκδηλώσεις της διακονίας. Προσθέστε ένα και δημιουργήστε τις πραγματοποιήσεις του."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Ένα πρόγραμμα που ακολουθεί τάξη πρέπει να ορίζει την τάξη"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Ένα πρόγραμμα που ακολουθεί είδος εκδήλωσης πρέπει να ορίζει το είδος εκδήλωσης"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Ένα πρόγραμμα που στελεχώνει μία εκδήλωση δεν μπορεί να ακολουθεί άλλες εκδηλώσεις· διαγράψτε το και προσθέστε πρόγραμμα"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "Μία ενιαία λίστα ευκαιριών, όπως «Βρεφονηπιακός σταθμός» ή «Υποδοχή», που τηρείται στο Άτομα → Διαχείριση. Κάθε άτομο επισημαίνεται με τις ευκαιρίες στις οποίες θέλει να βοηθήσει, στην καρτέλα Εθελοντής της εγγραφής του. Αυτό είναι το μόνο που καταγράφει: δεν υπάρχουν ομάδες, προγράμματα, αναθέσεις σε ημερομηνία ούτε email υπενθύμισης. Οι ετικέτες χρησιμοποιούνται στις αναφορές και στην εγγραφή του ατόμου."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Μια τετράγωνη φωτογραφία του προσώπου σας λειτουργεί καλύτερα."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Μια ανάγκη στελέχωσης απαριθμεί τους προεπιλεγμένους εθελοντές της στο \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Μια απαίτηση στελέχωσης ανήκει σε ακριβώς ένα από πρόγραμμα ή πραγματοποίηση"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Έχει ήδη προταθεί αντικαταστάτης για αυτή την ανάθεση"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Ένας υπεύθυνος ομάδας μπορεί να διαχειρίζεται τη δική του ομάδα — τις θέσεις της, τα προγράμματά της και ποιος υπηρετεί σε αυτά — και τίποτα άλλο στη διακονία."
+
+#: 
+msgid "A team name is required"
+msgstr "Απαιτείται όνομα ομάδας"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Υπάρχει ήδη ομάδα με αυτό το όνομα σε αυτή τη διακονία"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Ένα θέμα είναι ένας φάκελος που η εκκλησία σας ανεβάζει στο Include/themes/ στον διακομιστή. Το προεπιλεγμένο θέμα συστήματος συνοδεύει το ChurchCRM."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Μια ρύθμιση μετάβασης. Οι παλιές σελίδες Ευκαιριών εθελοντών και οι νέες σελίδες Διακονιών είναι και οι δύο διαθέσιμες, και η εγγραφή ατόμου εμφανίζει και τις δύο καρτέλες Εθελοντής, με σαφή επισήμανση. Χρησιμοποιήστε την ενώ μεταφέρετε μια εκκλησία από το V1 στο V2 και μετά αλλάξτε μόνο σε V2."
+
+#: 
+msgid "A volunteer"
+msgstr "Ένας εθελοντής"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Ένας εθελοντής αρνήθηκε μια ανάθεση"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Ένας εθελοντής πρότεινε αντικαταστάτη"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Ένας διαχειριστής εθελοντών μπορεί να διευθύνει αυτή τη διακονία χωρίς παραχώρηση δικαιώματος. Προσθέστε έναν συντονιστή ώστε να τη διευθύνει κάποιος άλλος χωρίς να του δώσετε και όλες τις άλλες διακονίες."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Η ημερομηνία γάμου δεν μπορεί να είναι στο μέλλον."
+
+#: 
+msgid "Accepted"
+msgstr "Αποδεκτό"
+
+#: 
+msgid "Account deleted"
+msgstr "Ο λογαριασμός διαγράφηκε"
+
+#: 
+msgid "Account unlocked"
+msgstr "Ο λογαριασμός ξεκλειδώθηκε"
+
+#: 
+msgid "Accounts"
+msgstr "Λογαριασμοί"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Το πεδίο Ενεργό πρέπει να είναι αληθές ή ψευδές"
+
+#: 
+msgid "Active now"
+msgstr "Ενεργό τώρα"
+
+#: 
+msgid "Add All"
+msgstr "Προσθήκη όλων"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Προσθήκη όλων από την Επιλογή"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Προσθήκη εθελοντή"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Προσθήκη εθελοντών στην Επιλογή"
+
+#: 
+msgid "Add a family member"
+msgstr "Προσθήκη μέλους οικογένειας"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Προσθέστε πρώτα μια θέση και μετά επιστρέψτε για να ορίσετε πόσοι χρειάζονται."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Προσθέστε ένα δεύτερο βήμα στη σύνδεσή σας, ώστε ο κωδικός πρόσβασης μόνος του να μη φτάνει για πρόσβαση στον λογαριασμό σας."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Προσθέστε τουλάχιστον μία θέση σε αυτή την ομάδα και μετά επιλέξτε ποιος μπορεί να υπηρετήσει πού."
+
+#: 
+msgid "Add coordinator"
+msgstr "Προσθήκη συντονιστή"
+
+#: 
+msgid "Add from Cart"
+msgstr "Προσθήκη από την Επιλογή"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Προσθέστε πρώτα τις συναντήσεις του με το Νέα επαναλαμβανόμενη εκδήλωση στην καρτέλα Ημερολόγιο"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Προσθέστε άτομα στην Επιλογή πριν τα προσθέσετε ως εθελοντές"
+
+#: 
+msgid "Add position"
+msgstr "Προσθήκη θέσης"
+
+#: 
+msgid "Add schedule"
+msgstr "Προσθήκη προγράμματος"
+
+#: 
+msgid "Add team"
+msgstr "Προσθήκη ομάδας"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Προσθέστε τα στην καρτέλα Ημερολόγιο και μετά δημιουργήστε ξανά."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Προσθέστε τα στην καρτέλα Ημερολόγιο."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Προσθέστε αυτή τη διεύθυνση στην εφαρμογή ημερολογίου σας. Ενημερώνεται αυτόματα όταν αλλάζει το ημερολόγιο της εκκλησίας."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Προσθέστε εδώ τις εκδηλώσεις αυτής της διακονίας: μια εργάσιμη ημέρα, μια τάξη που συναντιέται κάθε Κυριακή. Μπαίνουν στο ημερολόγιο της εκκλησίας και μπορείτε να τις στελεχώσετε καθώς τις δημιουργείτε."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Προστέθηκε μέσω της Πύλης μελών και περιμένει έλεγχο: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Προστέθηκε — τώρα επιλέξτε τις θέσεις στις οποίες μπορεί να υπηρετήσει"
+
+#: 
+msgid "Address Line 2"
+msgstr "Γραμμή διεύθυνσης 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Κονσόλα διαχειριστή"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Απαιτείται δικαίωμα διαχειριστή"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Προβάλετε αυτή τη θέση στη σελίδα Ανοιχτές ευκαιρίες της Πύλης μελών."
+
+#: 
+msgid "All Teams"
+msgstr "Όλες οι ομάδες"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Επιτρέψτε στα μέλη να αλλάζουν τα δικά τους γενέθλια και των μελών της οικογένειάς τους."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Επίσης καρφιτσωμένο στο {{calendars}}, το οποίο μπορεί να αλλάξει μόνο όποιος έχει δικαίωμα Προσθήκης εκδηλώσεων."
+
+#: 
+msgid "An event title is required"
+msgstr "Απαιτείται τίτλος εκδήλωσης"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Απαιτείται είδος εκδήλωσης ή διακονία"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Ένα είδος εκδήλωσης που δεν υπάρχει πια"
+
+#: 
+msgid "Another ministry"
+msgstr "Άλλη διακονία"
+
+#: 
+msgid "Any event"
+msgstr "Οποιαδήποτε εκδήλωση"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Οτιδήποτε πρέπει να γνωρίζει ο συντονιστής σας"
+
+#: 
+msgid "Approve substitution"
+msgstr "Έγκριση αντικατάστασης"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Έγκριση αυτού του αντικαταστάτη"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Ζητήστε από έναν διαχειριστή εθελοντών να δημιουργήσει μια διακονία και να σας ορίσει συντονιστή της."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Ζητήστε από κάποιον να σας αντικαταστήσει"
+
+#: 
+msgid "Ask them"
+msgstr "Ζητήστε τους"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Ζητήθηκε — ο συντονιστής σας θα το επιβεβαιώσει."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Ανάθεση εθελοντή"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Ανατέθηκε εκτός του τρέχοντος σχεδίου"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Η ανάθεση ακυρώθηκε"
+
+#: 
+msgid "Assignment not found"
+msgstr "Η ανάθεση δεν βρέθηκε"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Απαιτείται τουλάχιστον ένα personId ή familyId"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Το πολύ %d προεπιλεγμένοι εθελοντές μπορούν να επιλεγούν για μία θέση"
+
+#: 
+msgid "Author"
+msgstr "Συγγραφέας"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Η εξουσία δίνεται στο άτομο, όχι σε μια σύνδεση, ώστε να μπορεί να παραχωρηθεί πριν αποκτήσει σύνδεση. Ένα άτομο του οποίου η σύνδεση είναι μόνο αυτοεξυπηρέτησης βλέπει μόνο το δικό του πρόγραμμα μέχρι να διευρύνει τον λογαριασμό του ένας διαχειριστής."
+
+#: 
+msgid "Automatic"
+msgstr "Αυτόματο"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Αναμονή απάντησης"
+
+#: 
+msgid "Back to Email History"
+msgstr "Επιστροφή στο Ιστορικό email"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Επιστροφή στον Πίνακα διακονίας"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Επιστροφή στις πραγματοποιήσεις"
+
+#: 
+msgid "Back to Person"
+msgstr "Επιστροφή στο άτομο"
+
+#: 
+msgid "Back to editing"
+msgstr "Επιστροφή στην επεξεργασία"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Επιστροφή στο πρόγραμμά μου"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Επιστροφή στην Πύλη μελών"
+
+#: 
+msgid "Back to your profile"
+msgstr "Επιστροφή στο προφίλ σας"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Εργασίες παρασκηνίου και παράδοση"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Τελευταία εκτέλεση εργασιών παρασκηνίου"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Οι εργασίες παρασκηνίου εκτελέστηκαν"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Ευχή γενεθλίων"
+
+#: 
+msgid "Both"
+msgstr "Και τα δύο"
+
+#: 
+msgid "Both (transition)"
+msgstr "Και τα δύο (μετάβαση)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Και τα δύο — V1 και V2 δίπλα-δίπλα (μετάβαση)"
+
+#: 
+msgid "Calendar address"
+msgstr "Διεύθυνση ημερολογίου"
+
+#: 
+msgid "Calendar saved"
+msgstr "Το ημερολόγιο αποθηκεύτηκε"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Ημερολόγια που εμφανίζει η Πύλη μελών στα μέλη, επιλεγμένα στο Διαχείριση → Πύλη μελών → Ημερολόγια."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Μπορεί αυτή η διακονία να παρέχει δασκάλους για το Κατηχητικό;"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Ακύρωση ανάθεσης"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Ακύρωση αυτής της ανάθεσης"
+
+#: 
+msgid "Cancelled"
+msgstr "Ακυρώθηκε"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Αλλάξτε τον κωδικό πρόσβασης με τον οποίο συνδέεστε ή προσθέστε ένα δεύτερο βήμα ώστε ο κωδικός μόνος του να μη φτάνει."
+
+#: 
+msgid "Change your password"
+msgstr "Αλλαγή του κωδικού πρόσβασης"
+
+#: 
+msgid "Checked in"
+msgstr "Άφιξη"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Παρόντες: %1$d από %2$d στον κατάλογο της τάξης"
+
+#: 
+msgid "Checked out"
+msgstr "Αναχώρηση"
+
+#: 
+msgid "Choose a class"
+msgstr "Επιλέξτε τάξη"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Επιλέξτε ημέρα του μήνα από 1 έως 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Επιλέξτε νέα φωτογραφία"
+
+#: 
+msgid "Choose a person"
+msgstr "Επιλέξτε άτομο"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Επιλέξτε εθελοντή"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Επιλέξτε πρώτα εθελοντή"
+
+#: 
+msgid "Choose an event"
+msgstr "Επιλέξτε ένα εκδήλωση..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Επιλέξτε είδος εκδήλωσης"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Επιλέξτε υπάρχον είδος εκδήλωσης"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Επιλέξτε τουλάχιστον ένα ημερολόγιο για συνδρομή."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Επιλέξτε τα ημερολόγια που θέλετε στη δική σας εφαρμογή ημερολογίου."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Επιλέξτε την ημερομηνία κάθε έτους ως ΜΜ-ΗΗ"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Επιλέξτε την ημερομηνία της εκδήλωσης"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Επιλέξτε την ημέρα της εβδομάδας"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Επιλέξτε την εκδήλωση που ακολουθεί αυτό το πρόγραμμα"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Επιλέξτε την εκδήλωση προς στελέχωση"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Επιλέξτε τις εκδηλώσεις προς διαγραφή"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Επιλέξτε τις εκδηλώσεις προς στελέχωση"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Επιλέξτε την πρώτη και την τελευταία ημερομηνία"
+
+#: 
+msgid "Choose the first date"
+msgstr "Επιλέξτε την πρώτη ημερομηνία"
+
+#: 
+msgid "Choose the last date"
+msgstr "Επιλέξτε την τελευταία ημερομηνία"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Επιλέξτε τη θέση του %1$s για την οποία είναι κατάλληλοι οι δάσκαλοι του %2$s. Δάσκαλοι: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Επιλέξτε την ομάδα στην οποία υπηρετεί αυτή η θέση"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Επιλέξτε το θέμα που βλέπουν τα μέλη, ενεργοποιήστε ή απενεργοποιήστε ενότητες της πύλης και δείτε ποιος τη χρησιμοποιεί."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Επιλέξτε εβδομαδιαία, μηνιαία ή ετήσια"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Επιλέξτε από πού προέρχονται οι ημερομηνίες του προγράμματος"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Επιλέξτε ποια εμπειρία εθελοντισμού χρησιμοποιεί αυτή η εκκλησία, πόσο νωρίς συμπληρώνονται τα προγράμματα και πότε στέλνονται οι υπενθυμίσεις, και ελέγξτε ότι οι εργασίες παρασκηνίου εκτελούνται."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Επιλέξτε ποιος καλύπτει κάθε θέση από προεπιλογή. Η επιλογή αποθηκεύεται στο πρόγραμμα: ανατίθενται σε κάθε πραγματοποίηση που δημιουργείται τώρα και σε όσες δημιουργεί αργότερα η ημερήσια συμπλήρωση, όσο παραμένουν κατάλληλοι, και τους ζητείται να απαντήσουν εκτός αν τους ορίσετε ως αποδεκτούς. Αφήστε μια θέση ανοιχτή για να την αναθέτετε εβδομάδα με την εβδομάδα."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Επιλέξτε ποιος σας αντικαθιστά."
+
+#: 
+msgid "Church Calendar"
+msgstr "Ημερολόγιο εκκλησίας"
+
+#: 
+msgid "Church Calendars"
+msgstr "Ημερολόγια εκκλησίας"
+
+#: 
+msgid "Church calendar"
+msgstr "Ημερολόγιο εκκλησίας"
+
+#: 
+msgid "Church events of a type"
+msgstr "Εκδηλώσεις εκκλησίας ενός είδους"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Οι εκδηλώσεις εκκλησίας ενός είδους προστίθενται στο ημερολόγιο της εκκλησίας. Ελέγξτε το είδος εκδήλωσης, τον τίτλο και τις ημερομηνίες του προγράμματος."
+
+#: 
+msgid "Church website"
+msgstr "Ιστότοπος εκκλησίας"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "Το ChurchCRM έχει δύο τρόπους διαχείρισης εθελοντών. Προορίζεται να χρησιμοποιείται μόνο ο ένας κάθε φορά· η ρύθμιση στα αριστερά αποφασίζει ποιον βλέπει αυτή η εκκλησία. Η εναλλαγή κρύβει ή εμφανίζει σελίδες και στοιχεία μενού — δεν διαγράφει ποτέ δεδομένα, ώστε να μπορείτε να επιστρέψετε."
+
+#: 
+msgid "Close event details"
+msgstr "Κλείσιμο λεπτομερειών εκδήλωσης"
+
+#: 
+msgid "Colour"
+msgstr "Χρώμα"
+
+#: 
+msgid "Completed"
+msgstr "Ολοκληρώθηκε"
+
+#: 
+msgid "Compose Message"
+msgstr "Σύνταξη μηνύματος"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Επιβεβαιώστε τα στοιχεία της οικογένειάς σας"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Ο συντονιστής αφαιρέθηκε"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Αντιγράψτε αυτή τη διεύθυνση και προσθέστε την στην εφαρμογή ημερολογίου σας ως νέα συνδρομή ημερολογίου."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Δεν ήταν δυνατή η δημιουργία της προεπισκόπησης."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Δεν ήταν δυνατή η καταμέτρηση των εκδηλώσεων της τάξης"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Δεν ήταν δυνατή η παραχώρηση του πεδίου"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Δεν ήταν δυνατή η φόρτωση των τάξεων Κατηχητικού"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Δεν ήταν δυνατή η φόρτωση του πίνακα"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Δεν ήταν δυνατή η φόρτωση των επιλογών εκδήλωσης"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Δεν ήταν δυνατή η φόρτωση των πραγματοποιήσεων"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Δεν ήταν δυνατή η φόρτωση των προγραμμάτων"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Δεν ήταν δυνατή η φόρτωση των προσεχών εκδηλώσεων"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Δεν ήταν δυνατή η φόρτωση των εθελοντών"
+
+#: 
+msgid "Could not load this email."
+msgstr "Δεν ήταν δυνατή η φόρτωση αυτού του email."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Δεν ήταν δυνατή η φόρτωση αυτής της διακονίας"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Δεν ήταν δυνατή η φόρτωση των εκδηλώσεων αυτής της διακονίας"
+
+#: 
+msgid "Could not load this team"
+msgstr "Δεν ήταν δυνατή η φόρτωση αυτής της ομάδας"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Δεν ήταν δυνατή η ανάκληση του πεδίου"
+
+#: 
+msgid "Create"
+msgstr "Δημιουργία"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Δημιουργήστε ένα πρόγραμμα και τις πραγματοποιήσεις του, και οι εβδομάδες προς συμπλήρωση θα εμφανιστούν εδώ."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Δημιουργήστε ένα πρόγραμμα και τις πραγματοποιήσεις του, και οι εβδομάδες προς στελέχωση θα εμφανιστούν εδώ."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Δημιουργήστε τουλάχιστον μία θέση για αυτή την ομάδα και μετά επιλέξτε ποιος μπορεί να υπηρετήσει πού."
+
+#: 
+msgid "Create ministry"
+msgstr "Δημιουργία διακονίας"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Η δημιουργία διακονίας απαιτεί πρόσβαση διαχειριστή εθελοντών"
+
+#: 
+msgid "Date and time"
+msgstr "Ημερομηνία και ώρα"
+
+#: 
+msgid "Date each year"
+msgstr "Ημερομηνία κάθε έτους"
+
+#: 
+msgid "Dates"
+msgstr "Ημερομηνίες"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Οι ημερομηνίες πρέπει να είναι σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ"
+
+#: 
+msgid "Day of the month"
+msgstr "Ημέρα του μήνα"
+
+#: 
+msgid "Day of the week"
+msgstr "Ημέρα της εβδομάδας"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Απενεργοποίηση διακονίας"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Απενεργοποίηση προγράμματος"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Απενεργοποιήστε αυτή τη διακονία πριν τη διαγράψετε."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Απενεργοποίηση της {{name}}; Μεταφέρεται στις Απενεργοποιημένες διακονίες στην πλαϊνή στήλη, όπου μπορεί να ενεργοποιηθεί ξανά ή να διαγραφεί. Δεν αφαιρείται τίποτα."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Απενεργοποίηση της {{name}}; Δεν δημιουργούνται νέες πραγματοποιήσεις γι' αυτήν, ούτε με τη Δημιουργία ούτε με την ημερήσια συμπλήρωση. Οι υπάρχουσες πραγματοποιήσεις και αναθέσεις παραμένουν και μπορεί να ενεργοποιηθεί ξανά."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Απενεργοποιημένες διακονίες"
+
+#: 
+msgid "Declined"
+msgstr "Αρνήθηκε"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Προεπιλεγμένο είδος εκδήλωσης για εκδηλώσεις διακονίας"
+
+#: 
+msgid "Default volunteers"
+msgstr "Προεπιλεγμένοι εθελοντές"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Οι προεπιλεγμένοι εθελοντές αποστέλλονται ως requirements: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Διαγραφή εκδηλώσεων"
+
+#: 
+msgid "Delete ministry"
+msgstr "Διαγραφή διακονίας"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Διαγραφή πραγματοποιήσεων"
+
+#: 
+msgid "Delete position"
+msgstr "Διαγραφή θέσης"
+
+#: 
+msgid "Delete schedule"
+msgstr "Διαγραφή προγράμματος"
+
+#: 
+msgid "Delete team"
+msgstr "Διαγραφή ομάδας"
+
+#: 
+msgid "Delete those events"
+msgstr "Διαγραφή αυτών των εκδηλώσεων"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Διαγραφή της {{name}} και όλων όσων περιέχει; Αφαιρούνται οι θέσεις, οι κατάλληλοι εθελοντές, οι ανάγκες στελέχωσης, τα προγράμματα, οι πραγματοποιήσεις και οι αναθέσεις της — συμπεριλαμβανομένων των παλαιότερων καταγραφών υπηρεσίας — και οι παραχωρήσεις υπεύθυνου ομάδας. Για να διατηρηθεί το ιστορικό, απενεργοποιήστε την ομάδα. Η ενέργεια δεν αναιρείται."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Διαγραφή της {{name}} και όλων όσων περιέχει; Αφαιρούνται οι ομάδες, οι θέσεις, τα προγράμματα, {{occurrences}} πραγματοποιήσεις και {{assignments}} αναθέσεις της — συμπεριλαμβανομένων των παλαιότερων καταγραφών υπηρεσίας — καθώς και οι παραχωρήσεις συντονιστή και υπεύθυνου ομάδας, η ομάδα της δεξαμενής εθελοντών και το ημερολόγιό της. Η ενέργεια δεν αναιρείται."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Διαγραφή της {{name}}; Αφαιρούνται μαζί της οι κατάλληλοι εθελοντές, οι ανάγκες στελέχωσης και οι αναθέσεις της — συμπεριλαμβανομένων των παλαιότερων καταγραφών υπηρεσίας. Για να διατηρηθεί το ιστορικό, απενεργοποιήστε τη θέση. Η ενέργεια δεν αναιρείται."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Διαγραφή της {{name}}; Η ενέργεια δεν αναιρείται."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Η διαγραφή διακονίας απαιτεί πρόσβαση διαχειριστή εθελοντών"
+
+#: 
+msgid "Developer mode"
+msgstr "Λειτουργία προγραμματιστή"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Έγινε — επιστρέψατε στη λίστα."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Να αφαιρεθούν οι δικές της ανάγκες στελέχωσης αυτής της πραγματοποίησης και να ακολουθεί ξανά το πρόγραμμά της;"
+
+#: 
+msgid "Due soon"
+msgstr "Λήγει σύντομα"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Κάθε ημερολόγιο πρέπει να δίνεται ως είδος και αναγνωριστικό."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Κάθε προεπιλεγμένος εθελοντής πρέπει να ορίζει ένα άτομο"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Κάθε ανάγκη στελέχωσης πρέπει να ορίζει μια θέση"
+
+#: 
+msgid "Edit event"
+msgstr "Επεξεργασία Event"
+
+#: 
+msgid "Edit ministry"
+msgstr "Επεξεργασία διακονίας"
+
+#: 
+msgid "Edit position"
+msgstr "Επεξεργασία θέσης"
+
+#: 
+msgid "Edit schedule"
+msgstr "Επεξεργασία προγράμματος"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Επεξεργασία αναγκών στελέχωσης"
+
+#: 
+msgid "Edit team"
+msgstr "Επεξεργασία ομάδας"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Επεξεργαστείτε το πρόγραμμα και επιλέξτε άλλη τάξη."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Επεξεργαστείτε το πρόγραμμα και επιλέξτε άλλο είδος εκδήλωσης."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Επεξεργαστείτε το πρόγραμμα και επιλέξτε την εκδήλωση που ακολουθεί."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Επεξεργαστείτε το πρόγραμμα και μετακινήστε την τελευταία ημερομηνία του ώστε να ακολουθεί περισσότερες εκδηλώσεις."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Επεξεργάστηκε μέσω της Πύλης μελών: %s"
+
+#: 
+msgid "Email %s"
+msgstr "Email προς %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "Email προς την οικογένεια %s"
+
+#: 
+msgid "Email History"
+msgstr "Ιστορικό email"
+
+#: 
+msgid "Email content"
+msgstr "Περιεχόμενο email"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Email προς όσους απουσίασαν: %s"
+
+#: 
+msgid "Email not found"
+msgstr "Το email δεν βρέθηκε"
+
+#: 
+msgid "Email preview"
+msgstr "Προεπισκόπηση email"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "Η αποστολή email είναι απενεργοποιημένη"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "Η αποστολή email δεν είναι ενεργοποιημένη. Ρυθμίστε το SMTP και ενεργοποιήστε το email πριν από την αποστολή."
+
+#: 
+msgid "Emails"
+msgstr "Email"
+
+#: 
+msgid "End time"
+msgstr "Ώρα Λήξης"
+
+#: 
+msgid "Enter counts"
+msgstr "Καταχώριση αριθμών"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Εισαγάγετε θέμα email…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Εισαγάγετε τον τρέχοντα κωδικό πρόσβασης και έπειτα τον νέο κωδικό δύο φορές."
+
+#: 
+msgid "Enter your message…"
+msgstr "Εισαγάγετε το μήνυμά σας…"
+
+#: 
+msgid "Event staffed"
+msgstr "Η εκδήλωση στελεχώθηκε"
+
+#: 
+msgid "Event title"
+msgstr "Τίτλος εκδήλωσης"
+
+#: 
+msgid "Event type"
+msgstr "Τύπος συμβάντος"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Κάθε email που έστειλε το ChurchCRM, με τα πιο πρόσφατα πρώτα. Ανοίξτε ένα άτομο για να δείτε το πλήρες ιστορικό του."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Κάθε θέση σε αυτό το διάστημα έχει τα άτομα που χρειάζεται."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Όλοι έχουν απαντήσει"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Όλοι στην Επιλογή γίνονται εθελοντές αυτής της διακονίας. Επιλέξτε μετά τις θέσεις τους."
+
+#: 
+msgid "Everything is correct"
+msgstr "Όλα είναι σωστά"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Η δημιουργία της προεπισκόπησης απέτυχε"
+
+#: 
+msgid "Failed to load email"
+msgstr "Η φόρτωση του email απέτυχε"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Η φόρτωση του ιστορικού email απέτυχε"
+
+#: 
+msgid "Failed to send email"
+msgstr "Η αποστολή του email απέτυχε"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "Η αποστολή του email απέτυχε. Δοκιμάστε ξανά ή χρησιμοποιήστε το «Άνοιγμα στον πελάτη email»."
+
+#: 
+msgid "Family Member"
+msgstr "Μέλος οικογένειας"
+
+#: 
+msgid "Family verification"
+msgstr "Οικογενειακή επαλήθευση"
+
+#: 
+msgid "File"
+msgstr "Αρχείο"
+
+#: 
+msgid "Fill"
+msgstr "Συμπλήρωση"
+
+#: 
+msgid "Fill by default with"
+msgstr "Προεπιλεγμένη συμπλήρωση με"
+
+#: 
+msgid "Fill this gap"
+msgstr "Συμπληρώστε αυτό το κενό"
+
+#: 
+msgid "Filled"
+msgstr "Συμπληρώθηκε"
+
+#: 
+msgid "Find a sub"
+msgstr "Βρείτε αντικαταστάτη"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Βρείτε εθελοντή"
+
+#: 
+msgid "Find an event"
+msgstr "Βρείτε μια εκδήλωση"
+
+#: 
+msgid "Find something to do"
+msgstr "Βρείτε κάτι να κάνετε"
+
+#: 
+msgid "Find something to help with"
+msgstr "Βρείτε κάτι στο οποίο μπορείτε να βοηθήσετε"
+
+#: 
+msgid "Findings"
+msgstr "Ευρήματα"
+
+#: 
+msgid "First date"
+msgstr "Πρώτη ημερομηνία"
+
+#: 
+msgid "Folder"
+msgstr "Φάκελος"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Όνομα φακέλου του θέματος της Πύλης μελών που θα χρησιμοποιηθεί, από το Include/themes/. Το «default» είναι το θέμα συστήματος που συνοδεύει το ChurchCRM."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Δημιουργήστε ξανά πιο κοντά στην πρώτη του ημερομηνία."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Δημιουργία πραγματοποιήσεων"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Να δημιουργηθεί νέα διεύθυνση ημερολογίου;"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Δώστε όνομα στη διακονία"
+
+#: 
+msgid "Give the position a name"
+msgstr "Δώστε όνομα στη θέση"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Δώστε την ώρα έναρξης και λήξης ως ΩΩ:ΛΛ"
+
+#: 
+msgid "Give the team a name"
+msgstr "Δώστε όνομα στην ομάδα"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Μετάβαση στον εθελοντισμό μου"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Μετάβαση στις ρυθμίσεις της Πύλης μελών"
+
+#: 
+msgid "Going"
+msgstr "Θα πάω"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Παραχωρήστε την κατάλληλη εξουσιοδότηση στη σελίδα της διακονίας και μετά αναθέστε τους εδώ."
+
+#: 
+msgid "Granted"
+msgstr "Παραχωρήθηκε"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Δείτε τι έχει καταχωρισμένο η εκκλησία για το νοικοκυριό σας και πείτε μας αν εξακολουθεί να είναι σωστό."
+
+#: 
+msgid "Headcount"
+msgstr "Αριθμός παρόντων"
+
+#: 
+msgid "Hello %s"
+msgstr "Γεια σας, %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Ζητείται βοήθεια"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση του «Ζητείται βοήθεια»"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Πόσο νωρίς δημιουργούνται πραγματοποιήσεις για τις εκδηλώσεις που ακολουθεί κάθε πρόγραμμα. Μια ημερήσια εργασία παρασκηνίου διατηρεί κάθε πρόγραμμα συμπληρωμένο μέχρι αυτό το σημείο."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Πόσες ώρες πριν από μια πραγματοποίηση εθελοντισμού στέλνεται το email υπενθύμισης. Ορίστε 0 για να μη σταλεί καμία υπενθύμιση. Η αποστολή εξαρτάται από την εκτέλεση των εργασιών παρασκηνίου· δείτε την τεκμηρίωση Εθελοντών για τη συνιστώμενη ρύθμιση cron."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Πόσες ώρες πριν από μια πραγματοποίηση στέλνεται το email υπενθύμισης. Ορίστε 0 για να μη σταλεί καμία υπενθύμιση."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Πόσα άτομα χρειάζεται κάθε θέση, κάθε φορά που εκτελείται. Μία ημερομηνία μπορεί να αλλάξει χωριστά αργότερα. Ένας προεπιλεγμένος εθελοντής ανατίθεται σε κάθε νέα πραγματοποίηση όσο παραμένει κατάλληλος· η αλλαγή του δεν αλλάζει ποτέ πραγματοποιήσεις που υπάρχουν ήδη."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Πόσους εθελοντές χρειάζεται κάθε πραγματοποίηση αυτού του προγράμματος. Αποεπιλέξτε μια θέση που το πρόγραμμα δεν χρησιμοποιεί ποτέ. Ένας προεπιλεγμένος εθελοντής ανατίθεται σε κάθε νέα πραγματοποίηση όσο παραμένει κατάλληλος· η αλλαγή του δεν αλλάζει ποτέ πραγματοποιήσεις που υπάρχουν ήδη."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Πόσους εθελοντές χρειάζεται αυτή η εκδήλωση. Αποεπιλέξτε μια θέση που δεν χρησιμοποιεί."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Πόσες εβδομάδες νωρίτερα δημιουργούνται πραγματοποιήσεις εθελοντισμού για τις εκδηλώσεις που ακολουθεί κάθε πρόγραμμα, από 1 έως 52. Μια ημερήσια εργασία παρασκηνίου διατηρεί κάθε πρόγραμμα συμπληρωμένο μέχρι αυτό το σημείο."
+
+#: 
+msgid "How often"
+msgstr "Πόσο συχνά"
+
+#: 
+msgid "How to correct this"
+msgstr "Πώς να το διορθώσετε"
+
+#: 
+msgid "I can't"
+msgstr "Δεν μπορώ"
+
+#: 
+msgid "I'd like to help"
+msgstr "Θα ήθελα να βοηθήσω"
+
+#: 
+msgid "I'll be there"
+msgstr "Θα είμαι εκεί"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Αν τα μηνύματα αποτυγχάνουν, ζητήστε από έναν διαχειριστή να ελέγξει τις Ρυθμίσεις διακονιών."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Αν δεν μπορείτε πλέον να έρθετε, αρνηθείτε το συντομότερο στο πρόγραμμα εθελοντισμού σας ώστε να καλυφθεί η θέση."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Αν μοιραστήκατε αυτή τη διεύθυνση κατά λάθος, αποκτήστε νέα. Η παλιά διεύθυνση παύει να λειτουργεί αμέσως."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "Τα τελευταία 15 λεπτά"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "Στη δεξαμενή εθελοντών"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Εσωτερικό: τελευταία ημερομηνία έως την οποία συμπληρώθηκαν τα προγράμματα εθελοντών μέχρι τον ορίζοντα προγραμματισμού (ΕΕΕΕ-ΜΜ-ΗΗ). Μην το επεξεργάζεστε χειροκίνητα."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Εσωτερικό: πότε συμπληρώθηκαν τελευταία φορά τα προγράμματα εθελοντών και πόσες πραγματοποιήσεις δημιουργήθηκαν. Μην το επεξεργάζεστε χειροκίνητα."
+
+#: 
+msgid "Is this still right?"
+msgstr "Εξακολουθεί να είναι σωστό;"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Οι πραγματοποιήσεις του θα δημιουργηθούν χωρίς θέσεις προς συμπλήρωση. Επεξεργαστείτε το πρόγραμμα για να προσθέσετε τις ανάγκες στελέχωσής του."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Διατήρησή τους στην τάξη {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Είδος"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Τελευταίες 24 ώρες"
+
+#: 
+msgid "Last 30 days"
+msgstr "Τελευταίες 30 ημέρες"
+
+#: 
+msgid "Last 7 days"
+msgstr "Τελευταίες 7 ημέρες"
+
+#: 
+msgid "Last attempt"
+msgstr "Τελευταία προσπάθεια"
+
+#: 
+msgid "Last check"
+msgstr "Τελευταίος έλεγχος"
+
+#: 
+msgid "Last date"
+msgstr "Τελευταία ημερομηνία"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Τελευταία εμφάνιση στην πύλη"
+
+#: 
+msgid "Last sign-in"
+msgstr "Τελευταία σύνδεση"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Αφήστε και τα δύο στο 0 για να υπηρετούν ακριβώς όταν γίνεται η εκδήλωση. Αν μετακινηθεί η εκδήλωση, μετακινούνται και οι εθελοντές."
+
+#: 
+msgid "Leave open"
+msgstr "Αφήστε ανοιχτό"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Επιτρέψτε στα μέλη να αλλάζουν τα δικά τους γενέθλια και των μελών της οικογένειάς τους στην Πύλη μελών."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Να επιτρέπεται στα μέλη η επεξεργασία γενεθλίων"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Ενημερώστε το γραφείο της εκκλησίας αν όλα τα παραπάνω εξακολουθούν να είναι σωστά."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Πείτε τους γιατί (προαιρετικά)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Επιτρέπει στους συντονιστές αυτής της διακονίας να προγραμματίζουν εθελοντές για αυτή την εκδήλωση — και να επεξεργάζονται την ίδια την εκδήλωση."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Φόρτωση ημερολογίου…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Διαχείριση διακονιών"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Διαχείριση των διακονιών μου"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Πρόσβαση στη Διαχείριση των διακονιών μου, με διακονία ή ομάδα προς διαχείριση"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Απαιτείται πρόσβαση στη Διαχείριση των διακονιών μου, με διακονία ή ομάδα προς διαχείριση"
+
+#: 
+msgid "Manage staffing"
+msgstr "Διαχείριση στελέχωσης"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Διαχειρίζεται από τη διακονία %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Διαχειρίζεται από τη διακονία {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Μέγιστο"
+
+#: 
+msgid "Member Portal"
+msgstr "Πύλη μελών"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Τα μέλη βλέπουν μια σελίδα «προσωρινά μη διαθέσιμο» μέχρι να διορθωθεί αυτό. Οι ίδιες λεπτομέρειες γράφτηκαν στο αρχείο καταγραφής της εφαρμογής και στο αρχείο σφαλμάτων του διακομιστή ιστού."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Τα μέλη βλέπουν μόνο τα ημερολόγια που είναι ενεργοποιημένα εδώ. Τα γενέθλια και οι επέτειοι εμφανίζουν μόνο μικρά ονόματα και το αρχικό του επωνύμου."
+
+#: 
+msgid "Message"
+msgstr "Μήνυμα"
+
+#: 
+msgid "Min"
+msgstr "Ελάχιστο"
+
+#: 
+msgid "Ministries"
+msgstr "Διακονίες"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Διακονίες που ζητούν βοήθεια"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Διακονίες που μπορούν να προσθέτουν εκδηλώσεις"
+
+#: 
+msgid "Ministry"
+msgstr "Διακονία"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Ημερολόγια διακονιών"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Συντονιστές διακονιών"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Πίνακας διακονίας"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Ρυθμίσεις διακονιών"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Ημερολόγιο διακονίας"
+
+#: 
+msgid "Ministry created"
+msgstr "Η διακονία δημιουργήθηκε"
+
+#: 
+msgid "Ministry management access"
+msgstr "Πρόσβαση διαχείρισης διακονιών"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Απαιτείται πρόσβαση διαχείρισης διακονιών"
+
+#: 
+msgid "Ministry name"
+msgstr "Όνομα διακονίας"
+
+#: 
+msgid "Ministry not found"
+msgstr "Η διακονία δεν βρέθηκε"
+
+#: 
+msgid "My Family"
+msgstr "Η οικογένειά μου"
+
+#: 
+msgid "My Teams"
+msgstr "Οι ομάδες μου"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Οι διακονίες και οι ομάδες μου"
+
+#: 
+msgid "My schedule"
+msgstr "Το πρόγραμμά μου"
+
+#: 
+msgid "My volunteering"
+msgstr "Ο εθελοντισμός μου"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Δώστε όνομα σε αυτή τη θέση στη σελίδα όπου τα μέλη αναζητούν κάτι στο οποίο να βοηθήσουν."
+
+#: 
+msgid "Needs an answer"
+msgstr "Χρειάζεται απάντηση"
+
+#: 
+msgid "Needs filling"
+msgstr "Χρειάζεται συμπλήρωση"
+
+#: 
+msgid "Never signed in"
+msgstr "Δεν έχει συνδεθεί ποτέ"
+
+#: 
+msgid "New account"
+msgstr "Νέος λογαριασμός"
+
+#: 
+msgid "New event"
+msgstr "Νέα εκδήλωση"
+
+#: 
+msgid "New ministry"
+msgstr "Νέα διακονία"
+
+#: 
+msgid "New record notification"
+msgstr "Ειδοποίηση νέας εγγραφής"
+
+#: 
+msgid "New recurring event"
+msgstr "Νέα επαναλαμβανόμενη εκδήλωση"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Χρειάζονται νέοι εθελοντές για τις παρακάτω θέσεις"
+
+#: 
+msgid "Newest first"
+msgstr "Πρώτα τα νεότερα"
+
+#: 
+msgid "Next on %s"
+msgstr "Επόμενο στις %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Κανένα ημερολόγιο δεν έχει κοινοποιηθεί ακόμη στα μέλη."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Κανένα ημερολόγιο δεν είναι ανοιχτό σε αυτή τη διακονία, επομένως οι εκδηλώσεις δεν θα εμφανίζονται σε κανένα ημερολόγιο."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Κανένα ημερολόγιο δεν κοινοποιείται στα μέλη."
+
+#: 
+msgid "No class"
+msgstr "Καμία τάξη"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Δεν υπάρχουν ακόμη στοιχεία επικοινωνίας."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Δεν υπάρχουν ακόμη συντονιστές"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Καμία ημερομηνία μεταξύ της πρώτης και της τελευταίας δεν ταιριάζει με την επανάληψη"
+
+#: 
+msgid "No email was sent."
+msgstr "Δεν στάλθηκε κανένα email."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Δεν έχουν σταλεί ακόμη email σε αυτή την εγγραφή."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Δεν έχει καταγραφεί ακόμη αριθμός παρόντων"
+
+#: 
+msgid "No longer needed"
+msgstr "Δεν χρειάζεται πλέον"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Κανένα μέλος δεν έχει συνδεθεί ακόμη στην Πύλη μελών."
+
+#: 
+msgid "No ministry"
+msgstr "Καμία διακονία"
+
+#: 
+msgid "No past events"
+msgstr "Δεν υπάρχουν παρελθούσες εκδηλώσεις"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Δεν έχει ανέβει φωτογραφία για αυτό το άτομο."
+
+#: 
+msgid "No photo was sent."
+msgstr "Δεν στάλθηκε φωτογραφία."
+
+#: 
+msgid "No positions yet"
+msgstr "Δεν υπάρχουν ακόμη θέσεις"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Δεν υπάρχουν ακόμη εξουσιοδοτήσεις."
+
+#: 
+msgid "No schedules yet"
+msgstr "Δεν υπάρχουν ακόμη προγράμματα"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Δεν έχουν οριστεί ανάγκες στελέχωσης"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Δεν υπάρχουν ανάγκες στελέχωσης: οι πραγματοποιήσεις που θα δημιουργηθούν δεν θα χρειάζονται κανέναν."
+
+#: 
+msgid "No substitution requests"
+msgstr "Δεν υπάρχουν αιτήματα αντικατάστασης"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Δεν υπάρχουν αντικαταστάσεις προς απόφαση"
+
+#: 
+msgid "No teams yet"
+msgstr "Δεν υπάρχουν ακόμη ομάδες"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "Δεν υπάρχουν προσεχείς εκδηλώσεις %1$s με τίτλο «%2$s» στο ημερολόγιο. Ένα πρόγραμμα ακολουθεί εκδηλώσεις που υπάρχουν ήδη."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Καμία προσεχής εκδήλωση δεν ταιριάζει"
+
+#: 
+msgid "No upcoming events"
+msgstr "Δεν υπάρχουν προσεχείς εκδηλώσεις"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "Δεν υπάρχουν προσεχείς εκδηλώσεις αυτού του είδους στο ημερολόγιο."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Δεν υπάρχουν προσεχείς εκδηλώσεις για επιλογή"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Δεν έχει ανατεθεί κανείς ακόμη"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Κανείς άλλος δεν έχει εκπαιδευτεί γι' αυτό — ενημερώστε τον συντονιστή σας."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Κανείς δεν έχει πει πόσους εθελοντές χρειάζεται κάθε θέση, επομένως δεν υπάρχει κάτι να συμπληρωθεί."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Κανείς σε αυτό το διάστημα δεν είναι ακόμη αναποφάσιστος."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Κανείς δεν είναι ακόμη κατάλληλος για αυτή τη θέση"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Κανείς δεν είναι ακόμη κατάλληλος για αυτή τη θέση, οπότε παραμένει ανοιχτή."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Κανένας από τους παραλήπτες δεν μπορεί να λάβει email"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Κανένα: το είδος εκδήλωσης επιλέγεται για κάθε εκδήλωση"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Δεν επιτρέπεται η προβολή αυτού του email"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Δεν επιτρέπεται η προβολή αυτής της οικογένειας"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Δεν επιτρέπεται η προβολή αυτού του ατόμου"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Δεν έχετε εξουσιοδότηση για αυτή την ανάθεση"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Δεν έχετε εξουσιοδότηση για αυτή τη διακονία"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Δεν έχετε εξουσιοδότηση για αυτή την πραγματοποίηση"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Δεν έχετε εξουσιοδότηση για αυτή τη θέση"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Δεν έχετε εξουσιοδότηση για αυτή την εξουσιοδότηση κατάλληλου εθελοντή"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Δεν έχετε εξουσιοδότηση για αυτή την απαίτηση"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Δεν έχετε εξουσιοδότηση για αυτό το πρόγραμμα"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Δεν έχετε εξουσιοδότηση για αυτό το αίτημα αντικατάστασης"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Δεν έχετε εξουσιοδότηση για αυτή την ομάδα"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Δεν έχετε εξουσιοδότηση να αναθέτετε εκδηλώσεις σε αυτή τη διακονία εθελοντών"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Δεν έχετε εξουσιοδότηση να αλλάξετε την εκδήλωση %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Δεν έχετε εξουσιοδότηση να αλλάξετε τη διακονία εθελοντών αυτής της εκδήλωσης"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Δεν έχετε εξουσιοδότηση να δημιουργήσετε εκδήλωση χωρίς διακονία εθελοντών που διαχειρίζεστε"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Δεν έχετε εξουσιοδότηση να τροποποιήσετε αυτή την εκδήλωση"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Δεν έχετε εξουσιοδότηση να καρφιτσώσετε εκδηλώσεις στο ημερολόγιο «%s»"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Δεν έχετε εξουσιοδότηση να αφαιρέσετε εκδηλώσεις από το ημερολόγιο «%s»"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Δεν έχετε εξουσιοδότηση να αφαιρέσετε τη διακονία εθελοντών από αυτή την εκδήλωση"
+
+#: 
+msgid "Not checked in"
+msgstr "Δεν έχει δηλώσει παρουσία"
+
+#: 
+msgid "Not found"
+msgstr "Δεν βρέθηκε"
+
+#: 
+msgid "Not in the pool"
+msgstr "Εκτός δεξαμενής"
+
+#: 
+msgid "Not now"
+msgstr "Όχι τώρα"
+
+#: 
+msgid "Not sent"
+msgstr "Δεν στάλθηκε"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Δεν έχει οριστεί: χρήση του «%s»"
+
+#: 
+msgid "Not staffed"
+msgstr "Χωρίς στελέχωση"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Δεν εθελοντεύει ακόμη"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Τίποτα δεν είχε αλλάξει, οπότε δεν αποθηκεύτηκε τίποτα."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "Δεν υπάρχει τίποτα στο ημερολόγιο για αυτό το διάστημα."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "Δεν υπάρχει τίποτα στο ημερολόγιο αυτή τη στιγμή."
+
+#: 
+msgid "Nothing is short"
+msgstr "Δεν λείπει τίποτα"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Δεν υπάρχει ακόμη τίποτα στη λίστα σας"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Δεν υπάρχει ακόμη τίποτα στη λίστα σας. Δείτε τι χρειάζεται συμπλήρωση."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Δεν υπάρχει τίποτα ανοιχτό αυτή τη στιγμή"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Δεν έχει προγραμματιστεί ακόμη τίποτα"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Δεν υπάρχει τίποτα προγραμματισμένο."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Δεν έχει στηθεί ακόμη τίποτα"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "Τίποτα που ανήκει σε αυτή τη διακονία δεν συνέβη τον τελευταίο χρόνο."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Δεν υπάρχει ακόμη τίποτα για εξουσιοδότηση"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Δεν αποθηκεύτηκε τίποτα. Ελέγξτε τα επισημασμένα πεδία."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Δεν αποθηκεύτηκε τίποτα. Δοκιμάστε ξανά."
+
+#: 
+msgid "Notification"
+msgstr "Ειδοποίηση"
+
+#: 
+msgid "Notifications"
+msgstr "Ειδοποιήσεις"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Η πραγματοποίηση δεν βρέθηκε"
+
+#: 
+msgid "Occurrences"
+msgstr "Πραγματοποιήσεις"
+
+#: 
+msgid "Offer to help"
+msgstr "Προσφορά βοήθειας"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Μία φορά την ημέρα κάθε ενεργό πρόγραμμα αποκτά πραγματοποιήσεις για τις εκδηλώσεις που ακολουθεί, έως %d εβδομάδα μπροστά, και ο προεπιλεγμένος εθελοντής κάθε θέσης ανατίθεται στις νέες όσο παραμένει κατάλληλος."
+msgstr[1] "Μία φορά την ημέρα κάθε ενεργό πρόγραμμα αποκτά πραγματοποιήσεις για τις εκδηλώσεις που ακολουθεί, έως %d εβδομάδες μπροστά, και ο προεπιλεγμένος εθελοντής κάθε θέσης ανατίθεται στις νέες όσο παραμένει κατάλληλος."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Μόλις ένα άτομο καταστεί κατάλληλο για μια θέση, εμφανίζεται εδώ, μαζί με τις ημερομηνίες που είναι προγραμματισμένο να υπηρετήσει."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Δημιουργείται μία πραγματοποίηση για κάθε εκδήλωση ημερολογίου της οποίας η Συνδεδεμένη διακονία είναι αυτή η τάξη."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Δημιουργείται μία πραγματοποίηση για κάθε ημερομηνία αυτής της εκδήλωσης. Μπορούν να επιλεγούν μόνο εκδηλώσεις που υπάρχουν ήδη στο ημερολόγιο."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Ένα από τα ημερολόγια δεν υπάρχει"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Μία από τις εκδηλώσεις δεν υπάρχει"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Ένα από αυτά τα ημερολόγια δεν κοινοποιείται στα μέλη."
+
+#: 
+msgid "One-time"
+msgstr "Εφάπαξ"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Μόνο τάξη Κατηχητικού μπορεί να συνδεθεί με ομάδα"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Μόνο ένας συντονιστής μπορεί να καταγράψει απάντηση για λογαριασμό άλλου"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Μόνο ένας συντονιστής αυτής της διακονίας μπορεί να δημιουργεί τις εκδηλώσεις της"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Μόνο ένας συντονιστής αυτής της διακονίας μπορεί να στελεχώνει τις εκδηλώσεις της"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "Μόνο ένας διαχειριστής εθελοντών μπορεί να αλλάξει τον υπεύθυνο ομάδας"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Μόνο ένας διαχειριστής εθελοντών μπορεί να το αλλάξει αυτό."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Μόνο ένας διαχειριστής εθελοντών μπορεί να αλλάξει αν μια διακονία παρέχει δασκάλους για το Κατηχητικό"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Μόνο ενήλικο μέλος της οικογένειάς σας μπορεί να αλλάξει αυτά τα στοιχεία. Επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Παρατίθενται μόνο άτομα εκπαιδευμένα για αυτό."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Μόνο ο ανατεθειμένος εθελοντής μπορεί να προτείνει αντικαταστάτη"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Παρατίθενται μόνο τα ημερολόγια στα οποία μπορεί να προσθέτει εκδηλώσεις αυτή η διακονία. Το δικό της ημερολόγιο είναι αρχικά επιλεγμένο."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Εμφανίζεται μόνο το πρώτο μέρος μιας πολύ μεγάλης λίστας. Περιορίστε το διάστημα για να δείτε τα υπόλοιπα."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Μόνο ο εθελοντής που πρότεινε αντικαταστάτη μπορεί να τον αποσύρει"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Ανοίξτε μια διακονία από το μενού Διακονίες, δημιουργήστε ένα πρόγραμμα και τις ημερομηνίες του, και οι εβδομάδες προς στελέχωση θα εμφανιστούν εδώ."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Ανοίξτε μια διακονία για να ορίσετε κάποιον συντονιστή της ή υπεύθυνο μιας από τις ομάδες της."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Άνοιγμα στην εφαρμογή ημερολογίου"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Δεν ήταν δυνατή η φόρτωση των ανοιχτών ευκαιριών."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Άνοιγμα των παραληπτών στην τοπική εφαρμογή email σας"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Άνοιγμα της Πύλης μελών"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Άνοιγμα του Πίνακα διακονίας"
+
+#: 
+msgid "Open the ministry"
+msgstr "Άνοιγμα της διακονίας"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Άνοιγμα της πραγματοποίησης"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Ανοίξτε την πραγματοποίηση για να αναθέσετε τα άτομα που χρειάζεστε."
+
+#: 
+msgid "Open this team"
+msgstr "Άνοιγμα αυτής της ομάδας"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Το άνοιγμα ημερολογίου σε διακονίες απαιτεί δικαίωμα Προσθήκης εκδηλώσεων"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Προαιρετικό. Όλοι οι κατάλληλοι για μια θέση αυτής της ομάδας γίνονται δάσκαλοι της τάξης και η σελίδα της τάξης δεν αλλάζει πλέον τους δασκάλους της."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Προαιρετικό. Η τάξη γίνεται η Συνδεδεμένη διακονία: ο κατάλογός της είναι όσοι δηλώνουν παρουσία και ένα πρόγραμμα για την τάξη βρίσκει αυτές τις εκδηλώσεις."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Πάνω από το μέγιστο: αφαιρέστε αυτόν ή αυξήστε το μέγιστο."
+
+#: 
+msgid "Overridden templates"
+msgstr "Παρακαμφθέντα πρότυπα"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Σελίδα %1$s από %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Σελίδα %d από %d"
+
+#: 
+msgid "Password reset"
+msgstr "ΕΠΑΝΑΦΟΡΑ ΚΩΔΙΚΟΥ"
+
+#: 
+msgid "Password reset link"
+msgstr "Σύνδεσμος επαναφοράς κωδικού πρόσβασης"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Οι κωδικοί πρόσβασης πρέπει να έχουν τουλάχιστον %s χαρακτήρα."
+msgstr[1] "Οι κωδικοί πρόσβασης πρέπει να έχουν τουλάχιστον %s χαρακτήρες."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Επιλέξτε μια προσεχή εκδήλωση ημερολογίου και πείτε ποιον χρειάζεται. Η εκδήλωση διατηρεί τη δική της ημερομηνία και ώρα· για να στελεχώσετε μια ολόκληρη σειρά, προσθέστε αντ' αυτού ένα πρόγραμμα."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Επιλέξτε κάποιον που έχει ήδη συμφωνήσει να πάρει τη θέση σας. Ο συντονιστής σας θα το επιβεβαιώσει."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Επιλέξτε ημερολόγια από τη λίστα."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Επιλέξτε αν τα στοιχεία σας χρειάζονται αλλαγή."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Επικοινωνήστε με το γραφείο της εκκλησίας για να διορθώσουμε τα αρχεία μας."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Εισαγάγετε τουλάχιστον δύο χαρακτήρες."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Ενημερώστε μας αν μπορείτε να έρθετε, αποδεχόμενοι ή αρνούμενοι στο πρόγραμμα εθελοντισμού σας."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Πείτε μας τι πρέπει να αλλάξει."
+
+#: 
+msgid "Portal settings"
+msgstr "Ρυθμίσεις πύλης"
+
+#: 
+msgid "Portal theme"
+msgstr "Θέμα πύλης"
+
+#: 
+msgid "Position"
+msgstr "Θέση"
+
+#: 
+msgid "Position added"
+msgstr "Η θέση προστέθηκε"
+
+#: 
+msgid "Position deleted"
+msgstr "Η θέση διαγράφηκε"
+
+#: 
+msgid "Position name"
+msgstr "Όνομα θέσης"
+
+#: 
+msgid "Position not found"
+msgstr "Η θέση δεν βρέθηκε"
+
+#: 
+msgid "Position saved"
+msgstr "Η θέση αποθηκεύτηκε"
+
+#: 
+msgid "Positions"
+msgstr "Θέσεις"
+
+#: 
+msgid "Positions still short"
+msgstr "Θέσεις που ακόμη λείπουν"
+
+#: 
+msgid "Proposed"
+msgstr "Προτάθηκε"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Προτεινόμενος αντικαταστάτης"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Εμφανίστε αυτή τη διακονία στη σελίδα Ανοιχτές ευκαιρίες της Πύλης μελών, όπου κάθε εθελοντής μπορεί να τη δει και να προσφερθεί να βοηθήσει. Μπαίνουν στη δεξαμενή εθελοντών και λαμβάνετε email."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Να οριστεί αντ' αυτού ο/η {{name}}; Ο αρχικός εθελοντής διατηρεί το ιστορικό του και ενημερώνεται."
+
+#: 
+msgid "Qualification not found"
+msgstr "Η εξουσιοδότηση κατάλληλου εθελοντή δεν βρέθηκε"
+
+#: 
+msgid "Qualified for"
+msgstr "Κατάλληλος για"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Οι κατάλληλοι εθελοντές μπορούν να γράφονται μόνοι τους στις ανοιχτές ημερομηνίες αυτής της θέσης. Απενεργοποιήστε το για θέσεις που πρέπει να αναθέτει μόνο υπεύθυνος ομάδας ή συντονιστής· η Πύλη μελών δεν θα τις προσφέρει."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Εξουσιοδότηση των τρεχόντων δασκάλων του για"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Εξουσιοδότηση για θέση"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Εξουσιοδοτήστε τους για μια θέση."
+
+#: 
+msgid "Reactivate"
+msgstr "Επανενεργοποίηση"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Διαβάστε τον οδηγό δημιουργίας θεμάτων"
+
+#: 
+msgid "Recent Emails"
+msgstr "Πρόσφατα email"
+
+#: 
+msgid "Recent Sends"
+msgstr "Πρόσφατες αποστολές"
+
+#: 
+msgid "Recipient"
+msgstr "Παραλήπτης"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Ο αριθμός παραληπτών (%d) υπερβαίνει το μέγιστο επιτρεπόμενο ανά αποστολή (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Οι παραλήπτες πρέπει να δίνονται ως personIds και familyIds, όχι ως διευθύνσεις email"
+
+#: 
+msgid "Record a decline"
+msgstr "Καταγραφή άρνησης"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Καταγραφή αποδοχής"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Να καταγραφεί ότι ο/η {{name}} είπε όχι; Η απάντηση αποθηκεύεται ως δική σας και η θέση ανοίγει ξανά."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Να καταγραφεί ότι ο/η {{name}} είπε ναι; Η απάντηση αποθηκεύεται ως δική σας, όχι δική του/της."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Καταγραφή: αποδέχθηκαν"
+
+#: 
+msgid "Record: they declined"
+msgstr "Καταγραφή: αρνήθηκαν"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Στρατολόγηση εθελοντών"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Η Στρατολόγηση εθελοντών πρέπει να είναι αληθής ή ψευδής"
+
+#: 
+msgid "Recruiting"
+msgstr "Στρατολόγηση"
+
+#: 
+msgid "Recurring"
+msgstr "Επαναλαμβανόμενο"
+
+#: 
+msgid "Reject"
+msgstr "Απόρριψη"
+
+#: 
+msgid "Reject substitution"
+msgstr "Απόρριψη αντικατάστασης"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Απόρριψη αυτού του αντικαταστάτη"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Χρόνος υπενθύμισης εκ των προτέρων (ώρες)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Υπενθύμιση: είστε προγραμματισμένος/η να υπηρετήσετε"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Οι υπενθυμίσεις και οι ειδοποιήσεις παραδίδονται μόνο όταν εκτελούνται οι εργασίες παρασκηνίου. Για έγκαιρη παράδοση, εκτελείτε το πρόγραμμα προγραμματισμένων εργασιών από το cron κάθε 15 λεπτά"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Αφαίρεση εθελοντή"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Αφαίρεση συντονιστή"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Αφαίρεση της τάξης από αυτούς"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Αφαίρεση του υπεύθυνου ομάδας"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Να αφαιρεθεί ο/η {{name}} από τη διακονία {{ministry}}; Αφαιρούνται όλες οι εξουσιοδοτήσεις του/της εδώ, βγαίνει από κάθε μελλοντική πραγματοποίηση, παύει να είναι προεπιλεγμένος εθελοντής στα προγράμματα αυτής της διακονίας και αφαιρείται από τη δεξαμενή εθελοντών."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Αφαιρέθηκε. {{qualifications}} εξουσιοδοτήσεις, {{assignments}} προσεχείς αναθέσεις, {{defaults}} προεπιλογές προγραμμάτων."
+
+#: 
+msgid "Repeats"
+msgstr "Επαναλαμβάνεται"
+
+#: 
+msgid "Requirement not found"
+msgstr "Η απαίτηση δεν βρέθηκε"
+
+#: 
+msgid "Reset link"
+msgstr "Σύνδεσμος επαναφοράς"
+
+#: 
+msgid "Response recorded"
+msgstr "Η απάντηση καταγράφηκε"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Εξετάστε το αίτημα στον πίνακα εθελοντών και εγκρίνετέ το ή απορρίψτε το."
+
+#: 
+msgid "Review this request"
+msgstr "Εξέταση αυτού του αιτήματος"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Εκτέλεση εργασιών παρασκηνίου τώρα"
+
+#: 
+msgid "SMTP test"
+msgstr "Δοκιμή SMTP"
+
+#: 
+msgid "Save calendars"
+msgstr "Αποθήκευση ημερολογίων"
+
+#: 
+msgid "Save changes"
+msgstr "Αποθήκευσε τις αλλαγές"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Αποθηκεύτηκε — αυτή η διακονία δεν ζητά πλέον βοήθεια"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Αποθηκεύτηκε — αυτή η διακονία ζητά πλέον βοήθεια"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Αποθηκεύτηκε. Τα μέλη βλέπουν τα ημερολόγια που είναι ενεργοποιημένα παραπάνω."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Το πρόγραμμα «{{name}}» δημιουργήθηκε."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Το πρόγραμμα «{{name}}» δημιουργήθηκε. Είναι ανενεργό, οπότε δεν δημιουργεί πραγματοποιήσεις μέχρι να ενεργοποιηθεί."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Το πρόγραμμα απενεργοποιήθηκε"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Το πρόγραμμα διαγράφηκε"
+
+#: 
+msgid "Schedule name"
+msgstr "Όνομα προγράμματος"
+
+#: 
+msgid "Schedule not found"
+msgstr "Το πρόγραμμα δεν βρέθηκε"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Το πρόγραμμα ενεργοποιήθηκε ξανά"
+
+#: 
+msgid "Schedule saved"
+msgstr "Το πρόγραμμα αποθηκεύτηκε"
+
+#: 
+msgid "Scheduled"
+msgstr "Προγραμματισμένο"
+
+#: 
+msgid "Schedules"
+msgstr "Προγράμματα"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Τελευταία συμπλήρωση προγραμμάτων"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Τα προγράμματα δεν έχουν πλέον δική τους επανάληψη ή ώρες· κάθε πραγματοποίηση ακολουθεί μια εκδήλωση ημερολογίου. Αφαιρέστε: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Τα προγράμματα δεν ορίζουν πλέον πόσο νωρίς δημιουργούνται: ο ορίζοντας προγραμματισμού στο Διαχείριση → Ρυθμίσεις διακονιών ισχύει για κάθε πρόγραμμα. Αφαιρέστε: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Ορίζοντας προγραμματισμού (εβδομάδες)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Η παραχώρηση πεδίου δεν βρέθηκε"
+
+#: 
+msgid "Search by name"
+msgstr "Αναζήτηση με όνομα"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Δείτε ολόκληρο το ημερολόγιο"
+
+#: 
+msgid "See what needs filling"
+msgstr "Δείτε τι χρειάζεται συμπλήρωση"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Επιλέξτε ένα ημερολόγιο για να κρύψετε ή να εμφανίσετε τις εκδηλώσεις του."
+
+#: 
+msgid "Select ministries..."
+msgstr "Επιλογή διακονιών..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Αυτοεγγραφή"
+
+#: 
+msgid "Self-assignable"
+msgstr "Με αυτόνομη ανάθεση"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Η αυτόνομη ανάθεση πρέπει να είναι αληθής ή ψευδής"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Λογαριασμοί αυτοεξυπηρέτησης"
+
+#: 
+msgid "Send"
+msgstr "Αποστολή"
+
+#: 
+msgid "Send Email"
+msgstr "Αποστολή email"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Αποστολή email από το ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Αποστολή ξανά του μηνύματος ανάθεσης"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Στείλτε τα ημερολόγια προς εμφάνιση ως λίστα."
+
+#: 
+msgid "Send to the church office"
+msgstr "Αποστολή στο γραφείο της εκκλησίας"
+
+#: 
+msgid "Send your answer"
+msgstr "Αποστολή της απάντησής σας"
+
+#: 
+msgid "Sent"
+msgstr "Στάλθηκε"
+
+#: 
+msgid "Sent by"
+msgstr "Στάλθηκε από"
+
+#: 
+msgid "Serving next"
+msgstr "Επόμενη υπηρεσία"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Ορισμός ως Αποδεκτού"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Ορισμός αναγκών στελέχωσης"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Εμφάνιση του «%s» στην Πύλη μελών"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Εμφάνιση στην Πύλη μελών"
+
+#: 
+msgid "Show past events"
+msgstr "Εμφάνιση παρελθουσών εκδηλώσεων"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Εμφάνιση του ημερολογίου της εκκλησίας"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Εμφάνιση του ημερολογίου της εκκλησίας στην Πύλη μελών."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Εμφάνιση της ενότητας ημερολογίου της εκκλησίας στην Πύλη μελών."
+
+#: 
+msgid "Show the next"
+msgstr "Εμφάνιση των επόμενων"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Εμφάνιση των ενοτήτων εθελοντισμού και ομάδων στην Πύλη μελών."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Εμφάνιση αυτής της διακονίας στη σελίδα Ανοιχτές ευκαιρίες"
+
+#: 
+msgid "Show volunteering"
+msgstr "Εμφάνιση εθελοντισμού"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Εμφάνιση των σελίδων εθελοντισμού και ομάδων στην Πύλη μελών."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Εμφάνιση όσων έχω ήδη κάνει"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Εμφανίζεται ακριβώς όπως το πληκτρολογείτε. Οι αλλαγές γραμμής διατηρούνται."
+
+#: 
+msgid "Sign up"
+msgstr "Εγγραφή"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Σύνδεση και ασφάλεια"
+
+#: 
+msgid "Signed in"
+msgstr "Συνδέθηκε"
+
+#: 
+msgid "Signed up"
+msgstr "Εγγράφηκε"
+
+#: 
+msgid "Sincerely"
+msgstr "Με εκτίμηση"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Ορισμένα από τα στοιχεία σας δεν ήταν δυνατό να αποθηκευτούν. Ελέγξτε τα επισημασμένα πεδία."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Ορισμένα από τα στοιχεία της οικογένειάς σας δεν ήταν δυνατό να αποθηκευτούν. Ελέγξτε τα επισημασμένα πεδία."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Καλύπτει κάποιος άλλος"
+
+#: 
+msgid "Something needs changing"
+msgstr "Κάτι χρειάζεται αλλαγή"
+
+#: 
+msgid "Something went wrong"
+msgstr "Κάτι πήγε στραβά"
+
+#: 
+msgid "Staff an event"
+msgstr "Στελέχωση εκδήλωσης"
+
+#: 
+msgid "Staff them"
+msgstr "Στελεχώστε τες"
+
+#: 
+msgid "Staff this event"
+msgstr "Στελέχωση αυτής της εκδήλωσης"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Στελέχωση αυτής της πραγματοποίησης"
+
+#: 
+msgid "Staffed"
+msgstr "Στελεχώθηκε"
+
+#: 
+msgid "Staffing"
+msgstr "Στελέχωση"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Η στελέχωση ορίζεται αφού δημιουργηθούν οι εκδηλώσεις"
+
+#: 
+msgid "Staffing needs"
+msgstr "Ανάγκες στελέχωσης"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Οι ανάγκες στελέχωσης αποθηκεύτηκαν"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Ξεκινήστε δημιουργώντας μια διακονία και μετά προσθέστε τις ομάδες και τις θέσεις που υπηρετούν σε αυτήν."
+
+#: 
+msgid "Start time"
+msgstr "Ωρα έναρξης"
+
+#: 
+msgid "Start typing a name"
+msgstr "Αρχίστε να πληκτρολογείτε ένα όνομα"
+
+#: 
+msgid "Statistics"
+msgstr "Στατιστικά"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Να πάψει ο/η {{name}} να συντονίζει τη διακονία {{ministry}}; Η σύνδεσή του/της και οι δικές του/της αναθέσεις δεν επηρεάζονται."
+
+#: 
+msgid "Subscribe"
+msgstr "Συνδρομή"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Συνδρομή στο ημερολόγιο"
+
+#: 
+msgid "Substitute"
+msgstr "Αντικαταστάτης"
+
+#: 
+msgid "Substitute approved"
+msgstr "Ο αντικαταστάτης εγκρίθηκε"
+
+#: 
+msgid "Substitute asked"
+msgstr "Ζητήθηκε αντικαταστάτης"
+
+#: 
+msgid "Substitute decision"
+msgstr "Απόφαση για αντικαταστάτη"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Προτάθηκε αντικαταστάτης"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Ο αντικαταστάτης απορρίφθηκε"
+
+#: 
+msgid "Substituted"
+msgstr "Αντικαταστάθηκε"
+
+#: 
+msgid "Substitution approved"
+msgstr "Η αντικατάσταση εγκρίθηκε"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Η αντικατάσταση απορρίφθηκε"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Το αίτημα αντικατάστασης δεν βρέθηκε"
+
+#: 
+msgid "Substitution requests"
+msgstr "Αιτήματα αντικατάστασης"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Τάξη Κατηχητικού"
+
+#: 
+msgid "System calendar"
+msgstr "Ημερολόγιο συστήματος"
+
+#: 
+msgid "System default"
+msgstr "Προεπιλογή συστήματος"
+
+#: 
+msgid "Take that back"
+msgstr "Ανάκληση"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Να αφαιρεθεί ο/η {{name}} από αυτή τη θέση; Δεν στέλνεται email· το πρόγραμμά του/της δείχνει την ημερομηνία ως μη απαραίτητη και η θέση ανοίγει ξανά."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Οι δάσκαλοι αυτής της τάξης διαχειρίζονται στις Διακονίες → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Ομάδα"
+
+#: 
+msgid "Team Leader"
+msgstr "Υπεύθυνος ομάδας"
+
+#: 
+msgid "Team added"
+msgstr "Η ομάδα προστέθηκε"
+
+#: 
+msgid "Team deleted"
+msgstr "Η ομάδα διαγράφηκε"
+
+#: 
+msgid "Team leader"
+msgstr "Υπεύθυνος ομάδας"
+
+#: 
+msgid "Team name"
+msgstr "Όνομα ομάδας"
+
+#: 
+msgid "Team not found"
+msgstr "Η ομάδα δεν βρέθηκε"
+
+#: 
+msgid "Team saved"
+msgstr "Η ομάδα αποθηκεύτηκε"
+
+#: 
+msgid "Teams"
+msgstr "Ομάδες"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Οι ομάδες είναι οι ομάδες ανθρώπων που υπηρετούν σε αυτή τη διακονία."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Ομάδες, θέσεις και τα άτομα που τις καλύπτουν"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Οι δέκα πιο πρόσφατες συνδέσεις"
+
+#: 
+msgid "Thank you"
+msgstr "Ευχαριστούμε!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Σας ευχαριστούμε που γραφτήκατε για να υπηρετήσετε"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Σας ευχαριστούμε που γραφτήκατε για να υπηρετήσετε. Είστε στο πρόγραμμα."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Ευχαριστούμε. Το γραφείο της εκκλησίας έχει την απάντησή σας."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Ευχαριστούμε. Το γραφείο της εκκλησίας θα το εξετάσει πριν προστεθεί."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Ευχαριστούμε που μας ενημερώσατε."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Ευχαριστούμε — ο συντονιστής ενημερώθηκε ότι θα θέλατε να βοηθήσετε ξανά."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Ευχαριστούμε — ο συντονιστής ενημερώθηκε ότι θα θέλατε να βοηθήσετε."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Ευχαριστούμε — είστε στη λίστα."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Αυτός ο φάκελος θέματος της Πύλης μελών δεν υπάρχει."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Αυτή η ανάθεση ανήκει σε κάποιον άλλον"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση αυτής της ανάθεσης"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Αυτά τα γενέθλια δεν είναι έγκυρη ημερομηνία."
+
+#: 
+msgid "That could not be saved."
+msgstr "Δεν ήταν δυνατή η αποθήκευση."
+
+#: 
+msgid "That could not be sent."
+msgstr "Δεν ήταν δυνατή η αποστολή."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Δεν ήταν δυνατή η προσθήκη αυτού του μέλους της οικογένειας. Ελέγξτε τα επισημασμένα πεδία."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Αυτή δεν είναι έγκυρη ημερομηνία."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Δεν ήταν δυνατή η φόρτωση αυτής της λίστας."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Αυτό το άτομο κατέχει ήδη αυτή τη θέση σε αυτή την πραγματοποίηση"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Αυτό το άτομο έχει ήδη ανατεθεί σε αυτή τη θέση σε αυτή την πραγματοποίηση"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Αυτό το άτομο δεν ανήκει σε δεξαμενή εθελοντών αυτής της διακονίας. Στείλτε ξανά με την παράκαμψη εκτός δεξαμενής για να το αναθέσετε παρ' όλα αυτά."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Αυτό το άτομο δεν ανήκει σε αυτή τη δεξαμενή εθελοντών"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Αυτό το άτομο δεν είναι κατάλληλο για αυτή τη θέση"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Δεν ήταν δυνατή η αποθήκευση αυτής της φωτογραφίας."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Αυτή η φωτογραφία είναι πολύ μεγάλη. Επιλέξτε μικρότερη."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Αυτή η θέση ανήκει σε άλλη διακονία"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Αυτή η θέση ανήκει σε άλλη ομάδα"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Αυτή η θέση είναι ήδη πλήρως στελεχωμένη"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Αυτή η θέση δεν στελεχώνεται σε αυτή την πραγματοποίηση"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Δεν ήταν δυνατή η καταγραφή αυτής της απάντησης"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Αυτή η κατάσταση δεν μπορεί να οριστεί απευθείας"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Δεν ήταν δυνατή η λήψη απόφασης για αυτό το αίτημα αντικατάστασης"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Αυτή η ομάδα ανήκει σε άλλη διακονία"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Δεν ήταν δυνατή η ενεργοποίηση αυτού του θέματος."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Δεν ήταν δυνατός ο έλεγχος αυτού του θέματος."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Αυτό το θέμα έχει σφάλματα, οπότε δεν ενεργοποιήθηκε."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Δεν ήταν δυνατή η ανάθεση αυτού του εθελοντή"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Αυτή η ημερομηνία γάμου δεν είναι έγκυρη ημερομηνία."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "Το πεδίο %s πρέπει να είναι ημερομηνία σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "Το πεδίο %s πρέπει να είναι ακέραιος αριθμός λεπτών"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "Το πεδίο %s πρέπει να είναι εντός %d λεπτών από την εκδήλωση"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Τα ημερολόγια της Πύλης μελών αποθηκεύτηκαν."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Η Πύλη μελών δεν μπόρεσε να ολοκληρώσει αυτό που ζητήσατε. Δοκιμάστε ξανά σε λίγα λεπτά."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Η Πύλη μελών είναι διαθέσιμη μόνο σε συνδεδεμένο άτομο, όχι σε πελάτες API."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Η Πύλη μελών έχει ρυθμιστεί στο θέμα «%s», το οποίο δεν υπάρχει πλέον στον διακομιστή. Τα μέλη βλέπουν σελίδα σφάλματος μέχρι να επιλέξετε θέμα που υπάρχει."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Η Πύλη μελών δεν είναι προσωρινά διαθέσιμη"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Το θέμα «%s» της Πύλης μελών δεν ήταν δυνατό να ενεργοποιηθεί επειδή περιέχει σφάλματα."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Δεν ήταν δυνατή η απόδοση του θέματος της Πύλης μελών"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Ο φάκελος θέματος «%s» της Πύλης μελών δεν βρέθηκε."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Το θέμα της Πύλης μελών άλλαξε."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Ο ρόλος Δάσκαλος της διακονίας %1$s δεν μπορεί να μετονομαστεί ή να διαγραφεί όσο οι δάσκαλοί της διαχειρίζονται στις Διακονίες → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Λείπει ο φάκελος του ενεργού θέματος"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Η διεύθυνση είναι επιλεγμένη — αντιγράψτε την με το πληκτρολόγιό σας."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Η διαδρομή πόρου «%s» δεν επιτρέπεται."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Δεν ήταν δυνατή η ακύρωση της ανάθεσης"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Το μήνυμα ανάθεσης θα σταλεί ξανά"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Η διεύθυνση ημερολογίου αντιγράφηκε."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Δεν ήταν δυνατή η φόρτωση των ημερολογίων. Δοκιμάστε ξανά."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Δεν ήταν δυνατή η αποθήκευση των ημερολογίων."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Δεν ήταν δυνατή η προσθήκη στην Επιλογή"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Η εκκλησία δεν σας έχει στείλει ακόμη email."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Το γραφείο της εκκλησίας ειδοποιήθηκε. Δοκιμάστε ξανά αργότερα."
+
+#: 
+msgid "The class does not exist"
+msgstr "Η τάξη δεν υπάρχει"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Η τάξη που ακολουθεί αυτό το πρόγραμμα δεν υπάρχει πια."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Το περιεχόμενο αυτού του email δεν αποθηκεύεται. Το ChurchCRM κρατά μόνο το κείμενο των μηνυμάτων που γράφονται στον συντάκτη email και των email εθελοντών."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Το περιεχόμενο αυτού του email δεν διατηρήθηκε."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Δεν ήταν δυνατή η προσθήκη του συντονιστή"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Δεν ήταν δυνατή η φόρτωση της λίστας συντονιστών"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Η ημερομηνία και η ώρα κάθε πραγματοποίησης προέρχονται από την εκδήλωση ημερολογίου της, οπότε η μετακίνηση της εκδήλωσης μετακινεί το πρόγραμμα."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Η παράμετρος days πρέπει να είναι ακέραιος αριθμός μεταξύ 1 και 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Ο προεπιλεγμένος εθελοντής πρέπει να είναι άτομο"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Οι προεπιλεγμένοι εθελοντές αποθηκεύονται στο πρόγραμμα και μπαίνουν στις πραγματοποιήσεις που δημιουργούνται από τώρα και στο εξής."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Οι προεπιλεγμένοι εθελοντές πρέπει να είναι λίστα"
+
+#: 
+msgid "The description is too long"
+msgstr "Η περιγραφή είναι πολύ μεγάλη"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Το τέλος του εύρους είναι πριν από την αρχή του."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Το τέλος του εύρους δεν είναι ημερομηνία."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Δεν ήταν δυνατή η στελέχωση της εκδήλωσης"
+
+#: 
+msgid "The event does not exist"
+msgstr "Η εκδήλωση δεν υπάρχει"
+
+#: 
+msgid "The event is inactive"
+msgstr "Η εκδήλωση είναι ανενεργή"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Η εκδήλωση πρέπει να λήγει μετά την έναρξή της"
+
+#: 
+msgid "The event title"
+msgstr "Ο τίτλος της εκδήλωσης"
+
+#: 
+msgid "The event title is too long"
+msgstr "Ο τίτλος της εκδήλωσης είναι πολύ μεγάλος"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Το είδος εκδήλωσης με το οποίο ξεκινούν οι νέες εκδηλώσεις μιας διακονίας. Όταν είναι κενό, ή όταν το είδος έχει διαγραφεί, χρησιμοποιείται το είδος με όνομα «Άλλο» αν υπάρχει."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Το είδος εκδήλωσης δεν υπάρχει"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Το είδος εκδήλωσης που ακολουθεί αυτό το πρόγραμμα δεν υπάρχει πια."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Οι εκδηλώσεις μπορούν να μετακινηθούν μόνο σε τάξη με την οποία συνδέεται η ομάδα"
+
+#: 
+msgid "The events could not be created"
+msgstr "Δεν ήταν δυνατή η δημιουργία των εκδηλώσεων"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Δεν ήταν δυνατή η διαγραφή των εκδηλώσεων"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Δεν ήταν δυνατή η στελέχωση των εκδηλώσεων"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Δεν ήταν δυνατή η αφαίρεση της παραχώρησης"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Η τελευταία ημερομηνία είναι πριν από την πρώτη"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Δεν ήταν δυνατή η φόρτωση της λίστας των επιλέξιμων εθελοντών"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Ο μέγιστος αριθμός δεν μπορεί να είναι μικρότερος από τον ελάχιστο"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Δεν ήταν δυνατή η ένταξη του μηνύματος στην ουρά"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Ο ελάχιστος αριθμός δεν μπορεί να είναι αρνητικός"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Δεν ήταν δυνατή η δημιουργία της διακονίας"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Δεν ήταν δυνατή η απενεργοποίηση της διακονίας"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Δεν ήταν δυνατή η διαγραφή της διακονίας"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Δεν ήταν δυνατή η επανενεργοποίηση της διακονίας"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση της διακονίας"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Δεν ήταν δυνατή η διαγραφή της πραγματοποίησης"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Η πραγματοποίηση δεν έχει πρόγραμμα"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Δεν ήταν δυνατή η δημιουργία των πραγματοποιήσεων"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Ο αρχικός εθελοντής αποδεσμεύεται και ο αντικαταστάτης παίρνει τη θέση. Και οι δύο ενημερώνονται."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Ο αρχικός εθελοντής διατηρεί τη θέση. Και οι δύο ενημερώνονται."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Η σελίδα που ζητήσατε δεν υπάρχει. Ίσως μετακινήθηκε ή αφαιρέθηκε."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Η θέση ανήκει σε άλλη διακονία"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Δεν ήταν δυνατή η διαγραφή της θέσης"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση της θέσης"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Η θέση εξακολουθεί να καλύπτεται, οπότε δεν χρειάζεται ενέργεια εκτός αν θέλετε να προσαρμόσετε τη σύνθεση."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Δεν ήταν δυνατή η αφαίρεση της εξουσιοδότησης"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση της εξουσιοδότησης"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Δεν ήταν δυνατή η φόρτωση των κατάλληλων εθελοντών"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Η επανάληψη πρέπει να ορίζει πώς επαναλαμβάνονται οι εκδηλώσεις"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Το αίτημα να υπηρετήσει ο/η %1$s στη θέση του/της %2$s εγκρίθηκε."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Το αίτημα να υπηρετήσει ο/η %1$s στη θέση του/της %2$s δεν εγκρίθηκε."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Η ίδια θέση αναφέρεται δύο φορές στις ανάγκες στελέχωσης"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Δεν ήταν δυνατή η απενεργοποίηση του προγράμματος"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Δεν ήταν δυνατή η διαγραφή του προγράμματος"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Δεν ήταν δυνατή η επανενεργοποίηση του προγράμματος"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση του προγράμματος"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Το πρόγραμμα ενημερώθηκε, οπότε δεν υπάρχει τίποτα άλλο να γίνει."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Το παράθυρο του προγράμματος λήγει πριν ξεκινήσει"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Δεν ήταν δυνατή η φόρτωση των αναγκών στελέχωσης του προγράμματος"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Δεν ήταν δυνατή η φόρτωση των αναγκών στελέχωσης"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Δεν ήταν δυνατή η επαναφορά των αναγκών στελέχωσης"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση των αναγκών στελέχωσης"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Οι ανάγκες στελέχωσης πρέπει να είναι λίστα"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Δεν ήταν δυνατή η φόρτωση του σχεδίου στελέχωσης"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Η αρχή του εύρους δεν είναι ημερομηνία."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Δεν ήταν δυνατή η λήψη απόφασης για την αντικατάσταση"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Δεν ήταν δυνατή η φόρτωση των αιτημάτων αντικατάστασης"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Οι δάσκαλοι μπορούν να εισαχθούν μόνο σε θέση αυτής της ομάδας"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Οι δάσκαλοι της τάξης %1$s διαχειρίζονται στις Διακονίες → %2$s → %3$s. Οι μαθητές μπορούν να αλλάζουν και εδώ."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Δεν ήταν δυνατή η διαγραφή της ομάδας"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση της ομάδας"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Η ομάδα δεν ανήκει σε αυτή τη διακονία"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Ο φάκελος θέματος δεν βρέθηκε."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Το είδος με το οποίο ξεκινά μια νέα εκδήλωση στην καρτέλα Ημερολόγιο μιας διακονίας. Μπορεί να αλλάξει για κάθε εκδήλωση, για παράδειγμα για μια τάξη που χρειάζεται κατηγορίες καταμέτρησης παρόντων."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση της ανάθεσης εθελοντή"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Η δεξαμενή εθελοντών της διακονίας %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Δεν ήταν δυνατή η αποθήκευση της αλλαγής ρύθμισης εθελοντισμού"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Το παράθυρο λήγει πριν ξεκινήσει"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Οι συντονιστές τους μπορούν να καρφιτσώνουν τις εκδηλώσεις της διακονίας τους σε αυτό το ημερολόγιο χωρίς δικαίωμα Προσθήκης εκδηλώσεων."
+
+#: 
+msgid "Theme"
+msgstr "Θέμα"
+
+#: 
+msgid "Themes"
+msgstr "Θέματα"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Τα θέματα παρέχονται από την εκκλησία σας, όχι από το ChurchCRM, και δεν επαληθεύονται από το έργο ChurchCRM."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Δεν υπάρχει ημερολόγιο εκκλησίας με αναγνωριστικό %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Δεν υπάρχει ημερολόγιο συστήματος με αναγνωριστικό %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Αυτά είναι τα στοιχεία που έχει καταχωρισμένα η εκκλησία για εσάς. Οι αλλαγές αποθηκεύονται αμέσως."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Αυτές είναι οι εθελοντικές ομάδες που φροντίζετε. Ανοίξτε μία για να ορίσετε τις θέσεις της, να πείτε ποιος μπορεί να υπηρετήσει πού και να συμπληρώσετε τις επόμενες εβδομάδες."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Αυτές οι εκδηλώσεις δεν αποτελούν μία σειρά: διαφέρουν σε τίτλο, είδος ή τάξη"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Αυτές οι διακονίες θα ήθελαν περισσότερα άτομα. Πείτε τους ότι ενδιαφέρεστε και κάποιος θα επικοινωνήσει μαζί σας."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Αυτές οι ανάγκες προέρχονται από το πρόγραμμα. Η αποθήκευση εδώ αλλάζει μόνο αυτή την πραγματοποίηση."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Αυτοί οι αριθμοί μετρούν μόνο λογαριασμούς αυτοεξυπηρέτησης: άτομα των οποίων η σύνδεση έχει πρόσβαση στην Πύλη μελών και μόνο σε αυτήν."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Αυτά τα άτομα είναι ακόμη ανατεθειμένα, αλλά η θέση που κατέχουν δεν είναι πια μέρος του σχεδίου στελέχωσης αυτής της ημερομηνίας."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Αυτά τα άτομα είναι ακόμη ανατεθειμένα, αλλά η θέση που κατέχουν δεν είναι πια μέρος του σχεδίου στελέχωσης αυτής της πραγματοποίησης."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Αυτές οι προγραμματισμένες θέσεις χρειάζονται ακόμη κάποιον."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Αυτές οι ομάδες της διακονίας %1$s συνδέονται με τάξη Κατηχητικού: %2$s. Αποσυνδέστε τες πρώτα."
+
+#: 
+msgid "They could not be added"
+msgstr "Δεν ήταν δυνατή η προσθήκη τους"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Δεν ήταν δυνατή η αφαίρεσή τους από αυτή τη διακονία"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Τελειώνουν %d λεπτό μετά τη λήξη της εκδήλωσης."
+msgstr[1] "Τελειώνουν %d λεπτά μετά τη λήξη της εκδήλωσης."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Τελειώνουν %d λεπτό πριν από τη λήξη της εκδήλωσης."
+msgstr[1] "Τελειώνουν %d λεπτά πριν από τη λήξη της εκδήλωσης."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Ήταν ήδη εθελοντές εδώ"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Αυτή η ανάθεση είναι %1$s και δεν μπορεί να αλλάξει σε %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Αυτή η ανάθεση δεν είναι πλέον ενεργή"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Αυτό το email δεν υπάρχει στο ιστορικό σας."
+
+#: 
+msgid "This event has already happened"
+msgstr "Αυτή η εκδήλωση έχει ήδη πραγματοποιηθεί"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Αυτό πηγαίνει στο γραφείο της εκκλησίας για έλεγχο. Μέχρι να το εγκρίνει κάποιο μέλος του προσωπικού, το νέο μέλος οικογένειας εμφανίζεται εδώ ως σε αναμονή ελέγχου."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Αυτή η ομάδα είναι η δεξαμενή μιας διακονίας εθελοντών και διαγράφεται μαζί με τη διακονία"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Αυτή η ομάδα είναι η δεξαμενή εθελοντών της διακονίας %s και διαχειρίζεται από αυτήν τη διακονία."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Αυτή η ομάδα είναι η δεξαμενή εθελοντών της διακονίας %s. Διαχειρίζεται από αυτήν τη διακονία."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Αυτή η εγκατάσταση δεν έχει ακόμη ημερολόγια."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Αυτή είναι μια υπενθύμιση ότι είστε προγραμματισμένος/η να υπηρετήσετε σύντομα."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Αυτό δεν είναι έγκυρο όνομα φακέλου θέματος."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Αυτή δεν είναι μία από τις ημερομηνίες της ομάδας σας."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Αυτή δεν είναι μία από τις ομάδες σας."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Εδώ η εκκλησία στέλνει αλληλογραφία και εδώ ποιον καλεί για το νοικοκυριό σας."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Αυτός είναι ο λογαριασμός σας στην εκκλησία. Όσα μπορείτε να κάνετε για τον εαυτό σας και την οικογένειά σας βρίσκονται εδώ."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Αυτή η διακονία δεν έχει προσεχείς εκδηλώσεις στο ημερολόγιο."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Αυτή η διακονία δεν έχει προσεχείς εκδηλώσεις με τίτλο «%s». Ένα πρόγραμμα ακολουθεί εκδηλώσεις που υπάρχουν ήδη: προσθέστε τες πρώτα στην καρτέλα Ημερολόγιο της διακονίας."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Αυτή η διακονία δεν έχει ομάδα δεξαμενής εθελοντών"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Αυτή η διακονία δεν ζητά βοήθεια αυτή τη στιγμή"
+
+#: 
+msgid "This ministry's events"
+msgstr "Εκδηλώσεις αυτής της διακονίας"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Εκδηλώσεις αυτής της διακονίας (δεν έχει επιλεγεί ακόμη εκδήλωση)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Αυτή η πραγματοποίηση ακολουθεί ξανά το πρόγραμμά της"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Αυτή η πραγματοποίηση έχει ήδη γίνει"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Αυτή η πραγματοποίηση έχει ήδη γίνει και οι αναθέσεις της δεν μπορούν πλέον να αλλάξουν"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Αυτή η πραγματοποίηση ακυρώθηκε"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Αυτή η πραγματοποίηση έχει δικές της ανάγκες στελέχωσης, ξεχωριστές από το πρόγραμμά της."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Αυτή η σελίδα δεν είναι μέρος του λογαριασμού σας. Αν νομίζετε ότι θα έπρεπε, ρωτήστε το γραφείο της εκκλησίας."
+
+#: 
+msgid "This page was not found"
+msgstr "Αυτή η σελίδα δεν βρέθηκε"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Αυτό το τμήμα της Πύλης μελών είναι για υπεύθυνους εθελοντικών ομάδων."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Αυτή η θέση ανατίθεται από τον υπεύθυνο ομάδας ή τον συντονιστή, όχι με εγγραφή"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Αυτό το πρόγραμμα δεν μπορεί να διαγραφεί: %d αναθέσεις εθελοντών αναφέρονται ακόμη στις πραγματοποιήσεις του."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Αυτό το πρόγραμμα δεν έχει ακόμη ανάγκες στελέχωσης"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Αυτό το πρόγραμμα είναι ανενεργό. Ενεργοποιήστε το ξανά για να δημιουργήσει πραγματοποιήσεις."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "Για αυτό το αίτημα αντικατάστασης έχει ήδη ληφθεί απόφαση"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Αυτή η ομάδα δεν έχει ακόμη θέσεις"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Αυτή η ομάδα στελεχώνει ήδη αυτή την εκδήλωση"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Αυτό το πρότυπο ζητά το αρχείο «%s», το οποίο δεν περιέχει το θέμα."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Αυτό το θέμα δεν μπορεί να ενεργοποιηθεί"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Αυτό το θέμα δεν έχει προβλήματα."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Αυτή η έκδοση του ChurchCRM δεν χρησιμοποιεί πρότυπο σε αυτή τη διαδρομή, οπότε η παράκαμψη δεν αποδίδεται ποτέ."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Επιλέξτε τους στην καρτέλα Εθελοντές αυτής της ομάδας και μετά αναθέστε τους εδώ."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Οι επιλογές αποθηκεύονται καθώς τις κάνετε."
+
+#: 
+msgid "Times come from this event"
+msgstr "Οι ώρες προέρχονται από αυτή την εκδήλωση"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Συμπληρώνει κάθε πρόγραμμα, στέλνει ό,τι βρίσκεται στην ουρά και κλείνει τις ολοκληρωμένες πραγματοποιήσεις, χωρίς να περιμένει την επόμενη προγραμματισμένη εκτέλεση."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Να απορριφθεί ο/η {{name}}; Ο αρχικός εθελοντής παραμένει και ενημερώνεται."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Απενεργοποιήστε την κρυφή μνήμη προτύπων της Πύλης μελών και εκτυπώστε το όνομα κάθε προτύπου σε σχόλιο HTML. Για σχεδιαστές θεμάτων· αφήστε το απενεργοποιημένο στην κανονική χρήση."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Ενεργοποιήστε το για μια διακονία της οποίας οι ομάδες διδάσκουν τάξεις Κατηχητικού. Οι ομάδες της μπορούν τότε να συνδεθούν με τάξη, και τα προγράμματα και οι εκδηλώσεις της να χρησιμοποιούν μία."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Απενεργοποιεί την κρυφή μνήμη προτύπων της πύλης και εκτυπώνει το όνομα κάθε προτύπου σε σχόλιο HTML. Για σχεδιαστές θεμάτων· αφήστε το απενεργοποιημένο στην κανονική χρήση."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Δύο Παράγοντες Ελέγχου Ταυτότητας"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Μη συμπληρωμένες θέσεις"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Άγνωστο σφάλμα παράδοσης"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Άγνωστη κατάσταση πραγματοποίησης"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Άγνωστος τρόπος σύνδεσης προγράμματος"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Άγνωστη διακονία εθελοντών"
+
+#: 
+msgid "Until"
+msgstr "Έως"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Προσεχής διαθεσιμότητα"
+
+#: 
+msgid "Update your details"
+msgstr "Ενημερώστε τα στοιχεία σας"
+
+#: 
+msgid "Update your family details"
+msgstr "Ενημερώστε τα στοιχεία της οικογένειάς σας"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Χρησιμοποιήστε τη Στελέχωση αυτής της εκδήλωσης για να στελεχώσετε μία μεμονωμένη εκδήλωση"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Χρήση των αναγκών του προγράμματος"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Ο χρήστης πρέπει να έχει δικαίωμα Προσθήκης εκδηλώσεων ή να συντονίζει διακονία εθελοντών, και η ενότητα Εκδηλώσεις πρέπει να είναι ενεργοποιημένη"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Ο χρήστης πρέπει να έχει δικαίωμα Προσθήκης εκδηλώσεων ή να συντονίζει τη διακονία εθελοντών στην οποία ανήκει αυτό το ημερολόγιο"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — Ευκαιρίες εθελοντών (παλαιό)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — παλαιές Ευκαιρίες εθελοντών"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — Διακονίες"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — Διαχείριση εθελοντών"
+
+#: 
+msgid "Valid"
+msgstr "Έγκυρο"
+
+#: 
+msgid "Validation"
+msgstr "Επικύρωση"
+
+#: 
+msgid "View event"
+msgstr "Προβολή Εκδήλωσης"
+
+#: 
+msgid "View my schedule"
+msgstr "Προβολή του προγράμματός μου"
+
+#: 
+msgid "View only"
+msgstr "Μόνο προβολή"
+
+#: 
+msgid "View person"
+msgstr "Προβολή Μέλους"
+
+#: 
+msgid "View the event"
+msgstr "Προβολή της εκδήλωσης"
+
+#: 
+msgid "View this email"
+msgstr "Προβολή αυτού του email"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Εθελοντής (παλαιό)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Η Διαχείριση εθελοντών V2 δεν είναι ενεργοποιημένη"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Διακονία εθελοντών"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Ανάθεση εθελοντή"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Ο εθελοντής αρνήθηκε"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Εμπειρία εθελοντισμού"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Εθελοντικές θέσεις χρειάζονται ακόμη συμπλήρωση"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Υπενθύμιση εθελοντή"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Εγγραφή εθελοντή"
+
+#: 
+msgid "Volunteer times"
+msgstr "Ώρες εθελοντών"
+
+#: 
+msgid "Volunteering"
+msgstr "Εθελοντισμός"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Εθελοντισμός οργανωμένος όπως τον τρέχει μια εκκλησία. Κάθε διακονία έχει ομάδες και θέσεις· τα άτομα είναι κατάλληλα για θέσεις και ανήκουν στην ομάδα δεξαμενής της διακονίας· τα προγράμματα ακολουθούν τις εκδηλώσεις του ημερολογίου και παράγουν πραγματοποιήσεις με ημερομηνία και απαιτήσεις στελέχωσης· οι συντονιστές αναθέτουν άτομα, τα οποία αποδέχονται, αρνούνται ή προτείνουν αντικαταστάτη· υπενθυμίσεις και ειδοποιήσεις αποστέλλονται με email. Οι διαχειριστές και οι χρήστες με το δικαίωμα Διαχείριση διακονιών βλέπουν κάθε διακονία και μπορούν να τις δημιουργούν, να τις απενεργοποιούν και να τις διαγράφουν. Ο συντονιστής μιας διακονίας λαμβάνει αντί γι' αυτό το δικαίωμα Διαχείριση των διακονιών μου: η επικεφαλίδα Διακονίες στην πλαϊνή στήλη δείχνει τότε μόνο τις διακονίες που συντονίζει. Ένας υπεύθυνος ομάδας διευθύνει την ομάδα του από την Πύλη μελών. Τα μέλη χρησιμοποιούν την Πύλη μελών για να βλέπουν το πρόγραμμά τους, να απαντούν, να γράφονται και να προσφέρουν βοήθεια."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Εθελοντές που ανατέθηκαν: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Λήξη εθελοντών"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Εθελοντές που χρειάζονται"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Εθελοντές της διακονίας %s έχουν ανατεθεί σε αυτές τις εκδηλώσεις, οπότε δεν μπορούν να διαγραφούν εδώ. Ζητήστε από αυτή τη διακονία να αφαιρέσει τη στελέχωσή της ή από κάποιον που διαχειρίζεται το ημερολόγιο."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Εθελοντές της {{names}} έχουν ανατεθεί σε ορισμένες από αυτές. Εκτός αν διαχειρίζεστε το ημερολόγιο, η διαγραφή απορρίπτεται μέχρι να αφαιρεθεί αυτή η στελέχωση."
+
+#: 
+msgid "Volunteers start"
+msgstr "Έναρξη εθελοντών"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Οι εθελοντές ξεκινούν %d λεπτό μετά την έναρξη της εκδήλωσης."
+msgstr[1] "Οι εθελοντές ξεκινούν %d λεπτά μετά την έναρξη της εκδήλωσης."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Οι εθελοντές ξεκινούν %d λεπτό πριν από την έναρξη της εκδήλωσης."
+msgstr[1] "Οι εθελοντές ξεκινούν %d λεπτά πριν από την έναρξη της εκδήλωσης."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Αναμονή απάντησης"
+
+#: 
+msgid "Waiting for review"
+msgstr "Σε αναμονή ελέγχου"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Αναμονή επιβεβαίωσης από τον συντονιστή σας."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Θα σας στείλουμε email όταν κάτι χρειαστεί συμπλήρωση."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Θα θέλαμε περισσότερη βοήθεια τα πρωινά της Κυριακής — δεν χρειάζεται εμπειρία."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Καλώς ήρθατε, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Τι χρειάζεται αλλαγή;"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Τι χρειάζεται την προσοχή σας αυτή την εβδομάδα"
+
+#: 
+msgid "What the check found"
+msgstr "Τι βρήκε ο έλεγχος"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Ποιες είναι οι εμπειρίες εθελοντισμού"
+
+#: 
+msgid "What you want to say"
+msgstr "Τι θέλετε να πείτε"
+
+#: 
+msgid "When"
+msgstr "Πότε"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Όταν ένας εθελοντής προτείνει κάποιον να πάρει τη θέση του, εμφανίζεται εδώ για να το εγκρίνετε ή να το απορρίψετε."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Όταν ένας εθελοντής προτείνει κάποιον να πάρει τη θέση του, εμφανίζεται εδώ για να το εγκρίνετε."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Όταν κάποιος σας βάλει σε ομάδα ή γραφτείτε μόνοι σας, θα εμφανιστεί εδώ."
+
+#: 
+msgid "Where"
+msgstr "Πού"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Από πού προέρχονται οι ημερομηνίες"
+
+#: 
+msgid "Where we reach you"
+msgstr "Πώς επικοινωνούμε μαζί σας"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Ποια εμπειρία Διαχείρισης εθελοντών είναι ενεργή. Το V1 είναι η παλαιά λειτουργία Ευκαιρίες εθελοντών· το V2 είναι η νέα ροή προγραμματισμού και ανάθεσης. Το «Και τα δύο» εμφανίζει τα δύο δίπλα-δίπλα κατά τη μετάβαση."
+
+#: 
+msgid "Which events"
+msgstr "Ποιες εκδηλώσεις"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Ποια εμπειρία εθελοντισμού χρησιμοποιεί αυτή η εκκλησία. Η κάρτα δεξιά εξηγεί κάθε επιλογή."
+
+#: 
+msgid "Who is covering"
+msgstr "Ποιος καλύπτει"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Ποιος χρειάζεται, ποιος είναι σε υπηρεσία και τι λείπει ακόμη"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Όποιος υπηρέτησε λιγότερο πρόσφατα εμφανίζεται πρώτος."
+
+#: 
+msgid "Work Email"
+msgstr "Email εργασίας"
+
+#: 
+msgid "Yearly"
+msgstr "Ετήσια"
+
+#: 
+msgid "You"
+msgstr "Εσείς"
+
+#: 
+msgid "You are already helping that day"
+msgstr "Βοηθάτε ήδη εκείνη την ημέρα"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "Βοηθάτε ήδη εκείνη την ημέρα ως {{what}}. Να γραφτείτε και σε αυτό;"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Δεν επιτρέπεται να το αλλάξετε. Επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Δεν συσχετίζεστε αυτή τη στιγμή με οικογένεια"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Δεν ανήκετε ακόμη σε εγγραφή οικογένειας."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Είστε στη λίστα — ευχαριστούμε."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Μπορείτε να το εξετάσετε ή να το αλλάξετε στο πρόγραμμα εθελοντισμού σας."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Δεν μπορείτε να ανοίξετε αυτή τη σελίδα"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Δεν μπορείτε να προτείνετε τον εαυτό σας ως δικό σας αντικαταστάτη"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Δεν ήταν δυνατή η εγγραφή σας σε αυτό."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Δεν είστε ακόμη υπεύθυνος εθελοντικής ομάδας."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Έχετε νέα διεύθυνση ημερολογίου. Η παλιά δεν λειτουργεί πλέον."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Έχετε προγραμματιστεί να υπηρετήσετε"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Έχετε προγραμματιστεί να υπηρετήσετε."
+
+#: 
+msgid "You lead this"
+msgstr "Εσείς το διευθύνετε"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Μπορείτε να δημιουργήσετε πρόγραμμα μόνο για ομάδα που διευθύνετε"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Θα επιστρέψετε στη λίστα για αυτό."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Ο λογαριασμός σας δεν συνδέεται με εγγραφή ατόμου. Επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Η συνδρομή σας στο ημερολόγιο αποθηκεύτηκε."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Η τρέχουσα διεύθυνσή σας θα παύσει να λειτουργεί αμέσως. Όποιος την έχει λάβει από εσάς θα χρειαστεί τη νέα."
+
+#: 
+msgid "Your details"
+msgstr "Τα στοιχεία σας"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Τα στοιχεία σας αποθηκεύτηκαν."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Τα στοιχεία της οικογένειάς σας αποθηκεύτηκαν."
+
+#: 
+msgid "Your photo"
+msgstr "Η φωτογραφία σας"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Η φωτογραφία σας αποθηκεύτηκε."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Δεν ήταν δυνατή η φόρτωση του προγράμματός σας."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Η συνεδρία σας έληξε. Συνδεθείτε ξανά."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Το αίτημα αντικατάστασής σας εγκρίθηκε"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Το αίτημα αντικατάστασής σας δεν εγκρίθηκε"
+
+#: 
+msgid "already staffed by this team"
+msgstr "έχει ήδη στελεχωθεί από αυτή την ομάδα"
+
+#: 
+msgid "body is required"
+msgstr "το σώμα (body) είναι υποχρεωτικό"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "το calendarIds πρέπει να είναι λίστα αναγνωριστικών ημερολογίων"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "το classEvents πρέπει να είναι ένα από: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "το classGroupId πρέπει να είναι αναγνωριστικό ομάδας ή null"
+
+#: 
+msgid "end offset"
+msgstr "μετατόπιση λήξης"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "το eventIds πρέπει να είναι λίστα αναγνωριστικών εκδηλώσεων"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "κάθε μήνυμα έχει παραδοθεί ή βρίσκεται ακόμη στην ουρά"
+
+#: 
+msgid "has not served yet"
+msgstr "δεν έχει υπηρετήσει ακόμη"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "το importPositionId πρέπει να είναι αναγνωριστικό θέσης"
+
+#: 
+msgid "inactive family"
+msgstr "ανενεργή οικογένεια"
+
+#: 
+msgid "line %d"
+msgstr "γραμμή %d"
+
+#: 
+msgid "marked do not email"
+msgstr "σημειωμένο ως «να μη σταλεί email»"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "μηνύματα δεν μπόρεσαν να παραδοθούν"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "μηνύματα δεν μπόρεσαν να παραδοθούν μετά από πέντε προσπάθειες"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "μηνύματα περιμένουν να σταλούν"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "το ministryIds πρέπει να είναι λίστα αναγνωριστικών διακονιών"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "λεπτά μετά τη λήξη της εκδήλωσης"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "λεπτά μετά την έναρξη της εκδήλωσης"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "λεπτά πριν από τη λήξη της εκδήλωσης"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "λεπτά πριν από την έναρξη της εκδήλωσης"
+
+#: 
+msgid "never"
+msgstr "ποτέ"
+
+#: 
+msgid "no email address"
+msgstr "χωρίς διεύθυνση email"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "τα personIds και familyIds πρέπει να είναι πίνακες θετικών ακεραίων"
+
+#: 
+msgid "record not found"
+msgstr "η εγγραφή δεν βρέθηκε"
+
+#: 
+msgid "same address as another recipient"
+msgstr "ίδια διεύθυνση με άλλον παραλήπτη"
+
+#: 
+msgid "single event"
+msgstr "μεμονωμένη εκδήλωση"
+
+#: 
+msgid "start offset"
+msgstr "μετατόπιση έναρξης"
+
+#: 
+msgid "subject and body are required"
+msgstr "το θέμα (subject) και το σώμα (body) είναι υποχρεωτικά"
+
+#: 
+msgid "subject is required"
+msgstr "το θέμα (subject) είναι υποχρεωτικό"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "το θέμα (subject) πρέπει να έχει το πολύ 255 χαρακτήρες"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "το sundaySchool πρέπει να είναι αληθές ή ψευδές"
+
+#: 
+msgid "window end"
+msgstr "λήξη παραθύρου"
+
+#: 
+msgid "window start"
+msgstr "έναρξη παραθύρου"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} προστέθηκαν, {{alreadyMembers}} ήταν ήδη εθελοντές εδώ"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} πραγματοποιήσεις δημιουργήθηκαν, {{existing}} υπήρχαν ήδη"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "Η διακονία {{ministry}} δημιούργησε {{total}} εκδηλώσεις για την τάξη {{className}} ({{upcoming}} προσεχείς)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "Οι {{names}} στελεχώνουν επίσης ορισμένες από αυτές."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "Ο/Η {{name}} συντονίζει ήδη αυτή τη διακονία"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "Ο/Η {{name}} ανατέθηκε"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "Ο/Η {{name}} υπηρετεί ήδη ως {{position}} σε αυτή την πραγματοποίηση. Μπορείτε παρ' όλα αυτά να τον/την αναθέσετε."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "Ο/Η {{name}} είναι κατάλληλος/η αλλά δεν ανήκει στη δεξαμενή εθελοντών αυτής της διακονίας. Η ανάθεσή του/της τον/την προσθέτει μόνο σε αυτή την πραγματοποίηση."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "Ο/Η {{name}} συντονίζει πλέον αυτή τη διακονία"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: οι αριθμοί πρέπει να είναι μεταξύ 0 και {{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: το μέγιστο δεν μπορεί να είναι μικρότερο από το ελάχιστο."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: ο/η {{name}} δεν είναι πλέον κατάλληλος/η"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: ο/η {{name}} έγινε κατάλληλος/η"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "Ο/Η {{proposer}} ζητά από τον/την {{substitute}} να πάρει τη θέση του/της"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "Η εκδήλωση {{title}} στις {{date}} δημιουργήθηκε. Να στελεχωθεί τώρα;"
+

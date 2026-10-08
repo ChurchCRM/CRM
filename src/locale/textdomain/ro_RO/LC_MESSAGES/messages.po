@@ -18860,3 +18860,4555 @@ msgstr "Rol de soț/soție"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Coduri poștale cu majuscule"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Selectați cel puțin o clasificare de inclus în director."
+
+#: 
+msgid "Geocoding services"
+msgstr "Servicii de geocodare"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Serviciile de geocodare de încercat, în ordinea în care le alegeți. Nominatim (OpenStreetMap) funcționează în toată lumea; US Census (US Census Bureau) acoperă doar adrese din Statele Unite. Alegeți și US Census pentru a-l folosi. Dacă nu alegeți niciunul, se folosește Nominatim."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Valori implicite pentru înregistrări noi"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Aceasta găsește coordonatele pe hartă pentru fiecare familie care nu le are, folosind serviciile de geocodare alese în Setările hărții. Familiile sunt procesate în loturi de 50; un lot durează aproximativ un minut cu un singur serviciu de geocodare și mai mult cu mai multe. Puteți ține această pagină deschisă cât timp rulează. Continuați?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Folosit pentru înregistrări noi și pentru geocodare când o înregistrare nu are țară."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Copiază din Informațiile bisericii"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Adresa bisericii nu a putut fi copiată."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Țara bisericii nu a putut fi potrivită."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Liste de clasă, fișe de prezență și albume foto"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Liste cu credincioșii din slujiri și rapoarte ale claselor Școlii duminicale"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Anul dumneavoastră fiscal începe în %s."
+
+#: 
+msgid "An error occurred"
+msgstr "A apărut o eroare"
+
+#: 
+msgid "Approve"
+msgstr "Aprobă"
+
+#: 
+msgid "Approve selected"
+msgstr "Aprobă selecția"
+
+#: 
+msgid "Approved"
+msgstr "Aprobat"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Schimbați în Setările persoanelor"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Înregistrările selectate nu au putut fi aprobate"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Această familie nu a putut fi aprobată"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Înregistrări în așteptare"
+
+#: 
+msgid "Pending review"
+msgstr "În așteptarea verificării"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Înregistrări din formularul public de înregistrare, în așteptarea verificării. Intrările fără e-mail sau telefon sunt marcate — verificați datele de contact înainte de a le contacta."
+
+#: 
+msgid "Review now"
+msgstr "Verifică acum"
+
+#: 
+msgid "Review self registrations"
+msgstr "Verifică autoînregistrările"
+
+#: 
+msgid "Select month"
+msgstr "Selectați luna"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Autoînregistrarea este dezactivată"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Autoînregistrarea este activată"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Formularul public de înregistrare este oprit. Înregistrările existente sunt listate mai jos."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Această familie nu este o autoînregistrare în așteptare"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Această persoană aparține unei familii — aprobați familia în schimb"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Această persoană nu este o autoînregistrare în așteptare"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Această familie autoînregistrată este în așteptarea verificării"
+
+#: 
+msgid "Total registrations"
+msgstr "Total înregistrări"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Vizitatorii se pot înscrie prin formularul public de înregistrare."
+
+#: 
+msgid "Yesterday"
+msgstr "Ieri"
+
+#: 
+msgid "days ago"
+msgstr "zile în urmă"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "autoînregistrări așteaptă verificarea"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Felicitările de zi de naștere sunt adresate persoanei, iar cele de aniversare cuplului."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Etichete poștale pentru persoanele din acest raport. O persoană fără adresă proprie este adresată la adresa familiei sale."
+
+#: 
+msgid "One label for each couple."
+msgstr "O etichetă pentru fiecare cuplu."
+
+#: 
+msgid "Print Labels"
+msgstr "Tipărește etichete"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Acest rol nu este unul dintre rolurile acestui grup."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "„%s” nu este un tip de calendar pe care această pagină îl cunoaște."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s nu poate sluji și a propus pe %2$s ca înlocuitor."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s este deja în grupul de voluntari %2$s și dorește să ajute din nou."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s este deja legat de %2$s în %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s este în %2$s ca %3$s. Scoateți-l mai întâi din clasă; calificarea lui aici îl face apoi unul dintre învățătorii ei."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s nu este un eveniment al %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s rămâne o clasă a Școlii duminicale, iar învățătorii ei sunt gestionați în Slujiri → %2$s → %3$s. Desfaceți mai întâi legătura cu echipa."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s dorește să ajute la %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s dorește să ajute la %2$s și a fost adăugat în grupul său de voluntari."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: Maximul este %2$d, dar sunt aleși %3$d voluntari impliciți. Eliminați unul sau măriți Maximul."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d zi"
+msgstr[1] "%d zile"
+msgstr[2] "%d de zile"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d implicit omis dintr-un alt motiv (ocurența s-a încheiat, a fost anulată sau este plină)"
+msgstr[1] "%d implicite omise dintr-un alt motiv (ocurența s-a încheiat, a fost anulată sau este plină)"
+msgstr[2] "%d de implicite omise dintr-un alt motiv (ocurența s-a încheiat, a fost anulată sau este plină)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d implicit omis: calificare revocată"
+msgstr[1] "%d implicite omise: calificare revocată"
+msgstr[2] "%d de implicite omise: calificare revocată"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d voluntar implicit repartizat"
+msgstr[1] "%d voluntari impliciți repartizați"
+msgstr[2] "%d de voluntari impliciți repartizați"
+
+#: 
+msgid "%d failed"
+msgstr "%d eșuate"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Încă un %d voluntar este necesar pentru acest post. Deschideți ocurența pentru a completa golul."
+msgstr[1] "Încă %d voluntari sunt necesari pentru acest post. Deschideți ocurența pentru a completa golul."
+msgstr[2] "Încă %d de voluntari sunt necesari pentru acest post. Deschideți ocurența pentru a completa golul."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d ocurență nouă"
+msgstr[1] "%d ocurențe noi"
+msgstr[2] "%d de ocurențe noi"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Încă %d voluntar este necesar pentru o ocurență viitoare."
+msgstr[1] "Încă %d voluntari sunt necesari pentru o ocurență viitoare."
+msgstr[2] "Încă %d de voluntari sunt necesari pentru o ocurență viitoare."
+
+#: 
+msgid "%s Calendar"
+msgstr "Calendar %s"
+
+#: 
+msgid "%s Family"
+msgstr "Familia %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s nu oferă învățători pentru Școala duminicală, deci echipele, programele și evenimentele sale nu pot folosi o clasă. Un administrator de voluntari poate schimba aceasta la Editare slujire."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s e-mail de la biserică"
+msgstr[1] "%s e-mailuri de la biserică"
+msgstr[2] "%s de e-mailuri de la biserică"
+
+#: 
+msgid "%s family"
+msgstr "familia %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s a refuzat o repartizare ca voluntar."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s nu are un rol numit Învățător, deci învățătorii săi nu pot fi gestionați dintr-o echipă"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s nu are întâlniri viitoare în calendar. Un program urmează evenimente deja existente: adăugați mai întâi întâlnirile clasei, cu Eveniment recurent nou în fila Calendar a slujirii."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "Se așteaptă în continuare ca %s să slujească. Vă rugăm să contactați coordonatorul dacă nu este posibil."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s nu a fost trimis (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s persoană în gospodăria dumneavoastră"
+msgstr[1] "%s persoane în gospodăria dumneavoastră"
+msgstr[2] "%s de persoane în gospodăria dumneavoastră"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s post"
+msgstr[1] "%s posturi"
+msgstr[2] "%s de posturi"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: aceeași persoană este aleasă de două ori ca voluntar implicit"
+
+#: 
+msgid "(no subject)"
+msgstr "(fără subiect)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "O zi de naștere nu poate fi în viitor."
+
+#: 
+msgid "A calendar event"
+msgstr "Un eveniment din calendar"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "Un id de calendar trebuie să fie un număr."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "O clasă care nu mai există"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "O clasă fără întâlniri în calendar nu poate fi aleasă încă."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "O clasă fără întâlniri în calendar nu poate fi aleasă încă. Un coordonator al slujirii adaugă întâlnirile în fila Calendar a slujirii."
+
+#: 
+msgid "A class's meetings"
+msgstr "Întâlnirile unei clase"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Un coordonator poate gestiona tot ce ține de această slujire, inclusiv schimbările pe care altfel le-ar face un administrator de voluntari."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Un coordonator al slujirii le poate adăuga în fila Calendar a slujirii."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Un coordonator al slujirii le poate adăuga în fila Calendar a slujirii. Apoi generați din nou."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Un coordonator conduce întreaga slujire — echipele, posturile, programele și fiecare repartizare din ea."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "O zi pe care o lună nu o are cade în ultima zi a lunii."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Un voluntar implicit aparține necesarului de personal al programului, nu unei singure ocurențe"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Un voluntar implicit poate fi ales doar pentru un post cerut de necesarul de personal al acestui program"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Sunt necesare o dată de început și una de sfârșit în format AAAA-LL-ZZ"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Este necesar un număr minim"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "O slujire este creată cu propriul calendar, grup de voluntari și prima echipă, așa că singurele lucruri de stabilit aici sunt numele și ce face."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Numele slujirii este obligatoriu"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "O slujire are nevoie de cel puțin o echipă. Redenumiți-o în schimb."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Există deja o slujire cu acest nume"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Calendarul propriu al unei slujiri nu poate fi deschis altor slujiri"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Un post aparține unei echipe; alegeți una"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Un post este o activitate pe care cineva o face în această echipă, cum ar fi Espresso sau Conducător de cântări."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Un post este un rol în care cineva slujește, cum ar fi Espresso sau Conducător de cântări."
+
+#: 
+msgid "A position is required"
+msgstr "Un post este obligatoriu"
+
+#: 
+msgid "A position name is required"
+msgstr "Numele postului este obligatoriu"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Un post cu voluntari calificați nu se poate muta într-o echipă legată de o clasă a Școlii duminicale sau din ea, deoarece aceasta ar schimba cine predă clasa. Creați postul în cealaltă echipă."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Există deja un post cu acest nume în această slujire"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Un răspuns trebuie să fie acceptat sau refuzat"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Un program aparține unei echipe; alegeți una"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Numele programului este obligatoriu"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Un program spune ce evenimente din calendar are în grijă o echipă: un tip de slujbă, întâlnirile unei clase sau evenimentele proprii ale acestei slujiri. Adăugați unul și generați ocurențele sale."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Un program spune ce evenimente din calendar deservește această echipă: un tip de slujbă, întâlnirile unei clase sau evenimentele proprii ale slujirii sale. Adăugați unul și generați ocurențele sale."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Un program care urmează o clasă trebuie să numească clasa"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Un program care urmează un tip de eveniment trebuie să numească tipul de eveniment"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Un program care asigură personal pentru un singur eveniment nu poate urma alte evenimente; ștergeți-l și adăugați un program"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "O listă simplă de oportunități, cum ar fi „Creșă” sau „Primire”, păstrată la Persoane → Administrare. Fiecare persoană este etichetată cu oportunitățile la care este dispusă să ajute, în fila Voluntar din fișa sa. Atât se înregistrează: nu există echipe, programe, repartizări la o dată și nici e-mailuri de reamintire. Etichetele sunt folosite în rapoarte și în fișa persoanei."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "O fotografie pătrată a chipului dumneavoastră funcționează cel mai bine."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Un necesar de personal își listează voluntarii impliciți în „defaults”: [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Un necesar de personal aparține exact unuia dintre un program sau o ocurență"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Un înlocuitor a fost deja propus pentru această repartizare"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Un lider de echipă își poate gestiona propria echipă — posturile, programele și cine slujește în ele — și nimic altceva din slujire."
+
+#: 
+msgid "A team name is required"
+msgstr "Numele echipei este obligatoriu"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Există deja o echipă cu acest nume în această slujire"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "O temă este un dosar pe care biserica dumneavoastră îl încarcă în Include/themes/ pe server. Tema implicită a sistemului este livrată cu ChurchCRM."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Un parametru de tranziție. Atât paginile vechi Oportunități de voluntariat, cât și noile pagini Slujiri sunt disponibile, iar fișa unei persoane arată ambele file Voluntar, clar etichetate. Folosiți-l cât mutați o biserică de la V1 la V2, apoi treceți numai la V2."
+
+#: 
+msgid "A volunteer"
+msgstr "Un voluntar"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Un voluntar a refuzat o repartizare"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Un voluntar a propus un înlocuitor"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Un administrator de voluntari poate conduce această slujire fără o delegare. Adăugați un coordonator pentru a lăsa pe altcineva să o conducă fără a-i da acces la toate celelalte slujiri."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "O dată de nuntă nu poate fi în viitor."
+
+#: 
+msgid "Accepted"
+msgstr "Acceptat"
+
+#: 
+msgid "Account deleted"
+msgstr "Cont șters"
+
+#: 
+msgid "Account unlocked"
+msgstr "Cont deblocat"
+
+#: 
+msgid "Accounts"
+msgstr "Conturi"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Activ trebuie să fie adevărat sau fals"
+
+#: 
+msgid "Active now"
+msgstr "Activ acum"
+
+#: 
+msgid "Add All"
+msgstr "Adaugă toți"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Adaugă pe toți din Selecție"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Adaugă voluntar"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Adaugă voluntarii în Selecție"
+
+#: 
+msgid "Add a family member"
+msgstr "Adaugă un membru al familiei"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Adăugați mai întâi un post, apoi reveniți și spuneți câți sunt necesari."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Adăugați un al doilea pas la autentificare, astfel încât parola singură să nu fie suficientă pentru a vă accesa contul."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Adăugați cel puțin un post în această echipă, apoi bifați cine poate sluji unde."
+
+#: 
+msgid "Add coordinator"
+msgstr "Adaugă coordonator"
+
+#: 
+msgid "Add from Cart"
+msgstr "Adaugă din Selecție"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Adăugați mai întâi întâlnirile cu Eveniment recurent nou în fila Calendar"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Adăugați persoane în Selecție înainte de a le adăuga ca voluntari"
+
+#: 
+msgid "Add position"
+msgstr "Adaugă post"
+
+#: 
+msgid "Add schedule"
+msgstr "Adaugă program"
+
+#: 
+msgid "Add team"
+msgstr "Adaugă echipă"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Adăugați-le în fila Calendar, apoi generați din nou."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Adăugați-le în fila Calendar."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Adăugați această adresă în aplicația dumneavoastră de calendar. Se actualizează singură când calendarul bisericii se schimbă."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Adăugați aici evenimentele acestei slujiri: o zi de lucru, o clasă care se întâlnește în fiecare duminică. Ele ajung în calendarul bisericii și le puteți asigura cu personal pe măsură ce le creați."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Adăugat prin Portalul comunității și în așteptarea verificării: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Adăugat — acum bifați posturile în care pot sluji"
+
+#: 
+msgid "Address Line 2"
+msgstr "Adresa, linia 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Consola de administrare"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Este necesară permisiunea de administrator"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Activează acest post în pagina Oportunități deschise din Portalul comunității."
+
+#: 
+msgid "All Teams"
+msgstr "Toate echipele"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Permiteți credincioșilor să-și schimbe zilele de naștere proprii și ale membrilor familiei lor."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Fixat și în {{calendars}}, pe care îl poate schimba doar cineva cu permisiunea Adăugare evenimente."
+
+#: 
+msgid "An event title is required"
+msgstr "Un titlu de eveniment este obligatoriu"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Este necesar un tip de eveniment sau o slujire"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Un tip de eveniment care nu mai există"
+
+#: 
+msgid "Another ministry"
+msgstr "O altă slujire"
+
+#: 
+msgid "Any event"
+msgstr "Orice eveniment"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Orice ar trebui să știe coordonatorul dumneavoastră"
+
+#: 
+msgid "Approve substitution"
+msgstr "Aprobă înlocuirea"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Aprobă acest înlocuitor"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Cereți unui administrator de voluntari să creeze o slujire și să vă facă coordonatorul ei."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Cereți cuiva să vă înlocuiască"
+
+#: 
+msgid "Ask them"
+msgstr "Întreabă-i"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Cerut — coordonatorul dumneavoastră îl va confirma."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Repartizează un voluntar"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Repartizat în afara planului curent"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Repartizare anulată"
+
+#: 
+msgid "Assignment not found"
+msgstr "Repartizarea nu a fost găsită"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Este necesar cel puțin un personId sau familyId"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Pot fi aleși cel mult %d voluntari impliciți pentru un post"
+
+#: 
+msgid "Author"
+msgstr "Autor"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Autoritatea este dată persoanei, nu unui cont de autentificare, deci poate fi acordată înainte ca persoana să aibă unul. O persoană al cărei cont este doar de autoservire continuă să vadă doar propriul program până când un administrator îi extinde contul."
+
+#: 
+msgid "Automatic"
+msgstr "Automat"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Se așteaptă răspunsul"
+
+#: 
+msgid "Back to Email History"
+msgstr "Înapoi la Istoricul e-mailurilor"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Înapoi la Panoul slujirii"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Înapoi la Ocurențe"
+
+#: 
+msgid "Back to Person"
+msgstr "Înapoi la Persoană"
+
+#: 
+msgid "Back to editing"
+msgstr "Înapoi la editare"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Înapoi la programul meu"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Înapoi la Portalul comunității"
+
+#: 
+msgid "Back to your profile"
+msgstr "Înapoi la profilul dumneavoastră"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Procese de fundal și livrare"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Procesele de fundal au rulat ultima dată"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Procesele de fundal au rulat"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Felicitare de zi de naștere"
+
+#: 
+msgid "Both"
+msgstr "Ambele"
+
+#: 
+msgid "Both (transition)"
+msgstr "Ambele (tranziție)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Ambele — V1 și V2 alături (tranziție)"
+
+#: 
+msgid "Calendar address"
+msgstr "Adresa calendarului"
+
+#: 
+msgid "Calendar saved"
+msgstr "Calendar salvat"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Calendarele pe care Portalul comunității le arată credincioșilor, alese la Administrare -> Portalul comunității -> Calendare."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Poate această slujire să ofere învățători pentru Școala duminicală?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Anulează repartizarea"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Anulați această repartizare"
+
+#: 
+msgid "Cancelled"
+msgstr "Anulat"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Schimbați parola cu care vă autentificați sau adăugați un al doilea pas, astfel încât parola singură să nu fie suficientă."
+
+#: 
+msgid "Change your password"
+msgstr "Schimbați parola"
+
+#: 
+msgid "Checked in"
+msgstr "Înregistrat intrare"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Prezenți: %1$d din %2$d în lista clasei"
+
+#: 
+msgid "Checked out"
+msgstr "Înregistrat ieșire"
+
+#: 
+msgid "Choose a class"
+msgstr "Alegeți o clasă"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Alegeți o zi a lunii de la 1 la 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Alegeți o fotografie nouă"
+
+#: 
+msgid "Choose a person"
+msgstr "Alegeți o persoană"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Alegeți un voluntar"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Alegeți mai întâi un voluntar"
+
+#: 
+msgid "Choose an event"
+msgstr "Alegeți un eveniment..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Alegeți un tip de eveniment"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Alegeți un tip de eveniment existent"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Alegeți cel puțin un calendar la care să vă abonați."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Alegeți calendarele pe care le doriți în propria aplicație de calendar."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Alegeți data din fiecare an ca LL-ZZ"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Alegeți data evenimentului"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Alegeți ziua săptămânii"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Alegeți evenimentul pe care îl urmează acest program"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Alegeți evenimentul pentru care asigurați personal"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Alegeți evenimentele de șters"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Alegeți evenimentele pentru care asigurați personal"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Alegeți prima și ultima dată"
+
+#: 
+msgid "Choose the first date"
+msgstr "Alegeți prima dată"
+
+#: 
+msgid "Choose the last date"
+msgstr "Alegeți ultima dată"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Alegeți postul din %1$s pentru care sunt calificați învățătorii clasei %2$s. Învățători: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Alegeți echipa în care servește acest post"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Alegeți tema pe care o văd credincioșii, activați sau dezactivați secțiunile portalului și vedeți cine folosește portalul."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Alegeți săptămânal, lunar sau anual"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Alegeți de unde provin datele programului"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Alegeți ce experiență de voluntariat folosește această biserică, cu cât timp înainte se completează programele și când se trimit reamintirile, și verificați dacă procesele de fundal rulează."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Alegeți cine ocupă implicit fiecare post. Alegerea este salvată în program: persoanele sunt repartizate la fiecare ocurență creată acum și la cele create mai târziu de completarea zilnică, cât timp rămân calificate, și sunt rugate să răspundă dacă nu le setați ca acceptate. Lăsați un post deschis pentru a-l repartiza săptămână de săptămână."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Alegeți cine vă înlocuiește."
+
+#: 
+msgid "Church Calendar"
+msgstr "Calendarul bisericii"
+
+#: 
+msgid "Church Calendars"
+msgstr "Calendarele bisericii"
+
+#: 
+msgid "Church calendar"
+msgstr "Calendarul bisericii"
+
+#: 
+msgid "Church events of a type"
+msgstr "Evenimente ale bisericii de un anumit tip"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Evenimentele bisericii de un anumit tip se adaugă în calendarul bisericii. Verificați tipul de eveniment, titlul și datele programului."
+
+#: 
+msgid "Church website"
+msgstr "Site-ul bisericii"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM are două moduri de a gestiona voluntarii. Doar unul trebuie folosit la un moment dat; setarea din stânga decide pe care îl vede această biserică. Comutarea ascunde sau arată pagini și intrări de meniu — nu șterge niciodată date, deci puteți reveni."
+
+#: 
+msgid "Close event details"
+msgstr "Închide detaliile evenimentului"
+
+#: 
+msgid "Colour"
+msgstr "Culoare"
+
+#: 
+msgid "Completed"
+msgstr "Finalizat"
+
+#: 
+msgid "Compose Message"
+msgstr "Scrie mesaj"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Confirmați datele familiei dumneavoastră"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Coordonator eliminat"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Copiați această adresă și adăugați-o în aplicația dumneavoastră de calendar ca un abonament nou la calendar."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Previzualizarea nu a putut fi construită."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Evenimentele clasei nu au putut fi numărate"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Delegarea nu a putut fi acordată"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Clasele Școlii duminicale nu au putut fi încărcate"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Panoul nu a putut fi încărcat"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Opțiunile de eveniment nu au putut fi încărcate"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Ocurențele nu au putut fi încărcate"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Programele nu au putut fi încărcate"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Evenimentele viitoare nu au putut fi încărcate"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Voluntarii nu au putut fi încărcați"
+
+#: 
+msgid "Could not load this email."
+msgstr "Acest e-mail nu a putut fi încărcat."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Această slujire nu a putut fi încărcată"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Evenimentele acestei slujiri nu au putut fi încărcate"
+
+#: 
+msgid "Could not load this team"
+msgstr "Această echipă nu a putut fi încărcată"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Delegarea nu a putut fi revocată"
+
+#: 
+msgid "Create"
+msgstr "Creează"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Creați un program și generați ocurențele sale, iar săptămânile de completat apar aici."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Creați un program și generați ocurențele sale, iar săptămânile pentru care asigurați personal apar aici."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Creați cel puțin un post pentru această echipă, apoi bifați cine poate sluji unde."
+
+#: 
+msgid "Create ministry"
+msgstr "Creează slujire"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Crearea unei slujiri necesită acces de administrator de voluntari"
+
+#: 
+msgid "Date and time"
+msgstr "Data și ora"
+
+#: 
+msgid "Date each year"
+msgstr "Data din fiecare an"
+
+#: 
+msgid "Dates"
+msgstr "Date"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Datele trebuie să fie în format AAAA-LL-ZZ"
+
+#: 
+msgid "Day of the month"
+msgstr "Ziua lunii"
+
+#: 
+msgid "Day of the week"
+msgstr "Ziua săptămânii"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Dezactivează slujirea"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Dezactivează programul"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Dezactivați această slujire înainte de a o șterge."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Dezactivați {{name}}? Se mută la Slujiri dezactivate în bara laterală, de unde poate fi reactivată sau ștearsă. Nu se elimină nimic."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Dezactivați {{name}}? Nu se mai creează ocurențe noi pentru ea, nici prin Generează, nici prin completarea zilnică. Ocurențele și repartizările existente rămân și poate fi reactivată."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Slujiri dezactivate"
+
+#: 
+msgid "Declined"
+msgstr "Refuzat"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Tipul implicit de eveniment pentru evenimentele slujirii"
+
+#: 
+msgid "Default volunteers"
+msgstr "Voluntari impliciți"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Voluntarii impliciți sunt trimiși ca cerințe: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Șterge evenimentele"
+
+#: 
+msgid "Delete ministry"
+msgstr "Șterge slujirea"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Șterge ocurențele"
+
+#: 
+msgid "Delete position"
+msgstr "Șterge postul"
+
+#: 
+msgid "Delete schedule"
+msgstr "Șterge programul"
+
+#: 
+msgid "Delete team"
+msgstr "Șterge echipa"
+
+#: 
+msgid "Delete those events"
+msgstr "Șterge acele evenimente"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Ștergeți {{name}} și tot ce conține? Sunt eliminate posturile, calificările, necesarul de personal, programele, ocurențele și repartizările sale — inclusiv evidențele serviciilor din trecut — și delegările de lider de echipă. Pentru a păstra istoricul, dezactivați în schimb echipa. Aceasta nu poate fi anulată."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Ștergeți {{name}} și tot ce conține? Sunt eliminate echipele, posturile, programele, {{occurrences}} ocurențe și {{assignments}} repartizări — inclusiv evidențele serviciilor din trecut — plus delegările de coordonator și de lider de echipă, grupul de voluntari și calendarul. Aceasta nu poate fi anulată."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Ștergeți {{name}}? Sunt eliminate odată cu el calificările, necesarul de personal și repartizările — inclusiv evidențele serviciilor din trecut. Pentru a păstra istoricul, dezactivați în schimb postul. Aceasta nu poate fi anulată."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Ștergeți {{name}}? Aceasta nu poate fi anulată."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Ștergerea unei slujiri necesită acces de administrator de voluntari"
+
+#: 
+msgid "Developer mode"
+msgstr "Mod dezvoltator"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Gata — v-ați întors la listă."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Renunțați la necesarul propriu de personal al acestei ocurențe și urmați din nou programul ei?"
+
+#: 
+msgid "Due soon"
+msgstr "Scadent curând"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Fiecare calendar trebuie dat ca tip și id."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Fiecare voluntar implicit trebuie să numească o persoană"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Fiecare necesar de personal trebuie să numească un post"
+
+#: 
+msgid "Edit event"
+msgstr "Editează evenimentul"
+
+#: 
+msgid "Edit ministry"
+msgstr "Editează slujirea"
+
+#: 
+msgid "Edit position"
+msgstr "Editează postul"
+
+#: 
+msgid "Edit schedule"
+msgstr "Editează programul"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Editează necesarul de personal"
+
+#: 
+msgid "Edit team"
+msgstr "Editează echipa"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Editați programul și alegeți altă clasă."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Editați programul și alegeți alt tip de eveniment."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Editați programul și alegeți evenimentul pe care îl urmează."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Editați programul și mutați ultima dată mai departe pentru a urma mai multe evenimente."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Editat prin Portalul comunității: %s"
+
+#: 
+msgid "Email %s"
+msgstr "Trimite e-mail lui %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "Trimite e-mail familiei %s"
+
+#: 
+msgid "Email History"
+msgstr "Istoricul e-mailurilor"
+
+#: 
+msgid "Email content"
+msgstr "Conținutul e-mailului"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Trimite e-mail celor absenți: %s"
+
+#: 
+msgid "Email not found"
+msgstr "E-mailul nu a fost găsit"
+
+#: 
+msgid "Email preview"
+msgstr "Previzualizare e-mail"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "Trimiterea de e-mailuri este dezactivată"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "Trimiterea de e-mailuri nu este activată. Configurați setările SMTP și activați e-mailul înainte de a trimite."
+
+#: 
+msgid "Emails"
+msgstr "E-mailuri"
+
+#: 
+msgid "End time"
+msgstr "Ora de sfârșit"
+
+#: 
+msgid "Enter counts"
+msgstr "Introduceți numărătorile"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Introduceți subiectul e-mailului…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Introduceți parola curentă, apoi parola nouă de două ori."
+
+#: 
+msgid "Enter your message…"
+msgstr "Introduceți mesajul…"
+
+#: 
+msgid "Event staffed"
+msgstr "Eveniment asigurat cu personal"
+
+#: 
+msgid "Event title"
+msgstr "Titlu Eveniment"
+
+#: 
+msgid "Event type"
+msgstr "Tip de eveniment"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Fiecare e-mail trimis de ChurchCRM, cel mai nou primul. Deschideți o persoană pentru a-i vedea istoricul complet."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Fiecare post din această fereastră are oamenii de care are nevoie."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Toți au răspuns"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Toți cei din Selecție se alătură voluntarilor acestei slujiri. Bifați apoi posturile lor."
+
+#: 
+msgid "Everything is correct"
+msgstr "Totul este corect"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Previzualizarea nu a putut fi construită"
+
+#: 
+msgid "Failed to load email"
+msgstr "E-mailul nu a putut fi încărcat"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Istoricul e-mailurilor nu a putut fi încărcat"
+
+#: 
+msgid "Failed to send email"
+msgstr "E-mailul nu a putut fi trimis"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "E-mailul nu a putut fi trimis. Încercați din nou sau folosiți „Deschide în clientul de e-mail”."
+
+#: 
+msgid "Family Member"
+msgstr "Membru al familiei"
+
+#: 
+msgid "Family verification"
+msgstr "Verificare familie"
+
+#: 
+msgid "File"
+msgstr "Fișier"
+
+#: 
+msgid "Fill"
+msgstr "Completează"
+
+#: 
+msgid "Fill by default with"
+msgstr "Completează implicit cu"
+
+#: 
+msgid "Fill this gap"
+msgstr "Completează acest gol"
+
+#: 
+msgid "Filled"
+msgstr "Completat"
+
+#: 
+msgid "Find a sub"
+msgstr "Găsește un înlocuitor"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Găsește un voluntar"
+
+#: 
+msgid "Find an event"
+msgstr "Găsește un eveniment"
+
+#: 
+msgid "Find something to do"
+msgstr "Găsiți ceva de făcut"
+
+#: 
+msgid "Find something to help with"
+msgstr "Găsiți la ce să ajutați"
+
+#: 
+msgid "Findings"
+msgstr "Constatări"
+
+#: 
+msgid "First date"
+msgstr "Prima dată"
+
+#: 
+msgid "Folder"
+msgstr "Dosar"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Numele dosarului temei Portalului comunității de folosit, din Include/themes/. „default” este tema sistemului livrată cu ChurchCRM."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Generați din nou mai aproape de prima ei dată."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Generează ocurențe"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Obțineți o adresă nouă de calendar?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Dați un nume slujirii"
+
+#: 
+msgid "Give the position a name"
+msgstr "Dați un nume postului"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Dați orele de început și de sfârșit ca HH:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "Dați un nume echipei"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Mergi la voluntariatul meu"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Mergi la setările Portalului comunității"
+
+#: 
+msgid "Going"
+msgstr "Particip"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Acordați calificarea în pagina slujirii, apoi repartizați-i aici."
+
+#: 
+msgid "Granted"
+msgstr "Acordat"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Priviți ce are biserica în evidență despre gospodăria dumneavoastră, apoi spuneți-ne dacă este încă corect."
+
+#: 
+msgid "Headcount"
+msgstr "Număr de participanți"
+
+#: 
+msgid "Hello %s"
+msgstr "Bună, %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Ajutor căutat"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Ajutorul căutat nu a putut fi salvat"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Cu cât timp înainte se creează ocurențele pentru evenimentele pe care le urmează fiecare program. Un proces zilnic de fundal ține fiecare program completat până la acest punct."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Cu câte ore înainte de o ocurență de voluntariat se trimite e-mailul de reamintire. Setați la 0 pentru a nu trimite nicio reamintire. Livrarea depinde de rularea proceselor de fundal; vedeți documentația Voluntari pentru configurarea cron recomandată."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Cu câte ore înainte de o ocurență se trimite e-mailul de reamintire. Setați la 0 pentru a nu trimite nicio reamintire."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Câte persoane are nevoie fiecare post, de fiecare dată când rulează. O singură dată poate fi schimbată separat mai târziu. Un voluntar implicit este repartizat la fiecare ocurență nouă cât timp rămâne calificat; schimbarea lui nu modifică ocurențele deja existente."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "De câți voluntari are nevoie fiecare ocurență a acestui program. Debifați un post pe care acest program nu îl folosește niciodată. Un voluntar implicit este repartizat la fiecare ocurență nouă cât timp rămâne calificat; schimbarea lui nu modifică ocurențele deja existente."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "De câți voluntari are nevoie acest eveniment. Debifați un post pe care nu îl folosește."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Cu câte săptămâni înainte se creează ocurențele de voluntariat pentru evenimentele pe care le urmează fiecare program, de la 1 la 52. Un proces zilnic de fundal ține fiecare program completat până la acest punct."
+
+#: 
+msgid "How often"
+msgstr "Cât de des"
+
+#: 
+msgid "How to correct this"
+msgstr "Cum se corectează"
+
+#: 
+msgid "I can't"
+msgstr "Nu pot"
+
+#: 
+msgid "I'd like to help"
+msgstr "Aș vrea să ajut"
+
+#: 
+msgid "I'll be there"
+msgstr "Voi fi acolo"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Dacă mesajele eșuează, cereți unui administrator să verifice Setările slujirii."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Dacă nu mai puteți veni, vă rugăm să refuzați în programul dumneavoastră de voluntar cât mai curând, pentru ca postul să poată fi completat."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Dacă ați distribuit această adresă din greșeală, obțineți una nouă. Vechea adresă nu mai funcționează imediat."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "În ultimele 15 minute"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "În grupul de voluntari"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Intern: ultima dată până la care au fost completate programele de voluntari, în limita orizontului de programare (AAAA-LL-ZZ). Nu editați manual."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Intern: când au fost completate ultima dată programele de voluntari și câte ocurențe a creat aceasta. Nu editați manual."
+
+#: 
+msgid "Is this still right?"
+msgstr "Este încă corect?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Ocurențele sale vor fi create fără posturi de completat. Editați programul pentru a-i adăuga necesarul de personal."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Păstrați-i în {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Fel"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Ultimele 24 de ore"
+
+#: 
+msgid "Last 30 days"
+msgstr "Ultimele 30 de zile"
+
+#: 
+msgid "Last 7 days"
+msgstr "Ultimele 7 zile"
+
+#: 
+msgid "Last attempt"
+msgstr "Ultima încercare"
+
+#: 
+msgid "Last check"
+msgstr "Ultima verificare"
+
+#: 
+msgid "Last date"
+msgstr "Ultima dată"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Ultima vizită în portal"
+
+#: 
+msgid "Last sign-in"
+msgstr "Ultima autentificare"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Lăsați ambele la 0 pentru a sluji exact când are loc evenimentul. Mutarea evenimentului mută și voluntarii."
+
+#: 
+msgid "Leave open"
+msgstr "Lasă deschis"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Lăsați credincioșii să-și schimbe zilele de naștere proprii și ale membrilor familiei lor în Portalul comunității."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Lasă credincioșii să editeze zilele de naștere"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Anunțați biroul bisericii dacă tot ce este mai sus este încă corect."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Spuneți-le de ce (opțional)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Permite coordonatorilor acelei slujiri să programeze voluntari pentru acest eveniment — și să editeze evenimentul însuși."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Se încarcă calendarul…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Gestionează slujirile"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Gestionează slujirile mele"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Acces la Gestionează slujirile mele, cu o slujire sau o echipă de gestionat"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Este necesar accesul la Gestionează slujirile mele, cu o slujire sau o echipă de gestionat"
+
+#: 
+msgid "Manage staffing"
+msgstr "Gestionează încadrarea"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Gestionat din slujirea %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Gestionat din slujirea {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Max"
+
+#: 
+msgid "Member Portal"
+msgstr "Portalul comunității"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Credincioșii văd o pagină „temporar indisponibil” până la remedierea acestei probleme. Aceleași detalii au fost scrise în jurnalul aplicației și în jurnalul de erori al serverului web."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Credincioșii văd doar calendarele activate aici. Zilele de naștere și aniversările arată doar prenumele și inițiala numelui."
+
+#: 
+msgid "Message"
+msgstr "Mesaj"
+
+#: 
+msgid "Min"
+msgstr "Min"
+
+#: 
+msgid "Ministries"
+msgstr "Slujiri"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Slujiri care caută ajutor"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Slujiri care pot adăuga evenimente"
+
+#: 
+msgid "Ministry"
+msgstr "Slujire"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Calendarele slujirilor"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Coordonatorii slujirii"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Panoul slujirii"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Setările slujirii"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Calendarul slujirii"
+
+#: 
+msgid "Ministry created"
+msgstr "Slujire creată"
+
+#: 
+msgid "Ministry management access"
+msgstr "Acces de gestionare a slujirilor"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Este necesar accesul de gestionare a slujirilor"
+
+#: 
+msgid "Ministry name"
+msgstr "Numele slujirii"
+
+#: 
+msgid "Ministry not found"
+msgstr "Slujirea nu a fost găsită"
+
+#: 
+msgid "My Family"
+msgstr "Familia mea"
+
+#: 
+msgid "My Teams"
+msgstr "Echipele mele"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Slujirile și echipele mele"
+
+#: 
+msgid "My schedule"
+msgstr "Programul meu"
+
+#: 
+msgid "My volunteering"
+msgstr "Voluntariatul meu"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Dați un nume acestui post în pagina unde credincioșii caută la ce să ajute."
+
+#: 
+msgid "Needs an answer"
+msgstr "Necesită un răspuns"
+
+#: 
+msgid "Needs filling"
+msgstr "Necesită completare"
+
+#: 
+msgid "Never signed in"
+msgstr "Nu s-a autentificat niciodată"
+
+#: 
+msgid "New account"
+msgstr "Cont nou"
+
+#: 
+msgid "New event"
+msgstr "Eveniment nou"
+
+#: 
+msgid "New ministry"
+msgstr "Slujire nouă"
+
+#: 
+msgid "New record notification"
+msgstr "Notificare pentru înregistrare nouă"
+
+#: 
+msgid "New recurring event"
+msgstr "Eveniment recurent nou"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Voluntari noi necesari pentru următoarele posturi"
+
+#: 
+msgid "Newest first"
+msgstr "Cele mai noi primele"
+
+#: 
+msgid "Next on %s"
+msgstr "Următorul la %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Niciun calendar nu a fost încă partajat cu credincioșii."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Niciun calendar nu este deschis acestei slujiri, deci evenimentele nu vor apărea în niciun calendar."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Niciun calendar nu este partajat cu credincioșii."
+
+#: 
+msgid "No class"
+msgstr "Fără clasă"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Încă nu există date de contact în evidență."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Încă nu există coordonatori"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Nicio dată dintre prima și ultima nu se potrivește cu recurența"
+
+#: 
+msgid "No email was sent."
+msgstr "Niciun e-mail nu a fost trimis."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Niciun e-mail nu a fost trimis acestei înregistrări."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Încă nu s-a înregistrat niciun număr de participanți"
+
+#: 
+msgid "No longer needed"
+msgstr "Nu mai este necesar"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Niciun credincios nu s-a autentificat încă în Portalul comunității."
+
+#: 
+msgid "No ministry"
+msgstr "Nicio slujire"
+
+#: 
+msgid "No past events"
+msgstr "Niciun eveniment trecut"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Nicio fotografie nu a fost încărcată pentru această persoană."
+
+#: 
+msgid "No photo was sent."
+msgstr "Nicio fotografie nu a fost trimisă."
+
+#: 
+msgid "No positions yet"
+msgstr "Încă nu există posturi"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Încă nu există calificări."
+
+#: 
+msgid "No schedules yet"
+msgstr "Încă nu există programe"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Niciun necesar de personal setat"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Fără necesar de personal: ocurențele generate nu vor avea nevoie de nimeni."
+
+#: 
+msgid "No substitution requests"
+msgstr "Nicio cerere de înlocuire"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Nicio înlocuire de decis"
+
+#: 
+msgid "No teams yet"
+msgstr "Încă nu există echipe"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "Niciun eveniment %1$s viitor cu titlul „%2$s” nu este în calendar. Un program urmează evenimente deja existente."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Niciun eveniment viitor nu se potrivește"
+
+#: 
+msgid "No upcoming events"
+msgstr "Niciun eveniment viitor"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "Niciun eveniment viitor de acest tip nu este în calendar."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Niciun eveniment viitor de ales"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Încă nimeni repartizat"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Nimeni altcineva nu este instruit pentru aceasta încă — spuneți în schimb coordonatorului dumneavoastră."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Nimeni nu a spus de câți voluntari are nevoie fiecare post, deci nu este nimic de completat."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Nimeni din această fereastră nu mai decide."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Încă nimeni nu este calificat pentru acest post"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Încă nimeni nu este calificat pentru acest post, așa că rămâne deschis."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Niciunul dintre destinatari nu poate primi e-mail"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Niciunul: tipul de eveniment este ales pentru fiecare eveniment"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Nu aveți permisiunea de a vedea acest e-mail"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Nu aveți permisiunea de a vedea această familie"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Nu aveți permisiunea de a vedea această persoană"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Neautorizat pentru această repartizare"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Neautorizat pentru această slujire"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Neautorizat pentru această ocurență"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Neautorizat pentru acest post"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Neautorizat pentru această calificare"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Neautorizat pentru această cerință"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Neautorizat pentru acest program"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Neautorizat pentru această cerere de înlocuire"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Neautorizat pentru această echipă"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Nu sunteți autorizat să atribuiți evenimente acelei slujiri de voluntari"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Nu sunteți autorizat să schimbați evenimentul %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Nu sunteți autorizat să schimbați slujirea de voluntari a acestui eveniment"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Nu sunteți autorizat să creați un eveniment fără o slujire de voluntari pe care o gestionați"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Nu sunteți autorizat să modificați acest eveniment"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Nu sunteți autorizat să fixați evenimente în calendarul „%s”"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Nu sunteți autorizat să eliminați evenimente din calendarul „%s”"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Nu sunteți autorizat să eliminați slujirea de voluntari din acest eveniment"
+
+#: 
+msgid "Not checked in"
+msgstr "Neprezent"
+
+#: 
+msgid "Not found"
+msgstr "Nu găsesc"
+
+#: 
+msgid "Not in the pool"
+msgstr "Nu este în grup"
+
+#: 
+msgid "Not now"
+msgstr "Nu acum"
+
+#: 
+msgid "Not sent"
+msgstr "Netrimis"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Nesetat: folosiți „%s”"
+
+#: 
+msgid "Not staffed"
+msgstr "Fără personal asigurat"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Încă nu este voluntar"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Nu se schimbase nimic, deci nu s-a salvat nimic."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "Nu este nimic în calendar pentru această perioadă."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "Nu este nimic în calendar chiar acum."
+
+#: 
+msgid "Nothing is short"
+msgstr "Nu lipsește nimic"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Încă nimic în lista dumneavoastră"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Încă nimic în lista dumneavoastră. Priviți ce trebuie completat."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Nimic deschis acum"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Încă nimic programat"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Nimic programat."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Încă nimic configurat"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "Nimic din ce ține de această slujire nu s-a întâmplat în ultimul an."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Încă nimic de calificat"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Nu s-a salvat nimic. Verificați câmpurile evidențiate."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Nu s-a salvat nimic. Încercați din nou."
+
+#: 
+msgid "Notification"
+msgstr "Notificare"
+
+#: 
+msgid "Notifications"
+msgstr "Notificări"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Ocurența nu a fost găsită"
+
+#: 
+msgid "Occurrences"
+msgstr "Ocurențe"
+
+#: 
+msgid "Offer to help"
+msgstr "Oferă-te să ajuți"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "O dată pe zi, fiecare program activ primește ocurențe pentru evenimentele pe care le urmează, cu până la %d săptămână înainte, iar voluntarul implicit al fiecărui post este repartizat la cele noi cât timp rămâne calificat."
+msgstr[1] "O dată pe zi, fiecare program activ primește ocurențe pentru evenimentele pe care le urmează, cu până la %d săptămâni înainte, iar voluntarul implicit al fiecărui post este repartizat la cele noi cât timp rămâne calificat."
+msgstr[2] "O dată pe zi, fiecare program activ primește ocurențe pentru evenimentele pe care le urmează, cu până la %d de săptămâni înainte, iar voluntarul implicit al fiecărui post este repartizat la cele noi cât timp rămâne calificat."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Odată ce această persoană este calificată pentru un post, apare aici, împreună cu datele la care este programată să slujească."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Se creează o ocurență pentru fiecare eveniment din calendar al cărui Grup legat este această clasă."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Se creează o ocurență pentru fiecare dată a acestui eveniment. Pot fi alese doar evenimente deja existente în calendar."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Unul dintre calendare nu există"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Unul dintre evenimente nu există"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Unul dintre acele calendare nu este partajat cu credincioșii."
+
+#: 
+msgid "One-time"
+msgstr "O singură dată"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Doar o clasă a Școlii duminicale poate fi legată de o echipă"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Doar un coordonator poate înregistra un răspuns în numele altcuiva"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Doar un coordonator al acestei slujiri îi poate crea evenimentele"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Doar un coordonator al acestei slujiri îi poate asigura evenimentele cu personal"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "Doar un administrator de voluntari poate schimba liderul echipei"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Doar un administrator de voluntari poate schimba aceasta."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Doar un administrator de voluntari poate schimba dacă o slujire oferă învățători pentru Școala duminicală"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Doar un adult din familia dumneavoastră poate schimba aceste date. Vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Sunt listate doar persoanele instruite pentru aceasta."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Doar voluntarul repartizat poate propune un înlocuitor"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Sunt listate doar calendarele la care această slujire poate adăuga evenimente. Propriul ei calendar este bifat de la început."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Este afișată doar prima parte a unei liste foarte lungi. Restrângeți fereastra pentru a vedea restul."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Doar voluntarul care a propus un înlocuitor îl poate retrage"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Deschideți o slujire din meniul Slujiri, creați un program și generați datele lui, iar săptămânile de asigurat cu personal apar aici."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Deschideți o slujire pentru a face pe cineva coordonatorul ei sau liderul uneia dintre echipele ei."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Deschide în aplicația de calendar"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Oportunitățile deschise nu au putut fi încărcate."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Deschide destinatarii în aplicația dumneavoastră locală de e-mail"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Deschide Portalul comunității"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Deschide Panoul slujirii"
+
+#: 
+msgid "Open the ministry"
+msgstr "Deschide slujirea"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Deschide ocurența"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Deschideți ocurența pentru a repartiza persoanele de care aveți nevoie."
+
+#: 
+msgid "Open this team"
+msgstr "Deschide această echipă"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Deschiderea unui calendar pentru slujiri necesită permisiunea Adăugare evenimente"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Opțional. Toți cei calificați pentru un post al acestei echipe devin învățători ai clasei, iar pagina clasei nu își mai schimbă învățătorii."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Opțional. Clasa devine Grupul legat: lista ei este cea care face prezența, iar un program pentru clasă găsește aceste evenimente."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Peste Max: eliminați acest voluntar sau măriți Maximul."
+
+#: 
+msgid "Overridden templates"
+msgstr "Șabloane suprascrise"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Pagina %1$s din %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Pagina %d din %d"
+
+#: 
+msgid "Password reset"
+msgstr "Parolă resetată"
+
+#: 
+msgid "Password reset link"
+msgstr "Link restare parolă"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Parolele trebuie să aibă cel puțin %s caracter."
+msgstr[1] "Parolele trebuie să aibă cel puțin %s caractere."
+msgstr[2] "Parolele trebuie să aibă cel puțin %s de caractere."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Alegeți un eveniment viitor din calendar și spuneți de cine are nevoie. Evenimentul își păstrează propria dată și oră; pentru a asigura personal pentru o serie întreagă, adăugați în schimb un program."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Alegeți pe cineva care a acceptat deja să vă ia locul. Coordonatorul dumneavoastră îl va confirma."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Vă rugăm să alegeți calendare din listă."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Vă rugăm să alegeți dacă datele dumneavoastră trebuie schimbate."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Vă rugăm să contactați biroul bisericii pentru a ne corecta evidențele."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Vă rugăm să introduceți cel puțin două caractere."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Vă rugăm să ne spuneți dacă puteți veni, acceptând sau refuzând în programul dumneavoastră de voluntar."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Vă rugăm să ne spuneți ce trebuie schimbat."
+
+#: 
+msgid "Portal settings"
+msgstr "Setările portalului"
+
+#: 
+msgid "Portal theme"
+msgstr "Tema portalului"
+
+#: 
+msgid "Position"
+msgstr "Post"
+
+#: 
+msgid "Position added"
+msgstr "Post adăugat"
+
+#: 
+msgid "Position deleted"
+msgstr "Post șters"
+
+#: 
+msgid "Position name"
+msgstr "Numele postului"
+
+#: 
+msgid "Position not found"
+msgstr "Postul nu a fost găsit"
+
+#: 
+msgid "Position saved"
+msgstr "Post salvat"
+
+#: 
+msgid "Positions"
+msgstr "Posturi"
+
+#: 
+msgid "Positions still short"
+msgstr "Posturi încă nefăcute"
+
+#: 
+msgid "Proposed"
+msgstr "Propus"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Înlocuitor propus"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Puneți această slujire în pagina Oportunități deschise din Portalul comunității, unde orice voluntar o poate vedea și se poate oferi să ajute. Se alătură grupului de voluntari, iar dumneavoastră primiți un e-mail."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Puneți în schimb pe {{name}}? Voluntarul inițial își păstrează istoricul și este anunțat."
+
+#: 
+msgid "Qualification not found"
+msgstr "Calificarea nu a fost găsită"
+
+#: 
+msgid "Qualified for"
+msgstr "Calificat pentru"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Voluntarii calificați se pot înscrie singuri la datele deschise ale acestui post. Dezactivați pentru posturile pe care doar un lider de echipă sau un coordonator trebuie să le repartizeze; Portalul comunității nu le va oferi."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Calificați învățătorii săi actuali pentru"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Calificați-i pentru un post"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Calificați-i pentru un post."
+
+#: 
+msgid "Reactivate"
+msgstr "Reactivează"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Citiți ghidul de creare a temelor"
+
+#: 
+msgid "Recent Emails"
+msgstr "E-mailuri recente"
+
+#: 
+msgid "Recent Sends"
+msgstr "Trimiteri recente"
+
+#: 
+msgid "Recipient"
+msgstr "Destinatar"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Numărul de destinatari (%d) depășește maximul permis per trimitere (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Destinatarii trebuie dați ca personIds și familyIds, nu ca adrese de e-mail"
+
+#: 
+msgid "Record a decline"
+msgstr "Înregistrează un refuz"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Înregistrează o acceptare"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Înregistrați că {{name}} a spus nu? Răspunsul este salvat ca provenind de la dumneavoastră, iar locul se redeschide."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Înregistrați că {{name}} a spus da? Răspunsul este salvat ca provenind de la dumneavoastră, nu de la persoană."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Înregistrează: a acceptat"
+
+#: 
+msgid "Record: they declined"
+msgstr "Înregistrează: a refuzat"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Recrutează voluntari"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Recrutează voluntari trebuie să fie adevărat sau fals"
+
+#: 
+msgid "Recruiting"
+msgstr "Se recrutează"
+
+#: 
+msgid "Recurring"
+msgstr "Recurent"
+
+#: 
+msgid "Reject"
+msgstr "Respinge"
+
+#: 
+msgid "Reject substitution"
+msgstr "Respinge înlocuirea"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Respinge acest înlocuitor"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Timp de avertizare pentru reamintire (ore)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Reamintire: sunteți programat să slujiți"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Reamintirile și alertele sunt livrate doar când rulează procesele de fundal. Pentru livrare la timp, rulați executorul sarcinilor programate din cron la fiecare 15 minute"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Elimină voluntarul"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Elimină coordonatorul"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Scoateți clasa de la ei"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Elimină liderul echipei"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Eliminați pe {{name}} din {{ministry}}? Aceasta elimină toate calificările lui de aici, îl scoate din toate ocurențele viitoare, îl șterge ca voluntar implicit din programele acestei slujiri și îl elimină din grupul de voluntari."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Eliminat. {{qualifications}} calificări, {{assignments}} repartizări viitoare, {{defaults}} implicite din programe."
+
+#: 
+msgid "Repeats"
+msgstr "Se repetă"
+
+#: 
+msgid "Requirement not found"
+msgstr "Cerința nu a fost găsită"
+
+#: 
+msgid "Reset link"
+msgstr "Link de resetare"
+
+#: 
+msgid "Response recorded"
+msgstr "Răspuns înregistrat"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Verificați cererea în panoul de voluntari și aprobați-o sau respingeți-o."
+
+#: 
+msgid "Review this request"
+msgstr "Verifică această cerere"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Rulează acum procesele de fundal"
+
+#: 
+msgid "SMTP test"
+msgstr "Test SMTP"
+
+#: 
+msgid "Save calendars"
+msgstr "Salvează calendarele"
+
+#: 
+msgid "Save changes"
+msgstr "Salvați modificările"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Salvat — această slujire nu mai cere ajutor"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Salvat — această slujire cere acum ajutor"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Salvat. Credincioșii văd calendarele activate mai sus."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Programul „{{name}}” a fost creat."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Programul „{{name}}” a fost creat. Este inactiv, deci nu creează ocurențe până nu este activat."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Program dezactivat"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Program șters"
+
+#: 
+msgid "Schedule name"
+msgstr "Numele programului"
+
+#: 
+msgid "Schedule not found"
+msgstr "Programul nu a fost găsit"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Program reactivat"
+
+#: 
+msgid "Schedule saved"
+msgstr "Program salvat"
+
+#: 
+msgid "Scheduled"
+msgstr "Programat"
+
+#: 
+msgid "Schedules"
+msgstr "Programe"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Programele au fost completate ultima dată"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Programele nu mai au propria recurență sau ore; fiecare ocurență urmează un eveniment din calendar. Eliminați: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Programele nu mai stabilesc cu cât timp înainte sunt generate: orizontul de programare din Administrare → Setările slujirii se aplică fiecărui program. Eliminați: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Orizont de programare (săptămâni)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Delegarea nu a fost găsită"
+
+#: 
+msgid "Search by name"
+msgstr "Caută după nume"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Vedeți întregul calendar"
+
+#: 
+msgid "See what needs filling"
+msgstr "Vedeți ce trebuie completat"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Selectați un calendar pentru a-i ascunde sau arăta evenimentele."
+
+#: 
+msgid "Select ministries..."
+msgstr "Selectați slujiri..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Autoînscriere"
+
+#: 
+msgid "Self-assignable"
+msgstr "Autorepartizabil"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Autorepartizabil trebuie să fie adevărat sau fals"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Conturi de autoservire"
+
+#: 
+msgid "Send"
+msgstr "Trimite"
+
+#: 
+msgid "Send Email"
+msgstr "Trimite e-mail"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Trimite e-mail din ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Trimite din nou mesajul de repartizare"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Trimiteți calendarele de afișat ca listă."
+
+#: 
+msgid "Send to the church office"
+msgstr "Trimite biroului bisericii"
+
+#: 
+msgid "Send your answer"
+msgstr "Trimiteți răspunsul"
+
+#: 
+msgid "Sent"
+msgstr "Trimis"
+
+#: 
+msgid "Sent by"
+msgstr "Trimis de"
+
+#: 
+msgid "Serving next"
+msgstr "Următorul la slujire"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Setează ca Acceptat"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Setează necesarul de personal"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Arată „%s” în Portalul comunității"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Arată în Portalul comunității"
+
+#: 
+msgid "Show past events"
+msgstr "Arată evenimentele trecute"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Arată calendarul bisericii"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Arată calendarul bisericii în Portalul comunității."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Arată secțiunea calendarului bisericii în Portalul comunității."
+
+#: 
+msgid "Show the next"
+msgstr "Arată următoarele"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Arată secțiunile de voluntariat și echipe în Portalul comunității."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Arată această slujire în pagina Oportunități deschise"
+
+#: 
+msgid "Show volunteering"
+msgstr "Arată voluntariatul"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Arată paginile de voluntariat și echipe în Portalul comunității."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Arată ce am făcut deja"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Afișat exact așa cum îl scrieți. Rupturile de rând sunt păstrate."
+
+#: 
+msgid "Sign up"
+msgstr "Înscrie-te"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Autentificare și securitate"
+
+#: 
+msgid "Signed in"
+msgstr "Autentificat"
+
+#: 
+msgid "Signed up"
+msgstr "Înscris"
+
+#: 
+msgid "Sincerely"
+msgstr "Cu sinceritate"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Unele dintre datele dumneavoastră nu au putut fi salvate. Verificați câmpurile evidențiate."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Unele dintre datele familiei dumneavoastră nu au putut fi salvate. Verificați câmpurile evidențiate."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Altcineva înlocuiește"
+
+#: 
+msgid "Something needs changing"
+msgstr "Ceva trebuie schimbat"
+
+#: 
+msgid "Something went wrong"
+msgstr "Ceva nu a mers bine"
+
+#: 
+msgid "Staff an event"
+msgstr "Asigură personal pentru un eveniment"
+
+#: 
+msgid "Staff them"
+msgstr "Asigurați personal"
+
+#: 
+msgid "Staff this event"
+msgstr "Asigură personal pentru acest eveniment"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Asigură personal pentru această ocurență"
+
+#: 
+msgid "Staffed"
+msgstr "Personal asigurat"
+
+#: 
+msgid "Staffing"
+msgstr "Încadrare"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Personalul se stabilește după crearea evenimentelor"
+
+#: 
+msgid "Staffing needs"
+msgstr "Necesar de personal"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Necesar de personal salvat"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Începeți prin a crea o slujire, apoi adăugați echipele și posturile care slujesc în ea."
+
+#: 
+msgid "Start time"
+msgstr "Timp start"
+
+#: 
+msgid "Start typing a name"
+msgstr "Începeți să scrieți un nume"
+
+#: 
+msgid "Statistics"
+msgstr "Statistici"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Opriți pe {{name}} din a coordona {{ministry}}? Contul lui de autentificare și propriile repartizări rămân neatinse."
+
+#: 
+msgid "Subscribe"
+msgstr "Abonează-te"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Abonați-vă la calendar"
+
+#: 
+msgid "Substitute"
+msgstr "Înlocuitor"
+
+#: 
+msgid "Substitute approved"
+msgstr "Înlocuitor aprobat"
+
+#: 
+msgid "Substitute asked"
+msgstr "Înlocuitor cerut"
+
+#: 
+msgid "Substitute decision"
+msgstr "Decizia privind înlocuitorul"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Înlocuitor propus"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Înlocuitor respins"
+
+#: 
+msgid "Substituted"
+msgstr "Înlocuit"
+
+#: 
+msgid "Substitution approved"
+msgstr "Înlocuire aprobată"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Înlocuire respinsă"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Cererea de înlocuire nu a fost găsită"
+
+#: 
+msgid "Substitution requests"
+msgstr "Cereri de înlocuire"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Clasa Școlii duminicale"
+
+#: 
+msgid "System calendar"
+msgstr "Calendar de sistem"
+
+#: 
+msgid "System default"
+msgstr "Implicit al sistemului"
+
+#: 
+msgid "Take that back"
+msgstr "Retrage ce ați spus"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Scoateți pe {{name}} din acest post? Nu se trimite niciun e-mail; programul lui arată data ca nemaifiind necesară, iar locul se redeschide."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Învățătorii acestei clase sunt gestionați în Slujiri → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Echipă"
+
+#: 
+msgid "Team Leader"
+msgstr "Lider de echipă"
+
+#: 
+msgid "Team added"
+msgstr "Echipă adăugată"
+
+#: 
+msgid "Team deleted"
+msgstr "Echipă ștearsă"
+
+#: 
+msgid "Team leader"
+msgstr "Lider de echipă"
+
+#: 
+msgid "Team name"
+msgstr "Numele echipei"
+
+#: 
+msgid "Team not found"
+msgstr "Echipa nu a fost găsită"
+
+#: 
+msgid "Team saved"
+msgstr "Echipă salvată"
+
+#: 
+msgid "Teams"
+msgstr "Echipe"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Echipele sunt grupurile de oameni care slujesc în această slujire."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Echipe, posturi și oamenii care le ocupă"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Cele mai recente zece autentificări"
+
+#: 
+msgid "Thank you"
+msgstr "Vă mulțumim!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Vă mulțumim că v-ați înscris să slujiți"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Vă mulțumim că v-ați înscris să slujiți. Sunteți în program."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Vă mulțumim. Biroul bisericii are răspunsul dumneavoastră."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Vă mulțumim. Biroul bisericii va verifica aceasta înainte de a fi adăugată."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Vă mulțumim că ne-ați anunțat."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Mulțumim — coordonatorul a fost anunțat că ați dori să ajutați din nou."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Mulțumim — coordonatorul a fost anunțat că ați dori să ajutați."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Mulțumim — sunteți pe listă."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Acest dosar de temă al Portalului comunității nu există."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Această repartizare aparține altcuiva"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Această repartizare nu a putut fi salvată"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Această zi de naștere nu este o dată validă."
+
+#: 
+msgid "That could not be saved."
+msgstr "Aceasta nu a putut fi salvată."
+
+#: 
+msgid "That could not be sent."
+msgstr "Aceasta nu a putut fi trimisă."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Acest membru al familiei nu a putut fi adăugat. Verificați câmpurile evidențiate."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Aceasta nu este o dată validă."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Acea listă nu a putut fi încărcată."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Acea persoană ocupă deja acest post la această ocurență"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Acea persoană este deja repartizată la acest post la această ocurență"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Acea persoană nu este într-un grup de voluntari al acestei slujiri. Retrimiteți cu suprascrierea pentru în afara grupului pentru a o repartiza oricum."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Acea persoană nu este în acest grup de voluntari"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Acea persoană nu este calificată pentru acest post"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Acea fotografie nu a putut fi salvată."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Acea fotografie este prea mare. Vă rugăm să alegeți una mai mică."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Acel post aparține unei alte slujiri"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Acel post aparține unei alte echipe"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Acel post este deja complet asigurat"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Acel post nu este asigurat cu personal la această ocurență"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Acel răspuns nu a putut fi înregistrat"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Acea stare nu poate fi setată direct"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Acea cerere de înlocuire nu a putut fi decisă"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Acea echipă aparține unei alte slujiri"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Acea temă nu a putut fi activată."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Acea temă nu a putut fi verificată."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Acea temă are erori, deci nu a fost activată."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Acel voluntar nu a putut fi repartizat"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Acea dată de nuntă nu este o dată validă."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s trebuie să fie o dată în format AAAA-LL-ZZ"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s trebuie să fie un număr întreg de minute"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s trebuie să fie în limita a %d minute față de eveniment"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Calendarele Portalului comunității au fost salvate."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Portalul comunității nu a putut finaliza ce ați cerut. Încercați din nou peste câteva minute."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Portalul comunității este disponibil doar unei persoane autentificate, nu clienților API."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Portalul comunității este setat pe tema „%s”, care nu mai există pe server. Credincioșii văd o pagină de eroare până alegeți o temă care există."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Portalul comunității este temporar indisponibil"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Tema Portalului comunității „%s” nu a putut fi activată deoarece conține erori."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Tema Portalului comunității nu a putut fi randată"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Dosarul temei Portalului comunității „%s” nu a fost găsit."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Tema Portalului comunității a fost schimbată."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Rolul Învățător al clasei %1$s nu poate fi redenumit sau șters cât timp învățătorii ei sunt gestionați în Slujiri → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Dosarul temei active lipsește"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Adresa este selectată — copiați-o cu tastatura."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Calea resursei „%s” nu este permisă."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Repartizarea nu a putut fi anulată"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Mesajul de repartizare va fi trimis din nou"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Adresa calendarului a fost copiată."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Calendarele nu au putut fi încărcate. Încercați din nou."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Calendarele nu au putut fi salvate."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Selecția nu a putut fi adăugată"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Biserica nu v-a trimis încă niciun e-mail."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Biroul bisericii a fost anunțat. Încercați din nou mai târziu."
+
+#: 
+msgid "The class does not exist"
+msgstr "Clasa nu există"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Clasa pe care o urmează acest program nu mai există."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Conținutul acestui e-mail nu este păstrat. ChurchCRM păstrează doar textul mesajelor scrise în compozitorul de e-mail și al e-mailurilor către voluntari."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Conținutul acestui e-mail nu a fost păstrat."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Coordonatorul nu a putut fi adăugat"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Lista coordonatorilor nu a putut fi încărcată"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Data și ora fiecărei ocurențe provin din evenimentul ei din calendar, deci mutarea evenimentului mută programul."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Parametrul days trebuie să fie un număr întreg între 1 și 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Voluntarul implicit trebuie să fie o persoană"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Voluntarii impliciți sunt salvați în program și se aplică ocurențelor create de acum înainte."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Voluntarii impliciți trebuie să fie o listă"
+
+#: 
+msgid "The description is too long"
+msgstr "Descrierea este prea lungă"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Sfârșitul intervalului este înaintea începutului."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Sfârșitul intervalului nu este o dată."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Evenimentul nu a putut fi asigurat cu personal"
+
+#: 
+msgid "The event does not exist"
+msgstr "Evenimentul nu există"
+
+#: 
+msgid "The event is inactive"
+msgstr "Evenimentul este inactiv"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Evenimentul trebuie să se termine după ce începe"
+
+#: 
+msgid "The event title"
+msgstr "Titlul evenimentului"
+
+#: 
+msgid "The event title is too long"
+msgstr "Titlul evenimentului este prea lung"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Tipul de eveniment cu care încep evenimentele noi ale unei slujiri. Dacă este gol sau dacă tipul a fost șters, se folosește tipul numit „Altele”, dacă există."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Tipul de eveniment nu există"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Tipul de eveniment pe care îl urmează acest program nu mai există."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Evenimentele pot fi mutate doar într-o clasă cu care echipa este legată"
+
+#: 
+msgid "The events could not be created"
+msgstr "Evenimentele nu au putut fi create"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Evenimentele nu au putut fi șterse"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Evenimentele nu au putut fi asigurate cu personal"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Delegarea nu a putut fi eliminată"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Ultima dată este înaintea primei date"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Lista voluntarilor eligibili nu a putut fi încărcată"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Numărul maxim nu poate fi sub numărul minim"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Mesajul nu a putut fi pus în coadă"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Numărul minim nu poate fi negativ"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Slujirea nu a putut fi creată"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Slujirea nu a putut fi dezactivată"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Slujirea nu a putut fi ștearsă"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Slujirea nu a putut fi reactivată"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Slujirea nu a putut fi salvată"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Ocurența nu a putut fi ștearsă"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Ocurența nu are program"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Ocurențele nu au putut fi generate"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Voluntarul inițial este eliberat, iar înlocuitorul ocupă postul. Ambii sunt anunțați."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Voluntarul inițial păstrează postul. Ambii sunt anunțați."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Pagina cerută nu există. Este posibil să fi fost mutată sau ștearsă."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Postul aparține unei alte slujiri"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Postul nu a putut fi șters"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Postul nu a putut fi salvat"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Postul este încă acoperit, deci nu este nevoie de nicio acțiune decât dacă doriți să ajustați lista."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Calificarea nu a putut fi eliminată"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Calificarea nu a putut fi salvată"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Voluntarii calificați nu au putut fi încărcați"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Recurența trebuie să spună cum se repetă evenimentele"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Cererea ca %1$s să slujească în locul lui %2$s a fost aprobată."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Cererea ca %1$s să slujească în locul lui %2$s nu a fost aprobată."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Același post este listat de două ori în necesarul de personal"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Programul nu a putut fi dezactivat"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Programul nu a putut fi șters"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Programul nu a putut fi reactivat"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Programul nu a putut fi salvat"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Programul a fost actualizat, deci nu mai este nimic de făcut."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Fereastra programului se termină înainte de a începe"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Necesarul de personal al programului nu a putut fi încărcat"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Necesarul de personal nu a putut fi încărcat"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Necesarul de personal nu a putut fi resetat"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Necesarul de personal nu a putut fi salvat"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Necesarul de personal trebuie să fie o listă"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Planul de personal nu a putut fi încărcat"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Începutul intervalului nu este o dată."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Înlocuirea nu a putut fi decisă"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Cererile de înlocuire nu au putut fi încărcate"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Învățătorii pot fi importați doar într-un post al acestei echipe"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Învățătorii clasei %1$s sunt gestionați în Slujiri → %2$s → %3$s. Elevii pot fi totuși schimbați aici."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Echipa nu a putut fi ștearsă"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Echipa nu a putut fi salvată"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Echipa nu aparține acestei slujiri"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Dosarul temei nu a fost găsit."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Tipul cu care începe un eveniment nou din fila Calendar a unei slujiri. Poate fi schimbat oricum pentru fiecare eveniment, de exemplu pentru o clasă care are nevoie de categorii de număr de participanți."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Repartizarea voluntarului nu a putut fi salvată"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Grupul de voluntari al slujirii %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Schimbarea configurării voluntarilor nu a putut fi salvată"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Fereastra se termină înainte de a începe"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Coordonatorii lor pot fixa evenimentele slujirii lor în acest calendar fără permisiunea Adăugare evenimente."
+
+#: 
+msgid "Theme"
+msgstr "Temă"
+
+#: 
+msgid "Themes"
+msgstr "Teme"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Temele sunt furnizate de biserica dumneavoastră, nu de ChurchCRM, și nu sunt verificate de proiectul ChurchCRM."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Nu există un calendar al bisericii cu id-ul %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Nu există un calendar de sistem cu id-ul %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Acestea sunt datele pe care biserica le are în evidență despre dumneavoastră. Modificările se salvează imediat."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Acestea sunt echipele de voluntari pe care le îndrumați. Deschideți una pentru a-i configura posturile, a spune cine poate sluji unde și a completa săptămânile următoare."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Aceste evenimente nu sunt o serie: diferă prin titlu, tip sau clasă"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Aceste slujiri ar dori mai multe persoane. Spuneți-le că sunteți interesat și cineva vă va contacta."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Aceste necesare provin din program. Salvarea aici schimbă doar această ocurență."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Aceste numere cuprind doar conturile de autoservire: persoane al căror cont poate accesa Portalul comunității și nimic altceva."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Aceste persoane sunt în continuare repartizate, dar postul pe care îl ocupă nu mai face parte din planul de personal al acestei date."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Aceste persoane sunt în continuare repartizate, dar postul pe care îl ocupă nu mai face parte din planul de personal al acestei ocurențe."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Aceste posturi programate mai au nevoie de cineva."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Aceste echipe ale %1$s sunt legate de o clasă a Școlii duminicale: %2$s. Desfaceți mai întâi legăturile."
+
+#: 
+msgid "They could not be added"
+msgstr "Nu au putut fi adăugați"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Nu au putut fi eliminați din această slujire"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Se termină la %d minut după încheierea evenimentului."
+msgstr[1] "Se termină la %d minute după încheierea evenimentului."
+msgstr[2] "Se termină la %d de minute după încheierea evenimentului."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Se termină la %d minut înainte de încheierea evenimentului."
+msgstr[1] "Se termină la %d minute înainte de încheierea evenimentului."
+msgstr[2] "Se termină la %d de minute înainte de încheierea evenimentului."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Erau deja voluntari aici"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Această repartizare este %1$s și nu poate fi schimbată în %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Această repartizare nu mai este activă"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Acest e-mail nu este în istoricul dumneavoastră."
+
+#: 
+msgid "This event has already happened"
+msgstr "Acest eveniment a avut deja loc"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Aceasta ajunge la biroul bisericii pentru verificare. Până când un membru al personalului o aprobă, noul membru al familiei apare aici ca în așteptarea verificării."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Acest grup este grupul de voluntari al unei slujiri și este șters odată cu slujirea"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Acest grup este grupul de voluntari al slujirii %s și este gestionat din acea slujire."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Acest grup este grupul de voluntari al slujirii %s. Este gestionat din acea slujire."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Această instalare nu are încă niciun calendar."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Aceasta este o reamintire că sunteți programat să slujiți în curând."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Acesta nu este un nume valid de dosar de temă."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Aceasta nu este una dintre datele echipei dumneavoastră."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Aceasta nu este una dintre echipele dumneavoastră."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Aici biserica trimite corespondență și știe pe cine să sune pentru gospodăria dumneavoastră."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Acesta este contul dumneavoastră de la biserică. Tot ce puteți face pentru dumneavoastră și familia dumneavoastră se află aici."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Această slujire nu are evenimente viitoare în calendar."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Această slujire nu are evenimente viitoare cu titlul „%s”. Un program urmează evenimente deja existente: adăugați-le mai întâi în fila Calendar a slujirii."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Această slujire nu are grup de voluntari"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Această slujire nu cere ajutor acum"
+
+#: 
+msgid "This ministry's events"
+msgstr "Evenimentele acestei slujiri"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Evenimentele acestei slujiri (niciun eveniment ales încă)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Această ocurență urmează din nou programul ei"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Această ocurență a avut deja loc"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Această ocurență a avut deja loc și repartizările ei nu mai pot fi schimbate"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Această ocurență a fost anulată"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Această ocurență are propriul necesar de personal, separat de programul ei."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Această pagină nu face parte din contul dumneavoastră. Dacă credeți că ar trebui, întrebați biroul bisericii."
+
+#: 
+msgid "This page was not found"
+msgstr "Această pagină nu a fost găsită"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Această parte a Portalului comunității este pentru liderii echipelor de voluntari."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Acest post este repartizat de liderul sau coordonatorul echipei, nu prin înscriere"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Acest program nu poate fi șters: %d repartizări de voluntari fac încă trimitere la ocurențele lui."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Acest program nu are încă necesar de personal"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Acest program este inactiv. Reactivați-l pentru a-i genera ocurențele."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "Această cerere de înlocuire a fost deja decisă"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Această echipă nu are încă posturi"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Această echipă asigură deja personal pentru acest eveniment"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Acest șablon cere fișierul „%s”, pe care tema nu îl conține."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Această temă nu poate fi activată"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Această temă nu are probleme."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Această versiune de ChurchCRM nu folosește un șablon la această cale, deci suprascrierea nu este niciodată randată."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Bifați-le în fila Voluntari a acestei echipe, apoi repartizați-le aici."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Bifările se salvează pe măsură ce le faceți."
+
+#: 
+msgid "Times come from this event"
+msgstr "Orele provin din acest eveniment"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Completează fiecare program, trimite tot ce este în coadă și încheie ocurențele terminate, fără a aștepta următoarea rulare programată."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Respingeți pe {{name}}? Voluntarul inițial rămâne și este anunțat."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Dezactivează memoria cache a șabloanelor Portalului comunității și afișează numele fiecărui șablon într-un comentariu HTML. Pentru designerii de teme; lăsați dezactivat în utilizarea normală."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Activați aceasta pentru o slujire ale cărei echipe predau la clase ale Școlii duminicale. Echipele ei pot fi atunci legate de o clasă, iar programele și evenimentele ei pot folosi una."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Dezactivează memoria cache a șabloanelor portalului și afișează numele fiecărui șablon într-un comentariu HTML. Pentru designerii de teme; lăsați dezactivat în utilizarea normală."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Autentificare cu doi factori"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Posturi necompletate"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Eroare necunoscută de livrare"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Stare necunoscută a ocurenței"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Mod necunoscut de legare a programului"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Slujire de voluntari necunoscută"
+
+#: 
+msgid "Until"
+msgstr "Până la"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Disponibilitate viitoare"
+
+#: 
+msgid "Update your details"
+msgstr "Actualizați-vă datele"
+
+#: 
+msgid "Update your family details"
+msgstr "Actualizați datele familiei dumneavoastră"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Folosiți Asigură personal pentru acest eveniment pentru a asigura personal unui singur eveniment"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Folosiți necesarul programului"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Utilizatorul trebuie să aibă permisiunea Adăugare eveniment sau să coordoneze o slujire de voluntari, iar modulul Evenimente trebuie să fie activat"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Utilizatorul trebuie să aibă permisiunea Adăugare eveniment sau să coordoneze slujirea de voluntari căreia îi aparține acest calendar"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — Oportunități de voluntariat (vechi)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — Oportunități de voluntariat vechi"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — Slujiri"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — Gestionarea voluntarilor"
+
+#: 
+msgid "Valid"
+msgstr "Valid"
+
+#: 
+msgid "Validation"
+msgstr "Validare"
+
+#: 
+msgid "View event"
+msgstr "Vizualizați evenimentul"
+
+#: 
+msgid "View my schedule"
+msgstr "Vezi programul meu"
+
+#: 
+msgid "View only"
+msgstr "Doar vizualizare"
+
+#: 
+msgid "View person"
+msgstr "Vizualizare persoană"
+
+#: 
+msgid "View the event"
+msgstr "Vezi evenimentul"
+
+#: 
+msgid "View this email"
+msgstr "Vezi acest e-mail"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Voluntar (vechi)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Gestionarea voluntarilor V2 nu este activată"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Slujire de voluntari"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Repartizare voluntar"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Voluntar a refuzat"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Experiența de voluntariat"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Posturile de voluntari mai trebuie completate"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Reamintire pentru voluntari"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Înscriere ca voluntar"
+
+#: 
+msgid "Volunteer times"
+msgstr "Orele voluntarilor"
+
+#: 
+msgid "Volunteering"
+msgstr "Voluntariat"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Voluntariat organizat așa cum funcționează o biserică. Fiecare slujire are echipe și posturi; persoanele sunt calificate pentru posturi și aparțin grupului de voluntari al slujirii; programele urmează evenimentele din calendar și produc ocurențe datate cu cerințe de personal; coordonatorii repartizează persoane, care acceptă, refuză sau propun un înlocuitor; reamintirile și alertele se trimit prin e-mail. Administratorii și utilizatorii cu permisiunea Gestionează slujirile văd toate slujirile și le pot crea, dezactiva și șterge. Unui coordonator de slujire i se dă în schimb permisiunea Gestionează slujirile mele: titlul Slujiri din bara laterală arată atunci doar slujirile pe care le coordonează. Un lider de echipă își conduce echipa din Portalul comunității. Credincioșii folosesc Portalul comunității pentru a-și vedea programul, a răspunde, a se înscrie și a se oferi să ajute."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Voluntari repartizați: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Voluntarii termină"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Voluntari necesari"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Voluntarii slujirii %s sunt repartizați la aceste evenimente, deci nu pot fi șterse aici. Cereți acelei slujiri să-și elimine încadrarea sau cereți cuiva care gestionează calendarul."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Voluntarii din {{names}} sunt repartizați la unele dintre ele. Dacă nu gestionați calendarul, ștergerea este refuzată până când acea încadrare este eliminată."
+
+#: 
+msgid "Volunteers start"
+msgstr "Voluntarii încep"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Voluntarii încep la %d minut după începerea evenimentului."
+msgstr[1] "Voluntarii încep la %d minute după începerea evenimentului."
+msgstr[2] "Voluntarii încep la %d de minute după începerea evenimentului."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Voluntarii încep la %d minut înainte de începerea evenimentului."
+msgstr[1] "Voluntarii încep la %d minute înainte de începerea evenimentului."
+msgstr[2] "Voluntarii încep la %d de minute înainte de începerea evenimentului."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Se așteaptă un răspuns"
+
+#: 
+msgid "Waiting for review"
+msgstr "În așteptarea verificării"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Se așteaptă confirmarea coordonatorului dumneavoastră."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Vă vom trimite un e-mail când ceva trebuie completat."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Am primi cu drag mai mult ajutor duminică dimineața — nu este nevoie de experiență."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Bine ați venit, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Ce trebuie schimbat?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Ce necesită atenția dumneavoastră săptămâna aceasta"
+
+#: 
+msgid "What the check found"
+msgstr "Ce a găsit verificarea"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Care sunt experiențele de voluntariat"
+
+#: 
+msgid "What you want to say"
+msgstr "Ce doriți să spuneți"
+
+#: 
+msgid "When"
+msgstr "Când"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Când un voluntar propune pe cineva care să-i ia locul, apare aici pentru a-l aproba sau respinge."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Când un voluntar propune pe cineva care să-i ia locul, apare aici pentru a-l aproba."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Când cineva vă pune într-o echipă sau vă înscrieți singur, va apărea aici."
+
+#: 
+msgid "Where"
+msgstr "Unde"
+
+#: 
+msgid "Where the dates come from"
+msgstr "De unde provin datele"
+
+#: 
+msgid "Where we reach you"
+msgstr "Unde vă putem contacta"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Care experiență de gestionare a voluntarilor este activă. V1 este vechea funcție Oportunități de voluntariat; V2 este noul flux de programare și repartizare. „Ambele” le arată alături în timpul migrării."
+
+#: 
+msgid "Which events"
+msgstr "Ce evenimente"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Ce experiență de voluntariat folosește această biserică. Cardul din dreapta explică fiecare alegere."
+
+#: 
+msgid "Who is covering"
+msgstr "Cine înlocuiește"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Cine este necesar, cine este de serviciu și ce mai lipsește"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Cel care a slujit cel mai demult este listat primul."
+
+#: 
+msgid "Work Email"
+msgstr "E-mail de serviciu"
+
+#: 
+msgid "Yearly"
+msgstr "Anual"
+
+#: 
+msgid "You"
+msgstr "Dumneavoastră"
+
+#: 
+msgid "You are already helping that day"
+msgstr "Ajutați deja în acea zi"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "Ajutați deja în acea zi ca {{what}}. Vă înscrieți și la aceasta?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Nu aveți permisiunea de a schimba aceasta. Vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Nu sunteți asociat în prezent cu o familie"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Încă nu faceți parte dintr-o fișă de familie."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Sunteți pe listă — mulțumim."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Puteți verifica sau schimba aceasta în programul dumneavoastră de voluntar."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Nu puteți deschide această pagină"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Nu vă puteți propune pe dumneavoastră ca propriul înlocuitor"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Nu ați putut fi înscris la aceasta."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Încă nu conduceți nicio echipă de voluntari."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Aveți o adresă nouă de calendar. Cea veche nu mai funcționează."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Ați fost programat să slujiți"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Ați fost programat să slujiți."
+
+#: 
+msgid "You lead this"
+msgstr "Conduceți aceasta"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Puteți crea un program doar pentru o echipă pe care o conduceți"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Veți reveni pe listă pentru aceasta."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Contul dumneavoastră nu este legat de o fișă de persoană. Vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Abonamentul dumneavoastră la calendar a fost salvat."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Adresa dumneavoastră curentă va înceta imediat să funcționeze. Oricine i-ați dat-o va avea nevoie de cea nouă."
+
+#: 
+msgid "Your details"
+msgstr "Datele dumneavoastră"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Datele dumneavoastră au fost salvate."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Datele familiei dumneavoastră au fost salvate."
+
+#: 
+msgid "Your photo"
+msgstr "Fotografia dumneavoastră"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Fotografia dumneavoastră a fost salvată."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Programul dumneavoastră nu a putut fi încărcat."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Sesiunea dumneavoastră a expirat. Vă rugăm să vă autentificați din nou."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Cererea dumneavoastră de înlocuitor a fost aprobată"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Cererea dumneavoastră de înlocuitor nu a fost aprobată"
+
+#: 
+msgid "already staffed by this team"
+msgstr "deja asigurat cu personal de această echipă"
+
+#: 
+msgid "body is required"
+msgstr "corpul mesajului este obligatoriu"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds trebuie să fie o listă de id-uri de calendar"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents trebuie să fie unul dintre: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId trebuie să fie un id de grup sau null"
+
+#: 
+msgid "end offset"
+msgstr "decalaj de sfârșit"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds trebuie să fie o listă de id-uri de eveniment"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "fiecare mesaj a fost livrat sau este încă în coadă"
+
+#: 
+msgid "has not served yet"
+msgstr "nu a slujit încă"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId trebuie să fie un id de post"
+
+#: 
+msgid "inactive family"
+msgstr "familie inactivă"
+
+#: 
+msgid "line %d"
+msgstr "linia %d"
+
+#: 
+msgid "marked do not email"
+msgstr "marcat să nu fie contactat prin e-mail"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "mesaje care nu au putut fi livrate"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "mesaje care nu au putut fi livrate după cinci încercări"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "mesaje în așteptarea trimiterii"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds trebuie să fie o listă de id-uri de slujire"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "minute după încheierea evenimentului"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "minute după începerea evenimentului"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "minute înainte de încheierea evenimentului"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "minute înainte de începerea evenimentului"
+
+#: 
+msgid "never"
+msgstr "niciodată"
+
+#: 
+msgid "no email address"
+msgstr "fără adresă de e-mail"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds și familyIds trebuie să fie liste de numere întregi pozitive"
+
+#: 
+msgid "record not found"
+msgstr "înregistrarea nu a fost găsită"
+
+#: 
+msgid "same address as another recipient"
+msgstr "aceeași adresă ca a altui destinatar"
+
+#: 
+msgid "single event"
+msgstr "un singur eveniment"
+
+#: 
+msgid "start offset"
+msgstr "decalaj de început"
+
+#: 
+msgid "subject and body are required"
+msgstr "subiectul și corpul mesajului sunt obligatorii"
+
+#: 
+msgid "subject is required"
+msgstr "subiectul este obligatoriu"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subiectul trebuie să aibă cel mult 255 de caractere"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool trebuie să fie adevărat sau fals"
+
+#: 
+msgid "window end"
+msgstr "sfârșitul ferestrei"
+
+#: 
+msgid "window start"
+msgstr "începutul ferestrei"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} adăugați, {{alreadyMembers}} erau deja voluntari aici"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} ocurențe create, {{existing}} existau deja"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} a creat {{total}} evenimente pentru {{className}} ({{upcoming}} viitoare)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} asigură personal și pentru unele dintre ele."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} coordonează deja această slujire"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} repartizat"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} slujește deja ca {{position}} la această ocurență. Îl puteți repartiza totuși."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} este calificat, dar nu este în grupul de voluntari al acestei slujiri. Repartizarea lui îl adaugă doar la această ocurență."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} coordonează acum această slujire"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: numerele trebuie să fie între 0 și {{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: maximul nu poate fi sub minim."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} nu mai este calificat"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} calificat"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} îi cere lui {{substitute}} să-i ia locul"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} din {{date}} a fost creat. Asigurați-i personal acum?"
+

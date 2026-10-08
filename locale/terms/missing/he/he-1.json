@@ -1,182 +1,50 @@
 {
-  "Select at least one classification to include in the directory.": "יש לבחור לפחות סיווג אחד לכלול בספר הכתובות.",
-  "Geocoding services": "שירותי איתור קואורדינטות",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "שירותי איתור קואורדינטות לנסות, לפי הסדר שבחרתם. Nominatim (OpenStreetMap) פועל בכל העולם; US Census (US Census Bureau) מכסה כתובות בארצות הברית בלבד. בחרו גם US Census כדי להשתמש בו. אם לא נבחר דבר, ייעשה שימוש ב-Nominatim.",
-  "New Record Defaults": "ברירות מחדל לרשומות חדשות",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "פעולה זו מאתרת קואורדינטות מפה לכל משפחה שחסרות לה, באמצעות שירותי האיתור שנבחרו בהגדרות המפה. היא עוברת על המשפחות במנות של 50; מנה אחת אורכת כדקה עם שירות איתור אחד, ויותר עם כמה שירותים. אפשר להשאיר את הדף פתוח בזמן הריצה. להמשיך?",
-  "Used for new records and for geocoding when a record has no country.": "משמש לרשומות חדשות ולאיתור קואורדינטות כאשר לרשומה אין מדינה.",
-  "Copy from Church Info": "העתקה מפרטי הקהילה",
-  "Could not copy the church address.": "לא ניתן להעתיק את כתובת הקהילה.",
-  "Could not match the church country.": "לא ניתן להתאים את מדינת הקהילה.",
-  "Class lists, attendance sheets, and photo books": "רשימות כיתה, דפי נוכחות וספרי תמונות",
-  "Group membership lists and Sunday School class reports": "רשימות חברי קבוצות ודוחות כיתות בית הספר של יום ראשון",
-  "Your fiscal year starts in %s.": "שנת הכספים שלכם מתחילה ב-%s.",
-  "An error occurred": "אירעה שגיאה",
-  "Approve": "אישור",
-  "Approve selected": "אישור הנבחרים",
-  "Approved": "אושר",
-  "Change in People Settings": "שינוי בהגדרות אנשים",
-  "Could not approve the selected registrations": "לא ניתן לאשר את ההרשמות שנבחרו",
-  "Could not approve this family": "לא ניתן לאשר משפחה זו",
-  "Pending Registrations": "הרשמות ממתינות",
-  "Pending review": "ממתין לבדיקה",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "הרשמות הממתינות לבדיקה מטופס ההרשמה הציבורי שלכם. רשומות ללא דוא\"ל או טלפון מסומנות — יש לוודא את פרטי הקשר לפני יצירת קשר.",
-  "Review now": "לבדיקה עכשיו",
-  "Review self registrations": "בדיקת הרשמות עצמיות",
-  "Select month": "בחירת חודש",
-  "Self-registration is disabled": "ההרשמה העצמית מושבתת",
-  "Self-registration is enabled": "ההרשמה העצמית מופעלת",
-  "The public registration form is turned off. Existing registrations are listed below.": "טופס ההרשמה הציבורי כבוי. ההרשמות הקיימות מוצגות להלן.",
-  "This family is not a pending self-registration": "משפחה זו אינה הרשמה עצמית ממתינה",
-  "This person belongs to a family — approve the family instead": "אדם זה שייך למשפחה — יש לאשר את המשפחה במקום זאת",
-  "This person is not a pending self-registration": "אדם זה אינו הרשמה עצמית ממתינה",
-  "This self-registered family is pending review": "משפחה זו, שנרשמה בעצמה, ממתינה לבדיקה",
-  "Total registrations": "סך ההרשמות",
-  "Visitors can sign up on your public registration form.": "מבקרים יכולים להירשם בטופס ההרשמה הציבורי שלכם.",
-  "Yesterday": "אתמול",
-  "days ago": "ימים לפני כן",
-  "self-registrations are waiting for review": "הרשמות עצמיות ממתינות לבדיקה",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "ימי הולדת מופנים לאדם, ויובלי נישואין לזוג.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "תוויות דואר לאנשים בדוח זה. אדם שאין לו כתובת משלו מקבל את כתובת משפחתו.",
-  "One label for each couple.": "תווית אחת לכל זוג.",
-  "Print Labels": "הדפסת תוויות",
-  "That role is not one of this group's roles.": "תפקיד זה אינו אחד מתפקידי הקבוצה.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" אינו סוג לוח שנה שהדף מכיר.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s אינו יכול לשרת והציע את %2$s כמחליף.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s כבר נמצא במאגר המתנדבים של %2$s ורוצה לעזור שוב.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s כבר מקושר ל-%2$s ב-%3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s נמצא ב-%2$s בתפקיד %3$s. יש להסיר אותו תחילה מהכיתה; הסמכתו כאן תהפוך אותו לאחד ממוריה.",
-  "%1$s is not an event of %2$s": "%1$s אינו אירוע של %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s נשארת כיתה של בית הספר של יום ראשון בעוד מוריה מנוהלים ב-שירותים ← %2$s ← %3$s. יש לנתק אותה תחילה מהצוות.",
-  "%1$s wants to help with %2$s": "%1$s רוצה לעזור ב-%2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s רוצה לעזור ב-%2$s ונוסף למאגר המתנדבים שלו.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: המקסימום הוא %2$d אך נבחרו %3$d מתנדבי ברירת מחדל. יש להסיר אחד או להעלות את המקסימום.",
-  "%d day": {
-    "one": "%d יום",
-    "other": "%d ימים"
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d ברירת מחדל דולגה מסיבה אחרת (המופע הסתיים, בוטל או מלא)",
-    "other": "%d ברירות מחדל דולגו מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d ברירת מחדל דולגה: ההסמכה בוטלה",
-    "other": "%d ברירות מחדל דולגו: ההסמכה בוטלה"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d מתנדב ברירת מחדל שובץ",
-    "other": "%d מתנדבי ברירת מחדל שובצו"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d נכשלו",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "עדיין נדרש עוד %d מתנדב לתפקיד זה. פתחו את המופע כדי למלא את החסר.",
-    "other": "עדיין נדרשים עוד %d מתנדבים לתפקיד זה. פתחו את המופע כדי למלא את החסר."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d מופע חדש",
-    "other": "%d מופעים חדשים"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "עדיין נדרש %d מתנדב למופע קרוב.",
-    "other": "עדיין נדרשים %d מתנדבים למופע קרוב."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "לוח שנה של %s",
-  "%s Family": "משפחת %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s אינו מספק מורים לבית הספר של יום ראשון, ולכן הצוותים, לוחות הזמנים והאירועים שלו אינם יכולים להשתמש בכיתה. מנהל מתנדבים יכול לשנות זאת תחת עריכת השירות.",
-  "%s email from the church": {
-    "one": "%s דוא\"ל מהקהילה",
-    "other": "%s הודעות דוא\"ל מהקהילה"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "משפחת %s",
-  "%s has declined a volunteer assignment.": "%s דחה שיבוץ להתנדבות.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "ל-%s אין תפקיד בשם מורה, ולכן אי אפשר לנהל את מוריו מצוות",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "ל-%s אין פגישות קרובות בלוח השנה. לוח זמנים עוקב אחר אירועים שכבר קיימים: יש להוסיף תחילה את פגישות הכיתה, באמצעות אירוע חוזר חדש בלשונית לוח השנה של השירות.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s עדיין צפוי לשרת. אם אין אפשרות, יש לפנות לרכז.",
-  "%s not sent (%s): %s": "%s לא נשלח (%s): %s",
-  "%s person in your household": {
-    "one": "%s אדם במשק הבית שלכם",
-    "other": "%s אנשים במשק הבית שלכם"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s תפקיד",
-    "other": "%s תפקידים"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: אותו אדם נבחר פעמיים כמתנדב ברירת מחדל",
-  "(no subject)": "(ללא נושא)",
-  "A birthday cannot be in the future.": "יום הולדת לא יכול להיות בעתיד.",
-  "A calendar event": "אירוע בלוח השנה",
-  "A calendar id must be a number.": "מזהה לוח שנה חייב להיות מספר.",
-  "A class that no longer exists": "כיתה שאינה קיימת עוד",
-  "A class with no meetings on the calendar cannot be chosen yet.": "כיתה ללא פגישות בלוח השנה עדיין אינה ניתנת לבחירה.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "כיתה ללא פגישות בלוח השנה עדיין אינה ניתנת לבחירה. רכז של השירות מוסיף את פגישותיה בלשונית לוח השנה של השירות.",
-  "A class's meetings": "פגישות הכיתה",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "רכז יכול לנהל את כל מה שבשירות זה, כולל שינויים שמנהל מתנדבים היה צריך לבצע.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "רכז של השירות יכול להוסיף אותן בלשונית לוח השנה של השירות.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "רכז של השירות יכול להוסיף אותן בלשונית לוח השנה של השירות. לאחר מכן יש ליצור שוב.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "רכז מנהל את כל השירות — הצוותים, התפקידים, לוחות הזמנים וכל שיבוץ בו.",
-  "A day a month does not have falls on its last day.": "יום שאין בחודש חל ביומו האחרון.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "מתנדב ברירת מחדל שייך לצורכי האיוש של לוח הזמנים, לא למופע אחד",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "אפשר לבחור מתנדב ברירת מחדל רק לתפקיד שצורכי האיוש של לוח זמנים זה מבקשים",
-  "A from and a to date in YYYY-MM-DD form are required": "נדרשים תאריך התחלה ותאריך סיום בפורמט YYYY-MM-DD",
-  "A minimum count is required": "נדרש מספר מינימום",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "שירות נוצר עם לוח שנה, מאגר מתנדבים וצוות ראשון משלו, ולכן כל מה שצריך להחליט כאן הוא שמו ומה הוא עושה.",
-  "A ministry name is required": "נדרש שם לשירות",
-  "A ministry needs at least one team. Rename it instead.": "שירות צריך לפחות צוות אחד. יש לשנות את שמו במקום זאת.",
-  "A ministry with that name already exists": "כבר קיים שירות בשם זה",
-  "A ministry's own calendar cannot be opened to other ministries": "אי אפשר לפתוח את לוח השנה של שירות לשירותים אחרים",
-  "A position belongs to a team; choose one": "תפקיד שייך לצוות; יש לבחור אחד",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "תפקיד הוא עבודה שאדם עושה בצוות זה, כגון אספרסו או מוביל שירה.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "תפקיד הוא משימה שאדם משרת בה, כגון אספרסו או מוביל שירה.",
-  "A position is required": "נדרש תפקיד",
-  "A position name is required": "נדרש שם לתפקיד",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "תפקיד עם מתנדבים מוסמכים אינו יכול לעבור אל צוות המקושר לכיתה של בית הספר של יום ראשון או ממנו, כי הדבר ישנה מי מלמד את הכיתה. יש ליצור את התפקיד בצוות האחר.",
-  "A position with that name already exists in this ministry": "כבר קיים תפקיד בשם זה בשירות זה",
-  "A response must be accepted or declined": "יש לאשר או לדחות תשובה",
-  "A schedule belongs to a team; choose one": "לוח זמנים שייך לצוות; יש לבחור אחד",
-  "A schedule name is required": "נדרש שם ללוח הזמנים",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "לוח זמנים קובע לאילו אירועי לוח שנה הצוות מאייש: סוג של שירות קהילה, פגישות כיתה, או אירועי השירות עצמו. יש להוסיף אחד וליצור את מופעיו.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "לוח זמנים קובע לאילו אירועי לוח שנה הצוות הזה משרת: סוג של שירות קהילה, פגישות כיתה, או אירועי השירות עצמו. יש להוסיף אחד וליצור את מופעיו.",
-  "A schedule that follows a class must name the class": "לוח זמנים העוקב אחר כיתה חייב לציין את הכיתה",
-  "A schedule that follows an event type must name the event type": "לוח זמנים העוקב אחר סוג אירוע חייב לציין את סוג האירוע",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "לוח זמנים המאייש אירוע אחד אינו יכול לעקוב אחר אירועים אחרים; יש למחוק אותו ולהוסיף לוח זמנים במקום זאת",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "רשימה אחת של הזדמנויות, כגון \"משתלה\" או \"קבלת פנים\", המנוהלת תחת אנשים ← ניהול. כל אדם מסומן בהזדמנויות שהוא מוכן לעזור בהן, בלשונית מתנדב ברשומתו. זה כל מה שנרשם: אין צוותים, לוחות זמנים, שיבוץ לתאריך או הודעות תזכורת. התגיות משמשות בדוחות וברשומת האדם.",
-  "A square picture of your face works best.": "תמונה מרובעת של פניכם עובדת הכי טוב.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "צורך איוש מפרט את מתנדבי ברירת המחדל שלו ב-\"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "דרישת איוש שייכת לאחד בלבד: לוח זמנים או מופע",
-  "A substitute has already been proposed for this assignment": "כבר הוצע מחליף לשיבוץ זה",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "מנהל צוות יכול לנהל את הצוות שלו — תפקידיו, לוחות הזמנים שלו ומי משרת בהם — ולא דבר אחר בשירות.",
-  "A team name is required": "נדרש שם לצוות",
-  "A team with that name already exists in this ministry": "כבר קיים צוות בשם זה בשירות זה",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "ערכת נושא היא תיקייה שהקהילה שלכם מעלה אל Include/themes/ בשרת. ברירת המחדל של המערכת מגיעה עם ChurchCRM.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "הגדרת מעבר. דפי הזדמנויות ההתנדבות הישנים ודפי השירותים החדשים זמינים שניהם, ורשומת אדם מציגה את שתי לשוניות המתנדבים, מסומנות בבירור. השתמשו בה בזמן שאתם מעבירים קהילה מ-V1 ל-V2, ואז עברו ל-V2 בלבד.",
-  "A volunteer": "מתנדב",
-  "A volunteer has declined an assignment": "מתנדב דחה שיבוץ",
-  "A volunteer has proposed a substitute": "מתנדב הציע מחליף",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "מנהל מתנדבים יכול לנהל שירות זה ללא הרשאה מפורשת. הוסיפו רכז כדי לאפשר למישהו אחר לנהל אותו מבלי לתת לו את כל שאר השירותים.",
-  "A wedding date cannot be in the future.": "תאריך נישואין לא יכול להיות בעתיד.",
-  "Accepted": "התקבל",
-  "Account deleted": "החשבון נמחק",
-  "Account unlocked": "החשבון שוחרר",
-  "Accounts": "חשבונות",
-  "Active must be true or false": "הערך Active חייב להיות true או false",
-  "Active now": "פעיל כעת",
-  "Add All": "הוספת הכול",
-  "Add Everyone in Cart": "הוספת כל הנמצאים בבחירה",
-  "Add Volunteer": "הוספת מתנדב",
-  "Add Volunteers to Cart": "הוספת מתנדבים לבחירה",
-  "Add a family member": "הוספת בן משפחה",
-  "Add a position first, then come back and say how many of them are needed.": "יש להוסיף תחילה תפקיד, ואז לחזור ולומר כמה מהם נדרשים.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "הוסיפו שלב שני להתחברות, כך שהסיסמה לבדה לא תספיק כדי להיכנס לחשבון.",
-  "Add at least one position to this team, then tick who can serve where.": "יש להוסיף לצוות זה לפחות תפקיד אחד, ואז לסמן מי יכול לשרת היכן.",
-  "Add coordinator": "הוספת רכז",
-  "Add from Cart": "הוספה מהבחירה",
-  "Add its meetings first with New recurring event on the Calendar tab": "יש להוסיף אנשים לבחירה לפני הוספתם כמתנדבים",
-  "Add people to the cart before adding them as volunteers": "הוספת תפקיד",
-  "Add position": "הוספת לוח זמנים",
-  "Add schedule": "הוספת צוות",
-  "Add team": "יש להוסיף תחילה את פגישותיה באמצעות אירוע חוזר חדש בלשונית לוח השנה",
-  "Add them on the Calendar tab, then generate again.": "יש להוסיף אותן בלשונית לוח השנה, ואז ליצור שוב.",
-  "Add them on the Calendar tab.": "יש להוסיף אותן בלשונית לוח השנה.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "הוסיפו כתובת זו לאפליקציית לוח השנה שלכם. היא מתעדכנת מעצמה כשלוח השנה של הקהילה משתנה.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "הוסיפו כאן את אירועי השירות: יום עבודה, כיתה שנפגשת כל יום ראשון. הם עולים בלוח השנה של הקהילה, ואפשר לאייש אותם בעת יצירתם."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }
