@@ -223,6 +223,7 @@ describe("Admin → Member Portal page", () => {
             expectReadableBadgesInBothModes();
 
             for (const [theme, template] of [
+                [GOOD_THEME, "This theme has no problems."],
                 [BROKEN_THEME, "home.html.twig"],
                 [WARNING_THEME, "no-such-page.html.twig"],
             ]) {
