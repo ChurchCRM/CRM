@@ -75,12 +75,12 @@ function escapeHtml(value: string): string {
 /** Class, icon and label for a validation summary. */
 function statusPresentation(status: string): { cssClass: string; icon: string; label: string } {
   if (status === "error") {
-    return { cssClass: "bg-danger", icon: "fa-circle-xmark", label: t("Errors") };
+    return { cssClass: "bg-danger text-white", icon: "fa-circle-xmark", label: t("Errors") };
   }
   if (status === "warning") {
-    return { cssClass: "bg-warning", icon: "fa-triangle-exclamation", label: t("Warnings") };
+    return { cssClass: "bg-warning text-white", icon: "fa-triangle-exclamation", label: t("Warnings") };
   }
-  return { cssClass: "bg-success", icon: "fa-circle-check", label: t("Valid") };
+  return { cssClass: "bg-success text-white", icon: "fa-circle-check", label: t("Valid") };
 }
 
 function paintStatusBadge(status: string): void {
@@ -112,7 +112,7 @@ function paintFindings(response: ThemeResponse): void {
 
   const rows = response.findings
     .map((finding) => {
-      const badgeClass = finding.level === "error" ? "bg-danger" : "bg-warning";
+      const badgeClass = finding.level === "error" ? "bg-danger text-white" : "bg-warning text-white";
       const badgeLabel = finding.level === "error" ? t("Error") : t("Warning");
       // A file:line pair is the same in every language — no translation needed.
       const where = finding.file
