@@ -18764,3 +18764,4443 @@ msgstr "Peran pasangan"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Kode pos huruf besar"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Pilih setidaknya satu klasifikasi untuk dimasukkan ke dalam direktori."
+
+#: 
+msgid "Geocoding services"
+msgstr "Layanan geokode"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Layanan geokode yang dicoba, sesuai urutan pilihan Anda. Nominatim (OpenStreetMap) berfungsi di seluruh dunia; US Census (US Census Bureau) hanya mencakup alamat di Amerika Serikat. Pilih juga US Census untuk menggunakannya. Jika tidak ada yang dipilih, Nominatim digunakan."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Bawaan Data Baru"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Ini mencari koordinat peta untuk setiap keluarga yang belum memilikinya, menggunakan layanan geokode yang dipilih di Pengaturan Peta. Proses berjalan dalam kelompok berisi 50 keluarga; satu kelompok memerlukan sekitar satu menit dengan satu layanan geokode dan lebih lama jika lebih banyak. Anda dapat membiarkan halaman ini terbuka selama proses berjalan. Lanjutkan?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Digunakan untuk data baru dan untuk geokode ketika suatu data tidak memiliki negara."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Salin dari Info Gereja"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Alamat gereja tidak dapat disalin."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Negara gereja tidak dapat dicocokkan."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Daftar kelas, lembar kehadiran, dan buku foto"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Daftar anggota pelayanan dan laporan kelas Sekolah Minggu"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Tahun fiskal Anda dimulai pada %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Terjadi kesalahan"
+
+#: 
+msgid "Approve"
+msgstr "Setujui"
+
+#: 
+msgid "Approve selected"
+msgstr "Setujui yang dipilih"
+
+#: 
+msgid "Approved"
+msgstr "Disetujui"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Ubah di Pengaturan Jemaat"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Pendaftaran yang dipilih tidak dapat disetujui"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Keluarga ini tidak dapat disetujui"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Pendaftaran Tertunda"
+
+#: 
+msgid "Pending review"
+msgstr "Menunggu peninjauan"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Pendaftaran yang menunggu peninjauan dari formulir pendaftaran publik Anda. Entri tanpa email atau telepon ditandai — verifikasi kontak sebelum menindaklanjuti."
+
+#: 
+msgid "Review now"
+msgstr "Tinjau sekarang"
+
+#: 
+msgid "Review self registrations"
+msgstr "Tinjau pendaftaran mandiri"
+
+#: 
+msgid "Select month"
+msgstr "Pilih bulan"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Pendaftaran mandiri dinonaktifkan"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Pendaftaran mandiri diaktifkan"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Formulir pendaftaran publik dimatikan. Pendaftaran yang sudah ada tercantum di bawah."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Keluarga ini bukan pendaftaran mandiri yang tertunda"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Orang ini termasuk dalam sebuah keluarga — setujui keluarganya"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Orang ini bukan pendaftaran mandiri yang tertunda"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Keluarga yang mendaftar sendiri ini menunggu peninjauan"
+
+#: 
+msgid "Total registrations"
+msgstr "Total pendaftaran"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Pengunjung dapat mendaftar melalui formulir pendaftaran publik Anda."
+
+#: 
+msgid "Yesterday"
+msgstr "Kemarin"
+
+#: 
+msgid "days ago"
+msgstr "hari yang lalu"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "pendaftaran mandiri menunggu peninjauan"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Ulang tahun ditujukan kepada orangnya dan ulang tahun pernikahan kepada pasangan."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Label surat untuk orang-orang dalam laporan ini. Orang yang tidak memiliki alamat sendiri dikirimi surat di alamat keluarganya."
+
+#: 
+msgid "One label for each couple."
+msgstr "Satu label untuk setiap pasangan."
+
+#: 
+msgid "Print Labels"
+msgstr "Cetak Label"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Peran itu bukan salah satu peran pelayanan ini."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "\"%s\" bukan jenis kalender yang dikenal halaman ini."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s tidak dapat melayani dan mengusulkan %2$s sebagai pengganti."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s sudah ada dalam kelompok relawan %2$s dan ingin membantu lagi."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s sudah terhubung dengan %2$s di %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s ada di %2$s sebagai %3$s. Keluarkan dahulu dari kelas; dengan menjadikannya memenuhi syarat di sini, ia menjadi salah satu pengajarnya."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s bukan acara dari %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s tetap menjadi kelas Sekolah Minggu selama pengajarnya dikelola di Pelayanan → %2$s → %3$s. Putuskan dahulu hubungannya dari tim."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s ingin membantu dalam %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s ingin membantu dalam %2$s dan telah ditambahkan ke kelompok relawannya."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: Maksimum adalah %2$d tetapi %3$d relawan bawaan dipilih. Hapus satu atau naikkan Maksimum."
+
+#: 
+msgid "%d failed"
+msgstr "%d gagal"
+
+#: 
+msgid "%s Calendar"
+msgstr "Kalender %s"
+
+#: 
+msgid "%s Family"
+msgstr "Keluarga %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s tidak menyediakan pengajar untuk Sekolah Minggu, sehingga tim, jadwal, dan acaranya tidak dapat menggunakan kelas. Manajer relawan dapat mengubahnya di Ubah pelayanan."
+
+#: 
+msgid "%s family"
+msgstr "keluarga %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s telah menolak penugasan relawan."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s tidak memiliki peran bernama Pengajar, sehingga pengajarnya tidak dapat dikelola dari sebuah tim"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s tidak memiliki pertemuan mendatang di kalender. Jadwal mengikuti acara yang sudah ada: tambahkan dahulu pertemuan kelas, dengan Acara berulang baru di tab Kalender pelayanan."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s masih diharapkan melayani. Silakan hubungi koordinator jika tidak dapat hadir."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s tidak terkirim (%s): %s"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: orang yang sama dipilih dua kali sebagai relawan bawaan"
+
+#: 
+msgid "(no subject)"
+msgstr "(tanpa subjek)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Tanggal lahir tidak boleh di masa depan."
+
+#: 
+msgid "A calendar event"
+msgstr "Acara kalender"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "ID kalender harus berupa angka."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Kelas yang sudah tidak ada"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Kelas tanpa pertemuan di kalender belum dapat dipilih."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Kelas tanpa pertemuan di kalender belum dapat dipilih. Koordinator pelayanan menambahkan pertemuannya di tab Kalender pelayanan."
+
+#: 
+msgid "A class's meetings"
+msgstr "Pertemuan sebuah kelas"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Koordinator dapat mengelola semua hal dalam pelayanan ini, termasuk perubahan yang jika tidak harus dilakukan oleh manajer relawan."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Koordinator pelayanan dapat menambahkannya di tab Kalender pelayanan."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Koordinator pelayanan dapat menambahkannya di tab Kalender pelayanan. Lalu buat lagi."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Koordinator menjalankan seluruh pelayanan — tim, posisi, jadwal, dan setiap penugasan di dalamnya."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Hari yang tidak ada dalam suatu bulan jatuh pada hari terakhir bulan itu."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Relawan bawaan termasuk kebutuhan staf jadwal, bukan satu kejadian"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Relawan bawaan hanya dapat dipilih untuk posisi yang dibutuhkan oleh kebutuhan staf jadwal ini"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Tanggal mulai dan tanggal akhir dalam format YYYY-MM-DD diperlukan"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Jumlah minimum diperlukan"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Sebuah pelayanan dibuat dengan kalender, kelompok relawan, dan tim pertamanya sendiri, jadi yang perlu ditentukan di sini hanya namanya dan kegiatannya."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Nama pelayanan diperlukan"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Sebuah pelayanan membutuhkan setidaknya satu tim. Ubah namanya saja."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Pelayanan dengan nama itu sudah ada"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Kalender milik sebuah pelayanan tidak dapat dibuka untuk pelayanan lain"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Posisi termasuk dalam sebuah tim; pilih satu"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Posisi adalah tugas yang dikerjakan seseorang di tim ini, seperti Espresso atau Pemimpin Pujian."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Posisi adalah peran yang dilayani seseorang, seperti Espresso atau Pemimpin Pujian."
+
+#: 
+msgid "A position is required"
+msgstr "Posisi diperlukan"
+
+#: 
+msgid "A position name is required"
+msgstr "Nama posisi diperlukan"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Posisi dengan relawan yang memenuhi syarat tidak dapat dipindahkan ke dalam atau keluar dari tim yang terhubung dengan kelas Sekolah Minggu, karena itu akan mengubah siapa yang mengajar kelas. Buat posisi itu di tim lain."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Posisi dengan nama itu sudah ada di pelayanan ini"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Tanggapan harus diterima atau ditolak"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Jadwal termasuk dalam sebuah tim; pilih satu"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Nama jadwal diperlukan"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Jadwal menentukan acara kalender mana yang dilayani sebuah tim: jenis ibadah, pertemuan sebuah kelas, atau acara pelayanan ini sendiri. Tambahkan satu dan buat kejadiannya."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Jadwal menentukan acara kalender mana yang dilayani tim ini: jenis ibadah, pertemuan sebuah kelas, atau acara pelayanannya sendiri. Tambahkan satu dan buat kejadiannya."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Jadwal yang mengikuti sebuah kelas harus menyebutkan kelasnya"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Jadwal yang mengikuti jenis acara harus menyebutkan jenis acaranya"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Jadwal yang melayani satu acara tidak dapat mengikuti acara lain; hapus dan tambahkan jadwal baru"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "Satu daftar peluang pelayanan, seperti \"Pembibitan\" atau \"Penyambut\", disimpan di Jemaat → Admin. Setiap orang diberi tag peluang yang bersedia ia bantu, di tab Relawan pada datanya. Hanya itu yang dicatat: tidak ada tim, jadwal, penugasan pada tanggal tertentu, maupun email pengingat. Laporan dan data orang adalah tempat tag itu digunakan."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Foto wajah berbentuk persegi paling baik."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Kebutuhan staf mencantumkan relawan bawaannya di \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Kebutuhan staf termasuk dalam tepat satu jadwal atau satu kejadian"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Pengganti sudah diusulkan untuk penugasan ini"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Pemimpin tim dapat mengelola timnya sendiri — posisi, jadwal, dan siapa yang melayani di dalamnya — dan tidak ada yang lain dalam pelayanan."
+
+#: 
+msgid "A team name is required"
+msgstr "Nama tim diperlukan"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Tim dengan nama itu sudah ada di pelayanan ini"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Tema adalah folder yang diunggah gereja Anda ke Include/themes/ di server. Bawaan sistem disertakan dengan ChurchCRM."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Pengaturan transisi. Halaman Peluang Relawan lama dan halaman Pelayanan baru sama-sama tersedia, dan data orang menampilkan kedua tab Relawan dengan label yang jelas. Gunakan saat memindahkan gereja dari V1 ke V2, lalu beralih ke V2 saja."
+
+#: 
+msgid "A volunteer"
+msgstr "Seorang relawan"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Seorang relawan menolak penugasan"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Seorang relawan mengusulkan pengganti"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Manajer relawan dapat menjalankan pelayanan ini tanpa izin khusus. Tambahkan koordinator agar orang lain dapat menjalankannya tanpa harus diberi akses ke semua pelayanan lain."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Tanggal pernikahan tidak boleh di masa depan."
+
+#: 
+msgid "Accepted"
+msgstr "Diterima"
+
+#: 
+msgid "Account deleted"
+msgstr "Akun dihapus"
+
+#: 
+msgid "Account unlocked"
+msgstr "Akun Tidak Terkunci"
+
+#: 
+msgid "Accounts"
+msgstr "Akun"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Aktif harus benar atau salah"
+
+#: 
+msgid "Active now"
+msgstr "Aktif Sekarang"
+
+#: 
+msgid "Add All"
+msgstr "Tambah Semua"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Tambahkan Semua dalam Pilihan"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Tambah Relawan"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Tambahkan Relawan ke Pilihan"
+
+#: 
+msgid "Add a family member"
+msgstr "Tambah anggota keluarga"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Tambahkan posisi dahulu, lalu kembali dan tentukan berapa banyak yang dibutuhkan."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Tambahkan langkah kedua pada proses masuk Anda, agar kata sandi saja tidak cukup untuk mengakses akun Anda."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Tambahkan setidaknya satu posisi ke tim ini, lalu centang siapa yang dapat melayani di mana."
+
+#: 
+msgid "Add coordinator"
+msgstr "Tambah koordinator"
+
+#: 
+msgid "Add from Cart"
+msgstr "Tambah dari Pilihan"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Tambahkan dahulu pertemuannya dengan Acara berulang baru di tab Kalender"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Tambahkan orang ke pilihan sebelum menambahkan mereka sebagai relawan"
+
+#: 
+msgid "Add position"
+msgstr "Tambah posisi"
+
+#: 
+msgid "Add schedule"
+msgstr "Tambah jadwal"
+
+#: 
+msgid "Add team"
+msgstr "Tambah tim"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Tambahkan di tab Kalender, lalu buat lagi."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Tambahkan di tab Kalender."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Tambahkan alamat ini ke aplikasi kalender Anda. Alamat ini diperbarui otomatis saat kalender gereja berubah."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Tambahkan acara pelayanan ini di sini: hari kerja bakti, kelas yang bertemu setiap hari Minggu. Acara masuk ke kalender gereja, dan Anda dapat menugaskan petugas saat membuatnya."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Ditambahkan melalui Portal Jemaat dan menunggu peninjauan: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Ditambahkan — sekarang centang posisi yang dapat mereka layani"
+
+#: 
+msgid "Address Line 2"
+msgstr "Baris Alamat 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Konsol Admin"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Izin administrator diperlukan"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Tampilkan posisi ini di halaman Peluang Terbuka Portal Jemaat."
+
+#: 
+msgid "All Teams"
+msgstr "Semua Tim"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Izinkan jemaat mengubah tanggal lahir mereka sendiri dan anggota keluarganya."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Juga disematkan ke {{calendars}}, yang hanya dapat diubah oleh orang dengan izin Tambah Acara."
+
+#: 
+msgid "An event title is required"
+msgstr "Judul acara diperlukan"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Jenis acara atau pelayanan diperlukan"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Jenis acara yang sudah tidak ada"
+
+#: 
+msgid "Another ministry"
+msgstr "Pelayanan lain"
+
+#: 
+msgid "Any event"
+msgstr "Acara apa pun"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Hal yang perlu diketahui koordinator Anda"
+
+#: 
+msgid "Approve substitution"
+msgstr "Setujui penggantian"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Setujui pengganti ini"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Mintalah manajer relawan membuat pelayanan dan menjadikan Anda koordinatornya."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Minta seseorang menggantikan Anda"
+
+#: 
+msgid "Ask them"
+msgstr "Tanyakan kepada mereka"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Sudah diminta — koordinator Anda akan mengonfirmasinya."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Tugaskan relawan"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Ditugaskan di luar rencana saat ini"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Penugasan dibatalkan"
+
+#: 
+msgid "Assignment not found"
+msgstr "Penugasan tidak ditemukan"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Setidaknya satu personId atau familyId diperlukan"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Paling banyak %d relawan bawaan dapat dipilih untuk satu posisi"
+
+#: 
+msgid "Author"
+msgstr "Penulis"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Wewenang diberikan kepada orangnya, bukan kepada akun masuk, sehingga dapat diberikan sebelum ia memiliki akun. Orang yang akunnya hanya layanan mandiri tetap hanya melihat jadwalnya sendiri sampai administrator memperluas akunnya."
+
+#: 
+msgid "Automatic"
+msgstr "Otomatis"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Menunggu balasan"
+
+#: 
+msgid "Back to Email History"
+msgstr "Kembali ke Riwayat Email"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Kembali ke Dasbor Pelayanan"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Kembali ke Kejadian"
+
+#: 
+msgid "Back to Person"
+msgstr "Kembali ke Data Orang"
+
+#: 
+msgid "Back to editing"
+msgstr "Kembali mengedit"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Kembali ke jadwal saya"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Kembali ke Portal Jemaat"
+
+#: 
+msgid "Back to your profile"
+msgstr "Kembali ke profil Anda"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Tugas latar belakang dan pengiriman"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Tugas latar belakang terakhir berjalan"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Tugas latar belakang berjalan"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Ucapan ulang tahun"
+
+#: 
+msgid "Both"
+msgstr "Keduanya"
+
+#: 
+msgid "Both (transition)"
+msgstr "Keduanya (transisi)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Keduanya — V1 dan V2 berdampingan (transisi)"
+
+#: 
+msgid "Calendar address"
+msgstr "Alamat kalender"
+
+#: 
+msgid "Calendar saved"
+msgstr "Kalender disimpan"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Kalender yang ditampilkan Portal Jemaat kepada jemaat, dipilih di Admin -> Portal Jemaat -> Kalender."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Dapatkah pelayanan ini menyediakan pengajar untuk Sekolah Minggu?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Batalkan penugasan"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Batalkan penugasan ini"
+
+#: 
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Ubah kata sandi yang Anda gunakan untuk masuk, atau tambahkan langkah kedua agar kata sandi saja tidak cukup."
+
+#: 
+msgid "Change your password"
+msgstr "Ubah kata sandi Anda"
+
+#: 
+msgid "Checked in"
+msgstr "Sudah Masuk"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Hadir: %1$d dari %2$d dalam daftar kelas"
+
+#: 
+msgid "Checked out"
+msgstr "Sudah Keluar"
+
+#: 
+msgid "Choose a class"
+msgstr "Pilih kelas"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Pilih tanggal dalam bulan, dari 1 sampai 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Pilih foto baru"
+
+#: 
+msgid "Choose a person"
+msgstr "Pilih seseorang"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Pilih relawan"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Pilih relawan terlebih dahulu"
+
+#: 
+msgid "Choose an event"
+msgstr "Pilih kegiatan..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Pilih jenis acara"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Pilih jenis acara yang sudah ada"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Pilih setidaknya satu kalender untuk dilanggan."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Pilih kalender yang Anda inginkan di aplikasi kalender Anda."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Pilih tanggal setiap tahun dalam format BB-HH"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Pilih tanggal acara"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Pilih hari dalam seminggu"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Pilih acara yang diikuti jadwal ini"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Pilih acara yang akan dilayani"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Pilih acara yang akan dihapus"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Pilih acara yang akan dilayani"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Pilih tanggal pertama dan terakhir"
+
+#: 
+msgid "Choose the first date"
+msgstr "Pilih tanggal pertama"
+
+#: 
+msgid "Choose the last date"
+msgstr "Pilih tanggal terakhir"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Pilih posisi %1$s yang menjadi kualifikasi pengajar %2$s. Pengajar: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Pilih tim yang dilayani posisi ini"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Pilih tema yang dilihat jemaat, aktifkan atau matikan bagian portal, dan lihat siapa yang menggunakan portal."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Pilih mingguan, bulanan, atau tahunan"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Pilih dari mana tanggal jadwal berasal"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Pilih pengalaman relawan yang digunakan gereja ini, seberapa jauh jadwal diisi lebih awal dan kapan pengingat dikirim, serta pastikan tugas latar belakang berjalan."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Pilih siapa yang mengisi setiap posisi secara bawaan. Pilihan disimpan pada jadwal: mereka ditugaskan pada setiap kejadian yang dibuat sekarang dan yang dibuat oleh pengisian harian nanti, selama mereka masih memenuhi syarat, dan diminta menanggapi kecuali Anda menetapkannya sebagai sudah menerima. Biarkan posisi kosong untuk ditugaskan minggu demi minggu."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Pilih siapa yang menggantikan Anda."
+
+#: 
+msgid "Church Calendar"
+msgstr "Kalender Gereja"
+
+#: 
+msgid "Church Calendars"
+msgstr "Kalender Gereja"
+
+#: 
+msgid "Church calendar"
+msgstr "Kalender gereja"
+
+#: 
+msgid "Church events of a type"
+msgstr "Acara gereja dengan jenis tertentu"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Acara gereja dengan jenis tertentu ditambahkan di kalender gereja. Periksa jenis acara, judul, dan tanggal jadwal."
+
+#: 
+msgid "Church website"
+msgstr "Situs web gereja"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM memiliki dua cara mengelola relawan. Hanya satu yang dimaksudkan digunakan pada satu waktu; pengaturan di sebelah kiri menentukan mana yang dilihat gereja ini. Berpindah hanya menyembunyikan atau menampilkan halaman dan menu — tidak pernah menghapus data, sehingga Anda dapat kembali."
+
+#: 
+msgid "Close event details"
+msgstr "Tutup detail acara"
+
+#: 
+msgid "Colour"
+msgstr "Warna"
+
+#: 
+msgid "Completed"
+msgstr "Selesai"
+
+#: 
+msgid "Compose Message"
+msgstr "Tulis Pesan"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Konfirmasi data keluarga Anda"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Koordinator dihapus"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Salin alamat ini dan tambahkan ke aplikasi kalender Anda sebagai langganan kalender baru."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Pratinjau tidak dapat dibuat."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Acara kelas tidak dapat dihitung"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Wewenang tidak dapat diberikan"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Kelas Sekolah Minggu tidak dapat dimuat"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Dasbor tidak dapat dimuat"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Pilihan acara tidak dapat dimuat"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Kejadian tidak dapat dimuat"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Jadwal tidak dapat dimuat"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Acara mendatang tidak dapat dimuat"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Relawan tidak dapat dimuat"
+
+#: 
+msgid "Could not load this email."
+msgstr "Email ini tidak dapat dimuat."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Pelayanan ini tidak dapat dimuat"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Acara pelayanan ini tidak dapat dimuat"
+
+#: 
+msgid "Could not load this team"
+msgstr "Tim ini tidak dapat dimuat"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Wewenang tidak dapat dicabut"
+
+#: 
+msgid "Create"
+msgstr "Buat"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Buat jadwal dan hasilkan kejadiannya, maka minggu-minggu yang perlu diisi akan muncul di sini."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Buat jadwal dan hasilkan kejadiannya, maka minggu-minggu yang perlu petugas akan muncul di sini."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Buat setidaknya satu posisi untuk tim ini, lalu centang siapa yang dapat melayani di mana."
+
+#: 
+msgid "Create ministry"
+msgstr "Buat pelayanan"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Membuat pelayanan memerlukan akses manajer relawan"
+
+#: 
+msgid "Date and time"
+msgstr "Tanggal dan waktu"
+
+#: 
+msgid "Date each year"
+msgstr "Tanggal setiap tahun"
+
+#: 
+msgid "Dates"
+msgstr "Tanggal"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Tanggal harus dalam format YYYY-MM-DD"
+
+#: 
+msgid "Day of the month"
+msgstr "Tanggal dalam bulan"
+
+#: 
+msgid "Day of the week"
+msgstr "Hari dalam seminggu"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Nonaktifkan pelayanan"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Nonaktifkan jadwal"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Nonaktifkan pelayanan ini sebelum menghapusnya."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Nonaktifkan {{name}}? Pelayanan ini pindah ke Pelayanan Nonaktif di bilah samping, tempat ia dapat diaktifkan kembali atau dihapus. Tidak ada yang dihapus."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Nonaktifkan {{name}}? Tidak ada kejadian baru yang dibuat untuknya, baik oleh Buat maupun pengisian harian. Kejadian dan penugasan yang ada tetap, dan dapat diaktifkan kembali."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Pelayanan Nonaktif"
+
+#: 
+msgid "Declined"
+msgstr "Ditolak"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Jenis acara bawaan untuk acara pelayanan"
+
+#: 
+msgid "Default volunteers"
+msgstr "Relawan bawaan"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Relawan bawaan dikirim sebagai kebutuhan: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Hapus acara"
+
+#: 
+msgid "Delete ministry"
+msgstr "Hapus pelayanan"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Hapus kejadian"
+
+#: 
+msgid "Delete position"
+msgstr "Hapus posisi"
+
+#: 
+msgid "Delete schedule"
+msgstr "Hapus jadwal"
+
+#: 
+msgid "Delete team"
+msgstr "Hapus tim"
+
+#: 
+msgid "Delete those events"
+msgstr "Hapus acara tersebut"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Hapus {{name}} beserta seluruh isinya? Posisi, kualifikasi, kebutuhan staf, jadwal, kejadian, dan penugasannya — termasuk catatan pelayanan masa lalu — serta wewenang pemimpin timnya akan dihapus. Untuk menyimpan riwayat, nonaktifkan tim saja. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Hapus {{name}} beserta seluruh isinya? Tim, posisi, jadwal, {{occurrences}} kejadian, dan {{assignments}} penugasannya — termasuk catatan pelayanan masa lalu — serta wewenang koordinator dan pemimpin tim, grup kelompok relawan, dan kalendernya akan dihapus. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Hapus {{name}}? Kualifikasi, kebutuhan staf, dan penugasannya — termasuk catatan pelayanan masa lalu — ikut dihapus. Untuk menyimpan riwayat, nonaktifkan posisi saja. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Hapus {{name}}? Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Menghapus pelayanan memerlukan akses manajer relawan"
+
+#: 
+msgid "Developer mode"
+msgstr "Mode pengembang"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Selesai — Anda kembali ke daftar."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Hapus kebutuhan staf kejadian ini sendiri dan ikuti jadwalnya lagi?"
+
+#: 
+msgid "Due soon"
+msgstr "Segera jatuh tempo"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Setiap kalender harus diberikan sebagai jenis dan id."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Setiap relawan bawaan harus menyebutkan seseorang"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Setiap kebutuhan staf harus menyebutkan sebuah posisi"
+
+#: 
+msgid "Edit event"
+msgstr "Ubah Kegiatan"
+
+#: 
+msgid "Edit ministry"
+msgstr "Ubah pelayanan"
+
+#: 
+msgid "Edit position"
+msgstr "Ubah posisi"
+
+#: 
+msgid "Edit schedule"
+msgstr "Ubah jadwal"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Ubah kebutuhan staf"
+
+#: 
+msgid "Edit team"
+msgstr "Ubah tim"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Ubah jadwal dan pilih kelas lain."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Ubah jadwal dan pilih jenis acara lain."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Ubah jadwal dan pilih acara yang diikutinya."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Ubah jadwal dan majukan tanggal terakhirnya agar mengikuti lebih banyak acara."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Diubah melalui Portal Jemaat: %s"
+
+#: 
+msgid "Email %s"
+msgstr "Kirim email ke %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "Kirim email ke Keluarga %s"
+
+#: 
+msgid "Email History"
+msgstr "Riwayat Email"
+
+#: 
+msgid "Email content"
+msgstr "Isi email"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Kirim email ke yang tidak hadir: %s"
+
+#: 
+msgid "Email not found"
+msgstr "Email tidak ditemukan"
+
+#: 
+msgid "Email preview"
+msgstr "Pratinjau email"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "Pengiriman email dinonaktifkan"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "Pengiriman email tidak diaktifkan. Atur pengaturan SMTP dan aktifkan email sebelum mengirim."
+
+#: 
+msgid "Emails"
+msgstr "Email"
+
+#: 
+msgid "End time"
+msgstr "Waktu Selesai"
+
+#: 
+msgid "Enter counts"
+msgstr "Masukkan jumlah"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Masukkan subjek email…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Masukkan kata sandi Anda saat ini, lalu kata sandi baru Anda dua kali."
+
+#: 
+msgid "Enter your message…"
+msgstr "Masukkan pesan Anda…"
+
+#: 
+msgid "Event staffed"
+msgstr "Acara sudah ada petugasnya"
+
+#: 
+msgid "Event title"
+msgstr "Judul kegiatan"
+
+#: 
+msgid "Event type"
+msgstr "Jenis kegiatan"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Setiap email yang dikirim ChurchCRM, terbaru di atas. Buka data seseorang untuk melihat riwayat lengkapnya."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Setiap posisi dalam rentang ini sudah memiliki orang yang dibutuhkan."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Semua sudah menjawab"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Semua orang dalam pilihan bergabung sebagai relawan pelayanan ini. Centang posisi mereka setelahnya."
+
+#: 
+msgid "Everything is correct"
+msgstr "Semuanya benar"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Pratinjau gagal dibuat"
+
+#: 
+msgid "Failed to load email"
+msgstr "Email gagal dimuat"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Riwayat email gagal dimuat"
+
+#: 
+msgid "Failed to send email"
+msgstr "Email gagal dikirim"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "Email gagal dikirim. Silakan coba lagi atau gunakan 'Buka di Klien Email'."
+
+#: 
+msgid "Family Member"
+msgstr "Anggota Keluarga"
+
+#: 
+msgid "Family verification"
+msgstr "Verifikasi Keluarga"
+
+#: 
+msgid "File"
+msgstr "Berkas"
+
+#: 
+msgid "Fill"
+msgstr "Isi"
+
+#: 
+msgid "Fill by default with"
+msgstr "Isi secara bawaan dengan"
+
+#: 
+msgid "Fill this gap"
+msgstr "Isi kekosongan ini"
+
+#: 
+msgid "Filled"
+msgstr "Terisi"
+
+#: 
+msgid "Find a sub"
+msgstr "Cari pengganti"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Cari relawan"
+
+#: 
+msgid "Find an event"
+msgstr "Cari acara"
+
+#: 
+msgid "Find something to do"
+msgstr "Cari kegiatan"
+
+#: 
+msgid "Find something to help with"
+msgstr "Cari yang bisa dibantu"
+
+#: 
+msgid "Findings"
+msgstr "Temuan"
+
+#: 
+msgid "First date"
+msgstr "Tanggal pertama"
+
+#: 
+msgid "Folder"
+msgstr "Folder"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Nama folder tema Portal Jemaat yang digunakan, dari Include/themes/. \"default\" adalah tema sistem yang disertakan dengan ChurchCRM."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Buat lagi mendekati tanggal pertamanya."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Buat kejadian"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Dapatkan alamat kalender baru?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Beri nama pelayanan"
+
+#: 
+msgid "Give the position a name"
+msgstr "Beri nama posisi"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Isi waktu mulai dan selesai dalam format HH:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "Beri nama tim"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Ke pelayanan saya"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Ke pengaturan Portal Jemaat"
+
+#: 
+msgid "Going"
+msgstr "Hadir"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Berikan kualifikasi di halaman pelayanan, lalu tugaskan mereka di sini."
+
+#: 
+msgid "Granted"
+msgstr "Diberikan"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Lihat data yang dimiliki gereja untuk keluarga Anda, lalu beri tahu kami apakah masih benar."
+
+#: 
+msgid "Headcount"
+msgstr "Jumlah hadir"
+
+#: 
+msgid "Hello %s"
+msgstr "Halo %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Dibutuhkan Bantuan"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Kebutuhan bantuan tidak dapat disimpan"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Seberapa jauh ke depan kejadian dibuat untuk acara yang diikuti setiap jadwal. Tugas latar belakang harian menjaga setiap jadwal terisi sampai batas ini."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Berapa jam sebelum kejadian relawan email pengingat dikirim. Atur ke 0 agar tidak ada pengingat sama sekali. Pengiriman bergantung pada tugas latar belakang yang berjalan; lihat dokumentasi Relawan untuk pengaturan cron yang disarankan."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Berapa jam sebelum kejadian email pengingat dikirim. Atur ke 0 agar tidak ada pengingat sama sekali."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Berapa orang yang dibutuhkan setiap posisi, setiap kali ini berjalan. Satu tanggal dapat diubah sendiri nanti. Relawan bawaan ditugaskan pada setiap kejadian baru selama mereka masih memenuhi syarat; mengubahnya tidak pernah mengubah kejadian yang sudah ada."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Berapa relawan yang dibutuhkan setiap kejadian jadwal ini. Hapus centang posisi yang tidak pernah digunakan jadwal ini. Relawan bawaan ditugaskan pada setiap kejadian baru selama mereka masih memenuhi syarat; mengubahnya tidak pernah mengubah kejadian yang sudah ada."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Berapa relawan yang dibutuhkan acara ini. Hapus centang posisi yang tidak digunakannya."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Berapa minggu ke depan kejadian relawan dibuat untuk acara yang diikuti setiap jadwal, dari 1 sampai 52. Tugas latar belakang harian menjaga setiap jadwal terisi sampai batas ini."
+
+#: 
+msgid "How often"
+msgstr "Seberapa sering"
+
+#: 
+msgid "How to correct this"
+msgstr "Cara memperbaikinya"
+
+#: 
+msgid "I can't"
+msgstr "Saya tidak bisa"
+
+#: 
+msgid "I'd like to help"
+msgstr "Saya ingin membantu"
+
+#: 
+msgid "I'll be there"
+msgstr "Saya akan hadir"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Jika pesan gagal terkirim, minta administrator memeriksa Pengaturan Pelayanan."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Jika Anda tidak lagi dapat hadir, mohon tolak pada jadwal relawan Anda sesegera mungkin agar posisinya dapat diisi."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Jika Anda membagikan alamat ini karena keliru, dapatkan yang baru. Alamat lama langsung berhenti berfungsi."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "Dalam 15 menit terakhir"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "Dalam kelompok relawan"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Internal: tanggal terakhir jadwal relawan diisi sampai batas penjadwalan (YYYY-MM-DD). Jangan ubah secara manual."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Internal: kapan jadwal relawan terakhir diisi dan berapa kejadian yang dibuat. Jangan ubah secara manual."
+
+#: 
+msgid "Is this still right?"
+msgstr "Apakah ini masih benar?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Kejadiannya akan dibuat tanpa posisi yang perlu diisi. Ubah jadwal untuk menambahkan kebutuhan stafnya."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Tetap di {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Jenis"
+
+#: 
+msgid "Last 24 hours"
+msgstr "24 jam terakhir"
+
+#: 
+msgid "Last 30 days"
+msgstr "30 hari terakhir"
+
+#: 
+msgid "Last 7 days"
+msgstr "7 hari terakhir"
+
+#: 
+msgid "Last attempt"
+msgstr "Percobaan terakhir"
+
+#: 
+msgid "Last check"
+msgstr "Pemeriksaan terakhir"
+
+#: 
+msgid "Last date"
+msgstr "Tanggal terakhir"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Terakhir terlihat di portal"
+
+#: 
+msgid "Last sign-in"
+msgstr "Masuk terakhir"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Biarkan keduanya 0 agar melayani tepat saat acara berlangsung. Memindahkan acara juga memindahkan relawan."
+
+#: 
+msgid "Leave open"
+msgstr "Biarkan kosong"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Izinkan jemaat mengubah tanggal lahir mereka sendiri dan anggota keluarganya di Portal Jemaat."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Izinkan jemaat mengubah tanggal lahir"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Beri tahu kantor gereja apakah semua di atas masih benar."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Beri tahu mereka alasannya (opsional)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Memungkinkan koordinator pelayanan itu menjadwalkan relawan untuk acara ini — dan mengubah acaranya sendiri."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Memuat kalender…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Kelola Pelayanan"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Kelola Pelayanan Saya"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Akses Kelola Pelayanan Saya, dengan pelayanan atau tim yang dikelola"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Akses Kelola Pelayanan Saya, dengan pelayanan atau tim yang dikelola, diperlukan"
+
+#: 
+msgid "Manage staffing"
+msgstr "Kelola kebutuhan petugas"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Dikelola dari pelayanan %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Dikelola dari pelayanan {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Maks"
+
+#: 
+msgid "Member Portal"
+msgstr "Portal Jemaat"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Jemaat melihat halaman \"sementara tidak tersedia\" sampai ini diperbaiki. Rincian yang sama telah ditulis ke log aplikasi dan log kesalahan server web."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Jemaat hanya melihat kalender yang diaktifkan di sini. Ulang tahun dan ulang tahun pernikahan hanya menampilkan nama depan dan inisial nama belakang."
+
+#: 
+msgid "Message"
+msgstr "Pesan"
+
+#: 
+msgid "Min"
+msgstr "Min"
+
+#: 
+msgid "Ministries"
+msgstr "Pelayanan"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Pelayanan yang membutuhkan bantuan"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Pelayanan yang boleh menambahkan acara"
+
+#: 
+msgid "Ministry"
+msgstr "Pelayanan"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Kalender Pelayanan"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Koordinator Pelayanan"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Dasbor Pelayanan"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Pengaturan Pelayanan"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Kalender pelayanan"
+
+#: 
+msgid "Ministry created"
+msgstr "Pelayanan dibuat"
+
+#: 
+msgid "Ministry management access"
+msgstr "Akses pengelolaan pelayanan"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Akses pengelolaan pelayanan diperlukan"
+
+#: 
+msgid "Ministry name"
+msgstr "Nama pelayanan"
+
+#: 
+msgid "Ministry not found"
+msgstr "Pelayanan tidak ditemukan"
+
+#: 
+msgid "My Family"
+msgstr "Keluarga Saya"
+
+#: 
+msgid "My Teams"
+msgstr "Tim Saya"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Pelayanan dan tim saya"
+
+#: 
+msgid "My schedule"
+msgstr "Jadwal saya"
+
+#: 
+msgid "My volunteering"
+msgstr "Pelayanan saya"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Beri nama posisi ini di halaman tempat jemaat mencari yang bisa dibantu."
+
+#: 
+msgid "Needs an answer"
+msgstr "Perlu jawaban"
+
+#: 
+msgid "Needs filling"
+msgstr "Perlu diisi"
+
+#: 
+msgid "Never signed in"
+msgstr "Belum pernah masuk"
+
+#: 
+msgid "New account"
+msgstr "Akun baru"
+
+#: 
+msgid "New event"
+msgstr "Acara baru"
+
+#: 
+msgid "New ministry"
+msgstr "Pelayanan baru"
+
+#: 
+msgid "New record notification"
+msgstr "Pemberitahuan data baru"
+
+#: 
+msgid "New recurring event"
+msgstr "Acara berulang baru"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Relawan baru dibutuhkan untuk posisi berikut"
+
+#: 
+msgid "Newest first"
+msgstr "Terbaru dahulu"
+
+#: 
+msgid "Next on %s"
+msgstr "Berikutnya pada %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Belum ada kalender yang dibagikan kepada jemaat."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Tidak ada kalender yang terbuka untuk pelayanan ini, sehingga acara tidak akan tampil di kalender mana pun."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Tidak ada kalender yang dibagikan kepada jemaat."
+
+#: 
+msgid "No class"
+msgstr "Tanpa kelas"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Belum ada data kontak."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Belum ada koordinator"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Tidak ada tanggal di antara tanggal pertama dan terakhir yang cocok dengan pengulangan"
+
+#: 
+msgid "No email was sent."
+msgstr "Tidak ada email yang dikirim."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Belum ada email yang dikirim ke data ini."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Belum ada jumlah hadir yang dicatat"
+
+#: 
+msgid "No longer needed"
+msgstr "Tidak lagi dibutuhkan"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Belum ada jemaat yang masuk ke Portal Jemaat."
+
+#: 
+msgid "No ministry"
+msgstr "Tanpa pelayanan"
+
+#: 
+msgid "No past events"
+msgstr "Tidak ada acara yang lalu"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Belum ada foto yang diunggah untuk orang ini."
+
+#: 
+msgid "No photo was sent."
+msgstr "Tidak ada foto yang dikirim."
+
+#: 
+msgid "No positions yet"
+msgstr "Belum ada posisi"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Belum ada kualifikasi."
+
+#: 
+msgid "No schedules yet"
+msgstr "Belum ada jadwal"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Kebutuhan staf belum ditetapkan"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Tidak ada kebutuhan staf: kejadian yang dibuat tidak akan membutuhkan siapa pun."
+
+#: 
+msgid "No substitution requests"
+msgstr "Tidak ada permintaan penggantian"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Tidak ada penggantian untuk diputuskan"
+
+#: 
+msgid "No teams yet"
+msgstr "Belum ada tim"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "Tidak ada acara %1$s berjudul \"%2$s\" yang akan datang di kalender. Jadwal mengikuti acara yang sudah ada."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Tidak ada acara mendatang yang cocok"
+
+#: 
+msgid "No upcoming events"
+msgstr "Tidak ada acara mendatang"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "Tidak ada acara mendatang dengan jenis ini di kalender."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Tidak ada acara mendatang untuk dipilih"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Belum ada yang ditugaskan"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Belum ada orang lain yang dilatih untuk ini — beri tahu koordinator Anda saja."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Belum ada yang menentukan berapa relawan yang dibutuhkan setiap posisi, jadi tidak ada yang perlu diisi."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Tidak ada yang masih mempertimbangkan dalam rentang ini."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Belum ada yang memenuhi syarat untuk posisi ini"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Belum ada yang memenuhi syarat untuk posisi ini, sehingga tetap kosong."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Tidak ada penerima yang dapat dikirimi email"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Tidak ada: jenis acara dipilih untuk setiap acara"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Tidak diizinkan melihat email ini"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Tidak diizinkan melihat keluarga ini"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Tidak diizinkan melihat orang ini"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Tidak berwenang atas penugasan ini"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Tidak berwenang atas pelayanan ini"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Tidak berwenang atas kejadian ini"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Tidak berwenang atas posisi ini"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Tidak berwenang atas kualifikasi ini"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Tidak berwenang atas kebutuhan ini"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Tidak berwenang atas jadwal ini"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Tidak berwenang atas permintaan penggantian ini"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Tidak berwenang atas tim ini"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Tidak berwenang menugaskan acara ke pelayanan relawan itu"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Tidak berwenang mengubah acara %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Tidak berwenang mengubah pelayanan relawan acara ini"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Tidak berwenang membuat acara tanpa pelayanan relawan yang Anda kelola"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Tidak berwenang mengubah acara ini"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Tidak berwenang menyematkan acara ke kalender \"%s\""
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Tidak berwenang menghapus acara dari kalender \"%s\""
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Tidak berwenang menghapus pelayanan relawan dari acara ini"
+
+#: 
+msgid "Not checked in"
+msgstr "Belum hadir"
+
+#: 
+msgid "Not found"
+msgstr "Tidak ditemukan"
+
+#: 
+msgid "Not in the pool"
+msgstr "Tidak dalam kelompok"
+
+#: 
+msgid "Not now"
+msgstr "Jangan sekarang"
+
+#: 
+msgid "Not sent"
+msgstr "Tidak terkirim"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Belum diatur: gunakan \"%s\""
+
+#: 
+msgid "Not staffed"
+msgstr "Belum ada petugas"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Belum menjadi relawan"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Tidak ada yang berubah, jadi tidak ada yang disimpan."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "Tidak ada apa pun di kalender untuk periode ini."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "Tidak ada apa pun di kalender saat ini."
+
+#: 
+msgid "Nothing is short"
+msgstr "Tidak ada yang kekurangan"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Belum ada apa pun di daftar Anda"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Belum ada apa pun di daftar Anda. Lihat apa yang perlu diisi."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Tidak ada yang terbuka saat ini"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Belum ada yang dijadwalkan"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Tidak ada yang dijadwalkan."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Belum ada yang diatur"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "Tidak ada kegiatan milik pelayanan ini dalam setahun terakhir."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Belum ada yang dapat dikualifikasi"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Tidak ada yang disimpan. Periksa kolom yang ditandai."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Tidak ada yang disimpan. Silakan coba lagi."
+
+#: 
+msgid "Notification"
+msgstr "Pemberitahuan"
+
+#: 
+msgid "Notifications"
+msgstr "Pemberitahuan"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Kejadian tidak ditemukan"
+
+#: 
+msgid "Occurrences"
+msgstr "Kejadian"
+
+#: 
+msgid "Offer to help"
+msgstr "Tawarkan bantuan"
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Setelah orang ini memenuhi syarat untuk suatu posisi, ia muncul di sini, beserta tanggal ia dijadwalkan melayani."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Satu kejadian dibuat untuk setiap acara kalender yang Grup Terhubungnya adalah kelas ini."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Satu kejadian dibuat untuk setiap tanggal acara ini. Hanya acara yang sudah ada di kalender yang dapat dipilih."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Salah satu kalender tidak ada"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Salah satu acara tidak ada"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Salah satu kalender itu tidak dibagikan kepada jemaat."
+
+#: 
+msgid "One-time"
+msgstr "Sekali saja"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Hanya kelas Sekolah Minggu yang dapat dihubungkan ke tim"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Hanya koordinator yang boleh mencatat tanggapan atas nama orang lain"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Hanya koordinator pelayanan ini yang boleh membuat acaranya"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Hanya koordinator pelayanan ini yang boleh menugaskan petugas untuk acaranya"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "Hanya manajer relawan yang dapat mengubah pemimpin tim"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Hanya manajer relawan yang dapat mengubah ini."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Hanya manajer relawan yang dapat mengubah apakah suatu pelayanan menyediakan pengajar untuk Sekolah Minggu"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Hanya orang dewasa dalam keluarga Anda yang dapat mengubah data ini. Silakan hubungi kantor gereja."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Hanya orang yang dilatih untuk ini yang tercantum."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Hanya relawan yang ditugaskan yang boleh mengusulkan pengganti"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Hanya kalender yang boleh ditambahi acara oleh pelayanan ini yang tercantum. Kalendernya sendiri dicentang sejak awal."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Hanya bagian awal dari daftar yang sangat panjang yang ditampilkan. Persempit rentang untuk melihat sisanya."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Hanya relawan yang mengusulkan pengganti yang boleh menariknya kembali"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Buka pelayanan dari menu Pelayanan, buat jadwal dan hasilkan tanggalnya, maka minggu-minggu yang perlu petugas akan muncul di sini."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Buka sebuah pelayanan untuk menjadikan seseorang koordinatornya, atau pemimpin salah satu timnya."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Buka di aplikasi kalender"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Peluang terbuka tidak dapat dimuat."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Buka penerima di aplikasi email lokal Anda"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Buka Portal Jemaat"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Buka Dasbor Pelayanan"
+
+#: 
+msgid "Open the ministry"
+msgstr "Buka pelayanan"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Buka kejadian"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Buka kejadian untuk menugaskan orang yang Anda butuhkan."
+
+#: 
+msgid "Open this team"
+msgstr "Buka tim ini"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Membuka kalender untuk pelayanan memerlukan izin Tambah Acara"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Opsional. Setiap orang yang memenuhi syarat untuk posisi tim ini menjadi pengajar kelas, dan halaman kelas tidak lagi mengubah pengajarnya."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Opsional. Kelas menjadi Grup Terhubung: daftar anggotanya adalah yang melakukan check-in, dan jadwal untuk kelas menemukan acara-acara ini."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Melebihi Maks: hapus yang ini atau naikkan Maks."
+
+#: 
+msgid "Overridden templates"
+msgstr "Templat yang diganti"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Halaman %1$s dari %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Halaman %d dari %d"
+
+#: 
+msgid "Password reset"
+msgstr "Reset Kata Sandi"
+
+#: 
+msgid "Password reset link"
+msgstr "Tautan Reset Kata Sandi"
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Pilih acara kalender mendatang dan tentukan siapa yang dibutuhkan. Acara tetap memakai tanggal dan waktunya sendiri; untuk menugaskan petugas pada seluruh rangkaian, tambahkan jadwal."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Pilih seseorang yang sudah setuju menggantikan Anda. Koordinator Anda akan mengonfirmasinya."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Silakan pilih kalender dari daftar."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Silakan pilih apakah data Anda perlu diubah."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Silakan hubungi kantor gereja agar kami dapat memperbaiki catatan kami."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Silakan hubungi kantor gereja."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Masukkan setidaknya dua karakter."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Mohon beri tahu kami apakah Anda dapat hadir dengan menerima atau menolak pada jadwal relawan Anda."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Mohon beri tahu kami apa yang perlu diubah."
+
+#: 
+msgid "Portal settings"
+msgstr "Pengaturan portal"
+
+#: 
+msgid "Portal theme"
+msgstr "Tema portal"
+
+#: 
+msgid "Position"
+msgstr "Posisi"
+
+#: 
+msgid "Position added"
+msgstr "Posisi ditambahkan"
+
+#: 
+msgid "Position deleted"
+msgstr "Posisi dihapus"
+
+#: 
+msgid "Position name"
+msgstr "Nama posisi"
+
+#: 
+msgid "Position not found"
+msgstr "Posisi tidak ditemukan"
+
+#: 
+msgid "Position saved"
+msgstr "Posisi disimpan"
+
+#: 
+msgid "Positions"
+msgstr "Posisi"
+
+#: 
+msgid "Positions still short"
+msgstr "Posisi yang masih kurang"
+
+#: 
+msgid "Proposed"
+msgstr "Diusulkan"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Pengganti yang diusulkan"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Tampilkan pelayanan ini di halaman Peluang Terbuka Portal Jemaat, tempat setiap relawan dapat melihat dan menawarkan bantuan. Mereka bergabung dengan kelompok relawan dan Anda menerima email."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Pasang {{name}} sebagai gantinya? Relawan semula tetap memiliki riwayatnya dan diberi tahu."
+
+#: 
+msgid "Qualification not found"
+msgstr "Kualifikasi tidak ditemukan"
+
+#: 
+msgid "Qualified for"
+msgstr "Memenuhi syarat untuk"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Relawan yang memenuhi syarat dapat mendaftarkan diri untuk tanggal yang terbuka pada posisi ini. Matikan untuk posisi yang hanya boleh ditugaskan pemimpin tim atau koordinator; Portal Jemaat tidak akan menawarkannya."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Kualifikasikan pengajarnya saat ini untuk"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Kualifikasikan mereka untuk sebuah posisi"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Kualifikasikan mereka untuk sebuah posisi."
+
+#: 
+msgid "Reactivate"
+msgstr "Aktifkan kembali"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Baca panduan pembuatan tema"
+
+#: 
+msgid "Recent Emails"
+msgstr "Email Terbaru"
+
+#: 
+msgid "Recent Sends"
+msgstr "Pengiriman Terbaru"
+
+#: 
+msgid "Recipient"
+msgstr "Penerima"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Jumlah penerima (%d) melebihi maksimum yang diizinkan per pengiriman (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Penerima harus diberikan sebagai personId dan familyId, bukan alamat email"
+
+#: 
+msgid "Record a decline"
+msgstr "Catat penolakan"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Catat penerimaan"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Catat bahwa {{name}} menjawab tidak? Tanggapan disimpan sebagai berasal dari Anda, dan slot dibuka kembali."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Catat bahwa {{name}} menjawab ya? Tanggapan disimpan sebagai berasal dari Anda, bukan dari mereka."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Catat: mereka menerima"
+
+#: 
+msgid "Record: they declined"
+msgstr "Catat: mereka menolak"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Rekrut Relawan"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Rekrut Relawan harus benar atau salah"
+
+#: 
+msgid "Recruiting"
+msgstr "Sedang merekrut"
+
+#: 
+msgid "Recurring"
+msgstr "Berulang"
+
+#: 
+msgid "Reject"
+msgstr "Tolak"
+
+#: 
+msgid "Reject substitution"
+msgstr "Tolak penggantian"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Tolak pengganti ini"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Waktu tenggang pengingat (jam)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Pengingat: Anda dijadwalkan melayani"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Pengingat dan peringatan hanya dikirim saat tugas latar belakang berjalan. Agar tepat waktu, jalankan pelaksana tugas terjadwal dari cron setiap 15 menit"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Hapus Relawan"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Hapus koordinator"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Hapus kelas dari mereka"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Hapus pemimpin tim"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Hapus {{name}} dari {{ministry}}? Ini menghapus semua kualifikasinya di sini, mengeluarkannya dari setiap kejadian mendatang, menghapusnya sebagai relawan bawaan pada jadwal pelayanan ini, dan mengeluarkannya dari kelompok relawan."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Dihapus. {{qualifications}} kualifikasi, {{assignments}} penugasan mendatang, {{defaults}} bawaan jadwal."
+
+#: 
+msgid "Repeats"
+msgstr "Berulang"
+
+#: 
+msgid "Requirement not found"
+msgstr "Kebutuhan tidak ditemukan"
+
+#: 
+msgid "Reset link"
+msgstr "Tautan pengaturan ulang"
+
+#: 
+msgid "Response recorded"
+msgstr "Tanggapan dicatat"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Tinjau permintaan di dasbor relawan dan setujui atau tolak."
+
+#: 
+msgid "Review this request"
+msgstr "Tinjau permintaan ini"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Jalankan tugas latar belakang sekarang"
+
+#: 
+msgid "SMTP test"
+msgstr "Uji SMTP"
+
+#: 
+msgid "Save calendars"
+msgstr "Simpan kalender"
+
+#: 
+msgid "Save changes"
+msgstr "Simpan perubahan"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Disimpan — pelayanan ini tidak lagi meminta bantuan"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Disimpan — pelayanan ini sekarang meminta bantuan"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Disimpan. Jemaat melihat kalender yang diaktifkan di atas."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Jadwal \"{{name}}\" dibuat."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Jadwal \"{{name}}\" dibuat. Jadwal ini tidak aktif, sehingga tidak membuat kejadian sampai diaktifkan."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Jadwal dinonaktifkan"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Jadwal dihapus"
+
+#: 
+msgid "Schedule name"
+msgstr "Nama jadwal"
+
+#: 
+msgid "Schedule not found"
+msgstr "Jadwal tidak ditemukan"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Jadwal diaktifkan kembali"
+
+#: 
+msgid "Schedule saved"
+msgstr "Jadwal disimpan"
+
+#: 
+msgid "Scheduled"
+msgstr "Terjadwal"
+
+#: 
+msgid "Schedules"
+msgstr "Jadwal"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Jadwal terakhir diisi"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Jadwal tidak lagi memiliki pengulangan atau waktu sendiri; setiap kejadian mengikuti acara kalender. Hapus: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Jadwal tidak lagi menentukan seberapa jauh ke depan dibuat: batas penjadwalan di Admin → Pengaturan Pelayanan berlaku untuk semua jadwal. Hapus: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Batas penjadwalan (minggu)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Pemberian wewenang tidak ditemukan"
+
+#: 
+msgid "Search by name"
+msgstr "Cari berdasarkan nama"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Lihat seluruh kalender"
+
+#: 
+msgid "See what needs filling"
+msgstr "Lihat apa yang perlu diisi"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Pilih kalender untuk menyembunyikan atau menampilkan acaranya."
+
+#: 
+msgid "Select ministries..."
+msgstr "Pilih pelayanan..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Daftar mandiri"
+
+#: 
+msgid "Self-assignable"
+msgstr "Dapat ditugaskan sendiri"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Dapat ditugaskan sendiri harus benar atau salah"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Akun layanan mandiri"
+
+#: 
+msgid "Send"
+msgstr "Kirim"
+
+#: 
+msgid "Send Email"
+msgstr "Kirim Email"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Kirim email dari ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Kirim ulang pesan penugasan"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Kirim kalender yang ditampilkan sebagai daftar."
+
+#: 
+msgid "Send to the church office"
+msgstr "Kirim ke kantor gereja"
+
+#: 
+msgid "Send your answer"
+msgstr "Kirim jawaban Anda"
+
+#: 
+msgid "Sent"
+msgstr "Terkirim"
+
+#: 
+msgid "Sent by"
+msgstr "Dikirim oleh"
+
+#: 
+msgid "Serving next"
+msgstr "Melayani berikutnya"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Tetapkan sebagai Diterima"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Atur kebutuhan petugas"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Tampilkan \"%s\" di Portal Jemaat"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Tampilkan di Portal Jemaat"
+
+#: 
+msgid "Show past events"
+msgstr "Tampilkan acara yang lalu"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Tampilkan kalender gereja"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Tampilkan kalender gereja di Portal Jemaat."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Tampilkan bagian kalender gereja di Portal Jemaat."
+
+#: 
+msgid "Show the next"
+msgstr "Tampilkan berikutnya"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Tampilkan bagian pelayanan relawan dan tim di Portal Jemaat."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Tampilkan pelayanan ini di halaman Peluang Terbuka"
+
+#: 
+msgid "Show volunteering"
+msgstr "Tampilkan pelayanan relawan"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Tampilkan halaman pelayanan relawan dan tim di Portal Jemaat."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Tampilkan yang sudah saya kerjakan"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Ditampilkan persis seperti yang Anda ketik. Jeda baris dipertahankan."
+
+#: 
+msgid "Sign up"
+msgstr "Daftar"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Masuk dan keamanan"
+
+#: 
+msgid "Signed in"
+msgstr "Sudah masuk"
+
+#: 
+msgid "Signed up"
+msgstr "Terdaftar"
+
+#: 
+msgid "Sincerely"
+msgstr "Hormat kami"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Sebagian data Anda tidak dapat disimpan. Periksa kolom yang ditandai."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Sebagian data keluarga Anda tidak dapat disimpan. Periksa kolom yang ditandai."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Orang lain yang menggantikan"
+
+#: 
+msgid "Something needs changing"
+msgstr "Ada yang perlu diubah"
+
+#: 
+msgid "Something went wrong"
+msgstr "Terjadi kesalahan"
+
+#: 
+msgid "Staff an event"
+msgstr "Tugaskan petugas untuk acara"
+
+#: 
+msgid "Staff them"
+msgstr "Tugaskan petugas"
+
+#: 
+msgid "Staff this event"
+msgstr "Tugaskan petugas untuk acara ini"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Tugaskan petugas untuk kejadian ini"
+
+#: 
+msgid "Staffed"
+msgstr "Sudah ada petugasnya"
+
+#: 
+msgid "Staffing"
+msgstr "Kebutuhan petugas"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Petugas diatur setelah acara dibuat"
+
+#: 
+msgid "Staffing needs"
+msgstr "Kebutuhan petugas"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Kebutuhan petugas disimpan"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Mulailah dengan membuat pelayanan, lalu tambahkan tim dan posisi yang melayani di dalamnya."
+
+#: 
+msgid "Start time"
+msgstr "Waktu mulai"
+
+#: 
+msgid "Start typing a name"
+msgstr "Mulai ketik nama"
+
+#: 
+msgid "Statistics"
+msgstr "Statistik"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Hentikan {{name}} mengoordinasikan {{ministry}}? Akun masuk dan penugasan pribadinya tidak berubah."
+
+#: 
+msgid "Subscribe"
+msgstr "Berlangganan"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Berlangganan kalender"
+
+#: 
+msgid "Substitute"
+msgstr "Pengganti"
+
+#: 
+msgid "Substitute approved"
+msgstr "Pengganti disetujui"
+
+#: 
+msgid "Substitute asked"
+msgstr "Pengganti diminta"
+
+#: 
+msgid "Substitute decision"
+msgstr "Keputusan pengganti"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Pengganti diusulkan"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Pengganti ditolak"
+
+#: 
+msgid "Substituted"
+msgstr "Digantikan"
+
+#: 
+msgid "Substitution approved"
+msgstr "Penggantian disetujui"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Penggantian ditolak"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Permintaan penggantian tidak ditemukan"
+
+#: 
+msgid "Substitution requests"
+msgstr "Permintaan penggantian"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Kelas Sekolah Minggu"
+
+#: 
+msgid "System calendar"
+msgstr "Kalender sistem"
+
+#: 
+msgid "System default"
+msgstr "Bawaan sistem"
+
+#: 
+msgid "Take that back"
+msgstr "Tarik kembali"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Keluarkan {{name}} dari posisi ini? Tidak ada email yang dikirim; jadwalnya menampilkan tanggal itu sebagai tidak lagi dibutuhkan, dan slot dibuka kembali."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Pengajar kelas ini dikelola di Pelayanan → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Tim"
+
+#: 
+msgid "Team Leader"
+msgstr "Pemimpin Tim"
+
+#: 
+msgid "Team added"
+msgstr "Tim ditambahkan"
+
+#: 
+msgid "Team deleted"
+msgstr "Tim dihapus"
+
+#: 
+msgid "Team leader"
+msgstr "Pemimpin tim"
+
+#: 
+msgid "Team name"
+msgstr "Nama tim"
+
+#: 
+msgid "Team not found"
+msgstr "Tim tidak ditemukan"
+
+#: 
+msgid "Team saved"
+msgstr "Tim disimpan"
+
+#: 
+msgid "Teams"
+msgstr "Tim"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Tim adalah kelompok orang yang melayani dalam pelayanan ini."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Tim, posisi, dan orang-orang yang mengisinya"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Sepuluh masuk terbaru"
+
+#: 
+msgid "Thank you"
+msgstr "Terima Kasih!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Terima kasih telah mendaftar untuk melayani"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Terima kasih telah mendaftar untuk melayani. Anda sudah ada dalam jadwal."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Terima kasih. Kantor gereja telah menerima jawaban Anda."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Terima kasih. Kantor gereja akan meninjau ini sebelum ditambahkan."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Terima kasih telah memberi tahu kami."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Terima kasih — koordinator telah diberi tahu bahwa Anda ingin membantu lagi."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Terima kasih — koordinator telah diberi tahu bahwa Anda ingin membantu."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Terima kasih — Anda sudah ada dalam daftar."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Folder tema Portal Jemaat itu tidak ada."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Penugasan itu milik orang lain"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Penugasan itu tidak dapat disimpan"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Tanggal lahir itu bukan tanggal yang valid."
+
+#: 
+msgid "That could not be saved."
+msgstr "Itu tidak dapat disimpan."
+
+#: 
+msgid "That could not be sent."
+msgstr "Itu tidak dapat dikirim."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Anggota keluarga itu tidak dapat ditambahkan. Periksa kolom yang ditandai."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Itu bukan tanggal yang valid."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Daftar itu tidak dapat dimuat."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Orang itu sudah memegang posisi ini pada kejadian ini"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Orang itu sudah ditugaskan pada posisi ini pada kejadian ini"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Orang itu tidak ada dalam kelompok relawan pelayanan ini. Kirim ulang dengan pengesampingan di luar kelompok untuk tetap menugaskannya."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Orang itu tidak ada dalam kelompok relawan ini"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Orang itu tidak memenuhi syarat untuk posisi ini"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Foto itu tidak dapat disimpan."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Foto itu terlalu besar. Silakan pilih yang lebih kecil."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Posisi itu milik pelayanan lain"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Posisi itu milik tim lain"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Posisi itu sudah terisi penuh"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Posisi itu tidak sedang diisi petugas pada kejadian ini"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Tanggapan itu tidak dapat dicatat"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Status itu tidak dapat diatur secara langsung"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Permintaan penggantian itu tidak dapat diputuskan"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Tim itu milik pelayanan lain"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Tema itu tidak dapat diaktifkan."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Tema itu tidak dapat diperiksa."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Tema itu memiliki kesalahan, sehingga tidak diaktifkan."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Relawan itu tidak dapat ditugaskan"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Tanggal pernikahan itu bukan tanggal yang valid."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s harus berupa tanggal dalam format YYYY-MM-DD"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s harus berupa bilangan bulat menit"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s harus dalam %d menit dari acara"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Kalender Portal Jemaat telah disimpan."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Portal Jemaat tidak dapat menyelesaikan permintaan Anda. Silakan coba lagi dalam beberapa menit."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Portal Jemaat hanya tersedia bagi orang yang sudah masuk, bukan untuk klien API."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Portal Jemaat diatur ke tema \"%s\", yang sudah tidak ada di server. Jemaat melihat halaman kesalahan sampai Anda memilih tema yang ada."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Portal Jemaat sementara tidak tersedia"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Tema Portal Jemaat \"%s\" tidak dapat diaktifkan karena berisi kesalahan."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Tema Portal Jemaat tidak dapat ditampilkan"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Folder tema Portal Jemaat \"%s\" tidak ditemukan."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Tema Portal Jemaat telah diubah."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Peran Pengajar %1$s tidak dapat diganti namanya atau dihapus selama pengajarnya dikelola di Pelayanan → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Folder tema aktif tidak ada"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Alamat sudah dipilih — salin dengan papan ketik Anda."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Jalur aset \"%s\" tidak diizinkan."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Penugasan tidak dapat dibatalkan"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Pesan penugasan akan dikirim ulang"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Alamat kalender telah disalin."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Kalender tidak dapat dimuat. Silakan coba lagi."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Kalender tidak dapat disimpan."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Pilihan tidak dapat ditambahkan"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Gereja belum mengirim email kepada Anda."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Kantor gereja telah diberi tahu. Silakan coba lagi nanti."
+
+#: 
+msgid "The class does not exist"
+msgstr "Kelas tidak ada"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Kelas yang diikuti jadwal ini sudah tidak ada."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Isi email ini tidak disimpan. ChurchCRM hanya menyimpan teks pesan yang ditulis di penyusun email dan email relawan."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Isi email ini tidak disimpan."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Koordinator tidak dapat ditambahkan"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Daftar koordinator tidak dapat dimuat"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Tanggal dan waktu setiap kejadian berasal dari acara kalendernya, sehingga memindahkan acara juga memindahkan jadwal."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Parameter days harus berupa bilangan bulat antara 1 dan 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Relawan bawaan harus seseorang"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Relawan bawaan disimpan pada jadwal dan masuk ke kejadian yang dibuat mulai sekarang."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Relawan bawaan harus berupa daftar"
+
+#: 
+msgid "The description is too long"
+msgstr "Deskripsi terlalu panjang"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Akhir rentang sebelum awalnya."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Akhir rentang bukan tanggal."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Petugas untuk acara tidak dapat ditetapkan"
+
+#: 
+msgid "The event does not exist"
+msgstr "Acara tidak ada"
+
+#: 
+msgid "The event is inactive"
+msgstr "Acara tidak aktif"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Acara harus berakhir setelah dimulai"
+
+#: 
+msgid "The event title"
+msgstr "Judul acara"
+
+#: 
+msgid "The event title is too long"
+msgstr "Judul acara terlalu panjang"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Jenis acara yang digunakan sebagai awal acara baru sebuah pelayanan. Jika kosong, atau jika jenisnya telah dihapus, jenis \"Other\" digunakan bila ada."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Jenis acara tidak ada"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Jenis acara yang diikuti jadwal ini sudah tidak ada."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Acara hanya dapat dipindahkan ke kelas yang terhubung dengan tim"
+
+#: 
+msgid "The events could not be created"
+msgstr "Acara tidak dapat dibuat"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Acara tidak dapat dihapus"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Petugas untuk acara tidak dapat ditetapkan"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Pemberian wewenang tidak dapat dihapus"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Tanggal terakhir sebelum tanggal pertama"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Daftar relawan yang memenuhi syarat tidak dapat dimuat"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Jumlah maksimum tidak boleh di bawah jumlah minimum"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Pesan tidak dapat diantrekan"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Jumlah minimum tidak boleh negatif"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Pelayanan tidak dapat dibuat"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Pelayanan tidak dapat dinonaktifkan"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Pelayanan tidak dapat dihapus"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Pelayanan tidak dapat diaktifkan kembali"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Pelayanan tidak dapat disimpan"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Kejadian tidak dapat dihapus"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Kejadian tidak memiliki jadwal"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Kejadian tidak dapat dibuat"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Relawan semula dilepas dan pengganti mengambil posisinya. Keduanya diberi tahu."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Relawan semula tetap pada posisinya. Keduanya diberi tahu."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Halaman yang Anda minta tidak ada. Mungkin telah dipindahkan atau dihapus."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Posisi itu milik pelayanan lain"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Posisi tidak dapat dihapus"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Posisi tidak dapat disimpan"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Posisi masih tercukupi, jadi tidak perlu tindakan kecuali Anda ingin menyesuaikan daftar petugas."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Kualifikasi tidak dapat dihapus"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Kualifikasi tidak dapat disimpan"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Relawan yang memenuhi syarat tidak dapat dimuat"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Pengulangan harus menyebutkan bagaimana acara berulang"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Permintaan agar %1$s melayani menggantikan %2$s telah disetujui."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Permintaan agar %1$s melayani menggantikan %2$s tidak disetujui."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Posisi yang sama tercantum dua kali dalam kebutuhan petugas"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Jadwal tidak dapat dinonaktifkan"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Jadwal tidak dapat dihapus"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Jadwal tidak dapat diaktifkan kembali"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Jadwal tidak dapat disimpan"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Jadwal telah diperbarui, jadi tidak ada lagi yang perlu dilakukan."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Jendela jadwal berakhir sebelum dimulai"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Kebutuhan petugas jadwal tidak dapat dimuat"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Kebutuhan petugas tidak dapat dimuat"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Kebutuhan petugas tidak dapat diatur ulang"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Kebutuhan petugas tidak dapat disimpan"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Kebutuhan petugas harus berupa daftar"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Rencana petugas tidak dapat dimuat"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Awal rentang bukan tanggal."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Penggantian tidak dapat diputuskan"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Permintaan penggantian tidak dapat dimuat"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Pengajar hanya dapat diimpor ke posisi tim ini"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Pengajar %1$s dikelola di Pelayanan → %2$s → %3$s. Siswa tetap dapat diubah di sini."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Tim tidak dapat dihapus"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Tim tidak dapat disimpan"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Tim tidak termasuk dalam pelayanan ini"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Folder tema tidak ditemukan."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Jenis yang digunakan acara baru di tab Kalender sebuah pelayanan sebagai awal. Tetap dapat diubah untuk setiap acara, misalnya untuk kelas yang membutuhkan kategori jumlah hadir."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Penugasan relawan tidak dapat disimpan"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Kelompok relawan pelayanan %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Perubahan pengaturan relawan tidak dapat disimpan"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Jendela berakhir sebelum dimulai"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Koordinatornya boleh menyematkan acara pelayanan mereka ke kalender ini tanpa izin Tambah Acara."
+
+#: 
+msgid "Theme"
+msgstr "Tema"
+
+#: 
+msgid "Themes"
+msgstr "Tema"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Tema disediakan oleh gereja Anda, bukan oleh ChurchCRM, dan tidak diverifikasi oleh proyek ChurchCRM."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Tidak ada kalender gereja dengan id %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Tidak ada kalender sistem dengan id %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Ini adalah data yang dimiliki gereja tentang Anda. Perubahan langsung disimpan."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Ini adalah tim relawan yang Anda pimpin. Buka salah satunya untuk mengatur posisinya, menentukan siapa yang dapat melayani di mana, dan mengisi minggu-minggu mendatang."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Acara-acara ini bukan satu rangkaian: judul, jenis, atau kelasnya berbeda"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Pelayanan-pelayanan ini menginginkan lebih banyak orang. Beri tahu mereka bahwa Anda tertarik dan seseorang akan menghubungi Anda."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Kebutuhan ini berasal dari jadwal. Menyimpan di sini hanya mengubah kejadian ini."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Angka-angka ini hanya menghitung akun layanan mandiri: orang yang akun masuknya hanya dapat mengakses Portal Jemaat dan tidak yang lain."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Orang-orang ini masih ditugaskan, tetapi posisi yang mereka pegang tidak lagi menjadi bagian dari rencana petugas tanggal ini."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Orang-orang ini masih ditugaskan, tetapi posisi yang mereka pegang tidak lagi menjadi bagian dari rencana petugas kejadian ini."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Posisi terjadwal ini masih membutuhkan orang."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Tim %1$s ini terhubung dengan kelas Sekolah Minggu: %2$s. Putuskan hubungannya terlebih dahulu."
+
+#: 
+msgid "They could not be added"
+msgstr "Mereka tidak dapat ditambahkan"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Mereka tidak dapat dikeluarkan dari pelayanan ini"
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Mereka sudah menjadi relawan di sini"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Penugasan ini %1$s dan tidak dapat diubah menjadi %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Penugasan ini tidak lagi aktif"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Email ini tidak ada dalam riwayat Anda."
+
+#: 
+msgid "This event has already happened"
+msgstr "Acara ini sudah berlalu"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Ini dikirim ke kantor gereja untuk ditinjau. Sampai staf menyetujuinya, anggota keluarga baru ditampilkan di sini sebagai menunggu peninjauan."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Grup ini adalah kelompok relawan sebuah pelayanan dan dihapus bersama pelayanannya"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Grup ini adalah kelompok relawan %s dan dikelola dari pelayanan itu."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Grup ini adalah kelompok relawan %s. Grup ini dikelola dari pelayanan itu."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Instalasi ini belum memiliki kalender."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Ini pengingat bahwa Anda dijadwalkan melayani dalam waktu dekat."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Ini bukan nama folder tema yang valid."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Ini bukan salah satu tanggal tim Anda."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Ini bukan salah satu tim Anda."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Di sinilah gereja mengirim surat dan siapa yang dihubungi tentang keluarga Anda."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Ini akun gereja Anda. Semua yang dapat Anda lakukan untuk diri sendiri dan keluarga ada di sini."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Pelayanan ini tidak memiliki acara mendatang di kalender."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Pelayanan ini tidak memiliki acara mendatang berjudul \"%s\". Jadwal mengikuti acara yang sudah ada: tambahkan dahulu di tab Kalender pelayanan."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Pelayanan ini tidak memiliki grup kelompok relawan"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Pelayanan ini sedang tidak meminta bantuan"
+
+#: 
+msgid "This ministry's events"
+msgstr "Acara pelayanan ini"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Acara pelayanan ini (belum ada acara dipilih)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Kejadian ini mengikuti jadwalnya lagi"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Kejadian ini sudah berlalu"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Kejadian ini sudah berlalu dan penugasannya tidak dapat diubah lagi"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Kejadian ini dibatalkan"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Kejadian ini memiliki kebutuhan petugas sendiri, terpisah dari jadwalnya."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Halaman ini bukan bagian dari akun Anda. Jika menurut Anda seharusnya, tanyakan kepada kantor gereja."
+
+#: 
+msgid "This page was not found"
+msgstr "Halaman ini tidak ditemukan"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Bagian Portal Jemaat ini untuk pemimpin tim relawan."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Posisi ini ditugaskan oleh pemimpin tim atau koordinatornya, bukan melalui pendaftaran"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Jadwal ini tidak dapat dihapus: %d penugasan relawan masih merujuk pada kejadiannya."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Jadwal ini belum memiliki kebutuhan petugas"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Jadwal ini tidak aktif. Aktifkan kembali untuk membuat kejadiannya."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "Permintaan penggantian ini sudah diputuskan"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Tim ini belum memiliki posisi"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Tim ini sudah menugaskan petugas untuk acara ini"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Templat ini meminta berkas \"%s\", yang tidak ada dalam tema."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Tema ini tidak dapat diaktifkan"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Tema ini tidak bermasalah."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Versi ChurchCRM ini tidak menggunakan templat di jalur ini, sehingga penggantian tidak pernah ditampilkan."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Centang mereka di tab Relawan tim ini, lalu tugaskan di sini."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Centang disimpan saat Anda membuatnya."
+
+#: 
+msgid "Times come from this event"
+msgstr "Waktu berasal dari acara ini"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Mengisi setiap jadwal, mengirim yang antre, dan menutup kejadian yang selesai, tanpa menunggu jalannya jadwal berikutnya."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Tolak {{name}}? Relawan semula tetap bertugas dan diberi tahu."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Matikan cache templat Portal Jemaat dan cetak nama setiap templat dalam komentar HTML. Untuk perancang tema; biarkan mati untuk penggunaan normal."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Aktifkan untuk pelayanan yang timnya mengajar kelas Sekolah Minggu. Timnya kemudian dapat dihubungkan ke kelas, dan jadwal serta acaranya dapat menggunakan kelas."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Mematikan cache templat portal dan mencetak nama setiap templat dalam komentar HTML. Untuk perancang tema; biarkan mati untuk penggunaan normal."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Autentikasi Dua Faktor (2FA)"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Posisi Belum Terisi"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Kesalahan pengiriman tidak diketahui"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Status kejadian tidak diketahui"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Mode tautan jadwal tidak diketahui"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Pelayanan relawan tidak diketahui"
+
+#: 
+msgid "Until"
+msgstr "Sampai"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Ketersediaan mendatang"
+
+#: 
+msgid "Update your details"
+msgstr "Perbarui data Anda"
+
+#: 
+msgid "Update your family details"
+msgstr "Perbarui data keluarga Anda"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Gunakan Tugaskan petugas untuk acara untuk menugaskan petugas pada satu acara"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Gunakan kebutuhan jadwal"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Pengguna harus memiliki izin Tambah Acara, atau mengoordinasikan pelayanan relawan, dan modul Acara harus diaktifkan"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Pengguna harus memiliki izin Tambah Acara, atau mengoordinasikan pelayanan relawan yang memiliki kalender ini"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — Peluang Relawan (lama)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — Peluang Relawan lama"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — Pelayanan"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — Manajemen Relawan"
+
+#: 
+msgid "Valid"
+msgstr "Valid"
+
+#: 
+msgid "Validation"
+msgstr "Validasi"
+
+#: 
+msgid "View event"
+msgstr "Lihat Acara"
+
+#: 
+msgid "View my schedule"
+msgstr "Lihat jadwal saya"
+
+#: 
+msgid "View only"
+msgstr "Hanya lihat"
+
+#: 
+msgid "View person"
+msgstr "Lihat Anggota"
+
+#: 
+msgid "View the event"
+msgstr "Lihat acara"
+
+#: 
+msgid "View this email"
+msgstr "Lihat email ini"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Relawan (Lama)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Manajemen Relawan V2 tidak diaktifkan"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Pelayanan Relawan"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Penugasan relawan"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Relawan menolak"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Pengalaman relawan"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Posisi relawan masih perlu diisi"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Pengingat relawan"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Pendaftaran relawan"
+
+#: 
+msgid "Volunteer times"
+msgstr "Waktu relawan"
+
+#: 
+msgid "Volunteering"
+msgstr "Pelayanan relawan"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Pelayanan relawan yang diatur sebagaimana gereja menjalankannya. Setiap pelayanan memiliki tim dan posisi; orang dikualifikasi untuk posisi dan menjadi bagian dari grup kelompok pelayanan; jadwal mengikuti acara di kalender dan menghasilkan kejadian bertanggal dengan kebutuhan petugas; koordinator menugaskan orang, yang menerima, menolak, atau mengusulkan pengganti; pengingat dan peringatan dikirim lewat email. Administrator dan pengguna dengan izin Kelola Pelayanan melihat setiap pelayanan dan dapat membuat, menonaktifkan, dan menghapusnya. Koordinator pelayanan diberi izin Kelola Pelayanan Saya: judul Pelayanan di bilah samping lalu hanya menampilkan pelayanan yang ia koordinasikan. Pemimpin tim menjalankan timnya dari Portal Jemaat. Jemaat menggunakan Portal Jemaat untuk melihat jadwal, menanggapi, mendaftar, dan menawarkan bantuan."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Relawan ditugaskan: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Relawan selesai"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Relawan dibutuhkan"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Relawan %s ditugaskan pada acara-acara ini, sehingga tidak dapat dihapus di sini. Minta pelayanan itu menghapus penugasannya, atau minta orang yang mengelola kalender."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Relawan {{names}} ditugaskan pada sebagian acara. Kecuali Anda mengelola kalender, penghapusan ditolak sampai penugasan itu dihapus."
+
+#: 
+msgid "Volunteers start"
+msgstr "Relawan mulai"
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Menunggu balasan"
+
+#: 
+msgid "Waiting for review"
+msgstr "Menunggu peninjauan"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Menunggu koordinator Anda mengonfirmasi."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Kami akan mengirim email kepada Anda saat ada yang perlu diisi."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Kami sangat membutuhkan lebih banyak bantuan pada Minggu pagi — tidak perlu pengalaman."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Selamat datang, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Apa yang perlu diubah?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Yang perlu perhatian Anda minggu ini"
+
+#: 
+msgid "What the check found"
+msgstr "Hasil pemeriksaan"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Apa saja pengalaman relawan itu"
+
+#: 
+msgid "What you want to say"
+msgstr "Apa yang ingin Anda sampaikan"
+
+#: 
+msgid "When"
+msgstr "Kapan"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Ketika relawan mengusulkan seseorang untuk menggantikannya, usulan itu muncul di sini untuk Anda setujui atau tolak."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Ketika relawan mengusulkan seseorang untuk menggantikannya, usulan itu muncul di sini untuk Anda setujui."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Ketika seseorang menempatkan Anda dalam tim, atau Anda mendaftar sendiri, hal itu akan muncul di sini."
+
+#: 
+msgid "Where"
+msgstr "Di mana"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Dari mana tanggal berasal"
+
+#: 
+msgid "Where we reach you"
+msgstr "Cara kami menghubungi Anda"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Pengalaman Manajemen Relawan mana yang aktif. V1 adalah fitur Peluang Relawan lama; V2 adalah alur penjadwalan dan penugasan baru. \"Keduanya\" menampilkan keduanya berdampingan selama migrasi."
+
+#: 
+msgid "Which events"
+msgstr "Acara yang mana"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Pengalaman relawan mana yang digunakan gereja ini. Kartu di sebelah kanan menjelaskan setiap pilihan."
+
+#: 
+msgid "Who is covering"
+msgstr "Siapa yang menggantikan"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Siapa yang dibutuhkan, siapa yang bertugas, dan apa yang masih kurang"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Yang paling lama tidak melayani dicantumkan lebih dahulu."
+
+#: 
+msgid "Work Email"
+msgstr "Email Kerja"
+
+#: 
+msgid "Yearly"
+msgstr "Tahunan"
+
+#: 
+msgid "You"
+msgstr "Anda"
+
+#: 
+msgid "You are already helping that day"
+msgstr "Anda sudah membantu pada hari itu"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "Anda sudah membantu pada hari itu sebagai {{what}}. Daftar untuk ini juga?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Anda tidak diizinkan mengubah ini. Silakan hubungi kantor gereja."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Anda saat ini tidak terkait dengan sebuah keluarga"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Anda belum menjadi bagian dari data keluarga."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Anda ada dalam daftar — terima kasih."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Anda dapat meninjau atau mengubah ini di jadwal relawan Anda."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Anda tidak dapat membuka halaman ini"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Anda tidak dapat mengusulkan diri sendiri sebagai pengganti Anda sendiri"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Anda tidak dapat didaftarkan untuk itu."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Anda belum memimpin tim relawan."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Anda memiliki alamat kalender baru. Yang lama tidak lagi berfungsi."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Anda telah dijadwalkan untuk melayani"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Anda telah dijadwalkan untuk melayani."
+
+#: 
+msgid "You lead this"
+msgstr "Anda memimpin ini"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Anda hanya dapat membuat jadwal untuk tim yang Anda pimpin"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Anda akan kembali ke daftar untuk yang ini."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Akun Anda tidak terhubung dengan data orang. Silakan hubungi kantor gereja."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Langganan kalender Anda telah disimpan."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Alamat Anda saat ini akan langsung berhenti berfungsi. Siapa pun yang Anda beri alamat itu memerlukan yang baru."
+
+#: 
+msgid "Your details"
+msgstr "Data Anda"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Data Anda telah disimpan."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Data keluarga Anda telah disimpan."
+
+#: 
+msgid "Your photo"
+msgstr "Foto Anda"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Foto Anda telah disimpan."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Jadwal Anda tidak dapat dimuat."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Sesi Anda telah berakhir. Silakan masuk lagi."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Permintaan pengganti Anda disetujui"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Permintaan pengganti Anda tidak disetujui"
+
+#: 
+msgid "already staffed by this team"
+msgstr "sudah ada petugasnya dari tim ini"
+
+#: 
+msgid "body is required"
+msgstr "isi pesan diperlukan"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds harus berupa daftar id kalender"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents harus salah satu dari: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId harus berupa id grup atau null"
+
+#: 
+msgid "end offset"
+msgstr "offset akhir"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds harus berupa daftar id acara"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "setiap pesan sudah terkirim atau masih mengantre"
+
+#: 
+msgid "has not served yet"
+msgstr "belum pernah melayani"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId harus berupa id posisi"
+
+#: 
+msgid "inactive family"
+msgstr "keluarga tidak aktif"
+
+#: 
+msgid "line %d"
+msgstr "baris %d"
+
+#: 
+msgid "marked do not email"
+msgstr "ditandai jangan kirim email"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "pesan tidak dapat terkirim"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "pesan tidak dapat terkirim setelah lima kali percobaan"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "pesan menunggu untuk dikirim"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds harus berupa daftar id pelayanan"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "menit setelah acara berakhir"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "menit setelah acara dimulai"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "menit sebelum acara berakhir"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "menit sebelum acara dimulai"
+
+#: 
+msgid "never"
+msgstr "tidak pernah"
+
+#: 
+msgid "no email address"
+msgstr "tidak ada alamat email"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds dan familyIds harus berupa larik bilangan bulat positif"
+
+#: 
+msgid "record not found"
+msgstr "data tidak ditemukan"
+
+#: 
+msgid "same address as another recipient"
+msgstr "alamat sama dengan penerima lain"
+
+#: 
+msgid "single event"
+msgstr "acara tunggal"
+
+#: 
+msgid "start offset"
+msgstr "offset awal"
+
+#: 
+msgid "subject and body are required"
+msgstr "subjek dan isi pesan diperlukan"
+
+#: 
+msgid "subject is required"
+msgstr "subjek diperlukan"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subjek maksimal 255 karakter"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool harus benar atau salah"
+
+#: 
+msgid "window end"
+msgstr "akhir jendela"
+
+#: 
+msgid "window start"
+msgstr "awal jendela"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} ditambahkan, {{alreadyMembers}} sudah menjadi relawan di sini"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} kejadian dibuat, {{existing}} sudah ada"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} membuat {{total}} acara untuk {{className}} ({{upcoming}} mendatang)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} juga bertugas pada sebagian acara."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} sudah menjadi koordinator pelayanan ini"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} ditugaskan"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} sudah melayani sebagai {{position}} pada kejadian ini. Anda tetap dapat menugaskannya."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} memenuhi syarat tetapi tidak ada dalam kelompok relawan pelayanan ini. Menugaskannya hanya menambahkannya ke kejadian ini."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} kini menjadi koordinator pelayanan ini"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: jumlah harus antara 0 dan {{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: maksimum tidak boleh di bawah minimum."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} tidak lagi memenuhi syarat"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} memenuhi syarat"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} meminta {{substitute}} menggantikannya"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} pada {{date}} dibuat. Tugaskan petugas sekarang?"
+

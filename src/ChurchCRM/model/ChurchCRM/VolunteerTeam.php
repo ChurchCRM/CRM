@@ -3,6 +3,8 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\VolunteerTeam as BaseVolunteerTeam;
+use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'volunteer_team_vtem' table.
@@ -17,4 +19,15 @@ use ChurchCRM\model\ChurchCRM\Base\VolunteerTeam as BaseVolunteerTeam;
  */
 class VolunteerTeam extends BaseVolunteerTeam
 {
+    public function postSave(?ConnectionInterface $con = null): void
+    {
+        VolunteerClassLinkService::forgetLinkedTeams();
+        parent::postSave($con);
+    }
+
+    public function postDelete(?ConnectionInterface $con = null): void
+    {
+        VolunteerClassLinkService::forgetLinkedTeams();
+        parent::postDelete($con);
+    }
 }

@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
 use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
@@ -56,7 +57,7 @@ class VolunteerEventService
 
     private const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-    /** The event type the 7.8.0 script and the install seed add for a ministry's own events (D31). */
+    /** The event type added for a ministry's own events when V2 is turned on (D31, #10357). */
     public const OTHER_EVENT_TYPE_NAME = 'Other';
 
     /** D28: what happens to a ministry's own events of a class its team stops staffing. */
@@ -101,6 +102,27 @@ class VolunteerEventService
             ->findOne();
 
         return $type === null ? null : (int) $type->getId();
+    }
+
+    /**
+     * Add the "Other" type when V2 is turned on (#10357), unless the church already has a type
+     * of that name, active or not. Never on an upgrade, so a church that stays on V1 does not
+     * see a new type.
+     */
+    public static function addOtherEventType(): void
+    {
+        if (EventTypeQuery::create()->filterByName(self::OTHER_EVENT_TYPE_NAME)->exists()) {
+            return;
+        }
+
+        $type = new EventType();
+        $type->setName(self::OTHER_EVENT_TYPE_NAME);
+        $type->setDefRecurType('none');
+        $type->setDefRecurDOM('');
+        $type->setActive(1);
+        $type->save();
+
+        LoggerUtils::getAppLogger()->info('Volunteer v2 added the "Other" event type', ['typeId' => (int) $type->getId()]);
     }
 
     /**

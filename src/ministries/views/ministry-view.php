@@ -236,14 +236,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         and initialises.
 
         Team leaders are NOT here any more — a leader belongs to a team, so the
-        grant lives on the team's own row in the Teams card above. This card is
-        ministry-coordinator grants and nothing else.
+        grant lives in the Add/Edit team dialog. This card is ministry-coordinator
+        grants and nothing else.
 
-        Rendered only for a global volunteer manager, because granting authority is
-        the one thing §3.2 says a coordinator must not be able to do for themselves.
-        `$bIsManager` is the same `isGlobalManager()` answer the API will give; the
-        API is still the decision-maker, and scopes.ts hides the card if a request
-        ever comes back 403.
+        Rendered only for a global volunteer manager, because making a coordinator is
+        the one grant §3.2 keeps from a coordinator. `$bIsManager` is the same
+        `isGlobalManager()` answer the API will give; the API is still the
+        decision-maker, and scopes.ts hides the card if a request ever comes back 403.
       -->
       <div class="card mt-3 d-none" id="volunteer-scope-panel">
         <div class="card-header d-flex flex-wrap gap-2 align-items-center justify-content-between">
@@ -719,10 +718,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   changing the leader is the same Edit dialog everything else about the team is
   changed in.
 
-  Granting is manager-only (§3.2) — the `/api/ministries/scopes` endpoints refuse
-  anyone else — so only a manager gets the picker. Everybody else is shown the
-  current leader as read-only text and told who may change it, which is honest
-  about the permission rather than offering a control the API will refuse.
+  Everyone who can open this page coordinates the ministry or manages every
+  ministry, and §4.6 lets either choose the leaders of its teams, so everyone gets
+  the picker. `POST /api/ministries/scopes` still decides each grant.
 -->
 <div class="modal fade" id="teamModal" tabindex="-1" aria-hidden="true" aria-labelledby="teamModalTitle">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -742,7 +740,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="mb-3">
           <label class="form-label" for="team-form-leader"><?= gettext('Team leader') ?></label>
-<?php if ($bIsManager): ?>
           <div class="input-group">
             <select class="form-select person-search" id="team-form-leader"
                     data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
@@ -759,12 +756,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="form-text">
             <?= gettext('A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.') ?>
           </div>
-<?php else: ?>
-          <input type="text" class="form-control" id="team-form-leader-readonly" readonly>
-          <div class="form-text" id="team-form-leader-note">
-            <?= gettext('Only a volunteer manager can change the team leader') ?>
-          </div>
-<?php endif; ?>
         </div>
         <!--
           D23: the Sunday School class this team staffs. Its Teacher role is then

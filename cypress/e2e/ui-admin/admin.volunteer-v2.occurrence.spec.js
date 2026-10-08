@@ -75,6 +75,41 @@ function occurrenceUrl() {
 }
 
 /**
+ * Open the assign modal for a position, with its picker's dropdown showing.
+ *
+ * The picker is built when the eligible list arrives, and the modal focuses it, which
+ * opens it, once its fade ends. A click on the control after that closes it again
+ * (TomSelect toggles), so the control is clicked only when both have happened and the
+ * dropdown is still shut.
+ */
+function openAssignPicker(positionId) {
+    cy.intercept("GET", "**/api/ministries/occurrences/*/eligible*").as("eligible");
+    cy.window().then((win) => {
+        win.__assignModalShown = false;
+        win.document.getElementById("volunteer-assign-modal").addEventListener(
+            "shown.bs.modal",
+            () => {
+                win.__assignModalShown = true;
+            },
+            { once: true },
+        );
+    });
+
+    cy.get(`.volunteer-assign-btn[data-position-id="${positionId}"]`).click();
+    cy.wait("@eligible");
+    cy.window().its("__assignModalShown").should("eq", true);
+    cy.get("#assign-person-select")
+        .should(($select) => {
+            expect($select[0].tomselect, "the picker is built").to.exist;
+        })
+        .then(($select) => {
+            if (!$select[0].tomselect.isOpen) {
+                cy.get("#volunteer-assign-modal .ts-control").click();
+            }
+        });
+}
+
+/**
  * Take the fixture occurrence back to "nobody assigned".
  *
  * `DELETE /assignments/{id}` hard-deletes a row nobody has answered and cancels
@@ -453,14 +488,11 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
         it("offers only qualified people and assigns the chosen one", () => {
             cy.visit(occurrenceUrl());
 
-            cy.get(`.volunteer-assign-btn[data-position-id="${posEspresso}"]`).click();
-            cy.get("#volunteer-assign-modal").should("have.class", "show");
-
             // The picker is a TomSelect, so it is driven the way a coordinator drives
             // it: open the control and click an option. Its dropdown is mounted on
             // <body> (so a modal cannot clip it), which is why the option selector is
             // not scoped to the modal.
-            cy.get("#volunteer-assign-modal .ts-control").click();
+            openAssignPicker(posEspresso);
             cy.get(".ts-dropdown .option").should("have.length.greaterThan", 0);
             cy.get(".ts-dropdown .option").first().click();
 
@@ -487,11 +519,16 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
             freshAdminLogin();
             cy.visit(occurrenceUrl());
 
-            cy.get(`.volunteer-assign-btn[data-position-id="${posMilk}"]`).click();
-            cy.get("#volunteer-assign-modal").should("have.class", "show");
-
-            cy.get("#volunteer-assign-modal .ts-control").click();
-            cy.get(`.ts-dropdown .option[data-value="${POOL_MEMBER_A}"]`).click();
+            openAssignPicker(posMilk);
+            cy.get("@eligible")
+                .its("response.body.people")
+                .then((people) => {
+                    const person = people.find((p) => p.personId === POOL_MEMBER_A);
+                    expect(person.conflictPositionName, "the eligible list carries the other position").to.eq(
+                        POSITION_ESPRESSO,
+                    );
+                });
+            cy.get(`.ts-dropdown .option[data-value="${POOL_MEMBER_A}"]`).should("be.visible").click();
 
             // A Tabler alert-warning, not a bootbox gate and not a server error.
             cy.get("#assign-conflict-warning")

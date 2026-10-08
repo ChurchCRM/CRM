@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Group as BaseGroup;
 use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
 use ChurchCRM\Service\AuthService;
+use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
 use ChurchCRM\Volunteer\Service\VolunteerPoolWriter;
 use Exception;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -98,6 +99,12 @@ class Group extends BaseGroup
         parent::preDelete($con);
 
         return true;
+    }
+
+    public function postDelete(?ConnectionInterface $con = null): void
+    {
+        VolunteerClassLinkService::forgetLinkedTeams();
+        parent::postDelete($con);
     }
 
     public function preInsert(ConnectionInterface $con = null): bool

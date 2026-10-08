@@ -18812,3 +18812,4539 @@ msgstr "Házastárs szerepe"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Irányítószámok nagybetűvel"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Válassz legalább egy besorolást, hogy szerepeljen a névjegyzékben."
+
+#: 
+msgid "Geocoding services"
+msgstr "Geokódoló szolgáltatások"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "A kipróbálandó geokódoló szolgáltatások, a kiválasztott sorrendben. A Nominatim (OpenStreetMap) világszerte működik; a US Census (US Census Bureau) csak amerikai címeket fed le. A használatához válaszd ki a US Census-t is. Ha egyik sincs kiválasztva, a Nominatim lesz használva."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Új rekordok alapértelmezései"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Ez megkeresi a térképkoordinátákat minden olyan családhoz, amelyből hiányzik, a Térképbeállításokban kiválasztott geokódoló szolgáltatásokkal. A családokat 50-es csoportokban dolgozza fel; egy csoport egy geokódoló szolgáltatással nagyjából egy percig tart, többel tovább. Futás közben nyitva hagyhatod ezt az oldalt. Folytatod?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Új rekordokhoz és geokódoláshoz használatos, ha a rekordnak nincs országa."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Másolás a gyülekezet adataiból"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "A gyülekezet címét nem sikerült átmásolni."
+
+#: 
+msgid "Could not match the church country."
+msgstr "A gyülekezet országát nem sikerült megfeleltetni."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Osztálylisták, jelenléti ívek és fotókönyvek"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Csoporttag-listák és vasárnapi iskolai osztályjelentések"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "A pénzügyi éved kezdete: %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Hiba történt"
+
+#: 
+msgid "Approve"
+msgstr "Jóváhagyás"
+
+#: 
+msgid "Approve selected"
+msgstr "Kijelöltek jóváhagyása"
+
+#: 
+msgid "Approved"
+msgstr "Jóváhagyva"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Módosítás a Személy-beállításokban"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "A kijelölt regisztrációkat nem sikerült jóváhagyni"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Ezt a családot nem sikerült jóváhagyni"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Függő regisztrációk"
+
+#: 
+msgid "Pending review"
+msgstr "Áttekintésre vár"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "A nyilvános regisztrációs űrlapon beérkezett regisztrációk áttekintésre várnak. Az e-mail vagy telefon nélküli bejegyzések meg vannak jelölve – a kapcsolatfelvétel előtt ellenőrizd az elérhetőségeket."
+
+#: 
+msgid "Review now"
+msgstr "Áttekintés most"
+
+#: 
+msgid "Review self registrations"
+msgstr "Önregisztrációk áttekintése"
+
+#: 
+msgid "Select month"
+msgstr "Hónap kiválasztása"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Az önregisztráció ki van kapcsolva"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Az önregisztráció be van kapcsolva"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "A nyilvános regisztrációs űrlap ki van kapcsolva. A meglévő regisztrációk alább láthatók."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Ez a család nem függőben lévő önregisztráció"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Ez a személy családhoz tartozik – inkább a családot hagyd jóvá"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Ez a személy nem függőben lévő önregisztráció"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Ez az önregisztrált család áttekintésre vár"
+
+#: 
+msgid "Total registrations"
+msgstr "Összes regisztráció"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "A látogatók regisztrálhatnak a nyilvános regisztrációs űrlapon."
+
+#: 
+msgid "Yesterday"
+msgstr "Tegnap"
+
+#: 
+msgid "days ago"
+msgstr "napja"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "önregisztráció vár áttekintésre"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "A születésnapi lapokat a személynek, a házassági évfordulósakat a párnak címezzük."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Postai címkék a jelentésben szereplő személyeknek. Az önálló cím nélküli személy a családi címére kapja."
+
+#: 
+msgid "One label for each couple."
+msgstr "Egy címke minden párnak."
+
+#: 
+msgid "Print Labels"
+msgstr "Címkék nyomtatása"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Ez a szerep nem tartozik a csoport szerepei közé."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "A(z) „%s” nem olyan naptártípus, amelyet ez az oldal ismer."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s nem tud szolgálni, és helyettesként %2$s személyt javasolta."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s már szerepel a(z) %2$s önkéntes-készletben, és újra segíteni szeretne."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s már kapcsolódik ehhez: %2$s, itt: %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s a(z) %2$s osztályban van, mint %3$s. Először távolítsd el az osztályból; az itteni képesítés ezután az egyik tanárává teszi."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s nem esemény itt: %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s vasárnapi iskolai osztály marad, amíg a tanárait a Szolgálati területek → %2$s → %3$s alatt kezelik. Előbb válaszd le a csapatról."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s segíteni szeretne itt: %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s segíteni szeretne itt: %2$s, és fel lett véve az önkéntes-készletébe."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: a maximum %2$d, de %3$d alapértelmezett önkéntes van kiválasztva. Távolíts el egyet, vagy emeld a maximumot."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d nap"
+msgstr[1] "%d nap"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
+msgstr[1] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d alapértelmezés kihagyva: a képesítés visszavonva"
+msgstr[1] "%d alapértelmezés kihagyva: a képesítés visszavonva"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d alapértelmezett önkéntes beosztva"
+msgstr[1] "%d alapértelmezett önkéntes beosztva"
+
+#: 
+msgid "%d failed"
+msgstr "%d sikertelen"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Ehhez a pozícióhoz még %d önkéntesre van szükség. Nyisd meg az alkalmat a hiány pótlásához."
+msgstr[1] "Ehhez a pozícióhoz még %d önkéntesre van szükség. Nyisd meg az alkalmat a hiány pótlásához."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d új alkalom"
+msgstr[1] "%d új alkalom"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Egy közelgő alkalomhoz még %d önkéntesre van szükség."
+msgstr[1] "Közelgő alkalmakhoz még %d önkéntesre van szükség."
+
+#: 
+msgid "%s Calendar"
+msgstr "%s naptár"
+
+#: 
+msgid "%s Family"
+msgstr "%s család"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "A(z) %s nem biztosít tanárokat a vasárnapi iskolához, így csapatai, ütemezései és eseményei nem használhatnak osztályt. Az önkéntes-felelős ezt a Szolgálati terület szerkesztése alatt módosíthatja."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s e-mail a gyülekezettől"
+msgstr[1] "%s e-mail a gyülekezettől"
+
+#: 
+msgid "%s family"
+msgstr "%s család"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s elutasított egy önkéntes beosztást."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "A(z) %s területnek nincs Tanár nevű szerepe, így tanárai nem kezelhetők csapatból"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "A(z) %s területnek nincsenek közelgő alkalmai a naptárban. Az ütemezés már meglévő eseményeket követ: előbb add hozzá az osztály alkalmait a terület Naptár lapján az Új ismétlődő esemény gombbal."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s továbbra is szolgálatra számít. Ha ez nem lehetséges, kérjük, vedd fel a kapcsolatot a koordinátorral."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s nem lett elküldve (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s személy a háztartásodban"
+msgstr[1] "%s személy a háztartásodban"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s pozíció"
+msgstr[1] "%s pozíció"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: ugyanaz a személy kétszer van kiválasztva alapértelmezett önkéntesnek"
+
+#: 
+msgid "(no subject)"
+msgstr "(nincs tárgy)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "A születésnap nem lehet a jövőben."
+
+#: 
+msgid "A calendar event"
+msgstr "Naptáresemény"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "A naptár azonosítójának számnak kell lennie."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Egy már nem létező osztály"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Olyan osztály, amelynek nincsenek alkalmai a naptárban, még nem választható."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Olyan osztály, amelynek nincsenek alkalmai a naptárban, még nem választható. A terület koordinátora felveheti az alkalmakat a terület Naptár lapján."
+
+#: 
+msgid "A class's meetings"
+msgstr "Egy osztály alkalmai"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "A koordinátor mindent kezelhet ebben a szolgálati területben, beleértve azokat a módosításokat is, amelyeket egyébként az önkéntes-felelősnek kellene elvégeznie."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "A terület koordinátora felveheti őket a terület Naptár lapján."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "A terület koordinátora felveheti őket a terület Naptár lapján. Utána generáld újra."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "A koordinátor vezeti az egész szolgálati területet – csapatait, pozícióit, ütemezéseit és minden beosztást."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Ha a hónapban nincs ilyen nap, az a hónap utolsó napjára esik."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Az alapértelmezett önkéntes az ütemezés létszámigényéhez tartozik, nem egyetlen alkalomhoz"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Alapértelmezett önkéntes csak olyan pozícióhoz választható, amelyet az ütemezés létszámigénye kér"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Kezdő és záró dátum szükséges ÉÉÉÉ-HH-NN formában"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Minimális létszám megadása kötelező"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "A szolgálati terület saját naptárral, önkéntes-készlettel és első csapattal jön létre, így itt csak a nevét és a feladatát kell eldönteni."
+
+#: 
+msgid "A ministry name is required"
+msgstr "A szolgálati terület neve kötelező"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "A szolgálati területnek legalább egy csapata kell legyen. Inkább nevezd át."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Ilyen nevű szolgálati terület már létezik"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "A szolgálati terület saját naptára nem nyitható meg más területek számára"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "A pozíció csapathoz tartozik; válassz egyet"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "A pozíció egy munka, amelyet valaki ebben a csapatban végez, például Eszpresszó vagy Énekvezető."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "A pozíció egy szerep, amelyben valaki szolgál, például Eszpresszó vagy Énekvezető."
+
+#: 
+msgid "A position is required"
+msgstr "Pozíció megadása kötelező"
+
+#: 
+msgid "A position name is required"
+msgstr "A pozíció neve kötelező"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Képesített önkéntesekkel rendelkező pozíció nem helyezhető át vasárnapi iskolai osztályhoz kapcsolt csapatba vagy onnan ki, mert ez megváltoztatná, ki tanítja az osztályt. Hozd létre a pozíciót inkább a másik csapatban."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Ilyen nevű pozíció már létezik ebben a szolgálati területben"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "A válasznak elfogadásnak vagy elutasításnak kell lennie"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Az ütemezés csapathoz tartozik; válassz egyet"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Az ütemezés neve kötelező"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Az ütemezés megmondja, mely naptáresemények kapnak létszámot a csapattól: egy istentisztelet-típus, egy osztály alkalmai vagy a szolgálati terület saját eseményei. Adj hozzá egyet, és generáld az alkalmait."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Az ütemezés megmondja, mely naptáreseményeken szolgál ez a csapat: egy istentisztelet-típus, egy osztály alkalmai vagy a szolgálati terület saját eseményei. Adj hozzá egyet, és generáld az alkalmait."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Osztályt követő ütemezésnek meg kell neveznie az osztályt"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Eseménytípust követő ütemezésnek meg kell neveznie az eseménytípust"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Egyetlen eseményre létszámot adó ütemezés nem követhet más eseményeket; töröld, és adj hozzá inkább ütemezést"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "A lehetőségek egyetlen listája, például „Gyermekfelügyelet” vagy „Fogadó”, amelyet a Személyek → Adminisztráció alatt vezetnek. Minden személy meg van jelölve azokkal a lehetőségekkel, amelyekben segíteni hajlandó, a rekordja Önkéntes lapján. Ennyit rögzít: nincsenek csapatok, ütemezések, dátumhoz rendelt beosztások vagy emlékeztető e-mailek. A címkéket a jelentések és a személyrekord használja."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Egy négyzet alakú arcfotó működik a legjobban."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "A létszámigény az alapértelmezett önkénteseit a \"defaults\" mezőben sorolja fel: [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "A létszámkövetelmény pontosan egy ütemezéshez vagy alkalomhoz tartozik"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Ehhez a beosztáshoz már javasoltak helyettest"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "A csapatvezető kezelheti a saját csapatát – pozícióit, ütemezéseit és azt, ki hol szolgál –, de a szolgálati területben semmi mást."
+
+#: 
+msgid "A team name is required"
+msgstr "A csapat neve kötelező"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Ilyen nevű csapat már létezik ebben a szolgálati területben"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "A téma egy mappa, amelyet a gyülekezeted tölt fel a szerver Include/themes/ könyvtárába. A rendszer alapértelmezett témája a ChurchCRM-mel érkezik."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Átmeneti beállítás. A régi Önkéntes lehetőségek oldalak és az új Szolgálati területek oldalak egyaránt elérhetők, és a személyrekord mindkét Önkéntes lapot megjeleníti, egyértelműen megjelölve. Használd, amíg a gyülekezetet V1-ről V2-re viszed át, majd válts csak V2-re."
+
+#: 
+msgid "A volunteer"
+msgstr "Egy önkéntes"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Egy önkéntes elutasított egy beosztást"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Egy önkéntes helyettest javasolt"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Az önkéntes-felelős külön jogosultság nélkül is vezetheti ezt a szolgálati területet. Adj hozzá koordinátort, hogy valaki más vezethesse anélkül, hogy az összes többi területet is megkapná."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Az esküvő dátuma nem lehet a jövőben."
+
+#: 
+msgid "Accepted"
+msgstr "Elfogadva"
+
+#: 
+msgid "Account deleted"
+msgstr "Fiók törölve"
+
+#: 
+msgid "Account unlocked"
+msgstr "Fiók feloldva"
+
+#: 
+msgid "Accounts"
+msgstr "Fiókok"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Az aktív értéke igaz vagy hamis lehet"
+
+#: 
+msgid "Active now"
+msgstr "Jelenleg aktív"
+
+#: 
+msgid "Add All"
+msgstr "Mindegyik hozzáadása"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Mindenki hozzáadása a kijelölésből"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Önkéntes hozzáadása"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Önkéntesek hozzáadása a kijelöléshez"
+
+#: 
+msgid "Add a family member"
+msgstr "Családtag hozzáadása"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Előbb adj hozzá egy pozíciót, aztán gyere vissza, és add meg, hányan kellenek."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Adj a bejelentkezésedhez egy második lépést, hogy a jelszó önmagában ne legyen elég a fiókodhoz."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Adj hozzá legalább egy pozíciót ehhez a csapathoz, majd jelöld, ki hol szolgálhat."
+
+#: 
+msgid "Add coordinator"
+msgstr "Koordinátor hozzáadása"
+
+#: 
+msgid "Add from Cart"
+msgstr "Hozzáadás a kijelölésből"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Előbb add hozzá az alkalmait a Naptár lapon az Új ismétlődő esemény gombbal"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Add hozzá az embereket a kijelöléshez, mielőtt önkéntesként felveszed őket"
+
+#: 
+msgid "Add position"
+msgstr "Pozíció hozzáadása"
+
+#: 
+msgid "Add schedule"
+msgstr "Ütemezés hozzáadása"
+
+#: 
+msgid "Add team"
+msgstr "Csapat hozzáadása"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Add hozzá őket a Naptár lapon, majd generáld újra."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Add hozzá őket a Naptár lapon."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Add hozzá ezt a címet a naptáralkalmazásodhoz. Magától frissül, ha a gyülekezeti naptár változik."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Add itt hozzá a szolgálati terület eseményeit: egy munkanapot, egy osztályt, amely minden vasárnap találkozik. Felkerülnek a gyülekezeti naptárra, és létrehozásukkor rögtön beoszthatod rájuk az önkénteseket."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "A Tagi portálon keresztül hozzáadva, áttekintésre vár: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Hozzáadva – most jelöld be a pozíciókat, ahol szolgálhat"
+
+#: 
+msgid "Address Line 2"
+msgstr "2. címsor"
+
+#: 
+msgid "Admin Console"
+msgstr "Adminisztrációs konzol"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Rendszergazdai jogosultság szükséges"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Hirdesd ezt a pozíciót a Tagi portál Nyitott lehetőségek oldalán."
+
+#: 
+msgid "All Teams"
+msgstr "Minden csapat"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Engedd, hogy a tagok módosítsák saját és családtagjaik születésnapját."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Ide is ki van tűzve: {{calendars}}, amelyet csak az Események hozzáadása jogosultsággal rendelkező személy módosíthat."
+
+#: 
+msgid "An event title is required"
+msgstr "Az esemény címe kötelező"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Eseménytípus vagy szolgálati terület kötelező"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Egy már nem létező eseménytípus"
+
+#: 
+msgid "Another ministry"
+msgstr "Másik szolgálati terület"
+
+#: 
+msgid "Any event"
+msgstr "Bármely esemény"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Bármi, amit a koordinátorodnak tudnia kell"
+
+#: 
+msgid "Approve substitution"
+msgstr "Helyettesítés jóváhagyása"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Helyettes jóváhagyása"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Kérd meg az önkéntes-felelőst, hogy hozzon létre egy szolgálati területet, és tegyen téged a koordinátorává."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Kérj meg valakit, hogy helyettesítsen"
+
+#: 
+msgid "Ask them"
+msgstr "Kérdezd meg őket"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Megkérdezve – a koordinátorod megerősíti."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Önkéntes beosztása"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "A jelenlegi terven kívül beosztva"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Beosztás visszavonva"
+
+#: 
+msgid "Assignment not found"
+msgstr "A beosztás nem található"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Legalább egy personId vagy familyId szükséges"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Egy pozícióhoz legfeljebb %d alapértelmezett önkéntes választható"
+
+#: 
+msgid "Author"
+msgstr "Szerző"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "A jogosultság a személyhez tartozik, nem a bejelentkezéshez, így megadható, mielőtt lenne neki. Az a személy, akinek a bejelentkezése csak önkiszolgáló, addig csak a saját ütemezését látja, amíg egy rendszergazda ki nem bővíti a fiókját."
+
+#: 
+msgid "Automatic"
+msgstr "Automatikus"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Válaszra vár"
+
+#: 
+msgid "Back to Email History"
+msgstr "Vissza az e-mail-előzményekhez"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Vissza a szolgálati terület áttekintőjéhez"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Vissza az alkalmakhoz"
+
+#: 
+msgid "Back to Person"
+msgstr "Vissza a személyhez"
+
+#: 
+msgid "Back to editing"
+msgstr "Vissza a szerkesztéshez"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Vissza az ütemezésemhez"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Vissza a Tagi portálra"
+
+#: 
+msgid "Back to your profile"
+msgstr "Vissza a profilodhoz"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Háttérfeladatok és kézbesítés"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "A háttérfeladatok utoljára futottak"
+
+#: 
+msgid "Background jobs ran"
+msgstr "A háttérfeladatok futottak"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Születésnapi köszöntés"
+
+#: 
+msgid "Both"
+msgstr "Mindkettő"
+
+#: 
+msgid "Both (transition)"
+msgstr "Mindkettő (átmenet)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Mindkettő – V1 és V2 egymás mellett (átmenet)"
+
+#: 
+msgid "Calendar address"
+msgstr "Naptár címe"
+
+#: 
+msgid "Calendar saved"
+msgstr "Naptár elmentve"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "A Tagi portál által a tagoknak mutatott naptárak az Adminisztráció → Tagi portál → Naptárak alatt választhatók."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Adhat ez a szolgálati terület tanárokat a vasárnapi iskolához?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Beosztás visszavonása"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "A beosztás visszavonása"
+
+#: 
+msgid "Cancelled"
+msgstr "Visszavonva"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Változtasd meg a bejelentkezési jelszavad, vagy adj hozzá egy második lépést, hogy a jelszó önmagában ne legyen elég."
+
+#: 
+msgid "Change your password"
+msgstr "Jelszó módosítása"
+
+#: 
+msgid "Checked in"
+msgstr "Bejelentkezett"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Bejelentkezve: %1$d / %2$d az osztálylistán"
+
+#: 
+msgid "Checked out"
+msgstr "Kijelentkezett"
+
+#: 
+msgid "Choose a class"
+msgstr "Válassz osztályt"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Válassz egy hónapnapot 1-től 31-ig"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Új fotó választása"
+
+#: 
+msgid "Choose a person"
+msgstr "Válassz személyt"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Válassz önkéntest"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Előbb válassz önkéntest"
+
+#: 
+msgid "Choose an event"
+msgstr "Válasszon egy eseményt..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Válassz eseménytípust"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Válassz meglévő eseménytípust"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Válassz legalább egy naptárat az előfizetéshez."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Válaszd ki azokat a naptárakat, amelyeket a saját naptáralkalmazásodban szeretnél."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Válaszd ki az évenkénti dátumot HH-NN formában"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Válaszd ki az esemény dátumát"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Válaszd ki a hét napját"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Válaszd ki az eseményt, amelyet ez az ütemezés követ"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Válaszd ki a beosztandó eseményt"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Válaszd ki a törlendő eseményeket"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Válaszd ki a beosztandó eseményeket"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Válaszd ki az első és az utolsó dátumot"
+
+#: 
+msgid "Choose the first date"
+msgstr "Válaszd ki az első dátumot"
+
+#: 
+msgid "Choose the last date"
+msgstr "Válaszd ki az utolsó dátumot"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Válaszd ki a(z) %1$s pozícióját, amelyre a(z) %2$s tanárai képesítést kapnak. Tanárok: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Válaszd ki a csapatot, amelyben ez a pozíció szolgál"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Válaszd ki a tagoknak látható témát, kapcsold be vagy ki a portál szakaszait, és nézd meg, ki használja a portált."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Válassz heti, havi vagy éves ismétlődést"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Válaszd ki, honnan származnak az ütemezés dátumai"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Válaszd ki, melyik önkéntes-élményt használja ez a gyülekezet, milyen messze előre töltődnek az ütemezések, és mikor mennek ki az emlékeztetők, valamint ellenőrizd, hogy futnak-e a háttérfeladatok."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Válaszd ki, ki tölti be alapértelmezetten az egyes pozíciókat. A választás az ütemezésen mentődik: most létrehozott alkalmakra és azokra, amelyeket a napi kiegészítés később hoz létre, beosztásra kerülnek, amíg képesítettek, és választ kérünk tőlük, hacsak nem állítod őket elfogadottra. Hagyd nyitva a pozíciót, ha hétről hétre szeretnéd beosztani."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Válaszd ki, ki helyettesít téged."
+
+#: 
+msgid "Church Calendar"
+msgstr "Gyülekezeti naptár"
+
+#: 
+msgid "Church Calendars"
+msgstr "Gyülekezeti naptárak"
+
+#: 
+msgid "Church calendar"
+msgstr "Gyülekezeti naptár"
+
+#: 
+msgid "Church events of a type"
+msgstr "Adott típusú gyülekezeti események"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Az adott típusú gyülekezeti események a gyülekezeti naptárra kerülnek. Ellenőrizd az ütemezés eseménytípusát, címét és dátumait."
+
+#: 
+msgid "Church website"
+msgstr "Gyülekezeti weboldal"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "A ChurchCRM kétféleképpen kezeli az önkénteseket. Egyszerre csak az egyiket érdemes használni; a bal oldali beállítás dönti el, melyiket látja ez a gyülekezet. A váltás oldalakat és menüpontokat rejt el vagy mutat – soha nem töröl adatot, így visszaválthatsz."
+
+#: 
+msgid "Close event details"
+msgstr "Eseményadatok bezárása"
+
+#: 
+msgid "Colour"
+msgstr "Szín"
+
+#: 
+msgid "Completed"
+msgstr "Befejezve"
+
+#: 
+msgid "Compose Message"
+msgstr "Üzenet írása"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Erősítsd meg a családod adatait"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Koordinátor eltávolítva"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Másold ki ezt a címet, és add hozzá a naptáralkalmazásodhoz új naptár-előfizetésként."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Az előnézetet nem sikerült elkészíteni."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Nem sikerült megszámolni az osztály eseményeit"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Nem sikerült megadni a jogosultságot"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Nem sikerült betölteni a vasárnapi iskolai osztályokat"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Nem sikerült betölteni az áttekintőt"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Nem sikerült betölteni az eseményválasztékot"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Nem sikerült betölteni az alkalmakat"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Nem sikerült betölteni az ütemezéseket"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Nem sikerült betölteni a közelgő eseményeket"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Nem sikerült betölteni az önkénteseket"
+
+#: 
+msgid "Could not load this email."
+msgstr "Ezt az e-mailt nem sikerült betölteni."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Ezt a szolgálati területet nem sikerült betölteni"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "A szolgálati terület eseményeit nem sikerült betölteni"
+
+#: 
+msgid "Could not load this team"
+msgstr "Ezt a csapatot nem sikerült betölteni"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Nem sikerült visszavonni a jogosultságot"
+
+#: 
+msgid "Create"
+msgstr "Létrehozás"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Hozz létre egy ütemezést, és generáld az alkalmait, és itt megjelennek a betöltendő hetek."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Hozz létre egy ütemezést, és generáld az alkalmait, és itt megjelennek a beosztandó hetek."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Hozz létre legalább egy pozíciót ehhez a csapathoz, majd jelöld, ki hol szolgálhat."
+
+#: 
+msgid "Create ministry"
+msgstr "Szolgálati terület létrehozása"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Szolgálati terület létrehozásához önkéntes-felelősi hozzáférés szükséges"
+
+#: 
+msgid "Date and time"
+msgstr "Dátum és idő"
+
+#: 
+msgid "Date each year"
+msgstr "Évenkénti dátum"
+
+#: 
+msgid "Dates"
+msgstr "Dátumok"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "A dátumoknak ÉÉÉÉ-HH-NN formában kell lenniük"
+
+#: 
+msgid "Day of the month"
+msgstr "A hónap napja"
+
+#: 
+msgid "Day of the week"
+msgstr "A hét napja"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Szolgálati terület inaktiválása"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Ütemezés inaktiválása"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "A törlés előtt inaktiváld ezt a szolgálati területet."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Inaktiválod a(z) {{name}} területet? Átkerül az oldalsáv Inaktivált szolgálati területek részébe, ahol újraaktiválható vagy törölhető. Semmi nem törlődik."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Inaktiválod a(z) {{name}} ütemezést? Nem jönnek létre hozzá új alkalmak, sem a Generálással, sem a napi kiegészítéssel. A meglévő alkalmai és beosztásai megmaradnak, és újraaktiválható."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Inaktivált szolgálati területek"
+
+#: 
+msgid "Declined"
+msgstr "Elutasítva"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "A szolgálati terület eseményeinek alapértelmezett eseménytípusa"
+
+#: 
+msgid "Default volunteers"
+msgstr "Alapértelmezett önkéntesek"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Az alapértelmezett önkéntesek követelményként érkeznek: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Események törlése"
+
+#: 
+msgid "Delete ministry"
+msgstr "Szolgálati terület törlése"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Alkalmak törlése"
+
+#: 
+msgid "Delete position"
+msgstr "Pozíció törlése"
+
+#: 
+msgid "Delete schedule"
+msgstr "Ütemezés törlése"
+
+#: 
+msgid "Delete team"
+msgstr "Csapat törlése"
+
+#: 
+msgid "Delete those events"
+msgstr "Ezen események törlése"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Törlöd a(z) {{name}} csapatot és mindent, ami benne van? A pozíciói, képesítései, létszámigényei, ütemezései, alkalmai és beosztásai – a múltbeli szolgálati bejegyzésekkel együtt – és a csapatvezetői jogosultságai törlődnek. Az előzmények megőrzéséhez inkább inaktiváld a csapatot. Ez nem vonható vissza."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Törlöd a(z) {{name}} szolgálati területet és mindent, ami benne van? A csapatai, pozíciói, ütemezései, {{occurrences}} alkalma és {{assignments}} beosztása – a múltbeli szolgálati bejegyzésekkel együtt –, valamint a koordinátori és csapatvezetői jogosultságai, az önkéntes-készlet csoportja és a naptára törlődnek. Ez nem vonható vissza."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Törlöd a(z) {{name}} pozíciót? A képesítései, létszámigényei és beosztásai – a múltbeli szolgálati bejegyzésekkel együtt – vele együtt törlődnek. Az előzmények megőrzéséhez inkább inaktiváld a pozíciót. Ez nem vonható vissza."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Törlöd: {{name}}? Ez nem vonható vissza."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Szolgálati terület törléséhez önkéntes-felelősi hozzáférés szükséges"
+
+#: 
+msgid "Developer mode"
+msgstr "Fejlesztői mód"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Kész – visszatértél a listára."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Elveted az alkalom saját létszámigényeit, és újra az ütemezését követed?"
+
+#: 
+msgid "Due soon"
+msgstr "Hamarosan esedékes"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Minden naptárat típussal és azonosítóval kell megadni."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Minden alapértelmezett önkéntesnek meg kell neveznie egy személyt"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Minden létszámigénynek meg kell neveznie egy pozíciót"
+
+#: 
+msgid "Edit event"
+msgstr "Esemény Szerkesztése"
+
+#: 
+msgid "Edit ministry"
+msgstr "Szolgálati terület szerkesztése"
+
+#: 
+msgid "Edit position"
+msgstr "Pozíció szerkesztése"
+
+#: 
+msgid "Edit schedule"
+msgstr "Ütemezés szerkesztése"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Létszámigények szerkesztése"
+
+#: 
+msgid "Edit team"
+msgstr "Csapat szerkesztése"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Szerkeszd az ütemezést, és válassz másik osztályt."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Szerkeszd az ütemezést, és válassz másik eseménytípust."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Szerkeszd az ütemezést, és válaszd ki az eseményt, amelyet követ."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Szerkeszd az ütemezést, és told későbbre az utolsó dátumát, hogy több eseményt kövessen."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "A Tagi portálon szerkesztve: %s"
+
+#: 
+msgid "Email %s"
+msgstr "E-mail küldése: %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "E-mail küldése a(z) %s családnak"
+
+#: 
+msgid "Email History"
+msgstr "E-mail-előzmények"
+
+#: 
+msgid "Email content"
+msgstr "E-mail tartalma"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "E-mail a távolmaradóknak: %s"
+
+#: 
+msgid "Email not found"
+msgstr "Az e-mail nem található"
+
+#: 
+msgid "Email preview"
+msgstr "E-mail előnézete"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "Az e-mail küldése le van tiltva"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "Az e-mail küldése nincs engedélyezve. Küldés előtt állítsd be az SMTP-beállításokat, és engedélyezd az e-mailt."
+
+#: 
+msgid "Emails"
+msgstr "E-mailek"
+
+#: 
+msgid "End time"
+msgstr "Befejezési idő"
+
+#: 
+msgid "Enter counts"
+msgstr "Számok megadása"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Add meg az e-mail tárgyát…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Add meg a jelenlegi jelszavad, majd az újat kétszer."
+
+#: 
+msgid "Enter your message…"
+msgstr "Írd be az üzenetedet…"
+
+#: 
+msgid "Event staffed"
+msgstr "Esemény beosztva"
+
+#: 
+msgid "Event title"
+msgstr "Esemény címe"
+
+#: 
+msgid "Event type"
+msgstr "Esemény típusa"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Minden e-mail, amelyet a ChurchCRM küldött, a legújabbal kezdve. Egy személy megnyitásával láthatod a teljes előzményét."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Ebben az időszakban minden pozíciónak megvannak a szükséges emberei."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Mindenki válaszolt"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "A kijelölésben lévő mindenki csatlakozik a szolgálati terület önkénteseihez. Utána jelöld be a pozícióikat."
+
+#: 
+msgid "Everything is correct"
+msgstr "Minden helyes"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Az előnézet elkészítése sikertelen"
+
+#: 
+msgid "Failed to load email"
+msgstr "Az e-mail betöltése sikertelen"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Az e-mail-előzmények betöltése sikertelen"
+
+#: 
+msgid "Failed to send email"
+msgstr "Az e-mail küldése sikertelen"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "Az e-mail küldése sikertelen. Próbáld újra, vagy használd a „Megnyitás e-mail-kliensben” lehetőséget."
+
+#: 
+msgid "Family Member"
+msgstr "Családtag"
+
+#: 
+msgid "Family verification"
+msgstr "Családi ellenőrzés"
+
+#: 
+msgid "File"
+msgstr "Fájl"
+
+#: 
+msgid "Fill"
+msgstr "Kitöltés"
+
+#: 
+msgid "Fill by default with"
+msgstr "Alapértelmezett kitöltés ezzel:"
+
+#: 
+msgid "Fill this gap"
+msgstr "Ennek a hiánynak a pótlása"
+
+#: 
+msgid "Filled"
+msgstr "Betöltve"
+
+#: 
+msgid "Find a sub"
+msgstr "Helyettes keresése"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Önkéntes keresése"
+
+#: 
+msgid "Find an event"
+msgstr "Esemény keresése"
+
+#: 
+msgid "Find something to do"
+msgstr "Keress valamit, amit tehetsz"
+
+#: 
+msgid "Find something to help with"
+msgstr "Keress valamit, amiben segíthetsz"
+
+#: 
+msgid "Findings"
+msgstr "Megállapítások"
+
+#: 
+msgid "First date"
+msgstr "Első dátum"
+
+#: 
+msgid "Folder"
+msgstr "Mappa"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "A használandó Tagi portál téma mappaneve az Include/themes/ könyvtárból. A „default” a ChurchCRM-mel érkező rendszertéma."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Generáld újra az első dátumához közelebb."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Alkalmak generálása"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Új naptárcímet kérsz?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Adj nevet a szolgálati területnek"
+
+#: 
+msgid "Give the position a name"
+msgstr "Adj nevet a pozíciónak"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Add meg a kezdő és befejező időt ÓÓ:PP formában"
+
+#: 
+msgid "Give the team a name"
+msgstr "Adj nevet a csapatnak"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Ugrás az önkéntes szolgálataimhoz"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Ugrás a Tagi portál beállításaihoz"
+
+#: 
+msgid "Going"
+msgstr "Megy"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Add meg a képesítést a szolgálati terület oldalán, majd oszd be itt."
+
+#: 
+msgid "Granted"
+msgstr "Megadva"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Nézd meg, mit tart nyilván a gyülekezet a háztartásodról, majd jelezd, hogy még mindig helyes-e."
+
+#: 
+msgid "Headcount"
+msgstr "Résztvevők száma"
+
+#: 
+msgid "Hello %s"
+msgstr "Szia, %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Segítség kell"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "A segítségkérést nem sikerült elmenteni"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Milyen messze előre jönnek létre az alkalmak az egyes ütemezések által követett eseményekhez. Egy napi háttérfeladat addig tartja feltöltve az ütemezéseket."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Hány órával az önkéntes alkalom előtt megy ki az emlékeztető e-mail. A 0 érték azt jelenti, hogy egyáltalán nem küldünk emlékeztetőt. A kézbesítés a háttérfeladatok futásától függ; az ajánlott cron-beállítást lásd az Önkéntes dokumentációban."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Hány órával az alkalom előtt megy ki az emlékeztető e-mail. A 0 érték azt jelenti, hogy egyáltalán nem küldünk emlékeztetőt."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Hány emberre van szükség az egyes pozíciókban minden alkalommal, amikor ez megtörténik. Egy dátum később külön módosítható. Az alapértelmezett önkéntes minden új alkalomra beosztásra kerül, amíg képesített; egynek a módosítása soha nem változtatja a már meglévő alkalmakat."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Hány önkéntesre van szüksége az ütemezés minden alkalmának. Vedd ki a jelölést arról a pozícióról, amelyet az ütemezés soha nem használ. Az alapértelmezett önkéntes minden új alkalomra beosztásra kerül, amíg képesített; egynek a módosítása soha nem változtatja a már meglévő alkalmakat."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Hány önkéntesre van szüksége ennek az eseménynek. Vedd ki a jelölést arról a pozícióról, amelyet nem használ."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Hány héttel előre jönnek létre az önkéntes alkalmak az egyes ütemezések által követett eseményekhez, 1-től 52-ig. Egy napi háttérfeladat addig tartja feltöltve az ütemezéseket."
+
+#: 
+msgid "How often"
+msgstr "Milyen gyakran"
+
+#: 
+msgid "How to correct this"
+msgstr "Így javíthatod"
+
+#: 
+msgid "I can't"
+msgstr "Nem tudok"
+
+#: 
+msgid "I'd like to help"
+msgstr "Szívesen segítek"
+
+#: 
+msgid "I'll be there"
+msgstr "Ott leszek"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Ha az üzenetek küldése sikertelen, kérd meg a rendszergazdát, hogy ellenőrizze a Szolgálati terület-beállításokat."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Ha mégsem tudsz eljönni, kérjük, minél előbb utasítsd el az önkéntes ütemezésedben, hogy a pozíciót be lehessen tölteni."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Ha véletlenül megosztottad ezt a címet, kérj újat. A régi cím azonnal megszűnik működni."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "Az elmúlt 15 percben"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "Az önkéntes-készletben"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Belső: az utolsó dátum, amelyig az önkéntes ütemezések az ütemezési horizontig fel lettek töltve (ÉÉÉÉ-HH-NN). Ne szerkeszd kézzel."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Belső: mikor lettek utoljára feltöltve az önkéntes ütemezések, és ez hány alkalmat hozott létre. Ne szerkeszd kézzel."
+
+#: 
+msgid "Is this still right?"
+msgstr "Ez még mindig helyes?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Az alkalmai betöltendő pozíciók nélkül jönnek létre. Szerkeszd az ütemezést a létszámigényei hozzáadásához."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Maradjanak a(z) {{className}} osztályban"
+
+#: 
+msgid "Kind"
+msgstr "Fajta"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Elmúlt 24 óra"
+
+#: 
+msgid "Last 30 days"
+msgstr "Elmúlt 30 nap"
+
+#: 
+msgid "Last 7 days"
+msgstr "Elmúlt 7 nap"
+
+#: 
+msgid "Last attempt"
+msgstr "Utolsó kísérlet"
+
+#: 
+msgid "Last check"
+msgstr "Utolsó ellenőrzés"
+
+#: 
+msgid "Last date"
+msgstr "Utolsó dátum"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Utoljára látva a portálon"
+
+#: 
+msgid "Last sign-in"
+msgstr "Utolsó bejelentkezés"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Hagyd mindkettőt 0-n, hogy pontosan az esemény idején szolgáljanak. Az esemény áthelyezése az önkénteseket is áthelyezi."
+
+#: 
+msgid "Leave open"
+msgstr "Nyitva hagyás"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Engedd, hogy a tagok a Tagi portálon módosítsák saját és családtagjaik születésnapját."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Tagok szerkeszthetik a születésnapokat"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Jelezd a gyülekezeti irodának, hogy minden fent leírt adat még mindig helyes-e."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Add meg nekik az okot (nem kötelező)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Lehetővé teszi, hogy a szolgálati terület koordinátorai önkénteseket osszanak be erre az eseményre – és magát az eseményt is szerkesszék."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Naptár betöltése…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Szolgálati területek kezelése"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Saját szolgálati területeim kezelése"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Saját szolgálati területeim kezelése jogosultság, kezelendő szolgálati területtel vagy csapattal"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Saját szolgálati területeim kezelése jogosultság, kezelendő szolgálati területtel vagy csapattal, szükséges"
+
+#: 
+msgid "Manage staffing"
+msgstr "Létszám kezelése"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "A(z) %s szolgálati területről kezelve"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "A(z) {{ministry}} szolgálati területről kezelve"
+
+#: 
+msgid "Max"
+msgstr "Max"
+
+#: 
+msgid "Member Portal"
+msgstr "Tagi portál"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "A tagok „átmenetileg nem elérhető” oldalt látnak, amíg ez nincs javítva. Ugyanezek a részletek az alkalmazásnaplóba és a webszerver hibanaplójába is bekerültek."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "A tagok csak az itt bekapcsolt naptárakat látják. A születésnapok és évfordulók csak a keresztnevet és a vezetéknév kezdőbetűjét mutatják."
+
+#: 
+msgid "Message"
+msgstr "Üzenet"
+
+#: 
+msgid "Min"
+msgstr "Min"
+
+#: 
+msgid "Ministries"
+msgstr "Szolgálati területek"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Segítséget kereső szolgálati területek"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Eseményeket felvehető szolgálati területek"
+
+#: 
+msgid "Ministry"
+msgstr "Szolgálati terület"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Szolgálati terület naptárai"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Szolgálati terület koordinátorai"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Szolgálati terület áttekintője"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Szolgálati terület beállításai"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Szolgálati terület naptára"
+
+#: 
+msgid "Ministry created"
+msgstr "Szolgálati terület létrehozva"
+
+#: 
+msgid "Ministry management access"
+msgstr "Szolgálati terület kezelési hozzáférése"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Szolgálati terület kezelési hozzáférése szükséges"
+
+#: 
+msgid "Ministry name"
+msgstr "Szolgálati terület neve"
+
+#: 
+msgid "Ministry not found"
+msgstr "A szolgálati terület nem található"
+
+#: 
+msgid "My Family"
+msgstr "Családom"
+
+#: 
+msgid "My Teams"
+msgstr "Csapataim"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Szolgálati területeim és csapataim"
+
+#: 
+msgid "My schedule"
+msgstr "Ütemezésem"
+
+#: 
+msgid "My volunteering"
+msgstr "Önkéntes szolgálatom"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Nevezd el ezt a pozíciót azon az oldalon, ahol a tagok segítség után néznek."
+
+#: 
+msgid "Needs an answer"
+msgstr "Választ igényel"
+
+#: 
+msgid "Needs filling"
+msgstr "Betöltést igényel"
+
+#: 
+msgid "Never signed in"
+msgstr "Soha nem jelentkezett be"
+
+#: 
+msgid "New account"
+msgstr "Új fiók"
+
+#: 
+msgid "New event"
+msgstr "Új esemény"
+
+#: 
+msgid "New ministry"
+msgstr "Új szolgálati terület"
+
+#: 
+msgid "New record notification"
+msgstr "Új rekord értesítés"
+
+#: 
+msgid "New recurring event"
+msgstr "Új ismétlődő esemény"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Új önkéntesekre van szükség a következő pozíciókban"
+
+#: 
+msgid "Newest first"
+msgstr "Legújabb elöl"
+
+#: 
+msgid "Next on %s"
+msgstr "Következő: %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Még egyetlen naptár sincs megosztva a tagokkal."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Egyetlen naptár sincs megnyitva ennek a szolgálati területnek, így az események egyik naptáron sem jelennek meg."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Egyetlen naptár sincs megosztva a tagokkal."
+
+#: 
+msgid "No class"
+msgstr "Nincs osztály"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Még nincsenek elérhetőségek rögzítve."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Még nincsenek koordinátorok"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Az első és az utolsó dátum között egyetlen dátum sem felel meg az ismétlődésnek"
+
+#: 
+msgid "No email was sent."
+msgstr "Nem lett e-mail elküldve."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Ennek a rekordnak még nem küldtek e-mailt."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Még nincs rögzített résztvevőszám"
+
+#: 
+msgid "No longer needed"
+msgstr "Már nem szükséges"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Még egyetlen tag sem jelentkezett be a Tagi portálra."
+
+#: 
+msgid "No ministry"
+msgstr "Nincs szolgálati terület"
+
+#: 
+msgid "No past events"
+msgstr "Nincsenek múltbeli események"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Ehhez a személyhez nincs fotó feltöltve."
+
+#: 
+msgid "No photo was sent."
+msgstr "Nem érkezett fotó."
+
+#: 
+msgid "No positions yet"
+msgstr "Még nincsenek pozíciók"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Még nincsenek képesítések."
+
+#: 
+msgid "No schedules yet"
+msgstr "Még nincsenek ütemezések"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Nincs létszámigény beállítva"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Nincs létszámigény: a generált alkalmakhoz senki nem kell."
+
+#: 
+msgid "No substitution requests"
+msgstr "Nincsenek helyettesítési kérések"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Nincs eldöntendő helyettesítés"
+
+#: 
+msgid "No teams yet"
+msgstr "Még nincsenek csapatok"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "A naptárban nincsenek közelgő %1$s események „%2$s” címmel. Az ütemezés már meglévő eseményeket követ."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Nincs egyező közelgő esemény"
+
+#: 
+msgid "No upcoming events"
+msgstr "Nincsenek közelgő események"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "A naptárban nincsenek ilyen típusú közelgő események."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Nincs közelgő esemény, amelyből választani lehetne"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Még senki nincs beosztva"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Más még nincs erre betanítva – inkább szólj a koordinátorodnak."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Senki nem mondta meg, hány önkéntes kell az egyes pozíciókba, így nincs mit betölteni."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Ebben az időszakban senki nem döntésre vár."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Még senki nem képesített erre a pozícióra"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Még senki nem képesített erre a pozícióra, így az nyitva marad."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "A címzettek egyikének sem lehet e-mailt küldeni"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Egyik sem: az eseménytípus eseményenként választandó"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Nincs jogosultságod megtekinteni ezt az e-mailt"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Nincs jogosultságod megtekinteni ezt a családot"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Nincs jogosultságod megtekinteni ezt a személyt"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Nincs jogosultság ehhez a beosztáshoz"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Nincs jogosultság ehhez a szolgálati területhez"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Nincs jogosultság ehhez az alkalomhoz"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Nincs jogosultság ehhez a pozícióhoz"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Nincs jogosultság ehhez a képesítéshez"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Nincs jogosultság ehhez a követelményhez"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Nincs jogosultság ehhez az ütemezéshez"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Nincs jogosultság ehhez a helyettesítési kéréshez"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Nincs jogosultság ehhez a csapathoz"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Nincs jogosultság eseményeket hozzárendelni ahhoz az önkéntes szolgálati területhez"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Nincs jogosultság a(z) %s esemény módosításához"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Nincs jogosultság ennek az eseménynek az önkéntes szolgálati területét módosítani"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Nincs jogosultság olyan esemény létrehozására, amelyhez nem tartozik általad kezelt önkéntes szolgálati terület"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Nincs jogosultság ennek az eseménynek a módosítására"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Nincs jogosultság események kitűzésére a(z) „%s” naptárra"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Nincs jogosultság események eltávolítására a(z) „%s” naptárból"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Nincs jogosultság az önkéntes szolgálati terület eltávolítására erről az eseményről"
+
+#: 
+msgid "Not checked in"
+msgstr "Nem jelentkezett be"
+
+#: 
+msgid "Not found"
+msgstr "Nem található"
+
+#: 
+msgid "Not in the pool"
+msgstr "Nincs a készletben"
+
+#: 
+msgid "Not now"
+msgstr "Most nem"
+
+#: 
+msgid "Not sent"
+msgstr "Nincs elküldve"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Nincs beállítva: a(z) „%s” használatos"
+
+#: 
+msgid "Not staffed"
+msgstr "Nincs beosztva"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Még nem önkéntes"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Semmi nem változott, ezért semmi nem lett mentve."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "Ebben az időszakban nincs semmi a naptárban."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "Jelenleg nincs semmi a naptárban."
+
+#: 
+msgid "Nothing is short"
+msgstr "Sehol nincs hiány"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Még nincs semmi a listádon"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Még nincs semmi a listádon. Nézd meg, mit kell betölteni."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Jelenleg nincs semmi nyitva"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Még nincs semmi ütemezve"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Nincs semmi ütemezve."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Még nincs semmi beállítva"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "Az elmúlt évben semmi nem történt, ami ehhez a szolgálati területhez tartozna."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Még nincs mire képesíteni"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Semmi nem lett mentve. Ellenőrizd a kiemelt mezőket."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Semmi nem lett mentve. Kérjük, próbáld újra."
+
+#: 
+msgid "Notification"
+msgstr "Értesítés"
+
+#: 
+msgid "Notifications"
+msgstr "Értesítések"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Az alkalom nem található"
+
+#: 
+msgid "Occurrences"
+msgstr "Alkalmak"
+
+#: 
+msgid "Offer to help"
+msgstr "Segítség felajánlása"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Naponta egyszer minden aktív ütemezés alkalmakat kap az általa követett eseményekhez, legfeljebb %d hétre előre, és az egyes pozíciók alapértelmezett önkéntese beosztásra kerül az újakon, amíg képesített marad."
+msgstr[1] "Naponta egyszer minden aktív ütemezés alkalmakat kap az általa követett eseményekhez, legfeljebb %d hétre előre, és az egyes pozíciók alapértelmezett önkéntese beosztásra kerül az újakon, amíg képesített marad."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Amint ez a személy képesített egy pozícióra, itt megjelenik a szolgálatra beosztott dátumaival együtt."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Minden olyan naptáresemény után létrejön egy alkalom, amelynek Kapcsolt csoportja ez az osztály."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Az esemény minden dátumához létrejön egy alkalom. Csak a naptárban már szereplő események választhatók."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Az egyik naptár nem létezik"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Az egyik esemény nem létezik"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Ezen naptárak egyike nincs megosztva a tagokkal."
+
+#: 
+msgid "One-time"
+msgstr "Egyszeri"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Csapathoz csak vasárnapi iskolai osztály kapcsolható"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Csak koordinátor rögzíthet választ valaki más nevében"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Csak a szolgálati terület koordinátora hozhat létre eseményeket hozzá"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Csak a szolgálati terület koordinátora oszthat be létszámot az eseményeire"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "Csak önkéntes-felelős módosíthatja a csapatvezetőt"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Ezt csak önkéntes-felelős módosíthatja."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Csak önkéntes-felelős módosíthatja, hogy egy szolgálati terület ad-e tanárokat a vasárnapi iskolához"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Ezeket az adatokat csak a családod egy felnőtt tagja módosíthatja. Kérjük, vedd fel a kapcsolatot a gyülekezeti irodával."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Csak az erre betanított személyek vannak felsorolva."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Helyettest csak a beosztott önkéntes javasolhat"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Csak azok a naptárak vannak felsorolva, amelyekre ez a szolgálati terület eseményeket vehet fel. A saját naptára eleve be van jelölve."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Egy nagyon hosszú lista csak az első része látható. Szűkítsd az időablakot a többi megtekintéséhez."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "A helyettes javaslatát csak az azt javasoló önkéntes vonhatja vissza"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Nyiss meg egy szolgálati területet a Szolgálati területek menüből, hozz létre egy ütemezést, és generáld a dátumait, és itt megjelennek a beosztandó hetek."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Nyiss meg egy szolgálati területet, hogy valakit a koordinátorává vagy valamelyik csapatának vezetőjévé tegyél."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Megnyitás naptáralkalmazásban"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "A nyitott lehetőségeket nem sikerült betölteni."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Címzettek megnyitása a helyi e-mail-alkalmazásban"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Tagi portál megnyitása"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Szolgálati terület áttekintőjének megnyitása"
+
+#: 
+msgid "Open the ministry"
+msgstr "Szolgálati terület megnyitása"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Az alkalom megnyitása"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Nyisd meg az alkalmat, hogy beoszd a szükséges embereket."
+
+#: 
+msgid "Open this team"
+msgstr "A csapat megnyitása"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Naptár megnyitása szolgálati területek számára Események hozzáadása jogosultságot igényel"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Nem kötelező. A csapat egy pozíciójára képesített mindenki az osztály tanára lesz, és az osztály oldala többé nem változtatja a tanárait."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Nem kötelező. Az osztály lesz a Kapcsolt csoport: a névsora dönti el, ki jelentkezik be, és az osztály ütemezése megtalálja ezeket az eseményeket."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "A maximum felett: távolítsd el ezt, vagy emeld a maximumot."
+
+#: 
+msgid "Overridden templates"
+msgstr "Felülírt sablonok"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "%1$s. oldal, összesen %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "%d. oldal, összesen %d"
+
+#: 
+msgid "Password reset"
+msgstr "Jelszó visszaállítása"
+
+#: 
+msgid "Password reset link"
+msgstr "Jelszó-visszaállító link"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "A jelszónak legalább %s karakter hosszúnak kell lennie."
+msgstr[1] "A jelszónak legalább %s karakter hosszúnak kell lennie."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Válassz egy közelgő naptáreseményt, és mondd meg, kikre van szüksége. Az esemény megtartja saját dátumát és idejét; egy egész sorozat beosztásához adj hozzá inkább ütemezést."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Válassz valakit, aki már beleegyezett, hogy átvegye a helyedet. A koordinátorod megerősíti."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Kérjük, válassz naptárakat a listából."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Kérjük, válaszd ki, szükséges-e módosítani az adataidat."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Kérjük, vedd fel a kapcsolatot a gyülekezeti irodával, hogy javíthassuk a nyilvántartásunkat."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Kérjük, vedd fel a kapcsolatot a gyülekezeti irodával."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Kérjük, adj meg legalább két karaktert."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Kérjük, jelezd, tudsz-e jönni, az önkéntes ütemezésedben elfogadva vagy elutasítva."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Kérjük, írd meg, mit kell módosítani."
+
+#: 
+msgid "Portal settings"
+msgstr "Portálbeállítások"
+
+#: 
+msgid "Portal theme"
+msgstr "Portál téma"
+
+#: 
+msgid "Position"
+msgstr "Pozíció"
+
+#: 
+msgid "Position added"
+msgstr "Pozíció hozzáadva"
+
+#: 
+msgid "Position deleted"
+msgstr "Pozíció törölve"
+
+#: 
+msgid "Position name"
+msgstr "Pozíció neve"
+
+#: 
+msgid "Position not found"
+msgstr "A pozíció nem található"
+
+#: 
+msgid "Position saved"
+msgstr "Pozíció elmentve"
+
+#: 
+msgid "Positions"
+msgstr "Pozíciók"
+
+#: 
+msgid "Positions still short"
+msgstr "Még hiányos pozíciók"
+
+#: 
+msgid "Proposed"
+msgstr "Javasolt"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Javasolt helyettes"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Tedd ezt a szolgálati területet a Tagi portál Nyitott lehetőségek oldalára, ahol bármelyik önkéntes láthatja, és felajánlhatja a segítségét. Csatlakoznak az önkéntes-készlethez, és e-mailt kapsz."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "A(z) {{name}} kerüljön a helyére? Az eredeti önkéntes megtartja az előzményeit, és értesítést kap."
+
+#: 
+msgid "Qualification not found"
+msgstr "A képesítés nem található"
+
+#: 
+msgid "Qualified for"
+msgstr "Képesített erre:"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "A képesített önkéntesek maguk jelentkezhetnek a pozíció nyitott dátumaira. Kapcsold ki azoknál a pozícióknál, amelyeket csak csapatvezető vagy koordinátor oszthat be; a Tagi portál nem ajánlja fel őket."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "A jelenlegi tanárainak képesítése erre:"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Képesítsd őket egy pozícióra"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Képesítsd őket egy pozícióra."
+
+#: 
+msgid "Reactivate"
+msgstr "Újraaktiválás"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Olvasd el a témakészítési útmutatót"
+
+#: 
+msgid "Recent Emails"
+msgstr "Legutóbbi e-mailek"
+
+#: 
+msgid "Recent Sends"
+msgstr "Legutóbbi küldések"
+
+#: 
+msgid "Recipient"
+msgstr "Címzett"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "A címzettek száma (%d) meghaladja a küldésenként megengedett maximumot (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "A címzetteket personId és familyId értékként kell megadni, nem e-mail-címként"
+
+#: 
+msgid "Record a decline"
+msgstr "Elutasítás rögzítése"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Elfogadás rögzítése"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Rögzíted, hogy {{name}} nemet mondott? A válasz a te nevedben kerül mentésre, és a hely újra megnyílik."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Rögzíted, hogy {{name}} igent mondott? A válasz a te nevedben kerül mentésre, nem az övében."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Rögzítés: elfogadta"
+
+#: 
+msgid "Record: they declined"
+msgstr "Rögzítés: elutasította"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Önkéntesek toborzása"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Az Önkéntesek toborzása értéke igaz vagy hamis lehet"
+
+#: 
+msgid "Recruiting"
+msgstr "Toborzás"
+
+#: 
+msgid "Recurring"
+msgstr "Ismétlődő"
+
+#: 
+msgid "Reject"
+msgstr "Elutasítás"
+
+#: 
+msgid "Reject substitution"
+msgstr "Helyettesítés elutasítása"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Helyettes elutasítása"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Emlékeztető előnye (óra)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Emlékeztető: szolgálatra vagy beosztva"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Az emlékeztetők és értesítések csak akkor érkeznek meg, ha a háttérfeladatok futnak. A pontos kézbesítéshez futtasd az ütemezett feladatok futtatóját cronból 15 percenként"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Önkéntes eltávolítása"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Koordinátor eltávolítása"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Osztály eltávolítása náluk"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Csapatvezető eltávolítása"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Eltávolítod a(z) {{name}} nevű személyt a(z) {{ministry}} szolgálati területről? Ez eltávolítja minden itteni képesítését, leveszi minden jövőbeli alkalomról, törli alapértelmezett önkéntesként a terület ütemezéseiből, és eltávolítja az önkéntes-készletből."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Eltávolítva. {{qualifications}} képesítés, {{assignments}} közelgő beosztás, {{defaults}} ütemezési alapértelmezés."
+
+#: 
+msgid "Repeats"
+msgstr "Ismétlődik"
+
+#: 
+msgid "Requirement not found"
+msgstr "A követelmény nem található"
+
+#: 
+msgid "Reset link"
+msgstr "Visszaállító hivatkozás"
+
+#: 
+msgid "Response recorded"
+msgstr "Válasz rögzítve"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Tekintsd át a kérést az önkéntes áttekintőn, és hagyd jóvá vagy utasítsd el."
+
+#: 
+msgid "Review this request"
+msgstr "A kérés áttekintése"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Háttérfeladatok futtatása most"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTP-teszt"
+
+#: 
+msgid "Save calendars"
+msgstr "Naptárak mentése"
+
+#: 
+msgid "Save changes"
+msgstr "Változtatások mentése"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Elmentve – ez a szolgálati terület már nem kér segítséget"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Elmentve – ez a szolgálati terület most segítséget kér"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Elmentve. A tagok a fent bekapcsolt naptárakat látják."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "A(z) „{{name}}” ütemezés létrejött."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "A(z) „{{name}}” ütemezés létrejött. Inaktív, így nem hoz létre alkalmakat, amíg aktív nem lesz."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Ütemezés inaktiválva"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Ütemezés törölve"
+
+#: 
+msgid "Schedule name"
+msgstr "Ütemezés neve"
+
+#: 
+msgid "Schedule not found"
+msgstr "Az ütemezés nem található"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Ütemezés újraaktiválva"
+
+#: 
+msgid "Schedule saved"
+msgstr "Ütemezés elmentve"
+
+#: 
+msgid "Scheduled"
+msgstr "Ütemezett"
+
+#: 
+msgid "Schedules"
+msgstr "Ütemezések"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Az ütemezések utolsó kiegészítése"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Az ütemezések már nem határozzák meg saját ismétlődésüket vagy időpontjaikat; minden alkalom egy naptáreseményt követ. Távolítsd el: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Az ütemezések már nem határozzák meg, milyen messze előre generálódnak: az Adminisztráció → Szolgálati terület-beállítások ütemezési horizontja minden ütemezésre érvényes. Távolítsd el: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Ütemezési horizont (hét)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "A jogosultság-megadás nem található"
+
+#: 
+msgid "Search by name"
+msgstr "Keresés név szerint"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Teljes naptár megtekintése"
+
+#: 
+msgid "See what needs filling"
+msgstr "Nézd meg, mit kell betölteni"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Válassz ki egy naptárat az események elrejtéséhez vagy megjelenítéséhez."
+
+#: 
+msgid "Select ministries..."
+msgstr "Szolgálati területek kiválasztása..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Önjelentkezés"
+
+#: 
+msgid "Self-assignable"
+msgstr "Önállóan beosztható"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Az önállóan beosztható értéke igaz vagy hamis lehet"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Önkiszolgáló fiókok"
+
+#: 
+msgid "Send"
+msgstr "Küldés"
+
+#: 
+msgid "Send Email"
+msgstr "E-mail küldése"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "E-mail küldése a ChurchCRM-ből"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "A beosztási üzenet újraküldése"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "A megjelenítendő naptárakat listaként küldd el."
+
+#: 
+msgid "Send to the church office"
+msgstr "Küldés a gyülekezeti irodának"
+
+#: 
+msgid "Send your answer"
+msgstr "Válaszod elküldése"
+
+#: 
+msgid "Sent"
+msgstr "Elküldve"
+
+#: 
+msgid "Sent by"
+msgstr "Küldő"
+
+#: 
+msgid "Serving next"
+msgstr "Következő szolgálatod"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Beállítás elfogadottként"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Létszámigények beállítása"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "„%s” megjelenítése a Tagi portálon"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Megjelenítés a Tagi portálon"
+
+#: 
+msgid "Show past events"
+msgstr "Múltbeli események megjelenítése"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Gyülekezeti naptár megjelenítése"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "A gyülekezeti naptár megjelenítése a Tagi portálon."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "A gyülekezeti naptár szakasz megjelenítése a Tagi portálon."
+
+#: 
+msgid "Show the next"
+msgstr "A következők megjelenítése:"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Az önkéntes és csapat szakaszok megjelenítése a Tagi portálon."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Ennek a szolgálati területnek a megjelenítése a Nyitott lehetőségek oldalon"
+
+#: 
+msgid "Show volunteering"
+msgstr "Önkéntes szolgálat megjelenítése"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Az önkéntes és csapat oldalak megjelenítése a Tagi portálon."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Mutasd, amit már megtettem"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Pontosan úgy jelenik meg, ahogy beírod. A sortörések megmaradnak."
+
+#: 
+msgid "Sign up"
+msgstr "Jelentkezés"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Bejelentkezés és biztonság"
+
+#: 
+msgid "Signed in"
+msgstr "Bejelentkezve"
+
+#: 
+msgid "Signed up"
+msgstr "Jelentkezett"
+
+#: 
+msgid "Sincerely"
+msgstr "Szeretettel"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Néhány adatodat nem sikerült elmenteni. Ellenőrizd a kiemelt mezőket."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "A családod néhány adatát nem sikerült elmenteni. Ellenőrizd a kiemelt mezőket."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Valaki más helyettesít"
+
+#: 
+msgid "Something needs changing"
+msgstr "Valamit módosítani kell"
+
+#: 
+msgid "Something went wrong"
+msgstr "Valami hiba történt"
+
+#: 
+msgid "Staff an event"
+msgstr "Esemény beosztása"
+
+#: 
+msgid "Staff them"
+msgstr "Önkéntesek beosztása rájuk"
+
+#: 
+msgid "Staff this event"
+msgstr "Az esemény beosztása"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Az alkalom beosztása"
+
+#: 
+msgid "Staffed"
+msgstr "Beosztva"
+
+#: 
+msgid "Staffing"
+msgstr "Beosztás"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "A beosztás az események létrehozása után állítható be"
+
+#: 
+msgid "Staffing needs"
+msgstr "Létszámigények"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Létszámigények elmentve"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Kezdd egy szolgálati terület létrehozásával, majd add hozzá a csapatokat és pozíciókat, amelyek benne szolgálnak."
+
+#: 
+msgid "Start time"
+msgstr "Kezdési idő"
+
+#: 
+msgid "Start typing a name"
+msgstr "Kezdj el beírni egy nevet"
+
+#: 
+msgid "Statistics"
+msgstr "Statisztika"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Leállítod, hogy {{name}} koordinálja a(z) {{ministry}} területet? A bejelentkezése és a saját beosztásai érintetlenek maradnak."
+
+#: 
+msgid "Subscribe"
+msgstr "Feliratkozás"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Feliratkozás a naptárra"
+
+#: 
+msgid "Substitute"
+msgstr "Helyettes"
+
+#: 
+msgid "Substitute approved"
+msgstr "Helyettes jóváhagyva"
+
+#: 
+msgid "Substitute asked"
+msgstr "Helyettes megkérdezve"
+
+#: 
+msgid "Substitute decision"
+msgstr "Helyettesítési döntés"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Helyettes javasolva"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Helyettes elutasítva"
+
+#: 
+msgid "Substituted"
+msgstr "Helyettesítve"
+
+#: 
+msgid "Substitution approved"
+msgstr "Helyettesítés jóváhagyva"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Helyettesítés elutasítva"
+
+#: 
+msgid "Substitution request not found"
+msgstr "A helyettesítési kérés nem található"
+
+#: 
+msgid "Substitution requests"
+msgstr "Helyettesítési kérések"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Vasárnapi iskolai osztály"
+
+#: 
+msgid "System calendar"
+msgstr "Rendszernaptár"
+
+#: 
+msgid "System default"
+msgstr "Rendszer-alapértelmezés"
+
+#: 
+msgid "Take that back"
+msgstr "Visszavonás"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Leveszed a(z) {{name}} nevű személyt erről a pozícióról? E-mail nem megy ki; az ütemezésében a dátum már nem szükségesként látszik, és a hely újra megnyílik."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Ennek az osztálynak a tanárait a Szolgálati területek → %1$s → %2$s alatt kezelik."
+
+#: 
+msgid "Team"
+msgstr "Csapat"
+
+#: 
+msgid "Team Leader"
+msgstr "Csapatvezető"
+
+#: 
+msgid "Team added"
+msgstr "Csapat hozzáadva"
+
+#: 
+msgid "Team deleted"
+msgstr "Csapat törölve"
+
+#: 
+msgid "Team leader"
+msgstr "Csapatvezető"
+
+#: 
+msgid "Team name"
+msgstr "Csapat neve"
+
+#: 
+msgid "Team not found"
+msgstr "A csapat nem található"
+
+#: 
+msgid "Team saved"
+msgstr "Csapat elmentve"
+
+#: 
+msgid "Teams"
+msgstr "Csapatok"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "A csapatok olyan emberek csoportjai, akik ebben a szolgálati területben szolgálnak."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Csapatok, pozíciók és az őket betöltő emberek"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "A tíz legutóbbi bejelentkezés"
+
+#: 
+msgid "Thank you"
+msgstr "Köszönjük!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Köszönjük, hogy jelentkeztél szolgálatra"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Köszönjük, hogy jelentkeztél szolgálatra. Rajta vagy az ütemezésen."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Köszönjük. A gyülekezeti iroda megkapta a válaszodat."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Köszönjük. A gyülekezeti iroda áttekinti ezt, mielőtt hozzáadják."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Köszönjük, hogy szóltál."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Köszönjük – a koordinátor értesült, hogy szívesen újra segítenél."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Köszönjük – a koordinátor értesült, hogy szívesen segítenél."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Köszönjük – rajta vagy a listán."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Az a Tagi portál témamappa nem létezik."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Ez a beosztás valaki máshoz tartozik"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Ezt a beosztást nem sikerült elmenteni"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Ez a születésnap nem érvényes dátum."
+
+#: 
+msgid "That could not be saved."
+msgstr "Ezt nem sikerült elmenteni."
+
+#: 
+msgid "That could not be sent."
+msgstr "Ezt nem sikerült elküldeni."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Ezt a családtagot nem sikerült hozzáadni. Ellenőrizd a kiemelt mezőket."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Ez nem érvényes dátum."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Ezt a listát nem sikerült betölteni."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Ez a személy már betölti ezt a pozíciót ezen az alkalmon"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Ez a személy már be van osztva erre a pozícióra ezen az alkalmon"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Ez a személy nincs a szolgálati terület önkéntes-készletében. Küldd újra a készleten kívüli felülbírálással, hogy mégis beoszd."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Ez a személy nincs ebben az önkéntes-készletben"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Ez a személy nem képesített erre a pozícióra"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Ezt a fotót nem sikerült elmenteni."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Ez a fotó túl nagy. Kérjük, válassz kisebbet."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Ez a pozíció egy másik szolgálati területhez tartozik"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Ez a pozíció egy másik csapathoz tartozik"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Ez a pozíció már teljesen be van osztva"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Ezt a pozíciót nem osztják be ezen az alkalmon"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Ezt a választ nem sikerült rögzíteni"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Ez az állapot nem állítható be közvetlenül"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Ezt a helyettesítési kérést nem sikerült eldönteni"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Ez a csapat egy másik szolgálati területhez tartozik"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Ezt a témát nem sikerült aktiválni."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Ezt a témát nem sikerült ellenőrizni."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Ez a téma hibákat tartalmaz, ezért nem lett aktiválva."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Ezt az önkéntest nem sikerült beosztani"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Ez az esküvői dátum nem érvényes dátum."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "A(z) %s mezőnek ÉÉÉÉ-HH-NN formátumú dátumnak kell lennie"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "A(z) %s mezőnek egész számú percnek kell lennie"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "A(z) %s mezőnek az esemény időpontjától számított %d percen belül kell lennie"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "A Tagi portál naptárai el lettek mentve."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "A Tagi portál nem tudta befejezni a kért műveletet. Kérjük, néhány perc múlva próbáld újra."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "A Tagi portál csak bejelentkezett személy számára érhető el, API-kliensek számára nem."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "A Tagi portál témája „%s”, amely már nincs a szerveren. A tagok hibaoldalt látnak, amíg nem választasz egy létező témát."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "A Tagi portál átmenetileg nem érhető el"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "A(z) „%s” Tagi portál témát nem sikerült aktiválni, mert hibákat tartalmaz."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "A Tagi portál témáját nem sikerült megjeleníteni"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "A(z) „%s” Tagi portál témamappa nem található."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "A Tagi portál témája megváltozott."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "A(z) %1$s Tanár szerepe nem nevezhető át és nem törölhető, amíg a tanárait a Szolgálati területek → %2$s → %3$s alatt kezelik."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Az aktív témamappa hiányzik"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "A cím ki van jelölve – másold ki a billentyűzettel."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "A(z) „%s” erőforrás-útvonal nem engedélyezett."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "A beosztást nem sikerült visszavonni"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "A beosztási üzenet újra el lesz küldve"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "A naptár címe kimásolva."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "A naptárakat nem sikerült betölteni. Kérjük, próbáld újra."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "A naptárakat nem sikerült elmenteni."
+
+#: 
+msgid "The cart could not be added"
+msgstr "A kijelölést nem sikerült hozzáadni"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "A gyülekezet még nem küldött neked e-mailt."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "A gyülekezeti iroda értesítve lett. Kérjük, próbáld újra később."
+
+#: 
+msgid "The class does not exist"
+msgstr "Az osztály nem létezik"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Az osztály, amelyet ez az ütemezés követ, már nem létezik."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Ennek az e-mailnek a tartalma nincs eltárolva. A ChurchCRM csak az e-mail-szerkesztőben írt üzenetek és az önkéntes e-mailek szövegét őrzi meg."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Ennek az e-mailnek a tartalmát nem őrizték meg."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "A koordinátort nem sikerült hozzáadni"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "A koordinátorlistát nem sikerült betölteni"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Minden alkalom dátuma és időpontja a naptáreseményéből származik, így az esemény áthelyezése az ütemezést is áthelyezi."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "A days paraméternek 1 és 365 közötti egész számnak kell lennie"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Az alapértelmezett önkéntesnek személynek kell lennie"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Az alapértelmezett önkéntesek az ütemezésen mentődnek, és a mostantól létrejövő alkalmakra kerülnek."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Az alapértelmezett önkénteseknek listának kell lenniük"
+
+#: 
+msgid "The description is too long"
+msgstr "A leírás túl hosszú"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "A tartomány vége a kezdete előtt van."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "A tartomány vége nem dátum."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Az eseményt nem sikerült beosztani"
+
+#: 
+msgid "The event does not exist"
+msgstr "Az esemény nem létezik"
+
+#: 
+msgid "The event is inactive"
+msgstr "Az esemény inaktív"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Az eseménynek a kezdete után kell véget érnie"
+
+#: 
+msgid "The event title"
+msgstr "Az esemény címe"
+
+#: 
+msgid "The event title is too long"
+msgstr "Az esemény címe túl hosszú"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Az az eseménytípus, amellyel a szolgálati terület új eseményei kezdődnek. Ha üres, vagy a típust törölték, az „Egyéb” nevű típus lesz használva, ha van ilyen."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Az eseménytípus nem létezik"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Az eseménytípus, amelyet ez az ütemezés követ, már nem létezik."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Az eseményeket csak olyan osztályba lehet áthelyezni, amelyhez a csapat kapcsolódik"
+
+#: 
+msgid "The events could not be created"
+msgstr "Az eseményeket nem sikerült létrehozni"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Az eseményeket nem sikerült törölni"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Az eseményeket nem sikerült beosztani"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "A jogosultságot nem sikerült eltávolítani"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Az utolsó dátum az első dátum előtt van"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "A jogosult önkéntesek listáját nem sikerült betölteni"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "A maximális szám nem lehet kisebb a minimálisnál"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Az üzenetet nem sikerült sorba állítani"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "A minimális szám nem lehet negatív"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "A szolgálati területet nem sikerült létrehozni"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "A szolgálati területet nem sikerült inaktiválni"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "A szolgálati területet nem sikerült törölni"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "A szolgálati területet nem sikerült újraaktiválni"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "A szolgálati területet nem sikerült elmenteni"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Az alkalmat nem sikerült törölni"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Az alkalomhoz nincs ütemezés"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Az alkalmakat nem sikerült generálni"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Az eredeti önkéntes felszabadul, és a helyettes veszi át a pozíciót. Mindkettőjüket értesítjük."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Az eredeti önkéntes megtartja a pozíciót. Mindkettőjüket értesítjük."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "A kért oldal nem létezik. Lehet, hogy áthelyezték vagy eltávolították."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "A pozíció egy másik szolgálati területhez tartozik"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "A pozíciót nem sikerült törölni"
+
+#: 
+msgid "The position could not be saved"
+msgstr "A pozíciót nem sikerült elmenteni"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "A pozíció továbbra is le van fedve, így nincs teendő, hacsak nem szeretnéd módosítani a beosztást."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "A képesítést nem sikerült eltávolítani"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "A képesítést nem sikerült elmenteni"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "A képesített önkénteseket nem sikerült betölteni"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Az ismétlődésnek meg kell mondania, hogyan ismétlődnek az események"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "A(z) %1$s helyettesítési kérése a(z) %2$s helyett jóvá lett hagyva."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "A(z) %1$s helyettesítési kérése a(z) %2$s helyett nem lett jóváhagyva."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Ugyanaz a pozíció kétszer szerepel a létszámigényekben"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Az ütemezést nem sikerült inaktiválni"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Az ütemezést nem sikerült törölni"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Az ütemezést nem sikerült újraaktiválni"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Az ütemezést nem sikerült elmenteni"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Az ütemezés frissítve lett, így nincs további teendő."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Az ütemezés ablaka a kezdete előtt ér véget"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Az ütemezés létszámigényeit nem sikerült betölteni"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "A létszámigényeket nem sikerült betölteni"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "A létszámigényeket nem sikerült visszaállítani"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "A létszámigényeket nem sikerült elmenteni"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "A létszámigényeknek listának kell lenniük"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "A beosztási tervet nem sikerült betölteni"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "A tartomány kezdete nem dátum."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "A helyettesítést nem sikerült eldönteni"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "A helyettesítési kéréseket nem sikerült betölteni"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "A tanárok csak a csapat egy pozíciójába importálhatók"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "A(z) %1$s tanárait a Szolgálati területek → %2$s → %3$s alatt kezelik. A diákokat itt továbbra is módosíthatod."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "A csapatot nem sikerült törölni"
+
+#: 
+msgid "The team could not be saved"
+msgstr "A csapatot nem sikerült elmenteni"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "A csapat nem tartozik ehhez a szolgálati területhez"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "A témamappa nem található."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Az a típus, amellyel egy szolgálati terület Naptár lapján az új esemény kezdődik. Eseményenként még módosítható, például egy olyan osztálynál, amelynek létszámkategóriák kellenek."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Az önkéntes beosztását nem sikerült elmenteni"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "A(z) %s szolgálati terület önkéntes-készlete."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Az önkéntes beállítás módosítását nem sikerült elmenteni"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Az ablak a kezdete előtt ér véget"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Koordinátoraik az Események hozzáadása jogosultság nélkül is kitűzhetik a szolgálati terület eseményeit erre a naptárra."
+
+#: 
+msgid "Theme"
+msgstr "Téma"
+
+#: 
+msgid "Themes"
+msgstr "Témák"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "A témákat a gyülekezeted biztosítja, nem a ChurchCRM, és a ChurchCRM projekt nem ellenőrzi őket."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Nincs %d azonosítójú gyülekezeti naptár."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Nincs %d azonosítójú rendszernaptár."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Ezeket az adatokat tartja nyilván rólad a gyülekezet. A módosítások azonnal mentődnek."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Ezek azok az önkéntes csapatok, amelyekre te ügyelsz. Nyiss meg egyet a pozíciói beállításához, annak megadásához, ki hol szolgálhat, és a következő hetek betöltéséhez."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Ezek az események nem egy sorozat: címükben, típusukban vagy osztályukban különböznek"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Ezek a szolgálati területek szívesen fogadnának több embert. Jelezd az érdeklődésedet, és valaki felveszi veled a kapcsolatot."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Ezek az igények az ütemezésből származnak. Az itteni mentés csak ezt az alkalmat módosítja."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Ezek a számok csak az önkiszolgáló fiókokat számolják: azokat a személyeket, akiknek a bejelentkezésével csak a Tagi portál érhető el."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Ezek a személyek továbbra is be vannak osztva, de a betöltött pozíciójuk már nem része ennek a dátumnak a beosztási tervében."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Ezek a személyek továbbra is be vannak osztva, de a betöltött pozíciójuk már nem része ennek az alkalomnak a beosztási tervében."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Ezekhez az ütemezett pozíciókhoz még kell valaki."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "A(z) %1$s következő csapatai vasárnapi iskolai osztályhoz vannak kapcsolva: %2$s. Előbb válaszd le őket."
+
+#: 
+msgid "They could not be added"
+msgstr "Nem sikerült őket hozzáadni"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Nem sikerült őket eltávolítani ebből a szolgálati területből"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "%d perccel az esemény vége után fejezik be."
+msgstr[1] "%d perccel az esemény vége után fejezik be."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "%d perccel az esemény vége előtt fejezik be."
+msgstr[1] "%d perccel az esemény vége előtt fejezik be."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Már önkéntesek voltak itt"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Ez a beosztás %1$s, és nem módosítható erre: %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Ez a beosztás már nem aktív"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Ez az e-mail nincs az előzményeidben."
+
+#: 
+msgid "This event has already happened"
+msgstr "Ez az esemény már megtörtént"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Ez a gyülekezeti irodához kerül áttekintésre. Amíg egy munkatárs jóvá nem hagyja, az új családtag itt áttekintésre várónak látszik."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Ez a csoport egy önkéntes szolgálati terület készlete, és a területtel együtt törlődik"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Ez a csoport a(z) %s önkéntes-készlete, és arról a szolgálati területről kezelik."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Ez a csoport a(z) %s önkéntes-készlete. Arról a szolgálati területről kezelik."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Ebben a telepítésben még nincsenek naptárak."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Ez emlékeztető arról, hogy hamarosan szolgálatra vagy beosztva."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Ez nem érvényes témamappa-név."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Ez nem a csapatod egyik dátuma."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Ez nem a csapataid egyike."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Ide küldi a gyülekezet a postát, és ezen a számon hívják a háztartásodat."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Ez a gyülekezeti fiókod. Minden, amit magadért és a családodért tehetsz, itt található."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Ennek a szolgálati területnek nincsenek közelgő eseményei a naptárban."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Ennek a szolgálati területnek nincsenek közelgő eseményei „%s” címmel. Az ütemezés már meglévő eseményeket követ: előbb add hozzá őket a terület Naptár lapján."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Ennek a szolgálati területnek nincs önkéntes-készlet csoportja"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Ez a szolgálati terület jelenleg nem kér segítséget"
+
+#: 
+msgid "This ministry's events"
+msgstr "A szolgálati terület eseményei"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "A szolgálati terület eseményei (még nincs esemény kiválasztva)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Ez az alkalom újra az ütemezését követi"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Ez az alkalom már megtörtént"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Ez az alkalom már megtörtént, és a beosztásai többé nem módosíthatók"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Ez az alkalom törölve lett"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Ennek az alkalomnak saját, az ütemezéstől külön álló létszámigényei vannak."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Ez az oldal nem része a fiókodnak. Ha úgy gondolod, annak kellene lennie, kérdezd a gyülekezeti irodát."
+
+#: 
+msgid "This page was not found"
+msgstr "Ez az oldal nem található"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "A Tagi portálnak ez a része az önkéntes csapatvezetőknek szól."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Ezt a pozíciót a csapatvezető vagy a koordinátor osztja be, nem jelentkezéssel"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Ez az ütemezés nem törölhető: %d önkéntes beosztás még hivatkozik az alkalmaira."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Ennek az ütemezésnek még nincsenek létszámigényei"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Ez az ütemezés inaktív. Aktiváld újra az alkalmai generálásához."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "Ezt a helyettesítési kérést már eldöntötték"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Ennek a csapatnak még nincsenek pozíciói"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Ez a csapat már beosztja erre az eseményre az önkénteseit"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Ez a sablon a(z) „%s” fájlt kéri, amelyet a téma nem tartalmaz."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Ez a téma nem aktiválható"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Ennek a témának nincsenek problémái."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "A ChurchCRM ezen verziója nem használ sablont ezen az útvonalon, így a felülírás soha nem jelenik meg."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Jelöld be őket a csapat Önkéntesek lapján, majd oszd be őket itt."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "A jelölések mentődnek, ahogy megteszed őket."
+
+#: 
+msgid "Times come from this event"
+msgstr "Az időpontok ebből az eseményből származnak"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Kiegészíti az összes ütemezést, elküldi a sorban lévőket, és lezárja a befejezett alkalmakat, megvárva a következő ütemezett futást."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Elutasítod: {{name}}? Az eredeti önkéntes marad, és értesítést kap."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Kapcsold ki a Tagi portál sablon-gyorsítótárát, és írd ki minden sablon nevét HTML-megjegyzésben. Tématervezőknek; normál használatban hagyd kikapcsolva."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Kapcsold be olyan szolgálati területnél, amelynek csapatai vasárnapi iskolai osztályokat tanítanak. Csapatai ezután osztályhoz köthetők, ütemezései és eseményei pedig használhatnak osztályt."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Kikapcsolja a portál sablon-gyorsítótárát, és kiírja minden sablon nevét HTML-megjegyzésben. Tématervezőknek; normál használatban hagyd kikapcsolva."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Kétlépcsős azonosítás"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Betöltetlen pozíciók"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Ismeretlen kézbesítési hiba"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Ismeretlen alkalomállapot"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Ismeretlen ütemezés-kapcsolási mód"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Ismeretlen önkéntes szolgálati terület"
+
+#: 
+msgid "Until"
+msgstr "Eddig"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Közelgő elérhetőség"
+
+#: 
+msgid "Update your details"
+msgstr "Adataid frissítése"
+
+#: 
+msgid "Update your family details"
+msgstr "Családod adatainak frissítése"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Egyetlen esemény beosztásához használd az Esemény beosztása lehetőséget"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Az ütemezés igényeinek használata"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "A felhasználónak Esemény hozzáadása jogosultsággal kell rendelkeznie, vagy egy önkéntes szolgálati területet kell koordinálnia, és az Események modulnak engedélyezettnek kell lennie"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "A felhasználónak Esemény hozzáadása jogosultsággal kell rendelkeznie, vagy annak az önkéntes szolgálati területnek a koordinátorának kell lennie, amelyhez ez a naptár tartozik"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 – Önkéntes lehetőségek (régi)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 – régi Önkéntes lehetőségek"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 – Szolgálati területek"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 – Önkéntes-kezelés"
+
+#: 
+msgid "Valid"
+msgstr "Érvényes"
+
+#: 
+msgid "Validation"
+msgstr "Érvényesítés"
+
+#: 
+msgid "View event"
+msgstr "Esemény megtekintése"
+
+#: 
+msgid "View my schedule"
+msgstr "Ütemezésem megtekintése"
+
+#: 
+msgid "View only"
+msgstr "Csak megtekintés"
+
+#: 
+msgid "View person"
+msgstr "Személy megtekintése"
+
+#: 
+msgid "View the event"
+msgstr "Az esemény megtekintése"
+
+#: 
+msgid "View this email"
+msgstr "Az e-mail megtekintése"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Önkéntes (régi)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Az Önkéntes-kezelés V2 nincs engedélyezve"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Önkéntes szolgálati terület"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Önkéntes beosztás"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Az önkéntes elutasította"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Önkéntes-élmény"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Önkéntes pozíciókat még be kell tölteni"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Önkéntes emlékeztető"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Önkéntes jelentkezés"
+
+#: 
+msgid "Volunteer times"
+msgstr "Önkéntes időpontok"
+
+#: 
+msgid "Volunteering"
+msgstr "Önkéntes szolgálat"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Az önkéntes szolgálat úgy szervezve, ahogyan egy gyülekezet működteti. Minden szolgálati területnek vannak csapatai és pozíciói; az emberek pozíciókra kapnak képesítést, és a terület készletcsoportjához tartoznak; az ütemezések a naptár eseményeit követik, és dátumozott alkalmakat hoznak létre létszámkövetelményekkel; a koordinátorok embereket osztanak be, akik elfogadnak, elutasítanak vagy helyettest javasolnak; az emlékeztetők és értesítések e-mailben mennek ki. A rendszergazdák és a Szolgálati területek kezelése jogosultsággal rendelkező felhasználók minden területet látnak, és létrehozhatják, inaktiválhatják és törölhetik őket. A szolgálati terület koordinátora ehelyett a Saját szolgálati területeim kezelése jogosultságot kapja: az oldalsáv Szolgálati területek címe alatt ekkor csak az általa koordinált területek látszanak. A csapatvezető a Tagi portálról vezeti a csapatát. A tagok a Tagi portálon látják az ütemezésüket, válaszolnak, jelentkeznek és ajánlanak fel segítséget."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Beosztott önkéntesek: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Az önkéntesek befejezik"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Szükséges önkéntesek"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "A(z) %s önkéntesei be vannak osztva ezekre az eseményekre, ezért itt nem törölhetők. Kérd meg azt a szolgálati területet, hogy távolítsa el a beosztásait, vagy kérd meg a naptár kezelőjét."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "A(z) {{names}} önkéntesei be vannak osztva néhányra közülük. Ha nem te kezeled a naptárat, a törlés elutasításra kerül, amíg ez a beosztás el nincs távolítva."
+
+#: 
+msgid "Volunteers start"
+msgstr "Az önkéntesek kezdenek"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Az önkéntesek %d perccel az esemény kezdete után kezdenek."
+msgstr[1] "Az önkéntesek %d perccel az esemény kezdete után kezdenek."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Az önkéntesek %d perccel az esemény kezdete előtt kezdenek."
+msgstr[1] "Az önkéntesek %d perccel az esemény kezdete előtt kezdenek."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Válaszra vár"
+
+#: 
+msgid "Waiting for review"
+msgstr "Áttekintésre vár"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "A koordinátorod megerősítésére vár."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "E-mailt küldünk, ha valamit be kell tölteni."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Szívesen látnánk több segítséget vasárnap reggelente – tapasztalat nem szükséges."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Üdvözlünk, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Mit kell módosítani?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Mi igényli a figyelmedet ezen a héten"
+
+#: 
+msgid "What the check found"
+msgstr "Mit talált az ellenőrzés"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Mik az önkéntes-élmények"
+
+#: 
+msgid "What you want to say"
+msgstr "Mit szeretnél mondani"
+
+#: 
+msgid "When"
+msgstr "Mikor"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Amikor egy önkéntes valakit javasol maga helyett, az itt jelenik meg, hogy jóváhagyd vagy elutasítsd."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Amikor egy önkéntes valakit javasol maga helyett, az itt jelenik meg, hogy jóváhagyd."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Amikor valaki csapatba oszt téged, vagy magad jelentkezel, az itt fog megjelenni."
+
+#: 
+msgid "Where"
+msgstr "Hol"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Honnan származnak a dátumok"
+
+#: 
+msgid "Where we reach you"
+msgstr "Hol érünk el"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Melyik Önkéntes-kezelési élmény aktív. A V1 a régi Önkéntes lehetőségek funkció; a V2 az új ütemezési és beosztási munkafolyamat. A „Mindkettő” az átállás alatt egymás mellett mutatja őket."
+
+#: 
+msgid "Which events"
+msgstr "Mely események"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Melyik önkéntes-élményt használja ez a gyülekezet. A jobb oldali kártya elmagyarázza az egyes lehetőségeket."
+
+#: 
+msgid "Who is covering"
+msgstr "Ki helyettesít"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Kire van szükség, ki szolgál, és mi hiányzik még"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Aki a legrégebben szolgált, az szerepel elöl."
+
+#: 
+msgid "Work Email"
+msgstr "Munkahelyi e-mail"
+
+#: 
+msgid "Yearly"
+msgstr "Évente"
+
+#: 
+msgid "You"
+msgstr "Te"
+
+#: 
+msgid "You are already helping that day"
+msgstr "Aznap már segítesz"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "Aznap már segítesz mint {{what}}. Erre is jelentkezel?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Ezt nem módosíthatod. Kérjük, vedd fel a kapcsolatot a gyülekezeti irodával."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Jelenleg nem tartozol családhoz"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Még nem vagy része családrekordnak."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Rajta vagy a listán – köszönjük."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Ezt áttekintheted vagy módosíthatod az önkéntes ütemezésedben."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Ezt az oldalt nem nyithatod meg"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Nem javasolhatod magadat a saját helyettesednek"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Nem sikerült jelentkeztetni erre."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Még nem vezetsz önkéntes csapatot."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Új naptárcímed van. A régi már nem működik."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Szolgálatra lettél beosztva"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Szolgálatra lettél beosztva."
+
+#: 
+msgid "You lead this"
+msgstr "Te vezeted ezt"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Ütemezést csak olyan csapathoz hozhatsz létre, amelyet te vezetsz"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Ennél újra rajta leszel a listán."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "A fiókod nincs személyrekordhoz kapcsolva. Kérjük, vedd fel a kapcsolatot a gyülekezeti irodával."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "A naptár-előfizetésed el lett mentve."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "A jelenlegi címed azonnal megszűnik működni. Mindenkinek, akinek megadtad, az újra lesz szüksége."
+
+#: 
+msgid "Your details"
+msgstr "Adataid"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Az adataid el lettek mentve."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "A családod adatai el lettek mentve."
+
+#: 
+msgid "Your photo"
+msgstr "Fotód"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "A fotód el lett mentve."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Az ütemezésedet nem sikerült betölteni."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "A munkameneted lejárt. Kérjük, jelentkezz be újra."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "A helyettesítési kérésedet jóváhagyták"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "A helyettesítési kérésedet nem hagyták jóvá"
+
+#: 
+msgid "already staffed by this team"
+msgstr "ezt a csapat már beosztotta"
+
+#: 
+msgid "body is required"
+msgstr "a törzs kötelező"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "a calendarIds-nak naptárazonosítók listájának kell lennie"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "a classEvents a következők egyike kell legyen: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "a classGroupId csoportazonosító vagy null kell legyen"
+
+#: 
+msgid "end offset"
+msgstr "befejezési eltolás"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "az eventIds-nak eseményazonosítók listájának kell lennie"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "minden üzenet kézbesítve lett, vagy még sorban áll"
+
+#: 
+msgid "has not served yet"
+msgstr "még nem szolgált"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "az importPositionId pozícióazonosító kell legyen"
+
+#: 
+msgid "inactive family"
+msgstr "inaktív család"
+
+#: 
+msgid "line %d"
+msgstr "%d. sor"
+
+#: 
+msgid "marked do not email"
+msgstr "nem kér e-mailt"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "az üzeneteket nem sikerült kézbesíteni"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "az üzeneteket öt kísérlet után sem sikerült kézbesíteni"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "küldésre váró üzenetek"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "a ministryIds-nak szolgálati terület-azonosítók listájának kell lennie"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "perccel az esemény vége után"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "perccel az esemény kezdete után"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "perccel az esemény vége előtt"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "perccel az esemény kezdete előtt"
+
+#: 
+msgid "never"
+msgstr "soha"
+
+#: 
+msgid "no email address"
+msgstr "nincs e-mail-cím"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "a personIds és a familyIds pozitív egész számok tömbjei kell legyenek"
+
+#: 
+msgid "record not found"
+msgstr "a rekord nem található"
+
+#: 
+msgid "same address as another recipient"
+msgstr "megegyezik egy másik címzett címével"
+
+#: 
+msgid "single event"
+msgstr "egyetlen esemény"
+
+#: 
+msgid "start offset"
+msgstr "kezdési eltolás"
+
+#: 
+msgid "subject and body are required"
+msgstr "a tárgy és a törzs kötelező"
+
+#: 
+msgid "subject is required"
+msgstr "a tárgy kötelező"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "a tárgy legfeljebb 255 karakter lehet"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "a sundaySchool értéke igaz vagy hamis lehet"
+
+#: 
+msgid "window end"
+msgstr "ablak vége"
+
+#: 
+msgid "window start"
+msgstr "ablak kezdete"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} hozzáadva, {{alreadyMembers}} már önkéntes volt itt"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} alkalom létrejött, {{existing}} már megvolt"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} {{total}} eseményt hozott létre a(z) {{className}} osztálynak ({{upcoming}} közelgő)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} is beoszt önkénteseket néhányra közülük."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} már koordinálja ezt a szolgálati területet"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} beosztva"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} már szolgál mint {{position}} ezen az alkalmon. Továbbra is beoszthatod."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} képesített, de nincs a szolgálati terület önkéntes-készletében. A beosztás csak erre az alkalomra veszi fel."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} mostantól koordinálja ezt a szolgálati területet"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: a számoknak 0 és {{max}} között kell lenniük."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: a maximum nem lehet kisebb a minimumnál."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} már nem képesített"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} képesített"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} azt kéri, hogy {{substitute}} vegye át a helyét"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} ekkor: {{date}} létrejött. Beosztod most az önkénteseket?"
+

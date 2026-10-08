@@ -44,6 +44,10 @@ class DropdownManager {
     }).done(function (data) {
       countrySelect.empty();
 
+      if (config.userSelected === "" && config.systemDefault === "") {
+        countrySelect.append(new Option("", "", true, true));
+      }
+
       $.each(data, function (idx, country) {
         let selected = false;
 
@@ -117,6 +121,17 @@ class DropdownManager {
     const el = stateSelect[0];
     if (el && el.tomselect) {
       el.tomselect.destroy();
+    }
+
+    if (!countryCode) {
+      stateSelect.empty();
+      if (config.stateOptionDivId) {
+        $(`#${config.stateOptionDivId}`).addClass("d-none");
+      }
+      if (config.stateInputDivId) {
+        $(`#${config.stateInputDivId}`).removeClass("d-none");
+      }
+      return;
     }
 
     // Fetch and populate states

@@ -18786,3 +18786,4539 @@ msgstr "Eş rolü"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Posta kodlarını büyük harf yap"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Dizine eklenecek en az bir sınıflandırma seçin."
+
+#: 
+msgid "Geocoding services"
+msgstr "Coğrafi kodlama hizmetleri"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Seçtiğiniz sırayla denenecek coğrafi kodlama hizmetleri. Nominatim (OpenStreetMap) dünya genelinde çalışır; US Census (US Census Bureau) yalnızca Amerika Birleşik Devletleri adreslerini kapsar. Kullanmak için US Census'ı da seçin. Hiçbiri seçilmezse Nominatim kullanılır."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Yeni Kayıt Varsayılanları"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Bu işlem, Harita Ayarları'nda seçilen coğrafi kodlama hizmetlerini kullanarak harita koordinatı eksik olan her aile için koordinat bulur. Aileleri 50'şerli gruplar halinde işler; bir grup, tek bir coğrafi kodlama hizmetiyle yaklaşık bir dakika, daha fazla hizmetle daha uzun sürer. İşlem sürerken bu sayfayı açık bırakabilirsiniz. Devam edilsin mi?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Yeni kayıtlar ve ülkesi olmayan kayıtların coğrafi kodlaması için kullanılır."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Kilise Bilgilerinden Kopyala"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Kilise adresi kopyalanamadı."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Kilise ülkesi eşleştirilemedi."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Sınıf listeleri, yoklama çizelgeleri ve fotoğraf albümleri"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Hizmet üyelik listeleri ve Pazar Okulu sınıf raporları"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Mali yılınız %s ayında başlıyor."
+
+#: 
+msgid "An error occurred"
+msgstr "Bir hata oluştu"
+
+#: 
+msgid "Approve"
+msgstr "Onayla"
+
+#: 
+msgid "Approve selected"
+msgstr "Seçilenleri onayla"
+
+#: 
+msgid "Approved"
+msgstr "Onaylandı"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Kişi Ayarları'nda değiştir"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Seçilen kayıtlar onaylanamadı"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Bu aile onaylanamadı"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Bekleyen Kayıtlar"
+
+#: 
+msgid "Pending review"
+msgstr "İnceleme bekliyor"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Herkese açık kayıt formunuzdan gelen, inceleme bekleyen kayıtlar. E-postası veya telefonu olmayan kayıtlar işaretlenir; iletişime geçmeden önce iletişim bilgilerini doğrulayın."
+
+#: 
+msgid "Review now"
+msgstr "Şimdi incele"
+
+#: 
+msgid "Review self registrations"
+msgstr "Kendi kendine kayıtları incele"
+
+#: 
+msgid "Select month"
+msgstr "Ay seçin"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Kendi kendine kayıt devre dışı"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Kendi kendine kayıt etkin"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Herkese açık kayıt formu kapalı. Mevcut kayıtlar aşağıda listelenmiştir."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Bu aile bekleyen bir kendi kendine kayıt değil"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Bu kişi bir aileye ait — bunun yerine aileyi onaylayın"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Bu kişi bekleyen bir kendi kendine kayıt değil"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Kendi kendine kayıt olan bu aile inceleme bekliyor"
+
+#: 
+msgid "Total registrations"
+msgstr "Toplam kayıt"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Ziyaretçiler herkese açık kayıt formunuzdan kaydolabilir."
+
+#: 
+msgid "Yesterday"
+msgstr "Dün"
+
+#: 
+msgid "days ago"
+msgstr "gün önce"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "kendi kendine kayıt inceleme bekliyor"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Doğum günleri kişiye, evlilik yıl dönümleri çifte hitap eder."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Bu rapordaki kişiler için posta etiketleri. Kendi adresi olmayan bir kişinin etiketi aile adresine yazılır."
+
+#: 
+msgid "One label for each couple."
+msgstr "Her çift için bir etiket."
+
+#: 
+msgid "Print Labels"
+msgstr "Etiketleri Yazdır"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Bu rol, bu grubun rollerinden biri değil."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "\"%s\" bu sayfanın tanıdığı bir takvim türü değil."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s hizmet edemiyor ve yerine %2$s kişisini önerdi."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s zaten %2$s gönüllü havuzunda ve yeniden yardım etmek istiyor."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s zaten %3$s içinde %2$s ile bağlantılı"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s, %2$s içinde %3$s olarak yer alıyor. Önce onu sınıftan çıkarın; burada yetkilendirmek onu sınıfın öğretmenlerinden biri yapar."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s, %2$s etkinliklerinden biri değil"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s bir Pazar Okulu sınıfı olarak kalır; öğretmenleri Hizmetler → %2$s → %3$s altında yönetilir. Önce ekiple bağlantısını kaldırın."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s, %2$s için yardım etmek istiyor"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s, %2$s için yardım etmek istiyor ve gönüllü havuzuna eklendi."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: En fazla %2$d, ancak %3$d varsayılan gönüllü seçildi. Birini kaldırın veya en fazla değerini artırın."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d gün"
+msgstr[1] "%d gün"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d varsayılan başka bir nedenle atlandı (oluşum bitti, iptal edildi veya doldu)"
+msgstr[1] "%d varsayılan başka bir nedenle atlandı (oluşum bitti, iptal edildi veya doldu)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d varsayılan atlandı: yetkilendirme iptal edildi"
+msgstr[1] "%d varsayılan atlandı: yetkilendirme iptal edildi"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d varsayılan gönüllü atandı"
+msgstr[1] "%d varsayılan gönüllü atandı"
+
+#: 
+msgid "%d failed"
+msgstr "%d başarısız oldu"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın."
+msgstr[1] "Bu pozisyon için hâlâ %d gönüllü daha gerekiyor. Boşluğu doldurmak için oluşumu açın."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d yeni oluşum"
+msgstr[1] "%d yeni oluşum"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Yaklaşan bir oluşum için hâlâ %d gönüllü gerekiyor."
+msgstr[1] "Yaklaşan bir oluşum için hâlâ %d gönüllü gerekiyor."
+
+#: 
+msgid "%s Calendar"
+msgstr "%s Takvimi"
+
+#: 
+msgid "%s Family"
+msgstr "%s Ailesi"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s, Pazar Okulu için öğretmen sağlamaz; bu nedenle ekipleri, programları ve etkinlikleri bir sınıf kullanamaz. Bir gönüllü yöneticisi bunu Hizmeti düzenle altından değiştirebilir."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "Kiliseden %s e-posta"
+msgstr[1] "Kiliseden %s e-posta"
+
+#: 
+msgid "%s family"
+msgstr "%s ailesi"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s bir gönüllü görevini reddetti."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s hizmetinde Öğretmen adlı bir rol yok; bu nedenle öğretmenleri bir ekipten yönetilemez"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s için takvimde yaklaşan toplantı yok. Bir program, mevcut etkinlikleri izler: önce sınıfın toplantılarını, hizmetin Takvim sekmesindeki Yeni yinelenen etkinlik ile ekleyin."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s hâlâ hizmet etmesi bekleniyor. Mümkün değilse lütfen koordinatörle iletişime geçin."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s gönderilmedi (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "Hanenizde %s kişi"
+msgstr[1] "Hanenizde %s kişi"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s pozisyon"
+msgstr[1] "%s pozisyon"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: aynı kişi iki kez varsayılan gönüllü olarak seçildi"
+
+#: 
+msgid "(no subject)"
+msgstr "(konu yok)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Doğum tarihi gelecekte olamaz."
+
+#: 
+msgid "A calendar event"
+msgstr "Bir takvim etkinliği"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "Takvim kimliği bir sayı olmalıdır."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Artık var olmayan bir sınıf"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Takvimde toplantısı olmayan bir sınıf henüz seçilemez."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Takvimde toplantısı olmayan bir sınıf henüz seçilemez. Hizmetin koordinatörü, toplantıları hizmetin Takvim sekmesine ekler."
+
+#: 
+msgid "A class's meetings"
+msgstr "Bir sınıfın toplantıları"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Bir koordinatör, normalde gönüllü yöneticisinin yapması gereken değişiklikler dahil bu hizmetteki her şeyi yönetebilir."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Hizmetin koordinatörü bunları hizmetin Takvim sekmesine ekleyebilir."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Hizmetin koordinatörü bunları hizmetin Takvim sekmesine ekleyebilir. Ardından yeniden oluşturun."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Bir koordinatör tüm hizmeti yönetir — ekiplerini, pozisyonlarını, programlarını ve içindeki her görevlendirmeyi."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Bir ayda olmayan bir gün, o ayın son gününe denk gelir."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Varsayılan gönüllü, tek bir oluşuma değil programın kadro ihtiyaçlarına aittir"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Varsayılan gönüllü yalnızca bu programın kadro ihtiyaçlarının istediği bir pozisyon için seçilebilir"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "YYYY-AA-GG biçiminde bir başlangıç ve bitiş tarihi gereklidir"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Bir asgari sayı gereklidir"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Bir hizmet kendi takvimi, gönüllü havuzu ve ilk ekibiyle oluşturulur; bu nedenle burada yalnızca adına ve ne yaptığına karar vermeniz yeterlidir."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Hizmet adı gereklidir"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Bir hizmetin en az bir ekibi olmalıdır. Bunun yerine yeniden adlandırın."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Bu adla bir hizmet zaten var"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Bir hizmetin kendi takvimi diğer hizmetlere açılamaz"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Bir pozisyon bir ekibe aittir; birini seçin"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Pozisyon, bu ekipte birinin yaptığı bir iştir; örneğin Espresso veya Ezgi Lideri."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Pozisyon, birinin hizmet ettiği bir roldür; örneğin Espresso veya Ezgi Lideri."
+
+#: 
+msgid "A position is required"
+msgstr "Pozisyon gereklidir"
+
+#: 
+msgid "A position name is required"
+msgstr "Pozisyon adı gereklidir"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Yetkili gönüllüleri olan bir pozisyon, bir Pazar Okulu sınıfına bağlı ekibe veya ekipten taşınamaz, çünkü bu sınıfı kimin öğrettiğini değiştirir. Bunun yerine pozisyonu diğer ekipte oluşturun."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Bu hizmette bu adla bir pozisyon zaten var"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Yanıt kabul veya ret olmalıdır"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Bir program bir ekibe aittir; birini seçin"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Program adı gereklidir"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Program, bir ekibin hangi takvim etkinliklerinde görev alacağını belirler: bir ayin türü, bir sınıfın toplantıları veya hizmetin kendi etkinlikleri. Bir tane ekleyin ve oluşumlarını üretin."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Program, bu ekibin hangi takvim etkinliklerine hizmet edeceğini belirler: bir ayin türü, bir sınıfın toplantıları veya hizmetinin kendi etkinlikleri. Bir tane ekleyin ve oluşumlarını üretin."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Bir sınıfı izleyen program, sınıfı belirtmelidir"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Bir etkinlik türünü izleyen program, etkinlik türünü belirtmelidir"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Tek bir etkinliğe görev veren program başka etkinlikleri izleyemez; silin ve bunun yerine bir program ekleyin"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "\"Kreş\" veya \"Karşılama\" gibi fırsatların tek bir listesi; Kişiler → Yönetim altında tutulur. Her kişi, kaydının Gönüllü sekmesinde yardım etmeye istekli olduğu fırsatlarla etiketlenir. Kaydedilen tek şey budur: ekip, program, tarihe görevlendirme veya hatırlatma e-postası yoktur. Etiketler raporlarda ve kişi kaydında kullanılır."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Yüzünüzün kare bir fotoğrafı en iyi sonucu verir."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Bir kadro ihtiyacı, varsayılan gönüllülerini \"defaults\": [{personId, accepted}] içinde listeler"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Bir kadro gereksinimi tam olarak bir programa veya bir oluşuma aittir"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Bu görevlendirme için zaten bir yedek önerildi"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Bir ekip lideri yalnızca kendi ekibini — pozisyonlarını, programlarını ve bunlarda kimin hizmet ettiğini — yönetebilir, hizmetteki başka hiçbir şeyi yönetemez."
+
+#: 
+msgid "A team name is required"
+msgstr "Ekip adı gereklidir"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Bu hizmette bu adla bir ekip zaten var"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Tema, kilisenizin sunucudaki Include/themes/ klasörüne yüklediği bir klasördür. Sistem varsayılanı ChurchCRM ile birlikte gelir."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Bir geçiş ayarı. Eski Gönüllü Fırsatları sayfaları ve yeni Hizmetler sayfaları birlikte kullanılabilir ve bir kişi kaydında her iki Gönüllü sekmesi de açıkça etiketlenmiş olarak görünür. Bir kiliseyi V1'den V2'ye taşırken kullanın, ardından yalnızca V2'ye geçin."
+
+#: 
+msgid "A volunteer"
+msgstr "Bir gönüllü"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Bir gönüllü bir görevlendirmeyi reddetti"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Bir gönüllü yedek önerdi"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Gönüllü yöneticisi, yetki verilmeden bu hizmeti yönetebilir. Başka birinin diğer tüm hizmetlere de erişmeden bunu yönetmesi için bir koordinatör ekleyin."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Evlilik tarihi gelecekte olamaz."
+
+#: 
+msgid "Accepted"
+msgstr "Kabul edildi"
+
+#: 
+msgid "Account deleted"
+msgstr "Hesap silindi"
+
+#: 
+msgid "Account unlocked"
+msgstr "Hesap Kilidi"
+
+#: 
+msgid "Accounts"
+msgstr "Hesaplar"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Etkin değeri doğru veya yanlış olmalıdır"
+
+#: 
+msgid "Active now"
+msgstr "Şu Anda Aktif"
+
+#: 
+msgid "Add All"
+msgstr "Tümünü Ekle"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Seçimdeki Herkesi Ekle"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Gönüllü Ekle"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Gönüllüleri Seçime Ekle"
+
+#: 
+msgid "Add a family member"
+msgstr "Aile üyesi ekle"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Önce bir pozisyon ekleyin, sonra geri gelip kaçına ihtiyaç olduğunu belirtin."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Girişinize ikinci bir adım ekleyin; böylece hesabınıza ulaşmak için yalnızca parolanız yeterli olmaz."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Bu ekibe en az bir pozisyon ekleyin, ardından kimin nerede hizmet edebileceğini işaretleyin."
+
+#: 
+msgid "Add coordinator"
+msgstr "Koordinatör ekle"
+
+#: 
+msgid "Add from Cart"
+msgstr "Seçimden ekle"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Önce Takvim sekmesindeki Yeni yinelenen etkinlik ile toplantılarını ekleyin"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Gönüllü olarak eklemeden önce kişileri seçime ekleyin"
+
+#: 
+msgid "Add position"
+msgstr "Pozisyon ekle"
+
+#: 
+msgid "Add schedule"
+msgstr "Program ekle"
+
+#: 
+msgid "Add team"
+msgstr "Ekip ekle"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Bunları Takvim sekmesinde ekleyin, sonra yeniden oluşturun."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Bunları Takvim sekmesinde ekleyin."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Bu adresi takvim uygulamanıza ekleyin. Kilise takvimi değiştiğinde kendiliğinden güncellenir."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Bu hizmetin etkinliklerini buraya ekleyin: bir çalışma günü, her Pazar toplanan bir sınıf. Kilise takvimine eklenir ve oluştururken kadrosunu belirleyebilirsiniz."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Üye Portalı üzerinden eklendi ve inceleme bekliyor: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Eklendi — şimdi hizmet edebileceği pozisyonları işaretleyin"
+
+#: 
+msgid "Address Line 2"
+msgstr "Adres Satırı 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Yönetici Konsolu"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Yönetici yetkisi gerekli"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Bu pozisyonu Üye Portalı Açık Fırsatlar sayfasında duyurun."
+
+#: 
+msgid "All Teams"
+msgstr "Tüm Ekipler"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Üyelerin kendi doğum günlerini ve aile üyelerinin doğum günlerini değiştirmesine izin verin."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Ayrıca {{calendars}} takvimine sabitlenmiştir; bunu yalnızca Etkinlik Ekleme yetkisi olan biri değiştirebilir."
+
+#: 
+msgid "An event title is required"
+msgstr "Etkinlik başlığı gereklidir"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Bir etkinlik türü veya bir hizmet gereklidir"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Artık var olmayan bir etkinlik türü"
+
+#: 
+msgid "Another ministry"
+msgstr "Başka bir hizmet"
+
+#: 
+msgid "Any event"
+msgstr "Herhangi bir etkinlik"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Koordinatörünüzün bilmesi gereken her şey"
+
+#: 
+msgid "Approve substitution"
+msgstr "Yedeklemeyi onayla"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Bu yedeği onayla"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Bir gönüllü yöneticisinden bir hizmet oluşturmasını ve sizi koordinatörü yapmasını isteyin."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Birinden yerinize bakmasını isteyin"
+
+#: 
+msgid "Ask them"
+msgstr "Onlara sor"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Soruldu — koordinatörünüz onaylayacak."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Gönüllü ata"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Mevcut planın dışında atandı"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Görevlendirme iptal edildi"
+
+#: 
+msgid "Assignment not found"
+msgstr "Görevlendirme bulunamadı"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "En az bir personId veya familyId gereklidir"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Bir pozisyon için en fazla %d varsayılan gönüllü seçilebilir"
+
+#: 
+msgid "Author"
+msgstr "Yazar"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Yetki, bir girişe değil kişiye verilir; bu nedenle kişinin girişi olmadan önce de verilebilir. Girişi yalnızca self-servis olan bir kişi, bir yönetici hesabını genişletene kadar yalnızca kendi programını görmeye devam eder."
+
+#: 
+msgid "Automatic"
+msgstr "Otomatik"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Yanıt bekleniyor"
+
+#: 
+msgid "Back to Email History"
+msgstr "E-posta Geçmişine Dön"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Hizmet Panosuna Dön"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Oluşumlara Dön"
+
+#: 
+msgid "Back to Person"
+msgstr "Kişiye Dön"
+
+#: 
+msgid "Back to editing"
+msgstr "Düzenlemeye dön"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Programıma dön"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Üye Portalına dön"
+
+#: 
+msgid "Back to your profile"
+msgstr "Profilinize dön"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Arka plan işleri ve teslimat"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Arka plan işlerinin son çalışması"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Arka plan işleri çalıştı"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Doğum günü tebriği"
+
+#: 
+msgid "Both"
+msgstr "Her ikisi"
+
+#: 
+msgid "Both (transition)"
+msgstr "Her ikisi (geçiş)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Her ikisi — V1 ve V2 yan yana (geçiş)"
+
+#: 
+msgid "Calendar address"
+msgstr "Takvim adresi"
+
+#: 
+msgid "Calendar saved"
+msgstr "Takvim kaydedildi"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Üye Portalı'nın üyelere gösterdiği takvimler; Yönetim -> Üye Portalı -> Takvimler bölümünden seçilir."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Bu hizmet Pazar Okulu için öğretmen sağlayabilir mi?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Görevlendirmeyi iptal et"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Bu görevlendirmeyi iptal et"
+
+#: 
+msgid "Cancelled"
+msgstr "İptal edildi"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Giriş yaptığınız parolayı değiştirin veya yalnızca parolanın yeterli olmaması için ikinci bir adım ekleyin."
+
+#: 
+msgid "Change your password"
+msgstr "Parolanızı değiştirin"
+
+#: 
+msgid "Checked in"
+msgstr "Giriş Yapıldı"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Giriş yapıldı: sınıf listesindeki %2$d kişiden %1$d"
+
+#: 
+msgid "Checked out"
+msgstr "Çıkış Yapıldı"
+
+#: 
+msgid "Choose a class"
+msgstr "Bir sınıf seçin"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Ayın 1 ile 31 arasında bir gününü seçin"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Yeni bir fotoğraf seçin"
+
+#: 
+msgid "Choose a person"
+msgstr "Bir kişi seçin"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Bir gönüllü seçin"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Önce bir gönüllü seçin"
+
+#: 
+msgid "Choose an event"
+msgstr "Bir etkinlik seçin..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Bir etkinlik türü seçin"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Mevcut bir etkinlik türü seçin"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Abone olmak için en az bir takvim seçin."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Kendi takvim uygulamanızda istediğiniz takvimleri seçin."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Her yıl için tarihi AA-GG olarak seçin"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Etkinliğin tarihini seçin"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Haftanın gününü seçin"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Bu programın izlediği etkinliği seçin"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Kadro verilecek etkinliği seçin"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Silinecek etkinlikleri seçin"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Kadro verilecek etkinlikleri seçin"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "İlk ve son tarihi seçin"
+
+#: 
+msgid "Choose the first date"
+msgstr "İlk tarihi seçin"
+
+#: 
+msgid "Choose the last date"
+msgstr "Son tarihi seçin"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "%2$s öğretmenlerinin yetkili olduğu %1$s pozisyonunu seçin. Öğretmenler: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Bu pozisyonun hizmet ettiği ekibi seçin"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Üyelerin gördüğü temayı seçin, portal bölümlerini açın veya kapatın ve portalı kimin kullandığını görün."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Haftalık, aylık veya yıllık seçin"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Programın tarihlerinin nereden geldiğini seçin"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Bu kilisenin hangi gönüllü deneyimini kullanacağını, programların ne kadar önceden doldurulacağını ve hatırlatmaların ne zaman gideceğini seçin; arka plan işlerinin çalıştığını kontrol edin."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Her pozisyonu varsayılan olarak kimin dolduracağını seçin. Seçim programa kaydedilir: şimdi oluşturulan her oluşuma ve günlük tamamlamanın sonradan oluşturduklarına, yetkili kaldıkları sürece atanırlar ve kabul edilmiş olarak ayarlamadığınız sürece yanıt vermeleri istenir. Bir pozisyonu hafta hafta atamak için açık bırakın."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Yerinize kimin bakacağını seçin."
+
+#: 
+msgid "Church Calendar"
+msgstr "Kilise Takvimi"
+
+#: 
+msgid "Church Calendars"
+msgstr "Kilise Takvimleri"
+
+#: 
+msgid "Church calendar"
+msgstr "Kilise takvimi"
+
+#: 
+msgid "Church events of a type"
+msgstr "Bir türdeki kilise etkinlikleri"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Bir türdeki kilise etkinlikleri kilise takvimine eklenir. Programın etkinlik türünü, başlığını ve tarihlerini kontrol edin."
+
+#: 
+msgid "Church website"
+msgstr "Kilise web sitesi"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM'in gönüllüleri yönetmek için iki yolu vardır. Aynı anda yalnızca birinin kullanılması amaçlanır; soldaki ayar bu kilisenin hangisini göreceğini belirler. Geçiş yapmak sayfaları ve menü girdilerini gizler veya gösterir — hiçbir zaman veri silmez, böylece geri dönebilirsiniz."
+
+#: 
+msgid "Close event details"
+msgstr "Etkinlik ayrıntılarını kapat"
+
+#: 
+msgid "Colour"
+msgstr "Renk"
+
+#: 
+msgid "Completed"
+msgstr "Tamamlandı"
+
+#: 
+msgid "Compose Message"
+msgstr "Mesaj Oluştur"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Aile bilgilerinizi onaylayın"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Koordinatör kaldırıldı"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Bu adresi kopyalayın ve takvim uygulamanıza yeni bir takvim aboneliği olarak ekleyin."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Önizleme oluşturulamadı."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Sınıfın etkinlikleri sayılamadı"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Kapsam verilemedi"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Pazar Okulu sınıfları yüklenemedi"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Pano yüklenemedi"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Etkinlik seçenekleri yüklenemedi"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Oluşumlar yüklenemedi"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Programlar yüklenemedi"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Yaklaşan etkinlikler yüklenemedi"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Gönüllüler yüklenemedi"
+
+#: 
+msgid "Could not load this email."
+msgstr "Bu e-posta yüklenemedi."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Bu hizmet yüklenemedi"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Bu hizmetin etkinlikleri yüklenemedi"
+
+#: 
+msgid "Could not load this team"
+msgstr "Bu ekip yüklenemedi"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Kapsam geri alınamadı"
+
+#: 
+msgid "Create"
+msgstr "Oluştur"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Bir program ve oluşumlarını oluşturun; doldurulacak haftalar burada görünür."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Bir program ve oluşumlarını oluşturun; kadro verilecek haftalar burada görünür."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Bu ekip için en az bir pozisyon oluşturun, ardından kimin nerede hizmet edebileceğini işaretleyin."
+
+#: 
+msgid "Create ministry"
+msgstr "Hizmet oluştur"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Hizmet oluşturmak için gönüllü yöneticisi erişimi gerekir"
+
+#: 
+msgid "Date and time"
+msgstr "Tarih ve saat"
+
+#: 
+msgid "Date each year"
+msgstr "Her yıl için tarih"
+
+#: 
+msgid "Dates"
+msgstr "Tarihler"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Tarihler YYYY-AA-GG biçiminde olmalıdır"
+
+#: 
+msgid "Day of the month"
+msgstr "Ayın günü"
+
+#: 
+msgid "Day of the week"
+msgstr "Haftanın günü"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Hizmeti devre dışı bırak"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Programı devre dışı bırak"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Silmeden önce bu hizmeti devre dışı bırakın."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "{{name}} devre dışı bırakılsın mı? Kenar çubuğundaki Devre Dışı Hizmetler'e taşınır; orada yeniden etkinleştirilebilir veya silinebilir. Hiçbir şey kaldırılmaz."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "{{name}} devre dışı bırakılsın mı? Oluştur ile veya günlük tamamlama ile bunun için yeni oluşum üretilmez. Mevcut oluşumlar ve görevlendirmeler kalır ve yeniden etkinleştirilebilir."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Devre Dışı Hizmetler"
+
+#: 
+msgid "Declined"
+msgstr "Reddedildi"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Hizmet etkinlikleri için varsayılan etkinlik türü"
+
+#: 
+msgid "Default volunteers"
+msgstr "Varsayılan gönüllüler"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Varsayılan gönüllüler requirements: [{positionId, defaults: [{personId, accepted}]}] olarak gönderilir"
+
+#: 
+msgid "Delete events"
+msgstr "Etkinlikleri sil"
+
+#: 
+msgid "Delete ministry"
+msgstr "Hizmeti sil"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Oluşumları sil"
+
+#: 
+msgid "Delete position"
+msgstr "Pozisyonu sil"
+
+#: 
+msgid "Delete schedule"
+msgstr "Programı sil"
+
+#: 
+msgid "Delete team"
+msgstr "Ekibi sil"
+
+#: 
+msgid "Delete those events"
+msgstr "Bu etkinlikleri sil"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "{{name}} ve içindeki her şey silinsin mi? Pozisyonları, yetkilendirmeleri, kadro ihtiyaçları, programları, oluşumları ve görevlendirmeleri — geçmiş hizmet kayıtları dahil — ile ekip lideri yetkileri kaldırılır. Geçmişi korumak için bunun yerine ekibi devre dışı bırakın. Bu işlem geri alınamaz."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "{{name}} ve içindeki her şey silinsin mi? Ekipleri, pozisyonları, programları, {{occurrences}} oluşumu ve {{assignments}} görevlendirmesi — geçmiş hizmet kayıtları dahil — ile koordinatör ve ekip lideri yetkileri, gönüllü havuzu grubu ve takvimi kaldırılır. Bu işlem geri alınamaz."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "{{name}} silinsin mi? Yetkilendirmeleri, kadro ihtiyaçları ve görevlendirmeleri — geçmiş hizmet kayıtları dahil — onunla birlikte kaldırılır. Geçmişi korumak için bunun yerine pozisyonu devre dışı bırakın. Bu işlem geri alınamaz."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "{{name}} silinsin mi? Bu işlem geri alınamaz."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Hizmet silmek için gönüllü yöneticisi erişimi gerekir"
+
+#: 
+msgid "Developer mode"
+msgstr "Geliştirici modu"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Tamam — listeye döndünüz."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Bu oluşumun kendi kadro ihtiyaçları bırakılıp programı yeniden izlensin mi?"
+
+#: 
+msgid "Due soon"
+msgstr "Yakında bitiyor"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Her takvim bir tür ve bir kimlik olarak verilmelidir."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Her varsayılan gönüllü bir kişiyi belirtmelidir"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Her kadro ihtiyacı bir pozisyonu belirtmelidir"
+
+#: 
+msgid "Edit event"
+msgstr "Etkinliği Düzenle"
+
+#: 
+msgid "Edit ministry"
+msgstr "Hizmeti düzenle"
+
+#: 
+msgid "Edit position"
+msgstr "Pozisyonu düzenle"
+
+#: 
+msgid "Edit schedule"
+msgstr "Programı düzenle"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Kadro ihtiyaçlarını düzenle"
+
+#: 
+msgid "Edit team"
+msgstr "Ekibi düzenle"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Programı düzenleyin ve başka bir sınıf seçin."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Programı düzenleyin ve başka bir etkinlik türü seçin."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Programı düzenleyin ve izlediği etkinliği seçin."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Programı düzenleyin ve daha fazla etkinliği izlemesi için son tarihini ileri alın."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Üye Portalı üzerinden düzenlendi: %s"
+
+#: 
+msgid "Email %s"
+msgstr "%s kişisine e-posta gönder"
+
+#: 
+msgid "Email %s Family"
+msgstr "%s Ailesine e-posta gönder"
+
+#: 
+msgid "Email History"
+msgstr "E-posta Geçmişi"
+
+#: 
+msgid "Email content"
+msgstr "E-posta içeriği"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Katılmayanlara e-posta gönder: %s"
+
+#: 
+msgid "Email not found"
+msgstr "E-posta bulunamadı"
+
+#: 
+msgid "Email preview"
+msgstr "E-posta önizlemesi"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "E-posta gönderimi devre dışı"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "E-posta gönderimi etkin değil. Göndermeden önce SMTP ayarlarını yapılandırın ve e-postayı etkinleştirin."
+
+#: 
+msgid "Emails"
+msgstr "E-postalar"
+
+#: 
+msgid "End time"
+msgstr "Bitiş Saati"
+
+#: 
+msgid "Enter counts"
+msgstr "Sayıları gir"
+
+#: 
+msgid "Enter email subject…"
+msgstr "E-posta konusunu girin…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Geçerli parolanızı, ardından yeni parolanızı iki kez girin."
+
+#: 
+msgid "Enter your message…"
+msgstr "Mesajınızı girin…"
+
+#: 
+msgid "Event staffed"
+msgstr "Etkinliğe kadro verildi"
+
+#: 
+msgid "Event title"
+msgstr "Olay başlığı"
+
+#: 
+msgid "Event type"
+msgstr "Etkinlik tipi"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "ChurchCRM'in gönderdiği her e-posta, en yeniler önce. Tam geçmişini görmek için bir kişiyi açın."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Bu aralıktaki her pozisyonda gereken kişiler var."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Herkes yanıt verdi"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Seçimdeki herkes bu hizmetin gönüllülerine katılır. Ardından pozisyonlarını işaretleyin."
+
+#: 
+msgid "Everything is correct"
+msgstr "Her şey doğru"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Önizleme oluşturulamadı"
+
+#: 
+msgid "Failed to load email"
+msgstr "E-posta yüklenemedi"
+
+#: 
+msgid "Failed to load email history"
+msgstr "E-posta geçmişi yüklenemedi"
+
+#: 
+msgid "Failed to send email"
+msgstr "E-posta gönderilemedi"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "E-posta gönderilemedi. Lütfen yeniden deneyin veya 'E-posta İstemcisinde Aç' seçeneğini kullanın."
+
+#: 
+msgid "Family Member"
+msgstr "Aile Üyesi"
+
+#: 
+msgid "Family verification"
+msgstr "Aile doğrulaması"
+
+#: 
+msgid "File"
+msgstr "Dosya"
+
+#: 
+msgid "Fill"
+msgstr "Doldur"
+
+#: 
+msgid "Fill by default with"
+msgstr "Varsayılan olarak şununla doldur"
+
+#: 
+msgid "Fill this gap"
+msgstr "Bu boşluğu doldur"
+
+#: 
+msgid "Filled"
+msgstr "Dolduruldu"
+
+#: 
+msgid "Find a sub"
+msgstr "Yedek bul"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Gönüllü bul"
+
+#: 
+msgid "Find an event"
+msgstr "Etkinlik bul"
+
+#: 
+msgid "Find something to do"
+msgstr "Yapacak bir şey bul"
+
+#: 
+msgid "Find something to help with"
+msgstr "Yardım edebileceğin bir şey bul"
+
+#: 
+msgid "Findings"
+msgstr "Bulgular"
+
+#: 
+msgid "First date"
+msgstr "İlk tarih"
+
+#: 
+msgid "Folder"
+msgstr "Klasör"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Kullanılacak Üye Portalı temasının, Include/themes/ içindeki klasör adı. \"default\", ChurchCRM ile birlikte gelen sistem temasıdır."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "İlk tarihine daha yakın bir zamanda yeniden oluşturun."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Oluşumları üret"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Yeni bir takvim adresi alınsın mı?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Hizmete bir ad verin"
+
+#: 
+msgid "Give the position a name"
+msgstr "Pozisyona bir ad verin"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Başlangıç ve bitiş saatlerini SS:DD olarak girin"
+
+#: 
+msgid "Give the team a name"
+msgstr "Ekibe bir ad verin"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Gönüllülüğüme git"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Üye Portalı ayarlarına git"
+
+#: 
+msgid "Going"
+msgstr "Gidiyorum"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Yetkiyi hizmet sayfasında verin, ardından onları buradan atayın."
+
+#: 
+msgid "Granted"
+msgstr "Verildi"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Kilisenin hanenizle ilgili kayıtlarına bir göz atın ve hâlâ doğru olup olmadığını bize bildirin."
+
+#: 
+msgid "Headcount"
+msgstr "Katılımcı sayısı"
+
+#: 
+msgid "Hello %s"
+msgstr "Merhaba %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Yardım Aranıyor"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Yardım aranıyor kaydedilemedi"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Her program için izlenen etkinlikler adına oluşumların ne kadar önceden oluşturulacağı. Günlük bir arka plan işi her programı bu noktaya kadar dolu tutar."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Bir gönüllü oluşumundan kaç saat önce hatırlatma e-postası gönderileceği. Hiç hatırlatma göndermemek için 0 yapın. Gönderim, arka plan işlerinin çalışmasına bağlıdır; önerilen cron kurulumu için Gönüllü belgelerine bakın."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Bir oluşumdan kaç saat önce hatırlatma e-postası gönderileceği. Hiç hatırlatma göndermemek için 0 yapın."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Bu her çalıştığında her pozisyonun kaç kişiye ihtiyaç duyduğu. Bir tarih daha sonra tek başına değiştirilebilir. Varsayılan gönüllü, yetkili kaldığı sürece her yeni oluşuma atanır; birini değiştirmek mevcut oluşumları asla değiştirmez."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Bu programın her oluşumunun kaç gönüllüye ihtiyaç duyduğu. Bu programın hiç kullanmadığı bir pozisyonun işaretini kaldırın. Varsayılan gönüllü, yetkili kaldığı sürece her yeni oluşuma atanır; birini değiştirmek mevcut oluşumları asla değiştirmez."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Bu etkinliğin kaç gönüllüye ihtiyaç duyduğu. Kullanmadığı bir pozisyonun işaretini kaldırın."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Her programın izlediği etkinlikler için gönüllü oluşumlarının kaç hafta önceden oluşturulacağı, 1 ile 52 arası. Günlük bir arka plan işi her programı bu noktaya kadar dolu tutar."
+
+#: 
+msgid "How often"
+msgstr "Ne sıklıkla"
+
+#: 
+msgid "How to correct this"
+msgstr "Bunu nasıl düzeltirsiniz"
+
+#: 
+msgid "I can't"
+msgstr "Gelemem"
+
+#: 
+msgid "I'd like to help"
+msgstr "Yardım etmek isterim"
+
+#: 
+msgid "I'll be there"
+msgstr "Orada olacağım"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Mesajlar başarısız oluyorsa bir yöneticiden Hizmet Ayarları'nı kontrol etmesini isteyin."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Artık gelemeyecekseniz, pozisyonun doldurulabilmesi için lütfen gönüllü programınızda en kısa sürede reddedin."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Bu adresi yanlışlıkla paylaştıysanız yeni bir adres alın. Eski adres hemen çalışmaz hâle gelir."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "Son 15 dakikada"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "Gönüllü havuzunda"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Dahili: gönüllü programlarının planlama ufkuna kadar en son tamamlandığı tarih (YYYY-AA-GG). Elle düzenlemeyin."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Dahili: gönüllü programlarının en son ne zaman tamamlandığı ve bunun kaç oluşum yarattığı. Elle düzenlemeyin."
+
+#: 
+msgid "Is this still right?"
+msgstr "Bu hâlâ doğru mu?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Oluşumları doldurulacak pozisyonlar olmadan oluşturulacak. Kadro ihtiyaçlarını eklemek için programı düzenleyin."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Onları {{className}} içinde tut"
+
+#: 
+msgid "Kind"
+msgstr "Tür"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Son 24 saat"
+
+#: 
+msgid "Last 30 days"
+msgstr "Son 30 gün"
+
+#: 
+msgid "Last 7 days"
+msgstr "Son 7 gün"
+
+#: 
+msgid "Last attempt"
+msgstr "Son deneme"
+
+#: 
+msgid "Last check"
+msgstr "Son kontrol"
+
+#: 
+msgid "Last date"
+msgstr "Son tarih"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Portalda son görülme"
+
+#: 
+msgid "Last sign-in"
+msgstr "Son giriş"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Etkinlik tam olarak gerçekleştiği anda hizmet verilmesi için ikisini de 0 bırakın. Etkinliği taşımak gönüllüleri de taşır."
+
+#: 
+msgid "Leave open"
+msgstr "Açık bırak"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Üyelerin Üye Portalı'nda kendi doğum günlerini ve aile üyelerinin doğum günlerini değiştirmesine izin verin."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Üyelerin doğum günlerini düzenlemesine izin ver"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Yukarıdakilerin hâlâ doğru olup olmadığını kilise ofisine bildirin."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Nedenini bildirin (isteğe bağlı)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "O hizmetin koordinatörlerinin bu etkinlik için gönüllüleri planlamasına ve etkinliğin kendisini düzenlemesine izin verir."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Takvim yükleniyor…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Hizmetleri Yönet"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Hizmetlerimi Yönet"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Hizmetlerimi Yönet erişimi, yönetilecek bir hizmet veya ekiple birlikte"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Hizmetlerimi Yönet erişimi, yönetilecek bir hizmet veya ekiple birlikte, gereklidir"
+
+#: 
+msgid "Manage staffing"
+msgstr "Kadroyu yönet"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "%s hizmetinden yönetilir"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "{{ministry}} hizmetinden yönetilir"
+
+#: 
+msgid "Max"
+msgstr "En fazla"
+
+#: 
+msgid "Member Portal"
+msgstr "Üye Portalı"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Bu düzeltilene kadar üyeler \"geçici olarak kullanılamıyor\" sayfasını görür. Aynı ayrıntılar uygulama günlüğüne ve web sunucusu hata günlüğüne yazıldı."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Üyeler yalnızca burada açık olan takvimleri görür. Doğum günleri ve yıl dönümleri yalnızca ad ve soyadın baş harfini gösterir."
+
+#: 
+msgid "Message"
+msgstr "Mesaj"
+
+#: 
+msgid "Min"
+msgstr "En az"
+
+#: 
+msgid "Ministries"
+msgstr "Hizmetler"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Yardım arayan hizmetler"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Etkinlik ekleyebilen hizmetler"
+
+#: 
+msgid "Ministry"
+msgstr "Hizmet"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Hizmet Takvimleri"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Hizmet Koordinatörleri"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Hizmet Panosu"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Hizmet Ayarları"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Hizmet takvimi"
+
+#: 
+msgid "Ministry created"
+msgstr "Hizmet oluşturuldu"
+
+#: 
+msgid "Ministry management access"
+msgstr "Hizmet yönetimi erişimi"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Hizmet yönetimi erişimi gereklidir"
+
+#: 
+msgid "Ministry name"
+msgstr "Hizmet adı"
+
+#: 
+msgid "Ministry not found"
+msgstr "Hizmet bulunamadı"
+
+#: 
+msgid "My Family"
+msgstr "Ailem"
+
+#: 
+msgid "My Teams"
+msgstr "Ekiplerim"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Hizmetlerim ve ekiplerim"
+
+#: 
+msgid "My schedule"
+msgstr "Programım"
+
+#: 
+msgid "My volunteering"
+msgstr "Gönüllülüğüm"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Üyelerin yardım edecek bir şey aradığı sayfada bu pozisyona bir ad verin."
+
+#: 
+msgid "Needs an answer"
+msgstr "Yanıt gerekiyor"
+
+#: 
+msgid "Needs filling"
+msgstr "Doldurulması gerekiyor"
+
+#: 
+msgid "Never signed in"
+msgstr "Hiç giriş yapmadı"
+
+#: 
+msgid "New account"
+msgstr "Yeni hesap"
+
+#: 
+msgid "New event"
+msgstr "Yeni etkinlik"
+
+#: 
+msgid "New ministry"
+msgstr "Yeni hizmet"
+
+#: 
+msgid "New record notification"
+msgstr "Yeni kayıt bildirimi"
+
+#: 
+msgid "New recurring event"
+msgstr "Yeni yinelenen etkinlik"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Aşağıdaki pozisyonlar için yeni gönüllüler gerekiyor"
+
+#: 
+msgid "Newest first"
+msgstr "Önce en yeni"
+
+#: 
+msgid "Next on %s"
+msgstr "%s tarihinde sıradaki"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Henüz üyelerle hiçbir takvim paylaşılmadı."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Bu hizmete açık bir takvim yok; bu nedenle etkinlikler hiçbir takvimde görünmeyecek."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Üyelerle hiçbir takvim paylaşılmıyor."
+
+#: 
+msgid "No class"
+msgstr "Sınıf yok"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Henüz kayıtlı iletişim bilgisi yok."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Henüz koordinatör yok"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "İlk ve son tarih arasındaki hiçbir tarih yinelenmeyle eşleşmiyor"
+
+#: 
+msgid "No email was sent."
+msgstr "Hiç e-posta gönderilmedi."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Bu kayda henüz e-posta gönderilmedi."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Henüz katılımcı sayısı kaydedilmedi"
+
+#: 
+msgid "No longer needed"
+msgstr "Artık gerekli değil"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Henüz hiçbir üye Üye Portalı'na giriş yapmadı."
+
+#: 
+msgid "No ministry"
+msgstr "Hizmet yok"
+
+#: 
+msgid "No past events"
+msgstr "Geçmiş etkinlik yok"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Bu kişi için fotoğraf yüklenmedi."
+
+#: 
+msgid "No photo was sent."
+msgstr "Fotoğraf gönderilmedi."
+
+#: 
+msgid "No positions yet"
+msgstr "Henüz pozisyon yok"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Henüz yetkilendirme yok."
+
+#: 
+msgid "No schedules yet"
+msgstr "Henüz program yok"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Kadro ihtiyacı belirlenmedi"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Kadro ihtiyacı yok: oluşturulan oluşumlar kimseye ihtiyaç duymayacak."
+
+#: 
+msgid "No substitution requests"
+msgstr "Yedekleme talebi yok"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Karara bağlanacak yedekleme yok"
+
+#: 
+msgid "No teams yet"
+msgstr "Henüz ekip yok"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "Takvimde \"%2$s\" başlıklı yaklaşan %1$s etkinliği yok. Program, mevcut etkinlikleri izler."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Eşleşen yaklaşan etkinlik yok"
+
+#: 
+msgid "No upcoming events"
+msgstr "Yaklaşan etkinlik yok"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "Takvimde bu türde yaklaşan etkinlik yok."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Seçilebilecek yaklaşan etkinlik yok"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Henüz kimse atanmadı"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Bunun için eğitilmiş başka kimse yok — bunun yerine koordinatörünüze bildirin."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Kimse her pozisyonun kaç gönüllüye ihtiyaç duyduğunu belirtmedi; bu nedenle doldurulacak bir şey yok."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Bu aralıkta kararsız kimse kalmadı."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Bu pozisyon için henüz yetkili kimse yok"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Bu pozisyon için henüz yetkili kimse yok; bu nedenle açık kalıyor."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Alıcıların hiçbirine e-posta gönderilemez"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Yok: etkinlik türü her etkinlik için seçilir"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Bu e-postayı görüntülemeye izniniz yok"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Bu aileyi görüntülemeye izniniz yok"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Bu kişiyi görüntülemeye izniniz yok"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Bu görevlendirme için yetkiniz yok"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Bu hizmet için yetkiniz yok"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Bu oluşum için yetkiniz yok"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Bu pozisyon için yetkiniz yok"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Bu yetkilendirme için yetkiniz yok"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Bu gereksinim için yetkiniz yok"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Bu program için yetkiniz yok"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Bu yedekleme talebi için yetkiniz yok"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Bu ekip için yetkiniz yok"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Etkinlikleri bu gönüllü hizmetine atama yetkiniz yok"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "%s etkinliğini değiştirme yetkiniz yok"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Bu etkinliğin gönüllü hizmetini değiştirme yetkiniz yok"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Yönettiğiniz bir gönüllü hizmeti olmadan etkinlik oluşturma yetkiniz yok"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Bu etkinliği değiştirme yetkiniz yok"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Etkinlikleri \"%s\" takvimine sabitleme yetkiniz yok"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Etkinlikleri \"%s\" takviminden kaldırma yetkiniz yok"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Bu etkinlikten gönüllü hizmetini kaldırma yetkiniz yok"
+
+#: 
+msgid "Not checked in"
+msgstr "Giriş yapmadı"
+
+#: 
+msgid "Not found"
+msgstr "Bulunamadı"
+
+#: 
+msgid "Not in the pool"
+msgstr "Havuzda değil"
+
+#: 
+msgid "Not now"
+msgstr "Şimdi değil"
+
+#: 
+msgid "Not sent"
+msgstr "Gönderilmedi"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Ayarlanmadı: \"%s\" kullanılır"
+
+#: 
+msgid "Not staffed"
+msgstr "Kadro verilmedi"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Henüz gönüllü değil"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Hiçbir şey değişmediği için hiçbir şey kaydedilmedi."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "Bu dönem için takvimde hiçbir şey yok."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "Şu anda takvimde hiçbir şey yok."
+
+#: 
+msgid "Nothing is short"
+msgstr "Eksik hiçbir şey yok"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Listenizde henüz hiçbir şey yok"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Listenizde henüz hiçbir şey yok. Nelerin doldurulması gerektiğine bir göz atın."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Şu anda açık hiçbir şey yok"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Henüz hiçbir şey planlanmadı"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Planlanmış hiçbir şey yok."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Henüz hiçbir şey kurulmadı"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "Bu hizmetin sahip olduğu hiçbir şey son bir yılda gerçekleşmedi."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Henüz yetkilendirilecek bir şey yok"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Hiçbir şey kaydedilmedi. Lütfen vurgulanan alanları kontrol edin."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Hiçbir şey kaydedilmedi. Lütfen yeniden deneyin."
+
+#: 
+msgid "Notification"
+msgstr "Bildirim"
+
+#: 
+msgid "Notifications"
+msgstr "Bildirimler"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Oluşum bulunamadı"
+
+#: 
+msgid "Occurrences"
+msgstr "Oluşumlar"
+
+#: 
+msgid "Offer to help"
+msgstr "Yardım teklif et"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Günde bir kez her etkin program, izlediği etkinlikler için %d hafta öncesine kadar oluşum alır ve her pozisyonun varsayılan gönüllüsü, yetkili kaldığı sürece yeni oluşumlara atanır."
+msgstr[1] "Günde bir kez her etkin program, izlediği etkinlikler için %d hafta öncesine kadar oluşum alır ve her pozisyonun varsayılan gönüllüsü, yetkili kaldığı sürece yeni oluşumlara atanır."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Bu kişi bir pozisyon için yetkilendirildiğinde, hizmet etmesi planlanan tarihlerle birlikte burada görünür."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Bağlı Grubu bu sınıf olan her takvim etkinliği için bir oluşum oluşturulur."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Bu etkinliğin her tarihi için bir oluşum oluşturulur. Yalnızca takvimde zaten bulunan etkinlikler seçilebilir."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Takvimlerden biri mevcut değil"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Etkinliklerden biri mevcut değil"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Bu takvimlerden biri üyelerle paylaşılmıyor."
+
+#: 
+msgid "One-time"
+msgstr "Tek seferlik"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Bir ekibe yalnızca bir Pazar Okulu sınıfı bağlanabilir"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Başkası adına yanıtı yalnızca bir koordinatör kaydedebilir"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Bu hizmetin etkinliklerini yalnızca bu hizmetin bir koordinatörü oluşturabilir"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Bu hizmetin etkinliklerine yalnızca bu hizmetin bir koordinatörü kadro verebilir"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "Ekip liderini yalnızca bir gönüllü yöneticisi değiştirebilir"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Bunu yalnızca bir gönüllü yöneticisi değiştirebilir."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Bir hizmetin Pazar Okulu için öğretmen sağlayıp sağlamadığını yalnızca bir gönüllü yöneticisi değiştirebilir"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Bu bilgileri yalnızca ailenizden bir yetişkin değiştirebilir. Lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Yalnızca bunun için eğitilmiş kişiler listelenir."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Yedek yalnızca atanan gönüllü tarafından önerilebilir"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Yalnızca bu hizmetin etkinlik ekleyebileceği takvimler listelenir. Kendi takvimi başlangıçta işaretlidir."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Çok uzun bir listenin yalnızca ilk kısmı gösterilir. Gerisini görmek için aralığı daraltın."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Yedeği yalnızca öneren gönüllü geri çekebilir"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Hizmetler menüsünden bir hizmet açın, bir program oluşturun ve tarihlerini üretin; kadro verilecek haftalar burada görünür."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Birini koordinatör veya ekiplerinden birinin lideri yapmak için bir hizmeti açın."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Takvim uygulamasında aç"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Açık fırsatlar yüklenemedi."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Alıcıları yerel e-posta uygulamanızda açın"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Üye Portalı'nı aç"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Hizmet Panosunu aç"
+
+#: 
+msgid "Open the ministry"
+msgstr "Hizmeti aç"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Oluşumu aç"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "İhtiyacınız olan kişileri atamak için oluşumu açın."
+
+#: 
+msgid "Open this team"
+msgstr "Bu ekibi aç"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Bir takvimi hizmetlere açmak için Etkinlik Ekleme yetkisi gerekir"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "İsteğe bağlı. Bu ekibin bir pozisyonu için yetkili herkes sınıfın öğretmeni olur ve sınıf sayfası artık öğretmenlerini değiştirmez."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "İsteğe bağlı. Sınıf Bağlı Grup olur: yoklamayı onun listesi belirler ve sınıf için bir program bu etkinlikleri bulur."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "En fazlanın üzerinde: bunu kaldırın veya en fazla değerini artırın."
+
+#: 
+msgid "Overridden templates"
+msgstr "Geçersiz kılınan şablonlar"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Sayfa %1$s / %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Sayfa %d / %d"
+
+#: 
+msgid "Password reset"
+msgstr "Parola sıfırlama"
+
+#: 
+msgid "Password reset link"
+msgstr "Parola Sıfırlama Bağlantısı"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Parolalar en az %s karakter uzunluğunda olmalıdır."
+msgstr[1] "Parolalar en az %s karakter uzunluğunda olmalıdır."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Yaklaşan bir takvim etkinliği seçin ve kime ihtiyaç duyduğunu belirtin. Etkinlik kendi tarih ve saatini korur; bir serinin tamamına kadro vermek için bunun yerine bir program ekleyin."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Yerinizi almayı zaten kabul etmiş birini seçin. Koordinatörünüz bunu onaylayacak."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Lütfen listeden takvimler seçin."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Lütfen bilgilerinizin değişmesi gerekip gerekmediğini seçin."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Kayıtlarımızı düzeltebilmemiz için lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Lütfen en az iki karakter girin."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Lütfen gönüllü programınızda kabul veya reddederek gelip gelemeyeceğinizi bize bildirin."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Lütfen neyin değişmesi gerektiğini bize bildirin."
+
+#: 
+msgid "Portal settings"
+msgstr "Portal ayarları"
+
+#: 
+msgid "Portal theme"
+msgstr "Portal teması"
+
+#: 
+msgid "Position"
+msgstr "Pozisyon"
+
+#: 
+msgid "Position added"
+msgstr "Pozisyon eklendi"
+
+#: 
+msgid "Position deleted"
+msgstr "Pozisyon silindi"
+
+#: 
+msgid "Position name"
+msgstr "Pozisyon adı"
+
+#: 
+msgid "Position not found"
+msgstr "Pozisyon bulunamadı"
+
+#: 
+msgid "Position saved"
+msgstr "Pozisyon kaydedildi"
+
+#: 
+msgid "Positions"
+msgstr "Pozisyonlar"
+
+#: 
+msgid "Positions still short"
+msgstr "Hâlâ eksik pozisyonlar"
+
+#: 
+msgid "Proposed"
+msgstr "Önerildi"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Önerilen yedek"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Bu hizmeti, herhangi bir gönüllünün görüp yardım teklif edebileceği Üye Portalı Açık Fırsatlar sayfasına koyun. Gönüllü havuzuna katılırlar ve size e-posta gelir."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Bunun yerine {{name}} atansın mı? Asıl gönüllü geçmişini korur ve bilgilendirilir."
+
+#: 
+msgid "Qualification not found"
+msgstr "Yetkilendirme bulunamadı"
+
+#: 
+msgid "Qualified for"
+msgstr "Yetkili olduğu"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Yetkili gönüllüler bu pozisyonun açık tarihlerine kendilerini yazdırabilir. Yalnızca bir ekip liderinin veya koordinatörün atayacağı pozisyonlar için kapatın; Üye Portalı bunları sunmaz."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Mevcut öğretmenlerini şunun için yetkilendir:"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Onları bir pozisyon için yetkilendirin"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Onları bir pozisyon için yetkilendirin."
+
+#: 
+msgid "Reactivate"
+msgstr "Yeniden etkinleştir"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Tema yazım kılavuzunu okuyun"
+
+#: 
+msgid "Recent Emails"
+msgstr "Son E-postalar"
+
+#: 
+msgid "Recent Sends"
+msgstr "Son Gönderimler"
+
+#: 
+msgid "Recipient"
+msgstr "Alıcı"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Alıcı sayısı (%d), gönderim başına izin verilen en yüksek sayıyı (%d) aşıyor"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Alıcılar e-posta adresi olarak değil, personId ve familyId olarak verilmelidir"
+
+#: 
+msgid "Record a decline"
+msgstr "Ret kaydet"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Kabul kaydet"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "{{name}} kişisinin hayır dediği kaydedilsin mi? Yanıt sizden geliyormuş gibi kaydedilir ve yer yeniden açılır."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "{{name}} kişisinin evet dediği kaydedilsin mi? Yanıt onlardan değil, sizden geliyormuş gibi kaydedilir."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Kayıt: kabul ettiler"
+
+#: 
+msgid "Record: they declined"
+msgstr "Kayıt: reddettiler"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Gönüllü Topla"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Gönüllü Topla doğru veya yanlış olmalıdır"
+
+#: 
+msgid "Recruiting"
+msgstr "Gönüllü toplanıyor"
+
+#: 
+msgid "Recurring"
+msgstr "Yinelenen"
+
+#: 
+msgid "Reject"
+msgstr "Reddet"
+
+#: 
+msgid "Reject substitution"
+msgstr "Yedeklemeyi reddet"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Bu yedeği reddet"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Hatırlatma süresi (saat)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Hatırlatma: hizmet etmeniz planlandı"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Hatırlatmalar ve uyarılar yalnızca arka plan işleri çalıştığında iletilir. Zamanında iletim için zamanlanmış görev çalıştırıcısını cron'dan her 15 dakikada bir çalıştırın"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Gönüllüyü Kaldır"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Koordinatörü kaldır"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Sınıfı onlardan kaldır"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Ekip liderini kaldır"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "{{name}} kişisi {{ministry}} hizmetinden kaldırılsın mı? Bu işlem buradaki tüm yetkilendirmelerini kaldırır, onu gelecekteki her oluşumdan çıkarır, bu hizmetin programlarında varsayılan gönüllü olmaktan çıkarır ve gönüllü havuzundan kaldırır."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Kaldırıldı. {{qualifications}} yetkilendirme, {{assignments}} yaklaşan görevlendirme, {{defaults}} program varsayılanı."
+
+#: 
+msgid "Repeats"
+msgstr "Tekrarlar"
+
+#: 
+msgid "Requirement not found"
+msgstr "Gereksinim bulunamadı"
+
+#: 
+msgid "Reset link"
+msgstr "Sıfırlama bağlantısı"
+
+#: 
+msgid "Response recorded"
+msgstr "Yanıt kaydedildi"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Talebi gönüllü panosunda inceleyin ve onaylayın veya reddedin."
+
+#: 
+msgid "Review this request"
+msgstr "Bu talebi incele"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Arka plan işlerini şimdi çalıştır"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTP testi"
+
+#: 
+msgid "Save calendars"
+msgstr "Takvimleri kaydet"
+
+#: 
+msgid "Save changes"
+msgstr "Değişiklikleri Kaydet"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Kaydedildi — bu hizmet artık yardım istemiyor"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Kaydedildi — bu hizmet artık yardım istiyor"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Kaydedildi. Üyeler yukarıda açık olan takvimleri görür."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "\"{{name}}\" programı oluşturuldu."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "\"{{name}}\" programı oluşturuldu. Etkin olmadığı için etkinleştirilene kadar oluşum üretmez."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Program devre dışı bırakıldı"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Program silindi"
+
+#: 
+msgid "Schedule name"
+msgstr "Program adı"
+
+#: 
+msgid "Schedule not found"
+msgstr "Program bulunamadı"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Program yeniden etkinleştirildi"
+
+#: 
+msgid "Schedule saved"
+msgstr "Program kaydedildi"
+
+#: 
+msgid "Scheduled"
+msgstr "Planlandı"
+
+#: 
+msgid "Schedules"
+msgstr "Programlar"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Programlar en son şu zaman tamamlandı"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Programların artık kendi yinelenmesi veya saatleri yok; her oluşum bir takvim etkinliğini izler. Kaldırın: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Programlar artık ne kadar önceden oluşturulacağını belirlemez: Yönetim → Hizmet Ayarları'ndaki planlama ufku her programa uygulanır. Kaldırın: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Planlama ufku (hafta)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Kapsam yetkisi bulunamadı"
+
+#: 
+msgid "Search by name"
+msgstr "Ada göre ara"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Takvimin tamamını gör"
+
+#: 
+msgid "See what needs filling"
+msgstr "Nelerin doldurulması gerektiğini gör"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Etkinliklerini gizlemek veya göstermek için bir takvim seçin."
+
+#: 
+msgid "Select ministries..."
+msgstr "Hizmet seçin..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Kendi kendine kayıt"
+
+#: 
+msgid "Self-assignable"
+msgstr "Kendi kendine atanabilir"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Kendi kendine atanabilir doğru veya yanlış olmalıdır"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Self-servis hesapları"
+
+#: 
+msgid "Send"
+msgstr "Gönder"
+
+#: 
+msgid "Send Email"
+msgstr "E-posta Gönder"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "ChurchCRM'den e-posta gönder"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Görevlendirme mesajını yeniden gönder"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Gösterilecek takvimleri liste olarak gönderin."
+
+#: 
+msgid "Send to the church office"
+msgstr "Kilise ofisine gönder"
+
+#: 
+msgid "Send your answer"
+msgstr "Yanıtınızı gönderin"
+
+#: 
+msgid "Sent"
+msgstr "Gönderildi"
+
+#: 
+msgid "Sent by"
+msgstr "Gönderen"
+
+#: 
+msgid "Serving next"
+msgstr "Sıradaki hizmet"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Kabul Edildi olarak ayarla"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Kadro ihtiyaçlarını ayarla"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "\"%s\" Üye Portalı'nda gösterilsin"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Üye Portalı'nda göster"
+
+#: 
+msgid "Show past events"
+msgstr "Geçmiş etkinlikleri göster"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Kilise takvimini göster"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Kilise takvimini Üye Portalı'nda göster."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Kilise takvimi bölümünü Üye Portalı'nda göster."
+
+#: 
+msgid "Show the next"
+msgstr "Sonraki"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Gönüllülük ve ekip bölümlerini Üye Portalı'nda göster."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Bu hizmeti Açık Fırsatlar sayfasında göster"
+
+#: 
+msgid "Show volunteering"
+msgstr "Gönüllülüğü göster"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Gönüllülük ve ekip sayfalarını Üye Portalı'nda göster."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Daha önce yaptıklarımı göster"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Yazdığınız gibi gösterilir. Satır sonları korunur."
+
+#: 
+msgid "Sign up"
+msgstr "Kaydol"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Giriş ve güvenlik"
+
+#: 
+msgid "Signed in"
+msgstr "Giriş yaptı"
+
+#: 
+msgid "Signed up"
+msgstr "Kaydoldu"
+
+#: 
+msgid "Sincerely"
+msgstr "Saygılarımızla"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Bilgilerinizden bazıları kaydedilemedi. Lütfen vurgulanan alanları kontrol edin."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Aile bilgilerinizden bazıları kaydedilemedi. Lütfen vurgulanan alanları kontrol edin."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Başka biri yerine bakıyor"
+
+#: 
+msgid "Something needs changing"
+msgstr "Bir şeyin değişmesi gerekiyor"
+
+#: 
+msgid "Something went wrong"
+msgstr "Bir şeyler ters gitti"
+
+#: 
+msgid "Staff an event"
+msgstr "Bir etkinliğe kadro ver"
+
+#: 
+msgid "Staff them"
+msgstr "Onlara kadro ver"
+
+#: 
+msgid "Staff this event"
+msgstr "Bu etkinliğe kadro ver"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Bu oluşuma kadro ver"
+
+#: 
+msgid "Staffed"
+msgstr "Kadro verildi"
+
+#: 
+msgid "Staffing"
+msgstr "Kadro"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Kadro, etkinlikler oluşturulduktan sonra ayarlanır"
+
+#: 
+msgid "Staffing needs"
+msgstr "Kadro ihtiyaçları"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Kadro ihtiyaçları kaydedildi"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Önce bir hizmet oluşturarak başlayın, ardından o hizmette görev yapan ekipleri ve pozisyonları ekleyin."
+
+#: 
+msgid "Start time"
+msgstr "Başlangıç ​​saati"
+
+#: 
+msgid "Start typing a name"
+msgstr "Bir ad yazmaya başlayın"
+
+#: 
+msgid "Statistics"
+msgstr "İstatistikler"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "{{name}} kişisinin {{ministry}} hizmetini koordine etmesi durdurulsun mu? Girişi ve kendi görevlendirmeleri etkilenmez."
+
+#: 
+msgid "Subscribe"
+msgstr "Abone ol"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Takvime abone ol"
+
+#: 
+msgid "Substitute"
+msgstr "Yedek"
+
+#: 
+msgid "Substitute approved"
+msgstr "Yedek onaylandı"
+
+#: 
+msgid "Substitute asked"
+msgstr "Yedek istendi"
+
+#: 
+msgid "Substitute decision"
+msgstr "Yedek kararı"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Yedek önerildi"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Yedek reddedildi"
+
+#: 
+msgid "Substituted"
+msgstr "Yerine bakıldı"
+
+#: 
+msgid "Substitution approved"
+msgstr "Yedekleme onaylandı"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Yedekleme reddedildi"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Yedekleme talebi bulunamadı"
+
+#: 
+msgid "Substitution requests"
+msgstr "Yedekleme talepleri"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Pazar Okulu Sınıfı"
+
+#: 
+msgid "System calendar"
+msgstr "Sistem takvimi"
+
+#: 
+msgid "System default"
+msgstr "Sistem varsayılanı"
+
+#: 
+msgid "Take that back"
+msgstr "Geri al"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "{{name}} bu pozisyondan çıkarılsın mı? E-posta gönderilmez; programında tarih artık gerekli değil olarak görünür ve yer yeniden açılır."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Bu sınıfın öğretmenleri Hizmetler → %1$s → %2$s altında yönetilir."
+
+#: 
+msgid "Team"
+msgstr "Ekip"
+
+#: 
+msgid "Team Leader"
+msgstr "Ekip Lideri"
+
+#: 
+msgid "Team added"
+msgstr "Ekip eklendi"
+
+#: 
+msgid "Team deleted"
+msgstr "Ekip silindi"
+
+#: 
+msgid "Team leader"
+msgstr "Ekip lideri"
+
+#: 
+msgid "Team name"
+msgstr "Ekip adı"
+
+#: 
+msgid "Team not found"
+msgstr "Ekip bulunamadı"
+
+#: 
+msgid "Team saved"
+msgstr "Ekip kaydedildi"
+
+#: 
+msgid "Teams"
+msgstr "Ekipler"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Ekipler, bu hizmette görev yapan kişi gruplarıdır."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Ekipler, pozisyonlar ve onları dolduran kişiler"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "En son on giriş"
+
+#: 
+msgid "Thank you"
+msgstr "Teşekkür Ederiz!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Hizmet için kaydolduğunuz için teşekkür ederiz"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Hizmet için kaydolduğunuz için teşekkür ederiz. Programdasınız."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Teşekkürler. Kilise ofisi yanıtınızı aldı."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Teşekkürler. Kilise ofisi bunu eklenmeden önce inceleyecek."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Bize bildirdiğiniz için teşekkürler."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Teşekkürler — koordinatöre yeniden yardım etmek istediğiniz bildirildi."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Teşekkürler — koordinatöre yardım etmek istediğiniz bildirildi."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Teşekkürler — listedesiniz."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Bu Üye Portalı tema klasörü mevcut değil."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Bu görevlendirme başkasına ait"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Bu görevlendirme kaydedilemedi"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Bu doğum günü geçerli bir tarih değil."
+
+#: 
+msgid "That could not be saved."
+msgstr "Bu kaydedilemedi."
+
+#: 
+msgid "That could not be sent."
+msgstr "Bu gönderilemedi."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Bu aile üyesi eklenemedi. Lütfen vurgulanan alanları kontrol edin."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Bu geçerli bir tarih değil."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Bu liste yüklenemedi."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Bu kişi bu oluşumda zaten bu pozisyonu üstleniyor"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Bu kişi bu oluşumda bu pozisyona zaten atanmış"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Bu kişi bu hizmetin bir gönüllü havuzunda değil. Yine de atamak için havuz dışı geçersiz kılma ile yeniden gönderin."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Bu kişi bu gönüllü havuzunda değil"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Bu kişi bu pozisyon için yetkili değil"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Bu fotoğraf kaydedilemedi."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Bu fotoğraf çok büyük. Lütfen daha küçük bir tane seçin."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Bu pozisyon farklı bir hizmete ait"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Bu pozisyon farklı bir ekibe ait"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Bu pozisyonun kadrosu zaten tamamen dolu"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Bu pozisyona bu oluşumda kadro verilmiyor"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Bu yanıt kaydedilemedi"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Bu durum doğrudan ayarlanamaz"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Bu yedekleme talebine karar verilemedi"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Bu ekip farklı bir hizmete ait"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Bu tema etkinleştirilemedi."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Bu tema kontrol edilemedi."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Bu temada hatalar var, bu nedenle etkinleştirilmedi."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Bu gönüllü atanamadı"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Bu evlilik tarihi geçerli bir tarih değil."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s, YYYY-AA-GG biçiminde bir tarih olmalıdır"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s tam sayı olarak dakika olmalıdır"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s, etkinliğe en fazla %d dakika uzaklıkta olmalıdır"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Üye Portalı takvimleri kaydedildi."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Üye Portalı istediğinizi tamamlayamadı. Lütfen birkaç dakika içinde yeniden deneyin."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Üye Portalı yalnızca oturum açmış bir kişi için kullanılabilir, API istemcileri için değil."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Üye Portalı \"%s\" temasına ayarlı, ancak bu tema artık sunucuda yok. Var olan bir tema seçene kadar üyeler bir hata sayfası görüyor."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Üye Portalı geçici olarak kullanılamıyor"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Üye Portalı \"%s\" teması hatalar içerdiği için etkinleştirilemedi."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Üye Portalı teması işlenemedi"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Üye Portalı tema klasörü \"%s\" bulunamadı."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Üye Portalı teması değiştirildi."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "%1$s hizmetinin öğretmenleri Hizmetler → %2$s → %3$s altında yönetilirken Öğretmen rolü yeniden adlandırılamaz veya silinemez."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Etkin tema klasörü eksik"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Adres seçili — klavyenizle kopyalayın."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "\"%s\" varlık yolu izin verilmiyor."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Görevlendirme iptal edilemedi"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Görevlendirme mesajı yeniden gönderilecek"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Takvim adresi kopyalandı."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Takvimler yüklenemedi. Lütfen yeniden deneyin."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Takvimler kaydedilemedi."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Seçime eklenemedi"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Kilise size henüz e-posta göndermedi."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Kilise ofisine bildirildi. Lütfen daha sonra yeniden deneyin."
+
+#: 
+msgid "The class does not exist"
+msgstr "Sınıf mevcut değil"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Bu programın izlediği sınıf artık yok."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Bu e-postanın içeriği saklanmaz. ChurchCRM yalnızca e-posta düzenleyicide yazılan mesajların ve gönüllü e-postalarının metnini saklar."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Bu e-postanın içeriği saklanmadı."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Koordinatör eklenemedi"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Koordinatör listesi yüklenemedi"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Her oluşumun tarih ve saati takvim etkinliğinden gelir; bu nedenle etkinliği taşımak programı taşır."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "days parametresi 1 ile 365 arasında bir tam sayı olmalıdır"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Varsayılan gönüllü bir kişi olmalıdır"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Varsayılan gönüllüler programa kaydedilir ve bundan sonra oluşturulan oluşumlara uygulanır."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Varsayılan gönüllüler bir liste olmalıdır"
+
+#: 
+msgid "The description is too long"
+msgstr "Açıklama çok uzun"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Aralığın sonu başlangıcından önce."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Aralığın sonu bir tarih değil."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Etkinliğe kadro verilemedi"
+
+#: 
+msgid "The event does not exist"
+msgstr "Etkinlik mevcut değil"
+
+#: 
+msgid "The event is inactive"
+msgstr "Etkinlik etkin değil"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Etkinlik başladıktan sonra bitmelidir"
+
+#: 
+msgid "The event title"
+msgstr "Etkinlik başlığı"
+
+#: 
+msgid "The event title is too long"
+msgstr "Etkinlik başlığı çok uzun"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Bir hizmetin yeni etkinliklerinin başladığı etkinlik türü. Boşsa veya tür silinmişse, varsa \"Diğer\" adlı tür kullanılır."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Etkinlik türü mevcut değil"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Bu programın izlediği etkinlik türü artık yok."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Etkinlikler yalnızca ekibin bağlı olduğu bir sınıfa taşınabilir"
+
+#: 
+msgid "The events could not be created"
+msgstr "Etkinlikler oluşturulamadı"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Etkinlikler silinemedi"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Etkinliklere kadro verilemedi"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Yetki kaldırılamadı"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Son tarih ilk tarihten önce"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Uygun gönüllülerin listesi yüklenemedi"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "En yüksek sayı en düşük sayının altında olamaz"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Mesaj kuyruğa alınamadı"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "En düşük sayı negatif olamaz"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Hizmet oluşturulamadı"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Hizmet devre dışı bırakılamadı"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Hizmet silinemedi"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Hizmet yeniden etkinleştirilemedi"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Hizmet kaydedilemedi"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Oluşum silinemedi"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Oluşumun programı yok"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Oluşumlar üretilemedi"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Asıl gönüllü bırakılır ve yedek pozisyonu devralır. İkisine de bildirilir."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Asıl gönüllü pozisyonu korur. İkisine de bildirilir."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "İstediğiniz sayfa mevcut değil. Taşınmış veya kaldırılmış olabilir."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Pozisyon farklı bir hizmete ait"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Pozisyon silinemedi"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Pozisyon kaydedilemedi"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Pozisyon hâlâ karşılanıyor; kadroyu ayarlamak istemiyorsanız işlem gerekmez."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Yetkilendirme kaldırılamadı"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Yetkilendirme kaydedilemedi"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Yetkili gönüllüler yüklenemedi"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Yineleme, etkinliklerin nasıl tekrarlandığını belirtmelidir"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "%1$s kişisinin %2$s yerine hizmet etme talebi onaylandı."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "%1$s kişisinin %2$s yerine hizmet etme talebi onaylanmadı."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Aynı pozisyon kadro ihtiyaçlarında iki kez listelenmiş"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Program devre dışı bırakılamadı"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Program silinemedi"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Program yeniden etkinleştirilemedi"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Program kaydedilemedi"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Program güncellendi, bu nedenle yapılacak başka bir şey yok."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Program penceresi başlamadan önce bitiyor"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Programın kadro ihtiyaçları yüklenemedi"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Kadro ihtiyaçları yüklenemedi"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Kadro ihtiyaçları sıfırlanamadı"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Kadro ihtiyaçları kaydedilemedi"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Kadro ihtiyaçları bir liste olmalıdır"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Kadro planı yüklenemedi"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Aralığın başlangıcı bir tarih değil."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Yedeklemeye karar verilemedi"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Yedekleme talepleri yüklenemedi"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Öğretmenler yalnızca bu ekibin bir pozisyonuna aktarılabilir"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "%1$s öğretmenleri Hizmetler → %2$s → %3$s altında yönetilir. Öğrenciler yine de burada değiştirilebilir."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Ekip silinemedi"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Ekip kaydedilemedi"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Ekip bu hizmete ait değil"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Tema klasörü bulunamadı."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Bir hizmetin Takvim sekmesindeki yeni bir etkinliğin başladığı tür. Her etkinlik için yine de değiştirilebilir; örneğin katılımcı sayısı kategorileri gerektiren bir sınıf için."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Gönüllü görevlendirmesi kaydedilemedi"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "%s hizmetinin gönüllü havuzu."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Gönüllü kurulum değişikliği kaydedilemedi"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Pencere başlamadan önce bitiyor"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Koordinatörleri, Etkinlik Ekleme yetkisi olmadan hizmetlerinin etkinliklerini bu takvime sabitleyebilir."
+
+#: 
+msgid "Theme"
+msgstr "Tema"
+
+#: 
+msgid "Themes"
+msgstr "Temalar"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Temalar kilisenizce sağlanır, ChurchCRM tarafından değil, ve ChurchCRM projesi tarafından doğrulanmaz."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "%d kimlikli bir kilise takvimi yok."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "%d kimlikli bir sistem takvimi yok."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Bunlar kilisenin sizin için kayıtlı tuttuğu bilgilerdir. Değişiklikler hemen kaydedilir."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Bunlar ilgilendiğiniz gönüllü ekiplerdir. Pozisyonlarını ayarlamak, kimin nerede hizmet edebileceğini belirlemek ve önümüzdeki haftaları doldurmak için birini açın."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Bu etkinlikler tek bir seri değil: başlık, tür veya sınıf bakımından farklılar"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Bu hizmetler daha fazla kişi istiyor. İlgilendiğinizi söyleyin, biri sizinle iletişime geçecek."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Bu ihtiyaçlar programdan gelir. Burada kaydetmek yalnızca bu oluşumu değiştirir."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Bu sayılar yalnızca self-servis hesaplarını sayar: girişi Üye Portalı'na ulaşabilen ve başka hiçbir yere ulaşamayan kişiler."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Bu kişiler hâlâ atanmış durumda, ancak üstlendikleri pozisyon artık bu tarihin kadro planının parçası değil."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Bu kişiler hâlâ atanmış durumda, ancak üstlendikleri pozisyon artık bu oluşumun kadro planının parçası değil."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Bu planlanmış pozisyonların hâlâ birine ihtiyacı var."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "%1$s hizmetinin bu ekipleri bir Pazar Okulu sınıfına bağlı: %2$s. Önce bağlantılarını kaldırın."
+
+#: 
+msgid "They could not be added"
+msgstr "Eklenemedi"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Bu hizmetten kaldırılamadı"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Etkinlik bittikten %d dakika sonra biterler."
+msgstr[1] "Etkinlik bittikten %d dakika sonra biterler."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Etkinlik bitmeden %d dakika önce biterler."
+msgstr[1] "Etkinlik bitmeden %d dakika önce biterler."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Zaten burada gönüllüydü"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Bu görevlendirme %1$s durumunda ve %2$s olarak değiştirilemez"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Bu görevlendirme artık etkin değil"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Bu e-posta geçmişinizde yok."
+
+#: 
+msgid "This event has already happened"
+msgstr "Bu etkinlik zaten gerçekleşti"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Bu, inceleme için kilise ofisine gider. Bir personel onaylayana kadar yeni aile üyesi burada inceleme bekliyor olarak görünür."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Bu grup bir gönüllü hizmetinin havuzudur ve hizmetle birlikte silinir"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Bu grup %s hizmetinin gönüllü havuzudur ve o hizmetten yönetilir."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Bu grup %s hizmetinin gönüllü havuzudur. O hizmetten yönetilir."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Bu kurulumda henüz takvim yok."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Bu, yakında hizmet etmek üzere planlandığınıza dair bir hatırlatmadır."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Bu geçerli bir tema klasörü adı değil."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Bu, ekibinizin tarihlerinden biri değil."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Bu, ekiplerinizden biri değil."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Kilisenin posta gönderdiği yer ve hanenizle ilgili kimi aradığı burada."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Bu sizin kilise hesabınızdır. Kendiniz ve aileniz için yapabileceğiniz her şey burada."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Bu hizmetin takvimde yaklaşan etkinliği yok."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Bu hizmetin \"%s\" başlıklı yaklaşan etkinliği yok. Program, mevcut etkinlikleri izler: önce bunları hizmetin Takvim sekmesinde ekleyin."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Bu hizmetin gönüllü havuzu grubu yok"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Bu hizmet şu anda yardım istemiyor"
+
+#: 
+msgid "This ministry's events"
+msgstr "Bu hizmetin etkinlikleri"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Bu hizmetin etkinlikleri (henüz etkinlik seçilmedi)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Bu oluşum yeniden programını izliyor"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Bu oluşum zaten gerçekleşti"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Bu oluşum zaten gerçekleşti ve görevlendirmeleri artık değiştirilemez"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Bu oluşum iptal edildi"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Bu oluşumun programından ayrı, kendi kadro ihtiyaçları var."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Bu sayfa hesabınızın parçası değil. Olması gerektiğini düşünüyorsanız kilise ofisine sorun."
+
+#: 
+msgid "This page was not found"
+msgstr "Bu sayfa bulunamadı"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Üye Portalı'nın bu kısmı gönüllü ekip liderleri içindir."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Bu pozisyon kaydolarak değil, ekip lideri veya koordinatör tarafından atanır"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Bu program silinemez: %d gönüllü görevlendirmesi hâlâ oluşumlarına başvuruyor."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Bu programın henüz kadro ihtiyacı yok"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Bu program etkin değil. Oluşumlarını üretmek için yeniden etkinleştirin."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "Bu yedekleme talebine zaten karar verildi"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Bu ekibin henüz pozisyonu yok"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Bu ekip zaten bu etkinliğe kadro veriyor"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Bu şablon, temada bulunmayan \"%s\" dosyasını istiyor."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Bu tema etkinleştirilemez"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Bu temada sorun yok."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Bu ChurchCRM sürümü bu yolda bir şablon kullanmıyor; bu nedenle geçersiz kılma hiç işlenmez."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Bunları bu ekibin Gönüllüler sekmesinde işaretleyin, ardından buradan atayın."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "İşaretler yaptıkça kaydedilir."
+
+#: 
+msgid "Times come from this event"
+msgstr "Saatler bu etkinlikten gelir"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Bir sonraki zamanlanmış çalıştırmayı beklemeden her programı tamamlar, kuyruktakileri gönderir ve biten oluşumları kapatır."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "{{name}} reddedilsin mi? Asıl gönüllü kalır ve bilgilendirilir."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Üye Portalı şablon önbelleğini kapatın ve her şablonun adını bir HTML yorumuna yazdırın. Tema tasarımcıları içindir; normal kullanımda kapalı bırakın."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Ekipleri Pazar Okulu sınıflarına ders veren bir hizmet için bunu açın. Ekipleri bir sınıfa bağlanabilir ve programları ile etkinlikleri bir sınıf kullanabilir."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Portal şablon önbelleğini kapatır ve her şablonun adını bir HTML yorumuna yazdırır. Tema tasarımcıları içindir; normal kullanımda kapalı bırakın."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "İki Faktörlü Doğrulama"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Doldurulmamış Pozisyonlar"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Bilinmeyen teslimat hatası"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Bilinmeyen oluşum durumu"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Bilinmeyen program bağlantı modu"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Bilinmeyen gönüllü hizmeti"
+
+#: 
+msgid "Until"
+msgstr "Şuna kadar"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Yaklaşan uygunluk"
+
+#: 
+msgid "Update your details"
+msgstr "Bilgilerinizi güncelleyin"
+
+#: 
+msgid "Update your family details"
+msgstr "Aile bilgilerinizi güncelleyin"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Tek bir etkinliğe kadro vermek için Bu etkinliğe kadro ver'i kullanın"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Programın ihtiyaçlarını kullan"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Kullanıcının Etkinlik Ekleme yetkisi olmalı veya bir gönüllü hizmetini koordine etmeli ve Etkinlikler modülü etkin olmalıdır"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Kullanıcının Etkinlik Ekleme yetkisi olmalı veya bu takvimin ait olduğu gönüllü hizmetini koordine etmelidir"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — Gönüllü Fırsatları (eski)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — eski Gönüllü Fırsatları"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — Hizmetler"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — Gönüllü Yönetimi"
+
+#: 
+msgid "Valid"
+msgstr "Geçerli"
+
+#: 
+msgid "Validation"
+msgstr "Doğrulama"
+
+#: 
+msgid "View event"
+msgstr "Etkinliği Görüntüle"
+
+#: 
+msgid "View my schedule"
+msgstr "Programımı görüntüle"
+
+#: 
+msgid "View only"
+msgstr "Yalnızca görüntüleme"
+
+#: 
+msgid "View person"
+msgstr "Kişiyi Görüntüle"
+
+#: 
+msgid "View the event"
+msgstr "Etkinliği görüntüle"
+
+#: 
+msgid "View this email"
+msgstr "Bu e-postayı görüntüle"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Gönüllü (Eski)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Gönüllü Yönetimi V2 etkin değil"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Gönüllü Hizmeti"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Gönüllü görevlendirmesi"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Gönüllü reddetti"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Gönüllülük deneyimi"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Gönüllü pozisyonlarının hâlâ doldurulması gerekiyor"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Gönüllü hatırlatması"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Gönüllü kaydı"
+
+#: 
+msgid "Volunteer times"
+msgstr "Gönüllü saatleri"
+
+#: 
+msgid "Volunteering"
+msgstr "Gönüllülük"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Bir kilisenin işleyişine göre düzenlenmiş gönüllülük. Her hizmetin ekipleri ve pozisyonları vardır; kişiler pozisyonlar için yetkilendirilir ve hizmetin havuz grubuna aittir; programlar takvimdeki etkinlikleri izler ve kadro gereksinimleriyle tarihli oluşumlar üretir; koordinatörler kişileri atar, onlar da kabul eder, reddeder veya yedek önerir; hatırlatmalar ve uyarılar e-postayla gönderilir. Yöneticiler ve Hizmetleri Yönet yetkisine sahip kullanıcılar her hizmeti görür ve oluşturabilir, devre dışı bırakabilir ve silebilir. Bir hizmet koordinatörüne bunun yerine Hizmetlerimi Yönet yetkisi verilir: kenar çubuğundaki Hizmetler başlığı o zaman yalnızca koordine ettiği hizmetleri gösterir. Bir ekip lideri ekibini Üye Portalı'ndan yönetir. Üyeler programlarını görmek, yanıt vermek, kaydolmak ve yardım teklif etmek için Üye Portalı'nı kullanır."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Atanan gönüllüler: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Gönüllüler bitirir"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Gereken gönüllüler"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "%s hizmetinin gönüllüleri bu etkinliklere atanmış, bu nedenle burada silinemezler. O hizmetten kadrosunu kaldırmasını veya takvimi yöneten birinden yardım isteyin."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "{{names}} hizmetinin gönüllüleri bazılarına atanmış. Takvimi yönetmiyorsanız, bu kadro kaldırılana kadar silme reddedilir."
+
+#: 
+msgid "Volunteers start"
+msgstr "Gönüllüler başlar"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Gönüllüler etkinlik başladıktan %d dakika sonra başlar."
+msgstr[1] "Gönüllüler etkinlik başladıktan %d dakika sonra başlar."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Gönüllüler etkinlik başlamadan %d dakika önce başlar."
+msgstr[1] "Gönüllüler etkinlik başlamadan %d dakika önce başlar."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Yanıt bekleniyor"
+
+#: 
+msgid "Waiting for review"
+msgstr "İnceleme bekliyor"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Koordinatörünüzün onaylaması bekleniyor."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Bir şeyin doldurulması gerektiğinde size e-posta göndereceğiz."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Pazar sabahları daha fazla yardıma çok sevinirdik — deneyim gerekmez."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Hoş geldiniz, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Neyin değişmesi gerekiyor?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Bu hafta dikkatinizi gerektirenler"
+
+#: 
+msgid "What the check found"
+msgstr "Kontrolün bulduğu"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Gönüllülük deneyimleri nelerdir"
+
+#: 
+msgid "What you want to say"
+msgstr "Söylemek istedikleriniz"
+
+#: 
+msgid "When"
+msgstr "Ne zaman"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Bir gönüllü yerine bakacak birini önerdiğinde, onaylamanız veya reddetmeniz için burada görünür."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Bir gönüllü yerine bakacak birini önerdiğinde, onaylamanız için burada görünür."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Biri sizi bir ekibe eklediğinde veya kendiniz kaydolduğunuzda burada görünür."
+
+#: 
+msgid "Where"
+msgstr "Nerede"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Tarihlerin geldiği yer"
+
+#: 
+msgid "Where we reach you"
+msgstr "Size nereden ulaşırız"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Hangi Gönüllü Yönetimi deneyiminin etkin olduğu. V1 eski Gönüllü Fırsatları özelliğidir; V2 yeni planlama ve görevlendirme iş akışıdır. \"Her ikisi\", geçiş sırasında ikisini yan yana gösterir."
+
+#: 
+msgid "Which events"
+msgstr "Hangi etkinlikler"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Bu kilisenin hangi gönüllülük deneyimini kullandığı. Sağdaki kart her seçeneği açıklar."
+
+#: 
+msgid "Who is covering"
+msgstr "Kim yerine bakıyor"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Kime ihtiyaç var, kim görevde ve neler hâlâ eksik"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "En son hizmet eden önce listelenir."
+
+#: 
+msgid "Work Email"
+msgstr "İş E-postası"
+
+#: 
+msgid "Yearly"
+msgstr "Yıllık"
+
+#: 
+msgid "You"
+msgstr "Siz"
+
+#: 
+msgid "You are already helping that day"
+msgstr "O gün zaten yardım ediyorsunuz"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "O gün zaten {{what}} olarak yardım ediyorsunuz. Buna da kaydolmak ister misiniz?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Bunu değiştirmeye izniniz yok. Lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Şu anda bir aileyle ilişkili değilsiniz"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Henüz bir aile kaydının parçası değilsiniz."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Listedesiniz — teşekkürler."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Bunu gönüllü programınızda inceleyebilir veya değiştirebilirsiniz."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Bu sayfayı açamazsınız"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Kendinizi kendi yedeğiniz olarak öneremezsiniz"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Buna kaydolamadınız."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Henüz bir gönüllü ekibine liderlik etmiyorsunuz."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Yeni bir takvim adresiniz var. Eskisi artık çalışmıyor."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Hizmet etmek üzere planlandınız"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Hizmet etmek üzere planlandınız."
+
+#: 
+msgid "You lead this"
+msgstr "Bunun lideri sizsiniz"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Yalnızca liderlik ettiğiniz bir ekip için program oluşturabilirsiniz"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Bunun için yeniden listede olacaksınız."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Hesabınız bir kişi kaydına bağlı değil. Lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Takvim aboneliğiniz kaydedildi."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Mevcut adresiniz hemen çalışmaz hâle gelecek. Adresi verdiğiniz herkesin yenisine ihtiyacı olacak."
+
+#: 
+msgid "Your details"
+msgstr "Bilgileriniz"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Bilgileriniz kaydedildi."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Aile bilgileriniz kaydedildi."
+
+#: 
+msgid "Your photo"
+msgstr "Fotoğrafınız"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Fotoğrafınız kaydedildi."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Programınız yüklenemedi."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Oturumunuzun süresi doldu. Lütfen yeniden giriş yapın."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Yedek talebiniz onaylandı"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Yedek talebiniz onaylanmadı"
+
+#: 
+msgid "already staffed by this team"
+msgstr "bu ekip tarafından zaten kadro verilmiş"
+
+#: 
+msgid "body is required"
+msgstr "body gereklidir"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds, takvim kimliklerinin bir listesi olmalıdır"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents şunlardan biri olmalıdır: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId bir grup kimliği veya null olmalıdır"
+
+#: 
+msgid "end offset"
+msgstr "bitiş kaydırması"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds, etkinlik kimliklerinin bir listesi olmalıdır"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "her mesaj iletildi veya hâlâ kuyrukta"
+
+#: 
+msgid "has not served yet"
+msgstr "henüz hizmet etmedi"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId bir pozisyon kimliği olmalıdır"
+
+#: 
+msgid "inactive family"
+msgstr "etkin olmayan aile"
+
+#: 
+msgid "line %d"
+msgstr "satır %d"
+
+#: 
+msgid "marked do not email"
+msgstr "e-posta gönderme olarak işaretli"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "mesaj iletilemedi"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "mesaj beş denemeden sonra iletilemedi"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "mesaj gönderilmeyi bekliyor"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds, hizmet kimliklerinin bir listesi olmalıdır"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "etkinlik bittikten dakika sonra"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "etkinlik başladıktan dakika sonra"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "etkinlik bitmeden dakika önce"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "etkinlik başlamadan dakika önce"
+
+#: 
+msgid "never"
+msgstr "hiç"
+
+#: 
+msgid "no email address"
+msgstr "e-posta adresi yok"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds ve familyIds pozitif tam sayı dizileri olmalıdır"
+
+#: 
+msgid "record not found"
+msgstr "kayıt bulunamadı"
+
+#: 
+msgid "same address as another recipient"
+msgstr "başka bir alıcıyla aynı adres"
+
+#: 
+msgid "single event"
+msgstr "tek etkinlik"
+
+#: 
+msgid "start offset"
+msgstr "başlangıç kaydırması"
+
+#: 
+msgid "subject and body are required"
+msgstr "subject ve body gereklidir"
+
+#: 
+msgid "subject is required"
+msgstr "subject gereklidir"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject en fazla 255 karakter olmalıdır"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool doğru veya yanlış olmalıdır"
+
+#: 
+msgid "window end"
+msgstr "pencere sonu"
+
+#: 
+msgid "window start"
+msgstr "pencere başı"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} eklendi, {{alreadyMembers}} zaten burada gönüllüydü"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} oluşum oluşturuldu, {{existing}} zaten vardı"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}}, {{className}} için {{total}} etkinlik oluşturdu ({{upcoming}} yaklaşan)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} ayrıca bazılarına kadro veriyor."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} bu hizmeti zaten koordine ediyor"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} atandı"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} bu oluşumda zaten {{position}} olarak hizmet ediyor. Yine de atayabilirsiniz."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} yetkili ancak bu hizmetin gönüllü havuzunda değil. Atamak onu yalnızca bu oluşuma ekler."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} artık bu hizmeti koordine ediyor"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: sayılar 0 ile {{max}} arasında olmalıdır."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: en yüksek değer en düşük değerin altında olamaz."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} artık yetkili değil"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} yetkilendirildi"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}}, {{substitute}} kişisinden yerini almasını istiyor"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{date}} tarihindeki {{title}} oluşturuldu. Şimdi kadro verilsin mi?"
+

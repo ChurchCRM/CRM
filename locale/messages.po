@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-07 05:23+0000\n"
+"POT-Creation-Date: 2026-10-08 02:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10209,6 +10209,9 @@ msgstr ""
 msgid "Not authorized to change the volunteer ministry of this event"
 msgstr ""
 
+msgid "Not authorized to change this event's audience group"
+msgstr ""
+
 msgid "Not authorized to create an event without a volunteer ministry you manage"
 msgstr ""
 
@@ -10508,13 +10511,13 @@ msgstr ""
 msgid "Only a coordinator of this ministry may staff its events"
 msgstr ""
 
-msgid "Only a volunteer manager can change the team leader"
-msgstr ""
-
 msgid "Only a volunteer manager can change this."
 msgstr ""
 
 msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr ""
+
+msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr ""
 
 msgid "Only an administrator can delete a person who has a login."

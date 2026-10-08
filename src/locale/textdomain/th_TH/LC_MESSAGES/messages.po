@@ -18747,3 +18747,4443 @@ msgstr "บทบาทของคู่สมรส"
 msgid "Uppercase Zip/Postcodes"
 msgstr "รหัสไปรษณีย์ตัวพิมพ์ใหญ่"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "เลือกการจัดประเภทอย่างน้อยหนึ่งรายการเพื่อรวมไว้ในสมุดรายชื่อ"
+
+#: 
+msgid "Geocoding services"
+msgstr "บริการค้นหาพิกัดทางภูมิศาสตร์"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "บริการค้นหาพิกัดที่จะลองใช้ ตามลำดับที่คุณเลือก Nominatim (OpenStreetMap) ใช้ได้ทั่วโลก ส่วน US Census (US Census Bureau) ครอบคลุมเฉพาะที่อยู่ในสหรัฐอเมริกา ให้เลือก US Census ด้วยหากต้องการใช้ หากไม่เลือกเลย ระบบจะใช้ Nominatim"
+
+#: 
+msgid "New Record Defaults"
+msgstr "ค่าเริ่มต้นสำหรับระเบียนใหม่"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "ระบบจะค้นหาพิกัดแผนที่ของทุกครอบครัวที่ยังไม่มีพิกัด โดยใช้บริการค้นหาพิกัดที่เลือกไว้ในการตั้งค่าแผนที่ ระบบจะดำเนินการทีละ 50 ครอบครัว แต่ละชุดใช้เวลาประมาณหนึ่งนาทีหากใช้บริการเดียว และนานขึ้นหากใช้หลายบริการ คุณเปิดหน้านี้ค้างไว้ได้ระหว่างที่ทำงาน ต้องการดำเนินการต่อหรือไม่"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "ใช้สำหรับระเบียนใหม่และสำหรับการค้นหาพิกัดเมื่อระเบียนไม่มีประเทศ"
+
+#: 
+msgid "Copy from Church Info"
+msgstr "คัดลอกจากข้อมูลคริสตจักร"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "ไม่สามารถคัดลอกที่อยู่ของคริสตจักรได้"
+
+#: 
+msgid "Could not match the church country."
+msgstr "ไม่สามารถจับคู่ประเทศของคริสตจักรได้"
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "รายชื่อชั้นเรียน ใบเช็คชื่อ และสมุดภาพ"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "รายชื่อสมาชิกกลุ่มและรายงานชั้นเรียนโรงเรียนวันอาทิตย์"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "ปีงบประมาณของคุณเริ่มต้นในเดือน %s"
+
+#: 
+msgid "An error occurred"
+msgstr "เกิดข้อผิดพลาด"
+
+#: 
+msgid "Approve"
+msgstr "อนุมัติ"
+
+#: 
+msgid "Approve selected"
+msgstr "อนุมัติที่เลือก"
+
+#: 
+msgid "Approved"
+msgstr "อนุมัติแล้ว"
+
+#: 
+msgid "Change in People Settings"
+msgstr "เปลี่ยนในการตั้งค่าบุคคล"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "ไม่สามารถอนุมัติการลงทะเบียนที่เลือกได้"
+
+#: 
+msgid "Could not approve this family"
+msgstr "ไม่สามารถอนุมัติครอบครัวนี้ได้"
+
+#: 
+msgid "Pending Registrations"
+msgstr "การลงทะเบียนที่รอดำเนินการ"
+
+#: 
+msgid "Pending review"
+msgstr "รอการตรวจสอบ"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "การลงทะเบียนที่รอการตรวจสอบจากแบบฟอร์มลงทะเบียนสาธารณะของคุณ รายการที่ไม่มีอีเมลหรือโทรศัพท์จะมีเครื่องหมายแจ้งไว้ ควรตรวจสอบข้อมูลติดต่อก่อนติดต่อกลับ"
+
+#: 
+msgid "Review now"
+msgstr "ตรวจสอบตอนนี้"
+
+#: 
+msgid "Review self registrations"
+msgstr "ตรวจสอบการลงทะเบียนด้วยตนเอง"
+
+#: 
+msgid "Select month"
+msgstr "เลือกเดือน"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "การลงทะเบียนด้วยตนเองถูกปิดอยู่"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "การลงทะเบียนด้วยตนเองเปิดอยู่"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "แบบฟอร์มลงทะเบียนสาธารณะถูกปิดอยู่ การลงทะเบียนที่มีอยู่แสดงไว้ด้านล่าง"
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "ครอบครัวนี้ไม่ใช่การลงทะเบียนด้วยตนเองที่รอดำเนินการ"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "บุคคลนี้เป็นสมาชิกของครอบครัว ให้อนุมัติครอบครัวแทน"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "บุคคลนี้ไม่ใช่การลงทะเบียนด้วยตนเองที่รอดำเนินการ"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "ครอบครัวที่ลงทะเบียนด้วยตนเองนี้กำลังรอการตรวจสอบ"
+
+#: 
+msgid "Total registrations"
+msgstr "การลงทะเบียนทั้งหมด"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "ผู้มาเยือนสามารถสมัครผ่านแบบฟอร์มลงทะเบียนสาธารณะของคุณได้"
+
+#: 
+msgid "Yesterday"
+msgstr "เมื่อวานนี้"
+
+#: 
+msgid "days ago"
+msgstr "วันที่แล้ว"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "การลงทะเบียนด้วยตนเองกำลังรอการตรวจสอบ"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "วันเกิดจะระบุชื่อถึงบุคคล และวันครบรอบจะระบุชื่อถึงคู่สมรส"
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "ป้ายจ่าหน้าสำหรับบุคคลในรายงานนี้ บุคคลที่ไม่มีที่อยู่ของตนเองจะใช้ที่อยู่ของครอบครัว"
+
+#: 
+msgid "One label for each couple."
+msgstr "หนึ่งป้ายต่อหนึ่งคู่สมรส"
+
+#: 
+msgid "Print Labels"
+msgstr "พิมพ์ป้ายจ่าหน้า"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "บทบาทนั้นไม่ใช่บทบาทของกลุ่มนี้"
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "\"%s\" ไม่ใช่ปฏิทินประเภทที่หน้านี้รู้จัก"
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s ไม่สามารถปฏิบัติหน้าที่ได้ และเสนอ %2$s เป็นผู้แทน"
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s อยู่ในกลุ่มอาสาสมัคร %2$s อยู่แล้ว และต้องการช่วยอีกครั้ง"
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s ถูกเชื่อมโยงกับ %2$s ใน %3$s อยู่แล้ว"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s อยู่ใน %2$s ในฐานะ %3$s ให้นำออกจากชั้นเรียนก่อน เมื่อกำหนดคุณสมบัติที่นี่แล้ว เขาจะกลายเป็นครูคนหนึ่งของชั้นเรียน"
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s ไม่ใช่กิจกรรมของ %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s ยังเป็นชั้นเรียนโรงเรียนวันอาทิตย์ ขณะที่ครูของชั้นถูกจัดการใน พันธกิจ → %2$s → %3$s ให้ยกเลิกการเชื่อมโยงจากทีมก่อน"
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s ต้องการช่วยงาน %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s ต้องการช่วยงาน %2$s และถูกเพิ่มเข้ากลุ่มอาสาสมัครแล้ว"
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: จำนวนสูงสุดคือ %2$d แต่เลือกอาสาสมัครเริ่มต้นไว้ %3$d คน ให้นำออกหนึ่งคนหรือเพิ่มจำนวนสูงสุด"
+
+#: 
+msgid "%d failed"
+msgstr "ล้มเหลว %d รายการ"
+
+#: 
+msgid "%s Calendar"
+msgstr "ปฏิทิน %s"
+
+#: 
+msgid "%s Family"
+msgstr "ครอบครัว %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s ไม่ได้จัดหาครูสำหรับโรงเรียนวันอาทิตย์ ดังนั้นทีม ตารางเวลา และกิจกรรมของพันธกิจนี้จึงใช้ชั้นเรียนไม่ได้ ผู้จัดการอาสาสมัครสามารถเปลี่ยนได้ใน แก้ไขพันธกิจ"
+
+#: 
+msgid "%s family"
+msgstr "ครอบครัว %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s ปฏิเสธการมอบหมายงานอาสาสมัคร"
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s ไม่มีบทบาทชื่อครู จึงไม่สามารถจัดการครูของพันธกิจนี้จากทีมได้"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s ไม่มีการประชุมที่กำลังจะมาถึงในปฏิทิน ตารางเวลาจะติดตามกิจกรรมที่มีอยู่แล้ว ให้เพิ่มการประชุมของชั้นเรียนก่อน โดยใช้ กิจกรรมซ้ำใหม่ ในแท็บปฏิทินของพันธกิจ"
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s ยังคงมีกำหนดรับใช้ โปรดติดต่อผู้ประสานงานหากไม่สามารถมาได้"
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "ไม่ได้ส่ง %s (%s): %s"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: มีการเลือกบุคคลเดียวกันสองครั้งเป็นอาสาสมัครเริ่มต้น"
+
+#: 
+msgid "(no subject)"
+msgstr "(ไม่มีหัวข้อ)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "วันเกิดต้องไม่เป็นวันในอนาคต"
+
+#: 
+msgid "A calendar event"
+msgstr "กิจกรรมในปฏิทิน"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "รหัสปฏิทินต้องเป็นตัวเลข"
+
+#: 
+msgid "A class that no longer exists"
+msgstr "ชั้นเรียนที่ไม่มีอยู่แล้ว"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "ชั้นเรียนที่ไม่มีการประชุมในปฏิทินยังเลือกไม่ได้"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "ชั้นเรียนที่ไม่มีการประชุมในปฏิทินยังเลือกไม่ได้ ผู้ประสานงานของพันธกิจสามารถเพิ่มการประชุมได้ในแท็บปฏิทินของพันธกิจ"
+
+#: 
+msgid "A class's meetings"
+msgstr "การประชุมของชั้นเรียน"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "ผู้ประสานงานจัดการทุกอย่างในพันธกิจนี้ได้ รวมถึงการเปลี่ยนแปลงที่ผู้จัดการอาสาสมัครต้องทำแทน"
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "ผู้ประสานงานของพันธกิจสามารถเพิ่มได้ในแท็บปฏิทินของพันธกิจ"
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "ผู้ประสานงานของพันธกิจสามารถเพิ่มได้ในแท็บปฏิทินของพันธกิจ จากนั้นสร้างใหม่อีกครั้ง"
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "ผู้ประสานงานดูแลพันธกิจทั้งหมด ทั้งทีม ตำแหน่ง ตารางเวลา และทุกการมอบหมายในพันธกิจนั้น"
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "วันที่ที่เดือนนั้นไม่มีจะตกเป็นวันสุดท้ายของเดือน"
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "อาสาสมัครเริ่มต้นเป็นของความต้องการกำลังคนของตารางเวลา ไม่ใช่ของรอบใดรอบหนึ่ง"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "เลือกอาสาสมัครเริ่มต้นได้เฉพาะตำแหน่งที่ความต้องการกำลังคนของตารางเวลานี้ระบุไว้"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "ต้องระบุวันที่เริ่มต้นและวันที่สิ้นสุดในรูปแบบ YYYY-MM-DD"
+
+#: 
+msgid "A minimum count is required"
+msgstr "ต้องระบุจำนวนขั้นต่ำ"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "พันธกิจจะถูกสร้างพร้อมปฏิทิน กลุ่มอาสาสมัคร และทีมแรกของตนเอง ดังนั้นสิ่งที่ต้องตัดสินใจที่นี่มีเพียงชื่อและสิ่งที่พันธกิจนั้นทำ"
+
+#: 
+msgid "A ministry name is required"
+msgstr "ต้องระบุชื่อพันธกิจ"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "พันธกิจต้องมีอย่างน้อยหนึ่งทีม ให้เปลี่ยนชื่อแทน"
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "มีพันธกิจที่ใช้ชื่อนี้อยู่แล้ว"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "ปฏิทินของพันธกิจเองไม่สามารถเปิดให้พันธกิจอื่นได้"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "ตำแหน่งเป็นของทีม โปรดเลือกหนึ่งทีม"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "ตำแหน่งคืองานที่ใครสักคนทำในทีมนี้ เช่น เอสเปรสโซหรือผู้นำนมัสการ"
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "ตำแหน่งคือบทบาทที่ใครสักคนรับใช้ เช่น เอสเปรสโซหรือผู้นำนมัสการ"
+
+#: 
+msgid "A position is required"
+msgstr "ต้องระบุตำแหน่ง"
+
+#: 
+msgid "A position name is required"
+msgstr "ต้องระบุชื่อตำแหน่ง"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "ตำแหน่งที่มีอาสาสมัครผ่านคุณสมบัติแล้วไม่สามารถย้ายเข้าหรือออกจากทีมที่เชื่อมโยงกับชั้นเรียนโรงเรียนวันอาทิตย์ได้ เพราะจะเปลี่ยนผู้สอนชั้นเรียน ให้สร้างตำแหน่งในทีมอื่นแทน"
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "มีตำแหน่งที่ใช้ชื่อนี้ในพันธกิจนี้อยู่แล้ว"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "ต้องตอบรับหรือปฏิเสธการตอบกลับ"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "ตารางเวลาเป็นของทีม โปรดเลือกหนึ่งทีม"
+
+#: 
+msgid "A schedule name is required"
+msgstr "ต้องระบุชื่อตารางเวลา"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "ตารางเวลากำหนดว่าทีมจัดกำลังคนให้กิจกรรมใดในปฏิทิน ได้แก่ นมัสการประเภทหนึ่ง การประชุมของชั้นเรียน หรือกิจกรรมของพันธกิจเอง ให้เพิ่มหนึ่งรายการแล้วสร้างรอบของตารางนั้น"
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "ตารางเวลากำหนดว่าทีมนี้รับใช้กิจกรรมใดในปฏิทิน ได้แก่ นมัสการประเภทหนึ่ง การประชุมของชั้นเรียน หรือกิจกรรมของพันธกิจเอง ให้เพิ่มหนึ่งรายการแล้วสร้างรอบของตารางนั้น"
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "ตารางเวลาที่ติดตามชั้นเรียนต้องระบุชื่อชั้นเรียน"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "ตารางเวลาที่ติดตามประเภทกิจกรรมต้องระบุประเภทกิจกรรม"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "ตารางเวลาที่จัดกำลังคนให้กิจกรรมเดียวไม่สามารถติดตามกิจกรรมอื่นได้ ให้ลบตารางนั้นแล้วเพิ่มตารางเวลาใหม่แทน"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "รายการโอกาสรับใช้เดียว เช่น \"ดูแลเนอสเซอรี\" หรือ \"ต้อนรับ\" เก็บไว้ใต้ บุคคล → ผู้ดูแลระบบ แต่ละคนจะถูกติดแท็กโอกาสที่เต็มใจช่วย ในแท็บอาสาสมัครของระเบียนบุคคล นั่นคือทั้งหมดที่บันทึก ไม่มีทีม ตารางเวลา การมอบหมายตามวันที่ หรืออีเมลเตือน แท็กถูกใช้ในรายงานและระเบียนบุคคล"
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "ภาพถ่ายใบหน้าของคุณแบบสี่เหลี่ยมจัตุรัสจะดีที่สุด"
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "ความต้องการกำลังคนระบุอาสาสมัครเริ่มต้นไว้ใน \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "ความต้องการกำลังคนต้องเป็นของตารางเวลาหรือรอบอย่างใดอย่างหนึ่งเท่านั้น"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "มีการเสนอผู้แทนสำหรับการมอบหมายนี้แล้ว"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "หัวหน้าทีมจัดการทีมของตนเองได้ ทั้งตำแหน่ง ตารางเวลา และผู้ที่รับใช้ในนั้น และไม่มีอย่างอื่นในพันธกิจ"
+
+#: 
+msgid "A team name is required"
+msgstr "ต้องระบุชื่อทีม"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "มีทีมที่ใช้ชื่อนี้ในพันธกิจนี้อยู่แล้ว"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "ธีมคือโฟลเดอร์ที่คริสตจักรของคุณอัปโหลดไปที่ Include/themes/ บนเซิร์ฟเวอร์ ค่าเริ่มต้นของระบบมาพร้อมกับ ChurchCRM"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "การตั้งค่าช่วงเปลี่ยนผ่าน หน้าโอกาสรับใช้แบบเดิมและหน้าพันธกิจแบบใหม่ใช้งานได้ทั้งคู่ และระเบียนบุคคลจะแสดงแท็บอาสาสมัครทั้งสองพร้อมป้ายกำกับชัดเจน ใช้ระหว่างย้ายคริสตจักรจาก V1 ไป V2 แล้วเปลี่ยนเป็น V2 อย่างเดียว"
+
+#: 
+msgid "A volunteer"
+msgstr "อาสาสมัคร"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "อาสาสมัครปฏิเสธการมอบหมาย"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "อาสาสมัครเสนอผู้แทน"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "ผู้จัดการอาสาสมัครสามารถดูแลพันธกิจนี้ได้โดยไม่ต้องมีสิทธิ์พิเศษ เพิ่มผู้ประสานงานเพื่อให้คนอื่นดูแลได้โดยไม่ต้องให้สิทธิ์ดูแลพันธกิจอื่นทั้งหมดด้วย"
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "วันแต่งงานต้องไม่เป็นวันในอนาคต"
+
+#: 
+msgid "Accepted"
+msgstr "ตอบรับแล้ว"
+
+#: 
+msgid "Account deleted"
+msgstr "ลบบัญชีแล้ว"
+
+#: 
+msgid "Account unlocked"
+msgstr "บัญชีถูกปลดล็อค"
+
+#: 
+msgid "Accounts"
+msgstr "บัญชี"
+
+#: 
+msgid "Active must be true or false"
+msgstr "ค่า Active ต้องเป็นจริงหรือเท็จ"
+
+#: 
+msgid "Active now"
+msgstr "ใช้งานอยู่ขณะนี้"
+
+#: 
+msgid "Add All"
+msgstr "เพิ่มทั้งหมด"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "เพิ่มทุกคนในรายการที่เลือก"
+
+#: 
+msgid "Add Volunteer"
+msgstr "เพิ่มอาสาสมัคร"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "เพิ่มอาสาสมัครในรายการที่เลือก"
+
+#: 
+msgid "Add a family member"
+msgstr "เพิ่มสมาชิกครอบครัว"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "เพิ่มตำแหน่งก่อน แล้วกลับมาระบุว่าต้องการกี่คน"
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "เพิ่มขั้นตอนที่สองในการลงชื่อเข้าใช้ เพื่อให้รหัสผ่านเพียงอย่างเดียวไม่เพียงพอที่จะเข้าถึงบัญชีของคุณ"
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "เพิ่มอย่างน้อยหนึ่งตำแหน่งในทีมนี้ แล้วติ๊กเลือกว่าใครรับใช้ตำแหน่งใดได้"
+
+#: 
+msgid "Add coordinator"
+msgstr "เพิ่มผู้ประสานงาน"
+
+#: 
+msgid "Add from Cart"
+msgstr "เพิ่มจากรายการที่เลือก"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "เพิ่มคนที่ยังไม่ได้เป็นอาสาสมัครเข้ารายการที่เลือกก่อนเพิ่มเป็นอาสาสมัคร"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "เพิ่มตำแหน่ง"
+
+#: 
+msgid "Add position"
+msgstr "เพิ่มตารางเวลา"
+
+#: 
+msgid "Add schedule"
+msgstr "เพิ่มทีม"
+
+#: 
+msgid "Add team"
+msgstr "เพิ่มการประชุมของชั้นเรียนก่อนด้วย กิจกรรมซ้ำใหม่ ในแท็บปฏิทิน"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "เพิ่มรายการเหล่านั้นในแท็บปฏิทิน แล้วสร้างใหม่อีกครั้ง"
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "เพิ่มรายการเหล่านั้นในแท็บปฏิทิน"
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "เพิ่มที่อยู่นี้ในแอปปฏิทินของคุณ ที่อยู่จะอัปเดตเองเมื่อปฏิทินคริสตจักรเปลี่ยน"
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "เพิ่มกิจกรรมของพันธกิจนี้ที่นี่ เช่น วันทำงานหรือชั้นเรียนที่พบกันทุกวันอาทิตย์ กิจกรรมจะอยู่ในปฏิทินคริสตจักร และคุณจัดกำลังคนให้ได้ขณะสร้าง"
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "เพิ่มผ่านพอร์ทัลสมาชิกและรอการตรวจสอบ: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "เพิ่มแล้ว — ตอนนี้ติ๊กเลือกตำแหน่งที่เขารับใช้ได้"
+
+#: 
+msgid "Address Line 2"
+msgstr "ที่อยู่บรรทัดที่ 2"
+
+#: 
+msgid "Admin Console"
+msgstr "คอนโซลผู้ดูแลระบบ"
+
+#: 
+msgid "Administrator permission required"
+msgstr "ต้องมีสิทธิ์ผู้ดูแลระบบ"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "โฆษณาตำแหน่งนี้ในหน้าโอกาสรับใช้ที่เปิดอยู่ของพอร์ทัลสมาชิก"
+
+#: 
+msgid "All Teams"
+msgstr "ทุกทีม"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "อนุญาตให้สมาชิกเปลี่ยนวันเกิดของตนเองและของสมาชิกในครอบครัว"
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "ยังปักหมุดไว้กับ {{calendars}} ซึ่งมีเพียงผู้ที่มีสิทธิ์เพิ่มกิจกรรมเท่านั้นที่เปลี่ยนได้"
+
+#: 
+msgid "An event title is required"
+msgstr "ต้องระบุชื่อกิจกรรม"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "ต้องระบุประเภทกิจกรรมหรือพันธกิจ"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "ประเภทกิจกรรมที่ไม่มีอยู่แล้ว"
+
+#: 
+msgid "Another ministry"
+msgstr "พันธกิจอื่น"
+
+#: 
+msgid "Any event"
+msgstr "กิจกรรมใดก็ได้"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "สิ่งที่ผู้ประสานงานของคุณควรทราบ"
+
+#: 
+msgid "Approve substitution"
+msgstr "อนุมัติการแทนที่"
+
+#: 
+msgid "Approve this substitute"
+msgstr "อนุมัติผู้แทนคนนี้"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "ขอให้ผู้จัดการอาสาสมัครสร้างพันธกิจและตั้งคุณเป็นผู้ประสานงาน"
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "ขอให้ใครสักคนมาทำหน้าที่แทนคุณ"
+
+#: 
+msgid "Ask them"
+msgstr "ถามพวกเขา"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "ส่งคำขอแล้ว — ผู้ประสานงานของคุณจะยืนยัน"
+
+#: 
+msgid "Assign a volunteer"
+msgstr "มอบหมายอาสาสมัคร"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "มอบหมายนอกแผนปัจจุบัน"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "ยกเลิกการมอบหมายแล้ว"
+
+#: 
+msgid "Assignment not found"
+msgstr "ไม่พบการมอบหมาย"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "ต้องมี personId หรือ familyId อย่างน้อยหนึ่งรายการ"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "เลือกอาสาสมัครเริ่มต้นได้ไม่เกิน %d คนต่อหนึ่งตำแหน่ง"
+
+#: 
+msgid "Author"
+msgstr "ผู้เขียน"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "สิทธิ์มอบให้กับบุคคล ไม่ใช่บัญชีผู้ใช้ จึงมอบให้ได้ก่อนที่เขามีบัญชี บุคคลที่บัญชีใช้ได้เฉพาะบริการตนเองจะเห็นเพียงตารางของตนเองจนกว่าผู้ดูแลระบบจะขยายสิทธิ์บัญชี"
+
+#: 
+msgid "Automatic"
+msgstr "อัตโนมัติ"
+
+#: 
+msgid "Awaiting reply"
+msgstr "รอการตอบกลับ"
+
+#: 
+msgid "Back to Email History"
+msgstr "กลับไปประวัติอีเมล"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "กลับไปแดชบอร์ดพันธกิจ"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "กลับไปรอบ"
+
+#: 
+msgid "Back to Person"
+msgstr "กลับไปที่บุคคล"
+
+#: 
+msgid "Back to editing"
+msgstr "กลับไปแก้ไข"
+
+#: 
+msgid "Back to my schedule"
+msgstr "กลับไปตารางของฉัน"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "กลับไปพอร์ทัลสมาชิก"
+
+#: 
+msgid "Back to your profile"
+msgstr "กลับไปโปรไฟล์ของคุณ"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "งานเบื้องหลังและการจัดส่ง"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "งานเบื้องหลังทำงานล่าสุดเมื่อ"
+
+#: 
+msgid "Background jobs ran"
+msgstr "งานเบื้องหลังทำงานเมื่อ"
+
+#: 
+msgid "Birthday greeting"
+msgstr "คำอวยพรวันเกิด"
+
+#: 
+msgid "Both"
+msgstr "ทั้งสอง"
+
+#: 
+msgid "Both (transition)"
+msgstr "ทั้งสอง (ช่วงเปลี่ยนผ่าน)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "ทั้งสอง — V1 และ V2 ควบคู่กัน (ช่วงเปลี่ยนผ่าน)"
+
+#: 
+msgid "Calendar address"
+msgstr "ที่อยู่ปฏิทิน"
+
+#: 
+msgid "Calendar saved"
+msgstr "บันทึกปฏิทินแล้ว"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "ปฏิทินที่พอร์ทัลสมาชิกแสดงให้สมาชิก เลือกได้ที่ ผู้ดูแลระบบ -> พอร์ทัลสมาชิก -> ปฏิทิน"
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "พันธกิจนี้จัดหาครูสำหรับโรงเรียนวันอาทิตย์ได้หรือไม่"
+
+#: 
+msgid "Cancel assignment"
+msgstr "ยกเลิกการมอบหมาย"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "ยกเลิกการมอบหมายนี้"
+
+#: 
+msgid "Cancelled"
+msgstr "ยกเลิกแล้ว"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "เปลี่ยนรหัสผ่านที่คุณใช้ลงชื่อเข้าใช้ หรือเพิ่มขั้นตอนที่สองเพื่อให้รหัสผ่านเพียงอย่างเดียวไม่เพียงพอ"
+
+#: 
+msgid "Change your password"
+msgstr "เปลี่ยนรหัสผ่านของคุณ"
+
+#: 
+msgid "Checked in"
+msgstr "เช็คอินแล้ว"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "เช็คอินแล้ว: %1$d จาก %2$d คนในรายชื่อชั้นเรียน"
+
+#: 
+msgid "Checked out"
+msgstr "เช็คเอาท์แล้ว"
+
+#: 
+msgid "Choose a class"
+msgstr "เลือกชั้นเรียน"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "เลือกวันของเดือนตั้งแต่ 1 ถึง 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "เลือกรูปภาพใหม่"
+
+#: 
+msgid "Choose a person"
+msgstr "เลือกบุคคล"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "เลือกอาสาสมัคร"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "เลือกอาสาสมัครก่อน"
+
+#: 
+msgid "Choose an event"
+msgstr "เลือกกิจกรรม..."
+
+#: 
+msgid "Choose an event type"
+msgstr "เลือกประเภทกิจกรรม"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "เลือกประเภทกิจกรรมที่มีอยู่"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "เลือกปฏิทินที่จะติดตามอย่างน้อยหนึ่งรายการ"
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "เลือกปฏิทินที่คุณต้องการในแอปปฏิทินของคุณเอง"
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "เลือกวันที่ในแต่ละปีในรูปแบบ MM-DD"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "เลือกวันที่ของกิจกรรม"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "เลือกวันในสัปดาห์"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "เลือกกิจกรรมที่ตารางเวลานี้ติดตาม"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "เลือกกิจกรรมที่จะจัดกำลังคน"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "เลือกกิจกรรมที่จะลบ"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "เลือกกิจกรรมที่จะจัดกำลังคน"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "เลือกวันที่แรกและวันที่สุดท้าย"
+
+#: 
+msgid "Choose the first date"
+msgstr "เลือกวันที่แรก"
+
+#: 
+msgid "Choose the last date"
+msgstr "เลือกวันที่สุดท้าย"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "เลือกตำแหน่งของ %1$s ที่ครูของ %2$s มีคุณสมบัติ ครู: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "เลือกทีมที่ตำแหน่งนี้รับใช้"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "เลือกธีมที่สมาชิกเห็น เปิดหรือปิดส่วนต่างๆ ของพอร์ทัล และดูว่าใครใช้พอร์ทัล"
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "เลือกรายสัปดาห์ รายเดือน หรือรายปี"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "เลือกว่าวันที่ของตารางเวลามาจากที่ใด"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "เลือกว่าคริสตจักรนี้ใช้ระบบอาสาสมัครแบบใด ล่วงหน้านานเท่าใดที่ตารางจะถูกเติม เมื่อใดที่ส่งการแจ้งเตือน และตรวจสอบว่างานเบื้องหลังทำงานอยู่"
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "เลือกว่าใครมาเติมแต่ละตำแหน่งโดยค่าเริ่มต้น ตัวเลือกนี้บันทึกไว้ในตารางเวลา: เขาจะถูกมอบหมายในทุกรอบที่สร้างตอนนี้และที่การเติมประจำวันสร้างภายหลัง ตราบที่ยังมีคุณสมบัติ และจะถูกขอให้ตอบกลับ เว้นแต่คุณตั้งเป็นตอบรับแล้ว ปล่อยตำแหน่งว่างไว้เพื่อมอบหมายเป็นรายสัปดาห์"
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "เลือกว่าใครมาทำหน้าที่แทนคุณ"
+
+#: 
+msgid "Church Calendar"
+msgstr "ปฏิทินคริสตจักร"
+
+#: 
+msgid "Church Calendars"
+msgstr "ปฏิทินคริสตจักร"
+
+#: 
+msgid "Church calendar"
+msgstr "ปฏิทินคริสตจักร"
+
+#: 
+msgid "Church events of a type"
+msgstr "กิจกรรมคริสตจักรประเภทหนึ่ง"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "กิจกรรมคริสตจักรประเภทหนึ่งจะถูกเพิ่มในปฏิทินคริสตจักร ตรวจสอบประเภทกิจกรรม ชื่อ และวันที่ของตารางเวลา"
+
+#: 
+msgid "Church website"
+msgstr "เว็บไซต์คริสตจักร"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM มีสองวิธีในการจัดการอาสาสมัคร ควรใช้เพียงวิธีเดียวในเวลาเดียวกัน การตั้งค่าทางซ้ายกำหนดว่าคริสตจักรนี้เห็นวิธีใด การสลับจะซ่อนหรือแสดงหน้าและเมนู แต่ไม่ลบข้อมูล จึงสลับกลับได้"
+
+#: 
+msgid "Close event details"
+msgstr "ปิดรายละเอียดกิจกรรม"
+
+#: 
+msgid "Colour"
+msgstr "สี"
+
+#: 
+msgid "Completed"
+msgstr "เสร็จสิ้นแล้ว"
+
+#: 
+msgid "Compose Message"
+msgstr "เขียนข้อความ"
+
+#: 
+msgid "Confirm your family details"
+msgstr "ยืนยันข้อมูลครอบครัวของคุณ"
+
+#: 
+msgid "Coordinator removed"
+msgstr "ลบผู้ประสานงานแล้ว"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "คัดลอกที่อยู่นี้แล้วเพิ่มในแอปปฏิทินของคุณเป็นการสมัครรับปฏิทินใหม่"
+
+#: 
+msgid "Could not build the preview."
+msgstr "ไม่สามารถสร้างตัวอย่างได้"
+
+#: 
+msgid "Could not count the class's events"
+msgstr "ไม่สามารถนับกิจกรรมของชั้นเรียนได้"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "ไม่สามารถให้สิทธิ์ขอบเขตได้"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "ไม่สามารถโหลดชั้นเรียนโรงเรียนวันอาทิตย์ได้"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "ไม่สามารถโหลดแดชบอร์ดได้"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "ไม่สามารถโหลดตัวเลือกกิจกรรมได้"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "ไม่สามารถโหลดรอบได้"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "ไม่สามารถโหลดตารางเวลาได้"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "ไม่สามารถโหลดกิจกรรมที่กำลังจะมาถึงได้"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "ไม่สามารถโหลดอาสาสมัครได้"
+
+#: 
+msgid "Could not load this email."
+msgstr "ไม่สามารถโหลดอีเมลนี้ได้"
+
+#: 
+msgid "Could not load this ministry"
+msgstr "ไม่สามารถโหลดพันธกิจนี้ได้"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "ไม่สามารถโหลดกิจกรรมของพันธกิจนี้ได้"
+
+#: 
+msgid "Could not load this team"
+msgstr "ไม่สามารถโหลดทีมนี้ได้"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "ไม่สามารถเพิกถอนสิทธิ์ขอบเขตได้"
+
+#: 
+msgid "Create"
+msgstr "สร้าง"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "สร้างตารางเวลาและสร้างรอบของตารางนั้น แล้วสัปดาห์ที่ต้องเติมจะแสดงที่นี่"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "สร้างตารางเวลาและสร้างรอบของตารางนั้น แล้วสัปดาห์ที่ต้องจัดกำลังคนจะแสดงที่นี่"
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "สร้างอย่างน้อยหนึ่งตำแหน่งสำหรับทีมนี้ แล้วติ๊กเลือกว่าใครรับใช้ตำแหน่งใดได้"
+
+#: 
+msgid "Create ministry"
+msgstr "สร้างพันธกิจ"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "การสร้างพันธกิจต้องมีสิทธิ์ผู้จัดการอาสาสมัคร"
+
+#: 
+msgid "Date and time"
+msgstr "วันที่และเวลา"
+
+#: 
+msgid "Date each year"
+msgstr "วันที่ในแต่ละปี"
+
+#: 
+msgid "Dates"
+msgstr "วันที่"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "วันที่ต้องอยู่ในรูปแบบ YYYY-MM-DD"
+
+#: 
+msgid "Day of the month"
+msgstr "วันของเดือน"
+
+#: 
+msgid "Day of the week"
+msgstr "วันในสัปดาห์"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "ปิดใช้งานพันธกิจ"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "ปิดใช้งานตารางเวลา"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "ปิดใช้งานพันธกิจนี้ก่อนลบ"
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "ปิดใช้งาน {{name}} หรือไม่ พันธกิจจะย้ายไปที่ พันธกิจที่ปิดใช้งาน ในแถบด้านข้าง ซึ่งสามารถเปิดใช้งานอีกครั้งหรือลบได้ ไม่มีสิ่งใดถูกลบ"
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "ปิดใช้งาน {{name}} หรือไม่ จะไม่มีรอบใหม่ถูกสร้างให้ ทั้งจากการสร้างและการเติมประจำวัน รอบและการมอบหมายที่มีอยู่จะยังคงอยู่ และเปิดใช้งานอีกครั้งได้"
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "พันธกิจที่ปิดใช้งาน"
+
+#: 
+msgid "Declined"
+msgstr "ปฏิเสธแล้ว"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "ประเภทกิจกรรมเริ่มต้นสำหรับกิจกรรมของพันธกิจ"
+
+#: 
+msgid "Default volunteers"
+msgstr "อาสาสมัครเริ่มต้น"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "อาสาสมัครเริ่มต้นส่งเป็นความต้องการ: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "ลบกิจกรรม"
+
+#: 
+msgid "Delete ministry"
+msgstr "ลบพันธกิจ"
+
+#: 
+msgid "Delete occurrences"
+msgstr "ลบรอบ"
+
+#: 
+msgid "Delete position"
+msgstr "ลบตำแหน่ง"
+
+#: 
+msgid "Delete schedule"
+msgstr "ลบตารางเวลา"
+
+#: 
+msgid "Delete team"
+msgstr "ลบทีม"
+
+#: 
+msgid "Delete those events"
+msgstr "ลบกิจกรรมเหล่านั้น"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "ลบ {{name}} และทุกสิ่งในนั้นหรือไม่ ตำแหน่ง คุณสมบัติ ความต้องการกำลังคน ตารางเวลา รอบ และการมอบหมาย รวมถึงบันทึกการรับใช้ในอดีต และสิทธิ์หัวหน้าทีมจะถูกลบ หากต้องการเก็บประวัติ ให้ปิดใช้งานทีมแทน การดำเนินการนี้ย้อนกลับไม่ได้"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "ลบ {{name}} และทุกสิ่งในนั้นหรือไม่ ทีม ตำแหน่ง ตารางเวลา {{occurrences}} รอบ และ {{assignments}} การมอบหมาย รวมถึงบันทึกการรับใช้ในอดีต พร้อมสิทธิ์ผู้ประสานงานและหัวหน้าทีม กลุ่มอาสาสมัคร และปฏิทินจะถูกลบ การดำเนินการนี้ย้อนกลับไม่ได้"
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "ลบ {{name}} หรือไม่ คุณสมบัติ ความต้องการกำลังคน และการมอบหมาย รวมถึงบันทึกการรับใช้ในอดีตจะถูกลบไปด้วย หากต้องการเก็บประวัติ ให้ปิดใช้งานตำแหน่งแทน การดำเนินการนี้ย้อนกลับไม่ได้"
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "ลบ {{name}} หรือไม่ การดำเนินการนี้ย้อนกลับไม่ได้"
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "การลบพันธกิจต้องมีสิทธิ์ผู้จัดการอาสาสมัคร"
+
+#: 
+msgid "Developer mode"
+msgstr "โหมดนักพัฒนา"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "เสร็จแล้ว — คุณกลับมาที่รายการแล้ว"
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "ยกเลิกความต้องการกำลังคนเฉพาะของรอบนี้ แล้วติดตามตารางเวลาของมันอีกครั้งหรือไม่"
+
+#: 
+msgid "Due soon"
+msgstr "ใกล้ถึงกำหนด"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "ต้องระบุแต่ละปฏิทินเป็นประเภทและรหัส"
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "อาสาสมัครเริ่มต้นแต่ละคนต้องระบุบุคคล"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "ความต้องการกำลังคนแต่ละรายการต้องระบุตำแหน่ง"
+
+#: 
+msgid "Edit event"
+msgstr "แก้ไขกิจกรรม"
+
+#: 
+msgid "Edit ministry"
+msgstr "แก้ไขพันธกิจ"
+
+#: 
+msgid "Edit position"
+msgstr "แก้ไขตำแหน่ง"
+
+#: 
+msgid "Edit schedule"
+msgstr "แก้ไขตารางเวลา"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "แก้ไขความต้องการกำลังคน"
+
+#: 
+msgid "Edit team"
+msgstr "แก้ไขทีม"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "แก้ไขตารางเวลาและเลือกชั้นเรียนอื่น"
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "แก้ไขตารางเวลาและเลือกประเภทกิจกรรมอื่น"
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "แก้ไขตารางเวลาและเลือกกิจกรรมที่ติดตาม"
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "แก้ไขตารางเวลาและเลื่อนวันที่สุดท้ายออกไปเพื่อติดตามกิจกรรมเพิ่ม"
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "แก้ไขผ่านพอร์ทัลสมาชิก: %s"
+
+#: 
+msgid "Email %s"
+msgstr "ส่งอีเมลถึง %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "ส่งอีเมลถึงครอบครัว %s"
+
+#: 
+msgid "Email History"
+msgstr "ประวัติอีเมล"
+
+#: 
+msgid "Email content"
+msgstr "เนื้อหาอีเมล"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "ส่งอีเมลถึงผู้ที่ไม่ได้เข้าร่วม: %s"
+
+#: 
+msgid "Email not found"
+msgstr "ไม่พบอีเมล"
+
+#: 
+msgid "Email preview"
+msgstr "ตัวอย่างอีเมล"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "การส่งอีเมลถูกปิดอยู่"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "ยังไม่ได้เปิดการส่งอีเมล ตั้งค่า SMTP และเปิดใช้งานอีเมลก่อนส่ง"
+
+#: 
+msgid "Emails"
+msgstr "อีเมล"
+
+#: 
+msgid "End time"
+msgstr "เวลาสิ้นสุด"
+
+#: 
+msgid "Enter counts"
+msgstr "ป้อนจำนวน"
+
+#: 
+msgid "Enter email subject…"
+msgstr "ป้อนหัวข้ออีเมล…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "ป้อนรหัสผ่านปัจจุบันของคุณ แล้วป้อนรหัสผ่านใหม่สองครั้ง"
+
+#: 
+msgid "Enter your message…"
+msgstr "ป้อนข้อความของคุณ…"
+
+#: 
+msgid "Event staffed"
+msgstr "จัดกำลังคนกิจกรรมแล้ว"
+
+#: 
+msgid "Event title"
+msgstr "ชื่อกิจกรรม"
+
+#: 
+msgid "Event type"
+msgstr "ประเภทกิจกรรม"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "อีเมลทุกฉบับที่ ChurchCRM ส่ง เรียงจากใหม่สุด เปิดบุคคลเพื่อดูประวัติทั้งหมดของเขา"
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "ทุกตำแหน่งในช่วงนี้มีคนครบตามที่ต้องการ"
+
+#: 
+msgid "Everyone has answered"
+msgstr "ทุกคนตอบแล้ว"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "ทุกคนในรายการที่เลือกจะเข้าร่วมกลุ่มอาสาสมัครของพันธกิจนี้ ติ๊กเลือกตำแหน่งของพวกเขาภายหลัง"
+
+#: 
+msgid "Everything is correct"
+msgstr "ทุกอย่างถูกต้อง"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "สร้างตัวอย่างไม่สำเร็จ"
+
+#: 
+msgid "Failed to load email"
+msgstr "โหลดอีเมลไม่สำเร็จ"
+
+#: 
+msgid "Failed to load email history"
+msgstr "โหลดประวัติอีเมลไม่สำเร็จ"
+
+#: 
+msgid "Failed to send email"
+msgstr "ส่งอีเมลไม่สำเร็จ"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "ส่งอีเมลไม่สำเร็จ โปรดลองอีกครั้งหรือใช้ 'เปิดในโปรแกรมอีเมล'"
+
+#: 
+msgid "Family Member"
+msgstr "สมาชิกครอบครัว"
+
+#: 
+msgid "Family verification"
+msgstr "การยืนยันครอบครัว"
+
+#: 
+msgid "File"
+msgstr "ไฟล์"
+
+#: 
+msgid "Fill"
+msgstr "เติม"
+
+#: 
+msgid "Fill by default with"
+msgstr "เติมโดยค่าเริ่มต้นด้วย"
+
+#: 
+msgid "Fill this gap"
+msgstr "เติมช่องว่างนี้"
+
+#: 
+msgid "Filled"
+msgstr "เติมแล้ว"
+
+#: 
+msgid "Find a sub"
+msgstr "หาตัวแทน"
+
+#: 
+msgid "Find a volunteer"
+msgstr "หาอาสาสมัคร"
+
+#: 
+msgid "Find an event"
+msgstr "ค้นหากิจกรรม"
+
+#: 
+msgid "Find something to do"
+msgstr "ค้นหาสิ่งที่ทำได้"
+
+#: 
+msgid "Find something to help with"
+msgstr "ค้นหาสิ่งที่ช่วยได้"
+
+#: 
+msgid "Findings"
+msgstr "ผลการตรวจสอบ"
+
+#: 
+msgid "First date"
+msgstr "วันที่แรก"
+
+#: 
+msgid "Folder"
+msgstr "โฟลเดอร์"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "ชื่อโฟลเดอร์ของธีมพอร์ทัลสมาชิกที่จะใช้ จาก Include/themes/ \"default\" คือธีมของระบบที่มาพร้อมกับ ChurchCRM"
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "สร้างใหม่อีกครั้งเมื่อใกล้ถึงวันที่แรกมากขึ้น"
+
+#: 
+msgid "Generate occurrences"
+msgstr "สร้างรอบ"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "ขอที่อยู่ปฏิทินใหม่หรือไม่"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "ตั้งชื่อพันธกิจ"
+
+#: 
+msgid "Give the position a name"
+msgstr "ตั้งชื่อตำแหน่ง"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "ระบุเวลาเริ่มและสิ้นสุดในรูปแบบ HH:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "ตั้งชื่อทีม"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "ไปที่การอาสาของฉัน"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "ไปที่การตั้งค่าพอร์ทัลสมาชิก"
+
+#: 
+msgid "Going"
+msgstr "จะไป"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "ให้คุณสมบัติในหน้าพันธกิจ แล้วมอบหมายเขาที่นี่"
+
+#: 
+msgid "Granted"
+msgstr "ให้สิทธิ์แล้ว"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "ลองดูข้อมูลที่คริสตจักรเก็บไว้เกี่ยวกับครัวเรือนของคุณ แล้วแจ้งเราว่ายังถูกต้องหรือไม่"
+
+#: 
+msgid "Headcount"
+msgstr "จำนวนผู้เข้าร่วม"
+
+#: 
+msgid "Hello %s"
+msgstr "สวัสดี %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "ต้องการความช่วยเหลือ"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "ไม่สามารถบันทึกการขอความช่วยเหลือได้"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "สร้างรอบล่วงหน้านานเท่าใดสำหรับกิจกรรมที่แต่ละตารางเวลาติดตาม งานเบื้องหลังรายวันจะเติมทุกตารางเวลาให้ถึงจุดนี้"
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "กี่ชั่วโมงก่อนรอบอาสาสมัครที่จะส่งอีเมลเตือน ตั้งเป็น 0 เพื่อไม่ส่งการเตือนเลย การจัดส่งขึ้นอยู่กับการทำงานของงานเบื้องหลัง ดูเอกสารอาสาสมัครสำหรับการตั้งค่า cron ที่แนะนำ"
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "กี่ชั่วโมงก่อนรอบที่จะส่งอีเมลเตือน ตั้งเป็น 0 เพื่อไม่ส่งการเตือนเลย"
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "แต่ละตำแหน่งต้องการกี่คนทุกครั้งที่ทำงานรอบนี้ เปลี่ยนวันใดวันหนึ่งแยกต่างหากได้ภายหลัง อาสาสมัครเริ่มต้นจะถูกมอบหมายในทุกรอบใหม่ตราบที่ยังมีคุณสมบัติ การเปลี่ยนแปลงไม่กระทบรอบที่มีอยู่แล้ว"
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "แต่ละรอบของตารางเวลานี้ต้องการอาสาสมัครกี่คน ยกเลิกการติ๊กตำแหน่งที่ตารางนี้ไม่ใช้ อาสาสมัครเริ่มต้นจะถูกมอบหมายในทุกรอบใหม่ตราบที่ยังมีคุณสมบัติ การเปลี่ยนแปลงไม่กระทบรอบที่มีอยู่แล้ว"
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "กิจกรรมนี้ต้องการอาสาสมัครกี่คน ยกเลิกการติ๊กตำแหน่งที่ไม่ใช้"
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "สร้างรอบอาสาสมัครล่วงหน้ากี่สัปดาห์สำหรับกิจกรรมที่แต่ละตารางเวลาติดตาม ตั้งแต่ 1 ถึง 52 งานเบื้องหลังรายวันจะเติมทุกตารางเวลาให้ถึงจุดนี้"
+
+#: 
+msgid "How often"
+msgstr "บ่อยเพียงใด"
+
+#: 
+msgid "How to correct this"
+msgstr "วิธีแก้ไขเรื่องนี้"
+
+#: 
+msgid "I can't"
+msgstr "ฉันไม่สามารถไปได้"
+
+#: 
+msgid "I'd like to help"
+msgstr "ฉันอยากช่วย"
+
+#: 
+msgid "I'll be there"
+msgstr "ฉันจะไป"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "หากข้อความส่งไม่สำเร็จ ให้ขอผู้ดูแลระบบตรวจสอบการตั้งค่าพันธกิจ"
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "หากคุณไม่สามารถมาได้อีก โปรดปฏิเสธในตารางอาสาสมัครของคุณโดยเร็วที่สุด เพื่อให้หาคนมาเติมตำแหน่งได้"
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "หากคุณแชร์ที่อยู่นี้โดยไม่ตั้งใจ ให้ขอที่อยู่ใหม่ ที่อยู่เดิมจะใช้ไม่ได้ทันที"
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "ใน 15 นาทีที่ผ่านมา"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "อยู่ในกลุ่มอาสาสมัคร"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "ภายใน: วันที่ล่าสุดที่เติมตารางอาสาสมัครถึงขอบเขตการจัดตาราง (YYYY-MM-DD) อย่าแก้ไขด้วยตนเอง"
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "ภายใน: เวลาที่เติมตารางอาสาสมัครล่าสุดและจำนวนรอบที่สร้างขึ้น อย่าแก้ไขด้วยตนเอง"
+
+#: 
+msgid "Is this still right?"
+msgstr "ข้อมูลนี้ยังถูกต้องหรือไม่"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "รอบของตารางนี้จะถูกสร้างโดยไม่มีตำแหน่งให้เติม แก้ไขตารางเวลาเพื่อเพิ่มความต้องการกำลังคน"
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "ให้เขาอยู่ใน {{className}} ต่อไป"
+
+#: 
+msgid "Kind"
+msgstr "ชนิด"
+
+#: 
+msgid "Last 24 hours"
+msgstr "24 ชั่วโมงที่ผ่านมา"
+
+#: 
+msgid "Last 30 days"
+msgstr "30 วันที่ผ่านมา"
+
+#: 
+msgid "Last 7 days"
+msgstr "7 วันที่ผ่านมา"
+
+#: 
+msgid "Last attempt"
+msgstr "ความพยายามล่าสุด"
+
+#: 
+msgid "Last check"
+msgstr "การตรวจสอบล่าสุด"
+
+#: 
+msgid "Last date"
+msgstr "วันที่สุดท้าย"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "เห็นในพอร์ทัลล่าสุด"
+
+#: 
+msgid "Last sign-in"
+msgstr "ลงชื่อเข้าใช้ล่าสุด"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "ตั้งทั้งสองเป็น 0 เพื่อรับใช้ตรงกับเวลาที่กิจกรรมเกิดขึ้น เมื่อเลื่อนกิจกรรม อาสาสมัครจะเลื่อนตามไปด้วย"
+
+#: 
+msgid "Leave open"
+msgstr "ปล่อยว่างไว้"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "ให้สมาชิกเปลี่ยนวันเกิดของตนเองและของสมาชิกในครอบครัวในพอร์ทัลสมาชิก"
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "ให้สมาชิกแก้ไขวันเกิด"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "แจ้งสำนักงานคริสตจักรว่าข้อมูลทั้งหมดข้างต้นยังถูกต้องหรือไม่"
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "แจ้งเหตุผลให้เขาทราบ (ไม่บังคับ)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "ให้ผู้ประสานงานของพันธกิจนั้นจัดตารางอาสาสมัครสำหรับกิจกรรมนี้ได้ และแก้ไขตัวกิจกรรมได้ด้วย"
+
+#: 
+msgid "Loading the calendar…"
+msgstr "กำลังโหลดปฏิทิน…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "จัดการพันธกิจ"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "จัดการพันธกิจของฉัน"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "สิทธิ์จัดการพันธกิจของฉัน พร้อมพันธกิจหรือทีมที่จะจัดการ"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "ต้องมีสิทธิ์จัดการพันธกิจของฉัน พร้อมพันธกิจหรือทีมที่จะจัดการ"
+
+#: 
+msgid "Manage staffing"
+msgstr "จัดการกำลังคน"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "จัดการจากพันธกิจ %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "จัดการจากพันธกิจ {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "สูงสุด"
+
+#: 
+msgid "Member Portal"
+msgstr "พอร์ทัลสมาชิก"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "สมาชิกเห็นหน้า \"ไม่พร้อมใช้งานชั่วคราว\" จนกว่าจะแก้ไขเรื่องนี้ รายละเอียดเดียวกันถูกบันทึกไว้ในบันทึกของแอปพลิเคชันและบันทึกข้อผิดพลาดของเว็บเซิร์ฟเวอร์"
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "สมาชิกเห็นเฉพาะปฏิทินที่เปิดไว้ที่นี่ วันเกิดและวันครบรอบแสดงเฉพาะชื่อแรกและอักษรตัวแรกของนามสกุล"
+
+#: 
+msgid "Message"
+msgstr "ข้อความ"
+
+#: 
+msgid "Min"
+msgstr "ต่ำสุด"
+
+#: 
+msgid "Ministries"
+msgstr "พันธกิจ"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "พันธกิจที่กำลังมองหาความช่วยเหลือ"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "พันธกิจที่เพิ่มกิจกรรมได้"
+
+#: 
+msgid "Ministry"
+msgstr "พันธกิจ"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "ปฏิทินพันธกิจ"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "ผู้ประสานงานพันธกิจ"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "แดชบอร์ดพันธกิจ"
+
+#: 
+msgid "Ministry Settings"
+msgstr "การตั้งค่าพันธกิจ"
+
+#: 
+msgid "Ministry calendar"
+msgstr "ปฏิทินพันธกิจ"
+
+#: 
+msgid "Ministry created"
+msgstr "สร้างพันธกิจแล้ว"
+
+#: 
+msgid "Ministry management access"
+msgstr "สิทธิ์จัดการพันธกิจ"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "ต้องมีสิทธิ์จัดการพันธกิจ"
+
+#: 
+msgid "Ministry name"
+msgstr "ชื่อพันธกิจ"
+
+#: 
+msgid "Ministry not found"
+msgstr "ไม่พบพันธกิจ"
+
+#: 
+msgid "My Family"
+msgstr "ครอบครัวของฉัน"
+
+#: 
+msgid "My Teams"
+msgstr "ทีมของฉัน"
+
+#: 
+msgid "My ministries and teams"
+msgstr "พันธกิจและทีมของฉัน"
+
+#: 
+msgid "My schedule"
+msgstr "ตารางของฉัน"
+
+#: 
+msgid "My volunteering"
+msgstr "การอาสาของฉัน"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "ตั้งชื่อตำแหน่งนี้ในหน้าที่สมาชิกค้นหาสิ่งที่ช่วยได้"
+
+#: 
+msgid "Needs an answer"
+msgstr "ต้องการคำตอบ"
+
+#: 
+msgid "Needs filling"
+msgstr "ต้องการคนมาเติม"
+
+#: 
+msgid "Never signed in"
+msgstr "ไม่เคยลงชื่อเข้าใช้"
+
+#: 
+msgid "New account"
+msgstr "บัญชีใหม่"
+
+#: 
+msgid "New event"
+msgstr "กิจกรรมใหม่"
+
+#: 
+msgid "New ministry"
+msgstr "พันธกิจใหม่"
+
+#: 
+msgid "New record notification"
+msgstr "การแจ้งเตือนระเบียนใหม่"
+
+#: 
+msgid "New recurring event"
+msgstr "กิจกรรมซ้ำใหม่"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "ต้องการอาสาสมัครใหม่สำหรับตำแหน่งต่อไปนี้"
+
+#: 
+msgid "Newest first"
+msgstr "ใหม่สุดก่อน"
+
+#: 
+msgid "Next on %s"
+msgstr "ถัดไปวันที่ %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "ยังไม่มีการแชร์ปฏิทินให้สมาชิก"
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "ไม่มีปฏิทินเปิดให้พันธกิจนี้ กิจกรรมจึงจะไม่แสดงในปฏิทินใด"
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "ไม่มีการแชร์ปฏิทินให้สมาชิก"
+
+#: 
+msgid "No class"
+msgstr "ไม่มีชั้นเรียน"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "ยังไม่มีข้อมูลติดต่อ"
+
+#: 
+msgid "No coordinators yet"
+msgstr "ยังไม่มีผู้ประสานงาน"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "ไม่มีวันที่ระหว่างวันที่แรกและวันที่สุดท้ายที่ตรงกับการซ้ำ"
+
+#: 
+msgid "No email was sent."
+msgstr "ไม่ได้ส่งอีเมล"
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "ยังไม่เคยส่งอีเมลถึงระเบียนนี้"
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "ยังไม่มีการบันทึกจำนวนผู้เข้าร่วม"
+
+#: 
+msgid "No longer needed"
+msgstr "ไม่ต้องการอีกต่อไป"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "ยังไม่มีสมาชิกลงชื่อเข้าใช้พอร์ทัลสมาชิก"
+
+#: 
+msgid "No ministry"
+msgstr "ไม่มีพันธกิจ"
+
+#: 
+msgid "No past events"
+msgstr "ไม่มีกิจกรรมที่ผ่านมา"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "ยังไม่ได้อัปโหลดรูปภาพของบุคคลนี้"
+
+#: 
+msgid "No photo was sent."
+msgstr "ไม่ได้ส่งรูปภาพ"
+
+#: 
+msgid "No positions yet"
+msgstr "ยังไม่มีตำแหน่ง"
+
+#: 
+msgid "No qualifications yet."
+msgstr "ยังไม่มีคุณสมบัติ"
+
+#: 
+msgid "No schedules yet"
+msgstr "ยังไม่มีตารางเวลา"
+
+#: 
+msgid "No staffing needs set"
+msgstr "ยังไม่ได้ตั้งความต้องการกำลังคน"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "ไม่มีความต้องการกำลังคน: รอบที่สร้างขึ้นจะไม่ต้องการใครเลย"
+
+#: 
+msgid "No substitution requests"
+msgstr "ไม่มีคำขอแทนที่"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "ไม่มีการแทนที่ที่ต้องตัดสิน"
+
+#: 
+msgid "No teams yet"
+msgstr "ยังไม่มีทีม"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "ไม่มีกิจกรรม %1$s ที่กำลังจะมาถึงชื่อ \"%2$s\" ในปฏิทิน ตารางเวลาจะติดตามกิจกรรมที่มีอยู่แล้ว"
+
+#: 
+msgid "No upcoming event matches"
+msgstr "ไม่มีกิจกรรมที่กำลังจะมาถึงที่ตรงกัน"
+
+#: 
+msgid "No upcoming events"
+msgstr "ไม่มีกิจกรรมที่กำลังจะมาถึง"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "ไม่มีกิจกรรมประเภทนี้ที่กำลังจะมาถึงในปฏิทิน"
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "ไม่มีกิจกรรมที่กำลังจะมาถึงให้เลือก"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "ยังไม่มีใครถูกมอบหมาย"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "ยังไม่มีใครอื่นได้รับการฝึกสำหรับเรื่องนี้ — แจ้งผู้ประสานงานของคุณแทน"
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "ยังไม่มีใครระบุว่าแต่ละตำแหน่งต้องการอาสาสมัครกี่คน จึงไม่มีอะไรให้เติม"
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "ไม่มีใครในช่วงนี้ที่ยังตัดสินใจอยู่"
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "ยังไม่มีใครมีคุณสมบัติสำหรับตำแหน่งนี้"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "ยังไม่มีใครมีคุณสมบัติสำหรับตำแหน่งนี้ จึงยังว่างอยู่"
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "ไม่สามารถส่งอีเมลถึงผู้รับคนใดได้"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "ไม่มี: ประเภทกิจกรรมเลือกแยกแต่ละกิจกรรม"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "ไม่ได้รับอนุญาตให้ดูอีเมลนี้"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "ไม่ได้รับอนุญาตให้ดูครอบครัวนี้"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "ไม่ได้รับอนุญาตให้ดูบุคคลนี้"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "ไม่ได้รับอนุญาตสำหรับการมอบหมายนี้"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "ไม่ได้รับอนุญาตสำหรับพันธกิจนี้"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "ไม่ได้รับอนุญาตสำหรับรอบนี้"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "ไม่ได้รับอนุญาตสำหรับตำแหน่งนี้"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "ไม่ได้รับอนุญาตสำหรับคุณสมบัตินี้"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "ไม่ได้รับอนุญาตสำหรับความต้องการนี้"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "ไม่ได้รับอนุญาตสำหรับตารางเวลานี้"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "ไม่ได้รับอนุญาตสำหรับคำขอแทนที่นี้"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "ไม่ได้รับอนุญาตสำหรับทีมนี้"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "ไม่ได้รับอนุญาตให้มอบหมายกิจกรรมให้พันธกิจอาสาสมัครนั้น"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "ไม่ได้รับอนุญาตให้เปลี่ยนกิจกรรม %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "ไม่ได้รับอนุญาตให้เปลี่ยนพันธกิจอาสาสมัครของกิจกรรมนี้"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "ไม่ได้รับอนุญาตให้สร้างกิจกรรมที่ไม่มีพันธกิจอาสาสมัครที่คุณจัดการ"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "ไม่ได้รับอนุญาตให้แก้ไขกิจกรรมนี้"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "ไม่ได้รับอนุญาตให้ปักหมุดกิจกรรมไว้กับปฏิทิน \"%s\""
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "ไม่ได้รับอนุญาตให้นำกิจกรรมออกจากปฏิทิน \"%s\""
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "ไม่ได้รับอนุญาตให้นำพันธกิจอาสาสมัครออกจากกิจกรรมนี้"
+
+#: 
+msgid "Not checked in"
+msgstr "ยังไม่ได้เช็คอิน"
+
+#: 
+msgid "Not found"
+msgstr "ไม่พบ"
+
+#: 
+msgid "Not in the pool"
+msgstr "ไม่อยู่ในกลุ่ม"
+
+#: 
+msgid "Not now"
+msgstr "ไม่ใช่ตอนนี้"
+
+#: 
+msgid "Not sent"
+msgstr "ยังไม่ได้ส่ง"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "ไม่ได้ตั้งค่า: ใช้ \"%s\""
+
+#: 
+msgid "Not staffed"
+msgstr "ยังไม่ได้จัดกำลังคน"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "ยังไม่ได้อาสา"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "ไม่มีอะไรเปลี่ยนแปลง จึงไม่ได้บันทึกอะไร"
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "ไม่มีอะไรในปฏิทินสำหรับช่วงเวลานี้"
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "ขณะนี้ไม่มีอะไรในปฏิทิน"
+
+#: 
+msgid "Nothing is short"
+msgstr "ไม่มีอะไรขาด"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "ยังไม่มีอะไรในรายการของคุณ"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "ยังไม่มีอะไรในรายการของคุณ ลองดูว่ามีอะไรที่ต้องเติม"
+
+#: 
+msgid "Nothing open right now"
+msgstr "ขณะนี้ไม่มีตำแหน่งว่าง"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "ยังไม่มีอะไรกำหนดไว้"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "ไม่มีอะไรกำหนดไว้"
+
+#: 
+msgid "Nothing set up yet"
+msgstr "ยังไม่ได้ตั้งค่าอะไร"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "ไม่มีอะไรที่พันธกิจนี้เป็นเจ้าของเกิดขึ้นในปีที่ผ่านมา"
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "ยังไม่มีอะไรให้กำหนดคุณสมบัติ"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "ไม่ได้บันทึกอะไร โปรดตรวจสอบช่องที่ไฮไลต์"
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "ไม่ได้บันทึกอะไร โปรดลองอีกครั้ง"
+
+#: 
+msgid "Notification"
+msgstr "การแจ้งเตือน"
+
+#: 
+msgid "Notifications"
+msgstr "การแจ้งเตือน"
+
+#: 
+msgid "Occurrence not found"
+msgstr "ไม่พบรอบ"
+
+#: 
+msgid "Occurrences"
+msgstr "รอบ"
+
+#: 
+msgid "Offer to help"
+msgstr "เสนอความช่วยเหลือ"
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "เมื่อบุคคลนี้มีคุณสมบัติสำหรับตำแหน่ง เขาจะปรากฏที่นี่พร้อมวันที่ที่กำหนดให้รับใช้"
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "หนึ่งรอบถูกสร้างสำหรับแต่ละกิจกรรมในปฏิทินที่มีกลุ่มที่เชื่อมโยงเป็นชั้นเรียนนี้"
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "หนึ่งรอบถูกสร้างสำหรับแต่ละวันที่ของกิจกรรมนี้ เลือกได้เฉพาะกิจกรรมที่อยู่ในปฏิทินแล้ว"
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "ปฏิทินหนึ่งรายการไม่มีอยู่"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "กิจกรรมหนึ่งรายการไม่มีอยู่"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "ปฏิทินเหล่านั้นรายการหนึ่งไม่ได้แชร์ให้สมาชิก"
+
+#: 
+msgid "One-time"
+msgstr "ครั้งเดียว"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "เฉพาะชั้นเรียนโรงเรียนวันอาทิตย์เท่านั้นที่เชื่อมโยงกับทีมได้"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "เฉพาะผู้ประสานงานเท่านั้นที่บันทึกการตอบกลับแทนผู้อื่นได้"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "เฉพาะผู้ประสานงานของพันธกิจนี้เท่านั้นที่สร้างกิจกรรมของพันธกิจได้"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "เฉพาะผู้ประสานงานของพันธกิจนี้เท่านั้นที่จัดกำลังคนให้กิจกรรมของพันธกิจได้"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "เฉพาะผู้จัดการอาสาสมัครเท่านั้นที่เปลี่ยนหัวหน้าทีมได้"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "เฉพาะผู้จัดการอาสาสมัครเท่านั้นที่เปลี่ยนเรื่องนี้ได้"
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "เฉพาะผู้จัดการอาสาสมัครเท่านั้นที่เปลี่ยนได้ว่าพันธกิจจัดหาครูสำหรับโรงเรียนวันอาทิตย์หรือไม่"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "เฉพาะผู้ใหญ่ในครอบครัวของคุณเท่านั้นที่เปลี่ยนข้อมูลเหล่านี้ได้ โปรดติดต่อสำนักงานคริสตจักร"
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "แสดงเฉพาะผู้ที่ได้รับการฝึกสำหรับเรื่องนี้"
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "เฉพาะอาสาสมัครที่ได้รับมอบหมายเท่านั้นที่เสนอผู้แทนได้"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "แสดงเฉพาะปฏิทินที่พันธกิจนี้เพิ่มกิจกรรมได้ ปฏิทินของพันธกิจเองถูกติ๊กไว้ตั้งแต่ต้น"
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "แสดงเฉพาะส่วนแรกของรายการที่ยาวมาก ให้ลดช่วงเวลาลงเพื่อดูส่วนที่เหลือ"
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "เฉพาะอาสาสมัครที่เสนอผู้แทนเท่านั้นที่ถอนข้อเสนอได้"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "เปิดพันธกิจจากเมนูพันธกิจ สร้างตารางเวลาและสร้างวันที่ แล้วสัปดาห์ที่ต้องจัดกำลังคนจะแสดงที่นี่"
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "เปิดพันธกิจเพื่อตั้งใครสักคนเป็นผู้ประสานงาน หรือเป็นหัวหน้าทีมใดทีมหนึ่งของพันธกิจ"
+
+#: 
+msgid "Open in calendar app"
+msgstr "เปิดในแอปปฏิทิน"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "ไม่สามารถโหลดโอกาสรับใช้ที่เปิดอยู่ได้"
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "เปิดผู้รับในโปรแกรมอีเมลบนเครื่องของคุณ"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "เปิดพอร์ทัลสมาชิก"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "เปิดแดชบอร์ดพันธกิจ"
+
+#: 
+msgid "Open the ministry"
+msgstr "เปิดพันธกิจ"
+
+#: 
+msgid "Open the occurrence"
+msgstr "เปิดรอบ"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "เปิดรอบเพื่อมอบหมายคนที่คุณต้องการ"
+
+#: 
+msgid "Open this team"
+msgstr "เปิดทีมนี้"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "การเปิดปฏิทินให้พันธกิจต้องมีสิทธิ์เพิ่มกิจกรรม"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "ไม่บังคับ ทุกคนที่มีคุณสมบัติสำหรับตำแหน่งของทีมนี้จะกลายเป็นครูของชั้นเรียน และหน้าชั้นเรียนจะไม่เปลี่ยนครูอีก"
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "ไม่บังคับ ชั้นเรียนจะกลายเป็นกลุ่มที่เชื่อมโยง: รายชื่อของชั้นคือผู้ที่เช็คอิน และตารางเวลาของชั้นเรียนจะพบกิจกรรมเหล่านี้"
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "เกินจำนวนสูงสุด: นำคนนี้ออกหรือเพิ่มจำนวนสูงสุด"
+
+#: 
+msgid "Overridden templates"
+msgstr "เทมเพลตที่ถูกแทนที่"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "หน้า %1$s จาก %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "หน้า %d จาก %d"
+
+#: 
+msgid "Password reset"
+msgstr "รีเซ็ตรหัสผ่าน"
+
+#: 
+msgid "Password reset link"
+msgstr "ลิงก์รีเซ็ตรหัสผ่าน"
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "เลือกกิจกรรมในปฏิทินที่กำลังจะมาถึงและระบุว่าต้องการใคร กิจกรรมคงวันและเวลาของตนเอง หากต้องการจัดกำลังคนทั้งชุด ให้เพิ่มตารางเวลาแทน"
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "เลือกผู้ที่ตกลงรับตำแหน่งแทนคุณแล้ว ผู้ประสานงานของคุณจะยืนยัน"
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "โปรดเลือกปฏิทินจากรายการ"
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "โปรดเลือกว่าข้อมูลของคุณต้องเปลี่ยนหรือไม่"
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "โปรดติดต่อสำนักงานคริสตจักรเพื่อให้เราแก้ไขระเบียนของเรา"
+
+#: 
+msgid "Please contact the church office."
+msgstr "โปรดติดต่อสำนักงานคริสตจักร"
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "โปรดป้อนอย่างน้อยสองตัวอักษร"
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "โปรดแจ้งเราว่าคุณมาได้หรือไม่ โดยตอบรับหรือปฏิเสธในตารางอาสาสมัครของคุณ"
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "โปรดแจ้งเราว่าต้องเปลี่ยนอะไร"
+
+#: 
+msgid "Portal settings"
+msgstr "การตั้งค่าพอร์ทัล"
+
+#: 
+msgid "Portal theme"
+msgstr "ธีมพอร์ทัล"
+
+#: 
+msgid "Position"
+msgstr "ตำแหน่ง"
+
+#: 
+msgid "Position added"
+msgstr "เพิ่มตำแหน่งแล้ว"
+
+#: 
+msgid "Position deleted"
+msgstr "ลบตำแหน่งแล้ว"
+
+#: 
+msgid "Position name"
+msgstr "ชื่อตำแหน่ง"
+
+#: 
+msgid "Position not found"
+msgstr "ไม่พบตำแหน่ง"
+
+#: 
+msgid "Position saved"
+msgstr "บันทึกตำแหน่งแล้ว"
+
+#: 
+msgid "Positions"
+msgstr "ตำแหน่ง"
+
+#: 
+msgid "Positions still short"
+msgstr "ตำแหน่งที่ยังขาด"
+
+#: 
+msgid "Proposed"
+msgstr "เสนอแล้ว"
+
+#: 
+msgid "Proposed substitute"
+msgstr "ผู้แทนที่เสนอ"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "นำพันธกิจนี้ไปไว้ในหน้าโอกาสรับใช้ที่เปิดอยู่ของพอร์ทัลสมาชิก ซึ่งอาสาสมัครทุกคนเห็นและเสนอตัวช่วยได้ เขาจะเข้าร่วมกลุ่มอาสาสมัครและคุณจะได้รับอีเมล"
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "ให้ {{name}} เข้าแทนหรือไม่ อาสาสมัครเดิมยังคงมีประวัติของตนและจะได้รับแจ้ง"
+
+#: 
+msgid "Qualification not found"
+msgstr "ไม่พบคุณสมบัติ"
+
+#: 
+msgid "Qualified for"
+msgstr "มีคุณสมบัติสำหรับ"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "อาสาสมัครที่มีคุณสมบัติสามารถสมัครเองในวันที่ว่างของตำแหน่งนี้ได้ ปิดไว้สำหรับตำแหน่งที่มีเพียงหัวหน้าทีมหรือผู้ประสานงานเท่านั้นที่ควรมอบหมาย พอร์ทัลสมาชิกจะไม่เสนอตำแหน่งเหล่านั้น"
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "ให้ครูปัจจุบันของชั้นเรียนมีคุณสมบัติสำหรับ"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "ให้เขามีคุณสมบัติสำหรับตำแหน่ง"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "ให้เขามีคุณสมบัติสำหรับตำแหน่ง"
+
+#: 
+msgid "Reactivate"
+msgstr "เปิดใช้งานอีกครั้ง"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "อ่านคู่มือการสร้างธีม"
+
+#: 
+msgid "Recent Emails"
+msgstr "อีเมลล่าสุด"
+
+#: 
+msgid "Recent Sends"
+msgstr "การส่งล่าสุด"
+
+#: 
+msgid "Recipient"
+msgstr "ผู้รับ"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "จำนวนผู้รับ (%d) เกินจำนวนสูงสุดที่อนุญาตต่อการส่งหนึ่งครั้ง (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "ต้องระบุผู้รับเป็น personIds และ familyIds ไม่ใช่ที่อยู่อีเมล"
+
+#: 
+msgid "Record a decline"
+msgstr "บันทึกการปฏิเสธ"
+
+#: 
+msgid "Record an acceptance"
+msgstr "บันทึกการตอบรับ"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "บันทึกว่า {{name}} ปฏิเสธหรือไม่ การตอบกลับจะถูกบันทึกว่ามาจากคุณ และช่องจะเปิดว่างอีกครั้ง"
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "บันทึกว่า {{name}} ตอบรับหรือไม่ การตอบกลับจะถูกบันทึกว่ามาจากคุณ ไม่ใช่จากเขา"
+
+#: 
+msgid "Record: they accepted"
+msgstr "บันทึก: เขาตอบรับ"
+
+#: 
+msgid "Record: they declined"
+msgstr "บันทึก: เขาปฏิเสธ"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "สรรหาอาสาสมัคร"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "ค่าสรรหาอาสาสมัครต้องเป็นจริงหรือเท็จ"
+
+#: 
+msgid "Recruiting"
+msgstr "กำลังสรรหา"
+
+#: 
+msgid "Recurring"
+msgstr "ซ้ำ"
+
+#: 
+msgid "Reject"
+msgstr "ปฏิเสธ"
+
+#: 
+msgid "Reject substitution"
+msgstr "ปฏิเสธการแทนที่"
+
+#: 
+msgid "Reject this substitute"
+msgstr "ปฏิเสธผู้แทนคนนี้"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "ระยะเวลาล่วงหน้าของการเตือน (ชั่วโมง)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "การเตือน: คุณมีกำหนดรับใช้"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "การเตือนและการแจ้งเตือนจะถูกส่งเมื่องานเบื้องหลังทำงานเท่านั้น เพื่อให้ส่งตรงเวลา ให้รันตัวรันงานตามกำหนดจาก cron ทุก 15 นาที"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "นำอาสาสมัครออก"
+
+#: 
+msgid "Remove coordinator"
+msgstr "ลบผู้ประสานงาน"
+
+#: 
+msgid "Remove the class from them"
+msgstr "นำชั้นเรียนออกจากพวกเขา"
+
+#: 
+msgid "Remove the team leader"
+msgstr "นำหัวหน้าทีมออก"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "นำ {{name}} ออกจาก {{ministry}} หรือไม่ การดำเนินการนี้ลบคุณสมบัติทั้งหมดของเขาที่นี่ นำเขาออกจากทุกรอบในอนาคต ล้างเขาจากการเป็นอาสาสมัครเริ่มต้นในตารางเวลาของพันธกิจนี้ และนำเขาออกจากกลุ่มอาสาสมัคร"
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "นำออกแล้ว คุณสมบัติ {{qualifications}} รายการ การมอบหมายที่กำลังจะมาถึง {{assignments}} รายการ ค่าเริ่มต้นของตารางเวลา {{defaults}} รายการ"
+
+#: 
+msgid "Repeats"
+msgstr "ซ้ำ"
+
+#: 
+msgid "Requirement not found"
+msgstr "ไม่พบความต้องการ"
+
+#: 
+msgid "Reset link"
+msgstr "ลิงก์รีเซ็ต"
+
+#: 
+msgid "Response recorded"
+msgstr "บันทึกการตอบกลับแล้ว"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "ตรวจสอบคำขอในแดชบอร์ดอาสาสมัครแล้วอนุมัติหรือปฏิเสธ"
+
+#: 
+msgid "Review this request"
+msgstr "ตรวจสอบคำขอนี้"
+
+#: 
+msgid "Run background jobs now"
+msgstr "รันงานเบื้องหลังตอนนี้"
+
+#: 
+msgid "SMTP test"
+msgstr "ทดสอบ SMTP"
+
+#: 
+msgid "Save calendars"
+msgstr "บันทึกปฏิทิน"
+
+#: 
+msgid "Save changes"
+msgstr "บันทึกการเปลี่ยนแปลง"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "บันทึกแล้ว — พันธกิจนี้ไม่ได้ขอความช่วยเหลืออีกต่อไป"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "บันทึกแล้ว — พันธกิจนี้กำลังขอความช่วยเหลือ"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "บันทึกแล้ว สมาชิกเห็นปฏิทินที่เปิดไว้ด้านบน"
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "สร้างตารางเวลา \"{{name}}\" แล้ว"
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "สร้างตารางเวลา \"{{name}}\" แล้ว แต่ยังไม่ได้เปิดใช้งาน จึงจะไม่สร้างรอบจนกว่าจะเปิดใช้งาน"
+
+#: 
+msgid "Schedule deactivated"
+msgstr "ปิดใช้งานตารางเวลาแล้ว"
+
+#: 
+msgid "Schedule deleted"
+msgstr "ลบตารางเวลาแล้ว"
+
+#: 
+msgid "Schedule name"
+msgstr "ชื่อตารางเวลา"
+
+#: 
+msgid "Schedule not found"
+msgstr "ไม่พบตารางเวลา"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "เปิดใช้งานตารางเวลาอีกครั้งแล้ว"
+
+#: 
+msgid "Schedule saved"
+msgstr "บันทึกตารางเวลาแล้ว"
+
+#: 
+msgid "Scheduled"
+msgstr "กำหนดไว้แล้ว"
+
+#: 
+msgid "Schedules"
+msgstr "ตารางเวลา"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "เติมตารางเวลาล่าสุดเมื่อ"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "ตารางเวลาไม่มีการซ้ำหรือเวลาของตนเองอีกต่อไป ทุกรอบติดตามกิจกรรมในปฏิทิน ให้นำออก: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "ตารางเวลาไม่กำหนดอีกต่อไปว่าสร้างล่วงหน้านานเท่าใด ขอบเขตการจัดตารางที่ ผู้ดูแลระบบ → การตั้งค่าพันธกิจ ใช้กับทุกตารางเวลา ให้นำออก: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "ขอบเขตการจัดตาราง (สัปดาห์)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "ไม่พบการให้สิทธิ์ขอบเขต"
+
+#: 
+msgid "Search by name"
+msgstr "ค้นหาด้วยชื่อ"
+
+#: 
+msgid "See the whole calendar"
+msgstr "ดูปฏิทินทั้งหมด"
+
+#: 
+msgid "See what needs filling"
+msgstr "ดูสิ่งที่ต้องเติม"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "เลือกปฏิทินเพื่อซ่อนหรือแสดงกิจกรรม"
+
+#: 
+msgid "Select ministries..."
+msgstr "เลือกพันธกิจ..."
+
+#: 
+msgid "Self sign-up"
+msgstr "สมัครด้วยตนเอง"
+
+#: 
+msgid "Self-assignable"
+msgstr "มอบหมายตนเองได้"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "ค่ามอบหมายตนเองได้ต้องเป็นจริงหรือเท็จ"
+
+#: 
+msgid "Self-service accounts"
+msgstr "บัญชีบริการตนเอง"
+
+#: 
+msgid "Send"
+msgstr "ส่ง"
+
+#: 
+msgid "Send Email"
+msgstr "ส่งอีเมล"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "ส่งอีเมลจาก ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "ส่งข้อความการมอบหมายอีกครั้ง"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "ส่งปฏิทินที่จะแสดงเป็นรายการ"
+
+#: 
+msgid "Send to the church office"
+msgstr "ส่งถึงสำนักงานคริสตจักร"
+
+#: 
+msgid "Send your answer"
+msgstr "ส่งคำตอบของคุณ"
+
+#: 
+msgid "Sent"
+msgstr "ส่งแล้ว"
+
+#: 
+msgid "Sent by"
+msgstr "ส่งโดย"
+
+#: 
+msgid "Serving next"
+msgstr "รับใช้ครั้งถัดไป"
+
+#: 
+msgid "Set as Accepted"
+msgstr "ตั้งเป็นตอบรับแล้ว"
+
+#: 
+msgid "Set staffing needs"
+msgstr "ตั้งความต้องการกำลังคน"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "แสดง \"%s\" ในพอร์ทัลสมาชิก"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "แสดงในพอร์ทัลสมาชิก"
+
+#: 
+msgid "Show past events"
+msgstr "แสดงกิจกรรมที่ผ่านมา"
+
+#: 
+msgid "Show the church calendar"
+msgstr "แสดงปฏิทินคริสตจักร"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "แสดงปฏิทินคริสตจักรในพอร์ทัลสมาชิก"
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "แสดงส่วนปฏิทินคริสตจักรในพอร์ทัลสมาชิก"
+
+#: 
+msgid "Show the next"
+msgstr "แสดงรายการถัดไป"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "แสดงส่วนการอาสาและทีมในพอร์ทัลสมาชิก"
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "แสดงพันธกิจนี้ในหน้าโอกาสรับใช้ที่เปิดอยู่"
+
+#: 
+msgid "Show volunteering"
+msgstr "แสดงการอาสา"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "แสดงหน้าการอาสาและทีมในพอร์ทัลสมาชิก"
+
+#: 
+msgid "Show what I have already done"
+msgstr "แสดงสิ่งที่ฉันทำไปแล้ว"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "แสดงตามที่คุณพิมพ์ทุกประการ การขึ้นบรรทัดใหม่จะถูกเก็บไว้"
+
+#: 
+msgid "Sign up"
+msgstr "สมัคร"
+
+#: 
+msgid "Sign-in and security"
+msgstr "การลงชื่อเข้าใช้และความปลอดภัย"
+
+#: 
+msgid "Signed in"
+msgstr "ลงชื่อเข้าใช้แล้ว"
+
+#: 
+msgid "Signed up"
+msgstr "สมัครแล้ว"
+
+#: 
+msgid "Sincerely"
+msgstr "ด้วยความเคารพ"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "ไม่สามารถบันทึกข้อมูลของคุณบางส่วนได้ โปรดตรวจสอบช่องที่ไฮไลต์"
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "ไม่สามารถบันทึกข้อมูลครอบครัวของคุณบางส่วนได้ โปรดตรวจสอบช่องที่ไฮไลต์"
+
+#: 
+msgid "Someone else is covering"
+msgstr "มีคนอื่นมาทำหน้าที่แทน"
+
+#: 
+msgid "Something needs changing"
+msgstr "มีบางอย่างต้องเปลี่ยน"
+
+#: 
+msgid "Something went wrong"
+msgstr "เกิดข้อผิดพลาดบางอย่าง"
+
+#: 
+msgid "Staff an event"
+msgstr "จัดกำลังคนกิจกรรม"
+
+#: 
+msgid "Staff them"
+msgstr "จัดกำลังคนให้พวกเขา"
+
+#: 
+msgid "Staff this event"
+msgstr "จัดกำลังคนกิจกรรมนี้"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "จัดกำลังคนรอบนี้"
+
+#: 
+msgid "Staffed"
+msgstr "จัดกำลังคนแล้ว"
+
+#: 
+msgid "Staffing"
+msgstr "การจัดกำลังคน"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "การจัดกำลังคนจะตั้งหลังจากสร้างกิจกรรมแล้ว"
+
+#: 
+msgid "Staffing needs"
+msgstr "ความต้องการกำลังคน"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "บันทึกความต้องการกำลังคนแล้ว"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "เริ่มต้นด้วยการสร้างพันธกิจ แล้วเพิ่มทีมและตำแหน่งที่รับใช้ในนั้น"
+
+#: 
+msgid "Start time"
+msgstr "เวลาเริ่มต้น"
+
+#: 
+msgid "Start typing a name"
+msgstr "เริ่มพิมพ์ชื่อ"
+
+#: 
+msgid "Statistics"
+msgstr "สถิติ"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "ให้ {{name}} หยุดประสานงาน {{ministry}} หรือไม่ บัญชีผู้ใช้และการมอบหมายของเขาเองจะไม่ถูกแตะต้อง"
+
+#: 
+msgid "Subscribe"
+msgstr "สมัครรับ"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "สมัครรับปฏิทิน"
+
+#: 
+msgid "Substitute"
+msgstr "ผู้แทน"
+
+#: 
+msgid "Substitute approved"
+msgstr "อนุมัติผู้แทนแล้ว"
+
+#: 
+msgid "Substitute asked"
+msgstr "ขอผู้แทนแล้ว"
+
+#: 
+msgid "Substitute decision"
+msgstr "การตัดสินใจเรื่องผู้แทน"
+
+#: 
+msgid "Substitute proposed"
+msgstr "เสนอผู้แทนแล้ว"
+
+#: 
+msgid "Substitute rejected"
+msgstr "ปฏิเสธผู้แทนแล้ว"
+
+#: 
+msgid "Substituted"
+msgstr "มีผู้แทนแล้ว"
+
+#: 
+msgid "Substitution approved"
+msgstr "อนุมัติการแทนที่แล้ว"
+
+#: 
+msgid "Substitution rejected"
+msgstr "ปฏิเสธการแทนที่แล้ว"
+
+#: 
+msgid "Substitution request not found"
+msgstr "ไม่พบคำขอแทนที่"
+
+#: 
+msgid "Substitution requests"
+msgstr "คำขอแทนที่"
+
+#: 
+msgid "Sunday School Class"
+msgstr "ชั้นเรียนโรงเรียนวันอาทิตย์"
+
+#: 
+msgid "System calendar"
+msgstr "ปฏิทินระบบ"
+
+#: 
+msgid "System default"
+msgstr "ค่าเริ่มต้นของระบบ"
+
+#: 
+msgid "Take that back"
+msgstr "ถอนคืน"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "นำ {{name}} ออกจากตำแหน่งนี้หรือไม่ ไม่มีการส่งอีเมล ตารางของเขาจะแสดงวันที่นั้นว่าไม่ต้องการแล้ว และช่องจะเปิดว่างอีกครั้ง"
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "ครูของชั้นเรียนนี้จัดการใน พันธกิจ → %1$s → %2$s"
+
+#: 
+msgid "Team"
+msgstr "ทีม"
+
+#: 
+msgid "Team Leader"
+msgstr "หัวหน้าทีม"
+
+#: 
+msgid "Team added"
+msgstr "เพิ่มทีมแล้ว"
+
+#: 
+msgid "Team deleted"
+msgstr "ลบทีมแล้ว"
+
+#: 
+msgid "Team leader"
+msgstr "หัวหน้าทีม"
+
+#: 
+msgid "Team name"
+msgstr "ชื่อทีม"
+
+#: 
+msgid "Team not found"
+msgstr "ไม่พบทีม"
+
+#: 
+msgid "Team saved"
+msgstr "บันทึกทีมแล้ว"
+
+#: 
+msgid "Teams"
+msgstr "ทีม"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "ทีมคือกลุ่มคนที่รับใช้ในพันธกิจนี้"
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "ทีม ตำแหน่ง และผู้ที่มาเติมตำแหน่งเหล่านั้น"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "การลงชื่อเข้าใช้ล่าสุดสิบครั้ง"
+
+#: 
+msgid "Thank you"
+msgstr "ขอบคุณ!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "ขอบคุณที่สมัครรับใช้"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "ขอบคุณที่สมัครรับใช้ คุณอยู่ในตารางแล้ว"
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "ขอบคุณ สำนักงานคริสตจักรได้รับคำตอบของคุณแล้ว"
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "ขอบคุณ สำนักงานคริสตจักรจะตรวจสอบเรื่องนี้ก่อนเพิ่ม"
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "ขอบคุณที่แจ้งให้เราทราบ"
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "ขอบคุณ — ผู้ประสานงานได้รับแจ้งแล้วว่าคุณอยากช่วยอีกครั้ง"
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "ขอบคุณ — ผู้ประสานงานได้รับแจ้งแล้วว่าคุณอยากช่วย"
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "ขอบคุณ — คุณอยู่ในรายการแล้ว"
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "ไม่มีโฟลเดอร์ธีมพอร์ทัลสมาชิกนั้น"
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "การมอบหมายนั้นเป็นของผู้อื่น"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "ไม่สามารถบันทึกการมอบหมายนั้นได้"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "วันเกิดนั้นไม่ใช่วันที่ที่ถูกต้อง"
+
+#: 
+msgid "That could not be saved."
+msgstr "ไม่สามารถบันทึกได้"
+
+#: 
+msgid "That could not be sent."
+msgstr "ไม่สามารถส่งได้"
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "ไม่สามารถเพิ่มสมาชิกครอบครัวคนนั้นได้ โปรดตรวจสอบช่องที่ไฮไลต์"
+
+#: 
+msgid "That is not a valid date."
+msgstr "นั่นไม่ใช่วันที่ที่ถูกต้อง"
+
+#: 
+msgid "That list could not be loaded."
+msgstr "ไม่สามารถโหลดรายการนั้นได้"
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "บุคคลนั้นดำรงตำแหน่งนี้ในรอบนี้อยู่แล้ว"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "บุคคลนั้นได้รับมอบหมายตำแหน่งนี้ในรอบนี้แล้ว"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "บุคคลนั้นไม่ได้อยู่ในกลุ่มอาสาสมัครของพันธกิจนี้ ส่งใหม่พร้อมตัวเลือกยกเว้นกลุ่มเพื่อมอบหมายเขาต่อไป"
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "บุคคลนั้นไม่ได้อยู่ในกลุ่มอาสาสมัครนี้"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "บุคคลนั้นไม่มีคุณสมบัติสำหรับตำแหน่งนี้"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "ไม่สามารถบันทึกรูปภาพนั้นได้"
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "รูปภาพนั้นใหญ่เกินไป โปรดเลือกรูปที่เล็กกว่า"
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "ตำแหน่งนั้นเป็นของพันธกิจอื่น"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "ตำแหน่งนั้นเป็นของทีมอื่น"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "ตำแหน่งนั้นจัดกำลังคนครบแล้ว"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "ตำแหน่งนั้นไม่ได้จัดกำลังคนในรอบนี้"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "ไม่สามารถบันทึกการตอบกลับนั้นได้"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "ไม่สามารถตั้งสถานะนั้นโดยตรงได้"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "ไม่สามารถตัดสินคำขอแทนที่นั้นได้"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "ทีมนั้นเป็นของพันธกิจอื่น"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "ไม่สามารถเปิดใช้งานธีมนั้นได้"
+
+#: 
+msgid "That theme could not be checked."
+msgstr "ไม่สามารถตรวจสอบธีมนั้นได้"
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "ธีมนั้นมีข้อผิดพลาด จึงไม่ได้เปิดใช้งาน"
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "ไม่สามารถมอบหมายอาสาสมัครคนนั้นได้"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "วันแต่งงานนั้นไม่ใช่วันที่ที่ถูกต้อง"
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s ต้องเป็นวันที่ในรูปแบบ YYYY-MM-DD"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s ต้องเป็นจำนวนเต็มของนาที"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s ต้องอยู่ภายใน %d นาทีของกิจกรรม"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "บันทึกปฏิทินของพอร์ทัลสมาชิกแล้ว"
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "พอร์ทัลสมาชิกไม่สามารถทำตามที่คุณขอให้เสร็จสิ้นได้ โปรดลองอีกครั้งในอีกสักครู่"
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "พอร์ทัลสมาชิกใช้ได้เฉพาะบุคคลที่ลงชื่อเข้าใช้ ไม่ใช่ไคลเอนต์ API"
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "พอร์ทัลสมาชิกตั้งเป็นธีม \"%s\" ซึ่งไม่มีบนเซิร์ฟเวอร์อีกแล้ว สมาชิกเห็นหน้าข้อผิดพลาดจนกว่าคุณจะเลือกธีมที่มีอยู่"
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "พอร์ทัลสมาชิกไม่พร้อมใช้งานชั่วคราว"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "ไม่สามารถเปิดใช้งานธีมพอร์ทัลสมาชิก \"%s\" ได้เพราะมีข้อผิดพลาด"
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "ไม่สามารถแสดงผลธีมพอร์ทัลสมาชิกได้"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "ไม่พบโฟลเดอร์ธีมพอร์ทัลสมาชิก \"%s\""
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "เปลี่ยนธีมพอร์ทัลสมาชิกแล้ว"
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "ไม่สามารถเปลี่ยนชื่อหรือลบบทบาทครูของ %1$s ได้ขณะที่ครูถูกจัดการใน พันธกิจ → %2$s → %3$s"
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "ไม่พบโฟลเดอร์ธีมที่ใช้งานอยู่"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "เลือกที่อยู่แล้ว — คัดลอกด้วยแป้นพิมพ์ของคุณ"
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "ไม่อนุญาตเส้นทางสินทรัพย์ \"%s\""
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "ไม่สามารถยกเลิกการมอบหมายได้"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "ข้อความการมอบหมายจะถูกส่งอีกครั้ง"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "คัดลอกที่อยู่ปฏิทินแล้ว"
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "ไม่สามารถโหลดปฏิทินได้ โปรดลองอีกครั้ง"
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "ไม่สามารถบันทึกปฏิทินได้"
+
+#: 
+msgid "The cart could not be added"
+msgstr "ไม่สามารถเพิ่มรายการที่เลือกได้"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "คริสตจักรยังไม่ได้ส่งอีเมลถึงคุณ"
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "สำนักงานคริสตจักรได้รับแจ้งแล้ว โปรดลองอีกครั้งภายหลัง"
+
+#: 
+msgid "The class does not exist"
+msgstr "ไม่มีชั้นเรียนนี้"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "ชั้นเรียนที่ตารางเวลานี้ติดตามไม่มีอยู่แล้ว"
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "ไม่มีการเก็บเนื้อหาของอีเมลนี้ ChurchCRM เก็บเฉพาะข้อความที่เขียนในตัวเขียนอีเมลและอีเมลอาสาสมัครเท่านั้น"
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "ไม่ได้เก็บเนื้อหาของอีเมลนี้ไว้"
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "ไม่สามารถเพิ่มผู้ประสานงานได้"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "ไม่สามารถโหลดรายชื่อผู้ประสานงานได้"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "วันที่และเวลาของทุกรอบมาจากกิจกรรมในปฏิทิน ดังนั้นการย้ายกิจกรรมจะย้ายตารางเวลาด้วย"
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "พารามิเตอร์ days ต้องเป็นจำนวนเต็มระหว่าง 1 ถึง 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "อาสาสมัครเริ่มต้นต้องเป็นบุคคล"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "อาสาสมัครเริ่มต้นถูกบันทึกไว้ในตารางเวลาและจะอยู่ในรอบที่สร้างตั้งแต่นี้ไป"
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "อาสาสมัครเริ่มต้นต้องเป็นรายการ"
+
+#: 
+msgid "The description is too long"
+msgstr "คำอธิบายยาวเกินไป"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "สิ้นสุดของช่วงอยู่ก่อนการเริ่มต้น"
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "สิ้นสุดของช่วงไม่ใช่วันที่"
+
+#: 
+msgid "The event could not be staffed"
+msgstr "ไม่สามารถจัดกำลังคนกิจกรรมได้"
+
+#: 
+msgid "The event does not exist"
+msgstr "ไม่มีกิจกรรมนี้"
+
+#: 
+msgid "The event is inactive"
+msgstr "กิจกรรมถูกปิดใช้งาน"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "กิจกรรมต้องสิ้นสุดหลังจากเริ่มต้น"
+
+#: 
+msgid "The event title"
+msgstr "ชื่อกิจกรรม"
+
+#: 
+msgid "The event title is too long"
+msgstr "ชื่อกิจกรรมยาวเกินไป"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "ประเภทกิจกรรมที่กิจกรรมใหม่ของพันธกิจเริ่มต้นด้วย หากว่างเปล่า หรือประเภทนั้นถูกลบ จะใช้ประเภทชื่อ \"อื่นๆ\" หากมี"
+
+#: 
+msgid "The event type does not exist"
+msgstr "ไม่มีประเภทกิจกรรมนี้"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "ประเภทกิจกรรมที่ตารางเวลานี้ติดตามไม่มีอยู่แล้ว"
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "ย้ายกิจกรรมได้เฉพาะไปยังชั้นเรียนที่ทีมเชื่อมโยงอยู่"
+
+#: 
+msgid "The events could not be created"
+msgstr "ไม่สามารถสร้างกิจกรรมได้"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "ไม่สามารถลบกิจกรรมได้"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "ไม่สามารถจัดกำลังคนกิจกรรมได้"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "ไม่สามารถลบการให้สิทธิ์ได้"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "วันที่สุดท้ายอยู่ก่อนวันที่แรก"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "ไม่สามารถโหลดรายชื่ออาสาสมัครที่มีสิทธิ์ได้"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "จำนวนสูงสุดต้องไม่ต่ำกว่าจำนวนต่ำสุด"
+
+#: 
+msgid "The message could not be queued"
+msgstr "ไม่สามารถนำข้อความเข้าคิวได้"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "จำนวนต่ำสุดต้องไม่เป็นค่าลบ"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "ไม่สามารถสร้างพันธกิจได้"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "ไม่สามารถปิดใช้งานพันธกิจได้"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "ไม่สามารถลบพันธกิจได้"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "ไม่สามารถเปิดใช้งานพันธกิจอีกครั้งได้"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "ไม่สามารถบันทึกพันธกิจได้"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "ไม่สามารถลบรอบได้"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "รอบนี้ไม่มีตารางเวลา"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "ไม่สามารถสร้างรอบได้"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "อาสาสมัครเดิมถูกปล่อยออก และผู้แทนรับตำแหน่ง ทั้งสองจะได้รับแจ้ง"
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "อาสาสมัครเดิมยังคงอยู่ในตำแหน่ง ทั้งสองจะได้รับแจ้ง"
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "ไม่มีหน้าที่คุณขอ อาจถูกย้ายหรือลบไปแล้ว"
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "ตำแหน่งเป็นของพันธกิจอื่น"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "ไม่สามารถลบตำแหน่งได้"
+
+#: 
+msgid "The position could not be saved"
+msgstr "ไม่สามารถบันทึกตำแหน่งได้"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "ตำแหน่งยังมีคนครอบคลุมอยู่ จึงไม่ต้องดำเนินการ เว้นแต่คุณต้องการปรับรายชื่อ"
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "ไม่สามารถนำคุณสมบัติออกได้"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "ไม่สามารถบันทึกคุณสมบัติได้"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "ไม่สามารถโหลดอาสาสมัครที่มีคุณสมบัติได้"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "การซ้ำต้องระบุว่ากิจกรรมซ้ำอย่างไร"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "คำขอให้ %1$s รับใช้แทน %2$s ได้รับการอนุมัติแล้ว"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "คำขอให้ %1$s รับใช้แทน %2$s ไม่ได้รับการอนุมัติ"
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "ตำแหน่งเดียวกันถูกระบุสองครั้งในความต้องการกำลังคน"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "ไม่สามารถปิดใช้งานตารางเวลาได้"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "ไม่สามารถลบตารางเวลาได้"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "ไม่สามารถเปิดใช้งานตารางเวลาอีกครั้งได้"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "ไม่สามารถบันทึกตารางเวลาได้"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "ตารางเวลาได้รับการอัปเดตแล้ว จึงไม่ต้องทำอะไรเพิ่ม"
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "ช่วงของตารางเวลาสิ้นสุดก่อนเริ่มต้น"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "ไม่สามารถโหลดความต้องการกำลังคนของตารางเวลาได้"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "ไม่สามารถโหลดความต้องการกำลังคนได้"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "ไม่สามารถรีเซ็ตความต้องการกำลังคนได้"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "ไม่สามารถบันทึกความต้องการกำลังคนได้"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "ความต้องการกำลังคนต้องเป็นรายการ"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "ไม่สามารถโหลดแผนกำลังคนได้"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "เริ่มต้นของช่วงไม่ใช่วันที่"
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "ไม่สามารถตัดสินการแทนที่ได้"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "ไม่สามารถโหลดคำขอแทนที่ได้"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "ครูนำเข้าได้เฉพาะในตำแหน่งของทีมนี้"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "ครูของ %1$s ถูกจัดการใน พันธกิจ → %2$s → %3$s ยังเปลี่ยนนักเรียนได้ที่นี่"
+
+#: 
+msgid "The team could not be deleted"
+msgstr "ไม่สามารถลบทีมได้"
+
+#: 
+msgid "The team could not be saved"
+msgstr "ไม่สามารถบันทึกทีมได้"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "ทีมไม่ได้เป็นของพันธกิจนี้"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "ไม่พบโฟลเดอร์ธีม"
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "ประเภทที่กิจกรรมใหม่ในแท็บปฏิทินของพันธกิจเริ่มต้นด้วย ยังเปลี่ยนได้สำหรับแต่ละกิจกรรม เช่น สำหรับชั้นเรียนที่ต้องมีหมวดหมู่จำนวนผู้เข้าร่วม"
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "ไม่สามารถบันทึกการมอบหมายอาสาสมัครได้"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "กลุ่มอาสาสมัครของพันธกิจ %s"
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "ไม่สามารถบันทึกการเปลี่ยนแปลงการตั้งค่าอาสาสมัครได้"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "ช่วงสิ้นสุดก่อนเริ่มต้น"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "ผู้ประสานงานของพันธกิจเหล่านั้นปักหมุดกิจกรรมของพันธกิจตนในปฏิทินนี้ได้โดยไม่ต้องมีสิทธิ์เพิ่มกิจกรรม"
+
+#: 
+msgid "Theme"
+msgstr "ธีม"
+
+#: 
+msgid "Themes"
+msgstr "ธีม"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "ธีมมาจากคริสตจักรของคุณ ไม่ใช่จาก ChurchCRM และโครงการ ChurchCRM ไม่ได้ตรวจสอบ"
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "ไม่มีปฏิทินคริสตจักรที่มีรหัส %d"
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "ไม่มีปฏิทินระบบที่มีรหัส %d"
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "นี่คือข้อมูลที่คริสตจักรเก็บไว้เกี่ยวกับคุณ การเปลี่ยนแปลงจะถูกบันทึกทันที"
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "นี่คือทีมอาสาสมัครที่คุณดูแล เปิดทีมเพื่อตั้งตำแหน่ง ระบุว่าใครรับใช้ที่ใดได้ และเติมสัปดาห์ข้างหน้า"
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "กิจกรรมเหล่านี้ไม่ใช่ชุดเดียวกัน: ชื่อ ประเภท หรือชั้นเรียนต่างกัน"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "พันธกิจเหล่านี้ต้องการคนเพิ่ม บอกพวกเขาว่าคุณสนใจ แล้วจะมีคนติดต่อกลับ"
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "ความต้องการเหล่านี้มาจากตารางเวลา การบันทึกที่นี่เปลี่ยนเฉพาะรอบนี้"
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "ตัวเลขเหล่านี้นับเฉพาะบัญชีบริการตนเอง คือผู้ที่บัญชีเข้าถึงได้เฉพาะพอร์ทัลสมาชิกเท่านั้น"
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "คนเหล่านี้ยังคงถูกมอบหมาย แต่ตำแหน่งที่ดำรงอยู่ไม่ได้เป็นส่วนของแผนกำลังคนของวันนี้อีกแล้ว"
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "คนเหล่านี้ยังคงถูกมอบหมาย แต่ตำแหน่งที่ดำรงอยู่ไม่ได้เป็นส่วนของแผนกำลังคนของรอบนี้อีกแล้ว"
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "ตำแหน่งที่กำหนดไว้เหล่านี้ยังต้องการคน"
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "ทีมเหล่านี้ของ %1$s เชื่อมโยงกับชั้นเรียนโรงเรียนวันอาทิตย์: %2$s ให้ยกเลิกการเชื่อมโยงก่อน"
+
+#: 
+msgid "They could not be added"
+msgstr "ไม่สามารถเพิ่มพวกเขาได้"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "ไม่สามารถนำพวกเขาออกจากพันธกิจนี้ได้"
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "พวกเขาเป็นอาสาสมัครที่นี่อยู่แล้ว"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "การมอบหมายนี้เป็น %1$s และเปลี่ยนเป็น %2$s ไม่ได้"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "การมอบหมายนี้ไม่ใช้งานอีกต่อไป"
+
+#: 
+msgid "This email is not in your history."
+msgstr "อีเมลนี้ไม่อยู่ในประวัติของคุณ"
+
+#: 
+msgid "This event has already happened"
+msgstr "กิจกรรมนี้เกิดขึ้นไปแล้ว"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "เรื่องนี้จะส่งไปที่สำนักงานคริสตจักรเพื่อตรวจสอบ จนกว่าเจ้าหน้าที่จะอนุมัติ สมาชิกครอบครัวใหม่จะแสดงที่นี่ว่ารอการตรวจสอบ"
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "กลุ่มนี้เป็นกลุ่มอาสาสมัครของพันธกิจและจะถูกลบพร้อมพันธกิจ"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "กลุ่มนี้เป็นกลุ่มอาสาสมัครของ %s และจัดการจากพันธกิจนั้น"
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "กลุ่มนี้เป็นกลุ่มอาสาสมัครของ %s จัดการจากพันธกิจนั้น"
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "การติดตั้งนี้ยังไม่มีปฏิทิน"
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "นี่คือการเตือนว่าคุณมีกำหนดรับใช้เร็วๆ นี้"
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "นี่ไม่ใช่ชื่อโฟลเดอร์ธีมที่ถูกต้อง"
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "นี่ไม่ใช่วันที่ของทีมคุณ"
+
+#: 
+msgid "This is not one of your teams."
+msgstr "นี่ไม่ใช่ทีมของคุณ"
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "ที่นี่คือที่ที่คริสตจักรส่งไปรษณีย์และโทรหาเกี่ยวกับครัวเรือนของคุณ"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "นี่คือบัญชีคริสตจักรของคุณ ทุกสิ่งที่คุณทำเพื่อตนเองและครอบครัวอยู่ที่นี่"
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "พันธกิจนี้ไม่มีกิจกรรมที่กำลังจะมาถึงในปฏิทิน"
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "พันธกิจนี้ไม่มีกิจกรรมที่กำลังจะมาถึงชื่อ \"%s\" ตารางเวลาจะติดตามกิจกรรมที่มีอยู่แล้ว ให้เพิ่มก่อนในแท็บปฏิทินของพันธกิจ"
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "พันธกิจนี้ไม่มีกลุ่มอาสาสมัคร"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "พันธกิจนี้ไม่ได้ขอความช่วยเหลือในขณะนี้"
+
+#: 
+msgid "This ministry's events"
+msgstr "กิจกรรมของพันธกิจนี้"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "กิจกรรมของพันธกิจนี้ (ยังไม่ได้เลือกกิจกรรม)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "รอบนี้ติดตามตารางเวลาของมันอีกครั้งแล้ว"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "รอบนี้เกิดขึ้นไปแล้ว"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "รอบนี้เกิดขึ้นไปแล้วและเปลี่ยนการมอบหมายไม่ได้อีก"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "รอบนี้ถูกยกเลิกแล้ว"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "รอบนี้มีความต้องการกำลังคนของตนเอง แยกจากตารางเวลา"
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "หน้านี้ไม่ใช่ส่วนของบัญชีของคุณ หากคิดว่าควรเป็น ให้ถามสำนักงานคริสตจักร"
+
+#: 
+msgid "This page was not found"
+msgstr "ไม่พบหน้านี้"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "ส่วนนี้ของพอร์ทัลสมาชิกสำหรับหัวหน้าทีมอาสาสมัคร"
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "ตำแหน่งนี้มอบหมายโดยหัวหน้าทีมหรือผู้ประสานงาน ไม่ใช่โดยการสมัครเอง"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "ลบตารางเวลานี้ไม่ได้: ยังมีการมอบหมายอาสาสมัคร %d รายการอ้างอิงรอบของตาราง"
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "ตารางเวลานี้ยังไม่มีความต้องการกำลังคน"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "ตารางเวลานี้ไม่ใช้งาน ให้เปิดใช้งานอีกครั้งเพื่อสร้างรอบ"
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "คำขอแทนที่นี้ถูกตัดสินแล้ว"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "ทีมนี้ยังไม่มีตำแหน่ง"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "ทีมนี้จัดกำลังคนให้กิจกรรมนี้อยู่แล้ว"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "เทมเพลตนี้ขอไฟล์ \"%s\" ซึ่งธีมไม่มี"
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "ไม่สามารถเปิดใช้งานธีมนี้ได้"
+
+#: 
+msgid "This theme has no problems."
+msgstr "ธีมนี้ไม่มีปัญหา"
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "ChurchCRM เวอร์ชันนี้ไม่ใช้เทมเพลตที่เส้นทางนี้ การแทนที่จึงไม่เคยถูกแสดงผล"
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "ติ๊กเลือกในแท็บอาสาสมัครของทีมนี้ แล้วมอบหมายที่นี่"
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "การติ๊กจะถูกบันทึกทันทีที่คุณทำ"
+
+#: 
+msgid "Times come from this event"
+msgstr "เวลามาจากกิจกรรมนี้"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "เติมทุกตารางเวลา ส่งทุกอย่างที่อยู่ในคิว และปิดรอบที่เสร็จแล้ว โดยไม่ต้องรอการทำงานตามกำหนดครั้งถัดไป"
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "ปฏิเสธ {{name}} หรือไม่ อาสาสมัครเดิมยังคงอยู่และจะได้รับแจ้ง"
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "ปิดแคชเทมเพลตของพอร์ทัลสมาชิกและพิมพ์ชื่อเทมเพลตแต่ละอันในความคิดเห็น HTML สำหรับนักออกแบบธีม ปิดไว้ในการใช้งานปกติ"
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "เปิดสำหรับพันธกิจที่ทีมสอนชั้นเรียนโรงเรียนวันอาทิตย์ ทีมของพันธกิจจะเชื่อมโยงกับชั้นเรียนได้ และตารางเวลาและกิจกรรมของพันธกิจใช้ชั้นเรียนได้"
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "ปิดแคชเทมเพลตของพอร์ทัลและพิมพ์ชื่อเทมเพลตแต่ละอันในความคิดเห็น HTML สำหรับนักออกแบบธีม ปิดไว้ในการใช้งานปกติ"
+
+#: 
+msgid "Two-factor authentication"
+msgstr "การยืนยันตัวตนแบบสองปัจจัย"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "ตำแหน่งที่ยังว่าง"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "ข้อผิดพลาดการจัดส่งที่ไม่ทราบสาเหตุ"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "สถานะรอบที่ไม่รู้จัก"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "โหมดการเชื่อมโยงตารางเวลาที่ไม่รู้จัก"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "พันธกิจอาสาสมัครที่ไม่รู้จัก"
+
+#: 
+msgid "Until"
+msgstr "จนถึง"
+
+#: 
+msgid "Upcoming availability"
+msgstr "ความพร้อมที่กำลังจะมาถึง"
+
+#: 
+msgid "Update your details"
+msgstr "อัปเดตข้อมูลของคุณ"
+
+#: 
+msgid "Update your family details"
+msgstr "อัปเดตข้อมูลครอบครัวของคุณ"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "ใช้ จัดกำลังคนกิจกรรมนี้ เพื่อจัดกำลังคนให้กิจกรรมเดียว"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "ใช้ความต้องการของตารางเวลา"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "ผู้ใช้ต้องมีสิทธิ์เพิ่มกิจกรรม หรือประสานงานพันธกิจอาสาสมัคร และต้องเปิดใช้โมดูลกิจกรรม"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "ผู้ใช้ต้องมีสิทธิ์เพิ่มกิจกรรม หรือประสานงานพันธกิจอาสาสมัครที่ปฏิทินนี้เป็นของ"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — โอกาสรับใช้ (แบบเดิม)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — โอกาสรับใช้แบบเดิม"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — พันธกิจ"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — การจัดการอาสาสมัคร"
+
+#: 
+msgid "Valid"
+msgstr "ถูกต้อง"
+
+#: 
+msgid "Validation"
+msgstr "การตรวจสอบความถูกต้อง"
+
+#: 
+msgid "View event"
+msgstr "ดูกิจกรรม"
+
+#: 
+msgid "View my schedule"
+msgstr "ดูตารางของฉัน"
+
+#: 
+msgid "View only"
+msgstr "ดูได้อย่างเดียว"
+
+#: 
+msgid "View person"
+msgstr "ดูข้อมูลบุคคล"
+
+#: 
+msgid "View the event"
+msgstr "ดูกิจกรรม"
+
+#: 
+msgid "View this email"
+msgstr "ดูอีเมลนี้"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "อาสาสมัคร (แบบเดิม)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "ไม่ได้เปิดใช้การจัดการอาสาสมัคร V2"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "พันธกิจอาสาสมัคร"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "การมอบหมายอาสาสมัคร"
+
+#: 
+msgid "Volunteer declined"
+msgstr "อาสาสมัครปฏิเสธ"
+
+#: 
+msgid "Volunteer experience"
+msgstr "ระบบอาสาสมัคร"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "ยังต้องเติมตำแหน่งอาสาสมัคร"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "การเตือนอาสาสมัคร"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "การสมัครอาสาสมัคร"
+
+#: 
+msgid "Volunteer times"
+msgstr "เวลาของอาสาสมัคร"
+
+#: 
+msgid "Volunteering"
+msgstr "การอาสา"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "การอาสาที่จัดตามแบบที่คริสตจักรทำงาน แต่ละพันธกิจมีทีมและตำแหน่ง บุคคลมีคุณสมบัติสำหรับตำแหน่งและอยู่ในกลุ่มอาสาสมัครของพันธกิจ ตารางเวลาติดตามกิจกรรมในปฏิทินและสร้างรอบที่มีวันที่พร้อมความต้องการกำลังคน ผู้ประสานงานมอบหมายบุคคล ซึ่งตอบรับ ปฏิเสธ หรือเสนอผู้แทน การเตือนและการแจ้งเตือนส่งทางอีเมล ผู้ดูแลระบบและผู้ใช้ที่มีสิทธิ์จัดการพันธกิจเห็นทุกพันธกิจและสร้าง ปิดใช้งาน และลบได้ ผู้ประสานงานพันธกิจจะได้รับสิทธิ์จัดการพันธกิจของฉันแทน หัวข้อพันธกิจในแถบด้านข้างจึงแสดงเฉพาะพันธกิจที่เขาประสานงาน หัวหน้าทีมดูแลทีมของตนจากพอร์ทัลสมาชิก สมาชิกใช้พอร์ทัลสมาชิกเพื่อดูตารางของตน ตอบกลับ สมัคร และเสนอความช่วยเหลือ"
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "อาสาสมัครที่ได้รับมอบหมาย: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "อาสาสมัครเสร็จสิ้น"
+
+#: 
+msgid "Volunteers needed"
+msgstr "อาสาสมัครที่ต้องการ"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "อาสาสมัครของ %s ได้รับมอบหมายให้กิจกรรมเหล่านี้ จึงลบที่นี่ไม่ได้ ขอให้พันธกิจนั้นนำการจัดกำลังคนออก หรือขอให้ผู้ที่จัดการปฏิทิน"
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "อาสาสมัครของ {{names}} ได้รับมอบหมายให้บางกิจกรรม เว้นแต่คุณจัดการปฏิทิน การลบจะถูกปฏิเสธจนกว่าการจัดกำลังคนนั้นจะถูกนำออก"
+
+#: 
+msgid "Volunteers start"
+msgstr "อาสาสมัครเริ่ม"
+
+#: 
+msgid "Waiting for a reply"
+msgstr "รอการตอบกลับ"
+
+#: 
+msgid "Waiting for review"
+msgstr "รอการตรวจสอบ"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "รอผู้ประสานงานของคุณยืนยัน"
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "เราจะส่งอีเมลถึงคุณเมื่อมีสิ่งที่ต้องเติม"
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "เรายินดีรับความช่วยเหลือเพิ่มในเช้าวันอาทิตย์ — ไม่ต้องมีประสบการณ์"
+
+#: 
+msgid "Welcome, %s"
+msgstr "ยินดีต้อนรับ %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "ต้องเปลี่ยนอะไร"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "สิ่งที่ต้องให้ความสนใจในสัปดาห์นี้"
+
+#: 
+msgid "What the check found"
+msgstr "สิ่งที่การตรวจสอบพบ"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "ระบบอาสาสมัครมีอะไรบ้าง"
+
+#: 
+msgid "What you want to say"
+msgstr "สิ่งที่คุณต้องการบอก"
+
+#: 
+msgid "When"
+msgstr "เมื่อใด"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "เมื่ออาสาสมัครเสนอใครสักคนมาแทน จะแสดงที่นี่ให้คุณอนุมัติหรือปฏิเสธ"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "เมื่ออาสาสมัครเสนอใครสักคนมาแทน จะแสดงที่นี่ให้คุณอนุมัติ"
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "เมื่อมีคนจัดคุณเข้าทีม หรือคุณสมัครเอง จะแสดงที่นี่"
+
+#: 
+msgid "Where"
+msgstr "ที่ไหน"
+
+#: 
+msgid "Where the dates come from"
+msgstr "วันที่มาจากที่ใด"
+
+#: 
+msgid "Where we reach you"
+msgstr "ช่องทางที่เราติดต่อคุณ"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "ระบบการจัดการอาสาสมัครใดที่ใช้งานอยู่ V1 คือฟีเจอร์โอกาสรับใช้แบบเดิม V2 คือขั้นตอนจัดตารางและมอบหมายแบบใหม่ \"ทั้งสอง\" แสดงทั้งสองควบคู่กันระหว่างการย้าย"
+
+#: 
+msgid "Which events"
+msgstr "กิจกรรมใด"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "คริสตจักรนี้ใช้ระบบอาสาสมัครแบบใด การ์ดทางขวาอธิบายแต่ละตัวเลือก"
+
+#: 
+msgid "Who is covering"
+msgstr "ใครมาแทน"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "ใครที่ต้องการ ใครอยู่ในตาราง และยังขาดอะไร"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "ผู้ที่รับใช้ล่าสุดนานที่สุดจะอยู่ก่อน"
+
+#: 
+msgid "Work Email"
+msgstr "อีเมลที่ทำงาน"
+
+#: 
+msgid "Yearly"
+msgstr "รายปี"
+
+#: 
+msgid "You"
+msgstr "คุณ"
+
+#: 
+msgid "You are already helping that day"
+msgstr "คุณช่วยในวันนั้นอยู่แล้ว"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "คุณช่วยในวันนั้นอยู่แล้วในฐานะ {{what}} สมัครสิ่งนี้เพิ่มด้วยหรือไม่"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "คุณไม่ได้รับอนุญาตให้เปลี่ยนเรื่องนี้ โปรดติดต่อสำนักงานคริสตจักร"
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "คุณยังไม่ได้เชื่อมโยงกับครอบครัว"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "คุณยังไม่ได้เป็นส่วนของระเบียนครอบครัว"
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "คุณอยู่ในรายการแล้ว — ขอบคุณ"
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "คุณตรวจสอบหรือเปลี่ยนเรื่องนี้ได้ในตารางอาสาสมัครของคุณ"
+
+#: 
+msgid "You cannot open this page"
+msgstr "คุณไม่สามารถเปิดหน้านี้ได้"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "คุณเสนอตัวเองเป็นผู้แทนของตนเองไม่ได้"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "ไม่สามารถสมัครให้คุณได้"
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "คุณยังไม่ได้เป็นหัวหน้าทีมอาสาสมัคร"
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "คุณมีที่อยู่ปฏิทินใหม่ ที่อยู่เดิมใช้ไม่ได้อีกแล้ว"
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "คุณมีกำหนดรับใช้แล้ว"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "คุณมีกำหนดรับใช้แล้ว"
+
+#: 
+msgid "You lead this"
+msgstr "คุณเป็นผู้นำสิ่งนี้"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "คุณสร้างตารางเวลาได้เฉพาะสำหรับทีมที่คุณเป็นหัวหน้า"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "คุณจะกลับมาอยู่ในรายการสำหรับรอบนี้"
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "บัญชีของคุณไม่ได้เชื่อมโยงกับระเบียนบุคคล โปรดติดต่อสำนักงานคริสตจักร"
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "บันทึกการสมัครรับปฏิทินของคุณแล้ว"
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "ที่อยู่ปัจจุบันของคุณจะใช้ไม่ได้ทันที ทุกคนที่คุณให้ไปจะต้องใช้ที่อยู่ใหม่"
+
+#: 
+msgid "Your details"
+msgstr "ข้อมูลของคุณ"
+
+#: 
+msgid "Your details have been saved."
+msgstr "บันทึกข้อมูลของคุณแล้ว"
+
+#: 
+msgid "Your family details have been saved."
+msgstr "บันทึกข้อมูลครอบครัวของคุณแล้ว"
+
+#: 
+msgid "Your photo"
+msgstr "รูปภาพของคุณ"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "บันทึกรูปภาพของคุณแล้ว"
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "ไม่สามารถโหลดตารางของคุณได้"
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "เซสชันของคุณหมดอายุ โปรดลงชื่อเข้าใช้อีกครั้ง"
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "คำขอผู้แทนของคุณได้รับการอนุมัติ"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "คำขอผู้แทนของคุณไม่ได้รับการอนุมัติ"
+
+#: 
+msgid "already staffed by this team"
+msgstr "ทีมนี้จัดกำลังคนไว้แล้ว"
+
+#: 
+msgid "body is required"
+msgstr "ต้องมี body"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds ต้องเป็นรายการของรหัสปฏิทิน"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents ต้องเป็นหนึ่งใน: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId ต้องเป็นรหัสกลุ่มหรือ null"
+
+#: 
+msgid "end offset"
+msgstr "ออฟเซ็ตสิ้นสุด"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds ต้องเป็นรายการของรหัสกิจกรรม"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "ทุกข้อความถูกส่งแล้วหรือยังอยู่ในคิว"
+
+#: 
+msgid "has not served yet"
+msgstr "ยังไม่เคยรับใช้"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId ต้องเป็นรหัสตำแหน่ง"
+
+#: 
+msgid "inactive family"
+msgstr "ครอบครัวไม่ใช้งาน"
+
+#: 
+msgid "line %d"
+msgstr "บรรทัด %d"
+
+#: 
+msgid "marked do not email"
+msgstr "ทำเครื่องหมายไม่ส่งอีเมล"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "ข้อความที่ส่งไม่สำเร็จ"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "ข้อความที่ส่งไม่สำเร็จหลังพยายามห้าครั้ง"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "ข้อความที่รอส่ง"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds ต้องเป็นรายการของรหัสพันธกิจ"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "นาทีหลังกิจกรรมสิ้นสุด"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "นาทีหลังกิจกรรมเริ่ม"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "นาทีก่อนกิจกรรมสิ้นสุด"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "นาทีก่อนกิจกรรมเริ่ม"
+
+#: 
+msgid "never"
+msgstr "ไม่เคย"
+
+#: 
+msgid "no email address"
+msgstr "ไม่มีที่อยู่อีเมล"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds และ familyIds ต้องเป็นอาร์เรย์ของจำนวนเต็มบวก"
+
+#: 
+msgid "record not found"
+msgstr "ไม่พบระเบียน"
+
+#: 
+msgid "same address as another recipient"
+msgstr "ที่อยู่เดียวกับผู้รับอีกคน"
+
+#: 
+msgid "single event"
+msgstr "กิจกรรมเดียว"
+
+#: 
+msgid "start offset"
+msgstr "ออฟเซ็ตเริ่มต้น"
+
+#: 
+msgid "subject and body are required"
+msgstr "ต้องมี subject และ body"
+
+#: 
+msgid "subject is required"
+msgstr "ต้องมี subject"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject ต้องไม่เกิน 255 ตัวอักษร"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool ต้องเป็นจริงหรือเท็จ"
+
+#: 
+msgid "window end"
+msgstr "สิ้นสุดช่วง"
+
+#: 
+msgid "window start"
+msgstr "เริ่มช่วง"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "เพิ่ม {{added}} คน เป็นอาสาสมัครที่นี่อยู่แล้ว {{alreadyMembers}} คน"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "สร้าง {{created}} รอบ มีอยู่แล้ว {{existing}} รอบ"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} สร้างกิจกรรม {{total}} รายการสำหรับ {{className}} (กำลังจะมาถึง {{upcoming}})"
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} ก็จัดกำลังคนให้บางกิจกรรมด้วย"
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} ประสานงานพันธกิจนี้อยู่แล้ว"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "มอบหมาย {{name}} แล้ว"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} รับใช้เป็น {{position}} ในรอบนี้อยู่แล้ว คุณยังมอบหมายได้อีก"
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} มีคุณสมบัติแต่ไม่ได้อยู่ในกลุ่มอาสาสมัครของพันธกิจนี้ การมอบหมายจะเพิ่มเขาในรอบนี้เท่านั้น"
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} ประสานงานพันธกิจนี้แล้ว"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: จำนวนต้องอยู่ระหว่าง 0 ถึง {{max}}"
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: จำนวนสูงสุดต้องไม่ต่ำกว่าจำนวนต่ำสุด"
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} ไม่มีคุณสมบัติอีกแล้ว"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} มีคุณสมบัติ"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} ขอให้ {{substitute}} มาแทน"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "สร้าง {{title}} วันที่ {{date}} แล้ว จัดกำลังคนตอนนี้เลยหรือไม่"
+

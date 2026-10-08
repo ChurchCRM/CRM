@@ -18784,3 +18784,4571 @@ msgstr "Rola manžela/manželky"
 msgid "Uppercase Zip/Postcodes"
 msgstr "PSČ veľkými písmenami"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Vyberte aspoň jednu klasifikáciu, ktorá sa má zahrnúť do adresára."
+
+#: 
+msgid "Geocoding services"
+msgstr "Služby geokódovania"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Služby geokódovania, ktoré sa majú vyskúšať v poradí, v akom ich vyberiete. Nominatim (OpenStreetMap) funguje po celom svete; US Census (Úrad pre sčítanie ľudu USA) pokrýva iba adresy v Spojených štátoch. Ak ho chcete použiť, vyberte aj US Census. Ak nevyberiete žiadnu, použije sa Nominatim."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Predvolené hodnoty pre nové záznamy"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Týmto sa nájdu súradnice na mape pre každú rodinu, ktorej chýbajú, pomocou služieb geokódovania vybraných v nastaveniach mapy. Rodiny spracúva v dávkach po 50; jedna dávka trvá približne minútu pri jednej službe geokódovania a dlhšie pri viacerých. Počas behu môžete nechať túto stránku otvorenú. Pokračovať?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Používa sa pre nové záznamy a na geokódovanie, keď záznam nemá krajinu."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Skopírovať z údajov o cirkvi"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Adresu cirkvi sa nepodarilo skopírovať."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Krajinu cirkvi sa nepodarilo priradiť."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Zoznamy tried, prezenčné listiny a fotoalbumy"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Zoznamy členov služieb a správy o triedach nedeľnej školy"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Váš fiškálny rok začína v mesiaci %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Vyskytla sa chyba"
+
+#: 
+msgid "Approve"
+msgstr "Schváliť"
+
+#: 
+msgid "Approve selected"
+msgstr "Schváliť vybrané"
+
+#: 
+msgid "Approved"
+msgstr "Schválené"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Zmeniť v nastaveniach osôb"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Vybrané registrácie sa nepodarilo schváliť"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Túto rodinu sa nepodarilo schváliť"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Čakajúce registrácie"
+
+#: 
+msgid "Pending review"
+msgstr "Čaká na kontrolu"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Registrácie čakajúce na kontrolu z vášho verejného registračného formulára. Záznamy bez e-mailu alebo telefónu sú označené – pred kontaktovaním overte kontaktné údaje."
+
+#: 
+msgid "Review now"
+msgstr "Skontrolovať teraz"
+
+#: 
+msgid "Review self registrations"
+msgstr "Skontrolovať samoregistrácie"
+
+#: 
+msgid "Select month"
+msgstr "Vyberte mesiac"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Samoregistrácia je vypnutá"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Samoregistrácia je zapnutá"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Verejný registračný formulár je vypnutý. Existujúce registrácie sú uvedené nižšie."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Táto rodina nie je čakajúca samoregistrácia"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Táto osoba patrí do rodiny – schváľte radšej rodinu"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Táto osoba nie je čakajúca samoregistrácia"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Táto samoregistrovaná rodina čaká na kontrolu"
+
+#: 
+msgid "Total registrations"
+msgstr "Celkový počet registrácií"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Návštevníci sa môžu zaregistrovať vo vašom verejnom registračnom formulári."
+
+#: 
+msgid "Yesterday"
+msgstr "Včera"
+
+#: 
+msgid "days ago"
+msgstr "dní dozadu"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "samoregistrácií čaká na kontrolu"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Narodeniny sa adresujú osobe a výročia páru."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Poštové štítky pre osoby v tejto zostave. Osoba bez vlastnej adresy je adresovaná na adresu svojej rodiny."
+
+#: 
+msgid "One label for each couple."
+msgstr "Jeden štítok pre každý pár."
+
+#: 
+msgid "Print Labels"
+msgstr "Tlačiť štítky"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Táto rola nepatrí medzi roly tejto služby."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "„%s“ nie je druh kalendára, ktorý táto stránka pozná."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s nemôže slúžiť a ako náhradu navrhol(a) %2$s."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s je už v skupine dobrovoľníkov služby %2$s a chce pomôcť znova."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s je už prepojený s %2$s v %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s je v %2$s ako %3$s. Najprv ho odstráňte z triedy; kvalifikovaním tu sa potom stane jedným z jej učiteľov."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s nie je udalosťou služby %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s zostáva triedou nedeľnej školy, kým sa jej učitelia spravujú v Služby → %2$s → %3$s. Najprv ju odpojte od tímu."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s sa chce zapojiť do %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s sa chce zapojiť do %2$s a bol(a) pridaný(á) do jej skupiny dobrovoľníkov."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: Maximum je %2$d, ale vybraných je %3$d predvolených dobrovoľníkov. Odstráňte jedného alebo zvýšte maximum."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d deň"
+msgstr[1] "%d dni"
+msgstr[2] "%d dňa"
+msgstr[3] "%d dní"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d predvolený preskočený z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
+msgstr[1] "%d predvolení preskočení z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
+msgstr[2] "%d predvoleného preskočených z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
+msgstr[3] "%d predvolených preskočených z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d predvolený preskočený: kvalifikácia odobratá"
+msgstr[1] "%d predvolení preskočení: kvalifikácia odobratá"
+msgstr[2] "%d predvoleného preskočených: kvalifikácia odobratá"
+msgstr[3] "%d predvolených preskočených: kvalifikácia odobratá"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d predvolený dobrovoľník pridelený"
+msgstr[1] "%d predvolení dobrovoľníci pridelení"
+msgstr[2] "%d predvoleného dobrovoľníka pridelených"
+msgstr[3] "%d predvolených dobrovoľníkov pridelených"
+
+#: 
+msgid "%d failed"
+msgstr "%d zlyhalo"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Pre túto pozíciu je stále potrebný %d ďalší dobrovoľník. Otvorte termín a doplňte medzeru."
+msgstr[1] "Pre túto pozíciu sú stále potrební %d ďalší dobrovoľníci. Otvorte termín a doplňte medzeru."
+msgstr[2] "Pre túto pozíciu je stále potrebného %d ďalšieho dobrovoľníka. Otvorte termín a doplňte medzeru."
+msgstr[3] "Pre túto pozíciu je stále potrebných %d ďalších dobrovoľníkov. Otvorte termín a doplňte medzeru."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d nový termín"
+msgstr[1] "%d nové termíny"
+msgstr[2] "%d nového termínu"
+msgstr[3] "%d nových termínov"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Na nadchádzajúci termín je stále potrebný %d dobrovoľník."
+msgstr[1] "Na nadchádzajúci termín sú stále potrební %d dobrovoľníci."
+msgstr[2] "Na nadchádzajúci termín je stále potrebného %d dobrovoľníka."
+msgstr[3] "Na nadchádzajúci termín je stále potrebných %d dobrovoľníkov."
+
+#: 
+msgid "%s Calendar"
+msgstr "Kalendár %s"
+
+#: 
+msgid "%s Family"
+msgstr "Rodina %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s neposkytuje učiteľov pre nedeľnú školu, takže jej tímy, rozpisy a udalosti nemôžu používať triedu. Správca dobrovoľníkov to môže zmeniť v časti Upraviť službu."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s e-mail od cirkvi"
+msgstr[1] "%s e-maily od cirkvi"
+msgstr[2] "%s e-mailu od cirkvi"
+msgstr[3] "%s e-mailov od cirkvi"
+
+#: 
+msgid "%s family"
+msgstr "Rodina %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s odmietol(a) pridelenie dobrovoľníka."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s nemá rolu s názvom Učiteľ, takže jej učiteľov nemožno spravovať z tímu"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s nemá v kalendári žiadne nadchádzajúce stretnutia. Rozpis sleduje už existujúce udalosti: najprv pridajte stretnutia triedy pomocou Nová opakovaná udalosť na karte Kalendár služby."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "Od %s sa stále očakáva, že bude slúžiť. Ak to nie je možné, kontaktujte koordinátora."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s sa neodoslalo (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s osoba vo vašej domácnosti"
+msgstr[1] "%s osoby vo vašej domácnosti"
+msgstr[2] "%s osoby vo vašej domácnosti"
+msgstr[3] "%s osôb vo vašej domácnosti"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s pozícia"
+msgstr[1] "%s pozície"
+msgstr[2] "%s pozície"
+msgstr[3] "%s pozícií"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: ten istý človek je vybraný dvakrát ako predvolený dobrovoľník"
+
+#: 
+msgid "(no subject)"
+msgstr "(bez predmetu)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Narodeniny nemôžu byť v budúcnosti."
+
+#: 
+msgid "A calendar event"
+msgstr "Udalosť v kalendári"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "ID kalendára musí byť číslo."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Trieda, ktorá už neexistuje"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Triedu bez stretnutí v kalendári zatiaľ nemožno vybrať."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Triedu bez stretnutí v kalendári zatiaľ nemožno vybrať. Koordinátor služby pridá jej stretnutia na karte Kalendár služby."
+
+#: 
+msgid "A class's meetings"
+msgstr "Stretnutia triedy"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Koordinátor môže spravovať všetko v tejto službe vrátane zmien, ktoré by inak musel urobiť správca dobrovoľníkov."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Koordinátor služby ich môže pridať na karte Kalendár služby."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Koordinátor služby ich môže pridať na karte Kalendár služby. Potom generujte znova."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Koordinátor riadi celú službu – jej tímy, pozície, rozpisy a každé pridelenie v nej."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Deň, ktorý mesiac nemá, pripadne na jeho posledný deň."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Predvolený dobrovoľník patrí k potrebám obsadenia rozpisu, nie k jednému termínu"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Predvolený dobrovoľník sa dá vybrať iba pre pozíciu, ktorú požadujú potreby obsadenia tohto rozpisu"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Vyžaduje sa dátum od a dátum do v tvare RRRR-MM-DD"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Vyžaduje sa minimálny počet"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Služba sa vytvára s vlastným kalendárom, skupinou dobrovoľníkov a prvým tímom, takže tu stačí rozhodnúť len o jej názve a zameraní."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Vyžaduje sa názov služby"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Služba potrebuje aspoň jeden tím. Radšej ho premenujte."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Služba s týmto názvom už existuje"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Vlastný kalendár služby nemožno otvoriť pre iné služby"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Pozícia patrí do tímu; vyberte jeden"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Pozícia je práca, ktorú niekto v tomto tíme robí, napríklad Espresso alebo Vedúci chvál."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Pozícia je rola, v ktorej niekto slúži, napríklad Espresso alebo Vedúci chvál."
+
+#: 
+msgid "A position is required"
+msgstr "Vyžaduje sa pozícia"
+
+#: 
+msgid "A position name is required"
+msgstr "Vyžaduje sa názov pozície"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Pozíciu s kvalifikovanými dobrovoľníkmi nemožno presunúť do tímu prepojeného s triedou nedeľnej školy ani z neho, pretože by sa zmenilo, kto triedu učí. Vytvorte pozíciu radšej v druhom tíme."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Pozícia s týmto názvom už v tejto službe existuje"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Odpoveď musí byť prijatá alebo odmietnutá"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Rozpis patrí do tímu; vyberte jeden"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Vyžaduje sa názov rozpisu"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Rozpis určuje, ktoré udalosti v kalendári tím obsadzuje: typ bohoslužby, stretnutia triedy alebo vlastné udalosti tejto služby. Pridajte jeden a vygenerujte jeho termíny."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Rozpis určuje, ktoré udalosti v kalendári tento tím obsluhuje: typ bohoslužby, stretnutia triedy alebo vlastné udalosti jeho služby. Pridajte jeden a vygenerujte jeho termíny."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Rozpis, ktorý sleduje triedu, musí uvádzať triedu"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Rozpis, ktorý sleduje typ udalosti, musí uvádzať typ udalosti"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Rozpis, ktorý obsadzuje jednu udalosť, nemôže sledovať iné udalosti; odstráňte ho a pridajte namiesto neho rozpis"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "Jeden zoznam príležitostí, napríklad „Detská miestnosť“ alebo „Uvítač“, vedený v časti Ľudia → Správa. Každá osoba je označená príležitosťami, s ktorými je ochotná pomôcť, na karte Dobrovoľník v jej zázname. To je všetko, čo sa eviduje: žiadne tímy, žiadne rozpisy, žiadne pridelenia na dátum a žiadne pripomienkové e-maily. Značky sa používajú v zostavách a v zázname osoby."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Najlepšie funguje štvorcová fotografia vašej tváre."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Potreba obsadenia uvádza svojich predvolených dobrovoľníkov v \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Požiadavka na obsadenie patrí presne jednému z rozpisu alebo termínu"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Pre tento rozpis už bola navrhnutá náhrada pre toto pridelenie"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Vedúci tímu môže spravovať svoj vlastný tím – jeho pozície, rozpisy a to, kto v nich slúži – a nič iné v službe."
+
+#: 
+msgid "A team name is required"
+msgstr "Vyžaduje sa názov tímu"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Tím s týmto názvom už v tejto službe existuje"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Téma je priečinok, ktorý vaša cirkev nahrá na server do Include/themes/. Predvolená téma systému sa dodáva s ChurchCRM."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Prechodné nastavenie. Staré stránky Príležitostí pre dobrovoľníkov aj nové stránky Služieb sú dostupné a záznam osoby zobrazuje obe karty Dobrovoľník, jasne označené. Použite ho počas prechodu cirkvi z V1 na V2 a potom prepnite iba na V2."
+
+#: 
+msgid "A volunteer"
+msgstr "Dobrovoľník"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Dobrovoľník odmietol pridelenie"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Dobrovoľník navrhol náhradu"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Správca dobrovoľníkov môže túto službu viesť bez udelenia oprávnenia. Pridajte koordinátora, aby ju mohol viesť niekto iný, bez toho, aby ste mu dali aj všetky ostatné služby."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Dátum svadby nemôže byť v budúcnosti."
+
+#: 
+msgid "Accepted"
+msgstr "Prijaté"
+
+#: 
+msgid "Account deleted"
+msgstr "Účet bol odstránený"
+
+#: 
+msgid "Account unlocked"
+msgstr "Účet odblokovaný"
+
+#: 
+msgid "Accounts"
+msgstr "Účty"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Aktívne musí byť pravda alebo nepravda"
+
+#: 
+msgid "Active now"
+msgstr "Aktívny teraz"
+
+#: 
+msgid "Add All"
+msgstr "Pridať všetkých"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Pridať všetkých z výberu"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Pridať dobrovoľníka"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Pridať dobrovoľníkov do výberu"
+
+#: 
+msgid "Add a family member"
+msgstr "Pridať člena rodiny"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Najprv pridajte pozíciu, potom sa vráťte a určte, koľko ich je potrebných."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Pridajte do prihlasovania druhý krok, aby samotné heslo nestačilo na prístup k vášmu účtu."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Pridajte do tohto tímu aspoň jednu pozíciu a potom zaškrtnite, kto môže kde slúžiť."
+
+#: 
+msgid "Add coordinator"
+msgstr "Pridať koordinátora"
+
+#: 
+msgid "Add from Cart"
+msgstr "Pridať z výberu"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Najprv pridajte jej stretnutia pomocou Nová opakovaná udalosť na karte Kalendár"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Pred pridaním ako dobrovoľníkov pridajte osoby do výberu"
+
+#: 
+msgid "Add position"
+msgstr "Pridať pozíciu"
+
+#: 
+msgid "Add schedule"
+msgstr "Pridať rozpis"
+
+#: 
+msgid "Add team"
+msgstr "Pridať tím"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Pridajte ich na karte Kalendár a potom generujte znova."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Pridajte ich na karte Kalendár."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Pridajte túto adresu do svojej kalendárovej aplikácie. Aktualizuje sa sama, keď sa zmení kalendár cirkvi."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Pridávajte sem udalosti tejto služby: pracovný deň, triedu, ktorá sa stretáva každú nedeľu. Idú do kalendára cirkvi a môžete ich obsadiť hneď pri vytváraní."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Pridané cez Portál členov a čaká na kontrolu: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Pridané – teraz zaškrtnite pozície, v ktorých môže slúžiť"
+
+#: 
+msgid "Address Line 2"
+msgstr "Adresa, riadok 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Administrátorská konzola"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Vyžaduje sa oprávnenie správcu"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Zverejniť túto pozíciu na stránke Otvorené príležitosti v Portáli členov."
+
+#: 
+msgid "All Teams"
+msgstr "Všetky tímy"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Povoliť členom meniť narodeniny svoje a svojich členov rodiny."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Pripnuté aj v {{calendars}}, čo môže zmeniť len ten, kto má oprávnenie Pridávať udalosti."
+
+#: 
+msgid "An event title is required"
+msgstr "Vyžaduje sa názov udalosti"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Vyžaduje sa typ udalosti alebo služba"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Typ udalosti, ktorý už neexistuje"
+
+#: 
+msgid "Another ministry"
+msgstr "Iná služba"
+
+#: 
+msgid "Any event"
+msgstr "Akákoľvek udalosť"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Čokoľvek, čo by mal váš koordinátor vedieť"
+
+#: 
+msgid "Approve substitution"
+msgstr "Schváliť zastúpenie"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Schváliť túto náhradu"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Požiadajte správcu dobrovoľníkov, aby vytvoril službu a urobil vás jej koordinátorom."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Požiadať niekoho o zastúpenie"
+
+#: 
+msgid "Ask them"
+msgstr "Požiadať ich"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Požiadané – váš koordinátor to potvrdí."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Prideliť dobrovoľníka"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Pridelené mimo aktuálneho plánu"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Pridelenie zrušené"
+
+#: 
+msgid "Assignment not found"
+msgstr "Pridelenie sa nenašlo"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Vyžaduje sa aspoň jedno personId alebo familyId"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Pre jednu pozíciu možno vybrať najviac %d predvolených dobrovoľníkov"
+
+#: 
+msgid "Author"
+msgstr "Autor"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Oprávnenie sa udeľuje osobe, nie prihlasovaciemu účtu, takže ho možno udeliť skôr, než osoba prihlásenie má. Osoba, ktorej prihlásenie je len samoobslužné, vidí naďalej iba svoj vlastný rozpis, kým správca nerozšíri jej účet."
+
+#: 
+msgid "Automatic"
+msgstr "Automaticky"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Čaká na odpoveď"
+
+#: 
+msgid "Back to Email History"
+msgstr "Späť na históriu e-mailov"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Späť na prehľad služby"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Späť na termíny"
+
+#: 
+msgid "Back to Person"
+msgstr "Späť na osobu"
+
+#: 
+msgid "Back to editing"
+msgstr "Späť na úpravy"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Späť na môj rozpis"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Späť na Portál členov"
+
+#: 
+msgid "Back to your profile"
+msgstr "Späť na váš profil"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Úlohy na pozadí a doručovanie"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Úlohy na pozadí naposledy bežali"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Úlohy na pozadí bežali"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Narodeninové blahoželanie"
+
+#: 
+msgid "Both"
+msgstr "Obe"
+
+#: 
+msgid "Both (transition)"
+msgstr "Obe (prechod)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Obe – V1 a V2 vedľa seba (prechod)"
+
+#: 
+msgid "Calendar address"
+msgstr "Adresa kalendára"
+
+#: 
+msgid "Calendar saved"
+msgstr "Kalendár uložený"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Kalendáre, ktoré Portál členov zobrazuje členom, vybrané v Správa → Portál členov → Kalendáre."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Môže táto služba poskytovať učiteľov pre nedeľnú školu?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Zrušiť pridelenie"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Zrušiť toto pridelenie"
+
+#: 
+msgid "Cancelled"
+msgstr "Zrušené"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Zmeňte heslo, ktorým sa prihlasujete, alebo pridajte druhý krok, aby samotné heslo nestačilo."
+
+#: 
+msgid "Change your password"
+msgstr "Zmeniť heslo"
+
+#: 
+msgid "Checked in"
+msgstr "Prihlásený"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Prítomní: %1$d z %2$d v zozname triedy"
+
+#: 
+msgid "Checked out"
+msgstr "Odhlásený"
+
+#: 
+msgid "Choose a class"
+msgstr "Vyberte triedu"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Vyberte deň v mesiaci od 1 do 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Vyberte novú fotografiu"
+
+#: 
+msgid "Choose a person"
+msgstr "Vyberte osobu"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Vyberte dobrovoľníka"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Najprv vyberte dobrovoľníka"
+
+#: 
+msgid "Choose an event"
+msgstr "Vybrať udalosť..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Vyberte typ udalosti"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Vyberte existujúci typ udalosti"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Vyberte aspoň jeden kalendár na odber."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Vyberte kalendáre, ktoré chcete mať vo svojej kalendárovej aplikácii."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Vyberte dátum každý rok ako MM-DD"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Vyberte dátum udalosti"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Vyberte deň v týždni"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Vyberte udalosť, ktorú tento rozpis sleduje"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Vyberte udalosť na obsadenie"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Vyberte udalosti na odstránenie"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Vyberte udalosti na obsadenie"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Vyberte prvý a posledný dátum"
+
+#: 
+msgid "Choose the first date"
+msgstr "Vyberte prvý dátum"
+
+#: 
+msgid "Choose the last date"
+msgstr "Vyberte posledný dátum"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Vyberte pozíciu služby %1$s, na ktorú sú učitelia triedy %2$s kvalifikovaní. Učitelia: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Vyberte tím, v ktorom táto pozícia slúži"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Vyberte tému, ktorú členovia vidia, zapnite alebo vypnite sekcie portálu a pozrite si, kto portál používa."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Vyberte týždenne, mesačne alebo ročne"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Vyberte, odkiaľ pochádzajú dátumy rozpisu"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Vyberte, ktorú verziu dobrovoľníckej služby táto cirkev používa, ako ďaleko dopredu sa rozpisy napĺňajú a kedy sa posielajú pripomienky, a skontrolujte, či úlohy na pozadí bežia."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Vyberte, kto štandardne obsadzuje každú pozíciu. Výber sa uloží v rozpise: títo ľudia sú pridelení na každý termín vytvorený teraz aj na termíny, ktoré denné dopĺňanie vytvorí neskôr, kým zostávajú kvalifikovaní, a požiada sa ich o odpoveď, pokiaľ ich nenastavíte ako prijatých. Nechajte pozíciu otvorenú, ak ju chcete prideľovať týždeň po týždni."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Vyberte, kto vás zastúpi."
+
+#: 
+msgid "Church Calendar"
+msgstr "Kalendár cirkvi"
+
+#: 
+msgid "Church Calendars"
+msgstr "Kalendáre cirkvi"
+
+#: 
+msgid "Church calendar"
+msgstr "Kalendár cirkvi"
+
+#: 
+msgid "Church events of a type"
+msgstr "Cirkevné udalosti určitého typu"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Cirkevné udalosti určitého typu sa pridávajú do kalendára cirkvi. Skontrolujte typ udalosti, názov a dátumy rozpisu."
+
+#: 
+msgid "Church website"
+msgstr "Webová stránka cirkvi"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM má dva spôsoby správy dobrovoľníkov. Používať by sa mal vždy len jeden; nastavenie vľavo určuje, ktorý uvidí táto cirkev. Prepnutím sa stránky a položky ponuky skryjú alebo zobrazia – údaje sa nikdy nemažú, takže sa môžete vrátiť späť."
+
+#: 
+msgid "Close event details"
+msgstr "Zavrieť podrobnosti udalosti"
+
+#: 
+msgid "Colour"
+msgstr "Farba"
+
+#: 
+msgid "Completed"
+msgstr "Dokončené"
+
+#: 
+msgid "Compose Message"
+msgstr "Napísať správu"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Potvrďte údaje o svojej rodine"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Koordinátor odstránený"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Skopírujte túto adresu a pridajte ju do svojej kalendárovej aplikácie ako nový odber kalendára."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Náhľad sa nepodarilo vytvoriť."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Udalosti triedy sa nepodarilo spočítať"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Rozsah sa nepodarilo udeliť"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Triedy nedeľnej školy sa nepodarilo načítať"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Prehľad sa nepodarilo načítať"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Možnosti udalostí sa nepodarilo načítať"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Termíny sa nepodarilo načítať"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Rozpisy sa nepodarilo načítať"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Nadchádzajúce udalosti sa nepodarilo načítať"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Dobrovoľníkov sa nepodarilo načítať"
+
+#: 
+msgid "Could not load this email."
+msgstr "Tento e-mail sa nepodarilo načítať."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Túto službu sa nepodarilo načítať"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Udalosti tejto služby sa nepodarilo načítať"
+
+#: 
+msgid "Could not load this team"
+msgstr "Tento tím sa nepodarilo načítať"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Rozsah sa nepodarilo odobrať"
+
+#: 
+msgid "Create"
+msgstr "Vytvoriť"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Vytvorte rozpis a vygenerujte jeho termíny a tu sa zobrazia týždne na doplnenie."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Vytvorte rozpis a vygenerujte jeho termíny a tu sa zobrazia týždne na obsadenie."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Vytvorte pre tento tím aspoň jednu pozíciu a potom zaškrtnite, kto môže kde slúžiť."
+
+#: 
+msgid "Create ministry"
+msgstr "Vytvoriť službu"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Vytvorenie služby vyžaduje prístup správcu dobrovoľníkov"
+
+#: 
+msgid "Date and time"
+msgstr "Dátum a čas"
+
+#: 
+msgid "Date each year"
+msgstr "Dátum každý rok"
+
+#: 
+msgid "Dates"
+msgstr "Dátumy"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Dátumy musia byť v tvare RRRR-MM-DD"
+
+#: 
+msgid "Day of the month"
+msgstr "Deň v mesiaci"
+
+#: 
+msgid "Day of the week"
+msgstr "Deň v týždni"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Deaktivovať službu"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Deaktivovať rozpis"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Pred odstránením túto službu deaktivujte."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Deaktivovať {{name}}? Presunie sa do Deaktivované služby v bočnom paneli, odkiaľ ju možno znova aktivovať alebo odstrániť. Nič sa neodstráni."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Deaktivovať {{name}}? Nebudú preň vytvárané žiadne nové termíny, ani príkazom Generovať, ani denným dopĺňaním. Existujúce termíny a pridelenia zostávajú a možno ho znova aktivovať."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Deaktivované služby"
+
+#: 
+msgid "Declined"
+msgstr "Odmietnuté"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Predvolený typ udalosti pre udalosti služby"
+
+#: 
+msgid "Default volunteers"
+msgstr "Predvolení dobrovoľníci"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Predvolení dobrovoľníci sa odosielajú ako requirements: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Odstrániť udalosti"
+
+#: 
+msgid "Delete ministry"
+msgstr "Odstrániť službu"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Odstrániť termíny"
+
+#: 
+msgid "Delete position"
+msgstr "Odstrániť pozíciu"
+
+#: 
+msgid "Delete schedule"
+msgstr "Odstrániť rozpis"
+
+#: 
+msgid "Delete team"
+msgstr "Odstrániť tím"
+
+#: 
+msgid "Delete those events"
+msgstr "Odstrániť tieto udalosti"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Odstrániť {{name}} a všetko v ňom? Odstránia sa jeho pozície, kvalifikácie, potreby obsadenia, rozpisy, termíny a pridelenia – vrátane záznamov o minulej službe – a oprávnenia vedúceho tímu. Ak chcete zachovať históriu, radšej tím deaktivujte. Túto akciu nemožno vrátiť späť."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Odstrániť {{name}} a všetko v ňom? Odstránia sa jeho tímy, pozície, rozpisy, {{occurrences}} termínov a {{assignments}} pridelení – vrátane záznamov o minulej službe – spolu s oprávneniami koordinátora a vedúceho tímu, skupinou dobrovoľníkov a kalendárom. Túto akciu nemožno vrátiť späť."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Odstrániť {{name}}? Odstránia sa s ním jeho kvalifikácie, potreby obsadenia a pridelenia – vrátane záznamov o minulej službe. Ak chcete zachovať históriu, radšej pozíciu deaktivujte. Túto akciu nemožno vrátiť späť."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Odstrániť {{name}}? Túto akciu nemožno vrátiť späť."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Odstránenie služby vyžaduje prístup správcu dobrovoľníkov"
+
+#: 
+msgid "Developer mode"
+msgstr "Režim vývojára"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Hotovo – ste späť v zozname."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Zrušiť vlastné potreby obsadenia tohto termínu a opäť sledovať jeho rozpis?"
+
+#: 
+msgid "Due soon"
+msgstr "Čoskoro splatné"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Každý kalendár musí byť zadaný ako typ a id."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Každý predvolený dobrovoľník musí uvádzať osobu"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Každá potreba obsadenia musí uvádzať pozíciu"
+
+#: 
+msgid "Edit event"
+msgstr "Upraviť udalosť"
+
+#: 
+msgid "Edit ministry"
+msgstr "Upraviť službu"
+
+#: 
+msgid "Edit position"
+msgstr "Upraviť pozíciu"
+
+#: 
+msgid "Edit schedule"
+msgstr "Upraviť rozpis"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Upraviť potreby obsadenia"
+
+#: 
+msgid "Edit team"
+msgstr "Upraviť tím"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Upravte rozpis a vyberte inú triedu."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Upravte rozpis a vyberte iný typ udalosti."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Upravte rozpis a vyberte udalosť, ktorú sleduje."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Upravte rozpis a posuňte jeho posledný dátum, aby sledoval viac udalostí."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Upravené cez Portál členov: %s"
+
+#: 
+msgid "Email %s"
+msgstr "Poslať e-mail: %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "Poslať e-mail rodine %s"
+
+#: 
+msgid "Email History"
+msgstr "História e-mailov"
+
+#: 
+msgid "Email content"
+msgstr "Obsah e-mailu"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Poslať e-mail neprítomným: %s"
+
+#: 
+msgid "Email not found"
+msgstr "E-mail sa nenašiel"
+
+#: 
+msgid "Email preview"
+msgstr "Náhľad e-mailu"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "Odosielanie e-mailov je vypnuté"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "Odosielanie e-mailov nie je zapnuté. Pred odoslaním nastavte SMTP a zapnite e-mail."
+
+#: 
+msgid "Emails"
+msgstr "E-maily"
+
+#: 
+msgid "End time"
+msgstr "Čas ukončenia"
+
+#: 
+msgid "Enter counts"
+msgstr "Zadať počty"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Zadajte predmet e-mailu…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Zadajte svoje aktuálne heslo a potom dvakrát nové heslo."
+
+#: 
+msgid "Enter your message…"
+msgstr "Zadajte svoju správu…"
+
+#: 
+msgid "Event staffed"
+msgstr "Udalosť obsadená"
+
+#: 
+msgid "Event title"
+msgstr "Názov udalosti"
+
+#: 
+msgid "Event type"
+msgstr "Typ udalosti"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Každý e-mail, ktorý ChurchCRM odoslal, od najnovšieho. Otvorte osobu a uvidíte jej úplnú históriu."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Každá pozícia v tomto okne má ľudí, ktorých potrebuje."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Všetci odpovedali"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Všetci vo výbere sa pripoja k dobrovoľníkom tejto služby. Potom zaškrtnite ich pozície."
+
+#: 
+msgid "Everything is correct"
+msgstr "Všetko je správne"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Náhľad sa nepodarilo vytvoriť"
+
+#: 
+msgid "Failed to load email"
+msgstr "E-mail sa nepodarilo načítať"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Históriu e-mailov sa nepodarilo načítať"
+
+#: 
+msgid "Failed to send email"
+msgstr "E-mail sa nepodarilo odoslať"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "E-mail sa nepodarilo odoslať. Skúste to znova alebo použite „Otvoriť v e-mailovom klientovi“."
+
+#: 
+msgid "Family Member"
+msgstr "Člen rodiny"
+
+#: 
+msgid "Family verification"
+msgstr "Overenie rodiny"
+
+#: 
+msgid "File"
+msgstr "Súbor"
+
+#: 
+msgid "Fill"
+msgstr "Vyplniť"
+
+#: 
+msgid "Fill by default with"
+msgstr "Štandardne obsadiť"
+
+#: 
+msgid "Fill this gap"
+msgstr "Zaplniť túto medzeru"
+
+#: 
+msgid "Filled"
+msgstr "Obsadené"
+
+#: 
+msgid "Find a sub"
+msgstr "Nájsť zástup"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Nájsť dobrovoľníka"
+
+#: 
+msgid "Find an event"
+msgstr "Nájsť udalosť"
+
+#: 
+msgid "Find something to do"
+msgstr "Nájsť, čo robiť"
+
+#: 
+msgid "Find something to help with"
+msgstr "Nájsť, s čím pomôcť"
+
+#: 
+msgid "Findings"
+msgstr "Zistenia"
+
+#: 
+msgid "First date"
+msgstr "Prvý dátum"
+
+#: 
+msgid "Folder"
+msgstr "Priečinok"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Názov priečinka témy Portálu členov, ktorú sa má použiť, z Include/themes/. „default“ je systémová téma dodávaná s ChurchCRM."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Vygenerujte znova bližšie k jeho prvému dátumu."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Generovať termíny"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Získať novú adresu kalendára?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Dajte službe názov"
+
+#: 
+msgid "Give the position a name"
+msgstr "Dajte pozícii názov"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Zadajte čas začiatku a konca v tvare HH:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "Dajte tímu názov"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Prejsť na moje dobrovoľníctvo"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Prejsť na nastavenia Portálu členov"
+
+#: 
+msgid "Going"
+msgstr "Idem"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Udeľte kvalifikáciu na stránke služby a potom ho tu pridelte."
+
+#: 
+msgid "Granted"
+msgstr "Udelené"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Pozrite si, čo má cirkev o vašej domácnosti zaznamenané, a dajte nám vedieť, či je to stále správne."
+
+#: 
+msgid "Headcount"
+msgstr "Počet prítomných"
+
+#: 
+msgid "Hello %s"
+msgstr "Dobrý deň, %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Hľadá sa pomoc"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Hľadanú pomoc sa nepodarilo uložiť"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Ako ďaleko dopredu sa vytvárajú termíny pre udalosti, ktoré každý rozpis sleduje. Denná úloha na pozadí udržiava každý rozpis naplnený až po tento bod."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Koľko hodín pred termínom dobrovoľníckej služby sa odošle pripomienkový e-mail. Hodnotou 0 sa pripomienky neodosielajú vôbec. Doručovanie závisí od behu úloh na pozadí; odporúčané nastavenie cronu nájdete v dokumentácii Dobrovoľníci."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Koľko hodín pred termínom sa odošle pripomienkový e-mail. Hodnotou 0 sa pripomienky neodosielajú vôbec."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Koľko ľudí potrebuje každá pozícia pri každom spustení. Jeden dátum možno neskôr zmeniť samostatne. Predvolený dobrovoľník je pridelený na každý nový termín, kým zostáva kvalifikovaný; zmena jedného nikdy nemení už existujúce termíny."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Koľko dobrovoľníkov potrebuje každý termín tohto rozpisu. Zrušte začiarknutie pozície, ktorú tento rozpis nikdy nepoužíva. Predvolený dobrovoľník je pridelený na každý nový termín, kým zostáva kvalifikovaný; zmena jedného nikdy nemení už existujúce termíny."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Koľko dobrovoľníkov táto udalosť potrebuje. Zrušte začiarknutie pozície, ktorú nepoužíva."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Koľko týždňov dopredu sa vytvárajú dobrovoľnícke termíny pre udalosti, ktoré každý rozpis sleduje, od 1 do 52. Denná úloha na pozadí udržiava každý rozpis naplnený až po tento bod."
+
+#: 
+msgid "How often"
+msgstr "Ako často"
+
+#: 
+msgid "How to correct this"
+msgstr "Ako to opraviť"
+
+#: 
+msgid "I can't"
+msgstr "Nemôžem"
+
+#: 
+msgid "I'd like to help"
+msgstr "Rád(a) by som pomohol(a)"
+
+#: 
+msgid "I'll be there"
+msgstr "Budem tam"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Ak správy zlyhávajú, požiadajte správcu, aby skontroloval Nastavenia služieb."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Ak už nemôžete prísť, odmietnite to čo najskôr vo svojom rozpise dobrovoľníka, aby sa pozícia mohla obsadiť."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Ak ste túto adresu omylom zdieľali, získajte novú. Stará adresa okamžite prestane fungovať."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "Za posledných 15 minút"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "V skupine dobrovoľníkov"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Interné: posledný dátum, po ktorý boli dobrovoľnícke rozpisy doplnené až po horizont plánovania (RRRR-MM-DD). Needitujte ručne."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Interné: kedy boli dobrovoľnícke rozpisy naposledy doplnené a koľko termínov tým vzniklo. Needitujte ručne."
+
+#: 
+msgid "Is this still right?"
+msgstr "Je to stále správne?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Jeho termíny budú vytvorené bez pozícií na obsadenie. Upravte rozpis a pridajte jeho potreby obsadenia."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Ponechať ich v {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Druh"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Posledných 24 hodín"
+
+#: 
+msgid "Last 30 days"
+msgstr "Posledných 30 dní"
+
+#: 
+msgid "Last 7 days"
+msgstr "Posledných 7 dní"
+
+#: 
+msgid "Last attempt"
+msgstr "Posledný pokus"
+
+#: 
+msgid "Last check"
+msgstr "Posledná kontrola"
+
+#: 
+msgid "Last date"
+msgstr "Posledný dátum"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Naposledy videný v portáli"
+
+#: 
+msgid "Last sign-in"
+msgstr "Posledné prihlásenie"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Ponechajte obe na 0, aby sa slúžilo presne vtedy, keď udalosť prebieha. Presunutím udalosti sa presunú aj dobrovoľníci."
+
+#: 
+msgid "Leave open"
+msgstr "Nechať otvorené"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Umožnite členom meniť v Portáli členov narodeniny svoje a svojich členov rodiny."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Umožniť členom upravovať narodeniny"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Dajte kancelárii cirkvi vedieť, či je všetko vyššie stále správne."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Dajte im vedieť prečo (nepovinné)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Umožňuje koordinátorom tejto služby plánovať dobrovoľníkov na túto udalosť – a upravovať samotnú udalosť."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Načítava sa kalendár…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Spravovať služby"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Spravovať moje služby"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Prístup Spravovať moje služby so službou alebo tímom na správu"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Vyžaduje sa prístup Spravovať moje služby so službou alebo tímom na správu"
+
+#: 
+msgid "Manage staffing"
+msgstr "Spravovať obsadenie"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Spravované zo služby %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Spravované zo služby {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Max"
+
+#: 
+msgid "Member Portal"
+msgstr "Portál členov"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Členovia vidia stránku „dočasne nedostupné“, kým sa to neopraví. Rovnaké podrobnosti boli zapísané do protokolu aplikácie a do chybového protokolu webového servera."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Členovia vidia iba tu zapnuté kalendáre. Narodeniny a výročia zobrazujú iba krstné mená a iniciálky priezvisk."
+
+#: 
+msgid "Message"
+msgstr "Správa"
+
+#: 
+msgid "Min"
+msgstr "Min"
+
+#: 
+msgid "Ministries"
+msgstr "Služby"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Služby hľadajúce pomoc"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Služby, ktoré môžu pridávať udalosti"
+
+#: 
+msgid "Ministry"
+msgstr "Služba"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Kalendáre služieb"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Koordinátori služieb"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Prehľad služby"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Nastavenia služieb"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Kalendár služby"
+
+#: 
+msgid "Ministry created"
+msgstr "Služba vytvorená"
+
+#: 
+msgid "Ministry management access"
+msgstr "Prístup k správe služieb"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Vyžaduje sa prístup k správe služieb"
+
+#: 
+msgid "Ministry name"
+msgstr "Názov služby"
+
+#: 
+msgid "Ministry not found"
+msgstr "Služba sa nenašla"
+
+#: 
+msgid "My Family"
+msgstr "Moja rodina"
+
+#: 
+msgid "My Teams"
+msgstr "Moje tímy"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Moje služby a tímy"
+
+#: 
+msgid "My schedule"
+msgstr "Môj rozpis"
+
+#: 
+msgid "My volunteering"
+msgstr "Moje dobrovoľníctvo"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Pomenujte túto pozíciu na stránke, kde členovia hľadajú, s čím by mohli pomôcť."
+
+#: 
+msgid "Needs an answer"
+msgstr "Vyžaduje odpoveď"
+
+#: 
+msgid "Needs filling"
+msgstr "Treba obsadiť"
+
+#: 
+msgid "Never signed in"
+msgstr "Nikdy sa neprihlásil(a)"
+
+#: 
+msgid "New account"
+msgstr "Nový účet"
+
+#: 
+msgid "New event"
+msgstr "Nová udalosť"
+
+#: 
+msgid "New ministry"
+msgstr "Nová služba"
+
+#: 
+msgid "New record notification"
+msgstr "Oznámenie o novom zázname"
+
+#: 
+msgid "New recurring event"
+msgstr "Nová opakovaná udalosť"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Sú potrební noví dobrovoľníci na tieto pozície"
+
+#: 
+msgid "Newest first"
+msgstr "Od najnovších"
+
+#: 
+msgid "Next on %s"
+msgstr "Ďalšie: %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Členom zatiaľ nebol sprístupnený žiadny kalendár."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Pre túto službu nie je otvorený žiadny kalendár, takže sa udalosti nezobrazia v žiadnom kalendári."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Členom nie je sprístupnený žiadny kalendár."
+
+#: 
+msgid "No class"
+msgstr "Žiadna trieda"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Zatiaľ nie sú zaznamenané žiadne kontaktné údaje."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Zatiaľ žiadni koordinátori"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Žiadny dátum medzi prvým a posledným dátumom nezodpovedá opakovaniu"
+
+#: 
+msgid "No email was sent."
+msgstr "Nebol odoslaný žiadny e-mail."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Tomuto záznamu zatiaľ neboli odoslané žiadne e-maily."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Zatiaľ nie je zaznamenaný počet prítomných"
+
+#: 
+msgid "No longer needed"
+msgstr "Už nie je potrebné"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Do Portálu členov sa zatiaľ neprihlásil žiadny člen."
+
+#: 
+msgid "No ministry"
+msgstr "Žiadna služba"
+
+#: 
+msgid "No past events"
+msgstr "Žiadne minulé udalosti"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Pre túto osobu nebola nahraná žiadna fotografia."
+
+#: 
+msgid "No photo was sent."
+msgstr "Nebola odoslaná žiadna fotografia."
+
+#: 
+msgid "No positions yet"
+msgstr "Zatiaľ žiadne pozície"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Zatiaľ žiadne kvalifikácie."
+
+#: 
+msgid "No schedules yet"
+msgstr "Zatiaľ žiadne rozpisy"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Nie sú nastavené žiadne potreby obsadenia"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Žiadne potreby obsadenia: vygenerované termíny nebudú potrebovať nikoho."
+
+#: 
+msgid "No substitution requests"
+msgstr "Žiadne žiadosti o zastúpenie"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Žiadne zastúpenia na rozhodnutie"
+
+#: 
+msgid "No teams yet"
+msgstr "Zatiaľ žiadne tímy"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "V kalendári nie sú žiadne nadchádzajúce udalosti %1$s s názvom „%2$s“. Rozpis sleduje už existujúce udalosti."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Nezodpovedá žiadna nadchádzajúca udalosť"
+
+#: 
+msgid "No upcoming events"
+msgstr "Žiadne nadchádzajúce udalosti"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "V kalendári nie sú žiadne nadchádzajúce udalosti tohto typu."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Nie sú žiadne nadchádzajúce udalosti na výber"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Zatiaľ nikto nie je pridelený"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Nikto iný na toto zatiaľ nie je zaškolený – povedzte to radšej svojmu koordinátorovi."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Nikto nepovedal, koľko dobrovoľníkov každá pozícia potrebuje, takže niet čo obsadzovať."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Nikto v tomto okne sa ešte nerozhoduje."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Pre túto pozíciu zatiaľ nikto nie je kvalifikovaný"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Pre túto pozíciu zatiaľ nikto nie je kvalifikovaný, takže zostáva otvorená."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Nikomu z príjemcov nemožno poslať e-mail"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Žiadny: typ udalosti sa vyberá pre každú udalosť"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Nemáte povolenie zobraziť tento e-mail"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Nemáte povolenie zobraziť túto rodinu"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Nemáte povolenie zobraziť túto osobu"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Nemáte oprávnenie pre toto pridelenie"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Nemáte oprávnenie pre túto službu"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Nemáte oprávnenie pre tento termín"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Nemáte oprávnenie pre túto pozíciu"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Nemáte oprávnenie pre túto kvalifikáciu"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Nemáte oprávnenie pre túto požiadavku"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Nemáte oprávnenie pre tento rozpis"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Nemáte oprávnenie pre túto žiadosť o zastúpenie"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Nemáte oprávnenie pre tento tím"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Nemáte oprávnenie prideľovať udalosti tejto dobrovoľníckej službe"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Nemáte oprávnenie meniť udalosť %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Nemáte oprávnenie meniť dobrovoľnícku službu tejto udalosti"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Nemáte oprávnenie vytvoriť udalosť bez dobrovoľníckej služby, ktorú spravujete"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Nemáte oprávnenie upravovať túto udalosť"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Nemáte oprávnenie pripínať udalosti do kalendára „%s“"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Nemáte oprávnenie odstraňovať udalosti z kalendára „%s“"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Nemáte oprávnenie odstrániť dobrovoľnícku službu z tejto udalosti"
+
+#: 
+msgid "Not checked in"
+msgstr "Neprihlásený na prezenciu"
+
+#: 
+msgid "Not found"
+msgstr "Nenájdené"
+
+#: 
+msgid "Not in the pool"
+msgstr "Nie je v skupine"
+
+#: 
+msgid "Not now"
+msgstr "Teraz nie"
+
+#: 
+msgid "Not sent"
+msgstr "Neodoslané"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Nenastavené: použite „%s“"
+
+#: 
+msgid "Not staffed"
+msgstr "Neobsadené"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Zatiaľ nevolontérujete"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Nič sa nezmenilo, takže sa nič neuložilo."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "V kalendári na toto obdobie nič nie je."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "V kalendári momentálne nič nie je."
+
+#: 
+msgid "Nothing is short"
+msgstr "Nič nechýba"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Na vašom zozname zatiaľ nič nie je"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Na vašom zozname zatiaľ nič nie je. Pozrite sa, čo treba obsadiť."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Momentálne nič nie je otvorené"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Zatiaľ nič nie je naplánované"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Nič nie je naplánované."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Zatiaľ nič nie je nastavené"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "V poslednom roku sa nestalo nič, čo táto služba vlastní."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Zatiaľ niet čo kvalifikovať"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Nič sa neuložilo. Skontrolujte zvýraznené polia."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Nič sa neuložilo. Skúste to znova."
+
+#: 
+msgid "Notification"
+msgstr "Upozornenie"
+
+#: 
+msgid "Notifications"
+msgstr "Upozornenia"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Termín sa nenašiel"
+
+#: 
+msgid "Occurrences"
+msgstr "Termíny"
+
+#: 
+msgid "Offer to help"
+msgstr "Ponúknuť pomoc"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Raz denne každý aktívny rozpis dostane termíny pre udalosti, ktoré sleduje, až %d týždeň dopredu, a predvolený dobrovoľník každej pozície sa pridelí na nové termíny, kým zostáva kvalifikovaný."
+msgstr[1] "Raz denne každý aktívny rozpis dostane termíny pre udalosti, ktoré sleduje, až %d týždne dopredu, a predvolený dobrovoľník každej pozície sa pridelí na nové termíny, kým zostáva kvalifikovaný."
+msgstr[2] "Raz denne každý aktívny rozpis dostane termíny pre udalosti, ktoré sleduje, až %d týždňa dopredu, a predvolený dobrovoľník každej pozície sa pridelí na nové termíny, kým zostáva kvalifikovaný."
+msgstr[3] "Raz denne každý aktívny rozpis dostane termíny pre udalosti, ktoré sleduje, až %d týždňov dopredu, a predvolený dobrovoľník každej pozície sa pridelí na nové termíny, kým zostáva kvalifikovaný."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Keď je táto osoba kvalifikovaná na pozíciu, zobrazí sa tu spolu s dátumami, kedy je naplánovaná slúžiť."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Jeden termín sa vytvorí pre každú udalosť v kalendári, ktorej Prepojená skupina je táto trieda."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Jeden termín sa vytvorí pre každý dátum tejto udalosti. Vybrať možno len udalosti, ktoré už sú v kalendári."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Jeden z kalendárov neexistuje"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Jedna z udalostí neexistuje"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Jeden z týchto kalendárov nie je zdieľaný s členmi."
+
+#: 
+msgid "One-time"
+msgstr "Jednorazovo"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Do tímu možno prepojiť iba triedu nedeľnej školy"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Odpoveď v mene niekoho iného môže zaznamenať iba koordinátor"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Udalosti tejto služby môže vytvárať iba jej koordinátor"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Udalosti tejto služby môže obsadzovať iba jej koordinátor"
+
+#: 
+msgid "Only a volunteer manager can change the team leader"
+msgstr "Vedúceho tímu môže zmeniť iba správca dobrovoľníkov"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Toto môže zmeniť iba správca dobrovoľníkov."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Iba správca dobrovoľníkov môže zmeniť, či služba poskytuje učiteľov pre nedeľnú školu"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Tieto údaje môže zmeniť iba dospelý z vašej rodiny. Kontaktujte cirkevnú kanceláriu."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Uvedení sú iba ľudia zaškolení na toto."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Náhradu môže navrhnúť iba pridelený dobrovoľník"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Uvedené sú iba kalendáre, do ktorých môže táto služba pridávať udalosti. Jej vlastný kalendár je spočiatku zaškrtnutý."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Zobrazuje sa iba prvá časť veľmi dlhého zoznamu. Zúžte okno, aby ste videli zvyšok."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Náhradu môže stiahnuť iba dobrovoľník, ktorý ju navrhol"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Otvorte službu v ponuke Služby, vytvorte rozpis a vygenerujte jeho dátumy a tu sa zobrazia týždne na obsadenie."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Otvorte službu, aby ste niekoho urobili jej koordinátorom alebo vedúcim jedného z jej tímov."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Otvoriť v kalendárovej aplikácii"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Otvorené príležitosti sa nepodarilo načítať."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Otvoriť príjemcov vo vašej lokálnej e-mailovej aplikácii"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Otvoriť Portál členov"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Otvoriť prehľad služby"
+
+#: 
+msgid "Open the ministry"
+msgstr "Otvoriť službu"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Otvoriť termín"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Otvorte termín a pridelte ľudí, ktorých potrebujete."
+
+#: 
+msgid "Open this team"
+msgstr "Otvoriť tento tím"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Otvorenie kalendára pre služby vyžaduje oprávnenie Pridávať udalosti"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Nepovinné. Každý kvalifikovaný na pozíciu tohto tímu sa stane učiteľom triedy a stránka triedy už jej učiteľov nemení."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Nepovinné. Trieda sa stane Prepojenou skupinou: jej zoznam určuje, kto sa prihlasuje na prezenciu, a rozpis pre triedu nájde tieto udalosti."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Nad maximom: odstráňte tohto alebo zvýšte maximum."
+
+#: 
+msgid "Overridden templates"
+msgstr "Prepísané šablóny"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Strana %1$s z %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Strana %d z %d"
+
+#: 
+msgid "Password reset"
+msgstr "Obnovenie hesla"
+
+#: 
+msgid "Password reset link"
+msgstr "Odkaz na obnovenie hesla"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Heslá musia mať aspoň %s znak."
+msgstr[1] "Heslá musia mať aspoň %s znaky."
+msgstr[2] "Heslá musia mať aspoň %s znaku."
+msgstr[3] "Heslá musia mať aspoň %s znakov."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Vyberte nadchádzajúcu udalosť v kalendári a uveďte, koho potrebuje. Udalosť si ponecháva vlastný dátum a čas; ak chcete obsadiť celú sériu, pridajte radšej rozpis."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Vyberte niekoho, kto už súhlasil, že vás zastúpi. Váš koordinátor to potvrdí."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Vyberte kalendáre zo zoznamu."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Vyberte, či sa vaše údaje majú zmeniť."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Kontaktujte cirkevnú kanceláriu, aby sme mohli opraviť naše záznamy."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Kontaktujte cirkevnú kanceláriu."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Zadajte aspoň dva znaky."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Dajte nám vedieť, či môžete prísť, prijatím alebo odmietnutím vo svojom rozpise dobrovoľníka."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Napíšte nám, čo treba zmeniť."
+
+#: 
+msgid "Portal settings"
+msgstr "Nastavenia portálu"
+
+#: 
+msgid "Portal theme"
+msgstr "Téma portálu"
+
+#: 
+msgid "Position"
+msgstr "Pozícia"
+
+#: 
+msgid "Position added"
+msgstr "Pozícia pridaná"
+
+#: 
+msgid "Position deleted"
+msgstr "Pozícia odstránená"
+
+#: 
+msgid "Position name"
+msgstr "Názov pozície"
+
+#: 
+msgid "Position not found"
+msgstr "Pozícia sa nenašla"
+
+#: 
+msgid "Position saved"
+msgstr "Pozícia uložená"
+
+#: 
+msgid "Positions"
+msgstr "Pozície"
+
+#: 
+msgid "Positions still short"
+msgstr "Pozície, ktoré stále chýbajú"
+
+#: 
+msgid "Proposed"
+msgstr "Navrhnuté"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Navrhovaná náhrada"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Zverejniť túto službu na stránke Otvorené príležitosti v Portáli členov, kde ju môže vidieť každý dobrovoľník a ponúknuť pomoc. Pripoja sa do skupiny dobrovoľníkov a vy dostanete e-mail."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Nasadiť namiesto toho {{name}}? Pôvodný dobrovoľník si zachová svoju históriu a bude informovaný."
+
+#: 
+msgid "Qualification not found"
+msgstr "Kvalifikácia sa nenašla"
+
+#: 
+msgid "Qualified for"
+msgstr "Kvalifikovaný na"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Kvalifikovaní dobrovoľníci sa môžu sami prihlásiť na otvorené dátumy tejto pozície. Vypnite pre pozície, ktoré má prideľovať iba vedúci tímu alebo koordinátor; Portál členov ich ponúkať nebude."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Kvalifikovať jeho aktuálnych učiteľov na"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Kvalifikovať ho na pozíciu"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Kvalifikovať ho na pozíciu."
+
+#: 
+msgid "Reactivate"
+msgstr "Znova aktivovať"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Prečítajte si príručku k tvorbe tém"
+
+#: 
+msgid "Recent Emails"
+msgstr "Nedávne e-maily"
+
+#: 
+msgid "Recent Sends"
+msgstr "Nedávne odoslania"
+
+#: 
+msgid "Recipient"
+msgstr "Príjemca"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Počet príjemcov (%d) prekračuje maximum povolené na jedno odoslanie (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Príjemcovia musia byť zadaní ako personId a familyId, nie ako e-mailové adresy"
+
+#: 
+msgid "Record a decline"
+msgstr "Zaznamenať odmietnutie"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Zaznamenať prijatie"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Zaznamenať, že {{name}} odmietol(a)? Odpoveď sa uloží ako od vás a miesto sa opäť uvoľní."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Zaznamenať, že {{name}} súhlasil(a)? Odpoveď sa uloží ako od vás, nie od nich."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Zaznamenať: prijali"
+
+#: 
+msgid "Record: they declined"
+msgstr "Zaznamenať: odmietli"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Získavať dobrovoľníkov"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Získavanie dobrovoľníkov musí byť pravda alebo nepravda"
+
+#: 
+msgid "Recruiting"
+msgstr "Získavanie"
+
+#: 
+msgid "Recurring"
+msgstr "Opakované"
+
+#: 
+msgid "Reject"
+msgstr "Zamietnuť"
+
+#: 
+msgid "Reject substitution"
+msgstr "Zamietnuť zastúpenie"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Zamietnuť túto náhradu"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Predstih pripomienky (hodiny)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Pripomienka: máte naplánovanú službu"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Pripomienky a upozornenia sa doručujú iba pri behu úloh na pozadí. Pre včasné doručenie spúšťajte plánovač úloh z cronu každých 15 minút"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Odstrániť dobrovoľníka"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Odstrániť koordinátora"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Odstrániť im triedu"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Odstrániť vedúceho tímu"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Odstrániť {{name}} zo služby {{ministry}}? Tým sa odstránia všetky jeho kvalifikácie tu, zruší sa jeho účasť na všetkých budúcich termínoch, zruší sa jeho určenie ako predvoleného dobrovoľníka v rozpisoch tejto služby a odstráni sa zo skupiny dobrovoľníkov."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Odstránené. Kvalifikácie: {{qualifications}}, nadchádzajúce pridelenia: {{assignments}}, predvolené hodnoty rozpisov: {{defaults}}."
+
+#: 
+msgid "Repeats"
+msgstr "Opakuje sa"
+
+#: 
+msgid "Requirement not found"
+msgstr "Požiadavka sa nenašla"
+
+#: 
+msgid "Reset link"
+msgstr "Odkaz na obnovenie"
+
+#: 
+msgid "Response recorded"
+msgstr "Odpoveď zaznamenaná"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Skontrolujte žiadosť na prehľade dobrovoľníkov a schváľte alebo zamietnite ju."
+
+#: 
+msgid "Review this request"
+msgstr "Skontrolovať túto žiadosť"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Spustiť úlohy na pozadí teraz"
+
+#: 
+msgid "SMTP test"
+msgstr "Test SMTP"
+
+#: 
+msgid "Save calendars"
+msgstr "Uložiť kalendáre"
+
+#: 
+msgid "Save changes"
+msgstr "Uložiť zmeny"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Uložené – táto služba už nežiada o pomoc"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Uložené – táto služba teraz žiada o pomoc"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Uložené. Členovia vidia kalendáre zapnuté vyššie."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Rozpis „{{name}}“ bol vytvorený."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Rozpis „{{name}}“ bol vytvorený. Je neaktívny, takže nevytvára žiadne termíny, kým nebude aktívny."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Rozpis deaktivovaný"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Rozpis odstránený"
+
+#: 
+msgid "Schedule name"
+msgstr "Názov rozpisu"
+
+#: 
+msgid "Schedule not found"
+msgstr "Rozpis sa nenašiel"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Rozpis znova aktivovaný"
+
+#: 
+msgid "Schedule saved"
+msgstr "Rozpis uložený"
+
+#: 
+msgid "Scheduled"
+msgstr "Naplánované"
+
+#: 
+msgid "Schedules"
+msgstr "Rozpisy"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Rozpisy naposledy doplnené"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Rozpisy už nemajú vlastné opakovanie ani časy; každý termín sleduje udalosť v kalendári. Odstráňte: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Rozpisy už nenastavujú, ako ďaleko dopredu sa generujú: horizont plánovania v Správa → Nastavenia služieb platí pre každý rozpis. Odstráňte: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Horizont plánovania (týždne)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Pridelenie rozsahu sa nenašlo"
+
+#: 
+msgid "Search by name"
+msgstr "Hľadať podľa mena"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Zobraziť celý kalendár"
+
+#: 
+msgid "See what needs filling"
+msgstr "Pozrieť, čo treba obsadiť"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Vyberte kalendár, aby ste skryli alebo zobrazili jeho udalosti."
+
+#: 
+msgid "Select ministries..."
+msgstr "Vyberte služby..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Samoprihlásenie"
+
+#: 
+msgid "Self-assignable"
+msgstr "Možno pridelí sám/sama"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Samopridelenie musí byť pravda alebo nepravda"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Samoobslužné účty"
+
+#: 
+msgid "Send"
+msgstr "Odoslať"
+
+#: 
+msgid "Send Email"
+msgstr "Odoslať e-mail"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Odoslať e-mail z ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Odoslať správu o pridelení znova"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Odošlite kalendáre, ktoré sa majú zobraziť, ako zoznam."
+
+#: 
+msgid "Send to the church office"
+msgstr "Odoslať cirkevnej kancelárii"
+
+#: 
+msgid "Send your answer"
+msgstr "Odoslať vašu odpoveď"
+
+#: 
+msgid "Sent"
+msgstr "Odoslané"
+
+#: 
+msgid "Sent by"
+msgstr "Odoslal(a)"
+
+#: 
+msgid "Serving next"
+msgstr "Slúži ako ďalší"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Nastaviť ako prijaté"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Nastaviť potreby obsadenia"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Zobraziť „%s“ v Portáli členov"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Zobraziť v Portáli členov"
+
+#: 
+msgid "Show past events"
+msgstr "Zobraziť minulé udalosti"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Zobraziť kalendár cirkvi"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Zobraziť kalendár cirkvi v Portáli členov."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Zobraziť sekciu kalendára cirkvi v Portáli členov."
+
+#: 
+msgid "Show the next"
+msgstr "Zobraziť nasledujúcich"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Zobraziť sekcie dobrovoľníctva a tímov v Portáli členov."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Zobraziť túto službu na stránke Otvorené príležitosti"
+
+#: 
+msgid "Show volunteering"
+msgstr "Zobraziť dobrovoľníctvo"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Zobraziť stránky dobrovoľníctva a tímov v Portáli členov."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Zobraziť, čo som už urobil(a)"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Zobrazí sa presne tak, ako to napíšete. Zalomenia riadkov sa zachovajú."
+
+#: 
+msgid "Sign up"
+msgstr "Prihlásiť sa"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Prihlásenie a zabezpečenie"
+
+#: 
+msgid "Signed in"
+msgstr "Prihlásený"
+
+#: 
+msgid "Signed up"
+msgstr "Prihlásený(á)"
+
+#: 
+msgid "Sincerely"
+msgstr "S úctou"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Niektoré vaše údaje sa nepodarilo uložiť. Skontrolujte zvýraznené polia."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Niektoré údaje o vašej rodine sa nepodarilo uložiť. Skontrolujte zvýraznené polia."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Niekto iný zastupuje"
+
+#: 
+msgid "Something needs changing"
+msgstr "Niečo treba zmeniť"
+
+#: 
+msgid "Something went wrong"
+msgstr "Niečo sa pokazilo"
+
+#: 
+msgid "Staff an event"
+msgstr "Obsadiť udalosť"
+
+#: 
+msgid "Staff them"
+msgstr "Obsadiť ich"
+
+#: 
+msgid "Staff this event"
+msgstr "Obsadiť túto udalosť"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Obsadiť tento termín"
+
+#: 
+msgid "Staffed"
+msgstr "Obsadené"
+
+#: 
+msgid "Staffing"
+msgstr "Obsadenie"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Obsadenie sa nastavuje po vytvorení udalostí"
+
+#: 
+msgid "Staffing needs"
+msgstr "Potreby obsadenia"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Potreby obsadenia uložené"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Začnite vytvorením služby a potom pridajte tímy a pozície, ktoré v nej slúžia."
+
+#: 
+msgid "Start time"
+msgstr "Čas začiatku"
+
+#: 
+msgid "Start typing a name"
+msgstr "Začnite písať meno"
+
+#: 
+msgid "Statistics"
+msgstr "Štatistiky"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Ukončiť koordinovanie služby {{ministry}} osobou {{name}}? Jej prihlásenie a vlastné pridelenia zostanú nedotknuté."
+
+#: 
+msgid "Subscribe"
+msgstr "Odoberať"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Odoberať kalendár"
+
+#: 
+msgid "Substitute"
+msgstr "Náhrada"
+
+#: 
+msgid "Substitute approved"
+msgstr "Náhrada schválená"
+
+#: 
+msgid "Substitute asked"
+msgstr "Náhrada vyžiadaná"
+
+#: 
+msgid "Substitute decision"
+msgstr "Rozhodnutie o náhrade"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Náhrada navrhnutá"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Náhrada zamietnutá"
+
+#: 
+msgid "Substituted"
+msgstr "Zastúpené"
+
+#: 
+msgid "Substitution approved"
+msgstr "Zastúpenie schválené"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Zastúpenie zamietnuté"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Žiadosť o zastúpenie sa nenašla"
+
+#: 
+msgid "Substitution requests"
+msgstr "Žiadosti o zastúpenie"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Trieda nedeľnej školy"
+
+#: 
+msgid "System calendar"
+msgstr "Systémový kalendár"
+
+#: 
+msgid "System default"
+msgstr "Predvolené nastavenie systému"
+
+#: 
+msgid "Take that back"
+msgstr "Vziať späť"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Odstrániť {{name}} z tejto pozície? E-mail sa neodošle; v jeho rozpise sa dátum zobrazí ako už nepotrebný a miesto sa opäť uvoľní."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Učitelia tejto triedy sa spravujú v Služby → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Tím"
+
+#: 
+msgid "Team Leader"
+msgstr "Vedúci tímu"
+
+#: 
+msgid "Team added"
+msgstr "Tím pridaný"
+
+#: 
+msgid "Team deleted"
+msgstr "Tím odstránený"
+
+#: 
+msgid "Team leader"
+msgstr "Vedúci tímu"
+
+#: 
+msgid "Team name"
+msgstr "Názov tímu"
+
+#: 
+msgid "Team not found"
+msgstr "Tím sa nenašiel"
+
+#: 
+msgid "Team saved"
+msgstr "Tím uložený"
+
+#: 
+msgid "Teams"
+msgstr "Tímy"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Tímy sú skupiny ľudí, ktorí v tejto službe slúžia."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Tímy, pozície a ľudia, ktorí ich obsadzujú"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Desať posledných prihlásení"
+
+#: 
+msgid "Thank you"
+msgstr "Ďakujeme!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Ďakujeme, že ste sa prihlásili slúžiť"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Ďakujeme, že ste sa prihlásili slúžiť. Ste v rozpise."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Ďakujeme. Cirkevná kancelária má vašu odpoveď."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Ďakujeme. Cirkevná kancelária to skontroluje, než sa to pridá."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Ďakujeme, že ste nám dali vedieť."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Ďakujeme – koordinátor bol informovaný, že by ste radi pomohli znova."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Ďakujeme – koordinátor bol informovaný, že by ste radi pomohli."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Ďakujeme – ste na zozname."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Tento priečinok témy Portálu členov neexistuje."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Toto pridelenie patrí niekomu inému"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Toto pridelenie sa nepodarilo uložiť"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Tieto narodeniny nie sú platným dátumom."
+
+#: 
+msgid "That could not be saved."
+msgstr "Toto sa nepodarilo uložiť."
+
+#: 
+msgid "That could not be sent."
+msgstr "Toto sa nepodarilo odoslať."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Tohto člena rodiny sa nepodarilo pridať. Skontrolujte zvýraznené polia."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Toto nie je platný dátum."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Tento zoznam sa nepodarilo načítať."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Táto osoba už túto pozíciu na tomto termíne zastáva"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Táto osoba je už na tomto termíne pridelená na túto pozíciu"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Táto osoba nie je v skupine dobrovoľníkov tejto služby. Odošlite znova s prepísaním mimo skupiny, ak ju chcete aj tak prideliť."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Táto osoba nie je v tejto skupine dobrovoľníkov"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Táto osoba nie je kvalifikovaná na túto pozíciu"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Túto fotografiu sa nepodarilo uložiť."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Táto fotografia je príliš veľká. Vyberte menšiu."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Táto pozícia patrí inej službe"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Táto pozícia patrí inému tímu"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Táto pozícia je už plne obsadená"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Táto pozícia sa na tomto termíne neobsadzuje"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Túto odpoveď sa nepodarilo zaznamenať"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Tento stav nemožno nastaviť priamo"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "O tejto žiadosti o zastúpenie sa nepodarilo rozhodnúť"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Tento tím patrí inej službe"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Túto tému sa nepodarilo aktivovať."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Túto tému sa nepodarilo skontrolovať."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Táto téma obsahuje chyby, preto nebola aktivovaná."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Tohto dobrovoľníka sa nepodarilo prideliť"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Tento dátum svadby nie je platný dátum."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "Pole %s musí byť dátum v tvare RRRR-MM-DD"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "Pole %s musí byť celý počet minút"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "Pole %s musí byť do %d minút od udalosti"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Kalendáre Portálu členov boli uložené."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Portál členov nemohol dokončiť, čo ste požadovali. Skúste to znova o niekoľko minút."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Portál členov je dostupný iba prihlásenej osobe, nie klientom API."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Portál členov je nastavený na tému „%s“, ktorá už na serveri nie je. Členovia vidia chybovú stránku, kým nevyberiete existujúcu tému."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Portál členov je dočasne nedostupný"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Tému Portálu členov „%s“ sa nepodarilo aktivovať, pretože obsahuje chyby."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Tému Portálu členov sa nepodarilo vykresliť"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Priečinok témy Portálu členov „%s“ sa nenašiel."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Téma Portálu členov bola zmenená."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Rolu Učiteľ služby %1$s nemožno premenovať ani odstrániť, kým sa jej učitelia spravujú v Služby → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Priečinok aktívnej témy chýba"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Adresa je vybraná – skopírujte ju klávesnicou."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Cesta k zdroju „%s“ nie je povolená."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Pridelenie sa nepodarilo zrušiť"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Správa o pridelení sa odošle znova"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Adresa kalendára bola skopírovaná."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Kalendáre sa nepodarilo načítať. Skúste to znova."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Kalendáre sa nepodarilo uložiť."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Výber sa nepodarilo pridať"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Cirkev vám zatiaľ neposlala e-mail."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Cirkevná kancelária bola upozornená. Skúste to neskôr."
+
+#: 
+msgid "The class does not exist"
+msgstr "Trieda neexistuje"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Trieda, ktorú tento rozpis sleduje, už neexistuje."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Obsah tohto e-mailu sa neukladá. ChurchCRM uchováva iba text správ napísaných v editore e-mailov a e-mailov dobrovoľníkom."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Obsah tohto e-mailu nebol uchovaný."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Koordinátora sa nepodarilo pridať"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Zoznam koordinátorov sa nepodarilo načítať"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Dátum a čas každého termínu pochádzajú z jeho udalosti v kalendári, takže presunutím udalosti sa presunie aj rozpis."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Parameter days musí byť celé číslo od 1 do 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Predvolený dobrovoľník musí byť osoba"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Predvolení dobrovoľníci sa ukladajú v rozpise a platia pre termíny vytvorené odteraz."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Predvolení dobrovoľníci musia byť zoznam"
+
+#: 
+msgid "The description is too long"
+msgstr "Popis je príliš dlhý"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Koniec rozsahu je pred jeho začiatkom."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Koniec rozsahu nie je dátum."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Udalosť sa nepodarilo obsadiť"
+
+#: 
+msgid "The event does not exist"
+msgstr "Udalosť neexistuje"
+
+#: 
+msgid "The event is inactive"
+msgstr "Udalosť je neaktívna"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Udalosť musí skončiť po svojom začiatku"
+
+#: 
+msgid "The event title"
+msgstr "Názov udalosti"
+
+#: 
+msgid "The event title is too long"
+msgstr "Názov udalosti je príliš dlhý"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Typ udalosti, s ktorým začínajú nové udalosti služby. Ak je prázdny alebo ak bol typ odstránený, použije sa typ s názvom „Iné“, ak existuje."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Typ udalosti neexistuje"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Typ udalosti, ktorý tento rozpis sleduje, už neexistuje."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Udalosti možno presunúť iba do triedy, s ktorou je tím prepojený"
+
+#: 
+msgid "The events could not be created"
+msgstr "Udalosti sa nepodarilo vytvoriť"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Udalosti sa nepodarilo odstrániť"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Udalosti sa nepodarilo obsadiť"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Oprávnenie sa nepodarilo odobrať"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Posledný dátum je pred prvým dátumom"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Zoznam oprávnených dobrovoľníkov sa nepodarilo načítať"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Maximálny počet nemôže byť nižší ako minimálny počet"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Správu sa nepodarilo zaradiť do fronty"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Minimálny počet nemôže byť záporný"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Službu sa nepodarilo vytvoriť"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Službu sa nepodarilo deaktivovať"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Službu sa nepodarilo odstrániť"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Službu sa nepodarilo znova aktivovať"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Službu sa nepodarilo uložiť"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Termín sa nepodarilo odstrániť"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Termín nemá rozpis"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Termíny sa nepodarilo vygenerovať"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Pôvodný dobrovoľník je uvoľnený a pozíciu preberá náhrada. Obaja budú informovaní."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Pôvodný dobrovoľník si pozíciu ponecháva. Obaja budú informovaní."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Stránka, o ktorú ste požiadali, neexistuje. Možno bola presunutá alebo odstránená."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Pozícia patrí inej službe"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Pozíciu sa nepodarilo odstrániť"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Pozíciu sa nepodarilo uložiť"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Pozícia je stále pokrytá, takže nie je potrebná žiadna akcia, pokiaľ nechcete upraviť zostavu."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Kvalifikáciu sa nepodarilo odstrániť"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Kvalifikáciu sa nepodarilo uložiť"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Kvalifikovaných dobrovoľníkov sa nepodarilo načítať"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Opakovanie musí určovať, ako sa udalosti opakujú"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Žiadosť, aby %1$s slúžil(a) namiesto %2$s, bola schválená."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Žiadosť, aby %1$s slúžil(a) namiesto %2$s, nebola schválená."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Tá istá pozícia je v potrebách obsadenia uvedená dvakrát"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Rozpis sa nepodarilo deaktivovať"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Rozpis sa nepodarilo odstrániť"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Rozpis sa nepodarilo znova aktivovať"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Rozpis sa nepodarilo uložiť"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Rozpis bol aktualizovaný, takže už nie je čo robiť."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Okno rozpisu končí pred svojím začiatkom"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Potreby obsadenia rozpisu sa nepodarilo načítať"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Potreby obsadenia sa nepodarilo načítať"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Potreby obsadenia sa nepodarilo obnoviť"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Potreby obsadenia sa nepodarilo uložiť"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Potreby obsadenia musia byť zoznam"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Plán obsadenia sa nepodarilo načítať"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Začiatok rozsahu nie je dátum."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "O zastúpení sa nepodarilo rozhodnúť"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Žiadosti o zastúpenie sa nepodarilo načítať"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Učiteľov možno importovať iba do pozície tohto tímu"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Učitelia služby %1$s sa spravujú v Služby → %2$s → %3$s. Študentov možno stále meniť tu."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Tím sa nepodarilo odstrániť"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Tím sa nepodarilo uložiť"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Tím nepatrí do tejto služby"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Priečinok témy sa nenašiel."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Typ, s ktorým začína nová udalosť na karte Kalendár služby. Pre každú udalosť ho možno stále zmeniť, napríklad pre triedu, ktorá potrebuje kategórie počtu prítomných."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Pridelenie dobrovoľníka sa nepodarilo uložiť"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Skupina dobrovoľníkov služby %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Zmenu nastavenia dobrovoľníkov sa nepodarilo uložiť"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Okno končí pred svojím začiatkom"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Ich koordinátori môžu pripínať udalosti svojej služby do tohto kalendára bez oprávnenia Pridávať udalosti."
+
+#: 
+msgid "Theme"
+msgstr "Téma"
+
+#: 
+msgid "Themes"
+msgstr "Témy"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Témy poskytuje vaša cirkev, nie ChurchCRM, a projekt ChurchCRM ich neoveruje."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Neexistuje žiadny kalendár cirkvi s id %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Neexistuje žiadny systémový kalendár s id %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Toto sú údaje, ktoré o vás cirkev eviduje. Zmeny sa uložia okamžite."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Toto sú dobrovoľnícke tímy, o ktoré sa staráte. Otvorte jeden, aby ste nastavili jeho pozície, určili, kto môže kde slúžiť, a obsadili nadchádzajúce týždne."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Tieto udalosti nie sú jedna séria: líšia sa v názve, type alebo triede"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Tieto služby by privítali viac ľudí. Dajte im vedieť, že máte záujem, a niekto sa vám ozve."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Tieto potreby pochádzajú z rozpisu. Uloženie tu zmení iba tento termín."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Tieto čísla zahŕňajú iba samoobslužné účty: osoby, ktorých prihlásenie sa dostane iba do Portálu členov a nikam inam."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Títo ľudia sú stále pridelení, ale pozícia, ktorú zastávajú, už nie je súčasťou plánu obsadenia tohto dátumu."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Títo ľudia sú stále pridelení, ale pozícia, ktorú zastávajú, už nie je súčasťou plánu obsadenia tohto termínu."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Tieto naplánované pozície ešte niekoho potrebujú."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Tieto tímy služby %1$s sú prepojené s triedou nedeľnej školy: %2$s. Najprv ich odpojte."
+
+#: 
+msgid "They could not be added"
+msgstr "Nepodarilo sa ich pridať"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Nepodarilo sa ich odstrániť z tejto služby"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Končia %d minútu po skončení udalosti."
+msgstr[1] "Končia %d minúty po skončení udalosti."
+msgstr[2] "Končia %d minúty po skončení udalosti."
+msgstr[3] "Končia %d minút po skončení udalosti."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Končia %d minútu pred skončením udalosti."
+msgstr[1] "Končia %d minúty pred skončením udalosti."
+msgstr[2] "Končia %d minúty pred skončením udalosti."
+msgstr[3] "Končia %d minút pred skončením udalosti."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Už tu boli dobrovoľníkmi"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Toto pridelenie je %1$s a nemožno ho zmeniť na %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Toto pridelenie už nie je aktívne"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Tento e-mail nie je vo vašej histórii."
+
+#: 
+msgid "This event has already happened"
+msgstr "Táto udalosť sa už uskutočnila"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Toto ide cirkevnej kancelárii na kontrolu. Kým to zamestnanec neschváli, nový člen rodiny sa tu zobrazuje ako čakajúci na kontrolu."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Táto skupina je skupinou dobrovoľníkov služby a odstráni sa spolu so službou"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Táto skupina je skupinou dobrovoľníkov služby %s a spravuje sa z tejto služby."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Táto skupina je skupinou dobrovoľníkov služby %s. Spravuje sa z tejto služby."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Táto inštalácia zatiaľ nemá žiadne kalendáre."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Toto je pripomienka, že ste čoskoro naplánovaní slúžiť."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Toto nie je platný názov priečinka témy."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Toto nie je jeden z dátumov vášho tímu."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Toto nie je jeden z vašich tímov."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Sem cirkev posiela poštu a podľa toho, komu volá ohľadom vašej domácnosti."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Toto je váš cirkevný účet. Všetko, čo môžete urobiť pre seba a svoju rodinu, je tu."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Táto služba nemá v kalendári žiadne nadchádzajúce udalosti."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Táto služba nemá žiadne nadchádzajúce udalosti s názvom „%s“. Rozpis sleduje už existujúce udalosti: najprv ich pridajte na karte Kalendár služby."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Táto služba nemá skupinu dobrovoľníkov"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Táto služba momentálne nežiada o pomoc"
+
+#: 
+msgid "This ministry's events"
+msgstr "Udalosti tejto služby"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Udalosti tejto služby (zatiaľ nevybraná žiadna udalosť)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Tento termín opäť sleduje svoj rozpis"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Tento termín sa už uskutočnil"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Tento termín sa už uskutočnil a jeho pridelenia už nemožno meniť"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Tento termín bol zrušený"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Tento termín má vlastné potreby obsadenia, oddelené od jeho rozpisu."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Táto stránka nie je súčasťou vášho účtu. Ak si myslíte, že by mala byť, obráťte sa na cirkevnú kanceláriu."
+
+#: 
+msgid "This page was not found"
+msgstr "Táto stránka sa nenašla"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Táto časť Portálu členov je určená pre vedúcich dobrovoľníckych tímov."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Táto pozícia sa prideľuje vedúcim tímu alebo koordinátorom, nie prihlásením sa"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Tento rozpis nemožno odstrániť: na jeho termíny sa stále odkazuje %d pridelení dobrovoľníkov."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Tento rozpis zatiaľ nemá potreby obsadenia"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Tento rozpis je neaktívny. Znova ho aktivujte, aby ste vygenerovali jeho termíny."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "O tejto žiadosti o zastúpenie sa už rozhodlo"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Tento tím zatiaľ nemá žiadne pozície"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Tento tím už obsadzuje túto udalosť"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Táto šablóna vyžaduje súbor „%s“, ktorý téma neobsahuje."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Túto tému nemožno aktivovať"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Táto téma nemá žiadne problémy."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Táto verzia ChurchCRM na tejto ceste nepoužíva šablónu, takže sa prepísanie nikdy nevykreslí."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Zaškrtnite ich na karte Dobrovoľníci tohto tímu a potom ich tu pridelte."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Zaškrtnutia sa ukladajú hneď."
+
+#: 
+msgid "Times come from this event"
+msgstr "Časy pochádzajú z tejto udalosti"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Doplní každý rozpis, odošle všetko, čo čaká vo fronte, a uzavrie dokončené termíny bez čakania na ďalšie plánované spustenie."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Odmietnuť {{name}}? Pôvodný dobrovoľník zostáva a bude informovaný."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Vypnite vyrovnávaciu pamäť šablón Portálu členov a vypíšte názov každej šablóny do HTML komentára. Pre návrhárov tém; pri bežnom používaní nechajte vypnuté."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Zapnite to pre službu, ktorej tímy učia triedy nedeľnej školy. Jej tímy potom možno prepojiť s triedou a jej rozpisy a udalosti ju môžu používať."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Vypína vyrovnávaciu pamäť šablón portálu a vypisuje názov každej šablóny do HTML komentára. Pre návrhárov tém; pri bežnom používaní nechajte vypnuté."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Dvojfaktorová autentifikácia"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Neobsadené pozície"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Neznáma chyba doručenia"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Neznámy stav termínu"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Neznámy režim prepojenia rozpisu"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Neznáma dobrovoľnícka služba"
+
+#: 
+msgid "Until"
+msgstr "Do"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Nadchádzajúca dostupnosť"
+
+#: 
+msgid "Update your details"
+msgstr "Aktualizujte svoje údaje"
+
+#: 
+msgid "Update your family details"
+msgstr "Aktualizujte údaje o svojej rodine"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Na obsadenie jednej udalosti použite Obsadiť udalosť"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Použiť potreby rozpisu"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Používateľ musí mať oprávnenie Pridávať udalosti alebo koordinovať dobrovoľnícku službu a modul Udalosti musí byť zapnutý"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Používateľ musí mať oprávnenie Pridávať udalosti alebo koordinovať dobrovoľnícku službu, ku ktorej tento kalendár patrí"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 – Príležitosti pre dobrovoľníkov (staré)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 – staré Príležitosti pre dobrovoľníkov"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 – Služby"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 – Správa dobrovoľníkov"
+
+#: 
+msgid "Valid"
+msgstr "Platné"
+
+#: 
+msgid "Validation"
+msgstr "Validácia"
+
+#: 
+msgid "View event"
+msgstr "Zobraziť podujatie"
+
+#: 
+msgid "View my schedule"
+msgstr "Zobraziť môj rozpis"
+
+#: 
+msgid "View only"
+msgstr "Iba zobrazenie"
+
+#: 
+msgid "View person"
+msgstr "Zobraziť osobu"
+
+#: 
+msgid "View the event"
+msgstr "Zobraziť udalosť"
+
+#: 
+msgid "View this email"
+msgstr "Zobraziť tento e-mail"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Dobrovoľník (staré)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Správa dobrovoľníkov V2 nie je zapnutá"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Dobrovoľnícka služba"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Pridelenie dobrovoľníka"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Dobrovoľník odmietol"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Dobrovoľnícka skúsenosť"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Dobrovoľnícke pozície ešte treba obsadiť"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Pripomienka pre dobrovoľníka"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Prihlásenie dobrovoľníka"
+
+#: 
+msgid "Volunteer times"
+msgstr "Časy dobrovoľníkov"
+
+#: 
+msgid "Volunteering"
+msgstr "Dobrovoľníctvo"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Dobrovoľníctvo zorganizované tak, ako ho vedie cirkev. Každá služba má tímy a pozície; ľudia sú kvalifikovaní na pozície a patria do skupiny dobrovoľníkov služby; rozpisy sledujú udalosti v kalendári a vytvárajú datované termíny s požiadavkami na obsadenie; koordinátori prideľujú ľudí, ktorí prijmú, odmietnu alebo navrhnú náhradu; pripomienky a upozornenia chodia e-mailom. Správcovia a používatelia s oprávnením Spravovať služby vidia každú službu a môžu ich vytvárať, deaktivovať a odstraňovať. Koordinátor služby namiesto toho dostane oprávnenie Spravovať moje služby: nadpis Služby v bočnom paneli potom zobrazuje iba služby, ktoré koordinuje. Vedúci tímu riadi svoj tím z Portálu členov. Členovia používajú Portál členov na zobrazenie svojho rozpisu, odpovedanie, prihlasovanie sa a ponúkanie pomoci."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Pridelení dobrovoľníci: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Dobrovoľníci končia"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Potrební dobrovoľníci"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Dobrovoľníci služby %s sú prideleni na tieto udalosti, takže ich tu nemožno odstrániť. Požiadajte túto službu, aby odstránila svoje obsadenie, alebo niekoho, kto spravuje kalendár."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Dobrovoľníci služieb {{names}} sú prideleni na niektoré z nich. Ak nespravujete kalendár, odstránenie sa zamietne, kým sa toto obsadenie neodstráni."
+
+#: 
+msgid "Volunteers start"
+msgstr "Dobrovoľníci začínajú"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Dobrovoľníci začínajú %d minútu po začiatku udalosti."
+msgstr[1] "Dobrovoľníci začínajú %d minúty po začiatku udalosti."
+msgstr[2] "Dobrovoľníci začínajú %d minúty po začiatku udalosti."
+msgstr[3] "Dobrovoľníci začínajú %d minút po začiatku udalosti."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Dobrovoľníci začínajú %d minútu pred začiatkom udalosti."
+msgstr[1] "Dobrovoľníci začínajú %d minúty pred začiatkom udalosti."
+msgstr[2] "Dobrovoľníci začínajú %d minúty pred začiatkom udalosti."
+msgstr[3] "Dobrovoľníci začínajú %d minút pred začiatkom udalosti."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Čaká na odpoveď"
+
+#: 
+msgid "Waiting for review"
+msgstr "Čaká na kontrolu"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Čaká na potvrdenie vášho koordinátora."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Pošleme vám e-mail, keď bude niečo treba obsadiť."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Radi by sme viac pomoci v nedeľné ráno – skúsenosti nie sú potrebné."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Vitajte, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Čo treba zmeniť?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Čo si tento týždeň vyžaduje vašu pozornosť"
+
+#: 
+msgid "What the check found"
+msgstr "Čo kontrola zistila"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Aké sú dobrovoľnícke skúsenosti"
+
+#: 
+msgid "What you want to say"
+msgstr "Čo chcete povedať"
+
+#: 
+msgid "When"
+msgstr "Kedy"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Keď dobrovoľník navrhne niekoho, kto ho zastúpi, zobrazí sa to tu a vy to môžete schváliť alebo zamietnuť."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Keď dobrovoľník navrhne niekoho, kto ho zastúpi, zobrazí sa to tu a vy to môžete schváliť."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Keď vás niekto zaradí do tímu alebo sa prihlásite sami, zobrazí sa to tu."
+
+#: 
+msgid "Where"
+msgstr "Kde"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Odkiaľ pochádzajú dátumy"
+
+#: 
+msgid "Where we reach you"
+msgstr "Kde vás zastihneme"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Ktorá skúsenosť so správou dobrovoľníkov je aktívna. V1 je stará funkcia Príležitosti pre dobrovoľníkov; V2 je nový pracovný postup plánovania a prideľovania. „Obe“ zobrazuje obe vedľa seba počas migrácie."
+
+#: 
+msgid "Which events"
+msgstr "Ktoré udalosti"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Ktorú dobrovoľnícku skúsenosť táto cirkev používa. Karta vpravo vysvetľuje každú možnosť."
+
+#: 
+msgid "Who is covering"
+msgstr "Kto zastupuje"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Kto je potrebný, kto je zaradený a čo ešte chýba"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Ako prvý je uvedený ten, kto slúžil naposledy pred najdlhšou dobou."
+
+#: 
+msgid "Work Email"
+msgstr "Pracovný e-mail"
+
+#: 
+msgid "Yearly"
+msgstr "Ročne"
+
+#: 
+msgid "You"
+msgstr "Vy"
+
+#: 
+msgid "You are already helping that day"
+msgstr "V ten deň už pomáhate"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "V ten deň už pomáhate ako {{what}}. Prihlásiť sa aj na toto?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Toto nemáte povolené meniť. Kontaktujte cirkevnú kanceláriu."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Momentálne nie ste priradený(á) k žiadnej rodine"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Zatiaľ nie ste súčasťou záznamu rodiny."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Ste na zozname – ďakujeme."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Môžete to skontrolovať alebo zmeniť vo svojom rozpise dobrovoľníka."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Túto stránku nemôžete otvoriť"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Nemôžete navrhnúť sami seba ako vlastnú náhradu"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Nepodarilo sa vás na to prihlásiť."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Zatiaľ nevediete žiadny dobrovoľnícky tím."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Máte novú adresu kalendára. Stará už nefunguje."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Boli ste naplánovaný(á) slúžiť"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Boli ste naplánovaný(á) slúžiť."
+
+#: 
+msgid "You lead this"
+msgstr "Vediete toto"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Rozpis môžete vytvoriť iba pre tím, ktorý vediete"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Pri tomto budete opäť na zozname."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Váš účet nie je prepojený so záznamom osoby. Kontaktujte cirkevnú kanceláriu."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Váš odber kalendára bol uložený."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Vaša aktuálna adresa okamžite prestane fungovať. Každý, komu ste ju dali, bude potrebovať novú."
+
+#: 
+msgid "Your details"
+msgstr "Vaše údaje"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Vaše údaje boli uložené."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Údaje o vašej rodine boli uložené."
+
+#: 
+msgid "Your photo"
+msgstr "Vaša fotografia"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Vaša fotografia bola uložená."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Váš rozpis sa nepodarilo načítať."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Vaša relácia vypršala. Prihláste sa znova."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Vaša žiadosť o náhradu bola schválená"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Vaša žiadosť o náhradu nebola schválená"
+
+#: 
+msgid "already staffed by this team"
+msgstr "už obsadené týmto tímom"
+
+#: 
+msgid "body is required"
+msgstr "body je povinné"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds musí byť zoznam id kalendárov"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents musí byť jedno z: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId musí byť id skupiny alebo null"
+
+#: 
+msgid "end offset"
+msgstr "posun konca"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds musí byť zoznam id udalostí"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "každá správa bola doručená alebo stále čaká vo fronte"
+
+#: 
+msgid "has not served yet"
+msgstr "ešte nesloužil(a)"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId musí byť id pozície"
+
+#: 
+msgid "inactive family"
+msgstr "neaktívna rodina"
+
+#: 
+msgid "line %d"
+msgstr "riadok %d"
+
+#: 
+msgid "marked do not email"
+msgstr "označené „neposielať e-maily“"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "správy sa nepodarilo doručiť"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "správy sa nepodarilo doručiť ani po piatich pokusoch"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "správy čakajúce na odoslanie"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds musí byť zoznam id služieb"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "minút po skončení udalosti"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "minút po začiatku udalosti"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "minút pred skončením udalosti"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "minút pred začiatkom udalosti"
+
+#: 
+msgid "never"
+msgstr "nikdy"
+
+#: 
+msgid "no email address"
+msgstr "žiadna e-mailová adresa"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds a familyIds musia byť polia kladných celých čísel"
+
+#: 
+msgid "record not found"
+msgstr "záznam sa nenašiel"
+
+#: 
+msgid "same address as another recipient"
+msgstr "rovnaká adresa ako iný príjemca"
+
+#: 
+msgid "single event"
+msgstr "jedna udalosť"
+
+#: 
+msgid "start offset"
+msgstr "posun začiatku"
+
+#: 
+msgid "subject and body are required"
+msgstr "subject a body sú povinné"
+
+#: 
+msgid "subject is required"
+msgstr "subject je povinný"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject musí mať najviac 255 znakov"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool musí byť pravda alebo nepravda"
+
+#: 
+msgid "window end"
+msgstr "koniec okna"
+
+#: 
+msgid "window start"
+msgstr "začiatok okna"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} pridaných, {{alreadyMembers}} už tu boli dobrovoľníkmi"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} termínov vytvorených, {{existing}} tam už bolo"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "Služba {{ministry}} vytvorila {{total}} udalostí pre {{className}} (nadchádzajúcich: {{upcoming}})."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} tiež obsadzujú niektoré z nich."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} už túto službu koordinuje"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} pridelený(á)"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} už na tomto termíne slúži ako {{position}}. Stále ho/ju môžete prideliť."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} je kvalifikovaný(á), ale nie je v skupine dobrovoľníkov tejto služby. Pridelením sa pridá iba na tento termín."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} teraz koordinuje túto službu"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: počty musia byť medzi 0 a {{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: maximum nemôže byť nižšie ako minimum."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} už nie je kvalifikovaný(á)"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} kvalifikovaný(á)"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} žiada {{substitute}}, aby ho/ju zastúpil(a)"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} dňa {{date}} bolo vytvorené. Obsadiť teraz?"
+

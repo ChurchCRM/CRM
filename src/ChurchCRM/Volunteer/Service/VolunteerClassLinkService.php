@@ -41,6 +41,13 @@ final class VolunteerClassLinkService
     public const TEACHER_ROLE_NAME = 'Teacher';
 
     /**
+     * Every membership write asks this once per row, so it is remembered for the request.
+     *
+     * @var array<int, VolunteerTeam|null>
+     */
+    private static array $linkedTeamByGroup = [];
+
+    /**
      * D29: only a ministry that provides teachers for Sunday School may link a team to a
      * class, follow a class's meetings or give its events a class.
      *
@@ -61,7 +68,17 @@ final class VolunteerClassLinkService
 
     public static function findLinkedTeam(int $groupId): ?VolunteerTeam
     {
-        return VolunteerTeamQuery::create()->findOneByClassGroupId($groupId);
+        if (!array_key_exists($groupId, self::$linkedTeamByGroup)) {
+            self::$linkedTeamByGroup[$groupId] = VolunteerTeamQuery::create()->findOneByClassGroupId($groupId);
+        }
+
+        return self::$linkedTeamByGroup[$groupId];
+    }
+
+    /** Called from the model hooks that can change which team holds a class. */
+    public static function forgetLinkedTeams(): void
+    {
+        self::$linkedTeamByGroup = [];
     }
 
     /** `lst_OptionID` of the role named Teacher in the class's role list, or null. */

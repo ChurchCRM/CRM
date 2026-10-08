@@ -686,12 +686,21 @@ class PortalSelfService
 
     /**
      * The submitted family role, kept only when it is one this installation
-     * actually offers. Anything else falls back to the default above, because
-     * staff review the entry before it becomes a member anyway.
+     * actually offers and not a head or spouse role. Anything else falls back
+     * to the default above: an adult role would count the unreviewed entry in
+     * `Family::getAdults()` before staff have looked at it.
      */
     private static function resolveRoleId(mixed $role): int
     {
         $roleId = (int) $role;
+        $adultRoleIds = array_map(
+            'intval',
+            explode(',', SystemConfig::getValue('sDirRoleHead') . ',' . SystemConfig::getValue('sDirRoleSpouse'))
+        );
+        if (in_array($roleId, $adultRoleIds, true)) {
+            return self::getDefaultNewMemberRoleId();
+        }
+
         foreach (self::getFamilyRoles() as $option) {
             if ($option['id'] === $roleId) {
                 return $roleId;

@@ -7,7 +7,8 @@
     "Minimum",
     "SHA1 Hash",
     "in",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Min"
   ],
   "cs": [
     "AM / PM",
@@ -86,7 +87,9 @@
     "Test",
     "risk",
     "Link",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Min",
+    "SMTP test"
   ],
   "fi": [
     "Azure",
@@ -500,7 +503,16 @@
     "Check-out",
     "Preview",
     "Teller",
-    "Mailing Address"
+    "Mailing Address",
+    "Address Line 2",
+    "Admin Console",
+    "Developer mode",
+    "File",
+    "Folder",
+    "Max",
+    "Min",
+    "Reset link",
+    "SMTP test"
   ],
   "fr": [
     "AM / PM",
@@ -527,7 +539,17 @@
     "Code",
     "Signature",
     "Classifications",
-    "Options"
+    "Options",
+    "Dates",
+    "Max",
+    "Message",
+    "Min",
+    "Notification",
+    "Notifications",
+    "Occurrences",
+    "Position",
+    "Positions",
+    "Validation"
   ],
   "hi": [
     "HTML URL",
@@ -549,7 +571,10 @@
     "SHA1 Hash",
     "Server",
     "am / pm",
-    "Data"
+    "Data",
+    "Folder",
+    "Min",
+    "Valid"
   ],
   "ja": [
     "Azure",
@@ -588,7 +613,12 @@
     "Items",
     "Planning",
     "Labels",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Accounts",
+    "Max",
+    "Min",
+    "Team",
+    "Teams"
   ],
   "pt": [
     "AM / PM",
@@ -629,7 +659,8 @@
     "Online",
     "SHA1 Hash",
     "Test",
-    "am / pm"
+    "am / pm",
+    "Min"
   ],
   "tr": [
     "4. Kiosk",
@@ -660,7 +691,9 @@
     "ICS URL",
     "Online",
     "SHA1 Hash",
-    "Offline"
+    "Offline",
+    "Max",
+    "Min"
   ],
   "it": [
     "AM / PM",
@@ -681,7 +714,10 @@
     "Timeout",
     "am / pm",
     "in",
-    "Offline"
+    "Offline",
+    "File",
+    "Max",
+    "Min"
   ],
   "ml": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
@@ -720,7 +756,10 @@
     "Vonage Dashboard",
     "Data",
     "Auto",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Min",
+    "Send",
+    "Team"
   ],
   "pl": [
     "4. Kiosk",
@@ -737,7 +776,8 @@
     "Test",
     "am / pm",
     "Offline",
-    "Link"
+    "Link",
+    "Folder"
   ],
   "ro": [
     "AM / PM",
@@ -758,7 +798,10 @@
     "Individual",
     "Important",
     "Major",
-    "Catalog"
+    "Catalog",
+    "Max",
+    "Min",
+    "Valid"
   ],
   "sv": [
     "4. Kiosk",
@@ -779,7 +822,10 @@
     "Offline",
     "Data",
     "Auto",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Max",
+    "Min",
+    "Team"
   ],
   "sw": [
     "AM / PM",
@@ -847,7 +893,11 @@
     "in",
     "Code",
     "Offline",
-    "Content Security Policy"
+    "Content Security Policy",
+    "Team",
+    "Teams",
+    "Theme",
+    "Themes"
   ],
   "hr": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
@@ -916,7 +966,9 @@
     "Venezuela",
     "am / pm",
     "manifest.",
-    "s"
+    "s",
+    "Min",
+    "SMTP test"
   ],
   "am": [
     "HTML URL",
@@ -930,6 +982,8 @@
   ],
   "sk": [
     "SHA1 Hash",
-    "Offline"
+    "Offline",
+    "Max",
+    "Min"
   ]
 }
