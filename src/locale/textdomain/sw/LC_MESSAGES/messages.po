@@ -18782,3 +18782,4535 @@ msgstr "Jukumu la Mwenzi"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Misimbo ya Posta kwa Herufi Kubwa"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Chagua angalau uainishaji mmoja wa kujumuisha kwenye orodha ya anwani."
+
+#: 
+msgid "Geocoding services"
+msgstr "Huduma za geokodi"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Huduma za geokodi za kujaribu, kwa mpangilio unaozichagua. Nominatim (OpenStreetMap) hufanya kazi duniani kote; US Census (US Census Bureau) inashughulikia anwani za Marekani pekee. Chagua pia US Census ili kuitumia. Ikiwa hakuna iliyochaguliwa, Nominatim hutumika."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Chaguo-msingi za rekodi mpya"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Hii hutafuta viwianishi vya ramani kwa kila familia isiyo navyo, kwa kutumia huduma za geokodi zilizochaguliwa kwenye Mipangilio ya Ramani. Hufanya kazi kwa familia kwa makundi ya 50; kundi huchukua takriban dakika moja kwa huduma moja ya geokodi na zaidi kwa nyingi. Unaweza kuiacha ukurasa huu wazi wakati inaendelea. Endelea?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Hutumika kwa rekodi mpya na kwa geokodi rekodi isipokuwa na nchi."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Nakili kutoka Taarifa za Kanisa"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Haikuweza kunakili anwani ya kanisa."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Haikuweza kulinganisha nchi ya kanisa."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Orodha za darasa, karatasi za mahudhurio, na vitabu vya picha"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Orodha za washirika wa vikundi na ripoti za madarasa ya Shule ya Jumapili"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Mwaka wako wa fedha unaanza mwezi wa %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Hitilafu imetokea"
+
+#: 
+msgid "Approve"
+msgstr "Idhinisha"
+
+#: 
+msgid "Approve selected"
+msgstr "Idhinisha zilizochaguliwa"
+
+#: 
+msgid "Approved"
+msgstr "Imeidhinishwa"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Badilisha kwenye Mipangilio ya Watu"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Haikuweza kuidhinisha usajili uliochaguliwa"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Haikuweza kuidhinisha familia hii"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Usajili Unaosubiri"
+
+#: 
+msgid "Pending review"
+msgstr "Unasubiri ukaguzi"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Usajili unaosubiri ukaguzi kutoka fomu yako ya usajili ya umma. Maingizo yasiyo na barua pepe wala simu yamewekewa alama — thibitisha mawasiliano kabla ya kufuatilia."
+
+#: 
+msgid "Review now"
+msgstr "Kagua sasa"
+
+#: 
+msgid "Review self registrations"
+msgstr "Kagua usajili binafsi"
+
+#: 
+msgid "Select month"
+msgstr "Chagua mwezi"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Usajili binafsi umezimwa"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Usajili binafsi umewashwa"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Fomu ya usajili ya umma imezimwa. Usajili uliopo umeorodheshwa hapa chini."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Familia hii si usajili binafsi unaosubiri"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Mtu huyu ni wa familia — idhinisha familia badala yake"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Mtu huyu si usajili binafsi unaosubiri"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Familia hii iliyojisajili inasubiri ukaguzi"
+
+#: 
+msgid "Total registrations"
+msgstr "Jumla ya usajili"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Wageni wanaweza kujisajili kwenye fomu yako ya usajili ya umma."
+
+#: 
+msgid "Yesterday"
+msgstr "Jana"
+
+#: 
+msgid "days ago"
+msgstr "siku zilizopita"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "usajili binafsi unasubiri ukaguzi"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Salamu za siku ya kuzaliwa zinaelekezwa kwa mtu, na za maadhimisho ya ndoa kwa wanandoa."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Lebo za anwani ya posta kwa watu walio kwenye ripoti hii. Mtu asiye na anwani yake mwenyewe anaandikiwa kwenye anwani ya familia yake."
+
+#: 
+msgid "One label for each couple."
+msgstr "Lebo moja kwa kila wanandoa."
+
+#: 
+msgid "Print Labels"
+msgstr "Chapisha lebo"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Jukumu hilo si miongoni mwa majukumu ya kikundi hiki."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "\"%s\" si aina ya kalenda ambayo ukurasa huu unaifahamu."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s hawezi kuhudumu na amependekeza %2$s kama mbadala."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s tayari yuko kwenye kundi la watu wa kujitolea la %2$s na anataka kusaidia tena."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s tayari ameunganishwa na %2$s katika %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s yuko katika %2$s kama %3$s. Mwondoe kwanza kwenye darasa; kumpa sifa hapa kutamfanya mmoja wa walimu wake."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s si tukio la %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s inabaki kuwa darasa la Shule ya Jumapili huku walimu wake wakisimamiwa katika Huduma → %2$s → %3$s. Iondoe kwanza kutoka kwenye timu."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s anataka kusaidia katika %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s anataka kusaidia katika %2$s na ameongezwa kwenye kundi lake la watu wa kujitolea."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: Kiwango cha juu ni %2$d lakini watu %3$d wa kujitolea wateule wamechaguliwa. Ondoa mmoja au ongeza kiwango cha juu."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "Siku %d"
+msgstr[1] "Siku %d"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "Chaguo-msingi %d limerukwa kwa sababu nyingine (tukio limeisha, limeghairiwa au limejaa)"
+msgstr[1] "Chaguo-msingi %d zimerukwa kwa sababu nyingine (tukio limeisha, limeghairiwa au limejaa)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "Chaguo-msingi %d limerukwa: sifa imebatilishwa"
+msgstr[1] "Chaguo-msingi %d zimerukwa: sifa imebatilishwa"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "Mtu wa kujitolea mteule %d amepangwa"
+msgstr[1] "Watu wa kujitolea wateule %d wamepangwa"
+
+#: 
+msgid "%d failed"
+msgstr "%d imeshindwa"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Mtu mmoja zaidi wa kujitolea (%d) bado anahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo."
+msgstr[1] "Watu %d zaidi wa kujitolea bado wanahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "Tukio jipya %d"
+msgstr[1] "Matukio mapya %d"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Mtu wa kujitolea %d bado anahitajika kwa tukio linalokuja."
+msgstr[1] "Watu wa kujitolea %d bado wanahitajika kwa tukio linalokuja."
+
+#: 
+msgid "%s Calendar"
+msgstr "Kalenda ya %s"
+
+#: 
+msgid "%s Family"
+msgstr "Familia ya %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s haitoi walimu wa Shule ya Jumapili, kwa hiyo timu, ratiba na matukio yake hayawezi kutumia darasa. Msimamizi wa watu wa kujitolea anaweza kubadilisha hilo chini ya Hariri huduma."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "Barua pepe %s kutoka kanisani"
+msgstr[1] "Barua pepe %s kutoka kanisani"
+
+#: 
+msgid "%s family"
+msgstr "Familia ya %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s amekataa kupangiwa kujitolea."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s haina jukumu liitwalo Mwalimu, kwa hiyo walimu wake hawawezi kusimamiwa kutoka kwenye timu"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s haina mikutano ijayo kwenye kalenda. Ratiba hufuata matukio yaliyopo tayari: ongeza kwanza mikutano ya darasa, kwa Tukio jipya linalojirudia kwenye kichupo cha Kalenda cha huduma."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s bado anatarajiwa kuhudumu. Tafadhali wasiliana na mratibu ikiwa haiwezekani."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s haikutumwa (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "Mtu %s katika kaya yako"
+msgstr[1] "Watu %s katika kaya yako"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "Nafasi %s"
+msgstr[1] "Nafasi %s"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: mtu yuleyule amechaguliwa mara mbili kama mtu wa kujitolea mteule"
+
+#: 
+msgid "(no subject)"
+msgstr "(hakuna mada)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Siku ya kuzaliwa haiwezi kuwa katika siku zijazo."
+
+#: 
+msgid "A calendar event"
+msgstr "Tukio la kalenda"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "Kitambulisho cha kalenda lazima kiwe nambari."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Darasa lisilokuwepo tena"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Darasa lisilo na mikutano kwenye kalenda haliwezi kuchaguliwa bado."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Darasa lisilo na mikutano kwenye kalenda haliwezi kuchaguliwa bado. Mratibu wa huduma huongeza mikutano yake kwenye kichupo cha Kalenda cha huduma."
+
+#: 
+msgid "A class's meetings"
+msgstr "Mikutano ya darasa"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Mratibu anaweza kusimamia kila kitu katika huduma hii, ikiwa ni pamoja na mabadiliko ambayo vinginevyo msimamizi wa watu wa kujitolea angelazimika kuyafanya."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Mratibu wa huduma anaweza kuyaongeza kwenye kichupo cha Kalenda cha huduma."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Mratibu wa huduma anaweza kuyaongeza kwenye kichupo cha Kalenda cha huduma. Kisha zalisha tena."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Mratibu anaendesha huduma nzima — timu zake, nafasi, ratiba na kila upangaji ndani yake."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Siku ambayo mwezi hauna huangukia siku yake ya mwisho."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Mtu wa kujitolea mteule ni wa mahitaji ya watumishi ya ratiba, si ya tukio moja"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Mtu wa kujitolea mteule anaweza kuchaguliwa tu kwa nafasi ambayo mahitaji ya watumishi ya ratiba hii yanaiomba"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Tarehe ya kuanzia na ya kuishia katika muundo wa YYYY-MM-DD zinahitajika"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Idadi ya chini inahitajika"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Huduma huundwa pamoja na kalenda yake, kundi lake la watu wa kujitolea na timu yake ya kwanza, kwa hiyo mambo pekee ya kuamua hapa ni jina lake na kile inachofanya."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Jina la huduma linahitajika"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Huduma inahitaji angalau timu moja. Ibadilishe jina badala yake."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Huduma yenye jina hilo tayari ipo"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Kalenda ya huduma yenyewe haiwezi kufunguliwa kwa huduma nyingine"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Nafasi ni ya timu; chagua moja"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Nafasi ni kazi ambayo mtu hufanya katika timu hii, kama vile Espresso au Kiongozi wa Nyimbo."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Nafasi ni jukumu ambalo mtu hulitumikia, kama vile Espresso au Kiongozi wa Nyimbo."
+
+#: 
+msgid "A position is required"
+msgstr "Nafasi inahitajika"
+
+#: 
+msgid "A position name is required"
+msgstr "Jina la nafasi linahitajika"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Nafasi yenye watu wa kujitolea wenye sifa haiwezi kuhamia ndani au nje ya timu iliyounganishwa na darasa la Shule ya Jumapili, kwa sababu hilo lingebadilisha anayefundisha darasa. Unda nafasi kwenye timu nyingine badala yake."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Nafasi yenye jina hilo tayari ipo katika huduma hii"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Jibu lazima likubaliwe au likataliwe"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Ratiba ni ya timu; chagua moja"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Jina la ratiba linahitajika"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Ratiba huonyesha ni matukio gani ya kalenda timu inayoyahudumia: aina ya ibada ya kanisa, mikutano ya darasa, au matukio ya huduma hii yenyewe. Ongeza moja na uzalishe matukio yake."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Ratiba huonyesha ni matukio gani ya kalenda timu hii inayahudumia: aina ya ibada ya kanisa, mikutano ya darasa, au matukio ya huduma yake yenyewe. Ongeza moja na uzalishe matukio yake."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Ratiba inayofuata darasa lazima itaje darasa"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Ratiba inayofuata aina ya tukio lazima itaje aina ya tukio"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Ratiba inayohudumia tukio moja haiwezi kufuata matukio mengine; ifute na uongeze ratiba badala yake"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "Orodha moja ya fursa, kama vile \"Kitalu cha Watoto\" au \"Mkaribishaji\", inayotunzwa chini ya Watu → Msimamizi. Kila mtu huwekewa alama za fursa ambazo yuko tayari kusaidia, kwenye kichupo cha Mtu wa kujitolea cha rekodi yake. Hicho ndicho kinachorekodiwa tu: hakuna timu, hakuna ratiba, hakuna upangaji kwenye tarehe, na hakuna barua pepe za vikumbusho. Ripoti na rekodi ya mtu ndiko alama hizo zinakotumika."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Picha ya mraba ya uso wako ni bora zaidi."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Mahitaji ya watumishi huorodhesha watu wake wa kujitolea wateule katika \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Hitaji la watumishi ni la ratiba moja au tukio moja hasa"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "Mbadala tayari amependekezwa kwa upangaji huu"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Kiongozi wa timu anaweza kusimamia timu yake mwenyewe — nafasi zake, ratiba zake na anayehudumu ndani yake — na hakuna kingine katika huduma."
+
+#: 
+msgid "A team name is required"
+msgstr "Jina la timu linahitajika"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Timu yenye jina hilo tayari ipo katika huduma hii"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Mandhari ni folda ambayo kanisa lako huipakia kwenye Include/themes/ kwenye seva. Chaguo-msingi la mfumo huja na ChurchCRM."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Mpangilio wa mpito. Kurasa za zamani za Fursa za Kujitolea na kurasa mpya za Huduma zote zinapatikana, na rekodi ya mtu huonyesha vichupo vyote viwili vya Kujitolea, vilivyoandikwa wazi. Itumie unapohamisha kanisa kutoka V1 kwenda V2, kisha ubadilishe kuwa V2 pekee."
+
+#: 
+msgid "A volunteer"
+msgstr "Mtu wa kujitolea"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Mtu wa kujitolea amekataa upangaji"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Mtu wa kujitolea amependekeza mbadala"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Msimamizi wa watu wa kujitolea anaweza kuendesha huduma hii bila ruhusa maalum. Ongeza mratibu ili mtu mwingine aiendeshe bila kumpa huduma nyingine zote pia."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Tarehe ya harusi haiwezi kuwa katika siku zijazo."
+
+#: 
+msgid "Accepted"
+msgstr "Imekubaliwa"
+
+#: 
+msgid "Account deleted"
+msgstr "Akaunti imefutwa"
+
+#: 
+msgid "Account unlocked"
+msgstr "Akaunti Imefunguliwa"
+
+#: 
+msgid "Accounts"
+msgstr "Akaunti"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Hali ya kutumika lazima iwe kweli au si kweli"
+
+#: 
+msgid "Active now"
+msgstr "Anatumika Sasa"
+
+#: 
+msgid "Add All"
+msgstr "Ongeza wote"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Ongeza wote walio kwenye Chaguo"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Ongeza mtu wa kujitolea"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Ongeza watu wa kujitolea kwenye Chaguo"
+
+#: 
+msgid "Add a family member"
+msgstr "Ongeza mwanafamilia"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Ongeza nafasi kwanza, kisha rudi useme ni wangapi wanahitajika."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Ongeza hatua ya pili kwenye kuingia kwako, ili nenosiri peke yake lisitoshe kufikia akaunti yako."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Ongeza angalau nafasi moja kwenye timu hii, kisha weka alama ni nani anaweza kuhudumu wapi."
+
+#: 
+msgid "Add coordinator"
+msgstr "Ongeza mratibu"
+
+#: 
+msgid "Add from Cart"
+msgstr "Ongeza kutoka Chaguo"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Ongeza kwanza mikutano yake kwa Tukio jipya linalojirudia kwenye kichupo cha Kalenda"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Ongeza watu kwenye Chaguo kabla ya kuwaongeza kama watu wa kujitolea"
+
+#: 
+msgid "Add position"
+msgstr "Ongeza nafasi"
+
+#: 
+msgid "Add schedule"
+msgstr "Ongeza ratiba"
+
+#: 
+msgid "Add team"
+msgstr "Ongeza timu"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Viongeze kwenye kichupo cha Kalenda, kisha zalisha tena."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Viongeze kwenye kichupo cha Kalenda."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Ongeza anwani hii kwenye programu yako ya kalenda. Husasishwa yenyewe kalenda ya kanisa inapobadilika."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Ongeza matukio ya huduma hii hapa: siku ya kazi, darasa linalokutana kila Jumapili. Huenda kwenye kalenda ya kanisa, na unaweza kuyawekea watumishi unapoyaunda."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Imeongezwa kupitia Tovuti ya Washirika na inasubiri ukaguzi: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Imeongezwa — sasa weka alama nafasi wanazoweza kuhudumu"
+
+#: 
+msgid "Address Line 2"
+msgstr "Mstari wa Anwani 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Kiweko cha Msimamizi"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Ruhusa ya msimamizi inahitajika"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Tangaza nafasi hii kwenye ukurasa wa Fursa Zilizo Wazi wa Tovuti ya Washirika."
+
+#: 
+msgid "All Teams"
+msgstr "Timu zote"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Waruhusu washirika kubadilisha siku za kuzaliwa zao na za wanafamilia wao."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Pia imebandikwa kwenye {{calendars}}, ambayo ni mtu mwenye ruhusa ya Ongeza Matukio tu anayeweza kuibadilisha."
+
+#: 
+msgid "An event title is required"
+msgstr "Kichwa cha tukio kinahitajika"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Aina ya tukio au huduma inahitajika"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Aina ya tukio isiyokuwepo tena"
+
+#: 
+msgid "Another ministry"
+msgstr "Huduma nyingine"
+
+#: 
+msgid "Any event"
+msgstr "Tukio lolote"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Chochote ambacho mratibu wako anapaswa kujua"
+
+#: 
+msgid "Approve substitution"
+msgstr "Idhinisha ubadilishaji"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Idhinisha mbadala huyu"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Mwombe msimamizi wa watu wa kujitolea aunde huduma na akufanye mratibu wake."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Mwombe mtu akusaidie nafasi yako"
+
+#: 
+msgid "Ask them"
+msgstr "Waombe"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Ombi limetumwa — mratibu wako atalithibitisha."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Mpange mtu wa kujitolea"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Amepangwa nje ya mpango wa sasa"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Upangaji umeghairiwa"
+
+#: 
+msgid "Assignment not found"
+msgstr "Upangaji haujapatikana"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Angalau personId au familyId moja inahitajika"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Watu wa kujitolea wateule wasiozidi %d wanaweza kuchaguliwa kwa nafasi moja"
+
+#: 
+msgid "Author"
+msgstr "Mwandishi"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Mamlaka hupewa mtu, si akaunti ya kuingia, kwa hiyo yanaweza kutolewa kabla hajawa nayo. Mtu ambaye akaunti yake ni ya huduma binafsi pekee huendelea kuona ratiba yake mwenyewe tu hadi msimamizi atakapopanua akaunti yake."
+
+#: 
+msgid "Automatic"
+msgstr "Otomatiki"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Inasubiri jibu"
+
+#: 
+msgid "Back to Email History"
+msgstr "Rudi kwenye Historia ya Barua Pepe"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Rudi kwenye Dashibodi ya Huduma"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Rudi kwenye Matukio"
+
+#: 
+msgid "Back to Person"
+msgstr "Rudi kwa Mtu"
+
+#: 
+msgid "Back to editing"
+msgstr "Rudi kuhariri"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Rudi kwenye ratiba yangu"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Rudi kwenye Tovuti ya Washirika"
+
+#: 
+msgid "Back to your profile"
+msgstr "Rudi kwenye wasifu wako"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Kazi za nyuma na uwasilishaji"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Kazi za nyuma zilifanya kazi mara ya mwisho"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Kazi za nyuma zilifanya kazi"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Salamu za siku ya kuzaliwa"
+
+#: 
+msgid "Both"
+msgstr "Zote mbili"
+
+#: 
+msgid "Both (transition)"
+msgstr "Zote mbili (mpito)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Zote mbili — V1 na V2 kando kwa kando (mpito)"
+
+#: 
+msgid "Calendar address"
+msgstr "Anwani ya kalenda"
+
+#: 
+msgid "Calendar saved"
+msgstr "Kalenda imehifadhiwa"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Kalenda ambazo Tovuti ya Washirika huwaonyesha washirika, zinazochaguliwa kwenye Msimamizi -> Tovuti ya Washirika -> Kalenda."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Je, huduma hii inaweza kutoa walimu wa Shule ya Jumapili?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Ghairi upangaji"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Ghairi upangaji huu"
+
+#: 
+msgid "Cancelled"
+msgstr "Imeghairiwa"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Badilisha nenosiri unalotumia kuingia, au ongeza hatua ya pili ili nenosiri peke yake lisitoshe."
+
+#: 
+msgid "Change your password"
+msgstr "Badilisha nenosiri lako"
+
+#: 
+msgid "Checked in"
+msgstr "Amejiandikisha"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Waliojiandikisha: %1$d kati ya %2$d kwenye orodha ya darasa"
+
+#: 
+msgid "Checked out"
+msgstr "Ameondoka"
+
+#: 
+msgid "Choose a class"
+msgstr "Chagua darasa"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Chagua siku ya mwezi kuanzia 1 hadi 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Chagua picha mpya"
+
+#: 
+msgid "Choose a person"
+msgstr "Chagua mtu"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Chagua mtu wa kujitolea"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Chagua mtu wa kujitolea kwanza"
+
+#: 
+msgid "Choose an event"
+msgstr "Chagua tukio..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Chagua aina ya tukio"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Chagua aina ya tukio iliyopo"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Chagua angalau kalenda moja ya kujiunga nayo."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Chagua kalenda unazotaka kwenye programu yako ya kalenda."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Chagua tarehe kila mwaka kama MM-DD"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Chagua tarehe ya tukio"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Chagua siku ya wiki"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Chagua tukio ambalo ratiba hii inalifuata"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Chagua tukio la kuwekea watumishi"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Chagua matukio ya kufuta"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Chagua matukio ya kuwekea watumishi"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Chagua tarehe ya kwanza na ya mwisho"
+
+#: 
+msgid "Choose the first date"
+msgstr "Chagua tarehe ya kwanza"
+
+#: 
+msgid "Choose the last date"
+msgstr "Chagua tarehe ya mwisho"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Chagua nafasi ya %1$s ambayo walimu wa %2$s wana sifa kwa ajili yake. Walimu: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Chagua timu ambayo nafasi hii inahudumia"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Chagua mandhari wanayoyaona washirika, washa au zima sehemu za tovuti, na uone nani anatumia tovuti."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Chagua kila wiki, kila mwezi au kila mwaka"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Chagua tarehe za ratiba zinatoka wapi"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Chagua uzoefu wa kujitolea ambao kanisa hili linatumia, ratiba zinajazwa mbele kwa umbali gani na vikumbusho vinatoka lini, na uhakikishe kuwa kazi za nyuma zinaendelea."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Chagua nani anajaza kila nafasi kwa chaguo-msingi. Chaguo huhifadhiwa kwenye ratiba: wanapangwa kwenye kila tukio linaloundwa sasa na kwenye yale ambayo uongezaji wa kila siku huunda baadaye, maadamu wana sifa, na huombwa kujibu isipokuwa uwaweke kama waliokubali. Acha nafasi wazi ili kuipanga wiki kwa wiki."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Chagua nani anakusaidia nafasi yako."
+
+#: 
+msgid "Church Calendar"
+msgstr "Kalenda ya Kanisa"
+
+#: 
+msgid "Church Calendars"
+msgstr "Kalenda za Kanisa"
+
+#: 
+msgid "Church calendar"
+msgstr "Kalenda ya kanisa"
+
+#: 
+msgid "Church events of a type"
+msgstr "Matukio ya kanisa ya aina fulani"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Matukio ya kanisa ya aina fulani huongezwa kwenye kalenda ya kanisa. Angalia aina ya tukio, kichwa na tarehe za ratiba."
+
+#: 
+msgid "Church website"
+msgstr "Tovuti ya kanisa"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM ina njia mbili za kusimamia watu wa kujitolea. Moja tu ndiyo inayokusudiwa kutumika kwa wakati mmoja; mpangilio ulio upande wa kushoto huamua kanisa hili linaona ipi. Kubadilisha huficha au kuonyesha kurasa na vipengee vya menyu — hakufuti data kamwe, kwa hiyo unaweza kurudi."
+
+#: 
+msgid "Close event details"
+msgstr "Funga maelezo ya tukio"
+
+#: 
+msgid "Colour"
+msgstr "Rangi"
+
+#: 
+msgid "Completed"
+msgstr "Imekamilika"
+
+#: 
+msgid "Compose Message"
+msgstr "Andika ujumbe"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Thibitisha taarifa za familia yako"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Mratibu ameondolewa"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Nakili anwani hii na uiongeze kwenye programu yako ya kalenda kama usajili mpya wa kalenda."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Haikuweza kujenga onyesho la awali."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Haikuweza kuhesabu matukio ya darasa"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Haikuweza kutoa wigo"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Haikuweza kupakia madarasa ya Shule ya Jumapili"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Haikuweza kupakia dashibodi"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Haikuweza kupakia chaguo za matukio"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Haikuweza kupakia matukio"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Haikuweza kupakia ratiba"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Haikuweza kupakia matukio yajayo"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Haikuweza kupakia watu wa kujitolea"
+
+#: 
+msgid "Could not load this email."
+msgstr "Haikuweza kupakia barua pepe hii."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Haikuweza kupakia huduma hii"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Haikuweza kupakia matukio ya huduma hii"
+
+#: 
+msgid "Could not load this team"
+msgstr "Haikuweza kupakia timu hii"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Haikuweza kubatilisha wigo"
+
+#: 
+msgid "Create"
+msgstr "Unda"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Unda ratiba na uzalishe matukio yake, na wiki za kujaza zitaonekana hapa."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Unda ratiba na uzalishe matukio yake, na wiki za kuwekea watumishi zitaonekana hapa."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Unda angalau nafasi moja kwa timu hii, kisha weka alama ni nani anaweza kuhudumu wapi."
+
+#: 
+msgid "Create ministry"
+msgstr "Unda huduma"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Kuunda huduma kunahitaji ufikiaji wa msimamizi wa watu wa kujitolea"
+
+#: 
+msgid "Date and time"
+msgstr "Tarehe na saa"
+
+#: 
+msgid "Date each year"
+msgstr "Tarehe kila mwaka"
+
+#: 
+msgid "Dates"
+msgstr "Tarehe"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Tarehe lazima ziwe katika muundo wa YYYY-MM-DD"
+
+#: 
+msgid "Day of the month"
+msgstr "Siku ya mwezi"
+
+#: 
+msgid "Day of the week"
+msgstr "Siku ya wiki"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Zima huduma"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Zima ratiba"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Zima huduma hii kabla ya kuifuta."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Kuzima {{name}}? Inahamia kwenye Huduma Zilizozimwa kwenye utepe wa pembeni, ambapo inaweza kuwashwa tena au kufutwa. Hakuna kinachoondolewa."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Kuzima {{name}}? Hakuna matukio mapya yanayoundwa kwa ajili yake, si kwa Zalisha wala uongezaji wa kila siku. Matukio na upangaji wake uliopo hubaki, na inaweza kuwashwa tena."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Huduma Zilizozimwa"
+
+#: 
+msgid "Declined"
+msgstr "Imekataliwa"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Aina-msingi ya tukio kwa matukio ya huduma"
+
+#: 
+msgid "Default volunteers"
+msgstr "Watu wa kujitolea wateule"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Watu wa kujitolea wateule hutumwa kama mahitaji: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Futa matukio"
+
+#: 
+msgid "Delete ministry"
+msgstr "Futa huduma"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Futa matukio ya ratiba"
+
+#: 
+msgid "Delete position"
+msgstr "Futa nafasi"
+
+#: 
+msgid "Delete schedule"
+msgstr "Futa ratiba"
+
+#: 
+msgid "Delete team"
+msgstr "Futa timu"
+
+#: 
+msgid "Delete those events"
+msgstr "Futa matukio hayo"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Kufuta {{name}} na kila kitu ndani yake? Nafasi zake, sifa, mahitaji ya watumishi, ratiba, matukio na upangaji — pamoja na rekodi za huduma zilizopita — na ruhusa za kiongozi wa timu zinaondolewa. Ili kuhifadhi historia, zima timu badala yake. Hili haliwezi kutenduliwa."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Kufuta {{name}} na kila kitu ndani yake? Timu zake, nafasi, ratiba, matukio {{occurrences}} na upangaji {{assignments}} — pamoja na rekodi za huduma zilizopita — pamoja na ruhusa zake za mratibu na kiongozi wa timu, kundi la watu wa kujitolea na kalenda vinaondolewa. Hili haliwezi kutenduliwa."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Kufuta {{name}}? Sifa zake, mahitaji ya watumishi na upangaji — pamoja na rekodi za huduma zilizopita — vinaondolewa pamoja nayo. Ili kuhifadhi historia, zima nafasi badala yake. Hili haliwezi kutenduliwa."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Kufuta {{name}}? Hili haliwezi kutenduliwa."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Kufuta huduma kunahitaji ufikiaji wa msimamizi wa watu wa kujitolea"
+
+#: 
+msgid "Developer mode"
+msgstr "Hali ya msanidi"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Imekamilika — umerudi kwenye orodha."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Kuacha mahitaji ya watumishi ya tukio hili lenyewe na kufuata ratiba yake tena?"
+
+#: 
+msgid "Due soon"
+msgstr "Karibu muda wake"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Kila kalenda lazima itolewe kama aina na kitambulisho."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Kila mtu wa kujitolea mteule lazima amtaje mtu"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Kila hitaji la watumishi lazima litaje nafasi"
+
+#: 
+msgid "Edit event"
+msgstr "Hariri Tukio"
+
+#: 
+msgid "Edit ministry"
+msgstr "Hariri huduma"
+
+#: 
+msgid "Edit position"
+msgstr "Hariri nafasi"
+
+#: 
+msgid "Edit schedule"
+msgstr "Hariri ratiba"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Hariri mahitaji ya watumishi"
+
+#: 
+msgid "Edit team"
+msgstr "Hariri timu"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Hariri ratiba na uchague darasa lingine."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Hariri ratiba na uchague aina nyingine ya tukio."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Hariri ratiba na uchague tukio inalolifuata."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Hariri ratiba na usogeze tarehe yake ya mwisho ili ifuate matukio zaidi."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Imehaririwa kupitia Tovuti ya Washirika: %s"
+
+#: 
+msgid "Email %s"
+msgstr "Tuma barua pepe kwa %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "Tuma barua pepe kwa Familia ya %s"
+
+#: 
+msgid "Email History"
+msgstr "Historia ya Barua Pepe"
+
+#: 
+msgid "Email content"
+msgstr "Maudhui ya barua pepe"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Tuma barua pepe kwa wasiohudhuria: %s"
+
+#: 
+msgid "Email not found"
+msgstr "Barua pepe haijapatikana"
+
+#: 
+msgid "Email preview"
+msgstr "Onyesho la awali la barua pepe"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "Kutuma barua pepe kumezimwa"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "Kutuma barua pepe hakujawashwa. Weka mipangilio ya SMTP na uwashe barua pepe kabla ya kutuma."
+
+#: 
+msgid "Emails"
+msgstr "Barua pepe"
+
+#: 
+msgid "End time"
+msgstr "Wakati wa Mwisho"
+
+#: 
+msgid "Enter counts"
+msgstr "Weka hesabu"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Weka mada ya barua pepe…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Weka nenosiri lako la sasa, kisha nenosiri lako jipya mara mbili."
+
+#: 
+msgid "Enter your message…"
+msgstr "Weka ujumbe wako…"
+
+#: 
+msgid "Event staffed"
+msgstr "Tukio limewekewa watumishi"
+
+#: 
+msgid "Event title"
+msgstr "Kichwa cha habari"
+
+#: 
+msgid "Event type"
+msgstr "Aina ya Tukio"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Kila barua pepe ambayo ChurchCRM ilituma, mpya zaidi kwanza. Fungua mtu ili uone historia yake kamili."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Kila nafasi katika kipindi hiki ina watu inaowahitaji."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Kila mtu amejibu"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Kila mtu aliye kwenye Chaguo anajiunga na watu wa kujitolea wa huduma hii. Weka alama nafasi zao baadaye."
+
+#: 
+msgid "Everything is correct"
+msgstr "Kila kitu ni sahihi"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Imeshindwa kujenga onyesho la awali"
+
+#: 
+msgid "Failed to load email"
+msgstr "Imeshindwa kupakia barua pepe"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Imeshindwa kupakia historia ya barua pepe"
+
+#: 
+msgid "Failed to send email"
+msgstr "Imeshindwa kutuma barua pepe"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "Imeshindwa kutuma barua pepe. Tafadhali jaribu tena au tumia 'Fungua kwenye Programu ya Barua Pepe'."
+
+#: 
+msgid "Family Member"
+msgstr "Mwanafamilia"
+
+#: 
+msgid "Family verification"
+msgstr "Uthibitishaji wa Familia"
+
+#: 
+msgid "File"
+msgstr "Faili"
+
+#: 
+msgid "Fill"
+msgstr "Jaza"
+
+#: 
+msgid "Fill by default with"
+msgstr "Jaza kwa chaguo-msingi na"
+
+#: 
+msgid "Fill this gap"
+msgstr "Ziba pengo hili"
+
+#: 
+msgid "Filled"
+msgstr "Imejazwa"
+
+#: 
+msgid "Find a sub"
+msgstr "Tafuta mbadala"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Tafuta mtu wa kujitolea"
+
+#: 
+msgid "Find an event"
+msgstr "Tafuta tukio"
+
+#: 
+msgid "Find something to do"
+msgstr "Tafuta kitu cha kufanya"
+
+#: 
+msgid "Find something to help with"
+msgstr "Tafuta kitu cha kusaidia"
+
+#: 
+msgid "Findings"
+msgstr "Matokeo"
+
+#: 
+msgid "First date"
+msgstr "Tarehe ya kwanza"
+
+#: 
+msgid "Folder"
+msgstr "Folda"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Jina la folda ya mandhari ya Tovuti ya Washirika ya kutumia, kutoka Include/themes/. \"default\" ni mandhari ya mfumo inayokuja na ChurchCRM."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Zalisha tena karibu na tarehe yake ya kwanza."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Zalisha matukio"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Kupata anwani mpya ya kalenda?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Ipe huduma jina"
+
+#: 
+msgid "Give the position a name"
+msgstr "Ipe nafasi jina"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Toa muda wa kuanza na kuisha kama HH:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "Ipe timu jina"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Nenda kwenye kujitolea kwangu"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Nenda kwenye mipangilio ya Tovuti ya Washirika"
+
+#: 
+msgid "Going"
+msgstr "Anakwenda"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Toa sifa kwenye ukurasa wa huduma, kisha uwapange hapa."
+
+#: 
+msgid "Granted"
+msgstr "Imetolewa"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Angalia kanisa lina nini kuhusu kaya yako, kisha utuambie kama bado ni sahihi."
+
+#: 
+msgid "Headcount"
+msgstr "Idadi ya waliohudhuria"
+
+#: 
+msgid "Hello %s"
+msgstr "Habari %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Msaada Unahitajika"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Haja ya msaada haikuweza kuhifadhiwa"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Matukio yanaundwa mbele kwa umbali gani kwa matukio ambayo kila ratiba inafuata. Kazi ya nyuma ya kila siku huweka kila ratiba ikiwa imejazwa hadi hapa."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Saa ngapi kabla ya tukio la kujitolea barua pepe ya kikumbusho hutumwa. Weka 0 usitume vikumbusho kabisa. Uwasilishaji unategemea kazi za nyuma kuendelea; angalia nyaraka za Kujitolea kwa usanidi wa cron unaopendekezwa."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Saa ngapi kabla ya tukio barua pepe ya kikumbusho hutumwa. Weka 0 usitume vikumbusho kabisa."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Watu wangapi kila nafasi inahitaji, kila wakati hii inapoendeshwa. Tarehe moja inaweza kubadilishwa peke yake baadaye. Mtu wa kujitolea mteule hupangwa kwenye kila tukio jipya maadamu ana sifa; kubadilisha mmoja hakubadilishi kamwe matukio yaliyopo tayari."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Watu wangapi wa kujitolea kila tukio la ratiba hii linahitaji. Ondoa alama kwenye nafasi ambayo ratiba hii haitumii kamwe. Mtu wa kujitolea mteule hupangwa kwenye kila tukio jipya maadamu ana sifa; kubadilisha mmoja hakubadilishi kamwe matukio yaliyopo tayari."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Watu wangapi wa kujitolea tukio hili linahitaji. Ondoa alama kwenye nafasi ambayo halitumii."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Wiki ngapi mbele matukio ya kujitolea yanaundwa kwa matukio ambayo kila ratiba inafuata, kuanzia 1 hadi 52. Kazi ya nyuma ya kila siku huweka kila ratiba ikiwa imejazwa hadi hapa."
+
+#: 
+msgid "How often"
+msgstr "Mara ngapi"
+
+#: 
+msgid "How to correct this"
+msgstr "Jinsi ya kusahihisha hili"
+
+#: 
+msgid "I can't"
+msgstr "Siwezi"
+
+#: 
+msgid "I'd like to help"
+msgstr "Ningependa kusaidia"
+
+#: 
+msgid "I'll be there"
+msgstr "Nitakuwepo"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Ujumbe ukishindwa kutumwa, mwombe msimamizi aangalie Mipangilio ya Huduma."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Ikiwa huwezi tena kuja, tafadhali kataa kwenye ratiba yako ya kujitolea mapema iwezekanavyo ili nafasi ijazwe."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Ikiwa umeshiriki anwani hii kwa makosa, pata mpya. Anwani ya zamani huacha kufanya kazi mara moja."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "Katika dakika 15 zilizopita"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "Kwenye kundi la watu wa kujitolea"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Ya ndani: tarehe ya mwisho ambayo ratiba za kujitolea ziliongezwa hadi upeo wa kupanga (YYYY-MM-DD). Usihariri kwa mkono."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Ya ndani: ratiba za kujitolea ziliongezwa mara ya mwisho lini na matukio mangapi hilo liliunda. Usihariri kwa mkono."
+
+#: 
+msgid "Is this still right?"
+msgstr "Je, hili bado ni sahihi?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Matukio yake yataundwa bila nafasi za kujaza. Hariri ratiba ili kuongeza mahitaji yake ya watumishi."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Waache kwenye {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Aina"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Saa 24 zilizopita"
+
+#: 
+msgid "Last 30 days"
+msgstr "Siku 30 zilizopita"
+
+#: 
+msgid "Last 7 days"
+msgstr "Siku 7 zilizopita"
+
+#: 
+msgid "Last attempt"
+msgstr "Jaribio la mwisho"
+
+#: 
+msgid "Last check"
+msgstr "Ukaguzi wa mwisho"
+
+#: 
+msgid "Last date"
+msgstr "Tarehe ya mwisho"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Alionekana mara ya mwisho kwenye tovuti"
+
+#: 
+msgid "Last sign-in"
+msgstr "Kuingia kwa mwisho"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Acha vyote viwili kuwa 0 ili kuhudumu hasa wakati tukio linapofanyika. Tukio likihamishwa, watu wa kujitolea nao huhamishwa."
+
+#: 
+msgid "Leave open"
+msgstr "Acha wazi"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Waruhusu washirika kubadilisha siku za kuzaliwa zao na za wanafamilia wao kwenye Tovuti ya Washirika."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Ruhusu washirika kuhariri siku za kuzaliwa"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Ijulishe ofisi ya kanisa kama kila kitu kilicho hapo juu bado ni sahihi."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Wajulishe sababu (hiari)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Huruhusu waratibu wa huduma hiyo kupanga watu wa kujitolea kwa tukio hili — na kuhariri tukio lenyewe."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Inapakia kalenda…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Simamia Huduma"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Simamia Huduma Zangu"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Ufikiaji wa Simamia Huduma Zangu, wenye huduma au timu ya kusimamia"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Ufikiaji wa Simamia Huduma Zangu, wenye huduma au timu ya kusimamia, unahitajika"
+
+#: 
+msgid "Manage staffing"
+msgstr "Simamia uwekaji wa watumishi"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Inasimamiwa kutoka huduma ya %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Inasimamiwa kutoka huduma ya {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Juu"
+
+#: 
+msgid "Member Portal"
+msgstr "Tovuti ya Washirika"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Washirika wanaona ukurasa wa \"haipatikani kwa muda\" hadi hili litakapotatuliwa. Maelezo yaleyale yaliandikwa kwenye kumbukumbu za programu na kwenye kumbukumbu za makosa za seva ya wavuti."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Washirika wanaona kalenda zilizowashwa hapa tu. Siku za kuzaliwa na maadhimisho ya ndoa huonyesha majina ya kwanza na herufi ya kwanza ya jina la ukoo tu."
+
+#: 
+msgid "Message"
+msgstr "Ujumbe"
+
+#: 
+msgid "Min"
+msgstr "Chini"
+
+#: 
+msgid "Ministries"
+msgstr "Huduma"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Huduma zinazotafuta msaada"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Huduma zinazoweza kuongeza matukio"
+
+#: 
+msgid "Ministry"
+msgstr "Huduma"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Kalenda za Huduma"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Waratibu wa Huduma"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Dashibodi ya Huduma"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Mipangilio ya Huduma"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Kalenda ya huduma"
+
+#: 
+msgid "Ministry created"
+msgstr "Huduma imeundwa"
+
+#: 
+msgid "Ministry management access"
+msgstr "Ufikiaji wa usimamizi wa huduma"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Ufikiaji wa usimamizi wa huduma unahitajika"
+
+#: 
+msgid "Ministry name"
+msgstr "Jina la huduma"
+
+#: 
+msgid "Ministry not found"
+msgstr "Huduma haijapatikana"
+
+#: 
+msgid "My Family"
+msgstr "Familia Yangu"
+
+#: 
+msgid "My Teams"
+msgstr "Timu Zangu"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Huduma na timu zangu"
+
+#: 
+msgid "My schedule"
+msgstr "Ratiba yangu"
+
+#: 
+msgid "My volunteering"
+msgstr "Kujitolea kwangu"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Ipe nafasi hii jina kwenye ukurasa ambapo washirika hutafuta kitu cha kusaidia."
+
+#: 
+msgid "Needs an answer"
+msgstr "Inahitaji jibu"
+
+#: 
+msgid "Needs filling"
+msgstr "Inahitaji kujazwa"
+
+#: 
+msgid "Never signed in"
+msgstr "Hajawahi kuingia"
+
+#: 
+msgid "New account"
+msgstr "Akaunti mpya"
+
+#: 
+msgid "New event"
+msgstr "Tukio jipya"
+
+#: 
+msgid "New ministry"
+msgstr "Huduma mpya"
+
+#: 
+msgid "New record notification"
+msgstr "Arifa ya rekodi mpya"
+
+#: 
+msgid "New recurring event"
+msgstr "Tukio jipya linalojirudia"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Watu wapya wa kujitolea wanahitajika kwa nafasi zifuatazo"
+
+#: 
+msgid "Newest first"
+msgstr "Mpya zaidi kwanza"
+
+#: 
+msgid "Next on %s"
+msgstr "Ijayo tarehe %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Hakuna kalenda iliyoshirikiwa na washirika bado."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Hakuna kalenda iliyo wazi kwa huduma hii, kwa hiyo matukio hayataonekana kwenye kalenda yoyote."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Hakuna kalenda iliyoshirikiwa na washirika."
+
+#: 
+msgid "No class"
+msgstr "Hakuna darasa"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Hakuna taarifa za mawasiliano bado."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Hakuna waratibu bado"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Hakuna tarehe kati ya tarehe ya kwanza na ya mwisho inayolingana na marudio"
+
+#: 
+msgid "No email was sent."
+msgstr "Hakuna barua pepe iliyotumwa."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Hakuna barua pepe zilizotumwa kwa rekodi hii bado."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Hakuna idadi ya waliohudhuria iliyorekodiwa bado"
+
+#: 
+msgid "No longer needed"
+msgstr "Haihitajiki tena"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Hakuna mshirika aliyeingia kwenye Tovuti ya Washirika bado."
+
+#: 
+msgid "No ministry"
+msgstr "Hakuna huduma"
+
+#: 
+msgid "No past events"
+msgstr "Hakuna matukio yaliyopita"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Hakuna picha iliyopakiwa kwa mtu huyu."
+
+#: 
+msgid "No photo was sent."
+msgstr "Hakuna picha iliyotumwa."
+
+#: 
+msgid "No positions yet"
+msgstr "Hakuna nafasi bado"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Hakuna sifa bado."
+
+#: 
+msgid "No schedules yet"
+msgstr "Hakuna ratiba bado"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Hakuna mahitaji ya watumishi yaliyowekwa"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Hakuna mahitaji ya watumishi: matukio yatakayozalishwa hayatamhitaji mtu yeyote."
+
+#: 
+msgid "No substitution requests"
+msgstr "Hakuna maombi ya ubadilishaji"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Hakuna ubadilishaji wa kuamua"
+
+#: 
+msgid "No teams yet"
+msgstr "Hakuna timu bado"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "Hakuna matukio ya %1$s yajayo yenye kichwa \"%2$s\" kwenye kalenda. Ratiba hufuata matukio yaliyopo tayari."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Hakuna tukio lijalo linalolingana"
+
+#: 
+msgid "No upcoming events"
+msgstr "Hakuna matukio yajayo"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "Hakuna matukio yajayo ya aina hii kwenye kalenda."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Hakuna matukio yajayo ya kuchagua"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Hakuna aliyepangwa bado"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Hakuna mwingine aliyefunzwa kwa hili bado — mwambie mratibu wako badala yake."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Hakuna aliyesema watu wangapi wa kujitolea kila nafasi inahitaji, kwa hiyo hakuna cha kujaza."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Hakuna katika kipindi hiki ambaye bado anaamua."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Hakuna mwenye sifa kwa nafasi hii bado"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Hakuna mwenye sifa kwa nafasi hii bado, kwa hiyo inabaki wazi."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Hakuna kati ya wapokeaji anayeweza kutumiwa barua pepe"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Hakuna: aina ya tukio huchaguliwa kwa kila tukio"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Hairuhusiwi kuona barua pepe hii"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Hairuhusiwi kuona familia hii"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Hairuhusiwi kumwona mtu huyu"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Huna idhini kwa upangaji huu"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Huna idhini kwa huduma hii"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Huna idhini kwa tukio hili"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Huna idhini kwa nafasi hii"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Huna idhini kwa sifa hii"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Huna idhini kwa hitaji hili"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Huna idhini kwa ratiba hii"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Huna idhini kwa ombi hili la ubadilishaji"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Huna idhini kwa timu hii"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Huna idhini ya kupangia matukio huduma hiyo ya kujitolea"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Huna idhini ya kubadilisha tukio %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Huna idhini ya kubadilisha huduma ya kujitolea ya tukio hili"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Huna idhini ya kuunda tukio bila huduma ya kujitolea unayoisimamia"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Huna idhini ya kurekebisha tukio hili"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Huna idhini ya kubandika matukio kwenye kalenda \"%s\""
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Huna idhini ya kuondoa matukio kwenye kalenda \"%s\""
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Huna idhini ya kuondoa huduma ya kujitolea kwenye tukio hili"
+
+#: 
+msgid "Not checked in"
+msgstr "Hajajiandikisha"
+
+#: 
+msgid "Not found"
+msgstr "Haipatikani"
+
+#: 
+msgid "Not in the pool"
+msgstr "Hayuko kwenye kundi"
+
+#: 
+msgid "Not now"
+msgstr "Si sasa"
+
+#: 
+msgid "Not sent"
+msgstr "Haikutumwa"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Haijawekwa: tumia \"%s\""
+
+#: 
+msgid "Not staffed"
+msgstr "Haina watumishi"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Bado hajajitolea"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Hakuna kilichobadilika, kwa hiyo hakuna kilichohifadhiwa."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "Hakuna kitu kwenye kalenda kwa kipindi hiki."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "Hakuna kitu kwenye kalenda kwa sasa."
+
+#: 
+msgid "Nothing is short"
+msgstr "Hakuna upungufu"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Hakuna kitu kwenye orodha yako bado"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Hakuna kitu kwenye orodha yako bado. Angalia nini kinahitaji kujazwa."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Hakuna kilicho wazi kwa sasa"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Hakuna kilichopangwa bado"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Hakuna kilichopangwa."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Hakuna kilichosanidiwa bado"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "Hakuna kilichotokea kinachomilikiwa na huduma hii katika mwaka uliopita."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Hakuna cha kutoa sifa bado"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Hakuna kilichohifadhiwa. Tafadhali angalia sehemu zilizoangaziwa."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Hakuna kilichohifadhiwa. Tafadhali jaribu tena."
+
+#: 
+msgid "Notification"
+msgstr "Arifa"
+
+#: 
+msgid "Notifications"
+msgstr "Arifa"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Tukio la ratiba halijapatikana"
+
+#: 
+msgid "Occurrences"
+msgstr "Matukio ya ratiba"
+
+#: 
+msgid "Offer to help"
+msgstr "Jitolee kusaidia"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Mara moja kwa siku kila ratiba hai hupata matukio kwa ajili ya shughuli inazofuata, hadi wiki %d mbele, na mtu wa kujitolea mteule wa kila nafasi hupangwa kwenye matukio mapya maadamu ana sifa."
+msgstr[1] "Mara moja kwa siku kila ratiba hai hupata matukio kwa ajili ya shughuli inazofuata, hadi wiki %d mbele, na mtu wa kujitolea mteule wa kila nafasi hupangwa kwenye matukio mapya maadamu ana sifa."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Mara mtu huyu anapopewa sifa kwa nafasi, anaonekana hapa, pamoja na tarehe alizopangiwa kuhudumu."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Tukio moja la ratiba huundwa kwa kila tukio la kalenda ambalo Kundi Lililounganishwa ni darasa hili."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Tukio moja la ratiba huundwa kwa kila tarehe ya tukio hili. Ni matukio yaliyopo tayari kwenye kalenda tu yanaweza kuchaguliwa."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Moja ya kalenda haipo"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Moja ya matukio haipo"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Moja ya kalenda hizo haijashirikiwa na washirika."
+
+#: 
+msgid "One-time"
+msgstr "Mara moja"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Darasa la Shule ya Jumapili pekee linaweza kuunganishwa na timu"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Mratibu pekee ndiye anayeweza kurekodi jibu kwa niaba ya mtu mwingine"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Mratibu wa huduma hii pekee ndiye anayeweza kuunda matukio yake"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Mratibu wa huduma hii pekee ndiye anayeweza kuyawekea matukio yake watumishi"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Msimamizi wa watu wa kujitolea pekee ndiye anayeweza kubadilisha hili."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Msimamizi wa watu wa kujitolea pekee ndiye anayeweza kubadilisha kama huduma inatoa walimu wa Shule ya Jumapili"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Mtu mzima wa familia yako pekee ndiye anayeweza kubadilisha taarifa hizi. Tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Ni watu waliofunzwa kwa hili tu ndio wameorodheshwa."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Mtu wa kujitolea aliyepangwa pekee ndiye anayeweza kupendekeza mbadala"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Ni kalenda ambazo huduma hii inaweza kuongeza matukio kwake tu ndizo zimeorodheshwa. Kalenda yake yenyewe imewekwa alama mwanzoni."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Ni sehemu ya kwanza tu ya orodha ndefu sana inayoonyeshwa. Punguza kipindi ili uone nyingine."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Mtu wa kujitolea aliyependekeza mbadala pekee ndiye anayeweza kuondoa pendekezo hilo"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Fungua huduma kutoka kwenye menyu ya Huduma, unda ratiba na uzalishe tarehe zake, na wiki za kuwekea watumishi zitaonekana hapa."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Fungua huduma ili umfanye mtu mratibu wake, au kiongozi wa mojawapo ya timu zake."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Fungua kwenye programu ya kalenda"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Fursa zilizo wazi hazikuweza kupakiwa."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Fungua wapokeaji kwenye programu yako ya barua pepe"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Fungua Tovuti ya Washirika"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Fungua Dashibodi ya Huduma"
+
+#: 
+msgid "Open the ministry"
+msgstr "Fungua huduma"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Fungua tukio la ratiba"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Fungua tukio la ratiba ili kuwapanga watu unaowahitaji."
+
+#: 
+msgid "Open this team"
+msgstr "Fungua timu hii"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Kufungua kalenda kwa huduma kunahitaji ruhusa ya Ongeza Matukio"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Hiari. Kila mtu mwenye sifa kwa nafasi ya timu hii anakuwa mwalimu wa darasa, na ukurasa wa darasa haubadilishi tena walimu wake."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Hiari. Darasa linakuwa Kundi Lililounganishwa: orodha yake ndiyo wanaojiandikisha, na ratiba ya darasa hupata matukio haya."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Juu ya kiwango cha juu: ondoa huyu au ongeza kiwango cha juu."
+
+#: 
+msgid "Overridden templates"
+msgstr "Violezo vilivyobatilishwa"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Ukurasa %1$s kati ya %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Ukurasa %d kati ya %d"
+
+#: 
+msgid "Password reset"
+msgstr "Weka Upya Nenosiri"
+
+#: 
+msgid "Password reset link"
+msgstr "Kiungo cha Kuweka Upya Nenosiri"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Nenosiri lazima liwe na angalau herufi %s."
+msgstr[1] "Nenosiri lazima liwe na angalau herufi %s."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Chagua tukio la kalenda lijalo na useme linamhitaji nani. Tukio huhifadhi tarehe na saa yake mwenyewe; ili kuwekea watumishi mfululizo mzima, ongeza ratiba badala yake."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Chagua mtu ambaye tayari amekubali kuchukua nafasi yako. Mratibu wako atalithibitisha."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Tafadhali chagua kalenda kutoka kwenye orodha."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Tafadhali chagua kama taarifa zako zinahitaji kubadilishwa."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Tafadhali wasiliana na ofisi ya kanisa ili tusahihishe rekodi zetu."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Tafadhali weka angalau herufi mbili."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Tafadhali tujulishe kama unaweza kuja kwa kukubali au kukataa kwenye ratiba yako ya kujitolea."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Tafadhali tuambie nini kinahitaji kubadilishwa."
+
+#: 
+msgid "Portal settings"
+msgstr "Mipangilio ya tovuti"
+
+#: 
+msgid "Portal theme"
+msgstr "Mandhari ya tovuti"
+
+#: 
+msgid "Position"
+msgstr "Nafasi"
+
+#: 
+msgid "Position added"
+msgstr "Nafasi imeongezwa"
+
+#: 
+msgid "Position deleted"
+msgstr "Nafasi imefutwa"
+
+#: 
+msgid "Position name"
+msgstr "Jina la nafasi"
+
+#: 
+msgid "Position not found"
+msgstr "Nafasi haijapatikana"
+
+#: 
+msgid "Position saved"
+msgstr "Nafasi imehifadhiwa"
+
+#: 
+msgid "Positions"
+msgstr "Nafasi"
+
+#: 
+msgid "Positions still short"
+msgstr "Nafasi ambazo bado zina upungufu"
+
+#: 
+msgid "Proposed"
+msgstr "Amependekezwa"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Mbadala aliyependekezwa"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Weka huduma hii kwenye ukurasa wa Fursa Zilizo Wazi wa Tovuti ya Washirika, ambapo mtu yeyote wa kujitolea anaweza kuiona na kujitolea kusaidia. Wanajiunga na kundi la watu wa kujitolea na wewe unatumiwa barua pepe."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Kumweka {{name}} badala yake? Mtu wa kujitolea wa awali huhifadhi historia yake na anaarifiwa."
+
+#: 
+msgid "Qualification not found"
+msgstr "Sifa haijapatikana"
+
+#: 
+msgid "Qualified for"
+msgstr "Ana sifa kwa"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Watu wa kujitolea wenye sifa wanaweza kujisajili wenyewe kwa tarehe zilizo wazi za nafasi hii. Zima kwa nafasi ambazo kiongozi wa timu au mratibu pekee ndiye anapaswa kuzipanga; Tovuti ya Washirika haitazitoa."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Wape sifa walimu wake wa sasa kwa"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Wape sifa kwa nafasi"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Wape sifa kwa nafasi."
+
+#: 
+msgid "Reactivate"
+msgstr "Washa tena"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Soma mwongozo wa kuandika mandhari"
+
+#: 
+msgid "Recent Emails"
+msgstr "Barua pepe za Hivi Karibuni"
+
+#: 
+msgid "Recent Sends"
+msgstr "Zilizotumwa Hivi Karibuni"
+
+#: 
+msgid "Recipient"
+msgstr "Mpokeaji"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Idadi ya wapokeaji (%d) inazidi kiwango cha juu kinachoruhusiwa kwa kila utumaji (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Wapokeaji lazima watolewe kama personIds na familyIds, si kama anwani za barua pepe"
+
+#: 
+msgid "Record a decline"
+msgstr "Rekodi kukataa"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Rekodi kukubali"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Kurekodi kwamba {{name}} amesema hapana? Jibu litahifadhiwa kama limetoka kwako, na nafasi itafunguka tena."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Kurekodi kwamba {{name}} amesema ndiyo? Jibu litahifadhiwa kama limetoka kwako, si kwake."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Rekodi: wamekubali"
+
+#: 
+msgid "Record: they declined"
+msgstr "Rekodi: wamekataa"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Ajiri Watu wa Kujitolea"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Ajiri Watu wa Kujitolea lazima iwe kweli au si kweli"
+
+#: 
+msgid "Recruiting"
+msgstr "Inatafuta watu"
+
+#: 
+msgid "Recurring"
+msgstr "Inajirudia"
+
+#: 
+msgid "Reject"
+msgstr "Kataa"
+
+#: 
+msgid "Reject substitution"
+msgstr "Kataa ubadilishaji"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Kataa mbadala huyu"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Muda wa kikumbusho kabla (saa)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Kikumbusho: umepangwa kuhudumu"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Vikumbusho na arifa hutolewa tu kazi za nyuma zinapoendelea. Kwa uwasilishaji kwa wakati, endesha kiendeshaji cha kazi zilizopangwa kutoka cron kila dakika 15"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Ondoa mtu wa kujitolea"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Ondoa mratibu"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Waondolee darasa"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Ondoa kiongozi wa timu"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Kumwondoa {{name}} kutoka {{ministry}}? Hii huondoa sifa zake zote hapa, humtoa kwenye kila tukio lijalo, humwondoa kama mtu wa kujitolea mteule kwenye ratiba za huduma hii, na humwondoa kwenye kundi la watu wa kujitolea."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Imeondolewa. Sifa {{qualifications}}, upangaji {{assignments}} ujao, chaguo-msingi {{defaults}} za ratiba."
+
+#: 
+msgid "Repeats"
+msgstr "Hurudia"
+
+#: 
+msgid "Requirement not found"
+msgstr "Hitaji halijapatikana"
+
+#: 
+msgid "Reset link"
+msgstr "Kiungo cha kuweka upya"
+
+#: 
+msgid "Response recorded"
+msgstr "Jibu limerekodiwa"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Kagua ombi kwenye dashibodi ya watu wa kujitolea na uliidhinishe au ulikatae."
+
+#: 
+msgid "Review this request"
+msgstr "Kagua ombi hili"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Endesha kazi za nyuma sasa"
+
+#: 
+msgid "SMTP test"
+msgstr "Jaribio la SMTP"
+
+#: 
+msgid "Save calendars"
+msgstr "Hifadhi kalenda"
+
+#: 
+msgid "Save changes"
+msgstr "Hifadhi"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Imehifadhiwa — huduma hii haiombi msaada tena"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Imehifadhiwa — huduma hii sasa inaomba msaada"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Imehifadhiwa. Washirika wanaona kalenda zilizowashwa hapo juu."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Ratiba \"{{name}}\" imeundwa."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Ratiba \"{{name}}\" imeundwa. Haitumiki, kwa hiyo haitengenezi matukio hadi itakapowashwa."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Ratiba imezimwa"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Ratiba imefutwa"
+
+#: 
+msgid "Schedule name"
+msgstr "Jina la ratiba"
+
+#: 
+msgid "Schedule not found"
+msgstr "Ratiba haijapatikana"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Ratiba imewashwa tena"
+
+#: 
+msgid "Schedule saved"
+msgstr "Ratiba imehifadhiwa"
+
+#: 
+msgid "Scheduled"
+msgstr "Imepangwa"
+
+#: 
+msgid "Schedules"
+msgstr "Ratiba"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Ratiba ziliongezwa mara ya mwisho"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Ratiba hazina tena marudio au saa zake zenyewe; kila tukio hufuata tukio la kalenda. Ondoa: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Ratiba hazibainishi tena zinazalishwa mbele kwa umbali gani: upeo wa kupanga kwenye Msimamizi → Mipangilio ya Huduma unatumika kwa kila ratiba. Ondoa: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Upeo wa kupanga (wiki)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Ruhusa ya wigo haijapatikana"
+
+#: 
+msgid "Search by name"
+msgstr "Tafuta kwa jina"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Tazama kalenda nzima"
+
+#: 
+msgid "See what needs filling"
+msgstr "Tazama nini kinahitaji kujazwa"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Chagua kalenda ili kuficha au kuonyesha matukio yake."
+
+#: 
+msgid "Select ministries..."
+msgstr "Chagua huduma..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Kujisajili mwenyewe"
+
+#: 
+msgid "Self-assignable"
+msgstr "Inaweza kujipangia"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Inaweza kujipangia lazima iwe kweli au si kweli"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Akaunti za huduma binafsi"
+
+#: 
+msgid "Send"
+msgstr "Tuma"
+
+#: 
+msgid "Send Email"
+msgstr "Tuma barua pepe"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Tuma barua pepe kutoka ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Tuma tena ujumbe wa upangaji"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Tuma kalenda za kuonyesha kama orodha."
+
+#: 
+msgid "Send to the church office"
+msgstr "Tuma kwa ofisi ya kanisa"
+
+#: 
+msgid "Send your answer"
+msgstr "Tuma jibu lako"
+
+#: 
+msgid "Sent"
+msgstr "Imetumwa"
+
+#: 
+msgid "Sent by"
+msgstr "Imetumwa na"
+
+#: 
+msgid "Serving next"
+msgstr "Anayehudumu ijayo"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Weka kama Imekubaliwa"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Weka mahitaji ya watumishi"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Onyesha \"%s\" kwenye Tovuti ya Washirika"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Onyesha kwenye Tovuti ya Washirika"
+
+#: 
+msgid "Show past events"
+msgstr "Onyesha matukio yaliyopita"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Onyesha kalenda ya kanisa"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Onyesha kalenda ya kanisa kwenye Tovuti ya Washirika."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Onyesha sehemu ya kalenda ya kanisa kwenye Tovuti ya Washirika."
+
+#: 
+msgid "Show the next"
+msgstr "Onyesha yanayofuata"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Onyesha sehemu za kujitolea na timu kwenye Tovuti ya Washirika."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Onyesha huduma hii kwenye ukurasa wa Fursa Zilizo Wazi"
+
+#: 
+msgid "Show volunteering"
+msgstr "Onyesha kujitolea"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Onyesha kurasa za kujitolea na timu kwenye Tovuti ya Washirika."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Onyesha nilichokwisha kufanya"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Huonyeshwa kama unavyoandika. Mapumziko ya mistari hudumishwa."
+
+#: 
+msgid "Sign up"
+msgstr "Jisajili"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Kuingia na usalama"
+
+#: 
+msgid "Signed in"
+msgstr "Ameingia"
+
+#: 
+msgid "Signed up"
+msgstr "Amejisajili"
+
+#: 
+msgid "Sincerely"
+msgstr "Wako mwaminifu"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Baadhi ya taarifa zako hazikuweza kuhifadhiwa. Tafadhali angalia sehemu zilizoangaziwa."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Baadhi ya taarifa za familia yako hazikuweza kuhifadhiwa. Tafadhali angalia sehemu zilizoangaziwa."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Mtu mwingine anasaidia"
+
+#: 
+msgid "Something needs changing"
+msgstr "Kuna kitu kinahitaji kubadilishwa"
+
+#: 
+msgid "Something went wrong"
+msgstr "Kuna hitilafu imetokea"
+
+#: 
+msgid "Staff an event"
+msgstr "Wekea tukio watumishi"
+
+#: 
+msgid "Staff them"
+msgstr "Waweke kwenye huduma"
+
+#: 
+msgid "Staff this event"
+msgstr "Wekea tukio hili watumishi"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Wekea tukio hili la ratiba watumishi"
+
+#: 
+msgid "Staffed"
+msgstr "Lina watumishi"
+
+#: 
+msgid "Staffing"
+msgstr "Uwekaji wa watumishi"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Uwekaji wa watumishi huandaliwa baada ya matukio kuundwa"
+
+#: 
+msgid "Staffing needs"
+msgstr "Mahitaji ya watumishi"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Mahitaji ya watumishi yamehifadhiwa"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Anza kwa kuunda huduma, kisha ongeza timu na nafasi zinazohudumu ndani yake."
+
+#: 
+msgid "Start time"
+msgstr "Wakati wa Kuanza"
+
+#: 
+msgid "Start typing a name"
+msgstr "Anza kuandika jina"
+
+#: 
+msgid "Statistics"
+msgstr "Takwimu"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Kumzuia {{name}} kuratibu {{ministry}}? Akaunti yake ya kuingia na upangaji wake mwenyewe haviguswi."
+
+#: 
+msgid "Subscribe"
+msgstr "Jiunge"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Jiunge na kalenda"
+
+#: 
+msgid "Substitute"
+msgstr "Mbadala"
+
+#: 
+msgid "Substitute approved"
+msgstr "Mbadala ameidhinishwa"
+
+#: 
+msgid "Substitute asked"
+msgstr "Mbadala ameombwa"
+
+#: 
+msgid "Substitute decision"
+msgstr "Uamuzi wa mbadala"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Mbadala amependekezwa"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Mbadala amekataliwa"
+
+#: 
+msgid "Substituted"
+msgstr "Amebadilishwa"
+
+#: 
+msgid "Substitution approved"
+msgstr "Ubadilishaji umeidhinishwa"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Ubadilishaji umekataliwa"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Ombi la ubadilishaji halijapatikana"
+
+#: 
+msgid "Substitution requests"
+msgstr "Maombi ya ubadilishaji"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Darasa la Shule ya Jumapili"
+
+#: 
+msgid "System calendar"
+msgstr "Kalenda ya mfumo"
+
+#: 
+msgid "System default"
+msgstr "Chaguo-msingi la mfumo"
+
+#: 
+msgid "Take that back"
+msgstr "Rudisha hilo"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Kumwondoa {{name}} kwenye nafasi hii? Hakuna barua pepe inayotumwa; ratiba yake inaonyesha tarehe hiyo kama haihitajiki tena, na nafasi inafunguka tena."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Walimu wa darasa hili wanasimamiwa katika Huduma → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Timu"
+
+#: 
+msgid "Team Leader"
+msgstr "Kiongozi wa Timu"
+
+#: 
+msgid "Team added"
+msgstr "Timu imeongezwa"
+
+#: 
+msgid "Team deleted"
+msgstr "Timu imefutwa"
+
+#: 
+msgid "Team leader"
+msgstr "Kiongozi wa timu"
+
+#: 
+msgid "Team name"
+msgstr "Jina la timu"
+
+#: 
+msgid "Team not found"
+msgstr "Timu haijapatikana"
+
+#: 
+msgid "Team saved"
+msgstr "Timu imehifadhiwa"
+
+#: 
+msgid "Teams"
+msgstr "Timu"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Timu ni vikundi vya watu wanaohudumu katika huduma hii."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Timu, nafasi na watu wanaozijaza"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Mara kumi za hivi karibuni za kuingia"
+
+#: 
+msgid "Thank you"
+msgstr "Asante!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Asante kwa kujisajili kuhudumu"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Asante kwa kujisajili kuhudumu. Uko kwenye ratiba."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Asante. Ofisi ya kanisa imepokea jibu lako."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Asante. Ofisi ya kanisa itakagua hili kabla halijaongezwa."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Asante kwa kutujulisha."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Asante — mratibu amejulishwa kwamba ungependa kusaidia tena."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Asante — mratibu amejulishwa kwamba ungependa kusaidia."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Asante — uko kwenye orodha."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Folda hiyo ya mandhari ya Tovuti ya Washirika haipo."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Upangaji huo ni wa mtu mwingine"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Upangaji huo haukuweza kuhifadhiwa"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Siku hiyo ya kuzaliwa si tarehe halali."
+
+#: 
+msgid "That could not be saved."
+msgstr "Hilo halikuweza kuhifadhiwa."
+
+#: 
+msgid "That could not be sent."
+msgstr "Hilo halikuweza kutumwa."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Mwanafamilia huyo hakuweza kuongezwa. Tafadhali angalia sehemu zilizoangaziwa."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Hiyo si tarehe halali."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Orodha hiyo haikuweza kupakiwa."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Mtu huyo tayari ana nafasi hii kwenye tukio hili"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Mtu huyo tayari amepangwa kwenye nafasi hii kwenye tukio hili"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Mtu huyo hayuko kwenye kundi la watu wa kujitolea la huduma hii. Tuma tena ukiwa na ubatilishaji wa nje ya kundi ili kumpanga hata hivyo."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Mtu huyo hayuko kwenye kundi hili la watu wa kujitolea"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Mtu huyo hana sifa kwa nafasi hii"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Picha hiyo haikuweza kuhifadhiwa."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Picha hiyo ni kubwa mno. Tafadhali chagua ndogo zaidi."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Nafasi hiyo ni ya huduma tofauti"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Nafasi hiyo ni ya timu tofauti"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Nafasi hiyo tayari ina watumishi wote"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Nafasi hiyo haiwekewi watumishi kwenye tukio hili"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Jibu hilo halikuweza kurekodiwa"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Hali hiyo haiwezi kuwekwa moja kwa moja"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Ombi hilo la ubadilishaji halikuweza kuamuliwa"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Timu hiyo ni ya huduma tofauti"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Mandhari hayo hayakuweza kuwashwa."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Mandhari hayo hayakuweza kukaguliwa."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Mandhari hayo yana makosa, kwa hiyo hayakuwashwa."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Mtu huyo wa kujitolea hakuweza kupangwa"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Tarehe hiyo ya harusi si tarehe halali."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s lazima iwe tarehe katika muundo wa YYYY-MM-DD"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s lazima iwe idadi kamili ya dakika"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s lazima iwe ndani ya dakika %d za tukio"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Kalenda za Tovuti ya Washirika zimehifadhiwa."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Tovuti ya Washirika haikuweza kukamilisha ulichoomba. Tafadhali jaribu tena baada ya dakika chache."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Tovuti ya Washirika inapatikana kwa mtu aliyeingia tu, si kwa wateja wa API."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Tovuti ya Washirika imewekwa kwenye mandhari \"%s\", ambayo haipo tena kwenye seva. Washirika wanaona ukurasa wa hitilafu hadi uchague mandhari yaliyopo."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Tovuti ya Washirika haipatikani kwa muda"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Mandhari \"%s\" ya Tovuti ya Washirika hayakuweza kuwashwa kwa sababu yana makosa."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Mandhari ya Tovuti ya Washirika hayakuweza kuonyeshwa"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Folda \"%s\" ya mandhari ya Tovuti ya Washirika haikupatikana."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Mandhari ya Tovuti ya Washirika yamebadilishwa."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Jukumu la Mwalimu la %1$s haliwezi kubadilishwa jina wala kufutwa huku walimu wake wakisimamiwa katika Huduma → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Folda ya mandhari yanayotumika haipo"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Anwani imechaguliwa — tumia kibodi yako kuinakili."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Njia ya rasilimali \"%s\" hairuhusiwi."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Upangaji haukuweza kughairiwa"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Ujumbe wa upangaji utatumwa tena"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Anwani ya kalenda imenakiliwa."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Kalenda hazikuweza kupakiwa. Tafadhali jaribu tena."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Kalenda hazikuweza kuhifadhiwa."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Chaguo halikuweza kuongezwa"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Kanisa bado halijakutumia barua pepe."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Ofisi ya kanisa imejulishwa. Tafadhali jaribu tena baadaye."
+
+#: 
+msgid "The class does not exist"
+msgstr "Darasa halipo"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Darasa ambalo ratiba hii inalifuata halipo tena."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Maudhui ya barua pepe hii hayahifadhiwi. ChurchCRM huhifadhi maandishi ya ujumbe ulioandikwa kwenye kihariri cha barua pepe na ya barua pepe za watu wa kujitolea pekee."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Maudhui ya barua pepe hii hayakuhifadhiwa."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Mratibu hakuweza kuongezwa"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Orodha ya waratibu haikuweza kupakiwa"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Tarehe na saa ya kila tukio la ratiba hutoka kwenye tukio lake la kalenda, kwa hiyo kuhamisha tukio kunahamisha ratiba."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Kigezo cha siku lazima kiwe nambari kamili kati ya 1 na 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Mtu wa kujitolea mteule lazima awe mtu"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Watu wa kujitolea wateule huhifadhiwa kwenye ratiba na huenda kwenye matukio yanayoundwa kuanzia sasa."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Watu wa kujitolea wateule lazima wawe orodha"
+
+#: 
+msgid "The description is too long"
+msgstr "Maelezo ni marefu mno"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Mwisho wa safu uko kabla ya mwanzo wake."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Mwisho wa safu si tarehe."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Tukio halikuweza kuwekewa watumishi"
+
+#: 
+msgid "The event does not exist"
+msgstr "Tukio halipo"
+
+#: 
+msgid "The event is inactive"
+msgstr "Tukio halitumiki"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Tukio lazima liishe baada ya kuanza"
+
+#: 
+msgid "The event title"
+msgstr "Kichwa cha tukio"
+
+#: 
+msgid "The event title is too long"
+msgstr "Kichwa cha tukio ni kirefu mno"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Aina ya tukio ambayo matukio mapya ya huduma huanzia nayo. Ikiwa tupu, au aina hiyo ilifutwa, aina iitwayo \"Other\" hutumika kama ipo."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Aina ya tukio haipo"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Aina ya tukio ambayo ratiba hii inaifuata haipo tena."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Matukio yanaweza kuhamishiwa tu kwenye darasa ambalo timu imeunganishwa nalo"
+
+#: 
+msgid "The events could not be created"
+msgstr "Matukio hayakuweza kuundwa"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Matukio hayakuweza kufutwa"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Matukio hayakuweza kuwekewa watumishi"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Ruhusa haikuweza kuondolewa"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Tarehe ya mwisho iko kabla ya tarehe ya kwanza"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Orodha ya watu wa kujitolea wanaostahili haikuweza kupakiwa"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Idadi ya juu haiwezi kuwa chini ya idadi ya chini"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Ujumbe haukuweza kuwekwa kwenye foleni"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Idadi ya chini haiwezi kuwa hasi"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Huduma haikuweza kuundwa"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Huduma haikuweza kuzimwa"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Huduma haikuweza kufutwa"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Huduma haikuweza kuwashwa tena"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Huduma haikuweza kuhifadhiwa"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Tukio la ratiba halikuweza kufutwa"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Tukio la ratiba halina ratiba"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Matukio ya ratiba hayakuweza kuzalishwa"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Mtu wa kujitolea wa awali anaachiliwa na mbadala anachukua nafasi. Wote wawili wanaarifiwa."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Mtu wa kujitolea wa awali anabaki kwenye nafasi. Wote wawili wanaarifiwa."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Ukurasa uliouomba haupo. Huenda umehamishwa au kuondolewa."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Nafasi ni ya huduma tofauti"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Nafasi haikuweza kufutwa"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Nafasi haikuweza kuhifadhiwa"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Nafasi bado imefunikwa, kwa hiyo hakuna hatua inayohitajika isipokuwa unataka kurekebisha orodha."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Sifa haikuweza kuondolewa"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Sifa haikuweza kuhifadhiwa"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Watu wa kujitolea wenye sifa hawakuweza kupakiwa"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Marudio lazima yaseme jinsi matukio yanavyojirudia"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Ombi la %1$s kuhudumu badala ya %2$s limeidhinishwa."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Ombi la %1$s kuhudumu badala ya %2$s halikuidhinishwa."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Nafasi ileile imeorodheshwa mara mbili kwenye mahitaji ya watumishi"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Ratiba haikuweza kuzimwa"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Ratiba haikuweza kufutwa"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Ratiba haikuweza kuwashwa tena"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Ratiba haikuweza kuhifadhiwa"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Ratiba imesasishwa, kwa hiyo hakuna jambo jingine la kufanya."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Kipindi cha ratiba kinaisha kabla ya kuanza"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Mahitaji ya watumishi ya ratiba hayakuweza kupakiwa"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Mahitaji ya watumishi hayakuweza kupakiwa"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Mahitaji ya watumishi hayakuweza kuwekwa upya"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Mahitaji ya watumishi hayakuweza kuhifadhiwa"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Mahitaji ya watumishi lazima yawe orodha"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Mpango wa watumishi haukuweza kupakiwa"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Mwanzo wa safu si tarehe."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Ubadilishaji haukuweza kuamuliwa"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Maombi ya ubadilishaji hayakuweza kupakiwa"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Walimu wanaweza kuingizwa tu kwenye nafasi ya timu hii"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Walimu wa %1$s wanasimamiwa katika Huduma → %2$s → %3$s. Wanafunzi bado wanaweza kubadilishwa hapa."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Timu haikuweza kufutwa"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Timu haikuweza kuhifadhiwa"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Timu si ya huduma hii"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Folda ya mandhari haikupatikana."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Aina ambayo tukio jipya kwenye kichupo cha Kalenda cha huduma huanzia nayo. Bado inaweza kubadilishwa kwa kila tukio, kwa mfano kwa darasa linalohitaji makundi ya hesabu ya waliohudhuria."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Upangaji wa mtu wa kujitolea haukuweza kuhifadhiwa"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Kundi la watu wa kujitolea la huduma ya %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Mabadiliko ya usanidi wa kujitolea hayakuweza kuhifadhiwa"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Kipindi kinaisha kabla ya kuanza"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Waratibu wao wanaweza kubandika matukio ya huduma yao kwenye kalenda hii bila ruhusa ya Ongeza Matukio."
+
+#: 
+msgid "Theme"
+msgstr "Mandhari"
+
+#: 
+msgid "Themes"
+msgstr "Mandhari"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Mandhari hutolewa na kanisa lako, si na ChurchCRM, na hayajathibitishwa na mradi wa ChurchCRM."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Hakuna kalenda ya kanisa yenye kitambulisho %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Hakuna kalenda ya mfumo yenye kitambulisho %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Haya ni maelezo ambayo kanisa lina kukuhusu. Mabadiliko huhifadhiwa mara moja."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Hizi ni timu za watu wa kujitolea unazozisimamia. Fungua moja ili kuweka nafasi zake, kusema nani anaweza kuhudumu wapi, na kujaza wiki zijazo."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Matukio haya si mfululizo mmoja: yanatofautiana kwa kichwa, aina au darasa"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Huduma hizi zingependa watu zaidi. Waambie una nia na mtu atawasiliana nawe."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Mahitaji haya yanatoka kwenye ratiba. Kuhifadhi hapa kunabadilisha tukio hili pekee."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Nambari hizi zinahesabu akaunti za huduma binafsi tu: watu ambao akaunti zao za kuingia zinaweza kufikia Tovuti ya Washirika na hakuna kingine."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Watu hawa bado wamepangwa, lakini nafasi waliyonayo haimo tena kwenye mpango wa watumishi wa tarehe hii."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Watu hawa bado wamepangwa, lakini nafasi waliyonayo haimo tena kwenye mpango wa watumishi wa tukio hili."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Nafasi hizi zilizopangwa bado zinamhitaji mtu."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Timu hizi za %1$s zimeunganishwa na darasa la Shule ya Jumapili: %2$s. Zitenganishe kwanza."
+
+#: 
+msgid "They could not be added"
+msgstr "Hawakuweza kuongezwa"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Hawakuweza kuondolewa kwenye huduma hii"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Wanamaliza dakika %d baada ya tukio kuisha."
+msgstr[1] "Wanamaliza dakika %d baada ya tukio kuisha."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Wanamaliza dakika %d kabla ya tukio kuisha."
+msgstr[1] "Wanamaliza dakika %d kabla ya tukio kuisha."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Tayari walikuwa watu wa kujitolea hapa"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Upangaji huu ni %1$s na hauwezi kubadilishwa kuwa %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Upangaji huu haujatumika tena"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Barua pepe hii haimo kwenye historia yako."
+
+#: 
+msgid "This event has already happened"
+msgstr "Tukio hili tayari limefanyika"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Hii huenda kwa ofisi ya kanisa kwa ukaguzi. Hadi mtumishi aidhinishe, mwanafamilia mpya anaonekana hapa kama anayesubiri ukaguzi."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Kikundi hiki ni kundi la watu wa kujitolea la huduma na hufutwa pamoja na huduma"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Kikundi hiki ni kundi la watu wa kujitolea la %s na kinasimamiwa kutoka kwenye huduma hiyo."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Kikundi hiki ni kundi la watu wa kujitolea la %s. Kinasimamiwa kutoka kwenye huduma hiyo."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Usakinishaji huu bado hauna kalenda."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Hiki ni kikumbusho kwamba umepangwa kuhudumu hivi karibuni."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Hili si jina halali la folda ya mandhari."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Hizi si tarehe za timu yako."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Hii si mojawapo ya timu zako."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Hapa ndipo kanisa hutuma barua na ni nani wanampigia simu kuhusu kaya yako."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Hii ni akaunti yako ya kanisa. Kila unachoweza kujifanyia mwenyewe na familia yako kiko hapa."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Huduma hii haina matukio yajayo kwenye kalenda."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Huduma hii haina matukio yajayo yenye kichwa \"%s\". Ratiba hufuata matukio yaliyopo tayari: yaongeze kwanza kwenye kichupo cha Kalenda cha huduma."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Huduma hii haina kundi la watu wa kujitolea"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Huduma hii haiombi msaada kwa sasa"
+
+#: 
+msgid "This ministry's events"
+msgstr "Matukio ya huduma hii"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Matukio ya huduma hii (hakuna tukio lililochaguliwa bado)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Tukio hili la ratiba linafuata ratiba yake tena"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Tukio hili la ratiba tayari limefanyika"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Tukio hili la ratiba tayari limefanyika na upangaji wake hauwezi tena kubadilishwa"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Tukio hili la ratiba limeghairiwa"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Tukio hili la ratiba lina mahitaji yake ya watumishi, tofauti na ratiba yake."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Ukurasa huu si sehemu ya akaunti yako. Ikiwa unadhani unapaswa kuwa, muulize ofisi ya kanisa."
+
+#: 
+msgid "This page was not found"
+msgstr "Ukurasa huu haukupatikana"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Sehemu hii ya Tovuti ya Washirika ni ya viongozi wa timu za watu wa kujitolea."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Nafasi hii hupangwa na kiongozi wa timu yake au mratibu, si kwa kujisajili"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Ratiba hii haiwezi kufutwa: upangaji %d wa watu wa kujitolea bado unarejelea matukio yake."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Ratiba hii bado haina mahitaji ya watumishi"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Ratiba hii haitumiki. Iwashe tena ili kuzalisha matukio yake."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "Ombi hili la ubadilishaji limeshaamuliwa"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Timu hii bado haina nafasi"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Timu hii tayari inalihudumia tukio hili"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Kiolezo hiki kinaomba faili \"%s\", ambalo mandhari hayana."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Mandhari haya hayawezi kuwashwa"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Mandhari haya hayana matatizo."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Toleo hili la ChurchCRM halitumii kiolezo kwenye njia hii, kwa hiyo ubatilishaji haujawahi kuonyeshwa."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Wawekee alama kwenye kichupo cha Watu wa Kujitolea cha timu hii, kisha uwapange hapa."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Alama huhifadhiwa unapozifanya."
+
+#: 
+msgid "Times come from this event"
+msgstr "Saa zinatoka kwenye tukio hili"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Huongeza kila ratiba, hutuma chochote kilicho kwenye foleni na hufunga matukio yaliyokamilika, bila kusubiri uendeshaji uliopangwa unaofuata."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Kumkataa {{name}}? Mtu wa kujitolea wa awali anabaki na anaarifiwa."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Zima akiba ya violezo vya Tovuti ya Washirika na uchapishe jina la kila kiolezo kwenye maoni ya HTML. Kwa wabunifu wa mandhari; liache limezimwa katika matumizi ya kawaida."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Washa hii kwa huduma ambayo timu zake hufundisha madarasa ya Shule ya Jumapili. Timu zake zinaweza kuunganishwa na darasa, na ratiba na matukio yake yanaweza kutumia darasa."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Huzima akiba ya violezo vya tovuti na huchapisha jina la kila kiolezo kwenye maoni ya HTML. Kwa wabunifu wa mandhari; liache limezimwa katika matumizi ya kawaida."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Uthibitishaji wa Hatua Mbili (2FA)"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Nafasi Zisizojazwa"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Hitilafu isiyojulikana ya uwasilishaji"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Hali isiyojulikana ya tukio la ratiba"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Hali isiyojulikana ya kuunganisha ratiba"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Huduma ya kujitolea isiyojulikana"
+
+#: 
+msgid "Until"
+msgstr "Hadi"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Upatikanaji ujao"
+
+#: 
+msgid "Update your details"
+msgstr "Sasisha taarifa zako"
+
+#: 
+msgid "Update your family details"
+msgstr "Sasisha taarifa za familia yako"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Tumia Wekea tukio hili watumishi ili kuwekea tukio moja watumishi"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Tumia mahitaji ya ratiba"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Mtumiaji lazima awe na ruhusa ya Ongeza Tukio, au aratibu huduma ya kujitolea, na moduli ya Matukio lazima iwe imewashwa"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Mtumiaji lazima awe na ruhusa ya Ongeza Tukio, au aratibu huduma ya kujitolea ambayo kalenda hii ni yake"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — Fursa za Kujitolea (za zamani)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — Fursa za Kujitolea za zamani"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — Huduma"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — Usimamizi wa Watu wa Kujitolea"
+
+#: 
+msgid "Valid"
+msgstr "Halali"
+
+#: 
+msgid "Validation"
+msgstr "Uthibitishaji"
+
+#: 
+msgid "View event"
+msgstr "Tazama Tukio"
+
+#: 
+msgid "View my schedule"
+msgstr "Tazama ratiba yangu"
+
+#: 
+msgid "View only"
+msgstr "Kutazama tu"
+
+#: 
+msgid "View person"
+msgstr "Ona Mtu"
+
+#: 
+msgid "View the event"
+msgstr "Tazama tukio"
+
+#: 
+msgid "View this email"
+msgstr "Tazama barua pepe hii"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Mtu wa kujitolea (Ya zamani)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Usimamizi wa Watu wa Kujitolea V2 haujawashwa"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Huduma ya Kujitolea"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Upangaji wa mtu wa kujitolea"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Mtu wa kujitolea amekataa"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Uzoefu wa kujitolea"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Nafasi za kujitolea bado zinahitaji kujazwa"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Kikumbusho cha kujitolea"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Kujisajili kujitolea"
+
+#: 
+msgid "Volunteer times"
+msgstr "Saa za kujitolea"
+
+#: 
+msgid "Volunteering"
+msgstr "Kujitolea"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Kujitolea kulikopangwa kama kanisa linavyoendesha. Kila huduma ina timu na nafasi; watu hupewa sifa kwa nafasi na ni wa kundi la watu wa kujitolea la huduma; ratiba hufuata matukio kwenye kalenda na kutoa matukio yenye tarehe pamoja na mahitaji ya watumishi; waratibu huwapanga watu, ambao hukubali, hukataa au kupendekeza mbadala; vikumbusho na arifa hutumwa kwa barua pepe. Wasimamizi na watumiaji wenye ruhusa ya Simamia Huduma huona kila huduma na wanaweza kuziunda, kuzizima na kuzifuta. Mratibu wa huduma hupewa ruhusa ya Simamia Huduma Zangu badala yake: kichwa cha Huduma kwenye utepe wa pembeni kisha kinaonyesha huduma wanazoziratibu tu. Kiongozi wa timu huendesha timu yake kutoka Tovuti ya Washirika. Washirika hutumia Tovuti ya Washirika kuona ratiba yao, kujibu, kujisajili na kujitolea kusaidia."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Watu wa kujitolea waliopangwa: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Watu wa kujitolea humaliza"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Watu wa kujitolea wanaohitajika"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Watu wa kujitolea wa %s wamepangwa kwenye matukio haya, kwa hiyo hayawezi kufutwa hapa. Mwombe huduma hiyo iondoe uwekaji wake wa watumishi, au mwombe anayesimamia kalenda."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Watu wa kujitolea wa {{names}} wamepangwa kwenye baadhi yao. Isipokuwa unasimamia kalenda, ufutaji unakataliwa hadi uwekaji huo wa watumishi uondolewe."
+
+#: 
+msgid "Volunteers start"
+msgstr "Watu wa kujitolea huanza"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Watu wa kujitolea huanza dakika %d baada ya tukio kuanza."
+msgstr[1] "Watu wa kujitolea huanza dakika %d baada ya tukio kuanza."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Watu wa kujitolea huanza dakika %d kabla ya tukio kuanza."
+msgstr[1] "Watu wa kujitolea huanza dakika %d kabla ya tukio kuanza."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Inasubiri jibu"
+
+#: 
+msgid "Waiting for review"
+msgstr "Inasubiri ukaguzi"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Inasubiri mratibu wako athibitishe."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Tutakutumia barua pepe kitu kinapohitaji kujazwa."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Tungependa msaada zaidi asubuhi za Jumapili — hakuna uzoefu unaohitajika."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Karibu, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Nini kinahitaji kubadilishwa?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Kinachohitaji umakini wako wiki hii"
+
+#: 
+msgid "What the check found"
+msgstr "Ukaguzi ulichogundua"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Uzoefu wa kujitolea ni upi"
+
+#: 
+msgid "What you want to say"
+msgstr "Unachotaka kusema"
+
+#: 
+msgid "When"
+msgstr "Lini"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Mtu wa kujitolea anapopendekeza mtu wa kuchukua nafasi yake, pendekezo hilo huonekana hapa ili uliidhinishe au ulikatae."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Mtu wa kujitolea anapopendekeza mtu wa kuchukua nafasi yake, pendekezo hilo huonekana hapa ili uliidhinishe."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Mtu anapokuweka kwenye timu, au unapojisajili mwenyewe, itaonekana hapa."
+
+#: 
+msgid "Where"
+msgstr "Wapi"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Tarehe zinatoka wapi"
+
+#: 
+msgid "Where we reach you"
+msgstr "Tunakofikia"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Uzoefu gani wa Usimamizi wa Watu wa Kujitolea unatumika. V1 ni kipengele cha zamani cha Fursa za Kujitolea; V2 ni mtiririko mpya wa kupanga na kupangia. \"Zote mbili\" huonyesha kila upande kando kwa kando wakati wa uhamishaji."
+
+#: 
+msgid "Which events"
+msgstr "Matukio gani"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Uzoefu gani wa kujitolea kanisa hili linatumia. Kadi iliyo upande wa kulia inaeleza kila chaguo."
+
+#: 
+msgid "Who is covering"
+msgstr "Nani anasaidia"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Nani anahitajika, nani yupo, na nini bado kina upungufu"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Aliyehudumu muda mrefu zaidi uliopita huorodheshwa kwanza."
+
+#: 
+msgid "Work Email"
+msgstr "Barua pepe ya kazini"
+
+#: 
+msgid "Yearly"
+msgstr "Kila mwaka"
+
+#: 
+msgid "You"
+msgstr "Wewe"
+
+#: 
+msgid "You are already helping that day"
+msgstr "Tayari unasaidia siku hiyo"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "Tayari unasaidia siku hiyo kama {{what}}. Jisajili kwa hili pia?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Huruhusiwi kubadilisha hili. Tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Kwa sasa hujahusishwa na familia"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Bado hujawa sehemu ya rekodi ya familia."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Uko kwenye orodha — asante."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Unaweza kukagua au kubadilisha hili kwenye ratiba yako ya kujitolea."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Huwezi kufungua ukurasa huu"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Huwezi kujipendekeza kuwa mbadala wako mwenyewe"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Hukuweza kusajiliwa kwa hilo."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Bado huongozi timu ya watu wa kujitolea."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Una anwani mpya ya kalenda. Ya zamani haifanyi kazi tena."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Umepangwa kuhudumu"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Umepangwa kuhudumu."
+
+#: 
+msgid "You lead this"
+msgstr "Unaongoza hii"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Unaweza kuunda ratiba kwa timu unayoiongoza tu"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Utarudi kwenye orodha kwa hili."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Akaunti yako haijaunganishwa na rekodi ya mtu. Tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Usajili wako wa kalenda umehifadhiwa."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Anwani yako ya sasa itaacha kufanya kazi mara moja. Yeyote uliyempa atahitaji mpya."
+
+#: 
+msgid "Your details"
+msgstr "Taarifa zako"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Taarifa zako zimehifadhiwa."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Taarifa za familia yako zimehifadhiwa."
+
+#: 
+msgid "Your photo"
+msgstr "Picha yako"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Picha yako imehifadhiwa."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Ratiba yako haikuweza kupakiwa."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Kipindi chako kimeisha. Tafadhali ingia tena."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Ombi lako la mbadala liliidhinishwa"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Ombi lako la mbadala halikuidhinishwa"
+
+#: 
+msgid "already staffed by this team"
+msgstr "tayari ina watumishi kutoka timu hii"
+
+#: 
+msgid "body is required"
+msgstr "body inahitajika"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds lazima iwe orodha ya vitambulisho vya kalenda"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents lazima iwe mojawapo ya: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId lazima iwe kitambulisho cha kikundi au null"
+
+#: 
+msgid "end offset"
+msgstr "kiwango cha mwisho"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds lazima iwe orodha ya vitambulisho vya matukio"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "kila ujumbe umewasilishwa au bado uko kwenye foleni"
+
+#: 
+msgid "has not served yet"
+msgstr "bado hajahudumu"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId lazima iwe kitambulisho cha nafasi"
+
+#: 
+msgid "inactive family"
+msgstr "familia isiyotumika"
+
+#: 
+msgid "line %d"
+msgstr "mstari %d"
+
+#: 
+msgid "marked do not email"
+msgstr "imewekwa alama ya usitume barua pepe"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "ujumbe haukuweza kuwasilishwa"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "ujumbe haukuweza kuwasilishwa baada ya majaribio matano"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "ujumbe unaosubiri kutumwa"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds lazima iwe orodha ya vitambulisho vya huduma"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "dakika baada ya tukio kuisha"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "dakika baada ya tukio kuanza"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "dakika kabla ya tukio kuisha"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "dakika kabla ya tukio kuanza"
+
+#: 
+msgid "never"
+msgstr "kamwe"
+
+#: 
+msgid "no email address"
+msgstr "hakuna anwani ya barua pepe"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds na familyIds lazima ziwe safu za nambari kamili chanya"
+
+#: 
+msgid "record not found"
+msgstr "rekodi haijapatikana"
+
+#: 
+msgid "same address as another recipient"
+msgstr "anwani ileile na mpokeaji mwingine"
+
+#: 
+msgid "single event"
+msgstr "tukio moja"
+
+#: 
+msgid "start offset"
+msgstr "kiwango cha mwanzo"
+
+#: 
+msgid "subject and body are required"
+msgstr "subject na body zinahitajika"
+
+#: 
+msgid "subject is required"
+msgstr "subject inahitajika"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject lazima iwe na herufi 255 au chini"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool lazima iwe kweli au si kweli"
+
+#: 
+msgid "window end"
+msgstr "mwisho wa kipindi"
+
+#: 
+msgid "window start"
+msgstr "mwanzo wa kipindi"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} wameongezwa, {{alreadyMembers}} tayari walikuwa watu wa kujitolea hapa"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "Matukio {{created}} yameundwa, {{existing}} tayari yalikuwepo"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} iliunda matukio {{total}} kwa {{className}} ({{upcoming}} yajayo)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} pia wanahudumu kwenye baadhi yake."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} tayari anaratibu huduma hii"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} amepangwa"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} tayari anahudumu kama {{position}} kwenye tukio hili. Bado unaweza kumpanga."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} ana sifa lakini hayuko kwenye kundi la watu wa kujitolea la huduma hii. Kumpanga kunamwongeza kwenye tukio hili pekee."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} sasa anaratibu huduma hii"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: hesabu lazima ziwe kati ya 0 na {{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: kiwango cha juu hakiwezi kuwa chini ya cha chini."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} hana sifa tena"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} ana sifa"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} anamwomba {{substitute}} achukue nafasi yake"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} tarehe {{date}} limeundwa. Liwekee watumishi sasa?"
+

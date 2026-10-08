@@ -18876,3 +18876,4535 @@ msgstr "Roll som make/maka"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Postnummer med versaler"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Välj minst en klassificering som ska ingå i katalogen."
+
+#: 
+msgid "Geocoding services"
+msgstr "Geokodningstjänster"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Geokodningstjänster som ska provas, i den ordning du väljer dem. Nominatim (OpenStreetMap) fungerar över hela världen; US Census (US Census Bureau) täcker bara adresser i USA. Välj även US Census för att använda den. Om ingen väljs används Nominatim."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Standardvärden för nya poster"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Detta hittar kartkoordinater för varje familj som saknar dem, med de geokodningstjänster som valts i Kartinställningar. Familjerna bearbetas i omgångar om 50; en omgång tar cirka en minut med en geokodningstjänst och längre med fler. Du kan ha den här sidan öppen medan det pågår. Fortsätta?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Används för nya poster och för geokodning när en post saknar land."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Kopiera från Kyrkans uppgifter"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Det gick inte att kopiera kyrkans adress."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Det gick inte att matcha kyrkans land."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Klasslistor, närvarolistor och fotoalbum"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Medlemslistor för verksamheter och rapporter för söndagsskoleklasser"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Ditt räkenskapsår börjar i %s."
+
+#: 
+msgid "An error occurred"
+msgstr "Ett fel uppstod"
+
+#: 
+msgid "Approve"
+msgstr "Godkänn"
+
+#: 
+msgid "Approve selected"
+msgstr "Godkänn markerade"
+
+#: 
+msgid "Approved"
+msgstr "Godkänd"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Ändra i Personinställningar"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "De markerade registreringarna kunde inte godkännas"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Familjen kunde inte godkännas"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Väntande registreringar"
+
+#: 
+msgid "Pending review"
+msgstr "Väntar på granskning"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Registreringar från ditt offentliga registreringsformulär som väntar på granskning. Poster utan e-post eller telefon är markerade; kontrollera kontaktuppgifterna innan du hör av dig."
+
+#: 
+msgid "Review now"
+msgstr "Granska nu"
+
+#: 
+msgid "Review self registrations"
+msgstr "Granska självregistreringar"
+
+#: 
+msgid "Select month"
+msgstr "Välj månad"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Självregistrering är avstängd"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Självregistrering är aktiverad"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Det offentliga registreringsformuläret är avstängt. Befintliga registreringar visas nedan."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Den här familjen är ingen väntande självregistrering"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Den här personen tillhör en familj; godkänn familjen i stället"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Den här personen är ingen väntande självregistrering"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Den här självregistrerade familjen väntar på granskning"
+
+#: 
+msgid "Total registrations"
+msgstr "Totalt antal registreringar"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Besökare kan registrera sig i ditt offentliga registreringsformulär."
+
+#: 
+msgid "Yesterday"
+msgstr "Igår"
+
+#: 
+msgid "days ago"
+msgstr "dagar sedan"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "självregistreringar väntar på granskning"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Födelsedagar adresseras till personen och bröllopsdagar till paret."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Adressetiketter för personerna i den här rapporten. En person utan egen adress adresseras till familjens adress."
+
+#: 
+msgid "One label for each couple."
+msgstr "En etikett per par."
+
+#: 
+msgid "Print Labels"
+msgstr "Skriv ut etiketter"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Den rollen finns inte i den här verksamheten."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "\"%s\" är ingen typ av kalender som den här sidan känner till."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s kan inte tjänstgöra och har föreslagit %2$s som ersättare."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s finns redan i volontärpoolen för %2$s och vill hjälpa till igen."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s är redan kopplad till %2$s i %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s finns i %2$s som %3$s. Ta först bort personen från klassen; om du kvalificerar personen här blir hen en av klassens lärare."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s är inte en aktivitet i %2$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s förblir en söndagsskoleklass så länge dess lärare hanteras i Tjänsteområden → %2$s → %3$s. Koppla först bort den från teamet."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s vill hjälpa till med %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s vill hjälpa till med %2$s och har lagts till i dess volontärpool."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: Max är %2$d men %3$d standardvolontärer är valda. Ta bort en eller höj Max."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d dag"
+msgstr[1] "%d dagar"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d standardvolontär hoppades över av annan anledning (tillfället är över, inställt eller fullt)"
+msgstr[1] "%d standardvolontärer hoppades över av annan anledning (tillfället är över, inställt eller fullt)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d standardvolontär hoppades över: behörigheten är återkallad"
+msgstr[1] "%d standardvolontärer hoppades över: behörigheten är återkallad"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d standardvolontär tilldelad"
+msgstr[1] "%d standardvolontärer tilldelade"
+
+#: 
+msgid "%d failed"
+msgstr "%d misslyckades"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Ytterligare %d volontär behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
+msgstr[1] "Ytterligare %d volontärer behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d nytt tillfälle"
+msgstr[1] "%d nya tillfällen"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "%d volontär behövs fortfarande för ett kommande tillfälle."
+msgstr[1] "%d volontärer behövs fortfarande för ett kommande tillfälle."
+
+#: 
+msgid "%s Calendar"
+msgstr "Kalender för %s"
+
+#: 
+msgid "%s Family"
+msgstr "Familjen %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s tillhandahåller inga lärare till söndagsskolan, så dess team, scheman och aktiviteter kan inte använda en klass. En volontärsamordnare kan ändra det under Redigera tjänsteområde."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s e-postmeddelande från kyrkan"
+msgstr[1] "%s e-postmeddelanden från kyrkan"
+
+#: 
+msgid "%s family"
+msgstr "Familjen %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s har avböjt en volontäruppgift."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s har ingen roll som heter Lärare, så dess lärare kan inte hanteras från ett team"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s har inga kommande möten i kalendern. Ett schema följer aktiviteter som redan finns: lägg först till klassens möten med Ny återkommande aktivitet på tjänsteområdets flik Kalender."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s förväntas fortfarande tjänstgöra. Kontakta koordinatorn om det inte är möjligt."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s skickades inte (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s person i ditt hushåll"
+msgstr[1] "%s personer i ditt hushåll"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s position"
+msgstr[1] "%s positioner"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: samma person är vald två gånger som standardvolontär"
+
+#: 
+msgid "(no subject)"
+msgstr "(inget ämne)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "En födelsedag kan inte ligga i framtiden."
+
+#: 
+msgid "A calendar event"
+msgstr "En kalenderaktivitet"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "Ett kalender-id måste vara ett nummer."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "En klass som inte längre finns"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "En klass utan möten i kalendern kan inte väljas ännu."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "En klass utan möten i kalendern kan inte väljas ännu. En koordinator för tjänsteområdet lägger till dess möten på tjänsteområdets flik Kalender."
+
+#: 
+msgid "A class's meetings"
+msgstr "Klassens möten"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "En koordinator kan hantera allt i det här tjänsteområdet, även ändringar som annars en volontärsamordnare skulle behöva göra."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "En koordinator för tjänsteområdet kan lägga till dem på tjänsteområdets flik Kalender."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "En koordinator för tjänsteområdet kan lägga till dem på tjänsteområdets flik Kalender. Generera sedan igen."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "En koordinator leder hela tjänsteområdet: dess team, uppgifter, scheman och varje tilldelning i det."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "En dag som inte finns i en månad infaller på dess sista dag."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "En standardvolontär hör till schemats bemanningsbehov, inte till ett enskilt tillfälle"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "En standardvolontär kan bara väljas för en uppgift som schemats bemanningsbehov efterfrågar"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Ett från- och ett till-datum i formatet ÅÅÅÅ-MM-DD krävs"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Ett minimiantal krävs"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Ett tjänsteområde skapas med en egen kalender, volontärpool och ett första team, så det enda du behöver bestämma här är namn och uppdrag."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Ett namn på tjänsteområdet krävs"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Ett tjänsteområde behöver minst ett team. Byt namn på det i stället."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "Det finns redan ett tjänsteområde med det namnet"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Ett tjänsteområdes egen kalender kan inte öppnas för andra tjänsteområden"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "En uppgift hör till ett team; välj ett"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "En uppgift är ett jobb som någon gör i det här teamet, till exempel Espresso eller Lovsångsledare."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "En uppgift är en roll som någon tjänstgör i, till exempel Espresso eller Lovsångsledare."
+
+#: 
+msgid "A position is required"
+msgstr "En uppgift krävs"
+
+#: 
+msgid "A position name is required"
+msgstr "Ett namn på uppgiften krävs"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "En uppgift med kvalificerade volontärer kan inte flyttas in i eller ut ur ett team som är kopplat till en söndagsskoleklass, eftersom det skulle ändra vem som undervisar klassen. Skapa uppgiften i det andra teamet i stället."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "Det finns redan en uppgift med det namnet i det här tjänsteområdet"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Ett svar måste vara accepterat eller avböjt"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Ett schema hör till ett team; välj ett"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Ett schemanamn krävs"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Ett schema anger vilka kalenderaktiviteter ett team bemannar: en typ av gudstjänst, en klass möten eller tjänsteområdets egna aktiviteter. Lägg till ett och generera dess tillfällen."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Ett schema anger vilka kalenderaktiviteter det här teamet tjänstgör vid: en typ av gudstjänst, en klass möten eller tjänsteområdets egna aktiviteter. Lägg till ett och generera dess tillfällen."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Ett schema som följer en klass måste ange klassen"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Ett schema som följer en aktivitetstyp måste ange aktivitetstypen"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Ett schema som bemannar en enda aktivitet kan inte följa andra aktiviteter; ta bort det och lägg i stället till ett schema"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "En enda lista över möjligheter, till exempel \"Barnpassning\" eller \"Värd\", som underhålls under Personer → Admin. Varje person märks med de möjligheter hen vill hjälpa till med, på fliken Volontär i personens post. Det är allt som registreras: det finns inga team, inga scheman, inga tilldelningar till ett datum och inga påminnelsemejl. Rapporter och personposten är de ställen där märkningen används."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "En kvadratisk bild på ditt ansikte fungerar bäst."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Ett bemanningsbehov anger sina standardvolontärer i \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Ett bemanningskrav hör till exakt ett av ett schema eller ett tillfälle"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "En ersättare har redan föreslagits för den här tilldelningen"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "En teamledare kan hantera sitt eget team, med dess uppgifter, scheman och vem som tjänstgör var, och inget annat i tjänsteområdet."
+
+#: 
+msgid "A team name is required"
+msgstr "Ett teamnamn krävs"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "Det finns redan ett team med det namnet i det här tjänsteområdet"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Ett tema är en mapp som din kyrka laddar upp till Include/themes/ på servern. Systemstandarden levereras med ChurchCRM."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "En övergångsinställning. De äldre sidorna för Volontärmöjligheter och de nya sidorna för Tjänsteområden är båda tillgängliga, och en personpost visar båda flikarna Volontär, tydligt märkta. Använd den medan du flyttar en kyrka från V1 till V2, och byt sedan till enbart V2."
+
+#: 
+msgid "A volunteer"
+msgstr "En volontär"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "En volontär har avböjt en tilldelning"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "En volontär har föreslagit en ersättare"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "En volontärsamordnare kan driva det här tjänsteområdet utan behörighet. Lägg till en koordinator så att någon annan kan driva det utan att få alla andra tjänsteområden också."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Ett bröllopsdatum kan inte ligga i framtiden."
+
+#: 
+msgid "Accepted"
+msgstr "Accepterad"
+
+#: 
+msgid "Account deleted"
+msgstr "Kontot raderades"
+
+#: 
+msgid "Account unlocked"
+msgstr "Konto låst upp"
+
+#: 
+msgid "Accounts"
+msgstr "Konton"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Aktiv måste vara sant eller falskt"
+
+#: 
+msgid "Active now"
+msgstr "Aktiv nu"
+
+#: 
+msgid "Add All"
+msgstr "Lägg till alla"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Lägg till alla i urvalet"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Lägg till volontär"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Lägg till volontärer i urvalet"
+
+#: 
+msgid "Add a family member"
+msgstr "Lägg till en familjemedlem"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Lägg först till en uppgift och kom sedan tillbaka för att ange hur många som behövs."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Lägg till ett andra steg vid inloggningen, så att bara lösenordet inte räcker för att komma åt ditt konto."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Lägg till minst en uppgift i det här teamet och markera sedan vem som kan tjänstgöra var."
+
+#: 
+msgid "Add coordinator"
+msgstr "Lägg till koordinator"
+
+#: 
+msgid "Add from Cart"
+msgstr "Lägg till från urvalet"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Lägg först till dess möten med Ny återkommande aktivitet på fliken Kalender"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Lägg personer i urvalet innan du lägger till dem som volontärer"
+
+#: 
+msgid "Add position"
+msgstr "Lägg till uppgift"
+
+#: 
+msgid "Add schedule"
+msgstr "Lägg till schema"
+
+#: 
+msgid "Add team"
+msgstr "Lägg till team"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Lägg till dem på fliken Kalender och generera sedan igen."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Lägg till dem på fliken Kalender."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Lägg till den här adressen i din kalenderapp. Den uppdateras automatiskt när kyrkans kalender ändras."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Lägg till det här tjänsteområdets aktiviteter här: en arbetsdag, en klass som träffas varje söndag. De hamnar i kyrkans kalender och du kan bemanna dem när du skapar dem."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Tillagd via Medlemsportalen och väntar på granskning: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Tillagd; markera nu de uppgifter hen kan tjänstgöra i"
+
+#: 
+msgid "Address Line 2"
+msgstr "Adressrad 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Adminkonsol"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Administratörsbehörighet krävs"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "Visa den här uppgiften på sidan Öppna möjligheter i Medlemsportalen."
+
+#: 
+msgid "All Teams"
+msgstr "Alla team"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Låt medlemmar ändra sina egna och sina familjemedlemmars födelsedagar."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Även fäst på {{calendars}}, vilket bara någon med behörigheten Lägg till aktiviteter kan ändra."
+
+#: 
+msgid "An event title is required"
+msgstr "En aktivitetstitel krävs"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "En aktivitetstyp eller ett tjänsteområde krävs"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "En aktivitetstyp som inte längre finns"
+
+#: 
+msgid "Another ministry"
+msgstr "Ett annat tjänsteområde"
+
+#: 
+msgid "Any event"
+msgstr "Valfri aktivitet"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Allt som din koordinator bör veta"
+
+#: 
+msgid "Approve substitution"
+msgstr "Godkänn ersättning"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Godkänn den här ersättaren"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Be en volontärsamordnare skapa ett tjänsteområde och göra dig till dess koordinator."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Be någon att ta din plats"
+
+#: 
+msgid "Ask them"
+msgstr "Fråga dem"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Förfrågan skickad; din koordinator bekräftar den."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Tilldela en volontär"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Tilldelad utanför den nuvarande planen"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Tilldelningen avbröts"
+
+#: 
+msgid "Assignment not found"
+msgstr "Tilldelningen hittades inte"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Minst ett personId eller familyId krävs"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Högst %d standardvolontärer kan väljas för en uppgift"
+
+#: 
+msgid "Author"
+msgstr "Författare"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Behörighet ges till personen, inte till en inloggning, så den kan ges innan personen har en. En person vars inloggning bara är för självbetjäning ser bara sitt eget schema tills en administratör utökar kontot."
+
+#: 
+msgid "Automatic"
+msgstr "Automatisk"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Väntar på svar"
+
+#: 
+msgid "Back to Email History"
+msgstr "Tillbaka till E-posthistorik"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Tillbaka till tjänsteområdets översikt"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Tillbaka till Tillfällen"
+
+#: 
+msgid "Back to Person"
+msgstr "Tillbaka till Person"
+
+#: 
+msgid "Back to editing"
+msgstr "Tillbaka till redigering"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Tillbaka till mitt schema"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Tillbaka till Medlemsportalen"
+
+#: 
+msgid "Back to your profile"
+msgstr "Tillbaka till din profil"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Bakgrundsjobb och leverans"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Bakgrundsjobben kördes senast"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Bakgrundsjobben kördes"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Födelsedagshälsning"
+
+#: 
+msgid "Both"
+msgstr "Båda"
+
+#: 
+msgid "Both (transition)"
+msgstr "Båda (övergång)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Båda: V1 och V2 sida vid sida (övergång)"
+
+#: 
+msgid "Calendar address"
+msgstr "Kalenderadress"
+
+#: 
+msgid "Calendar saved"
+msgstr "Kalendern sparades"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Kalendrar som Medlemsportalen visar för medlemmar, valda under Admin -> Medlemsportal -> Kalendrar."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Kan det här tjänsteområdet tillhandahålla lärare till söndagsskolan?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Avbryt tilldelning"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Avbryt den här tilldelningen"
+
+#: 
+msgid "Cancelled"
+msgstr "Avbruten"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Byt lösenordet du loggar in med, eller lägg till ett andra steg så att bara ett lösenord inte räcker."
+
+#: 
+msgid "Change your password"
+msgstr "Byt lösenord"
+
+#: 
+msgid "Checked in"
+msgstr "Incheckad"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Incheckade: %1$d av %2$d på klasslistan"
+
+#: 
+msgid "Checked out"
+msgstr "Utcheckad"
+
+#: 
+msgid "Choose a class"
+msgstr "Välj en klass"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Välj en dag i månaden, från 1 till 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Välj ett nytt foto"
+
+#: 
+msgid "Choose a person"
+msgstr "Välj en person"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Välj en volontär"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Välj först en volontär"
+
+#: 
+msgid "Choose an event"
+msgstr "Välj en händelse..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Välj en aktivitetstyp"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Välj en befintlig aktivitetstyp"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Välj minst en kalender att prenumerera på."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Välj de kalendrar du vill ha i din egen kalenderapp."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Välj datum varje år som MM-DD"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Välj aktivitetens datum"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Välj veckodag"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Välj aktiviteten som schemat följer"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Välj aktiviteten som ska bemannas"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Välj aktiviteterna som ska tas bort"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Välj aktiviteterna som ska bemannas"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Välj första och sista datum"
+
+#: 
+msgid "Choose the first date"
+msgstr "Välj första datum"
+
+#: 
+msgid "Choose the last date"
+msgstr "Välj sista datum"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Välj uppgiften i %1$s som lärarna i %2$s är kvalificerade för. Lärare: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Välj teamet som den här uppgiften tillhör"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Välj tema som medlemmar ser, slå på eller av portalens delar och se vem som använder portalen."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Välj varje vecka, varje månad eller varje år"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Välj varifrån schemats datum kommer"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Välj vilken volontärupplevelse kyrkan använder, hur långt i förväg scheman fylls och när påminnelser skickas, och kontrollera att bakgrundsjobben körs."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Välj vem som fyller varje uppgift som standard. Valet sparas i schemat: de tilldelas varje tillfälle som skapas nu och de som den dagliga påfyllningen skapar senare, så länge de är kvalificerade, och ombeds svara om du inte anger dem som accepterade. Lämna en uppgift öppen för att tilldela den vecka för vecka."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Välj vem som ersätter dig."
+
+#: 
+msgid "Church Calendar"
+msgstr "Kyrkokalender"
+
+#: 
+msgid "Church Calendars"
+msgstr "Kyrkokalendrar"
+
+#: 
+msgid "Church calendar"
+msgstr "Kyrkokalender"
+
+#: 
+msgid "Church events of a type"
+msgstr "Kyrkans aktiviteter av en typ"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Kyrkans aktiviteter av en typ läggs till i kyrkokalendern. Kontrollera schemats aktivitetstyp, titel och datum."
+
+#: 
+msgid "Church website"
+msgstr "Kyrkans webbplats"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM har två sätt att hantera volontärer. Bara ett är tänkt att användas åt gången; inställningen till vänster avgör vilket den här kyrkan ser. Att byta döljer eller visar sidor och menyval, men tar aldrig bort data, så du kan byta tillbaka."
+
+#: 
+msgid "Close event details"
+msgstr "Stäng aktivitetsdetaljer"
+
+#: 
+msgid "Colour"
+msgstr "Färg"
+
+#: 
+msgid "Completed"
+msgstr "Slutförd"
+
+#: 
+msgid "Compose Message"
+msgstr "Skriv meddelande"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Bekräfta dina familjeuppgifter"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Koordinatorn togs bort"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Kopiera den här adressen och lägg till den i din kalenderapp som en ny kalenderprenumeration."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Det gick inte att bygga förhandsvisningen."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Det gick inte att räkna klassens aktiviteter"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Det gick inte att ge behörigheten"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Det gick inte att läsa in söndagsskoleklasserna"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Det gick inte att läsa in översikten"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Det gick inte att läsa in aktivitetsvalen"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Det gick inte att läsa in tillfällena"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Det gick inte att läsa in scheman"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Det gick inte att läsa in kommande aktiviteter"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Det gick inte att läsa in volontärerna"
+
+#: 
+msgid "Could not load this email."
+msgstr "Det gick inte att läsa in det här e-postmeddelandet."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Det gick inte att läsa in det här tjänsteområdet"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Det gick inte att läsa in det här tjänsteområdets aktiviteter"
+
+#: 
+msgid "Could not load this team"
+msgstr "Det gick inte att läsa in det här teamet"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Det gick inte att återkalla behörigheten"
+
+#: 
+msgid "Create"
+msgstr "Skapa"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Skapa ett schema och generera dess tillfällen, så visas veckorna som ska fyllas här."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Skapa ett schema och generera dess tillfällen, så visas veckorna som ska bemannas här."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Skapa minst en uppgift för det här teamet och markera sedan vem som kan tjänstgöra var."
+
+#: 
+msgid "Create ministry"
+msgstr "Skapa tjänsteområde"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Att skapa ett tjänsteområde kräver volontärsamordnarbehörighet"
+
+#: 
+msgid "Date and time"
+msgstr "Datum och tid"
+
+#: 
+msgid "Date each year"
+msgstr "Datum varje år"
+
+#: 
+msgid "Dates"
+msgstr "Datum"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Datum måste anges i formatet ÅÅÅÅ-MM-DD"
+
+#: 
+msgid "Day of the month"
+msgstr "Dag i månaden"
+
+#: 
+msgid "Day of the week"
+msgstr "Veckodag"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "Inaktivera tjänsteområde"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "Inaktivera schema"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "Inaktivera det här tjänsteområdet innan du tar bort det."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "Inaktivera {{name}}? Det flyttas till Inaktiverade tjänsteområden i sidofältet, där det kan återaktiveras eller tas bort. Inget tas bort."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "Inaktivera {{name}}? Inga nya tillfällen skapas för det, varken av Generera eller den dagliga påfyllningen. Dess befintliga tillfällen och tilldelningar finns kvar, och det kan återaktiveras."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Inaktiverade tjänsteområden"
+
+#: 
+msgid "Declined"
+msgstr "Avböjd"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Standardaktivitetstyp för tjänsteområdets aktiviteter"
+
+#: 
+msgid "Default volunteers"
+msgstr "Standardvolontärer"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Standardvolontärer skickas som requirements: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Ta bort aktiviteter"
+
+#: 
+msgid "Delete ministry"
+msgstr "Ta bort tjänsteområde"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Ta bort tillfällen"
+
+#: 
+msgid "Delete position"
+msgstr "Ta bort uppgift"
+
+#: 
+msgid "Delete schedule"
+msgstr "Ta bort schema"
+
+#: 
+msgid "Delete team"
+msgstr "Ta bort team"
+
+#: 
+msgid "Delete those events"
+msgstr "Ta bort dessa aktiviteter"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Ta bort {{name}} och allt i det? Dess uppgifter, kvalifikationer, bemanningsbehov, scheman, tillfällen och tilldelningar, inklusive tidigare tjänstgöringsregister, samt dess teamledarbehörigheter tas bort. Om du vill behålla historiken, inaktivera teamet i stället. Detta kan inte ångras."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Ta bort {{name}} och allt i det? Dess team, uppgifter, scheman, {{occurrences}} tillfällen och {{assignments}} tilldelningar, inklusive tidigare tjänstgöringsregister, samt dess koordinator- och teamledarbehörigheter, volontärpoolsgrupp och kalender tas bort. Detta kan inte ångras."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Ta bort {{name}}? Dess kvalifikationer, bemanningsbehov och tilldelningar, inklusive tidigare tjänstgöringsregister, tas bort med den. Om du vill behålla historiken, inaktivera uppgiften i stället. Detta kan inte ångras."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Ta bort {{name}}? Detta kan inte ångras."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Att ta bort ett tjänsteområde kräver volontärsamordnarbehörighet"
+
+#: 
+msgid "Developer mode"
+msgstr "Utvecklarläge"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Klart; du är tillbaka på listan."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Släpp det här tillfällets egna bemanningsbehov och följ schemat igen?"
+
+#: 
+msgid "Due soon"
+msgstr "Snart"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Varje kalender måste anges som en typ och ett id."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Varje standardvolontär måste ange en person"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Varje bemanningsbehov måste ange en uppgift"
+
+#: 
+msgid "Edit event"
+msgstr "Redigera händelse"
+
+#: 
+msgid "Edit ministry"
+msgstr "Redigera tjänsteområde"
+
+#: 
+msgid "Edit position"
+msgstr "Redigera uppgift"
+
+#: 
+msgid "Edit schedule"
+msgstr "Redigera schema"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Redigera bemanningsbehov"
+
+#: 
+msgid "Edit team"
+msgstr "Redigera team"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Redigera schemat och välj en annan klass."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Redigera schemat och välj en annan aktivitetstyp."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Redigera schemat och välj aktiviteten det följer."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Redigera schemat och flytta dess sista datum för att följa fler aktiviteter."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Redigerad via Medlemsportalen: %s"
+
+#: 
+msgid "Email %s"
+msgstr "Skicka e-post till %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "Skicka e-post till familjen %s"
+
+#: 
+msgid "Email History"
+msgstr "E-posthistorik"
+
+#: 
+msgid "Email content"
+msgstr "E-postinnehåll"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "Skicka e-post till de som inte närvarade: %s"
+
+#: 
+msgid "Email not found"
+msgstr "E-postmeddelandet hittades inte"
+
+#: 
+msgid "Email preview"
+msgstr "Förhandsvisning av e-post"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "E-postutskick är avstängt"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "E-postutskick är inte aktiverat. Konfigurera SMTP-inställningarna och aktivera e-post innan du skickar."
+
+#: 
+msgid "Emails"
+msgstr "E-postmeddelanden"
+
+#: 
+msgid "End time"
+msgstr "Sluttid"
+
+#: 
+msgid "Enter counts"
+msgstr "Ange antal"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Ange e-postens ämne…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Ange ditt nuvarande lösenord och sedan ditt nya lösenord två gånger."
+
+#: 
+msgid "Enter your message…"
+msgstr "Skriv ditt meddelande…"
+
+#: 
+msgid "Event staffed"
+msgstr "Aktiviteten bemannad"
+
+#: 
+msgid "Event title"
+msgstr "Evenemangsnamn"
+
+#: 
+msgid "Event type"
+msgstr "Evenemangstyp"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Alla e-postmeddelanden som ChurchCRM skickat, senaste först. Öppna en person för att se hens fullständiga historik."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Varje uppgift i det här fönstret har de personer som behövs."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Alla har svarat"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Alla i urvalet blir volontärer i det här tjänsteområdet. Markera deras uppgifter efteråt."
+
+#: 
+msgid "Everything is correct"
+msgstr "Allt stämmer"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Det gick inte att bygga förhandsvisningen"
+
+#: 
+msgid "Failed to load email"
+msgstr "Det gick inte att läsa in e-postmeddelandet"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Det gick inte att läsa in e-posthistoriken"
+
+#: 
+msgid "Failed to send email"
+msgstr "Det gick inte att skicka e-postmeddelandet"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "Det gick inte att skicka e-postmeddelandet. Försök igen eller använd \"Öppna i e-postprogram\"."
+
+#: 
+msgid "Family Member"
+msgstr "Familjemedlem"
+
+#: 
+msgid "Family verification"
+msgstr "Familjekontroll"
+
+#: 
+msgid "File"
+msgstr "Fil"
+
+#: 
+msgid "Fill"
+msgstr "Fyll"
+
+#: 
+msgid "Fill by default with"
+msgstr "Fyll som standard med"
+
+#: 
+msgid "Fill this gap"
+msgstr "Fyll den här luckan"
+
+#: 
+msgid "Filled"
+msgstr "Fylld"
+
+#: 
+msgid "Find a sub"
+msgstr "Hitta en ersättare"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Hitta en volontär"
+
+#: 
+msgid "Find an event"
+msgstr "Hitta en aktivitet"
+
+#: 
+msgid "Find something to do"
+msgstr "Hitta något att göra"
+
+#: 
+msgid "Find something to help with"
+msgstr "Hitta något att hjälpa till med"
+
+#: 
+msgid "Findings"
+msgstr "Resultat"
+
+#: 
+msgid "First date"
+msgstr "Första datum"
+
+#: 
+msgid "Folder"
+msgstr "Mapp"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Mappnamn för Medlemsportalens tema som ska användas, från Include/themes/. \"default\" är systemtemat som levereras med ChurchCRM."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Generera igen närmare dess första datum."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Generera tillfällen"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Skaffa en ny kalenderadress?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Ge tjänsteområdet ett namn"
+
+#: 
+msgid "Give the position a name"
+msgstr "Ge uppgiften ett namn"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Ange start- och sluttid som TT:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "Ge teamet ett namn"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Gå till mitt volontärarbete"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Gå till inställningarna för Medlemsportalen"
+
+#: 
+msgid "Going"
+msgstr "Kommer"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Ge behörigheten på tjänsteområdets sida och tilldela dem sedan här."
+
+#: 
+msgid "Granted"
+msgstr "Beviljad"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Ta en titt på vad kyrkan har registrerat om ditt hushåll och berätta sedan om det fortfarande stämmer."
+
+#: 
+msgid "Headcount"
+msgstr "Antal närvarande"
+
+#: 
+msgid "Hello %s"
+msgstr "Hej %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Hjälp sökes"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Hjälp sökes kunde inte sparas"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Hur långt i förväg tillfällen skapas för aktiviteterna som varje schema följer. Ett dagligt bakgrundsjobb håller varje schema fyllt fram till denna punkt."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Hur många timmar före ett volontärtillfälle påminnelsemejlet skickas. Ange 0 för att inte skicka några påminnelser alls. Leveransen förutsätter att bakgrundsjobben körs; se volontärdokumentationen för den rekommenderade cron-inställningen."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Hur många timmar före ett tillfälle påminnelsemejlet skickas. Ange 0 för att inte skicka några påminnelser alls."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Hur många personer varje uppgift behöver, varje gång detta sker. Ett datum kan ändras separat senare. En standardvolontär tilldelas varje nytt tillfälle så länge hen är kvalificerad; en ändring påverkar aldrig tillfällen som redan finns."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Hur många volontärer varje tillfälle av det här schemat behöver. Avmarkera en uppgift som schemat aldrig använder. En standardvolontär tilldelas varje nytt tillfälle så länge hen är kvalificerad; en ändring påverkar aldrig tillfällen som redan finns."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Hur många volontärer den här aktiviteten behöver. Avmarkera en uppgift som den inte använder."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Hur många veckor i förväg volontärtillfällen skapas för aktiviteterna som varje schema följer, från 1 till 52. Ett dagligt bakgrundsjobb håller varje schema fyllt fram till denna punkt."
+
+#: 
+msgid "How often"
+msgstr "Hur ofta"
+
+#: 
+msgid "How to correct this"
+msgstr "Så här rättar du till det"
+
+#: 
+msgid "I can't"
+msgstr "Jag kan inte"
+
+#: 
+msgid "I'd like to help"
+msgstr "Jag vill gärna hjälpa till"
+
+#: 
+msgid "I'll be there"
+msgstr "Jag kommer"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Om meddelanden misslyckas, be en administratör kontrollera Inställningar för tjänsteområden."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Om du inte längre kan komma, avböj i ditt volontärschema så snart du kan så att uppgiften kan fyllas."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Om du har delat den här adressen av misstag, skaffa en ny. Den gamla adressen slutar fungera direkt."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "Under de senaste 15 minuterna"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "I volontärpoolen"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Internt: senaste datum då volontärscheman fylldes på fram till schemahorisonten (ÅÅÅÅ-MM-DD). Redigera inte manuellt."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Internt: när volontärscheman senast fylldes på och hur många tillfällen det skapade. Redigera inte manuellt."
+
+#: 
+msgid "Is this still right?"
+msgstr "Stämmer det fortfarande?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Dess tillfällen skapas utan uppgifter att fylla. Redigera schemat för att lägga till dess bemanningsbehov."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Behåll dem i {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Typ"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Senaste 24 timmarna"
+
+#: 
+msgid "Last 30 days"
+msgstr "Senaste 30 dagarna"
+
+#: 
+msgid "Last 7 days"
+msgstr "Senaste 7 dagarna"
+
+#: 
+msgid "Last attempt"
+msgstr "Senaste försök"
+
+#: 
+msgid "Last check"
+msgstr "Senaste kontroll"
+
+#: 
+msgid "Last date"
+msgstr "Sista datum"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Senast sedd i portalen"
+
+#: 
+msgid "Last sign-in"
+msgstr "Senaste inloggning"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Lämna båda på 0 för att tjänstgöra exakt när aktiviteten äger rum. Om aktiviteten flyttas flyttas volontärerna med."
+
+#: 
+msgid "Leave open"
+msgstr "Lämna öppen"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Låt medlemmar ändra sina egna och sina familjemedlemmars födelsedagar i Medlemsportalen."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Låt medlemmar redigera födelsedagar"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Låt kyrkans kansli veta om allt ovan fortfarande stämmer."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Berätta varför (valfritt)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Låter det tjänsteområdets koordinatorer schemalägga volontärer för den här aktiviteten, och redigera själva aktiviteten."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Läser in kalendern…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Hantera tjänsteområden"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Hantera mina tjänsteområden"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Behörighet att hantera Mina tjänsteområden, med ett tjänsteområde eller team att hantera"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Behörighet att hantera Mina tjänsteområden, med ett tjänsteområde eller team att hantera, krävs"
+
+#: 
+msgid "Manage staffing"
+msgstr "Hantera bemanning"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Hanteras från tjänsteområdet %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Hanteras från tjänsteområdet {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Max"
+
+#: 
+msgid "Member Portal"
+msgstr "Medlemsportal"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Medlemmar ser en sida om att tjänsten är \"tillfälligt otillgänglig\" tills detta är åtgärdat. Samma uppgifter skrevs till applikationsloggen och webbserverns fellogg."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Medlemmar ser bara kalendrarna som är påslagna här. Födelsedagar och bröllopsdagar visar bara förnamn och efternamnets initial."
+
+#: 
+msgid "Message"
+msgstr "Meddelande"
+
+#: 
+msgid "Min"
+msgstr "Min"
+
+#: 
+msgid "Ministries"
+msgstr "Tjänsteområden"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Tjänsteområden som söker hjälp"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Tjänsteområden som får lägga till aktiviteter"
+
+#: 
+msgid "Ministry"
+msgstr "Tjänsteområde"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Tjänsteområdenas kalendrar"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Koordinatorer för tjänsteområden"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Översikt för tjänsteområde"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Inställningar för tjänsteområden"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Tjänsteområdets kalender"
+
+#: 
+msgid "Ministry created"
+msgstr "Tjänsteområdet skapades"
+
+#: 
+msgid "Ministry management access"
+msgstr "Behörighet att hantera tjänsteområden"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Behörighet att hantera tjänsteområden krävs"
+
+#: 
+msgid "Ministry name"
+msgstr "Tjänsteområdets namn"
+
+#: 
+msgid "Ministry not found"
+msgstr "Tjänsteområdet hittades inte"
+
+#: 
+msgid "My Family"
+msgstr "Min familj"
+
+#: 
+msgid "My Teams"
+msgstr "Mina team"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Mina tjänsteområden och team"
+
+#: 
+msgid "My schedule"
+msgstr "Mitt schema"
+
+#: 
+msgid "My volunteering"
+msgstr "Mitt volontärarbete"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Ge den här uppgiften ett namn på sidan där medlemmar letar efter något att hjälpa till med."
+
+#: 
+msgid "Needs an answer"
+msgstr "Behöver svar"
+
+#: 
+msgid "Needs filling"
+msgstr "Behöver fyllas"
+
+#: 
+msgid "Never signed in"
+msgstr "Aldrig inloggad"
+
+#: 
+msgid "New account"
+msgstr "Nytt konto"
+
+#: 
+msgid "New event"
+msgstr "Ny aktivitet"
+
+#: 
+msgid "New ministry"
+msgstr "Nytt tjänsteområde"
+
+#: 
+msgid "New record notification"
+msgstr "Avisering om ny post"
+
+#: 
+msgid "New recurring event"
+msgstr "Ny återkommande aktivitet"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Nya volontärer behövs för följande uppgifter"
+
+#: 
+msgid "Newest first"
+msgstr "Senaste först"
+
+#: 
+msgid "Next on %s"
+msgstr "Nästa den %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Ingen kalender har delats med medlemmar ännu."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Ingen kalender är öppen för det här tjänsteområdet, så aktiviteterna visas inte i någon kalender."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Ingen kalender delas med medlemmar."
+
+#: 
+msgid "No class"
+msgstr "Ingen klass"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Inga kontaktuppgifter registrerade ännu."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Inga koordinatorer ännu"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Inget datum mellan första och sista datum stämmer med upprepningen"
+
+#: 
+msgid "No email was sent."
+msgstr "Inget e-postmeddelande skickades."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Inga e-postmeddelanden har skickats till den här posten ännu."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Inget antal närvarande registrerat ännu"
+
+#: 
+msgid "No longer needed"
+msgstr "Behövs inte längre"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Ingen medlem har loggat in i Medlemsportalen ännu."
+
+#: 
+msgid "No ministry"
+msgstr "Inget tjänsteområde"
+
+#: 
+msgid "No past events"
+msgstr "Inga tidigare aktiviteter"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Inget foto har laddats upp för den här personen."
+
+#: 
+msgid "No photo was sent."
+msgstr "Inget foto skickades."
+
+#: 
+msgid "No positions yet"
+msgstr "Inga uppgifter ännu"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Inga kvalifikationer ännu."
+
+#: 
+msgid "No schedules yet"
+msgstr "Inga scheman ännu"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Inga bemanningsbehov angivna"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Inga bemanningsbehov: skapade tillfällen behöver ingen."
+
+#: 
+msgid "No substitution requests"
+msgstr "Inga ersättningsförfrågningar"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Inga ersättningar att avgöra"
+
+#: 
+msgid "No teams yet"
+msgstr "Inga team ännu"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "Inga kommande %1$s-aktiviteter med titeln \"%2$s\" finns i kalendern. Ett schema följer aktiviteter som redan finns."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Ingen kommande aktivitet matchar"
+
+#: 
+msgid "No upcoming events"
+msgstr "Inga kommande aktiviteter"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "Inga kommande aktiviteter av den här typen finns i kalendern."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Inga kommande aktiviteter att välja bland"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Ingen tilldelad ännu"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Ingen annan är utbildad för detta ännu; berätta i stället för din koordinator."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Ingen har angett hur många volontärer varje uppgift behöver, så det finns inget att fylla."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Ingen i det här fönstret är fortfarande osäker."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Ingen är kvalificerad för den här uppgiften ännu"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Ingen är kvalificerad för den här uppgiften ännu, så den förblir öppen."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Ingen av mottagarna kan få e-post"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Ingen: aktivitetstypen väljs för varje aktivitet"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Du får inte visa det här e-postmeddelandet"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Du får inte visa den här familjen"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Du får inte visa den här personen"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Inte behörig för den här tilldelningen"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Inte behörig för det här tjänsteområdet"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Inte behörig för det här tillfället"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Inte behörig för den här uppgiften"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Inte behörig för den här kvalifikationen"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Inte behörig för det här kravet"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Inte behörig för det här schemat"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Inte behörig för den här ersättningsförfrågan"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Inte behörig för det här teamet"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Inte behörig att tilldela aktiviteter till det volontärtjänsteområdet"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Inte behörig att ändra aktiviteten %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Inte behörig att ändra volontärtjänsteområdet för den här aktiviteten"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Inte behörig att skapa en aktivitet utan ett volontärtjänsteområde som du hanterar"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Inte behörig att ändra den här aktiviteten"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Inte behörig att fästa aktiviteter i kalendern \"%s\""
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Inte behörig att ta bort aktiviteter från kalendern \"%s\""
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Inte behörig att ta bort volontärtjänsteområdet från den här aktiviteten"
+
+#: 
+msgid "Not checked in"
+msgstr "Inte incheckad"
+
+#: 
+msgid "Not found"
+msgstr "Hittades inte"
+
+#: 
+msgid "Not in the pool"
+msgstr "Inte i poolen"
+
+#: 
+msgid "Not now"
+msgstr "Inte nu"
+
+#: 
+msgid "Not sent"
+msgstr "Inte skickat"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Inte angivet: använd \"%s\""
+
+#: 
+msgid "Not staffed"
+msgstr "Inte bemannad"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Inte volontär ännu"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Inget hade ändrats, så inget sparades."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "Inget finns i kalendern för den här perioden."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "Inget finns i kalendern just nu."
+
+#: 
+msgid "Nothing is short"
+msgstr "Inget är underbemannat"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Inget på din lista ännu"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Inget på din lista ännu. Ta en titt på vad som behöver fyllas."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Inget öppet just nu"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Inget schemalagt ännu"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Inget schemalagt."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Inget upplagt ännu"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "Inget som det här tjänsteområdet äger har hänt under det senaste året."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Inget att kvalificera ännu"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Inget sparades. Kontrollera de markerade fälten."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Inget sparades. Försök igen."
+
+#: 
+msgid "Notification"
+msgstr "Avisering"
+
+#: 
+msgid "Notifications"
+msgstr "Aviseringar"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Tillfället hittades inte"
+
+#: 
+msgid "Occurrences"
+msgstr "Tillfällen"
+
+#: 
+msgid "Offer to help"
+msgstr "Erbjud hjälp"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "En gång om dagen får varje aktivt schema tillfällen för de evenemang det följer, upp till %d vecka framåt, och varje positions standardvolontär tilldelas de nya så länge de är kvalificerade."
+msgstr[1] "En gång om dagen får varje aktivt schema tillfällen för de evenemang det följer, upp till %d veckor framåt, och varje positions standardvolontär tilldelas de nya så länge de är kvalificerade."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "När den här personen är kvalificerad för en uppgift visas hen här, tillsammans med de datum hen är schemalagd att tjänstgöra."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Ett tillfälle skapas för varje kalenderaktivitet vars Länkade grupp är den här klassen."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Ett tillfälle skapas för varje datum för den här aktiviteten. Bara aktiviteter som redan finns i kalendern kan väljas."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "En av kalendrarna finns inte"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "En av aktiviteterna finns inte"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "En av dessa kalendrar delas inte med medlemmar."
+
+#: 
+msgid "One-time"
+msgstr "Engångs"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Bara en söndagsskoleklass kan kopplas till ett team"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Bara en koordinator får registrera ett svar å någon annans vägnar"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Bara en koordinator för det här tjänsteområdet får skapa dess aktiviteter"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Bara en koordinator för det här tjänsteområdet får bemanna dess aktiviteter"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Bara en volontärsamordnare kan ändra detta."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Bara en volontärsamordnare kan ändra om ett tjänsteområde tillhandahåller lärare till söndagsskolan"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Bara en vuxen i din familj kan ändra de här uppgifterna. Kontakta kyrkans kansli."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Bara personer som är utbildade för detta visas."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Bara den tilldelade volontären får föreslå en ersättare"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Bara kalendrarna som det här tjänsteområdet får lägga till aktiviteter i visas. Dess egen kalender är förbockad från början."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Bara den första delen av en mycket lång lista visas. Minska fönstret för att se resten."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Bara volontären som föreslog en ersättare får dra tillbaka förslaget"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Öppna ett tjänsteområde från menyn Tjänsteområden, skapa ett schema och generera dess datum, så visas veckorna som ska bemannas här."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Öppna ett tjänsteområde för att göra någon till dess koordinator, eller till ledare för ett av dess team."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Öppna i kalenderapp"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Öppna möjligheter kunde inte läsas in."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Öppna mottagarna i ditt lokala e-postprogram"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Öppna Medlemsportalen"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Öppna tjänsteområdets översikt"
+
+#: 
+msgid "Open the ministry"
+msgstr "Öppna tjänsteområdet"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Öppna tillfället"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Öppna tillfället för att tilldela de personer du behöver."
+
+#: 
+msgid "Open this team"
+msgstr "Öppna det här teamet"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Att öppna en kalender för tjänsteområden kräver behörigheten Lägg till aktiviteter"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Valfritt. Alla som är kvalificerade för en uppgift i det här teamet blir lärare i klassen, och klassens sida ändrar inte längre sina lärare."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Valfritt. Klassen blir den Länkade gruppen: dess lista avgör vem som checkar in, och ett schema för klassen hittar dessa aktiviteter."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Över Max: ta bort den här eller höj Max."
+
+#: 
+msgid "Overridden templates"
+msgstr "Åsidosatta mallar"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Sida %1$s av %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Sida %d av %d"
+
+#: 
+msgid "Password reset"
+msgstr "Lösenordsåterställning"
+
+#: 
+msgid "Password reset link"
+msgstr "Länk till återställning av lösenord"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Lösenord måste vara minst %s tecken långa."
+msgstr[1] "Lösenord måste vara minst %s tecken långa."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Välj en kommande kalenderaktivitet och ange vem den behöver. Aktiviteten behåller sitt eget datum och sin egen tid; för att bemanna en hel serie, lägg i stället till ett schema."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Välj någon som redan har gått med på att ta din plats. Din koordinator bekräftar det."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Välj kalendrar från listan."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Välj om dina uppgifter behöver ändras."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Kontakta kyrkans kansli så att vi kan rätta våra uppgifter."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Kontakta kyrkans kansli."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Ange minst två tecken."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Berätta om du kan komma genom att acceptera eller avböja i ditt volontärschema."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Berätta vad som behöver ändras."
+
+#: 
+msgid "Portal settings"
+msgstr "Portalinställningar"
+
+#: 
+msgid "Portal theme"
+msgstr "Portaltema"
+
+#: 
+msgid "Position"
+msgstr "Uppgift"
+
+#: 
+msgid "Position added"
+msgstr "Uppgiften lades till"
+
+#: 
+msgid "Position deleted"
+msgstr "Uppgiften togs bort"
+
+#: 
+msgid "Position name"
+msgstr "Uppgiftens namn"
+
+#: 
+msgid "Position not found"
+msgstr "Uppgiften hittades inte"
+
+#: 
+msgid "Position saved"
+msgstr "Uppgiften sparades"
+
+#: 
+msgid "Positions"
+msgstr "Uppgifter"
+
+#: 
+msgid "Positions still short"
+msgstr "Uppgifter som fortfarande saknar folk"
+
+#: 
+msgid "Proposed"
+msgstr "Föreslagen"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Föreslagen ersättare"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Visa det här tjänsteområdet på sidan Öppna möjligheter i Medlemsportalen, där alla volontärer kan se det och erbjuda hjälp. De går med i volontärpoolen och du får ett mejl."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Sätta in {{name}} i stället? Den ursprungliga volontären behåller sin historik och får veta."
+
+#: 
+msgid "Qualification not found"
+msgstr "Kvalifikationen hittades inte"
+
+#: 
+msgid "Qualified for"
+msgstr "Kvalificerad för"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Kvalificerade volontärer kan anmäla sig själva till öppna datum för den här uppgiften. Stäng av för uppgifter som bara en teamledare eller koordinator ska tilldela; Medlemsportalen erbjuder dem då inte."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Kvalificera dess nuvarande lärare för"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Kvalificera dem för en uppgift"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Kvalificera dem för en uppgift."
+
+#: 
+msgid "Reactivate"
+msgstr "Återaktivera"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Läs guiden för att skapa teman"
+
+#: 
+msgid "Recent Emails"
+msgstr "Senaste e-postmeddelanden"
+
+#: 
+msgid "Recent Sends"
+msgstr "Senaste utskick"
+
+#: 
+msgid "Recipient"
+msgstr "Mottagare"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Antalet mottagare (%d) överstiger det högsta tillåtna per utskick (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Mottagare måste anges som personIds och familyIds, inte som e-postadresser"
+
+#: 
+msgid "Record a decline"
+msgstr "Registrera ett avböjande"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Registrera ett accepterande"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Registrera att {{name}} sa nej? Svaret sparas som om det kom från dig, och platsen blir ledig igen."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Registrera att {{name}} sa ja? Svaret sparas som om det kom från dig, inte från hen."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Registrera: de accepterade"
+
+#: 
+msgid "Record: they declined"
+msgstr "Registrera: de avböjde"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Rekrytera volontärer"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Rekrytera volontärer måste vara sant eller falskt"
+
+#: 
+msgid "Recruiting"
+msgstr "Rekryterar"
+
+#: 
+msgid "Recurring"
+msgstr "Återkommande"
+
+#: 
+msgid "Reject"
+msgstr "Avslå"
+
+#: 
+msgid "Reject substitution"
+msgstr "Avslå ersättning"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Avslå den här ersättaren"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Förvarningstid för påminnelse (timmar)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Påminnelse: du är schemalagd att tjänstgöra"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Påminnelser och aviseringar levereras bara när bakgrundsjobben körs. För leverans i tid, kör uppgiftsschemaläggaren från cron var 15:e minut"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Ta bort volontär"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Ta bort koordinator"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Ta bort klassen från dem"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Ta bort teamledaren"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Ta bort {{name}} från {{ministry}}? Det tar bort alla hens kvalifikationer här, tar hen bort från varje framtida tillfälle, rensar hen som standardvolontär i tjänsteområdets scheman och tar bort hen från volontärpoolen."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Borttagen. {{qualifications}} kvalifikationer, {{assignments}} kommande tilldelningar, {{defaults}} schemastandarder."
+
+#: 
+msgid "Repeats"
+msgstr "Upprepas"
+
+#: 
+msgid "Requirement not found"
+msgstr "Kravet hittades inte"
+
+#: 
+msgid "Reset link"
+msgstr "Återställningslänk"
+
+#: 
+msgid "Response recorded"
+msgstr "Svaret registrerades"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Granska förfrågan i volontäröversikten och godkänn eller avslå den."
+
+#: 
+msgid "Review this request"
+msgstr "Granska den här förfrågan"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Kör bakgrundsjobb nu"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTP-test"
+
+#: 
+msgid "Save calendars"
+msgstr "Spara kalendrar"
+
+#: 
+msgid "Save changes"
+msgstr "Spara ändringar"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Sparat; det här tjänsteområdet ber inte längre om hjälp"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Sparat; det här tjänsteområdet ber nu om hjälp"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Sparat. Medlemmar ser kalendrarna som är påslagna ovan."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Schemat \"{{name}}\" skapades."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Schemat \"{{name}}\" skapades. Det är inaktivt och skapar därför inga tillfällen förrän det är aktivt."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Schemat inaktiverades"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Schemat togs bort"
+
+#: 
+msgid "Schedule name"
+msgstr "Schemats namn"
+
+#: 
+msgid "Schedule not found"
+msgstr "Schemat hittades inte"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Schemat återaktiverades"
+
+#: 
+msgid "Schedule saved"
+msgstr "Schemat sparades"
+
+#: 
+msgid "Scheduled"
+msgstr "Schemalagd"
+
+#: 
+msgid "Schedules"
+msgstr "Scheman"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Scheman senast ifyllda"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Scheman har inte längre egen upprepning eller egna tider; varje tillfälle följer en kalenderaktivitet. Ta bort: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Scheman anger inte längre hur långt i förväg de genereras: schemahorisonten under Admin → Inställningar för tjänsteområden gäller för varje schema. Ta bort: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Schemahorisont (veckor)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Behörighetstilldelningen hittades inte"
+
+#: 
+msgid "Search by name"
+msgstr "Sök på namn"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Se hela kalendern"
+
+#: 
+msgid "See what needs filling"
+msgstr "Se vad som behöver fyllas"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Välj en kalender för att dölja eller visa dess aktiviteter."
+
+#: 
+msgid "Select ministries..."
+msgstr "Välj tjänsteområden..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Egen anmälan"
+
+#: 
+msgid "Self-assignable"
+msgstr "Kan tilldelas själv"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Kan tilldelas själv måste vara sant eller falskt"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Självbetjäningskonton"
+
+#: 
+msgid "Send"
+msgstr "Skicka"
+
+#: 
+msgid "Send Email"
+msgstr "Skicka e-post"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Skicka e-post från ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Skicka tilldelningsmeddelandet igen"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Skicka kalendrarna som ska visas som en lista."
+
+#: 
+msgid "Send to the church office"
+msgstr "Skicka till församlingsexpeditionen"
+
+#: 
+msgid "Send your answer"
+msgstr "Skicka ditt svar"
+
+#: 
+msgid "Sent"
+msgstr "Skickat"
+
+#: 
+msgid "Sent by"
+msgstr "Skickat av"
+
+#: 
+msgid "Serving next"
+msgstr "Tjänstgör härnäst"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Markera som Accepterad"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Ange bemanningsbehov"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Visa \"%s\" i Medlemsportalen"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Visa i Medlemsportalen"
+
+#: 
+msgid "Show past events"
+msgstr "Visa tidigare händelser"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Visa församlingskalendern"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Visa församlingskalendern i Medlemsportalen."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Visa avsnittet för församlingskalendern i Medlemsportalen."
+
+#: 
+msgid "Show the next"
+msgstr "Visa nästa"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Visa avsnitten för volontärarbete och team i Medlemsportalen."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Visa denna verksamhet på sidan Öppna möjligheter"
+
+#: 
+msgid "Show volunteering"
+msgstr "Visa volontärarbete"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Visa sidorna för volontärarbete och team i Medlemsportalen."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Visa vad jag redan har gjort"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Visas exakt som du skriver det. Radbrytningar bevaras."
+
+#: 
+msgid "Sign up"
+msgstr "Anmäl dig"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Inloggning och säkerhet"
+
+#: 
+msgid "Signed in"
+msgstr "Inloggad"
+
+#: 
+msgid "Signed up"
+msgstr "Anmäld"
+
+#: 
+msgid "Sincerely"
+msgstr "Med vänliga hälsningar"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "Vissa av dina uppgifter kunde inte sparas. Kontrollera de markerade fälten."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "Vissa av din familjs uppgifter kunde inte sparas. Kontrollera de markerade fälten."
+
+#: 
+msgid "Someone else is covering"
+msgstr "Någon annan ersätter"
+
+#: 
+msgid "Something needs changing"
+msgstr "Något behöver ändras"
+
+#: 
+msgid "Something went wrong"
+msgstr "Något gick fel"
+
+#: 
+msgid "Staff an event"
+msgstr "Bemanna en händelse"
+
+#: 
+msgid "Staff them"
+msgstr "Bemanna dem"
+
+#: 
+msgid "Staff this event"
+msgstr "Bemanna denna händelse"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Bemanna detta tillfälle"
+
+#: 
+msgid "Staffed"
+msgstr "Bemannad"
+
+#: 
+msgid "Staffing"
+msgstr "Bemanning"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Bemanningen ställs in när händelserna har skapats"
+
+#: 
+msgid "Staffing needs"
+msgstr "Bemanningsbehov"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Bemanningsbehov sparade"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Börja med att skapa en verksamhet och lägg sedan till de team och funktioner som tjänar i den."
+
+#: 
+msgid "Start time"
+msgstr "Starttid"
+
+#: 
+msgid "Start typing a name"
+msgstr "Börja skriva ett namn"
+
+#: 
+msgid "Statistics"
+msgstr "Statistik"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Ska {{name}} sluta samordna {{ministry}}? Personens inloggning och egna tilldelningar påverkas inte."
+
+#: 
+msgid "Subscribe"
+msgstr "Prenumerera"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Prenumerera på kalendern"
+
+#: 
+msgid "Substitute"
+msgstr "Ersättare"
+
+#: 
+msgid "Substitute approved"
+msgstr "Ersättare godkänd"
+
+#: 
+msgid "Substitute asked"
+msgstr "Ersättare tillfrågad"
+
+#: 
+msgid "Substitute decision"
+msgstr "Beslut om ersättare"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Ersättare föreslagen"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Ersättare avslagen"
+
+#: 
+msgid "Substituted"
+msgstr "Ersatt"
+
+#: 
+msgid "Substitution approved"
+msgstr "Ersättning godkänd"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Ersättning avslagen"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Begäran om ersättare hittades inte"
+
+#: 
+msgid "Substitution requests"
+msgstr "Begäran om ersättare"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Söndagsskoleklass"
+
+#: 
+msgid "System calendar"
+msgstr "Systemkalender"
+
+#: 
+msgid "System default"
+msgstr "Systemstandard"
+
+#: 
+msgid "Take that back"
+msgstr "Ta tillbaka det"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Ta bort {{name}} från denna funktion? Inget e-postmeddelande skickas; personens schema visar att datumet inte längre behövs och platsen blir ledig igen."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Lärare i denna klass hanteras under Verksamheter → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Team"
+
+#: 
+msgid "Team Leader"
+msgstr "Teamledare"
+
+#: 
+msgid "Team added"
+msgstr "Team tillagt"
+
+#: 
+msgid "Team deleted"
+msgstr "Team borttaget"
+
+#: 
+msgid "Team leader"
+msgstr "Teamledare"
+
+#: 
+msgid "Team name"
+msgstr "Teamnamn"
+
+#: 
+msgid "Team not found"
+msgstr "Teamet hittades inte"
+
+#: 
+msgid "Team saved"
+msgstr "Team sparat"
+
+#: 
+msgid "Teams"
+msgstr "Team"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Team är de grupper av människor som tjänar i denna verksamhet."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Team, funktioner och de personer som fyller dem"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "De tio senaste inloggningarna"
+
+#: 
+msgid "Thank you"
+msgstr "Tack!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Tack för att du anmält dig att tjäna"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Tack för att du anmält dig att tjäna. Du finns nu i schemat."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Tack. Församlingsexpeditionen har fått ditt svar."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Tack. Församlingsexpeditionen granskar detta innan det läggs till."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Tack för att du berättade."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Tack — samordnaren har fått veta att du gärna hjälper till igen."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Tack — samordnaren har fått veta att du gärna vill hjälpa till."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Tack — du står på listan."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Den temamappen för Medlemsportalen finns inte."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Den tilldelningen tillhör någon annan"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Tilldelningen kunde inte sparas"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Födelsedagen är inte ett giltigt datum."
+
+#: 
+msgid "That could not be saved."
+msgstr "Det kunde inte sparas."
+
+#: 
+msgid "That could not be sent."
+msgstr "Det kunde inte skickas."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Familjemedlemmen kunde inte läggas till. Kontrollera de markerade fälten."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Det är inte ett giltigt datum."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Listan kunde inte läsas in."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Den personen har redan denna funktion vid detta tillfälle"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Den personen är redan tilldelad denna funktion vid detta tillfälle"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Den personen ingår inte i någon volontärpool för denna verksamhet. Skicka igen med undantaget för personer utanför poolen för att tilldela personen ändå."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Den personen ingår inte i denna volontärpool"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Den personen är inte kvalificerad för denna funktion"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Fotot kunde inte sparas."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Fotot är för stort. Välj ett mindre."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Den funktionen tillhör en annan verksamhet"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Den funktionen tillhör ett annat team"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Den funktionen är redan fullt bemannad"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Den funktionen bemannas inte vid detta tillfälle"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Svaret kunde inte registreras"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Den statusen kan inte ställas in direkt"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Det gick inte att fatta beslut om begäran om ersättare"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Det teamet tillhör en annan verksamhet"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Temat kunde inte aktiveras."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Temat kunde inte kontrolleras."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "Temat har fel och aktiverades därför inte."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Volontären kunde inte tilldelas"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Bröllopsdatumet är inte ett giltigt datum."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s måste vara ett datum i formatet ÅÅÅÅ-MM-DD"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s måste vara ett helt antal minuter"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s måste ligga inom %d minuter från händelsen"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Kalendrarna för Medlemsportalen sparades."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Medlemsportalen kunde inte slutföra det du bad om. Försök igen om några minuter."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Medlemsportalen är bara tillgänglig för en inloggad person, inte för API-klienter."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Medlemsportalen använder temat \"%s\", som inte längre finns på servern. Medlemmar ser en felsida tills du väljer ett tema som finns."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Medlemsportalen är tillfälligt otillgänglig"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Temat \"%s\" för Medlemsportalen kunde inte aktiveras eftersom det innehåller fel."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Temat för Medlemsportalen kunde inte återges"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Temamappen \"%s\" för Medlemsportalen hittades inte."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Temat för Medlemsportalen ändrades."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Lärarrollen för %1$s kan inte byta namn eller tas bort så länge dess lärare hanteras under Verksamheter → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Den aktiva temamappen saknas"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Adressen är markerad — kopiera den med tangentbordet."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Resurssökvägen \"%s\" är inte tillåten."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Tilldelningen kunde inte avbokas"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Tilldelningsmeddelandet skickas igen"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Kalenderadressen kopierades."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Kalendrarna kunde inte läsas in. Försök igen."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Kalendrarna kunde inte sparas."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Urvalet kunde inte läggas till"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Församlingen har inte skickat något e-postmeddelande till dig än."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Församlingsexpeditionen har underrättats. Försök igen senare."
+
+#: 
+msgid "The class does not exist"
+msgstr "Klassen finns inte"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Klassen som detta schema följer finns inte längre."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Innehållet i detta e-postmeddelande lagras inte. ChurchCRM sparar endast texten i meddelanden som skrivits i e-postverktyget och i volontärmejl."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Innehållet i detta e-postmeddelande sparades inte."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Samordnaren kunde inte läggas till"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Listan över samordnare kunde inte läsas in"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Datum och tid för varje tillfälle kommer från dess kalenderhändelse, så om händelsen flyttas flyttas schemat."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Parametern days måste vara ett heltal mellan 1 och 365"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Standardvolontären måste vara en person"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Standardvolontärerna sparas i schemat och läggs på de tillfällen som skapas från och med nu."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Standardvolontärerna måste vara en lista"
+
+#: 
+msgid "The description is too long"
+msgstr "Beskrivningen är för lång"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Intervallets slut ligger före dess början."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Intervallets slut är inte ett datum."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Händelsen kunde inte bemannas"
+
+#: 
+msgid "The event does not exist"
+msgstr "Händelsen finns inte"
+
+#: 
+msgid "The event is inactive"
+msgstr "Händelsen är inaktiv"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Händelsen måste sluta efter att den börjar"
+
+#: 
+msgid "The event title"
+msgstr "Händelsens titel"
+
+#: 
+msgid "The event title is too long"
+msgstr "Händelsens titel är för lång"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Den händelsetyp som en verksamhets nya händelser får från början. Om fältet är tomt, eller om typen har tagits bort, används typen \"Annat\" om den finns."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Händelsetypen finns inte"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Händelsetypen som detta schema följer finns inte längre."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Händelserna kan bara flyttas till en klass som teamet är kopplat till"
+
+#: 
+msgid "The events could not be created"
+msgstr "Händelserna kunde inte skapas"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Händelserna kunde inte tas bort"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Händelserna kunde inte bemannas"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Behörigheten kunde inte tas bort"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Det sista datumet ligger före det första datumet"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Listan över valbara volontärer kunde inte läsas in"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Maxantalet får inte vara lägre än minimiantalet"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Meddelandet kunde inte köas"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Minimiantalet får inte vara negativt"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Verksamheten kunde inte skapas"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Verksamheten kunde inte inaktiveras"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Verksamheten kunde inte tas bort"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Verksamheten kunde inte återaktiveras"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Verksamheten kunde inte sparas"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Tillfället kunde inte tas bort"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Tillfället har inget schema"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Tillfällena kunde inte skapas"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Den ursprungliga volontären befrias och ersättaren tar funktionen. Båda underrättas."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Den ursprungliga volontären behåller funktionen. Båda underrättas."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Sidan du efterfrågade finns inte. Den kan ha flyttats eller tagits bort."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Funktionen tillhör en annan verksamhet"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Funktionen kunde inte tas bort"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Funktionen kunde inte sparas"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Funktionen är fortfarande bemannad, så ingen åtgärd behövs om du inte vill justera bemanningslistan."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Kvalifikationen kunde inte tas bort"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Kvalifikationen kunde inte sparas"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "De kvalificerade volontärerna kunde inte läsas in"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Upprepningen måste ange hur händelserna upprepas"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Begäran om att %1$s ska tjänstgöra i stället för %2$s har godkänts."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Begäran om att %1$s ska tjänstgöra i stället för %2$s godkändes inte."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Samma funktion förekommer två gånger i bemanningsbehoven"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Schemat kunde inte inaktiveras"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Schemat kunde inte tas bort"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Schemat kunde inte återaktiveras"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Schemat kunde inte sparas"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Schemat har uppdaterats, så det finns inget mer att göra."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Schemats tidsfönster slutar innan det börjar"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Schemats bemanningsbehov kunde inte läsas in"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Bemanningsbehoven kunde inte läsas in"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Bemanningsbehoven kunde inte återställas"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Bemanningsbehoven kunde inte sparas"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Bemanningsbehoven måste vara en lista"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Bemanningsplanen kunde inte läsas in"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Intervallets början är inte ett datum."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Det gick inte att fatta beslut om ersättningen"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Begäran om ersättare kunde inte läsas in"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Lärarna kan bara importeras till en funktion i detta team"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Lärarna i %1$s hanteras under Verksamheter → %2$s → %3$s. Elever kan fortfarande ändras här."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Teamet kunde inte tas bort"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Teamet kunde inte sparas"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Teamet tillhör inte denna verksamhet"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Temamappen hittades inte."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Den typ som en ny händelse på en verksamhets kalenderflik får från början. Den kan fortfarande ändras för varje händelse, till exempel för en klass som behöver kategorier för antal närvarande."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Volontärtilldelningen kunde inte sparas"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Volontärpoolen för verksamheten %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Ändringen av volontärinställningen kunde inte sparas"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Tidsfönstret slutar innan det börjar"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Deras samordnare får fästa sin verksamhets händelser i denna kalender utan behörigheten Lägg till händelser."
+
+#: 
+msgid "Theme"
+msgstr "Tema"
+
+#: 
+msgid "Themes"
+msgstr "Teman"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Teman tillhandahålls av din församling, inte av ChurchCRM, och verifieras inte av ChurchCRM-projektet."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Det finns ingen församlingskalender med id %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Det finns ingen systemkalender med id %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Det här är de uppgifter som församlingen har registrerade om dig. Ändringar sparas direkt."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Det här är de volontärteam du ansvarar för. Öppna ett team för att ställa in dess funktioner, ange vem som kan tjänstgöra var och fylla veckorna framöver."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Dessa händelser är inte en serie: de skiljer sig i titel, typ eller klass"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Dessa verksamheter vill gärna ha fler människor. Berätta att du är intresserad så hör någon av sig."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Dessa behov kommer från schemat. Att spara här ändrar bara detta tillfälle."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Dessa siffror räknar endast självbetjäningskonton: personer vars inloggning bara ger tillgång till Medlemsportalen och inget annat."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Dessa personer är fortfarande tilldelade, men funktionen de har ingår inte längre i bemanningsplanen för detta datum."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Dessa personer är fortfarande tilldelade, men funktionen de har ingår inte längre i bemanningsplanen för detta tillfälle."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Dessa schemalagda funktioner behöver fortfarande någon."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Dessa team i %1$s är kopplade till en söndagsskoleklass: %2$s. Ta bort kopplingen först."
+
+#: 
+msgid "They could not be added"
+msgstr "De kunde inte läggas till"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "De kunde inte tas bort från denna verksamhet"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "De slutar %d minut efter att evenemanget slutar."
+msgstr[1] "De slutar %d minuter efter att evenemanget slutar."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "De slutar %d minut innan evenemanget slutar."
+msgstr[1] "De slutar %d minuter innan evenemanget slutar."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "De var redan volontärer här"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Denna tilldelning är %1$s och kan inte ändras till %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Denna tilldelning är inte längre aktiv"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Detta e-postmeddelande finns inte i din historik."
+
+#: 
+msgid "This event has already happened"
+msgstr "Denna händelse har redan ägt rum"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Detta skickas till församlingsexpeditionen för granskning. Tills en medarbetare godkänner det visas den nya familjemedlemmen här som väntande på granskning."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Denna grupp är en volontärverksamhets pool och tas bort tillsammans med verksamheten"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Denna grupp är volontärpoolen för %s och hanteras från den verksamheten."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Denna grupp är volontärpoolen för %s. Den hanteras från den verksamheten."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Den här installationen har inga kalendrar ännu."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Detta är en påminnelse om att du snart är schemalagd att tjänstgöra."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Detta är inte ett giltigt namn på en temamapp."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Detta är inte ett av ditt teams datum."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Detta är inte ett av dina team."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Hit skickar församlingen post och det är den person församlingen ringer angående ert hushåll."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Detta är ditt församlingskonto. Allt du kan göra för dig själv och din familj finns här."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Denna verksamhet har inga kommande händelser i kalendern."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Denna verksamhet har inga kommande händelser med titeln \"%s\". Ett schema följer händelser som redan finns: lägg först till dem på verksamhetens kalenderflik."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Denna verksamhet har ingen volontärpoolsgrupp"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Denna verksamhet ber inte om hjälp just nu"
+
+#: 
+msgid "This ministry's events"
+msgstr "Denna verksamhets händelser"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Denna verksamhets händelser (ingen händelse vald än)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Detta tillfälle följer sitt schema igen"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Detta tillfälle har redan ägt rum"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Detta tillfälle har redan ägt rum och dess tilldelningar kan inte längre ändras"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Detta tillfälle har ställts in"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "Detta tillfälle har egna bemanningsbehov, skilda från schemat."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Den här sidan ingår inte i ditt konto. Om du tycker att den borde göra det, kontakta församlingsexpeditionen."
+
+#: 
+msgid "This page was not found"
+msgstr "Sidan hittades inte"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Den här delen av Medlemsportalen är för ledare av volontärteam."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Denna funktion tilldelas av teamledaren eller samordnaren, inte genom anmälan"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Detta schema kan inte tas bort: %d volontärtilldelningar hänvisar fortfarande till dess tillfällen."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Detta schema har inga bemanningsbehov ännu"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Detta schema är inaktivt. Återaktivera det för att skapa dess tillfällen."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "Beslut har redan fattats om denna begäran om ersättare"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Detta team har inga funktioner ännu"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Detta team bemannar redan denna händelse"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Denna mall efterfrågar filen \"%s\", som temat inte innehåller."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Detta tema kan inte aktiveras"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Detta tema har inga problem."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Den här versionen av ChurchCRM använder ingen mall på denna sökväg, så åsidosättningen återges aldrig."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Kryssa i dem på teamets flik Volontärer och tilldela dem sedan här."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Ikryssningar sparas medan du gör dem."
+
+#: 
+msgid "Times come from this event"
+msgstr "Tiderna kommer från denna händelse"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Fyller på varje schema, skickar allt som ligger i kö och avslutar genomförda tillfällen, utan att vänta på nästa schemalagda körning."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Avslå {{name}}? Den ursprungliga volontären står kvar och underrättas."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "Stäng av mallcachen för Medlemsportalen och skriv ut namnet på varje mall i en HTML-kommentar. För temadesigners; låt vara avstängt vid normal användning."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "Aktivera detta för en verksamhet vars team undervisar i söndagsskoleklasser. Dess team kan då kopplas till en klass, och dess scheman och händelser kan använda en."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Stänger av portalens mallcache och skriver ut namnet på varje mall i en HTML-kommentar. För temadesigners; låt vara avstängt vid normal användning."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Tvåfaktorsautentisering"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Obemannade funktioner"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Okänt leveransfel"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Okänd status för tillfälle"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Okänt länkläge för schema"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Okänd volontärverksamhet"
+
+#: 
+msgid "Until"
+msgstr "Till och med"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Kommande tillgänglighet"
+
+#: 
+msgid "Update your details"
+msgstr "Uppdatera dina uppgifter"
+
+#: 
+msgid "Update your family details"
+msgstr "Uppdatera din familjs uppgifter"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Använd Bemanna denna händelse för att bemanna en enskild händelse"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Använd schemats behov"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Användaren måste ha behörigheten Lägg till händelse, eller samordna en volontärverksamhet, och modulen Händelser måste vara aktiverad"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Användaren måste ha behörigheten Lägg till händelse, eller samordna den volontärverksamhet som denna kalender tillhör"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — Volontärmöjligheter (äldre)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — äldre Volontärmöjligheter"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — Verksamheter"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — Volontärhantering"
+
+#: 
+msgid "Valid"
+msgstr "Giltig"
+
+#: 
+msgid "Validation"
+msgstr "Validering"
+
+#: 
+msgid "View event"
+msgstr "Visa händelse"
+
+#: 
+msgid "View my schedule"
+msgstr "Visa mitt schema"
+
+#: 
+msgid "View only"
+msgstr "Endast visning"
+
+#: 
+msgid "View person"
+msgstr "Visa person"
+
+#: 
+msgid "View the event"
+msgstr "Visa händelsen"
+
+#: 
+msgid "View this email"
+msgstr "Visa detta e-postmeddelande"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Volontär (äldre)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Volontärhantering V2 är inte aktiverad"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Volontärverksamhet"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Volontärtilldelning"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Volontären tackade nej"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Volontärupplevelse"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Volontärfunktioner behöver fortfarande tillsättas"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Volontärpåminnelse"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Volontäranmälan"
+
+#: 
+msgid "Volunteer times"
+msgstr "Volontärtider"
+
+#: 
+msgid "Volunteering"
+msgstr "Volontärarbete"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Volontärarbete organiserat så som en församling driver det. Varje verksamhet har team och funktioner; människor är kvalificerade för funktioner och tillhör verksamhetens poolgrupp; scheman följer händelserna i kalendern och skapar daterade tillfällen med bemanningskrav; samordnare tilldelar personer, som tackar ja, tackar nej eller föreslår en ersättare; påminnelser och aviseringar skickas via e-post. Administratörer och användare med behörigheten Hantera verksamheter ser alla verksamheter och kan skapa, inaktivera och ta bort dem. En verksamhetssamordnare får i stället behörigheten Hantera mina verksamheter: rubriken Verksamheter i sidomenyn visar då bara de verksamheter som personen samordnar. En teamledare leder sitt team från Medlemsportalen. Medlemmar använder Medlemsportalen för att se sitt schema, svara, anmäla sig och erbjuda hjälp."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Tilldelade volontärer: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Volontärer slutar"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Volontärer behövs"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Volontärer från %s är tilldelade dessa händelser, så de kan inte tas bort här. Be den verksamheten ta bort sin bemanning, eller fråga någon som hanterar kalendern."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Volontärer från {{names}} är tilldelade vissa av dem. Om du inte hanterar kalendern avvisas borttagningen tills den bemanningen har tagits bort."
+
+#: 
+msgid "Volunteers start"
+msgstr "Volontärer börjar"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Volontärer börjar %d minut efter att evenemanget börjar."
+msgstr[1] "Volontärer börjar %d minuter efter att evenemanget börjar."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Volontärer börjar %d minut innan evenemanget börjar."
+msgstr[1] "Volontärer börjar %d minuter innan evenemanget börjar."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Väntar på svar"
+
+#: 
+msgid "Waiting for review"
+msgstr "Väntar på granskning"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Väntar på att din samordnare ska bekräfta."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Vi mejlar dig när något behöver fyllas."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Vi skulle gärna ha mer hjälp på söndagsmorgnar — ingen erfarenhet krävs."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Välkommen, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Vad behöver ändras?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Vad som behöver din uppmärksamhet denna vecka"
+
+#: 
+msgid "What the check found"
+msgstr "Vad kontrollen hittade"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Vilka volontärupplevelserna är"
+
+#: 
+msgid "What you want to say"
+msgstr "Vad du vill säga"
+
+#: 
+msgid "When"
+msgstr "När"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "När en volontär föreslår någon som ersättare visas det här så att du kan godkänna eller avslå."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "När en volontär föreslår någon som ersättare visas det här så att du kan godkänna."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "När någon lägger in dig i ett team, eller när du anmäler dig själv, visas det här."
+
+#: 
+msgid "Where"
+msgstr "Var"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Varifrån datumen kommer"
+
+#: 
+msgid "Where we reach you"
+msgstr "Hur vi når dig"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Vilken upplevelse av Volontärhantering som är aktiv. V1 är den äldre funktionen Volontärmöjligheter; V2 är det nya arbetsflödet för schemaläggning och tilldelning. \"Båda\" visar dem sida vid sida under migreringen."
+
+#: 
+msgid "Which events"
+msgstr "Vilka händelser"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Vilken volontärupplevelse denna församling använder. Kortet till höger förklarar varje val."
+
+#: 
+msgid "Who is covering"
+msgstr "Vem som ersätter"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Vem som behövs, vem som är med och vad som fortfarande saknas"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Den som tjänstgjort längst sedan listas först."
+
+#: 
+msgid "Work Email"
+msgstr "E-post jobb"
+
+#: 
+msgid "Yearly"
+msgstr "Årligen"
+
+#: 
+msgid "You"
+msgstr "Du"
+
+#: 
+msgid "You are already helping that day"
+msgstr "Du hjälper redan till den dagen"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "Du hjälper redan till den dagen som {{what}}. Vill du anmäla dig till detta också?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Du har inte tillåtelse att ändra detta. Kontakta församlingsexpeditionen."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Du är för närvarande inte kopplad till någon familj"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Du ingår inte i någon familjepost än."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Du står på listan — tack."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Du kan se över eller ändra detta i ditt volontärschema."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Du kan inte öppna den här sidan"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Du kan inte föreslå dig själv som din egen ersättare"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Du kunde inte anmälas till det."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Du leder inget volontärteam än."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "Du har en ny kalenderadress. Den gamla fungerar inte längre."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Du har schemalagts att tjänstgöra"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Du har schemalagts att tjänstgöra."
+
+#: 
+msgid "You lead this"
+msgstr "Du leder detta"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Du får bara skapa ett schema för ett team som du leder"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Du hamnar tillbaka på listan för denna."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Ditt konto är inte kopplat till en personpost. Kontakta församlingsexpeditionen."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Din kalenderprenumeration sparades."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Din nuvarande adress slutar fungera direkt. Alla som du gav den till behöver den nya."
+
+#: 
+msgid "Your details"
+msgstr "Dina uppgifter"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Dina uppgifter har sparats."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Din familjs uppgifter har sparats."
+
+#: 
+msgid "Your photo"
+msgstr "Ditt foto"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Ditt foto har sparats."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Ditt schema kunde inte läsas in."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Din session har gått ut. Logga in igen."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Din begäran om ersättare godkändes"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Din begäran om ersättare godkändes inte"
+
+#: 
+msgid "already staffed by this team"
+msgstr "bemannas redan av detta team"
+
+#: 
+msgid "body is required"
+msgstr "body krävs"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds måste vara en lista med kalender-id:n"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents måste vara ett av: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId måste vara ett grupp-id eller null"
+
+#: 
+msgid "end offset"
+msgstr "slutförskjutning"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds måste vara en lista med händelse-id:n"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "alla meddelanden har levererats eller ligger fortfarande i kö"
+
+#: 
+msgid "has not served yet"
+msgstr "har inte tjänstgjort än"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId måste vara ett funktions-id"
+
+#: 
+msgid "inactive family"
+msgstr "inaktiv familj"
+
+#: 
+msgid "line %d"
+msgstr "rad %d"
+
+#: 
+msgid "marked do not email"
+msgstr "markerad som inte mejla"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "meddelanden kunde inte levereras"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "meddelanden kunde inte levereras efter fem försök"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "meddelanden väntar på att skickas"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds måste vara en lista med verksamhets-id:n"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "minuter efter att händelsen slutar"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "minuter efter att händelsen börjar"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "minuter innan händelsen slutar"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "minuter innan händelsen börjar"
+
+#: 
+msgid "never"
+msgstr "aldrig"
+
+#: 
+msgid "no email address"
+msgstr "ingen e-postadress"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds och familyIds måste vara listor med positiva heltal"
+
+#: 
+msgid "record not found"
+msgstr "posten hittades inte"
+
+#: 
+msgid "same address as another recipient"
+msgstr "samma adress som en annan mottagare"
+
+#: 
+msgid "single event"
+msgstr "enskild händelse"
+
+#: 
+msgid "start offset"
+msgstr "startförskjutning"
+
+#: 
+msgid "subject and body are required"
+msgstr "subject och body krävs"
+
+#: 
+msgid "subject is required"
+msgstr "subject krävs"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject får vara högst 255 tecken"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool måste vara true eller false"
+
+#: 
+msgid "window end"
+msgstr "tidsfönstrets slut"
+
+#: 
+msgid "window start"
+msgstr "tidsfönstrets början"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} tillagda, {{alreadyMembers}} var redan volontärer här"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} tillfällen skapade, {{existing}} fanns redan"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} skapade {{total}} händelser för {{className}} ({{upcoming}} kommande)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} bemannar också några av dem."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} samordnar redan denna verksamhet"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} tilldelad"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} tjänstgör redan som {{position}} vid detta tillfälle. Du kan fortfarande tilldela personen."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} är kvalificerad men ingår inte i denna verksamhets volontärpool. Om du tilldelar personen läggs hen endast till vid detta tillfälle."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} samordnar nu denna verksamhet"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: antalen måste vara mellan 0 och {{max}}."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: maxantalet får inte vara lägre än minimiantalet."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: {{name}} är inte längre kvalificerad"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: {{name}} kvalificerad"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} ber {{substitute}} att ta deras plats"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} den {{date}} skapad. Bemanna den nu?"
+

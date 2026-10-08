@@ -1,182 +1,52 @@
 {
-  "Select at least one classification to include in the directory.": "निर्देशिका में शामिल करने के लिए कम से कम एक वर्गीकरण चुनें।",
-  "Geocoding services": "जियोकोडिंग सेवाएँ",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "आज़माने के लिए जियोकोडिंग सेवाएँ, उसी क्रम में जिसमें आप उन्हें चुनते हैं। Nominatim (OpenStreetMap) पूरी दुनिया में काम करती है; US Census (अमेरिकी जनगणना ब्यूरो) केवल संयुक्त राज्य के पते कवर करती है। इसका उपयोग करने के लिए US Census भी चुनें। कुछ न चुनने पर Nominatim का उपयोग होता है।",
-  "New Record Defaults": "नए रिकॉर्ड की डिफ़ॉल्ट सेटिंग",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "यह उन सभी परिवारों के मानचित्र निर्देशांक खोजता है जिनके नहीं हैं, मानचित्र सेटिंग में चुनी गई जियोकोडिंग सेवाओं का उपयोग करके। यह परिवारों को 50 के बैचों में संसाधित करता है; एक बैच में एक जियोकोडिंग सेवा के साथ लगभग एक मिनट लगता है और अधिक सेवाओं के साथ अधिक। चलते समय आप यह पृष्ठ खुला रख सकते हैं। जारी रखें?",
-  "Used for new records and for geocoding when a record has no country.": "नए रिकॉर्ड के लिए और तब जियोकोडिंग के लिए उपयोग होता है जब रिकॉर्ड में कोई देश न हो।",
-  "Copy from Church Info": "कलीसिया की जानकारी से कॉपी करें",
-  "Could not copy the church address.": "कलीसिया का पता कॉपी नहीं किया जा सका।",
-  "Could not match the church country.": "कलीसिया का देश मिलान नहीं किया जा सका।",
-  "Class lists, attendance sheets, and photo books": "कक्षा सूचियाँ, उपस्थिति पत्रक और फ़ोटो पुस्तकें",
-  "Group membership lists and Sunday School class reports": "सेवकाई सदस्यता सूचियाँ और रविवार स्कूल कक्षा रिपोर्ट",
-  "Your fiscal year starts in %s.": "आपका वित्तीय वर्ष %s में शुरू होता है।",
-  "An error occurred": "एक त्रुटि हुई",
-  "Approve": "स्वीकृत करें",
-  "Approve selected": "चयनित को स्वीकृत करें",
-  "Approved": "स्वीकृत",
-  "Change in People Settings": "लोग सेटिंग में बदलें",
-  "Could not approve the selected registrations": "चयनित पंजीकरण स्वीकृत नहीं किए जा सके",
-  "Could not approve this family": "यह परिवार स्वीकृत नहीं किया जा सका",
-  "Pending Registrations": "लंबित पंजीकरण",
-  "Pending review": "समीक्षा लंबित",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "आपके सार्वजनिक पंजीकरण फ़ॉर्म से समीक्षा की प्रतीक्षा में पंजीकरण। जिन प्रविष्टियों में ईमेल या फ़ोन नहीं है उन्हें चिह्नित किया गया है — आगे बढ़ने से पहले संपर्क जानकारी जाँच लें।",
-  "Review now": "अभी समीक्षा करें",
-  "Review self registrations": "स्वयं-पंजीकरण की समीक्षा करें",
-  "Select month": "माह चुनें",
-  "Self-registration is disabled": "स्वयं-पंजीकरण अक्षम है",
-  "Self-registration is enabled": "स्वयं-पंजीकरण सक्षम है",
-  "The public registration form is turned off. Existing registrations are listed below.": "सार्वजनिक पंजीकरण फ़ॉर्म बंद है। मौजूदा पंजीकरण नीचे सूचीबद्ध हैं।",
-  "This family is not a pending self-registration": "यह परिवार लंबित स्वयं-पंजीकरण नहीं है",
-  "This person belongs to a family — approve the family instead": "यह व्यक्ति एक परिवार का सदस्य है — इसके बजाय परिवार को स्वीकृत करें",
-  "This person is not a pending self-registration": "यह व्यक्ति लंबित स्वयं-पंजीकरण नहीं है",
-  "This self-registered family is pending review": "यह स्वयं-पंजीकृत परिवार समीक्षा के लिए लंबित है",
-  "Total registrations": "कुल पंजीकरण",
-  "Visitors can sign up on your public registration form.": "आगंतुक आपके सार्वजनिक पंजीकरण फ़ॉर्म पर पंजीकरण कर सकते हैं।",
-  "Yesterday": "कल",
-  "days ago": "दिन पहले",
-  "self-registrations are waiting for review": "स्वयं-पंजीकरण समीक्षा की प्रतीक्षा में हैं",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "जन्मदिन व्यक्ति के नाम और वर्षगाँठ दंपति के नाम संबोधित होती हैं।",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "इस रिपोर्ट के लोगों के लिए डाक लेबल। जिस व्यक्ति का अपना पता नहीं है उसे उसके परिवार के पते पर संबोधित किया जाता है।",
-  "One label for each couple.": "प्रत्येक दंपति के लिए एक लेबल।",
-  "Print Labels": "लेबल प्रिंट करें",
-  "That role is not one of this group's roles.": "वह भूमिका इस सेवकाई की भूमिकाओं में से नहीं है।",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" ऐसा कैलेंडर प्रकार नहीं है जिसे यह पृष्ठ जानता हो।",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s सेवा नहीं कर सकते और उन्होंने %2$s को विकल्प के रूप में प्रस्तावित किया है।",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s पहले से %2$s स्वयंसेवक पूल में हैं और फिर से सहायता करना चाहते हैं।",
-  "%1$s is already linked to %2$s in %3$s": "%1$s पहले से %3$s में %2$s से जुड़े हैं",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s, %2$s में %3$s के रूप में हैं। पहले उन्हें कक्षा से हटाएँ; यहाँ उन्हें योग्य बनाने पर वे उसके शिक्षकों में से एक बन जाते हैं।",
-  "%1$s is not an event of %2$s": "%1$s, %2$s का आयोजन नहीं है",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s रविवार स्कूल कक्षा बनी रहती है जबकि उसके शिक्षक सेवकाई → %2$s → %3$s में प्रबंधित होते हैं। पहले उसे टीम से अलग करें।",
-  "%1$s wants to help with %2$s": "%1$s, %2$s में सहायता करना चाहते हैं",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s, %2$s में सहायता करना चाहते हैं और उन्हें इसके स्वयंसेवक पूल में जोड़ दिया गया है।",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: अधिकतम %2$d है लेकिन %3$d डिफ़ॉल्ट स्वयंसेवक चुने गए हैं। एक हटाएँ या अधिकतम बढ़ाएँ।",
-  "%d day": {
-    "one": "%d दिन",
-    "other": "%d दिन"
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d डिफ़ॉल्ट किसी अन्य कारण से छोड़ा गया (अवसर समाप्त हो गया, रद्द हुआ या भर गया)",
-    "other": "%d डिफ़ॉल्ट किसी अन्य कारण से छोड़े गए (अवसर समाप्त हो गया, रद्द हुआ या भर गया)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d डिफ़ॉल्ट छोड़ा गया: योग्यता रद्द की गई",
-    "other": "%d डिफ़ॉल्ट छोड़े गए: योग्यता रद्द की गई"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किया गया",
-    "other": "%d डिफ़ॉल्ट स्वयंसेवक नियुक्त किए गए"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d विफल",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "इस पद के लिए अभी %d और स्वयंसेवक की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।",
-    "other": "इस पद के लिए अभी %d और स्वयंसेवकों की आवश्यकता है। रिक्ति भरने के लिए अवसर खोलें।"
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d नया अवसर",
-    "other": "%d नए अवसर"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "आगामी अवसर के लिए अभी %d स्वयंसेवक की आवश्यकता है।",
-    "other": "आगामी अवसर के लिए अभी %d स्वयंसेवकों की आवश्यकता है।"
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "%s कैलेंडर",
-  "%s Family": "%s परिवार",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s रविवार स्कूल के लिए शिक्षक उपलब्ध नहीं कराता, इसलिए इसकी टीमें, अनुसूचियाँ और आयोजन कक्षा का उपयोग नहीं कर सकते। स्वयंसेवक प्रबंधक इसे सेवकाई संपादित करें में बदल सकता है।",
-  "%s email from the church": {
-    "one": "कलीसिया से %s ईमेल",
-    "other": "कलीसिया से %s ईमेल"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "%s परिवार",
-  "%s has declined a volunteer assignment.": "%s ने स्वयंसेवक नियुक्ति अस्वीकार कर दी है।",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s में शिक्षक नाम की कोई भूमिका नहीं है, इसलिए इसके शिक्षकों को टीम से प्रबंधित नहीं किया जा सकता",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "कैलेंडर में %s की कोई आगामी बैठक नहीं है। अनुसूची पहले से मौजूद आयोजनों का अनुसरण करती है: पहले सेवकाई के कैलेंडर टैब पर नया आवर्ती आयोजन से कक्षा की बैठकें जोड़ें।",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s से अब भी सेवा की अपेक्षा है। यदि यह संभव न हो तो कृपया समन्वयक से संपर्क करें।",
-  "%s not sent (%s): %s": "%s नहीं भेजा गया (%s): %s",
-  "%s person in your household": {
-    "one": "आपके परिवार में %s व्यक्ति",
-    "other": "आपके परिवार में %s व्यक्ति"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s पद",
-    "other": "%s पद"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: एक ही व्यक्ति दो बार डिफ़ॉल्ट स्वयंसेवक चुना गया है",
-  "(no subject)": "(कोई विषय नहीं)",
-  "A birthday cannot be in the future.": "जन्मदिन भविष्य में नहीं हो सकता।",
-  "A calendar event": "एक कैलेंडर आयोजन",
-  "A calendar id must be a number.": "कैलेंडर आईडी एक संख्या होनी चाहिए।",
-  "A class that no longer exists": "एक कक्षा जो अब मौजूद नहीं है",
-  "A class with no meetings on the calendar cannot be chosen yet.": "जिस कक्षा की कैलेंडर में कोई बैठक नहीं है उसे अभी चुना नहीं जा सकता।",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "जिस कक्षा की कैलेंडर में कोई बैठक नहीं है उसे अभी चुना नहीं जा सकता। सेवकाई का समन्वयक उसकी बैठकें सेवकाई के कैलेंडर टैब पर जोड़ता है।",
-  "A class's meetings": "एक कक्षा की बैठकें",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "समन्वयक इस सेवकाई में सब कुछ प्रबंधित कर सकता है, उन बदलावों सहित जो अन्यथा स्वयंसेवक प्रबंधक को करने पड़ते।",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "सेवकाई का समन्वयक उन्हें सेवकाई के कैलेंडर टैब पर जोड़ सकता है।",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "सेवकाई का समन्वयक उन्हें सेवकाई के कैलेंडर टैब पर जोड़ सकता है। फिर दोबारा बनाएँ।",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "समन्वयक पूरी सेवकाई चलाता है — इसकी टीमें, पद, अनुसूचियाँ और इसकी हर नियुक्ति।",
-  "A day a month does not have falls on its last day.": "जो दिन किसी माह में नहीं होता वह उसके अंतिम दिन पर पड़ता है।",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "डिफ़ॉल्ट स्वयंसेवक अनुसूची की नियुक्ति आवश्यकताओं का हिस्सा है, किसी एक अवसर का नहीं",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "डिफ़ॉल्ट स्वयंसेवक केवल उसी पद के लिए चुना जा सकता है जो इस अनुसूची की नियुक्ति आवश्यकताओं में माँगा गया हो",
-  "A from and a to date in YYYY-MM-DD form are required": "YYYY-MM-DD रूप में आरंभ और समाप्ति तिथि आवश्यक है",
-  "A minimum count is required": "न्यूनतम संख्या आवश्यक है",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "सेवकाई अपने कैलेंडर, स्वयंसेवक पूल और पहली टीम के साथ बनाई जाती है, इसलिए यहाँ केवल उसका नाम और वह क्या करती है यही तय करना है।",
-  "A ministry name is required": "सेवकाई का नाम आवश्यक है",
-  "A ministry needs at least one team. Rename it instead.": "सेवकाई में कम से कम एक टीम होना आवश्यक है। इसके बजाय उसका नाम बदलें।",
-  "A ministry with that name already exists": "उस नाम की सेवकाई पहले से मौजूद है",
-  "A ministry's own calendar cannot be opened to other ministries": "सेवकाई का अपना कैलेंडर अन्य सेवकाइयों के लिए खोला नहीं जा सकता",
-  "A position belongs to a team; choose one": "पद एक टीम का होता है; एक चुनें",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "पद वह कार्य है जो कोई इस टीम में करता है, जैसे एस्प्रेसो या गीत-संचालक।",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "पद वह भूमिका है जिसमें कोई सेवा करता है, जैसे एस्प्रेसो या गीत-संचालक।",
-  "A position is required": "पद आवश्यक है",
-  "A position name is required": "पद का नाम आवश्यक है",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "योग्य स्वयंसेवकों वाला पद रविवार स्कूल कक्षा से जुड़ी टीम में या उससे बाहर नहीं जा सकता, क्योंकि इससे कक्षा को कौन पढ़ाता है यह बदल जाएगा। इसके बजाय पद को दूसरी टीम में बनाएँ।",
-  "A position with that name already exists in this ministry": "उस नाम का पद इस सेवकाई में पहले से मौजूद है",
-  "A response must be accepted or declined": "उत्तर को स्वीकार या अस्वीकार किया जाना चाहिए",
-  "A schedule belongs to a team; choose one": "अनुसूची एक टीम की होती है; एक चुनें",
-  "A schedule name is required": "अनुसूची का नाम आवश्यक है",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "अनुसूची बताती है कि टीम किन कैलेंडर आयोजनों में सेवा करती है: एक प्रकार की कलीसिया आराधना, किसी कक्षा की बैठकें, या इस सेवकाई के अपने आयोजन। एक जोड़ें और उसके अवसर बनाएँ।",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "अनुसूची बताती है कि यह टीम किन कैलेंडर आयोजनों में सेवा करती है: एक प्रकार की कलीसिया आराधना, किसी कक्षा की बैठकें, या इसकी सेवकाई के अपने आयोजन। एक जोड़ें और उसके अवसर बनाएँ।",
-  "A schedule that follows a class must name the class": "जो अनुसूची किसी कक्षा का अनुसरण करती है उसमें कक्षा का नाम होना चाहिए",
-  "A schedule that follows an event type must name the event type": "जो अनुसूची किसी आयोजन-प्रकार का अनुसरण करती है उसमें आयोजन-प्रकार का नाम होना चाहिए",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "जो अनुसूची एक आयोजन में नियुक्ति करती है वह अन्य आयोजनों का अनुसरण नहीं कर सकती; उसे हटाएँ और इसके बजाय अनुसूची जोड़ें",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "अवसरों की एक अकेली सूची, जैसे \"शिशु-कक्ष\" या \"स्वागतकर्ता\", जो लोग → व्यवस्थापन के अंतर्गत रखी जाती है। हर व्यक्ति को उन अवसरों से टैग किया जाता है जिनमें वह सहायता करने को तैयार है, उसके रिकॉर्ड के स्वयंसेवक टैब पर। बस इतना ही दर्ज होता है: कोई टीम, अनुसूची, तारीख़ पर नियुक्ति या अनुस्मारक ईमेल नहीं। टैग रिपोर्टों और व्यक्ति के रिकॉर्ड में उपयोग होते हैं।",
-  "A square picture of your face works best.": "आपके चेहरे की चौकोर तस्वीर सबसे अच्छी रहती है।",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "नियुक्ति आवश्यकता अपने डिफ़ॉल्ट स्वयंसेवकों को \"defaults\": [{personId, accepted}] में सूचीबद्ध करती है",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "नियुक्ति आवश्यकता किसी अनुसूची या किसी अवसर में से ठीक एक की होती है",
-  "A substitute has already been proposed for this assignment": "इस नियुक्ति के लिए पहले ही एक विकल्प प्रस्तावित किया जा चुका है",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "टीम का अगुआ अपनी टीम प्रबंधित कर सकता है — उसके पद, अनुसूचियाँ और उनमें कौन सेवा करता है — और सेवकाई में इसके अलावा कुछ नहीं।",
-  "A team name is required": "टीम का नाम आवश्यक है",
-  "A team with that name already exists in this ministry": "उस नाम की टीम इस सेवकाई में पहले से मौजूद है",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "थीम एक फ़ोल्डर है जिसे आपकी कलीसिया सर्वर पर Include/themes/ में अपलोड करती है। सिस्टम डिफ़ॉल्ट ChurchCRM के साथ आता है।",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "एक संक्रमण सेटिंग। पुराने स्वयंसेवक अवसर पृष्ठ और नए सेवकाई पृष्ठ दोनों उपलब्ध हैं, और व्यक्ति के रिकॉर्ड में दोनों स्वयंसेवक टैब स्पष्ट लेबल के साथ दिखते हैं। कलीसिया को V1 से V2 पर ले जाते समय इसका उपयोग करें, फिर केवल V2 पर स्विच करें।",
-  "A volunteer": "एक स्वयंसेवक",
-  "A volunteer has declined an assignment": "एक स्वयंसेवक ने नियुक्ति अस्वीकार कर दी है",
-  "A volunteer has proposed a substitute": "एक स्वयंसेवक ने विकल्प प्रस्तावित किया है",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "स्वयंसेवक प्रबंधक बिना अनुदान के इस सेवकाई को चला सकता है। किसी और को बाकी सभी सेवकाइयाँ दिए बिना इसे चलाने देने के लिए समन्वयक जोड़ें।",
-  "A wedding date cannot be in the future.": "विवाह की तारीख़ भविष्य में नहीं हो सकती।",
-  "Accepted": "स्वीकार किया",
-  "Account deleted": "खाता हटा दिया गया",
-  "Account unlocked": "खाता अनलॉक किया गया",
-  "Accounts": "खाते",
-  "Active must be true or false": "सक्रिय सत्य या असत्य होना चाहिए",
-  "Active now": "अभी सक्रिय",
-  "Add All": "सभी जोड़ें",
-  "Add Everyone in Cart": "चयन में सभी को जोड़ें",
-  "Add Volunteer": "स्वयंसेवक जोड़ें",
-  "Add Volunteers to Cart": "स्वयंसेवकों को चयन में जोड़ें",
-  "Add a family member": "परिवार का सदस्य जोड़ें",
-  "Add a position first, then come back and say how many of them are needed.": "पहले एक पद जोड़ें, फिर लौटकर बताएँ कि उनमें से कितने चाहिए।",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "अपने साइन-इन में दूसरा चरण जोड़ें, ताकि आपके खाते तक पहुँचने के लिए केवल पासवर्ड पर्याप्त न हो।",
-  "Add at least one position to this team, then tick who can serve where.": "इस टीम में कम से कम एक पद जोड़ें, फिर चुनें कि कौन कहाँ सेवा कर सकता है।",
-  "Add coordinator": "समन्वयक जोड़ें",
-  "Add from Cart": "चयन से जोड़ें",
-  "Add its meetings first with New recurring event on the Calendar tab": "पहले कैलेंडर टैब पर नया आवर्ती आयोजन से इसकी बैठकें जोड़ें",
-  "Add people to the cart before adding them as volunteers": "स्वयंसेवक के रूप में जोड़ने से पहले लोगों को चयन में जोड़ें",
-  "Add position": "पद जोड़ें",
-  "Add schedule": "अनुसूची जोड़ें",
-  "Add team": "टीम जोड़ें",
-  "Add them on the Calendar tab, then generate again.": "उन्हें कैलेंडर टैब पर जोड़ें, फिर दोबारा बनाएँ।",
-  "Add them on the Calendar tab.": "उन्हें कैलेंडर टैब पर जोड़ें।",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "इस पते को अपने कैलेंडर ऐप में जोड़ें। कलीसिया का कैलेंडर बदलने पर यह अपने आप अपडेट हो जाता है।",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "इस सेवकाई के आयोजन यहाँ जोड़ें: कार्य-दिवस, हर रविवार मिलने वाली कक्षा। वे कलीसिया के कैलेंडर में जाते हैं, और बनाते समय आप उनमें नियुक्ति कर सकते हैं।"
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }
