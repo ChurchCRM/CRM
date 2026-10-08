@@ -1451,6 +1451,7 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             setConfig(LEAD_HOURS_URL, "0");
             restoreConfig(SMTP_HOST_URL, originalSmtpHost);
             dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_Status = 'scheduled' WHERE vocc_ID = ?`, [occurrenceOne]);
+            dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [ESPRESSO_NAME, posEspresso]);
         });
 
         function gapAlerts(occurrenceId) {
@@ -1627,6 +1628,37 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     expect(espresso, "one message names Espresso").to.have.length(1);
                     expect(milk, "the other names Milk Station").to.have.length(1);
                     expect(espresso[0]).to.not.contain(`${FIXTURE_PREFIX} Milk Station`);
+                });
+            });
+        });
+
+        it("escapes the position name in the mailed alert", function () {
+            requireMailpit(this);
+            dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [
+                `${FIXTURE_PREFIX} <b>Espresso</b>`,
+                posEspresso,
+            ]);
+
+            leadToOccurrenceOne();
+            runJobsNow();
+
+            listMail().then((messages) => {
+                const alerts = messages.filter(
+                    (message) =>
+                        (message.To || []).some((to) => (to.Address || "").toLowerCase() === COORDINATOR_EMAIL) &&
+                        (message.Subject || "").toLowerCase().includes("still need to be filled"),
+                );
+                expect(alerts).to.have.length(2);
+
+                const htmls = [];
+                for (const alert of alerts) {
+                    cy.task("mail:get", { id: alert.ID }).then((result) => htmls.push(result.body.HTML || ""));
+                }
+                cy.then(() => {
+                    const espresso = htmls.filter((html) => html.includes("Espresso"));
+                    expect(espresso, "the Espresso alert").to.have.length(1);
+                    expect(espresso[0]).to.contain("&lt;b&gt;Espresso&lt;/b&gt;");
+                    expect(espresso[0]).to.not.contain("<b>Espresso</b>");
                 });
             });
         });
