@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -405,7 +406,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             ->setCity($sCity)
             ->setState($sState)
             ->setZip($sZip)
-            ->setCountry($sCountry)
+            ->setCountry(Countries::keepStoredIfSame($person->getCountry(), $sCountry))
             ->setHomePhone($sHomePhone)
             ->setWorkPhone($sWorkPhone)
             ->setCellPhone($sCellPhone)
@@ -829,7 +830,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('Country') ?>:
                         <?= $bFamilyCountry ? '</span>' : '' ?>
                     </label>
-                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultCountry')) ?>">
+                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute(Countries::toISO($sCountry)) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultCountry')) ?>">
                     </select>
                 </div>
             </div>
