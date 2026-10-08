@@ -19,10 +19,10 @@
  *   3. a translation that never arrives because the catalogue was not loaded at all,
  *      leaving every string English on a French login.
  *
- * fr_FR is chosen because its catalogue covers some of the portal's nav and not all
- * of it, which is the realistic state of every language: "Home", "Calendar" and
- * "Profile" are translated; "My Family", "Volunteering" and "My Teams" are the epic's
- * own new strings and are not. Both halves have to render.
+ * fr_FR's catalogue grows with every translation sync, so the fallback test reads
+ * messages.po at run time: a nav label with a msgstr must show it, and one without
+ * must show the English msgid. Which labels are which changes over time; the rule
+ * does not.
  *
  * Seed persona: user 100, Lena Black. usr_EditSelf=1 and no admin flag, so she is
  * confined to the portal. The username column is VARCHAR(32), so the seeded address is
@@ -45,11 +45,17 @@ const TRANSLATED = {
     Profile: "Profil",
 };
 
-/**
- * Not translated in fr_FR — the epic's own new strings. These must fall back to the
- * English msgid, never to a key and never to nothing.
- */
-const UNTRANSLATED = ["My Family"];
+/** The member's nav labels, as msgids. */
+const NAV_LABELS = ["Home", "Calendar", "My Family", "Profile"];
+
+const FRENCH_CATALOGUE = "src/locale/textdomain/fr_FR/LC_MESSAGES/messages.po";
+
+/** The catalogue's msgstr for a single-line msgid, or "" when it has none. */
+const msgstrIn = (po, msgid) => {
+    const quoted = msgid.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const match = new RegExp(`^msgid "${quoted}"\\nmsgstr "(.*)"$`, "m").exec(po);
+    return match ? match[1] : "";
+};
 
 const adminKey = () => Cypress.testEnv("admin.api.key");
 
@@ -112,13 +118,15 @@ describe("Member Portal — the member's own language (#9869)", () => {
         }
     });
 
-    it("falls back to English where fr_FR has no translation", () => {
-        setLocale("fr_FR");
-        loginAsMember();
+    it("shows each nav label in French, or in English where fr_FR has no translation", () => {
+        cy.readFile(FRENCH_CATALOGUE).then((po) => {
+            setLocale("fr_FR");
+            loginAsMember();
 
-        for (const english of UNTRANSLATED) {
-            cy.get(".portal-nav-list").should("contain", english);
-        }
+            for (const english of NAV_LABELS) {
+                cy.get(".portal-nav-list").should("contain", msgstrIn(po, english) || english);
+            }
+        });
     });
 
     it("shows no raw keys and no empty labels anywhere in the nav", () => {
