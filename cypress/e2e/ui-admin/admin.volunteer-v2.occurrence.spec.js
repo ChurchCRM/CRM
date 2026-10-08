@@ -78,9 +78,9 @@ function occurrenceUrl() {
  * Open the assign modal for a position, with its picker's dropdown showing.
  *
  * The picker is built when the eligible list arrives, and the modal focuses it, which
- * opens it, once its fade ends. A click on the control after that closes it again
- * (TomSelect toggles), so the control is clicked only when both have happened and the
- * dropdown is still shut.
+ * opens it a task after `shown.bs.modal`. Clicking the control would toggle it shut if
+ * that open lands first, so the dropdown is opened with TomSelect's own `open()`,
+ * which does nothing when it is already open.
  */
 function openAssignPicker(positionId) {
     cy.intercept("GET", "**/api/ministries/occurrences/*/eligible*").as("eligible");
@@ -103,10 +103,9 @@ function openAssignPicker(positionId) {
             expect($select[0].tomselect, "the picker is built").to.exist;
         })
         .then(($select) => {
-            if (!$select[0].tomselect.isOpen) {
-                cy.get("#volunteer-assign-modal .ts-control").click();
-            }
+            $select[0].tomselect.open();
         });
+    cy.get(".ts-dropdown:visible").should("have.length", 1);
 }
 
 /**
