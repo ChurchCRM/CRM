@@ -78,6 +78,25 @@ describe("Family editor country (#10418)", () => {
         });
     });
 
+    it("keeps a stored country the list does not know on an unchanged save", () => {
+        createFamilyStoredAs("Atlantis").then((familyId) => {
+            cy.visit(`/FamilyEditor.php?FamilyID=${familyId}`);
+            cy.get("#Country", { timeout: 10000 }).should("have.value", "Atlantis");
+            cy.get("#SecondCountry", { timeout: 10000 }).should("have.value", "Atlantis");
+            cy.get("#StateTextbox").should("be.visible").and("have.value", "MO");
+            cy.get('button[name="FamilySubmit"]').click();
+
+            cy.location("pathname").should("eq", `/people/family/${familyId}`);
+            readFamily(familyId).then((family) => {
+                expect(family.Country).to.equal("Atlantis");
+                expect(family.SecondCountry).to.equal("Atlantis");
+                expect(family.State).to.equal("MO");
+                expect(family.Latitude).to.equal(LATITUDE);
+                expect(family.Longitude).to.equal(LONGITUDE);
+            });
+        });
+    });
+
     it("treats a real country change as an address change and shows the country by name", () => {
         createFamilyStoredAs("United States").then((familyId) => {
             openEditor(familyId);
