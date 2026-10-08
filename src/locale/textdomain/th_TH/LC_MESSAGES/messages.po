@@ -19304,10 +19304,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "เพิ่มที่อยู่นี้ในแอปปฏิทินของคุณ ที่อยู่จะอัปเดตเองเมื่อปฏิทินคริสตจักรเปลี่ยน"
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "เพิ่มกิจกรรมของพันธกิจนี้ที่นี่ เช่น วันทำงานหรือชั้นเรียนที่พบกันทุกวันอาทิตย์ กิจกรรมจะอยู่ในปฏิทินคริสตจักร และคุณจัดกำลังคนให้ได้ขณะสร้าง"
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "เพิ่มผ่านพอร์ทัลสมาชิกและรอการตรวจสอบ: %s"
 

@@ -19402,10 +19402,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "Lisa see aadress oma kalendrirakendusse. See uueneb ise, kui koguduse kalender muutub."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "Lisa siia selle valdkonna sündmused: tööpäev, klass, mis kohtub igal pühapäeval. Need lähevad koguduse kalendrisse ja saad need komplekteerida juba loomise ajal."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "Lisatud Liikmeportaali kaudu ja ootab ülevaatamist: %s"
 

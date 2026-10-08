@@ -19493,10 +19493,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "Lägg till den här adressen i din kalenderapp. Den uppdateras automatiskt när kyrkans kalender ändras."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "Lägg till det här tjänsteområdets aktiviteter här: en arbetsdag, en klass som träffas varje söndag. De hamnar i kyrkans kalender och du kan bemanna dem när du skapar dem."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "Tillagd via Medlemsportalen och väntar på granskning: %s"
 

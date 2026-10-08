@@ -19368,10 +19368,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "ഈ വിലാസം നിങ്ങളുടെ കലണ്ടർ ആപ്പിലേക്ക് ചേർക്കുക. ചർച്ച് കലണ്ടർ മാറുമ്പോൾ ഇത് സ്വയം അപ്ഡേറ്റ് ആകും."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "ഈ ശുശ്രൂഷയുടെ പരിപാടികൾ ഇവിടെ ചേർക്കുക: ഒരു പ്രവൃത്തിദിനം, എല്ലാ ഞായറാഴ്ചയും കൂടുന്ന ഒരു ക്ലാസ്. അവ ചർച്ച് കലണ്ടറിൽ ചേരും, സൃഷ്ടിക്കുമ്പോൾ തന്നെ നിങ്ങൾക്ക് അവയ്ക്ക് ആൾബലം നൽകാം."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "അംഗ പോർട്ടൽ വഴി ചേർത്തത്, അവലോകനത്തിനായി കാത്തിരിക്കുന്നു: %s"
 

@@ -19396,10 +19396,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "将此地址添加到您的日历应用。教会日历变动时，它会自动更新。"
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "在此添加本事工的活动，例如一次工作日、每周日举行的班级。它们会进入教会日历，创建时即可为其安排人员。"
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "通过会众门户添加，等待审核：%s"
 

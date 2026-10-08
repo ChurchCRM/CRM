@@ -19331,10 +19331,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "Thêm địa chỉ này vào ứng dụng lịch của bạn. Địa chỉ tự cập nhật khi lịch Hội thánh thay đổi."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "Thêm các sự kiện của mục vụ này tại đây: một ngày làm việc, một lớp họp mỗi Chúa nhật. Chúng sẽ vào lịch Hội thánh, và bạn có thể bố trí nhân sự ngay khi tạo."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "Được thêm qua Cổng Hội thánh và đang chờ xem xét: %s"
 
