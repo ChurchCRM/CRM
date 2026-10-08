@@ -21053,10 +21053,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "இந்த ஊழியத்தின் நிகழ்ச்சிகளுக்கு இந்த ஊழியத்தின் ஒருங்கிணைப்பாளர் மட்டுமே ஆட்களை அமர்த்தலாம்"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "குழுத் தலைவரை தன்னார்வ மேலாளர் மட்டுமே மாற்ற முடியும்"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "இதை தன்னார்வ மேலாளர் மட்டுமே மாற்ற முடியும்."
 

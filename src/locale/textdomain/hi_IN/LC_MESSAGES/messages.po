@@ -21005,10 +21005,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "केवल इस सेवकाई का समन्वयक इसके आयोजनों में नियुक्ति कर सकता है"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "केवल स्वयंसेवक प्रबंधक टीम का अगुआ बदल सकता है"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "केवल स्वयंसेवक प्रबंधक इसे बदल सकता है।"
 

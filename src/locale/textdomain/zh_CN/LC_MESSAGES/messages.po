@@ -21028,10 +21028,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "只有此事工的协调员才能为其活动安排人员"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "只有志愿者管理员才能更改团队负责人"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "只有志愿者管理员才能更改此项。"
 

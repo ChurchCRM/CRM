@@ -20963,10 +20963,6 @@ msgid "Only a coordinator of this ministry may staff its events"
 msgstr "Chỉ điều phối viên của mục vụ này mới được bố trí nhân sự cho sự kiện của nó"
 
 #: 
-msgid "Only a volunteer manager can change the team leader"
-msgstr "Chỉ người quản lý tình nguyện viên mới đổi được trưởng đội"
-
-#: 
 msgid "Only a volunteer manager can change this."
 msgstr "Chỉ người quản lý tình nguyện viên mới đổi được mục này."
 

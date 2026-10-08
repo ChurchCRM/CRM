@@ -47,6 +47,8 @@
   "Volunteers start %d minute before the event starts.": {
     "other": ""
   },
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "",
     "other": ""
