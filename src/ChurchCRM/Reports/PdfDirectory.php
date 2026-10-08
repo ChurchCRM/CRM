@@ -532,9 +532,10 @@ class PdfDirectory extends ChurchInfoReport
                 $dirimg = $person->getPhoto()->getPhotoURI();
             }
         }
-        $this->checkLines($numlines, $dirimg);
+        $name = self::convertToLatin1($sName);
+        $this->checkLines($this->nbLines($this->_ColWidth, $name) + $numlines + 1, $dirimg);
 
-        $this->printName(self::convertToLatin1($sName));
+        $this->printName($name);
 
         $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
         $_PosY = $this->GetY();
