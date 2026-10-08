@@ -453,4 +453,195 @@ describe("Kiosk Device Endpoint - Acceptance Enforcement", () => {
             expect(response.status).to.not.equal(500);
         });
     });
+
+    it("unaccepted kiosk is denied the guardian photo endpoint", () => {
+        cy.setupAdminSession();
+        cy.request({ method: "POST", url: "/kiosk/api/allowRegistration" });
+        cy.clearCookies();
+        cy.visit("/kiosk/", { failOnStatusCode: false });
+
+        cy.request({
+            method: "GET",
+            url: "/kiosk/device/activeClassMember/1/family/2/photo",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.equal(403);
+        });
+    });
+
+    it("request without a kiosk cookie is denied the guardian photo endpoint", () => {
+        cy.clearCookies();
+        cy.request({
+            method: "GET",
+            url: "/kiosk/device/activeClassMember/1/family/2/photo",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.be.oneOf([401, 403]);
+        });
+    });
+});
+
+// Uses seeded data (cypress/data/seed.sql):
+//   group 1 "Angels class" roster includes children 8 (Herminia Hart) and 9 (Jean Hart)
+//   Hart family: adults 6 (Constance) and 7 (Marion); minors 8-13
+//   person 2 (Mathew Campbell) is an adult in an unrelated family
+//   person 10 (Tom Hart) is a child in group 2, not on the Angels class roster
+describe("Kiosk Device - Guardian Photo and checkedInBy", () => {
+    const CHILD_ID = 8;
+    const OTHER_CHILD_ID = 9;
+    const GUARDIAN_ID = 6;
+    const SECOND_GUARDIAN_ID = 7;
+    const MINOR_SIBLING_ID = 13;
+    const UNRELATED_ADULT_ID = 2;
+    const NON_ROSTER_CHILD_ID = 10;
+
+    let kioskCookie = null;
+    let kioskId = null;
+    let eventId = null;
+
+    const photoUrl = (childId, memberId) =>
+        `/kiosk/device/activeClassMember/${childId}/family/${memberId}/photo`;
+
+    const asKiosk = () => {
+        cy.clearCookies();
+        cy.setCookie("kioskCookie", kioskCookie, { path: "/kiosk/" });
+    };
+
+    before(() => {
+        cy.setupAdminSession();
+        cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((before) => {
+            const existingIds = new Set((before.body.KioskDevices || []).map((k) => k.Id));
+
+            cy.request({ method: "POST", url: "/kiosk/api/allowRegistration" });
+            cy.clearCookies();
+            cy.visit("/kiosk/", { failOnStatusCode: false });
+            cy.getCookie("kioskCookie").then((cookie) => {
+                expect(cookie, "kiosk cookie set on registration").to.not.be.null;
+                kioskCookie = cookie.value;
+            });
+
+            cy.clearCookies();
+            cy.setupAdminSession({ forceLogin: true });
+            cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((after) => {
+                const device = (after.body.KioskDevices || []).find((k) => !existingIds.has(k.Id));
+                expect(device, "registered kiosk").to.not.be.undefined;
+                kioskId = device.Id;
+            });
+        });
+
+        // Far-future date no other spec or run uses, so quick-create makes a fresh event.
+        const runDayOffset = Math.floor(Date.now() / 1000) % 3000;
+        const date = new Date(Date.UTC(2090, 0, 1 + runDayOffset * 3 + 2)).toISOString().slice(0, 10);
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/events/quick-create",
+            { eventTypeId: 2, groupId: 1, date },
+            200,
+        ).then((response) => {
+            eventId = response.body.eventId;
+            expect(eventId).to.be.a("number");
+        });
+
+        cy.then(() => {
+            cy.request({ method: "POST", url: `/kiosk/api/devices/${kioskId}/accept` });
+            cy.request({
+                method: "POST",
+                url: `/kiosk/api/devices/${kioskId}/assignment`,
+                body: { assignmentType: "1", eventId },
+            });
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${eventId}/checkin-people`,
+                { personIds: [CHILD_ID], checkedInById: GUARDIAN_ID },
+                200,
+            );
+        });
+    });
+
+    after(() => {
+        cy.setupAdminSession({ forceLogin: true });
+        if (kioskId) {
+            cy.request({ method: "DELETE", url: `/kiosk/api/devices/${kioskId}`, failOnStatusCode: false });
+        }
+        if (eventId) {
+            cy.cleanupEvents([eventId]);
+        }
+    });
+
+    describe("GET /kiosk/device/activeClassMember/{PersonId}/family/{MemberId}/photo", () => {
+        it("serves the photo of an adult family member of a roster child", () => {
+            asKiosk();
+            [GUARDIAN_ID, SECOND_GUARDIAN_ID].forEach((memberId) => {
+                cy.request({ method: "GET", url: photoUrl(CHILD_ID, memberId) }).then((response) => {
+                    expect(response.status).to.equal(200);
+                    expect(response.headers["content-type"]).to.match(/^image\//);
+                });
+            });
+        });
+
+        it("denies a minor family member", () => {
+            asKiosk();
+            cy.request({ method: "GET", url: photoUrl(CHILD_ID, MINOR_SIBLING_ID), failOnStatusCode: false })
+                .its("status")
+                .should("equal", 403);
+        });
+
+        it("denies the child's own photo", () => {
+            asKiosk();
+            cy.request({ method: "GET", url: photoUrl(CHILD_ID, CHILD_ID), failOnStatusCode: false })
+                .its("status")
+                .should("equal", 403);
+        });
+
+        it("denies an adult from an unrelated family", () => {
+            asKiosk();
+            cy.request({ method: "GET", url: photoUrl(CHILD_ID, UNRELATED_ADULT_ID), failOnStatusCode: false })
+                .its("status")
+                .should("equal", 403);
+        });
+
+        it("denies a child who is not on the active roster", () => {
+            asKiosk();
+            cy.request({ method: "GET", url: photoUrl(NON_ROSTER_CHILD_ID, GUARDIAN_ID), failOnStatusCode: false })
+                .its("status")
+                .should("equal", 403);
+        });
+
+        it("rejects invalid ids", () => {
+            asKiosk();
+            cy.request({ method: "GET", url: photoUrl(0, GUARDIAN_ID), failOnStatusCode: false })
+                .its("status")
+                .should("equal", 400);
+            cy.request({ method: "GET", url: photoUrl(CHILD_ID, 0), failOnStatusCode: false })
+                .its("status")
+                .should("equal", 400);
+        });
+    });
+
+    describe("GET /kiosk/device/activeClassMembers checkedInBy", () => {
+        it("reports who checked in a checked-in child and null for others", () => {
+            asKiosk();
+            cy.request({ method: "GET", url: "/kiosk/device/activeClassMembers" }).then((response) => {
+                expect(response.status).to.equal(200);
+                const byId = Object.fromEntries(response.body.People.map((p) => [p.Id, p]));
+
+                expect(byId[CHILD_ID].checkedInBy).to.include({
+                    Id: GUARDIAN_ID,
+                    FirstName: "Constance",
+                    LastName: "Hart",
+                });
+                expect(byId[CHILD_ID].checkedInBy.hasPhoto).to.be.a("boolean");
+                expect(byId[OTHER_CHILD_ID].checkedInBy).to.equal(null);
+            });
+        });
+
+        it("clears checkedInBy after checkout", () => {
+            cy.makePrivateAdminAPICall("POST", `/api/events/${eventId}/checkout`, { personId: CHILD_ID }, 200);
+            asKiosk();
+            cy.request({ method: "GET", url: "/kiosk/device/activeClassMembers" }).then((response) => {
+                const child = response.body.People.find((p) => p.Id === CHILD_ID);
+                expect(child.checkedInBy).to.equal(null);
+            });
+        });
+    });
 });
