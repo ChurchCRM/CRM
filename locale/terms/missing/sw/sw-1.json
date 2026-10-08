@@ -1,182 +1,53 @@
 {
-  "Select at least one classification to include in the directory.": "Chagua angalau uainishaji mmoja wa kujumuisha kwenye orodha ya anwani.",
-  "Geocoding services": "Huduma za geokodi",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Huduma za geokodi za kujaribu, kwa mpangilio unaozichagua. Nominatim (OpenStreetMap) hufanya kazi duniani kote; US Census (US Census Bureau) inashughulikia anwani za Marekani pekee. Chagua pia US Census ili kuitumia. Ikiwa hakuna iliyochaguliwa, Nominatim hutumika.",
-  "New Record Defaults": "Chaguo-msingi za rekodi mpya",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Hii hutafuta viwianishi vya ramani kwa kila familia isiyo navyo, kwa kutumia huduma za geokodi zilizochaguliwa kwenye Mipangilio ya Ramani. Hufanya kazi kwa familia kwa makundi ya 50; kundi huchukua takriban dakika moja kwa huduma moja ya geokodi na zaidi kwa nyingi. Unaweza kuiacha ukurasa huu wazi wakati inaendelea. Endelea?",
-  "Used for new records and for geocoding when a record has no country.": "Hutumika kwa rekodi mpya na kwa geokodi rekodi isipokuwa na nchi.",
-  "Copy from Church Info": "Nakili kutoka Taarifa za Kanisa",
-  "Could not copy the church address.": "Haikuweza kunakili anwani ya kanisa.",
-  "Could not match the church country.": "Haikuweza kulinganisha nchi ya kanisa.",
-  "Class lists, attendance sheets, and photo books": "Orodha za darasa, karatasi za mahudhurio, na vitabu vya picha",
-  "Group membership lists and Sunday School class reports": "Orodha za washirika wa vikundi na ripoti za madarasa ya Shule ya Jumapili",
-  "Your fiscal year starts in %s.": "Mwaka wako wa fedha unaanza mwezi wa %s.",
-  "An error occurred": "Hitilafu imetokea",
-  "Approve": "Idhinisha",
-  "Approve selected": "Idhinisha zilizochaguliwa",
-  "Approved": "Imeidhinishwa",
-  "Change in People Settings": "Badilisha kwenye Mipangilio ya Watu",
-  "Could not approve the selected registrations": "Haikuweza kuidhinisha usajili uliochaguliwa",
-  "Could not approve this family": "Haikuweza kuidhinisha familia hii",
-  "Pending Registrations": "Usajili Unaosubiri",
-  "Pending review": "Unasubiri ukaguzi",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Usajili unaosubiri ukaguzi kutoka fomu yako ya usajili ya umma. Maingizo yasiyo na barua pepe wala simu yamewekewa alama — thibitisha mawasiliano kabla ya kufuatilia.",
-  "Review now": "Kagua sasa",
-  "Review self registrations": "Kagua usajili binafsi",
-  "Select month": "Chagua mwezi",
-  "Self-registration is disabled": "Usajili binafsi umezimwa",
-  "Self-registration is enabled": "Usajili binafsi umewashwa",
-  "The public registration form is turned off. Existing registrations are listed below.": "Fomu ya usajili ya umma imezimwa. Usajili uliopo umeorodheshwa hapa chini.",
-  "This family is not a pending self-registration": "Familia hii si usajili binafsi unaosubiri",
-  "This person belongs to a family — approve the family instead": "Mtu huyu ni wa familia — idhinisha familia badala yake",
-  "This person is not a pending self-registration": "Mtu huyu si usajili binafsi unaosubiri",
-  "This self-registered family is pending review": "Familia hii iliyojisajili inasubiri ukaguzi",
-  "Total registrations": "Jumla ya usajili",
-  "Visitors can sign up on your public registration form.": "Wageni wanaweza kujisajili kwenye fomu yako ya usajili ya umma.",
-  "Yesterday": "Jana",
-  "days ago": "siku zilizopita",
-  "self-registrations are waiting for review": "usajili binafsi unasubiri ukaguzi",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Salamu za siku ya kuzaliwa zinaelekezwa kwa mtu, na za maadhimisho ya ndoa kwa wanandoa.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Lebo za anwani ya posta kwa watu walio kwenye ripoti hii. Mtu asiye na anwani yake mwenyewe anaandikiwa kwenye anwani ya familia yake.",
-  "One label for each couple.": "Lebo moja kwa kila wanandoa.",
-  "Print Labels": "Chapisha lebo",
-  "That role is not one of this group's roles.": "Jukumu hilo si miongoni mwa majukumu ya kikundi hiki.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" si aina ya kalenda ambayo ukurasa huu unaifahamu.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s hawezi kuhudumu na amependekeza %2$s kama mbadala.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s tayari yuko kwenye kundi la watu wa kujitolea la %2$s na anataka kusaidia tena.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s tayari ameunganishwa na %2$s katika %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s yuko katika %2$s kama %3$s. Mwondoe kwanza kwenye darasa; kumpa sifa hapa kutamfanya mmoja wa walimu wake.",
-  "%1$s is not an event of %2$s": "%1$s si tukio la %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s inabaki kuwa darasa la Shule ya Jumapili huku walimu wake wakisimamiwa katika Huduma → %2$s → %3$s. Iondoe kwanza kutoka kwenye timu.",
-  "%1$s wants to help with %2$s": "%1$s anataka kusaidia katika %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s anataka kusaidia katika %2$s na ameongezwa kwenye kundi lake la watu wa kujitolea.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: Kiwango cha juu ni %2$d lakini watu %3$d wa kujitolea wateule wamechaguliwa. Ondoa mmoja au ongeza kiwango cha juu.",
-  "%d day": {
-    "one": "Siku %d",
-    "other": "Siku %d"
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "Chaguo-msingi %d limerukwa kwa sababu nyingine (tukio limeisha, limeghairiwa au limejaa)",
-    "other": "Chaguo-msingi %d zimerukwa kwa sababu nyingine (tukio limeisha, limeghairiwa au limejaa)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "Chaguo-msingi %d limerukwa: sifa imebatilishwa",
-    "other": "Chaguo-msingi %d zimerukwa: sifa imebatilishwa"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "Mtu wa kujitolea mteule %d amepangwa",
-    "other": "Watu wa kujitolea wateule %d wamepangwa"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d imeshindwa",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Mtu mmoja zaidi wa kujitolea (%d) bado anahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo.",
-    "other": "Watu %d zaidi wa kujitolea bado wanahitajika kwa nafasi hii. Fungua tukio ili kuziba pengo."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "Tukio jipya %d",
-    "other": "Matukio mapya %d"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Mtu wa kujitolea %d bado anahitajika kwa tukio linalokuja.",
-    "other": "Watu wa kujitolea %d bado wanahitajika kwa tukio linalokuja."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "Kalenda ya %s",
-  "%s Family": "Familia ya %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s haitoi walimu wa Shule ya Jumapili, kwa hiyo timu, ratiba na matukio yake hayawezi kutumia darasa. Msimamizi wa watu wa kujitolea anaweza kubadilisha hilo chini ya Hariri huduma.",
-  "%s email from the church": {
-    "one": "Barua pepe %s kutoka kanisani",
-    "other": "Barua pepe %s kutoka kanisani"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "Familia ya %s",
-  "%s has declined a volunteer assignment.": "%s amekataa kupangiwa kujitolea.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s haina jukumu liitwalo Mwalimu, kwa hiyo walimu wake hawawezi kusimamiwa kutoka kwenye timu",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s haina mikutano ijayo kwenye kalenda. Ratiba hufuata matukio yaliyopo tayari: ongeza kwanza mikutano ya darasa, kwa Tukio jipya linalojirudia kwenye kichupo cha Kalenda cha huduma.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s bado anatarajiwa kuhudumu. Tafadhali wasiliana na mratibu ikiwa haiwezekani.",
-  "%s not sent (%s): %s": "%s haikutumwa (%s): %s",
-  "%s person in your household": {
-    "one": "Mtu %s katika kaya yako",
-    "other": "Watu %s katika kaya yako"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "Nafasi %s",
-    "other": "Nafasi %s"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: mtu yuleyule amechaguliwa mara mbili kama mtu wa kujitolea mteule",
-  "(no subject)": "(hakuna mada)",
-  "A birthday cannot be in the future.": "Siku ya kuzaliwa haiwezi kuwa katika siku zijazo.",
-  "A calendar event": "Tukio la kalenda",
-  "A calendar id must be a number.": "Kitambulisho cha kalenda lazima kiwe nambari.",
-  "A class that no longer exists": "Darasa lisilokuwepo tena",
-  "A class with no meetings on the calendar cannot be chosen yet.": "Darasa lisilo na mikutano kwenye kalenda haliwezi kuchaguliwa bado.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "Darasa lisilo na mikutano kwenye kalenda haliwezi kuchaguliwa bado. Mratibu wa huduma huongeza mikutano yake kwenye kichupo cha Kalenda cha huduma.",
-  "A class's meetings": "Mikutano ya darasa",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "Mratibu anaweza kusimamia kila kitu katika huduma hii, ikiwa ni pamoja na mabadiliko ambayo vinginevyo msimamizi wa watu wa kujitolea angelazimika kuyafanya.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "Mratibu wa huduma anaweza kuyaongeza kwenye kichupo cha Kalenda cha huduma.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "Mratibu wa huduma anaweza kuyaongeza kwenye kichupo cha Kalenda cha huduma. Kisha zalisha tena.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "Mratibu anaendesha huduma nzima — timu zake, nafasi, ratiba na kila upangaji ndani yake.",
-  "A day a month does not have falls on its last day.": "Siku ambayo mwezi hauna huangukia siku yake ya mwisho.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "Mtu wa kujitolea mteule ni wa mahitaji ya watumishi ya ratiba, si ya tukio moja",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "Mtu wa kujitolea mteule anaweza kuchaguliwa tu kwa nafasi ambayo mahitaji ya watumishi ya ratiba hii yanaiomba",
-  "A from and a to date in YYYY-MM-DD form are required": "Tarehe ya kuanzia na ya kuishia katika muundo wa YYYY-MM-DD zinahitajika",
-  "A minimum count is required": "Idadi ya chini inahitajika",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "Huduma huundwa pamoja na kalenda yake, kundi lake la watu wa kujitolea na timu yake ya kwanza, kwa hiyo mambo pekee ya kuamua hapa ni jina lake na kile inachofanya.",
-  "A ministry name is required": "Jina la huduma linahitajika",
-  "A ministry needs at least one team. Rename it instead.": "Huduma inahitaji angalau timu moja. Ibadilishe jina badala yake.",
-  "A ministry with that name already exists": "Huduma yenye jina hilo tayari ipo",
-  "A ministry's own calendar cannot be opened to other ministries": "Kalenda ya huduma yenyewe haiwezi kufunguliwa kwa huduma nyingine",
-  "A position belongs to a team; choose one": "Nafasi ni ya timu; chagua moja",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "Nafasi ni kazi ambayo mtu hufanya katika timu hii, kama vile Espresso au Kiongozi wa Nyimbo.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "Nafasi ni jukumu ambalo mtu hulitumikia, kama vile Espresso au Kiongozi wa Nyimbo.",
-  "A position is required": "Nafasi inahitajika",
-  "A position name is required": "Jina la nafasi linahitajika",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "Nafasi yenye watu wa kujitolea wenye sifa haiwezi kuhamia ndani au nje ya timu iliyounganishwa na darasa la Shule ya Jumapili, kwa sababu hilo lingebadilisha anayefundisha darasa. Unda nafasi kwenye timu nyingine badala yake.",
-  "A position with that name already exists in this ministry": "Nafasi yenye jina hilo tayari ipo katika huduma hii",
-  "A response must be accepted or declined": "Jibu lazima likubaliwe au likataliwe",
-  "A schedule belongs to a team; choose one": "Ratiba ni ya timu; chagua moja",
-  "A schedule name is required": "Jina la ratiba linahitajika",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Ratiba huonyesha ni matukio gani ya kalenda timu inayoyahudumia: aina ya ibada ya kanisa, mikutano ya darasa, au matukio ya huduma hii yenyewe. Ongeza moja na uzalishe matukio yake.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Ratiba huonyesha ni matukio gani ya kalenda timu hii inayahudumia: aina ya ibada ya kanisa, mikutano ya darasa, au matukio ya huduma yake yenyewe. Ongeza moja na uzalishe matukio yake.",
-  "A schedule that follows a class must name the class": "Ratiba inayofuata darasa lazima itaje darasa",
-  "A schedule that follows an event type must name the event type": "Ratiba inayofuata aina ya tukio lazima itaje aina ya tukio",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Ratiba inayohudumia tukio moja haiwezi kufuata matukio mengine; ifute na uongeze ratiba badala yake",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "Orodha moja ya fursa, kama vile \"Kitalu cha Watoto\" au \"Mkaribishaji\", inayotunzwa chini ya Watu → Msimamizi. Kila mtu huwekewa alama za fursa ambazo yuko tayari kusaidia, kwenye kichupo cha Mtu wa kujitolea cha rekodi yake. Hicho ndicho kinachorekodiwa tu: hakuna timu, hakuna ratiba, hakuna upangaji kwenye tarehe, na hakuna barua pepe za vikumbusho. Ripoti na rekodi ya mtu ndiko alama hizo zinakotumika.",
-  "A square picture of your face works best.": "Picha ya mraba ya uso wako ni bora zaidi.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Mahitaji ya watumishi huorodhesha watu wake wa kujitolea wateule katika \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Hitaji la watumishi ni la ratiba moja au tukio moja hasa",
-  "A substitute has already been proposed for this assignment": "Mbadala tayari amependekezwa kwa upangaji huu",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "Kiongozi wa timu anaweza kusimamia timu yake mwenyewe — nafasi zake, ratiba zake na anayehudumu ndani yake — na hakuna kingine katika huduma.",
-  "A team name is required": "Jina la timu linahitajika",
-  "A team with that name already exists in this ministry": "Timu yenye jina hilo tayari ipo katika huduma hii",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Mandhari ni folda ambayo kanisa lako huipakia kwenye Include/themes/ kwenye seva. Chaguo-msingi la mfumo huja na ChurchCRM.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "Mpangilio wa mpito. Kurasa za zamani za Fursa za Kujitolea na kurasa mpya za Huduma zote zinapatikana, na rekodi ya mtu huonyesha vichupo vyote viwili vya Kujitolea, vilivyoandikwa wazi. Itumie unapohamisha kanisa kutoka V1 kwenda V2, kisha ubadilishe kuwa V2 pekee.",
-  "A volunteer": "Mtu wa kujitolea",
-  "A volunteer has declined an assignment": "Mtu wa kujitolea amekataa upangaji",
-  "A volunteer has proposed a substitute": "Mtu wa kujitolea amependekeza mbadala",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "Msimamizi wa watu wa kujitolea anaweza kuendesha huduma hii bila ruhusa maalum. Ongeza mratibu ili mtu mwingine aiendeshe bila kumpa huduma nyingine zote pia.",
-  "A wedding date cannot be in the future.": "Tarehe ya harusi haiwezi kuwa katika siku zijazo.",
-  "Accepted": "Imekubaliwa",
-  "Account deleted": "Akaunti imefutwa",
-  "Account unlocked": "Akaunti Imefunguliwa",
-  "Accounts": "Akaunti",
-  "Active must be true or false": "Hali ya kutumika lazima iwe kweli au si kweli",
-  "Active now": "Anatumika Sasa",
-  "Add All": "Ongeza wote",
-  "Add Everyone in Cart": "Ongeza wote walio kwenye Chaguo",
-  "Add Volunteer": "Ongeza mtu wa kujitolea",
-  "Add Volunteers to Cart": "Ongeza watu wa kujitolea kwenye Chaguo",
-  "Add a family member": "Ongeza mwanafamilia",
-  "Add a position first, then come back and say how many of them are needed.": "Ongeza nafasi kwanza, kisha rudi useme ni wangapi wanahitajika.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Ongeza hatua ya pili kwenye kuingia kwako, ili nenosiri peke yake lisitoshe kufikia akaunti yako.",
-  "Add at least one position to this team, then tick who can serve where.": "Ongeza angalau nafasi moja kwenye timu hii, kisha weka alama ni nani anaweza kuhudumu wapi.",
-  "Add coordinator": "Ongeza mratibu",
-  "Add from Cart": "Ongeza kutoka Chaguo",
-  "Add its meetings first with New recurring event on the Calendar tab": "Ongeza kwanza mikutano yake kwa Tukio jipya linalojirudia kwenye kichupo cha Kalenda",
-  "Add people to the cart before adding them as volunteers": "Ongeza watu kwenye Chaguo kabla ya kuwaongeza kama watu wa kujitolea",
-  "Add position": "Ongeza nafasi",
-  "Add schedule": "Ongeza ratiba",
-  "Add team": "Ongeza timu",
-  "Add them on the Calendar tab, then generate again.": "Viongeze kwenye kichupo cha Kalenda, kisha zalisha tena.",
-  "Add them on the Calendar tab.": "Viongeze kwenye kichupo cha Kalenda.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Ongeza anwani hii kwenye programu yako ya kalenda. Husasishwa yenyewe kalenda ya kanisa inapobadilika.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Ongeza matukio ya huduma hii hapa: siku ya kazi, darasa linalokutana kila Jumapili. Huenda kwenye kalenda ya kanisa, na unaweza kuyawekea watumishi unapoyaunda."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

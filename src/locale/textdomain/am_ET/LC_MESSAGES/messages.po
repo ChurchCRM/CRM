@@ -18794,3 +18794,4535 @@ msgstr "የትዳር ጓደኛ ሚና"
 msgid "Uppercase Zip/Postcodes"
 msgstr "የፖስታ ኮዶችን በትልልቅ ፊደላት"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "በማውጫው ውስጥ ለማካተት ቢያንስ አንድ ምድብ ይምረጡ።"
+
+#: 
+msgid "Geocoding services"
+msgstr "የጂኦኮዲንግ አገልግሎቶች"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "በመረጡት ቅደም ተከተል የሚሞከሩ የጂኦኮዲንግ አገልግሎቶች። Nominatim (OpenStreetMap) በመላው ዓለም ይሠራል፤ US Census (የአሜሪካ የሕዝብ ቆጠራ ቢሮ) የሚሸፍነው የአሜሪካ አድራሻዎችን ብቻ ነው። US Census ን ለመጠቀም እሱንም ይምረጡ። ምንም ካልተመረጠ Nominatim ይጠቀማል።"
+
+#: 
+msgid "New Record Defaults"
+msgstr "የአዲስ መዝገብ ነባሪ እሴቶች"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "ይህ በካርታ ቅንብሮች ውስጥ የተመረጡትን የጂኦኮዲንግ አገልግሎቶች በመጠቀም የካርታ መጋጠሚያ ለሌላቸው ቤተሰቦች ሁሉ መጋጠሚያ ያገኛል። ቤተሰቦችን በ50 ቡድን እየከፈለ ያከናውናል፤ አንድ ቡድን በአንድ የጂኦኮዲንግ አገልግሎት ሲሆን ወደ አንድ ደቂቃ ይፈጃል፣ ብዙ አገልግሎቶች ሲሆኑ ደግሞ ይረዝማል። ሲሠራ ይህን ገጽ ክፍት አድርገው ማቆየት ይችላሉ። ይቀጥል?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "ለአዲስ መዝገቦች እና መዝገቡ አገር ሲያጣ ለጂኦኮዲንግ ያገለግላል።"
+
+#: 
+msgid "Copy from Church Info"
+msgstr "ከቤተ ክርስቲያን መረጃ ቅዳ"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "የቤተ ክርስቲያኑን አድራሻ መቅዳት አልተቻለም።"
+
+#: 
+msgid "Could not match the church country."
+msgstr "የቤተ ክርስቲያኑን አገር ማዛመድ አልተቻለም።"
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "የክፍል ዝርዝሮች፣ የመገኘት ወረቀቶች እና የፎቶ መጻሕፍት"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "የቡድን አባልነት ዝርዝሮች እና የሰንበት ትምህርት ቤት ክፍል ሪፖርቶች"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "የበጀት ዓመትዎ የሚጀምረው በ%s ነው።"
+
+#: 
+msgid "An error occurred"
+msgstr "ስህተት ተከስቷል"
+
+#: 
+msgid "Approve"
+msgstr "አጽድቅ"
+
+#: 
+msgid "Approve selected"
+msgstr "የተመረጡትን አጽድቅ"
+
+#: 
+msgid "Approved"
+msgstr "ጸድቋል"
+
+#: 
+msgid "Change in People Settings"
+msgstr "በሰዎች ቅንብሮች ውስጥ ይቀይሩ"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "የተመረጡትን ምዝገባዎች ማጽደቅ አልተቻለም"
+
+#: 
+msgid "Could not approve this family"
+msgstr "ይህን ቤተሰብ ማጽደቅ አልተቻለም"
+
+#: 
+msgid "Pending Registrations"
+msgstr "በመጠባበቅ ላይ ያሉ ምዝገባዎች"
+
+#: 
+msgid "Pending review"
+msgstr "ግምገማ በመጠባበቅ ላይ"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "ከሕዝብ መመዝገቢያ ቅጽዎ የተላኩ ግምገማ የሚጠብቁ ምዝገባዎች። ኢሜይል ወይም ስልክ የሌላቸው ግቤቶች ምልክት ተደርጎባቸዋል — ክትትል ከማድረግዎ በፊት የመገናኛ መረጃውን ያረጋግጡ።"
+
+#: 
+msgid "Review now"
+msgstr "አሁን ገምግም"
+
+#: 
+msgid "Review self registrations"
+msgstr "ራስን ምዝገባዎች ገምግም"
+
+#: 
+msgid "Select month"
+msgstr "ወር ይምረጡ"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "ራስን ምዝገባ ተሰናክሏል"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "ራስን ምዝገባ ነቅቷል"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "የሕዝብ መመዝገቢያ ቅጽ ጠፍቷል። ነባር ምዝገባዎች ከታች ተዘርዝረዋል።"
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "ይህ ቤተሰብ በመጠባበቅ ላይ ያለ ራስን ምዝገባ አይደለም"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "ይህ ሰው የአንድ ቤተሰብ አባል ነው — በምትኩ ቤተሰቡን ያጽድቁ"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "ይህ ሰው በመጠባበቅ ላይ ያለ ራስን ምዝገባ አይደለም"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "ራሱን ያስመዘገበው ይህ ቤተሰብ ግምገማ በመጠባበቅ ላይ ነው"
+
+#: 
+msgid "Total registrations"
+msgstr "ጠቅላላ ምዝገባዎች"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "ጎብኚዎች በሕዝብ መመዝገቢያ ቅጽዎ ላይ መመዝገብ ይችላሉ።"
+
+#: 
+msgid "Yesterday"
+msgstr "ትናንት"
+
+#: 
+msgid "days ago"
+msgstr "ቀናት በፊት"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "ራስን ምዝገባዎች ግምገማ እየጠበቁ ነው"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "የልደት መልካም ምኞቶች ለግለሰቡ፣ የጋብቻ ክብረ በዓል መልካም ምኞቶች ደግሞ ለባልና ሚስቱ ይላካሉ።"
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "በዚህ ሪፖርት ውስጥ ላሉ ሰዎች የፖስታ አድራሻ መለያዎች። የራሱ አድራሻ የሌለው ሰው በቤተሰቡ አድራሻ ይላክለታል።"
+
+#: 
+msgid "One label for each couple."
+msgstr "ለእያንዳንዱ ባልና ሚስት አንድ መለያ።"
+
+#: 
+msgid "Print Labels"
+msgstr "መለያዎችን አትም"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "ያ ሚና ከዚህ ቡድን ሚናዎች አንዱ አይደለም።"
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "\"%s\" ይህ ገጽ የሚያውቀው የቀን መቁጠሪያ ዓይነት አይደለም።"
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s ማገልገል አይችልም እና %2$s ን ተተኪ አድርጎ አቅርቧል።"
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s አስቀድሞ በ%2$s የበጎ ፈቃደኞች ስብስብ ውስጥ ነው እና እንደገና መርዳት ይፈልጋል።"
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s አስቀድሞ በ%3$s ውስጥ ከ%2$s ጋር ተያይዟል"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s በ%2$s ውስጥ %3$s ነው። መጀመሪያ ከክፍሉ ያስወግዱት፤ እዚህ ብቁ ማድረግ የክፍሉ መምህራን አንዱ ያደርገዋል።"
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s የ%2$s ዝግጅት አይደለም"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "መምህራኑ በአገልግሎቶች → %2$s → %3$s ውስጥ እስከሚተዳደሩ ድረስ %1$s የሰንበት ትምህርት ቤት ክፍል ሆኖ ይቆያል። መጀመሪያ ከቡድኑ ጋር ያለውን ትስስር ያላቅቁ።"
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s በ%2$s መርዳት ይፈልጋል"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s በ%2$s መርዳት ይፈልጋል እና ወደ በጎ ፈቃደኞች ስብስቡ ተጨምሯል።"
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s፦ ከፍተኛው %2$d ነው ነገር ግን %3$d ነባሪ በጎ ፈቃደኞች ተመርጠዋል። አንዱን ያስወግዱ ወይም ከፍተኛውን ያሳድጉ።"
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d ቀን"
+msgstr[1] "%d ቀን"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d ነባሪ ለሌላ ምክንያት ተዘሏል (የአገልግሎት ቀኑ አልፏል፣ ተሰርዟል ወይም ሞልቷል)"
+msgstr[1] "%d ነባሪ ለሌላ ምክንያት ተዘሏል (የአገልግሎት ቀኑ አልፏል፣ ተሰርዟል ወይም ሞልቷል)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d ነባሪ ተዘሏል፦ ብቃት ተሽሯል"
+msgstr[1] "%d ነባሪ ተዘሏል፦ ብቃት ተሽሯል"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d ነባሪ በጎ ፈቃደኛ ተመድቧል"
+msgstr[1] "%d ነባሪ በጎ ፈቃደኛ ተመድቧል"
+
+#: 
+msgid "%d failed"
+msgstr "%d አልተሳኩም"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "ለዚህ የአገልግሎት ቦታ ተጨማሪ %d በጎ ፈቃደኛ አሁንም ያስፈልጋል። ክፍተቱን ለመሙላት የአገልግሎት ቀኑን ይክፈቱ።"
+msgstr[1] "ለዚህ የአገልግሎት ቦታ ተጨማሪ %d በጎ ፈቃደኛ አሁንም ያስፈልጋል። ክፍተቱን ለመሙላት የአገልግሎት ቀኑን ይክፈቱ።"
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d አዲስ የአገልግሎት ቀን"
+msgstr[1] "%d አዲስ የአገልግሎት ቀን"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "ለሚመጣ የአገልግሎት ቀን %d በጎ ፈቃደኛ አሁንም ያስፈልጋል።"
+msgstr[1] "ለሚመጣ የአገልግሎት ቀን %d በጎ ፈቃደኛ አሁንም ያስፈልጋል።"
+
+#: 
+msgid "%s Calendar"
+msgstr "የ%s የቀን መቁጠሪያ"
+
+#: 
+msgid "%s Family"
+msgstr "የ%s ቤተሰብ"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s ለሰንበት ትምህርት ቤት መምህራንን አያቀርብም፣ ስለዚህ ቡድኖቹ፣ መርሐ ግብሮቹ እና ዝግጅቶቹ ክፍልን መጠቀም አይችሉም። የበጎ ፈቃደኞች አስተዳዳሪ ይህንን በአገልግሎት አርትዕ ውስጥ መቀየር ይችላል።"
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s ኢሜይል ከቤተ ክርስቲያኑ"
+msgstr[1] "%s ኢሜይል ከቤተ ክርስቲያኑ"
+
+#: 
+msgid "%s family"
+msgstr "የ%s ቤተሰብ"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s የበጎ ፈቃድ ምደባን አልተቀበለም።"
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s \"Teacher\" የሚባል ሚና የለውም፣ ስለዚህ መምህራኑ ከቡድን ሊተዳደሩ አይችሉም"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s በቀን መቁጠሪያው ላይ ምንም የሚመጡ ስብሰባዎች የሉትም። መርሐ ግብር አስቀድመው ያሉ ዝግጅቶችን ይከተላል፦ መጀመሪያ የክፍሉን ስብሰባዎች በአገልግሎቱ የቀን መቁጠሪያ ትር ላይ ባለው አዲስ ተደጋጋሚ ዝግጅት ያክሉ።"
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s አሁንም ያገለግላል ተብሎ ይጠበቃል። ይህ የማይቻል ከሆነ እባክዎ አስተባባሪውን ያግኙ።"
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s አልተላከም (%s)፦ %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "በቤተሰብዎ ውስጥ %s ሰው"
+msgstr[1] "በቤተሰብዎ ውስጥ %s ሰው"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s የአገልግሎት ቦታ"
+msgstr[1] "%s የአገልግሎት ቦታ"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s፦ አንድ ሰው እንደ ነባሪ በጎ ፈቃደኛ ሁለት ጊዜ ተመርጧል"
+
+#: 
+msgid "(no subject)"
+msgstr "(ርዕስ የለም)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "የልደት ቀን ወደፊት ሊሆን አይችልም።"
+
+#: 
+msgid "A calendar event"
+msgstr "የቀን መቁጠሪያ ዝግጅት"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "የቀን መቁጠሪያ መታወቂያ ቁጥር መሆን አለበት።"
+
+#: 
+msgid "A class that no longer exists"
+msgstr "ከአሁን በኋላ የሌለ ክፍል"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "በቀን መቁጠሪያው ላይ ስብሰባ የሌለው ክፍል ገና ሊመረጥ አይችልም።"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "በቀን መቁጠሪያው ላይ ስብሰባ የሌለው ክፍል ገና ሊመረጥ አይችልም። የአገልግሎቱ አስተባባሪ ስብሰባዎቹን በአገልግሎቱ የቀን መቁጠሪያ ትር ላይ ይጨምራል።"
+
+#: 
+msgid "A class's meetings"
+msgstr "የአንድ ክፍል ስብሰባዎች"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "አስተባባሪ በዚህ አገልግሎት ውስጥ ሁሉንም ማስተዳደር ይችላል፣ የበጎ ፈቃደኞች አስተዳዳሪ ማድረግ የሚኖርበትን ለውጥ ጨምሮ።"
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "የአገልግሎቱ አስተባባሪ በአገልግሎቱ የቀን መቁጠሪያ ትር ላይ ሊያክላቸው ይችላል።"
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "የአገልግሎቱ አስተባባሪ በአገልግሎቱ የቀን መቁጠሪያ ትር ላይ ሊያክላቸው ይችላል። ከዚያ እንደገና ያመንጩ።"
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "አስተባባሪ መላውን አገልግሎት ይመራል — ቡድኖቹን፣ የአገልግሎት ቦታዎቹን፣ መርሐ ግብሮቹን እና በውስጡ ያለውን እያንዳንዱን ምደባ።"
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "አንድ ወር የሌለው ቀን በወሩ የመጨረሻ ቀን ላይ ይውላል።"
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "ነባሪ በጎ ፈቃደኛ የመርሐ ግብሩ የሰው ኃይል ፍላጎት እንጂ የአንድ ቀን አይደለም"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "ነባሪ በጎ ፈቃደኛ ሊመረጥ የሚችለው የዚህ መርሐ ግብር የሰው ኃይል ፍላጎት ለሚጠይቀው የአገልግሎት ቦታ ብቻ ነው"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "ከቀን እና እስከ ቀን በYYYY-MM-DD ቅርጸት ያስፈልጋሉ"
+
+#: 
+msgid "A minimum count is required"
+msgstr "ዝቅተኛ ቁጥር ያስፈልጋል"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "አገልግሎት የሚፈጠረው በራሱ የቀን መቁጠሪያ፣ የበጎ ፈቃደኞች ስብስብ እና የመጀመሪያ ቡድን ነው፣ ስለዚህ እዚህ መወሰን የሚያስፈልገው ስሙንና የሚሠራውን ሥራ ብቻ ነው።"
+
+#: 
+msgid "A ministry name is required"
+msgstr "የአገልግሎት ስም ያስፈልጋል"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "አገልግሎት ቢያንስ አንድ ቡድን ያስፈልገዋል። በምትኩ ስሙን ይቀይሩ።"
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "በዚህ ስም አገልግሎት አስቀድሞ አለ"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "የአገልግሎት የራሱ የቀን መቁጠሪያ ለሌሎች አገልግሎቶች ክፍት ሊደረግ አይችልም"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "የአገልግሎት ቦታ የአንድ ቡድን ነው፤ አንዱን ይምረጡ"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "የአገልግሎት ቦታ አንድ ሰው በዚህ ቡድን ውስጥ የሚሠራው ሥራ ነው፣ ለምሳሌ ኤስፕሬሶ ወይም የዝማሬ መሪ።"
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "የአገልግሎት ቦታ አንድ ሰው የሚያገለግልበት ሚና ነው፣ ለምሳሌ ኤስፕሬሶ ወይም የዝማሬ መሪ።"
+
+#: 
+msgid "A position is required"
+msgstr "የአገልግሎት ቦታ ያስፈልጋል"
+
+#: 
+msgid "A position name is required"
+msgstr "የአገልግሎት ቦታ ስም ያስፈልጋል"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "ብቁ በጎ ፈቃደኞች ያሉት የአገልግሎት ቦታ ከሰንበት ትምህርት ቤት ክፍል ጋር ወደተያያዘ ቡድን ሊገባም ሊወጣም አይችልም፣ ምክንያቱም ክፍሉን ማን እንደሚያስተምር ይቀይራልና። በምትኩ የአገልግሎት ቦታውን በሌላኛው ቡድን ውስጥ ይፍጠሩ።"
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "በዚህ አገልግሎት ውስጥ በዚህ ስም የአገልግሎት ቦታ አስቀድሞ አለ"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "ምላሽ መቀበል ወይም አለመቀበል አለበት"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "መርሐ ግብር የአንድ ቡድን ነው፤ አንዱን ይምረጡ"
+
+#: 
+msgid "A schedule name is required"
+msgstr "የመርሐ ግብር ስም ያስፈልጋል"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "መርሐ ግብር አንድ ቡድን የሚያስተናግደውን የቀን መቁጠሪያ ዝግጅቶች ይናገራል፦ የቤተ ክርስቲያን አገልግሎት ዓይነት፣ የአንድ ክፍል ስብሰባዎች፣ ወይም የዚህ አገልግሎት የራሱ ዝግጅቶች። አንድ ያክሉ እና የአገልግሎት ቀኖቹን ያመንጩ።"
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "መርሐ ግብር ይህ ቡድን የሚያገለግልባቸውን የቀን መቁጠሪያ ዝግጅቶች ይናገራል፦ የቤተ ክርስቲያን አገልግሎት ዓይነት፣ የአንድ ክፍል ስብሰባዎች፣ ወይም የአገልግሎቱ የራሱ ዝግጅቶች። አንድ ያክሉ እና የአገልግሎት ቀኖቹን ያመንጩ።"
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "ክፍልን የሚከተል መርሐ ግብር ክፍሉን መሰየም አለበት"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "የዝግጅት ዓይነትን የሚከተል መርሐ ግብር የዝግጅቱን ዓይነት መሰየም አለበት"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "አንድን ዝግጅት ብቻ የሚያስተናግድ መርሐ ግብር ሌሎች ዝግጅቶችን መከተል አይችልም፤ እሱን ያጥፉ እና በምትኩ መርሐ ግብር ያክሉ"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "እንደ \"የሕፃናት ክፍል\" ወይም \"አቀባበል\" ያሉ የአገልግሎት ዕድሎች አንድ ዝርዝር፣ በሰዎች → አስተዳዳሪ ስር የሚቀመጥ። እያንዳንዱ ሰው በመዝገቡ በበጎ ፈቃደኛ ትር ላይ ሊረዳባቸው ፈቃደኛ በሆነባቸው ዕድሎች ይመደባል። የሚመዘግበው ይህን ብቻ ነው፦ ቡድኖች የሉም፣ መርሐ ግብሮች የሉም፣ ለአንድ ቀን የሚደረጉ ምደባዎች የሉም፣ የማስታወሻ ኢሜይሎችም የሉም። መለያዎቹ የሚያገለግሉት በሪፖርቶች እና በሰው መዝገብ ውስጥ ነው።"
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "የፊትዎ ካሬ ምስል ተመራጭ ነው።"
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "የሰው ኃይል ፍላጎት ነባሪ በጎ ፈቃደኞቹን በ\"defaults\": [{personId, accepted}] ውስጥ ይዘረዝራል"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "የሰው ኃይል መስፈርት የሚመለከተው የአንድ መርሐ ግብር ወይም የአንድ የአገልግሎት ቀን ብቻ ነው"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "ለዚህ ምደባ ተተኪ አስቀድሞ ቀርቧል"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "የቡድን መሪ የራሱን ቡድን — የአገልግሎት ቦታዎቹን፣ መርሐ ግብሮቹን እና በውስጣቸው የሚያገለግሉትን — ማስተዳደር ይችላል፣ በአገልግሎቱ ውስጥ ሌላ ምንም አይችልም።"
+
+#: 
+msgid "A team name is required"
+msgstr "የቡድን ስም ያስፈልጋል"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "በዚህ አገልግሎት ውስጥ በዚህ ስም ቡድን አስቀድሞ አለ"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "ገጽታ ቤተ ክርስቲያንዎ በአገልጋዩ ላይ ወደ Include/themes/ የሚጭነው አቃፊ ነው። ነባሪው የሲስተም ገጽታ ከChurchCRM ጋር ይመጣል።"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "የሽግግር ቅንብር። የቀደመው የበጎ ፈቃደኛ ዕድሎች ገጾች እና አዲሶቹ የአገልግሎቶች ገጾች ሁለቱም ይገኛሉ፣ እና የሰው መዝገብ ሁለቱንም የበጎ ፈቃደኛ ትሮች በግልጽ ተሰይመው ያሳያል። ቤተ ክርስቲያንን ከV1 ወደ V2 ሲያሸጋግሩ ይጠቀሙበት፣ ከዚያ ወደ V2 ብቻ ይቀይሩ።"
+
+#: 
+msgid "A volunteer"
+msgstr "አንድ በጎ ፈቃደኛ"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "አንድ በጎ ፈቃደኛ ምደባን አልተቀበለም"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "አንድ በጎ ፈቃደኛ ተተኪ አቅርቧል"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "የበጎ ፈቃደኞች አስተዳዳሪ ይህን አገልግሎት ያለ ልዩ ፈቃድ ማስኬድ ይችላል። ሌላ ሰው ሌሎቹን አገልግሎቶች ሁሉ ሳይሰጠው እንዲያስኬደው አስተባባሪ ያክሉ።"
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "የሠርግ ቀን ወደፊት ሊሆን አይችልም።"
+
+#: 
+msgid "Accepted"
+msgstr "ተቀብሏል"
+
+#: 
+msgid "Account deleted"
+msgstr "መለያው ተሰርዟል"
+
+#: 
+msgid "Account unlocked"
+msgstr "መለያ ተከፍቷል።"
+
+#: 
+msgid "Accounts"
+msgstr "መለያዎች"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Active እውነት ወይም ሐሰት መሆን አለበት"
+
+#: 
+msgid "Active now"
+msgstr "አሁን ንቁ ነው"
+
+#: 
+msgid "Add All"
+msgstr "ሁሉንም አክል"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "በምርጫ ውስጥ ያሉትን ሁሉ አክል"
+
+#: 
+msgid "Add Volunteer"
+msgstr "በጎ ፈቃደኛ አክል"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "በጎ ፈቃደኞችን ወደ ምርጫ አክል"
+
+#: 
+msgid "Add a family member"
+msgstr "የቤተሰብ አባል አክል"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "መጀመሪያ የአገልግሎት ቦታ ያክሉ፣ ከዚያ ተመልሰው እያንዳንዳቸው ስንት እንደሚያስፈልጉ ይግለጹ።"
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "በመግቢያዎ ላይ ሁለተኛ ደረጃ ይጨምሩ፣ ይህም የይለፍ ቃል ብቻ መለያዎን ለመድረስ በቂ እንዳይሆን ያደርጋል።"
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "ለዚህ ቡድን ቢያንስ አንድ የአገልግሎት ቦታ ያክሉ፣ ከዚያ ማን የት ማገልገል እንደሚችል ምልክት ያድርጉ።"
+
+#: 
+msgid "Add coordinator"
+msgstr "አስተባባሪ አክል"
+
+#: 
+msgid "Add from Cart"
+msgstr "ከምርጫ አክል"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "መጀመሪያ ስብሰባዎቹን በቀን መቁጠሪያ ትር ላይ ባለው አዲስ ተደጋጋሚ ዝግጅት ያክሉ"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "እንደ በጎ ፈቃደኛ ከመጨመራቸው በፊት ሰዎችን ወደ ምርጫ ያክሉ"
+
+#: 
+msgid "Add position"
+msgstr "የአገልግሎት ቦታ አክል"
+
+#: 
+msgid "Add schedule"
+msgstr "መርሐ ግብር አክል"
+
+#: 
+msgid "Add team"
+msgstr "ቡድን አክል"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "በቀን መቁጠሪያ ትር ላይ ያክሏቸው፣ ከዚያ እንደገና ያመንጩ።"
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "በቀን መቁጠሪያ ትር ላይ ያክሏቸው።"
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "ይህን አድራሻ ወደ የቀን መቁጠሪያ መተግበሪያዎ ያክሉ። የቤተ ክርስቲያኑ የቀን መቁጠሪያ ሲቀየር በራሱ ይዘምናል።"
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "የዚህን አገልግሎት ዝግጅቶች እዚህ ያክሉ፦ የሥራ ቀን፣ በየሰንበቱ የሚገናኝ ክፍል። ወደ ቤተ ክርስቲያኑ የቀን መቁጠሪያ ይገባሉ፣ ሲፈጥሯቸውም በበጎ ፈቃደኞች ማስያዝ ይችላሉ።"
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "በአባላት ፖርታል በኩል ተጨምሯል እና ግምገማ በመጠባበቅ ላይ ነው፦ %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "ታክሏል — አሁን ሊያገለግሉባቸው የሚችሉትን የአገልግሎት ቦታዎች ምልክት ያድርጉ"
+
+#: 
+msgid "Address Line 2"
+msgstr "የአድራሻ መስመር 2"
+
+#: 
+msgid "Admin Console"
+msgstr "የአስተዳዳሪ ኮንሶል"
+
+#: 
+msgid "Administrator permission required"
+msgstr "የአስተዳዳሪ ፈቃድ ያስፈልጋል"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "ይህን የአገልግሎት ቦታ በአባላት ፖርታል የክፍት ዕድሎች ገጽ ላይ ያስተዋውቁ።"
+
+#: 
+msgid "All Teams"
+msgstr "ሁሉም ቡድኖች"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "አባላት የራሳቸውን እና የቤተሰባቸውን አባላት የልደት ቀን እንዲቀይሩ ይፍቀዱ።"
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "ደግሞም ወደ {{calendars}} ተሰክቷል፣ ይህንንም መቀየር የሚችለው ዝግጅት የመጨመር ፈቃድ ያለው ሰው ብቻ ነው።"
+
+#: 
+msgid "An event title is required"
+msgstr "የዝግጅት ርዕስ ያስፈልጋል"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "የዝግጅት ዓይነት ወይም አገልግሎት ያስፈልጋል"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "ከአሁን በኋላ የሌለ የዝግጅት ዓይነት"
+
+#: 
+msgid "Another ministry"
+msgstr "ሌላ አገልግሎት"
+
+#: 
+msgid "Any event"
+msgstr "ማንኛውም ዝግጅት"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "አስተባባሪዎ ሊያውቀው የሚገባ ማንኛውም ነገር"
+
+#: 
+msgid "Approve substitution"
+msgstr "ምትክን አጽድቅ"
+
+#: 
+msgid "Approve this substitute"
+msgstr "ይህን ተተኪ አጽድቅ"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "የበጎ ፈቃደኞች አስተዳዳሪ አገልግሎት እንዲፈጥር እና እርስዎን አስተባባሪው እንዲያደርግ ይጠይቁ።"
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "ቦታዎን እንዲሸፍን ሰው ይጠይቁ"
+
+#: 
+msgid "Ask them"
+msgstr "ጠይቃቸው"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "ተጠይቋል — አስተባባሪዎ ያረጋግጣል።"
+
+#: 
+msgid "Assign a volunteer"
+msgstr "በጎ ፈቃደኛ መድብ"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "ከአሁኑ ዕቅድ ውጭ የተመደበ"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "ምደባው ተሰርዟል"
+
+#: 
+msgid "Assignment not found"
+msgstr "ምደባው አልተገኘም"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "ቢያንስ አንድ personId ወይም familyId ያስፈልጋል"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "ለአንድ የአገልግሎት ቦታ ቢበዛ %d ነባሪ በጎ ፈቃደኞች ሊመረጡ ይችላሉ"
+
+#: 
+msgid "Author"
+msgstr "ደራሲ"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "ሥልጣን የሚሰጠው ለሰውየው እንጂ ለመግቢያ አይደለም፣ ስለዚህ መግቢያ ከማግኘታቸው በፊት ሊሰጥ ይችላል። መግቢያው ራስን ማገልገል ብቻ የሆነ ሰው አስተዳዳሪ መለያውን እስኪያሰፋ ድረስ የራሱን መርሐ ግብር ብቻ ማየቱን ይቀጥላል።"
+
+#: 
+msgid "Automatic"
+msgstr "ራስ-ሰር"
+
+#: 
+msgid "Awaiting reply"
+msgstr "ምላሽ በመጠባበቅ ላይ"
+
+#: 
+msgid "Back to Email History"
+msgstr "ወደ የኢሜይል ታሪክ ተመለስ"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "ወደ የአገልግሎት ዳሽቦርድ ተመለስ"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "ወደ የአገልግሎት ቀናት ተመለስ"
+
+#: 
+msgid "Back to Person"
+msgstr "ወደ ሰው ተመለስ"
+
+#: 
+msgid "Back to editing"
+msgstr "ወደ አርትዖት ተመለስ"
+
+#: 
+msgid "Back to my schedule"
+msgstr "ወደ መርሐ ግብሬ ተመለስ"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "ወደ አባላት ፖርታል ተመለስ"
+
+#: 
+msgid "Back to your profile"
+msgstr "ወደ መገለጫዎ ተመለሱ"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "የጀርባ ሥራዎች እና ማድረስ"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "የጀርባ ሥራዎች ለመጨረሻ ጊዜ የሠሩት"
+
+#: 
+msgid "Background jobs ran"
+msgstr "የጀርባ ሥራዎች የሠሩት"
+
+#: 
+msgid "Birthday greeting"
+msgstr "የልደት ሰላምታ"
+
+#: 
+msgid "Both"
+msgstr "ሁለቱም"
+
+#: 
+msgid "Both (transition)"
+msgstr "ሁለቱም (ሽግግር)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "ሁለቱም — V1 እና V2 ጎን ለጎን (ሽግግር)"
+
+#: 
+msgid "Calendar address"
+msgstr "የቀን መቁጠሪያ አድራሻ"
+
+#: 
+msgid "Calendar saved"
+msgstr "የቀን መቁጠሪያ ተቀምጧል"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "የአባላት ፖርታል ለአባላት የሚያሳያቸው የቀን መቁጠሪያዎች፣ በአስተዳዳሪ -> የአባላት ፖርታል -> የቀን መቁጠሪያዎች ውስጥ ይመረጣሉ።"
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "ይህ አገልግሎት ለሰንበት ትምህርት ቤት መምህራንን ማቅረብ ይችላል?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "ምደባን ሰርዝ"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "ይህን ምደባ ሰርዝ"
+
+#: 
+msgid "Cancelled"
+msgstr "ተሰርዟል"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "ለመግባት የሚጠቀሙበትን የይለፍ ቃል ይቀይሩ፣ ወይም የይለፍ ቃል ብቻ በቂ እንዳይሆን ሁለተኛ ደረጃ ይጨምሩ።"
+
+#: 
+msgid "Change your password"
+msgstr "የይለፍ ቃልዎን ይቀይሩ"
+
+#: 
+msgid "Checked in"
+msgstr "ገብቷል"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "ገብተዋል፦ በክፍሉ ዝርዝር ውስጥ ከ%2$d ውስጥ %1$d"
+
+#: 
+msgid "Checked out"
+msgstr "ወጥቷል"
+
+#: 
+msgid "Choose a class"
+msgstr "ክፍል ይምረጡ"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "ከ1 እስከ 31 ያለውን የወሩን ቀን ይምረጡ"
+
+#: 
+msgid "Choose a new photo"
+msgstr "አዲስ ፎቶ ይምረጡ"
+
+#: 
+msgid "Choose a person"
+msgstr "ሰው ይምረጡ"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "በጎ ፈቃደኛ ይምረጡ"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "መጀመሪያ በጎ ፈቃደኛ ይምረጡ"
+
+#: 
+msgid "Choose an event"
+msgstr "ኩነት ይምረጡ..."
+
+#: 
+msgid "Choose an event type"
+msgstr "የዝግጅት ዓይነት ይምረጡ"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "ያለ የዝግጅት ዓይነት ይምረጡ"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "ለመመዝገብ ቢያንስ አንድ የቀን መቁጠሪያ ይምረጡ።"
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "በራስዎ የቀን መቁጠሪያ መተግበሪያ ውስጥ የሚፈልጓቸውን የቀን መቁጠሪያዎች ይምረጡ።"
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "በየዓመቱ የሚውለውን ቀን በMM-DD ይምረጡ"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "የዝግጅቱን ቀን ይምረጡ"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "የሳምንቱን ቀን ይምረጡ"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "ይህ መርሐ ግብር የሚከተለውን ዝግጅት ይምረጡ"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "የሚያዝበትን ዝግጅት ይምረጡ"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "የሚጠፉትን ዝግጅቶች ይምረጡ"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "የሚያዙትን ዝግጅቶች ይምረጡ"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "የመጀመሪያውን እና የመጨረሻውን ቀን ይምረጡ"
+
+#: 
+msgid "Choose the first date"
+msgstr "የመጀመሪያውን ቀን ይምረጡ"
+
+#: 
+msgid "Choose the last date"
+msgstr "የመጨረሻውን ቀን ይምረጡ"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "የ%2$s መምህራን ብቁ የሚሆኑበትን የ%1$s የአገልግሎት ቦታ ይምረጡ። መምህራን፦ %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "ይህ የአገልግሎት ቦታ የሚያገለግልበትን ቡድን ይምረጡ"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "አባላት የሚያዩትን ገጽታ ይምረጡ፣ የፖርታል ክፍሎችን ያብሩ ወይም ያጥፉ፣ እና ፖርታሉን ማን እየተጠቀመ እንደሆነ ይመልከቱ።"
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "ሳምንታዊ፣ ወርሃዊ ወይም ዓመታዊ ይምረጡ"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "የመርሐ ግብሩ ቀኖች ከየት እንደሚመጡ ይምረጡ"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "ይህ ቤተ ክርስቲያን የትኛውን የበጎ ፈቃድ አገልግሎት ሥርዓት እንደሚጠቀም፣ መርሐ ግብሮች ምን ያህል ቀደም ብለው እንደሚሞሉ እና ማስታወሻዎች መቼ እንደሚላኩ ይምረጡ፣ እንዲሁም የጀርባ ሥራዎች እየሠሩ መሆናቸውን ያረጋግጡ።"
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "እያንዳንዱን የአገልግሎት ቦታ በነባሪ ማን እንደሚሞላ ይምረጡ። ምርጫው በመርሐ ግብሩ ላይ ይቀመጣል፦ ብቁ ሆነው እስከቆዩ ድረስ አሁን በተፈጠሩ እና ዕለታዊው ማሟያ በኋላ በሚፈጥራቸው የአገልግሎት ቀናት ሁሉ ይመደባሉ፣ እንደተቀበሉ ካላደረጓቸው በስተቀር ምላሽ እንዲሰጡ ይጠየቃሉ። ሳምንት በሳምንት ለመመደብ የአገልግሎት ቦታውን ክፍት ይተውት።"
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "ማን እንደሚተካዎት ይምረጡ።"
+
+#: 
+msgid "Church Calendar"
+msgstr "የቤተ ክርስቲያን የቀን መቁጠሪያ"
+
+#: 
+msgid "Church Calendars"
+msgstr "የቤተ ክርስቲያን የቀን መቁጠሪያዎች"
+
+#: 
+msgid "Church calendar"
+msgstr "የቤተ ክርስቲያን የቀን መቁጠሪያ"
+
+#: 
+msgid "Church events of a type"
+msgstr "የአንድ ዓይነት የቤተ ክርስቲያን ዝግጅቶች"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "የአንድ ዓይነት የቤተ ክርስቲያን ዝግጅቶች በቤተ ክርስቲያኑ የቀን መቁጠሪያ ላይ ይጨመራሉ። የመርሐ ግብሩን የዝግጅት ዓይነት፣ ርዕስ እና ቀኖች ይመልከቱ።"
+
+#: 
+msgid "Church website"
+msgstr "የቤተ ክርስቲያን ድረ ገጽ"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM በጎ ፈቃደኞችን ለማስተዳደር ሁለት መንገዶች አሉት። በአንድ ጊዜ አንዱ ብቻ ጥቅም ላይ መዋል አለበት፤ በግራ በኩል ያለው ቅንብር ይህ ቤተ ክርስቲያን የትኛውን እንደሚያይ ይወስናል። መቀየር ገጾችን እና የምናሌ ግቤቶችን ይደብቃል ወይም ያሳያል — መረጃ በፍጹም አያጠፋም፣ ስለዚህ ተመልሰው መቀየር ይችላሉ።"
+
+#: 
+msgid "Close event details"
+msgstr "የዝግጅት ዝርዝሮችን ዝጋ"
+
+#: 
+msgid "Colour"
+msgstr "ቀለም"
+
+#: 
+msgid "Completed"
+msgstr "ተጠናቅቋል"
+
+#: 
+msgid "Compose Message"
+msgstr "መልዕክት ጻፍ"
+
+#: 
+msgid "Confirm your family details"
+msgstr "የቤተሰብዎን ዝርዝሮች ያረጋግጡ"
+
+#: 
+msgid "Coordinator removed"
+msgstr "አስተባባሪው ተወግዷል"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "ይህን አድራሻ ቀድተው እንደ አዲስ የቀን መቁጠሪያ ምዝገባ ወደ የቀን መቁጠሪያ መተግበሪያዎ ያክሉት።"
+
+#: 
+msgid "Could not build the preview."
+msgstr "ቅድመ ዕይታውን መገንባት አልተቻለም።"
+
+#: 
+msgid "Could not count the class's events"
+msgstr "የክፍሉን ዝግጅቶች መቁጠር አልተቻለም"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "ወሰኑን መስጠት አልተቻለም"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "የሰንበት ትምህርት ቤት ክፍሎችን መጫን አልተቻለም"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "ዳሽቦርዱን መጫን አልተቻለም"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "የዝግጅት ምርጫዎችን መጫን አልተቻለም"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "የአገልግሎት ቀናትን መጫን አልተቻለም"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "መርሐ ግብሮችን መጫን አልተቻለም"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "የሚመጡ ዝግጅቶችን መጫን አልተቻለም"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "በጎ ፈቃደኞችን መጫን አልተቻለም"
+
+#: 
+msgid "Could not load this email."
+msgstr "ይህን ኢሜይል መጫን አልተቻለም።"
+
+#: 
+msgid "Could not load this ministry"
+msgstr "ይህን አገልግሎት መጫን አልተቻለም"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "የዚህን አገልግሎት ዝግጅቶች መጫን አልተቻለም"
+
+#: 
+msgid "Could not load this team"
+msgstr "ይህን ቡድን መጫን አልተቻለም"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "ወሰኑን መሻር አልተቻለም"
+
+#: 
+msgid "Create"
+msgstr "ፍጠር"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "መርሐ ግብር ይፍጠሩ እና የአገልግሎት ቀኖቹን ያመንጩ፣ የሚሞሉት ሳምንታት እዚህ ይታያሉ።"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "መርሐ ግብር ይፍጠሩ እና የአገልግሎት ቀኖቹን ያመንጩ፣ በበጎ ፈቃደኞች የሚያዙት ሳምንታት እዚህ ይታያሉ።"
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "ለዚህ ቡድን ቢያንስ አንድ የአገልግሎት ቦታ ይፍጠሩ፣ ከዚያ ማን የት ማገልገል እንደሚችል ምልክት ያድርጉ።"
+
+#: 
+msgid "Create ministry"
+msgstr "አገልግሎት ፍጠር"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "አገልግሎት መፍጠር የበጎ ፈቃደኞች አስተዳዳሪ መዳረሻ ያስፈልገዋል"
+
+#: 
+msgid "Date and time"
+msgstr "ቀን እና ሰዓት"
+
+#: 
+msgid "Date each year"
+msgstr "በየዓመቱ የሚውል ቀን"
+
+#: 
+msgid "Dates"
+msgstr "ቀኖች"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "ቀኖች በYYYY-MM-DD ቅርጸት መሆን አለባቸው"
+
+#: 
+msgid "Day of the month"
+msgstr "የወሩ ቀን"
+
+#: 
+msgid "Day of the week"
+msgstr "የሳምንቱ ቀን"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "አገልግሎትን አቦዝን"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "መርሐ ግብርን አቦዝን"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "አገልግሎቱን ከማጥፋትዎ በፊት ያቦዝኑት።"
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "{{name}} ይቦዝን? በጎን አሞሌው ውስጥ ወደ የተቦዘኑ አገልግሎቶች ይሄዳል፣ እዚያም እንደገና ሊነቃ ወይም ሊጠፋ ይችላል። ምንም አይወገድም።"
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "{{name}} ይቦዝን? በአመንጭ ወይም በዕለታዊው ማሟያ ምንም አዲስ የአገልግሎት ቀናት አይፈጠሩለትም። ያሉት የአገልግሎት ቀናቱ እና ምደባዎቹ ይቀራሉ፣ እንደገናም ሊነቃ ይችላል።"
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "የተቦዘኑ አገልግሎቶች"
+
+#: 
+msgid "Declined"
+msgstr "አልተቀበለም"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "ለአገልግሎት ዝግጅቶች ነባሪ የዝግጅት ዓይነት"
+
+#: 
+msgid "Default volunteers"
+msgstr "ነባሪ በጎ ፈቃደኞች"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "ነባሪ በጎ ፈቃደኞች እንደ መስፈርት ይላካሉ፦ requirements: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "ዝግጅቶችን አጥፋ"
+
+#: 
+msgid "Delete ministry"
+msgstr "አገልግሎትን አጥፋ"
+
+#: 
+msgid "Delete occurrences"
+msgstr "የአገልግሎት ቀናትን አጥፋ"
+
+#: 
+msgid "Delete position"
+msgstr "የአገልግሎት ቦታን አጥፋ"
+
+#: 
+msgid "Delete schedule"
+msgstr "መርሐ ግብርን አጥፋ"
+
+#: 
+msgid "Delete team"
+msgstr "ቡድንን አጥፋ"
+
+#: 
+msgid "Delete those events"
+msgstr "እነዚያን ዝግጅቶች አጥፋ"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "{{name}} እና በውስጡ ያለው ሁሉ ይጥፋ? የአገልግሎት ቦታዎቹ፣ ብቃቶቹ፣ የሰው ኃይል ፍላጎቶቹ፣ መርሐ ግብሮቹ፣ የአገልግሎት ቀናቱ እና ምደባዎቹ — ያለፉ የአገልግሎት መዝገቦችን ጨምሮ — እንዲሁም የቡድን መሪ ፈቃዶቹ ይወገዳሉ። ታሪኩን ለማቆየት በምትኩ ቡድኑን ያቦዝኑ። ይህ ሊቀለበስ አይችልም።"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "{{name}} እና በውስጡ ያለው ሁሉ ይጥፋ? ቡድኖቹ፣ የአገልግሎት ቦታዎቹ፣ መርሐ ግብሮቹ፣ {{occurrences}} የአገልግሎት ቀናት እና {{assignments}} ምደባዎች — ያለፉ የአገልግሎት መዝገቦችን ጨምሮ — እንዲሁም የአስተባባሪው እና የቡድን መሪ ፈቃዶች፣ የበጎ ፈቃደኞች ስብስብ ቡድኑ እና የቀን መቁጠሪያው ይወገዳሉ። ይህ ሊቀለበስ አይችልም።"
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "{{name}} ይጥፋ? ብቃቶቹ፣ የሰው ኃይል ፍላጎቶቹ እና ምደባዎቹ — ያለፉ የአገልግሎት መዝገቦችን ጨምሮ — ከእሱ ጋር ይወገዳሉ። ታሪኩን ለማቆየት በምትኩ የአገልግሎት ቦታውን ያቦዝኑ። ይህ ሊቀለበስ አይችልም።"
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "{{name}} ይጥፋ? ይህ ሊቀለበስ አይችልም።"
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "አገልግሎት ማጥፋት የበጎ ፈቃደኞች አስተዳዳሪ መዳረሻ ያስፈልገዋል"
+
+#: 
+msgid "Developer mode"
+msgstr "የገንቢ ሁነታ"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "ተከናውኗል — ወደ ዝርዝሩ ተመልሰዋል።"
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "የዚህ የአገልግሎት ቀን የራሱን የሰው ኃይል ፍላጎት ትተው መርሐ ግብሩን እንደገና ይከተል?"
+
+#: 
+msgid "Due soon"
+msgstr "በቅርቡ የሚደርስ"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "እያንዳንዱ የቀን መቁጠሪያ እንደ ዓይነት እና መታወቂያ መሰጠት አለበት።"
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "እያንዳንዱ ነባሪ በጎ ፈቃደኛ ሰው መሰየም አለበት"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "እያንዳንዱ የሰው ኃይል ፍላጎት የአገልግሎት ቦታ መሰየም አለበት"
+
+#: 
+msgid "Edit event"
+msgstr "ክስተት ርድ"
+
+#: 
+msgid "Edit ministry"
+msgstr "አገልግሎትን አርትዕ"
+
+#: 
+msgid "Edit position"
+msgstr "የአገልግሎት ቦታን አርትዕ"
+
+#: 
+msgid "Edit schedule"
+msgstr "መርሐ ግብርን አርትዕ"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "የሰው ኃይል ፍላጎቶችን አርትዕ"
+
+#: 
+msgid "Edit team"
+msgstr "ቡድንን አርትዕ"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "መርሐ ግብሩን አርትዕ አድርገው ሌላ ክፍል ይምረጡ።"
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "መርሐ ግብሩን አርትዕ አድርገው ሌላ የዝግጅት ዓይነት ይምረጡ።"
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "መርሐ ግብሩን አርትዕ አድርገው የሚከተለውን ዝግጅት ይምረጡ።"
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "መርሐ ግብሩን አርትዕ አድርገው ብዙ ዝግጅቶችን እንዲከተል የመጨረሻ ቀኑን ያንቀሳቅሱ።"
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "በአባላት ፖርታል በኩል ተስተካክሏል፦ %s"
+
+#: 
+msgid "Email %s"
+msgstr "ለ%s ኢሜይል ላክ"
+
+#: 
+msgid "Email %s Family"
+msgstr "ለ%s ቤተሰብ ኢሜይል ላክ"
+
+#: 
+msgid "Email History"
+msgstr "የኢሜይል ታሪክ"
+
+#: 
+msgid "Email content"
+msgstr "የኢሜይል ይዘት"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "ያልተገኙትን ኢሜይል ላክ፦ %s"
+
+#: 
+msgid "Email not found"
+msgstr "ኢሜይሉ አልተገኘም"
+
+#: 
+msgid "Email preview"
+msgstr "የኢሜይል ቅድመ ዕይታ"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "ኢሜይል መላክ ተሰናክሏል"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "ኢሜይል መላክ አልነቃም። ከመላክዎ በፊት የSMTP ቅንብሮችን ያዋቅሩ እና ኢሜይልን ያንቁ።"
+
+#: 
+msgid "Emails"
+msgstr "ኢሜይሎች"
+
+#: 
+msgid "End time"
+msgstr "ማብቂያ ጊዜ"
+
+#: 
+msgid "Enter counts"
+msgstr "ቁጥሮችን ያስገቡ"
+
+#: 
+msgid "Enter email subject…"
+msgstr "የኢሜይሉን ርዕስ ያስገቡ…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "የአሁኑን የይለፍ ቃልዎን፣ ከዚያ አዲሱን የይለፍ ቃልዎን ሁለት ጊዜ ያስገቡ።"
+
+#: 
+msgid "Enter your message…"
+msgstr "መልዕክትዎን ያስገቡ…"
+
+#: 
+msgid "Event staffed"
+msgstr "ዝግጅቱ በበጎ ፈቃደኞች ተይዟል"
+
+#: 
+msgid "Event title"
+msgstr "የክስተት ርዕስ"
+
+#: 
+msgid "Event type"
+msgstr "ክስተት ዓይነት"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "ChurchCRM የላካቸው ሁሉም ኢሜይሎች፣ አዲሱ መጀመሪያ። ሙሉ ታሪካቸውን ለማየት አንድ ሰው ይክፈቱ።"
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "በዚህ ጊዜ ውስጥ ያለ እያንዳንዱ የአገልግሎት ቦታ የሚያስፈልጉት ሰዎች አሉት።"
+
+#: 
+msgid "Everyone has answered"
+msgstr "ሁሉም መልሰዋል"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "በምርጫ ውስጥ ያሉት ሁሉ የዚህ አገልግሎት በጎ ፈቃደኞች ይሆናሉ። የአገልግሎት ቦታዎቻቸውን በኋላ ምልክት ያድርጉ።"
+
+#: 
+msgid "Everything is correct"
+msgstr "ሁሉም ትክክል ነው"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "ቅድመ ዕይታውን መገንባት አልተሳካም"
+
+#: 
+msgid "Failed to load email"
+msgstr "ኢሜይሉን መጫን አልተሳካም"
+
+#: 
+msgid "Failed to load email history"
+msgstr "የኢሜይል ታሪኩን መጫን አልተሳካም"
+
+#: 
+msgid "Failed to send email"
+msgstr "ኢሜይሉን መላክ አልተሳካም"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "ኢሜይሉን መላክ አልተሳካም። እባክዎ እንደገና ይሞክሩ ወይም 'በኢሜይል ደንበኛ ክፈት' ን ይጠቀሙ።"
+
+#: 
+msgid "Family Member"
+msgstr "የቤተሰብ አባል"
+
+#: 
+msgid "Family verification"
+msgstr "የቤተሰብ ማረጋገጫ"
+
+#: 
+msgid "File"
+msgstr "ፋይል"
+
+#: 
+msgid "Fill"
+msgstr "ሙላ"
+
+#: 
+msgid "Fill by default with"
+msgstr "በነባሪ በዚህ ሙላ"
+
+#: 
+msgid "Fill this gap"
+msgstr "ይህን ክፍተት ሙላ"
+
+#: 
+msgid "Filled"
+msgstr "ተሞልቷል"
+
+#: 
+msgid "Find a sub"
+msgstr "ተተኪ ፈልግ"
+
+#: 
+msgid "Find a volunteer"
+msgstr "በጎ ፈቃደኛ ፈልግ"
+
+#: 
+msgid "Find an event"
+msgstr "ዝግጅት ፈልግ"
+
+#: 
+msgid "Find something to do"
+msgstr "የሚደረግ ነገር ፈልግ"
+
+#: 
+msgid "Find something to help with"
+msgstr "የሚረዱበት ነገር ፈልግ"
+
+#: 
+msgid "Findings"
+msgstr "ግኝቶች"
+
+#: 
+msgid "First date"
+msgstr "የመጀመሪያ ቀን"
+
+#: 
+msgid "Folder"
+msgstr "አቃፊ"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "ከInclude/themes/ ውስጥ የአባላት ፖርታል የሚጠቀምበት የገጽታ አቃፊ ስም። \"default\" ከChurchCRM ጋር የሚመጣው የሲስተም ገጽታ ነው።"
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "ወደ መጀመሪያ ቀኑ ቀረብ ብለው እንደገና ያመንጩ።"
+
+#: 
+msgid "Generate occurrences"
+msgstr "የአገልግሎት ቀናትን አመንጭ"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "አዲስ የቀን መቁጠሪያ አድራሻ ይወሰድ?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "ለአገልግሎቱ ስም ይስጡ"
+
+#: 
+msgid "Give the position a name"
+msgstr "ለአገልግሎት ቦታው ስም ይስጡ"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "የመጀመሪያ እና የመጨረሻ ሰዓቶችን በHH:MM ይስጡ"
+
+#: 
+msgid "Give the team a name"
+msgstr "ለቡድኑ ስም ይስጡ"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "ወደ በጎ ፈቃድ አገልግሎቴ ሂድ"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "ወደ የአባላት ፖርታል ቅንብሮች ሂድ"
+
+#: 
+msgid "Going"
+msgstr "የሚገኙ"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "ብቃቱን በአገልግሎቱ ገጽ ላይ ይስጡ፣ ከዚያ እዚህ ይመድቧቸው።"
+
+#: 
+msgid "Granted"
+msgstr "ተሰጥቷል"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "ቤተ ክርስቲያኑ ስለ ቤተሰብዎ በመዝገብ ያለውን ይመልከቱ፣ ከዚያ አሁንም ትክክል መሆኑን ይንገሩን።"
+
+#: 
+msgid "Headcount"
+msgstr "የተገኙ ሰዎች ቆጠራ"
+
+#: 
+msgid "Hello %s"
+msgstr "ሰላም %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "እርዳታ ይፈለጋል"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "የእርዳታ ጥያቄው ሊቀመጥ አልቻለም"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "ለእያንዳንዱ መርሐ ግብር ለሚከተላቸው ዝግጅቶች የአገልግሎት ቀናት ምን ያህል ቀደም ብለው እንደሚፈጠሩ። ዕለታዊ የጀርባ ሥራ እያንዳንዱን መርሐ ግብር እስከዚህ ነጥብ ድረስ ሞልቶ ያቆያል።"
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "ከበጎ ፈቃደኛ የአገልግሎት ቀን ስንት ሰዓት በፊት የማስታወሻ ኢሜይል እንደሚላክ። ምንም ማስታወሻ እንዳይላክ ወደ 0 ያዋቅሩ። ማድረሱ የሚወሰነው የጀርባ ሥራዎች በመሥራታቸው ላይ ነው፤ ለሚመከረው የcron ቅንብር የበጎ ፈቃደኛ ሰነዱን ይመልከቱ።"
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "ከአገልግሎት ቀን ስንት ሰዓት በፊት የማስታወሻ ኢሜይል እንደሚላክ። ምንም ማስታወሻ እንዳይላክ ወደ 0 ያዋቅሩ።"
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "እያንዳንዱ የአገልግሎት ቦታ ይህ ሲሠራ ሁል ጊዜ ስንት ሰዎች እንደሚያስፈልጉት። አንድ ቀን በኋላ በራሱ ሊቀየር ይችላል። ነባሪ በጎ ፈቃደኛ ብቁ ሆኖ እስከቆየ ድረስ በእያንዳንዱ አዲስ የአገልግሎት ቀን ይመደባል፤ አንዱን መቀየር አስቀድመው ያሉ የአገልግሎት ቀናትን በፍጹም አይቀይርም።"
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "የዚህ መርሐ ግብር እያንዳንዱ የአገልግሎት ቀን ስንት በጎ ፈቃደኞች እንደሚያስፈልጉት። ይህ መርሐ ግብር በፍጹም የማይጠቀምበትን የአገልግሎት ቦታ ምልክት ያንሱ። ነባሪ በጎ ፈቃደኛ ብቁ ሆኖ እስከቆየ ድረስ በእያንዳንዱ አዲስ የአገልግሎት ቀን ይመደባል፤ አንዱን መቀየር አስቀድመው ያሉ የአገልግሎት ቀናትን በፍጹም አይቀይርም።"
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "ይህ ዝግጅት ስንት በጎ ፈቃደኞች እንደሚያስፈልገው። የማይጠቀምበትን የአገልግሎት ቦታ ምልክት ያንሱ።"
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "ለእያንዳንዱ መርሐ ግብር ለሚከተላቸው ዝግጅቶች የበጎ ፈቃደኛ የአገልግሎት ቀናት ስንት ሳምንታት ቀደም ብለው እንደሚፈጠሩ፣ ከ1 እስከ 52። ዕለታዊ የጀርባ ሥራ እያንዳንዱን መርሐ ግብር እስከዚህ ነጥብ ድረስ ሞልቶ ያቆያል።"
+
+#: 
+msgid "How often"
+msgstr "ምን ያህል ጊዜ"
+
+#: 
+msgid "How to correct this"
+msgstr "ይህን እንዴት ማስተካከል ይቻላል"
+
+#: 
+msgid "I can't"
+msgstr "አልችልም"
+
+#: 
+msgid "I'd like to help"
+msgstr "መርዳት እፈልጋለሁ"
+
+#: 
+msgid "I'll be there"
+msgstr "እገኛለሁ"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "መልዕክቶች እየከሸፉ ከሆነ አስተዳዳሪ የአገልግሎት ቅንብሮችን እንዲፈትሽ ይጠይቁ።"
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "ከእንግዲህ መገኘት ካልቻሉ የአገልግሎት ቦታው እንዲሞላ እባክዎ በበጎ ፈቃደኛ መርሐ ግብርዎ ላይ በተቻለ ፍጥነት አልቀበልም ይበሉ።"
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "ይህን አድራሻ በስህተት አጋርተው ከሆነ አዲስ ይውሰዱ። አሮጌው አድራሻ ወዲያውኑ መሥራት ያቆማል።"
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "ባለፉት 15 ደቂቃዎች"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "በበጎ ፈቃደኞች ስብስብ ውስጥ"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "ውስጣዊ፦ የበጎ ፈቃደኛ መርሐ ግብሮች እስከ መርሐ ግብር አድማስ የተሞሉበት የመጨረሻ ቀን (YYYY-MM-DD)። በእጅ አያርትዑ።"
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "ውስጣዊ፦ የበጎ ፈቃደኛ መርሐ ግብሮች ለመጨረሻ ጊዜ የተሞሉበት ጊዜ እና ያ ምን ያህል የአገልግሎት ቀናትን እንደፈጠረ። በእጅ አያርትዑ።"
+
+#: 
+msgid "Is this still right?"
+msgstr "ይህ አሁንም ትክክል ነው?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "የአገልግሎት ቀናቱ የሚሞሉ የአገልግሎት ቦታዎች ሳይኖሯቸው ይፈጠራሉ። የሰው ኃይል ፍላጎቱን ለመጨመር መርሐ ግብሩን አርትዕ ያድርጉ።"
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "በ{{className}} ውስጥ ያቆዩአቸው"
+
+#: 
+msgid "Kind"
+msgstr "ዓይነት"
+
+#: 
+msgid "Last 24 hours"
+msgstr "ባለፉት 24 ሰዓታት"
+
+#: 
+msgid "Last 30 days"
+msgstr "ባለፉት 30 ቀናት"
+
+#: 
+msgid "Last 7 days"
+msgstr "ባለፉት 7 ቀናት"
+
+#: 
+msgid "Last attempt"
+msgstr "የመጨረሻ ሙከራ"
+
+#: 
+msgid "Last check"
+msgstr "የመጨረሻ ፍተሻ"
+
+#: 
+msgid "Last date"
+msgstr "የመጨረሻ ቀን"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "በፖርታሉ ለመጨረሻ ጊዜ የታዩት"
+
+#: 
+msgid "Last sign-in"
+msgstr "የመጨረሻ መግቢያ"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "ዝግጅቱ በሚደረግበት ትክክለኛ ሰዓት ለማገልገል ሁለቱንም በ0 ይተዉ። ዝግጅቱን ማንቀሳቀስ በጎ ፈቃደኞችንም ያንቀሳቅሳል።"
+
+#: 
+msgid "Leave open"
+msgstr "ክፍት ተው"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "አባላት በአባላት ፖርታል የራሳቸውን እና የቤተሰባቸውን አባላት የልደት ቀን እንዲቀይሩ ይፍቀዱ።"
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "አባላት የልደት ቀን እንዲያርትዑ ፍቀድ"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "ከላይ ያለው ሁሉ አሁንም ትክክል መሆኑን ለቤተ ክርስቲያኑ ጽሕፈት ቤት ያሳውቁ።"
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "ምክንያቱን ያሳውቋቸው (አማራጭ)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "የዚያ አገልግሎት አስተባባሪዎች ለዚህ ዝግጅት በጎ ፈቃደኞችን እንዲያቅዱ — እና ዝግጅቱን ራሱ እንዲያርትዑ ያስችላቸዋል።"
+
+#: 
+msgid "Loading the calendar…"
+msgstr "የቀን መቁጠሪያው በመጫን ላይ…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "አገልግሎቶችን አስተዳድር"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "አገልግሎቶቼን አስተዳድር"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "አገልግሎቶቼን የማስተዳደር መዳረሻ፣ ከሚተዳደር አገልግሎት ወይም ቡድን ጋር"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "አገልግሎቶቼን የማስተዳደር መዳረሻ፣ ከሚተዳደር አገልግሎት ወይም ቡድን ጋር፣ ያስፈልጋል"
+
+#: 
+msgid "Manage staffing"
+msgstr "የሰው ኃይል ድልድልን አስተዳድር"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "ከ%s አገልግሎት የሚተዳደር"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "ከ{{ministry}} አገልግሎት የሚተዳደር"
+
+#: 
+msgid "Max"
+msgstr "ከፍተኛ"
+
+#: 
+msgid "Member Portal"
+msgstr "የአባላት ፖርታል"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "ይህ እስኪስተካከል ድረስ አባላት \"ለጊዜው አይገኝም\" የሚል ገጽ እያዩ ነው። ተመሳሳይ ዝርዝሮች በመተግበሪያው መዝገብ እና በድር አገልጋዩ የስህተት መዝገብ ውስጥ ተጽፈዋል።"
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "አባላት እዚህ የነቁትን የቀን መቁጠሪያዎች ብቻ ያያሉ። የልደት ቀኖች እና የጋብቻ ክብረ በዓላት የመጀመሪያ ስሞችን እና የመጨረሻ ስም የመጀመሪያ ፊደላትን ብቻ ያሳያሉ።"
+
+#: 
+msgid "Message"
+msgstr "መልዕክት"
+
+#: 
+msgid "Min"
+msgstr "ዝቅተኛ"
+
+#: 
+msgid "Ministries"
+msgstr "አገልግሎቶች"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "እርዳታ የሚፈልጉ አገልግሎቶች"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "ዝግጅቶችን ማከል የሚችሉ አገልግሎቶች"
+
+#: 
+msgid "Ministry"
+msgstr "አገልግሎት"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "የአገልግሎት የቀን መቁጠሪያዎች"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "የአገልግሎት አስተባባሪዎች"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "የአገልግሎት ዳሽቦርድ"
+
+#: 
+msgid "Ministry Settings"
+msgstr "የአገልግሎት ቅንብሮች"
+
+#: 
+msgid "Ministry calendar"
+msgstr "የአገልግሎት የቀን መቁጠሪያ"
+
+#: 
+msgid "Ministry created"
+msgstr "አገልግሎት ተፈጥሯል"
+
+#: 
+msgid "Ministry management access"
+msgstr "የአገልግሎት አስተዳደር መዳረሻ"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "የአገልግሎት አስተዳደር መዳረሻ ያስፈልጋል"
+
+#: 
+msgid "Ministry name"
+msgstr "የአገልግሎት ስም"
+
+#: 
+msgid "Ministry not found"
+msgstr "አገልግሎቱ አልተገኘም"
+
+#: 
+msgid "My Family"
+msgstr "ቤተሰቤ"
+
+#: 
+msgid "My Teams"
+msgstr "ቡድኖቼ"
+
+#: 
+msgid "My ministries and teams"
+msgstr "አገልግሎቶቼ እና ቡድኖቼ"
+
+#: 
+msgid "My schedule"
+msgstr "መርሐ ግብሬ"
+
+#: 
+msgid "My volunteering"
+msgstr "በጎ ፈቃድ አገልግሎቴ"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "ይህን የአገልግሎት ቦታ አባላት የሚረዱበት ነገር በሚፈልጉበት ገጽ ላይ ይሰይሙ።"
+
+#: 
+msgid "Needs an answer"
+msgstr "ምላሽ ያስፈልገዋል"
+
+#: 
+msgid "Needs filling"
+msgstr "መሞላት አለበት"
+
+#: 
+msgid "Never signed in"
+msgstr "ገብቶ አያውቅም"
+
+#: 
+msgid "New account"
+msgstr "አዲስ መለያ"
+
+#: 
+msgid "New event"
+msgstr "አዲስ ዝግጅት"
+
+#: 
+msgid "New ministry"
+msgstr "አዲስ አገልግሎት"
+
+#: 
+msgid "New record notification"
+msgstr "የአዲስ መዝገብ ማሳወቂያ"
+
+#: 
+msgid "New recurring event"
+msgstr "አዲስ ተደጋጋሚ ዝግጅት"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "ለሚከተሉት የአገልግሎት ቦታዎች አዳዲስ በጎ ፈቃደኞች ያስፈልጋሉ"
+
+#: 
+msgid "Newest first"
+msgstr "አዲሱ መጀመሪያ"
+
+#: 
+msgid "Next on %s"
+msgstr "ቀጣይ በ%s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "እስካሁን ለአባላት የተጋራ የቀን መቁጠሪያ የለም።"
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "ለዚህ አገልግሎት ክፍት የሆነ የቀን መቁጠሪያ የለም፣ ስለዚህ ዝግጅቶቹ በየትኛውም የቀን መቁጠሪያ ላይ አይታዩም።"
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "ለአባላት የተጋራ የቀን መቁጠሪያ የለም።"
+
+#: 
+msgid "No class"
+msgstr "ክፍል የለም"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "እስካሁን የተመዘገበ የመገናኛ መረጃ የለም።"
+
+#: 
+msgid "No coordinators yet"
+msgstr "እስካሁን አስተባባሪዎች የሉም"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "በመጀመሪያው እና በመጨረሻው ቀን መካከል ከድግግሞሹ ጋር የሚዛመድ ቀን የለም"
+
+#: 
+msgid "No email was sent."
+msgstr "ምንም ኢሜይል አልተላከም።"
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "ለዚህ መዝገብ እስካሁን ምንም ኢሜይል አልተላከም።"
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "እስካሁን የተመዘገበ የተገኙ ሰዎች ቆጠራ የለም"
+
+#: 
+msgid "No longer needed"
+msgstr "ከእንግዲህ አያስፈልግም"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "እስካሁን ወደ አባላት ፖርታል የገባ አባል የለም።"
+
+#: 
+msgid "No ministry"
+msgstr "አገልግሎት የለም"
+
+#: 
+msgid "No past events"
+msgstr "ያለፉ ዝግጅቶች የሉም"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "ለዚህ ሰው ምንም ፎቶ አልተጫነም።"
+
+#: 
+msgid "No photo was sent."
+msgstr "ምንም ፎቶ አልተላከም።"
+
+#: 
+msgid "No positions yet"
+msgstr "እስካሁን የአገልግሎት ቦታዎች የሉም"
+
+#: 
+msgid "No qualifications yet."
+msgstr "እስካሁን ብቃቶች የሉም።"
+
+#: 
+msgid "No schedules yet"
+msgstr "እስካሁን መርሐ ግብሮች የሉም"
+
+#: 
+msgid "No staffing needs set"
+msgstr "ምንም የሰው ኃይል ፍላጎት አልተዋቀረም"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "የሰው ኃይል ፍላጎት የለም፦ የሚመነጩት የአገልግሎት ቀናት ማንንም አይፈልጉም።"
+
+#: 
+msgid "No substitution requests"
+msgstr "የምትክ ጥያቄዎች የሉም"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "የሚወሰን ምትክ የለም"
+
+#: 
+msgid "No teams yet"
+msgstr "እስካሁን ቡድኖች የሉም"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "በቀን መቁጠሪያው ላይ \"%2$s\" የሚል ርዕስ ያላቸው የሚመጡ የ%1$s ዝግጅቶች የሉም። መርሐ ግብር አስቀድመው ያሉ ዝግጅቶችን ይከተላል።"
+
+#: 
+msgid "No upcoming event matches"
+msgstr "የሚዛመድ የሚመጣ ዝግጅት የለም"
+
+#: 
+msgid "No upcoming events"
+msgstr "የሚመጡ ዝግጅቶች የሉም"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "በቀን መቁጠሪያው ላይ የዚህ ዓይነት የሚመጡ ዝግጅቶች የሉም።"
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "ለመምረጥ የሚመጡ ዝግጅቶች የሉም"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "እስካሁን ማንም አልተመደበም"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "ለዚህ ሌላ ማንም አልሰለጠነም — በምትኩ ለአስተባባሪዎ ይንገሩ።"
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "እያንዳንዱ የአገልግሎት ቦታ ስንት በጎ ፈቃደኞች እንደሚያስፈልጉት ማንም አልተናገረም፣ ስለዚህ የሚሞላ ነገር የለም።"
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "በዚህ ጊዜ ውስጥ ማንም አሁንም እየወሰነ አይደለም።"
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "ለዚህ የአገልግሎት ቦታ እስካሁን ማንም ብቁ አይደለም"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "ለዚህ የአገልግሎት ቦታ እስካሁን ማንም ብቁ አይደለም፣ ስለዚህ ክፍት ሆኖ ይቀራል።"
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "ከተቀባዮቹ ውስጥ ማንኛቸውንም ኢሜይል ማድረግ አይቻልም"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "የለም፦ የዝግጅቱ ዓይነት ለእያንዳንዱ ዝግጅት ይመረጣል"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "ይህን ኢሜይል ለማየት አልተፈቀደልዎትም"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "ይህን ቤተሰብ ለማየት አልተፈቀደልዎትም"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "ይህን ሰው ለማየት አልተፈቀደልዎትም"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "ለዚህ ምደባ ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "ለዚህ አገልግሎት ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "ለዚህ የአገልግሎት ቀን ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "ለዚህ የአገልግሎት ቦታ ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "ለዚህ ብቃት ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "ለዚህ መስፈርት ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "ለዚህ መርሐ ግብር ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "ለዚህ የምትክ ጥያቄ ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "ለዚህ ቡድን ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "ዝግጅቶችን ለዚያ የበጎ ፈቃድ አገልግሎት ለመመደብ ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "ዝግጅቱን %s ለመቀየር ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "የዚህን ዝግጅት የበጎ ፈቃድ አገልግሎት ለመቀየር ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "እርስዎ የሚያስተዳድሩት የበጎ ፈቃድ አገልግሎት የሌለው ዝግጅት ለመፍጠር ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "ይህን ዝግጅት ለማሻሻል ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "ዝግጅቶችን ወደ የቀን መቁጠሪያ \"%s\" ለመሰካት ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "ዝግጅቶችን ከየቀን መቁጠሪያ \"%s\" ለማስወገድ ፈቃድ የለዎትም"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "የበጎ ፈቃድ አገልግሎቱን ከዚህ ዝግጅት ለማስወገድ ፈቃድ የለዎትም"
+
+#: 
+msgid "Not checked in"
+msgstr "አልገባም"
+
+#: 
+msgid "Not found"
+msgstr "አልተገኘም"
+
+#: 
+msgid "Not in the pool"
+msgstr "በስብስቡ ውስጥ የለም"
+
+#: 
+msgid "Not now"
+msgstr "አሁን አይደለም"
+
+#: 
+msgid "Not sent"
+msgstr "አልተላከም"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "አልተዋቀረም፦ \"%s\" ን ይጠቀሙ"
+
+#: 
+msgid "Not staffed"
+msgstr "በበጎ ፈቃደኞች አልተያዘም"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "እስካሁን በጎ ፈቃደኛ አይደለም"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "ምንም አልተቀየረም፣ ስለዚህ ምንም አልተቀመጠም።"
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "ለዚህ ጊዜ በቀን መቁጠሪያው ላይ ምንም የለም።"
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "በአሁኑ ጊዜ በቀን መቁጠሪያው ላይ ምንም የለም።"
+
+#: 
+msgid "Nothing is short"
+msgstr "ምንም የሚጎድል የለም"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "በዝርዝርዎ ላይ እስካሁን ምንም የለም"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "በዝርዝርዎ ላይ እስካሁን ምንም የለም። የሚሞላውን ይመልከቱ።"
+
+#: 
+msgid "Nothing open right now"
+msgstr "አሁን ክፍት የሆነ ምንም የለም"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "እስካሁን ምንም አልተያዘም"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "ምንም አልተያዘም።"
+
+#: 
+msgid "Nothing set up yet"
+msgstr "እስካሁን ምንም አልተዋቀረም"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "ባለፈው ዓመት የዚህ አገልግሎት የሆነ ምንም ነገር አልተከሰተም።"
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "እስካሁን ብቁ የሚደረግ ምንም የለም"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "ምንም አልተቀመጠም። እባክዎ የደመቁትን መስኮች ይፈትሹ።"
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "ምንም አልተቀመጠም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Notification"
+msgstr "ማሳወቂያ"
+
+#: 
+msgid "Notifications"
+msgstr "ማሳወቂያዎች"
+
+#: 
+msgid "Occurrence not found"
+msgstr "የአገልግሎት ቀኑ አልተገኘም"
+
+#: 
+msgid "Occurrences"
+msgstr "የአገልግሎት ቀናት"
+
+#: 
+msgid "Offer to help"
+msgstr "ለመርዳት አቅርብ"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "በቀን አንድ ጊዜ እያንዳንዱ ንቁ መርሐ ግብር ለሚከተላቸው ዝግጅቶች የአገልግሎት ቀናትን ያገኛል፣ እስከ %d ሳምንት ቀደም ብሎ፣ እና የእያንዳንዱ የአገልግሎት ቦታ ነባሪ በጎ ፈቃደኛ ብቁ ሆኖ እስከቆየ ድረስ በአዲሶቹ ላይ ይመደባል።"
+msgstr[1] "በቀን አንድ ጊዜ እያንዳንዱ ንቁ መርሐ ግብር ለሚከተላቸው ዝግጅቶች የአገልግሎት ቀናትን ያገኛል፣ እስከ %d ሳምንት ቀደም ብሎ፣ እና የእያንዳንዱ የአገልግሎት ቦታ ነባሪ በጎ ፈቃደኛ ብቁ ሆኖ እስከቆየ ድረስ በአዲሶቹ ላይ ይመደባል።"
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "ይህ ሰው ለአንድ የአገልግሎት ቦታ ብቁ ከሆነ እዚህ ይታያል፣ ከሚያገለግልባቸው ቀኖች ጋር።"
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "የተያያዘው ቡድኑ ይህ ክፍል ለሆነ ለእያንዳንዱ የቀን መቁጠሪያ ዝግጅት አንድ የአገልግሎት ቀን ይፈጠራል።"
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "ለዚህ ዝግጅት ለእያንዳንዱ ቀን አንድ የአገልግሎት ቀን ይፈጠራል። በቀን መቁጠሪያው ላይ ያሉ ዝግጅቶች ብቻ ሊመረጡ ይችላሉ።"
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "ከቀን መቁጠሪያዎቹ አንዱ የለም"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "ከዝግጅቶቹ አንዱ የለም"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "ከእነዚያ የቀን መቁጠሪያዎች አንዱ ለአባላት አልተጋራም።"
+
+#: 
+msgid "One-time"
+msgstr "አንድ ጊዜ"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "የሰንበት ትምህርት ቤት ክፍል ብቻ ከቡድን ጋር ሊያያዝ ይችላል"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "በሌላ ሰው ስም ምላሽ መመዝገብ የሚችለው አስተባባሪ ብቻ ነው"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "የዚህ አገልግሎት ዝግጅቶችን መፍጠር የሚችለው የዚህ አገልግሎት አስተባባሪ ብቻ ነው"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "የዚህ አገልግሎት ዝግጅቶችን በበጎ ፈቃደኞች ማስያዝ የሚችለው የዚህ አገልግሎት አስተባባሪ ብቻ ነው"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "ይህን መቀየር የሚችለው የበጎ ፈቃደኞች አስተዳዳሪ ብቻ ነው።"
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "አንድ አገልግሎት ለሰንበት ትምህርት ቤት መምህራንን ያቀርብ እንደሆነ መቀየር የሚችለው የበጎ ፈቃደኞች አስተዳዳሪ ብቻ ነው"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "እነዚህን ዝርዝሮች መቀየር የሚችለው የቤተሰብዎ ትልቅ ሰው ብቻ ነው። እባክዎ የቤተ ክርስቲያኑን ጽሕፈት ቤት ያግኙ።"
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "ለዚህ የሰለጠኑ ሰዎች ብቻ ተዘርዝረዋል።"
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "ተተኪ ማቅረብ የሚችለው የተመደበው በጎ ፈቃደኛ ብቻ ነው"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "ይህ አገልግሎት ዝግጅቶችን ሊያክልባቸው የሚችሉት የቀን መቁጠሪያዎች ብቻ ተዘርዝረዋል። የራሱ የቀን መቁጠሪያ መጀመሪያ ላይ ምልክት ተደርጎበታል።"
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "የረጅም ዝርዝሩ የመጀመሪያ ክፍል ብቻ ነው የሚታየው። የቀረውን ለማየት የጊዜ ክልሉን ይቀንሱ።"
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "ተተኪ ያቀረበው በጎ ፈቃደኛ ብቻ ነው ሊያነሳው የሚችለው"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "ከአገልግሎቶች ምናሌ አገልግሎት ይክፈቱ፣ መርሐ ግብር ይፍጠሩ እና ቀኖቹን ያመንጩ፣ በበጎ ፈቃደኞች የሚያዙት ሳምንታት እዚህ ይታያሉ።"
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "አንድን ሰው የአገልግሎቱ አስተባባሪ ወይም ከቡድኖቹ የአንዱ መሪ ለማድረግ አገልግሎቱን ይክፈቱ።"
+
+#: 
+msgid "Open in calendar app"
+msgstr "በቀን መቁጠሪያ መተግበሪያ ክፈት"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "ክፍት ዕድሎችን መጫን አልተቻለም።"
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "ተቀባዮቹን በአካባቢያዊ የኢሜይል መተግበሪያዎ ውስጥ ይክፈቱ"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "የአባላት ፖርታልን ክፈት"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "የአገልግሎት ዳሽቦርድን ክፈት"
+
+#: 
+msgid "Open the ministry"
+msgstr "አገልግሎቱን ክፈት"
+
+#: 
+msgid "Open the occurrence"
+msgstr "የአገልግሎት ቀኑን ክፈት"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "የሚፈልጓቸውን ሰዎች ለመመደብ የአገልግሎት ቀኑን ይክፈቱ።"
+
+#: 
+msgid "Open this team"
+msgstr "ይህን ቡድን ክፈት"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "የቀን መቁጠሪያን ለአገልግሎቶች ክፍት ማድረግ ዝግጅት የመጨመር ፈቃድ ያስፈልገዋል"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "አማራጭ። የዚህ ቡድን የአንድ የአገልግሎት ቦታ ብቁ የሆነ ሁሉ የክፍሉ መምህር ይሆናል፣ የክፍሉ ገጽም መምህራኑን ከእንግዲህ አይቀይርም።"
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "አማራጭ። ክፍሉ የተያያዘው ቡድን ይሆናል፦ ዝርዝሩ የሚገባው ማን እንደሆነ ነው፣ ለክፍሉ የሚሆን መርሐ ግብርም እነዚህን ዝግጅቶች ያገኛል።"
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "ከከፍተኛው በላይ፦ ይህንን ያስወግዱ ወይም ከፍተኛውን ያሳድጉ።"
+
+#: 
+msgid "Overridden templates"
+msgstr "የተተኩ አብነቶች"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "ገጽ %1$s ከ%2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "ገጽ %d ከ%d"
+
+#: 
+msgid "Password reset"
+msgstr "የይለፍ ቃል ዳግም ለመፍጠር"
+
+#: 
+msgid "Password reset link"
+msgstr "የይለፍ ቃል ዳግም ማስጀመሪያ ማስፈንጠሪያ"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "የይለፍ ቃሎች ቢያንስ %s ቁምፊ ርዝመት ሊኖራቸው ይገባል።"
+msgstr[1] "የይለፍ ቃሎች ቢያንስ %s ቁምፊ ርዝመት ሊኖራቸው ይገባል።"
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "የሚመጣ የቀን መቁጠሪያ ዝግጅት ይምረጡ እና ማንን እንደሚፈልግ ይናገሩ። ዝግጅቱ የራሱን ቀን እና ሰዓት ይይዛል፤ ሙሉ ተከታታይን በበጎ ፈቃደኞች ለማስያዝ በምትኩ መርሐ ግብር ያክሉ።"
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "ቦታዎን ለመውሰድ አስቀድሞ የተስማማ ሰው ይምረጡ። አስተባባሪዎ ያረጋግጠዋል።"
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "እባክዎ ከዝርዝሩ ውስጥ የቀን መቁጠሪያዎችን ይምረጡ።"
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "እባክዎ ዝርዝሮችዎ መቀየር እንደሚያስፈልጋቸው ይምረጡ።"
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "መዝገቦቻችንን ማስተካከል እንድንችል እባክዎ የቤተ ክርስቲያኑን ጽሕፈት ቤት ያግኙ።"
+
+#: 
+msgid "Please contact the church office."
+msgstr "እባክዎ የቤተ ክርስቲያኑን ጽሕፈት ቤት ያግኙ።"
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "እባክዎ ቢያንስ ሁለት ቁምፊዎችን ያስገቡ።"
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "በበጎ ፈቃደኛ መርሐ ግብርዎ ላይ በመቀበል ወይም ባለመቀበል መገኘት ይችሉ እንደሆነ እባክዎ ያሳውቁን።"
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "እባክዎ ምን መቀየር እንዳለበት ይንገሩን።"
+
+#: 
+msgid "Portal settings"
+msgstr "የፖርታል ቅንብሮች"
+
+#: 
+msgid "Portal theme"
+msgstr "የፖርታል ገጽታ"
+
+#: 
+msgid "Position"
+msgstr "የአገልግሎት ቦታ"
+
+#: 
+msgid "Position added"
+msgstr "የአገልግሎት ቦታ ታክሏል"
+
+#: 
+msgid "Position deleted"
+msgstr "የአገልግሎት ቦታ ተጠፍቷል"
+
+#: 
+msgid "Position name"
+msgstr "የአገልግሎት ቦታ ስም"
+
+#: 
+msgid "Position not found"
+msgstr "የአገልግሎት ቦታው አልተገኘም"
+
+#: 
+msgid "Position saved"
+msgstr "የአገልግሎት ቦታ ተቀምጧል"
+
+#: 
+msgid "Positions"
+msgstr "የአገልግሎት ቦታዎች"
+
+#: 
+msgid "Positions still short"
+msgstr "አሁንም የሚጎድሉ የአገልግሎት ቦታዎች"
+
+#: 
+msgid "Proposed"
+msgstr "ቀርቧል"
+
+#: 
+msgid "Proposed substitute"
+msgstr "የቀረበ ተተኪ"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "ይህን አገልግሎት ማንኛውም በጎ ፈቃደኛ ሊያየው እና ለመርዳት ሊያቀርብ በሚችልበት የአባላት ፖርታል ክፍት ዕድሎች ገጽ ላይ ያስቀምጡ። ወደ በጎ ፈቃደኞች ስብስብ ይቀላቀላሉ እና ኢሜይል ይደርስዎታል።"
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "በምትኩ {{name}} ይሁን? የመጀመሪያው በጎ ፈቃደኛ ታሪኩን ይይዛል እና ይነገረዋል።"
+
+#: 
+msgid "Qualification not found"
+msgstr "ብቃቱ አልተገኘም"
+
+#: 
+msgid "Qualified for"
+msgstr "ብቁ የሆኑለት"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "ብቁ በጎ ፈቃደኞች ለዚህ የአገልግሎት ቦታ ክፍት ቀናት ራሳቸውን መመዝገብ ይችላሉ። የቡድን መሪ ወይም አስተባባሪ ብቻ ለሚመድባቸው የአገልግሎት ቦታዎች ያጥፉት፤ የአባላት ፖርታል አያቀርባቸውም።"
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "የአሁኑን መምህራኑን ብቁ አድርግ ለ"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "ለአንድ የአገልግሎት ቦታ ብቁ አድርጋቸው"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "ለአንድ የአገልግሎት ቦታ ብቁ አድርጋቸው።"
+
+#: 
+msgid "Reactivate"
+msgstr "እንደገና አግብር"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "የገጽታ ማዘጋጃ መመሪያውን አንብብ"
+
+#: 
+msgid "Recent Emails"
+msgstr "የቅርብ ጊዜ ኢሜይሎች"
+
+#: 
+msgid "Recent Sends"
+msgstr "የቅርብ ጊዜ መላኮች"
+
+#: 
+msgid "Recipient"
+msgstr "ተቀባይ"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "የተቀባዮች ብዛት (%d) በአንድ መላክ ከሚፈቀደው ከፍተኛ (%d) ይበልጣል"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "ተቀባዮች እንደ personIds እና familyIds እንጂ እንደ ኢሜይል አድራሻዎች መሰጠት የለባቸውም"
+
+#: 
+msgid "Record a decline"
+msgstr "አለመቀበልን መዝግብ"
+
+#: 
+msgid "Record an acceptance"
+msgstr "መቀበልን መዝግብ"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "{{name}} እምቢ እንዳለ ይመዝገብ? ምላሹ ከእርስዎ እንደመጣ ይቀመጣል፣ ቦታውም እንደገና ይከፈታል።"
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "{{name}} እሺ እንዳለ ይመዝገብ? ምላሹ ከእነሱ ሳይሆን ከእርስዎ እንደመጣ ይቀመጣል።"
+
+#: 
+msgid "Record: they accepted"
+msgstr "መዝግብ፦ ተቀብለዋል"
+
+#: 
+msgid "Record: they declined"
+msgstr "መዝግብ፦ አልተቀበሉም"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "በጎ ፈቃደኞችን መልምል"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "በጎ ፈቃደኞችን መመልመል እውነት ወይም ሐሰት መሆን አለበት"
+
+#: 
+msgid "Recruiting"
+msgstr "በመመልመል ላይ"
+
+#: 
+msgid "Recurring"
+msgstr "ተደጋጋሚ"
+
+#: 
+msgid "Reject"
+msgstr "ውድቅ አድርግ"
+
+#: 
+msgid "Reject substitution"
+msgstr "ምትክን ውድቅ አድርግ"
+
+#: 
+msgid "Reject this substitute"
+msgstr "ይህን ተተኪ ውድቅ አድርግ"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "የማስታወሻ ቀዳሚ ጊዜ (ሰዓታት)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "ማስታወሻ፦ እንዲያገለግሉ ተመድበዋል"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "ማስታወሻዎች እና ማንቂያዎች የሚደርሱት የጀርባ ሥራዎች ሲሠሩ ብቻ ነው። በጊዜው ለመድረስ በየ15 ደቂቃው ከcron የታቀደ-ሥራ አስኪያጁን ያሂዱ"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "በጎ ፈቃደኛን አስወግድ"
+
+#: 
+msgid "Remove coordinator"
+msgstr "አስተባባሪን አስወግድ"
+
+#: 
+msgid "Remove the class from them"
+msgstr "ክፍሉን ከእነሱ አስወግድ"
+
+#: 
+msgid "Remove the team leader"
+msgstr "የቡድን መሪን አስወግድ"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "{{name}} ከ{{ministry}} ይወገድ? ይህ በዚህ ያሉትን ብቃቶቹን ሁሉ ያስወግዳል፣ ከሚመጡ የአገልግሎት ቀናት ሁሉ ያወጣዋል፣ በዚህ አገልግሎት መርሐ ግብሮች ላይ ከነባሪ በጎ ፈቃደኝነት ያነሳዋል፣ እንዲሁም ከበጎ ፈቃደኞች ስብስብ ያስወግደዋል።"
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "ተወግዷል። {{qualifications}} ብቃቶች፣ {{assignments}} የሚመጡ ምደባዎች፣ {{defaults}} የመርሐ ግብር ነባሪዎች።"
+
+#: 
+msgid "Repeats"
+msgstr "ይደግማል"
+
+#: 
+msgid "Requirement not found"
+msgstr "መስፈርቱ አልተገኘም"
+
+#: 
+msgid "Reset link"
+msgstr "የዳግም ማስጀመሪያ አገናኝ"
+
+#: 
+msgid "Response recorded"
+msgstr "ምላሽ ተመዝግቧል"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "ጥያቄውን በበጎ ፈቃደኛ ዳሽቦርድ ላይ ይመልከቱ እና ያጽድቁት ወይም ውድቅ ያድርጉት።"
+
+#: 
+msgid "Review this request"
+msgstr "ይህን ጥያቄ ገምግም"
+
+#: 
+msgid "Run background jobs now"
+msgstr "የጀርባ ሥራዎችን አሁን አሂድ"
+
+#: 
+msgid "SMTP test"
+msgstr "የSMTP ሙከራ"
+
+#: 
+msgid "Save calendars"
+msgstr "የቀን መቁጠሪያዎችን አስቀምጥ"
+
+#: 
+msgid "Save changes"
+msgstr "ለውጦችን አስቀምጥ"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "ተቀምጧል — ይህ አገልግሎት ከእንግዲህ እርዳታ እየጠየቀ አይደለም"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "ተቀምጧል — ይህ አገልግሎት አሁን እርዳታ እየጠየቀ ነው"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "ተቀምጧል። አባላት ከላይ የነቁትን የቀን መቁጠሪያዎች ያያሉ።"
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "መርሐ ግብር \"{{name}}\" ተፈጥሯል።"
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "መርሐ ግብር \"{{name}}\" ተፈጥሯል። ንቁ ስላልሆነ እስኪነቃ ድረስ የአገልግሎት ቀናትን አይፈጥርም።"
+
+#: 
+msgid "Schedule deactivated"
+msgstr "መርሐ ግብሩ ተቦዝኗል"
+
+#: 
+msgid "Schedule deleted"
+msgstr "መርሐ ግብሩ ተጠፍቷል"
+
+#: 
+msgid "Schedule name"
+msgstr "የመርሐ ግብር ስም"
+
+#: 
+msgid "Schedule not found"
+msgstr "መርሐ ግብሩ አልተገኘም"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "መርሐ ግብሩ እንደገና ነቅቷል"
+
+#: 
+msgid "Schedule saved"
+msgstr "መርሐ ግብሩ ተቀምጧል"
+
+#: 
+msgid "Scheduled"
+msgstr "የተያዘ"
+
+#: 
+msgid "Schedules"
+msgstr "መርሐ ግብሮች"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "መርሐ ግብሮች ለመጨረሻ ጊዜ የተሞሉት"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "መርሐ ግብሮች ከእንግዲህ የራሳቸውን ድግግሞሽ ወይም ሰዓት አይይዙም፤ እያንዳንዱ የአገልግሎት ቀን የቀን መቁጠሪያ ዝግጅትን ይከተላል። ያስወግዱ፦ %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "መርሐ ግብሮች ከእንግዲህ ምን ያህል ቀደም ብለው እንደሚመነጩ አይወስኑም፦ በአስተዳዳሪ → የአገልግሎት ቅንብሮች ላይ ያለው የመርሐ ግብር አድማስ በእያንዳንዱ መርሐ ግብር ላይ ይሠራል። ያስወግዱ፦ generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "የመርሐ ግብር አድማስ (ሳምንታት)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "የወሰን ፈቃዱ አልተገኘም"
+
+#: 
+msgid "Search by name"
+msgstr "በስም ፈልግ"
+
+#: 
+msgid "See the whole calendar"
+msgstr "ሙሉውን የቀን መቁጠሪያ ይመልከቱ"
+
+#: 
+msgid "See what needs filling"
+msgstr "የሚሞላውን ይመልከቱ"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "ዝግጅቶቹን ለመደበቅ ወይም ለማሳየት የቀን መቁጠሪያ ይምረጡ።"
+
+#: 
+msgid "Select ministries..."
+msgstr "አገልግሎቶችን ይምረጡ..."
+
+#: 
+msgid "Self sign-up"
+msgstr "ራስን ምዝገባ"
+
+#: 
+msgid "Self-assignable"
+msgstr "ራስ ሊመደብ የሚችል"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "ራስ ሊመደብ የሚችል እውነት ወይም ሐሰት መሆን አለበት"
+
+#: 
+msgid "Self-service accounts"
+msgstr "ራስን የሚያገለግሉ መለያዎች"
+
+#: 
+msgid "Send"
+msgstr "ላክ"
+
+#: 
+msgid "Send Email"
+msgstr "ኢሜይል ላክ"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "ከChurchCRM ኢሜይል ላክ"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "የምደባ መልዕክቱን እንደገና ላክ"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "የሚታዩትን የቀን መቁጠሪያዎች እንደ ዝርዝር ላክ።"
+
+#: 
+msgid "Send to the church office"
+msgstr "ወደ ቤተ ክርስቲያኑ ጽሕፈት ቤት ላክ"
+
+#: 
+msgid "Send your answer"
+msgstr "መልስዎን ላክ"
+
+#: 
+msgid "Sent"
+msgstr "ተልኳል"
+
+#: 
+msgid "Sent by"
+msgstr "የላከው"
+
+#: 
+msgid "Serving next"
+msgstr "ቀጥሎ የሚያገለግሉት"
+
+#: 
+msgid "Set as Accepted"
+msgstr "እንደተቀበለ አድርግ"
+
+#: 
+msgid "Set staffing needs"
+msgstr "የሰው ኃይል ፍላጎትን አዋቅር"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "\"%s\" ን በአባላት ፖርታል አሳይ"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "በአባላት ፖርታል አሳይ"
+
+#: 
+msgid "Show past events"
+msgstr "ያለፉ ዝግጅቶችን አሳይ"
+
+#: 
+msgid "Show the church calendar"
+msgstr "የቤተ ክርስቲያኑን የቀን መቁጠሪያ አሳይ"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "የቤተ ክርስቲያኑን የቀን መቁጠሪያ በአባላት ፖርታል ውስጥ አሳይ።"
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "የቤተ ክርስቲያኑን የቀን መቁጠሪያ ክፍል በአባላት ፖርታል ውስጥ አሳይ።"
+
+#: 
+msgid "Show the next"
+msgstr "የሚቀጥሉትን አሳይ"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "የበጎ ፈቃድ አገልግሎት እና የቡድን ክፍሎችን በአባላት ፖርታል ውስጥ አሳይ።"
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "ይህን አገልግሎት በክፍት ዕድሎች ገጽ ላይ አሳይ"
+
+#: 
+msgid "Show volunteering"
+msgstr "በጎ ፈቃድ አገልግሎትን አሳይ"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "የበጎ ፈቃድ አገልግሎት እና የቡድን ገጾችን በአባላት ፖርታል ውስጥ አሳይ።"
+
+#: 
+msgid "Show what I have already done"
+msgstr "ቀደም ብዬ ያደረግሁትን አሳይ"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "እርስዎ እንደጻፉት በትክክል ይታያል። የመስመር መግቻዎች ይጠበቃሉ።"
+
+#: 
+msgid "Sign up"
+msgstr "ተመዝገብ"
+
+#: 
+msgid "Sign-in and security"
+msgstr "መግቢያ እና ደህንነት"
+
+#: 
+msgid "Signed in"
+msgstr "ገብተዋል"
+
+#: 
+msgid "Signed up"
+msgstr "ተመዝግቧል"
+
+#: 
+msgid "Sincerely"
+msgstr "ከሰላምታ ጋር"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "አንዳንድ ዝርዝሮችዎ ሊቀመጡ አልቻሉም። እባክዎ የደመቁትን መስኮች ይፈትሹ።"
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "አንዳንድ የቤተሰብዎ ዝርዝሮች ሊቀመጡ አልቻሉም። እባክዎ የደመቁትን መስኮች ይፈትሹ።"
+
+#: 
+msgid "Someone else is covering"
+msgstr "ሌላ ሰው እየተካ ነው"
+
+#: 
+msgid "Something needs changing"
+msgstr "የሆነ ነገር መቀየር አለበት"
+
+#: 
+msgid "Something went wrong"
+msgstr "የሆነ ችግር ተፈጥሯል"
+
+#: 
+msgid "Staff an event"
+msgstr "ዝግጅትን በበጎ ፈቃደኞች አስይዝ"
+
+#: 
+msgid "Staff them"
+msgstr "በበጎ ፈቃደኞች አስይዛቸው"
+
+#: 
+msgid "Staff this event"
+msgstr "ይህን ዝግጅት በበጎ ፈቃደኞች አስይዝ"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "ይህን የአገልግሎት ቀን በበጎ ፈቃደኞች አስይዝ"
+
+#: 
+msgid "Staffed"
+msgstr "በበጎ ፈቃደኞች ተይዟል"
+
+#: 
+msgid "Staffing"
+msgstr "የሰው ኃይል ድልድል"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "የሰው ኃይል ድልድል የሚዋቀረው ዝግጅቶቹ ከተፈጠሩ በኋላ ነው"
+
+#: 
+msgid "Staffing needs"
+msgstr "የሰው ኃይል ፍላጎቶች"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "የሰው ኃይል ፍላጎቶች ተቀምጠዋል"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "አገልግሎት በመፍጠር ይጀምሩ፣ ከዚያ በውስጡ የሚያገለግሉ ቡድኖችን እና የአገልግሎት ቦታዎችን ያክሉ።"
+
+#: 
+msgid "Start time"
+msgstr "ጀመር ወቅት"
+
+#: 
+msgid "Start typing a name"
+msgstr "ስም መተየብ ይጀምሩ"
+
+#: 
+msgid "Statistics"
+msgstr "ስታቲስቲክስ"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "{{name}} {{ministry}} ን ማስተባበር ያቁም? መግቢያው እና የራሱ ምደባዎች አይነኩም።"
+
+#: 
+msgid "Subscribe"
+msgstr "ተመዝገብ"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "የቀን መቁጠሪያውን ተመዝገብ"
+
+#: 
+msgid "Substitute"
+msgstr "ተተኪ"
+
+#: 
+msgid "Substitute approved"
+msgstr "ተተኪው ጸድቋል"
+
+#: 
+msgid "Substitute asked"
+msgstr "ተተኪ ተጠይቋል"
+
+#: 
+msgid "Substitute decision"
+msgstr "የተተኪ ውሳኔ"
+
+#: 
+msgid "Substitute proposed"
+msgstr "ተተኪ ቀርቧል"
+
+#: 
+msgid "Substitute rejected"
+msgstr "ተተኪው ውድቅ ተደርጓል"
+
+#: 
+msgid "Substituted"
+msgstr "ተተክቷል"
+
+#: 
+msgid "Substitution approved"
+msgstr "ምትክ ጸድቋል"
+
+#: 
+msgid "Substitution rejected"
+msgstr "ምትክ ውድቅ ተደርጓል"
+
+#: 
+msgid "Substitution request not found"
+msgstr "የምትክ ጥያቄው አልተገኘም"
+
+#: 
+msgid "Substitution requests"
+msgstr "የምትክ ጥያቄዎች"
+
+#: 
+msgid "Sunday School Class"
+msgstr "የሰንበት ትምህርት ቤት ክፍል"
+
+#: 
+msgid "System calendar"
+msgstr "የሲስተም የቀን መቁጠሪያ"
+
+#: 
+msgid "System default"
+msgstr "የሲስተም ነባሪ"
+
+#: 
+msgid "Take that back"
+msgstr "ያንን አንሳ"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "{{name}} ከዚህ የአገልግሎት ቦታ ይነሳ? ምንም ኢሜይል አይላክም፤ መርሐ ግብራቸው ቀኑን ከእንግዲህ እንደማያስፈልግ ያሳያል፣ ቦታውም እንደገና ይከፈታል።"
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "የዚህ ክፍል መምህራን የሚተዳደሩት በአገልግሎቶች → %1$s → %2$s ውስጥ ነው።"
+
+#: 
+msgid "Team"
+msgstr "ቡድን"
+
+#: 
+msgid "Team Leader"
+msgstr "የቡድን መሪ"
+
+#: 
+msgid "Team added"
+msgstr "ቡድን ታክሏል"
+
+#: 
+msgid "Team deleted"
+msgstr "ቡድን ተጠፍቷል"
+
+#: 
+msgid "Team leader"
+msgstr "የቡድን መሪ"
+
+#: 
+msgid "Team name"
+msgstr "የቡድን ስም"
+
+#: 
+msgid "Team not found"
+msgstr "ቡድኑ አልተገኘም"
+
+#: 
+msgid "Team saved"
+msgstr "ቡድን ተቀምጧል"
+
+#: 
+msgid "Teams"
+msgstr "ቡድኖች"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "ቡድኖች በዚህ አገልግሎት ውስጥ የሚያገለግሉ የሰዎች ቡድኖች ናቸው።"
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "ቡድኖች፣ የአገልግሎት ቦታዎች እና የሚሞሏቸው ሰዎች"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "አሥሩ የቅርብ ጊዜ መግቢያዎች"
+
+#: 
+msgid "Thank you"
+msgstr "እናመሰግናለን!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "ለማገልገል ስለተመዘገቡ እናመሰግናለን"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "ለማገልገል ስለተመዘገቡ እናመሰግናለን። በመርሐ ግብሩ ላይ ነዎት።"
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "እናመሰግናለን። የቤተ ክርስቲያኑ ጽሕፈት ቤት መልስዎን ተቀብሏል።"
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "እናመሰግናለን። የቤተ ክርስቲያኑ ጽሕፈት ቤት ከመጨመሩ በፊት ይህን ይገመግመዋል።"
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "ስላሳወቁን እናመሰግናለን።"
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "እናመሰግናለን — አስተባባሪው እንደገና መርዳት እንደሚፈልጉ ተነግሮታል።"
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "እናመሰግናለን — አስተባባሪው መርዳት እንደሚፈልጉ ተነግሮታል።"
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "እናመሰግናለን — በዝርዝሩ ላይ ነዎት።"
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "ያ የአባላት ፖርታል ገጽታ አቃፊ የለም።"
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "ያ ምደባ የሌላ ሰው ነው"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "ያ ምደባ ሊቀመጥ አልቻለም"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "ያ የልደት ቀን ትክክለኛ ቀን አይደለም።"
+
+#: 
+msgid "That could not be saved."
+msgstr "ያ ሊቀመጥ አልቻለም።"
+
+#: 
+msgid "That could not be sent."
+msgstr "ያ ሊላክ አልቻለም።"
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "ያ የቤተሰብ አባል ሊጨመር አልቻለም። እባክዎ የደመቁትን መስኮች ይፈትሹ።"
+
+#: 
+msgid "That is not a valid date."
+msgstr "ያ ትክክለኛ ቀን አይደለም።"
+
+#: 
+msgid "That list could not be loaded."
+msgstr "ያ ዝርዝር ሊጫን አልቻለም።"
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "ያ ሰው ይህን የአገልግሎት ቦታ በዚህ የአገልግሎት ቀን አስቀድሞ ይዟል"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "ያ ሰው በዚህ የአገልግሎት ቀን ለዚህ የአገልግሎት ቦታ አስቀድሞ ተመድቧል"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "ያ ሰው ለዚህ አገልግሎት በበጎ ፈቃደኞች ስብስብ ውስጥ የለም። ለማንኛውም ለመመደብ ከስብስብ-ውጭ መሻሪያ (override) ጋር እንደገና ይላኩ።"
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "ያ ሰው በዚህ የበጎ ፈቃደኞች ስብስብ ውስጥ የለም"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "ያ ሰው ለዚህ የአገልግሎት ቦታ ብቁ አይደለም"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "ያ ፎቶ ሊቀመጥ አልቻለም።"
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "ያ ፎቶ በጣም ትልቅ ነው። እባክዎ ትንሽ የሆነ ይምረጡ።"
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "ያ የአገልግሎት ቦታ የሌላ አገልግሎት ነው"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "ያ የአገልግሎት ቦታ የሌላ ቡድን ነው"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "ያ የአገልግሎት ቦታ አስቀድሞ ሙሉ በሙሉ ተሞልቷል"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "ያ የአገልግሎት ቦታ በዚህ የአገልግሎት ቀን በበጎ ፈቃደኞች እየተያዘ አይደለም"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "ያ ምላሽ ሊመዘገብ አልቻለም"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "ያ ሁኔታ በቀጥታ ሊዘጋጅ አይችልም"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "ያ የምትክ ጥያቄ ሊወሰን አልቻለም"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "ያ ቡድን የሌላ አገልግሎት ነው"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "ያ ገጽታ ሊነቃ አልቻለም።"
+
+#: 
+msgid "That theme could not be checked."
+msgstr "ያ ገጽታ ሊፈተሽ አልቻለም።"
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "ያ ገጽታ ስህተቶች አሉት፣ ስለዚህ አልነቃም።"
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "ያ በጎ ፈቃደኛ ሊመደብ አልቻለም"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "ያ የሠርግ ቀን ትክክለኛ ቀን አይደለም።"
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s በYYYY-MM-DD ቅርጸት ያለ ቀን መሆን አለበት"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s ሙሉ የደቂቃዎች ቁጥር መሆን አለበት"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s ከዝግጅቱ በ%d ደቂቃዎች ውስጥ መሆን አለበት"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "የአባላት ፖርታል የቀን መቁጠሪያዎች ተቀምጠዋል።"
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "የአባላት ፖርታል የጠየቁትን ማጠናቀቅ አልቻለም። እባክዎ ከጥቂት ደቂቃዎች በኋላ እንደገና ይሞክሩ።"
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "የአባላት ፖርታል ለገባ ሰው ብቻ ነው የሚገኘው፣ ለAPI ደንበኞች አይደለም።"
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "የአባላት ፖርታል ከአሁን በኋላ በአገልጋዩ ላይ ወደሌለው ወደ \"%s\" ገጽታ ተዋቅሯል። በአገልጋዩ ላይ የሚገኝ ገጽታ እስኪመርጡ ድረስ አባላት የስህተት ገጽ እያዩ ነው።"
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "የአባላት ፖርታል ለጊዜው አይገኝም"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "የአባላት ፖርታል ገጽታ \"%s\" ስህተቶች ስላሉት ሊነቃ አልቻለም።"
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "የአባላት ፖርታል ገጽታ ሊታይ አልቻለም"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "የአባላት ፖርታል ገጽታ አቃፊ \"%s\" አልተገኘም።"
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "የአባላት ፖርታል ገጽታ ተቀይሯል።"
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "የ%1$s መምህራን በአገልግሎቶች → %2$s → %3$s ውስጥ እስከሚተዳደሩ ድረስ የመምህር ሚናው ስሙ ሊቀየር ወይም ሊጠፋ አይችልም።"
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "የነቃው የገጽታ አቃፊ ጠፍቷል"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "አድራሻው ተመርጧል — በቁልፍ ሰሌዳዎ ይቅዱት።"
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "የንብረት መንገዱ \"%s\" አይፈቀድም።"
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "ምደባው ሊሰረዝ አልቻለም"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "የምደባ መልዕክቱ እንደገና ይላካል"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "የቀን መቁጠሪያ አድራሻው ተቀድቷል።"
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "የቀን መቁጠሪያዎቹ ሊጫኑ አልቻሉም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "የቀን መቁጠሪያዎቹ ሊቀመጡ አልቻሉም።"
+
+#: 
+msgid "The cart could not be added"
+msgstr "ምርጫው ሊጨመር አልቻለም"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "ቤተ ክርስቲያኑ እስካሁን ኢሜይል አልላከልዎትም።"
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "የቤተ ክርስቲያኑ ጽሕፈት ቤት ተነግሮታል። እባክዎ ቆይተው እንደገና ይሞክሩ።"
+
+#: 
+msgid "The class does not exist"
+msgstr "ክፍሉ የለም"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "ይህ መርሐ ግብር የሚከተለው ክፍል ከእንግዲህ የለም።"
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "የዚህ ኢሜይል ይዘት አልተከማቸም። ChurchCRM የሚያስቀምጠው በኢሜይል ማቀናበሪያ የተጻፉ መልዕክቶችን እና የበጎ ፈቃደኛ ኢሜይሎችን ጽሑፍ ብቻ ነው።"
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "የዚህ ኢሜይል ይዘት አልተቀመጠም።"
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "አስተባባሪው ሊጨመር አልቻለም"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "የአስተባባሪዎች ዝርዝር ሊጫን አልቻለም"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "የእያንዳንዱ የአገልግሎት ቀን ቀን እና ሰዓት የሚመጣው ከቀን መቁጠሪያ ዝግጅቱ ነው፣ ስለዚህ ዝግጅቱን ማንቀሳቀስ መርሐ ግብሩንም ያንቀሳቅሳል።"
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "የቀናት መለኪያው ከ1 እስከ 365 ያለ ሙሉ ቁጥር መሆን አለበት"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "ነባሪ በጎ ፈቃደኛው ሰው መሆን አለበት"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "ነባሪ በጎ ፈቃደኞች በመርሐ ግብሩ ላይ ይቀመጣሉ እና ከአሁን ጀምሮ በሚፈጠሩ የአገልግሎት ቀናት ላይ ይገባሉ።"
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "ነባሪ በጎ ፈቃደኞች ዝርዝር መሆን አለባቸው"
+
+#: 
+msgid "The description is too long"
+msgstr "መግለጫው በጣም ረጅም ነው"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "የክልሉ መጨረሻ ከመጀመሪያው በፊት ነው።"
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "የክልሉ መጨረሻ ቀን አይደለም።"
+
+#: 
+msgid "The event could not be staffed"
+msgstr "ዝግጅቱ በበጎ ፈቃደኞች ሊያዝ አልቻለም"
+
+#: 
+msgid "The event does not exist"
+msgstr "ዝግጅቱ የለም"
+
+#: 
+msgid "The event is inactive"
+msgstr "ዝግጅቱ ንቁ አይደለም"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "ዝግጅቱ ከጀመረ በኋላ መጠናቀቅ አለበት"
+
+#: 
+msgid "The event title"
+msgstr "የዝግጅቱ ርዕስ"
+
+#: 
+msgid "The event title is too long"
+msgstr "የዝግጅቱ ርዕስ በጣም ረጅም ነው"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "የአንድ አገልግሎት አዳዲስ ዝግጅቶች የሚጀምሩበት የዝግጅት ዓይነት። ባዶ ሲሆን ወይም ዓይነቱ ሲጠፋ፣ ካለ \"Other\" የሚባለው ዓይነት ጥቅም ላይ ይውላል።"
+
+#: 
+msgid "The event type does not exist"
+msgstr "የዝግጅቱ ዓይነት የለም"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "ይህ መርሐ ግብር የሚከተለው የዝግጅት ዓይነት ከእንግዲህ የለም።"
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "ዝግጅቶቹ ሊንቀሳቀሱ የሚችሉት ቡድኑ ወደተያያዘበት ክፍል ብቻ ነው"
+
+#: 
+msgid "The events could not be created"
+msgstr "ዝግጅቶቹ ሊፈጠሩ አልቻሉም"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "ዝግጅቶቹ ሊጠፉ አልቻሉም"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "ዝግጅቶቹ በበጎ ፈቃደኞች ሊያዙ አልቻሉም"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "ፈቃዱ ሊወገድ አልቻለም"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "የመጨረሻው ቀን ከመጀመሪያው ቀን በፊት ነው"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "ብቁ የሆኑ በጎ ፈቃደኞች ዝርዝር ሊጫን አልቻለም"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "ከፍተኛው ቁጥር ከዝቅተኛው ቁጥር በታች ሊሆን አይችልም"
+
+#: 
+msgid "The message could not be queued"
+msgstr "መልዕክቱ በወረፋ ሊያዝ አልቻለም"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "ዝቅተኛው ቁጥር አሉታዊ ሊሆን አይችልም"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "አገልግሎቱ ሊፈጠር አልቻለም"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "አገልግሎቱ ሊቦዝን አልቻለም"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "አገልግሎቱ ሊጠፋ አልቻለም"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "አገልግሎቱ እንደገና ሊነቃ አልቻለም"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "አገልግሎቱ ሊቀመጥ አልቻለም"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "የአገልግሎት ቀኑ ሊጠፋ አልቻለም"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "የአገልግሎት ቀኑ መርሐ ግብር የለውም"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "የአገልግሎት ቀናቱ ሊመነጩ አልቻሉም"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "የመጀመሪያው በጎ ፈቃደኛ ይለቀቃል እና ተተኪው የአገልግሎት ቦታውን ይይዛል። ሁለቱም ይነገራቸዋል።"
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "የመጀመሪያው በጎ ፈቃደኛ የአገልግሎት ቦታውን ይይዛል። ሁለቱም ይነገራቸዋል።"
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "የጠየቁት ገጽ የለም። ተንቀሳቅሶ ወይም ተወግዶ ሊሆን ይችላል።"
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "የአገልግሎት ቦታው የሌላ አገልግሎት ነው"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "የአገልግሎት ቦታው ሊጠፋ አልቻለም"
+
+#: 
+msgid "The position could not be saved"
+msgstr "የአገልግሎት ቦታው ሊቀመጥ አልቻለም"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "የአገልግሎት ቦታው አሁንም ተሸፍኗል፣ ስለዚህ ዝርዝሩን ማስተካከል ካልፈለጉ በስተቀር ምንም እርምጃ አያስፈልግም።"
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "ብቃቱ ሊወገድ አልቻለም"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "ብቃቱ ሊቀመጥ አልቻለም"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "ብቁ በጎ ፈቃደኞች ሊጫኑ አልቻሉም"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "ድግግሞሹ ዝግጅቶቹ እንዴት እንደሚደጋገሙ መናገር አለበት"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "%1$s በ%2$s ምትክ እንዲያገለግል የቀረበው ጥያቄ ጸድቋል።"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "%1$s በ%2$s ምትክ እንዲያገለግል የቀረበው ጥያቄ አልጸደቀም።"
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "ተመሳሳዩ የአገልግሎት ቦታ በሰው ኃይል ፍላጎቶች ውስጥ ሁለት ጊዜ ተዘርዝሯል"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "መርሐ ግብሩ ሊቦዝን አልቻለም"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "መርሐ ግብሩ ሊጠፋ አልቻለም"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "መርሐ ግብሩ እንደገና ሊነቃ አልቻለም"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "መርሐ ግብሩ ሊቀመጥ አልቻለም"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "መርሐ ግብሩ ተዘምኗል፣ ስለዚህ ምንም ተጨማሪ የሚደረግ ነገር የለም።"
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "የመርሐ ግብሩ መስኮት ከመጀመሩ በፊት ያበቃል"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "የመርሐ ግብሩ የሰው ኃይል ፍላጎቶች ሊጫኑ አልቻሉም"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "የሰው ኃይል ፍላጎቶቹ ሊጫኑ አልቻሉም"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "የሰው ኃይል ፍላጎቶቹ ዳግም ሊጀመሩ አልቻሉም"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "የሰው ኃይል ፍላጎቶቹ ሊቀመጡ አልቻሉም"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "የሰው ኃይል ፍላጎቶቹ ዝርዝር መሆን አለባቸው"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "የሰው ኃይል ድልድል ዕቅዱ ሊጫን አልቻለም"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "የክልሉ መጀመሪያ ቀን አይደለም።"
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "ምትኩ ሊወሰን አልቻለም"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "የምትክ ጥያቄዎቹ ሊጫኑ አልቻሉም"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "መምህራኑ ወደዚህ ቡድን የአገልግሎት ቦታ ብቻ ሊገቡ ይችላሉ"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "የ%1$s መምህራን የሚተዳደሩት በአገልግሎቶች → %2$s → %3$s ውስጥ ነው። ተማሪዎች አሁንም እዚህ ሊቀየሩ ይችላሉ።"
+
+#: 
+msgid "The team could not be deleted"
+msgstr "ቡድኑ ሊጠፋ አልቻለም"
+
+#: 
+msgid "The team could not be saved"
+msgstr "ቡድኑ ሊቀመጥ አልቻለም"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "ቡድኑ የዚህ አገልግሎት አይደለም"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "የገጽታ አቃፊው አልተገኘም።"
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "በአገልግሎት የቀን መቁጠሪያ ትር ላይ አዲስ ዝግጅት የሚጀምርበት ዓይነት። ለምሳሌ የተገኙ ሰዎች ቆጠራ ምድቦች ለሚያስፈልገው ክፍል፣ ለእያንዳንዱ ዝግጅት አሁንም ሊቀየር ይችላል።"
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "የበጎ ፈቃደኛ ምደባው ሊቀመጥ አልቻለም"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "የ%s አገልግሎት የበጎ ፈቃደኞች ስብስብ።"
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "የበጎ ፈቃደኛ ማዋቀር ለውጥ ሊቀመጥ አልቻለም"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "መስኮቱ ከመጀመሩ በፊት ያበቃል"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "አስተባባሪዎቻቸው ዝግጅት የመጨመር ፈቃድ ሳይኖራቸው የአገልግሎታቸውን ዝግጅቶች ወደዚህ የቀን መቁጠሪያ ሊሰኩ ይችላሉ።"
+
+#: 
+msgid "Theme"
+msgstr "ገጽታ"
+
+#: 
+msgid "Themes"
+msgstr "ገጽታዎች"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "ገጽታዎች የሚቀርቡት በቤተ ክርስቲያንዎ እንጂ በChurchCRM አይደለም፣ እና በChurchCRM ፕሮጀክት አልተረጋገጡም።"
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "መታወቂያ %d ያለው የቤተ ክርስቲያን የቀን መቁጠሪያ የለም።"
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "መታወቂያ %d ያለው የሲስተም የቀን መቁጠሪያ የለም።"
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "እነዚህ ቤተ ክርስቲያኑ ስለእርስዎ በመዝገብ ያለው ዝርዝሮች ናቸው። ለውጦች ወዲያውኑ ይቀመጣሉ።"
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "እነዚህ እርስዎ የሚንከባከቧቸው የበጎ ፈቃደኛ ቡድኖች ናቸው። የአገልግሎት ቦታዎቹን ለማዋቀር፣ ማን የት ማገልገል እንደሚችል ለመናገር እና የሚመጡትን ሳምንታት ለመሙላት አንዱን ይክፈቱ።"
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "እነዚህ ዝግጅቶች አንድ ተከታታይ አይደሉም፦ በርዕስ፣ በዓይነት ወይም በክፍል ይለያያሉ"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "እነዚህ አገልግሎቶች ተጨማሪ ሰዎችን ይፈልጋሉ። ፍላጎት እንዳለዎት ይንገሯቸው እና አንድ ሰው ያነጋግርዎታል።"
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "እነዚህ ፍላጎቶች የመጡት ከመርሐ ግብሩ ነው። እዚህ ማስቀመጥ የሚቀይረው ይህን የአገልግሎት ቀን ብቻ ነው።"
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "እነዚህ ቁጥሮች የሚቆጥሩት ራስን የሚያገለግሉ መለያዎችን ብቻ ነው፦ መግቢያቸው የአባላት ፖርታልን እንጂ ሌላ ምንም መድረስ የማይችል ሰዎችን።"
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "እነዚህ ሰዎች አሁንም ተመድበዋል፣ ነገር ግን የያዙት የአገልግሎት ቦታ ከዚህ ቀን የሰው ኃይል ዕቅድ ከእንግዲህ አካል አይደለም።"
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "እነዚህ ሰዎች አሁንም ተመድበዋል፣ ነገር ግን የያዙት የአገልግሎት ቦታ ከዚህ የአገልግሎት ቀን የሰው ኃይል ዕቅድ ከእንግዲህ አካል አይደለም።"
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "እነዚህ የታቀዱ የአገልግሎት ቦታዎች አሁንም ሰው ያስፈልጋቸዋል።"
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "እነዚህ የ%1$s ቡድኖች ከሰንበት ትምህርት ቤት ክፍል ጋር ተያይዘዋል፦ %2$s። መጀመሪያ ትስስራቸውን ያላቅቁ።"
+
+#: 
+msgid "They could not be added"
+msgstr "ሊጨመሩ አልቻሉም"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "ከዚህ አገልግሎት ሊወገዱ አልቻሉም"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "ዝግጅቱ ከተጠናቀቀ %d ደቂቃ በኋላ ያበቃሉ።"
+msgstr[1] "ዝግጅቱ ከተጠናቀቀ %d ደቂቃ በኋላ ያበቃሉ።"
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "ዝግጅቱ ከመጠናቀቁ %d ደቂቃ በፊት ያበቃሉ።"
+msgstr[1] "ዝግጅቱ ከመጠናቀቁ %d ደቂቃ በፊት ያበቃሉ።"
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "እዚህ አስቀድመው በጎ ፈቃደኛ ነበሩ"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "ይህ ምደባ %1$s ነው እና ወደ %2$s ሊቀየር አይችልም"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "ይህ ምደባ ከአሁን በኋላ ንቁ አይደለም"
+
+#: 
+msgid "This email is not in your history."
+msgstr "ይህ ኢሜይል በታሪክዎ ውስጥ የለም።"
+
+#: 
+msgid "This event has already happened"
+msgstr "ይህ ዝግጅት አስቀድሞ ተካሂዷል"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "ይህ ለግምገማ ወደ ቤተ ክርስቲያኑ ጽሕፈት ቤት ይሄዳል። አንድ ሠራተኛ እስኪያጸድቀው ድረስ አዲሱ የቤተሰብ አባል እዚህ ግምገማ በመጠባበቅ ላይ ሆኖ ይታያል።"
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "ይህ ቡድን የአንድ የበጎ ፈቃድ አገልግሎት ስብስብ ነው እና ከአገልግሎቱ ጋር ይጠፋል"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "ይህ ቡድን የ%s የበጎ ፈቃደኞች ስብስብ ነው እና የሚተዳደረው ከዚያ አገልግሎት ነው።"
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "ይህ ቡድን የ%s የበጎ ፈቃደኞች ስብስብ ነው። የሚተዳደረው ከዚያ አገልግሎት ነው።"
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "ይህ ጭነት እስካሁን የቀን መቁጠሪያዎች የሉትም።"
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "በቅርቡ ለማገልገል መመደብዎን የሚያስታውስ ማስታወሻ ነው።"
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "ይህ ትክክለኛ የገጽታ አቃፊ ስም አይደለም።"
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "ይህ ከቡድንዎ ቀኖች አንዱ አይደለም።"
+
+#: 
+msgid "This is not one of your teams."
+msgstr "ይህ ከቡድኖችዎ አንዱ አይደለም።"
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "ቤተ ክርስቲያኑ ፖስታ የሚልክበት አድራሻ እና ስለ ቤተሰብዎ የሚደውልበት ሰው እዚህ ይገኛል።"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "ይህ የቤተ ክርስቲያን መለያዎ ነው። ለራስዎ እና ለቤተሰብዎ ማድረግ የሚችሉት ሁሉ እዚህ አለ።"
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "ይህ አገልግሎት በቀን መቁጠሪያው ላይ የሚመጡ ዝግጅቶች የሉትም።"
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "ይህ አገልግሎት \"%s\" የሚል ርዕስ ያላቸው የሚመጡ ዝግጅቶች የሉትም። መርሐ ግብር አስቀድመው ያሉ ዝግጅቶችን ይከተላል፦ መጀመሪያ በአገልግሎቱ የቀን መቁጠሪያ ትር ላይ ያክሏቸው።"
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "ይህ አገልግሎት የበጎ ፈቃደኞች ስብስብ ቡድን የለውም"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "ይህ አገልግሎት አሁን እርዳታ እየጠየቀ አይደለም"
+
+#: 
+msgid "This ministry's events"
+msgstr "የዚህ አገልግሎት ዝግጅቶች"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "የዚህ አገልግሎት ዝግጅቶች (እስካሁን ዝግጅት አልተመረጠም)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "ይህ የአገልግሎት ቀን መርሐ ግብሩን እንደገና ይከተላል"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "ይህ የአገልግሎት ቀን አስቀድሞ ተካሂዷል"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "ይህ የአገልግሎት ቀን አስቀድሞ ተካሂዷል እና ምደባዎቹ ከእንግዲህ ሊቀየሩ አይችሉም"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "ይህ የአገልግሎት ቀን ተሰርዟል"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "ይህ የአገልግሎት ቀን ከመርሐ ግብሩ ተለይቶ የተቀመጠ የራሱ የሰው ኃይል ፍላጎቶች አሉት።"
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "ይህ ገጽ የመለያዎ አካል አይደለም። መሆን አለበት ብለው ካሰቡ የቤተ ክርስቲያኑን ጽሕፈት ቤት ይጠይቁ።"
+
+#: 
+msgid "This page was not found"
+msgstr "ይህ ገጽ አልተገኘም"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "ይህ የአባላት ፖርታል ክፍል ለበጎ ፈቃደኛ ቡድን መሪዎች ነው።"
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "ይህ የአገልግሎት ቦታ የሚመደበው በቡድን መሪው ወይም በአስተባባሪው ነው እንጂ በመመዝገብ አይደለም"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "ይህ መርሐ ግብር ሊጠፋ አይችልም፦ %d የበጎ ፈቃደኛ ምደባዎች አሁንም የአገልግሎት ቀናቱን ይጠቅሳሉ።"
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "ይህ መርሐ ግብር እስካሁን የሰው ኃይል ፍላጎቶች የሉትም"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "ይህ መርሐ ግብር ንቁ አይደለም። የአገልግሎት ቀናቱን ለማመንጨት እንደገና ያንቁት።"
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "ይህ የምትክ ጥያቄ አስቀድሞ ተወስኗል"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "ይህ ቡድን እስካሁን የአገልግሎት ቦታዎች የሉትም"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "ይህ ቡድን ይህን ዝግጅት አስቀድሞ በበጎ ፈቃደኞች እየያዘ ነው"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "ይህ አብነት ገጽታው የማያካትተው ፋይል \"%s\" ን ይጠይቃል።"
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "ይህ ገጽታ ሊነቃ አይችልም"
+
+#: 
+msgid "This theme has no problems."
+msgstr "ይህ ገጽታ ምንም ችግር የለውም።"
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "ይህ የChurchCRM ስሪት በዚህ መንገድ አብነት አይጠቀምም፣ ስለዚህ መተካቱ በፍጹም አይታይም።"
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "በዚህ ቡድን የበጎ ፈቃደኞች ትር ላይ ምልክት ያድርጉባቸው፣ ከዚያ እዚህ ይመድቧቸው።"
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "ምልክቶች ሲያደርጉዋቸው ይቀመጣሉ።"
+
+#: 
+msgid "Times come from this event"
+msgstr "ሰዓቶቹ የሚመጡት ከዚህ ዝግጅት ነው"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "ሁሉንም መርሐ ግብሮች ይሞላል፣ በወረፋ ላይ ያለውን ሁሉ ይልካል እና የተጠናቀቁ የአገልግሎት ቀናትን ይዘጋል፣ ቀጣዩን የታቀደ ሩጫ ሳይጠብቅ።"
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "{{name}} ውድቅ ይደረግ? የመጀመሪያው በጎ ፈቃደኛ ይቀጥላል እና ይነገረዋል።"
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "የአባላት ፖርታል አብነት መሸጎጫን ያጥፉ እና የእያንዳንዱን አብነት ስም በHTML አስተያየት ውስጥ ያትሙ። ለገጽታ ዲዛይነሮች፤ በመደበኛ አጠቃቀም ጊዜ ጠፍቶ ይተዉት።"
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "ቡድኖቻቸው የሰንበት ትምህርት ቤት ክፍሎችን ለሚያስተምሩ አገልግሎት ይህን ያብሩ። ከዚያ ቡድኖቹ ከክፍል ጋር ሊያያዙ ይችላሉ፣ መርሐ ግብሮቹ እና ዝግጅቶቹም አንዱን ሊጠቀሙ ይችላሉ።"
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "የፖርታል አብነት መሸጎጫን ያጠፋል እና የእያንዳንዱን አብነት ስም በHTML አስተያየት ውስጥ ያትማል። ለገጽታ ዲዛይነሮች፤ በመደበኛ አጠቃቀም ጊዜ ይህን ጠፍቶ ይተዉት።"
+
+#: 
+msgid "Two-factor authentication"
+msgstr "ባለሁለት-ደረጃ ማረጋገጫ (2FA)"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "ያልተሞሉ የአገልግሎት ቦታዎች"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "ያልታወቀ የማድረስ ስህተት"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "ያልታወቀ የአገልግሎት ቀን ሁኔታ"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "ያልታወቀ የመርሐ ግብር ትስስር ሁነታ"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "ያልታወቀ የበጎ ፈቃድ አገልግሎት"
+
+#: 
+msgid "Until"
+msgstr "እስከ"
+
+#: 
+msgid "Upcoming availability"
+msgstr "የሚመጣ ተገኝነት"
+
+#: 
+msgid "Update your details"
+msgstr "ዝርዝሮችዎን ያዘምኑ"
+
+#: 
+msgid "Update your family details"
+msgstr "የቤተሰብዎን ዝርዝሮች ያዘምኑ"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "አንድን ዝግጅት ብቻ በበጎ ፈቃደኞች ለማስያዝ \"ይህን ዝግጅት በበጎ ፈቃደኞች አስይዝ\" ን ይጠቀሙ"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "የመርሐ ግብሩን ፍላጎቶች ተጠቀም"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "ተጠቃሚው ዝግጅት የመጨመር ፈቃድ ሊኖረው፣ ወይም የበጎ ፈቃድ አገልግሎትን ማስተባበር አለበት፣ እና የዝግጅቶች ሞጁል መንቃት አለበት"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "ተጠቃሚው ዝግጅት የመጨመር ፈቃድ ሊኖረው፣ ወይም ይህ የቀን መቁጠሪያ የሚገኝበትን የበጎ ፈቃድ አገልግሎት ማስተባበር አለበት"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — የበጎ ፈቃደኛ ዕድሎች (የቀደመ)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — የቀደመ የበጎ ፈቃደኛ ዕድሎች"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — አገልግሎቶች"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — የበጎ ፈቃደኞች አስተዳደር"
+
+#: 
+msgid "Valid"
+msgstr "ትክክለኛ"
+
+#: 
+msgid "Validation"
+msgstr "ማረጋገጫ"
+
+#: 
+msgid "View event"
+msgstr "ዝግጅት ይመልከቱ"
+
+#: 
+msgid "View my schedule"
+msgstr "መርሐ ግብሬን ተመልከት"
+
+#: 
+msgid "View only"
+msgstr "ማየት ብቻ"
+
+#: 
+msgid "View person"
+msgstr "ሰው ይመልከቱ"
+
+#: 
+msgid "View the event"
+msgstr "ዝግጅቱን ተመልከት"
+
+#: 
+msgid "View this email"
+msgstr "ይህን ኢሜይል ተመልከት"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "በጎ ፈቃደኛ (የቀደመ)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "የበጎ ፈቃደኞች አስተዳደር V2 አልነቃም"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "የበጎ ፈቃድ አገልግሎት"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "የበጎ ፈቃደኛ ምደባ"
+
+#: 
+msgid "Volunteer declined"
+msgstr "በጎ ፈቃደኛው አልተቀበለም"
+
+#: 
+msgid "Volunteer experience"
+msgstr "የበጎ ፈቃድ አገልግሎት ሥርዓት"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "የበጎ ፈቃደኛ የአገልግሎት ቦታዎች አሁንም መሞላት አለባቸው"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "የበጎ ፈቃደኛ ማስታወሻ"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "የበጎ ፈቃደኛ ምዝገባ"
+
+#: 
+msgid "Volunteer times"
+msgstr "የበጎ ፈቃደኞች ሰዓቶች"
+
+#: 
+msgid "Volunteering"
+msgstr "በጎ ፈቃድ አገልግሎት"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "ቤተ ክርስቲያን በምትሠራበት መንገድ የተደራጀ በጎ ፈቃድ አገልግሎት። እያንዳንዱ አገልግሎት ቡድኖች እና የአገልግሎት ቦታዎች አሉት፤ ሰዎች ለአገልግሎት ቦታዎች ብቁ ይደረጋሉ እና የአገልግሎቱ ስብስብ ቡድን አባል ይሆናሉ፤ መርሐ ግብሮች በቀን መቁጠሪያው ላይ ያሉ ዝግጅቶችን ይከተላሉ እና የሰው ኃይል መስፈርት ያላቸው ቀን የተቀመጠላቸው የአገልግሎት ቀናትን ያመነጫሉ፤ አስተባባሪዎች ሰዎችን ይመድባሉ፣ እነሱም ይቀበላሉ፣ አልቀበልም ይላሉ ወይም ተተኪ ያቀርባሉ፤ ማስታወሻዎች እና ማንቂያዎች በኢሜይል ይላካሉ። አስተዳዳሪዎች እና አገልግሎቶችን የማስተዳደር ፈቃድ ያላቸው ተጠቃሚዎች ሁሉንም አገልግሎቶች ያያሉ እና ሊፈጥሯቸው፣ ሊያቦዝኗቸው እና ሊያጠፏቸው ይችላሉ። የአገልግሎት አስተባባሪ በምትኩ አገልግሎቶቼን የማስተዳደር ፈቃድ ይሰጠዋል፦ በጎን አሞሌው ላይ ያለው የአገልግሎቶች ርዕስ የሚያስተባብራቸውን አገልግሎቶች ብቻ ያሳያል። የቡድን መሪ ቡድኑን ከአባላት ፖርታል ይመራል። አባላት መርሐ ግብራቸውን ለማየት፣ ምላሽ ለመስጠት፣ ለመመዝገብ እና ለመርዳት ለማቅረብ የአባላት ፖርታልን ይጠቀማሉ።"
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "የተመደቡ በጎ ፈቃደኞች፦ {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "በጎ ፈቃደኞች ያበቃሉ"
+
+#: 
+msgid "Volunteers needed"
+msgstr "የሚያስፈልጉ በጎ ፈቃደኞች"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "የ%s በጎ ፈቃደኞች ለእነዚህ ዝግጅቶች ተመድበዋል፣ ስለዚህ እዚህ ሊጠፉ አይችሉም። ያ አገልግሎት ምደባውን እንዲያስወግድ ይጠይቁ፣ ወይም የቀን መቁጠሪያውን የሚያስተዳድር ሰው ይጠይቁ።"
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "የ{{names}} በጎ ፈቃደኞች ከአንዳንዶቹ ጋር ተመድበዋል። የቀን መቁጠሪያውን ካላስተዳደሩ በስተቀር ያ ምደባ እስኪወገድ ድረስ ማጥፋቱ ውድቅ ይደረጋል።"
+
+#: 
+msgid "Volunteers start"
+msgstr "በጎ ፈቃደኞች ይጀምራሉ"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "በጎ ፈቃደኞች ዝግጅቱ ከጀመረ %d ደቂቃ በኋላ ይጀምራሉ።"
+msgstr[1] "በጎ ፈቃደኞች ዝግጅቱ ከጀመረ %d ደቂቃ በኋላ ይጀምራሉ።"
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "በጎ ፈቃደኞች ዝግጅቱ ከመጀመሩ %d ደቂቃ በፊት ይጀምራሉ።"
+msgstr[1] "በጎ ፈቃደኞች ዝግጅቱ ከመጀመሩ %d ደቂቃ በፊት ይጀምራሉ።"
+
+#: 
+msgid "Waiting for a reply"
+msgstr "ምላሽ በመጠባበቅ ላይ"
+
+#: 
+msgid "Waiting for review"
+msgstr "ግምገማ በመጠባበቅ ላይ"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "የአስተባባሪዎ ማረጋገጫ በመጠባበቅ ላይ።"
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "የሚሞላ ነገር ሲኖር ኢሜይል እንልክልዎታለን።"
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "በእሁድ ጠዋት ተጨማሪ እርዳታ በጣም እንፈልጋለን — ልምድ አያስፈልግም።"
+
+#: 
+msgid "Welcome, %s"
+msgstr "እንኳን ደህና መጡ፣ %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "ምን መቀየር አለበት?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "በዚህ ሳምንት ትኩረትዎን የሚፈልገው"
+
+#: 
+msgid "What the check found"
+msgstr "ፍተሻው ያገኘው"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "የበጎ ፈቃድ አገልግሎት ሥርዓቶች ምንድን ናቸው"
+
+#: 
+msgid "What you want to say"
+msgstr "ለመናገር የሚፈልጉት"
+
+#: 
+msgid "When"
+msgstr "መቼ"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "አንድ በጎ ፈቃደኛ የሚተካው ሰው ሲያቀርብ እንዲያጸድቁት ወይም ውድቅ እንዲያደርጉት እዚህ ይታያል።"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "አንድ በጎ ፈቃደኛ የሚተካው ሰው ሲያቀርብ እንዲያጸድቁት እዚህ ይታያል።"
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "አንድ ሰው በቡድን ውስጥ ሲያስገባዎት ወይም እርስዎ ራስዎ ሲመዘገቡ እዚህ ይታያል።"
+
+#: 
+msgid "Where"
+msgstr "የት"
+
+#: 
+msgid "Where the dates come from"
+msgstr "ቀኖቹ ከየት እንደሚመጡ"
+
+#: 
+msgid "Where we reach you"
+msgstr "የምናገኝዎት መንገድ"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "የትኛው የበጎ ፈቃደኞች አስተዳደር ሥርዓት ንቁ እንደሆነ። V1 የቀደመው የበጎ ፈቃደኛ ዕድሎች ባህሪ ነው፤ V2 አዲሱ የመርሐ ግብር እና የምደባ የሥራ ሂደት ነው። \"Both\" በሽግግር ጊዜ ሁለቱንም ጎን ለጎን ያሳያል።"
+
+#: 
+msgid "Which events"
+msgstr "የትኞቹ ዝግጅቶች"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "ይህ ቤተ ክርስቲያን የትኛውን የበጎ ፈቃድ አገልግሎት ሥርዓት እንደሚጠቀም። በቀኝ በኩል ያለው ካርድ እያንዳንዱን ምርጫ ያብራራል።"
+
+#: 
+msgid "Who is covering"
+msgstr "ማን እየተካ ነው"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "ማን እንደሚያስፈልግ፣ ማን እንዳለ፣ እና ምን እንደሚጎድል"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "ለመጨረሻ ጊዜ ያገለገለው መጀመሪያ ይዘረዘራል።"
+
+#: 
+msgid "Work Email"
+msgstr "የሥራ ኢሜይል"
+
+#: 
+msgid "Yearly"
+msgstr "ዓመታዊ"
+
+#: 
+msgid "You"
+msgstr "እርስዎ"
+
+#: 
+msgid "You are already helping that day"
+msgstr "በዚያ ቀን አስቀድመው እየረዱ ነው"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "በዚያ ቀን አስቀድመው እንደ {{what}} እየረዱ ነው። ለዚህም ይመዝገቡ?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "ይህን ለመቀየር አልተፈቀደልዎትም። እባክዎ የቤተ ክርስቲያኑን ጽሕፈት ቤት ያግኙ።"
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "በአሁኑ ጊዜ ከቤተሰብ ጋር አልተያያዙም"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "እስካሁን የቤተሰብ መዝገብ አካል አይደሉም።"
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "በዝርዝሩ ላይ ነዎት — እናመሰግናለን።"
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "ይህን በበጎ ፈቃደኛ መርሐ ግብርዎ ላይ መገምገም ወይም መቀየር ይችላሉ።"
+
+#: 
+msgid "You cannot open this page"
+msgstr "ይህን ገጽ መክፈት አይችሉም"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "እራስዎን የራስዎ ተተኪ አድርገው ማቅረብ አይችሉም"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "ለዚያ ሊመዘገቡ አልቻሉም።"
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "እስካሁን የበጎ ፈቃደኛ ቡድን አይመሩም።"
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "አዲስ የቀን መቁጠሪያ አድራሻ አለዎት። አሮጌው ከእንግዲህ አይሠራም።"
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "እንዲያገለግሉ ተመድበዋል"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "እንዲያገለግሉ ተመድበዋል።"
+
+#: 
+msgid "You lead this"
+msgstr "ይህን ይመራሉ"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "መርሐ ግብር መፍጠር የሚችሉት ለሚመሩት ቡድን ብቻ ነው"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "ለዚህ እንደገና በዝርዝሩ ላይ ይሆናሉ።"
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "መለያዎ ከሰው መዝገብ ጋር አልተያያዘም። እባክዎ የቤተ ክርስቲያኑን ጽሕፈት ቤት ያግኙ።"
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "የቀን መቁጠሪያ ምዝገባዎ ተቀምጧል።"
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "የአሁኑ አድራሻዎ ወዲያውኑ መሥራት ያቆማል። የሰጡት ሁሉ አዲሱን ይፈልጋል።"
+
+#: 
+msgid "Your details"
+msgstr "ዝርዝሮችዎ"
+
+#: 
+msgid "Your details have been saved."
+msgstr "ዝርዝሮችዎ ተቀምጠዋል።"
+
+#: 
+msgid "Your family details have been saved."
+msgstr "የቤተሰብዎ ዝርዝሮች ተቀምጠዋል።"
+
+#: 
+msgid "Your photo"
+msgstr "ፎቶዎ"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "ፎቶዎ ተቀምጧል።"
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "መርሐ ግብርዎ ሊጫን አልቻለም።"
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "ክፍለ ጊዜዎ አልፏል። እባክዎ እንደገና ይግቡ።"
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "የተተኪ ጥያቄዎ ጸድቋል"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "የተተኪ ጥያቄዎ አልጸደቀም"
+
+#: 
+msgid "already staffed by this team"
+msgstr "በዚህ ቡድን አስቀድሞ በበጎ ፈቃደኞች ተይዟል"
+
+#: 
+msgid "body is required"
+msgstr "አካሉ (body) ያስፈልጋል"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds የቀን መቁጠሪያ መታወቂያዎች ዝርዝር መሆን አለበት"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents ከሚከተሉት አንዱ መሆን አለበት፦ %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId የቡድን መታወቂያ ወይም null መሆን አለበት"
+
+#: 
+msgid "end offset"
+msgstr "የማብቂያ ማካካሻ"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds የዝግጅት መታወቂያዎች ዝርዝር መሆን አለበት"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "እያንዳንዱ መልዕክት ደርሷል ወይም አሁንም በወረፋ ላይ ነው"
+
+#: 
+msgid "has not served yet"
+msgstr "እስካሁን አላገለገለም"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId የአገልግሎት ቦታ መታወቂያ መሆን አለበት"
+
+#: 
+msgid "inactive family"
+msgstr "ንቁ ያልሆነ ቤተሰብ"
+
+#: 
+msgid "line %d"
+msgstr "መስመር %d"
+
+#: 
+msgid "marked do not email"
+msgstr "ኢሜይል አትላክ ተብሎ ምልክት ተደርጎበታል"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "ያልደረሱ መልዕክቶች"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "ከአምስት ሙከራዎች በኋላ ያልደረሱ መልዕክቶች"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "ለመላክ የሚጠባበቁ መልዕክቶች"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds የአገልግሎት መታወቂያዎች ዝርዝር መሆን አለበት"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "ዝግጅቱ ከተጠናቀቀ ደቂቃዎች በኋላ"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "ዝግጅቱ ከጀመረ ደቂቃዎች በኋላ"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "ዝግጅቱ ከመጠናቀቁ ደቂቃዎች በፊት"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "ዝግጅቱ ከመጀመሩ ደቂቃዎች በፊት"
+
+#: 
+msgid "never"
+msgstr "በጭራሽ"
+
+#: 
+msgid "no email address"
+msgstr "የኢሜይል አድራሻ የለም"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds እና familyIds አዎንታዊ ኢንቲጀሮች ድርድሮች መሆን አለባቸው"
+
+#: 
+msgid "record not found"
+msgstr "መዝገቡ አልተገኘም"
+
+#: 
+msgid "same address as another recipient"
+msgstr "ከሌላ ተቀባይ ጋር ተመሳሳይ አድራሻ"
+
+#: 
+msgid "single event"
+msgstr "ነጠላ ዝግጅት"
+
+#: 
+msgid "start offset"
+msgstr "የመነሻ ማካካሻ"
+
+#: 
+msgid "subject and body are required"
+msgstr "ርዕስ እና አካል (body) ያስፈልጋሉ"
+
+#: 
+msgid "subject is required"
+msgstr "ርዕስ ያስፈልጋል"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "ርዕሱ 255 ቁምፊዎች ወይም ከዚያ ያነሱ መሆን አለበት"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool እውነት ወይም ሐሰት መሆን አለበት"
+
+#: 
+msgid "window end"
+msgstr "የመስኮቱ መጨረሻ"
+
+#: 
+msgid "window start"
+msgstr "የመስኮቱ መጀመሪያ"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} ታክለዋል፣ {{alreadyMembers}} እዚህ አስቀድመው በጎ ፈቃደኞች ነበሩ"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} የአገልግሎት ቀናት ተፈጥረዋል፣ {{existing}} አስቀድመው ነበሩ"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} ለ{{className}} {{total}} ዝግጅቶችን ፈጥሯል ({{upcoming}} የሚመጡ)።"
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} ከእነሱ አንዳንዶቹንም በበጎ ፈቃደኞች ይይዛሉ።"
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} ይህን አገልግሎት አስቀድሞ ያስተባብራል"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "{{name}} ተመድቧል"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} በዚህ የአገልግሎት ቀን አስቀድሞ እንደ {{position}} እያገለገለ ነው። አሁንም ሊመድቡት ይችላሉ።"
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} ብቁ ነው ነገር ግን በዚህ አገልግሎት የበጎ ፈቃደኞች ስብስብ ውስጥ የለም። መመደብ ወደዚህ የአገልግሎት ቀን ብቻ ያክለዋል።"
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} አሁን ይህን አገልግሎት ያስተባብራል"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}፦ ቁጥሮቹ ከ0 እስከ {{max}} መካከል መሆን አለባቸው።"
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}፦ ከፍተኛው ከዝቅተኛው በታች ሊሆን አይችልም።"
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}፦ {{name}} ከእንግዲህ ብቁ አይደለም"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}፦ {{name}} ብቁ ነው"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} {{substitute}} ቦታውን እንዲወስድ ይጠይቃል"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{title}} በ{{date}} ተፈጥሯል። አሁን በበጎ ፈቃደኞች ይያዝ?"
+

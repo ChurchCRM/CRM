@@ -1,182 +1,53 @@
 {
-  "Select at least one classification to include in the directory.": "በማውጫው ውስጥ ለማካተት ቢያንስ አንድ ምድብ ይምረጡ።",
-  "Geocoding services": "የጂኦኮዲንግ አገልግሎቶች",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "በመረጡት ቅደም ተከተል የሚሞከሩ የጂኦኮዲንግ አገልግሎቶች። Nominatim (OpenStreetMap) በመላው ዓለም ይሠራል፤ US Census (የአሜሪካ የሕዝብ ቆጠራ ቢሮ) የሚሸፍነው የአሜሪካ አድራሻዎችን ብቻ ነው። US Census ን ለመጠቀም እሱንም ይምረጡ። ምንም ካልተመረጠ Nominatim ይጠቀማል።",
-  "New Record Defaults": "የአዲስ መዝገብ ነባሪ እሴቶች",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "ይህ በካርታ ቅንብሮች ውስጥ የተመረጡትን የጂኦኮዲንግ አገልግሎቶች በመጠቀም የካርታ መጋጠሚያ ለሌላቸው ቤተሰቦች ሁሉ መጋጠሚያ ያገኛል። ቤተሰቦችን በ50 ቡድን እየከፈለ ያከናውናል፤ አንድ ቡድን በአንድ የጂኦኮዲንግ አገልግሎት ሲሆን ወደ አንድ ደቂቃ ይፈጃል፣ ብዙ አገልግሎቶች ሲሆኑ ደግሞ ይረዝማል። ሲሠራ ይህን ገጽ ክፍት አድርገው ማቆየት ይችላሉ። ይቀጥል?",
-  "Used for new records and for geocoding when a record has no country.": "ለአዲስ መዝገቦች እና መዝገቡ አገር ሲያጣ ለጂኦኮዲንግ ያገለግላል።",
-  "Copy from Church Info": "ከቤተ ክርስቲያን መረጃ ቅዳ",
-  "Could not copy the church address.": "የቤተ ክርስቲያኑን አድራሻ መቅዳት አልተቻለም።",
-  "Could not match the church country.": "የቤተ ክርስቲያኑን አገር ማዛመድ አልተቻለም።",
-  "Class lists, attendance sheets, and photo books": "የክፍል ዝርዝሮች፣ የመገኘት ወረቀቶች እና የፎቶ መጻሕፍት",
-  "Group membership lists and Sunday School class reports": "የቡድን አባልነት ዝርዝሮች እና የሰንበት ትምህርት ቤት ክፍል ሪፖርቶች",
-  "Your fiscal year starts in %s.": "የበጀት ዓመትዎ የሚጀምረው በ%s ነው።",
-  "An error occurred": "ስህተት ተከስቷል",
-  "Approve": "አጽድቅ",
-  "Approve selected": "የተመረጡትን አጽድቅ",
-  "Approved": "ጸድቋል",
-  "Change in People Settings": "በሰዎች ቅንብሮች ውስጥ ይቀይሩ",
-  "Could not approve the selected registrations": "የተመረጡትን ምዝገባዎች ማጽደቅ አልተቻለም",
-  "Could not approve this family": "ይህን ቤተሰብ ማጽደቅ አልተቻለም",
-  "Pending Registrations": "በመጠባበቅ ላይ ያሉ ምዝገባዎች",
-  "Pending review": "ግምገማ በመጠባበቅ ላይ",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "ከሕዝብ መመዝገቢያ ቅጽዎ የተላኩ ግምገማ የሚጠብቁ ምዝገባዎች። ኢሜይል ወይም ስልክ የሌላቸው ግቤቶች ምልክት ተደርጎባቸዋል — ክትትል ከማድረግዎ በፊት የመገናኛ መረጃውን ያረጋግጡ።",
-  "Review now": "አሁን ገምግም",
-  "Review self registrations": "ራስን ምዝገባዎች ገምግም",
-  "Select month": "ወር ይምረጡ",
-  "Self-registration is disabled": "ራስን ምዝገባ ተሰናክሏል",
-  "Self-registration is enabled": "ራስን ምዝገባ ነቅቷል",
-  "The public registration form is turned off. Existing registrations are listed below.": "የሕዝብ መመዝገቢያ ቅጽ ጠፍቷል። ነባር ምዝገባዎች ከታች ተዘርዝረዋል።",
-  "This family is not a pending self-registration": "ይህ ቤተሰብ በመጠባበቅ ላይ ያለ ራስን ምዝገባ አይደለም",
-  "This person belongs to a family — approve the family instead": "ይህ ሰው የአንድ ቤተሰብ አባል ነው — በምትኩ ቤተሰቡን ያጽድቁ",
-  "This person is not a pending self-registration": "ይህ ሰው በመጠባበቅ ላይ ያለ ራስን ምዝገባ አይደለም",
-  "This self-registered family is pending review": "ራሱን ያስመዘገበው ይህ ቤተሰብ ግምገማ በመጠባበቅ ላይ ነው",
-  "Total registrations": "ጠቅላላ ምዝገባዎች",
-  "Visitors can sign up on your public registration form.": "ጎብኚዎች በሕዝብ መመዝገቢያ ቅጽዎ ላይ መመዝገብ ይችላሉ።",
-  "Yesterday": "ትናንት",
-  "days ago": "ቀናት በፊት",
-  "self-registrations are waiting for review": "ራስን ምዝገባዎች ግምገማ እየጠበቁ ነው",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "የልደት መልካም ምኞቶች ለግለሰቡ፣ የጋብቻ ክብረ በዓል መልካም ምኞቶች ደግሞ ለባልና ሚስቱ ይላካሉ።",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "በዚህ ሪፖርት ውስጥ ላሉ ሰዎች የፖስታ አድራሻ መለያዎች። የራሱ አድራሻ የሌለው ሰው በቤተሰቡ አድራሻ ይላክለታል።",
-  "One label for each couple.": "ለእያንዳንዱ ባልና ሚስት አንድ መለያ።",
-  "Print Labels": "መለያዎችን አትም",
-  "That role is not one of this group's roles.": "ያ ሚና ከዚህ ቡድን ሚናዎች አንዱ አይደለም።",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" ይህ ገጽ የሚያውቀው የቀን መቁጠሪያ ዓይነት አይደለም።",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s ማገልገል አይችልም እና %2$s ን ተተኪ አድርጎ አቅርቧል።",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s አስቀድሞ በ%2$s የበጎ ፈቃደኞች ስብስብ ውስጥ ነው እና እንደገና መርዳት ይፈልጋል።",
-  "%1$s is already linked to %2$s in %3$s": "%1$s አስቀድሞ በ%3$s ውስጥ ከ%2$s ጋር ተያይዟል",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s በ%2$s ውስጥ %3$s ነው። መጀመሪያ ከክፍሉ ያስወግዱት፤ እዚህ ብቁ ማድረግ የክፍሉ መምህራን አንዱ ያደርገዋል።",
-  "%1$s is not an event of %2$s": "%1$s የ%2$s ዝግጅት አይደለም",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "መምህራኑ በአገልግሎቶች → %2$s → %3$s ውስጥ እስከሚተዳደሩ ድረስ %1$s የሰንበት ትምህርት ቤት ክፍል ሆኖ ይቆያል። መጀመሪያ ከቡድኑ ጋር ያለውን ትስስር ያላቅቁ።",
-  "%1$s wants to help with %2$s": "%1$s በ%2$s መርዳት ይፈልጋል",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s በ%2$s መርዳት ይፈልጋል እና ወደ በጎ ፈቃደኞች ስብስቡ ተጨምሯል።",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s፦ ከፍተኛው %2$d ነው ነገር ግን %3$d ነባሪ በጎ ፈቃደኞች ተመርጠዋል። አንዱን ያስወግዱ ወይም ከፍተኛውን ያሳድጉ።",
-  "%d day": {
-    "one": "%d ቀን",
-    "other": "%d ቀን"
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d ነባሪ ለሌላ ምክንያት ተዘሏል (የአገልግሎት ቀኑ አልፏል፣ ተሰርዟል ወይም ሞልቷል)",
-    "other": "%d ነባሪ ለሌላ ምክንያት ተዘሏል (የአገልግሎት ቀኑ አልፏል፣ ተሰርዟል ወይም ሞልቷል)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d ነባሪ ተዘሏል፦ ብቃት ተሽሯል",
-    "other": "%d ነባሪ ተዘሏል፦ ብቃት ተሽሯል"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d ነባሪ በጎ ፈቃደኛ ተመድቧል",
-    "other": "%d ነባሪ በጎ ፈቃደኛ ተመድቧል"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d አልተሳኩም",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "ለዚህ የአገልግሎት ቦታ ተጨማሪ %d በጎ ፈቃደኛ አሁንም ያስፈልጋል። ክፍተቱን ለመሙላት የአገልግሎት ቀኑን ይክፈቱ።",
-    "other": "ለዚህ የአገልግሎት ቦታ ተጨማሪ %d በጎ ፈቃደኛ አሁንም ያስፈልጋል። ክፍተቱን ለመሙላት የአገልግሎት ቀኑን ይክፈቱ።"
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d አዲስ የአገልግሎት ቀን",
-    "other": "%d አዲስ የአገልግሎት ቀን"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "ለሚመጣ የአገልግሎት ቀን %d በጎ ፈቃደኛ አሁንም ያስፈልጋል።",
-    "other": "ለሚመጣ የአገልግሎት ቀን %d በጎ ፈቃደኛ አሁንም ያስፈልጋል።"
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "የ%s የቀን መቁጠሪያ",
-  "%s Family": "የ%s ቤተሰብ",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s ለሰንበት ትምህርት ቤት መምህራንን አያቀርብም፣ ስለዚህ ቡድኖቹ፣ መርሐ ግብሮቹ እና ዝግጅቶቹ ክፍልን መጠቀም አይችሉም። የበጎ ፈቃደኞች አስተዳዳሪ ይህንን በአገልግሎት አርትዕ ውስጥ መቀየር ይችላል።",
-  "%s email from the church": {
-    "one": "%s ኢሜይል ከቤተ ክርስቲያኑ",
-    "other": "%s ኢሜይል ከቤተ ክርስቲያኑ"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "የ%s ቤተሰብ",
-  "%s has declined a volunteer assignment.": "%s የበጎ ፈቃድ ምደባን አልተቀበለም።",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s \"Teacher\" የሚባል ሚና የለውም፣ ስለዚህ መምህራኑ ከቡድን ሊተዳደሩ አይችሉም",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s በቀን መቁጠሪያው ላይ ምንም የሚመጡ ስብሰባዎች የሉትም። መርሐ ግብር አስቀድመው ያሉ ዝግጅቶችን ይከተላል፦ መጀመሪያ የክፍሉን ስብሰባዎች በአገልግሎቱ የቀን መቁጠሪያ ትር ላይ ባለው አዲስ ተደጋጋሚ ዝግጅት ያክሉ።",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s አሁንም ያገለግላል ተብሎ ይጠበቃል። ይህ የማይቻል ከሆነ እባክዎ አስተባባሪውን ያግኙ።",
-  "%s not sent (%s): %s": "%s አልተላከም (%s)፦ %s",
-  "%s person in your household": {
-    "one": "በቤተሰብዎ ውስጥ %s ሰው",
-    "other": "በቤተሰብዎ ውስጥ %s ሰው"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s የአገልግሎት ቦታ",
-    "other": "%s የአገልግሎት ቦታ"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s፦ አንድ ሰው እንደ ነባሪ በጎ ፈቃደኛ ሁለት ጊዜ ተመርጧል",
-  "(no subject)": "(ርዕስ የለም)",
-  "A birthday cannot be in the future.": "የልደት ቀን ወደፊት ሊሆን አይችልም።",
-  "A calendar event": "የቀን መቁጠሪያ ዝግጅት",
-  "A calendar id must be a number.": "የቀን መቁጠሪያ መታወቂያ ቁጥር መሆን አለበት።",
-  "A class that no longer exists": "ከአሁን በኋላ የሌለ ክፍል",
-  "A class with no meetings on the calendar cannot be chosen yet.": "በቀን መቁጠሪያው ላይ ስብሰባ የሌለው ክፍል ገና ሊመረጥ አይችልም።",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "በቀን መቁጠሪያው ላይ ስብሰባ የሌለው ክፍል ገና ሊመረጥ አይችልም። የአገልግሎቱ አስተባባሪ ስብሰባዎቹን በአገልግሎቱ የቀን መቁጠሪያ ትር ላይ ይጨምራል።",
-  "A class's meetings": "የአንድ ክፍል ስብሰባዎች",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "አስተባባሪ በዚህ አገልግሎት ውስጥ ሁሉንም ማስተዳደር ይችላል፣ የበጎ ፈቃደኞች አስተዳዳሪ ማድረግ የሚኖርበትን ለውጥ ጨምሮ።",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "የአገልግሎቱ አስተባባሪ በአገልግሎቱ የቀን መቁጠሪያ ትር ላይ ሊያክላቸው ይችላል።",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "የአገልግሎቱ አስተባባሪ በአገልግሎቱ የቀን መቁጠሪያ ትር ላይ ሊያክላቸው ይችላል። ከዚያ እንደገና ያመንጩ።",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "አስተባባሪ መላውን አገልግሎት ይመራል — ቡድኖቹን፣ የአገልግሎት ቦታዎቹን፣ መርሐ ግብሮቹን እና በውስጡ ያለውን እያንዳንዱን ምደባ።",
-  "A day a month does not have falls on its last day.": "አንድ ወር የሌለው ቀን በወሩ የመጨረሻ ቀን ላይ ይውላል።",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "ነባሪ በጎ ፈቃደኛ የመርሐ ግብሩ የሰው ኃይል ፍላጎት እንጂ የአንድ ቀን አይደለም",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "ነባሪ በጎ ፈቃደኛ ሊመረጥ የሚችለው የዚህ መርሐ ግብር የሰው ኃይል ፍላጎት ለሚጠይቀው የአገልግሎት ቦታ ብቻ ነው",
-  "A from and a to date in YYYY-MM-DD form are required": "ከቀን እና እስከ ቀን በYYYY-MM-DD ቅርጸት ያስፈልጋሉ",
-  "A minimum count is required": "ዝቅተኛ ቁጥር ያስፈልጋል",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "አገልግሎት የሚፈጠረው በራሱ የቀን መቁጠሪያ፣ የበጎ ፈቃደኞች ስብስብ እና የመጀመሪያ ቡድን ነው፣ ስለዚህ እዚህ መወሰን የሚያስፈልገው ስሙንና የሚሠራውን ሥራ ብቻ ነው።",
-  "A ministry name is required": "የአገልግሎት ስም ያስፈልጋል",
-  "A ministry needs at least one team. Rename it instead.": "አገልግሎት ቢያንስ አንድ ቡድን ያስፈልገዋል። በምትኩ ስሙን ይቀይሩ።",
-  "A ministry with that name already exists": "በዚህ ስም አገልግሎት አስቀድሞ አለ",
-  "A ministry's own calendar cannot be opened to other ministries": "የአገልግሎት የራሱ የቀን መቁጠሪያ ለሌሎች አገልግሎቶች ክፍት ሊደረግ አይችልም",
-  "A position belongs to a team; choose one": "የአገልግሎት ቦታ የአንድ ቡድን ነው፤ አንዱን ይምረጡ",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "የአገልግሎት ቦታ አንድ ሰው በዚህ ቡድን ውስጥ የሚሠራው ሥራ ነው፣ ለምሳሌ ኤስፕሬሶ ወይም የዝማሬ መሪ።",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "የአገልግሎት ቦታ አንድ ሰው የሚያገለግልበት ሚና ነው፣ ለምሳሌ ኤስፕሬሶ ወይም የዝማሬ መሪ።",
-  "A position is required": "የአገልግሎት ቦታ ያስፈልጋል",
-  "A position name is required": "የአገልግሎት ቦታ ስም ያስፈልጋል",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "ብቁ በጎ ፈቃደኞች ያሉት የአገልግሎት ቦታ ከሰንበት ትምህርት ቤት ክፍል ጋር ወደተያያዘ ቡድን ሊገባም ሊወጣም አይችልም፣ ምክንያቱም ክፍሉን ማን እንደሚያስተምር ይቀይራልና። በምትኩ የአገልግሎት ቦታውን በሌላኛው ቡድን ውስጥ ይፍጠሩ።",
-  "A position with that name already exists in this ministry": "በዚህ አገልግሎት ውስጥ በዚህ ስም የአገልግሎት ቦታ አስቀድሞ አለ",
-  "A response must be accepted or declined": "ምላሽ መቀበል ወይም አለመቀበል አለበት",
-  "A schedule belongs to a team; choose one": "መርሐ ግብር የአንድ ቡድን ነው፤ አንዱን ይምረጡ",
-  "A schedule name is required": "የመርሐ ግብር ስም ያስፈልጋል",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "መርሐ ግብር አንድ ቡድን የሚያስተናግደውን የቀን መቁጠሪያ ዝግጅቶች ይናገራል፦ የቤተ ክርስቲያን አገልግሎት ዓይነት፣ የአንድ ክፍል ስብሰባዎች፣ ወይም የዚህ አገልግሎት የራሱ ዝግጅቶች። አንድ ያክሉ እና የአገልግሎት ቀኖቹን ያመንጩ።",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "መርሐ ግብር ይህ ቡድን የሚያገለግልባቸውን የቀን መቁጠሪያ ዝግጅቶች ይናገራል፦ የቤተ ክርስቲያን አገልግሎት ዓይነት፣ የአንድ ክፍል ስብሰባዎች፣ ወይም የአገልግሎቱ የራሱ ዝግጅቶች። አንድ ያክሉ እና የአገልግሎት ቀኖቹን ያመንጩ።",
-  "A schedule that follows a class must name the class": "ክፍልን የሚከተል መርሐ ግብር ክፍሉን መሰየም አለበት",
-  "A schedule that follows an event type must name the event type": "የዝግጅት ዓይነትን የሚከተል መርሐ ግብር የዝግጅቱን ዓይነት መሰየም አለበት",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "አንድን ዝግጅት ብቻ የሚያስተናግድ መርሐ ግብር ሌሎች ዝግጅቶችን መከተል አይችልም፤ እሱን ያጥፉ እና በምትኩ መርሐ ግብር ያክሉ",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "እንደ \"የሕፃናት ክፍል\" ወይም \"አቀባበል\" ያሉ የአገልግሎት ዕድሎች አንድ ዝርዝር፣ በሰዎች → አስተዳዳሪ ስር የሚቀመጥ። እያንዳንዱ ሰው በመዝገቡ በበጎ ፈቃደኛ ትር ላይ ሊረዳባቸው ፈቃደኛ በሆነባቸው ዕድሎች ይመደባል። የሚመዘግበው ይህን ብቻ ነው፦ ቡድኖች የሉም፣ መርሐ ግብሮች የሉም፣ ለአንድ ቀን የሚደረጉ ምደባዎች የሉም፣ የማስታወሻ ኢሜይሎችም የሉም። መለያዎቹ የሚያገለግሉት በሪፖርቶች እና በሰው መዝገብ ውስጥ ነው።",
-  "A square picture of your face works best.": "የፊትዎ ካሬ ምስል ተመራጭ ነው።",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "የሰው ኃይል ፍላጎት ነባሪ በጎ ፈቃደኞቹን በ\"defaults\": [{personId, accepted}] ውስጥ ይዘረዝራል",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "የሰው ኃይል መስፈርት የሚመለከተው የአንድ መርሐ ግብር ወይም የአንድ የአገልግሎት ቀን ብቻ ነው",
-  "A substitute has already been proposed for this assignment": "ለዚህ ምደባ ተተኪ አስቀድሞ ቀርቧል",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "የቡድን መሪ የራሱን ቡድን — የአገልግሎት ቦታዎቹን፣ መርሐ ግብሮቹን እና በውስጣቸው የሚያገለግሉትን — ማስተዳደር ይችላል፣ በአገልግሎቱ ውስጥ ሌላ ምንም አይችልም።",
-  "A team name is required": "የቡድን ስም ያስፈልጋል",
-  "A team with that name already exists in this ministry": "በዚህ አገልግሎት ውስጥ በዚህ ስም ቡድን አስቀድሞ አለ",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "ገጽታ ቤተ ክርስቲያንዎ በአገልጋዩ ላይ ወደ Include/themes/ የሚጭነው አቃፊ ነው። ነባሪው የሲስተም ገጽታ ከChurchCRM ጋር ይመጣል።",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "የሽግግር ቅንብር። የቀደመው የበጎ ፈቃደኛ ዕድሎች ገጾች እና አዲሶቹ የአገልግሎቶች ገጾች ሁለቱም ይገኛሉ፣ እና የሰው መዝገብ ሁለቱንም የበጎ ፈቃደኛ ትሮች በግልጽ ተሰይመው ያሳያል። ቤተ ክርስቲያንን ከV1 ወደ V2 ሲያሸጋግሩ ይጠቀሙበት፣ ከዚያ ወደ V2 ብቻ ይቀይሩ።",
-  "A volunteer": "አንድ በጎ ፈቃደኛ",
-  "A volunteer has declined an assignment": "አንድ በጎ ፈቃደኛ ምደባን አልተቀበለም",
-  "A volunteer has proposed a substitute": "አንድ በጎ ፈቃደኛ ተተኪ አቅርቧል",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "የበጎ ፈቃደኞች አስተዳዳሪ ይህን አገልግሎት ያለ ልዩ ፈቃድ ማስኬድ ይችላል። ሌላ ሰው ሌሎቹን አገልግሎቶች ሁሉ ሳይሰጠው እንዲያስኬደው አስተባባሪ ያክሉ።",
-  "A wedding date cannot be in the future.": "የሠርግ ቀን ወደፊት ሊሆን አይችልም።",
-  "Accepted": "ተቀብሏል",
-  "Account deleted": "መለያው ተሰርዟል",
-  "Account unlocked": "መለያ ተከፍቷል።",
-  "Accounts": "መለያዎች",
-  "Active must be true or false": "Active እውነት ወይም ሐሰት መሆን አለበት",
-  "Active now": "አሁን ንቁ ነው",
-  "Add All": "ሁሉንም አክል",
-  "Add Everyone in Cart": "በምርጫ ውስጥ ያሉትን ሁሉ አክል",
-  "Add Volunteer": "በጎ ፈቃደኛ አክል",
-  "Add Volunteers to Cart": "በጎ ፈቃደኞችን ወደ ምርጫ አክል",
-  "Add a family member": "የቤተሰብ አባል አክል",
-  "Add a position first, then come back and say how many of them are needed.": "መጀመሪያ የአገልግሎት ቦታ ያክሉ፣ ከዚያ ተመልሰው እያንዳንዳቸው ስንት እንደሚያስፈልጉ ይግለጹ።",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "በመግቢያዎ ላይ ሁለተኛ ደረጃ ይጨምሩ፣ ይህም የይለፍ ቃል ብቻ መለያዎን ለመድረስ በቂ እንዳይሆን ያደርጋል።",
-  "Add at least one position to this team, then tick who can serve where.": "ለዚህ ቡድን ቢያንስ አንድ የአገልግሎት ቦታ ያክሉ፣ ከዚያ ማን የት ማገልገል እንደሚችል ምልክት ያድርጉ።",
-  "Add coordinator": "አስተባባሪ አክል",
-  "Add from Cart": "ከምርጫ አክል",
-  "Add its meetings first with New recurring event on the Calendar tab": "መጀመሪያ ስብሰባዎቹን በቀን መቁጠሪያ ትር ላይ ባለው አዲስ ተደጋጋሚ ዝግጅት ያክሉ",
-  "Add people to the cart before adding them as volunteers": "እንደ በጎ ፈቃደኛ ከመጨመራቸው በፊት ሰዎችን ወደ ምርጫ ያክሉ",
-  "Add position": "የአገልግሎት ቦታ አክል",
-  "Add schedule": "መርሐ ግብር አክል",
-  "Add team": "ቡድን አክል",
-  "Add them on the Calendar tab, then generate again.": "በቀን መቁጠሪያ ትር ላይ ያክሏቸው፣ ከዚያ እንደገና ያመንጩ።",
-  "Add them on the Calendar tab.": "በቀን መቁጠሪያ ትር ላይ ያክሏቸው።",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "ይህን አድራሻ ወደ የቀን መቁጠሪያ መተግበሪያዎ ያክሉ። የቤተ ክርስቲያኑ የቀን መቁጠሪያ ሲቀየር በራሱ ይዘምናል።",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "የዚህን አገልግሎት ዝግጅቶች እዚህ ያክሉ፦ የሥራ ቀን፣ በየሰንበቱ የሚገናኝ ክፍል። ወደ ቤተ ክርስቲያኑ የቀን መቁጠሪያ ይገባሉ፣ ሲፈጥሯቸውም በበጎ ፈቃደኞች ማስያዝ ይችላሉ።"
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

@@ -18839,3 +18839,4439 @@ msgstr "配偶角色"
 msgid "Uppercase Zip/Postcodes"
 msgstr "邮政编码大写"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "请至少选择一个分类以纳入通讯录。"
+
+#: 
+msgid "Geocoding services"
+msgstr "地理编码服务"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "按您选择的顺序依次尝试的地理编码服务。Nominatim（OpenStreetMap）适用于全球；US Census（美国人口普查局）仅涵盖美国地址。如需使用，请同时选择 US Census。若未选择任何服务，则使用 Nominatim。"
+
+#: 
+msgid "New Record Defaults"
+msgstr "新记录默认值"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "这将使用地图设置中所选的地理编码服务，为每个缺少地图坐标的家庭查找坐标。系统每批处理 50 个家庭；使用一个地理编码服务时每批约需一分钟，服务越多耗时越长。运行期间您可以保持此页面开启。是否继续？"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "用于新记录，以及记录没有国家时的地理编码。"
+
+#: 
+msgid "Copy from Church Info"
+msgstr "从教会信息复制"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "无法复制教会地址。"
+
+#: 
+msgid "Could not match the church country."
+msgstr "无法匹配教会所在国家。"
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "班级名单、点名表和相册"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "小组成员名单和主日学班级报告"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "您的财政年度从 %s 开始。"
+
+#: 
+msgid "An error occurred"
+msgstr "发生错误"
+
+#: 
+msgid "Approve"
+msgstr "批准"
+
+#: 
+msgid "Approve selected"
+msgstr "批准所选项"
+
+#: 
+msgid "Approved"
+msgstr "已批准"
+
+#: 
+msgid "Change in People Settings"
+msgstr "在人员设置中更改"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "无法批准所选的登记"
+
+#: 
+msgid "Could not approve this family"
+msgstr "无法批准此家庭"
+
+#: 
+msgid "Pending Registrations"
+msgstr "待处理的登记"
+
+#: 
+msgid "Pending review"
+msgstr "待审核"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "来自您公开登记表单的登记正等待审核。没有电子邮件或电话的条目已被标记，请在跟进前核实联系方式。"
+
+#: 
+msgid "Review now"
+msgstr "立即审核"
+
+#: 
+msgid "Review self registrations"
+msgstr "审核自助登记"
+
+#: 
+msgid "Select month"
+msgstr "选择月份"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "自助登记已停用"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "自助登记已启用"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "公开登记表单已关闭。现有登记列于下方。"
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "此家庭不是待处理的自助登记"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "此人属于某个家庭，请改为批准该家庭"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "此人不是待处理的自助登记"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "此自助登记的家庭正等待审核"
+
+#: 
+msgid "Total registrations"
+msgstr "登记总数"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "访客可以通过您的公开登记表单报名。"
+
+#: 
+msgid "Yesterday"
+msgstr "昨天"
+
+#: 
+msgid "days ago"
+msgstr "天前"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "笔自助登记等待审核"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "生日问候寄给个人，纪念日问候寄给夫妇。"
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "本报告所含人员的邮寄标签。没有个人地址的人，将寄往其家庭地址。"
+
+#: 
+msgid "One label for each couple."
+msgstr "每对夫妇一张标签。"
+
+#: 
+msgid "Print Labels"
+msgstr "打印标签"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "该角色不属于此小组的角色。"
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "本页面不认识“%s”这种日历类型。"
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "%1$s 无法服事，并已提议由 %2$s 代替。"
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "%1$s 已在 %2$s 的志愿者库中，并希望再次参与服事。"
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "%1$s 已在 %3$s 中关联到 %2$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "%1$s 在 %2$s 中的角色是 %3$s。请先将其从班级中移除；之后在此处为其授予资格，才会使其成为该班的教师。"
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "%1$s 不是 %2$s 的活动"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "%1$s 仍是主日学班级，其教师在“事工 → %2$s → %3$s”中管理。请先将其与团队取消关联。"
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "%1$s 希望参与 %2$s 的服事"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "%1$s 希望参与 %2$s 的服事，并已加入其志愿者库。"
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s：最大人数为 %2$d，但已选择 %3$d 位默认志愿者。请移除一位或提高最大人数。"
+
+#: 
+msgid "%d failed"
+msgstr "%d 项失败"
+
+#: 
+msgid "%s Calendar"
+msgstr "%s 日历"
+
+#: 
+msgid "%s Family"
+msgstr "%s 家庭"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "%s 不为主日学提供教师，因此其团队、排班和活动无法使用班级。志愿者管理员可在“编辑事工”下更改此设置。"
+
+#: 
+msgid "%s family"
+msgstr "%s 家庭"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "%s 已拒绝一项志愿者分配。"
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "%s 没有名为“教师”的角色，因此无法从团队管理其教师"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "%s 的日历上没有即将举行的聚会。排班会跟随已存在的活动：请先在事工的“日历”标签页中通过“新增重复活动”添加该班的聚会。"
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "%s 仍需服事。如无法参与，请联系协调员。"
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "%s 未发送（%s）：%s"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s：同一个人被重复选为默认志愿者"
+
+#: 
+msgid "(no subject)"
+msgstr "（无主题）"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "生日不能在未来。"
+
+#: 
+msgid "A calendar event"
+msgstr "一个日历活动"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "日历 ID 必须是数字。"
+
+#: 
+msgid "A class that no longer exists"
+msgstr "已不存在的班级"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "日历上没有聚会的班级暂时无法选择。"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "日历上没有聚会的班级暂时无法选择。事工协调员可在事工的“日历”标签页中添加其聚会。"
+
+#: 
+msgid "A class's meetings"
+msgstr "班级的聚会"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "协调员可以管理此事工中的一切，包括本应由志愿者管理员进行的更改。"
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "事工协调员可在事工的“日历”标签页中添加它们。"
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "事工协调员可在事工的“日历”标签页中添加它们。然后再次生成。"
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "协调员负责整个事工，包括其团队、职位、排班以及其中的每项分配。"
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "某个月没有的日期，将顺延到该月最后一天。"
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "默认志愿者属于排班的人员需求，而不是某一次活动"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "只能为本排班人员需求所要求的职位选择默认志愿者"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "需要提供格式为 YYYY-MM-DD 的起始日期和结束日期"
+
+#: 
+msgid "A minimum count is required"
+msgstr "需要提供最少人数"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "创建事工时会同时创建其专属日历、志愿者库和第一个团队，因此这里只需决定它的名称和职责。"
+
+#: 
+msgid "A ministry name is required"
+msgstr "需要提供事工名称"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "一个事工至少需要一个团队。请改为重命名。"
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "已有同名事工"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "事工自己的日历不能向其他事工开放"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "职位属于某个团队，请选择一个"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "职位是某人在此团队中承担的工作，例如“咖啡”或“领诗”。"
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "职位是某人所服事的角色，例如“咖啡”或“领诗”。"
+
+#: 
+msgid "A position is required"
+msgstr "需要提供职位"
+
+#: 
+msgid "A position name is required"
+msgstr "需要提供职位名称"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "有合格志愿者的职位，不能移入或移出与主日学班级关联的团队，因为这会改变谁来教该班。请改为在另一个团队中创建该职位。"
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "此事工中已有同名职位"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "回应必须是接受或拒绝"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "排班属于某个团队，请选择一个"
+
+#: 
+msgid "A schedule name is required"
+msgstr "需要提供排班名称"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "排班用于指明团队负责哪些日历活动：某一类崇拜聚会、某个班级的聚会，或本事工自己的活动。添加一个排班并生成其活动场次。"
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "排班用于指明此团队服事哪些日历活动：某一类崇拜聚会、某个班级的聚会，或其事工自己的活动。添加一个排班并生成其活动场次。"
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "跟随班级的排班必须指定班级"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "跟随活动类型的排班必须指定活动类型"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "只负责一场活动的排班不能跟随其他活动；请删除它并改为添加一个排班"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "一份服事机会清单，例如“托儿”或“接待”，保存在“人员 → 管理”下。每个人在其记录的“志愿者”标签页中，会标记其愿意协助的服事机会。仅此而已：没有团队、没有排班、没有按日期分配，也没有提醒邮件。报告和人员记录是使用这些标记的地方。"
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "最好使用正脸的方形照片。"
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "人员需求在“defaults”中列出其默认志愿者：[{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "人员需求只能属于一个排班或一场活动，二者择一"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "此项分配已提议过代替人选"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "团队负责人可以管理自己的团队，包括其职位、排班以及谁在其中服事，但不能管理事工中的其他内容。"
+
+#: 
+msgid "A team name is required"
+msgstr "需要提供团队名称"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "此事工中已有同名团队"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "主题是教会上传到服务器 Include/themes/ 的文件夹。系统默认主题随 ChurchCRM 提供。"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "过渡设置。旧版志愿者机会页面与新的事工页面同时可用，人员记录会显示两个志愿者标签页，并有清楚标示。用于教会从 V1 迁移到 V2 期间，之后再切换为仅 V2。"
+
+#: 
+msgid "A volunteer"
+msgstr "一位志愿者"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "有志愿者拒绝了一项分配"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "有志愿者提议了代替人选"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "志愿者管理员无需授权即可管理此事工。添加一位协调员，可让其他人管理它，而不必同时授予其所有其他事工的权限。"
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "结婚日期不能在未来。"
+
+#: 
+msgid "Accepted"
+msgstr "已接受"
+
+#: 
+msgid "Account deleted"
+msgstr "账户已删除"
+
+#: 
+msgid "Account unlocked"
+msgstr "账户已解锁"
+
+#: 
+msgid "Accounts"
+msgstr "账户"
+
+#: 
+msgid "Active must be true or false"
+msgstr "“启用”必须为真或假"
+
+#: 
+msgid "Active now"
+msgstr "当前在线"
+
+#: 
+msgid "Add All"
+msgstr "全部添加"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "添加已选中的所有人"
+
+#: 
+msgid "Add Volunteer"
+msgstr "添加志愿者"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "将志愿者加入已选"
+
+#: 
+msgid "Add a family member"
+msgstr "添加家庭成员"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "请先添加一个职位，再回来设置各需要多少人。"
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "为您的登录添加第二步验证，这样仅凭密码无法进入您的账户。"
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "请至少为此团队添加一个职位，然后勾选谁可以在哪里服事。"
+
+#: 
+msgid "Add coordinator"
+msgstr "添加协调员"
+
+#: 
+msgid "Add from Cart"
+msgstr "从已选添加"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "请先在“日历”标签页中通过“新增重复活动”添加其聚会"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "将人员加入已选之后，才能将其添加为志愿者"
+
+#: 
+msgid "Add position"
+msgstr "添加职位"
+
+#: 
+msgid "Add schedule"
+msgstr "添加排班"
+
+#: 
+msgid "Add team"
+msgstr "添加团队"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "请在“日历”标签页中添加，然后再次生成。"
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "请在“日历”标签页中添加。"
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "将此地址添加到您的日历应用。教会日历变动时，它会自动更新。"
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "在此添加本事工的活动，例如一次工作日、每周日举行的班级。它们会进入教会日历，创建时即可为其安排人员。"
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "通过会众门户添加，等待审核：%s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "已添加，请现在勾选他们可以服事的职位"
+
+#: 
+msgid "Address Line 2"
+msgstr "地址第 2 行"
+
+#: 
+msgid "Admin Console"
+msgstr "管理控制台"
+
+#: 
+msgid "Administrator permission required"
+msgstr "需要管理员权限"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "在会众门户的“开放机会”页面上公开此职位。"
+
+#: 
+msgid "All Teams"
+msgstr "所有团队"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "允许会众修改自己及其家庭成员的生日。"
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "也已固定到 {{calendars}}，只有拥有“添加活动”权限的人才能更改。"
+
+#: 
+msgid "An event title is required"
+msgstr "需要提供活动标题"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "需要提供活动类型或事工"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "已不存在的活动类型"
+
+#: 
+msgid "Another ministry"
+msgstr "另一个事工"
+
+#: 
+msgid "Any event"
+msgstr "任何活动"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "任何您的协调员应该知道的事"
+
+#: 
+msgid "Approve substitution"
+msgstr "批准代替"
+
+#: 
+msgid "Approve this substitute"
+msgstr "批准此代替人选"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "请志愿者管理员创建一个事工，并让您成为其协调员。"
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "请人代替您"
+
+#: 
+msgid "Ask them"
+msgstr "询问他们"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "已提出请求，您的协调员会确认。"
+
+#: 
+msgid "Assign a volunteer"
+msgstr "分配一位志愿者"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "不在当前计划内的分配"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "分配已取消"
+
+#: 
+msgid "Assignment not found"
+msgstr "找不到该分配"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "至少需要提供一个 personId 或 familyId"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "每个职位最多可选择 %d 位默认志愿者"
+
+#: 
+msgid "Author"
+msgstr "作者"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "权限授予的是个人，而不是登录账户，因此可以在对方有账户之前授予。登录账户仅限自助服务的人，在管理员放宽其账户权限之前，只能看到自己的排班。"
+
+#: 
+msgid "Automatic"
+msgstr "自动"
+
+#: 
+msgid "Awaiting reply"
+msgstr "等待回复"
+
+#: 
+msgid "Back to Email History"
+msgstr "返回电子邮件记录"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "返回事工仪表板"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "返回活动场次"
+
+#: 
+msgid "Back to Person"
+msgstr "返回人员"
+
+#: 
+msgid "Back to editing"
+msgstr "返回编辑"
+
+#: 
+msgid "Back to my schedule"
+msgstr "返回我的排班"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "返回会众门户"
+
+#: 
+msgid "Back to your profile"
+msgstr "返回您的个人资料"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "后台任务与发送"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "后台任务上次运行于"
+
+#: 
+msgid "Background jobs ran"
+msgstr "后台任务运行于"
+
+#: 
+msgid "Birthday greeting"
+msgstr "生日问候"
+
+#: 
+msgid "Both"
+msgstr "两者"
+
+#: 
+msgid "Both (transition)"
+msgstr "两者（过渡）"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "两者：V1 与 V2 并行（过渡）"
+
+#: 
+msgid "Calendar address"
+msgstr "日历地址"
+
+#: 
+msgid "Calendar saved"
+msgstr "日历已保存"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "会众门户向会众显示的日历，在“管理 -> 会众门户 -> 日历”中选择。"
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "此事工能否为主日学提供教师？"
+
+#: 
+msgid "Cancel assignment"
+msgstr "取消分配"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "取消此项分配"
+
+#: 
+msgid "Cancelled"
+msgstr "已取消"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "更改您登录所用的密码，或添加第二步验证，这样仅凭密码无法登录。"
+
+#: 
+msgid "Change your password"
+msgstr "更改您的密码"
+
+#: 
+msgid "Checked in"
+msgstr "已签到"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "已签到：班级名单中 %2$d 人里有 %1$d 人"
+
+#: 
+msgid "Checked out"
+msgstr "已签退"
+
+#: 
+msgid "Choose a class"
+msgstr "选择班级"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "请选择每月 1 至 31 日中的某一天"
+
+#: 
+msgid "Choose a new photo"
+msgstr "选择新照片"
+
+#: 
+msgid "Choose a person"
+msgstr "选择一个人"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "选择一位志愿者"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "请先选择一位志愿者"
+
+#: 
+msgid "Choose an event"
+msgstr "选择一个活动..."
+
+#: 
+msgid "Choose an event type"
+msgstr "选择活动类型"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "选择现有的活动类型"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "请至少选择一个要订阅的日历。"
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "选择您想在自己的日历应用中使用的日历。"
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "选择每年的日期，格式为 MM-DD"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "选择活动日期"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "选择星期几"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "选择此排班所跟随的活动"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "选择要安排人员的活动"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "选择要删除的活动"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "选择要安排人员的活动"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "选择起止日期"
+
+#: 
+msgid "Choose the first date"
+msgstr "选择起始日期"
+
+#: 
+msgid "Choose the last date"
+msgstr "选择结束日期"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "请选择 %1$s 中 %2$s 的教师所具备资格的职位。教师人数：%3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "选择此职位所属的团队"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "选择会众看到的主题，开启或关闭门户的各个部分，并查看谁在使用门户。"
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "选择每周、每月或每年"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "选择排班日期的来源"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "选择教会使用哪种志愿者体验、提前多久安排排班、何时发出提醒，并检查后台任务是否在运行。"
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "选择默认由谁担任每个职位。此选择保存在排班中：只要他们仍具备资格，就会被分配到现在生成的每一场活动，以及之后每日补充生成的活动，并会被要求回应，除非您将其设为已接受。职位留空则可逐周分配。"
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "选择谁来代替您。"
+
+#: 
+msgid "Church Calendar"
+msgstr "教会日历"
+
+#: 
+msgid "Church Calendars"
+msgstr "教会日历"
+
+#: 
+msgid "Church calendar"
+msgstr "教会日历"
+
+#: 
+msgid "Church events of a type"
+msgstr "某一类型的教会活动"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "某一类型的教会活动会添加到教会日历。请检查排班的活动类型、标题和日期。"
+
+#: 
+msgid "Church website"
+msgstr "教会网站"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "ChurchCRM 有两种管理志愿者的方式。同一时间只应使用其中一种；左侧的设置决定本教会看到哪一种。切换只会隐藏或显示页面和菜单项，不会删除任何数据，因此可以随时切换回来。"
+
+#: 
+msgid "Close event details"
+msgstr "关闭活动详情"
+
+#: 
+msgid "Colour"
+msgstr "颜色"
+
+#: 
+msgid "Completed"
+msgstr "已完成"
+
+#: 
+msgid "Compose Message"
+msgstr "撰写信息"
+
+#: 
+msgid "Confirm your family details"
+msgstr "确认您的家庭资料"
+
+#: 
+msgid "Coordinator removed"
+msgstr "协调员已移除"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "复制此地址，并作为新的日历订阅添加到您的日历应用。"
+
+#: 
+msgid "Could not build the preview."
+msgstr "无法生成预览。"
+
+#: 
+msgid "Could not count the class's events"
+msgstr "无法统计该班级的活动数"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "无法授予该权限范围"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "无法加载主日学班级"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "无法加载仪表板"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "无法加载活动选项"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "无法加载活动场次"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "无法加载排班"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "无法加载即将举行的活动"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "无法加载志愿者"
+
+#: 
+msgid "Could not load this email."
+msgstr "无法加载此邮件。"
+
+#: 
+msgid "Could not load this ministry"
+msgstr "无法加载此事工"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "无法加载此事工的活动"
+
+#: 
+msgid "Could not load this team"
+msgstr "无法加载此团队"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "无法撤销该权限范围"
+
+#: 
+msgid "Create"
+msgstr "创建"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "创建一个排班并生成其活动场次，需要安排的周次就会显示在这里。"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "创建一个排班并生成其活动场次，需要安排人员的周次就会显示在这里。"
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "请至少为此团队创建一个职位，然后勾选谁可以在哪里服事。"
+
+#: 
+msgid "Create ministry"
+msgstr "创建事工"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "创建事工需要志愿者管理员权限"
+
+#: 
+msgid "Date and time"
+msgstr "日期和时间"
+
+#: 
+msgid "Date each year"
+msgstr "每年的日期"
+
+#: 
+msgid "Dates"
+msgstr "日期"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "日期格式必须为 YYYY-MM-DD"
+
+#: 
+msgid "Day of the month"
+msgstr "每月的日期"
+
+#: 
+msgid "Day of the week"
+msgstr "星期几"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "停用事工"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "停用排班"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "删除前请先停用此事工。"
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "停用 {{name}}？它会移到侧边栏的“已停用的事工”中，可在那里重新启用或删除。不会删除任何内容。"
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "停用 {{name}}？无论是“生成”还是每日补充，都不会再为它生成新的活动场次。其现有的活动场次和分配会保留，并且可以重新启用。"
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "已停用的事工"
+
+#: 
+msgid "Declined"
+msgstr "已拒绝"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "事工活动的默认活动类型"
+
+#: 
+msgid "Default volunteers"
+msgstr "默认志愿者"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "默认志愿者以 requirements 形式发送：[{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "删除活动"
+
+#: 
+msgid "Delete ministry"
+msgstr "删除事工"
+
+#: 
+msgid "Delete occurrences"
+msgstr "删除活动场次"
+
+#: 
+msgid "Delete position"
+msgstr "删除职位"
+
+#: 
+msgid "Delete schedule"
+msgstr "删除排班"
+
+#: 
+msgid "Delete team"
+msgstr "删除团队"
+
+#: 
+msgid "Delete those events"
+msgstr "删除这些活动"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "删除 {{name}} 及其中的一切？其职位、资格、人员需求、排班、活动场次和分配（包括过往的服事记录），以及其团队负责人授权都会被移除。若要保留历史记录，请改为停用该团队。此操作无法撤销。"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "删除 {{name}} 及其中的一切？其团队、职位、排班、{{occurrences}} 场活动和 {{assignments}} 项分配（包括过往的服事记录），以及其协调员和团队负责人授权、志愿者库小组和日历都会被移除。此操作无法撤销。"
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "删除 {{name}}？其资格、人员需求和分配（包括过往的服事记录）也会一并移除。若要保留历史记录，请改为停用该职位。此操作无法撤销。"
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "删除 {{name}}？此操作无法撤销。"
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "删除事工需要志愿者管理员权限"
+
+#: 
+msgid "Developer mode"
+msgstr "开发者模式"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "完成，您已回到列表。"
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "放弃此场活动自己的人员需求，重新跟随其排班吗？"
+
+#: 
+msgid "Due soon"
+msgstr "即将到期"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "每个日历必须以类型和 ID 的形式给出。"
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "每位默认志愿者都必须指定一个人"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "每项人员需求都必须指定一个职位"
+
+#: 
+msgid "Edit event"
+msgstr "编辑活动"
+
+#: 
+msgid "Edit ministry"
+msgstr "编辑事工"
+
+#: 
+msgid "Edit position"
+msgstr "编辑职位"
+
+#: 
+msgid "Edit schedule"
+msgstr "编辑排班"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "编辑人员需求"
+
+#: 
+msgid "Edit team"
+msgstr "编辑团队"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "请编辑排班并选择其他班级。"
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "请编辑排班并选择其他活动类型。"
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "请编辑排班并选择它所跟随的活动。"
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "请编辑排班，并将其结束日期延后以跟随更多活动。"
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "通过会众门户编辑：%s"
+
+#: 
+msgid "Email %s"
+msgstr "给 %s 发电子邮件"
+
+#: 
+msgid "Email %s Family"
+msgstr "给 %s 家庭发电子邮件"
+
+#: 
+msgid "Email History"
+msgstr "电子邮件记录"
+
+#: 
+msgid "Email content"
+msgstr "邮件内容"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "给未出席者发电子邮件：%s"
+
+#: 
+msgid "Email not found"
+msgstr "找不到该电子邮件"
+
+#: 
+msgid "Email preview"
+msgstr "邮件预览"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "电子邮件发送已停用"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "电子邮件发送未启用。发送前请先配置 SMTP 设置并启用电子邮件。"
+
+#: 
+msgid "Emails"
+msgstr "电子邮件"
+
+#: 
+msgid "End time"
+msgstr "结束时间"
+
+#: 
+msgid "Enter counts"
+msgstr "输入人数"
+
+#: 
+msgid "Enter email subject…"
+msgstr "输入邮件主题…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "请输入您当前的密码，然后输入两次新密码。"
+
+#: 
+msgid "Enter your message…"
+msgstr "输入您的信息…"
+
+#: 
+msgid "Event staffed"
+msgstr "活动已安排人员"
+
+#: 
+msgid "Event title"
+msgstr "活动名称"
+
+#: 
+msgid "Event type"
+msgstr "事件类型"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "ChurchCRM 发出的每封电子邮件，最新的在前。打开某个人可查看其完整记录。"
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "此时段内每个职位都已有所需人员。"
+
+#: 
+msgid "Everyone has answered"
+msgstr "每个人都已回应"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "已选中的所有人都会加入此事工的志愿者。之后再勾选他们的职位。"
+
+#: 
+msgid "Everything is correct"
+msgstr "一切正确"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "生成预览失败"
+
+#: 
+msgid "Failed to load email"
+msgstr "加载电子邮件失败"
+
+#: 
+msgid "Failed to load email history"
+msgstr "加载电子邮件记录失败"
+
+#: 
+msgid "Failed to send email"
+msgstr "发送电子邮件失败"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "发送电子邮件失败。请重试，或使用“在邮件客户端中打开”。"
+
+#: 
+msgid "Family Member"
+msgstr "家庭成员"
+
+#: 
+msgid "Family verification"
+msgstr "验证家庭"
+
+#: 
+msgid "File"
+msgstr "文件"
+
+#: 
+msgid "Fill"
+msgstr "填补"
+
+#: 
+msgid "Fill by default with"
+msgstr "默认由以下人员担任"
+
+#: 
+msgid "Fill this gap"
+msgstr "填补此空缺"
+
+#: 
+msgid "Filled"
+msgstr "已填补"
+
+#: 
+msgid "Find a sub"
+msgstr "寻找代替人选"
+
+#: 
+msgid "Find a volunteer"
+msgstr "寻找志愿者"
+
+#: 
+msgid "Find an event"
+msgstr "寻找活动"
+
+#: 
+msgid "Find something to do"
+msgstr "找点事来做"
+
+#: 
+msgid "Find something to help with"
+msgstr "找点事来帮忙"
+
+#: 
+msgid "Findings"
+msgstr "发现"
+
+#: 
+msgid "First date"
+msgstr "起始日期"
+
+#: 
+msgid "Folder"
+msgstr "文件夹"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "要使用的会众门户主题的文件夹名称，位于 Include/themes/。“default”是随 ChurchCRM 提供的系统主题。"
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "请在更接近其起始日期时再次生成。"
+
+#: 
+msgid "Generate occurrences"
+msgstr "生成活动场次"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "获取新的日历地址？"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "请为事工命名"
+
+#: 
+msgid "Give the position a name"
+msgstr "请为职位命名"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "请以 HH:MM 格式给出开始和结束时间"
+
+#: 
+msgid "Give the team a name"
+msgstr "请为团队命名"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "前往我的服事"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "前往会众门户设置"
+
+#: 
+msgid "Going"
+msgstr "参加"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "请在事工页面授予资格，然后在此分配。"
+
+#: 
+msgid "Granted"
+msgstr "已授予"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "请看看教会为您的家庭保存的资料，并告诉我们是否仍然正确。"
+
+#: 
+msgid "Headcount"
+msgstr "出席人数"
+
+#: 
+msgid "Hello %s"
+msgstr "您好，%s"
+
+#: 
+msgid "Help Wanted"
+msgstr "征求帮助"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "无法保存“征求帮助”"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "为每个排班所跟随的活动提前多久创建活动场次。每日后台任务会让每个排班保持补充到此时间点。"
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "志愿者活动场次开始前多少小时发送提醒邮件。设为 0 则完全不发送提醒。发送取决于后台任务是否运行；推荐的 cron 设置请参阅志愿者文档。"
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "活动场次开始前多少小时发送提醒邮件。设为 0 则完全不发送提醒。"
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "每次运行时每个职位需要多少人。某一天之后可单独更改。只要默认志愿者仍具备资格，就会被分配到每一场新的活动；更改它不会影响已存在的活动场次。"
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "此排班的每场活动需要多少位志愿者。取消勾选此排班从不使用的职位。只要默认志愿者仍具备资格，就会被分配到每一场新的活动；更改它不会影响已存在的活动场次。"
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "此活动需要多少位志愿者。取消勾选它不使用的职位。"
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "为每个排班所跟随的活动提前多少周创建志愿者活动场次，范围为 1 至 52。每日后台任务会让每个排班保持补充到此时间点。"
+
+#: 
+msgid "How often"
+msgstr "频率"
+
+#: 
+msgid "How to correct this"
+msgstr "如何更正"
+
+#: 
+msgid "I can't"
+msgstr "我无法参加"
+
+#: 
+msgid "I'd like to help"
+msgstr "我愿意帮忙"
+
+#: 
+msgid "I'll be there"
+msgstr "我会到场"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "如果消息发送失败，请让管理员检查事工设置。"
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "如果您无法参加，请尽快在您的志愿者排班中拒绝，以便补上这个职位。"
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "如果您误将此地址分享给了他人，请获取新地址。旧地址会立即失效。"
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "最近 15 分钟"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "在志愿者库中"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "内部使用：志愿者排班上次补充到排班期限的日期（YYYY-MM-DD）。请勿手动编辑。"
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "内部使用：志愿者排班上次补充的时间以及由此创建的活动场次数。请勿手动编辑。"
+
+#: 
+msgid "Is this still right?"
+msgstr "这仍然正确吗？"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "其活动场次将在没有待填补职位的情况下生成。请编辑排班以添加其人员需求。"
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "让他们继续留在 {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "类型"
+
+#: 
+msgid "Last 24 hours"
+msgstr "最近 24 小时"
+
+#: 
+msgid "Last 30 days"
+msgstr "最近 30 天"
+
+#: 
+msgid "Last 7 days"
+msgstr "最近 7 天"
+
+#: 
+msgid "Last attempt"
+msgstr "上次尝试"
+
+#: 
+msgid "Last check"
+msgstr "上次检查"
+
+#: 
+msgid "Last date"
+msgstr "结束日期"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "上次在门户中出现"
+
+#: 
+msgid "Last sign-in"
+msgstr "上次登录"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "两项都保持为 0，则恰好在活动举行时服事。活动调整时间，志愿者也随之调整。"
+
+#: 
+msgid "Leave open"
+msgstr "留空"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "允许会众在会众门户中修改自己及其家庭成员的生日。"
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "允许会众编辑生日"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "请告诉教会办公室以上内容是否都仍然正确。"
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "告诉他们原因（可选）"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "让该事工的协调员可以为此活动安排志愿者，并可编辑活动本身。"
+
+#: 
+msgid "Loading the calendar…"
+msgstr "正在加载日历…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "管理事工"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "管理我的事工"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "需要“管理我的事工”权限，并有要管理的事工或团队"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "需要“管理我的事工”权限，并有要管理的事工或团队"
+
+#: 
+msgid "Manage staffing"
+msgstr "管理人员安排"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "由 %s 事工管理"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "由 {{ministry}} 事工管理"
+
+#: 
+msgid "Max"
+msgstr "最大人数"
+
+#: 
+msgid "Member Portal"
+msgstr "会众门户"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "在此问题解决之前，会众看到的是“暂时无法使用”页面。相同的详细信息已写入应用程序日志和网页服务器错误日志。"
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "会众只能看到此处开启的日历。生日和纪念日只显示名字和姓氏首字母。"
+
+#: 
+msgid "Message"
+msgstr "信息"
+
+#: 
+msgid "Min"
+msgstr "最少人数"
+
+#: 
+msgid "Ministries"
+msgstr "事工"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "正在寻求帮助的事工"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "可以添加活动的事工"
+
+#: 
+msgid "Ministry"
+msgstr "事工"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "事工日历"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "事工协调员"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "事工仪表板"
+
+#: 
+msgid "Ministry Settings"
+msgstr "事工设置"
+
+#: 
+msgid "Ministry calendar"
+msgstr "事工日历"
+
+#: 
+msgid "Ministry created"
+msgstr "事工已创建"
+
+#: 
+msgid "Ministry management access"
+msgstr "事工管理权限"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "需要事工管理权限"
+
+#: 
+msgid "Ministry name"
+msgstr "事工名称"
+
+#: 
+msgid "Ministry not found"
+msgstr "找不到该事工"
+
+#: 
+msgid "My Family"
+msgstr "我的家庭"
+
+#: 
+msgid "My Teams"
+msgstr "我的团队"
+
+#: 
+msgid "My ministries and teams"
+msgstr "我的事工和团队"
+
+#: 
+msgid "My schedule"
+msgstr "我的排班"
+
+#: 
+msgid "My volunteering"
+msgstr "我的服事"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "在会众寻找可帮忙事项的页面上为此职位命名。"
+
+#: 
+msgid "Needs an answer"
+msgstr "需要回应"
+
+#: 
+msgid "Needs filling"
+msgstr "需要填补"
+
+#: 
+msgid "Never signed in"
+msgstr "从未登录"
+
+#: 
+msgid "New account"
+msgstr "新账户"
+
+#: 
+msgid "New event"
+msgstr "新活动"
+
+#: 
+msgid "New ministry"
+msgstr "新事工"
+
+#: 
+msgid "New record notification"
+msgstr "新记录通知"
+
+#: 
+msgid "New recurring event"
+msgstr "新增重复活动"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "以下职位需要新的志愿者"
+
+#: 
+msgid "Newest first"
+msgstr "最新的在前"
+
+#: 
+msgid "Next on %s"
+msgstr "%s 的下一场"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "尚未向会众共享任何日历。"
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "没有向此事工开放的日历，因此这些活动不会显示在任何日历上。"
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "没有向会众共享的日历。"
+
+#: 
+msgid "No class"
+msgstr "无班级"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "尚无联系方式。"
+
+#: 
+msgid "No coordinators yet"
+msgstr "尚无协调员"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "起止日期之间没有符合重复规则的日期"
+
+#: 
+msgid "No email was sent."
+msgstr "未发送任何电子邮件。"
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "尚未向此记录发送过电子邮件。"
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "尚未记录出席人数"
+
+#: 
+msgid "No longer needed"
+msgstr "不再需要"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "尚无会众登录过会众门户。"
+
+#: 
+msgid "No ministry"
+msgstr "无事工"
+
+#: 
+msgid "No past events"
+msgstr "没有过往活动"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "尚未上传此人的照片。"
+
+#: 
+msgid "No photo was sent."
+msgstr "未收到照片。"
+
+#: 
+msgid "No positions yet"
+msgstr "尚无职位"
+
+#: 
+msgid "No qualifications yet."
+msgstr "尚无资格。"
+
+#: 
+msgid "No schedules yet"
+msgstr "尚无排班"
+
+#: 
+msgid "No staffing needs set"
+msgstr "未设置人员需求"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "没有人员需求：生成的活动场次将不需要任何人。"
+
+#: 
+msgid "No substitution requests"
+msgstr "没有代替请求"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "没有待决定的代替"
+
+#: 
+msgid "No teams yet"
+msgstr "尚无团队"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "日历上没有即将举行的、标题为“%2$s”的 %1$s 活动。排班跟随的是已存在的活动。"
+
+#: 
+msgid "No upcoming event matches"
+msgstr "没有符合的即将举行的活动"
+
+#: 
+msgid "No upcoming events"
+msgstr "没有即将举行的活动"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "日历上没有即将举行的此类型活动。"
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "没有可供选择的即将举行的活动"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "尚未分配任何人"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "目前还没有其他人接受过这方面的培训，请改为告知您的协调员。"
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "还没有人说明每个职位需要多少位志愿者，因此没有需要填补的。"
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "此时段内没有人仍在考虑中。"
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "目前还没有人具备此职位的资格"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "目前还没有人具备此职位的资格，因此它保持空缺。"
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "所有收件人都无法发送电子邮件"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "无：每场活动各自选择活动类型"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "无权查看此电子邮件"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "无权查看此家庭"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "无权查看此人"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "无权操作此项分配"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "无权操作此事工"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "无权操作此场活动"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "无权操作此职位"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "无权操作此项资格"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "无权操作此项需求"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "无权操作此排班"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "无权操作此代替请求"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "无权操作此团队"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "无权将活动分配给该志愿者事工"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "无权更改活动 %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "无权更改此活动所属的志愿者事工"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "无权在没有您所管理的志愿者事工的情况下创建活动"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "无权修改此活动"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "无权将活动固定到日历“%s”"
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "无权从日历“%s”中移除活动"
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "无权从此活动中移除志愿者事工"
+
+#: 
+msgid "Not checked in"
+msgstr "未签到"
+
+#: 
+msgid "Not found"
+msgstr "找不到"
+
+#: 
+msgid "Not in the pool"
+msgstr "不在志愿者库中"
+
+#: 
+msgid "Not now"
+msgstr "暂不"
+
+#: 
+msgid "Not sent"
+msgstr "未发送"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "未设置：使用“%s”"
+
+#: 
+msgid "Not staffed"
+msgstr "未安排人员"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "尚未参与服事"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "没有任何变更，因此未保存。"
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "此期间日历上没有任何内容。"
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "日历上目前没有任何内容。"
+
+#: 
+msgid "Nothing is short"
+msgstr "没有缺额"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "您的列表中还没有内容"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "您的列表中还没有内容。看看有哪些需要填补的。"
+
+#: 
+msgid "Nothing open right now"
+msgstr "目前没有开放的事项"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "尚未安排任何内容"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "没有安排。"
+
+#: 
+msgid "Nothing set up yet"
+msgstr "尚未设置任何内容"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "此事工在过去一年中没有任何事项。"
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "暂时没有可授予资格的对象"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "未保存任何内容。请检查标出的字段。"
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "未保存任何内容。请重试。"
+
+#: 
+msgid "Notification"
+msgstr "通知"
+
+#: 
+msgid "Notifications"
+msgstr "通知"
+
+#: 
+msgid "Occurrence not found"
+msgstr "找不到该活动场次"
+
+#: 
+msgid "Occurrences"
+msgstr "活动场次"
+
+#: 
+msgid "Offer to help"
+msgstr "愿意帮忙"
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "此人具备某个职位的资格后，会显示在这里，并显示他们被安排服事的日期。"
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "每个“关联小组”为此班级的日历活动，会生成一场活动场次。"
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "此活动的每个日期会生成一场活动场次。只能选择日历上已有的活动。"
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "其中一个日历不存在"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "其中一个活动不存在"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "其中一个日历没有向会众共享。"
+
+#: 
+msgid "One-time"
+msgstr "一次性"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "只有主日学班级才能关联到团队"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "只有协调员才能代他人记录回应"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "只有此事工的协调员才能创建其活动"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "只有此事工的协调员才能为其活动安排人员"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "只有志愿者管理员才能更改此项。"
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "只有志愿者管理员才能更改事工是否为主日学提供教师"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "只有您家庭中的成年人才能更改这些资料。请联系教会办公室。"
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "只列出接受过此项培训的人。"
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "只有被分配的志愿者才能提议代替人选"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "只列出此事工可以添加活动的日历。其自身的日历默认已勾选。"
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "仅显示很长列表的开头部分。请缩小时间范围以查看其余部分。"
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "只有提议代替人选的志愿者才能撤回提议"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "从“事工”菜单中打开一个事工，创建排班并生成其日期，需要安排人员的周次就会显示在这里。"
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "打开一个事工，可将某人设为其协调员，或其某个团队的负责人。"
+
+#: 
+msgid "Open in calendar app"
+msgstr "在日历应用中打开"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "无法加载开放的服事机会。"
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "在本机电子邮件应用中打开收件人"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "打开会众门户"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "打开事工仪表板"
+
+#: 
+msgid "Open the ministry"
+msgstr "打开事工"
+
+#: 
+msgid "Open the occurrence"
+msgstr "打开活动场次"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "请打开活动场次，分配您所需要的人员。"
+
+#: 
+msgid "Open this team"
+msgstr "打开此团队"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "向事工开放日历需要“添加活动”权限"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "可选。此团队某个职位的所有合格人员都会成为该班的教师，班级页面不再更改其教师。"
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "可选。该班级将成为关联小组：其名单就是签到的人，该班的排班会找到这些活动。"
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "超过最大人数：请移除此人或提高最大人数。"
+
+#: 
+msgid "Overridden templates"
+msgstr "已覆盖的模板"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "第 %1$s 页，共 %2$s 页"
+
+#: 
+msgid "Page %d of %d"
+msgstr "第 %d 页，共 %d 页"
+
+#: 
+msgid "Password reset"
+msgstr "重设密码"
+
+#: 
+msgid "Password reset link"
+msgstr "密码重置链接"
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "选择一个即将举行的日历活动，并说明它需要谁。活动保持其自身的日期和时间；若要为整个系列安排人员，请改为添加排班。"
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "请选择已同意代替您的人。您的协调员会确认。"
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "请从列表中选择日历。"
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "请选择您的资料是否需要更改。"
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "请联系教会办公室，以便我们更正记录。"
+
+#: 
+msgid "Please contact the church office."
+msgstr "请联系教会办公室。"
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "请至少输入两个字符。"
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "请在您的志愿者排班中接受或拒绝，让我们知道您能否参加。"
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "请告诉我们需要更改什么。"
+
+#: 
+msgid "Portal settings"
+msgstr "门户设置"
+
+#: 
+msgid "Portal theme"
+msgstr "门户主题"
+
+#: 
+msgid "Position"
+msgstr "职位"
+
+#: 
+msgid "Position added"
+msgstr "职位已添加"
+
+#: 
+msgid "Position deleted"
+msgstr "职位已删除"
+
+#: 
+msgid "Position name"
+msgstr "职位名称"
+
+#: 
+msgid "Position not found"
+msgstr "找不到该职位"
+
+#: 
+msgid "Position saved"
+msgstr "职位已保存"
+
+#: 
+msgid "Positions"
+msgstr "职位"
+
+#: 
+msgid "Positions still short"
+msgstr "仍有缺额的职位"
+
+#: 
+msgid "Proposed"
+msgstr "已提议"
+
+#: 
+msgid "Proposed substitute"
+msgstr "提议的代替人选"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "将此事工放到会众门户的“开放机会”页面上，任何志愿者都可以在那里看到并表示愿意帮忙。他们会加入志愿者库，并且您会收到电子邮件。"
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "改由 {{name}} 担任吗？原来的志愿者会保留其记录，并会收到通知。"
+
+#: 
+msgid "Qualification not found"
+msgstr "找不到该资格"
+
+#: 
+msgid "Qualified for"
+msgstr "具备以下资格"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "具备资格的志愿者可以自行报名此职位的开放日期。对于只应由团队负责人或协调员分配的职位，请关闭；会众门户不会提供这些职位。"
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "为其现任教师授予以下职位的资格"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "为他们授予某个职位的资格"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "为他们授予某个职位的资格。"
+
+#: 
+msgid "Reactivate"
+msgstr "重新启用"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "阅读主题制作指南"
+
+#: 
+msgid "Recent Emails"
+msgstr "最近的电子邮件"
+
+#: 
+msgid "Recent Sends"
+msgstr "最近的发送"
+
+#: 
+msgid "Recipient"
+msgstr "收件人"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "收件人数量（%d）超过每次发送的上限（%d）"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "收件人必须以 personId 和 familyId 提供，而不是电子邮件地址"
+
+#: 
+msgid "Record a decline"
+msgstr "记录拒绝"
+
+#: 
+msgid "Record an acceptance"
+msgstr "记录接受"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "记录 {{name}} 拒绝了吗？该回应将以您的名义保存，并重新开放该名额。"
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "记录 {{name}} 答应了吗？该回应将以您的名义保存，而不是以他们的名义。"
+
+#: 
+msgid "Record: they accepted"
+msgstr "记录：他们接受了"
+
+#: 
+msgid "Record: they declined"
+msgstr "记录：他们拒绝了"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "招募志愿者"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "“招募志愿者”必须为真或假"
+
+#: 
+msgid "Recruiting"
+msgstr "招募中"
+
+#: 
+msgid "Recurring"
+msgstr "重复"
+
+#: 
+msgid "Reject"
+msgstr "拒绝"
+
+#: 
+msgid "Reject substitution"
+msgstr "拒绝代替"
+
+#: 
+msgid "Reject this substitute"
+msgstr "拒绝此代替人选"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "提醒提前时间（小时）"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "提醒：您已被安排服事"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "提醒和警报只有在后台任务运行时才会发送。为确保按时发送，请通过 cron 每 15 分钟运行一次计划任务运行器"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "移除志愿者"
+
+#: 
+msgid "Remove coordinator"
+msgstr "移除协调员"
+
+#: 
+msgid "Remove the class from them"
+msgstr "取消他们的班级"
+
+#: 
+msgid "Remove the team leader"
+msgstr "移除团队负责人"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "将 {{name}} 从 {{ministry}} 中移除？这将移除其在此处的所有资格，将其从所有未来的活动场次中撤下，清除其在此事工排班中的默认志愿者身份，并将其移出志愿者库。"
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "已移除。{{qualifications}} 项资格、{{assignments}} 项即将到来的分配、{{defaults}} 项排班默认。"
+
+#: 
+msgid "Repeats"
+msgstr "重复"
+
+#: 
+msgid "Requirement not found"
+msgstr "找不到该需求"
+
+#: 
+msgid "Reset link"
+msgstr "重置链接"
+
+#: 
+msgid "Response recorded"
+msgstr "回应已记录"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "请在志愿者仪表板上查看该请求，并批准或拒绝。"
+
+#: 
+msgid "Review this request"
+msgstr "审核此请求"
+
+#: 
+msgid "Run background jobs now"
+msgstr "立即运行后台任务"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTP 测试"
+
+#: 
+msgid "Save calendars"
+msgstr "保存日历"
+
+#: 
+msgid "Save changes"
+msgstr "保存更改"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "已保存：此事工不再征求帮助"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "已保存：此事工现在正在征求帮助"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "已保存。会众可以看到上面开启的日历。"
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "排班“{{name}}”已创建。"
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "排班“{{name}}”已创建。它处于停用状态，在启用之前不会生成活动场次。"
+
+#: 
+msgid "Schedule deactivated"
+msgstr "排班已停用"
+
+#: 
+msgid "Schedule deleted"
+msgstr "排班已删除"
+
+#: 
+msgid "Schedule name"
+msgstr "排班名称"
+
+#: 
+msgid "Schedule not found"
+msgstr "找不到该排班"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "排班已重新启用"
+
+#: 
+msgid "Schedule saved"
+msgstr "排班已保存"
+
+#: 
+msgid "Scheduled"
+msgstr "已排定"
+
+#: 
+msgid "Schedules"
+msgstr "排班"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "排班上次补充于"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "排班不再有自己的重复规则或时间；每场活动都跟随日历活动。请移除：%s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "排班不再自行设定提前生成多久：“管理 → 事工设置”中的排班期限适用于每个排班。请移除：generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "排班期限（周）"
+
+#: 
+msgid "Scope grant not found"
+msgstr "找不到该权限范围授权"
+
+#: 
+msgid "Search by name"
+msgstr "按姓名搜索"
+
+#: 
+msgid "See the whole calendar"
+msgstr "查看整个日历"
+
+#: 
+msgid "See what needs filling"
+msgstr "看看有哪些需要填补的"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "选择一个日历以隐藏或显示其活动。"
+
+#: 
+msgid "Select ministries..."
+msgstr "选择事工…"
+
+#: 
+msgid "Self sign-up"
+msgstr "自助报名"
+
+#: 
+msgid "Self-assignable"
+msgstr "可自行报名"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "“可自行报名”必须为真或假"
+
+#: 
+msgid "Self-service accounts"
+msgstr "自助服务账户"
+
+#: 
+msgid "Send"
+msgstr "发送"
+
+#: 
+msgid "Send Email"
+msgstr "发送电子邮件"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "通过 ChurchCRM 发送电子邮件"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "重新发送分配通知"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "请将要显示的日历以列表形式发送。"
+
+#: 
+msgid "Send to the church office"
+msgstr "发送给教会办公室"
+
+#: 
+msgid "Send your answer"
+msgstr "发送您的回答"
+
+#: 
+msgid "Sent"
+msgstr "已发送"
+
+#: 
+msgid "Sent by"
+msgstr "发送者"
+
+#: 
+msgid "Serving next"
+msgstr "接下来的服事"
+
+#: 
+msgid "Set as Accepted"
+msgstr "设为已接受"
+
+#: 
+msgid "Set staffing needs"
+msgstr "设置人员需求"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "在会众门户中显示“%s”"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "在会众门户中显示"
+
+#: 
+msgid "Show past events"
+msgstr "显示过往活动"
+
+#: 
+msgid "Show the church calendar"
+msgstr "显示教会日历"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "在会众门户中显示教会日历。"
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "在会众门户中显示教会日历部分。"
+
+#: 
+msgid "Show the next"
+msgstr "显示接下来的"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "在会众门户中显示服事和团队部分。"
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "在“开放机会”页面上显示此事工"
+
+#: 
+msgid "Show volunteering"
+msgstr "显示服事"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "在会众门户中显示服事和团队页面。"
+
+#: 
+msgid "Show what I have already done"
+msgstr "显示我已经完成的"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "按您输入的原样显示。保留换行。"
+
+#: 
+msgid "Sign up"
+msgstr "报名"
+
+#: 
+msgid "Sign-in and security"
+msgstr "登录与安全"
+
+#: 
+msgid "Signed in"
+msgstr "已登录"
+
+#: 
+msgid "Signed up"
+msgstr "已报名"
+
+#: 
+msgid "Sincerely"
+msgstr "谨上"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "您的部分资料无法保存。请检查标出的字段。"
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "您的部分家庭资料无法保存。请检查标出的字段。"
+
+#: 
+msgid "Someone else is covering"
+msgstr "有其他人代替"
+
+#: 
+msgid "Something needs changing"
+msgstr "有内容需要更改"
+
+#: 
+msgid "Something went wrong"
+msgstr "出了点问题"
+
+#: 
+msgid "Staff an event"
+msgstr "为活动安排人员"
+
+#: 
+msgid "Staff them"
+msgstr "为他们安排人员"
+
+#: 
+msgid "Staff this event"
+msgstr "为此活动安排人员"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "为此活动场次安排人员"
+
+#: 
+msgid "Staffed"
+msgstr "已安排人员"
+
+#: 
+msgid "Staffing"
+msgstr "人员安排"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "活动创建之后再设置人员安排"
+
+#: 
+msgid "Staffing needs"
+msgstr "人员需求"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "人员需求已保存"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "请先创建一个事工，然后添加在其中服事的团队和职位。"
+
+#: 
+msgid "Start time"
+msgstr "开始时间"
+
+#: 
+msgid "Start typing a name"
+msgstr "开始输入姓名"
+
+#: 
+msgid "Statistics"
+msgstr "统计"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "要让 {{name}} 不再协调 {{ministry}} 吗？其登录账户和自己的分配不受影响。"
+
+#: 
+msgid "Subscribe"
+msgstr "订阅"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "订阅日历"
+
+#: 
+msgid "Substitute"
+msgstr "代替人选"
+
+#: 
+msgid "Substitute approved"
+msgstr "代替已批准"
+
+#: 
+msgid "Substitute asked"
+msgstr "已请求代替"
+
+#: 
+msgid "Substitute decision"
+msgstr "代替决定"
+
+#: 
+msgid "Substitute proposed"
+msgstr "已提议代替"
+
+#: 
+msgid "Substitute rejected"
+msgstr "代替已拒绝"
+
+#: 
+msgid "Substituted"
+msgstr "已代替"
+
+#: 
+msgid "Substitution approved"
+msgstr "代替已批准"
+
+#: 
+msgid "Substitution rejected"
+msgstr "代替已拒绝"
+
+#: 
+msgid "Substitution request not found"
+msgstr "找不到该代替请求"
+
+#: 
+msgid "Substitution requests"
+msgstr "代替请求"
+
+#: 
+msgid "Sunday School Class"
+msgstr "主日学班级"
+
+#: 
+msgid "System calendar"
+msgstr "系统日历"
+
+#: 
+msgid "System default"
+msgstr "系统默认"
+
+#: 
+msgid "Take that back"
+msgstr "撤回"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "要让 {{name}} 退出此职位吗？不会发送电子邮件；其排班会显示该日期已不再需要，名额会重新开放。"
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "此班级的教师在“事工 → %1$s → %2$s”中管理。"
+
+#: 
+msgid "Team"
+msgstr "团队"
+
+#: 
+msgid "Team Leader"
+msgstr "团队负责人"
+
+#: 
+msgid "Team added"
+msgstr "团队已添加"
+
+#: 
+msgid "Team deleted"
+msgstr "团队已删除"
+
+#: 
+msgid "Team leader"
+msgstr "团队负责人"
+
+#: 
+msgid "Team name"
+msgstr "团队名称"
+
+#: 
+msgid "Team not found"
+msgstr "找不到该团队"
+
+#: 
+msgid "Team saved"
+msgstr "团队已保存"
+
+#: 
+msgid "Teams"
+msgstr "团队"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "团队是在此事工中服事的人员小组。"
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "团队、职位及担任者"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "最近十次登录"
+
+#: 
+msgid "Thank you"
+msgstr "谢谢！"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "感谢您报名服事"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "感谢您报名服事。您已在排班表上。"
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "谢谢。教会办公室已收到您的回答。"
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "谢谢。教会办公室会在添加之前审核此内容。"
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "感谢您告知我们。"
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "谢谢，已告知协调员您愿意再次帮忙。"
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "谢谢，已告知协调员您愿意帮忙。"
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "谢谢，您已在名单上。"
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "该会众门户主题文件夹不存在。"
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "该分配属于其他人"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "无法保存该分配"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "该生日不是有效日期。"
+
+#: 
+msgid "That could not be saved."
+msgstr "无法保存。"
+
+#: 
+msgid "That could not be sent."
+msgstr "无法发送。"
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "无法添加该家庭成员。请检查标出的字段。"
+
+#: 
+msgid "That is not a valid date."
+msgstr "这不是有效的日期。"
+
+#: 
+msgid "That list could not be loaded."
+msgstr "无法加载该列表。"
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "此人已在此场活动中担任此职位"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "此人已被分配到此场活动的此职位"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "此人不在此事工的志愿者库中。如仍要分配，请使用“库外覆盖”重新发送。"
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "此人不在此志愿者库中"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "此人不具备此职位的资格"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "无法保存该照片。"
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "该照片太大。请选择较小的照片。"
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "该职位属于另一个事工"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "该职位属于另一个团队"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "该职位已排满人员"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "此场活动没有为该职位安排人员"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "无法记录该回应"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "无法直接设置该状态"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "无法对该代替请求作出决定"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "该团队属于另一个事工"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "无法启用该主题。"
+
+#: 
+msgid "That theme could not be checked."
+msgstr "无法检查该主题。"
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "该主题有错误，因此未启用。"
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "无法分配该志愿者"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "该结婚日期不是有效日期。"
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "%s 必须是 YYYY-MM-DD 格式的日期"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "%s 必须是整数分钟数"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "%s 必须在活动前后 %d 分钟以内"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "会众门户日历已保存。"
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "会众门户无法完成您的请求。请几分钟后再试。"
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "会众门户仅供已登录的人使用，不供 API 客户端使用。"
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "会众门户设置的主题为“%s”，但服务器上已不存在该主题。在您选择一个存在的主题之前，会众看到的是错误页面。"
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "会众门户暂时无法使用"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "无法启用会众门户主题“%s”，因为其中有错误。"
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "无法渲染会众门户主题"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "找不到会众门户主题文件夹“%s”。"
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "会众门户主题已更改。"
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "当 %1$s 的教师在“事工 → %2$s → %3$s”中管理时，其“教师”角色无法重命名或删除。"
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "当前主题文件夹缺失"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "地址已选中，请用键盘复制。"
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "不允许使用资源路径“%s”。"
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "无法取消该分配"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "将重新发送分配通知"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "日历地址已复制。"
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "无法加载日历。请重试。"
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "无法保存日历。"
+
+#: 
+msgid "The cart could not be added"
+msgstr "无法加入已选"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "教会尚未给您发过电子邮件。"
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "已通知教会办公室。请稍后再试。"
+
+#: 
+msgid "The class does not exist"
+msgstr "该班级不存在"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "此排班所跟随的班级已不存在。"
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "此电子邮件的内容未保存。ChurchCRM 只保存在邮件编辑器中撰写的信息以及志愿者邮件的文本。"
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "此电子邮件的内容未被保留。"
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "无法添加该协调员"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "无法加载协调员列表"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "每场活动的日期和时间都来自其日历活动，因此移动活动，排班也随之移动。"
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "days 参数必须是 1 到 365 之间的整数"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "默认志愿者必须是一个人"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "默认志愿者保存在排班中，并会用于从现在起生成的活动场次。"
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "默认志愿者必须是一个列表"
+
+#: 
+msgid "The description is too long"
+msgstr "说明太长"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "范围的结束早于开始。"
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "范围的结束不是日期。"
+
+#: 
+msgid "The event could not be staffed"
+msgstr "无法为该活动安排人员"
+
+#: 
+msgid "The event does not exist"
+msgstr "该活动不存在"
+
+#: 
+msgid "The event is inactive"
+msgstr "该活动已停用"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "活动必须在开始之后结束"
+
+#: 
+msgid "The event title"
+msgstr "活动标题"
+
+#: 
+msgid "The event title is too long"
+msgstr "活动标题太长"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "事工新活动默认采用的活动类型。若为空，或该类型已被删除，则使用名为“其他”的类型（如果有）。"
+
+#: 
+msgid "The event type does not exist"
+msgstr "该活动类型不存在"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "此排班所跟随的活动类型已不存在。"
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "活动只能移到该团队所关联的班级"
+
+#: 
+msgid "The events could not be created"
+msgstr "无法创建这些活动"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "无法删除这些活动"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "无法为这些活动安排人员"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "无法移除该授权"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "结束日期早于起始日期"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "无法加载合格志愿者名单"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "最大人数不能低于最少人数"
+
+#: 
+msgid "The message could not be queued"
+msgstr "无法将该信息排入队列"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "最少人数不能为负数"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "无法创建该事工"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "无法停用该事工"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "无法删除该事工"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "无法重新启用该事工"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "无法保存该事工"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "无法删除该活动场次"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "该活动场次没有排班"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "无法生成活动场次"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "原来的志愿者被释放，由代替人选担任该职位。双方都会收到通知。"
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "原来的志愿者保留该职位。双方都会收到通知。"
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "您要访问的页面不存在。它可能已被移动或删除。"
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "该职位属于另一个事工"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "无法删除该职位"
+
+#: 
+msgid "The position could not be saved"
+msgstr "无法保存该职位"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "该职位仍有人负责，除非您想调整名单，否则无需操作。"
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "无法移除该资格"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "无法保存该资格"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "无法加载合格的志愿者"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "重复规则必须说明活动如何重复"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "%1$s 代替 %2$s 服事的请求已获批准。"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "%1$s 代替 %2$s 服事的请求未获批准。"
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "同一个职位在人员需求中被列出了两次"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "无法停用该排班"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "无法删除该排班"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "无法重新启用该排班"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "无法保存该排班"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "排班已更新，无需进一步操作。"
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "排班时间段的结束早于开始"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "无法加载该排班的人员需求"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "无法加载人员需求"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "无法重置人员需求"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "无法保存人员需求"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "人员需求必须是一个列表"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "无法加载人员安排计划"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "范围的开始不是日期。"
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "无法对该代替作出决定"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "无法加载代替请求"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "教师只能导入到此团队的职位中"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "%1$s 的教师在“事工 → %2$s → %3$s”中管理。学生仍可在此处更改。"
+
+#: 
+msgid "The team could not be deleted"
+msgstr "无法删除该团队"
+
+#: 
+msgid "The team could not be saved"
+msgstr "无法保存该团队"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "该团队不属于此事工"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "找不到主题文件夹。"
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "在事工的“日历”标签页中新增活动时默认采用的类型。仍可为每个活动单独更改，例如需要出席人数分类的班级。"
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "无法保存该志愿者分配"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "%s 事工的志愿者库。"
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "无法保存志愿者设置的更改"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "时间段的结束早于开始"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "其协调员可以在没有“添加活动”权限的情况下，将其事工的活动固定到此日历。"
+
+#: 
+msgid "Theme"
+msgstr "主题"
+
+#: 
+msgid "Themes"
+msgstr "主题"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "主题由您的教会提供，而非由 ChurchCRM 提供，ChurchCRM 项目不对其进行验证。"
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "没有 ID 为 %d 的教会日历。"
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "没有 ID 为 %d 的系统日历。"
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "这是教会为您保存的资料。更改会立即保存。"
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "这些是您负责的志愿者团队。打开某个团队，可设置其职位、说明谁可以在哪里服事，并安排未来几周的人员。"
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "这些活动不属于同一个系列：它们的标题、类型或班级不同"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "这些事工希望有更多人参与。告诉他们您有兴趣，会有人与您联系。"
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "这些需求来自排班。在此保存只会更改这一场活动。"
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "这些数字仅统计自助服务账户：即登录后只能进入会众门户的人。"
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "这些人仍被分配着，但他们担任的职位已不在此日期的人员安排计划中。"
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "这些人仍被分配着，但他们担任的职位已不在此场活动的人员安排计划中。"
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "这些已排定的职位仍需要人。"
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "%1$s 的这些团队已关联到主日学班级：%2$s。请先取消关联。"
+
+#: 
+msgid "They could not be added"
+msgstr "无法添加他们"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "无法将他们从此事工中移除"
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "他们原本就是这里的志愿者"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "此分配为%1$s，无法更改为%2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "此分配已不再有效"
+
+#: 
+msgid "This email is not in your history."
+msgstr "此电子邮件不在您的记录中。"
+
+#: 
+msgid "This event has already happened"
+msgstr "此活动已经举行"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "这将发送给教会办公室审核。在工作人员批准之前，新的家庭成员在这里会显示为待审核。"
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "此小组是某个志愿者事工的志愿者库，会随该事工一并删除"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "此小组是 %s 的志愿者库，由该事工管理。"
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "此小组是 %s 的志愿者库。它由该事工管理。"
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "此系统尚无日历。"
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "温馨提醒：您即将被安排服事。"
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "这不是有效的主题文件夹名称。"
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "这不是您团队的日期。"
+
+#: 
+msgid "This is not one of your teams."
+msgstr "这不是您的团队。"
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "这是教会寄信的地址，以及就您家庭事宜致电的联系人。"
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "这是您的教会账户。您为自己和家人能做的一切都在这里。"
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "此事工在日历上没有即将举行的活动。"
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "此事工没有即将举行、标题为“%s”的活动。排班跟随的是已存在的活动：请先在事工的“日历”标签页中添加它们。"
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "此事工没有志愿者库小组"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "此事工目前没有征求帮助"
+
+#: 
+msgid "This ministry's events"
+msgstr "此事工的活动"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "此事工的活动（尚未选择活动）"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "此活动场次已重新跟随其排班"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "此活动场次已经举行"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "此活动场次已经举行，其分配无法再更改"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "此活动场次已取消"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "此活动场次有自己的人员需求，与其排班分开。"
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "此页面不属于您的账户。如果您认为应该属于，请询问教会办公室。"
+
+#: 
+msgid "This page was not found"
+msgstr "找不到此页面"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "会众门户的这一部分供志愿者团队负责人使用。"
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "此职位由团队负责人或协调员分配，而不是通过报名"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "无法删除此排班：仍有 %d 项志愿者分配引用其活动场次。"
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "此排班尚无人员需求"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "此排班已停用。请重新启用以生成其活动场次。"
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "此代替请求已经作出决定"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "此团队尚无职位"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "此团队已在为此活动安排人员"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "此模板需要文件“%s”，但主题中不包含该文件。"
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "无法启用此主题"
+
+#: 
+msgid "This theme has no problems."
+msgstr "此主题没有问题。"
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "此版本的 ChurchCRM 在此路径下不使用模板，因此该覆盖永远不会被渲染。"
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "请在此团队的“志愿者”标签页中勾选他们，然后在此分配。"
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "勾选后立即保存。"
+
+#: 
+msgid "Times come from this event"
+msgstr "时间来自此活动"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "补充所有排班、发送所有排队的内容并结束已完成的活动场次，无需等待下一次计划运行。"
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "要拒绝 {{name}} 吗？原来的志愿者将继续担任，并会收到通知。"
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "关闭会众门户模板缓存，并在 HTML 注释中打印每个模板的名称。供主题设计者使用；日常使用请保持关闭。"
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "对于其团队教授主日学班级的事工，请开启此项。其团队随后可以关联到班级，其排班和活动也可以使用班级。"
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "关闭门户模板缓存，并在 HTML 注释中打印每个模板的名称。供主题设计者使用；日常使用请保持关闭。"
+
+#: 
+msgid "Two-factor authentication"
+msgstr "双重身份验证 (2FA)"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "未填补的职位"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "未知的发送错误"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "未知的活动场次状态"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "未知的排班关联模式"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "未知的志愿者事工"
+
+#: 
+msgid "Until"
+msgstr "截至"
+
+#: 
+msgid "Upcoming availability"
+msgstr "近期可服事时间"
+
+#: 
+msgid "Update your details"
+msgstr "更新您的资料"
+
+#: 
+msgid "Update your family details"
+msgstr "更新您的家庭资料"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "使用“为此活动安排人员”为单个活动安排人员"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "使用排班的需求"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "用户必须拥有“添加活动”权限，或协调某个志愿者事工，并且必须启用“活动”模块"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "用户必须拥有“添加活动”权限，或协调此日历所属的志愿者事工"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1：志愿者机会（旧版）"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1：旧版志愿者机会"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2：事工"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2：志愿者管理"
+
+#: 
+msgid "Valid"
+msgstr "有效"
+
+#: 
+msgid "Validation"
+msgstr "验证"
+
+#: 
+msgid "View event"
+msgstr "查看活动"
+
+#: 
+msgid "View my schedule"
+msgstr "查看我的排班"
+
+#: 
+msgid "View only"
+msgstr "仅查看"
+
+#: 
+msgid "View person"
+msgstr "查看人员"
+
+#: 
+msgid "View the event"
+msgstr "查看活动"
+
+#: 
+msgid "View this email"
+msgstr "查看此电子邮件"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "志愿者（旧版）"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "未启用志愿者管理 V2"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "志愿者事工"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "志愿者分配"
+
+#: 
+msgid "Volunteer declined"
+msgstr "志愿者已拒绝"
+
+#: 
+msgid "Volunteer experience"
+msgstr "志愿者体验"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "志愿者职位仍需要填补"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "志愿者提醒"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "志愿者报名"
+
+#: 
+msgid "Volunteer times"
+msgstr "志愿者时间"
+
+#: 
+msgid "Volunteering"
+msgstr "志愿服事"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "按教会运作方式组织的志愿服事。每个事工有团队和职位；人员取得职位资格，并属于该事工的库小组；排班跟随日历上的活动，生成带有人员需求的、有日期的活动场次；协调员分配人员，他们可以接受、拒绝或提议代替人选；提醒和警报通过电子邮件发出。管理员和拥有“管理事工”权限的用户可以看到所有事工，并可创建、停用和删除。事工协调员则获得“管理我的事工”权限：侧边栏的“事工”标题下只显示其协调的事工。团队负责人通过会众门户管理其团队。会众使用会众门户查看自己的排班、回应、报名和表示愿意帮忙。"
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "已分配的志愿者：{{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "志愿者结束"
+
+#: 
+msgid "Volunteers needed"
+msgstr "所需志愿者"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "%s 的志愿者已被分配到这些活动，因此无法在此删除。请让该事工移除其人员安排，或请管理日历的人处理。"
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "{{names}} 的志愿者已被分配到其中部分活动。除非您管理日历，否则在移除这些人员安排之前，删除会被拒绝。"
+
+#: 
+msgid "Volunteers start"
+msgstr "志愿者开始"
+
+#: 
+msgid "Waiting for a reply"
+msgstr "等待回复"
+
+#: 
+msgid "Waiting for review"
+msgstr "待审核"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "等待您的协调员确认。"
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "有需要填补的职位时，我们会发电子邮件通知您。"
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "我们非常需要主日早晨有更多人帮忙，无需经验。"
+
+#: 
+msgid "Welcome, %s"
+msgstr "欢迎，%s"
+
+#: 
+msgid "What needs changing?"
+msgstr "需要更改什么？"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "本周需要您留意的事项"
+
+#: 
+msgid "What the check found"
+msgstr "检查发现了什么"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "志愿者体验是什么"
+
+#: 
+msgid "What you want to say"
+msgstr "您想说的话"
+
+#: 
+msgid "When"
+msgstr "时间"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "当志愿者提议由某人代替自己时，会显示在这里，供您批准或拒绝。"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "当志愿者提议由某人代替自己时，会显示在这里，供您批准。"
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "当有人将您加入某个团队，或您自己报名后，会显示在这里。"
+
+#: 
+msgid "Where"
+msgstr "地点"
+
+#: 
+msgid "Where the dates come from"
+msgstr "日期的来源"
+
+#: 
+msgid "Where we reach you"
+msgstr "我们如何联系您"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "启用哪种志愿者管理体验。V1 是旧版志愿者机会功能；V2 是新的排班与分配工作流程。“两者”会在迁移期间并排显示两边。"
+
+#: 
+msgid "Which events"
+msgstr "哪些活动"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "本教会使用哪种志愿者体验。右侧的卡片说明了每个选项。"
+
+#: 
+msgid "Who is covering"
+msgstr "谁来代替"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "需要谁、谁已上岗、还缺什么"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "最近服事次数最少的人排在最前面。"
+
+#: 
+msgid "Work Email"
+msgstr "工作电子邮件"
+
+#: 
+msgid "Yearly"
+msgstr "每年"
+
+#: 
+msgid "You"
+msgstr "您"
+
+#: 
+msgid "You are already helping that day"
+msgstr "您当天已在帮忙"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "您当天已作为 {{what}} 在帮忙。是否也报名参加此项？"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "您无权更改此项。请联系教会办公室。"
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "您目前没有关联到任何家庭"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "您尚未加入任何家庭记录。"
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "您已在名单上，谢谢。"
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "您可以在您的志愿者排班中查看或更改此项。"
+
+#: 
+msgid "You cannot open this page"
+msgstr "您无法打开此页面"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "您不能提议自己作为自己的代替人选"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "无法为您报名该项。"
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "您目前还没有负责任何志愿者团队。"
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "您有一个新的日历地址。旧地址已失效。"
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "您已被安排服事"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "您已被安排服事。"
+
+#: 
+msgid "You lead this"
+msgstr "您负责此项"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "您只能为自己负责的团队创建排班"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "您将回到此项的名单上。"
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "您的账户未关联到人员记录。请联系教会办公室。"
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "您的日历订阅已保存。"
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "您当前的地址将立即失效。您给过的人都需要使用新地址。"
+
+#: 
+msgid "Your details"
+msgstr "您的资料"
+
+#: 
+msgid "Your details have been saved."
+msgstr "您的资料已保存。"
+
+#: 
+msgid "Your family details have been saved."
+msgstr "您的家庭资料已保存。"
+
+#: 
+msgid "Your photo"
+msgstr "您的照片"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "您的照片已保存。"
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "无法加载您的排班。"
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "您的会话已过期。请重新登录。"
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "您的代替请求已获批准"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "您的代替请求未获批准"
+
+#: 
+msgid "already staffed by this team"
+msgstr "已由此团队安排人员"
+
+#: 
+msgid "body is required"
+msgstr "需要提供 body"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "calendarIds 必须是日历 ID 的列表"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "classEvents 必须是以下之一：%s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "classGroupId 必须是小组 ID 或 null"
+
+#: 
+msgid "end offset"
+msgstr "结束偏移"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "eventIds 必须是活动 ID 的列表"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "所有信息均已送达或仍在排队"
+
+#: 
+msgid "has not served yet"
+msgstr "尚未服事"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "importPositionId 必须是职位 ID"
+
+#: 
+msgid "inactive family"
+msgstr "已停用的家庭"
+
+#: 
+msgid "line %d"
+msgstr "第 %d 行"
+
+#: 
+msgid "marked do not email"
+msgstr "已标记为不要发送电子邮件"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "条信息无法送达"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "条信息在尝试五次后仍无法送达"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "条信息等待发送"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "ministryIds 必须是事工 ID 的列表"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "分钟（活动结束后）"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "分钟（活动开始后）"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "分钟（活动结束前）"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "分钟（活动开始前）"
+
+#: 
+msgid "never"
+msgstr "从未"
+
+#: 
+msgid "no email address"
+msgstr "没有电子邮件地址"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "personIds 和 familyIds 必须是正整数数组"
+
+#: 
+msgid "record not found"
+msgstr "找不到记录"
+
+#: 
+msgid "same address as another recipient"
+msgstr "与另一位收件人地址相同"
+
+#: 
+msgid "single event"
+msgstr "单场活动"
+
+#: 
+msgid "start offset"
+msgstr "开始偏移"
+
+#: 
+msgid "subject and body are required"
+msgstr "需要提供 subject 和 body"
+
+#: 
+msgid "subject is required"
+msgstr "需要提供 subject"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "subject 不得超过 255 个字符"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "sundaySchool 必须为真或假"
+
+#: 
+msgid "window end"
+msgstr "时间段结束"
+
+#: 
+msgid "window start"
+msgstr "时间段开始"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "已添加 {{added}} 人，{{alreadyMembers}} 人原本就是这里的志愿者"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "已创建 {{created}} 场活动，{{existing}} 场原本就有"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "{{ministry}} 为 {{className}} 创建了 {{total}} 场活动（{{upcoming}} 场即将举行）。"
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "{{names}} 也为其中部分活动安排了人员。"
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "{{name}} 已是此事工的协调员"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "已分配 {{name}}"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "{{name}} 已在此场活动中担任 {{position}}。您仍可以分配他们。"
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "{{name}} 具备资格，但不在此事工的志愿者库中。分配后只会将其加入这一场活动。"
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "{{name}} 现在是此事工的协调员"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}：人数必须在 0 到 {{max}} 之间。"
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}：最大人数不能低于最少人数。"
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}：{{name}} 不再具备资格"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}：{{name}} 已具备资格"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "{{proposer}} 请 {{substitute}} 代替自己"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "{{date}} 的 {{title}} 已创建。现在为其安排人员吗？"
+

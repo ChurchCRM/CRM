@@ -1,182 +1,53 @@
 {
-  "Select at least one classification to include in the directory.": "Επιλέξτε τουλάχιστον μία κατηγορία για να συμπεριληφθεί στον κατάλογο.",
-  "Geocoding services": "Υπηρεσίες γεωκωδικοποίησης",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Υπηρεσίες γεωκωδικοποίησης που θα δοκιμαστούν, με τη σειρά που τις επιλέγετε. Το Nominatim (OpenStreetMap) λειτουργεί παγκοσμίως· το US Census (US Census Bureau) καλύπτει μόνο διευθύνσεις των Ηνωμένων Πολιτειών. Επιλέξτε και το US Census για να το χρησιμοποιήσετε. Αν δεν επιλεγεί καμία, χρησιμοποιείται το Nominatim.",
-  "New Record Defaults": "Προεπιλογές νέων εγγραφών",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Εδώ βρίσκονται οι συντεταγμένες χάρτη για κάθε οικογένεια που δεν τις έχει, με τις υπηρεσίες γεωκωδικοποίησης που επιλέχθηκαν στις Ρυθμίσεις χάρτη. Η εργασία γίνεται ανά παρτίδες των 50 οικογενειών· μια παρτίδα διαρκεί περίπου ένα λεπτό με μία υπηρεσία γεωκωδικοποίησης και περισσότερο με περισσότερες. Μπορείτε να αφήσετε αυτή τη σελίδα ανοιχτή όσο εκτελείται. Συνέχεια;",
-  "Used for new records and for geocoding when a record has no country.": "Χρησιμοποιείται για νέες εγγραφές και για γεωκωδικοποίηση όταν μια εγγραφή δεν έχει χώρα.",
-  "Copy from Church Info": "Αντιγραφή από τα Στοιχεία εκκλησίας",
-  "Could not copy the church address.": "Δεν ήταν δυνατή η αντιγραφή της διεύθυνσης της εκκλησίας.",
-  "Could not match the church country.": "Δεν ήταν δυνατή η αντιστοίχιση της χώρας της εκκλησίας.",
-  "Class lists, attendance sheets, and photo books": "Λίστες τάξεων, φύλλα παρουσιών και φωτογραφικά λευκώματα",
-  "Group membership lists and Sunday School class reports": "Λίστες μελών διακονιών και αναφορές τάξεων Κατηχητικού",
-  "Your fiscal year starts in %s.": "Το οικονομικό σας έτος ξεκινά τον %s.",
-  "An error occurred": "Παρουσιάστηκε σφάλμα",
-  "Approve": "Έγκριση",
-  "Approve selected": "Έγκριση επιλεγμένων",
-  "Approved": "Εγκρίθηκε",
-  "Change in People Settings": "Αλλαγή στις Ρυθμίσεις ατόμων",
-  "Could not approve the selected registrations": "Δεν ήταν δυνατή η έγκριση των επιλεγμένων εγγραφών",
-  "Could not approve this family": "Δεν ήταν δυνατή η έγκριση αυτής της οικογένειας",
-  "Pending Registrations": "Εκκρεμείς εγγραφές",
-  "Pending review": "Σε αναμονή ελέγχου",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Εγγραφές που περιμένουν έλεγχο από τη δημόσια φόρμα εγγραφής. Οι καταχωρίσεις χωρίς email ή τηλέφωνο επισημαίνονται· επαληθεύστε τα στοιχεία επικοινωνίας πριν επικοινωνήσετε.",
-  "Review now": "Έλεγχος τώρα",
-  "Review self registrations": "Έλεγχος αυτοεγγραφών",
-  "Select month": "Επιλέξτε μήνα",
-  "Self-registration is disabled": "Η αυτοεγγραφή είναι απενεργοποιημένη",
-  "Self-registration is enabled": "Η αυτοεγγραφή είναι ενεργοποιημένη",
-  "The public registration form is turned off. Existing registrations are listed below.": "Η δημόσια φόρμα εγγραφής είναι απενεργοποιημένη. Οι υπάρχουσες εγγραφές παρατίθενται παρακάτω.",
-  "This family is not a pending self-registration": "Αυτή η οικογένεια δεν είναι εκκρεμής αυτοεγγραφή",
-  "This person belongs to a family — approve the family instead": "Αυτό το άτομο ανήκει σε οικογένεια — εγκρίνετε την οικογένεια",
-  "This person is not a pending self-registration": "Αυτό το άτομο δεν είναι εκκρεμής αυτοεγγραφή",
-  "This self-registered family is pending review": "Αυτή η οικογένεια που αυτοεγγράφηκε περιμένει έλεγχο",
-  "Total registrations": "Σύνολο εγγραφών",
-  "Visitors can sign up on your public registration form.": "Οι επισκέπτες μπορούν να εγγραφούν στη δημόσια φόρμα εγγραφής σας.",
-  "Yesterday": "Χθες",
-  "days ago": "ημέρες πριν",
-  "self-registrations are waiting for review": "αυτοεγγραφές περιμένουν έλεγχο",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Τα γενέθλια απευθύνονται στο άτομο και οι επέτειοι στο ζευγάρι.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Ετικέτες ταχυδρομικής αποστολής για τα άτομα αυτής της αναφοράς. Ένα άτομο χωρίς δική του διεύθυνση απευθύνεται στη διεύθυνση της οικογένειάς του.",
-  "One label for each couple.": "Μία ετικέτα για κάθε ζευγάρι.",
-  "Print Labels": "Εκτύπωση ετικετών",
-  "That role is not one of this group's roles.": "Αυτός ο ρόλος δεν είναι ένας από τους ρόλους αυτής της διακονίας.",
-  "\"%s\" is not a kind of calendar this page knows about.": "Το «%s» δεν είναι είδος ημερολογίου που αναγνωρίζει αυτή η σελίδα.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "Ο/Η %1$s δεν μπορεί να υπηρετήσει και πρότεινε τον/την %2$s ως αντικαταστάτη.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "Ο/Η %1$s ανήκει ήδη στη δεξαμενή εθελοντών %2$s και θέλει να βοηθήσει ξανά.",
-  "%1$s is already linked to %2$s in %3$s": "Ο/Η %1$s είναι ήδη συνδεδεμένος/η με το %2$s στο %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "Ο/Η %1$s είναι στο %2$s ως %3$s. Αφαιρέστε τον/την πρώτα από την τάξη· αν τον/την καταστήσετε κατάλληλο/η εδώ, θα γίνει ένας από τους δασκάλους της.",
-  "%1$s is not an event of %2$s": "Το %1$s δεν είναι εκδήλωση του %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "Το %1$s παραμένει τάξη Κατηχητικού ενώ οι δάσκαλοί του διαχειρίζονται στις Διακονίες → %2$s → %3$s. Αποσυνδέστε το πρώτα από την ομάδα.",
-  "%1$s wants to help with %2$s": "Ο/Η %1$s θέλει να βοηθήσει στο %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "Ο/Η %1$s θέλει να βοηθήσει στο %2$s και προστέθηκε στη δεξαμενή εθελοντών του.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: Το μέγιστο είναι %2$d αλλά επιλέγονται %3$d προεπιλεγμένοι εθελοντές. Αφαιρέστε έναν ή αυξήστε το μέγιστο.",
-  "%d day": {
-    "one": "%d ημέρα",
-    "other": "%d ημέρες"
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d προεπιλογή παραλείφθηκε για άλλο λόγο (η πραγματοποίηση έχει τελειώσει, ακυρωθεί ή γεμίσει)",
-    "other": "%d προεπιλογές παραλείφθηκαν για άλλο λόγο (η πραγματοποίηση έχει τελειώσει, ακυρωθεί ή γεμίσει)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d προεπιλογή παραλείφθηκε: η εξουσιοδότηση ανακλήθηκε",
-    "other": "%d προεπιλογές παραλείφθηκαν: η εξουσιοδότηση ανακλήθηκε"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d προεπιλεγμένος εθελοντής ανατέθηκε",
-    "other": "%d προεπιλεγμένοι εθελοντές ανατέθηκαν"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d απέτυχαν",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Χρειάζεται ακόμη %d εθελοντής για αυτή τη θέση. Ανοίξτε την πραγματοποίηση για να καλύψετε το κενό.",
-    "other": "Χρειάζονται ακόμη %d εθελοντές για αυτή τη θέση. Ανοίξτε την πραγματοποίηση για να καλύψετε το κενό."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d νέα πραγματοποίηση",
-    "other": "%d νέες πραγματοποιήσεις"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Χρειάζεται ακόμη %d εθελοντής για μια προσεχή πραγματοποίηση.",
-    "other": "Χρειάζονται ακόμη %d εθελοντές για μια προσεχή πραγματοποίηση."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "Ημερολόγιο %s",
-  "%s Family": "Οικογένεια %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "Η διακονία %s δεν παρέχει δασκάλους για το Κατηχητικό, επομένως οι ομάδες, τα προγράμματα και οι εκδηλώσεις της δεν μπορούν να χρησιμοποιήσουν τάξη. Ένας διαχειριστής εθελοντών μπορεί να το αλλάξει στην επιλογή Επεξεργασία διακονίας.",
-  "%s email from the church": {
-    "one": "%s email από την εκκλησία",
-    "other": "%s email από την εκκλησία"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "Οικογένεια %s",
-  "%s has declined a volunteer assignment.": "Ο/Η %s αρνήθηκε μια ανάθεση εθελοντή.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "Η διακονία %s δεν έχει ρόλο με όνομα Δάσκαλος, επομένως οι δάσκαλοί της δεν μπορούν να διαχειριστούν από ομάδα",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "Η διακονία %s δεν έχει προσεχείς συναντήσεις στο ημερολόγιο. Ένα πρόγραμμα ακολουθεί εκδηλώσεις που υπάρχουν ήδη: προσθέστε πρώτα τις συναντήσεις της τάξης, με το Νέα επαναλαμβανόμενη εκδήλωση στην καρτέλα Ημερολόγιο της διακονίας.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "Ο/Η %s αναμένεται ακόμη να υπηρετήσει. Επικοινωνήστε με τον συντονιστή αν αυτό δεν είναι δυνατό.",
-  "%s not sent (%s): %s": "Δεν στάλθηκε σε %s (%s): %s",
-  "%s person in your household": {
-    "one": "%s άτομο στο νοικοκυριό σας",
-    "other": "%s άτομα στο νοικοκυριό σας"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s θέση",
-    "other": "%s θέσεις"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: το ίδιο άτομο έχει επιλεγεί δύο φορές ως προεπιλεγμένος εθελοντής",
-  "(no subject)": "(χωρίς θέμα)",
-  "A birthday cannot be in the future.": "Τα γενέθλια δεν μπορούν να είναι στο μέλλον.",
-  "A calendar event": "Μια εκδήλωση ημερολογίου",
-  "A calendar id must be a number.": "Το αναγνωριστικό ημερολογίου πρέπει να είναι αριθμός.",
-  "A class that no longer exists": "Μια τάξη που δεν υπάρχει πια",
-  "A class with no meetings on the calendar cannot be chosen yet.": "Μια τάξη χωρίς συναντήσεις στο ημερολόγιο δεν μπορεί να επιλεγεί ακόμη.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "Μια τάξη χωρίς συναντήσεις στο ημερολόγιο δεν μπορεί να επιλεγεί ακόμη. Ένας συντονιστής της διακονίας προσθέτει τις συναντήσεις της στην καρτέλα Ημερολόγιο της διακονίας.",
-  "A class's meetings": "Οι συναντήσεις μιας τάξης",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "Ένας συντονιστής μπορεί να διαχειρίζεται τα πάντα σε αυτή τη διακονία, συμπεριλαμβανομένων αλλαγών που αλλιώς θα έπρεπε να κάνει ένας διαχειριστής εθελοντών.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "Ένας συντονιστής της διακονίας μπορεί να τις προσθέσει στην καρτέλα Ημερολόγιο της διακονίας.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "Ένας συντονιστής της διακονίας μπορεί να τις προσθέσει στην καρτέλα Ημερολόγιο της διακονίας. Έπειτα δημιουργήστε ξανά.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "Ένας συντονιστής διευθύνει ολόκληρη τη διακονία — τις ομάδες, τις θέσεις, τα προγράμματα και κάθε ανάθεση σε αυτήν.",
-  "A day a month does not have falls on its last day.": "Μια ημέρα που δεν υπάρχει σε έναν μήνα πέφτει στην τελευταία ημέρα του.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "Ένας προεπιλεγμένος εθελοντής ανήκει στις ανάγκες στελέχωσης του προγράμματος, όχι σε μία πραγματοποίηση",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "Ένας προεπιλεγμένος εθελοντής μπορεί να επιλεγεί μόνο για θέση που ζητούν οι ανάγκες στελέχωσης αυτού του προγράμματος",
-  "A from and a to date in YYYY-MM-DD form are required": "Απαιτούνται ημερομηνία από και έως σε μορφή ΕΕΕΕ-ΜΜ-ΗΗ",
-  "A minimum count is required": "Απαιτείται ελάχιστος αριθμός",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "Μια διακονία δημιουργείται με το δικό της ημερολόγιο, τη δική της δεξαμενή εθελοντών και την πρώτη της ομάδα, οπότε εδώ αποφασίζετε μόνο το όνομά της και τι κάνει.",
-  "A ministry name is required": "Απαιτείται όνομα διακονίας",
-  "A ministry needs at least one team. Rename it instead.": "Μια διακονία χρειάζεται τουλάχιστον μία ομάδα. Μετονομάστε την.",
-  "A ministry with that name already exists": "Υπάρχει ήδη διακονία με αυτό το όνομα",
-  "A ministry's own calendar cannot be opened to other ministries": "Το ίδιο το ημερολόγιο μιας διακονίας δεν μπορεί να ανοιχτεί σε άλλες διακονίες",
-  "A position belongs to a team; choose one": "Μια θέση ανήκει σε ομάδα· επιλέξτε μία",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "Θέση είναι μια εργασία που κάνει κάποιος σε αυτή την ομάδα, όπως Εσπρέσο ή Ψάλτης.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "Θέση είναι ένας ρόλος στον οποίο υπηρετεί κάποιος, όπως Εσπρέσο ή Ψάλτης.",
-  "A position is required": "Απαιτείται θέση",
-  "A position name is required": "Απαιτείται όνομα θέσης",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "Μια θέση με κατάλληλους εθελοντές δεν μπορεί να μετακινηθεί προς ή από ομάδα συνδεδεμένη με τάξη Κατηχητικού, επειδή αυτό θα άλλαζε ποιος διδάσκει την τάξη. Δημιουργήστε τη θέση στην άλλη ομάδα.",
-  "A position with that name already exists in this ministry": "Υπάρχει ήδη θέση με αυτό το όνομα σε αυτή τη διακονία",
-  "A response must be accepted or declined": "Η απάντηση πρέπει να είναι αποδοχή ή άρνηση",
-  "A schedule belongs to a team; choose one": "Ένα πρόγραμμα ανήκει σε ομάδα· επιλέξτε μία",
-  "A schedule name is required": "Απαιτείται όνομα προγράμματος",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Ένα πρόγραμμα ορίζει ποιες εκδηλώσεις ημερολογίου στελεχώνει μια ομάδα: ένα είδος λειτουργίας, τις συναντήσεις μιας τάξης ή τις δικές της εκδηλώσεις της διακονίας. Προσθέστε ένα και δημιουργήστε τις πραγματοποιήσεις του.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Ένα πρόγραμμα ορίζει ποιες εκδηλώσεις ημερολογίου υπηρετεί αυτή η ομάδα: ένα είδος λειτουργίας, τις συναντήσεις μιας τάξης ή τις δικές της εκδηλώσεις της διακονίας. Προσθέστε ένα και δημιουργήστε τις πραγματοποιήσεις του.",
-  "A schedule that follows a class must name the class": "Ένα πρόγραμμα που ακολουθεί τάξη πρέπει να ορίζει την τάξη",
-  "A schedule that follows an event type must name the event type": "Ένα πρόγραμμα που ακολουθεί είδος εκδήλωσης πρέπει να ορίζει το είδος εκδήλωσης",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Ένα πρόγραμμα που στελεχώνει μία εκδήλωση δεν μπορεί να ακολουθεί άλλες εκδηλώσεις· διαγράψτε το και προσθέστε πρόγραμμα",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "Μία ενιαία λίστα ευκαιριών, όπως «Βρεφονηπιακός σταθμός» ή «Υποδοχή», που τηρείται στο Άτομα → Διαχείριση. Κάθε άτομο επισημαίνεται με τις ευκαιρίες στις οποίες θέλει να βοηθήσει, στην καρτέλα Εθελοντής της εγγραφής του. Αυτό είναι το μόνο που καταγράφει: δεν υπάρχουν ομάδες, προγράμματα, αναθέσεις σε ημερομηνία ούτε email υπενθύμισης. Οι ετικέτες χρησιμοποιούνται στις αναφορές και στην εγγραφή του ατόμου.",
-  "A square picture of your face works best.": "Μια τετράγωνη φωτογραφία του προσώπου σας λειτουργεί καλύτερα.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Μια ανάγκη στελέχωσης απαριθμεί τους προεπιλεγμένους εθελοντές της στο \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Μια απαίτηση στελέχωσης ανήκει σε ακριβώς ένα από πρόγραμμα ή πραγματοποίηση",
-  "A substitute has already been proposed for this assignment": "Έχει ήδη προταθεί αντικαταστάτης για αυτή την ανάθεση",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "Ένας υπεύθυνος ομάδας μπορεί να διαχειρίζεται τη δική του ομάδα — τις θέσεις της, τα προγράμματά της και ποιος υπηρετεί σε αυτά — και τίποτα άλλο στη διακονία.",
-  "A team name is required": "Απαιτείται όνομα ομάδας",
-  "A team with that name already exists in this ministry": "Υπάρχει ήδη ομάδα με αυτό το όνομα σε αυτή τη διακονία",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Ένα θέμα είναι ένας φάκελος που η εκκλησία σας ανεβάζει στο Include/themes/ στον διακομιστή. Το προεπιλεγμένο θέμα συστήματος συνοδεύει το ChurchCRM.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "Μια ρύθμιση μετάβασης. Οι παλιές σελίδες Ευκαιριών εθελοντών και οι νέες σελίδες Διακονιών είναι και οι δύο διαθέσιμες, και η εγγραφή ατόμου εμφανίζει και τις δύο καρτέλες Εθελοντής, με σαφή επισήμανση. Χρησιμοποιήστε την ενώ μεταφέρετε μια εκκλησία από το V1 στο V2 και μετά αλλάξτε μόνο σε V2.",
-  "A volunteer": "Ένας εθελοντής",
-  "A volunteer has declined an assignment": "Ένας εθελοντής αρνήθηκε μια ανάθεση",
-  "A volunteer has proposed a substitute": "Ένας εθελοντής πρότεινε αντικαταστάτη",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "Ένας διαχειριστής εθελοντών μπορεί να διευθύνει αυτή τη διακονία χωρίς παραχώρηση δικαιώματος. Προσθέστε έναν συντονιστή ώστε να τη διευθύνει κάποιος άλλος χωρίς να του δώσετε και όλες τις άλλες διακονίες.",
-  "A wedding date cannot be in the future.": "Η ημερομηνία γάμου δεν μπορεί να είναι στο μέλλον.",
-  "Accepted": "Αποδεκτό",
-  "Account deleted": "Ο λογαριασμός διαγράφηκε",
-  "Account unlocked": "Ο λογαριασμός ξεκλειδώθηκε",
-  "Accounts": "Λογαριασμοί",
-  "Active must be true or false": "Το πεδίο Ενεργό πρέπει να είναι αληθές ή ψευδές",
-  "Active now": "Ενεργό τώρα",
-  "Add All": "Προσθήκη όλων",
-  "Add Everyone in Cart": "Προσθήκη όλων από την Επιλογή",
-  "Add Volunteer": "Προσθήκη εθελοντή",
-  "Add Volunteers to Cart": "Προσθήκη εθελοντών στην Επιλογή",
-  "Add a family member": "Προσθήκη μέλους οικογένειας",
-  "Add a position first, then come back and say how many of them are needed.": "Προσθέστε πρώτα μια θέση και μετά επιστρέψτε για να ορίσετε πόσοι χρειάζονται.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Προσθέστε ένα δεύτερο βήμα στη σύνδεσή σας, ώστε ο κωδικός πρόσβασης μόνος του να μη φτάνει για πρόσβαση στον λογαριασμό σας.",
-  "Add at least one position to this team, then tick who can serve where.": "Προσθέστε τουλάχιστον μία θέση σε αυτή την ομάδα και μετά επιλέξτε ποιος μπορεί να υπηρετήσει πού.",
-  "Add coordinator": "Προσθήκη συντονιστή",
-  "Add from Cart": "Προσθήκη από την Επιλογή",
-  "Add its meetings first with New recurring event on the Calendar tab": "Προσθέστε πρώτα τις συναντήσεις του με το Νέα επαναλαμβανόμενη εκδήλωση στην καρτέλα Ημερολόγιο",
-  "Add people to the cart before adding them as volunteers": "Προσθέστε άτομα στην Επιλογή πριν τα προσθέσετε ως εθελοντές",
-  "Add position": "Προσθήκη θέσης",
-  "Add schedule": "Προσθήκη προγράμματος",
-  "Add team": "Προσθήκη ομάδας",
-  "Add them on the Calendar tab, then generate again.": "Προσθέστε τα στην καρτέλα Ημερολόγιο και μετά δημιουργήστε ξανά.",
-  "Add them on the Calendar tab.": "Προσθέστε τα στην καρτέλα Ημερολόγιο.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Προσθέστε αυτή τη διεύθυνση στην εφαρμογή ημερολογίου σας. Ενημερώνεται αυτόματα όταν αλλάζει το ημερολόγιο της εκκλησίας.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Προσθέστε εδώ τις εκδηλώσεις αυτής της διακονίας: μια εργάσιμη ημέρα, μια τάξη που συναντιέται κάθε Κυριακή. Μπαίνουν στο ημερολόγιο της εκκλησίας και μπορείτε να τις στελεχώσετε καθώς τις δημιουργείτε."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

@@ -1,172 +1,101 @@
 {
-  "Select at least one classification to include in the directory.": "Pilih setidaknya satu klasifikasi untuk dimasukkan ke dalam direktori.",
-  "Geocoding services": "Layanan geokode",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Layanan geokode yang dicoba, sesuai urutan pilihan Anda. Nominatim (OpenStreetMap) berfungsi di seluruh dunia; US Census (US Census Bureau) hanya mencakup alamat di Amerika Serikat. Pilih juga US Census untuk menggunakannya. Jika tidak ada yang dipilih, Nominatim digunakan.",
-  "New Record Defaults": "Bawaan Data Baru",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Ini mencari koordinat peta untuk setiap keluarga yang belum memilikinya, menggunakan layanan geokode yang dipilih di Pengaturan Peta. Proses berjalan dalam kelompok berisi 50 keluarga; satu kelompok memerlukan sekitar satu menit dengan satu layanan geokode dan lebih lama jika lebih banyak. Anda dapat membiarkan halaman ini terbuka selama proses berjalan. Lanjutkan?",
-  "Used for new records and for geocoding when a record has no country.": "Digunakan untuk data baru dan untuk geokode ketika suatu data tidak memiliki negara.",
-  "Copy from Church Info": "Salin dari Info Gereja",
-  "Could not copy the church address.": "Alamat gereja tidak dapat disalin.",
-  "Could not match the church country.": "Negara gereja tidak dapat dicocokkan.",
-  "Class lists, attendance sheets, and photo books": "Daftar kelas, lembar kehadiran, dan buku foto",
-  "Group membership lists and Sunday School class reports": "Daftar anggota pelayanan dan laporan kelas Sekolah Minggu",
-  "Your fiscal year starts in %s.": "Tahun fiskal Anda dimulai pada %s.",
-  "An error occurred": "Terjadi kesalahan",
-  "Approve": "Setujui",
-  "Approve selected": "Setujui yang dipilih",
-  "Approved": "Disetujui",
-  "Change in People Settings": "Ubah di Pengaturan Jemaat",
-  "Could not approve the selected registrations": "Pendaftaran yang dipilih tidak dapat disetujui",
-  "Could not approve this family": "Keluarga ini tidak dapat disetujui",
-  "Pending Registrations": "Pendaftaran Tertunda",
-  "Pending review": "Menunggu peninjauan",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Pendaftaran yang menunggu peninjauan dari formulir pendaftaran publik Anda. Entri tanpa email atau telepon ditandai — verifikasi kontak sebelum menindaklanjuti.",
-  "Review now": "Tinjau sekarang",
-  "Review self registrations": "Tinjau pendaftaran mandiri",
-  "Select month": "Pilih bulan",
-  "Self-registration is disabled": "Pendaftaran mandiri dinonaktifkan",
-  "Self-registration is enabled": "Pendaftaran mandiri diaktifkan",
-  "The public registration form is turned off. Existing registrations are listed below.": "Formulir pendaftaran publik dimatikan. Pendaftaran yang sudah ada tercantum di bawah.",
-  "This family is not a pending self-registration": "Keluarga ini bukan pendaftaran mandiri yang tertunda",
-  "This person belongs to a family — approve the family instead": "Orang ini termasuk dalam sebuah keluarga — setujui keluarganya",
-  "This person is not a pending self-registration": "Orang ini bukan pendaftaran mandiri yang tertunda",
-  "This self-registered family is pending review": "Keluarga yang mendaftar sendiri ini menunggu peninjauan",
-  "Total registrations": "Total pendaftaran",
-  "Visitors can sign up on your public registration form.": "Pengunjung dapat mendaftar melalui formulir pendaftaran publik Anda.",
-  "Yesterday": "Kemarin",
-  "days ago": "hari yang lalu",
-  "self-registrations are waiting for review": "pendaftaran mandiri menunggu peninjauan",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Ulang tahun ditujukan kepada orangnya dan ulang tahun pernikahan kepada pasangan.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Label surat untuk orang-orang dalam laporan ini. Orang yang tidak memiliki alamat sendiri dikirimi surat di alamat keluarganya.",
-  "One label for each couple.": "Satu label untuk setiap pasangan.",
-  "Print Labels": "Cetak Label",
-  "That role is not one of this group's roles.": "Peran itu bukan salah satu peran pelayanan ini.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" bukan jenis kalender yang dikenal halaman ini.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s tidak dapat melayani dan mengusulkan %2$s sebagai pengganti.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s sudah ada dalam kelompok relawan %2$s dan ingin membantu lagi.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s sudah terhubung dengan %2$s di %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s ada di %2$s sebagai %3$s. Keluarkan dahulu dari kelas; dengan menjadikannya memenuhi syarat di sini, ia menjadi salah satu pengajarnya.",
-  "%1$s is not an event of %2$s": "%1$s bukan acara dari %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s tetap menjadi kelas Sekolah Minggu selama pengajarnya dikelola di Pelayanan → %2$s → %3$s. Putuskan dahulu hubungannya dari tim.",
-  "%1$s wants to help with %2$s": "%1$s ingin membantu dalam %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s ingin membantu dalam %2$s dan telah ditambahkan ke kelompok relawannya.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: Maksimum adalah %2$d tetapi %3$d relawan bawaan dipilih. Hapus satu atau naikkan Maksimum.",
   "%d day": {
-    "other": "%d hari"
+    "other": ""
   },
   "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "other": "%d bawaan dilewati karena alasan lain (kejadian sudah selesai, dibatalkan, atau penuh)"
+    "other": ""
   },
   "%d default skipped: qualification revoked": {
-    "other": "%d bawaan dilewati: kualifikasi dicabut"
+    "other": ""
   },
   "%d default volunteer assigned": {
-    "other": "%d relawan bawaan ditugaskan"
+    "other": ""
   },
-  "%d failed": "%d gagal",
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "other": "%d relawan lagi masih dibutuhkan untuk posisi ini. Buka kejadian untuk mengisi kekurangan."
+    "other": ""
   },
   "%d new occurrence": {
-    "other": "%d kejadian baru"
+    "other": ""
   },
   "%d volunteer is still needed for an upcoming occurrence.": {
-    "other": "%d relawan masih dibutuhkan untuk kejadian mendatang."
+    "other": ""
   },
-  "%s Calendar": "Kalender %s",
-  "%s Family": "Keluarga %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s tidak menyediakan pengajar untuk Sekolah Minggu, sehingga tim, jadwal, dan acaranya tidak dapat menggunakan kelas. Manajer relawan dapat mengubahnya di Ubah pelayanan.",
   "%s email from the church": {
-    "other": "%s email dari gereja"
+    "other": ""
   },
-  "%s family": "keluarga %s",
-  "%s has declined a volunteer assignment.": "%s telah menolak penugasan relawan.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s tidak memiliki peran bernama Pengajar, sehingga pengajarnya tidak dapat dikelola dari sebuah tim",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s tidak memiliki pertemuan mendatang di kalender. Jadwal mengikuti acara yang sudah ada: tambahkan dahulu pertemuan kelas, dengan Acara berulang baru di tab Kalender pelayanan.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s masih diharapkan melayani. Silakan hubungi koordinator jika tidak dapat hadir.",
-  "%s not sent (%s): %s": "%s tidak terkirim (%s): %s",
   "%s person in your household": {
-    "other": "%s orang dalam rumah tangga Anda"
+    "other": ""
   },
   "%s position": {
-    "other": "%s posisi"
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: orang yang sama dipilih dua kali sebagai relawan bawaan",
-  "(no subject)": "(tanpa subjek)",
-  "A birthday cannot be in the future.": "Tanggal lahir tidak boleh di masa depan.",
-  "A calendar event": "Acara kalender",
-  "A calendar id must be a number.": "ID kalender harus berupa angka.",
-  "A class that no longer exists": "Kelas yang sudah tidak ada",
-  "A class with no meetings on the calendar cannot be chosen yet.": "Kelas tanpa pertemuan di kalender belum dapat dipilih.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "Kelas tanpa pertemuan di kalender belum dapat dipilih. Koordinator pelayanan menambahkan pertemuannya di tab Kalender pelayanan.",
-  "A class's meetings": "Pertemuan sebuah kelas",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "Koordinator dapat mengelola semua hal dalam pelayanan ini, termasuk perubahan yang jika tidak harus dilakukan oleh manajer relawan.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "Koordinator pelayanan dapat menambahkannya di tab Kalender pelayanan.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "Koordinator pelayanan dapat menambahkannya di tab Kalender pelayanan. Lalu buat lagi.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "Koordinator menjalankan seluruh pelayanan — tim, posisi, jadwal, dan setiap penugasan di dalamnya.",
-  "A day a month does not have falls on its last day.": "Hari yang tidak ada dalam suatu bulan jatuh pada hari terakhir bulan itu.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "Relawan bawaan termasuk kebutuhan staf jadwal, bukan satu kejadian",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "Relawan bawaan hanya dapat dipilih untuk posisi yang dibutuhkan oleh kebutuhan staf jadwal ini",
-  "A from and a to date in YYYY-MM-DD form are required": "Tanggal mulai dan tanggal akhir dalam format YYYY-MM-DD diperlukan",
-  "A minimum count is required": "Jumlah minimum diperlukan",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "Sebuah pelayanan dibuat dengan kalender, kelompok relawan, dan tim pertamanya sendiri, jadi yang perlu ditentukan di sini hanya namanya dan kegiatannya.",
-  "A ministry name is required": "Nama pelayanan diperlukan",
-  "A ministry needs at least one team. Rename it instead.": "Sebuah pelayanan membutuhkan setidaknya satu tim. Ubah namanya saja.",
-  "A ministry with that name already exists": "Pelayanan dengan nama itu sudah ada",
-  "A ministry's own calendar cannot be opened to other ministries": "Kalender milik sebuah pelayanan tidak dapat dibuka untuk pelayanan lain",
-  "A position belongs to a team; choose one": "Posisi termasuk dalam sebuah tim; pilih satu",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "Posisi adalah tugas yang dikerjakan seseorang di tim ini, seperti Espresso atau Pemimpin Pujian.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "Posisi adalah peran yang dilayani seseorang, seperti Espresso atau Pemimpin Pujian.",
-  "A position is required": "Posisi diperlukan",
-  "A position name is required": "Nama posisi diperlukan",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "Posisi dengan relawan yang memenuhi syarat tidak dapat dipindahkan ke dalam atau keluar dari tim yang terhubung dengan kelas Sekolah Minggu, karena itu akan mengubah siapa yang mengajar kelas. Buat posisi itu di tim lain.",
-  "A position with that name already exists in this ministry": "Posisi dengan nama itu sudah ada di pelayanan ini",
-  "A response must be accepted or declined": "Tanggapan harus diterima atau ditolak",
-  "A schedule belongs to a team; choose one": "Jadwal termasuk dalam sebuah tim; pilih satu",
-  "A schedule name is required": "Nama jadwal diperlukan",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Jadwal menentukan acara kalender mana yang dilayani sebuah tim: jenis ibadah, pertemuan sebuah kelas, atau acara pelayanan ini sendiri. Tambahkan satu dan buat kejadiannya.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Jadwal menentukan acara kalender mana yang dilayani tim ini: jenis ibadah, pertemuan sebuah kelas, atau acara pelayanannya sendiri. Tambahkan satu dan buat kejadiannya.",
-  "A schedule that follows a class must name the class": "Jadwal yang mengikuti sebuah kelas harus menyebutkan kelasnya",
-  "A schedule that follows an event type must name the event type": "Jadwal yang mengikuti jenis acara harus menyebutkan jenis acaranya",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Jadwal yang melayani satu acara tidak dapat mengikuti acara lain; hapus dan tambahkan jadwal baru",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "Satu daftar peluang pelayanan, seperti \"Pembibitan\" atau \"Penyambut\", disimpan di Jemaat → Admin. Setiap orang diberi tag peluang yang bersedia ia bantu, di tab Relawan pada datanya. Hanya itu yang dicatat: tidak ada tim, jadwal, penugasan pada tanggal tertentu, maupun email pengingat. Laporan dan data orang adalah tempat tag itu digunakan.",
-  "A square picture of your face works best.": "Foto wajah berbentuk persegi paling baik.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Kebutuhan staf mencantumkan relawan bawaannya di \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Kebutuhan staf termasuk dalam tepat satu jadwal atau satu kejadian",
-  "A substitute has already been proposed for this assignment": "Pengganti sudah diusulkan untuk penugasan ini",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "Pemimpin tim dapat mengelola timnya sendiri — posisi, jadwal, dan siapa yang melayani di dalamnya — dan tidak ada yang lain dalam pelayanan.",
-  "A team name is required": "Nama tim diperlukan",
-  "A team with that name already exists in this ministry": "Tim dengan nama itu sudah ada di pelayanan ini",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Tema adalah folder yang diunggah gereja Anda ke Include/themes/ di server. Bawaan sistem disertakan dengan ChurchCRM.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "Pengaturan transisi. Halaman Peluang Relawan lama dan halaman Pelayanan baru sama-sama tersedia, dan data orang menampilkan kedua tab Relawan dengan label yang jelas. Gunakan saat memindahkan gereja dari V1 ke V2, lalu beralih ke V2 saja.",
-  "A volunteer": "Seorang relawan",
-  "A volunteer has declined an assignment": "Seorang relawan menolak penugasan",
-  "A volunteer has proposed a substitute": "Seorang relawan mengusulkan pengganti",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "Manajer relawan dapat menjalankan pelayanan ini tanpa izin khusus. Tambahkan koordinator agar orang lain dapat menjalankannya tanpa harus diberi akses ke semua pelayanan lain.",
-  "A wedding date cannot be in the future.": "Tanggal pernikahan tidak boleh di masa depan.",
-  "Accepted": "Diterima",
-  "Account deleted": "Akun dihapus",
-  "Account unlocked": "Akun Tidak Terkunci",
-  "Accounts": "Akun",
-  "Active must be true or false": "Aktif harus benar atau salah",
-  "Active now": "Aktif Sekarang",
-  "Add All": "Tambah Semua",
-  "Add Everyone in Cart": "Tambahkan Semua dalam Pilihan",
-  "Add Volunteer": "Tambah Relawan",
-  "Add Volunteers to Cart": "Tambahkan Relawan ke Pilihan",
-  "Add a family member": "Tambah anggota keluarga",
-  "Add a position first, then come back and say how many of them are needed.": "Tambahkan posisi dahulu, lalu kembali dan tentukan berapa banyak yang dibutuhkan.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Tambahkan langkah kedua pada proses masuk Anda, agar kata sandi saja tidak cukup untuk mengakses akun Anda.",
-  "Add at least one position to this team, then tick who can serve where.": "Tambahkan setidaknya satu posisi ke tim ini, lalu centang siapa yang dapat melayani di mana.",
-  "Add coordinator": "Tambah koordinator",
-  "Add from Cart": "Tambah dari Pilihan",
-  "Add its meetings first with New recurring event on the Calendar tab": "Tambahkan dahulu pertemuannya dengan Acara berulang baru di tab Kalender",
-  "Add people to the cart before adding them as volunteers": "Tambahkan orang ke pilihan sebelum menambahkan mereka sebagai relawan",
-  "Add position": "Tambah posisi",
-  "Add schedule": "Tambah jadwal",
-  "Add team": "Tambah tim",
-  "Add them on the Calendar tab, then generate again.": "Tambahkan di tab Kalender, lalu buat lagi.",
-  "Add them on the Calendar tab.": "Tambahkan di tab Kalender.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Tambahkan alamat ini ke aplikasi kalender Anda. Alamat ini diperbarui otomatis saat kalender gereja berubah.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Tambahkan acara pelayanan ini di sini: hari kerja bakti, kelas yang bertemu setiap hari Minggu. Acara masuk ke kalender gereja, dan Anda dapat menugaskan petugas saat membuatnya."
+  "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified.": {
+    "other": ""
+  },
+  "Passwords must be at least %s character long.": {
+    "other": ""
+  },
+  "They finish %d minute after the event ends.": {
+    "other": ""
+  },
+  "They finish %d minute before the event ends.": {
+    "other": ""
+  },
+  "Volunteers start %d minute after the event starts.": {
+    "other": ""
+  },
+  "Volunteers start %d minute before the event starts.": {
+    "other": ""
+  },
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
+  },
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

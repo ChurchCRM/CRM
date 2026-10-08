@@ -1,182 +1,53 @@
 {
-  "Select at least one classification to include in the directory.": "Velg minst én klassifisering som skal tas med i katalogen.",
-  "Geocoding services": "Geokodingstjenester",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Geokodingstjenester som prøves, i den rekkefølgen du velger dem. Nominatim (OpenStreetMap) fungerer over hele verden; US Census (US Census Bureau) dekker bare adresser i USA. Velg også US Census for å bruke den. Hvis ingen er valgt, brukes Nominatim.",
-  "New Record Defaults": "Standardverdier for nye poster",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Dette finner kartkoordinater for hver familie som mangler dem, ved hjelp av geokodingstjenestene som er valgt i kartinnstillingene. Familiene behandles i grupper på 50; en gruppe tar omtrent ett minutt med én geokodingstjeneste og lenger med flere. Du kan la denne siden stå åpen mens det pågår. Fortsette?",
-  "Used for new records and for geocoding when a record has no country.": "Brukes for nye poster og for geokoding når en post ikke har noe land.",
-  "Copy from Church Info": "Kopier fra menighetsinformasjon",
-  "Could not copy the church address.": "Kunne ikke kopiere menighetens adresse.",
-  "Could not match the church country.": "Kunne ikke finne samsvar for menighetens land.",
-  "Class lists, attendance sheets, and photo books": "Klasselister, oppmøteark og fotobøker",
-  "Group membership lists and Sunday School class reports": "Medlemslister for tjenester og rapporter for søndagsskoleklasser",
-  "Your fiscal year starts in %s.": "Regnskapsåret ditt starter i %s.",
-  "An error occurred": "Det oppstod en feil",
-  "Approve": "Godkjenn",
-  "Approve selected": "Godkjenn valgte",
-  "Approved": "Godkjent",
-  "Change in People Settings": "Endre i innstillinger for personer",
-  "Could not approve the selected registrations": "Kunne ikke godkjenne de valgte registreringene",
-  "Could not approve this family": "Kunne ikke godkjenne denne familien",
-  "Pending Registrations": "Ventende registreringer",
-  "Pending review": "Venter på gjennomgang",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Registreringer fra det offentlige registreringsskjemaet som venter på gjennomgang. Oppføringer uten e-post eller telefon er merket — kontroller kontaktinformasjonen før du følger opp.",
-  "Review now": "Gå gjennom nå",
-  "Review self registrations": "Gå gjennom selvregistreringer",
-  "Select month": "Velg måned",
-  "Self-registration is disabled": "Selvregistrering er slått av",
-  "Self-registration is enabled": "Selvregistrering er slått på",
-  "The public registration form is turned off. Existing registrations are listed below.": "Det offentlige registreringsskjemaet er slått av. Eksisterende registreringer vises nedenfor.",
-  "This family is not a pending self-registration": "Denne familien er ikke en ventende selvregistrering",
-  "This person belongs to a family — approve the family instead": "Denne personen tilhører en familie — godkjenn heller familien",
-  "This person is not a pending self-registration": "Denne personen er ikke en ventende selvregistrering",
-  "This self-registered family is pending review": "Denne selvregistrerte familien venter på gjennomgang",
-  "Total registrations": "Registreringer totalt",
-  "Visitors can sign up on your public registration form.": "Besøkende kan melde seg på via det offentlige registreringsskjemaet.",
-  "Yesterday": "I går",
-  "days ago": "dager siden",
-  "self-registrations are waiting for review": "selvregistreringer venter på gjennomgang",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Bursdager adresseres til personen og bryllupsdager til paret.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Adressetiketter for personene i denne rapporten. En person uten egen adresse får familiens adresse.",
-  "One label for each couple.": "Én etikett per par.",
-  "Print Labels": "Skriv ut etiketter",
-  "That role is not one of this group's roles.": "Den rollen er ikke en av rollene i denne gruppen.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" er ikke en kalendertype som denne siden kjenner til.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s kan ikke tjenestegjøre og har foreslått %2$s som vikar.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s er allerede i frivilligpoolen for %2$s og vil gjerne hjelpe til igjen.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s er allerede koblet til %2$s i %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s er i %2$s som %3$s. Fjern vedkommende fra klassen først; å kvalifisere vedkommende her gjør dem deretter til en av lærerne.",
-  "%1$s is not an event of %2$s": "%1$s er ikke et arrangement i %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s forblir en søndagsskoleklasse så lenge lærerne administreres under Tjenester → %2$s → %3$s. Fjern koblingen til teamet først.",
-  "%1$s wants to help with %2$s": "%1$s vil hjelpe til med %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s vil hjelpe til med %2$s og er lagt til i frivilligpoolen.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: Maks er %2$d, men %3$d standardfrivillige er valgt. Fjern én eller øk Maks.",
-  "%d day": {
-    "one": "%d dag",
-    "other": "%d dager"
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d standardvalg hoppet over av en annen grunn (gjennomføringen er over, avlyst eller full)",
-    "other": "%d standardvalg hoppet over av en annen grunn (gjennomføringen er over, avlyst eller full)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d standardvalg hoppet over: kvalifikasjonen er trukket tilbake",
-    "other": "%d standardvalg hoppet over: kvalifikasjonen er trukket tilbake"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d standardfrivillig tildelt",
-    "other": "%d standardfrivillige tildelt"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d mislyktes",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "%d frivillig til trengs fortsatt for denne oppgaven. Åpne gjennomføringen for å fylle hullet.",
-    "other": "%d frivillige til trengs fortsatt for denne oppgaven. Åpne gjennomføringen for å fylle hullet."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d ny gjennomføring",
-    "other": "%d nye gjennomføringer"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "%d frivillig trengs fortsatt for en kommende gjennomføring.",
-    "other": "%d frivillige trengs fortsatt for en kommende gjennomføring."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "%s-kalender",
-  "%s Family": "Familien %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s stiller ikke med lærere til søndagsskolen, så teamene, planene og arrangementene kan ikke bruke en klasse. En frivilligleder kan endre dette under Rediger tjeneste.",
-  "%s email from the church": {
-    "one": "%s e-post fra menigheten",
-    "other": "%s e-poster fra menigheten"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "familien %s",
-  "%s has declined a volunteer assignment.": "%s har takket nei til en frivilligoppgave.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s har ingen rolle som heter Lærer, så lærerne kan ikke administreres fra et team",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s har ingen kommende samlinger i kalenderen. En plan følger arrangementer som allerede finnes: legg først til klassens samlinger med Nytt gjentakende arrangement på tjenestens kalenderfane.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s forventes fortsatt å tjenestegjøre. Ta kontakt med koordinatoren hvis det ikke er mulig.",
-  "%s not sent (%s): %s": "%s ikke sendt (%s): %s",
-  "%s person in your household": {
-    "one": "%s person i husstanden din",
-    "other": "%s personer i husstanden din"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s oppgave",
-    "other": "%s oppgaver"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: den samme personen er valgt to ganger som standardfrivillig",
-  "(no subject)": "(ingen emne)",
-  "A birthday cannot be in the future.": "En bursdag kan ikke ligge i fremtiden.",
-  "A calendar event": "Et kalenderarrangement",
-  "A calendar id must be a number.": "En kalender-ID må være et tall.",
-  "A class that no longer exists": "En klasse som ikke lenger finnes",
-  "A class with no meetings on the calendar cannot be chosen yet.": "En klasse uten samlinger i kalenderen kan ikke velges ennå.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "En klasse uten samlinger i kalenderen kan ikke velges ennå. En koordinator for tjenesten legger til samlingene på tjenestens kalenderfane.",
-  "A class's meetings": "En klasses samlinger",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "En koordinator kan administrere alt i denne tjenesten, også endringer som ellers måtte gjøres av en frivilligleder.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "En koordinator for tjenesten kan legge dem til på tjenestens kalenderfane.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "En koordinator for tjenesten kan legge dem til på tjenestens kalenderfane. Generer deretter på nytt.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "En koordinator leder hele tjenesten — teamene, oppgavene, planene og alle tildelinger i den.",
-  "A day a month does not have falls on its last day.": "En dag som måneden ikke har, havner på månedens siste dag.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "En standardfrivillig hører til planens bemanningsbehov, ikke til én enkelt gjennomføring",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "En standardfrivillig kan bare velges for en oppgave som planens bemanningsbehov krever",
-  "A from and a to date in YYYY-MM-DD form are required": "Fra- og til-dato i formatet ÅÅÅÅ-MM-DD er påkrevd",
-  "A minimum count is required": "Et minimumsantall er påkrevd",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "En tjeneste opprettes med egen kalender, frivilligpool og første team, så det eneste du må bestemme her er navnet og hva den gjør.",
-  "A ministry name is required": "Et tjenestenavn er påkrevd",
-  "A ministry needs at least one team. Rename it instead.": "En tjeneste må ha minst ett team. Gi det nytt navn i stedet.",
-  "A ministry with that name already exists": "En tjeneste med det navnet finnes allerede",
-  "A ministry's own calendar cannot be opened to other ministries": "En tjenestes egen kalender kan ikke åpnes for andre tjenester",
-  "A position belongs to a team; choose one": "En oppgave hører til et team; velg ett",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "En oppgave er en jobb noen gjør i dette teamet, for eksempel Espresso eller Sangleder.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "En oppgave er en rolle noen tjenestegjør i, for eksempel Espresso eller Sangleder.",
-  "A position is required": "En oppgave er påkrevd",
-  "A position name is required": "Et oppgavenavn er påkrevd",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "En oppgave med kvalifiserte frivillige kan ikke flyttes inn i eller ut av et team som er koblet til en søndagsskoleklasse, fordi det ville endre hvem som underviser klassen. Opprett heller oppgaven i det andre teamet.",
-  "A position with that name already exists in this ministry": "Det finnes allerede en oppgave med det navnet i denne tjenesten",
-  "A response must be accepted or declined": "Et svar må være godtatt eller avslått",
-  "A schedule belongs to a team; choose one": "En plan hører til et team; velg ett",
-  "A schedule name is required": "Et plannavn er påkrevd",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "En plan sier hvilke kalenderarrangementer et team bemanner: en type gudstjeneste, en klasses samlinger eller tjenestens egne arrangementer. Legg til en og generer gjennomføringene.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "En plan sier hvilke kalenderarrangementer dette teamet tjenestegjør på: en type gudstjeneste, en klasses samlinger eller tjenestens egne arrangementer. Legg til en og generer gjennomføringene.",
-  "A schedule that follows a class must name the class": "En plan som følger en klasse må angi klassen",
-  "A schedule that follows an event type must name the event type": "En plan som følger en arrangementstype må angi arrangementstypen",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "En plan som bemanner ett arrangement kan ikke følge andre arrangementer; slett den og legg heller til en plan",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "Én enkelt liste over muligheter, for eksempel \"Barnepass\" eller \"Vert\", som ligger under Personer → Admin. Hver person merkes med mulighetene de er villige til å hjelpe til med, på fanen Frivillig i personposten. Det er alt som registreres: det finnes ingen team, ingen planer, ingen tildelinger til en dato og ingen påminnelser på e-post. Merkene brukes i rapporter og i personposten.",
-  "A square picture of your face works best.": "Et kvadratisk bilde av ansiktet ditt fungerer best.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Et bemanningsbehov lister standardfrivillige i \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Et bemanningskrav hører til nøyaktig én av en plan eller en gjennomføring",
-  "A substitute has already been proposed for this assignment": "Det er allerede foreslått en vikar for denne tildelingen",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "En teamleder kan administrere sitt eget team — oppgavene, planene og hvem som tjenestegjør i dem — og ingenting annet i tjenesten.",
-  "A team name is required": "Et teamnavn er påkrevd",
-  "A team with that name already exists in this ministry": "Det finnes allerede et team med det navnet i denne tjenesten",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Et tema er en mappe som menigheten laster opp til Include/themes/ på serveren. Systemstandarden følger med ChurchCRM.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "En overgangsinnstilling. Både de gamle sidene for frivillige muligheter og de nye sidene for tjenester er tilgjengelige, og en personpost viser begge frivillig-fanene, tydelig merket. Bruk den mens du flytter en menighet fra V1 til V2, og bytt deretter til bare V2.",
-  "A volunteer": "En frivillig",
-  "A volunteer has declined an assignment": "En frivillig har takket nei til en tildeling",
-  "A volunteer has proposed a substitute": "En frivillig har foreslått en vikar",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "En frivilligleder kan lede denne tjenesten uten egen tilgang. Legg til en koordinator for at noen andre skal kunne lede den uten å gi dem alle andre tjenester også.",
-  "A wedding date cannot be in the future.": "En bryllupsdato kan ikke ligge i fremtiden.",
-  "Accepted": "Godtatt",
-  "Account deleted": "Konto slettet",
-  "Account unlocked": "Konto låst opp",
-  "Accounts": "Kontoer",
-  "Active must be true or false": "Active må være true eller false",
-  "Active now": "Aktiv nå",
-  "Add All": "Legg til alle",
-  "Add Everyone in Cart": "Legg til alle i utvalget",
-  "Add Volunteer": "Legg til frivillig",
-  "Add Volunteers to Cart": "Legg frivillige i utvalget",
-  "Add a family member": "Legg til et familiemedlem",
-  "Add a position first, then come back and say how many of them are needed.": "Legg først til en oppgave, og kom så tilbake og oppgi hvor mange som trengs.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Legg til et ekstra trinn i innloggingen, slik at passordet alene ikke er nok for å komme inn på kontoen din.",
-  "Add at least one position to this team, then tick who can serve where.": "Legg til minst én oppgave i dette teamet, og huk deretter av hvem som kan tjenestegjøre hvor.",
-  "Add coordinator": "Legg til koordinator",
-  "Add from Cart": "Legg til fra utvalget",
-  "Add its meetings first with New recurring event on the Calendar tab": "Legg først til samlingene med Nytt gjentakende arrangement på kalenderfanen",
-  "Add people to the cart before adding them as volunteers": "Legg personer i utvalget før du legger dem til som frivillige",
-  "Add position": "Legg til oppgave",
-  "Add schedule": "Legg til plan",
-  "Add team": "Legg til team",
-  "Add them on the Calendar tab, then generate again.": "Legg dem til på kalenderfanen, og generer deretter på nytt.",
-  "Add them on the Calendar tab.": "Legg dem til på kalenderfanen.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Legg denne adressen til i kalenderappen din. Den oppdateres av seg selv når menighetskalenderen endres.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Legg til denne tjenestens arrangementer her: en dugnad, en klasse som møtes hver søndag. De havner i menighetskalenderen, og du kan bemanne dem mens du oppretter dem."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

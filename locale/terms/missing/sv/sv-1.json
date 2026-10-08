@@ -1,182 +1,53 @@
 {
-  "Select at least one classification to include in the directory.": "Välj minst en klassificering som ska ingå i katalogen.",
-  "Geocoding services": "Geokodningstjänster",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Geokodningstjänster som ska provas, i den ordning du väljer dem. Nominatim (OpenStreetMap) fungerar över hela världen; US Census (US Census Bureau) täcker bara adresser i USA. Välj även US Census för att använda den. Om ingen väljs används Nominatim.",
-  "New Record Defaults": "Standardvärden för nya poster",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Detta hittar kartkoordinater för varje familj som saknar dem, med de geokodningstjänster som valts i Kartinställningar. Familjerna bearbetas i omgångar om 50; en omgång tar cirka en minut med en geokodningstjänst och längre med fler. Du kan ha den här sidan öppen medan det pågår. Fortsätta?",
-  "Used for new records and for geocoding when a record has no country.": "Används för nya poster och för geokodning när en post saknar land.",
-  "Copy from Church Info": "Kopiera från Kyrkans uppgifter",
-  "Could not copy the church address.": "Det gick inte att kopiera kyrkans adress.",
-  "Could not match the church country.": "Det gick inte att matcha kyrkans land.",
-  "Class lists, attendance sheets, and photo books": "Klasslistor, närvarolistor och fotoalbum",
-  "Group membership lists and Sunday School class reports": "Medlemslistor för verksamheter och rapporter för söndagsskoleklasser",
-  "Your fiscal year starts in %s.": "Ditt räkenskapsår börjar i %s.",
-  "An error occurred": "Ett fel uppstod",
-  "Approve": "Godkänn",
-  "Approve selected": "Godkänn markerade",
-  "Approved": "Godkänd",
-  "Change in People Settings": "Ändra i Personinställningar",
-  "Could not approve the selected registrations": "De markerade registreringarna kunde inte godkännas",
-  "Could not approve this family": "Familjen kunde inte godkännas",
-  "Pending Registrations": "Väntande registreringar",
-  "Pending review": "Väntar på granskning",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Registreringar från ditt offentliga registreringsformulär som väntar på granskning. Poster utan e-post eller telefon är markerade; kontrollera kontaktuppgifterna innan du hör av dig.",
-  "Review now": "Granska nu",
-  "Review self registrations": "Granska självregistreringar",
-  "Select month": "Välj månad",
-  "Self-registration is disabled": "Självregistrering är avstängd",
-  "Self-registration is enabled": "Självregistrering är aktiverad",
-  "The public registration form is turned off. Existing registrations are listed below.": "Det offentliga registreringsformuläret är avstängt. Befintliga registreringar visas nedan.",
-  "This family is not a pending self-registration": "Den här familjen är ingen väntande självregistrering",
-  "This person belongs to a family — approve the family instead": "Den här personen tillhör en familj; godkänn familjen i stället",
-  "This person is not a pending self-registration": "Den här personen är ingen väntande självregistrering",
-  "This self-registered family is pending review": "Den här självregistrerade familjen väntar på granskning",
-  "Total registrations": "Totalt antal registreringar",
-  "Visitors can sign up on your public registration form.": "Besökare kan registrera sig i ditt offentliga registreringsformulär.",
-  "Yesterday": "Igår",
-  "days ago": "dagar sedan",
-  "self-registrations are waiting for review": "självregistreringar väntar på granskning",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Födelsedagar adresseras till personen och bröllopsdagar till paret.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Adressetiketter för personerna i den här rapporten. En person utan egen adress adresseras till familjens adress.",
-  "One label for each couple.": "En etikett per par.",
-  "Print Labels": "Skriv ut etiketter",
-  "That role is not one of this group's roles.": "Den rollen finns inte i den här verksamheten.",
-  "\"%s\" is not a kind of calendar this page knows about.": "\"%s\" är ingen typ av kalender som den här sidan känner till.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s kan inte tjänstgöra och har föreslagit %2$s som ersättare.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s finns redan i volontärpoolen för %2$s och vill hjälpa till igen.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s är redan kopplad till %2$s i %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s finns i %2$s som %3$s. Ta först bort personen från klassen; om du kvalificerar personen här blir hen en av klassens lärare.",
-  "%1$s is not an event of %2$s": "%1$s är inte en aktivitet i %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s förblir en söndagsskoleklass så länge dess lärare hanteras i Tjänsteområden → %2$s → %3$s. Koppla först bort den från teamet.",
-  "%1$s wants to help with %2$s": "%1$s vill hjälpa till med %2$s",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s vill hjälpa till med %2$s och har lagts till i dess volontärpool.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: Max är %2$d men %3$d standardvolontärer är valda. Ta bort en eller höj Max.",
-  "%d day": {
-    "one": "%d dag",
-    "other": "%d dagar"
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d standardvolontär hoppades över av annan anledning (tillfället är över, inställt eller fullt)",
-    "other": "%d standardvolontärer hoppades över av annan anledning (tillfället är över, inställt eller fullt)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d standardvolontär hoppades över: behörigheten är återkallad",
-    "other": "%d standardvolontärer hoppades över: behörigheten är återkallad"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "%d standardvolontär tilldelad",
-    "other": "%d standardvolontärer tilldelade"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "%d misslyckades",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Ytterligare %d volontär behövs fortfarande för denna position. Öppna tillfället för att fylla luckan.",
-    "other": "Ytterligare %d volontärer behövs fortfarande för denna position. Öppna tillfället för att fylla luckan."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d nytt tillfälle",
-    "other": "%d nya tillfällen"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "%d volontär behövs fortfarande för ett kommande tillfälle.",
-    "other": "%d volontärer behövs fortfarande för ett kommande tillfälle."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "Kalender för %s",
-  "%s Family": "Familjen %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s tillhandahåller inga lärare till söndagsskolan, så dess team, scheman och aktiviteter kan inte använda en klass. En volontärsamordnare kan ändra det under Redigera tjänsteområde.",
-  "%s email from the church": {
-    "one": "%s e-postmeddelande från kyrkan",
-    "other": "%s e-postmeddelanden från kyrkan"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "Familjen %s",
-  "%s has declined a volunteer assignment.": "%s har avböjt en volontäruppgift.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s har ingen roll som heter Lärare, så dess lärare kan inte hanteras från ett team",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s har inga kommande möten i kalendern. Ett schema följer aktiviteter som redan finns: lägg först till klassens möten med Ny återkommande aktivitet på tjänsteområdets flik Kalender.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s förväntas fortfarande tjänstgöra. Kontakta koordinatorn om det inte är möjligt.",
-  "%s not sent (%s): %s": "%s skickades inte (%s): %s",
-  "%s person in your household": {
-    "one": "%s person i ditt hushåll",
-    "other": "%s personer i ditt hushåll"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s position",
-    "other": "%s positioner"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: samma person är vald två gånger som standardvolontär",
-  "(no subject)": "(inget ämne)",
-  "A birthday cannot be in the future.": "En födelsedag kan inte ligga i framtiden.",
-  "A calendar event": "En kalenderaktivitet",
-  "A calendar id must be a number.": "Ett kalender-id måste vara ett nummer.",
-  "A class that no longer exists": "En klass som inte längre finns",
-  "A class with no meetings on the calendar cannot be chosen yet.": "En klass utan möten i kalendern kan inte väljas ännu.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "En klass utan möten i kalendern kan inte väljas ännu. En koordinator för tjänsteområdet lägger till dess möten på tjänsteområdets flik Kalender.",
-  "A class's meetings": "Klassens möten",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "En koordinator kan hantera allt i det här tjänsteområdet, även ändringar som annars en volontärsamordnare skulle behöva göra.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "En koordinator för tjänsteområdet kan lägga till dem på tjänsteområdets flik Kalender.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "En koordinator för tjänsteområdet kan lägga till dem på tjänsteområdets flik Kalender. Generera sedan igen.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "En koordinator leder hela tjänsteområdet: dess team, uppgifter, scheman och varje tilldelning i det.",
-  "A day a month does not have falls on its last day.": "En dag som inte finns i en månad infaller på dess sista dag.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "En standardvolontär hör till schemats bemanningsbehov, inte till ett enskilt tillfälle",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "En standardvolontär kan bara väljas för en uppgift som schemats bemanningsbehov efterfrågar",
-  "A from and a to date in YYYY-MM-DD form are required": "Ett från- och ett till-datum i formatet ÅÅÅÅ-MM-DD krävs",
-  "A minimum count is required": "Ett minimiantal krävs",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "Ett tjänsteområde skapas med en egen kalender, volontärpool och ett första team, så det enda du behöver bestämma här är namn och uppdrag.",
-  "A ministry name is required": "Ett namn på tjänsteområdet krävs",
-  "A ministry needs at least one team. Rename it instead.": "Ett tjänsteområde behöver minst ett team. Byt namn på det i stället.",
-  "A ministry with that name already exists": "Det finns redan ett tjänsteområde med det namnet",
-  "A ministry's own calendar cannot be opened to other ministries": "Ett tjänsteområdes egen kalender kan inte öppnas för andra tjänsteområden",
-  "A position belongs to a team; choose one": "En uppgift hör till ett team; välj ett",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "En uppgift är ett jobb som någon gör i det här teamet, till exempel Espresso eller Lovsångsledare.",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "En uppgift är en roll som någon tjänstgör i, till exempel Espresso eller Lovsångsledare.",
-  "A position is required": "En uppgift krävs",
-  "A position name is required": "Ett namn på uppgiften krävs",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "En uppgift med kvalificerade volontärer kan inte flyttas in i eller ut ur ett team som är kopplat till en söndagsskoleklass, eftersom det skulle ändra vem som undervisar klassen. Skapa uppgiften i det andra teamet i stället.",
-  "A position with that name already exists in this ministry": "Det finns redan en uppgift med det namnet i det här tjänsteområdet",
-  "A response must be accepted or declined": "Ett svar måste vara accepterat eller avböjt",
-  "A schedule belongs to a team; choose one": "Ett schema hör till ett team; välj ett",
-  "A schedule name is required": "Ett schemanamn krävs",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Ett schema anger vilka kalenderaktiviteter ett team bemannar: en typ av gudstjänst, en klass möten eller tjänsteområdets egna aktiviteter. Lägg till ett och generera dess tillfällen.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Ett schema anger vilka kalenderaktiviteter det här teamet tjänstgör vid: en typ av gudstjänst, en klass möten eller tjänsteområdets egna aktiviteter. Lägg till ett och generera dess tillfällen.",
-  "A schedule that follows a class must name the class": "Ett schema som följer en klass måste ange klassen",
-  "A schedule that follows an event type must name the event type": "Ett schema som följer en aktivitetstyp måste ange aktivitetstypen",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Ett schema som bemannar en enda aktivitet kan inte följa andra aktiviteter; ta bort det och lägg i stället till ett schema",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "En enda lista över möjligheter, till exempel \"Barnpassning\" eller \"Värd\", som underhålls under Personer → Admin. Varje person märks med de möjligheter hen vill hjälpa till med, på fliken Volontär i personens post. Det är allt som registreras: det finns inga team, inga scheman, inga tilldelningar till ett datum och inga påminnelsemejl. Rapporter och personposten är de ställen där märkningen används.",
-  "A square picture of your face works best.": "En kvadratisk bild på ditt ansikte fungerar bäst.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Ett bemanningsbehov anger sina standardvolontärer i \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Ett bemanningskrav hör till exakt ett av ett schema eller ett tillfälle",
-  "A substitute has already been proposed for this assignment": "En ersättare har redan föreslagits för den här tilldelningen",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "En teamledare kan hantera sitt eget team, med dess uppgifter, scheman och vem som tjänstgör var, och inget annat i tjänsteområdet.",
-  "A team name is required": "Ett teamnamn krävs",
-  "A team with that name already exists in this ministry": "Det finns redan ett team med det namnet i det här tjänsteområdet",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Ett tema är en mapp som din kyrka laddar upp till Include/themes/ på servern. Systemstandarden levereras med ChurchCRM.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "En övergångsinställning. De äldre sidorna för Volontärmöjligheter och de nya sidorna för Tjänsteområden är båda tillgängliga, och en personpost visar båda flikarna Volontär, tydligt märkta. Använd den medan du flyttar en kyrka från V1 till V2, och byt sedan till enbart V2.",
-  "A volunteer": "En volontär",
-  "A volunteer has declined an assignment": "En volontär har avböjt en tilldelning",
-  "A volunteer has proposed a substitute": "En volontär har föreslagit en ersättare",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "En volontärsamordnare kan driva det här tjänsteområdet utan behörighet. Lägg till en koordinator så att någon annan kan driva det utan att få alla andra tjänsteområden också.",
-  "A wedding date cannot be in the future.": "Ett bröllopsdatum kan inte ligga i framtiden.",
-  "Accepted": "Accepterad",
-  "Account deleted": "Kontot raderades",
-  "Account unlocked": "Konto låst upp",
-  "Accounts": "Konton",
-  "Active must be true or false": "Aktiv måste vara sant eller falskt",
-  "Active now": "Aktiv nu",
-  "Add All": "Lägg till alla",
-  "Add Everyone in Cart": "Lägg till alla i urvalet",
-  "Add Volunteer": "Lägg till volontär",
-  "Add Volunteers to Cart": "Lägg till volontärer i urvalet",
-  "Add a family member": "Lägg till en familjemedlem",
-  "Add a position first, then come back and say how many of them are needed.": "Lägg först till en uppgift och kom sedan tillbaka för att ange hur många som behövs.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Lägg till ett andra steg vid inloggningen, så att bara lösenordet inte räcker för att komma åt ditt konto.",
-  "Add at least one position to this team, then tick who can serve where.": "Lägg till minst en uppgift i det här teamet och markera sedan vem som kan tjänstgöra var.",
-  "Add coordinator": "Lägg till koordinator",
-  "Add from Cart": "Lägg till från urvalet",
-  "Add its meetings first with New recurring event on the Calendar tab": "Lägg först till dess möten med Ny återkommande aktivitet på fliken Kalender",
-  "Add people to the cart before adding them as volunteers": "Lägg personer i urvalet innan du lägger till dem som volontärer",
-  "Add position": "Lägg till uppgift",
-  "Add schedule": "Lägg till schema",
-  "Add team": "Lägg till team",
-  "Add them on the Calendar tab, then generate again.": "Lägg till dem på fliken Kalender och generera sedan igen.",
-  "Add them on the Calendar tab.": "Lägg till dem på fliken Kalender.",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Lägg till den här adressen i din kalenderapp. Den uppdateras automatiskt när kyrkans kalender ändras.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Lägg till det här tjänsteområdets aktiviteter här: en arbetsdag, en klass som träffas varje söndag. De hamnar i kyrkans kalender och du kan bemanna dem när du skapar dem."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

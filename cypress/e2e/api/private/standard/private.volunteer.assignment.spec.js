@@ -1169,9 +1169,13 @@ describe("Volunteer v2 — assignment, response and gap workflow (#9709, epic #9
             }
         });
 
-        /** Occurrence one's event (this spec's own series) moved to yesterday. */
+        /**
+         * Occurrence one's event moved to the first second of today: over, but still
+         * dated today. An occurrence only follows its event from today on, so one moved
+         * into yesterday would not come back when afterEach restores the event.
+         */
         function endOccurrenceOne() {
-            setEventTime(`${isoDate(-1)} 10:30:00`, `${isoDate(-1)} 11:45:00`);
+            setEventTime(`${isoDate(0)} 00:00:00`, `${isoDate(0)} 00:00:01`);
         }
 
         function runTimerJobs() {
