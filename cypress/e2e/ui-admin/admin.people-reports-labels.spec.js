@@ -50,6 +50,22 @@ describe("People Reports: Print Labels (#10343)", () => {
         cy.get('#labelsForm input[name="groupbymode"]').should("not.exist");
     });
 
+    it("keeps floating actions below the labels modal backdrop on phones and tablets", () => {
+        for (const [width, height] of [[390, 844], [820, 1180]]) {
+            cy.viewport(width, height);
+            cy.visit("/people/reports/birthdays?month=7");
+            cy.get(".fab-container").should("exist");
+            cy.get("#printLabels").click();
+            cy.get("#labelsModal").should("be.visible");
+            cy.get(".modal-backdrop").should("exist").invoke("css", "z-index").then((backdropZ) => {
+                cy.get(".fab-container").invoke("css", "z-index").then((fabZ) => {
+                    expect(Number(fabZ), "floating actions stack below the modal backdrop")
+                        .to.be.lessThan(Number(backdropZ));
+                });
+            });
+        }
+    });
+
     it("offers the grouping choice on reports that do not set one", () => {
         cy.visit("/people/reports/birthdays?month=7");
         cy.get("#printLabels").click();
