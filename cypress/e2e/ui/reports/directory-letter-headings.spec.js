@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { pdfText } from "../../../support/pdf-text";
+import { pdfDrawing, pdfText } from "../../../support/pdf-text";
 import { buildBlankPng } from "../../../support/synthetic-png";
 
 /**
@@ -25,7 +25,7 @@ describe("Directory report - letter headings (#10417)", () => {
             body: JSON.stringify(body),
         });
 
-    const cartDirectoryText = () =>
+    const cartDirectory = (numCols) =>
         cy
             .request({
                 method: "POST",
@@ -51,7 +51,7 @@ describe("Directory report - letter headings (#10417)", () => {
                     bDirPersonalWorkEmail: "1",
                     bDirPhoto: "1",
                     sDirLayout: "pages",
-                    NumCols: "1",
+                    NumCols: numCols,
                     PageSize: "letter",
                     FSize: "10",
                     Submit: "Create Directory",
@@ -59,7 +59,7 @@ describe("Directory report - letter headings (#10417)", () => {
             })
             .then((response) => {
                 expect(response.headers["content-type"]).to.include("application/pdf");
-                return pdfText(response.body);
+                return response.body;
             });
 
     before(() => {
@@ -83,12 +83,24 @@ describe("Directory report - letter headings (#10417)", () => {
     });
 
     it("moves a letter heading to the next page with the first entry under it", () => {
-        cartDirectoryText().then((lines) => {
+        cartDirectory("1").then((pdf) => pdfText(pdf)).then((lines) => {
             const pageTitle = lines[0];
             const heading = lines.indexOf("L");
             expect(heading, 'the "L" heading').to.be.greaterThan(0);
             expect(lines[heading + 1], "the line after the heading").to.equal("Lewis, Nathan and Vivan");
             expect(lines[heading - 1], "the line before the heading").to.equal(pageTitle);
         });
+    });
+    it("keeps a letter heading in the same column as its first entry", () => {
+        const halfPage = 612 / 2;
+        cartDirectory("2")
+            .then((pdf) => pdfDrawing(pdf))
+            .then((drawing) => {
+                const heading = drawing.findIndex((item) => item.text === "L");
+                expect(heading, 'the "L" heading').to.be.greaterThan(-1);
+                const entry = drawing.slice(heading).find((item) => item.text === "Lewis, Nathan and Vivan");
+                expect(Math.floor(entry.x / halfPage), "the entry's column").to.equal(Math.floor(drawing[heading].x / halfPage));
+                expect(drawing[heading].y - entry.y, "the entry sits right below the heading").to.be.within(0, 30);
+            });
     });
 });
