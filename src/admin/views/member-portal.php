@@ -355,7 +355,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                 <th><?= gettext('Calendar') ?></th>
                                 <th><?= gettext('Kind') ?></th>
                                 <th class="w-1"><?= gettext('Colour') ?></th>
-                                <th class="w-1"><?= gettext('Show in Member Portal') ?></th>
+                                <th class="text-wrap"><?= gettext('Show in Member Portal') ?></th>
                             </tr>
                         </thead>
                         <tbody>
