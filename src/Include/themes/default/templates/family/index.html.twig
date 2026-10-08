@@ -49,7 +49,7 @@
             <dd data-field="homePhone">{{ family.homePhone|default('—') }}</dd>
 
             <dt>{{ gettext('Email') }}</dt>
-            <dd data-field="email">{{ family.email|default('—') }}</dd>
+            <dd data-field="email">{{ family.email|default('—')|email_wrap }}</dd>
 
             {% if family.weddingDate %}
             <dt>{{ gettext('Wedding Date') }}</dt>

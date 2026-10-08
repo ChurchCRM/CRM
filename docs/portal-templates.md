@@ -132,6 +132,7 @@ filesystem access, no database access and no session.
 | `nonce()` | This request's Content-Security-Policy nonce. Every inline `<script>` needs `nonce="{{ nonce() }}"`. |
 | `gettext(text)` | The translation of `text` |
 | `ngettext(singular, plural, count)` | The translation of `singular`/`plural` for `count` |
+| `email_wrap` (filter) | An email address, escaped, that may wrap after the `@` and before each `.` instead of mid-word: `{{ profile.email\|email_wrap }}`. Safe HTML — do not escape it again. |
 
 ---
 
