@@ -22,9 +22,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 /** The badge for one validation summary: class, icon and label. */
 $statusBadge = static function (string $status): array {
     return match ($status) {
-        ThemeValidator::LEVEL_ERROR => ['bg-danger', 'fa-circle-xmark', gettext('Errors')],
-        ThemeValidator::LEVEL_WARNING => ['bg-warning', 'fa-triangle-exclamation', gettext('Warnings')],
-        default => ['bg-success', 'fa-circle-check', gettext('Valid')],
+        ThemeValidator::LEVEL_ERROR => ['bg-danger text-white', 'fa-circle-xmark', gettext('Errors')],
+        ThemeValidator::LEVEL_WARNING => ['bg-warning text-white', 'fa-triangle-exclamation', gettext('Warnings')],
+        default => ['bg-success text-white', 'fa-circle-check', gettext('Valid')],
     };
 };
 
@@ -186,7 +186,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                     <td>
                                         <span class="fw-bold"><?= InputUtils::escapeHTML($themeLabel($theme)) ?></span>
                                         <?php if ($theme['id'] === $activeTheme): ?>
-                                            <span class="badge bg-primary ms-2"><?= gettext('Active') ?></span>
+                                            <span class="badge bg-primary text-white ms-2"><?= gettext('Active') ?></span>
                                         <?php endif; ?>
                                         <?php if ($theme['description'] !== ''): ?>
                                             <div class="text-secondary small"><?= InputUtils::escapeHTML($theme['description']) ?></div>
@@ -204,7 +204,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                                     data-bs-toggle="collapse"
                                                     data-bs-target="#portalFindings-<?= InputUtils::escapeAttribute($theme['id']) ?>">
                                                 <?= gettext('Findings') ?>
-                                                <span class="badge bg-secondary ms-1"><?= count($theme['findings']) ?></span>
+                                                <span class="badge bg-secondary text-white ms-1"><?= count($theme['findings']) ?></span>
                                             </button>
                                         <?php endif; ?>
                                     </td>
@@ -234,7 +234,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                             <ul class="list-unstyled mb-0">
                                                 <?php foreach ($theme['findings'] as $finding): ?>
                                                     <li class="py-1">
-                                                        <span class="badge <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? 'bg-danger' : 'bg-warning' ?> me-2">
+                                                        <span class="badge <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? 'bg-danger text-white' : 'bg-warning text-white' ?> me-2">
                                                             <?= $finding['level'] === ThemeValidator::LEVEL_ERROR ? gettext('Error') : gettext('Warning') ?>
                                                         </span>
                                                         <?php if ($finding['file'] !== ''): ?>
