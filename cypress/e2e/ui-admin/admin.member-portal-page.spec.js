@@ -90,6 +90,14 @@ const expectReadableBadges = () =>
         });
     });
 
+const expectReadableBadgesInBothModes = () => {
+    cy.get("html").invoke("removeAttr", "data-bs-theme");
+    expectReadableBadges();
+    cy.get("html").invoke("attr", "data-bs-theme", "dark");
+    expectReadableBadges();
+    cy.get("html").invoke("removeAttr", "data-bs-theme");
+};
+
 before(() => {
     cy.rememberTestEnv(["admin.api.key"]);
 });
@@ -212,7 +220,7 @@ describe("Admin → Member Portal page", () => {
         it("Every badge has readable text", () => {
             cy.visit("/admin/member-portal");
             cy.get(`#portalThemesTable tr[data-theme="${WARNING_THEME}"]`).should("contain.text", "Warnings");
-            expectReadableBadges();
+            expectReadableBadgesInBothModes();
 
             for (const [theme, template] of [
                 [BROKEN_THEME, "home.html.twig"],
@@ -221,7 +229,7 @@ describe("Admin → Member Portal page", () => {
                 cy.get("#portalThemeSelect").select(theme);
                 cy.get("#portalThemeCheckButton").click();
                 cy.get("#portalThemeFindings", { timeout: 10000 }).should("contain.text", template);
-                expectReadableBadges();
+                expectReadableBadgesInBothModes();
             }
         });
 
