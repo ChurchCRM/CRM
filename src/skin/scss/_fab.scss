@@ -8,6 +8,7 @@
   position: fixed;
   bottom: 4.5rem; // Clear the Tabler footer
   right: 1.5rem;
+
   // Keep floating buttons above page chrome, but below the modal backdrop (1050).
   z-index: 1040;
   display: flex;
