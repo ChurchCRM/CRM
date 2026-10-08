@@ -29,6 +29,12 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
     /** Session key holding the flash messages the next portal page renders. */
     private const FLASH_SESSION_KEY = 'aPortalFlash';
 
+    /** The stock logo ChurchMetaData::getChurchLogoURL() falls back to, drawn for a light background. */
+    private const STOCK_LOGO = '/Images/churchcrm-logo-ink-blue.svg';
+
+    /** ChurchCRM's paper + blue mark, drawn for a dark background. */
+    private const STOCK_LOGO_ON_DARK = '/Images/churchcrm-symbol-paper-blue.svg';
+
     public function __construct(
         private readonly string $themeName,
         private readonly ?string $activeNavId = null
@@ -190,6 +196,8 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
      */
     private function getChurch(): array
     {
+        $logoUrl = ChurchMetaData::getChurchLogoURL();
+
         return [
             'name' => ChurchMetaData::getChurchName(),
             'address' => ChurchMetaData::getChurchAddress(),
@@ -199,7 +207,10 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             'phone' => ChurchMetaData::getChurchPhone(),
             'email' => ChurchMetaData::getChurchEmail(),
             'website' => self::webAddressOrEmpty(ChurchMetaData::getChurchWebSite()),
-            'logoUrl' => ChurchMetaData::getChurchLogoURL(),
+            'logoUrl' => $logoUrl,
+            'logoOnDarkUrl' => $logoUrl === SystemURLs::getURL() . self::STOCK_LOGO
+                ? SystemURLs::getRootPath() . self::STOCK_LOGO_ON_DARK
+                : $logoUrl,
             // The church's own social accounts (#9907), already filtered to
             // the configured ones and ordered X, YouTube, Facebook, Instagram.
             // Each entry is {id, label, url, icon}; empty when none is set.
