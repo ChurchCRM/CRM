@@ -120,6 +120,10 @@ inspect it — `docker:ci:new-system:down` tears it down explicitly.
    run every spec automatically, so one new test yields three screenshots,
    three videos, and three metadata files (one per device).
 
+Files a workflow uploads live in `playwright/fixtures/`, for example the
+made-up Main St. Cathedral logo (`main-st-cathedral-logo.png`) that the
+church logo captures upload and then remove.
+
 ## How to update seed data
 
 Seed data lives entirely in `src/admin/demo/` (`people.json`, `groups.json`,
