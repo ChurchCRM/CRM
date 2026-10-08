@@ -199,4 +199,69 @@ describe("Member Portal — Profile", () => {
         cy.get("#two-factor-enrollment-app").should("exist");
         cy.get("#sidebar").should("not.exist");
     });
+
+    it("A long email address wraps after the @ or before a dot, inside its card (#10421)", () => {
+        const longEmail = "lena.walker.portal.wrapping@members.example.org";
+        const renderedLines = (element) => {
+            const doc = element.ownerDocument;
+            const walker = doc.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+            const lines = [];
+            let lastTop = null;
+            for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+                for (let i = 0; i < node.length; i += 1) {
+                    const range = doc.createRange();
+                    range.setStart(node, i);
+                    range.setEnd(node, i + 1);
+                    const top = Math.round(range.getBoundingClientRect().top);
+                    if (top !== lastTop) {
+                        lines.push("");
+                        lastTop = top;
+                    }
+                    lines[lines.length - 1] += node.data[i];
+                }
+            }
+            return lines;
+        };
+
+        const saveEmail = (email) => {
+            cy.visit("/portal/profile/edit");
+            cy.get("#portal-email").clear();
+            if (email) {
+                cy.get("#portal-email").type(email);
+            }
+            cy.get("#portal-profile-save").click();
+            cy.get(".portal-flash-success", { timeout: 10000 }).should("be.visible");
+        };
+
+        cy.viewport(375, 812);
+        login();
+        cy.visit("/portal/profile/edit");
+        cy.get("#portal-email")
+            .invoke("val")
+            .then((originalEmail) => {
+                saveEmail(longEmail);
+
+                for (const [path, list] of [
+                    ["/portal/", "#portal-home-profile-details"],
+                    ["/portal/profile", "#portal-profile-details"],
+                ]) {
+                    cy.visit(path);
+                    cy.get(`${list} [data-field=email]`).should(($email) => {
+                        const element = $email[0];
+                        const lines = renderedLines(element);
+                        expect(lines.join(""), "rendered address").to.equal(longEmail);
+                        expect(lines.length, "lines at phone width").to.be.greaterThan(1);
+                        lines.slice(1).forEach((line, index) => {
+                            expect(
+                                lines[index].endsWith("@") || line.startsWith("."),
+                                `break between "${lines[index]}" and "${line}"`
+                            ).to.equal(true);
+                        });
+                        expect(element.scrollWidth, "no overflow").to.be.at.most(element.clientWidth);
+                    });
+                }
+
+                saveEmail(originalEmail);
+            });
+    });
 });
