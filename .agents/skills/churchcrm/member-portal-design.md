@@ -328,6 +328,7 @@ render.
 | `nav` | the `PortalNav` model: ordered `[{id, label, url, icon, active, badge}]` |
 | `flash` | `[{type, message}]` from the session |
 | `portal` | `{rootPath, themeName, locale, isRTL, developerMode}` |
+| `email_wrap` (filter) | the escaped address with `<wbr>` after the `@` and before each `.`, so it wraps at a readable point (#10421) |
 
 No PHP includes, no filesystem or network functions, no `$_SESSION`. Twig's sandbox extension is
 not needed: the surface is what the extension exposes.
