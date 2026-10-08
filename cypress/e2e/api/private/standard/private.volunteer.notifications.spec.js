@@ -1325,6 +1325,105 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         });
     });
 
+    describe("Volunteer v2 — V1 pauses the volunteer background jobs (#10373)", () => {
+        let anchoredEventId = null;
+
+        beforeEach(resetWorkflow);
+
+        afterEach(() => {
+            setConfig(SETTING_URL, "v2");
+            setConfig(LEAD_HOURS_URL, "0");
+            if (anchoredEventId !== null) {
+                dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_event_id = ? WHERE vocc_ID = ?`, [anchoredEventId, occurrenceTwo]);
+                dbOk(`DELETE FROM events_event WHERE event_title = ?`, [`${EVENT_TITLE} Paused Past`]);
+                anchoredEventId = null;
+            }
+        });
+
+        function assignmentStatus(assignmentId) {
+            return dbOk(`SELECT vasg_Status FROM volunteer_assignment_vasg WHERE vasg_ID = ?`, [assignmentId]).then(
+                (rows) => rows[0].vasg_Status,
+            );
+        }
+
+        it("keeps the queue and schedules no reminder while V1 is on", () => {
+            assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then((assignment) => {
+                setConfig(SETTING_URL, "v1");
+                setConfig(LEAD_HOURS_URL, String(21 * 24));
+                drain();
+
+                outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_A}`).then((row) => {
+                    expect(row.vntf_Status).to.eq("pending");
+                    expect(row.vntf_Attempts).to.eq(0);
+                });
+                outboxRowsOfType("reminder").then((rows) => {
+                    expect(rows).to.have.length(0);
+                });
+            });
+        });
+
+        it("emails nobody while V1 is on, and sends the queue once V2 is back", function () {
+            requireMailpit(this);
+
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, POOL_MEMBER_A).then((assignment) => {
+                setConfig(SETTING_URL, "v1");
+                drain();
+                listMail().then((messages) => {
+                    const toMember = messages.filter((message) =>
+                        (message.To || []).some((to) => (to.Address || "").toLowerCase() === MEMBER_A_EMAIL),
+                    );
+                    expect(toMember, "no mail while V1 is on").to.have.length(0);
+                });
+
+                setConfig(SETTING_URL, "v2");
+                drain();
+                outboxRow(`assignment:${assignment.id}:${POOL_MEMBER_A}`).then((row) => {
+                    expect(row.vntf_Status).to.eq("sent");
+                });
+                mailTo(MEMBER_A_EMAIL).then((message) => {
+                    expect(message.Subject.toLowerCase()).to.contain("serve");
+                });
+            });
+        });
+
+        it("does not send a queued message late once its occurrence is over", () => {
+            dbOk(`SELECT vocc_event_id FROM volunteer_occurrence_vocc WHERE vocc_ID = ?`, [occurrenceTwo]).then((rows) => {
+                anchoredEventId = rows[0].vocc_event_id;
+            });
+
+            assign(COORDINATOR_KEY, occurrenceTwo, posMilk, POOL_MEMBER_B).then((assignment) => {
+                const key = `assignment:${assignment.id}:${POOL_MEMBER_B}`;
+
+                setConfig(SETTING_URL, "v1");
+                dbOk(
+                    `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+                     VALUES (?, ?, '', '', DATE_SUB(NOW(), INTERVAL 3 DAY), DATE_SUB(NOW(), INTERVAL 3 DAY), 0)`,
+                    [CHURCH_SERVICE_TYPE, `${EVENT_TITLE} Paused Past`],
+                ).then((result) => {
+                    dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_event_id = ? WHERE vocc_ID = ?`, [result.insertId, occurrenceTwo]);
+                });
+                drain();
+                outboxRow(key).then((row) => {
+                    expect(row.vntf_Status).to.eq("pending");
+                });
+                assignmentStatus(assignment.id).then((status) => {
+                    expect(status, "not closed out while V1 is on").to.eq("pending");
+                });
+
+                setConfig(SETTING_URL, "v2");
+                drain();
+                outboxRow(key).then((row) => {
+                    expect(row.vntf_Status).to.eq("skipped");
+                    expect(row.vntf_LastError).to.eq("the occurrence has already ended");
+                    expect(row.vntf_Attempts).to.eq(0);
+                });
+                assignmentStatus(assignment.id).then((status) => {
+                    expect(status).to.eq("completed");
+                });
+            });
+        });
+    });
+
     describe("Volunteer v2 — GET /assignments/{id}/notifications is scoped (§4.8)", () => {
         let assignmentId = 0;
 

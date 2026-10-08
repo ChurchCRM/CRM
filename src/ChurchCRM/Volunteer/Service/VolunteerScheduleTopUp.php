@@ -16,7 +16,8 @@ use Propel\Runtime\Exception\PropelException;
  * active ministry, Staff this event ones aside, is generated up to the scheduling horizon
  * once a day, so no coordinator has to press Generate to keep a schedule ahead. On the
  * occurrences it creates it assigns each position's saved default volunteer (D32), as a
- * Generate run does; the occurrence unique key makes a repeat run a no-op.
+ * Generate run does; the occurrence unique key makes a repeat run a no-op. It first moves
+ * occurrences whose event was moved to another day without a save through the ORM (#10371).
  */
 final class VolunteerScheduleTopUp
 {
@@ -43,6 +44,7 @@ final class VolunteerScheduleTopUp
         }
 
         $logger = LoggerUtils::getAppLogger();
+        $moved = (new VolunteerScheduleService())->followEventDates();
         $service = new VolunteerAssignmentService();
         $schedules = VolunteerScheduleQuery::create()
             ->filterByActive(true)
@@ -82,6 +84,7 @@ final class VolunteerScheduleTopUp
         self::store(self::LAST_RESULT_CONFIG, json_encode($result));
         $logger->info('Volunteer schedules topped up to the scheduling horizon', $result + [
             'horizonWeeks' => VolunteerScheduleService::horizonWeeks(),
+            'moved' => $moved,
             'forced' => $force,
         ]);
 

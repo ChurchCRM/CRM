@@ -20,8 +20,9 @@
  *      coordinator grant already exists, and clears the leader by emptying the
  *      field;
  *   2. the person who was granted the coordinator scope — Tony Campbell,
- *      person 3, who holds no admin and no volunteer-manager flag — logs in and
- *      finds the Volunteer menu and the ministry page genuinely open to him.
+ *      person 3, who holds no admin and no volunteer-manager flag — logs in,
+ *      finds the Volunteer menu and the ministry page genuinely open to him, and
+ *      chooses the team's leader himself (§4.6, #10375).
  *      Without (2) the first half only proves that rows were written.
  *
  * The second case deliberately depends on the grant the first case made through
@@ -109,6 +110,14 @@ function cleanupScopes() {
     }
 }
 
+function revokeTeamLeaders() {
+    adminApi("GET", `${VOLUNTEER_URL}/scopes?teamId=${teamId}`, null, 200).then((resp) => {
+        for (const scope of resp.body.scopes) {
+            adminApi("DELETE", `${VOLUNTEER_URL}/scopes/${scope.id}`, null, [200, 404]);
+        }
+    });
+}
+
 /** Teams cascade from the ministry row, so one DELETE per ministry is enough. */
 function cleanupMinistries() {
     adminApi("GET", `${VOLUNTEER_URL}/ministries`, null, 200).then((resp) => {
@@ -171,7 +180,7 @@ function openTeamEditor() {
     cy.get("#teamModal").should("be.visible");
     // The picker is built on `shown.bs.modal`, so its TomSelect wrapper appearing
     // is the signal that Bootstrap's 150 ms fade has finished.
-    cy.get("#teamModal .ts-wrapper, #team-form-leader-readonly").should("exist");
+    cy.get("#teamModal .ts-wrapper").should("exist");
 }
 
 before(() => {
@@ -324,10 +333,8 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
             cy.url().should("not.include", "access-denied");
             cy.get("#volunteer-ministry").should("contain", MINISTRY_NAME);
 
-            // Granting is manager-only (§3.2): a coordinator does not get the card,
-            // and the team rows carry no leader items either — but they still SHOW
-            // who leads what, because those names ride on the ministry document
-            // rather than on the manager-only /scopes listing.
+            // Making a coordinator is manager-only (§3.2): a coordinator does not get
+            // the card, and the team rows carry no leader items either.
             cy.get("#volunteer-scope-panel").should("not.exist");
             cy.get("#teams-loading").should("not.be.visible");
             cy.get("#volunteerTeamsTable").should("be.visible");
@@ -336,22 +343,34 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
             cy.get("#volunteerTeamsTable .volunteer-team-leader-remove").should("not.exist");
         });
 
-        it("shows the leader read-only in the team dialog, and says who may change it", () => {
+        it("lets the coordinator set and clear the team leader from the team dialog", () => {
+            const leaderCell = `#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-cell`;
+            revokeTeamLeaders();
             freshCoordinatorLogin();
             cy.visit(ministryUrl());
             cy.get("#teams-loading").should("not.be.visible");
-            cy.get("#volunteerTeamsTable").should("be.visible");
+            cy.get(leaderCell).should("not.contain", LEADER_NAME);
 
             openTeamEditor();
-            // No picker at all: the scope API is manager-only, so offering a
-            // control it would refuse is worse than not offering one.
-            cy.get("#team-form-leader").should("not.exist");
-            cy.get("#team-form-leader-clear").should("not.exist");
-            cy.get("#team-form-leader-readonly").should("be.visible").and("have.attr", "readonly");
-            cy.get("#team-form-leader-note").should(
-                "contain",
-                "Only a volunteer manager can change the team leader",
-            );
+            cy.get("#team-form-leader-readonly").should("not.exist");
+            pickPerson("#teamModal", "Herminia", LEADER_NAME);
+            cy.get("#team-form-save").click();
+            cy.get("#teamModal").should("not.be.visible");
+            cy.get(leaderCell).should("contain", LEADER_NAME);
+
+            cy.reload();
+            cy.get("#teams-loading").should("not.be.visible");
+            cy.get(leaderCell).should("contain", LEADER_NAME);
+            openTeamEditor();
+            cy.get("#teamModal .ts-control .item").should("contain", LEADER_NAME);
+            cy.get("#team-form-leader-clear").click();
+            cy.get("#team-form-save").click();
+            cy.get("#teamModal").should("not.be.visible");
+            cy.get(leaderCell).should("not.contain", LEADER_NAME);
+
+            adminApi("GET", `${VOLUNTEER_URL}/scopes?teamId=${teamId}`, null, 200).then((resp) => {
+                expect(resp.body.scopes).to.have.length(0);
+            });
         });
     });
 });

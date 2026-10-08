@@ -205,3 +205,91 @@ describe("Volunteer v2 rollout flag (#9704)", () => {
         });
     });
 });
+
+describe("Volunteer v2 \"Other\" event type, added when V2 is turned on (#10357)", () => {
+    const SEED_OTHER_TYPE = 3;
+    const RENAMED = "VROLL10357 Misc";
+    const DEFAULT_TYPE_URL = "/admin/api/system/config/iVolunteerDefaultEventTypeId";
+
+    function otherTypes() {
+        return cy
+            .dbQuery(
+                "SELECT type_id AS id, type_defrecurtype AS recur, type_active AS active FROM event_types WHERE type_name = 'Other' ORDER BY type_id",
+            )
+            .then((result) => result.rows);
+    }
+
+    function defaultEventTypeId() {
+        return cy.makePrivateAdminAPICall("GET", "/api/ministries/event-types", null, 200).its("body.defaultEventTypeId");
+    }
+
+    beforeEach(() => {
+        setVersion("v1");
+        cy.makePrivateAdminAPICall("POST", DEFAULT_TYPE_URL, { value: "" }, 200);
+        // The seed keeps "Other" as type 3 for the V2 specs; a church that never turned V2 on has none.
+        cy.dbQuery("DELETE FROM event_types WHERE type_name IN ('Other', ?)", [RENAMED]);
+    });
+
+    after(() => {
+        setVersion("v1");
+        cy.dbQuery("DELETE FROM event_types WHERE type_name IN ('Other', ?)", [RENAMED]);
+        cy.dbQuery(
+            `INSERT INTO event_types (type_id, type_name, type_defstarttime, type_defrecurtype, type_defrecurDOW, type_defrecurDOM, type_defrecurDOY, type_active)
+             VALUES (?, 'Other', '00:00:00', 'none', 'Sunday', '', '2016-01-01', 1)`,
+            [SEED_OTHER_TYPE],
+        );
+    });
+
+    it("adds none while the church stays on v1", () => {
+        setVersion("v1");
+        setVersion("wat");
+        setVersion("v1");
+        cy.makePrivateAdminAPICall("GET", "/api/events/types", null, 200);
+        otherTypes().should("have.length", 0);
+    });
+
+    it("adds one active type with no recurrence defaults when V2 is turned on, and new ministry events start on it", () => {
+        setVersion("v2");
+        otherTypes().then((rows) => {
+            expect(rows).to.have.length(1);
+            expect(rows[0]).to.include({ recur: "none", active: 1 });
+            defaultEventTypeId().should("eq", rows[0].id);
+        });
+    });
+
+    it("adds it for both, too", () => {
+        setVersion("both");
+        otherTypes().should("have.length", 1);
+    });
+
+    it("adds no second one however often V2 is switched off and on", () => {
+        for (const value of ["v2", "v1", "both", "v1", "v2", "v2", "both"]) {
+            setVersion(value);
+        }
+        otherTypes().should("have.length", 1);
+    });
+
+    it("leaves a renamed one renamed while V2 stays on", () => {
+        setVersion("v2");
+        otherTypes().then(([row]) => {
+            cy.dbQuery("UPDATE event_types SET type_name = ? WHERE type_id = ?", [RENAMED, row.id]);
+        });
+        setVersion("v2");
+        setVersion("both");
+        otherTypes().should("have.length", 0);
+        defaultEventTypeId().should("eq", null);
+    });
+
+    it("adds none beside a retired type of that name", () => {
+        cy.dbQuery(
+            `INSERT INTO event_types (type_name, type_defstarttime, type_defrecurtype, type_defrecurDOW, type_defrecurDOM, type_defrecurDOY, type_active)
+             VALUES ('Other', '00:00:00', 'none', 'Sunday', '', '2016-01-01', 0)`,
+        );
+        setVersion("v2");
+        otherTypes().then((rows) => {
+            expect(rows).to.have.length(1);
+            expect(rows[0].active).to.eq(0);
+        });
+        defaultEventTypeId().should("eq", null);
+    });
+});
