@@ -1442,7 +1442,7 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
         });
     });
 
-    describe("Volunteer v2 — the daily alert about positions never filled (#10372, §3.6)", () => {
+    describe("Volunteer v2 — the alert about positions never filled (#10372, §3.6)", () => {
         beforeEach(resetWorkflow);
 
         afterEach(() => {
@@ -1522,18 +1522,39 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             });
         });
 
-        it("runs once a day unless an administrator forces it", () => {
+        it("alerts a gap at the next ordinary run once it comes inside the window", () => {
             setConfig(LEAD_HOURS_URL, "1");
-            runJobsNow();
+            drain();
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows, "outside a one-hour window").to.have.length(0);
+            });
+
             leadToOccurrenceOne();
             drain();
             gapAlerts(occurrenceOne).then((rows) => {
-                expect(rows, "today's run already happened").to.have.length(0);
+                expect(rows).to.have.length(2);
             });
 
-            runJobsNow();
+            drain();
             gapAlerts(occurrenceOne).then((rows) => {
-                expect(rows).to.have.length(2);
+                expect(rows, "a later run repeats nothing").to.have.length(2);
+            });
+        });
+
+        it("does not repeat the positions a decline's alert already listed", () => {
+            assign(COORDINATOR_KEY, occurrenceOne, posEspresso, PERSON_VOLUNTEER).then((assignment) => {
+                api(SELFEDIT_KEY, "POST", `${VOLUNTEER_URL}/me/assignments/${assignment.id}/respond`, {
+                    response: "declined",
+                });
+            });
+            leadToOccurrenceOne();
+            drain();
+
+            gapAlerts(occurrenceOne).then((rows) => {
+                expect(rows, "only the decline's occurrence-wide alert").to.have.length(1);
+                expect(rows[0].dedupeKey).to.match(
+                    new RegExp(`^gap_alert:${occurrenceOne}:${PERSON_COORDINATOR}:\\d{4}-\\d{2}-\\d{2}$`),
+                );
             });
         });
 

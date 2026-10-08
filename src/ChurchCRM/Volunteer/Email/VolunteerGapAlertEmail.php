@@ -9,7 +9,8 @@ namespace ChurchCRM\Volunteer\Email;
  * no single volunteer this is about and therefore **no Reply-To at all**. A
  * decline's alert lists every short position, and its dedupe key carries the
  * date, so a ministry that loses three people in one afternoon gets one alert per
- * coordinator, not three. The daily alert (#10372) lists only its own position.
+ * coordinator, not three. The unfilled-position alert (#10372) lists only its own
+ * position.
  */
 class VolunteerGapAlertEmail extends BaseVolunteerEmail
 {

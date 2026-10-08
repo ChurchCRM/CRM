@@ -86,9 +86,6 @@ class VolunteerNotificationService
      */
     public const MAX_ATTEMPTS = 5;
 
-    /** The day (Y-m-d) the gap alert last ran (#10372): claimed before it runs, like the top-up. */
-    public const GAP_ALERT_RUN_DATE_CONFIG = 'sLastVolunteerGapAlertRunDate';
-
     private LoggerInterface $logger;
 
     public function __construct()
@@ -257,9 +254,9 @@ class VolunteerNotificationService
     }
 
     /**
-     * The daily alert's key (#10372): one per occurrence, position and recipient, with no
-     * date, so a position that stays short is reported once rather than every day. It
-     * cannot meet `gapAlertKey()`, whose last part is a date.
+     * The unfilled-position alert's key (#10372): one per occurrence, position and
+     * recipient, with no date, so a position that stays short is reported once however
+     * often the scan runs. It cannot meet `gapAlertKey()`, whose last part is a date.
      */
     public function unfilledGapAlertKey(int $occurrenceId, int $positionId, int $coordinatorPersonId): string
     {
@@ -588,45 +585,25 @@ class VolunteerNotificationService
     }
 
     /**
-     * The daily gap alert (#10372, §3.6): a `gap_alert` to the coordinators for every
-     * position still short (`getOpenGaps()`, D34's *Needs N more*) on a scheduled
+     * The unfilled-position alert (#10372, §3.6): a `gap_alert` to the coordinators for
+     * every position still short (`getOpenGaps()`, D34's *Needs N more*) on a scheduled
      * occurrence of an active ministry that starts inside `iVolunteerReminderLeadHours`.
-     * A decline reports the gap it opens (`notifyGapOpened()`); this reports the position
-     * nobody was ever on.
      *
-     * Once a day, claimed like the schedule top-up, unless an administrator forces the run.
-     * There is no lead setting of its own, so a lead of 0 turns this off with the reminders.
+     * Runs on every timer pass, so a gap is reported soon after it comes inside the
+     * window. Each position is reported to each recipient once, and not at all to a
+     * recipient who already has the occurrence-wide alert a decline sends
+     * (`notifyGapOpened()`), because that one lists every short position. There is no
+     * lead setting of its own, so a lead of 0 turns this off with the reminders.
      *
      * @return int rows enqueued (existing rows are not counted)
      */
-    public function scheduleGapAlerts(bool $force = false): int
+    public function scheduleGapAlerts(): int
     {
         $leadHours = SystemConfig::getIntValue('iVolunteerReminderLeadHours');
         if ($leadHours <= 0) {
             return 0;
         }
 
-        $today = DateTimeUtils::getTodayDate();
-        $claimed = VolunteerDailyRun::claim(self::GAP_ALERT_RUN_DATE_CONFIG, $today);
-        if (!$claimed && !$force) {
-            return 0;
-        }
-
-        // A scan that fails part-way gives the day back, so a later timer run enqueues
-        // what it missed; the dedupe keys keep it from repeating what it already sent.
-        try {
-            return $this->enqueueGapAlerts($leadHours);
-        } catch (\Throwable $e) {
-            if ($claimed) {
-                VolunteerDailyRun::release(self::GAP_ALERT_RUN_DATE_CONFIG, $today);
-            }
-
-            throw $e;
-        }
-    }
-
-    private function enqueueGapAlerts(int $leadHours): int
-    {
         $now = DateTimeUtils::getToday();
         $horizon = DateTimeUtils::createDateTime($now->format('Y-m-d H:i:s'))
             ->modify(sprintf('+%d hours', $leadHours));
@@ -654,6 +631,7 @@ class VolunteerNotificationService
 
         $authz = new VolunteerAuthorizationService();
         $recipients = [];
+        $toldAboutOccurrence = [];
         $enqueued = 0;
         foreach ((new VolunteerAssignmentService())->getOpenGaps(array_keys($scheduleOf)) as $gap) {
             $occurrenceId = $gap['occurrenceId'];
@@ -661,8 +639,9 @@ class VolunteerNotificationService
             $recipients[$scheduleId] ??= $this->coordinatorsOfSchedule($scheduleId, $authz);
 
             foreach ($recipients[$scheduleId] as $personId) {
+                $toldAboutOccurrence[$occurrenceId][$personId] ??= $this->hasOccurrenceGapAlert($occurrenceId, $personId);
                 $key = $this->unfilledGapAlertKey($occurrenceId, $gap['positionId'], $personId);
-                if ($this->findByDedupeKey($key) !== null) {
+                if ($toldAboutOccurrence[$occurrenceId][$personId] || $this->findByDedupeKey($key) !== null) {
                     continue;
                 }
 
@@ -712,6 +691,17 @@ class VolunteerNotificationService
                 DateTimeUtils::createDateTime($to->format('Y-m-d'))->modify('+1 day'),
                 Criteria::LESS_EQUAL
             );
+    }
+
+    /** Whether this person has the occurrence-wide `gap_alert` of `notifyGapOpened()`, the one with no position. */
+    private function hasOccurrenceGapAlert(int $occurrenceId, int $personId): bool
+    {
+        return VolunteerNotificationQuery::create()
+            ->filterByType(self::TYPE_GAP_ALERT)
+            ->filterByOccurrenceId($occurrenceId)
+            ->filterByPersonId($personId)
+            ->filterByContext(null, Criteria::ISNULL)
+            ->exists();
     }
 
     /**
@@ -1153,8 +1143,8 @@ class VolunteerNotificationService
                 );
 
             case self::TYPE_GAP_ALERT:
-                // The daily alert (#10372) is about one position; filled since, it has
-                // nothing left to say.
+                // The unfilled-position alert (#10372) is about one position; filled
+                // since, it has nothing left to say.
                 $positionId = (int) ($this->rowContext($row)['positionId'] ?? 0);
                 $short = $this->shortPositions((int) $row->getOccurrenceId(), $positionId > 0 ? $positionId : null);
                 if ($positionId > 0 && $short === []) {
