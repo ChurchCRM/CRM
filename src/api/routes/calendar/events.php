@@ -481,6 +481,50 @@ function resolveEventMinistryId(Response $response, array $input, ?int $currentM
 }
 
 /**
+ * Guard for the audience group a create or an update writes. Returns a 403, or null.
+ *
+ * The audience decides whose names `/event/view` lists as non-attendees, and group pages need
+ * Manage Groups, so a caller without the global AddEvent right may only add or remove a group
+ * the event's own ministry owns (`VolunteerAuthorizationService::canLinkEventAudience()`). Only
+ * a CHANGE is judged: an absent key leaves the audience alone, and re-sending what is already
+ * there changes nothing.
+ *
+ * Runs BEFORE the event is saved, like `eventWriteGuard()`, so a refused audience leaves no row.
+ *
+ * @param array<int, int> $currentGroupIds the groups now linked (empty for a new event)
+ */
+function eventAudienceGuard(Response $response, array $input, array $currentGroupIds, ?int $ministryId): ?Response
+{
+    if (!array_key_exists('LinkedGroupId', $input)) {
+        return null;
+    }
+
+    $requested = (int) $input['LinkedGroupId'];
+    $requestedIds = $requested > 0 ? [$requested] : [];
+    if ($requestedIds === array_values($currentGroupIds)) {
+        return null;
+    }
+
+    $user = AuthenticationManager::getCurrentUser();
+    $changed = array_unique(array_merge(
+        array_diff($requestedIds, $currentGroupIds),
+        array_diff($currentGroupIds, $requestedIds)
+    ));
+    foreach ($changed as $groupId) {
+        if (!eventVolunteerAuthz()->canLinkEventAudience($user, $ministryId, (int) $groupId)) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext("Not authorized to change this event's audience group"),
+                [],
+                403
+            );
+        }
+    }
+
+    return null;
+}
+
+/**
  * Shared helper: apply LinkedGroupId + AttendanceCounts[] from the unified
  * editor payload to an existing Event row. Idempotent — call after each
  * newEvent / updateEvent save.
@@ -651,14 +695,15 @@ function getEventAudience(Request $request, Response $response, array $args): Re
  *         @OA\Property(property="End", type="string", format="date-time", example="2026-04-05T11:00:00"),
  *         @OA\Property(property="Text", type="string", nullable=true, description="Rich text body (HTML allowed)"),
  *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), example={1}, description="Without the global AddEvent right: only the event ministry's own calendar and the church calendars opened to that ministry (GET /calendars/pinnable)"),
- *         @OA\Property(property="MinistryId", type="integer", nullable=true, description="Volunteer v2: owning volunteer ministry. Only an administrator, a global volunteer manager or a coordinator of that ministry may set it. A volunteer coordinator without the global AddEvent right MUST supply one they manage.")
+ *         @OA\Property(property="MinistryId", type="integer", nullable=true, description="Volunteer v2: owning volunteer ministry. Only an administrator, a global volunteer manager or a coordinator of that ministry may set it. A volunteer coordinator without the global AddEvent right MUST supply one they manage."),
+ *         @OA\Property(property="LinkedGroupId", type="integer", nullable=true, description="Audience group (the event's non-attendee list is built from it). Without the global AddEvent right: only the event ministry's own pool group or a class linked to one of its teams. Omit the key to leave it unchanged; 0 clears it.")
  *     )),
  *     @OA\Response(response=200, description="Event created",
  *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
  *     ),
  *     @OA\Response(response=400, description="Invalid event type, calendar ID or volunteer ministry"),
  *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="AddEvents role required, or the caller may not assign the event to that volunteer ministry or pin it to one of those calendars")
+ *     @OA\Response(response=403, description="AddEvents role required, or the caller may not assign the event to that volunteer ministry, pin it to one of those calendars or link that audience group")
  * )
  */
 function newEvent(Request $request, Response $response, array $args): Response
@@ -701,6 +746,11 @@ function newEvent(Request $request, Response $response, array $args): Response
     $pinRefusal = eventCalendarPinGuard($response, null, $ministryId, [], $calendars);
     if ($pinRefusal !== null) {
         return $pinRefusal;
+    }
+
+    $audienceRefusal = eventAudienceGuard($response, $input, [], $ministryId);
+    if ($audienceRefusal !== null) {
+        return $audienceRefusal;
     }
 
     // InputSanitizationMiddleware already sanitizes the HTML fields.
@@ -835,14 +885,15 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
  *         @OA\Property(property="End", type="string", format="date-time"),
  *         @OA\Property(property="Text", type="string", nullable=true),
  *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), description="Replaces the pins. Omit the key to leave them unchanged. Without the global AddEvent right, only pins that change are checked, against the same calendars POST /events allows"),
- *         @OA\Property(property="MinistryId", type="integer", nullable=true, description="Volunteer v2: owning volunteer ministry. Omit the key to leave it unchanged; null or 0 clears it (global AddEvent right required to clear).")
+ *         @OA\Property(property="MinistryId", type="integer", nullable=true, description="Volunteer v2: owning volunteer ministry. Omit the key to leave it unchanged; null or 0 clears it (global AddEvent right required to clear)."),
+ *         @OA\Property(property="LinkedGroupId", type="integer", nullable=true, description="Audience group (the event's non-attendee list is built from it). Without the global AddEvent right: only the event ministry's own pool group or a class linked to one of its teams. Omit the key to leave it unchanged; 0 clears it.")
  *     )),
  *     @OA\Response(response=200, description="Event updated",
  *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
  *     ),
  *     @OA\Response(response=400, description="Unknown volunteer ministry"),
  *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="AddEvents role required, the event belongs to a volunteer ministry the caller does not manage, or a pin it adds or removes is not the caller's to change"),
+ *     @OA\Response(response=403, description="AddEvents role required, the event belongs to a volunteer ministry the caller does not manage, a pin it adds or removes is not the caller's to change, or an audience group it adds or removes is not the caller's to change"),
  *     @OA\Response(response=404, description="Event not found")
  * )
  */
@@ -888,6 +939,15 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     $pinRefusal = eventCalendarPinGuard($response, $currentMinistryId, $ministryId, $currentCalendarIds, $PinnedCalendars);
     if ($pinRefusal !== null) {
         return $pinRefusal;
+    }
+
+    $currentGroupIds = [];
+    foreach (EventAudienceQuery::create()->filterByEventId((int) $id)->orderByGroupId()->find() as $audience) {
+        $currentGroupIds[] = (int) $audience->getGroupId();
+    }
+    $audienceRefusal = eventAudienceGuard($response, $input, $currentGroupIds, $ministryId);
+    if ($audienceRefusal !== null) {
+        return $audienceRefusal;
     }
 
     if ($pinsRequested) {

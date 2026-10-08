@@ -628,7 +628,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             });
         });
 
-        it("keeps the manager-only scope API closed to a coordinator", () => {
+        it("keeps the scope listing and coordinator grants closed to a coordinator", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 SCOPES_URL,
@@ -638,12 +638,158 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                     scopeId: ministryA,
                 },
                 201,
-            );
+            ).then((resp) => {
+                cy.makePrivateAPICall(
+                    Cypress.testEnv("user.api.key"),
+                    "DELETE",
+                    `${SCOPES_URL}/${resp.body.scope.id}`,
+                    null,
+                    403,
+                );
+            });
             cy.makePrivateAPICall(
                 Cypress.testEnv("user.api.key"),
                 "GET",
                 SCOPES_URL,
                 null,
+                403,
+            );
+            for (const ministryId of [ministryA, ministryB]) {
+                cy.makePrivateAPICall(
+                    Cypress.testEnv("user.api.key"),
+                    "POST",
+                    SCOPES_URL,
+                    { personId: PERSON_MANAGER, scopeType: "ministry", scopeId: ministryId },
+                    403,
+                );
+            }
+            dbOk(`SELECT COUNT(*) AS n FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [PERSON_MANAGER]).then(
+                (rows) => {
+                    expect(Number(rows[0].n)).to.eq(0);
+                },
+            );
+        });
+
+        it("lets a coordinator grant and revoke a team leader in their own ministry", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_COORDINATOR, scopeType: "ministry", scopeId: ministryA },
+                201,
+            );
+
+            cy.makePrivateAPICall(
+                Cypress.testEnv("user.api.key"),
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_MANAGER, scopeType: "team", scopeId: teamA1 },
+                201,
+            ).then((resp) => {
+                const scopeId = resp.body.scope.id;
+                expect(resp.body.scope).to.include({
+                    personId: PERSON_MANAGER,
+                    scopeType: "team",
+                    scopeId: teamA1,
+                    grantedByPersonId: PERSON_COORDINATOR,
+                });
+
+                cy.makePrivateAPICall(
+                    Cypress.testEnv("user.api.key"),
+                    "POST",
+                    SCOPES_URL,
+                    { personId: PERSON_MANAGER, scopeType: "team", scopeId: teamA1 },
+                    200,
+                ).then((again) => {
+                    expect(again.body.scope.id).to.eq(scopeId);
+                });
+
+                cy.makePrivatePlainAuthAPICall("GET", ME_PERMISSIONS_URL, null, 200).then((me) => {
+                    expect(me.body.managedTeamIds).to.deep.eq([teamA1]);
+                });
+
+                cy.makePrivateAPICall(
+                    Cypress.testEnv("user.api.key"),
+                    "DELETE",
+                    `${SCOPES_URL}/${scopeId}`,
+                    null,
+                    200,
+                );
+            });
+
+            cy.makePrivateAdminAPICall("GET", `${SCOPES_URL}?teamId=${teamA1}`, null, 200).then((resp) => {
+                expect(resp.body.scopes).to.have.length(0);
+            });
+        });
+
+        it("refuses a coordinator the team leaders of another ministry", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_COORDINATOR, scopeType: "ministry", scopeId: ministryA },
+                201,
+            );
+
+            cy.makePrivateAPICall(
+                Cypress.testEnv("user.api.key"),
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_MANAGER, scopeType: "team", scopeId: teamB1 },
+                403,
+            ).then((resp) => {
+                expect(resp.body).to.have.property("success", false);
+            });
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_MANAGER, scopeType: "team", scopeId: teamB1 },
+                201,
+            ).then((resp) => {
+                cy.makePrivateAPICall(
+                    Cypress.testEnv("user.api.key"),
+                    "DELETE",
+                    `${SCOPES_URL}/${resp.body.scope.id}`,
+                    null,
+                    403,
+                );
+            });
+
+            cy.makePrivateAdminAPICall("GET", `${SCOPES_URL}?teamId=${teamB1}`, null, 200).then((resp) => {
+                expect(resp.body.scopes).to.have.length(1);
+            });
+        });
+
+        it("refuses a team leader with Manage My Ministries a grant on their own team", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_MANAGER, scopeType: "team", scopeId: teamB1 },
+                201,
+            );
+            dbOk("UPDATE user_usr SET usr_ManageMyMinistries = 1 WHERE usr_per_ID = ?", [PERSON_MANAGER]);
+
+            cy.makePrivatePlainAuthAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_VOLUNTEER, scopeType: "team", scopeId: teamB1 },
+                403,
+            );
+
+            dbOk("UPDATE user_usr SET usr_ManageMyMinistries = 0 WHERE usr_per_ID = ?", [PERSON_MANAGER]);
+        });
+
+        it("refuses a self-service login a team grant even in a ministry it holds a scope on", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_VOLUNTEER, scopeType: "ministry", scopeId: ministryA },
+                201,
+            );
+
+            cy.makePrivateEditSelfAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_MANAGER, scopeType: "team", scopeId: teamA1 },
                 403,
             );
         });
