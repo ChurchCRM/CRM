@@ -151,6 +151,7 @@ The church's identity, from **Admin → Church Information**.
 | `phone`, `email` | string | |
 | `website` | string | |
 | `logoUrl` | string | The uploaded church logo, or ChurchCRM's stock image when none is set |
+| `logoOnDarkUrl` | string | The same church logo, but when none is set ChurchCRM's light-on-dark mark instead of the stock image. The default header, which is dark, uses this one |
 | `socialLinks` | list | The church's social accounts (#9907), already filtered to the ones that are set and ordered X, YouTube, Facebook, Instagram. Each entry is `{id, label, url, icon}` — `icon` is a Font Awesome Free brand class such as `fa-brands fa-facebook`. Empty when the church has configured none, so `{% if church.socialLinks is not empty %}` is the whole guard you need. |
 
 ### `member`
