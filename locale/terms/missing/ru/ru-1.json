@@ -1,202 +1,52 @@
 {
-  "Select at least one classification to include in the directory.": "Выберите хотя бы одну классификацию для включения в справочник.",
-  "Geocoding services": "Службы геокодирования",
-  "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used.": "Службы геокодирования, которые будут опробованы в порядке выбора. Nominatim (OpenStreetMap) работает по всему миру; US Census (Бюро переписи населения США) охватывает только адреса в США. Выберите также US Census, чтобы использовать его. Если ничего не выбрано, используется Nominatim.",
-  "New Record Defaults": "Значения по умолчанию для новых записей",
-  "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?": "Это находит координаты на карте для каждой семьи, у которой их нет, используя службы геокодирования, выбранные в настройках карты. Семьи обрабатываются пакетами по 50; пакет занимает около минуты при одной службе геокодирования и дольше при нескольких. Эту страницу можно держать открытой во время работы. Продолжить?",
-  "Used for new records and for geocoding when a record has no country.": "Используется для новых записей и для геокодирования, когда в записи не указана страна.",
-  "Copy from Church Info": "Скопировать из сведений о церкви",
-  "Could not copy the church address.": "Не удалось скопировать адрес церкви.",
-  "Could not match the church country.": "Не удалось определить страну церкви.",
-  "Class lists, attendance sheets, and photo books": "Списки классов, листы посещаемости и фотоальбомы",
-  "Group membership lists and Sunday School class reports": "Списки участников служений и отчёты по классам воскресной школы",
-  "Your fiscal year starts in %s.": "Ваш финансовый год начинается в %s.",
-  "An error occurred": "Произошла ошибка",
-  "Approve": "Одобрить",
-  "Approve selected": "Одобрить выбранные",
-  "Approved": "Одобрено",
-  "Change in People Settings": "Изменить в настройках людей",
-  "Could not approve the selected registrations": "Не удалось одобрить выбранные регистрации",
-  "Could not approve this family": "Не удалось одобрить эту семью",
-  "Pending Registrations": "Ожидающие регистрации",
-  "Pending review": "Ожидает проверки",
-  "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up.": "Регистрации из вашей общедоступной формы, ожидающие проверки. Записи без эл. почты или телефона помечены — проверьте контактные данные, прежде чем связываться.",
-  "Review now": "Проверить сейчас",
-  "Review self registrations": "Проверить саморегистрации",
-  "Select month": "Выберите месяц",
-  "Self-registration is disabled": "Саморегистрация отключена",
-  "Self-registration is enabled": "Саморегистрация включена",
-  "The public registration form is turned off. Existing registrations are listed below.": "Общедоступная форма регистрации выключена. Существующие регистрации перечислены ниже.",
-  "This family is not a pending self-registration": "Эта семья не ожидает проверки саморегистрации",
-  "This person belongs to a family — approve the family instead": "Этот человек относится к семье — одобрите семью целиком",
-  "This person is not a pending self-registration": "Этот человек не ожидает проверки саморегистрации",
-  "This self-registered family is pending review": "Эта саморегистрированная семья ожидает проверки",
-  "Total registrations": "Всего регистраций",
-  "Visitors can sign up on your public registration form.": "Посетители могут зарегистрироваться через вашу общедоступную форму регистрации.",
-  "Yesterday": "Вчера",
-  "days ago": "дн. назад",
-  "self-registrations are waiting for review": "саморегистраций ожидают проверки",
-  "Birthdays are addressed to the person and anniversaries to the couple.": "Поздравления с днём рождения адресуются человеку, а с годовщиной — супружеской паре.",
-  "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.": "Почтовые наклейки для людей из этого отчёта. Если у человека нет собственного адреса, используется адрес его семьи.",
-  "One label for each couple.": "Одна наклейка на каждую пару.",
-  "Print Labels": "Печать наклеек",
-  "That role is not one of this group's roles.": "Эта роль не входит в роли данной группы.",
-  "\"%s\" is not a kind of calendar this page knows about.": "«%s» — неизвестный этой странице вид календаря.",
-  "%1$s cannot serve and has proposed %2$s as a substitute.": "%1$s не может служить и предложил(а) %2$s в качестве замены.",
-  "%1$s is already in the %2$s volunteer pool and wants to help again.": "%1$s уже в резерве волонтёров «%2$s» и хочет помогать снова.",
-  "%1$s is already linked to %2$s in %3$s": "%1$s уже связан(а) с %2$s в %3$s",
-  "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers.": "%1$s состоит в %2$s как %3$s. Сначала удалите человека из класса; после присвоения квалификации здесь он станет одним из его учителей.",
-  "%1$s is not an event of %2$s": "%1$s не является событием %2$s",
-  "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first.": "%1$s остаётся классом воскресной школы, пока его учителями управляют в разделе «Служения» → %2$s → %3$s. Сначала отвяжите его от команды.",
-  "%1$s wants to help with %2$s": "%1$s хочет помогать в «%2$s»",
-  "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s хочет помогать в «%2$s» и добавлен(а) в его резерв волонтёров.",
-  "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: максимум %2$d, но выбрано волонтёров по умолчанию: %3$d. Уберите лишних или увеличьте максимум.",
-  "%d day": {
-    "one": "%d день",
-    "few": "%d дня",
-    "many": "%d дней",
-    "other": "%d дня"
+  "Not authorized to change this event's audience group": "",
+  "Only a volunteer manager can change who coordinates a ministry": "",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "one": "%d назначение по умолчанию пропущено по другой причине (проведение завершено, отменено или заполнено)",
-    "few": "%d назначения по умолчанию пропущено по другой причине (проведение завершено, отменено или заполнено)",
-    "many": "%d назначений по умолчанию пропущено по другой причине (проведение завершено, отменено или заполнено)",
-    "other": "%d назначения по умолчанию пропущено по другой причине (проведение завершено, отменено или заполнено)"
+  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
+    "one": "",
+    "other": ""
   },
-  "%d default skipped: qualification revoked": {
-    "one": "%d назначение по умолчанию пропущено: квалификация отозвана",
-    "few": "%d назначения по умолчанию пропущено: квалификация отозвана",
-    "many": "%d назначений по умолчанию пропущено: квалификация отозвана",
-    "other": "%d назначения по умолчанию пропущено: квалификация отозвана"
+  "Email sent to {{count}} recipient(s).": {
+    "one": "",
+    "other": ""
   },
-  "%d default volunteer assigned": {
-    "one": "Назначен %d волонтёр по умолчанию",
-    "few": "Назначено %d волонтёра по умолчанию",
-    "many": "Назначено %d волонтёров по умолчанию",
-    "other": "Назначено %d волонтёра по умолчанию"
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "",
+    "other": ""
   },
-  "%d failed": "Не удалось: %d",
-  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "one": "Для этой позиции всё ещё нужен ещё %d волонтёр. Откройте проведение, чтобы закрыть пробел.",
-    "few": "Для этой позиции всё ещё нужно ещё %d волонтёра. Откройте проведение, чтобы закрыть пробел.",
-    "many": "Для этой позиции всё ещё нужно ещё %d волонтёров. Откройте проведение, чтобы закрыть пробел.",
-    "other": "Для этой позиции всё ещё нужно ещё %d волонтёра. Откройте проведение, чтобы закрыть пробел."
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "",
+    "other": ""
   },
-  "%d new occurrence": {
-    "one": "%d новое проведение",
-    "few": "%d новых проведения",
-    "many": "%d новых проведений",
-    "other": "%d нового проведения"
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "",
+    "other": ""
   },
-  "%d volunteer is still needed for an upcoming occurrence.": {
-    "one": "Для предстоящего проведения всё ещё нужен %d волонтёр.",
-    "few": "Для предстоящего проведения всё ещё нужно %d волонтёра.",
-    "many": "Для предстоящего проведения всё ещё нужно %d волонтёров.",
-    "other": "Для предстоящего проведения всё ещё нужно %d волонтёра."
+  "{{count}} could not be assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s Calendar": "Календарь «%s»",
-  "%s Family": "Семья %s",
-  "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "«%s» не предоставляет учителей для воскресной школы, поэтому его команды, расписания и события не могут использовать класс. Менеджер волонтёров может изменить это в разделе «Изменить служение».",
-  "%s email from the church": {
-    "one": "%s письмо от церкви",
-    "few": "%s письма от церкви",
-    "many": "%s писем от церкви",
-    "other": "%s письма от церкви"
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "",
+    "other": ""
   },
-  "%s family": "семья %s",
-  "%s has declined a volunteer assignment.": "%s отказался (отказалась) от волонтёрского назначения.",
-  "%s has no role named Teacher, so its teachers cannot be managed from a team": "В «%s» нет роли «Учитель», поэтому учителями нельзя управлять из команды",
-  "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "В календаре у «%s» нет предстоящих встреч. Расписание следует за уже существующими событиями: сначала добавьте встречи класса через «Новое повторяющееся событие» на вкладке «Календарь» служения.",
-  "%s is still expected to serve. Please contact the coordinator if that is not possible.": "От %s по-прежнему ожидается служение. Если это невозможно, свяжитесь с координатором.",
-  "%s not sent (%s): %s": "%s не отправлено (%s): %s",
-  "%s person in your household": {
-    "one": "%s человек в вашей семье",
-    "few": "%s человека в вашей семье",
-    "many": "%s человек в вашей семье",
-    "other": "%s человека в вашей семье"
+  "{{count}} volunteers assigned": {
+    "one": "",
+    "other": ""
   },
-  "%s position": {
-    "one": "%s позиция",
-    "few": "%s позиции",
-    "many": "%s позиций",
-    "other": "%s позиции"
+  "{{count}} waiting for your answer": {
+    "one": "",
+    "other": ""
   },
-  "%s: the same person is chosen twice as a default volunteer": "%s: один и тот же человек выбран дважды как волонтёр по умолчанию",
-  "(no subject)": "(без темы)",
-  "A birthday cannot be in the future.": "Дата рождения не может быть в будущем.",
-  "A calendar event": "Событие календаря",
-  "A calendar id must be a number.": "Идентификатор календаря должен быть числом.",
-  "A class that no longer exists": "Класс, которого больше нет",
-  "A class with no meetings on the calendar cannot be chosen yet.": "Класс без встреч в календаре пока нельзя выбрать.",
-  "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.": "Класс без встреч в календаре пока нельзя выбрать. Координатор служения добавляет встречи на вкладке «Календарь» служения.",
-  "A class's meetings": "Встречи класса",
-  "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.": "Координатор может управлять всем в этом служении, в том числе вносить изменения, которые иначе пришлось бы делать менеджеру волонтёров.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab.": "Координатор служения может добавить их на вкладке «Календарь» служения.",
-  "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.": "Координатор служения может добавить их на вкладке «Календарь» служения. Затем создайте снова.",
-  "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it.": "Координатор руководит всем служением — его командами, позициями, расписаниями и всеми назначениями.",
-  "A day a month does not have falls on its last day.": "День, которого нет в месяце, переносится на последний день месяца.",
-  "A default volunteer belongs to the schedule's staffing needs, not to one occurrence": "Волонтёр по умолчанию относится к потребностям расписания в людях, а не к одному проведению",
-  "A default volunteer can only be chosen for a position this schedule's staffing needs ask for": "Волонтёра по умолчанию можно выбрать только для позиции, которая указана в потребностях расписания в людях",
-  "A from and a to date in YYYY-MM-DD form are required": "Требуются даты «с» и «по» в формате ГГГГ-ММ-ДД",
-  "A minimum count is required": "Требуется минимальное количество",
-  "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.": "Служение создаётся с собственным календарём, резервом волонтёров и первой командой, поэтому здесь нужно решить лишь его название и чем оно занимается.",
-  "A ministry name is required": "Требуется название служения",
-  "A ministry needs at least one team. Rename it instead.": "Служению нужна хотя бы одна команда. Лучше переименуйте её.",
-  "A ministry with that name already exists": "Служение с таким названием уже существует",
-  "A ministry's own calendar cannot be opened to other ministries": "Собственный календарь служения нельзя открыть для других служений",
-  "A position belongs to a team; choose one": "Позиция принадлежит команде; выберите команду",
-  "A position is a job someone does on this team, such as Espresso or Song Leader.": "Позиция — это задача, которую человек выполняет в этой команде, например «Эспрессо» или «Регент».",
-  "A position is a role someone serves in, such as Espresso or Song Leader.": "Позиция — это роль, в которой человек служит, например «Эспрессо» или «Регент».",
-  "A position is required": "Требуется позиция",
-  "A position name is required": "Требуется название позиции",
-  "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.": "Позицию с квалифицированными волонтёрами нельзя переместить в команду, связанную с классом воскресной школы, или из неё, так как это изменит состав учителей класса. Создайте позицию в другой команде.",
-  "A position with that name already exists in this ministry": "Позиция с таким названием уже существует в этом служении",
-  "A response must be accepted or declined": "Ответ должен быть «принято» или «отклонено»",
-  "A schedule belongs to a team; choose one": "Расписание принадлежит команде; выберите команду",
-  "A schedule name is required": "Требуется название расписания",
-  "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences.": "Расписание определяет, какие события календаря обслуживает команда: тип богослужения, встречи класса или собственные события служения. Добавьте расписание и создайте его проведения.",
-  "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences.": "Расписание определяет, какие события календаря обслуживает эта команда: тип богослужения, встречи класса или собственные события служения. Добавьте расписание и создайте его проведения.",
-  "A schedule that follows a class must name the class": "Расписание, следующее за классом, должно указывать класс",
-  "A schedule that follows an event type must name the event type": "Расписание, следующее за типом события, должно указывать тип события",
-  "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead": "Расписание, обслуживающее одно событие, не может следовать за другими событиями; удалите его и добавьте новое расписание",
-  "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used.": "Единый список возможностей служения, например «Детская комната» или «Встречающий», который ведётся в разделе «Люди» → «Администрирование». Каждому человеку присваиваются метки возможностей, в которых он готов помогать, на вкладке «Волонтёр» его карточки. Это всё, что записывается: нет команд, расписаний, назначений на дату и напоминаний по эл. почте. Метки используются в отчётах и в карточке человека.",
-  "A square picture of your face works best.": "Лучше всего подходит квадратное фото лица.",
-  "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]": "Потребность в людях указывает волонтёров по умолчанию в \"defaults\": [{personId, accepted}]",
-  "A staffing requirement belongs to exactly one of a schedule or an occurrence": "Потребность в людях относится ровно к одному: расписанию или проведению",
-  "A substitute has already been proposed for this assignment": "Для этого назначения уже предложена замена",
-  "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.": "Руководитель команды может управлять своей командой — её позициями, расписаниями и тем, кто в них служит, — и ничем другим в служении.",
-  "A team name is required": "Требуется название команды",
-  "A team with that name already exists in this ministry": "Команда с таким названием уже существует в этом служении",
-  "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.": "Тема — это папка, которую ваша церковь загружает в Include/themes/ на сервере. Тема по умолчанию поставляется с ChurchCRM.",
-  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.": "Переходная настройка. Доступны и прежние страницы «Возможности для волонтёров», и новые страницы «Служения», а в карточке человека показаны обе вкладки «Волонтёр» с понятными подписями. Используйте её на время перехода церкви с V1 на V2, затем переключитесь только на V2.",
-  "A volunteer": "Волонтёр",
-  "A volunteer has declined an assignment": "Волонтёр отказался от назначения",
-  "A volunteer has proposed a substitute": "Волонтёр предложил замену",
-  "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.": "Менеджер волонтёров может руководить этим служением без отдельного разрешения. Добавьте координатора, чтобы поручить служение другому человеку, не давая ему доступа ко всем остальным служениям.",
-  "A wedding date cannot be in the future.": "Дата венчания не может быть в будущем.",
-  "Accepted": "Принято",
-  "Account deleted": "Учётная запись удалена",
-  "Account unlocked": "Учетная запись разблокирована",
-  "Accounts": "Учётные записи",
-  "Active must be true or false": "Значение «Активно» должно быть истиной или ложью",
-  "Active now": "Активен сейчас",
-  "Add All": "Добавить всех",
-  "Add Everyone in Cart": "Добавить всех из выборки",
-  "Add Volunteer": "Добавить волонтёра",
-  "Add Volunteers to Cart": "Добавить волонтёров в выборку",
-  "Add a family member": "Добавить члена семьи",
-  "Add a position first, then come back and say how many of them are needed.": "Сначала добавьте позицию, затем вернитесь и укажите, сколько человек нужно.",
-  "Add a second step to your sign-in, so your password alone is not enough to reach your account.": "Добавьте второй шаг к входу, чтобы одного пароля было недостаточно для доступа к вашей учётной записи.",
-  "Add at least one position to this team, then tick who can serve where.": "Добавьте в эту команду хотя бы одну позицию, затем отметьте, кто где может служить.",
-  "Add coordinator": "Добавить координатора",
-  "Add from Cart": "Добавить из выборки",
-  "Add its meetings first with New recurring event on the Calendar tab": "Сначала добавьте его встречи через «Новое повторяющееся событие» на вкладке «Календарь»",
-  "Add people to the cart before adding them as volunteers": "Добавьте людей в выборку, прежде чем добавлять их как волонтёров",
-  "Add position": "Добавить позицию",
-  "Add schedule": "Добавить расписание",
-  "Add team": "Добавить команду",
-  "Add them on the Calendar tab, then generate again.": "Добавьте их на вкладке «Календарь», затем создайте снова.",
-  "Add them on the Calendar tab.": "Добавьте их на вкладке «Календарь».",
-  "Add this address to your calendar app. It updates on its own when the church calendar changes.": "Добавьте этот адрес в своё приложение-календарь. Он обновляется автоматически при изменении церковного календаря.",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.": "Добавляйте сюда события этого служения: рабочий день, класс, собирающийся каждое воскресенье. Они попадут в церковный календарь, и вы сможете назначить людей сразу при создании."
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "",
+    "other": ""
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "",
+    "other": ""
+  }
 }

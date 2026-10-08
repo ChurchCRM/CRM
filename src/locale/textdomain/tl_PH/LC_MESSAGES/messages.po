@@ -18751,3 +18751,4535 @@ msgstr "Tungkulin ng Asawa"
 msgid "Uppercase Zip/Postcodes"
 msgstr "Malalaking Titik na Zip/Postcode"
 
+#: 
+msgid "Select at least one classification to include in the directory."
+msgstr "Pumili ng kahit isang klasipikasyon na isasama sa direktoryo."
+
+#: 
+msgid "Geocoding services"
+msgstr "Mga serbisyo sa geocoding"
+
+#: 
+msgid "Geocoding services to try, in the order you pick them. Nominatim (OpenStreetMap) works worldwide; US Census (US Census Bureau) covers United States addresses only. Pick US Census as well to use it. If none is picked, Nominatim is used."
+msgstr "Mga serbisyo sa geocoding na susubukan, ayon sa pagkakasunod-sunod ng pagpili mo. Gumagana ang Nominatim (OpenStreetMap) sa buong mundo; ang US Census (US Census Bureau) ay para lamang sa mga address sa Estados Unidos. Piliin din ang US Census para magamit ito. Kung walang napili, gagamitin ang Nominatim."
+
+#: 
+msgid "New Record Defaults"
+msgstr "Mga Default para sa Bagong Talaan"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. You can keep this page open while it runs. Continue?"
+msgstr "Hinahanap nito ang mga coordinate sa mapa ng bawat pamilyang walang ganito, gamit ang mga serbisyo sa geocoding na pinili sa Mga Setting ng Mapa. Pinoproseso ang mga pamilya nang tig-50; ang isang batch ay tumatagal ng mga isang minuto kung isang serbisyo sa geocoding ang gamit, at mas matagal kung marami. Maaari mong iwang bukas ang pahinang ito habang tumatakbo. Magpatuloy?"
+
+#: 
+msgid "Used for new records and for geocoding when a record has no country."
+msgstr "Ginagamit para sa mga bagong talaan at sa geocoding kapag walang bansa ang talaan."
+
+#: 
+msgid "Copy from Church Info"
+msgstr "Kopyahin mula sa Impormasyon ng Simbahan"
+
+#: 
+msgid "Could not copy the church address."
+msgstr "Hindi makopya ang address ng simbahan."
+
+#: 
+msgid "Could not match the church country."
+msgstr "Hindi matukoy ang bansa ng simbahan."
+
+#: 
+msgid "Class lists, attendance sheets, and photo books"
+msgstr "Mga listahan ng klase, mga attendance sheet, at mga photo book"
+
+#: 
+msgid "Group membership lists and Sunday School class reports"
+msgstr "Mga listahan ng miyembro ng grupo at mga ulat ng klase sa Sunday School"
+
+#: 
+msgid "Your fiscal year starts in %s."
+msgstr "Magsisimula ang fiscal year mo sa %s."
+
+#: 
+msgid "An error occurred"
+msgstr "May naganap na error"
+
+#: 
+msgid "Approve"
+msgstr "Aprubahan"
+
+#: 
+msgid "Approve selected"
+msgstr "Aprubahan ang mga napili"
+
+#: 
+msgid "Approved"
+msgstr "Naaprubahan"
+
+#: 
+msgid "Change in People Settings"
+msgstr "Baguhin sa Mga Setting ng Tao"
+
+#: 
+msgid "Could not approve the selected registrations"
+msgstr "Hindi maaprubahan ang mga napiling rehistrasyon"
+
+#: 
+msgid "Could not approve this family"
+msgstr "Hindi maaprubahan ang pamilyang ito"
+
+#: 
+msgid "Pending Registrations"
+msgstr "Mga Nakabinbing Rehistrasyon"
+
+#: 
+msgid "Pending review"
+msgstr "Naghihintay ng pagsusuri"
+
+#: 
+msgid "Registrations awaiting review from your public registration form. Entries with no email or phone are flagged — verify contact info before following up."
+msgstr "Mga rehistrasyong naghihintay ng pagsusuri mula sa pampublikong porma ng rehistrasyon ninyo. Namarkahan ang mga entry na walang email o telepono — tiyakin ang impormasyon sa pakikipag-ugnayan bago sundan."
+
+#: 
+msgid "Review now"
+msgstr "Suriin ngayon"
+
+#: 
+msgid "Review self registrations"
+msgstr "Suriin ang mga self-registration"
+
+#: 
+msgid "Select month"
+msgstr "Pumili ng buwan"
+
+#: 
+msgid "Self-registration is disabled"
+msgstr "Naka-disable ang self-registration"
+
+#: 
+msgid "Self-registration is enabled"
+msgstr "Naka-enable ang self-registration"
+
+#: 
+msgid "The public registration form is turned off. Existing registrations are listed below."
+msgstr "Nakasara ang pampublikong porma ng rehistrasyon. Nakalista sa ibaba ang mga umiiral na rehistrasyon."
+
+#: 
+msgid "This family is not a pending self-registration"
+msgstr "Hindi nakabinbing self-registration ang pamilyang ito"
+
+#: 
+msgid "This person belongs to a family — approve the family instead"
+msgstr "Kabilang sa isang pamilya ang taong ito — aprubahan na lang ang pamilya"
+
+#: 
+msgid "This person is not a pending self-registration"
+msgstr "Hindi nakabinbing self-registration ang taong ito"
+
+#: 
+msgid "This self-registered family is pending review"
+msgstr "Nakabinbin sa pagsusuri ang pamilyang ito na nag-self-register"
+
+#: 
+msgid "Total registrations"
+msgstr "Kabuuang mga rehistrasyon"
+
+#: 
+msgid "Visitors can sign up on your public registration form."
+msgstr "Maaaring mag-sign up ang mga bisita sa pampublikong porma ng rehistrasyon ninyo."
+
+#: 
+msgid "Yesterday"
+msgstr "Kahapon"
+
+#: 
+msgid "days ago"
+msgstr "araw na ang nakalipas"
+
+#: 
+msgid "self-registrations are waiting for review"
+msgstr "self-registration ang naghihintay ng pagsusuri"
+
+#: 
+msgid "Birthdays are addressed to the person and anniversaries to the couple."
+msgstr "Ang mga kaarawan ay naka-address sa tao at ang mga anibersaryo ay sa mag-asawa."
+
+#: 
+msgid "Mailing labels for the people in this report. A person with no address of their own is addressed at their family address."
+msgstr "Mga label sa pagpapadala ng koreo para sa mga taong nasa ulat na ito. Ang taong walang sariling address ay ipapadala sa address ng kanyang pamilya."
+
+#: 
+msgid "One label for each couple."
+msgstr "Isang label para sa bawat mag-asawa."
+
+#: 
+msgid "Print Labels"
+msgstr "I-print ang Mga Label"
+
+#: 
+msgid "That role is not one of this group's roles."
+msgstr "Hindi kabilang sa mga tungkulin ng grupong ito ang tungkuling iyon."
+
+#: 
+msgid "\"%s\" is not a kind of calendar this page knows about."
+msgstr "Ang \"%s\" ay hindi uri ng kalendaryong kilala ng pahinang ito."
+
+#: 
+msgid "%1$s cannot serve and has proposed %2$s as a substitute."
+msgstr "Hindi makapaglingkod si %1$s at nagmungkahi ng kapalit: si %2$s."
+
+#: 
+msgid "%1$s is already in the %2$s volunteer pool and wants to help again."
+msgstr "Nasa pool ng mga boluntaryo ng %2$s na si %1$s at gustong tumulong muli."
+
+#: 
+msgid "%1$s is already linked to %2$s in %3$s"
+msgstr "Naka-link na si %1$s kay %2$s sa %3$s"
+
+#: 
+msgid "%1$s is in %2$s as %3$s. Remove them from the class first; qualifying them here then makes them one of its teachers."
+msgstr "Si %1$s ay nasa %2$s bilang %3$s. Alisin muna siya sa klase; ang pagkuwalipika sa kanya rito ay gagawa sa kanyang isa sa mga guro nito."
+
+#: 
+msgid "%1$s is not an event of %2$s"
+msgstr "Hindi kaganapan ng %2$s ang %1$s"
+
+#: 
+msgid "%1$s stays a Sunday School class while its teachers are managed in Ministries → %2$s → %3$s. Unlink it from the team first."
+msgstr "Nananatiling klase ng Sunday School ang %1$s habang pinamamahalaan ang mga guro nito sa Mga Ministeryo → %2$s → %3$s. I-unlink muna ito sa pangkat."
+
+#: 
+msgid "%1$s wants to help with %2$s"
+msgstr "Gustong tumulong ni %1$s sa %2$s"
+
+#: 
+msgid "%1$s wants to help with %2$s and has been added to its volunteer pool."
+msgstr "Gustong tumulong ni %1$s sa %2$s at naidagdag na siya sa pool ng mga boluntaryo nito."
+
+#: 
+msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max."
+msgstr "%1$s: %2$d ang Max ngunit %3$d ang napiling default na mga boluntaryo. Mag-alis ng isa o itaas ang Max."
+
+#: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d araw"
+msgstr[1] "%d araw"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d default ang nilaktawan dahil sa ibang dahilan (tapos na, kinansela o puno na ang pagkakataon)"
+msgstr[1] "%d default ang nilaktawan dahil sa ibang dahilan (tapos na, kinansela o puno na ang pagkakataon)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d default ang nilaktawan: binawi ang kuwalipikasyon"
+msgstr[1] "%d default ang nilaktawan: binawi ang kuwalipikasyon"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d default na boluntaryo ang naitalaga"
+msgstr[1] "%d default na boluntaryo ang naitalaga"
+
+#: 
+msgid "%d failed"
+msgstr "%d ang nabigo"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "%d pang boluntaryo ang kailangan pa para sa posisyong ito. Buksan ang pagkakataon para punan ang kulang."
+msgstr[1] "%d pang boluntaryo ang kailangan pa para sa posisyong ito. Buksan ang pagkakataon para punan ang kulang."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d bagong pagkakataon"
+msgstr[1] "%d bagong pagkakataon"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "%d boluntaryo ang kailangan pa para sa paparating na pagkakataon."
+msgstr[1] "%d boluntaryo ang kailangan pa para sa paparating na pagkakataon."
+
+#: 
+msgid "%s Calendar"
+msgstr "Kalendaryo ng %s"
+
+#: 
+msgid "%s Family"
+msgstr "Pamilya %s"
+
+#: 
+msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
+msgstr "Hindi nagbibigay ang %s ng mga guro para sa Sunday School, kaya hindi makagagamit ng klase ang mga pangkat, iskedyul at kaganapan nito. Maaaring baguhin ito ng tagapamahala ng mga boluntaryo sa Baguhin ang ministeryo."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s email mula sa simbahan"
+msgstr[1] "%s email mula sa simbahan"
+
+#: 
+msgid "%s family"
+msgstr "pamilyang %s"
+
+#: 
+msgid "%s has declined a volunteer assignment."
+msgstr "Tumanggi si %s sa isang atas bilang boluntaryo."
+
+#: 
+msgid "%s has no role named Teacher, so its teachers cannot be managed from a team"
+msgstr "Walang tungkuling pinangalanang Teacher ang %s, kaya hindi mapamahalaan ang mga guro nito mula sa isang pangkat"
+
+#: 
+msgid "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab."
+msgstr "Walang paparating na pagpupulong sa kalendaryo ang %s. Sinusundan ng iskedyul ang mga kaganapang umiiral na: idagdag muna ang mga pagpupulong ng klase, gamit ang Bagong paulit-ulit na kaganapan sa tab na Kalendaryo ng ministeryo."
+
+#: 
+msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
+msgstr "Inaasahan pa ring maglilingkod si %s. Makipag-ugnayan sa koordineytor kung hindi ito posible."
+
+#: 
+msgid "%s not sent (%s): %s"
+msgstr "Hindi naipadala ang %s (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s tao sa sambahayan mo"
+msgstr[1] "%s tao sa sambahayan mo"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s posisyon"
+msgstr[1] "%s posisyon"
+
+#: 
+msgid "%s: the same person is chosen twice as a default volunteer"
+msgstr "%s: dalawang beses napili ang iisang tao bilang default na boluntaryo"
+
+#: 
+msgid "(no subject)"
+msgstr "(walang paksa)"
+
+#: 
+msgid "A birthday cannot be in the future."
+msgstr "Hindi maaaring nasa hinaharap ang kaarawan."
+
+#: 
+msgid "A calendar event"
+msgstr "Isang kaganapan sa kalendaryo"
+
+#: 
+msgid "A calendar id must be a number."
+msgstr "Dapat numero ang id ng kalendaryo."
+
+#: 
+msgid "A class that no longer exists"
+msgstr "Isang klaseng wala na"
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet."
+msgstr "Hindi pa mapipili ang klaseng walang pagpupulong sa kalendaryo."
+
+#: 
+msgid "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab."
+msgstr "Hindi pa mapipili ang klaseng walang pagpupulong sa kalendaryo. Idinaragdag ito ng koordineytor ng ministeryo sa tab na Kalendaryo ng ministeryo."
+
+#: 
+msgid "A class's meetings"
+msgstr "Mga pagpupulong ng isang klase"
+
+#: 
+msgid "A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make."
+msgstr "Mapapamahalaan ng koordineytor ang lahat sa ministeryong ito, kasama ang mga pagbabagong kung hindi ay kailangang gawin ng tagapamahala ng mga boluntaryo."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab."
+msgstr "Maidaragdag ang mga ito ng koordineytor ng ministeryo sa tab na Kalendaryo ng ministeryo."
+
+#: 
+msgid "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again."
+msgstr "Maidaragdag ang mga ito ng koordineytor ng ministeryo sa tab na Kalendaryo ng ministeryo. Pagkatapos, bumuo muli."
+
+#: 
+msgid "A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it."
+msgstr "Pinapatakbo ng koordineytor ang buong ministeryo — ang mga pangkat, posisyon, iskedyul at bawat atas dito."
+
+#: 
+msgid "A day a month does not have falls on its last day."
+msgstr "Ang araw na wala sa isang buwan ay napupunta sa huling araw nito."
+
+#: 
+msgid "A default volunteer belongs to the schedule's staffing needs, not to one occurrence"
+msgstr "Ang default na boluntaryo ay bahagi ng mga kailangang tauhan ng iskedyul, hindi ng isang pagkakataon lamang"
+
+#: 
+msgid "A default volunteer can only be chosen for a position this schedule's staffing needs ask for"
+msgstr "Makapipili lamang ng default na boluntaryo para sa posisyong hinihingi ng mga kailangang tauhan ng iskedyul na ito"
+
+#: 
+msgid "A from and a to date in YYYY-MM-DD form are required"
+msgstr "Kailangan ang petsang mula at petsang hanggang sa anyong YYYY-MM-DD"
+
+#: 
+msgid "A minimum count is required"
+msgstr "Kailangan ang pinakamababang bilang"
+
+#: 
+msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
+msgstr "Nagagawa ang ministeryo na may sarili nitong kalendaryo, pool ng mga boluntaryo at unang pangkat, kaya ang pangalan at ang gawain nito lamang ang pagpapasyahan dito."
+
+#: 
+msgid "A ministry name is required"
+msgstr "Kailangan ang pangalan ng ministeryo"
+
+#: 
+msgid "A ministry needs at least one team. Rename it instead."
+msgstr "Kailangan ng ministeryo ng kahit isang pangkat. Palitan na lamang ang pangalan nito."
+
+#: 
+msgid "A ministry with that name already exists"
+msgstr "May ministeryo nang may ganoong pangalan"
+
+#: 
+msgid "A ministry's own calendar cannot be opened to other ministries"
+msgstr "Hindi maaaring buksan sa ibang mga ministeryo ang sariling kalendaryo ng isang ministeryo"
+
+#: 
+msgid "A position belongs to a team; choose one"
+msgstr "Nabibilang sa isang pangkat ang posisyon; pumili ng isa"
+
+#: 
+msgid "A position is a job someone does on this team, such as Espresso or Song Leader."
+msgstr "Ang posisyon ay gawaing ginagampanan ng isang tao sa pangkat na ito, tulad ng Espresso o Song Leader."
+
+#: 
+msgid "A position is a role someone serves in, such as Espresso or Song Leader."
+msgstr "Ang posisyon ay tungkuling pinaglilingkuran ng isang tao, tulad ng Espresso o Song Leader."
+
+#: 
+msgid "A position is required"
+msgstr "Kailangan ang posisyon"
+
+#: 
+msgid "A position name is required"
+msgstr "Kailangan ang pangalan ng posisyon"
+
+#: 
+msgid "A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead."
+msgstr "Ang posisyong may mga kuwalipikadong boluntaryo ay hindi maaaring ilipat papasok o palabas ng pangkat na naka-link sa klase ng Sunday School, dahil mababago nito kung sino ang nagtuturo sa klase. Likhain na lang ang posisyon sa kabilang pangkat."
+
+#: 
+msgid "A position with that name already exists in this ministry"
+msgstr "May posisyon nang may ganoong pangalan sa ministeryong ito"
+
+#: 
+msgid "A response must be accepted or declined"
+msgstr "Dapat tanggapin o tanggihan ang isang tugon"
+
+#: 
+msgid "A schedule belongs to a team; choose one"
+msgstr "Nabibilang sa isang pangkat ang iskedyul; pumili ng isa"
+
+#: 
+msgid "A schedule name is required"
+msgstr "Kailangan ang pangalan ng iskedyul"
+
+#: 
+msgid "A schedule says which calendar events a team staffs: a type of church service, a class's meetings, or this ministry's own events. Add one and generate its occurrences."
+msgstr "Sinasabi ng iskedyul kung aling mga kaganapan sa kalendaryo ang lalagyan ng boluntaryo ng isang pangkat: isang uri ng serbisyo sa simbahan, ang mga pagpupulong ng isang klase, o ang sariling mga kaganapan ng ministeryong ito. Magdagdag ng isa at buuin ang mga pagkakataon nito."
+
+#: 
+msgid "A schedule says which calendar events this team serves: a type of church service, a class's meetings, or its ministry's own events. Add one and generate its occurrences."
+msgstr "Sinasabi ng iskedyul kung aling mga kaganapan sa kalendaryo ang pinaglilingkuran ng pangkat na ito: isang uri ng serbisyo sa simbahan, ang mga pagpupulong ng isang klase, o ang sariling mga kaganapan ng ministeryo nito. Magdagdag ng isa at buuin ang mga pagkakataon nito."
+
+#: 
+msgid "A schedule that follows a class must name the class"
+msgstr "Dapat pangalanan ang klase ng iskedyul na sumusunod sa isang klase"
+
+#: 
+msgid "A schedule that follows an event type must name the event type"
+msgstr "Dapat pangalanan ang uri ng kaganapan ng iskedyul na sumusunod sa isang uri ng kaganapan"
+
+#: 
+msgid "A schedule that staffs one event cannot follow other events; delete it and add a schedule instead"
+msgstr "Hindi maaaring sumunod sa ibang mga kaganapan ang iskedyul na naglalagay ng boluntaryo sa isang kaganapan lamang; burahin ito at magdagdag na lang ng iskedyul"
+
+#: 
+msgid "A single list of opportunities, such as \"Nursery\" or \"Greeter\", kept under People → Admin. Each person is tagged with the opportunities they are willing to help with, on the Volunteer tab of their record. That is all it records: there are no teams, no schedules, no assignments to a date, and no reminder emails. Reports and the person record are where the tags are used."
+msgstr "Isang listahan ng mga oportunidad, tulad ng \"Nursery\" o \"Greeter\", na nasa ilalim ng Mga Tao → Admin. Ang bawat tao ay tinatagan ng mga oportunidad na handa niyang tulungan, sa tab na Boluntaryo ng kanyang talaan. Iyon lamang ang itinatala nito: walang mga pangkat, walang iskedyul, walang atas sa petsa, at walang email na paalala. Ang mga ulat at ang talaan ng tao ang gumagamit ng mga tag."
+
+#: 
+msgid "A square picture of your face works best."
+msgstr "Pinakamainam ang parisukat na larawan ng iyong mukha."
+
+#: 
+msgid "A staffing need lists its default volunteers in \"defaults\": [{personId, accepted}]"
+msgstr "Inililista ng isang kailangang tauhan ang mga default na boluntaryo nito sa \"defaults\": [{personId, accepted}]"
+
+#: 
+msgid "A staffing requirement belongs to exactly one of a schedule or an occurrence"
+msgstr "Ang isang kinakailangang tauhan ay nabibilang sa isa lamang: iskedyul o pagkakataon"
+
+#: 
+msgid "A substitute has already been proposed for this assignment"
+msgstr "May kapalit nang iminungkahi para sa atas na ito"
+
+#: 
+msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
+msgstr "Mapapamahalaan ng pinuno ng pangkat ang sarili niyang pangkat — ang mga posisyon, iskedyul at kung sino ang naglilingkod dito — at wala nang iba pa sa ministeryo."
+
+#: 
+msgid "A team name is required"
+msgstr "Kailangan ang pangalan ng pangkat"
+
+#: 
+msgid "A team with that name already exists in this ministry"
+msgstr "May pangkat nang may ganoong pangalan sa ministeryong ito"
+
+#: 
+msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
+msgstr "Ang tema ay isang folder na ina-upload ng simbahan ninyo sa Include/themes/ sa server. Kasama sa ChurchCRM ang default ng sistema."
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Isang setting para sa paglipat. Magagamit ang parehong lumang pahina ng Mga Oportunidad ng Boluntaryo at ang mga bagong pahina ng Mga Ministeryo, at nagpapakita ang talaan ng tao ng dalawang tab na Boluntaryo, na malinaw na may label. Gamitin ito habang inililipat ang simbahan mula V1 patungong V2, pagkatapos ay lumipat sa V2 lamang."
+
+#: 
+msgid "A volunteer"
+msgstr "Isang boluntaryo"
+
+#: 
+msgid "A volunteer has declined an assignment"
+msgstr "Tumanggi ang isang boluntaryo sa isang atas"
+
+#: 
+msgid "A volunteer has proposed a substitute"
+msgstr "Nagmungkahi ng kapalit ang isang boluntaryo"
+
+#: 
+msgid "A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well."
+msgstr "Mapapatakbo ng tagapamahala ng mga boluntaryo ang ministeryong ito nang walang grant. Magdagdag ng koordineytor para mapatakbo ito ng iba nang hindi sila binibigyan ng access sa lahat ng iba pang ministeryo."
+
+#: 
+msgid "A wedding date cannot be in the future."
+msgstr "Hindi maaaring nasa hinaharap ang petsa ng kasal."
+
+#: 
+msgid "Accepted"
+msgstr "Tinanggap"
+
+#: 
+msgid "Account deleted"
+msgstr "Binura ang account"
+
+#: 
+msgid "Account unlocked"
+msgstr "Account ay Na-unlock"
+
+#: 
+msgid "Accounts"
+msgstr "Mga Account"
+
+#: 
+msgid "Active must be true or false"
+msgstr "Dapat true o false ang Active"
+
+#: 
+msgid "Active now"
+msgstr "Aktibo Ngayon"
+
+#: 
+msgid "Add All"
+msgstr "Idagdag Lahat"
+
+#: 
+msgid "Add Everyone in Cart"
+msgstr "Idagdag ang Lahat ng Nasa Pinili"
+
+#: 
+msgid "Add Volunteer"
+msgstr "Magdagdag ng Boluntaryo"
+
+#: 
+msgid "Add Volunteers to Cart"
+msgstr "Idagdag ang Mga Boluntaryo sa Pinili"
+
+#: 
+msgid "Add a family member"
+msgstr "Magdagdag ng kapamilya"
+
+#: 
+msgid "Add a position first, then come back and say how many of them are needed."
+msgstr "Magdagdag muna ng posisyon, saka bumalik at sabihin kung ilan ang kailangan."
+
+#: 
+msgid "Add a second step to your sign-in, so your password alone is not enough to reach your account."
+msgstr "Magdagdag ng ikalawang hakbang sa iyong pag-sign in, upang hindi sapat ang password lamang para mapasok ang account mo."
+
+#: 
+msgid "Add at least one position to this team, then tick who can serve where."
+msgstr "Magdagdag ng kahit isang posisyon sa pangkat na ito, saka lagyan ng tsek kung sino ang maaaring maglingkod saan."
+
+#: 
+msgid "Add coordinator"
+msgstr "Magdagdag ng koordineytor"
+
+#: 
+msgid "Add from Cart"
+msgstr "Idagdag mula sa Pinili"
+
+#: 
+msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr "Idagdag muna ang mga pagpupulong nito gamit ang Bagong paulit-ulit na kaganapan sa tab na Kalendaryo"
+
+#: 
+msgid "Add people to the cart before adding them as volunteers"
+msgstr "Idagdag muna ang mga tao sa pinili bago idagdag bilang mga boluntaryo"
+
+#: 
+msgid "Add position"
+msgstr "Magdagdag ng posisyon"
+
+#: 
+msgid "Add schedule"
+msgstr "Magdagdag ng iskedyul"
+
+#: 
+msgid "Add team"
+msgstr "Magdagdag ng pangkat"
+
+#: 
+msgid "Add them on the Calendar tab, then generate again."
+msgstr "Idagdag ang mga ito sa tab na Kalendaryo, pagkatapos ay bumuo muli."
+
+#: 
+msgid "Add them on the Calendar tab."
+msgstr "Idagdag ang mga ito sa tab na Kalendaryo."
+
+#: 
+msgid "Add this address to your calendar app. It updates on its own when the church calendar changes."
+msgstr "Idagdag ang address na ito sa app ng kalendaryo mo. Kusa itong nag-a-update kapag nagbago ang kalendaryo ng simbahan."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
+msgstr "Idagdag dito ang mga kaganapan ng ministeryong ito: isang workday, isang klaseng nagkikita tuwing Linggo. Mapupunta ang mga ito sa kalendaryo ng simbahan, at maaari mo silang lagyan ng boluntaryo habang binubuo ang mga ito."
+
+#: 
+msgid "Added through the Member Portal and waiting for review: %s"
+msgstr "Idinagdag sa pamamagitan ng Portal ng Miyembro at naghihintay ng pagsusuri: %s"
+
+#: 
+msgid "Added — now tick the positions they can serve"
+msgstr "Naidagdag — lagyan na ngayon ng tsek ang mga posisyong maaari nilang paglingkuran"
+
+#: 
+msgid "Address Line 2"
+msgstr "Address Line 2"
+
+#: 
+msgid "Admin Console"
+msgstr "Admin Console"
+
+#: 
+msgid "Administrator permission required"
+msgstr "Kailangan ang pahintulot ng Administrator"
+
+#: 
+msgid "Advertise this position on the Member Portal Open Opportunities page."
+msgstr "I-advertise ang posisyong ito sa pahinang Mga Bukas na Oportunidad ng Portal ng Miyembro."
+
+#: 
+msgid "All Teams"
+msgstr "Lahat ng Pangkat"
+
+#: 
+msgid "Allow members to change their own and their family members' birthdays."
+msgstr "Payagan ang mga miyembro na baguhin ang kaarawan nila at ng mga kapamilya nila."
+
+#: 
+msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
+msgstr "Naka-pin din sa {{calendars}}, na tanging may pahintulot na Magdagdag ng Mga Kaganapan ang makapagbabago."
+
+#: 
+msgid "An event title is required"
+msgstr "Kailangan ang pamagat ng kaganapan"
+
+#: 
+msgid "An event type or a ministry is required"
+msgstr "Kailangan ang uri ng kaganapan o isang ministeryo"
+
+#: 
+msgid "An event type that no longer exists"
+msgstr "Isang uri ng kaganapang wala na"
+
+#: 
+msgid "Another ministry"
+msgstr "Ibang ministeryo"
+
+#: 
+msgid "Any event"
+msgstr "Anumang kaganapan"
+
+#: 
+msgid "Anything your coordinator should know"
+msgstr "Anumang dapat malaman ng koordineytor mo"
+
+#: 
+msgid "Approve substitution"
+msgstr "Aprubahan ang pagpapalit"
+
+#: 
+msgid "Approve this substitute"
+msgstr "Aprubahan ang kapalit na ito"
+
+#: 
+msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
+msgstr "Hilingin sa isang tagapamahala ng mga boluntaryo na gumawa ng ministeryo at gawin kang koordineytor nito."
+
+#: 
+msgid "Ask someone to cover for you"
+msgstr "Humiling sa iba na pumalit sa iyo"
+
+#: 
+msgid "Ask them"
+msgstr "Tanungin sila"
+
+#: 
+msgid "Asked — your coordinator will confirm it."
+msgstr "Naitanong na — kukumpirmahin ito ng koordineytor mo."
+
+#: 
+msgid "Assign a volunteer"
+msgstr "Magtalaga ng boluntaryo"
+
+#: 
+msgid "Assigned outside the current plan"
+msgstr "Naitalaga sa labas ng kasalukuyang plano"
+
+#: 
+msgid "Assignment cancelled"
+msgstr "Kinansela ang atas"
+
+#: 
+msgid "Assignment not found"
+msgstr "Hindi nahanap ang atas"
+
+#: 
+msgid "At least one personId or familyId is required"
+msgstr "Kailangan ng kahit isang personId o familyId"
+
+#: 
+msgid "At most %d default volunteers can be chosen for one position"
+msgstr "Hanggang %d default na boluntaryo lamang ang mapipili para sa isang posisyon"
+
+#: 
+msgid "Author"
+msgstr "May-akda"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgstr "Ibinibigay ang awtoridad sa tao, hindi sa isang login, kaya maibibigay ito bago pa siya magkaroon nito. Ang taong ang login ay self-service lamang ay makikita lamang ang sarili niyang iskedyul hanggang palawakin ng administrator ang kanyang account."
+
+#: 
+msgid "Automatic"
+msgstr "Awtomatiko"
+
+#: 
+msgid "Awaiting reply"
+msgstr "Naghihintay ng sagot"
+
+#: 
+msgid "Back to Email History"
+msgstr "Bumalik sa Kasaysayan ng Email"
+
+#: 
+msgid "Back to Ministry Dashboard"
+msgstr "Bumalik sa Dashboard ng Ministeryo"
+
+#: 
+msgid "Back to Occurrences"
+msgstr "Bumalik sa Mga Pagkakataon"
+
+#: 
+msgid "Back to Person"
+msgstr "Bumalik sa Tao"
+
+#: 
+msgid "Back to editing"
+msgstr "Bumalik sa pag-edit"
+
+#: 
+msgid "Back to my schedule"
+msgstr "Bumalik sa iskedyul ko"
+
+#: 
+msgid "Back to the Member Portal"
+msgstr "Bumalik sa Portal ng Miyembro"
+
+#: 
+msgid "Back to your profile"
+msgstr "Bumalik sa iyong profile"
+
+#: 
+msgid "Background jobs and delivery"
+msgstr "Mga background job at paghahatid"
+
+#: 
+msgid "Background jobs last ran"
+msgstr "Huling tumakbo ang mga background job"
+
+#: 
+msgid "Background jobs ran"
+msgstr "Tumakbo ang mga background job"
+
+#: 
+msgid "Birthday greeting"
+msgstr "Pagbati sa kaarawan"
+
+#: 
+msgid "Both"
+msgstr "Pareho"
+
+#: 
+msgid "Both (transition)"
+msgstr "Pareho (paglipat)"
+
+#: 
+msgid "Both — V1 and V2 side by side (transition)"
+msgstr "Pareho — magkatabi ang V1 at V2 (paglipat)"
+
+#: 
+msgid "Calendar address"
+msgstr "Address ng kalendaryo"
+
+#: 
+msgid "Calendar saved"
+msgstr "Nai-save ang kalendaryo"
+
+#: 
+msgid "Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars."
+msgstr "Mga kalendaryong ipinapakita ng Portal ng Miyembro sa mga miyembro, na pinipili sa Admin -> Portal ng Miyembro -> Mga Kalendaryo."
+
+#: 
+msgid "Can this ministry provide teachers for Sunday School?"
+msgstr "Maaari bang magbigay ng mga guro para sa Sunday School ang ministeryong ito?"
+
+#: 
+msgid "Cancel assignment"
+msgstr "Kanselahin ang atas"
+
+#: 
+msgid "Cancel this assignment"
+msgstr "Kanselahin ang atas na ito"
+
+#: 
+msgid "Cancelled"
+msgstr "Kinansela"
+
+#: 
+msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr "Palitan ang password na ginagamit mo sa pag-sign in, o magdagdag ng ikalawang hakbang para hindi sapat ang password lamang."
+
+#: 
+msgid "Change your password"
+msgstr "Palitan ang iyong password"
+
+#: 
+msgid "Checked in"
+msgstr "Naka-check In"
+
+#: 
+msgid "Checked in: %1$d of %2$d on the class roster"
+msgstr "Nag-check in: %1$d sa %2$d sa roster ng klase"
+
+#: 
+msgid "Checked out"
+msgstr "Naka-check Out"
+
+#: 
+msgid "Choose a class"
+msgstr "Pumili ng klase"
+
+#: 
+msgid "Choose a day of the month from 1 to 31"
+msgstr "Pumili ng araw ng buwan mula 1 hanggang 31"
+
+#: 
+msgid "Choose a new photo"
+msgstr "Pumili ng bagong larawan"
+
+#: 
+msgid "Choose a person"
+msgstr "Pumili ng tao"
+
+#: 
+msgid "Choose a volunteer"
+msgstr "Pumili ng boluntaryo"
+
+#: 
+msgid "Choose a volunteer first"
+msgstr "Pumili muna ng boluntaryo"
+
+#: 
+msgid "Choose an event"
+msgstr "Pumili ng kaganapan..."
+
+#: 
+msgid "Choose an event type"
+msgstr "Pumili ng uri ng kaganapan"
+
+#: 
+msgid "Choose an existing event type"
+msgstr "Pumili ng umiiral na uri ng kaganapan"
+
+#: 
+msgid "Choose at least one calendar to subscribe to."
+msgstr "Pumili ng kahit isang kalendaryong sasalihan."
+
+#: 
+msgid "Choose the calendars you want in your own calendar app."
+msgstr "Piliin ang mga kalendaryong gusto mo sa sarili mong app ng kalendaryo."
+
+#: 
+msgid "Choose the date each year as MM-DD"
+msgstr "Piliin ang petsa bawat taon bilang MM-DD"
+
+#: 
+msgid "Choose the date of the event"
+msgstr "Piliin ang petsa ng kaganapan"
+
+#: 
+msgid "Choose the day of the week"
+msgstr "Piliin ang araw ng linggo"
+
+#: 
+msgid "Choose the event this schedule follows"
+msgstr "Piliin ang kaganapang sinusundan ng iskedyul na ito"
+
+#: 
+msgid "Choose the event to staff"
+msgstr "Piliin ang kaganapang lalagyan ng mga boluntaryo"
+
+#: 
+msgid "Choose the events to delete"
+msgstr "Piliin ang mga kaganapang buburahin"
+
+#: 
+msgid "Choose the events to staff"
+msgstr "Piliin ang mga kaganapang lalagyan ng mga boluntaryo"
+
+#: 
+msgid "Choose the first and last date"
+msgstr "Piliin ang una at huling petsa"
+
+#: 
+msgid "Choose the first date"
+msgstr "Piliin ang unang petsa"
+
+#: 
+msgid "Choose the last date"
+msgstr "Piliin ang huling petsa"
+
+#: 
+msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
+msgstr "Piliin ang posisyon ng %1$s na kuwalipikado ang mga guro ng %2$s. Mga Guro: %3$d"
+
+#: 
+msgid "Choose the team this position serves on"
+msgstr "Piliin ang pangkat na pinaglilingkuran ng posisyong ito"
+
+#: 
+msgid "Choose the theme members see, turn portal sections on or off, and see who is using the portal."
+msgstr "Piliin ang temang nakikita ng mga miyembro, i-on o i-off ang mga seksyon ng portal, at tingnan kung sino ang gumagamit ng portal."
+
+#: 
+msgid "Choose weekly, monthly or yearly"
+msgstr "Piliin ang lingguhan, buwanan o taunan"
+
+#: 
+msgid "Choose where the schedule's dates come from"
+msgstr "Piliin kung saan nanggagaling ang mga petsa ng iskedyul"
+
+#: 
+msgid "Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
+msgstr "Piliin kung aling karanasan sa pagboboluntaryo ang gagamitin ng simbahang ito, gaano kaaga pinupunan ang mga iskedyul at kailan ipinapadala ang mga paalala, at tiyaking tumatakbo ang mga background job."
+
+#: 
+msgid "Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week."
+msgstr "Piliin kung sino ang pupuno sa bawat posisyon bilang default. Nase-save ang pagpili sa iskedyul: itinatalaga sila sa bawat pagkakataong ginawa ngayon at sa mga gagawin ng pang-araw-araw na top-up sa hinaharap, hangga't kuwalipikado sila, at hinihilingan silang sumagot maliban kung itinakda mo silang tanggap na. Iwanang bukas ang isang posisyon para italaga ito linggu-linggo."
+
+#: 
+msgid "Choose who is covering for you."
+msgstr "Piliin kung sino ang papalit sa iyo."
+
+#: 
+msgid "Church Calendar"
+msgstr "Kalendaryo ng Simbahan"
+
+#: 
+msgid "Church Calendars"
+msgstr "Mga Kalendaryo ng Simbahan"
+
+#: 
+msgid "Church calendar"
+msgstr "Kalendaryo ng simbahan"
+
+#: 
+msgid "Church events of a type"
+msgstr "Mga kaganapan ng simbahan na may isang uri"
+
+#: 
+msgid "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates."
+msgstr "Idinaragdag sa kalendaryo ng simbahan ang mga kaganapan ng simbahan na may isang uri. Suriin ang uri ng kaganapan, pamagat at mga petsa ng iskedyul."
+
+#: 
+msgid "Church website"
+msgstr "Website ng simbahan"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the setting on the left decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
+msgstr "May dalawang paraan ang ChurchCRM sa pamamahala ng mga boluntaryo. Isa lamang ang dapat gamitin sa isang pagkakataon; ang setting sa kaliwa ang nagpapasya kung alin ang makikita ng simbahang ito. Ang paglipat ay nagtatago o nagpapakita ng mga pahina at menu — hindi ito nagbubura ng data, kaya maaari kang bumalik."
+
+#: 
+msgid "Close event details"
+msgstr "Isara ang mga detalye ng kaganapan"
+
+#: 
+msgid "Colour"
+msgstr "Kulay"
+
+#: 
+msgid "Completed"
+msgstr "Natapos"
+
+#: 
+msgid "Compose Message"
+msgstr "Sumulat ng Mensahe"
+
+#: 
+msgid "Confirm your family details"
+msgstr "Kumpirmahin ang mga detalye ng iyong pamilya"
+
+#: 
+msgid "Coordinator removed"
+msgstr "Inalis ang koordineytor"
+
+#: 
+msgid "Copy this address and add it to your calendar app as a new calendar subscription."
+msgstr "Kopyahin ang address na ito at idagdag ito sa app ng kalendaryo mo bilang bagong subscription sa kalendaryo."
+
+#: 
+msgid "Could not build the preview."
+msgstr "Hindi mabuo ang preview."
+
+#: 
+msgid "Could not count the class's events"
+msgstr "Hindi mabilang ang mga kaganapan ng klase"
+
+#: 
+msgid "Could not grant the scope"
+msgstr "Hindi maibigay ang saklaw"
+
+#: 
+msgid "Could not load the Sunday School classes"
+msgstr "Hindi ma-load ang mga klase ng Sunday School"
+
+#: 
+msgid "Could not load the dashboard"
+msgstr "Hindi ma-load ang dashboard"
+
+#: 
+msgid "Could not load the event choices"
+msgstr "Hindi ma-load ang mga mapagpipiliang kaganapan"
+
+#: 
+msgid "Could not load the occurrences"
+msgstr "Hindi ma-load ang mga pagkakataon"
+
+#: 
+msgid "Could not load the schedules"
+msgstr "Hindi ma-load ang mga iskedyul"
+
+#: 
+msgid "Could not load the upcoming events"
+msgstr "Hindi ma-load ang mga paparating na kaganapan"
+
+#: 
+msgid "Could not load the volunteers"
+msgstr "Hindi ma-load ang mga boluntaryo"
+
+#: 
+msgid "Could not load this email."
+msgstr "Hindi ma-load ang email na ito."
+
+#: 
+msgid "Could not load this ministry"
+msgstr "Hindi ma-load ang ministeryong ito"
+
+#: 
+msgid "Could not load this ministry's events"
+msgstr "Hindi ma-load ang mga kaganapan ng ministeryong ito"
+
+#: 
+msgid "Could not load this team"
+msgstr "Hindi ma-load ang pangkat na ito"
+
+#: 
+msgid "Could not revoke the scope"
+msgstr "Hindi mawawalang-bisa ang saklaw"
+
+#: 
+msgid "Create"
+msgstr "Likhain"
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to fill appear here."
+msgstr "Gumawa ng iskedyul at buuin ang mga pagkakataon nito, at lalabas dito ang mga linggong pupunan."
+
+#: 
+msgid "Create a schedule and generate its occurrences, and the weeks to staff appear here."
+msgstr "Gumawa ng iskedyul at buuin ang mga pagkakataon nito, at lalabas dito ang mga linggong lalagyan ng boluntaryo."
+
+#: 
+msgid "Create at least one position for this team, then tick who can serve where."
+msgstr "Gumawa ng kahit isang posisyon para sa pangkat na ito, saka lagyan ng tsek kung sino ang maaaring maglingkod saan."
+
+#: 
+msgid "Create ministry"
+msgstr "Gumawa ng ministeryo"
+
+#: 
+msgid "Creating a ministry requires volunteer manager access"
+msgstr "Kailangan ng access bilang tagapamahala ng mga boluntaryo para makagawa ng ministeryo"
+
+#: 
+msgid "Date and time"
+msgstr "Petsa at oras"
+
+#: 
+msgid "Date each year"
+msgstr "Petsa bawat taon"
+
+#: 
+msgid "Dates"
+msgstr "Mga Petsa"
+
+#: 
+msgid "Dates must be in YYYY-MM-DD form"
+msgstr "Dapat nasa anyong YYYY-MM-DD ang mga petsa"
+
+#: 
+msgid "Day of the month"
+msgstr "Araw ng buwan"
+
+#: 
+msgid "Day of the week"
+msgstr "Araw ng linggo"
+
+#: 
+msgid "Deactivate ministry"
+msgstr "I-deactivate ang ministeryo"
+
+#: 
+msgid "Deactivate schedule"
+msgstr "I-deactivate ang iskedyul"
+
+#: 
+msgid "Deactivate this ministry before deleting it."
+msgstr "I-deactivate muna ang ministeryong ito bago burahin."
+
+#: 
+msgid "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed."
+msgstr "I-deactivate ang {{name}}? Mapupunta ito sa Mga Na-deactivate na Ministeryo sa sidebar, kung saan maaari itong muling i-activate o burahin. Walang aalisin."
+
+#: 
+msgid "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated."
+msgstr "I-deactivate ang {{name}}? Wala nang bagong pagkakataong gagawin para dito, sa Generate man o sa pang-araw-araw na top-up. Mananatili ang mga umiiral nitong pagkakataon at atas, at maaari itong muling i-activate."
+
+#: 
+msgid "Deactivated Ministries"
+msgstr "Mga Na-deactivate na Ministeryo"
+
+#: 
+msgid "Declined"
+msgstr "Tumanggi"
+
+#: 
+msgid "Default event type for ministry events"
+msgstr "Default na uri ng kaganapan para sa mga kaganapan ng ministeryo"
+
+#: 
+msgid "Default volunteers"
+msgstr "Mga default na boluntaryo"
+
+#: 
+msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr "Ipinapadala ang mga default na boluntaryo bilang requirements: [{positionId, defaults: [{personId, accepted}]}]"
+
+#: 
+msgid "Delete events"
+msgstr "Burahin ang mga kaganapan"
+
+#: 
+msgid "Delete ministry"
+msgstr "Burahin ang ministeryo"
+
+#: 
+msgid "Delete occurrences"
+msgstr "Burahin ang mga pagkakataon"
+
+#: 
+msgid "Delete position"
+msgstr "Burahin ang posisyon"
+
+#: 
+msgid "Delete schedule"
+msgstr "Burahin ang iskedyul"
+
+#: 
+msgid "Delete team"
+msgstr "Burahin ang pangkat"
+
+#: 
+msgid "Delete those events"
+msgstr "Burahin ang mga kaganapang iyon"
+
+#: 
+msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
+msgstr "Burahin ang {{name}} at lahat ng nasa loob nito? Aalisin ang mga posisyon, kuwalipikasyon, kailangang tauhan, iskedyul, pagkakataon at atas nito — kasama ang mga nakaraang talaan ng paglilingkod — at ang mga grant ng pinuno ng pangkat nito. Para mapanatili ang kasaysayan, i-deactivate na lang ang pangkat. Hindi na ito maibabalik."
+
+#: 
+msgid "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone."
+msgstr "Burahin ang {{name}} at lahat ng nasa loob nito? Aalisin ang mga pangkat, posisyon, iskedyul, {{occurrences}} pagkakataon at {{assignments}} atas nito — kasama ang mga nakaraang talaan ng paglilingkod — pati ang mga grant ng koordineytor at pinuno ng pangkat, ang grupo ng pool ng mga boluntaryo at ang kalendaryo nito. Hindi na ito maibabalik."
+
+#: 
+msgid "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone."
+msgstr "Burahin ang {{name}}? Aalisin kasama nito ang mga kuwalipikasyon, kailangang tauhan at atas nito — kasama ang mga nakaraang talaan ng paglilingkod. Para mapanatili ang kasaysayan, i-deactivate na lang ang posisyon. Hindi na ito maibabalik."
+
+#: 
+msgid "Delete {{name}}? This cannot be undone."
+msgstr "Burahin ang {{name}}? Hindi na ito maibabalik."
+
+#: 
+msgid "Deleting a ministry requires volunteer manager access"
+msgstr "Kailangan ng access bilang tagapamahala ng mga boluntaryo para makapagbura ng ministeryo"
+
+#: 
+msgid "Developer mode"
+msgstr "Developer mode"
+
+#: 
+msgid "Done — you are back on the list."
+msgstr "Tapos na — bumalik ka na sa listahan."
+
+#: 
+msgid "Drop this occurrence's own staffing needs and follow its schedule again?"
+msgstr "Alisin ang sariling kailangang tauhan ng pagkakataong ito at sundan muli ang iskedyul nito?"
+
+#: 
+msgid "Due soon"
+msgstr "Malapit na"
+
+#: 
+msgid "Each calendar must be given as a type and an id."
+msgstr "Dapat ibigay ang bawat kalendaryo bilang uri at id."
+
+#: 
+msgid "Each default volunteer must name a person"
+msgstr "Dapat magpangalan ng tao ang bawat default na boluntaryo"
+
+#: 
+msgid "Each staffing need must name a position"
+msgstr "Dapat magpangalan ng posisyon ang bawat kailangang tauhan"
+
+#: 
+msgid "Edit event"
+msgstr "I-edit ang Kaganapan"
+
+#: 
+msgid "Edit ministry"
+msgstr "Baguhin ang ministeryo"
+
+#: 
+msgid "Edit position"
+msgstr "Baguhin ang posisyon"
+
+#: 
+msgid "Edit schedule"
+msgstr "Baguhin ang iskedyul"
+
+#: 
+msgid "Edit staffing needs"
+msgstr "Baguhin ang mga kailangang tauhan"
+
+#: 
+msgid "Edit team"
+msgstr "Baguhin ang pangkat"
+
+#: 
+msgid "Edit the schedule and choose another class."
+msgstr "Baguhin ang iskedyul at pumili ng ibang klase."
+
+#: 
+msgid "Edit the schedule and choose another event type."
+msgstr "Baguhin ang iskedyul at pumili ng ibang uri ng kaganapan."
+
+#: 
+msgid "Edit the schedule and choose the event it follows."
+msgstr "Baguhin ang iskedyul at piliin ang kaganapang sinusundan nito."
+
+#: 
+msgid "Edit the schedule and move its last date to follow more events."
+msgstr "Baguhin ang iskedyul at ilipat ang huling petsa nito para masundan ang mas maraming kaganapan."
+
+#: 
+msgid "Edited via the Member Portal: %s"
+msgstr "Na-edit sa pamamagitan ng Portal ng Miyembro: %s"
+
+#: 
+msgid "Email %s"
+msgstr "I-email si %s"
+
+#: 
+msgid "Email %s Family"
+msgstr "I-email ang Pamilya %s"
+
+#: 
+msgid "Email History"
+msgstr "Kasaysayan ng Email"
+
+#: 
+msgid "Email content"
+msgstr "Nilalaman ng email"
+
+#: 
+msgid "Email non-attendees: %s"
+msgstr "I-email ang mga hindi dumalo: %s"
+
+#: 
+msgid "Email not found"
+msgstr "Hindi nahanap ang email"
+
+#: 
+msgid "Email preview"
+msgstr "Preview ng email"
+
+#: 
+msgid "Email sending is disabled"
+msgstr "Naka-disable ang pagpapadala ng email"
+
+#: 
+msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
+msgstr "Hindi naka-enable ang pagpapadala ng email. I-configure ang mga setting ng SMTP at i-enable ang email bago magpadala."
+
+#: 
+msgid "Emails"
+msgstr "Mga Email"
+
+#: 
+msgid "End time"
+msgstr "Oras ng Pagtatapos"
+
+#: 
+msgid "Enter counts"
+msgstr "Ilagay ang mga bilang"
+
+#: 
+msgid "Enter email subject…"
+msgstr "Ilagay ang paksa ng email…"
+
+#: 
+msgid "Enter your current password, then your new password twice."
+msgstr "Ilagay ang kasalukuyan mong password, saka ang bago mong password nang dalawang beses."
+
+#: 
+msgid "Enter your message…"
+msgstr "Ilagay ang iyong mensahe…"
+
+#: 
+msgid "Event staffed"
+msgstr "Nalagyan na ng mga boluntaryo ang kaganapan"
+
+#: 
+msgid "Event title"
+msgstr "Pamagat ng Kaganapan"
+
+#: 
+msgid "Event type"
+msgstr "Uri ng Kaganapan"
+
+#: 
+msgid "Every email ChurchCRM sent, newest first. Open a person to see their full history."
+msgstr "Bawat email na ipinadala ng ChurchCRM, mula sa pinakabago. Buksan ang isang tao para makita ang buong kasaysayan niya."
+
+#: 
+msgid "Every position in this window has the people it needs."
+msgstr "Nasa bawat posisyon sa panahong ito ang mga taong kailangan nito."
+
+#: 
+msgid "Everyone has answered"
+msgstr "Lahat ay nakasagot na"
+
+#: 
+msgid "Everyone in the cart joins this ministry's volunteers. Tick their positions afterwards."
+msgstr "Sasali sa mga boluntaryo ng ministeryong ito ang lahat ng nasa pinili. Lagyan ng tsek ang mga posisyon nila pagkatapos."
+
+#: 
+msgid "Everything is correct"
+msgstr "Tama ang lahat"
+
+#: 
+msgid "Failed to build the preview"
+msgstr "Nabigong buuin ang preview"
+
+#: 
+msgid "Failed to load email"
+msgstr "Nabigong i-load ang email"
+
+#: 
+msgid "Failed to load email history"
+msgstr "Nabigong i-load ang kasaysayan ng email"
+
+#: 
+msgid "Failed to send email"
+msgstr "Nabigong ipadala ang email"
+
+#: 
+msgid "Failed to send email. Please try again or use 'Open in Email Client'."
+msgstr "Nabigong ipadala ang email. Pakisubukan muli o gamitin ang 'Buksan sa Email Client'."
+
+#: 
+msgid "Family Member"
+msgstr "Kapamilya"
+
+#: 
+msgid "Family verification"
+msgstr "Verification ng Pamilya"
+
+#: 
+msgid "File"
+msgstr "File"
+
+#: 
+msgid "Fill"
+msgstr "Punan"
+
+#: 
+msgid "Fill by default with"
+msgstr "Punan bilang default ng"
+
+#: 
+msgid "Fill this gap"
+msgstr "Punan ang kakulangang ito"
+
+#: 
+msgid "Filled"
+msgstr "Napunan"
+
+#: 
+msgid "Find a sub"
+msgstr "Maghanap ng kapalit"
+
+#: 
+msgid "Find a volunteer"
+msgstr "Maghanap ng boluntaryo"
+
+#: 
+msgid "Find an event"
+msgstr "Maghanap ng kaganapan"
+
+#: 
+msgid "Find something to do"
+msgstr "Maghanap ng magagawa"
+
+#: 
+msgid "Find something to help with"
+msgstr "Maghanap ng matutulungan"
+
+#: 
+msgid "Findings"
+msgstr "Mga natuklasan"
+
+#: 
+msgid "First date"
+msgstr "Unang petsa"
+
+#: 
+msgid "Folder"
+msgstr "Folder"
+
+#: 
+msgid "Folder name of the Member Portal theme to use, from Include/themes/. \"default\" is the system theme that ships with ChurchCRM."
+msgstr "Pangalan ng folder ng temang gagamitin ng Portal ng Miyembro, mula sa Include/themes/. Ang \"default\" ang tema ng sistemang kasama ng ChurchCRM."
+
+#: 
+msgid "Generate again closer to its first date."
+msgstr "Bumuo muli mas malapit sa unang petsa nito."
+
+#: 
+msgid "Generate occurrences"
+msgstr "Buuin ang mga pagkakataon"
+
+#: 
+msgid "Get a new calendar address?"
+msgstr "Kumuha ng bagong address ng kalendaryo?"
+
+#: 
+msgid "Give the ministry a name"
+msgstr "Bigyan ng pangalan ang ministeryo"
+
+#: 
+msgid "Give the position a name"
+msgstr "Bigyan ng pangalan ang posisyon"
+
+#: 
+msgid "Give the start and end times as HH:MM"
+msgstr "Ibigay ang oras ng simula at wakas bilang HH:MM"
+
+#: 
+msgid "Give the team a name"
+msgstr "Bigyan ng pangalan ang pangkat"
+
+#: 
+msgid "Go to my volunteering"
+msgstr "Pumunta sa pagboboluntaryo ko"
+
+#: 
+msgid "Go to the Member Portal settings"
+msgstr "Pumunta sa mga setting ng Portal ng Miyembro"
+
+#: 
+msgid "Going"
+msgstr "Pupunta"
+
+#: 
+msgid "Grant the qualification on the ministry page, then assign them here."
+msgstr "Ibigay ang kuwalipikasyon sa pahina ng ministeryo, pagkatapos ay italaga sila rito."
+
+#: 
+msgid "Granted"
+msgstr "Naibigay"
+
+#: 
+msgid "Have a look at what the church has on file for your household, then tell us whether it is still right."
+msgstr "Tingnan ang nakatala sa simbahan tungkol sa inyong sambahayan, at sabihin sa amin kung tama pa ito."
+
+#: 
+msgid "Headcount"
+msgstr "Bilang ng dumalo"
+
+#: 
+msgid "Hello %s"
+msgstr "Kumusta, %s"
+
+#: 
+msgid "Help Wanted"
+msgstr "Naghahanap ng Tulong"
+
+#: 
+msgid "Help wanted could not be saved"
+msgstr "Hindi na-save ang Naghahanap ng Tulong"
+
+#: 
+msgid "How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point."
+msgstr "Gaano kaaga gagawin ang mga pagkakataon para sa mga kaganapang sinusundan ng bawat iskedyul. Pinapanatili ng pang-araw-araw na background job na puno ang bawat iskedyul hanggang sa puntong ito."
+
+#: 
+msgid "How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup."
+msgstr "Ilang oras bago ang pagkakataon ng boluntaryo ipapadala ang email na paalala. Itakda sa 0 para walang ipadalang paalala. Nakadepende ang paghahatid sa pagtakbo ng mga background job; tingnan ang dokumentasyon ng Boluntaryo para sa inirerekomendang cron setup."
+
+#: 
+msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr "Ilang oras bago ang isang pagkakataon ipapadala ang email na paalala. Itakda sa 0 para walang ipadalang paalala."
+
+#: 
+msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Ilang tao ang kailangan ng bawat posisyon, sa bawat pagtakbo nito. Maaaring baguhin nang hiwalay ang isang petsa sa kalaunan. Itinatalaga ang default na boluntaryo sa bawat bagong pagkakataon hangga't kuwalipikado siya; ang pagbabago nito ay hindi kailanman nagbabago sa mga pagkakataong umiiral na."
+
+#: 
+msgid "How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
+msgstr "Ilang boluntaryo ang kailangan ng bawat pagkakataon ng iskedyul na ito. Alisin ang tsek sa posisyong hindi kailanman ginagamit ng iskedyul na ito. Itinatalaga ang default na boluntaryo sa bawat bagong pagkakataon hangga't kuwalipikado siya; ang pagbabago nito ay hindi kailanman nagbabago sa mga pagkakataong umiiral na."
+
+#: 
+msgid "How many volunteers this event needs. Uncheck a position it does not use."
+msgstr "Ilang boluntaryo ang kailangan ng kaganapang ito. Alisin ang tsek sa posisyong hindi nito ginagamit."
+
+#: 
+msgid "How many weeks ahead volunteer occurrences are created for the events each schedule follows, from 1 to 52. A daily background job keeps every schedule filled up to this point."
+msgstr "Ilang linggo nang maaga gagawin ang mga pagkakataon ng boluntaryo para sa mga kaganapang sinusundan ng bawat iskedyul, mula 1 hanggang 52. Pinapanatili ng pang-araw-araw na background job na puno ang bawat iskedyul hanggang sa puntong ito."
+
+#: 
+msgid "How often"
+msgstr "Gaano kadalas"
+
+#: 
+msgid "How to correct this"
+msgstr "Paano ito itatama"
+
+#: 
+msgid "I can't"
+msgstr "Hindi ko kaya"
+
+#: 
+msgid "I'd like to help"
+msgstr "Gusto kong tumulong"
+
+#: 
+msgid "I'll be there"
+msgstr "Pupunta ako"
+
+#: 
+msgid "If messages are failing, ask an administrator to check Ministry Settings."
+msgstr "Kung nabibigo ang mga mensahe, hilingin sa isang administrator na suriin ang Mga Setting ng Ministeryo."
+
+#: 
+msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
+msgstr "Kung hindi ka na makakapunta, pakitanggihan sa iskedyul mo bilang boluntaryo sa lalong madaling panahon para mapunan ang posisyon."
+
+#: 
+msgid "If you have shared this address by mistake, get a new one. The old address stops working straight away."
+msgstr "Kung hindi sinasadyang naibahagi mo ang address na ito, kumuha ng bago. Titigil agad sa paggana ang luma."
+
+#: 
+msgid "In the last 15 minutes"
+msgstr "Sa nakaraang 15 minuto"
+
+#: 
+msgid "In the volunteer pool"
+msgstr "Nasa pool ng mga boluntaryo"
+
+#: 
+msgid "Internal: last date the volunteer schedules were topped up to the scheduling horizon (YYYY-MM-DD). Do not edit manually."
+msgstr "Panloob: huling petsa na napunan ang mga iskedyul ng boluntaryo hanggang sa saklaw ng pag-iiskedyul (YYYY-MM-DD). Huwag baguhin nang mano-mano."
+
+#: 
+msgid "Internal: when the volunteer schedules were last topped up and how many occurrences that created. Do not edit manually."
+msgstr "Panloob: kung kailan huling napunan ang mga iskedyul ng boluntaryo at ilang pagkakataon ang nagawa nito. Huwag baguhin nang mano-mano."
+
+#: 
+msgid "Is this still right?"
+msgstr "Tama pa ba ito?"
+
+#: 
+msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr "Magagawa ang mga pagkakataon nito nang walang posisyong pupunan. Baguhin ang iskedyul para idagdag ang mga kailangang tauhan nito."
+
+#: 
+msgid "Keep them on {{className}}"
+msgstr "Panatilihin sila sa {{className}}"
+
+#: 
+msgid "Kind"
+msgstr "Uri"
+
+#: 
+msgid "Last 24 hours"
+msgstr "Nakaraang 24 oras"
+
+#: 
+msgid "Last 30 days"
+msgstr "Nakaraang 30 araw"
+
+#: 
+msgid "Last 7 days"
+msgstr "Nakaraang 7 araw"
+
+#: 
+msgid "Last attempt"
+msgstr "Huling pagtatangka"
+
+#: 
+msgid "Last check"
+msgstr "Huling pagsusuri"
+
+#: 
+msgid "Last date"
+msgstr "Huling petsa"
+
+#: 
+msgid "Last seen in the portal"
+msgstr "Huling nakita sa portal"
+
+#: 
+msgid "Last sign-in"
+msgstr "Huling sign-in"
+
+#: 
+msgid "Leave both at 0 to serve exactly when the event happens. Moving the event moves the volunteers too."
+msgstr "Iwanang 0 ang pareho para maglingkod nang eksakto kapag nangyari ang kaganapan. Kapag inilipat ang kaganapan, nalilipat din ang mga boluntaryo."
+
+#: 
+msgid "Leave open"
+msgstr "Iwanang bukas"
+
+#: 
+msgid "Let members change their own and their family members' birthdays in the Member Portal."
+msgstr "Hayaang baguhin ng mga miyembro ang kaarawan nila at ng mga kapamilya nila sa Portal ng Miyembro."
+
+#: 
+msgid "Let members edit birthdays"
+msgstr "Hayaang mag-edit ng kaarawan ang mga miyembro"
+
+#: 
+msgid "Let the church office know whether everything above is still right."
+msgstr "Ipaalam sa opisina ng simbahan kung tama pa ang lahat ng nasa itaas."
+
+#: 
+msgid "Let them know why (optional)"
+msgstr "Ipaalam sa kanila kung bakit (opsyonal)"
+
+#: 
+msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr "Pinapahintulutan ang mga koordineytor ng ministeryong iyon na mag-iskedyul ng mga boluntaryo para sa kaganapang ito — at i-edit ang mismong kaganapan."
+
+#: 
+msgid "Loading the calendar…"
+msgstr "Nilo-load ang kalendaryo…"
+
+#: 
+msgid "Manage Ministries"
+msgstr "Pamahalaan ang Mga Ministeryo"
+
+#: 
+msgid "Manage My Ministries"
+msgstr "Pamahalaan ang Aking Mga Ministeryo"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage"
+msgstr "Access sa Pamahalaan ang Aking Mga Ministeryo, na may ministeryo o pangkat na pamamahalaan"
+
+#: 
+msgid "Manage My Ministries access, with a ministry or team to manage, is required"
+msgstr "Kailangan ang access sa Pamahalaan ang Aking Mga Ministeryo, na may ministeryo o pangkat na pamamahalaan"
+
+#: 
+msgid "Manage staffing"
+msgstr "Pamahalaan ang pagtatalaga ng tauhan"
+
+#: 
+msgid "Managed from the %s ministry"
+msgstr "Pinamamahalaan mula sa ministeryong %s"
+
+#: 
+msgid "Managed from the {{ministry}} ministry"
+msgstr "Pinamamahalaan mula sa ministeryong {{ministry}}"
+
+#: 
+msgid "Max"
+msgstr "Max"
+
+#: 
+msgid "Member Portal"
+msgstr "Portal ng Miyembro"
+
+#: 
+msgid "Members are seeing a \"temporarily unavailable\" page until this is fixed. The same details were written to the application log and to the web server error log."
+msgstr "Nakakakita ang mga miyembro ng pahinang \"pansamantalang hindi available\" hangga't hindi naaayos ito. Isinulat din ang parehong detalye sa application log at sa error log ng web server."
+
+#: 
+msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr "Ang mga kalendaryong naka-on dito lamang ang nakikita ng mga miyembro. Mga unang pangalan at huling inisyal lamang ang ipinapakita sa mga kaarawan at anibersaryo."
+
+#: 
+msgid "Message"
+msgstr "Mensahe"
+
+#: 
+msgid "Min"
+msgstr "Min"
+
+#: 
+msgid "Ministries"
+msgstr "Mga Ministeryo"
+
+#: 
+msgid "Ministries looking for help"
+msgstr "Mga ministeryong naghahanap ng tulong"
+
+#: 
+msgid "Ministries that may add events"
+msgstr "Mga ministeryong maaaring magdagdag ng mga kaganapan"
+
+#: 
+msgid "Ministry"
+msgstr "Ministeryo"
+
+#: 
+msgid "Ministry Calendars"
+msgstr "Mga Kalendaryo ng Ministeryo"
+
+#: 
+msgid "Ministry Coordinators"
+msgstr "Mga Koordineytor ng Ministeryo"
+
+#: 
+msgid "Ministry Dashboard"
+msgstr "Dashboard ng Ministeryo"
+
+#: 
+msgid "Ministry Settings"
+msgstr "Mga Setting ng Ministeryo"
+
+#: 
+msgid "Ministry calendar"
+msgstr "Kalendaryo ng ministeryo"
+
+#: 
+msgid "Ministry created"
+msgstr "Nagawa ang ministeryo"
+
+#: 
+msgid "Ministry management access"
+msgstr "Access sa pamamahala ng ministeryo"
+
+#: 
+msgid "Ministry management access is required"
+msgstr "Kailangan ang access sa pamamahala ng ministeryo"
+
+#: 
+msgid "Ministry name"
+msgstr "Pangalan ng ministeryo"
+
+#: 
+msgid "Ministry not found"
+msgstr "Hindi nahanap ang ministeryo"
+
+#: 
+msgid "My Family"
+msgstr "Aking Pamilya"
+
+#: 
+msgid "My Teams"
+msgstr "Aking Mga Pangkat"
+
+#: 
+msgid "My ministries and teams"
+msgstr "Aking mga ministeryo at pangkat"
+
+#: 
+msgid "My schedule"
+msgstr "Aking iskedyul"
+
+#: 
+msgid "My volunteering"
+msgstr "Aking pagboboluntaryo"
+
+#: 
+msgid "Name this position on the page where members look for something to help with."
+msgstr "Bigyan ng pangalan ang posisyong ito sa pahinang pinaghahanapan ng mga miyembro ng matutulungan."
+
+#: 
+msgid "Needs an answer"
+msgstr "Kailangan ng sagot"
+
+#: 
+msgid "Needs filling"
+msgstr "Kailangang punan"
+
+#: 
+msgid "Never signed in"
+msgstr "Hindi pa kailanman nag-sign in"
+
+#: 
+msgid "New account"
+msgstr "Bagong account"
+
+#: 
+msgid "New event"
+msgstr "Bagong kaganapan"
+
+#: 
+msgid "New ministry"
+msgstr "Bagong ministeryo"
+
+#: 
+msgid "New record notification"
+msgstr "Abiso sa bagong talaan"
+
+#: 
+msgid "New recurring event"
+msgstr "Bagong paulit-ulit na kaganapan"
+
+#: 
+msgid "New volunteers needed for the following positions"
+msgstr "Kailangan ng mga bagong boluntaryo para sa mga sumusunod na posisyon"
+
+#: 
+msgid "Newest first"
+msgstr "Pinakabago muna"
+
+#: 
+msgid "Next on %s"
+msgstr "Susunod sa %s"
+
+#: 
+msgid "No calendar has been shared with members yet."
+msgstr "Wala pang kalendaryong ibinabahagi sa mga miyembro."
+
+#: 
+msgid "No calendar is open to this ministry, so the events will not show on any calendar."
+msgstr "Walang kalendaryong bukas sa ministeryong ito, kaya hindi lalabas ang mga kaganapan sa alinmang kalendaryo."
+
+#: 
+msgid "No calendar is shared with members."
+msgstr "Walang kalendaryong ibinabahagi sa mga miyembro."
+
+#: 
+msgid "No class"
+msgstr "Walang klase"
+
+#: 
+msgid "No contact details on file yet."
+msgstr "Wala pang detalye sa pakikipag-ugnayan sa talaan."
+
+#: 
+msgid "No coordinators yet"
+msgstr "Wala pang mga koordineytor"
+
+#: 
+msgid "No date between the first and last date matches the recurrence"
+msgstr "Walang petsa sa pagitan ng una at huling petsa na tumutugma sa pag-uulit"
+
+#: 
+msgid "No email was sent."
+msgstr "Walang naipadalang email."
+
+#: 
+msgid "No emails have been sent to this record yet."
+msgstr "Wala pang naipadalang email sa talaang ito."
+
+#: 
+msgid "No headcount recorded yet"
+msgstr "Wala pang naitalang bilang ng dumalo"
+
+#: 
+msgid "No longer needed"
+msgstr "Hindi na kailangan"
+
+#: 
+msgid "No member has signed in to the Member Portal yet."
+msgstr "Wala pang miyembrong nakapag-sign in sa Portal ng Miyembro."
+
+#: 
+msgid "No ministry"
+msgstr "Walang ministeryo"
+
+#: 
+msgid "No past events"
+msgstr "Walang nakaraang kaganapan"
+
+#: 
+msgid "No photo has been uploaded for this person."
+msgstr "Walang larawang na-upload para sa taong ito."
+
+#: 
+msgid "No photo was sent."
+msgstr "Walang larawang naipadala."
+
+#: 
+msgid "No positions yet"
+msgstr "Wala pang mga posisyon"
+
+#: 
+msgid "No qualifications yet."
+msgstr "Wala pang mga kuwalipikasyon."
+
+#: 
+msgid "No schedules yet"
+msgstr "Wala pang mga iskedyul"
+
+#: 
+msgid "No staffing needs set"
+msgstr "Walang itinakdang kailangang tauhan"
+
+#: 
+msgid "No staffing needs: generated occurrences will need nobody."
+msgstr "Walang kailangang tauhan: walang kakailanganin ang mga nabuong pagkakataon."
+
+#: 
+msgid "No substitution requests"
+msgstr "Walang kahilingan sa pagpapalit"
+
+#: 
+msgid "No substitutions to decide"
+msgstr "Walang pagpapalit na dapat pagpasyahan"
+
+#: 
+msgid "No teams yet"
+msgstr "Wala pang mga pangkat"
+
+#: 
+msgid "No upcoming %1$s events titled \"%2$s\" are on the calendar. A schedule follows events that already exist."
+msgstr "Walang paparating na kaganapang %1$s na may pamagat na \"%2$s\" sa kalendaryo. Sinusundan ng iskedyul ang mga kaganapang umiiral na."
+
+#: 
+msgid "No upcoming event matches"
+msgstr "Walang paparating na kaganapang tumutugma"
+
+#: 
+msgid "No upcoming events"
+msgstr "Walang paparating na kaganapan"
+
+#: 
+msgid "No upcoming events of this type are on the calendar."
+msgstr "Walang paparating na kaganapan ng ganitong uri sa kalendaryo."
+
+#: 
+msgid "No upcoming events to choose from"
+msgstr "Walang paparating na kaganapang mapipili"
+
+#: 
+msgid "Nobody assigned yet"
+msgstr "Wala pang naitalaga"
+
+#: 
+msgid "Nobody else is trained for this yet — tell your coordinator instead."
+msgstr "Wala nang iba pang sinanay para dito — sabihin na lang sa koordineytor mo."
+
+#: 
+msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
+msgstr "Wala pang nagsabi kung ilang boluntaryo ang kailangan ng bawat posisyon, kaya walang pupunan."
+
+#: 
+msgid "Nobody in this window is still deciding."
+msgstr "Walang sinuman sa panahong ito ang nagpapasya pa."
+
+#: 
+msgid "Nobody is qualified for this position yet"
+msgstr "Wala pang kuwalipikado para sa posisyong ito"
+
+#: 
+msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr "Wala pang kuwalipikado para sa posisyong ito, kaya nananatili itong bukas."
+
+#: 
+msgid "None of the recipients can be emailed"
+msgstr "Walang sinuman sa mga tatanggap ang maaaring padalhan ng email"
+
+#: 
+msgid "None: the event type is chosen for each event"
+msgstr "Wala: pinipili ang uri ng kaganapan sa bawat kaganapan"
+
+#: 
+msgid "Not allowed to view this email"
+msgstr "Hindi pinapayagang tingnan ang email na ito"
+
+#: 
+msgid "Not allowed to view this family"
+msgstr "Hindi pinapayagang tingnan ang pamilyang ito"
+
+#: 
+msgid "Not allowed to view this person"
+msgstr "Hindi pinapayagang tingnan ang taong ito"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Hindi awtorisado para sa atas na ito"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Hindi awtorisado para sa ministeryong ito"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Hindi awtorisado para sa pagkakataong ito"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Hindi awtorisado para sa posisyong ito"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Hindi awtorisado para sa kuwalipikasyong ito"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Hindi awtorisado para sa kinakailangang ito"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Hindi awtorisado para sa iskedyul na ito"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Hindi awtorisado para sa kahilingan sa pagpapalit na ito"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Hindi awtorisado para sa pangkat na ito"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Hindi awtorisadong magtalaga ng mga kaganapan sa ministeryo ng boluntaryong iyon"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Hindi awtorisadong baguhin ang kaganapang %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Hindi awtorisadong baguhin ang ministeryo ng boluntaryo ng kaganapang ito"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Hindi awtorisadong gumawa ng kaganapang walang ministeryo ng boluntaryong pinamamahalaan mo"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Hindi awtorisadong baguhin ang kaganapang ito"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Hindi awtorisadong mag-pin ng mga kaganapan sa kalendaryong \"%s\""
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Hindi awtorisadong mag-alis ng mga kaganapan sa kalendaryong \"%s\""
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Hindi awtorisadong alisin ang ministeryo ng boluntaryo sa kaganapang ito"
+
+#: 
+msgid "Not checked in"
+msgstr "Hindi nag-check in"
+
+#: 
+msgid "Not found"
+msgstr "Hindi Nahanap"
+
+#: 
+msgid "Not in the pool"
+msgstr "Wala sa pool"
+
+#: 
+msgid "Not now"
+msgstr "Hindi muna ngayon"
+
+#: 
+msgid "Not sent"
+msgstr "Hindi naipadala"
+
+#: 
+msgid "Not set: use \"%s\""
+msgstr "Hindi nakatakda: gamitin ang \"%s\""
+
+#: 
+msgid "Not staffed"
+msgstr "Walang boluntaryo"
+
+#: 
+msgid "Not volunteering yet"
+msgstr "Hindi pa nagboboluntaryo"
+
+#: 
+msgid "Nothing had changed, so nothing was saved."
+msgstr "Walang nagbago, kaya walang na-save."
+
+#: 
+msgid "Nothing is on the calendar for this period."
+msgstr "Walang nasa kalendaryo para sa panahong ito."
+
+#: 
+msgid "Nothing is on the calendar just now."
+msgstr "Walang nasa kalendaryo sa ngayon."
+
+#: 
+msgid "Nothing is short"
+msgstr "Walang kulang"
+
+#: 
+msgid "Nothing on your list yet"
+msgstr "Wala pang laman ang listahan mo"
+
+#: 
+msgid "Nothing on your list yet. Have a look at what needs filling."
+msgstr "Wala pang laman ang listahan mo. Tingnan kung ano ang kailangang punan."
+
+#: 
+msgid "Nothing open right now"
+msgstr "Walang bukas sa ngayon"
+
+#: 
+msgid "Nothing scheduled yet"
+msgstr "Wala pang naka-iskedyul"
+
+#: 
+msgid "Nothing scheduled."
+msgstr "Walang naka-iskedyul."
+
+#: 
+msgid "Nothing set up yet"
+msgstr "Wala pang naka-set up"
+
+#: 
+msgid "Nothing this ministry owns happened in the last year."
+msgstr "Walang nangyari sa nakaraang taon na pag-aari ng ministeryong ito."
+
+#: 
+msgid "Nothing to qualify yet"
+msgstr "Wala pang maikukuwalipika"
+
+#: 
+msgid "Nothing was saved. Please check the highlighted fields."
+msgstr "Walang na-save. Pakisuri ang mga naka-highlight na field."
+
+#: 
+msgid "Nothing was saved. Please try again."
+msgstr "Walang na-save. Pakisubukan muli."
+
+#: 
+msgid "Notification"
+msgstr "Abiso"
+
+#: 
+msgid "Notifications"
+msgstr "Mga Abiso"
+
+#: 
+msgid "Occurrence not found"
+msgstr "Hindi nahanap ang pagkakataon"
+
+#: 
+msgid "Occurrences"
+msgstr "Mga Pagkakataon"
+
+#: 
+msgid "Offer to help"
+msgstr "Mag-alok na tumulong"
+
+#: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Isang beses sa isang araw, nagkakaroon ang bawat aktibong iskedyul ng mga pagkakataon para sa mga kaganapang sinusundan nito, hanggang %d linggo nang maaga, at itinatalaga ang default na boluntaryo ng bawat posisyon sa mga bago hangga't nananatili silang kuwalipikado."
+msgstr[1] "Isang beses sa isang araw, nagkakaroon ang bawat aktibong iskedyul ng mga pagkakataon para sa mga kaganapang sinusundan nito, hanggang %d linggo nang maaga, at itinatalaga ang default na boluntaryo ng bawat posisyon sa mga bago hangga't nananatili silang kuwalipikado."
+
+#: 
+msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
+msgstr "Kapag kuwalipikado na ang taong ito para sa isang posisyon, lalabas siya rito, kasama ang mga petsang naka-iskedyul siyang maglingkod."
+
+#: 
+msgid "One occurrence is made for each calendar event whose Linked Group is this class."
+msgstr "Isang pagkakataon ang ginagawa para sa bawat kaganapan sa kalendaryo na ang Naka-link na Grupo ay ang klaseng ito."
+
+#: 
+msgid "One occurrence is made for each date of this event. Only events already on the calendar can be chosen."
+msgstr "Isang pagkakataon ang ginagawa para sa bawat petsa ng kaganapang ito. Mga kaganapang nasa kalendaryo na lamang ang mapipili."
+
+#: 
+msgid "One of the calendars does not exist"
+msgstr "Hindi umiiral ang isa sa mga kalendaryo"
+
+#: 
+msgid "One of the events does not exist"
+msgstr "Hindi umiiral ang isa sa mga kaganapan"
+
+#: 
+msgid "One of those calendars is not shared with members."
+msgstr "Hindi ibinabahagi sa mga miyembro ang isa sa mga kalendaryong iyon."
+
+#: 
+msgid "One-time"
+msgstr "Minsanan"
+
+#: 
+msgid "Only a Sunday School class can be linked to a team"
+msgstr "Klase lamang ng Sunday School ang maaaring i-link sa isang pangkat"
+
+#: 
+msgid "Only a coordinator may record a response on someone else's behalf"
+msgstr "Koordineytor lamang ang maaaring magtala ng tugon para sa ibang tao"
+
+#: 
+msgid "Only a coordinator of this ministry may create its events"
+msgstr "Koordineytor lamang ng ministeryong ito ang maaaring gumawa ng mga kaganapan nito"
+
+#: 
+msgid "Only a coordinator of this ministry may staff its events"
+msgstr "Koordineytor lamang ng ministeryong ito ang maaaring maglagay ng boluntaryo sa mga kaganapan nito"
+
+#: 
+msgid "Only a volunteer manager can change this."
+msgstr "Tagapamahala lamang ng mga boluntaryo ang maaaring magbago nito."
+
+#: 
+msgid "Only a volunteer manager can change whether a ministry provides teachers for Sunday School"
+msgstr "Tagapamahala lamang ng mga boluntaryo ang maaaring magbago kung nagbibigay ng mga guro para sa Sunday School ang isang ministeryo"
+
+#: 
+msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr "Nasa hustong gulang lamang ng pamilya ninyo ang maaaring magbago ng mga detalyeng ito. Makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "Only people trained for this are listed."
+msgstr "Mga taong sinanay lamang para dito ang nakalista."
+
+#: 
+msgid "Only the assigned volunteer may propose a substitute"
+msgstr "Ang naitalagang boluntaryo lamang ang maaaring magmungkahi ng kapalit"
+
+#: 
+msgid "Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with."
+msgstr "Mga kalendaryo lamang na maaaring dagdagan ng kaganapan ng ministeryong ito ang nakalista. May tsek na ang sarili nitong kalendaryo sa simula."
+
+#: 
+msgid "Only the first part of a very long list is shown. Narrow the window to see the rest."
+msgstr "Ang unang bahagi lamang ng napakahabang listahan ang ipinapakita. Paliitin ang panahon para makita ang iba."
+
+#: 
+msgid "Only the volunteer who proposed a substitute may withdraw it"
+msgstr "Ang boluntaryong nagmungkahi ng kapalit lamang ang maaaring bumawi nito"
+
+#: 
+msgid "Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here."
+msgstr "Magbukas ng ministeryo mula sa menu ng Mga Ministeryo, gumawa ng iskedyul at buuin ang mga petsa nito, at lalabas dito ang mga linggong lalagyan ng boluntaryo."
+
+#: 
+msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr "Magbukas ng ministeryo para gawing koordineytor nito ang isang tao, o pinuno ng isa sa mga pangkat nito."
+
+#: 
+msgid "Open in calendar app"
+msgstr "Buksan sa app ng kalendaryo"
+
+#: 
+msgid "Open opportunities could not be loaded."
+msgstr "Hindi ma-load ang mga bukas na oportunidad."
+
+#: 
+msgid "Open recipients in your local email application"
+msgstr "Buksan ang mga tatanggap sa lokal mong email application"
+
+#: 
+msgid "Open the Member Portal"
+msgstr "Buksan ang Portal ng Miyembro"
+
+#: 
+msgid "Open the Ministry Dashboard"
+msgstr "Buksan ang Dashboard ng Ministeryo"
+
+#: 
+msgid "Open the ministry"
+msgstr "Buksan ang ministeryo"
+
+#: 
+msgid "Open the occurrence"
+msgstr "Buksan ang pagkakataon"
+
+#: 
+msgid "Open the occurrence to assign the people you need."
+msgstr "Buksan ang pagkakataon para italaga ang mga taong kailangan mo."
+
+#: 
+msgid "Open this team"
+msgstr "Buksan ang pangkat na ito"
+
+#: 
+msgid "Opening a calendar to ministries requires Add Events permission"
+msgstr "Kailangan ang pahintulot na Magdagdag ng Mga Kaganapan para buksan ang isang kalendaryo sa mga ministeryo"
+
+#: 
+msgid "Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers."
+msgstr "Opsyonal. Ang bawat kuwalipikado sa isang posisyon ng pangkat na ito ay magiging guro ng klase, at hindi na babaguhin ng pahina ng klase ang mga guro nito."
+
+#: 
+msgid "Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events."
+msgstr "Opsyonal. Ang klase ang magiging Naka-link na Grupo: ang roster nito ang magche-check in, at hahanapin ng iskedyul para sa klase ang mga kaganapang ito."
+
+#: 
+msgid "Over Max: remove this one or raise Max."
+msgstr "Lampas sa Max: alisin ang isang ito o itaas ang Max."
+
+#: 
+msgid "Overridden templates"
+msgstr "Mga na-override na template"
+
+#: 
+msgid "Page %1$s of %2$s"
+msgstr "Pahina %1$s ng %2$s"
+
+#: 
+msgid "Page %d of %d"
+msgstr "Pahina %d ng %d"
+
+#: 
+msgid "Password reset"
+msgstr "Pag-reset ng Password"
+
+#: 
+msgid "Password reset link"
+msgstr "Link sa Pag-reset ng Password"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Dapat hindi bababa sa %s karakter ang haba ng mga password."
+msgstr[1] "Dapat hindi bababa sa %s karakter ang haba ng mga password."
+
+#: 
+msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
+msgstr "Pumili ng paparating na kaganapan sa kalendaryo at sabihin kung sino ang kailangan nito. Pinananatili ng kaganapan ang sarili nitong petsa at oras; para lagyan ng boluntaryo ang buong serye, magdagdag na lang ng iskedyul."
+
+#: 
+msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
+msgstr "Pumili ng taong pumayag nang pumalit sa iyo. Kukumpirmahin ito ng koordineytor mo."
+
+#: 
+msgid "Please choose calendars from the list."
+msgstr "Pakipili ang mga kalendaryo mula sa listahan."
+
+#: 
+msgid "Please choose whether your details need changing."
+msgstr "Pakipili kung kailangang baguhin ang mga detalye mo."
+
+#: 
+msgid "Please contact the church office so we may correct our records."
+msgstr "Pakikontak ang opisina ng simbahan upang maitama namin ang aming mga talaan."
+
+#: 
+msgid "Please contact the church office."
+msgstr "Pakikontak ang opisina ng simbahan."
+
+#: 
+msgid "Please enter at least two characters."
+msgstr "Maglagay ng kahit dalawang karakter."
+
+#: 
+msgid "Please let us know whether you can make it by accepting or declining on your volunteer schedule."
+msgstr "Pakipaalam sa amin kung makakapunta ka sa pamamagitan ng pagtanggap o pagtanggi sa iskedyul mo bilang boluntaryo."
+
+#: 
+msgid "Please tell us what needs changing."
+msgstr "Pakisabi sa amin kung ano ang kailangang baguhin."
+
+#: 
+msgid "Portal settings"
+msgstr "Mga setting ng portal"
+
+#: 
+msgid "Portal theme"
+msgstr "Tema ng portal"
+
+#: 
+msgid "Position"
+msgstr "Posisyon"
+
+#: 
+msgid "Position added"
+msgstr "Naidagdag ang posisyon"
+
+#: 
+msgid "Position deleted"
+msgstr "Nabura ang posisyon"
+
+#: 
+msgid "Position name"
+msgstr "Pangalan ng posisyon"
+
+#: 
+msgid "Position not found"
+msgstr "Hindi nahanap ang posisyon"
+
+#: 
+msgid "Position saved"
+msgstr "Na-save ang posisyon"
+
+#: 
+msgid "Positions"
+msgstr "Mga Posisyon"
+
+#: 
+msgid "Positions still short"
+msgstr "Mga posisyong kulang pa"
+
+#: 
+msgid "Proposed"
+msgstr "Iminungkahi"
+
+#: 
+msgid "Proposed substitute"
+msgstr "Iminungkahing kapalit"
+
+#: 
+msgid "Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed."
+msgstr "Ilagay ang ministeryong ito sa pahinang Mga Bukas na Oportunidad ng Portal ng Miyembro, kung saan makikita ito ng sinumang boluntaryo at maaaring mag-alok na tumulong. Sasali sila sa pool ng mga boluntaryo at mae-email ka."
+
+#: 
+msgid "Put {{name}} on instead? The original volunteer keeps their history and is told."
+msgstr "Ilagay si {{name}} sa halip? Pinananatili ng orihinal na boluntaryo ang kanyang kasaysayan at aabisuhan siya."
+
+#: 
+msgid "Qualification not found"
+msgstr "Hindi nahanap ang kuwalipikasyon"
+
+#: 
+msgid "Qualified for"
+msgstr "Kuwalipikado para sa"
+
+#: 
+msgid "Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them."
+msgstr "Maaaring mag-sign up ang sarili ng mga kuwalipikadong boluntaryo sa mga bukas na petsa ng posisyong ito. I-off para sa mga posisyong pinuno ng pangkat o koordineytor lamang ang dapat magtalaga; hindi ito iaalok ng Portal ng Miyembro."
+
+#: 
+msgid "Qualify its current teachers for"
+msgstr "Gawing kuwalipikado ang kasalukuyang mga guro nito para sa"
+
+#: 
+msgid "Qualify them for a position"
+msgstr "Gawin silang kuwalipikado para sa isang posisyon"
+
+#: 
+msgid "Qualify them for a position."
+msgstr "Gawin silang kuwalipikado para sa isang posisyon."
+
+#: 
+msgid "Reactivate"
+msgstr "I-reactivate"
+
+#: 
+msgid "Read the theme authoring guide"
+msgstr "Basahin ang gabay sa paggawa ng tema"
+
+#: 
+msgid "Recent Emails"
+msgstr "Kamakailang Mga Email"
+
+#: 
+msgid "Recent Sends"
+msgstr "Kamakailang Mga Ipinadala"
+
+#: 
+msgid "Recipient"
+msgstr "Tatanggap"
+
+#: 
+msgid "Recipient count (%d) exceeds the maximum allowed per send (%d)"
+msgstr "Lumampas ang bilang ng tatanggap (%d) sa pinakamataas na pinapayagan sa bawat pagpapadala (%d)"
+
+#: 
+msgid "Recipients must be given as personIds and familyIds, not as email addresses"
+msgstr "Dapat ibigay ang mga tatanggap bilang personIds at familyIds, hindi bilang mga email address"
+
+#: 
+msgid "Record a decline"
+msgstr "Itala ang pagtanggi"
+
+#: 
+msgid "Record an acceptance"
+msgstr "Itala ang pagtanggap"
+
+#: 
+msgid "Record that {{name}} said no? The response is saved as coming from you, and the slot reopens."
+msgstr "Itala na tumanggi si {{name}}? Sine-save ang tugon bilang galing sa iyo, at magbubukas muli ang puwesto."
+
+#: 
+msgid "Record that {{name}} said yes? The response is saved as coming from you, not from them."
+msgstr "Itala na pumayag si {{name}}? Sine-save ang tugon bilang galing sa iyo, hindi sa kanya."
+
+#: 
+msgid "Record: they accepted"
+msgstr "Itala: tinanggap nila"
+
+#: 
+msgid "Record: they declined"
+msgstr "Itala: tinanggihan nila"
+
+#: 
+msgid "Recruit Volunteers"
+msgstr "Mag-recruit ng Mga Boluntaryo"
+
+#: 
+msgid "Recruit Volunteers must be true or false"
+msgstr "Dapat true o false ang Recruit Volunteers"
+
+#: 
+msgid "Recruiting"
+msgstr "Nagre-recruit"
+
+#: 
+msgid "Recurring"
+msgstr "Paulit-ulit"
+
+#: 
+msgid "Reject"
+msgstr "Tanggihan"
+
+#: 
+msgid "Reject substitution"
+msgstr "Tanggihan ang pagpapalit"
+
+#: 
+msgid "Reject this substitute"
+msgstr "Tanggihan ang kapalit na ito"
+
+#: 
+msgid "Reminder lead time (hours)"
+msgstr "Lead time ng paalala (oras)"
+
+#: 
+msgid "Reminder: you are scheduled to serve"
+msgstr "Paalala: naka-iskedyul kang maglingkod"
+
+#: 
+msgid "Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes"
+msgstr "Naihahatid lamang ang mga paalala at alerto kapag tumatakbo ang mga background job. Para sa maagap na paghahatid, patakbuhin ang scheduled-task runner mula sa cron tuwing 15 minuto"
+
+#: 
+msgid "Remove Volunteer"
+msgstr "Alisin ang Boluntaryo"
+
+#: 
+msgid "Remove coordinator"
+msgstr "Alisin ang koordineytor"
+
+#: 
+msgid "Remove the class from them"
+msgstr "Alisin sa kanila ang klase"
+
+#: 
+msgid "Remove the team leader"
+msgstr "Alisin ang pinuno ng pangkat"
+
+#: 
+msgid "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool."
+msgstr "Alisin si {{name}} sa {{ministry}}? Aalisin nito ang lahat ng kuwalipikasyon niya rito, aalisin siya sa bawat hinaharap na pagkakataon, tatanggalin siya bilang default na boluntaryo sa mga iskedyul ng ministeryong ito, at aalisin siya sa pool ng mga boluntaryo."
+
+#: 
+msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
+msgstr "Naalis. {{qualifications}} kuwalipikasyon, {{assignments}} paparating na atas, {{defaults}} default sa iskedyul."
+
+#: 
+msgid "Repeats"
+msgstr "Inuulit"
+
+#: 
+msgid "Requirement not found"
+msgstr "Hindi nahanap ang kinakailangan"
+
+#: 
+msgid "Reset link"
+msgstr "Reset link"
+
+#: 
+msgid "Response recorded"
+msgstr "Naitala ang tugon"
+
+#: 
+msgid "Review the request on the volunteer dashboard and approve or reject it."
+msgstr "Suriin ang kahilingan sa dashboard ng boluntaryo at aprubahan o tanggihan ito."
+
+#: 
+msgid "Review this request"
+msgstr "Suriin ang kahilingang ito"
+
+#: 
+msgid "Run background jobs now"
+msgstr "Patakbuhin ngayon ang mga background job"
+
+#: 
+msgid "SMTP test"
+msgstr "SMTP test"
+
+#: 
+msgid "Save calendars"
+msgstr "I-save ang mga kalendaryo"
+
+#: 
+msgid "Save changes"
+msgstr "I-save ang mga Pagbabago"
+
+#: 
+msgid "Saved — this ministry is no longer asking for help"
+msgstr "Na-save — hindi na humihingi ng tulong ang ministeryong ito"
+
+#: 
+msgid "Saved — this ministry is now asking for help"
+msgstr "Na-save — humihingi na ng tulong ang ministeryong ito"
+
+#: 
+msgid "Saved. Members see the calendars switched on above."
+msgstr "Na-save. Nakikita ng mga miyembro ang mga kalendaryong naka-on sa itaas."
+
+#: 
+msgid "Schedule \"{{name}}\" created."
+msgstr "Nagawa ang iskedyul na \"{{name}}\"."
+
+#: 
+msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences until it is active."
+msgstr "Nagawa ang iskedyul na \"{{name}}\". Hindi ito aktibo, kaya hindi ito gagawa ng mga pagkakataon hangga't hindi ito naa-activate."
+
+#: 
+msgid "Schedule deactivated"
+msgstr "Na-deactivate ang iskedyul"
+
+#: 
+msgid "Schedule deleted"
+msgstr "Nabura ang iskedyul"
+
+#: 
+msgid "Schedule name"
+msgstr "Pangalan ng iskedyul"
+
+#: 
+msgid "Schedule not found"
+msgstr "Hindi nahanap ang iskedyul"
+
+#: 
+msgid "Schedule reactivated"
+msgstr "Muling na-activate ang iskedyul"
+
+#: 
+msgid "Schedule saved"
+msgstr "Na-save ang iskedyul"
+
+#: 
+msgid "Scheduled"
+msgstr "Naka-iskedyul"
+
+#: 
+msgid "Schedules"
+msgstr "Mga Iskedyul"
+
+#: 
+msgid "Schedules last topped up"
+msgstr "Huling napunan ang mga iskedyul"
+
+#: 
+msgid "Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s"
+msgstr "Hindi na nagtatakda ang mga iskedyul ng sarili nilang pag-uulit o oras; sumusunod sa kaganapan sa kalendaryo ang bawat pagkakataon. Alisin ang: %s"
+
+#: 
+msgid "Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays"
+msgstr "Hindi na itinatakda ng mga iskedyul kung gaano kaaga sila bubuuin: ang saklaw ng pag-iiskedyul sa Admin → Mga Setting ng Ministeryo ang nalalapat sa bawat iskedyul. Alisin ang: generateAheadDays"
+
+#: 
+msgid "Scheduling horizon (weeks)"
+msgstr "Saklaw ng pag-iiskedyul (mga linggo)"
+
+#: 
+msgid "Scope grant not found"
+msgstr "Hindi nahanap ang grant ng saklaw"
+
+#: 
+msgid "Search by name"
+msgstr "Hanapin ayon sa pangalan"
+
+#: 
+msgid "See the whole calendar"
+msgstr "Tingnan ang buong kalendaryo"
+
+#: 
+msgid "See what needs filling"
+msgstr "Tingnan kung ano ang kailangang punan"
+
+#: 
+msgid "Select a calendar to hide or show its events."
+msgstr "Pumili ng kalendaryo para itago o ipakita ang mga kaganapan nito."
+
+#: 
+msgid "Select ministries..."
+msgstr "Pumili ng mga ministeryo..."
+
+#: 
+msgid "Self sign-up"
+msgstr "Sariling pag-sign up"
+
+#: 
+msgid "Self-assignable"
+msgstr "Maaaring italaga ang sarili"
+
+#: 
+msgid "Self-assignable must be true or false"
+msgstr "Dapat true o false ang Self-assignable"
+
+#: 
+msgid "Self-service accounts"
+msgstr "Mga self-service na account"
+
+#: 
+msgid "Send"
+msgstr "Ipadala"
+
+#: 
+msgid "Send Email"
+msgstr "Magpadala ng Email"
+
+#: 
+msgid "Send email from ChurchCRM"
+msgstr "Magpadala ng email mula sa ChurchCRM"
+
+#: 
+msgid "Send the assignment message again"
+msgstr "Ipadala muli ang mensahe tungkol sa atas"
+
+#: 
+msgid "Send the calendars to show as a list."
+msgstr "Ipadala ang mga kalendaryong ipapakita bilang listahan."
+
+#: 
+msgid "Send to the church office"
+msgstr "Ipadala sa opisina ng simbahan"
+
+#: 
+msgid "Send your answer"
+msgstr "Ipadala ang sagot mo"
+
+#: 
+msgid "Sent"
+msgstr "Naipadala"
+
+#: 
+msgid "Sent by"
+msgstr "Ipinadala ni"
+
+#: 
+msgid "Serving next"
+msgstr "Susunod na maglilingkod"
+
+#: 
+msgid "Set as Accepted"
+msgstr "Itakdang Tinanggap"
+
+#: 
+msgid "Set staffing needs"
+msgstr "Itakda ang mga kailangang tauhan"
+
+#: 
+msgid "Show \"%s\" in the Member Portal"
+msgstr "Ipakita ang \"%s\" sa Portal ng Miyembro"
+
+#: 
+msgid "Show in Member Portal"
+msgstr "Ipakita sa Portal ng Miyembro"
+
+#: 
+msgid "Show past events"
+msgstr "Ipakita ang mga nakaraang kaganapan"
+
+#: 
+msgid "Show the church calendar"
+msgstr "Ipakita ang kalendaryo ng simbahan"
+
+#: 
+msgid "Show the church calendar in the Member Portal."
+msgstr "Ipakita ang kalendaryo ng simbahan sa Portal ng Miyembro."
+
+#: 
+msgid "Show the church calendar section in the Member Portal."
+msgstr "Ipakita ang seksyon ng kalendaryo ng simbahan sa Portal ng Miyembro."
+
+#: 
+msgid "Show the next"
+msgstr "Ipakita ang susunod na"
+
+#: 
+msgid "Show the volunteering and team sections in the Member Portal."
+msgstr "Ipakita ang mga seksyon ng pagboboluntaryo at pangkat sa Portal ng Miyembro."
+
+#: 
+msgid "Show this ministry on the Open Opportunities page"
+msgstr "Ipakita ang ministeryong ito sa pahinang Mga Bukas na Oportunidad"
+
+#: 
+msgid "Show volunteering"
+msgstr "Ipakita ang pagboboluntaryo"
+
+#: 
+msgid "Show volunteering and team pages in the Member Portal."
+msgstr "Ipakita ang mga pahina ng pagboboluntaryo at pangkat sa Portal ng Miyembro."
+
+#: 
+msgid "Show what I have already done"
+msgstr "Ipakita ang mga nagawa ko na"
+
+#: 
+msgid "Shown exactly as you type it. Line breaks are kept."
+msgstr "Ipinapakita nang eksakto ayon sa pagkaka-type mo. Pinananatili ang mga line break."
+
+#: 
+msgid "Sign up"
+msgstr "Mag-sign up"
+
+#: 
+msgid "Sign-in and security"
+msgstr "Sign-in at seguridad"
+
+#: 
+msgid "Signed in"
+msgstr "Naka-sign in"
+
+#: 
+msgid "Signed up"
+msgstr "Nag-sign up"
+
+#: 
+msgid "Sincerely"
+msgstr "Taos-pusong gumagalang"
+
+#: 
+msgid "Some of your details could not be saved. Please check the highlighted fields."
+msgstr "May ilan sa mga detalye mo na hindi ma-save. Pakisuri ang mga naka-highlight na field."
+
+#: 
+msgid "Some of your family details could not be saved. Please check the highlighted fields."
+msgstr "May ilan sa mga detalye ng pamilya mo na hindi ma-save. Pakisuri ang mga naka-highlight na field."
+
+#: 
+msgid "Someone else is covering"
+msgstr "May ibang pumapalit"
+
+#: 
+msgid "Something needs changing"
+msgstr "May kailangang baguhin"
+
+#: 
+msgid "Something went wrong"
+msgstr "May nagkamali"
+
+#: 
+msgid "Staff an event"
+msgstr "Maglagay ng boluntaryo sa kaganapan"
+
+#: 
+msgid "Staff them"
+msgstr "Lagyan sila ng boluntaryo"
+
+#: 
+msgid "Staff this event"
+msgstr "Lagyan ng boluntaryo ang kaganapang ito"
+
+#: 
+msgid "Staff this occurrence"
+msgstr "Lagyan ng boluntaryo ang pagkakataong ito"
+
+#: 
+msgid "Staffed"
+msgstr "Nalagyan na ng boluntaryo"
+
+#: 
+msgid "Staffing"
+msgstr "Pagtatalaga ng tauhan"
+
+#: 
+msgid "Staffing is set up after the events are created"
+msgstr "Itatakda ang pagtatalaga ng tauhan pagkatapos magawa ang mga kaganapan"
+
+#: 
+msgid "Staffing needs"
+msgstr "Mga kailangang tauhan"
+
+#: 
+msgid "Staffing needs saved"
+msgstr "Na-save ang mga kailangang tauhan"
+
+#: 
+msgid "Start by creating a ministry, then add the teams and positions that serve in it."
+msgstr "Magsimula sa paggawa ng ministeryo, saka idagdag ang mga pangkat at posisyong naglilingkod dito."
+
+#: 
+msgid "Start time"
+msgstr "Oras ng Simula"
+
+#: 
+msgid "Start typing a name"
+msgstr "Magsimulang mag-type ng pangalan"
+
+#: 
+msgid "Statistics"
+msgstr "Mga Estadistika"
+
+#: 
+msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr "Ihinto si {{name}} sa pagko-coordinate ng {{ministry}}? Hindi magagalaw ang kanyang login at sarili niyang mga atas."
+
+#: 
+msgid "Subscribe"
+msgstr "Mag-subscribe"
+
+#: 
+msgid "Subscribe to the calendar"
+msgstr "Mag-subscribe sa kalendaryo"
+
+#: 
+msgid "Substitute"
+msgstr "Kapalit"
+
+#: 
+msgid "Substitute approved"
+msgstr "Naaprubahan ang kapalit"
+
+#: 
+msgid "Substitute asked"
+msgstr "Humiling ng kapalit"
+
+#: 
+msgid "Substitute decision"
+msgstr "Pasya sa kapalit"
+
+#: 
+msgid "Substitute proposed"
+msgstr "Iminungkahi ang kapalit"
+
+#: 
+msgid "Substitute rejected"
+msgstr "Tinanggihan ang kapalit"
+
+#: 
+msgid "Substituted"
+msgstr "Napalitan"
+
+#: 
+msgid "Substitution approved"
+msgstr "Naaprubahan ang pagpapalit"
+
+#: 
+msgid "Substitution rejected"
+msgstr "Tinanggihan ang pagpapalit"
+
+#: 
+msgid "Substitution request not found"
+msgstr "Hindi nahanap ang kahilingan sa pagpapalit"
+
+#: 
+msgid "Substitution requests"
+msgstr "Mga kahilingan sa pagpapalit"
+
+#: 
+msgid "Sunday School Class"
+msgstr "Klase ng Sunday School"
+
+#: 
+msgid "System calendar"
+msgstr "Kalendaryo ng sistema"
+
+#: 
+msgid "System default"
+msgstr "Default ng sistema"
+
+#: 
+msgid "Take that back"
+msgstr "Bawiin iyon"
+
+#: 
+msgid "Take {{name}} off this position? No email is sent; their schedule shows the date as no longer needed, and the slot reopens."
+msgstr "Alisin si {{name}} sa posisyong ito? Walang ipapadalang email; ipapakita ng iskedyul niya ang petsa bilang hindi na kailangan, at magbubukas muli ang puwesto."
+
+#: 
+msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
+msgstr "Ang mga guro ng klaseng ito ay pinamamahalaan sa Mga Ministeryo → %1$s → %2$s."
+
+#: 
+msgid "Team"
+msgstr "Pangkat"
+
+#: 
+msgid "Team Leader"
+msgstr "Pinuno ng Pangkat"
+
+#: 
+msgid "Team added"
+msgstr "Naidagdag ang pangkat"
+
+#: 
+msgid "Team deleted"
+msgstr "Nabura ang pangkat"
+
+#: 
+msgid "Team leader"
+msgstr "Pinuno ng pangkat"
+
+#: 
+msgid "Team name"
+msgstr "Pangalan ng pangkat"
+
+#: 
+msgid "Team not found"
+msgstr "Hindi nahanap ang pangkat"
+
+#: 
+msgid "Team saved"
+msgstr "Na-save ang pangkat"
+
+#: 
+msgid "Teams"
+msgstr "Mga Pangkat"
+
+#: 
+msgid "Teams are the groups of people who serve in this ministry."
+msgstr "Ang mga pangkat ay mga grupo ng taong naglilingkod sa ministeryong ito."
+
+#: 
+msgid "Teams, positions and the people who fill them"
+msgstr "Mga pangkat, posisyon at ang mga pumupuno sa mga ito"
+
+#: 
+msgid "Ten most recent sign-ins"
+msgstr "Sampung pinakabagong sign-in"
+
+#: 
+msgid "Thank you"
+msgstr "Salamat!"
+
+#: 
+msgid "Thank you for signing up to serve"
+msgstr "Salamat sa pag-sign up para maglingkod"
+
+#: 
+msgid "Thank you for signing up to serve. You are on the schedule."
+msgstr "Salamat sa pag-sign up para maglingkod. Nasa iskedyul ka na."
+
+#: 
+msgid "Thank you. The church office has your answer."
+msgstr "Salamat. Natanggap ng opisina ng simbahan ang sagot mo."
+
+#: 
+msgid "Thank you. The church office will review this before it is added."
+msgstr "Salamat. Susuriin ito ng opisina ng simbahan bago idagdag."
+
+#: 
+msgid "Thanks for letting us know."
+msgstr "Salamat sa pagpapaalam sa amin."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help again."
+msgstr "Salamat — naipaalam na sa koordineytor na gusto mong tumulong muli."
+
+#: 
+msgid "Thanks — the coordinator has been told you'd like to help."
+msgstr "Salamat — naipaalam na sa koordineytor na gusto mong tumulong."
+
+#: 
+msgid "Thanks — you are on the list."
+msgstr "Salamat — nasa listahan ka na."
+
+#: 
+msgid "That Member Portal theme folder does not exist."
+msgstr "Walang ganoong folder ng tema ng Portal ng Miyembro."
+
+#: 
+msgid "That assignment belongs to someone else"
+msgstr "Pag-aari ng iba ang atas na iyon"
+
+#: 
+msgid "That assignment could not be saved"
+msgstr "Hindi ma-save ang atas na iyon"
+
+#: 
+msgid "That birthday is not a valid date."
+msgstr "Hindi wastong petsa ang kaarawang iyon."
+
+#: 
+msgid "That could not be saved."
+msgstr "Hindi iyon ma-save."
+
+#: 
+msgid "That could not be sent."
+msgstr "Hindi iyon maipadala."
+
+#: 
+msgid "That family member could not be added. Please check the highlighted fields."
+msgstr "Hindi maidagdag ang kapamilyang iyon. Pakisuri ang mga naka-highlight na field."
+
+#: 
+msgid "That is not a valid date."
+msgstr "Hindi iyon wastong petsa."
+
+#: 
+msgid "That list could not be loaded."
+msgstr "Hindi ma-load ang listahang iyon."
+
+#: 
+msgid "That person already holds this position on this occurrence"
+msgstr "Hawak na ng taong iyon ang posisyong ito sa pagkakataong ito"
+
+#: 
+msgid "That person is already assigned to this position on this occurrence"
+msgstr "Naitalaga na ang taong iyon sa posisyong ito sa pagkakataong ito"
+
+#: 
+msgid "That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway."
+msgstr "Wala ang taong iyon sa pool ng mga boluntaryo ng ministeryong ito. Ipadala muli na may out-of-pool override para maitalaga pa rin siya."
+
+#: 
+msgid "That person is not in this volunteer pool"
+msgstr "Wala ang taong iyon sa pool ng mga boluntaryong ito"
+
+#: 
+msgid "That person is not qualified for this position"
+msgstr "Hindi kuwalipikado ang taong iyon para sa posisyong ito"
+
+#: 
+msgid "That photo could not be saved."
+msgstr "Hindi ma-save ang larawang iyon."
+
+#: 
+msgid "That photo is too large. Please choose a smaller one."
+msgstr "Masyadong malaki ang larawang iyon. Pumili ng mas maliit."
+
+#: 
+msgid "That position belongs to a different ministry"
+msgstr "Nabibilang sa ibang ministeryo ang posisyong iyon"
+
+#: 
+msgid "That position belongs to a different team"
+msgstr "Nabibilang sa ibang pangkat ang posisyong iyon"
+
+#: 
+msgid "That position is already fully staffed"
+msgstr "Puno na ang tauhan ng posisyong iyon"
+
+#: 
+msgid "That position is not being staffed on this occurrence"
+msgstr "Hindi nilalagyan ng tauhan ang posisyong iyon sa pagkakataong ito"
+
+#: 
+msgid "That response could not be recorded"
+msgstr "Hindi maitala ang tugong iyon"
+
+#: 
+msgid "That status cannot be set directly"
+msgstr "Hindi maaaring direktang itakda ang status na iyon"
+
+#: 
+msgid "That substitution request could not be decided"
+msgstr "Hindi mapagpasyahan ang kahilingang iyon sa pagpapalit"
+
+#: 
+msgid "That team belongs to a different ministry"
+msgstr "Nabibilang sa ibang ministeryo ang pangkat na iyon"
+
+#: 
+msgid "That theme could not be activated."
+msgstr "Hindi ma-activate ang temang iyon."
+
+#: 
+msgid "That theme could not be checked."
+msgstr "Hindi masuri ang temang iyon."
+
+#: 
+msgid "That theme has errors, so it was not activated."
+msgstr "May mga error ang temang iyon, kaya hindi ito na-activate."
+
+#: 
+msgid "That volunteer could not be assigned"
+msgstr "Hindi maitalaga ang boluntaryong iyon"
+
+#: 
+msgid "That wedding date is not a valid date."
+msgstr "Hindi wastong petsa ang petsa ng kasal na iyon."
+
+#: 
+msgid "The %s must be a date in YYYY-MM-DD form"
+msgstr "Dapat petsa sa anyong YYYY-MM-DD ang %s"
+
+#: 
+msgid "The %s must be a whole number of minutes"
+msgstr "Dapat buong bilang ng minuto ang %s"
+
+#: 
+msgid "The %s must be within %d minutes of the event"
+msgstr "Dapat nasa loob ng %2$d minuto ng kaganapan ang %1$s"
+
+#: 
+msgid "The Member Portal calendars were saved."
+msgstr "Na-save ang mga kalendaryo ng Portal ng Miyembro."
+
+#: 
+msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
+msgstr "Hindi natapos ng Portal ng Miyembro ang hiniling mo. Pakisubukan muli pagkalipas ng ilang minuto."
+
+#: 
+msgid "The Member Portal is only available to a signed-in person, not to API clients."
+msgstr "Available lamang ang Portal ng Miyembro sa taong naka-sign in, hindi sa mga API client."
+
+#: 
+msgid "The Member Portal is set to the theme \"%s\", which is no longer on the server. Members are seeing an error page until you pick a theme that exists."
+msgstr "Nakatakda ang Portal ng Miyembro sa temang \"%s\", na wala na sa server. Nakakakita ng pahina ng error ang mga miyembro hangga't hindi ka pumipili ng temang umiiral."
+
+#: 
+msgid "The Member Portal is temporarily unavailable"
+msgstr "Pansamantalang hindi available ang Portal ng Miyembro"
+
+#: 
+msgid "The Member Portal theme \"%s\" could not be activated because it contains errors."
+msgstr "Hindi ma-activate ang temang \"%s\" ng Portal ng Miyembro dahil may mga error ito."
+
+#: 
+msgid "The Member Portal theme could not be rendered"
+msgstr "Hindi ma-render ang tema ng Portal ng Miyembro"
+
+#: 
+msgid "The Member Portal theme folder \"%s\" was not found."
+msgstr "Hindi nahanap ang folder ng temang \"%s\" ng Portal ng Miyembro."
+
+#: 
+msgid "The Member Portal theme was changed."
+msgstr "Napalitan ang tema ng Portal ng Miyembro."
+
+#: 
+msgid "The Teacher role of %1$s cannot be renamed or deleted while its teachers are managed in Ministries → %2$s → %3$s."
+msgstr "Hindi mapapalitan ang pangalan o mabubura ang tungkuling Teacher ng %1$s habang pinamamahalaan ang mga guro nito sa Mga Ministeryo → %2$s → %3$s."
+
+#: 
+msgid "The active theme folder is missing"
+msgstr "Nawawala ang folder ng aktibong tema"
+
+#: 
+msgid "The address is selected — copy it with your keyboard."
+msgstr "Napili na ang address — kopyahin ito gamit ang keyboard mo."
+
+#: 
+msgid "The asset path \"%s\" is not allowed."
+msgstr "Hindi pinapayagan ang asset path na \"%s\"."
+
+#: 
+msgid "The assignment could not be cancelled"
+msgstr "Hindi makansela ang atas"
+
+#: 
+msgid "The assignment message will be sent again"
+msgstr "Ipapadala muli ang mensahe tungkol sa atas"
+
+#: 
+msgid "The calendar address was copied."
+msgstr "Nakopya ang address ng kalendaryo."
+
+#: 
+msgid "The calendars could not be loaded. Please try again."
+msgstr "Hindi ma-load ang mga kalendaryo. Pakisubukan muli."
+
+#: 
+msgid "The calendars could not be saved."
+msgstr "Hindi ma-save ang mga kalendaryo."
+
+#: 
+msgid "The cart could not be added"
+msgstr "Hindi maidagdag ang pinili"
+
+#: 
+msgid "The church has not emailed you yet."
+msgstr "Wala pang naipadalang email sa iyo ang simbahan."
+
+#: 
+msgid "The church office has been notified. Please try again later."
+msgstr "Naabisuhan na ang opisina ng simbahan. Pakisubukan muli mamaya."
+
+#: 
+msgid "The class does not exist"
+msgstr "Hindi umiiral ang klase"
+
+#: 
+msgid "The class this schedule follows no longer exists."
+msgstr "Wala na ang klaseng sinusundan ng iskedyul na ito."
+
+#: 
+msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
+msgstr "Hindi iniimbak ang nilalaman ng email na ito. Ang teksto lamang ng mga mensaheng isinulat sa email composer at ng mga email ng boluntaryo ang iniingatan ng ChurchCRM."
+
+#: 
+msgid "The content of this email was not kept."
+msgstr "Hindi iningatan ang nilalaman ng email na ito."
+
+#: 
+msgid "The coordinator could not be added"
+msgstr "Hindi maidagdag ang koordineytor"
+
+#: 
+msgid "The coordinator list could not be loaded"
+msgstr "Hindi ma-load ang listahan ng mga koordineytor"
+
+#: 
+msgid "The date and time of every occurrence come from its calendar event, so moving the event moves the schedule."
+msgstr "Nanggagaling sa kaganapan sa kalendaryo nito ang petsa at oras ng bawat pagkakataon, kaya kapag inilipat ang kaganapan, nalilipat din ang iskedyul."
+
+#: 
+msgid "The days parameter must be a whole number between 1 and 365"
+msgstr "Dapat buong bilang mula 1 hanggang 365 ang parameter na days"
+
+#: 
+msgid "The default volunteer must be a person"
+msgstr "Dapat tao ang default na boluntaryo"
+
+#: 
+msgid "The default volunteers are saved on the schedule and go on the occurrences made from now on."
+msgstr "Nase-save sa iskedyul ang mga default na boluntaryo at napupunta sa mga pagkakataong gagawin mula ngayon."
+
+#: 
+msgid "The default volunteers must be a list"
+msgstr "Dapat listahan ang mga default na boluntaryo"
+
+#: 
+msgid "The description is too long"
+msgstr "Masyadong mahaba ang paglalarawan"
+
+#: 
+msgid "The end of the range is before its start."
+msgstr "Nauuna sa simula ang wakas ng saklaw."
+
+#: 
+msgid "The end of the range is not a date."
+msgstr "Hindi petsa ang wakas ng saklaw."
+
+#: 
+msgid "The event could not be staffed"
+msgstr "Hindi malagyan ng boluntaryo ang kaganapan"
+
+#: 
+msgid "The event does not exist"
+msgstr "Hindi umiiral ang kaganapan"
+
+#: 
+msgid "The event is inactive"
+msgstr "Hindi aktibo ang kaganapan"
+
+#: 
+msgid "The event must end after it starts"
+msgstr "Dapat matapos ang kaganapan pagkatapos itong magsimula"
+
+#: 
+msgid "The event title"
+msgstr "Ang pamagat ng kaganapan"
+
+#: 
+msgid "The event title is too long"
+msgstr "Masyadong mahaba ang pamagat ng kaganapan"
+
+#: 
+msgid "The event type a ministry's new events start with. When empty, or when the type was deleted, the type named \"Other\" is used if there is one."
+msgstr "Ang uri ng kaganapang pinagsisimulan ng mga bagong kaganapan ng isang ministeryo. Kapag walang laman, o nabura ang uri, gagamitin ang uri na may pangalang \"Other\" kung mayroon."
+
+#: 
+msgid "The event type does not exist"
+msgstr "Hindi umiiral ang uri ng kaganapan"
+
+#: 
+msgid "The event type this schedule follows no longer exists."
+msgstr "Wala na ang uri ng kaganapang sinusundan ng iskedyul na ito."
+
+#: 
+msgid "The events can only be moved to a class the team is linked to"
+msgstr "Mailalipat lamang ang mga kaganapan sa klaseng naka-link sa pangkat"
+
+#: 
+msgid "The events could not be created"
+msgstr "Hindi magawa ang mga kaganapan"
+
+#: 
+msgid "The events could not be deleted"
+msgstr "Hindi mabura ang mga kaganapan"
+
+#: 
+msgid "The events could not be staffed"
+msgstr "Hindi malagyan ng boluntaryo ang mga kaganapan"
+
+#: 
+msgid "The grant could not be removed"
+msgstr "Hindi maalis ang grant"
+
+#: 
+msgid "The last date is before the first date"
+msgstr "Nauuna sa unang petsa ang huling petsa"
+
+#: 
+msgid "The list of eligible volunteers could not be loaded"
+msgstr "Hindi ma-load ang listahan ng mga karapat-dapat na boluntaryo"
+
+#: 
+msgid "The maximum count cannot be below the minimum count"
+msgstr "Hindi maaaring mas mababa sa pinakamababang bilang ang pinakamataas na bilang"
+
+#: 
+msgid "The message could not be queued"
+msgstr "Hindi mailagay sa pila ang mensahe"
+
+#: 
+msgid "The minimum count cannot be negative"
+msgstr "Hindi maaaring negatibo ang pinakamababang bilang"
+
+#: 
+msgid "The ministry could not be created"
+msgstr "Hindi magawa ang ministeryo"
+
+#: 
+msgid "The ministry could not be deactivated"
+msgstr "Hindi ma-deactivate ang ministeryo"
+
+#: 
+msgid "The ministry could not be deleted"
+msgstr "Hindi mabura ang ministeryo"
+
+#: 
+msgid "The ministry could not be reactivated"
+msgstr "Hindi ma-reactivate ang ministeryo"
+
+#: 
+msgid "The ministry could not be saved"
+msgstr "Hindi ma-save ang ministeryo"
+
+#: 
+msgid "The occurrence could not be deleted"
+msgstr "Hindi mabura ang pagkakataon"
+
+#: 
+msgid "The occurrence has no schedule"
+msgstr "Walang iskedyul ang pagkakataon"
+
+#: 
+msgid "The occurrences could not be generated"
+msgstr "Hindi mabuo ang mga pagkakataon"
+
+#: 
+msgid "The original volunteer is released and the substitute takes the position. Both are told."
+msgstr "Pinakakawalan ang orihinal na boluntaryo at ang kapalit ang hahawak sa posisyon. Aabisuhan ang dalawa."
+
+#: 
+msgid "The original volunteer keeps the position. Both are told."
+msgstr "Pinananatili ng orihinal na boluntaryo ang posisyon. Aabisuhan ang dalawa."
+
+#: 
+msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr "Walang ganoong pahina. Maaaring inilipat o inalis na ito."
+
+#: 
+msgid "The position belongs to a different ministry"
+msgstr "Nabibilang sa ibang ministeryo ang posisyon"
+
+#: 
+msgid "The position could not be deleted"
+msgstr "Hindi mabura ang posisyon"
+
+#: 
+msgid "The position could not be saved"
+msgstr "Hindi ma-save ang posisyon"
+
+#: 
+msgid "The position is still covered, so no action is needed unless you want to adjust the roster."
+msgstr "Natatakpan pa rin ang posisyon, kaya walang kailangang gawin maliban kung gusto mong ayusin ang roster."
+
+#: 
+msgid "The qualification could not be removed"
+msgstr "Hindi maalis ang kuwalipikasyon"
+
+#: 
+msgid "The qualification could not be saved"
+msgstr "Hindi ma-save ang kuwalipikasyon"
+
+#: 
+msgid "The qualified volunteers could not be loaded"
+msgstr "Hindi ma-load ang mga kuwalipikadong boluntaryo"
+
+#: 
+msgid "The recurrence must say how the events repeat"
+msgstr "Dapat sabihin ng pag-uulit kung paano inuulit ang mga kaganapan"
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s has been approved."
+msgstr "Naaprubahan ang kahilingang maglingkod si %1$s kapalit ni %2$s."
+
+#: 
+msgid "The request for %1$s to serve in place of %2$s was not approved."
+msgstr "Hindi naaprubahan ang kahilingang maglingkod si %1$s kapalit ni %2$s."
+
+#: 
+msgid "The same position is listed twice in the staffing needs"
+msgstr "Dalawang beses nakalista ang parehong posisyon sa mga kailangang tauhan"
+
+#: 
+msgid "The schedule could not be deactivated"
+msgstr "Hindi ma-deactivate ang iskedyul"
+
+#: 
+msgid "The schedule could not be deleted"
+msgstr "Hindi mabura ang iskedyul"
+
+#: 
+msgid "The schedule could not be reactivated"
+msgstr "Hindi ma-reactivate ang iskedyul"
+
+#: 
+msgid "The schedule could not be saved"
+msgstr "Hindi ma-save ang iskedyul"
+
+#: 
+msgid "The schedule has been updated, so there is nothing further to do."
+msgstr "Na-update na ang iskedyul, kaya wala nang iba pang gagawin."
+
+#: 
+msgid "The schedule window ends before it starts"
+msgstr "Nauuna sa simula ang wakas ng panahon ng iskedyul"
+
+#: 
+msgid "The schedule's staffing needs could not be loaded"
+msgstr "Hindi ma-load ang mga kailangang tauhan ng iskedyul"
+
+#: 
+msgid "The staffing needs could not be loaded"
+msgstr "Hindi ma-load ang mga kailangang tauhan"
+
+#: 
+msgid "The staffing needs could not be reset"
+msgstr "Hindi ma-reset ang mga kailangang tauhan"
+
+#: 
+msgid "The staffing needs could not be saved"
+msgstr "Hindi ma-save ang mga kailangang tauhan"
+
+#: 
+msgid "The staffing needs must be a list"
+msgstr "Dapat listahan ang mga kailangang tauhan"
+
+#: 
+msgid "The staffing plan could not be loaded"
+msgstr "Hindi ma-load ang plano ng pagtatalaga ng tauhan"
+
+#: 
+msgid "The start of the range is not a date."
+msgstr "Hindi petsa ang simula ng saklaw."
+
+#: 
+msgid "The substitution could not be decided"
+msgstr "Hindi mapagpasyahan ang pagpapalit"
+
+#: 
+msgid "The substitution requests could not be loaded"
+msgstr "Hindi ma-load ang mga kahilingan sa pagpapalit"
+
+#: 
+msgid "The teachers can only be imported into a position of this team"
+msgstr "Maaari lamang i-import ang mga guro sa isang posisyon ng pangkat na ito"
+
+#: 
+msgid "The teachers of %1$s are managed in Ministries → %2$s → %3$s. Students can still be changed here."
+msgstr "Ang mga guro ng %1$s ay pinamamahalaan sa Mga Ministeryo → %2$s → %3$s. Maaari pa ring baguhin dito ang mga estudyante."
+
+#: 
+msgid "The team could not be deleted"
+msgstr "Hindi mabura ang pangkat"
+
+#: 
+msgid "The team could not be saved"
+msgstr "Hindi ma-save ang pangkat"
+
+#: 
+msgid "The team does not belong to this ministry"
+msgstr "Hindi kabilang sa ministeryong ito ang pangkat"
+
+#: 
+msgid "The theme folder was not found."
+msgstr "Hindi nahanap ang folder ng tema."
+
+#: 
+msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
+msgstr "Ang uring pinagsisimulan ng bagong kaganapan sa tab na Kalendaryo ng isang ministeryo. Maaari pa rin itong palitan sa bawat kaganapan, halimbawa para sa klaseng nangangailangan ng mga kategorya ng bilang ng dumalo."
+
+#: 
+msgid "The volunteer assignment could not be saved"
+msgstr "Hindi ma-save ang atas sa boluntaryo"
+
+#: 
+msgid "The volunteer pool of the %s ministry."
+msgstr "Ang pool ng mga boluntaryo ng ministeryong %s."
+
+#: 
+msgid "The volunteer setup change could not be saved"
+msgstr "Hindi ma-save ang pagbabago sa setup ng boluntaryo"
+
+#: 
+msgid "The window ends before it starts"
+msgstr "Nauuna sa simula ang wakas ng panahon"
+
+#: 
+msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr "Maaaring i-pin ng mga koordineytor nila ang mga kaganapan ng kanilang ministeryo sa kalendaryong ito nang walang pahintulot na Magdagdag ng Mga Kaganapan."
+
+#: 
+msgid "Theme"
+msgstr "Tema"
+
+#: 
+msgid "Themes"
+msgstr "Mga Tema"
+
+#: 
+msgid "Themes are provided by your church, not by ChurchCRM, and are not verified by the ChurchCRM project."
+msgstr "Ang mga tema ay ibinibigay ng simbahan ninyo, hindi ng ChurchCRM, at hindi bini-verify ng proyektong ChurchCRM."
+
+#: 
+msgid "There is no church calendar with id %d."
+msgstr "Walang kalendaryo ng simbahan na may id na %d."
+
+#: 
+msgid "There is no system calendar with id %d."
+msgstr "Walang kalendaryo ng sistema na may id na %d."
+
+#: 
+msgid "These are the details the church has on file for you. Changes are saved straight away."
+msgstr "Ito ang mga detalyeng nakatala sa simbahan tungkol sa iyo. Agad na nase-save ang mga pagbabago."
+
+#: 
+msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr "Ito ang mga pangkat ng boluntaryong pinangangasiwaan mo. Magbukas ng isa para itakda ang mga posisyon nito, sabihin kung sino ang maaaring maglingkod saan, at punan ang mga susunod na linggo."
+
+#: 
+msgid "These events are not one series: they differ in title, type or class"
+msgstr "Hindi iisang serye ang mga kaganapang ito: magkakaiba sila ng pamagat, uri o klase"
+
+#: 
+msgid "These ministries would like more people. Tell them you are interested and someone will be in touch."
+msgstr "Nais ng mga ministeryong ito ng mas maraming tao. Sabihin sa kanila na interesado ka at may makikipag-ugnayan sa iyo."
+
+#: 
+msgid "These needs come from the schedule. Saving here changes this occurrence only."
+msgstr "Nanggagaling sa iskedyul ang mga pangangailangang ito. Ang pag-save dito ay babago lamang sa pagkakataong ito."
+
+#: 
+msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
+msgstr "Mga self-service na account lamang ang binibilang ng mga numerong ito: mga taong ang login ay umaabot lamang sa Portal ng Miyembro at wala nang iba."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
+msgstr "Nakatalaga pa rin ang mga taong ito, ngunit hindi na bahagi ng plano ng pagtatalaga ng tauhan sa petsang ito ang posisyong hawak nila."
+
+#: 
+msgid "These people are still assigned, but the position they hold is no longer part of this occurrence's staffing plan."
+msgstr "Nakatalaga pa rin ang mga taong ito, ngunit hindi na bahagi ng plano ng pagtatalaga ng tauhan sa pagkakataong ito ang posisyong hawak nila."
+
+#: 
+msgid "These scheduled positions still need someone."
+msgstr "Kailangan pa rin ng tao ang mga naka-iskedyul na posisyong ito."
+
+#: 
+msgid "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first."
+msgstr "Naka-link sa klase ng Sunday School ang mga pangkat na ito ng %1$s: %2$s. I-unlink muna ang mga ito."
+
+#: 
+msgid "They could not be added"
+msgstr "Hindi sila maidagdag"
+
+#: 
+msgid "They could not be removed from this ministry"
+msgstr "Hindi sila maalis sa ministeryong ito"
+
+#: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Natatapos sila %d minuto pagkatapos matapos ang kaganapan."
+msgstr[1] "Natatapos sila %d minuto pagkatapos matapos ang kaganapan."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Natatapos sila %d minuto bago matapos ang kaganapan."
+msgstr[1] "Natatapos sila %d minuto bago matapos ang kaganapan."
+
+#: 
+msgid "They were already a volunteer here"
+msgstr "Boluntaryo na sila rito noon pa"
+
+#: 
+msgid "This assignment is %1$s and cannot be changed to %2$s"
+msgstr "Ang atas na ito ay %1$s at hindi maaaring palitan ng %2$s"
+
+#: 
+msgid "This assignment is no longer active"
+msgstr "Hindi na aktibo ang atas na ito"
+
+#: 
+msgid "This email is not in your history."
+msgstr "Wala sa kasaysayan mo ang email na ito."
+
+#: 
+msgid "This event has already happened"
+msgstr "Nangyari na ang kaganapang ito"
+
+#: 
+msgid "This goes to the church office for review. Until a member of staff approves it, the new family member shows here as waiting for review."
+msgstr "Mapupunta ito sa opisina ng simbahan para suriin. Hanggang hindi ito inaaprubahan ng isang kawani, ipapakita rito ang bagong kapamilya bilang naghihintay ng pagsusuri."
+
+#: 
+msgid "This group is a volunteer ministry's pool and is deleted with the ministry"
+msgstr "Pool ng mga boluntaryo ng isang ministeryo ang grupong ito at buburahin ito kasama ng ministeryo"
+
+#: 
+msgid "This group is the volunteer pool of %s and is managed from that ministry."
+msgstr "Ang grupong ito ang pool ng mga boluntaryo ng %s at pinamamahalaan mula sa ministeryong iyon."
+
+#: 
+msgid "This group is the volunteer pool of %s. It is managed from that ministry."
+msgstr "Ang grupong ito ang pool ng mga boluntaryo ng %s. Pinamamahalaan ito mula sa ministeryong iyon."
+
+#: 
+msgid "This installation has no calendars yet."
+msgstr "Wala pang mga kalendaryo ang instalasyong ito."
+
+#: 
+msgid "This is a reminder that you are scheduled to serve soon."
+msgstr "Paalala ito na naka-iskedyul kang maglingkod sa lalong madaling panahon."
+
+#: 
+msgid "This is not a valid theme folder name."
+msgstr "Hindi ito wastong pangalan ng folder ng tema."
+
+#: 
+msgid "This is not one of your team's dates."
+msgstr "Hindi ito isa sa mga petsa ng pangkat mo."
+
+#: 
+msgid "This is not one of your teams."
+msgstr "Hindi ito isa sa mga pangkat mo."
+
+#: 
+msgid "This is where the church sends post and who it calls about your household."
+msgstr "Dito ipinapadala ng simbahan ang koreo at kung sino ang tatawagan tungkol sa inyong sambahayan."
+
+#: 
+msgid "This is your church account. Everything you can do for yourself and your family lives here."
+msgstr "Ito ang account mo sa simbahan. Narito ang lahat ng magagawa mo para sa sarili mo at sa pamilya mo."
+
+#: 
+msgid "This ministry has no upcoming events on the calendar."
+msgstr "Walang paparating na kaganapan sa kalendaryo ang ministeryong ito."
+
+#: 
+msgid "This ministry has no upcoming events titled \"%s\". A schedule follows events that already exist: add them first on the ministry's Calendar tab."
+msgstr "Walang paparating na kaganapang may pamagat na \"%s\" ang ministeryong ito. Sinusundan ng iskedyul ang mga kaganapang umiiral na: idagdag muna ang mga ito sa tab na Kalendaryo ng ministeryo."
+
+#: 
+msgid "This ministry has no volunteer pool group"
+msgstr "Walang grupong pool ng mga boluntaryo ang ministeryong ito"
+
+#: 
+msgid "This ministry is not asking for help right now"
+msgstr "Hindi humihingi ng tulong ang ministeryong ito ngayon"
+
+#: 
+msgid "This ministry's events"
+msgstr "Mga kaganapan ng ministeryong ito"
+
+#: 
+msgid "This ministry's events (no event chosen yet)"
+msgstr "Mga kaganapan ng ministeryong ito (wala pang napiling kaganapan)"
+
+#: 
+msgid "This occurrence follows its schedule again"
+msgstr "Sinusundan muli ng pagkakataong ito ang iskedyul nito"
+
+#: 
+msgid "This occurrence has already happened"
+msgstr "Nangyari na ang pagkakataong ito"
+
+#: 
+msgid "This occurrence has already happened and its assignments can no longer be changed"
+msgstr "Nangyari na ang pagkakataong ito at hindi na maaaring baguhin ang mga atas nito"
+
+#: 
+msgid "This occurrence has been cancelled"
+msgstr "Kinansela ang pagkakataong ito"
+
+#: 
+msgid "This occurrence has its own staffing needs, set apart from its schedule."
+msgstr "May sariling kailangang tauhan ang pagkakataong ito, hiwalay sa iskedyul nito."
+
+#: 
+msgid "This page is not part of your account. If you think it should be, ask the church office."
+msgstr "Hindi bahagi ng account mo ang pahinang ito. Kung sa palagay mo ay dapat, magtanong sa opisina ng simbahan."
+
+#: 
+msgid "This page was not found"
+msgstr "Hindi nahanap ang pahinang ito"
+
+#: 
+msgid "This part of the Member Portal is for volunteer team leaders."
+msgstr "Ang bahaging ito ng Portal ng Miyembro ay para sa mga pinuno ng pangkat ng boluntaryo."
+
+#: 
+msgid "This position is assigned by its team leader or coordinator, not by signing up"
+msgstr "Itinatalaga ng pinuno ng pangkat o koordineytor ang posisyong ito, hindi sa pamamagitan ng pag-sign up"
+
+#: 
+msgid "This schedule cannot be deleted: %d volunteer assignments still reference its occurrences."
+msgstr "Hindi mabubura ang iskedyul na ito: %d atas ng boluntaryo ang tumutukoy pa sa mga pagkakataon nito."
+
+#: 
+msgid "This schedule has no staffing needs yet"
+msgstr "Wala pang kailangang tauhan ang iskedyul na ito"
+
+#: 
+msgid "This schedule is inactive. Reactivate it to generate its occurrences."
+msgstr "Hindi aktibo ang iskedyul na ito. I-reactivate ito para mabuo ang mga pagkakataon nito."
+
+#: 
+msgid "This substitution request has already been decided"
+msgstr "Napagpasyahan na ang kahilingang ito sa pagpapalit"
+
+#: 
+msgid "This team has no positions yet"
+msgstr "Wala pang mga posisyon ang pangkat na ito"
+
+#: 
+msgid "This team is already staffing this event"
+msgstr "Nilalagyan na ng boluntaryo ng pangkat na ito ang kaganapang ito"
+
+#: 
+msgid "This template asks for the file \"%s\", which the theme does not contain."
+msgstr "Hinihingi ng template na ito ang file na \"%s\", na wala sa tema."
+
+#: 
+msgid "This theme cannot be activated"
+msgstr "Hindi maaaring i-activate ang temang ito"
+
+#: 
+msgid "This theme has no problems."
+msgstr "Walang problema ang temang ito."
+
+#: 
+msgid "This version of ChurchCRM does not use a template at this path, so the override is never rendered."
+msgstr "Hindi gumagamit ng template sa path na ito ang bersyong ito ng ChurchCRM, kaya hindi kailanman nire-render ang override."
+
+#: 
+msgid "Tick them on the Volunteers tab of this team, then assign them here."
+msgstr "Lagyan ng tsek ang mga ito sa tab na Mga Boluntaryo ng pangkat na ito, pagkatapos ay italaga sila rito."
+
+#: 
+msgid "Ticks save as you make them."
+msgstr "Nase-save ang mga tsek habang ginagawa mo ang mga ito."
+
+#: 
+msgid "Times come from this event"
+msgstr "Nanggagaling sa kaganapang ito ang mga oras"
+
+#: 
+msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
+msgstr "Pinupunan ang bawat iskedyul, ipinapadala ang anumang nasa pila at isinasara ang mga natapos na pagkakataon, nang hindi naghihintay sa susunod na nakatakdang pagtakbo."
+
+#: 
+msgid "Turn down {{name}}? The original volunteer stays on and is told."
+msgstr "Tanggihan si {{name}}? Mananatili ang orihinal na boluntaryo at aabisuhan siya."
+
+#: 
+msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr "I-off ang template cache ng Portal ng Miyembro at i-print ang pangalan ng bawat template sa isang HTML comment. Para sa mga taga-disenyo ng tema; iwanang naka-off sa normal na paggamit."
+
+#: 
+msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
+msgstr "I-on ito para sa ministeryong ang mga pangkat ay nagtuturo ng mga klase ng Sunday School. Maaari na ngayong i-link sa klase ang mga pangkat nito, at magagamit ito ng mga iskedyul at kaganapan nito."
+
+#: 
+msgid "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use."
+msgstr "Ino-off ang template cache ng portal at piniprint ang pangalan ng bawat template sa isang HTML comment. Para sa mga taga-disenyo ng tema; iwanang naka-off sa normal na paggamit."
+
+#: 
+msgid "Two-factor authentication"
+msgstr "Dalawang-Hakbang na Pagpapatunay"
+
+#: 
+msgid "Unfilled Positions"
+msgstr "Mga Posisyong Hindi Pa Napupunan"
+
+#: 
+msgid "Unknown delivery error"
+msgstr "Hindi kilalang error sa paghahatid"
+
+#: 
+msgid "Unknown occurrence status"
+msgstr "Hindi kilalang status ng pagkakataon"
+
+#: 
+msgid "Unknown schedule link mode"
+msgstr "Hindi kilalang mode ng link ng iskedyul"
+
+#: 
+msgid "Unknown volunteer ministry"
+msgstr "Hindi kilalang ministeryo ng boluntaryo"
+
+#: 
+msgid "Until"
+msgstr "Hanggang"
+
+#: 
+msgid "Upcoming availability"
+msgstr "Paparating na availability"
+
+#: 
+msgid "Update your details"
+msgstr "I-update ang mga detalye mo"
+
+#: 
+msgid "Update your family details"
+msgstr "I-update ang mga detalye ng pamilya mo"
+
+#: 
+msgid "Use Staff this event to staff a single event"
+msgstr "Gamitin ang Lagyan ng boluntaryo ang kaganapang ito para sa iisang kaganapan"
+
+#: 
+msgid "Use the schedule's needs"
+msgstr "Gamitin ang mga pangangailangan ng iskedyul"
+
+#: 
+msgid "User must have Add Event permission, or coordinate a volunteer ministry, and the Events module must be enabled"
+msgstr "Dapat may pahintulot na Add Event ang user, o nagko-coordinate ng ministeryo ng boluntaryo, at dapat naka-enable ang module ng Events"
+
+#: 
+msgid "User must have Add Event permission, or coordinate the volunteer ministry this calendar belongs to"
+msgstr "Dapat may pahintulot na Add Event ang user, o nagko-coordinate ng ministeryo ng boluntaryong kinabibilangan ng kalendaryong ito"
+
+#: 
+msgid "V1 — Volunteer Opportunities (legacy)"
+msgstr "V1 — Mga Oportunidad ng Boluntaryo (luma)"
+
+#: 
+msgid "V1 — legacy Volunteer Opportunities"
+msgstr "V1 — lumang Mga Oportunidad ng Boluntaryo"
+
+#: 
+msgid "V2 — Ministries"
+msgstr "V2 — Mga Ministeryo"
+
+#: 
+msgid "V2 — Volunteer Management"
+msgstr "V2 — Pamamahala ng Boluntaryo"
+
+#: 
+msgid "Valid"
+msgstr "Wasto"
+
+#: 
+msgid "Validation"
+msgstr "Pagpapatunay"
+
+#: 
+msgid "View event"
+msgstr "Tingnan ang Kaganapan"
+
+#: 
+msgid "View my schedule"
+msgstr "Tingnan ang iskedyul ko"
+
+#: 
+msgid "View only"
+msgstr "Pagtingin lamang"
+
+#: 
+msgid "View person"
+msgstr "Tingnan ang Tao"
+
+#: 
+msgid "View the event"
+msgstr "Tingnan ang kaganapan"
+
+#: 
+msgid "View this email"
+msgstr "Tingnan ang email na ito"
+
+#: 
+msgid "Volunteer (Legacy)"
+msgstr "Boluntaryo (Luma)"
+
+#: 
+msgid "Volunteer Management V2 is not enabled"
+msgstr "Hindi naka-enable ang Pamamahala ng Boluntaryo V2"
+
+#: 
+msgid "Volunteer Ministry"
+msgstr "Ministeryo ng Boluntaryo"
+
+#: 
+msgid "Volunteer assignment"
+msgstr "Atas sa boluntaryo"
+
+#: 
+msgid "Volunteer declined"
+msgstr "Tumanggi ang boluntaryo"
+
+#: 
+msgid "Volunteer experience"
+msgstr "Karanasan sa pagboboluntaryo"
+
+#: 
+msgid "Volunteer positions still need to be filled"
+msgstr "Kailangan pa ring punan ang mga posisyon ng boluntaryo"
+
+#: 
+msgid "Volunteer reminder"
+msgstr "Paalala sa boluntaryo"
+
+#: 
+msgid "Volunteer sign-up"
+msgstr "Pag-sign up ng boluntaryo"
+
+#: 
+msgid "Volunteer times"
+msgstr "Oras ng mga boluntaryo"
+
+#: 
+msgid "Volunteering"
+msgstr "Pagboboluntaryo"
+
+#: 
+msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Pagboboluntaryong isinaayos ayon sa pagpapatakbo ng isang simbahan. May mga pangkat at posisyon ang bawat ministeryo; ang mga tao ay kuwalipikado para sa mga posisyon at kabilang sa grupong pool ng ministeryo; sinusundan ng mga iskedyul ang mga kaganapan sa kalendaryo at gumagawa ng mga pagkakataong may petsa at kailangang tauhan; nagtatalaga ng mga tao ang mga koordineytor, na tumatanggap, tumatanggi o nagmumungkahi ng kapalit; ipinapadala sa email ang mga paalala at alerto. Nakikita ng mga administrator at mga user na may pahintulot na Pamahalaan ang Mga Ministeryo ang bawat ministeryo at maaari silang gumawa, mag-deactivate at magbura ng mga ito. Ang koordineytor ng ministeryo ay binibigyan na lamang ng pahintulot na Pamahalaan ang Aking Mga Ministeryo: ang heading na Mga Ministeryo sa sidebar ay magpapakita na lamang ng mga ministeryong kino-coordinate nila. Pinapatakbo ng pinuno ng pangkat ang kanyang pangkat mula sa Portal ng Miyembro. Ginagamit ng mga miyembro ang Portal ng Miyembro para makita ang iskedyul nila, tumugon, mag-sign up at mag-alok ng tulong."
+
+#: 
+msgid "Volunteers assigned: {{total}}"
+msgstr "Mga boluntaryong naitalaga: {{total}}"
+
+#: 
+msgid "Volunteers finish"
+msgstr "Natatapos ang mga boluntaryo"
+
+#: 
+msgid "Volunteers needed"
+msgstr "Mga boluntaryong kailangan"
+
+#: 
+msgid "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar."
+msgstr "Nakatalaga sa mga kaganapang ito ang mga boluntaryo ng %s, kaya hindi ito mabubura dito. Hilingin sa ministeryong iyon na alisin ang pagtatalaga nito, o sa taong namamahala ng kalendaryo."
+
+#: 
+msgid "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed."
+msgstr "Nakatalaga sa ilan sa mga ito ang mga boluntaryo ng {{names}}. Maliban kung ikaw ang namamahala ng kalendaryo, tatanggihan ang pagbura hanggang maalis ang pagtatalagang iyon."
+
+#: 
+msgid "Volunteers start"
+msgstr "Nagsisimula ang mga boluntaryo"
+
+#: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Nagsisimula ang mga boluntaryo %d minuto pagkatapos magsimula ang kaganapan."
+msgstr[1] "Nagsisimula ang mga boluntaryo %d minuto pagkatapos magsimula ang kaganapan."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Nagsisimula ang mga boluntaryo %d minuto bago magsimula ang kaganapan."
+msgstr[1] "Nagsisimula ang mga boluntaryo %d minuto bago magsimula ang kaganapan."
+
+#: 
+msgid "Waiting for a reply"
+msgstr "Naghihintay ng sagot"
+
+#: 
+msgid "Waiting for review"
+msgstr "Naghihintay ng pagsusuri"
+
+#: 
+msgid "Waiting for your coordinator to confirm."
+msgstr "Naghihintay sa kumpirmasyon ng koordineytor mo."
+
+#: 
+msgid "We will email you when something needs filling."
+msgstr "Mag-e-email kami sa iyo kapag may kailangang punan."
+
+#: 
+msgid "We would love more help on Sunday mornings — no experience needed."
+msgstr "Malaki ang pangangailangan namin ng tulong tuwing Linggo ng umaga — hindi kailangan ng karanasan."
+
+#: 
+msgid "Welcome, %s"
+msgstr "Maligayang pagdating, %s"
+
+#: 
+msgid "What needs changing?"
+msgstr "Ano ang kailangang baguhin?"
+
+#: 
+msgid "What needs your attention this week"
+msgstr "Ano ang kailangan ng iyong pansin ngayong linggo"
+
+#: 
+msgid "What the check found"
+msgstr "Ang natuklasan ng pagsusuri"
+
+#: 
+msgid "What the volunteer experiences are"
+msgstr "Ano ang mga karanasan sa pagboboluntaryo"
+
+#: 
+msgid "What you want to say"
+msgstr "Ang gusto mong sabihin"
+
+#: 
+msgid "When"
+msgstr "Kailan"
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve or reject."
+msgstr "Kapag may nagmungkahi ang boluntaryo ng papalit sa kanya, lalabas ito rito para aprubahan o tanggihan mo."
+
+#: 
+msgid "When a volunteer proposes someone to take their place, it appears here for you to approve."
+msgstr "Kapag may nagmungkahi ang boluntaryo ng papalit sa kanya, lalabas ito rito para aprubahan mo."
+
+#: 
+msgid "When someone puts you on a team, or you sign up yourself, it will show up here."
+msgstr "Kapag inilagay ka ng isang tao sa isang pangkat, o nag-sign up ka mismo, lalabas ito rito."
+
+#: 
+msgid "Where"
+msgstr "Saan"
+
+#: 
+msgid "Where the dates come from"
+msgstr "Saan nanggagaling ang mga petsa"
+
+#: 
+msgid "Where we reach you"
+msgstr "Paano ka namin makokontak"
+
+#: 
+msgid "Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. \"Both\" shows each side by side during migration."
+msgstr "Aling karanasan sa Pamamahala ng Boluntaryo ang aktibo. Ang V1 ay ang lumang tampok na Mga Oportunidad ng Boluntaryo; ang V2 ay ang bagong daloy ng pag-iiskedyul at pagtatalaga. Ipinapakita ng \"Both\" ang dalawa nang magkatabi habang naglilipat."
+
+#: 
+msgid "Which events"
+msgstr "Aling mga kaganapan"
+
+#: 
+msgid "Which volunteer experience this church uses. The card on the right explains each choice."
+msgstr "Aling karanasan sa pagboboluntaryo ang gagamitin ng simbahang ito. Ipinaliliwanag ng card sa kanan ang bawat pagpipilian."
+
+#: 
+msgid "Who is covering"
+msgstr "Sino ang pumapalit"
+
+#: 
+msgid "Who is needed, who is on, and what is still short"
+msgstr "Sino ang kailangan, sino ang naka-duty, at ano ang kulang pa"
+
+#: 
+msgid "Whoever served least recently is listed first."
+msgstr "Unang nakalista ang pinakamatagal nang hindi naglingkod."
+
+#: 
+msgid "Work Email"
+msgstr "Email sa Trabaho"
+
+#: 
+msgid "Yearly"
+msgstr "Taunan"
+
+#: 
+msgid "You"
+msgstr "Ikaw"
+
+#: 
+msgid "You are already helping that day"
+msgstr "Tumutulong ka na sa araw na iyon"
+
+#: 
+msgid "You are already helping that day as {{what}}. Sign up for this as well?"
+msgstr "Tumutulong ka na sa araw na iyon bilang {{what}}. Mag-sign up din para dito?"
+
+#: 
+msgid "You are not allowed to change this. Please contact the church office."
+msgstr "Hindi ka pinapayagang baguhin ito. Makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "You are not currently associated with a family"
+msgstr "Kasalukuyang hindi ka nauugnay sa isang pamilya"
+
+#: 
+msgid "You are not part of a family record yet."
+msgstr "Hindi ka pa bahagi ng talaan ng pamilya."
+
+#: 
+msgid "You are on the list — thank you."
+msgstr "Nasa listahan ka na — salamat."
+
+#: 
+msgid "You can review or change this on your volunteer schedule."
+msgstr "Maaari mo itong suriin o baguhin sa iskedyul mo bilang boluntaryo."
+
+#: 
+msgid "You cannot open this page"
+msgstr "Hindi mo mabubuksan ang pahinang ito"
+
+#: 
+msgid "You cannot propose yourself as your own substitute"
+msgstr "Hindi mo maaaring imungkahi ang sarili mo bilang sarili mong kapalit"
+
+#: 
+msgid "You could not be signed up for that."
+msgstr "Hindi ka naisama sa pag-sign up para roon."
+
+#: 
+msgid "You do not lead a volunteer team yet."
+msgstr "Hindi ka pa pinuno ng pangkat ng boluntaryo."
+
+#: 
+msgid "You have a new calendar address. The old one no longer works."
+msgstr "May bago ka nang address ng kalendaryo. Hindi na gumagana ang luma."
+
+#: 
+msgid "You have been scheduled to serve"
+msgstr "Naiskedyul kang maglingkod"
+
+#: 
+msgid "You have been scheduled to serve."
+msgstr "Naiskedyul kang maglingkod."
+
+#: 
+msgid "You lead this"
+msgstr "Ikaw ang namumuno rito"
+
+#: 
+msgid "You may only create a schedule for a team you lead"
+msgstr "Para sa pangkat na pinamumunuan mo lamang maaaring gumawa ng iskedyul"
+
+#: 
+msgid "You will be back on the list for this one."
+msgstr "Babalik ka sa listahan para rito."
+
+#: 
+msgid "Your account is not linked to a person record. Please contact the church office."
+msgstr "Hindi naka-link sa talaan ng tao ang account mo. Makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "Your calendar subscription was saved."
+msgstr "Na-save ang subscription mo sa kalendaryo."
+
+#: 
+msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr "Titigil agad sa paggana ang kasalukuyan mong address. Kakailanganin ng bago ng sinumang binigyan mo nito."
+
+#: 
+msgid "Your details"
+msgstr "Mga detalye mo"
+
+#: 
+msgid "Your details have been saved."
+msgstr "Na-save ang mga detalye mo."
+
+#: 
+msgid "Your family details have been saved."
+msgstr "Na-save ang mga detalye ng pamilya mo."
+
+#: 
+msgid "Your photo"
+msgstr "Larawan mo"
+
+#: 
+msgid "Your photo has been saved."
+msgstr "Na-save ang larawan mo."
+
+#: 
+msgid "Your schedule could not be loaded."
+msgstr "Hindi ma-load ang iskedyul mo."
+
+#: 
+msgid "Your session has expired. Please sign in again."
+msgstr "Nag-expire na ang session mo. Mangyaring mag-sign in muli."
+
+#: 
+msgid "Your substitute request was approved"
+msgstr "Naaprubahan ang kahilingan mo ng kapalit"
+
+#: 
+msgid "Your substitute request was not approved"
+msgstr "Hindi naaprubahan ang kahilingan mo ng kapalit"
+
+#: 
+msgid "already staffed by this team"
+msgstr "may boluntaryo na mula sa pangkat na ito"
+
+#: 
+msgid "body is required"
+msgstr "Kailangan ang body"
+
+#: 
+msgid "calendarIds must be a list of calendar ids"
+msgstr "Dapat listahan ng mga id ng kalendaryo ang calendarIds"
+
+#: 
+msgid "classEvents must be one of: %s"
+msgstr "Dapat isa sa mga ito ang classEvents: %s"
+
+#: 
+msgid "classGroupId must be a group id or null"
+msgstr "Dapat id ng grupo o null ang classGroupId"
+
+#: 
+msgid "end offset"
+msgstr "offset ng wakas"
+
+#: 
+msgid "eventIds must be a list of event ids"
+msgstr "Dapat listahan ng mga id ng kaganapan ang eventIds"
+
+#: 
+msgid "every message has been delivered or is still queued"
+msgstr "naihatid na ang bawat mensahe o nasa pila pa"
+
+#: 
+msgid "has not served yet"
+msgstr "hindi pa naglilingkod"
+
+#: 
+msgid "importPositionId must be a position id"
+msgstr "Dapat id ng posisyon ang importPositionId"
+
+#: 
+msgid "inactive family"
+msgstr "hindi aktibong pamilya"
+
+#: 
+msgid "line %d"
+msgstr "linya %d"
+
+#: 
+msgid "marked do not email"
+msgstr "namarkahang huwag i-email"
+
+#: 
+msgid "messages could not be delivered"
+msgstr "mensaheng hindi naihatid"
+
+#: 
+msgid "messages could not be delivered after five attempts"
+msgstr "mensaheng hindi naihatid pagkatapos ng limang pagsubok"
+
+#: 
+msgid "messages waiting to be sent"
+msgstr "mensaheng naghihintay na maipadala"
+
+#: 
+msgid "ministryIds must be a list of ministry ids"
+msgstr "Dapat listahan ng mga id ng ministeryo ang ministryIds"
+
+#: 
+msgid "minutes after the event ends"
+msgstr "minuto pagkatapos matapos ang kaganapan"
+
+#: 
+msgid "minutes after the event starts"
+msgstr "minuto pagkatapos magsimula ang kaganapan"
+
+#: 
+msgid "minutes before the event ends"
+msgstr "minuto bago matapos ang kaganapan"
+
+#: 
+msgid "minutes before the event starts"
+msgstr "minuto bago magsimula ang kaganapan"
+
+#: 
+msgid "never"
+msgstr "hindi kailanman"
+
+#: 
+msgid "no email address"
+msgstr "walang email address"
+
+#: 
+msgid "personIds and familyIds must be arrays of positive integers"
+msgstr "Dapat mga array ng positibong integer ang personIds at familyIds"
+
+#: 
+msgid "record not found"
+msgstr "hindi nahanap ang talaan"
+
+#: 
+msgid "same address as another recipient"
+msgstr "kaparehong address ng ibang tatanggap"
+
+#: 
+msgid "single event"
+msgstr "isang kaganapan"
+
+#: 
+msgid "start offset"
+msgstr "offset ng simula"
+
+#: 
+msgid "subject and body are required"
+msgstr "Kailangan ang subject at body"
+
+#: 
+msgid "subject is required"
+msgstr "Kailangan ang subject"
+
+#: 
+msgid "subject must be 255 characters or fewer"
+msgstr "Dapat 255 karakter o mas kaunti ang subject"
+
+#: 
+msgid "sundaySchool must be true or false"
+msgstr "Dapat true o false ang sundaySchool"
+
+#: 
+msgid "window end"
+msgstr "wakas ng panahon"
+
+#: 
+msgid "window start"
+msgstr "simula ng panahon"
+
+#: 
+msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
+msgstr "{{added}} ang naidagdag, {{alreadyMembers}} ang boluntaryo na rito noon pa"
+
+#: 
+msgid "{{created}} occurrences created, {{existing}} were already there"
+msgstr "{{created}} pagkakataon ang nagawa, {{existing}} ang nandoon na"
+
+#: 
+msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
+msgstr "Gumawa ang {{ministry}} ng {{total}} kaganapan para sa {{className}} ({{upcoming}} paparating)."
+
+#: 
+msgid "{{names}} also staff some of them."
+msgstr "Nilalagyan din ng boluntaryo ng {{names}} ang ilan sa mga ito."
+
+#: 
+msgid "{{name}} already coordinates this ministry"
+msgstr "Koordineytor na ng ministeryong ito si {{name}}"
+
+#: 
+msgid "{{name}} assigned"
+msgstr "Naitalaga si {{name}}"
+
+#: 
+msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr "Naglilingkod na si {{name}} bilang {{position}} sa pagkakataong ito. Maaari mo pa rin siyang italaga."
+
+#: 
+msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
+msgstr "Kuwalipikado si {{name}} ngunit wala siya sa pool ng mga boluntaryo ng ministeryong ito. Ang pagtatalaga sa kanya ay magdaragdag sa kanya sa pagkakataong ito lamang."
+
+#: 
+msgid "{{name}} now coordinates this ministry"
+msgstr "Koordineytor na ngayon ng ministeryong ito si {{name}}"
+
+#: 
+msgid "{{position}}: the counts must be between 0 and {{max}}."
+msgstr "{{position}}: dapat nasa pagitan ng 0 at {{max}} ang mga bilang."
+
+#: 
+msgid "{{position}}: the maximum cannot be below the minimum."
+msgstr "{{position}}: hindi maaaring mas mababa sa pinakamababa ang pinakamataas."
+
+#: 
+msgid "{{position}}: {{name}} no longer qualified"
+msgstr "{{position}}: hindi na kuwalipikado si {{name}}"
+
+#: 
+msgid "{{position}}: {{name}} qualified"
+msgstr "{{position}}: kuwalipikado si {{name}}"
+
+#: 
+msgid "{{proposer}} asks {{substitute}} to take their place"
+msgstr "Hinihiling ni {{proposer}} kay {{substitute}} na pumalit sa kanya"
+
+#: 
+msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr "Nagawa ang {{title}} sa {{date}}. Lagyan na ngayon ng boluntaryo?"
+
