@@ -19417,10 +19417,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "Přidejte tuto adresu do své kalendářové aplikace. Aktualizuje se sama, když se změní kalendář církve."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "Přidejte sem události této služby: pracovní den, třídu, která se schází každou neděli. Přejdou do kalendáře církve a můžete je obsadit hned při vytváření."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "Přidáno přes Členský portál a čeká na kontrolu: %s"
 

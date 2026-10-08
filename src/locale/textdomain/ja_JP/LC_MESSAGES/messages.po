@@ -19292,10 +19292,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "このアドレスをカレンダーアプリに追加してください。教会のカレンダーが変更されると自動的に更新されます。"
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "このミニストリーの行事（作業の日、毎週日曜に集まるクラスなど）をここに追加します。教会のカレンダーに載り、作成と同時に奉仕者を割り当てることもできます。"
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "メンバーポータル経由で追加され、審査待ちです：%s"
 

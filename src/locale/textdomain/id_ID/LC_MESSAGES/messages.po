@@ -19321,10 +19321,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "Tambahkan alamat ini ke aplikasi kalender Anda. Alamat ini diperbarui otomatis saat kalender gereja berubah."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "Tambahkan acara pelayanan ini di sini: hari kerja bakti, kelas yang bertemu setiap hari Minggu. Acara masuk ke kalender gereja, dan Anda dapat menugaskan petugas saat membuatnya."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "Ditambahkan melalui Portal Jemaat dan menunggu peninjauan: %s"
 
