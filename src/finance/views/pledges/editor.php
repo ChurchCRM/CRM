@@ -38,6 +38,9 @@ $pledgeCheckNo = $isEdit ? ($pledge['checkNo'] ?? '') : '';
 $pledgeSchedule = $isEdit ? ($pledge['schedule'] ?? 'Once') : 'Once';
 $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
 $requireCheckNumber = SystemConfig::getBooleanValue('bRequireCheckNumber');
+$familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
+    ? gettext('Search by family name or envelope #')
+    : gettext('Search by family name');
 
 ?>
 
@@ -87,7 +90,7 @@ $requireCheckNumber = SystemConfig::getBooleanValue('bRequireCheckNumber');
                 <div class="col-lg-6">
                     <label class="form-label" for="FamilyName"><?= gettext('Family') ?></label>
                     <input type="hidden" id="FamilyID" name="FamilyID" value="<?= (int) $familyId ?>">
-                    <select class="form-select" id="FamilyName" name="FamilyName">
+                    <select class="form-select" id="FamilyName" name="FamilyName" placeholder="<?= InputUtils::escapeAttribute($familySearchHint) ?>">
                         <?php if ($familyId && $familyName): ?>
                             <option value="<?= (int) $familyId ?>" selected><?= InputUtils::escapeHTML($familyName) ?></option>
                         <?php endif; ?>
