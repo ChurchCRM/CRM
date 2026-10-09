@@ -201,3 +201,14 @@ jobs:
           gh api -X PATCH "repos/$DOCS_REPO/milestones/$next_number" -f state=open --silent
 
           echo "Docs milestones synchronized: released=$CURRENT_TAG, next=$NEXT_VERSION"
+
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Publish the docs for this release
+        env:
+          GH_TOKEN: ${{ secrets.DOCS_RELEASE_TOKEN }}
+          VERSION: ${{ env.CURRENT_TAG }}
+          NEXT_VERSION: ${{ steps.next_version.outputs.next_version }}
+          MERGE: 'true'
+        run: ./scripts/notify-docs-release.sh
