@@ -3,6 +3,7 @@
 use ChurchCRM\dto\Notification;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Plugin\PluginManager;
@@ -460,6 +461,11 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         }
         [, , $event] = $result;
 
+        $notReady = KioskGuestService::notReadyReason($event);
+        if ($notReady !== null) {
+            return SlimUtils::renderErrorJSON($response, $notReady, [], 409);
+        }
+
         $input = $request->getParsedBody();
 
         $firstName = InputUtils::sanitizeText($input['FirstName'] ?? '');
@@ -495,11 +501,20 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
             return SlimUtils::renderErrorJSON($response, gettext('Invalid email address'), [], 400);
         }
 
+        if ($phone === '' && $email === '') {
+            return SlimUtils::renderErrorJSON($response, gettext('A phone number or email address is required'), [], 400);
+        }
+
         $person = new Person();
         $person->setFirstName($firstName);
         $person->setLastName($lastName);
         $person->setDateEntered(DateTimeUtils::getNowDateTime());
-        $person->setEnteredBy(0); // 0 = kiosk entry
+        $person->setEnteredBy(Person::SELF_REGISTER);
+        $person->setNeedsReview(true);
+        $classificationId = SystemConfig::getIntValue('iKioskGuestClassification');
+        if ($classificationId > 0 && ListOptionQuery::create()->filterById(1)->filterByOptionId($classificationId)->count() > 0) {
+            $person->setClsId($classificationId);
+        }
         if ($birthYear !== 0) {
             $person->setBirthYear($birthYear);
         }

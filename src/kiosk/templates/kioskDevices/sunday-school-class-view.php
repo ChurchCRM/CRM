@@ -1,6 +1,10 @@
 <?php
 
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\ChurchLogoService;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\ChurchLogo;
 
 $sPageTitle = 'ChurchCRM - Kiosk';
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
@@ -24,6 +28,14 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     <div class="kiosk-header">
       <div class="d-flex justify-content-between align-items-start flex-wrap">
         <div>
+          <?php if (ChurchMetaData::getChurchName() !== '' || ChurchLogoService::hasCustomLogo()) : ?>
+          <div class="kiosk-church d-flex align-items-center mb-1">
+            <?php if (ChurchLogoService::hasCustomLogo()) : ?>
+              <?= ChurchLogo::img(['class' => 'kiosk-church-logo']) ?>
+            <?php endif; ?>
+            <span class="kiosk-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></span>
+          </div>
+          <?php endif; ?>
           <h1 id="eventTitle"></h1>
           <div class="kiosk-time-info">
             <i class="fa-solid fa-tablet-screen-button me-1"></i>
@@ -120,7 +132,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
   <button type="button" class="kiosk-fab kiosk-fab-refresh" id="refreshBtn" title="Refresh member list">
     <i class="fa-solid fa-arrows-rotate"></i>
   </button>
-  <button type="button" class="kiosk-fab kiosk-fab-guest" id="registerGuestBtn" title="Register walk-in guest">
+  <button type="button" class="kiosk-fab kiosk-fab-guest d-none" id="registerGuestBtn" title="Register walk-in guest">
     <i class="fa-solid fa-user-plus"></i>
   </button>
   <button type="button" class="kiosk-fab kiosk-fab-alert" id="alertAllBtn" title="Send alert to all families">
@@ -189,6 +201,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
       <div class="modal-body">
         <div id="guestFormError" class="alert alert-danger" style="display:none;"></div>
         <form id="guestRegistrationForm" novalidate>
+        <p class="text-muted mb-3"><?= gettext('A phone number or email address is required.') ?></p>
         <div class="row g-3">
           <div class="col-md-6">
             <label class="form-label" for="guestFirstName"><?= gettext('First Name') ?> <span class="text-danger">*</span></label>

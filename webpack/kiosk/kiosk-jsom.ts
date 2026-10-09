@@ -354,6 +354,9 @@ function updateActiveClassMembers(): void {
     path: "activeClassMembers",
   })
     .done((data: ActiveClassMembersResponse) => {
+      // Walk-in guests need a linked group and an open event; the server enforces it too.
+      $("#registerGuestBtn").toggleClass("d-none", !data?.GroupName);
+
       if (!data?.People || data.People.length === 0) {
         // No members found - show helpful debug info
         $("#classMemberContainer").html(renderNoMembersMessage());
@@ -414,7 +417,7 @@ function updateActiveClassMembers(): void {
     })
     .fail((xhr: JQuery.jqXHR) => {
       // API error - show debug info
-      let errorMessage = "Unable to load class members";
+      let errorMessage = "Unable to load group members";
       if (xhr.responseJSON?.message) {
         errorMessage = xhr.responseJSON.message;
       } else if (xhr.status === 500) {
@@ -432,7 +435,7 @@ function renderNoMembersMessage(): string {
     '<div class="kiosk-status-container">' +
     '<div class="card kiosk-status-card card-warning">' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fa-solid fa-users-slash me-2"></i>No Class Members Found</h3>' +
+    '<h3 class="card-title"><i class="fa-solid fa-users-slash me-2"></i>No Group Members Found</h3>' +
     "</div>" +
     '<div class="card-body">' +
     '<div class="kiosk-status-icon text-warning">' +
@@ -442,7 +445,7 @@ function renderNoMembersMessage(): string {
     '<div class="kiosk-instructions">' +
     '<h5><i class="fa-solid fa-circle-info me-2"></i>Possible Causes</h5>' +
     "<ol>" +
-    "<li><strong>Event not linked to a Group:</strong> Edit the event and associate it with a Sunday School or other group</li>" +
+    "<li><strong>Event not linked to a Group:</strong> Edit the event and associate it with a group</li>" +
     "<li><strong>Group has no members:</strong> Add people to the group that is linked to this event</li>" +
     "<li><strong>Event timing:</strong> The event may not be currently active (check start/end times)</li>" +
     "</ol>" +
@@ -581,6 +584,7 @@ function heartbeat(): void {
           $("#noEvent").hide();
           $("#event").show();
           $("#timeRemaining").addClass("d-none");
+          $("#registerGuestBtn").addClass("d-none");
           $("#classMemberContainer").html(renderCountdown(checkInOpensAt, Assignment.Event.Title, data.Name));
           startCountdown(checkInOpensAt);
         } else if (now.isAfter(eventEnd)) {
@@ -588,6 +592,7 @@ function heartbeat(): void {
           $("#noEvent").hide();
           $("#event").show();
           $("#timeRemaining").addClass("d-none");
+          $("#registerGuestBtn").addClass("d-none");
           $("#classMemberContainer").html(renderEventEnded(Assignment.Event.Title));
         } else {
           // Event is active - show class members + time-remaining badge so
@@ -1400,7 +1405,7 @@ function submitGuestRegistration(): void {
   if (submitBtn?.disabled) return;
 
   // Clear previous validation
-  [firstNameEl, lastNameEl].forEach((el) => {
+  [firstNameEl, lastNameEl, phoneEl, emailEl].forEach((el) => {
     el.classList.remove("is-invalid");
   });
   if (errorDiv) {
@@ -1416,6 +1421,15 @@ function submitGuestRegistration(): void {
   }
   if (!lastNameEl.value.trim()) {
     lastNameEl.classList.add("is-invalid");
+    valid = false;
+  }
+  if (!phoneEl.value.trim() && !emailEl.value.trim()) {
+    phoneEl.classList.add("is-invalid");
+    emailEl.classList.add("is-invalid");
+    if (errorDiv) {
+      errorDiv.textContent = i18next.t("A phone number or email address is required");
+      errorDiv.style.display = "block";
+    }
     valid = false;
   }
   if (!valid) return;
@@ -1445,6 +1459,13 @@ function submitGuestRegistration(): void {
       // Close modal
       const modalEl = document.getElementById("guestRegistrationModal");
       if (modalEl) window.bootstrap.Modal.getOrCreateInstance(modalEl).hide();
+
+      // An empty group (or a countdown/ended screen) replaced the roster markup, so there is no
+      // list to add to: reload and let the server's roster, which includes guests, render it.
+      if ($("#checkedInList").length === 0) {
+        window.location.reload();
+        return;
+      }
 
       // Render the guest directly in the Checked In list
       const guestMember: ClassMember = {

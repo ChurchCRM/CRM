@@ -72,6 +72,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<?php if (!empty($kioskSettings)) : ?>
+<div id="kioskSettings" class="mb-4"
+     data-title="<?= InputUtils::escapeAttribute(gettext('Kiosk Settings')) ?>"
+     data-settings="<?= InputUtils::escapeAttribute(json_encode($kioskSettings)) ?>"></div>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/kiosk-settings.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
+
 <div class="card mb-3" id="eventsOverviewCard" style="display:none;">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title">

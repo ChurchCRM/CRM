@@ -34,6 +34,25 @@
     font-size: 1.75rem;
     font-weight: 600;
   }
+
+  .kiosk-church-logo {
+    height: 2.5rem;
+    width: auto;
+    max-width: 10rem;
+    object-fit: contain;
+    margin-right: 0.75rem;
+    padding: 0.25rem;
+    background: white;
+    border-radius: 6px;
+  }
+
+  .kiosk-church-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
 }
 
 .kiosk-stats {

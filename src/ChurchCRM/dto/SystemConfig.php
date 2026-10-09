@@ -245,6 +245,7 @@ class   SystemConfig
             'iPersonInitialStyle'                  => new ConfigItem('iPersonInitialStyle', 'choice', '0', gettext('Person initials style'), '', json_encode(SystemConfig::getInitialStyleChoices())),
             'bDisplayBillCounts'                   => new ConfigItem('bDisplayBillCounts', 'boolean', '1', gettext('Show a breakdown of bill denominations on the deposit slip report')),
             'sKioskVisibilityTimestamp'            => new ConfigItem('sKioskVisibilityTimestamp', 'text', '', gettext('KioskVisibilityTimestamp')),
+            'iKioskGuestClassification'            => new ConfigItem('iKioskGuestClassification', 'choice', '3', gettext('Classification given to walk-in guests registered on a kiosk')),
             'bEnableLostPassword'                  => new ConfigItem('bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem('sChurchWebSite', 'text', '', ''),
             // Church social media accounts. Like the other church-identity
