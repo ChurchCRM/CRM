@@ -106,6 +106,7 @@ module.exports = {
     'system-settings-panel': './webpack/system-settings-panel',
     'kiosk-registration-closed': './webpack/kiosk-registration-closed',
     kiosk: './webpack/kiosk',
+    'kiosk-settings': './webpack/kiosk-settings',
     'people-settings': './webpack/people-settings',
     'people-list': './webpack/people/person-list',
     'people-family-list': './webpack/people/family-list',
