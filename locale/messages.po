@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 19:16+0000\n"
+"POT-Creation-Date: 2026-10-09 03:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -516,6 +516,12 @@ msgid "A payment is an actual donation received. It will be added to the selecte
 msgstr ""
 
 msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr ""
+
+msgid "A phone number or email address is required"
+msgstr ""
+
+msgid "A phone number or email address is required."
 msgstr ""
 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
@@ -2836,6 +2842,9 @@ msgstr ""
 msgid "Check-in failed. Please try again."
 msgstr ""
 
+msgid "Check-in has not opened for this event yet"
+msgstr ""
+
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr ""
 
@@ -3184,6 +3193,9 @@ msgid "Classes"
 msgstr ""
 
 msgid "Classification"
+msgstr ""
+
+msgid "Classification given to walk-in guests registered on a kiosk"
 msgstr ""
 
 msgid "Classifications"
@@ -6053,6 +6065,9 @@ msgstr ""
 msgid "Failed to refresh upgrade information from GitHub."
 msgstr ""
 
+msgid "Failed to register guest. Please try again."
+msgstr ""
+
 msgid "Failed to remove church logo"
 msgstr ""
 
@@ -6589,6 +6604,15 @@ msgid "First month of the fiscal year"
 msgstr ""
 
 msgid "First name"
+msgstr ""
+
+msgid "First name and last name are required"
+msgstr ""
+
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr ""
+
+msgid "First name and last name must each be at least 2 characters"
 msgstr ""
 
 msgid "First name is required"
@@ -7294,6 +7318,12 @@ msgstr ""
 msgid "Guernsey"
 msgstr ""
 
+msgid "Guest"
+msgstr ""
+
+msgid "Guest Classification"
+msgstr ""
+
 #. Context: countries
 msgid "Guinea (Guinée)"
 msgstr ""
@@ -7948,6 +7978,9 @@ msgstr ""
 msgid "Invalid assignment type"
 msgstr ""
 
+msgid "Invalid birth date"
+msgstr ""
+
 msgid "Invalid class"
 msgstr ""
 
@@ -7964,6 +7997,9 @@ msgid "Invalid date format"
 msgstr ""
 
 msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr ""
+
+msgid "Invalid email address"
 msgstr ""
 
 msgid "Invalid endpoint URL. Must be a full URL starting with https://"
@@ -8192,6 +8228,9 @@ msgid "Kiosk Name"
 msgstr ""
 
 msgid "Kiosk Registration Disabled"
+msgstr ""
+
+msgid "Kiosk Settings"
 msgstr ""
 
 msgid "Kiosk accepted"
@@ -11381,6 +11420,9 @@ msgstr ""
 msgid "Please ensure this what you want to do."
 msgstr ""
 
+msgid "Please enter a check number"
+msgstr ""
+
 msgid "Please enter a date"
 msgstr ""
 
@@ -12077,10 +12119,16 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
+msgid "Register & Check In"
+msgstr ""
+
 msgid "Register New Device"
 msgstr ""
 
 msgid "Register Now"
+msgstr ""
+
+msgid "Register Walk-In Guest"
 msgstr ""
 
 msgid "Register Your Church"
@@ -12092,7 +12140,17 @@ msgstr ""
 msgid "Register another family"
 msgstr ""
 
+msgid "Register walk-in guest"
+msgstr ""
+
 msgid "Registered"
+msgstr ""
+
+#, php-format
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr ""
+
+msgid "Registering..."
 msgstr ""
 
 msgid "Registration Error"
@@ -12252,6 +12310,11 @@ msgid "Request Password Reset"
 msgstr ""
 
 msgid "Request failed ({{status}})"
+msgstr ""
+
+msgid ""
+"Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
 msgstr ""
 
 msgid "Require all users to enroll in two-factor authentication"
@@ -14922,6 +14985,15 @@ msgid "This email is not in your history."
 msgstr ""
 
 msgid "This event has already happened"
+msgstr ""
+
+msgid "This event has ended"
+msgstr ""
+
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr ""
+
+msgid "This event has no start and end time"
 msgstr ""
 
 msgid "This event is inactive."
@@ -17810,6 +17882,9 @@ msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assig
 msgstr ""
 
 msgid "{{name}} now coordinates this ministry"
+msgstr ""
+
+msgid "{{name}} registered and checked in!"
 msgstr ""
 
 msgid "{{position}}: the counts must be between 0 and {{max}}."
