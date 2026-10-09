@@ -132,7 +132,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
   <button type="button" class="kiosk-fab kiosk-fab-refresh" id="refreshBtn" title="Refresh member list">
     <i class="fa-solid fa-arrows-rotate"></i>
   </button>
-  <button type="button" class="kiosk-fab kiosk-fab-guest d-none" id="registerGuestBtn" title="Register walk-in guest">
+  <button type="button" class="kiosk-fab kiosk-fab-guest d-none" id="registerGuestBtn" title="<?= InputUtils::escapeAttribute(gettext('Register walk-in guest')) ?>">
     <i class="fa-solid fa-user-plus"></i>
   </button>
   <button type="button" class="kiosk-fab kiosk-fab-alert" id="alertAllBtn" title="Send alert to all families">

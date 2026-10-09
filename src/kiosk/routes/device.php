@@ -535,7 +535,6 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
 
         LoggerUtils::getAppLogger()->info('registerGuest: Walk-in guest registered and checked in', [
             'personId'  => $person->getId(),
-            'name'      => "$firstName $lastName",
             'eventId'   => $event->getId(),
             'eventTitle' => $event->getTitle(),
         ]);
