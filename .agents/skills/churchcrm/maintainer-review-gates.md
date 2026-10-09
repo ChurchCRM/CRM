@@ -70,8 +70,8 @@ If hard blocks stay open and the author goes quiet, maintainers may close the PR
 ## Not blockers — Comment plus follow-up
 
 - Demo-import in `src/admin/demo/config.json`. Never Cypress seed if that would break tests.
-- User manual tracking issue on ChurchCRM/CRM. Docs PRs merge after the release ships.
-- Docs and screenshots follow-up. A PR that adds or changes user-visible behavior gets one note in the review: after merge, the docs PR (`ChurchCRM/docs.churchcrm.io`, held for the release) and the screenshots or video for docs, blog and marketing still have to land. Name which ones the PR already carries and which still need an issue. Skip bug-fix, security, CI, locale, dependency and refactor-only PRs. Not a blocker.
+- User manual tracking issue on ChurchCRM/CRM. The docs pull request uses the same milestone and stays open until that release is published.
+- Docs and screenshots follow-up. A PR that adds or changes user-visible behavior gets one note in the review: the docs pull request on `ChurchCRM/docs.churchcrm.io` needs that release milestone, and screenshots or video for docs, blog, and marketing still have to land. Name which ones the PR already carries and which still need an issue. The docs pull request merges only after the release exists, its CI is green, and CodeRabbit has approved. Skip bug-fix, security, CI, locale, dependency, and refactor-only PRs. Not a blocker.
 - Playwright capture when the PR changes UI that belongs on a marketing or docs page. It ships in the same PR (spec, `en` PNGs, manifest entries); ask the author to add it. If it cannot be taken yet, an issue linked from the PR is enough. Not a blocker.
 - Marketing / blog only on a full end-to-end feature. Ask George. Skip bug/security-only.
 - Member-facing consumer when this PR is storage-only.
