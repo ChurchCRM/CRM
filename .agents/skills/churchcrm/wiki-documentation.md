@@ -13,9 +13,9 @@ ChurchCRM has three distinct documentation audiences, each with a dedicated home
 
 | Audience | Home | Tooling |
 |---|---|---|
-| **End users** (church staff, volunteers) | https://docs.churchcrm.io — `docs/user-guide/` and `docs/administration/` | Docusaurus, plain Markdown |
-| **3rd-party app developers** (API consumers) | https://docs.churchcrm.io — `docs/api/` sidebar | `docusaurus-plugin-openapi-docs` generating from OpenAPI spec; hand-written `index.md` overview pages for auth context only |
-| **ChurchCRM core developers** (contributors) | GitHub Wiki (`ChurchCRM/CRM.wiki`) | Plain Markdown wiki pages |
+| **End users** (church staff, volunteers) | https://docs.churchcrm.io — `docs/user-guide/`, `docs/administration/`, installation | Docusaurus, plain Markdown |
+| **3rd-party app developers** (API consumers) | https://docs.churchcrm.io — `docs/api/` | OpenAPI specs from the published CRM tag in `crm-release.json`. Not from `master`. |
+| **ChurchCRM core developers** (contributors) | Skills in `.agents/skills/churchcrm/` and the CRM repo guides | Not the public docs site |
 
 ### What goes where
 
@@ -26,16 +26,30 @@ ChurchCRM has three distinct documentation audiences, each with a dedicated home
 - No raw API endpoint tables — link to `docs/api/` instead
 
 **3rd-party API docs (`docs/api/`):**
-- Driven by the OpenAPI YAML spec in `ChurchCRM/CRM` (`openapi/*.yaml`)
-- Individual endpoint docs must come from the spec via `npm run gen-api-docs` / `npm run regen`
-- Hand-written `index.md` overview pages are allowed for: authentication flow, API key setup, role tables, base URL
+- Built in CI from `docs/openapi/generated/*.yaml` at the ChurchCRM tag in `docs.churchcrm.io` `crm-release.json`
+- Do not copy specs into the docs repo and do not point the public site at `master`
+- Hand-written overview pages are allowed for authentication, API keys, and base URL
 - Never duplicate endpoint tables in user-guide pages
 
-**GitHub Wiki (ChurchCRM core dev docs):**
-- Architecture decisions and ADRs
-- Plugin system internals (hook lifecycle, manifest schema)
-- Contributing guidelines, dev setup, release process
-- Anything that requires understanding the codebase to be meaningful
+**Core developer docs:**
+- Architecture, plugin internals, and release process stay in this repo's skills and guides
+- Do not add them to the public docs site
+
+### Publishing a user-doc change
+
+The public site documents a **released** ChurchCRM version. A merged CRM pull request is not a release.
+
+| Change | Milestone on the docs pull request | Label |
+|---|---|---|
+| Product behavior for a version that is not out yet | That version, for example `7.8.0` | none |
+| A correction for a version that is already published | That version, for example `7.7.1` | none |
+| CI, dependencies, or the docs site itself | none | `ci`, `repo-maintenance`, `infrastructure`, or `dependencies` |
+
+Do not use the latest product milestone for site or CI work. Do not leave a product pull request without a milestone. Do not mark product docs as drafts to hold them. The release gate fails until that version is a published stable GitHub Release, and that open pull request is the hold.
+
+`main` also requires the docs build, the release gate, and a CodeRabbit approval. Do not merge past a red check.
+
+When the CRM release is published, `release-publish.yml` and `release-bookkeeping.yml` dispatch `crm-released`. The docs workflow opens the API pin pull request and merges it, plus the product pull requests on that milestone, only when their CI is green and CodeRabbit has approved. Pull requests that fail either stay open. Help readers with Discord, then a GitHub issue on `ChurchCRM/CRM`. The agent guide in the docs repo is `.agents/DOCS_GUIDE.md`.
 
 ### Anti-patterns to avoid
 
@@ -63,7 +77,7 @@ No escaping needed inside backtick code spans (`` `/api/{id}` ``) or fenced code
 ---
 
 ## Context
-ChurchCRM uses GitHub Wiki for complex documentation, admin guides, and developer reference materials. This skill covers when to create wiki articles and how to structure them for GitHub's wiki system.
+End-user and admin how-tos belong on https://docs.churchcrm.io. The rest of this file is the old wiki article shape. Do not add a new public admin or user guide to the GitHub Wiki.
 
 ---
 

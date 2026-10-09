@@ -133,7 +133,7 @@ Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
 
 | Change | Follow-up, not a merge gate |
 |--------|-----------------------------|
-| User-visible feature that could trip a non-technical user, or a complex workflow | Tracking issue on **ChurchCRM/CRM**. Docs live in docs.churchcrm.io. Merge those PRs only after this release ships. |
+| User-visible feature that could trip a non-technical user, or a complex workflow | Tracking issue on **ChurchCRM/CRM**. Open the docs pull request on `docs.churchcrm.io` with the same release milestone and leave it open. It merges only after that release is published, CI is green, and CodeRabbit has approved. |
 | Demo-worthy feature | Follow-up to add `src/admin/demo/config.json` values |
 | Full end-to-end feature | Flag "ask George if this is a campaign item". George decides. Skip for bug fixes and security-only PRs. |
 | Storage-only admin setting | Say so. Open a consumer follow-up. |

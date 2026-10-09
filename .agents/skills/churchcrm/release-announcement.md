@@ -122,30 +122,17 @@ maintainer rather than silently under-covering release after release.
 
 ## Step 3 — Docs PRs held for this release
 
-Docs describing an unreleased fix are wrong for everyone reading them today,
-so docs PRs in **`ChurchCRM/docs.churchcrm.io`** are held as drafts until the
-code ships — tagged with the source PR's milestone when it had one, or the
-`docs-pending-release` label when it didn't. On release, list both:
+Product docs live in **`ChurchCRM/docs.churchcrm.io`** on a pull request whose milestone is this tag. They are not drafts, and there is no `docs-pending-release` label. The release gate keeps them off `main` until the release exists. Publishing the release dispatches `crm-released`. The docs workflow then merges a pull request on that milestone only when every CI check succeeded and the latest CodeRabbit review is `APPROVED`.
 
 ```bash
 DOCS=ChurchCRM/docs.churchcrm.io
-# Precheck: an absent label or milestone returns [] with exit 0, which reads
-# exactly like "nothing held". Distinguish the two before querying.
-gh label list -R "$DOCS" --json name --jq '.[].name' | grep -qx docs-pending-release \
-  || echo "docs repo has no docs-pending-release label — convention not set up"
-gh api -X GET "repos/$DOCS/milestones" -f state=all --jq '.[].title' | grep -qx "$TAG" \
-  || echo "docs repo has no milestone $TAG"
-gh pr list -R "$DOCS" --state open --search "milestone:$TAG" --json number,title,url,isDraft
-gh pr list -R "$DOCS" --state open --label docs-pending-release --json number,title,url,isDraft
+gh pr list -R "$DOCS" --state open --search "milestone:$TAG" \
+  --json number,title,url,reviewDecision
+gh pr list -R "$DOCS" --state open --json number,title,url,milestone \
+  --jq '.[] | select(.milestone == null) | "#\(.number) \(.title)"'
 ```
 
-If either precheck prints, report **"convention not set up in the docs repo"**
-for that half instead of a clean "none" — the maintainer needs to know the
-hold process is not wired, not that nothing is waiting.
-
-Hand the maintainer the list with the release note — they are ready to merge
-now. **Do not merge them yourself.** Call out any open docs PR with neither a
-milestone nor the label: that is the one case that never gets swept up.
+Report the open milestone pull requests. The ones still open after the dispatch were skipped because CI or CodeRabbit did not pass. Also report product pull requests with no milestone: those are never picked up. **Do not merge them yourself.**
 
 ---
 
