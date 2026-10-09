@@ -436,9 +436,23 @@ $group->post('/plugins/{pluginId}/reset', function (Request $request, Response $
  *     @OA\Response(response=403, description="Forbidden — Admin role required")
  * )
  */
-$group->get('/approved', function (Request $request, Response $response): Response {
+// Adds installedVersion (null when not installed) and upgradeAvailable, using the same
+// version_compare() ordering the installer enforces.
+$withInstallState = static function (array $entries): array {
+    PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
+
+    return array_map(static function (array $entry): array {
+        $installed = PluginManager::getPluginMetadata((string) $entry['id'])?->getVersion();
+        $entry['installedVersion'] = $installed;
+        $entry['upgradeAvailable'] = $installed !== null && version_compare((string) $entry['version'], $installed, '>');
+
+        return $entry;
+    }, array_values($entries));
+};
+
+$group->get('/approved', function (Request $request, Response $response) use ($withInstallState): Response {
     try {
-        $entries = array_values(ApprovedPluginRegistry::all());
+        $entries = $withInstallState(ApprovedPluginRegistry::all());
 
         return SlimUtils::renderJSON($response, [
             'success' => true,
@@ -727,10 +741,10 @@ $group->delete('/plugins/{pluginId}/quarantine', function (Request $request, Res
  *     @OA\Response(response=500, description="Refresh failed")
  * )
  */
-$group->post('/registry/refresh', function (Request $request, Response $response): Response {
+$group->post('/registry/refresh', function (Request $request, Response $response) use ($withInstallState): Response {
     try {
         ApprovedPluginRegistry::fetchRemoteRegistry();
-        $entries = array_values(ApprovedPluginRegistry::all());
+        $entries = $withInstallState(ApprovedPluginRegistry::all());
 
         return SlimUtils::renderJSON($response, [
             'success' => true,

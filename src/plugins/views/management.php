@@ -546,7 +546,6 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    const installedVersions = <?= InputUtils::jsonEncodeForScript(array_column($communityPlugins, 'version', 'id')) ?>;
 $(document).ready(function() {
     // Shared confirm helper — replaces window.confirm with a Tabler modal
     function showConfirm(title, message, okLabel, onConfirm) {
@@ -963,21 +962,17 @@ $(document).ready(function() {
     //  Browse Approved Plugins
     // ─────────────────────────────────────────────────────────────
     function approvedActionHtml(entry) {
-        const installed = installedVersions[entry.id];
+        const installed = entry.installedVersion;
         const id = $('<div>').text(entry.id || '').html();
         const url = $('<div>').text(entry.downloadUrl || '').html();
-        if (installed !== undefined && !isNewerVersion(entry.version, installed)) {
+        if (installed && !entry.upgradeAvailable) {
             return '<span class="badge bg-green-lt text-green"><?= addslashes(gettext('Installed')) ?></span>';
         }
-        const upgrading = installed !== undefined;
+        const upgrading = !!installed;
         return '<button type="button" class="btn btn-primary btn-sm btn-install-approved" data-upgrade="' + (upgrading ? '1' : '0') + '"' +
             ' data-plugin-id="' + id + '" data-download-url="' + url + '">' +
             '<i class="fa-solid fa-' + (upgrading ? 'arrow-up' : 'download') + ' me-1"></i>' +
             (upgrading ? '<?= addslashes(gettext('Update')) ?>' : '<?= addslashes(gettext('Install')) ?>') + '</button>';
-    }
-
-    function isNewerVersion(candidate, current) {
-        return String(candidate).localeCompare(String(current), undefined, { numeric: true }) > 0;
     }
 
     function renderApprovedList(entries) {

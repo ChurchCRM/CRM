@@ -147,6 +147,21 @@ HTACCESS;
             }
         }
 
+        // Serialize per plugin so a slower, older request cannot replace a newer install.
+        return self::withPluginLock(
+            $pluginsPath,
+            $pluginId,
+            static fn (): array => self::installApproved($pluginsPath, $downloadUrl, $pluginId, $expectedSha, $expectedVersion)
+        );
+    }
+
+    /**
+     * @return array{pluginId: string, version: string, path: string, verified: bool, upgradedFrom: ?string}
+     */
+    private static function installApproved(string $pluginsPath, string $downloadUrl, string $pluginId, string $expectedSha, string $expectedVersion): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+
         // (3) Destination check — only a newer approved release may replace an install.
         $destDir = $pluginsPath . '/community/' . $pluginId;
         $upgradedFrom = null;
@@ -245,6 +260,20 @@ HTACCESS;
             }
         } finally {
             @unlink($tmpZip);
+        }
+    }
+
+    private static function withPluginLock(string $pluginsPath, string $pluginId, callable $operation): array
+    {
+        $lock = fopen(sys_get_temp_dir() . '/churchcrm-plugin-' . md5($pluginsPath) . '-' . $pluginId . '.lock', 'c');
+        if ($lock === false || !flock($lock, LOCK_EX)) {
+            throw new \RuntimeException('Could not lock the plugin for installation.');
+        }
+        try {
+            return $operation();
+        } finally {
+            flock($lock, LOCK_UN);
+            fclose($lock);
         }
     }
 

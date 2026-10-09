@@ -59,6 +59,32 @@ describe('Community plugin upgrade (fake registry)', () => {
         installedPlugin().then((p) => expect(p.version).to.eq('1.1.0'));
     });
 
+    const approvedEntry = () =>
+        cy.makePrivateAdminAPICall('GET', '/plugins/api/approved').then((r) => r.body.data.find((p) => p.id === ID));
+
+    it('flags upgradeAvailable only for a newer approved release', () => {
+        approve('1.1.0');
+        approvedEntry().then((e) => {
+            expect(e.installedVersion).to.eq('1.1.0');
+            expect(e.upgradeAvailable).to.be.false;
+        });
+        approve('1.2.0');
+        approvedEntry().then((e) => expect(e.upgradeAvailable).to.be.true);
+    });
+
+    it('treats a final release as an upgrade over its installed beta', () => {
+        approve('2.0.0-beta').then((downloadUrl) => {
+            cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/install', { downloadUrl });
+        });
+        approve('2.0.0').then((downloadUrl) => {
+            approvedEntry().then((e) => expect(e.upgradeAvailable, '2.0.0 over 2.0.0-beta').to.be.true);
+            cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/install', { downloadUrl }).then((r) => {
+                expect(r.body.data.upgradedFrom).to.eq('2.0.0-beta');
+            });
+        });
+        installedPlugin().then((p) => expect(p.version).to.eq('2.0.0'));
+    });
+
     it('leaves no upgrade backup directory behind', () => {
         cy.task('pluginFixtures:leftovers', ID).should('deep.equal', []);
     });
