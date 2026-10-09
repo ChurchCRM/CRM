@@ -25,9 +25,12 @@ name: "Marketing: capture screenshots & videos"
 #                  committed.
 #   3. create-pr — only on the default branch when stage 2 found changes.
 #
-# Trigger this from the Actions tab: pick the branch, click "Run workflow".
+# Runs nightly on master (scheduled runs always use the default branch), or
+# trigger it from the Actions tab: pick the branch, click "Run workflow".
 
 on:
+  schedule:
+    - cron: '0 6 * * *'
   workflow_dispatch:
 
 concurrency:
