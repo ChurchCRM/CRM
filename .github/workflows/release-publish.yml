@@ -451,6 +451,24 @@ jobs:
   # Bump master to the next version + open "Start <next> release" PR.
   # Reuses release-prepare.yml so the bump logic lives in one place.
   # ───────────────────────────────────────────────────────────────────
+  notify_docs:
+    needs: publish
+    if: success()
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Stage or publish the docs for this release
+        env:
+          GH_TOKEN: ${{ secrets.DOCS_RELEASE_TOKEN }}
+          VERSION: ${{ needs.publish.outputs.release_tag }}
+          NEXT_VERSION: ${{ inputs.next_version }}
+          MERGE: ${{ inputs.draft == false && inputs.prerelease == false && 'true' || 'false' }}
+        run: ./scripts/notify-docs-release.sh
+
   start_next:
     needs: publish
     if: success()
