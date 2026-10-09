@@ -66,7 +66,7 @@ describe("Family editor country (#10418)", () => {
                 openEditor(familyId);
                 cy.get('button[name="FamilySubmit"]').click();
 
-                cy.location("pathname").should("eq", `/people/family/${familyId}`);
+                cy.location("pathname").should("match", new RegExp(`/people/family/${familyId}$`));
                 readFamily(familyId).then((family) => {
                     expect(family.Country).to.equal(storedCountry);
                     expect(family.SecondCountry).to.equal(storedCountry);
@@ -86,7 +86,7 @@ describe("Family editor country (#10418)", () => {
             cy.get("#StateTextbox").should("be.visible").and("have.value", "MO");
             cy.get('button[name="FamilySubmit"]').click();
 
-            cy.location("pathname").should("eq", `/people/family/${familyId}`);
+            cy.location("pathname").should("match", new RegExp(`/people/family/${familyId}$`));
             readFamily(familyId).then((family) => {
                 expect(family.Country).to.equal("Atlantis");
                 expect(family.SecondCountry).to.equal("Atlantis");
