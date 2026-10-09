@@ -1,136 +1,136 @@
 {
   "%d day": {
-    "other": ""
+    "other": "%d hari"
   },
   "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "other": ""
+    "other": "%d default dilewati karena alasan lain (kejadian berakhir, dibatalkan atau penuh)"
   },
   "%d default skipped: qualification revoked": {
-    "other": ""
+    "other": "%d default dilewati: kualifikasi dicabut"
   },
   "%d default volunteer assigned": {
-    "other": ""
+    "other": "%d relawan default ditugaskan"
   },
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "other": ""
+    "other": "Posisi ini masih membutuhkan %d relawan lagi. Buka kejadian untuk mengisi celah."
   },
   "%d new occurrence": {
-    "other": ""
+    "other": "%d kejadian baru"
   },
   "%d volunteer is still needed for an upcoming occurrence.": {
-    "other": ""
+    "other": "%d relawan masih dibutuhkan untuk kejadian yang akan datang."
   },
   "%s email from the church": {
-    "other": ""
+    "other": "%s email dari gereja"
   },
   "%s person in your household": {
-    "other": ""
+    "other": "%s orang di rumah tangga Anda"
   },
   "%s position": {
-    "other": ""
+    "other": "%s posisi"
   },
   "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified.": {
-    "other": ""
+    "other": "Sekali sehari setiap jadwal aktif mendapatkan kejadian untuk peristiwa yang diikutinya, hingga %d minggu ke depan, dan relawan default setiap posisi ditugaskan pada yang baru sementara mereka tetap memenuhi syarat."
   },
   "Passwords must be at least %s character long.": {
-    "other": ""
+    "other": "Kata sandi harus panjang minimal %s karakter."
   },
   "They finish %d minute after the event ends.": {
-    "other": ""
+    "other": "Mereka selesai %d menit setelah acara berakhir."
   },
   "They finish %d minute before the event ends.": {
-    "other": ""
+    "other": "Mereka selesai %d menit sebelum acara berakhir."
   },
   "Volunteers start %d minute after the event starts.": {
-    "other": ""
+    "other": "Relawan mulai %d menit setelah acara dimulai."
   },
   "Volunteers start %d minute before the event starts.": {
-    "other": ""
+    "other": "Relawan mulai %d menit sebelum acara dimulai."
   },
-  "Not authorized to change this event's audience group": "",
-  "Only a volunteer manager can change who coordinates a ministry": "",
-  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "",
-  "Cancel occurrence": "",
-  "Cancel this occurrence": "",
-  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "",
-  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "",
-  "Events deleted: {{total}}": "",
-  "Events to delete: {{total}}": "",
-  "Occurrence cancelled": "",
-  "Occurrence restored": "",
-  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "",
-  "Restore occurrence": "",
-  "Restore this occurrence": "",
-  "The occurrence could not be cancelled": "",
-  "The occurrence could not be restored": "",
-  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "",
-  "A phone number or email address is required": "",
-  "A phone number or email address is required.": "",
-  "Check-in has not opened for this event yet": "",
-  "Classification given to walk-in guests registered on a kiosk": "",
-  "Failed to register guest. Please try again.": "",
-  "First name and last name are required": "",
-  "First name and last name must each be 50 characters or fewer": "",
-  "First name and last name must each be at least 2 characters": "",
-  "Guest": "",
-  "Guest Classification": "",
-  "Invalid birth date": "",
-  "Invalid email address": "",
-  "Kiosk Settings": "",
-  "Please enter a check number": "",
-  "Register & Check In": "",
-  "Register Walk-In Guest": "",
-  "Register walk-in guest": "",
-  "Registered as a walk-in guest at the kiosk during event: %s": "",
-  "Registering...": "",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "",
-  "This event has ended": "",
-  "This event has no group assigned, so guests cannot be registered": "",
-  "This event has no start and end time": "",
-  "{{name}} registered and checked in!": "",
+  "Not authorized to change this event's audience group": "Tidak diizinkan mengubah kelompok penonton acara ini",
+  "Only a volunteer manager can change who coordinates a ministry": "Hanya manajer relawan yang dapat mengubah siapa yang mengoordinasi pelayanan",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Memilih V1 menghentikan sementara email relawan V2; apa pun yang antri akan dikirim ketika V2 kembali aktif, kecuali jika kejadiannya sudah berakhir.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Tambahkan acara pelayanan ini di sini: hari kerja, kelas yang bertemu setiap hari Minggu. Mereka masuk ke kalender gereja, dan setelah dibuat Anda akan ditanya apakah akan menyediakan staf untuk mereka.",
+  "Cancel occurrence": "Batalkan kejadian",
+  "Cancel this occurrence": "Batalkan kejadian ini",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Pembatalan tidak memberitahu siapa pun: tidak ada email yang dikirim. Penugasan disimpan, tidak ada pengingat yang dijadwalkan saat dibatalkan, dan tidak ada yang dapat ditugaskan sampai dipulihkan.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Acara yang dihapus meninggalkan setiap kalender, dengan check-in dan hitungan kepalanya, dan penempatan staf pelayanan ini hanya menyimpan tanggalnya. Ini tidak dapat dibatalkan.",
+  "Events deleted: {{total}}": "Acara dihapus: {{total}}",
+  "Events to delete: {{total}}": "Acara yang akan dihapus: {{total}}",
+  "Occurrence cancelled": "Kejadian dibatalkan",
+  "Occurrence restored": "Kejadian dipulihkan",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Kembalikan kejadian ini ke jadwal sehingga dapat diisi staf lagi? Tidak ada yang diberitahu: tidak ada email yang dikirim.",
+  "Restore occurrence": "Pulihkan kejadian",
+  "Restore this occurrence": "Pulihkan kejadian ini",
+  "The occurrence could not be cancelled": "Kejadian tidak dapat dibatalkan",
+  "The occurrence could not be restored": "Kejadian tidak dapat dipulihkan",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Anda dapat menambahkan acara ke setiap kalender, jadi semuanya tercantum. Kalender pelayanan ini sendiri dicentang untuk memulai.",
+  "A phone number or email address is required": "Nomor telepon atau alamat email diperlukan",
+  "A phone number or email address is required.": "Nomor telepon atau alamat email diperlukan.",
+  "Check-in has not opened for this event yet": "Check-in belum dibuka untuk acara ini",
+  "Classification given to walk-in guests registered on a kiosk": "Klasifikasi yang diberikan kepada pengunjung yang mendaftar di kiosk",
+  "Failed to register guest. Please try again.": "Gagal mendaftarkan tamu. Silakan coba lagi.",
+  "First name and last name are required": "Nama depan dan nama belakang diperlukan",
+  "First name and last name must each be 50 characters or fewer": "Nama depan dan nama belakang masing-masing harus 50 karakter atau lebih sedikit",
+  "First name and last name must each be at least 2 characters": "Nama depan dan nama belakang masing-masing harus setidaknya 2 karakter",
+  "Guest": "Tamu",
+  "Guest Classification": "Klasifikasi Tamu",
+  "Invalid birth date": "Tanggal kelahiran tidak valid",
+  "Invalid email address": "Alamat email tidak valid",
+  "Kiosk Settings": "Pengaturan Kiosk",
+  "Please enter a check number": "Silakan masukkan nomor cek",
+  "Register & Check In": "Daftar & Masuk",
+  "Register Walk-In Guest": "Daftarkan Tamu Yang Datang",
+  "Register walk-in guest": "Daftarkan tamu yang datang",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Terdaftar sebagai tamu yang datang di kiosk selama acara: %s",
+  "Registering...": "Sedang mendaftar...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Memerlukan nomor cek saat merekam pembayaran cek pada entri penyetoran.\nCatatan: menonaktifkan ini juga menonaktifkan deteksi nomor cek duplikat — cek fisik yang sama dapat dimasukkan lebih dari sekali.",
+  "This event has ended": "Acara ini telah berakhir",
+  "This event has no group assigned, so guests cannot be registered": "Acara ini tidak memiliki kelompok yang ditugaskan, jadi tamu tidak dapat didaftarkan",
+  "This event has no start and end time": "Acara ini tidak memiliki waktu mulai dan berakhir",
+  "{{name}} registered and checked in!": "{{name}} telah mendaftar dan login!",
   "\"{{name}}\": {{count}} occurrences created": {
-    "one": "",
-    "other": ""
+    "one": "\"{{name}}\"：{{count}} kejadian dibuat",
+    "other": "\"{{name}}\"：{{count}} kejadian dibuat"
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "",
-    "other": ""
+    "one": "Email dikirim ke {{count}} penerima.",
+    "other": "Email dikirim ke {{count}} penerima."
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "",
-    "other": ""
+    "one": "Tidak ada kejadian baru. Semua {{count}} peristiwa melalui {{through}} sudah memiliki satu.",
+    "other": "Tidak ada kejadian baru. Semua {{count}} peristiwa melalui {{through}} sudah memiliki satu."
   },
   "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "",
-    "other": ""
+    "one": "Jadwal \"{{name}}\" dibuat：{{count}} kejadian",
+    "other": "Jadwal \"{{name}}\" dibuat：{{count}} kejadian"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "",
-    "other": ""
+    "one": "Mengirim ke {{count}} penerima. Alamat tanpa catatan orang tidak disertakan: {{list}}",
+    "other": "Mengirim ke {{count}} penerima. Alamat tanpa catatan orang tidak disertakan: {{list}}"
   },
   "{{count}} could not be assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} tidak dapat ditugaskan",
+    "other": "{{count}} tidak dapat ditugaskan"
   },
   "{{count}} left open because the default is no longer qualified": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} dibiarkan terbuka karena default tidak lagi memenuhi syarat",
+    "other": "{{count}} dibiarkan terbuka karena default tidak lagi memenuhi syarat"
   },
   "{{count}} volunteers assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} relawan ditugaskan",
+    "other": "{{count}} relawan ditugaskan"
   },
   "{{count}} waiting for your answer": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} menunggu jawaban Anda",
+    "other": "{{count}} menunggu jawaban Anda"
   },
   "{{count}} {{title}} events created. Staff them now?": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} {{title}} peristiwa dibuat. Atur staf mereka sekarang?",
+    "other": "{{count}} {{title}} peristiwa dibuat. Atur staf mereka sekarang?"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "",
-    "other": ""
+    "one": "{{names}} akan mengatur staf untuk peristiwa ini. Kejadian mereka dibuat saat tiba dalam {{count}} minggu ke depan.",
+    "other": "{{names}} akan mengatur staf untuk peristiwa ini. Kejadian mereka dibuat saat tiba dalam {{count}} minggu ke depan."
   }
 }

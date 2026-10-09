@@ -1,88 +1,88 @@
 {
-  "Not authorized to change this event's audience group": "",
-  "Only a volunteer manager can change who coordinates a ministry": "",
-  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "",
-  "Cancel occurrence": "",
-  "Cancel this occurrence": "",
-  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "",
-  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "",
-  "Events deleted: {{total}}": "",
-  "Events to delete: {{total}}": "",
-  "Occurrence cancelled": "",
-  "Occurrence restored": "",
-  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "",
-  "Restore occurrence": "",
-  "Restore this occurrence": "",
-  "The occurrence could not be cancelled": "",
-  "The occurrence could not be restored": "",
-  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "",
-  "A phone number or email address is required": "",
-  "A phone number or email address is required.": "",
-  "Check-in has not opened for this event yet": "",
-  "Classification given to walk-in guests registered on a kiosk": "",
-  "Failed to register guest. Please try again.": "",
-  "First name and last name are required": "",
-  "First name and last name must each be 50 characters or fewer": "",
-  "First name and last name must each be at least 2 characters": "",
-  "Guest": "",
-  "Guest Classification": "",
-  "Invalid birth date": "",
-  "Invalid email address": "",
-  "Kiosk Settings": "",
-  "Please enter a check number": "",
-  "Register & Check In": "",
-  "Register Walk-In Guest": "",
-  "Register walk-in guest": "",
-  "Registered as a walk-in guest at the kiosk during event: %s": "",
-  "Registering...": "",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "",
-  "This event has ended": "",
-  "This event has no group assigned, so guests cannot be registered": "",
-  "This event has no start and end time": "",
-  "{{name}} registered and checked in!": "",
+  "Not authorized to change this event's audience group": "ఈ కార్యక్రమం ప్రేక్షకుల సమూహాన్ని మార్చడానికి అనుమతి లేదు",
+  "Only a volunteer manager can change who coordinates a ministry": "పరిచర్యను ఎవరు సమన్వయం చేస్తారో మార్చగలిగేది స్వయంసేవకుల మేనేజర్ మాత్రమే",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "V1 ఎంచుకుంటే V2 స్వయంసేవకుల ఇమెయిల్ నిలిపివేయబడుతుంది; క్యూలో ఉన్నవన్నీ V2 మళ్లీ ఆన్ అయినప్పుడు పంపబడతాయి, దాని సందర్భం ముగిసి ఉంటే తప్ప.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "ఈ పరిచర్య కార్యక్రమాలను ఇక్కడ జోడించండి: ఒక పని దినం, ప్రతి ఆదివారం కలిసే తరగతి. అవి సంఘ క్యాలెండర్‌లో చేరతాయి, సృష్టించిన తర్వాత వాటికి వ్యక్తులను నియమించాలా అని అడుగుతారు.",
+  "Cancel occurrence": "సందర్భాన్ని రద్దు చేయి",
+  "Cancel this occurrence": "ఈ సందర్భాన్ని రద్దు చేయి",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "రద్దు చేయడం ఎవరికీ తెలియజేయదు: ఇమెయిల్ పంపబడదు. నియామకాలు అలాగే ఉంటాయి, రద్దయి ఉన్నప్పుడు రిమైండర్లు షెడ్యూల్ కావు, పునరుద్ధరించే వరకు ఎవరినీ నియమించలేరు.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "తొలగించిన కార్యక్రమాలు వాటి చెక్-ఇన్‌లు మరియు హాజరు లెక్కలతో సహా అన్ని క్యాలెండర్ల నుండి తొలగిపోతాయి, వాటికి ఈ పరిచర్య నియామకం తేదీని మాత్రమే ఉంచుకుంటుంది. దీన్ని రద్దు చేయలేరు.",
+  "Events deleted: {{total}}": "తొలగించిన కార్యక్రమాలు: {{total}}",
+  "Events to delete: {{total}}": "తొలగించవలసిన కార్యక్రమాలు: {{total}}",
+  "Occurrence cancelled": "సందర్భం రద్దు చేయబడింది",
+  "Occurrence restored": "సందర్భం పునరుద్ధరించబడింది",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "ఈ సందర్భాన్ని మళ్లీ వ్యక్తులను నియమించగలిగేలా షెడ్యూల్‌లో తిరిగి ఉంచాలా? ఎవరికీ తెలియజేయబడదు: ఇమెయిల్ పంపబడదు.",
+  "Restore occurrence": "సందర్భాన్ని పునరుద్ధరించు",
+  "Restore this occurrence": "ఈ సందర్భాన్ని పునరుద్ధరించు",
+  "The occurrence could not be cancelled": "సందర్భాన్ని రద్దు చేయలేకపోయాము",
+  "The occurrence could not be restored": "సందర్భాన్ని పునరుద్ధరించలేకపోయాము",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "అన్ని క్యాలెండర్లకు కార్యక్రమాలను జోడించే అనుమతి మీకు ఉంది, కాబట్టి అన్నీ జాబితాలో ఉన్నాయి. ఈ పరిచర్య స్వంత క్యాలెండర్ మొదట టిక్ చేయబడింది.",
+  "A phone number or email address is required": "ఫోన్ నంబర్ లేదా ఇమెయిల్ చిరునామా అవసరం",
+  "A phone number or email address is required.": "ఫోన్ నంబర్ లేదా ఇమెయిల్ చిరునామా అవసరం.",
+  "Check-in has not opened for this event yet": "ఈ కార్యక్రమానికి చెక్-ఇన్ ఇంకా తెరవబడలేదు",
+  "Classification given to walk-in guests registered on a kiosk": "కియోస్క్‌లో నమోదు చేసుకున్న ముందస్తు సమాచారం లేని అతిథులకు ఇచ్చే వర్గీకరణ",
+  "Failed to register guest. Please try again.": "అతిథిని నమోదు చేయడం విఫలమైంది. దయచేసి మళ్లీ ప్రయత్నించండి.",
+  "First name and last name are required": "మొదటి పేరు మరియు ఇంటి పేరు అవసరం",
+  "First name and last name must each be 50 characters or fewer": "మొదటి పేరు మరియు ఇంటి పేరు ఒక్కొక్కటి 50 అక్షరాలు లేదా అంతకంటే తక్కువ ఉండాలి",
+  "First name and last name must each be at least 2 characters": "మొదటి పేరు మరియు ఇంటి పేరు ఒక్కొక్కటి కనీసం 2 అక్షరాలు ఉండాలి",
+  "Guest": "అతిథి",
+  "Guest Classification": "అతిథి వర్గీకరణ",
+  "Invalid birth date": "చెల్లని పుట్టిన తేదీ.",
+  "Invalid email address": "చెల్లని ఇమెయిల్ చిరునామా",
+  "Kiosk Settings": "కియోస్క్ సెట్టింగ్‌లు",
+  "Please enter a check number": "దయచేసి చెక్ నంబర్ నమోదు చేయండి",
+  "Register & Check In": "నమోదు చేసి చెక్ ఇన్ చేయండి",
+  "Register Walk-In Guest": "ముందస్తు సమాచారం లేని అతిథిని నమోదు చేయండి",
+  "Register walk-in guest": "ముందస్తు సమాచారం లేని అతిథిని నమోదు చేయండి",
+  "Registered as a walk-in guest at the kiosk during event: %s": "కార్యక్రమం సమయంలో కియోస్క్‌లో ముందస్తు సమాచారం లేని అతిథిగా నమోదు చేయబడింది: %s",
+  "Registering...": "నమోదు చేస్తోంది...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "డిపాజిట్ ఎంట్రీలలో చెక్ చెల్లింపులను నమోదు చేసేటప్పుడు చెక్ నంబర్ తప్పనిసరి చేయండి.\nగమనిక: దీన్ని నిలిపివేస్తే నకిలీ చెక్ నంబర్ గుర్తింపు కూడా నిలిచిపోతుంది — అదే చెక్ ఒకటి కంటే ఎక్కువసార్లు నమోదు కావచ్చు.",
+  "This event has ended": "ఈ కార్యక్రమం ముగిసింది",
+  "This event has no group assigned, so guests cannot be registered": "ఈ కార్యక్రమానికి సమూహం కేటాయించబడలేదు, కాబట్టి అతిథులను నమోదు చేయలేరు",
+  "This event has no start and end time": "ఈ కార్యక్రమానికి ప్రారంభ మరియు ముగింపు సమయం లేదు",
+  "{{name}} registered and checked in!": "{{name}} నమోదై చెక్ ఇన్ అయ్యారు!",
   "\"{{name}}\": {{count}} occurrences created": {
-    "one": "",
-    "other": ""
+    "one": "\"{{name}}\": {{count}} సందర్భం సృష్టించబడింది",
+    "other": "\"{{name}}\": {{count}} సందర్భాలు సృష్టించబడ్డాయి"
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} గ్రహీతకు ఇమెయిల్ పంపబడింది.",
+    "other": "{{count}} గ్రహీతలకు ఇమెయిల్ పంపబడింది."
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "",
-    "other": ""
+    "one": "కొత్త సందర్భాలు లేవు. {{through}} వరకు ఉన్న అన్ని {{count}} కార్యక్రమాలకు ఇప్పటికే ఉన్నాయి.",
+    "other": "కొత్త సందర్భాలు లేవు. {{through}} వరకు ఉన్న అన్ని {{count}} కార్యక్రమాలకు ఇప్పటికే ఉన్నాయి."
   },
   "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "",
-    "other": ""
+    "one": "షెడ్యూల్ \"{{name}}\" సృష్టించబడింది: {{count}} సందర్భం",
+    "other": "షెడ్యూల్ \"{{name}}\" సృష్టించబడింది: {{count}} సందర్భాలు"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} గ్రహీతకు పంపుతోంది. వ్యక్తి రికార్డు లేని చిరునామాలు చేర్చబడలేదు: {{list}}",
+    "other": "{{count}} గ్రహీతలకు పంపుతోంది. వ్యక్తి రికార్డు లేని చిరునామాలు చేర్చబడలేదు: {{list}}"
   },
   "{{count}} could not be assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} మందిని నియమించలేకపోయాము",
+    "other": "{{count}} మందిని నియమించలేకపోయాము"
   },
   "{{count}} left open because the default is no longer qualified": {
-    "one": "",
-    "other": ""
+    "one": "డిఫాల్ట్ ఇకపై అర్హత కలిగి లేనందున {{count}} తెరిచే ఉంచబడింది",
+    "other": "డిఫాల్ట్ ఇకపై అర్హత కలిగి లేనందున {{count}} తెరిచే ఉంచబడ్డాయి"
   },
   "{{count}} volunteers assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} స్వయంసేవకుడు నియమించబడ్డారు",
+    "other": "{{count}} స్వయంసేవకులు నియమించబడ్డారు"
   },
   "{{count}} waiting for your answer": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} మీ సమాధానం కోసం వేచి ఉంది",
+    "other": "{{count}} మీ సమాధానం కోసం వేచి ఉన్నాయి"
   },
   "{{count}} {{title}} events created. Staff them now?": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} {{title}} కార్యక్రమం సృష్టించబడింది. ఇప్పుడు వ్యక్తులను నియమించాలా?",
+    "other": "{{count}} {{title}} కార్యక్రమాలు సృష్టించబడ్డాయి. ఇప్పుడు వ్యక్తులను నియమించాలా?"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "",
-    "other": ""
+    "one": "{{names}} ఈ కార్యక్రమాలలో సేవ చేస్తారు. రాబోయే {{count}} వారాల్లోకి వచ్చేకొద్దీ వాటి సందర్భాలు సృష్టించబడతాయి.",
+    "other": "{{names}} ఈ కార్యక్రమాలలో సేవ చేస్తారు. రాబోయే {{count}} వారాల్లోకి వచ్చేకొద్దీ వాటి సందర్భాలు సృష్టించబడతాయి."
   }
 }

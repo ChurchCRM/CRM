@@ -1,88 +1,88 @@
 {
-  "Not authorized to change this event's audience group": "",
-  "Only a volunteer manager can change who coordinates a ministry": "",
-  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
-  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "",
-  "Cancel occurrence": "",
-  "Cancel this occurrence": "",
-  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "",
-  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "",
-  "Events deleted: {{total}}": "",
-  "Events to delete: {{total}}": "",
-  "Occurrence cancelled": "",
-  "Occurrence restored": "",
-  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "",
-  "Restore occurrence": "",
-  "Restore this occurrence": "",
-  "The occurrence could not be cancelled": "",
-  "The occurrence could not be restored": "",
-  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "",
-  "A phone number or email address is required": "",
-  "A phone number or email address is required.": "",
-  "Check-in has not opened for this event yet": "",
-  "Classification given to walk-in guests registered on a kiosk": "",
-  "Failed to register guest. Please try again.": "",
-  "First name and last name are required": "",
-  "First name and last name must each be 50 characters or fewer": "",
-  "First name and last name must each be at least 2 characters": "",
-  "Guest": "",
-  "Guest Classification": "",
-  "Invalid birth date": "",
-  "Invalid email address": "",
-  "Kiosk Settings": "",
-  "Please enter a check number": "",
-  "Register & Check In": "",
-  "Register Walk-In Guest": "",
-  "Register walk-in guest": "",
-  "Registered as a walk-in guest at the kiosk during event: %s": "",
-  "Registering...": "",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "",
-  "This event has ended": "",
-  "This event has no group assigned, so guests cannot be registered": "",
-  "This event has no start and end time": "",
-  "{{name}} registered and checked in!": "",
+  "Not authorized to change this event's audience group": "У вас нет прав для изменения группы этого события",
+  "Only a volunteer manager can change who coordinates a ministry": "Только руководитель добровольцев может изменить координатора служения",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Выбор V1 приостанавливает отправку писем V2; все отложенные письма будут отправлены при включении V2, если событие еще не завершилось.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Добавляйте события этого служения здесь: рабочий день, класс, встречающийся каждое воскресенье. Они попадут в церковный календарь, и после создания вы сможете назначить добровольцев.",
+  "Cancel occurrence": "Отменить событие",
+  "Cancel this occurrence": "Отменить это событие",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Отмена не сообщается никому: письма не отправляются. Назначения сохраняются, напоминания не планируются, пока событие отменено, и никого нельзя назначить, пока оно не восстановлено.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Удаленные события удаляются из всех календарей вместе с регистрациями посещений и подсчетом посещаемости, но служение сохраняет только дату. Это невозможно отменить.",
+  "Events deleted: {{total}}": "События удалены: {{total}}",
+  "Events to delete: {{total}}": "События для удаления: {{total}}",
+  "Occurrence cancelled": "Событие отменено",
+  "Occurrence restored": "Событие восстановлено",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Вернуть это событие в расписание, чтобы его можно было заполнить добровольцами? Никому не будет отправлено сообщение.",
+  "Restore occurrence": "Восстановить событие",
+  "Restore this occurrence": "Восстановить это событие",
+  "The occurrence could not be cancelled": "Событие не удалось отменить",
+  "The occurrence could not be restored": "Событие не удалось восстановить",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Вы можете добавлять события во все календари, поэтому все они будут отображаться. Календарь этого служения отмечен по умолчанию.",
+  "A phone number or email address is required": "Требуется номер телефона или адрес электронной почты",
+  "A phone number or email address is required.": "Требуется номер телефона или адрес электронной почты.",
+  "Check-in has not opened for this event yet": "Регистрация еще не открыта для этого события",
+  "Classification given to walk-in guests registered on a kiosk": "Классификация, присвоенная случайным гостям, зарегистрированным на киоске",
+  "Failed to register guest. Please try again.": "Не удалось зарегистрировать гостя. Пожалуйста, попробуйте еще раз.",
+  "First name and last name are required": "Требуются имя и фамилия",
+  "First name and last name must each be 50 characters or fewer": "Имя и фамилия должны содержать не более 50 символов",
+  "First name and last name must each be at least 2 characters": "Имя и фамилия должны содержать не менее 2 символов",
+  "Guest": "Гость",
+  "Guest Classification": "Классификация гостя",
+  "Invalid birth date": "Недопустимая дата рождения.",
+  "Invalid email address": "Неверный адрес электронной почты",
+  "Kiosk Settings": "Параметры киоска",
+  "Please enter a check number": "Пожалуйста, введите номер чека",
+  "Register & Check In": "Зарегистрировать и отметить присутствие",
+  "Register Walk-In Guest": "Зарегистрировать случайного гостя",
+  "Register walk-in guest": "зарегистрировать случайного гостя",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Зарегистрирован в качестве случайного гостя на киоске во время события: %s",
+  "Registering...": "Регистрация...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Требовать номер чека при записи чеков в записи взносов.\nПримечание: отключение этой опции также отключает обнаружение дубликатов чеков — один физический чек может быть введен несколько раз.",
+  "This event has ended": "Это событие завершилось",
+  "This event has no group assigned, so guests cannot be registered": "Этому событию не назначена группа, поэтому гостей нельзя зарегистрировать",
+  "This event has no start and end time": "У этого события нет времени начала и окончания",
+  "{{name}} registered and checked in!": "{{name}} зарегистрирован и отметил присутствие!",
   "\"{{name}}\": {{count}} occurrences created": {
-    "one": "",
-    "other": ""
+    "one": "\"{{name}}\": {{count}} событие создано",
+    "other": "\"{{name}}\": {{count}} событий создано"
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "",
-    "other": ""
+    "one": "Письмо отправлено {{count}} получателю.",
+    "other": "Письма отправлены {{count}} получателям."
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "",
-    "other": ""
+    "one": "Нет новых событий. Все {{count}} события до {{through}} уже имеют событие.",
+    "other": "Нет новых событий. Все {{count}} события до {{through}} уже имеют события."
   },
   "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "",
-    "other": ""
+    "one": "Расписание \"{{name}}\" создано: {{count}} событие",
+    "other": "Расписание \"{{name}}\" создано: {{count}} событий"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "",
-    "other": ""
+    "one": "Отправка {{count}} получателю. Адреса без записи о человеке не включены: {{list}}",
+    "other": "Отправка {{count}} получателям. Адреса без записи о человеке не включены: {{list}}"
   },
   "{{count}} could not be assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} не удалось назначить",
+    "other": "{{count}} не удалось назначить"
   },
   "{{count}} left open because the default is no longer qualified": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} осталось открыто, поскольку по умолчанию больше не квалифицируется",
+    "other": "{{count}} осталось открыто, поскольку по умолчанию больше не квалифицируются"
   },
   "{{count}} volunteers assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} добровольец назначен",
+    "other": "{{count}} добровольцев назначено"
   },
   "{{count}} waiting for your answer": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ожидает вашего ответа",
+    "other": "{{count}} ожидают вашего ответа"
   },
   "{{count}} {{title}} events created. Staff them now?": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} событие {{title}} создано. Назначить добровольцев сейчас?",
+    "other": "{{count}} событий {{title}} создано. Назначить добровольцев сейчас?"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "",
-    "other": ""
+    "one": "{{names}} будет обслуживать эти события. Их события будут созданы в течение следующей {{count}} недели.",
+    "other": "{{names}} будут обслуживать эти события. Их события будут созданы в течение следующих {{count}} недель."
   }
 }
