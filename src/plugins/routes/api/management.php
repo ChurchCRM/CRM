@@ -461,7 +461,7 @@ $group->get('/approved', function (Request $request, Response $response): Respon
  *     path="/plugins/api/plugins/install",
  *     operationId="installPluginFromUrl",
  *     summary="Install a community plugin from an approved download URL",
- *     description="Downloads the zip, verifies its SHA-256 against approved-plugins.json, validates the archive, and extracts it into src/plugins/community/{id}. The plugin is NOT enabled automatically — admins must review and click Enable.",
+ *     description="Downloads the zip, verifies its SHA-256 against approved-plugins.json, validates the archive, and extracts it into src/plugins/community/{id}. A new install is NOT enabled automatically — admins must review and click Enable. If the plugin is already installed and the approved version is newer, it is upgraded in place and keeps its settings and enabled state.",
  *     tags={"Plugins"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=true,
@@ -469,11 +469,11 @@ $group->get('/approved', function (Request $request, Response $response): Respon
  *             @OA\Property(property="downloadUrl", type="string", description="HTTPS URL to the plugin zip. Must match an approved entry exactly.")
  *         )
  *     ),
- *     @OA\Response(response=200, description="Plugin installed (not yet enabled)"),
+ *     @OA\Response(response=200, description="Plugin installed (not yet enabled) or upgraded in place"),
  *     @OA\Response(response=400, description="Validation failure (unknown URL, checksum mismatch, unsafe zip)"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Forbidden — Admin role required"),
- *     @OA\Response(response=409, description="Plugin already installed"),
+ *     @OA\Response(response=409, description="Plugin already installed at this version or newer"),
  *     @OA\Response(response=500, description="Install failed")
  * )
  */
@@ -506,7 +506,9 @@ $group->post('/plugins/install', function (Request $request, Response $response)
 
         return SlimUtils::renderJSON($response, [
             'success' => true,
-            'message' => gettext('Plugin installed. Review it and click Enable to activate.'),
+            'message' => $result['upgradedFrom'] !== null
+                ? sprintf(gettext('Plugin upgraded from %1$s to %2$s.'), $result['upgradedFrom'], $result['version'])
+                : gettext('Plugin installed. Review it and click Enable to activate.'),
             'data' => $result,
         ]);
     } catch (PluginAlreadyInstalledException $e) {

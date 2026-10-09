@@ -60,6 +60,8 @@ services:
     hostname: crm-webserver-root
     env_file:
       - .env
+    environment:
+      - CHURCHCRM_PLUGIN_FIXTURES=/home/ChurchCRM/cypress/fixtures/plugin-registry
     depends_on:
       database-root:
         condition: service_healthy
@@ -93,6 +95,7 @@ services:
     env_file:
       - .env
     environment:
+      - CHURCHCRM_PLUGIN_FIXTURES=/home/ChurchCRM/cypress/fixtures/plugin-registry
       - CHURCHCRM_SUBDIR=churchcrm
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
       - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
