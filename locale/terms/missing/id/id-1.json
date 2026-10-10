@@ -1,6 +1,6 @@
 {
-  "Search by family name": "",
-  "Search by family name or envelope #": "",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
-  "You cannot delete your own account.": ""
+  "Search by family name": "Cari berdasarkan nama keluarga",
+  "Search by family name or envelope #": "Cari berdasarkan nama keluarga atau no. amplop",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Keluarga yang memiliki janji persembahan atau pembayaran tidak dapat dihapus. Pindahkan atau hapus dahulu catatan keuangannya.",
+  "You cannot delete your own account.": "Anda tidak dapat menghapus akun Anda sendiri."
 }

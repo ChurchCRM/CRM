@@ -1,6 +1,6 @@
 {
-  "Search by family name": "",
-  "Search by family name or envelope #": "",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
-  "You cannot delete your own account.": ""
+  "Search by family name": "Rechercher par nom de famille",
+  "Search by family name or envelope #": "Rechercher par nom de famille ou n° d'enveloppe",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Impossible de supprimer une famille qui a des engagements ou des paiements. Déplacez ou supprimez d'abord les enregistrements financiers.",
+  "You cannot delete your own account.": "Vous ne pouvez pas supprimer votre propre compte."
 }

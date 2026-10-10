@@ -1,6 +1,6 @@
 {
-  "Search by family name": "",
-  "Search by family name or envelope #": "",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
-  "You cannot delete your own account.": ""
+  "Search by family name": "Keresés családnév szerint",
+  "Search by family name or envelope #": "Keresés családnév vagy boríték száma szerint",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nem törölhető olyan család, amelynek vannak felajánlásai vagy befizetései. Előbb helyezze át vagy távolítsa el a pénzügyi rekordokat.",
+  "You cannot delete your own account.": "Nem törölheti a saját fiókját."
 }

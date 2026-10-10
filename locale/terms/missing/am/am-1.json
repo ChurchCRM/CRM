@@ -1,6 +1,6 @@
 {
-  "Search by family name": "",
-  "Search by family name or envelope #": "",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
-  "You cannot delete your own account.": ""
+  "Search by family name": "በቤተሰብ ስም ፈልግ",
+  "Search by family name or envelope #": "በቤተሰብ ስም ወይም በፖስታ ቁጥር ፈልግ",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "ቃል ኪዳኖች ወይም ክፍያዎች ያሉት ቤተሰብ መሰረዝ አይቻልም። መጀመሪያ የፋይናንስ መዝገቦችን ያንቀሳቅሱ ወይም ያስወግዱ።",
+  "You cannot delete your own account.": "የራስዎን መለያ መሰረዝ አይችሉም።"
 }
