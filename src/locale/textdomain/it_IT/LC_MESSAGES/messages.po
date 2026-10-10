@@ -23610,3 +23610,19 @@ msgstr "Questo evento non ha un'ora di inizio e fine"
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} si è registrato e ha effettuato il check-in!"
 
+#: 
+msgid "Search by family name"
+msgstr "Cerca per cognome della famiglia"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Cerca per cognome della famiglia o n. busta"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Impossibile eliminare una famiglia che ha impegni o pagamenti. Sposta o rimuovi prima i registri finanziari."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Non puoi eliminare il tuo account."
+

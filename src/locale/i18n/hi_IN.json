@@ -5760,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "इस इवेंट के लिए कोई समूह नियत नहीं है, इसलिए मेहमान पंजीकृत नहीं हो सकते",
   "This event has no start and end time": "इस इवेंट का कोई शुरुआत और अंत समय नहीं है",
   "{{name}} registered and checked in!": "{{name}} पंजीकृत और चेक इन किया गया!",
+  "Search by family name": "परिवार के नाम से खोजें",
+  "Search by family name or envelope #": "परिवार के नाम या लिफ़ाफ़ा क्र. से खोजें",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "जिस परिवार के पास प्रतिज्ञाएँ या भुगतान हैं, उसे हटाया नहीं जा सकता। पहले वित्तीय रिकॉर्ड स्थानांतरित करें या हटाएँ।",
+  "You cannot delete your own account.": "आप अपना स्वयं का खाता नहीं हटा सकते।",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} घटना बनाई गई",
     "other": "\"{{name}}\"：{{count}} घटनाएं बनाई गईं"

@@ -5760,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Cet événement n'a pas de groupe assigné, les visiteurs ne peuvent donc pas être enregistrés",
   "This event has no start and end time": "Cet événement n'a pas d'heure de début et de fin",
   "{{name}} registered and checked in!": "{{name}} s'est enregistré et est arrivé!",
+  "Search by family name": "Rechercher par nom de famille",
+  "Search by family name or envelope #": "Rechercher par nom de famille ou n° d'enveloppe",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Impossible de supprimer une famille qui a des engagements ou des paiements. Déplacez ou supprimez d'abord les enregistrements financiers.",
+  "You cannot delete your own account.": "Vous ne pouvez pas supprimer votre propre compte.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} occurrence créée",
     "other": "\"{{name}}\": {{count}} occurrences créées"

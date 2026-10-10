@@ -23552,3 +23552,19 @@ msgstr "Acara ini tidak memiliki waktu mulai dan berakhir"
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} telah mendaftar dan login!"
 
+#: 
+msgid "Search by family name"
+msgstr "Cari berdasarkan nama keluarga"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Cari berdasarkan nama keluarga atau no. amplop"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Keluarga yang memiliki janji persembahan atau pembayaran tidak dapat dihapus. Pindahkan atau hapus dahulu catatan keuangannya."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Anda tidak dapat menghapus akun Anda sendiri."
+

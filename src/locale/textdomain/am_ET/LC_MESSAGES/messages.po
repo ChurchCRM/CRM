@@ -23598,3 +23598,19 @@ msgstr "ይህ ክስተት የመጀመሪያና የመጨረሻ ሰዓት የ�
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} ተመዝግቧል እና ገብቷል!"
 
+#: 
+msgid "Search by family name"
+msgstr "በቤተሰብ ስም ፈልግ"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "በቤተሰብ ስም ወይም በፖስታ ቁጥር ፈልግ"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "ቃል ኪዳኖች ወይም ክፍያዎች ያሉት ቤተሰብ መሰረዝ አይቻልም። መጀመሪያ የፋይናንስ መዝገቦችን ያንቀሳቅሱ ወይም ያስወግዱ።"
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "የራስዎን መለያ መሰረዝ አይችሉም።"
+

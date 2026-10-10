@@ -23709,3 +23709,19 @@ msgstr "ليس لهذا الحدث وقت بدء وانتهاء"
 msgid "{{name}} registered and checked in!"
 msgstr "تم تسجيل {{name}} وتسجيل حضوره!"
 
+#: 
+msgid "Search by family name"
+msgstr "البحث باسم العائلة"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "البحث باسم العائلة أو رقم المظروف"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "لا يمكن حذف عائلة لديها تعهدات أو مدفوعات. انقل السجلات المالية أو احذفها أولاً."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "لا يمكنك حذف حسابك الخاص."
+

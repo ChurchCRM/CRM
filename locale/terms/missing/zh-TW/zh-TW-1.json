@@ -1,6 +1,6 @@
 {
-  "Search by family name": "依家庭名稱搜尋",
-  "Search by family name or envelope #": "依家庭名稱或信封編號搜尋",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "無法刪除有認獻或付款紀錄的家庭。請先轉移或刪除財務紀錄。",
-  "You cannot delete your own account.": "您無法刪除自己的帳號。"
+  "Search by family name": "",
+  "Search by family name or envelope #": "",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
+  "You cannot delete your own account.": ""
 }
