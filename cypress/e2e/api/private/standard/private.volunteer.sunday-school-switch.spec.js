@@ -15,7 +15,7 @@ const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const PERSON_COORDINATOR = 3;
 const CHURCH_SERVICE_TYPE = 1;
-const UPGRADE_SCRIPT = "src/mysql/upgrade/7.8.0-volunteer-v2-schema.sql";
+const UPGRADE_SCRIPT = "src/mysql/upgrade/7.8.0.sql";
 
 const PREFIX = "SSW29";
 

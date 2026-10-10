@@ -19,7 +19,7 @@ const DEFAULT_TYPE = "iVolunteerDefaultEventTypeId";
 const RATE_LIMIT = "iTimerJobsMinIntervalMinutes";
 const TOP_UP_DATE = "sLastVolunteerTopUpRunDate";
 const TOP_UP_RESULT = "sLastVolunteerTopUpResult";
-const UPGRADE_SCRIPT = "src/mysql/upgrade/7.8.0-volunteer-v2-schema.sql";
+const UPGRADE_SCRIPT = "src/mysql/upgrade/7.8.0.sql";
 const INSTALL_SCRIPT = "src/mysql/install/Install.sql";
 
 const CHURCH_SERVICE_TYPE = 1;
