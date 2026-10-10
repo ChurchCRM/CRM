@@ -100,7 +100,8 @@ class UpgradeService
                         }
                         $version->setUpdateEnd(new \DateTimeImmutable());
                         $version->save();
-                        sleep(2);
+                        // sleep(2) removed — no documented purpose; InnoDB commits on save().
+                        // See #9113. Saves ~2s per upgrade block.
 
                         // increment the number of scripts executed.
                         // If no scripts run, then there is no supported upgrade path defined in the JSON file
