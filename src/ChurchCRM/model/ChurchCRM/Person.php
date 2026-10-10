@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -288,7 +289,7 @@ class Person extends BasePerson implements PhotoInterface
                 $address[] = $this->getZip();
             }
             if (!empty($this->getCountry())) {
-                $address[] = $this->getCountry();
+                $address[] = Countries::toName($this->getCountry());
             }
 
             return implode(' ', $address);

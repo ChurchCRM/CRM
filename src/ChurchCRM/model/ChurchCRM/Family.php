@@ -69,7 +69,7 @@ class Family extends BaseFamily implements PhotoInterface
             $address[] = $this->getZip();
         }
         if (!empty($this->getCountry())) {
-            $address[] = $this->getCountry();
+            $address[] = Countries::toName($this->getCountry());
         }
 
         return implode(' ', $address);
@@ -190,7 +190,7 @@ class Family extends BaseFamily implements PhotoInterface
 
         $country = trim((string) ($parts['Country'] ?? ''));
         if ($country !== '' && Countries::isForeign($country)) {
-            $lines[] = $country;
+            $lines[] = Countries::toName($country);
         }
 
         return implode($separator, $lines);
@@ -228,7 +228,7 @@ class Family extends BaseFamily implements PhotoInterface
             $address[] = $parts['Zip'];
         }
         if ($parts['Country'] !== '') {
-            $address[] = $parts['Country'];
+            $address[] = Countries::toName($parts['Country']);
         }
 
         return implode(' ', $address);

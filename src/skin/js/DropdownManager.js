@@ -48,6 +48,7 @@ class DropdownManager {
         countrySelect.append(new Option("", "", true, true));
       }
 
+      let userSelectedMatched = false;
       $.each(data, function (idx, country) {
         let selected = false;
 
@@ -55,10 +56,17 @@ class DropdownManager {
           selected = config.systemDefault === country.name || config.systemDefault === country.code;
         } else {
           selected = config.userSelected === country.name || config.userSelected === country.code;
+          userSelectedMatched = userSelectedMatched || selected;
         }
 
         countrySelect.append(new Option(country.name, country.code, selected, selected));
       });
+
+      // A stored country the list does not know is kept as its own option; otherwise
+      // the browser selects the first country and an unchanged save rewrites it.
+      if (config.userSelected !== "" && !userSelectedMatched) {
+        countrySelect.prepend(new Option(config.userSelected, config.userSelected, true, true));
+      }
 
       // Trigger change to cascade to state if needed
       countrySelect.change();
@@ -74,7 +82,9 @@ class DropdownManager {
     // Handle cascading to state dropdown if configured
     if (config.cascadeState) {
       countrySelect.off("change").on("change", function () {
-        DropdownManager.initializeState(stateSelectId, this.value.toLowerCase(), {
+        // Only an ISO code has a state list; a kept unknown country gets the textbox.
+        const countryCode = /^[A-Za-z]{2}$/.test(this.value) ? this.value.toLowerCase() : "";
+        DropdownManager.initializeState(stateSelectId, countryCode, {
           userSelected: $(`#${stateSelectId}`).data("user-selected") || "",
           systemDefault: $(`#${stateSelectId}`).data("system-default") || "",
           initTomSelect: true,
@@ -245,6 +255,7 @@ class DropdownManager {
     }).done(function (data) {
       countrySelect.empty();
 
+      let userSelectedMatched = false;
       $.each(data, function (idx, country) {
         let selected = false;
 
@@ -252,10 +263,17 @@ class DropdownManager {
           selected = config.systemDefault === country.name || config.systemDefault === country.code;
         } else {
           selected = config.userSelected === country.name || config.userSelected === country.code;
+          userSelectedMatched = userSelectedMatched || selected;
         }
 
         countrySelect.append(new Option(country.name, country.code, selected, selected));
       });
+
+      // A stored country the list does not know is kept as its own option; otherwise
+      // the browser selects the first country and an unchanged save rewrites it.
+      if (config.userSelected !== "" && !userSelectedMatched) {
+        countrySelect.prepend(new Option(config.userSelected, config.userSelected, true, true));
+      }
 
       countrySelect.change();
       const el = countrySelect[0];

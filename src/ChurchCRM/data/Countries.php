@@ -360,6 +360,59 @@ class Countries
     }
 
     /**
+     * The display name for a stored country. A code or alias becomes the English
+     * name ('US' and 'USA' show as 'United States', 'DE' as 'Germany'); a stored
+     * name or an unknown value is shown exactly as stored.
+     */
+    public static function toName(?string $value): string
+    {
+        if ($value === null || $value === '') {
+            return '';
+        }
+
+        self::initializeCountries();
+        $code = self::LEGACY_ALIASES[$value] ?? $value;
+        if (!isset(self::$countries[$code])) {
+            return $value;
+        }
+
+        return self::withoutNativeName(self::$countries[$code]->getCountryName());
+    }
+
+    /**
+     * Drop the native name the list labels carry in a trailing parenthetical:
+     * 'Germany (Deutschland)' -> 'Germany', 'Congo (DRC) (Jamhuri ya ...)' -> 'Congo (DRC)'.
+     */
+    private static function withoutNativeName(string $label): string
+    {
+        if (!str_ends_with($label, ')')) {
+            return $label;
+        }
+
+        $depth = 0;
+        for ($i = strlen($label) - 1; $i > 0; $i--) {
+            if ($label[$i] === ')') {
+                $depth++;
+            } elseif ($label[$i] === '(' && --$depth === 0) {
+                return rtrim(substr($label, 0, $i));
+            }
+        }
+
+        return $label;
+    }
+
+    /**
+     * The value to save when a form submits $submitted for a record that holds $stored.
+     * The country select posts codes while many records hold names, so $stored is kept
+     * when both resolve to the same country; otherwise an unchanged save would rewrite
+     * the record and count as an address change.
+     */
+    public static function keepStoredIfSame(?string $stored, ?string $submitted): ?string
+    {
+        return self::toISO($stored) === self::toISO($submitted) ? $stored : $submitted;
+    }
+
+    /**
      * Returns true when $country is a foreign country relative to the
      * configured default country (sDefaultCountry).
      * Returns false for blank/null input (treat missing country as domestic).

@@ -257,7 +257,7 @@ if ($output === 'pdf') {
                 // address prints the FAMILY's country, not the church's.
                 $mailingCountry = (string) ($mailingParts['Country'] ?? '');
                 if (Countries::isForeign($mailingCountry)) {
-                    $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, $mailingCountry);
+                    $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, Countries::toName($mailingCountry));
                     $curY += SystemConfig::getValue('incrementY');
                 }
                 $curX = 100;

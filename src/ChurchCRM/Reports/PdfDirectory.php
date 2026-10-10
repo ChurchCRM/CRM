@@ -363,7 +363,7 @@ class PdfDirectory extends ChurchInfoReport
                 $sFamilyStr .= $fam_City . ', ' . $fam_State . ' ' . $fam_Zip . "\n";
             }
             if (Countries::isForeign($fam_Country)) {
-                $sFamilyStr .= $fam_Country . "\n";
+                $sFamilyStr .= Countries::toName($fam_Country) . "\n";
             }
             // Only families that actually mail somewhere other than their primary
             // address get a second block, and only when the reader asked for it (#9743).
