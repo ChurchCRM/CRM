@@ -95,8 +95,11 @@ class DepositService {
             $deposit->save();
             if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
-                $q = 'DELETE FROM pledge_plg WHERE plg_depID = ' . $iDepositSlipID . ' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
-                FunctionsUtils::runQuery($q);
+                PledgeQuery::create()
+                    ->filterByDepId($iDepositSlipID)
+                    ->filterByPledgeOrPayment('Payment')
+                    ->filterByAutCleared(0)
+                    ->delete();
             }
         } else {
             $deposit = new Deposit();
