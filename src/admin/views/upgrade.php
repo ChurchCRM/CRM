@@ -9,14 +9,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $failingFiles = $integrityCheckData['files'] ?? [];
 $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
 
-// max_execution_time warning — long upgrades can be killed on shared hosting
-$maxExec = (int) ini_get('max_execution_time');
-$execTimeWarning = null;
-if ($maxExec > 0 && $maxExec < 60) {
-    $execTimeWarning = 'danger';
-} elseif ($maxExec > 0 && $maxExec < 120) {
-    $execTimeWarning = 'warning';
-}
 ?>
 
 <div class="row">
@@ -171,26 +163,7 @@ if ($maxExec > 0 && $maxExec < 60) {
                                 </div>
                             <?php endif; ?>
 
-                            <?php if ($execTimeWarning !== null): ?>
-                                <div class="alert alert-<?= $execTimeWarning ?> mb-3">
-                                    <div class="d-flex align-items-start">
-                                        <i class="fa fa-clock fa-lg me-2 mt-1"></i>
-                                        <div>
-                                            <strong><?= gettext('Low PHP max_execution_time') ?></strong>
-                                            <span class="badge bg-<?= $execTimeWarning ?>-lt text-<?= $execTimeWarning ?> ms-1"><?= $maxExec ?>s</span>
-                                            <div class="mt-1">
-                                                <?php if ($execTimeWarning === 'danger'): ?>
-                                                    <?= gettext('Your PHP max_execution_time is very low. An in-app upgrade is likely to be killed before it finishes, leaving the database between versions. Raise the limit (120s or higher) in your host control panel, or run the database upgrade via CLI / a longer-running process.') ?>
-                                                <?php else: ?>
-                                                    <?= gettext('Your PHP max_execution_time may be too low for a long upgrade. Consider raising it to 120s or higher before proceeding, especially if you are jumping several versions.') ?>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if (!$hasWarnings && $execTimeWarning === null): ?>
+                            <?php if (!$hasWarnings): ?>
                                 <div class="alert alert-success mb-3">
                                     <div class="d-flex align-items-center">
                                         <i class="fa fa-circle-check fa-lg me-2"></i>
