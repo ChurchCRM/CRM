@@ -18,7 +18,7 @@ The order below is the process as it now runs, including the guards added after 
 
 1. **Locales clean:** `locale/terms/missing/` empty on `master` (Phase 1). New strings follow the count-neutral rule in `i18n-localization.md`.
 2. **Built and tested:** green Build/Test/Package and nightly on the same `master` HEAD; milestone `7.8.0` reviewed (Phase 2).
-3. **Release & Start Next** with `next_version` (3.1). It refuses to replace an existing release unless `replace_existing` is set (#10086). After #10090, `master` builds no longer create stray drafts, so there is nothing to delete first.
+3. **Release & Start Next** with `next_version` (3.1), the only input. It refuses to start unless Build/Test/Package and the Nightly are green on the branch tip, and refuses to replace an existing release. After #10090, `master` builds no longer create stray drafts, so there is nothing to delete first.
 4. **Notes:** ask an agent to "write the 7.8.0 release notes". It reads the `release-notes-context-7.8.0` artifact and applies the approved text with `gh release edit 7.8.0 --tag 7.8.0 --notes-file …` (3.2).
 5. **Merge the `Start <next> release` PR before publishing** (3.3). Bookkeeping now stops if `master` still carries the released version.
 6. **Check the tag, then Publish** (3.4): `gh release view 7.8.0 -R ChurchCRM/CRM --json tagName,isDraft` must show `"tagName":"7.8.0"`.
@@ -165,7 +165,7 @@ Goal: the exact commit being released is built, fully tested, and its scope is c
 | # | Step | How | Status |
 |---|------|-----|--------|
 | 3.0 | ~~Delete any stray `<version>` draft~~. Obsolete once #10090 merges: `master` builds no longer create drafts. Until then, check Releases for a stray draft | Releases | ✋ (until #10090) |
-| 3.1 | Run **Release & Start Next** with `next_version`. It creates the draft from the tested build's ZIP, uploads the `release-notes-context-<version>` artifact, bumps `master` to `next_version` and opens the `Start <next> release` PR. **It refuses to replace an existing release** unless `replace_existing` is set (#10086) | [`release-publish.yml`](../.github/workflows/release-publish.yml) → [`release-prepare.yml`](../.github/workflows/release-prepare.yml). ~2–3 min | ✋ trigger (judgment) / 🤖 run |
+| 3.1 | Run **Release & Start Next** with `next_version`. It creates the draft from the tested build's ZIP, uploads the `release-notes-context-<version>` artifact, bumps `master` to `next_version` and opens the `Start <next> release` PR. **It requires a green build and nightly on the branch tip and refuses to replace an existing release** (#10086) | [`release-publish.yml`](../.github/workflows/release-publish.yml) → [`release-prepare.yml`](../.github/workflows/release-prepare.yml). ~2–3 min | ✋ trigger (judgment) / 🤖 run |
 | 3.2 | Release notes: an agent reads the context artifact, writes user-facing notes following [`release-notes.md`](../.agents/skills/churchcrm/release-notes.md) (grouped by user impact, marketing alignment, verified language count), and after approval applies them with `gh release edit <tag> --tag <tag> --notes-file …` | Agent + skill; no Gemini hop or copy-paste since #10086 | 🧑‍💻 |
 | 3.3 | **Merge the `Start <next> release` PR before publishing.** Bookkeeping stops if `master` still carries the released version, and `pr-milestone-stamp.yml` then stamps new merges into the next milestone | PR from `build/<next>` | ✋ |
 | 3.4 | **Check the tag**, then **Publish**: `gh release view <tag> --json tagName,isDraft` must show the version, not `untagged-…` | GitHub release page | ✋ (approval) |
@@ -251,7 +251,7 @@ Earlier attempts to document and automate the release left overlapping and stale
 | File | Problem | Proposed action |
 |------|---------|-----------------|
 | `build-test-package.yml` `package` job | Creates/overwrites a `<version>` draft release on every `master` push (source of 3.0 and of the 7.7.1 placeholder tag) | **#10090** removes the step |
-| `release-publish.yml` | Deleted and recreated an existing release/tag even if published | **Done (#10086):** refuses unless `replace_existing` |
+| `release-publish.yml` | Deleted and recreated an existing release/tag even if published | **Done (#10086):** refuses to replace an existing release; the `replace_existing` input is gone |
 | `release-bookkeeping.yml` | First run (7.7.1) failed: empty tag, placeholder tag accepted, no `DOCS_RELEASE_TOKEN`. Rolls every open item forward, turning milestones into a growing backlog (2.3) | **Fixed in #10086**; token #10097; roll-forward policy still open |
 | `pr-milestone-stamp.yml` | Stamped into the shipped milestone between Publish and the Start-PR merge | Avoided by step 3.3 (merge the Start PR before Publish) |
 | `locale-generate-terms.yml`, `locale-sync-poeditor.yml` | Work; 1.7 done (#10065), 1.3 done (#10092) | Remaining link: merging the terms and sync PRs without a person (#10093) |
