@@ -12251,10 +12251,6 @@ msgid "Back to Users"
 msgstr "ユーザー一覧に戻る"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "献金記録のある家族は削除できません。財務管理者にお問い合わせください。"
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "その方向にプロパティを移動できません"
 
@@ -23526,4 +23522,20 @@ msgstr "このイベントに開始時刻と終了時刻がありません"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} が登録してチェックインしました！"
+
+#: 
+msgid "Search by family name"
+msgstr "家族名で検索"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "家族名または封筒番号で検索"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "誓約または支払いがある家族は削除できません。先に財務記録を移動または削除してください。"
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "自分のアカウントは削除できません。"
 

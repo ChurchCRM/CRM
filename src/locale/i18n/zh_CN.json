@@ -2906,7 +2906,6 @@
   "An error occurred while moving donations.": "移动奉献记录时发生错误。",
   "At least one family member is required": "至少需要一名家庭成员",
   "Back to Users": "返回用户列表",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "无法删除有奉献记录的家庭。请联系财务管理员。",
   "Cannot move property in that direction": "无法向该方向移动属性",
   "Confirm Family Info": "确认家庭信息",
   "Delete failed": "删除失败",
@@ -5729,6 +5728,10 @@
   "This event has no group assigned, so guests cannot be registered": "此事件未分配小组，因此无法注册来客",
   "This event has no start and end time": "此事件没有开始和结束时间",
   "{{name}} registered and checked in!": "{{name}} 已注册并签到！",
+  "Search by family name": "按家庭名称搜索",
+  "Search by family name or envelope #": "按家庭名称或信封编号搜索",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "无法删除有认捐或付款记录的家庭。请先转移或删除财务记录。",
+  "You cannot delete your own account.": "您不能删除自己的账户。",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：创建了 {{count}} 个发生",
     "other": "\"{{name}}\"：创建了 {{count}} 个发生"

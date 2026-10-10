@@ -2906,7 +2906,6 @@
   "An error occurred while moving donations.": "献金の移動中にエラーが発生しました。",
   "At least one family member is required": "少なくとも1人の家族メンバーが必要です",
   "Back to Users": "ユーザー一覧に戻る",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "献金記録のある家族は削除できません。財務管理者にお問い合わせください。",
   "Cannot move property in that direction": "その方向にプロパティを移動できません",
   "Confirm Family Info": "家族情報を確認",
   "Delete failed": "削除に失敗しました",
@@ -5729,6 +5728,10 @@
   "This event has no group assigned, so guests cannot be registered": "このイベントにはグループが割り当てられていないため、来客は登録できません",
   "This event has no start and end time": "このイベントに開始時刻と終了時刻がありません",
   "{{name}} registered and checked in!": "{{name}} が登録してチェックインしました！",
+  "Search by family name": "家族名で検索",
+  "Search by family name or envelope #": "家族名または封筒番号で検索",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "誓約または支払いがある家族は削除できません。先に財務記録を移動または削除してください。",
+  "You cannot delete your own account.": "自分のアカウントは削除できません。",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} 個の発生が作成されました",
     "other": "\"{{name}}\"：{{count}} 個の発生が作成されました"

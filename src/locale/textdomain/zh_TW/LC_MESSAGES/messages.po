@@ -12430,10 +12430,6 @@ msgid "Back to Users"
 msgstr "返回使用者列表"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "無法刪除有奉獻記錄的家庭。請聯絡財務管理員。"
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "無法向該方向移動屬性"
 
@@ -23705,4 +23701,20 @@ msgstr "此事件沒有開始和結束時間"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} 已註冊並簽到！"
+
+#: 
+msgid "Search by family name"
+msgstr "依家庭名稱搜尋"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "依家庭名稱或信封編號搜尋"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "無法刪除有認獻或付款紀錄的家庭。請先轉移或刪除財務紀錄。"
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "您無法刪除自己的帳號。"
 

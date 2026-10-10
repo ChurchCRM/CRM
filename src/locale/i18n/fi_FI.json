@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "Lahjoitusten siirtämisessä tapahtui virhe.",
   "At least one family member is required": "Vähintään yksi perheenjäsen vaaditaan",
   "Back to Users": "Takaisin käyttäjiin",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Lahjoitustietoja sisältävää perhettä ei voi poistaa. Ota yhteyttä taloushallinnon ylläpitäjään.",
   "Cannot move property in that direction": "Ominaisuutta ei voi siirtää kyseiseen suuntaan",
   "Confirm Family Info": "Vahvista perhetiedot",
   "Delete failed": "Poisto epäonnistui",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Tälle tapahtumalle ei ole määritetty ryhmää, joten vieraita ei voi rekisteröidä",
   "This event has no start and end time": "Tällä tapahtumalla ei ole alkamis- ja päättymisaikaa",
   "{{name}} registered and checked in!": "{{name}} rekisteröity ja merkitty läsnäolevaksi!",
+  "Search by family name": "Hae perheen nimellä",
+  "Search by family name or envelope #": "Hae perheen nimellä tai kuoren numerolla",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Perhettä, jolla on lupauksia tai maksuja, ei voi poistaa. Siirrä tai poista ensin talouskirjaukset.",
+  "You cannot delete your own account.": "Et voi poistaa omaa tiliäsi.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} tapahtuma luotu",
     "other": "\"{{name}}\": {{count}} tapahtumaa luotu"

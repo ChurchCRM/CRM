@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "Ocurrió un error al mover las donaciones.",
   "At least one family member is required": "Se requiere al menos un miembro de la familia",
   "Back to Users": "Volver a Usuarios",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "No se puede eliminar una familia con registros de donaciones. Contacte a un administrador de finanzas.",
   "Cannot move property in that direction": "No se puede mover la propiedad en esa dirección",
   "Confirm Family Info": "Confirmar información de la familia",
   "Delete failed": "Error al eliminar",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Este evento no tiene un grupo asignado, por lo que no se pueden registrar visitantes",
   "This event has no start and end time": "Este evento no tiene hora de inicio y fin",
   "{{name}} registered and checked in!": "¡{{name}} se registró e inició sesión!",
+  "Search by family name": "Buscar por nombre de familia",
+  "Search by family name or envelope #": "Buscar por nombre de familia o n.º de sobre",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "No se puede eliminar una familia que tiene compromisos o pagos. Primero traslade o elimine los registros financieros.",
+  "You cannot delete your own account.": "No puede eliminar su propia cuenta.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} occurrence creado",
     "other": "\"{{name}}\": {{count}} occurrences creados"

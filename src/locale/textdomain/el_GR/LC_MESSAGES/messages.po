@@ -12296,10 +12296,6 @@ msgid "Back to Users"
 msgstr "Επιστροφή στους Χρήστες"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Δεν είναι δυνατή η διαγραφή οικογένειας με εγγραφές δωρεών. Επικοινωνήστε με έναν διαχειριστή οικονομικών."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Δεν είναι δυνατή η μετακίνηση της ιδιότητας σε αυτή την κατεύθυνση"
 
@@ -23593,4 +23589,20 @@ msgstr "Αυτό το γεγονός δεν έχει ώρα έναρξης κα�
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "Ο/η {{name}} καταχωρήθηκε και ελέγχθηκε!"
+
+#: 
+msgid "Search by family name"
+msgstr "Αναζήτηση με όνομα οικογένειας"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Αναζήτηση με όνομα οικογένειας ή αρ. φακέλου"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Δεν είναι δυνατή η διαγραφή οικογένειας που έχει δεσμεύσεις ή πληρωμές. Μετακινήστε ή αφαιρέστε πρώτα τις οικονομικές εγγραφές."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Δεν μπορείτε να διαγράψετε τον δικό σας λογαριασμό."
 

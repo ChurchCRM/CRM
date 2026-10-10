@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "Παρουσιάστηκε σφάλμα κατά τη μετακίνηση των δωρεών.",
   "At least one family member is required": "Απαιτείται τουλάχιστον ένα μέλος οικογένειας",
   "Back to Users": "Επιστροφή στους Χρήστες",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Δεν είναι δυνατή η διαγραφή οικογένειας με εγγραφές δωρεών. Επικοινωνήστε με έναν διαχειριστή οικονομικών.",
   "Cannot move property in that direction": "Δεν είναι δυνατή η μετακίνηση της ιδιότητας σε αυτή την κατεύθυνση",
   "Confirm Family Info": "Επιβεβαίωση Στοιχείων Οικογένειας",
   "Delete failed": "Η διαγραφή απέτυχε",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Αυτό το γεγονός δεν έχει καμία ομάδα που να είναι ανατεθειμένη, ώστε οι επισκέπτες να μην μπορούν να καταχωρηθούν",
   "This event has no start and end time": "Αυτό το γεγονός δεν έχει ώρα έναρξης και λήξης",
   "{{name}} registered and checked in!": "Ο/η {{name}} καταχωρήθηκε και ελέγχθηκε!",
+  "Search by family name": "Αναζήτηση με όνομα οικογένειας",
+  "Search by family name or envelope #": "Αναζήτηση με όνομα οικογένειας ή αρ. φακέλου",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Δεν είναι δυνατή η διαγραφή οικογένειας που έχει δεσμεύσεις ή πληρωμές. Μετακινήστε ή αφαιρέστε πρώτα τις οικονομικές εγγραφές.",
+  "You cannot delete your own account.": "Δεν μπορείτε να διαγράψετε τον δικό σας λογαριασμό.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} γεγονός δημιουργήθηκε",
     "other": "\"{{name}}\": {{count}} γεγονότα δημιουργήθηκαν"

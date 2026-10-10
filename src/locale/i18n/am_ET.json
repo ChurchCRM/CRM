@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "ስጦታዎችን ሲያንቀሳቅሱ ስህተት ተከስቷል።",
   "At least one family member is required": "ቢያንስ አንድ የቤተሰብ አባል ያስፈልጋል",
   "Back to Users": "ወደ ተጠቃሚዎች ተመለስ",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "የስጦታ መዝገቦች ያሉት ቤተሰብ ሊሰረዝ አይችልም። የፋይናንስ አስተዳዳሪን ያናግሩ።",
   "Cannot move property in that direction": "ንብረቱን ወደዚያ አቅጣጫ ማንቀሳቀስ አይቻልም",
   "Confirm Family Info": "የቤተሰብ መረጃ ያረጋግጡ",
   "Delete failed": "መሰረዝ አልተሳካም",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "ለዚህ ክስተት ቡድን አልተመደበም፣ ስለዚህ እንግዶች ሊመዘገቡ አይችሉም",
   "This event has no start and end time": "ይህ ክስተት የመጀመሪያና የመጨረሻ ሰዓት የለውም",
   "{{name}} registered and checked in!": "{{name}} ተመዝግቧል እና ገብቷል!",
+  "Search by family name": "በቤተሰብ ስም ፈልግ",
+  "Search by family name or envelope #": "በቤተሰብ ስም ወይም በፖስታ ቁጥር ፈልግ",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "ቃል ኪዳኖች ወይም ክፍያዎች ያሉት ቤተሰብ መሰረዝ አይቻልም። መጀመሪያ የፋይናንስ መዝገቦችን ያንቀሳቅሱ ወይም ያስወግዱ።",
+  "You cannot delete your own account.": "የራስዎን መለያ መሰረዝ አይችሉም።",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"፦ {{count}} ቀጠሮ ተፈጥሯል",
     "other": "\"{{name}}\"፦ {{count}} ቀጠሮዎች ተፈጥረዋል"

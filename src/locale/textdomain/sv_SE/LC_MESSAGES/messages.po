@@ -12386,10 +12386,6 @@ msgid "Back to Users"
 msgstr "Tillbaka till användare"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Det går inte att ta bort en familj med gåvoregister. Kontakta en ekonomiadministratör."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Det går inte att flytta egenskapen i den riktningen"
 
@@ -23683,4 +23679,20 @@ msgstr "Detta evenemang har ingen start- och sluttid"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} registrerad och incheckad!"
+
+#: 
+msgid "Search by family name"
+msgstr "Sök på familjenamn"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Sök på familjenamn eller kuvertnr"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Det går inte att ta bort en familj som har löften eller betalningar. Flytta eller ta bort de ekonomiska posterna först."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Du kan inte ta bort ditt eget konto."
 

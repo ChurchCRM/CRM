@@ -12294,10 +12294,6 @@ msgid "Back to Users"
 msgstr "Zpět na uživatele"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Nelze odstranit rodinu se záznamy darů. Kontaktujte správce financí."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Nelze přesunout vlastnost tímto směrem"
 
@@ -23613,4 +23609,20 @@ msgstr "Tato akce nemá čas začátku a konce"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} registrován a kontrolován!"
+
+#: 
+msgid "Search by family name"
+msgstr "Hledat podle jména rodiny"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Hledat podle jména rodiny nebo čísla obálky"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Nelze smazat rodinu, která má závazky nebo platby. Nejprve přesuňte nebo odstraňte finanční záznamy."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Nemůžete smazat svůj vlastní účet."
 

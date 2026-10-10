@@ -12261,10 +12261,6 @@ msgid "Back to Users"
 msgstr "ഉപയോക്താക്കളിലേക്ക് തിരികെ"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "സംഭാവനാ രേഖകളുള്ള ഒരു കുടുംബത്തെ ഇല്ലാതാക്കാൻ കഴിയില്ല. ഒരു ഫിനാൻസ് അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "ആ ദിശയിൽ പ്രോപ്പർട്ടി നീക്കാൻ കഴിയില്ല"
 
@@ -23558,4 +23554,20 @@ msgstr "ഈ പരിപാടിക്ക് ആരംഭ, അവസാന സ�
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} രജിസ്റ്റർ ചെയ്ത് ചെക്ക് ഇൻ ചെയ്തു!"
+
+#: 
+msgid "Search by family name"
+msgstr "കുടുംബപ്പേര് ഉപയോഗിച്ച് തിരയുക"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "കുടുംബപ്പേര് അല്ലെങ്കിൽ കവർ നമ്പർ ഉപയോഗിച്ച് തിരയുക"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "പ്രതിജ്ഞകളോ പേയ്‌മെന്റുകളോ ഉള്ള ഒരു കുടുംബത്തെ ഇല്ലാതാക്കാൻ കഴിയില്ല. ആദ്യം സാമ്പത്തിക രേഖകൾ മാറ്റുകയോ നീക്കം ചെയ്യുകയോ ചെയ്യുക."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "നിങ്ങളുടെ സ്വന്തം അക്കൗണ്ട് ഇല്ലാതാക്കാൻ കഴിയില്ല."
 

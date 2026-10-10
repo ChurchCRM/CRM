@@ -12263,10 +12263,6 @@ msgid "Back to Users"
 msgstr "Takaisin käyttäjiin"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Lahjoitustietoja sisältävää perhettä ei voi poistaa. Ota yhteyttä taloushallinnon ylläpitäjään."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Ominaisuutta ei voi siirtää kyseiseen suuntaan"
 
@@ -23560,4 +23556,20 @@ msgstr "Tällä tapahtumalla ei ole alkamis- ja päättymisaikaa"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} rekisteröity ja merkitty läsnäolevaksi!"
+
+#: 
+msgid "Search by family name"
+msgstr "Hae perheen nimellä"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Hae perheen nimellä tai kuoren numerolla"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Perhettä, jolla on lupauksia tai maksuja, ei voi poistaa. Siirrä tai poista ensin talouskirjaukset."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Et voi poistaa omaa tiliäsi."
 

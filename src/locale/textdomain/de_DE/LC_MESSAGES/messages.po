@@ -12373,10 +12373,6 @@ msgid "Back to Users"
 msgstr "Zurück zu den Benutzern"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Eine Familie mit Spendenaufzeichnungen kann nicht gelöscht werden. Wenden Sie sich an einen Finanzadministrator."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Das Feld kann nicht in diese Richtung verschoben werden"
 
@@ -23670,4 +23666,20 @@ msgstr "Dieses Ereignis hat keine Start- und Endzeit"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} wurde registriert und eingecheckt!"
+
+#: 
+msgid "Search by family name"
+msgstr "Nach Familienname suchen"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Nach Familienname oder Umschlag-Nr. suchen"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Eine Familie mit Zusagen oder Zahlungen kann nicht gelöscht werden. Verschieben oder entfernen Sie zuerst die Finanzdatensätze."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Sie können Ihr eigenes Konto nicht löschen."
 

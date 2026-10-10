@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "സംഭാവനകൾ മാറ്റുന്നതിൽ പിഴവ് സംഭവിച്ചു.",
   "At least one family member is required": "കുറഞ്ഞത് ഒരു കുടുംബാംഗമെങ്കിലും ആവശ്യമാണ്",
   "Back to Users": "ഉപയോക്താക്കളിലേക്ക് തിരികെ",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "സംഭാവനാ രേഖകളുള്ള ഒരു കുടുംബത്തെ ഇല്ലാതാക്കാൻ കഴിയില്ല. ഒരു ഫിനാൻസ് അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക.",
   "Cannot move property in that direction": "ആ ദിശയിൽ പ്രോപ്പർട്ടി നീക്കാൻ കഴിയില്ല",
   "Confirm Family Info": "കുടുംബ വിവരം സ്ഥിരീകരിക്കുക",
   "Delete failed": "ഇല്ലാതാക്കൽ പരാജയപ്പെട്ടു",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "ഈ പരിപാടിക്ക് ഗ്രൂപ്പ് നൽകിയിട്ടില്ല, അതിനാൽ അതിഥികളെ രജിസ്റ്റർ ചെയ്യാനാവില്ല",
   "This event has no start and end time": "ഈ പരിപാടിക്ക് ആരംഭ, അവസാന സമയം ഇല്ല",
   "{{name}} registered and checked in!": "{{name}} രജിസ്റ്റർ ചെയ്ത് ചെക്ക് ഇൻ ചെയ്തു!",
+  "Search by family name": "കുടുംബപ്പേര് ഉപയോഗിച്ച് തിരയുക",
+  "Search by family name or envelope #": "കുടുംബപ്പേര് അല്ലെങ്കിൽ കവർ നമ്പർ ഉപയോഗിച്ച് തിരയുക",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "പ്രതിജ്ഞകളോ പേയ്‌മെന്റുകളോ ഉള്ള ഒരു കുടുംബത്തെ ഇല്ലാതാക്കാൻ കഴിയില്ല. ആദ്യം സാമ്പത്തിക രേഖകൾ മാറ്റുകയോ നീക്കം ചെയ്യുകയോ ചെയ്യുക.",
+  "You cannot delete your own account.": "നിങ്ങളുടെ സ്വന്തം അക്കൗണ്ട് ഇല്ലാതാക്കാൻ കഴിയില്ല.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} സംഭവം സൃഷ്ടിച്ചു",
     "other": "\"{{name}}\": {{count}} സംഭവങ്ങൾ സൃഷ്ടിച്ചു"

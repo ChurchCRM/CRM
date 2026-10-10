@@ -2906,7 +2906,6 @@
   "An error occurred while moving donations.": "Đã xảy ra lỗi khi di chuyển các khoản dâng hiến.",
   "At least one family member is required": "Cần có ít nhất một thành viên gia đình",
   "Back to Users": "Quay lại Người dùng",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Không thể xóa gia đình có hồ sơ dâng hiến. Liên hệ quản trị viên tài chính.",
   "Cannot move property in that direction": "Không thể di chuyển thuộc tính theo hướng đó",
   "Confirm Family Info": "Xác nhận Thông tin Gia đình",
   "Delete failed": "Xóa thất bại",
@@ -5729,6 +5728,10 @@
   "This event has no group assigned, so guests cannot be registered": "Sự kiện này không có nhóm được gán, vì vậy khách không thể được đăng ký",
   "This event has no start and end time": "Sự kiện này không có thời gian bắt đầu và kết thúc",
   "{{name}} registered and checked in!": "{{name}} đã đăng ký và đăng nhập!",
+  "Search by family name": "Tìm theo tên gia đình",
+  "Search by family name or envelope #": "Tìm theo tên gia đình hoặc số phong bì",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Không thể xóa gia đình có cam kết dâng hiến hoặc khoản thanh toán. Hãy chuyển hoặc xóa các bản ghi tài chính trước.",
+  "You cannot delete your own account.": "Bạn không thể xóa tài khoản của chính mình.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：tạo {{count}} lần xuất hiện",
     "other": "\"{{name}}\"：tạo {{count}} lần xuất hiện"

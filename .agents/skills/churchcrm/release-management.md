@@ -149,7 +149,7 @@ Run it with:
 - `draft=true` unless George explicitly requests otherwise.
 - The approved `next_version`.
 - `prerelease` only when appropriate.
-- Normally leave `run_id`, `release_version_override`, and `expected_version` empty so workflow safeguards operate normally.
+- That is the only input. Run it on the branch being released: it refuses to start unless Build/Test/Package and the Nightly are both green on that branch's tip.
 
 The workflow:
 
@@ -163,7 +163,7 @@ After the workflow completes, verify that the source build SHA is the SHA valida
 
 ### Safety warning
 
-The workflow stops if the release or tag already exists. The `replace_existing` input deletes and recreates them, which discards the notes. Use it only with George's explicit approval.
+The workflow stops if the release or tag already exists. To replace one, delete it by hand on GitHub with George's explicit approval; that discards the notes.
 
 ---
 

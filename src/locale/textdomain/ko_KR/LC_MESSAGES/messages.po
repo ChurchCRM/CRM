@@ -12280,10 +12280,6 @@ msgid "Back to Users"
 msgstr "사용자 목록으로 돌아가기"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "헌금 기록이 있는 가족은 삭제할 수 없습니다. 재정 담당자에게 문의하세요."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "해당 방향으로 속성을 이동할 수 없습니다"
 
@@ -23555,4 +23551,20 @@ msgstr "이 행사에는 시작 및 종료 시간이 없습니다"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}}이(가) 등록되었고 체크인되었습니다!"
+
+#: 
+msgid "Search by family name"
+msgstr "가족 이름으로 검색"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "가족 이름 또는 봉투 번호로 검색"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "서약이나 결제 내역이 있는 가족은 삭제할 수 없습니다. 먼저 재정 기록을 이동하거나 삭제하세요."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "본인 계정은 삭제할 수 없습니다."
 

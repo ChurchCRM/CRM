@@ -2906,7 +2906,6 @@
   "An error occurred while moving donations.": "Terjadi kesalahan saat memindahkan donasi.",
   "At least one family member is required": "Minimal satu anggota keluarga diperlukan",
   "Back to Users": "Kembali ke Pengguna",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Tidak dapat menghapus keluarga yang memiliki catatan donasi. Hubungi administrator keuangan.",
   "Cannot move property in that direction": "Tidak dapat memindahkan properti ke arah tersebut",
   "Confirm Family Info": "Konfirmasi Informasi Keluarga",
   "Delete failed": "Penghapusan gagal",
@@ -5729,6 +5728,10 @@
   "This event has no group assigned, so guests cannot be registered": "Acara ini tidak memiliki kelompok yang ditugaskan, jadi tamu tidak dapat didaftarkan",
   "This event has no start and end time": "Acara ini tidak memiliki waktu mulai dan berakhir",
   "{{name}} registered and checked in!": "{{name}} telah mendaftar dan login!",
+  "Search by family name": "Cari berdasarkan nama keluarga",
+  "Search by family name or envelope #": "Cari berdasarkan nama keluarga atau no. amplop",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Keluarga yang memiliki janji persembahan atau pembayaran tidak dapat dihapus. Pindahkan atau hapus dahulu catatan keuangannya.",
+  "You cannot delete your own account.": "Anda tidak dapat menghapus akun Anda sendiri.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} kejadian dibuat",
     "other": "\"{{name}}\"：{{count}} kejadian dibuat"

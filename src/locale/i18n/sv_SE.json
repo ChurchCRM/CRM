@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "Ett fel uppstod när gåvorna skulle flyttas.",
   "At least one family member is required": "Minst en familjemedlem krävs",
   "Back to Users": "Tillbaka till användare",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Det går inte att ta bort en familj med gåvoregister. Kontakta en ekonomiadministratör.",
   "Cannot move property in that direction": "Det går inte att flytta egenskapen i den riktningen",
   "Confirm Family Info": "Bekräfta familjeinformation",
   "Delete failed": "Borttagning misslyckades",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Detta evenemang har ingen grupp tilldelad, så gäster kan inte registreras",
   "This event has no start and end time": "Detta evenemang har ingen start- och sluttid",
   "{{name}} registered and checked in!": "{{name}} registrerad och incheckad!",
+  "Search by family name": "Sök på familjenamn",
+  "Search by family name or envelope #": "Sök på familjenamn eller kuvertnr",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Det går inte att ta bort en familj som har löften eller betalningar. Flytta eller ta bort de ekonomiska posterna först.",
+  "You cannot delete your own account.": "Du kan inte ta bort ditt eget konto.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} förekomst skapad",
     "other": "\"{{name}}\": {{count}} förekomster skapade"

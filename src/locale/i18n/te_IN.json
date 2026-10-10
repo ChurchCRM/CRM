@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "విరాళాలను తరలించేటప్పుడు లోపం సంభవించింది.",
   "At least one family member is required": "కనీసం ఒక కుటుంబ సభ్యుడు అవసరం",
   "Back to Users": "వినియోగదారులకు తిరిగి వెళ్ళు",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "విరాళాల రికార్డులతో కుటుంబాన్ని తొలగించలేరు. ఆర్థిక నిర్వాహకులను సంప్రదించండి.",
   "Cannot move property in that direction": "ఆ దిశలో ఆస్తిని తరలించలేరు",
   "Confirm Family Info": "కుటుంబ సమాచారాన్ని నిర్ధారించండి",
   "Delete failed": "తొలగింపు విఫలమైంది",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "ఈ కార్యక్రమానికి సమూహం కేటాయించబడలేదు, కాబట్టి అతిథులను నమోదు చేయలేరు",
   "This event has no start and end time": "ఈ కార్యక్రమానికి ప్రారంభ మరియు ముగింపు సమయం లేదు",
   "{{name}} registered and checked in!": "{{name}} నమోదై చెక్ ఇన్ అయ్యారు!",
+  "Search by family name": "కుటుంబ పేరుతో శోధించండి",
+  "Search by family name or envelope #": "కుటుంబ పేరు లేదా కవర్ నంబర్‌తో శోధించండి",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "ప్రతిజ్ఞలు లేదా చెల్లింపులు ఉన్న కుటుంబాన్ని తొలగించలేరు. ముందుగా ఆర్థిక రికార్డులను తరలించండి లేదా తొలగించండి.",
+  "You cannot delete your own account.": "మీ స్వంత ఖాతాను మీరు తొలగించలేరు.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} సందర్భం సృష్టించబడింది",
     "other": "\"{{name}}\": {{count}} సందర్భాలు సృష్టించబడ్డాయి"

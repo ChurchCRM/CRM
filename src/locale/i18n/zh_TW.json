@@ -2906,7 +2906,6 @@
   "An error occurred while moving donations.": "移動奉獻記錄時發生錯誤。",
   "At least one family member is required": "至少需要一名家庭成員",
   "Back to Users": "返回使用者列表",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "無法刪除有奉獻記錄的家庭。請聯絡財務管理員。",
   "Cannot move property in that direction": "無法向該方向移動屬性",
   "Confirm Family Info": "確認家庭資訊",
   "Delete failed": "刪除失敗",
@@ -5729,6 +5728,10 @@
   "This event has no group assigned, so guests cannot be registered": "此事件未分配群組，因此無法註冊來客",
   "This event has no start and end time": "此事件沒有開始和結束時間",
   "{{name}} registered and checked in!": "{{name}} 已註冊並簽到！",
+  "Search by family name": "依家庭名稱搜尋",
+  "Search by family name or envelope #": "依家庭名稱或信封編號搜尋",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "無法刪除有認獻或付款紀錄的家庭。請先轉移或刪除財務紀錄。",
+  "You cannot delete your own account.": "您無法刪除自己的帳號。",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：建立了 {{count}} 個發生",
     "other": "\"{{name}}\"：建立了 {{count}} 個發生"

@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "אירעה שגיאה בעת העברת התרומות.",
   "At least one family member is required": "נדרש לפחות חבר משפחה אחד",
   "Back to Users": "חזרה למשתמשים",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "לא ניתן למחוק משפחה עם רשומות תרומות. פנה אל מנהל הכספים.",
   "Cannot move property in that direction": "לא ניתן להזיז מאפיין בכיוון זה",
   "Confirm Family Info": "אשר מידע משפחתי",
   "Delete failed": "המחיקה נכשלה",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "לאירוע זה לא הוקצתה קבוצה, ולכן אי אפשר לרשום אורחים",
   "This event has no start and end time": "לאירוע זה אין שעת התחלה וסיום",
   "{{name}} registered and checked in!": "{{name}} נרשם/ה וביצע/ה צ׳ק-אין!",
+  "Search by family name": "חיפוש לפי שם משפחה",
+  "Search by family name or envelope #": "חיפוש לפי שם משפחה או מס' מעטפה",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "לא ניתן למחוק משפחה שיש לה התחייבויות או תשלומים. העבירו או הסירו תחילה את הרשומות הכספיות.",
+  "You cannot delete your own account.": "אי אפשר למחוק את החשבון שלך.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": נוצר {{count}} מופע",
     "other": "\"{{name}}\": נוצרו {{count}} מופעים"

@@ -12364,10 +12364,6 @@ msgid "Back to Users"
 msgstr "Înapoi la utilizatori"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Nu se poate șterge o familie cu înregistrări de donații. Contactați un administrator financiar."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Nu se poate muta proprietatea în acea direcție"
 
@@ -23683,4 +23679,20 @@ msgstr "Acest eveniment nu are o oră de început și sfărșit"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} s-a înregistrat și a făcut check-in!"
+
+#: 
+msgid "Search by family name"
+msgstr "Caută după numele familiei"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Caută după numele familiei sau nr. plicului"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Nu se poate șterge o familie care are angajamente sau plăți. Mutați sau eliminați mai întâi înregistrările financiare."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Nu vă puteți șterge propriul cont."
 

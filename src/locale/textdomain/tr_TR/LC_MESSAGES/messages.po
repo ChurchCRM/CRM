@@ -12296,10 +12296,6 @@ msgid "Back to Users"
 msgstr "Kullanıcılara Geri Dön"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Bağış kaydı olan bir aile silinemez. Finans yöneticisiyle iletişime geçin."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Özellik bu yönde taşınamaz"
 
@@ -23593,4 +23589,20 @@ msgstr "Bu olayın başlangıç ve bitiş zamanı yok"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} kayıtlı ve giriş yapıldı!"
+
+#: 
+msgid "Search by family name"
+msgstr "Aile adına göre ara"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Aile adına veya zarf numarasına göre ara"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Taahhüdü veya ödemesi olan bir aile silinemez. Önce mali kayıtları taşıyın veya kaldırın."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Kendi hesabınızı silemezsiniz."
 

@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "Beim Verschieben der Spenden ist ein Fehler aufgetreten.",
   "At least one family member is required": "Mindestens ein Familienmitglied ist erforderlich",
   "Back to Users": "Zurück zu den Benutzern",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Eine Familie mit Spendenaufzeichnungen kann nicht gelöscht werden. Wenden Sie sich an einen Finanzadministrator.",
   "Cannot move property in that direction": "Das Feld kann nicht in diese Richtung verschoben werden",
   "Confirm Family Info": "Familieninformationen bestätigen",
   "Delete failed": "Löschen fehlgeschlagen",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Diesem Ereignis ist keine Gruppe zugewiesen, daher können Gäste nicht registriert werden",
   "This event has no start and end time": "Dieses Ereignis hat keine Start- und Endzeit",
   "{{name}} registered and checked in!": "{{name}} wurde registriert und eingecheckt!",
+  "Search by family name": "Nach Familienname suchen",
+  "Search by family name or envelope #": "Nach Familienname oder Umschlag-Nr. suchen",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Eine Familie mit Zusagen oder Zahlungen kann nicht gelöscht werden. Verschieben oder entfernen Sie zuerst die Finanzdatensätze.",
+  "You cannot delete your own account.": "Sie können Ihr eigenes Konto nicht löschen.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} Ereignis erstellt",
     "other": "\"{{name}}\": {{count}} Ereignisse erstellt"

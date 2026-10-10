@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-10 02:34+0000\n"
+"POT-Creation-Date: 2026-10-10 16:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2570,7 +2570,7 @@ msgstr ""
 msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
 msgstr ""
 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
 msgstr ""
 
 #, php-format
@@ -17010,6 +17010,9 @@ msgid "You can review or change this on your volunteer schedule."
 msgstr ""
 
 msgid "You can still proceed with the upgrade without viewing release notes."
+msgstr ""
+
+msgid "You cannot delete your own account."
 msgstr ""
 
 msgid "You cannot open this page"

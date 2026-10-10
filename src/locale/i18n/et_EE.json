@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "Annetuste teisaldamisel ilmnes viga.",
   "At least one family member is required": "Vähemalt üks pereliige on nõutav",
   "Back to Users": "Tagasi kasutajate juurde",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Ei saa kustutada peret, millel on annetuste andmed. Võtke ühendust rahandusadministraatoriga.",
   "Cannot move property in that direction": "Ei saa omadust selles suunas teisaldada",
   "Confirm Family Info": "Kinnita pere andmed",
   "Delete failed": "Kustutamine ebaõnnestus",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Sellele üritusele ei ole määratud ühtegi rühma, seega külalisi ei saa registreerida",
   "This event has no start and end time": "Sellel ürituse puudub algus- ja lõppaeg",
   "{{name}} registered and checked in!": "{{name}} registreeritud ja kohalolu märgitud!",
+  "Search by family name": "Otsi pere nime järgi",
+  "Search by family name or envelope #": "Otsi pere nime või ümbriku nr järgi",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Peret, millel on lubadusi või makseid, ei saa kustutada. Teisalda või eemalda esmalt finantskirjed.",
+  "You cannot delete your own account.": "Te ei saa oma kontot kustutada.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} sündmus loodud",
     "other": "\"{{name}}\": {{count}} sündmust loodud"

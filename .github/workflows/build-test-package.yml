@@ -79,8 +79,6 @@ on:
 jobs:
   # PHP 8.4 only. PHP 8.5 runs in build-test-nightly.yml.
   configure:
-    # Locale sync PRs only touch translations; every job below needs this one, so they skip too.
-    if: ${{ !startsWith(github.head_ref, 'locale/') }}
     runs-on: ubuntu-24.04
     outputs:
       php-versions: ${{ steps.set-matrix.outputs.php-versions }}
@@ -89,6 +87,9 @@ jobs:
       run: echo 'php-versions=["8.4"]' >> "$GITHUB_OUTPUT"
 
   build:
+    # Locale PRs only touch translations. Skip here, not in `configure`: a skipped
+    # `configure` leaves the test jobs' fromJSON(php-versions) matrix empty, which fails the run.
+    if: ${{ !startsWith(github.head_ref, 'locale/') }}
     needs: configure
     timeout-minutes: 40
     permissions:

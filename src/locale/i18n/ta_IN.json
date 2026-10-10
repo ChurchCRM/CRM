@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "நன்கொடைகளை நகர்த்தும் போது பிழை ஏற்பட்டது.",
   "At least one family member is required": "குறைந்தது ஒரு குடும்ப உறுப்பினர் தேவை",
   "Back to Users": "பயனர்களுக்கு திரும்பு",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "நன்கொடை பதிவுகள் உள்ள குடும்பத்தை நீக்க முடியாது. நிதி நிர்வாகியை தொடர்பு கொள்ளவும்.",
   "Cannot move property in that direction": "அந்த திசையில் சொத்தை நகர்த்த முடியாது",
   "Confirm Family Info": "குடும்ப தகவலை உறுதிப்படுத்து",
   "Delete failed": "நீக்கம் தோல்வியடைந்தது",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "இந்த நிகழ்ச்சிக்கு குழு ஒதுக்கப்படவில்லை, எனவே விருந்தினர்களைப் பதிவு செய்ய முடியாது",
   "This event has no start and end time": "இந்த நிகழ்ச்சிக்கு தொடக்க மற்றும் முடிவு நேரம் இல்லை",
   "{{name}} registered and checked in!": "{{name}} பதிவு செய்யப்பட்டு வருகை பதிவிடப்பட்டது!",
+  "Search by family name": "குடும்பப் பெயரால் தேடுங்கள்",
+  "Search by family name or envelope #": "குடும்பப் பெயர் அல்லது உறை எண்ணால் தேடுங்கள்",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "உறுதிமொழிகள் அல்லது கொடுப்பனவுகள் உள்ள குடும்பத்தை நீக்க முடியாது. முதலில் நிதிப் பதிவுகளை நகர்த்தவும் அல்லது அகற்றவும்.",
+  "You cannot delete your own account.": "உங்கள் சொந்தக் கணக்கை நீங்கள் நீக்க முடியாது.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} நிகழ்வு உருவாக்கப்பட்டது",
     "other": "\"{{name}}\": {{count}} நிகழ்வுகள் உருவாக்கப்பட்டன"

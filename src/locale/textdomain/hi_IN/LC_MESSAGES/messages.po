@@ -12260,10 +12260,6 @@ msgid "Back to Users"
 msgstr "उपयोगकर्ताओं पर वापस जाएं"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "दान रिकॉर्ड वाले परिवार को हटाया नहीं जा सकता। वित्त प्रशासक से संपर्क करें।"
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "उस दिशा में संपत्ति नहीं ले जाई जा सकती"
 
@@ -23557,4 +23553,20 @@ msgstr "इस इवेंट का कोई शुरुआत और अं
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} पंजीकृत और चेक इन किया गया!"
+
+#: 
+msgid "Search by family name"
+msgstr "परिवार के नाम से खोजें"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "परिवार के नाम या लिफ़ाफ़ा क्र. से खोजें"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "जिस परिवार के पास प्रतिज्ञाएँ या भुगतान हैं, उसे हटाया नहीं जा सकता। पहले वित्तीय रिकॉर्ड स्थानांतरित करें या हटाएँ।"
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "आप अपना स्वयं का खाता नहीं हटा सकते।"
 

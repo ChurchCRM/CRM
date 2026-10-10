@@ -12296,10 +12296,6 @@ msgid "Back to Users"
 msgstr "Terug na Gebruikers"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Kan nie 'n gesin met skenkingsrekords verwyder nie. Kontak 'n finansiële administrateur."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Kan nie eienskap in daardie rigting skuif nie"
 
@@ -23593,4 +23589,20 @@ msgstr "Hierdie gebeurtenis het geen begin- en eindtyd nie"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} is geregistreer en ingecheckt!"
+
+#: 
+msgid "Search by family name"
+msgstr "Soek volgens gesinsnaam"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Soek volgens gesinsnaam of koevertnr."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Kan nie 'n gesin uitvee wat beloftes of betalings het nie. Skuif of verwyder eers die finansiële rekords."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Jy kan nie jou eie rekening uitvee nie."
 

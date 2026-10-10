@@ -2956,7 +2956,6 @@
   "An error occurred while moving donations.": "حدث خطأ أثناء نقل التبرعات.",
   "At least one family member is required": "مطلوب عضو واحد على الأقل في الأسرة",
   "Back to Users": "العودة إلى المستخدمين",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "لا يمكن حذف أسرة لها سجلات تبرعات. اتصل بمسؤول الشؤون المالية.",
   "Cannot move property in that direction": "لا يمكن نقل الخاصية في هذا الاتجاه",
   "Confirm Family Info": "تأكيد معلومات الأسرة",
   "Delete failed": "فشل الحذف",
@@ -5889,6 +5888,10 @@
   "This event has no group assigned, so guests cannot be registered": "لم تُعيَّن مجموعة لهذا الحدث، لذا لا يمكن تسجيل الضيوف",
   "This event has no start and end time": "ليس لهذا الحدث وقت بدء وانتهاء",
   "{{name}} registered and checked in!": "تم تسجيل {{name}} وتسجيل حضوره!",
+  "Search by family name": "البحث باسم العائلة",
+  "Search by family name or envelope #": "البحث باسم العائلة أو رقم المظروف",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "لا يمكن حذف عائلة لديها تعهدات أو مدفوعات. انقل السجلات المالية أو احذفها أولاً.",
+  "You cannot delete your own account.": "لا يمكنك حذف حسابك الخاص.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "تم إنشاء {{count}} موعد لـ \"{{name}}\"",
     "other": "تم إنشاء {{count}} مواعيد لـ \"{{name}}\""

@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "Hitilafu ilitokea wakati wa kuhamisha michango.",
   "At least one family member is required": "Angalau mwanafamilia mmoja anahitajika",
   "Back to Users": "Rudi kwa Watumiaji",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Haiwezekani kufuta familia yenye kumbukumbu za michango. Wasiliana na msimamizi wa fedha.",
   "Cannot move property in that direction": "Haiwezekani kuhamisha mali katika mwelekeo huo",
   "Confirm Family Info": "Thibitisha Taarifa za Familia",
   "Delete failed": "Kufuta kumeshindwa",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Tukio hili halina kikundi kilichopangiwa, kwa hivyo wageni hawawezi kusajiliwa",
   "This event has no start and end time": "Tukio hili halina muda wa kuanza na kumalizika",
   "{{name}} registered and checked in!": "{{name}} amesajiliwa na ameingizwa!",
+  "Search by family name": "Tafuta kwa jina la familia",
+  "Search by family name or envelope #": "Tafuta kwa jina la familia au namba ya bahasha",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Huwezi kufuta familia yenye ahadi au malipo. Hamisha au ondoa kwanza rekodi za fedha.",
+  "You cannot delete your own account.": "Huwezi kufuta akaunti yako mwenyewe.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": tukio {{count}} la tarehe limeundwa",
     "other": "\"{{name}}\": matukio {{count}} ya tarehe yameundwa"

@@ -12295,10 +12295,6 @@ msgid "Back to Users"
 msgstr "Tagasi kasutajate juurde"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Ei saa kustutada peret, millel on annetuste andmed. Võtke ühendust rahandusadministraatoriga."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Ei saa omadust selles suunas teisaldada"
 
@@ -23592,4 +23588,20 @@ msgstr "Sellel ürituse puudub algus- ja lõppaeg"
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} registreeritud ja kohalolu märgitud!"
+
+#: 
+msgid "Search by family name"
+msgstr "Otsi pere nime järgi"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Otsi pere nime või ümbriku nr järgi"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Peret, millel on lubadusi või makseid, ei saa kustutada. Teisalda või eemalda esmalt finantskirjed."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Te ei saa oma kontot kustutada."
 

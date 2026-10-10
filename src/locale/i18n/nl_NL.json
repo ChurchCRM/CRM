@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "Er is een fout opgetreden bij het verplaatsen van donaties.",
   "At least one family member is required": "Ten minste één familielid is vereist",
   "Back to Users": "Terug naar gebruikers",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Een familie met donatieregistraties kan niet worden verwijderd. Neem contact op met een financieel beheerder.",
   "Cannot move property in that direction": "Eigenschap kan niet in die richting worden verplaatst",
   "Confirm Family Info": "Familiegegevens bevestigen",
   "Delete failed": "Verwijderen mislukt",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Aan dit evenement is geen groep toegewezen, dus gasten kunnen niet worden geregistreerd",
   "This event has no start and end time": "Dit evenement heeft geen start- en eindtijd",
   "{{name}} registered and checked in!": "{{name}} is geregistreerd en ingecheckt!",
+  "Search by family name": "Zoeken op gezinsnaam",
+  "Search by family name or envelope #": "Zoeken op gezinsnaam of envelopnr.",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Een gezin met toezeggingen of betalingen kan niet worden verwijderd. Verplaats of verwijder eerst de financiële gegevens.",
+  "You cannot delete your own account.": "U kunt uw eigen account niet verwijderen.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} voorkomen gemaakt",
     "other": "\"{{name}}\": {{count}} voorkomens gemaakt"

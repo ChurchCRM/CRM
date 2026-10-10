@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "Nagkaroon ng error habang inililipat ang mga donasyon.",
   "At least one family member is required": "Kailangan ng hindi bababa sa isang miyembro ng pamilya",
   "Back to Users": "Bumalik sa mga Gumagamit",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Hindi maaaring tanggalin ang pamilyang may mga rekord ng donasyon. Makipag-ugnayan sa administrador ng pananalapi.",
   "Cannot move property in that direction": "Hindi maililipat ang property sa direksyong iyon",
   "Confirm Family Info": "Kumpirmahin ang Impormasyon ng Pamilya",
   "Delete failed": "Nabigo ang pagtanggal",
@@ -5761,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Ang event na ito ay walang group na itinalaga, kaya ang mga bisita ay hindi maaaring magparehistro",
   "This event has no start and end time": "Ang event na ito ay walang start at end time",
   "{{name}} registered and checked in!": "Ang {{name}} ay nakarehistro at nag-check in!",
+  "Search by family name": "Maghanap ayon sa pangalan ng pamilya",
+  "Search by family name or envelope #": "Maghanap ayon sa pangalan ng pamilya o envelope #",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Hindi mabubura ang pamilyang may mga pangako o bayad. Ilipat o alisin muna ang mga talaan ng pananalapi.",
+  "You cannot delete your own account.": "Hindi mo mabubura ang sarili mong account.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：lumikha ng {{count}} occurrence",
     "other": "\"{{name}}\"：lumikha ng {{count}} occurrences"

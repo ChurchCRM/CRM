@@ -12316,10 +12316,6 @@ msgid "Back to Users"
 msgstr "Назад до користувачів"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Неможливо видалити сімʼю із записами про пожертвування. Зверніться до фінансового адміністратора."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Неможливо перемістити властивість у цьому напрямку"
 
@@ -23657,4 +23653,20 @@ msgstr "У цієї події немає часу початку та заве�
 #: 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} зареєстрований та відмітив присутність!"
+
+#: 
+msgid "Search by family name"
+msgstr "Пошук за назвою родини"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Пошук за назвою родини або номером конверта"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Не можна видалити родину, яка має зобов’язання або платежі. Спочатку перемістіть або видаліть фінансові записи."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Ви не можете видалити власний обліковий запис."
 
