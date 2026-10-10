@@ -8,6 +8,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 // Integrity data — files are plain strings (filenames), not objects
 $failingFiles = $integrityCheckData['files'] ?? [];
 $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
+
 ?>
 
 <div class="row">
