@@ -23588,3 +23588,19 @@ msgstr "לאירוע זה אין שעת התחלה וסיום"
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} נרשם/ה וביצע/ה צ׳ק-אין!"
 
+#: 
+msgid "Search by family name"
+msgstr "חיפוש לפי שם משפחה"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "חיפוש לפי שם משפחה או מס' מעטפה"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "לא ניתן למחוק משפחה שיש לה התחייבויות או תשלומים. העבירו או הסירו תחילה את הרשומות הכספיות."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "אי אפשר למחוק את החשבון שלך."
+

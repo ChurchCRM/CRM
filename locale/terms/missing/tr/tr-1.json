@@ -1,6 +1,6 @@
 {
-  "Search by family name": "Aile adına göre ara",
-  "Search by family name or envelope #": "Aile adına veya zarf numarasına göre ara",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Taahhüdü veya ödemesi olan bir aile silinemez. Önce mali kayıtları taşıyın veya kaldırın.",
-  "You cannot delete your own account.": "Kendi hesabınızı silemezsiniz."
+  "Search by family name": "",
+  "Search by family name or envelope #": "",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
+  "You cannot delete your own account.": ""
 }

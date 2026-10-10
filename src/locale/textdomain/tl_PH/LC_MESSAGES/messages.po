@@ -23555,3 +23555,19 @@ msgstr "Ang event na ito ay walang start at end time"
 msgid "{{name}} registered and checked in!"
 msgstr "Ang {{name}} ay nakarehistro at nag-check in!"
 
+#: 
+msgid "Search by family name"
+msgstr "Maghanap ayon sa pangalan ng pamilya"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Maghanap ayon sa pangalan ng pamilya o envelope #"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Hindi mabubura ang pamilyang may mga pangako o bayad. Ilipat o alisin muna ang mga talaan ng pananalapi."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Hindi mo mabubura ang sarili mong account."
+

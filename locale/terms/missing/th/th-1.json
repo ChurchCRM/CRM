@@ -1,6 +1,6 @@
 {
-  "Search by family name": "ค้นหาตามชื่อครอบครัว",
-  "Search by family name or envelope #": "ค้นหาตามชื่อครอบครัวหรือเลขที่ซองถวาย",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "ไม่สามารถลบครอบครัวที่มีคำปฏิญาณถวายหรือการชำระเงินได้ โปรดย้ายหรือลบบันทึกการเงินก่อน",
-  "You cannot delete your own account.": "คุณไม่สามารถลบบัญชีของตนเองได้"
+  "Search by family name": "",
+  "Search by family name or envelope #": "",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
+  "You cannot delete your own account.": ""
 }

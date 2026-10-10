@@ -1,6 +1,6 @@
 {
-  "Search by family name": "Tìm theo tên gia đình",
-  "Search by family name or envelope #": "Tìm theo tên gia đình hoặc số phong bì",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Không thể xóa gia đình có cam kết dâng hiến hoặc khoản thanh toán. Hãy chuyển hoặc xóa các bản ghi tài chính trước.",
-  "You cannot delete your own account.": "Bạn không thể xóa tài khoản của chính mình."
+  "Search by family name": "",
+  "Search by family name or envelope #": "",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
+  "You cannot delete your own account.": ""
 }

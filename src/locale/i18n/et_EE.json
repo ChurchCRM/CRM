@@ -5760,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Sellele üritusele ei ole määratud ühtegi rühma, seega külalisi ei saa registreerida",
   "This event has no start and end time": "Sellel ürituse puudub algus- ja lõppaeg",
   "{{name}} registered and checked in!": "{{name}} registreeritud ja kohalolu märgitud!",
+  "Search by family name": "Otsi pere nime järgi",
+  "Search by family name or envelope #": "Otsi pere nime või ümbriku nr järgi",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Peret, millel on lubadusi või makseid, ei saa kustutada. Teisalda või eemalda esmalt finantskirjed.",
+  "You cannot delete your own account.": "Te ei saa oma kontot kustutada.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} sündmus loodud",
     "other": "\"{{name}}\": {{count}} sündmust loodud"

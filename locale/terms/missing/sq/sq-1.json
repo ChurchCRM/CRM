@@ -1,6 +1,6 @@
 {
-  "Search by family name": "Kërko sipas emrit të familjes",
-  "Search by family name or envelope #": "Kërko sipas emrit të familjes ose nr. të zarfit",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nuk mund të fshihet një familje që ka zotime ose pagesa. Zhvendosni ose hiqni më parë regjistrimet financiare.",
-  "You cannot delete your own account.": "Nuk mund të fshini llogarinë tuaj."
+  "Search by family name": "",
+  "Search by family name or envelope #": "",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
+  "You cannot delete your own account.": ""
 }

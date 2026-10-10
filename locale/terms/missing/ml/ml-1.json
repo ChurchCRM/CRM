@@ -1,6 +1,6 @@
 {
-  "Search by family name": "കുടുംബപ്പേര് ഉപയോഗിച്ച് തിരയുക",
-  "Search by family name or envelope #": "കുടുംബപ്പേര് അല്ലെങ്കിൽ കവർ നമ്പർ ഉപയോഗിച്ച് തിരയുക",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "പ്രതിജ്ഞകളോ പേയ്‌മെന്റുകളോ ഉള്ള ഒരു കുടുംബത്തെ ഇല്ലാതാക്കാൻ കഴിയില്ല. ആദ്യം സാമ്പത്തിക രേഖകൾ മാറ്റുകയോ നീക്കം ചെയ്യുകയോ ചെയ്യുക.",
-  "You cannot delete your own account.": "നിങ്ങളുടെ സ്വന്തം അക്കൗണ്ട് ഇല്ലാതാക്കാൻ കഴിയില്ല."
+  "Search by family name": "",
+  "Search by family name or envelope #": "",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
+  "You cannot delete your own account.": ""
 }

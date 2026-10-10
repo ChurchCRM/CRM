@@ -5760,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Ennek az eseménynek nincs csoportja hozzárendelve, ezért nem lehet vendégeket regisztrálni",
   "This event has no start and end time": "Ennek az eseménynek nincs kezdési és befejezési ideje",
   "{{name}} registered and checked in!": "{{name}} regisztrálva és jelölve van!",
+  "Search by family name": "Keresés családnév szerint",
+  "Search by family name or envelope #": "Keresés családnév vagy boríték száma szerint",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nem törölhető olyan család, amelynek vannak felajánlásai vagy befizetései. Előbb helyezze át vagy távolítsa el a pénzügyi rekordokat.",
+  "You cannot delete your own account.": "Nem törölheti a saját fiókját.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} esemény létrehozva",
     "other": "\"{{name}}\": {{count}} esemény létrehozva"
