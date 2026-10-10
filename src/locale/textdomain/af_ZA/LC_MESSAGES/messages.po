@@ -12296,10 +12296,6 @@ msgid "Back to Users"
 msgstr "Terug na Gebruikers"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Kan nie 'n gesin met skenkingsrekords verwyder nie. Kontak 'n finansiële administrateur."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Kan nie eienskap in daardie rigting skuif nie"
 

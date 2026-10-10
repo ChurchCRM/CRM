@@ -12303,10 +12303,6 @@ msgid "Back to Users"
 msgstr "ወደ ተጠቃሚዎች ተመለስ"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "የስጦታ መዝገቦች ያሉት ቤተሰብ ሊሰረዝ አይችልም። የፋይናንስ አስተዳዳሪን ያናግሩ።"
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "ንብረቱን ወደዚያ አቅጣጫ ማንቀሳቀስ አይቻልም"
 

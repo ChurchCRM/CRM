@@ -12261,10 +12261,6 @@ msgid "Back to Users"
 msgstr "ഉപയോക്താക്കളിലേക്ക് തിരികെ"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "സംഭാവനാ രേഖകളുള്ള ഒരു കുടുംബത്തെ ഇല്ലാതാക്കാൻ കഴിയില്ല. ഒരു ഫിനാൻസ് അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "ആ ദിശയിൽ പ്രോപ്പർട്ടി നീക്കാൻ കഴിയില്ല"
 

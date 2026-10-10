@@ -12296,10 +12296,6 @@ msgid "Back to Users"
 msgstr "Επιστροφή στους Χρήστες"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Δεν είναι δυνατή η διαγραφή οικογένειας με εγγραφές δωρεών. Επικοινωνήστε με έναν διαχειριστή οικονομικών."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Δεν είναι δυνατή η μετακίνηση της ιδιότητας σε αυτή την κατεύθυνση"
 

@@ -12294,10 +12294,6 @@ msgid "Back to Users"
 msgstr "חזרה למשתמשים"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "לא ניתן למחוק משפחה עם רשומות תרומות. פנה אל מנהל הכספים."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "לא ניתן להזיז מאפיין בכיוון זה"
 

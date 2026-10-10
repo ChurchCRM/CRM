@@ -12273,10 +12273,6 @@ msgid "Back to Users"
 msgstr "వినియోగదారులకు తిరిగి వెళ్ళు"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "విరాళాల రికార్డులతో కుటుంబాన్ని తొలగించలేరు. ఆర్థిక నిర్వాహకులను సంప్రదించండి."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "ఆ దిశలో ఆస్తిని తరలించలేరు"
 

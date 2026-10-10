@@ -12251,10 +12251,6 @@ msgid "Back to Users"
 msgstr "ユーザー一覧に戻る"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "献金記録のある家族は削除できません。財務管理者にお問い合わせください。"
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "その方向にプロパティを移動できません"
 

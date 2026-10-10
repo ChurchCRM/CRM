@@ -12322,10 +12322,6 @@ msgid "Back to Users"
 msgstr "Vissza a felhasználókhoz"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Nem törölhető olyan család, amelyhez adományok vannak rögzítve. Lépjen kapcsolatba a pénzügyi adminisztrátorral."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Nem lehet a tulajdonságot abba az irányba mozgatni"
 

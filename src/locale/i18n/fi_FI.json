@@ -2916,7 +2916,6 @@
   "An error occurred while moving donations.": "Lahjoitusten siirtämisessä tapahtui virhe.",
   "At least one family member is required": "Vähintään yksi perheenjäsen vaaditaan",
   "Back to Users": "Takaisin käyttäjiin",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "Lahjoitustietoja sisältävää perhettä ei voi poistaa. Ota yhteyttä taloushallinnon ylläpitäjään.",
   "Cannot move property in that direction": "Ominaisuutta ei voi siirtää kyseiseen suuntaan",
   "Confirm Family Info": "Vahvista perhetiedot",
   "Delete failed": "Poisto epäonnistui",

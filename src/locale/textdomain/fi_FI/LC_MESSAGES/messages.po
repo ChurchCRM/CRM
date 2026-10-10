@@ -12263,10 +12263,6 @@ msgid "Back to Users"
 msgstr "Takaisin käyttäjiin"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Lahjoitustietoja sisältävää perhettä ei voi poistaa. Ota yhteyttä taloushallinnon ylläpitäjään."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Ominaisuutta ei voi siirtää kyseiseen suuntaan"
 

@@ -12306,10 +12306,6 @@ msgid "Back to Users"
 msgstr "பயனர்களுக்கு திரும்பு"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "நன்கொடை பதிவுகள் உள்ள குடும்பத்தை நீக்க முடியாது. நிதி நிர்வாகியை தொடர்பு கொள்ளவும்."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "அந்த திசையில் சொத்தை நகர்த்த முடியாது"
 

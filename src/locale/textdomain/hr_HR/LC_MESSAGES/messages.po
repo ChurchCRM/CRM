@@ -12268,10 +12268,6 @@ msgid "Back to Users"
 msgstr "Povratak na korisnike"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Nije moguće obrisati obitelj sa zapisima darova. Kontaktirajte financijskog administratora."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Nije moguće premjestiti svojstvo u tom smjeru"
 

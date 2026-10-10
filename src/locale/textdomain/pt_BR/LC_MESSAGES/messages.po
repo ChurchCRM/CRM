@@ -12262,10 +12262,6 @@ msgid "Back to Users"
 msgstr "Voltar para Usuários"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Não é possível excluir uma família com registros de doações. Entre em contato com um administrador financeiro."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Não é possível mover a propriedade nessa direção"
 

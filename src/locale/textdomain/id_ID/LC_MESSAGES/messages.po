@@ -12280,10 +12280,6 @@ msgid "Back to Users"
 msgstr "Kembali ke Pengguna"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Tidak dapat menghapus keluarga yang memiliki catatan donasi. Hubungi administrator keuangan."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Tidak dapat memindahkan properti ke arah tersebut"
 

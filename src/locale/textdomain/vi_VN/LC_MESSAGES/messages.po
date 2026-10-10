@@ -12290,10 +12290,6 @@ msgid "Back to Users"
 msgstr "Quay lại Người dùng"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Không thể xóa gia đình có hồ sơ dâng hiến. Liên hệ quản trị viên tài chính."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Không thể di chuyển thuộc tính theo hướng đó"
 

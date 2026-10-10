@@ -12260,10 +12260,6 @@ msgid "Back to Users"
 msgstr "उपयोगकर्ताओं पर वापस जाएं"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "दान रिकॉर्ड वाले परिवार को हटाया नहीं जा सकता। वित्त प्रशासक से संपर्क करें।"
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "उस दिशा में संपत्ति नहीं ले जाई जा सकती"
 
