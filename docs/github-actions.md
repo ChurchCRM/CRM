@@ -62,7 +62,7 @@ The prefix says who made the branch and what it is for.
 |---|---|---|
 | `Release & Start Next` (`release-publish.yml`) | manual | Finds the latest green `master` build for the expected version, creates a **draft** release from its zip, writes the release-notes context artifact, then calls `Release: start next version` |
 | `Release: start next version` (`release-prepare.yml`) | manual, or called by `Release & Start Next` | Bumps the version, pushes `build/<version>` and opens the "Start `<version>` release" PR |
-| `Release: bookkeeping` (`release-bookkeeping.yml`) | release published, manual | Stops on a placeholder tag, syncs the changelog file and `CHANGELOG.md` table, advances the CRM release milestone, then syncs the docs repo's milestones (`DOCS_RELEASE_TOKEN`) |
+| `Release: bookkeeping` (`release-bookkeeping.yml`) | release published, manual | Stops on a placeholder tag, syncs the changelog file and `CHANGELOG.md` table, advances the CRM release milestone, then syncs the docs repo's milestones (`DOCS_RELEASE_TOKEN`). Job `publish-visuals` starts `Publish visuals` in `ChurchCRM/visuals` with the release commit's capture run |
 
 Publishing the draft is a person's click. That `release: published` event then starts `Build & Push Docker Images`, `Release: bookkeeping` and the nightly upgrade tests.
 
@@ -72,7 +72,7 @@ Publishing the draft is a person's click. That `release: published` event then s
 |---|---|---|
 | `Issues: hygiene` (`issue-management.yml`) | issue opened, Mondays 02:00 UTC, manual | Security guard on new issues, stale marking, review of closed stale issues. After 45 quiet days it asks the reporter to reply (that keeps it open). No reply closes it 14 days later. Exempt: `Security`, `security-delete-required`, `Epic`, `good first issue`. At most 30 items per Monday. |
 | `Issues: stamp milestone on merge` (`pr-milestone-stamp.yml`) | PR merged, manual | Puts the merged PR and every issue it `Fixes` on the PR milestone, or on the `package.json` version when the PR has none, and closes those issues if they are still open. A mention does not count |
-| `Marketing: capture screenshots & videos` (`marketing-capture-assets.yml`) | manual | Captures every locale's screenshots. On `master` it opens a PR when the committed visuals differ; on any other branch it fails if they are stale |
+| `Marketing: capture screenshots & videos` (`marketing-capture-assets.yml`) | manual | Captures 8 locales x 3 devices, merges them, and uploads the artifact `marketing-visuals-<run id>` (30 days). Opens no PR; `ChurchCRM/visuals` publishes it to https://cdn.churchcrm.io/ |
 
 ### Shared building blocks
 
