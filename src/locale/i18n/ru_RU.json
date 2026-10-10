@@ -5824,6 +5824,10 @@
   "This event has no group assigned, so guests cannot be registered": "Этому событию не назначена группа, поэтому гостей нельзя зарегистрировать",
   "This event has no start and end time": "У этого события нет времени начала и окончания",
   "{{name}} registered and checked in!": "{{name}} зарегистрирован и отметил присутствие!",
+  "Search by family name": "Поиск по названию семьи",
+  "Search by family name or envelope #": "Поиск по названию семьи или номеру конверта",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Нельзя удалить семью, у которой есть обязательства или платежи. Сначала переместите или удалите финансовые записи.",
+  "You cannot delete your own account.": "Вы не можете удалить свою учётную запись.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} событие создано",
     "other": "\"{{name}}\": {{count}} событий создано"

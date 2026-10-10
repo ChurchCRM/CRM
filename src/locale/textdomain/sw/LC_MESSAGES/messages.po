@@ -23586,3 +23586,19 @@ msgstr "Tukio hili halina muda wa kuanza na kumalizika"
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} amesajiliwa na ameingizwa!"
 
+#: 
+msgid "Search by family name"
+msgstr "Tafuta kwa jina la familia"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Tafuta kwa jina la familia au namba ya bahasha"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Huwezi kufuta familia yenye ahadi au malipo. Hamisha au ondoa kwanza rekodi za fedha."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Huwezi kufuta akaunti yako mwenyewe."
+

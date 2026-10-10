@@ -23660,3 +23660,19 @@ msgstr "Dette arrangementet har ingen start- og sluttid"
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} registrert og sjekket inn!"
 
+#: 
+msgid "Search by family name"
+msgstr "Søk etter familienavn"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Søk etter familienavn eller konvoluttnr."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Du kan ikke slette en familie som har løfter eller betalinger. Flytt eller fjern de økonomiske postene først."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Du kan ikke slette din egen konto."
+

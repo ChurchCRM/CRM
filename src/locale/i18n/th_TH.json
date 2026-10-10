@@ -5728,6 +5728,10 @@
   "This event has no group assigned, so guests cannot be registered": "กิจกรรมนี้ไม่มีกลุ่มที่กำหนด ดังนั้นจึงไม่สามารถลงทะเบียนผู้เยี่ยมชมได้",
   "This event has no start and end time": "กิจกรรมนี้ไม่มีเวลาเริ่มต้นและสิ้นสุด",
   "{{name}} registered and checked in!": "{{name}} ลงทะเบียนแล้วและเข้าสู่ระบบแล้ว!",
+  "Search by family name": "ค้นหาตามชื่อครอบครัว",
+  "Search by family name or envelope #": "ค้นหาตามชื่อครอบครัวหรือเลขที่ซองถวาย",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "ไม่สามารถลบครอบครัวที่มีคำปฏิญาณถวายหรือการชำระเงินได้ โปรดย้ายหรือลบบันทึกการเงินก่อน",
+  "You cannot delete your own account.": "คุณไม่สามารถลบบัญชีของตนเองได้",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น",
     "other": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น"

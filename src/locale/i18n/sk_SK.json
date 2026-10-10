@@ -5824,6 +5824,10 @@
   "This event has no group assigned, so guests cannot be registered": "Táto udalosť nemá priradenú skupinu, takže hostí nie je možné zaregistrovať",
   "This event has no start and end time": "Táto udalosť nemá čas začiatku a konca",
   "{{name}} registered and checked in!": "{{name}} zaregistrovaný a kontrolovaný!",
+  "Search by family name": "Hľadať podľa mena rodiny",
+  "Search by family name or envelope #": "Hľadať podľa mena rodiny alebo čísla obálky",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nie je možné odstrániť rodinu, ktorá má záväzky alebo platby. Najprv presuňte alebo odstráňte finančné záznamy.",
+  "You cannot delete your own account.": "Nemôžete odstrániť svoj vlastný účet.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} udalosť vytvorená",
     "other": "\"{{name}}\": {{count}} udalostí vytvorených"

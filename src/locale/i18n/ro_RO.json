@@ -5792,6 +5792,10 @@
   "This event has no group assigned, so guests cannot be registered": "Acest eveniment nu are un grup atribuit, deci oaspeții nu pot fi înregistrați",
   "This event has no start and end time": "Acest eveniment nu are o oră de început și sfărșit",
   "{{name}} registered and checked in!": "{{name}} s-a înregistrat și a făcut check-in!",
+  "Search by family name": "Caută după numele familiei",
+  "Search by family name or envelope #": "Caută după numele familiei sau nr. plicului",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nu se poate șterge o familie care are angajamente sau plăți. Mutați sau eliminați mai întâi înregistrările financiare.",
+  "You cannot delete your own account.": "Nu vă puteți șterge propriul cont.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} apariție creată",
     "other": "\"{{name}}\": {{count}} apariții create"

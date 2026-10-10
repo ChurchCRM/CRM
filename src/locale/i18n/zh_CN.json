@@ -5728,6 +5728,10 @@
   "This event has no group assigned, so guests cannot be registered": "此事件未分配小组，因此无法注册来客",
   "This event has no start and end time": "此事件没有开始和结束时间",
   "{{name}} registered and checked in!": "{{name}} 已注册并签到！",
+  "Search by family name": "按家庭名称搜索",
+  "Search by family name or envelope #": "按家庭名称或信封编号搜索",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "无法删除有认捐或付款记录的家庭。请先转移或删除财务记录。",
+  "You cannot delete your own account.": "您不能删除自己的账户。",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：创建了 {{count}} 个发生",
     "other": "\"{{name}}\"：创建了 {{count}} 个发生"

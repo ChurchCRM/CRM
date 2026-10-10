@@ -23580,3 +23580,19 @@ msgstr "Kjo ngjarje nuk ka kohën e fillimit dhe mbarimit"
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} regjistruar dhe shënuar i pranishëm!"
 
+#: 
+msgid "Search by family name"
+msgstr "Kërko sipas emrit të familjes"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Kërko sipas emrit të familjes ose nr. të zarfit"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Nuk mund të fshihet një familje që ka zotime ose pagesa. Zhvendosni ose hiqni më parë regjistrimet financiare."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Nuk mund të fshini llogarinë tuaj."
+
