@@ -5718,5 +5718,91 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}: {{name}} nicht mehr qualifiziert",
   "{{position}}: {{name}} qualified": "{{position}}: {{name}} qualifiziert",
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} bittet {{substitute}}, ihren Platz zu übernehmen",
-  "{{title}} on {{date}} created. Staff it now?": "{{title}} am {{date}} angelegt. Jetzt besetzen?"
+  "{{title}} on {{date}} created. Staff it now?": "{{title}} am {{date}} angelegt. Jetzt besetzen?",
+  "Not authorized to change this event's audience group": "Nicht berechtigt, die Zielgruppe dieses Ereignisses zu ändern",
+  "Only a volunteer manager can change who coordinates a ministry": "Nur ein Freiwilligenkoordinator kann ändern, wer einen Dienst koordiniert",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Die Wahl von V1 pausiert V2-E-Mails von Freiwilligen; alles, was in der Warteschlange ist, wird gesendet, wenn V2 wieder aktiviert ist, es sei denn, sein Ereignis ist vorbei.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Fügen Sie hier die Ereignisse dieses Dienstes hinzu: ein Arbeitstag, ein Kurs, der sich jeden Sonntag trifft. Sie erscheinen im Kirchenkalender, und wenn sie sind gemacht, wird u gefragt, ob Sie sie mit Personal besetzten möchten.",
+  "Cancel occurrence": "Ereignis abbrechen",
+  "Cancel this occurrence": "Dieses Ereignis abbrechen",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Das Abbrechen benachrichtigt niemanden: Es wird keine E-Mail gesendet. Zuweisungen werden beibehalten, während des Abbrechens werden keine Erinnerungen eingeplant, und niemand kann zugewiesen werden, bis es wiederhergestellt wird.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Gelöschte Ereignisse verlassen jeden Kalender, mit ihren Eincheckvorgängen und Zählungen, und die Besetzung dieses Dienstes behält nur das Datum. Dies kann nicht rückgängig gemacht werden.",
+  "Events deleted: {{total}}": "Ereignisse gelöscht: {{total}}",
+  "Events to delete: {{total}}": "Zu löschende Ereignisse: {{total}}",
+  "Occurrence cancelled": "Ereignis abgebrochen",
+  "Occurrence restored": "Ereignis wiederhergestellt",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Dieses Ereignis wieder in den Plan aufnehmen, damit es opneu besetzt werden kann? Niemand wird benachrichtigt: Es wird keine E-Mail gesendet.",
+  "Restore occurrence": "Ereignis wiederherstellen",
+  "Restore this occurrence": "Dieses Ereignis wiederherstellen",
+  "The occurrence could not be cancelled": "Das Ereignis konnte nicht abgebrochen werden",
+  "The occurrence could not be restored": "Das Ereignis konnte nicht wiederhergestellt werden",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Sie können Ereignisse zu jedem Kalender hinzufügen, daher sind alle aufgelistet. Der Kalender dieses Dienstes ist zum Starten angekreuzt.",
+  "A phone number or email address is required": "Eine Telefonnummer oder E-Mail-Adresse ist erforderlich",
+  "A phone number or email address is required.": "Eine Telefonnummer oder E-Mail-Adresse ist erforderlich.",
+  "Check-in has not opened for this event yet": "Der Check-in hat für dieses Ereignis noch nicht geöffnet",
+  "Classification given to walk-in guests registered on a kiosk": "Klassifizierung für Walk-in-Gäste, die sich am Kiosk registrieren",
+  "Failed to register guest. Please try again.": "Fehler beim Registrieren des Gastes. Bitte versuchen Sie es erneut.",
+  "First name and last name are required": "Vorname und Nachname sind erforderlich",
+  "First name and last name must each be 50 characters or fewer": "Vorname und Nachname müssen jeweils 50 Zeichen oder weniger sein",
+  "First name and last name must each be at least 2 characters": "Vorname und Nachname müssen jeweils mindestens 2 Zeichen sein",
+  "Guest": "Gast",
+  "Guest Classification": "Gastklassifizierung",
+  "Invalid birth date": "Ungültiger Geburtstag.",
+  "Invalid email address": "Ungültige E-Mail-Adresse",
+  "Kiosk Settings": "Kioskeinstellungen",
+  "Please enter a check number": "Bitte geben Sie eine Schecknummer ein",
+  "Register & Check In": "Registrieren und Einchecken",
+  "Register Walk-In Guest": "Walk-in-Gast registrieren",
+  "Register walk-in guest": "Walk-in-Gast registrieren",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Als Walk-in-Gast am Kiosk während des Ereignisses registriert: %s",
+  "Registering...": "Wird registriert...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Schecknummer erforderlich, wenn Scheckzahlungen in Einzahlungseinträgen erfasst werden.\nHinweis: Das Deaktivieren deaktiviert auch die Erkennung von doppelten Schecknummern – derselbe physische Scheck kann mehrfach eingegeben werden.",
+  "This event has ended": "Dieses Ereignis ist beendet",
+  "This event has no group assigned, so guests cannot be registered": "Diesem Ereignis ist keine Gruppe zugewiesen, daher können Gäste nicht registriert werden",
+  "This event has no start and end time": "Dieses Ereignis hat keine Start- und Endzeit",
+  "{{name}} registered and checked in!": "{{name}} wurde registriert und eingecheckt!",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\": {{count}} Ereignis erstellt",
+    "other": "\"{{name}}\": {{count}} Ereignisse erstellt"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "E-Mail an {{count}} Empfänger gesendet.",
+    "other": "E-Mail an {{count}} Empfänger gesendet."
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "Keine neuen Ereignisse. Das {{count}} Ereignis bis {{through}} hat bereits eines.",
+    "other": "Keine neuen Ereignisse. Die {{count}} Ereignisse bis {{through}} haben bereits eines."
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "Plan \"{{name}}\" erstellt: {{count}} Ereignis",
+    "other": "Plan \"{{name}}\" erstellt: {{count}} Ereignisse"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "Senden an {{count}} Empfänger. Adressen ohne Personeneintrag sind nicht enthalten: {{list}}",
+    "other": "Senden an {{count}} Empfänger. Adressen ohne Personeneintrag sind nicht enthalten: {{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "{{count}} konnte nicht zugewiesen werden",
+    "other": "{{count}} konnten nicht zugewiesen werden"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "{{count}} bleibt offen, da die Vorgabe nicht mehr qualifiziert ist",
+    "other": "{{count}} bleiben offen, da die Vorgabe nicht mehr qualifiziert ist"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "{{count}} Freiwilliger zugewiesen",
+    "other": "{{count}} Freiwillige zugewiesen"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} wartet auf Ihre Antwort",
+    "other": "{{count}} warten auf Ihre Antwort"
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "{{count}} Ereignis {{title}} erstellt. Jetzt besetzten?",
+    "other": "{{count}} Ereignisse {{title}} erstellt. Jetzt besetzten?"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "{{names}} besetzt diese Ereignisse. Ihre Vorkommen werden in der nächsten {{count}} Woche erstellt, wenn sie anstehen.",
+    "other": "{{names}} besetzt diese Ereignisse. Ihre Vorkommen werden in den nächsten {{count}} Wochen erstellt, wenn sie anstehen."
+  }
 }

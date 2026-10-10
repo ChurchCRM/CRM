@@ -18936,6 +18936,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "\"%s\" అనేది ఈ పేజీకి తెలిసిన క్యాలెండర్ రకం కాదు."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} సందర్భం సృష్టించబడింది"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} సందర్భాలు సృష్టించబడ్డాయి"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s సేవ చేయలేరు మరియు %2$s ను ప్రత్యామ్నాయంగా ప్రతిపాదించారు."
 
@@ -20088,6 +20098,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "ఇమెయిల్ పంపడం ప్రారంభించబడలేదు. పంపే ముందు SMTP సెట్టింగ్‌లను కాన్ఫిగర్ చేసి ఇమెయిల్‌ను ప్రారంభించండి."
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "{{count}} గ్రహీతకు ఇమెయిల్ పంపబడింది."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "{{count}} గ్రహీతలకు ఇమెయిల్ పంపబడింది."
+
+#: 
 msgid "Emails"
 msgstr "ఇమెయిల్‌లు"
 
@@ -20678,6 +20698,16 @@ msgstr "ఇంకా ఏ సభ్యుడూ సభ్య పోర్టల�
 #: 
 msgid "No ministry"
 msgstr "పరిచర్య లేదు"
+
+#: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "కొత్త సందర్భాలు లేవు. {{through}} వరకు ఉన్న అన్ని {{count}} కార్యక్రమాలకు ఇప్పటికే ఉన్నాయి."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "కొత్త సందర్భాలు లేవు. {{through}} వరకు ఉన్న అన్ని {{count}} కార్యక్రమాలకు ఇప్పటికే ఉన్నాయి."
 
 #: 
 msgid "No past events"
@@ -21424,6 +21454,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "షెడ్యూల్ \"{{name}}\" సృష్టించబడింది. ఇది నిష్క్రియంగా ఉంది, కాబట్టి క్రియాశీలం అయ్యే వరకు సందర్భాలను తయారు చేయదు."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "షెడ్యూల్ \"{{name}}\" సృష్టించబడింది: {{count}} సందర్భం"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "షెడ్యూల్ \"{{name}}\" సృష్టించబడింది: {{count}} సందర్భాలు"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "షెడ్యూల్ నిష్క్రియం చేయబడింది"
 
@@ -21538,6 +21578,16 @@ msgstr "చర్చి కార్యాలయానికి పంపండ�
 #: 
 msgid "Send your answer"
 msgstr "మీ సమాధానాన్ని పంపండి"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "{{count}} గ్రహీతకు పంపుతోంది. వ్యక్తి రికార్డు లేని చిరునామాలు చేర్చబడలేదు: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "{{count}} గ్రహీతలకు పంపుతోంది. వ్యక్తి రికార్డు లేని చిరునామాలు చేర్చబడలేదు: {{list}}"
 
 #: 
 msgid "Sent"
@@ -23236,6 +23286,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "{{added}} జోడించబడ్డారు, {{alreadyMembers}} మంది ఇప్పటికే ఇక్కడ స్వచ్ఛంద సేవకులు"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} మందిని నియమించలేకపోయాము"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} మందిని నియమించలేకపోయాము"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "డిఫాల్ట్ ఇకపై అర్హత కలిగి లేనందున {{count}} తెరిచే ఉంచబడింది"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "డిఫాల్ట్ ఇకపై అర్హత కలిగి లేనందున {{count}} తెరిచే ఉంచబడ్డాయి"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} స్వయంసేవకుడు నియమించబడ్డారు"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} స్వయంసేవకులు నియమించబడ్డారు"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} మీ సమాధానం కోసం వేచి ఉంది"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} మీ సమాధానం కోసం వేచి ఉన్నాయి"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} కార్యక్రమం సృష్టించబడింది. ఇప్పుడు వ్యక్తులను నియమించాలా?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} కార్యక్రమాలు సృష్టించబడ్డాయి. ఇప్పుడు వ్యక్తులను నియమించాలా?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "{{created}} సందర్భాలు సృష్టించబడ్డాయి, {{existing}} ఇప్పటికే ఉన్నాయి"
 
@@ -23246,6 +23346,16 @@ msgstr "{{ministry}} {{className}} కోసం {{total}} కార్యక్�
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} కూడా వాటిలో కొన్నింటికి సేవకులను అందిస్తారు."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} ఈ కార్యక్రమాలలో సేవ చేస్తారు. రాబోయే {{count}} వారాల్లోకి వచ్చేకొద్దీ వాటి సందర్భాలు సృష్టించబడతాయి."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} ఈ కార్యక్రమాలలో సేవ చేస్తారు. రాబోయే {{count}} వారాల్లోకి వచ్చేకొద్దీ వాటి సందర్భాలు సృష్టించబడతాయి."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23290,4 +23400,174 @@ msgstr "{{proposer}} తమ స్థానంలో {{substitute}} ను స�
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "{{date}} న {{title}} సృష్టించబడింది. ఇప్పుడు సేవకులను ఏర్పాటు చేయాలా?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "ఈ కార్యక్రమం ప్రేక్షకుల సమూహాన్ని మార్చడానికి అనుమతి లేదు"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "పరిచర్యను ఎవరు సమన్వయం చేస్తారో మార్చగలిగేది స్వయంసేవకుల మేనేజర్ మాత్రమే"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "V1 ఎంచుకుంటే V2 స్వయంసేవకుల ఇమెయిల్ నిలిపివేయబడుతుంది; క్యూలో ఉన్నవన్నీ V2 మళ్లీ ఆన్ అయినప్పుడు పంపబడతాయి, దాని సందర్భం ముగిసి ఉంటే తప్ప."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "ఈ పరిచర్య కార్యక్రమాలను ఇక్కడ జోడించండి: ఒక పని దినం, ప్రతి ఆదివారం కలిసే తరగతి. అవి సంఘ క్యాలెండర్‌లో చేరతాయి, సృష్టించిన తర్వాత వాటికి వ్యక్తులను నియమించాలా అని అడుగుతారు."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "సందర్భాన్ని రద్దు చేయి"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "ఈ సందర్భాన్ని రద్దు చేయి"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "రద్దు చేయడం ఎవరికీ తెలియజేయదు: ఇమెయిల్ పంపబడదు. నియామకాలు అలాగే ఉంటాయి, రద్దయి ఉన్నప్పుడు రిమైండర్లు షెడ్యూల్ కావు, పునరుద్ధరించే వరకు ఎవరినీ నియమించలేరు."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "తొలగించిన కార్యక్రమాలు వాటి చెక్-ఇన్‌లు మరియు హాజరు లెక్కలతో సహా అన్ని క్యాలెండర్ల నుండి తొలగిపోతాయి, వాటికి ఈ పరిచర్య నియామకం తేదీని మాత్రమే ఉంచుకుంటుంది. దీన్ని రద్దు చేయలేరు."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "తొలగించిన కార్యక్రమాలు: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "తొలగించవలసిన కార్యక్రమాలు: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "సందర్భం రద్దు చేయబడింది"
+
+#: 
+msgid "Occurrence restored"
+msgstr "సందర్భం పునరుద్ధరించబడింది"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "ఈ సందర్భాన్ని మళ్లీ వ్యక్తులను నియమించగలిగేలా షెడ్యూల్‌లో తిరిగి ఉంచాలా? ఎవరికీ తెలియజేయబడదు: ఇమెయిల్ పంపబడదు."
+
+#: 
+msgid "Restore occurrence"
+msgstr "సందర్భాన్ని పునరుద్ధరించు"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "ఈ సందర్భాన్ని పునరుద్ధరించు"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "సందర్భాన్ని రద్దు చేయలేకపోయాము"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "సందర్భాన్ని పునరుద్ధరించలేకపోయాము"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "అన్ని క్యాలెండర్లకు కార్యక్రమాలను జోడించే అనుమతి మీకు ఉంది, కాబట్టి అన్నీ జాబితాలో ఉన్నాయి. ఈ పరిచర్య స్వంత క్యాలెండర్ మొదట టిక్ చేయబడింది."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "ఫోన్ నంబర్ లేదా ఇమెయిల్ చిరునామా అవసరం"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "ఫోన్ నంబర్ లేదా ఇమెయిల్ చిరునామా అవసరం."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "ఈ కార్యక్రమానికి చెక్-ఇన్ ఇంకా తెరవబడలేదు"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "కియోస్క్‌లో నమోదు చేసుకున్న ముందస్తు సమాచారం లేని అతిథులకు ఇచ్చే వర్గీకరణ"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "అతిథిని నమోదు చేయడం విఫలమైంది. దయచేసి మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "First name and last name are required"
+msgstr "మొదటి పేరు మరియు ఇంటి పేరు అవసరం"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "మొదటి పేరు మరియు ఇంటి పేరు ఒక్కొక్కటి 50 అక్షరాలు లేదా అంతకంటే తక్కువ ఉండాలి"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "మొదటి పేరు మరియు ఇంటి పేరు ఒక్కొక్కటి కనీసం 2 అక్షరాలు ఉండాలి"
+
+#: 
+msgid "Guest"
+msgstr "అతిథి"
+
+#: 
+msgid "Guest Classification"
+msgstr "అతిథి వర్గీకరణ"
+
+#: 
+msgid "Invalid birth date"
+msgstr "చెల్లని పుట్టిన తేదీ."
+
+#: 
+msgid "Invalid email address"
+msgstr "చెల్లని ఇమెయిల్ చిరునామా"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "కియోస్క్ సెట్టింగ్‌లు"
+
+#: 
+msgid "Please enter a check number"
+msgstr "దయచేసి చెక్ నంబర్ నమోదు చేయండి"
+
+#: 
+msgid "Register & Check In"
+msgstr "నమోదు చేసి చెక్ ఇన్ చేయండి"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "ముందస్తు సమాచారం లేని అతిథిని నమోదు చేయండి"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "ముందస్తు సమాచారం లేని అతిథిని నమోదు చేయండి"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "కార్యక్రమం సమయంలో కియోస్క్‌లో ముందస్తు సమాచారం లేని అతిథిగా నమోదు చేయబడింది: %s"
+
+#: 
+msgid "Registering..."
+msgstr "నమోదు చేస్తోంది..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "డిపాజిట్ ఎంట్రీలలో చెక్ చెల్లింపులను నమోదు చేసేటప్పుడు చెక్ నంబర్ తప్పనిసరి చేయండి.\n"
+"గమనిక: దీన్ని నిలిపివేస్తే నకిలీ చెక్ నంబర్ గుర్తింపు కూడా నిలిచిపోతుంది — అదే చెక్ ఒకటి కంటే ఎక్కువసార్లు నమోదు కావచ్చు."
+
+#: 
+msgid "This event has ended"
+msgstr "ఈ కార్యక్రమం ముగిసింది"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "ఈ కార్యక్రమానికి సమూహం కేటాయించబడలేదు, కాబట్టి అతిథులను నమోదు చేయలేరు"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "ఈ కార్యక్రమానికి ప్రారంభ మరియు ముగింపు సమయం లేదు"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} నమోదై చెక్ ఇన్ అయ్యారు!"
 

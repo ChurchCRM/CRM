@@ -5718,5 +5718,91 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}: {{name}} ya no está cualificado",
   "{{position}}: {{name}} qualified": "{{position}}: {{name}} cualificado",
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} pide que {{substitute}} ocupe su lugar",
-  "{{title}} on {{date}} created. Staff it now?": "{{title}} del {{date}} creado. ¿Asignarle voluntarios ahora?"
+  "{{title}} on {{date}} created. Staff it now?": "{{title}} del {{date}} creado. ¿Asignarle voluntarios ahora?",
+  "Not authorized to change this event's audience group": "No autorizado para cambiar el grupo de audiencia de este evento",
+  "Only a volunteer manager can change who coordinates a ministry": "Solo un coordinador de voluntarios puede cambiar quién coordina un ministerio",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Elegir V1 pausa el correo electrónico del voluntario V2; lo que está en cola se envía cuando V2 vuelva a activarse, a menos que su occurrence haya terminado.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Agregue los eventos de este ministerio aquí: un día de trabajo, una clase que se reúne cada domingo. Van al calendario de la iglesia, y una vez que se crean se le pregunta si desea asignar personal a ellos.",
+  "Cancel occurrence": "Cancelar occurrence",
+  "Cancel this occurrence": "Cancelar este occurrence",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Cancelar no avisa a nadie: no se envía correo electrónico. Las asignaciones se conservan, no se programan recordatorios mientras está cancelado, y nadie puede ser asignado hasta que se restaure.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Los eventos eliminados dejan cada calendario, con sus registros de entrada y conteos, y el personal de este ministerio solo conserva su fecha. Esto no se puede deshacer.",
+  "Events deleted: {{total}}": "Eventos eliminados: {{total}}",
+  "Events to delete: {{total}}": "Eventos a eliminar: {{total}}",
+  "Occurrence cancelled": "Occurrence cancelado",
+  "Occurrence restored": "Occurrence restaurado",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "¿Volver a poner este occurrence en el calendario para que pueda ser asignado nuevamente? Nadie es informado: no se envía correo electrónico.",
+  "Restore occurrence": "Restaurar occurrence",
+  "Restore this occurrence": "Restaurar este occurrence",
+  "The occurrence could not be cancelled": "No se pudo cancelar el occurrence",
+  "The occurrence could not be restored": "No se pudo restaurar el occurrence",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Puede agregar eventos a cada calendario, por lo que todos se enumeran. El calendario del ministerio está marcado para comenzar.",
+  "A phone number or email address is required": "Se requiere un número de teléfono o dirección de correo electrónico",
+  "A phone number or email address is required.": "Se requiere un número de teléfono o dirección de correo electrónico.",
+  "Check-in has not opened for this event yet": "El registro no ha abierto todavía para este evento",
+  "Classification given to walk-in guests registered on a kiosk": "Clasificación dada a los visitantes que se registran en un quiosco",
+  "Failed to register guest. Please try again.": "Error al registrar huésped. Por favor, inténtelo de nuevo.",
+  "First name and last name are required": "Se requiere nombre y apellido",
+  "First name and last name must each be 50 characters or fewer": "El nombre y apellido deben tener 50 caracteres o menos cada uno",
+  "First name and last name must each be at least 2 characters": "El nombre y apellido deben tener al menos 2 caracteres cada uno",
+  "Guest": "Visitante",
+  "Guest Classification": "Clasificación de Visitante",
+  "Invalid birth date": "Fecha de Nacimiento Inválida",
+  "Invalid email address": "Dirección de correo electrónico no válida",
+  "Kiosk Settings": "Configuración del Quiosco",
+  "Please enter a check number": "Por favor ingrese un número de cheque",
+  "Register & Check In": "Registrarse e Iniciar Sesión",
+  "Register Walk-In Guest": "Registrar Visitante que Llega",
+  "Register walk-in guest": "Registrar visitante que llega",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Registrado como visitante que llega en el quiosco durante el evento: %s",
+  "Registering...": "Registrando...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Requiera un número de cheque al registrar pagos de cheques en entradas de depósito.\nNota: deshabilitar esto también deshabilita la detección de números de cheque duplicados — el mismo cheque físico puede ser ingresado más de una vez.",
+  "This event has ended": "Este evento ha terminado",
+  "This event has no group assigned, so guests cannot be registered": "Este evento no tiene un grupo asignado, por lo que no se pueden registrar visitantes",
+  "This event has no start and end time": "Este evento no tiene hora de inicio y fin",
+  "{{name}} registered and checked in!": "¡{{name}} se registró e inició sesión!",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\": {{count}} occurrence creado",
+    "other": "\"{{name}}\": {{count}} occurrences creados"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "Correo electrónico enviado a {{count}} destinatario.",
+    "other": "Correo electrónico enviado a {{count}} destinatarios."
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "Sin nuevas occurrences. El {{count}} evento hasta {{through}} ya tiene uno.",
+    "other": "Sin nuevas occurrences. Los {{count}} eventos hasta {{through}} ya tienen uno."
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "Calendario \"{{name}}\" creado: {{count}} occurrence",
+    "other": "Calendario \"{{name}}\" creado: {{count}} occurrences"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "Enviando a {{count}} destinatario. Las direcciones sin registro de persona no se incluyen: {{list}}",
+    "other": "Enviando a {{count}} destinatarios. Las direcciones sin registro de persona no se incluyen: {{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "{{count}} no pudo ser asignado",
+    "other": "{{count}} no pudieron ser asignados"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "{{count}} dejado abierto porque el predeterminado ya no califica",
+    "other": "{{count}} dejados abiertos porque el predeterminado ya no califica"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "{{count}} voluntario asignado",
+    "other": "{{count}} voluntarios asignados"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} esperando tu respuesta",
+    "other": "{{count}} esperando tu respuesta"
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "{{count}} evento {{title}} creado. ¿Asignarle personal ahora?",
+    "other": "{{count}} eventos {{title}} creados. ¿Asignarles personal ahora?"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "{{names}} asignará personal a estos eventos. Sus occurrences se crean a medida que se aproximan en la próxima {{count}} semana.",
+    "other": "{{names}} asignará personal a estos eventos. Sus occurrences se crean a medida que se aproximan en las próximas {{count}} semanas."
+  }
 }

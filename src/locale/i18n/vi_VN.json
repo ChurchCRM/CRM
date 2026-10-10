@@ -4583,16 +4583,46 @@
   "%1$s wants to help with %2$s": "%1$s muốn giúp đỡ %2$s",
   "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s muốn giúp đỡ %2$s và đã được thêm vào nhóm tình nguyện viên của mục vụ này.",
   "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s: Tối đa là %2$d nhưng có %3$d tình nguyện viên mặc định được chọn. Hãy bỏ bớt một người hoặc tăng Tối đa.",
+  "%d day": {
+    "other": "%d ngày"
+  },
+  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
+    "other": "%d mặc định bị bỏ qua vì lý do khác (sự kiện đã kết thúc, bị hủy hoặc đã đầy)"
+  },
+  "%d default skipped: qualification revoked": {
+    "other": "%d mặc định bị bỏ qua: công nhân được bỏ"
+  },
+  "%d default volunteer assigned": {
+    "other": "%d tình nguyện viên mặc định được gán"
+  },
   "%d failed": "%d thất bại",
+  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
+    "other": "Vị trí này vẫn cần thêm %d tình nguyện viên. Mở sự kiện để lấp đầy khoảng trống."
+  },
+  "%d new occurrence": {
+    "other": "%d lần xuất hiện mới"
+  },
+  "%d volunteer is still needed for an upcoming occurrence.": {
+    "other": "Vẫn cần %d tình nguyện viên cho một sự kiện sắp tới."
+  },
   "%s Calendar": "Lịch %s",
   "%s Family": "Gia đình %s",
   "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s không cung cấp giáo viên cho Trường Chúa nhật, nên các đội, lịch phục vụ và sự kiện của mục vụ không thể dùng lớp. Người quản lý tình nguyện viên có thể thay đổi trong Sửa mục vụ.",
+  "%s email from the church": {
+    "other": "%s email từ nhà thờ"
+  },
   "%s family": "gia đình %s",
   "%s has declined a volunteer assignment.": "%s đã từ chối một nhiệm vụ tình nguyện.",
   "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s không có vai trò nào tên là Giáo viên, nên giáo viên không thể được quản lý từ một đội",
   "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s không có buổi họp sắp tới nào trên lịch. Lịch phục vụ theo các sự kiện đã có: hãy thêm các buổi họp của lớp trước, bằng Sự kiện lặp lại mới trong thẻ Lịch của mục vụ.",
   "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s vẫn được mong đợi phục vụ. Vui lòng liên hệ điều phối viên nếu không thể.",
   "%s not sent (%s): %s": "%s chưa được gửi (%s): %s",
+  "%s person in your household": {
+    "other": "%s người trong gia đình bạn"
+  },
+  "%s position": {
+    "other": "%s vị trí"
+  },
   "%s: the same person is chosen twice as a default volunteer": "%s: cùng một người được chọn hai lần làm tình nguyện viên mặc định",
   "(no subject)": "(không có tiêu đề)",
   "A birthday cannot be in the future.": "Ngày sinh không thể ở tương lai.",
@@ -5066,6 +5096,9 @@
   "Occurrence not found": "Không tìm thấy lần diễn ra",
   "Occurrences": "Các lần diễn ra",
   "Offer to help": "Đề nghị giúp đỡ",
+  "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified.": {
+    "other": "Một lần một ngày, mỗi lịch hoạt động sẽ có những sự kiện mà nó theo dõi, lên đến %d tuần trước, và tình nguyện viên mặc định của mỗi vị trí được gán cho những vị trí mới trong khi họ vẫn đủ điều kiện."
+  },
   "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve.": "Khi người này đủ điều kiện cho một vị trí, họ sẽ xuất hiện tại đây, cùng các ngày họ được xếp phục vụ.",
   "One occurrence is made for each calendar event whose Linked Group is this class.": "Mỗi sự kiện lịch có Nhóm liên kết là lớp này sẽ có một lần diễn ra.",
   "One occurrence is made for each date of this event. Only events already on the calendar can be chosen.": "Mỗi ngày của sự kiện này sẽ có một lần diễn ra. Chỉ có thể chọn những sự kiện đã có trên lịch.",
@@ -5105,6 +5138,9 @@
   "Page %d of %d": "Trang %d trên %d",
   "Password reset": "Đặt lại mật khẩu",
   "Password reset link": "Liên kết đặt lại mật khẩu",
+  "Passwords must be at least %s character long.": {
+    "other": "Mật khẩu phải dài ít nhất %s ký tự."
+  },
   "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead.": "Chọn một sự kiện lịch sắp tới và cho biết cần ai. Sự kiện giữ ngày giờ của nó; để bố trí nhân sự cho cả một chuỗi, hãy thêm một lịch phục vụ.",
   "Pick someone who has already agreed to take your place. Your coordinator will confirm it.": "Chọn người đã đồng ý thay thế bạn. Điều phối viên của bạn sẽ xác nhận.",
   "Please choose calendars from the list.": "Vui lòng chọn các lịch từ danh sách.",
@@ -5441,6 +5477,12 @@
   "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first.": "Các đội này của %1$s được liên kết với một lớp Trường Chúa nhật: %2$s. Hãy hủy liên kết trước.",
   "They could not be added": "Không thể thêm họ",
   "They could not be removed from this ministry": "Không thể xóa họ khỏi mục vụ này",
+  "They finish %d minute after the event ends.": {
+    "other": "Họ kết thúc %d phút sau khi sự kiện kết thúc."
+  },
+  "They finish %d minute before the event ends.": {
+    "other": "Họ kết thúc %d phút trước khi sự kiện kết thúc."
+  },
   "They were already a volunteer here": "Họ đã là tình nguyện viên ở đây rồi",
   "This assignment is %1$s and cannot be changed to %2$s": "Phân công này là %1$s và không thể đổi thành %2$s",
   "This assignment is no longer active": "Phân công này không còn hoạt động",
@@ -5534,6 +5576,12 @@
   "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar.": "Tình nguyện viên của %s được phân công cho các sự kiện này, nên không thể xóa tại đây. Hãy nhờ mục vụ đó gỡ nhân sự của mình, hoặc nhờ người quản lý lịch.",
   "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed.": "Tình nguyện viên của {{names}} được phân công cho một số sự kiện đó. Trừ khi bạn quản lý lịch, việc xóa bị từ chối cho đến khi nhân sự đó được gỡ.",
   "Volunteers start": "Tình nguyện viên bắt đầu",
+  "Volunteers start %d minute after the event starts.": {
+    "other": "Tình nguyện viên bắt đầu %d phút sau khi sự kiện bắt đầu."
+  },
+  "Volunteers start %d minute before the event starts.": {
+    "other": "Tình nguyện viên bắt đầu %d phút trước khi sự kiện bắt đầu."
+  },
   "Waiting for a reply": "Đang chờ phản hồi",
   "Waiting for review": "Đang chờ xem xét",
   "Waiting for your coordinator to confirm.": "Đang chờ điều phối viên của bạn xác nhận.",
@@ -5638,5 +5686,91 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}: {{name}} không còn đủ điều kiện",
   "{{position}}: {{name}} qualified": "{{position}}: {{name}} đủ điều kiện",
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} nhờ {{substitute}} thay thế",
-  "{{title}} on {{date}} created. Staff it now?": "Đã tạo {{title}} vào {{date}}. Bố trí nhân sự ngay?"
+  "{{title}} on {{date}} created. Staff it now?": "Đã tạo {{title}} vào {{date}}. Bố trí nhân sự ngay?",
+  "Not authorized to change this event's audience group": "Không được phép thay đổi nhóm đối tượng của sự kiện này",
+  "Only a volunteer manager can change who coordinates a ministry": "Chỉ người quản lý tình nguyện mới có thể thay đổi người điều phối sự kiện",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Chọn V1 sẽ tạm dừng email tình nguyện V2; bất cứ thứ gì trong hàng đợi sẽ được gửi khi V2 trở lại bật, trừ khi sự kiện của nó kết thúc.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Thêm các sự kiện của bộ phận này tại đây: một ngày làm việc, một lớp học gặp nhau vào thứ Bảy hàng tuần. Chúng được đưa vào lịch của nhà thờ, và khi chúng được tạo ra, bạn sẽ được hỏi có muốn điều phối nhân sự cho chúng không.",
+  "Cancel occurrence": "Hủy sự kiện",
+  "Cancel this occurrence": "Hủy sự kiện này",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Hủy không thông báo cho ai: không gửi email. Các giao việc được giữ nguyên, không có lời nhắc nào được lên lịch trong khi bị hủy, và không ai có thể được giao việc cho đến khi nó được khôi phục.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Các sự kiện đã xóa sẽ bị loại khỏi mọi lịch, kèm theo đó là các dấu vào và số người, và nhân sự của bộ phận này chỉ giữ lại ngày tháng của nó. Điều này không thể được hoàn tác.",
+  "Events deleted: {{total}}": "Sự kiện bị xóa: {{total}}",
+  "Events to delete: {{total}}": "Sự kiện sẽ xóa: {{total}}",
+  "Occurrence cancelled": "Sự kiện bị hủy",
+  "Occurrence restored": "Sự kiện được khôi phục",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Đưa sự kiện này trở lại lịch để nó có thể được điều phối nhân sự lần nữa? Không ai được thông báo: không gửi email.",
+  "Restore occurrence": "Khôi phục sự kiện",
+  "Restore this occurrence": "Khôi phục sự kiện này",
+  "The occurrence could not be cancelled": "Không thể hủy sự kiện",
+  "The occurrence could not be restored": "Không thể khôi phục sự kiện",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Bạn có thể thêm sự kiện vào mọi lịch, vì vậy tất cả đều được liệt kê. Lịch riêng của bộ phận này được đánh dấu từ đầu.",
+  "A phone number or email address is required": "Cần có số điện thoại hoặc địa chỉ email",
+  "A phone number or email address is required.": "Cần có số điện thoại hoặc địa chỉ email.",
+  "Check-in has not opened for this event yet": "Đăng nhập chưa mở cho sự kiện này",
+  "Classification given to walk-in guests registered on a kiosk": "Phân loại dành cho khách đi bộ được đăng ký trên máy kiosk",
+  "Failed to register guest. Please try again.": "Không thể đăng ký khách. Vui lòng thử lại.",
+  "First name and last name are required": "Cần có tên và họ",
+  "First name and last name must each be 50 characters or fewer": "Tên và họ mỗi cái phải có 50 ký tự hoặc ít hơn",
+  "First name and last name must each be at least 2 characters": "Tên và họ mỗi cái phải có ít nhất 2 ký tự",
+  "Guest": "Khách",
+  "Guest Classification": "Phân loại khách",
+  "Invalid birth date": "Ngày sinh không hợp lệ.",
+  "Invalid email address": "Địa chỉ email không hợp lệ",
+  "Kiosk Settings": "Cài đặt Kiosk",
+  "Please enter a check number": "Vui lòng nhập số séc",
+  "Register & Check In": "Đăng ký và Đăng nhập",
+  "Register Walk-In Guest": "Đăng ký khách đi bộ",
+  "Register walk-in guest": "Đăng ký khách đi bộ",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Được đăng ký làm khách đi bộ tại máy kiosk trong sự kiện: %s",
+  "Registering...": "Đang đăng ký...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Yêu cầu số séc khi ghi lại khoản thanh toán bằng séc trong các mục gửi tiền.\nLưu ý: tắt tính năng này cũng sẽ tắt tính năng phát hiện số séc trùng lặp — cùng một séc vật lý có thể được nhập nhiều lần.",
+  "This event has ended": "Sự kiện này đã kết thúc",
+  "This event has no group assigned, so guests cannot be registered": "Sự kiện này không có nhóm được gán, vì vậy khách không thể được đăng ký",
+  "This event has no start and end time": "Sự kiện này không có thời gian bắt đầu và kết thúc",
+  "{{name}} registered and checked in!": "{{name}} đã đăng ký và đăng nhập!",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\"：tạo {{count}} lần xuất hiện",
+    "other": "\"{{name}}\"：tạo {{count}} lần xuất hiện"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "Gửi email cho {{count}} người nhận.",
+    "other": "Gửi email cho {{count}} người nhận."
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "Không có lần xuất hiện mới. Tất cả {{count}} sự kiện thông qua {{through}} đều có một sự kiện.",
+    "other": "Không có lần xuất hiện mới. Tất cả {{count}} sự kiện thông qua {{through}} đều có một sự kiện."
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "Tạo lịch \"{{name}}\"：{{count}} lần xuất hiện",
+    "other": "Tạo lịch \"{{name}}\"：{{count}} lần xuất hiện"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "Gửi tới {{count}} người nhận. Các địa chỉ không có hồ sơ cá nhân không được bao gồm: {{list}}",
+    "other": "Gửi tới {{count}} người nhận. Các địa chỉ không có hồ sơ cá nhân không được bao gồm: {{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "{{count}} không thể được gán",
+    "other": "{{count}} không thể được gán"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "Để {{count}} mở vì mặc định không còn đủ điều kiện",
+    "other": "Để {{count}} mở vì mặc định không còn đủ điều kiện"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "Gán {{count}} tình nguyện viên",
+    "other": "Gán {{count}} tình nguyện viên"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} đang chờ câu trả lời của bạn",
+    "other": "{{count}} đang chờ câu trả lời của bạn"
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "Tạo {{count}} sự kiện {{title}}. Bây giờ hãy bố trí nhân sự?",
+    "other": "Tạo {{count}} sự kiện {{title}}. Bây giờ hãy bố trí nhân sự?"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "{{names}} sẽ bố trí nhân sự cho các sự kiện này. Các lần xuất hiện của họ được tạo ra khi chúng xuất hiện trong {{count}} tuần tới.",
+    "other": "{{names}} sẽ bố trí nhân sự cho các sự kiện này. Các lần xuất hiện của họ được tạo ra khi chúng xuất hiện trong {{count}} tuần tới."
+  }
 }

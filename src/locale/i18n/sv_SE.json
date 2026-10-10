@@ -5718,5 +5718,91 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}: {{name}} är inte längre kvalificerad",
   "{{position}}: {{name}} qualified": "{{position}}: {{name}} kvalificerad",
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} ber {{substitute}} att ta deras plats",
-  "{{title}} on {{date}} created. Staff it now?": "{{title}} den {{date}} skapad. Bemanna den nu?"
+  "{{title}} on {{date}} created. Staff it now?": "{{title}} den {{date}} skapad. Bemanna den nu?",
+  "Not authorized to change this event's audience group": "Inte auktoriserad att ändra detta events målgrupp",
+  "Only a volunteer manager can change who coordinates a ministry": "Endast en volontärkoordinator kan ändra vem som koordinerar ett ministerium",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Att välja V1 pausar V2-volontäre-post; allt som är i kö skickas när V2 är tillbaka, om inte dess förekomst är över.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Lägg till detta ministeriums evenemang här: en arbetsstund, en klassmeeting varje söndag. De läggs till i kyrkkalender, och när de är skapade frågas du om du vill bemanna dem.",
+  "Cancel occurrence": "Avbryt förekomst",
+  "Cancel this occurrence": "Avbryt denna förekomsten",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Att avbryta berättar inget för någon: ingen e-post skickas. Uppdrag behålls, inga påminnelser schemaläggs medan det är avbrutet, och ingen kan tilldelas tills det återställs.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Borttagna evenemang lämnar varje kalender, med deras inchecks och antalet, och detta ministeriums bemanning av dem behåller bara datumet. Detta kan inte ångras.",
+  "Events deleted: {{total}}": "Evenemang borttagen: {{total}}",
+  "Events to delete: {{total}}": "Evenemang att ta bort: {{total}}",
+  "Occurrence cancelled": "Förekomst avbruten",
+  "Occurrence restored": "Förekomst återställd",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Lägg denna förekomst tillbaka på schemat så det kan bemanas igen? Ingen berättas: ingen e-post skickas.",
+  "Restore occurrence": "Återställ förekomst",
+  "Restore this occurrence": "Återställ denna förekomsten",
+  "The occurrence could not be cancelled": "Förekomsten kunde inte avbrytas",
+  "The occurrence could not be restored": "Förekomsten kunde inte återställas",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Du kan lägga till evenemang på varje kalender, så alla är listade. Detta ministeriums egen kalender är markerad från början.",
+  "A phone number or email address is required": "Ett telefonnummer eller en e-postadress krävs",
+  "A phone number or email address is required.": "Ett telefonnummer eller en e-postadress krävs.",
+  "Check-in has not opened for this event yet": "Incheckning har inte öppnats för detta evenemang ännu",
+  "Classification given to walk-in guests registered on a kiosk": "Klassificering givna till gäster som registrerar sig på en kiosk",
+  "Failed to register guest. Please try again.": "Det gick inte att registrera gäst. Försök igen.",
+  "First name and last name are required": "Förnamn och efternamn är obligatoriska",
+  "First name and last name must each be 50 characters or fewer": "Förnamn och efternamn måste vara högst 50 tecken vardera",
+  "First name and last name must each be at least 2 characters": "Förnamn och efternamn måste vara minst 2 tecken vardera",
+  "Guest": "Gäst",
+  "Guest Classification": "Gästklassificering",
+  "Invalid birth date": "Ogiltig födelsedatum.",
+  "Invalid email address": "Ogiltig e-postadress",
+  "Kiosk Settings": "Kioskeinställningar",
+  "Please enter a check number": "Ange ett checknummer",
+  "Register & Check In": "Registrera och Checka in",
+  "Register Walk-In Guest": "Registrera Ankomstgäst",
+  "Register walk-in guest": "Registrera ankomstgäst",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Registrerad som ankomstgäst vid kiosken under evenemang: %s",
+  "Registering...": "Registrering...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Kräv ett checknummer när du registrerar checkbetalningar på insättningsposterna.\nOm: att inaktivera detta inaktiverar också duplicerad checknummerdetektion — samma fysiska check kan anges mer än en gång.",
+  "This event has ended": "Detta evenemang är över",
+  "This event has no group assigned, so guests cannot be registered": "Detta evenemang har ingen grupp tilldelad, så gäster kan inte registreras",
+  "This event has no start and end time": "Detta evenemang har ingen start- och sluttid",
+  "{{name}} registered and checked in!": "{{name}} registrerad och incheckad!",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\": {{count}} förekomst skapad",
+    "other": "\"{{name}}\": {{count}} förekomster skapade"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "E-post skickad till {{count}} mottagare.",
+    "other": "E-post skickad till {{count}} mottagare."
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "Inga nya förekomster. Alla {{count}} evenemang genom {{through}} har redan en.",
+    "other": "Inga nya förekomster. Alla {{count}} evenemang genom {{through}} har redan en."
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "Schema \"{{name}}\" skapat: {{count}} förekomst",
+    "other": "Schema \"{{name}}\" skapat: {{count}} förekomster"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "Skickar till {{count}} mottagare. Adresser utan personpost är inte inkluderade: {{list}}",
+    "other": "Skickar till {{count}} mottagare. Adresser utan personpost är inte inkluderade: {{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "{{count}} kunde inte tilldelas",
+    "other": "{{count}} kunde inte tilldelas"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "{{count}} lämnas öppen eftersom standardinställningen inte längre är kvalificerad",
+    "other": "{{count}} lämnas öppna eftersom standardinställningen inte längre är kvalificerad"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "{{count}} volontär tilldelad",
+    "other": "{{count}} volontärer tilldelade"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} väntar på ditt svar",
+    "other": "{{count}} väntar på ditt svar"
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "{{count}} {{title}} evenemang skapat. Bemanna det nu?",
+    "other": "{{count}} {{title}} evenemang skapade. Bemanna dem nu?"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "{{names}} kommer att bemanna dessa evenemang. Deras förekomster skapas när de kommer under nästa {{count}} vecka.",
+    "other": "{{names}} kommer att bemanna dessa evenemang. Deras förekomster skapas när de kommer under nästa {{count}} veckor."
+  }
 }

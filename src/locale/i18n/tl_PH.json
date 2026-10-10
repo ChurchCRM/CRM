@@ -5718,5 +5718,91 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}: hindi na kuwalipikado si {{name}}",
   "{{position}}: {{name}} qualified": "{{position}}: kuwalipikado si {{name}}",
   "{{proposer}} asks {{substitute}} to take their place": "Hinihiling ni {{proposer}} kay {{substitute}} na pumalit sa kanya",
-  "{{title}} on {{date}} created. Staff it now?": "Nagawa ang {{title}} sa {{date}}. Lagyan na ngayon ng boluntaryo?"
+  "{{title}} on {{date}} created. Staff it now?": "Nagawa ang {{title}} sa {{date}}. Lagyan na ngayon ng boluntaryo?",
+  "Not authorized to change this event's audience group": "Hindi authorized na baguhin ang audience group ng event na ito",
+  "Only a volunteer manager can change who coordinates a ministry": "Ang volunteer manager lamang ang maaaring magbago ng kung sino ang nag-coordinate ng ministry",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Ang pagpili sa V1 ay nagsasantala sa V2 volunteer email; ang anumang nauuna ay ipinapadala kapag bumalik ang V2, maliban kung ang occurrence ay tapos na.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Idagdag ang events ng ministry na ito dito: isang workday, isang klase na nagtitipon tuwing Linggo. Napupunta sila sa church calendar, at pagkatapos likhain, titatanong sa iyo kung gusto mong mag-staff.",
+  "Cancel occurrence": "Ikansela ang occurrence",
+  "Cancel this occurrence": "Ikansela ang occurrence na ito",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Ang pagkansela ay hindi nagsasabi sa kahit sino: walang email na ipinapadala. Pinapanatili ang mga assignment, walang reminder na iniskedyul habang ito ay kinansela, at walang maiuugnay hangga ito ay maibalik.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Ang mga inalis na event ay umaalis sa bawat kalendaryo, kasama ang kanilang check-ins at headcounts, at ang staffing ng ministry na ito ay nagsasalita lamang ng petsa nito. Hindi ito maaaring bawiin.",
+  "Events deleted: {{total}}": "Mga event na na-delete: {{total}}",
+  "Events to delete: {{total}}": "Mga event na ide-delete: {{total}}",
+  "Occurrence cancelled": "Ang occurrence ay kinansela",
+  "Occurrence restored": "Ang occurrence ay naibalik",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Ilagay ang occurrence na ito sa horario upang maaaring mag-staff ulit? Walang sinasabi: walang email na ipinapadala.",
+  "Restore occurrence": "Ibalik ang occurrence",
+  "Restore this occurrence": "Ibalik ang occurrence na ito",
+  "The occurrence could not be cancelled": "Hindi makakancel ang occurrence",
+  "The occurrence could not be restored": "Hindi maibalik ang occurrence",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Maaari kang magdagdag ng mga event sa bawat kalendaryo, kaya lahat ng ito ay nakalista. Ang sariling kalendaryo ng ministry na ito ay nakacheck upang magsimula.",
+  "A phone number or email address is required": "Kailangan ang phone number o email address",
+  "A phone number or email address is required.": "Kailangan ang phone number o email address.",
+  "Check-in has not opened for this event yet": "Ang check-in ay hindi pa bukas para sa event na ito",
+  "Classification given to walk-in guests registered on a kiosk": "Ang klasipikasyon na ibinigay sa mga walk-in na bisita na nakarehistro sa kiosk",
+  "Failed to register guest. Please try again.": "Nabigo ang pagpaparehistro ng bisita. Mangyaring subukan ulit.",
+  "First name and last name are required": "Kailangan ang first name at last name",
+  "First name and last name must each be 50 characters or fewer": "Ang first name at last name ay dapat na bawat isa ay 50 character o mas kaunti",
+  "First name and last name must each be at least 2 characters": "Ang first name at last name ay dapat na bawat isa ay hindi bababa sa 2 character",
+  "Guest": "Bisita",
+  "Guest Classification": "Bisita Klasipikasyon",
+  "Invalid birth date": "Hindi wastong Petsa ng Kapanganakan.",
+  "Invalid email address": "Hindi valid ang email address",
+  "Kiosk Settings": "Kiosk Settings",
+  "Please enter a check number": "Mangyaring ilagay ang check number",
+  "Register & Check In": "Magparehistro at Check In",
+  "Register Walk-In Guest": "Magparehistro ng Walk-In Guest",
+  "Register walk-in guest": "Magparehistro ng walk-in guest",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Nakarehistro bilang walk-in guest sa kiosk sa panahon ng event: %s",
+  "Registering...": "Nagpaparehistro...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Kailangan ng check number sa pagrekord ng check payments sa deposit entries.\nPaalala: ang pagsasDisable nito ay nagsasDisable rin ng duplicate check-number detection — ang parehong physical check ay maaaring ilagay ng higit sa isang beses.",
+  "This event has ended": "Ang event na ito ay nagtapos na",
+  "This event has no group assigned, so guests cannot be registered": "Ang event na ito ay walang group na itinalaga, kaya ang mga bisita ay hindi maaaring magparehistro",
+  "This event has no start and end time": "Ang event na ito ay walang start at end time",
+  "{{name}} registered and checked in!": "Ang {{name}} ay nakarehistro at nag-check in!",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\"：lumikha ng {{count}} occurrence",
+    "other": "\"{{name}}\"：lumikha ng {{count}} occurrences"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "Ipinadala ang email sa {{count}} recipient.",
+    "other": "Ipinadala ang email sa {{count}} recipients."
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "Walang bagong occurrence. Ang lahat ng {{count}} events sa pamamagitan ng {{through}} ay may isa na.",
+    "other": "Walang bagong occurrence. Ang lahat ng {{count}} events sa pamamagitan ng {{through}} ay may isa na."
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "Schedule \"{{name}}\" na-create: {{count}} occurrence",
+    "other": "Schedule \"{{name}}\" na-create: {{count}} occurrences"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "Nagpapadala sa {{count}} recipient. Ang mga address na walang person record ay hindi kasama: {{list}}",
+    "other": "Nagpapadala sa {{count}} recipients. Ang mga address na walang person record ay hindi kasama: {{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "{{count}} ay hindi maaaring itala",
+    "other": "{{count}} ay hindi maaaring itala"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "{{count}} ay naiwan na bukas dahil ang default ay hindi na qualified",
+    "other": "{{count}} ay naiwan na bukas dahil ang default ay hindi na qualified"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "{{count}} volunteer na naka-assign",
+    "other": "{{count}} volunteers na naka-assign"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} naghihintay ng iyong sagot",
+    "other": "{{count}} naghihintay ng iyong sagot"
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "{{count}} {{title}} event na-create. I-staff them ngayon?",
+    "other": "{{count}} {{title}} events na-create. I-staff them ngayon?"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "Ang {{names}} ay mag-staff ng mga events na ito. Ang kanilang occurrences ay ginawa habang dumadating sa loob ng susunod na {{count}} linggo.",
+    "other": "Ang {{names}} ay mag-staff ng mga events na ito. Ang kanilang occurrences ay ginawa habang dumadating sa loob ng susunod na {{count}} linggo."
+  }
 }

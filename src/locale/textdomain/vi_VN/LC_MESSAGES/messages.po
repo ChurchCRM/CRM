@@ -18947,6 +18947,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "\"%s\" không phải là loại lịch mà trang này biết."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\"：tạo {{count}} lần xuất hiện"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\"：tạo {{count}} lần xuất hiện"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s không thể phục vụ và đã đề xuất %2$s thay thế."
 
@@ -18983,8 +18993,43 @@ msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or r
 msgstr "%1$s: Tối đa là %2$d nhưng có %3$d tình nguyện viên mặc định được chọn. Hãy bỏ bớt một người hoặc tăng Tối đa."
 
 #: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d ngày"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d mặc định bị bỏ qua vì lý do khác (sự kiện đã kết thúc, bị hủy hoặc đã đầy)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d mặc định bị bỏ qua: công nhân được bỏ"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d tình nguyện viên mặc định được gán"
+
+#: 
 msgid "%d failed"
 msgstr "%d thất bại"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Vị trí này vẫn cần thêm %d tình nguyện viên. Mở sự kiện để lấp đầy khoảng trống."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d lần xuất hiện mới"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "Vẫn cần %d tình nguyện viên cho một sự kiện sắp tới."
 
 #: 
 msgid "%s Calendar"
@@ -18997,6 +19042,11 @@ msgstr "Gia đình %s"
 #: 
 msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
 msgstr "%s không cung cấp giáo viên cho Trường Chúa nhật, nên các đội, lịch phục vụ và sự kiện của mục vụ không thể dùng lớp. Người quản lý tình nguyện viên có thể thay đổi trong Sửa mục vụ."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s email từ nhà thờ"
 
 #: 
 msgid "%s family"
@@ -19021,6 +19071,16 @@ msgstr "%s vẫn được mong đợi phục vụ. Vui lòng liên hệ điều 
 #: 
 msgid "%s not sent (%s): %s"
 msgstr "%s chưa được gửi (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s người trong gia đình bạn"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s vị trí"
 
 #: 
 msgid "%s: the same person is chosen twice as a default volunteer"
@@ -20039,6 +20099,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "Việc gửi email chưa được bật. Hãy cấu hình SMTP và bật email trước khi gửi."
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "Gửi email cho {{count}} người nhận."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "Gửi email cho {{count}} người nhận."
+
+#: 
 msgid "Emails"
 msgstr "Email"
 
@@ -20631,6 +20701,16 @@ msgid "No ministry"
 msgstr "Không có mục vụ"
 
 #: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Không có lần xuất hiện mới. Tất cả {{count}} sự kiện thông qua {{through}} đều có một sự kiện."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Không có lần xuất hiện mới. Tất cả {{count}} sự kiện thông qua {{through}} đều có một sự kiện."
+
+#: 
 msgid "No past events"
 msgstr "Không có sự kiện đã qua"
 
@@ -20915,6 +20995,11 @@ msgid "Offer to help"
 msgstr "Đề nghị giúp đỡ"
 
 #: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Một lần một ngày, mỗi lịch hoạt động sẽ có những sự kiện mà nó theo dõi, lên đến %d tuần trước, và tình nguyện viên mặc định của mỗi vị trí được gán cho những vị trí mới trong khi họ vẫn đủ điều kiện."
+
+#: 
 msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
 msgstr "Khi người này đủ điều kiện cho một vị trí, họ sẽ xuất hiện tại đây, cùng các ngày họ được xếp phục vụ."
 
@@ -21069,6 +21154,11 @@ msgstr "Đặt lại mật khẩu"
 #: 
 msgid "Password reset link"
 msgstr "Liên kết đặt lại mật khẩu"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Mật khẩu phải dài ít nhất %s ký tự."
 
 #: 
 msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
@@ -21363,6 +21453,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "Đã tạo lịch phục vụ \"{{name}}\". Lịch này đang ngừng hoạt động nên không tạo lần diễn ra nào cho đến khi được kích hoạt."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Tạo lịch \"{{name}}\"：{{count}} lần xuất hiện"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Tạo lịch \"{{name}}\"：{{count}} lần xuất hiện"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "Đã ngừng hoạt động lịch phục vụ"
 
@@ -21477,6 +21577,16 @@ msgstr "Gửi cho văn phòng Hội thánh"
 #: 
 msgid "Send your answer"
 msgstr "Gửi câu trả lời của bạn"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Gửi tới {{count}} người nhận. Các địa chỉ không có hồ sơ cá nhân không được bao gồm: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Gửi tới {{count}} người nhận. Các địa chỉ không có hồ sơ cá nhân không được bao gồm: {{list}}"
 
 #: 
 msgid "Sent"
@@ -22415,6 +22525,16 @@ msgid "They could not be removed from this ministry"
 msgstr "Không thể xóa họ khỏi mục vụ này"
 
 #: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Họ kết thúc %d phút sau khi sự kiện kết thúc."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Họ kết thúc %d phút trước khi sự kiện kết thúc."
+
+#: 
 msgid "They were already a volunteer here"
 msgstr "Họ đã là tình nguyện viên ở đây rồi"
 
@@ -22787,6 +22907,16 @@ msgid "Volunteers start"
 msgstr "Tình nguyện viên bắt đầu"
 
 #: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Tình nguyện viên bắt đầu %d phút sau khi sự kiện bắt đầu."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Tình nguyện viên bắt đầu %d phút trước khi sự kiện bắt đầu."
+
+#: 
 msgid "Waiting for a reply"
 msgstr "Đang chờ phản hồi"
 
@@ -23151,6 +23281,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "Đã thêm {{added}}, {{alreadyMembers}} đã là tình nguyện viên ở đây"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} không thể được gán"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} không thể được gán"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "Để {{count}} mở vì mặc định không còn đủ điều kiện"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "Để {{count}} mở vì mặc định không còn đủ điều kiện"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "Gán {{count}} tình nguyện viên"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "Gán {{count}} tình nguyện viên"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} đang chờ câu trả lời của bạn"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} đang chờ câu trả lời của bạn"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "Tạo {{count}} sự kiện {{title}}. Bây giờ hãy bố trí nhân sự?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "Tạo {{count}} sự kiện {{title}}. Bây giờ hãy bố trí nhân sự?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "Đã tạo {{created}} lần diễn ra, {{existing}} đã có sẵn"
 
@@ -23161,6 +23341,16 @@ msgstr "{{ministry}} đã tạo {{total}} sự kiện cho {{className}} ({{upcom
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} cũng phục vụ ở một số sự kiện đó."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} sẽ bố trí nhân sự cho các sự kiện này. Các lần xuất hiện của họ được tạo ra khi chúng xuất hiện trong {{count}} tuần tới."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} sẽ bố trí nhân sự cho các sự kiện này. Các lần xuất hiện của họ được tạo ra khi chúng xuất hiện trong {{count}} tuần tới."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23205,4 +23395,174 @@ msgstr "{{proposer}} nhờ {{substitute}} thay thế"
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "Đã tạo {{title}} vào {{date}}. Bố trí nhân sự ngay?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "Không được phép thay đổi nhóm đối tượng của sự kiện này"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "Chỉ người quản lý tình nguyện mới có thể thay đổi người điều phối sự kiện"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "Chọn V1 sẽ tạm dừng email tình nguyện V2; bất cứ thứ gì trong hàng đợi sẽ được gửi khi V2 trở lại bật, trừ khi sự kiện của nó kết thúc."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "Thêm các sự kiện của bộ phận này tại đây: một ngày làm việc, một lớp học gặp nhau vào thứ Bảy hàng tuần. Chúng được đưa vào lịch của nhà thờ, và khi chúng được tạo ra, bạn sẽ được hỏi có muốn điều phối nhân sự cho chúng không."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "Hủy sự kiện"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "Hủy sự kiện này"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "Hủy không thông báo cho ai: không gửi email. Các giao việc được giữ nguyên, không có lời nhắc nào được lên lịch trong khi bị hủy, và không ai có thể được giao việc cho đến khi nó được khôi phục."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "Các sự kiện đã xóa sẽ bị loại khỏi mọi lịch, kèm theo đó là các dấu vào và số người, và nhân sự của bộ phận này chỉ giữ lại ngày tháng của nó. Điều này không thể được hoàn tác."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "Sự kiện bị xóa: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "Sự kiện sẽ xóa: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "Sự kiện bị hủy"
+
+#: 
+msgid "Occurrence restored"
+msgstr "Sự kiện được khôi phục"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "Đưa sự kiện này trở lại lịch để nó có thể được điều phối nhân sự lần nữa? Không ai được thông báo: không gửi email."
+
+#: 
+msgid "Restore occurrence"
+msgstr "Khôi phục sự kiện"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "Khôi phục sự kiện này"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "Không thể hủy sự kiện"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "Không thể khôi phục sự kiện"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "Bạn có thể thêm sự kiện vào mọi lịch, vì vậy tất cả đều được liệt kê. Lịch riêng của bộ phận này được đánh dấu từ đầu."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "Cần có số điện thoại hoặc địa chỉ email"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "Cần có số điện thoại hoặc địa chỉ email."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "Đăng nhập chưa mở cho sự kiện này"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "Phân loại dành cho khách đi bộ được đăng ký trên máy kiosk"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "Không thể đăng ký khách. Vui lòng thử lại."
+
+#: 
+msgid "First name and last name are required"
+msgstr "Cần có tên và họ"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "Tên và họ mỗi cái phải có 50 ký tự hoặc ít hơn"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "Tên và họ mỗi cái phải có ít nhất 2 ký tự"
+
+#: 
+msgid "Guest"
+msgstr "Khách"
+
+#: 
+msgid "Guest Classification"
+msgstr "Phân loại khách"
+
+#: 
+msgid "Invalid birth date"
+msgstr "Ngày sinh không hợp lệ."
+
+#: 
+msgid "Invalid email address"
+msgstr "Địa chỉ email không hợp lệ"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "Cài đặt Kiosk"
+
+#: 
+msgid "Please enter a check number"
+msgstr "Vui lòng nhập số séc"
+
+#: 
+msgid "Register & Check In"
+msgstr "Đăng ký và Đăng nhập"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "Đăng ký khách đi bộ"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "Đăng ký khách đi bộ"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "Được đăng ký làm khách đi bộ tại máy kiosk trong sự kiện: %s"
+
+#: 
+msgid "Registering..."
+msgstr "Đang đăng ký..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "Yêu cầu số séc khi ghi lại khoản thanh toán bằng séc trong các mục gửi tiền.\n"
+"Lưu ý: tắt tính năng này cũng sẽ tắt tính năng phát hiện số séc trùng lặp — cùng một séc vật lý có thể được nhập nhiều lần."
+
+#: 
+msgid "This event has ended"
+msgstr "Sự kiện này đã kết thúc"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "Sự kiện này không có nhóm được gán, vì vậy khách không thể được đăng ký"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "Sự kiện này không có thời gian bắt đầu và kết thúc"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} đã đăng ký và đăng nhập!"
 

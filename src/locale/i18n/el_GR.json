@@ -5718,5 +5718,91 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}: ο/η {{name}} δεν είναι πλέον κατάλληλος/η",
   "{{position}}: {{name}} qualified": "{{position}}: ο/η {{name}} έγινε κατάλληλος/η",
   "{{proposer}} asks {{substitute}} to take their place": "Ο/Η {{proposer}} ζητά από τον/την {{substitute}} να πάρει τη θέση του/της",
-  "{{title}} on {{date}} created. Staff it now?": "Η εκδήλωση {{title}} στις {{date}} δημιουργήθηκε. Να στελεχωθεί τώρα;"
+  "{{title}} on {{date}} created. Staff it now?": "Η εκδήλωση {{title}} στις {{date}} δημιουργήθηκε. Να στελεχωθεί τώρα;",
+  "Not authorized to change this event's audience group": "Δεν έχετε εξουσιοδότηση για να αλλάξετε την ομάδα αυτού του γεγονότος",
+  "Only a volunteer manager can change who coordinates a ministry": "Μόνο ένας διευθυντής εθελοντών μπορεί να αλλάξει ποιος συντονίζει μια ποίμνιο",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Η επιλογή V1 αναστέλλει το email V2. τα πάντα στην ουρά αποστέλλονται όταν το V2 επανεμφανιστεί, εκτός εάν το γεγονός έχει τελειώσει.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Προσθέστε εδώ τα γεγονότα αυτής της ποίμνιας: μια εργάσιμη ημέρα, μια κατηχητική τάξη που συναντάται κάθε Κυριακή. Πηγαίνουν στο ημερολόγιο της εκκλησίας, και μόλις δημιουργηθούν σας ζητείται αν θέλετε να τα στελεχώσετε.",
+  "Cancel occurrence": "Ακύρωση γεγονότος",
+  "Cancel this occurrence": "Ακύρωση αυτού του γεγονότος",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Η ακύρωση δεν ενημερώνει κανέναν: δεν αποστέλλεται ηλεκτρονική αλληλογραφία. Οι εκχωρήσεις διατηρούνται, δεν έχουν προγραμματιστεί υπενθυμίσεις ενώ είναι ακυρωμένα, και κανείς δεν μπορεί να εκχωρηθεί έως ότου αποκατασταθεί.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Τα διαγραμμένα γεγονότα φεύγουν από κάθε ημερολόγιο, με τις παραστάσεις τους και τις απογραφές, και το προσωπικό αυτής της ποίμνιας κρατά μόνο την ημερομηνία. Αυτό δεν μπορεί να αναιρεθεί.",
+  "Events deleted: {{total}}": "Γεγονότα διαγραμμένα: {{total}}",
+  "Events to delete: {{total}}": "Γεγονότα για διαγραφή: {{total}}",
+  "Occurrence cancelled": "Το γεγονός ακυρώθηκε",
+  "Occurrence restored": "Το γεγονός αποκατασταθήκε",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Να επαναφέρω αυτό το γεγονός στο πρόγραμμα ώστε να μπορεί να στελεχωθεί και πάλι; Κανείς δεν ενημερώνεται: δεν αποστέλλεται ηλεκτρονική αλληλογραφία.",
+  "Restore occurrence": "Αποκατάσταση γεγονότος",
+  "Restore this occurrence": "Αποκατάσταση αυτού του γεγονότος",
+  "The occurrence could not be cancelled": "Το γεγονός δεν ήταν δυνατό να ακυρωθεί",
+  "The occurrence could not be restored": "Το γεγονός δεν ήταν δυνατό να αποκατασταθεί",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Μπορείτε να προσθέσετε γεγονότα σε κάθε ημερολόγιο, ώστε να είναι όλα καταχωρημένα. Το ημερολόγιο αυτής της ποίμνιας έχει σημειωθεί αρχικά.",
+  "A phone number or email address is required": "Απαιτείται ένας αριθμός τηλεφώνου ή διεύθυνση ηλεκτρονικής αλληλογραφίας",
+  "A phone number or email address is required.": "Απαιτείται ένας αριθμός τηλεφώνου ή διεύθυνση ηλεκτρονικής αλληλογραφίας.",
+  "Check-in has not opened for this event yet": "Η είσοδος δεν έχει ακόμα ανοίξει για αυτό το γεγονός",
+  "Classification given to walk-in guests registered on a kiosk": "Η ταξινόμηση που δόθηκε στους επισκέπτες που καταχωρήθηκαν σε ένα περίπτερο",
+  "Failed to register guest. Please try again.": "Αποτυχία καταχώρησης του επισκέπτη. Δοκιμάστε ξανά.",
+  "First name and last name are required": "Το όνομα και το επίθετο είναι υποχρεωτικά",
+  "First name and last name must each be 50 characters or fewer": "Το όνομα και το επίθετο πρέπει να έχουν 50 χαρακτήρες ή λιγότερο",
+  "First name and last name must each be at least 2 characters": "Το όνομα και το επίθετο πρέπει να έχουν τουλάχιστον 2 χαρακτήρες",
+  "Guest": "Επισκέπτης",
+  "Guest Classification": "Ταξινόμηση επισκέπτη",
+  "Invalid birth date": "Μη έγκυρη ημερομηνία γέννησης.",
+  "Invalid email address": "Μη έγκυρη διεύθυνση ηλεκτρονικής αλληλογραφίας",
+  "Kiosk Settings": "Ρυθμίσεις περιπτέρου",
+  "Please enter a check number": "Παρακαλώ εισάγετε ένα αριθμό επιταγής",
+  "Register & Check In": "Εγγραφή και έλεγχος",
+  "Register Walk-In Guest": "Καταχώρηση επισκέπτη",
+  "Register walk-in guest": "καταχώρηση επισκέπτη",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Καταχωρήθηκε ως επισκέπτης στο περίπτερο κατά τη διάρκεια του γεγονότος: %s",
+  "Registering...": "Εγγραφή...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Απαιτείται ένας αριθμός επιταγής κατά την καταχώρηση πληρωμών επιταγής σε εγγραφές εναπόθεσης.\nΣημείωση: η απενεργοποίησή του απενεργοποιεί επίσης την ανίχνευση διπλότυπων αριθμών επιταγών - η ίδια φυσική επιταγή μπορεί να εισαχθεί περισσότερες από μία φορές.",
+  "This event has ended": "Αυτό το γεγονός έχει τελειώσει",
+  "This event has no group assigned, so guests cannot be registered": "Αυτό το γεγονός δεν έχει καμία ομάδα που να είναι ανατεθειμένη, ώστε οι επισκέπτες να μην μπορούν να καταχωρηθούν",
+  "This event has no start and end time": "Αυτό το γεγονός δεν έχει ώρα έναρξης και λήξης",
+  "{{name}} registered and checked in!": "Ο/η {{name}} καταχωρήθηκε και ελέγχθηκε!",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\": {{count}} γεγονός δημιουργήθηκε",
+    "other": "\"{{name}}\": {{count}} γεγονότα δημιουργήθηκαν"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "Το email στάλθηκε σε {{count}} παραλήπτη.",
+    "other": "Τα email στάλθηκαν σε {{count}} παραλήπτες."
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "Δεν υπάρχουν νέα γεγονότα. Όλα τα {{count}} γεγονότα έως {{through}} έχουν ήδη ένα.",
+    "other": "Δεν υπάρχουν νέα γεγονότα. Όλα τα {{count}} γεγονότα έως {{through}} έχουν ήδη ένα."
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "Το πρόγραμμα \"{{name}}\" δημιουργήθηκε: {{count}} γεγονός",
+    "other": "Το πρόγραμμα \"{{name}}\" δημιουργήθηκε: {{count}} γεγονότα"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "Αποστολή σε {{count}} παραλήπτη. Οι διευθύνσεις χωρίς εγγραφή ατόμου δεν περιλαμβάνονται: {{list}}",
+    "other": "Αποστολή σε {{count}} παραλήπτες. Οι διευθύνσεις χωρίς εγγραφή ατόμου δεν περιλαμβάνονται: {{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "Το {{count}} δεν ήταν δυνατό να εκχωρηθεί",
+    "other": "Το {{count}} δεν ήταν δυνατό να εκχωρηθούν"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "Το {{count}} έμεινε ανοιχτό επειδή η προεπιλογή δεν είναι πλέον κατάλληλη",
+    "other": "Το {{count}} έμεινε ανοιχτό επειδή η προεπιλογή δεν είναι πλέον κατάλληλη"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "{{count}} εθελοντής εκχωρημένος",
+    "other": "{{count}} εθελοντές εκχωρημένοι"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} περιμένει την απάντησή σας",
+    "other": "{{count}} περιμένουν την απάντησή σας"
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "{{count}} γεγονός {{title}} δημιουργήθηκε. Να τα στελεχώσω τώρα;",
+    "other": "{{count}} γεγονότα {{title}} δημιουργήθηκαν. Να τα στελεχώσω τώρα;"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "Ο/η {{names}} θα στελεχώσει αυτά τα γεγονότα. Τα γεγονότα τους δημιουργούνται καθώς έρχονται εντός της επόμενης {{count}} εβδομάδας.",
+    "other": "Ο/η {{names}} θα στελεχώσουν αυτά τα γεγονότα. Τα γεγονότα τους δημιουργούνται καθώς έρχονται εντός των επόμενων {{count}} εβδομάδων."
+  }
 }
