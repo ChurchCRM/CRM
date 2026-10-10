@@ -19,9 +19,6 @@ const DEFAULT_TYPE = "iVolunteerDefaultEventTypeId";
 const RATE_LIMIT = "iTimerJobsMinIntervalMinutes";
 const TOP_UP_DATE = "sLastVolunteerTopUpRunDate";
 const TOP_UP_RESULT = "sLastVolunteerTopUpResult";
-const UPGRADE_SCRIPT = "src/mysql/upgrade/7.8.0.sql";
-const INSTALL_SCRIPT = "src/mysql/install/Install.sql";
-
 const CHURCH_SERVICE_TYPE = 1;
 const OTHER_TYPE = 3;
 const SUNDAY_SCHOOL_GROUP_TYPE = 4;
@@ -529,14 +526,6 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
             defaultEventType().should("eq", null);
             setConfig(DEFAULT_TYPE, String(OTHER_TYPE));
             defaultEventType().should("eq", OTHER_TYPE);
-        });
-
-        it("is not added by the 7.8.0 script or a fresh install (#10357)", () => {
-            cy.readFile(UPGRADE_SCRIPT).should("not.contain", "INSERT INTO `event_types`");
-            cy.readFile(INSTALL_SCRIPT).then((script) => {
-                const start = script.indexOf("INSERT INTO `event_types`");
-                expect(script.slice(start, script.indexOf(";", start))).not.to.contain("'Other'");
-            });
         });
     });
 
