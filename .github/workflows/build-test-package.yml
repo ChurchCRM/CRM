@@ -244,12 +244,10 @@ jobs:
         shard-total: ${{ matrix.test-type.name != 'api' && (matrix.shard-total || 1) || '' }}
         shard-index: ${{ matrix.split-index || '0' }}
         docker-compose-profile: ci-root
-      env:
-        # Test-database drift guard (#9769): the ci-root database is published on
-        # 3306 (docker-compose.parallel.yaml). Required, so a guard that cannot
-        # reach the database fails the job instead of silently switching off.
-        ROW_GUARD_DB_PORT: "3306"
-        ROW_GUARD_REQUIRED: "1"
+        # ci-root publishes MySQL on 3306. The guard reads this inside the action.
+        extra-env: |
+          ROW_GUARD_DB_PORT=3306
+          ROW_GUARD_REQUIRED=1
 
     - name: Stop Docker
       if: always()
@@ -341,14 +339,11 @@ jobs:
         shard-index: ${{ matrix.split-index || '0' }}
         base-url: http://127.0.0.1:8080/churchcrm/
         docker-compose-profile: ci-subdir
-      env:
-        # The ci-subdir database is published on DATABASE_SUBDIR_PORT (3307,
-        # docker-compose.parallel.yaml); the db:query Cypress task reads this.
-        DATABASE_PORT: "3307"
-        # Test-database drift guard (#9769): the ci-subdir database is published on
-        # DATABASE_SUBDIR_PORT (3307), not the 3306 default the guard would try.
-        ROW_GUARD_DB_PORT: "3307"
-        ROW_GUARD_REQUIRED: "1"
+        # ci-subdir publishes MySQL on 3307. db:query and the row guard both read it.
+        extra-env: |
+          DATABASE_PORT=3307
+          ROW_GUARD_DB_PORT=3307
+          ROW_GUARD_REQUIRED=1
 
     - name: Stop Docker
       if: always()

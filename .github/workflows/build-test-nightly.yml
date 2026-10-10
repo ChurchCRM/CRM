@@ -182,42 +182,19 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP 8.5)
-      run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
-      env:
-        # Test-database drift guard (#9769): the ci-root database is published on
-        # 3306 (docker-compose.parallel.yaml). Required, so a guard that cannot
-        # reach the database fails the job instead of silently switching off.
-        ROW_GUARD_DB_PORT: "3306"
-        ROW_GUARD_REQUIRED: "1"
-        SPLIT: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
-        SPLIT_INDEX: ${{ matrix.split-index }}
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-php8.5-root-${{ matrix.test-type.name }}.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-php8.5-root-${{ matrix.test-type.name }}.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
+      uses: ./.github/actions/run-cypress-tests
       with:
-        name: cypress-artifacts-php8.5-root-${{ matrix.test-type.name }}-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: Root (${{ matrix.test-type.name }})'
-        path: cypress/reports/junit-php8.5-root-${{ matrix.test-type.name }}-*.xml
+        config-file: ${{ matrix.test-type.config }}
+        spec: ${{ matrix.test-type.spec }}
+        test-name: ${{ matrix.test-type.name }}
+        php-version: '8.5'
+        deployment: root
+        shard-total: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
+        shard-index: ${{ matrix.split-index || '0' }}
+        docker-compose-profile: ci-root
+        extra-env: |
+          ROW_GUARD_DB_PORT=3306
+          ROW_GUARD_REQUIRED=1
 
     - name: Stop Docker
       if: always()
@@ -295,45 +272,21 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (subdir, PHP 8.5)
-      run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
-      env:
-        CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
-        # The ci-subdir database is published on DATABASE_SUBDIR_PORT (3307,
-        # docker-compose.parallel.yaml); the db:query Cypress task reads this.
-        DATABASE_PORT: "3307"
-        # Test-database drift guard (#9769): the ci-subdir database is published on
-        # DATABASE_SUBDIR_PORT (3307), not the 3306 default the guard would try.
-        ROW_GUARD_DB_PORT: "3307"
-        ROW_GUARD_REQUIRED: "1"
-        SPLIT: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
-        SPLIT_INDEX: ${{ matrix.split-index }}
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-php8.5-subdir-${{ matrix.test-type.name }}.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-php8.5-subdir-${{ matrix.test-type.name }}.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
+      uses: ./.github/actions/run-cypress-tests
       with:
-        name: cypress-artifacts-php8.5-subdir-${{ matrix.test-type.name }}-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: Subdirectory (${{ matrix.test-type.name }})'
-        path: cypress/reports/junit-php8.5-subdir-${{ matrix.test-type.name }}-*.xml
+        config-file: ${{ matrix.test-type.config }}
+        spec: ${{ matrix.test-type.spec }}
+        test-name: ${{ matrix.test-type.name }}
+        php-version: '8.5'
+        deployment: subdir
+        shard-total: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
+        shard-index: ${{ matrix.split-index || '0' }}
+        base-url: http://127.0.0.1:8080/churchcrm/
+        docker-compose-profile: ci-subdir
+        extra-env: |
+          DATABASE_PORT=3307
+          ROW_GUARD_DB_PORT=3307
+          ROW_GUARD_REQUIRED=1
 
     - name: Stop Docker
       if: always()
@@ -391,36 +344,16 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress tests (setup wizard, PHP 8.5)
-      uses: ./.github/actions/cypress
+      uses: ./.github/actions/run-cypress-tests
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-new-system-[suiteName]-[hash].xml
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php8.5-new-system.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php8.5-new-system.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
-      with:
-        name: cypress-artifacts-php8.5-new-system-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: New System Setup (Root)'
-        path: cypress/reports/junit-php8.5-new-system-*.xml
+        config-file: cypress/configs/new-system.config.ts
+        spec: cypress/e2e/new-system/**/*.spec.js
+        test-name: setup
+        php-version: '8.5'
+        deployment: new-system
+        shard-total: '1'
+        shard-index: '0'
+        docker-compose-profile: ci-new-system
 
     - name: Stop Docker
       if: always()
@@ -478,38 +411,18 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress tests (setup wizard subdir, PHP 8.5)
-      uses: ./.github/actions/cypress
+      uses: ./.github/actions/run-cypress-tests
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-new-system-subdir-[suiteName]-[hash].xml
-      env:
-        CYPRESS_BASE_URL: http://127.0.0.1:8081/churchcrm/
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php8.5-new-system-subdir.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php8.5-new-system-subdir.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
-      with:
-        name: cypress-artifacts-php8.5-new-system-subdir-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: New System Setup (Subdirectory)'
-        path: cypress/reports/junit-php8.5-new-system-subdir-*.xml
+        config-file: cypress/configs/new-system.config.ts
+        spec: cypress/e2e/new-system/**/*.spec.js
+        test-name: setup
+        php-version: '8.5'
+        deployment: new-system-subdir
+        shard-total: '1'
+        shard-index: '0'
+        base-url: http://127.0.0.1:8081/churchcrm/
+        docker-compose-profile: ci-new-system
+        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.subdir.yaml'
 
     - name: Stop Docker
       if: always()
@@ -577,34 +490,15 @@ jobs:
         echo "Server ready."
 
     - name: Run full locale sweep (root, PHP 8.5)
-      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-locale-[hash].xml
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-php8.5-root-locale.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-php8.5-root-locale.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
+      uses: ./.github/actions/run-cypress-tests
       with:
-        name: cypress-artifacts-php8.5-root-locale-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: Root (locale)'
-        path: cypress/reports/junit-php8.5-root-locale-*.xml
+        config-file: cypress/configs/locale.config.ts
+        spec: cypress/e2e/locale/**/*.spec.ts
+        test-name: locale
+        php-version: '8.5'
+        deployment: root
+        cypress-env: LOCALE_TIER=full
+        docker-compose-profile: ci-root
 
     - name: Stop Docker
       if: always()
@@ -672,36 +566,16 @@ jobs:
         echo "Server ready."
 
     - name: Run full locale sweep (subdir, PHP 8.5)
-      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-locale-[hash].xml
-      env:
-        CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-php8.5-subdir-locale.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-php8.5-subdir-locale.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
+      uses: ./.github/actions/run-cypress-tests
       with:
-        name: cypress-artifacts-php8.5-subdir-locale-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP 8.5: Subdirectory (locale)'
-        path: cypress/reports/junit-php8.5-subdir-locale-*.xml
+        config-file: cypress/configs/locale.config.ts
+        spec: cypress/e2e/locale/**/*.spec.ts
+        test-name: locale
+        php-version: '8.5'
+        deployment: subdir
+        base-url: http://127.0.0.1:8080/churchcrm/
+        cypress-env: LOCALE_TIER=full
+        docker-compose-profile: ci-subdir
 
     - name: Stop Docker
       if: always()
@@ -806,41 +680,20 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress upgrade test (${{ matrix.group.name }}, PHP ${{ matrix.php-version }})
-      uses: ./.github/actions/cypress
+      uses: ./.github/actions/run-cypress-tests
       with:
-        command: npx cypress run --config-file cypress/configs/upgrade.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.group.name }}-[hash].xml
-      env:
-        CYPRESS_UPGRADE_SQL_FILE: ${{ matrix.group.sql_file }}
-        CYPRESS_UPGRADE_ADMIN_USER: ${{ matrix.group.admin_user }}
-        CYPRESS_UPGRADE_ADMIN_PASS: ${{ matrix.group.admin_pass }}
-        CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE: ${{ matrix.group.force_password_change }}
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-${{ matrix.group.name }}.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-${{ matrix.group.name }}.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: ./.github/actions/upload-artifact
-      with:
-        name: cypress-artifacts-php${{ matrix.php-version }}-${{ matrix.group.name }}-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: ./.github/actions/test-reporter
-      if: always()
-      with:
-        name: 'PHP ${{ matrix.php-version }} / ${{ matrix.group.name }}: Upgrade from ${{ matrix.group.label }}'
-        path: cypress/reports/junit-php${{ matrix.php-version }}-${{ matrix.group.name }}-*.xml
+        config-file: cypress/configs/upgrade.config.ts
+        spec: cypress/e2e/upgrade/**/*.spec.js
+        test-name: upgrade
+        php-version: ${{ matrix.php-version }}
+        deployment: ${{ matrix.group.name }}
+        docker-compose-profile: ci-new-system
+        docker-compose-files: ${{ matrix.group.database == 'mysql' && 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.mysql.yaml' || 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml' }}
+        extra-env: |
+          CYPRESS_UPGRADE_SQL_FILE=${{ matrix.group.sql_file }}
+          CYPRESS_UPGRADE_ADMIN_USER=${{ matrix.group.admin_user }}
+          CYPRESS_UPGRADE_ADMIN_PASS=${{ matrix.group.admin_pass }}
+          CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE=${{ matrix.group.force_password_change }}
 
     - name: Stop Docker
       if: always()
