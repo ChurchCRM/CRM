@@ -63,9 +63,7 @@ cypress/downloads
 cypress.config.ts
 cypress.env.json
 
-playwright/artifacts/metadata/**/*.json
-playwright/artifacts/manifest.csv
-playwright/artifacts/report.json
+playwright/artifacts/
 playwright/.auth
 playwright/.playwright-output
 playwright-report

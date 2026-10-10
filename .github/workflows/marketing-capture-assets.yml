@@ -3,10 +3,11 @@ name: "Marketing: capture screenshots & videos"
 # Manually run the marketing screenshot/video pipeline end-to-end against a
 # chosen branch, verify every capture it claims to have produced is a real,
 # non-empty file (npm run marketing:check), and upload the result as a run
-# artifact. On the default branch (master) the fresh visuals are also pushed
-# to ChurchCRM/ChurchCRM.io, which hosts the screenshots and videos, and a PR
-# is opened there with only the files that visibly changed. Nothing is
-# committed to this repo.
+# artifact. Nothing is committed to this repo. The visuals are published at
+# https://cdn.churchcrm.io by ChurchCRM/visuals ("Publish visuals"), which
+# downloads this run's artifact. Release bookkeeping starts that when a release
+# is published; the release workflow requires a green run of this workflow on
+# the release commit first.
 #
 # Stages (each its own job, so the Actions UI shows exactly which locale or
 # stage is running or failed):
@@ -18,11 +19,7 @@ name: "Marketing: capture screenshots & videos"
 #                  is a DB setting on the shared admin user. Only 'en' also
 #                  records and publishes the videos.
 #   2. merge     — combines every locale's output, re-runs the capture check
-#                  and regenerates the manifest.
-#   3. publish   — only on the default branch: copies new and visibly changed
-#                  visuals into ChurchCRM.io and opens a PR there (needs
-#                  DOCS_RELEASE_TOKEN with contents and pull-requests write
-#                  on that repo).
+#                  and regenerates the manifest, then uploads the artifact.
 #
 # Trigger this from the Actions tab: pick the branch, click "Run workflow".
 
@@ -153,80 +150,5 @@ jobs:
         with:
           name: marketing-visuals-${{ github.run_id }}
           path: playwright/artifacts/
-          retention-days: 14
+          retention-days: 30
           if-no-files-found: error
-
-  publish:
-    name: "3 — Open website PR"
-    needs: merge
-    if: github.ref_name == github.event.repository.default_branch
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    steps:
-      - name: Checkout the website
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          repository: ChurchCRM/ChurchCRM.io
-          token: ${{ secrets.DOCS_RELEASE_TOKEN }}
-
-      - name: Download the merged visuals
-        uses: ./.github/actions/download-artifact
-        with:
-          name: marketing-visuals-${{ github.run_id }}
-          path: ${{ runner.temp }}/visuals
-
-      # Re-captures are never byte-identical (anti-aliasing, PNG encoding, video
-      # encoding), so copying everything would put every file in the PR. Copy a
-      # file only when it is new or the picture visibly changed (more than
-      # 200 pixels differ after a 2% fuzz). Videos are only added, never replaced.
-      - name: Copy new and visibly changed visuals into the website
-        env:
-          VISUALS: ${{ runner.temp }}/visuals
-        run: |
-          set -euo pipefail
-          sudo apt-get install -y --no-install-recommends imagemagick > /dev/null
-          copy_changed() {
-            local src="$1" dst="$2" f target px
-            while IFS= read -r -d '' f; do
-              target="$dst/${f#"$src"/}"
-              if [ -f "$target" ]; then
-                [[ "$f" == *.png ]] || continue
-                px="$(compare -metric AE -fuzz 2% "$f" "$target" null: 2>&1 || true)"
-                px="${px%% *}"
-                if [[ "$px" =~ ^[0-9]+$ ]] && [ "$px" -le 200 ]; then continue; fi
-              fi
-              mkdir -p "$(dirname "$target")"
-              cp "$f" "$target"
-            done < <(find "$src" -type f -print0)
-          }
-          copy_changed "$VISUALS/screenshots" static/images/screenshots
-          copy_changed "$VISUALS/videos" static/images/videos
-
-          # commit/timestamp/sizeBytes change every run; publish the manifest
-          # only when captures are added, removed or retitled.
-          stable='[.[] | del(.commit, .timestamp, .sizeBytes)]'
-          if ! diff <(jq -S "$stable" data/manifest.json) <(jq -S "$stable" "$VISUALS/manifest.json") > /dev/null; then
-            cp "$VISUALS/manifest.json" data/manifest.json
-          fi
-
-      - name: Create Pull Request with updated visuals
-        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
-        with:
-          token: ${{ secrets.DOCS_RELEASE_TOKEN }}
-          branch: marketing/update-visuals
-          delete-branch: true
-          add-paths: |
-            static/images/screenshots
-            static/images/videos
-            data/manifest.json
-          commit-message: |
-            chore: update product screenshots and videos
-
-            Captured by ChurchCRM/CRM marketing-capture-assets run
-            ${{ github.run_id }}.
-          title: "chore: update product screenshots and videos"
-          body: |
-            New and visibly changed screenshots and videos from the
-            ChurchCRM/CRM marketing pipeline.
-
-            - Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

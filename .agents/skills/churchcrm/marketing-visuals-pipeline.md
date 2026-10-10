@@ -63,23 +63,38 @@ actually exists and its size, purpose text, viewport, commit, etc. It's
 for scanning/looking up a whole run's output at a glance without opening
 90+ individual JSON files, and it's what the website's screenshot gallery
 reads; it isn't a correctness gate — `marketing:check` (which runs just
-before it) is what fails the build. Unlike the JSON sidecars it
-summarizes, it **is** committed — regenerate it with `npm run
-marketing:manifest` after any run that changes captures, don't hand-edit
-it, and don't be surprised if its `commit`/`timestamp` columns lag the
-repo by a commit or two (it reflects whatever run last regenerated it, not
-necessarily HEAD). An older `manifest.csv` format is obsolete: the script
-deletes any leftover `manifest.csv` on each run, and it's gitignored.
+before it) is what fails the build. `playwright/artifacts/` is gitignored:
+the manifest, screenshots and videos are generated, never committed. An
+older `manifest.csv` format is obsolete: the script deletes any leftover
+`manifest.csv` on each run.
+
+### How visuals reach the website
+
+`Marketing: capture screenshots & videos` (`marketing-capture-assets.yml`)
+captures 8 locales (en es pt zh fr ru de ar) x 3 devices, merges them, and
+uploads the artifact `marketing-visuals-<run id>` (30 day retention). It
+opens no PR. `Publish visuals` in `ChurchCRM/visuals` downloads that
+artifact and replaces the repo with that release's set (one release, one
+orphan commit), served at https://cdn.churchcrm.io/. Images live at
+`https://cdn.churchcrm.io/<relativePath from manifest.json>`, next to
+`manifest.json` (with a `release` field) and `release.json`. churchcrm.io
+and docs.churchcrm.io read from there.
+
+On release publish, `release-bookkeeping.yml` job `publish-visuals` starts
+`Publish visuals` with the capture run for the release commit. With no
+capture or no `DOCS_RELEASE_TOKEN` (Actions: write on `ChurchCRM/visuals`)
+it warns; a maintainer then runs `Publish visuals` by hand with the capture
+run id.
 
 ### Adding a capture in a feature PR
 
-The capture ships in the same PR as the UI change, not a follow-up.
+The capture spec ships in the same PR as the UI change, not a follow-up. Images are only for your own check; they are not committed.
 
 1. Make a `git worktree` at the PR commit, symlink `node_modules`, then `composer:install`, `build:js`, `build:signatures`.
 2. Start the pipeline's own stack with `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:start`. It uses ports 8081 and 3308, so it does not collide with the dev or test stacks. It removes `src/Include/Config.php`, which is why it never runs in the main checkout.
 3. First run: `BROWSER_CHANNEL=chrome CHURCHCRM_LOCALE=en npm run marketing:screenshots -- --grep "<capture-name>"`. After a UI tweak, re-run only the capture on the seeded instance with `-- --project=screenshots --no-deps --grep "<capture-name>"`.
 4. Open the desktop, tablet, and mobile PNGs and look at them. Fix anything cramped, then re-run.
-5. Commit the spec, the three `en` PNGs, and hand-added `manifest.json` entries (one per device; copy the fields from the sidecar JSON, which is gitignored). Never commit `report.json` or the other locales.
+5. Commit the spec only. Never commit anything under `playwright/artifacts/`.
 6. Tear down with `COMPOSE_PROJECT_NAME=crm-pw-capture npm run docker:ci:new-system:down`.
 
 Full details, directory layout, and troubleshooting: `playwright/README.md`.
