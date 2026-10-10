@@ -7317,7 +7317,7 @@ paths:
     get:
       tags:
         - Families
-      summary: 'Search families by name (max 15 results)'
+      summary: 'Search families by name, or by envelope number for finance users (max 15 results)'
       parameters:
         -
           name: query
