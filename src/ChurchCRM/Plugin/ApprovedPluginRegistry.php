@@ -121,7 +121,7 @@ class ApprovedPluginRegistry
     public static function fetchRemoteRegistry(): void
     {
         try {
-            $contents = file_get_contents(self::REGISTRY_URL);
+            $contents = file_get_contents(self::registrySource());
             if ($contents === false) {
                 LoggerUtils::getAppLogger()->warning('Failed to fetch remote plugin registry', ['url' => self::REGISTRY_URL]);
                 $_SESSION['RemotePluginRegistry'] = [];
@@ -147,6 +147,17 @@ class ApprovedPluginRegistry
             LoggerUtils::getAppLogger()->warning('Error processing remote plugin registry', ['error' => $e->getMessage()]);
             $_SESSION['RemotePluginRegistry'] = [];
         }
+    }
+
+    /**
+     * Cypress stacks set CHURCHCRM_PLUGIN_FIXTURES; a registry.json written there
+     * stands in for the remote registry. Production never sets the variable.
+     */
+    public static function registrySource(): string
+    {
+        $dir = getenv('CHURCHCRM_PLUGIN_FIXTURES');
+
+        return $dir !== false && is_file($dir . '/registry.json') ? $dir . '/registry.json' : self::REGISTRY_URL;
     }
 
     /**

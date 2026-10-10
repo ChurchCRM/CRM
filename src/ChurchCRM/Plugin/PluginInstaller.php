@@ -106,9 +106,9 @@ HTACCESS;
      * @param string $pluginsPath Absolute path to src/plugins
      * @param string $downloadUrl The downloadUrl from the approved registry
      *
-     * @return array{pluginId: string, version: string, path: string, verified: bool}
+     * @return array{pluginId: string, version: string, path: string, verified: bool, upgradedFrom: ?string}
      *
-     * @throws PluginAlreadyInstalledException if community/{id} already exists
+     * @throws PluginAlreadyInstalledException if community/{id} exists and the approved version is not newer
      * @throws \RuntimeException               on any other validation or IO failure
      */
     public static function installFromUrl(string $pluginsPath, string $downloadUrl): array
@@ -147,13 +147,35 @@ HTACCESS;
             }
         }
 
-        // (3) Destination check — never overwrite.
+        // Serialize per plugin so a slower, older request cannot replace a newer install.
+        return self::withPluginLock(
+            $pluginsPath,
+            $pluginId,
+            static fn (): array => self::installApproved($pluginsPath, $downloadUrl, $pluginId, $expectedSha, $expectedVersion)
+        );
+    }
+
+    /**
+     * @return array{pluginId: string, version: string, path: string, verified: bool, upgradedFrom: ?string}
+     */
+    private static function installApproved(string $pluginsPath, string $downloadUrl, string $pluginId, string $expectedSha, string $expectedVersion): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+
+        // (3) Destination check — only a newer approved release may replace an install.
         $destDir = $pluginsPath . '/community/' . $pluginId;
+        $upgradedFrom = null;
         if (is_dir($destDir)) {
-            throw new PluginAlreadyInstalledException(sprintf(
-                'A plugin is already installed at %s. Uninstall it before reinstalling.',
-                'community/' . $pluginId
-            ));
+            $manifest = json_decode((string) @file_get_contents($destDir . '/plugin.json'), true);
+            $currentVersion = is_array($manifest) ? (string) ($manifest['version'] ?? '') : '';
+            if ($currentVersion === '' || version_compare($expectedVersion, $currentVersion, '<=')) {
+                throw new PluginAlreadyInstalledException(sprintf(
+                    'Version %s of %s is already installed. Uninstall it first to reinstall.',
+                    $currentVersion !== '' ? $currentVersion : 'unknown',
+                    'community/' . $pluginId
+                ));
+            }
+            $upgradedFrom = $currentVersion;
         }
 
         // (4) Download to a temporary file.
@@ -196,7 +218,11 @@ HTACCESS;
                 }
 
                 self::ensureDir(dirname($destDir));
-                self::moveStagedToDest($stagedDir, $destDir);
+                if ($upgradedFrom !== null) {
+                    self::replaceInstalled($stagedDir, $destDir);
+                } else {
+                    self::moveStagedToDest($stagedDir, $destDir);
+                }
 
                 // Ensure the community/.htaccess deny block is in place so
                 // PHP files are never directly HTTP-executable (GHSA-37mf-vq43-5qp9).
@@ -214,9 +240,10 @@ HTACCESS;
                 self::clearUnverifiedFlag($pluginId);
                 self::clearQuarantine($pluginId);
 
-                $logger->info('Community plugin installed (verified)', [
+                $logger->info($upgradedFrom !== null ? 'Community plugin upgraded (verified)' : 'Community plugin installed (verified)', [
                     'plugin' => $pluginId,
                     'version' => $expectedVersion,
+                    'previousVersion' => $upgradedFrom,
                     'path' => $destDir,
                 ]);
 
@@ -226,12 +253,27 @@ HTACCESS;
                     'version' => $expectedVersion,
                     'path' => 'community/' . $pluginId,
                     'verified' => true,
+                    'upgradedFrom' => $upgradedFrom,
                 ];
             } finally {
                 self::recursiveDelete($tmpExtractDir);
             }
         } finally {
             @unlink($tmpZip);
+        }
+    }
+
+    private static function withPluginLock(string $pluginsPath, string $pluginId, callable $operation): array
+    {
+        $lock = fopen(sys_get_temp_dir() . '/churchcrm-plugin-' . md5($pluginsPath) . '-' . $pluginId . '.lock', 'c');
+        if ($lock === false || !flock($lock, LOCK_EX)) {
+            throw new \RuntimeException('Could not lock the plugin for installation.');
+        }
+        try {
+            return $operation();
+        } finally {
+            flock($lock, LOCK_UN);
+            fclose($lock);
         }
     }
 
@@ -599,6 +641,17 @@ HTACCESS;
      */
     private static function downloadToTempFile(string $url): string
     {
+        // Test stacks serve fixture zips for this reserved host instead of the network.
+        $fixtures = getenv('CHURCHCRM_PLUGIN_FIXTURES');
+        if ($fixtures !== false && str_starts_with($url, 'https://fixtures.invalid/')) {
+            $zip = $fixtures . '/' . basename($url);
+            $tmp = tempnam(sys_get_temp_dir(), 'ccrm_plugin_');
+            if ($tmp === false || !is_file($zip) || !copy($zip, $tmp)) {
+                throw new \RuntimeException('Plugin fixture not found.');
+            }
+
+            return $tmp;
+        }
         if (!preg_match('/^https:\/\//i', $url)) {
             throw new \RuntimeException('Plugin downloads must use HTTPS.');
         }
@@ -915,6 +968,26 @@ HTACCESS;
             self::recursiveDelete($destDir);
             throw $e;
         }
+    }
+
+    /**
+     * Swap a staged upgrade into place. The old directory is kept aside until
+     * the new one is in position so a failed swap restores the working install.
+     */
+    private static function replaceInstalled(string $stagedDir, string $destDir): void
+    {
+        $backup = $destDir . '.upgrade-' . bin2hex(random_bytes(4));
+        if (!@rename($destDir, $backup)) {
+            throw new \RuntimeException('Could not move the installed plugin aside for the upgrade.');
+        }
+        try {
+            self::moveStagedToDest($stagedDir, $destDir);
+        } catch (\Throwable $e) {
+            self::recursiveDelete($destDir);
+            @rename($backup, $destDir);
+            throw $e;
+        }
+        self::recursiveDelete($backup);
     }
 
     private static function recursiveCopy(string $from, string $to): void

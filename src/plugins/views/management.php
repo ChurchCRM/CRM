@@ -961,6 +961,20 @@ $(document).ready(function() {
     // ─────────────────────────────────────────────────────────────
     //  Browse Approved Plugins
     // ─────────────────────────────────────────────────────────────
+    function approvedActionHtml(entry) {
+        const installed = entry.installedVersion;
+        const id = $('<div>').text(entry.id || '').html();
+        const url = $('<div>').text(entry.downloadUrl || '').html();
+        if (installed && !entry.upgradeAvailable) {
+            return '<span class="badge bg-green-lt text-green"><?= addslashes(gettext('Installed')) ?></span>';
+        }
+        const upgrading = !!installed;
+        return '<button type="button" class="btn btn-primary btn-sm btn-install-approved" data-upgrade="' + (upgrading ? '1' : '0') + '"' +
+            ' data-plugin-id="' + id + '" data-download-url="' + url + '">' +
+            '<i class="fa-solid fa-' + (upgrading ? 'arrow-up' : 'download') + ' me-1"></i>' +
+            (upgrading ? '<?= addslashes(gettext('Update')) ?>' : '<?= addslashes(gettext('Install')) ?>') + '</button>';
+    }
+
     function renderApprovedList(entries) {
         const $list = $('#approvedPluginsList');
         if (!Array.isArray(entries) || entries.length === 0) {
@@ -1005,12 +1019,7 @@ $(document).ready(function() {
                 metaHtml +
                 notesHtml +
                 '      </div>' +
-                '      <div class="flex-shrink-0">' +
-                '        <button type="button" class="btn btn-primary btn-sm btn-install-approved"' +
-                '                data-plugin-id="' + $('<div>').text(entry.id || '').html() + '"' +
-                '                data-download-url="' + $('<div>').text(entry.downloadUrl || '').html() + '">' +
-                '          <i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>' +
-                '        </button>' +
+                '      <div class="flex-shrink-0">' + approvedActionHtml(entry) +
                 '      </div>' +
                 '    </div>' +
                 '  </div>' +
@@ -1079,7 +1088,9 @@ $(document).ready(function() {
                     ? xhr.responseJSON.message
                     : "<?= addslashes(gettext('Install failed')) ?>";
                 window.CRM.notify(msg, { type: 'danger', delay: 0 });
-                $btn.prop('disabled', false).html('<i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>');
+                $btn.prop('disabled', false).html($btn.data('upgrade') === 1
+                    ? '<i class="fa-solid fa-arrow-up me-1"></i><?= addslashes(gettext('Update')) ?>'
+                    : '<i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>');
             }
         });
     });

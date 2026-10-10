@@ -41,6 +41,8 @@ services:
     hostname: crm-webserver
     env_file:
       - .env
+    environment:
+      CHURCHCRM_PLUGIN_FIXTURES: /home/ChurchCRM/cypress/fixtures/plugin-registry
     depends_on:
       database:
         condition: service_healthy

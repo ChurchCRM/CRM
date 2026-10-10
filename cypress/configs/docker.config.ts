@@ -3,7 +3,7 @@ import { verifyDownloadTasks } from 'cy-verify-downloads';
 import { registerRowCountGuard } from './row-count-guard';
 
 import base from './base.config'
-import { dbTasks, mailTasks } from './_shared'
+import { dbTasks, mailTasks, pluginFixtureTasks } from './_shared'
 export default defineConfig({
   chromeWebSecurity: false,
   video: false,
@@ -77,7 +77,7 @@ export default defineConfig({
       });
       // dbTasks adds db:query, the direct-MySQL task specs use to assert what has
       // no HTTP surface (#9705); mailTasks adds the Mailpit reads (#9710).
-      on('task', { ...verifyDownloadTasks, ...dbTasks, ...mailTasks });
+      on('task', { ...verifyDownloadTasks, ...dbTasks, ...mailTasks, ...pluginFixtureTasks });
       // Test-database drift guard (#9769) — read-only row counts, plus the
       // env flag cypress/support/e2e.js checks before arming the guard.
       registerRowCountGuard(on, config);

@@ -117,6 +117,81 @@ async function mailpitFetch(path: string, init?: Record<string, unknown>) {
   }
 }
 
+/**
+ * Fake plugin registry for upgrade specs. The Docker webserver reads
+ * CHURCHCRM_PLUGIN_FIXTURES (the repo is mounted at /home/ChurchCRM); a
+ * registry.json in that directory replaces the remote registry (one approved
+ * version per write, like the real registry), and zips for
+ * https://fixtures.invalid/<name>.zip are served from it.
+ */
+export const pluginFixtureTasks = {
+  async 'pluginFixtures:write'({ id, version }: { id: string; version: string }) {
+    const archiver = require('archiver');
+    const crypto = require('crypto');
+    const fs = require('fs');
+    const path = require('path');
+    const dir = path.resolve(__dirname, '../fixtures/plugin-registry');
+    fs.mkdirSync(dir, { recursive: true });
+
+    const plugins = [];
+    {
+      const zipName = `${id}-${version}.zip`;
+      const manifest = {
+        id,
+        name: 'Upgrade Fixture',
+        description: 'Cypress fixture plugin for upgrade tests.',
+        version,
+        type: 'community',
+        minimumCRMVersion: '7.0.0',
+        mainClass: 'ChurchCRM\\Plugins\\UpgradeFixture\\UpgradeFixturePlugin',
+        dependencies: [],
+        settingsUrl: null,
+        settings: [],
+        menuItems: [],
+        hooks: []
+      };
+      const plugin = `<?php\n\nnamespace ChurchCRM\\Plugins\\UpgradeFixture;\n\nuse ChurchCRM\\Plugin\\AbstractPlugin;\n\nclass UpgradeFixturePlugin extends AbstractPlugin\n{\n    public function getId(): string\n    {\n        return '${id}';\n    }\n\n    public function getName(): string\n    {\n        return 'Upgrade Fixture';\n    }\n\n    public function getDescription(): string\n    {\n        return 'Cypress fixture plugin.';\n    }\n\n    public function boot(): void\n    {\n    }\n}\n`;
+      const zipPath = path.join(dir, zipName);
+      await new Promise<void>((resolve, reject) => {
+        const out = fs.createWriteStream(zipPath);
+        const zip = archiver('zip');
+        out.on('close', () => resolve());
+        zip.on('error', reject);
+        zip.pipe(out);
+        zip.append(JSON.stringify(manifest, null, 2), { name: `${id}/plugin.json`, date: new Date(0) });
+        zip.append(plugin, { name: `${id}/src/UpgradeFixturePlugin.php`, date: new Date(0) });
+        zip.finalize();
+      });
+      plugins.push({
+        id,
+        name: 'Upgrade Fixture',
+        version,
+        downloadUrl: `https://fixtures.invalid/${zipName}`,
+        sha256: crypto.createHash('sha256').update(fs.readFileSync(zipPath)).digest('hex'),
+        risk: 'low',
+        riskSummary: 'Test fixture.',
+        permissions: []
+      });
+    }
+    fs.writeFileSync(path.join(dir, 'registry.json'), JSON.stringify({ plugins }, null, 2));
+    return plugins;
+  },
+
+  'pluginFixtures:leftovers'(id: string) {
+    const fs = require('fs');
+    const path = require('path');
+    const community = path.resolve(__dirname, '../../src/plugins/community');
+    return fs.readdirSync(community).filter((name: string) => name.startsWith(`${id}.upgrade-`));
+  },
+
+  'pluginFixtures:clear'() {
+    const fs = require('fs');
+    const path = require('path');
+    fs.rmSync(path.resolve(__dirname, '../fixtures/plugin-registry'), { recursive: true, force: true });
+    return null;
+  }
+};
+
 export const mailTasks = {
   /** Is a Mailpit instance reachable? Never throws — the answer is the point. */
   async 'mail:available'() {
@@ -160,7 +235,7 @@ export function setupCommonNodeEvents(on: any, config: any) {
 
   // Every task must be registered in a single on('task', ...) call — a second
   // registration replaces the first rather than merging with it.
-  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks };
+  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...pluginFixtureTasks };
 
   // Register download verification tasks if available
   try {
