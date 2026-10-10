@@ -19399,10 +19399,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "Ongeza anwani hii kwenye programu yako ya kalenda. Husasishwa yenyewe kalenda ya kanisa inapobadilika."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "Ongeza matukio ya huduma hii hapa: siku ya kazi, darasa linalokutana kila Jumapili. Huenda kwenye kalenda ya kanisa, na unaweza kuyawekea watumishi unapoyaunda."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "Imeongezwa kupitia Tovuti ya Washirika na inasubiri ukaguzi: %s"
 

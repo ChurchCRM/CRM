@@ -11,7 +11,7 @@
  * No local files are required — the plugin is downloaded from GitHub during the test.
  * before() cleans up any leftover install from a previous run via the API.
  */
-describe('Community Plugin Lifecycle', () => {
+describe('Community Plugin Lifecycle', { retries: 2 }, () => {
     const PLUGIN_ID = 'hello-world';
     const uniqueSeed = Date.now().toString();
     let createdPersonId = null;

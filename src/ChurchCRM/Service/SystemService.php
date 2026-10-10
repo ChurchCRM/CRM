@@ -127,9 +127,10 @@ class SystemService
         });
 
         // Volunteer Management v2 (#9710, design §3.6). There is no scheduler in
-        // ChurchCRM, so these four ARE the scheduler for the volunteer module:
+        // ChurchCRM, so these five ARE the scheduler for the volunteer module:
         // schedules are filled to the scheduling horizon once a day (D31),
-        // reminders become due, the outbox is emptied, and assignments whose
+        // reminders become due, coordinators hear about positions still short
+        // (#10372), the outbox is emptied, and assignments whose
         // occurrence is over are closed out. Each is its own runTimerJob() call
         // so one failure cannot take the others — a mail server that is down
         // must not stop assignments being marked completed. With V1 selected they
@@ -141,6 +142,10 @@ class SystemService
 
             self::runTimerJob('VolunteerNotificationService::scheduleReminders', static function (): void {
                 (new VolunteerNotificationService())->scheduleReminders();
+            });
+
+            self::runTimerJob('VolunteerNotificationService::scheduleGapAlerts', static function (): void {
+                (new VolunteerNotificationService())->scheduleGapAlerts();
             });
 
             self::runTimerJob('VolunteerNotificationService::drainOutbox', static function (): void {

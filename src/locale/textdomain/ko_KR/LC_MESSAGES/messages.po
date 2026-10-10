@@ -19321,10 +19321,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "이 주소를 캘린더 앱에 추가하세요. 교회 캘린더가 바뀌면 자동으로 업데이트됩니다."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "이 사역의 행사(작업일, 매주 일요일에 모이는 반 등)를 여기에 추가하세요. 교회 캘린더에 등록되며, 만들면서 바로 봉사자를 배정할 수 있습니다."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "교인 포털에서 추가되어 검토를 기다리는 중: %s"
 

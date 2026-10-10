@@ -1,101 +1,136 @@
 {
   "%d day": {
-    "other": ""
+    "other": "%d 일"
   },
   "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "other": ""
+    "other": "%d 기본값이 다른 이유로 건너뛰어졌습니다(발생이 종료, 취소 또는 가득 찬 경우)"
   },
   "%d default skipped: qualification revoked": {
-    "other": ""
+    "other": "%d 기본값이 건너뛰어졌습니다: 자격이 취소됨"
   },
   "%d default volunteer assigned": {
-    "other": ""
+    "other": "%d 기본 자원자가 할당됨"
   },
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "other": ""
+    "other": "이 직책에는 %d 명의 자원자가 더 필요합니다. 공백을 채우기 위해 발생을 엽니다."
   },
   "%d new occurrence": {
-    "other": ""
+    "other": "%d 새로운 발생"
   },
   "%d volunteer is still needed for an upcoming occurrence.": {
-    "other": ""
+    "other": "향후 발생을 위해 %d 명의 자원자가 필요합니다."
   },
   "%s email from the church": {
-    "other": ""
+    "other": "교회에서 %s 이메일"
   },
   "%s person in your household": {
-    "other": ""
+    "other": "가구의 %s 명"
   },
   "%s position": {
-    "other": ""
+    "other": "%s 직책"
   },
   "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified.": {
-    "other": ""
+    "other": "하루에 한 번, 모든 활성 일정이 따르는 이벤트의 발생을 최대 %d 주 앞까지 가져오며, 각 직책의 기본 자원자는 자격을 유지하는 동안 새 발생에 할당됩니다."
   },
   "Passwords must be at least %s character long.": {
-    "other": ""
+    "other": "암호는 최소 %s 자 이상이어야 합니다."
   },
   "They finish %d minute after the event ends.": {
-    "other": ""
+    "other": "그들은 행사가 끝난 후 %d 분에 종료됩니다."
   },
   "They finish %d minute before the event ends.": {
-    "other": ""
+    "other": "그들은 행사가 끝나기 %d 분 전에 종료됩니다."
   },
   "Volunteers start %d minute after the event starts.": {
-    "other": ""
+    "other": "자원자는 행사가 시작된 후 %d 분에 시작합니다."
   },
   "Volunteers start %d minute before the event starts.": {
-    "other": ""
+    "other": "자원자는 행사가 시작되기 %d 분 전에 시작합니다."
   },
-  "Not authorized to change this event's audience group": "",
-  "Only a volunteer manager can change who coordinates a ministry": "",
-  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
+  "Not authorized to change this event's audience group": "이 행사의 대상 그룹을 변경할 권한이 없습니다",
+  "Only a volunteer manager can change who coordinates a ministry": "사역 담당자만 사역을 조정하는 사람을 변경할 수 있습니다",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "V1을 선택하면 V2 자원자 이메일이 일시 중지됩니다. 발생이 종료되지 않은 한 V2가 다시 켜질 때 대기 중인 모든 항목이 전송됩니다.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "이 사역의 행사를 여기에 추가하세요: 작업일, 매주 일요일에 만나는 학급. 교회 일정에 표시되며, 생성된 후 인력 배치 여부를 묻습니다.",
+  "Cancel occurrence": "발생 취소",
+  "Cancel this occurrence": "이 발생 취소",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "취소해도 아무도 통지되지 않습니다: 이메일이 전송되지 않습니다. 과제는 유지되며, 취소된 동안 알림이 예약되지 않으며, 복원될 때까지 아무도 할당될 수 없습니다.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "삭제된 행사는 모든 일정에서 제거되며 체크인 및 참석 인원도 함께 제거됩니다. 이 사역의 인력 배치는 날짜만 유지합니다. 이 작업은 취소할 수 없습니다.",
+  "Events deleted: {{total}}": "삭제된 행사: {{total}}",
+  "Events to delete: {{total}}": "삭제할 행사: {{total}}",
+  "Occurrence cancelled": "발생이 취소되었습니다",
+  "Occurrence restored": "발생이 복원되었습니다",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "이 발생을 일정에 다시 추가하여 다시 인력 배치할 수 있도록 하시겠습니까? 아무도 통지되지 않습니다: 이메일이 전송되지 않습니다.",
+  "Restore occurrence": "발생 복원",
+  "Restore this occurrence": "이 발생 복원",
+  "The occurrence could not be cancelled": "발생을 취소할 수 없었습니다",
+  "The occurrence could not be restored": "발생을 복원할 수 없었습니다",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "모든 일정에 행사를 추가할 수 있으므로 모두 나열됩니다. 이 사역의 자체 일정은 처음에 선택되어 있습니다.",
+  "A phone number or email address is required": "전화번호 또는 이메일 주소가 필요합니다",
+  "A phone number or email address is required.": "전화번호 또는 이메일 주소가 필요합니다.",
+  "Check-in has not opened for this event yet": "이 행사의 체크인이 아직 열리지 않았습니다",
+  "Classification given to walk-in guests registered on a kiosk": "키오스크에 등록된 방문객에게 부여된 분류",
+  "Failed to register guest. Please try again.": "방문객 등록에 실패했습니다. 다시 시도하세요.",
+  "First name and last name are required": "이름과 성이 필요합니다",
+  "First name and last name must each be 50 characters or fewer": "이름과 성은 각각 50자 이하여야 합니다",
+  "First name and last name must each be at least 2 characters": "이름과 성은 각각 최소 2자 이상이어야 합니다",
+  "Guest": "방문객",
+  "Guest Classification": "방문객 분류",
+  "Invalid birth date": "생년월일이 올바르지 않습니다.",
+  "Invalid email address": "유효하지 않은 이메일 주소",
+  "Kiosk Settings": "키오스크 설정",
+  "Please enter a check number": "수표 번호를 입력하세요",
+  "Register & Check In": "등록 및 체크인",
+  "Register Walk-In Guest": "방문객 등록",
+  "Register walk-in guest": "방문객 등록",
+  "Registered as a walk-in guest at the kiosk during event: %s": "행사 중 키오스크에서 방문객으로 등록됨: %s",
+  "Registering...": "등록 중...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "예금 항목에 수표 결제를 기록할 때 수표 번호가 필요합니다.\n참고: 이를 비활성화하면 중복 수표 번호 감지도 비활성화됩니다 — 동일한 물리적 수표가 여러 번 입력될 수 있습니다.",
+  "This event has ended": "이 행사가 종료되었습니다",
+  "This event has no group assigned, so guests cannot be registered": "이 행사에는 할당된 그룹이 없으므로 방문객을 등록할 수 없습니다",
+  "This event has no start and end time": "이 행사에는 시작 및 종료 시간이 없습니다",
+  "{{name}} registered and checked in!": "{{name}}이(가) 등록되었고 체크인되었습니다!",
   "\"{{name}}\": {{count}} occurrences created": {
-    "one": "",
-    "other": ""
-  },
-  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "\"{{name}}\"：생성된 {{count}}개 발생",
+    "other": "\"{{name}}\"：생성된 {{count}}개 발생"
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}명의 수신자에게 이메일 전송됨.",
+    "other": "{{count}}명의 수신자에게 이메일 전송됨."
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "",
-    "other": ""
+    "one": "새로운 발생이 없습니다. {{through}}까지의 모든 {{count}}개 이벤트가 이미 하나씩 있습니다.",
+    "other": "새로운 발생이 없습니다. {{through}}까지의 모든 {{count}}개 이벤트가 이미 하나씩 있습니다."
   },
   "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "",
-    "other": ""
+    "one": "일정 \"{{name}}\" 생성됨: {{count}}개 발생",
+    "other": "일정 \"{{name}}\" 생성됨: {{count}}개 발생"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}명의 수신자에게 전송합니다. 개인 기록이 없는 주소는 포함되지 않습니다: {{list}}",
+    "other": "{{count}}명의 수신자에게 전송합니다. 개인 기록이 없는 주소는 포함되지 않습니다: {{list}}"
   },
   "{{count}} could not be assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}개를 할당할 수 없습니다",
+    "other": "{{count}}개를 할당할 수 없습니다"
   },
   "{{count}} left open because the default is no longer qualified": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}개가 열려있는 상태로 유지되는 이유는 기본값이 더 이상 적격이 아니기 때문입니다",
+    "other": "{{count}}개가 열려있는 상태로 유지되는 이유는 기본값이 더 이상 적격이 아니기 때문입니다"
   },
   "{{count}} volunteers assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}명의 자원자가 할당됨",
+    "other": "{{count}}명의 자원자가 할당됨"
   },
   "{{count}} waiting for your answer": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}개가 답변을 기다리고 있습니다",
+    "other": "{{count}}개가 답변을 기다리고 있습니다"
   },
   "{{count}} {{title}} events created. Staff them now?": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}개의 {{title}} 이벤트가 생성되었습니다. 지금 인력을 배치하시겠습니까?",
+    "other": "{{count}}개의 {{title}} 이벤트가 생성되었습니다. 지금 인력을 배치하시겠습니까?"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "",
-    "other": ""
+    "one": "{{names}}이(가) 이 이벤트에 대한 인력을 배치합니다. 그들의 발생은 다음 {{count}} 주 내에 작성됩니다.",
+    "other": "{{names}}이(가) 이 이벤트에 대한 인력을 배치합니다. 그들의 발생은 다음 {{count}} 주 내에 작성됩니다."
   }
 }

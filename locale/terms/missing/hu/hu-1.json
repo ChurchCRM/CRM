@@ -1,53 +1,88 @@
 {
-  "Not authorized to change this event's audience group": "",
-  "Only a volunteer manager can change who coordinates a ministry": "",
-  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
+  "Not authorized to change this event's audience group": "Nincs jogosultsága az esemény csoportjának módosítására",
+  "Only a volunteer manager can change who coordinates a ministry": "Csak az önkéntes vezető módosíthatja a szolgálat koordinátorát",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "A V1 kiválasztása szünetelteti a V2 e-mailt; minden sorban álló küldésre kerül, amikor a V2 újra bekapcsol, hacsak az esemény még nem fejeződött be.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Adja hozzá ennek a szolgálatnak az eseményeit itt: munkanap, vasárnap összeülő osztály. A templom naptárára kerülnek, és létrehozás után megkérdezik, szeretné-e őket személyzettel felszerelni.",
+  "Cancel occurrence": "Esemény lemondása",
+  "Cancel this occurrence": "Ennek az eseménynek a lemondása",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "A lemondás senkinek sem jelent bejelentést: nincs e-mail küldve. A hozzárendelések megtartódnak, a lemondás alatt nem ütemez emlékeztetőket, és senki sem rendelhető ki, amíg az nem helyreáll.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "A törölt események elhagyják az egyes naptárakat bejelentkezésükkel és lélekszámával, és ennek a szolgálatnak a személyzete csak a dátumát őrzi meg. Ez nem vonható vissza.",
+  "Events deleted: {{total}}": "Események törölve: {{total}}",
+  "Events to delete: {{total}}": "Törlendő események: {{total}}",
+  "Occurrence cancelled": "Az esemény törölve van",
+  "Occurrence restored": "Az esemény helyreállt",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Helyreállítani ezt az eseményt az ütemtervbe, hogy újra felszerelkezzen? Senkit sem értesítenek: nincs e-mail küldve.",
+  "Restore occurrence": "Esemény helyreállítása",
+  "Restore this occurrence": "Ennek az eseménynek a helyreállítása",
+  "The occurrence could not be cancelled": "Az eseményt nem lehetett lemondani",
+  "The occurrence could not be restored": "Az eseményt nem lehetett helyreállítani",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Eseményeket adhat hozzá az egyes naptárakhoz, így mindegyik szerepel. Ennek a szolgálatnak saját naptára kezdésül megjelölve van.",
+  "A phone number or email address is required": "Telefonszám vagy e-mail cím szükséges",
+  "A phone number or email address is required.": "Telefonszám vagy e-mail cím szükséges.",
+  "Check-in has not opened for this event yet": "Az eseményre a bejelentkezés még nem nyitott meg",
+  "Classification given to walk-in guests registered on a kiosk": "A kioskon regisztrált látogatók besorolása",
+  "Failed to register guest. Please try again.": "A vendég regisztrálása nem sikerült. Kérjük, próbálja újra.",
+  "First name and last name are required": "Keresztnév és vezetéknév szükséges",
+  "First name and last name must each be 50 characters or fewer": "A keresztnév és vezetéknév legfeljebb 50 karakter lehet",
+  "First name and last name must each be at least 2 characters": "A keresztnév és vezetéknév legalább 2 karakter legyen",
+  "Guest": "Vendég",
+  "Guest Classification": "Vendég besorolása",
+  "Invalid birth date": "Érvénytelen Születési dátum.",
+  "Invalid email address": "Érvénytelen e-mail cím",
+  "Kiosk Settings": "Kiosk beállítások",
+  "Please enter a check number": "Kérjük, adja meg az ellenőrzési számot",
+  "Register & Check In": "Regisztráljon és jelölje meg a jelenlétet",
+  "Register Walk-In Guest": "Vendég regisztrálása",
+  "Register walk-in guest": "vendég regisztrálása",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Vendégként regisztrálva a kioskon az esemény során: %s",
+  "Registering...": "Regisztráció...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Szükség van ellenőrzési számra a befizetési bejegyzésekbe történő csekk befizetésének rögzítésekor.\nMegjegyzés: ennek letiltása a duplikált csekk szám-detektálást is letiltja - ugyanaz a fizikai csekk több mint egyszer is bevihető.",
+  "This event has ended": "Ez az esemény véget ért",
+  "This event has no group assigned, so guests cannot be registered": "Ennek az eseménynek nincs csoportja hozzárendelve, ezért nem lehet vendégeket regisztrálni",
+  "This event has no start and end time": "Ennek az eseménynek nincs kezdési és befejezési ideje",
+  "{{name}} registered and checked in!": "{{name}} regisztrálva és jelölve van!",
   "\"{{name}}\": {{count}} occurrences created": {
-    "one": "",
-    "other": ""
-  },
-  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "\"{{name}}\": {{count}} esemény létrehozva",
+    "other": "\"{{name}}\": {{count}} esemény létrehozva"
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "",
-    "other": ""
+    "one": "E-mail küldve {{count}} címzettnek.",
+    "other": "E-mailek küldve {{count}} címzettnek."
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "",
-    "other": ""
+    "one": "Nincsenek új események. Minden {{count}} eseménynek {{through}}:ig már van egy.",
+    "other": "Nincsenek új események. Minden {{count}} eseménynek {{through}}:ig már van egy."
   },
   "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "",
-    "other": ""
+    "one": "Az \"{{name}}\" ütemezés létrehozva: {{count}} esemény",
+    "other": "Az \"{{name}}\" ütemezés létrehozva: {{count}} esemény"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "",
-    "other": ""
+    "one": "Küldés {{count}} címzettnek. Kiszűrve azok az e-mail-címek, amelyekhez nincs személyzeti rekord: {{list}}",
+    "other": "Küldés {{count}} címzettnek. Kiszűrve azok az e-mail-címek, amelyekhez nincs személyzeti rekord: {{list}}"
   },
   "{{count}} could not be assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} nem sikerült hozzárendelni",
+    "other": "{{count}} nem sikerült hozzárendelni"
   },
   "{{count}} left open because the default is no longer qualified": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} nyitva maradt, mivel az alapértelmezés már nem jogosult",
+    "other": "{{count}} nyitva maradt, mivel az alapértelmezés már nem jogosult"
   },
   "{{count}} volunteers assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} önkéntes hozzárendelve",
+    "other": "{{count}} önkéntes hozzárendelve"
   },
   "{{count}} waiting for your answer": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} a választ várja",
+    "other": "{{count}} a választ várja"
   },
   "{{count}} {{title}} events created. Staff them now?": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} {{title}} esemény létrehozva. Töltse fel őket most?",
+    "other": "{{count}} {{title}} esemény létrehozva. Töltse fel őket most?"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "",
-    "other": ""
+    "one": "A {{names}} betölti ezeket az eseményeket. Azok előfordulásai a következő {{count}} hét során keletkeznek.",
+    "other": "A {{names}} betölti ezeket az eseményeket. Azok előfordulásai a következő {{count}} hét során keletkeznek."
   }
 }

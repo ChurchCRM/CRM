@@ -19415,10 +19415,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "இந்த முகவரியை உங்கள் நாட்காட்டி செயலியில் சேர்க்கவும். திருச்சபை நாட்காட்டி மாறும்போது இது தானாகப் புதுப்பிக்கப்படும்."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "இந்த ஊழியத்தின் நிகழ்ச்சிகளை இங்கே சேர்க்கவும்: ஒரு வேலை நாள், ஒவ்வொரு ஞாயிறும் கூடும் வகுப்பு. அவை திருச்சபை நாட்காட்டியில் இடம்பெறும், அவற்றை உருவாக்கும்போதே ஆட்களை அமர்த்தலாம்."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "உறுப்பினர் போர்ட்டல் வழியாகச் சேர்க்கப்பட்டு மதிப்பாய்வுக்காகக் காத்திருப்பவர்: %s"
 

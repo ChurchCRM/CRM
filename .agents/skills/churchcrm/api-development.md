@@ -522,17 +522,12 @@ php ../docs/openapi/generate.php --output=../docs/openapi/generated/private-api.
     finance/routes/api/ kiosk/routes/api/ plugins/routes/api/
 ```
 
-Commit the updated YAML files to the CRM repo. The rest is automated:
+Commit the updated YAML files under `docs/openapi/generated/` in the CRM repo. The public docs site does not read `master`.
 
-- **On PR/branch push**: `validate-openapi.yml` generates both specs and uploads them as artifacts for review.
-- **On merge to master**: `publish-openapi.yml` regenerates specs, commits any changes to `CRM/openapi/`, then dispatches a `repository_dispatch` event to `docs.churchcrm.io`, which pulls the latest YAMLs and regenerates MDX automatically.
+- CI in `docs.churchcrm.io` downloads those files from the tag named in `crm-release.json`.
+- A published CRM release dispatches `crm-released`. The docs workflow moves that pin only after the release exists, and only merges the pin pull request when CI and CodeRabbit have passed.
 
-To manually sync the docs site (e.g., during local dev):
-```bash
-cp CRM/openapi/public-api.yaml docs.churchcrm.io/openapi/
-cp CRM/openapi/private-api.yaml docs.churchcrm.io/openapi/
-cd docs.churchcrm.io && npm run regen
-```
+Do not copy the specs into `docs.churchcrm.io/openapi/` and do not regenerate the published API pages from `master`.
 
 ### Global annotations / tags
 
@@ -826,7 +821,7 @@ pages have a history of orphaning rows that the API shouldn't inherit.
 **Middleware:** `src/ChurchCRM/Slim/Middleware/`
 **OpenAPI info:** `docs/openapi/openapi-public-info.php`, `docs/openapi/openapi-private-info.php`
 **Generated specs:** `docs/openapi/generated/public-api.yaml`, `docs/openapi/generated/private-api.yaml`
-**Documentation site:** `docs.churchcrm.io/openapi/`, `docs.churchcrm.io/docs/public-api/`, `docs.churchcrm.io/docs/private-api/`
+**Documentation site:** `docs.churchcrm.io` API pages, generated at build time from the pinned CRM tag. Not a checked-in `openapi/` or `docs/public-api/` tree.
 
 ### HTML + JSON Content Negotiation in Middleware <!-- learned: 2026-04-22 -->
 

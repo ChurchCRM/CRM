@@ -215,7 +215,7 @@ Starts after Publish (3.4). Runs over about a week. Order as practised:
 
 | # | Step | How | Status |
 |---|------|-----|--------|
-| 6.1 | Sync marketing visuals (screenshots/videos) to the website via a PR on `ChurchCRM/ChurchCRM.io`, and merge it | `npm run publish:visuals` ([`scripts/publish-marketing-visuals.sh`](../scripts/publish-marketing-visuals.sh)) copies `playwright/artifacts/` into a sibling `ChurchCRM.io` checkout; commit + PR by hand. Visuals kept current by [`marketing-capture-assets.yml`](../.github/workflows/marketing-capture-assets.yml) | ✋ (local script + PR) |
+| 6.1 | Sync marketing visuals (screenshots/videos) to the website via a PR on `ChurchCRM/ChurchCRM.io`, and merge it | Run [`marketing-capture-assets.yml`](../.github/workflows/marketing-capture-assets.yml) on `master`; its last job opens the PR on `ChurchCRM.io` with only new and visibly changed files | ✋ (run workflow, merge PR) |
 | 6.2 | Once 6.1 is merged, merge the docs PRs held open for this release in `ChurchCRM/docs.churchcrm.io` (milestone `<version>` or label `docs-pending-release`) | `/release-announcement` step 3 lists them; maintainer merges | 🧑‍💻 list / ✋ merge |
 | 6.3 | Launch-day announcements: Discord, "shipped, please retest" comments on fixed issues, social posts | [`/release-announcement`](../.claude/commands/release-announcement.md) steps 1–2; [`social-media-release.md`](../.agents/skills/churchcrm/social-media-release.md). How posts are published: TBD | 🧑‍💻 / ❓ |
 | 6.4 | If the release has new features, write a blog post for them | Blog PR (repo TBD, likely `ChurchCRM.io`) | ✋ (judgment) |

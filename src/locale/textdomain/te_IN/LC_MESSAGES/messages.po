@@ -19380,10 +19380,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "ఈ చిరునామాను మీ క్యాలెండర్ యాప్‌కు జోడించండి. చర్చి క్యాలెండర్ మారినప్పుడు ఇది దానంతట అదే నవీకరించబడుతుంది."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "ఈ పరిచర్య కార్యక్రమాలను ఇక్కడ జోడించండి: ఒక పని దినం, ప్రతి ఆదివారం జరిగే తరగతి. అవి చర్చి క్యాలెండర్‌లోకి వెళ్తాయి, మరియు వాటిని సృష్టించేటప్పుడే సేవకులను ఏర్పాటు చేయవచ్చు."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "సభ్య పోర్టల్ ద్వారా జోడించబడి సమీక్ష కోసం వేచి ఉన్నవారు: %s"
 

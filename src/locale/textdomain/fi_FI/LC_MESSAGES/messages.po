@@ -19370,10 +19370,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "Lisää tämä osoite kalenterisovellukseesi. Se päivittyy itsestään, kun seurakunnan kalenteri muuttuu."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "Lisää tämän työalan tapahtumat tähän: työpäivä, luokka joka kokoontuu joka sunnuntai. Ne tulevat seurakunnan kalenteriin, ja voit miehittää ne samalla kun luot ne."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "Lisätty Jäsenportaalin kautta ja odottaa tarkistusta: %s"
 

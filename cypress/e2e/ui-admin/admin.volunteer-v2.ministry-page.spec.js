@@ -498,6 +498,9 @@ describe("Volunteer v2 ministry page (#9701)", () => {
         it("adds a position from the tab", () => {
             cy.visit(ministryUrl());
             cy.get("#nav-item-positions").click();
+            // The dialog's Team list comes from the ministry document the table is drawn
+            // from, so Add before it arrives opens a dialog with no team to choose.
+            cy.get("#volunteerPositionsTable").should("contain", POSITION_ONE);
             cy.get("#position-add-btn").should("be.visible").click();
             cy.get("#positionModal").should("be.visible");
             // Wait for the modal to hand focus to the first field before typing:

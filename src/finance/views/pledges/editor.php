@@ -37,6 +37,10 @@ $pledgeMethod  = $isEdit ? ($pledge['method'] ?? 'CHECK') : 'CHECK';
 $pledgeCheckNo = $isEdit ? ($pledge['checkNo'] ?? '') : '';
 $pledgeSchedule = $isEdit ? ($pledge['schedule'] ?? 'Once') : 'Once';
 $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
+$requireCheckNumber = SystemConfig::getBooleanValue('bRequireCheckNumber');
+$familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
+    ? gettext('Search by family name or envelope #')
+    : gettext('Search by family name');
 
 ?>
 
@@ -86,7 +90,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                 <div class="col-lg-6">
                     <label class="form-label" for="FamilyName"><?= gettext('Family') ?></label>
                     <input type="hidden" id="FamilyID" name="FamilyID" value="<?= (int) $familyId ?>">
-                    <select class="form-select" id="FamilyName" name="FamilyName">
+                    <select class="form-select" id="FamilyName" name="FamilyName" placeholder="<?= InputUtils::escapeAttribute($familySearchHint) ?>">
                         <?php if ($familyId && $familyName): ?>
                             <option value="<?= (int) $familyId ?>" selected><?= InputUtils::escapeHTML($familyName) ?></option>
                         <?php endif; ?>
@@ -126,8 +130,8 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
 
                 <!-- Check Number -->
                 <div class="col-lg-3" id="checkNumberGroup">
-                    <label class="form-label" for="CheckNo"><?= gettext('Check #') ?></label>
-                    <input class="form-control" type="text" inputmode="numeric" pattern="[0-9]*" id="CheckNo" name="CheckNo" value="<?= InputUtils::escapeAttribute((string)$pledgeCheckNo) ?>">
+                    <label class="form-label" for="CheckNo"><?= gettext('Check #') ?><?php if ($requireCheckNumber): ?> <span class="text-danger">*</span><?php endif; ?></label>
+                    <input class="form-control" type="text" inputmode="numeric" pattern="[0-9]*" id="CheckNo" name="CheckNo" value="<?= InputUtils::escapeAttribute((string)$pledgeCheckNo) ?>"<?php if ($requireCheckNumber): ?> required<?php endif; ?>>
                 </div>
 
                 <!-- Deposit -->
@@ -354,6 +358,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
     const FY_MONTH    = <?= (int) SystemConfig::getIntValue('iFYMonth') ?>;
     const LINK_BACK_RAW = <?= InputUtils::jsonEncodeForScript($linkBack) ?>;
     const LINK_BACK_TARGET = <?= InputUtils::jsonEncodeForScript($linkBack !== '' ? $linkBackTarget : '') ?>;
+    const REQUIRE_CHECK_NO = <?= $requireCheckNumber ? 'true' : 'false' ?>;
 
     // ---- Toast helper ----
     function showToast(message, isError) {
@@ -374,7 +379,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             labelField: 'text',
             searchField: 'text',
             load: function (query, callback) {
-                if (query.length < 2) return callback();
+                if (query.length < 2 && !/^\d+$/.test(query)) return callback();
                 fetch(ROOT + '/api/families/search/' + encodeURIComponent(query))
                     .then(function (res) { return res.json(); })
                     .then(function (data) {
@@ -432,13 +437,16 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
     // ---- Payment method toggle for check # field ----
     const methodEl = document.getElementById('Method');
     const checkGroup = document.getElementById('checkNumberGroup');
-    if (methodEl && checkGroup) {
+    const checkEl = document.getElementById('CheckNo');
+    if (methodEl && checkGroup && checkEl) {
         function toggleCheckGroup() {
             if (methodEl.value === 'CHECK') {
                 checkGroup.style.display = '';
+                if (REQUIRE_CHECK_NO) { checkEl.required = true; }
             } else {
                 checkGroup.style.display = 'none';
-                document.getElementById('CheckNo').value = '';
+                checkEl.value = '';
+                checkEl.required = false;
             }
         }
         methodEl.addEventListener('change', toggleCheckGroup);
@@ -486,6 +494,10 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
 
         if (!date) {
             showToast(<?= InputUtils::jsonEncodeForScript(gettext('Please enter a date')) ?>, true);
+            return null;
+        }
+        if (REQUIRE_CHECK_NO && method === 'CHECK' && (!checkNo || checkNo === '0')) {
+            showToast(<?= InputUtils::jsonEncodeForScript(gettext('Please enter a check number')) ?>, true);
             return null;
         }
 

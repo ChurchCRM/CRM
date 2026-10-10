@@ -12,7 +12,7 @@
  * server response time is ~50 s. Pass an explicit 120 000 ms timeout so the
  * cy.request() command does not time out before the server replies.
  */
-describe("API Private Map — POST /admin/api/map/geocode-all", () => {
+describe("API Private Map — POST /admin/api/map/geocode-all", { retries: 2 }, () => {
     context("Happy path (admin)", () => {
         it("Returns 200 with a valid summary shape", () => {
             // Pass an explicit 120-second timeout — the default (30 s) is too

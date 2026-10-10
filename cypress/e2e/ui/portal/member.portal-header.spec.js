@@ -242,3 +242,31 @@ describe("Member Portal header", () => {
         });
     });
 });
+
+describe("Member Portal header logo (#10423)", () => {
+    const LOGO_API_URL = "/admin/api/system/church-logo";
+    // 120x40 solid PNG, the same one admin.church-logo.spec.js uploads.
+    const LOGO_PNG =
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoCAIAAAC6iKlyAAAAUklEQVR42u3QQQ0AAAgEoOtjJhsZ2hbOBxsJSPVwIApEi0a0aNEWRItGtGjRFkSLRrRo0YgWjWjRohEtGtGiRSNaNKJFi0a0aESLFo1o0Yj+ZwGy/zgts+HrHQAAAABJRU5ErkJggg==";
+
+    after(() => {
+        cy.makePrivateAdminAPICall("DELETE", LOGO_API_URL, null, 200);
+    });
+
+    it("Falls back to ChurchCRM's light-on-dark mark on the dark header", () => {
+        cy.makePrivateAdminAPICall("DELETE", LOGO_API_URL, null, 200);
+        login();
+        cy.get(".portal-header .portal-brand-logo")
+            .should("have.attr", "src")
+            .and("include", "/Images/churchcrm-symbol-paper-blue.svg");
+        cy.get(".portal-header .portal-brand-logo").should("have.prop", "naturalWidth").and("be.greaterThan", 0);
+    });
+
+    it("Shows an uploaded church logo unchanged", () => {
+        cy.makePrivateAdminAPICall("POST", LOGO_API_URL, { imgBase64: LOGO_PNG }, 200);
+        login();
+        cy.get(".portal-header .portal-brand-logo")
+            .should("have.attr", "src")
+            .and("include", "/Images/church-logo.png");
+    });
+});

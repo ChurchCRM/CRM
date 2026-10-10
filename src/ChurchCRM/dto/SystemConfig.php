@@ -184,6 +184,8 @@ class   SystemConfig
             'bUseDonationEnvelopes'                => new ConfigItem('bUseDonationEnvelopes', 'boolean', '0', gettext('Enable the use of numbered donation envelopes for tracking contributions')),
             'iChecksPerDepositForm'                => new ConfigItem('iChecksPerDepositForm', 'number', '14', gettext('How many checks to print per deposit slip page')),
             'bUseScannedChecks'                    => new ConfigItem('bUseScannedChecks', 'boolean', '0', gettext('Allow scanned check images to be attached to deposit records')),
+            'bRequireCheckNumber'                  => new ConfigItem('bRequireCheckNumber', 'boolean', '1', gettext("Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.")),
+
             'sDistanceUnit'                        => new ConfigItem('sDistanceUnit', 'choice', 'miles', gettext('Unit used to measure distance, miles or km.'), '', '{"Choices":["' . gettext('miles') . '","' . gettext('kilometers') . '"]}'),
             'sTimeZone'                            => new ConfigItem('sTimeZone', 'choice', 'America/New_York', gettext('Time zone'), 'https://www.php.net/manual/en/timezones.php', json_encode(['Choices' => timezone_identifiers_list()])),
             'bForceUppercaseZip'                   => new ConfigItem('bForceUppercaseZip', 'boolean', '0', gettext('Make user-entered zip/postcodes UPPERCASE when saving to the database.')),
@@ -245,6 +247,7 @@ class   SystemConfig
             'iPersonInitialStyle'                  => new ConfigItem('iPersonInitialStyle', 'choice', '0', gettext('Person initials style'), '', json_encode(SystemConfig::getInitialStyleChoices())),
             'bDisplayBillCounts'                   => new ConfigItem('bDisplayBillCounts', 'boolean', '1', gettext('Show a breakdown of bill denominations on the deposit slip report')),
             'sKioskVisibilityTimestamp'            => new ConfigItem('sKioskVisibilityTimestamp', 'text', '', gettext('KioskVisibilityTimestamp')),
+            'iKioskGuestClassification'            => new ConfigItem('iKioskGuestClassification', 'choice', '3', gettext('Classification given to walk-in guests registered on a kiosk')),
             'bEnableLostPassword'                  => new ConfigItem('bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem('sChurchWebSite', 'text', '', ''),
             // Church social media accounts. Like the other church-identity

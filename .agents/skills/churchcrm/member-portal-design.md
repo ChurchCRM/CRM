@@ -325,7 +325,7 @@ render.
 | `theme_asset(path)` | `SystemURLs::getRootPath() . '/portal/theme/<active>/<path>?v=<filemtime>'`; if the file is missing in the active theme but present in `default`, the default's URL |
 | `csrf_field()` | `CSRFUtils::getTokenInputField()` |
 | `nonce()` | `SystemURLs::getCSPNonce()` |
-| `church` | `{name, address, city, state, zip, phone, email, website, logoUrl, socialLinks}` from `ChurchMetaData`; `logoUrl` is the uploaded logo from PR #9719 when set, else the stock image. The default theme's header uses it; a theme may replace it with `theme_asset()`. `socialLinks` (#9907) is the church's configured social accounts, ordered X, YouTube, Facebook, Instagram, each `{id, label, url, icon}`, empty when none is set — the default theme's footer renders them as icon links on its trailing edge |
+| `church` | `{name, address, city, state, zip, phone, email, website, logoUrl, logoOnDarkUrl, socialLinks}` from `ChurchMetaData`; `logoUrl` is the uploaded logo from PR #9719 when set, else the stock image. `logoOnDarkUrl` is the same logo, but its fallback is ChurchCRM's paper + blue mark for a dark background (#10423); the default theme's dark header uses it. A theme may replace either with `theme_asset()`. `socialLinks` (#9907) is the church's configured social accounts, ordered X, YouTube, Facebook, Instagram, each `{id, label, url, icon}`, empty when none is set — the default theme's footer renders them as icon links on its trailing edge |
 | `member` | `{id, firstName, lastName, fullName, email, avatarUrl, familyId, isTeamLeader, isStaff}` |
 | `nav` | the `PortalNav` model: ordered `[{id, label, url, icon, active, badge}]` |
 | `flash` | `[{type, message}]` from the session |

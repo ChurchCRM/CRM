@@ -18,8 +18,8 @@
 <header class="portal-header">
     <div class="portal-container portal-header-inner">
         <a class="portal-brand" href="{{ url('/portal/') }}">
-            {% if church.logoUrl %}
-            <img class="portal-brand-logo" src="{{ church.logoUrl }}" alt="{{ church.name }}">
+            {% if church.logoOnDarkUrl %}
+            <img class="portal-brand-logo" src="{{ church.logoOnDarkUrl }}" alt="{{ church.name }}">
             {% endif %}
             <span class="portal-brand-name">{{ church.name|default('ChurchCRM') }}</span>
         </a>

@@ -70,4 +70,63 @@ class KioskAssignment extends BaseKioskAssignment
             throw new \Exception('This kiosk does not support group attendance');
         }
     }
+
+    /**
+     * Return Person objects that are currently checked in to this event but are
+     * NOT members of the event's linked group(s). These are walk-in guests
+     * registered directly on the kiosk.
+     *
+     * @return Person[]
+     */
+    public function getEventGuests(): array
+    {
+        if ($this->getAssignmentType() != KioskAssignmentTypes::EVENTATTENDANCEKIOSK) {
+            return [];
+        }
+
+        $event = $this->getEvent();
+        if ($event === null) {
+            return [];
+        }
+
+        $groups = $event->getGroups();
+
+        // Collect all current group-member person IDs so we can exclude them
+        $groupMemberIds = [];
+        if ($groups->count() > 0) {
+            foreach ($groups as $group) {
+                $memberIds = Person2group2roleP2g2rQuery::create()
+                    ->filterByGroupId($group->getId())
+                    ->select(['PersonId'])
+                    ->find()
+                    ->toArray();
+                $groupMemberIds = array_merge($groupMemberIds, array_map('intval', $memberIds));
+            }
+            $groupMemberIds = array_unique($groupMemberIds);
+        }
+
+        // Find attendees currently checked in (no checkout) who are not group members.
+        // Use joinWithPerson() to eager-load Person objects in one query (avoids N+1).
+        $query = EventAttendQuery::create()
+            ->filterByEventId($event->getId())
+            ->filterByCheckoutDate(null)
+            ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
+            ->joinWithPerson();
+
+        if (!empty($groupMemberIds)) {
+            $query->filterByPersonId($groupMemberIds, Criteria::NOT_IN);
+        }
+
+        $attendees = $query->find();
+
+        $guests = [];
+        foreach ($attendees as $attend) {
+            $person = $attend->getPerson();
+            if ($person !== null) {
+                $guests[] = $person;
+            }
+        }
+
+        return $guests;
+    }
 }

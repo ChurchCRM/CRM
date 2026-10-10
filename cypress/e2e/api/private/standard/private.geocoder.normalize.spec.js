@@ -12,7 +12,7 @@
  * Nominatim's usage policy allows one request per second; the second call
  * waits so the two lookups never run back to back.
  */
-describe("API Private Geocoder — street name normalisation (#9847)", () => {
+describe("API Private Geocoder — street name normalisation (#9847)", { retries: 2 }, () => {
     const EMPIRE_STATE = { lat: 40.7484, lon: -73.9857 };
     const TOLERANCE = 0.01; // ~1 km
 

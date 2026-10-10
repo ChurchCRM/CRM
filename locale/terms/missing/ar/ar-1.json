@@ -1,53 +1,88 @@
 {
-  "Not authorized to change this event's audience group": "",
-  "Only a volunteer manager can change who coordinates a ministry": "",
-  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
+  "Not authorized to change this event's audience group": "غير مصرح لك بتغيير مجموعة جمهور هذا الحدث",
+  "Only a volunteer manager can change who coordinates a ministry": "يستطيع مدير المتطوعين فقط تغيير من ينسّق الخدمة",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "اختيار V1 يوقف بريد V2 الإلكتروني للمتطوعين؛ ويُرسَل كل ما في قائمة الانتظار عند إعادة تشغيل V2، ما لم ينتهِ موعده.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "أضف أحداث هذه الخدمة هنا: يوم عمل، أو فصل يجتمع كل أحد. تظهر في تقويم الكنيسة، وبعد إنشائها يُسأل إن كنت تريد تكليف خدام بها.",
+  "Cancel occurrence": "إلغاء الموعد",
+  "Cancel this occurrence": "إلغاء هذا الموعد",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "الإلغاء لا يُبلغ أحدًا: لا يُرسَل أي بريد إلكتروني. تبقى التكليفات، ولا تُجدول تذكيرات أثناء الإلغاء، ولا يمكن تكليف أحد حتى تتم الاستعادة.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "تُحذف الأحداث المحذوفة من كل التقاويم مع تسجيلات حضورها وأعداد الحاضرين، ولا يحتفظ تكليف هذه الخدمة بها إلا بتاريخها. لا يمكن التراجع عن ذلك.",
+  "Events deleted: {{total}}": "الأحداث المحذوفة: {{total}}",
+  "Events to delete: {{total}}": "الأحداث المراد حذفها: {{total}}",
+  "Occurrence cancelled": "تم إلغاء الموعد",
+  "Occurrence restored": "تمت استعادة الموعد",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "هل تريد إعادة هذا الموعد إلى الجدول ليمكن تكليف خدام به مجددًا؟ لا يُبلغ أحد: لا يُرسَل أي بريد إلكتروني.",
+  "Restore occurrence": "استعادة الموعد",
+  "Restore this occurrence": "استعادة هذا الموعد",
+  "The occurrence could not be cancelled": "تعذّر إلغاء الموعد",
+  "The occurrence could not be restored": "تعذّرت استعادة الموعد",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "يمكنك إضافة أحداث إلى كل التقاويم، لذا تُعرض جميعها. تقويم هذه الخدمة نفسها محدد في البداية.",
+  "A phone number or email address is required": "رقم الهاتف أو البريد الإلكتروني مطلوب",
+  "A phone number or email address is required.": "رقم الهاتف أو البريد الإلكتروني مطلوب.",
+  "Check-in has not opened for this event yet": "لم يُفتح تسجيل الحضور لهذا الحدث بعد",
+  "Classification given to walk-in guests registered on a kiosk": "التصنيف الممنوح للضيوف الوافدين المسجلين على الكشك",
+  "Failed to register guest. Please try again.": "تعذّر تسجيل الضيف. يرجى المحاولة مرة أخرى.",
+  "First name and last name are required": "الاسم الأول واسم العائلة مطلوبان",
+  "First name and last name must each be 50 characters or fewer": "يجب ألا يزيد كل من الاسم الأول واسم العائلة عن 50 حرفًا",
+  "First name and last name must each be at least 2 characters": "يجب أن يتكون كل من الاسم الأول واسم العائلة من حرفين على الأقل",
+  "Guest": "ضيف",
+  "Guest Classification": "تصنيف الضيف",
+  "Invalid birth date": "تاريخ الميلاد غير صحيح",
+  "Invalid email address": "عنوان بريد إلكتروني غير صالح",
+  "Kiosk Settings": "إعدادات الكشك",
+  "Please enter a check number": "يرجى إدخال رقم الشيك",
+  "Register & Check In": "تسجيل وتسجيل حضور",
+  "Register Walk-In Guest": "تسجيل ضيف وافد",
+  "Register walk-in guest": "تسجيل ضيف وافد",
+  "Registered as a walk-in guest at the kiosk during event: %s": "سُجّل كضيف وافد عند الكشك أثناء الحدث: %s",
+  "Registering...": "جارٍ التسجيل...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "اشتراط رقم الشيك عند تسجيل مدفوعات الشيكات في قيود الإيداع.\nملاحظة: تعطيل هذا الخيار يعطّل أيضًا اكتشاف تكرار أرقام الشيكات — فقد يُدخَل الشيك الفعلي نفسه أكثر من مرة.",
+  "This event has ended": "انتهى هذا الحدث",
+  "This event has no group assigned, so guests cannot be registered": "لم تُعيَّن مجموعة لهذا الحدث، لذا لا يمكن تسجيل الضيوف",
+  "This event has no start and end time": "ليس لهذا الحدث وقت بدء وانتهاء",
+  "{{name}} registered and checked in!": "تم تسجيل {{name}} وتسجيل حضوره!",
   "\"{{name}}\": {{count}} occurrences created": {
-    "one": "",
-    "other": ""
-  },
-  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "تم إنشاء {{count}} موعد لـ \"{{name}}\"",
+    "other": "تم إنشاء {{count}} مواعيد لـ \"{{name}}\""
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "",
-    "other": ""
+    "one": "أُرسل البريد الإلكتروني إلى {{count}} مستلم.",
+    "other": "أُرسل البريد الإلكتروني إلى {{count}} مستلمين."
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "",
-    "other": ""
+    "one": "لا مواعيد جديدة. لكل الأحداث البالغ عددها {{count}} حتى {{through}} موعد بالفعل.",
+    "other": "لا مواعيد جديدة. لكل الأحداث البالغ عددها {{count}} حتى {{through}} موعد بالفعل."
   },
   "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "",
-    "other": ""
+    "one": "تم إنشاء الجدول \"{{name}}\": {{count}} موعد",
+    "other": "تم إنشاء الجدول \"{{name}}\": {{count}} مواعيد"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "",
-    "other": ""
+    "one": "جارٍ الإرسال إلى {{count}} مستلم. العناوين التي لا يوجد لها سجل شخص غير مشمولة: {{list}}",
+    "other": "جارٍ الإرسال إلى {{count}} مستلمين. العناوين التي لا يوجد لها سجل شخص غير مشمولة: {{list}}"
   },
   "{{count}} could not be assigned": {
-    "one": "",
-    "other": ""
+    "one": "تعذّر تكليف {{count}}",
+    "other": "تعذّر تكليف {{count}}"
   },
   "{{count}} left open because the default is no longer qualified": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ترك مفتوحًا لأن الافتراضي لم يعد مؤهلًا",
+    "other": "{{count}} تُركت مفتوحة لأن الافتراضي لم يعد مؤهلًا"
   },
   "{{count}} volunteers assigned": {
-    "one": "",
-    "other": ""
+    "one": "تم تكليف {{count}} متطوع",
+    "other": "تم تكليف {{count}} متطوعين"
   },
   "{{count}} waiting for your answer": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} بانتظار ردك",
+    "other": "{{count}} بانتظار ردك"
   },
   "{{count}} {{title}} events created. Staff them now?": {
-    "one": "",
-    "other": ""
+    "one": "تم إنشاء {{count}} حدث {{title}}. هل تريد تكليف الخدام بها الآن؟",
+    "other": "تم إنشاء {{count}} أحداث {{title}}. هل تريد تكليف الخدام بها الآن؟"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "",
-    "other": ""
+    "one": "سيخدم {{names}} في هذه الأحداث. تُنشأ مواعيدها كلما دخلت ضمن الأسابيع الـ {{count}} القادمة.",
+    "other": "سيخدم {{names}} في هذه الأحداث. تُنشأ مواعيدها كلما دخلت ضمن الأسابيع الـ {{count}} القادمة."
   }
 }

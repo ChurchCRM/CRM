@@ -2,14 +2,11 @@ name: "Marketing: capture screenshots & videos"
 
 # Manually run the marketing screenshot/video pipeline end-to-end against a
 # chosen branch, verify every capture it claims to have produced is a real,
-# non-empty file (npm run marketing:check), and compare the result with the
-# visuals committed under playwright/artifacts/screenshots and
-# playwright/artifacts/videos:
-#   - On the default branch (master): if they differ, the fresh visuals are
-#     pushed to a branch and a PR is opened for review.
-#   - On any other branch: if they differ, the run fails — the branch's
-#     checked-in visuals are stale and need regenerating/committing.
-# Either way the generated visuals are uploaded as a run artifact.
+# non-empty file (npm run marketing:check), and upload the result as a run
+# artifact. On the default branch (master) the fresh visuals are also pushed
+# to ChurchCRM/ChurchCRM.io, which hosts the screenshots and videos, and a PR
+# is opened there with only the files that visibly changed. Nothing is
+# committed to this repo.
 #
 # Stages (each its own job, so the Actions UI shows exactly which locale or
 # stage is running or failed):
@@ -20,10 +17,12 @@ name: "Marketing: capture screenshots & videos"
 #                  Locales can't share one instance in parallel: the locale
 #                  is a DB setting on the shared admin user. Only 'en' also
 #                  records and publishes the videos.
-#   2. merge     — combines every locale's output, re-runs the capture check,
-#                  regenerates the manifest, and diffs against what's
-#                  committed.
-#   3. create-pr — only on the default branch when stage 2 found changes.
+#   2. merge     — combines every locale's output, re-runs the capture check
+#                  and regenerates the manifest.
+#   3. publish   — only on the default branch: copies new and visibly changed
+#                  visuals into ChurchCRM.io and opens a PR there (needs
+#                  DOCS_RELEASE_TOKEN with contents and pull-requests write
+#                  on that repo).
 #
 # Trigger this from the Actions tab: pick the branch, click "Run workflow".
 
@@ -120,12 +119,10 @@ jobs:
           if-no-files-found: warn
 
   merge:
-    name: "2 — Merge, check & compare"
+    name: "2 — Merge & check"
     needs: capture
     runs-on: ubuntu-24.04
     timeout-minutes: 10
-    outputs:
-      has_changes: ${{ steps.changes.outputs.has_changes }}
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -135,9 +132,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      # Same starting point as a local `npm run marketing`, which begins by
-      # wiping playwright/artifacts/: the working tree then holds only fresh
-      # captures while git's index/HEAD holds what was last committed.
       - name: Clear committed artifacts
         run: rm -rf playwright/artifacts/
 
@@ -154,112 +148,85 @@ jobs:
       - name: Regenerate manifest.json
         run: npm run marketing:manifest
 
-      - name: Detect changes to committed marketing visuals
-        id: changes
-        run: |
-          # commit/timestamp/sizeBytes change on every run, so ignore them: the
-          # manifest only counts as changed when captures are added, removed or retitled.
-          stable='[.[] | del(.commit, .timestamp, .sizeBytes)]'
-          manifest=playwright/artifacts/manifest.json
-          manifest_changed=false
-          if ! diff <(git show "HEAD:$manifest" | jq -S "$stable") <(jq -S "$stable" "$manifest") > /dev/null; then
-            manifest_changed=true
-          fi
-          git add -A -- playwright/artifacts/screenshots playwright/artifacts/videos
-          if [ "$manifest_changed" = true ]; then
-            git add -- "$manifest"
-          fi
-          if git diff --cached --quiet -- playwright/artifacts; then
-            echo "Committed marketing visuals are up to date."
-            echo "has_changes=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "Committed marketing visuals are out of date. Changed files:"
-            git diff --cached --stat -- playwright/artifacts
-            echo "has_changes=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Fail — branch visuals are stale
-        if: github.ref_name != github.event.repository.default_branch && steps.changes.outputs.has_changes == 'true'
-        env:
-          BRANCH_NAME: ${{ github.ref_name }}
-        run: |
-          echo "::error::Marketing visuals committed on '$BRANCH_NAME' are out of date with the current code. Run 'npm run marketing' locally and commit the updated files under playwright/artifacts/screenshots, playwright/artifacts/videos and playwright/artifacts/manifest.json."
-          exit 1
-
-      # Stage 3 runs on a fresh runner with no access to this working tree,
-      # so hand it exactly the changed files as one archive.
-      - name: Package updated visuals for the PR-create stage
-        if: github.ref_name == github.event.repository.default_branch && steps.changes.outputs.has_changes == 'true'
-        run: tar -czf visuals-update.tar.gz playwright/artifacts/screenshots playwright/artifacts/videos playwright/artifacts/manifest.json
-
-      - name: Upload updated visuals for PR creation
-        if: github.ref_name == github.event.repository.default_branch && steps.changes.outputs.has_changes == 'true'
-        uses: ./.github/actions/upload-artifact
-        with:
-          name: visuals-update-${{ github.run_id }}
-          path: visuals-update.tar.gz
-          retention-days: 1
-
       - name: Upload marketing visuals
-        if: always()
         uses: ./.github/actions/upload-artifact
         with:
           name: marketing-visuals-${{ github.run_id }}
           path: playwright/artifacts/
           retention-days: 14
-          if-no-files-found: warn
+          if-no-files-found: error
 
-  create-pr:
-    name: "3 — Open visuals-update PR"
+  publish:
+    name: "3 — Open website PR"
     needs: merge
-    if: github.ref_name == github.event.repository.default_branch && needs.merge.outputs.has_changes == 'true'
+    if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-24.04
     timeout-minutes: 10
-    permissions:
-      contents: write
-      pull-requests: write
     steps:
-      - name: Checkout
+      - name: Checkout the website
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ChurchCRM/ChurchCRM.io
+          token: ${{ secrets.DOCS_RELEASE_TOKEN }}
 
-      - name: Download updated visuals
+      - name: Download the merged visuals
         uses: ./.github/actions/download-artifact
         with:
-          name: visuals-update-${{ github.run_id }}
+          name: marketing-visuals-${{ github.run_id }}
+          path: ${{ runner.temp }}/visuals
 
-      - name: Extract updated visuals into the working tree
-        run: tar -xzf visuals-update.tar.gz
-
-      - name: Configure git for automated commit
+      # Re-captures are never byte-identical (anti-aliasing, PNG encoding, video
+      # encoding), so copying everything would put every file in the PR. Copy a
+      # file only when it is new or the picture visibly changed (more than
+      # 200 pixels differ after a 2% fuzz). Videos are only added, never replaced.
+      - name: Copy new and visibly changed visuals into the website
+        env:
+          VISUALS: ${{ runner.temp }}/visuals
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          set -euo pipefail
+          sudo apt-get install -y --no-install-recommends imagemagick > /dev/null
+          copy_changed() {
+            local src="$1" dst="$2" f target px
+            while IFS= read -r -d '' f; do
+              target="$dst/${f#"$src"/}"
+              if [ -f "$target" ]; then
+                [[ "$f" == *.png ]] || continue
+                px="$(compare -metric AE -fuzz 2% "$f" "$target" null: 2>&1 || true)"
+                px="${px%% *}"
+                if [[ "$px" =~ ^[0-9]+$ ]] && [ "$px" -le 200 ]; then continue; fi
+              fi
+              mkdir -p "$(dirname "$target")"
+              cp "$f" "$target"
+            done < <(find "$src" -type f -print0)
+          }
+          copy_changed "$VISUALS/screenshots" static/images/screenshots
+          copy_changed "$VISUALS/videos" static/images/videos
+
+          # commit/timestamp/sizeBytes change every run; publish the manifest
+          # only when captures are added, removed or retitled.
+          stable='[.[] | del(.commit, .timestamp, .sizeBytes)]'
+          if ! diff <(jq -S "$stable" data/manifest.json) <(jq -S "$stable" "$VISUALS/manifest.json") > /dev/null; then
+            cp "$VISUALS/manifest.json" data/manifest.json
+          fi
 
       - name: Create Pull Request with updated visuals
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DOCS_RELEASE_TOKEN }}
           branch: marketing/update-visuals
           delete-branch: true
           add-paths: |
-            playwright/artifacts/screenshots
-            playwright/artifacts/videos
-            playwright/artifacts/manifest.json
+            static/images/screenshots
+            static/images/videos
+            data/manifest.json
           commit-message: |
-            chore(marketing): update marketing visuals
+            chore: update product screenshots and videos
 
-            Regenerated by the marketing-capture-assets workflow run
-            ${{ github.run_id }} against ${{ github.event.repository.default_branch }}.
-          title: "chore(marketing): update marketing visuals"
+            Captured by ChurchCRM/CRM marketing-capture-assets run
+            ${{ github.run_id }}.
+          title: "chore: update product screenshots and videos"
           body: |
-            ## 📸 Automatic marketing visuals update
+            New and visibly changed screenshots and videos from the
+            ChurchCRM/CRM marketing pipeline.
 
-            The `npm run marketing` pipeline produced screenshots/videos that
-            differ from what's currently committed on
-            `${{ github.event.repository.default_branch }}`.
-
-            - 🚀 **Triggered by**: workflow run [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-            - 📦 **Paths**: `playwright/artifacts/screenshots/`, `playwright/artifacts/videos/`, `playwright/artifacts/manifest.json`
-
-            Review the diff (or download the run's `marketing-visuals-*`
-            artifact) before merging.
+            - Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

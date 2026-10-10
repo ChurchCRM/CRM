@@ -120,6 +120,15 @@ describe("Admin → Member Portal → Calendars", () => {
         calendarRow("Anniversaries").should("contain", "System calendar");
     });
 
+    it("The table fits a phone without clipping its last column header (#10422)", () => {
+        cy.viewport(390, 844);
+        openCalendarsTab();
+        cy.get("#portalCalendarsTable").should(($table) => {
+            const scroller = $table.parent()[0];
+            expect($table.outerWidth(), "table width").to.be.at.most(scroller.clientWidth);
+        });
+    });
+
     it("Switching the church calendar on persists across a reload", () => {
         openCalendarsTab();
 

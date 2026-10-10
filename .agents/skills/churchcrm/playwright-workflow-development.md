@@ -155,14 +155,7 @@ git commit -m "chore: add workflow-name screenshot and video"
 
 ## Step 5: Publish to Website
 
-**From CRM root:**
-```bash
-npm run publish:visuals
-```
-
-This automatically copies:
-- `manifest.json` → website `data/manifest.json`
-- Screenshots and videos to website `static/images/`
+Run the `Marketing: capture screenshots & videos` workflow on `master`. Its last job opens a PR on `ChurchCRM/ChurchCRM.io` with the new and visibly changed screenshots and videos plus `data/manifest.json`. Merge that PR to publish.
 
 ## Validation
 
@@ -213,7 +206,7 @@ npm run marketing:manifest && cat playwright/artifacts/manifest.json | jq 'lengt
 - ✅ Re-run `npm run marketing:manifest`
 
 **Problem:** Website doesn't show new screenshot
-- ✅ Did you run `npm run publish:visuals`?
+- ✅ Did the capture workflow's website PR merge?
 - ✅ Did website PR sync `data/manifest.json`?
 - ✅ Check Hugo build includes `data/` files
 

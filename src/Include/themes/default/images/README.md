@@ -1,8 +1,8 @@
 # Member Portal — system theme images
 
 The system theme ships no imagery of its own: the portal header uses the church
-logo that Admin -> Church Information sets, and the hero block is empty until a
-theme fills it.
+logo that Admin -> Church Information sets (ChurchCRM's light-on-dark mark until
+one is set), and the hero block is empty until a theme fills it.
 
 A church theme puts its own files here — `Include/themes/<your-church>/images/` —
 and refers to them from a template with `{{ theme_asset('images/hero.jpg') }}` or

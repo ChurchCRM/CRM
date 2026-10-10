@@ -19487,10 +19487,6 @@ msgid "Add this address to your calendar app. It updates on its own when the chu
 msgstr "Adăugați această adresă în aplicația dumneavoastră de calendar. Se actualizează singură când calendarul bisericii se schimbă."
 
 #: 
-msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them."
-msgstr "Adăugați aici evenimentele acestei slujiri: o zi de lucru, o clasă care se întâlnește în fiecare duminică. Ele ajung în calendarul bisericii și le puteți asigura cu personal pe măsură ce le creați."
-
-#: 
 msgid "Added through the Member Portal and waiting for review: %s"
 msgstr "Adăugat prin Portalul comunității și în așteptarea verificării: %s"
 

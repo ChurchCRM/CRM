@@ -383,6 +383,10 @@ paths:
                   description: 'Volunteer v2: owning volunteer ministry. Only an administrator, a global volunteer manager or a coordinator of that ministry may set it. A volunteer coordinator without the global AddEvent right MUST supply one they manage.'
                   type: integer
                   nullable: true
+                LinkedGroupId:
+                  description: "Audience group (the event's non-attendee list is built from it). Without the global AddEvent right: only the event ministry's own pool group or a class linked to one of its teams. Omit the key to leave it unchanged; 0 clears it."
+                  type: integer
+                  nullable: true
               type: object
       responses:
         '200':
@@ -398,7 +402,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'AddEvents role required, or the caller may not assign the event to that volunteer ministry or pin it to one of those calendars'
+          description: 'AddEvents role required, or the caller may not assign the event to that volunteer ministry, pin it to one of those calendars or link that audience group'
       security:
         -
           ApiKeyAuth: []
@@ -501,6 +505,10 @@ paths:
                   description: 'Volunteer v2: owning volunteer ministry. Omit the key to leave it unchanged; null or 0 clears it (global AddEvent right required to clear).'
                   type: integer
                   nullable: true
+                LinkedGroupId:
+                  description: "Audience group (the event's non-attendee list is built from it). Without the global AddEvent right: only the event ministry's own pool group or a class linked to one of its teams. Omit the key to leave it unchanged; 0 clears it."
+                  type: integer
+                  nullable: true
               type: object
       responses:
         '200':
@@ -516,7 +524,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: "AddEvents role required, the event belongs to a volunteer ministry the caller does not manage, or a pin it adds or removes is not the caller's to change"
+          description: "AddEvents role required, the event belongs to a volunteer ministry the caller does not manage, a pin it adds or removes is not the caller's to change, or an audience group it adds or removes is not the caller's to change"
         '404':
           description: 'Event not found'
       security:
@@ -4890,7 +4898,7 @@ paths:
         '401':
           description: 'Not authenticated'
         '403':
-          description: 'Ministry management access is required, or V2 is not enabled'
+          description: "A ministry grant needs ministry management access; a team grant needs that or coordinating the team's ministry. Also when V2 is not enabled"
         '404':
           description: 'The person or the scope target does not exist'
         '200':
@@ -4917,7 +4925,7 @@ paths:
         '401':
           description: 'Not authenticated'
         '403':
-          description: 'Ministry management access is required, or V2 is not enabled'
+          description: 'The caller may not grant this scope (the same rule as granting it), or V2 is not enabled'
         '404':
           description: 'No such grant'
         '200':
@@ -7309,7 +7317,7 @@ paths:
     get:
       tags:
         - Families
-      summary: 'Search families by name (max 15 results)'
+      summary: 'Search families by name, or by envelope number for finance users (max 15 results)'
       parameters:
         -
           name: query

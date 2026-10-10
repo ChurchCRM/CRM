@@ -112,8 +112,7 @@
         "marketing:chrome": "BROWSER_CHANNEL=chrome ./scripts/capture-all-locales.sh",
         "marketing:videos": "node scripts/finalize-marketing-videos.js",
         "marketing:check": "node scripts/check-marketing-visuals.js",
-        "marketing:manifest": "node scripts/generate-marketing-manifest.js",
-        "publish:visuals": "./scripts/publish-marketing-visuals.sh"
+        "marketing:manifest": "node scripts/generate-marketing-manifest.js"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.3.1",

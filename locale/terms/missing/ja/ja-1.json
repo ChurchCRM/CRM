@@ -1,101 +1,136 @@
 {
   "%d day": {
-    "other": ""
+    "other": "%d 日"
   },
   "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
-    "other": ""
+    "other": "%d デフォルトが別の理由でスキップされました（発生が終了、キャンセル、または満杯）"
   },
   "%d default skipped: qualification revoked": {
-    "other": ""
+    "other": "%d デフォルトがスキップされました：資格が取り消されました"
   },
   "%d default volunteer assigned": {
-    "other": ""
+    "other": "%d デフォルト ボランティアが割り当てられました"
   },
   "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
-    "other": ""
+    "other": "このポジションにはさらに %d 人のボランティアが必要です。ギャップを埋めるために発生を開きます。"
   },
   "%d new occurrence": {
-    "other": ""
+    "other": "%d 新規発生"
   },
   "%d volunteer is still needed for an upcoming occurrence.": {
-    "other": ""
+    "other": "今後の発生のために %d 人のボランティアが必要です。"
   },
   "%s email from the church": {
-    "other": ""
+    "other": "教会からの %s メール"
   },
   "%s person in your household": {
-    "other": ""
+    "other": "ご家庭の %s 人"
   },
   "%s position": {
-    "other": ""
+    "other": "%s ポジション"
   },
   "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified.": {
-    "other": ""
+    "other": "1 日 1 回、すべてのアクティブなスケジュールは、それが従うイベントの発生を取得し、最大 %d 週先まで、各ポジションのデフォルト ボランティアは資格を保持している新しい発生に割り当てられます。"
   },
   "Passwords must be at least %s character long.": {
-    "other": ""
+    "other": "パスワードは最低 %s 文字である必要があります。"
   },
   "They finish %d minute after the event ends.": {
-    "other": ""
+    "other": "彼らはイベント終了後 %d 分に完了します。"
   },
   "They finish %d minute before the event ends.": {
-    "other": ""
+    "other": "彼らはイベント終了前 %d 分に完了します。"
   },
   "Volunteers start %d minute after the event starts.": {
-    "other": ""
+    "other": "ボランティアはイベント開始後 %d 分に開始します。"
   },
   "Volunteers start %d minute before the event starts.": {
-    "other": ""
+    "other": "ボランティアはイベント開始前 %d 分に開始します。"
   },
-  "Not authorized to change this event's audience group": "",
-  "Only a volunteer manager can change who coordinates a ministry": "",
-  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "",
+  "Not authorized to change this event's audience group": "このイベントの対象グループを変更する権限がありません",
+  "Only a volunteer manager can change who coordinates a ministry": "ボランティア マネージャーのみがミニストリーの調整者を変更できます",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "V1 を選択すると、V2 ボランティア メールが一時停止されます。キューに入っているメールは、発生が終了していない限り、V2 が再度有効になった時点で送信されます。",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "このミニストリーのイベントをここに追加してください：作業日、毎日曜日に開催されるクラス。教会のカレンダーに表示され、作成されたら人員配置を行うかどうか尋ねられます。",
+  "Cancel occurrence": "発生をキャンセル",
+  "Cancel this occurrence": "この発生をキャンセル",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "キャンセルしてもだれにも通知されません。メールは送信されません。割り当ては保持され、キャンセル中はリマインダーがスケジュールされず、復元されるまでだれも割り当てることができません。",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "削除されたイベントはすべてのカレンダーから削除され、チェックインと人数統計も削除されます。このミニストリーの人員配置はその日付のみを保持します。この操作は元に戻せません。",
+  "Events deleted: {{total}}": "削除されたイベント：{{total}}",
+  "Events to delete: {{total}}": "削除するイベント：{{total}}",
+  "Occurrence cancelled": "発生がキャンセルされました",
+  "Occurrence restored": "発生が復元されました",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "この発生をスケジュールに戻して、再度人員配置できるようにしますか？だれにも通知されません。メールは送信されません。",
+  "Restore occurrence": "発生を復元",
+  "Restore this occurrence": "この発生を復元",
+  "The occurrence could not be cancelled": "発生をキャンセルできませんでした",
+  "The occurrence could not be restored": "発生を復元できませんでした",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "すべてのカレンダーにイベントを追加でき、すべてが一覧表示されます。このミニストリーの独自カレンダーは最初はチェックされています。",
+  "A phone number or email address is required": "電話番号またはメール アドレスが必須です",
+  "A phone number or email address is required.": "電話番号またはメール アドレスが必須です。",
+  "Check-in has not opened for this event yet": "このイベントのチェックインはまだ開始されていません",
+  "Classification given to walk-in guests registered on a kiosk": "キオスクで登録された来客に与えられた分類",
+  "Failed to register guest. Please try again.": "来客の登録に失敗しました。もう一度お試しください。",
+  "First name and last name are required": "名と姓は必須です",
+  "First name and last name must each be 50 characters or fewer": "名と姓はそれぞれ 50 文字以下である必要があります",
+  "First name and last name must each be at least 2 characters": "名と姓はそれぞれ最低 2 文字である必要があります",
+  "Guest": "来客",
+  "Guest Classification": "来客分類",
+  "Invalid birth date": "無効な生年月日です。",
+  "Invalid email address": "無効なメール アドレス",
+  "Kiosk Settings": "キオスク設定",
+  "Please enter a check number": "チェック番号を入力してください",
+  "Register & Check In": "登録してチェックイン",
+  "Register Walk-In Guest": "来客を登録",
+  "Register walk-in guest": "来客を登録",
+  "Registered as a walk-in guest at the kiosk during event: %s": "イベント中にキオスクで来客として登録：%s",
+  "Registering...": "登録中...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "預金エントリでチェック支払いを記録する際、チェック番号が必須です。\n注：これを無効にすると、重複チェック番号検出も無効になります — 同じ物理チェックが複数回入力される場合があります。",
+  "This event has ended": "このイベントは終了しました",
+  "This event has no group assigned, so guests cannot be registered": "このイベントにはグループが割り当てられていないため、来客は登録できません",
+  "This event has no start and end time": "このイベントに開始時刻と終了時刻がありません",
+  "{{name}} registered and checked in!": "{{name}} が登録してチェックインしました！",
   "\"{{name}}\": {{count}} occurrences created": {
-    "one": "",
-    "other": ""
-  },
-  "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": {
-    "one": "",
-    "other": ""
+    "one": "\"{{name}}\"：{{count}} 個の発生が作成されました",
+    "other": "\"{{name}}\"：{{count}} 個の発生が作成されました"
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 人の受信者にメール送信。",
+    "other": "{{count}} 人の受信者にメール送信。"
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
-    "one": "",
-    "other": ""
+    "one": "新しい発生なし。{{through}} までのすべての {{count}} イベントには既に 1 つあります。",
+    "other": "新しい発生なし。{{through}} までのすべての {{count}} イベントには既に 1 つあります。"
   },
   "Schedule \"{{name}}\" created: {{count}} occurrences": {
-    "one": "",
-    "other": ""
+    "one": "スケジュール \"{{name}}\" 作成：{{count}} 個の発生",
+    "other": "スケジュール \"{{name}}\" 作成：{{count}} 個の発生"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 人の受信者に送信します。人物記録のないアドレスは含まれていません：{{list}}",
+    "other": "{{count}} 人の受信者に送信します。人物記録のないアドレスは含まれていません：{{list}}"
   },
   "{{count}} could not be assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 個は割り当てられませんでした",
+    "other": "{{count}} 個は割り当てられませんでした"
   },
   "{{count}} left open because the default is no longer qualified": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 個はデフォルトが適格でなくなったため、開いたままです",
+    "other": "{{count}} 個はデフォルトが適格でなくなったため、開いたままです"
   },
   "{{count}} volunteers assigned": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 人のボランティアが割り当てられました",
+    "other": "{{count}} 人のボランティアが割り当てられました"
   },
   "{{count}} waiting for your answer": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 個があなたの回答を待っています",
+    "other": "{{count}} 個があなたの回答を待っています"
   },
   "{{count}} {{title}} events created. Staff them now?": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 個の {{title}} イベントが作成されました。今すぐスタッフを配置しますか？",
+    "other": "{{count}} 個の {{title}} イベントが作成されました。今すぐスタッフを配置しますか？"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "",
-    "other": ""
+    "one": "{{names}} がこれらのイベントにスタッフを配置します。彼らの発生は次の {{count}} 週以内に作成されます。",
+    "other": "{{names}} がこれらのイベントにスタッフを配置します。彼らの発生は次の {{count}} 週以内に作成されます。"
   }
 }
