@@ -5792,6 +5792,10 @@
   "This event has no group assigned, so guests cannot be registered": "Ovaj događaj nema dodijeljenu grupu pa se gosti ne mogu registrirati",
   "This event has no start and end time": "Ovaj dogadaj nema vremena pocetka i kraja",
   "{{name}} registered and checked in!": "{{name}} registriran i proveravan!",
+  "Search by family name": "Pretraži po imenu obitelji",
+  "Search by family name or envelope #": "Pretraži po imenu obitelji ili br. omotnice",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nije moguće izbrisati obitelj koja ima zavjete ili uplate. Prvo premjestite ili uklonite financijske zapise.",
+  "You cannot delete your own account.": "Ne možete izbrisati vlastiti račun.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} dogadaj kreiran",
     "other": "\"{{name}}\": {{count}} dogadaja kreirana"

@@ -23567,3 +23567,19 @@ msgstr "ఈ కార్యక్రమానికి ప్రారంభ మ
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} నమోదై చెక్ ఇన్ అయ్యారు!"
 
+#: 
+msgid "Search by family name"
+msgstr "కుటుంబ పేరుతో శోధించండి"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "కుటుంబ పేరు లేదా కవర్ నంబర్‌తో శోధించండి"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "ప్రతిజ్ఞలు లేదా చెల్లింపులు ఉన్న కుటుంబాన్ని తొలగించలేరు. ముందుగా ఆర్థిక రికార్డులను తరలించండి లేదా తొలగించండి."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "మీ స్వంత ఖాతాను మీరు తొలగించలేరు."
+

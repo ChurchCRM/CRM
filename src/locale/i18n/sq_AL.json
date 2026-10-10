@@ -5760,6 +5760,10 @@
   "This event has no group assigned, so guests cannot be registered": "Kjo ngjarje nuk ka ndonjë grup të caktuar, kështu që mysafirët nuk mund të regjistrohen",
   "This event has no start and end time": "Kjo ngjarje nuk ka kohën e fillimit dhe mbarimit",
   "{{name}} registered and checked in!": "{{name}} regjistruar dhe shënuar i pranishëm!",
+  "Search by family name": "Kërko sipas emrit të familjes",
+  "Search by family name or envelope #": "Kërko sipas emrit të familjes ose nr. të zarfit",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nuk mund të fshihet një familje që ka zotime ose pagesa. Zhvendosni ose hiqni më parë regjistrimet financiare.",
+  "You cannot delete your own account.": "Nuk mund të fshini llogarinë tuaj.",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} ngjarje e krijuar",
     "other": "\"{{name}}\": {{count}} ngjarje të krijuara"

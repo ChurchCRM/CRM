@@ -23602,3 +23602,19 @@ msgstr "இந்த நிகழ்ச்சிக்கு தொடக்க 
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} பதிவு செய்யப்பட்டு வருகை பதிவிடப்பட்டது!"
 
+#: 
+msgid "Search by family name"
+msgstr "குடும்பப் பெயரால் தேடுங்கள்"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "குடும்பப் பெயர் அல்லது உறை எண்ணால் தேடுங்கள்"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "உறுதிமொழிகள் அல்லது கொடுப்பனவுகள் உள்ள குடும்பத்தை நீக்க முடியாது. முதலில் நிதிப் பதிவுகளை நகர்த்தவும் அல்லது அகற்றவும்."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "உங்கள் சொந்தக் கணக்கை நீங்கள் நீக்க முடியாது."
+

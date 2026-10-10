@@ -23562,3 +23562,19 @@ msgstr "Sự kiện này không có thời gian bắt đầu và kết thúc"
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} đã đăng ký và đăng nhập!"
 
+#: 
+msgid "Search by family name"
+msgstr "Tìm theo tên gia đình"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Tìm theo tên gia đình hoặc số phong bì"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Không thể xóa gia đình có cam kết dâng hiến hoặc khoản thanh toán. Hãy chuyển hoặc xóa các bản ghi tài chính trước."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Bạn không thể xóa tài khoản của chính mình."
+

@@ -23679,3 +23679,19 @@ msgstr "Ta impreza nie ma czasu rozpoczęcia i zakończenia"
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} zarejestrowany i zaznaczony obecny!"
 
+#: 
+msgid "Search by family name"
+msgstr "Szukaj według nazwiska rodziny"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Szukaj według nazwiska rodziny lub nr koperty"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Nie można usunąć rodziny, która ma zobowiązania lub wpłaty. Najpierw przenieś lub usuń zapisy finansowe."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Nie możesz usunąć własnego konta."
+

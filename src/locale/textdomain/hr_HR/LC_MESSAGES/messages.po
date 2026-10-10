@@ -23584,3 +23584,19 @@ msgstr "Ovaj dogadaj nema vremena pocetka i kraja"
 msgid "{{name}} registered and checked in!"
 msgstr "{{name}} registriran i proveravan!"
 
+#: 
+msgid "Search by family name"
+msgstr "Pretraži po imenu obitelji"
+
+#: 
+msgid "Search by family name or envelope #"
+msgstr "Pretraži po imenu obitelji ili br. omotnice"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgstr "Nije moguće izbrisati obitelj koja ima zavjete ili uplate. Prvo premjestite ili uklonite financijske zapise."
+
+#: 
+msgid "You cannot delete your own account."
+msgstr "Ne možete izbrisati vlastiti račun."
+
