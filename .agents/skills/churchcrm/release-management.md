@@ -149,7 +149,7 @@ Run it with:
 - `draft=true` unless George explicitly requests otherwise.
 - The approved `next_version`.
 - `prerelease` only when appropriate.
-- That is the only input. Run it on the branch being released: it refuses to start unless Build/Test/Package and the Nightly are both green on that branch's tip.
+- That is the only input. Run it on the branch being released: it refuses to start unless Build/Test/Package, the Nightly and the marketing capture (`marketing-capture-assets.yml`) are all green on that branch's tip.
 
 The workflow:
 
