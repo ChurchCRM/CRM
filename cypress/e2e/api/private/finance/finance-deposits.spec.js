@@ -211,6 +211,76 @@ describe("API Private Deposit Operations", () => {
             );
         });
 
+        it("Closing a card deposit deletes only uncleared payments", () => {
+            const today = new Date().toISOString().split("T")[0];
+            const payment = (depositId, type) => ({
+                type,
+                iMethod: "CASH",
+                Date: today,
+                FamilyID: "1",
+                FYID: 29,
+                DepositID: depositId,
+                tScanString: "",
+                FundSplit: JSON.stringify([
+                    { FundID: "1", Amount: 15, NonDeductible: 0, Comment: "" },
+                ]),
+            });
+
+            cy.makePrivateAdminAPICall("POST", "/api/deposits", {
+                depositType: "CreditCard",
+                depositComment: "Close cleanup",
+                depositDate: today,
+            }, 200).then((created) => {
+                const id = created.body.Id;
+                cy.makePrivateAdminAPICall("POST", "/api/payments/pledges", payment(id, "Payment"), 200);
+                cy.makePrivateAdminAPICall("POST", "/api/payments/pledges", payment(id, "Pledge"), 200);
+                cy.makePrivateAdminAPICall("POST", `/api/deposits/${id}`, {
+                    depositType: "CreditCard",
+                    depositComment: "Closed",
+                    depositDate: today,
+                    depositClosed: true,
+                }, 200);
+                cy.makePrivateAdminAPICall("GET", `/api/deposits/${id}/payments`, null, 200).then((payments) => {
+                    expect(payments.body).to.have.length(0);
+                });
+                cy.makePrivateAdminAPICall("GET", `/api/deposits/${id}/pledges`, null, 200).then((pledges) => {
+                    expect(pledges.body.length).to.be.greaterThan(0);
+                });
+            });
+        });
+
+        it("Closing a bank deposit keeps uncleared payments", () => {
+            const today = new Date().toISOString().split("T")[0];
+            cy.makePrivateAdminAPICall("POST", "/api/deposits", {
+                depositType: "Bank",
+                depositComment: "Bank close",
+                depositDate: today,
+            }, 200).then((created) => {
+                const id = created.body.Id;
+                cy.makePrivateAdminAPICall("POST", "/api/payments/pledges", {
+                    type: "Payment",
+                    iMethod: "CASH",
+                    Date: today,
+                    FamilyID: "1",
+                    FYID: 29,
+                    DepositID: id,
+                    tScanString: "",
+                    FundSplit: JSON.stringify([
+                        { FundID: "1", Amount: 12, NonDeductible: 0, Comment: "" },
+                    ]),
+                }, 200);
+                cy.makePrivateAdminAPICall("POST", `/api/deposits/${id}`, {
+                    depositType: "Bank",
+                    depositComment: "Bank closed",
+                    depositDate: today,
+                    depositClosed: true,
+                }, 200);
+                cy.makePrivateAdminAPICall("GET", `/api/deposits/${id}/payments`, null, 200).then((payments) => {
+                    expect(payments.body.length).to.be.greaterThan(0);
+                });
+            });
+        });
+
         it("Non-finance user denied deleting deposits", () => {
             // Test that a user without bFinance permission is denied
             cy.makePrivateNoFinanceAPICall(
