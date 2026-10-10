@@ -1,6 +1,6 @@
 {
-  "Search by family name": "",
-  "Search by family name or envelope #": "",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
-  "You cannot delete your own account.": ""
+  "Search by family name": "Søk etter familienavn",
+  "Search by family name or envelope #": "Søk etter familienavn eller konvoluttnr.",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Du kan ikke slette en familie som har løfter eller betalinger. Flytt eller fjern de økonomiske postene først.",
+  "You cannot delete your own account.": "Du kan ikke slette din egen konto."
 }

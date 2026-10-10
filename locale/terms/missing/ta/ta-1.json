@@ -1,6 +1,6 @@
 {
-  "Search by family name": "",
-  "Search by family name or envelope #": "",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
-  "You cannot delete your own account.": ""
+  "Search by family name": "குடும்பப் பெயரால் தேடுங்கள்",
+  "Search by family name or envelope #": "குடும்பப் பெயர் அல்லது உறை எண்ணால் தேடுங்கள்",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "உறுதிமொழிகள் அல்லது கொடுப்பனவுகள் உள்ள குடும்பத்தை நீக்க முடியாது. முதலில் நிதிப் பதிவுகளை நகர்த்தவும் அல்லது அகற்றவும்.",
+  "You cannot delete your own account.": "உங்கள் சொந்தக் கணக்கை நீங்கள் நீக்க முடியாது."
 }

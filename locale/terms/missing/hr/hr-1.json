@@ -1,6 +1,6 @@
 {
-  "Search by family name": "",
-  "Search by family name or envelope #": "",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "",
-  "You cannot delete your own account.": ""
+  "Search by family name": "Pretraži po imenu obitelji",
+  "Search by family name or envelope #": "Pretraži po imenu obitelji ili br. omotnice",
+  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nije moguće izbrisati obitelj koja ima zavjete ili uplate. Prvo premjestite ili uklonite financijske zapise.",
+  "You cannot delete your own account.": "Ne možete izbrisati vlastiti račun."
 }
