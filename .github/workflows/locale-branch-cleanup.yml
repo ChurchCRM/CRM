@@ -1,0 +1,26 @@
+name: "Locale: delete closed PR branches"
+
+# Auto-delete-on-merge skips PRs closed without merging, so the locale bots
+# leave those branches behind. Delete the head branch when a locale/* PR closes.
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  delete-branch:
+    name: Delete locale branch
+    if: |
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      startsWith(github.event.pull_request.head.ref, 'locale/') &&
+      github.event.pull_request.head.ref != 'locale/download/7.8.0'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete head branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: gh api -X DELETE "repos/${{ github.repository }}/git/refs/heads/${BRANCH}" || true
