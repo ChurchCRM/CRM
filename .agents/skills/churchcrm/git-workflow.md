@@ -59,6 +59,8 @@ check cannot run meaningfully before push.
 
 ## After push
 
+If the PR work used a `git worktree` and the session has been idle 10 minutes after the push (no review threads or CI you were asked to watch), ask once whether to remove it (`git worktree remove <path>`, then delete the local branch if merged). Never remove it unasked.
+
 Do not approve or merge. Do not close an issue by hand unless the maintainer answers yes. A finished issue is closed by `Fixes #N` on the merged PR.
 
 A push that fixes review comments is not done until the threads it fixed are resolved. Check each thread against the pushed code first, then resolve it (`resolveReviewThread` in the GraphQL API). Reply with the commit SHA when the fix is not obvious. Leave a thread open, with a reply, when it is not fixed or you disagree. List each unresolved thread when you report back.

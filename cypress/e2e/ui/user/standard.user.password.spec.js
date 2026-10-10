@@ -139,6 +139,20 @@ describe("Standard User Password - successful change", () => {
         deleteTestUser();
     });
 
+    it("Admin cannot set a too-short or obvious password", () => {
+        cy.setupAdminSession({ forceLogin: true });
+        const submit = (password) => {
+            cy.visit(`admin/system/user/${PERSON_ID}/changePassword`);
+            cy.get("#NewPassword1").type(password);
+            cy.get("#NewPassword2").type(password);
+            cy.get("#NewPassword1").closest("form").submit();
+        };
+        submit("abc12");
+        cy.get("#NewPasswordError").should("contain", "must be at least 8 characters");
+        submit("password");
+        cy.get("#NewPasswordError").should("contain", "too obvious");
+    });
+
     it("Change then back", () => {
         cy.visit("/session/end");
         cy.loginWithCredentials(loginName, FIRST_PASSWORD, "pw-round-trip-1");
@@ -159,5 +173,25 @@ describe("Standard User Password - successful change", () => {
         cy.get("#passwordChangeForm").submit();
         cy.url().should("contain", "/v2/user/current/changepassword");
         cy.contains("Password Change Successful");
+    });
+
+    // Last on purpose: it locks the throwaway account.
+    it("Wrong current password counts toward lockout", () => {
+        cy.visit("/session/end");
+        cy.loginWithCredentials(loginName, FIRST_PASSWORD, "pw-lockout");
+        for (let i = 0; i < 5; i++) {
+            cy.visit("v2/user/current/changepassword");
+            cy.get("#OldPassword").type("NotTheRealPassword");
+            cy.get("#NewPassword1").type(SECOND_PASSWORD);
+            cy.get("#NewPassword2").type(SECOND_PASSWORD);
+            cy.get("#passwordChangeForm").submit();
+            cy.contains("Incorrect password supplied for current user");
+        }
+        cy.visit("v2/user/current/changepassword");
+        cy.get("#OldPassword").type(FIRST_PASSWORD);
+        cy.get("#NewPassword1").type(SECOND_PASSWORD);
+        cy.get("#NewPassword2").type(SECOND_PASSWORD);
+        cy.get("#passwordChangeForm").submit();
+        cy.contains("Your account is locked");
     });
 });
