@@ -31,11 +31,7 @@
   },
   "pre-7.0.0": {
     "versions": ["6.7.0", "6.7.1", "6.7.2", "6.7.3", "6.8.0", "6.8.1"],
-    "scripts": [
-      "/mysql/upgrade/6.8.0.sql",
-      "/mysql/upgrade/7.0.0-remove-bing-maps.sql",
-      "/mysql/upgrade/7.0.0-map.sql"
-    ],
+    "scripts": ["/mysql/upgrade/7.0.0.sql"],
     "dbVersion": "7.0.0"
   },
   "pre-7.0.2": {
@@ -65,10 +61,7 @@
   },
   "pre-7.4.3": {
     "versions": ["7.4.1", "7.4.2"],
-    "scripts": [
-      "/mysql/upgrade/7.4.3-manage-fundraisers.sql",
-      "/mysql/upgrade/7.4.3-remove-directory-csv-permissions.sql"
-    ],
+    "scripts": ["/mysql/upgrade/7.4.3.sql"],
     "dbVersion": "7.4.3"
   },
   "pre-7.5.0": {
@@ -83,10 +76,7 @@
   },
   "pre-7.6.0": {
     "versions": ["7.5.1"],
-    "scripts": [
-      "/mysql/upgrade/7.6.0-remove-orphaned-query-parameters.sql",
-      "/mysql/upgrade/7.6.0-remove-legacy-custom-search-query.sql"
-    ],
+    "scripts": ["/mysql/upgrade/7.6.0.sql"],
     "dbVersion": "7.6.0"
   },
   "pre-7.6.1": {
@@ -106,29 +96,12 @@
   },
   "pre-7.7.0": {
     "versions": ["7.6.4"],
-    "scripts": [
-      "/mysql/upgrade/7.7.0-2fa-grace-period.sql",
-      "/mysql/upgrade/7.7.0-add-person-deceased-date.sql",
-      "/mysql/upgrade/7.7.0-add-person-datedeactivated.sql",
-      "/mysql/upgrade/7.7.0-events-utf8mb4.sql"
-    ],
+    "scripts": ["/mysql/upgrade/7.7.0.sql"],
     "dbVersion": "7.7.0"
   },
   "current": {
     "versions": ["7.7.0", "7.7.1"],
-    "scripts": [
-      "/mysql/upgrade/7.8.0-family-second-address.sql",
-      "/mysql/upgrade/7.8.0-fund-category.sql",
-      "/mysql/upgrade/7.8.0-remove-people-report-queries.sql",
-      "/mysql/upgrade/7.8.0-self-register-needs-review.sql",
-      "/mysql/upgrade/7.8.0-email-log.sql",
-      "/mysql/upgrade/7.8.0-member-portal-calendars.sql",
-      "/mysql/upgrade/7.8.0-volunteer-v2-schema.sql",
-      "/mysql/upgrade/7.8.0-volunteer-v2-manager-permission.sql",
-      "/mysql/upgrade/7.8.0-volunteer-v2-event-ministry.sql",
-      "/mysql/upgrade/7.8.0-volunteer-v2-group-ministry.sql",
-      "/mysql/upgrade/7.8.0-member-portal-activity.sql"
-    ],
+    "scripts": ["/mysql/upgrade/7.8.0.sql"],
     "dbVersion": "7.8.0"
   }
 }
