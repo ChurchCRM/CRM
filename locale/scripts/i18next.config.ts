@@ -30,7 +30,7 @@ export default defineConfig({
     keySeparator: false,
     nsSeparator: false,
     contextSeparator: '_',
-    functions: ['t', '*.t'],
+    // Volunteer v2 uses tText() as a thin i18next.t() wrapper (#10386).\n    functions: ['t', '*.t', 'tText'],
     transComponents: ['Trans']
   },
   plugins: [phpInlineI18nextPlugin()]
