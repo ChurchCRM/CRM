@@ -84,6 +84,7 @@ class DepositService {
     }
     public function setDeposit(string $depositType, string $depositComment, string $depositDate, $iDepositSlipID = null, $depositClosed = false): void
     {
+        AuthService::requireUserGroupMembership('bFinance');
         if ($iDepositSlipID) {
             $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
             $deposit
