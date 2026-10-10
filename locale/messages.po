@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-09 03:14+0000\n"
+"POT-Creation-Date: 2026-10-10 02:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12882,6 +12882,12 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr ""
 
 msgid "Search and manage deposit slip records"
+msgstr ""
+
+msgid "Search by family name"
+msgstr ""
+
+msgid "Search by family name or envelope #"
 msgstr ""
 
 msgid "Search by name"
