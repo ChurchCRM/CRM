@@ -4583,16 +4583,46 @@
   "%1$s wants to help with %2$s": "%1$s 希望参与 %2$s 的服事",
   "%1$s wants to help with %2$s and has been added to its volunteer pool.": "%1$s 希望参与 %2$s 的服事，并已加入其志愿者库。",
   "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or raise Max.": "%1$s：最大人数为 %2$d，但已选择 %3$d 位默认志愿者。请移除一位或提高最大人数。",
+  "%d day": {
+    "other": "%d 天"
+  },
+  "%d default skipped for another reason (the occurrence is over, cancelled or full)": {
+    "other": "%d 个默认被跳过，原因不同（发生已结束、已取消或已满）"
+  },
+  "%d default skipped: qualification revoked": {
+    "other": "%d 个默认被跳过：资格已撤销"
+  },
+  "%d default volunteer assigned": {
+    "other": "%d 个默认义工已分配"
+  },
   "%d failed": "%d 项失败",
+  "%d more volunteer is still needed for this position. Open the occurrence to fill the gap.": {
+    "other": "此岗位仍需 %d 名义工。打开发生以填补空缺。"
+  },
+  "%d new occurrence": {
+    "other": "%d 个新发生"
+  },
+  "%d volunteer is still needed for an upcoming occurrence.": {
+    "other": "即将发生的事件仍需 %d 名义工。"
+  },
   "%s Calendar": "%s 日历",
   "%s Family": "%s 家庭",
   "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.": "%s 不为主日学提供教师，因此其团队、排班和活动无法使用班级。志愿者管理员可在“编辑事工”下更改此设置。",
+  "%s email from the church": {
+    "other": "来自教会的 %s 封电子邮件"
+  },
   "%s family": "%s 家庭",
   "%s has declined a volunteer assignment.": "%s 已拒绝一项志愿者分配。",
   "%s has no role named Teacher, so its teachers cannot be managed from a team": "%s 没有名为“教师”的角色，因此无法从团队管理其教师",
   "%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class's meetings first, with New recurring event on the ministry's Calendar tab.": "%s 的日历上没有即将举行的聚会。排班会跟随已存在的活动：请先在事工的“日历”标签页中通过“新增重复活动”添加该班的聚会。",
   "%s is still expected to serve. Please contact the coordinator if that is not possible.": "%s 仍需服事。如无法参与，请联系协调员。",
   "%s not sent (%s): %s": "%s 未发送（%s）：%s",
+  "%s person in your household": {
+    "other": "您家中的 %s 人"
+  },
+  "%s position": {
+    "other": "%s 岗位"
+  },
   "%s: the same person is chosen twice as a default volunteer": "%s：同一个人被重复选为默认志愿者",
   "(no subject)": "（无主题）",
   "A birthday cannot be in the future.": "生日不能在未来。",
@@ -5066,6 +5096,9 @@
   "Occurrence not found": "找不到该活动场次",
   "Occurrences": "活动场次",
   "Offer to help": "愿意帮忙",
+  "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified.": {
+    "other": "每天一次，每个活跃日程获得其所遵循的事件的发生，提前达 %d 周，每个岗位的默认义工在他们保持资格时被分配到新的发生。"
+  },
   "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve.": "此人具备某个职位的资格后，会显示在这里，并显示他们被安排服事的日期。",
   "One occurrence is made for each calendar event whose Linked Group is this class.": "每个“关联小组”为此班级的日历活动，会生成一场活动场次。",
   "One occurrence is made for each date of this event. Only events already on the calendar can be chosen.": "此活动的每个日期会生成一场活动场次。只能选择日历上已有的活动。",
@@ -5105,6 +5138,9 @@
   "Page %d of %d": "第 %d 页，共 %d 页",
   "Password reset": "重设密码",
   "Password reset link": "密码重置链接",
+  "Passwords must be at least %s character long.": {
+    "other": "密码必须至少为 %s 个字符长。"
+  },
   "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead.": "选择一个即将举行的日历活动，并说明它需要谁。活动保持其自身的日期和时间；若要为整个系列安排人员，请改为添加排班。",
   "Pick someone who has already agreed to take your place. Your coordinator will confirm it.": "请选择已同意代替您的人。您的协调员会确认。",
   "Please choose calendars from the list.": "请从列表中选择日历。",
@@ -5441,6 +5477,12 @@
   "These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first.": "%1$s 的这些团队已关联到主日学班级：%2$s。请先取消关联。",
   "They could not be added": "无法添加他们",
   "They could not be removed from this ministry": "无法将他们从此事工中移除",
+  "They finish %d minute after the event ends.": {
+    "other": "他们在事件结束后 %d 分钟完成。"
+  },
+  "They finish %d minute before the event ends.": {
+    "other": "他们在事件结束前 %d 分钟完成。"
+  },
   "They were already a volunteer here": "他们原本就是这里的志愿者",
   "This assignment is %1$s and cannot be changed to %2$s": "此分配为%1$s，无法更改为%2$s",
   "This assignment is no longer active": "此分配已不再有效",
@@ -5534,6 +5576,12 @@
   "Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar.": "%s 的志愿者已被分配到这些活动，因此无法在此删除。请让该事工移除其人员安排，或请管理日历的人处理。",
   "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed.": "{{names}} 的志愿者已被分配到其中部分活动。除非您管理日历，否则在移除这些人员安排之前，删除会被拒绝。",
   "Volunteers start": "志愿者开始",
+  "Volunteers start %d minute after the event starts.": {
+    "other": "义工在事件开始后 %d 分钟开始。"
+  },
+  "Volunteers start %d minute before the event starts.": {
+    "other": "义工在事件开始前 %d 分钟开始。"
+  },
   "Waiting for a reply": "等待回复",
   "Waiting for review": "待审核",
   "Waiting for your coordinator to confirm.": "等待您的协调员确认。",
@@ -5638,5 +5686,91 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}：{{name}} 不再具备资格",
   "{{position}}: {{name}} qualified": "{{position}}：{{name}} 已具备资格",
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} 请 {{substitute}} 代替自己",
-  "{{title}} on {{date}} created. Staff it now?": "{{date}} 的 {{title}} 已创建。现在为其安排人员吗？"
+  "{{title}} on {{date}} created. Staff it now?": "{{date}} 的 {{title}} 已创建。现在为其安排人员吗？",
+  "Not authorized to change this event's audience group": "无权更改此事件的接收人小组",
+  "Only a volunteer manager can change who coordinates a ministry": "仅义工主管可以更改事工的协调人",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "选择 V1 时，V2 义工电子邮件将暂停；任何排队的邮件将在 V2 重新启用时发送（除非其发生已结束）。",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "在此添加本事工的事件：工作日、每周日举行的课程。它们将出现在教会日历上，创建后您将被询问是否为其安排人员。",
+  "Cancel occurrence": "取消发生",
+  "Cancel this occurrence": "取消此发生",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "取消不通知任何人：不发送电子邮件。分配将被保留，在取消期间不安排提醒，且在恢复之前无法分配任何人。",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "已删除的事件将从每个日历中移除（包括签到和人数统计），该事工的人员配置仅保留其日期。此操作无法撤消。",
+  "Events deleted: {{total}}": "已删除的事件：{{total}}",
+  "Events to delete: {{total}}": "要删除的事件：{{total}}",
+  "Occurrence cancelled": "发生已取消",
+  "Occurrence restored": "发生已恢复",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "将此发生放回日程安排以便再次为其安排人员？不通知任何人：不发送电子邮件。",
+  "Restore occurrence": "恢复发生",
+  "Restore this occurrence": "恢复此发生",
+  "The occurrence could not be cancelled": "无法取消此发生",
+  "The occurrence could not be restored": "无法恢复此发生",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "您可以向每个日历添加事件，因此会列出所有日历。此事工的自有日历最初被勾选。",
+  "A phone number or email address is required": "需要电话号码或电子邮件地址",
+  "A phone number or email address is required.": "需要电话号码或电子邮件地址。",
+  "Check-in has not opened for this event yet": "此事件的签到尚未开放",
+  "Classification given to walk-in guests registered on a kiosk": "分配给在自助终端上注册的来客的分类",
+  "Failed to register guest. Please try again.": "注册来客失败。请重试。",
+  "First name and last name are required": "必须提供名字和姓氏",
+  "First name and last name must each be 50 characters or fewer": "名字和姓氏的字符数必须分别不超过 50 个",
+  "First name and last name must each be at least 2 characters": "名字和姓氏的字符数必须分别至少为 2 个",
+  "Guest": "来客",
+  "Guest Classification": "来客分类",
+  "Invalid birth date": "无效的出生日期。",
+  "Invalid email address": "电子邮件地址无效",
+  "Kiosk Settings": "自助终端设置",
+  "Please enter a check number": "请输入支票号码",
+  "Register & Check In": "注册并签到",
+  "Register Walk-In Guest": "注册来客",
+  "Register walk-in guest": "注册来客",
+  "Registered as a walk-in guest at the kiosk during event: %s": "在事件期间通过自助终端注册为来客：%s",
+  "Registering...": "正在注册...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "在记录存款条目中的支票付款时需要支票号码。\n注意：禁用此功能也会禁用重复支票号码检测——同一张支票可能被输入多次。",
+  "This event has ended": "此事件已结束",
+  "This event has no group assigned, so guests cannot be registered": "此事件未分配小组，因此无法注册来客",
+  "This event has no start and end time": "此事件没有开始和结束时间",
+  "{{name}} registered and checked in!": "{{name}} 已注册并签到！",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\"：创建了 {{count}} 个发生",
+    "other": "\"{{name}}\"：创建了 {{count}} 个发生"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "已向 {{count}} 个收件人发送电子邮件。",
+    "other": "已向 {{count}} 个收件人发送电子邮件。"
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "没有新发生。所有通过 {{through}} 的 {{count}} 个事件都已有一个。",
+    "other": "没有新发生。所有通过 {{through}} 的 {{count}} 个事件都已有一个。"
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "日程\"{{name}}\"已创建：{{count}} 个发生",
+    "other": "日程\"{{name}}\"已创建：{{count}} 个发生"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "发送到 {{count}} 个收件人。没有人员记录的地址不包括在内：{{list}}",
+    "other": "发送到 {{count}} 个收件人。没有人员记录的地址不包括在内：{{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "无法分配 {{count}} 个",
+    "other": "无法分配 {{count}} 个"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "保留 {{count}} 个打开状态，因为默认不再符合资格",
+    "other": "保留 {{count}} 个打开状态，因为默认不再符合资格"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "已分配 {{count}} 名义工",
+    "other": "已分配 {{count}} 名义工"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} 个等待您的答复",
+    "other": "{{count}} 个等待您的答复"
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "创建了 {{count}} 个{{title}}事件。现在为其分配人员？",
+    "other": "创建了 {{count}} 个{{title}}事件。现在为其分配人员？"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "{{names}} 将为这些事件分配人员。他们的发生在接下来的 {{count}} 周内创建。",
+    "other": "{{names}} 将为这些事件分配人员。他们的发生在接下来的 {{count}} 周内创建。"
+  }
 }

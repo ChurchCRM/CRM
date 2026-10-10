@@ -18971,6 +18971,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "\"%s\" என்பது இந்தப் பக்கத்திற்குத் தெரிந்த நாட்காட்டி வகை அல்ல."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} நிகழ்வு உருவாக்கப்பட்டது"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} நிகழ்வுகள் உருவாக்கப்பட்டன"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s ஆல் பணியாற்ற முடியாது, மேலும் %2$s ஐ மாற்றாக முன்மொழிந்துள்ளார்."
 
@@ -20123,6 +20133,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "மின்னஞ்சல் அனுப்புதல் இயக்கப்படவில்லை. அனுப்பும் முன் SMTP அமைப்புகளை உள்ளமைத்து மின்னஞ்சலை இயக்கவும்."
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "{{count}} பெறுநருக்கு மின்னஞ்சல் அனுப்பப்பட்டது."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "{{count}} பெறுநர்களுக்கு மின்னஞ்சல் அனுப்பப்பட்டது."
+
+#: 
 msgid "Emails"
 msgstr "மின்னஞ்சல்கள்"
 
@@ -20713,6 +20733,16 @@ msgstr "இன்னும் எந்த உறுப்பினரும் 
 #: 
 msgid "No ministry"
 msgstr "ஊழியம் இல்லை"
+
+#: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "புதிய நிகழ்வுகள் இல்லை. {{through}} வரையிலான அனைத்து {{count}} நிகழ்ச்சிகளுக்கும் ஏற்கனவே உள்ளன."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "புதிய நிகழ்வுகள் இல்லை. {{through}} வரையிலான அனைத்து {{count}} நிகழ்ச்சிகளுக்கும் ஏற்கனவே உள்ளன."
 
 #: 
 msgid "No past events"
@@ -21459,6 +21489,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "அட்டவணை \"{{name}}\" உருவாக்கப்பட்டது. இது செயலிழந்துள்ளது, எனவே செயல்படுத்தப்படும் வரை நிகழ்வுகளை உருவாக்காது."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "அட்டவணை \"{{name}}\" உருவாக்கப்பட்டது: {{count}} நிகழ்வு"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "அட்டவணை \"{{name}}\" உருவாக்கப்பட்டது: {{count}} நிகழ்வுகள்"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "அட்டவணை செயலிழக்கச் செய்யப்பட்டது"
 
@@ -21573,6 +21613,16 @@ msgstr "திருச்சபை அலுவலகத்துக்கு �
 #: 
 msgid "Send your answer"
 msgstr "உங்கள் பதிலை அனுப்பு"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "{{count}} பெறுநருக்கு அனுப்புகிறது. நபர் பதிவு இல்லாத முகவரிகள் சேர்க்கப்படவில்லை: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "{{count}} பெறுநர்களுக்கு அனுப்புகிறது. நபர் பதிவு இல்லாத முகவரிகள் சேர்க்கப்படவில்லை: {{list}}"
 
 #: 
 msgid "Sent"
@@ -23271,6 +23321,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "{{added}} சேர்க்கப்பட்டனர், {{alreadyMembers}} பேர் ஏற்கெனவே இங்கே தன்னார்வலர்கள்"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} பேரை நியமிக்க முடியவில்லை"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} பேரை நியமிக்க முடியவில்லை"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "இயல்புநிலை இனி தகுதியற்றதால் {{count}} திறந்தே விடப்பட்டது"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "இயல்புநிலை இனி தகுதியற்றதால் {{count}} திறந்தே விடப்பட்டன"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} தன்னார்வலர் நியமிக்கப்பட்டார்"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} தன்னார்வலர்கள் நியமிக்கப்பட்டனர்"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} உங்கள் பதிலுக்காகக் காத்திருக்கிறது"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} உங்கள் பதிலுக்காகக் காத்திருக்கின்றன"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} நிகழ்ச்சி உருவாக்கப்பட்டது. இப்போது ஆட்களை நியமிக்கவா?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} நிகழ்ச்சிகள் உருவாக்கப்பட்டன. இப்போது ஆட்களை நியமிக்கவா?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "{{created}} நிகழ்வுகள் உருவாக்கப்பட்டன, {{existing}} ஏற்கெனவே இருந்தன"
 
@@ -23281,6 +23381,16 @@ msgstr "{{ministry}} {{className}} க்காக {{total}} நிகழ்ச�
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} உம் அவற்றில் சிலவற்றுக்கு ஆட்களை வழங்குகிறார்கள்."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} இந்த நிகழ்ச்சிகளில் பணியாற்றுவார்கள். அடுத்த {{count}} வாரங்களுக்குள் வரும்போது அவற்றின் நிகழ்வுகள் உருவாக்கப்படும்."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} இந்த நிகழ்ச்சிகளில் பணியாற்றுவார்கள். அடுத்த {{count}} வாரங்களுக்குள் வரும்போது அவற்றின் நிகழ்வுகள் உருவாக்கப்படும்."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23325,4 +23435,174 @@ msgstr "{{proposer}} தனக்குப் பதிலாக {{substitute}} 
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "{{date}} அன்று {{title}} உருவாக்கப்பட்டது. இப்போது ஆட்களை அமர்த்தவா?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "இந்த நிகழ்ச்சியின் பார்வையாளர் குழுவை மாற்ற அனுமதி இல்லை"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "ஒரு ஊழியத்தை யார் ஒருங்கிணைக்கிறார் என்பதை தன்னார்வலர் மேலாளர் மட்டுமே மாற்ற முடியும்"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "V1 ஐத் தேர்ந்தெடுப்பது V2 தன்னார்வலர் மின்னஞ்சலை இடைநிறுத்தும்; வரிசையில் உள்ளவை அனைத்தும் V2 மீண்டும் இயக்கப்படும்போது அனுப்பப்படும், அதன் நிகழ்வு முடிந்திருந்தால் தவிர."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "இந்த ஊழியத்தின் நிகழ்ச்சிகளை இங்கே சேர்க்கவும்: ஒரு பணி நாள், ஒவ்வொரு ஞாயிறும் கூடும் வகுப்பு. அவை ஆலய நாட்காட்டியில் சேரும்; உருவாக்கிய பிறகு அவற்றுக்கு ஆட்களை நியமிக்க வேண்டுமா என்று கேட்கப்படும்."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "நிகழ்வை ரத்து செய்"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "இந்த நிகழ்வை ரத்து செய்"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "ரத்து செய்வது யாருக்கும் தெரிவிக்காது: மின்னஞ்சல் அனுப்பப்படாது. நியமனங்கள் அப்படியே இருக்கும், ரத்து செய்யப்பட்டிருக்கும்போது நினைவூட்டல்கள் திட்டமிடப்படாது, மீட்டெடுக்கும் வரை யாரையும் நியமிக்க முடியாது."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "நீக்கப்பட்ட நிகழ்ச்சிகள் அவற்றின் வருகைப் பதிவுகள் மற்றும் எண்ணிக்கைகளுடன் அனைத்து நாட்காட்டிகளிலிருந்தும் நீங்கும்; இந்த ஊழியத்தின் அவற்றுக்கான நியமனம் தேதியை மட்டுமே வைத்திருக்கும். இதைச் செயலிழக்கச் செய்ய முடியாது."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "நீக்கப்பட்ட நிகழ்ச்சிகள்: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "நீக்க வேண்டிய நிகழ்ச்சிகள்: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "நிகழ்வு ரத்து செய்யப்பட்டது"
+
+#: 
+msgid "Occurrence restored"
+msgstr "நிகழ்வு மீட்டெடுக்கப்பட்டது"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "இந்த நிகழ்வை மீண்டும் ஆட்களை நியமிக்கும்படி அட்டவணையில் வைக்கவா? யாருக்கும் தெரிவிக்கப்படாது: மின்னஞ்சல் அனுப்பப்படாது."
+
+#: 
+msgid "Restore occurrence"
+msgstr "நிகழ்வை மீட்டெடு"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "இந்த நிகழ்வை மீட்டெடு"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "நிகழ்வை ரத்து செய்ய முடியவில்லை"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "நிகழ்வை மீட்டெடுக்க முடியவில்லை"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "அனைத்து நாட்காட்டிகளிலும் நிகழ்ச்சிகளைச் சேர்க்க உங்களுக்கு அனுமதி உள்ளது, எனவே அனைத்தும் பட்டியலிடப்பட்டுள்ளன. இந்த ஊழியத்தின் சொந்த நாட்காட்டி தொடக்கத்தில் குறிக்கப்பட்டுள்ளது."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "தொலைபேசி எண் அல்லது மின்னஞ்சல் முகவரி தேவை"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "தொலைபேசி எண் அல்லது மின்னஞ்சல் முகவரி தேவை."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "இந்த நிகழ்ச்சிக்கான வருகைப் பதிவு இன்னும் திறக்கப்படவில்லை"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "கியோஸ்கில் பதிவு செய்யப்படும் திடீர் விருந்தினர்களுக்கு வழங்கப்படும் வகைப்பாடு"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "விருந்தினரைப் பதிவு செய்ய முடியவில்லை. மீண்டும் முயலவும்."
+
+#: 
+msgid "First name and last name are required"
+msgstr "முதல் பெயரும் கடைசி பெயரும் தேவை"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "முதல் பெயரும் கடைசி பெயரும் ஒவ்வொன்றும் 50 எழுத்துகளுக்கு மிகாமல் இருக்க வேண்டும்"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "முதல் பெயரும் கடைசி பெயரும் ஒவ்வொன்றும் குறைந்தது 2 எழுத்துகள் இருக்க வேண்டும்"
+
+#: 
+msgid "Guest"
+msgstr "விருந்தினர்"
+
+#: 
+msgid "Guest Classification"
+msgstr "விருந்தினர் வகைப்பாடு"
+
+#: 
+msgid "Invalid birth date"
+msgstr "தவறான பிறந்த தேதி."
+
+#: 
+msgid "Invalid email address"
+msgstr "தவறான மின்னஞ்சல் முகவரி"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "கியோஸ்க் அமைப்புகள்"
+
+#: 
+msgid "Please enter a check number"
+msgstr "காசோலை எண்ணை உள்ளிடவும்"
+
+#: 
+msgid "Register & Check In"
+msgstr "பதிவு செய்து வருகையைப் பதிவிடு"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "திடீர் விருந்தினரைப் பதிவு செய்"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "திடீர் விருந்தினரைப் பதிவு செய்"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "நிகழ்ச்சியின்போது கியோஸ்கில் திடீர் விருந்தினராகப் பதிவு செய்யப்பட்டது: %s"
+
+#: 
+msgid "Registering..."
+msgstr "பதிவு செய்கிறது..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "வைப்பு உள்ளீடுகளில் காசோலைக் கொடுப்பனவுகளைப் பதிவு செய்யும்போது காசோலை எண்ணைக் கட்டாயமாக்கு.\n"
+"குறிப்பு: இதை முடக்கினால் நகல் காசோலை எண் கண்டறிதலும் முடக்கப்படும் — அதே காசோலை ஒன்றுக்கு மேற்பட்ட முறை உள்ளிடப்படலாம்."
+
+#: 
+msgid "This event has ended"
+msgstr "இந்த நிகழ்ச்சி முடிந்துவிட்டது"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "இந்த நிகழ்ச்சிக்கு குழு ஒதுக்கப்படவில்லை, எனவே விருந்தினர்களைப் பதிவு செய்ய முடியாது"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "இந்த நிகழ்ச்சிக்கு தொடக்க மற்றும் முடிவு நேரம் இல்லை"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} பதிவு செய்யப்பட்டு வருகை பதிவிடப்பட்டது!"
 

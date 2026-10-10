@@ -19049,6 +19049,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "\"%s\" är ingen typ av kalender som den här sidan känner till."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} förekomst skapad"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} förekomster skapade"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s kan inte tjänstgöra och har föreslagit %2$s som ersättare."
 
@@ -20201,6 +20211,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "E-postutskick är inte aktiverat. Konfigurera SMTP-inställningarna och aktivera e-post innan du skickar."
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "E-post skickad till {{count}} mottagare."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "E-post skickad till {{count}} mottagare."
+
+#: 
 msgid "Emails"
 msgstr "E-postmeddelanden"
 
@@ -20791,6 +20811,16 @@ msgstr "Ingen medlem har loggat in i Medlemsportalen ännu."
 #: 
 msgid "No ministry"
 msgstr "Inget tjänsteområde"
+
+#: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Inga nya förekomster. Alla {{count}} evenemang genom {{through}} har redan en."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Inga nya förekomster. Alla {{count}} evenemang genom {{through}} har redan en."
 
 #: 
 msgid "No past events"
@@ -21537,6 +21567,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "Schemat \"{{name}}\" skapades. Det är inaktivt och skapar därför inga tillfällen förrän det är aktivt."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Schema \"{{name}}\" skapat: {{count}} förekomst"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Schema \"{{name}}\" skapat: {{count}} förekomster"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "Schemat inaktiverades"
 
@@ -21651,6 +21691,16 @@ msgstr "Skicka till församlingsexpeditionen"
 #: 
 msgid "Send your answer"
 msgstr "Skicka ditt svar"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Skickar till {{count}} mottagare. Adresser utan personpost är inte inkluderade: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Skickar till {{count}} mottagare. Adresser utan personpost är inte inkluderade: {{list}}"
 
 #: 
 msgid "Sent"
@@ -23349,6 +23399,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "{{added}} tillagda, {{alreadyMembers}} var redan volontärer här"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} kunde inte tilldelas"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} kunde inte tilldelas"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} lämnas öppen eftersom standardinställningen inte längre är kvalificerad"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} lämnas öppna eftersom standardinställningen inte längre är kvalificerad"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} volontär tilldelad"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} volontärer tilldelade"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} väntar på ditt svar"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} väntar på ditt svar"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} evenemang skapat. Bemanna det nu?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} evenemang skapade. Bemanna dem nu?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "{{created}} tillfällen skapade, {{existing}} fanns redan"
 
@@ -23359,6 +23459,16 @@ msgstr "{{ministry}} skapade {{total}} händelser för {{className}} ({{upcoming
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} bemannar också några av dem."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} kommer att bemanna dessa evenemang. Deras förekomster skapas när de kommer under nästa {{count}} vecka."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} kommer att bemanna dessa evenemang. Deras förekomster skapas när de kommer under nästa {{count}} veckor."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23403,4 +23513,174 @@ msgstr "{{proposer}} ber {{substitute}} att ta deras plats"
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "{{title}} den {{date}} skapad. Bemanna den nu?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "Inte auktoriserad att ändra detta events målgrupp"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "Endast en volontärkoordinator kan ändra vem som koordinerar ett ministerium"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "Att välja V1 pausar V2-volontäre-post; allt som är i kö skickas när V2 är tillbaka, om inte dess förekomst är över."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "Lägg till detta ministeriums evenemang här: en arbetsstund, en klassmeeting varje söndag. De läggs till i kyrkkalender, och när de är skapade frågas du om du vill bemanna dem."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "Avbryt förekomst"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "Avbryt denna förekomsten"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "Att avbryta berättar inget för någon: ingen e-post skickas. Uppdrag behålls, inga påminnelser schemaläggs medan det är avbrutet, och ingen kan tilldelas tills det återställs."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "Borttagna evenemang lämnar varje kalender, med deras inchecks och antalet, och detta ministeriums bemanning av dem behåller bara datumet. Detta kan inte ångras."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "Evenemang borttagen: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "Evenemang att ta bort: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "Förekomst avbruten"
+
+#: 
+msgid "Occurrence restored"
+msgstr "Förekomst återställd"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "Lägg denna förekomst tillbaka på schemat så det kan bemanas igen? Ingen berättas: ingen e-post skickas."
+
+#: 
+msgid "Restore occurrence"
+msgstr "Återställ förekomst"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "Återställ denna förekomsten"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "Förekomsten kunde inte avbrytas"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "Förekomsten kunde inte återställas"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "Du kan lägga till evenemang på varje kalender, så alla är listade. Detta ministeriums egen kalender är markerad från början."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "Ett telefonnummer eller en e-postadress krävs"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "Ett telefonnummer eller en e-postadress krävs."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "Incheckning har inte öppnats för detta evenemang ännu"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "Klassificering givna till gäster som registrerar sig på en kiosk"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "Det gick inte att registrera gäst. Försök igen."
+
+#: 
+msgid "First name and last name are required"
+msgstr "Förnamn och efternamn är obligatoriska"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "Förnamn och efternamn måste vara högst 50 tecken vardera"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "Förnamn och efternamn måste vara minst 2 tecken vardera"
+
+#: 
+msgid "Guest"
+msgstr "Gäst"
+
+#: 
+msgid "Guest Classification"
+msgstr "Gästklassificering"
+
+#: 
+msgid "Invalid birth date"
+msgstr "Ogiltig födelsedatum."
+
+#: 
+msgid "Invalid email address"
+msgstr "Ogiltig e-postadress"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "Kioskeinställningar"
+
+#: 
+msgid "Please enter a check number"
+msgstr "Ange ett checknummer"
+
+#: 
+msgid "Register & Check In"
+msgstr "Registrera och Checka in"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "Registrera Ankomstgäst"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "Registrera ankomstgäst"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "Registrerad som ankomstgäst vid kiosken under evenemang: %s"
+
+#: 
+msgid "Registering..."
+msgstr "Registrering..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "Kräv ett checknummer när du registrerar checkbetalningar på insättningsposterna.\n"
+"Om: att inaktivera detta inaktiverar också duplicerad checknummerdetektion — samma fysiska check kan anges mer än en gång."
+
+#: 
+msgid "This event has ended"
+msgstr "Detta evenemang är över"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "Detta evenemang har ingen grupp tilldelad, så gäster kan inte registreras"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "Detta evenemang har ingen start- och sluttid"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} registrerad och incheckad!"
 

@@ -18957,6 +18957,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "\"%s\" אינו סוג לוח שנה שהדף מכיר."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": נוצר {{count}} מופע"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": נוצרו {{count}} מופעים"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s אינו יכול לשרת והציע את %2$s כמחליף."
 
@@ -20109,6 +20119,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "שליחת דוא\"ל אינה מופעלת. יש להגדיר את SMTP ולהפעיל דוא\"ל לפני השליחה."
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "הדוא״ל נשלח ל-{{count}} נמען."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "הדוא״ל נשלח ל-{{count}} נמענים."
+
+#: 
 msgid "Emails"
 msgstr "הודעות דוא\"ל"
 
@@ -20699,6 +20719,16 @@ msgstr "אף חבר עדיין לא התחבר לפורטל החברים."
 #: 
 msgid "No ministry"
 msgstr "אין שירות"
+
+#: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "אין מופעים חדשים. לכל {{count}} האירועים עד {{through}} כבר יש מופע."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "אין מופעים חדשים. לכל {{count}} האירועים עד {{through}} כבר יש מופע."
 
 #: 
 msgid "No past events"
@@ -21445,6 +21475,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "לוח הזמנים \"{{name}}\" נוצר. הוא אינו פעיל, ולכן לא ייווצרו לו מופעים עד שיופעל."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "לוח הזמנים \"{{name}}\" נוצר: {{count}} מופע"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "לוח הזמנים \"{{name}}\" נוצר: {{count}} מופעים"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "לוח הזמנים הושבת"
 
@@ -21559,6 +21599,16 @@ msgstr "שליחה למשרד הקהילה"
 #: 
 msgid "Send your answer"
 msgstr "שליחת התשובה"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "שולח ל-{{count}} נמען. כתובות ללא רשומת אדם אינן נכללות: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "שולח ל-{{count}} נמענים. כתובות ללא רשומת אדם אינן נכללות: {{list}}"
 
 #: 
 msgid "Sent"
@@ -23257,6 +23307,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "נוספו {{added}}, {{alreadyMembers}} כבר היו מתנדבים כאן"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "לא ניתן היה לשבץ {{count}}"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "לא ניתן היה לשבץ {{count}}"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} נשאר פתוח כי ברירת המחדל כבר אינה מוסמכת"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} נשארו פתוחים כי ברירת המחדל כבר אינה מוסמכת"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "שובץ {{count}} מתנדב"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "שובצו {{count}} מתנדבים"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} ממתין לתשובתך"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} ממתינים לתשובתך"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "נוצר {{count}} אירוע {{title}}. לאייש אותו עכשיו?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "נוצרו {{count}} אירועי {{title}}. לאייש אותם עכשיו?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "נוצרו {{created}} מופעים, {{existing}} כבר היו שם"
 
@@ -23267,6 +23367,16 @@ msgstr "{{ministry}} יצר {{total}} אירועים עבור {{className}} ({{u
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} מאיישים גם חלק מהם."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} יאיישו את האירועים האלה. המופעים שלהם נוצרים ככל שהם נכנסים לטווח {{count}} השבועות הקרובים."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} יאיישו את האירועים האלה. המופעים שלהם נוצרים ככל שהם נכנסים לטווח {{count}} השבועות הקרובים."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23311,4 +23421,174 @@ msgstr "{{proposer}} מבקש מ-{{substitute}} לתפוס את מקומו"
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "{{title}} ב-{{date}} נוצר. לאייש אותו עכשיו?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "אין הרשאה לשנות את קבוצת הקהל של אירוע זה"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "רק מנהל מתנדבים יכול לשנות מי מתאם שירות"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "בחירה ב-V1 משהה את דוא״ל המתנדבים של V2; כל מה שממתין בתור יישלח כש-V2 יופעל שוב, אלא אם המופע שלו הסתיים."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "הוסיפו כאן את אירועי השירות: יום עבודה, שיעור שנפגש בכל יום ראשון. הם נכנסים ללוח השנה של הכנסייה, ולאחר יצירתם תישאלו אם לאייש אותם."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "ביטול מופע"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "ביטול מופע זה"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "הביטול לא מודיע לאיש: לא נשלח דוא״ל. השיבוצים נשמרים, לא נקבעות תזכורות כל עוד המופע מבוטל, ואי אפשר לשבץ איש עד שישוחזר."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "אירועים שנמחקו נעלמים מכל לוחות השנה, יחד עם רישומי הכניסה וספירות הנוכחים, ואיוש השירות שלהם שומר רק את התאריך. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "אירועים שנמחקו: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "אירועים למחיקה: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "המופע בוטל"
+
+#: 
+msgid "Occurrence restored"
+msgstr "המופע שוחזר"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "להחזיר מופע זה ללוח הזמנים כדי שאפשר יהיה לאייש אותו שוב? איש לא מקבל הודעה: לא נשלח דוא״ל."
+
+#: 
+msgid "Restore occurrence"
+msgstr "שחזור מופע"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "שחזור מופע זה"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "לא ניתן היה לבטל את המופע"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "לא ניתן היה לשחזר את המופע"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "ניתן להוסיף אירועים לכל לוחות השנה, ולכן כולם מוצגים. לוח השנה של שירות זה מסומן כברירת מחדל."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "נדרש מספר טלפון או כתובת דוא״ל"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "נדרש מספר טלפון או כתובת דוא״ל."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "הצ׳ק-אין עדיין לא נפתח לאירוע זה"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "סיווג שניתן לאורחים ללא הרשמה מראש שנרשמו בקיוסק"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "רישום האורח נכשל. נא לנסות שוב."
+
+#: 
+msgid "First name and last name are required"
+msgstr "נדרשים שם פרטי ושם משפחה"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "שם פרטי ושם משפחה חייבים להכיל כל אחד 50 תווים לכל היותר"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "שם פרטי ושם משפחה חייבים להכיל כל אחד לפחות 2 תווים"
+
+#: 
+msgid "Guest"
+msgstr "אורח"
+
+#: 
+msgid "Guest Classification"
+msgstr "סיווג אורח"
+
+#: 
+msgid "Invalid birth date"
+msgstr "תאריך לידה לא חוקי."
+
+#: 
+msgid "Invalid email address"
+msgstr "כתובת דוא״ל לא תקינה"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "הגדרות קיוסק"
+
+#: 
+msgid "Please enter a check number"
+msgstr "נא להזין מספר צ׳ק"
+
+#: 
+msgid "Register & Check In"
+msgstr "רישום וצ׳ק-אין"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "רישום אורח ללא הרשמה מראש"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "רישום אורח ללא הרשמה מראש"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "נרשם כאורח ללא הרשמה מראש בקיוסק במהלך האירוע: %s"
+
+#: 
+msgid "Registering..."
+msgstr "נרשם..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "דרישת מספר צ׳ק בעת רישום תשלומי צ׳קים ברשומות הפקדה.\n"
+"שימו לב: ביטול האפשרות מבטל גם את זיהוי מספרי הצ׳קים הכפולים — ייתכן שאותו צ׳ק פיזי יוזן יותר מפעם אחת."
+
+#: 
+msgid "This event has ended"
+msgstr "אירוע זה הסתיים"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "לאירוע זה לא הוקצתה קבוצה, ולכן אי אפשר לרשום אורחים"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "לאירוע זה אין שעת התחלה וסיום"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} נרשם/ה וביצע/ה צ׳ק-אין!"
 

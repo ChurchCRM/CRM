@@ -5718,5 +5718,91 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}: {{name}} nie meer gekwalifiseer nie",
   "{{position}}: {{name}} qualified": "{{position}}: {{name}} gekwalifiseer",
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} vra {{substitute}} om hul plek in te neem",
-  "{{title}} on {{date}} created. Staff it now?": "{{title}} op {{date}} geskep. Beman dit nou?"
+  "{{title}} on {{date}} created. Staff it now?": "{{title}} op {{date}} geskep. Beman dit nou?",
+  "Not authorized to change this event's audience group": "Nie gemagtig om die teikengroep van hierdie gebeurtenis te verander",
+  "Only a volunteer manager can change who coordinates a ministry": "Slegs 'n vrywilligerkoördineerder kan verander wie 'n bediening koördineer",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "As u V1 kies, word V2-vrywilligeree-pos onderbreek; enigiets in die ry word gestuur wanneer V2 weer aan is, tensy sy voorkoms verby is.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Voeg hierdie bediening se gebeurtenisse hier by: 'n werkdag, 'n klas wat elke Sondag byeenkom. Hulle gaan op die kerkkalender, en sodra hulle geskep is, word u gevra of u hulle wil beman.",
+  "Cancel occurrence": "Kanselleer voorkoms",
+  "Cancel this occurrence": "Kanselleer hierdie voorkoms",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Kansellering sê niks vir iemand: geen e-pos word gestuur nie. Toekennings word behou, geen herinneringe word geskeduleer terwyl dit gekanselleer is nie, en niemand kan toegeken word totdat dit herstel word.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Verwyderde gebeurtenisse verlaat elke kalender, met hul incheck en koptellings, en hierdie bediening se beman daarvan hou slegs sy datum. Dit kan nie ongedaan gemaak word nie.",
+  "Events deleted: {{total}}": "Gebeurtenisse verwyder: {{total}}",
+  "Events to delete: {{total}}": "Gebeurtenisse om te verwyder: {{total}}",
+  "Occurrence cancelled": "Voorkoms gekanselleer",
+  "Occurrence restored": "Voorkoms herstel",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Sit hierdie voorkoms terug op die skedule sodat dit weer bemand kan word? Niemand word ingelig: geen e-pos word gestuur nie.",
+  "Restore occurrence": "Herstel voorkoms",
+  "Restore this occurrence": "Herstel hierdie voorkoms",
+  "The occurrence could not be cancelled": "Die voorkoms kon nie gekanselleer word nie",
+  "The occurrence could not be restored": "Die voorkoms kon nie herstel word nie",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "U mag gebeurtenisse by elke kalender voeg, dus almal word gelys. Hierdie bediening se eie kalender is afgevinked om mee te begin.",
+  "A phone number or email address is required": "'n Telefoonnommer of e-posadres is vereisk",
+  "A phone number or email address is required.": "'n Telefoonnommer of e-posadres is vereisk.",
+  "Check-in has not opened for this event yet": "Incheck het nog nie vir hierdie gebeurtenis oopgemaak nie",
+  "Classification given to walk-in guests registered on a kiosk": "Klassifikasie gegee aan inloopgaste wat by 'n kiosk registreer",
+  "Failed to register guest. Please try again.": "Kon nie gaste registreer nie. Probeer asseblief weer.",
+  "First name and last name are required": "Voornaam en van is vereisk",
+  "First name and last name must each be 50 characters or fewer": "Voornaam en van moet elk 50 karakters of minder wees",
+  "First name and last name must each be at least 2 characters": "Voornaam en van moet elk minstens 2 karakters wees",
+  "Guest": "Gaste",
+  "Guest Classification": "Gasteklassifikasie",
+  "Invalid birth date": "Ongeldige geboortedatum.",
+  "Invalid email address": "Ongeldige e-posadres",
+  "Kiosk Settings": "Kioskstelling",
+  "Please enter a check number": "Voer asseblief 'n tjekkie-nommer in",
+  "Register & Check In": "Registreer en Teken In",
+  "Register Walk-In Guest": "Registreer Inloopgas",
+  "Register walk-in guest": "Registreer inloopgas",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Geregistreer as inloopgas by die kiosk tydens gebeurtenis: %s",
+  "Registering...": "Registrering tans...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Vereis 'n tjekkie-nommer wanneer tsjekkie-betalings op depôtitems aangeteken word.\nOpmerking: die uitskakeling hiervan skakel ook dubbele tsjekkie-nommerdeteksie uit — dieselfde fisiese tsjek kan meer as een keer ingevoer word.",
+  "This event has ended": "Hierdie gebeurtenis het geëindig",
+  "This event has no group assigned, so guests cannot be registered": "Hierdie gebeurtenis het geen groep toegewys nie, dus gaste kan nie registreer word nie",
+  "This event has no start and end time": "Hierdie gebeurtenis het geen begin- en eindtyd nie",
+  "{{name}} registered and checked in!": "{{name}} is geregistreer en ingecheckt!",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\": {{count}} voorkoms geskep",
+    "other": "\"{{name}}\": {{count}} voorkomste geskep"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "E-pos gestuur aan {{count}} ontvanger.",
+    "other": "E-pos gestuur aan {{count}} ontvangers."
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "Geen nuwe voorkomste. Die {{count}} gebeurtenis deur {{through}} het reeds een.",
+    "other": "Geen nuwe voorkomste. Al die {{count}} gebeurtenisse deur {{through}} het reeds een."
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "Skedule \"{{name}}\" geskep: {{count}} voorkoms",
+    "other": "Skedule \"{{name}}\" geskep: {{count}} voorkomste"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "Stuur na {{count}} ontvanger. Adresse sonder persoonrekord is nie ingesluit nie: {{list}}",
+    "other": "Stuur na {{count}} ontvangers. Adresse sonder persoonrekord is nie ingesluit nie: {{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "{{count}} kon nie toegeken word nie",
+    "other": "{{count}} kon nie toegeken word nie"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "{{count}} hou oop want die verstek is nie meer gekwalifiseer nie",
+    "other": "{{count}} hou oop want die verstek is nie meer gekwalifiseer nie"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "{{count}} vrywilliger toegeken",
+    "other": "{{count}} vrywilligers toegeken"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} wag op u antwoord",
+    "other": "{{count}} wag op u antwoord"
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "{{count}} {{title}} gebeurtenis geskep. Beman dit nou?",
+    "other": "{{count}} {{title}} gebeurtenisse geskep. Beman hulle nou?"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "{{names}} sal hierdie gebeurtenisse beman. Hul voorkomste word gemaak soos wat dit in die volgende {{count}} week voorkom.",
+    "other": "{{names}} sal hierdie gebeurtenisse beman. Hul voorkomste word gemaak soos wat dit in die volgende {{count}} weke voorkom."
+  }
 }

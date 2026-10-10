@@ -18985,6 +18985,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "A(z) „%s” nem olyan naptártípus, amelyet ez az oldal ismer."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} esemény létrehozva"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} esemény létrehozva"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s nem tud szolgálni, és helyettesként %2$s személyt javasolta."
 
@@ -20137,6 +20147,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "Az e-mail küldése nincs engedélyezve. Küldés előtt állítsd be az SMTP-beállításokat, és engedélyezd az e-mailt."
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "E-mail küldve {{count}} címzettnek."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "E-mailek küldve {{count}} címzettnek."
+
+#: 
 msgid "Emails"
 msgstr "E-mailek"
 
@@ -20727,6 +20747,16 @@ msgstr "Még egyetlen tag sem jelentkezett be a Tagi portálra."
 #: 
 msgid "No ministry"
 msgstr "Nincs szolgálati terület"
+
+#: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Nincsenek új események. Minden {{count}} eseménynek {{through}}:ig már van egy."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Nincsenek új események. Minden {{count}} eseménynek {{through}}:ig már van egy."
 
 #: 
 msgid "No past events"
@@ -21473,6 +21503,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "A(z) „{{name}}” ütemezés létrejött. Inaktív, így nem hoz létre alkalmakat, amíg aktív nem lesz."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Az \"{{name}}\" ütemezés létrehozva: {{count}} esemény"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Az \"{{name}}\" ütemezés létrehozva: {{count}} esemény"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "Ütemezés inaktiválva"
 
@@ -21587,6 +21627,16 @@ msgstr "Küldés a gyülekezeti irodának"
 #: 
 msgid "Send your answer"
 msgstr "Válaszod elküldése"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Küldés {{count}} címzettnek. Kiszűrve azok az e-mail-címek, amelyekhez nincs személyzeti rekord: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Küldés {{count}} címzettnek. Kiszűrve azok az e-mail-címek, amelyekhez nincs személyzeti rekord: {{list}}"
 
 #: 
 msgid "Sent"
@@ -23285,6 +23335,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "{{added}} hozzáadva, {{alreadyMembers}} már önkéntes volt itt"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} nem sikerült hozzárendelni"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} nem sikerült hozzárendelni"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} nyitva maradt, mivel az alapértelmezés már nem jogosult"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} nyitva maradt, mivel az alapértelmezés már nem jogosult"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} önkéntes hozzárendelve"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} önkéntes hozzárendelve"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} a választ várja"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} a választ várja"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} esemény létrehozva. Töltse fel őket most?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} esemény létrehozva. Töltse fel őket most?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "{{created}} alkalom létrejött, {{existing}} már megvolt"
 
@@ -23295,6 +23395,16 @@ msgstr "{{ministry}} {{total}} eseményt hozott létre a(z) {{className}} osztá
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} is beoszt önkénteseket néhányra közülük."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "A {{names}} betölti ezeket az eseményeket. Azok előfordulásai a következő {{count}} hét során keletkeznek."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "A {{names}} betölti ezeket az eseményeket. Azok előfordulásai a következő {{count}} hét során keletkeznek."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23339,4 +23449,174 @@ msgstr "{{proposer}} azt kéri, hogy {{substitute}} vegye át a helyét"
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "{{title}} ekkor: {{date}} létrejött. Beosztod most az önkénteseket?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "Nincs jogosultsága az esemény csoportjának módosítására"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "Csak az önkéntes vezető módosíthatja a szolgálat koordinátorát"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "A V1 kiválasztása szünetelteti a V2 e-mailt; minden sorban álló küldésre kerül, amikor a V2 újra bekapcsol, hacsak az esemény még nem fejeződött be."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "Adja hozzá ennek a szolgálatnak az eseményeit itt: munkanap, vasárnap összeülő osztály. A templom naptárára kerülnek, és létrehozás után megkérdezik, szeretné-e őket személyzettel felszerelni."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "Esemény lemondása"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "Ennek az eseménynek a lemondása"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "A lemondás senkinek sem jelent bejelentést: nincs e-mail küldve. A hozzárendelések megtartódnak, a lemondás alatt nem ütemez emlékeztetőket, és senki sem rendelhető ki, amíg az nem helyreáll."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "A törölt események elhagyják az egyes naptárakat bejelentkezésükkel és lélekszámával, és ennek a szolgálatnak a személyzete csak a dátumát őrzi meg. Ez nem vonható vissza."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "Események törölve: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "Törlendő események: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "Az esemény törölve van"
+
+#: 
+msgid "Occurrence restored"
+msgstr "Az esemény helyreállt"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "Helyreállítani ezt az eseményt az ütemtervbe, hogy újra felszerelkezzen? Senkit sem értesítenek: nincs e-mail küldve."
+
+#: 
+msgid "Restore occurrence"
+msgstr "Esemény helyreállítása"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "Ennek az eseménynek a helyreállítása"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "Az eseményt nem lehetett lemondani"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "Az eseményt nem lehetett helyreállítani"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "Eseményeket adhat hozzá az egyes naptárakhoz, így mindegyik szerepel. Ennek a szolgálatnak saját naptára kezdésül megjelölve van."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "Telefonszám vagy e-mail cím szükséges"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "Telefonszám vagy e-mail cím szükséges."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "Az eseményre a bejelentkezés még nem nyitott meg"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "A kioskon regisztrált látogatók besorolása"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "A vendég regisztrálása nem sikerült. Kérjük, próbálja újra."
+
+#: 
+msgid "First name and last name are required"
+msgstr "Keresztnév és vezetéknév szükséges"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "A keresztnév és vezetéknév legfeljebb 50 karakter lehet"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "A keresztnév és vezetéknév legalább 2 karakter legyen"
+
+#: 
+msgid "Guest"
+msgstr "Vendég"
+
+#: 
+msgid "Guest Classification"
+msgstr "Vendég besorolása"
+
+#: 
+msgid "Invalid birth date"
+msgstr "Érvénytelen Születési dátum."
+
+#: 
+msgid "Invalid email address"
+msgstr "Érvénytelen e-mail cím"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "Kiosk beállítások"
+
+#: 
+msgid "Please enter a check number"
+msgstr "Kérjük, adja meg az ellenőrzési számot"
+
+#: 
+msgid "Register & Check In"
+msgstr "Regisztráljon és jelölje meg a jelenlétet"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "Vendég regisztrálása"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "vendég regisztrálása"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "Vendégként regisztrálva a kioskon az esemény során: %s"
+
+#: 
+msgid "Registering..."
+msgstr "Regisztráció..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "Szükség van ellenőrzési számra a befizetési bejegyzésekbe történő csekk befizetésének rögzítésekor.\n"
+"Megjegyzés: ennek letiltása a duplikált csekk szám-detektálást is letiltja - ugyanaz a fizikai csekk több mint egyszer is bevihető."
+
+#: 
+msgid "This event has ended"
+msgstr "Ez az esemény véget ért"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "Ennek az eseménynek nincs csoportja hozzárendelve, ezért nem lehet vendégeket regisztrálni"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "Ennek az eseménynek nincs kezdési és befejezési ideje"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} regisztrálva és jelölve van!"
 

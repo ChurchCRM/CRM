@@ -18959,6 +18959,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "\"%s\" bu sayfanın tanıdığı bir takvim türü değil."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} olay oluşturuldu"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} olay oluşturuldu"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s hizmet edemiyor ve yerine %2$s kişisini önerdi."
 
@@ -20111,6 +20121,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "E-posta gönderimi etkin değil. Göndermeden önce SMTP ayarlarını yapılandırın ve e-postayı etkinleştirin."
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "E-posta {{count}} alıcıya gönderildi."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "E-postalar {{count}} alıcıya gönderildi."
+
+#: 
 msgid "Emails"
 msgstr "E-postalar"
 
@@ -20701,6 +20721,16 @@ msgstr "Henüz hiçbir üye Üye Portalı'na giriş yapmadı."
 #: 
 msgid "No ministry"
 msgstr "Hizmet yok"
+
+#: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Yeni etkinlik yok. Tüm {{count}} olaylar {{through}} aracılığıyla zaten bir taneye sahip."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Yeni etkinlik yok. Tüm {{count}} olaylar {{through}} aracılığıyla zaten bir taneye sahip."
 
 #: 
 msgid "No past events"
@@ -21447,6 +21477,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "\"{{name}}\" programı oluşturuldu. Etkin olmadığı için etkinleştirilene kadar oluşum üretmez."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "\"{{name}}\" programı oluşturuldu: {{count}} olay"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "\"{{name}}\" programı oluşturuldu: {{count}} olay"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "Program devre dışı bırakıldı"
 
@@ -21561,6 +21601,16 @@ msgstr "Kilise ofisine gönder"
 #: 
 msgid "Send your answer"
 msgstr "Yanıtınızı gönderin"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "{{count}} alıcıya gönderiliyor. Kişi kaydı olmayan adresler dahil değildir: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "{{count}} alıcıya gönderiliyor. Kişi kaydı olmayan adresler dahil değildir: {{list}}"
 
 #: 
 msgid "Sent"
@@ -23259,6 +23309,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "{{added}} eklendi, {{alreadyMembers}} zaten burada gönüllüydü"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} atanamamıştır"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} atanamamışlardır"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} açık bırakıldı çünkü varsayılan değer artık uygun değil"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} açık bırakıldı çünkü varsayılan değer artık uygun değil"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} gönüllü atandı"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} gönüllü atandı"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} yanıtınızı bekliyor"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} yanıtınızı bekliyorlar"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} olayı oluşturuldu. Şimdi personel mi atabilirim?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} olayı oluşturuldu. Şimdi personel mi atabilirim?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "{{created}} oluşum oluşturuldu, {{existing}} zaten vardı"
 
@@ -23269,6 +23369,16 @@ msgstr "{{ministry}}, {{className}} için {{total}} etkinlik oluşturdu ({{upcom
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} ayrıca bazılarına kadro veriyor."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} bu olayları personelle dolduracak. Oluşumları gelecek {{count}} haftada ortaya çıktıkça yapılır."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} bu olayları personelle dolduracak. Oluşumları gelecek {{count}} haftada ortaya çıktıkça yapılır."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23313,4 +23423,174 @@ msgstr "{{proposer}}, {{substitute}} kişisinden yerini almasını istiyor"
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "{{date}} tarihindeki {{title}} oluşturuldu. Şimdi kadro verilsin mi?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "Bu olayın kitlesini değiştirmek için yetkiniz yok"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "Sadece bir gönüllü yöneticisi bir hizmeti koordine eden kişiyi değiştirebilir"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "V1'i seçmek V2 gönüllü e-postasını duraklatır; sırada olan her şey V2 tekrar açıldığında gönderilir, olay sona ermedikçe."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "Bu hizmetin etkinliklerini buraya ekleyin: bir iş günü, her pazar buluşan bir sınıf. Kilise takviminde görünürler ve oluşturulduktan sonra bunları personelle doldurmak isteyip istemediğiniz sorulur."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "Olayı iptal et"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "Bu olayı iptal et"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "İptal etme kimseye haber vermez: e-posta gönderilmez. Atamalar tutulur, iptal edilirken hatırlatıcı planlanmaz ve geri yüklenene kadar kimse atanmaz."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "Silinen etkinlikler her takvimi, giriş ve sayımlarıyla birlikte bırakır ve bu hizmetin personeli yalnızca tarihini tutar. Bu geri alınamaz."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "Etkinlikler silindi: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "Silinecek etkinlikler: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "Olay iptal edildi"
+
+#: 
+msgid "Occurrence restored"
+msgstr "Olay geri yüklendi"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "Bu olayı programa geri koymak için personelle doldurulabilir mi? Kimseye haber verilmez: e-posta gönderilmez."
+
+#: 
+msgid "Restore occurrence"
+msgstr "Olayı geri yükle"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "Bu olayı geri yükle"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "Olay iptal edilemedi"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "Olay geri yüklenemedi"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "Her takvime etkinlik ekleyebilir, böylece hepsi listelenir. Bu hizmetin kendi takvimi başlangıçta işaretlidir."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "Telefon numarası veya e-posta adresi gereklidir"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "Telefon numarası veya e-posta adresi gereklidir."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "Bu olay için giriş henüz açılmadı"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "Bir kioskta kayıtlı yürüyüş konuklarına verilen sınıflandırma"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "Misafir kaydı başarısız. Lütfen tekrar deneyin."
+
+#: 
+msgid "First name and last name are required"
+msgstr "Ad ve soyadı gereklidir"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "Ad ve soyadı her birinin 50 karakter veya daha az olması gerekir"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "Ad ve soyadı her birinin en az 2 karakter olması gerekir"
+
+#: 
+msgid "Guest"
+msgstr "Misafir"
+
+#: 
+msgid "Guest Classification"
+msgstr "Misafir Sınıflandırması"
+
+#: 
+msgid "Invalid birth date"
+msgstr "Geçersiz doğum tarihi."
+
+#: 
+msgid "Invalid email address"
+msgstr "Geçersiz e-posta adresi"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "Kiosk Ayarları"
+
+#: 
+msgid "Please enter a check number"
+msgstr "Lütfen bir çek numarası girin"
+
+#: 
+msgid "Register & Check In"
+msgstr "Kayıt ol ve giriş yap"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "Misafiri kaydedin"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "misafiri kaydedin"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "Olay sırasında kioskta yürüme misafiri olarak kaydedildi: %s"
+
+#: 
+msgid "Registering..."
+msgstr "Kayıt olunuyor..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "Çek ödemelerini mevduat girişlerine kaydederken bir çek numarası gerektirir.\n"
+"Not: Bunu devre dışı bırakmak, yinelenen çek numarası algılamayı da devre dışı bırakır - aynı fiziksel çek birden fazla kez girilebilir."
+
+#: 
+msgid "This event has ended"
+msgstr "Bu olay sona erdi"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "Bu olayın atanmış bir grubu yok, bu nedenle misafirler kaydedilemez"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "Bu olayın başlangıç ve bitiş zamanı yok"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} kayıtlı ve giriş yapıldı!"
 

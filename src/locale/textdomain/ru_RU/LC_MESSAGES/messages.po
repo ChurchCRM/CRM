@@ -19045,6 +19045,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "«%s» — неизвестный этой странице вид календаря."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} событие создано"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} событий создано"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s не может служить и предложил(а) %2$s в качестве замены."
 
@@ -20217,6 +20227,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "Отправка писем не включена. Настройте параметры SMTP и включите отправку почты перед отправкой."
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "Письмо отправлено {{count}} получателю."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "Письма отправлены {{count}} получателям."
+
+#: 
 msgid "Emails"
 msgstr "Письма"
 
@@ -20807,6 +20827,16 @@ msgstr "Ни один член общины ещё не входил в порт
 #: 
 msgid "No ministry"
 msgstr "Нет служения"
+
+#: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Нет новых событий. Все {{count}} события до {{through}} уже имеют событие."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Нет новых событий. Все {{count}} события до {{through}} уже имеют события."
 
 #: 
 msgid "No past events"
@@ -21557,6 +21587,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "Расписание «{{name}}» создано. Оно неактивно, поэтому не создаёт проведений, пока не станет активным."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Расписание \"{{name}}\" создано: {{count}} событие"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Расписание \"{{name}}\" создано: {{count}} событий"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "Расписание деактивировано"
 
@@ -21671,6 +21711,16 @@ msgstr "Отправить в церковную канцелярию"
 #: 
 msgid "Send your answer"
 msgstr "Отправить ответ"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Отправка {{count}} получателю. Адреса без записи о человеке не включены: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Отправка {{count}} получателям. Адреса без записи о человеке не включены: {{list}}"
 
 #: 
 msgid "Sent"
@@ -23377,6 +23427,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "Добавлено: {{added}}, уже были волонтёрами здесь: {{alreadyMembers}}"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} не удалось назначить"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} не удалось назначить"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} осталось открыто, поскольку по умолчанию больше не квалифицируется"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} осталось открыто, поскольку по умолчанию больше не квалифицируются"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} добровольец назначен"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} добровольцев назначено"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} ожидает вашего ответа"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} ожидают вашего ответа"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} событие {{title}} создано. Назначить добровольцев сейчас?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} событий {{title}} создано. Назначить добровольцев сейчас?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "Создано проведений: {{created}}, уже существовало: {{existing}}"
 
@@ -23387,6 +23487,16 @@ msgstr "Служение «{{ministry}}» создало событий для �
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} также обслуживают некоторые из них."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} будет обслуживать эти события. Их события будут созданы в течение следующей {{count}} недели."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} будут обслуживать эти события. Их события будут созданы в течение следующих {{count}} недель."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23431,4 +23541,174 @@ msgstr "{{proposer}} просит {{substitute}} занять своё мест�
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "Событие «{{title}}» на {{date}} создано. Назначить людей сейчас?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "У вас нет прав для изменения группы этого события"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "Только руководитель добровольцев может изменить координатора служения"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "Выбор V1 приостанавливает отправку писем V2; все отложенные письма будут отправлены при включении V2, если событие еще не завершилось."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "Добавляйте события этого служения здесь: рабочий день, класс, встречающийся каждое воскресенье. Они попадут в церковный календарь, и после создания вы сможете назначить добровольцев."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "Отменить событие"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "Отменить это событие"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "Отмена не сообщается никому: письма не отправляются. Назначения сохраняются, напоминания не планируются, пока событие отменено, и никого нельзя назначить, пока оно не восстановлено."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "Удаленные события удаляются из всех календарей вместе с регистрациями посещений и подсчетом посещаемости, но служение сохраняет только дату. Это невозможно отменить."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "События удалены: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "События для удаления: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "Событие отменено"
+
+#: 
+msgid "Occurrence restored"
+msgstr "Событие восстановлено"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "Вернуть это событие в расписание, чтобы его можно было заполнить добровольцами? Никому не будет отправлено сообщение."
+
+#: 
+msgid "Restore occurrence"
+msgstr "Восстановить событие"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "Восстановить это событие"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "Событие не удалось отменить"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "Событие не удалось восстановить"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "Вы можете добавлять события во все календари, поэтому все они будут отображаться. Календарь этого служения отмечен по умолчанию."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "Требуется номер телефона или адрес электронной почты"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "Требуется номер телефона или адрес электронной почты."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "Регистрация еще не открыта для этого события"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "Классификация, присвоенная случайным гостям, зарегистрированным на киоске"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "Не удалось зарегистрировать гостя. Пожалуйста, попробуйте еще раз."
+
+#: 
+msgid "First name and last name are required"
+msgstr "Требуются имя и фамилия"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "Имя и фамилия должны содержать не более 50 символов"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "Имя и фамилия должны содержать не менее 2 символов"
+
+#: 
+msgid "Guest"
+msgstr "Гость"
+
+#: 
+msgid "Guest Classification"
+msgstr "Классификация гостя"
+
+#: 
+msgid "Invalid birth date"
+msgstr "Недопустимая дата рождения."
+
+#: 
+msgid "Invalid email address"
+msgstr "Неверный адрес электронной почты"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "Параметры киоска"
+
+#: 
+msgid "Please enter a check number"
+msgstr "Пожалуйста, введите номер чека"
+
+#: 
+msgid "Register & Check In"
+msgstr "Зарегистрировать и отметить присутствие"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "Зарегистрировать случайного гостя"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "зарегистрировать случайного гостя"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "Зарегистрирован в качестве случайного гостя на киоске во время события: %s"
+
+#: 
+msgid "Registering..."
+msgstr "Регистрация..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "Требовать номер чека при записи чеков в записи взносов.\n"
+"Примечание: отключение этой опции также отключает обнаружение дубликатов чеков — один физический чек может быть введен несколько раз."
+
+#: 
+msgid "This event has ended"
+msgstr "Это событие завершилось"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "Этому событию не назначена группа, поэтому гостей нельзя зарегистрировать"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "У этого события нет времени начала и окончания"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} зарегистрирован и отметил присутствие!"
 

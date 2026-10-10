@@ -18937,6 +18937,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "\"%s\" bukan jenis kalender yang dikenal halaman ini."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\"：{{count}} kejadian dibuat"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\"：{{count}} kejadian dibuat"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s tidak dapat melayani dan mengusulkan %2$s sebagai pengganti."
 
@@ -18973,8 +18983,43 @@ msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or r
 msgstr "%1$s: Maksimum adalah %2$d tetapi %3$d relawan bawaan dipilih. Hapus satu atau naikkan Maksimum."
 
 #: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d hari"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d default dilewati karena alasan lain (kejadian berakhir, dibatalkan atau penuh)"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d default dilewati: kualifikasi dicabut"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d relawan default ditugaskan"
+
+#: 
 msgid "%d failed"
 msgstr "%d gagal"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "Posisi ini masih membutuhkan %d relawan lagi. Buka kejadian untuk mengisi celah."
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d kejadian baru"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "%d relawan masih dibutuhkan untuk kejadian yang akan datang."
 
 #: 
 msgid "%s Calendar"
@@ -18987,6 +19032,11 @@ msgstr "Keluarga %s"
 #: 
 msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
 msgstr "%s tidak menyediakan pengajar untuk Sekolah Minggu, sehingga tim, jadwal, dan acaranya tidak dapat menggunakan kelas. Manajer relawan dapat mengubahnya di Ubah pelayanan."
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "%s email dari gereja"
 
 #: 
 msgid "%s family"
@@ -19011,6 +19061,16 @@ msgstr "%s masih diharapkan melayani. Silakan hubungi koordinator jika tidak dap
 #: 
 msgid "%s not sent (%s): %s"
 msgstr "%s tidak terkirim (%s): %s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "%s orang di rumah tangga Anda"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s posisi"
 
 #: 
 msgid "%s: the same person is chosen twice as a default volunteer"
@@ -20029,6 +20089,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "Pengiriman email tidak diaktifkan. Atur pengaturan SMTP dan aktifkan email sebelum mengirim."
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "Email dikirim ke {{count}} penerima."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "Email dikirim ke {{count}} penerima."
+
+#: 
 msgid "Emails"
 msgstr "Email"
 
@@ -20621,6 +20691,16 @@ msgid "No ministry"
 msgstr "Tanpa pelayanan"
 
 #: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Tidak ada kejadian baru. Semua {{count}} peristiwa melalui {{through}} sudah memiliki satu."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Tidak ada kejadian baru. Semua {{count}} peristiwa melalui {{through}} sudah memiliki satu."
+
+#: 
 msgid "No past events"
 msgstr "Tidak ada acara yang lalu"
 
@@ -20905,6 +20985,11 @@ msgid "Offer to help"
 msgstr "Tawarkan bantuan"
 
 #: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "Sekali sehari setiap jadwal aktif mendapatkan kejadian untuk peristiwa yang diikutinya, hingga %d minggu ke depan, dan relawan default setiap posisi ditugaskan pada yang baru sementara mereka tetap memenuhi syarat."
+
+#: 
 msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
 msgstr "Setelah orang ini memenuhi syarat untuk suatu posisi, ia muncul di sini, beserta tanggal ia dijadwalkan melayani."
 
@@ -21059,6 +21144,11 @@ msgstr "Reset Kata Sandi"
 #: 
 msgid "Password reset link"
 msgstr "Tautan Reset Kata Sandi"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "Kata sandi harus panjang minimal %s karakter."
 
 #: 
 msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
@@ -21353,6 +21443,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "Jadwal \"{{name}}\" dibuat. Jadwal ini tidak aktif, sehingga tidak membuat kejadian sampai diaktifkan."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Jadwal \"{{name}}\" dibuat：{{count}} kejadian"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Jadwal \"{{name}}\" dibuat：{{count}} kejadian"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "Jadwal dinonaktifkan"
 
@@ -21467,6 +21567,16 @@ msgstr "Kirim ke kantor gereja"
 #: 
 msgid "Send your answer"
 msgstr "Kirim jawaban Anda"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Mengirim ke {{count}} penerima. Alamat tanpa catatan orang tidak disertakan: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Mengirim ke {{count}} penerima. Alamat tanpa catatan orang tidak disertakan: {{list}}"
 
 #: 
 msgid "Sent"
@@ -22405,6 +22515,16 @@ msgid "They could not be removed from this ministry"
 msgstr "Mereka tidak dapat dikeluarkan dari pelayanan ini"
 
 #: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "Mereka selesai %d menit setelah acara berakhir."
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "Mereka selesai %d menit sebelum acara berakhir."
+
+#: 
 msgid "They were already a volunteer here"
 msgstr "Mereka sudah menjadi relawan di sini"
 
@@ -22777,6 +22897,16 @@ msgid "Volunteers start"
 msgstr "Relawan mulai"
 
 #: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "Relawan mulai %d menit setelah acara dimulai."
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "Relawan mulai %d menit sebelum acara dimulai."
+
+#: 
 msgid "Waiting for a reply"
 msgstr "Menunggu balasan"
 
@@ -23141,6 +23271,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "{{added}} ditambahkan, {{alreadyMembers}} sudah menjadi relawan di sini"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} tidak dapat ditugaskan"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} tidak dapat ditugaskan"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} dibiarkan terbuka karena default tidak lagi memenuhi syarat"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} dibiarkan terbuka karena default tidak lagi memenuhi syarat"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} relawan ditugaskan"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} relawan ditugaskan"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} menunggu jawaban Anda"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} menunggu jawaban Anda"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} peristiwa dibuat. Atur staf mereka sekarang?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} {{title}} peristiwa dibuat. Atur staf mereka sekarang?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "{{created}} kejadian dibuat, {{existing}} sudah ada"
 
@@ -23151,6 +23331,16 @@ msgstr "{{ministry}} membuat {{total}} acara untuk {{className}} ({{upcoming}} m
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} juga bertugas pada sebagian acara."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} akan mengatur staf untuk peristiwa ini. Kejadian mereka dibuat saat tiba dalam {{count}} minggu ke depan."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} akan mengatur staf untuk peristiwa ini. Kejadian mereka dibuat saat tiba dalam {{count}} minggu ke depan."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23195,4 +23385,174 @@ msgstr "{{proposer}} meminta {{substitute}} menggantikannya"
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "{{title}} pada {{date}} dibuat. Tugaskan petugas sekarang?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "Tidak diizinkan mengubah kelompok penonton acara ini"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "Hanya manajer relawan yang dapat mengubah siapa yang mengoordinasi pelayanan"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "Memilih V1 menghentikan sementara email relawan V2; apa pun yang antri akan dikirim ketika V2 kembali aktif, kecuali jika kejadiannya sudah berakhir."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "Tambahkan acara pelayanan ini di sini: hari kerja, kelas yang bertemu setiap hari Minggu. Mereka masuk ke kalender gereja, dan setelah dibuat Anda akan ditanya apakah akan menyediakan staf untuk mereka."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "Batalkan kejadian"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "Batalkan kejadian ini"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "Pembatalan tidak memberitahu siapa pun: tidak ada email yang dikirim. Penugasan disimpan, tidak ada pengingat yang dijadwalkan saat dibatalkan, dan tidak ada yang dapat ditugaskan sampai dipulihkan."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "Acara yang dihapus meninggalkan setiap kalender, dengan check-in dan hitungan kepalanya, dan penempatan staf pelayanan ini hanya menyimpan tanggalnya. Ini tidak dapat dibatalkan."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "Acara dihapus: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "Acara yang akan dihapus: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "Kejadian dibatalkan"
+
+#: 
+msgid "Occurrence restored"
+msgstr "Kejadian dipulihkan"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "Kembalikan kejadian ini ke jadwal sehingga dapat diisi staf lagi? Tidak ada yang diberitahu: tidak ada email yang dikirim."
+
+#: 
+msgid "Restore occurrence"
+msgstr "Pulihkan kejadian"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "Pulihkan kejadian ini"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "Kejadian tidak dapat dibatalkan"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "Kejadian tidak dapat dipulihkan"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "Anda dapat menambahkan acara ke setiap kalender, jadi semuanya tercantum. Kalender pelayanan ini sendiri dicentang untuk memulai."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "Nomor telepon atau alamat email diperlukan"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "Nomor telepon atau alamat email diperlukan."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "Check-in belum dibuka untuk acara ini"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "Klasifikasi yang diberikan kepada pengunjung yang mendaftar di kiosk"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "Gagal mendaftarkan tamu. Silakan coba lagi."
+
+#: 
+msgid "First name and last name are required"
+msgstr "Nama depan dan nama belakang diperlukan"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "Nama depan dan nama belakang masing-masing harus 50 karakter atau lebih sedikit"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "Nama depan dan nama belakang masing-masing harus setidaknya 2 karakter"
+
+#: 
+msgid "Guest"
+msgstr "Tamu"
+
+#: 
+msgid "Guest Classification"
+msgstr "Klasifikasi Tamu"
+
+#: 
+msgid "Invalid birth date"
+msgstr "Tanggal kelahiran tidak valid"
+
+#: 
+msgid "Invalid email address"
+msgstr "Alamat email tidak valid"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "Pengaturan Kiosk"
+
+#: 
+msgid "Please enter a check number"
+msgstr "Silakan masukkan nomor cek"
+
+#: 
+msgid "Register & Check In"
+msgstr "Daftar & Masuk"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "Daftarkan Tamu Yang Datang"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "Daftarkan tamu yang datang"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "Terdaftar sebagai tamu yang datang di kiosk selama acara: %s"
+
+#: 
+msgid "Registering..."
+msgstr "Sedang mendaftar..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "Memerlukan nomor cek saat merekam pembayaran cek pada entri penyetoran.\n"
+"Catatan: menonaktifkan ini juga menonaktifkan deteksi nomor cek duplikat — cek fisik yang sama dapat dimasukkan lebih dari sekali."
+
+#: 
+msgid "This event has ended"
+msgstr "Acara ini telah berakhir"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "Acara ini tidak memiliki kelompok yang ditugaskan, jadi tamu tidak dapat didaftarkan"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "Acara ini tidak memiliki waktu mulai dan berakhir"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} telah mendaftar dan login!"
 

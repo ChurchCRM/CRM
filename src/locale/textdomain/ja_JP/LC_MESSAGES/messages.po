@@ -18908,6 +18908,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "「%s」は、このページが扱うカレンダーの種類ではありません。"
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\"：{{count}} 個の発生が作成されました"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\"：{{count}} 個の発生が作成されました"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s は奉仕できないため、代わりに %2$s を提案しました。"
 
@@ -18944,8 +18954,43 @@ msgid "%1$s: Max is %2$d but %3$d default volunteers are chosen. Remove one or r
 msgstr "%1$s：最大は %2$d ですが、既定の奉仕者が %3$d 人選ばれています。1人外すか、最大を増やしてください。"
 
 #: 
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d 日"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[0] "%d デフォルトが別の理由でスキップされました（発生が終了、キャンセル、または満杯）"
+
+#: 
+msgid "%d default skipped: qualification revoked"
+msgid_plural "%d defaults skipped: qualification revoked"
+msgstr[0] "%d デフォルトがスキップされました：資格が取り消されました"
+
+#: 
+msgid "%d default volunteer assigned"
+msgid_plural "%d default volunteers assigned"
+msgstr[0] "%d デフォルト ボランティアが割り当てられました"
+
+#: 
 msgid "%d failed"
 msgstr "%d 件失敗しました"
+
+#: 
+msgid "%d more volunteer is still needed for this position. Open the occurrence to fill the gap."
+msgid_plural "%d more volunteers are still needed for this position. Open the occurrence to fill the gap."
+msgstr[0] "このポジションにはさらに %d 人のボランティアが必要です。ギャップを埋めるために発生を開きます。"
+
+#: 
+msgid "%d new occurrence"
+msgid_plural "%d new occurrences"
+msgstr[0] "%d 新規発生"
+
+#: 
+msgid "%d volunteer is still needed for an upcoming occurrence."
+msgid_plural "%d volunteers are still needed for an upcoming occurrence."
+msgstr[0] "今後の発生のために %d 人のボランティアが必要です。"
 
 #: 
 msgid "%s Calendar"
@@ -18958,6 +19003,11 @@ msgstr "%s 家族"
 #: 
 msgid "%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry."
 msgstr "%s は教会学校の教師を提供しないため、そのチーム、スケジュール、行事ではクラスを使用できません。奉仕者マネージャーがミニストリーの編集で変更できます。"
+
+#: 
+msgid "%s email from the church"
+msgid_plural "%s emails from the church"
+msgstr[0] "教会からの %s メール"
 
 #: 
 msgid "%s family"
@@ -18982,6 +19032,16 @@ msgstr "%s は引き続き奉仕する予定です。できない場合は、コ
 #: 
 msgid "%s not sent (%s): %s"
 msgstr "%s を送信できませんでした（%s）：%s"
+
+#: 
+msgid "%s person in your household"
+msgid_plural "%s people in your household"
+msgstr[0] "ご家庭の %s 人"
+
+#: 
+msgid "%s position"
+msgid_plural "%s positions"
+msgstr[0] "%s ポジション"
 
 #: 
 msgid "%s: the same person is chosen twice as a default volunteer"
@@ -20000,6 +20060,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "メール送信が有効になっていません。送信する前に、SMTP設定を行ってメールを有効にしてください。"
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "{{count}} 人の受信者にメール送信。"
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "{{count}} 人の受信者にメール送信。"
+
+#: 
 msgid "Emails"
 msgstr "メール"
 
@@ -20592,6 +20662,16 @@ msgid "No ministry"
 msgstr "ミニストリーなし"
 
 #: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "新しい発生なし。{{through}} までのすべての {{count}} イベントには既に 1 つあります。"
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "新しい発生なし。{{through}} までのすべての {{count}} イベントには既に 1 つあります。"
+
+#: 
 msgid "No past events"
 msgstr "過去の行事はありません"
 
@@ -20876,6 +20956,11 @@ msgid "Offer to help"
 msgstr "お手伝いを申し出る"
 
 #: 
+msgid "Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
+msgstr[0] "1 日 1 回、すべてのアクティブなスケジュールは、それが従うイベントの発生を取得し、最大 %d 週先まで、各ポジションのデフォルト ボランティアは資格を保持している新しい発生に割り当てられます。"
+
+#: 
 msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
 msgstr "この人が役割の資格を得ると、ここに表示され、奉仕する予定の日付も表示されます。"
 
@@ -21030,6 +21115,11 @@ msgstr "パスワードリセット"
 #: 
 msgid "Password reset link"
 msgstr "パスワードリセットリンク"
+
+#: 
+msgid "Passwords must be at least %s character long."
+msgid_plural "Passwords must be at least %s characters long."
+msgstr[0] "パスワードは最低 %s 文字である必要があります。"
 
 #: 
 msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
@@ -21324,6 +21414,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "スケジュール「{{name}}」を作成しました。無効状態のため、有効にするまで開催回は作られません。"
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "スケジュール \"{{name}}\" 作成：{{count}} 個の発生"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "スケジュール \"{{name}}\" 作成：{{count}} 個の発生"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "スケジュールを無効化しました"
 
@@ -21438,6 +21538,16 @@ msgstr "教会の事務局に送信"
 #: 
 msgid "Send your answer"
 msgstr "回答を送信"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "{{count}} 人の受信者に送信します。人物記録のないアドレスは含まれていません：{{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "{{count}} 人の受信者に送信します。人物記録のないアドレスは含まれていません：{{list}}"
 
 #: 
 msgid "Sent"
@@ -22376,6 +22486,16 @@ msgid "They could not be removed from this ministry"
 msgstr "このミニストリーから外せませんでした"
 
 #: 
+msgid "They finish %d minute after the event ends."
+msgid_plural "They finish %d minutes after the event ends."
+msgstr[0] "彼らはイベント終了後 %d 分に完了します。"
+
+#: 
+msgid "They finish %d minute before the event ends."
+msgid_plural "They finish %d minutes before the event ends."
+msgstr[0] "彼らはイベント終了前 %d 分に完了します。"
+
+#: 
 msgid "They were already a volunteer here"
 msgstr "すでにここの奉仕者でした"
 
@@ -22748,6 +22868,16 @@ msgid "Volunteers start"
 msgstr "奉仕の開始"
 
 #: 
+msgid "Volunteers start %d minute after the event starts."
+msgid_plural "Volunteers start %d minutes after the event starts."
+msgstr[0] "ボランティアはイベント開始後 %d 分に開始します。"
+
+#: 
+msgid "Volunteers start %d minute before the event starts."
+msgid_plural "Volunteers start %d minutes before the event starts."
+msgstr[0] "ボランティアはイベント開始前 %d 分に開始します。"
+
+#: 
 msgid "Waiting for a reply"
 msgstr "返信待ち"
 
@@ -23112,6 +23242,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "{{added}} 人を追加しました。{{alreadyMembers}} 人はすでにここの奉仕者でした"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} 個は割り当てられませんでした"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} 個は割り当てられませんでした"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} 個はデフォルトが適格でなくなったため、開いたままです"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} 個はデフォルトが適格でなくなったため、開いたままです"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} 人のボランティアが割り当てられました"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} 人のボランティアが割り当てられました"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} 個があなたの回答を待っています"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} 個があなたの回答を待っています"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} 個の {{title}} イベントが作成されました。今すぐスタッフを配置しますか？"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} 個の {{title}} イベントが作成されました。今すぐスタッフを配置しますか？"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "{{created}} 件の開催回を作成しました。{{existing}} 件はすでにありました"
 
@@ -23122,6 +23302,16 @@ msgstr "{{ministry}} が {{className}} の行事を {{total}} 件作成しまし
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} も、その一部に奉仕者を割り当てています。"
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} がこれらのイベントにスタッフを配置します。彼らの発生は次の {{count}} 週以内に作成されます。"
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} がこれらのイベントにスタッフを配置します。彼らの発生は次の {{count}} 週以内に作成されます。"
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23166,4 +23356,174 @@ msgstr "{{proposer}} さんが {{substitute}} さんに代わりを依頼して�
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "{{date}} の {{title}} を作成しました。今すぐ奉仕者を割り当てますか？"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "このイベントの対象グループを変更する権限がありません"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "ボランティア マネージャーのみがミニストリーの調整者を変更できます"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "V1 を選択すると、V2 ボランティア メールが一時停止されます。キューに入っているメールは、発生が終了していない限り、V2 が再度有効になった時点で送信されます。"
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "このミニストリーのイベントをここに追加してください：作業日、毎日曜日に開催されるクラス。教会のカレンダーに表示され、作成されたら人員配置を行うかどうか尋ねられます。"
+
+#: 
+msgid "Cancel occurrence"
+msgstr "発生をキャンセル"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "この発生をキャンセル"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "キャンセルしてもだれにも通知されません。メールは送信されません。割り当ては保持され、キャンセル中はリマインダーがスケジュールされず、復元されるまでだれも割り当てることができません。"
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "削除されたイベントはすべてのカレンダーから削除され、チェックインと人数統計も削除されます。このミニストリーの人員配置はその日付のみを保持します。この操作は元に戻せません。"
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "削除されたイベント：{{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "削除するイベント：{{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "発生がキャンセルされました"
+
+#: 
+msgid "Occurrence restored"
+msgstr "発生が復元されました"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "この発生をスケジュールに戻して、再度人員配置できるようにしますか？だれにも通知されません。メールは送信されません。"
+
+#: 
+msgid "Restore occurrence"
+msgstr "発生を復元"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "この発生を復元"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "発生をキャンセルできませんでした"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "発生を復元できませんでした"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "すべてのカレンダーにイベントを追加でき、すべてが一覧表示されます。このミニストリーの独自カレンダーは最初はチェックされています。"
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "電話番号またはメール アドレスが必須です"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "電話番号またはメール アドレスが必須です。"
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "このイベントのチェックインはまだ開始されていません"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "キオスクで登録された来客に与えられた分類"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "来客の登録に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "First name and last name are required"
+msgstr "名と姓は必須です"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "名と姓はそれぞれ 50 文字以下である必要があります"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "名と姓はそれぞれ最低 2 文字である必要があります"
+
+#: 
+msgid "Guest"
+msgstr "来客"
+
+#: 
+msgid "Guest Classification"
+msgstr "来客分類"
+
+#: 
+msgid "Invalid birth date"
+msgstr "無効な生年月日です。"
+
+#: 
+msgid "Invalid email address"
+msgstr "無効なメール アドレス"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "キオスク設定"
+
+#: 
+msgid "Please enter a check number"
+msgstr "チェック番号を入力してください"
+
+#: 
+msgid "Register & Check In"
+msgstr "登録してチェックイン"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "来客を登録"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "来客を登録"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "イベント中にキオスクで来客として登録：%s"
+
+#: 
+msgid "Registering..."
+msgstr "登録中..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "預金エントリでチェック支払いを記録する際、チェック番号が必須です。\n"
+"注：これを無効にすると、重複チェック番号検出も無効になります — 同じ物理チェックが複数回入力される場合があります。"
+
+#: 
+msgid "This event has ended"
+msgstr "このイベントは終了しました"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "このイベントにはグループが割り当てられていないため、来客は登録できません"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "このイベントに開始時刻と終了時刻がありません"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} が登録してチェックインしました！"
 

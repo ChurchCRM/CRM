@@ -5782,5 +5782,91 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}: «{{name}}» більше не кваліфікований(а)",
   "{{position}}: {{name}} qualified": "{{position}}: «{{name}}» кваліфікований(а)",
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}} просить {{substitute}} посісти своє місце",
-  "{{title}} on {{date}} created. Staff it now?": "Подію «{{title}}» на {{date}} створено. Призначити людей зараз?"
+  "{{title}} on {{date}} created. Staff it now?": "Подію «{{title}}» на {{date}} створено. Призначити людей зараз?",
+  "Not authorized to change this event's audience group": "Ви не маєте прав для зміни групи цієї події",
+  "Only a volunteer manager can change who coordinates a ministry": "Тільки керівник добровольців може змінити координатора служіння",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "Вибір V1 призупиняє надсилання електронної пошти V2; усі черговості будуть надіслані при включенні V2, якщо подія ще не закінчилась.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Додавайте події цього служіння тут: робочий день, клас, який збирається кожної неділі. Вони потрапляють до церковного календаря, і після створення вас запитають, чи бажаєте ви прикріпити добровольців.",
+  "Cancel occurrence": "Скасувати подію",
+  "Cancel this occurrence": "Скасувати цю подію",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "Скасування нікому не повідомляється: листи не відправляються. Призначення зберігаються, нагадування не планується, поки подія скасована, і ніхто не може бути призначений, поки вона не буде відновлена.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Видалені події видаляються з усіх календарів разом з реєстрацією присутності та підрахунком відвідувачів, але служіння зберігає лише дату. Це неможливо скасувати.",
+  "Events deleted: {{total}}": "События удалены: {{total}}",
+  "Events to delete: {{total}}": "Області для видалення: {{total}}",
+  "Occurrence cancelled": "Подія скасована",
+  "Occurrence restored": "Подія відновлена",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Повернути цю подію в розклад, щоб її можна було заповнити добровольцями? Нікому не буде надіслано повідомлення.",
+  "Restore occurrence": "Відновити подію",
+  "Restore this occurrence": "Відновити цю подію",
+  "The occurrence could not be cancelled": "Подію не вдалося скасувати",
+  "The occurrence could not be restored": "Подію не вдалося відновити",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Ви можете додавати події до всіх календарів, тому вони всі будуть відображатися. Календар цього служіння позначений за замовчуванням.",
+  "A phone number or email address is required": "Потрібен номер телефону або адреса електронної пошти",
+  "A phone number or email address is required.": "Потрібен номер телефону або адреса електронної пошти.",
+  "Check-in has not opened for this event yet": "Реєстрація ще не відкрита для цієї події",
+  "Classification given to walk-in guests registered on a kiosk": "Класифікація, присвоєна гостям, зареєстрованим на кіоску",
+  "Failed to register guest. Please try again.": "Не вдалося зареєструвати гостя. Будь ласка, спробуйте ще раз.",
+  "First name and last name are required": "Потрібно ім'я та прізвище",
+  "First name and last name must each be 50 characters or fewer": "Ім'я та прізвище мають містити не більше 50 символів",
+  "First name and last name must each be at least 2 characters": "Ім'я та прізвище мають містити щонайменше 2 символи",
+  "Guest": "Гість",
+  "Guest Classification": "Класифікація гостя",
+  "Invalid birth date": "Недійсна дата народження.",
+  "Invalid email address": "Невірна адреса електронної пошти",
+  "Kiosk Settings": "Параметри кіоску",
+  "Please enter a check number": "Будь ласка, введіть номер чека",
+  "Register & Check In": "Зареєструвати та відмітити присутність",
+  "Register Walk-In Guest": "Зареєструвати гостя",
+  "Register walk-in guest": "зареєструвати гостя",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Зареєстрований як гість на кіоску під час події: %s",
+  "Registering...": "Реєстрація...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Вимагати номер чека при запису чеків у записи внесків.\nПримітка: вимкнення цього також вимикає виявлення дублікатів чеків — один фізичний чек можна ввести кілька разів.",
+  "This event has ended": "Ця подія завершилася",
+  "This event has no group assigned, so guests cannot be registered": "Цій події не призначена група, тому гостей не можна зареєструвати",
+  "This event has no start and end time": "У цієї події немає часу початку та завершення",
+  "{{name}} registered and checked in!": "{{name}} зареєстрований та відмітив присутність!",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\": {{count}} подія створена",
+    "other": "\"{{name}}\": {{count}} подій створено"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "Лист надіслано {{count}} одержувачу.",
+    "other": "Листи надіслано {{count}} одержувачам."
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "Немає нових подій. Вся {{count}} подія до {{through}} вже має одну.",
+    "other": "Немає нових подій. Всі {{count}} подій до {{through}} вже мають одну."
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "Розклад \"{{name}}\" створено: {{count}} подія",
+    "other": "Розклад \"{{name}}\" створено: {{count}} подій"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "Надсилання {{count}} одержувачу. Адреси без запису про особу не включені: {{list}}",
+    "other": "Надсилання {{count}} одержувачам. Адреси без запису про особу не включені: {{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "{{count}} не вдалося призначити",
+    "other": "{{count}} не вдалося призначити"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "{{count}} залишилось відкритим, оскільки за замовчуванням більше не кваліфікується",
+    "other": "{{count}} залишилось відкритим, оскільки за замовчуванням більше не кваліфікуються"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "{{count}} добровольець призначений",
+    "other": "{{count}} добровольців призначено"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} чекає вашої відповіді",
+    "other": "{{count}} чекають вашої відповіді"
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "{{count}} подія {{title}} створена. Призначити добровольців зараз?",
+    "other": "{{count}} подій {{title}} створено. Призначити добровольців зараз?"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "{{names}} буде керувати цими подіями. Їх подій будуть створені протягом наступного {{count}} тижня.",
+    "other": "{{names}} будуть керувати цими подіями. Їх подій будуть створені протягом наступних {{count}} тижнів."
+  }
 }

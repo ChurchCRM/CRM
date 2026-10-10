@@ -18925,6 +18925,16 @@ msgid "\"%s\" is not a kind of calendar this page knows about."
 msgstr "\"%s\" não é um tipo de calendário que esta página reconheça."
 
 #: 
+msgctxt "one"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} ocorrência criada"
+
+#: 
+msgctxt "other"
+msgid "\"{{name}}\": {{count}} occurrences created"
+msgstr "\"{{name}}\": {{count}} ocorrências criadas"
+
+#: 
 msgid "%1$s cannot serve and has proposed %2$s as a substitute."
 msgstr "%1$s não pode servir e propôs %2$s como substituto."
 
@@ -20077,6 +20087,16 @@ msgid "Email sending is not enabled. Configure SMTP settings and enable email be
 msgstr "O envio de e-mails não está ativado. Configure o SMTP e ative o e-mail antes de enviar."
 
 #: 
+msgctxt "one"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "Email enviado para {{count}} destinatário."
+
+#: 
+msgctxt "other"
+msgid "Email sent to {{count}} recipient(s)."
+msgstr "Email enviado para {{count}} destinatários."
+
+#: 
 msgid "Emails"
 msgstr "E-mails"
 
@@ -20667,6 +20687,16 @@ msgstr "Nenhum membro acessou o Portal do Membro ainda."
 #: 
 msgid "No ministry"
 msgstr "Nenhum ministério"
+
+#: 
+msgctxt "one"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Nenhuma nova ocorrência. O {{count}} evento até {{through}} já tem uma."
+
+#: 
+msgctxt "other"
+msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr "Nenhuma nova ocorrência. Os {{count}} eventos até {{through}} já têm um."
 
 #: 
 msgid "No past events"
@@ -21413,6 +21443,16 @@ msgid "Schedule \"{{name}}\" created. It is inactive, so it makes no occurrences
 msgstr "Escala \"{{name}}\" criada. Está inativa, então não cria ocorrências até ser ativada."
 
 #: 
+msgctxt "one"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Calendário \"{{name}}\" criado: {{count}} ocorrência"
+
+#: 
+msgctxt "other"
+msgid "Schedule \"{{name}}\" created: {{count}} occurrences"
+msgstr "Calendário \"{{name}}\" criado: {{count}} ocorrências"
+
+#: 
 msgid "Schedule deactivated"
 msgstr "Escala desativada"
 
@@ -21527,6 +21567,16 @@ msgstr "Enviar à secretaria da igreja"
 #: 
 msgid "Send your answer"
 msgstr "Enviar sua resposta"
+
+#: 
+msgctxt "one"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Enviando para {{count}} destinatário. Endereços sem registro de pessoa não são incluídos: {{list}}"
+
+#: 
+msgctxt "other"
+msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
+msgstr "Enviando para {{count}} destinatários. Endereços sem registro de pessoa não são incluídos: {{list}}"
 
 #: 
 msgid "Sent"
@@ -23225,6 +23275,56 @@ msgid "{{added}} added, {{alreadyMembers}} were already volunteers here"
 msgstr "{{added}} adicionados, {{alreadyMembers}} já eram voluntários aqui"
 
 #: 
+msgctxt "one"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} não pode ser atribuído"
+
+#: 
+msgctxt "other"
+msgid "{{count}} could not be assigned"
+msgstr "{{count}} não podem ser atribuídos"
+
+#: 
+msgctxt "one"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} deixado aberto porque o padrão não está mais qualificado"
+
+#: 
+msgctxt "other"
+msgid "{{count}} left open because the default is no longer qualified"
+msgstr "{{count}} deixados abertos porque o padrão não está mais qualificado"
+
+#: 
+msgctxt "one"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} voluntário atribuído"
+
+#: 
+msgctxt "other"
+msgid "{{count}} volunteers assigned"
+msgstr "{{count}} voluntários atribuídos"
+
+#: 
+msgctxt "one"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} aguardando sua resposta"
+
+#: 
+msgctxt "other"
+msgid "{{count}} waiting for your answer"
+msgstr "{{count}} aguardando sua resposta"
+
+#: 
+msgctxt "one"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} evento {{title}} criado. Alocar pessoal agora?"
+
+#: 
+msgctxt "other"
+msgid "{{count}} {{title}} events created. Staff them now?"
+msgstr "{{count}} eventos {{title}} criados. Alocar pessoal agora?"
+
+#: 
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr "{{created}} ocorrências criadas, {{existing}} já existiam"
 
@@ -23235,6 +23335,16 @@ msgstr "{{ministry}} criou {{total}} eventos para {{className}} ({{upcoming}} fu
 #: 
 msgid "{{names}} also staff some of them."
 msgstr "{{names}} também escalam alguns deles."
+
+#: 
+msgctxt "one"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} alocará pessoal para esses eventos. Suas ocorrências são criadas conforme chegam na próxima {{count}} semana."
+
+#: 
+msgctxt "other"
+msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
+msgstr "{{names}} alocará pessoal para esses eventos. Suas ocorrências são criadas conforme chegam nas próximas {{count}} semanas."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -23279,4 +23389,174 @@ msgstr "{{proposer}} pede a {{substitute}} que assuma seu lugar"
 #: 
 msgid "{{title}} on {{date}} created. Staff it now?"
 msgstr "{{title}} em {{date}} criado. Escalar agora?"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "Não autorizado a alterar o grupo de audiência deste evento"
+
+#: 
+msgid "Only a volunteer manager can change who coordinates a ministry"
+msgstr "Apenas um gerenciador de voluntários pode alterar quem coordena um ministério"
+
+#: 
+msgid "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over."
+msgstr "Escolher V1 pausa o email de voluntário V2; tudo enfileirado é enviado quando V2 volta, a menos que sua ocorrência tenha terminado."
+
+#: 
+msgid "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them."
+msgstr "Adicione os eventos deste ministério aqui: um dia de trabalho, uma aula que se reúne todos os domingos. Eles vão para o calendário da igreja, e depois de criados você é perguntado se deseja alocar pessoal para eles."
+
+#: 
+msgid "Cancel occurrence"
+msgstr "Cancelar ocorrência"
+
+#: 
+msgid "Cancel this occurrence"
+msgstr "Cancelar esta ocorrência"
+
+#: 
+msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgstr "Cancelar não avisa ninguém: nenhum email é enviado. As atribuições são mantidas, nenhum lembrete é agendado enquanto estiver cancelado, e ninguém pode ser atribuído até que seja restaurado."
+
+#: 
+msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
+msgstr "Eventos eliminados saem de cada calendário, com seus registros e contagens, e a equipe deste ministério mantém apenas sua data. Isso não pode ser desfeito."
+
+#: 
+msgid "Events deleted: {{total}}"
+msgstr "Eventos eliminados: {{total}}"
+
+#: 
+msgid "Events to delete: {{total}}"
+msgstr "Eventos a eliminar: {{total}}"
+
+#: 
+msgid "Occurrence cancelled"
+msgstr "Ocorrência cancelada"
+
+#: 
+msgid "Occurrence restored"
+msgstr "Ocorrência restaurada"
+
+#: 
+msgid "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent."
+msgstr "Colocar esta ocorrência de volta no calendário para que possa ser alocada novamente? Ninguém é avisado: nenhum email é enviado."
+
+#: 
+msgid "Restore occurrence"
+msgstr "Restaurar ocorrência"
+
+#: 
+msgid "Restore this occurrence"
+msgstr "Restaurar esta ocorrência"
+
+#: 
+msgid "The occurrence could not be cancelled"
+msgstr "A ocorrência não pôde ser cancelada"
+
+#: 
+msgid "The occurrence could not be restored"
+msgstr "A ocorrência não pôde ser restaurada"
+
+#: 
+msgid "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with."
+msgstr "Você pode adicionar eventos a cada calendário, portanto todos eles estão listados. O calendário deste ministério está marcado para começar."
+
+#: 
+msgid "A phone number or email address is required"
+msgstr "Um número de telefone ou endereço de email é obrigatório"
+
+#: 
+msgid "A phone number or email address is required."
+msgstr "Um número de telefone ou endereço de email é obrigatório."
+
+#: 
+msgid "Check-in has not opened for this event yet"
+msgstr "O registro ainda não foi aberto para este evento"
+
+#: 
+msgid "Classification given to walk-in guests registered on a kiosk"
+msgstr "Classificação fornecida aos visitantes que se registram em um quiosque"
+
+#: 
+msgid "Failed to register guest. Please try again."
+msgstr "Falha ao registrar convidado. Tente novamente."
+
+#: 
+msgid "First name and last name are required"
+msgstr "Nome e sobrenome são obrigatórios"
+
+#: 
+msgid "First name and last name must each be 50 characters or fewer"
+msgstr "Nome e sobrenome devem ter 50 caracteres ou menos cada um"
+
+#: 
+msgid "First name and last name must each be at least 2 characters"
+msgstr "Nome e sobrenome devem ter pelo menos 2 caracteres cada um"
+
+#: 
+msgid "Guest"
+msgstr "Visitante"
+
+#: 
+msgid "Guest Classification"
+msgstr "Classificação de Visitante"
+
+#: 
+msgid "Invalid birth date"
+msgstr "Data de nascimento inválida."
+
+#: 
+msgid "Invalid email address"
+msgstr "Endereço de email inválido"
+
+#: 
+msgid "Kiosk Settings"
+msgstr "Configurações do Quiosque"
+
+#: 
+msgid "Please enter a check number"
+msgstr "Por favor, insira um número de cheque"
+
+#: 
+msgid "Register & Check In"
+msgstr "Registre-se e Faça Check-in"
+
+#: 
+msgid "Register Walk-In Guest"
+msgstr "Registrar Visitante que Chega"
+
+#: 
+msgid "Register walk-in guest"
+msgstr "Registrar visitante que chega"
+
+#: 
+msgid "Registered as a walk-in guest at the kiosk during event: %s"
+msgstr "Registrado como visitante que chega no quiosque durante o evento: %s"
+
+#: 
+msgid "Registering..."
+msgstr "Registrando..."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries.\n"
+"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgstr "Exigir um número de cheque ao registrar pagamentos de cheques em entradas de depósito.\n"
+"Nota: desabilitar isso também desabilita a detecção de números de cheque duplicados — o mesmo cheque físico pode ser inserido mais de uma vez."
+
+#: 
+msgid "This event has ended"
+msgstr "Este evento terminou"
+
+#: 
+msgid "This event has no group assigned, so guests cannot be registered"
+msgstr "Este evento não tem um grupo atribuído, portanto os visitantes não podem ser registrados"
+
+#: 
+msgid "This event has no start and end time"
+msgstr "Este evento não tem hora de início e término"
+
+#: 
+msgid "{{name}} registered and checked in!"
+msgstr "{{name}} se registrou e fez check-in!"
 

@@ -5718,5 +5718,91 @@
   "{{position}}: {{name}} no longer qualified": "{{position}}: {{name}} artık yetkili değil",
   "{{position}}: {{name}} qualified": "{{position}}: {{name}} yetkilendirildi",
   "{{proposer}} asks {{substitute}} to take their place": "{{proposer}}, {{substitute}} kişisinden yerini almasını istiyor",
-  "{{title}} on {{date}} created. Staff it now?": "{{date}} tarihindeki {{title}} oluşturuldu. Şimdi kadro verilsin mi?"
+  "{{title}} on {{date}} created. Staff it now?": "{{date}} tarihindeki {{title}} oluşturuldu. Şimdi kadro verilsin mi?",
+  "Not authorized to change this event's audience group": "Bu olayın kitlesini değiştirmek için yetkiniz yok",
+  "Only a volunteer manager can change who coordinates a ministry": "Sadece bir gönüllü yöneticisi bir hizmeti koordine eden kişiyi değiştirebilir",
+  "Choosing V1 pauses V2 volunteer email; anything queued is sent when V2 is back on, unless its occurrence is over.": "V1'i seçmek V2 gönüllü e-postasını duraklatır; sırada olan her şey V2 tekrar açıldığında gönderilir, olay sona ermedikçe.",
+  "Add this ministry's events here: a workday, a class that meets every Sunday. They go on the church calendar, and once they are created you are asked whether to staff them.": "Bu hizmetin etkinliklerini buraya ekleyin: bir iş günü, her pazar buluşan bir sınıf. Kilise takviminde görünürler ve oluşturulduktan sonra bunları personelle doldurmak isteyip istemediğiniz sorulur.",
+  "Cancel occurrence": "Olayı iptal et",
+  "Cancel this occurrence": "Bu olayı iptal et",
+  "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.": "İptal etme kimseye haber vermez: e-posta gönderilmez. Atamalar tutulur, iptal edilirken hatırlatıcı planlanmaz ve geri yüklenene kadar kimse atanmaz.",
+  "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.": "Silinen etkinlikler her takvimi, giriş ve sayımlarıyla birlikte bırakır ve bu hizmetin personeli yalnızca tarihini tutar. Bu geri alınamaz.",
+  "Events deleted: {{total}}": "Etkinlikler silindi: {{total}}",
+  "Events to delete: {{total}}": "Silinecek etkinlikler: {{total}}",
+  "Occurrence cancelled": "Olay iptal edildi",
+  "Occurrence restored": "Olay geri yüklendi",
+  "Put this occurrence back on the schedule so it can be staffed again? Nobody is told: no email is sent.": "Bu olayı programa geri koymak için personelle doldurulabilir mi? Kimseye haber verilmez: e-posta gönderilmez.",
+  "Restore occurrence": "Olayı geri yükle",
+  "Restore this occurrence": "Bu olayı geri yükle",
+  "The occurrence could not be cancelled": "Olay iptal edilemedi",
+  "The occurrence could not be restored": "Olay geri yüklenemedi",
+  "You may add events to every calendar, so all of them are listed. This ministry's own calendar is ticked to start with.": "Her takvime etkinlik ekleyebilir, böylece hepsi listelenir. Bu hizmetin kendi takvimi başlangıçta işaretlidir.",
+  "A phone number or email address is required": "Telefon numarası veya e-posta adresi gereklidir",
+  "A phone number or email address is required.": "Telefon numarası veya e-posta adresi gereklidir.",
+  "Check-in has not opened for this event yet": "Bu olay için giriş henüz açılmadı",
+  "Classification given to walk-in guests registered on a kiosk": "Bir kioskta kayıtlı yürüyüş konuklarına verilen sınıflandırma",
+  "Failed to register guest. Please try again.": "Misafir kaydı başarısız. Lütfen tekrar deneyin.",
+  "First name and last name are required": "Ad ve soyadı gereklidir",
+  "First name and last name must each be 50 characters or fewer": "Ad ve soyadı her birinin 50 karakter veya daha az olması gerekir",
+  "First name and last name must each be at least 2 characters": "Ad ve soyadı her birinin en az 2 karakter olması gerekir",
+  "Guest": "Misafir",
+  "Guest Classification": "Misafir Sınıflandırması",
+  "Invalid birth date": "Geçersiz doğum tarihi.",
+  "Invalid email address": "Geçersiz e-posta adresi",
+  "Kiosk Settings": "Kiosk Ayarları",
+  "Please enter a check number": "Lütfen bir çek numarası girin",
+  "Register & Check In": "Kayıt ol ve giriş yap",
+  "Register Walk-In Guest": "Misafiri kaydedin",
+  "Register walk-in guest": "misafiri kaydedin",
+  "Registered as a walk-in guest at the kiosk during event: %s": "Olay sırasında kioskta yürüme misafiri olarak kaydedildi: %s",
+  "Registering...": "Kayıt olunuyor...",
+  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Çek ödemelerini mevduat girişlerine kaydederken bir çek numarası gerektirir.\nNot: Bunu devre dışı bırakmak, yinelenen çek numarası algılamayı da devre dışı bırakır - aynı fiziksel çek birden fazla kez girilebilir.",
+  "This event has ended": "Bu olay sona erdi",
+  "This event has no group assigned, so guests cannot be registered": "Bu olayın atanmış bir grubu yok, bu nedenle misafirler kaydedilemez",
+  "This event has no start and end time": "Bu olayın başlangıç ve bitiş zamanı yok",
+  "{{name}} registered and checked in!": "{{name}} kayıtlı ve giriş yapıldı!",
+  "\"{{name}}\": {{count}} occurrences created": {
+    "one": "\"{{name}}\": {{count}} olay oluşturuldu",
+    "other": "\"{{name}}\": {{count}} olay oluşturuldu"
+  },
+  "Email sent to {{count}} recipient(s).": {
+    "one": "E-posta {{count}} alıcıya gönderildi.",
+    "other": "E-postalar {{count}} alıcıya gönderildi."
+  },
+  "No new occurrences. All {{count}} events through {{through}} already have one.": {
+    "one": "Yeni etkinlik yok. Tüm {{count}} olaylar {{through}} aracılığıyla zaten bir taneye sahip.",
+    "other": "Yeni etkinlik yok. Tüm {{count}} olaylar {{through}} aracılığıyla zaten bir taneye sahip."
+  },
+  "Schedule \"{{name}}\" created: {{count}} occurrences": {
+    "one": "\"{{name}}\" programı oluşturuldu: {{count}} olay",
+    "other": "\"{{name}}\" programı oluşturuldu: {{count}} olay"
+  },
+  "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
+    "one": "{{count}} alıcıya gönderiliyor. Kişi kaydı olmayan adresler dahil değildir: {{list}}",
+    "other": "{{count}} alıcıya gönderiliyor. Kişi kaydı olmayan adresler dahil değildir: {{list}}"
+  },
+  "{{count}} could not be assigned": {
+    "one": "{{count}} atanamamıştır",
+    "other": "{{count}} atanamamışlardır"
+  },
+  "{{count}} left open because the default is no longer qualified": {
+    "one": "{{count}} açık bırakıldı çünkü varsayılan değer artık uygun değil",
+    "other": "{{count}} açık bırakıldı çünkü varsayılan değer artık uygun değil"
+  },
+  "{{count}} volunteers assigned": {
+    "one": "{{count}} gönüllü atandı",
+    "other": "{{count}} gönüllü atandı"
+  },
+  "{{count}} waiting for your answer": {
+    "one": "{{count}} yanıtınızı bekliyor",
+    "other": "{{count}} yanıtınızı bekliyorlar"
+  },
+  "{{count}} {{title}} events created. Staff them now?": {
+    "one": "{{count}} {{title}} olayı oluşturuldu. Şimdi personel mi atabilirim?",
+    "other": "{{count}} {{title}} olayı oluşturuldu. Şimdi personel mi atabilirim?"
+  },
+  "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
+    "one": "{{names}} bu olayları personelle dolduracak. Oluşumları gelecek {{count}} haftada ortaya çıktıkça yapılır.",
+    "other": "{{names}} bu olayları personelle dolduracak. Oluşumları gelecek {{count}} haftada ortaya çıktıkça yapılır."
+  }
 }
