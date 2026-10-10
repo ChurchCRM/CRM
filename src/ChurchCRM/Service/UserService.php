@@ -154,7 +154,8 @@ class UserService
             'aDisallowedPasswords',
             'bRequire2FA',
             'i2FAGracePeriodDays',
-            's2FAApplicationName'
+            's2FAApplicationName',
+            'bAllowLoginAsUser',
         ];
 
         return SystemConfig::getSettingsConfig($userSettings);

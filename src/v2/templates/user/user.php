@@ -4,12 +4,30 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\UserMasqueradeActionQuery;
+use ChurchCRM\Service\ImpersonationService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext("Settings");
 $sPageSubtitle = $user->getFullName();
 $isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
+// Admin masquerade (#9843): offered only while the setting is on, to an
+// administrator, never on their own record, never on another administrator's
+// record, and never while a masquerade is already running — the same conditions
+// the POST route enforces. The two-factor rule disables the button with its reason.
+$canImpersonateViewedUser = ImpersonationService::isEnabled()
+    && AuthenticationManager::getCurrentUser()->isAdmin()
+    && !$isOwnProfile
+    && !$user->isAdmin()
+    && !ImpersonationService::isActive();
+$impersonationRefusal = $canImpersonateViewedUser ? ImpersonationService::getStartRefusal($user) : null;
+$masqueradeHistory = AuthenticationManager::getCurrentUser()->isAdmin() && !ImpersonationService::isActive()
+    ? ImpersonationService::getHistoryForUser($user->getId())
+    : null;
+$showMasqueradeHistory = $masqueradeHistory !== null && (count($masqueradeHistory) > 0 || ImpersonationService::isEnabled());
 // Use distinct variable names so Header.php's reassignment of $personId,
 // $avatarApiUrl, $hasUploadedPhoto, and $photo (always reads the logged-in
 // user's values) cannot clobber the viewed user's values. Same pattern as
@@ -215,7 +233,29 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-outline-secondary">
                   <i class="fa-solid fa-cog me-1"></i><?= gettext("Advanced Settings") ?>
                 </a>
+                <?php if ($canImpersonateViewedUser && $impersonationRefusal !== null): ?>
+                <button type="button" id="loginAsUser" class="btn btn-outline-warning ms-2" disabled aria-describedby="loginAsUserRefusal">
+                  <i class="fa-solid fa-user-secret me-1"></i><?= gettext("Login as User") ?>
+                </button>
+                <?php elseif ($canImpersonateViewedUser): ?>
+                <!--
+                  Admin masquerade (#9843). The form is submitted by user.js after a
+                  bootbox confirmation; it is a real form so the action still works
+                  with JavaScript disabled.
+                -->
+                <form id="impersonateForm" class="d-inline" method="post"
+                      action="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/user/' . $user->getId() . '/impersonate') ?>"
+                      data-user-name="<?= InputUtils::escapeAttribute($user->getName()) ?>">
+                  <?= CSRFUtils::getTokenInputField('user_impersonate') ?>
+                  <button type="submit" id="loginAsUser" class="btn btn-outline-warning ms-2">
+                    <i class="fa-solid fa-user-secret me-1"></i><?= gettext("Login as User") ?>
+                  </button>
+                </form>
+                <?php endif; ?>
                 <small class="form-hint mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
+                <?php if ($canImpersonateViewedUser && $impersonationRefusal !== null): ?>
+                <small id="loginAsUserRefusal" class="form-hint text-warning mt-1"><?= InputUtils::escapeHTML($impersonationRefusal) ?></small>
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -488,6 +528,86 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
   </div>
 </div>
+
+<?php if ($showMasqueradeHistory):
+    $dateTimeFormat = SystemConfig::getValue('sDateTimeFormat');
+    $masqueradeUserName = static fn (?User $historyUser, int $historyUserId): string => $historyUser instanceof User && $historyUser->getPerson() !== null
+        ? $historyUser->getName()
+        : sprintf(gettext('User %d'), $historyUserId);
+    $masqueradeEndLabels = [
+        ImpersonationService::END_EXIT    => gettext('Exited'),
+        ImpersonationService::END_SIGNOUT => gettext('Signed out'),
+        ImpersonationService::END_TIMEOUT => gettext('Session timed out'),
+    ];
+?>
+<div class="card mt-3" id="loginAsUserHistory">
+  <div class="card-header">
+    <h3 class="card-title"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('Login as User History') ?></h3>
+  </div>
+  <?php if (count($masqueradeHistory) === 0): ?>
+  <div class="card-body text-body-secondary"><?= gettext('No Login as User sessions yet.') ?></div>
+  <?php else: ?>
+  <div class="list-group list-group-flush">
+    <?php foreach ($masqueradeHistory as $masqueradeSession):
+        $masqueradeActions = $masqueradeSession->getActions(UserMasqueradeActionQuery::create()->orderByTime()->orderById());
+        $masqueradeEnded = $masqueradeSession->getEnded($dateTimeFormat);
+    ?>
+    <div class="list-group-item" data-cy="login-as-user-session" data-session-id="<?= (int) $masqueradeSession->getId() ?>">
+      <div class="d-flex flex-wrap align-items-baseline justify-content-between gap-2">
+        <div class="fw-medium">
+          <?= InputUtils::escapeHTML(sprintf(
+              /* Translators: %1$s is the administrator, %2$s the user they logged in as. */
+              gettext('%1$s logged in as %2$s'),
+              $masqueradeUserName($masqueradeSession->getAdminUser(), (int) $masqueradeSession->getAdminUserId()),
+              $masqueradeUserName($masqueradeSession->getTargetUser(), (int) $masqueradeSession->getTargetUserId())
+          )) ?>
+        </div>
+        <div class="small text-body-secondary">
+          <?= InputUtils::escapeHTML($masqueradeSession->getStarted($dateTimeFormat)) ?>
+          &ndash;
+          <?php if ($masqueradeEnded !== null): ?>
+          <?= InputUtils::escapeHTML($masqueradeEnded) ?>
+          <span class="badge bg-secondary-lt text-secondary ms-1" data-cy="login-as-user-end-reason"><?= InputUtils::escapeHTML($masqueradeEndLabels[$masqueradeSession->getEndReason()] ?? (string) $masqueradeSession->getEndReason()) ?></span>
+          <?php else: ?>
+          <span class="badge bg-warning-lt text-warning" data-cy="login-as-user-end-reason"><?= gettext('Not ended') ?></span>
+          <?php endif; ?>
+        </div>
+      </div>
+      <?php if (count($masqueradeActions) === 0): ?>
+      <div class="small text-body-secondary mt-1"><?= gettext('No changes made.') ?></div>
+      <?php else: ?>
+      <div class="table-responsive mt-2">
+        <table class="table table-sm table-vcenter mb-0">
+          <thead>
+            <tr>
+              <th><?= gettext('Time') ?></th>
+              <th><?= gettext('Action') ?></th>
+              <th class="text-end"><?= gettext('Status') ?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($masqueradeActions as $masqueradeAction):
+                $actionStatus = $masqueradeAction->getStatus();
+                $actionStatusClass = $actionStatus === null ? 'bg-secondary-lt text-secondary'
+                    : ($actionStatus < 300 ? 'bg-success-lt text-success'
+                    : ($actionStatus < 400 ? 'bg-azure-lt text-azure' : 'bg-danger-lt text-danger'));
+            ?>
+            <tr data-cy="login-as-user-action">
+              <td class="text-nowrap"><?= InputUtils::escapeHTML($masqueradeAction->getTime($dateTimeFormat)) ?></td>
+              <td><code class="text-break"><?= InputUtils::escapeHTML($masqueradeAction->getMethod() . ' ' . $masqueradeAction->getPath()) ?></code></td>
+              <td class="text-end"><span class="badge <?= $actionStatusClass ?>"><?= $actionStatus === null ? '&ndash;' : (int) $actionStatus ?></span></td>
+            </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+      <?php endif; ?>
+    </div>
+    <?php endforeach; ?>
+  </div>
+  <?php endif; ?>
+</div>
+<?php endif; ?>
 
 <!-- Photo Uploader -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">

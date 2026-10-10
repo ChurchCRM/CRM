@@ -20,6 +20,7 @@ use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use ChurchCRM\Slim\Middleware\MasqueradeActionMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -107,10 +108,11 @@ $errorMiddleware->setDefaultErrorHandler(function (
 
 // CRITICAL: Middleware order matters in Slim 4 (LIFO - Last In, First Out)
 // Middleware are added in reverse execution order: added last runs first.
-// Execution order: CorsMiddleware → AuthMiddleware → ChurchInfoRequiredMiddleware → VersionMiddleware
+// Execution order: CorsMiddleware → AuthMiddleware → MasqueradeAction → ChurchInfoRequiredMiddleware → VersionMiddleware
 // Note: AdminRoleAuthMiddleware is applied to specific route groups above, not in this global stack.
 $app->add(VersionMiddleware::class);
 $app->add(new ChurchInfoRequiredMiddleware());
+$app->add(new MasqueradeActionMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
 

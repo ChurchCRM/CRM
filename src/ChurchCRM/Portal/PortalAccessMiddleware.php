@@ -4,6 +4,7 @@ namespace ChurchCRM\Portal;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
@@ -65,12 +66,13 @@ class PortalAccessMiddleware implements MiddlewareInterface
      * The write is throttled to once every five minutes by comparing the value
      * already in the column, not a session flag, so it survives session churn
      * and costs one small UPDATE per member per five minutes at most. A failure
-     * here must never break a portal page: the column is a statistic.
+     * here must never break a portal page: the column is a statistic. An
+     * administrator's Login as User session is not the member's activity (#9843).
      */
     private function recordActivity(): void
     {
         $user = AuthenticationManager::getCurrentUser();
-        if (!$user instanceof User) {
+        if (!$user instanceof User || ImpersonationService::isActive()) {
             return;
         }
 

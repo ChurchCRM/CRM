@@ -219,6 +219,16 @@
     text-decoration: none;
 }
 
+// The masquerade exit is a form button; make it read as a plain menu item.
+.portal-account-button {
+    inline-size: 100%;
+    border: 0;
+    background: none;
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+}
+
 .portal-account-item:hover,
 .portal-account-item:focus-visible {
     background-color: var(--portal-surface-alt);
@@ -655,8 +665,8 @@ textarea.portal-input {
     position: fixed;
     inset-block-start: var(--portal-toast-offset, var(--portal-gap));
     inset-inline: var(--portal-gap);
-    // Above the account menu (1045) — a message about what just happened
-    // outranks it.
+    // Above the masquerade banner (1040) and the account menu (1045) — a
+    // message about what just happened outranks both.
     z-index: 1050;
     display: flex;
     flex-direction: column;
@@ -664,6 +674,12 @@ textarea.portal-input {
     // The container spans the viewport even when it is empty, so it must never
     // swallow a click. Each toast takes its own clicks back.
     pointer-events: none;
+}
+
+// The masquerade banner is fixed too, so the stack has to clear it by hand:
+// body padding moves the flow, not a fixed element.
+.portal-body-with-bar .portal-toasts {
+    --portal-toast-offset: calc(2.5rem + var(--portal-gap));
 }
 
 .portal-flash {

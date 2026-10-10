@@ -75,7 +75,7 @@ toast in the fixed top-right stack that fades away on its own.
 
 | Selector | What it is |
 |---|---|
-| `.portal-body` | `<body>` |
+| `.portal-body` | `<body>`; also `.portal-body-with-bar` when a bar is fixed to the top of the viewport — the masquerade banner is the only one |
 | `.portal-shell` | The column that holds header, nav, main and footer |
 | `.portal-container` | The width-limited wrapper used by every band |
 | `#portal-nav` / `#portal-nav-toggle` | The navigation and the button that opens it on a phone |
@@ -169,7 +169,7 @@ portal route, ever addresses somebody else.
 | `avatarUrl` | string | `/api/portal/me/photo`, cache-busted; **empty when no photo has been uploaded** — render initials instead |
 | `familyId` | int | `0` when the person has no family |
 | `isTeamLeader` | bool | `true` when this person leads at least one volunteer team. Also `true` on a self-service login — that is the point of it |
-| `isStaff` | bool | `true` for a login that also has the admin shell — the account menu offers it "Admin Console" |
+| `isStaff` | bool | `true` for a login that also has the admin shell — the account menu offers it "Admin Console", unless a masquerade is in progress |
 
 ### `nav`
 
@@ -206,18 +206,21 @@ Facts about this request and this installation.
 | `locale` | string | e.g. `en_US` |
 | `isRTL` | bool | Right-to-left locale |
 | `colorMode` | string | `auto`, `light` or `dark` — the member's own choice |
+| `impersonating` | bool | `true` while an administrator is signed in as this member with Login as User. That only happens when **Admin → System Users → Allow Login as User** is on; each change made during it is listed in the Login as User history on both users' pages |
 | `developerMode` | bool | `true` when the template cache is off |
 | `hasThemeCss` | bool | Whether a `theme.css` is available to link |
 | `hasThemeJs` | bool | Whether a `theme.js` is available to load |
+| `impersonationBanner` | HTML | The Login as User banner with its exit control; empty unless `impersonating` |
 | `pluginHead` | HTML | The `<head>` content enabled plugins inject — print it verbatim |
 | `pluginFooter` | HTML | The footer content enabled plugins inject — print it verbatim |
 | `bootstrapJson` | JSON | The `window.CRM` seed the core bundles expect |
 | `localeConfigJson` | JSON | The argument for `window.CRM.loadLocaleFiles(…)` |
 
-The last four are pre-rendered fragments the layout emits as-is. Print them
+The last five are pre-rendered fragments the layout emits as-is. Print them
 without `|escape` and without `|raw` — they are already marked safe. If you
-override `layout.html.twig`, keep emitting all four, or plugins and translations
-will stop working on your pages.
+override `layout.html.twig`, keep emitting all five, or plugins and translations
+will stop working on your pages, and an administrator signed in as a member
+will have no way back to their own account.
 
 ---
 
