@@ -603,7 +603,15 @@ class User extends BaseUser
 
         // Check if this is a bcrypt hash (starts with $2y$)
         if ($this->isBcryptHash($storedHash)) {
-            return password_verify($password, $storedHash);
+            if (password_verify($password, $storedHash)) {
+                // Upgrade cost if PASSWORD_DEFAULT has changed
+                if (password_needs_rehash($storedHash, PASSWORD_DEFAULT)) {
+                    $this->setPassword($this->hashPassword($password));
+                    $this->save();
+                }
+                return true;
+            }
+            return false;
         }
 
         // Legacy MD5 check — pre-6.x / ChurchInfo 1.x stored passwords as unsalted
@@ -621,8 +629,9 @@ class User extends BaseUser
         // Legacy SHA-256 check for migration period
         $legacyHash = $this->legacyHashPassword($password);
         if (hash_equals($storedHash, $legacyHash)) {
-            // Upgrade to bcrypt on successful login
+            // Upgrade to bcrypt on successful login and force a password change
             $this->setPassword($this->hashPassword($password));
+            $this->setNeedPasswordChange(true);
             $this->save();
             return true;
         }
@@ -1150,7 +1159,7 @@ class User extends BaseUser
         foreach ($codes as $key => $code) {
             $storedIsNewFormat = (bool) preg_match($newFormatRegex, $code);
             $matches = $inputIsNewFormat && $storedIsNewFormat
-                ? str_replace(['-', ' '], '', strtolower($code)) === $normalizedInput
+                ? hash_equals(str_replace(['-', ' '], '', strtolower($code)), $normalizedInput)
                 : hash_equals($code, $twoFaRecoveryCode);
 
             if ($matches) {
@@ -1168,6 +1177,12 @@ class User extends BaseUser
 
     public function adminSetUserPassword(string $newPassword): void
     {
+        if (!$this->getIsPasswordPermissible($newPassword)) {
+            throw new PasswordChangeException('New', gettext('Your password choice is too obvious. Please choose something else.'));
+        }
+        if (strlen($newPassword) < SystemConfig::getIntValue('iMinPasswordLength')) {
+            throw new PasswordChangeException('New', sprintf(gettext('Your new password must be at least %d characters'), SystemConfig::getIntValue('iMinPasswordLength')));
+        }
         $this->updatePassword($newPassword);
         $this->setNeedPasswordChange(false);
         $this->save();
@@ -1176,7 +1191,13 @@ class User extends BaseUser
 
     public function userChangePassword($oldPassword, $newPassword): void
     {
+        if ($this->isLocked()) {
+            throw new PasswordChangeException('Old', gettext('Your account is locked. An administrator must unlock it before you can change the password.'));
+        }
+
         if (!$this->isPasswordValid($oldPassword)) {
+            $this->setFailedLogins($this->getFailedLogins() + 1);
+            $this->save();
             throw new PasswordChangeException('Old', gettext('Incorrect password supplied for current user'));
         }
 
@@ -1185,7 +1206,7 @@ class User extends BaseUser
         }
 
         if (strlen($newPassword) < SystemConfig::getIntValue('iMinPasswordLength')) {
-            throw new PasswordChangeException('New', gettext('Your new password must be at least') . ' ' . SystemConfig::getIntValue('iMinPasswordLength') . ' ' . gettext('characters'));
+            throw new PasswordChangeException('New', sprintf(gettext('Your new password must be at least %d characters'), SystemConfig::getIntValue('iMinPasswordLength')));
         }
 
         if ($newPassword == $oldPassword) {
