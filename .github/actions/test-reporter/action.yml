@@ -56,7 +56,7 @@ runs:
       with:
         name: cypress-junit-${{ steps.junit.outputs.slug }}-${{ github.run_id }}
         path: ${{ inputs.path }}
-        retention-days: '15'
+        retention-days: '1'
         if-no-files-found: ignore
 
     - uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
