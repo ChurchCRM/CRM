@@ -8,6 +8,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 // Integrity data — files are plain strings (filenames), not objects
 $failingFiles = $integrityCheckData['files'] ?? [];
 $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
+
+// max_execution_time warning — long upgrades can be killed on shared hosting
+$maxExec = (int) ini_get('max_execution_time');
+$execTimeWarning = null;
+if ($maxExec > 0 && $maxExec < 60) {
+    $execTimeWarning = 'danger';
+} elseif ($maxExec > 0 && $maxExec < 120) {
+    $execTimeWarning = 'warning';
+}
 ?>
 
 <div class="row">
@@ -162,7 +171,26 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                 </div>
                             <?php endif; ?>
 
-                            <?php if (!$hasWarnings): ?>
+                            <?php if ($execTimeWarning !== null): ?>
+                                <div class="alert alert-<?= $execTimeWarning ?> mb-3">
+                                    <div class="d-flex align-items-start">
+                                        <i class="fa fa-clock fa-lg me-2 mt-1"></i>
+                                        <div>
+                                            <strong><?= gettext('Low PHP max_execution_time') ?></strong>
+                                            <span class="badge bg-<?= $execTimeWarning ?>-lt text-<?= $execTimeWarning ?> ms-1"><?= $maxExec ?>s</span>
+                                            <div class="mt-1">
+                                                <?php if ($execTimeWarning === 'danger'): ?>
+                                                    <?= gettext('Your PHP max_execution_time is very low. An in-app upgrade is likely to be killed before it finishes, leaving the database between versions. Raise the limit (120s or higher) in your host control panel, or run the database upgrade via CLI / a longer-running process.') ?>
+                                                <?php else: ?>
+                                                    <?= gettext('Your PHP max_execution_time may be too low for a long upgrade. Consider raising it to 120s or higher before proceeding, especially if you are jumping several versions.') ?>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (!$hasWarnings && $execTimeWarning === null): ?>
                                 <div class="alert alert-success mb-3">
                                     <div class="d-flex align-items-center">
                                         <i class="fa fa-circle-check fa-lg me-2"></i>
@@ -178,226 +206,3 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                 <?= gettext('Continue') ?> <i class="fa fa-arrow-right ms-1"></i>
                             </button>
                         </div>
-
-                        <!-- Step 2: Database Backup -->
-                        <div id="step-backup" class="content p-4" role="tabpanel" aria-labelledby="step-backup-trigger">
-                            <p class="text-secondary mb-3"><?= gettext('Create a database backup before applying the update. This is strongly recommended.') ?></p>
-
-                            <div id="backupStatus"></div>
-                            <div id="resultFiles" class="mb-3"></div>
-
-                            <div class="d-flex flex-wrap gap-2" id="backupActions">
-                                <button class="btn btn-primary" id="doBackup">
-                                    <i class="fa fa-database me-1"></i><?= gettext('Create Backup') ?>
-                                </button>
-                                <button class="btn btn-ghost-secondary" id="skipBackup">
-                                    <?= gettext('Skip, Continue Without Backup') ?> <i class="fa fa-arrow-right ms-1"></i>
-                                </button>
-                                <button class="btn btn-primary d-none" id="backup-next">
-                                    <?= gettext('Continue') ?> <i class="fa fa-arrow-right ms-1"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: What's New -->
-                        <div id="step-whats-new" class="content p-4" role="tabpanel" aria-labelledby="step-whats-new-trigger">
-                            <div id="whatsNewLoading" class="text-center py-4">
-                                <span class="spinner-border spinner-border-sm me-2"></span><?= gettext('Loading release information...') ?>
-                            </div>
-
-                            <div id="whatsNewContent" class="d-none">
-                                <!-- Advanced: install a specific version (collapsed by default, JS hides entirely when not applicable) -->
-                                <div class="mb-3 d-none" id="advancedVersionPanel">
-                                    <a href="#advancedVersionCollapse" class="collapse-toggle d-inline-flex align-items-center gap-1 text-warning text-decoration-none small fw-medium"
-                                        data-bs-toggle="collapse" aria-expanded="false">
-                                        <i class="fa fa-chevron-down"></i>
-                                        <i class="fa fa-triangle-exclamation ms-1 me-1"></i>
-                                        <?= gettext('Advanced: Install a specific version instead') ?>
-                                    </a>
-                                    <div id="advancedVersionCollapse" class="collapse mt-2">
-                                        <div class="card card-sm">
-                                            <div class="card-body">
-                                                <p class="text-secondary small mb-2"><?= gettext('By default the wizard upgrades to the latest version. You may instead choose a specific version below.') ?></p>
-                                                <select class="form-select form-select-sm mb-2" id="targetVersionSelect" style="max-width: 280px;"></select>
-                                                <div id="advancedWarningBanner" class="alert alert-danger d-none mb-0 py-2">
-                                                    <i class="fa fa-shield-halved me-1"></i>
-                                                    <span id="advancedWarningText"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Security recommendation callout (shown by JS when upgrade is available) -->
-                                <div id="securityRecommendationCallout" class="alert alert-warning d-none mb-3">
-                                    <div class="d-flex align-items-start gap-2">
-                                        <i class="fa fa-shield-halved fa-lg mt-1 flex-shrink-0"></i>
-                                        <span><?= gettext('Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.') ?></span>
-                                    </div>
-                                </div>
-
-                                <!-- What you'll gain heading -->
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <h4 class="mb-0">
-                                        <i class="fa fa-arrow-up me-1 text-success"></i>
-                                        <?= gettext("What you'll gain") ?> &mdash;
-                                        <span id="whatsNewVersion" class="text-primary fw-semibold"></span>
-                                        <span id="recommendedBadge" class="badge bg-success-lt text-success ms-1 d-none"><?= gettext('Recommended') ?></span>
-                                    </h4>
-                                    <a id="whatsNewChangelogLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm d-none">
-                                        <i class="fa fa-arrow-up-right-from-square me-1"></i><?= gettext('Full changelog') ?>
-                                    </a>
-                                </div>
-
-                                <!-- Release notes container: stacked blocks (upgrade) or single note (up-to-date/prerelease), JS-rendered -->
-                                <div id="whatsNewNotes" class="mb-4"></div>
-
-                                <button class="btn btn-primary" id="proceedToDownload">
-                                    <i class="fa fa-cloud-arrow-down me-1"></i><?= gettext('Download & Apply') ?>
-                                </button>
-                            </div>
-
-                            <div id="whatsNewError" class="d-none">
-                                <div class="alert alert-warning">
-                                    <i class="fa fa-triangle-exclamation me-2"></i>
-                                    <span id="whatsNewErrorMsg"></span>
-                                </div>
-                                <p class="text-secondary small mb-2"><?= gettext('You can still proceed with the upgrade without viewing release notes.') ?></p>
-                                <button class="btn btn-primary" id="skipWhatsNew">
-                                    <?= gettext('Continue Anyway') ?> <i class="fa fa-arrow-right ms-1"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Step 4: Download and Apply Update -->
-                        <div id="step-apply" class="content p-4" role="tabpanel" aria-labelledby="step-apply-trigger">
-                            <p class="text-secondary mb-3" id="downloadStepDescription"><?= gettext('Download the latest release and apply it to your installation.') ?></p>
-
-                            <div id="downloadStatus"></div>
-
-                            <div id="updateDetails" class="d-none mb-3">
-                                <div class="datagrid mb-3">
-                                    <div class="datagrid-item">
-                                        <div class="datagrid-title"><?= gettext('File Name') ?></div>
-                                        <div class="datagrid-content" id="updateFileName"></div>
-                                    </div>
-                                    <div class="datagrid-item">
-                                        <div class="datagrid-title"><?= gettext('SHA1 Hash') ?></div>
-                                        <div class="datagrid-content"><code id="updateSHA1"></code></div>
-                                    </div>
-                                    <div class="datagrid-item">
-                                        <div class="datagrid-title"><?= gettext('Full Path') ?></div>
-                                        <div class="datagrid-content"><code id="updateFullPath" class="small"></code></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="mb-2"><?= gettext('Release Notes') ?></h4>
-                                    <div id="releaseNotes" class="release-notes p-3 border rounded"></div>
-                                </div>
-                            </div>
-
-                            <div id="applyStatus"></div>
-
-                            <div class="d-none" id="applyButtonContainer">
-                                <button class="btn btn-danger" id="applyUpdate">
-                                    <i class="fa fa-bolt me-1"></i><?= gettext('Apply Update Now') ?>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Step 5: Complete -->
-                        <div id="step-complete" class="content p-4" role="tabpanel" aria-labelledby="step-complete-trigger">
-                            <div class="empty py-5">
-                                <div class="empty-icon"><i class="fa fa-circle-check text-success fa-4x"></i></div>
-                                <p class="empty-title h2"><?= gettext('Upgrade Complete!') ?></p>
-                                <p class="empty-subtitle text-secondary"><?= gettext('Your ChurchCRM installation has been successfully upgraded.') ?></p>
-                                <div class="alert alert-info text-start mx-auto mt-3" style="max-width: 480px;">
-                                    <ul class="mb-0">
-                                        <li><?= gettext('Application files updated to latest version') ?></li>
-                                        <li><?= gettext('Database schema upgraded automatically') ?></li>
-                                        <li><?= gettext('Orphaned files from previous versions cleaned up') ?></li>
-                                    </ul>
-                                </div>
-                                <div class="mt-3">
-                                    <a id="completionChangelogLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-primary btn-sm d-none">
-                                        <i class="fa fa-book-open me-1"></i><?= gettext('View release notes') ?>
-                                    </a>
-                                </div>
-                                <div class="mt-4 text-secondary">
-                                    <div class="spinner-border spinner-border-sm me-1" role="status"></div>
-                                    <span id="upgradeRedirectCountdown"><?= sprintf(gettext('Redirecting in %s seconds...'), '<strong>5</strong>') ?></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Force Re-install Confirmation Modal -->
-<div class="modal fade" id="forceReinstallModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-status bg-warning"></div>
-            <div class="modal-body text-center py-4">
-                <i class="fa fa-triangle-exclamation fa-3x text-warning mb-3"></i>
-                <h3><?= gettext('Force Re-install?') ?></h3>
-                <p class="text-secondary"><?= gettext('This will re-download and re-apply the current version. It can fix corrupted or modified files.') ?></p>
-            </div>
-            <div class="modal-footer">
-                <div class="w-100">
-                    <div class="row">
-                        <div class="col">
-                            <button type="button" class="btn w-100" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-                        </div>
-                        <div class="col">
-                            <button type="button" class="btn btn-warning w-100" id="confirmForceReinstall"><?= gettext('Re-install') ?></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Full Page Spinner Overlay -->
-<div id="upgradeSpinner">
-    <div class="spinner-content">
-        <i class="fa fa-cog fa-spin spinner-icon"></i>
-        <h3><?= gettext('Applying System Update...') ?></h3>
-        <p><?= gettext('Please do not close this window or refresh the page.') ?></p>
-        <p class="text-body-secondary"><?= gettext('This may take several minutes.') ?></p>
-    </div>
-</div>
-
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/upgrade-wizard.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/upgrade-wizard.min.js') ?>"></script>
-
-<!-- System Settings Panel Component -->
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function() {
-    window.CRM.settingsPanel.init({
-        container: '#upgradeSettingsPanel',
-        title: <?= InputUtils::jsonEncodeForScript(gettext('Upgrade Settings')) ?>,
-        icon: 'fa-solid fa-sliders',
-        settings: [{ name: 'bAllowPrereleaseUpgrade', type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Allow Pre-release Upgrades')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(gettext("Allow system upgrades to releases marked as 'pre release' on GitHub")) ?> }],
-        onSave: function() {
-            window.CRM.notify(i18next.t('Settings saved. Refreshing upgrade info...'), { type: 'success', delay: 2000 });
-            window.CRM.AdminAPIRequest({
-                method: 'POST',
-                path: 'upgrade/refresh-upgrade-info'
-            }).always(function() {
-                setTimeout(function() { window.location.reload(); }, 1500);
-            });
-        }
-    });
-});
-</script>
-
-<?php
-require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
-?>
