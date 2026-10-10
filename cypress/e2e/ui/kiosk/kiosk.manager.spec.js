@@ -171,6 +171,47 @@ describe("Kiosk Manager Workflow", () => {
     });
 });
 
+describe("Kiosk Manager name escaping", () => {
+    const quotedName = 'Lobby "A" x="1"';
+    let kioskId = null;
+
+    before(() => {
+        cy.setupAdminSession();
+        cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((before) => {
+            const existingIds = new Set((before.body.KioskDevices || []).map((k) => k.Id));
+            cy.request({ method: "POST", url: "/kiosk/api/allowRegistration" });
+            cy.clearCookies();
+            cy.request({ method: "GET", url: "/kiosk/device/heartbeat", failOnStatusCode: false });
+            cy.setupAdminSession({ forceLogin: true });
+            cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((after) => {
+                const created = (after.body.KioskDevices || []).find((k) => !existingIds.has(k.Id));
+                expect(created, "a new kiosk should have registered").to.not.be.undefined;
+                kioskId = created.Id;
+                cy.request({ method: "POST", url: `/kiosk/api/devices/${kioskId}/name`, body: { name: quotedName } });
+            });
+        });
+    });
+
+    after(() => {
+        if (kioskId) {
+            cy.setupAdminSession({ forceLogin: true });
+            cy.request({ method: "DELETE", url: `/kiosk/api/devices/${kioskId}`, failOnStatusCode: false });
+        }
+    });
+
+    it("keeps a kiosk name with double quotes inside its data-kiosk-name attribute", () => {
+        cy.setupAdminSession();
+        cy.visit("/kiosk/admin");
+        cy.get(`button[data-kiosk-action='rename'][data-kiosk-id='${kioskId}']`, { timeout: 10000 }).then(($btn) => {
+            expect($btn.attr("data-kiosk-name")).to.equal(quotedName);
+            expect($btn[0].getAttributeNames().sort()).to.deep.equal(
+                ["class", "data-kiosk-action", "data-kiosk-id", "data-kiosk-name", "title"],
+            );
+        });
+        cy.get(`button[data-kiosk-action='delete'][data-kiosk-id='${kioskId}']`).should("have.attr", "data-kiosk-name", quotedName);
+    });
+});
+
 describe("Kiosk Manager Menu Integration", () => {
     beforeEach(() => {
         cy.setupAdminSession();
