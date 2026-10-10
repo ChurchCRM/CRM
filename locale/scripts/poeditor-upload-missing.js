@@ -41,6 +41,7 @@ const {
     loadSourceTermKinds,
     repairJoinedPlural,
     buildPoeditorPayload,
+    buildPluralPo,
 } = require('./lib/poeditor-plurals');
 
 // ── Configuration ────────────────────────────────────────────────────────────
@@ -381,7 +382,7 @@ function buildKeyValueJson(terms) {
  * Sends a multipart/form-data POST (used for projects/upload file import).
  * Shares the same exponential-backoff retry logic as makeRequest.
  */
-function makeMultipartRequest(url, fields, fileContent) {
+function makeMultipartRequest(url, fields, fileContent, filename = 'translations.json', contentType = 'application/json') {
     const MAX_RETRIES = 5;
     const BASE_DELAY_MS = 1000;
     const BACKOFF_FACTOR = 2;
@@ -399,8 +400,8 @@ function makeMultipartRequest(url, fields, fileContent) {
         // file part
         parts.push(
             `--${boundary}\r\n` +
-            `Content-Disposition: form-data; name="file"; filename="translations.json"\r\n` +
-            `Content-Type: application/json\r\n\r\n` +
+            `Content-Disposition: form-data; name="file"; filename="${filename}"\r\n` +
+            `Content-Type: ${contentType}\r\n\r\n` +
             `${fileContent}\r\n`
         );
         parts.push(`--${boundary}--\r\n`);
@@ -468,10 +469,11 @@ function makeMultipartRequest(url, fields, fileContent) {
  * transport-level retries in makeMultipartRequest.
  */
 async function uploadTranslations(poEditorCode, terms) {
-    const { payload: kvJson, skipped } = buildKeyValueJson(terms);
-    if (Object.keys(kvJson).length === 0) return { parsed: 0, added: 0, updated: 0, skipped };
+    const { payload: kvJson, pluralEntries, skipped } = buildKeyValueJson(terms);
+    if (Object.keys(kvJson).length === 0 && pluralEntries.length === 0) return { parsed: 0, added: 0, updated: 0, skipped };
 
     const fileContent = JSON.stringify(kvJson, null, 2);
+    const hasKv = Object.keys(kvJson).length > 0;
 
     const fields = {
         api_token: apiToken,
@@ -486,8 +488,8 @@ async function uploadTranslations(poEditorCode, terms) {
     const MAX_UPLOAD_RETRIES = 5;
     const UPLOAD_BASE_DELAY_MS = 20_000; // 20s base (matches free-tier upload limit), doubles: 20, 40, 80, 120, 120s
 
-    let result;
-    for (let attempt = 1; attempt <= MAX_UPLOAD_RETRIES; attempt++) {
+    let result = { result: {} };
+    for (let attempt = 1; hasKv && attempt <= MAX_UPLOAD_RETRIES; attempt++) {
         const response = await makeMultipartRequest(
             `${POEDITOR_API_BASE}/projects/upload`,
             fields,
@@ -511,12 +513,50 @@ async function uploadTranslations(poEditorCode, terms) {
 
     // projects/upload returns result.result.translations or result.result.terms
     const stats = result.result?.translations ?? result.result?.terms ?? {};
+    const parsed = hasKv ? (stats.parsed ?? Object.keys(kvJson).length) : 0;
+    if (hasKv && parsed < Object.keys(kvJson).length) {
+        console.warn(`  ⚠️  POEditor parsed ${parsed} of ${Object.keys(kvJson).length} terms sent (a term no longer in POEditor is ignored)`);
+    }
+
+    const ctx = await uploadPluralTranslations(poEditorCode, pluralEntries);
     return {
-        parsed:  stats.parsed  ?? Object.keys(kvJson).length,
-        added:   stats.added   ?? 'n/a',
-        updated: stats.updated ?? 'n/a',
+        parsed:  parsed + ctx.parsed,
+        added:   (stats.added   ?? 0) + ctx.added,
+        updated: (stats.updated ?? 0) + ctx.updated,
         skipped,
     };
+}
+
+/**
+ * Writes every plural translation as a PO import (see buildPluralPo for why
+ * key_value_json cannot). Throws when POEditor does not parse every entry.
+ */
+async function uploadPluralTranslations(poEditorCode, rows) {
+    if (rows.length === 0) return { parsed: 0, added: 0, updated: 0 };
+
+    const fields = {
+        api_token: apiToken,
+        id: PROJECT_ID,
+        language: poEditorCode,
+        updating: 'translations',
+        overwrite: '1',
+        sync_terms: '0',
+        type: 'po',
+    };
+    const po = buildPluralPo(poEditorCode, rows);
+
+    for (let attempt = 1; attempt <= 5; attempt++) {
+        const response = await makeMultipartRequest(`${POEDITOR_API_BASE}/projects/upload`, fields, po, 'plurals.po', 'text/x-gettext-translation');
+        const result = JSON.parse(response.data);
+        if (result.response.status === 'success') {
+            const { parsed = 0, added = 0, updated = 0 } = result.result?.translations ?? {};
+            if (parsed < rows.length) throw new Error(`POEditor parsed ${parsed} of ${rows.length} plural translations`);
+            return { parsed, added, updated };
+        }
+        const msg = result.response.message || 'Unknown POEditor error';
+        if (!/too many|rate.?limit|short period/i.test(msg) || attempt === 5) throw new Error(msg);
+        await sleep(Math.min(20_000 * (2 ** (attempt - 1)), 120_000));
+    }
 }
 
 // ── Post-upload missing-terms refresh ───────────────────────────────────────
