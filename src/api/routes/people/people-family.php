@@ -541,13 +541,17 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $familyId = $family->getId();
         $deleteMembers = filter_var($request->getQueryParams()['deleteMembers'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
 
-        // Check for donations — cannot delete a family with payment records unless finance-authorized
-        $pledgeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+        // Never delete a family that has pledges or payments — it would orphan or distort church finance records.
+        $financeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
             ->filterByFamId($familyId)
-            ->filterByPledgeOrPayment('Payment')
             ->count();
-        if ($pledgeCount > 0 && !AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
-            return SlimUtils::renderErrorJSON($response, gettext('Cannot delete a family with donation records. Contact a finance administrator.'), [], 403);
+        if ($financeCount > 0) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Cannot delete a family that has pledges or payments. Move or remove the finance records first.'),
+                [],
+                403
+            );
         }
 
         if ($deleteMembers) {
@@ -565,12 +569,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         // Delete associated notes
         \ChurchCRM\model\ChurchCRM\NoteQuery::create()
             ->filterByFamId($familyId)
-            ->delete();
-
-        // Delete family pledges (non-payment)
-        \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
-            ->filterByFamId($familyId)
-            ->filterByPledgeOrPayment('Pledge')
             ->delete();
 
         // Remove family property assignments
