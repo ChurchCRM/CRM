@@ -11,8 +11,8 @@ name: Build, Test and Package (Nightly)
 # What this workflow covers
 # ─────────────────────────
 # Stage 1 – build
-#   • Builds PHP 8.4 and 8.5 Docker images and uploads them as a shared
-#     workflow artifact.
+#   • Builds the PHP 8.5 Docker image and uploads it as a shared artifact.
+#     PHP 8.4 stays on the pull-request workflow.
 #
 # Stage 2a – PHP 8.5 full test suite (all jobs run in parallel)
 #   • test-root:             api, admin-ui, ui (3 shards) — root install path
@@ -22,9 +22,9 @@ name: Build, Test and Package (Nightly)
 #   • test-locale-root:      full locale sweep (root)
 #   • test-locale-subdir:    full locale sweep (subdir)
 #
-# Stage 2b – Upgrade tests (PHP 8.4 × PHP 8.5, 4 DB groups — parallel with 2a)
-#   • test-upgrade:  churchcrm-mysql | churchcrm-mariadb | v6-mysql | v6-mariadb
-#                    × PHP 8.4 and 8.5
+# Stage 2b – Upgrade tests on PHP 8.5, one job per database engine
+#   • upgrade-mysql:    ChurchInfo 1.3.1 and ChurchCRM 6.0.0
+#   • upgrade-mariadb:  ChurchInfo 1.3.1 and ChurchCRM 6.0.0
 #
 # Stage 3 – Summary
 #   • nightly-summary: always() — job results plus Cypress artifact names
@@ -62,9 +62,10 @@ on:
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 1 — Build
-  # Build the app + PHP 8.4 and 8.5 Docker images; upload as a shared artifact.
+  # Build the app and the PHP 8.5 Docker image; upload as a shared artifact.
   # ═══════════════════════════════════════════════════════════════════════════
   build:
+    name: PHP 8.5 image
     timeout-minutes: 40
     permissions:
       contents: read
@@ -83,17 +84,14 @@ jobs:
     - name: Validate PHP syntax
       run: npm run build:php:validate:all
 
-    - name: Build Docker images (PHP 8.4 and 8.5)
+    - name: Build Docker image (PHP 8.5)
       run: |
-        for version in 8.4 8.5; do
-          echo "Building Docker image for PHP $version..."
-          docker build --target test \
-            --build-arg PHP_VERSION=$version \
-            -t churchcrm/crm:php${version}-test \
-            -f docker/Dockerfile.churchcrm-apache-php8 docker/
-          docker save churchcrm/crm:php${version}-test | gzip > temp/docker-image-${version}.tar.gz
-          echo "Saved: $(du -h temp/docker-image-${version}.tar.gz | cut -f1)"
-        done
+        docker build --target test \
+          --build-arg PHP_VERSION=8.5 \
+          -t churchcrm/crm:php8.5-test \
+          -f docker/Dockerfile.churchcrm-apache-php8 docker/
+        docker save churchcrm/crm:php8.5-test | gzip > temp/docker-image-8.5.tar.gz
+        echo "Saved: $(du -h temp/docker-image-8.5.tar.gz | cut -f1)"
 
     - name: Upload build artifact
       uses: ./.github/actions/upload-artifact
@@ -111,6 +109,7 @@ jobs:
 
   # ── Root-path tests: api, admin-ui, and ui (3 shards) ───────────────────
   test-root:
+    name: PHP 8.5 / root / ${{ matrix.test-type.name }}
     needs: build
     timeout-minutes: 40
     permissions:
@@ -202,6 +201,7 @@ jobs:
 
   # ── Subdirectory-path tests: api, admin-ui, and ui (3 shards) ────────────
   test-subdir:
+    name: PHP 8.5 / subdir / ${{ matrix.test-type.name }}
     needs: build
     timeout-minutes: 40
     permissions:
@@ -294,6 +294,7 @@ jobs:
 
   # ── New system setup wizard — root path (PHP 8.5) ────────────────────────
   test-new-system:
+    name: PHP 8.5 / setup / root
     needs: build
     timeout-minutes: 40
     permissions:
@@ -361,6 +362,7 @@ jobs:
 
   # ── New system setup wizard — subdirectory path (PHP 8.5) ────────────────
   test-new-system-subdir:
+    name: PHP 8.5 / setup / subdir
     needs: build
     timeout-minutes: 40
     permissions:
@@ -430,6 +432,7 @@ jobs:
 
   # ── Full locale sweep — root path (PHP 8.5) ─────────────────────────────
   test-locale-root:
+    name: PHP 8.5 / locale / root
     needs: build
     timeout-minutes: 120
     permissions:
@@ -506,6 +509,7 @@ jobs:
 
   # ── Full locale sweep — subdirectory path (PHP 8.5) ─────────────────────
   test-locale-subdir:
+    name: PHP 8.5 / locale / subdir
     needs: build
     timeout-minutes: 120
     permissions:
@@ -583,52 +587,33 @@ jobs:
 
   # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 2b — Upgrade tests
-  # Mirrors upgrade-tests.yml faithfully; runs PHP 8.4 AND 8.5 × 4 DB groups.
-  # Runs in parallel with Stage 2a — both stages fan out from the same build.
+  # PHP 8.5 only. Engine is the job, starting schema is the matrix.
+  # The pull-request workflow already runs the app on PHP 8.4.
   # ═══════════════════════════════════════════════════════════════════════════
-  test-upgrade:
+  upgrade-mysql:
     needs: build
-    name: ${{ matrix.group.name }} / PHP ${{ matrix.php-version }}
+    name: MySQL upgrade / ${{ matrix.schema.label }}
     timeout-minutes: 40
     permissions:
       contents: read
       checks: write
     runs-on: ubuntu-24.04
-    env:
-      COMPOSE_MYSQL: ${{ matrix.group.database == 'mysql' && '-f docker/docker-compose.mysql.yaml' || '' }}
     strategy:
       fail-fast: false
       matrix:
-        php-version: ["8.4", "8.5"]
-        group:
-          - name: churchcrm-mysql
-            database: mysql
+        schema:
+          - label: ChurchInfo 1.3.1
+            slug: churchinfo-1.3.1
             sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
             admin_user: Admin
             admin_pass: churchinfoadmin
             force_password_change: 'true'
-            label: 'ChurchInfo 1.3.1'
-          - name: churchcrm-mariadb
-            database: mariadb
-            sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
-            admin_user: Admin
-            admin_pass: churchinfoadmin
-            force_password_change: 'true'
-            label: 'ChurchInfo 1.3.1'
-          - name: v6-mysql
-            database: mysql
+          - label: ChurchCRM 6.0.0
+            slug: churchcrm-6.0.0
             sql_file: cypress/fixtures/upgrade/churchcrm-6.0.0.sql
             admin_user: Admin
             admin_pass: changeme
             force_password_change: ''
-            label: '6.0.0'
-          - name: v6-mariadb
-            database: mariadb
-            sql_file: cypress/fixtures/upgrade/churchcrm-6.0.0.sql
-            admin_user: Admin
-            admin_pass: changeme
-            force_password_change: ''
-            label: '6.0.0'
     steps:
     - name: Checkout
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -650,8 +635,8 @@ jobs:
 
     - name: Load Docker image
       run: |
-        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
-        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+        docker load < temp/docker-image-8.5.tar.gz
+        docker tag churchcrm/crm:php8.5-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
       run: node scripts/generate-signatures-node.js
@@ -659,8 +644,8 @@ jobs:
     - name: Remove Config.php for fresh install
       run: rm -f src/Include/Config.php
 
-    - name: Start Docker (${{ matrix.group.name }})
-      run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system up -d
+    - name: Start Docker (MySQL)
+      run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.mysql.yaml --profile ci-new-system up -d
 
     - name: Wait for server
       run: |
@@ -669,8 +654,8 @@ jobs:
         until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
           if [ $attempt -eq $max_attempts ]; then
             echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml $COMPOSE_MYSQL --profile ci-new-system logs
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.mysql.yaml --profile ci-new-system ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.mysql.yaml --profile ci-new-system logs
             exit 1
           fi
           echo "Attempt $attempt/$max_attempts — retrying in 5s..."
@@ -679,21 +664,114 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run Cypress upgrade test (${{ matrix.group.name }}, PHP ${{ matrix.php-version }})
+    - name: Run Cypress upgrade test (MySQL, ${{ matrix.schema.label }})
       uses: ./.github/actions/run-cypress-tests
       with:
         config-file: cypress/configs/upgrade.config.ts
         spec: cypress/e2e/upgrade/**/*.spec.js
-        test-name: upgrade
-        php-version: ${{ matrix.php-version }}
-        deployment: ${{ matrix.group.name }}
+        test-name: ${{ matrix.schema.slug }}
+        php-version: '8.5'
+        deployment: mysql
         docker-compose-profile: ci-new-system
-        docker-compose-files: ${{ matrix.group.database == 'mysql' && 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.mysql.yaml' || 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml' }}
+        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.mysql.yaml'
         extra-env: |
-          CYPRESS_UPGRADE_SQL_FILE=${{ matrix.group.sql_file }}
-          CYPRESS_UPGRADE_ADMIN_USER=${{ matrix.group.admin_user }}
-          CYPRESS_UPGRADE_ADMIN_PASS=${{ matrix.group.admin_pass }}
-          CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE=${{ matrix.group.force_password_change }}
+          CYPRESS_UPGRADE_SQL_FILE=${{ matrix.schema.sql_file }}
+          CYPRESS_UPGRADE_ADMIN_USER=${{ matrix.schema.admin_user }}
+          CYPRESS_UPGRADE_ADMIN_PASS=${{ matrix.schema.admin_pass }}
+          CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE=${{ matrix.schema.force_password_change }}
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:new-system:down
+
+  upgrade-mariadb:
+    needs: build
+    name: MariaDB upgrade / ${{ matrix.schema.label }}
+    timeout-minutes: 40
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        schema:
+          - label: ChurchInfo 1.3.1
+            slug: churchinfo-1.3.1
+            sql_file: cypress/fixtures/upgrade/churchinfo-1.3.1.sql
+            admin_user: Admin
+            admin_pass: churchinfoadmin
+            force_password_change: 'true'
+          - label: ChurchCRM 6.0.0
+            slug: churchcrm-6.0.0
+            sql_file: cypress/fixtures/upgrade/churchcrm-6.0.0.sql
+            admin_user: Admin
+            admin_pass: changeme
+            force_password_change: ''
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Set up Node.js
+      uses: ./.github/actions/setup-node
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: ./.github/actions/download-artifact
+      with:
+        name: nightly-build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-8.5.tar.gz
+        docker tag churchcrm/crm:php8.5-test churchcrm/crm:php8-debian
+
+    - name: Generate file signatures
+      run: node scripts/generate-signatures-node.js
+
+    - name: Remove Config.php for fresh install
+      run: rm -f src/Include/Config.php
+
+    - name: Start Docker (MariaDB)
+      run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system up -d
+
+    - name: Wait for server
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run Cypress upgrade test (MariaDB, ${{ matrix.schema.label }})
+      uses: ./.github/actions/run-cypress-tests
+      with:
+        config-file: cypress/configs/upgrade.config.ts
+        spec: cypress/e2e/upgrade/**/*.spec.js
+        test-name: ${{ matrix.schema.slug }}
+        php-version: '8.5'
+        deployment: mariadb
+        docker-compose-profile: ci-new-system
+        extra-env: |
+          CYPRESS_UPGRADE_SQL_FILE=${{ matrix.schema.sql_file }}
+          CYPRESS_UPGRADE_ADMIN_USER=${{ matrix.schema.admin_user }}
+          CYPRESS_UPGRADE_ADMIN_PASS=${{ matrix.schema.admin_pass }}
+          CYPRESS_UPGRADE_FORCE_PASSWORD_CHANGE=${{ matrix.schema.force_password_change }}
 
     - name: Stop Docker
       if: always()
@@ -712,7 +790,8 @@ jobs:
       - test-new-system-subdir
       - test-locale-root
       - test-locale-subdir
-      - test-upgrade
+      - upgrade-mysql
+      - upgrade-mariadb
     if: always()
     runs-on: ubuntu-24.04
     steps:
@@ -732,7 +811,8 @@ jobs:
               "${{ needs.test-new-system-subdir.result }}" != "success" || \
               "${{ needs.test-locale-root.result }}" != "success" || \
               "${{ needs.test-locale-subdir.result }}" != "success" || \
-              "${{ needs.test-upgrade.result }}" != "success" ]]; then
+              "${{ needs.upgrade-mysql.result }}" != "success" || \
+              "${{ needs.upgrade-mariadb.result }}" != "success" ]]; then
           echo "**Overall: ❌ FAILED**" >> $GITHUB_STEP_SUMMARY
           echo "One or more test groups failed, were skipped, or were cancelled — check individual job logs above." >> $GITHUB_STEP_SUMMARY
           exit 1
