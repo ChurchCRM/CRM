@@ -12261,10 +12261,6 @@ msgid "Back to Users"
 msgstr "Bumalik sa mga Gumagamit"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Hindi maaaring tanggalin ang pamilyang may mga rekord ng donasyon. Makipag-ugnayan sa administrador ng pananalapi."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Hindi maililipat ang property sa direksyong iyon"
 

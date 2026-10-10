@@ -12280,10 +12280,6 @@ msgid "Back to Users"
 msgstr "사용자 목록으로 돌아가기"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "헌금 기록이 있는 가족은 삭제할 수 없습니다. 재정 담당자에게 문의하세요."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "해당 방향으로 속성을 이동할 수 없습니다"
 

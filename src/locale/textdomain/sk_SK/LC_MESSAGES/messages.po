@@ -12282,10 +12282,6 @@ msgid "Back to Users"
 msgstr "Späť na používateľov"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Nie je možné odstrániť rodinu so záznamami darovania. Kontaktujte finančného správcu."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Nie je možné presunúť vlastnosť v tomto smere"
 

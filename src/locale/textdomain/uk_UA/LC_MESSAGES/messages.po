@@ -12316,10 +12316,6 @@ msgid "Back to Users"
 msgstr "Назад до користувачів"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Неможливо видалити сімʼю із записами про пожертвування. Зверніться до фінансового адміністратора."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Неможливо перемістити властивість у цьому напрямку"
 

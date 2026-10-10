@@ -12355,10 +12355,6 @@ msgid "Back to Users"
 msgstr "返回用户列表"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "无法删除有奉献记录的家庭。请联系财务管理员。"
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "无法向该方向移动属性"
 

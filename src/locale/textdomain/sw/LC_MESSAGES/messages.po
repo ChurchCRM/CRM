@@ -12292,10 +12292,6 @@ msgid "Back to Users"
 msgstr "Rudi kwa Watumiaji"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Haiwezekani kufuta familia yenye kumbukumbu za michango. Wasiliana na msimamizi wa fedha."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Haiwezekani kuhamisha mali katika mwelekeo huo"
 

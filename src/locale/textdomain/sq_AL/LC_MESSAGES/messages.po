@@ -12286,10 +12286,6 @@ msgid "Back to Users"
 msgstr "Kthehu te Përdoruesit"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Nuk mund të fshihet një familje me rekorde donacionesh. Kontaktoni një administrator financiar."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Nuk mund të lëvizet prona në atë drejtim"
 

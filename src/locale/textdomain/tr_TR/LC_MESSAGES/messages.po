@@ -12296,10 +12296,6 @@ msgid "Back to Users"
 msgstr "Kullanıcılara Geri Dön"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Bağış kaydı olan bir aile silinemez. Finans yöneticisiyle iletişime geçin."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Özellik bu yönde taşınamaz"
 

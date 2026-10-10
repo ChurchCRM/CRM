@@ -2906,7 +2906,6 @@
   "An error occurred while moving donations.": "เกิดข้อผิดพลาดขณะย้ายการบริจาค",
   "At least one family member is required": "ต้องมีสมาชิกครอบครัวอย่างน้อยหนึ่งคน",
   "Back to Users": "กลับไปยังผู้ใช้",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "ไม่สามารถลบครอบครัวที่มีบันทึกการบริจาคได้ โปรดติดต่อผู้ดูแลระบบการเงิน",
   "Cannot move property in that direction": "ไม่สามารถย้ายคุณสมบัตินั้นในทิศทางนั้นได้",
   "Confirm Family Info": "ยืนยันข้อมูลครอบครัว",
   "Delete failed": "การลบล้มเหลว",

@@ -2906,7 +2906,6 @@
   "An error occurred while moving donations.": "献金の移動中にエラーが発生しました。",
   "At least one family member is required": "少なくとも1人の家族メンバーが必要です",
   "Back to Users": "ユーザー一覧に戻る",
-  "Cannot delete a family with donation records. Contact a finance administrator.": "献金記録のある家族は削除できません。財務管理者にお問い合わせください。",
   "Cannot move property in that direction": "その方向にプロパティを移動できません",
   "Confirm Family Info": "家族情報を確認",
   "Delete failed": "削除に失敗しました",

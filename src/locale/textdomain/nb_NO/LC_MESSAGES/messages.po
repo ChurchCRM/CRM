@@ -12366,10 +12366,6 @@ msgid "Back to Users"
 msgstr "Tilbake til brukere"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "Kan ikke slette en familie med gaveregistreringer. Kontakt en økonomiansvarlig."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "Kan ikke flytte egenskapen i den retningen"
 

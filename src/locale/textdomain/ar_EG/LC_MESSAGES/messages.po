@@ -12327,10 +12327,6 @@ msgid "Back to Users"
 msgstr "العودة إلى المستخدمين"
 
 #: 
-msgid "Cannot delete a family with donation records. Contact a finance administrator."
-msgstr "لا يمكن حذف أسرة لها سجلات تبرعات. اتصل بمسؤول الشؤون المالية."
-
-#: 
 msgid "Cannot move property in that direction"
 msgstr "لا يمكن نقل الخاصية في هذا الاتجاه"
 
