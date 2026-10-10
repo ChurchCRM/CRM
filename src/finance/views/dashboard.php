@@ -323,7 +323,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <?php foreach ($recentDeposits as $deposit): ?>
                                 <tr class="<?= ($deposit->getId() === $currentDepositId) ? 'table-active' : '' ?>">
                                     <td>
-                                        <a href="<?= $sRootPath ?>/DepositSlipEditor.php?DepositSlipID=<?= $deposit->getId() ?>">
+                                        <a href="<?= $sRootPath ?>/finance/deposit/<?= $deposit->getId() ?>">
                                             #<?= $deposit->getId() ?>
                                         </a>
                                     </td>
@@ -387,7 +387,7 @@ $sRootPath = SystemURLs::getRootPath();
                         <div class="h3 text-success mb-0"><?= CurrencyFormatter::formatHtml($currentDeposit->getVirtualColumn('totalAmount') ?? 0) ?></div>
                         <small class="text-body-secondary"><?= gettext('Total Amount') ?></small>
                     </div>
-                    <a href="<?= $sRootPath ?>/DepositSlipEditor.php?DepositSlipID=<?= $currentDeposit->getId() ?>" class="btn btn-primary w-100">
+                    <a href="<?= $sRootPath ?>/finance/deposit/<?= $currentDeposit->getId() ?>" class="btn btn-primary w-100">
                         <i class="fa-solid fa-pen-to-square me-1"></i><?= gettext('Edit Deposit') ?>
                     </a>
                 </div>

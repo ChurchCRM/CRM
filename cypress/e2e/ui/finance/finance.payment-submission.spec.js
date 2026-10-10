@@ -24,7 +24,7 @@
  * (family 1 always exists in the test environment) before submitting.
  *
  * Note on URL assertion: The pledge-editor URL contains
- * "DepositSlipEditor.php" in its encoded linkBack query parameter.  A plain
+ * "/finance/deposit/<id>" in its encoded linkBack query parameter.  A plain
  * cy.url() "contain" check would therefore pass even when the page has NOT
  * yet navigated back.  We use cy.location('pathname') to check the pathname
  * only, which correctly distinguishes the two pages.
@@ -54,7 +54,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         cy.contains("Add New Deposit");
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
-        cy.location("pathname").should("include", "DepositSlipEditor.php");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
 
         // Add a cash payment
         cy.get(".btn-success").click();
@@ -77,7 +77,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
 
         // Wait for the API call to complete, then verify redirect and table
         cy.wait("@submitPayment").its("response.statusCode").should("eq", 200);
-        cy.location("pathname").should("include", "DepositSlipEditor.php");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
         cy.get("#paymentsTable").should("be.visible");
         cy.get("#paymentsTable").contains(paymentAmount).should("be.visible");
         cy.get("#paymentsTable").contains("CASH").should("be.visible");
@@ -99,7 +99,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         cy.get("[data-bs-target='#newDepositModal']").click();
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
-        cy.location("pathname").should("include", "DepositSlipEditor.php");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
 
         // Add a check payment
         cy.get(".btn-success").click();
@@ -122,7 +122,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
 
         // Wait for the API call to complete, then verify redirect and table
         cy.wait("@submitCheckPayment").its("response.statusCode").should("eq", 200);
-        cy.location("pathname").should("include", "DepositSlipEditor.php");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
         cy.get("#paymentsTable").should("be.visible");
         cy.get("#paymentsTable").contains(paymentAmount).should("be.visible");
         cy.get("#paymentsTable").contains(checkNumber).should("be.visible");
@@ -146,7 +146,7 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         cy.get("[data-bs-target='#newDepositModal']").click();
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
-        cy.location("pathname").should("include", "DepositSlipEditor.php");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
 
         // Add a payment with fund split
         cy.get(".btn-success").click();
@@ -172,17 +172,17 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
 
         // Wait for the API call to complete, then verify redirect and table
         cy.wait("@submitSplitPayment").its("response.statusCode").should("eq", 200);
-        cy.location("pathname").should("include", "DepositSlipEditor.php");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
         cy.get("#paymentsTable").should("be.visible");
         cy.get("#paymentsTable").contains(totalAmount).should("be.visible");
         cy.get("#paymentsTable").contains(checkNumber).should("be.visible");
 
         // Close the deposit slip
         cy.get("#Closed").check();
-        cy.get("button[name='DepositSlipSubmit']").click();
+        cy.get("#saveDeposit").click();
 
         // Verify we're still on the deposit slip editor page
-        cy.location("pathname").should("include", "DepositSlipEditor.php");
+        cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
         cy.get("#Closed").should("be.checked");
     });
 });

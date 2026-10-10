@@ -1,6 +1,9 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Deposit;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\DepositService;
@@ -101,6 +104,56 @@ $app->group('/deposit', function (RouteCollectorProxy $group): void {
         ];
 
         return $renderer->render($response, 'deposits/search.php', $pageArgs);
+    });
+
+    /**
+     * GET /finance/deposit/{id}
+     *
+     * Deposit editor — replaces legacy DepositSlipEditor.php. Unknown ids go
+     * back to the search page. Date, comment and status are saved through
+     * POST /api/deposits/{id}.
+     */
+    $group->get('/{id:\d+}', function (Request $request, Response $response, array $args): Response {
+        $depositId = (int) $args['id'];
+        $deposit   = DepositQuery::create()->findOneById($depositId);
+
+        if ($deposit === null) {
+            return $response
+                ->withHeader('Location', SystemURLs::getRootPath() . '/finance/deposit/search')
+                ->withStatus(302);
+        }
+
+        // The payment editor reads this to preselect the method for a new payment.
+        $defaultMethods = ['Bank' => 'CHECK', 'CreditCard' => 'CREDITCARD', 'BankDraft' => 'BANKDRAFT'];
+        if (isset($defaultMethods[$deposit->getType()])) {
+            $_SESSION['idefaultPaymentMethod'] = $defaultMethods[$deposit->getType()];
+        }
+
+        $_SESSION['iCurrentDeposit'] = $depositId;
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $currentUser->setCurrentDeposit($depositId);
+        $currentUser->save();
+
+        $fundTotals = $deposit->getFundTotals()->toArray();
+
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        return $renderer->render($response, 'deposits/editor.php', [
+            'sRootPath'     => SystemURLs::getRootPath(),
+            'sPageTitle'    => $deposit->getType() . ' ' . gettext('Deposit Slip Number') . ': ' . $depositId,
+            'sPageSubtitle' => gettext('View and manage deposit slip payments'),
+            'aBreadcrumbs'  => PageHeader::breadcrumbs([
+                [gettext('Finance'), '/finance/'],
+                [gettext('Deposits'), '/finance/deposit/search'],
+                [gettext('Edit Deposit')],
+            ]),
+            'deposit'       => $deposit,
+            'depositId'     => $depositId,
+            'prevDeposit'   => Deposit::getPreviousDeposit($depositId),
+            'nextDeposit'   => Deposit::getNextDeposit($depositId),
+            'fundLabels'    => array_column($fundTotals, 'Name'),
+            'fundData'      => array_map(static fn ($fund): float => (float) $fund['Total'], $fundTotals),
+        ]);
     });
 
 });
