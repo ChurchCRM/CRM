@@ -418,16 +418,9 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
 });
 
 // POST /fundraiser/{fundraiserId}/delete — delete a fundraiser
-// Module middleware covers ManageFundraisers; inline guard adds DeleteRecords.
-// (Migrated from FundRaiserDelete.php per PR #9078 permission model.)
+// ManageFundraisers (enforced by module middleware) is sufficient.
+// DeleteRecords is only for people and families.
 $app->post('/{fundraiserId}/delete', function (Request $request, Response $response, array $args): Response {
-    $currentUser = AuthenticationManager::getCurrentUser();
-    if (!$currentUser->isDeleteRecordsEnabled()) {
-        return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/v2/access-denied?role=DeleteRecords')
-            ->withStatus(302);
-    }
-
     $fundraiserId = (int) $args['fundraiserId'];
     if ($fundraiserId > 0) {
         $fundraiser = FundRaiserQuery::create()->findPk($fundraiserId);
