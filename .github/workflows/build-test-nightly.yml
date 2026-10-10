@@ -27,7 +27,7 @@ name: Build, Test and Package (Nightly)
 #                    × PHP 8.4 and 8.5
 #
 # Stage 3 – Summary
-#   • nightly-summary: always() — reports pass/fail counts to the step summary
+#   • nightly-summary: always() — job results plus Cypress artifact names
 #
 # Concurrency: a new run cancels any in-progress nightly run (safe for
 # scheduled/dispatch/release-publish triggers — you always want the latest
@@ -848,8 +848,7 @@ jobs:
 
   # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 3 — Nightly summary
-  # Runs after all test jobs (always) and writes a pass/fail table to the
-  # workflow step summary.
+  # Runs after all test jobs (always) and writes the job and artifact overview.
   # ═══════════════════════════════════════════════════════════════════════════
   nightly-summary:
     needs:
@@ -864,23 +863,15 @@ jobs:
     if: always()
     runs-on: ubuntu-24.04
     steps:
-    - name: Write summary
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Test overview
+      uses: ./.github/actions/test-run-summary
+
+    - name: Fail the run when a group did not pass
       run: |
-        echo "## Nightly Test Results" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "| Job group | Result |" >> $GITHUB_STEP_SUMMARY
-        echo "|-----------|--------|" >> $GITHUB_STEP_SUMMARY
-        echo "| Build (PHP 8.4 + 8.5 images) | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 root (api / admin-ui / ui ×3) | ${{ needs.test-root.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 subdir (api / admin-ui / ui ×3) | ${{ needs.test-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 new-system setup (root) | ${{ needs.test-new-system.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 new-system setup (subdir) | ${{ needs.test-new-system-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 full locale sweep (root) | ${{ needs.test-locale-root.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 full locale sweep (subdir) | ${{ needs.test-locale-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| Upgrade tests (8.4+8.5 × 4 groups) | ${{ needs.test-upgrade.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        # Determine overall status — check for non-success so skipped/cancelled
-        # jobs (e.g. when build fails) are also reported as failures.
+        # Non-success includes skipped and cancelled, such as when build fails.
         if [[ "${{ needs.build.result }}" != "success" || \
               "${{ needs.test-root.result }}" != "success" || \
               "${{ needs.test-subdir.result }}" != "success" || \

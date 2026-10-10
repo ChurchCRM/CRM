@@ -479,6 +479,17 @@ jobs:
       if: always()
       run: npm run docker:ci:new-system:subdir:down
 
+  test-summary:
+    needs: [build, test-root, test-subdir, test-new-system, test-new-system-subdir]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Test overview
+      uses: ./.github/actions/test-run-summary
+
   package:
     needs: [build, test-root, test-subdir, test-new-system, test-new-system-subdir]
     # Serialize release uploads per branch so concurrent master builds
