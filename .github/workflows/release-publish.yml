@@ -291,7 +291,9 @@ jobs:
       # Pinned to commit SHAs (v7); the other workflows move with #10006.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          sparse-checkout: scripts
+          sparse-checkout: |
+            scripts
+            .github/actions
 
       - uses: ./.github/actions/setup-node
         with:
