@@ -122,7 +122,7 @@ runs:
           cypress/logs
           cypress/screenshots
           cypress/videos
-        retention-days: 15
+        retention-days: 1
         if-no-files-found: ignore
 
     - name: Test Report
