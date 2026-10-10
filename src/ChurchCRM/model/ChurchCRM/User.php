@@ -1181,7 +1181,7 @@ class User extends BaseUser
             throw new PasswordChangeException('New', gettext('Your password choice is too obvious. Please choose something else.'));
         }
         if (strlen($newPassword) < SystemConfig::getIntValue('iMinPasswordLength')) {
-            throw new PasswordChangeException('New', gettext('Your new password must be at least') . ' ' . SystemConfig::getIntValue('iMinPasswordLength') . ' ' . gettext('characters'));
+            throw new PasswordChangeException('New', sprintf(gettext('Your new password must be at least %d characters'), SystemConfig::getIntValue('iMinPasswordLength')));
         }
         $this->updatePassword($newPassword);
         $this->setNeedPasswordChange(false);
@@ -1191,6 +1191,10 @@ class User extends BaseUser
 
     public function userChangePassword($oldPassword, $newPassword): void
     {
+        if ($this->isLocked()) {
+            throw new PasswordChangeException('Old', gettext('Your account is locked. An administrator must unlock it before you can change the password.'));
+        }
+
         if (!$this->isPasswordValid($oldPassword)) {
             $this->setFailedLogins($this->getFailedLogins() + 1);
             $this->save();
@@ -1202,7 +1206,7 @@ class User extends BaseUser
         }
 
         if (strlen($newPassword) < SystemConfig::getIntValue('iMinPasswordLength')) {
-            throw new PasswordChangeException('New', gettext('Your new password must be at least') . ' ' . SystemConfig::getIntValue('iMinPasswordLength') . ' ' . gettext('characters'));
+            throw new PasswordChangeException('New', sprintf(gettext('Your new password must be at least %d characters'), SystemConfig::getIntValue('iMinPasswordLength')));
         }
 
         if ($newPassword == $oldPassword) {
