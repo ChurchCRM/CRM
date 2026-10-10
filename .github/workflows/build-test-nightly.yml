@@ -11,8 +11,9 @@ name: Build, Test and Package (Nightly)
 # What this workflow covers
 # ─────────────────────────
 # Stage 1 – build
-#   • Builds the PHP 8.5 Docker image and uploads it as a shared artifact.
-#     PHP 8.4 stays on the pull-request workflow.
+#   • Builds the PHP 8.4 and 8.5 images. The app suite below uses 8.5.
+#     The pull-request workflow tests the app on 8.4. Nightly uses 8.4
+#     only for the upgrade jobs.
 #
 # Stage 2a – PHP 8.5 full test suite (all jobs run in parallel)
 #   • test-root:             api, admin-ui, ui (3 shards) — root install path
@@ -22,9 +23,9 @@ name: Build, Test and Package (Nightly)
 #   • test-locale-root:      full locale sweep (root)
 #   • test-locale-subdir:    full locale sweep (subdir)
 #
-# Stage 2b – Upgrade tests on PHP 8.5, one job per database engine
-#   • upgrade-mysql:    ChurchInfo 1.3.1 and ChurchCRM 6.0.0
-#   • upgrade-mariadb:  ChurchInfo 1.3.1 and ChurchCRM 6.0.0
+# Stage 2b – Upgrade tests, one job per database engine
+#   • upgrade-mysql:    PHP 8.4 and 8.5 × ChurchInfo 1.3.1 and ChurchCRM 6.0.0
+#   • upgrade-mariadb:  PHP 8.4 and 8.5 × ChurchInfo 1.3.1 and ChurchCRM 6.0.0
 #
 # Stage 3 – Summary
 #   • nightly-summary: always() — job results plus Cypress artifact names
@@ -62,10 +63,10 @@ on:
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 1 — Build
-  # Build the app and the PHP 8.5 Docker image; upload as a shared artifact.
+  # Build the app and the PHP 8.4 and 8.5 images; upload them as one artifact.
   # ═══════════════════════════════════════════════════════════════════════════
   build:
-    name: PHP 8.5 image
+    name: PHP 8.4 and 8.5 images
     timeout-minutes: 40
     permissions:
       contents: read
@@ -84,14 +85,17 @@ jobs:
     - name: Validate PHP syntax
       run: npm run build:php:validate:all
 
-    - name: Build Docker image (PHP 8.5)
+    - name: Build Docker images (PHP 8.4 and 8.5)
       run: |
-        docker build --target test \
-          --build-arg PHP_VERSION=8.5 \
-          -t churchcrm/crm:php8.5-test \
-          -f docker/Dockerfile.churchcrm-apache-php8 docker/
-        docker save churchcrm/crm:php8.5-test | gzip > temp/docker-image-8.5.tar.gz
-        echo "Saved: $(du -h temp/docker-image-8.5.tar.gz | cut -f1)"
+        for version in 8.4 8.5; do
+          echo "Building Docker image for PHP $version..."
+          docker build --target test \
+            --build-arg PHP_VERSION=$version \
+            -t churchcrm/crm:php${version}-test \
+            -f docker/Dockerfile.churchcrm-apache-php8 docker/
+          docker save churchcrm/crm:php${version}-test | gzip > temp/docker-image-${version}.tar.gz
+          echo "Saved: $(du -h temp/docker-image-${version}.tar.gz | cut -f1)"
+        done
 
     - name: Upload build artifact
       uses: ./.github/actions/upload-artifact
@@ -587,12 +591,12 @@ jobs:
 
   # ═══════════════════════════════════════════════════════════════════════════
   # STAGE 2b — Upgrade tests
-  # PHP 8.5 only. Engine is the job, starting schema is the matrix.
-  # The pull-request workflow already runs the app on PHP 8.4.
+  # Engine is the job. PHP version and starting schema are the matrix.
+  # The app suite above stays on PHP 8.5.
   # ═══════════════════════════════════════════════════════════════════════════
   upgrade-mysql:
     needs: build
-    name: MySQL upgrade / ${{ matrix.schema.label }}
+    name: MySQL upgrade / PHP ${{ matrix.php }} / ${{ matrix.schema.label }}
     timeout-minutes: 40
     permissions:
       contents: read
@@ -601,6 +605,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        php: ["8.4", "8.5"]
         schema:
           - label: ChurchInfo 1.3.1
             slug: churchinfo-1.3.1
@@ -635,8 +640,8 @@ jobs:
 
     - name: Load Docker image
       run: |
-        docker load < temp/docker-image-8.5.tar.gz
-        docker tag churchcrm/crm:php8.5-test churchcrm/crm:php8-debian
+        docker load < temp/docker-image-${{ matrix.php }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php }}-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
       run: node scripts/generate-signatures-node.js
@@ -670,7 +675,7 @@ jobs:
         config-file: cypress/configs/upgrade.config.ts
         spec: cypress/e2e/upgrade/**/*.spec.js
         test-name: ${{ matrix.schema.slug }}
-        php-version: '8.5'
+        php-version: ${{ matrix.php }}
         deployment: mysql
         docker-compose-profile: ci-new-system
         docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.mysql.yaml'
@@ -686,7 +691,7 @@ jobs:
 
   upgrade-mariadb:
     needs: build
-    name: MariaDB upgrade / ${{ matrix.schema.label }}
+    name: MariaDB upgrade / PHP ${{ matrix.php }} / ${{ matrix.schema.label }}
     timeout-minutes: 40
     permissions:
       contents: read
@@ -695,6 +700,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        php: ["8.4", "8.5"]
         schema:
           - label: ChurchInfo 1.3.1
             slug: churchinfo-1.3.1
@@ -729,8 +735,8 @@ jobs:
 
     - name: Load Docker image
       run: |
-        docker load < temp/docker-image-8.5.tar.gz
-        docker tag churchcrm/crm:php8.5-test churchcrm/crm:php8-debian
+        docker load < temp/docker-image-${{ matrix.php }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php }}-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
       run: node scripts/generate-signatures-node.js
@@ -764,7 +770,7 @@ jobs:
         config-file: cypress/configs/upgrade.config.ts
         spec: cypress/e2e/upgrade/**/*.spec.js
         test-name: ${{ matrix.schema.slug }}
-        php-version: '8.5'
+        php-version: ${{ matrix.php }}
         deployment: mariadb
         docker-compose-profile: ci-new-system
         extra-env: |
