@@ -1,5 +1,5 @@
 name: 'JUnit test report'
-description: 'Single SHA pin for dorny/test-reporter with the repo-wide JUnit defaults. Run actions/checkout first.'
+description: 'Uploads the JUnit XML, then writes the dorny summary for this job. Run actions/checkout first.'
 
 inputs:
   name:
@@ -40,6 +40,25 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Name the JUnit artifact
+      id: junit
+      if: always()
+      shell: bash
+      env:
+        REPORT_NAME: ${{ inputs.name }}
+      run: |
+        slug=$(printf '%s' "$REPORT_NAME" | tr ': /' '---' | tr -cd 'A-Za-z0-9._()-')
+        echo "slug=$slug" >> "$GITHUB_OUTPUT"
+
+    - name: Upload JUnit report
+      if: always()
+      uses: ./.github/actions/upload-artifact
+      with:
+        name: cypress-junit-${{ steps.junit.outputs.slug }}-${{ github.run_id }}
+        path: ${{ inputs.path }}
+        retention-days: '1'
+        if-no-files-found: ignore
+
     - uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3
       with:
         name: ${{ inputs.name }}
