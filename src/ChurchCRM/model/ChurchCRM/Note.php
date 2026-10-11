@@ -69,6 +69,8 @@ class Note extends BaseNote
      * - Admins see all private notes (canReadPrivateNotes() → isAdmin()).
      * - Other Notes=1 non-admin, non-author users cannot see another user's
      *   private note (filtered out, not 403).
+     * - Notes attached to a protected household or its members are hidden from
+     *   users who may not read that record.
      * - Confidential notes are visible only to the author and listed recipients;
      *   admin status grants nothing.
      *
@@ -77,7 +79,10 @@ class Note extends BaseNote
      */
     public function isVisibleTo(User $user): bool
     {
-        if (!(new RecordAccessPolicy())->canSeeNote($user, $this)) {
+        $recordAccess = new RecordAccessPolicy();
+        if (!$recordAccess->canSeeNote($user, $this)
+            || !$recordAccess->canReadPerson($user, (int) $this->getPerId())
+            || !$recordAccess->canReadFamily($user, (int) $this->getFamId())) {
             return false;
         }
         if ($this->isConfidential() || !$this->isPrivate()) {

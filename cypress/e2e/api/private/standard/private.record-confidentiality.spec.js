@@ -27,6 +27,15 @@ describe("Protected households", () => {
         cy.makePrivateUserAPICall("GET", "/api/person/6/notes", null, 404);
     });
 
+    it("hides a public note on the household from a direct lookup by id", () => {
+        cy.makePrivateAdminAPICall("POST", `/api/family/${FAMILY}/note`, { text: "<p>Household note</p>" }, 201).then((r) => {
+            const id = r.body.note.id;
+            cy.makePrivateAdminAPICall("GET", `/api/note/${id}`, null, 200);
+            cy.makePrivateUserAPICall("GET", `/api/note/${id}`, null, 404);
+            cy.makePrivateAdminAPICall("DELETE", `/api/note/${id}`, null, 200);
+        });
+    });
+
     it("keeps the family out of search and recent lists", () => {
         cy.makePrivateUserAPICall("GET", "/api/families/search/Hart", null, 200).then((r) => {
             expect(JSON.stringify(r.body)).to.not.include("Hart");
