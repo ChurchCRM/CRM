@@ -33,6 +33,7 @@ These are **approved product requirements**, not proof of current behavior or ap
 | P8 | Simple church-role templates by default; optional advanced custom permissions | Final template catalog and role editor design (D2/D6) |
 | P9 | Churches may designate an existing group as trusted Pastoral Leadership; protect membership and explicitly configure granted capabilities | Grant and approval workflow (D7) |
 | P10 | Track each person's church voting eligibility as a structured membership attribute, **independent of groups and application RBAC roles**; Church Board remains an ordinary group | Eligibility rules, effective dates, authorization, privacy and migration (D8) |
+| P11 | Ship versioned built-in role templates; church admins customize via church-owned copies, not by editing system originals. Users may hold multiple roles; advanced permissions are optional. | Template catalog, composition/conflict rules, scope editor, upgrades, sensitive-grant approval and effective-access preview (D2/D6) |
 
 **Conflict resolution:** P4 supersedes the earlier RFC proposal to permit shared `per_Email` values as a permanent target. It does **not** establish that existing data is unique, mandate email for every person, or authorize immediate database constraints. The reviewer must assess the impact on existing churches and [member sign-in PR #10464](https://github.com/ChurchCRM/CRM/pull/10464). Household `fam_Email` is not subject to personal-email uniqueness merely because it may match someone's email.
 
@@ -56,18 +57,34 @@ These are **approved product requirements**, not proof of current behavior or ap
 
 A church must be able to use templates without constructing a complex access graph. Roles **compose** (no inheritance graph in v1); role assignment does not override sensitive-record restrictions.
 
-| Suggested template | Typical permitted workflow | Never implied |
+| Proposed built-in template | Intended responsibility | Does **not** automatically grant |
 |---|---|---|
-| Member / portal-only | Own approved profile, approved household view, personal events/volunteering | Staff directory, all household private data |
-| Volunteer | Assigned shifts, check-in or attendance operations | All children or unrelated ministries |
-| Group leader | Assigned roster, attendance, appropriate messaging | All church records, private notes |
-| Ministry coordinator | Teams, scheduling, approved group operations | Finance or account security |
-| Read-only staff | Broad ordinary person/family directory | Editing, protected records, confidential notes |
-| People staff/editor | Create/update ordinary people and families | Credential recovery changes or protected-person bypass |
-| Finance reader/manager | Relevant giving and deposits (separate read/write) | Automatic private pastoral access |
-| Church administrator | Normal configuration and staff administration | Automatic access to highly confidential content or unchecked credential takeover |
+| Member / Household (portal-only) | Approved own and household self-service | Staff directory, unrestricted family private data |
+| Volunteer | Assigned shifts and narrowly scoped tasks | Unrelated people, all children, exports |
+| Check-In Volunteer | Assigned event/class check-in and safe pickup workflows | Full directory, finance, membership administration |
+| Group / Team Leader | Assigned roster, attendance and approved communications | Other groups, private notes, bulk export |
+| Ministry Coordinator | Assigned ministries, teams and schedules | Unscoped finance or user management |
+| Read-Only Staff | Ordinary directory records | Edit, protected people, confidential notes, bulk export |
+| Office Staff / People Editor | Ordinary person and family updates | Credential recovery, restricted-person bypass, membership date by default |
+| Membership Officer | Authorized membership classification/date and approved reports | Voting eligibility unless separately granted, confidential notes |
+| Pastor / Pastoral Care | Approved pastoral workflows and explicitly shared notes | All highly confidential/safeguarding records or blanket admin access |
+| Finance Assistant | Assigned giving-entry tasks | Finance configuration, broad exports, pastoral records |
+| Finance Manager | Authorized giving, deposits and financial reporting | Unrelated confidential notes or unrestricted person export |
+| Church Administrator | Configuration, users, role assignments and ordinary system administration | Highly confidential content, sensitive overrides or automatic bulk export |
 
-**Approved product direction (George, 2026-10-10):** present simple church-role templates by default, with advanced custom permissions optional. A newly created **staff** account receives **read-only access to the ordinary directory by default**, and additional capabilities only when explicitly assigned for its church responsibility. Portal-only member accounts are not staff and receive no staff-directory default. These remain design templates, not confirmed seeded roles; implementation must specify exact grants and existing-account upgrade behavior.
+These are **role-template design candidates**, not currently seeded roles and not final grants. A kiosk is a **device principal** and an API integration is a **service principal** with its own credential, operation and scope policy, not a human role. Board membership and church governance positions do not automatically create application permissions. One individual may have several role assignments for small-church workflows.
+
+### Approved template lifecycle and church customization (P11)
+
+1. **System-owned versioned defaults:** ChurchCRM ships a small, understandable set of role templates with stable identifiers, documented purpose, explicit action grants and default scopes. Templates are read-only to churches; upstream versions may evolve with release notes and migration review. Exact catalog and grants are subject to persona, GHSA, kiosk, export and administrator audits.
+2. **Customize by copying:** An authorized church administrator selects **Customize / Create church role**, creating a church-owned copy with its own name, description, source template/version, explicit permissions and scopes. They may also create a custom role from scratch in advanced mode. A customized role is not silently rewritten when a built-in template changes on upgrade.
+3. **Explicit scope:** A grant answers **what action, on which resource/field, for whose people or ministry, through which allowed operation**. E.g., check-in for an assigned class does not imply access to every child or every family; ordinary directory read does not imply CSV/print/bulk export. Sensitive grants (protected persons, confidential notes, membership/voting governance, finance, full export, trusted-group management) require separate deliberate authorization and appropriate auditing; no implicit admin bypass for highly confidential content.
+4. **Composed roles, not role inheritance:** A person may hold multiple roles. Combine only explicitly granted capabilities within each grant's own scope. Do **not** union a global scope from one role with a sensitive action from another to produce an unintended cross-product privilege. Record-level sensitivity and explicit confidentiality restrictions still apply. Conflicts and override policy remain an implementation decision D2.
+5. **Effective-access preview and explanation:** Before saving an assignment or edited church role, show a church-friendly summary of effective **view / edit / print / filtered export / bulk export / administer** permissions and scope, highlighting newly granted sensitive access and who else holds the role. Provide an accessible, localized, mobile-usable UI and understandable denial reasons that do not reveal hidden records. No UI-only security: every data path must enforce the same policy server-side.
+6. **Versioning and upgrade safety:** Store the built-in source and revision used by church-owned copies. On upgrades, preserve custom role grants, report changes in built-in defaults, and offer a reviewed comparison/rebase path; never silently escalate sensitive privileges or strip legitimate workflows. Migrate legacy `user_usr`, `userconfig_ucfg`, custom-field ACLs, portal-only modes and volunteer scopes using an effective-permission preview and rollback plan. Existing accounts are not silently assigned new roles or broadened grants.
+7. **Separate assignment and editing authority:** Only authorized role/security administrators may create or assign church-owned roles. Role editing cannot be used for self-promotion or indirect escalation through group membership, imported permissions, API, plugins or user management. Require appropriate approval/step-up for high-risk changes; exact policy remains D2/D6.
+
+**Approved product direction (George, 2026-10-10):** built-in role templates plus church-owned customization and multiple role assignments, with advanced editing optional. Newly created **staff** accounts default to read-only **ordinary** directory access unless an explicit additional role is granted; portal-only members have no staff-directory default. Detailed role grants, safe scope defaults, composition conflict resolution and migration rules are **not yet approved for implementation** and must be validated by [common-user audit #10520](https://github.com/ChurchCRM/CRM/issues/10520), [administrator audit #10519](https://github.com/ChurchCRM/CRM/issues/10519), [field audit #10515](https://github.com/ChurchCRM/CRM/issues/10515), [export audit #10516](https://github.com/ChurchCRM/CRM/issues/10516), [GHSA retrospective #10517](https://github.com/ChurchCRM/CRM/issues/10517), and [kiosk audit #10518](https://github.com/ChurchCRM/CRM/issues/10518).
 
 ### Default directory policy
 - Ordinary **staff** retain broad access to **standard** people and families, including inactive records where normal staff workflow requires it. Portal-only users are **not** staff and must remain limited to their own approved relationships.
@@ -269,6 +286,9 @@ Also test cross-family links, hidden-person count/thumbnail leakage, child becom
 - Have legacy Voting Members reports, membership anniversary reports, CSV/import and search been audited for field-level authorization and policy drift?
 - Can EditSelf, family editing, EditRecords, imports or API calls change Membership Date without the dedicated permission?
 - Are D1–D8 answered before the corresponding phase starts?
+- Are built-in templates versioned and immutable, and are church customizations upgrade-safe?
+- Does role composition preserve each grant's original scope without cross-product privilege escalation?
+- Does the effective-access preview include print, filtered export, bulk export and sensitive field access?
 - Are negative tests and rollback criteria implementation-ready?
 
 ## 12. Source issues and design dependencies
