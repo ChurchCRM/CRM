@@ -51,7 +51,7 @@ runs:
       id: cypress
       shell: bash
       run: |
-        report_file="cypress/reports/junit-php${PHP_VERSION}-${DEPLOYMENT}-${TEST_NAME}-[suiteName]-[hash].xml"
+        report_file="cypress/reports/junit-php${PHP_VERSION}-${DEPLOYMENT}-${TEST_NAME}-[hash].xml"
         spec_args=()
         if [[ -z "$SPLIT" ]]; then
           spec_args+=(--spec "$TEST_SPEC")
