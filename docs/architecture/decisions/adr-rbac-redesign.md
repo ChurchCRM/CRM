@@ -106,6 +106,10 @@ A church may designate an **existing active group** as Trusted Pastoral Leadersh
 
 **Membership Date governance control (security finding, [#10512](https://github.com/ChurchCRM/CRM/issues/10512)):** Current `src/PersonEditor.php` allows ordinary `EditRecords` or `EditSelf` for self/same-family to enter the person editor, accepts `MembershipDate` in POST and calls `setMembershipDate` without a dedicated field-level authorization check in that path. This is a verified authorization-design gap, not a claim that all endpoints have been exploited. **Target policy:** editing membership dates requires separately assigned `membership.date.manage` (for example, Membership Officer), not ordinary people editing, self/family editing, board-group membership, voting status or automatic admin wildcard. Enforce on every write path including imports/APIs, preserve the original value on unauthorized edits, and audit old/new value, actor and reason. Keep this permission separate from `membership.voting_eligibility.manage`; changing the date must never automatically change eligibility. Audit legacy users and plan a safe transition before enforcement. See [docs #110](https://github.com/ChurchCRM/docs.churchcrm.io/issues/110) for release-accurate documentation.
 
+**Verified cross-feature dependency:** The current `src/Reports/VotingMembers.php` counts people with a classification whose **name** equals translated `Member`, excludes deceased records and optionally requires family payment history; it does not evaluate Membership Date or an explicit voting-eligibility attribute. This is a legacy report heuristic, **not** approved voting policy. Before migration, audit and determine a safe transition (relabel/deprecate/rewrite with church-confirmed mapping), including report permissions and no silent output changes. The membership anniversary report reads Membership Date, and CSV import/export/search also touch the field. See [audit #10514](https://github.com/ChurchCRM/CRM/issues/10514).
+
+**Search product dependency:** [#10513](https://github.com/ChurchCRM/CRM/issues/10513) proposes a visible Church Members filter. Existing person classification filtering is not itself a canonical membership policy. Choose a stable church-configurable membership definition, never infer from date, voting eligibility, donations or localized classification label; honor restricted-record visibility and export permissions.
+
 **Open decision D8:** who may set/revoke eligibility, who may read/export it, whether members can see their own status, eligibility history/effective dates, reason retention, how churches configure governance rules, optional board-group defaults and safe bulk migration. Do not implement assumptions about denominational bylaws.
 
 ## 4. Authorization contract (all entrypoints)
@@ -232,6 +236,7 @@ Also test cross-family links, hidden-person count/thumbnail leakage, child becom
 - Can a group manager, importer or plugin promote themselves via trusted-group membership?
 - Are governance membership and voting eligibility kept separate from staff security roles and board group membership?
 - Does migration avoid guessing voting eligibility from existing classifications or group names?
+- Have legacy Voting Members reports, membership anniversary reports, CSV/import and search been audited for field-level authorization and policy drift?
 - Can EditSelf, family editing, EditRecords, imports or API calls change Membership Date without the dedicated permission?
 - Are D1–D8 answered before the corresponding phase starts?
 - Are negative tests and rollback criteria implementation-ready?
