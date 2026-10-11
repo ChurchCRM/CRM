@@ -183,6 +183,12 @@ Before approving role seeds, migrations or record visibility enforcement, comple
 
 Existing person/family custom fields use legacy `FieldSecurity` values (including `bAll`, `bFinance`, `bNotes`, `bAdmin`, custom flags). Preserve **per-field read/write security** during RBAC migration; custom field definition administration is a separate permission from reading or editing values. A record-level allow must not bypass a more restrictive field-level classification. Unknown legacy custom security must fail closed pending explicit mapping, with church-facing upgrade reporting; don't silently turn sensitive custom fields into ordinary staff-visible fields. Audit all output paths for disclosure through labels, exports, reports, search, counts and APIs. The audit is a prerequisite, not evidence that every current path is safe.
 
+### Bulk export and printing boundary
+
+**Verified:** `src/CSVExport.php` and `src/CSVCreateFile.php` require admin for the dedicated CSV flow, but `webpack/crm-bootstrap.js` registers global DataTables CSV/print buttons without an independent RBAC grant. The `.no-export` column selector is presentation filtering, not security. This does **not** establish that every DataTable has all records client-side or that every export endpoint is exposed; inventory and test actual data flows in [#10516](https://github.com/ChurchCRM/CRM/issues/10516).
+
+**Proposed policy:** reading a permitted person/family/field does not imply bulk extraction. Design separate scoped capabilities for limited printing, filtered export and full/bulk export, with dataset-specific restrictions (ordinary directory, protected persons, children, custom fields, finance, pastoral/safeguarding data). No blanket admin bypass of highly confidential data. Keep useful church print/label/report workflows where appropriately scoped, but gate export generation and server data feeds—not merely UI buttons. Audit output events without recording exported contents. A browser that already received data cannot be prevented from copying it, so avoid overfetching and do not claim perfect exfiltration prevention. New-install and upgrade defaults, delegation and staged compatibility require George's approval.
+
 ## 10. Security acceptance matrix (must become automated tests)
 
 | Scenario | Required result |
