@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -108,6 +109,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
         _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
         filterByLiving()->
+        filterVisibleTo(AuthenticationManager::getCurrentUser())->
         limit(15)->find();
 
         $id = 1;
@@ -345,6 +347,7 @@ function getLatestPersons(Request $request, Response $response, array $args): Re
 {
     $people = PersonQuery::create()
         ->leftJoinWithFamily()
+        ->filterVisibleTo(AuthenticationManager::getCurrentUser())
         ->orderByDateEntered('DESC')
         ->limit(10)
         ->find();
@@ -376,6 +379,7 @@ function getUpdatedPersons(Request $request, Response $response, array $args): R
 {
     $people = PersonQuery::create()
         ->leftJoinWithFamily()
+        ->filterVisibleTo(AuthenticationManager::getCurrentUser())
         ->orderByDateLastEdited('DESC')
         ->limit(10)
         ->find();
@@ -425,6 +429,7 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
     $people = PersonQuery::create()
         ->leftJoinWithFamily()
         ->where('Family.DateDeactivated is null')
+        ->filterVisibleTo(AuthenticationManager::getCurrentUser())
         ->filterByBirthDay(null, Criteria::NOT_EQUAL)
         ->filterByBirthMonth(null, Criteria::NOT_EQUAL);
     

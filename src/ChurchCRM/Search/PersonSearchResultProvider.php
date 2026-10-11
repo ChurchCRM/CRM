@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Search;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\LoggerUtils;
@@ -43,6 +44,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
                 _or()->filterByCellPhone($searchLikeString, Criteria::LIKE)->
                 _or()->filterByWorkPhone($searchLikeString, Criteria::LIKE)->
                 filterByLiving()->
+                filterVisibleTo(AuthenticationManager::getCurrentUser())->
                 limit(SystemConfig::getIntValue('bSearchIncludePersonsMax'))->find();
 
             if ($people->count() > 0) {

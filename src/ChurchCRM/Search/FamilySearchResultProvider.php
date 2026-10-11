@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Search;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
@@ -42,6 +43,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
                 ->filterByHomePhone("%$SearchQuery%", Criteria::LIKE)
                 ->_or()
                 ->filterByEmail("%$SearchQuery%", Criteria::LIKE)
+                ->filterVisibleTo(AuthenticationManager::getCurrentUser())
                 ->limit(SystemConfig::getIntValue('bSearchIncludeFamiliesMax'))
                 ->find();
 
@@ -79,7 +81,11 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
                 $familyQuery->_or();
             }
             $families = $familyQuery->endUse()->find();
+            $currentUser = AuthenticationManager::getCurrentUser();
             foreach ($families as $family) {
+                if (!$currentUser->canReadFamily($family->getId())) {
+                    continue;
+                }
                 $id++;
                 $searchResults[] = new SearchResult('family-custom-prop-' . $id, $family->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')), $family->getViewURI());
             }

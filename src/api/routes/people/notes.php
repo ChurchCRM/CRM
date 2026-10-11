@@ -4,8 +4,11 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
+use ChurchCRM\model\ChurchCRM\NoteRecipient;
+use ChurchCRM\model\ChurchCRM\NoteRecipientQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\NoteMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
@@ -27,12 +30,60 @@ function noteToArray(Note $note): array
         'famId'          => $note->getFamId(),
         'text'           => $note->getText(),
         'private'        => $note->isPrivate(),
+        'confidential'   => $note->isConfidential(),
         'type'           => $note->getType(),
         'dateEntered'    => $note->getDateEntered('Y-m-d H:i:s'),
         'dateLastEdited' => $note->getDateLastEdited('Y-m-d H:i:s') ?: null,
         'enteredBy'      => $note->getEnteredBy(),
         'editedBy'       => $note->getEditedBy(),
     ];
+}
+
+/**
+ * Read the confidential/recipientIds fields of a create request onto a new note.
+ * Returns an error message, or null when the note may be saved. Recipients are
+ * stored by confidentialRecipients() once the note has an id.
+ *
+ * @return array{error: ?string, recipients: int[]}
+ */
+function parseConfidentialInput(Note $note, array $input, int $authorId): array
+{
+    if (empty($input['confidential'])) {
+        return ['error' => null, 'recipients' => []];
+    }
+
+    $recipients = [];
+    foreach ((array) ($input['recipientIds'] ?? []) as $id) {
+        $id = (int) $id;
+        if ($id > 0 && $id !== $authorId) {
+            $recipients[$id] = $id;
+        }
+    }
+    if ($recipients !== []
+        && UserQuery::create()->filterByPersonId(array_values($recipients))->count() !== count($recipients)) {
+        return ['error' => gettext('Recipients must be existing users'), 'recipients' => []];
+    }
+
+    $note->setConfidential(true);
+    $note->setPrivate(1);
+
+    return ['error' => null, 'recipients' => array_values($recipients)];
+}
+
+/**
+ * Replace the recipient list of a confidential note.
+ *
+ * @param int[] $userIds
+ */
+function storeNoteRecipients(Note $note, array $userIds): void
+{
+    NoteRecipientQuery::create()->filterByNoteId($note->getId())->delete();
+    foreach ($userIds as $userId) {
+        $recipient = new NoteRecipient();
+        $recipient->setNoteId($note->getId());
+        $recipient->setUserId($userId);
+        $recipient->save();
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -165,7 +216,12 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $note->setPrivate($private);
         $note->setType('note');
         $note->setEntered($currentUser->getId());
+        $confidential = parseConfidentialInput($note, $input, (int) $currentUser->getId());
+        if ($confidential['error'] !== null) {
+            return SlimUtils::renderErrorJSON($response, $confidential['error'], [], 400);
+        }
         $note->save();
+        storeNoteRecipients($note, $confidential['recipients']);
 
         return SlimUtils::renderJSON($response, ['note' => noteToArray($note)], 201);
     })->add(new InputSanitizationMiddleware(['text' => 'html']));
@@ -286,7 +342,12 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $note->setPrivate($private);
         $note->setType('note');
         $note->setEntered($currentUser->getId());
+        $confidential = parseConfidentialInput($note, $input, (int) $currentUser->getId());
+        if ($confidential['error'] !== null) {
+            return SlimUtils::renderErrorJSON($response, $confidential['error'], [], 400);
+        }
         $note->save();
+        storeNoteRecipients($note, $confidential['recipients']);
 
         return SlimUtils::renderJSON($response, ['note' => noteToArray($note)], 201);
     })->add(new InputSanitizationMiddleware(['text' => 'html']));
@@ -357,12 +418,12 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $note = $request->getAttribute('note');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        // Editing requires reading the note. Admins see all notes (including
-        // private) via canReadPrivateNotes() → isAdmin(), so they may edit any note.
-        // Non-admin non-authors are rejected.
-        $isAuthor = $note->getEnteredBy() === $currentUser->getId();
-        $adminMayEdit = $currentUser->isAdmin();
-        if (!$isAuthor && !$adminMayEdit) {
+        // Confidential notes answer 404 to anyone who cannot read them.
+        if ($note->isConfidential() && !$note->isVisibleTo($currentUser)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Note not found'), [], 404);
+        }
+        // Author, or an admin for a note that is not confidential.
+        if (!$note->canBeModifiedBy($currentUser)) {
             return SlimUtils::renderErrorJSON($response, gettext('You do not have permission to edit this note'), [], 403);
         }
 
@@ -372,7 +433,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? 1 : 0;
+        $private = $note->isConfidential() || !empty($input['private']) ? 1 : 0;
 
         $note->setText($text);
         $note->setPrivate($private);
@@ -405,7 +466,10 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $note = $request->getAttribute('note');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        if (!$currentUser->isAdmin() && $note->getEnteredBy() !== $currentUser->getId()) {
+        if ($note->isConfidential() && !$note->isVisibleTo($currentUser)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Note not found'), [], 404);
+        }
+        if (!$note->canBeModifiedBy($currentUser)) {
             return SlimUtils::renderErrorJSON($response, gettext('Only the note author or an admin may delete this note'), [], 403);
         }
 
@@ -437,5 +501,48 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete note'), [], 500, $e, $request);
         }
+    });
+
+    /**
+     * @OA\Put(
+     *     path="/note/{noteId}/recipients",
+     *     operationId="updateNoteRecipients",
+     *     summary="Replace the recipients of a confidential note",
+     *     description="Only the note's author may change recipients. Admin status grants nothing. Returns 404 for anyone who cannot read the note.",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="noteId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(required=true, @OA\JsonContent(required={"recipientIds"},
+     *         @OA\Property(property="recipientIds", type="array", @OA\Items(type="integer"))
+     *     )),
+     *     @OA\Response(response=200, description="Recipients replaced"),
+     *     @OA\Response(response=400, description="Not a confidential note, or recipient is not a user"),
+     *     @OA\Response(response=403, description="Not the note author"),
+     *     @OA\Response(response=404, description="Note not found")
+     * )
+     */
+    $group->put('/recipients', function (Request $request, Response $response, array $args): Response {
+        /** @var Note $note */
+        $note = $request->getAttribute('note');
+        $currentUser = AuthenticationManager::getCurrentUser();
+
+        if (!$note->isVisibleTo($currentUser)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Note not found'), [], 404);
+        }
+        if (!$note->isConfidential()) {
+            return SlimUtils::renderErrorJSON($response, gettext('Only confidential notes have recipients'), [], 400);
+        }
+        if ($note->getEnteredBy() !== $currentUser->getId()) {
+            return SlimUtils::renderErrorJSON($response, gettext('Only the note author may change recipients'), [], 403);
+        }
+
+        $probe = new Note();
+        $parsed = parseConfidentialInput($probe, ['confidential' => true, 'recipientIds' => ((array) $request->getParsedBody())['recipientIds'] ?? []], (int) $currentUser->getId());
+        if ($parsed['error'] !== null) {
+            return SlimUtils::renderErrorJSON($response, $parsed['error'], [], 400);
+        }
+        storeNoteRecipients($note, $parsed['recipients']);
+
+        return SlimUtils::renderJSON($response, ['recipientIds' => $parsed['recipients']]);
     });
 })->add(NoteMiddleware::class)->add(NotesRoleAuthMiddleware::class);

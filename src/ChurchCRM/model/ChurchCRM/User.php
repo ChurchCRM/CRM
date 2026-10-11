@@ -4,6 +4,7 @@ namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
+use ChurchCRM\Authorization\RecordAccessPolicy;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
@@ -446,35 +447,29 @@ class User extends BaseUser
     }
 
     /**
-     * Returns true if the current user may read basic metadata for any family.
-     * All authenticated users have this capability by default (read-default policy).
-     *
-     * $familyId is reserved for future row-level security (e.g. pastoral-confidentiality
-     * holds or per-family privacy flags). Pass the family ID at every call site so that
-     * adding ABAC checks later requires no call-site changes.
+     * Returns true if the current user may read basic metadata for the family.
+     * Read is the default capability for authenticated users, except for protected
+     * households (family_fam.fam_Confidential): those are limited to admins and
+     * members of the household. See RecordAccessPolicy.
      *
      * @param int $familyId The ID of the family to potentially read
      * @return bool True if user can read this family's record
      */
     public function canReadFamily(int $familyId = 0): bool
     {
-        return true; // read is a default capability for all authenticated users
+        return (new RecordAccessPolicy())->canReadFamily($this, $familyId);
     }
 
     /**
-     * Returns true if the current user may read basic metadata for any person.
-     * All authenticated users have this capability by default (read-default policy).
-     *
-     * $personId is reserved for future row-level security (e.g. pastoral-confidentiality
-     * holds or per-person privacy flags). Pass the person ID at every call site so that
-     * adding ABAC checks later requires no call-site changes.
+     * Returns true if the current user may read basic metadata for the person.
+     * Persons inherit the protected-household restriction of their family.
      *
      * @param int $personId The ID of the person to potentially read
      * @return bool True if user can read this person's record
      */
     public function canReadPerson(int $personId): bool
     {
-        return true; // read is a default capability for all authenticated users
+        return (new RecordAccessPolicy())->canReadPerson($this, $personId);
     }
 
     /**
@@ -514,7 +509,7 @@ class User extends BaseUser
 
     /**
      * Check if the user can view/access a specific family's record.
-     * All authenticated users can read any family by default (canReadFamily()).
+     * All authenticated users can read any non-protected family by default (canReadFamily()).
      * EditSelf-only users are further restricted to their own family.
      *
      * @param int $familyId The ID of the family to potentially view

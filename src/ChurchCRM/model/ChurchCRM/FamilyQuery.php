@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
+use ChurchCRM\Authorization\RecordAccessPolicy;
 use ChurchCRM\model\ChurchCRM\Base\FamilyQuery as BaseFamilyQuery;
 
 /**
@@ -15,4 +16,20 @@ use ChurchCRM\model\ChurchCRM\Base\FamilyQuery as BaseFamilyQuery;
  */
 class FamilyQuery extends BaseFamilyQuery
 {
+    /**
+     * Hide protected households from users who may not read them.
+     * Admins and members of the household still see it.
+     */
+    public function filterVisibleTo(User $user): self
+    {
+        if ($user->isAdmin()) {
+            return $this;
+        }
+
+        return $this->where(
+            '(family_fam.fam_Confidential = 0 OR family_fam.fam_ID = ?)',
+            (new RecordAccessPolicy())->ownFamilyId($user),
+            \PDO::PARAM_INT,
+        );
+    }
 }

@@ -16,6 +16,7 @@ use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
@@ -665,4 +666,35 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             'movedCount' => $pledges->count(),
         ]);
     });
+
+    /**
+     * @OA\Put(
+     *     path="/family/{familyId}/confidential",
+     *     operationId="setFamilyConfidential",
+     *     summary="Mark a household as protected (or clear the mark)",
+     *     description="Admin only. A protected household and its members are hidden from everyone except admins and the household's own members: lookups answer 404, and search and list endpoints omit them.",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(required=true, @OA\JsonContent(required={"confidential"},
+     *         @OA\Property(property="confidential", type="boolean")
+     *     )),
+     *     @OA\Response(response=200, description="Flag stored"),
+     *     @OA\Response(response=403, description="Admin required"),
+     *     @OA\Response(response=404, description="Family not found")
+     * )
+     */
+    $group->put('/confidential', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
+        $family = $request->getAttribute('family');
+        $input = (array) $request->getParsedBody();
+
+        $family->setConfidential(!empty($input['confidential']));
+        $family->save();
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'confidential' => $family->isConfidential(),
+        ]);
+    })->add(AdminRoleAuthMiddleware::class);
 })->add(FamilyMiddleware::class);

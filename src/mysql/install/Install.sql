@@ -307,6 +307,7 @@ CREATE TABLE `family_fam` (
   `fam_Longitude` double default NULL,
   `fam_Envelope` mediumint(9) NOT NULL default '0',
   `fam_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
+  `fam_Confidential` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -437,6 +438,7 @@ CREATE TABLE `note_nte` (
   `nte_EnteredBy` mediumint(8) NOT NULL default '0',
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
   `nte_Type` varchar(50) DEFAULT NULL,
+  `nte_Confidential` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`nte_ID`),
   INDEX `idx_nte_per_ID` (`nte_per_ID`),
   INDEX `idx_nte_fam_ID` (`nte_fam_ID`)
@@ -445,6 +447,17 @@ CREATE TABLE `note_nte` (
 --
 -- Dumping data for table `note_nte`
 --
+
+--
+-- Table structure for table `note_recipient_nrc`
+--
+
+CREATE TABLE `note_recipient_nrc` (
+  `nrc_nte_ID` mediumint(8) unsigned NOT NULL,
+  `nrc_usr_ID` mediumint(8) unsigned NOT NULL,
+  PRIMARY KEY (`nrc_nte_ID`,`nrc_usr_ID`),
+  CONSTRAINT `fk_nrc_nte` FOREIGN KEY (`nrc_nte_ID`) REFERENCES `note_nte` (`nte_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 

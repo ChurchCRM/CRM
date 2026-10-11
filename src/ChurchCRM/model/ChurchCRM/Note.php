@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
+use ChurchCRM\Authorization\RecordAccessPolicy;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Note as BaseNote;
 use ChurchCRM\model\ChurchCRM\User;
@@ -59,11 +60,6 @@ class Note extends BaseNote
         }
     }
 
-    public function isPrivate(): bool
-    {
-        return $this->getPrivate() !== 0;
-    }
-
     /**
      * Returns true if the given user may see this note.
      *
@@ -73,13 +69,18 @@ class Note extends BaseNote
      * - Admins see all private notes (canReadPrivateNotes() → isAdmin()).
      * - Other Notes=1 non-admin, non-author users cannot see another user's
      *   private note (filtered out, not 403).
+     * - Confidential notes are visible only to the author and listed recipients;
+     *   admin status grants nothing.
      *
      * Note-level visibility is enforced here; Notes role access is enforced at
      * the route/middleware layer (NotesReadAuthMiddleware / NotesRoleAuthMiddleware).
      */
     public function isVisibleTo(User $user): bool
     {
-        if (!$this->isPrivate()) {
+        if (!(new RecordAccessPolicy())->canSeeNote($user, $this)) {
+            return false;
+        }
+        if ($this->isConfidential() || !$this->isPrivate()) {
             return true;
         }
         // Author always sees their own private note
@@ -93,6 +94,20 @@ class Note extends BaseNote
             $this->getPerId() !== 0 ? (int) $this->getPerId() : null,
             $this->getFamId() !== 0 ? (int) $this->getFamId() : null,
         );
+    }
+
+    /**
+     * Author may always edit or delete. An admin may too, unless the note is
+     * confidential: confidential notes have no admin override.
+     */
+    public function canBeModifiedBy(User $user): bool
+    {
+        return (new RecordAccessPolicy())->canModifyNote($user, $this);
+    }
+
+    public function isPrivate(): bool
+    {
+        return $this->getPrivate() !== 0 || $this->isConfidential();
     }
 
     /**

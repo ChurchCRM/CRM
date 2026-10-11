@@ -46,6 +46,9 @@ class FamilyMiddleware extends AbstractEntityMiddleware
         if (!$currentUser->canViewFamily($entity->getId())) {
             return SlimUtils::renderErrorJSON(new Response(), gettext('Access denied'), [], 403);
         }
+        if (!$currentUser->canReadFamily($entity->getId())) {
+            return SlimUtils::renderErrorJSON(new Response(), $this->getNotFoundMessage(), [], 404);
+        }
         return null;
     }
 }
