@@ -19,7 +19,7 @@ No immediate removal of legacy flags, automatic ministry-level isolation of ever
 
 ## Approved church-facing product decisions (George, 2026-10-10)
 
-These are **approved product requirements**, not proof of current behavior or approval to implement unreviewed migrations. Technical details listed as D1–D6 remain open.
+These are **approved product requirements**, not proof of current behavior or approval to implement unreviewed migrations. Technical details listed as D1–D8 remain open.
 
 | ID | Approved requirement | Outstanding implementation detail |
 |---|---|---|
@@ -32,6 +32,7 @@ These are **approved product requirements**, not proof of current behavior or ap
 | P7 | Only pastor/designated pastoral leadership can restrict/unrestrict a person | Delegation verification, audit, restricted-record read policy (D1) |
 | P8 | Simple church-role templates by default; optional advanced custom permissions | Final template catalog and role editor design (D2/D6) |
 | P9 | Churches may designate an existing group as trusted Pastoral Leadership; protect membership and explicitly configure granted capabilities | Grant and approval workflow (D7) |
+| P10 | Track each person's church voting eligibility as a structured membership attribute, **independent of groups and application RBAC roles**; Church Board remains an ordinary group | Eligibility rules, effective dates, authorization, privacy and migration (D8) |
 
 **Conflict resolution:** P4 supersedes the earlier RFC proposal to permit shared `per_Email` values as a permanent target. It does **not** establish that existing data is unique, mandate email for every person, or authorize immediate database constraints. The reviewer must assess the impact on existing churches and [member sign-in PR #10464](https://github.com/ChurchCRM/CRM/pull/10464). Household `fam_Email` is not subject to personal-email uniqueness merely because it may match someone's email.
 
@@ -88,6 +89,22 @@ A church may designate an **existing active group** as Trusted Pastoral Leadersh
 6. Provide church-friendly UI labels ("Trusted Pastoral Leadership", "Who can change membership?", "Which responsibilities does this grant?") with a clear warning about security impact, rather than exposing raw IAM vocabulary.
 
 **Open decision D7:** designate/approve authority (pastor alone or two-person approval), initial member confirmation, precise allowed pastoral actions, delegation and review cadence, whether grants are computed dynamically or synchronized to application roles. Until approved, do not wire ordinary `group_grp` membership or `p2g2r_rle_ID` directly to privileged RBAC grants.
+
+### Church Board and Voting Members — approved church governance model (P10)
+
+**Church Board** (elders, trustees, council or equivalent) is a church governance group, not an automatic software security role. A board member receives ordinary member/portal access unless independently assigned staff, finance or other application permissions. Board group membership alone never grants confidential pastoral, safeguarding, financial or restricted-person access. Board secretary/treasurer capabilities are separately assigned and audited.
+
+**Voting eligibility** is a **structured person-level church membership attribute**, independent of ChurchCRM group membership, ministry, board office and software RBAC role. A voting member may have no ChurchCRM login. No automatic eligibility is inferred from attendance, age, donations, baptism, membership date, household relationship, person classification or group membership. Churches differ in bylaws and denominational rules; ChurchCRM records the church's determination rather than claiming to decide canonical eligibility.
+
+**Recommended functional contract for review:**
+- A church-authorized membership administrator can record `eligible`, `ineligible` or `undetermined` with effective date and change history. `undetermined` is the safe default; do not silently interpret it as eligible. A reason or evidence reference, if recorded, must be access-restricted and should not require sensitive pastoral details. **D8** must settle whether eligibility is current-state plus audit or an effective-dated history, and whether church-specific statuses are needed.
+- Church staff with explicitly granted governance/membership access may see or update eligibility; portal-only members and ordinary volunteers must not see other people's eligibility. A person viewing their own eligibility is a separate church-configurable decision. Reports/exports and APIs require dedicated permissions, auditing and least-privilege data minimization.
+- Eligibility must not be linked to RBAC `role` grants, login status or trusted pastoral-group membership. Eligibility is **not a voting/election feature** in this RFC: no ballots, proxies, secret votes, quorum computation or automated decisions about bylaws.
+- On a **new install**, make the attribute available without assigning any person as eligible. Offer optional Church Board group setup; do not auto-create populated groups, trusted groups or board-specific security privileges. Keep normal onboarding usable without a governance configuration wizard.
+- On **upgrade**, preserve existing person classifications, membership dates and board/voting groups unchanged. Backfill the new attribute as `undetermined` unless a separately reviewed, church-confirmed import/mapping is provided. Do not infer eligibility from `per_cls_ID`, `per_MembershipDate`, group names or group roles. Provide a report of unmapped records and a church-friendly, explicitly confirmed bulk review process. Migration must be additive, reversible and tested on existing data.
+- **Verified schema baseline:** `person_per.per_MembershipDate` and `person_per.per_cls_ID` exist in installation SQL and `orm/schema.xml`; neither establishes voting eligibility. Exact storage (new person column vs separate eligibility/history table), index and Propel migration must be designed after reviewing existing membership workflows.
+
+**Open decision D8:** who may set/revoke eligibility, who may read/export it, whether members can see their own status, eligibility history/effective dates, reason retention, how churches configure governance rules, optional board-group defaults and safe bulk migration. Do not implement assumptions about denominational bylaws.
 
 ## 4. Authorization contract (all entrypoints)
 
@@ -150,6 +167,8 @@ Audit **actual** existing token mechanisms, including the My Settings API Tokens
 
 **Open decision D7:** who may designate a trusted pastoral group, authorize initial members and future changes; approved capability allowlist, delegation, storage, revocation and review cadence. No existing group is automatically designated during upgrade.
 
+**Open decision D8:** governance eligibility storage, authorization, effective dates, new-install defaults and no-inference upgrade workflow. Preserve legacy membership data without automatically conferring eligibility.
+
 **Open decision D6:** exact migration file location/numbering, initial role mappings, permission catalog completeness, compatibility sunset, performance limits and rollout switch semantics. Verify repository conventions first.
 
 ## 10. Security acceptance matrix (must become automated tests)
@@ -167,6 +186,11 @@ Audit **actual** existing token mechanisms, including the My Settings API Tokens
 | Plugin, import, API or legacy route changes trusted membership | Same privileged checks and audit as UI |
 | Trusted pastoral group member opens unshared highly confidential note | Denied |
 | Newly created staff account reads ordinary directory but edits a person | Read allowed; edit denied until appropriate role assigned |
+| Board member without staff role requests restricted records or finance | Denied; board group membership is not an RBAC grant |
+| Voting member without account requests staff features | No login or staff grant inferred from eligibility |
+| New install creates a member | Voting eligibility is undetermined, not automatically eligible |
+| Upgrade has voting group and existing membership classifications | No inferred eligibility; original group/classification data unchanged |
+| Unprivileged user edits/exports voting eligibility | Denied; explicit governance capability required |
 | Technical administrator reads highly confidential pastoral/safeguarding content | Denied unless explicitly shared under approved policy |
 | Authorized pickup adult tries to edit child's private details | Denied; pickup permission is separate from guardianship |
 | User with `notes.read` guesses another author's private note | Denied unless record policy permits |
@@ -204,11 +228,13 @@ Also test cross-family links, hidden-person count/thumbnail leakage, child becom
 - Is the actual legacy behavior preserved through upgrade, including email and notes semantics?
 - Are plugin in-process trust and API-token constraints represented honestly?
 - Can a group manager, importer or plugin promote themselves via trusted-group membership?
-- Are D1–D7 answered before the corresponding phase starts?
+- Are governance membership and voting eligibility kept separate from staff security roles and board group membership?
+- Does migration avoid guessing voting eligibility from existing classifications or group names?
+- Are D1–D8 answered before the corresponding phase starts?
 - Are negative tests and rollback criteria implementation-ready?
 
 ## 12. Source issues and design dependencies
 
 [#8591](https://github.com/ChurchCRM/CRM/issues/8591) parent; [#8758](https://github.com/ChurchCRM/CRM/issues/8758) schema; [#8759](https://github.com/ChurchCRM/CRM/issues/8759) middleware; [#8760](https://github.com/ChurchCRM/CRM/issues/8760) role UI; [#8761](https://github.com/ChurchCRM/CRM/issues/8761) menu/inline migration; [#8762](https://github.com/ChurchCRM/CRM/issues/8762) scopes; [#10464](https://github.com/ChurchCRM/CRM/pull/10464) member sign-in proposal; [#9003](https://github.com/ChurchCRM/CRM/issues/9003) staff read; [#9036](https://github.com/ChurchCRM/CRM/issues/9036) notes policy; [#8999](https://github.com/ChurchCRM/CRM/issues/8999) note IDOR; [#1886](https://github.com/ChurchCRM/CRM/issues/1886) custom fields; [#10213](https://github.com/ChurchCRM/CRM/issues/10213) email grant; [#10043](https://github.com/ChurchCRM/CRM/issues/10043) API tokens; [#10191](https://github.com/ChurchCRM/CRM/issues/10191) plugin email; [#10252](https://github.com/ChurchCRM/CRM/issues/10252) reports; [#10206](https://github.com/ChurchCRM/CRM/issues/10206) authorization gaps; [#769](https://github.com/ChurchCRM/CRM/issues/769) data-layer ACL.
 
-**Review status:** proposal only. D1–D7 are explicitly open, not hidden assumptions. No runtime implementation or security remediation is claimed.
+**Review status:** proposal only. D1–D8 are explicitly open, not hidden assumptions. No runtime implementation or security remediation is claimed.
