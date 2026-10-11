@@ -256,6 +256,58 @@ Complete [common-user access/privacy audit #10520](https://github.com/ChurchCRM/
 
 **Acceptance for each migration slice:** no unauthorized gain, no unapproved loss of existing workflows, direct URL/API/print/export checks, mobile/portal parity where relevant, measurable performance, audit/revocation behavior, upgrade fixtures and rollback. Release notes must say which screens enforce new roles and which still use legacy permissions; never imply global RBAC completion during transition.
 
+### Mandatory adversarial security invariants for incremental adoption (design-review disposition)
+
+The following are **implementation blockers for the affected phase**, derived from the adversarial review on [PR #10511](https://github.com/ChurchCRM/CRM/pull/10511). They refine the proposed F0–F4 sequence; they do **not** authorize runtime changes or assert confirmed vulnerabilities. They must be addressed before any affected new feature is considered RBAC-protected.
+
+**S1 — Complete resource exposure boundary (High).** Define an exposure graph for each protected data classification: direct pages, APIs, alternate identifiers, joins, related records, search/autocomplete/counts, thumbnails/static files, reports, print/labels, CSV, downloads, emails, caches, integrations, jobs and plugin data paths. A *screen* is not a migration unit when its data is available elsewhere. Do not activate a confidentiality promise (e.g. restricted people, highly confidential notes, minors) until every exposure path is enforced or removed. Legacy routes must not become an alternate access path. A local route fix alone is insufficient.
+
+**S2 — Explicit trusted per-feature authorization modes (High).** Each feature has a server-controlled mode, never chosen by a request header, body, query parameter, client flag or user-editable setting:
+
+| Mode | Enforcement | Allowed use |
+|---|---|---|
+| `LEGACY` | Preserve existing effective legacy policy, including existing denies | Default for unmigrated legacy features |
+| `DUAL_ENFORCE` | Both legacy and RBAC policies must allow; deny wins | Audited migration of an existing feature |
+| `RBAC` | RBAC policy and all mandatory classification/credential guards must allow | New features by default; legacy only after approved parity cutover |
+
+Unknown modes, missing policy, invalid resource, failed dependency or policy-evaluation exceptions **deny** for RBAC-enabled operations; never fall back to a permissive legacy check. Existing legacy behavior is not silently changed by adding the framework. Shadow comparisons are observational only, cannot authorize requests, and must not expose sensitive payloads. A legacy grant cannot override an RBAC denial in dual mode. Switching an existing feature to RBAC requires explicit review that historical restrictions are represented, not merely a passing allow test.
+
+**S3 — Whole-grant evaluation and mandatory denies (High).** A grant is the inseparable tuple of action, resource type, resource scope, field constraints, principal/credential conditions and applicable expiry. For a request, **one complete grant** must cover all dimensions. Never combine an action from role A with a wider scope from role B. Multiple roles can authorize via separate complete grants, but cannot override classification denies, relationship proof, account state or explicit sharing requirements. Unknown capabilities and empty/missing scope deny for new sensitive operations. Admin wildcard cannot override highly confidential or protected-resource rules.
+
+**S4 — Privilege-safe role administration (High).** Separate permission to define roles, change role grants, assign roles, manage trusted-group membership and authorize high-risk access. Every mutation path (UI/API/import/restore/job/plugin-controlled API) must validate the actor's *grantable* ceiling against the proposed effective privilege diff, not just the role's name. No self-promotion, self-approval or indirect elevation through group membership, templates or legacy permission adapters. Preserve last-admin recovery and require explicit step-up/approval for designated high-risk changes, with audit events excluding confidential content. Template upgrades never silently expand a church's grants.
+
+**S5 — Revocation, caches and asynchronous execution (High).** Revocation takes effect no later than the next request for sensitive operations, including API/token-backed requests. Define a policy/assignment revision or equivalent authoritative revalidation; invalidate or avoid authorization decision caches keyed by principal, credential, policy revision, action, resource, scope and field. Re-check rights when queued work actually executes, not only when enqueued; handle signed links, kiosk sessions and device/service credentials separately. A copied export cannot be retroactively revoked: minimize data and use bounded download links. Test active sessions, stale tokens, queued jobs and concurrent role removal.
+
+**S6 — Query, relationship and serialization boundary (High).** Enforce person/family/guardian/ministry scope and field-level classification before returning data, not merely in menus or after loading a broad collection into the response. Verify relationships independently of household labels and client IDs. Apply consistent policy to related objects, search/counts, error messages, logs, image URLs, exports and derived output. Do not leak existence of protected records through response differences where nondisclosure is required. No untrusted user-provided field list may expand a server-authorized projection.
+
+**S7 — Feature-policy integrity and fail-closed behavior (Medium–High).** The authorization mode and sensitive feature flags must be trusted, validated server configuration, with privileged audited changes. A malformed mode, unavailable policy service, missing scope, deserialization error or cache outage cannot turn a denied RBAC operation into an allow. Fail closed for new/RBAC-sensitive features; do not introduce global fail-closed behavior to unmigrated legacy workflows without a reviewed compatibility decision. No authorization through shadow-mode results.
+
+**S8 — Mutation-time authorization and concurrency (Medium–High).** For role grants, trusted group designation/membership, guardianship, protected classification and other high-risk writes, enforce authorization at the mutation boundary against current state. Use transactions with appropriate locking or conditional updates/version checks where state can change between check and commit. Role edits require optimistic concurrency or equivalent protection against lost updates. Tests cover revoke-versus-write, simultaneous role changes and scope reassignment.
+
+**S9 — Honest effective-access preview (Medium).** Show the source of each grant (legacy flag, RBAC role, trusted group, service/device scope), its field/resource/channel limits and enforcement mode. Mark unconverted pages as legacy-enforced; do not claim a new role or restriction protects all screens while alternative legacy paths exist. Include print, filtered export, bulk export and derived outputs where known.
+
+**S10 — Canonical identity and safe decision caching (Medium).** Canonicalize principal type and ID, credential identity, resource type and ID, role/policy revision and scope before evaluation. Prefer no shared decision cache in F0; if added, keys must include all authorization-relevant dimensions and avoid cross-request principal confusion. Never trust arbitrary request-supplied role, scope, identity or tenant context.
+
+**Illustrative decision flow (not production code):**
+
+```text
+principal := authenticate_and_validate_credential(request)
+resource  := resolve_canonical_resource_without_disclosing_protected_data(request)
+context   := server_derived_action_resource_scope_fields_and_relationships(request)
+if principal inactive OR credential insufficient OR mandatory classification denies: DENY
+mode := trusted_server_feature_policy(context.feature)
+if mode == LEGACY: return legacy_policy(principal, context, resource)
+if mode == DUAL_ENFORCE: return legacy_policy(...) AND rbac_whole_grant_policy(...)
+if mode == RBAC: return rbac_whole_grant_policy(...)
+return DENY  // unknown mode, missing policy, error
+```
+
+**Cutover rule:** the mandatory classification guard must not be advertised as effective for a shared legacy resource until S1's exposure graph is closed; similarly, RBAC-only cutover must preserve all applicable historical denials. The decision flow is conceptual, not a substitute for query-layer enforcement or a guarantee that in-process plugins are isolated.
+
+**Required security regression matrix:** same-resource access via UI, direct ID, API, list/search/count, export/print, background jobs and service credentials; role-A action + role-B scope cross-product; administrator denied highly confidential content; self-escalation by role edit/import/group change; role revocation during session and async execution; concurrent scope mutation; invalid mode/policy exception; cross-principal cache contamination; overbroad serializer fields; migration rollback without access expansion. Test both allowed church workflows and prohibited paths.
+
+**F0 gate:** S2/S3/S7/S10 contract and tests, no behavior change for legacy routes. **F1 gate:** S1/S5/S6 for the isolated new feature plus full negative entrypoint coverage. **F2 gate:** S3/S4/S5/S8/S9 for role storage/editing/assignment. **F3 gate:** S1/S2/S5/S6/S7/S8 for each migrated resource and channel. **F4 gate:** complete exposure graphs and explicit D1/D3/D4/D6 approval before cross-cutting confidentiality policies go live. Independent security review is required at each boundary.
+
 ## 10. Security acceptance matrix (must become automated tests)
 
 | Scenario | Required result |
