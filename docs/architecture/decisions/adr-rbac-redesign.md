@@ -143,3 +143,36 @@ Migration must be **idempotent**, tested against populated snapshots and clean i
 
 ### Release gate
 Do not implement #8758 without reconciling #10464 and the default staff role. Do not merge #10464's account changes without explicit RBAC compatibility review. No changes to live behavior in this RFC.
+
+
+## First-class enforcement for MVC, API, custom fields, plugins and API credentials (2026-10-10)
+
+### Verified integration points
+- `src/ChurchCRM/Slim/MvcAppFactory.php` accepts `roleMiddleware` at module level; introduce an explicit permission policy interface/route metadata, with module default and route-level overrides. Preserve Slim 4 LIFO ordering. Route access checks are mandatory for both HTML and JSON.
+- `src/plugins/index.php` gates `/management` and `/api` with `AdminRoleAuthMiddleware`, registers enabled plugin routes via `PluginManager::registerPluginRoutes()`, and applies common authentication. Plugin routes currently rely on plugin-specific enforcement.
+- `src/ChurchCRM/Plugin/PluginInterface.php::getMenuItems()` accepts legacy permission names; its doc explicitly warns menu visibility is **not** access control. It also exposes `getHeadContent()`, `getFooterContent()`, `getClientConfig()`, settings, lifecycle hooks and plugin routes.
+- `src/ChurchCRM/Plugin/PluginManager.php` distinguishes core and community plugins and exposes registry risk/permission metadata; that metadata must not be mistaken for runtime sandbox enforcement.
+- `src/ChurchCRM/model/ChurchCRM/User.php::updatePassword()` rotates the current API key. `src/mysql/install/Install.sql` defines `usr_apiKey` as a unique field on `user_usr`. Confirm the full current API-token implementation, including My Settings tokens, before finalizing migration.
+
+### Policy contract and testability
+Use a single `AuthorizationService::decide(Principal, Action, ResourceContext): Decision` called from declarative `RequirePermission` route middleware, service/query enforcement, and plugin adapters. Principal carries account, auth method, token ID and scopes. Decision carries allow/deny and safe reason code (never sensitive record data). MVC: redirect/403 per established conventions; API: deterministic 401 unauthenticated versus 403 unauthorized, no sensitive payload. Tests should inject fake principals and policies without database dependencies; integration suites exercise middleware ordering and deny-by-default; Cypress covers role UI, deep links and menu visibility. Every route and plugin entrypoint needs a cataloged permission or an explicit documented public/authenticated-only classification. No silent default allow.
+
+### Custom-field policies
+Audit `person_custom_master`, `family_custom_master`, field-security columns, form editors, queries, exports, reports, search, API serialization, portal and plugin consumption. [#1886](https://github.com/ChurchCRM/CRM/issues/1886) explicitly requests role/permission levels per custom field; [#5771](https://github.com/ChurchCRM/CRM/issues/5771) requests export support. Recommend field-specific read/write/export policies with owner-module permission as a prerequisite, explicit sensitivity defaults and server-side filtering. Hiding a field on the form must not permit API, CSV, PDF, search, report or plugin leakage. Preserve existing field security semantics during migration; document discrepancies before backfill.
+
+### Plugin permission model and trust boundary
+Separate capabilities: `plugin.install`, `plugin.activate`, `plugin.configure`, `plugin.uninstall` (privileged); `plugin.<id>.use`, `plugin.<id>.report.read`, `plugin.<id>.export`, and optional plugin-defined permissions for ordinary users. A plugin's menu item, route, API, report, background job and webhook must declare policies; missing declarations deny access. Module disabled means unavailable regardless of user grants. Settings pages must not become accessible merely because a user can run the plugin.
+
+**Important security limitation:** a third-party PHP plugin executing in the same application process with the same database credentials is trusted server-side code; middleware does **not** sandbox direct Propel/SQL access, PHP file access, or outgoing network calls. Do not promise database-level isolation. A safe restricted-plugin model requires a separate process/service and least-privilege data API or a deliberately constrained extension runtime; otherwise label installed community plugins privileged and require admin approval. Audit plugin `boot()`, `activate()`, `getClientConfig()` and injected HTML/JS for data/secret exposure. Registry-declared risk/permissions are descriptive until enforced. No raw secrets in client configuration. Scheduled jobs need a service principal and explicit scoped privileges, not an implicit administrator.
+
+### Scoped API credentials
+Support multiple independently revocable named credentials with `token_id`, owner, hashed secret, explicit permission scopes, optional resource/ministry restrictions, expiry, created/last-used/revoked metadata. Show secret only once; allow rotation. Effective access = **account permissions ∩ token permissions ∩ resource policy ∩ module availability**. A read-only token may access allowed read routes but never mutate, export, reveal restricted fields, access administration, or escalate through plugin routes. `read` must not implicitly include `export` or `contact.read`. Tokens are never authorized to create broader tokens or modify their own scopes; owner revocation, deactivation and permission reductions take effect promptly. Treat an integration token as a bearer secret, not safe to embed in public client-side JavaScript; public webpages require a server-side proxy or separately designed public/anonymous access endpoint with strict rate limiting.
+
+Preserve existing `usr_apiKey` during an additive transition, with compatibility authentication and user-permission ceiling. Inventory newer API Tokens UI/storage before designing its cutover; do not claim the single legacy column is the only token system. Provide an opt-in migration and eventual deprecation, no automatic privilege expansion. Validate token auth, HTML session, plugin routes, report export, and custom fields with the same policy matrix.
+
+### Required audit before implementation
+1. Enumerate MVC/API/legacy/plugin routes, current middleware, and direct service/database access; generate a route-to-permission inventory.
+2. Inspect custom-field schema, existing field-level checks, serializers and every export/report path.
+3. Inspect core/community plugin manifests, route registration, lifecycle hooks, raw SQL/Propel, client config and plugin API use; classify trusted-code risks.
+4. Inspect all API token tables, UI, authentication providers, rotation and revocation paths; test legacy compatibility.
+5. Test a role x resource x credential x entrypoint matrix (allow, deny, revoked, disabled, scoped, missing policy) with unit/integration/Cypress suites.
