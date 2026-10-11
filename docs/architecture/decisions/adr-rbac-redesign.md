@@ -17,6 +17,23 @@ This document is the **single reviewable design contract**, replacing earlier ad
 ### Non-goals
 No immediate removal of legacy flags, automatic ministry-level isolation of every existing resource, paid identity provider, cross-church multi-tenancy, client-side authorization, or promise that in-process PHP plugins are sandboxed. This RFC makes no runtime, database or release changes.
 
+## Approved church-facing product decisions (George, 2026-10-10)
+
+These are **approved product requirements**, not proof of current behavior or approval to implement unreviewed migrations. Technical details listed as D1–D6 remain open.
+
+| ID | Approved requirement | Outstanding implementation detail |
+|---|---|---|
+| P1 | Ordinary staff can see ordinary directory records; selected people may be hidden/restricted | Restricted-read policy, family propagation, disclosure handling (D1) |
+| P2 | Private notes: author plus authorized staff; highly confidential notes: explicitly shared recipients only | Authorization/sharing model, legacy migration (D4) |
+| P3 | Verified guardians manage approved child data; authorized pickup is separate | Relationship proof, custody, transition rules (D3) |
+| P4 | Personal email must be unique **when supplied**; family email remains distinct | Existing duplicates, validation, nulls, uniqueness enforcement and recovery binding (D3) |
+| P5 | New staff accounts start with read-only ordinary directory access | Exact template grants, upgrade behavior (D6) |
+| P6 | Administrators manage systems but do not automatically access confidential pastoral/safeguarding content | Ordinary wildcard and emergency access (D2/D4) |
+| P7 | Only pastor/designated pastoral leadership can restrict/unrestrict a person | Delegation verification, audit, restricted-record read policy (D1) |
+| P8 | Simple church-role templates by default; optional advanced custom permissions | Final template catalog and role editor design (D2/D6) |
+
+**Conflict resolution:** P4 supersedes the earlier RFC proposal to permit shared `per_Email` values as a permanent target. It does **not** establish that existing data is unique, mandate email for every person, or authorize immediate database constraints. The reviewer must assess the impact on existing churches and [member sign-in PR #10464](https://github.com/ChurchCRM/CRM/pull/10464). Household `fam_Email` is not subject to personal-email uniqueness merely because it may match someone's email.
+
 ## 2. Verified current behavior and known limitations
 
 | Area | Verified on default branch | Consequence |
@@ -48,13 +65,14 @@ A church must be able to use templates without constructing a complex access gra
 | Finance reader/manager | Relevant giving and deposits (separate read/write) | Automatic private pastoral access |
 | Church administrator | Normal configuration and staff administration | Automatic access to highly confidential content or unchecked credential takeover |
 
-These are **design templates**, not confirmed seeded roles. Initial implementation should use a small set of composable templates; extra combinations should be custom roles, not a large fixed matrix. The maintainer must approve the final built-in catalog and mapping.
+**Approved product direction (George, 2026-10-10):** present simple church-role templates by default, with advanced custom permissions optional. A newly created **staff** account receives **read-only access to the ordinary directory by default**, and additional capabilities only when explicitly assigned for its church responsibility. Portal-only member accounts are not staff and receive no staff-directory default. These remain design templates, not confirmed seeded roles; implementation must specify exact grants and existing-account upgrade behavior.
 
 ### Default directory policy
 - Ordinary **staff** retain broad access to **standard** people and families, including inactive records where normal staff workflow requires it. Portal-only users are **not** staff and must remain limited to their own approved relationships.
 - Record lifecycle (active, inactive, deceased) and record visibility (standard, restricted, possibly protected) are independent.
-- **Proposed default:** existing records migrate as `standard` to avoid surprising access loss; restricted records are invisible to ordinary directory readers, including existence, search, direct URL, family references and exports. Authorized designated staff can access according to a specific policy.
-- **Open decision D1:** exact meaning of restricted vs protected, whether administrators may access protected records, who can classify/declassify, whether any placeholder is shown, and whether family-level classification propagates. **No implementation of restricted visibility until D1 is approved.**
+- **Approved product direction:** ordinary staff see standard people/families, while selected people may be hidden/restricted. **Only a pastor or explicitly designated pastoral leadership may set or remove a restricted classification**; general staff and technical administrators cannot classify/declassify solely by virtue of their role. This is distinct from permission to view a restricted record.
+- **Proposed operational default:** existing records remain `standard` on migration; restricted people are absent from ordinary directory search, direct URL, family references and exports, including existence disclosure. Restricted-record access must be separately granted to appropriate church personnel and audited.
+- **Open decision D1 (remaining):** precise restricted/protected categories, who may read restricted records, how pastoral designation is established/revoked, whether any placeholder is safe, family propagation, emergency override and historical visibility migration. **Do not implement restricted visibility until these security details are approved.**
 
 ## 4. Authorization contract (all entrypoints)
 
@@ -68,26 +86,26 @@ interface AuthorizationService {
 
 `Decision` contains `allowed`, machine-readable `reason`, and internal audit metadata. `Principal` contains account/service identity, authentication method, token scopes and assurance. `ResourceContext` is constructed from **server-loaded** resources, including parent person/family, classification, owner and scope; do not trust client-supplied relationship IDs.
 
-**Effective allow requires all applicable checks:** authenticated active principal; appropriate portal/staff boundary; module enabled; action granted by a role/legacy compatibility mapping; resource in scope; record/field sensitivity permits action; credential scopes permit action; step-up authentication where required. Any deny wins. Administrators may bypass ordinary role grants **only if D2 approves**; never silently bypass protected-record or credential rules.
+**Effective allow requires all applicable checks:** authenticated active principal; appropriate portal/staff boundary; module enabled; action granted by a role/legacy compatibility mapping; resource in scope; record/field sensitivity permits action; credential scopes permit action; step-up authentication where required. Any deny wins. **Approved boundary:** system/church administrators may manage configuration and normal administration, but administrator status alone **never** grants access to highly confidential pastoral/safeguarding content or bypasses protected-person policy. Ordinary role wildcard semantics remain D2.
 
 **Enforcement:** authentication first, then `RequirePermission` route middleware, then service/resource authorization and query-scoped filtering. Slim LIFO order must be explicitly integration-tested. Use the same policy in MVC, API, legacy PHP, Member Portal, plugin endpoints, background jobs, reports, exports, PDFs, search, autocomplete, counts, bulk actions, photos, attachments, calendar and related-record views. Lists must filter *before* pagination/counting. Every by-ID GET/PUT/PATCH/DELETE must check the loaded record. For hidden records, public response should not confirm existence; internal logs may record denial without sensitive content. Use 401 for unauthenticated and 403 for ordinary forbidden requests, with indistinguishable 404 where existence is protected. Authorization failures must not partially commit writes.
 
-**Open decision D2:** administrator wildcard, role grant ceiling, built-in role immutability, break-glass workflow and last-admin safeguards. **Proposed:** built-in templates immutable and clonable; no silent self-escalation; sensitive actions never implied by `admin`.
+**Open decision D2 (remaining):** administrator wildcard for **ordinary** capabilities, role grant ceiling, built-in role immutability, break-glass workflow and last-admin safeguards. **Proposed:** built-in templates immutable and clonable; no silent self-escalation; sensitive actions never implied by `admin`.
 
 ## 5. Identity, email, member accounts and guardians
 
-1. `usr_UserName` stays unique. A person may lack an account. Personal and family contact emails may be missing or shared; **do not** add uniqueness constraints to `per_Email` or `fam_Email`.
-2. If email is used as a login identifier, introduce/identify a **verified account-bound unique login email**; never treat a shared family email as proof of identity or select one of several people with the same contact address. Conflicts require explicit user resolution.
+1. **Approved target:** every person has a **unique personal email address when one is recorded**; `usr_UserName` also remains unique. A person may have no email and may have no account. Do **not** interpret this as requiring a mailbox for children, visitors or people without email; whether email must be present is **not approved**. A family email remains a separate household contact destination; it is **not** an individual sign-in/recovery identity. The uniqueness scope and whether a personal email may equal the family email require review.
+2. **Verified conflict:** existing `per_Email` has no uniqueness constraint, and duplicate/shared personal emails may exist in real installations. Do **not** immediately add a unique index, rewrite data, drop records, block upgrades or silently choose which spouse owns an address. Inventory duplicates, normalization/case-folding, null/empty values, historical imports and self-service behavior; provide a church-friendly remediation and phased enforcement plan for George's approval. If email is a login identifier, it must be separately verified and uniquely bound to one account; changing a contact email cannot transfer account identity.
 3. Editing contact email (`people.contact.edit`) must **not** implicitly change verified login/recovery identity. Recovery destination changes need independent authorization, reauthentication/step-up, proof of control of the new destination, notice to the old destination, expiration of pending reset tokens and audit. Privileged-account changes require stronger review; token-based callers may not reset credentials by default.
 4. Keep `person_per` and `user_usr` separate; self-service account setup and age/eligibility decisions from [#10464](https://github.com/ChurchCRM/CRM/pull/10464) remain unmerged and require coordination. Portal-only accounts receive no staff privileges or automatic API token.
-5. Household membership does not prove guardianship. **Proposed default:** guardians may perform only approved child-related tasks through an explicit verified guardian relationship; emergency contacts and other household adults receive no automatic sensitive-child access. Custody disputes, blended households, consent, medical/safeguarding notes, pickup permissions, minors reaching adulthood and guardian revocation need separately reviewed workflows.
-6. **Open decision D3:** where verified login/recovery email is stored, what existing recovery endpoints currently trust, uniqueness/conflict migration, guardian relationship schema and policy, child-age transitions and staff-assisted recovery requirements. **Do not build these flows from assumption.**
+5. **Approved product direction:** verified parents/guardians can manage **approved** child information; pickup authorization is a **separate** relationship/capability. Household membership does not prove guardianship. Emergency contacts and other household adults receive no automatic sensitive-child access. Custody disputes, blended households, consent, medical/safeguarding notes, pickup permissions, minors reaching adulthood and guardian revocation need separately reviewed workflows.
+6. **Open decision D3 (remaining):** personal-email uniqueness semantics (case sensitivity, nulls, imported duplicates, family-email overlap and rollout), verified login/recovery-email storage, existing recovery endpoint trust, guardian verification and relationship schema, child-age transitions and staff-assisted recovery. **Do not build these flows from assumption.**
 
 ## 6. Notes, custom fields and sensitive data
 
 A feature grant does not imply access to every record. Evaluate **record-specific** read/create/update/delete/share/classify/export policy and parent-record scope. Private notes currently have conflicting visibility methods; inventory callers and preserve legacy semantics until a migration decision. Avoid leaks via list/count, search snippets, related-record timelines, notifications, print, API and plugins. Audit classification, sharing, access and modifications without logging note body.
 
-**Proposed:** highly confidential pastoral/counseling notes have no automatic administrator content bypass; specifically authorized custodians only, with separately approved emergency access. **Open decision D4:** existing private-note semantics (admin/author), author access after role loss, explicit sharing, and whether a new confidentiality classification is required. No silent reinterpretation of existing `nte_Private`.
+**Approved product direction:** ordinary **private notes** are readable by their author and specifically authorized staff; **highly confidential notes** are readable only by explicitly shared recipients, not by every administrator. Church administrators manage the system but receive no automatic content access to highly confidential pastoral or safeguarding information. Access to ordinary private notes and explicit sharing must be independently enforced and audited. **Open decision D4 (remaining):** which staff can be authorized and by whom; author access after role loss; legacy `nte_Private` migration; whether a new classification/ACL table is required; emergency access; and handling a note whose author is disabled/deceased. Do not silently reinterpret existing notes.
 
 Custom fields require field-level read/update/export permissions in addition to parent-record access. Inventory person/family custom-field schema and current security flags. Enforce consistently across forms, API, search, reports, PDF/CSV and plugins; hiding a field in UI is not authorization. Finance, child safeguarding and contact PII require separate sensitivity policies.
 
@@ -125,11 +143,17 @@ Audit **actual** existing token mechanisms, including the My Settings API Tokens
 | Portal-only member guesses another person's numeric ID | Denied without existence leak |
 | Staff guesses restricted person/family ID or reaches via search/export | Denied consistently across entrypoints |
 | Authorized staff views restricted person | Only with explicit approved policy |
+| Ordinary administrator tries to classify/declassify protected person | Denied unless also designated pastoral leadership |
+| Newly created staff account reads ordinary directory but edits a person | Read allowed; edit denied until appropriate role assigned |
+| Technical administrator reads highly confidential pastoral/safeguarding content | Denied unless explicitly shared under approved policy |
+| Authorized pickup adult tries to edit child's private details | Denied; pickup permission is separate from guardianship |
 | User with `notes.read` guesses another author's private note | Denied unless record policy permits |
 | Admin views highly confidential note | Denied unless explicitly authorized under D4 |
 | Person editor changes another user's contact email | Must not change account recovery destination |
 | Attempt to recover admin account after contact-email edit | Cannot redirect recovery through unverified contact edit |
-| Two adults share household email | Separate identities; no ambiguous login/recovery |
+| Two adults previously share a personal email in upgraded church | Migration detects conflict; no silent reassignment, account merge or broken upgrade |
+| Two adults use the family email for household contact | Household communications remain separate from each adult's unique personal/login email |
+| New person enters an existing person's personal email | Approved uniqueness rule enforced only after reviewed migration, with clear church-friendly error |
 | Guardian accesses own child versus unrelated child | Only approved relationship/actions; no implicit household privilege |
 | Volunteer accesses assigned roster versus another ministry | Scope enforced on list and by-ID |
 | Read-only token calls write/export/recovery endpoint | Denied |
@@ -141,7 +165,7 @@ Also test cross-family links, hidden-person count/thumbnail leakage, child becom
 
 ## 11. Review gates and ownership
 
-**Gate A — design approval (this PR):** reviewer checks consistency, threat model, role UX, and resolves D1–D6 with George. No production implementation from an unresolved security decision.
+**Gate A — design approval (this PR):** reviewer checks consistency, threat model, role UX, verifies the approved decisions below, and resolves the remaining parts of D1–D6 with George. No production implementation from an unresolved security decision.
 
 **Gate B — inventory/prototype:** Claude or assigned engineer provides a route/permission/DB inventory, actual recovery-email flow trace, notes caller audit, guardian model audit, plugin/API-token inventory, migration plan and concrete test matrix with source paths. Independent reviewer verifies it.
 
