@@ -177,6 +177,12 @@ Audit **actual** existing token mechanisms, including the My Settings API Tokens
 
 **Open decision D6:** exact migration file location/numbering, initial role mappings, permission catalog completeness, compatibility sunset, performance limits and rollout switch semantics. Verify repository conventions first.
 
+### Person/family and custom-field audit gate
+
+Before approving role seeds, migrations or record visibility enforcement, complete [person/family field-level audit #10515](https://github.com/ChurchCRM/CRM/issues/10515). Inventory every `person_per`/`family_fam` field, custom field master/value table, family relationship, classification/property, contact, notes, membership/governance field and dependent output. Map actual read/write access for staff, self/family editing, guardians, portal, group leaders, administrators, reports, imports/exports, APIs and plugins. Include printed/mailing **labels** and cart/selection flows, distinct from classification, properties and groups.
+
+Existing person/family custom fields use legacy `FieldSecurity` values (including `bAll`, `bFinance`, `bNotes`, `bAdmin`, custom flags). Preserve **per-field read/write security** during RBAC migration; custom field definition administration is a separate permission from reading or editing values. A record-level allow must not bypass a more restrictive field-level classification. Unknown legacy custom security must fail closed pending explicit mapping, with church-facing upgrade reporting; don't silently turn sensitive custom fields into ordinary staff-visible fields. Audit all output paths for disclosure through labels, exports, reports, search, counts and APIs. The audit is a prerequisite, not evidence that every current path is safe.
+
 ## 10. Security acceptance matrix (must become automated tests)
 
 | Scenario | Required result |
