@@ -104,6 +104,8 @@ A church may designate an **existing active group** as Trusted Pastoral Leadersh
 - On **upgrade**, preserve existing person classifications, membership dates and board/voting groups unchanged. Backfill the new attribute as `undetermined` unless a separately reviewed, church-confirmed import/mapping is provided. Do not infer eligibility from `per_cls_ID`, `per_MembershipDate`, group names or group roles. Provide a report of unmapped records and a church-friendly, explicitly confirmed bulk review process. Migration must be additive, reversible and tested on existing data.
 - **Verified schema baseline:** `person_per.per_MembershipDate` and `person_per.per_cls_ID` exist in installation SQL and `orm/schema.xml`; neither establishes voting eligibility. Exact storage (new person column vs separate eligibility/history table), index and Propel migration must be designed after reviewing existing membership workflows.
 
+**Membership Date governance control (security finding, [#10512](https://github.com/ChurchCRM/CRM/issues/10512)):** Current `src/PersonEditor.php` allows ordinary `EditRecords` or `EditSelf` for self/same-family to enter the person editor, accepts `MembershipDate` in POST and calls `setMembershipDate` without a dedicated field-level authorization check in that path. This is a verified authorization-design gap, not a claim that all endpoints have been exploited. **Target policy:** editing membership dates requires separately assigned `membership.date.manage` (for example, Membership Officer), not ordinary people editing, self/family editing, board-group membership, voting status or automatic admin wildcard. Enforce on every write path including imports/APIs, preserve the original value on unauthorized edits, and audit old/new value, actor and reason. Keep this permission separate from `membership.voting_eligibility.manage`; changing the date must never automatically change eligibility. Audit legacy users and plan a safe transition before enforcement. See [docs #110](https://github.com/ChurchCRM/docs.churchcrm.io/issues/110) for release-accurate documentation.
+
 **Open decision D8:** who may set/revoke eligibility, who may read/export it, whether members can see their own status, eligibility history/effective dates, reason retention, how churches configure governance rules, optional board-group defaults and safe bulk migration. Do not implement assumptions about denominational bylaws.
 
 ## 4. Authorization contract (all entrypoints)
@@ -230,6 +232,7 @@ Also test cross-family links, hidden-person count/thumbnail leakage, child becom
 - Can a group manager, importer or plugin promote themselves via trusted-group membership?
 - Are governance membership and voting eligibility kept separate from staff security roles and board group membership?
 - Does migration avoid guessing voting eligibility from existing classifications or group names?
+- Can EditSelf, family editing, EditRecords, imports or API calls change Membership Date without the dedicated permission?
 - Are D1–D8 answered before the corresponding phase starts?
 - Are negative tests and rollback criteria implementation-ready?
 
