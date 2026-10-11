@@ -224,6 +224,38 @@ The design must be usable by a church IT/office administrator who asks **who can
 
 Complete [common-user access/privacy audit #10520](https://github.com/ChurchCRM/CRM/issues/10520) alongside [church IT administrator audit #10519](https://github.com/ChurchCRM/CRM/issues/10519). Validate realistic tasks and expected hidden data for office staff, pastors, safeguarding leaders, finance, membership officers, ministry/team leaders, Sunday School and check-in volunteers, ordinary members, parents/guardians, visitors, board members and temporary workers. Compare **actual** UI/API/portal/export/report behavior with church-configurable target policies; include person/family/custom fields, photos, children, attendance, giving, notes, membership, communications, CSV/print and mobile. Reuse existing `VolunteerAuthorizationService` ministry/team scopes and `PortalSelfService` write allowlists where appropriate, rather than inventing unscoped roles. Require understandable denied-access UX, negative cross-scope tests, and migration that preserves authorized daily church workflows. Record unresolved privacy/governance decisions for George.
 
+### Backward-compatible, new-feature-first adoption strategy (recommended implementation sequencing)
+
+**Architecture objective:** deliver a reusable authorization contract for new screens and endpoints **without requiring an immediate migration of every existing ChurchCRM page, account, report or database row**. Existing authorization checks remain active until each feature is deliberately migrated and tested. This is a proposed execution strategy, not authorization to ship new policies or relax current safeguards.
+
+| Workstream | Initial impact | May ship before full legacy migration? | Guardrail |
+|---|---|---|---|
+| Permission vocabulary, immutable capability identifiers and policy decision interface | Low | **Yes** | No behavior changes; explicit action/resource/scope/field context |
+| Central authorization service and deny/allow result with reason codes | Low | **Yes** | Deny unauthenticated/unknown new capabilities; no implicit admin wildcard for sensitive actions |
+| Tests, static inventory and decision instrumentation | Low | **Yes** | Shadow decisions must not leak data or record sensitive payloads |
+| New features with feature-local capability gates and explicit scope | Low–medium | **Yes** | Gate all entrypoints, server queries and output channels; do not rely on hidden buttons |
+| Reuse existing volunteer scopes and portal field allowlists via adapters | Medium | **Yes, incrementally** | Preserve their existing enforcement; do not weaken direct-ID/portal isolation |
+| Read-only preview of effective access and built-in template catalog | Medium | **Yes, once semantics are verified** | Label previews as partial while legacy paths remain; no misleading promise of global enforcement |
+| Church-owned role editing, persistence and role assignment | Medium–high | **Only for explicitly RBAC-enabled features initially** | Never silently grant access to legacy screens or override existing checks; approve grant ceiling and revocation semantics |
+| Global row/field privacy, protected people, confidential notes, export/print policy | High | **No blanket activation** | Requires cross-channel audits and migration of all read paths that can expose the same data |
+| Replacing legacy permission flags, existing user editor and all route middleware | High | **Not a prerequisite** | Stage per-feature, preserve effective grants, compare decisions and provide rollback |
+| Personal-email uniqueness, guardian model, voting eligibility, legacy report rewrite | High / independent data changes | **Not a prerequisite** | Separate reviewed schema, migration, user policy and tests |
+
+**New-feature contract:** new code calls one server-side authorization interface (illustrative `authorize(principal, action, resource, scopeContext)`) before protected reads or writes. It uses stable capabilities, an explicit principal type (staff/portal/device/service), record/field classification and scoped resource identifiers; queries and serialization enforce the same policy. Each new feature declares its capability requirements and defaults. Do not build new screens by copying legacy `isAdmin()` or module flags into new access rules. A narrowly scoped compatibility adapter may translate *existing effective* legacy permissions for an unchanged workflow, with documented mappings and tests; it must not invent sensitive grants.
+
+**Dual-path transition:** keep existing middleware, `user_usr` flags, `userconfig_ucfg`, `FieldSecurity`, portal allowlists and volunteer scopes authoritative for **unmigrated** legacy features. New RBAC gates are authoritative for explicitly opted-in new features. During migration of a legacy feature, require **both** its existing authorization checks and the new policy unless an approved, tested cutover replaces the old checks. Do not globally change `User::canReadPerson/Family`, `isAdmin()`, user editor behavior or old report semantics as part of the foundation release. Do not apply an additive RBAC grant to bypass a legacy denial.
+
+**Security caveat:** a new UI cannot safely claim a record is hidden, confidential or non-exportable if any legacy route, static asset, API, DataTables payload or report still exposes it. Feature-local authorization is feasible when its data/action is isolated; system-wide negative access guarantees require migrating **all** paths to that resource first. Prefer additive new data with isolated endpoints, feature flags default-off for migrations, and targeted cross-entrypoint tests. Security fixes to confirmed vulnerabilities must not wait for the RBAC redesign.
+
+**Proposed incremental gates:**
+1. **F0 — Contract:** permission catalog, typed principals, policy decision service, audit/decision tests and documentation; no schema or behavior change required for the minimal foundation.
+2. **F1 — New feature pilot:** choose an isolated low-risk workflow; declare capabilities, use current verified identity/scope services, protect every endpoint and query, test denial and revocation. Do not pilot first on pastoral notes, protected people, finance, kiosk cookies or global exports.
+3. **F2 — Role metadata and UI:** add versioned built-in templates, church-owned copies and assignments only after D2/D6 decisions. Initially apply them solely to RBAC-enabled features. Preview clearly identifies legacy permissions separately.
+4. **F3 — Legacy feature-by-feature cutover:** inventory route/data/output coverage, shadow-compare access, preserve baseline permissions, introduce policy enforcement behind reviewed per-feature switches, validate negative tests and rollback, then retire redundant checks.
+5. **F4 — Cross-cutting confidentiality and data migrations:** implement only after complete dependency audits and explicit George approvals; do not make these blockers for unrelated new features.
+
+**Acceptance for each migration slice:** no unauthorized gain, no unapproved loss of existing workflows, direct URL/API/print/export checks, mobile/portal parity where relevant, measurable performance, audit/revocation behavior, upgrade fixtures and rollback. Release notes must say which screens enforce new roles and which still use legacy permissions; never imply global RBAC completion during transition.
+
 ## 10. Security acceptance matrix (must become automated tests)
 
 | Scenario | Required result |
