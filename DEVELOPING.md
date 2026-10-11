@@ -61,12 +61,6 @@ docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \
   "source /root/.nvm/nvm.sh && cd /home/ChurchCRM && npm ci && npm run build"
 ```
 
-## Optional community environment
-
-The repository also contains a community-requested DDEV configuration. It is an alternative to the maintainer workflow, not the primary development path.
-
-- Follow [`.ddev/README.md`](.ddev/README.md) to use the optional DDEV environment.
-
 ## Services
 
 After `npm run docker:test:start`, the test environment provides:
