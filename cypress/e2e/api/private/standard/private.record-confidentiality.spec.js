@@ -45,6 +45,21 @@ describe("Protected households", () => {
         });
     });
 
+    it("keeps the household and its members out of the latest, updated, birthday and anniversary lists", () => {
+        [
+            "/api/persons/latest",
+            "/api/persons/updated",
+            "/api/persons/birthday",
+            "/api/families/latest",
+            "/api/families/updated",
+            "/api/families/anniversaries",
+        ].forEach((url) => {
+            cy.makePrivateUserAPICall("GET", url, null, 200).then((r) => {
+                expect(JSON.stringify(r.body), url).to.not.include("Hart");
+            });
+        });
+    });
+
     it("leaves the family fully visible to an admin", () => {
         cy.makePrivateAdminAPICall("GET", `/api/family/${FAMILY}/notes`, null, 200);
         cy.makePrivateAdminAPICall("GET", "/api/person/6/notes", null, 200);
