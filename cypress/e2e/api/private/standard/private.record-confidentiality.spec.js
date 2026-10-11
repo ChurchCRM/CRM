@@ -51,6 +51,25 @@ describe("Protected households", () => {
     });
 });
 
+describe("Protected household: own members", () => {
+    // Family 20 (Black) includes lena.black.editself.notes (person 100).
+    const FAMILY = 20;
+
+    before(() => {
+        cy.makePrivateAdminAPICall("PUT", `/api/family/${FAMILY}/confidential`, { confidential: true }, 200);
+    });
+
+    after(() => {
+        cy.makePrivateAdminAPICall("PUT", `/api/family/${FAMILY}/confidential`, { confidential: false }, 200);
+    });
+
+    it("lets a member of the household keep reading it while others get 404", () => {
+        cy.makePrivateEditSelfPlusNotesAPICall("GET", `/api/family/${FAMILY}/notes`, null, 200);
+        cy.makePrivateEditSelfPlusNotesAPICall("GET", "/api/person/100/notes", null, 200);
+        cy.makePrivateUserAPICall("GET", `/api/family/${FAMILY}/notes`, null, 404);
+    });
+});
+
 describe("Confidential notes", () => {
     const ADMIN_ID = 1;
     const created = [];
