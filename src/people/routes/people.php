@@ -182,7 +182,7 @@ function listPeople(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
     // Filter received user input as needed
-    $members = PersonQuery::create();
+    $members = PersonQuery::create()->filterVisibleTo(AuthenticationManager::getCurrentUser());
     $sMode = 'Person';
     $familyActiveStatus = 'active';
     if (($_GET['familyActiveStatus'] ?? '') === 'inactive') {
@@ -304,6 +304,7 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
     $limit          = ($requestedLimit === 0) ? 0 : (in_array($requestedLimit, $allowedLimits, true) ? $requestedLimit : 50);
 
     $peopleQuery = PersonQuery::create()
+        ->filterVisibleTo(AuthenticationManager::getCurrentUser())
         ->orderByLastName()
         ->orderByFirstName();
 

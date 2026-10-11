@@ -70,7 +70,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
             ->filterById(2)
             ->orderByOptionSequence()
             ->find();
-        $families = FamilyQuery::create()->orderByName()->find();
+        $families = FamilyQuery::create()->filterVisibleTo(AuthenticationManager::getCurrentUser())->orderByName()->find();
 
         $pageArgs = [
             'sPageTitle'    => gettext('Add to Family'),
@@ -158,7 +158,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
                 ->filterById(2)
                 ->orderByOptionSequence()
                 ->find();
-            $families = FamilyQuery::create()->orderByName()->find();
+            $families = FamilyQuery::create()->filterVisibleTo(AuthenticationManager::getCurrentUser())->orderByName()->find();
 
             $pageArgs = [
                 'sPageTitle'    => gettext('Add to Family'),
@@ -215,7 +215,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
                 ->filterById(2)
                 ->orderByOptionSequence()
                 ->find();
-            $families = FamilyQuery::create()->orderByName()->find();
+            $families = FamilyQuery::create()->filterVisibleTo(AuthenticationManager::getCurrentUser())->orderByName()->find();
             $pageArgs = [
                 'sPageTitle'    => gettext('Add to Family'),
                 'sPageSubtitle' => gettext('Assign people from your cart to a family'),

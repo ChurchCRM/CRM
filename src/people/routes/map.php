@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
@@ -135,6 +136,7 @@ function getMapNeighborsView(Request $request, Response $response, array $args):
 
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
+        ->filterVisibleTo(AuthenticationManager::getCurrentUser())
         ->orderByName()
         ->find();
 

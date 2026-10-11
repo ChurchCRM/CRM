@@ -60,6 +60,15 @@ describe("Protected households", () => {
         });
     });
 
+    it("keeps the household off the map and out of neighbor candidates", () => {
+        cy.makePrivateUserAPICall("GET", "/api/map/families", null, 200).then((r) => {
+            expect(JSON.stringify(r.body)).to.not.include("Hart");
+        });
+        cy.makePrivateUserAPICall("GET", "/api/map/neighbors/1", null, 200).then((r) => {
+            expect(JSON.stringify(r.body)).to.not.include("Hart");
+        });
+    });
+
     it("leaves the family fully visible to an admin", () => {
         cy.makePrivateAdminAPICall("GET", `/api/family/${FAMILY}/notes`, null, 200);
         cy.makePrivateAdminAPICall("GET", "/api/person/6/notes", null, 200);
