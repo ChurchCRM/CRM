@@ -98,3 +98,48 @@ For each phase: test fresh install, upgrade with mixed legacy flags, inactive us
 
 ## Acceptance criteria for RFC
 Architecture and threat model reviewed; permission catalog and legacy mapping approved; complete call-site inventory and resource scope prototype assigned; phased issues updated; no runtime behavior changes in this PR.
+
+
+## Expanded cross-issue audit (2026-10-10)
+The parent feature must reconcile historical and contemporary requests, not just #8758–#8762:
+- [#3428](https://github.com/ChurchCRM/CRM/issues/3428) (closed stale): reusable roles, configurable default role for standard staff accounts, role assignment during creation, and sidebar cleanup. Closure is not proof of implementation.
+- [#769](https://github.com/ChurchCRM/CRM/issues/769): enforce authorization near the ORM/data layer.
+- [#10213](https://github.com/ChurchCRM/CRM/issues/10213): Email permission is missing from creation and Permissions card; `bEmailMailto` in `userconfig_ucfg` can disagree with displayed defaults. Backfill must preserve **effective** behavior, not just physical rows.
+- [#9003](https://github.com/ChurchCRM/CRM/issues/9003): read-only staff access differs from portal-only mode.
+- [#8977](https://github.com/ChurchCRM/CRM/issues/8977), [#9863](https://github.com/ChurchCRM/CRM/issues/9863), [#10463](https://github.com/ChurchCRM/CRM/issues/10463), [PR #10464](https://github.com/ChurchCRM/CRM/pull/10464): member portal, self-service sign-in, explicit staff-vs-member distinction and person-level sign-in management.
+- [#10252](https://github.com/ChurchCRM/CRM/issues/10252), [#10259](https://github.com/ChurchCRM/CRM/issues/10259): module-owned report catalog; report discovery, downloads and exports inherit data-source permission.
+- [#9525](https://github.com/ChurchCRM/CRM/issues/9525), [#9524](https://github.com/ChurchCRM/CRM/issues/9524): contact PII and non-attendee exports/email actions need dedicated grants.
+- [#9952](https://github.com/ChurchCRM/CRM/issues/9952), [#9949](https://github.com/ChurchCRM/CRM/issues/9949): API routes span several prefixes, and prefix-based admin detection is unsafe.
+- [#9704](https://github.com/ChurchCRM/CRM/issues/9704), [#9701](https://github.com/ChurchCRM/CRM/issues/9701): volunteer V1/V2 feature rollout is separate from authorization.
+- [#9845](https://github.com/ChurchCRM/CRM/issues/9845): admin masquerade requires explicit permission, prohibition on impersonating admins, clear audit actor/subject separation.
+- [#10191](https://github.com/ChurchCRM/CRM/issues/10191): plugin email integration must honor Email permission.
+- [#10464](https://github.com/ChurchCRM/CRM/pull/10464) is an **unmerged proposal**; it must not be treated as existing behavior.
+
+### Verified account creation and current storage
+On `master`, `src/admin/routes/system.php` normalizes permission form inputs and calls `UserService::createUser($personId, $perms, $userName)`. `src/ChurchCRM/Service/UserService.php` verifies person existence, prevents duplicate account and username, writes user flags and password transactionally, explicitly persists `bAddEvent`, then sends `NewAccountEmail` with the generated password when email is configured. It does **not** write an equivalent explicit `bEmailMailto` row on create. The `User` model documents two permission stores: core `user_usr` flags and `userconfig_ucfg` rows (`bAddEvent`, `bEmailMailto`). `src/mysql/install/Install.sql` seeds a global `bEmailMailto` default and selected user rows. Existing `EditSelf` exclusive users are denied admin-shell module access; all-zero permission staff users are a distinct supported state.
+
+Current core columns include `usr_Admin`, `usr_EditSelf`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`, `usr_MenuOptions`, `usr_ManageGroups`, `usr_Finance`, `usr_ManageFundraisers`, `usr_ManageMinistries`, `usr_ManageMyMinistries`, and `usr_Notes`. The earlier Phase 1 role list omits some recently added ministry and volunteer capabilities: refresh the role/permission catalog from code, not the historical issue list.
+
+### Module and role catalog to validate
+Derive canonical capabilities from active navigation, routes and APIs for People/Families, Groups, Sunday School, Calendar/Events/Attendance, Communication/Email, Volunteer/Ministries, Deposits/Giving, Fundraising, Reports/Exports, Portal/Self, Settings/Admin, Plugins/Integrations, and Kiosk. Distinguish viewing, creation, update, delete, export, communication, configuration, privileged operations and scoped management. Example built-in templates for discussion: Member Portal, Read-only Staff, Record Editor, Group Leader, Volunteer Coordinator, Event Manager, Communications, Finance Reader, Finance Manager, Fundraising Manager, Church Administrator and System/Security Administrator. Do **not** automatically grant new templates to existing users. Define whether system administrator separation is meaningful in a single-church installation before introducing it.
+
+### Integration contract with member sign-in PR #10464
+Keep `person_per` and `user_usr` physically separate; account lifecycle and eligibility are **authentication** gates, not RBAC grants. Model portal-only versus staff explicitly; never infer portal-only from zero effective permissions. New member self-setup must grant portal access only, without staff role or API token. Staff account creation must require explicit role selection, with a documented read-only choice and configurable default only if approved. All role edits, disable-login actions, impersonation and invitations must enforce independent permissions and last-admin safeguards. PR #10464 proposes additional eligibility blocks, classification/age settings, and secure token setup: these remain pending decisions and must not be assumed deployed. Coordinate token purpose validation, transactional token consumption and session invalidation with sign-in design.
+
+### Migration matrix and cutover contract
+| Scenario | Data initialization | Effective access on cutover |
+|---|---|---|
+| Existing church upgrade | Additive tables; seed immutable permission catalog and built-in templates; snapshot every account's effective legacy flags and relevant userconfig rows; backfill explicit compatibility grants | Bit-for-bit equivalent allow/deny for each existing protected action; differences block enforcement |
+| Fresh installation | Install schema includes RBAC tables and seeds identical to migrations; initial bootstrap admin gets administrator role transactionally | Admin access works; no default staff/module grants to members |
+| New member setup (if #10464 approved) | Create `user_usr` at password setup and mark portal-only; no staff role, no API key | Portal only |
+| New staff account | Explicit template selection and preview of effective permissions; never rely on implicit global userconfig defaults | Exactly chosen grants, including an explicit read-only staff template |
+| Existing zero-permission staff | Preserve account classification and read-only access; no automatic conversion to portal | Same legacy access until intentional reassignment |
+| Existing EditSelf-exclusive | Preserve exclusive portal gate; avoid stacking module roles | Portal only |
+| Missing or inconsistent Email row | Resolve using existing effective permission evaluation and document exception report | No silent gain or loss |
+| Existing admin | Backfill built-in Administrator with verified wildcard equivalence | Same admin access, with explicit decisions for new security-only operations |
+| Rollback | Switch PDP to legacy compatibility mode; leave additive tables untouched | Prior behavior, with no orphaned grants or lost legacy flags |
+
+Migration must be **idempotent**, tested against populated snapshots and clean installs, and must use a stable account-classification signal rather than an inferred all-zero role set. Introduce a schema/version marker for RBAC activation, a dry-run comparator, and a signed-off diff report. Shadow evaluation alone must not leak denied resources. Validate backfill of ministry/volunteer and feature-flag-derived permissions; distinguish a disabled module from a missing grant. Require route-level and resource-level tests for old and new accounts. The initial install SQL and upgrade migrations must produce equivalent tables, indexes, seeds and role mappings.
+
+### Release gate
+Do not implement #8758 without reconciling #10464 and the default staff role. Do not merge #10464's account changes without explicit RBAC compatibility review. No changes to live behavior in this RFC.
