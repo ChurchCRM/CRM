@@ -1304,8 +1304,8 @@ INSERT INTO `note_nte` (`nte_ID`,`nte_per_ID`,`nte_fam_ID`,`nte_Private`,`nte_Te
 /*!40000 ALTER TABLE `note_nte` ENABLE KEYS */;
 UNLOCK TABLES;
 CREATE TABLE `note_recipient_nrc` (
-  `nrc_nte_ID` mediumint(8) unsigned NOT NULL,
-  `nrc_usr_ID` mediumint(8) unsigned NOT NULL,
+  `nrc_nte_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `nrc_usr_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`nrc_nte_ID`,`nrc_usr_ID`),
   CONSTRAINT `fk_nrc_nte` FOREIGN KEY (`nrc_nte_ID`) REFERENCES `note_nte` (`nte_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

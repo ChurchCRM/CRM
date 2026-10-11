@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteRecipientQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Row-level read and write rules for protected households and confidential notes.
@@ -70,6 +71,27 @@ final class RecordAccessPolicy
         }
 
         return !$note->isConfidential() && $user->isAdmin();
+    }
+
+    /**
+     * Ids of protected households the user may not read. Empty for admins.
+     *
+     * @return int[]
+     */
+    public function hiddenFamilyIds(User $user): array
+    {
+        if ($user->isAdmin()) {
+            return [];
+        }
+
+        $ids = FamilyQuery::create()
+            ->filterByConfidential(true)
+            ->filterById($this->ownFamilyId($user), Criteria::NOT_EQUAL)
+            ->select('Id')
+            ->find()
+            ->toArray();
+
+        return array_map('intval', $ids);
     }
 
     public function ownFamilyId(User $user): int

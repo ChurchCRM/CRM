@@ -4,6 +4,7 @@ namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authorization\RecordAccessPolicy;
 use ChurchCRM\model\ChurchCRM\Base\FamilyQuery as BaseFamilyQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'family_fam' table.
@@ -22,14 +23,8 @@ class FamilyQuery extends BaseFamilyQuery
      */
     public function filterVisibleTo(User $user): self
     {
-        if ($user->isAdmin()) {
-            return $this;
-        }
+        $hidden = (new RecordAccessPolicy())->hiddenFamilyIds($user);
 
-        return $this->where(
-            '(family_fam.fam_Confidential = 0 OR family_fam.fam_ID = ?)',
-            (new RecordAccessPolicy())->ownFamilyId($user),
-            \PDO::PARAM_INT,
-        );
+        return $hidden === [] ? $this : $this->filterById($hidden, Criteria::NOT_IN);
     }
 }

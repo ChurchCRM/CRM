@@ -255,8 +255,8 @@
     </table>
 
     <table name="note_recipient_nrc" idMethod="none" phpName="NoteRecipient" description="Users explicitly granted read access to a confidential note">
-        <column name="nrc_nte_ID" phpName="NoteId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true"/>
-        <column name="nrc_usr_ID" phpName="UserId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true"/>
+        <column name="nrc_nte_ID" phpName="NoteId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true" defaultValue="0"/>
+        <column name="nrc_usr_ID" phpName="UserId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true" defaultValue="0"/>
         <foreign-key foreignTable="note_nte" onDelete="CASCADE">
             <reference local="nrc_nte_ID" foreign="nte_ID"/>
         </foreign-key>

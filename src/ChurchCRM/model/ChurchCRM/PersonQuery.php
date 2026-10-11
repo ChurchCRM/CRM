@@ -39,14 +39,8 @@ class PersonQuery extends BasePersonQuery
      */
     public function filterVisibleTo(User $user): self
     {
-        if ($user->isAdmin()) {
-            return $this;
-        }
+        $hidden = (new RecordAccessPolicy())->hiddenFamilyIds($user);
 
-        return $this->where(
-            'person_per.per_fam_ID NOT IN (SELECT fam_ID FROM family_fam WHERE fam_Confidential = 1 AND fam_ID <> ?)',
-            (new RecordAccessPolicy())->ownFamilyId($user),
-            \PDO::PARAM_INT,
-        );
+        return $hidden === [] ? $this : $this->filterByFamId($hidden, Criteria::NOT_IN);
     }
 }
