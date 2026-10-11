@@ -18,8 +18,8 @@ describe("Protected households", () => {
         cy.makePrivateAdminAPICall("PUT", `/api/family/${FAMILY}/confidential`, { confidential: false }, 200);
     });
 
-    it("only an admin may set the flag", () => {
-        cy.makePrivateUserAPICall("PUT", `/api/family/${FAMILY}/confidential`, { confidential: false }, 403);
+    it("does not let a non-member see or change the flag", () => {
+        cy.makePrivateUserAPICall("PUT", `/api/family/${FAMILY}/confidential`, { confidential: false }, 404);
     });
 
     it("hides the family and its members from a non-member without disclosing they exist", () => {
@@ -56,6 +56,7 @@ describe("Protected households", () => {
     it("restores access when the flag is cleared", () => {
         cy.makePrivateAdminAPICall("PUT", `/api/family/${FAMILY}/confidential`, { confidential: false }, 200);
         cy.makePrivateUserAPICall("GET", "/api/person/6/notes", null, 200);
+        cy.makePrivateUserAPICall("PUT", `/api/family/${FAMILY}/confidential`, { confidential: true }, 403);
         cy.makePrivateAdminAPICall("PUT", `/api/family/${FAMILY}/confidential`, { confidential: true }, 200);
     });
 });
