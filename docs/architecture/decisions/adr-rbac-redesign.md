@@ -195,6 +195,10 @@ Before implementing RBAC, complete [GHSA retrospective #10517](https://github.co
 
 **Design invariants:** no sensitive data served via unguarded static paths; consistent authorization across UI, API, portal, files, exports, labels, plugins and background jobs; authorization for **record + field + action + scope**; no role-only assumption that makes CSRF safe; safe queries and output encoding; full 2FA/session/API-key lifecycle; fail-closed handling for unknown grants; tests for direct-ID access and alternate endpoints. Not every GHSA is an RBAC bug: installer/restore RCE and injection require separate security boundaries, even though they can expose the whole database.
 
+### Kiosk devices as narrowly scoped non-user principals
+
+Kiosk device authentication must **not** inherit the ordinary staff or administrator role catalog. Current `src/kiosk/routes/device.php` uses kiosk-cookie authentication and checks accepted-device/active-event assignment on many operations. Devices can check in/out, list assigned rosters, retrieve authorized roster photos/family information, trigger notifications and register guests. Roster checks exist on photo/family endpoints, but this is **not proof** that every route and every returned field has adequate scope. Complete [kiosk device security audit #10518](https://github.com/ChurchCRM/CRM/issues/10518) before implementing RBAC. Define a separate device principal and per-operation/event/class/person/field capability matrix, strict credential and assignment lifecycle, negative cross-roster tests, revocation and auditing. Provisioning/acceptance/assignment must not be silently equivalent to broad `ManageGroups` or admin grants. Preserve legitimate child pickup/check-in workflows while minimizing child and household data exposure.
+
 ## 10. Security acceptance matrix (must become automated tests)
 
 | Scenario | Required result |
