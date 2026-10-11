@@ -31,6 +31,7 @@ These are **approved product requirements**, not proof of current behavior or ap
 | P6 | Administrators manage systems but do not automatically access confidential pastoral/safeguarding content | Ordinary wildcard and emergency access (D2/D4) |
 | P7 | Only pastor/designated pastoral leadership can restrict/unrestrict a person | Delegation verification, audit, restricted-record read policy (D1) |
 | P8 | Simple church-role templates by default; optional advanced custom permissions | Final template catalog and role editor design (D2/D6) |
+| P9 | Churches may designate an existing group as trusted Pastoral Leadership; protect membership and explicitly configure granted capabilities | Grant and approval workflow (D7) |
 
 **Conflict resolution:** P4 supersedes the earlier RFC proposal to permit shared `per_Email` values as a permanent target. It does **not** establish that existing data is unique, mandate email for every person, or authorize immediate database constraints. The reviewer must assess the impact on existing churches and [member sign-in PR #10464](https://github.com/ChurchCRM/CRM/pull/10464). Household `fam_Email` is not subject to personal-email uniqueness merely because it may match someone's email.
 
@@ -73,6 +74,20 @@ A church must be able to use templates without constructing a complex access gra
 - **Approved product direction:** ordinary staff see standard people/families, while selected people may be hidden/restricted. **Only a pastor or explicitly designated pastoral leadership may set or remove a restricted classification**; general staff and technical administrators cannot classify/declassify solely by virtue of their role. This is distinct from permission to view a restricted record.
 - **Proposed operational default:** existing records remain `standard` on migration; restricted people are absent from ordinary directory search, direct URL, family references and exports, including existence disclosure. Restricted-record access must be separately granted to appropriate church personnel and audited.
 - **Open decision D1 (remaining):** precise restricted/protected categories, who may read restricted records, how pastoral designation is established/revoked, whether any placeholder is safe, family propagation, emergency override and historical visibility migration. **Do not implement restricted visibility until these security details are approved.**
+
+### Trusted Pastoral Leadership group — approved church workflow (P9)
+
+A church may designate an **existing active group** as Trusted Pastoral Leadership. The group remains usable for church rosters and communication; the designation is a separate security configuration, **off by default**, never inferred from the group's name. The schema currently has `group_grp` and `person2group2role_p2g2r`; its group-local roles are not application RBAC roles.
+
+**Mandatory authorization boundaries:**
+1. Designation requires a distinct `security.trusted_group.designate` capability, step-up authentication, explicit confirmation, and an audit entry. Existing members must be reviewed and approved before any privileges activate. No automatic designation on upgrade.
+2. The designated group grants only a **configured allowlist of pastoral actions**, such as `people.visibility.manage`. It never grants blanket administrator, finance, credential reset, protected-record reading, or highly confidential note access. Per-note explicit sharing remains required.
+3. Adding, removing, transferring, importing or restoring a person in a trusted group requires separate `security.trusted_group.members.manage` authorization, including all UI, MVC, API, import, plugin and legacy paths. Ordinary group management, group-local leadership and ministry management do not suffice. Prevent self-addition, self-approval, indirect escalation through group merges/clones and membership edits through alternate routes.
+4. Resolve the member to a currently enabled authenticated user account; group membership alone does not create an account or a grant for a portal-only account unless the approved policy explicitly allows it. Evaluate live group designation, membership, account state, action allowlist, record scope and sensitivity on every request; revoke by next request after any change.
+5. Protect group deletion/deactivation, designation removal, role changes and privilege configuration with equivalent authorization. Log actor, target, reason, approval and outcome without pastoral content. Deny when group membership or authorization state cannot be verified.
+6. Provide church-friendly UI labels ("Trusted Pastoral Leadership", "Who can change membership?", "Which responsibilities does this grant?") with a clear warning about security impact, rather than exposing raw IAM vocabulary.
+
+**Open decision D7:** designate/approve authority (pastor alone or two-person approval), initial member confirmation, precise allowed pastoral actions, delegation and review cadence, whether grants are computed dynamically or synchronized to application roles. Until approved, do not wire ordinary `group_grp` membership or `p2g2r_rle_ID` directly to privileged RBAC grants.
 
 ## 4. Authorization contract (all entrypoints)
 
@@ -133,6 +148,8 @@ Audit **actual** existing token mechanisms, including the My Settings API Tokens
 6. Release role editor with grant ceilings, last-admin protections and audited changes. Pilot ministry scoping only after query and index review.
 7. Keep rollback to legacy checks possible during phased rollout, without bypassing pre-existing checks. Existing visibility remains standard unless D1 approves another migration. Revoke or refresh authorization cache/session on role or credential changes.
 
+**Open decision D7:** who may designate a trusted pastoral group, authorize initial members and future changes; approved capability allowlist, delegation, storage, revocation and review cadence. No existing group is automatically designated during upgrade.
+
 **Open decision D6:** exact migration file location/numbering, initial role mappings, permission catalog completeness, compatibility sunset, performance limits and rollout switch semantics. Verify repository conventions first.
 
 ## 10. Security acceptance matrix (must become automated tests)
@@ -144,6 +161,11 @@ Audit **actual** existing token mechanisms, including the My Settings API Tokens
 | Staff guesses restricted person/family ID or reaches via search/export | Denied consistently across entrypoints |
 | Authorized staff views restricted person | Only with explicit approved policy |
 | Ordinary administrator tries to classify/declassify protected person | Denied unless also designated pastoral leadership |
+| Ordinary group manager adds self to trusted pastoral group | Denied without separate privileged approval |
+| Existing populated group becomes trusted | No group-derived grants until initial roster is explicitly reviewed and approved |
+| Group membership/designation revoked | Effective group-derived grants removed by next request |
+| Plugin, import, API or legacy route changes trusted membership | Same privileged checks and audit as UI |
+| Trusted pastoral group member opens unshared highly confidential note | Denied |
 | Newly created staff account reads ordinary directory but edits a person | Read allowed; edit denied until appropriate role assigned |
 | Technical administrator reads highly confidential pastoral/safeguarding content | Denied unless explicitly shared under approved policy |
 | Authorized pickup adult tries to edit child's private details | Denied; pickup permission is separate from guardianship |
@@ -181,11 +203,12 @@ Also test cross-family links, hidden-person count/thumbnail leakage, child becom
 - Does administrator status bypass any sensitive policy without an explicit decision?
 - Is the actual legacy behavior preserved through upgrade, including email and notes semantics?
 - Are plugin in-process trust and API-token constraints represented honestly?
-- Are D1–D6 answered before the corresponding phase starts?
+- Can a group manager, importer or plugin promote themselves via trusted-group membership?
+- Are D1–D7 answered before the corresponding phase starts?
 - Are negative tests and rollback criteria implementation-ready?
 
 ## 12. Source issues and design dependencies
 
 [#8591](https://github.com/ChurchCRM/CRM/issues/8591) parent; [#8758](https://github.com/ChurchCRM/CRM/issues/8758) schema; [#8759](https://github.com/ChurchCRM/CRM/issues/8759) middleware; [#8760](https://github.com/ChurchCRM/CRM/issues/8760) role UI; [#8761](https://github.com/ChurchCRM/CRM/issues/8761) menu/inline migration; [#8762](https://github.com/ChurchCRM/CRM/issues/8762) scopes; [#10464](https://github.com/ChurchCRM/CRM/pull/10464) member sign-in proposal; [#9003](https://github.com/ChurchCRM/CRM/issues/9003) staff read; [#9036](https://github.com/ChurchCRM/CRM/issues/9036) notes policy; [#8999](https://github.com/ChurchCRM/CRM/issues/8999) note IDOR; [#1886](https://github.com/ChurchCRM/CRM/issues/1886) custom fields; [#10213](https://github.com/ChurchCRM/CRM/issues/10213) email grant; [#10043](https://github.com/ChurchCRM/CRM/issues/10043) API tokens; [#10191](https://github.com/ChurchCRM/CRM/issues/10191) plugin email; [#10252](https://github.com/ChurchCRM/CRM/issues/10252) reports; [#10206](https://github.com/ChurchCRM/CRM/issues/10206) authorization gaps; [#769](https://github.com/ChurchCRM/CRM/issues/769) data-layer ACL.
 
-**Review status:** proposal only. D1–D6 are explicitly open, not hidden assumptions. No runtime implementation or security remediation is claimed.
+**Review status:** proposal only. D1–D7 are explicitly open, not hidden assumptions. No runtime implementation or security remediation is claimed.
