@@ -2,6 +2,10 @@
 
 Loaded by Codex every session. Other agents should follow the same files.
 
+## RFC and community-prioritization workflow (proposed)
+
+Before triaging new architecture/product proposals or creating implementation issues, read [`docs/contributing-rfc-community-prioritization.md`](docs/contributing-rfc-community-prioritization.md). **This governance policy is pending human approval and merge.** Keep canonical design decisions in each RFC and index them via [#10550](https://github.com/ChurchCRM/CRM/issues/10550). An accepted design is not scheduled; do not assign milestones, create voting entries or launch in-app campaigns without the approvals described there. Current repository rules take precedence until adoption.
+
 ## Skills
 
 Index: [`.agents/skills/churchcrm/SKILL.md`](.agents/skills/churchcrm/SKILL.md).
