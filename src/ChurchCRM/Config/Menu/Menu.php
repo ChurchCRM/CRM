@@ -349,9 +349,9 @@ class Menu
      *
      * A pure **team leader** passes that predicate and gets the heading with
      * Dashboard alone: `getManageableMinistries()` returns nothing for them,
-     * because leading a team is not administering the ministry above it (§4.6) and
-     * the ministry page would refuse them. The dashboard is their entry point, and
-     * its "My ministries and teams" card names the teams they lead. A manager who
+     * because leading a team is not administering the ministry above it (§4.6). The
+     * dashboard is their entry point, and its "My ministries and teams" card links
+     * the teams they lead to the ministry page's team-only view (#10530). A manager who
      * has not created a ministry yet sees the same Dashboard-only heading, and the
      * dashboard's "New ministry" action is right there. Only ACTIVE ministries are
      * listed here; deactivated ones move to the Deactivated Ministries heading.

@@ -213,6 +213,13 @@ interface CRMPortalTeamConfig {
   ministryId: number;
 }
 
+/** The ministry page's team-only view (#10530): the teams of this ministry the viewer leads. */
+interface CRMVolunteerTeamViewConfig {
+  ministryId: number;
+  teams: Array<{ id: number; name: string }>;
+  sundaySchool: boolean;
+}
+
 /**
  * The slice of `window.CRM.groups` (src/skin/js/CRMJSOM.js) that V2 calls.
  *
@@ -282,6 +289,8 @@ interface CRMNamespace {
   volunteerOccurrence?: CRMVolunteerOccurrenceConfig;
   /** Set by the Member Portal's teams/team.html.twig (issue #9868). */
   portalTeam?: CRMPortalTeamConfig;
+  /** Set by src/ministries/views/ministry-view.php for a team leader (issue #10530). */
+  volunteerTeamView?: CRMVolunteerTeamViewConfig;
   /** The Groups helpers, including the shared group picker (G4). */
   groups?: CRMGroupsNamespace;
   bEnableGravatarPhotos?: boolean;
