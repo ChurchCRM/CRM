@@ -2413,6 +2413,12 @@ each coordinator of the ministry — or, with none, each global volunteer manage
 a `pool_add` email; the actor, the added person and the team's other leaders get nothing. Removing is
 untouched: `DELETE …/pool/{personId}` and Remove Volunteer stay ministry-level.
 
+The older way in follows the same rules. A qualification grant joins the pool as a side effect (D19), and
+a team leader may grant on their own team's positions. So `grantQualification()` by someone who does not
+administer the ministry, for a person not yet in its pool, accepts only a person the search would offer
+(`404` otherwise) and sends the same `pool_add` email (`notifyPoolAddedByTeam()`). A coordinator's grant is
+unchanged.
+
 The person search, `GET /ministries/people/search?q=`, sits behind the module's role gate, which admits a
 team leader on any kind of login (the Member Portal's My Teams) and everyone with more authority. It
 returns `[{id, name, familyName}]` and nothing else — no email, phone, address, photo or age — needs two
