@@ -43,14 +43,7 @@ class VolunteerGapAlertBatchEmail extends BaseVolunteerEmail
             $total += array_sum($occurrence['positions']);
         }
 
-        $paragraphs = [sprintf(
-            ngettext(
-                '%d volunteer is still needed for these upcoming occurrences.',
-                '%d volunteers are still needed for these upcoming occurrences.',
-                max(1, $total)
-            ),
-            $total
-        )];
+        $paragraphs = [sprintf(gettext('Volunteers still needed for these upcoming occurrences: %d'), $total)];
 
         // One paragraph per occurrence: when, whose, which positions and the link, as
         // prose, because the shared template has one body slot (Appendix C).
@@ -65,7 +58,7 @@ class VolunteerGapAlertBatchEmail extends BaseVolunteerEmail
                 ? $context->getMinistryName()
                 : $context->getMinistryName() . ' / ' . $team;
             foreach ($occurrence['positions'] as $positionName => $needed) {
-                $lines[] = sprintf(ngettext('%s: needs %d more', '%s: needs %d more', $needed), $positionName, $needed);
+                $lines[] = sprintf(gettext('%1$s — still needed: %2$d'), $positionName, $needed);
             }
             if ($context->getOccurrenceURL() !== '') {
                 $lines[] = $context->getOccurrenceURL();

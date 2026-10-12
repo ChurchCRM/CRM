@@ -35,6 +35,7 @@ const PAGE_URL = "/admin/ministry-settings";
 let originalVersion = "v1";
 let originalLead = "48";
 let originalGapLead = "48";
+let originalBatchTime = "07:00";
 
 function freshAdminLogin() {
     cy.clearCookies();
@@ -87,13 +88,16 @@ describe("Admin → Ministry Settings", () => {
         adminApi("GET", GAP_LEAD_URL, null, 200).then((resp) => {
             originalGapLead = String(resp.body.value ?? resp.body.Value ?? "48");
         });
+        adminApi("GET", BATCH_TIME_URL, null, 200).then((resp) => {
+            originalBatchTime = String(resp.body.value ?? resp.body.Value ?? "07:00");
+        });
     });
 
     after(() => {
         adminApi("POST", SETTING_URL, { value: originalVersion }, 200);
         adminApi("POST", LEAD_URL, { value: originalLead }, 200);
         adminApi("POST", GAP_LEAD_URL, { value: originalGapLead }, 200);
-        adminApi("POST", BATCH_TIME_URL, { value: "07:00" }, 200);
+        adminApi("POST", BATCH_TIME_URL, { value: originalBatchTime }, 200);
         adminApi("POST", HORIZON_URL, { value: "8" }, 200);
         adminApi("POST", DEFAULT_TYPE_URL, { value: "" }, 200);
     });

@@ -1925,9 +1925,9 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     expect(message.ReplyTo || []).to.have.length(0);
                     const html = message.HTML || "";
                     expect(html).to.contain(MINISTRY_NAME);
-                    expect(html).to.contain(`${ESPRESSO_NAME}: needs 1 more`);
-                    expect(html).to.contain(`${MILK_NAME}: needs 1 more`);
-                    expect(html).to.contain("4 volunteers are still needed");
+                    expect(html).to.contain(`${ESPRESSO_NAME} — still needed: 1`);
+                    expect(html).to.contain(`${MILK_NAME} — still needed: 1`);
+                    expect(html).to.contain("Volunteers still needed for these upcoming occurrences: 4");
                     const first = html.search(new RegExp(`/ministries/occurrences/${occurrenceOne}(?!\\d)`));
                     const second = html.search(new RegExp(`/ministries/occurrences/${occurrenceTwo}(?!\\d)`));
                     expect(first, "the first Sunday's link").to.be.greaterThan(-1);
@@ -2003,7 +2003,7 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                     summariesTo(COORDINATOR_EMAIL).then((mail) => {
                         expect(mail).to.have.length(1);
                         body(mail[0]).then((message) => {
-                            expect(message.HTML || "").to.contain(`${MILK_NAME}: needs 1 more`);
+                            expect(message.HTML || "").to.contain(`${MILK_NAME} — still needed: 1`);
                             expect(message.HTML || "").to.not.contain(ESPRESSO_NAME);
                         });
                     });
