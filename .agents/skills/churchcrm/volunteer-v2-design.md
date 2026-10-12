@@ -2046,8 +2046,9 @@ the same day; the command-line runner and the page-load trigger run it at most o
 before the drain, so a gap is reported soon after it comes inside the window (a new event, a
 shorter lead). `VolunteerNotificationService::scheduleGapAlerts()` takes every scheduled
 occurrence of an active ministry whose start (`resolveOccurrenceWindow()`) is after now and within
-`iVolunteerGapAlertLeadHours` — its own lead (#10526, default 48 like the reminders', so an upgrade
-changes nothing); 0 turns it off and leaves the reminders alone, and a reminder lead of 0 no longer
+`iVolunteerGapAlertLeadHours` — its own lead (#10526, default 48 like the reminders'; the
+`7.8.1.php` upgrade step copies a church's own reminder lead into it, so an upgrade changes
+nothing); 0 turns it off and leaves the reminders alone, and a reminder lead of 0 no longer
 turns it off — and enqueues one `gap_alert` per position `getOpenGaps()` reports short (D34's
 *Needs N more*), per coordinator, with `vntf_Context = {"positionId": …}` so the message names that
 position alone. Its dedupe key carries no date, so an open gap is alerted once however often the
