@@ -2874,10 +2874,22 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
   grid so the new rows appear with no ticks, which is the prompt to make the second
   statement.
 
-  Because the last column holds an action menu, the wrapper is the mandatory
-  `overflow-x: clip; overflow-y: visible` pair rather than `.table-responsive`: a
-  horizontal scroller would clip the dropdown (table-action-menu.md). A ministry with very
-  many positions therefore wraps its columns rather than scrolling them.
+  Position names and counts are unlimited, so the grid scrolls sideways in
+  `.volunteer-scroll-x`, and the open row menu is re-anchored with `position: fixed` so the
+  scroller cannot clip it (table-action-menu.md, "A menu inside a horizontally SCROLLING
+  table").
+
+  **The position headings stay in view (#10527).** With a long pool the heading row used
+  to scroll away. A sticky cell inside the scroller cannot follow the page — the scroller
+  is its scroll container — so `wireStickyHead()` (`components/ui.ts`) copies the row into
+  a strip just above the scroller. The strip sticks below the page's sticky top bar (the
+  admin topbar; the portal header scrolls away, so there it sticks at the top of the
+  window), follows the grid's sideways scroll both ways, and takes every column width from
+  the real row, which stays in the table, collapsed, for screen readers. The cells keep
+  Tabler's opaque heading background in light and dark mode. On a phone `_tabler-bridge.scss`
+  makes every `.card-body` scroll sideways, which would capture the strip too, so the card
+  around an active Volunteers tab is set back to `overflow-x: visible`. Admin ministry page
+  and portal team page alike.
 
 - **Schedules** lists each schedule with a **Which events** column saying, in words, where its
   dates come from (D22) — *"Church Service events titled {title}"*, *"Sunday School: {class}"*

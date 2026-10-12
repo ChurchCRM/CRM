@@ -34,6 +34,53 @@
     }
 }
 
+// The heading row of a `.volunteer-scroll-x` table, kept in view while the page
+// scrolls (#10527). The wrapper scrolls sideways, which makes it the scroll
+// container a sticky cell inside it would stick to, so `wireStickyHead()` in
+// ui.ts copies the row into this strip just above the wrapper. The strip sticks
+// below the page's sticky top bar and follows the wrapper's sideways scroll; the
+// real row stays in the table for its column widths and for screen readers, and
+// is collapsed so it is not drawn twice.
+.volunteer-sticky-head {
+    position: sticky;
+    top: var(--volunteer-sticky-top, 0);
+    z-index: 2;
+    overflow-x: auto;
+    scrollbar-width: none;
+    background-color: var(--tblr-bg-surface);
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    > .table {
+        table-layout: fixed;
+        margin-block-end: 0;
+    }
+
+    th {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    &:has(+ .d-none) {
+        display: none;
+    }
+}
+
+.volunteer-sticky-head + .volunteer-scroll-x > .table > thead > tr > th {
+    padding-block: 0;
+    border-block-width: 0;
+    line-height: 0;
+    color: transparent;
+}
+
+// `_tabler-bridge.scss` makes every `.card-body` scroll sideways on a phone, which
+// would make it the strip's scroll container. The grid scrolls sideways by itself.
+.card-body:has(> .tab-pane.active > .volunteer-sticky-head) {
+    overflow-x: visible;
+}
+
 // An open row action menu that has been re-anchored to the viewport by
 // ministry.ts. Bootstrap's own `.dropdown-menu.show` is `position: absolute`
 // with a Popper/`data-bs-display="static"` offset; the class below is added

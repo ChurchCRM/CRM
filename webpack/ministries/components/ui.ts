@@ -350,6 +350,70 @@ export function wireUnclippedRowMenus(wrapperId: string): void {
   wrapper.addEventListener("hide.bs.dropdown", release);
 }
 
+/**
+ * Keep a sideways-scrolling table's heading row in view while the page scrolls (#10527).
+ *
+ * `position: sticky` sticks to the nearest scrolling ancestor, and the wrapper that lets
+ * the table scroll sideways is one, so a sticky cell inside it never follows the page.
+ * The row is copied into a strip just above the wrapper instead: the strip sticks below
+ * the page's sticky top bar, follows the wrapper's sideways scroll, and takes every
+ * column width from the real row, which stays in the table, collapsed, for screen readers.
+ *
+ * Returns the function that copies the row again after the table is re-rendered.
+ */
+export function wireStickyHead(wrapperId: string): () => void {
+  const wrapper = byId(wrapperId);
+  const table = wrapper?.querySelector<HTMLTableElement>(":scope > table");
+  if (!wrapper || !table) {
+    return () => {};
+  }
+
+  const copy = document.createElement("table");
+  copy.className = table.className;
+  const strip = document.createElement("div");
+  strip.className = "volunteer-sticky-head";
+  strip.setAttribute("aria-hidden", "true");
+  strip.append(copy);
+  wrapper.before(strip);
+
+  const sizeColumns = (): void => {
+    const cells = table.tHead?.rows[0]?.cells ?? [];
+    const copies = copy.tHead?.rows[0]?.cells ?? [];
+    copy.style.width = `${table.getBoundingClientRect().width}px`;
+    for (let i = 0; i < cells.length; i++) {
+      // `!important` because a utility such as `.w-1` sets the width that way.
+      copies[i]?.style.setProperty("width", `${cells[i].getBoundingClientRect().width}px`, "important");
+    }
+    strip.scrollLeft = wrapper.scrollLeft;
+  };
+  const columns = new ResizeObserver(sizeColumns);
+
+  const topBar = [...document.querySelectorAll<HTMLElement>("header")].find((header) =>
+    ["sticky", "fixed"].includes(getComputedStyle(header).position),
+  );
+  if (topBar) {
+    new ResizeObserver(() => strip.style.setProperty("--volunteer-sticky-top", `${topBar.offsetHeight}px`)).observe(
+      topBar,
+    );
+  }
+
+  wrapper.addEventListener("scroll", () => {
+    strip.scrollLeft = wrapper.scrollLeft;
+  });
+  strip.addEventListener("scroll", () => {
+    wrapper.scrollLeft = strip.scrollLeft;
+  });
+
+  return () => {
+    columns.disconnect();
+    copy.replaceChildren(...(table.tHead ? [table.tHead.cloneNode(true)] : []));
+    columns.observe(table);
+    for (const cell of table.tHead?.rows[0]?.cells ?? []) {
+      columns.observe(cell);
+    }
+  };
+}
+
 /** `YYYY-MM-DD`, `offsetDays` from today, in the browser's own calendar. */
 export function isoDate(offsetDays: number): string {
   const date = new Date();
