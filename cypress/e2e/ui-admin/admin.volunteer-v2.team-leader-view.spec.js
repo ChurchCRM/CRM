@@ -173,7 +173,7 @@ describe("Volunteer v2 — the team-only ministry view (#10530)", () => {
 
         cy.url().should("not.include", "access-denied");
         cy.get(".page-title").should("contain.text", MINISTRY_NAME);
-        cy.contains(`Your team: ${TEAM_LED}`).should("exist");
+        cy.contains(`Your teams: ${TEAM_LED}`).should("exist");
         cy.get("#volunteer-ministry-tabs .nav-link").should("have.length", 4);
         cy.get("#nav-item-positions").should("have.class", "active");
 
