@@ -96,6 +96,9 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                     <?php if (!empty($sFamRole)) : ?>
                     <li class="mb-1"><i class="fa-solid fa-users me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
                     <?php endif; ?>
+                    <?php if ($person->getGradeName() !== null) : ?>
+                    <li class="mb-1" id="personGrade" title="<?= InputUtils::escapeAttribute(gettext('Grade')) ?>"><i class="fa-solid fa-graduation-cap me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Grade') ?>: <?= InputUtils::escapeHTML($person->getGradeName()) ?></li>
+                    <?php endif; ?>
                     <?php if ($per_MembershipDate) : ?>
                     <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
                     <?php endif; ?>

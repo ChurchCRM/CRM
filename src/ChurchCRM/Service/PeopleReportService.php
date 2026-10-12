@@ -113,6 +113,16 @@ class PeopleReportService
                 'columns' => ['Day' => gettext('Day'), 'Date' => gettext('Date'), 'Name' => gettext('Name')],
                 'labelGrouping' => gettext('One label for each couple.'),
             ],
+            'people-by-grade' => [
+                'name' => gettext('People by Grade'),
+                'description' => gettext('People in a range of school grades, such as Kindergarten through 5th'),
+                'params' => [
+                    'gradeFrom' => ['type' => 'grade', 'label' => gettext('From Grade'), 'required' => true],
+                    'gradeTo' => ['type' => 'grade', 'label' => gettext('Through Grade'), 'help' => gettext('Leave empty for one grade')],
+                    'classification' => $classification,
+                ],
+                'columns' => ['Grade' => gettext('Grade'), 'Name' => gettext('Name')],
+            ],
             'birthdays-anniversaries' => [
                 'name' => gettext('Birthdays & Anniversaries'),
                 'description' => gettext('People with birthdays or wedding anniversaries in a particular month'),
@@ -212,6 +222,7 @@ class PeopleReportService
             'property' => $this->getPropertyOptions(),
             'opportunity' => $this->getVolunteerOpportunityOptions(),
             'events' => $this->getEventOptions(),
+            'grade' => GradeService::names(),
             default => [],
         };
     }
@@ -281,6 +292,7 @@ class PeopleReportService
             'missing-people' => $this->missingPeople($values['events'], $classifications),
             'wedding-anniversaries' => $this->weddingAnniversaries((int) $values['month'], $classifications),
             'birthdays-anniversaries' => $this->birthdaysAndAnniversaries((int) $values['month'], $classifications),
+            'people-by-grade' => $this->peopleByGrade((int) $values['gradeFrom'], $values['gradeTo'], $classifications),
             default => [],
         };
     }
@@ -352,6 +364,32 @@ class PeopleReportService
         }
 
         return $rows;
+    }
+
+    /**
+     * Everyone living whose grade lies between two grades in list order, either way round.
+     */
+    private function peopleByGrade(int $fromId, ?int $toId, array $classifications): array
+    {
+        $names = GradeService::names();
+        $gradeIds = array_keys($names);
+        $from = array_search($fromId, $gradeIds, true);
+        $to = array_search($toId ?? $fromId, $gradeIds, true);
+        if ($from === false || $to === false) {
+            return [];
+        }
+        $inRange = array_slice($gradeIds, min($from, $to), abs($to - $from) + 1);
+        $position = array_flip($gradeIds);
+
+        $query = PersonQuery::create()
+            ->filterByGradeId($inRange, Criteria::IN)
+            ->filterByDateDeceased(null, Criteria::ISNULL)
+            ->orderByLastName()
+            ->orderByFirstName();
+        $people = iterator_to_array($this->applyClassification($query, $classifications)->find());
+        usort($people, static fn (Person $a, Person $b): int => $position[$a->getGradeId()] <=> $position[$b->getGradeId()]);
+
+        return array_map(fn (Person $person): array => $this->row($person, ['Grade' => $names[$person->getGradeId()]]), $people);
     }
 
     private function birthdays(int $month, array $classifications): array

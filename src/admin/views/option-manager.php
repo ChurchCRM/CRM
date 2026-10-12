@@ -6,6 +6,36 @@ use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
+<?php if ($mode === 'grades'): ?>
+<div class="card mb-4" id="gradeNamesCard">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="fa-solid fa-earth-americas me-2"></i>
+            <?= gettext('Grade Names') ?>
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="row g-2 align-items-end">
+            <div class="col-md-6">
+                <label for="gradePreset" class="form-label"><?= gettext('Country') ?></label>
+                <select id="gradePreset" class="form-select">
+                    <?php foreach ($gradePresets as $presetKey => $presetName): ?>
+                    <option value="<?= InputUtils::escapeAttribute($presetKey) ?>"<?= $presetKey === $currentGradePreset ? ' selected' : '' ?>><?= InputUtils::escapeHTML($presetName) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-primary" id="applyGradePreset">
+                    <i class="fa-solid fa-check me-1"></i><?= gettext('Apply') ?>
+                </button>
+            </div>
+        </div>
+        <div class="form-hint mt-2"><?= gettext('Renames the grades to the names used in that country. People keep their grade, and grades you added yourself stay.') ?></div>
+    </div>
+</div>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-grade-names.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
+
 <!-- Add New Option -->
 <div class="card mb-4">
     <div class="card-status-top bg-success"></div>

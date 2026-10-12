@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -131,6 +132,7 @@ $dFriendDate = date('Y-m-d');
 $bIsDeceased = false;
 $dDateDeceased = '';
 $iClassification = 0;
+$iGrade = null;
 $iViewAgeFlag = 0;
 $sPhoneCountry = '';
 
@@ -221,6 +223,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $bIsDeceased = isset($_POST['IsDeceased']);
     $dDateDeceased = InputUtils::filterDate($_POST['DateDeceased'] ?? '');
     $iClassification = InputUtils::legacyFilterInput($_POST['Classification'], 'int');
+    $iGrade = GradeService::resolve($_POST['Grade'] ?? null);
     $iEnvelope = 0;
     if (array_key_exists('EnvID', $_POST)) {
         $iEnvelope = InputUtils::legacyFilterInput($_POST['EnvID'], 'int');
@@ -417,6 +420,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             ->setFamId($iFamily)
             ->setFmrId($iFamilyRole)
             ->setClsId($iClassification)
+            ->setGradeId($iGrade)
             ->setFlags($per_Flags)
             ->setFacebook($sFacebook)
             ->setTwitter($sTwitter)
@@ -537,6 +541,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bIsDeceased = !empty($per_DateDeceased);
         $dDateDeceased = $per_DateDeceased ?? '';
         $iClassification = (int) $per_cls_ID;
+        $iGrade = GradeService::resolve($per_grd_ID);
         $iViewAgeFlag = (int) $per_Flags;
 
         $sFacebook = $per_Facebook;
@@ -748,6 +753,15 @@ require_once __DIR__ . '/Include/Header.php';
                             }
                             echo '>' . $lst_OptionName . '&nbsp;';
                         } ?>
+                    </select>
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-md-3">
+                    <label for="Grade"><?= gettext('Grade') ?>:</label>
+                    <select name="Grade" id="Grade" class="form-select">
+                        <option value=""><?= gettext('Unassigned') ?></option>
+                        <?php foreach (GradeService::names() as $gradeId => $gradeName) { ?>
+                            <option value="<?= $gradeId ?>"<?= $iGrade === $gradeId ? ' selected' : '' ?>><?= InputUtils::escapeHTML($gradeName) ?></option>
+                        <?php } ?>
                     </select>
                 </div>
             </div>

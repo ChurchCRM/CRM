@@ -32,6 +32,7 @@ describe(
             "BareYrTest",
             "CountryTest",
             "ClsRoleTest",
+            "GradeImportTest",
         ];
 
         after(() => {
@@ -383,6 +384,24 @@ describe(
                         expect(person.FmrId, `FmrId for person ${personId}`).to.be.greaterThan(0);
                     });
                 });
+            });
+        });
+
+        it("Verify CSV Import maps a Grade column by grade name (#10189)", () => {
+            cy.visit("admin/import/csv");
+            cy.get("#csvFile").selectFile("cypress/fixtures/test_import_grade.csv", { force: true });
+            cy.get("#csv-import-form").submit();
+            cy.get("#mapping-card").should("be.visible");
+            cy.get('#mapping-tbody select.mapping-select[data-header="Grade"]').should("have.value", "Grade");
+            cy.get("#execute-import").click();
+            cy.get("#summary-card").should("be.visible");
+
+            cy.dbQuery(
+                "SELECT per_FirstName AS firstName, per_grd_ID AS grade FROM person_per WHERE per_LastName = 'GradeImportTest' ORDER BY per_ID DESC LIMIT 2",
+            ).then((result) => {
+                const grades = Object.fromEntries(result.rows.map((row) => [row.firstName, row.grade]));
+                expect(grades.Gary).to.eq(8);
+                expect(grades.Gwen).to.be.null;
             });
         });
 

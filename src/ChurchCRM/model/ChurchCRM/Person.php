@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\GeoUtils;
@@ -32,6 +33,7 @@ class Person extends BasePerson implements PhotoInterface
 {
     public const SELF_REGISTER = -1;
     public const SELF_VERIFY = -2;
+    public const SCHEDULED_TASK = -3;
     private ?Photo $photo = null;
     private bool $skipPostUpdateNote = false;
 
@@ -154,6 +156,11 @@ class Person extends BasePerson implements PhotoInterface
         }
 
         return $classification;
+    }
+
+    public function getGradeName(): ?string
+    {
+        return GradeService::nameOf($this->getGradeId());
     }
 
     public function getClassificationName()

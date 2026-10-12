@@ -265,6 +265,7 @@ if ($bCanManageGroups) {
                         <thead>
                             <tr>
                                 <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('Grade') ?></th>
                                 <th><?= gettext('Age') ?></th>
                                 <th><?= gettext('Mobile') ?></th>
                                 <th><?= gettext('Email') ?></th>
@@ -293,6 +294,7 @@ if ($bCanManageGroups) {
                                         </a>
                                     </div>
                                 </td>
+                                <td><?= InputUtils::escapeHTML($child['grade'] ?? '') ?></td>
                                 <td><?= $hideAge ? '—' : InputUtils::escapeHTML($age) ?></td>
                                 <td>
                                     <?php if ($child['mobilePhone']): ?>

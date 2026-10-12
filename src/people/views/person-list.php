@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PersonDeleteGuard;
 
@@ -107,6 +108,10 @@ foreach ($ListItem as $element) {
 }
 
 // Get person group list
+$GradeList = [['id' => 0, 'name' => gettext('Unassigned')]];
+foreach (GradeService::names() as $gradeId => $gradeName) {
+    $GradeList[] = ['id' => $gradeId, 'name' => $gradeName];
+}
 $ListItem = GroupQuery::create()->find();
 $GroupList = [];
 $GroupList[] ="Unassigned";
@@ -128,6 +133,7 @@ $personListColumns = [
     (object) ['name' => 'Classification', 'displayFunction' => 'getClassificationName', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
     (object) ['name' => 'Gender', 'displayFunction' => 'getGenderName', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
     (object) ['name' => 'Role', 'displayFunction' => 'getFamilyRoleName', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => 'Grade', 'displayFunction' => 'getGradeName', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
     (object) ['name' => 'Birth Date', 'displayFunction' => 'getFormattedBirthDate', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
     (object) ['name' => 'Address', 'displayFunction' => 'getAddress', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
     (object) ['name' => 'Properties', 'displayFunction' => 'getPropertiesString', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
@@ -253,6 +259,12 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     </select>
                 </div>
             </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="mb-0">
+                    <label class="form-label"><?= gettext('Grade') ?></label>
+                    <select class="form-select filter-Grade" multiple="multiple"></select>
+                </div>
+            </div>
         </div>
         <div class="mt-3">
             <button id="ClearFilter" type="button" class="btn btn-secondary w-100">
@@ -282,6 +294,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         'Classification' => gettext('Classification'),
                         'Gender' => gettext('Gender'),
                         'Role' => gettext('Role'),
+                        'Grade' => gettext('Grade'),
                         'Birth Date' => gettext('Birth Date'),
                         'Address' => gettext('Address'),
                         'Properties' => gettext('Properties'),
@@ -641,6 +654,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     'Classification' => gettext('Classification'),
                     'Gender' => gettext('Gender'),
                     'Role' => gettext('Role'),
+                    'Grade' => gettext('Grade'),
                     'Birth Date' => gettext('Birth Date'),
                     'Address' => gettext('Address'),
                     'Properties' => gettext('Properties'),
@@ -689,6 +703,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             { sel: '.filter-Gender', colName: 'Gender', regex: true },
             { sel: '.filter-Classification', colName: 'Classification', regex: true },
             { sel: '.filter-Role', colName: 'Role', regex: true },
+            { sel: '.filter-Grade', colName: 'Grade', regex: true },
             { sel: '.filter-Properties', colName: 'Properties', regex: false },
             { sel: '.filter-Custom', colName: 'Custom', regex: false },
             { sel: '.filter-FamilyStatus', colName: 'Family Status', regex: true },
@@ -741,6 +756,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             'Gender': <?php echo $columnIdMap['Gender'] ?>,
             'Classification': <?php echo $columnIdMap['Classification'] ?>,
             'Role': <?php echo $columnIdMap['Role'] ?>,
+            'Grade': <?php echo $columnIdMap['Grade'] ?>,
             'Properties': <?php echo $columnIdMap['Properties'] ?>,
             'Custom': <?php echo $columnIdMap['Custom'] ?>,
             'Family Status': <?php echo $columnIdMap['Family Status'] ?>,
@@ -790,9 +806,11 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             CustomList: <?= InputUtils::jsonEncodeForScript($CustomList) ?>,
             GroupList: <?= InputUtils::jsonEncodeForScript($GroupList) ?>,
             ClassificationList: <?= InputUtils::jsonEncodeForScript($ClassificationList) ?>,
+            GradeList: <?= InputUtils::jsonEncodeForScript($GradeList) ?>,
             FamilyStatusList: <?= InputUtils::jsonEncodeForScript([gettext('Active'), gettext('Inactive')]) ?>,
             DeceasedStatusList: <?= InputUtils::jsonEncodeForScript([gettext('Living'), gettext('Deceased')]) ?>,
             filterByGender: <?= InputUtils::jsonEncodeForScript($filterByGender) ?>,
+            filterByGradeId: <?= InputUtils::jsonEncodeForScript($filterByGradeId) ?>,
             filterByClsId: <?= InputUtils::jsonEncodeForScript($filterByClsOptionId) ?>,
             filterByFmrId: <?= InputUtils::jsonEncodeForScript($filterByFmrOptionId) ?>,
             familyActiveStatus: <?= InputUtils::jsonEncodeForScript($familyActiveStatus) ?>
@@ -972,6 +990,10 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             if (shouldTriggerClassificationFilter && tomSelectInstances['Classification']) {
                 // filterByClsOptionId comes from the route and is an integer
                 tomSelectInstances['Classification'].ts.setValue(String(serverVars.filterByClsId), false);
+            }
+
+            if (serverVars.filterByGradeId !== '' && tomSelectInstances['Grade']) {
+                tomSelectInstances['Grade'].ts.setValue(String(serverVars.filterByGradeId), false);
             }
 
             // Set Role filter if specified

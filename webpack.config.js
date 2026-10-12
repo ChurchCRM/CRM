@@ -108,6 +108,7 @@ module.exports = {
     kiosk: './webpack/kiosk',
     'kiosk-settings': './webpack/kiosk-settings',
     'people-settings': './webpack/people-settings',
+    'admin-grade-names': './webpack/admin-grade-names',
     'people-list': './webpack/people/person-list',
     'people-family-list': './webpack/people/family-list',
     'people-family-view': './webpack/people/family-view',

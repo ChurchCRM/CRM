@@ -126,6 +126,10 @@ class SystemService
             BirthdayEmailService::run();
         });
 
+        self::runTimerJob('GradePromotionService', static function (): void {
+            GradePromotionService::run();
+        });
+
         // Volunteer Management v2 (#9710, design §3.6). There is no scheduler in
         // ChurchCRM, so these five ARE the scheduler for the volunteer module:
         // schedules are filled to the scheduling horizon once a day (D31),

@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\GradeService;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
@@ -180,6 +181,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $aBirthMonths[$iCount] = InputUtils::legacyFilterInput($_POST["BirthMonth$iCount"], 'int');
         $aBirthYears[$iCount] = InputUtils::legacyFilterInput($_POST["BirthYear$iCount"], 'int');
         $aClassification[$iCount] = InputUtils::legacyFilterInput($_POST["Classification$iCount"], 'int');
+        $aGrades[$iCount] = GradeService::resolve($_POST["Grade$iCount"] ?? null);
         $aPersonIDs[$iCount] = InputUtils::legacyFilterInput($_POST["PersonID$iCount"], 'int');
         $aUpdateBirthYear[$iCount] = InputUtils::legacyFilterInput($_POST['UpdateBirthYear'], 'int');
 
@@ -359,7 +361,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         ->setBirthDay($aBirthDays[$iCount])
                         ->setBirthMonth($aBirthMonths[$iCount])
                         ->setBirthYear($aBirthYears[$iCount])
-                        ->setClsId($aClassification[$iCount]);
+                        ->setClsId($aClassification[$iCount])
+                        ->setGradeId($aGrades[$iCount]);
                     $person->save();
                     $person->reload();
                     $personCustom = new PersonCustom();
@@ -391,6 +394,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         ->setBirthMonth($aBirthMonths[$iCount])
                         ->setBirthDay($aBirthDays[$iCount])
                         ->setClsId($aClassification[$iCount])
+                        ->setGradeId($aGrades[$iCount])
                         ->setDateLastEdited(date('YmdHis'))
                         ->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
                     if ($aUpdateBirthYear[$iCount] & 1) {
@@ -502,6 +506,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $aBirthDays[$iCount] = (int)$per_BirthDay;
             $aBirthYears[$iCount] = $per_BirthYear > 0 ? (int)$per_BirthYear : '';
             $aClassification[$iCount] = (int)$per_cls_ID;
+            $aGrades[$iCount] = GradeService::resolve($per_grd_ID);
             $aPersonIDs[$iCount] = (int)$per_ID;
             $aPerFlag[$iCount] = $per_Flags;
         }
@@ -557,6 +562,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $aBirthMonths[$iCount] = 0;
             $aBirthYears[$iCount] = '';
             $aClassification[$iCount] = 0;
+            $aGrades[$iCount] = null;
             $aPersonIDs[$iCount] = 0;
             $aUpdateBirthYear[$iCount] = 0;
         }
@@ -924,6 +930,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                 <th><?= gettext('Birth Day') ?></th>
                                                 <th><?= gettext('Birth Year') ?></th>
                                                 <th><?= gettext('Classification') ?></th>
+                                                <th><?= gettext('Grade') ?></th>
                                             </tr>
                                         </thead>
                                         <tbody id="familyMembersTbody">
@@ -1041,6 +1048,14 @@ require_once __DIR__ . '/Include/Header.php';
                                                         ?>
                                                     </select>
                                                 </td>
+                                                <td>
+                                                    <select name="Grade<?= $iCount ?>" class="form-select form-select-sm">
+                                                        <option value=""><?= gettext('Unassigned') ?></option>
+                                                        <?php foreach (GradeService::names() as $gradeId => $gradeName) { ?>
+                                                            <option value="<?= $gradeId ?>"<?= ($aGrades[$iCount] ?? null) === $gradeId ? ' selected' : '' ?>><?= InputUtils::escapeHTML($gradeName) ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                         </tbody>
@@ -1108,6 +1123,7 @@ require_once __DIR__ . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.familyRoles = <?= InputUtils::jsonEncodeForScript($familyRolesJS) ?>;
     window.CRM.classifications = <?= InputUtils::jsonEncodeForScript($classificationsJS) ?>;
+    window.CRM.grades = <?= InputUtils::jsonEncodeForScript(array_map(fn ($id, $name) => ['id' => $id, 'name' => $name], array_keys(GradeService::names()), GradeService::names())) ?>;
     window.CRM.customPhoneFields = <?= InputUtils::jsonEncodeForScript($customPhoneFields ?? []) ?>;
     window.CRM.initialFamilyMemberCount = <?= $iFamilyMemberRows ?>;
     window.CRM.i18n = {

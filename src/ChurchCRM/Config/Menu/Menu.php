@@ -130,6 +130,7 @@ class Menu
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Classifications'), 'admin/system/options?mode=classes', $isAdmin, 'fa-tags'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Properties'), 'PropertyList.php?Type=p', $isMenuOptions, 'fa-person-half-dress'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Grades'), 'admin/system/options?mode=grades', $isAdmin, 'fa-graduation-cap'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin && $isVolunteerV1Enabled, 'fa-handshake-angle'));
     
             $peopleMenu->addSubMenu($adminMenu);
