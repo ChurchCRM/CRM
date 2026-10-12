@@ -13,46 +13,48 @@ Source-of-truth order:
 4. Released tags/notes to establish what shipped.
 5. Issues, proposal/RFC threads and discussions for **planned**, not asserted shipped, behavior.
 
-The canonical feature requirement lives in its GitHub issue; the reviewed technical decision lives in the linked RFC PR. The [RFC portfolio #10550](https://github.com/ChurchCRM/CRM/issues/10550) is only an **index**, not a replacement source of truth. A user-facing feedback page or GitHub reaction is an **expression of user demand**, not an implementation specification.
+The canonical feature requirement lives in its GitHub issue; the reviewed technical decision lives in the linked RFC PR. The [RFC portfolio #10550](https://github.com/ChurchCRM/CRM/issues/10550) is only an **index**, not a replacement source of truth. A curated Feature Proposal Discussion comment or reaction is an **expression of user demand**, not an implementation specification.
 
 George approves significant product/architecture decisions, sensitive security/privacy policy, spending, publication, release scope, merges, and removal. Contributors can offer designs, feedback, code, translations and tests.
 
-## Two kinds of proposal: church use case and technical RFC
+## Two linked RFC artifacts: use case and technical design
 
-**Church users are not expected to understand pull requests, GitHub branches, database schemas, or technical RFCs.** Distinguish the question **“What should ChurchCRM help my church do?”** from **“How should ChurchCRM implement this safely?”**
+**Church staff, pastors, treasurers and volunteers should never need to understand a pull request to have a voice.** We distinguish a **feature/use-case proposal** from a **deep technical RFC**.
 
-| Layer | Audience | What belongs there | Location and feedback |
-| --- | --- | --- | --- |
-| **Feature / use-case proposal** | Church administrators, pastors, volunteers and everyday operators | Short human-language problem, who benefits, examples of current pain, what success looks like, optional screenshots, questions about real workflows | A plain-language **public feature page** on ChurchCRM.io (proposed, not live), linking to a canonical GitHub **feature issue** for durable discussion and 👍 reactions where GitHub login is acceptable; optionally link the existing ChurchCRM feedback form for users without a GitHub account. **Do not require PR reviews.** |
-| **Technical/design RFC** | Maintainers, developers, security/privacy/accessibility reviewers | Current code and released behavior, architectural alternatives, tradeoffs, schema/migrations, auth, data protection, i18n, testing, rollout and a recorded decision | Markdown in `docs/proposals/` with a **draft pull request** for line-by-line technical review, linked from the parent feature issue |
-| **Implementation issues** | Contributors and maintainers | Small separately testable tasks, acceptance criteria, dependencies, risks, release scope and PRs | GitHub Issues and pull requests; milestone only after scheduling |
-| **Portfolio** | Maintainers, interested community | Where the feature proposal, RFC, feedback, and children stand; no duplicate design text | [#10550](https://github.com/ChurchCRM/CRM/issues/10550); optional GitHub Project later |
+| Layer | Audience and purpose | Source, review, access |
+| --- | --- | --- |
+| **Public feature/use-case proposal** | Explain in ordinary church language the problem, who benefits, actual ministry workflows, expected outcome and a few focused feedback questions. No schema jargon, architectural debate or release promise. | **GitHub Discussions**, category **Feature Proposals** configured in **Announcements format**: people with *maintain/admin* access create topics; any signed-in GitHub user can comment and react. The maintainers curate one post per user-facing feature and update its status. |
+| **Deep technical RFC** | Review architecture, code/release baseline, security, privacy, data model/migrations, permissions, alternatives, non-goals, accessibility, i18n, tests and rollout. | Markdown under `docs/proposals/`, reviewed in a **draft GitHub pull request**. Developers and interested reviewers provide line-level feedback; George approves architecture. |
+| **Implementation** | Contributor-sized work, acceptance tests and ownership | GitHub Issues and PRs, with version milestones **only when scheduled** |
+| **Portfolio** | Track feedback, RFC status, decision, readiness and implementation | [#10550](https://github.com/ChurchCRM/CRM/issues/10550) is the index, never the authoritative feature or design text |
 
-### How one proposal moves through the system
+### Moderated public Discussions model
 
-1. **Listen:** Receive a simple church workflow request through the website/feedback form, existing GitHub issue or Discord; triage duplicates and summarize the problem on **one canonical feature issue**.
-2. **Explain it publicly:** After maintainer review, prepare a short, accessible, mobile-friendly feature/use-case page. It is explanatory content, **not** a technical spec, and makes no promise to ship. Website source is version controlled in `ChurchCRM/ChurchCRM.io`, not the CRM Wiki.
-3. **Gather reactions and comments:** If GitHub Discussions remains **disabled**, do **not** link to it. Use reactions/comments on the existing feature issue for GitHub users, and the **existing feedback form** for people who do not use GitHub. The form's privacy, ownership and triage must be validated before routing a campaign to it. Do not build a new polling application.
-4. **Design it:** Only when there are meaningful unanswered decisions, write a technical RFC and review it in a draft PR. Link RFC and feature issue **both ways**. Technical approval does not approve the priority or release.
-5. **Prioritize it:** Maintainer weighs church feedback alongside security, accessibility, effort, global relevance and volunteers' capacity. The public page accurately shows whether the idea is under consideration, design accepted but unscheduled, seeking contributors, planned, shipped or deferred.
-6. **Build it:** Split accepted work into scoped issues; assign implementation milestones only when explicitly planned. Close with verified release and documentation links.
+- Discussions is **currently disabled per the maintainer**. Enabling the feature on `ChurchCRM/CRM` requires an explicit maintainer action. **Never link a church user to a Discussion until it exists and is tested.**
+- Set up a category named **Feature Proposals** with format **Announcement** (not an ordinary open-ended category). GitHub restricts **creation** in that category to maintainers/admins but allows signed-in community members to comment and reply. Do **not** click GitHub's *Lock discussion* action as a publishing technique: that blocks regular comments.
+- Use only this designated category for the publicly curated feature proposals. Repository-wide Discussions may still permit users to create discussions in **other enabled categories**; the Announcements restriction is **category-scoped**, not necessarily a repository-wide prohibition.
+- Each post is drafted/edited by an authorized maintainer, links to the canonical feature issue and technical RFC if one exists, and clearly states **proposed / design approved but unscheduled / seeking contributor / planned / shipped / deferred**.
+- Only a **maintainer-authorized proposal** should be promoted to the public Feature Proposals category; community-submitted ideas can arrive through the existing feedback intake or GitHub Issues/Discord and be triaged first.
+- Comments and reactions are participation signals, not a binding priority vote. Meaningful church workflows, accessibility, international needs, security, feasibility and contributor availability also count. Moderation follows ChurchCRM's Code of Conduct.
+- GitHub account sign-in is required to participate in GitHub Discussions. That friction is a conscious tradeoff for reusing GitHub; a plain-language notification and website can link directly to the discussion, but do not falsely promise account-free voting.
+- **No additional voting service, GitHub Wiki RFC copy, custom voting database, embedded voting widget, or GitHub Project board is required.**
 
-### Example — giving by person versus family
+### Example — person versus family giving
 
-**Feature/use-case description, for church users:** “When two adults in a family give separately, our treasurer needs to record each gift under the right person while still seeing the family total. Would this help your church, and how do you prepare year-end statements?” Link [#9313](https://github.com/ChurchCRM/CRM/issues/9313) for feedback.
+**Public Feature Proposal** (Discussion): “When a husband and wife donate separately, would your church need to record gifts under each person while still seeing a combined household total? How should year-end giving statements work?” Link [#9313](https://github.com/ChurchCRM/CRM/issues/9313). Invite treasurers to describe their church workflow. **This is separate from online payment gateways** ([#10033](https://github.com/ChurchCRM/CRM/issues/10033)).
 
-**Technical RFC, for developers:** Should donations have an optional person ID? How are migrations, spouse privacy, account permissions, reports, statement attribution and backward compatibility handled? Include alternatives, security testing and data migration. **This is independent from online payment gateways** ([#10033](https://github.com/ChurchCRM/CRM/issues/10033)).
+**Technical RFC** (draft PR): Determine optional person attribution, migration, spouse privacy, role-based access, reporting and tax-statement behavior, backward compatibility and audit tests. Link back to the Feature Proposal and issue.
 
-**Implementer issues:** After approval, isolate migration, entry UI, reports/statement behavior, role permissions and tests; do not open or milestone implementation work merely because churches upvoted.
+**Implementation issues:** After technical approval, split into independently testable work. Do not infer an implementation milestone from a popular Discussion.
 
-### Public feedback availability and boundaries
+### Cross-linking and lifecycle
 
-- **GitHub Discussions is currently disabled according to the maintainer.** Enabling it is a separate explicit decision; never state it is live or send churches to a dead Discussions URL.
-- GitHub **Issues comments/reactions require GitHub login**. A public page without a usable feedback path is not a voting platform. Validate an existing low-friction form path rather than promising anonymous votes.
-- Use plain wording: **“Tell us how your church works”** and **“I'd use this”**, not “Approve RFC”, “Review PR”, “Upvote architecture”, or “Funded roadmap”.
-- A feature page must not include sensitive church/member details, unaudited claims about shipped features, unique tracking IDs or guaranteed timelines.
-- No automatic third-party requests when a user only opens ChurchCRM; any optional in-app notice links to a reviewed public ChurchCRM page.
-- **No new provider, dedicated voting tool, GitHub Project board, or Discussions re-enablement is required by this proposal.** Revisit only if evidence shows existing feedback paths are insufficient.
+1. Intake a church user problem; search shipped software and existing issues, merge duplicates, and keep one canonical feature issue.
+2. Prepare a human-readable Feature Proposal and, after maintainer approval, publish it as an Announcement-format Discussion. The Discussion is the **public comment/reaction destination**.
+3. For consequential unresolved designs, prepare a technical RFC in a draft PR. Link the Discussion, RFC, feature issue and portfolio **both ways**.
+4. Record decisions in the technical RFC and its linked GitHub issue; update the public Discussion with a plain-language outcome. A design can remain approved but unscheduled indefinitely.
+5. When George explicitly schedules implementation, create/bind scoped issues with tests and assign milestones to those tasks, not to the feature Discussion or speculative RFC.
+6. After verified release, update the public Discussion with release link, documentation and the final outcome. Do not manufacture an “in progress” or “shipped” status.
 
 ## Intake: decide what type of work this is
 
@@ -87,7 +89,7 @@ George approves significant product/architecture decisions, sensitive security/p
 | **Discovery** | Church use case, current behavior, alternatives, missing facts | No |
 | **RFC / design review** | Goal, affected workflows, options, tradeoffs, security/privacy/accessibility, non-goals, code sources, open questions, requested feedback, reviewers | No |
 | **Design accepted, awaiting prioritization** | Explicit maintainer decision and date, accepted choices, rejected alternatives, unresolved risks | **No** |
-| **Community feedback** (optional, parallel to review or after design acceptance when safe) | One church-facing feature page and feedback path per **user-facing parent outcome**, concise question, clear status; community demand and comments summarized back in GitHub | No |
+| **Community feedback** (optional, parallel to review or after design acceptance when safe) | One maintainer-authored **Feature Proposal Discussion** per **user-facing parent outcome**, concise question, clear status; community demand and comments summarized back in GitHub | No |
 | **Seeking contributor** | Bounded children, dependencies, acceptance tests and handoff; owners may volunteer | Not by default |
 | **Planned** | Explicit maintainer scheduling decision, target version/window and owned implementation tasks | **Yes, only planned implementation issues** |
 | **In progress** | Assigned PRs and validated test status | As planned |
@@ -107,7 +109,7 @@ In the description or a compact top section:
 - **Type:** normal issue / epic / RFC / voting candidate (can overlap where appropriate).
 - **Design status:** discovery / in review / accepted-unscheduled / deferred / declined.
 - **Decision owner and date**, reviewer questions, alternatives and supporting evidence.
-- **Links:** RFC, portfolio #10550, parent/child implementation issues, docs, and external feedback entry if approved.
+- **Links:** RFC, portfolio #10550, parent/child implementation issues, docs, and Feature Proposal Discussion URL if approved.
 - **Scope, non-goals, dependencies, risks, acceptance criteria, tests, security/privacy/i18n/mobile implications.**
 - **Implementation status and milestone only when truly scheduled.**
 - **Last verified date** and links to current code or release; do not turn memory or historical comments into product claims.
@@ -125,13 +127,13 @@ Use [#10550](https://github.com/ChurchCRM/CRM/issues/10550) as the **index**. On
 
 A GitHub Project with status/owner/feedback/contributor fields may later mirror this index if George approves. The issue-based process works without new project administration.
 
-## Public feedback and privacy: proposed policy
+## Public feature Discussions and privacy: proposed policy
 
 **Nothing in this section authorizes a live public campaign or creates an external account.** See [RFC #10543](https://github.com/ChurchCRM/CRM/issues/10543).
 
-- **Reuse existing channels first:** ChurchCRM.io for readable feature pages; GitHub feature-issue comments/reactions for GitHub account holders; existing church-feedback form for nontechnical users after privacy/ownership verification. GitHub Discussions is disabled according to the maintainer. Do not select Fider or another platform by default.
+- **Use one native platform:** after a maintainer enables GitHub Discussions, curate Feature Proposals in an **Announcements-format** category (maintainers create, signed-in community comments/reacts). Until enabled, do not link publicly. Other intake channels may feed the backlog, but they are not competing ballots.
 - Do **not** build a ChurchCRM voting database, host a new service, or embed provider scripts, cookies, trackers, pixels or iframes in ChurchCRM.
-- Each public feature entry describes one user problem, who benefits, realistic constraints and links the canonical GitHub issue. The technical decision stays on GitHub.
+- Each maintainer-authored Discussion describes one user problem, who benefits, realistic constraints and links the canonical GitHub issue. The technical decision stays on GitHub.
 - A vote is a demand signal, **not** consent to a design, a delivery promise, an implementation assignment or a guaranteed release date.
 - No church, user, session, installation, database, email, domain-specific or telemetry identifiers go in outbound feedback links. Generic campaign identifiers must be identical for all installations; explain that clicking external links necessarily exposes network/browser information to the provider.
 - Public votes must never override fixes for vulnerabilities, data loss, privacy, accessibility, reliability, upgrades or required maintenance.
@@ -166,7 +168,7 @@ Roles: maintainers own technical truth and approval; coding agents implement app
 
 - [ ] Proposed policy, states and the distinct RFC/epic/vote definitions approved.
 - [ ] Current repository and released behavior verified for initial proposals; no duplicate user-facing votes.
-- [ ] External voting platform, privacy notice, identity/abuse/moderation and portability approved.
+- [ ] Public Discussions platform, privacy notice, identity/abuse/moderation and portability approved.
 - [ ] No in-app external tracking or installation/person identifiers; remote links validated.
 - [ ] Notification expiry/dismiss/frequency/locale/version/security tests approved.
 - [ ] User-facing issue quality, i18n, accessibility, mobile and contributor handoff checked.
