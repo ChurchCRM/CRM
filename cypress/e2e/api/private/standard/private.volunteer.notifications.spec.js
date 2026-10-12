@@ -1764,6 +1764,7 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             setConfig(BATCH_TIME_URL, "07:00");
             setConfig(BATCH_DATE_URL, "");
             restoreConfig(SMTP_HOST_URL, originalSmtpHost);
+            dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [ESPRESSO_NAME, posEspresso]);
             api(ADMIN_KEY, "DELETE", `${VOLUNTEER_URL}/occurrences/${occurrenceOne}/requirements`);
             api(ADMIN_KEY, "DELETE", `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}/requirements`);
             dbOk("DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?", [PERSON_PLAIN]);
@@ -1936,6 +1937,26 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
                 });
             });
             singleAlertsTo(COORDINATOR_EMAIL).then((mail) => expect(mail).to.have.length(0));
+        });
+
+        it("escapes the position name in the daily email", function () {
+            requireMailpit(this);
+            dbOk("UPDATE volunteer_position_vpos SET vpos_Name = ? WHERE vpos_ID = ?", [
+                `${FIXTURE_PREFIX} <b>Espresso</b>`,
+                posEspresso,
+            ]);
+            leadShortOfOccurrenceTwo();
+            batchDue();
+            runJobsNow();
+
+            summariesTo(COORDINATOR_EMAIL).then((mail) => {
+                expect(mail).to.have.length(1);
+                body(mail[0]).then((message) => {
+                    const html = message.HTML || "";
+                    expect(html).to.contain("&lt;b&gt;Espresso&lt;/b&gt;");
+                    expect(html).to.not.contain("<b>Espresso</b>");
+                });
+            });
         });
 
         it("alerts a gap that opens after the batch on its own, and never one the batch listed", () => {
