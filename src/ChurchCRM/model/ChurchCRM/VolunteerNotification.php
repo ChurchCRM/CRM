@@ -33,6 +33,11 @@ class VolunteerNotification extends BaseVolunteerNotification
      * `vntf_Context` carries what the message needs.
      */
     public const TYPE_HELP_OFFER = 'help_offer';
+    /**
+     * #10531: a team leader put somebody in the pool of their team's ministry. Like
+     * help_offer it hangs off the ministry, so vntf_Context carries the facts.
+     */
+    public const TYPE_POOL_ADD = 'pool_add';
 
     /**
      * Every legal value of vntf_Type.
@@ -50,6 +55,7 @@ class VolunteerNotification extends BaseVolunteerNotification
             self::TYPE_SWAP_PROPOSED,
             self::TYPE_SWAP_RESOLVED,
             self::TYPE_HELP_OFFER,
+            self::TYPE_POOL_ADD,
         ];
     }
 

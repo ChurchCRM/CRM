@@ -332,7 +332,7 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
                 "#volunteer-teams-card",
                 "#volunteer-scope-panel",
                 "#volunteer-help-wanted",
-                "#qualification-add-person",
+                "#qualification-cart-btn",
                 "#qualification-team-filter",
                 "#occurrence-team-filter",
                 "#team-add-btn",

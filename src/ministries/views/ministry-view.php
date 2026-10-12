@@ -354,16 +354,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           the grid below are the second step, which is why neither dialog carries a
           position selector any more.
         -->
-<?php if (!$bTeamView): ?>
         <div class="col-12 col-md-4 ms-md-auto d-flex gap-2 justify-content-md-end">
           <button type="button" class="btn btn-outline-primary" id="qualification-add-person">
             <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Volunteer') ?>
           </button>
+<?php if (!$bTeamView): ?>
           <button type="button" class="btn btn-outline-primary" id="qualification-cart-btn">
             <i class="fa-solid fa-cart-shopping me-1"></i><?= gettext('Add from Cart') ?>
           </button>
-        </div>
 <?php endif; ?>
+        </div>
       </div>
 
       <div class="volunteer-loading text-center py-4" id="volunteers-loading">
@@ -952,7 +952,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
-<?php if (!$bTeamView): ?>
 <!--
   Add one volunteer to this ministry (#9707, as amended).
 
@@ -974,11 +973,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
       </div>
       <div class="modal-body">
+<?php if ($bTeamView): ?>
+        <p class="text-body-secondary">
+          <?= gettext("Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.") ?>
+        </p>
+<?php endif; ?>
         <div class="mb-3">
           <label class="form-label" for="add-volunteer-person"><?= gettext('Person') ?></label>
           <select class="form-select person-search" id="add-volunteer-person"
                   data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
         </div>
+<?php if ($bTeamView): ?>
+        <!-- #10531: positions of the grid's team, ticked through the ordinary grant. -->
+        <div class="d-none" id="add-volunteer-positions-row">
+          <div class="form-label"><?= gettext('Qualify them for') ?></div>
+          <div id="add-volunteer-positions"></div>
+          <div class="form-text"><?= gettext('Optional. You can tick positions on the grid later too.') ?></div>
+        </div>
+<?php endif; ?>
         <div class="alert alert-danger d-none mt-3" role="alert" id="add-volunteer-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
         </div>
@@ -991,6 +1003,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<?php if (!$bTeamView): ?>
 <!--
   Add everyone in the cart (#9707, as amended). The Cart is the existing
   bulk-selection mechanism (P5); V2 adds a sink for it and no second selection UI.
@@ -1340,7 +1353,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php if ($bTeamView): ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 window.CRM = window.CRM || {};
-window.CRM.volunteerTeamView = <?= InputUtils::jsonEncodeForScript(['ministryId' => (int) $iMinistryId, 'teams' => $aTeams, 'sundaySchool' => $bSundaySchool]) ?>;
+window.CRM.volunteerTeamView = <?= InputUtils::jsonEncodeForScript(['ministryId' => (int) $iMinistryId, 'ministryName' => $sMinistryName, 'teams' => $aTeams, 'sundaySchool' => $bSundaySchool]) ?>;
 </script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-team-view.min.js') ?>"></script>
 <?php else: ?>

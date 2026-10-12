@@ -80,7 +80,8 @@ an admin page is not finished.
 - Contribution history, online giving, pledges, payment gateways and payment flows (P14, §5.7).
 - Per-event visibility flags (calendar-level only, P13).
 - Directory search across members (#8977 asks for it; it needs a privacy model that does not
-  exist — §5.6 sketches phase 2).
+  exist — §5.6 sketches phase 2). The team leader's Add Volunteer picker (#10531, §5.5) is not
+  that: it is a name-only search for one job, behind team-leader authority.
 - Personal-device check-in (#8978) — depends on the portal; separate epic.
 - Coordinator or manager tiers on a self-service login (P17 keeps them staff).
 - A theme editor or upload UI; themes are files on disk, uploaded by the administrator.
@@ -667,7 +668,7 @@ ministry page's Positions, Volunteers, Schedules and Occurrences tabs narrowed t
 rendered in the portal layout by `webpack/portal/teams.ts`, which reuses the volunteer API client
 and the components refactored out of `ministry.ts` into shared modules (qualification matrix,
 staffing needs, occurrence list). Not shown: Teams card, Ministry Coordinators, Help Wanted,
-Remove Volunteer, team delete/rename. Team leaders may create, edit and generate schedules for
+Add from Cart, Remove Volunteer, team delete/rename. Team leaders may create, edit and generate schedules for
 their own team (P17; the volunteer route gate on schedule creation becomes team-scoped). The
 occurrence page in the portal uses the occurrence components with the same authorization the admin
 occurrence page applies per occurrence.
@@ -709,6 +710,18 @@ DataTables and row-menu helpers), `positions-table.ts`, `qualification-matrix.ts
 `schedules-table.ts`, `occurrences-table.ts` — and take a context object rather than reading module
 state. Controls a caller does not want are omitted from ITS markup; every component looks its
 controls up by id and is inert when one is absent.
+
+**Add Volunteer (#10531).** The Volunteers tab offers a team leader **Add Volunteer**: an existing
+person, found with `GET /api/ministries/people/search?q=` — active people only (not deceased, not
+deactivated, not in a deactivated family), at least two characters, at most 20 results, and each
+result is id, name and family name and nothing else — joins the ministry's volunteer pool, optionally
+ticked for positions of this team, through `POST /api/ministries/teams/{teamId}/pool/{personId}`. The
+dialog says the ministry's coordinators are emailed and only a coordinator can take someone out; the
+added person is not emailed. The search runs behind the volunteer API's role gate, so a member login
+reaches it only while it leads a team. It does let such a member list names from the directory, twenty
+at a time — the product owner's accepted trade-off (2026-10-11), kept narrow by the fields and the cap.
+Add from Cart and Remove Volunteer stay off this page. The admin ministry page's team-only view
+(#10530) offers the same dialog.
 
 Because the portal loads no part of the admin shell, `window.CRM.escapeHtml`, `escapeAttribute`
 and `buildActionMenu` — `CRMJSOM.js`'s, which those components use — are installed by

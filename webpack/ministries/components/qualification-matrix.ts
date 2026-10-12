@@ -16,8 +16,10 @@
  *
  * Controls a caller does not want are simply left out of ITS markup: every
  * `byId()` below returns null for an absent element and the wiring is inert. That
- * is how the portal hides "Add Volunteer", "Add from Cart" and "Remove Volunteer"
- * — all three are ministry-level acts the API refuses a team leader anyway (D5).
+ * is how the portal hides "Add from Cart" and "Remove Volunteer" — ministry-level
+ * acts the API refuses a team leader anyway (D5). A team leader's "Add Volunteer"
+ * (#10531) is the same dialog with `teamAdd`: its own person search and the grid
+ * team's positions to tick.
  */
 
 import { attachToModal } from "../../common/person-select";
@@ -26,6 +28,7 @@ import {
   grantQualification,
   notifyError,
   notifySuccess,
+  POOL_CANDIDATE_SEARCH_ENDPOINT,
   positionLabel,
   type QualificationMatrix,
   revokeQualification,
@@ -70,8 +73,17 @@ export interface QualificationMatrixOptions {
    * API authorizes independently (D5).
    */
   canRemoveVolunteer(): boolean;
-  /** Ministry-level pool writes; omitted by a caller whose markup has no such buttons. */
-  addPoolMember?(personId: number): Promise<{ added: boolean }>;
+  /** Pool writes; omitted by a caller whose markup has no such buttons. */
+  addPoolMember?(
+    personId: number,
+    positionIds: number[],
+    teamId: number | null,
+  ): Promise<{ added: boolean; qualified?: number[] }>;
+  /**
+   * #10531: a team leader's Add Volunteer — the picker searches the active people a
+   * team leader may add, and the dialog offers the grid team's positions to tick.
+   */
+  teamAdd?: boolean;
   addPoolFromCart?(): Promise<{ added: number; alreadyMembers: number }>;
   removeVolunteer?(personId: number): Promise<{ qualifications: number; assignments: number; defaults: number }>;
   /** What the "Remove {name} from …?" confirm names — the ministry. */
@@ -386,6 +398,25 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
     });
   }
 
+  /** #10531: the grid team's positions, unticked, for the Add Volunteer dialog. */
+  function renderAddPositions(): void {
+    const container = byId("add-volunteer-positions");
+    if (!container) {
+      return;
+    }
+
+    const positions = (matrix?.positions ?? []).filter((position: VolunteerPosition) => position.active);
+    container.innerHTML = positions
+      .map(
+        (position: VolunteerPosition) => `<label class="form-check">
+            <input class="form-check-input add-volunteer-position" type="checkbox" value="${position.id}">
+            <span class="form-check-label">${escapeHtml(position.name ?? "")}</span>
+          </label>`,
+      )
+      .join("");
+    show(byId("add-volunteer-positions-row"), positions.length > 0);
+  }
+
   function wire(): void {
     byId("qualification-filter")?.addEventListener("input", applyFilter);
 
@@ -406,7 +437,19 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
     // The shared person selector (CR1/#9819) rather than a hand-rolled TomSelect: it
     // owns the modal lifecycle, the body-mounted dropdown and the maxOptions fix.
     const personModal = byId("addVolunteerModal");
-    const personPicker = personModal ? attachToModal(personModal, "#add-volunteer-person") : null;
+    const candidateOption = (item: PersonSearchResult): PersonSearchResult => ({
+      objid: Number(item.id),
+      text: item.familyName
+        ? tText("{{name}} ({{family}} family)", { name: String(item.name ?? ""), family: String(item.familyName) })
+        : String(item.name ?? ""),
+    });
+    const personPicker = personModal
+      ? attachToModal(
+          personModal,
+          "#add-volunteer-person",
+          options.teamAdd ? { endpoint: POOL_CANDIDATE_SEARCH_ENDPOINT, mapResult: candidateOption } : {},
+        )
+      : null;
     // Every dialog that closes ITSELF on a successful save needs the guard: a local
     // API answers inside Bootstrap's 150 ms fade, and `Modal.hide()` during the
     // transition is accepted and thrown away, leaving the dialog open over a screen
@@ -423,6 +466,9 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
           "addVolunteerModalTitle",
           tText("Add Volunteer to {{ministry}}", { ministry: options.ministryName?.() ?? teamName() }),
         );
+        if (options.teamAdd) {
+          renderAddPositions();
+        }
         modal("addVolunteerModal")?.show();
       });
 
@@ -437,13 +483,22 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
         // Idempotent server-side, so "they were already here" is an ANSWER rather than
         // an error — and the grid is force-refreshed either way, because a coordinator
         // who has just named somebody expects to see them whichever answer came back.
-        addPoolMember(personId)
+        const positionIds = [
+          ...document.querySelectorAll<HTMLInputElement>("#add-volunteer-positions .add-volunteer-position:checked"),
+        ].map((box) => Number(box.value));
+
+        addPoolMember(personId, positionIds, teamId)
           .then((result) => {
             hideModal("addVolunteerModal");
+            const qualified = (result.qualified ?? []).length > 0;
             notifySuccess(
               result.added
-                ? i18next.t("Added — now tick the positions they can serve")
-                : i18next.t("They were already a volunteer here"),
+                ? qualified
+                  ? i18next.t("Added and qualified")
+                  : i18next.t("Added — now tick the positions they can serve")
+                : qualified
+                  ? i18next.t("They were already a volunteer here, and are now qualified")
+                  : i18next.t("They were already a volunteer here"),
             );
 
             return options.reload().then(() => load(true));

@@ -216,6 +216,7 @@ interface CRMPortalTeamConfig {
 /** The ministry page's team-only view (#10530): the teams of this ministry the viewer leads. */
 interface CRMVolunteerTeamViewConfig {
   ministryId: number;
+  ministryName: string;
   teams: Array<{ id: number; name: string }>;
   sundaySchool: boolean;
 }
