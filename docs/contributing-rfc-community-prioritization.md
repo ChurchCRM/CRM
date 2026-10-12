@@ -129,15 +129,15 @@ A GitHub Project with status/owner/feedback/contributor fields may later mirror 
 
 ## Public feature Discussions and privacy: proposed policy
 
-**Nothing in this section authorizes a live public campaign or creates an external account.** See [RFC #10543](https://github.com/ChurchCRM/CRM/issues/10543).
+**Nothing in this section enables Discussions or authorizes a live public campaign.** See [RFC #10543](https://github.com/ChurchCRM/CRM/issues/10543).
 
 - **Use one native platform:** after a maintainer enables GitHub Discussions, curate Feature Proposals in an **Announcements-format** category (maintainers create, signed-in community comments/reacts). Until enabled, do not link publicly. Other intake channels may feed the backlog, but they are not competing ballots.
-- Do **not** build a ChurchCRM voting database, host a new service, or embed provider scripts, cookies, trackers, pixels or iframes in ChurchCRM.
+- Do **not** build a ChurchCRM voting database, host a new service, or embed third-party voting scripts, cookies, trackers, pixels or iframes in ChurchCRM.
 - Each maintainer-authored Discussion describes one user problem, who benefits, realistic constraints and links the canonical GitHub issue. The technical decision stays on GitHub.
 - A vote is a demand signal, **not** consent to a design, a delivery promise, an implementation assignment or a guaranteed release date.
-- No church, user, session, installation, database, email, domain-specific or telemetry identifiers go in outbound feedback links. Generic campaign identifiers must be identical for all installations; explain that clicking external links necessarily exposes network/browser information to the provider.
+- No church, user, session, installation, database, email, domain-specific or telemetry identifiers go in outbound feedback links. Generic campaign identifiers must be identical for all installations; explain that opening GitHub necessarily exposes network/browser information to GitHub.
 - Public votes must never override fixes for vulnerabilities, data loss, privacy, accessibility, reliability, upgrades or required maintenance.
-- Moderation, data export, abuse responses, the provider's account/privacy notice and publish permissions must be documented **before** launch.
+- GitHub Discussions moderation, abuse responses, GitHub-account sign-in expectations and publish permissions must be documented **before** launch.
 
 ### Existing in-app notification integration
 
@@ -149,18 +149,18 @@ Proposed administrator-only invitation:
 > We're considering improvements to ChurchCRM and would love your input. Tell us what would help your church most.  
 > **Action:** Share your feedback. **Dismiss:** Not interested.
 
-Notification requirements: no interruptive modal, safe HTTPS destination, explicit external destination, unique dismissible campaign ID, expiry and frequency caps, appropriate locale fallback, admin-only/version-targeted pilot, graceful failure, safe new-tab behavior and no automatic request to the voting provider on render.
+Notification requirements: no interruptive modal, safe HTTPS destination, explicit external destination, unique dismissible campaign ID, expiry and frequency caps, appropriate locale fallback, admin-only/version-targeted pilot, graceful failure, safe new-tab behavior and no automatic request to GitHub Discussions merely by viewing a ChurchCRM page.
 
 ## Pilot, ownership and review gates
 
 - [CRM #10545](https://github.com/ChurchCRM/CRM/issues/10545): document lifecycle and agent/contributor updates after policy approval.
 - [CRM #10546](https://github.com/ChurchCRM/CRM/issues/10546): validate existing feature candidates against current code and releases; **person-vs-family giving #9313 is distinct from online payments #10033**.
-- [Marketing #123](https://github.com/ChurchCRM/marketing/issues/123): compare hosted providers, free limits, moderation, data handling and portability.
+- [Marketing #123](https://github.com/ChurchCRM/marketing/issues/123): configure/test maintainer-created Announcement-category Discussions, community comments, moderation and usability.
 - [CRM #10544](https://github.com/ChurchCRM/CRM/issues/10544): technical notification hardening and tests.
 - [Marketing #124](https://github.com/ChurchCRM/marketing/issues/124): draft 3–5 eligible, user-facing feedback entries and a 60-day pilot invitation. Do not publish before approval.
 - [Marketing #125](https://github.com/ChurchCRM/marketing/issues/125): review aggregate pilot feedback, volunteer offers, moderation workload, access/localization and actual priority decisions after the pilot runs.
 
-**Gates:** policy and provider approval → candidate verification → application hardening and review → copy/privacy/moderation approval → **George explicitly authorizes publication** → limited administrator rollout → wider rollout only by approval → 60-day evaluation → continue/change/stop decision.
+**Gates:** policy and GitHub Discussions category approval → candidate verification → application hardening and review → copy/privacy/moderation approval → **George explicitly authorizes publication** → limited administrator rollout → wider rollout only by approval → 60-day evaluation → continue/change/stop decision.
 
 Roles: maintainers own technical truth and approval; coding agents implement approved bounded tasks and tests; ChatGPT coordinates and reviews; community volunteers can give feedback and help test/translate/implement. Any public communication needs authorized ownership, and social media work is **not** assigned to NanoClaw by default.
 
@@ -168,7 +168,7 @@ Roles: maintainers own technical truth and approval; coding agents implement app
 
 - [ ] Proposed policy, states and the distinct RFC/epic/vote definitions approved.
 - [ ] Current repository and released behavior verified for initial proposals; no duplicate user-facing votes.
-- [ ] Public Discussions platform, privacy notice, identity/abuse/moderation and portability approved.
+- [ ] GitHub Discussions enabled and Announcement-category creation/comment permissions, privacy disclosure and moderation verified.
 - [ ] No in-app external tracking or installation/person identifiers; remote links validated.
 - [ ] Notification expiry/dismiss/frequency/locale/version/security tests approved.
 - [ ] User-facing issue quality, i18n, accessibility, mobile and contributor handoff checked.
