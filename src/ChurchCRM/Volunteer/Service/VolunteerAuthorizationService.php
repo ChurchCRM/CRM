@@ -408,6 +408,44 @@ class VolunteerAuthorizationService
     }
 
     /**
+     * #10530: the active ministries this user reaches only as a team leader, id => name,
+     * ordered by name: the sidebar lists them beside the ones they administer, each
+     * opening the ministry page's team-only view.
+     *
+     * @return array<int, string>
+     */
+    public function getTeamLedMinistries(User $user): array
+    {
+        $teamIds = $this->getOwnTeamScopeIds($user);
+        if ($teamIds === []) {
+            return [];
+        }
+
+        $ministryIds = array_map('intval', VolunteerTeamQuery::create()
+            ->filterById($teamIds, Criteria::IN)
+            ->select('MinistryId')
+            ->find()
+            ->toArray());
+        $ministryIds = array_values(array_diff(array_unique($ministryIds), array_keys($this->getManageableMinistries($user))));
+        if ($ministryIds === []) {
+            return [];
+        }
+
+        $ministries = [];
+        foreach (VolunteerMinistryQuery::create()
+            ->filterById($ministryIds, Criteria::IN)
+            ->filterByActive(true)
+            ->orderByName()
+            ->select(['Id', 'Name'])
+            ->find()
+            ->toArray() as $row) {
+            $ministries[(int) $row['Id']] = (string) $row['Name'];
+        }
+
+        return $ministries;
+    }
+
+    /**
      * Team ids: own team scopes ∪ every team under a managed ministry (§4.4).
      * That union is what makes the hierarchy real rather than two independent lists.
      *
