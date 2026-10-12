@@ -85,6 +85,15 @@ class VolunteerQualificationService
             throw VolunteerException::notFound(gettext('Person not found'));
         }
 
+        // #10531: a grant that puts somebody new in the pool on a team's authority follows
+        // the team leader's own add path: only a person the pool search would offer, and
+        // the ministry's coordinators are told.
+        $ministryId = (int) $position->getMinistryId();
+        $byTeam = !$this->authz->canManageMinistry($actor, $ministryId);
+        if ($byTeam && !$this->ministries->isInPool($ministryId, $personId) && !$this->ministries->isPoolCandidate($personId)) {
+            throw VolunteerException::notFound(gettext('Person not found'));
+        }
+
         $class = $position->getTeam()?->getClassGroup();
         if ($class !== null) {
             $this->classLinks->assertMayTeach($class, $personId);
@@ -95,7 +104,10 @@ class VolunteerQualificationService
 
         try {
             $qualification = $this->writeQualification($personId, $position, $actor, $notes);
-            $joinedPool = $this->qualifyIntoPool((int) $position->getMinistryId(), $personId);
+            $joinedPool = $this->qualifyIntoPool($ministryId, $personId);
+            if ($joinedPool && $byTeam) {
+                $this->ministries->notifyPoolAddedByTeam($ministryId, (int) $position->getTeamId(), $personId, (int) $actor->getId());
+            }
             $addedAsTeacher = $class !== null && $this->classLinks->addTeacher($class, $personId);
             $connection->commit();
         } catch (\Throwable $e) {

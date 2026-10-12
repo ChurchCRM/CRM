@@ -32,6 +32,8 @@ const PERSON_DECEASED = 55;
 const PERSON_INACTIVE_FAMILY = 18;
 const PERSON_DEACTIVATED = 911;
 const PERSON_BY_COORDINATOR = 8;
+const PERSON_GRANTED = 57;
+const PERSON_GRANTED_BY_COORDINATOR = 58;
 
 const PREFIX = "TLP10531";
 
@@ -346,6 +348,35 @@ describe("Volunteer v2 — a team leader adds someone to the pool (#10531)", () 
             api(LEADER_KEY, "DELETE", `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${PERSON_ADDED}`, null, 403);
             api(LEADER_KEY, "DELETE", `${VOLUNTEER_URL}/ministries/${ministryId}/volunteers/${PERSON_ADDED}`, null, 403);
             poolMembers(ministryId).then((ids) => expect(ids).to.include(PERSON_ADDED));
+        });
+
+        it("Holds a team leader's qualification grant to the same rules when it adds someone new", () => {
+            const grant = (personId, status) =>
+                api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/positions/${posLed}/qualifications`, { personId }, status);
+            grant(PERSON_DECEASED, 404);
+            grant(PERSON_INACTIVE_FAMILY, 404);
+            poolMembers(ministryId).then((ids) => {
+                expect(ids).to.not.include(PERSON_DECEASED);
+                expect(ids).to.not.include(PERSON_INACTIVE_FAMILY);
+            });
+
+            grant(PERSON_GRANTED, [200, 201]);
+            poolMembers(ministryId).then((ids) => expect(ids).to.include(PERSON_GRANTED));
+            poolAddRows().then((rows) => {
+                const about = rows.filter((row) => JSON.parse(row.context).personId === PERSON_GRANTED);
+                expect(about.map((row) => Number(row.personId)), "the coordinator is told").to.deep.eq([PERSON_COORDINATOR]);
+                expect(JSON.parse(about[0].context)).to.include({ addedBy: PERSON_LEADER, teamId: teamLed });
+            });
+        });
+
+        it("Leaves a coordinator's qualification grant as it was: no email", () => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/positions/${posLed}/qualifications`, {
+                personId: PERSON_GRANTED_BY_COORDINATOR,
+            }, [200, 201]);
+            poolMembers(ministryId).then((ids) => expect(ids).to.include(PERSON_GRANTED_BY_COORDINATOR));
+            poolAddRows().then((rows) => {
+                expect(rows.map((row) => JSON.parse(row.context).personId)).to.not.include(PERSON_GRANTED_BY_COORDINATOR);
+            });
         });
 
         it("Leaves the coordinator path as it was: no email for a coordinator's own add", () => {

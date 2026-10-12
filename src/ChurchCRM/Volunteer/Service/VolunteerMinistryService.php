@@ -1449,7 +1449,7 @@ class VolunteerMinistryService
         $group = $this->requirePoolGroup($ministryId);
         $qualifications = new VolunteerQualificationService($this->authz, $this);
         $actorId = (int) $actor->getId();
-        $recipients = [];
+        $notified = 0;
 
         $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
         $connection->beginTransaction();
@@ -1461,15 +1461,7 @@ class VolunteerMinistryService
             }
 
             if ($added) {
-                $recipients = $this->authz->getCoordinatorPersonIds($ministryId);
-                if ($recipients === []) {
-                    $recipients = $this->authz->getGlobalManagerPersonIds();
-                }
-                $recipients = array_values(array_diff($recipients, [$actorId, $personId]));
-                if ($recipients !== []) {
-                    (new VolunteerNotificationService())
-                        ->enqueuePoolAdd($ministryId, $teamId, $personId, $actorId, $recipients);
-                }
+                $notified = $this->notifyPoolAddedByTeam($ministryId, $teamId, $personId, $actorId);
             }
 
             $connection->commit();
@@ -1487,11 +1479,32 @@ class VolunteerMinistryService
             'personId' => $personId,
             'added' => $added,
             'qualified' => $qualified,
-            'notified' => count($recipients),
+            'notified' => $notified,
             'actor' => $actorId,
         ]);
 
-        return ['added' => $added, 'qualified' => $qualified, 'notified' => count($recipients)];
+        return ['added' => $added, 'qualified' => $qualified, 'notified' => $notified];
+    }
+
+    /**
+     * #10531: tell the ministry's coordinators that a team leader put somebody in its
+     * pool; with no coordinator the global volunteer managers are told, as for
+     * `help_offer`. Never the leader, never the person added.
+     *
+     * @return int how many people were told
+     */
+    public function notifyPoolAddedByTeam(int $ministryId, int $teamId, int $personId, int $actorId): int
+    {
+        $recipients = $this->authz->getCoordinatorPersonIds($ministryId);
+        if ($recipients === []) {
+            $recipients = $this->authz->getGlobalManagerPersonIds();
+        }
+        $recipients = array_values(array_diff($recipients, [$actorId, $personId]));
+        if ($recipients !== []) {
+            (new VolunteerNotificationService())->enqueuePoolAdd($ministryId, $teamId, $personId, $actorId, $recipients);
+        }
+
+        return count($recipients);
     }
 
     /**
