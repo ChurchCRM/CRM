@@ -30,7 +30,7 @@ George approves significant product/architecture decisions, sensitive security/p
 
 ### Moderated public Discussions model
 
-- Discussions is **currently disabled per the maintainer**. Enabling the feature on `ChurchCRM/CRM` requires an explicit maintainer action. **Never link a church user to a Discussion until it exists and is tested.**
+- GitHub Discussions is **enabled** and the public **Feature Proposals** and **RFC Reviews** categories have been created (maintainer-confirmed 2026-10-12; [Feature Proposals](https://github.com/ChurchCRM/CRM/discussions/categories/feature-proposals), [RFC Reviews](https://github.com/ChurchCRM/CRM/discussions/categories/rfc-reviews)). The connected GitHub interface cannot inspect category settings or test permissions, so verify Announcement format and non-maintainer comment/create behavior in a signed-in test before relying on those restrictions.
 - Set up a category named **Feature Proposals** with format **Announcement** (not an ordinary open-ended category). GitHub restricts **creation** in that category to maintainers/admins but allows signed-in community members to comment and reply. Do **not** click GitHub's *Lock discussion* action as a publishing technique: that blocks regular comments.
 - Use only this designated category for the publicly curated feature proposals. Repository-wide Discussions may still permit users to create discussions in **other enabled categories**; the Announcements restriction is **category-scoped**, not necessarily a repository-wide prohibition.
 - Each post is drafted/edited by an authorized maintainer, links to the canonical feature issue and technical RFC if one exists, and clearly states **proposed / design approved but unscheduled / seeking contributor / planned / shipped / deferred**.
@@ -131,7 +131,7 @@ A GitHub Project with status/owner/feedback/contributor fields may later mirror 
 
 **Nothing in this section enables Discussions or authorizes a live public campaign.** See [RFC #10543](https://github.com/ChurchCRM/CRM/issues/10543).
 
-- **Use one native platform:** after a maintainer enables GitHub Discussions, curate Feature Proposals in an **Announcements-format** category (maintainers create, signed-in community comments/reacts). Until enabled, do not link publicly. Other intake channels may feed the backlog, but they are not competing ballots.
+- **Use one native platform:** curate Feature Proposals in the existing **Announcements-format** category (intended: maintainers create; signed-in community members comment/react). The categories are live, but confirm category settings and permissions before public promotion. Other intake channels may feed the backlog, but they are not competing ballots.
 - Do **not** build a ChurchCRM voting database, host a new service, or embed third-party voting scripts, cookies, trackers, pixels or iframes in ChurchCRM.
 - Each maintainer-authored Discussion describes one user problem, who benefits, realistic constraints and links the canonical GitHub issue. The technical decision stays on GitHub.
 - A vote is a demand signal, **not** consent to a design, a delivery promise, an implementation assignment or a guaranteed release date.
@@ -160,7 +160,7 @@ Notification requirements: no interruptive modal, safe HTTPS destination, explic
 - [Marketing #124](https://github.com/ChurchCRM/marketing/issues/124): draft 3–5 eligible, user-facing feedback entries and a 60-day pilot invitation. Do not publish before approval.
 - [Marketing #125](https://github.com/ChurchCRM/marketing/issues/125): review aggregate pilot feedback, volunteer offers, moderation workload, access/localization and actual priority decisions after the pilot runs.
 
-**Gates:** policy and GitHub Discussions category approval → candidate verification → application hardening and review → copy/privacy/moderation approval → **George explicitly authorizes publication** → limited administrator rollout → wider rollout only by approval → 60-day evaluation → continue/change/stop decision.
+**Gates:** policy review → verify existing category permissions → candidate verification → application hardening and review → copy/privacy/moderation approval → **George explicitly authorizes publication** → limited administrator rollout → wider rollout only by approval → 60-day evaluation → continue/change/stop decision.
 
 Roles: maintainers own technical truth and approval; coding agents implement approved bounded tasks and tests; ChatGPT coordinates and reviews; community volunteers can give feedback and help test/translate/implement. Any public communication needs authorized ownership, and social media work is **not** assigned to NanoClaw by default.
 
@@ -168,7 +168,8 @@ Roles: maintainers own technical truth and approval; coding agents implement app
 
 - [ ] Proposed policy, states and the distinct RFC/epic/vote definitions approved.
 - [ ] Current repository and released behavior verified for initial proposals; no duplicate user-facing votes.
-- [ ] GitHub Discussions enabled and Announcement-category creation/comment permissions, privacy disclosure and moderation verified.
+- [x] GitHub Discussions enabled and both category URLs live (maintainer-confirmed and public-page verified).
+- [ ] Announcement format, maintainer-only topic creation and non-maintainer comment/reaction permissions verified with a signed-in test account; privacy disclosure and moderation approved.
 - [ ] No in-app external tracking or installation/person identifiers; remote links validated.
 - [ ] Notification expiry/dismiss/frequency/locale/version/security tests approved.
 - [ ] User-facing issue quality, i18n, accessibility, mobile and contributor handoff checked.
