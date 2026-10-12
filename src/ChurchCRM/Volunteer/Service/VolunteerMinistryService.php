@@ -1523,7 +1523,7 @@ class VolunteerMinistryService
         }
 
         $query = $this->poolCandidateQuery()->with('Family');
-        $words = array_slice(preg_split('/\s+/u', $text) ?: [], 0, 3);
+        $words = preg_split('/\s+/u', $text) ?: [];
         $names = [];
         foreach ($words as $index => $word) {
             $like = '%' . addcslashes($word, '%_\\') . '%';

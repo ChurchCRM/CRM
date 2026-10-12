@@ -248,6 +248,9 @@ describe("Volunteer v2 — a team leader adds someone to the pool (#10531)", () 
             api(LEADER_KEY, "GET", `${SEARCH_URL}?q=${encodeURIComponent("vern newm")}`).then((resp) => {
                 expect(resp.body.map((row) => row.id)).to.deep.eq([PERSON_COORDINATOR]);
             });
+            api(LEADER_KEY, "GET", `${SEARCH_URL}?q=${encodeURIComponent("vern newm vern zzqx")}`).then((resp) => {
+                expect(resp.body, "a fourth word that matches nobody").to.deep.eq([]);
+            });
         });
 
         it("Answers a member-login team leader, and refuses a member who leads nothing", () => {
