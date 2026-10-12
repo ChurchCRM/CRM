@@ -8,7 +8,7 @@
  * schedule top-up (D31) and the notification outbox.
  *
  * Markup only: the settings panel (`window.CRM.settingsPanel`, U8) renders and
- * saves the five ConfigItems through POST /admin/api/system/config/{name}.
+ * saves the six ConfigItems through POST /admin/api/system/config/{name}.
  */
 
 use ChurchCRM\dto\SystemURLs;
@@ -36,7 +36,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="row">
     <div class="col-12 col-xl-6">
 
-      <!-- The Settings Panel component renders and saves these five ConfigItems. -->
+      <!-- The Settings Panel component renders and saves these six ConfigItems. -->
       <div id="ministrySettingsPanel"></div>
 
       <div class="card mb-3" id="ministry-delivery-card">
@@ -213,6 +213,12 @@ $(document).ready(function () {
                 max: 720,
                 label: <?= InputUtils::jsonEncodeForScript(gettext('Unfilled-position alert lead time (hours)')) ?>,
                 tooltip: <?= InputUtils::jsonEncodeForScript(gettext('How many hours before an occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected.')) ?>
+            },
+            {
+                name: 'sVolunteerGapAlertBatchTime',
+                type: 'time',
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Daily unfilled-position email time')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Once a day at this time (church time zone), coordinators get one email listing the unfilled positions that start within the alert lead time plus 24 hours. A gap that opens later in the day is sent on its own.')) ?>
             },
             {
                 name: 'iVolunteerSchedulingHorizonWeeks',
