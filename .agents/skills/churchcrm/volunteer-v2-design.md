@@ -2690,9 +2690,11 @@ entries: one cheap id-and-name query per request, memoised in
   Ministries** (`fa-box-archive`, the Groups heading's per-type sub-groups are the precedent),
   which `MenuItem::isVisible()` drops whenever it would be empty. Same memoised query, split by
   the `active` flag it now carries;
-- **team leader on a STAFF account** — *Dashboard* alone. Leading a team is not administering
-  the ministry above it. The dashboard's "My ministries and teams" card is their entry point: it
-  links their ministry and their teams to `/ministries/{id}`'s **team-only view** (§5.4, #10530);
+- **team leader on a STAFF account** — *Dashboard*, then one entry per active ministry they lead a
+  team in (`VolunteerAuthorizationService::getTeamLedMinistries()`, `fa-people-group`), each opening
+  `/ministries/{id}`'s **team-only view** (§5.4, #10530). Leading a team is not administering the
+  ministry above it, so these are not `getManageableMinistries()` entries. The dashboard's "My
+  ministries and teams" card links the same view;
 - **team leader on a SELF-SERVICE account** (the D14 revision, #9867) — no sidebar at all: that
   login never sees the admin shell. Their team pages are in the Member Portal (MP7), reached
   from its own navigation;
