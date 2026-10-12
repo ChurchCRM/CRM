@@ -696,7 +696,8 @@ here rather than left for the next reader to rediscover:
    and addresses its markup by id. `teams/occurrence.html.twig` reproduces those ids and loads
    `ministries-occurrence.min.js` unchanged — the same move P15 made for the two member pages. The
    one difference is that the linked calendar event is NAMED but not LINKED, because
-   `/event/view/{id}` is an admin-shell page a member would be bounced away from.
+   `/event/view/{id}` is an admin-shell page a member would be bounced away from. Its Assign
+   dialog is the admin one, *Record they accepted* box included (#10528).
 5. **The nav entry is narrower than the routes.** `My Teams` is shown only to somebody with an
    explicit `team` grant (`isVolunteerTeamLeaderEnabled()`), while `/portal/teams` also admits a
    coordinator, manager or administrator who opens the portal as themselves. A coordinator is not
