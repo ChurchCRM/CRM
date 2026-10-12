@@ -2077,8 +2077,9 @@ Ministry Settings), it claims the day in `config_cfg` (`sLastVolunteerGapAlertBa
 `VolunteerScheduleTopUp` claim, except that only a later day wins, so moving the time back cannot
 send a day twice) and queues every short position on the occurrences starting within the gap-alert
 lead + 24 hours, so a position that would come inside the lead before tomorrow's batch arrives in
-this one. The batch day is today once its batch time has passed, otherwise yesterday: a day with
-no pass after its batch time sends at the first pass after it, even before the next day's time. The
+this one. A batch is claimed only for today and only at or after its time, so a coordinator never
+gets two on one day: a day with no pass after its batch time has no batch (its gaps still go out
+one by one, and the next day's batch covers the 24 hours after it). The
 forced **Run background jobs now** does not send a second batch. The single alert then runs within
 the lead alone, so between batches it reports what something changed: a new event, a decline, a
 raised count. Both write the same key, so each position is reported to a coordinator once, and the

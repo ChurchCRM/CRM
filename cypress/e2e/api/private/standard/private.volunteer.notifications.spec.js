@@ -1863,9 +1863,10 @@ describe("Volunteer v2 — the notification outbox and its drain (#9710, epic #9
             assign(COORDINATOR_KEY, occurrenceTwo, posMilk, POOL_MEMBER_B);
             leadShortOfOccurrenceTwo();
             setConfig(BATCH_TIME_URL, batchTime(60));
+            setConfig(BATCH_DATE_URL, isoDate(-3));
             runJobsNow();
             gapRows().then((rows) => {
-                expect(keysOf(rows, true), "no batch before the batch time").to.have.length(0);
+                expect(keysOf(rows, true), "no batch before the batch time, not even a missed day's").to.have.length(0);
                 expect(keysOf(rows, false), "inside the lead, one by one").to.have.members([
                     alertKey(occurrenceOne, posEspresso),
                     alertKey(occurrenceOne, posMilk),

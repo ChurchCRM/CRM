@@ -624,7 +624,7 @@ class VolunteerNotificationService
         $enqueued = 0;
 
         $batchDay = $this->gapAlertBatchDayDue($now);
-        if ($this->claimGapAlertBatchDay($batchDay)) {
+        if ($batchDay !== null && $this->claimGapAlertBatchDay($batchDay)) {
             $enqueued += $this->enqueueOpenGapAlerts($now, $leadHours + 24, $batchDay);
         }
         $enqueued += $this->enqueueOpenGapAlerts($now, $leadHours, null);
@@ -653,19 +653,16 @@ class VolunteerNotificationService
     }
 
     /**
-     * The day whose batch is due: today once its batch time has passed, otherwise
-     * yesterday. A day with no pass after its batch time therefore sends at the first
-     * pass after it, even if that is before the next day's batch time.
+     * Today, once its batch time has passed; null before it. A day with no pass after its
+     * batch time has no batch, so a coordinator never gets two on one day: its gaps still
+     * go out one by one, and the next day's batch covers the 24 hours after it.
      */
-    private function gapAlertBatchDayDue(\DateTimeInterface $now): string
+    private function gapAlertBatchDayDue(\DateTimeInterface $now): ?string
     {
         [$hour, $minute] = array_map('intval', explode(':', self::gapAlertBatchTime()));
         $batchTime = DateTimeUtils::createDateTime($now->format('Y-m-d'))->setTime($hour, $minute);
-        if ($now < $batchTime) {
-            $batchTime->modify('-1 day');
-        }
 
-        return $batchTime->format('Y-m-d');
+        return $now < $batchTime ? null : $batchTime->format('Y-m-d');
     }
 
     /**
