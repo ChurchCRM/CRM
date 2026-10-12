@@ -277,15 +277,19 @@ describe("Volunteer v2 — a team leader adds someone to the pool (#10531)", () 
             if (!mailpitAvailable) {
                 this.skip();
             }
+            dbOk("UPDATE volunteer_team_vtem SET vtem_Name = ? WHERE vtem_ID = ?", [`${PREFIX} <b>Greeters</b>`, teamLed]);
             drain();
+            dbOk("UPDATE volunteer_team_vtem SET vtem_Name = ? WHERE vtem_ID = ?", [`${PREFIX} Greeters`, teamLed]);
             mailTo(COORDINATOR_EMAIL).then((messages) => {
                 const about = messages.filter((message) => (message.Subject || "").includes("added Connor Newman to the"));
                 expect(about, "one email to the coordinator").to.have.length(1);
                 expect(about[0].Subject).to.include(`${PREFIX} Hospitality volunteers`);
                 return cy.task("mail:get", { id: about[0].ID });
             }).then((result) => {
-                expect(result.body.Text).to.include(`who leads ${PREFIX} Greeters`);
+                expect(result.body.Text).to.include(`who leads ${PREFIX}`);
                 expect(result.body.Text).to.include("Only a coordinator can take someone out of the pool.");
+                expect(result.body.HTML).to.include(`${PREFIX} &lt;b&gt;Greeters&lt;/b&gt;`);
+                expect(result.body.HTML).to.not.include("<b>Greeters</b>");
             });
             mailTo(ADDED_EMAIL).then((messages) => {
                 expect(messages, "nothing to the person who was added").to.have.length(0);
