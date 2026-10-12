@@ -121,3 +121,50 @@ Review #8821, #8822, #8825, #9525, #5238 and #8575–#8583, #8826, #8650, #8647,
 4. What should qualify as an epic besides effort (cross-subsystem scope, decisions, risk)?
 5. Is the good-first-issue checklist too strict or missing a safeguard?
 6. Should we pilot only in CRM before applying to docs/website?
+
+## Decision boundary: what this PR merges vs what ships later
+
+**This PR is a design RFC, not policy activation.** Approval of the RFC means maintainers agree on the intended standards and rollout, not that current templates, labels, agents, or CI have already been updated. Until implementation PRs merge, existing repository instructions remain in force.
+
+### What may land on `master` when this RFC merges
+- This reviewed RFC under `docs/proposals/`, with its status changed to **Accepted / implementation pending** only after explicit maintainer approval.
+- A clear decision record: approved issue-quality minimum, sizing/epic rules, PR contract, `good first issue` criteria, and owners for rollout.
+- A linked implementation tracking issue or checklist. The RFC alone must not be presented as an enforced contributor policy.
+
+### Required follow-up changes to `master` after approval
+| Surface | Required outcome | Verification |
+| --- | --- | --- |
+| Canonical policy in CRM contributor docs | Publish a concise approved issue/PR quality guide, linked from `CONTRIBUTING.md`. Keep this RFC as decision history, not the only instructions. | A contributor can find the current rules from the repository entry point. |
+| `.github/ISSUE_TEMPLATE/` | Review existing bug and feature templates; request reporter-friendly problem/repro information, while reserving technical design, scope, and acceptance-criteria refinement for maintainers. | Sample bug and feature submissions are usable without knowing implementation details. |
+| `.github/PULL_REQUEST_TEMPLATE.md` | Link the guide; require concise why/what, issue links, scope, tests/evidence, risks and rollout notes **when applicable**, without bloating trivial PRs. | Example small fix and larger feature PR both fit the template. |
+| `.agents/` and relevant repository agent instructions/skills | Audit **existing** issue-triage, planning, epic, coding and PR-review instructions; update their workflows to check duplicates/current code, choose appropriate issue size, require approved design before implementation, and link to the canonical guide. Avoid duplicate/conflicting policy copies. | Agent-generated issue, epic, and PR examples conform to the approved guide. |
+| Labels and triage workflow | Audit labels first; document who can apply/remove `good first issue`, when design is pending, and how superseded/stale issues are closed. Create labels only if existing equivalents do not suffice. | Label usage matches the readiness checklist; no unreviewed beginner tickets. |
+| Related repositories | Identify docs, website, and other ChurchCRM contributor/agent entry points and link to the canonical standard, with repository-specific exceptions where needed. | No conflicting requirements or duplicated independent policies. |
+| Epic/backlog pilot | Audit the Events/Kiosk issue cluster against actual code and releases; keep/close/split/supersede with links, and prepare 3–5 truly ready beginner issues only if qualified. | Each disposition has evidence and each new issue is independently actionable. |
+
+### Proposed implementation sequence and ownership
+1. **Maintainer decision (George):** Approve or amend thresholds, epic triggers, minimum issue/PR content, good-first certification, and cross-repository scope.
+2. **Docs/templates PR (Claude):** Publish the approved canonical guide and update CRM `CONTRIBUTING.md` and GitHub templates. Keep it small and independently reviewable.
+3. **Agent-instructions PR (Claude; ChatGPT reviews):** Update relevant existing `.agents/` skills and agent entry points to **reference** the guide. Do not fork the policy into multiple divergent copies.
+4. **Labels/triage review (ChatGPT; George approves any policy changes):** Reconcile existing labels and triage practices.
+5. **Events/Kiosk pilot (ChatGPT prepares; George approves material scope decisions):** Verify implementation status and curate a starter backlog. Other repositories adopt the standard after CRM pilot review.
+
+### Definition of done for the overall initiative
+- [ ] Approved rules are discoverable on `master` from contributor entry points, not solely the RFC.
+- [ ] Issue templates distinguish community intake from maintainer-ready implementation tasks.
+- [ ] PR template and agent instructions use the **same canonical standard**.
+- [ ] Epic decomposition and readiness checks are represented in agent planning/review workflows.
+- [ ] Existing labels are audited; `good first issue` requires explicit maintainer certification.
+- [ ] A sample bug, feature, epic, small PR, and beginner issue have been checked against the guide.
+- [ ] Events/Kiosk pilot records evidence-based disposition and avoids duplicate issues.
+- [ ] Rollout PRs/issues are linked from this RFC and any deviations are documented.
+
+### Explicitly deferred
+- No automatic issue closure, milestone assignment, or label application in the RFC.
+- No subjective quality gate that blocks community issue submissions.
+- No sweeping rewrite of every old issue or repo before the pilot.
+- No mandatory effort estimate or elaborate design document for trivial fixes.
+- No release/merge action without George's approval.
+
+### Reviewer decision checklist
+Reviewers should comment on (1) the **minimum standard** for issues and PRs, (2) when to create epics and children, (3) the certification threshold for `good first issue`, (4) canonical documentation ownership, (5) which agent instructions and templates must change, and (6) whether the proposed rollout sequence is appropriately incremental.
