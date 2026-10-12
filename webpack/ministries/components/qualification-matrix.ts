@@ -321,16 +321,29 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
       return;
     }
 
+    if (force) {
+      matrix = null;
+    }
     renderState("volunteers", "loading");
     show(byId("volunteers-save-hint"), false);
+    let requestedTeamId = teamId;
     try {
       // The caller's document names the teams, and the grid is always one team's —
       // so it has to be there before the first matrix request can name one.
       await options.ensureContext();
       fillTeamFilter();
-      matrix = await options.fetch(teamId);
+      requestedTeamId = teamId;
+      const loaded = await options.fetch(requestedTeamId);
+      // A team switch while this was in flight has started a newer load.
+      if (requestedTeamId !== teamId) {
+        return;
+      }
+      matrix = loaded;
       render(matrix);
     } catch (error) {
+      if (requestedTeamId !== teamId) {
+        return;
+      }
       // Clearing the cache is what makes Retry a genuine retry (§5.8).
       matrix = null;
       show(byId("volunteers-save-hint"), false);
