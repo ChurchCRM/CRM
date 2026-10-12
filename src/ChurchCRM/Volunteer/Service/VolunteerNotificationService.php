@@ -7,6 +7,7 @@ use ChurchCRM\Emails\BaseEmail;
 use ChurchCRM\model\ChurchCRM\Config;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\Map\VolunteerNotificationTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
@@ -37,6 +38,7 @@ use ChurchCRM\Volunteer\Email\VolunteerSwapProposedEmail;
 use ChurchCRM\Volunteer\Email\VolunteerSwapResolvedEmail;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Exception\PropelException;
+use Propel\Runtime\Propel;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -623,9 +625,22 @@ class VolunteerNotificationService
         $now = DateTimeUtils::getToday();
         $enqueued = 0;
 
+        // The claim and the batch's rows commit together: a batch that fails part-way
+        // gives its day back for the next run instead of leaving the day sent.
         $batchDay = $this->gapAlertBatchDayDue($now);
-        if ($batchDay !== null && $this->claimGapAlertBatchDay($batchDay)) {
-            $enqueued += $this->enqueueOpenGapAlerts($now, $leadHours + 24, $batchDay);
+        if ($batchDay !== null) {
+            $connection = Propel::getWriteConnection(VolunteerNotificationTableMap::DATABASE_NAME);
+            $connection->beginTransaction();
+            try {
+                if ($this->claimGapAlertBatchDay($batchDay)) {
+                    $enqueued += $this->enqueueOpenGapAlerts($now, $leadHours + 24, $batchDay);
+                }
+                $connection->commit();
+            } catch (\Throwable $e) {
+                $connection->rollBack();
+
+                throw $e;
+            }
         }
         $enqueued += $this->enqueueOpenGapAlerts($now, $leadHours, null);
 
