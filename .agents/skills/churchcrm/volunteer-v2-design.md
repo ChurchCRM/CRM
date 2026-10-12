@@ -3068,7 +3068,7 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
 `VolunteerAdminAreaRoleAuthMiddleware` — opens `/ministries/{id}` for a ministry in which they lead a
 team. The route renders the same view in team mode when `canManageMinistry()` is false and the
 viewer's `getManagedTeamIds()` holds at least one team of this ministry; with none it still sends them
-to access-denied. The page subtitle is *"Your team: {name}"* (*"Your teams: …"*), and the page has the
+to access-denied. The page subtitle is *"Your teams: {names}"*, and the page has the
 portal team page's abilities and no more (Member Portal §5.5):
 
 - four tabs — **Positions · Volunteers · Schedules · Occurrences** — opening on Positions, each

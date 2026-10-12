@@ -86,7 +86,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sRootPath'      => SystemURLs::getRootPath(),
             'sPageTitle'     => $ministry->getName(),
             'sPageSubtitle'  => $bTeamView
-                ? sprintf(ngettext('Your team: %s', 'Your teams: %s', count($aTeams)), $sTeamNames)
+                ? sprintf(gettext('Your teams: %s'), $sTeamNames)
                 : ($ministry->getDescription() ?? gettext('Teams, positions and the people who fill them')),
             'aBreadcrumbs'   => PageHeader::breadcrumbs([
                 [gettext('Ministries'), '/ministries/dashboard'],
