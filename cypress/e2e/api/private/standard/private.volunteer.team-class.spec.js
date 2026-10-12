@@ -287,6 +287,9 @@ describe("Volunteer v2 — a team linked to a Sunday School class (D23)", () => 
         });
 
         it("a team leader's grant writes the class too", () => {
+            // The seed's Ray family is deactivated, so a team leader may not be the one to add them to the pool (#10531).
+            admin("POST", `${MINISTRIES_URL}/${ministryId}/pool/${PERSON_TWICE}`, null, 201);
+            roleOf(classA, PERSON_TWICE).should("eq", null);
             grant(positionHelper, PERSON_TWICE, 201, LEADER_KEY);
             roleOf(classA, PERSON_TWICE).should("eq", TEACHER);
         });
