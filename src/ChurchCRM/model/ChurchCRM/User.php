@@ -605,9 +605,9 @@ class User extends BaseUser
      */
     public function isPasswordValid(string $password): bool
     {
-        // An account may already hold a hash of the empty string, saved before
+        // An account may already hold a hash of a blank password, saved before
         // updatePassword() refused blanks. It must not sign in with nothing.
-        if ($password === '') {
+        if (trim($password) === '') {
             return false;
         }
 
