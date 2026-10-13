@@ -31,7 +31,9 @@ describe("School grades", () => {
     });
 
     after(() => {
-        cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/us", null, 200);
+        cy.makePrivateAdminAPICall("GET", "/admin/api/grades/presets/us/preview", null, 200).then((resp) =>
+            cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/us", { expectedState: resp.body.state }, 200),
+        );
         SETTINGS.forEach((name) => cy.restoreSystemConfig(name, saved[name]));
         cy.then(() => {
             if (membershipClassId) {
@@ -91,7 +93,9 @@ describe("School grades", () => {
         cy.get(".bootbox .btn-primary").click();
         cy.get(".option-name-input").first().should("have.value", "Nursery");
         cy.get("#gradePreset").should("have.value", "england-wales");
-        cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/us", null, 200);
+        cy.makePrivateAdminAPICall("GET", "/admin/api/grades/presets/us/preview", null, 200).then((resp) =>
+            cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/us", { expectedState: resp.body.state }, 200),
+        );
     });
 
     it("People by Grade lists a range of grades in grade order and adds them to the cart", () => {

@@ -17,6 +17,12 @@ describe("API Private Admin - School grades", () => {
     const runTimerJobs = () => cy.makePrivateAdminAPICall("POST", "/api/background/timerjobs", { force: true }, 200);
     const gradeOptions = () =>
         cy.makePrivateAdminAPICall("GET", `/admin/api/options/${GRADES_LIST}`, null, 200).then((resp) => resp.body);
+    const preview = (key) =>
+        cy.makePrivateAdminAPICall("GET", `/admin/api/grades/presets/${key}/preview`, null, 200).then((resp) => resp.body);
+    const applyPreset = (key, expectedStatus = 200) =>
+        preview(key).then((plan) =>
+            cy.makePrivateAdminAPICall("POST", `/admin/api/grades/presets/${key}`, { expectedState: plan.state }, expectedStatus),
+        );
 
     const setGrade = (key, level) =>
         cy.dbQuery("UPDATE person_per SET per_grd_ID = ? WHERE per_ID = ?", [level, people[key]]);
@@ -50,7 +56,7 @@ describe("API Private Admin - School grades", () => {
     });
 
     after(() => {
-        cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/us", null, 200);
+        applyPreset("us");
         SETTINGS.forEach((name) => cy.restoreSystemConfig(name, saved[name]));
         cy.then(() => cy.cleanupPeople(Object.values(people)));
     });
@@ -159,12 +165,12 @@ describe("API Private Admin - School grades", () => {
 
     it("switches to another country's names without changing anyone's grade", () => {
         setGrade("first", 6);
-        cy.makePrivateAdminAPICall("GET", "/admin/api/grades/presets/england-wales/preview", null, 200).then((resp) => {
-            expect(resp.body.renamed).to.have.length(14);
-            expect(resp.body.added).to.deep.eq(["Nursery"]);
-            expect(resp.body.removed).to.have.length(0);
+        preview("england-wales").then((plan) => {
+            expect(plan.renamed).to.have.length(14);
+            expect(plan.added).to.deep.eq(["Nursery"]);
+            expect(plan.removed).to.have.length(0);
+            cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/england-wales", { expectedState: plan.state }, 200);
         });
-        cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/england-wales", null, 200);
 
         gradeOf("first").should("eq", 6);
         gradeOptions().then((options) => {
@@ -175,18 +181,18 @@ describe("API Private Admin - School grades", () => {
 
     it("keeps a grade the church added and clears people in a grade the new names lack", () => {
         let customId;
-        cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/england-wales", null, 200);
+        applyPreset("england-wales");
         cy.makePrivateAdminAPICall("POST", `/admin/api/options/${GRADES_LIST}`, { name: "Cypress College" }, 200).then((resp) => {
             customId = resp.body.optionId;
             expect(customId).to.be.at.least(100);
         });
         setGrade("none", 3);
 
-        cy.makePrivateAdminAPICall("GET", "/admin/api/grades/presets/us/preview", null, 200).then((resp) => {
-            expect(resp.body.removed).to.deep.eq([{ name: "Nursery", people: 1 }]);
-            expect(resp.body.cleared).to.eq(1);
+        preview("us").then((plan) => {
+            expect(plan.removed).to.deep.eq([{ name: "Nursery", people: 1 }]);
+            expect(plan.cleared).to.eq(1);
+            cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/us", { expectedState: plan.state }, 200);
         });
-        cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/us", null, 200);
 
         gradeOf("none").should("be.null");
         gradeNotes("none").then((notes) => expect(notes.at(-1).text).to.eq("Grade Nursery cleared when the grade names changed to United States"));
@@ -195,6 +201,21 @@ describe("API Private Admin - School grades", () => {
             expect(options.at(-1)).to.include({ optionId: customId, optionName: "Cypress College" });
             cy.makePrivateAdminAPICall("DELETE", `/admin/api/options/${GRADES_LIST}/${customId}`, null, 200);
         });
+    });
+
+    it("refuses grade names whose preview no longer matches, and changes nothing", () => {
+        applyPreset("england-wales");
+        setGrade("none", null);
+        preview("us").then((plan) => {
+            expect(plan.cleared).to.eq(0);
+            setGrade("none", 3);
+            cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/us", { expectedState: plan.state }, 409);
+            cy.makePrivateAdminAPICall("POST", "/admin/api/grades/presets/us", {}, 409);
+        });
+        gradeOf("none").should("eq", 3);
+        gradeOptions().its(0).its("optionName").should("eq", "Nursery");
+        setGrade("none", null);
+        applyPreset("us");
     });
 
     it("clears a deleted grade from the people who had it", () => {

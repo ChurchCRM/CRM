@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\data\GradePresets;
+use ChurchCRM\Service\GradePresetChangedException;
 use ChurchCRM\Service\GradePromotionService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
@@ -51,6 +52,18 @@ $app->group('/api/grades', function (RouteCollectorProxy $group): void {
             throw new HttpNotFoundException($request, gettext('Grade names not found'));
         }
 
-        return SlimUtils::renderJSON($response, GradeService::applyPreset($args['key'], (int) AuthenticationManager::getCurrentUser()->getId()));
+        $input = (array) $request->getParsedBody();
+        try {
+            $summary = GradeService::applyPreset(
+                $args['key'],
+                (int) AuthenticationManager::getCurrentUser()->getId(),
+                false,
+                (string) ($input['expectedState'] ?? '')
+            );
+        } catch (GradePresetChangedException) {
+            return SlimUtils::renderErrorJSON($response, gettext('The grades changed after the preview. Review the changes again before applying them.'), [], 409);
+        }
+
+        return SlimUtils::renderJSON($response, $summary);
     });
 })->add(new CSRFMiddleware());

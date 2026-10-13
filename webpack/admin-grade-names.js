@@ -63,6 +63,7 @@ function apply(key, button) {
           window.CRM.AdminAPIRequest({
             method: "POST",
             path: `grades/presets/${encodeURIComponent(key)}`,
+            data: JSON.stringify({ expectedState: preview.state }),
             headers: { "X-CSRF-Token": button.dataset.csrfToken },
           })
             .done(() => window.location.reload())
