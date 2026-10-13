@@ -1031,6 +1031,10 @@ class DemoDataService
                     if ($offsetDays !== 0) {
                         $start->modify(($offsetDays > 0 ? '+' : '') . $offsetDays . ' days');
                     }
+                    $weekday = ucfirst(strtolower(trim($data['weekday'] ?? '')));
+                    if (in_array($weekday, ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], true)) {
+                        $start->modify('-1 day')->modify('next ' . $weekday);
+                    }
                     // Parse HH:MM:SS (or HH:MM) start time
                     $timeParts = array_pad(explode(':', $startTime), 3, '0');
                     $start->setTime((int) $timeParts[0], (int) $timeParts[1], (int) $timeParts[2]);

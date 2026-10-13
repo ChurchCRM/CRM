@@ -3,7 +3,7 @@ Demo event import files
 Files:
 - `events.csv` — event rows. Columns: `id`, `category`, `title`, `description`, `event_text`,
   `start_offset_days`, `start_time`, `duration_minutes`, `link_groups`, `attended_fraction`,
-  `inactive`, `external_url`, `calendars`
+  `inactive`, `external_url`, `calendars`, `weekday`
 - `calendars.csv` — church calendars the events are pinned to. See "Calendars" below.
 - `volunteers.json` — Volunteer v2 ministries and schedules that staff the events. See
   "Volunteer v2 data" below.
@@ -30,6 +30,7 @@ All three are imported with the *Include events and calendars* option.
 | `inactive` | `true` / `false` |
 | `external_url` | Optional external URL |
 | `calendars` | `;`-separated `calendars.csv` ids the event is pinned to; empty = on no calendar (shown under "Unpinned events") |
+| `weekday` | Optional day name (`Sunday` … `Saturday`). Moves the event to the first such day on or after `start_offset_days`, so a Sunday service lands on a Sunday whatever day the import runs. Rows 7 days apart stay a week apart. |
 
 ## Calendars
 

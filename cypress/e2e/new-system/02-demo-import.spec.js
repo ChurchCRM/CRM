@@ -11,6 +11,12 @@
  */
 
 describe('02 - Demo Data Import', () => {
+    const isoDay = (offsetDays) => {
+        const day = new Date();
+        day.setDate(day.getDate() + offsetDays);
+        return day.toISOString().slice(0, 10);
+    };
+
     // Default admin credentials after fresh install
     const adminCredentials = {
         username: 'admin',
@@ -253,12 +259,6 @@ describe('02 - Demo Data Import', () => {
     describe('Verify Volunteer Demo Data', () => {
         const DEMO_MINISTRIES = ['Worship', 'Hospitality', "Children's Ministry"];
 
-        const isoDay = (offsetDays) => {
-            const day = new Date();
-            day.setDate(day.getDate() + offsetDays);
-            return day.toISOString().slice(0, 10);
-        };
-
         const demoStaffing = () => {
             const assignments = [];
             let gaps = 0;
@@ -341,6 +341,17 @@ describe('02 - Demo Data Import', () => {
             const from = new Date().toISOString().slice(0, 10);
             cy.request(`/api/portal/calendar/events?from=${from}`).then(({ body }) => {
                 expect(body.events.map((e) => e.title)).to.include('Sunday Worship Service');
+            });
+        });
+
+        it('should hold every Sunday service on a Sunday, whatever day the import ran', () => {
+            cy.request(`/api/portal/calendar/events?from=${isoDay(-10)}&to=${isoDay(40)}`).then(({ body }) => {
+                const sundayEvents = body.events.filter((e) => e.title.startsWith('Sunday'));
+                expect(sundayEvents, 'Sunday services and classes').to.have.length.at.least(5);
+                sundayEvents.forEach((event) => {
+                    const day = new Date(`${event.start.slice(0, 10)}T12:00:00Z`).getUTCDay();
+                    expect(day, `${event.title} on ${event.start}`).to.eq(0);
+                });
             });
         });
     });
