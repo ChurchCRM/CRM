@@ -55,16 +55,66 @@
                 { "position": "Musician", "min": 2, "max": 2 }
               ],
               "assignments": [
-                { "occurrence": 1, "position": "Vocalist", "email": "karen.flores@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 1, "position": "Vocalist", "email": "nancy.harris@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 1, "position": "Musician", "email": "paul.flores14@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 1, "position": "Musician", "email": "edward.lee@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 2, "position": "Vocalist", "email": "jessica.flores@demo.churchcrm.io", "status": "pending" },
-                { "occurrence": 2, "position": "Vocalist", "email": "betty.harris66@demo.churchcrm.io", "status": "declined" },
-                { "occurrence": 2, "position": "Musician", "email": "richard.harris@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 2, "position": "Musician", "email": "daniel.rivera@demo.churchcrm.io", "status": "pending" },
-                { "occurrence": 3, "position": "Vocalist", "email": "michelle.thompson@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 3, "position": "Musician", "email": "paul.flores14@demo.churchcrm.io", "status": "accepted" }
+                {
+                  "occurrence": 1,
+                  "position": "Vocalist",
+                  "email": "karen.flores@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Vocalist",
+                  "email": "nancy.harris@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Musician",
+                  "email": "paul.flores14@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Musician",
+                  "email": "edward.lee@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Vocalist",
+                  "email": "jessica.flores@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Vocalist",
+                  "email": "betty.harris66@demo.churchcrm.io",
+                  "status": "declined"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Musician",
+                  "email": "richard.harris@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Musician",
+                  "email": "daniel.rivera@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Vocalist",
+                  "email": "michelle.thompson@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Musician",
+                  "email": "paul.flores14@demo.churchcrm.io",
+                  "status": "accepted"
+                }
               ]
             }
           ]
@@ -103,9 +153,24 @@
                 { "position": "Slides & Livestream", "min": 1, "max": 1 }
               ],
               "assignments": [
-                { "occurrence": 1, "position": "Slides & Livestream", "email": "jennifer.rivera@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 2, "position": "Slides & Livestream", "email": "mark.thompson@demo.churchcrm.io", "status": "pending" },
-                { "occurrence": 3, "position": "Slides & Livestream", "email": "christopher.rodriguez@demo.churchcrm.io", "status": "accepted" }
+                {
+                  "occurrence": 1,
+                  "position": "Slides & Livestream",
+                  "email": "jennifer.rivera@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Slides & Livestream",
+                  "email": "mark.thompson@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Slides & Livestream",
+                  "email": "christopher.rodriguez@demo.churchcrm.io",
+                  "status": "accepted"
+                }
               ]
             }
           ]
@@ -150,13 +215,48 @@
                 { "position": "Welcome Desk", "min": 1, "max": 1 }
               ],
               "assignments": [
-                { "occurrence": 1, "position": "Door Greeter", "email": "kevin.nguyen@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 1, "position": "Door Greeter", "email": "mary.nguyen@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 1, "position": "Welcome Desk", "email": "cynthia.thomas@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 2, "position": "Door Greeter", "email": "patricia.brown87@demo.churchcrm.io", "status": "pending" },
-                { "occurrence": 2, "position": "Welcome Desk", "email": "stephanie.adams@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 3, "position": "Door Greeter", "email": "ryan.brown@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 3, "position": "Door Greeter", "email": "donna.hernandez48@demo.churchcrm.io", "status": "declined" }
+                {
+                  "occurrence": 1,
+                  "position": "Door Greeter",
+                  "email": "kevin.nguyen@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Door Greeter",
+                  "email": "mary.nguyen@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Welcome Desk",
+                  "email": "cynthia.thomas@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Door Greeter",
+                  "email": "patricia.brown87@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Welcome Desk",
+                  "email": "stephanie.adams@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Door Greeter",
+                  "email": "ryan.brown@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Door Greeter",
+                  "email": "donna.hernandez48@demo.churchcrm.io",
+                  "status": "declined"
+                }
               ]
             }
           ]
@@ -201,11 +301,36 @@
                 { "position": "Setup & Cleanup", "min": 1, "max": 2 }
               ],
               "assignments": [
-                { "occurrence": 1, "position": "Barista", "email": "daniel.thompson@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 1, "position": "Setup & Cleanup", "email": "michael.jones@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 2, "position": "Barista", "email": "melissa.lewis@demo.churchcrm.io", "status": "pending" },
-                { "occurrence": 2, "position": "Setup & Cleanup", "email": "joseph.hernandez@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 3, "position": "Setup & Cleanup", "email": "ashley.jones61@demo.churchcrm.io", "status": "pending" }
+                {
+                  "occurrence": 1,
+                  "position": "Barista",
+                  "email": "daniel.thompson@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Setup & Cleanup",
+                  "email": "michael.jones@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Barista",
+                  "email": "melissa.lewis@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Setup & Cleanup",
+                  "email": "joseph.hernandez@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Setup & Cleanup",
+                  "email": "ashley.jones61@demo.churchcrm.io",
+                  "status": "pending"
+                }
               ]
             }
           ]
@@ -247,10 +372,30 @@
                 { "position": "Assistant Teacher", "min": 1, "max": 1 }
               ],
               "assignments": [
-                { "occurrence": 1, "position": "Teacher", "email": "paul.nelson94@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 1, "position": "Assistant Teacher", "email": "nancy.hernandez@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 2, "position": "Assistant Teacher", "email": "linda.nguyen@demo.churchcrm.io", "status": "pending" },
-                { "occurrence": 4, "position": "Assistant Teacher", "email": "nancy.hernandez@demo.churchcrm.io", "status": "accepted" }
+                {
+                  "occurrence": 1,
+                  "position": "Teacher",
+                  "email": "paul.nelson94@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Assistant Teacher",
+                  "email": "nancy.hernandez@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Assistant Teacher",
+                  "email": "linda.nguyen@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 4,
+                  "position": "Assistant Teacher",
+                  "email": "nancy.hernandez@demo.churchcrm.io",
+                  "status": "accepted"
+                }
               ]
             }
           ]
@@ -277,11 +422,36 @@
                 { "position": "Assistant Teacher", "min": 1, "max": 1 }
               ],
               "assignments": [
-                { "occurrence": 1, "position": "Teacher", "email": "jason.johnson85@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 1, "position": "Assistant Teacher", "email": "ryan.nguyen@demo.churchcrm.io", "status": "accepted" },
-                { "occurrence": 2, "position": "Teacher", "email": "paul.nelson94@demo.churchcrm.io", "status": "pending" },
-                { "occurrence": 3, "position": "Teacher", "email": "jason.johnson85@demo.churchcrm.io", "status": "declined" },
-                { "occurrence": 3, "position": "Assistant Teacher", "email": "sandra.rodriguez81@demo.churchcrm.io", "status": "accepted" }
+                {
+                  "occurrence": 1,
+                  "position": "Teacher",
+                  "email": "jason.johnson85@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 1,
+                  "position": "Assistant Teacher",
+                  "email": "ryan.nguyen@demo.churchcrm.io",
+                  "status": "accepted"
+                },
+                {
+                  "occurrence": 2,
+                  "position": "Teacher",
+                  "email": "paul.nelson94@demo.churchcrm.io",
+                  "status": "pending"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Teacher",
+                  "email": "jason.johnson85@demo.churchcrm.io",
+                  "status": "declined"
+                },
+                {
+                  "occurrence": 3,
+                  "position": "Assistant Teacher",
+                  "email": "sandra.rodriguez81@demo.churchcrm.io",
+                  "status": "accepted"
+                }
               ]
             }
           ]
