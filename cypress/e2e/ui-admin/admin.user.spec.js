@@ -59,6 +59,13 @@ describe("Admin User Password", () => {
             .and("not.contain", "Password Change Successful");
     });
 
+    it("Admin Change password refuses a blank password", () => {
+        cy.visit("/admin/system/user/99/changePassword");
+        cy.get("#NewPassword1").closest("form").submit();
+        cy.get("#NewPasswordError").should("have.text", "Enter a new password");
+        cy.contains("Password Change Successful").should("not.exist");
+    });
+
     it("Non-admin user denied access to change password page", () => {
         cy.setupStandardSession();
         cy.visit({ url: "admin/system/user/99/changePassword", failOnStatusCode: false });

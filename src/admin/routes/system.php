@@ -953,6 +953,10 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
         $newPassword = (string) ($loginRequestBody['NewPassword1'] ?? '');
 
         try {
+            if (trim($newPassword) === '') {
+                throw new PasswordChangeException('New', gettext('Enter a new password'));
+            }
+
             if ($newPassword !== (string) ($loginRequestBody['NewPassword2'] ?? '')) {
                 throw new PasswordChangeException('New', gettext('You must enter the same password in both boxes'));
             }

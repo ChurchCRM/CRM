@@ -95,6 +95,23 @@ describe("Standard User Password", () => {
             .and("not.contain", "Incorrect password supplied for current user");
     });
 
+    it("Server refuses a blank new password", () => {
+        cy.visit("/v2/user/current/changepassword");
+        cy.get("input[name=csrf_token]")
+            .invoke("val")
+            .then((csrfToken) =>
+                cy.request({
+                    method: "POST",
+                    url: "/v2/user/current/changepassword",
+                    form: true,
+                    body: { csrf_token: csrfToken, OldPassword: "ILikePancakes", NewPassword1: " ", NewPassword2: " " },
+                }),
+            )
+            .its("body")
+            .should("contain", "Enter a new password")
+            .and("not.contain", "Incorrect password supplied for current user");
+    });
+
 });
 
 /**

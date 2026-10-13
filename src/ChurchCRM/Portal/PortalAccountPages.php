@@ -68,13 +68,18 @@ class PortalAccountPages
      *
      * @param array<string, mixed>|object|null $body the parsed request body
      *
-     * @throws PasswordChangeException when the two new boxes differ, the old
-     *                                 password is wrong or the new one is refused
+     * @throws PasswordChangeException when the new password is blank, the two
+     *                                 new boxes differ, the old password is
+     *                                 wrong or the new one is refused
      */
     public static function applyPasswordChange(User $user, array|object|null $body): void
     {
         $fields = is_array($body) ? $body : [];
         $newPassword = (string) ($fields['NewPassword1'] ?? '');
+
+        if (trim($newPassword) === '') {
+            throw new PasswordChangeException('New', gettext('Enter a new password'));
+        }
 
         if ($newPassword !== (string) ($fields['NewPassword2'] ?? '')) {
             throw new PasswordChangeException('New', gettext('You must enter the same password in both boxes'));
