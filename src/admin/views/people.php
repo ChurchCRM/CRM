@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -59,7 +60,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <button type="button" class="btn btn-outline-primary" id="gradePromoteNow"
                                 data-expected-last-at="<?= InputUtils::escapeAttribute($gradePromotion['lastAt']) ?>"
                                 data-moved="<?= (int) $gradePromotion['preview']['moved'] ?>"
-                                data-finished="<?= (int) $gradePromotion['preview']['finished'] ?>">
+                                data-finished="<?= (int) $gradePromotion['preview']['finished'] ?>"
+                                data-promoted-this-year="<?= $gradePromotion['promotedThisYear'] ? '1' : '0' ?>"
+                                data-last-run="<?= InputUtils::escapeAttribute($gradePromotion['lastRun'] ?? '') ?>"
+                                data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>">
                             <i class="fa-solid fa-arrow-up-right-dots me-1"></i><?= gettext('Promote Now') ?>
                         </button>
                     </div>

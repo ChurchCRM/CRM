@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -25,7 +26,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </select>
             </div>
             <div class="col-auto">
-                <button type="button" class="btn btn-primary" id="applyGradePreset">
+                <button type="button" class="btn btn-primary" id="applyGradePreset" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>">
                     <i class="fa-solid fa-check me-1"></i><?= gettext('Apply') ?>
                 </button>
             </div>

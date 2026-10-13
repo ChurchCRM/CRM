@@ -57,7 +57,7 @@ describe("API Private Admin - School grades", () => {
 
     it("reports the promotion settings and what a promotion would do", () => {
         status().then((body) => {
-            expect(body).to.have.all.keys("month", "day", "nextDate", "nextDateText", "lastAt", "lastResult", "preview");
+            expect(body).to.have.all.keys("month", "day", "nextDate", "nextDateText", "lastAt", "lastRunText", "promotedThisYear", "lastResult", "preview");
             expect(body.preview.moved).to.be.at.least(1);
             expect(body.preview.finished).to.be.at.least(1);
         });
@@ -123,6 +123,13 @@ describe("API Private Admin - School grades", () => {
         runTimerJobs();
         gradeOf("first").should("eq", 6);
         status().its("nextDate").should("match", new RegExp(`^${year + 1}-`));
+    });
+
+    it("re-saving an unchanged promotion date keeps the day it was set", () => {
+        cy.restoreSystemConfig("iGradePromotionMonth", "6");
+        cy.restoreSystemConfig("sGradePromotionSetDate", "2020-01-01");
+        cy.restoreSystemConfig("iGradePromotionMonth", "6");
+        cy.getSystemConfig("sGradePromotionSetDate").should("eq", "2020-01-01");
     });
 
     it("the yearly job waits for the date and stays off without a month", () => {

@@ -94,6 +94,7 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
     }
 
     $volunteerV2WasOn = User::isVolunteerV2Enabled();
+    $gradeDateBefore = in_array($configName, GradePromotionService::DATE_SETTINGS, true) ? SystemConfig::getValue($configName) : null;
 
     // Sanitization is applied centrally in SystemConfig::setValue() — no duplicate call here.
     SystemConfig::setValue($configName, $value);
@@ -103,7 +104,7 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
         VolunteerEventService::addOtherEventType();
     }
 
-    if (in_array($configName, GradePromotionService::DATE_SETTINGS, true)) {
+    if ($gradeDateBefore !== null && $gradeDateBefore !== SystemConfig::getValue($configName)) {
         GradePromotionService::recordDateSet();
     }
 

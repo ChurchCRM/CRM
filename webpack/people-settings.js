@@ -84,15 +84,32 @@ async function copyChurchAddress(panel) {
 function refreshGradePromotion() {
   window.CRM.AdminAPIRequest({ method: "GET", path: "grades/promotion" }).done((status) => {
     document.getElementById("gradeNextPromotion").textContent = status.nextDateText;
+    const button = document.getElementById("gradePromoteNow");
+    button.dataset.expectedLastAt = status.lastAt;
+    button.dataset.moved = String(status.preview.moved);
+    button.dataset.finished = String(status.preview.finished);
+    button.dataset.promotedThisYear = status.promotedThisYear ? "1" : "0";
+    button.dataset.lastRun = status.lastRunText || "";
   });
 }
 
 function promoteGrades(button) {
-  const { expectedLastAt, moved, finished } = button.dataset;
+  const { expectedLastAt, moved, finished, promotedThisYear, lastRun, csrfToken } = button.dataset;
   if (Number(moved) + Number(finished) === 0) {
     window.CRM.notify(t("Nobody has a grade to promote."), { type: "info", delay: 4000 });
     return;
   }
+  const warning =
+    promotedThisYear === "1"
+      ? `<p class="text-danger fw-bold">${window.CRM.escapeHtml(
+          i18next.t(
+            "Grades were already promoted this year, on {{date}}. Promoting again moves everyone up another grade.",
+            {
+              date: lastRun,
+            },
+          ),
+        )}</p>`
+      : "";
   const message = [
     t("Everyone with a grade will move up one grade now, and this will count as this year's promotion."),
     i18next.t("Moving up: {{total}}", { total: Number(moved) }),
@@ -100,10 +117,11 @@ function promoteGrades(button) {
   ]
     .map((line) => `<p>${window.CRM.escapeHtml(line)}</p>`)
     .join("");
+  const confirmMessage = warning + message;
 
   window.bootbox.confirm({
     title: t("Promote Grades"),
-    message,
+    message: confirmMessage,
     buttons: {
       cancel: { label: t("Cancel"), className: "btn-secondary" },
       confirm: { label: t("Promote Now"), className: "btn-primary" },
@@ -117,6 +135,7 @@ function promoteGrades(button) {
         method: "POST",
         path: "grades/promotion",
         data: JSON.stringify({ expectedLastAt }),
+        headers: { "X-CSRF-Token": csrfToken },
       })
         .done(() => window.location.reload())
         .fail(() => {

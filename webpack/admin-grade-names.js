@@ -60,7 +60,11 @@ function apply(key, button) {
             button.disabled = false;
             return;
           }
-          window.CRM.AdminAPIRequest({ method: "POST", path: `grades/presets/${encodeURIComponent(key)}` })
+          window.CRM.AdminAPIRequest({
+            method: "POST",
+            path: `grades/presets/${encodeURIComponent(key)}`,
+            headers: { "X-CSRF-Token": button.dataset.csrfToken },
+          })
             .done(() => window.location.reload())
             .fail(() => {
               button.disabled = false;

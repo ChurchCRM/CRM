@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\data\GradePresets;
 use ChurchCRM\Service\GradePromotionService;
 use ChurchCRM\Service\GradeService;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -52,4 +53,4 @@ $app->group('/api/grades', function (RouteCollectorProxy $group): void {
 
         return SlimUtils::renderJSON($response, GradeService::applyPreset($args['key'], (int) AuthenticationManager::getCurrentUser()->getId()));
     });
-});
+})->add(new CSRFMiddleware());

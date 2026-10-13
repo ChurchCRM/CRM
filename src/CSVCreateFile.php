@@ -576,7 +576,7 @@ if ($sFormat === 'addtocart') {
                         $row[] = $familyRoles[$per_fmr_ID];
                     }
                     if (isset($_POST['PrintGrade'])) {
-                        $row[] = $person->getGradeName() ?? '';
+                        $row[] = $person?->getGradeName() ?? '';
                     }
                     if (isset($_POST['PrintGender'])) {
                         $row[] = $person->getGenderName();

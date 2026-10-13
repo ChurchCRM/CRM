@@ -82,14 +82,15 @@ class GradePromotionService
     }
 
     /**
-     * @return array{month: int, day: int, nextDate: ?string, nextDateText: string, lastAt: string, lastResult: ?array, preview: array{moved: int, finished: int}}
+     * @return array{month: int, day: int, nextDate: ?string, nextDateText: string, lastAt: string, lastRunText: ?string, promotedThisYear: bool, lastResult: ?array, preview: array{moved: int, finished: int}}
      */
     public static function status(): array
     {
         $lastAt = self::readMarker() ?? '';
         $year = (int) DateTimeUtils::getToday()->format('Y');
         $thisYearsDate = self::promotionDate($year);
-        $waitsForNextYear = $lastAt >= $year . '-01-01 00:00:00' || ($thisYearsDate !== null && $thisYearsDate < self::setDate());
+        $promotedThisYear = $lastAt >= $year . '-01-01 00:00:00';
+        $waitsForNextYear = $promotedThisYear || ($thisYearsDate !== null && $thisYearsDate < self::setDate());
         $result = json_decode(self::readConfig(self::LAST_RESULT_CONFIG) ?? '', true);
         $nextDate = self::promotionDate($waitsForNextYear ? $year + 1 : $year);
 
@@ -99,6 +100,8 @@ class GradePromotionService
             'nextDate' => $nextDate,
             'nextDateText' => $nextDate === null ? gettext('Off') : DateTimeUtils::formatDate($nextDate),
             'lastAt' => $lastAt,
+            'lastRunText' => $lastAt === '' ? null : DateTimeUtils::formatDate(substr($lastAt, 0, 19), true),
+            'promotedThisYear' => $promotedThisYear,
             'lastResult' => is_array($result) ? $result : null,
             'preview' => self::preview(),
         ];

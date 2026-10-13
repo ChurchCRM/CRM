@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GradePromotionService;
-use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -149,7 +148,7 @@ $app->get('/people', function (Request $request, Response $response): Response {
 });
 
 /**
- * @return array{lastAt: string, lastRun: ?string, lastBy: ?string, lastResult: ?array, nextDateText: string, preview: array{moved: int, finished: int}}
+ * @return array{lastAt: string, lastRun: ?string, promotedThisYear: bool, lastBy: ?string, lastResult: ?array, nextDateText: string, preview: array{moved: int, finished: int}}
  */
 function gradePromotionSummary(): array
 {
@@ -165,7 +164,8 @@ function gradePromotionSummary(): array
 
     return [
         'lastAt' => $status['lastAt'],
-        'lastRun' => $status['lastAt'] === '' ? null : DateTimeUtils::formatDate($status['lastAt'], true),
+        'lastRun' => $status['lastRunText'],
+        'promotedThisYear' => $status['promotedThisYear'],
         'lastBy' => $lastBy,
         'lastResult' => $result,
         'nextDateText' => $status['nextDateText'],

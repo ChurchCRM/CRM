@@ -65,6 +65,20 @@ describe("School grades", () => {
         cy.get(".bootbox .btn-primary").click();
         cy.get("#gradeLastPromotion").should("contain", "Church Admin");
         gradeOf("kinder").should("eq", 6);
+
+        cy.get("#gradePromoteNow").click();
+        cy.get(".bootbox").should("be.visible").and("contain", "Grades were already promoted this year");
+        cy.get(".bootbox .btn-secondary").click();
+        gradeOf("kinder").should("eq", 6);
+    });
+
+    it("refuses a grade change from the browser without the page's CSRF token", () => {
+        cy.request({ method: "POST", url: "/admin/api/grades/promotion", body: { expectedLastAt: "" }, failOnStatusCode: false })
+            .its("status")
+            .should("eq", 403);
+        cy.request({ method: "POST", url: "/admin/api/grades/presets/england-wales", failOnStatusCode: false })
+            .its("status")
+            .should("eq", 403);
     });
 
     it("the Grades editor switches to another country's names after a preview", () => {
