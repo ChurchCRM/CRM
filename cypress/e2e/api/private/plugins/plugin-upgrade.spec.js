@@ -8,7 +8,7 @@ describe('Community plugin upgrade (fake registry)', () => {
         );
 
     const installedPlugin = () =>
-        cy.makePrivateAdminAPICall('GET', '/plugins/api/plugins').then((r) => r.body.data.find((p) => p.id === ID));
+        cy.makePrivateAdminAPICall('GET', '/plugins/api/plugins').then((r) => r.body.data.find((p) => p.id === ID) ?? null);
 
     before(() => {
         cy.makePrivateAdminAPICall('DELETE', PATH, null, [200, 400]);
@@ -98,7 +98,7 @@ describe('Community plugin upgrade (fake registry)', () => {
 
     it('restores the plugin from an interrupted upgrade on the next install', () => {
         cy.task('pluginFixtures:interruptUpgrade', ID);
-        installedPlugin().then((p) => expect(p, 'a parked backup is not discovered').to.be.undefined);
+        installedPlugin().then((p) => expect(p, 'a parked backup is not discovered').to.be.null);
         approve('2.1.0').then((downloadUrl) => {
             cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/install', { downloadUrl }).then((r) => {
                 expect(r.body.data.upgradedFrom).to.eq('2.0.0');
