@@ -1052,7 +1052,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                     <select name="Grade<?= $iCount ?>" class="form-select form-select-sm">
                                                         <option value=""><?= gettext('Unassigned') ?></option>
                                                         <?php foreach (GradeService::names() as $gradeId => $gradeName) { ?>
-                                                            <option value="<?= $gradeId ?>"<?= ($aGrades[$iCount] ?? null) === $gradeId ? ' selected' : '' ?>><?= InputUtils::escapeHTML($gradeName) ?></option>
+                                                            <option value="<?= (int) $gradeId ?>"<?= ($aGrades[$iCount] ?? null) === $gradeId ? ' selected' : '' ?>><?= InputUtils::escapeHTML($gradeName) ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </td>

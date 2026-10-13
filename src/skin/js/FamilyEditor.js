@@ -99,7 +99,7 @@ $(document).ready(function () {
 
       let gradeOptions = '<option value="">' + window.CRM.i18n.unassigned + "</option>";
       (window.CRM.grades || []).forEach(function (grade) {
-        gradeOptions += '<option value="' + grade.id + '">' + window.CRM.escapeHtml(grade.name) + "</option>";
+        gradeOptions += '<option value="' + Number(grade.id) + '">' + window.CRM.escapeHtml(grade.name) + "</option>";
       });
 
       let newRow = `
