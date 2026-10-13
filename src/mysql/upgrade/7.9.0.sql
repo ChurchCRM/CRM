@@ -1,4 +1,4 @@
--- ChurchCRM 7.8.1 upgrade script
+-- ChurchCRM 7.9.0 upgrade script
 
 -- #10531: a team leader adds someone to a ministry's volunteer pool and the
 -- ministry's coordinators are emailed (outbox type `pool_add`). Appending an
