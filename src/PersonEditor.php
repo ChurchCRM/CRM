@@ -592,6 +592,8 @@ $rsFamilies = RunQuery($sSQL);
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
 $rsFamilyRoles = RunQuery($sSQL);
 
+$sCountry = Countries::toISO($sCountry);
+
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('People'), '/people/dashboard'],
     [($iPersonID > 0) ? gettext('Edit Person') : gettext('New Person')],
@@ -830,7 +832,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('Country') ?>:
                         <?= $bFamilyCountry ? '</span>' : '' ?>
                     </label>
-                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute(Countries::toISO($sCountry)) // nosemgrep: php.lang.security.injection.echoed-request.echoed-request ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultCountry')) ?>">
+                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultCountry')) ?>">
                     </select>
                 </div>
             </div>

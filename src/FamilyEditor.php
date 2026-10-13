@@ -592,6 +592,7 @@ $sSecondCityAttr = htmlspecialchars(stripslashes($sSecondCity ?? ''), ENT_QUOTES
 $sSecondStateAttr = htmlspecialchars(stripslashes($sSecondState ?? ''), ENT_QUOTES, 'UTF-8');
 $sSecondZipAttr = htmlspecialchars(stripslashes($sSecondZip ?? ''), ENT_QUOTES, 'UTF-8');
 $sSecondCountryAttr = htmlspecialchars(stripslashes(Countries::toISO($sSecondCountry)), ENT_QUOTES, 'UTF-8');
+$sCountry = Countries::toISO($sCountry);
 
 require_once __DIR__ . '/Include/Header.php';
 ?>
@@ -700,7 +701,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="Country"><?= gettext('Country') ?>:</label>
-                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute(Countries::toISO($sCountry)) // nosemgrep: php.lang.security.injection.echoed-request.echoed-request ?>" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultCountry') ?>">
+                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultCountry') ?>">
                     </select>
                 </div>
             </div>
