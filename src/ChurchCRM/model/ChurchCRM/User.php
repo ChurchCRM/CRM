@@ -589,7 +589,7 @@ class User extends BaseUser
      */
     public function updatePassword(string $password): void
     {
-        if (trim($password) === '') {
+        if (mb_trim($password) === '') {
             throw new PasswordChangeException('New', gettext('Enter a new password'));
         }
 
@@ -607,7 +607,7 @@ class User extends BaseUser
     {
         // An account may already hold a hash of a blank password, saved before
         // updatePassword() refused blanks. It must not sign in with nothing.
-        if (trim($password) === '') {
+        if (mb_trim($password) === '') {
             return false;
         }
 
