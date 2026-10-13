@@ -164,6 +164,7 @@ HTACCESS;
 
         // (3) Destination check — only a newer approved release may replace an install.
         $destDir = $pluginsPath . '/community/' . $pluginId;
+        self::recoverInterruptedUpgrade($destDir);
         $upgradedFrom = null;
         if (is_dir($destDir)) {
             $manifest = json_decode((string) @file_get_contents($destDir . '/plugin.json'), true);
@@ -503,10 +504,13 @@ HTACCESS;
             ]);
         }
 
-        // Delete on-disk files.
-        if (is_dir($communityPath)) {
+        // Delete on-disk files (and any upgrade backup, so it cannot be restored later).
+        self::withPluginLock($pluginsPath, $pluginId, static function () use ($communityPath): array {
             self::recursiveDelete($communityPath);
-        }
+            self::recursiveDelete(self::backupPath($communityPath));
+
+            return [];
+        });
 
         // Clear all plugin.{id}.* config keys.
         $removedKeys = self::clearPluginConfig($pluginId);
@@ -971,12 +975,17 @@ HTACCESS;
     }
 
     /**
-     * Swap a staged upgrade into place. The old directory is kept aside until
-     * the new one is in position so a failed swap restores the working install.
+     * Swap a staged upgrade into place. The old copy is parked in
+     * community/.upgrade-backup/{id}: no plugin.json sits directly in the holder
+     * directory, so plugin discovery never sees it. If the swap fails the old
+     * copy is put back; if the process dies mid-swap, recoverInterruptedUpgrade()
+     * restores it on the next install.
      */
     private static function replaceInstalled(string $stagedDir, string $destDir): void
     {
-        $backup = $destDir . '.upgrade-' . bin2hex(random_bytes(4));
+        $backup = self::backupPath($destDir);
+        self::recursiveDelete($backup);
+        self::ensureDir(dirname($backup));
         if (!@rename($destDir, $backup)) {
             throw new \RuntimeException('Could not move the installed plugin aside for the upgrade.');
         }
@@ -984,8 +993,37 @@ HTACCESS;
             self::moveStagedToDest($stagedDir, $destDir);
         } catch (\Throwable $e) {
             self::recursiveDelete($destDir);
-            @rename($backup, $destDir);
+            if (!@rename($backup, $destDir)) {
+                LoggerUtils::getAppLogger()->error('Could not restore plugin after failed upgrade', ['backup' => $backup]);
+            }
             throw $e;
+        }
+        self::recursiveDelete($backup);
+    }
+
+    private static function backupPath(string $destDir): string
+    {
+        return dirname($destDir) . '/.upgrade-backup/' . basename($destDir);
+    }
+
+    /**
+     * A backup that still exists means an upgrade never finished (a completed one
+     * deletes it), so the backup is the last known-good copy: put it back.
+     */
+    private static function recoverInterruptedUpgrade(string $destDir): void
+    {
+        $backup = self::backupPath($destDir);
+        if (!is_dir($backup)) {
+            return;
+        }
+        if (is_file($backup . '/plugin.json')) {
+            self::recursiveDelete($destDir);
+            if (@rename($backup, $destDir)) {
+                LoggerUtils::getAppLogger()->warning('Restored plugin from an interrupted upgrade', ['path' => $destDir]);
+
+                return;
+            }
+            throw new \RuntimeException('Could not restore the plugin from an interrupted upgrade.');
         }
         self::recursiveDelete($backup);
     }

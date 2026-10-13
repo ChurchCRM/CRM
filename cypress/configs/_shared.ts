@@ -125,7 +125,7 @@ async function mailpitFetch(path: string, init?: Record<string, unknown>) {
  * https://fixtures.invalid/<name>.zip are served from it.
  */
 export const pluginFixtureTasks = {
-  async 'pluginFixtures:write'({ id, version }: { id: string; version: string }) {
+  async 'pluginFixtures:write'({ id, version, badSha = false }: { id: string; version: string; badSha?: boolean }) {
     const archiver = require('archiver');
     const crypto = require('crypto');
     const fs = require('fs');
@@ -167,7 +167,7 @@ export const pluginFixtureTasks = {
         name: 'Upgrade Fixture',
         version,
         downloadUrl: `https://fixtures.invalid/${zipName}`,
-        sha256: crypto.createHash('sha256').update(fs.readFileSync(zipPath)).digest('hex'),
+        sha256: badSha ? '0'.repeat(64) : crypto.createHash('sha256').update(fs.readFileSync(zipPath)).digest('hex'),
         risk: 'low',
         riskSummary: 'Test fixture.',
         permissions: []
@@ -177,11 +177,21 @@ export const pluginFixtureTasks = {
     return plugins;
   },
 
-  'pluginFixtures:leftovers'(id: string) {
+  /** Is an upgrade backup still parked for this plugin? */
+  'pluginFixtures:backupExists'(id: string) {
+    const fs = require('fs');
+    const path = require('path');
+    return fs.existsSync(path.resolve(__dirname, '../../src/plugins/community/.upgrade-backup', id));
+  },
+
+  /** Simulate a crash mid-swap: the live copy is already parked, the new one never arrived. */
+  'pluginFixtures:interruptUpgrade'(id: string) {
     const fs = require('fs');
     const path = require('path');
     const community = path.resolve(__dirname, '../../src/plugins/community');
-    return fs.readdirSync(community).filter((name: string) => name.startsWith(`${id}.upgrade-`));
+    fs.mkdirSync(path.join(community, '.upgrade-backup'), { recursive: true });
+    fs.renameSync(path.join(community, id), path.join(community, '.upgrade-backup', id));
+    return null;
   },
 
   'pluginFixtures:clear'() {

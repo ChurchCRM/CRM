@@ -2,8 +2,8 @@ describe('Community plugin upgrade (fake registry)', () => {
     const ID = 'upgrade-fixture';
     const PATH = `/plugins/api/plugins/${ID}`;
 
-    const approve = (version) =>
-        cy.task('pluginFixtures:write', { id: ID, version }).then(([entry]) =>
+    const approve = (version, badSha = false) =>
+        cy.task('pluginFixtures:write', { id: ID, version, badSha }).then(([entry]) =>
             cy.makePrivateAdminAPICall('POST', '/plugins/api/registry/refresh').then(() => entry.downloadUrl)
         );
 
@@ -85,7 +85,26 @@ describe('Community plugin upgrade (fake registry)', () => {
         installedPlugin().then((p) => expect(p.version).to.eq('2.0.0'));
     });
 
-    it('leaves no upgrade backup directory behind', () => {
-        cy.task('pluginFixtures:leftovers', ID).should('deep.equal', []);
+    it('rejects a tampered download and keeps the installed version', () => {
+        approve('2.1.0', true).then((downloadUrl) => {
+            cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/install', { downloadUrl }, 400);
+        });
+        installedPlugin().then((p) => expect(p.version).to.eq('2.0.0'));
+    });
+
+    it('leaves no upgrade backup behind', () => {
+        cy.task('pluginFixtures:backupExists', ID).should('eq', false);
+    });
+
+    it('restores the plugin from an interrupted upgrade on the next install', () => {
+        cy.task('pluginFixtures:interruptUpgrade', ID);
+        installedPlugin().then((p) => expect(p, 'a parked backup is not discovered').to.be.undefined);
+        approve('2.1.0').then((downloadUrl) => {
+            cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/install', { downloadUrl }).then((r) => {
+                expect(r.body.data.upgradedFrom).to.eq('2.0.0');
+            });
+        });
+        installedPlugin().then((p) => expect(p.version).to.eq('2.1.0'));
+        cy.task('pluginFixtures:backupExists', ID).should('eq', false);
     });
 });
