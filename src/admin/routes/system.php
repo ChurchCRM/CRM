@@ -154,6 +154,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'mode' => $mode,
             'listId' => $listConfig['listId'],
             'noun' => $listConfig['noun'],
+            'addLabel' => $mode === 'grades' ? gettext('Add New Grade') : gettext('Add New') . ' ' . $listConfig['noun'],
             'optionRows' => $optionRows,
             'inactiveClasses' => $inactiveClasses,
             'directoryClasses' => $directoryClasses,

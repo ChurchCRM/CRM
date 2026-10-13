@@ -43,7 +43,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-header">
         <h5 class="mb-0">
             <i class="fa-solid fa-plus"></i>
-            <?= gettext('Add New') . ' ' . InputUtils::escapeHTML($noun) ?>
+            <?= InputUtils::escapeHTML($addLabel) ?>
         </h5>
     </div>
     <div class="card-body">
@@ -57,7 +57,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="text-center mt-3">
             <button type="button" class="btn btn-success" id="addOptionBtn">
                 <i class="fa-solid fa-plus"></i>
-                <?= gettext('Add New') . ' ' . InputUtils::escapeHTML($noun) ?>
+                <?= InputUtils::escapeHTML($addLabel) ?>
             </button>
         </div>
     </div>
