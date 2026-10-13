@@ -386,11 +386,13 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
             cy.visit(`${TEAMS_URL}/${teamLed}`);
 
             cy.get("#nav-item-volunteers").click();
+            cy.intercept("POST", "**/positions/*/qualifications").as("grantQualification");
             cy.get("#volunteerQualificationsTable tbody .volunteer-qual-toggle", {
                 timeout: 15000,
             })
                 .first()
                 .click();
+            cy.wait("@grantQualification").its("response.statusCode").should("be.oneOf", [200, 201]);
 
             // The tick is a write; read it back from the database rather than the cell
             // it was made in. The position is this team's only one, so any row against
