@@ -294,7 +294,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="mb-3">
           <label class="form-label" for="assign-person-select"><?= gettext('Volunteer') ?></label>
           <select class="form-select" id="assign-person-select"></select>
-          <div class="form-hint"><?= gettext('Whoever served least recently is listed first.') ?></div>
+          <div class="form-text"><?= gettext('Whoever served least recently is listed first.') ?></div>
         </div>
         <div class="empty d-none" id="assign-empty">
           <div class="empty-icon"><i class="fa-solid fa-user-slash fa-2x text-muted"></i></div>

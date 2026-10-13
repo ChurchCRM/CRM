@@ -215,7 +215,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-outline-secondary">
                   <i class="fa-solid fa-cog me-1"></i><?= gettext("Advanced Settings") ?>
                 </a>
-                <small class="form-hint mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
+                <small class="form-text mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
               </div>
             </div>
           </div>
@@ -249,7 +249,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </span>
                   </label>
                 </div>
-                <small class="form-hint"><?= gettext("Auto follows your OS or browser setting; Light and Dark override it") ?></small>
+                <small class="form-text"><?= gettext("Auto follows your OS or browser setting; Light and Dark override it") ?></small>
               </div>
             </div>
 
@@ -279,7 +279,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <button type="button" class="btn-color-swatch rounded-circle<?= $value === $_userPrimary ? ' active' : '' ?>" data-color="<?= $value ?>" style="background-color: <?= $info['hex'] ?>;" title="<?= $info['label'] ?>" aria-label="<?= $info['label'] ?>"></button>
                   <?php endforeach; ?>
                 </div>
-                <small class="form-hint"><?= gettext("Set the accent color used for buttons, links, and active elements") ?></small>
+                <small class="form-text"><?= gettext("Set the accent color used for buttons, links, and active elements") ?></small>
               </div>
             </div>
 
@@ -298,7 +298,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <option value="100"<?= $tableVal === '100' ? ' selected' : '' ?>>100</option>
                   <option value="-1"<?= $tableVal === '-1' ? ' selected' : '' ?>><?= gettext("All") ?></option>
                 </select>
-                <small class="form-hint"><?= gettext("Default number of rows shown in data tables. Takes effect on next page load.") ?></small>
+                <small class="form-text"><?= gettext("Default number of rows shown in data tables. Takes effect on next page load.") ?></small>
               </div>
             </div>
           </div>
@@ -313,7 +313,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <select id="user-locale-setting" class="form-select">
                 </select>
-                <small class="form-hint"><?= gettext("Override the system default locale") ?>: <strong><?= $viewedUserLocaleInfo->getSystemLocale() ?></strong></small>
+                <small class="form-text"><?= gettext("Override the system default locale") ?>: <strong><?= $viewedUserLocaleInfo->getSystemLocale() ?></strong></small>
               </div>
             </div>
 
@@ -331,7 +331,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <?= $viewedUserLocaleInfo->getTranslationPercentage() ?>%
                   </div>
                 </div>
-                <small class="form-hint"><?= gettext("Percentage of strings translated for your current language") ?></small>
+                <small class="form-text"><?= gettext("Percentage of strings translated for your current language") ?></small>
               </div>
             </div>
             <?php endif; ?>
@@ -382,7 +382,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <i class="fa-solid fa-arrows-rotate me-1"></i><?= gettext("Regenerate") ?>
                   </button>
                 </div>
-                <small class="form-hint"><?= gettext("Use this key to authenticate API requests. Regenerating will invalidate the current key.") ?></small>
+                <small class="form-text"><?= gettext("Use this key to authenticate API requests. Regenerating will invalidate the current key.") ?></small>
               </div>
             </div>
 

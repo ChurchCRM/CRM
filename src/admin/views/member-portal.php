@@ -122,7 +122,7 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                                     <i class="fa-solid fa-circle-check me-2"></i><?= gettext('Activate') ?>
                                 </button>
                             </div>
-                            <p class="form-hint mt-2">
+                            <p class="form-text mt-2">
                                 <?= gettext('A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM.') ?>
                             </p>
 

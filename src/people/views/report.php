@@ -48,7 +48,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                     </select>
                     <?php endif; ?>
                     <?php if (!empty($param['help'])) : ?>
-                    <div class="form-hint"><?= InputUtils::escapeHTML($param['help']) ?></div>
+                    <div class="form-text"><?= InputUtils::escapeHTML($param['help']) ?></div>
                     <?php endif; ?>
                 </div>
                 <?php endforeach; ?>

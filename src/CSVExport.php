@@ -238,7 +238,7 @@ require_once __DIR__ . '/Include/Header.php';
                   <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                 <?php } ?>
               </select>
-              <small class="form-hint"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+              <small class="form-text"><?= gettext('Use Ctrl Key to select multiple') ?></small>
             </div>
 
             <div class="col-lg-4">
@@ -250,7 +250,7 @@ require_once __DIR__ . '/Include/Header.php';
                   <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
                 <?php } ?>
               </select>
-              <small class="form-hint"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+              <small class="form-text"><?= gettext('Use Ctrl Key to select multiple') ?></small>
             </div>
 
             <div class="col-lg-4">
@@ -271,7 +271,7 @@ require_once __DIR__ . '/Include/Header.php';
                     echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
                 } ?>
               </select>
-              <small class="form-hint"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+              <small class="form-text"><?= gettext('Use Ctrl Key to select multiple') ?></small>
             </div>
 
             <div class="col-lg-4">
