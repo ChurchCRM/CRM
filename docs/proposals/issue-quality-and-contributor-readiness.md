@@ -15,8 +15,8 @@ Keep reporting easy for churches, but require maintainers to make an implementat
 - [`.agents/skills/churchcrm/maintainer-review-gates.md`](../../.agents/skills/churchcrm/maintainer-review-gates.md), [`git-workflow.md`](../../.agents/skills/churchcrm/git-workflow.md) and [`github-interaction.md`](../../.agents/skills/churchcrm/github-interaction.md) — existing agent and epic guidance; reference the canonical guides rather than repeat their content.
 - [`.coderabbit.yaml`](../../.coderabbit.yaml) — existing automated review configuration, not a human-approval substitute.
 - [`.github/CONTRIBUTING.md`](../../.github/CONTRIBUTING.md) — GitHub-facing entry point linking to **docs.churchcrm.io/contributing**, distinct from root `CONTRIBUTING.md`. The docs-site contributor page and its beginner-issue promises must be aligned during rollout.
-- [`AGENTS.md`](../../AGENTS.md), `CLAUDE.md` (if present), and relevant skills — the discoverable agent entry points.
-- The current freeze on adding features to Query View is documented in `docs/contributing-pr-review.md`. Triage must consult an **authoritative, linked inventory** of frozen/replacement areas rather than invent a second contradictory list.
+- [`AGENTS.md`](../../AGENTS.md), `CLAUDE.md`, and relevant skills — the discoverable agent entry points.
+- The current freeze on adding features to Query View is documented in `docs/contributing-pr-review.md`. The authoritative inventory of frozen/replacement areas will live in a **Frozen areas** section of that same file; triage must consult that section rather than invent a second contradictory list.
 
 The companion community RFC governs **maintainer-authored, plain-language Feature Proposal Discussions** and **technical RFCs reviewed in draft PRs**. This RFC starts where a request becomes an implementation candidate.
 
@@ -43,7 +43,7 @@ A church user can describe a problem, current workflow, expected improvement, ve
 
 ### Evidence-based maintainer triage
 
-1. Verify current code/released behavior, existing issue(s), pending PR(s), frozen areas and cross-repository requirements. **Do not reimplement a fix already on main or reject a report just because its template is incomplete.**
+1. Verify current code/released behavior, existing issue(s), pending PR(s), frozen areas and cross-repository requirements. **Do not reimplement a fix already on master or reject a report just because its template is incomplete.**
 2. Classify normal issue, epic/children, or unresolved `Design Decision`/RFC. Technical design approval must precede implementation work that depends on it.
 3. Keep/update/split/supersede/complete/decline with a concise explanation and links. When superseding a PR, comment on the original PR promptly and link the replacement before the author spends time fixing it.
 4. Define the intended user outcome, scope/non-goals, acceptance criteria, dependencies, review risks and how to test.
