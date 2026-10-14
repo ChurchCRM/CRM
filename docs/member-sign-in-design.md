@@ -11,7 +11,7 @@
 - **Staff sign in at `/admin`**, with their username, password and two-factor, as today. `/admin` takes over from `/session/begin`.
 - **One shared step.** Every way of signing in ends at the same step: "start a portal session for this verified person". That step checks who may sign in, records the sign-in, and is the only code that creates a member session.
 - **One portal permissions model.** One check decides what each member sees and can do in the portal. Core pages, Volunteer and plugins all use it. Team leaders keep running their teams from the portal.
-- **Email belongs to people.** The family email moves to the head of household or spouse. The printed directory shows each person's email only.
+- **Email belongs to people.** The family email moves to the head of household or spouse. They can sign in with it only after an administrator confirms it is theirs. The printed directory shows each person's email only.
 - **Disable sign-in.** An administrator can stop any person signing in.
 - **Login as User** lets an administrator see a member's portal, from the person's Actions menu, read-only by default and on the record. It can't open a staff account.
 - **Release-day cutover.** The existing self-service logins stop on the day this ships.
@@ -60,10 +60,10 @@ This document puts those into one design and one delivery plan.
 | D3 | The sign-in page shows the same answer whether or not the address can sign in. | §6.1 |
 | D4 | Passkeys are in the first release. Staying signed in is the member's choice, device by device. The box is never ticked for them, and a device stays signed in for 30 days by default. | §6.2, §6.3 |
 | D5 | **Who may sign in:** family roles; classifications, which is where guests are decided; and a minimum age of 13. Deceased and inactive people can't sign in, and neither can people whose family is deactivated, who are awaiting review, or who have Disable sign-in on. In the portal, an adult is a head of household or spouse who is 18 or older. | §4 |
-| D6 | The personal email is the sign-in identity, and §9 controls who may change it. | §9 |
+| D6 | The personal email is the sign-in identity. §9 controls who may change it, and when a new address may be used to sign in. | §9 |
 | D7 | The web root goes to `/portal/login`. `/admin` is the staff sign-in page, and `/session/begin` redirects to it. | §7 |
 | D8 | One portal permissions model serves core, Volunteer and plugins. | §8 |
-| D9 | **Family email:** it moves to the head of household, then the spouse. If neither can take it, it is kept as a note in the family's timeline. | §10 |
+| D9 | **Family email:** it moves to the head of household, then the spouse. If neither can take it, it is kept as a note in the family's timeline. A moved address is used to sign in only after an administrator confirms it is that person's own. | §10 |
 | D10 | Login as User returns inside this work, in the person's Actions menu. #10392 closes in favour of it. | §6.5 |
 | D11 | **Release day:** each self-service account's portal data is copied, then the account is deleted. Member sign-in stays off until an administrator turns it on. | §12 |
 | D12 | Passkeys add one WebAuthn library. | §14 |
@@ -155,6 +155,7 @@ A person may start a portal session when **all** of these hold. The shared step 
 
 **The email rule** (A2):
 - the personal email (`per_Email`) only. The work email never matches, and after §10 there is no family email;
+- not while the address is unconfirmed (§9);
 - an exact match after trimming and lower-casing;
 - if two people who would otherwise qualify share the address, nobody signs in with it. Both people show up under "Email needs attention".
 
@@ -270,6 +271,7 @@ Login as User lets an administrator see the Member Portal exactly as a member se
 
 - Sign-in uses the OpenID Connect authorization code flow, with PKCE, state and nonce checks. An administrator enters each provider's client id and secret.
 - The provider's email is used **only when the provider says it's verified**. For Microsoft, that means the verified-domain claim, because a Microsoft account's `email` claim can be set to an address its owner doesn't control.
+- A provider's claim doesn't prove that this person controls that exact mailbox. Microsoft's proves only the domain. So the first time a Google or Microsoft account is used, ChurchCRM emails a code to that address, as in §6.1, and links the account to the person only when the code is typed. Later sign-ins match the linked account (Google's `sub`, Microsoft's `tid` and `oid`), not the email.
 - The verified email goes through the same email rule as §4, and then the shared step with `GOOGLE` or `MICROSOFT`.
 - The detailed design is left to its own issue. It needs a second library.
 
@@ -390,19 +392,26 @@ Neither of these is planned or scheduled. They are listed to show the kind of po
 
 ## 9. The sign-in email is a credential
 
-Under A2, whoever controls a person's personal email can sign in as that person. So changes to that email follow these rules. The first time a person signs in by email, ChurchCRM records the address as proven. "Has signed in" below means that has happened.
+Under A2, whoever controls a person's personal email can sign in as that person. An email sign-in proves that whoever signs in controls that exact mailbox, because the code and link go only to that address (§6.1). It doesn't prove that the mailbox is that person's. So changes to that email follow these rules. The first time a person signs in by email, ChurchCRM records the address as proven. "Has signed in" below means that has happened.
 
 | Who changes it | Rule |
 |---|---|
 | The member, in the portal | The new address gets a confirmation link, and the change happens when the link is used. The old address gets a notice. Today the profile form saves it at once. |
 | A family adult, in the portal | Can't change another member's personal email, as today. |
-| Staff with Edit Records | Allowed, as contact data. If the person has signed in, all their sessions and remembered devices end, and the old address gets a notice. Their passkeys stay. |
+| Staff with Edit Records | Allowed, as contact data. If the person has signed in, all their sessions and remembered devices end, the old address gets a notice, and the new address is unconfirmed (below). Their passkeys stay. |
 | Anyone, for a person with given portal grants (§8.3) or a staff account | Administrators only. |
 | Imports and the API | Follow the staff rule. |
 
-Every change is audited with the old and new address, who made it, and how.
+**Unconfirmed addresses.** An unconfirmed address is the person's email for mail at once, but it can't be used to sign in until it is confirmed. Two kinds are unconfirmed: a new address that staff, an import or the API give a person who has signed in, and an address moved from the family email (§10.1). Other changes made before a person's first sign-in take effect at once, because A2 rests on the address the church has on record. An address is confirmed when:
+- the member signs in with a passkey and confirms it on the Sign-in and devices page, which sends a confirmation link to the new address, as when they change it themselves;
+- the member uses the link in the notice sent to their old, proven address;
+- an administrator who has checked who the person is, in person or by phone, confirms it on the person's page or the Sign-in tab.
 
-This is how #10511 R3 applies to portal principals: a notice to the old address, an audit row, and limits on who can make a change.
+An address moved from the family email has only the last way, because everyone who reads the family's mailbox would get the code and the person has no other way in yet. Until an address is confirmed, the person is listed under "Email needs attention". After it is confirmed, the first email sign-in still proves the mailbox.
+
+Every change and confirmation is audited with the old and new address, who made it, and how.
+
+This is how #10511 R3 applies to portal principals: a notice to the old address, an audit row, limits on who can make a change, and no sign-in with a replacement address until the person or an administrator confirms it.
 
 ## 10. Family email moves to the people
 
@@ -425,6 +434,7 @@ For each family whose email isn't empty (compared trimmed and in lower case):
    - another person ({name}) already uses this address.
 5. **Then the family email is cleared.**
 
+- **A moved address doesn't sign in yet.** It is unconfirmed (§9) until an administrator confirms that it is that person's own, because everyone who reads the family's mailbox would get the sign-in code. Mail goes to it at once (§10.2).
 - The upgrade writes the counts (moved to a head, moved to a spouse, already held, noted) to the upgrade log. A one-time **Family emails not moved** list on the Member Portal Sign-in tab links to each family with a note.
 - The notes are ordinary family notes, written with `Family::createTimeLineNote()` (`Family.php:551`). Staff who can see the family's timeline can read them.
 - The move is a PHP upgrade step. `upgrade.json` already runs `.php` steps (`UpgradeService.php:93-96`).
@@ -468,11 +478,11 @@ For each family whose email isn't empty (compared trimmed and in lower case):
   - who may sign in now;
   - who signed in during the last 30 days;
   - who may sign in but never has;
-  - email needs attention: no personal email, or a personal email shared with someone else;
+  - email needs attention: no personal email, a personal email shared with someone else, or an unconfirmed one (§9), which administrators can confirm from the list;
   - families confirmed in the last 30 days;
   - family emails not moved (one time, after the upgrade).
 - **Audit**, filterable by person and date. Each row has a time, the person, the event, the method and, for staff actions, who did it.
-  - Events: email requested, signed in (with the method), refused (with the reason), throttled, session ended (with the reason), device added or removed, passkey added or removed, email changed, sign-in disabled or enabled, grant added or removed, Login as User started and stopped, family confirmed.
+  - Events: email requested, signed in (with the method), refused (with the reason), throttled, session ended (with the reason), device added or removed, passkey added or removed, email changed or confirmed, sign-in disabled or enabled, grant added or removed, Login as User started and stopped, family confirmed.
   - "Family confirmed" records which member confirmed. Today's confirmation note doesn't.
   - The audit never stores a code, link, token, password or passkey secret.
   - It replaces the 3-day `auth.log` file as the record for member sign-in. The file keeps logging, as today.
@@ -482,7 +492,7 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 
 - **"Portal sign-in" card:**
   - everyone with Edit Records sees whether the person may sign in (or why not), their last sign-in, and how many devices and passkeys they have;
-  - administrators also get Disable sign-in (with a reason), Sign out everywhere, the list of devices and passkeys with a remove button on each, and the portal permissions (§8.6).
+  - administrators also get Disable sign-in (with a reason), Confirm for an unconfirmed email (§9), Sign out everywhere, the list of devices and passkeys with a remove button on each, and the portal permissions (§8.6).
 - **Actions menu:** Login as User (§6.5). The Make User, Edit User and View User buttons in the page header stay as they are.
 
 ## 12. Release-day cutover
@@ -504,7 +514,7 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
 
 | Table | Holds |
 |---|---|
-| `person_signin_psi` | one row per person who has signed in or has a setting: Disable sign-in (with who, when and why), session version, proven email and when, first and last sign-in, last activity, calendar feed token and selection (moved from `user_usr`) |
+| `person_signin_psi` | one row per person who has signed in or has a setting: Disable sign-in (with who, when and why), session version, proven email and when, an unconfirmed email and why (§9), first and last sign-in, last activity, calendar feed token and selection (moved from `user_usr`) |
 | `person_signin_request_psr` | pending email requests: hashed link token, hashed code, browser binding hash, expiry, attempts, used at |
 | `person_device_pdv` | remembered devices, and later app tokens: hashed token, kind (`browser` or `app`), label, created, last used, expiry, revoked |
 | `person_passkey_ppk` | passkeys: credential id, public key, sign counter, label, created, last used |
@@ -534,6 +544,7 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
 - **Revocation by the next request:** the session version and the per-request check (§5).
 - **No account lookup leak:** the one answer screen and the throttles (§6.1).
 - **Email:** the sign-in email goes only to the person's own address. The office notice goes only to the office list.
+- **Sign-in addresses:** an email sign-in proves control of the mailbox, not whose it is. A replacement address set by someone else, and an address moved from the family email, sign in only once confirmed (§9).
 - **Audit:** it holds no secrets. Notes and other personal content never appear in it.
 - **Remembered devices and passkeys:**
   - only when the member says the device is their own (§6.2, §6.3);
@@ -644,11 +655,12 @@ Row 11 doesn't depend on the sign-in work. It can be built first, and can ship o
   - a non-adult sees no family contact details;
   - a given grant works until its end date;
   - a test plugin's capability, rule and page work.
-- **Email changes:** every row of §9, including the notice to the old address and sessions ending.
+- **Email changes:** every row of §9, including the notice to the old address and sessions ending. An unconfirmed address can't sign in until one of the three ways confirms it, and each way is tested.
 - **Family email move:**
   - copied to the head, or to the spouse when the head has an email;
   - a timeline note when both have one, when there is no adult, and when another family holds the address;
   - nothing at all when a family member already has it;
+  - a moved address doesn't sign in until an administrator confirms it;
   - mail for a family goes to the head;
   - the directory prints no family email.
 - **Login as User:**
