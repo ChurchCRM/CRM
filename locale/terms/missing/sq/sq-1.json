@@ -69,6 +69,7 @@
   "{{team}}: {{staffing}}": "",
   "{{type}} events (no event chosen yet)": "",
   "{{type}} events titled {{title}}": "",
+  "User must be a staff user": "",
   "Delete ({{count}})": {
     "one": "",
     "other": ""
