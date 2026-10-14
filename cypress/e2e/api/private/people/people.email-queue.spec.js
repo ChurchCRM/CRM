@@ -2,7 +2,8 @@
 
 /**
  * Queued composer email (#10356): POST /api/email/send only queues; the batch is sent by
- * POST /api/email/batches/{batch}/send (the composer) and by the timer jobs.
+ * POST /api/email/batches/{batch}/send (the composer) and by the timer jobs, and an
+ * administrator can delete what is still queued (DELETE /admin/api/email/queue).
  *
  * Failures come from Mailpit's chaos triggers (docker-compose sets MP_ENABLE_CHAOS), so the
  * stack's mail server must be recreated after that change. Override Mailpit with
@@ -178,6 +179,53 @@ describe("Failed sends", () => {
             expect(row).to.include({ status: "failed", statusLabel: "Failed", attempts: 1 });
         });
         mailpitMessages(subject).should("have.length", 0);
+    });
+});
+
+describe("Delete Queue", () => {
+    afterEach(() => {
+        setChaos();
+    });
+
+    it("lets an administrator delete queued messages and nothing else", () => {
+        const subject = `crm-10356-delete-${Date.now()}`;
+        queue([2], `${subject}-sent`).then((sent) =>
+            cy.makePrivateAdminAPICall("POST", `${batchUrl(sent.batch)}/send`).its("body.sent").should("eq", 1),
+        );
+        setChaos({ Recipient: { ErrorCode: 550, Probability: 100 } });
+        queue([3], `${subject}-failed`).then((sent) =>
+            cy.makePrivateAdminAPICall("POST", `${batchUrl(sent.batch)}/send`).its("body.failed").should("eq", 1),
+        );
+        setChaos();
+
+        queue([2, 3], `${subject}-queued`).then((queued) => {
+            cy.makePrivateUserAPICall("DELETE", "/admin/api/email/queue", null, 403);
+            historyRows(`${subject}-queued`).should("have.length", 2);
+
+            cy.makePrivateAdminAPICall("GET", "/api/email/log?status=queued&limit=1").then((before) => {
+                cy.makePrivateAdminAPICall("DELETE", "/admin/api/email/queue")
+                    .its("body.deleted")
+                    .should("eq", before.body.total);
+            });
+            cy.makePrivateAdminAPICall("GET", "/api/email/log?status=queued&limit=1").its("body.total").should("eq", 0);
+
+            // The composer's next step learns the batch is gone.
+            cy.makePrivateAdminAPICall("GET", batchUrl(queued.batch), null, 404);
+            cy.makePrivateAdminAPICall("POST", `${batchUrl(queued.batch)}/send`, null, 404)
+                .its("body.message")
+                .should("include", "deleted the queue");
+        });
+
+        historyRows(`${subject}-queued`).should("have.length", 0);
+        historyRows(`${subject}-sent`).then(([row]) => expect(row.status).to.eq("sent"));
+        historyRows(`${subject}-failed`).then(([row]) => expect(row.status).to.eq("failed"));
+        mailpitMessages(`${subject}-queued`).should("have.length", 0);
+    });
+
+    it("answers 401 without credentials", () => {
+        cy.request({ method: "DELETE", url: "/admin/api/email/queue", failOnStatusCode: false })
+            .its("status")
+            .should("eq", 401);
     });
 });
 

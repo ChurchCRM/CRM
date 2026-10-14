@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\EmailLogQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\EmailLogTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -206,6 +207,28 @@ class EmailQueueService
         $progress['done'] = $progress['queued'] === 0 && $progress['sending'] === 0;
 
         return $progress;
+    }
+
+    /**
+     * Deletes every `queued` row, in every batch, so none of it is sent. Rows being sent
+     * right now (`sending`) belong to a run and are left alone, as is the history of
+     * mail that was sent, failed or skipped.
+     *
+     * @return int how many rows were deleted
+     */
+    public function deleteQueued(User $deletedBy): int
+    {
+        $deleted = EmailLogQuery::create()
+            ->filterByStatus(EmailLogService::STATUS_QUEUED)
+            ->delete();
+
+        LoggerUtils::getAppLogger()->info('Email queue deleted', [
+            'deletedBy' => $deletedBy->getUserName(),
+            'userId'    => (int) $deletedBy->getId(),
+            'deleted'   => $deleted,
+        ]);
+
+        return $deleted;
     }
 
     /** The batch's first row (it carries the sender), or null for an unknown batch. */

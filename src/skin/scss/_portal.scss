@@ -1238,33 +1238,6 @@ textarea.portal-input {
     font-size: 0.75rem;
 }
 
-// Sent is the ordinary case and stays quiet; a member only needs to notice the
-// others, so those carry the palette's notice colours.
-.portal-email-status {
-    display: inline-block;
-    padding: 0.1rem 0.6rem;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    background-color: var(--portal-surface-alt);
-    color: var(--portal-muted);
-
-    &.is-failed {
-        background-color: var(--portal-danger);
-        color: var(--portal-danger-contrast);
-    }
-
-    &.is-skipped {
-        background-color: var(--portal-warning);
-        color: var(--portal-warning-contrast);
-    }
-
-    &.is-queued,
-    &.is-sending {
-        background-color: var(--portal-info);
-        color: var(--portal-info-contrast);
-    }
-}
-
 .portal-pager {
     display: flex;
     flex-wrap: wrap;

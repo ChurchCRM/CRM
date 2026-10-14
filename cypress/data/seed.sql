@@ -2597,7 +2597,9 @@ INSERT INTO `email_log_eml` VALUES
 (4,2,NULL,1,'mathew.campbell@example.com','composer','Potluck this Sunday','<p>Dear Mathew,</p><p>Bring a dish to share.</p>','failed','SMTP Error: Could not connect to SMTP host.',NULL,'2026-04-20 14:15:00',NULL,1,NULL),
 (5,2,NULL,1,'mathew.campbell@example.com','composer','Thank you for serving','<p>Dear Mathew,</p><p>Thank you for helping on Sunday.</p>','sent',NULL,'<seed-5@churchcrm.test>','2026-03-10 08:45:00',NULL,1,NULL),
 (6,2,NULL,1,'mathew.campbell@example.com','composer','Oldest message','<p>Dear Mathew,</p><p>This is the sixth and oldest seeded message.</p>','sent',NULL,'<seed-6@churchcrm.test>','2026-02-01 08:00:00',NULL,1,NULL),
-(7,3,NULL,NULL,'tony.wade@example.com','account.reset-token','Reset your ChurchCRM password',NULL,'sent',NULL,'<seed-7@churchcrm.test>','2026-07-04 12:00:00',NULL,1,NULL);
+(7,3,NULL,NULL,'tony.wade@example.com','account.reset-token','Reset your ChurchCRM password',NULL,'sent',NULL,'<seed-7@churchcrm.test>','2026-07-04 12:00:00',NULL,1,NULL),
+(8,100,NULL,1,'lena.walker@example.com','composer','Seeded failed message for Lena','<p>Dear Lena,</p><p>This one never went out.</p>','failed','SMTP Error: Could not connect to SMTP host.',NULL,'2026-03-01 09:00:00',NULL,1,NULL),
+(9,100,NULL,NULL,'lena.walker@example.com','birthday','Seeded skipped birthday greeting for Lena',NULL,'skipped',NULL,NULL,'2026-03-02 06:00:00',NULL,0,NULL);
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET AUTOCOMMIT=@OLD_AUTOCOMMIT */;

@@ -153,6 +153,30 @@ class EmailLogService
     }
 
     /**
+     * Newest-first page of the mail that actually went out to a member (Member Portal):
+     * `sent` rows only, in the member shape (no delivery status). Queued, sending, failed
+     * and skipped mail never reached them.
+     *
+     * @return array{rows: list<array<string, mixed>>, total: int, page: int, limit: int, pages: int}
+     */
+    public function getSentForMember(int $personId, int $page = 1, int $limit = self::DEFAULT_PAGE_SIZE): array
+    {
+        $query = EmailLogQuery::create()->filterByPerId($personId)->filterByStatus(self::STATUS_SENT);
+
+        return $this->page($query, $page, $limit, true);
+    }
+
+    /** One sent row addressed to this member, or null: another person's row and an unsent row look the same. */
+    public function findSentForMember(int $id, int $personId): ?EmailLog
+    {
+        return EmailLogQuery::create()
+            ->filterById($id)
+            ->filterByPerId($personId)
+            ->filterByStatus(self::STATUS_SENT)
+            ->findOne();
+    }
+
+    /**
      * Newest-first page of a family's history: rows for the family address plus rows for
      * its current members.
      *
@@ -230,6 +254,17 @@ class EmailLogService
         return $out;
     }
 
+    /**
+     * What a member may see of one of their own rows: toArray() without the delivery
+     * status, attempts and server error, which are for staff.
+     *
+     * @return array<string, mixed>
+     */
+    public function toMemberArray(EmailLog $row, bool $withBody = false): array
+    {
+        return array_diff_key($this->toArray($row, $withBody), array_flip(['status', 'statusLabel', 'attempts', 'error']));
+    }
+
     /** Human label for an eml_Status value. */
     public static function statusLabel(string $status): string
     {
@@ -275,14 +310,14 @@ class EmailLogService
     /**
      * @return array{rows: list<array<string, mixed>>, total: int, page: int, limit: int, pages: int}
      */
-    private function page(EmailLogQuery $query, int $page, int $limit): array
+    private function page(EmailLogQuery $query, int $page, int $limit, bool $forMember = false): array
     {
         $limit = max(1, min(self::MAX_PAGE_SIZE, $limit));
         $page = max(1, $page);
         $total = (int) (clone $query)->count();
         $rows = [];
         foreach ($query->orderByDateSent(Criteria::DESC)->orderById(Criteria::DESC)->offset(($page - 1) * $limit)->limit($limit)->find() as $row) {
-            $rows[] = $this->toArray($row);
+            $rows[] = $forMember ? $this->toMemberArray($row) : $this->toArray($row);
         }
 
         return [

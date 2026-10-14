@@ -524,16 +524,24 @@ function setSendingProgress(banner: HTMLElement, done: number, total: number): v
   bar.style.width = `${total > 0 ? Math.round((done / total) * 100) : 0}%`;
 }
 
+/** Where the composer's steps through a batch ended. */
+interface BatchOutcome {
+  /** The last progress, or null when no step answered. */
+  progress: EmailBatchProgress | null;
+  /** 404: an administrator deleted the queue while every message in the batch was waiting. */
+  cleared: boolean;
+}
+
 /**
- * Sends the queued batch in steps until nothing is due. Returns the last progress, or
- * null when no step answered; the timer jobs send whatever is left either way.
+ * Sends the queued batch in steps until nothing is due. The timer jobs send whatever
+ * is left either way.
  */
 async function sendQueuedBatch(
   batch: string,
   total: number,
   banner: HTMLElement,
   signal: AbortSignal,
-): Promise<EmailBatchProgress | null> {
+): Promise<BatchOutcome> {
   let progress: EmailBatchProgress | null = null;
   setSendingProgress(banner, 0, total);
   for (;;) {
@@ -542,17 +550,22 @@ async function sendQueuedBatch(
       credentials: "same-origin",
       signal,
     });
-    if (!res.ok) return progress;
+    if (!res.ok) return { progress, cleared: res.status === 404 };
     const previous = progress;
     progress = (await res.json()) as EmailBatchProgress;
     const finished = progress.sent + progress.failed + progress.skipped;
     setSendingProgress(banner, finished, total);
-    if (progress.done || progress.due === 0) return progress;
+    if (progress.done || progress.due === 0) return { progress, cleared: false };
     // Another run holds the rest, or nothing moved: leave it to the background.
     if (previous && finished === previous.sent + previous.failed + previous.skipped && progress.due >= previous.due) {
-      return progress;
+      return { progress, cleared: false };
     }
   }
+}
+
+/** "The queue was cleared" line for messages an administrator deleted before they went out. */
+function clearedText(count: number): string {
+  return i18next.t("The queue was cleared: {{count}} message(s) will not be sent.", { count });
 }
 
 async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
@@ -614,11 +627,20 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
     if (subjectInputEl) subjectInputEl.disabled = true;
     if (bodyTextareaEl) bodyTextareaEl.disabled = true;
     const banner = showSendBanner("info", "");
-    const progress = await sendQueuedBatch(data.batch, queuedCount, banner, controller.signal).catch((err) => {
-      if (err instanceof DOMException && err.name === "AbortError") throw err;
-      console.error("[email-composer] batch send failed:", err);
-      return null;
-    });
+    const { progress, cleared } = await sendQueuedBatch(data.batch, queuedCount, banner, controller.signal).catch(
+      (err): BatchOutcome => {
+        if (err instanceof DOMException && err.name === "AbortError") throw err;
+        console.error("[email-composer] batch send failed:", err);
+        return { progress: null, cleared: false };
+      },
+    );
+
+    if (cleared) {
+      appendNotSentList(showSendBanner("warning", clearedText(queuedCount)), skipped);
+      if (submitIcon) submitIcon.className = "fa-solid fa-ban me-1";
+      if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Not sent");
+      return;
+    }
 
     if (!progress) {
       const queuedBanner = showSendBanner(
@@ -639,15 +661,23 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
       name: f.address,
       error: f.error,
     }));
-    const clean = waiting === 0 && failures.length === 0 && skipped.length === 0;
+    const removed = Math.max(0, queuedCount - progress.total);
+    const clean = waiting === 0 && failures.length === 0 && skipped.length === 0 && removed === 0;
     const nothingSent = progress.sent === 0 && waiting === 0;
     let headline = i18next.t("Email sent to {{count}} recipient(s).", { count: progress.sent });
     if (nothingSent) {
-      headline = i18next.t("No email was sent.");
+      headline = removed > 0 ? clearedText(removed) : i18next.t("No email was sent.");
     } else if (progress.sent === 0) {
       headline = i18next.t("{{count}} message(s) queued. They will be sent in the background.", { count: waiting });
     }
     const finalBanner = showSendBanner(clean ? "success" : nothingSent ? "danger" : "warning", headline);
+    if (removed > 0 && !nothingSent) {
+      const clearedLine = document.createElement("div");
+      clearedLine.className = "mt-2 small";
+      clearedLine.id = "crm-email-queue-cleared";
+      clearedLine.textContent = clearedText(removed);
+      finalBanner.appendChild(clearedLine);
+    }
     if (waiting > 0 && progress.sent > 0) {
       const pending = document.createElement("div");
       pending.className = "mt-2 small";

@@ -63,7 +63,7 @@ use Slim\Routing\RouteCollectorProxy;
  * @OA\Schema(
  *     schema="EmailBatchProgress",
  *     @OA\Property(property="batch", type="string"),
- *     @OA\Property(property="total", type="integer", description="Messages in the batch"),
+ *     @OA\Property(property="total", type="integer", description="Messages in the batch; queued messages an administrator deleted are no longer counted"),
  *     @OA\Property(property="queued", type="integer", description="Waiting to be sent, due now or waiting for a retry"),
  *     @OA\Property(property="sending", type="integer", description="Being sent by a run right now"),
  *     @OA\Property(property="sent", type="integer", description="Accepted by the SMTP server (acceptance is not delivery)"),
@@ -88,7 +88,7 @@ use Slim\Routing\RouteCollectorProxy;
  *     @OA\Response(response=200, description="Batch progress", @OA\JsonContent(ref="#/components/schemas/EmailBatchProgress")),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Email permission required, or the batch belongs to another user"),
- *     @OA\Response(response=404, description="No such batch")
+ *     @OA\Response(response=404, description="No such batch, or every message in it was still queued when an administrator deleted the queue")
  * )
  *
  * @OA\Post(
@@ -101,7 +101,7 @@ use Slim\Routing\RouteCollectorProxy;
  *     @OA\Response(response=200, description="Batch progress after this step", @OA\JsonContent(ref="#/components/schemas/EmailBatchProgress")),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Email permission required, or the batch belongs to another user"),
- *     @OA\Response(response=404, description="No such batch"),
+ *     @OA\Response(response=404, description="No such batch, or every message in it was still queued when an administrator deleted the queue"),
  *     @OA\Response(response=422, description="Email sending is disabled or SMTP is not configured")
  * )
  */
@@ -300,7 +300,7 @@ function emailBatchAccessError(Request $request, Response $response, string $bat
 {
     $first = (new EmailQueueService())->findBatch($batch);
     if ($first === null) {
-        return SlimUtils::renderErrorJSON($response, gettext('Email batch not found'), [], 404, null, $request);
+        return SlimUtils::renderErrorJSON($response, gettext('Email batch not found. If it was still queued, an administrator deleted the queue and it will not be sent.'), [], 404, null, $request);
     }
     $user = AuthenticationManager::getCurrentUser();
     if (!$user->isAdmin() && (int) $first->getUsrId() !== (int) $user->getId()) {
