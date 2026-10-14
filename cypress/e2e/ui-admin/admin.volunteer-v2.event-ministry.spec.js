@@ -133,15 +133,9 @@ function deleteFixtures() {
     });
 
     // The events this spec owns, by title.
-    cy.dbQuery(
-        `DELETE ce FROM calendar_events ce
-           JOIN events_event e ON e.event_id = ce.event_id
-          WHERE e.event_title LIKE ?`,
-        [`${PREFIX}%`],
-    );
-    cy.dbQuery(`DELETE FROM events_event WHERE event_title LIKE ?`, [
-        `${PREFIX}%`,
-    ]);
+    cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((resp) => {
+        cy.cleanupEvents(resp.body.Events.filter((e) => e.Title.startsWith(PREFIX)).map((e) => e.Id));
+    });
 }
 
 function buildFixtures() {
@@ -214,13 +208,8 @@ function buildFixtures() {
             PinnedCalendars: [PUBLIC_CALENDAR],
         },
         200,
-    );
-
-    cy.dbQuery(
-        `SELECT event_id FROM events_event WHERE event_title = ? ORDER BY event_id DESC LIMIT 1`,
-        [PLAIN_EVENT_TITLE],
-    ).then((r) => {
-        plainEventId = r.rows[0].event_id;
+    ).then((resp) => {
+        plainEventId = resp.body.eventId;
     });
 
     cy.then(() => {
@@ -338,12 +327,7 @@ describe("Volunteer v2 — event ministry field and Volunteers card (#9713)", ()
             cy.get("#event-editor-save").click();
             cy.url().should("not.include", "/event/editor");
 
-            cy.dbQuery(
-                `SELECT event_ministry_id FROM events_event WHERE event_id = ?`,
-                [plainEventId],
-            ).then((r) => {
-                expect(r.rows[0].event_ministry_id).to.eq(null);
-            });
+            cy.request(`/api/events/${plainEventId}`).its("body.MinistryId").should("eq", null);
         });
 
         // #9869: choosing a ministry also pre-pins that ministry's own calendar, because
@@ -393,17 +377,9 @@ describe("Volunteer v2 — event ministry field and Volunteers card (#9713)", ()
             cy.get("#event-editor-save").click();
             cy.url().should("not.include", "/event/editor");
 
-            cy.dbQuery(
-                `SELECT calendar_id FROM calendar_events WHERE event_id = ?`,
-                [plainEventId],
-            ).then((r) => {
-                const pinned = r.rows.map((row) => Number(row.calendar_id));
-                expect(pinned, "the ministry calendar was saved").to.include(
-                    ministryCalendarId,
-                );
-                expect(pinned, "the church calendar survived").to.include(
-                    PUBLIC_CALENDAR,
-                );
+            cy.request(`/api/events/${plainEventId}`).then(({ body }) => {
+                expect(body.PinnedCalendars, "the ministry calendar was saved").to.include(ministryCalendarId);
+                expect(body.PinnedCalendars, "the church calendar survived").to.include(PUBLIC_CALENDAR);
             });
 
             // Put the event back the way the other tests expect it.

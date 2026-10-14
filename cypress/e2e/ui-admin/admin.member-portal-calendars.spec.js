@@ -16,9 +16,8 @@
  * The ministry calendar is built here rather than seeded. #9869 gave
  * `calendars.ministry_id` a real foreign key to `volunteer_ministry_vmin`, so a
  * seeded calendar naming a ministry the seed does not contain is no longer a
- * harmless fiction — it survives the dump only because foreign-key checks are off
- * during the load, and it is nulled the moment another spec creates and deletes a
- * ministry that takes the same id.
+ * harmless fiction. The spec creates a ministry through the API, which gives it
+ * its calendar, and deletes it the same way.
  *
  * NOTE: every x-api-key request below replaces the browser session cookie with
  * an API-token session, so a UI step that follows one has to re-establish the
@@ -27,6 +26,8 @@
 const CHURCH_CALENDAR_ID = 1;
 const CHURCH_CALENDAR_NAME = "Public Calendar";
 const MINISTRY_CALENDAR_NAME = "PORTALCAL Youth Ministry";
+const VOLUNTEER_VERSION = "sVolunteerVersion";
+let originalVolunteerVersion;
 
 const adminKey = () => Cypress.testEnv("admin.api.key");
 
@@ -48,23 +49,24 @@ const openCalendarsTab = () => {
 /** The row for one calendar, found by the name in its first cell. */
 const calendarRow = (name) => cy.get("#portalCalendarsTable tbody tr").contains("td", name).parent();
 
-const dbOk = (sql, params = []) =>
-    cy.dbQuery(sql, params).then((result) => {
-        if (result.error !== null) {
-            throw new Error(
-                `Unexpected SQL failure.\n  SQL: ${sql}\n  ${result.error.code}: ${result.error.message}`,
-            );
-        }
-        return result.rows;
+// The ministries API answers only while Volunteer v2 is on; the page is tested as the seed has it.
+const withVolunteerV2 = (work) => {
+    cy.getSystemConfig(VOLUNTEER_VERSION).then((value) => {
+        originalVolunteerVersion = value;
     });
-
-/** The ministry and its calendar, taken away calendar-first (ON DELETE SET NULL). */
-const removeMinistryCalendar = () => {
-    dbOk(`DELETE FROM calendars WHERE name = ?`, [MINISTRY_CALENDAR_NAME]);
-    dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name = ?`, [
-        MINISTRY_CALENDAR_NAME,
-    ]);
+    cy.makePrivateAdminAPICall("POST", `/admin/api/system/config/${VOLUNTEER_VERSION}`, { value: "v2" }, 200);
+    work();
+    cy.then(() => cy.restoreSystemConfig(VOLUNTEER_VERSION, originalVolunteerVersion));
 };
+
+/** Deleting the ministry deletes its calendar too. */
+const removeMinistryCalendar = () =>
+    cy.makePrivateAdminAPICall("GET", "/api/ministries/ministries", null, 200).then((resp) => {
+        for (const ministry of resp.body.ministries.filter((m) => m.name === MINISTRY_CALENDAR_NAME)) {
+            cy.makePrivateAdminAPICall("POST", `/api/ministries/ministries/${ministry.id}`, { active: false }, 200);
+            cy.makePrivateAdminAPICall("DELETE", `/api/ministries/ministries/${ministry.id}`, null, 200);
+        }
+    });
 
 before(() => {
     cy.rememberTestEnv(["admin.api.key"]);
@@ -72,17 +74,13 @@ before(() => {
 
 describe("Admin → Member Portal → Calendars", () => {
     before(() => {
-        removeMinistryCalendar();
-        dbOk(
-            `INSERT INTO volunteer_ministry_vmin
-                (vmin_Name, vmin_Description, vmin_Active, vmin_CreatedDate)
-             VALUES (?, 'member portal calendars fixture', 1, NOW())`,
-            [MINISTRY_CALENDAR_NAME],
-        ).then((rows) => {
-            dbOk(
-                `INSERT INTO calendars (name, foregroundColor, backgroundColor, ministry_id)
-                 VALUES (?, 'FFFFFF', '795548', ?)`,
-                [MINISTRY_CALENDAR_NAME, rows.insertId],
+        withVolunteerV2(() => {
+            removeMinistryCalendar();
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/ministries/ministries",
+                { name: MINISTRY_CALENDAR_NAME, description: "member portal calendars fixture" },
+                201,
             );
         });
     });
@@ -90,7 +88,7 @@ describe("Admin → Member Portal → Calendars", () => {
     after(() => {
         // Leave the installation as the seed had it: nothing shared.
         setVisibleCalendars([]);
-        removeMinistryCalendar();
+        withVolunteerV2(removeMinistryCalendar);
     });
 
     beforeEach(() => {
