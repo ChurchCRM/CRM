@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-10 16:55+0000\n"
+"POT-Creation-Date: 2026-10-14 12:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -548,6 +548,9 @@ msgstr ""
 msgid "A position with that name already exists in this ministry"
 msgstr ""
 
+msgid "A recurring event needs a last date, so it is back to {{date}}."
+msgstr ""
+
 msgid "A response must be accepted or declined"
 msgstr ""
 
@@ -813,6 +816,9 @@ msgstr ""
 msgid "Add Everyone in Cart"
 msgstr ""
 
+msgid "Add Everyone in Cart to {{ministry}}"
+msgstr ""
+
 msgid "Add Family Member"
 msgstr ""
 
@@ -919,6 +925,9 @@ msgid "Add User"
 msgstr ""
 
 msgid "Add Volunteer"
+msgstr ""
+
+msgid "Add Volunteer to {{ministry}}"
 msgstr ""
 
 msgid "Add Volunteers to Cart"
@@ -1036,6 +1045,12 @@ msgid "Add staff or volunteers as system users"
 msgstr ""
 
 msgid "Add team"
+msgstr ""
+
+msgid "Add the class's meetings as a recurring event with {{name}} as its class, then generate again."
+msgstr ""
+
+msgid "Add them on the Calendar tab as a recurring event with {{name}} as its class."
 msgstr ""
 
 msgid "Add them on the Calendar tab, then generate again."
@@ -3760,6 +3775,9 @@ msgstr ""
 msgid "Country is required."
 msgstr ""
 
+msgid "Covered · {{more}} more welcome"
+msgstr ""
+
 msgid "Create"
 msgstr ""
 
@@ -3884,6 +3902,15 @@ msgid "Create today's class event and link it to this class for kiosk check-in"
 msgstr ""
 
 msgid "Created"
+msgstr ""
+
+msgid "Creates {{total}} events, every year on {{date}} from {{first}} to {{last}}"
+msgstr ""
+
+msgid "Creates {{total}} events, every {{day}} from {{first}} to {{last}}"
+msgstr ""
+
+msgid "Creates {{total}} events, on day {{day}} of each month from {{first}} to {{last}}"
 msgstr ""
 
 msgid "Creating Backup..."
@@ -4308,10 +4335,16 @@ msgstr ""
 msgid "Default role updated."
 msgstr ""
 
+msgid "Default volunteer {{number}} for {{position}}"
+msgstr ""
+
 msgid "Default volunteers"
 msgstr ""
 
 msgid "Default volunteers are sent as requirements: [{positionId, defaults: [{personId, accepted}]}]"
+msgstr ""
+
+msgid "Default volunteers for {{position}}"
 msgstr ""
 
 msgid "Default: (999) 999-9999"
@@ -4339,6 +4372,14 @@ msgid "Delete"
 msgstr ""
 
 msgid "Delete (will delete all associated records)"
+msgstr ""
+
+msgctxt "one"
+msgid "Delete ({{count}})"
+msgstr ""
+
+msgctxt "other"
+msgid "Delete ({{count}})"
 msgstr ""
 
 msgid "Delete All"
@@ -4404,6 +4445,14 @@ msgstr ""
 msgid "Delete events"
 msgstr ""
 
+msgctxt "one"
+msgid "Delete events ({{count}})"
+msgstr ""
+
+msgctxt "other"
+msgid "Delete events ({{count}})"
+msgstr ""
+
 msgid "Delete failed"
 msgstr ""
 
@@ -4444,6 +4493,14 @@ msgid "Delete this person?"
 msgstr ""
 
 msgid "Delete those events"
+msgstr ""
+
+msgctxt "one"
+msgid "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone."
+msgstr ""
+
+msgctxt "other"
+msgid "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone."
 msgstr ""
 
 msgid "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone."
@@ -6461,6 +6518,9 @@ msgstr ""
 msgid "Filled"
 msgstr ""
 
+msgid "Filling {{position}}"
+msgstr ""
+
 msgid "Filter by Class"
 msgstr ""
 
@@ -6753,6 +6813,9 @@ msgstr ""
 msgid "From date"
 msgstr ""
 
+msgid "Full"
+msgstr ""
+
 msgid "Full Backup"
 msgstr ""
 
@@ -6769,6 +6832,9 @@ msgid "Full changelog"
 msgstr ""
 
 msgid "Full release notes"
+msgstr ""
+
+msgid "Full · {{live}} of {{max}}"
 msgstr ""
 
 msgid "Full — all of the above plus page views"
@@ -7365,6 +7431,9 @@ msgid "Head of Household Update Needed"
 msgstr ""
 
 msgid "Headcount"
+msgstr ""
+
+msgid "Headcount: {{total}}"
 msgstr ""
 
 #. Context: countries
@@ -9043,6 +9112,9 @@ msgstr ""
 msgid "Max neighbors"
 msgstr ""
 
+msgid "Maximum allowed for {{position}}"
+msgstr ""
+
 msgid "Maximum length is"
 msgstr ""
 
@@ -9091,6 +9163,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Mayotte"
+msgstr ""
+
+msgid "Meetings of {{name}}"
 msgstr ""
 
 msgid "Member"
@@ -9225,6 +9300,9 @@ msgid "Minimum length a user may set their password to"
 msgstr ""
 
 msgid "Minimum length is"
+msgstr ""
+
+msgid "Minimum needed for {{position}}"
 msgstr ""
 
 msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
@@ -9406,6 +9484,9 @@ msgstr ""
 msgid "Move down"
 msgstr ""
 
+msgid "Move them to {{className}}"
+msgstr ""
+
 msgid "Move to Group"
 msgstr ""
 
@@ -9555,6 +9636,9 @@ msgstr ""
 msgid "Needs filling"
 msgstr ""
 
+msgid "Needs {{more}} more"
+msgstr ""
+
 msgid "Neighborhood"
 msgstr ""
 
@@ -9655,10 +9739,19 @@ msgstr ""
 msgid "New ministry"
 msgstr ""
 
+msgid "New position: {{name}}"
+msgstr ""
+
 msgid "New record notification"
 msgstr ""
 
 msgid "New recurring event"
+msgstr ""
+
+msgid "New recurring event for {{name}}"
+msgstr ""
+
+msgid "New recurring event titled {{title}}"
 msgstr ""
 
 msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
@@ -9883,6 +9976,9 @@ msgstr ""
 msgid "No event types defined yet."
 msgstr ""
 
+msgid "No event was found between {{from}} and {{to}}."
+msgstr ""
+
 #, php-format
 msgid "No events found for %s %d."
 msgstr ""
@@ -9892,6 +9988,9 @@ msgid "No events found for %s."
 msgstr ""
 
 msgid "No events linked to this class."
+msgstr ""
+
+msgid "No events on the calendar use {{name}} as their class between {{from}} and {{to}}."
 msgstr ""
 
 msgid "No families with an email address were found. Nothing was sent."
@@ -10096,6 +10195,9 @@ msgstr ""
 msgid "No upcoming events of this type are on the calendar."
 msgstr ""
 
+msgid "No upcoming events titled {{title}} are on the calendar."
+msgstr ""
+
 msgid "No upcoming events to choose from"
 msgstr ""
 
@@ -10109,6 +10211,12 @@ msgid "No volunteer opportunities have been added yet"
 msgstr ""
 
 msgid "No volunteer opportunity assignments yet."
+msgstr ""
+
+msgid "No {{type}} events between {{from}} and {{to}}."
+msgstr ""
+
+msgid "No {{type}} events titled {{title}} between {{from}} and {{to}}."
 msgstr ""
 
 msgid "No, cancel this deletion"
@@ -10130,6 +10238,9 @@ msgid "Nobody is qualified for this position yet"
 msgstr ""
 
 msgid "Nobody is qualified for this position yet, so it stays open."
+msgstr ""
+
+msgid "Nobody is qualified for {{position}} yet"
 msgstr ""
 
 msgid "Non-Deductible"
@@ -10305,6 +10416,9 @@ msgstr ""
 msgid "Not listed here: {{total}} more"
 msgstr ""
 
+msgid "Not needed this time"
+msgstr ""
+
 msgid "Not now"
 msgstr ""
 
@@ -10463,6 +10577,20 @@ msgstr ""
 msgid "Occurrences"
 msgstr ""
 
+msgid "Occurrences are created for events in the next week (through {{date}})."
+msgstr ""
+
+msgctxt "one"
+msgid "Occurrences are created for events in the next {{count}} weeks (through {{date}})."
+msgstr ""
+
+msgctxt "other"
+msgid "Occurrences are created for events in the next {{count}} weeks (through {{date}})."
+msgstr ""
+
+msgid "Occurrences are created for events through {{date}}, when this schedule ends."
+msgstr ""
+
 msgid "Oct"
 msgstr ""
 
@@ -10513,6 +10641,9 @@ msgid "One character from FirstName and one character from LastName"
 msgstr ""
 
 msgid "One directory page per sheet, portrait."
+msgstr ""
+
+msgid "One event: {{title}}"
 msgstr ""
 
 msgid "One label for each couple."
@@ -10739,6 +10870,12 @@ msgid "Optional detailed description of this property type"
 msgstr ""
 
 msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr ""
+
+msgid "Optional · up to {{max}} welcome"
+msgstr ""
+
+msgid "Optional · {{live}} of up to {{max}}"
 msgstr ""
 
 msgid "Optional — pick or type a new category"
@@ -11651,6 +11788,10 @@ msgid "Plugin status updated"
 msgstr ""
 
 msgid "Plugin uninstalled"
+msgstr ""
+
+#, php-format
+msgid "Plugin upgraded from %1$s to %2$s."
 msgstr ""
 
 msgid "Plugin zip URL (HTTPS only)"
@@ -13081,6 +13222,12 @@ msgstr ""
 msgid "Select your options above and click a backup button."
 msgstr ""
 
+msgid "Select {{event}}"
+msgstr ""
+
+msgid "Select {{when}}"
+msgstr ""
+
 msgid "Selected Language"
 msgstr ""
 
@@ -13875,6 +14022,9 @@ msgstr ""
 msgid "Substitute asked"
 msgstr ""
 
+msgid "Substitute asked: {{name}}"
+msgstr ""
+
 msgid "Substitute decision"
 msgstr ""
 
@@ -13946,6 +14096,9 @@ msgid "Sunday School group can't be modified, only in this two cases"
 msgstr ""
 
 msgid "Sunday School is disabled"
+msgstr ""
+
+msgid "Sunday School: {{name}}"
 msgstr ""
 
 msgid "Sundays"
@@ -14137,6 +14290,9 @@ msgstr ""
 msgid "Teachers of this class are managed in Ministries → %1$s → %2$s."
 msgstr ""
 
+msgid "Teachers to import: {{total}}"
+msgstr ""
+
 msgid "Teal"
 msgstr ""
 
@@ -14304,6 +14460,9 @@ msgid "That family member could not be added. Please check the highlighted field
 msgstr ""
 
 msgid "That field name already exists."
+msgstr ""
+
+msgid "That is more than {{max}} events. Choose a shorter range."
 msgstr ""
 
 msgid "That is not a valid date."
@@ -14950,6 +15109,22 @@ msgid_plural "They finish %d minutes before the event ends."
 msgstr[0] ""
 msgstr[1] ""
 
+msgctxt "one"
+msgid "They finish {{count}} minutes after the event ends."
+msgstr ""
+
+msgctxt "other"
+msgid "They finish {{count}} minutes after the event ends."
+msgstr ""
+
+msgctxt "one"
+msgid "They finish {{count}} minutes before the event ends."
+msgstr ""
+
+msgctxt "other"
+msgid "They finish {{count}} minutes before the event ends."
+msgstr ""
+
 msgid "They were already a volunteer here"
 msgstr ""
 
@@ -15102,6 +15277,9 @@ msgid "This ministry's events"
 msgstr ""
 
 msgid "This ministry's events (no event chosen yet)"
+msgstr ""
+
+msgid "This ministry's events titled {{title}}"
 msgstr ""
 
 msgid "This occurrence follows its schedule again"
@@ -15834,6 +16012,9 @@ msgstr ""
 msgid "Up to Date"
 msgstr ""
 
+msgid "Up to {{max}} welcome"
+msgstr ""
+
 msgid "Upcoming"
 msgstr ""
 
@@ -16462,6 +16643,9 @@ msgstr ""
 msgid "Volunteer times"
 msgstr ""
 
+msgid "Volunteer times must be whole minutes, at most {{max}} from the event"
+msgstr ""
+
 msgid "Volunteer-entered headcounts, broken down by category."
 msgstr ""
 
@@ -16507,6 +16691,22 @@ msgid "Volunteers start %d minute before the event starts."
 msgid_plural "Volunteers start %d minutes before the event starts."
 msgstr[0] ""
 msgstr[1] ""
+
+msgctxt "one"
+msgid "Volunteers start {{count}} minutes after the event starts."
+msgstr ""
+
+msgctxt "other"
+msgid "Volunteers start {{count}} minutes after the event starts."
+msgstr ""
+
+msgctxt "one"
+msgid "Volunteers start {{count}} minutes before the event starts."
+msgstr ""
+
+msgctxt "other"
+msgid "Volunteers start {{count}} minutes before the event starts."
+msgstr ""
 
 msgid "Vonage API Key"
 msgstr ""
@@ -16963,6 +17163,9 @@ msgstr ""
 msgid "You are already helping that day"
 msgstr ""
 
+msgid "You are already helping that day as {{what}}."
+msgstr ""
+
 msgid "You are already helping that day as {{what}}. Sign up for this as well?"
 msgstr ""
 
@@ -17309,6 +17512,9 @@ msgstr ""
 msgid "already in cart"
 msgstr ""
 
+msgid "already serving as {{position}}"
+msgstr ""
+
 msgid "already staffed by this team"
 msgstr ""
 
@@ -17515,6 +17721,9 @@ msgid "items"
 msgstr ""
 
 msgid "kilometers"
+msgstr ""
+
+msgid "last served {{date}}"
 msgstr ""
 
 #, php-format
@@ -17832,6 +18041,22 @@ msgid "{{count}} left open because the default is no longer qualified"
 msgstr ""
 
 msgctxt "one"
+msgid "{{count}} needed"
+msgstr ""
+
+msgctxt "other"
+msgid "{{count}} needed"
+msgstr ""
+
+msgctxt "one"
+msgid "{{count}} occurrences deleted"
+msgstr ""
+
+msgctxt "other"
+msgid "{{count}} occurrences deleted"
+msgstr ""
+
+msgctxt "one"
 msgid "{{count}} volunteers assigned"
 msgstr ""
 
@@ -17858,13 +18083,45 @@ msgstr ""
 msgid "{{created}} occurrences created, {{existing}} were already there"
 msgstr ""
 
+msgctxt "one"
+msgid "{{failed}} of {{count}} occurrences could not be deleted"
+msgstr ""
+
+msgctxt "other"
+msgid "{{failed}} of {{count}} occurrences could not be deleted"
+msgstr ""
+
 msgid "{{hours}}h {{mins}}m left"
+msgstr ""
+
+msgid "{{live}} assigned, {{min}} needed, room for {{more}} more"
+msgstr ""
+
+msgid "{{live}} of up to {{max}}"
+msgstr ""
+
+msgid "{{live}} of {{max}}"
+msgstr ""
+
+msgid "{{live}} of {{min}}"
+msgstr ""
+
+msgid "{{live}} of {{min}}–{{max}}"
 msgstr ""
 
 msgid "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming)."
 msgstr ""
 
+msgid "{{ministry}} has no events between {{from}} and {{to}}."
+msgstr ""
+
+msgid "{{ministry}} has no events titled {{title}} between {{from}} and {{to}}."
+msgstr ""
+
 msgid "{{minutes}} min left"
+msgstr ""
+
+msgid "{{min}} to {{max}} needed"
 msgstr ""
 
 msgid "{{names}} also staff some of them."
@@ -17878,13 +18135,42 @@ msgctxt "other"
 msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
 msgstr ""
 
+msgid "{{name}} (no longer qualified)"
+msgstr ""
+
+msgid "{{name}} (no upcoming meetings — add its meetings first)"
+msgstr ""
+
+msgid "{{name}} (no upcoming meetings)"
+msgstr ""
+
+msgctxt "one"
+msgid "{{name}} ({{count}} upcoming)"
+msgstr ""
+
+msgctxt "other"
+msgid "{{name}} ({{count}} upcoming)"
+msgstr ""
+
 msgid "{{name}} already coordinates this ministry"
 msgstr ""
 
 msgid "{{name}} assigned"
 msgstr ""
 
+msgid "{{name}} does not name the event it follows, so it has nothing to staff."
+msgstr ""
+
+msgid "{{name}} ended on {{date}}, so there are no dates left to generate."
+msgstr ""
+
+msgid "{{name}} has no upcoming meetings on the calendar, so this schedule has nothing to staff."
+msgstr ""
+
 msgid "{{name}} is already serving as {{position}} on this occurrence. You can still assign them."
+msgstr ""
+
+msgid "{{name}} is no longer qualified, so this place is left open on new occurrences."
 msgstr ""
 
 msgid "{{name}} is qualified but is not in this ministry's volunteer pool. Assigning them adds them to this occurrence only."
@@ -17894,6 +18180,15 @@ msgid "{{name}} now coordinates this ministry"
 msgstr ""
 
 msgid "{{name}} registered and checked in!"
+msgstr ""
+
+msgid "{{name}} starts on {{date}}, after the dates generated now (through {{through}})."
+msgstr ""
+
+msgid "{{pending}} not yet confirmed"
+msgstr ""
+
+msgid "{{position}}: Max is {{max}} but {{chosen}} default volunteers are chosen. Remove one or raise Max."
 msgstr ""
 
 msgid "{{position}}: the counts must be between 0 and {{max}}."
@@ -17911,7 +18206,27 @@ msgstr ""
 msgid "{{proposer}} asks {{substitute}} to take their place"
 msgstr ""
 
+msgid "{{team}}: no staffing needs set"
+msgstr ""
+
+msgid "{{team}}: {{staffing}}"
+msgstr ""
+
+msgctxt "one"
+msgid "{{title}} ({{count}} upcoming)"
+msgstr ""
+
+msgctxt "other"
+msgid "{{title}} ({{count}} upcoming)"
+msgstr ""
+
 msgid "{{title}} on {{date}} created. Staff it now?"
+msgstr ""
+
+msgid "{{type}} events (no event chosen yet)"
+msgstr ""
+
+msgid "{{type}} events titled {{title}}"
 msgstr ""
 
 #. Context: countries
