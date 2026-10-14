@@ -456,15 +456,13 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
         });
 
         it("escapes the proposed member's name in the family timeline note", () => {
-            const firstName = `D'Ann & Bo${String(Date.now()).slice(-6)}`;
-            proposeMember(firstName, 2);
+            const stamp = String(Date.now()).slice(-6);
+            proposeMember(`D'Ann & Bo${stamp}`, 2);
 
             cy.makePrivateAdminAPICall("GET", `/api/timeline/family/${LENA_FAMILY_ID}`, null, 200).then(
                 (response) => {
                     expect(response.body.timeline.map((item) => item.text)).to.include(
-                        `Added through the Member Portal and waiting for review: ${firstName
-                            .replace("&", "&amp;")
-                            .replace("'", "&#039;")} Black (Spouse)`,
+                        `Added through the Member Portal and waiting for review: D&#039;Ann &amp; Bo${stamp} Black (Spouse)`,
                     );
                 },
             );
