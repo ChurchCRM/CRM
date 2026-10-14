@@ -73,6 +73,21 @@ class ComposeSecurityTest(unittest.TestCase):
             for port in service.get("ports", []):
                 self.assertEqual(port["host_ip"], "127.0.0.1")
 
+    def test_shipped_env_example_cannot_start_the_production_stack(self):
+        """An operator who copies .env.example unedited must be stopped, not handed
+        a database whose password is in the repository."""
+        example = Path(__file__).parent / "production" / ".env.example"
+        values = {}
+        for line in example.read_text().splitlines():
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                key, _, value = line.partition("=")
+                values[key] = value
+        for key in ("CHURCHCRM_DB_PASSWORD", "CHURCHCRM_DB_ROOT_PASSWORD"):
+            self.assertIn(key, values, f"{key} should be present in .env.example")
+            self.assertEqual(values[key], "", f"{key} must ship empty so Compose refuses to start")
+        self.assertNotEqual(self.render(["production/compose.yaml"], environment=values).returncode, 0)
+
     def test_production_examples_require_both_passwords(self):
         for filename in ("examples/docker-compose.nginx.yaml", "examples/docker-compose.frankenphp.yaml"):
             for environment in ({}, {"MYSQL_ROOT_PASSWORD": "test-root"}, {"MYSQL_PASSWORD": "test-app"}):
