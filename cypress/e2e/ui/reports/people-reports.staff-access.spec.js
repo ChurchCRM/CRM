@@ -26,7 +26,7 @@ describe("People Reports for staff users (#10570)", () => {
             cy.get("#reportResults tbody tr[data-person-id]").should("have.length.greaterThan", 0);
             cy.get("#addAllToCart").should("exist");
             cy.get("#downloadCsv")
-                .invoke("attr", "href")
+                .invoke("prop", "href")
                 .then((href) => cy.request(href))
                 .its("headers.content-type")
                 .should("include", "text/csv");
