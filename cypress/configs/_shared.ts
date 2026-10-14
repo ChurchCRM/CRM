@@ -66,6 +66,60 @@ export const dbTasks = {
 };
 
 /**
+ * Read every src/**\/.htaccess on the runner.
+ *
+ * The CI app directory is bind-mounted into the container, so the files the
+ * setup wizard writes are the same files on disk here. The task only reads
+ * `.htaccess` under `src/` (vendor excluded) and returns the RewriteBase
+ * lines. Used by the new-system install spec (#10563).
+ */
+export const htaccessTasks = {
+  'htaccess:scan'() {
+    const fs = require('fs');
+    const path = require('path');
+    const root = process.cwd();
+    const src = path.join(root, 'src');
+    const found: { rel: string; hasRewriteEngine: boolean; rewriteBases: string[] }[] = [];
+
+    const walk = (dir: string) => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        if (entry.name === 'vendor' || entry.name === 'node_modules') {
+          continue;
+        }
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          walk(full);
+          continue;
+        }
+        if (entry.name !== '.htaccess') {
+          continue;
+        }
+        const rel = path.relative(root, full).split(path.sep).join('/');
+        if (!rel.startsWith('src/') || rel.split('/').includes('..')) {
+          continue;
+        }
+        const content = fs.readFileSync(full, 'utf8');
+        const rewriteBases: string[] = [];
+        const re = /^\s*RewriteBase\s+(\S+)\s*$/gm;
+        let match: RegExpExecArray | null;
+        while ((match = re.exec(content)) !== null) {
+          rewriteBases.push(match[1]);
+        }
+        found.push({
+          rel,
+          hasRewriteEngine: /RewriteEngine\s+On/i.test(content),
+          rewriteBases,
+        });
+      }
+    };
+
+    walk(src);
+    found.sort((a, b) => a.rel.localeCompare(b.rel));
+    return found;
+  }
+};
+
+/**
  * Node-side Mailpit tasks.
  *
  * The `test` docker profile runs Mailpit (`docker/docker-compose.yaml`), so a
@@ -160,7 +214,7 @@ export function setupCommonNodeEvents(on: any, config: any) {
 
   // Every task must be registered in a single on('task', ...) call — a second
   // registration replaces the first rather than merging with it.
-  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks };
+  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...htaccessTasks };
 
   // Register download verification tasks if available
   try {
