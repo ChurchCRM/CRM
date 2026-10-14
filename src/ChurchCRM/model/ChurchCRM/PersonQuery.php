@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
+use ChurchCRM\Authorization\RecordAccessPolicy;
 use ChurchCRM\model\ChurchCRM\Base\PersonQuery as BasePersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -30,5 +31,16 @@ class PersonQuery extends BasePersonQuery
     public function filterByDeceased(): self
     {
         return $this->filterByDateDeceased(null, Criteria::ISNOTNULL);
+    }
+
+    /**
+     * Hide members of protected households from users who may not read them.
+     * Admins, members of the household, and the user's own record still pass.
+     */
+    public function filterVisibleTo(User $user): self
+    {
+        $hidden = (new RecordAccessPolicy())->hiddenFamilyIds($user);
+
+        return $hidden === [] ? $this : $this->filterByFamId($hidden, Criteria::NOT_IN);
     }
 }

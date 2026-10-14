@@ -76,7 +76,7 @@ function listFamilies(Request $request, Response $response, array $args): Respon
         $filterGeocoded = InputUtils::legacyFilterInput($queryParams['geocoded']);
     }
 
-    $familiesQuery = FamilyQuery::create()->orderByName();
+    $familiesQuery = FamilyQuery::create()->filterVisibleTo(AuthenticationManager::getCurrentUser())->orderByName();
 
     if ($familyActiveStatus === 'active') {
         $familiesQuery->filterByDateDeactivated(null);
@@ -160,7 +160,7 @@ function viewFamily(Request $request, Response $response, array $args): Response
     $familyId = (int)$args['id'];
     $family = FamilyQuery::create()->findPk($familyId);
 
-    if (empty($family)) {
+    if (empty($family) || !AuthenticationManager::getCurrentUser()->canReadFamily($familyId)) {
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/family/not-found?id=' . $familyId);
     }
 

@@ -183,6 +183,7 @@
         <column name="fam_Longitude" phpName="Longitude" type="DOUBLE"/>
         <column name="fam_Envelope" phpName="Envelope" type="SMALLINT" size="9" required="true" defaultValue="0"/>
         <column name="fam_NeedsReview" phpName="NeedsReview" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0" description="True when this self-registered family is awaiting admin review/approval"/>
+        <column name="fam_Confidential" phpName="Confidential" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0" description="Protected household: readable only by admins and members of the family itself"/>
         <index name="fam_ID">
             <index-column name="fam_ID"/>
         </index>
@@ -235,6 +236,7 @@
         <column name="nte_EditedBy" phpName="EditedBy" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 required="true" defaultValue="0"/>
         <column name="nte_Type" phpName="Type" type="VARCHAR" size="50"/>
+        <column name="nte_Confidential" phpName="Confidential" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0" description="Readable only by the author and explicit recipients; no admin override"/>
         <index name="idx_nte_per_ID">
             <index-column name="nte_per_ID"/>
         </index>
@@ -246,6 +248,17 @@
         </foreign-key>
         <foreign-key foreignTable="family_fam">
             <reference local="nte_fam_ID" foreign="fam_ID"/>
+        </foreign-key>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="note_recipient_nrc" idMethod="none" phpName="NoteRecipient" description="Users explicitly granted read access to a confidential note">
+        <column name="nrc_nte_ID" phpName="NoteId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true" defaultValue="0"/>
+        <column name="nrc_usr_ID" phpName="UserId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" required="true" defaultValue="0"/>
+        <foreign-key foreignTable="note_nte" onDelete="CASCADE">
+            <reference local="nrc_nte_ID" foreign="nte_ID"/>
         </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>

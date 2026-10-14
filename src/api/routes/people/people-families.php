@@ -136,7 +136,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         if ($byEnvelope) {
             $q->_or()->filterByEnvelope((int) $query);
         }
-        foreach ($q->limit(15)->find() as $family) {
+        foreach ($q->filterVisibleTo(AuthenticationManager::getCurrentUser())->limit(15)->find() as $family) {
             $row = $family->toSearchArray();
             if ($byEnvelope && $family->getEnvelope()) {
                 $row['displayName'] .= ' (' . gettext('Envelope') . ' #' . $family->getEnvelope() . ')';
@@ -348,8 +348,9 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
         ->filterByWeddingdate(null, Criteria::ISNOTNULL)
+        ->filterVisibleTo(AuthenticationManager::getCurrentUser())
         // Parentheses are required: Propel ANDs a raw where() onto the clause verbatim,
-        // so an unparenthesised top-level OR would escape the two filters above and pull
+        // so an unparenthesised top-level OR would escape the filters above and pull
         // in deactivated families.
         ->where('(' . implode(' OR ', $conditions) . ')')
         ->orderByWeddingdate('DESC')
@@ -378,6 +379,7 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
 function getLatestFamilies(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
+        ->filterVisibleTo(AuthenticationManager::getCurrentUser())
         ->orderByDateEntered('DESC')
         ->limit(10)
         ->find();
@@ -405,6 +407,7 @@ function getLatestFamilies(Request $request, Response $response, array $args): R
 function getUpdatedFamilies(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
+        ->filterVisibleTo(AuthenticationManager::getCurrentUser())
         ->orderByDateLastEdited('DESC')
         ->limit(10)
         ->find();

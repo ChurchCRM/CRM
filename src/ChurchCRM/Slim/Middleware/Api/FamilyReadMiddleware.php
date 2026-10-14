@@ -18,7 +18,7 @@ use Psr\Http\Message\ServerRequestInterface;
  *
  * This middleware:
  *   - Loads the family entity and returns 404 if it does not exist (same as FamilyMiddleware).
- *   - Uses User::canReadFamily() for authorisation (currently always true — the
+ *   - Uses User::canReadFamily() for authorisation (true unless the family is a protected household — the
  *     entry gate is User::isEditSelfExclusive() (checked by AuthMiddleware), NOT this middleware).
  *   - Does NOT enforce the family-scope restriction from GHSA-jjcj-h3cm-p7x7.
  *     That restriction belongs on FamilyMiddleware (sensitive/write endpoints only).
@@ -54,15 +54,13 @@ class FamilyReadMiddleware extends AbstractEntityMiddleware
      * never restricts EditSelf-scoped users to their own family. Access is still
      * gated by AuthMiddleware upstream (User::isEditSelfExclusive()).
      *
-     * The canReadFamily() call exists for defence-in-depth and as a hook point
-     * for future row-level security (e.g. pastoral-confidentiality holds). It
-     * currently always returns true.
+     * canReadFamily() hides protected households (404, same as a missing family).
      */
     protected function postEntityLoad(ServerRequestInterface $request, mixed $entity): ?ResponseInterface
     {
         $currentUser = AuthenticationManager::getCurrentUser();
         if (!$currentUser->canReadFamily($entity->getId())) {
-            return SlimUtils::renderErrorJSON(new Response(), gettext('Access denied'), [], 403);
+            return SlimUtils::renderErrorJSON(new Response(), gettext('Family not found'), [], 404);
         }
         return null;
     }

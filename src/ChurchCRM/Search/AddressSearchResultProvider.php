@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Search;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\LoggerUtils;
@@ -43,6 +44,7 @@ class AddressSearchResultProvider extends BaseSearchResultProvider
                 ->filterByZip($searchLikeString, Criteria::LIKE)
                 ->_or()
                 ->filterByState($searchLikeString, Criteria::LIKE)
+                ->filterVisibleTo(AuthenticationManager::getCurrentUser())
                 ->limit(SystemConfig::getIntValue('bSearchIncludeAddressesMax'))
                 ->find();
 

@@ -22,7 +22,7 @@ Code: `src/ChurchCRM/model/ChurchCRM/User.php`, `AuthMiddleware.php`, `PageInit.
 
 Gate must run in **both** `PageInit.php` and `AuthMiddleware` (`isAuthFlowExemptPath()` so login still works). `MvcAppFactory` always adds `AuthMiddleware`.
 
-Read is default: `canReadFamily` / `canReadPerson` return true. Keep passing the real IDs — they are reserved ABAC hooks. Do not delete the unused parameters.
+Read is default, except protected households (`family_fam.fam_Confidential`, set by admins): `canReadFamily` / `canReadPerson` delegate to `ChurchCRM\Authorization\RecordAccessPolicy`, so pass the real IDs. List and search queries add `filterVisibleTo($user)` on `FamilyQuery` / `PersonQuery`; entity middleware answers 404. Confidential notes (`nte_Confidential`) are visible to the author and `note_recipient_nrc` users only, with no admin override: use `Note::isVisibleTo()` and `Note::canBeModifiedBy()`. A new read path that skips these leaks protected records.
 
 `usr_EditSelf` defaults to 0. Grant it on purpose in `UserService::normalizeAccessMode()`.
 

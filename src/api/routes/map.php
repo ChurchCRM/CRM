@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
@@ -62,6 +63,7 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
         if (!empty($cartIds)) {
             $persons = PersonQuery::create()
                 ->filterById($cartIds)
+                ->filterVisibleTo(AuthenticationManager::getCurrentUser())
                 ->find();
 
             foreach ($persons as $person) {
@@ -96,6 +98,7 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
             ->usePerson2group2roleP2g2rQuery()
                 ->filterByGroupId($groupId)
             ->endUse()
+            ->filterVisibleTo(AuthenticationManager::getCurrentUser())
             ->find();
 
         foreach ($persons as $person) {
@@ -124,6 +127,7 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
             ->filterByDateDeactivated(null)
             ->filterByLatitude(0, Criteria::NOT_EQUAL)
             ->filterByLongitude(0, Criteria::NOT_EQUAL)
+            ->filterVisibleTo(AuthenticationManager::getCurrentUser())
             ->find();
 
         foreach ($families as $family) {
@@ -202,6 +206,7 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
         ->filterByLongitude(0, Criteria::NOT_EQUAL)
         ->filterByLatitude(['min' => $minLat, 'max' => $maxLat])
         ->filterByLongitude(['min' => $minLng, 'max' => $maxLng])
+        ->filterVisibleTo(AuthenticationManager::getCurrentUser())
         ->find();
 
     $items = [];
