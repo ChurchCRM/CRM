@@ -57,6 +57,25 @@
   }
 }
 
+// --- ApexCharts — dark mode ------------------------------------------
+// ApexCharts writes light-theme colours into the SVG; take Tabler's instead.
+html[data-bs-theme="dark"] {
+  .apexcharts-text {
+    fill: var(--tblr-body-color);
+  }
+
+  .apexcharts-gridline,
+  .apexcharts-grid-borders line,
+  .apexcharts-xaxis-tick {
+    stroke: var(--tblr-border-color);
+  }
+
+  // The legend colour is an inline style.
+  .apexcharts-legend-text {
+    color: inherit !important;
+  }
+}
+
 
 // --- Sidebar: chevron folder indicator -----------------------------------
 // Tabler 1.4.0 dropped nav-link-arrow — define it here until Tabler adds it back.
