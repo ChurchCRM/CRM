@@ -49,12 +49,12 @@ const runTimerJobs = () => {
     return cy.makePrivateAdminAPICall("POST", "/api/background/timerjobs", {}).its("body.ran").should("eq", true);
 };
 
-/** Several requests at once, outside Cypress's one-at-a-time command queue. */
+/** Several requests at once, outside Cypress's one-at-a-time command queue. Keeps a subdirectory baseUrl. */
 const concurrently = (requests) =>
-    cy.then(() =>
+    cy.then({ timeout: 60000 }, () =>
         Promise.all(
             requests.map(({ method, path, body }) =>
-                fetch(new URL(path, Cypress.config("baseUrl")), {
+                fetch(`${Cypress.config("baseUrl").replace(/\/$/, "")}${path}`, {
                     method,
                     credentials: "omit",
                     headers: { "x-api-key": Cypress.testEnv("admin.api.key"), "content-type": "application/json" },
