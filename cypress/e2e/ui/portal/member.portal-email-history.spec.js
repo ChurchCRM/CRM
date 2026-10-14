@@ -45,11 +45,11 @@ describe("Member Portal — Email History", () => {
         // Four composer messages, oldest first, so "newest first" is a real
         // assertion and one small page is not the whole history.
         for (let n = 1; n <= SEEDED; n += 1) {
-            cy.makePrivateAdminAPICall("POST", "/api/email/send", {
+            cy.sendComposerEmailNow({
                 personIds: [LENA_PERSON_ID],
                 subject: `${tag} message ${n}`,
                 body: `<p>Body of message ${n}</p>`,
-            }).then((resp) => expect(resp.body.counts.sent).to.eq(1));
+            }).then((result) => expect(result.progress.sent).to.eq(1));
         }
 
         // An account email: the reset link is never stored, so its detail page

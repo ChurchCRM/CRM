@@ -61,20 +61,20 @@ describe("Member Portal API — /api/portal/me/emails", () => {
         // subjects carry the run's tag so a re-run never reads the last run's
         // rows. Sent oldest first, so "newest first" is a real assertion.
         for (const n of [1, 2, 3]) {
-            cy.makePrivateAdminAPICall("POST", "/api/email/send", {
+            cy.sendComposerEmailNow({
                 personIds: [LENA_PERSON_ID],
                 subject: `${tag} message ${n}`,
                 body: `Body of message ${n} for Lena`,
-            }).then((resp) => {
-                expect(resp.body.counts.sent).to.eq(1);
-                sentToAddress = resp.body.sent[0].email;
+            }).then((result) => {
+                expect(result.progress.sent).to.eq(1);
+                sentToAddress = result.queued[0].email;
             });
         }
-        cy.makePrivateAdminAPICall("POST", "/api/email/send", {
+        cy.sendComposerEmailNow({
             personIds: [SAMANTHA_PERSON_ID],
             subject: `${tag} not for Lena`,
             body: "This one belongs to Samantha",
-        }).then((resp) => expect(resp.body.counts.sent).to.eq(1));
+        }).then((result) => expect(result.progress.sent).to.eq(1));
     });
 
     describe("The list", () => {
