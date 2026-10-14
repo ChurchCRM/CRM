@@ -139,8 +139,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
 
             <div class="card shadow-sm border-0">
-                <div class="card-header bg-light py-2">
-                    <h5 class="mb-0 text-dark">
+                <div class="card-header bg-surface-secondary py-2">
+                    <h5 class="mb-0 text-body">
                         <i class="fa-solid fa-file-import text-secondary"></i> <?= gettext('Have Existing Data?') ?>
                     </h5>
                 </div>

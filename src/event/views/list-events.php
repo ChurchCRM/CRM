@@ -251,7 +251,7 @@ foreach ($monthlyData as $monthData):
         <?php if (!empty($averages)): ?>
         <!-- Monthly Averages always visible, outside the collapsible past tbody -->
         <tbody>
-          <tr class="table-light">
+          <tr class="bg-surface-secondary">
             <td><strong><?= gettext('Monthly Averages') ?></strong></td>
             <td></td>
             <td></td>
@@ -273,7 +273,7 @@ foreach ($monthlyData as $monthData):
         <!-- No past events — Monthly Averages (if any) go in the current tbody -->
         <?php if (!empty($averages)): ?>
         <tbody>
-          <tr class="table-light">
+          <tr class="bg-surface-secondary">
             <td><strong><?= gettext('Monthly Averages') ?></strong></td>
             <td></td>
             <td></td>
