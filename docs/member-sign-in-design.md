@@ -63,7 +63,7 @@ This document puts those into one design and one delivery plan.
 | D6 | The personal email is the sign-in identity. §9 controls who may change it, and when a new address may be used to sign in. | §9 |
 | D7 | The web root goes to `/portal/login`. `/admin` is the staff sign-in page, and `/session/begin` redirects to it. | §7 |
 | D8 | One portal permissions model serves core, Volunteer and plugins. | §8 |
-| D9 | **Family email:** it moves to the head of household, then the spouse. If neither can take it, it is kept as a note in the family's timeline. A moved address is used to sign in only after an administrator confirms it is that person's own, except in a one-person family. | §10 |
+| D9 | **Family email:** it moves to the head of household, then the spouse. If neither can take it, it is kept as a note in the family's timeline. A moved address is used to sign in only after an administrator confirms it is that person's own. In a one-person family it is accepted as the address on record (§9). | §10 |
 | D10 | Login as User returns inside this work, in the person's Actions menu. #10392 closes in favour of it. | §6.5 |
 | D11 | **Release day:** each self-service account's portal data is copied, then the account is deleted. Member sign-in stays off until an administrator turns it on. | §12 |
 | D12 | Passkeys add one WebAuthn library. | §14 |
@@ -402,7 +402,20 @@ Under A2, whoever controls a person's personal email can sign in as that person.
 | Anyone, for a person with given portal grants (§8.3) or a staff account | Administrators only. |
 | Imports and the API | Follow the staff rule. |
 
-**Unconfirmed addresses.** An unconfirmed address is the person's email for mail at once, but it can't be used to sign in until it is confirmed. Two kinds are unconfirmed: a new address that staff, an import or the API give a person who has signed in, and an address moved from the family email (§10.1), except in a one-person family. Other changes made before a person's first sign-in take effect at once, because A2 rests on the address the church has on record. An address is confirmed when:
+**Addresses on record before the first sign-in.** Until a person has signed in, the address the church has on record for them is their sign-in identity (A2). Receiving the code at that address is the accepted proof of identity: it shows that whoever signs in controls the mailbox the church recorded for that person. ChurchCRM checks nothing more. Two kinds of address work this way and can be used to sign in at once:
+- an address that staff, an import, the API or a registration form give a person before their first sign-in;
+- an address moved from the family email to the only living, active member of a one-person family (§10.1).
+
+The rest of the design still applies to these addresses:
+- the address must belong to exactly one person who may sign in (§4);
+- every change is audited;
+- the first sign-in is audited with the address it used.
+
+**Unconfirmed addresses.** An unconfirmed address is the person's email for mail at once, but it can't be used to sign in until it is confirmed. Two kinds are unconfirmed:
+- a new address that staff, an import or the API give a person who has signed in;
+- an address moved from the family email to a person in a family of two or more (§10.1).
+
+Saving the same address again doesn't confirm it. An address is confirmed when:
 - the member signs in with a passkey and confirms it on the Sign-in and devices page, which sends a confirmation link to the new address, as when they change it themselves;
 - the member uses the link in the notice sent to their old, proven address;
 - an administrator who has checked who the person is, in person or by phone, confirms it on the person's page or the Sign-in tab.
@@ -435,7 +448,7 @@ For each family whose email isn't empty (compared trimmed and in lower case):
 5. **Then the family email is cleared.**
 
 - **A moved address doesn't sign in yet.** It is unconfirmed (§9) until an administrator confirms that it is that person's own, because everyone who reads the family's mailbox would get the sign-in code. Mail goes to it at once (§10.2).
-  - **Except in a one-person family.** When the person who receives it is the family's only living, active member, the address is confirmed at once: the family's mailbox is theirs.
+  - **Except in a one-person family.** When the person who receives it is the family's only living, active member, it is an address on record before the first sign-in (§9) and can be used to sign in at once. Receiving the code is the accepted proof of identity.
 - The upgrade writes the counts (moved to a head, moved to a spouse, already held, noted) to the upgrade log. A one-time **Family emails not moved** list on the Member Portal Sign-in tab links to each family with a note.
 - The notes are ordinary family notes, written with `Family::createTimeLineNote()` (`Family.php:551`). Staff who can see the family's timeline can read them.
 - The move is a PHP upgrade step. `upgrade.json` already runs `.php` steps (`UpgradeService.php:93-96`).
@@ -545,7 +558,7 @@ New tables. All are keyed by `per_ID` with `ON DELETE CASCADE`, except the capab
 - **Revocation by the next request:** the session version and the per-request check (§5).
 - **No account lookup leak:** the one answer screen and the throttles (§6.1).
 - **Email:** the sign-in email goes only to the person's own address. The office notice goes only to the office list.
-- **Sign-in addresses:** an email sign-in proves control of the mailbox, not whose it is. A replacement address set by someone else, and an address moved from the family email (except in a one-person family), sign in only once confirmed (§9).
+- **Sign-in addresses:** an email sign-in proves control of the mailbox, not whose it is. A replacement address set by someone else, and an address moved from the family email in a family of two or more, sign in only once confirmed (§9). Before a person's first sign-in, receiving the code at the address on record is the accepted proof of identity (§9).
 - **Audit:** it holds no secrets. Notes and other personal content never appear in it.
 - **Remembered devices and passkeys:**
   - only when the member says the device is their own (§6.2, §6.3);
@@ -656,13 +669,17 @@ Row 11 doesn't depend on the sign-in work. It can be built first, and can ship o
   - a non-adult sees no family contact details;
   - a given grant works until its end date;
   - a test plugin's capability, rule and page work.
-- **Email changes:** every row of §9, including the notice to the old address and sessions ending. An unconfirmed address can't sign in until one of the three ways confirms it, and each way is tested.
+- **Email changes:**
+  - every row of §9, including the notice to the old address and sessions ending;
+  - an unconfirmed address can't sign in until one of the three ways confirms it, and each way is tested;
+  - an address set by staff, an import or the API before the person's first sign-in signs in at once, and the audit records who set it;
+  - saving a moved family address again doesn't confirm it.
 - **Family email move:**
   - copied to the head, or to the spouse when the head has an email;
   - a timeline note when both have one, when there is no adult, and when another family holds the address;
   - nothing at all when a family member already has it;
-  - a moved address doesn't sign in until an administrator confirms it;
-  - in a one-person family it signs in at once;
+  - in a family of two or more, a moved address doesn't sign in until an administrator confirms it;
+  - in a one-person family it signs in at once, as an address on record, and the audit records it;
   - mail for a family goes to the head;
   - the directory prints no family email.
 - **Login as User:**
