@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-14 14:34+0000\n"
+"POT-Creation-Date: 2026-10-14 15:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5402,6 +5402,9 @@ msgid "Enter Name"
 msgstr ""
 
 msgid "Enter Winners"
+msgstr ""
+
+msgid "Enter a new password"
 msgstr ""
 
 msgid "Enter a search term"
