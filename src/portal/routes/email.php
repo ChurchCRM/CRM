@@ -39,24 +39,14 @@ $portalEmailActor = static function (Request $request): Person {
     return $person;
 };
 
-/** The word a member reads for an eml_Status value. */
-$portalEmailStatusLabel = static function (string $status): string {
-    return match ($status) {
-        EmailLogService::STATUS_SENT => gettext('Sent'),
-        EmailLogService::STATUS_FAILED => gettext('Failed'),
-        EmailLogService::STATUS_SKIPPED => gettext('Skipped'),
-        default => $status,
-    };
-};
-
 /** One history row as the templates want it: strings, already formatted. */
-$portalEmailRow = static function (array $row) use ($portalEmailStatusLabel): array {
+$portalEmailRow = static function (array $row): array {
     return [
         'id' => (int) $row['id'],
         'subject' => (string) $row['subject'],
         'kindLabel' => (string) $row['kindLabel'],
         'status' => (string) $row['status'],
-        'statusLabel' => $portalEmailStatusLabel((string) $row['status']),
+        'statusLabel' => EmailLogService::statusLabel((string) $row['status']),
         'address' => (string) $row['address'],
         'dateSent' => DateTimeUtils::formatDate((string) $row['dateSent'], true),
         'hasBody' => (bool) $row['hasBody'],

@@ -82,7 +82,7 @@ $app->group('/portal/me/emails', function (RouteCollectorProxy $group) use ($por
      *                 @OA\Property(property="kind", type="string"),
      *                 @OA\Property(property="kindLabel", type="string"),
      *                 @OA\Property(property="subject", type="string"),
-     *                 @OA\Property(property="status", type="string", enum={"sent","failed","skipped"}),
+     *                 @OA\Property(property="status", type="string", enum={"sent","failed","skipped","queued","sending"}),
      *                 @OA\Property(property="dateSent", type="string"),
      *                 @OA\Property(property="hasBody", type="boolean"))),
      *             @OA\Property(property="total", type="integer"),

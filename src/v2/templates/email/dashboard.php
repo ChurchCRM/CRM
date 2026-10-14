@@ -152,6 +152,9 @@ $(document).ready(function() {
         <h3 class="card-title m-0"><i class="fa-solid fa-envelope-open-text me-2"></i><?= gettext('Recent Sends') ?>
             <span class="badge bg-secondary-lt text-secondary ms-2"><?= (int) $recentEmails['total'] ?></span>
         </h3>
+        <?php if (!empty($queuedEmailCount)) : ?>
+            <span class="badge bg-azure-lt text-azure ms-3" id="email-queued-count"><i class="fa-solid fa-hourglass-half me-1"></i><?= sprintf(gettext('%d queued'), (int) $queuedEmailCount) ?></span>
+        <?php endif; ?>
         <?php if (!empty($failedEmailCount)) : ?>
             <span class="badge bg-danger-lt text-danger ms-3"><i class="fa-solid fa-triangle-exclamation me-1"></i><?= sprintf(gettext('%d failed'), (int) $failedEmailCount) ?></span>
         <?php endif; ?>

@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Utils\InputUtils;
 
 /**
@@ -35,18 +36,14 @@ $emailHistoryShowTo = $emailHistoryShowTo ?? false;
             <?php foreach ($emailHistoryRows as $row) :
                 $status = (string) ($row['status'] ?? '');
                 $statusClass = match ($status) {
-                    'sent'    => 'bg-success-lt text-success',
-                    'failed'  => 'bg-danger-lt text-danger',
-                    default   => 'bg-secondary-lt text-secondary',
+                    'sent'              => 'bg-success-lt text-success',
+                    'failed'            => 'bg-danger-lt text-danger',
+                    'queued', 'sending' => 'bg-azure-lt text-azure',
+                    default             => 'bg-secondary-lt text-secondary',
                 };
-                $statusLabel = match ($status) {
-                    'sent'    => gettext('Sent'),
-                    'failed'  => gettext('Failed'),
-                    'skipped' => gettext('Skipped'),
-                    default   => $status,
-                };
+                $statusLabel = EmailLogService::statusLabel($status);
                 ?>
-                <tr data-email-log-row="<?= (int) $row['id'] ?>">
+                <tr data-email-log-row="<?= (int) $row['id'] ?>" data-email-status="<?= InputUtils::escapeAttribute($status) ?>">
                     <td class="text-nowrap text-body-secondary"><?= InputUtils::escapeHTML(substr((string) $row['dateSent'], 0, 16)) ?></td>
                     <td class="text-nowrap"><span class="badge bg-blue-lt text-blue"><?= InputUtils::escapeHTML($row['kindLabel']) ?></span></td>
                     <td>

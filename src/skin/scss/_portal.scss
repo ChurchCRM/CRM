@@ -1239,7 +1239,7 @@ textarea.portal-input {
 }
 
 // Sent is the ordinary case and stays quiet; a member only needs to notice the
-// other two, so those carry the palette's notice colours.
+// others, so those carry the palette's notice colours.
 .portal-email-status {
     display: inline-block;
     padding: 0.1rem 0.6rem;
@@ -1256,6 +1256,12 @@ textarea.portal-input {
     &.is-skipped {
         background-color: var(--portal-warning);
         color: var(--portal-warning-contrast);
+    }
+
+    &.is-queued,
+    &.is-sending {
+        background-color: var(--portal-info);
+        color: var(--portal-info-contrast);
     }
 }
 

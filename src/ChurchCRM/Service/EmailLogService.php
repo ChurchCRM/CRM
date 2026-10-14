@@ -16,12 +16,23 @@ use Propel\Runtime\ActiveQuery\Criteria;
  * Writes and reads the email history (email_log_eml): one row per recipient for every
  * email that passes through BaseEmail::send(). Writing never throws: a logging failure is
  * reported to the app log and the send result is returned to the caller untouched.
+ * Composer messages start as queued rows (EmailQueueService) that the send then completes.
  */
 class EmailLogService
 {
     public const STATUS_SENT = 'sent';
     public const STATUS_FAILED = 'failed';
     public const STATUS_SKIPPED = 'skipped';
+    public const STATUS_QUEUED = 'queued';
+    public const STATUS_SENDING = 'sending';
+
+    public const STATUSES = [
+        self::STATUS_SENT,
+        self::STATUS_FAILED,
+        self::STATUS_SKIPPED,
+        self::STATUS_QUEUED,
+        self::STATUS_SENDING,
+    ];
 
     public const DEFAULT_PAGE_SIZE = 25;
     public const MAX_PAGE_SIZE = 100;
@@ -38,6 +49,7 @@ class EmailLogService
      * @param ?int   $personId  the person the message was addressed to, when the sender knows
      * @param ?int   $familyId  the family the message was addressed to, when the sender knows
      * @param ?int   $userId    the user who sent it (composer); NULL for automated sends
+     * @param ?EmailLog $queuedRow the queued row this send completes; it is updated instead of adding rows
      */
     public function logSend(
         PHPMailer $mail,
@@ -47,15 +59,28 @@ class EmailLogService
         ?int $personId = null,
         ?int $familyId = null,
         ?int $userId = null,
+        ?EmailLog $queuedRow = null,
     ): void {
         try {
+            $error = $status === self::STATUS_FAILED ? trim((string) $mail->ErrorInfo) : '';
+            $messageId = $status === self::STATUS_SENT ? (string) $mail->getLastMessageID() : '';
+            $now = DateTimeUtils::getNowDateTime();
+
+            if ($queuedRow !== null) {
+                $queuedRow->setStatus($status);
+                $queuedRow->setError($error !== '' ? $error : null);
+                $queuedRow->setMessageId($messageId !== '' ? mb_substr($messageId, 0, 255) : null);
+                $queuedRow->setDateSent($now);
+                $queuedRow->setNextAttempt(null);
+                $queuedRow->save();
+
+                return;
+            }
+
             $addresses = array_merge($mail->getToAddresses(), $mail->getCcAddresses(), $mail->getBccAddresses());
             if ($addresses === []) {
                 return;
             }
-            $error = $status === self::STATUS_FAILED ? trim((string) $mail->ErrorInfo) : '';
-            $messageId = $status === self::STATUS_SENT ? (string) $mail->getLastMessageID() : '';
-            $now = DateTimeUtils::getNowDateTime();
 
             foreach ($addresses as $entry) {
                 $address = trim((string) ($entry[0] ?? ''));
@@ -79,6 +104,7 @@ class EmailLogService
                 $row->setError($error !== '' ? $error : null);
                 $row->setMessageId($messageId !== '' ? mb_substr($messageId, 0, 255) : null);
                 $row->setDateSent($now);
+                $row->setAttempts($status === self::STATUS_SKIPPED ? 0 : 1);
                 $row->save();
             }
         } catch (\Throwable $e) {
@@ -191,6 +217,8 @@ class EmailLogService
             'kindLabel'    => self::kindLabel($row->getKind()),
             'subject'      => $row->getSubject(),
             'status'       => $row->getStatus(),
+            'statusLabel'  => self::statusLabel((string) $row->getStatus()),
+            'attempts'     => (int) $row->getAttempts(),
             'error'        => $row->getError(),
             'dateSent'     => $row->getDateSent('Y-m-d H:i:s'),
             'hasBody'      => $row->getBody() !== null && $row->getBody() !== '',
@@ -200,6 +228,19 @@ class EmailLogService
         }
 
         return $out;
+    }
+
+    /** Human label for an eml_Status value. */
+    public static function statusLabel(string $status): string
+    {
+        return match ($status) {
+            self::STATUS_SENT    => gettext('Sent'),
+            self::STATUS_FAILED  => gettext('Failed'),
+            self::STATUS_SKIPPED => gettext('Skipped'),
+            self::STATUS_QUEUED  => gettext('Queued'),
+            self::STATUS_SENDING => gettext('Sending'),
+            default              => $status,
+        };
     }
 
     /** Human label for an eml_Kind value. */
