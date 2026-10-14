@@ -11385,8 +11385,7 @@ paths:
 components:
   schemas:
     Person:
-      type: object
-      description: A person record as returned by GET /person/{personId} (Person::exportTo('JSON') plus computed fields). Keys use the Propel PHP names. Related objects (e.g. Family) are embedded when the person has them.
+      description: "A person record as returned by GET /person/{personId} (Person::exportTo('JSON') plus computed fields). Keys use the Propel PHP names. Related objects (e.g. Family) are embedded when the person has them."
       properties:
         Id:
           type: integer
@@ -11441,11 +11440,11 @@ components:
           type: string
           nullable: true
         BirthMonth:
+          description: '0 when unknown'
           type: integer
-          description: 0 when unknown
         BirthDay:
+          description: '0 when unknown'
           type: integer
-          description: 0 when unknown
         BirthYear:
           type: integer
           nullable: true
@@ -11458,17 +11457,17 @@ components:
           format: date
           nullable: true
         Gender:
+          description: '0 = unknown, 1 = male, 2 = female'
           type: integer
-          description: 0 = unknown, 1 = male, 2 = female
         FmrId:
+          description: 'Family role ID'
           type: integer
-          description: Family role ID
         ClsId:
+          description: 'Classification ID'
           type: integer
-          description: Classification ID
         FamId:
+          description: 'Family ID; 0 when the person has no family'
           type: integer
-          description: Family ID; 0 when the person has no family
         Envelope:
           type: integer
           nullable: true
@@ -11500,30 +11499,30 @@ components:
           type: string
           nullable: true
         DateDeactivated:
+          description: 'Empty/null for an active person'
           type: string
           format: date
-          description: Empty/null for an active person
           nullable: true
         NeedsReview:
           type: boolean
         Address:
+          description: 'Computed one-line address (falls back to the family address)'
           type: string
-          description: Computed one-line address (falls back to the family address)
         FullName:
+          description: 'Computed display name'
           type: string
-          description: Computed display name
         HasPhoto:
+          description: 'True when a photo has been uploaded'
           type: boolean
-          description: True when a photo has been uploaded
         Family:
           $ref: '#/components/schemas/Family'
         singlePersonCustom:
+          description: 'Custom field values the caller is allowed to see, keyed by custom field'
           type: object
-          description: Custom field values the caller is allowed to see, keyed by custom field
           additionalProperties: true
-    Family:
       type: object
-      description: A family record as returned by GET /family/{familyId} (Family::toArray()). Keys use the Propel PHP names. ScanCheck, ScanCredit and Envelope are only returned to users with the Finance role.
+    Family:
+      description: 'A family record as returned by GET /family/{familyId} (Family::toArray()). Keys use the Propel PHP names. ScanCheck, ScanCredit and Envelope are only returned to users with the Finance role.'
       properties:
         Id:
           type: integer
@@ -11594,20 +11593,20 @@ components:
           type: integer
           nullable: true
         ScanCheck:
+          description: 'Finance role only'
           type: string
-          description: Finance role only
           nullable: true
         ScanCredit:
+          description: 'Finance role only'
           type: string
-          description: Finance role only
           nullable: true
         SendNewsletter:
           type: string
           nullable: true
         DateDeactivated:
+          description: 'Empty/null for an active family'
           type: string
           format: date
-          description: Empty/null for an active family
           nullable: true
         Latitude:
           type: number
@@ -11618,30 +11617,29 @@ components:
           format: double
           nullable: true
         Envelope:
+          description: 'Finance role only'
           type: integer
-          description: Finance role only
           nullable: true
         NeedsReview:
           type: boolean
         Address:
+          description: 'Primary address, one line'
           type: string
-          description: Primary address, one line
         FamilyString:
+          description: 'Display string for the family'
           type: string
-          description: Display string for the family
         HasSecondAddress:
           type: boolean
         SecondAddressIsMailing:
           type: boolean
         SecondAddress:
+          description: 'Second address, one line'
           type: string
-          description: Second address, one line
         MailingAddressLines:
+          description: 'Resolved mailing address, one line'
           type: string
-          description: Resolved mailing address, one line
         MailingAddress:
-          type: object
-          description: Resolved mailing address parts
+          description: 'Resolved mailing address parts'
           properties:
             Address1:
               type: string
@@ -11655,6 +11653,8 @@ components:
               type: string
             Country:
               type: string
+          type: object
+      type: object
     PortalCalendarSubscription:
       properties:
         title:
