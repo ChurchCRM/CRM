@@ -20,15 +20,6 @@ export const dbTasks = {
   async 'db:query'({ sql, params }: { sql: string; params?: unknown[] }) {
     const mysql = require('mysql2/promise');
 
-    // A connection failure (DB down, wrong port or credentials) deliberately
-    // THROWS rather than being returned as data: it is an infrastructure fault
-    // that must fail the run loudly, not something a spec should assert on.
-    // Only driver errors from the statement itself are returned below.
-    //
-    // The port must match the stack the specs run against: 3306 for the
-    // default and ci-root stacks, DATABASE_SUBDIR_PORT (3307) for ci-subdir —
-    // the workflows export DATABASE_PORT accordingly, and an isolated local
-    // stack on another port must export it too.
     const port = Number(process.env.DATABASE_PORT || 3306);
     const connection = await mysql.createConnection({
       host: process.env.DATABASE_HOST || '127.0.0.1',
@@ -54,8 +45,6 @@ export const dbTasks = {
         }
       };
     } finally {
-      // A rejected await inside finally would replace the value returned
-      // above, so never let end() reject; destroy() cannot.
       try {
         await connection.end();
       } catch {
@@ -68,17 +57,32 @@ export const dbTasks = {
 /**
  * Read every src/**\/.htaccess on the runner.
  *
- * The CI app directory is bind-mounted into the container, so the files the
- * setup wizard writes are the same files on disk here. The task only reads
- * `.htaccess` under `src/` (vendor excluded) and returns the RewriteBase
- * lines. Used by the new-system install spec (#10563).
+ * Cypress starts with cwd = cypress/configs, so walk up until src/.htaccess
+ * is found. The CI app directory is bind-mounted, so these are the files the
+ * setup wizard wrote. Vendor is skipped. Used by the new-system install spec.
  */
 export const htaccessTasks = {
   'htaccess:scan'() {
     const fs = require('fs');
     const path = require('path');
-    const root = process.cwd();
+
+    let root = process.cwd();
+    for (let i = 0; i < 6; i++) {
+      if (fs.existsSync(path.join(root, 'src', '.htaccess'))) {
+        break;
+      }
+      const parent = path.dirname(root);
+      if (parent === root) {
+        break;
+      }
+      root = parent;
+    }
+
     const src = path.join(root, 'src');
+    if (!fs.existsSync(src)) {
+      throw new Error('htaccess:scan could not find src/ from ' + process.cwd());
+    }
+
     const found: { rel: string; hasRewriteEngine: boolean; rewriteBases: string[] }[] = [];
 
     const walk = (dir: string) => {
@@ -119,26 +123,6 @@ export const htaccessTasks = {
   }
 };
 
-/**
- * Node-side Mailpit tasks.
- *
- * The `test` docker profile runs Mailpit (`docker/docker-compose.yaml`), so a
- * spec can assert what was actually *delivered* — subject, body, headers — and
- * not merely that the application believed it sent something. #9710 needs that:
- * "the drain sent it" and "the message carries a Reply-To pointing at the
- * coordinator" are different claims, and only the second one proves N10/CR6.
- *
- * These are node tasks rather than `cy.request()` for one reason: Mailpit is
- * OPTIONAL. The `ci-root` / `ci-subdir` profiles bring up no mail server at all,
- * and `cy.request()` fails the test outright on a refused connection — there is
- * no `failOnStatusCode` for ECONNREFUSED. A task can catch that and RETURN
- * `{ok: false}`, which lets a spec skip delivery assertions where there is no
- * mail server instead of failing on infrastructure that was never promised.
- * Same rationale as `db:query` returning driver errors instead of throwing.
- *
- * MAILPIT_URL wins; otherwise MAILSERVER_GUI_PORT (which an isolated local
- * stack sets alongside DATABASE_PORT) on localhost; otherwise Mailpit's 8025.
- */
 function mailpitBaseUrl(): string {
   if (process.env.MAILPIT_URL) {
     return process.env.MAILPIT_URL.replace(/\/+$/, '');
@@ -148,7 +132,6 @@ function mailpitBaseUrl(): string {
 }
 
 async function mailpitFetch(path: string, init?: Record<string, unknown>) {
-  // A short timeout keeps "no mail server here" from costing the spec a minute.
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 5000);
 
@@ -172,31 +155,26 @@ async function mailpitFetch(path: string, init?: Record<string, unknown>) {
 }
 
 export const mailTasks = {
-  /** Is a Mailpit instance reachable? Never throws — the answer is the point. */
   async 'mail:available'() {
     const result = await mailpitFetch('/api/v1/messages?limit=1');
 
     return { available: result.ok, url: mailpitBaseUrl(), error: result.error };
   },
 
-  /** Delete every stored message, so a spec can assert on what IT produced. */
   async 'mail:clear'() {
     return await mailpitFetch('/api/v1/messages', { method: 'DELETE' });
   },
 
-  /** Message summaries, newest first. `{ok, body: {messages: [...]}}`. */
   async 'mail:list'({ limit }: { limit?: number } = {}) {
     return await mailpitFetch(`/api/v1/messages?limit=${limit || 100}`);
   },
 
-  /** One message in full — Text, HTML and the ReplyTo header among them. */
   async 'mail:get'({ id }: { id: string }) {
     return await mailpitFetch(`/api/v1/message/${encodeURIComponent(id)}`);
   }
 };
 
 export function setupCommonNodeEvents(on: any, config: any) {
-  // cypress-terminal-report logs printer for CI debugging
   try {
     const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
     installLogsPrinter(on, {
@@ -212,11 +190,8 @@ export function setupCommonNodeEvents(on: any, config: any) {
     // ignore optional logging integration errors in local environments
   }
 
-  // Every task must be registered in a single on('task', ...) call — a second
-  // registration replaces the first rather than merging with it.
   const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...htaccessTasks };
 
-  // Register download verification tasks if available
   try {
     const { verifyDownloadTasks } = require('cy-verify-downloads');
     Object.assign(tasks, verifyDownloadTasks);
@@ -226,7 +201,6 @@ export function setupCommonNodeEvents(on: any, config: any) {
 
   on('task', tasks);
 
-  // Common browser launch options
   on('before:browser:launch', (browser: any, launchOptions: any) => {
     if (browser.name === 'chrome') {
       launchOptions.args.push('--disable-dev-shm-usage');
