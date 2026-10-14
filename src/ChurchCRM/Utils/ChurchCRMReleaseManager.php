@@ -6,7 +6,6 @@ use ChurchCRM\dto\ChurchCRMRelease;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\FileSystemUtils;
-use ChurchCRM\Utils\HtaccessGenerator;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\ExecutionTime;
@@ -584,14 +583,13 @@ class ChurchCRMReleaseManager
                 $codeDeploySuccessful = true;
                 $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
 
-                // Regenerate RewriteBase in all routing .htaccess files so
-                // subdirectory installs continue to work after the file overwrite.
-                // Must run before the DB-migration API call. See #10563.
+                // The move replaces every routing .htaccess with the packaged copy,
+                // which has no RewriteBase. Stamp it from $sRootPath before the
+                // database migration runs. See #10563.
                 try {
                     HtaccessGenerator::generateAll();
                 } catch (\Throwable $e) {
                     $logger->error('Failed to regenerate .htaccess RewriteBase', ['exception' => $e]);
-                    // Non-fatal — continue with upgrade
                 }
             } else {
                 // ZipArchive::open() failed - log the error code and throw
@@ -623,20 +621,291 @@ class ChurchCRMReleaseManager
 
                     if (!empty($cleanupResult['failed'])) {
                         $logger->warning('Some orphaned files could not be deleted', [
-                            'failed' => $cleanupResult['failed'],
+                            'failedFiles' => $cleanupResult['failed'],
+                            'errors' => $cleanupResult['errors'],
                         ]);
                     }
-                } catch (\Throwable $e) {
-                    $logger->error('Database upgrade or cleanup failed', ['exception' => $e]);
+                } catch (\Exception $e) {
+                    $logger->error('Automatic database upgrade failed: ' . $e->getMessage(), ['exception' => $e]);
+                    // rethrow so the API caller is made aware of the failure
                     throw $e;
                 }
+            } else {
+                $logger->warning('Skipping automatic database upgrade because code deployment did not complete successfully');
             }
-        } catch (\Throwable $e) {
-            $logger->error('Upgrade failed', ['exception' => $e]);
-            throw $e;
         } finally {
-            self::$isUpgradeInProgress = false;
             ini_set('display_errors', $displayErrors);
+            self::$isUpgradeInProgress = false;
+        }
+    }
+
+    /**
+     * Fetch all stable releases from GitHub, cached in session under ChurchCRMAllStableReleases.
+     * Returns releases sorted descending (newest first).
+     *
+     * @return ChurchCRMRelease[]
+     */
+    private static function fetchAllStableReleasesForPreview(): array
+    {
+        if (!empty($_SESSION['ChurchCRMAllStableReleases'])) {
+            return $_SESSION['ChurchCRMAllStableReleases'];
+        }
+
+        $client = new Client();
+        try {
+            $pager = new ResultPager($client);
+            $gitHubReleases = $pager->fetchAll(
+                $client->repo()->releases(),
+                'all',
+                [
+                    self::GITHUB_USER_NAME,
+                    self::GITHUB_REPOSITORY_NAME,
+                    ['per_page' => 100],
+                ]
+            );
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->warning('Failed to fetch all releases for preview', ['error' => $e->getMessage()]);
+            return array_values(array_filter(
+                $_SESSION['ChurchCRMReleases'] ?? [],
+                fn (ChurchCRMRelease $r): bool => !$r->isPreRelease()
+            ));
+        }
+
+        $stableReleases = [];
+        foreach ($gitHubReleases as $r) {
+            $release = new ChurchCRMRelease($r);
+            if ($release->hasVersion() && !$release->isPreRelease()) {
+                $stableReleases[] = $release;
+            }
+        }
+
+        usort($stableReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): int => version_compare($b->__toString(), $a->__toString()));
+        $_SESSION['ChurchCRMAllStableReleases'] = $stableReleases;
+        return $stableReleases;
+    }
+
+    /**
+     * Returns all stable releases newer than the installed version, sorted ascending.
+     *
+     * @return ChurchCRMRelease[]
+     */
+    public static function getReleasesAhead(string $installedVersionStr): array
+    {
+        $installedRelease = new ChurchCRMRelease(['name' => $installedVersionStr]);
+        $allStable = self::fetchAllStableReleasesForPreview();
+
+        $ahead = array_values(array_filter(
+            $allStable,
+            fn (ChurchCRMRelease $r): bool => version_compare($r->__toString(), $installedRelease->__toString()) > 0
+        ));
+
+        usort($ahead, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): int => version_compare($a->__toString(), $b->__toString()));
+        return $ahead;
+    }
+
+    /**
+     * Find a fully-populated release object by version string (has download assets).
+     */
+    public static function getReleaseByVersion(string $version): ?ChurchCRMRelease
+    {
+        $allStable = self::fetchAllStableReleasesForPreview();
+        foreach ($allStable as $release) {
+            if ($release->__toString() === $version) {
+                return $release;
+            }
+        }
+        foreach ($_SESSION['ChurchCRMReleases'] ?? [] as $release) {
+            if ($release->__toString() === $version) {
+                return $release;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Download a specific release by version string.
+     *
+     * @return array Upgrade file information (fileName, fullPath, releaseNotes, sha1)
+     * @throws \Exception
+     */
+    public static function downloadSpecificRelease(string $version): array
+    {
+        $release = self::getReleaseByVersion($version);
+        if ($release === null) {
+            throw new \Exception('Release ' . $version . ' not found in available releases.');
+        }
+        LoggerUtils::getAppLogger()->info('Downloading specific release: ' . $version);
+        return self::downloadRelease($release);
+    }
+
+    /**
+     * Build preview data for the "What's New" wizard step.
+     * Returns next release notes, upgrade path (all releases ahead), version selector list,
+     * and the latest known release's notes (shown when the system is already up to date).
+     *
+     * @return array{
+     *   installedVersion: string,
+     *   nextVersion: string|null,
+     *   latestVersion: string,
+     *   nextReleaseNotes: string,
+     *   nextChangelogUrl: string|null,
+     *   releasesAhead: int,
+     *   upgradePath: array,
+     *   latestReleaseNotes: string,
+     *   latestChangelogUrl: string
+     * }
+     */
+    public static function getUpgradePreviewData(): array
+    {
+        $installedVersionStr = \ChurchCRM\Utils\VersionUtils::getInstalledVersion();
+        $installedRelease = new ChurchCRMRelease(['name' => $installedVersionStr]);
+
+        if (empty($_SESSION['ChurchCRMReleases'])) {
+            $_SESSION['ChurchCRMReleases'] = self::populateReleases();
+        }
+
+        $nextRelease = self::getNextReleaseStep($installedRelease);
+        $releasesAhead = self::getReleasesAhead($installedVersionStr);
+
+        // Detect the prerelease/dev-build case: installed version is strictly
+        // ahead of the latest stable release known from GitHub.  In that case
+        // getReleasesAhead() returns [] (nothing is strictly ahead of the
+        // installed build) and getNextReleaseStep() also returns null, leaving
+        // the wizard blank.  We treat latest stable as the "reinstall" target.
+        $latestStable = !empty($_SESSION['ChurchCRMReleases']) ? $_SESSION['ChurchCRMReleases'][0] : null;
+        $isAheadOfStable = false;
+
+        if (empty($releasesAhead) && $latestStable !== null) {
+            if (version_compare($installedVersionStr, $latestStable->__toString()) > 0) {
+                // Running a prerelease/dev build ahead of latest stable.
+                // Offer latest stable as a "reinstall" target.
+                $isAheadOfStable = true;
+                $nextRelease = $latestStable;
+                // $releasesAhead stays [] — there truly are no releases strictly ahead.
+            }
+        }
+        $githubBaseUrl = 'https://github.com/' . self::GITHUB_USER_NAME . '/' . self::GITHUB_REPOSITORY_NAME;
+        $changelogBaseUrl = $githubBaseUrl . '/blob/master/changelog/';
+
+        // Determine bump type relative to previous in the chain
+        $pathEntries = [];
+        $prevRelease = $installedRelease;
+        foreach ($releasesAhead as $release) {
+            if ($release->MAJOR > $prevRelease->MAJOR) {
+                $type = 'major';
+            } elseif ($release->MINOR > $prevRelease->MINOR) {
+                $type = 'minor';
+            } else {
+                $type = 'patch';
+            }
+            $versionStr = $release->__toString();
+            $pathEntries[] = [
+                'version'      => $versionStr,
+                'type'         => $type,
+                'notes'        => $release->getReleaseNotes(),
+                'changelogUrl' => $changelogBaseUrl . $versionStr . '.md',
+                'isNext'       => $nextRelease !== null && $release->__toString() === $nextRelease->__toString(),
+            ];
+            $prevRelease = $release;
+        }
+
+        $nextVersionStr = $nextRelease !== null ? $nextRelease->__toString() : null;
+        $latestVersionStr = !empty($releasesAhead)
+            ? end($releasesAhead)->__toString()
+            : ($latestStable !== null ? $latestStable->__toString() : $installedVersionStr);
+
+        // Fetch notes for the latest known GitHub release so the frontend can display
+        // them when the system is already up to date (releasesAhead === 0).
+        // $latestStable is already computed above; reuse it here to avoid a redundant assignment.
+        $latestReleaseNotes = $latestStable !== null ? $latestStable->getReleaseNotes() : '';
+        // Use the version string from the actual latest release object so the changelog
+        // URL stays accurate on dev builds where $installedVersionStr may be ahead of
+        // any published stable release.
+        $latestReleaseVersionStr = $latestStable !== null ? $latestStable->__toString() : $latestVersionStr;
+        $latestChangelogUrl = $changelogBaseUrl . $latestReleaseVersionStr . '.md';
+
+        return [
+            'installedVersion' => $installedVersionStr,
+            'nextVersion'      => $nextVersionStr,
+            'latestVersion'    => $latestVersionStr,
+            'nextReleaseNotes' => $nextRelease !== null ? $nextRelease->getReleaseNotes() : '',
+            'nextChangelogUrl' => $nextVersionStr !== null ? $changelogBaseUrl . $nextVersionStr . '.md' : null,
+            'releasesAhead'    => count($releasesAhead),
+            'upgradePath'      => $pathEntries,
+            'latestReleaseNotes' => $latestReleaseNotes,
+            'latestChangelogUrl' => $latestChangelogUrl,
+            'isAheadOfStable'    => $isAheadOfStable,
+        ];
+    }
+
+    /**
+     * Check if a system update is available for the current installation
+     * Returns an array with 'available' (bool) and 'version' (ChurchCRMRelease|null) keys
+     *
+     * @return array{available: bool, version: ChurchCRMRelease|null, latestVersion: ChurchCRMRelease|null}
+     */
+    public static function checkSystemUpdateAvailable(): array
+    {
+        try {
+            $logger = LoggerUtils::getAppLogger();
+            $installedVersionString = VersionUtils::getInstalledVersion();
+            
+            $installedVersion = self::getReleaseFromString($installedVersionString);
+
+            if (empty($_SESSION['ChurchCRMReleases'])) {
+                $releases = self::populateReleases();
+                $_SESSION['ChurchCRMReleases'] = $releases;
+                $logger->debug('Populated releases cache with ' . count($releases) . ' releases');
+            }
+            
+            // Get the latest release from GitHub
+            $latestRelease = null;
+            if (!empty($_SESSION['ChurchCRMReleases'])) {
+                $latestRelease = $_SESSION['ChurchCRMReleases'][0] ?? null;
+            }
+            
+            if ($latestRelease === null) {
+                $logger->warning('No releases available from GitHub cache');
+            }
+            
+            $logger->debug('Update check: installed=' . $installedVersion->__toString() 
+                . ' (MAJOR=' . $installedVersion->MAJOR . ' MINOR=' . $installedVersion->MINOR . ' PATCH=' . $installedVersion->PATCH . ')'
+                . ', latest=' . ($latestRelease ? $latestRelease->__toString() : 'null')
+                . ($latestRelease ? ' (MAJOR=' . $latestRelease->MAJOR . ' MINOR=' . $latestRelease->MINOR . ' PATCH=' . $latestRelease->PATCH . ')' : ''));
+            
+            $isCurrent = self::isReleaseCurrent($installedVersion);
+            $logger->debug('isCurrent=' . ($isCurrent ? 'true' : 'false'));
+            
+            if (!$isCurrent) {
+                $nextRelease = self::getNextReleaseStep($installedVersion);
+                if (null !== $nextRelease) {
+                    $logger->info('System update available', [
+                        'currentVersion' => $installedVersionString,
+                        'availableVersion' => $nextRelease->__toString(),
+                        'latestVersion' => $latestRelease ? $latestRelease->__toString() : null
+                    ]);
+                    return [
+                        'available' => true,
+                        'version' => $nextRelease,
+                        'latestVersion' => $latestRelease
+                    ];
+                }
+            } else {
+                $logger->debug('System is current - no update needed. latestVersion=' . ($latestRelease ? $latestRelease->__toString() : 'null'));
+            }
+
+            return [
+                'available' => false,
+                'version' => null,
+                'latestVersion' => $latestRelease
+            ];
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->warning('Failed to check for system updates', ['exception' => $e]);
+            return [
+                'available' => false,
+                'version' => null,
+                'latestVersion' => null
+            ];
         }
     }
 }
