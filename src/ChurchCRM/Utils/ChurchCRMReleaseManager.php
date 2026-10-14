@@ -581,6 +581,9 @@ class ChurchCRMReleaseManager
 
                 FileSystemUtils::moveDir($extractedChurchCRM, $docRoot);
                 $codeDeploySuccessful = true;
+                // The release overwrote .htaccess files; restore RewriteBase for subdirectory installs (#10563).
+                // Must run before the database upgrade, which may call the API through these rewrites.
+                HtaccessGenerator::generateAll(SystemURLs::getRootPath(), $docRoot);
                 $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
             } else {
                 // ZipArchive::open() failed - log the error code and throw

@@ -126,6 +126,9 @@ $app->group('/', function (RouteCollectorProxy $group): void {
 
         file_put_contents($configFile, $template);
 
+        // Write RewriteBase for subdirectory installs (#10563)
+        \ChurchCRM\Utils\HtaccessGenerator::generateAll($rootPath, $docRoot);
+
         return $response->withStatus(200);
     };
 
