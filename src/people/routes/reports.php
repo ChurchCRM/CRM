@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\PeopleReportService;
+use ChurchCRM\Slim\Middleware\Request\Auth\StaffRoleAuthMiddleware;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -19,7 +20,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     $group->get('/', 'getPeopleReportsIndex');
     $group->get('/{slug:[a-z-]+}', 'getPeopleReport');
     $group->get('/{slug:[a-z-]+}/csv', 'getPeopleReportCsv');
-});
+})->add(StaffRoleAuthMiddleware::class);
 
 /**
  * @return array<int, array{href: string, title: string, description: string}>
