@@ -564,8 +564,8 @@ async function sendQueuedBatch(
 }
 
 /** "The queue was cleared" line for messages an administrator deleted before they went out. */
-function clearedText(count: number): string {
-  return i18next.t("The queue was cleared: {{count}} message(s) will not be sent.", { count });
+function clearedText(total: number): string {
+  return i18next.t("The queue was cleared. Messages that will not be sent: {{total}}", { total });
 }
 
 async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
@@ -645,7 +645,7 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
     if (!progress) {
       const queuedBanner = showSendBanner(
         "info",
-        i18next.t("{{count}} message(s) queued. They will be sent in the background.", { count: queuedCount }),
+        i18next.t("Messages queued: {{total}}. They will be sent in the background.", { total: queuedCount }),
       );
       appendNotSentList(queuedBanner, skipped);
       appendHistoryLink(queuedBanner);
@@ -668,7 +668,7 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
     if (nothingSent) {
       headline = removed > 0 ? clearedText(removed) : i18next.t("No email was sent.");
     } else if (progress.sent === 0) {
-      headline = i18next.t("{{count}} message(s) queued. They will be sent in the background.", { count: waiting });
+      headline = i18next.t("Messages queued: {{total}}. They will be sent in the background.", { total: waiting });
     }
     const finalBanner = showSendBanner(clean ? "success" : nothingSent ? "danger" : "warning", headline);
     if (removed > 0 && !nothingSent) {
@@ -682,9 +682,7 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
       const pending = document.createElement("div");
       pending.className = "mt-2 small";
       pending.id = "crm-email-still-queued";
-      pending.textContent = i18next.t("{{count}} message(s) are still queued and will be sent automatically.", {
-        count: waiting,
-      });
+      pending.textContent = i18next.t("Still queued, to be sent automatically: {{total}}", { total: waiting });
       finalBanner.appendChild(pending);
     }
     appendNotSentList(finalBanner, [...skipped, ...failures]);

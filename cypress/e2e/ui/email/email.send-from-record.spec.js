@@ -155,7 +155,7 @@ describe("A send the composer cannot finish stays queued", () => {
         cy.wait("@batchSend");
 
         cy.get("#crm-email-compose-form .alert-info")
-            .should("contain.text", "1 message(s) queued. They will be sent in the background.")
+            .should("contain.text", "Messages queued: 1. They will be sent in the background.")
             .find("#crm-email-history-link")
             .should("have.attr", "href")
             .and("include", "/v2/email/dashboard#email-recent-sends");

@@ -133,7 +133,7 @@ describe("Email history on the email dashboard", () => {
                 cy.get("#email-delete-queue").click();
                 cy.get(".bootbox.modal")
                     .should("be.visible")
-                    .and("contain.text", `Delete ${count} queued message(s)? They will not be sent.`);
+                    .and("contain.text", `Delete every queued message? They will not be sent. Queued messages: ${count}`);
                 cy.get(".bootbox.modal .bootbox-accept").click();
                 cy.wait("@deleteQueue").its("response.body.deleted").should("eq", Number(count));
             });

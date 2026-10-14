@@ -55,7 +55,7 @@ $emailHistoryShowTo = $emailHistoryShowTo ?? false;
                         <td class="text-body-secondary small"><?= InputUtils::escapeHTML($row['address']) ?></td>
                     <?php endif; ?>
                     <td class="text-nowrap">
-                        <span class="badge <?= $statusClass ?>" <?php if (!empty($row['error'])) : ?>title="<?= InputUtils::escapeAttribute($row['error']) ?>"<?php endif; ?>><?= $statusLabel ?></span>
+                        <span class="badge <?= $statusClass ?>" <?php if (!empty($row['error'])) : ?>title="<?= InputUtils::escapeAttribute($row['error']) ?>"<?php endif; ?>><?= InputUtils::escapeHTML($statusLabel) ?></span>
                     </td>
                     <td class="text-nowrap text-body-secondary d-none d-md-table-cell"><?= $row['sentBy'] !== null ? InputUtils::escapeHTML($row['sentBy']) : '<span class="text-secondary">' . gettext('Automatic') . '</span>' ?></td>
                 </tr>

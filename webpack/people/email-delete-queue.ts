@@ -21,7 +21,7 @@ async function deleteQueue(button: HTMLButtonElement): Promise<void> {
       button.disabled = false;
       return;
     }
-    window.CRM?.notify?.(i18next.t("Deleted {{count}} queued message(s).", { count: data.deleted ?? 0 }), {
+    window.CRM?.notify?.(i18next.t("Queued messages deleted: {{total}}", { total: data.deleted ?? 0 }), {
       type: "success",
     });
     window.location.reload();
@@ -36,10 +36,12 @@ function init(): void {
   const button = document.getElementById("email-delete-queue");
   if (!(button instanceof HTMLButtonElement)) return;
   button.addEventListener("click", () => {
-    const count = Number(button.dataset.queuedCount ?? "0");
+    const total = Number(button.dataset.queuedCount ?? "0");
     window.bootbox?.confirm({
       title: i18next.t("Delete Queue"),
-      message: i18next.t("Delete {{count}} queued message(s)? They will not be sent.", { count }),
+      message: i18next.t("Delete every queued message? They will not be sent. Queued messages: {{total}}", {
+        total,
+      }),
       buttons: {
         confirm: { label: i18next.t("Delete"), className: "btn-danger" },
         cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
