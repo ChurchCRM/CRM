@@ -110,7 +110,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
 
         <!-- People & Families panel: shown only in Custom mode -->
         <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
-            <div class="px-3 py-2 border-bottom bg-light">
+            <div class="px-3 py-2 border-bottom bg-surface-secondary">
                 <strong><i class="fa-solid fa-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
                 <p class="text-body-secondary small mb-0 mt-1"><?= gettext('All users can view congregation members. This permission cannot be removed.') ?></p>
             </div>

@@ -66,7 +66,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     <div class="mb-3">
       <label class="form-label fw-bold"><?= gettext('Recurrence Pattern') ?></label>
-      <div class="border rounded p-3 bg-light">
+      <div class="border rounded p-3 bg-surface-secondary">
         <?= InputUtils::escapeHTML($recurText) ?>
       </div>
     </div>
@@ -146,7 +146,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   </td>
                 </tr>
               <?php endforeach; ?>
-              <tr class="table-light">
+              <tr class="bg-surface-secondary">
                 <td>
                   <input class="form-control form-control-sm" type="text" name="newCountName" maxlength="20"
                          placeholder="<?= gettext('e.g., Visitors, Children') ?>" data-cy="attendance-count-input" />

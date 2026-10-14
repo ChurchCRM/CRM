@@ -64,7 +64,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-body">
         <form id="csv-import-form" enctype="multipart/form-data">
             <div class="mb-3 mb-3">
-                <div id="dropzone" class="dropzone-area text-center p-5 rounded" style="border: 2px dashed #dee2e6; cursor: pointer;">
+                <div id="dropzone" class="dropzone-area text-center p-5 rounded" style="border: 2px dashed var(--tblr-border-color); cursor: pointer;">
                     <input type="file" name="csvFile" id="csvFile" class="d-none" accept=".csv">
                     <i class="fa-solid fa-file-arrow-up fa-4x text-body-secondary mb-3 d-block"></i>
                     <p class="mb-1 fw-bold"><?= gettext('Drag and drop your CSV file here') ?></p>
@@ -181,16 +181,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <style>
 .dropzone-area {
-    background-color: #f8f9fa;
+    background-color: var(--tblr-bg-surface-secondary);
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 .dropzone-area:hover,
 .dropzone-area.dragover {
-    background-color: #e9ecef;
+    background-color: var(--tblr-secondary-bg);
     border-color: #007bff !important;
 }
 .dropzone-area.has-file {
-    background-color: #d4edda;
+    background-color: var(--tblr-success-bg-subtle);
     border-color: #28a745 !important;
 }
 </style>

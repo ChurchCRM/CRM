@@ -198,7 +198,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                         <option value="all"><?= gettext('All') ?></option>
                     </select>
                 </div>
-                <pre id="logContent" style="max-height: 500px; overflow-y: auto; background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; color: #212529; font-family: Menlo, Monaco, Consolas, 'Liberation Mono', monospace;"><code style="color: inherit; white-space: pre-wrap;"></code></pre>
+                <pre id="logContent" class="bg-body-tertiary text-body border" style="max-height: 500px; overflow-y: auto; padding: 10px; border-radius: 4px; font-size: 12px; font-family: Menlo, Monaco, Consolas, 'Liberation Mono', monospace;"><code style="color: inherit; white-space: pre-wrap;"></code></pre>
                 <div id="logLoading" class="d-none text-center p-3">
                     <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
                     <p><?= gettext('Loading log file...') ?></p>

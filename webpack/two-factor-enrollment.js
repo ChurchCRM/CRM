@@ -201,7 +201,7 @@ function renderSuccess() {
               <strong>${t("Important")}:</strong>
               <span class="small">${t("Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app.")}</span>
             </div>
-            <div style="background-color:#f8f9fa;padding:16px;border-radius:4px;border:1px solid #dee2e6;font-family:monospace;font-size:0.9em;line-height:2">
+            <div class="bg-surface-secondary border" style="padding:16px;border-radius:4px;font-family:monospace;font-size:0.9em;line-height:2">
               ${codesHtml}
             </div>
             <div class="mt-4 d-flex justify-content-between align-items-center flex-wrap gap-2">

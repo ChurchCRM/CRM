@@ -51,9 +51,9 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                 </h4>
                 
                 <div class="card border-0 mb-3">
-                    <div class="card-body bg-white">
+                    <div class="card-body bg-surface">
                         <h6 class="text-danger mb-2"><strong><?= gettext('Error') ?>:</strong></h6>
-                        <p class="mb-0 text-dark"><strong><?= $urlError['message'] ?></strong></p>
+                        <p class="mb-0 text-body"><strong><?= $urlError['message'] ?></strong></p>
                     </div>
                 </div>
 
@@ -65,9 +65,9 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                 </div>
 
                 <div class="card border-0 mb-3">
-                    <div class="card-body bg-white">
-                        <h6 class="text-dark mb-3"><strong><?= gettext('How to Fix') ?>:</strong></h6>
-                        <ol class="mb-2 ps-3 text-dark">
+                    <div class="card-body bg-surface">
+                        <h6 class="text-body mb-3"><strong><?= gettext('How to Fix') ?>:</strong></h6>
+                        <ol class="mb-2 ps-3 text-body">
                             <li class="mb-2"><?= gettext('Connect to your server via SSH, FTP, or your hosting control panel') ?></li>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <li class="mb-2"><?= gettext('Find the line') ?>: <code>$URL[0] = '...';</code></li>
@@ -87,7 +87,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <div class="card-header">
                         <h6 class="mb-0"><i class="fa-solid fa-circle-check me-2"></i><?= gettext('Valid Examples') ?>:</h6>
                     </div>
-                    <div class="card-body bg-white">
+                    <div class="card-body bg-surface">
                         <div class="mb-2">
                             <small class="text-body-secondary"><?= gettext('Local development') ?>:</small><br>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'http://localhost/';</code>
@@ -225,7 +225,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                                     <?php endif; ?>
                                 </div>
                                 <div class="flex-grow-1 <?= $step['done'] ? 'text-body-secondary' : '' ?>">
-                                    <span class="fw-semibold <?= $step['done'] ? '' : 'text-dark' ?>" style="font-size: 0.875rem;">
+                                    <span class="fw-semibold <?= $step['done'] ? '' : 'text-body' ?>" style="font-size: 0.875rem;">
                                         <?= $step['label'] ?>
                                     </span>
                                     <?php if (!$step['done']): ?>

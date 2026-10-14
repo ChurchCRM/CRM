@@ -236,7 +236,7 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="row mt-4">
   <div class="col-12">
     <div class="card-sm">
-      <div class="card-header bg-light d-flex justify-content-between align-items-center">
+      <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">
           <i class="fa-solid fa-chart-bar"></i> <?= gettext('Funds'); ?>
           <small class="text-body-secondary ms-2"><?= gettext('Click a bar to filter payments'); ?></small>
@@ -296,8 +296,8 @@ require_once __DIR__ . '/Include/Header.php';
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 .card-header {
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #e9ecef;
+    background-color: var(--tblr-bg-surface-secondary);
+    border-bottom: 2px solid var(--tblr-border-color);
     padding: 1.25rem;
 }
 .card-header.bg-primary {
@@ -325,11 +325,11 @@ require_once __DIR__ . '/Include/Header.php';
     cursor: pointer;
 }
 #paymentsTable tbody tr:hover {
-    background-color: #f8f9fa;
+    background-color: var(--tblr-bg-surface-secondary);
 }
 #paymentsTable tbody tr.selected,
 #paymentsTable tbody tr.table-active {
-    background-color: #e7f3ff;
+    background-color: rgba(var(--tblr-primary-rgb), 0.08);
     border-left: 3px solid #0d6efd;
 }
 #paymentsTable tbody tr td {
@@ -338,8 +338,8 @@ require_once __DIR__ . '/Include/Header.php';
 }
 #paymentsTable thead th {
     padding: 1rem 0.75rem !important;
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #dee2e6;
+    background-color: var(--tblr-bg-surface-secondary);
+    border-bottom: 2px solid var(--tblr-border-color);
     font-weight: 600;
 }
 #paymentsTable tbody td {
@@ -358,15 +358,15 @@ require_once __DIR__ . '/Include/Header.php';
 }
 .stat-card {
     padding: 1.25rem 1rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background: linear-gradient(135deg, var(--tblr-bg-surface-secondary) 0%, var(--tblr-bg-surface) 100%);
     border-radius: 0.5rem;
-    border: 2px solid #e9ecef;
+    border: 2px solid var(--tblr-border-color);
     transition: all 0.3s ease;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 .stat-card:hover {
     transform: translateY(-3px);
-    border-color: #dee2e6;
+    border-color: var(--tblr-border-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .stat-value {
@@ -375,6 +375,10 @@ require_once __DIR__ . '/Include/Header.php';
     line-height: 1.2;
     margin-bottom: 0.75rem;
     letter-spacing: -0.5px;
+}
+/* The count's markup stays as on master so code scanning keeps its dismissed alert. */
+[data-bs-theme="dark"] .stat-card .stat-value.text-dark {
+    color: var(--tblr-body-color) !important;
 }
 .stat-label {
     font-size: 0.8rem;
@@ -388,18 +392,17 @@ require_once __DIR__ . '/Include/Header.php';
     margin: 0;
 }
 code {
-    background-color: #f4f4f4;
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
     font-size: 0.875rem;
 }
 .form-label {
     font-weight: 600;
-    color: #212529;
+    color: var(--tblr-body-color);
     margin-bottom: 0.5rem;
 }
 .form-control, .form-select {
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--tblr-border-color);
     transition: all 0.2s ease;
 }
 .form-control:focus, .form-select:focus {
