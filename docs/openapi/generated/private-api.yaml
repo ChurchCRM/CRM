@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.0
+  version: 7.8.1
 servers:
   -
     url: '{scheme}://{host}/api'
@@ -11294,7 +11294,7 @@ paths:
       tags:
         - Plugins
       summary: 'Install a community plugin from an approved download URL'
-      description: 'Downloads the zip, verifies its SHA-256 against approved-plugins.json, validates the archive, and extracts it into src/plugins/community/{id}. The plugin is NOT enabled automatically — admins must review and click Enable.'
+      description: 'Downloads the zip, verifies its SHA-256 against approved-plugins.json, validates the archive, and extracts it into src/plugins/community/{id}. A new install is NOT enabled automatically — admins must review and click Enable. If the plugin is already installed and the approved version is newer, it is upgraded in place and keeps its settings and enabled state.'
       operationId: installPluginFromUrl
       requestBody:
         required: true
@@ -11308,7 +11308,7 @@ paths:
               type: object
       responses:
         '200':
-          description: 'Plugin installed (not yet enabled)'
+          description: 'Plugin installed (not yet enabled) or upgraded in place'
         '400':
           description: 'Validation failure (unknown URL, checksum mismatch, unsafe zip)'
         '401':
@@ -11316,7 +11316,7 @@ paths:
         '403':
           description: 'Forbidden — Admin role required'
         '409':
-          description: 'Plugin already installed'
+          description: 'Plugin already installed at this version or newer'
         '500':
           description: 'Install failed'
       security:
