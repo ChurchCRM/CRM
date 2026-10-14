@@ -5,6 +5,7 @@ on:
     paths:
       - 'docker/docker-compose*.yaml'
       - 'docker/examples/docker-compose*.yaml'
+      - 'docker/production/compose.yaml'
       - 'docker/test-compose-security.py'
       - '.github/workflows/docker-security-check.yml'
   workflow_dispatch:
