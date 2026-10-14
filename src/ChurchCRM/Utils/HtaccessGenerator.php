@@ -12,39 +12,18 @@ use ChurchCRM\Utils\LoggerUtils;
  * This prevents in-app upgrades from breaking subdirectory installs that
  * require a manual RewriteBase (see #10563).
  *
+ * Routing files are discovered by scanning for .htaccess files that contain
+ * "RewriteEngine On". Deny-only files (cli/, logs/, Include/, Images/*, etc.)
+ * are skipped automatically because they do not enable the rewrite engine.
+ *
  * Security notes:
- * - Only writes to a fixed list of known relative paths under the document root.
+ * - Only writes to .htaccess files found under the document root that already
+ *   contain RewriteEngine On.
  * - The RewriteBase value is strictly sanitized (no .., no newlines, limited charset).
  * - Failures are logged and non-fatal.
  */
 class HtaccessGenerator
 {
-    /**
-     * Relative directories (from document root / src/) that contain a routing
-     * .htaccess with RewriteEngine On.
-     * Empty string = root .htaccess.
-     * Deny-only files (cli, logs, Include, Images, plugins/community, etc.)
-     * are intentionally omitted.
-     */
-    private const ROUTING_MODULES = [
-        '',             // src/.htaccess
-        'api',
-        'people',
-        'event',
-        'groups',
-        'admin',
-        'portal',
-        'finance',
-        'session',
-        'plugins',
-        'ministries',
-        'fundraiser',
-        'v2',
-        'kiosk',
-        'setup',
-        'external',
-    ];
-
     /**
      * Generate RewriteBase in all routing .htaccess files.
      *
@@ -75,12 +54,54 @@ class HtaccessGenerator
             $safeRoot = '/';
         }
 
-        foreach (self::ROUTING_MODULES as $relDir) {
-            $file = rtrim($docRoot, '/') . '/' . ($relDir !== '' ? $relDir . '/' : '') . '.htaccess';
-            $rewriteBase = $safeRoot === '/' ? ($relDir !== '' ? '/' . $relDir : '/') : rtrim($safeRoot, '/') . ($relDir !== '' ? '/' . $relDir : '');
+        $files = self::findRoutingHtaccessFiles($docRoot);
+        foreach ($files as $file) {
+            $relDir = self::relativeModuleDir($docRoot, $file);
+            $rewriteBase = $safeRoot === '/'
+                ? ($relDir !== '' ? '/' . $relDir : '/')
+                : rtrim($safeRoot, '/') . ($relDir !== '' ? '/' . $relDir : '');
 
             self::writeRewriteBase($file, $rewriteBase, $logger);
         }
+    }
+
+    /**
+     * Find every .htaccess under $docRoot that enables the rewrite engine.
+     *
+     * @return string[] absolute paths
+     */
+    private static function findRoutingHtaccessFiles(string $docRoot): array
+    {
+        $found = [];
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($docRoot, \FilesystemIterator::SKIP_DOTS)
+        );
+
+        foreach ($iterator as $info) {
+            if (!$info->isFile() || $info->getFilename() !== '.htaccess') {
+                continue;
+            }
+
+            $path = $info->getPathname();
+            $content = @file_get_contents($path);
+            if ($content !== false && preg_match('/RewriteEngine\s+On/i', $content)) {
+                $found[] = $path;
+            }
+        }
+
+        sort($found);
+        return $found;
+    }
+
+    /**
+     * Relative directory of an .htaccess file from the document root.
+     * Empty string for the root .htaccess.
+     */
+    private static function relativeModuleDir(string $docRoot, string $htaccessPath): string
+    {
+        $dir = dirname($htaccessPath);
+        $rel = ltrim(substr($dir, strlen(rtrim($docRoot, '/'))), '/');
+        return $rel === '.' ? '' : $rel;
     }
 
     /**
@@ -109,11 +130,7 @@ class HtaccessGenerator
 
     private static function writeRewriteBase(string $file, string $rewriteBase, $logger): void
     {
-        if (!is_file($file)) {
-            $logger->debug('HtaccessGenerator: file does not exist, skipping', ['file' => $file]);
-            return;
-        }
-        if (!is_writable($file)) {
+        if (!is_file($file) || !is_writable($file)) {
             $logger->warning('HtaccessGenerator: file not writable', ['file' => $file]);
             return;
         }
@@ -121,12 +138,6 @@ class HtaccessGenerator
         $content = @file_get_contents($file);
         if ($content === false) {
             $logger->error('HtaccessGenerator: failed to read file', ['file' => $file]);
-            return;
-        }
-
-        // Only proceed if this is a RewriteEngine On file
-        if (!preg_match('/RewriteEngine\s+On/i', $content)) {
-            $logger->debug('HtaccessGenerator: no RewriteEngine On, skipping', ['file' => $file]);
             return;
         }
 
