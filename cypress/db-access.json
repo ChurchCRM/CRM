@@ -75,6 +75,7 @@
         "cypress/e2e/ui/portal/member.portal-teams.spec.js": 39,
         "cypress/e2e/ui/portal/member.portal-volunteer.spec.js": 46,
         "cypress/e2e/ui/portal/portal.e2e-member-week.spec.js": 42,
-        "cypress/e2e/ui/portal/portal.e2e-team-leader.spec.js": 37
+        "cypress/e2e/ui/portal/portal.e2e-team-leader.spec.js": 37,
+        "cypress/e2e/ui/session/session.empty-password.spec.js": 8
     }
 }
