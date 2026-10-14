@@ -6923,23 +6923,7 @@ paths:
           content:
             application/json:
               schema:
-                properties:
-                  Id: { type: integer }
-                  Name: { type: string }
-                  Address: { description: 'Primary address, one line', type: string }
-                  SecondAddress1: { type: string, nullable: true }
-                  SecondAddress2: { type: string, nullable: true }
-                  SecondCity: { type: string, nullable: true }
-                  SecondState: { type: string, nullable: true }
-                  SecondZip: { type: string, nullable: true }
-                  SecondCountry: { type: string, nullable: true }
-                  SecondIsMailing: { type: boolean }
-                  HasSecondAddress: { type: boolean }
-                  SecondAddressIsMailing: { type: boolean }
-                  SecondAddress: { description: 'Second address, one line', type: string }
-                  MailingAddressLines: { description: 'Resolved mailing address, one line', type: string }
-                  MailingAddress: { description: 'Resolved mailing address parts', properties: { Address1: { type: string }, Address2: { type: string }, City: { type: string }, State: { type: string }, Zip: { type: string }, Country: { type: string } }, type: object }
-                type: object
+                $ref: '#/components/schemas/Family'
         '403':
           description: 'Access denied'
         '404':
@@ -7659,11 +7643,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                id: 42
-                firstName: John
-                lastName: Doe
+                $ref: '#/components/schemas/Person'
         '401':
           description: Unauthorized
         '404':
@@ -11404,6 +11384,277 @@ paths:
           ApiKeyAuth: []
 components:
   schemas:
+    Person:
+      type: object
+      description: A person record as returned by GET /person/{personId} (Person::exportTo('JSON') plus computed fields). Keys use the Propel PHP names. Related objects (e.g. Family) are embedded when the person has them.
+      properties:
+        Id:
+          type: integer
+          example: 42
+        Title:
+          type: string
+          example: Mr.
+          nullable: true
+        FirstName:
+          type: string
+          example: John
+        MiddleName:
+          type: string
+          nullable: true
+        LastName:
+          type: string
+          example: Doe
+        Suffix:
+          type: string
+          nullable: true
+        Address1:
+          type: string
+          nullable: true
+        Address2:
+          type: string
+          nullable: true
+        City:
+          type: string
+          nullable: true
+        State:
+          type: string
+          nullable: true
+        Zip:
+          type: string
+          nullable: true
+        Country:
+          type: string
+          nullable: true
+        HomePhone:
+          type: string
+          nullable: true
+        WorkPhone:
+          type: string
+          nullable: true
+        CellPhone:
+          type: string
+          nullable: true
+        Email:
+          type: string
+          nullable: true
+        WorkEmail:
+          type: string
+          nullable: true
+        BirthMonth:
+          type: integer
+          description: 0 when unknown
+        BirthDay:
+          type: integer
+          description: 0 when unknown
+        BirthYear:
+          type: integer
+          nullable: true
+        MembershipDate:
+          type: string
+          format: date
+          nullable: true
+        DateDeceased:
+          type: string
+          format: date
+          nullable: true
+        Gender:
+          type: integer
+          description: 0 = unknown, 1 = male, 2 = female
+        FmrId:
+          type: integer
+          description: Family role ID
+        ClsId:
+          type: integer
+          description: Classification ID
+        FamId:
+          type: integer
+          description: Family ID; 0 when the person has no family
+        Envelope:
+          type: integer
+          nullable: true
+        DateLastEdited:
+          type: string
+          format: date-time
+          nullable: true
+        DateEntered:
+          type: string
+          format: date-time
+        EnteredBy:
+          type: integer
+        EditedBy:
+          type: integer
+          nullable: true
+        FriendDate:
+          type: string
+          format: date
+          nullable: true
+        Flags:
+          type: integer
+        Facebook:
+          type: string
+          nullable: true
+        Twitter:
+          type: string
+          nullable: true
+        LinkedIn:
+          type: string
+          nullable: true
+        DateDeactivated:
+          type: string
+          format: date
+          description: Empty/null for an active person
+          nullable: true
+        NeedsReview:
+          type: boolean
+        Address:
+          type: string
+          description: Computed one-line address (falls back to the family address)
+        FullName:
+          type: string
+          description: Computed display name
+        HasPhoto:
+          type: boolean
+          description: True when a photo has been uploaded
+        Family:
+          $ref: '#/components/schemas/Family'
+        singlePersonCustom:
+          type: object
+          description: Custom field values the caller is allowed to see, keyed by custom field
+          additionalProperties: true
+    Family:
+      type: object
+      description: A family record as returned by GET /family/{familyId} (Family::toArray()). Keys use the Propel PHP names. ScanCheck, ScanCredit and Envelope are only returned to users with the Finance role.
+      properties:
+        Id:
+          type: integer
+          example: 7
+        Name:
+          type: string
+          example: Doe
+        Address1:
+          type: string
+          nullable: true
+        Address2:
+          type: string
+          nullable: true
+        City:
+          type: string
+          nullable: true
+        State:
+          type: string
+          nullable: true
+        Zip:
+          type: string
+          nullable: true
+        Country:
+          type: string
+          nullable: true
+        SecondAddress1:
+          type: string
+          nullable: true
+        SecondAddress2:
+          type: string
+          nullable: true
+        SecondCity:
+          type: string
+          nullable: true
+        SecondState:
+          type: string
+          nullable: true
+        SecondZip:
+          type: string
+          nullable: true
+        SecondCountry:
+          type: string
+          nullable: true
+        SecondIsMailing:
+          type: boolean
+        HomePhone:
+          type: string
+          nullable: true
+        Email:
+          type: string
+          nullable: true
+        Weddingdate:
+          type: string
+          format: date
+          nullable: true
+        DateEntered:
+          type: string
+          format: date-time
+          nullable: true
+        DateLastEdited:
+          type: string
+          format: date-time
+          nullable: true
+        EnteredBy:
+          type: integer
+          nullable: true
+        EditedBy:
+          type: integer
+          nullable: true
+        ScanCheck:
+          type: string
+          description: Finance role only
+          nullable: true
+        ScanCredit:
+          type: string
+          description: Finance role only
+          nullable: true
+        SendNewsletter:
+          type: string
+          nullable: true
+        DateDeactivated:
+          type: string
+          format: date
+          description: Empty/null for an active family
+          nullable: true
+        Latitude:
+          type: number
+          format: double
+          nullable: true
+        Longitude:
+          type: number
+          format: double
+          nullable: true
+        Envelope:
+          type: integer
+          description: Finance role only
+          nullable: true
+        NeedsReview:
+          type: boolean
+        Address:
+          type: string
+          description: Primary address, one line
+        FamilyString:
+          type: string
+          description: Display string for the family
+        HasSecondAddress:
+          type: boolean
+        SecondAddressIsMailing:
+          type: boolean
+        SecondAddress:
+          type: string
+          description: Second address, one line
+        MailingAddressLines:
+          type: string
+          description: Resolved mailing address, one line
+        MailingAddress:
+          type: object
+          description: Resolved mailing address parts
+          properties:
+            Address1:
+              type: string
+            Address2:
+              type: string
+            City:
+              type: string
+            State:
+              type: string
+            Zip:
+              type: string
+            Country:
+              type: string
     PortalCalendarSubscription:
       properties:
         title:
