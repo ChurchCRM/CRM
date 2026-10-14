@@ -9,6 +9,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $reportUrl = $sRootPath . '/people/reports/' . InputUtils::escapeAttribute($slug);
 $canEdit = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled();
+$canDelete = AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled();
+$canPrintLabels = AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled();
 $cart = $_SESSION['aPeopleCart'] ?? [];
 $missingLabels = array_map(static fn (string $key): string => $report['params'][$key]['label'], $missing);
 ?>
@@ -78,9 +80,11 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
             <button type="button" id="addAllToCart" class="btn btn-sm btn-outline-primary"<?= $rows === [] ? ' disabled' : '' ?>>
                 <i class="fa-solid fa-cart-plus me-1"></i><?= gettext('Add All to Cart') ?>
             </button>
+            <?php if ($canPrintLabels) : ?>
             <button type="button" id="printLabels" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#labelsModal"<?= $rows === [] ? ' disabled' : '' ?>>
                 <i class="fa-solid fa-tags me-1"></i><?= gettext('Print Labels') ?>
             </button>
+            <?php endif; ?>
             <a id="downloadCsv" class="btn btn-sm btn-outline-secondary" href="<?= $reportUrl ?>/csv<?= $csvQuery !== '' ? '?' . InputUtils::escapeAttribute($csvQuery) : '' ?>">
                 <i class="fa-solid fa-file-csv me-1"></i><?= gettext('Download CSV') ?>
             </a>
@@ -143,12 +147,14 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                                     <i class="<?= $inCart ? 'fa-solid fa-box-open' : 'fa-solid fa-cart-shopping' ?> me-2"></i>
                                     <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                                 </button>
+                                <?php if ($canDelete) : ?>
                                 <div class="dropdown-divider"></div>
                                 <button type="button" class="dropdown-item text-danger delete-person"
                                         data-person_id="<?= $personId ?>"
                                         data-person_name="<?= InputUtils::escapeAttribute($row['Name']) ?>"<?= PersonDeleteGuard::attributes((int) $personId) ?>>
                                     <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                 </button>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </td>
@@ -159,10 +165,12 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
     </div>
 </div>
 <?php
-$labelsIntro = gettext('Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.');
-$labelsHiddenFields = ['report' => $slug] + $reportParams;
-$labelsGrouping = $report['labelGrouping'] ?? null;
-require __DIR__ . '/partials/labels-modal.php';
+if ($canPrintLabels) {
+    $labelsIntro = gettext('Mailing labels for the people in this report. A person with no address of their own is addressed at their family address.');
+    $labelsHiddenFields = ['report' => $slug] + $reportParams;
+    $labelsGrouping = $report['labelGrouping'] ?? null;
+    require __DIR__ . '/partials/labels-modal.php';
+}
 ?>
 <?php endif; ?>
 

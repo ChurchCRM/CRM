@@ -32,10 +32,11 @@ describe("Reports menu (#10259)", () => {
     describe("as a finance-only user", () => {
         beforeEach(() => cy.setupFinanceOnlySession());
 
-        it("sees only Financial Reports", () => {
+        it("sees People and Financial Reports but not Group Reports", () => {
             cy.visit("/v2/dashboard");
             cy.get('a[href$="/finance/reports"]').should("exist");
-            cy.get('a[href$="/people/reports"]').should("not.exist");
+            cy.get('a[href$="/people/reports"]').should("exist");
+            cy.get('a[href$="/groups/reports"]').should("not.exist");
             cy.get('a[href$="QueryList.php"]').should("not.exist");
         });
     });
@@ -43,10 +44,10 @@ describe("Reports menu (#10259)", () => {
     describe("as a user without finance", () => {
         beforeEach(() => cy.setupNoFinanceSession());
 
-        it("does not list financial or people reports", () => {
+        it("lists People Reports and not Financial Reports", () => {
             cy.visit("/v2/dashboard");
             cy.get('a[href$="/finance/reports"]').should("not.exist");
-            cy.get('a[href$="/people/reports"]').should("not.exist");
+            cy.get('a[href$="/people/reports"]').should("exist");
         });
     });
 });
