@@ -58,6 +58,23 @@ describe('Community Plugin Lifecycle', { retries: 2 }, () => {
     });
 
     // ─────────────────────────────────────────────────────────────────────────
+    it('offers no install or update for a plugin already at the approved version', () => {
+        cy.setupAdminSession({ forceLogin: true });
+        cy.visit('/plugins/management');
+        cy.get('#btn-browse-approved').click();
+        cy.get('#approvedPluginsList [data-approved-plugin-id]', { timeout: 15000 }).should('be.visible');
+        cy.get(`#approvedPluginsList [data-approved-plugin-id="${PLUGIN_ID}"]`).within(() => {
+            cy.get('.btn-install-approved').should('not.exist');
+            cy.contains('.badge', 'Installed').should('be.visible');
+        });
+
+        cy.makePrivateAdminAPICall('GET', '/plugins/api/approved').then((response) => {
+            const entry = response.body.data.find((p) => p.id === PLUGIN_ID);
+            cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/install', { downloadUrl: entry.downloadUrl }, 409);
+        });
+    });
+
+    // ─────────────────────────────────────────────────────────────────────────
     it('enables the hello-world plugin from the management page', () => {
         cy.setupAdminSession({ forceLogin: true });
         cy.visit('/plugins/management');
