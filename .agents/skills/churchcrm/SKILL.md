@@ -49,7 +49,7 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 | [Tabler Components](./tabler-components.md) | Tabler markup |
 | [Webpack & TypeScript](./webpack-typescript.md) | Bundling |
 | [i18n & Localization](./i18n-localization.md) | Wrap UI strings |
-| [Locale Translation Workflow](./locale-translation-workflow.md) | POEditor |
+| [Locale Translation](./locale-translation-workflow.md) | Translation agents |
 | [Currency Localization](./currency-localization.md) | Money display |
 | [Error Reporting & Issue Filing](./error-reporting.md) | Error pages |
 
@@ -98,6 +98,7 @@ Row actions: [`table-action-menu.md`](./table-action-menu.md). Settings UI: copy
 | Skill | When to Use |
 |-------|------------|
 | [Git Workflow](./git-workflow.md) | Commit / push |
+| [Release Management](./release-management.md) | Release preparation and verification |
 | [Maintainer Review Gates](./maintainer-review-gates.md) | Review a PR |
 | [PR Review](./pr-review.md) | Standards checklist |
 | [PR Review Fix](../pr-review-fix.md) | Address review comments |
