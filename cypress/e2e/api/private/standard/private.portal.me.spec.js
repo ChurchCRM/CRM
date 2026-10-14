@@ -455,6 +455,21 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
             });
         });
 
+        it("escapes the proposed member's name in the family timeline note", () => {
+            const firstName = `D'Ann & Bo${String(Date.now()).slice(-6)}`;
+            proposeMember(firstName, 2);
+
+            cy.makePrivateAdminAPICall("GET", `/api/timeline/family/${LENA_FAMILY_ID}`, null, 200).then(
+                (response) => {
+                    expect(response.body.timeline.map((item) => item.text)).to.include(
+                        `Added through the Member Portal and waiting for review: ${firstName
+                            .replace("&", "&amp;")
+                            .replace("'", "&#039;")} Black (Spouse)`,
+                    );
+                },
+            );
+        });
+
         it("files a role the installation does not offer under the child role", () => {
             proposeMember(`Unk${String(Date.now()).slice(-6)}`, 99).then((person) => {
                 // sDirRoleChild defaults to 3.

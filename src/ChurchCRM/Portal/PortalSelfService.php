@@ -404,7 +404,7 @@ class PortalSelfService
         $note->setEntered((int) $actor->getId());
         $note->setText(sprintf(
             gettext('Added through the Member Portal and waiting for review: %s'),
-            sprintf('%s (%s)', $person->getFullName(), $person->getFamilyRoleName())
+            InputUtils::escapeHTML(sprintf('%s (%s)', $person->getFullName(), $person->getFamilyRoleName()))
         ));
         $note->save();
 
