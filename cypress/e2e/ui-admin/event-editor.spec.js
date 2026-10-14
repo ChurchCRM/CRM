@@ -172,9 +172,9 @@ describe("Event Editor page", () => {
         });
     });
 
-    describe("in a browser outside UTC", () => {
+    describe("in a browser on neither UTC nor the church's time zone", () => {
         before(() => {
-            cy.useChurchTimeZone();
+            cy.useBrowserTimeZone("America/Los_Angeles");
         });
 
         after(() => {
