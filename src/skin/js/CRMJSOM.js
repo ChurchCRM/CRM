@@ -534,6 +534,8 @@ window.CRM.dashboard = {
    * Load event counters once on page load (birthdays, anniversaries, events today)
    */
   loadEventCounters: () => {
+    const birthdays = document.getElementById("BirthdateNumber");
+    if (!birthdays) return; // Calendar menu not present for this user (Events module off)
     // Pass the browser's local date so the counter matches the calendar's "today" cell.
     // FullCalendar highlights today using the browser local date, not the server timezone.
     const today = new Date().toLocaleDateString("en-CA"); // yields YYYY-MM-DD
@@ -542,7 +544,7 @@ window.CRM.dashboard = {
       path: "calendar/events-counters?date=" + today,
       suppressErrorDialog: true,
     }).done((data) => {
-      document.getElementById("BirthdateNumber").innerText = data.Birthdays;
+      birthdays.innerText = data.Birthdays;
       document.getElementById("AnniversaryNumber").innerText = data.Anniversaries;
       document.getElementById("EventsNumber").innerText = data.Events;
     });

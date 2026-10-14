@@ -187,6 +187,91 @@ async function mailpitFetch(path: string, init?: Record<string, unknown>) {
   }
 }
 
+/**
+ * Fake plugin registry for upgrade specs. The Docker webserver reads
+ * CHURCHCRM_PLUGIN_FIXTURES (the repo is mounted at /home/ChurchCRM); a
+ * registry.json in that directory replaces the remote registry (one approved
+ * version per write, like the real registry), and zips for
+ * https://fixtures.invalid/<name>.zip are served from it.
+ */
+export const pluginFixtureTasks = {
+  async 'pluginFixtures:write'({ id, version, badSha = false }: { id: string; version: string; badSha?: boolean }) {
+    const archiver = require('archiver');
+    const crypto = require('crypto');
+    const fs = require('fs');
+    const path = require('path');
+    const dir = path.resolve(__dirname, '../fixtures/plugin-registry');
+    fs.mkdirSync(dir, { recursive: true });
+
+    const plugins = [];
+    {
+      const zipName = `${id}-${version}.zip`;
+      const manifest = {
+        id,
+        name: 'Upgrade Fixture',
+        description: 'Cypress fixture plugin for upgrade tests.',
+        version,
+        type: 'community',
+        minimumCRMVersion: '7.0.0',
+        mainClass: 'ChurchCRM\\Plugins\\UpgradeFixture\\UpgradeFixturePlugin',
+        dependencies: [],
+        settingsUrl: null,
+        settings: [],
+        menuItems: [],
+        hooks: []
+      };
+      const plugin = `<?php\n\nnamespace ChurchCRM\\Plugins\\UpgradeFixture;\n\nuse ChurchCRM\\Plugin\\AbstractPlugin;\n\nclass UpgradeFixturePlugin extends AbstractPlugin\n{\n    public function getId(): string\n    {\n        return '${id}';\n    }\n\n    public function getName(): string\n    {\n        return 'Upgrade Fixture';\n    }\n\n    public function getDescription(): string\n    {\n        return 'Cypress fixture plugin.';\n    }\n\n    public function boot(): void\n    {\n    }\n}\n`;
+      const zipPath = path.join(dir, zipName);
+      await new Promise<void>((resolve, reject) => {
+        const out = fs.createWriteStream(zipPath);
+        const zip = archiver('zip');
+        out.on('close', () => resolve());
+        zip.on('error', reject);
+        zip.pipe(out);
+        zip.append(JSON.stringify(manifest, null, 2), { name: `${id}/plugin.json`, date: new Date(0) });
+        zip.append(plugin, { name: `${id}/src/UpgradeFixturePlugin.php`, date: new Date(0) });
+        zip.finalize();
+      });
+      plugins.push({
+        id,
+        name: 'Upgrade Fixture',
+        version,
+        downloadUrl: `https://fixtures.invalid/${zipName}`,
+        sha256: badSha ? '0'.repeat(64) : crypto.createHash('sha256').update(fs.readFileSync(zipPath)).digest('hex'),
+        risk: 'low',
+        riskSummary: 'Test fixture.',
+        permissions: []
+      });
+    }
+    fs.writeFileSync(path.join(dir, 'registry.json'), JSON.stringify({ plugins }, null, 2));
+    return plugins;
+  },
+
+  /** Is an upgrade backup still parked for this plugin? */
+  'pluginFixtures:backupExists'(id: string) {
+    const fs = require('fs');
+    const path = require('path');
+    return fs.existsSync(path.resolve(__dirname, '../../src/plugins/community/.upgrade-backup', id));
+  },
+
+  /** Simulate a crash mid-swap: the live copy is already parked, the new one never arrived. */
+  'pluginFixtures:interruptUpgrade'(id: string) {
+    const fs = require('fs');
+    const path = require('path');
+    const community = path.resolve(__dirname, '../../src/plugins/community');
+    fs.mkdirSync(path.join(community, '.upgrade-backup'), { recursive: true });
+    fs.renameSync(path.join(community, id), path.join(community, '.upgrade-backup', id));
+    return null;
+  },
+
+  'pluginFixtures:clear'() {
+    const fs = require('fs');
+    const path = require('path');
+    fs.rmSync(path.resolve(__dirname, '../fixtures/plugin-registry'), { recursive: true, force: true });
+    return null;
+  }
+};
+
 export const mailTasks = {
   /** Is a Mailpit instance reachable? Never throws — the answer is the point. */
   async 'mail:available'() {
@@ -230,7 +315,7 @@ export function setupCommonNodeEvents(on: any, config: any) {
 
   // Every task must be registered in a single on('task', ...) call — a second
   // registration replaces the first rather than merging with it.
-  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...htaccessTasks };
+  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks, ...htaccessTasks, ...pluginFixtureTasks };
 
   // Register download verification tasks if available
   try {
