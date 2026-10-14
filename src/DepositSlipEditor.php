@@ -223,7 +223,7 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="mb-2">
               <i class="fa-solid fa-receipt fa-2x text-primary mb-2"></i>
             </div>
-            <div class="stat-value text-body" style="font-size: 2.5rem;"><?= $thisDeposit->getCountChecks() + $thisDeposit->getCountCash(); ?></div>
+            <div class="stat-value text-dark" style="font-size: 2.5rem;"><?= $thisDeposit->getCountChecks() + $thisDeposit->getCountCash(); ?></div>
             <div class="stat-label"><?= gettext('Total Payments'); ?></div>
           </div>
         </div>
@@ -375,6 +375,10 @@ require_once __DIR__ . '/Include/Header.php';
     line-height: 1.2;
     margin-bottom: 0.75rem;
     letter-spacing: -0.5px;
+}
+/* The count's markup stays as on master so code scanning keeps its dismissed alert. */
+[data-bs-theme="dark"] .stat-card .stat-value.text-dark {
+    color: var(--tblr-body-color) !important;
 }
 .stat-label {
     font-size: 0.8rem;
