@@ -41,15 +41,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </h5>
         <span class="badge bg-primary text-white ms-auto" id="optionCount"><?= $optionRows->count() ?></span>
     </div>
-    <div class="card-body" style="overflow: visible;">
+    <div class="card-body overflow-visible">
         <table class="table table-hover table-sm mb-0" id="optionsTable">
             <thead>
                 <tr>
-                    <th style="width: 80px;"><?= gettext('Order') ?></th>
+                    <th class="admin-col-80"><?= gettext('Order') ?></th>
                     <th><?= gettext('Name') ?></th>
                     <?php if ($mode === 'classes'): ?>
-                    <th style="width: 100px;"><?= gettext('Inactive') ?></th>
-                    <th style="width: 100px;"><?= gettext('In Directory') ?></th>
+                    <th class="admin-col-100"><?= gettext('Inactive') ?></th>
+                    <th class="admin-col-100"><?= gettext('In Directory') ?></th>
                     <?php endif; ?>
                     <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                 </tr>

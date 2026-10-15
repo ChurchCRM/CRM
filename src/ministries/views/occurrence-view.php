@@ -213,7 +213,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <p class="text-body-secondary">
         <?= gettext('These people are still assigned, but the position they hold is no longer part of this occurrence\'s staffing plan.') ?>
       </p>
-      <div style="overflow-x: clip; overflow-y: visible;" class="">
+      <div class="table-clip-x">
         <table class="table table-vcenter" id="other-assignments-table">
           <thead>
             <tr>
@@ -251,7 +251,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('When a volunteer proposes someone to take their place, it appears here for you to approve or reject.') ?>
         </p>
       </div>
-      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="swaps-table-wrapper">
+      <div class="table-clip-x d-none" id="swaps-table-wrapper">
         <table class="table table-vcenter" id="volunteerSwapsTable">
           <thead>
             <tr>

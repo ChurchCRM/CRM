@@ -321,7 +321,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="row mb-3">
               <label class="col-sm-3 col-form-label"><?= gettext("Translation Progress") ?></label>
               <div class="col-sm-9">
-                <div class="progress mb-2" style="height: 1.25rem;">
+                <div class="progress mb-2 user-translation-progress">
                   <div class="progress-bar bg-<?= $viewedUserLocaleInfo->getTranslationPercentage() >= 90 ? 'success' : ($viewedUserLocaleInfo->getTranslationPercentage() >= 50 ? 'warning' : 'danger') ?>"
                        role="progressbar"
                        style="width: <?= $viewedUserLocaleInfo->getTranslationPercentage() ?>%"
@@ -403,7 +403,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Case 1: admin — full access, no individual rows -->
             <div class="text-center py-4">
               <div class="mb-3">
-                <span class="badge bg-warning-lt text-warning px-3 py-2" style="font-size:1rem;">
+                <span class="badge bg-warning-lt text-warning px-3 py-2 fs-3">
                   <i class="fa-solid fa-circle-check me-2"></i><?= gettext("Administrator") ?>
                 </span>
               </div>
@@ -413,7 +413,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Case 2: self-service user — no individual permission rows -->
             <div class="text-center py-4">
               <div class="mb-3">
-                <span class="badge bg-info-lt text-info px-3 py-2" style="font-size:1rem;">
+                <span class="badge bg-info-lt text-info px-3 py-2 fs-3">
                   <i class="fa-solid fa-user-check me-2"></i><?= gettext("Self-service only") ?>
                 </span>
               </div>

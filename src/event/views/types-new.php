@@ -31,20 +31,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-md-6">
           <div class="mb-3">
             <label for="newEvtStartTime" class="fw-bold form-label"><?= gettext('Default Start Time') ?></label>
-            <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
-              <select class="form-select" id="newEvtHour" name="newEvtHour" style="width: 70px;">
+            <div class="d-flex align-items-center event-time-picker">
+              <select class="form-select field-w-70" id="newEvtHour" name="newEvtHour">
                 <?php for ($h = 1; $h <= 12; $h++): ?>
                   <option value="<?= $h ?>" <?= $h === 9 ? 'selected' : '' ?>><?= $h ?></option>
                 <?php endfor; ?>
               </select>
               <span>:</span>
-              <select class="form-select" id="newEvtMinute" name="newEvtMinute" style="width: 70px;">
+              <select class="form-select field-w-70" id="newEvtMinute" name="newEvtMinute">
                 <?php for ($m = 0; $m < 60; $m += 15):
                     $min = str_pad($m, 2, '0', STR_PAD_LEFT); ?>
                   <option value="<?= $min ?>" <?= $m === 0 ? 'selected' : '' ?>><?= $min ?></option>
                 <?php endfor; ?>
               </select>
-              <select class="form-select" id="newEvtPeriod" name="newEvtPeriod" style="width: 70px;">
+              <select class="form-select field-w-70" id="newEvtPeriod" name="newEvtPeriod">
                 <option value="AM" selected>AM</option>
                 <option value="PM">PM</option>
               </select>
@@ -64,7 +64,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="form-check mb-2 d-flex align-items-center">
             <input class="form-check-input" type="radio" name="newEvtTypeRecur" id="recurWeekly" value="weekly">
             <label class="form-check-label me-2" for="recurWeekly"><?= gettext('Weekly on') ?></label>
-            <select name="newEvtRecurDOW" class="form-select form-select-sm" style="width: 150px;" disabled>
+            <select name="newEvtRecurDOW" class="form-select form-select-sm field-w-150" disabled>
               <option value="1"><?= gettext('Sundays') ?></option>
               <option value="2"><?= gettext('Mondays') ?></option>
               <option value="3"><?= gettext('Tuesdays') ?></option>
@@ -77,7 +77,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="form-check mb-2 d-flex align-items-center">
             <input class="form-check-input" type="radio" name="newEvtTypeRecur" id="recurMonthly" value="monthly">
             <label class="form-check-label me-2" for="recurMonthly"><?= gettext('Monthly on the') ?></label>
-            <select name="newEvtRecurDOM" class="form-select form-select-sm" style="width: 100px;" disabled>
+            <select name="newEvtRecurDOM" class="form-select form-select-sm field-w-100" disabled>
               <?php for ($k = 1; $k <= 31; $k++): ?>
                 <option value="<?= $k ?>"><?= date('jS', mktime(0, 0, 0, 1, $k, 2000)) ?></option>
               <?php endfor; ?>
@@ -86,8 +86,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="form-check d-flex align-items-center">
             <input class="form-check-input" type="radio" name="newEvtTypeRecur" id="recurYearly" value="yearly">
             <label class="form-check-label me-2" for="recurYearly"><?= gettext('Yearly on') ?></label>
-            <input type="text" class="form-control form-control-sm" name="newEvtRecurDOY"
-                   style="width: 150px;" placeholder="YYYY-MM-DD" disabled>
+            <input type="text" class="form-control form-control-sm field-w-150" name="newEvtRecurDOY"
+                   placeholder="YYYY-MM-DD" disabled>
           </div>
         </div>
       </div>

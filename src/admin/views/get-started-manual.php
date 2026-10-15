@@ -23,7 +23,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <!-- Step 1 -->
                     <div class="d-flex align-items-start mb-4">
                         <div class="me-3 mt-1">
-                            <span class="badge bg-primary text-white rounded-pill" style="font-size:1rem;padding:.5em .75em;">1</span>
+                            <span class="badge bg-primary text-white rounded-pill admin-step-badge">1</span>
                         </div>
                         <div>
                             <h6 class="mb-1"><?= gettext('Add Your First Family') ?></h6>
@@ -39,7 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <!-- Step 2 -->
                     <div class="d-flex align-items-start mb-2">
                         <div class="me-3 mt-1">
-                            <span class="badge bg-primary rounded-pill" style="font-size:1rem;padding:.5em .75em;">2</span>
+                            <span class="badge bg-primary rounded-pill admin-step-badge">2</span>
                         </div>
                         <div>
                             <h6 class="mb-1"><?= gettext('Add People to the Family') ?></h6>

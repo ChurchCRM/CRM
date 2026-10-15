@@ -111,7 +111,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                class="gs-plugin-badge"
                data-bs-toggle="tooltip"
                title="<?= gettext('Enable the MailChimp plugin to sync contacts') ?>">
-                <i class="fa-brands fa-mailchimp" style="color: #ffe01b;"></i>
+                <i class="fa-brands fa-mailchimp mailchimp-icon"></i>
                 MailChimp
                 <span class="badge bg-light text-dark border"><?= gettext('Enable') ?></span>
             </a>

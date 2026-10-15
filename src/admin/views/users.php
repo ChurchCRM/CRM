@@ -122,7 +122,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
         <span class="me-3"><i class="fa-solid fa-user-check text-warning me-1"></i><?= gettext('Self-service') ?></span>
         <span><i class="fa-solid fa-cog text-azure me-1"></i><?= gettext('Custom') ?></span>
     </div>
-    <div class="card-body" style="overflow: visible;">
+    <div class="card-body overflow-visible">
         <table class="table table-hover w-100" id="user-listing-table">
                 <thead>
                     <tr>

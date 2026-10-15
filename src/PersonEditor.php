@@ -818,8 +818,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('Zip Code') ?>:
                         <?= $bFamilyZip ? '</span>' : '' ?>
                     </label>
-                    <input type="text" name="Zip" id="Zip" class="form-control"
-                           <?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? 'style="text-transform:uppercase"' : '' ?>
+                    <input type="text" name="Zip" id="Zip" class="form-control<?= SystemConfig::getBooleanValue('bForceUppercaseZip') ? ' text-uppercase' : '' ?>"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>"
                            maxlength="10">
                 </div>

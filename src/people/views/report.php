@@ -90,7 +90,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
             </a>
         </div>
     </div>
-    <div style="overflow-x: clip; overflow-y: visible;">
+    <div class="table-clip-x">
         <table id="reportResults" class="table table-vcenter table-hover card-table">
             <thead>
                 <tr>

@@ -341,7 +341,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <?php if ($hasUploadedPhoto) { ?>
               <img src="<?= $avatarApiUrl ?>" class="avatar photo-small rounded-circle" alt="<?= htmlspecialchars($currentUserName) ?>">
             <?php } else { ?>
-              <span class="avatar avatar-sm" style="background-color: <?= $avatarColor ?>; color: #fff; flex-shrink: 0;">
+              <span class="avatar avatar-sm text-white flex-shrink-0" style="background-color: <?= $avatarColor ?>;">
                 <span class="avatar-title"><?= htmlspecialchars($userInitials) ?></span>
               </span>
             <?php } ?>
@@ -381,7 +381,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 
       <!-- Search -->
       <div class="collapse navbar-collapse" id="navbar-menu">
-        <div style="position: relative; width: min(480px, 100%);">
+        <div class="global-search">
           <div class="input-icon">
             <span class="input-icon-addon">
               <i class="fa-solid fa-search"></i>
@@ -393,8 +393,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <kbd title="<?= gettext('Press ? to focus search') ?>">?</kbd>
             </span>
           </div>
-          <div id="globalSearchDropdown" class="dropdown-menu w-100"
-               style="top: calc(100% + 2px); left: 0; position: absolute;"></div>
+          <div id="globalSearchDropdown" class="dropdown-menu w-100 global-search-dropdown"></div>
         </div>
       </div>
 

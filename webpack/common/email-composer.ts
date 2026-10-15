@@ -388,7 +388,7 @@ function ensurePreviewModal(): void {
     "    </div>",
     '    <div class="modal-body">',
     '      <div class="alert alert-danger d-none" id="crm-email-preview-error"></div>',
-    `      <iframe id="crm-email-preview-frame" class="w-100 border rounded" sandbox="" title="${escapeHtml(i18next.t("Email preview"))}" style="min-height: 520px; background: #fff;"></iframe>`,
+    `      <iframe id="crm-email-preview-frame" class="w-100 border rounded email-preview-frame" sandbox="" title="${escapeHtml(i18next.t("Email preview"))}"></iframe>`,
     "    </div>",
     '    <div class="modal-footer">',
     `      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${escapeHtml(i18next.t("Back to editing"))}</button>`,
@@ -704,8 +704,7 @@ function showCopyFeedback(success: boolean): void {
 function legacyCopy(text: string): void {
   const ta = document.createElement("textarea");
   ta.value = text;
-  ta.style.position = "fixed";
-  ta.style.opacity = "0";
+  ta.className = "position-fixed opacity-0";
   document.body.appendChild(ta);
   ta.select();
   try {
@@ -1067,9 +1066,7 @@ function renderRecipients(
   details.appendChild(summary);
 
   const listWrapper = document.createElement("div");
-  listWrapper.style.maxHeight = "200px";
-  listWrapper.style.overflowY = "auto";
-  listWrapper.className = "mt-2 border rounded p-2 small font-monospace";
+  listWrapper.className = "mt-2 border rounded p-2 small font-monospace email-recipient-list";
   recipientListWrapperEl = listWrapper;
 
   if (hasRoles) {

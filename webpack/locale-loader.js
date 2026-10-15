@@ -59,8 +59,7 @@ function checkBrowserLocale() {
     }
 
     const alert = document.createElement("div");
-    alert.className = "alert alert-info alert-dismissible";
-    alert.style.marginBottom = "1rem";
+    alert.className = "alert alert-info alert-dismissible mb-3";
 
     const userSettingsUrl = `${window.CRM.root}/v2/user/${window.CRM.userId}#tab-localization`;
 

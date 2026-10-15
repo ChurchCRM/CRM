@@ -18,7 +18,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="mb-3 mb-0">
                 <label for="fyid" class="fw-bold"><?= gettext('Fiscal Year') ?></label>
                 <form method="GET" class="d-inline">
-                    <select name="fyid" id="fyid" class="form-select d-inline-block" style="width: auto;">
+                    <select name="fyid" id="fyid" class="form-select d-inline-block w-auto">
                         <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
                         <?php foreach ($availableYears as $year): ?>
                             <option value="<?= $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
@@ -101,7 +101,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <th class="text-end"><?= gettext('Payments') ?></th>
                         <th class="text-end"><?= gettext('Overpaid') ?></th>
                         <th class="text-end"><?= gettext('Underpaid') ?></th>
-                        <th style="min-width: 8rem;"><?= gettext('Paid') ?></th>
+                        <th class="col-min-8rem"><?= gettext('Paid') ?></th>
                     </tr>
                 </thead>
                 <tbody>

@@ -5,208 +5,11 @@
  * - Uses optional status/result elements when present (#demoImportStatus, #demoImportResults, #demoImportResultsList)
  */
 (function ($) {
-  // Inject shared styles once
-  function injectStyles() {
-    if ($("#demo-import-styles").length === 0) {
-      $("head").append(`
-        <style id="demo-import-styles">
-          body.demo-import-open {
-            overflow: hidden;
-          }
-          .demo-import-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            z-index: 99999;
-          }
-          .demo-import-overlay.show {
-            display: flex !important;
-          }
-          .demo-import-overlay.confirm {
-            z-index: 99999;
-          }
-          .demo-import-overlay.spinner {
-            z-index: 100000;
-          }
-          .demo-import-confirm-modal {
-            width: 100%;
-            max-width: 700px;
-            position: relative;
-            z-index: 100001;
-          }
-          .demo-import-confirm-content {
-            background: white;
-            padding: 60px;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: slideIn 0.3s ease-out;
-          }
-          @keyframes slideIn {
-            from {
-              transform: translateY(-20px) scale(0.95);
-              opacity: 0;
-            }
-            to {
-              transform: translateY(0) scale(1);
-              opacity: 1;
-            }
-          }
-          .demo-import-confirm-content h2 {
-            font-size: 36px;
-            font-weight: 700;
-            color: #222;
-            margin-bottom: 28px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-          }
-          .demo-import-confirm-content h2 i {
-            color: #27ae60;
-          }
-          .demo-import-confirm-content .alert {
-            font-size: 16px;
-            padding: 18px;
-            margin-bottom: 28px;
-            border-radius: 6px;
-            font-weight: 500;
-          }
-          .demo-import-confirm-content h4 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #333;
-            margin-top: 0;
-            margin-bottom: 18px;
-          }
-          .demo-import-confirm-content p {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 16px;
-          }
-          .demo-import-instructions {
-            background: #fafafa;
-            padding: 24px;
-            border-radius: 8px;
-            border-left: 5px solid #ffc107;
-            margin-bottom: 32px;
-          }
-          .demo-import-instructions p:last-child {
-            margin-bottom: 0;
-          }
-          .demo-import-options {
-            margin-bottom: 28px;
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-          }
-          .demo-import-options h4 {
-            margin-top: 0;
-          }
-          .demo-import-options .form-check {
-            text-align: left;
-            padding-left: 0;
-            margin-bottom: 14px;
-            display: block;
-          }
-          .demo-import-options .form-check:last-child {
-            margin-bottom: 0;
-          }
-          .demo-import-options .form-check-input {
-            cursor: pointer;
-            width: 22px;
-            height: 22px;
-            margin-right: 12px;
-            margin-top: 0;
-            vertical-align: middle;
-            position: relative;
-            top: 1px;
-            accent-color: #27ae60;
-          }
-          .demo-import-options .form-check-label {
-            cursor: pointer;
-            margin-bottom: 0;
-            font-size: 15px;
-            line-height: 1.6;
-            display: inline;
-            margin-left: 4px;
-            color: #444;
-          }
-          .demo-import-buttons {
-            display: flex;
-            gap: 16px;
-            margin-top: 40px;
-          }
-          .demo-import-buttons .btn {
-            flex: 1;
-            padding: 16px 24px;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 6px;
-            border: none;
-            transition: all 0.2s ease;
-          }
-          .demo-import-buttons .btn-success {
-            background-color: #27ae60;
-            color: white;
-          }
-          .demo-import-buttons .btn-success:hover {
-            background-color: #229954;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
-          }
-          .demo-import-buttons .btn-secondary {
-            background-color: #95a5a6;
-            color: white;
-          }
-          .demo-import-buttons .btn-secondary:hover {
-            background-color: #7f8c8d;
-            transform: translateY(-2px);
-          }
-          .demo-import-spinner {
-            text-align: center;
-            position: relative;
-            z-index: 100001;
-          }
-          .demo-import-spinner .spinner-border {
-            width: 80px;
-            height: 80px;
-            border-width: 6px;
-            margin-bottom: 24px;
-            animation: spin 1s linear infinite;
-          }
-          @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          .demo-import-spinner h3 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 12px;
-          }
-          .demo-import-spinner p {
-            font-size: 16px;
-            opacity: 0.9;
-          }
-        </style>
-      `);
-    }
-  }
-
   // Create and inject confirmation overlay HTML if not already present
   function ensureConfirmOverlay() {
     if ($("#demoImportConfirmOverlay").length === 0) {
-      injectStyles();
       $("body").append(`
-        <div id="demoImportConfirmOverlay" class="demo-import-overlay confirm" style="display: none;">
+        <div id="demoImportConfirmOverlay" class="demo-import-overlay confirm">
           <div class="demo-import-confirm-modal">
             <div class="demo-import-confirm-content">
               <h2 class="mb-4">
@@ -265,11 +68,10 @@
   // Create and inject loading spinner overlay
   function ensureSpinnerOverlay() {
     if ($("#demoImportSpinnerOverlay").length === 0) {
-      injectStyles();
       $("body").append(`
-        <div id="demoImportSpinnerOverlay" class="demo-import-overlay spinner" style="display: none;">
+        <div id="demoImportSpinnerOverlay" class="demo-import-overlay spinner">
           <div class="demo-import-spinner">
-            <div class="spinner-border text-primary mb-3" role="status" style="width: 60px; height: 60px;">
+            <div class="spinner-border text-primary mb-3" role="status">
               <span class="sr-only">Loading...</span>
             </div>
             <h3 class="text-white mb-0">Importing demo data...</h3>
@@ -322,7 +124,7 @@
           '<a href="' +
           url +
           '" target="_blank" rel="noopener" ' +
-          'style="color: #0d6efd; text-decoration: underline;" ' +
+          'class="demo-import-chip-link" ' +
           'title="' +
           i18next.t("Open in new tab") +
           '">' +
@@ -336,7 +138,7 @@
     var countsLine = "";
     if (personCount > 0 || familyCount > 0) {
       countsLine =
-        '<div style="font-size: 13px; color: #495057; margin-bottom: 10px;">' +
+        '<div class="demo-import-count-line">' +
         i18next.t("Current database") +
         ": " +
         countChip(personCount, i18next.t("people"), personListUrl) +
@@ -346,18 +148,18 @@
     }
 
     var warningHtml =
-      '<div id="demoImportWarning" class="alert alert-warning mb-4" style="border-left: 4px solid #ffc107; padding: 16px;">' +
-      '<div style="font-weight: 600; font-size: 15px; margin-bottom: 8px; color: #664d03;">' +
+      '<div id="demoImportWarning" class="alert alert-warning mb-4 demo-import-warning">' +
+      '<div class="demo-import-warning-title">' +
       '<i class="fa fa-triangle-exclamation mr-2"></i>' +
       i18next.t("Your database already contains data") +
       "</div>" +
-      '<div style="font-size: 14px; color: #495057; margin-bottom: 10px; line-height: 1.5;">' +
+      '<div class="demo-import-warning-body">' +
       i18next.t(
         "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates.",
       ) +
       "</div>" +
       countsLine +
-      '<div style="font-size: 13px; color: #856404; background: #fff3cd; padding: 10px 12px; border-radius: 4px; border: 1px solid #ffeeba;">' +
+      '<div class="demo-import-warning-hint">' +
       '<i class="fa fa-circle-info mr-1"></i>' +
       i18next.t(
         "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data.",
@@ -472,15 +274,15 @@
 
     // Show inline warning message with specific error - better readability
     var warningHtml =
-      '<div id="demoImportWarning" class="alert alert-danger mb-4" style="border-left: 4px solid #dc3545; padding: 16px;">' +
-      '<div style="font-weight: 600; font-size: 15px; margin-bottom: 8px; color: #721c24;">' +
+      '<div id="demoImportWarning" class="alert alert-danger mb-4 demo-import-warning">' +
+      '<div class="demo-import-warning-title">' +
       '<i class="fa fa-circle-exclamation mr-2"></i>' +
       i18next.t("Import failed") +
       "</div>" +
-      '<div style="font-size: 14px; color: #495057; margin-bottom: 12px; line-height: 1.5;">' +
+      '<div class="demo-import-warning-body">' +
       (errorMessage || i18next.t("Unknown error")) +
       "</div>" +
-      '<div style="font-size: 13px; color: #856404; background: #fff3cd; padding: 10px 12px; border-radius: 4px; border: 1px solid #ffeeba;">' +
+      '<div class="demo-import-warning-hint">' +
       '<i class="fa fa-circle-info mr-1"></i>' +
       i18next.t("Force Import will retry and may create duplicate data.") +
       "</div></div>";

@@ -41,7 +41,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php endif; ?>
         <div class="card">
             <div class="card-body p-0">
-                <div id="map" style="height: 600px; width: 100%;"></div>
+                <div id="map" class="people-map w-100"></div>
             </div>
 
             <!-- Desktop legend (injected into map overlay by Leaflet control) -->
@@ -88,46 +88,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     window.CRM.mapConfig = <?= InputUtils::jsonEncodeForScript($mapConfig) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-map-view.min.js') ?>"></script>
-
-<style nonce="<?= SystemURLs::getCSPNonce() ?>">
-    #map-legend {
-        padding: 8px 12px;
-        background: var(--tblr-bg-surface);
-        border-radius: 6px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
-        min-width: 150px;
-        font-size: .85rem;
-    }
-    .legend-title {
-        font-weight: 600;
-        font-size: .78rem;
-        text-transform: uppercase;
-        letter-spacing: .04em;
-        color: #6c757d;
-        margin-bottom: 6px;
-    }
-
-    .legend-static {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-weight: 600;
-        padding: 3px 6px 8px;
-        margin-bottom: 4px;
-        border-bottom: 1px solid rgba(0, 0, 0, .1);
-        line-height: 1.6;
-    }
-
-    .legend-item.inactive .legend-label {
-        text-decoration: line-through;
-    }
-
-    .legend-pill {
-        border: 1px solid var(--tblr-border-color);
-        padding-inline: .625rem;
-        background: var(--tblr-bg-surface-secondary);
-    }
-</style>
 
 <?php endif; ?>
 

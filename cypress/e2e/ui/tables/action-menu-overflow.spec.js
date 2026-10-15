@@ -9,7 +9,7 @@
  * clipping absolutely-positioned dropdown menus.
  *
  * Fix: replace each affected .table-responsive wrapper with
- * `<div style="overflow-x: clip; overflow-y: visible;">`.
+ * `<div class="table-clip-x">`.
  * `overflow-x: clip` is exempt from the coercion rule (only auto/scroll
  * trigger it), so overflow-y stays truly visible and the dropdown escapes.
  *
@@ -70,13 +70,13 @@ function assertDropdownVisible(triggerSelector, context, containerFinder) {
 /**
  * Assert that the wrapper immediately surrounding the open dropdown has the
  * expected computed overflow values set by the per-wrapper fix.
- * Finds the closest ancestor with an inline overflow-x style.
+ * Finds the closest `.table-clip-x` ancestor.
  *
  * @param {string} context - Label for assertion messages
  */
 function assertContainerOverflow(context) {
   cy.get(".dropdown-menu.show")
-    .closest("[style*='overflow-x']")
+    .closest(".table-clip-x")
     .then(($el) => {
       // Use ownerDocument.defaultView rather than window — window in a .then()
       // callback is the spec-runner frame, not the AUT. In Firefox this returns
@@ -97,7 +97,7 @@ function assertContainerOverflow(context) {
 // ── Scenario 1: Family View — Key People member-table row dropdown ────────────
 // Family 1 is seeded with multiple members; their rows each carry a
 // .btn[data-bs-toggle='dropdown'] ellipsis trigger inside a wrapper fixed with
-// `style="overflow-x: clip; overflow-y: visible;"` (formerly table-responsive).
+// `.table-clip-x` (`overflow-x: clip; overflow-y: visible`).
 //
 // 375px is intentionally excluded: the 5-column table (NAME, ROLE, BIRTHDAY,
 // EMAIL, ACTIONS) is wider than 375px, and overflow-x:clip hides the ACTIONS
@@ -127,8 +127,7 @@ describe("Scenario 1 — Family View member table dropdown", () => {
 
 // ── Scenario 2: Family View — Pledges and Payments DataTable row dropdown ─────
 // The pledges table (#pledge-payment-v2-table) sits in a wrapper fixed with
-// `style="overflow-x: clip; overflow-y: visible;"` (formerly table-responsive,
-// direct child of .card). Uses the admin session (finance settings already
+// `.table-clip-x` (direct child of .card). Uses the admin session (finance settings already
 // true in seed) with real seed data. The default FY filter hides all seed
 // pledges (2018 data), so we click "All Time" first to expose rows.
 describe("Scenario 2 — Family View pledges DataTable dropdown", () => {

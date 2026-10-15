@@ -48,4 +48,11 @@
 
 @include meta.load-css("scss/_tomselect");
 
+// Page-level styles, one partial per area
+@include meta.load-css("scss/page-shared");
+@include meta.load-css("scss/page-people");
+@include meta.load-css("scss/page-admin");
+@include meta.load-css("scss/page-events-finance");
+@include meta.load-css("scss/page-platform");
+
 @include meta.load-css("scss/_tabler-bridge");

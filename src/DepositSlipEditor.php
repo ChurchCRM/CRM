@@ -73,6 +73,7 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php';
 ?>
 <!-- Deposit Navigation -->
+<div class="deposit-slip-editor">
 <div class="row mb-3">
   <div class="col-12">
     <div class="d-flex justify-content-between align-items-center">
@@ -173,11 +174,11 @@ require_once __DIR__ . '/Include/Header.php';
       <div class="row">
         <!-- Total Deposit - Hero Stat -->
         <div class="col-12 mb-3">
-          <div class="stat-card text-center py-4 border-0 shadow-sm" style="background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);">
-            <div style="font-size: 3rem; font-weight: 700; color: white; letter-spacing: -1px;">
+          <div class="stat-card stat-card-total text-center py-4 border-0 shadow-sm">
+            <div class="stat-card-total-amount">
               <?= CurrencyFormatter::formatHtml($thisDeposit->getVirtualColumn('totalAmount') ?? 0); ?>
             </div>
-            <div class="text-white-50 text-uppercase small fw-bold mt-2" style="letter-spacing: 1px;"><?= gettext('Total Deposit'); ?></div>
+            <div class="text-white-50 text-uppercase small fw-bold mt-2 letter-spacing-wide-lg"><?= gettext('Total Deposit'); ?></div>
           </div>
         </div>
         
@@ -223,7 +224,7 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="mb-2">
               <i class="fa-solid fa-receipt fa-2x text-primary mb-2"></i>
             </div>
-            <div class="stat-value text-dark" style="font-size: 2.5rem;"><?= $thisDeposit->getCountChecks() + $thisDeposit->getCountCash(); ?></div>
+            <div class="stat-value stat-value-lg text-dark"><?= $thisDeposit->getCountChecks() + $thisDeposit->getCountCash(); ?></div>
             <div class="stat-label"><?= gettext('Total Payments'); ?></div>
           </div>
         </div>
@@ -245,7 +246,7 @@ require_once __DIR__ . '/Include/Header.php';
           <i class="fa-solid fa-xmark"></i><?= gettext('Clear Filter'); ?>
         </button>
       </div>
-      <div class="card-body" style="padding: 1rem 0.75rem 1rem 1.5rem;">
+      <div class="card-body fund-chart-body">
         <div id="fund-bar"></div>
       </div>
     </div>
@@ -278,136 +279,14 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
   </div>
   <div class="card-body p-0">
-    <div style="overflow-x: clip; overflow-y: visible;">
+    <div class="table-clip-x">
       <table class="table table-hover mb-0" id="paymentsTable"></table>
     </div>
   </div>
 </div>
 
+</div>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/DepositSlipEditor.js') ?>"></script>
-<style>
-.card {
-    margin-bottom: 1.5rem;
-    border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease;
-}
-.card:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-.card-header {
-    background-color: var(--tblr-bg-surface-secondary);
-    border-bottom: 2px solid var(--tblr-border-color);
-    padding: 1.25rem;
-}
-#paymentsTable {
-    margin-bottom: 0;
-}
-.dt-length,
-.dt-search {
-    padding: 1rem 0.75rem;
-}
-.dt-info,
-.dt-paging {
-    padding: 1rem 0.75rem;
-}
-.dt-buttons {
-    padding: 1rem 0.75rem !important;
-}
-#paymentsTable tbody tr {
-    transition: background-color 0.2s ease;
-}
-#paymentsTable tbody tr.paymentRow {
-    cursor: pointer;
-}
-#paymentsTable tbody tr:hover {
-    background-color: var(--tblr-bg-surface-secondary);
-}
-#paymentsTable tbody tr.selected,
-#paymentsTable tbody tr.table-active {
-    background-color: rgba(var(--tblr-primary-rgb), 0.08);
-    border-left: 3px solid #0d6efd;
-}
-#paymentsTable tbody tr td {
-    vertical-align: middle;
-    padding: 0.875rem 0.75rem !important;
-}
-#paymentsTable thead th {
-    padding: 1rem 0.75rem !important;
-    background-color: var(--tblr-bg-surface-secondary);
-    border-bottom: 2px solid var(--tblr-border-color);
-    font-weight: 600;
-}
-#paymentsTable tbody td {
-    line-height: 1.6;
-}
-#paymentsTable .badge {
-    font-size: 0.75rem;
-    padding: 0.35rem 0.65rem;
-    font-weight: 500;
-}
-.stat-card {
-    padding: 1.25rem 1rem;
-    background: linear-gradient(135deg, var(--tblr-bg-surface-secondary) 0%, var(--tblr-bg-surface) 100%);
-    border-radius: 0.5rem;
-    border: 2px solid var(--tblr-border-color);
-    transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-.stat-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--tblr-border-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-.stat-value {
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.5px;
-}
-/* The count's markup stays as on master so code scanning keeps its dismissed alert. */
-[data-bs-theme="dark"] .stat-card .stat-value.text-dark {
-    color: var(--tblr-body-color) !important;
-}
-.stat-label {
-    font-size: 0.8rem;
-    color: #6c757d;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
-code {
-    padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-    font-size: 0.875rem;
-}
-.form-label {
-    font-weight: 600;
-    color: var(--tblr-body-color);
-    margin-bottom: 0.5rem;
-}
-.form-control, .form-select {
-    border: 1px solid var(--tblr-border-color);
-    transition: all 0.2s ease;
-}
-.form-control:focus, .form-select:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
-}
-.btn {
-    font-weight: 600;
-    transition: all 0.2s ease;
-    border-radius: 0.375rem;
-}
-.btn-primary {
-    box-shadow: 0 2px 6px rgba(13, 110, 253, 0.2);
-}
-.btn-primary:hover {
-    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
-    transform: translateY(-1px);
-}
-</style>
 <?php
   $fundLabels = [];
   $fundData = [];

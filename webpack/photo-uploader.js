@@ -375,26 +375,14 @@ function showPersistentError(message) {
   if (!errorContainer) {
     errorContainer = document.createElement("div");
     errorContainer.id = "uppy-error-container";
-    errorContainer.style.cssText =
-      "position:fixed;top:20px;right:20px;z-index:10000;max-width:400px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;";
+    errorContainer.className = "uppy-error-container";
     document.body.appendChild(errorContainer);
   }
 
-  // Inject slide-in animation once
-  if (!document.getElementById("uppy-error-animation")) {
-    const style = document.createElement("style");
-    style.id = "uppy-error-animation";
-    style.textContent =
-      "@keyframes uppySlideIn{from{transform:translateX(500px);opacity:0}to{transform:translateX(0);opacity:1}}";
-    document.head.appendChild(style);
-  }
-
   const alertDiv = document.createElement("div");
-  alertDiv.className = "alert alert-danger alert-dismissible fade show";
+  alertDiv.className = "alert alert-danger alert-dismissible fade show uppy-error-alert";
   alertDiv.role = "alert";
-  alertDiv.style.cssText =
-    "margin:0;padding:12px 16px;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.15);animation:uppySlideIn .3s ease-out;";
-  alertDiv.innerHTML = `<strong>Upload Error</strong><p style="margin:4px 0 0;font-size:.95em;">${escapeHtml(message)}</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+  alertDiv.innerHTML = `<strong>Upload Error</strong><p class="uppy-error-message">${escapeHtml(message)}</p><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
 
   // No auto-dismiss — user must close manually or start a new upload
   errorContainer.appendChild(alertDiv);

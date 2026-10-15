@@ -157,9 +157,7 @@ if (geocodeAllBtn) {
     const scroller = document.createElement("div");
     const isScrolling = data.failures.length > 6;
     if (isScrolling) {
-      scroller.className = "border rounded px-2 py-1 mt-1";
-      scroller.style.maxHeight = "260px";
-      scroller.style.overflowY = "auto";
+      scroller.className = "border rounded px-2 py-1 mt-1 map-failures-scroll";
     }
     body.appendChild(scroller);
 

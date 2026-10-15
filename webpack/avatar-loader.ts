@@ -311,17 +311,12 @@ class AvatarLoader {
         } else {
           // Legacy / non-card profile photos: switch to rectangular style (not circular avatar)
           img.classList.remove("photo-large", "photo-medium", "photo-small", "photo-tiny", "photo-profile");
-          img.classList.add("img-fluid", "rounded", "uploaded-photo");
-          img.style.maxWidth = "100%";
-          img.style.maxHeight = "300px";
-          img.style.borderRadius = "8px";
-          img.style.width = "auto";
-          img.style.height = "auto";
+          img.classList.add("img-fluid", "rounded", "uploaded-photo", "uploaded-photo-profile");
         }
       } else {
         // For inline/list photos, keep as circular avatar but use the uploaded photo
         img.classList.add("uploaded-photo");
-        img.style.objectFit = "cover";
+        img.classList.add("object-fit-cover");
       }
 
       // Add click-to-view class so lightbox handlers can detect this photo.
@@ -332,7 +327,7 @@ class AvatarLoader {
         const dataAttr = config.entityType === "person" ? "data-person-id" : "data-family-id";
         img.classList.add(viewClass);
         img.setAttribute(dataAttr, String(config.entityId));
-        img.style.cursor = "pointer";
+        img.classList.add("cursor-pointer");
       }
 
       this.cleanupDataAttributes(img);
