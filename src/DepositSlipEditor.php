@@ -224,7 +224,7 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="mb-2">
               <i class="fa-solid fa-receipt fa-2x text-primary mb-2"></i>
             </div>
-            <div class="stat-value stat-value-lg text-dark"><?= $thisDeposit->getCountChecks() + $thisDeposit->getCountCash(); ?></div>
+            <div class="stat-value stat-value-lg text-dark"><?= (int) ($thisDeposit->getCountChecks() + $thisDeposit->getCountCash()) ?></div>
             <div class="stat-label"><?= gettext('Total Payments'); ?></div>
           </div>
         </div>
@@ -301,7 +301,7 @@ require_once __DIR__ . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   var depositType = '<?php echo $thisDeposit->getType(); ?>';
   var depositSlipID = <?php echo $iDepositSlipID; ?>;
-  var isDepositClosed = Boolean(<?=  $thisDeposit->getClosed(); ?>);
+  var isDepositClosed = <?= $thisDeposit->getClosed() ? 'true' : 'false' ?>;
   var fundLabels = <?= InputUtils::jsonEncodeForScript(array_values($fundLabels)) ?>;
   var fundData = <?= InputUtils::jsonEncodeForScript(array_values($fundData)) ?>;
   $(document).ready(function() {
