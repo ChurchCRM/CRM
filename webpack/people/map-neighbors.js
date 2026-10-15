@@ -108,7 +108,7 @@ $(document).ready(() => {
       const row = (color, text, isIcon) => {
         const swatch = isIcon
           ? `<img src="${window.CRM.root}/skin/icons/church.png" width="14" height="14" alt="">`
-          : `<span class="legend-dot" style="--tblr-legend-color:${color};--tblr-legend-size:11px"></span>`;
+          : `<span class="legend-dot" style="--tblr-legend-color:${color}"></span>`;
         return `<div class="neighbors-legend-row">${swatch}<span>${text}</span></div>`;
       };
 
@@ -226,7 +226,7 @@ $(document).ready(() => {
           : `${window.CRM.escapeHtml(family.distanceText)} ${window.CRM.escapeHtml(cfg.distanceUnit || "")}`;
         $row.append(
           $("<td>").html(
-            `<span class="legend-dot me-2" style="--tblr-legend-color:${bandColor};--tblr-legend-size:11px"></span>${distanceLabel}`,
+            `<span class="legend-dot me-2" style="--tblr-legend-color:${bandColor}"></span>${distanceLabel}`,
           ),
         );
         $row.append(

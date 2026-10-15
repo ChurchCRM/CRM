@@ -7,7 +7,7 @@
 #}
 <!DOCTYPE html>
 {# portal.locale is a POSIX locale (en_US); an HTML lang attribute wants BCP 47. #}
-<html lang="{{ portal.locale|replace({'_': '-'}) }}" data-bs-theme-base="gray"{% if portal.isRTL %} dir="rtl"{% endif %}{% if portal.colorMode == 'dark' %} data-bs-theme="dark"{% endif %}>
+<html lang="{{ portal.locale|replace({'_': '-'}) }}"{% if portal.isRTL %} dir="rtl"{% endif %}{% if portal.colorMode == 'dark' %} data-bs-theme="dark"{% endif %}>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

@@ -12,15 +12,14 @@ Layout / breakpoints: `responsive-design-guidelines.md`.
 ## Must
 
 - Bootstrap 5 utilities (`ms-`/`me-`, `fw-bold`, `text-end`, `btn-close`)
-- Data attributes: `data-bs-*`. Never `data-toggle` / `data-dismiss` / `data-placement` / `data-backdrop` / `data-keyboard` (Bootstrap 4, ignored). Custom hooks read by our own JS (`data-target` + `dataset`) are fine
-- Field help text: `.form-text`, not `.form-hint` (removed in Tabler 1.5+)
-- No `tabler.getColor()` / `tabler.hexToRgba()` or `*-focus-box-shadow` Sass variables; use CSS variables (`var(--tblr-primary)`)
-- Legend (Tabler 1.6+): `<button class="legend" style="--tblr-legend-color: #hex"><span class="legend-dot"></span>Label</button>`, `.legend-off` for a toggled-off item, `.legend-list` for a group. Do not define your own `.legend-dot`. The map legend (`src/people/views/map-view.php`) is the working example
-- `npm run lint:tabler` fails on `.form-hint`, the removed JS helpers and Bootstrap 4 data attributes
-- Root size: `:root { font-size: 16px }` in `src/skin/churchcrm.scss`. Tabler 1.6 sizes in `rem` and no longer pins the root, so a smaller root shrinks every component. Write custom `rem` against 16px
-- Grey scale: every page shell that loads Tabler sets `data-bs-theme-base="gray"` on `<html>` (keeps the blue-tinted 1.4 greys; the 1.6 default is neutral). New page shells need it
+- Data attributes: `data-bs-*` for every Bootstrap and Tabler hook (`data-bs-toggle`, `data-bs-dismiss`, `data-bs-placement`, `data-bs-backdrop`, `data-bs-keyboard`). Custom hooks read by our own JS (`data-target` + `dataset`) are fine
+- Field help text: `.form-text`
+- Colours: CSS variables (`var(--tblr-primary)`); Sass uses Tabler's current variables
+- Legend: `<button class="legend" style="--tblr-legend-color: #hex"><span class="legend-dot"></span>Label</button>`, `.legend-off` for a toggled-off item, `.legend-list` for a group. Size and colour come from Tabler's `.legend-dot` and `--tblr-legend-color`. The map legend (`src/people/views/map-view.php`) is the working example
+- `npm run lint:tabler` checks these conventions
+- Stock Tabler: root font size, theme base, palette and font stay at Tabler's defaults. Brand accent comes from `data-bs-theme-primary` (user setting). `_tabler-bridge.scss` covers DataTables and layout only
 - Accessibility: `Header.php` carries Tabler's `.skip-link` to `#main-content`. Keep that id on the page body
-- Badges: Tabler `-lt` + matching `text-*` for labels. Do not use bare `bg-info` / `bg-warning` without a text class (contrast fails in Tabler)
+- Badges: Tabler `-lt` + matching `text-*` for labels (a bare `bg-info` / `bg-warning` needs a text class for contrast)
 - Modals: one `bootstrap.Modal` instance; destroy TomSelect/Quill before swapping `innerHTML`
 - No inline styles that fight Tabler theme tokens
 

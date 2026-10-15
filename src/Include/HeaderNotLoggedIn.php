@@ -15,7 +15,7 @@ PluginManager::init($pluginsPath);
 $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo object
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?> data-bs-theme-base="gray">
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

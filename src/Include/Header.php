@@ -34,8 +34,7 @@ PluginManager::init($pluginsPath);
 // Resolve theme attributes from user settings
 $_themeUser = AuthenticationManager::getCurrentUser();
 $_themeMode = $_themeUser->getThemeMode(); // 'auto' | 'default' | 'dark'
-// Tabler 1.6 defaults to a neutral grey scale; `gray` keeps the blue-tinted greys the app shipped with on 1.4.
-$_themeAttrs = ' data-bs-theme-base="gray" data-theme-mode="' . InputUtils::escapeAttribute($_themeMode) . '"';
+$_themeAttrs = ' data-theme-mode="' . InputUtils::escapeAttribute($_themeMode) . '"';
 // Explicit dark: stamp data-bs-theme on <html> so first paint does not wait on theme.min.js.
 if ($_themeMode === 'dark') {
     $_themeAttrs .= ' data-bs-theme="dark"';
